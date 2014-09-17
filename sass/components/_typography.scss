@@ -1,0 +1,18 @@
+h1, h2, h3, h4, h5, h6 {
+		color: #212121;
+		font-family: "Roboto", "Open Sans", serif;
+		font-weight: normal; }
+
+// Header Styles
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+h1 { font-size: 45px; line-height: 50px; margin-bottom: 14px;}
+h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
+h3 { font-size: 28px; line-height: 34px; margin-bottom: 8px; }
+h4 { font-size: 21px; line-height: 30px; margin-bottom: 4px; }
+h5 { font-size: 17px; line-height: 24px; }
+h6 { font-size: 14px; line-height: 21px; }
+
+// Text Styles
+em { font-style: italic; }
+strong { font-weight: bold; color: #212121; }
+small { font-size: 80%; }
