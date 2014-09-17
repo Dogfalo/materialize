@@ -1,18 +1,28 @@
+html{
+    font-size: 14px;
+}
 h1, h2, h3, h4, h5, h6 {
 		color: #212121;
 		font-family: "Roboto", "Open Sans", serif;
-		font-weight: normal; }
+		font-weight: 500;
+		}
 
 // Header Styles
+$h1-fontsize: 4.1rem;
+$h2-fontsize: 3.21rem;
+$h3-fontsize: 2.42rem;
+$h4-fontsize: 1.71rem;
+$h5-fontsize: 1.42rem;
+$h6-fontsize: 1rem;
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
-h1 { font-size: 45px; line-height: 50px; margin-bottom: 14px;}
-h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
-h3 { font-size: 28px; line-height: 34px; margin-bottom: 8px; }
-h4 { font-size: 21px; line-height: 30px; margin-bottom: 4px; }
-h5 { font-size: 17px; line-height: 24px; }
-h6 { font-size: 14px; line-height: 21px; }
+h1 { font-size: $h1-fontsize; line-height: 1.1*$h1-fontsize; margin-bottom: 14px; letter-spacing: -0.1rem}
+h2 { font-size: $h2-fontsize; line-height: 1.1*$h2-fontsize; margin-bottom: 10px; }
+h3 { font-size: $h3-fontsize; line-height: 1.1*$h3-fontsize; margin-bottom: 8px; }
+h4 { font-size: $h4-fontsize; line-height: 1.1*$h4-fontsize; margin-bottom: 4px; letter-spacing: .05rem}
+h5 { font-size: $h5-fontsize; line-height: 1.1*$h5-fontsize; letter-spacing: .05rem}
+h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; letter-spacing: .03rem}
 
 // Text Styles
 em { font-style: italic; }
 strong { font-weight: bold; color: #212121; }
-small { font-size: 80%; }
+small { font-size: 75%; }
