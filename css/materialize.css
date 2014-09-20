@@ -1,4 +1,78 @@
+@media only screen and (min-width: 0) {
+  .row .col .small-1 {
+    width: 8.33333%; }
+  .row .col .small-2 {
+    width: 16.66667%; }
+  .row .col .small-3 {
+    width: 25%; }
+  .row .col .small-4 {
+    width: 33.33333%; }
+  .row .col .small-5 {
+    width: 41.66667%; }
+  .row .col .small-6 {
+    width: 50%; }
+  .row .col .small-7 {
+    width: 58.33333%; }
+  .row .col .small-8 {
+    width: 66.66667%; }
+  .row .col .small-9 {
+    width: 75%; }
+  .row .col .small-10 {
+    width: 83.33333%; }
+  .row .col .small-11 {
+    width: 91.66667%; }
+  .row .col .small-12 {
+    width: 100%; } }
+
 html {
-  font-size: 48px;
-  font-family: "roboto";
-}
+  font-size: 14px; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #212121;
+  font-family: "Roboto", "Open Sans", serif;
+  font-weight: 500; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-weight: inherit; }
+
+h1 {
+  font-size: 4.1rem;
+  line-height: 4.51rem;
+  margin-bottom: 14px;
+  letter-spacing: -0.1rem; }
+
+h2 {
+  font-size: 3.21rem;
+  line-height: 3.531rem;
+  margin-bottom: 10px; }
+
+h3 {
+  font-size: 2.42rem;
+  line-height: 2.662rem;
+  margin-bottom: 8px; }
+
+h4 {
+  font-size: 1.71rem;
+  line-height: 1.881rem;
+  margin-bottom: 4px;
+  letter-spacing: .05rem; }
+
+h5 {
+  font-size: 1.42rem;
+  line-height: 1.562rem;
+  letter-spacing: .05rem; }
+
+h6 {
+  font-size: 1rem;
+  line-height: 1.1rem;
+  letter-spacing: .03rem; }
+
+em {
+  font-style: italic; }
+
+strong {
+  font-weight: bold;
+  color: #212121; }
+
+small {
+  font-size: 75%; }

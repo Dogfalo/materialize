@@ -5,7 +5,7 @@ $small-screen: 420px;
 $medium-screen: 768px;
 $large-screen: 1024px;
 
-$small-and-up: "only screen and (min-width : #{$small-screen})";
+$small-and-up: "only screen and (min-width : 0)";
 $medium-and-up: "only screen and (min-width : #{$medium-screen})";
 $large-and-up: "only screen and (min-width : #{$large-screen})";
 
