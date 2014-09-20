@@ -4,3 +4,7 @@
 $small-screen: 420px;
 $medium-screen: 768px;
 $large-screen: 1024px;
+
+$small-only: "only screen and (max-width : #{$small-screen})";
+$medium-only: "only screen and (max-width : #{$medium-screen})";
+$large-only: "only screen and (max-width : #{$large-screen})";
