@@ -26,3 +26,18 @@ h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; letter-spacing: .03
 em { font-style: italic; }
 strong { font-weight: bold; color: #212121; }
 small { font-size: 75%; }
+
+
+flow-text{
+  $range : $large-screen - $small-screen;
+  $intervals: 20;
+  $interval-size: $range / $intervals;
+  $i: 0;
+  
+  	@while $i <= $intervals {
+      		@media only screen and (min-width : 480 + ($i * $interval-size)) {
+      		font-size: 1rem * (1 + (.1 * $i));
+  		}
+  		$i: $i + 1;
+  	}
+}
