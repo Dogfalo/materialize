@@ -1,3 +1,16 @@
+@media #{$small-and-up} {
+  .container {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+@media #{$medium-and-up} {
+  .container {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
 .row {
 
   .col {
