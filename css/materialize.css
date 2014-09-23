@@ -491,9 +491,25 @@ td, th {
       width: 100%;
       margin-left: 0; } }
 
+@font-face {
+  font-family: "Roboto Light";
+  src: url(../font/roboto/Roboto-Light.ttf);
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url(../font/roboto/Roboto-Regular.ttf);
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Roboto Bold";
+  src: url(../font/roboto/Roboto-Bold.ttf);
+  font-weight: 700; }
+
 html {
   font-size: 14px;
-  font-family: "Roboto", "Open Sans", serif; }
+  font-family: "Roboto", "Open Sans", serif;
+  font-weight: 400; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #212121;
