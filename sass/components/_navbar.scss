@@ -2,6 +2,19 @@ nav {
   height: 64px;
   line-height: 64px;
   background-color: $blue;
+  color: #fff;
+
+  a.logo {
+    height: inherit;
+    line-height: inherit;
+    display: inline-block;
+    color: inherit;
+
+    i { 
+      font-size: 4em; 
+      -webkit-font-smoothing: antialiased;
+    }
+  }
 }
 
 @media #{$small-and-up} {
