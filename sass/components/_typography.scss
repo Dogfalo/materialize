@@ -28,8 +28,7 @@ em { font-style: italic; }
 strong { font-weight: bold; color: #212121; }
 small { font-size: 75%; }
 
-
-flow-text{
+.flow-text{
   $range : $large-screen - $small-screen;
   $intervals: 20;
   $interval-size: $range / $intervals;
