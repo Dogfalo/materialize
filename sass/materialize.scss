@@ -1,8 +1,10 @@
 @charset "UTF-8";
 
+@import "normalize";
 @import "components/prefixer";
 
 @import "components/global";
+@import "components/color";
 @import "components/grid";
 @import "components/navbar";
 @import "components/typography";

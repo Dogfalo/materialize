@@ -1,0 +1,12 @@
+nav {
+  height: 64px;
+  line-height: 64px;
+  background-color: $blue;
+}
+
+@media #{$small-and-up} {
+  nav {
+    height: 56px;
+    line-height: 56px;
+  }
+}
