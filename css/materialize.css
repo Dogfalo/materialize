@@ -1,3 +1,11 @@
+@media only screen and (min-width: 0) {
+  .container {
+    width: 95%;
+    margin: 0 auto; } }
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 70%;
+    margin: 0 auto; } }
 .row .col {
   float: left; }
   @media only screen and (min-width: 0) {
@@ -212,3 +220,67 @@ strong {
 
 small {
   font-size: 75%; }
+
+@media only screen and (min-width: 480px) {
+  flow-text {
+    font-size: 1rem; } }
+@media only screen and (min-width: 505.6px) {
+  flow-text {
+    font-size: 1.1rem; } }
+@media only screen and (min-width: 531.2px) {
+  flow-text {
+    font-size: 1.2rem; } }
+@media only screen and (min-width: 556.8px) {
+  flow-text {
+    font-size: 1.3rem; } }
+@media only screen and (min-width: 582.4px) {
+  flow-text {
+    font-size: 1.4rem; } }
+@media only screen and (min-width: 608px) {
+  flow-text {
+    font-size: 1.5rem; } }
+@media only screen and (min-width: 633.6px) {
+  flow-text {
+    font-size: 1.6rem; } }
+@media only screen and (min-width: 659.2px) {
+  flow-text {
+    font-size: 1.7rem; } }
+@media only screen and (min-width: 684.8px) {
+  flow-text {
+    font-size: 1.8rem; } }
+@media only screen and (min-width: 710.4px) {
+  flow-text {
+    font-size: 1.9rem; } }
+@media only screen and (min-width: 736px) {
+  flow-text {
+    font-size: 2rem; } }
+@media only screen and (min-width: 761.6px) {
+  flow-text {
+    font-size: 2.1rem; } }
+@media only screen and (min-width: 787.2px) {
+  flow-text {
+    font-size: 2.2rem; } }
+@media only screen and (min-width: 812.8px) {
+  flow-text {
+    font-size: 2.3rem; } }
+@media only screen and (min-width: 838.4px) {
+  flow-text {
+    font-size: 2.4rem; } }
+@media only screen and (min-width: 864px) {
+  flow-text {
+    font-size: 2.5rem; } }
+@media only screen and (min-width: 889.6px) {
+  flow-text {
+    font-size: 2.6rem; } }
+@media only screen and (min-width: 915.2px) {
+  flow-text {
+    font-size: 2.7rem; } }
+@media only screen and (min-width: 940.8px) {
+  flow-text {
+    font-size: 2.8rem; } }
+@media only screen and (min-width: 966.4px) {
+  flow-text {
+    font-size: 2.9rem; } }
+@media only screen and (min-width: 992px) {
+  flow-text {
+    font-size: 3rem; } }
