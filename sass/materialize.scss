@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
 @import "components/prefixer";
+@import "components/mixins";
 
 @import "components/global";
 @import "components/grid";
 @import "components/typography";
+@import "components/shadow";

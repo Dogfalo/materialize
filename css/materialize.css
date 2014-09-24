@@ -1,6 +1,6 @@
 .row .col {
   float: left; }
-  @media only screen and (min-width: 0) {
+  @media only screen and (min-width : 0) {
     .row .col.small-1 {
       width: 8.33333%;
       margin-left: 0; }
@@ -61,7 +61,7 @@
       margin-left: 91.66667%; }
     .row .col.small-offset-12 {
       margin-left: 100%; } }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width : 768px) {
     .row .col.medium-1 {
       width: 8.33333%;
       margin-left: 0; }
@@ -122,7 +122,7 @@
       margin-left: 91.66667%; }
     .row .col.medium-offset-12 {
       margin-left: 100%; } }
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width : 992px) {
     .row .col.large-1 {
       width: 8.33333%;
       margin-left: 0; }
@@ -191,17 +191,17 @@ h4 {
   font-size: 1.71rem;
   line-height: 1.881rem;
   margin-bottom: 4px;
-  letter-spacing: .05rem; }
+  letter-spacing: 0.05rem; }
 
 h5 {
   font-size: 1.42rem;
   line-height: 1.562rem;
-  letter-spacing: .05rem; }
+  letter-spacing: 0.05rem; }
 
 h6 {
   font-size: 1rem;
   line-height: 1.1rem;
-  letter-spacing: .03rem; }
+  letter-spacing: 0.03rem; }
 
 em {
   font-style: italic; }
@@ -212,3 +212,94 @@ strong {
 
 small {
   font-size: 75%; }
+
+@media only screen and (min-width: 480px) {
+  flow-text {
+    font-size: 1rem; } }
+@media only screen and (min-width: 505.6px) {
+  flow-text {
+    font-size: 1.1rem; } }
+@media only screen and (min-width: 531.2px) {
+  flow-text {
+    font-size: 1.2rem; } }
+@media only screen and (min-width: 556.8px) {
+  flow-text {
+    font-size: 1.3rem; } }
+@media only screen and (min-width: 582.4px) {
+  flow-text {
+    font-size: 1.4rem; } }
+@media only screen and (min-width: 608px) {
+  flow-text {
+    font-size: 1.5rem; } }
+@media only screen and (min-width: 633.6px) {
+  flow-text {
+    font-size: 1.6rem; } }
+@media only screen and (min-width: 659.2px) {
+  flow-text {
+    font-size: 1.7rem; } }
+@media only screen and (min-width: 684.8px) {
+  flow-text {
+    font-size: 1.8rem; } }
+@media only screen and (min-width: 710.4px) {
+  flow-text {
+    font-size: 1.9rem; } }
+@media only screen and (min-width: 736px) {
+  flow-text {
+    font-size: 2rem; } }
+@media only screen and (min-width: 761.6px) {
+  flow-text {
+    font-size: 2.1rem; } }
+@media only screen and (min-width: 787.2px) {
+  flow-text {
+    font-size: 2.2rem; } }
+@media only screen and (min-width: 812.8px) {
+  flow-text {
+    font-size: 2.3rem; } }
+@media only screen and (min-width: 838.4px) {
+  flow-text {
+    font-size: 2.4rem; } }
+@media only screen and (min-width: 864px) {
+  flow-text {
+    font-size: 2.5rem; } }
+@media only screen and (min-width: 889.6px) {
+  flow-text {
+    font-size: 2.6rem; } }
+@media only screen and (min-width: 915.2px) {
+  flow-text {
+    font-size: 2.7rem; } }
+@media only screen and (min-width: 940.8px) {
+  flow-text {
+    font-size: 2.8rem; } }
+@media only screen and (min-width: 966.4px) {
+  flow-text {
+    font-size: 2.9rem; } }
+@media only screen and (min-width: 992px) {
+  flow-text {
+    font-size: 3rem; } }
+
+.z-depth-1 {
+  -webkit-box-shadow: 0px 1px 1.5px 0px #e0e0e0, 0px 1px 1px 0px #c2c2c2;
+  -moz-box-shadow: 0px 1px 1.5px 0px #e0e0e0, 0px 1px 1px 0px #c2c2c2;
+  box-shadow: 0px 1px 1.5px 0px #e0e0e0, 0px 1px 1px 0px #c2c2c2; }
+
+.z-depth-2 {
+  -webkit-box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf;
+  -moz-box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf;
+  box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf; }
+
+.z-depth-3 {
+  -webkit-box-shadow: 0px 6px 12px 2px #adadad, 0px 3px 4px 0px #adadad;
+  -moz-box-shadow: 0px 6px 12px 2px #adadad, 0px 3px 4px 0px #adadad;
+  box-shadow: 0px 6px 12px 2px #adadad, 0px 3px 4px 0px #adadad; }
+
+.z-depth-4 {
+  -webkit-box-shadow: 0px 4px 22px 0px #999999, 0px 11px 20px 0px #999999;
+  -moz-box-shadow: 0px 4px 22px 0px #999999, 0px 11px 20px 0px #999999;
+  box-shadow: 0px 4px 22px 0px #999999, 0px 11px 20px 0px #999999; }
+
+.z-depth-5 {
+  -webkit-box-shadow: 0px 10px 30px -1px #8c8c8c, 0px 17px 40px -2px #8c8c8c;
+  -moz-box-shadow: 0px 10px 30px -1px #8c8c8c, 0px 17px 40px -2px #8c8c8c;
+  box-shadow: 0px 10px 30px -1px #8c8c8c, 0px 17px 40px -2px #8c8c8c; }
+
+/*# sourceMappingURL=materialize.css.map */
