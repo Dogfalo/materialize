@@ -1,0 +1,16 @@
+$border-color: #bdbdbd;
+$active-color: #03a9f4;
+
+.material-input {
+	border: none;
+	border-bottom: 1px solid $border-color;
+	outline: none;
+	padding-bottom: 5px;
+	width: 100%;
+	font-size: 1em;
+}
+
+.material-input:focus {
+	border-bottom: 2px solid $active-color; 
+}
+

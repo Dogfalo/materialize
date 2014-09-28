@@ -1,0 +1,39 @@
+body {
+  background-color: #ddd;
+}
+
+$default-color: #03a9f4;
+$gutter-width: 16px;
+$card-padding: 8px;
+$footer-color: #eceff1;
+
+.card {
+  background-color: $default-color;
+  border-radius: 2px;
+  h1 {
+    font-size: 1.71rem;
+  }
+  h2 {
+    font-size: 1.14rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+	width: 80%;
+}
+
+.card-content {
+  padding: $gutter-width;
+}
+
+.card-footer {
+  border-top: 2px solid rgba(0, 0, 0, 0.12);
+  background-color: $footer-color;
+	padding: 2px $gutter-width $card-padding $gutter-width;
+}
+	
+.shadow {
+  -moz-box-shadow: 1px 1px 1px 1px #eee;
+  -webkit-box-shadow: 1px 1px 1px 1px #eee;
+  box-shadow: 1px 1px 4px 1px #ccc;
+}
