@@ -1,11 +1,18 @@
 @charset "UTF-8";
 
-@import "normalize";
+// Mixins
 @import "components/prefixer";
+@import "components/mixins";
 
+// Reset
+@import "components/normalize";
+
+// components
 @import "components/global";
 @import "components/entypo";
 @import "components/color";
 @import "components/grid";
 @import "components/navbar";
+@import "components/roboto";
 @import "components/typography";
+@import "components/shadow";
