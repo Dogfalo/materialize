@@ -1684,7 +1684,11 @@ li {
     margin: 0 auto;
     max-width: 1280px; } }
 .row .col {
-  float: left; }
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0.5em; }
   @media only screen and (min-width: 0) {
     .row .col.small-1 {
       width: 8.33333%;
