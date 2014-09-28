@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+// Media Query Ranges
+$small-screen: 480px;
+$medium-screen: 768px;
+$large-screen: 992px;
+
+$small-and-up: "only screen and (min-width : 0)";
+$medium-and-up: "only screen and (min-width : #{$medium-screen})";
+$large-and-up: "only screen and (min-width : #{$large-screen})";
+
+
+// Grid Variables
+$num-cols: 12;
