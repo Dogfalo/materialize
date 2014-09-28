@@ -1,7 +1,6 @@
 nav {
   background-color: $blue;
   color: #fff;
-  font-family: "Roboto", arial, helvetica, sans-serif;
 
   a.logo {
     height: inherit;
@@ -14,13 +13,30 @@ nav {
     i { -webkit-font-smoothing: antialiased; }
   }
 
+  .brand-logo {
+    color: #fff;
+    float: left;
+    display: inline-block;
+    font-size: 23px;
+  }
+
   ul {
     margin: 0;
+    padding: 0;
 
-    li {
+    li { 
+      float: left;
+      padding: 0 10px;
+      @include transition(background-color .3s);
 
+      &:hover {
+        background-color: darken($blue, 5%);
+      }
     }
-    a { color: #fff; }
+    a { 
+      font-size: 14px;
+      color: #fff; 
+    }
 
     &.left {
       float: left;

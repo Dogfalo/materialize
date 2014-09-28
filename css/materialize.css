@@ -1847,8 +1847,7 @@ li {
 
 nav {
   background-color: #5677fc;
-  color: #fff;
-  font-family: "Roboto", arial, helvetica, sans-serif; }
+  color: #fff; }
   nav a.logo {
     height: inherit;
     line-height: inherit;
@@ -1858,9 +1857,26 @@ nav {
     font-size: 36px; }
     nav a.logo i {
       -webkit-font-smoothing: antialiased; }
+  nav .brand-logo {
+    color: #fff;
+    float: left;
+    display: inline-block;
+    font-size: 23px; }
   nav ul {
-    margin: 0; }
+    margin: 0;
+    padding: 0; }
+    nav ul li {
+      float: left;
+      padding: 0 10px;
+      -webkit-transition: background-color 0.3s;
+      -moz-transition: background-color 0.3s;
+      -o-transition: background-color 0.3s;
+      -ms-transition: background-color 0.3s;
+      transition: background-color 0.3s; }
+      nav ul li:hover {
+        background-color: #3d63fc; }
     nav ul a {
+      font-size: 14px;
       color: #fff; }
     nav ul.left {
       float: left; }
