@@ -2025,7 +2025,7 @@ small {
   .flow-text {
     font-size: 3rem; } }
 
-.z-depth-1 {
+.z-depth-1, nav {
   -webkit-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
   -moz-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
   box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2; }
@@ -2049,3 +2049,6 @@ small {
   -webkit-box-shadow: 0px 10px 30px -3px #999999, 0px 17px 40px -3px #999999;
   -moz-box-shadow: 0px 10px 30px -3px #999999, 0px 17px 40px -3px #999999;
   box-shadow: 0px 10px 30px -3px #999999, 0px 17px 40px -3px #999999; }
+
+h3.header {
+  color: #5677fc; }

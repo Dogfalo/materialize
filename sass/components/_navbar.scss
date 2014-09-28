@@ -1,6 +1,7 @@
 nav {
   background-color: $blue;
   color: #fff;
+  @extend .z-depth-1;
 
   a.logo {
     height: inherit;
