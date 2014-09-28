@@ -1,0 +1,18 @@
+.toast {
+    @extend .z-depth-1;
+    margin: 0 auto;
+    position: static;
+    width: 80%;
+    height: 40px;
+    background-color: #FFF;
+    padding: 10px 4rem;
+    display: table;
+    
+    span {
+        margin: auto 0;
+        padding: 0px;
+        font-size: 1.4rem;
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
