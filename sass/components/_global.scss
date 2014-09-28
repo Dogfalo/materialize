@@ -12,3 +12,8 @@ $large-and-up: "only screen and (min-width : #{$large-screen})";
 
 // Grid Variables
 $num-cols: 12;
+
+
+li {
+  list-style-type: none;
+}

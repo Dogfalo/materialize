@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" > <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs >
+<font id="entypo-social" horiz-adv-x="555" ><font-face
+    font-family="Entypo Social"
+    units-per-em="1000"
+    panose-1="0 0 0 0 0 0 0 0 0 0"
+    ascent="750"
+    descent="-250"
+    alphabetic="0" />
+<missing-glyph horiz-adv-x="500" />
+</font>
+</defs>
+</svg>

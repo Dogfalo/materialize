@@ -1,0 +1,61 @@
+nav {
+  background-color: $blue;
+  color: #fff;
+
+  a.logo {
+    height: inherit;
+    line-height: inherit;
+    display: inline-block;
+    color: inherit;
+    float: left;
+    font-size: 36px;
+
+    i { -webkit-font-smoothing: antialiased; }
+  }
+
+  .brand-logo {
+    color: #fff;
+    float: left;
+    display: inline-block;
+    font-size: 23px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li { 
+      float: left;
+      padding: 0 10px;
+      @include transition(background-color .3s);
+
+      &:hover {
+        background-color: darken($blue, 5%);
+      }
+    }
+    a { 
+      font-size: 14px;
+      color: #fff; 
+    }
+
+    &.left {
+      float: left;
+    }
+    &.right {
+      float: right;
+    }
+  }
+}
+
+@media #{$small-and-up} {
+  nav {
+    height: 56px;
+    line-height: 56px;
+  }
+}
+@media #{$medium-and-up} {
+  nav {
+    height: 64px;
+    line-height: 64px;
+  }
+}
