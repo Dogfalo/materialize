@@ -354,6 +354,9 @@ td,
 th {
   padding: 0; }
 
+li {
+  list-style-type: none; }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
@@ -1669,9 +1672,13 @@ th {
 
 @media only screen and (min-width: 0) {
   .container {
-    width: 95%;
+    width: 90%;
     margin: 0 auto; } }
 @media only screen and (min-width: 768px) {
+  .container {
+    width: 80%;
+    margin: 0 auto; } }
+@media only screen and (min-width: 992px) {
   .container {
     width: 70%;
     margin: 0 auto;
@@ -1840,7 +1847,8 @@ th {
 
 nav {
   background-color: #5677fc;
-  color: #fff; }
+  color: #fff;
+  font-family: "Roboto", arial, helvetica, sans-serif; }
   nav a.logo {
     height: inherit;
     line-height: inherit;
@@ -1850,6 +1858,14 @@ nav {
     font-size: 36px; }
     nav a.logo i {
       -webkit-font-smoothing: antialiased; }
+  nav ul {
+    margin: 0; }
+    nav ul a {
+      color: #fff; }
+    nav ul.left {
+      float: left; }
+    nav ul.right {
+      float: right; }
 
 @media only screen and (min-width: 0) {
   nav {

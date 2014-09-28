@@ -1,6 +1,7 @@
 nav {
   background-color: $blue;
   color: #fff;
+  font-family: "Roboto", arial, helvetica, sans-serif;
 
   a.logo {
     height: inherit;
@@ -11,6 +12,22 @@ nav {
     font-size: 36px;
 
     i { -webkit-font-smoothing: antialiased; }
+  }
+
+  ul {
+    margin: 0;
+
+    li {
+
+    }
+    a { color: #fff; }
+
+    &.left {
+      float: left;
+    }
+    &.right {
+      float: right;
+    }
   }
 }
 
