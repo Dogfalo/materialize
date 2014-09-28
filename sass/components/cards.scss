@@ -19,18 +19,11 @@ $footer-color: #eceff1;
   h3 {
     font-size: 1rem;
   }
+	width: 80%;
 }
 
 .card-content {
   padding: $gutter-width;
-}
-
-.card-wide {
-  width: 30em;
-}
-
-.card-narrow {
-  width: 15em;
 }
 
 .card-footer {

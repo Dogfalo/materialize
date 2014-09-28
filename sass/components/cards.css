@@ -3,7 +3,8 @@ body {
 
 .card {
   background-color: #03a9f4;
-  border-radius: 2px; }
+  border-radius: 2px;
+  width: 80%; }
   .card h1 {
     font-size: 1.71rem; }
   .card h2 {
@@ -13,12 +14,6 @@ body {
 
 .card-content {
   padding: 16px; }
-
-.card-wide {
-  width: 30em; }
-
-.card-narrow {
-  width: 15em; }
 
 .card-footer {
   border-top: 2px solid rgba(0, 0, 0, 0.12);
