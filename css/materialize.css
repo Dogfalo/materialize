@@ -357,7 +357,7 @@ th {
 li {
   list-style-type: none; }
 
-.z-depth-1, nav, .toast {
+.z-depth-1, .toast {
   -webkit-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
   -moz-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
   box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2; }
@@ -1923,15 +1923,15 @@ nav {
     height: 64px;
     line-height: 64px; } }
 @font-face {
-  font-family: "Roboto Light";
+  font-family: "Roboto";
   src: url(../font/roboto/Roboto-Light.ttf);
   font-weight: 300; }
 @font-face {
-  font-family: "Roboto Regular";
+  font-family: "Roboto";
   src: url(../font/roboto/Roboto-Regular.ttf);
   font-weight: 400; }
 @font-face {
-  font-family: "Roboto Bold";
+  font-family: "Roboto";
   src: url(../font/roboto/Roboto-Bold.ttf);
   font-weight: 700; }
 a {
@@ -2064,6 +2064,9 @@ small {
   .flow-text {
     font-size: 3rem; } }
 
+body {
+  background-color: #ddd; }
+
 .card {
   background-color: #03a9f4;
   border-radius: 2px;
@@ -2114,7 +2117,7 @@ small {
 
 .toast {
   margin: 10px auto;
-  position: static;
+  position: relative;
   width: 100%;
   height: 40px;
   background-color: #323232;
@@ -2123,23 +2126,13 @@ small {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 2px;
-  display: table; }
+  display: table;
+  top: 0px; }
   .toast span {
     margin: auto 0;
     padding: 0px;
-    font-size: 1.3rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    font-weight: 300;
     display: table-cell;
     color: #FFF;
     vertical-align: middle; }
-
-body {
-  background-color: #f9f9f9; }
-
-h3.header {
-  color: #5677fc; }
-
-.preview {
-  background-color: #FFF;
-  border: 1px solid #eee;
-  padding: 20px 40px; }
