@@ -19,6 +19,7 @@
 }
 
 .row {
+  margin: 0 (-1 * $gutter-width / 2);
 
   .col {
     float: left;
