@@ -1,6 +1,21 @@
+#toast-container {
+    display:block;
+    margin: 0 auto;
+    width: 100%;
+    @media only screen and (min-width: 0) {
+        position: fixed;
+        bottom: 5%;
+        
+    }
+    
+    @media only screen and (min-width: $medium-screen) {
+        position: fixed;
+        top: 5%;
+    }
+}
 .toast {
     @extend .z-depth-1;
-    margin: 0 auto;
+    margin: 10px auto;
     position: static;
     width: 80%;
     height: 40px;

@@ -1,17 +1,28 @@
-function message() {
-    toast('hi');
-}
-
-function toast(message) {
-    if ($('toast-container').length == 0) {
+function toast(message, displayLength) {
+    if ($('#toast-container').length == 0) {
         // create notification container
-        var container = $('<div></div>');
-        
+        var container = $('<div></div>')
+            .attr('id', 'toast-container');
+        $('body').append(container);
     }
-    var toast = $('<div></div>');
-    toast.addClass('toast');
-    var text = $('<span></span>');
-    text.text(message);
-    toast.append(text);
-    $('body').append(toast);
+    
+    // Select and append toast
+    var container = $('#toast-container')
+    var newToast = createToast(message);
+    container.append(newToast);
+    newToast.show(200)
+        .delay(displayLength)
+        .hide(200,function(){
+            $(this).remove();
+        });
+    
+    function createToast(message) {
+        var toast = $('<div></div>');
+        toast.addClass('toast');
+        var text = $('<span></span>');
+        text.text(message);
+        toast.append(text);
+        toast.hide();
+        return toast;
+    }
 }
