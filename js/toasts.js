@@ -1,3 +1,6 @@
+function message() {
+    toast('hi', 2000);
+}
 function toast(message, displayLength) {
     if ($('#toast-container').length == 0) {
         // create notification container
