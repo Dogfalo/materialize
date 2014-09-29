@@ -2,8 +2,10 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Materialize - Documentation</title>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+</script>
+    <script src="../js/toasts.js"></script>
   <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body>
@@ -52,7 +54,12 @@
       <div class="z-depth-4"><p>hi</p></div>
       <div class="z-depth-5"><p>hi</p></div>
     </div>
+      <div class="row">
+      <h1>Toasts</h1>
+    <a class="button" onclick="toast('I am a toast', 2000)">Toast!</a>
+      </div>
   </div>
+
 
 </body>
 </html>
