@@ -1923,15 +1923,15 @@ nav {
     height: 64px;
     line-height: 64px; } }
 @font-face {
-  font-family: "Roboto Light";
+  font-family: "Roboto";
   src: url(../font/roboto/Roboto-Light.ttf);
   font-weight: 300; }
 @font-face {
-  font-family: "Roboto Regular";
+  font-family: "Roboto";
   src: url(../font/roboto/Roboto-Regular.ttf);
   font-weight: 400; }
 @font-face {
-  font-family: "Roboto Bold";
+  font-family: "Roboto";
   src: url(../font/roboto/Roboto-Bold.ttf);
   font-weight: 700; }
 a {
@@ -2117,7 +2117,7 @@ body {
 
 .toast {
   margin: 10px auto;
-  position: static;
+  position: relative;
   width: 100%;
   height: 40px;
   background-color: #323232;
@@ -2126,12 +2126,13 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 2px;
-  display: table; }
+  display: table;
+  top: 0px; }
   .toast span {
     margin: auto 0;
     padding: 0px;
-    font-size: 1.3rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    font-weight: 300;
     display: table-cell;
     color: #FFF;
     vertical-align: middle; }
