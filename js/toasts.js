@@ -13,11 +13,17 @@ function toast(message, displayLength) {
     var container = $('#toast-container')
     var newToast = createToast(message);
     container.append(newToast);
-    newToast.show(200)
-        .delay(displayLength)
-        .hide(200,function(){
+    
+    newToast.animate({"top" : "+20px"
+                    , "opacity": 0}, 0);
+    newToast.animate({"top" : "-20px"
+                            , opacity: 1}, 300);
+        newToast.delay(displayLength)
+        .animate({"opacity": 0}, 200)
+        .slideUp(200, function(){
             $(this).remove();
         });
+    
     
     function createToast(message) {
         var toast = $('<div></div>');
@@ -25,7 +31,6 @@ function toast(message, displayLength) {
         var text = $('<span></span>');
         text.text(message);
         toast.append(text);
-        toast.hide();
         return toast;
     }
 }

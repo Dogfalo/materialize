@@ -14,22 +14,23 @@
 .toast {
     @extend .z-depth-1;
     margin: 10px auto;
-    position: static;
- width: 100%;
+    position: relative;
+    width: 100%;
     height: 40px;
     background-color: #323232;
     padding: 10px 4rem;
     @include border-box();
     border-radius: 2px;
     display: table;
+    top: 0px;
     
     
     
     span {
         margin: auto 0;
         padding: 0px;
-        font-size: 1.3rem;
-        font-weight: 400;
+        font-size: 1.1rem;
+        font-weight: 300;
         display: table-cell;
         color: #FFF;
         vertical-align: middle;
