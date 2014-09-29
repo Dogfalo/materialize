@@ -17,4 +17,23 @@ $gutter-width: 1em;
 
 li {
   list-style-type: none;
+}$num-cols: 12;
+
+
+// Z-levels
+
+.z-depth-1{
+    @include box-shadow-2(0px 0px 2px 0px lighten(#000000, 88%), 0px 1.5px 2px 0px lighten(#000000, 76%));
+}
+.z-depth-2{
+    @include box-shadow-2(0px 1px 3px 0px lighten(#000000, 75%), 0px 4px 7px 0px lighten(#000000, 75%));
+}
+.z-depth-3{
+    @include box-shadow-2(0px 6px 12px 2px lighten(#000000, 68%), 0px 3px 4px 0px lighten(#000000, 68%));
+}
+.z-depth-4{
+    @include box-shadow-2(0px 4px 22px -2px lighten(#000000, 60%), 0px 11px 20px -2px lighten(#000000, 60%));
+}
+.z-depth-5{
+    @include box-shadow-2(0px 10px 30px -3px lighten(#000000, 60%), 0px 17px 40px -3px lighten(#000000, 60%));
 }
