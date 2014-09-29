@@ -357,7 +357,7 @@ th {
 li {
   list-style-type: none; }
 
-.z-depth-1, .toast {
+.z-depth-1, nav, .toast {
   -webkit-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
   -moz-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
   box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2; }
@@ -2064,9 +2064,6 @@ small {
   .flow-text {
     font-size: 3rem; } }
 
-body {
-  background-color: #ddd; }
-
 .card {
   background-color: #03a9f4;
   border-radius: 2px;
@@ -2136,3 +2133,14 @@ body {
     display: table-cell;
     color: #FFF;
     vertical-align: middle; }
+
+body {
+  background-color: #f9f9f9; }
+
+h3.header {
+  color: #5677fc; }
+
+.preview {
+  background-color: #FFF;
+  border: 1px solid #eee;
+  padding: 20px 40px; }
