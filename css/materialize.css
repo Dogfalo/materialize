@@ -362,7 +362,7 @@ li {
   -moz-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
   box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2; }
 
-.z-depth-2 {
+.z-depth-2, .material-tooltip {
   -webkit-box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf;
   -moz-box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf;
   box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf; }
@@ -2136,3 +2136,16 @@ body {
     display: table-cell;
     color: #FFF;
     vertical-align: middle; }
+
+.material-tooltip {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+  height: 1rem;
+  width: 200px;
+  max-width: 150px;
+  display: none;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle; }
