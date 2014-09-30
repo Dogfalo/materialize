@@ -14,10 +14,14 @@ $large-and-up: "only screen and (min-width : #{$large-screen})";
 $num-cols: 12;
 $gutter-width: 1em;
 
-
+ul {
+  padding: 0;
+}
 li {
   list-style-type: none;
-}$num-cols: 12;
+}
+
+$num-cols: 12;
 
 
 // Z-levels
