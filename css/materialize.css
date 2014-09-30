@@ -361,29 +361,29 @@ li {
   list-style-type: none; }
 
 .z-depth-1, nav, .toast {
-  -webkit-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
-  -moz-box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2;
-  box-shadow: 0px 0px 2px 0px #e0e0e0, 0px 1.5px 2px 0px #c2c2c2; }
+  -webkit-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5); }
 
 .z-depth-2 {
-  -webkit-box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf;
-  -moz-box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf;
-  box-shadow: 0px 1px 3px 0px #bfbfbf, 0px 4px 7px 0px #bfbfbf; }
+  -webkit-box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.45), 0px 5px 10px -2px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.45), 0px 5px 10px -2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.45), 0px 5px 10px -2px rgba(0, 0, 0, 0.45); }
 
 .z-depth-3 {
-  -webkit-box-shadow: 0px 6px 12px 2px #adadad, 0px 3px 4px 0px #adadad;
-  -moz-box-shadow: 0px 6px 12px 2px #adadad, 0px 3px 4px 0px #adadad;
-  box-shadow: 0px 6px 12px 2px #adadad, 0px 3px 4px 0px #adadad; }
+  -webkit-box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35); }
 
 .z-depth-4 {
-  -webkit-box-shadow: 0px 4px 22px -2px #999999, 0px 11px 20px -2px #999999;
-  -moz-box-shadow: 0px 4px 22px -2px #999999, 0px 11px 20px -2px #999999;
-  box-shadow: 0px 4px 22px -2px #999999, 0px 11px 20px -2px #999999; }
+  -webkit-box-shadow: 0px 8px 26px -3px rgba(0, 0, 0, 0.35), 0px 11px 26px -3px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 8px 26px -3px rgba(0, 0, 0, 0.35), 0px 11px 26px -3px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 8px 26px -3px rgba(0, 0, 0, 0.35), 0px 11px 26px -3px rgba(0, 0, 0, 0.35); }
 
 .z-depth-5 {
-  -webkit-box-shadow: 0px 10px 30px -3px #999999, 0px 17px 40px -3px #999999;
-  -moz-box-shadow: 0px 10px 30px -3px #999999, 0px 17px 40px -3px #999999;
-  box-shadow: 0px 10px 30px -3px #999999, 0px 17px 40px -3px #999999; }
+  -webkit-box-shadow: 0px 10px 35px -3px rgba(0, 0, 0, 0.35), 0px 15px 35px -3px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 10px 35px -3px rgba(0, 0, 0, 0.35), 0px 15px 35px -3px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 10px 35px -3px rgba(0, 0, 0, 0.35), 0px 15px 35px -3px rgba(0, 0, 0, 0.35); }
 
 @font-face {
   font-family: 'EntypoRegular';
@@ -1699,7 +1699,7 @@ li {
     background-color: #2c3940; }
 
 .white {
-  background-color: #fff; }
+  background-color: white; }
 
 @media only screen and (min-width: 0) {
   .container {
@@ -1948,7 +1948,8 @@ a {
 
 html {
   font-family: "Roboto", "Open Sans", serif;
-  font-weight: 400; }
+  font-weight: 400;
+  color: #212121; }
   @media only screen and (min-width: 0) {
     html {
       font-size: 10px; } }
@@ -2014,64 +2015,67 @@ small {
     font-size: 1rem; } }
 @media only screen and (min-width: 505.6px) {
   .flow-text {
-    font-size: 1.1rem; } }
+    font-size: 1.05rem; } }
 @media only screen and (min-width: 531.2px) {
   .flow-text {
-    font-size: 1.2rem; } }
+    font-size: 1.1rem; } }
 @media only screen and (min-width: 556.8px) {
   .flow-text {
-    font-size: 1.3rem; } }
+    font-size: 1.15rem; } }
 @media only screen and (min-width: 582.4px) {
   .flow-text {
-    font-size: 1.4rem; } }
+    font-size: 1.2rem; } }
 @media only screen and (min-width: 608px) {
   .flow-text {
-    font-size: 1.5rem; } }
+    font-size: 1.25rem; } }
 @media only screen and (min-width: 633.6px) {
   .flow-text {
-    font-size: 1.6rem; } }
+    font-size: 1.3rem; } }
 @media only screen and (min-width: 659.2px) {
   .flow-text {
-    font-size: 1.7rem; } }
+    font-size: 1.35rem; } }
 @media only screen and (min-width: 684.8px) {
   .flow-text {
-    font-size: 1.8rem; } }
+    font-size: 1.4rem; } }
 @media only screen and (min-width: 710.4px) {
   .flow-text {
-    font-size: 1.9rem; } }
+    font-size: 1.45rem; } }
 @media only screen and (min-width: 736px) {
   .flow-text {
-    font-size: 2rem; } }
+    font-size: 1.5rem; } }
 @media only screen and (min-width: 761.6px) {
   .flow-text {
-    font-size: 2.1rem; } }
+    font-size: 1.55rem; } }
 @media only screen and (min-width: 787.2px) {
   .flow-text {
-    font-size: 2.2rem; } }
+    font-size: 1.6rem; } }
 @media only screen and (min-width: 812.8px) {
   .flow-text {
-    font-size: 2.3rem; } }
+    font-size: 1.65rem; } }
 @media only screen and (min-width: 838.4px) {
   .flow-text {
-    font-size: 2.4rem; } }
+    font-size: 1.7rem; } }
 @media only screen and (min-width: 864px) {
   .flow-text {
-    font-size: 2.5rem; } }
+    font-size: 1.75rem; } }
 @media only screen and (min-width: 889.6px) {
   .flow-text {
-    font-size: 2.6rem; } }
+    font-size: 1.8rem; } }
 @media only screen and (min-width: 915.2px) {
   .flow-text {
-    font-size: 2.7rem; } }
+    font-size: 1.85rem; } }
 @media only screen and (min-width: 940.8px) {
   .flow-text {
-    font-size: 2.8rem; } }
+    font-size: 1.9rem; } }
 @media only screen and (min-width: 966.4px) {
   .flow-text {
-    font-size: 2.9rem; } }
+    font-size: 1.95rem; } }
 @media only screen and (min-width: 992px) {
   .flow-text {
-    font-size: 3rem; } }
+    font-size: 2rem; } }
+
+body {
+  background-color: #ddd; }
 
 .card {
   background-color: #03a9f4;
