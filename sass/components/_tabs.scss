@@ -1,0 +1,26 @@
+ul.tabs {
+  position: relative;
+  height: 48px;
+
+  li.tab {
+    display: inline-block;
+    text-align: center;
+    background-color: #fff;
+    line-height: 48px;
+    height: 48px;
+    text-transform: uppercase;
+
+    a {
+      color: $blue;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: $blue;
+  }
+}
