@@ -1,7 +1,7 @@
 $('ul.tabs').each(function(){
   // For each set of tabs, we want to keep track of
   // which tab is active and it's associated content
-  var $active, $content, $links = $(this).find('a');
+  var $active, $content, $links = $(this).find('li.tab a');
   var $indicator = $(this).find('.indicator');
   var $tabs_width = $(this).width();
   var $tab_width = $(this).find('li').first().outerWidth();
