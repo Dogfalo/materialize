@@ -2,9 +2,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Materialize - Documentation</title>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js">
-</script>
-    <script src="../js/toasts.js"></script>
+
   <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
@@ -17,50 +15,89 @@
       </ul>
     </div>
   </nav>
-  <div class="container">
-    <div class="row">
+  <div class="row white">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab col small-3"><a href="#tab1">Typography</a></li>
+        <li class="tab col small-3"><a href="#tab2">Grid</a></li>
+        <li class="tab col small-3"><a href="#tab3">Toast</a></li>
+        <li class="tab col small-3"><a href="#tab4">Shadows</a></li>
+        <div class="indicator"></div>
+      </ul>
+    </div>
+  </div>
+  <div id="tab1">
+    <div class="container">
       <h3 class="header">Typography</h3>
-      <div class="col small-12 medium-4">
-        <p>We can talk about header sizes and choices here.</p>
+      <div class="row">
+        <div class="col small-12 medium-4">
+          <p>We can talk about header sizes and choices here.</p>
+        </div>
+        <div class="col small-12 medium-8">
+          <div class="preview">
+            <h1>Heading h1</h1>
+            <h2>Heading h2</h2>
+            <h3>Heading h3</h3>
+            <h4>Heading h4</h4>
+            <h5>Heading h5</h5>
+            <h6>Heading h6</h6>
+          </div>
+        </div>
       </div>
-      <div class="col small-12 medium-8">
-        <div class="preview">
-          <h1>Heading h1</h1>
-          <h2>Heading h2</h2>
-          <h3>Heading h3</h3>
-          <h4>Heading h4</h4>
-          <h5>Heading h5</h5>
-          <h6>Heading h6</h6>
+
+
+      <h2>Flow Text Demo</h2>
+      <p class="flow-text">Post-ironic keffiyeh bitters Banksy street art yr, ennui flexitarian organic bespoke lomo readymade. Schlitz single-origin coffee Wes Anderson XOXO, literally whatever cliche lo-fi deep v pug beard. Blog whatever banh mi wayfarers, tousled roof party try-hard gentrify aesthetic ennui 90's Bushwick. Master cleanse American Apparel PBR&B letterpress, mumblecore fingerstache tousled Thundercats hashtag Wes Anderson quinoa. Yr Brooklyn messenger bag scenester, wolf beard sustainable chia cred sriracha flannel Truffaut Tonx. Butcher 3 wolf moon Vice Banksy, gentrify sartorial XOXO farm-to-table PBR gastropub pop-up. YOLO plaid mustache small batch flannel chambray.
+
+      Typewriter swag Marfa forage, biodiesel Cosby sweater pork belly McSweeney's fap kale chips ugh. Cornhole hoodie chambray Truffaut, you probably haven't heard of them next level flannel. Plaid cred cray, next level trust fund pork belly vegan gastropub Blue Bottle artisan. Before they sold out ugh stumptown, bitters wolf banjo YOLO forage direct trade Marfa kitsch try-hard mixtape vegan small batch. Truffaut artisan deep v pickled biodiesel, chambray synth pop-up bicycle rights squid gluten-free mlkshk Godard photo booth roof party. DIY bicycle rights Marfa actually, Blue Bottle normcore Pitchfork organic tofu authentic Austin ennui post-ironic. Synth gastropub church-key, small batch art party 3 wolf moon disrupt cornhole quinoa Thundercats biodiesel Williamsburg Schlitz.</p>
+    </div>
+  </div>
+  <div id="tab2" class="row">
+    <div class="container">
+      <h3 class="header">Grids</h3>
+      <div class="row">
+        <div class="col small-12">Small-12</div>
+        <div class="col small-12 medium-3">Small-12 Medium-3</div>
+        <div class="col small-12 medium-6">Small-12 Medium-6</div>
+        <div class="col small-12 medium-3">Small-12 Medium-3</div>
+      </div>
+    </div>
+  </div>
+  <div id="tab3" class="row">
+    <div class="container">
+      <div class="row">
+        <h1>Toasts</h1>
+      <a class="button" onclick="toast('I am a toast', 2000)">Toast!</a>
+      </div>
+    </div>
+  </div>
+  <div id="tab4" class="row">
+    <div class="container">
+      <div class="row">
+        <div class="col small-12 medium-2 medium-offset-1">
+          <p class="z-depth-1">this is longer text so we can see the shadows at work.</p>
+        </div>
+        <div class="col small-12 medium-2">
+          <p class="z-depth-2">this is longer text so we can see the shadows at work.</p>
+        </div>
+        <div class="col small-12 medium-2">
+          <p class="z-depth-3">this is longer text so we can see the shadows at work.</p>
+        </div>
+        <div class="col small-12 medium-2">
+          <p class="z-depth-4">this is longer text so we can see the shadows at work.</p>
+        </div>
+        <div class="col small-12 medium-2">
+          <p class="z-depth-5">this is longer text so we can see the shadows at work.</p>
         </div>
       </div>
     </div>
-
-
-    <h2>Flow Text Demo</h2>
-    <p class="flow-text">Post-ironic keffiyeh bitters Banksy street art yr, ennui flexitarian organic bespoke lomo readymade. Schlitz single-origin coffee Wes Anderson XOXO, literally whatever cliche lo-fi deep v pug beard. Blog whatever banh mi wayfarers, tousled roof party try-hard gentrify aesthetic ennui 90's Bushwick. Master cleanse American Apparel PBR&B letterpress, mumblecore fingerstache tousled Thundercats hashtag Wes Anderson quinoa. Yr Brooklyn messenger bag scenester, wolf beard sustainable chia cred sriracha flannel Truffaut Tonx. Butcher 3 wolf moon Vice Banksy, gentrify sartorial XOXO farm-to-table PBR gastropub pop-up. YOLO plaid mustache small batch flannel chambray.
-
-    Typewriter swag Marfa forage, biodiesel Cosby sweater pork belly McSweeney's fap kale chips ugh. Cornhole hoodie chambray Truffaut, you probably haven't heard of them next level flannel. Plaid cred cray, next level trust fund pork belly vegan gastropub Blue Bottle artisan. Before they sold out ugh stumptown, bitters wolf banjo YOLO forage direct trade Marfa kitsch try-hard mixtape vegan small batch. Truffaut artisan deep v pickled biodiesel, chambray synth pop-up bicycle rights squid gluten-free mlkshk Godard photo booth roof party. DIY bicycle rights Marfa actually, Blue Bottle normcore Pitchfork organic tofu authentic Austin ennui post-ironic. Synth gastropub church-key, small batch art party 3 wolf moon disrupt cornhole quinoa Thundercats biodiesel Williamsburg Schlitz.</p>
-    <div class="row">
-      <div class="col small-12">Small-12</div>
-      <div class="col small-12 medium-3">Small-12 Medium-3</div>
-      <div class="col small-12 medium-6">Small-12 Medium-6</div>
-      <div class="col small-12 medium-3">Small-12 Medium-3</div>
-    </div>
-    
-    <div class="row">
-      <div class="z-depth-1"><p>hi</p></div>
-      <div class="z-depth-2"><p>hi</p></div>
-      <div class="z-depth-3"><p>hi</p></div>
-      <div class="z-depth-4"><p>hi</p></div>
-      <div class="z-depth-5"><p>hi</p></div>
-    </div>
-      <div class="row">
-      <h1>Toasts</h1>
-    <a class="button" onclick="toast('I am a toast', 2000)">Toast!</a>
-      </div>
   </div>
 
-
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+</script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/toasts.js"></script>
+    <script src="../js/tabs.js"></script>
 </body>
 </html>
 
