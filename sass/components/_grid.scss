@@ -21,6 +21,13 @@
 .row {
   margin: 0 (-1 * $gutter-width / 2);
 
+  // Clear floating children
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   .col {
     float: left;
     @include box-sizing(border-box);
