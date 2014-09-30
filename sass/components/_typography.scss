@@ -17,6 +17,7 @@ html{
     
     font-family: "Roboto", "Open Sans", serif;
     font-weight: 400;
+    color: #212121;
 }
 h1, h2, h3, h4, h5, h6 {
 		color: #212121;
@@ -52,7 +53,7 @@ small { font-size: 75%; }
   
   	@while $i <= $intervals {
       		@media only screen and (min-width : 480 + ($i * $interval-size)) {
-      		font-size: 1rem * (1 + (.1 * $i));
+      		font-size: 1rem * (1 + (.05 * $i));
   		}
   		$i: $i + 1;
   	}
