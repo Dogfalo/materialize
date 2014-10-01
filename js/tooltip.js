@@ -1,27 +1,31 @@
 (function ($) {
+    
+    var newTooltip;
+    var timeout;
     $.fn.tooltip = function () {
-        var tooltip;
         var origin;
         this.hover(function() {
             // on mouseover
-            origin = this;
-            setTimeout(function(){
-                tooltip = $('<div></div>');
-                tooltip.text($(origin).attr('title'))
+            origin = $(this);
+            timeout = setTimeout(function(){
+                newTooltip = $('<div></div>');
+                newTooltip.text($(origin).attr('title'))
                 .addClass("material-tooltip")
 
-                $('body').append(tooltip);
+                $('body').append(newTooltip);
                 // Set position of tooltip
-                var leftPos = $(origin).offset().left + $(origin).outerWidth()/2 - tooltip.outerWidth()/2;
+                var leftPos = $(origin).offset().left + $(origin).outerWidth()/2 - newTooltip.outerWidth()/2;
                 var topPos = $(origin).offset().top + $(origin).outerHeight();
-                tooltip.css({top: topPos, left: leftPos});
+                newTooltip.css({top: topPos, left: leftPos});
                 // Animation
-                tooltip.fadeIn(100);
-                $(origin).removeAttr('title')
-            },300);
+                newTooltip.fadeIn(100);
+                origin.removeAttr('title')
+            },200);
         }, function(){
-            $(origin).attr('title', tooltip.text());
-            tooltip.fadeOut(100, function(){this.remove();});
+            clearTimeout(timeout);
+            origin.attr('title', newTooltip.text());
+            newTooltip.fadeOut(100, function(){
+                newTooltip.remove();});
         });
 
     };
