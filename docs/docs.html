@@ -18,10 +18,11 @@
   <div class="row white">
     <div class="container">
       <ul class="tabs">
-        <li class="tab col small-3"><a href="#tab1">Typography</a></li>
-        <li class="tab col small-3"><a href="#tab2">Grid</a></li>
-        <li class="tab col small-3"><a href="#tab3">Toast</a></li>
-        <li class="tab col small-3"><a href="#tab4">Shadows</a></li>
+        <li class="tab col small-2"><a href="#tab1">Typography</a></li>
+        <li class="tab col small-2"><a href="#tab2">Grid</a></li>
+        <li class="tab col small-2"><a href="#tab3">Toast</a></li>
+        <li class="tab col small-2"><a href="#tab4">Tooltips</a></li>
+        <li class="tab col small-2"><a href="#tab5">Shadows</a></li>
         <div class="indicator"></div>
       </ul>
     </div>
@@ -67,11 +68,18 @@
     <div class="container">
       <div class="row">
         <h1>Toasts</h1>
-      <a class="button" onclick="toast('I am a toast', 2000)">Toast!</a>
+        <a class="button" onclick="toast('I am a toast', 2000)">Toast!</a>
       </div>
     </div>
   </div>
   <div id="tab4" class="row">
+    <div class="container">
+      <div class="row">
+        <a class="button tooltipped" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP</a>
+      </div>
+    </div>
+  </div>
+  <div id="tab5" class="row">
     <div class="container">
       <div class="row">
         <div class="col small-12 medium-2 medium-offset-1">
@@ -93,11 +101,17 @@
     </div>
   </div>
 
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js">
-</script>
-    <script src="../js/jquery.easing.1.3.js"></script>
-    <script src="../js/toasts.js"></script>
-    <script src="../js/tabs.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="../js/jquery.easing.1.3.js"></script>
+  <script src="../js/toasts.js"></script>
+  <script src="../js/tooltip.js"></script>
+  <script src="../js/tabs.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.tooltipped').tooltip();
+    });
+  </script>
 </body>
 </html>
 

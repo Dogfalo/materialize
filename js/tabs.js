@@ -1,6 +1,3 @@
-(function($){
-  $(function(){
-
 $('ul.tabs').each(function(){
   // For each set of tabs, we want to keep track of
   // which tab is active and it's associated content
@@ -61,7 +58,3 @@ $('ul.tabs').each(function(){
     e.preventDefault();
   });
 });
-
-
-  }); // end of document ready
-})(jQuery); // end of jQuery name space

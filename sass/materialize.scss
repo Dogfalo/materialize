@@ -4,7 +4,6 @@
 @import "components/prefixer";
 @import "components/mixins";
 
-
 // Reset
 @import "components/normalize";
 
@@ -20,6 +19,6 @@
 @import "components/input_fields";
 @import "components/toast";
 @import "components/tabs";
+@import "components/tooltip";
 
-// Custom
-@import "style.scss"
+@import "style"

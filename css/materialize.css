@@ -2173,6 +2173,19 @@ ul.tabs {
     height: 2px;
     background-color: #5677fc; }
 
+.material-tooltip {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1rem;
+  background-color: #737373;
+  color: #fff;
+  height: 1rem;
+  max-width: 200px;
+  display: none;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle; }
+
 body {
   background-color: #f9f9f9; }
 
