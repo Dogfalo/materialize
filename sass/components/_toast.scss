@@ -5,6 +5,10 @@
         width: 100%;
         bottom: 0%;    
     }
+    @media only screen and (min-width: $medium-screen) {
+        width: 50%;
+        right: 5%;
+    }
     @media only screen and (min-width: $large-screen) {
         width: 15%;
         top: 5%;
