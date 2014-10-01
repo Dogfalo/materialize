@@ -27,6 +27,5 @@
             newTooltip.fadeOut(100, function(){
                 newTooltip.remove();});
         });
-
     };
 }( jQuery ));
