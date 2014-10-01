@@ -1,13 +1,14 @@
 .material-tooltip {
 //    @extend .z-depth-2;
-    padding: 10px;
-    margin: 5px;
+    padding: 10px 8px;
+    margin: 20px 0px;
     font-size: 1rem;
 //    border-bottom-left-radius: 50% / 100%;
 //    border-bottom-right-radius: 50% / 100%;
 //    border-top-left-radius: 0;
 //    border-top-right-radius: 0;
-    background-color: #737373;
+    background-color: rgba(0, 0, 0, .54);
+    border-radius: 2px;
     color: #fff;
     height: 1rem;
     max-width: 200px;

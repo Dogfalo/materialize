@@ -1952,10 +1952,10 @@ html {
   color: #212121; }
   @media only screen and (min-width: 0) {
     html {
-      font-size: 10px; } }
+      font-size: 12px; } }
   @media only screen and (min-width: 768px) {
     html {
-      font-size: 12px; } }
+      font-size: 13px; } }
   @media only screen and (min-width: 992px) {
     html {
       font-size: 14px; } }
@@ -2118,7 +2118,7 @@ body {
   @media only screen and (min-width: 0) {
     #toast-container {
       width: 100%;
-      bottom: 5%; } }
+      bottom: 0%; } }
   @media only screen and (min-width: 992px) {
     #toast-container {
       width: 15%;
@@ -2174,10 +2174,11 @@ ul.tabs {
     background-color: #5677fc; }
 
 .material-tooltip {
-  padding: 10px;
-  margin: 5px;
+  padding: 10px 8px;
+  margin: 20px 0px;
   font-size: 1rem;
-  background-color: #737373;
+  background-color: rgba(0, 0, 0, 0.54);
+  border-radius: 2px;
   color: #fff;
   height: 1rem;
   max-width: 200px;
