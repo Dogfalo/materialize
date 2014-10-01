@@ -1,0 +1,18 @@
+.material-tooltip {
+//    @extend .z-depth-2;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1rem;
+//    border-bottom-left-radius: 50% / 100%;
+//    border-bottom-right-radius: 50% / 100%;
+//    border-top-left-radius: 0;
+//    border-top-right-radius: 0;
+    background-color: #737373;
+    color: #fff;
+    height: 1rem;
+    max-width: 200px;
+    display: none;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+}
