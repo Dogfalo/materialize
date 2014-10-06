@@ -5,14 +5,17 @@ a {
 html{
     @media only screen and (min-width: 0) {
         font-size: 12px;
+        line-height: 1.5rem;
     }
     
     @media only screen and (min-width: $medium-screen) {
         font-size: 13px;
+        line-height: 1.4rem;
     }
     
     @media only screen and (min-width: $large-screen) {
         font-size: 14px;
+        line-height: 1.3rem;
     }
     
     font-family: "Roboto", "Open Sans", serif;
