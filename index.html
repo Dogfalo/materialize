@@ -1,0 +1,28 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materialize - Documentation</title>
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+<body>
+  <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
+  <ul id='dropdown1'>
+    <li>one</li>
+    <li>two</li>
+    <li>three</li>
+  </ul>
+</body>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js">
+</script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/toasts.js"></script>
+<script src="js/tooltip.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/dropdown.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.dropdown-button').dropdown();
+  });
+</script>
+</html>
