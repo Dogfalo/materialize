@@ -19,11 +19,13 @@
   }
 }
 .container .row {
-  margin: 0 (-1 * $gutter-width / 2);
+  margin-left: (-1 * $gutter-width / 2);
+  margin-right: (-1 * $gutter-width / 2);
 }
 
 .row {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 
   // Clear floating children
   &:after {

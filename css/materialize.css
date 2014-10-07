@@ -1716,10 +1716,12 @@ li {
   .container {
     width: 70%; } }
 .container .row {
-  margin: 0 -0.5em; }
+  margin-left: -0.5em;
+  margin-right: -0.5em; }
 
 .row {
-  margin: 0 auto; }
+  margin-left: auto;
+  margin-right: auto; }
   .row:after {
     content: "";
     display: table;
@@ -2238,6 +2240,9 @@ p {
   background-color: #FFF;
   border: 1px solid #eee;
   padding: 20px 40px; }
+
+.row {
+  margin-bottom: 20px; }
 
 .col.grid-example {
   background-color: #FFF;
