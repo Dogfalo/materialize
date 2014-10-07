@@ -1699,21 +1699,22 @@ li {
     background-color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
+
+.container {
+  padding: 0 1em;
+  margin: 0 auto;
+  max-width: 1280px; }
 
 @media only screen and (min-width: 0) {
   .container {
-    width: 90%;
-    margin: 0 auto; } }
+    width: 90%; } }
 @media only screen and (min-width: 768px) {
   .container {
-    width: 80%;
-    margin: 0 auto; } }
+    width: 80%; } }
 @media only screen and (min-width: 992px) {
   .container {
-    width: 70%;
-    margin: 0 auto;
-    max-width: 1280px; } }
+    width: 70%; } }
 .row {
   margin: 0 -0.5em; }
   .row:after {
@@ -1952,13 +1953,16 @@ html {
   color: #212121; }
   @media only screen and (min-width: 0) {
     html {
-      font-size: 10px; } }
+      font-size: 12px;
+      line-height: 1.5rem; } }
   @media only screen and (min-width: 768px) {
     html {
-      font-size: 12px; } }
+      font-size: 13px;
+      line-height: 1.4rem; } }
   @media only screen and (min-width: 992px) {
     html {
-      font-size: 14px; } }
+      font-size: 14px;
+      line-height: 1.3rem; } }
 
 h1, h2, h3, h4, h5, h6 {
   color: #212121;
@@ -2118,7 +2122,11 @@ body {
   @media only screen and (min-width: 0) {
     #toast-container {
       width: 100%;
-      bottom: 5%; } }
+      bottom: 0%; } }
+  @media only screen and (min-width: 768px) {
+    #toast-container {
+      width: 50%;
+      right: 5%; } }
   @media only screen and (min-width: 992px) {
     #toast-container {
       width: 15%;
@@ -2174,10 +2182,11 @@ ul.tabs {
     background-color: #5677fc; }
 
 .material-tooltip {
-  padding: 10px;
-  margin: 5px;
+  padding: 10px 8px;
+  margin: 20px 0px;
   font-size: 1rem;
-  background-color: #737373;
+  background-color: rgba(0, 0, 0, 0.54);
+  border-radius: 2px;
   color: #fff;
   height: 1rem;
   max-width: 200px;
