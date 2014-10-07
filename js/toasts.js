@@ -14,12 +14,12 @@ function toast(message, displayLength) {
     var newToast = createToast(message);
     container.append(newToast);
     
-    newToast.animate({"top" : "+20px"
+    newToast.animate({"top" : "+35px"
                     , "opacity": 0}, 0);
-    newToast.animate({"top" : "-20px"
+    newToast.animate({"top" : "0px"
                             , opacity: 1}, 300);
         newToast.delay(displayLength)
-        .animate({"opacity": 0}, 200)
+        .animate({"opacity": 0}, {duration: 200, easing: 'easeInOutQuint'})
         .slideUp(200, function(){
             $(this).remove();
         });
