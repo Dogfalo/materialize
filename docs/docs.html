@@ -30,7 +30,7 @@
   </div>
   <div id="tab1">
     <div class="container">
-      <h3 class="header">Typography</h3>
+      <h2 class="header">Typography</h2>
       <div class="row">
         <div class="col small-12 medium-4">
           <p>We can talk about header sizes and choices here.</p>
@@ -56,19 +56,34 @@
   </div>
   <div id="tab2" class="row">
     <div class="container">
-      <h3 class="header">Grids</h3>
+      <h2 class="header">Grids</h2>
+      <p>We are using a standard 12 column fluid responsive grid system. It comes with 3 standard screen size media queries where you can alter the columns.</p>
       <div class="row">
-        <div class="col small-12">Small-12</div>
-        <div class="col small-12 medium-3">Small-12 Medium-3</div>
-        <div class="col small-12 medium-6">Small-12 Medium-6</div>
-        <div class="col small-12 medium-3">Small-12 Medium-3</div>
+        <div class="col grid-example small-12"><p>Small-12</p></div>
+        <div class="col grid-example small-12 medium-3"><p>Small-12 Medium-3</p></div>
+        <div class="col grid-example small-12 medium-6"><p>Small-12 Medium-6</p></div>
+        <div class="col grid-example small-12 medium-3"><p>Small-12 Medium-3</p></div>
       </div>
+      <div class="row">
+        <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+        <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+        <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+        <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+      </div>
+
+      <h3 class="header">Offsets</h3>
+      <p>You can use offsets to make smaller sized columns without needing to fill in the empty space.</p>
+
+      <div class="row">
+        <div class="col grid-example small-8 small-offset-2"><p>Small-8 Small-Offset-2</p></div>
+      </div>
+
     </div>
   </div>
   <div id="tab3" class="row">
     <div class="container">
       <div class="row">
-        <h1>Toasts</h1>
+      <h2 class="header">Toasts</h2>
         <a class="button" onclick="toast('I am a toast', 2000)">Toast!</a>
       </div>
     </div>
@@ -84,19 +99,19 @@
     <div class="container">
       <div class="row">
         <div class="col small-12 medium-2 medium-offset-1">
-          <p class="z-depth-1">this is longer text so we can see the shadows at work.</p>
+          <p class="z-depth-1 box">this is longer text so we can see the shadows at work.</p>
         </div>
         <div class="col small-12 medium-2">
-          <p class="z-depth-2">this is longer text so we can see the shadows at work.</p>
+          <p class="z-depth-2 box">this is longer text so we can see the shadows at work.</p>
         </div>
         <div class="col small-12 medium-2">
-          <p class="z-depth-3">this is longer text so we can see the shadows at work.</p>
+          <p class="z-depth-3 box">this is longer text so we can see the shadows at work.</p>
         </div>
         <div class="col small-12 medium-2">
-          <p class="z-depth-4">this is longer text so we can see the shadows at work.</p>
+          <p class="z-depth-4 box">this is longer text so we can see the shadows at work.</p>
         </div>
         <div class="col small-12 medium-2">
-          <p class="z-depth-5">this is longer text so we can see the shadows at work.</p>
+          <p class="z-depth-5 box">this is longer text so we can see the shadows at work.</p>
         </div>
       </div>
     </div>

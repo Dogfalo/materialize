@@ -1699,7 +1699,7 @@ li {
     background-color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 @media only screen and (min-width: 0) {
   .container {
@@ -2190,13 +2190,23 @@ ul.tabs {
 body {
   background-color: #f9f9f9; }
 
-h3.header {
+.header {
   color: #5677fc; }
 
-p {
+p.box {
   padding: 20px; }
+
+p {
+  padding: 0; }
 
 .preview {
   background-color: #FFF;
   border: 1px solid #eee;
   padding: 20px 40px; }
+
+.col.grid-example {
+  background-color: #FFF;
+  border: 1px solid #eee;
+  margin: 10px 0; }
+  .col.grid-example p {
+    margin: 10px; }
