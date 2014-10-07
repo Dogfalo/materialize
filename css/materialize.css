@@ -1715,8 +1715,11 @@ li {
 @media only screen and (min-width: 992px) {
   .container {
     width: 70%; } }
-.row {
+.container .row {
   margin: 0 -0.5em; }
+
+.row {
+  margin: 0 auto; }
   .row:after {
     content: "";
     display: table;
