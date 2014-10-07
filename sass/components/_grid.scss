@@ -18,9 +18,12 @@
     width: 70%;
   }
 }
+.container .row {
+  margin: 0 (-1 * $gutter-width / 2);
+}
 
 .row {
-  margin: 0 (-1 * $gutter-width / 2);
+  margin: 0 auto;
 
   // Clear floating children
   &:after {
