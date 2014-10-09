@@ -24,6 +24,7 @@
       <ul class="tabs">
         <li class="tab col small-2"><a href="#tab1">Toast</a></li>
         <li class="tab col small-2"><a href="#tab2">Tooltips</a></li>
+        <li class="tab col small-2"><a href="#tab3">Dropdowns</a></li>
       </ul>
     </div>
   </div>
@@ -53,9 +54,26 @@
       <br>
       Then add this to your jQuery file
       <code class="language-javascript col small-12">
-$(document).ready(function(){
-  $('.tooltipped').tooltip();
-});
+        $(document).ready(function(){
+          $('.tooltipped').tooltip();
+        });
+      </code>
+    </div>
+  </div>
+  
+  <div id="tab3" class="container">
+    <div class="row">
+      <h2 class="header">Dropdowns</h2>
+      <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+      </ul>
+      <code class="language-javascript col small-12">
+        $(document).ready(function(){
+          $('.dropdown-button').dropdown();
+        });
       </code>
     </div>
   </div>
@@ -67,9 +85,11 @@ $(document).ready(function(){
   <script src="js/tooltip.js"></script>
   <script src="js/tabs.js"></script>
   <script src="js/prism.js"></script>
+  <script src="js/dropdown.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('.tooltipped').tooltip();
+      $('.dropdown-button').dropdown();
     });
   </script>
 </body>
