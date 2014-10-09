@@ -2271,3 +2271,17 @@ p {
   margin: 10px 0; }
   .col.grid-example p {
     margin: 10px; }
+
+.red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown, .grey, .blue-gray {
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 40px;
+  font-size: 12px;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.dynamic-color .col {
+  margin-bottom: 15px; }
