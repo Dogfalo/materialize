@@ -2,15 +2,21 @@ $border-color: #bdbdbd;
 $active-color: #03a9f4;
 
 .material-input {
+  background-color: transparent;
 	border: none;
 	border-bottom: 1px solid $border-color;
 	outline: none;
-	padding-bottom: 5px;
+  height: 3em;
+  line-height: 2em;
 	width: 100%;
 	font-size: 1em;
+  padding: 0;
+  @include box-sizing(content-box);
+  @include transition(.3s);
 }
 
 .material-input:focus {
-	border-bottom: 2px solid $active-color; 
+	border-bottom: 1px solid $active-color; 
+  @include box-shadow(0 1px 0 0 $active-color);
 }
 
