@@ -1,0 +1,77 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materialize - Documentation</title>
+
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand-logo">Materialize</a>
+      <ul class="right">
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row white">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab col small-2"><a href="#tab1">Toast</a></li>
+        <li class="tab col small-2"><a href="#tab2">Tooltips</a></li>
+        <div class="indicator"></div>
+      </ul>
+    </div>
+  </div>
+  <div id="tab1" class="container">
+    <div class="row">
+    <h2 class="header">Toasts</h2>
+      <a class="button" onclick="toast('I am a toast', 2000)">Toast!</a>
+    </div>
+    <div class="row">
+      Add this as an onclick event
+      <br>
+      <code class="language-markup col small-12">
+  &lt;a class="button" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
+      </code>
+    </div>
+  </div>
+  <div id="tab2" class="container">
+    <div class="row">
+      <h2 class="header">Tooltips</h2>
+      Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.
+      <br>
+      <a class="button tooltipped" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP</a>
+      <br>
+    </div>
+    <div class="row">
+      Add the Tooltipped class to your element
+      <br>
+      Then add this to your jQuery file
+      <code class="language-javascript col small-12">
+$(document).ready(function(){
+  $('.tooltipped').tooltip();
+});
+      </code>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/toasts.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/prism.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.tooltipped').tooltip();
+    });
+  </script>
+</body>
+</html>
+

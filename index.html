@@ -3,18 +3,37 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Materialize - Documentation</title>
+
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/prism.css" rel="stylesheet" />
 </head>
+
 <body>
   <nav>
     <div class="container">
-      <a href="#" class="brand-logo">Materialize</a>
+      <a href="index.html" class="brand-logo">Materialize</a>
       <ul class="right">
-        <li><a href="docs/docs.html">Docs</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
       </ul>
     </div>
   </nav>
-    <a href="docs/docs.html">Documentation</a>
+  <div class="container">
+    <h1 class="header">Materialize</h1>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/toasts.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/prism.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.tooltipped').tooltip();
+    });
+  </script>
 </body>
 </html>
 
