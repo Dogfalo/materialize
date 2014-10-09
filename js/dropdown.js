@@ -4,14 +4,16 @@
     
   
     var activates = $("#"+ origin.attr('data-activates'));
+    console.log(origin.offset());
     var topMargin = 5;
     activates.hide(0);
-    activates.css('width', origin.innerWidth());
-    activates.css('top', origin.offset().top + topMargin);
-    activates.css('left', origin.offset().left);
+
     
     // Click handler for list container
     origin.on('click', function(e){ // Mouse over
+      activates.css('width', origin.innerWidth());
+      activates.css('top', origin.offset().top + topMargin);
+      activates.css('left', origin.offset().left);
       e.stopPropagation();
       activates.show(100);
     });
