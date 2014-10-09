@@ -360,7 +360,7 @@ ul {
 li {
   list-style-type: none; }
 
-.z-depth-1, nav, .toast, .button.raise, .button.floating {
+.z-depth-1, nav, .toast, .button.raise, .button.floating, .dropdown-content {
   -webkit-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5); }
@@ -2298,3 +2298,7 @@ ul.tabs {
       width: 56px;
       height: 56px;
       line-height: 56px; }
+
+.dropdown-content {
+  position: absolute;
+  background-color: #FFFFFF; }
