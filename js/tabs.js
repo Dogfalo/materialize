@@ -2,7 +2,6 @@ $('ul.tabs').each(function(){
   // For each set of tabs, we want to keep track of
   // which tab is active and it's associated content
   var $active, $content, $links = $(this).find('li.tab a');
-  var $indicator = $(this).find('.indicator');
   var $tabs_width = $(this).width();
   var $tab_width = $(this).find('li').first().outerWidth();
   var $index = 0;
@@ -15,7 +14,11 @@ $('ul.tabs').each(function(){
 
   $content = $($active[0].hash);
   
-  // set indicator width to tab width
+
+
+  // append indicator then set indicator width to tab width
+  $(this).append('<div class="indicator"></div>');
+  var $indicator = $('.indicator');
   $indicator.css({"right": $tabs_width - $tab_width});
   $indicator.css({"left": $index * $tab_width});
 
