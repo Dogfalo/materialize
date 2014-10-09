@@ -1,6 +1,3 @@
-function message() {
-    toast('hi', 2000);
-}
 function toast(message, displayLength) {
     if ($('#toast-container').length == 0) {
         // create notification container
@@ -17,9 +14,9 @@ function toast(message, displayLength) {
     newToast.animate({"top" : "+35px"
                     , "opacity": 0}, 0);
     newToast.animate({"top" : "0px"
-                            , opacity: 1}, 300);
+                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
         newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 200, easing: 'easeInOutQuint'})
+        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
         .slideUp(200, function(){
             $(this).remove();
         });

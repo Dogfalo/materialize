@@ -2,13 +2,13 @@ $border-color: #bdbdbd;
 
 .material-input {
   background-color: transparent;
-	border: none;
-	border-bottom: 1px solid $border-color;
-	outline: none;
+  border: none;
+  border-bottom: 1px solid $border-color;
+  outline: none;
   height: 3em;
   line-height: 2em;
-	width: 100%;
-	font-size: 1em;
+  width: 100%;
+  font-size: 1em;
   padding: 0;
   @include box-shadow(none);
   @include box-sizing(content-box);
@@ -16,7 +16,7 @@ $border-color: #bdbdbd;
 }
 
 .material-input:focus {
-	border-bottom: 1px solid $cyan; 
+  border-bottom: 1px solid $cyan; 
   @include box-shadow(0 1px 0 0 $cyan);
 }
 
