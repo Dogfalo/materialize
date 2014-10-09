@@ -2155,10 +2155,10 @@ body {
   transition: 0.3s; }
 
 .material-input:focus {
-  border-bottom: 1px solid #03a9f4;
-  -webkit-box-shadow: 0 1px 0 0 #03a9f4;
-  -moz-box-shadow: 0 1px 0 0 #03a9f4;
-  box-shadow: 0 1px 0 0 #03a9f4; }
+  border-bottom: 1px solid #00bcd4;
+  -webkit-box-shadow: 0 1px 0 0 #00bcd4;
+  -moz-box-shadow: 0 1px 0 0 #00bcd4;
+  box-shadow: 0 1px 0 0 #00bcd4; }
 
 #toast-container {
   display: block;

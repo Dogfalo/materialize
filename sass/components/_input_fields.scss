@@ -1,5 +1,4 @@
 $border-color: #bdbdbd;
-$active-color: #03a9f4;
 
 .material-input {
   background-color: transparent;
@@ -16,7 +15,7 @@ $active-color: #03a9f4;
 }
 
 .material-input:focus {
-	border-bottom: 1px solid $active-color; 
-  @include box-shadow(0 1px 0 0 $active-color);
+	border-bottom: 1px solid $cyan; 
+  @include box-shadow(0 1px 0 0 $cyan);
 }
 
