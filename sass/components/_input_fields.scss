@@ -10,6 +10,7 @@ $border-color: #bdbdbd;
   width: 100%;
   font-size: 1em;
   padding: 0;
+  @include box-shadow(none);
   @include box-sizing(content-box);
   @include transition(.3s);
 }
