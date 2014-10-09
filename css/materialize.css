@@ -360,17 +360,17 @@ ul {
 li {
   list-style-type: none; }
 
-.z-depth-1, nav, .toast {
+.z-depth-1, nav, .toast, .button.raise, .button.floating {
   -webkit-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5); }
 
-.z-depth-2 {
+.z-depth-2, .button.floating:hover {
   -webkit-box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.45), 0px 5px 10px -2px rgba(0, 0, 0, 0.45);
   -moz-box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.45), 0px 5px 10px -2px rgba(0, 0, 0, 0.45);
   box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.45), 0px 5px 10px -2px rgba(0, 0, 0, 0.45); }
 
-.z-depth-3 {
+.z-depth-3, .button.raise:hover {
   -webkit-box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35);
   box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35); }
@@ -2244,3 +2244,57 @@ ul.tabs {
   position: absolute;
   text-align: center;
   vertical-align: middle; }
+
+.button {
+  display: block;
+  height: 36px;
+  width: 176px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 36px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box; }
+  .button.raise {
+    background-color: #5677fc;
+    color: #FFFFFF;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+    .button.raise.disabled {
+      box-shadow: none;
+      color: #c6c6c6;
+      background-color: #adadad; }
+  .button.flat {
+    box-shadow: none;
+    background-color: transparent;
+    color: #343434; }
+    .button.flat.disabled {
+      color: #b3b3b3;
+      background-color: #e6e6e6; }
+  .button.floating {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    background-color: #5677fc;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-clip: padding-box;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+    .button.floating.big {
+      width: 56px;
+      height: 56px;
+      line-height: 56px; }

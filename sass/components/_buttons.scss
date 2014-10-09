@@ -1,0 +1,63 @@
+.button {
+  display: block;
+  height: 36px;
+  width: 176px;
+  padding: 0 20px; 
+  text-decoration:none;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 36px;
+  @include border-radius(2px);
+
+  &.raise {
+    background-color: $blue;
+    color: #FFFFFF;
+    @extend .z-depth-1; 
+    @include transition(.3s);
+
+    &:hover {
+      @extend .z-depth-3;
+    }
+
+    &.disabled {
+      box-shadow: none;
+      color: lighten(#606060, 40%);
+      background-color: lighten(#606060,30%);
+    }
+  }
+
+  &.flat {
+    box-shadow: none;
+    background-color: transparent;
+    color: #343434;
+
+    &.disabled {
+      color: lighten(#999, 10%);
+      background-color: lighten(#999, 30%);
+    }
+  }
+
+  &.floating {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    background-color: $blue;
+    @include border-radius(50%);
+    @extend .z-depth-1;  
+    @include transition(.3s);
+    
+    &:hover {
+      @extend .z-depth-2;
+    }
+
+    &.big {
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+    }
+  }
+
+}
