@@ -1947,7 +1947,8 @@ nav {
         background-color: #3d63fc; }
     nav ul a {
       font-size: 14px;
-      color: #fff; }
+      color: #fff;
+      display: block; }
     nav ul.left {
       float: left; }
     nav ul.right {
@@ -2210,6 +2211,9 @@ ul.tabs {
     height: 2px;
     background-color: #5677fc; }
 
+@media only screen and (min-width: 0) {
+  ul.tabs li.tab {
+    padding: 0; } }
 .material-tooltip {
   padding: 10px 8px;
   margin: 20px 0px;

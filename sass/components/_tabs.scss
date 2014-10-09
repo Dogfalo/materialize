@@ -29,3 +29,7 @@ ul.tabs {
     background-color: $blue;
   }
 }
+
+@media #{$small-and-up} {
+  ul.tabs li.tab { padding: 0; }
+}
