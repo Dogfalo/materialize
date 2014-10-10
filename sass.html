@@ -267,8 +267,75 @@
     </div>
   </div>
   <div id="tab2" class="container">
-    wip
+    <h2 class="header">Prefixer</h2>
+    One major goal of this framework is to be as adaptable as possible which includes cross browser compatibility. We have adapted a prefixer script to SASS which will automatically add all browser prefixes for certain CSS properties.
+
+    <br><br>
+    For Example: Using this SASS mixin
+    <div class="row">
+      <code class="language-sass col small-12">
+  @include transition(.3s);
+      </code>
+    </div>
+    Will Output This
+    <div class="row">
+      <code class="language-css col small-12">
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+      </code>
+    </div>
+    Here is the full list of mixins
+    <div class="row">
+      <code class="language-css col small-12">
+  animation($args)
+  animation-delay($delay)
+  animation-direction($direction)
+  animation-duration($duration)
+  animation-fill-mode($mode)
+  animation-iteration-count($count)
+  animation-name($name)
+  animation-play-state($state)
+  animation-timing-function($function)
+  background-size($args)
+  border-radius($args)
+  box-shadow($args)
+      inner-shadow($args) 
+  box-sizing($args)
+      border-box() 
+      content-box() 
+  columns($args)
+      column-count($count)
+      column-gap($gap)
+      column-rule($args)
+      column-width($width)
+  gradient($default,$start,$stop) 
+      linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+      linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+  opacity($factor)
+  transform($args)
+      transform-origin($args)
+      transform-style($style)
+      rotate($deg)
+      scale($factor)
+      translate($x,$y)
+      translate3d($x,$y,$z)
+      translateHardware($x,$y) 
+  text-shadow($args)
+  transition($args)
+      transition-delay($delay)
+      transition-duration($duration)
+      transition-property($property)
+      transition-timing-function($function)
+      </code>
+    </div>
+
+
+
   </div>
+
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
   </script>
