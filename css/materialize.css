@@ -1978,6 +1978,7 @@ a {
   text-decoration: none; }
 
 html {
+  line-height: 1.5;
   font-family: "Roboto", "Open Sans", serif;
   font-weight: 400;
   color: #212121; }
