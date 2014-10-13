@@ -5,17 +5,14 @@ a {
 html{
     @media only screen and (min-width: 0) {
         font-size: 14px;
-        line-height: 130%;
     }
     
     @media only screen and (min-width: $medium-screen) {
-        font-size: 14px;
-        line-height: 130%;
+        font-size: 14.5px;
     }
     
     @media only screen and (min-width: $large-screen) {
         font-size: 15px;
-        line-height: 120%;
     }
     
     font-family: "Roboto", "Open Sans", serif;
@@ -58,6 +55,9 @@ small { font-size: 75%; }
       		@media only screen and (min-width : 480 + ($i * $interval-size)) {
       		font-size: 1rem * (1 + (.05 * $i));
   		}
+        @media only screen and (min-width : 0 + ($i * $interval-size)) {
+          line-height: 1.4rem * (1 + (.05 * $i));
+        }
   		$i: $i + 1;
   	}
 }
