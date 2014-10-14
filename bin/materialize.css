@@ -2197,7 +2197,7 @@ small {
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
   margin-bottom: 30px; }
-  .card-footer .card-footer h1, .card-footer .card-footer h2, .card-footer .card-footer h3, .card-footer .card-footer p {
+  .card-footer h1, .card-footer h2, .card-footer h3, .card-footer p {
     color: black; }
 
 .card-action {
