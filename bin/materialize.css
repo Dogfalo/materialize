@@ -1699,7 +1699,7 @@ li {
     background-color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .container {
   padding: 0 1em;
@@ -1933,8 +1933,11 @@ nav {
     float: left;
     display: inline-block;
     font-size: 23px; }
+    nav .brand-logo.right {
+      float: right; }
   nav ul {
-    margin: 0; }
+    margin: 0;
+    float: right; }
     nav ul li {
       float: left;
       padding: 0 10px;
@@ -1951,8 +1954,6 @@ nav {
       display: block; }
     nav ul.left {
       float: left; }
-    nav ul.right {
-      float: right; }
 
 @media only screen and (min-width: 0) {
   nav {
