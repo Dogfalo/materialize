@@ -2229,15 +2229,15 @@ body {
   position: fixed; }
   @media only screen and (min-width: 0) {
     #toast-container {
-      width: 100%;
+      min-width: 100%;
       bottom: 0%; } }
   @media only screen and (min-width: 768px) {
     #toast-container {
-      width: 50%;
+      min-width: 50%;
       right: 5%; } }
   @media only screen and (min-width: 992px) {
     #toast-container {
-      width: 15%;
+      min-width: 8%;
       top: 5%;
       right: 5%; } }
 
@@ -2247,7 +2247,7 @@ body {
   width: 100%;
   height: 40px;
   background-color: #323232;
-  padding: 10px 4rem;
+  padding: 10px 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2255,13 +2255,13 @@ body {
   display: table;
   top: 0px; }
   .toast span {
-    margin: auto 0;
     padding: 0px;
     font-size: 1.1rem;
     font-weight: 300;
     display: table-cell;
     color: #FFF;
-    vertical-align: middle; }
+    vertical-align: middle;
+    text-align: center; }
 
 ul.tabs {
   position: relative;
