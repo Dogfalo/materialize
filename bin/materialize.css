@@ -551,7 +551,7 @@ li {
   content: '\1F4F7'; }
 
 .entypo.megaphone:before {
-  content: '1F4E3'; }
+  content: '\1F4E3'; }
 
 .entypo.moon:before {
   content: '\0045'; }
@@ -2170,27 +2170,44 @@ small {
   .flow-text {
     line-height: 2.8rem; } }
 
-body {
-  background-color: #ddd; }
-
 .card {
-  background-color: #03a9f4;
+  background-color: #00bcd4;
   border-radius: 2px;
+  margin-top: 10px;
   width: 80%; }
   .card h1 {
-    font-size: 1.71rem; }
+    font-size: 1.71rem;
+    color: white; }
   .card h2 {
-    font-size: 1.14rem; }
+    font-size: 1.14rem;
+    color: white; }
   .card h3 {
-    font-size: 1rem; }
+    font-size: 1rem;
+    color: white; }
+  .card p {
+    font-size: 0.8rem;
+    color: white; }
 
 .card-content {
-  padding: 16px; }
+  padding: 1em; }
 
 .card-footer {
-  border-top: 2px solid rgba(0, 0, 0, 0.12);
-  background-color: #eceff1;
-  padding: 2px 16px 8px 16px; }
+  background-color: #fafafa;
+  padding: 2px 1em 8px 1em;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  margin-bottom: 30px; }
+  .card-footer h1, .card-footer h2, .card-footer h3, .card-footer p {
+    color: black; }
+
+.card-action {
+  margin-right: 20%; }
+
+.card-footer a {
+  color: #ffab2e; }
+
+.card-footer a:hover {
+  color: #ffcc35; }
 
 .shadow {
   -moz-box-shadow: 1px 1px 1px 1px #eee;
@@ -2366,3 +2383,62 @@ ul.tabs {
 .dropdown-content {
   position: absolute;
   background-color: #FFFFFF; }
+
+body {
+  background-color: #fcfcfc; }
+
+.header {
+  color: #5677fc; }
+
+p.box {
+  padding: 20px; }
+
+p {
+  padding: 0; }
+
+.preview {
+  background-color: #FFF;
+  border: 1px solid #eee;
+  padding: 20px 40px; }
+
+.row {
+  margin-bottom: 20px; }
+
+.col.grid-example {
+  background-color: #FFF;
+  border: 1px solid #eee;
+  margin: 10px 0; }
+  .col.grid-example p {
+    margin: 10px; }
+
+.red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown, .grey, .blue-gray {
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 40px;
+  font-size: 12px;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.dynamic-color .col {
+  margin-bottom: 15px; }
+
+.center {
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 auto; }
+
+.light {
+  font-weight: 300; }
+
+#card-2 {
+  background-image: url(../images/sample-1.jpg);
+  background-size: cover; }
+
+.icon-container .entypo {
+  font-size: 3em; }
+
+.icon-container .entypo-social {
+  font-size: 3em; }

@@ -23,12 +23,10 @@
       });
     }); 
 
-
     // PLugin initialization
     $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown();
     $('ul.tabs').tabs();
-   
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
