@@ -1995,7 +1995,7 @@ html {
 h1, h2, h3, h4, h5, h6 {
   color: #212121;
   font-family: "Roboto", "Open Sans", serif;
-  font-weight: 500; }
+  font-weight: 400; }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: inherit; }
@@ -2202,7 +2202,6 @@ body {
   border-bottom: 1px solid #bdbdbd;
   outline: none;
   height: 3em;
-  line-height: 2em;
   width: 100%;
   font-size: 1em;
   padding: 0;
@@ -2297,7 +2296,7 @@ ul.tabs {
   padding: 10px 8px;
   margin: 20px 0px;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.54);
+  background-color: #323232;
   border-radius: 2px;
   color: #fff;
   height: 1rem;

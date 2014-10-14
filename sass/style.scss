@@ -1,0 +1,59 @@
+body {
+  background-color: #fcfcfc;
+}
+
+.header {
+  color: $blue;
+}
+
+p.box {
+  padding: 20px;
+}
+p {
+  padding: 0;
+}
+
+.preview {
+  background-color: #FFF;
+  border: 1px solid #eee;
+  padding: 20px 40px;
+}
+
+// Grid doc styles
+.row {
+  margin-bottom: 20px;
+}
+.col.grid-example {
+
+  background-color: #FFF;
+  border: 1px solid #eee;
+  margin: 10px 0;
+
+  p {
+    margin: 10px;
+  }
+}
+
+// Color Wheel
+.red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-gray {
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 40px;
+  font-size: 12px;
+  display: block;
+  @include box-sizing(border-box);
+}
+.dynamic-color .col {
+  margin-bottom: 15px;
+}
+
+h3, h4 {
+font-weight: 300;
+}
+
+.center {
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 auto;
+}

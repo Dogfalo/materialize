@@ -1,0 +1,111 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materialize - Documentation</title>
+
+  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand-logo">Materialize</a>
+      <ul class="right">
+        <li><a href="sass.html">SASS</a></li>
+        <li><a href="components.html">Components</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row white">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab col small-2"><a href="#tab1">Toast</a></li>
+        <li class="tab col small-2"><a href="#tab2">Tooltips</a></li>
+        <li class="tab col small-2"><a href="#tab3">Dropdowns</a></li>
+      </ul>
+    </div>
+  </div>
+  
+<!--  Toasts Section  -->
+  <div id="tab1" class="container">
+    <div class="row">
+    <h2 class="header">Toasts</h2>
+      Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also place and sized responsively, try it out by clicking the button below on different device sizes.
+      <br>
+      <a onclick="toast('I am a toast', 2000)">Toast!</a>
+    </div>
+    <div class="row">
+      To do this, call the toast() function programatically in JavaScript
+      <code class="language-javascript col small-12">
+  toast('I am a toast!', 3000) // 3000 is the duration of the toast
+      </code>
+      <br>
+      One way to add this into your application is to add this as an onclick event to a button
+      <code class="language-markup col small-12">
+  &lt;a class="button" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
+      </code>
+    </div>
+  </div>
+  
+<!--  Tooltip Section  -->
+  <div id="tab2" class="container">
+    <div class="row">
+      <h2 class="header">Tooltips</h2>
+      Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.
+      <br>
+      <a class="tooltipped" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP</a>
+      <br>
+    </div>
+    <div class="row">
+      Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
+      <code class="language-markup col small-12">
+        &lt;a class="tooltipped" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP&lt;/a>
+      </code>
+      <br>
+      Then add this to your jQuery file
+      <code class="language-javascript col small-12">
+        $(document).ready(function(){
+          $('.tooltipped').tooltip();
+        });
+      </code>
+    </div>
+  </div>
+  
+<!--  Dropdown Section  -->
+  <div id="tab3" class="container">
+    <div class="row">
+      <h2 class="header">Dropdowns</h2>
+      <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+      </ul>
+      <code class="language-javascript col small-12">
+        $(document).ready(function(){
+          $('.dropdown-button').dropdown();
+        });
+      </code>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/toasts.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.tooltipped').tooltip();
+      $('.dropdown-button').dropdown();
+    });
+  </script>
+</body>
+</html>
+
