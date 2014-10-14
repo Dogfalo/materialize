@@ -47,7 +47,6 @@ p {
 .dynamic-color .col {
   margin-bottom: 15px;
 }
-
 .center {
   text-align: center;
   vertical-align: middle;
@@ -56,4 +55,9 @@ p {
 
 .light {
   font-weight: 300; 
+}
+
+#card-2 {
+	background-image: url(../images/sample-1.jpg);
+	background-size: cover;
 }

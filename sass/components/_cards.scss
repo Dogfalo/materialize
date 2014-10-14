@@ -1,24 +1,31 @@
-body {
-  background-color: #ddd;
-}
-
-$default-color: #03a9f4;
-$gutter-width: 16px;
+$default-color: #00bcd4; 
 $card-padding: 8px;
-$footer-color: #eceff1;
+$footer-color: #fafafa;
+$font-color: #fff;
+$footer-font-color: #000;
+$card-link-color: #ffab2e;
+$card-link-hover: #ffcc35;
 
 .card {
   background-color: $default-color;
   border-radius: 2px;
+	margin-top: 10px;
   h1 {
     font-size: 1.71rem;
+		color: $font-color;
   }
   h2 {
     font-size: 1.14rem;
+		color: $font-color;
   }
   h3 {
     font-size: 1rem;
+		color: $font-color;
   }
+	p {
+		font-size: 0.8rem;
+		color: $font-color;
+	}
 	width: 80%;
 }
 
@@ -27,11 +34,29 @@ $footer-color: #eceff1;
 }
 
 .card-footer {
-  border-top: 2px solid rgba(0, 0, 0, 0.12);
+//  border-top: 1px solid rgba(0, 0, 0, 0.12);
   background-color: $footer-color;
 	padding: 2px $gutter-width $card-padding $gutter-width;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	margin-bottom:30px;
+	.card-footer h1, .card-footer h2, .card-footer h3, .card-footer p {
+		color: $footer-font-color;
+	}
 }
-	
+
+.card-action {
+	margin-right:20%;
+}
+
+.card-footer a {
+	color: $card-link-color;
+}
+
+.card-footer a:hover {
+	color: $card-link-hover;
+}
+
 .shadow {
   -moz-box-shadow: 1px 1px 1px 1px #eee;
   -webkit-box-shadow: 1px 1px 1px 1px #eee;
