@@ -1,27 +1,7 @@
 @charset "UTF-8";
 
-// Mixins
-@import "components/prefixer";
-@import "components/mixins";
-
-// Reset
-@import "components/normalize";
-
-// components
-@import "components/global";
-@import "components/entypo";
-@import "components/color";
-@import "components/grid";
-@import "components/navbar";
-@import "components/roboto";
-@import "components/typography";
-@import "components/cards";
-@import "components/input_fields";
-@import "components/toast";
-@import "components/tabs";
-@import "components/tooltip";
-@import "components/buttons";
-@import "components/dropdown";
+// import materialize
+@import "materialize";
 
 // Custom style
 @import "style.scss";
