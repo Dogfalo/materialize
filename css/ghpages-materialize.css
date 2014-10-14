@@ -551,7 +551,7 @@ li {
   content: '\1F4F7'; }
 
 .entypo.megaphone:before {
-  content: '1F4E3'; }
+  content: '\1F4E3'; }
 
 .entypo.moon:before {
   content: '\0045'; }
@@ -1699,7 +1699,7 @@ li {
     background-color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .container {
   padding: 0 1em;
@@ -2415,3 +2415,9 @@ p {
 
 .light {
   font-weight: 300; }
+
+.icon-container .entypo {
+  font-size: 3em; }
+
+.icon-container .entypo-social {
+  font-size: 3em; }
