@@ -27,10 +27,10 @@ $num-cols: 12;
 // Z-levels
 
 .z-depth-1{
-    @include box-shadow-2(0px 1px 5px -2px rgba(0, 0, 0, 0.5), 0px 2.5px 5px -2px rgba(0, 0, 0, 0.5));
+    @include box-shadow-2(0px 1px 5px -2px rgba(0, 0, 0, 0.4), 0px 1.5px 5px -2px rgba(0, 0, 0, 0.4));
 }
 .z-depth-2{
-    @include box-shadow-2(0px 3px 10px -2px rgba(0, 0, 0, 0.45), 0px 5px 10px -2px rgba(0, 0, 0, 0.45));
+    @include box-shadow-2(0px 3px 10px -2px rgba(0, 0, 0, 0.4), 0px 5px 10px -2px rgba(0, 0, 0, 0.4));
 }
 .z-depth-3{
     @include box-shadow-2(0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35));
