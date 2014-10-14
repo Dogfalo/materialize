@@ -1,0 +1,16 @@
+.card-action {
+	margin-right:20%;
+}
+
+.card-footer a {
+	color: #ffab2e;
+}
+
+.card-footer a:hover {
+	color: #ffcc35;
+}
+
+#card-2 {
+	background-image: url(../images/sample-1.jpg);
+	background-size: cover;
+}

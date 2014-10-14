@@ -2108,27 +2108,36 @@ small {
   .flow-text {
     font-size: 2rem; } }
 
-body {
-  background-color: #ddd; }
-
 .card {
-  background-color: #03a9f4;
+  background-color: #00bcd4;
   border-radius: 2px;
+	margin-top: 10px;
   width: 80%; }
   .card h1 {
-    font-size: 1.71rem; }
+    font-size: 1.71rem; 
+		color: #fff	}
   .card h2 {
-    font-size: 1.14rem; }
+    font-size: 1.14rem;
+		color: #fff	}
   .card h3 {
-    font-size: 1rem; }
+    font-size: 1rem;
+		color: #fff	}
+	.card p {
+		font-size: 0.8rem;
+		color: #fff	}
 
 .card-content {
   padding: 16px; }
 
 .card-footer {
-  border-top: 2px solid rgba(0, 0, 0, 0.12);
-  background-color: #eceff1;
+/*  border-top: 1px solid rgba(0, 0, 0, 0.12);*/
+  background-color: #fafafa ;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	margin-bottom: 20px;
   padding: 2px 16px 8px 16px; }
+	.card-footer h1, .card-footer h2, .card-footer h3, .card-footer p {
+		color: #000;	}
 
 .shadow {
   -moz-box-shadow: 1px 1px 1px 1px #eee;

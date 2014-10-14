@@ -6,6 +6,7 @@
 
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="css/prism.css" rel="stylesheet" />
+	<link href="css/components.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
@@ -27,6 +28,7 @@
         <li class="tab col small-2"><a href="#tab3">Shadows</a></li>
         <li class="tab col small-2"><a href="#tab4">Forms</a></li>
         <li class="tab col small-2"><a href="#tab5">Buttons</a></li>
+				<li class="tab col small-2"><a href="#tab6">Cards</a></li>
       </ul>
     </div>
   </div>
@@ -195,6 +197,66 @@
       </code>
     </div>
   </div>
+	
+	<div id="tab6" class="container">
+		<div class="row">
+			<h2 class="header">Cards</h2>
+			<p>Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.</p>
+			
+			<div class="col small-12 medium-6">
+				<div class="card shadow">
+					<div class="card-content">
+						<h1>Card Title</h1>
+						<p>This is sample content</p>
+					</div>	
+					<div class="card-footer">
+						<p>Footer</p>
+						<p>Sample content</p>
+						<p>Sample content</p>
+						<a class='card-action' href='#'>This is a link</a>
+						<a class='card-action' href='#'>This is a link</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col small-12 medium-6">
+				<div id='card-2' class="card shadow">
+					<div class="card-content">
+						<h1>Card Title</h1>
+						<p>This is sample content</p>
+					</div>	
+					<div class="card-footer">
+						<p>Footer</p>
+						<p>Sample content</p>
+						<p>Sample content</p>
+						<a class='card-action' href='#'>This is a link</a>
+						<a class='card-action' href='#'>This is a link</a>
+					</div>
+				</div>
+			</div>
+
+    <div class="row">
+      <code class="language-markup col small-12">
+	&lt;div class="col small-12 medium-6">
+		&lt;div class="card shadow">
+			&lt;div class="card-content">
+				&lt;h1>Card Title&lt;/h1>
+				&lt;p>This is sample content&lt;/p>
+			&lt;/div>	
+			&lt;div class="card-footer">
+				&lt;p>Footer&lt;/p>
+				&lt;p>Sample content&lt;/p>
+				&lt;p>Sample content&lt;/p>
+				&lt;a class='card-action' href='#'>This is a link&lt;/a>
+				&lt;a class='card-action' href='#'>This is a link&lt;/a>
+			&lt;/div>
+		&lt;/div>
+	&lt;/div>
+      </code>
+    </div>
+			
+		</div>
+	</div>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
   </script>
