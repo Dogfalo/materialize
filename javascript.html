@@ -25,6 +25,7 @@
         <li class="tab col small-2"><a href="#tab1">Toast</a></li>
         <li class="tab col small-2"><a href="#tab2">Tooltips</a></li>
         <li class="tab col small-2"><a href="#tab3">Dropdowns</a></li>
+        <li class="tab col small-2"><a href="#tab4">Tabs</a></li>
       </ul>
     </div>
   </div>
@@ -92,20 +93,62 @@
     </div>
   </div>
 
+<!--  Tabs Section  -->
+  <div id="tab4" class="container">
+    <div class="row">
+      <h2 class="header">Tabs</h2>
+      The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.
+
+
+      <div class="col small-12">
+        <ul class="tabs">
+          <li class="tab col small-2"><a href="#test1">Test 1</a></li>
+          <li class="tab col small-2"><a href="#test2">Test 2</a></li>
+          <li class="tab col small-2"><a href="#test3">Test 3</a></li>
+          <li class="tab col small-2"><a href="#test4">Test 4</a></li>
+        </ul>
+      </div>
+      <div id="test1" class="col small-12">Test 1</div>
+      <div id="test2" class="col small-12">Test 2</div>
+      <div id="test3" class="col small-12">Test 3</div>
+      <div id="test4" class="col small-12">Test 4</div>
+    </div>
+    <div class="row">
+      <h4 class="header">Tabs HTML Structure</h4>
+      <code class="language-markup col small-12">
+        &lt;div class="col small-12">
+          &lt;ul class="tabs">
+            &lt;li class="tab col small-2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+            &lt;li class="tab col small-2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
+            &lt;li class="tab col small-2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
+            &lt;li class="tab col small-2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/div>
+        &lt;div id="test1" class="col small-12">Test 1&lt;/div>
+        &lt;div id="test2" class="col small-12">Test 2&lt;/div>
+        &lt;div id="test3" class="col small-12">Test 3&lt;/div>
+        &lt;div id="test4" class="col small-12">Test 4&lt;/div>
+      </code>
+    </div>
+    <div class="row">
+      <h4 class="header">jQuery Plugin Initialization</h4>
+      <code class="language-javascript col small-12">
+        $(document).ready(function(){
+          $('ul.tabs').tabs();
+        });
+      </code>
+    </div>
+  </div>
+
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
   </script>
   <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/prism.js"></script>
   <script src="js/toasts.js"></script>
   <script src="js/tooltip.js"></script>
   <script src="js/tabs.js"></script>
-  <script src="js/prism.js"></script>
   <script src="js/dropdown.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.tooltipped').tooltip();
-      $('.dropdown-button').dropdown();
-    });
-  </script>
+  <script src="js/init.js"></script>
 </body>
 </html>
 
