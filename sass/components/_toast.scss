@@ -2,15 +2,15 @@
     display:block;
     position: fixed;
     @media only screen and (min-width: 0) {
-        width: 100%;
+        min-width: 100%;
         bottom: 0%;    
     }
     @media only screen and (min-width: $medium-screen) {
-        width: 50%;
+        min-width: 50%;
         right: 5%;
     }
     @media only screen and (min-width: $large-screen) {
-        width: 15%;
+        min-width: 8%;
         top: 5%;
         right: 5%;
     }
@@ -22,19 +22,19 @@
     width: 100%;
     height: 40px;
     background-color: #323232;
-    padding: 10px 4rem;
+    padding: 10px 15px;
     @include border-box();
     border-radius: 2px;
     display: table;
     top: 0px;
     
     span {
-        margin: auto 0;
         padding: 0px;
         font-size: 1.1rem;
         font-weight: 300;
         display: table-cell;
         color: #FFF;
         vertical-align: middle;
+        text-align: center;
     }
 }

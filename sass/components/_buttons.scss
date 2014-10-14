@@ -10,6 +10,7 @@
   text-transform: uppercase;
   line-height: 36px;
   @include border-radius(2px);
+  letter-spacing: .8px;
 
   &.raise {
     background-color: $blue;

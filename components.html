@@ -1,0 +1,275 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materialize - Documentation</title>
+
+  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand-logo">Materialize</a>
+      <ul>
+        <li><a href="sass.html">SASS</a></li>
+        <li><a href="components.html">Components</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row white">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab col small-2"><a href="#tab1">Typography</a></li>
+        <li class="tab col small-2"><a href="#tab2">Grid</a></li>
+        <li class="tab col small-2"><a href="#tab3">Shadows</a></li>
+        <li class="tab col small-2"><a href="#tab4">Forms</a></li>
+        <li class="tab col small-2"><a href="#tab5">Buttons</a></li>
+        <li class="tab col small-2"><a href="#tab6">Navbar</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="tab1" class="container">
+    <h2 class="header">Typography</h2>
+    <div class="row">
+      <div class="col small-12 medium-4">
+        <p>We can talk about header sizes and choices here.</p>
+      </div>
+      <div class="col small-12 medium-8">
+        <div class="preview">
+          <h1>Heading h1</h1>
+          <h2>Heading h2</h2>
+          <h3>Heading h3</h3>
+          <h4>Heading h4</h4>
+          <h5>Heading h5</h5>
+          <h6>Heading h6</h6>
+        </div>
+      </div>
+    </div>
+
+
+    <h2 class='header light'>Flow Text</h2>
+    One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To amleiorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line legth stays between 45-80 characters and line height scales to be larger on smaller screens.
+    <p>To activate this, just add the class "flow-text" to a tag, see the code and demo below for a feel of how this works.</p>
+    <div class='row'>
+    <code class='language-markup col small-12'>
+  &lt;p class='flow-text'>I am Flow Text&lt;/p>
+    </code>
+    </div>
+    <p class="flow-text">Post-ironic keffiyeh bitters Banksy street art yr, ennui flexitarian organic bespoke lomo readymade. Schlitz single-origin coffee Wes Anderson XOXO, literally whatever cliche lo-fi deep v pug beard. Blog whatever banh mi wayfarers, tousled roof party try-hard gentrify aesthetic ennui 90's Bushwick. Master cleanse American Apparel PBR&B letterpress, mumblecore fingerstache tousled Thundercats hashtag Wes Anderson quinoa. Yr Brooklyn messenger bag scenester, wolf beard sustainable chia cred sriracha flannel Truffaut Tonx. Butcher 3 wolf moon Vice Banksy, gentrify sartorial XOXO farm-to-table PBR gastropub pop-up. YOLO plaid mustache small batch flannel chambray.
+
+    Typewriter swag Marfa forage, biodiesel Cosby sweater pork belly McSweeney's fap kale chips ugh. Cornhole hoodie chambray Truffaut, you probably haven't heard of them next level flannel. Plaid cred cray, next level trust fund pork belly vegan gastropub Blue Bottle artisan. Before they sold out ugh stumptown, bitters wolf banjo YOLO forage direct trade Marfa kitsch try-hard mixtape vegan small batch. Truffaut artisan deep v pickled biodiesel, chambray synth pop-up bicycle rights squid gluten-free mlkshk Godard photo booth roof party. DIY bicycle rights Marfa actually, Blue Bottle normcore Pitchfork organic tofu authentic Austin ennui post-ironic. Synth gastropub church-key, small batch art party 3 wolf moon disrupt cornhole quinoa Thundercats biodiesel Williamsburg Schlitz.</p>
+  </div>
+  <div id="tab2" class="container">
+    <h2 class="header">Grids</h2>
+    <p>
+      We are using a standard 12 column fluid responsive grid system. It comes with 3 standard screen size media queries where you can alter the columns.     </p>
+    <div class="row">
+      <div class="col grid-example small-12"><p>Small-12</p></div>
+      <div class="col grid-example small-12 medium-3"><p>Small-12 Medium-3</p></div>
+      <div class="col grid-example small-12 medium-6"><p>Small-12 Medium-6</p></div>
+      <div class="col grid-example small-12 medium-3"><p>Small-12 Medium-3</p></div>
+    </div>
+    <div class="row">
+      <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+      <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+      <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+      <div class="col grid-example small-12 medium-6 large-3"><p>Small-12 Medium-6 Large-3</p></div>
+    </div>
+    <div class="row">
+      <code class="language-markup col small-12">
+&lt;div class="row">
+  &lt;div class="col grid-example small-12">&lt;p>Small-12&lt;/p>&lt;/div>
+  &lt;div class="col grid-example small-12 medium-3">&lt;p>Small-12 Medium-3&lt;/p>&lt;/div>
+  &lt;div class="col grid-example small-12 medium-6">&lt;p>Small-12 Medium-6&lt;/p>&lt;/div>
+  &lt;div class="col grid-example small-12 medium-3">&lt;p>Small-12 Medium-3&lt;/p>&lt;/div>
+&lt;/div>
+&lt;div class="row">
+  &lt;div class="col grid-example small-12 medium-6 large-3">&lt;p>Small-12 Medium-6 Large-3&lt;/p>&lt;/div>
+  &lt;div class="col grid-example small-12 medium-6 large-3">&lt;p>Small-12 Medium-6 Large-3&lt;/p>&lt;/div>
+  &lt;div class="col grid-example small-12 medium-6 large-3">&lt;p>Small-12 Medium-6 Large-3&lt;/p>&lt;/div>
+  &lt;div class="col grid-example small-12 medium-6 large-3">&lt;p>Small-12 Medium-6 Large-3&lt;/p>&lt;/div>
+&lt;/div>
+      </code>
+    </div>
+
+
+    <h3 class="header">Offsets</h3>
+    <p>You can use offsets to make smaller sized columns without needing to fill in the empty space.</p>
+
+    <div class="row">
+      <div class="col grid-example small-8 small-offset-2"><p>Small-8 Small-Offset-2</p></div>
+      <div class="col grid-example small-6 small-offset-6 medium-8 medium-offset-4 large-10 large-offset-2"><p>Small-8 Small-Offset-2 Medium-8 Medium-offset-4 Large-10 Large-offset-2</p></div>
+    </div>
+
+    <div class="row">
+      <code class="language-markup col small-12">
+&lt;div class="col grid-example small-8 small-offset-2">
+  &lt;p>Small-8 Small-Offset-2&lt;/p>
+&lt;/div>
+&lt;div class="col grid-example small-6 small-offset-6 medium-8 medium-offset-4 large-10 large-offset-2">
+  &lt;p>Small-8 Small-Offset-2 Medium-8 Medium-offset-4 Large-10 Large-offset-2&lt;/p>
+&lt;/div>
+      </code>
+    </div>
+
+
+  </div>
+  <div id="tab3" class="container">
+    <div class="row">
+      <h2 class="header">Shadows</h2>
+      In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is. 
+      <div class="col small-12 medium-2 medium-offset-1">
+        <p class="z-depth-1 box">this is longer text so we can see the shadows at work.</p>
+      </div>
+      <div class="col small-12 medium-2">
+        <p class="z-depth-2 box">this is longer text so we can see the shadows at work.</p>
+      </div>
+      <div class="col small-12 medium-2">
+        <p class="z-depth-3 box">this is longer text so we can see the shadows at work.</p>
+      </div>
+      <div class="col small-12 medium-2">
+        <p class="z-depth-4 box">this is longer text so we can see the shadows at work.</p>
+      </div>
+      <div class="col small-12 medium-2">
+        <p class="z-depth-5 box">this is longer text so we can see the shadows at work.</p>
+      </div>
+    </div>
+    <div class="row">
+      <code class="language-markup col small-12">
+  &lt;div class="col small-12 medium-2 medium-offset-1">
+    &lt;p class="z-depth-1 box">this is longer text so we can see the shadows at work.&lt;/p>
+  &lt;/div>
+  &lt;div class="col small-12 medium-2">
+    &lt;p class="z-depth-2 box">this is longer text so we can see the shadows at work.&lt;/p>
+  &lt;/div>
+  &lt;div class="col small-12 medium-2">
+    &lt;p class="z-depth-3 box">this is longer text so we can see the shadows at work.&lt;/p>
+  &lt;/div>
+  &lt;div class="col small-12 medium-2">
+    &lt;p class="z-depth-4 box">this is longer text so we can see the shadows at work.&lt;/p>
+  &lt;/div>
+  &lt;div class="col small-12 medium-2">
+    &lt;p class="z-depth-5 box">this is longer text so we can see the shadows at work.&lt;/p>
+  &lt;/div>
+      </code>
+    </div>
+  </div>
+
+  <div id="tab4" class="container">
+    <h2 class="header">Forms</h2>
+    Forms description blah
+    <div class="row">
+      <form class="col small-6 small-offset-3">
+        <div class="row">
+          <div class="col small-6"><input class="material-input" placeholder="First Name"></div>
+          <div class="col small-6"><input class="material-input" placeholder="Last Name"></div>
+        </div>
+        <div class="row">
+          <div class="col small-12"><input class="material-input" placeholder="Enter Username"></div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <code class="language-markup col small-12">
+  &lt;form class="col small-6 small-offset-3">
+    &lt;div class="row">
+      &lt;div class="col small-6">&lt;input class="material-input" placeholder="First Name">&lt;/div>
+      &lt;div class="col small-6">&lt;input class="material-input" placeholder="Last Name">&lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+      &lt;div class="col small-12">&lt;input class="material-input" placeholder="Enter Username">&lt;/div>
+    &lt;/div>
+  &lt;/form>
+      </code>
+    </div>
+  </div>
+
+  <div id="tab5" class="container">
+    <div class="row">
+      <h2 class="header">Buttons</h2>
+      Buttons are blah blah
+      <h3 class="header">Raised</h3>
+      <a href="#" class="button raise">Stuff</a>
+
+      <code class="language-markup col small-12">
+        &lt;a href="#" class="button raise">Stuff&lt;/a>
+      </code>
+      <h3 class="header">Floating</h3>
+      <a href="#" class="button floating"><i class="entypo plus"></i></a>
+      <code class="language-markup col small-12">
+        &lt;a href="#" class="button floating">&lt;i class="entypo plus">&lt;/i>&lt;/a>
+      </code>
+    </div>
+  </div>
+
+  <div id="tab6" class="container">
+    <h2 class="header">Navbar</h2>
+    The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
+
+    <h4 class="header">Right Aligned Links</h4>
+    <nav class="row">
+      <div class="col small-12">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul>
+          <li><a href="sass.html">SASS</a></li>
+          <li><a href="components.html">Components</a></li>
+          <li><a href="javascript.html">JavaScript</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+      <code class="language-markup col small-12">
+  &lt;nav>
+    &lt;div class="container">
+      &lt;a href="#" class="brand-logo">Logo&lt;/a>
+      &lt;ul>
+        &lt;li>&lt;a href="sass.html">SASS&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/nav>
+      </code>
+    </div>
+    <h4 class="header">Left Aligned Links</h4>
+    <nav class="row">
+      <div class="col small-12">
+        <a href="#" class="brand-logo right">Logo</a>
+        <ul class="left">
+          <li><a href="sass.html">SASS</a></li>
+          <li><a href="components.html">Components</a></li>
+          <li><a href="javascript.html">JavaScript</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+      <code class="language-markup col small-12">
+  &lt;nav>
+    &lt;div class="container">
+      &lt;a href="#" class="brand-logo right">Logo&lt;/a>
+      &lt;ul class="left">
+        &lt;li>&lt;a href="sass.html">SASS&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/nav>
+      </code>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/toasts.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/init.js"></script>
+</body>
+</html>
+

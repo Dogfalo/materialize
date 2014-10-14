@@ -1,17 +1,139 @@
-
+<html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Materialize</title>
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <style type="text/css">.red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-gray {
-    height: 40px;
-    width: 100%;
-    display: block;
-    }</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materialize - Documentation</title>
+
+  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/prism.css" rel="stylesheet" />
 </head>
 
 <body>
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand-logo">Materialize</a>
+      <ul class="right">
+        <li><a href="sass.html">SASS</a></li>
+        <li><a href="components.html">Components</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row white">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab col small-2"><a href="#tab1">Media Queries</a></li>
+        <li class="tab col small-2"><a href="#tab2">Mixins</a></li>
+        <li class="tab col small-2"><a href="#tab3">Color</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="tab1" class="container">
+    <h2 class="header">Media Queries</h2>
+    <p>
+    We have 3 media queries for the 3 standard screen sizes you can use in your custom SASS files. This also includes media query variables that will define the range.
+    </p>
+    
+    <p>
+      Small screens are defined at a max width of 480px
+      <br>
+      Medium screens are defined at a max width of 768px
+      <br>
+      Large screen are defined at a max width of 992px
+      </p>
+    <div class="row">
+      <code class="language-css col small-12">
+  @media #{$small-and-up} {
+    // styles for small screens and larger
+  }
+  @media #{$medium-and-up} {
+    // styles for medium screens and larger
+  }
+  @media #{$large-and-up} {
+    // styles for large screens and larger
+  }
+      </code>
+    </div>
+  </div>
+  <div id="tab2" class="container">
+    <h2 class="header">Prefixer</h2>
+    One major goal of this framework is to be as adaptable as possible which includes cross browser compatibility. We have adapted a prefixer script to SASS which will automatically add all browser prefixes for certain CSS properties.
 
+    <br><br>
+    For Example: Using this SASS mixin
+    <div class="row">
+      <code class="language-sass col small-12">
+  @include transition(.3s);
+      </code>
+    </div>
+    Will Output This
+    <div class="row">
+      <code class="language-css col small-12">
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+      </code>
+    </div>
+    Here is the full list of mixins
+    <div class="row">
+      <code class="language-css col small-12">
+  animation($args)
+  animation-delay($delay)
+  animation-direction($direction)
+  animation-duration($duration)
+  animation-fill-mode($mode)
+  animation-iteration-count($count)
+  animation-name($name)
+  animation-play-state($state)
+  animation-timing-function($function)
+  background-size($args)
+  border-radius($args)
+  box-shadow($args)
+      inner-shadow($args) 
+  box-sizing($args)
+      border-box() 
+      content-box() 
+  columns($args)
+      column-count($count)
+      column-gap($gap)
+      column-rule($args)
+      column-width($width)
+  gradient($default,$start,$stop) 
+      linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+      linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+  opacity($factor)
+  transform($args)
+      transform-origin($args)
+      transform-style($style)
+      rotate($deg)
+      scale($factor)
+      translate($x,$y)
+      translate3d($x,$y,$z)
+      translateHardware($x,$y) 
+  text-shadow($args)
+  transition($args)
+      transition-delay($delay)
+      transition-duration($duration)
+      transition-property($property)
+      transition-timing-function($function)
+      </code>
+    </div>
+
+  </div>
+  <div id="tab3" class="container dynamic-color">
+    <h2 class="header">Colors</h2>
+    Here is a color pallete based on the material design base colors. Each of these colors are defined with a base color class and an optional lighten or darken class. To use these classes in a custom SASS file you can extend these classes.
+    <br><br> 
+    <div class="row">
+      <code class="language-sass col small-12">
+  .blue-container {
+    @extend .blue, .lighten-4;
+  }
+      </code>
+    </div>
+    <h4 class="header">Color Pallete</h4>
     <div class="row">
       <div class="col small-12 medium-6 large-4">
         <div class="red lighten-5"></div>
@@ -52,8 +174,6 @@
         <div class="purple darken-4"></div>
         <div class="purple darken-5"></div>
       </div>
-    </div>
-    <div class="row">
       <div class="col small-12 medium-6 large-4">
         <div class="deep-purple lighten-5"></div>
         <div class="deep-purple lighten-4"></div>
@@ -93,8 +213,6 @@
         <div class="blue darken-4"></div>
         <div class="blue darken-5"></div>
       </div>
-    </div>
-    <div class="row">
       <div class="col small-12 medium-6 large-4">
         <div class="light-blue lighten-5"></div>
         <div class="light-blue lighten-4"></div>
@@ -134,8 +252,6 @@
         <div class="teal darken-4"></div>
         <div class="teal darken-5"></div>
       </div>
-    </div>
-    <div class="row">
       <div class="col small-12 medium-6 large-4">
         <div class="green lighten-5"></div>
         <div class="green lighten-4"></div>
@@ -175,8 +291,6 @@
         <div class="lime darken-4"></div>
         <div class="lime darken-5"></div>
       </div>
-    </div>
-    <div class="row">
       <div class="col small-12 medium-6 large-4">
         <div class="yellow lighten-5"></div>
         <div class="yellow lighten-4"></div>
@@ -216,7 +330,6 @@
         <div class="orange darken-4"></div>
         <div class="orange darken-5"></div>
       </div>
-    <div class="row">
       <div class="col small-12 medium-6 large-4">
         <div class="deep-orange lighten-5"></div>
         <div class="deep-orange lighten-4"></div>
@@ -257,7 +370,18 @@
         <div class="grey darken-5"></div>
       </div>
     </div>
-  
+  </div>
 
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/toasts.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/init.js"></script>
 </body>
 </html>
+
