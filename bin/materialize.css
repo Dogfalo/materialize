@@ -551,7 +551,7 @@ li {
   content: '\1F4F7'; }
 
 .entypo.megaphone:before {
-  content: '1F4E3'; }
+  content: '\1F4E3'; }
 
 .entypo.moon:before {
   content: '\0045'; }
@@ -2436,3 +2436,9 @@ p {
 #card-2 {
   background-image: url(../images/sample-1.jpg);
   background-size: cover; }
+
+.icon-container .entypo {
+  font-size: 3em; }
+
+.icon-container .entypo-social {
+  font-size: 3em; }
