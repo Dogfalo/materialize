@@ -1699,7 +1699,7 @@ li {
     background-color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .container {
   padding: 0 1em;
@@ -2171,25 +2171,32 @@ small {
     line-height: 2.8rem; } }
 
 .card {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
   border-radius: 2px;
+  background-clip: padding-box;
   margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: white; }
+    color: #fff; }
   .card h2 {
     font-size: 1.14rem;
-    color: white; }
+    color: #fff; }
   .card h3 {
     font-size: 1rem;
-    color: white; }
+    color: #fff; }
   .card p {
     font-size: 0.8rem;
-    color: white; }
+    color: #fff; }
   .card .card-content {
     position: relative;
     overflow: hidden;
     padding: 1em; }
     .card .card-content img {
+      -webkit-border-radius: 2px 2px 0 0;
+      -moz-border-radius: 2px 2px 0 0;
+      border-radius: 2px 2px 0 0;
+      background-clip: padding-box;
       position: absolute;
       left: 0;
       right: 0;
@@ -2200,11 +2207,13 @@ small {
   .card .card-footer {
     background-color: #fafafa;
     padding: 2px 1em 8px 1em;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
+    -webkit-border-radius: 0 0 2px 2px;
+    -moz-border-radius: 0 0 2px 2px;
+    border-radius: 0 0 2px 2px;
+    background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: black; }
+      color: #000; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
