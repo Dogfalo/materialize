@@ -7,7 +7,7 @@ $card-link-color: #ffab2e;
 $card-link-hover: #ffcc35;
 
 .card {
-  border-radius: 2px;
+  @include border-radius(2px);
 	margin-top: 10px;
   h1 {
     font-size: 1.71rem;
@@ -35,6 +35,7 @@ $card-link-hover: #ffcc35;
 
     // Image background for content
     img {
+      @include border-radius(2px 2px 0 0);
       position: absolute;
       left: 0;
       right: 0;
@@ -48,8 +49,7 @@ $card-link-hover: #ffcc35;
   .card-footer {
     background-color: $card-color;
     padding: 2px $gutter-width $card-padding $gutter-width;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
+    @include border-radius(0 0 2px 2px);
     margin-bottom:30px;
     h1, h2, h3, p {
       color: $footer-font-color;
