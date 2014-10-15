@@ -360,7 +360,7 @@ ul {
 li {
   list-style-type: none; }
 
-.z-depth-1, nav, .toast, .button.raise, .button.floating, .dropdown-content {
+.z-depth-1, nav, .card, .toast, .button.raise, .button.floating, .dropdown-content {
   -webkit-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.4), 0px 1.5px 5px -2px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.4), 0px 1.5px 5px -2px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.4), 0px 1.5px 5px -2px rgba(0, 0, 0, 0.4); }
@@ -2171,7 +2171,6 @@ small {
     line-height: 2.8rem; } }
 
 .card {
-  background-color: #00bcd4;
   border-radius: 2px;
   margin-top: 10px; }
   .card h1 {
@@ -2186,32 +2185,31 @@ small {
   .card p {
     font-size: 0.8rem;
     color: #fff; }
-
-.card-content {
-  padding: 1em; }
-
-.card-footer {
-  background-color: #fafafa;
-  padding: 2px 1em 8px 1em;
-  border-bottom-right-radius: 2px;
-  border-bottom-left-radius: 2px;
-  margin-bottom: 30px; }
-  .card-footer h1, .card-footer h2, .card-footer h3, .card-footer p {
-    color: #000; }
-
-.card-action {
-  margin-right: 20%; }
-
-.card-footer a {
-  color: #ffab2e; }
-
-.card-footer a:hover {
-  color: #ffcc35; }
-
-.shadow {
-  -moz-box-shadow: 1px 1px 1px 1px #eee;
-  -webkit-box-shadow: 1px 1px 1px 1px #eee;
-  box-shadow: 1px 1px 4px 1px #ccc; }
+  .card .card-content {
+    position: relative;
+    overflow: hidden;
+    padding: 1em; }
+    .card .card-content img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: -1; }
+  .card .card-footer {
+    background-color: #fafafa;
+    padding: 2px 1em 8px 1em;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    margin-bottom: 30px; }
+    .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
+      color: #000; }
+  .card a.card-action {
+    margin-right: 20%;
+    color: #ffab2e; }
+    .card a.card-action:hover {
+      color: #ffcc35; }
 
 .material-input {
   background-color: transparent;
@@ -2410,7 +2408,7 @@ p {
   .col.grid-example p {
     margin: 10px; }
 
-.red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown, .grey, .blue-gray {
+.dynamic-color .red, .dynamic-color .pink, .dynamic-color .purple, .dynamic-color .deep-purple, .dynamic-color .indigo, .dynamic-color .blue, .dynamic-color .light-blue, .dynamic-color .cyan, .dynamic-color .teal, .dynamic-color .green, .dynamic-color .light-green, .dynamic-color .lime, .dynamic-color .yellow, .dynamic-color .amber, .dynamic-color .orange, .dynamic-color .deep-orange, .dynamic-color .brown, .dynamic-color .grey, .dynamic-color .blue-gray {
   height: 40px;
   width: 100%;
   padding: 0 15px;
@@ -2420,7 +2418,6 @@ p {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-
 .dynamic-color .col {
   margin-bottom: 15px; }
 
@@ -2431,10 +2428,6 @@ p {
 
 .light {
   font-weight: 300; }
-
-#card-2 {
-  background-image: url(../images/sample-1.jpg);
-  background-size: cover; }
 
 .icon-container .entypo {
   font-size: 3em; }
@@ -2469,7 +2462,7 @@ p {
   .col.grid-example p {
     margin: 10px; }
 
-.red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown, .grey, .blue-gray {
+.dynamic-color .red, .dynamic-color .pink, .dynamic-color .purple, .dynamic-color .deep-purple, .dynamic-color .indigo, .dynamic-color .blue, .dynamic-color .light-blue, .dynamic-color .cyan, .dynamic-color .teal, .dynamic-color .green, .dynamic-color .light-green, .dynamic-color .lime, .dynamic-color .yellow, .dynamic-color .amber, .dynamic-color .orange, .dynamic-color .deep-orange, .dynamic-color .brown, .dynamic-color .grey, .dynamic-color .blue-gray {
   height: 40px;
   width: 100%;
   padding: 0 15px;
@@ -2479,7 +2472,6 @@ p {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-
 .dynamic-color .col {
   margin-bottom: 15px; }
 
@@ -2490,10 +2482,6 @@ p {
 
 .light {
   font-weight: 300; }
-
-#card-2 {
-  background-image: url(../images/sample-1.jpg);
-  background-size: cover; }
 
 .icon-container .entypo {
   font-size: 3em; }

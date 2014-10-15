@@ -1,13 +1,12 @@
 $default-color: #00bcd4; 
 $card-padding: 8px;
-$footer-color: #fafafa;
+$card-color: #fafafa;
 $font-color: #fff;
 $footer-font-color: #000;
 $card-link-color: #ffab2e;
 $card-link-hover: #ffcc35;
 
 .card {
-  background-color: $default-color;
   border-radius: 2px;
 	margin-top: 10px;
   h1 {
@@ -26,38 +25,42 @@ $card-link-hover: #ffcc35;
 		font-size: 0.8rem;
 		color: $font-color;
 	}
-}
+  @extend .z-depth-1;
 
-.card-content {
-  padding: $gutter-width;
-}
 
-.card-footer {
-//  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  background-color: $footer-color;
-	padding: 2px $gutter-width $card-padding $gutter-width;
-	border-bottom-right-radius: 2px;
-	border-bottom-left-radius: 2px;
-	margin-bottom:30px;
-	h1, h2, h3, p {
-		color: $footer-font-color;
-	}
-}
+  .card-content {
+    position: relative;
+    overflow: hidden;
+    padding: $gutter-width;
 
-.card-action {
-	margin-right:20%;
-}
+    // Image background for content
+    img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: -1;
+    }
+  }
 
-.card-footer a {
-	color: $card-link-color;
-}
+  .card-footer {
+    background-color: $card-color;
+    padding: 2px $gutter-width $card-padding $gutter-width;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    margin-bottom:30px;
+    h1, h2, h3, p {
+      color: $footer-font-color;
+    }
+  }
 
-.card-footer a:hover {
-	color: $card-link-hover;
-}
+  a.card-action {
+    margin-right:20%;
+    color: $card-link-color;
+    
+    &:hover { color: $card-link-hover; }
+  }
 
-.shadow {
-  -moz-box-shadow: 1px 1px 1px 1px #eee;
-  -webkit-box-shadow: 1px 1px 1px 1px #eee;
-  box-shadow: 1px 1px 4px 1px #ccc;
 }
