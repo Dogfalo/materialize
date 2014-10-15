@@ -5,7 +5,6 @@
   <title>Materialize - Documentation</title>
 
   <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <link href="css/prism.css" rel="stylesheet" />
 </head>
 
@@ -23,13 +22,12 @@
   <div class="row white z-depth-1">
     <div class="container">
       <ul class="tabs">
-        <li class="tab col small-1"><a href="#tab1">Typography</a></li>
-        <li class="tab col small-1"><a href="#tab2">Grid</a></li>
-        <li class="tab col small-1"><a href="#tab3">Shadows</a></li>
-        <li class="tab col small-1"><a href="#tab4">Forms</a></li>
-        <li class="tab col small-1"><a href="#tab5">Buttons</a></li>
-        <li class="tab col small-1"><a href="#tab6">Navbar</a></li>
-				<li class="tab col small-1"><a href="#tab7">Cards</a></li>
+        <li class="tab col small-2"><a href="#tab1">Typography</a></li>
+        <li class="tab col small-2"><a href="#tab2">Grid</a></li>
+        <li class="tab col small-2"><a href="#tab4">Forms</a></li>
+        <li class="tab col small-2"><a href="#tab5">Buttons</a></li>
+        <li class="tab col small-2"><a href="#tab6">Navbar</a></li>
+				<li class="tab col small-2"><a href="#tab7">Cards</a></li>
       </ul>
     </div>
   </div>
@@ -118,50 +116,11 @@
 
 
   </div>
-  <div id="tab3" class="container">
-    <div class="row">
-      <h2 class="header">Shadows</h2>
-      In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is. 
-      <div class="col small-12 medium-2 medium-offset-1">
-        <p class="z-depth-1 box">this is longer text so we can see the shadows at work.</p>
-      </div>
-      <div class="col small-12 medium-2">
-        <p class="z-depth-2 box">this is longer text so we can see the shadows at work.</p>
-      </div>
-      <div class="col small-12 medium-2">
-        <p class="z-depth-3 box">this is longer text so we can see the shadows at work.</p>
-      </div>
-      <div class="col small-12 medium-2">
-        <p class="z-depth-4 box">this is longer text so we can see the shadows at work.</p>
-      </div>
-      <div class="col small-12 medium-2">
-        <p class="z-depth-5 box">this is longer text so we can see the shadows at work.</p>
-      </div>
-    </div>
-    <div class="row">
-      <pre><code class="language-markup col small-12">
-  &lt;div class="col small-12 medium-2 medium-offset-1">
-    &lt;p class="z-depth-1 box">this is longer text so we can see the shadows at work.&lt;/p>
-  &lt;/div>
-  &lt;div class="col small-12 medium-2">
-    &lt;p class="z-depth-2 box">this is longer text so we can see the shadows at work.&lt;/p>
-  &lt;/div>
-  &lt;div class="col small-12 medium-2">
-    &lt;p class="z-depth-3 box">this is longer text so we can see the shadows at work.&lt;/p>
-  &lt;/div>
-  &lt;div class="col small-12 medium-2">
-    &lt;p class="z-depth-4 box">this is longer text so we can see the shadows at work.&lt;/p>
-  &lt;/div>
-  &lt;div class="col small-12 medium-2">
-    &lt;p class="z-depth-5 box">this is longer text so we can see the shadows at work.&lt;/p>
-  &lt;/div>
-      </code></pre>
-    </div>
-  </div>
 
   <div id="tab4" class="container">
     <h2 class="header">Forms</h2>
-    Forms description blah
+    <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing.</p>
+    
     <div class="row">
       <form class="col small-6 small-offset-3">
         <div class="row">
@@ -191,18 +150,22 @@
   <div id="tab5" class="container">
     <div class="row">
       <h2 class="header">Buttons</h2>
-      Buttons are blah blah
+      There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
       <h3 class="header">Raised</h3>
       <a href="#" class="button raise">Stuff</a>
 
       <pre><code class="language-markup col small-12">
         &lt;a href="#" class="button raise">Stuff&lt;/a>
       </code></pre>
+    </div>
+    <div class="row">
       <h3 class="header">Floating</h3>
       <a href="#" class="button floating"><i class="entypo plus"></i></a>
       <pre><code class="language-markup col small-12">
         &lt;a href="#" class="button floating">&lt;i class="entypo plus">&lt;/i>&lt;/a>
       </code></pre>
+    </div>
+    <div class="row">
       <h3 class="header">Flat</h3>
       <a href="#" class="button flat">Button</a>
       <pre><code class="language-markup col small-12">
@@ -271,9 +234,10 @@
 		<div class="row">
 			<h2 class="header">Cards</h2>
 			<p>Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.</p>
-			
+    </div>
+    <div class="row">
 			<div class="col small-12 medium-6">
-				<div class="card shadow">
+				<div class="card cyan">
 					<div class="card-content">
 						<h1>Card Title</h1>
 						<p>This is sample content</p>
@@ -287,10 +251,10 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="col small-12 medium-6">
-				<div id='card-2' class="card shadow">
+				<div class="card">
 					<div class="card-content">
+            <img src="images/sample-1.jpg">
 						<h1>Card Title</h1>
 						<p>This is sample content</p>
 					</div>	
@@ -303,27 +267,43 @@
 					</div>
 				</div>
 			</div>
-
+    </div>
     <div class="row">
       <pre><code class="language-markup col small-12">
-	&lt;div class="col small-12 medium-6">
-		&lt;div class="card shadow">
-			&lt;div class="card-content">
-				&lt;h1>Card Title&lt;/h1>
-				&lt;p>This is sample content&lt;/p>
-			&lt;/div>	
-			&lt;div class="card-footer">
-				&lt;p>Footer&lt;/p>
-				&lt;p>Sample content&lt;/p>
-				&lt;p>Sample content&lt;/p>
-				&lt;a class='card-action' href='#'>This is a link&lt;/a>
-				&lt;a class='card-action' href='#'>This is a link&lt;/a>
-			&lt;/div>
-		&lt;/div>
-	&lt;/div>
+  &lt;div class="col small-12 medium-6">
+  	&lt;div class="card cyan">
+  		&lt;div class="card-content">
+  			&lt;h1>Card Title&lt;/h1>
+  			&lt;p>This is sample content&lt;/p>
+  		&lt;/div>	
+  		&lt;div class="card-footer">
+  			&lt;p>Footer&lt;/p>
+  			&lt;p>Sample content&lt;/p>
+  			&lt;p>Sample content&lt;/p>
+  			&lt;a class='card-action' href='#'>This is a link&lt;/a>
+  			&lt;a class='card-action' href='#'>This is a link&lt;/a>
+  		&lt;/div>
+  	&lt;/div>
+  &lt;/div>
+
+  &lt;div class="col small-12 medium-6">
+    &lt;div class="card">
+      &lt;div class="card-content">
+        &lt;img src="images/sample-1.jpg">
+        &lt;h1>Card Title&lt;/h1>
+        &lt;p>This is sample content&lt;/p>
+      &lt;/div>  
+      &lt;div class="card-footer">
+        &lt;p>Footer&lt;/p>
+        &lt;p>Sample content&lt;/p>
+        &lt;p>Sample content&lt;/p>
+        &lt;a class='card-action' href='#'>This is a link&lt;/a>
+        &lt;a class='card-action' href='#'>This is a link&lt;/a>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
       </code></pre>
     </div>
-		</div>
 	</div>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
