@@ -7,7 +7,6 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-	overflow: scroll;
 	color: black;
 	text-shadow: 0 1px white;
 	font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
