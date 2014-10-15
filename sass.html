@@ -17,17 +17,18 @@
         <li><a href="sass.html">SASS</a></li>
         <li><a href="components.html">Components</a></li>
         <li><a href="javascript.html">JavaScript</a></li>
+				<li><a href="team.html">Meet the Team</a></li>
       </ul>
     </div>
   </nav>
   <div class="row white z-depth-1">
     <div class="container">
       <ul class="tabs">
-        <li class="tab col small-2"><a href="#tab1">Media Queries</a></li>
-        <li class="tab col small-2"><a href="#tab2">Mixins</a></li>
-        <li class="tab col small-2"><a href="#tab3">Color</a></li>
-        <li class="tab col small-2"><a href="#tab4">Icons</a></li>
-        <li class="tab col small-2"><a href="#tab5">Shadows</a></li>
+        <li class="tab col s2"><a href="#tab1">Media Queries</a></li>
+        <li class="tab col s2"><a href="#tab2">Mixins</a></li>
+        <li class="tab col s2"><a href="#tab3">Color</a></li>
+        <li class="tab col s2"><a href="#tab4">Icons</a></li>
+        <li class="tab col s2"><a href="#tab5">Shadows</a></li>
       </ul>
     </div>
   </div>
@@ -45,7 +46,7 @@
       Large screen are defined at a max width of 992px
       </p>
     <div class="row">
-      <pre><code class="language-css col small-12">
+      <pre><code class="language-css col s12">
   @media #{$small-and-up} {
     // styles for small screens and larger
   }
@@ -65,13 +66,13 @@
     <br><br>
     For Example: Using this SASS mixin
     <div class="row">
-      <pre><code class="language-css col small-12">
+      <pre><code class="language-scss col s12">
   @include transition(.3s);
       </code></pre>
     </div>
     Will Output This
     <div class="row">
-      <pre><code class="language-css col small-12">
+      <pre><code class="language-css col s12">
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
@@ -81,7 +82,7 @@
     </div>
     Here is the full list of mixins
     <div class="row">
-      <pre><code class="language-css col small-12">
+      <pre><code class="language-css col s12">
   animation($args)
   animation-delay($delay)
   animation-direction($direction)
@@ -127,18 +128,18 @@
   </div>
   <div id="tab3" class="container dynamic-color">
     <h2 class="header">Colors</h2>
-    Here is a color pallete based on the material design base colors. Each of these colors are defined with a base color class and an optional lighten or darken class. To use these classes in a custom SASS file you can extend these classes.
+    Here is a color palette based on the material design base colors. Each of these colors are defined with a base color class and an optional lighten or darken class. To use these classes in a custom SASS file you can extend these classes.
     <br><br> 
     <div class="row">
-      <pre><code class="language-sass col small-12">
+      <pre><code class="language-scss col s12">
   .blue-container {
     @extend .blue, .lighten-4;
   }
       </code></pre>
     </div>
-    <h4 class="header">Color Pallete</h4>
+    <h4 class="header">Color Palette</h4>
     <div class="row">
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="red lighten-5"></div>
         <div class="red lighten-4"></div>
         <div class="red lighten-3"></div>
@@ -151,7 +152,7 @@
         <div class="red darken-4"></div>
         <div class="red darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="pink lighten-5"></div>
         <div class="pink lighten-4"></div>
         <div class="pink lighten-3"></div>
@@ -164,7 +165,7 @@
         <div class="pink darken-4"></div>
         <div class="pink darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="purple lighten-5"></div>
         <div class="purple lighten-4"></div>
         <div class="purple lighten-3"></div>
@@ -177,7 +178,7 @@
         <div class="purple darken-4"></div>
         <div class="purple darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="deep-purple lighten-5"></div>
         <div class="deep-purple lighten-4"></div>
         <div class="deep-purple lighten-3"></div>
@@ -190,7 +191,7 @@
         <div class="deep-purple darken-4"></div>
         <div class="deep-purple darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="indigo lighten-5"></div>
         <div class="indigo lighten-4"></div>
         <div class="indigo lighten-3"></div>
@@ -203,7 +204,7 @@
         <div class="indigo darken-4"></div>
         <div class="indigo darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="blue lighten-5"></div>
         <div class="blue lighten-4"></div>
         <div class="blue lighten-3"></div>
@@ -216,7 +217,7 @@
         <div class="blue darken-4"></div>
         <div class="blue darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="light-blue lighten-5"></div>
         <div class="light-blue lighten-4"></div>
         <div class="light-blue lighten-3"></div>
@@ -229,7 +230,7 @@
         <div class="light-blue darken-4"></div>
         <div class="light-blue darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="cyan lighten-5"></div>
         <div class="cyan lighten-4"></div>
         <div class="cyan lighten-3"></div>
@@ -242,7 +243,7 @@
         <div class="cyan darken-4"></div>
         <div class="cyan darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="teal lighten-5"></div>
         <div class="teal lighten-4"></div>
         <div class="teal lighten-3"></div>
@@ -255,7 +256,7 @@
         <div class="teal darken-4"></div>
         <div class="teal darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="green lighten-5"></div>
         <div class="green lighten-4"></div>
         <div class="green lighten-3"></div>
@@ -268,7 +269,7 @@
         <div class="green darken-4"></div>
         <div class="green darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="light-green lighten-5"></div>
         <div class="light-green lighten-4"></div>
         <div class="light-green lighten-3"></div>
@@ -281,7 +282,7 @@
         <div class="light-green darken-4"></div>
         <div class="light-green darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="lime lighten-5"></div>
         <div class="lime lighten-4"></div>
         <div class="lime lighten-3"></div>
@@ -294,7 +295,7 @@
         <div class="lime darken-4"></div>
         <div class="lime darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="yellow lighten-5"></div>
         <div class="yellow lighten-4"></div>
         <div class="yellow lighten-3"></div>
@@ -307,7 +308,7 @@
         <div class="yellow darken-4"></div>
         <div class="yellow darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="amber lighten-5"></div>
         <div class="amber lighten-4"></div>
         <div class="amber lighten-3"></div>
@@ -320,7 +321,7 @@
         <div class="amber darken-4"></div>
         <div class="amber darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="orange lighten-5"></div>
         <div class="orange lighten-4"></div>
         <div class="orange lighten-3"></div>
@@ -333,7 +334,7 @@
         <div class="orange darken-4"></div>
         <div class="orange darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="deep-orange lighten-5"></div>
         <div class="deep-orange lighten-4"></div>
         <div class="deep-orange lighten-3"></div>
@@ -346,7 +347,7 @@
         <div class="deep-orange darken-4"></div>
         <div class="deep-orange darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="brown lighten-5"></div>
         <div class="brown lighten-4"></div>
         <div class="brown lighten-3"></div>
@@ -359,7 +360,7 @@
         <div class="brown darken-4"></div>
         <div class="brown darken-5"></div>
       </div>
-      <div class="col small-12 medium-6 large-4">
+      <div class="col s12 m6 l4">
         <div class="grey lighten-5"></div>
         <div class="grey lighten-4"></div>
         <div class="grey lighten-3"></div>
@@ -670,37 +671,37 @@
       <h2 class="header">Shadows</h2>
       <p>In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is. You can easily extend any of these shadows with SASS.</p>
       
-      <div class="col small-12 medium-2 medium-offset-1">
+      <div class="col s12 m2 offset-m1">
         <p class="z-depth-1 box">this is longer text so we can see the shadows at work.</p>
       </div>
-      <div class="col small-12 medium-2">
+      <div class="col s12 m2">
         <p class="z-depth-2 box">this is longer text so we can see the shadows at work.</p>
       </div>
-      <div class="col small-12 medium-2">
+      <div class="col s12 m2">
         <p class="z-depth-3 box">this is longer text so we can see the shadows at work.</p>
       </div>
-      <div class="col small-12 medium-2">
+      <div class="col s12 m2">
         <p class="z-depth-4 box">this is longer text so we can see the shadows at work.</p>
       </div>
-      <div class="col small-12 medium-2">
+      <div class="col s12 m2">
         <p class="z-depth-5 box">this is longer text so we can see the shadows at work.</p>
       </div>
     </div>
     <div class="row">
-      <code class="language-markup col small-12">
-  &lt;div class="col small-12 medium-2 medium-offset-1">
+      <code class="language-markup col s12">
+  &lt;div class="col s12 m2 offset-m1">
     &lt;p class="z-depth-1 box">this is longer text so we can see the shadows at work.&lt;/p>
   &lt;/div>
-  &lt;div class="col small-12 medium-2">
+  &lt;div class="col s12 m2">
     &lt;p class="z-depth-2 box">this is longer text so we can see the shadows at work.&lt;/p>
   &lt;/div>
-  &lt;div class="col small-12 medium-2">
+  &lt;div class="col s12 m2">
     &lt;p class="z-depth-3 box">this is longer text so we can see the shadows at work.&lt;/p>
   &lt;/div>
-  &lt;div class="col small-12 medium-2">
+  &lt;div class="col s12 m2">
     &lt;p class="z-depth-4 box">this is longer text so we can see the shadows at work.&lt;/p>
   &lt;/div>
-  &lt;div class="col small-12 medium-2">
+  &lt;div class="col s12 m2">
     &lt;p class="z-depth-5 box">this is longer text so we can see the shadows at work.&lt;/p>
   &lt;/div>
       </code>
