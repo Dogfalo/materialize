@@ -1699,7 +1699,7 @@ li {
     background-color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .container {
   padding: 0 1em;
@@ -2173,20 +2173,19 @@ small {
 .card {
   background-color: #00bcd4;
   border-radius: 2px;
-  margin-top: 10px;
-  width: 80%; }
+  margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: white; }
+    color: #fff; }
   .card h2 {
     font-size: 1.14rem;
-    color: white; }
+    color: #fff; }
   .card h3 {
     font-size: 1rem;
-    color: white; }
+    color: #fff; }
   .card p {
     font-size: 0.8rem;
-    color: white; }
+    color: #fff; }
 
 .card-content {
   padding: 1em; }
@@ -2198,7 +2197,7 @@ small {
   border-bottom-left-radius: 2px;
   margin-bottom: 30px; }
   .card-footer h1, .card-footer h2, .card-footer h3, .card-footer p {
-    color: black; }
+    color: #000; }
 
 .card-action {
   margin-right: 20%; }
