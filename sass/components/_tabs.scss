@@ -17,7 +17,7 @@ ul.tabs {
     width: auto;
 
     a {
-      color: $blue;
+      color: lighten($red, 18%);
       display: block;
       width: 100%;
       height: 100%;
@@ -27,7 +27,7 @@ ul.tabs {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: $blue;
+    @extend .red.lighten-2; 
   }
 }
 

@@ -3,7 +3,7 @@ body {
 }
 
 .header {
-  color: $blue;
+  color: lighten($red, 18%);
 }
 
 p.box {

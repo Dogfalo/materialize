@@ -1263,9 +1263,9 @@ li {
 
 .red {
   background-color: #e51c23; }
-  .red.lighten-1 {
+  .red.lighten-1, nav ul li:hover {
     background-color: #ea454b; }
-  .red.lighten-2 {
+  .red.lighten-2, nav, ul.tabs .indicator {
     background-color: #ee6e73; }
   .red.lighten-3 {
     background-color: #f3989b; }
@@ -1855,40 +1855,40 @@ li {
       .row .col.offset-m12 {
         margin-left: 100%; } }
     @media only screen and (min-width: 992px) {
-      .row .col.l-1 {
+      .row .col.l1 {
         width: 8.33333%;
         margin-left: 0; }
-      .row .col.l-2 {
+      .row .col.l2 {
         width: 16.66667%;
         margin-left: 0; }
-      .row .col.l-3 {
+      .row .col.l3 {
         width: 25%;
         margin-left: 0; }
-      .row .col.l-4 {
+      .row .col.l4 {
         width: 33.33333%;
         margin-left: 0; }
-      .row .col.l-5 {
+      .row .col.l5 {
         width: 41.66667%;
         margin-left: 0; }
-      .row .col.l-6 {
+      .row .col.l6 {
         width: 50%;
         margin-left: 0; }
-      .row .col.l-7 {
+      .row .col.l7 {
         width: 58.33333%;
         margin-left: 0; }
-      .row .col.l-8 {
+      .row .col.l8 {
         width: 66.66667%;
         margin-left: 0; }
-      .row .col.l-9 {
+      .row .col.l9 {
         width: 75%;
         margin-left: 0; }
-      .row .col.l-10 {
+      .row .col.l10 {
         width: 83.33333%;
         margin-left: 0; }
-      .row .col.l-11 {
+      .row .col.l11 {
         width: 91.66667%;
         margin-left: 0; }
-      .row .col.l-12 {
+      .row .col.l12 {
         width: 100%;
         margin-left: 0; }
       .row .col.offset-l1 {
@@ -1917,7 +1917,6 @@ li {
         margin-left: 100%; } }
 
 nav {
-  background-color: #5677fc;
   color: #fff; }
   nav a.logo {
     height: inherit;
@@ -1946,8 +1945,6 @@ nav {
       -o-transition: background-color 0.3s;
       -ms-transition: background-color 0.3s;
       transition: background-color 0.3s; }
-      nav ul li:hover {
-        background-color: #3d63fc; }
     nav ul a {
       font-size: 14px;
       color: #fff;
@@ -2303,15 +2300,14 @@ ul.tabs {
     letter-spacing: .8px;
     width: auto; }
     ul.tabs li.tab a {
-      color: #5677fc;
+      color: #ee6e73;
       display: block;
       width: 100%;
       height: 100%; }
   ul.tabs .indicator {
     position: absolute;
     bottom: 0;
-    height: 2px;
-    background-color: #5677fc; }
+    height: 2px; }
 
 @media only screen and (min-width: 0) {
   ul.tabs li.tab {
@@ -2394,7 +2390,7 @@ body {
   background-color: #fcfcfc; }
 
 .header {
-  color: #5677fc; }
+  color: #ee6e73; }
 
 p.box {
   padding: 20px; }
@@ -2451,7 +2447,7 @@ body {
   background-color: #fcfcfc; }
 
 .header {
-  color: #5677fc; }
+  color: #ee6e73; }
 
 p.box {
   padding: 20px; }

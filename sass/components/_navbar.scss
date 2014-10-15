@@ -1,7 +1,7 @@
 nav {
-  background-color: $blue;
   color: #fff;
   @extend .z-depth-1;
+  @extend .red.lighten-2;
 
   a.logo {
     height: inherit;
@@ -35,7 +35,7 @@ nav {
       @include transition(background-color .3s);
 
       &:hover {
-        background-color: darken($blue, 5%);
+        @extend .red.lighten-1;
       }
     }
     a { 
