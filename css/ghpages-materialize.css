@@ -1733,187 +1733,187 @@ li {
     box-sizing: border-box;
     padding: 0 0.5em; }
     @media only screen and (min-width: 0) {
-      .row .col.small-1 {
+      .row .col.s1 {
         width: 8.33333%;
         margin-left: 0; }
-      .row .col.small-2 {
+      .row .col.s2 {
         width: 16.66667%;
         margin-left: 0; }
-      .row .col.small-3 {
+      .row .col.s3 {
         width: 25%;
         margin-left: 0; }
-      .row .col.small-4 {
+      .row .col.s4 {
         width: 33.33333%;
         margin-left: 0; }
-      .row .col.small-5 {
+      .row .col.s5 {
         width: 41.66667%;
         margin-left: 0; }
-      .row .col.small-6 {
+      .row .col.s6 {
         width: 50%;
         margin-left: 0; }
-      .row .col.small-7 {
+      .row .col.s7 {
         width: 58.33333%;
         margin-left: 0; }
-      .row .col.small-8 {
+      .row .col.s8 {
         width: 66.66667%;
         margin-left: 0; }
-      .row .col.small-9 {
+      .row .col.s9 {
         width: 75%;
         margin-left: 0; }
-      .row .col.small-10 {
+      .row .col.s10 {
         width: 83.33333%;
         margin-left: 0; }
-      .row .col.small-11 {
+      .row .col.s11 {
         width: 91.66667%;
         margin-left: 0; }
-      .row .col.small-12 {
+      .row .col.s12 {
         width: 100%;
         margin-left: 0; }
-      .row .col.small-offset-1 {
+      .row .col.offset-s1 {
         margin-left: 8.33333%; }
-      .row .col.small-offset-2 {
+      .row .col.offset-s2 {
         margin-left: 16.66667%; }
-      .row .col.small-offset-3 {
+      .row .col.offset-s3 {
         margin-left: 25%; }
-      .row .col.small-offset-4 {
+      .row .col.offset-s4 {
         margin-left: 33.33333%; }
-      .row .col.small-offset-5 {
+      .row .col.offset-s5 {
         margin-left: 41.66667%; }
-      .row .col.small-offset-6 {
+      .row .col.offset-s6 {
         margin-left: 50%; }
-      .row .col.small-offset-7 {
+      .row .col.offset-s7 {
         margin-left: 58.33333%; }
-      .row .col.small-offset-8 {
+      .row .col.offset-s8 {
         margin-left: 66.66667%; }
-      .row .col.small-offset-9 {
+      .row .col.offset-s9 {
         margin-left: 75%; }
-      .row .col.small-offset-10 {
+      .row .col.offset-s10 {
         margin-left: 83.33333%; }
-      .row .col.small-offset-11 {
+      .row .col.offset-s11 {
         margin-left: 91.66667%; }
-      .row .col.small-offset-12 {
+      .row .col.offset-s12 {
         margin-left: 100%; } }
     @media only screen and (min-width: 768px) {
-      .row .col.medium-1 {
+      .row .col.m1 {
         width: 8.33333%;
         margin-left: 0; }
-      .row .col.medium-2 {
+      .row .col.m2 {
         width: 16.66667%;
         margin-left: 0; }
-      .row .col.medium-3 {
+      .row .col.m3 {
         width: 25%;
         margin-left: 0; }
-      .row .col.medium-4 {
+      .row .col.m4 {
         width: 33.33333%;
         margin-left: 0; }
-      .row .col.medium-5 {
+      .row .col.m5 {
         width: 41.66667%;
         margin-left: 0; }
-      .row .col.medium-6 {
+      .row .col.m6 {
         width: 50%;
         margin-left: 0; }
-      .row .col.medium-7 {
+      .row .col.m7 {
         width: 58.33333%;
         margin-left: 0; }
-      .row .col.medium-8 {
+      .row .col.m8 {
         width: 66.66667%;
         margin-left: 0; }
-      .row .col.medium-9 {
+      .row .col.m9 {
         width: 75%;
         margin-left: 0; }
-      .row .col.medium-10 {
+      .row .col.m10 {
         width: 83.33333%;
         margin-left: 0; }
-      .row .col.medium-11 {
+      .row .col.m11 {
         width: 91.66667%;
         margin-left: 0; }
-      .row .col.medium-12 {
+      .row .col.m12 {
         width: 100%;
         margin-left: 0; }
-      .row .col.medium-offset-1 {
+      .row .col.offset-m1 {
         margin-left: 8.33333%; }
-      .row .col.medium-offset-2 {
+      .row .col.offset-m2 {
         margin-left: 16.66667%; }
-      .row .col.medium-offset-3 {
+      .row .col.offset-m3 {
         margin-left: 25%; }
-      .row .col.medium-offset-4 {
+      .row .col.offset-m4 {
         margin-left: 33.33333%; }
-      .row .col.medium-offset-5 {
+      .row .col.offset-m5 {
         margin-left: 41.66667%; }
-      .row .col.medium-offset-6 {
+      .row .col.offset-m6 {
         margin-left: 50%; }
-      .row .col.medium-offset-7 {
+      .row .col.offset-m7 {
         margin-left: 58.33333%; }
-      .row .col.medium-offset-8 {
+      .row .col.offset-m8 {
         margin-left: 66.66667%; }
-      .row .col.medium-offset-9 {
+      .row .col.offset-m9 {
         margin-left: 75%; }
-      .row .col.medium-offset-10 {
+      .row .col.offset-m10 {
         margin-left: 83.33333%; }
-      .row .col.medium-offset-11 {
+      .row .col.offset-m11 {
         margin-left: 91.66667%; }
-      .row .col.medium-offset-12 {
+      .row .col.offset-m12 {
         margin-left: 100%; } }
     @media only screen and (min-width: 992px) {
-      .row .col.large-1 {
+      .row .col.l-1 {
         width: 8.33333%;
         margin-left: 0; }
-      .row .col.large-2 {
+      .row .col.l-2 {
         width: 16.66667%;
         margin-left: 0; }
-      .row .col.large-3 {
+      .row .col.l-3 {
         width: 25%;
         margin-left: 0; }
-      .row .col.large-4 {
+      .row .col.l-4 {
         width: 33.33333%;
         margin-left: 0; }
-      .row .col.large-5 {
+      .row .col.l-5 {
         width: 41.66667%;
         margin-left: 0; }
-      .row .col.large-6 {
+      .row .col.l-6 {
         width: 50%;
         margin-left: 0; }
-      .row .col.large-7 {
+      .row .col.l-7 {
         width: 58.33333%;
         margin-left: 0; }
-      .row .col.large-8 {
+      .row .col.l-8 {
         width: 66.66667%;
         margin-left: 0; }
-      .row .col.large-9 {
+      .row .col.l-9 {
         width: 75%;
         margin-left: 0; }
-      .row .col.large-10 {
+      .row .col.l-10 {
         width: 83.33333%;
         margin-left: 0; }
-      .row .col.large-11 {
+      .row .col.l-11 {
         width: 91.66667%;
         margin-left: 0; }
-      .row .col.large-12 {
+      .row .col.l-12 {
         width: 100%;
         margin-left: 0; }
-      .row .col.large-offset-1 {
+      .row .col.offset-l1 {
         margin-left: 8.33333%; }
-      .row .col.large-offset-2 {
+      .row .col.offset-l2 {
         margin-left: 16.66667%; }
-      .row .col.large-offset-3 {
+      .row .col.offset-l3 {
         margin-left: 25%; }
-      .row .col.large-offset-4 {
+      .row .col.offset-l4 {
         margin-left: 33.33333%; }
-      .row .col.large-offset-5 {
+      .row .col.offset-l5 {
         margin-left: 41.66667%; }
-      .row .col.large-offset-6 {
+      .row .col.offset-l6 {
         margin-left: 50%; }
-      .row .col.large-offset-7 {
+      .row .col.offset-l7 {
         margin-left: 58.33333%; }
-      .row .col.large-offset-8 {
+      .row .col.offset-l8 {
         margin-left: 66.66667%; }
-      .row .col.large-offset-9 {
+      .row .col.offset-l9 {
         margin-left: 75%; }
-      .row .col.large-offset-10 {
+      .row .col.offset-l10 {
         margin-left: 83.33333%; }
-      .row .col.large-offset-11 {
+      .row .col.offset-l11 {
         margin-left: 91.66667%; }
-      .row .col.large-offset-12 {
+      .row .col.offset-l12 {
         margin-left: 100%; } }
 
 nav {
