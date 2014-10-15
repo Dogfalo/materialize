@@ -5,6 +5,7 @@
   <title>Materialize - Documentation</title>
 
   <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <link href="css/prism.css" rel="stylesheet" />
 </head>
 
@@ -43,7 +44,7 @@
       Large screen are defined at a max width of 992px
       </p>
     <div class="row">
-      <code class="language-css col small-12">
+      <pre><code class="language-css col small-12">
   @media #{$small-and-up} {
     // styles for small screens and larger
   }
@@ -53,7 +54,7 @@
   @media #{$large-and-up} {
     // styles for large screens and larger
   }
-      </code>
+      </code></pre>
     </div>
   </div>
   <div id="tab2" class="container">
@@ -63,23 +64,23 @@
     <br><br>
     For Example: Using this SASS mixin
     <div class="row">
-      <code class="language-sass col small-12">
+      <pre><code class="language-sass col small-12">
   @include transition(.3s);
-      </code>
+      </code></pre>
     </div>
     Will Output This
     <div class="row">
-      <code class="language-css col small-12">
+      <pre><code class="language-css col small-12">
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
-      </code>
+      </code></pre>
     </div>
     Here is the full list of mixins
     <div class="row">
-      <code class="language-css col small-12">
+      <pre><code class="language-css col small-12">
   animation($args)
   animation-delay($delay)
   animation-direction($direction)
@@ -119,7 +120,7 @@
       transition-duration($duration)
       transition-property($property)
       transition-timing-function($function)
-      </code>
+      </code></pre>
     </div>
 
   </div>
@@ -128,11 +129,11 @@
     Here is a color pallete based on the material design base colors. Each of these colors are defined with a base color class and an optional lighten or darken class. To use these classes in a custom SASS file you can extend these classes.
     <br><br> 
     <div class="row">
-      <code class="language-sass col small-12">
+      <pre><code class="language-sass col small-12">
   .blue-container {
     @extend .blue, .lighten-4;
   }
-      </code>
+      </code></pre>
     </div>
     <h4 class="header">Color Pallete</h4>
     <div class="row">

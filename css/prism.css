@@ -10,7 +10,7 @@ pre[class*="language-"] {
 	overflow: scroll;
 	color: black;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
