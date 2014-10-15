@@ -5,7 +5,7 @@
   <title>Materialize - Documentation</title>
 
   <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <link href="css/prism.css" rel="stylesheet" />
 </head>
 
@@ -41,14 +41,14 @@
     </div>
     <div class="row">
       To do this, call the toast() function programatically in JavaScript
-      <code class="language-javascript col small-12">
+      <pre><code class="language-javascript col small-12">
   toast('I am a toast!', 3000) // 3000 is the duration of the toast
-      </code>
+      </code></pre>
       <br>
       One way to add this into your application is to add this as an onclick event to a button
-      <code class="language-markup col small-12">
+      <pre><code class="language-markup col small-12">
   &lt;a class="button" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
-      </code>
+      </code></pre>
     </div>
   </div>
   
@@ -63,16 +63,16 @@
     </div>
     <div class="row">
       Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
-      <code class="language-markup col small-12">
+      <pre><code class="language-markup col small-12">
         &lt;a class="tooltipped" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP&lt;/a>
-      </code>
+      </code></pre>
       <br>
       Then add this to your jQuery file
-      <code class="language-javascript col small-12">
+      <pre><code class="language-javascript col small-12">
         $(document).ready(function(){
           $('.tooltipped').tooltip();
         });
-      </code>
+      </code></pre>
     </div>
   </div>
   
@@ -86,11 +86,11 @@
         <li>two</li>
         <li>three</li>
       </ul>
-      <code class="language-javascript col small-12">
+      <pre><code class="language-javascript col small-12">
         $(document).ready(function(){
           $('.dropdown-button').dropdown();
         });
-      </code>
+      </code></pre>
     </div>
   </div>
 
@@ -115,7 +115,7 @@
     </div>
     <div class="row">
       <h4 class="header">Tabs HTML Structure</h4>
-      <code class="language-markup col small-12">
+      <pre><code class="language-markup col small-12">
         &lt;div class="col small-12">
           &lt;ul class="tabs">
             &lt;li class="tab col small-2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
@@ -128,15 +128,15 @@
         &lt;div id="test2" class="col small-12">Test 2&lt;/div>
         &lt;div id="test3" class="col small-12">Test 3&lt;/div>
         &lt;div id="test4" class="col small-12">Test 4&lt;/div>
-      </code>
+      </code></pre>
     </div>
     <div class="row">
       <h4 class="header">jQuery Plugin Initialization</h4>
-      <code class="language-javascript col small-12">
+      <pre><code class="language-javascript col small-12">
         $(document).ready(function(){
           $('ul.tabs').tabs();
         });
-      </code>
+      </code></pre>
     </div>
   </div>
 

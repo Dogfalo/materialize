@@ -2434,3 +2434,6 @@ p {
 
 .icon-container .entypo-social {
   font-size: 3em; }
+
+code, pre {
+  font-size: 1.1rem; }
