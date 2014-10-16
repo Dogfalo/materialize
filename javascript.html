@@ -28,6 +28,7 @@
         <li class="tab col s2"><a href="#tab2">Tooltips</a></li>
         <li class="tab col s2"><a href="#tab3">Dropdowns</a></li>
         <li class="tab col s2"><a href="#tab4">Tabs</a></li>
+        <li class="tab col s2"><a href="#tab5">Parallax</a></li>
       </ul>
     </div>
   </div>
@@ -141,6 +142,33 @@
     </div>
   </div>
 
+<!--  Tabs Section  -->
+  <div id="tab5" class="parallax-container">
+    <div class="parallax"><img src="http://scitechdaily.com/images/the-Large-Magellanic-Cloud-a-satellite-galaxy-of-the-Milky-Way.jpg"></div>
+    <div class="row container">
+      <h2 class="header">Parallax</h2>
+      <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+    </div>
+
+    <div class="row">
+      <h4 class="header">Tabs HTML Structure</h4>
+      <pre><code class="language-markup col s12">
+        &lt;div class="col s12">
+          &lt;ul class="tabs">
+            &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+            &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
+            &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
+            &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/div>
+        &lt;div id="test1" class="col s12">Test 1&lt;/div>
+        &lt;div id="test2" class="col s12">Test 2&lt;/div>
+        &lt;div id="test3" class="col s12">Test 3&lt;/div>
+        &lt;div id="test4" class="col s12">Test 4&lt;/div>
+      </code></pre>
+    </div>
+  </div>
+
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
   </script>
   <script src="js/jquery.easing.1.3.js"></script>
@@ -149,6 +177,7 @@
   <script src="js/tooltip.js"></script>
   <script src="js/tabs.js"></script>
   <script src="js/dropdown.js"></script>
+  <script src="js/parallax.js"></script>
   <script src="js/init.js"></script>
 
 </body>

@@ -41,3 +41,19 @@ $num-cols: 12;
 .z-depth-5{
     @include box-shadow-2(0px 10px 35px -3px rgba(0, 0, 0, 0.35), 0px 15px 35px -3px rgba(0, 0, 0, 0.35));
 }
+
+// parallax
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+.parallax {
+  position: relative;
+  z-index: -1;
+
+  img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

@@ -385,6 +385,18 @@ li {
   -moz-box-shadow: 0px 10px 35px -3px rgba(0, 0, 0, 0.35), 0px 15px 35px -3px rgba(0, 0, 0, 0.35);
   box-shadow: 0px 10px 35px -3px rgba(0, 0, 0, 0.35), 0px 15px 35px -3px rgba(0, 0, 0, 0.35); }
 
+.parallax-container {
+  position: relative;
+  overflow: hidden; }
+
+.parallax {
+  position: relative;
+  z-index: -1; }
+  .parallax img {
+    position: absolute;
+    top: 0;
+    width: 100%; }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
@@ -2258,8 +2270,8 @@ small {
   @media only screen and (min-width: 992px) {
     #toast-container {
       min-width: 8%;
-      top: 5%;
-      right: 5%; } }
+      top: 8%;
+      right: 6%; } }
 
 .toast {
   margin: 10px auto;
