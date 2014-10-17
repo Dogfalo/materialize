@@ -9,6 +9,7 @@ $radio-border: #5a5a5a;
   left: -9999px;
 }
 
+
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {  
   position: relative;
@@ -28,26 +29,22 @@ $radio-border: #5a5a5a;
 [type="radio"] + label:after {
   content: '';
   position: absolute;
-  left: 0;
+  left: 0px;
+  top: 0px;
+  margin: 4px;
+  width: 12px;
+  height: 12px;
   z-index: 1;
-  -webkit-transition: .28s ease;
-  transition: .28s ease;
+  @include transition(.28s ease);
 }
+
 
 /* Unchecked styles */
 [type="radio"]:not(:checked) + label:before {
-  top: 0px;
-  margin: 4px;
-  width: 12px;
-  height: 12px;
   border-radius: 50%;
-    border: 2px solid $radio-border;
+  border: 2px solid $radio-border;
 }
 [type="radio"]:not(:checked) + label:after {
-  top: 0px;
-  margin: 4px;
-  width: 12px;
-  height: 12px;
   border-radius: 50%;
   border: 2px solid $fill-color;
   background-color: $fill-color;
@@ -58,18 +55,10 @@ $radio-border: #5a5a5a;
 
 /* Checked styles */
 [type="radio"]:checked + label:before {
-  top: 0px;
-  margin: 4px;
-  width: 12px;
-  height: 12px;
   border-radius: 50%;
-    border: 2px solid $radio-border;
+  border: 2px solid $radio-border;
 }
 [type="radio"]:checked + label:after {
-  top: 0px;
-  margin: 4px;
-  width: 12px;
-  height: 12px;
   border-radius: 50%;
   border: 2px solid $fill-color;
   background-color: $fill-color;
@@ -82,7 +71,7 @@ $radio-border: #5a5a5a;
 [type="radio"]:disabled:not(:checked) + label:before,
 [type="radio"]:disabled:checked + label:before {
   background-color: $disabled-color;
-  border: 2px solid $disabled-color;
+  border-color: $disabled-color;
 }
 [type="radio"]:disabled + label {
   color: $disabled-color;
