@@ -1263,9 +1263,9 @@ li {
 
 .red {
   background-color: #e51c23; }
-  .red.lighten-1 {
+  .red.lighten-1, nav ul li:hover {
     background-color: #ea454b; }
-  .red.lighten-2 {
+  .red.lighten-2, nav, ul.tabs .indicator {
     background-color: #ee6e73; }
   .red.lighten-3 {
     background-color: #f3989b; }
@@ -1733,191 +1733,190 @@ li {
     box-sizing: border-box;
     padding: 0 0.5em; }
     @media only screen and (min-width: 0) {
-      .row .col.small-1 {
+      .row .col.s1 {
         width: 8.33333%;
         margin-left: 0; }
-      .row .col.small-2 {
+      .row .col.s2 {
         width: 16.66667%;
         margin-left: 0; }
-      .row .col.small-3 {
+      .row .col.s3 {
         width: 25%;
         margin-left: 0; }
-      .row .col.small-4 {
+      .row .col.s4 {
         width: 33.33333%;
         margin-left: 0; }
-      .row .col.small-5 {
+      .row .col.s5 {
         width: 41.66667%;
         margin-left: 0; }
-      .row .col.small-6 {
+      .row .col.s6 {
         width: 50%;
         margin-left: 0; }
-      .row .col.small-7 {
+      .row .col.s7 {
         width: 58.33333%;
         margin-left: 0; }
-      .row .col.small-8 {
+      .row .col.s8 {
         width: 66.66667%;
         margin-left: 0; }
-      .row .col.small-9 {
+      .row .col.s9 {
         width: 75%;
         margin-left: 0; }
-      .row .col.small-10 {
+      .row .col.s10 {
         width: 83.33333%;
         margin-left: 0; }
-      .row .col.small-11 {
+      .row .col.s11 {
         width: 91.66667%;
         margin-left: 0; }
-      .row .col.small-12 {
+      .row .col.s12 {
         width: 100%;
         margin-left: 0; }
-      .row .col.small-offset-1 {
+      .row .col.offset-s1 {
         margin-left: 8.33333%; }
-      .row .col.small-offset-2 {
+      .row .col.offset-s2 {
         margin-left: 16.66667%; }
-      .row .col.small-offset-3 {
+      .row .col.offset-s3 {
         margin-left: 25%; }
-      .row .col.small-offset-4 {
+      .row .col.offset-s4 {
         margin-left: 33.33333%; }
-      .row .col.small-offset-5 {
+      .row .col.offset-s5 {
         margin-left: 41.66667%; }
-      .row .col.small-offset-6 {
+      .row .col.offset-s6 {
         margin-left: 50%; }
-      .row .col.small-offset-7 {
+      .row .col.offset-s7 {
         margin-left: 58.33333%; }
-      .row .col.small-offset-8 {
+      .row .col.offset-s8 {
         margin-left: 66.66667%; }
-      .row .col.small-offset-9 {
+      .row .col.offset-s9 {
         margin-left: 75%; }
-      .row .col.small-offset-10 {
+      .row .col.offset-s10 {
         margin-left: 83.33333%; }
-      .row .col.small-offset-11 {
+      .row .col.offset-s11 {
         margin-left: 91.66667%; }
-      .row .col.small-offset-12 {
+      .row .col.offset-s12 {
         margin-left: 100%; } }
     @media only screen and (min-width: 768px) {
-      .row .col.medium-1 {
+      .row .col.m1 {
         width: 8.33333%;
         margin-left: 0; }
-      .row .col.medium-2 {
+      .row .col.m2 {
         width: 16.66667%;
         margin-left: 0; }
-      .row .col.medium-3 {
+      .row .col.m3 {
         width: 25%;
         margin-left: 0; }
-      .row .col.medium-4 {
+      .row .col.m4 {
         width: 33.33333%;
         margin-left: 0; }
-      .row .col.medium-5 {
+      .row .col.m5 {
         width: 41.66667%;
         margin-left: 0; }
-      .row .col.medium-6 {
+      .row .col.m6 {
         width: 50%;
         margin-left: 0; }
-      .row .col.medium-7 {
+      .row .col.m7 {
         width: 58.33333%;
         margin-left: 0; }
-      .row .col.medium-8 {
+      .row .col.m8 {
         width: 66.66667%;
         margin-left: 0; }
-      .row .col.medium-9 {
+      .row .col.m9 {
         width: 75%;
         margin-left: 0; }
-      .row .col.medium-10 {
+      .row .col.m10 {
         width: 83.33333%;
         margin-left: 0; }
-      .row .col.medium-11 {
+      .row .col.m11 {
         width: 91.66667%;
         margin-left: 0; }
-      .row .col.medium-12 {
+      .row .col.m12 {
         width: 100%;
         margin-left: 0; }
-      .row .col.medium-offset-1 {
+      .row .col.offset-m1 {
         margin-left: 8.33333%; }
-      .row .col.medium-offset-2 {
+      .row .col.offset-m2 {
         margin-left: 16.66667%; }
-      .row .col.medium-offset-3 {
+      .row .col.offset-m3 {
         margin-left: 25%; }
-      .row .col.medium-offset-4 {
+      .row .col.offset-m4 {
         margin-left: 33.33333%; }
-      .row .col.medium-offset-5 {
+      .row .col.offset-m5 {
         margin-left: 41.66667%; }
-      .row .col.medium-offset-6 {
+      .row .col.offset-m6 {
         margin-left: 50%; }
-      .row .col.medium-offset-7 {
+      .row .col.offset-m7 {
         margin-left: 58.33333%; }
-      .row .col.medium-offset-8 {
+      .row .col.offset-m8 {
         margin-left: 66.66667%; }
-      .row .col.medium-offset-9 {
+      .row .col.offset-m9 {
         margin-left: 75%; }
-      .row .col.medium-offset-10 {
+      .row .col.offset-m10 {
         margin-left: 83.33333%; }
-      .row .col.medium-offset-11 {
+      .row .col.offset-m11 {
         margin-left: 91.66667%; }
-      .row .col.medium-offset-12 {
+      .row .col.offset-m12 {
         margin-left: 100%; } }
     @media only screen and (min-width: 992px) {
-      .row .col.large-1 {
+      .row .col.l1 {
         width: 8.33333%;
         margin-left: 0; }
-      .row .col.large-2 {
+      .row .col.l2 {
         width: 16.66667%;
         margin-left: 0; }
-      .row .col.large-3 {
+      .row .col.l3 {
         width: 25%;
         margin-left: 0; }
-      .row .col.large-4 {
+      .row .col.l4 {
         width: 33.33333%;
         margin-left: 0; }
-      .row .col.large-5 {
+      .row .col.l5 {
         width: 41.66667%;
         margin-left: 0; }
-      .row .col.large-6 {
+      .row .col.l6 {
         width: 50%;
         margin-left: 0; }
-      .row .col.large-7 {
+      .row .col.l7 {
         width: 58.33333%;
         margin-left: 0; }
-      .row .col.large-8 {
+      .row .col.l8 {
         width: 66.66667%;
         margin-left: 0; }
-      .row .col.large-9 {
+      .row .col.l9 {
         width: 75%;
         margin-left: 0; }
-      .row .col.large-10 {
+      .row .col.l10 {
         width: 83.33333%;
         margin-left: 0; }
-      .row .col.large-11 {
+      .row .col.l11 {
         width: 91.66667%;
         margin-left: 0; }
-      .row .col.large-12 {
+      .row .col.l12 {
         width: 100%;
         margin-left: 0; }
-      .row .col.large-offset-1 {
+      .row .col.offset-l1 {
         margin-left: 8.33333%; }
-      .row .col.large-offset-2 {
+      .row .col.offset-l2 {
         margin-left: 16.66667%; }
-      .row .col.large-offset-3 {
+      .row .col.offset-l3 {
         margin-left: 25%; }
-      .row .col.large-offset-4 {
+      .row .col.offset-l4 {
         margin-left: 33.33333%; }
-      .row .col.large-offset-5 {
+      .row .col.offset-l5 {
         margin-left: 41.66667%; }
-      .row .col.large-offset-6 {
+      .row .col.offset-l6 {
         margin-left: 50%; }
-      .row .col.large-offset-7 {
+      .row .col.offset-l7 {
         margin-left: 58.33333%; }
-      .row .col.large-offset-8 {
+      .row .col.offset-l8 {
         margin-left: 66.66667%; }
-      .row .col.large-offset-9 {
+      .row .col.offset-l9 {
         margin-left: 75%; }
-      .row .col.large-offset-10 {
+      .row .col.offset-l10 {
         margin-left: 83.33333%; }
-      .row .col.large-offset-11 {
+      .row .col.offset-l11 {
         margin-left: 91.66667%; }
-      .row .col.large-offset-12 {
+      .row .col.offset-l12 {
         margin-left: 100%; } }
 
 nav {
-  background-color: #5677fc;
   color: #fff; }
   nav a.logo {
     height: inherit;
@@ -1946,8 +1945,6 @@ nav {
       -o-transition: background-color 0.3s;
       -ms-transition: background-color 0.3s;
       transition: background-color 0.3s; }
-      nav ul li:hover {
-        background-color: #3d63fc; }
     nav ul a {
       font-size: 14px;
       color: #fff;
@@ -2171,7 +2168,10 @@ small {
     line-height: 2.8rem; } }
 
 .card {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
   border-radius: 2px;
+  background-clip: padding-box;
   margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
@@ -2190,6 +2190,10 @@ small {
     overflow: hidden;
     padding: 1em; }
     .card .card-content img {
+      -webkit-border-radius: 2px 2px 0 0;
+      -moz-border-radius: 2px 2px 0 0;
+      border-radius: 2px 2px 0 0;
+      background-clip: padding-box;
       position: absolute;
       left: 0;
       right: 0;
@@ -2200,8 +2204,10 @@ small {
   .card .card-footer {
     background-color: #fafafa;
     padding: 2px 1em 8px 1em;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
+    -webkit-border-radius: 0 0 2px 2px;
+    -moz-border-radius: 0 0 2px 2px;
+    border-radius: 0 0 2px 2px;
+    background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
       color: black; }
@@ -2252,8 +2258,8 @@ small {
   @media only screen and (min-width: 992px) {
     #toast-container {
       min-width: 8%;
-      top: 5%;
-      right: 5%; } }
+      top: 8%;
+      right: 6%; } }
 
 .toast {
   margin: 10px auto;
@@ -2294,15 +2300,14 @@ ul.tabs {
     letter-spacing: .8px;
     width: auto; }
     ul.tabs li.tab a {
-      color: #5677fc;
+      color: #ee6e73;
       display: block;
       width: 100%;
       height: 100%; }
   ul.tabs .indicator {
     position: absolute;
     bottom: 0;
-    height: 2px;
-    background-color: #5677fc; }
+    height: 2px; }
 
 @media only screen and (min-width: 0) {
   ul.tabs li.tab {
@@ -2381,11 +2386,220 @@ ul.tabs {
   position: absolute;
   background-color: #FFFFFF; }
 
+/* CUSTOM CSS CHECKBOXES */
+form p {
+  margin-bottom: 10px;
+  text-align: left; }
+
+form p:last-child {
+  margin-bottom: 0px; }
+
+/* Remove default checkbox */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px; }
+
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  overflow: hidden;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -khtml-user-select: none;
+  /* webkit (konqueror) browsers */
+  -ms-user-select: none;
+  /* IE10+ */ }
+
+/* checkbox aspect */
+[type="checkbox"] + label:before,
+[type="checkbox"] + label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  -webkit-transition: .2s;
+  transition: .2s; }
+
+/* Unchecked styles */
+[type="checkbox"]:not(:checked) + label:before {
+  top: 0px;
+  width: 19px;
+  height: 19px;
+  border: 3px solid #ddd; }
+
+[type="checkbox"]:not(:checked) + label:after {
+  top: 0px;
+  width: 19px;
+  height: 19px;
+  border: 3px solid #eee;
+  z-index: 0; }
+
+/* Checked styles */
+[type="checkbox"]:checked + label:before {
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border-top: 3px solid transparent;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #7fc900;
+  border-bottom: 3px solid #7fc900;
+  -webkit-transform: rotateZ(37deg);
+  transform: rotateZ(37deg);
+  -webkit-transform-origin: 20% 40%;
+  transform-origin: 100% 100%; }
+
+[type="checkbox"]:checked + label:after {
+  top: 0px;
+  width: 19px;
+  height: 19px;
+  border: 3px solid #eee;
+  background-color: #eee;
+  z-index: 0; }
+
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  top: 0;
+  box-shadow: none;
+  background-color: #444;
+  width: 19px;
+  height: 19px;
+  border: 3px solid #444;
+  -webkit-transform: rotateZ(0deg);
+  transform: rotateZ(0deg); }
+
+[type="checkbox"]:disabled + label {
+  color: #555; }
+
+[type="checkbox"]:disabled:not(:checked) + label:hover:before {
+  border-color: #444; }
+
+/* hover style just for information */
+[type="checkbox"]:not(:checked) + label:hover:before {
+  border-color: #fff; }
+
+/* Dark Version */
+/* Unchecked styles */
+form.dark [type="checkbox"] + label {
+  color: #555; }
+
+form.dark [type="checkbox"]:not(:checked) + label:before,
+form.dark [type="checkbox"]:not(:checked) + label:after {
+  border-color: #555; }
+
+/* Checked styles */
+form.dark [type="checkbox"]:checked + label:before {
+  border-right: 3px solid #7fc900;
+  border-bottom: 3px solid #7fc900; }
+
+form.dark [type="checkbox"]:checked + label:after {
+  border-color: #555;
+  background-color: #555; }
+
+/* disabled checkbox */
+form.dark [type="checkbox"]:disabled:not(:checked) + label:before,
+form.dark [type="checkbox"]:disabled:checked + label:before {
+  background-color: #999;
+  border-color: #999; }
+
+form.dark [type="checkbox"]:disabled + label {
+  color: #777; }
+
+form.dark [type="checkbox"]:disabled:not(:checked) + label:hover:before {
+  border-color: #999; }
+
+/* hover style just for information */
+form.dark [type="checkbox"]:not(:checked) + label:hover:before {
+  border-color: #777; }
+
+/* Remove default checkbox */
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: absolute;
+  left: -9999px; }
+
+[type="radio"]:not(:checked) + label,
+[type="radio"]:checked + label {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -khtml-user-select: none;
+  /* webkit (konqueror) browsers */
+  -ms-user-select: none;
+  /* IE10+ */ }
+
+[type="radio"] + label:before,
+[type="radio"] + label:after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin: 4px;
+  width: 12px;
+  height: 12px;
+  z-index: 1;
+  -webkit-transition: 0.28s ease;
+  -moz-transition: 0.28s ease;
+  -o-transition: 0.28s ease;
+  -ms-transition: 0.28s ease;
+  transition: 0.28s ease; }
+
+/* Unchecked styles */
+[type="radio"]:not(:checked) + label:before {
+  border-radius: 50%;
+  border: 2px solid #5a5a5a; }
+
+[type="radio"]:not(:checked) + label:after {
+  border-radius: 50%;
+  border: 2px solid #0f9d58;
+  background-color: #0f9d58;
+  z-index: 0;
+  transform: scale(0); }
+
+/* Checked styles */
+[type="radio"]:checked + label:before {
+  border-radius: 50%;
+  border: 2px solid #5a5a5a; }
+
+[type="radio"]:checked + label:after {
+  border-radius: 50%;
+  border: 2px solid #0f9d58;
+  background-color: #0f9d58;
+  z-index: 1;
+  transform: scale(1.02); }
+
+/* Disabled style */
+[type="radio"]:disabled:not(:checked) + label:before,
+[type="radio"]:disabled:checked + label:before {
+  background-color: #7c7c7c;
+  border-color: #7c7c7c; }
+
+[type="radio"]:disabled + label {
+  color: #7c7c7c; }
+
+[type="radio"]:disabled:not(:checked) + label:hover:before {
+  border-color: #7c7c7c; }
+
 body {
   background-color: #fcfcfc; }
 
 .header {
-  color: #5677fc; }
+  color: #ee6e73; }
 
 p.box {
   padding: 20px; }

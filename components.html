@@ -118,10 +118,12 @@
 
   </div>
 
+<!--  Form Elements  -->
   <div id="tab4" class="container">
     <h2 class="header">Forms</h2>
-    <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing.</p>
     
+    <h4 class= "header light">Input fields</h4>
+    <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing.</p>
     <div class="row">
       <form class="col s6 offset-s3">
         <div class="row">
@@ -146,8 +148,57 @@
   &lt;/form>
       </code></pre>
     </div>
+    
+    <h4 class= "header light">Radio Buttons</h4>
+    <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
+    <div class="row">
+      <form action="#">
+        <p>
+          <input name="group1" type="radio" id="test1" />
+          <label for="test1">Red</label>
+        </p>
+        <p>
+          <input name="group1" type="radio" id="test2" />
+          <label for="test2">Yellow</label>
+        </p>
+        <p>
+          <input name="group1" type="radio" id="test3"  />
+          <label for="test3">Green</label>
+        </p>
+          <p>
+            <input name="group1" type="radio" id="test4" disabled="disabled" />
+            <label for="test4">Brown</label>
+        </p>
+      </form>
+    </div>
+    <div class="row">
+      <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
+    </div>
+    <div class="row">
+      <pre><code class="language-markup col s12">
+  &lt;form action="#">
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test1" />
+      &lt;label for="test1">Red&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test2" />
+      &lt;label for="test2">Yellow&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test3"  />
+      &lt;label for="test3">Green&lt;/label>
+    &lt;/p>
+      &lt;p>
+        &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
+        &lt;label for="test4">Brown&lt;/label>
+    &lt;/p>
+  &lt;/form>
+      </code></pre>
+    </div>
   </div>
 
+<!--  Buttons  -->
   <div id="tab5" class="container">
     <div class="row">
       <h2 class="header">Buttons</h2>
