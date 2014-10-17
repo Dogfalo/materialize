@@ -2555,6 +2555,7 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
 /* Unchecked styles */
 [type="radio"]:not(:checked) + label:before {
   top: 0px;
+  margin: 4px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -2562,6 +2563,7 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
 
 [type="radio"]:not(:checked) + label:after {
   top: 0px;
+  margin: 4px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -2573,6 +2575,7 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
 /* Checked styles */
 [type="radio"]:checked + label:before {
   top: 0px;
+  margin: 4px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -2580,13 +2583,26 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
 
 [type="radio"]:checked + label:after {
   top: 0px;
+  margin: 4px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   border: 2px solid #0f9d58;
   background-color: #0f9d58;
   z-index: 1;
-  transform: scale(1.1) ease 0.58s; }
+  transform: scale(1.02); }
+
+/* Disabled style */
+[type="radio"]:disabled:not(:checked) + label:before,
+[type="radio"]:disabled:checked + label:before {
+  background-color: #7c7c7c;
+  border: 2px solid #7c7c7c; }
+
+[type="radio"]:disabled + label {
+  color: #7c7c7c; }
+
+[type="radio"]:disabled:not(:checked) + label:hover:before {
+  border-color: #7c7c7c; }
 
 body {
   background-color: #fcfcfc; }
