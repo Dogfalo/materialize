@@ -3,7 +3,7 @@
 
     // convert rgb to hex value string
     function rgb2hex(rgb) {
-      if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
+      if (/^#[0-9A-F]{6}$/i.test(rgb)) { return rgb; }
 
       rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
       function hex(x) {
@@ -27,6 +27,7 @@
     $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown();
     $('ul.tabs').tabs();
+    $('.parallax').parallax();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

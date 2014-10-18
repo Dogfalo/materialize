@@ -25,6 +25,26 @@ $red: #e51c23;
     $i: $i + 1;
   } 
 }
+.red-text {
+  color: $red;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($red, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($red, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $pink: #e91e63; 
 
@@ -44,6 +64,26 @@ $pink: #e91e63;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($pink, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.pink-text {
+  color: $pink;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($pink, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($pink, $perc);
     }
     $i: $i + 1;
   } 
@@ -71,6 +111,26 @@ $purple: #9c27b0;
     $i: $i + 1;
   } 
 }
+.purple-text {
+  color: $purple;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($purple, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($purple, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $deep-purple: #673ab7; 
 
@@ -90,6 +150,26 @@ $deep-purple: #673ab7;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($deep-purple, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.deep-purple-text {
+  color: $deep-purple;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($deep-purple, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($deep-purple, $perc);
     }
     $i: $i + 1;
   } 
@@ -117,6 +197,26 @@ $indigo: #3f51b5;
     $i: $i + 1;
   } 
 }
+.indigo-text {
+  color: $indigo;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($indigo, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($indigo, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $blue: #5677fc;
 
@@ -136,6 +236,26 @@ $blue: #5677fc;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($blue, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.blue-text {
+  color: $blue;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(6% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($blue, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($blue, $perc);
     }
     $i: $i + 1;
   } 
@@ -163,6 +283,26 @@ $light-blue: #03a9f4;
     $i: $i + 1;
   } 
 }
+.light-blue-text {
+  color: $light-blue;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($light-blue, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($light-blue, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $cyan: #00bcd4;
 
@@ -182,6 +322,26 @@ $cyan: #00bcd4;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($cyan, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.cyan-text {
+  color: $cyan;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($cyan, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($cyan, $perc);
     }
     $i: $i + 1;
   } 
@@ -209,6 +369,26 @@ $teal: #009688;
     $i: $i + 1;
   } 
 }
+.teal-text {
+  color: $teal;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(12% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($teal, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($teal, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $green: #259b24;
 
@@ -228,6 +408,26 @@ $green: #259b24;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($green, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.green-text {
+  color: $green;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($green, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($green, $perc);
     }
     $i: $i + 1;
   } 
@@ -255,6 +455,26 @@ $light-green: #8bc34a;
     $i: $i + 1;
   } 
 }
+.light-green-text {
+  color: $light-green;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($light-green, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($light-green, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $lime: #cddc39;
 
@@ -274,6 +494,26 @@ $lime: #cddc39;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($lime, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.lime-text {
+  color: $lime;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($lime, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($lime, $perc);
     }
     $i: $i + 1;
   } 
@@ -301,6 +541,26 @@ $yellow: #ffeb3b;
     $i: $i + 1;
   } 
 }
+.yellow-text {
+  color: $yellow;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(7% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($yellow, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($yellow, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $amber: #ffc107;
 
@@ -320,6 +580,26 @@ $amber: #ffc107;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($amber, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.amber-text {
+  color: $amber;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($amber, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($amber, $perc);
     }
     $i: $i + 1;
   } 
@@ -347,6 +627,26 @@ $orange: #ff9800;
     $i: $i + 1;
   } 
 }
+.orange-text {
+  color: $orange;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($orange, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($orange, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $deep-orange: #ff5722;
 
@@ -366,6 +666,26 @@ $deep-orange: #ff5722;
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
       background-color: darken($deep-orange, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.deep-orange-text {
+  color: $deep-orange;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($deep-orange, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($deep-orange, $perc);
     }
     $i: $i + 1;
   } 
@@ -393,6 +713,26 @@ $brown: #795548;
     $i: $i + 1;
   } 
 }
+.brown-text {
+  color: $brown;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($brown, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($brown, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 $grey: #9e9e9e;
 
@@ -412,6 +752,26 @@ $grey: #9e9e9e;
     $perc: unquote(9% * $i);
     &.darken-#{$i} { 
       background-color: darken($grey, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
+.grey-text {
+  color: $grey;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($grey, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.darken-#{$i} { 
+      color: darken($grey, $perc);
     }
     $i: $i + 1;
   } 
@@ -439,8 +799,29 @@ $blue-grey: #607d8b;
     $i: $i + 1;
   } 
 }
+.blue-grey-text {
+  color: $blue-grey;
+
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(9% * $i);
+    &.lighten-#{$i} { 
+      color: lighten($blue-grey, $perc);
+    }
+    $i: $i + 1;
+  } 
+  $i: 1;
+  @while $i <= $color-depth {
+    $perc: unquote(5% * $i);
+    &.darken-#{$i} { 
+      color: darken($blue-grey, $perc);
+    }
+    $i: $i + 1;
+  } 
+}
 
 
 $white: #fff;
 .white { background-color: $white; }
+.white-text { color: $white; }
 
