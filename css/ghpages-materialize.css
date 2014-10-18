@@ -2175,6 +2175,14 @@ li {
   margin-left: -0.5rem;
   margin-right: -0.5rem; }
 
+.section {
+  padding-top: 2%;
+  padding-bottom: 3%; }
+
+.section .row {
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+
 .row {
   margin-left: auto;
   margin-right: auto; }
@@ -3067,9 +3075,6 @@ p {
   background-color: #FFF;
   border: 1px solid #eee;
   padding: 20px 40px; }
-
-.row {
-  margin-bottom: 20px; }
 
 .col.grid-example {
   background-color: #FFF;

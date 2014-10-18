@@ -23,6 +23,16 @@
   margin-right: (-1 * $gutter-width / 2);
 }
 
+.section {
+	padding-top: 2%;
+	padding-bottom: 3%;
+}
+
+.section .row {
+	padding-top: $gutter-width;
+	padding-bottom: $gutter-width;
+}
+
 .row {
   margin-left: auto;
   margin-right: auto;

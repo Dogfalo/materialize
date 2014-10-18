@@ -32,114 +32,115 @@
       </ul>
     </div>
   </div>
-  
-<!--  Toasts Section  -->
-  <div id="tab1" class="container">
-    <div class="row">
-    <h2 class="header">Toasts</h2>
-      Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also place and sized responsively, try it out by clicking the button below on different device sizes.
-      <br>
-      <a class="button raise" onclick="toast('I am a toast', 2000)">Toast!</a>
-    </div>
-    <div class="row">
-      To do this, call the toast() function programatically in JavaScript
-      <pre><code class="language-javascript col s12">
-  toast('I am a toast!', 3000) // 3000 is the duration of the toast
-      </code></pre>
-      <br>
-      One way to add this into your application is to add this as an onclick event to a button
-      <pre><code class="language-markup col s12">
-  &lt;a class="button" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
-      </code></pre>
-    </div>
-  </div>
-  
-<!--  Tooltip Section  -->
-  <div id="tab2" class="container">
-    <div class="row">
-      <h2 class="header">Tooltips</h2>
-      Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.
-      <br>
-      <a class="tooltipped button raise" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP</a>
-      <br>
-    </div>
-    <div class="row">
-      Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
-      <pre><code class="language-markup col s12">
-        &lt;a class="tooltipped" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP&lt;/a>
-      </code></pre>
-      <br>
-      Then add this to your jQuery file
-      <pre><code class="language-javascript col s12">
-        $(document).ready(function(){
-          $('.tooltipped').tooltip();
-        });
-      </code></pre>
-    </div>
-  </div>
-  
-<!--  Dropdown Section  -->
-  <div id="tab3" class="container">
-    <div class="row">
-      <h2 class="header">Dropdowns</h2>
-      <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
-      <ul id='dropdown1' class='dropdown-content'>
-        <li>one</li>
-        <li>two</li>
-        <li>three</li>
-      </ul>
-      <pre><code class="language-javascript col s12">
-        $(document).ready(function(){
-          $('.dropdown-button').dropdown();
-        });
-      </code></pre>
-    </div>
-  </div>
-
-<!--  Tabs Section  -->
-  <div id="tab4" class="container">
-    <div class="row">
-      <h2 class="header">Tabs</h2>
-      <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
-
-      <div class="col s12">
-        <ul class="tabs z-depth-1">
-          <li class="tab col s2"><a href="#test1">Test 1</a></li>
-          <li class="tab col s2"><a href="#test2">Test 2</a></li>
-          <li class="tab col s2"><a href="#test3">Test 3</a></li>
-          <li class="tab col s2"><a href="#test4">Test 4</a></li>
-        </ul>
+  <div class="container">
+    <!--  Toasts Section  -->
+      <div id="tab1" class="section">
+        <div class="row">
+        <h2 class="header">Toasts</h2>
+          Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also place and sized responsively, try it out by clicking the button below on different device sizes.
+          <br>
+          <a class="button raise" onclick="toast('I am a toast', 2000)">Toast!</a>
+        </div>
+        <div class="row">
+          To do this, call the toast() function programatically in JavaScript
+          <pre><code class="language-javascript col s12">
+      toast('I am a toast!', 3000) // 3000 is the duration of the toast
+          </code></pre>
+          <br>
+          One way to add this into your application is to add this as an onclick event to a button
+          <pre><code class="language-markup col s12">
+      &lt;a class="button" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
+          </code></pre>
+        </div>
       </div>
-      <div id="test1" class="col s12">Test 1</div>
-      <div id="test2" class="col s12">Test 2</div>
-      <div id="test3" class="col s12">Test 3</div>
-      <div id="test4" class="col s12">Test 4</div>
-    </div>
-    <div class="row">
-      <h4 class="header">Tabs HTML Structure</h4>
-      <pre><code class="language-markup col s12">
-        &lt;div class="col s12">
-          &lt;ul class="tabs">
-            &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
-          &lt;/ul>
-        &lt;/div>
-        &lt;div id="test1" class="col s12">Test 1&lt;/div>
-        &lt;div id="test2" class="col s12">Test 2&lt;/div>
-        &lt;div id="test3" class="col s12">Test 3&lt;/div>
-        &lt;div id="test4" class="col s12">Test 4&lt;/div>
-      </code></pre>
-    </div>
-    <div class="row">
-      <h4 class="header">jQuery Plugin Initialization</h4>
-      <pre><code class="language-javascript col s12">
-        $(document).ready(function(){
-          $('ul.tabs').tabs();
-        });
-      </code></pre>
-    </div>
+      
+    <!--  Tooltip Section  -->
+      <div id="tab2" class="section">
+        <div class="row">
+          <h2 class="header">Tooltips</h2>
+          Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.
+          <br>
+          <a class="tooltipped button raise" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP</a>
+          <br>
+        </div>
+        <div class="row">
+          Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
+          <pre><code class="language-markup col s12">
+            &lt;a class="tooltipped" title="Testy Tooltips COOL" data-tooltip="bottom"> SHOW me TOOLTIP&lt;/a>
+          </code></pre>
+          <br>
+          Then add this to your jQuery file
+          <pre><code class="language-javascript col s12">
+            $(document).ready(function(){
+              $('.tooltipped').tooltip();
+            });
+          </code></pre>
+        </div>
+      </div>
+      
+    <!--  Dropdown Section  -->
+      <div id="tab3" class="section">
+        <div class="row">
+          <h2 class="header">Dropdowns</h2>
+          <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
+          <ul id='dropdown1' class='dropdown-content'>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+          </ul>
+          <pre><code class="language-javascript col s12">
+            $(document).ready(function(){
+              $('.dropdown-button').dropdown();
+            });
+          </code></pre>
+        </div>
+      </div>
+    
+    <!--  Tabs Section  -->
+      <div id="tab4" class="section">
+        <div class="row">
+          <h2 class="header">Tabs</h2>
+          <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+    
+          <div class="col s12">
+            <ul class="tabs z-depth-1">
+              <li class="tab col s2"><a href="#test1">Test 1</a></li>
+              <li class="tab col s2"><a href="#test2">Test 2</a></li>
+              <li class="tab col s2"><a href="#test3">Test 3</a></li>
+              <li class="tab col s2"><a href="#test4">Test 4</a></li>
+            </ul>
+          </div>
+          <div id="test1" class="col s12">Test 1</div>
+          <div id="test2" class="col s12">Test 2</div>
+          <div id="test3" class="col s12">Test 3</div>
+          <div id="test4" class="col s12">Test 4</div>
+        </div>
+        <div class="row">
+          <h4 class="header">Tabs HTML Structure</h4>
+          <pre><code class="language-markup col s12">
+            &lt;div class="col s12">
+              &lt;ul class="tabs">
+                &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+                &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
+                &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
+                &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+              &lt;/ul>
+            &lt;/div>
+            &lt;div id="test1" class="col s12">Test 1&lt;/div>
+            &lt;div id="test2" class="col s12">Test 2&lt;/div>
+            &lt;div id="test3" class="col s12">Test 3&lt;/div>
+            &lt;div id="test4" class="col s12">Test 4&lt;/div>
+          </code></pre>
+        </div>
+        <div class="row">
+          <h4 class="header">jQuery Plugin Initialization</h4>
+          <pre><code class="language-javascript col s12">
+            $(document).ready(function(){
+              $('ul.tabs').tabs();
+            });
+          </code></pre>
+        </div>
+      </div>
   </div>
 
 <!--  Tabs Section  -->
