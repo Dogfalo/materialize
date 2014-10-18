@@ -40,7 +40,7 @@
     
     // Bind the click event handler
     $this.on('click', 'a', function(e){
-
+      console.log("tab click");
       $tabs_width = $this.width();
       $tab_width = $this.find('li').first().outerWidth();
 

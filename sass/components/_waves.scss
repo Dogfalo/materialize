@@ -1,0 +1,129 @@
+
+/*!
+ * Waves v0.5.3
+ * http://fian.my.id/Waves 
+ * 
+ * Copyright 2014 Alfiana E. Sibuea and other contributors 
+ * Released under the MIT license 
+ * https://github.com/fians/Waves/blob/master/LICENSE 
+ */
+
+@mixin transition ($transition) {
+    -webkit-transition: $transition;  
+    -moz-transition: $transition; 
+    -o-transition: $transition;
+    transition: $transition;  
+}
+
+@mixin transform($string) {
+    -webkit-transform: $string;
+    -moz-transform: $string;
+    -ms-transform: $string;
+    -o-transform: $string;
+    transform: $string;
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    @include transition(all .3s ease-out);
+    
+    .waves-ripple {
+        position: absolute;
+        pointer-events: none;
+        border-radius: 50%;
+        width:100px;
+        height:100px;
+        opacity:0;
+        background-color: rgba(0, 0, 0, 0.2);
+        @include transition(all 0.5s ease-out);
+        @include transform(scale(0));
+    }
+
+    &.waves-light .waves-ripple {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+.waves-notransition {
+    -webkit-transition: none !important;  
+    -moz-transition: none !important; 
+    -o-transition: none !important;
+    transition: none !important; 
+}
+
+.waves-button, 
+.waves-icon {
+    -webkit-transform: translateZ(0);
+    -webkit-image-mask: -webkit-radial-gradient(circle, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+}
+
+.waves-button,
+.waves-button:hover,
+.waves-button:visited,
+.waves-button:link,
+.waves-button-input {
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border:none;
+    outline:none;
+    font-size:14px;
+    text-align: center;
+    text-decoration:none;
+    z-index:1;
+}
+
+.waves-button-input {
+    margin:0;
+    padding:10px 15px;
+}
+
+.waves-input-wrapper {
+    border-radius:2px;
+    vertical-align: bottom;
+
+    &.waves-button {
+        padding:0;
+    }
+
+    .waves-button-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
+
+.waves-circle {
+    text-align:center;
+    width:2.5em;
+    height:2.5em;
+    line-height:2.5em;
+    border-radius:50%;
+}
+
+.waves-float {
+    -webkit-mask-image:none;
+    @include box-shadow(0px 1px 1.5px 1px rgba(0, 0, 0, 0.12));
+
+    &:active {
+        @include box-shadow(0px 8px 20px 1px rgba(0, 0, 0, 0.30));
+    }
+}
+
+.waves-block {
+    display:block;
+}
