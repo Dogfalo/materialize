@@ -8,6 +8,7 @@
         $this.addClass('parallax');
 
         function updateParallax() {
+          console.log("updateParallax");
           if (window_width > 480) {
             var height = $this.height();
             var bottom = $this.offset().top + height;
@@ -17,7 +18,7 @@
             var fromTop = scrollTop + top - windowHeight;
 
             if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {   
-              var parallax = fromTop / 5;
+              var parallax = fromTop / 3;
               
               $this.children("img").first().css('top', parallax + "px");
             }
