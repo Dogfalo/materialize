@@ -8,7 +8,6 @@
         $this.addClass('parallax');
 
         function updateParallax() {
-          console.log("updateParallax");
           if (window_width > 480) {
             var height = $this.height();
             var bottom = $this.offset().top + height;
