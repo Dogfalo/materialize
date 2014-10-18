@@ -2158,7 +2158,7 @@ li {
   color: #fff; }
 
 .container {
-  padding: 0 1em;
+  padding: 0 1rem;
   margin: 0 auto;
   max-width: 1280px; }
 
@@ -2172,8 +2172,8 @@ li {
   .container {
     width: 70%; } }
 .container .row {
-  margin-left: -0.5em;
-  margin-right: -0.5em; }
+  margin-left: -0.5rem;
+  margin-right: -0.5rem; }
 
 .row {
   margin-left: auto;
@@ -2187,7 +2187,7 @@ li {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 0 0.5em; }
+    padding: 0 0.5rem; }
     @media only screen and (min-width: 0) {
       .row .col.s1 {
         width: 8.33333%;
@@ -2644,7 +2644,7 @@ small {
   .card .card-content {
     position: relative;
     overflow: hidden;
-    padding: 1em; }
+    padding: 1rem; }
     .card .card-content img {
       -webkit-border-radius: 2px 2px 0 0;
       -moz-border-radius: 2px 2px 0 0;
@@ -2659,7 +2659,7 @@ small {
       z-index: -1; }
   .card .card-footer {
     background-color: #fafafa;
-    padding: 2px 1em 8px 1em;
+    padding: 2px 1rem 8px 1rem;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
     border-radius: 0 0 2px 2px;

@@ -14,7 +14,7 @@
             var top = $this.offset().top;
             var windowHeight = $(window).height();
             var scrollTop = $(window).scrollTop();
-            var fromTop = scrollTop + top - windowHeight;
+            var fromTop = scrollTop + top - (windowHeight / 2);
 
             if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {   
               var parallax = fromTop / 3;
