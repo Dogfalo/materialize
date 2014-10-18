@@ -8,7 +8,6 @@
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <link href="css/prism.css" rel="stylesheet" />
 </head>
-
 <body>
   <nav>
     <div class="container">
@@ -32,7 +31,8 @@
       </ul>
     </div>
   </div>
-  <div id="tab1" class="container">
+  <div class="container">
+    <div id="tab1" class="section">
     <h2 class="header">Media Queries</h2>
     <p>
     We have 3 media queries for the 3 standard screen sizes you can use in your custom SASS files. This also includes media query variables that will define the range.
@@ -47,19 +47,19 @@
       </p>
     <div class="row">
       <pre><code class="language-css col s12">
-  @media #{$small-and-up} {
-    // styles for small screens and larger
-  }
-  @media #{$medium-and-up} {
-    // styles for medium screens and larger
-  }
-  @media #{$large-and-up} {
-    // styles for large screens and larger
-  }
-      </code></pre>
+    @media #{$small-and-up} {
+      // styles for small screens and larger
+    }
+    @media #{$medium-and-up} {
+      // styles for medium screens and larger
+    }
+    @media #{$large-and-up} {
+      // styles for large screens and larger
+    }
+        </code></pre>
+      </div>
     </div>
-  </div>
-  <div id="tab2" class="container">
+    <div id="tab2" class="section">
     <h2 class="header">Prefixer</h2>
     One major goal of this framework is to be as adaptable as possible which includes cross browser compatibility. We have adapted a prefixer script to SASS which will automatically add all browser prefixes for certain CSS properties.
 
@@ -67,78 +67,78 @@
     For Example: Using this SASS mixin
     <div class="row">
       <pre><code class="language-scss col s12">
-  @include transition(.3s);
-      </code></pre>
+    @include transition(.3s);
+        </code></pre>
+      </div>
+      Will Output This
+      <div class="row">
+        <pre><code class="language-css col s12">
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s;
+        </code></pre>
+      </div>
+      Here is the full list of mixins
+      <div class="row">
+        <pre><code class="language-css col s12">
+    animation($args)
+    animation-delay($delay)
+    animation-direction($direction)
+    animation-duration($duration)
+    animation-fill-mode($mode)
+    animation-iteration-count($count)
+    animation-name($name)
+    animation-play-state($state)
+    animation-timing-function($function)
+    background-size($args)
+    border-radius($args)
+    box-shadow($args)
+        inner-shadow($args) 
+    box-sizing($args)
+        border-box() 
+        content-box() 
+    columns($args)
+        column-count($count)
+        column-gap($gap)
+        column-rule($args)
+        column-width($width)
+    gradient($default,$start,$stop) 
+        linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+        linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+    opacity($factor)
+    transform($args)
+        transform-origin($args)
+        transform-style($style)
+        rotate($deg)
+        scale($factor)
+        translate($x,$y)
+        translate3d($x,$y,$z)
+        translateHardware($x,$y) 
+    text-shadow($args)
+    transition($args)
+        transition-delay($delay)
+        transition-duration($duration)
+        transition-property($property)
+        transition-timing-function($function)
+        </code></pre>
+      </div>
+  
     </div>
-    Will Output This
-    <div class="row">
-      <pre><code class="language-css col s12">
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s;
-      </code></pre>
-    </div>
-    Here is the full list of mixins
-    <div class="row">
-      <pre><code class="language-css col s12">
-  animation($args)
-  animation-delay($delay)
-  animation-direction($direction)
-  animation-duration($duration)
-  animation-fill-mode($mode)
-  animation-iteration-count($count)
-  animation-name($name)
-  animation-play-state($state)
-  animation-timing-function($function)
-  background-size($args)
-  border-radius($args)
-  box-shadow($args)
-      inner-shadow($args) 
-  box-sizing($args)
-      border-box() 
-      content-box() 
-  columns($args)
-      column-count($count)
-      column-gap($gap)
-      column-rule($args)
-      column-width($width)
-  gradient($default,$start,$stop) 
-      linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
-      linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
-  opacity($factor)
-  transform($args)
-      transform-origin($args)
-      transform-style($style)
-      rotate($deg)
-      scale($factor)
-      translate($x,$y)
-      translate3d($x,$y,$z)
-      translateHardware($x,$y) 
-  text-shadow($args)
-  transition($args)
-      transition-delay($delay)
-      transition-duration($duration)
-      transition-property($property)
-      transition-timing-function($function)
-      </code></pre>
-    </div>
-
-  </div>
-  <div id="tab3" class="container dynamic-color">
-    <h2 class="header">Colors</h2>
-    Here is a color palette based on the material design base colors. Each of these colors are defined with a base color class and an optional lighten or darken class. To use these classes in a custom SASS file you can extend these classes.
-    <br><br> 
-    <div class="row">
-      <pre><code class="language-scss col s12">
-  .blue-container {
-    @extend .blue, .lighten-4;
-  }
-      </code></pre>
-    </div>
-    <h4 class="header">Color Palette</h4>
-    <div class="row">
+    <div id="tab3" class="section dynamic-color">
+      <h2 class="header">Colors</h2>
+      Here is a color palette based on the material design base colors. Each of these colors are defined with a base color class and  an optional lighten or darken class. To use these classes in a custom SASS file you can extend these classes.
+      <br><br> 
+      <div class="row">
+        <pre><code class="language-scss col s12">
+    .blue-container {
+      @extend .blue, .lighten-4;
+    }
+        </code></pre>
+      </div>
+      <h4 class="header">Color Palette</h4>
+      <div class="row">
       <div class="col s12 m6 l4">
         <div class="red lighten-5"></div>
         <div class="red lighten-4"></div>
@@ -373,10 +373,10 @@
         <div class="grey darken-4"></div>
         <div class="grey darken-5"></div>
       </div>
+      </div>
     </div>
-  </div>
-
-  <div id="tab4" class="container icon-container">
+  
+    <div id="tab4" class="section icon-container">
     <h1 class="header">Icons</h1>
     <p>We are using Icons from <a href="http://www.entypo.com/">Entypo</a></p>
     
@@ -665,8 +665,8 @@
       <i class="entypo-social google-circles"></i>
       <i class="entypo-social vk"></i>
       <i class="entypo-social smashing"></i>
-  </div>
-  <div id="tab5" class="container">
+    </div>
+    <div id="tab5" class="section">
     <div class="row">
       <h2 class="header">Shadows</h2>
       <p>In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is. You can easily extend any of these shadows with SASS.</p>
