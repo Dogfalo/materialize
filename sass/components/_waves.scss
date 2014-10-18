@@ -44,11 +44,11 @@
         position: absolute;
         pointer-events: none;
         border-radius: 50%;
-        width:100px;
-        height:100px;
+        width:20px;
+        height:20px;
         opacity:0;
         background-color: rgba(0, 0, 0, 0.2);
-        @include transition(all 0.5s ease-out);
+        @include transition(all 0.7s ease-in);
         @include transform(scale(0));
     }
 

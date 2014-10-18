@@ -70,9 +70,10 @@
 
             // Get click coordinate and element witdh
             var pos         = offset(el);
-            var relativeY   = (e.pageY - pos.top) - 45;
-            var relativeX   = (e.pageX - pos.left) - 45;
-            var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
+            var relativeY   = (e.pageY - pos.top) - 10;
+            var relativeX   = (e.pageX - pos.left) - 10;
+            // var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
+            var scale = 'scale(15)';
 
             // Attach data to element
             ripple.setAttribute('data-hold', Date.now());
