@@ -3087,7 +3087,7 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
     width: 20px;
     height: 20px;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -3098,7 +3098,7 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
     -o-transform: scale(0);
     transform: scale(0); }
   .waves-effect.waves-light .waves-ripple {
-    background-color: rgba(255, 255, 255, 0.4); }
+    background-color: rgba(255, 255, 255, 0.35); }
 
 .waves-notransition {
   -webkit-transition: none !important;

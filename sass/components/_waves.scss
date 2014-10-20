@@ -47,13 +47,13 @@
         width:20px;
         height:20px;
         opacity:0;
-        background-color: rgba(0, 0, 0, 0.2);
-        @include transition(all 0.7s ease-in);
+        background-color: rgba(0, 0, 0, 0.1);
+        @include transition(all 0.3s ease-out);
         @include transform(scale(0));
     }
 
     &.waves-light .waves-ripple {
-        background-color: rgba(255, 255, 255, 0.4);
+        background-color: rgba(255, 255, 255, 0.35);
     }
 }
 
