@@ -49,7 +49,7 @@ $radio-border: #5a5a5a;
   border: 2px solid $radio-border;
   z-index: 0;
   
-  transform: scale(0);
+  @include transform(scale(0));
 }
 
 /* Checked styles */
@@ -62,7 +62,7 @@ $radio-border: #5a5a5a;
   border: 2px solid $fill-color;
   background-color: $fill-color;
   z-index: 1;
-  transform: scale(1.02);
+  @include transform(scale(1.02));
 }
 
 
