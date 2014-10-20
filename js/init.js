@@ -28,6 +28,8 @@
     $('.dropdown-button').dropdown();
     $('ul.tabs').tabs();
     $('.parallax').parallax();
+    $('.tooltipped').tooltip();
+    $('.materialboxed').materialbox();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
