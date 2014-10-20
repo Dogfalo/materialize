@@ -35,8 +35,10 @@ form p {
 [type="checkbox"] + label:after {
   content: '';
   position: absolute;
+  margin-top: 2px;
   left: 0;
   z-index: 1;
+  @include border-radius(1px);
 
   -webkit-transition: .2s;
   transition: .2s;
@@ -44,23 +46,24 @@ form p {
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
   top: 0px;
-  width: 19px; height: 19px;
-  border: 3px solid #ddd;
+  width: 14px; height: 14px;
+  border: 2px solid #ddd;
 }
 [type="checkbox"]:not(:checked) + label:after {
   top: 0px;
-  width: 19px; height: 19px;
-  border: 3px solid #eee;
+  width: 14px; height: 14px;
+  border: 2px solid #eee;
   z-index: 0;
 }
 /* Checked styles */
 [type="checkbox"]:checked + label:before {
   top: 2px;
-  width: 6px; height: 12px;
-  border-top: 3px solid transparent;
-  border-left: 3px solid transparent;
-  border-right: 3px solid #7fc900;
-  border-bottom: 3px solid #7fc900;
+  left: 1px;
+  width: 3px; height: 8px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid $fill-color;
+  border-bottom: 2px solid $fill-color;
   -webkit-transform: rotateZ(37deg);
   transform: rotateZ(37deg);
 
@@ -69,8 +72,8 @@ form p {
 }
 [type="checkbox"]:checked + label:after {
   top: 0px;
-  width: 19px; height: 19px;
-  border: 3px solid #eee;
+  width: 14px; height: 14px;
+  border: 2px solid #eee;
   background-color: #eee;
   z-index: 0;
 }
@@ -79,56 +82,16 @@ form p {
 [type="checkbox"]:disabled:checked + label:before {
   top: 0;
   box-shadow: none;
-  background-color: #444;
-  width: 19px; height: 19px;
-  border: 3px solid #444;
+  background-color: $disabled-color;
+  width: 14px; height: 14px;
+  border: 2px solid $disabled-color;
   -webkit-transform: rotateZ(0deg);
   transform: rotateZ(0deg);
 }
 [type="checkbox"]:disabled + label {
-  color: #555;
+  color: $disabled-color;
 }
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
-  border-color: #444;
+  border-color: $disabled-color;
 }
 
-/* hover style just for information */
-[type="checkbox"]:not(:checked) + label:hover:before {
-  border-color: #fff;
-}
-
-
-/* Dark Version */
-/* Unchecked styles */
-form.dark [type="checkbox"] + label {
-  color: #555;
-}
-form.dark [type="checkbox"]:not(:checked) + label:before,
-form.dark [type="checkbox"]:not(:checked) + label:after {
-  border-color: #555;
-}
-/* Checked styles */
-form.dark [type="checkbox"]:checked + label:before {
-  border-right: 3px solid #7fc900;
-  border-bottom: 3px solid #7fc900;
-}
-form.dark [type="checkbox"]:checked + label:after {
-  border-color: #555;
-  background-color: #555;
-}
-/* disabled checkbox */
-form.dark [type="checkbox"]:disabled:not(:checked) + label:before,
-form.dark [type="checkbox"]:disabled:checked + label:before {
-  background-color: #999;
-  border-color: #999;
-}
-form.dark [type="checkbox"]:disabled + label {
-  color: #777;
-}
-form.dark [type="checkbox"]:disabled:not(:checked) + label:hover:before {
-  border-color: #999;
-}
-/* hover style just for information */
-form.dark [type="checkbox"]:not(:checked) + label:hover:before {
-  border-color: #777;
-}
