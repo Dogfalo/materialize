@@ -31,17 +31,14 @@ form p {
 }
 
 /* checkbox aspect */
-[type="checkbox"] + label:before,
-[type="checkbox"] + label:after {
+[type="checkbox"] + label:before {
   content: '';
   position: absolute;
   margin-top: 2px;
   left: 0;
   z-index: 1;
   @include border-radius(1px);
-
-  -webkit-transition: .2s;
-  transition: .2s;
+  @include transition(.28s ease);
 }
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
@@ -49,38 +46,28 @@ form p {
   width: 14px; height: 14px;
   border: 2px solid #ddd;
 }
-[type="checkbox"]:not(:checked) + label:after {
-  top: 0px;
-  width: 14px; height: 14px;
-  border: 2px solid #eee;
-  z-index: 0;
-}
+
 /* Checked styles */
 [type="checkbox"]:checked + label:before {
-  top: 2px;
-  left: 1px;
-  width: 3px; height: 8px;
+  left: -3px;
+  top: -4px;
+  width: 8px; height: 18px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
   border-right: 2px solid $fill-color;
   border-bottom: 2px solid $fill-color;
-  -webkit-transform: rotateZ(37deg);
-  transform: rotateZ(37deg);
+  @include transform(rotateZ(40deg));
+  -webkit-backface-visibility: hidden;
 
   -webkit-transform-origin: 20% 40%;
   transform-origin: 100% 100%;
 }
-[type="checkbox"]:checked + label:after {
-  top: 0px;
-  width: 14px; height: 14px;
-  border: 2px solid #eee;
-  background-color: #eee;
-  z-index: 0;
-}
+
 /* disabled checkbox */
 [type="checkbox"]:disabled:not(:checked) + label:before,
 [type="checkbox"]:disabled:checked + label:before {
   top: 0;
+  left: 0;
   box-shadow: none;
   background-color: $disabled-color;
   width: 14px; height: 14px;
