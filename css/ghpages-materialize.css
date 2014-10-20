@@ -2995,7 +2995,7 @@ form p:last-child {
   top: 0px;
   width: 14px;
   height: 14px;
-  border: 2px solid #ddd; }
+  border: 2px solid #5a5a5a; }
 
 /* Checked styles */
 [type="checkbox"]:checked + label:before {

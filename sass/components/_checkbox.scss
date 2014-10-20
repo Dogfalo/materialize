@@ -44,7 +44,7 @@ form p {
 [type="checkbox"]:not(:checked) + label:before {
   top: 0px;
   width: 14px; height: 14px;
-  border: 2px solid #ddd;
+  border: 2px solid $radio-border;
 }
 
 /* Checked styles */
