@@ -2,4 +2,19 @@
   @extend .z-depth-1;
   position: absolute;
   background-color: #FFFFFF;
+  margin: 0px;
+  min-width: 100px;
+  
+  li {
+    font-size: 1.2rem;
+    color: $off-black;
+    padding: 1rem 1rem;
+  }
+    
+  @media only screen and (min-width: $large-screen) {
+    li:hover {
+      background-color: rgba(0,0,0, .07)
+    }
+  }
+
 }
