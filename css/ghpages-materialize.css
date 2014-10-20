@@ -2958,7 +2958,6 @@ form p:last-child {
 [type="checkbox"]:not(:checked) + label,
 [type="checkbox"]:checked + label {
   position: relative;
-  overflow: hidden;
   padding-left: 35px;
   cursor: pointer;
   display: inline-block;
@@ -2984,11 +2983,11 @@ form p:last-child {
   -moz-border-radius: 1px;
   border-radius: 1px;
   background-clip: padding-box;
-  -webkit-transition: 0.28s ease;
-  -moz-transition: 0.28s ease;
-  -o-transition: 0.28s ease;
-  -ms-transition: 0.28s ease;
-  transition: 0.28s ease; }
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  -ms-transition: 0.2s;
+  transition: 0.2s; }
 
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {

@@ -17,7 +17,6 @@ form p {
 [type="checkbox"]:not(:checked) + label,
 [type="checkbox"]:checked + label {  
   position: relative;
-  overflow: hidden;
   padding-left: 35px;
   cursor: pointer;
   display: inline-block;
@@ -38,7 +37,7 @@ form p {
   left: 0;
   z-index: 1;
   @include border-radius(1px);
-  @include transition(.28s ease);
+  @include transition(.2s);
 }
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
