@@ -2152,7 +2152,7 @@ li {
     color: #2c3940; }
 
 .white {
-  background-color: #fff; }
+  background-color: white; }
 
 .white-text {
   color: white; }
@@ -2639,16 +2639,16 @@ small {
   margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: #fff; }
+    color: white; }
   .card h2 {
     font-size: 1.14rem;
-    color: #fff; }
+    color: white; }
   .card h3 {
     font-size: 1rem;
-    color: #fff; }
+    color: white; }
   .card p {
     font-size: 0.8rem;
-    color: #fff; }
+    color: white; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2674,7 +2674,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: #000; }
+      color: black; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -3030,8 +3030,7 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
 
 [type="radio"]:not(:checked) + label:after {
   border-radius: 50%;
-  border: 2px solid #0f9d58;
-  background-color: #0f9d58;
+  border: 2px solid #5a5a5a;
   z-index: 0;
   transform: scale(0); }
 
@@ -3089,10 +3088,10 @@ form.dark [type="checkbox"]:not(:checked) + label:hover:before {
     height: 20px;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.2);
-    -webkit-transition: all 0.7s ease-in;
-    -moz-transition: all 0.7s ease-in;
-    -o-transition: all 0.7s ease-in;
-    transition: all 0.7s ease-in;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);

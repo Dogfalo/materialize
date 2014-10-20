@@ -46,8 +46,7 @@ $radio-border: #5a5a5a;
 }
 [type="radio"]:not(:checked) + label:after {
   border-radius: 50%;
-  border: 2px solid $fill-color;
-  background-color: $fill-color;
+  border: 2px solid $radio-border;
   z-index: 0;
   
   transform: scale(0);
