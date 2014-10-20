@@ -24,12 +24,13 @@
   <div class="white z-depth-1">
     <div class="container">
       <ul class="row tabs">
-        <li class="tab col s2 waves-effect"><a href="#tab1">Toast</a></li>
-        <li class="tab col s2 waves-effect"><a href="#tab2">Tooltips</a></li>
-        <li class="tab col s2 waves-effect"><a href="#tab3">Dropdowns</a></li>
-        <li class="tab col s2 waves-effect"><a href="#tab4">Tabs</a></li>
-        <li class="tab col s2 waves-effect"><a href="#tab5">Parallax</a></li>
-        <li class="tab col s2 waves-effect"><a href="#tab6">Waves</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab1">Toast</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab2">Tooltips</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab3">Dropdowns</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab4">Tabs</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab5">Parallax</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab6">Waves</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab7">Modals</a></li>
       </ul>
     </div>
   </div>
@@ -173,9 +174,20 @@
   </div>
 
 <!--  Waves Section  -->
-  <div id="tab6" class="parallax-container">
+  <div id="tab6" class="container parallax-container">
     <h3 class="header">Waves</h3>
     <a class="waves-effect button raise" href="#">Wave</a>
+  </div>
+
+<!--  Modals Section  -->
+  <div id="tab7" class="container">
+    <h3 class="header">Modals</h3>
+    <a class="waves-effect button raise modal-trigger" href="#modal1">Modal</a>
+    <div id="modal1" class="modal">
+      <h4>Modal Header</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <a href="#" class="waves-effect button flat modal_close">Agree</a>
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
@@ -188,6 +200,7 @@
   <script src="js/tabs.js"></script>
   <script src="js/dropdown.js"></script>
   <script src="js/parallax.js"></script>
+  <script src="js/leanModal.js"></script>
   <script src="js/init.js"></script>
 
 </body>

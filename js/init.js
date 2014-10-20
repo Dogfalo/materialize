@@ -28,6 +28,7 @@
     $('.dropdown-button').dropdown();
     $('ul.tabs').tabs();
     $('.parallax').parallax();
+    $('.modal-trigger').leanModal();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

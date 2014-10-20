@@ -1,0 +1,20 @@
+.modal {
+  display: none;
+  background-color: #eee;
+  padding: 24px;
+  max-width: 60%;
+
+  h1,h2,h3,h4 {
+    margin-top: 0;
+  }
+}
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
