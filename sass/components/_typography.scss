@@ -1,3 +1,6 @@
+$off-black: #212121;
+
+
 a {
   text-decoration: none;
 }
@@ -19,10 +22,10 @@ html{
     
     font-family: "Roboto", "Open Sans", serif;
     font-weight: 400;
-    color: #212121;
+    color: $off-black;
 }
 h1, h2, h3, h4, h5, h6 {
-		color: #212121;
+		color: $off-black;
 		font-family: "Roboto", "Open Sans", serif;
 		font-weight: 400;
 		}
@@ -44,7 +47,7 @@ h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; letter-spacing: .03
 
 // Text Styles
 em { font-style: italic; }
-strong { font-weight: bold; color: #212121; }
+strong { font-weight: bold; color: $off-black; }
 small { font-size: 75%; }
 
 .flow-text{

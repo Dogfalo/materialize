@@ -2848,7 +2848,16 @@ ul.tabs {
 
 .dropdown-content {
   position: absolute;
-  background-color: #FFFFFF; }
+  background-color: #FFFFFF;
+  margin: 0px;
+  min-width: 100px; }
+  .dropdown-content li {
+    font-size: 1.2rem;
+    color: #212121;
+    padding: 1rem 1rem; }
+  @media only screen and (min-width: 992px) {
+    .dropdown-content li:hover {
+      background-color: rgba(0, 0, 0, 0.07); } }
 
 /* Remove default checkbox */
 [type="radio"]:not(:checked),
