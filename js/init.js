@@ -29,6 +29,8 @@
     $('ul.tabs').tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
+    $('.tooltipped').tooltip();
+    $('.materialboxed').materialbox();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
