@@ -32,7 +32,7 @@
           returnToOriginal();
         })
       $('body').append(overlay);
-      overlay.animate({opacity: 1}, {duration: 550, queue: false, easing: 'easeOutQuart'}
+      overlay.animate({opacity: 1}, {duration: 550, queue: false, easing: 'easeOutQuint'}
       );
       
       // Reposition Element AND Animate image + set z-index
@@ -42,9 +42,9 @@
         .css('top', origin.parent('.material-placeholder').offset().top)
         .css('cursor', 'default')
         .css('z-index', 10000)
-        .css('will-change', 'margin-left, margin-top')
-        .animate({ marginLeft: $(document).scrollLeft() + window.innerWidth/2 - origin.parent('.material-placeholder').innerWidth()/2 - origin.parent('.material-placeholder').offset().left}, {duration: 550, queue: false, easing: 'easeOutQuart'})
-        .animate({ marginTop: $(document).scrollTop() + window.innerHeight/2 - origin.parent('.material-placeholder').innerHeight()/2 - origin.parent('.material-placeholder').offset().top}, {duration: 550, queue: false, easing: 'easeOutQuart'});
+        .css('will-change', 'left, top')
+        .animate({ left: $(document).scrollLeft() + window.innerWidth/2 - origin.innerWidth()/2 }, {duration: 550, queue: false, easing: 'easeOutQuint'})
+        .animate({ top: $(document).scrollTop() + window.innerHeight/2 - origin.innerHeight()/2 }, {duration: 550, queue: false, easing: 'easeOutQuint'});
 
     });
     
@@ -61,12 +61,13 @@
         // Remove Overlay
         $('#materialbox-overlay').fadeOut(350, function(){$(this).remove()});
         // Reposition Element
-        origin.animate({ marginLeft: 0}, {duration: 350, queue: false, easing: 'easeOutQuart'});
-        origin.animate({ marginTop: 0}, {duration: 350, queue: false, easing: 'easeOutQuart'});
+        origin.animate({ left: origin.parent('.material-placeholder').offset().left}, {duration: 350, queue: false, easing: 'easeOutQuint'});
+        origin.animate({ top: origin.parent('.material-placeholder').offset().top }, {duration: 350, queue: false, easing: 'easeOutQuint'});
         // Reset z-index
         origin.css('z-index', origin.parent('.material-placeholder').attr('z-index'))
         .css('will-change', '')
         .css('cursor', 'pointer');
+      
     };
     
   };
