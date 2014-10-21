@@ -58,11 +58,11 @@
     // This function returns the modaled image to the original spot
     function returnToOriginal() {
       // Remove Overlay
-        $('#materialbox-overlay').fadeOut(550, function(){$(this).remove()});
+        $('#materialbox-overlay').fadeOut(350, function(){$(this).remove()});
         
         // Reposition Element
-        origin.animate({ left: origin.parent('.material-placeholder').offset().left}, {duration: 550, queue: false, easing: 'easeOutQuart'});
-        origin.animate({ top: origin.parent('.material-placeholder').offset().top}, {duration: 550, queue: false, easing: 'easeOutQuart'});
+        origin.animate({ left: origin.parent('.material-placeholder').offset().left}, {duration: 350, queue: false, easing: 'easeOutQuart'});
+        origin.animate({ top: origin.parent('.material-placeholder').offset().top}, {duration: 350, queue: false, easing: 'easeOutQuart'});
         
         // Reset z-index
         origin.css('z-index', origin.parent('.material-placeholder').attr('z-index'))
