@@ -23,7 +23,7 @@
       // Add overlay
       var overlay = $('<div></div>');
       overlay.attr('id', 'materialbox-overlay')
-        .css('width', $(document).width())
+        .css('width', $(document).width() + 100) // account for any scrollbar
         .css('height', $(document).height())
         .css('top', 0)
         .css('left', 0)
@@ -32,7 +32,9 @@
           returnToOriginal();
         })
       $('body').append(overlay);
-      overlay.animate({opacity: 1}, {duration: 550, queue: false, easing: 'easeOutQuart'});
+      overlay.animate({opacity: 1}, {duration: 550, queue: false, easing: 'easeOutQuart'}, function(){
+        $('#materialbox-overlay').attr('data-done', 'true');
+      });
       
       // Reposition Element AND Animate image + set z-index
 
@@ -47,7 +49,7 @@
     
     // Return on scroll
     $(window).scroll(function() {
-      if ($('#materialbox-overlay').length != 0) {
+      if ($('#materialbox-overlay').length != 0 && $('#materialbox-overlay').attr('data-done') == 'true' ) {
         returnToOriginal();    
       }
     });
