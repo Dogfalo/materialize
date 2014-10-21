@@ -1,15 +1,17 @@
 (function ($) {
   $.fn.materialbox = function () {
     var overlayActive = false;
+    var doneAnimating = true;
     var origin = $(this);
     var placeholder = $('<div></div>').addClass('material-placeholder');
     
     origin.wrap(placeholder);
     origin.on('click', function(e){
         // If already modal, do nothing
-       if ($('#materialbox-overlay').length != 0) {
+       if (overlayActive || doneAnimating == false) {
         return;
        }
+      
       
       // Set positioning for placeholder
       origin.parent('.material-placeholder').css('width', origin.innerWidth())
@@ -35,9 +37,12 @@
           returnToOriginal();
         })
       $('body').append(overlay);
-      overlayActive = true;
-      overlay.animate({opacity: 1}, {duration: 550, queue: false, easing: 'easeOutQuint'}
+      overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad'}
       );
+      
+      // Set states
+      overlayActive = true;
+      doneAnimating = false;
       
       // Reposition Element AND Animate image + set z-index
       var originalWidth = origin.innerWidth();
@@ -47,16 +52,25 @@
         .css('cursor', 'default')
         .css('z-index', 10000)
         .css('will-change', 'left, top')
-        .animate({ left: $(document).scrollLeft() + window.innerWidth/2 - origin.parent('.material-placeholder').offset().left - origin.innerWidth()/2 }, {duration: 550, queue: false, easing: 'easeOutQuint'})
-        .animate({ top: $(document).scrollTop() + window.innerHeight/2 - origin.parent('.material-placeholder').offset().top - origin.innerHeight()/2 }, {duration: 550, queue: false, easing: 'easeOutQuint'});
+        .animate({ left: $(document).scrollLeft() + window.innerWidth/2 - origin.parent('.material-placeholder').offset().left - origin.innerWidth()/2 }, {duration: 300, queue: false, easing: 'easeOutQuad'})
+        .animate({ top: $(document).scrollTop() + window.innerHeight/2 - origin.parent('.material-placeholder').offset().top - origin.innerHeight()/2 }, {duration: 300, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
 
     });
     
     // Return on scroll
     $(window).scroll(function() {
-      console.log(overlayActive);
-      if ($('#materialbox-overlay').length != 0) {
+      if (overlayActive) {
         returnToOriginal();    
+      }
+    });
+    
+    // Return on ESC
+    $(document).keyup(function(e) {
+
+      if (e.keyCode == 27) {   // ESC key
+        if (overlayActive) {
+        returnToOriginal();    
+      }
       }
     });
     
@@ -65,10 +79,10 @@
     function returnToOriginal() {
         // Remove Overlay
         overlayActive = false;
-        $('#materialbox-overlay').fadeOut(350, function(){$(this).remove()});
+        $('#materialbox-overlay').fadeOut(275, function(){$(this).remove()});
         // Reposition Element
-        origin.animate({ left: 0}, {duration: 350, queue: false, easing: 'easeOutQuint'});
-        origin.animate({ top: 0 }, {duration: 350, queue: false, easing: 'easeOutQuint'});
+        origin.animate({ left: 0}, {duration: 275, queue: false, easing: 'easeInOutQuad'});
+        origin.animate({ top: 0 }, {duration: 275, queue: false, easing: 'easeInOutQuad'});
         // Reset z-index
         origin.css('z-index', origin.parent('.material-placeholder').attr('z-index'))
         .css('will-change', '')
