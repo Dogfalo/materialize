@@ -4,19 +4,18 @@
     var placeholder = $('<div></div>').addClass('material-placeholder');
     
     origin.wrap(placeholder);
-
-    // Set positioning for placeholder
-    origin.parent('.material-placeholder').css('width', origin.innerWidth())
-      .css('height', origin.innerHeight())
-      .css('top', origin.offset().top)
-      .css('left', origin.offset().left)
-      .css('z-index', origin.attr('z-indez'));
-
     origin.on('click', function(e){
       // If already modal, do nothing
        if ($('#materialbox-overlay').length != 0) {
         return;
        }
+      // Set positioning for placeholder
+      origin.parent('.material-placeholder').css('width', origin.innerWidth())
+        .css('height', origin.innerHeight())
+        .css('top', origin.offset().top)
+        .css('left', origin.offset().left)
+        .css('z-index', origin.attr('z-indez'));
+
       
       origin.css('position', 'absolute');
       

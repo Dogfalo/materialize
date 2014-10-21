@@ -3155,7 +3155,8 @@ form p:last-child {
 
 .materialboxed {
   transform: translateZ(0);
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative; }
 
 #materialbox-overlay {
   position: fixed;
