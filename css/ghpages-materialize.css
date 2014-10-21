@@ -2152,10 +2152,10 @@ li {
     color: #2c3940; }
 
 .white {
-  background-color: #fff; }
+  background-color: white; }
 
 .white-text {
-  color: #fff; }
+  color: white; }
 
 .container {
   padding: 0 1rem;
@@ -2639,16 +2639,16 @@ small {
   margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: #fff; }
+    color: white; }
   .card h2 {
     font-size: 1.14rem;
-    color: #fff; }
+    color: white; }
   .card h3 {
     font-size: 1rem;
-    color: #fff; }
+    color: white; }
   .card p {
     font-size: 0.8rem;
-    color: #fff; }
+    color: white; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2674,7 +2674,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: #000; }
+      color: black; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -3152,6 +3152,17 @@ form p:last-child {
   width: 100%;
   background: #000;
   display: none; }
+
+.materialboxed {
+  transform: translateZ(0);
+  cursor: pointer; }
+
+#materialbox-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #FFFFFF;
+  z-index: 9999; }
 
 body {
   background-color: #fcfcfc; }

@@ -2958,7 +2958,6 @@ form p:last-child {
 [type="checkbox"]:not(:checked) + label,
 [type="checkbox"]:checked + label {
   position: relative;
-  overflow: hidden;
   padding-left: 35px;
   cursor: pointer;
   display: inline-block;
@@ -2974,8 +2973,7 @@ form p:last-child {
   /* IE10+ */ }
 
 /* checkbox aspect */
-[type="checkbox"] + label:before,
-[type="checkbox"] + label:after {
+[type="checkbox"] + label:before {
   content: '';
   position: absolute;
   margin-top: 2px;
@@ -2985,50 +2983,43 @@ form p:last-child {
   -moz-border-radius: 1px;
   border-radius: 1px;
   background-clip: padding-box;
-  -webkit-transition: .2s;
-  transition: .2s; }
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  -ms-transition: 0.2s;
+  transition: 0.2s; }
 
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
   top: 0px;
   width: 14px;
   height: 14px;
-  border: 2px solid #ddd; }
-
-[type="checkbox"]:not(:checked) + label:after {
-  top: 0px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid #eee;
-  z-index: 0; }
+  border: 2px solid #5a5a5a; }
 
 /* Checked styles */
 [type="checkbox"]:checked + label:before {
-  top: 2px;
-  left: 1px;
-  width: 3px;
-  height: 8px;
+  left: -3px;
+  top: -4px;
+  width: 8px;
+  height: 18px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
   border-right: 2px solid #0f9d58;
   border-bottom: 2px solid #0f9d58;
-  -webkit-transform: rotateZ(37deg);
-  transform: rotateZ(37deg);
+  -webkit-transform: rotateZ(40deg);
+  -moz-transform: rotateZ(40deg);
+  -ms-transform: rotateZ(40deg);
+  -o-transform: rotateZ(40deg);
+  transform: rotateZ(40deg);
+  -webkit-backface-visibility: hidden;
   -webkit-transform-origin: 20% 40%;
   transform-origin: 100% 100%; }
-
-[type="checkbox"]:checked + label:after {
-  top: 0px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid #eee;
-  background-color: #eee;
-  z-index: 0; }
 
 /* disabled checkbox */
 [type="checkbox"]:disabled:not(:checked) + label:before,
 [type="checkbox"]:disabled:checked + label:before {
   top: 0;
+  left: 0;
   box-shadow: none;
   background-color: #7c7c7c;
   width: 14px;
@@ -3143,3 +3134,32 @@ form p:last-child {
 
 .waves-block {
   display: block; }
+
+.modal {
+  display: none;
+  background-color: #eee;
+  padding: 24px;
+  max-width: 60%; }
+  .modal h1, .modal h2, .modal h3, .modal h4 {
+    margin-top: 0; }
+
+#lean_overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  display: none; }
+
+.materialboxed {
+  transform: translateZ(0);
+  cursor: pointer; }
+
+#materialbox-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #FFFFFF;
+  z-index: 9999; }
