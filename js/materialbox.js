@@ -31,9 +31,11 @@
           returnToOriginal();
         })
       $('body').append(overlay);
-      overlay.animate({opacity: 1}, {duration: 550, queue: false, easing: 'easeOutQuart'}, function(){
-        $('#materialbox-overlay').attr('data-done', 'true');
-      });
+      overlay.animate({opacity: 1}, {duration: 550, queue: false, easing: 'easeOutQuart'}
+      );
+//      setTimeout(function() {
+//          $('#materialbox-overlay').data('done', 'true');
+//        },100)
       
       // Reposition Element AND Animate image + set z-index
 
@@ -48,7 +50,7 @@
     
     // Return on scroll
     $(window).scroll(function() {
-      if ($('#materialbox-overlay').length != 0 && $('#materialbox-overlay').attr('data-done') == 'true' ) {
+      if ($('#materialbox-overlay').length != 0 && $('#materialbox-overlay').data('done') == 'true' ) {
         returnToOriginal();    
       }
     });
