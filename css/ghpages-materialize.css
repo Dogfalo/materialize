@@ -2395,9 +2395,13 @@ nav {
     color: #fff;
     float: left;
     display: inline-block;
-    font-size: 23px; }
+    font-size: 23px;
+    padding-left: 1rem;
+    padding-right: 0rem; }
     nav .brand-logo.right {
-      float: right; }
+      float: right;
+      padding-right: 1rem;
+      padding-left: 1rem; }
   nav ul {
     margin: 0;
     float: right; }
