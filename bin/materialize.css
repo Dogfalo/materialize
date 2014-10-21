@@ -3143,3 +3143,14 @@ form p:last-child {
 
 .waves-block {
   display: block; }
+
+.materialboxed {
+  transform: translateZ(0);
+  cursor: pointer; }
+
+#materialbox-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #FFFFFF;
+  z-index: 9999; }
