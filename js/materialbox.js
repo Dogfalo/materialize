@@ -50,7 +50,7 @@
     
     // Return on scroll
     $(window).scroll(function() {
-      if ($('#materialbox-overlay').length != 0 && $('#materialbox-overlay').data('done') == 'true' ) {
+      if ($('#materialbox-overlay').length != 0) {
         returnToOriginal();    
       }
     });
