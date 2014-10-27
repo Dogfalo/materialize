@@ -1,0 +1,13 @@
+.materialboxed {
+  transform: translateZ(0);
+  cursor: pointer;
+  position: relative;
+}
+
+#materialbox-overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  background-color: #FFFFFF;
+  z-index: 9999;
+}

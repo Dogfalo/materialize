@@ -29,6 +29,8 @@
     $('ul.tabs').tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
+    $('.tooltipped').tooltip();
+    $('.materialboxed').materialbox();
     $('.collapsible').collapsible();
 
   }); // end of document ready

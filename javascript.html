@@ -31,7 +31,8 @@
         <li class="tab col s1 waves-effect"><a href="#tab5">Parallax</a></li>
         <li class="tab col s1 waves-effect"><a href="#tab6">Waves</a></li>
         <li class="tab col s1 waves-effect"><a href="#tab7">Modals</a></li>
-        <li class="tab col s1 waves-effect"><a href="#tab8">Collapsible</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab8">Materialbox</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab9">Collapsible</a></li>
       </ul>
     </div>
   </div>
@@ -42,7 +43,7 @@
         <h2 class="header">Toasts</h2>
           Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also place and sized responsively, try it out by clicking the button below on different device sizes.
           <br>
-          <a class="button raise" onclick="toast('I am a toast', 2000)">Toast!</a>
+          <a class="waves-effect waves-light button raise" onclick="toast('I am a toast', 2000)">Toast!</a>
         </div>
         <div class="row">
           To do this, call the toast() function programatically in JavaScript
@@ -144,9 +145,9 @@
           </code></pre>
         </div>
       </div>
-  </div>
 
-<!--  Tabs Section  -->
+
+<!--  Parallax Section  -->
   <div id="tab5" class="parallax-container">
     <div class="parallax"><img src="https://unsplash.imgix.net/reserve/EnF7DhHROS8OMEp2pCkx_Dufer%20food%20overhead%20hig%20res.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=7cfd39dc9757597e6c711ca30eaacab5"></div>
     <div class="row container">
@@ -175,24 +176,38 @@
   </div>
 
 <!--  Waves Section  -->
-  <div id="tab6" class="container parallax-container">
+  <div id="tab6" class="section">
     <h3 class="header">Waves</h3>
-    <a class="waves-effect button raise" href="#">Wave</a>
+    <a class="waves-effect waves-light button raise" href="#">Wave</a>
   </div>
-
-<!--  Modals Section  -->
+  
+  <!--  Modals Section  -->
   <div id="tab7" class="container">
     <h3 class="header">Modals</h3>
-    <a class="waves-effect button raise modal-trigger" href="#modal1">Modal</a>
+    <a class="waves-effect waves-light button raise modal-trigger" href="#modal1">Modal</a>
     <div id="modal1" class="modal">
       <h4>Modal Header</h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
       <a href="#" class="waves-effect button flat modal_close">Agree</a>
     </div>
   </div>
+    
+  <!--  Material Box Section  -->
+  <div id="tab8" class="section">
+    <div class="row">
+      <h3 class="header">Material Box</h3>
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <img class="materialboxed" src="images/sample-1.jpg"></img>
+     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    </div>
+    
+  </div>
+</div>  <!--  End of Container -->
+
+
 
 <!--  Collapsible Section  -->
-  <div id="tab8" class="container">
+  <div id="tab9" class="container">
     <h3 class="header">Collapsible</h3>
     <ul class="collapsible">
       <li>
@@ -224,6 +239,7 @@
   <script src="js/leanModal.js"></script>
   <script src="js/collapsible.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/materialbox.js"></script>
 
 </body>
 </html>
