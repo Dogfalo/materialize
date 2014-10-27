@@ -2065,7 +2065,7 @@ li {
     background-color: #b5b5b5; }
   .grey.lighten-2 {
     background-color: #cccccc; }
-  .grey.lighten-3 {
+  .grey.lighten-3, .collapsible-header, .collapsible-body {
     background-color: #e3e3e3; }
   .grey.lighten-4 {
     background-color: #fafafa; }
@@ -3152,6 +3152,32 @@ form p:last-child {
   width: 100%;
   background: #000;
   display: none; }
+
+.collapsible-header {
+  display: block;
+  cursor: pointer;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem; }
+
+.collapsible-body {
+  padding: 0 1rem;
+  overflow: hidden;
+  max-height: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: 0.3s cubic-bezier(0, 0.54, 0.48, 0.99);
+  -moz-transition: 0.3s cubic-bezier(0, 0.54, 0.48, 0.99);
+  -o-transition: 0.3s cubic-bezier(0, 0.54, 0.48, 0.99);
+  transition: 0.3s cubic-bezier(0, 0.54, 0.48, 0.99); }
+
+li.active .collapsible-body {
+  max-height: 500px;
+  -webkit-transition: 0.3s cubic-bezier(0.68, 0.01, 1, 0.4);
+  -moz-transition: 0.3s cubic-bezier(0.68, 0.01, 1, 0.4);
+  -o-transition: 0.3s cubic-bezier(0.68, 0.01, 1, 0.4);
+  transition: 0.3s cubic-bezier(0.68, 0.01, 1, 0.4); }
 
 body {
   background-color: #fcfcfc; }

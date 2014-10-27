@@ -1,0 +1,22 @@
+.collapsible-header {
+  display: block;
+  cursor: pointer;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  @extend .grey.lighten-3;
+}
+
+.collapsible-body {
+  padding: 0 1rem;
+  @extend .grey.lighten-3;
+  overflow: hidden;
+  max-height: 0;
+  @include box-sizing(border-box);
+  @include transition(.3s cubic-bezier(0,.54,.48,.99));
+}
+
+li.active .collapsible-body {
+  max-height: 500px;
+  @include transition(.3s cubic-bezier(.68,.01,1,.4));
+}
