@@ -2396,8 +2396,7 @@ nav {
     float: left;
     display: inline-block;
     font-size: 23px;
-    padding-left: 1rem;
-    padding-right: 0rem; }
+    padding: 0; }
     nav .brand-logo.right {
       float: right;
       padding-right: 1rem;
