@@ -1,8 +1,14 @@
 .materialboxed {
   transform: translateZ(0);
-  cursor: pointer;
+  cursor: zoom-in;
   position: relative;
 }
+
+.materialboxed.active {
+  cursor: zoom-out;
+}
+
+
 
 #materialbox-overlay {
   position:fixed;

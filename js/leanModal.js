@@ -6,8 +6,7 @@
  
             var defaults = {
                 top: 100,
-                overlay: 0.5,
-                closeButton: null
+                overlay: 0.5
             }
             
             var overlay = $("<div id='lean_overlay'></div>");
@@ -28,8 +27,10 @@
                      close_modal(modal_id);                    
                 });
                 
-                $(o.closeButton).click(function() { 
-                     close_modal(modal_id);                    
+                $(modal_id).find('.modal_close').click(function(e) { 
+                    e.preventDefault();
+                    close_modal(modal_id);
+                    // setTimeout( function(){ close_modal(modal_id); },200 );               
                 });
                          	
               	var modal_height = $(modal_id).outerHeight();
@@ -46,12 +47,12 @@
         			'opacity' : 0,
         			'z-index': 11000,
         			'left' : 50 + '%',
-        			'margin-left' : -(modal_width/2) + "px",
-        			'top' : o.top + "px"
+        			'margin-left' : -(modal_width/2) + "px"
         		
         		});
 
-        		$(modal_id).fadeTo(200,1);
+        		$(modal_id).animate({"top" : o.top + "px"
+                            , opacity: 1}, {duration: 300, easing: 'easeOutExpo'});
 
                 e.preventDefault();
                 		
@@ -63,7 +64,11 @@
 
         		$("#lean_overlay").fadeOut(200);
 
-        		$(modal_id).css({ 'display' : 'none' });
+                $(modal_id).fadeOut(200, function() {
+                    $(this).css('top', 0);
+                });
+                
+        		// $(modal_id).css({ 'display' : 'none' });
 			
 			}
     

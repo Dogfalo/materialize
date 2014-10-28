@@ -32,6 +32,7 @@
         <li class="tab col s1 waves-effect"><a href="#tab6">Waves</a></li>
         <li class="tab col s1 waves-effect"><a href="#tab7">Modals</a></li>
         <li class="tab col s1 waves-effect"><a href="#tab8">Materialbox</a></li>
+        <li class="tab col s1 waves-effect"><a href="#tab9">Collapsible</a></li>
       </ul>
     </div>
   </div>
@@ -146,7 +147,109 @@
       </div>
 
 
-<!--  Parallax Section  -->
+<!--  Waves Section  -->
+  <div id="tab6" class="section">
+    <h3 class="header">Waves</h3>
+    <a class="waves-effect waves-light button raise" href="#">Wave</a>
+  </div>
+  
+  <!--  Modals Section  -->
+  <div id="tab7" class="section">
+    <h3 class="header">Modals</h3>
+    <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal_close</code> to your button.</p>
+    <a class="waves-effect waves-light button raise modal-trigger" href="#modal1">Modal</a>
+    <div id="modal1" class="modal">
+      <h4>Modal Header</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <a href="#" class="waves-effect button flat modal_close">Agree</a>
+    </div>
+
+    <div class="row">
+      <h4>Modals HTML Structure</h4>
+      <pre><code class="language-markup col s12">  &lt;!-- Modal Trigger -->
+  &lt;a class="waves-effect waves-light button raise modal-trigger" href="#modal1">Modal&lt;/a>
+
+
+  &lt;!-- Modal Structure -->
+  &lt;div id="modal1" class="modal">
+    &lt;h4>Modal Header&lt;/h4>
+    &lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum&lt;/p>
+    &lt;a href="#" class="waves-effect button flat modal_close">Agree&lt;/a>
+  &lt;/div>
+      </code></pre>
+    </div>
+    <div class="row">
+      <h4>jQuery Plugin Initialization</h4>
+      <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+  });
+      </code></pre>
+    </div>
+  </div>
+    
+  <!--  Material Box Section  -->
+  <div id="tab8" class="section">
+    <div class="row">
+      <h3 class="header">Material Box</h3>
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <img class="materialboxed" width="650" src="images/sample-1.jpg"></img>
+     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <img class="materialboxed" width="200" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg"></img>
+    </div>
+    
+  </div>
+</div>  <!--  End of Container -->
+
+
+
+<!--  Collapsible Section  -->
+  <div id="tab9" class="container">
+    <h3 class="header">Collapsible</h3>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header"><i class="entypo cog"></i>First</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo map"></i>Second</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo flash"></i>Third</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+    </ul>
+    <div class="row">
+      <h4>Modals HTML Structure</h4>
+      <pre><code class="language-markup col s12">
+  &lt;ul class="collapsible">
+    &lt;li>
+      &lt;div class="collapsible-header">First&lt;/div>
+      &lt;div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">Second&lt;/div>
+      &lt;div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">Third&lt;/div>
+      &lt;div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p>&lt;/div>
+    &lt;/li>
+  &lt;/ul>
+      </code></pre>
+    </div>
+    <div class="row">
+      <h4>jQuery Plugin Initialization</h4>
+      <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+      </code></pre>
+    </div>
+  </div>
+
+  <!--  Parallax Section  -->
   <div id="tab5" class="parallax-container">
     <div class="parallax"><img src="https://unsplash.imgix.net/reserve/EnF7DhHROS8OMEp2pCkx_Dufer%20food%20overhead%20hig%20res.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=7cfd39dc9757597e6c711ca30eaacab5"></div>
     <div class="row container">
@@ -174,37 +277,6 @@
     <br><br><br><br>
   </div>
 
-<!--  Waves Section  -->
-  <div id="tab6" class="section">
-    <h3 class="header">Waves</h3>
-    <a class="waves-effect waves-light button raise" href="#">Wave</a>
-  </div>
-  
-  <!--  Modals Section  -->
-  <div id="tab7" class="container">
-    <h3 class="header">Modals</h3>
-    <a class="waves-effect waves-light button raise modal-trigger" href="#modal1">Modal</a>
-    <div id="modal1" class="modal">
-      <h4>Modal Header</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-      <a href="#" class="waves-effect button flat modal_close">Agree</a>
-    </div>
-  </div>
-    
-  <!--  Material Box Section  -->
-  <div id="tab8" class="section">
-    <div class="row">
-      <h3 class="header">Material Box</h3>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-      <img class="materialboxed" src="images/sample-1.jpg"></img>
-     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-    </div>
-    
-  </div>
-</div>  <!--  End of Container -->
-
-
-
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
   </script>
   <script src="js/jquery.easing.1.3.js"></script>
@@ -216,8 +288,9 @@
   <script src="js/dropdown.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/leanModal.js"></script>
-  <script src="js/init.js"></script>
+  <script src="js/collapsible.js"></script>
   <script src="js/materialbox.js"></script>
+  <script src="js/init.js"></script>
 
 </body>
 </html>

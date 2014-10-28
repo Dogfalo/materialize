@@ -1,0 +1,38 @@
+ul.collapsible {
+  border-top: 1px solid #eee;
+  @extend .z-depth-1;
+}
+
+.collapsible-header {
+  display: block;
+  cursor: pointer;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+
+  i {
+    width: 2rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 15px;
+  }
+}
+
+.collapsible-body {
+  overflow: hidden;
+  display: none;
+  border-bottom: 1px solid #ddd;
+  @include box-sizing(border-box);
+
+  p {
+    margin: 0;
+    padding: 2rem;
+  }
+}
+
+li.active .collapsible-body { 
+
+}

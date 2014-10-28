@@ -40,6 +40,7 @@
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.tooltipped').tooltip();
+    $('.collapsible').collapsible();
     $('.materialboxed').materialbox();
 
   }); // end of document ready
