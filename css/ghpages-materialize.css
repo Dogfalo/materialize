@@ -1281,7 +1281,7 @@ li {
   background-color: #e51c23; }
   .red.lighten-1, nav ul li:hover {
     background-color: #ea454b; }
-  .red.lighten-2, nav, ul.tabs .indicator {
+  .red.lighten-2, nav, ul.tabs .indicator, #index-banner {
     background-color: #ee6e73; }
   .red.lighten-3 {
     background-color: #f3989b; }
@@ -1304,9 +1304,9 @@ li {
   color: #e51c23; }
   .red-text.lighten-1 {
     color: #ea454b; }
-  .red-text.lighten-2 {
+  .red-text.lighten-2, .header {
     color: #ee6e73; }
-  .red-text.lighten-3 {
+  .red-text.lighten-3, .promo i {
     color: #f3989b; }
   .red-text.lighten-4 {
     color: #f8c1c3; }
@@ -2396,7 +2396,7 @@ nav {
     float: left;
     display: inline-block;
     font-size: 23px;
-    padding-left: 1rem;
+    padding-left: 0rem;
     padding-right: 0rem; }
     nav .brand-logo.right {
       float: right;
@@ -3176,9 +3176,6 @@ form p:last-child {
 body {
   background-color: #fcfcfc; }
 
-.header {
-  color: #ee6e73; }
-
 p.box {
   padding: 20px; }
 
@@ -3189,6 +3186,20 @@ p {
   background-color: #FFF;
   border: 1px solid #eee;
   padding: 20px 40px; }
+
+#index-banner {
+  height: 35%; }
+  #index-banner .header {
+    color: #FFF; }
+
+.promo p {
+  margin-top: -80px;
+  font-size: 1.7rem;
+  font-weight: 300; }
+.promo i {
+  margin-top: -80px;
+  font-size: 220px;
+  display: block; }
 
 .col.grid-example {
   background-color: #FFF;
@@ -3223,6 +3234,12 @@ p {
 
 .icon-container .entypo-social {
   font-size: 3em; }
+
+.icon-holder {
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  float: left; }
 
 code, pre {
   font-size: 1.1rem; }

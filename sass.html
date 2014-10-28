@@ -131,9 +131,22 @@
       Here is a color palette based on the material design base colors. Each of these colors are defined with a base color class and  an optional lighten or darken class. To use these classes in a custom SASS file you can extend these classes.
       <br><br> 
       <div class="row">
+        <p>
+        For background colors, you can apply the color simply by extending the classes like the example below.
+        </p>
         <pre><code class="language-scss col s12">
-    .blue-container {
+    .ilike-blue-container {
       @extend .blue, .lighten-4;
+    }
+        </code></pre>
+      </div>
+      <div class="row">
+        <p>
+        For changing text color, you can apply the color simply by extending the classes like the example below.
+        </p>
+        <pre><code class="language-scss col s12">
+    .ilike-blue-container {
+      @extend .blue-text, .lighten-4;
     }
         </code></pre>
       </div>
@@ -417,10 +430,10 @@
       <i class="entypo home"></i>
       <i class="entypo popup"></i>
       <i class="entypo search"></i>
-      <i class="entypo flashight"></i>
+      <i class="entypo flashlight"></i>
       <i class="entypo print"></i>
       <i class="entypo bell"></i>
-      <i class="entypo ink"></i>
+      <i class="entypo link"></i>
       <i class="entypo flag"></i>
       <i class="entypo cog"></i>
       <i class="entypo tools"></i>
@@ -438,7 +451,7 @@
       <i class="entypo newspaper"></i>
       <i class="entypo bag"></i>
       <i class="entypo airplane"></i>
-      <i class="entypo ifebuoy"></i>
+      <i class="entypo lifebuoy"></i>
       <i class="entypo eye"></i>
       <i class="entypo clock"></i>
       <i class="entypo mic"></i>
@@ -466,22 +479,22 @@
       <i class="entypo globe"></i>
       <i class="entypo keyboard"></i>
       <i class="entypo browser"></i>
-      <i class="entypo pubish"></i>
+      <i class="entypo publish"></i>
       <i class="entypo progress-3"></i>
       <i class="entypo progress-2"></i>
       <i class="entypo progress-1"></i>
       <i class="entypo progress-0"></i>
-      <i class="entypo ight-down"></i>
-      <i class="entypo ight-up"></i>
+      <i class="entypo light-down"></i>
+      <i class="entypo light-up"></i>
       <i class="entypo adjust"></i>
       <i class="entypo code"></i>
       <i class="entypo monitor"></i>
       <i class="entypo infinity"></i>
-      <i class="entypo ight-bulb"></i>
+      <i class="entypo light-bulb"></i>
       <i class="entypo credit-card"></i>
       <i class="entypo database"></i>
       <i class="entypo voicemail"></i>
-      <i class="entypo cipboard"></i>
+      <i class="entypo clipboard"></i>
       <i class="entypo cart"></i>
       <i class="entypo box"></i>
       <i class="entypo ticket"></i>
@@ -490,7 +503,7 @@
       <i class="entypo thermometer"></i>
       <i class="entypo water"></i>
       <i class="entypo sweden"></i>
-      <i class="entypo ine-graph"></i>
+      <i class="entypo line-graph"></i>
       <i class="entypo pie-chart"></i>
       <i class="entypo bar-graph"></i>
       <i class="entypo area-graph"></i>
@@ -526,10 +539,10 @@
       <i class="entypo back-in-time"></i>
       <i class="entypo level-up"></i>
       <i class="entypo switch"></i>
-      <i class="entypo numbered-ist"></i>
-      <i class="entypo add-to-ist"></i>
+      <i class="entypo numbered-list"></i>
+      <i class="entypo add-to-list"></i>
       <i class="entypo layout"></i>
-      <i class="entypo ist"></i>
+      <i class="entypo list"></i>
       <i class="entypo text-doc"></i>
       <i class="entypo text-doc-inverted"></i>
       <i class="entypo doc"></i>
@@ -566,7 +579,7 @@
       <i class="entypo flow-cascade"></i>
       <i class="entypo flow-branch"></i>
       <i class="entypo flow-tree"></i>
-      <i class="entypo flow-ine"></i>
+      <i class="entypo flow-line"></i>
       <i class="entypo flow-parallel"></i>
       <i class="entypo left-bold"></i>
       <i class="entypo down-bold"></i>
@@ -669,7 +682,7 @@
     <div id="tab5" class="section">
     <div class="row">
       <h2 class="header">Shadows</h2>
-      <p>In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is. You can easily extend any of these shadows with SASS.</p>
+      <p>In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is. You can easily apply this shadow effect by adding a <code class="language-markup">class="z-depth-2"</code> to an HTML tag. Alternatively you can extend any of these shadows with SASS using <code class="language-scss">@extend .z-depth-2</code>.</p>
       
       <div class="col s12 m2 offset-m1">
         <p class="z-depth-1 box">this is longer text so we can see the shadows at work.</p>

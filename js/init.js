@@ -21,7 +21,17 @@
           $(this).css('color', 'rgba(255,255,255,.9');
         }
       });
-    }); 
+    });
+
+    // Print out entypo name
+    $('.entypo').each(function() {
+      var wrapper = $('<div></div>').addClass('icon-holder');
+      var icon = $(this);
+      $(this).wrap(wrapper);
+      $('<p></p>').text($(this).attr('class')).insertAfter(icon);
+      
+
+    });
 
     // PLugin initialization
     $('.tooltipped').tooltip();

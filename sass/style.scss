@@ -3,7 +3,7 @@ body {
 }
 
 .header {
-  color: lighten($red, 18%);
+  @extend .red-text.lighten-2
 }
 
 p.box {
@@ -17,6 +17,32 @@ p {
   background-color: #FFF;
   border: 1px solid #eee;
   padding: 20px 40px;
+}
+
+
+//Index page Styles
+#index-banner {
+  @extend .red.lighten-2;
+  .header {
+    color: #FFF;
+  }
+  height: 35%;
+}
+
+.promo{
+
+  p {
+    margin-top: -80px;
+  font-size: 1.7rem;
+  font-weight: 300;
+  }
+
+  i {
+    @extend .red-text.lighten-3;
+    margin-top: -80px;
+    font-size: 220px;
+    display: block;
+  }
 }
 
 // Grid doc styles
@@ -65,6 +91,13 @@ p {
 }
 .icon-container .entypo-social {
   font-size: 3em;
+}
+
+.icon-holder {
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  float: left;
 }
 
 // Prism Styling
