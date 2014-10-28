@@ -1,22 +1,38 @@
+ul.collapsible {
+  border-top: 1px solid #eee;
+  @extend .z-depth-1;
+}
+
 .collapsible-header {
   display: block;
   cursor: pointer;
   height: 3rem;
   line-height: 3rem;
   padding: 0 1rem;
-  @extend .grey.lighten-3;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+
+  i {
+    width: 2rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 15px;
+  }
 }
 
 .collapsible-body {
-  padding: 0 1rem;
-  @extend .grey.lighten-3;
   overflow: hidden;
-  max-height: 0;
+  display: none;
+  border-bottom: 1px solid #ddd;
   @include box-sizing(border-box);
-  @include transition(.3s cubic-bezier(0,.54,.48,.99));
+
+  p {
+    margin: 0;
+    padding: 2rem;
+  }
 }
 
-li.active .collapsible-body {
-  max-height: 500px;
-  @include transition(.3s cubic-bezier(.68,.01,1,.4));
+li.active .collapsible-body { 
+
 }
