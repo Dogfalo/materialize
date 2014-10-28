@@ -24,7 +24,7 @@
     });
 
     // Print out entypo name
-    $('.entypo').each(function() {
+    $('.icon-container').children('.entypo').each(function() {
       var wrapper = $('<div></div>').addClass('icon-holder');
       var icon = $(this);
       $(this).wrap(wrapper);
