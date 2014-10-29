@@ -401,6 +401,12 @@ li {
     top: 0;
     width: 100%; }
 
+ul {
+  list-style-type: none; }
+
+a {
+  text-decoration: none; }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
@@ -1588,7 +1594,7 @@ li {
     color: #b1e6fe; }
   .light-blue-text.lighten-5 {
     color: #def4ff; }
-  .light-blue-text.darken-1 {
+  .light-blue-text.darken-1, a {
     color: #0398db; }
   .light-blue-text.darken-2 {
     color: #0286c2; }
@@ -2399,8 +2405,7 @@ nav {
     padding: 0; }
     nav .brand-logo.right {
       float: right;
-      padding-right: 1rem;
-      padding-left: 1rem; }
+      padding: 0; }
   nav ul {
     margin: 0;
     float: right; }
