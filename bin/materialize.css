@@ -1308,7 +1308,7 @@ li {
     color: #ee6e73; }
   .red-text.lighten-3 {
     color: #f3989b; }
-  .red-text.lighten-4 {
+  .red-text.lighten-4, ul.tabs li.tab a:hover {
     color: #f8c1c3; }
   .red-text.lighten-5 {
     color: #fdeaeb; }
@@ -2395,7 +2395,7 @@ nav {
     color: #fff;
     float: left;
     display: inline-block;
-    font-size: 23px;
+    font-size: 2.2rem;
     padding: 0; }
     nav .brand-logo.right {
       float: right;
@@ -2406,16 +2406,17 @@ nav {
     float: right; }
     nav ul li {
       float: left;
-      padding: 0 10px;
+      padding: 0px;
       -webkit-transition: background-color 0.3s;
       -moz-transition: background-color 0.3s;
       -o-transition: background-color 0.3s;
       -ms-transition: background-color 0.3s;
       transition: background-color 0.3s; }
     nav ul a {
-      font-size: 14px;
+      font-size: 1rem;
       color: #fff;
-      display: block; }
+      display: block;
+      padding: 0px 10px; }
     nav ul.left {
       float: left; }
 
@@ -2743,7 +2744,12 @@ ul.tabs {
       color: #ee6e73;
       display: block;
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      -webkit-transition: color 0.28s ease;
+      -moz-transition: color 0.28s ease;
+      -o-transition: color 0.28s ease;
+      -ms-transition: color 0.28s ease;
+      transition: color 0.28s ease; }
   ul.tabs .indicator {
     position: absolute;
     bottom: 0;
@@ -2984,9 +2990,10 @@ ul.collapsible {
     padding: 2rem; }
 
 .materialboxed {
-  transform: translateZ(0);
   cursor: zoom-in;
   position: relative; }
+  .materialboxed:hover {
+    will-change: left, top; }
 
 .materialboxed.active {
   cursor: zoom-out; }
