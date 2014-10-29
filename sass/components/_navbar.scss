@@ -2,6 +2,7 @@ nav {
   color: #fff;
   @extend .z-depth-1;
   @extend .red.lighten-2;
+  width: 100%;
 
   a.logo {
     height: inherit;
@@ -18,7 +19,7 @@ nav {
     color: #fff;
     float: left;
     display: inline-block;
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     padding: 0;
 
     &.right {

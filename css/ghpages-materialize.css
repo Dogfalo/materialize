@@ -2387,7 +2387,8 @@ a {
         margin-left: 100%; } }
 
 nav {
-  color: #fff; }
+  color: #fff;
+  width: 100%; }
   nav a.logo {
     height: inherit;
     line-height: inherit;
@@ -2401,7 +2402,7 @@ nav {
     color: #fff;
     float: left;
     display: inline-block;
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     padding: 0; }
     nav .brand-logo.right {
       float: right;
@@ -2733,7 +2734,8 @@ ul.tabs {
   position: relative;
   height: 48px;
   background-color: #FFF;
-  margin: 0 auto; }
+  margin: 0 auto;
+  width: 100%; }
   ul.tabs li.tab {
     display: inline-block;
     text-align: center;

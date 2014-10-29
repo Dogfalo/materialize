@@ -116,7 +116,7 @@
           // Reset z-index
           var original_z_index = origin.parent('.material-placeholder').attr('z-index');
           if (!original_z_index) {
-            original_z_index = 1;
+            original_z_index = 0;
           }
           // Remove Overlay
           overlayActive = false;
