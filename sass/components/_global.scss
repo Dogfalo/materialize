@@ -61,3 +61,14 @@ $num-cols: 12;
     width: 100%;
   }
 }
+
+//Default styles
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	@extend .light-blue-text.darken-1;
+	text-decoration: none;
+}
