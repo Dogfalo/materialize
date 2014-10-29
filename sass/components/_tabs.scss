@@ -21,6 +21,10 @@ ul.tabs {
       display: block;
       width: 100%;
       height: 100%;
+      @include transition( color .28s ease);
+      &:hover {
+        @extend .red-text.lighten-4;
+      }
     }
   }
   .indicator {
