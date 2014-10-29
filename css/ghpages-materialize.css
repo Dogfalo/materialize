@@ -2152,10 +2152,10 @@ li {
     color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .white-text {
-  color: white; }
+  color: #fff; }
 
 .container {
   padding: 0 1rem;
@@ -2643,16 +2643,16 @@ small {
   margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: white; }
+    color: #fff; }
   .card h2 {
     font-size: 1.14rem;
-    color: white; }
+    color: #fff; }
   .card h3 {
     font-size: 1rem;
-    color: white; }
+    color: #fff; }
   .card p {
     font-size: 0.8rem;
-    color: white; }
+    color: #fff; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2678,7 +2678,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: black; }
+      color: #000; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -2773,7 +2773,7 @@ ul.tabs {
   vertical-align: middle; }
 
 .button {
-  display: block;
+  display: inline-block;
   height: 36px;
   width: 176px;
   margin-bottom: 15px;
@@ -3225,10 +3225,10 @@ p {
   border: 1px solid #eee;
   padding: 20px 40px; }
 
-#index-banner {
-  height: 400px; }
-  #index-banner .header {
-    color: #FFF; }
+#index-banner .header {
+  color: #FFF; }
+#index-banner h4 {
+  margin-bottom: 40px; }
 
 .promo p {
   margin-top: -40px;
