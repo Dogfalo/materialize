@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <nav>
+  <nav id="front-page-nav">
     <div class="container">
       <a href="index.html" class="brand-logo">Materialize</a>
       <ul class="right">
@@ -24,9 +24,10 @@
   	<div class="section" id="index-banner">
       <div class="container">
         <h1 class="header">Materialize</h1>
-        <div class='row'>
-          <h3 class ="header col s12 light center">A modern responsive front-end framework based on Material Design</h3>
+        <div class='row center'>
+          <h4 class ="header col s12 light center">A modern responsive front-end framework based on Material Design</h4><br><br>
         </div>
+
       </div>
   	</div>
   	<div class="container">
@@ -70,7 +71,9 @@
   	  <br><br>
   	</div>
 	</div>
-
+	
+	
+	
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js">
   </script>
@@ -83,5 +86,16 @@
   <script src="js/dropdown.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/init.js"></script>
+  <!--  Google Analytics  -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56218128-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+  </script>
 </body>
 </html>

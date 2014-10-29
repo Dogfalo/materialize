@@ -2,6 +2,7 @@ nav {
   color: #fff;
   @extend .z-depth-1;
   @extend .red.lighten-2;
+  width: 100%;
 
   a.logo {
     height: inherit;
@@ -18,14 +19,12 @@ nav {
     color: #fff;
     float: left;
     display: inline-block;
-    font-size: 23px;
+    font-size: 2.1rem;
     padding: 0;
-
 
     &.right {
       float: right;
-      padding-right: 1rem;
-      padding-left: 1rem;
+			padding: 0;
     }
   }
 
@@ -35,7 +34,7 @@ nav {
 
     li { 
       float: left;
-      padding: 0 10px;
+      padding: 0px;
       @include transition(background-color .3s);
 
       &:hover {
@@ -43,9 +42,10 @@ nav {
       }
     }
     a { 
-      font-size: 14px;
+      font-size: 1rem;
       color: #fff; 
       display: block;
+      padding: 0px 10px;
     }
 
     &.left {
