@@ -360,7 +360,7 @@ ul {
 li {
   list-style-type: none; }
 
-.z-depth-1, nav, .card, .toast, .button.raise, .button.floating, .dropdown-content, ul.collapsible {
+.z-depth-1, nav, .card, .toast, .button.raised, .button.floating, .dropdown-content, ul.collapsible {
   -webkit-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.4), 0px 1.5px 5px -2px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.4), 0px 1.5px 5px -2px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.4), 0px 1.5px 5px -2px rgba(0, 0, 0, 0.4); }
@@ -370,7 +370,7 @@ li {
   -moz-box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.4), 0px 5px 10px -2px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.4), 0px 5px 10px -2px rgba(0, 0, 0, 0.4); }
 
-.z-depth-3, .button.raise:hover {
+.z-depth-3, .button.raised:hover {
   -webkit-box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35);
   box-shadow: 0px 6px 19px -2px rgba(0, 0, 0, 0.35), 0px 7px 19px -2px rgba(0, 0, 0, 0.35); }
@@ -2775,7 +2775,7 @@ ul.tabs {
 .button {
   display: block;
   height: 36px;
-  width: 176px;
+  width: 120px;
   margin-bottom: 15px;
   padding: 0 20px;
   text-decoration: none;
@@ -2788,7 +2788,19 @@ ul.tabs {
   border-radius: 2px;
   background-clip: padding-box;
   letter-spacing: .8px; }
-  .button.raise {
+  .button.thick {
+    height: 54px;
+    line-height: 56px; }
+  .button.small {
+    width: 90px; }
+  .button.large {
+    width: 180px; }
+  .button.huge {
+    width: 240px;
+    height: 54px;
+    line-height: 56px;
+    font-size: 20px; }
+  .button.raised {
     background-color: #5677fc;
     color: #FFFFFF;
     -webkit-transition: 0.3s;
@@ -2796,7 +2808,7 @@ ul.tabs {
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
     transition: 0.3s; }
-    .button.raise.disabled {
+    .button.raised.disabled {
       box-shadow: none;
       color: #c6c6c6;
       background-color: #adadad; }
@@ -2823,10 +2835,6 @@ ul.tabs {
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
     transition: 0.3s; }
-    .button.floating.big {
-      width: 56px;
-      height: 56px;
-      line-height: 56px; }
 
 .dropdown-content {
   position: absolute;

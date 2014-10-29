@@ -1,7 +1,10 @@
+$button-height: 36px;
+$button-width: 120px;
+
 .button {
   display: block;
-  height: 36px;
-  width: 176px;
+  height: $button-height;
+  width: $button-width;
   margin-bottom: 15px;
   padding: 0 20px; 
   text-decoration:none;
@@ -11,14 +14,37 @@
   line-height: 36px;
   @include border-radius(2px);
   letter-spacing: .8px;
+  // Thick
+  &.thick {
+    height: $button-height * 1.5;
+    line-height: 56px;
+  }
+  
+  // Small
+  &.small {
+    width: $button-width * .75;
+  }
 
-  &.raise {
+  // Large
+  &.large {
+    width: $button-width * 1.5;
+  }
+  // Huge
+  &.huge {
+    width: $button-width * 2;
+    height: $button-height * 1.5;
+    line-height: 56px;
+    font-size: 20px;
+  }
+  
+  //  Raised
+  &.raised {
     background-color: $blue;
     color: #FFFFFF;
     @extend .z-depth-1; 
     @include transition(.3s);
 
-    &:hover {
+     &:hover {
       @extend .z-depth-3;
     }
 
@@ -28,7 +54,8 @@
       background-color: lighten(#606060,30%);
     }
   }
-
+  
+  // Flat
   &.flat {
     box-shadow: none;
     background-color: transparent;
@@ -39,7 +66,8 @@
       background-color: lighten(#999, 30%);
     }
   }
-
+  
+  // Floating
   &.floating {
     display: block;
     width: 40px;
@@ -53,12 +81,6 @@
     
     &:hover {
       @extend .z-depth-2;
-    }
-
-    &.big {
-      width: 56px;
-      height: 56px;
-      line-height: 56px;
     }
   }
 
