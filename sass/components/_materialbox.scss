@@ -1,7 +1,10 @@
 .materialboxed {
-  transform: translateZ(0);
   cursor: zoom-in;
   position: relative;
+  
+  &:hover {
+    will-change: left, top;
+  }
 }
 
 .materialboxed.active {

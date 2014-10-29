@@ -26,15 +26,15 @@ p {
   .header {
     color: #FFF;
   }
-  height: 35%;
+  height: 400px;
 }
 
 .promo{
 
   p {
-    margin-top: -80px;
-  font-size: 1.7rem;
-  font-weight: 300;
+    margin-top: -40px;
+    font-size: 1.7rem;
+    font-weight: 300;
   }
 
   i {
@@ -42,6 +42,19 @@ p {
     margin-top: -80px;
     font-size: 220px;
     display: block;
+  }
+}
+#front-page-nav {
+  background-color: #FFF;
+  position: relative;
+  a {
+    @extend .red-text.lighten-2;
+    }
+  li {
+    &:hover {
+      @extend .red.lighten-5; 
+    }
+    
   }
 }
 
