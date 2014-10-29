@@ -2,7 +2,7 @@ $button-height: 36px;
 $button-width: 120px;
 
 .button {
-  display: block;
+  display: inline-block;
   height: $button-height;
   width: $button-width;
   margin-bottom: 15px;

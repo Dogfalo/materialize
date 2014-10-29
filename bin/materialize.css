@@ -2773,7 +2773,7 @@ ul.tabs {
   vertical-align: middle; }
 
 .button {
-  display: block;
+  display: inline-block;
   height: 36px;
   width: 120px;
   margin-bottom: 15px;

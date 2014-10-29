@@ -2773,7 +2773,7 @@ ul.tabs {
   vertical-align: middle; }
 
 .button {
-  display: block;
+  display: inline-block;
   height: 36px;
   width: 120px;
   margin-bottom: 15px;
@@ -2808,8 +2808,6 @@ ul.tabs {
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
     transition: 0.3s; }
-    .button.raised:hover {
-      font-size: inherit; }
     .button.raised.disabled {
       box-shadow: none;
       color: #c6c6c6;
@@ -3235,10 +3233,10 @@ p {
   border: 1px solid #eee;
   padding: 20px 40px; }
 
-#index-banner {
-  height: 400px; }
-  #index-banner .header {
-    color: #FFF; }
+#index-banner .header {
+  color: #FFF; }
+#index-banner h4 {
+  margin-bottom: 40px; }
 
 .promo p {
   margin-top: -40px;
