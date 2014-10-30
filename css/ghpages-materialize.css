@@ -3241,12 +3241,19 @@ p {
   padding: 20px 40px; }
 
 #logo-container {
-  display: flex;
-  align-items: center;
-  height: 100%; }
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 90%; }
 
 #front-page-logo {
-  height: 80%; }
+  display: inline-block;
+  height: 100%;
+  pointer-events: none; }
 
 #index-banner .header {
   color: #FFF; }

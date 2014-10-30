@@ -21,13 +21,16 @@ p {
 
 //Index page Styles
 #logo-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
+  position: absolute;
+  top: 50%;
+  @include transform( translateY(-50%));
+  height: 90%;
 }
 
 #front-page-logo {
-  height: 80%;
+  display: inline-block;
+  height: 100%;
+  pointer-events: none;
 }
 
 #index-banner {
