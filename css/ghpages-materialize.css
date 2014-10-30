@@ -3240,6 +3240,13 @@ p {
   border: 1px solid #eee;
   padding: 20px 40px; }
 
+#front-page-logo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 80%; }
+
 #index-banner .header {
   color: #FFF; }
 #index-banner h4 {
