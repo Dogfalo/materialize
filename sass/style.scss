@@ -20,11 +20,13 @@ p {
 }
 
 //Index page Styles
+#logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 #front-page-logo {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
   height: 80%;
 }
 
