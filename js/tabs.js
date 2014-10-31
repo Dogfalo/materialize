@@ -59,6 +59,9 @@
       if ($index < 0) {
         $index = 0;
       }
+      // Change url to current tab
+      console.log($active);
+      window.location.hash = $active.attr('href');
       $content.show();
 
       // Update indicator
