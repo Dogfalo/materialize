@@ -60,8 +60,11 @@
         $index = 0;
       }
       // Change url to current tab
-      console.log($active);
       window.location.hash = $active.attr('href');
+      if (location.hash) {
+        window.scrollTo(0, 0);
+      }
+      
       $content.show();
 
       // Update indicator
