@@ -43,6 +43,15 @@ p {
   }
 }
 
+#download-button {
+  @extend .red.lighten-3;
+  width: 200px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 19px;
+  font-weight: 500;
+}
+
 .promo{
 
   p {
