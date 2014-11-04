@@ -1,1 +1,973 @@
-function toast(a,b){function e(a){var b=$("<div></div>");b.addClass("toast");var c=$("<span></span>");return c.text(a),b.append(c),b}if(0==$("#toast-container").length){var c=$("<div></div>").attr("id","toast-container");$("body").append(c)}var c=$("#toast-container"),d=e(a);c.append(d),d.animate({top:"+35px",opacity:0},0),d.animate({top:"0px",opacity:1},{duration:200,easing:"easeOutExpo"}),d.delay(b).animate({opacity:0},{duration:200,easing:"easeInExpo"}).slideUp(200,function(){$(this).remove()})}!function(a){a.fn.collapsible=function(b){var c={accordion:!0};b=a.extend(c,b),a(this);var e=a(this).find(".collapsible-header");c.accordion?e.each(function(){a(this).click(function(){a(this).parent().toggleClass("active"),console.log(a(this).siblings(".collapsible-body")),a(this).siblings(".collapsible-body").slideToggle({duration:300,easing:"easeOutCubic",queue:!1}),e.not(a(this)).parent().removeClass("active"),e.not(a(this)).parent().children(".collapsible-body").slideUp({duration:300,easing:"easeOutCubic",queue:!1})})}):e.each(function(){a(this).click(function(){a(this).parent().toggleClass("active")})})}}(jQuery),function(a){a.fn.dropdown=function(){var b=a(this),c=a("#"+b.attr("data-activates"));c.hide(0),b.on("mouseover",function(){c.css("width",b.innerWidth()),c.css("top",b.offset().top),c.css("left",b.offset().left),c.show({duration:200,easing:"easeOutCubic"})}),c.on("mouseleave",function(){c.hide({duration:150,easing:"easeOutCubic"})}),a(window).on("resize",function(){c.css("top",b.offset().top),c.css("left",b.offset().left)})}}(jQuery),jQuery.easing.jswing=jQuery.easing.swing,jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(a,b,c,d,e){return jQuery.easing[jQuery.easing.def](a,b,c,d,e)},easeInQuad:function(a,b,c,d,e){return d*(b/=e)*b+c},easeOutQuad:function(a,b,c,d,e){return-d*(b/=e)*(b-2)+c},easeInOutQuad:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b+c:-d/2*(--b*(b-2)-1)+c},easeInCubic:function(a,b,c,d,e){return d*(b/=e)*b*b+c},easeOutCubic:function(a,b,c,d,e){return d*((b=b/e-1)*b*b+1)+c},easeInOutCubic:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b*b+c:d/2*((b-=2)*b*b+2)+c},easeInQuart:function(a,b,c,d,e){return d*(b/=e)*b*b*b+c},easeOutQuart:function(a,b,c,d,e){return-d*((b=b/e-1)*b*b*b-1)+c},easeInOutQuart:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b*b*b+c:-d/2*((b-=2)*b*b*b-2)+c},easeInQuint:function(a,b,c,d,e){return d*(b/=e)*b*b*b*b+c},easeOutQuint:function(a,b,c,d,e){return d*((b=b/e-1)*b*b*b*b+1)+c},easeInOutQuint:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b*b*b*b+c:d/2*((b-=2)*b*b*b*b+2)+c},easeInSine:function(a,b,c,d,e){return-d*Math.cos(b/e*(Math.PI/2))+d+c},easeOutSine:function(a,b,c,d,e){return d*Math.sin(b/e*(Math.PI/2))+c},easeInOutSine:function(a,b,c,d,e){return-d/2*(Math.cos(Math.PI*b/e)-1)+c},easeInExpo:function(a,b,c,d,e){return 0==b?c:d*Math.pow(2,10*(b/e-1))+c},easeOutExpo:function(a,b,c,d,e){return b==e?c+d:d*(-Math.pow(2,-10*b/e)+1)+c},easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==e?c+d:(b/=e/2)<1?d/2*Math.pow(2,10*(b-1))+c:d/2*(-Math.pow(2,-10*--b)+2)+c},easeInCirc:function(a,b,c,d,e){return-d*(Math.sqrt(1-(b/=e)*b)-1)+c},easeOutCirc:function(a,b,c,d,e){return d*Math.sqrt(1-(b=b/e-1)*b)+c},easeInOutCirc:function(a,b,c,d,e){return(b/=e/2)<1?-d/2*(Math.sqrt(1-b*b)-1)+c:d/2*(Math.sqrt(1-(b-=2)*b)+1)+c},easeInElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(1==(b/=e))return c+d;if(g||(g=.3*e),h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return-(h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g))+c},easeOutElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(1==(b/=e))return c+d;if(g||(g=.3*e),h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return h*Math.pow(2,-10*b)*Math.sin((b*e-f)*2*Math.PI/g)+d+c},easeInOutElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(2==(b/=e/2))return c+d;if(g||(g=e*.3*1.5),h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return 1>b?-.5*h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)+c:.5*h*Math.pow(2,-10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)+d+c},easeInBack:function(a,b,c,d,e,f){return void 0==f&&(f=1.70158),d*(b/=e)*b*((f+1)*b-f)+c},easeOutBack:function(a,b,c,d,e,f){return void 0==f&&(f=1.70158),d*((b=b/e-1)*b*((f+1)*b+f)+1)+c},easeInOutBack:function(a,b,c,d,e,f){return void 0==f&&(f=1.70158),(b/=e/2)<1?d/2*b*b*(((f*=1.525)+1)*b-f)+c:d/2*((b-=2)*b*(((f*=1.525)+1)*b+f)+2)+c},easeInBounce:function(a,b,c,d,e){return d-jQuery.easing.easeOutBounce(a,e-b,0,d,e)+c},easeOutBounce:function(a,b,c,d,e){return(b/=e)<1/2.75?d*7.5625*b*b+c:2/2.75>b?d*(7.5625*(b-=1.5/2.75)*b+.75)+c:2.5/2.75>b?d*(7.5625*(b-=2.25/2.75)*b+.9375)+c:d*(7.5625*(b-=2.625/2.75)*b+.984375)+c},easeInOutBounce:function(a,b,c,d,e){return e/2>b?.5*jQuery.easing.easeInBounce(a,2*b,0,d,e)+c:.5*jQuery.easing.easeOutBounce(a,2*b-e,0,d,e)+.5*d+c}}),function(a){a.fn.extend({leanModal:function(b){function e(b){a("#lean_overlay").fadeOut(200),a(b).fadeOut(200,function(){a(this).css("top",0)})}var c={top:100,overlay:.5},d=a("<div id='lean_overlay'></div>");return a("body").append(d),b=a.extend(c,b),this.each(function(){var c=b;a(this).click(function(b){var d=a(this).attr("href");a("#lean_overlay").click(function(){e(d)}),a(d).find(".modal_close").click(function(a){a.preventDefault(),e(d)}),a(d).outerHeight();var g=a(d).outerWidth();a("#lean_overlay").css({display:"block",opacity:0}),a("#lean_overlay").fadeTo(200,c.overlay),a(d).css({display:"block",position:"fixed",opacity:0,"z-index":11e3,left:"50%","margin-left":-(g/2)+"px"}),a(d).animate({top:c.top+"px",opacity:1},{duration:300,easing:"easeOutExpo"}),b.preventDefault()})})}})}(jQuery),function(a){a.fn.materialbox=function(){return this.each(function(){function j(){var c=f.parent(".material-placeholder").attr("z-index");c||(c=0),b=!1,a("#materialbox-overlay").fadeOut(e,function(){a(this).remove(),f.css("z-index",c)}),f.animate({width:h},{duration:e,queue:!1,easing:"easeOutQuad"}),f.animate({height:i},{duration:e,queue:!1,easing:"easeOutQuad"}),f.animate({left:0},{duration:e,queue:!1,easing:"easeOutQuad"}),f.animate({top:0},{duration:e,queue:!1,easing:"easeOutQuad"}),f.css("will-change",""),f.removeClass("active")}var b=!1,c=!0,d=225,e=175,f=a(this),g=a("<div></div>").addClass("material-placeholder"),h=f.width(),i=f.height();f.wrap(g),f.on("click",function(){var e=window.innerWidth,g=window.innerHeight;if(b||c===!1)return j(),!1;f.addClass("active"),h=f.width(),i=f.height(),f.parent(".material-placeholder").css("width",f.innerWidth()).css("height",i).css("position","relative").css("top",0).css("left",0).css("z-index",f.attr("z-indez")),f.css("position","absolute");var k=a("<div></div>");k.attr("id","materialbox-overlay").css("width",a(document).width()+100).css("height",a(document).height()+100).css("top",0).css("left",0).css("opacity",0).css("will-change","opacity").click(function(){j()}),a("body").append(k),k.animate({opacity:1},{duration:d,queue:!1,easing:"easeOutQuad"}),b=!0,c=!1;var l=h/i,m=h/e,n=h/g,o=0,p=0;m>n?(o=.8*e,p=.8*e*l):(o=.8*g*l,p=.8*g),console.log(h,i,l,p,o),f.css("left",0).css("top",0).css("z-index",1e4).css("will-change","left, top").animate({height:p,width:o},{duration:d,queue:!1,easing:"easeOutQuad"}).animate({left:a(document).scrollLeft()+e/2-f.parent(".material-placeholder").offset().left-o/2},{duration:d,queue:!1,easing:"easeOutQuad"}).animate({top:a(document).scrollTop()+g/2-f.parent(".material-placeholder").offset().top-p/2},{duration:d,queue:!1,easing:"easeOutQuad",complete:function(){c=!0}})}),a(window).scroll(function(){b&&j()}),a(document).keyup(function(a){27===a.keyCode&&b&&j()})})}}(jQuery),function(a){a.fn.parallax=function(){var b=a(window).width();return this.each(function(){function d(){if(b>480){var d=c.height(),e=c.offset().top+d,f=c.offset().top,g=a(window).height(),h=a(window).scrollTop(),i=h+f-g/2;if(e>h&&h+g>f){var j=i/3;c.children("img").first().css("top",j+"px")}}}var c=a(this);c.addClass("parallax"),d(),a(window).scroll(function(){d()})})}}(jQuery),self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var a=/\blang(?:uage)?-(?!\*)(\w+)\b/i,b=self.Prism={util:{encode:function(a){return a instanceof c?new c(a.type,b.util.encode(a.content),a.alias):"Array"===b.util.type(a)?a.map(b.util.encode):a.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(a){return Object.prototype.toString.call(a).match(/\[object (\w+)\]/)[1]},clone:function(a){var c=b.util.type(a);switch(c){case"Object":var d={};for(var e in a)a.hasOwnProperty(e)&&(d[e]=b.util.clone(a[e]));return d;case"Array":return a.slice()}return a}},languages:{extend:function(a,c){var d=b.util.clone(b.languages[a]);for(var e in c)d[e]=c[e];return d},insertBefore:function(a,c,d,e){e=e||b.languages;var f=e[a],g={};for(var h in f)if(f.hasOwnProperty(h)){if(h==c)for(var i in d)d.hasOwnProperty(i)&&(g[i]=d[i]);g[h]=f[h]}return e[a]=g},DFS:function(a,c,d){for(var e in a)a.hasOwnProperty(e)&&(c.call(a,e,a[e],d||e),"Object"===b.util.type(a[e])?b.languages.DFS(a[e],c):"Array"===b.util.type(a[e])&&b.languages.DFS(a[e],c,e))}},highlightAll:function(a,c){for(var d,e=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),f=0;d=e[f++];)b.highlightElement(d,a===!0,c)},highlightElement:function(d,e,f){for(var g,h,i=d;i&&!a.test(i.className);)i=i.parentNode;if(i&&(g=(i.className.match(a)||[,""])[1],h=b.languages[g]),h){d.className=d.className.replace(a,"").replace(/\s+/g," ")+" language-"+g,i=d.parentNode,/pre/i.test(i.nodeName)&&(i.className=i.className.replace(a,"").replace(/\s+/g," ")+" language-"+g);var j=d.textContent;if(j){var k={element:d,language:g,grammar:h,code:j};if(b.hooks.run("before-highlight",k),e&&self.Worker){var l=new Worker(b.filename);l.onmessage=function(a){k.highlightedCode=c.stringify(JSON.parse(a.data),g),b.hooks.run("before-insert",k),k.element.innerHTML=k.highlightedCode,f&&f.call(k.element),b.hooks.run("after-highlight",k)},l.postMessage(JSON.stringify({language:k.language,code:k.code}))}else k.highlightedCode=b.highlight(k.code,k.grammar,k.language),b.hooks.run("before-insert",k),k.element.innerHTML=k.highlightedCode,f&&f.call(d),b.hooks.run("after-highlight",k)}}},highlight:function(a,d,e){var f=b.tokenize(a,d);return c.stringify(b.util.encode(f),e)},tokenize:function(a,c){var d=b.Token,e=[a],f=c.rest;if(f){for(var g in f)c[g]=f[g];delete c.rest}a:for(var g in c)if(c.hasOwnProperty(g)&&c[g]){var h=c[g];h="Array"===b.util.type(h)?h:[h];for(var i=0;i<h.length;++i){var j=h[i],k=j.inside,l=!!j.lookbehind,m=0,n=j.alias;j=j.pattern||j;for(var o=0;o<e.length;o++){var p=e[o];if(e.length>a.length)break a;if(!(p instanceof d)){j.lastIndex=0;var q=j.exec(p);if(q){l&&(m=q[1].length);var r=q.index-1+m,q=q[0].slice(m),s=q.length,t=r+s,u=p.slice(0,r+1),v=p.slice(t+1),w=[o,1];u&&w.push(u);var x=new d(g,k?b.tokenize(q,k):q,n);w.push(x),v&&w.push(v),Array.prototype.splice.apply(e,w)}}}}}return e},hooks:{all:{},add:function(a,c){var d=b.hooks.all;d[a]=d[a]||[],d[a].push(c)},run:function(a,c){var d=b.hooks.all[a];if(d&&d.length)for(var e,f=0;e=d[f++];)e(c)}}},c=b.Token=function(a,b,c){this.type=a,this.content=b,this.alias=c};if(c.stringify=function(a,d,e){if("string"==typeof a)return a;if("[object Array]"==Object.prototype.toString.call(a))return a.map(function(b){return c.stringify(b,d,a)}).join("");var f={type:a.type,content:c.stringify(a.content,d,e),tag:"span",classes:["token",a.type],attributes:{},language:d,parent:e};if("comment"==f.type&&(f.attributes.spellcheck="true"),a.alias){var g="Array"===b.util.type(a.alias)?a.alias:[a.alias];Array.prototype.push.apply(f.classes,g)}b.hooks.run("wrap",f);var h="";for(var i in f.attributes)h+=i+'="'+(f.attributes[i]||"")+'"';return"<"+f.tag+' class="'+f.classes.join(" ")+'" '+h+">"+f.content+"</"+f.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(a){var c=JSON.parse(a.data),d=c.language,e=c.code;self.postMessage(JSON.stringify(b.util.encode(b.tokenize(e,b.languages[d])))),self.close()},!1),self.Prism):self.Prism;var d=document.getElementsByTagName("script");return d=d[d.length-1],d&&(b.filename=d.src,document.addEventListener&&!d.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",b.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),Prism.languages.markup={comment:/<!--[\w\W]*?-->/g,prolog:/<\?.+?\?>/,doctype:/<!DOCTYPE.+?>/,cdata:/<!\[CDATA\[[\w\W]*?]]>/i,tag:{pattern:/<\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|[^\s'">=]+))?\s*)*\/?>/gi,inside:{tag:{pattern:/^<\/?[\w:-]+/i,inside:{punctuation:/^<\/?/,namespace:/^[\w-]+?:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,inside:{punctuation:/=|>|"/g}},punctuation:/\/?>/g,"attr-name":{pattern:/[\w:-]+/g,inside:{namespace:/^[\w-]+?:/}}}},entity:/\&#?[\da-z]{1,8};/gi},Prism.hooks.add("wrap",function(a){"entity"===a.type&&(a.attributes.title=a.content.replace(/&amp;/,"&"))}),Prism.languages.css={comment:/\/\*[\w\W]*?\*\//g,atrule:{pattern:/@[\w-]+?.*?(;|(?=\s*{))/gi,inside:{punctuation:/[;:]/g}},url:/url\((["']?).*?\1\)/gi,selector:/[^\{\}\s][^\{\};]*(?=\s*\{)/g,property:/(\b|\B)[\w-]+(?=\s*:)/gi,string:/("|')(\\?.)*?\1/g,important:/\B!important\b/gi,punctuation:/[\{\};:]/g,"function":/[-a-z0-9]+(?=\()/gi},Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{style:{pattern:/<style[\w\W]*?>[\w\W]*?<\/style>/gi,inside:{tag:{pattern:/<style[\w\W]*?>|<\/style>/gi,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.css}}}),Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//g,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*?(\r?\n|$)/g,lookbehind:!0}],string:/("|')(\\?.)*?\1/g,"class-name":{pattern:/((?:(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/gi,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/g,"boolean":/\b(true|false)\b/g,"function":{pattern:/[a-z0-9_]+\(/gi,inside:{punctuation:/\(/}},number:/\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/g,operator:/[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\|?\||\?|\*|\/|\~|\^|\%/g,ignore:/&(lt|gt|amp);/gi,punctuation:/[{}[\];(),.:]/g},Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|false|finally|for|function|get|if|implements|import|in|instanceof|interface|let|new|null|package|private|protected|public|return|set|static|super|switch|this|throw|true|try|typeof|var|void|while|with|yield)\b/g,number:/\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?|NaN|-?Infinity)\b/g}),Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:!0}}),Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/<script[\w\W]*?>[\w\W]*?<\/script>/gi,inside:{tag:{pattern:/<script[\w\W]*?>|<\/script>/gi,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.javascript}}}),Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,lookbehind:!0},atrule:/@[\w-]+(?=\s+(\(|\{|;))/gi,url:/([-a-z]+-)*url(?=\()/gi,selector:/([^@;\{\}\(\)]?([^@;\{\}\(\)]|&|\#\{\$[-_\w]+\})+)(?=\s*\{(\}|\s|[^\}]+(:|\{)[^\}]+))/gm}),Prism.languages.insertBefore("scss","atrule",{keyword:/@(if|else if|else|for|each|while|import|extend|debug|warn|mixin|include|function|return|content)|(?=@for\s+\$[-_\w]+\s)+from/i}),Prism.languages.insertBefore("scss","property",{variable:/((\$[-_\w]+)|(#\{\$[-_\w]+\}))/i}),Prism.languages.insertBefore("scss","ignore",{placeholder:/%[-_\w]+/i,statement:/\B!(default|optional)\b/gi,"boolean":/\b(true|false)\b/g,"null":/\b(null)\b/g,operator:/\s+([-+]{1,2}|={1,2}|!=|\|?\||\?|\*|\/|\%)\s+/g}),Prism.hooks.add("after-highlight",function(a){var b=a.element.parentNode;if(b&&/pre/i.test(b.nodeName)&&-1!==b.className.indexOf("line-numbers")){var c,d=1+a.code.split("\n").length;lines=new Array(d),lines=lines.join("<span></span>"),c=document.createElement("span"),c.className="line-numbers-rows",c.innerHTML=lines,b.hasAttribute("data-start")&&(b.style.counterReset="linenumber "+(parseInt(b.getAttribute("data-start"),10)-1)),a.element.appendChild(c)}}),function(a){a.fn.tabs=function(){return this.each(function(){var c,d,b=a(this),e=b.find("li.tab a"),f=b.width(),g=b.find("li").first().outerWidth(),h=0;c=a(e.filter('[href="'+location.hash+'"]')[0]||e[0]),c.addClass("active"),h=e.index(a(".active")),0>h&&(h=0),d=a(c[0].hash),b.append('<div class="indicator"></div>');var i=b.find(".indicator");0!==g&&0!==f&&(i.css({right:f-g}),i.css({left:h*g})),e.not(c).each(function(){a(this.hash).hide()}),b.on("click","a",function(j){f=b.width(),g=b.find("li").first().outerWidth(),c.removeClass("active"),d.hide(),c=a(this),d=a(this.hash),e=b.find("li.tab a"),c.addClass("active");var k=h;h=e.index(a(this)),0>h&&(h=0),d.show(),h-k>=0?(i.animate({right:f-(h+1)*g},{duration:175,queue:!1,easing:"easeOutQuad"}),setTimeout(function(){i.animate({left:h*g},{duration:225,queue:!1,easing:"easeOutQuad"})},20)):(i.animate({left:h*g},{duration:175,queue:!1,easing:"easeOutQuad"}),setTimeout(function(){i.animate({right:f-(h+1)*g},{duration:225,queue:!1,easing:"easeOutQuad"})},20)),j.preventDefault()})})}}(jQuery),function(a){var b,c;a.fn.tooltip=function(){var d;this.hover(function(){d=a(this),c=setTimeout(function(){b=a("<div></div>"),b.text(a(d).attr("title")).addClass("material-tooltip"),a("body").append(b);var e,f,c=d.attr("data-tooltip"),g=15;"bottom"==c?(e=a(d).offset().left+a(d).outerWidth()/2-b.outerWidth()/2,f=a(d).offset().top+g):"top"==c?(e=a(d).offset().left+a(d).outerWidth()/2-b.outerWidth()/2,f=a(d).offset().top-a(d).outerHeight()-b.outerHeight()-g):"left"==c?(e=a(d).offset().left-b.outerWidth()-g,f=a(d).offset().top-a(d).outerHeight()/2-b.outerHeight()/2):"right"==c&&(e=a(d).offset().left+a(d).outerWidth()+g,f=a(d).offset().top-a(d).outerHeight()/2-b.outerHeight()/2),b.css({top:f,left:e}),b.fadeIn(100),d.removeAttr("title")},200)},function(){clearTimeout(c),d.attr("title",b.text()),b.fadeOut(100,function(){b.remove()})})}}(jQuery),function(a){"use strict";function d(a){return null!==a&&a===a.window}function e(a){return d(a)?a:9===a.nodeType&&a.defaultView}function f(a){var b,c,d={top:0,left:0},f=a&&a.ownerDocument;return b=f.documentElement,"undefined"!=typeof a.getBoundingClientRect&&(d=a.getBoundingClientRect()),c=e(f),{top:d.top+c.pageYOffset-b.clientTop,left:d.left+c.pageXOffset-b.clientLeft}}function g(a){var b="";for(var c in a)a.hasOwnProperty(c)&&(b+=c+":"+a[c]+";");return b}var b=b||{},c=document.querySelectorAll.bind(document),h={duration:500,show:function(a){var b=this,c=document.createElement("div");c.className="waves-ripple",b.appendChild(c);var d=f(b),e=a.pageY-d.top-10,i=a.pageX-d.left-10,j="scale(15)";c.setAttribute("data-hold",Date.now()),c.setAttribute("data-scale",j),c.setAttribute("data-x",i),c.setAttribute("data-y",e);var k={top:e+"px",left:i+"px"};c.className=c.className+" waves-notransition",c.setAttribute("style",g(k)),c.className=c.className.replace("waves-notransition",""),k["-webkit-transform"]=j,k["-moz-transform"]=j,k["-ms-transform"]=j,k["-o-transform"]=j,k.transform=j,k.opacity="1",k["-webkit-transition-duration"]=h.duration+"ms",k["-moz-transition-duration"]=h.duration+"ms",k["-o-transition-duration"]=h.duration+"ms",k["transition-duration"]=h.duration+"ms",c.setAttribute("style",g(k))},hide:function(){var a=this;1.4*a.clientWidth;for(var c=null,d=a.children.length,e=0;d>e;e++)-1===a.children[e].className.indexOf("waves-ripple")||(c=a.children[e]);if(!c)return!1;var f=c.getAttribute("data-x"),i=c.getAttribute("data-y"),j=c.getAttribute("data-scale"),k=Date.now()-Number(c.getAttribute("data-hold")),l=500-k;0>l&&(l=0),setTimeout(function(){var b={top:i+"px",left:f+"px",opacity:"0","-webkit-transition-duration":h.duration+"ms","-moz-transition-duration":h.duration+"ms","-o-transition-duration":h.duration+"ms","transition-duration":h.duration+"ms","-webkit-transform":j,"-moz-transform":j,"-ms-transform":j,"-o-transform":j,transform:j};c.setAttribute("style",g(b)),setTimeout(function(){try{a.removeChild(c)}catch(b){return!1}},h.duration)},l)},wrapInput:function(a){for(var b=0;b<a.length;b++){var c=a[b];if("input"===c.tagName.toLowerCase()){var d=c.parentNode;if("i"===d.tagName.toLowerCase()&&-1!==d.className.indexOf("waves-effect"))return!1;var e=document.createElement("i");e.className=c.className+" waves-input-wrapper";var f=c.getAttribute("style"),g="width:"+c.offsetWidth+"px;height:"+c.clientHeight+"px;";f||(f=""),e.setAttribute("style",g+f),c.className="waves-button-input",c.removeAttribute("style"),d.replaceChild(e,c),e.appendChild(c)}}}};b.displayEffect=function(a){a=a||{},"duration"in a&&(h.duration=a.duration),h.wrapInput(c(".waves-effect")),Array.prototype.forEach.call(c(".waves-effect"),function(a){a.addEventListener("mousedown",h.show,!1),a.addEventListener("mouseup",h.hide,!1),a.addEventListener("mouseleave",h.hide,!1)})},a.Waves=b,b.displayEffect()}(window);
+/*
+ * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+ *
+ * Uses the built in easing capabilities added In jQuery 1.1
+ * to offer multiple easing options
+ *
+ * TERMS OF USE - jQuery Easing
+ * 
+ * Open source under the BSD License. 
+ * 
+ * Copyright © 2008 George McGinley Smith
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without modification, 
+ * are permitted provided that the following conditions are met:
+ * 
+ * Redistributions of source code must retain the above copyright notice, this list of 
+ * conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list 
+ * of conditions and the following disclaimer in the documentation and/or other materials 
+ * provided with the distribution.
+ * 
+ * Neither the name of the author nor the names of contributors may be used to endorse 
+ * or promote products derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+ * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *
+*/
+
+// t: current time, b: begInnIng value, c: change In value, d: duration
+jQuery.easing['jswing'] = jQuery.easing['swing'];
+
+jQuery.extend( jQuery.easing,
+{
+	def: 'easeOutQuad',
+	swing: function (x, t, b, c, d) {
+		//alert(jQuery.easing.default);
+		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+	},
+	easeInQuad: function (x, t, b, c, d) {
+		return c*(t/=d)*t + b;
+	},
+	easeOutQuad: function (x, t, b, c, d) {
+		return -c *(t/=d)*(t-2) + b;
+	},
+	easeInOutQuad: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	},
+	easeInCubic: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t + b;
+	},
+	easeOutCubic: function (x, t, b, c, d) {
+		return c*((t=t/d-1)*t*t + 1) + b;
+	},
+	easeInOutCubic: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t + b;
+		return c/2*((t-=2)*t*t + 2) + b;
+	},
+	easeInQuart: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t*t + b;
+	},
+	easeOutQuart: function (x, t, b, c, d) {
+		return -c * ((t=t/d-1)*t*t*t - 1) + b;
+	},
+	easeInOutQuart: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+		return -c/2 * ((t-=2)*t*t*t - 2) + b;
+	},
+	easeInQuint: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t*t*t + b;
+	},
+	easeOutQuint: function (x, t, b, c, d) {
+		return c*((t=t/d-1)*t*t*t*t + 1) + b;
+	},
+	easeInOutQuint: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+		return c/2*((t-=2)*t*t*t*t + 2) + b;
+	},
+	easeInSine: function (x, t, b, c, d) {
+		return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+	},
+	easeOutSine: function (x, t, b, c, d) {
+		return c * Math.sin(t/d * (Math.PI/2)) + b;
+	},
+	easeInOutSine: function (x, t, b, c, d) {
+		return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+	},
+	easeInExpo: function (x, t, b, c, d) {
+		return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+	},
+	easeOutExpo: function (x, t, b, c, d) {
+		return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+	},
+	easeInOutExpo: function (x, t, b, c, d) {
+		if (t==0) return b;
+		if (t==d) return b+c;
+		if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+		return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+	},
+	easeInCirc: function (x, t, b, c, d) {
+		return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+	},
+	easeOutCirc: function (x, t, b, c, d) {
+		return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+	},
+	easeInOutCirc: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+		return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+	},
+	easeInElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+	},
+	easeOutElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+	},
+	easeInOutElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+		return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+	},
+	easeInBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158;
+		return c*(t/=d)*t*((s+1)*t - s) + b;
+	},
+	easeOutBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158;
+		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+	},
+	easeInOutBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158; 
+		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+	},
+	easeInBounce: function (x, t, b, c, d) {
+		return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+	},
+	easeOutBounce: function (x, t, b, c, d) {
+		if ((t/=d) < (1/2.75)) {
+			return c*(7.5625*t*t) + b;
+		} else if (t < (2/2.75)) {
+			return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+		} else if (t < (2.5/2.75)) {
+			return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+		} else {
+			return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+		}
+	},
+	easeInOutBounce: function (x, t, b, c, d) {
+		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
+		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+	}
+});
+
+/*
+ *
+ * TERMS OF USE - EASING EQUATIONS
+ * 
+ * Open source under the BSD License. 
+ * 
+ * Copyright © 2001 Robert Penner
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without modification, 
+ * are permitted provided that the following conditions are met:
+ * 
+ * Redistributions of source code must retain the above copyright notice, this list of 
+ * conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list 
+ * of conditions and the following disclaimer in the documentation and/or other materials 
+ * provided with the distribution.
+ * 
+ * Neither the name of the author nor the names of contributors may be used to endorse 
+ * or promote products derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+ * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *
+ */
+
+(function ($) {
+  $.fn.collapsible = function(options) {
+    var defaults = {
+        accordion: true
+    };
+
+    options = $.extend(defaults, options);
+    var $this = $(this);
+    
+    var $panel_headers = $(this).find('.collapsible-header');
+  
+    if (defaults.accordion) {
+
+      $panel_headers.each(function () {
+        $(this).click(function () {
+          $(this).parent().toggleClass('active');
+          console.log($(this).siblings('.collapsible-body'));
+          $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
+          $panel_headers.not($(this)).parent().removeClass('active');
+          $panel_headers.not($(this)).parent().children('.collapsible-body').slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
+        });
+      });
+
+    }
+    else {
+      $panel_headers.each(function () {
+        $(this).click(function () {
+          $(this).parent().toggleClass('active');
+        });
+      });
+    }
+
+
+    
+    
+  };
+}( jQuery ));
+
+(function ($) {
+  $.fn.dropdown = function () {
+    var origin = $(this);
+    
+  
+    var activates = $("#"+ origin.attr('data-activates'));
+
+    activates.hide(0);
+
+    
+    // Click handler for list container
+    origin.on('mouseover', function(e){ // Mouse over
+      activates.css('width', origin.innerWidth());
+      activates.css('top', origin.offset().top);
+      activates.css('left', origin.offset().left);
+      activates.show({duration: 200, easing: 'easeOutCubic'});
+    });
+    
+    // Doucment click handler        
+    activates.on('mouseleave', function(e){ // Mouse out
+          activates.hide({duration: 150, easing: 'easeOutCubic'});
+    });
+    
+    // Window Resize Reposition
+    $(window).on('resize', function(){
+      activates.css('top', origin.offset().top);
+      activates.css('left', origin.offset().left);
+    });
+    
+    
+  };
+}( jQuery ));
+
+(function($){
+ 
+    $.fn.extend({ 
+         
+        leanModal: function(options) {
+ 
+            var defaults = {
+                top: 100,
+                overlay: 0.5
+            }
+            
+            var overlay = $("<div id='lean_overlay'></div>");
+            
+            $("body").append(overlay);
+                 
+            options =  $.extend(defaults, options);
+ 
+            return this.each(function() {
+            
+                var o = options;
+               
+                $(this).click(function(e) {
+              
+              	var modal_id = $(this).attr("href");
+
+				$("#lean_overlay").click(function() { 
+                     close_modal(modal_id);                    
+                });
+                
+                $(modal_id).find('.modal_close').click(function(e) { 
+                    e.preventDefault();
+                    close_modal(modal_id);
+                    // setTimeout( function(){ close_modal(modal_id); },200 );               
+                });
+                         	
+              	var modal_height = $(modal_id).outerHeight();
+        	  	var modal_width = $(modal_id).outerWidth();
+
+        		$('#lean_overlay').css({ 'display' : 'block', opacity : 0 });
+
+        		$('#lean_overlay').fadeTo(200,o.overlay);
+
+        		$(modal_id).css({ 
+        		
+        			'display' : 'block',
+        			'position' : 'fixed',
+        			'opacity' : 0,
+        			'z-index': 11000,
+        			'left' : 50 + '%',
+        			'margin-left' : -(modal_width/2) + "px"
+        		
+        		});
+
+        		$(modal_id).animate({"top" : o.top + "px"
+                            , opacity: 1}, {duration: 300, easing: 'easeOutExpo'});
+
+                e.preventDefault();
+                		
+              	});
+             
+            });
+
+			function close_modal(modal_id){
+
+        		$("#lean_overlay").fadeOut(200);
+
+                $(modal_id).fadeOut(200, function() {
+                    $(this).css('top', 0);
+                });
+                
+        		// $(modal_id).css({ 'display' : 'none' });
+			
+			}
+    
+        }
+    });
+     
+})(jQuery);
+
+(function ($) {
+
+  $.fn.materialbox = function () {
+
+    return this.each(function() {
+
+      var overlayActive = false;
+      var doneAnimating = true;
+      var inDuration = 225;
+      var outDuration = 175;
+      var origin = $(this);
+      var placeholder = $('<div></div>').addClass('material-placeholder');
+      var originalWidth = origin.width();
+      var originalHeight = origin.height(); 
+
+      origin.wrap(placeholder);
+      origin.on('click', function(){
+        
+
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        
+          // If already modal, do nothing
+         if (overlayActive || doneAnimating === false) {
+           returnToOriginal();
+           return false;
+         }
+        
+        // add active class
+        origin.addClass('active');
+        originalWidth = origin.width();
+        originalHeight = origin.height();
+
+        
+        // Set positioning for placeholder
+        origin.parent('.material-placeholder').css('width', origin.innerWidth())
+          .css('height', originalHeight)
+          .css('position', 'relative')
+          .css('top', 0)
+          .css('left', 0)
+          .css('z-index', origin.attr('z-indez'));
+
+        
+        origin.css('position', 'absolute');
+        
+        // Add overlay
+        var overlay = $('<div></div>');
+        overlay.attr('id', 'materialbox-overlay')
+          .css('width', $(document).width() + 100) // account for any scrollbar
+          .css('height', $(document).height() + 100) // account for any scrollbar
+          .css('top', 0)
+          .css('left', 0)
+          .css('opacity', 0)
+          .css('will-change', 'opacity')
+          .click(function(){
+            returnToOriginal();
+          });
+        $('body').append(overlay);
+        overlay.animate({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
+        );
+        
+        // Set states
+        overlayActive = true;
+        doneAnimating = false;
+
+        
+        // Resize Image      
+        var ratio = originalWidth / originalHeight;
+        var widthPercent = originalWidth / windowWidth;
+        var heightPercent = originalWidth / windowHeight;
+        var newWidth = 0;
+        var newHeight = 0;
+
+        if (widthPercent > heightPercent) {
+          newWidth = windowWidth * 0.8;
+          newHeight = windowWidth * 0.8 * ratio;
+        }
+        else {
+          newWidth = (windowHeight * 0.8) * ratio;
+          newHeight = windowHeight * 0.8;
+        }
+
+        console.log(originalWidth, originalHeight, ratio, newHeight, newWidth);
+
+        // Reposition Element AND Animate image + set z-index
+        origin.css('left', 0)
+          .css('top', 0)
+          .css('z-index', 10000)
+          .css('will-change', 'left, top')
+          .animate({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+          .animate({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+          .animate({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
+        });
+
+      
+      // Return on scroll
+      $(window).scroll(function() {
+        if (overlayActive) {
+          returnToOriginal();    
+        }
+      });
+      
+      // Return on ESC
+      $(document).keyup(function(e) {
+
+        if (e.keyCode === 27) {   // ESC key
+          if (overlayActive) {
+            returnToOriginal();    
+          }
+        }
+      });
+      
+      
+      // This function returns the modaled image to the original spot
+      function returnToOriginal() {
+          // Reset z-index
+          var original_z_index = origin.parent('.material-placeholder').attr('z-index');
+          if (!original_z_index) {
+            original_z_index = 0;
+          }
+          // Remove Overlay
+          overlayActive = false;
+          $('#materialbox-overlay').fadeOut(outDuration, function(){ 
+            $(this).remove(); 
+            origin.css('z-index', original_z_index);
+          });
+          // Resize
+          origin.animate({ width: originalWidth}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.animate({ height: originalHeight}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+
+          // Reposition Element
+          origin.animate({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.animate({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.css('will-change', '');
+          // add active class
+          origin.removeClass('active');
+      }
+    });
+  };
+}( jQuery ));
+
+
+(function ($) {
+
+    $.fn.parallax = function () {
+      var window_width = $(window).width();
+      // Parallax Scripts
+      return this.each(function() {
+        var $this = $(this);
+        $this.addClass('parallax');
+
+        function updateParallax() {
+          if (window_width > 480) {
+            var height = $this.height();
+            var bottom = $this.offset().top + height;
+            var top = $this.offset().top;
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var fromTop = scrollTop + top - (windowHeight / 2);
+
+            if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {   
+              var parallax = fromTop / 3;
+              
+              $this.children("img").first().css('top', parallax + "px");
+            }
+
+          }
+        }
+        updateParallax();
+        
+        $(window).scroll(function() {
+          updateParallax();
+        });
+
+      });
+
+    };
+}( jQuery ));
+
+(function ($) {
+    
+  $.fn.tabs = function () {
+
+    return this.each(function() {
+
+    // For each set of tabs, we want to keep track of
+    // which tab is active and it's associated content
+    var $this = $(this);
+    var $active, $content, $links = $this.find('li.tab a');
+    var $tabs_width = $this.width();
+    var $tab_width = $this.find('li').first().outerWidth();
+    var $index = 0;
+    
+    // If the location.hash matches one of the links, use that as the active tab.
+    // If no match is found, use the first link as the initial active tab.
+    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+    $active.addClass('active');
+    $index = $links.index($('.active'));
+    if ($index < 0) {
+      $index = 0;
+    }
+
+    $content = $($active[0].hash);
+    
+
+
+    // append indicator then set indicator width to tab width
+    $this.append('<div class="indicator"></div>');
+    var $indicator = $this.find('.indicator');
+    if ($tab_width !== 0 && $tabs_width !== 0) {
+      $indicator.css({"right": $tabs_width - $tab_width});
+      $indicator.css({"left": $index * $tab_width});
+    }
+
+    // Hide the remaining content
+    $links.not($active).each(function () {
+      $(this.hash).hide();
+    });
+    
+    // Bind the click event handler
+    $this.on('click', 'a', function(e){
+      $tabs_width = $this.width();
+      $tab_width = $this.find('li').first().outerWidth();
+
+      // Make the old tab inactive.
+      $active.removeClass('active');
+      $content.hide();
+    
+      // Update the variables with the new link and content
+      $active = $(this);
+      $content = $(this.hash);
+      $links = $this.find('li.tab a');
+    
+      // Make the tab active.
+      $active.addClass('active');
+      var $prev_index = $index;
+      $index = $links.index($(this));
+      if ($index < 0) {
+        $index = 0;
+      }
+      // Change url to current tab
+      window.location.hash = $active.attr('href');
+      if (location.hash) {
+        window.scrollTo(0, 0);
+      }
+      
+      $content.show();
+
+      // Update indicator
+      if (($index - $prev_index) >= 0) {
+        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+        setTimeout(function(){
+          $indicator.animate({"left": $index * $tab_width}, {duration: 225, queue: false, easing: 'easeOutQuad'});
+        }, 20);
+      }
+      else {
+        $indicator.animate({"left": $index * $tab_width}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+        setTimeout(function(){
+          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 225, queue: false, easing: 'easeOutQuad'});
+        }, 20);
+      }
+    
+      // Prevent the anchor's default click action
+      e.preventDefault();
+    });
+  });
+
+  };
+}( jQuery ));
+
+(function ($) {
+    
+    var newTooltip;
+    var timeout;
+    $.fn.tooltip = function () {
+        var origin;
+        this.hover(function() {
+            // on mouseover
+            origin = $(this);
+            timeout = setTimeout(function(){
+              newTooltip = $('<div></div>');
+              newTooltip.text($(origin).attr('title'))
+              .addClass("material-tooltip")
+
+              $('body').append(newTooltip);
+              // Get cardinal position of tooltip
+              var location = origin.attr('data-tooltip');
+
+              // Set position of tooltip
+              var leftPos;
+              var topPos;
+              var margin = 15;
+              if (location == 'bottom') {              
+                leftPos = $(origin).offset().left + $(origin).outerWidth()/2 - newTooltip.outerWidth()/2;
+                topPos = $(origin).offset().top + margin;
+              }
+              else if (location == 'top') {
+                leftPos = $(origin).offset().left + $(origin).outerWidth()/2 - newTooltip.outerWidth()/2;
+                topPos = $(origin).offset().top - $(origin).outerHeight() - newTooltip.outerHeight() - margin;
+              }
+              else if (location == 'left') {
+                leftPos = $(origin).offset().left - newTooltip.outerWidth() - margin;
+                topPos = $(origin).offset().top - $(origin).outerHeight()/2 - newTooltip.outerHeight()/2;
+              }
+              else if (location == 'right') {
+                leftPos = $(origin).offset().left + $(origin).outerWidth() + margin;
+                topPos = $(origin).offset().top - $(origin).outerHeight()/2 - newTooltip.outerHeight()/2;
+              }
+
+              newTooltip.css({top: topPos, left: leftPos});
+              // Animation
+              newTooltip.fadeIn(100);
+              origin.removeAttr('title')
+            },200);
+        }, function(){
+            clearTimeout(timeout);
+            origin.attr('title', newTooltip.text());
+            newTooltip.fadeOut(100, function(){
+                newTooltip.remove();});
+        });
+    };
+}( jQuery ));
+
+
+/*!
+ * Waves v0.5.3
+ * http://fian.my.id/Waves 
+ * 
+ * Copyright 2014 Alfiana E. Sibuea and other contributors 
+ * Released under the MIT license 
+ * https://github.com/fians/Waves/blob/master/LICENSE 
+ */
+
+;(function(window) {
+    'use strict';
+
+    var Waves = Waves || {};
+    var $$ = document.querySelectorAll.bind(document);
+
+    // Find exact position of element
+    function isWindow(obj) {
+        return obj !== null && obj === obj.window;
+    }
+
+    function getWindow(elem) {
+        return isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
+    }
+
+    function offset(elem) {
+
+        var docElem, win,
+            box = {top: 0, left: 0},
+            doc = elem && elem.ownerDocument;
+
+        docElem = doc.documentElement;
+
+        if (typeof elem.getBoundingClientRect !== typeof undefined) {
+            box = elem.getBoundingClientRect();
+        }
+        win = getWindow(doc);
+        return {
+            top: box.top + win.pageYOffset - docElem.clientTop,
+            left: box.left + win.pageXOffset - docElem.clientLeft
+        };
+    }
+
+    function convertStyle(obj) {
+
+        var style = '';
+
+        for (var a in obj) {
+            if (obj.hasOwnProperty(a)) {
+                style += (a + ':' + obj[a] + ';');
+            }
+        }
+
+        return style;
+    }
+
+    var Effect = {
+
+        // Effect delay
+        duration: 500,
+
+        show: function(e) {
+
+            var el = this;
+
+            // Create ripple
+            var ripple = document.createElement('div');
+            ripple.className = 'waves-ripple';
+            el.appendChild(ripple);
+
+            // Get click coordinate and element witdh
+            var pos         = offset(el);
+            var relativeY   = (e.pageY - pos.top) - 10;
+            var relativeX   = (e.pageX - pos.left) - 10;
+            // var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
+            var scale = 'scale(15)';
+
+            // Attach data to element
+            ripple.setAttribute('data-hold', Date.now());
+            ripple.setAttribute('data-scale', scale);
+            ripple.setAttribute('data-x', relativeX);
+            ripple.setAttribute('data-y', relativeY);
+
+            // Set ripple position
+            var rippleStyle = {
+                'top': relativeY+'px',
+                'left': relativeX+'px'
+            };
+            
+            ripple.className = ripple.className + ' waves-notransition';
+            ripple.setAttribute('style', convertStyle(rippleStyle));
+            ripple.className = ripple.className.replace('waves-notransition', '');
+
+            // Scale the ripple
+            rippleStyle['-webkit-transform'] = scale;
+            rippleStyle['-moz-transform'] = scale;
+            rippleStyle['-ms-transform'] = scale;
+            rippleStyle['-o-transform'] = scale;
+            rippleStyle.transform = scale;
+            rippleStyle.opacity   = '1';
+
+            rippleStyle['-webkit-transition-duration'] = Effect.duration + 'ms';
+            rippleStyle['-moz-transition-duration']    = Effect.duration + 'ms';
+            rippleStyle['-o-transition-duration']      = Effect.duration + 'ms';
+            rippleStyle['transition-duration']         = Effect.duration + 'ms';
+
+            ripple.setAttribute('style', convertStyle(rippleStyle));
+
+        },
+
+        hide: function() {
+            
+            var el = this;
+
+            var width = el.clientWidth * 1.4;
+            
+            // Get first ripple
+            var ripple = null;
+
+            var childrenLength = el.children.length;
+
+            for (var a = 0; a < childrenLength; a++) {
+                if (el.children[a].className.indexOf('waves-ripple') !== -1) {
+                    ripple = el.children[a];
+                    continue;
+                }
+            }
+
+            if (!ripple) {
+                return false;
+            }
+
+            var relativeX   = ripple.getAttribute('data-x');
+            var relativeY   = ripple.getAttribute('data-y');
+            var scale       = ripple.getAttribute('data-scale');
+
+            // Get delay beetween mousedown and mouse leave
+            var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
+            var delay = 500 - diff;
+
+            if (delay < 0) {
+                delay = 0;
+            }
+
+            // Fade out ripple after delay
+            setTimeout(function() {
+
+                var style = {
+                    'top': relativeY+'px',
+                    'left': relativeX+'px',
+                    'opacity': '0',
+
+                    // Duration
+                    '-webkit-transition-duration': Effect.duration + 'ms',
+                    '-moz-transition-duration': Effect.duration + 'ms',
+                    '-o-transition-duration': Effect.duration + 'ms',
+                    'transition-duration': Effect.duration + 'ms',
+                    '-webkit-transform': scale,
+                    '-moz-transform': scale,
+                    '-ms-transform': scale,
+                    '-o-transform': scale,
+                    'transform': scale,
+                };
+
+                ripple.setAttribute('style', convertStyle(style));
+
+                setTimeout(function() {
+
+                    try {
+                        el.removeChild(ripple);
+                    } catch(e) {
+                        return false;
+                    }
+
+                    
+                }, Effect.duration);
+
+            }, delay);
+
+        },
+
+        // Little hack to make <input> can perform waves effect
+        wrapInput: function(elements) {
+
+            for (var a = 0; a < elements.length; a++) {
+
+                var el = elements[a];
+
+                if (el.tagName.toLowerCase() === 'input') {
+
+                    var parent = el.parentNode;
+
+                    // If input already have parent just pass through
+                    if (parent.tagName.toLowerCase() === 'i' && parent.className.indexOf('waves-effect') !== -1) {
+                        return false;
+                    }
+
+                    // Put element class and style to the specified parent
+                    var wrapper = document.createElement('i');
+                    wrapper.className = el.className + ' waves-input-wrapper';
+
+                    var elementStyle = el.getAttribute('style');
+                    var dimensionStyle = 'width:'+el.offsetWidth+'px;height:'+el.clientHeight+'px;';
+
+                    if (!elementStyle) {
+                        elementStyle = '';
+                    }
+
+                    wrapper.setAttribute('style', dimensionStyle+elementStyle);
+                    
+                    el.className = 'waves-button-input';
+                    el.removeAttribute('style');
+
+                    // Put element as child
+                    parent.replaceChild(wrapper, el);
+                    wrapper.appendChild(el);
+
+                }
+                
+            }
+        }
+    };
+
+    Waves.displayEffect = function(options) {
+
+        options = options || {};
+
+        if ('duration' in options) {
+            Effect.duration = options.duration;
+        }
+        
+        //Wrap input inside <i> tag
+        Effect.wrapInput($$('.waves-effect'));
+
+        Array.prototype.forEach.call($$('.waves-effect'), function(i) {
+
+            i.addEventListener('mousedown', Effect.show, false);
+            i.addEventListener('mouseup', Effect.hide, false);
+            i.addEventListener('mouseleave', Effect.hide, false);
+
+        });
+
+    };
+
+    window.Waves = Waves;
+    Waves.displayEffect();
+
+})(window);
+
+function toast(message, displayLength) {
+    if ($('#toast-container').length == 0) {
+        // create notification container
+        var container = $('<div></div>')
+            .attr('id', 'toast-container');
+        $('body').append(container);
+    }
+    
+    // Select and append toast
+    var container = $('#toast-container')
+    var newToast = createToast(message);
+    container.append(newToast);
+    
+    newToast.animate({"top" : "+35px"
+                    , "opacity": 0}, 0);
+    newToast.animate({"top" : "0px"
+                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
+        newToast.delay(displayLength)
+        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
+        .slideUp(200, function(){
+            $(this).remove();
+        });
+    
+    
+    function createToast(message) {
+        var toast = $('<div></div>');
+        toast.addClass('toast');
+        var text = $('<span></span>');
+        text.text(message);
+        toast.append(text);
+        return toast;
+    }
+}
+
+// @codekit-prepend "jquery.easing.1.3.js"; 
+// @codekit-prepend "collapsible.js"; 
+// @codekit-prepend "dropdown.js"; 
+// @codekit-prepend "leanModal.js"; 
+// @codekit-prepend "materialbox.js"; 
+// @codekit-prepend "parallax.js"; 
+// @codekit-prepend "tabs.js"; 
+// @codekit-prepend "tooltip.js"; 
+// @codekit-prepend "waves.js"; 
+// @codekit-prepend "toasts.js"; 
+
