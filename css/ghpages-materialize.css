@@ -1289,7 +1289,7 @@ a {
     background-color: #ea454b; }
   .red.lighten-2, nav, ul.tabs .indicator, #index-banner {
     background-color: #ee6e73; }
-  .red.lighten-3 {
+  .red.lighten-3, #download-button {
     background-color: #f3989b; }
   .red.lighten-4 {
     background-color: #f8c1c3; }
@@ -3269,6 +3269,13 @@ p {
   color: #FFF; }
 #index-banner h4 {
   margin-bottom: 40px; }
+
+#download-button {
+  width: 200px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 19px;
+  font-weight: 500; }
 
 .promo p {
   margin-top: -40px;
