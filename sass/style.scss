@@ -132,7 +132,12 @@ p {
   display: inline-block;
   text-align: center;
   width: 200px;
+
   float: left;
+  margin: 5px 10px 0px 10px;
+  p {
+    margin: 0px 0;
+  }
 }
 
 // Prism Styling

@@ -24,11 +24,22 @@
     });
 
     // Print out entypo name
-    $('.icon-container').children('.entypo').each(function() {
+//    $('.icon-container').children('.entypo').each(function() {
+//      var wrapper = $('<div></div>').addClass('icon-holder');
+//      var icon = $(this);
+//      $(this).wrap(wrapper);
+//      $('<p></p>').text($(this).attr('class')).insertAfter(icon);
+//      
+//
+//    });
+    
+    $('.icon-container').each(function(){
+      $(this).children('i').each(function() {
       var wrapper = $('<div></div>').addClass('icon-holder');
       var icon = $(this);
       $(this).wrap(wrapper);
       $('<p></p>').text($(this).attr('class')).insertAfter(icon);
+    })
       
 
     });
