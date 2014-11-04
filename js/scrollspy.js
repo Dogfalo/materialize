@@ -36,23 +36,26 @@
 	function findElements(top, right, bottom, left) {
 		var hits = $();
 		$.each(elements, function(i, element) {
-			var elTop = element.offset().top,
-				elLeft = element.offset().left,
-				elRight = elLeft + element.width(),
-				elBottom = elTop + element.height();
+			if (element.height() > 0) {
+				var elTop = element.offset().top,
+					elLeft = element.offset().left,
+					elRight = elLeft + element.width(),
+					elBottom = elTop + element.height();
 
-			var isIntersect = !(elLeft > right ||
-				elRight < left ||
-				elTop > bottom ||
-				elBottom < top);
+				var isIntersect = !(elLeft > right ||
+					elRight < left ||
+					elTop > bottom ||
+					elBottom < top);
 
-			if (isIntersect) {
-				hits.push(element);
+				if (isIntersect) {
+					hits.push(element);
+				}				
 			}
 		});
 
 		return hits;
 	}
+
 
 	/**
 	 * Called when the user scrolls the window
@@ -204,6 +207,10 @@
 
 
 		selector.on('scrollSpy:enter', function() {
+			visible = $.grep(visible, function(value) {
+	      return value.height() != 0;
+	    });
+
 			var $this = $(this);
 
 			if (visible[0]) {
@@ -220,21 +227,20 @@
 			}
 
 			$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
-
-			console.log('enter:', $(this).attr('id'));
-			console.log(visible[0].data('scrollSpy:id'), visible);
 		});
 		selector.on('scrollSpy:exit', function() {
-			$('a[href^=#' + visible[0].attr('id') + ']').removeClass('active');
-			var $this = $(this);
 			visible = $.grep(visible, function(value) {
-        return value.attr('id') != $this.attr('id');
-      });
+	      return value.height() != 0;
+	    });
 
+			if (visible[0]) {
+				$('a[href^=#' + visible[0].attr('id') + ']').removeClass('active');
+				var $this = $(this);
+				visible = $.grep(visible, function(value) {
+	        return value.attr('id') != $this.attr('id');
+	      });
+			}
 			$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
-
-			console.log('exit:', $(this).attr('id'));
-			console.log(visible[0].attr('id'), visible);
 		});
 
 		return selector;
