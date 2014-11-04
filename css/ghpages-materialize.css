@@ -2158,10 +2158,10 @@ a {
     color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .white-text {
-  color: white; }
+  color: #fff; }
 
 .container {
   padding: 0 1rem;
@@ -2649,16 +2649,16 @@ small {
   margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: white; }
+    color: #fff; }
   .card h2 {
     font-size: 1.14rem;
-    color: white; }
+    color: #fff; }
   .card h3 {
     font-size: 1rem;
-    color: white; }
+    color: #fff; }
   .card p {
     font-size: 0.8rem;
-    color: white; }
+    color: #fff; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2684,7 +2684,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: black; }
+      color: #000; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -3226,6 +3226,15 @@ form p:last-child {
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
   border-color: #7c7c7c; }
+
+/***************
+    Nav List 
+***************/
+ul.table-of-contents {
+  position: fixed; }
+  ul.table-of-contents a.active {
+    padding-right: 10px;
+    border-right: 5px solid #ea4a4f; }
 
 body {
   background-color: #fcfcfc; }

@@ -1,0 +1,16 @@
+/***************
+    Nav List 
+***************/
+ul.table-of-contents {
+  position: fixed;
+
+  li {
+
+  }
+  a {
+    &.active {
+      padding-right: 10px;
+      border-right: 5px solid lighten($red,10%);
+    }
+  }
+}

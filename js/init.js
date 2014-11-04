@@ -42,6 +42,7 @@
     $('.tooltipped').tooltip();
     $('.collapsible').collapsible();
     $('.materialboxed').materialbox();
+    $('.scrollspy').scrollSpy();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
