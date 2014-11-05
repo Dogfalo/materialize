@@ -407,6 +407,14 @@ ul {
 a {
   text-decoration: none; }
 
+@media only screen and (max-width: 768px) {
+  .hide-on-med-and-below {
+    display: none !important; } }
+
+@media only screen and (max-width: 480px) {
+  .hide-on-small-and-below {
+    display: none !important; } }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");

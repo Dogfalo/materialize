@@ -407,6 +407,14 @@ ul {
 a {
   text-decoration: none; }
 
+@media only screen and (max-width: 768px) {
+  .hide-on-med-and-below {
+    display: none !important; } }
+
+@media only screen and (max-width: 480px) {
+  .hide-on-small-and-below {
+    display: none !important; } }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
@@ -3231,8 +3239,15 @@ form p:last-child {
 /***************
     Nav List 
 ***************/
-ul.table-of-contents {
-  position: fixed; }
+ul.table-of-contents.fixed {
+  position: fixed;
+  top: 10px; }
+ul.table-of-contents a {
+  color: #757575; }
+  ul.table-of-contents a:hover {
+    color: #a8a8a8;
+    padding-right: 10px;
+    border-right: 1px solid #ea4a4f; }
   ul.table-of-contents a.active {
     padding-right: 10px;
-    border-right: 5px solid #ea4a4f; }
+    border-right: 4px solid #ea4a4f; }
