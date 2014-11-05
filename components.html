@@ -81,58 +81,74 @@
       </div>
     </div>
     <div id="tab2" class="section">
-      <h2 class="header">Grids</h2>
-      <p>
-        We are using a standard 12 column fluid responsive grid system. It comes with 3 standard screen size media queries where you  can alter the columns.</p>
       <div class="row">
-        <div class="col grid-example s12"><p>s12</p></div>
-        <div class="col grid-example s12 m3"><p>s12 m3</p></div>
-        <div class="col grid-example s12 m6"><p>s12 m6</p></div>
-        <div class="col grid-example s12 m3"><p>s12 m3</p></div>
+<!--      table of contents-->
+      <div class="col hide-on-small-and-below m2">
+        <div style="height: 1px;">
+          <ul class="table-of-contents">
+            <li><a href="#grid">Grid</a></li>
+            <li><a href="#offset">Offsets</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="row">
-        <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
-        <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
-        <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
-        <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
-      </div>
-      <div class="row">
-        <pre><code class="language-markup col s12">
-  &lt;div class="row">
-  &lt;div class="col grid-example s12">&lt;p>s12&lt;/p>&lt;/div>
-  &lt;div class="col grid-example s12 m3">&lt;p>s12 m3&lt;/p>&lt;/div>
-  &lt;div class="col grid-example s12 m6">&lt;p>s12 m6&lt;/p>&lt;/div>
-  &lt;div class="col grid-example s12 m3">&lt;p>s12 m3&lt;/p>&lt;/div>
-  &lt;/div>
-  &lt;div class="row">
-  &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
-  &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
-  &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
-  &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
-  &lt;/div>
-        </code></pre>
-      </div>
-  
-  
-      <h3 class="header">Offsets</h3>
-      <p>You can use offsets to make smaller sized columns without needing to fill in the empty space.</p>
-  
-      <div class="row">
-        <div class="col grid-example s8 offset-s2"><p>s8 offset-s2</p></div>
-        <div class="col grid-example s8 offset-s2 m8 offset-m4 l10 offset-l2"><p>s8 offset-s2 m8 offset-m4 l10 offset-l2</p></div>
-      </div>
-  
-      <div class="row">
-        <pre><code class="language-markup col s12">
-  &lt;div class="col grid-example s8 offset-s2">
-    &lt;p>s8 offset-s2&lt;/p>
-  &lt;/div>
-  &lt;div class="col grid-example s6 offset-s6 m8 offset-m4 l10 offset-l2">
-    &lt;p>s8 offset-s2 m8 offset-m4 l10 offset-l2&lt;/p>
-  &lt;/div>
-        </code></pre>
+      
+      <div class="col m10">
+      <div id="grid" class="scrollspy">
+        <h2  class="header">Grids</h2>
+        <p>
+          We are using a standard 12 column fluid responsive grid system. It comes with 3 standard screen size media queries where you  can alter the columns.</p>
+        <div class="row">
+          <div class="col grid-example s12"><p>s12</p></div>
+          <div class="col grid-example s12 m3"><p>s12 m3</p></div>
+          <div class="col grid-example s12 m6"><p>s12 m6</p></div>
+          <div class="col grid-example s12 m3"><p>s12 m3</p></div>
+        </div>
+        <div class="row">
+          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
+        </div>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;div class="row">
+    &lt;div class="col grid-example s12">&lt;p>s12&lt;/p>&lt;/div>
+    &lt;div class="col grid-example s12 m3">&lt;p>s12 m3&lt;/p>&lt;/div>
+    &lt;div class="col grid-example s12 m6">&lt;p>s12 m6&lt;/p>&lt;/div>
+    &lt;div class="col grid-example s12 m3">&lt;p>s12 m3&lt;/p>&lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+    &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;div class="col grid-example s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;/div>
+          </code></pre>
+        </div>
       </div>
   
+      <div id="offset" class="scrollspy">
+        <h3 class="header">Offsets</h3>
+        <p>You can use offsets to make smaller sized columns without needing to fill in the empty space.</p>
+
+        <div class="row">
+          <div class="col grid-example s8 offset-s2"><p>s8 offset-s2</p></div>
+          <div class="col grid-example s8 offset-s2 m8 offset-m4 l10 offset-l2"><p>s8 offset-s2 m8 offset-m4 l10 offset-l2</p></div>
+        </div>
+
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;div class="col grid-example s8 offset-s2">
+      &lt;p>s8 offset-s2&lt;/p>
+    &lt;/div>
+    &lt;div class="col grid-example s6 offset-s6 m8 offset-m4 l10 offset-l2">
+      &lt;p>s8 offset-s2 m8 offset-m4 l10 offset-l2&lt;/p>
+    &lt;/div>
+          </code></pre>
+        </div>
+      </div>
+      </div>
+    </div>
   
     </div>
   

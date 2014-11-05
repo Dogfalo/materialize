@@ -3,7 +3,7 @@
 // Media Query Ranges
 $small-screen: 480px;
 $medium-screen: 768px;
-$large-screen: 992px;
+$large-screen: 1024px;
 
 $small-and-up: "only screen and (min-width : 0)";
 $medium-and-up: "only screen and (min-width : #{$medium-screen})";
