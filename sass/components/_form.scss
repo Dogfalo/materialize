@@ -4,7 +4,7 @@
 
 $border-color: #bdbdbd;
 
-.material-input {
+input{
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $border-color;
@@ -12,13 +12,14 @@ $border-color: #bdbdbd;
   height: 3em;
   width: 100%;
   font-size: 1em;
+  margin: 15px 0px;
   padding: 0;
   @include box-shadow(none);
   @include box-sizing(content-box);
   @include transition(.3s);
 }
 
-.material-input:focus {
+input:focus {
   border-bottom: 1px solid $cyan; 
   @include box-shadow(0 1px 0 0 $cyan);
 }

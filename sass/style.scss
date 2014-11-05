@@ -33,6 +33,13 @@ p {
   pointer-events: none;
 }
 
+// Temp
+#github-button {
+  @extend .red.lighten-2;
+  line-height: 19px;
+  
+}
+
 #index-banner {
   @extend .red.lighten-2;
   .header {
@@ -41,6 +48,15 @@ p {
   h4 {
     margin-bottom: 40px;
   }
+}
+
+#download-button {
+  @extend .red.lighten-3;
+  width: 200px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 19px;
+  font-weight: 500;
 }
 
 .promo{
@@ -123,7 +139,12 @@ p {
   display: inline-block;
   text-align: center;
   width: 200px;
+
   float: left;
+  margin: 5px 10px 0px 10px;
+  p {
+    margin: 0px 0;
+  }
 }
 
 // Prism Styling

@@ -1,0 +1,27 @@
+/***************
+    Nav List 
+***************/
+ul.table-of-contents {
+  &.fixed {
+      position: fixed;
+      top: 0px;
+    }
+
+  li {
+  }
+  a {
+    color: #757575;
+    
+    &:hover {
+      color: lighten(#757575, 20%);
+      padding-right: 10px;
+      border-right: 1px solid lighten($red,10%);
+    }
+    &.active {
+      padding-right: 10px;
+      border-right: 4px solid lighten($red,10%);
+    }
+    
+    
+  }
+}

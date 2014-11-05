@@ -407,6 +407,14 @@ ul {
 a {
   text-decoration: none; }
 
+@media only screen and (max-width: 768px) {
+  .hide-on-med-and-below {
+    display: none !important; } }
+
+@media only screen and (max-width: 480px) {
+  .hide-on-small-and-below {
+    display: none !important; } }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
@@ -1178,10 +1186,10 @@ a {
 .entypo-social.s-facebook:before {
   content: '\F30E'; }
 
-.entypo-social.google + :before {
+.entypo-social.google-plus:before {
   content: '\F30F'; }
 
-.entypo-social.c-google + :before {
+.entypo-social.c-google-plus:before {
   content: '\F310'; }
 
 .entypo-social.pinterest:before {
@@ -2174,7 +2182,7 @@ a {
 @media only screen and (min-width: 768px) {
   .container {
     width: 80%; } }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1024px) {
   .container {
     width: 70%; } }
 .container .row {
@@ -2324,7 +2332,7 @@ a {
         margin-left: 91.66667%; }
       .row .col.offset-m12 {
         margin-left: 100%; } }
-    @media only screen and (min-width: 992px) {
+    @media only screen and (min-width: 1024px) {
       .row .col.l1 {
         width: 8.33333%;
         margin-left: 0; }
@@ -2460,7 +2468,7 @@ html {
   @media only screen and (min-width: 768px) {
     html {
       font-size: 14.5px; } }
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 1024px) {
     html {
       font-size: 15px; } }
 
@@ -2475,23 +2483,23 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h1 {
   font-size: 4.1rem;
   line-height: 4.51rem;
-  margin-bottom: 14px;
+  margin: 14px 0px;
   letter-spacing: -0.1rem; }
 
 h2 {
   font-size: 3.21rem;
   line-height: 3.531rem;
-  margin-bottom: 12px; }
+  margin: 12px 0px; }
 
 h3 {
   font-size: 2.42rem;
   line-height: 2.662rem;
-  margin-bottom: 10px; }
+  margin: 10px 0px; }
 
 h4 {
   font-size: 1.71rem;
   line-height: 1.881rem;
-  margin-bottom: 8px;
+  margin: 8px 0px;
   letter-spacing: .05rem; }
 
 h5 {
@@ -2520,124 +2528,124 @@ small {
 @media only screen and (min-width: 0px) {
   .flow-text {
     line-height: 1.4rem; } }
-@media only screen and (min-width: 505.6px) {
+@media only screen and (min-width: 507.2px) {
   .flow-text {
     font-size: 1.05rem; } }
-@media only screen and (min-width: 25.6px) {
+@media only screen and (min-width: 27.2px) {
   .flow-text {
     line-height: 1.47rem; } }
-@media only screen and (min-width: 531.2px) {
+@media only screen and (min-width: 534.4px) {
   .flow-text {
     font-size: 1.1rem; } }
-@media only screen and (min-width: 51.2px) {
+@media only screen and (min-width: 54.4px) {
   .flow-text {
     line-height: 1.54rem; } }
-@media only screen and (min-width: 556.8px) {
+@media only screen and (min-width: 561.6px) {
   .flow-text {
     font-size: 1.15rem; } }
-@media only screen and (min-width: 76.8px) {
+@media only screen and (min-width: 81.6px) {
   .flow-text {
     line-height: 1.61rem; } }
-@media only screen and (min-width: 582.4px) {
+@media only screen and (min-width: 588.8px) {
   .flow-text {
     font-size: 1.2rem; } }
-@media only screen and (min-width: 102.4px) {
+@media only screen and (min-width: 108.8px) {
   .flow-text {
     line-height: 1.68rem; } }
-@media only screen and (min-width: 608px) {
+@media only screen and (min-width: 616px) {
   .flow-text {
     font-size: 1.25rem; } }
-@media only screen and (min-width: 128px) {
+@media only screen and (min-width: 136px) {
   .flow-text {
     line-height: 1.75rem; } }
-@media only screen and (min-width: 633.6px) {
+@media only screen and (min-width: 643.2px) {
   .flow-text {
     font-size: 1.3rem; } }
-@media only screen and (min-width: 153.6px) {
+@media only screen and (min-width: 163.2px) {
   .flow-text {
     line-height: 1.82rem; } }
-@media only screen and (min-width: 659.2px) {
+@media only screen and (min-width: 670.4px) {
   .flow-text {
     font-size: 1.35rem; } }
-@media only screen and (min-width: 179.2px) {
+@media only screen and (min-width: 190.4px) {
   .flow-text {
     line-height: 1.89rem; } }
-@media only screen and (min-width: 684.8px) {
+@media only screen and (min-width: 697.6px) {
   .flow-text {
     font-size: 1.4rem; } }
-@media only screen and (min-width: 204.8px) {
+@media only screen and (min-width: 217.6px) {
   .flow-text {
     line-height: 1.96rem; } }
-@media only screen and (min-width: 710.4px) {
+@media only screen and (min-width: 724.8px) {
   .flow-text {
     font-size: 1.45rem; } }
-@media only screen and (min-width: 230.4px) {
+@media only screen and (min-width: 244.8px) {
   .flow-text {
     line-height: 2.03rem; } }
-@media only screen and (min-width: 736px) {
+@media only screen and (min-width: 752px) {
   .flow-text {
     font-size: 1.5rem; } }
-@media only screen and (min-width: 256px) {
+@media only screen and (min-width: 272px) {
   .flow-text {
     line-height: 2.1rem; } }
-@media only screen and (min-width: 761.6px) {
+@media only screen and (min-width: 779.2px) {
   .flow-text {
     font-size: 1.55rem; } }
-@media only screen and (min-width: 281.6px) {
+@media only screen and (min-width: 299.2px) {
   .flow-text {
     line-height: 2.17rem; } }
-@media only screen and (min-width: 787.2px) {
+@media only screen and (min-width: 806.4px) {
   .flow-text {
     font-size: 1.6rem; } }
-@media only screen and (min-width: 307.2px) {
+@media only screen and (min-width: 326.4px) {
   .flow-text {
     line-height: 2.24rem; } }
-@media only screen and (min-width: 812.8px) {
+@media only screen and (min-width: 833.6px) {
   .flow-text {
     font-size: 1.65rem; } }
-@media only screen and (min-width: 332.8px) {
+@media only screen and (min-width: 353.6px) {
   .flow-text {
     line-height: 2.31rem; } }
-@media only screen and (min-width: 838.4px) {
+@media only screen and (min-width: 860.8px) {
   .flow-text {
     font-size: 1.7rem; } }
-@media only screen and (min-width: 358.4px) {
+@media only screen and (min-width: 380.8px) {
   .flow-text {
     line-height: 2.38rem; } }
-@media only screen and (min-width: 864px) {
+@media only screen and (min-width: 888px) {
   .flow-text {
     font-size: 1.75rem; } }
-@media only screen and (min-width: 384px) {
+@media only screen and (min-width: 408px) {
   .flow-text {
     line-height: 2.45rem; } }
-@media only screen and (min-width: 889.6px) {
-  .flow-text {
-    font-size: 1.8rem; } }
-@media only screen and (min-width: 409.6px) {
-  .flow-text {
-    line-height: 2.52rem; } }
 @media only screen and (min-width: 915.2px) {
   .flow-text {
-    font-size: 1.85rem; } }
+    font-size: 1.8rem; } }
 @media only screen and (min-width: 435.2px) {
   .flow-text {
+    line-height: 2.52rem; } }
+@media only screen and (min-width: 942.4px) {
+  .flow-text {
+    font-size: 1.85rem; } }
+@media only screen and (min-width: 462.4px) {
+  .flow-text {
     line-height: 2.59rem; } }
-@media only screen and (min-width: 940.8px) {
+@media only screen and (min-width: 969.6px) {
   .flow-text {
     font-size: 1.9rem; } }
-@media only screen and (min-width: 460.8px) {
+@media only screen and (min-width: 489.6px) {
   .flow-text {
     line-height: 2.66rem; } }
-@media only screen and (min-width: 966.4px) {
+@media only screen and (min-width: 996.8px) {
   .flow-text {
     font-size: 1.95rem; } }
-@media only screen and (min-width: 486.4px) {
+@media only screen and (min-width: 516.8px) {
   .flow-text {
     line-height: 2.73rem; } }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1024px) {
   .flow-text {
     font-size: 2rem; } }
-@media only screen and (min-width: 512px) {
+@media only screen and (min-width: 544px) {
   .flow-text {
     line-height: 2.8rem; } }
 
@@ -2646,7 +2654,8 @@ small {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box;
-  margin-top: 10px; }
+  margin-top: 10px;
+  padding: 1rem; }
   .card h1 {
     font-size: 1.71rem;
     color: white; }
@@ -2676,7 +2685,7 @@ small {
       width: 100%;
       z-index: -1; }
   .card .card-footer {
-    background-color: #fafafa;
+    background-color: white;
     padding: 2px 1rem 8px 1rem;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
@@ -2702,7 +2711,7 @@ small {
     #toast-container {
       min-width: 50%;
       right: 5%; } }
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 1024px) {
     #toast-container {
       min-width: 8%;
       top: 8%;
@@ -2852,7 +2861,7 @@ ul.tabs {
     font-size: 1.2rem;
     color: #212121;
     padding: 1rem 1rem; }
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 1024px) {
     .dropdown-content li:hover {
       background-color: rgba(0, 0, 0, 0.07); } }
 
@@ -3023,7 +3032,7 @@ ul.collapsible {
 /***************
     Inputs 
 ***************/
-.material-input {
+input {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #bdbdbd;
@@ -3031,6 +3040,7 @@ ul.collapsible {
   height: 3em;
   width: 100%;
   font-size: 1em;
+  margin: 15px 0px;
   padding: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -3042,7 +3052,7 @@ ul.collapsible {
   -o-transition: 0.3s;
   transition: 0.3s; }
 
-.material-input:focus {
+input:focus {
   border-bottom: 1px solid #00bcd4;
   -webkit-box-shadow: 0 1px 0 0 #00bcd4;
   box-shadow: 0 1px 0 0 #00bcd4; }
@@ -3225,3 +3235,19 @@ form p:last-child {
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
   border-color: #7c7c7c; }
+
+/***************
+    Nav List 
+***************/
+ul.table-of-contents.fixed {
+  position: fixed;
+  top: 0px; }
+ul.table-of-contents a {
+  color: #757575; }
+  ul.table-of-contents a:hover {
+    color: #a8a8a8;
+    padding-right: 10px;
+    border-right: 1px solid #ea4a4f; }
+  ul.table-of-contents a.active {
+    padding-right: 10px;
+    border-right: 4px solid #ea4a4f; }

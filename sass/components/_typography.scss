@@ -38,10 +38,10 @@ $h4-fontsize: 1.71rem;
 $h5-fontsize: 1.42rem;
 $h6-fontsize: 1rem;
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
-h1 { font-size: $h1-fontsize; line-height: 1.1*$h1-fontsize; margin-bottom: 14px; letter-spacing: -0.1rem}
-h2 { font-size: $h2-fontsize; line-height: 1.1*$h2-fontsize; margin-bottom: 12px; }
-h3 { font-size: $h3-fontsize; line-height: 1.1*$h3-fontsize; margin-bottom: 10px; }
-h4 { font-size: $h4-fontsize; line-height: 1.1*$h4-fontsize; margin-bottom: 8px; letter-spacing: .05rem}
+h1 { font-size: $h1-fontsize; line-height: 1.1*$h1-fontsize; margin: 14px 0px; letter-spacing: -0.1rem}
+h2 { font-size: $h2-fontsize; line-height: 1.1*$h2-fontsize; margin: 12px 0px; }
+h3 { font-size: $h3-fontsize; line-height: 1.1*$h3-fontsize; margin: 10px 0px; }
+h4 { font-size: $h4-fontsize; line-height: 1.1*$h4-fontsize; margin: 8px 0px; letter-spacing: .05rem}
 h5 { font-size: $h5-fontsize; line-height: 1.1*$h5-fontsize; letter-spacing: .05rem}
 h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; letter-spacing: .03rem}
 
