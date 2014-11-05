@@ -2483,23 +2483,23 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h1 {
   font-size: 4.1rem;
   line-height: 4.51rem;
-  margin-bottom: 14px;
+  margin: 14px 0px;
   letter-spacing: -0.1rem; }
 
 h2 {
   font-size: 3.21rem;
   line-height: 3.531rem;
-  margin-bottom: 12px; }
+  margin: 12px 0px; }
 
 h3 {
   font-size: 2.42rem;
   line-height: 2.662rem;
-  margin-bottom: 10px; }
+  margin: 10px 0px; }
 
 h4 {
   font-size: 1.71rem;
   line-height: 1.881rem;
-  margin-bottom: 8px;
+  margin: 8px 0px;
   letter-spacing: .05rem; }
 
 h5 {
@@ -3241,7 +3241,7 @@ form p:last-child {
 ***************/
 ul.table-of-contents.fixed {
   position: fixed;
-  top: 10px; }
+  top: 0px; }
 ul.table-of-contents a {
   color: #757575; }
   ul.table-of-contents a:hover {
