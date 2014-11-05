@@ -2158,10 +2158,10 @@ a {
     color: #2c3940; }
 
 .white {
-  background-color: #fff; }
+  background-color: white; }
 
 .white-text {
-  color: #fff; }
+  color: white; }
 
 .container {
   padding: 0 1rem;
@@ -2650,16 +2650,16 @@ small {
   padding: 1rem; }
   .card h1 {
     font-size: 1.71rem;
-    color: #fff; }
+    color: white; }
   .card h2 {
     font-size: 1.14rem;
-    color: #fff; }
+    color: white; }
   .card h3 {
     font-size: 1rem;
-    color: #fff; }
+    color: white; }
   .card p {
     font-size: 0.8rem;
-    color: #fff; }
+    color: white; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2685,7 +2685,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: #000; }
+      color: black; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -3024,7 +3024,7 @@ ul.collapsible {
 /***************
     Inputs 
 ***************/
-.material-input {
+input {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #bdbdbd;
@@ -3044,7 +3044,7 @@ ul.collapsible {
   -o-transition: 0.3s;
   transition: 0.3s; }
 
-.material-input:focus {
+input:focus {
   border-bottom: 1px solid #00bcd4;
   -webkit-box-shadow: 0 1px 0 0 #00bcd4;
   box-shadow: 0 1px 0 0 #00bcd4; }

@@ -4,7 +4,7 @@
 
 $border-color: #bdbdbd;
 
-.material-input {
+input{
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $border-color;
@@ -19,7 +19,7 @@ $border-color: #bdbdbd;
   @include transition(.3s);
 }
 
-.material-input:focus {
+input:focus {
   border-bottom: 1px solid $cyan; 
   @include box-shadow(0 1px 0 0 $cyan);
 }
