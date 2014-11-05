@@ -6,8 +6,8 @@
 
       var overlayActive = false;
       var doneAnimating = true;
-      var inDuration = 225;
-      var outDuration = 175;
+      var inDuration = 250;
+      var outDuration = 200;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
       var originalWidth = origin.width();

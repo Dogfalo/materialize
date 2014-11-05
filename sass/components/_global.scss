@@ -9,7 +9,6 @@ $small-and-up: "only screen and (min-width : 0)";
 $medium-and-up: "only screen and (min-width : #{$medium-screen})";
 $large-and-up: "only screen and (min-width : #{$large-screen})";
 
-
 // Grid Variables
 $num-cols: 12;
 $gutter-width: 1rem;
@@ -71,4 +70,16 @@ ul {
 a {
 	@extend .light-blue-text.darken-1;
 	text-decoration: none;
+}
+
+.hide-on-med-and-below {
+  @media only screen and (max-width: $medium-screen) {
+    display: none !important;
+  } 
+}
+
+.hide-on-small-and-below {
+  @media only screen and (max-width: $small-screen) {
+    display: none !important;
+  } 
 }

@@ -407,6 +407,14 @@ ul {
 a {
   text-decoration: none; }
 
+@media only screen and (max-width: 768px) {
+  .hide-on-med-and-below {
+    display: none !important; } }
+
+@media only screen and (max-width: 480px) {
+  .hide-on-small-and-below {
+    display: none !important; } }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
@@ -3024,7 +3032,7 @@ ul.collapsible {
 /***************
     Inputs 
 ***************/
-.material-input {
+input {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #bdbdbd;
@@ -3044,7 +3052,7 @@ ul.collapsible {
   -o-transition: 0.3s;
   transition: 0.3s; }
 
-.material-input:focus {
+input:focus {
   border-bottom: 1px solid #00bcd4;
   -webkit-box-shadow: 0 1px 0 0 #00bcd4;
   box-shadow: 0 1px 0 0 #00bcd4; }
@@ -3227,3 +3235,19 @@ form p:last-child {
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
   border-color: #7c7c7c; }
+
+/***************
+    Nav List 
+***************/
+ul.table-of-contents.fixed {
+  position: fixed;
+  top: 10px; }
+ul.table-of-contents a {
+  color: #757575; }
+  ul.table-of-contents a:hover {
+    color: #a8a8a8;
+    padding-right: 10px;
+    border-right: 1px solid #ea4a4f; }
+  ul.table-of-contents a.active {
+    padding-right: 10px;
+    border-right: 4px solid #ea4a4f; }

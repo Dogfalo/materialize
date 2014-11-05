@@ -33,6 +33,13 @@ p {
   pointer-events: none;
 }
 
+// Temp
+#github-button {
+  @extend .red.lighten-2;
+  line-height: 19px;
+  
+}
+
 #index-banner {
   @extend .red.lighten-2;
   .header {
