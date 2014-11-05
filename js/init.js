@@ -23,16 +23,7 @@
       });
     });
 
-    // Print out entypo name
-//    $('.icon-container').children('.entypo').each(function() {
-//      var wrapper = $('<div></div>').addClass('icon-holder');
-//      var icon = $(this);
-//      $(this).wrap(wrapper);
-//      $('<p></p>').text($(this).attr('class')).insertAfter(icon);
-//      
-//
-//    });
-    
+    // Print out entypo name  
     $('.icon-container').each(function(){
       $(this).children('i').each(function() {
       var wrapper = $('<div></div>').addClass('icon-holder');
@@ -40,8 +31,22 @@
       $(this).wrap(wrapper);
       $('<p></p>').text($(this).attr('class')).insertAfter(icon);
     })
-      
-
+    });
+    
+    // Floating-Fixed table of contents
+    $('.table-of-contents').each(function() {
+      var origin = $(this);
+      $(window).scroll(function(e) {
+        if (origin.is(":visible")) {
+          if(origin.attr('data-origpos') == undefined)
+            origin.attr('data-origpos', origin.position().top);
+          if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
+            origin.addClass('fixed');
+          }
+          if($(window).scrollTop() < origin.attr('data-origpos'))
+            origin.removeClass('fixed');
+        }
+      });
     });
 
     // PLugin initialization

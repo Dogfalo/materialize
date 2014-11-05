@@ -23,8 +23,10 @@
     
     // Window Resize Reposition
     $(window).on('resize', function(){
-      activates.css('top', origin.offset().top);
-      activates.css('left', origin.offset().left);
+      if (origin.is(':visible')) {
+        activates.css('top', origin.offset().top);
+        activates.css('left', origin.offset().left);
+      }
     });
     
     
