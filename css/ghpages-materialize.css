@@ -1287,7 +1287,7 @@ a {
   background-color: #e51c23; }
   .red.lighten-1, nav ul li:hover {
     background-color: #ea454b; }
-  .red.lighten-2, nav, ul.tabs .indicator, #index-banner {
+  .red.lighten-2, nav, ul.tabs .indicator, #github-button, #index-banner {
     background-color: #ee6e73; }
   .red.lighten-3, #download-button {
     background-color: #f3989b; }
@@ -3272,6 +3272,9 @@ p {
   display: inline-block;
   height: 100%;
   pointer-events: none; }
+
+#github-button {
+  line-height: 19px; }
 
 #index-banner .header {
   color: #FFF; }
