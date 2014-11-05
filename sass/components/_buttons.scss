@@ -45,7 +45,7 @@ $button-width: 120px;
     @include transition(.3s);
 
      &:hover {
-      @extend .z-depth-3;
+      @extend .z-depth-2;
     }
 
     &.disabled {
