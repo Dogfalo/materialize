@@ -3026,7 +3026,7 @@ ul.collapsible {
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: #FFFFFF;
+  background-color: #292929;
   z-index: 9999; }
 
 /***************
@@ -3280,9 +3280,6 @@ p {
   display: inline-block;
   height: 100%;
   pointer-events: none; }
-
-#github-button {
-  line-height: 19px; }
 
 #index-banner .header {
   color: #FFF; }
