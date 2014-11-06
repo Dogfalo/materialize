@@ -407,8 +407,12 @@ ul {
 a {
   text-decoration: none; }
 
+@media only screen and (min-width: 768px) {
+  .show-on-med-and-below, nav a.button-collapse {
+    display: none !important; } }
+
 @media only screen and (max-width: 768px) {
-  .hide-on-med-and-below {
+  .hide-on-med-and-below, nav ul {
     display: none !important; } }
 
 @media only screen and (max-width: 480px) {
@@ -2166,10 +2170,10 @@ a {
     color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .white-text {
-  color: white; }
+  color: #fff; }
 
 .container {
   padding: 0 1rem;
@@ -2406,6 +2410,9 @@ nav {
     font-size: 36px; }
     nav a.logo i {
       -webkit-font-smoothing: antialiased; }
+  nav a.button-collapse {
+    float: right;
+    font-size: 2rem; }
   nav .brand-logo {
     color: #fff;
     float: left;
@@ -2658,16 +2665,16 @@ small {
   padding: 1rem; }
   .card h1 {
     font-size: 1.71rem;
-    color: white; }
+    color: #fff; }
   .card h2 {
     font-size: 1.14rem;
-    color: white; }
+    color: #fff; }
   .card h3 {
     font-size: 1rem;
-    color: white; }
+    color: #fff; }
   .card p {
     font-size: 0.8rem;
-    color: white; }
+    color: #fff; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2685,7 +2692,7 @@ small {
       width: 100%;
       z-index: -1; }
   .card .card-footer {
-    background-color: white;
+    background-color: #FFF;
     padding: 2px 1rem 8px 1rem;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
@@ -2693,7 +2700,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: black; }
+      color: #000; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
