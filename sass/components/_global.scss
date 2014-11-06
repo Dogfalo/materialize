@@ -72,6 +72,14 @@ a {
 	text-decoration: none;
 }
 
+
+// Browser Size Dependent Visibility
+.show-on-med-and-below {
+  @media only screen and (min-width: $medium-screen) {
+    display: none !important;
+  } 
+}
+
 .hide-on-med-and-below {
   @media only screen and (max-width: $medium-screen) {
     display: none !important;

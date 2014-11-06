@@ -14,6 +14,11 @@ nav {
 
     i { -webkit-font-smoothing: antialiased; }
   }
+  a.button-collapse {
+    float: right;
+    font-size: 2rem;
+    @extend .show-on-med-and-below;
+  }
 
   .brand-logo {
     color: #fff;
@@ -31,6 +36,7 @@ nav {
   ul {
     margin: 0;
     float: right;
+    @extend .hide-on-med-and-below;
 
     li { 
       float: left;
