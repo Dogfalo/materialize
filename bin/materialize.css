@@ -407,8 +407,12 @@ ul {
 a {
   text-decoration: none; }
 
+@media only screen and (min-width: 768px) {
+  .show-on-med-and-below, nav a.button-collapse {
+    display: none !important; } }
+
 @media only screen and (max-width: 768px) {
-  .hide-on-med-and-below {
+  .hide-on-med-and-below, nav ul {
     display: none !important; } }
 
 @media only screen and (max-width: 480px) {
@@ -2406,6 +2410,9 @@ nav {
     font-size: 36px; }
     nav a.logo i {
       -webkit-font-smoothing: antialiased; }
+  nav a.button-collapse {
+    float: right;
+    font-size: 2rem; }
   nav .brand-logo {
     color: #fff;
     float: left;
