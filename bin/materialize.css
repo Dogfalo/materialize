@@ -2769,7 +2769,10 @@ ul.tabs {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: .8px;
-    width: auto; }
+    width: 25%; }
+    @media only screen and (min-width: 1024px) {
+      ul.tabs li.tab {
+        max-width: 25%; } }
     ul.tabs li.tab a {
       color: #ee6e73;
       display: block;
@@ -3281,10 +3284,10 @@ ul.table-of-contents a {
     transition: left 0.15s ease-out; }
     ul.side-nav.active {
       left: 0;
-      -webkit-transition: left 0.25s ease;
-      -moz-transition: left 0.25s ease;
-      -o-transition: left 0.25s ease;
-      transition: left 0.25s ease; }
+      -webkit-transition: left 0.3s ease;
+      -moz-transition: left 0.3s ease;
+      -o-transition: left 0.3s ease;
+      transition: left 0.3s ease; }
     ul.side-nav li {
       float: none;
       padding: 0 15px; }

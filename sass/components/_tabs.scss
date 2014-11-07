@@ -6,6 +6,10 @@ ul.tabs {
   width: 100%;
 
   li.tab {
+    @media only screen and (min-width: $large-screen) {
+     max-width: 25%; 
+    }
+    
     display: block;
     float: left;
     text-align: center;
@@ -16,7 +20,7 @@ ul.tabs {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: .8px;
-    width: auto;
+    width: 25%;
 
     a {
       color: lighten($red, 18%);

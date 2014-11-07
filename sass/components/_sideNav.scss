@@ -12,7 +12,7 @@
 
     &.active {
       left: 0;
-      @include transition(left .25s ease);
+      @include transition(left .3s ease);
     }
 
     li {
