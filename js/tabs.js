@@ -10,13 +10,12 @@
     var window_width = $(window).width();
 
     if (window_width > 768) {
-
+      $this.width('100%');
       // Set Tab Width for each tab
       var $num_tabs = $(this).children('li').length;
       $this.children('li').each(function() {
         $(this).width((100/$num_tabs)+'%');
       });
-          
       var $active, $content, $links = $this.find('li.tab a');
       var $tabs_width = $this.width();
       var $tab_width = $this.find('li').first().outerWidth();
@@ -33,8 +32,6 @@
 
       $content = $($active[0].hash);
       
-
-
       // append indicator then set indicator width to tab width
       $this.append('<div class="indicator"></div>');
       var $indicator = $this.find('.indicator');
