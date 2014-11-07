@@ -85,7 +85,7 @@
         // Reposition Element AND Animate image + set z-index
         origin.css('left', 0)
           .css('top', 0)
-          .css('z-index', 10000)
+          .css('z-index', 1000)
           .css('will-change', 'left, top')
           .animate({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
           .animate({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})

@@ -4,11 +4,11 @@ nav {
   @extend .red.lighten-2;
   width: 100%;
 
+  a { color: #fff; }
   a.logo {
     height: inherit;
     line-height: inherit;
     display: inline-block;
-    color: inherit;
     float: left;
     font-size: 36px;
 
@@ -36,7 +36,6 @@ nav {
   ul {
     margin: 0;
     float: right;
-    @extend .hide-on-med-and-below;
 
     li { 
       float: left;
