@@ -38,15 +38,19 @@
     $this.append('<div class="indicator"></div>');
     var $indicator = $this.find('.indicator');
     if ($tab_width !== 0 && $tabs_width !== 0) {
-      $indicator.css({"right": $tabs_width - $tab_width});
+      $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
       $indicator.css({"left": $index * $tab_width});
     }
     $(window).resize(function () {
       $tabs_width = $this.width();
-      $tab_width = $this.find('li').first().outerWidth();      
+      $tab_width = $this.find('li').first().outerWidth();    
+      $index = $links.index($('.active'));
+      if ($index < 0) {
+        $index = 0;
+      }  
       if ($tab_width !== 0 && $tabs_width !== 0) {
-        console.log($tabs_width - $tab_width, $index * $tab_width);
-        $indicator.css({"right": $tabs_width - $tab_width});
+        console.log($tabs_width, $tab_width, $index * $tab_width, $index);
+        $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
         $indicator.css({"left": $index * $tab_width});
       }
     });
