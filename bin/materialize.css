@@ -407,8 +407,12 @@ ul {
 a {
   text-decoration: none; }
 
+@media only screen and (min-width: 768px) {
+  .show-on-med-and-below, nav a.button-collapse {
+    display: none !important; } }
+
 @media only screen and (max-width: 768px) {
-  .hide-on-med-and-below {
+  .hide-on-med-and-below, nav ul {
     display: none !important; } }
 
 @media only screen and (max-width: 480px) {
@@ -2406,6 +2410,9 @@ nav {
     font-size: 36px; }
     nav a.logo i {
       -webkit-font-smoothing: antialiased; }
+  nav a.button-collapse {
+    float: right;
+    font-size: 2rem; }
   nav .brand-logo {
     color: #fff;
     float: left;
@@ -2746,7 +2753,8 @@ ul.tabs {
   margin: 0 auto;
   width: 100%; }
   ul.tabs li.tab {
-    display: inline-block;
+    display: block;
+    float: left;
     text-align: center;
     background-color: #fff;
     line-height: 48px;
@@ -3026,7 +3034,7 @@ ul.collapsible {
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: #FFFFFF;
+  background-color: #292929;
   z-index: 9999; }
 
 /***************

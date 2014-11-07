@@ -72,12 +72,12 @@
         var newHeight = 0;
 
         if (widthPercent > heightPercent) {
-          newWidth = windowWidth * 0.8;
-          newHeight = windowWidth * 0.8 * ratio;
+          newWidth = windowWidth * 0.9;
+          newHeight = windowWidth * 0.9 * ratio;
         }
         else {
-          newWidth = (windowHeight * 0.8) * ratio;
-          newHeight = windowHeight * 0.8;
+          newWidth = (windowHeight * 0.9) * ratio;
+          newHeight = windowHeight * 0.9;
         }
 
         console.log(originalWidth, originalHeight, ratio, newHeight, newWidth);
