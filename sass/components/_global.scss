@@ -6,8 +6,8 @@ $medium-screen: 768px;
 $large-screen: 1024px;
 
 $small-and-up: "only screen and (min-width : 0)";
-$medium-and-up: "only screen and (min-width : #{$medium-screen})";
-$large-and-up: "only screen and (min-width : #{$large-screen})";
+$medium-and-up: "only screen and (min-width : #{$small-screen})";
+$large-and-up: "only screen and (min-width : #{$medium-screen})";
 
 $small-and-down: "only screen and (max-width : #{$small-screen})";
 $medium-and-down: "only screen and (max-width : #{$medium-screen})";
@@ -30,7 +30,7 @@ $num-cols: 12;
 // Z-levels
 
 .z-depth-1{
-    @include box-shadow-2(0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16));
+    @include box-shadow-2(0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12));
 }
 .z-depth-2{
     @include box-shadow-2(0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
