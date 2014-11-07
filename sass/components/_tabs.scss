@@ -6,7 +6,8 @@ ul.tabs {
   width: 100%;
 
   li.tab {
-    display: inline-block;
+    display: block;
+    float: left;
     text-align: center;
     background-color: #fff;
     line-height: 48px;

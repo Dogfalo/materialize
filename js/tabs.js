@@ -1,12 +1,22 @@
 (function ($) {
     
   $.fn.tabs = function () {
+    
 
     return this.each(function() {
 
     // For each set of tabs, we want to keep track of
     // which tab is active and it's associated content
     var $this = $(this);
+    
+    $this.width('100%');
+    // Set Tab Width for each tab
+    var $num_tabs = $(this).children('li').length;
+    $this.children('li').each(function() {
+      $(this).width((100/$num_tabs)+'%');
+    });
+      
+      
     var $active, $content, $links = $this.find('li.tab a');
     var $tabs_width = $this.width();
     var $tab_width = $this.find('li').first().outerWidth();
