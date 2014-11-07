@@ -1,7 +1,6 @@
 (function ($) {
     
   $.fn.tabs = function () {
-    
 
     return this.each(function() {
 
@@ -42,6 +41,15 @@
       $indicator.css({"right": $tabs_width - $tab_width});
       $indicator.css({"left": $index * $tab_width});
     }
+    $(window).resize(function () {
+      $tabs_width = $this.width();
+      $tab_width = $this.find('li').first().outerWidth();      
+      if ($tab_width !== 0 && $tabs_width !== 0) {
+        console.log($tabs_width - $tab_width, $index * $tab_width);
+        $indicator.css({"right": $tabs_width - $tab_width});
+        $indicator.css({"left": $index * $tab_width});
+      }
+    });
 
     // Hide the remaining content
     $links.not($active).each(function () {
