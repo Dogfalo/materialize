@@ -411,8 +411,12 @@ a {
   .show-on-med-and-below, nav a.button-collapse {
     display: none !important; } }
 
+@media only screen and (min-width: 1024px) {
+  .show-on-lg-and-below {
+    display: none !important; } }
+
 @media only screen and (max-width: 768px) {
-  .hide-on-med-and-below, nav ul {
+  .hide-on-med-and-below {
     display: none !important; } }
 
 @media only screen and (max-width: 480px) {
@@ -2401,11 +2405,12 @@ a {
 nav {
   color: #fff;
   width: 100%; }
+  nav a {
+    color: #fff; }
   nav a.logo {
     height: inherit;
     line-height: inherit;
     display: inline-block;
-    color: inherit;
     float: left;
     font-size: 36px; }
     nav a.logo i {
@@ -2414,6 +2419,7 @@ nav {
     float: right;
     font-size: 2rem; }
   nav .brand-logo {
+    position: absolute;
     color: #fff;
     float: left;
     display: inline-block;
@@ -3035,7 +3041,7 @@ ul.collapsible {
   top: 0px;
   left: 0px;
   background-color: #292929;
-  z-index: 9999; }
+  z-index: 999; }
 
 /***************
     Inputs 
@@ -3259,3 +3265,44 @@ ul.table-of-contents a {
   ul.table-of-contents a.active {
     padding-right: 10px;
     border-right: 4px solid #ea4a4f; }
+
+@media only screen and (max-width: 768px) {
+  ul.side-nav {
+    position: fixed;
+    width: 240px;
+    left: -240px;
+    top: 0;
+    height: 100%;
+    background-color: #FFF;
+    z-index: 1000;
+    -webkit-transition: left 0.15s ease-out;
+    -moz-transition: left 0.15s ease-out;
+    -o-transition: left 0.15s ease-out;
+    transition: left 0.15s ease-out; }
+    ul.side-nav.active {
+      left: 0;
+      -webkit-transition: left 0.25s ease;
+      -moz-transition: left 0.25s ease;
+      -o-transition: left 0.25s ease;
+      transition: left 0.25s ease; }
+    ul.side-nav li {
+      float: none;
+      padding: 0 15px; }
+      ul.side-nav li:hover {
+        background-color: #ddd; }
+    ul.side-nav a {
+      color: #444; }
+
+  #front-page-nav ul.side-nav li {
+    float: none;
+    padding: 0 15px; }
+    #front-page-nav ul.side-nav li:hover {
+      background-color: #ddd; }
+  #front-page-nav ul.side-nav a {
+    color: #444; } }
+#sidenav-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; }
