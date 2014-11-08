@@ -3,7 +3,6 @@ nav {
   @extend .z-depth-1;
   @extend .red.lighten-2;
   width: 100%;
-  position: relative;
   a { color: #fff; }
   a.logo {
     height: inherit;
@@ -30,7 +29,6 @@ nav {
 
     &.right {
       float: right;
-      right: 0;
       padding: 0;
     }
   }

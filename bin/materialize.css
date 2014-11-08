@@ -2401,8 +2401,7 @@ a {
 
 nav {
   color: #fff;
-  width: 100%;
-  position: relative; }
+  width: 100%; }
   nav a {
     color: #fff; }
   nav a.logo {
@@ -2425,7 +2424,6 @@ nav {
     padding: 0; }
     nav .brand-logo.right {
       float: right;
-      right: 0;
       padding: 0; }
   nav ul {
     margin: 0;
