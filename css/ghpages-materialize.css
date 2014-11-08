@@ -411,6 +411,10 @@ a {
   .show-on-med-and-below, nav a.button-collapse {
     display: none !important; } }
 
+@media only screen and (min-width: 1024px) {
+  .show-on-lg-and-below {
+    display: none !important; } }
+
 @media only screen and (max-width: 768px) {
   .hide-on-med-and-below {
     display: none !important; } }
@@ -2170,10 +2174,10 @@ a {
     color: #2c3940; }
 
 .white {
-  background-color: #fff; }
+  background-color: white; }
 
 .white-text {
-  color: #fff; }
+  color: white; }
 
 .container {
   padding: 0 1rem;
@@ -2412,6 +2416,7 @@ nav {
     float: right;
     font-size: 2rem; }
   nav .brand-logo {
+    position: absolute;
     color: #fff;
     float: left;
     display: inline-block;
@@ -2535,124 +2540,124 @@ small {
     line-height: 1.4rem; } }
 @media only screen and (min-width: 507.2px) {
   .flow-text {
-    font-size: 1.05rem; } }
+    font-size: 1.03rem; } }
 @media only screen and (min-width: 27.2px) {
   .flow-text {
-    line-height: 1.47rem; } }
+    line-height: 1.442rem; } }
 @media only screen and (min-width: 534.4px) {
   .flow-text {
-    font-size: 1.1rem; } }
+    font-size: 1.06rem; } }
 @media only screen and (min-width: 54.4px) {
   .flow-text {
-    line-height: 1.54rem; } }
+    line-height: 1.484rem; } }
 @media only screen and (min-width: 561.6px) {
   .flow-text {
-    font-size: 1.15rem; } }
+    font-size: 1.09rem; } }
 @media only screen and (min-width: 81.6px) {
   .flow-text {
-    line-height: 1.61rem; } }
+    line-height: 1.526rem; } }
 @media only screen and (min-width: 588.8px) {
   .flow-text {
-    font-size: 1.2rem; } }
+    font-size: 1.12rem; } }
 @media only screen and (min-width: 108.8px) {
   .flow-text {
-    line-height: 1.68rem; } }
+    line-height: 1.568rem; } }
 @media only screen and (min-width: 616px) {
   .flow-text {
-    font-size: 1.25rem; } }
+    font-size: 1.15rem; } }
 @media only screen and (min-width: 136px) {
   .flow-text {
-    line-height: 1.75rem; } }
+    line-height: 1.61rem; } }
 @media only screen and (min-width: 643.2px) {
   .flow-text {
-    font-size: 1.3rem; } }
+    font-size: 1.18rem; } }
 @media only screen and (min-width: 163.2px) {
   .flow-text {
-    line-height: 1.82rem; } }
+    line-height: 1.652rem; } }
 @media only screen and (min-width: 670.4px) {
   .flow-text {
-    font-size: 1.35rem; } }
+    font-size: 1.21rem; } }
 @media only screen and (min-width: 190.4px) {
   .flow-text {
-    line-height: 1.89rem; } }
+    line-height: 1.694rem; } }
 @media only screen and (min-width: 697.6px) {
   .flow-text {
-    font-size: 1.4rem; } }
+    font-size: 1.24rem; } }
 @media only screen and (min-width: 217.6px) {
   .flow-text {
-    line-height: 1.96rem; } }
+    line-height: 1.736rem; } }
 @media only screen and (min-width: 724.8px) {
   .flow-text {
-    font-size: 1.45rem; } }
+    font-size: 1.27rem; } }
 @media only screen and (min-width: 244.8px) {
   .flow-text {
-    line-height: 2.03rem; } }
+    line-height: 1.778rem; } }
 @media only screen and (min-width: 752px) {
   .flow-text {
-    font-size: 1.5rem; } }
+    font-size: 1.3rem; } }
 @media only screen and (min-width: 272px) {
   .flow-text {
-    line-height: 2.1rem; } }
+    line-height: 1.82rem; } }
 @media only screen and (min-width: 779.2px) {
   .flow-text {
-    font-size: 1.55rem; } }
+    font-size: 1.33rem; } }
 @media only screen and (min-width: 299.2px) {
   .flow-text {
-    line-height: 2.17rem; } }
+    line-height: 1.862rem; } }
 @media only screen and (min-width: 806.4px) {
   .flow-text {
-    font-size: 1.6rem; } }
+    font-size: 1.36rem; } }
 @media only screen and (min-width: 326.4px) {
   .flow-text {
-    line-height: 2.24rem; } }
+    line-height: 1.904rem; } }
 @media only screen and (min-width: 833.6px) {
   .flow-text {
-    font-size: 1.65rem; } }
+    font-size: 1.39rem; } }
 @media only screen and (min-width: 353.6px) {
   .flow-text {
-    line-height: 2.31rem; } }
+    line-height: 1.946rem; } }
 @media only screen and (min-width: 860.8px) {
   .flow-text {
-    font-size: 1.7rem; } }
+    font-size: 1.42rem; } }
 @media only screen and (min-width: 380.8px) {
   .flow-text {
-    line-height: 2.38rem; } }
+    line-height: 1.988rem; } }
 @media only screen and (min-width: 888px) {
   .flow-text {
-    font-size: 1.75rem; } }
+    font-size: 1.45rem; } }
 @media only screen and (min-width: 408px) {
   .flow-text {
-    line-height: 2.45rem; } }
+    line-height: 2.03rem; } }
 @media only screen and (min-width: 915.2px) {
   .flow-text {
-    font-size: 1.8rem; } }
+    font-size: 1.48rem; } }
 @media only screen and (min-width: 435.2px) {
   .flow-text {
-    line-height: 2.52rem; } }
+    line-height: 2.072rem; } }
 @media only screen and (min-width: 942.4px) {
   .flow-text {
-    font-size: 1.85rem; } }
+    font-size: 1.51rem; } }
 @media only screen and (min-width: 462.4px) {
   .flow-text {
-    line-height: 2.59rem; } }
+    line-height: 2.114rem; } }
 @media only screen and (min-width: 969.6px) {
   .flow-text {
-    font-size: 1.9rem; } }
+    font-size: 1.54rem; } }
 @media only screen and (min-width: 489.6px) {
   .flow-text {
-    line-height: 2.66rem; } }
+    line-height: 2.156rem; } }
 @media only screen and (min-width: 996.8px) {
   .flow-text {
-    font-size: 1.95rem; } }
+    font-size: 1.57rem; } }
 @media only screen and (min-width: 516.8px) {
   .flow-text {
-    line-height: 2.73rem; } }
+    line-height: 2.198rem; } }
 @media only screen and (min-width: 1024px) {
   .flow-text {
-    font-size: 2rem; } }
+    font-size: 1.6rem; } }
 @media only screen and (min-width: 544px) {
   .flow-text {
-    line-height: 2.8rem; } }
+    line-height: 2.24rem; } }
 
 .card {
   -webkit-border-radius: 2px;
@@ -2663,16 +2668,16 @@ small {
   padding: 1rem; }
   .card h1 {
     font-size: 1.71rem;
-    color: #fff; }
+    color: white; }
   .card h2 {
     font-size: 1.14rem;
-    color: #fff; }
+    color: white; }
   .card h3 {
     font-size: 1rem;
-    color: #fff; }
+    color: white; }
   .card p {
     font-size: 0.8rem;
-    color: #fff; }
+    color: white; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2690,7 +2695,7 @@ small {
       width: 100%;
       z-index: -1; }
   .card .card-footer {
-    background-color: #FFF;
+    background-color: white;
     padding: 2px 1rem 8px 1rem;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
@@ -2698,7 +2703,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: #000; }
+      color: black; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -2761,7 +2766,10 @@ ul.tabs {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: .8px;
-    width: auto; }
+    width: 15%; }
+    @media only screen and (min-width: 1024px) {
+      ul.tabs li.tab {
+        max-width: 25%; } }
     ul.tabs li.tab a {
       color: #ee6e73;
       display: block;
@@ -3273,10 +3281,10 @@ ul.table-of-contents a {
     transition: left 0.15s ease-out; }
     ul.side-nav.active {
       left: 0;
-      -webkit-transition: left 0.25s ease;
-      -moz-transition: left 0.25s ease;
-      -o-transition: left 0.25s ease;
-      transition: left 0.25s ease; }
+      -webkit-transition: left 0.3s ease;
+      -moz-transition: left 0.3s ease;
+      -o-transition: left 0.3s ease;
+      transition: left 0.3s ease; }
     ul.side-nav li {
       float: none;
       padding: 0 15px; }

@@ -84,6 +84,12 @@ a {
   } 
 }
 
+.show-on-lg-and-below {
+  @media only screen and (min-width: $large-screen) {
+    display: none !important;
+  } 
+}
+
 .hide-on-med-and-below {
   @media only screen and (max-width: $medium-screen) {
     display: none !important;
@@ -93,5 +99,5 @@ a {
 .hide-on-small-and-below {
   @media only screen and (max-width: $small-screen) {
     display: none !important;
-  } 
+  }
 }

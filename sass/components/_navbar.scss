@@ -3,7 +3,6 @@ nav {
   @extend .z-depth-1;
   @extend .red.lighten-2;
   width: 100%;
-
   a { color: #fff; }
   a.logo {
     height: inherit;
@@ -21,6 +20,7 @@ nav {
   }
 
   .brand-logo {
+    position: absolute;
     color: #fff;
     float: left;
     display: inline-block;
@@ -29,7 +29,7 @@ nav {
 
     &.right {
       float: right;
-			padding: 0;
+      padding: 0;
     }
   }
 

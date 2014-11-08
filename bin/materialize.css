@@ -361,9 +361,9 @@ li {
   list-style-type: none; }
 
 .z-depth-1, nav, .card, .toast, .button.raised, .button.floating, .dropdown-content, ul.collapsible {
-  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
-  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16); }
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .z-depth-2, .button.raised:hover, .button.floating:hover {
   -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -411,8 +411,12 @@ a {
   .show-on-med-and-below, nav a.button-collapse {
     display: none !important; } }
 
+@media only screen and (min-width: 1024px) {
+  .show-on-lg-and-below {
+    display: none !important; } }
+
 @media only screen and (max-width: 768px) {
-  .hide-on-med-and-below, nav ul {
+  .hide-on-med-and-below {
     display: none !important; } }
 
 @media only screen and (max-width: 480px) {
@@ -2185,9 +2189,6 @@ a {
     width: 90%; } }
 @media only screen and (min-width: 768px) {
   .container {
-    width: 80%; } }
-@media only screen and (min-width: 1024px) {
-  .container {
     width: 70%; } }
 .container .row {
   margin-left: -0.5rem;
@@ -2275,7 +2276,7 @@ a {
         margin-left: 91.66667%; }
       .row .col.offset-s12 {
         margin-left: 100%; } }
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 480px) {
       .row .col.m1 {
         width: 8.33333%;
         margin-left: 0; }
@@ -2336,7 +2337,7 @@ a {
         margin-left: 91.66667%; }
       .row .col.offset-m12 {
         margin-left: 100%; } }
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: 768px) {
       .row .col.l1 {
         width: 8.33333%;
         margin-left: 0; }
@@ -2401,11 +2402,12 @@ a {
 nav {
   color: #fff;
   width: 100%; }
+  nav a {
+    color: #fff; }
   nav a.logo {
     height: inherit;
     line-height: inherit;
     display: inline-block;
-    color: inherit;
     float: left;
     font-size: 36px; }
     nav a.logo i {
@@ -2414,6 +2416,7 @@ nav {
     float: right;
     font-size: 2rem; }
   nav .brand-logo {
+    position: absolute;
     color: #fff;
     float: left;
     display: inline-block;
@@ -2445,7 +2448,7 @@ nav {
   nav {
     height: 56px;
     line-height: 56px; } }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 480px) {
   nav {
     height: 64px;
     line-height: 64px; } }
@@ -2537,124 +2540,124 @@ small {
     line-height: 1.4rem; } }
 @media only screen and (min-width: 507.2px) {
   .flow-text {
-    font-size: 1.05rem; } }
+    font-size: 1.03rem; } }
 @media only screen and (min-width: 27.2px) {
   .flow-text {
-    line-height: 1.47rem; } }
+    line-height: 1.442rem; } }
 @media only screen and (min-width: 534.4px) {
   .flow-text {
-    font-size: 1.1rem; } }
+    font-size: 1.06rem; } }
 @media only screen and (min-width: 54.4px) {
   .flow-text {
-    line-height: 1.54rem; } }
+    line-height: 1.484rem; } }
 @media only screen and (min-width: 561.6px) {
   .flow-text {
-    font-size: 1.15rem; } }
+    font-size: 1.09rem; } }
 @media only screen and (min-width: 81.6px) {
   .flow-text {
-    line-height: 1.61rem; } }
+    line-height: 1.526rem; } }
 @media only screen and (min-width: 588.8px) {
   .flow-text {
-    font-size: 1.2rem; } }
+    font-size: 1.12rem; } }
 @media only screen and (min-width: 108.8px) {
   .flow-text {
-    line-height: 1.68rem; } }
+    line-height: 1.568rem; } }
 @media only screen and (min-width: 616px) {
   .flow-text {
-    font-size: 1.25rem; } }
+    font-size: 1.15rem; } }
 @media only screen and (min-width: 136px) {
   .flow-text {
-    line-height: 1.75rem; } }
+    line-height: 1.61rem; } }
 @media only screen and (min-width: 643.2px) {
   .flow-text {
-    font-size: 1.3rem; } }
+    font-size: 1.18rem; } }
 @media only screen and (min-width: 163.2px) {
   .flow-text {
-    line-height: 1.82rem; } }
+    line-height: 1.652rem; } }
 @media only screen and (min-width: 670.4px) {
   .flow-text {
-    font-size: 1.35rem; } }
+    font-size: 1.21rem; } }
 @media only screen and (min-width: 190.4px) {
   .flow-text {
-    line-height: 1.89rem; } }
+    line-height: 1.694rem; } }
 @media only screen and (min-width: 697.6px) {
   .flow-text {
-    font-size: 1.4rem; } }
+    font-size: 1.24rem; } }
 @media only screen and (min-width: 217.6px) {
   .flow-text {
-    line-height: 1.96rem; } }
+    line-height: 1.736rem; } }
 @media only screen and (min-width: 724.8px) {
   .flow-text {
-    font-size: 1.45rem; } }
+    font-size: 1.27rem; } }
 @media only screen and (min-width: 244.8px) {
   .flow-text {
-    line-height: 2.03rem; } }
+    line-height: 1.778rem; } }
 @media only screen and (min-width: 752px) {
   .flow-text {
-    font-size: 1.5rem; } }
+    font-size: 1.3rem; } }
 @media only screen and (min-width: 272px) {
   .flow-text {
-    line-height: 2.1rem; } }
+    line-height: 1.82rem; } }
 @media only screen and (min-width: 779.2px) {
   .flow-text {
-    font-size: 1.55rem; } }
+    font-size: 1.33rem; } }
 @media only screen and (min-width: 299.2px) {
   .flow-text {
-    line-height: 2.17rem; } }
+    line-height: 1.862rem; } }
 @media only screen and (min-width: 806.4px) {
   .flow-text {
-    font-size: 1.6rem; } }
+    font-size: 1.36rem; } }
 @media only screen and (min-width: 326.4px) {
   .flow-text {
-    line-height: 2.24rem; } }
+    line-height: 1.904rem; } }
 @media only screen and (min-width: 833.6px) {
   .flow-text {
-    font-size: 1.65rem; } }
+    font-size: 1.39rem; } }
 @media only screen and (min-width: 353.6px) {
   .flow-text {
-    line-height: 2.31rem; } }
+    line-height: 1.946rem; } }
 @media only screen and (min-width: 860.8px) {
   .flow-text {
-    font-size: 1.7rem; } }
+    font-size: 1.42rem; } }
 @media only screen and (min-width: 380.8px) {
   .flow-text {
-    line-height: 2.38rem; } }
+    line-height: 1.988rem; } }
 @media only screen and (min-width: 888px) {
   .flow-text {
-    font-size: 1.75rem; } }
+    font-size: 1.45rem; } }
 @media only screen and (min-width: 408px) {
   .flow-text {
-    line-height: 2.45rem; } }
+    line-height: 2.03rem; } }
 @media only screen and (min-width: 915.2px) {
   .flow-text {
-    font-size: 1.8rem; } }
+    font-size: 1.48rem; } }
 @media only screen and (min-width: 435.2px) {
   .flow-text {
-    line-height: 2.52rem; } }
+    line-height: 2.072rem; } }
 @media only screen and (min-width: 942.4px) {
   .flow-text {
-    font-size: 1.85rem; } }
+    font-size: 1.51rem; } }
 @media only screen and (min-width: 462.4px) {
   .flow-text {
-    line-height: 2.59rem; } }
+    line-height: 2.114rem; } }
 @media only screen and (min-width: 969.6px) {
   .flow-text {
-    font-size: 1.9rem; } }
+    font-size: 1.54rem; } }
 @media only screen and (min-width: 489.6px) {
   .flow-text {
-    line-height: 2.66rem; } }
+    line-height: 2.156rem; } }
 @media only screen and (min-width: 996.8px) {
   .flow-text {
-    font-size: 1.95rem; } }
+    font-size: 1.57rem; } }
 @media only screen and (min-width: 516.8px) {
   .flow-text {
-    line-height: 2.73rem; } }
+    line-height: 2.198rem; } }
 @media only screen and (min-width: 1024px) {
   .flow-text {
-    font-size: 2rem; } }
+    font-size: 1.6rem; } }
 @media only screen and (min-width: 544px) {
   .flow-text {
-    line-height: 2.8rem; } }
+    line-height: 2.24rem; } }
 
 .card {
   -webkit-border-radius: 2px;
@@ -2763,7 +2766,10 @@ ul.tabs {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: .8px;
-    width: auto; }
+    width: 15%; }
+    @media only screen and (min-width: 1024px) {
+      ul.tabs li.tab {
+        max-width: 25%; } }
     ul.tabs li.tab a {
       color: #ee6e73;
       display: block;
@@ -3035,7 +3041,7 @@ ul.collapsible {
   top: 0px;
   left: 0px;
   background-color: #292929;
-  z-index: 9999; }
+  z-index: 999; }
 
 /***************
     Inputs 
@@ -3259,3 +3265,44 @@ ul.table-of-contents a {
   ul.table-of-contents a.active {
     padding-right: 10px;
     border-right: 4px solid #ea4a4f; }
+
+@media only screen and (max-width: 768px) {
+  ul.side-nav {
+    position: fixed;
+    width: 240px;
+    left: -240px;
+    top: 0;
+    height: 100%;
+    background-color: #FFF;
+    z-index: 1000;
+    -webkit-transition: left 0.15s ease-out;
+    -moz-transition: left 0.15s ease-out;
+    -o-transition: left 0.15s ease-out;
+    transition: left 0.15s ease-out; }
+    ul.side-nav.active {
+      left: 0;
+      -webkit-transition: left 0.3s ease;
+      -moz-transition: left 0.3s ease;
+      -o-transition: left 0.3s ease;
+      transition: left 0.3s ease; }
+    ul.side-nav li {
+      float: none;
+      padding: 0 15px; }
+      ul.side-nav li:hover {
+        background-color: #ddd; }
+    ul.side-nav a {
+      color: #444; }
+
+  #front-page-nav ul.side-nav li {
+    float: none;
+    padding: 0 15px; }
+    #front-page-nav ul.side-nav li:hover {
+      background-color: #ddd; }
+  #front-page-nav ul.side-nav a {
+    color: #444; } }
+#sidenav-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; }
