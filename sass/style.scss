@@ -3,7 +3,8 @@ body {
 }
 
 .header {
-  @extend .red-text.lighten-2
+  @extend .red-text.lighten-2;
+  font-weight: 300;
 }
 
 p.box {
@@ -11,6 +12,11 @@ p.box {
 }
 p {
   padding: 0;
+  
+}
+.caption {
+  font-size: 1.30rem;
+  font-weight: 300;
 }
 
 .preview {
@@ -60,6 +66,11 @@ p {
 }
 
 .promo{
+  padding: 0 20px;
+  img {
+    width:100%;
+    margin-bottom:5em;
+  }
 
   p {
     margin-top: -40px;

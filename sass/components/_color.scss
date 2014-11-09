@@ -6,13 +6,13 @@ $color-depth: 5;
 
 $red: #e51c23;
 .red {
-  background-color: $red;
+  background-color: $red + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($red, $perc);
+      background-color: lighten($red, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -20,19 +20,19 @@ $red: #e51c23;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($red, $perc);
+      background-color: darken($red, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .red-text {
-  color: $red;
+  color: $red + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($red, $perc);
+      color: lighten($red, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -40,7 +40,7 @@ $red: #e51c23;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($red, $perc);
+      color: darken($red, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -49,13 +49,13 @@ $red: #e51c23;
 $pink: #e91e63; 
 
 .pink {
-  background-color: $pink;
+  background-color: $pink + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($pink, $perc);
+      background-color: lighten($pink, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -63,19 +63,19 @@ $pink: #e91e63;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($pink, $perc);
+      background-color: darken($pink, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .pink-text {
-  color: $pink;
+  color: $pink + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($pink, $perc);
+      color: lighten($pink, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -83,7 +83,7 @@ $pink: #e91e63;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($pink, $perc);
+      color: darken($pink, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -92,13 +92,13 @@ $pink: #e91e63;
 $purple: #9c27b0; 
 
 .purple {
-  background-color: $purple;
+  background-color: $purple + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($purple, $perc);
+      background-color: lighten($purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -106,19 +106,19 @@ $purple: #9c27b0;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($purple, $perc);
+      background-color: darken($purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .purple-text {
-  color: $purple;
+  color: $purple + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($purple, $perc);
+      color: lighten($purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -126,7 +126,7 @@ $purple: #9c27b0;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($purple, $perc);
+      color: darken($purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -135,13 +135,13 @@ $purple: #9c27b0;
 $deep-purple: #673ab7; 
 
 .deep-purple {
-  background-color: $deep-purple;
+  background-color: $deep-purple + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($deep-purple, $perc);
+      background-color: lighten($deep-purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -149,19 +149,19 @@ $deep-purple: #673ab7;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($deep-purple, $perc);
+      background-color: darken($deep-purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .deep-purple-text {
-  color: $deep-purple;
+  color: $deep-purple + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($deep-purple, $perc);
+      color: lighten($deep-purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -169,7 +169,7 @@ $deep-purple: #673ab7;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($deep-purple, $perc);
+      color: darken($deep-purple, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -178,13 +178,13 @@ $deep-purple: #673ab7;
 $indigo: #3f51b5; 
 
 .indigo {
-  background-color: $indigo;
+  background-color: $indigo + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($indigo, $perc);
+      background-color: lighten($indigo, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -192,19 +192,19 @@ $indigo: #3f51b5;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($indigo, $perc);
+      background-color: darken($indigo, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .indigo-text {
-  color: $indigo;
+  color: $indigo + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($indigo, $perc);
+      color: lighten($indigo, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -212,7 +212,7 @@ $indigo: #3f51b5;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($indigo, $perc);
+      color: darken($indigo, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -221,13 +221,13 @@ $indigo: #3f51b5;
 $blue: #5677fc;
 
 .blue {
-  background-color: $blue;
+  background-color: $blue + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(6% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($blue, $perc);
+      background-color: lighten($blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -235,19 +235,19 @@ $blue: #5677fc;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($blue, $perc);
+      background-color: darken($blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .blue-text {
-  color: $blue;
+  color: $blue + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(6% * $i);
     &.lighten-#{$i} { 
-      color: lighten($blue, $perc);
+      color: lighten($blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -255,7 +255,7 @@ $blue: #5677fc;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($blue, $perc);
+      color: darken($blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -264,13 +264,13 @@ $blue: #5677fc;
 $light-blue: #03a9f4;
 
 .light-blue {
-  background-color: $light-blue;
+  background-color: $light-blue + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($light-blue, $perc);
+      background-color: lighten($light-blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -278,19 +278,19 @@ $light-blue: #03a9f4;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($light-blue, $perc);
+      background-color: darken($light-blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .light-blue-text {
-  color: $light-blue;
+  color: $light-blue + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($light-blue, $perc);
+      color: lighten($light-blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -298,7 +298,7 @@ $light-blue: #03a9f4;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($light-blue, $perc);
+      color: darken($light-blue, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -307,13 +307,13 @@ $light-blue: #03a9f4;
 $cyan: #00bcd4;
 
 .cyan {
-  background-color: $cyan;
+  background-color: $cyan + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($cyan, $perc);
+      background-color: lighten($cyan, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -321,19 +321,19 @@ $cyan: #00bcd4;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($cyan, $perc);
+      background-color: darken($cyan, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .cyan-text {
-  color: $cyan;
+  color: $cyan + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($cyan, $perc);
+      color: lighten($cyan, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -341,7 +341,7 @@ $cyan: #00bcd4;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($cyan, $perc);
+      color: darken($cyan, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -350,13 +350,13 @@ $cyan: #00bcd4;
 $teal: #009688;
 
 .teal {
-  background-color: $teal;
+  background-color: $teal + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(12% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($teal, $perc);
+      background-color: lighten($teal, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -364,19 +364,19 @@ $teal: #009688;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($teal, $perc);
+      background-color: darken($teal, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .teal-text {
-  color: $teal;
+  color: $teal + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(12% * $i);
     &.lighten-#{$i} { 
-      color: lighten($teal, $perc);
+      color: lighten($teal, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -384,7 +384,7 @@ $teal: #009688;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($teal, $perc);
+      color: darken($teal, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -393,13 +393,13 @@ $teal: #009688;
 $green: #259b24;
 
 .green {
-  background-color: $green;
+  background-color: $green + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($green, $perc);
+      background-color: lighten($green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -407,19 +407,19 @@ $green: #259b24;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($green, $perc);
+      background-color: darken($green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .green-text {
-  color: $green;
+  color: $green + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($green, $perc);
+      color: lighten($green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -427,7 +427,7 @@ $green: #259b24;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($green, $perc);
+      color: darken($green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -436,13 +436,13 @@ $green: #259b24;
 $light-green: #8bc34a;
 
 .light-green {
-  background-color: $light-green;
+  background-color: $light-green + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($light-green, $perc);
+      background-color: lighten($light-green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -450,19 +450,19 @@ $light-green: #8bc34a;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($light-green, $perc);
+      background-color: darken($light-green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .light-green-text {
-  color: $light-green;
+  color: $light-green + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($light-green, $perc);
+      color: lighten($light-green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -470,7 +470,7 @@ $light-green: #8bc34a;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($light-green, $perc);
+      color: darken($light-green, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -479,13 +479,13 @@ $light-green: #8bc34a;
 $lime: #cddc39;
 
 .lime {
-  background-color: $lime;
+  background-color: $lime + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($lime, $perc);
+      background-color: lighten($lime, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -493,19 +493,19 @@ $lime: #cddc39;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($lime, $perc);
+      background-color: darken($lime, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .lime-text {
-  color: $lime;
+  color: $lime + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($lime, $perc);
+      color: lighten($lime, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -513,7 +513,7 @@ $lime: #cddc39;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($lime, $perc);
+      color: darken($lime, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -522,13 +522,13 @@ $lime: #cddc39;
 $yellow: #ffeb3b;
 
 .yellow {
-  background-color: $yellow;
+  background-color: $yellow + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(7% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($yellow, $perc);
+      background-color: lighten($yellow, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -536,19 +536,19 @@ $yellow: #ffeb3b;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($yellow, $perc);
+      background-color: darken($yellow, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .yellow-text {
-  color: $yellow;
+  color: $yellow + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(7% * $i);
     &.lighten-#{$i} { 
-      color: lighten($yellow, $perc);
+      color: lighten($yellow, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -556,7 +556,7 @@ $yellow: #ffeb3b;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($yellow, $perc);
+      color: darken($yellow, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -565,13 +565,13 @@ $yellow: #ffeb3b;
 $amber: #ffc107;
 
 .amber {
-  background-color: $amber;
+  background-color: $amber + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($amber, $perc);
+      background-color: lighten($amber, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -579,19 +579,19 @@ $amber: #ffc107;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($amber, $perc);
+      background-color: darken($amber, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .amber-text {
-  color: $amber;
+  color: $amber + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($amber, $perc);
+      color: lighten($amber, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -599,7 +599,7 @@ $amber: #ffc107;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($amber, $perc);
+      color: darken($amber, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -608,13 +608,13 @@ $amber: #ffc107;
 $orange: #ff9800;
 
 .orange {
-  background-color: $orange;
+  background-color: $orange + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($orange, $perc);
+      background-color: lighten($orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -622,19 +622,19 @@ $orange: #ff9800;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($orange, $perc);
+      background-color: darken($orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .orange-text {
-  color: $orange;
+  color: $orange + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($orange, $perc);
+      color: lighten($orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -642,7 +642,7 @@ $orange: #ff9800;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($orange, $perc);
+      color: darken($orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -651,13 +651,13 @@ $orange: #ff9800;
 $deep-orange: #ff5722;
 
 .deep-orange {
-  background-color: $deep-orange;
+  background-color: $deep-orange + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($deep-orange, $perc);
+      background-color: lighten($deep-orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -665,19 +665,19 @@ $deep-orange: #ff5722;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($deep-orange, $perc);
+      background-color: darken($deep-orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .deep-orange-text {
-  color: $deep-orange;
+  color: $deep-orange + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($deep-orange, $perc);
+      color: lighten($deep-orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -685,7 +685,7 @@ $deep-orange: #ff5722;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($deep-orange, $perc);
+      color: darken($deep-orange, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -694,13 +694,13 @@ $deep-orange: #ff5722;
 $brown: #795548;
 
 .brown {
-  background-color: $brown;
+  background-color: $brown + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($brown, $perc);
+      background-color: lighten($brown, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -708,19 +708,19 @@ $brown: #795548;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($brown, $perc);
+      background-color: darken($brown, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .brown-text {
-  color: $brown;
+  color: $brown + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($brown, $perc);
+      color: lighten($brown, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -728,7 +728,7 @@ $brown: #795548;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($brown, $perc);
+      color: darken($brown, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -737,13 +737,13 @@ $brown: #795548;
 $grey: #9e9e9e;
 
 .grey {
-  background-color: $grey;
+  background-color: $grey + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($grey, $perc);
+      background-color: lighten($grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -751,19 +751,19 @@ $grey: #9e9e9e;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.darken-#{$i} { 
-      background-color: darken($grey, $perc);
+      background-color: darken($grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .grey-text {
-  color: $grey;
+  color: $grey + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($grey, $perc);
+      color: lighten($grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -771,7 +771,7 @@ $grey: #9e9e9e;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.darken-#{$i} { 
-      color: darken($grey, $perc);
+      color: darken($grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -786,7 +786,7 @@ $blue-grey: #607d8b;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      background-color: lighten($blue-grey, $perc);
+      background-color: lighten($blue-grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -794,19 +794,19 @@ $blue-grey: #607d8b;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      background-color: darken($blue-grey, $perc);
+      background-color: darken($blue-grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
 }
 .blue-grey-text {
-  color: $blue-grey;
+  color: $blue-grey + unquote(" !important");
 
   $i: 1;
   @while $i <= $color-depth {
     $perc: unquote(9% * $i);
     &.lighten-#{$i} { 
-      color: lighten($blue-grey, $perc);
+      color: lighten($blue-grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -814,7 +814,7 @@ $blue-grey: #607d8b;
   @while $i <= $color-depth {
     $perc: unquote(5% * $i);
     &.darken-#{$i} { 
-      color: darken($blue-grey, $perc);
+      color: darken($blue-grey, $perc) + unquote(" !important");
     }
     $i: $i + 1;
   } 
@@ -822,6 +822,6 @@ $blue-grey: #607d8b;
 
 
 $white: #fff;
-.white { background-color: $white; }
-.white-text { color: $white; }
+.white { background-color: $white + unquote(" !important");}
+.white-text { color: $white + unquote(" !important"); }
 

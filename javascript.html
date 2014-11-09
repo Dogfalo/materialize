@@ -157,9 +157,10 @@
 
 <!--  Waves Section  -->
   <div id="tab6" class="section">
-    <h3 class="header">Waves</h3>
+    <div class="row">
+    <h2 class="header">Waves</h2>
     <a class="waves-effect waves-light button raised" href="#">Wave</a>
-
+    </div>
     <div class="row">
       <h4 class="header">Button Class</h4>
       <pre><code class="language-markup col s12">
@@ -170,17 +171,19 @@
   
   <!--  Modals Section  -->
   <div id="tab7" class="section">
-    <h3 class="header">Modals</h3>
-    <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal_close</code> to your button.</p>
-    <a class="waves-effect waves-light button raised modal-trigger" href="#modal1">Modal</a>
+    <div class="row">
+      <h2 class="header">Modals</h2>
+      <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal_close</code> to your button.</p>
+      <a class="waves-effect waves-light button raised modal-trigger" href="#modal1">Modal</a>
+    </div>
     <div id="modal1" class="modal">
-      <h4>Modal Header</h4>
+      <h4 class="header">Modal Header</h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
       <a href="#" class="waves-effect button flat modal_close">Agree</a>
     </div>
 
     <div class="row">
-      <h4>Modals HTML Structure</h4>
+      <h4 class="header">Modals HTML Structure</h4>
       <pre><code class="language-markup col s12">  &lt;!-- Modal Trigger -->
   &lt;a class="waves-effect waves-light button raised modal-trigger" href="#modal1">Modal&lt;/a>
 
@@ -194,7 +197,7 @@
       </code></pre>
     </div>
     <div class="row">
-      <h4>jQuery Plugin Initialization</h4>
+      <h4 class="header">jQuery Plugin Initialization</h4>
       <pre><code class="language-javascript col s12">
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
@@ -206,7 +209,7 @@
   <!--  Material Box Section  -->
   <div id="tab8" class="section">
     <div class="row">
-      <h3 class="header">Material Box</h3>
+      <h2 class="header">Material Box</h2>
        <p>Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged. Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
       <img class="materialboxed" width="650" src="images/sample-1.jpg"></img>
      <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialized</code> class to the image tag.</p>
@@ -221,12 +224,10 @@
     </div>
     
   </div>
-</div>  <!--  End of Container -->
 
-
-
+  
 <!--  Collapsible Section  -->
-  <div id="tab9" class="container">
+  <div id="tab9" class="section">
     <h3 class="header">Collapsible</h3>
     <ul class="collapsible">
       <li>
@@ -243,7 +244,7 @@
       </li>
     </ul>
     <div class="row">
-      <h4>Collapsible HTML Structure</h4>
+      <h4 class="header">Collapsible HTML Structure</h4>
       <pre><code class="language-markup col s12">
   &lt;ul class="collapsible">
     &lt;li>
@@ -262,7 +263,7 @@
       </code></pre>
     </div>
     <div class="row">
-      <h4>jQuery Plugin Initialization</h4>
+      <h4 class="header">jQuery Plugin Initialization</h4>
       <pre><code class="language-javascript col s12">
   $(document).ready(function(){
     $('.collapsible').collapsible();
@@ -270,6 +271,8 @@
       </code></pre>
     </div>
   </div>
+</div>  <!--  End of Container -->
+
 
   <!--  Parallax Section  -->
   <div id="tab5" class="parallax-container">

@@ -1,4 +1,15 @@
-/*
+
+
+
+
+
+
+
+
+
+
+
+;/*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
  * Uses the built in easing capabilities added In jQuery 1.1
@@ -202,9 +213,7 @@ jQuery.extend( jQuery.easing,
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
  * OF THE POSSIBILITY OF SUCH DAMAGE. 
  *
- */
-
-(function ($) {
+ */;(function ($) {
   $.fn.collapsible = function(options) {
     var defaults = {
         accordion: true
@@ -240,9 +249,7 @@ jQuery.extend( jQuery.easing,
     
     
   };
-}( jQuery ));
-
-(function ($) {
+}( jQuery ));(function ($) {
   $.fn.dropdown = function () {
     var origin = $(this);
     
@@ -267,15 +274,15 @@ jQuery.extend( jQuery.easing,
     
     // Window Resize Reposition
     $(window).on('resize', function(){
-      activates.css('top', origin.offset().top);
-      activates.css('left', origin.offset().left);
+      if (origin.is(':visible')) {
+        activates.css('top', origin.offset().top);
+        activates.css('left', origin.offset().left);
+      }
     });
     
     
   };
-}( jQuery ));
-
-(function($){
+}( jQuery ));(function($){
  
     $.fn.extend({ 
          
@@ -352,9 +359,7 @@ jQuery.extend( jQuery.easing,
         }
     });
      
-})(jQuery);
-
-(function ($) {
+})(jQuery);(function ($) {
 
   $.fn.materialbox = function () {
 
@@ -362,8 +367,8 @@ jQuery.extend( jQuery.easing,
 
       var overlayActive = false;
       var doneAnimating = true;
-      var inDuration = 225;
-      var outDuration = 175;
+      var inDuration = 250;
+      var outDuration = 200;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
       var originalWidth = origin.width();
@@ -428,12 +433,12 @@ jQuery.extend( jQuery.easing,
         var newHeight = 0;
 
         if (widthPercent > heightPercent) {
-          newWidth = windowWidth * 0.8;
-          newHeight = windowWidth * 0.8 * ratio;
+          newWidth = windowWidth * 0.9;
+          newHeight = windowWidth * 0.9 * ratio;
         }
         else {
-          newWidth = (windowHeight * 0.8) * ratio;
-          newHeight = windowHeight * 0.8;
+          newWidth = (windowHeight * 0.9) * ratio;
+          newHeight = windowHeight * 0.9;
         }
 
         console.log(originalWidth, originalHeight, ratio, newHeight, newWidth);
@@ -441,7 +446,7 @@ jQuery.extend( jQuery.easing,
         // Reposition Element AND Animate image + set z-index
         origin.css('left', 0)
           .css('top', 0)
-          .css('z-index', 10000)
+          .css('z-index', 1000)
           .css('will-change', 'left, top')
           .animate({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
           .animate({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
@@ -494,8 +499,6 @@ jQuery.extend( jQuery.easing,
     });
   };
 }( jQuery ));
-
-
 (function ($) {
 
     $.fn.parallax = function () {
@@ -531,9 +534,370 @@ jQuery.extend( jQuery.easing,
       });
 
     };
-}( jQuery ));
+}( jQuery ));/**
+ * Extend jquery with a scrollspy plugin.
+ * This watches the window scroll and fires events when elements are scrolled into viewport.
+ *
+ * throttle() and getTime() taken from Underscore.js
+ * https://github.com/jashkenas/underscore
+ *
+ * @author Copyright 2013 John Smart
+ * @license https://raw.github.com/thesmart/jquery-scrollspy/master/LICENSE
+ * @see https://github.com/thesmart
+ * @version 0.1.2
+ */
+(function($) {
 
-(function ($) {
+	var jWindow = $(window);
+	var elements = [];
+	var elementsInView = [];
+	var isSpying = false;
+	var ticks = 0;
+	var unique_id = 1;
+	var offset = {
+		top : 0,
+		right : 0,
+		bottom : 0,
+		left : 0,
+	}
+
+	/**
+	 * Find elements that are within the boundary
+	 * @param {number} top
+	 * @param {number} right
+	 * @param {number} bottom
+	 * @param {number} left
+	 * @return {jQuery}		A collection of elements
+	 */
+	function findElements(top, right, bottom, left) {
+		var hits = $();
+		$.each(elements, function(i, element) {
+			if (element.height() > 0) {
+				var elTop = element.offset().top,
+					elLeft = element.offset().left,
+					elRight = elLeft + element.width(),
+					elBottom = elTop + element.height();
+
+				var isIntersect = !(elLeft > right ||
+					elRight < left ||
+					elTop > bottom ||
+					elBottom < top);
+
+				if (isIntersect) {
+					hits.push(element);
+				}				
+			}
+		});
+
+		return hits;
+	}
+
+
+	/**
+	 * Called when the user scrolls the window
+	 */
+	function onScroll() {
+		// unique tick id
+		++ticks;
+
+		// viewport rectangle
+		var top = jWindow.scrollTop(),
+			left = jWindow.scrollLeft(),
+			right = left + jWindow.width(),
+			bottom = top + jWindow.height();
+
+		// determine which elements are in view
+		var intersections = findElements(top+offset.top, right+offset.right, bottom+offset.bottom, left+offset.left);
+		$.each(intersections, function(i, element) {
+
+			var lastTick = element.data('scrollSpy:ticks');
+			if (typeof lastTick != 'number') {
+				// entered into view
+				element.triggerHandler('scrollSpy:enter');
+			}
+
+			// update tick id
+			element.data('scrollSpy:ticks', ticks);
+		});
+
+		// determine which elements are no longer in view
+		$.each(elementsInView, function(i, element) {
+			var lastTick = element.data('scrollSpy:ticks');
+			if (typeof lastTick == 'number' && lastTick !== ticks) {
+				// exited from view
+				element.triggerHandler('scrollSpy:exit');
+				element.data('scrollSpy:ticks', null);
+			}
+		});
+
+		// remember elements in view for next tick
+		elementsInView = intersections;
+	}
+
+	/**
+	 * Called when window is resized
+	*/
+	function onWinSize() {
+		jWindow.trigger('scrollSpy:winSize');
+	}
+
+	/**
+	 * Get time in ms
+   * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
+	 * @type {function}
+	 * @return {number}
+	 */
+	var getTime = (Date.now || function () {
+		return new Date().getTime();
+	});
+
+	/**
+	 * Returns a function, that, when invoked, will only be triggered at most once
+	 * during a given window of time. Normally, the throttled function will run
+	 * as much as it can, without ever going more than once per `wait` duration;
+	 * but if you'd like to disable the execution on the leading edge, pass
+	 * `{leading: false}`. To disable execution on the trailing edge, ditto.
+	 * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
+	 * @param {function} func
+	 * @param {number} wait
+	 * @param {Object=} options
+	 * @returns {Function}
+	 */
+	function throttle(func, wait, options) {
+		var context, args, result;
+		var timeout = null;
+		var previous = 0;
+		options || (options = {});
+		var later = function () {
+			previous = options.leading === false ? 0 : getTime();
+			timeout = null;
+			result = func.apply(context, args);
+			context = args = null;
+		};
+		return function () {
+			var now = getTime();
+			if (!previous && options.leading === false) previous = now;
+			var remaining = wait - (now - previous);
+			context = this;
+			args = arguments;
+			if (remaining <= 0) {
+				clearTimeout(timeout);
+				timeout = null;
+				previous = now;
+				result = func.apply(context, args);
+				context = args = null;
+			} else if (!timeout && options.trailing !== false) {
+				timeout = setTimeout(later, remaining);
+			}
+			return result;
+		};
+	};
+
+	/**
+	 * Enables ScrollSpy using a selector
+	 * @param {jQuery|string} selector  The elements collection, or a selector
+	 * @param {Object=} options	Optional.
+											throttle : number -> scrollspy throttling. Default: 100 ms
+											offsetTop : number -> offset from top. Default: 0
+											offsetRight : number -> offset from right. Default: 0
+											offsetBottom : number -> offset from bottom. Default: 0
+											offsetLeft : number -> offset from left. Default: 0
+	 * @returns {jQuery}
+	 */
+	$.scrollSpy = function(selector, options) {
+		var visible = [];
+		selector = $(selector);
+		selector.each(function(i, element) {
+			elements.push($(element));
+			$(element).data("scrollSpy:id", i);
+			// Smooth scroll to section
+		  $('a[href^=#' + $(element).attr('id') + ']').click(function(e) {
+		    e.preventDefault();
+		    console.log("click");
+		    var offset = $(this.hash).offset().top + 1;
+		    $('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
+		  });		
+		});
+		options = options || {
+			throttle: 100
+		};
+
+		offset.top = options.offsetTop || 0;
+		offset.right = options.offsetRight || 0;
+		offset.bottom = options.offsetBottom || 0;
+		offset.left = options.offsetLeft || 0;
+
+		var throttledScroll = throttle(onScroll, options.throttle || 100);
+		var readyScroll = function(){
+			$(document).ready(throttledScroll);
+		};
+
+		if (!isSpying) {
+			jWindow.on('scroll', readyScroll);
+			jWindow.on('resize', readyScroll);
+			isSpying = true;
+		}
+
+		// perform a scan once, after current execution context, and after dom is ready
+		setTimeout(readyScroll, 0);
+
+
+		selector.on('scrollSpy:enter', function() {
+			visible = $.grep(visible, function(value) {
+	      return value.height() != 0;
+	    });
+
+			var $this = $(this);
+
+			if (visible[0]) {
+				$('a[href^=#' + visible[0].attr('id') + ']').removeClass('active');
+				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
+					visible.unshift($(this));
+				}
+				else {
+					visible.push($(this));				
+				}
+			}
+			else {
+				visible.push($(this));				
+			}
+
+			$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
+		});
+		selector.on('scrollSpy:exit', function() {
+			visible = $.grep(visible, function(value) {
+	      return value.height() != 0;
+	    });
+
+			if (visible[0]) {
+				$('a[href^=#' + visible[0].attr('id') + ']').removeClass('active');
+				var $this = $(this);
+				visible = $.grep(visible, function(value) {
+	        return value.attr('id') != $this.attr('id');
+	      });
+			}
+			$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
+		});
+
+		return selector;
+	};
+
+	/**
+	 * Listen for window resize events
+	 * @param {Object=} options						Optional. Set { throttle: number } to change throttling. Default: 100 ms
+	 * @returns {jQuery}		$(window)
+	 */
+	$.winSizeSpy = function(options) {
+		$.winSizeSpy = function() { return jWindow; }; // lock from multiple calls
+		options = options || {
+			throttle: 100
+		};
+		return jWindow.on('resize', throttle(onWinSize, options.throttle || 100));
+	};
+
+	/**
+	 * Enables ScrollSpy on a collection of elements
+	 * e.g. $('.scrollSpy').scrollSpy()
+	 * @param {Object=} options	Optional.
+											throttle : number -> scrollspy throttling. Default: 100 ms
+											offsetTop : number -> offset from top. Default: 0
+											offsetRight : number -> offset from right. Default: 0
+											offsetBottom : number -> offset from bottom. Default: 0
+											offsetLeft : number -> offset from left. Default: 0
+	 * @returns {jQuery}
+	 */
+	$.fn.scrollSpy = function(options) {
+		return $.scrollSpy($(this), options);
+	};
+
+})(jQuery);(function ($) {
+    // left: 37, up: 38, right: 39, down: 40,
+    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+    var keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+
+    function preventDefault(e) {
+      e = e || window.event;
+      if (e.preventDefault)
+          e.preventDefault();
+      e.returnValue = false;  
+    }
+
+    function keydown(e) {
+        for (var i = keys.length; i--;) {
+            if (e.keyCode === keys[i]) {
+                preventDefault(e);
+                return;
+            }
+        }
+    }
+
+    function wheel(e) {
+      preventDefault(e);
+    }
+
+    function disable_scroll() {
+      if (window.addEventListener) {
+          window.addEventListener('DOMMouseScroll', wheel, false);
+      }
+      window.onmousewheel = document.onmousewheel = wheel;
+      document.onkeydown = keydown;
+    }
+
+    function enable_scroll() {
+        if (window.removeEventListener) {
+            window.removeEventListener('DOMMouseScroll', wheel, false);
+        }
+        window.onmousewheel = document.onmousewheel = document.onkeydown = null;  
+    }
+
+    $.fn.sideNav = function () {
+      var $this = $(this);
+      var menu_id = $("#"+ $this.attr('data-activates'));
+
+      function removeMenu() {
+        $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+          complete: function() {
+            $(this).remove();
+          } });
+        menu_id.removeClass('active');
+        enable_scroll();
+      }
+
+      $this.click(function() {
+        if (menu_id.hasClass('active')) {
+          removeMenu();
+        }
+        else {
+          disable_scroll();
+          menu_id.addClass('active');
+
+          var overlay = $('<div id="sidenav-overlay"></div>');
+          overlay.css('width', $(document).width() + 100) // account for any scrollbar
+            .css('height', $(document).height() + 100) // account for any scrollbar
+            .css('top', 0)
+            .css('left', 0)
+            .css('opacity', 0)
+            .css('will-change', 'opacity')
+            .click(function(){
+              removeMenu();
+              overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+                complete: function() {
+                  $(this).remove();
+                } });
+              
+            });
+          $('body').append(overlay);
+          overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad'}
+          );
+        }
+
+
+        return false;
+      });
+
+
+    };
+}( jQuery ));(function ($) {
     
   $.fn.tabs = function () {
 
@@ -542,89 +906,143 @@ jQuery.extend( jQuery.easing,
     // For each set of tabs, we want to keep track of
     // which tab is active and it's associated content
     var $this = $(this);
-    var $active, $content, $links = $this.find('li.tab a');
-    var $tabs_width = $this.width();
-    var $tab_width = $this.find('li').first().outerWidth();
-    var $index = 0;
-    
-    // If the location.hash matches one of the links, use that as the active tab.
-    // If no match is found, use the first link as the initial active tab.
-    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-    $active.addClass('active');
-    $index = $links.index($('.active'));
-    if ($index < 0) {
-      $index = 0;
-    }
+    var window_width = $(window).width();
 
-    $content = $($active[0].hash);
-    
-
-
-    // append indicator then set indicator width to tab width
-    $this.append('<div class="indicator"></div>');
-    var $indicator = $this.find('.indicator');
-    if ($tab_width !== 0 && $tabs_width !== 0) {
-      $indicator.css({"right": $tabs_width - $tab_width});
-      $indicator.css({"left": $index * $tab_width});
-    }
-
-    // Hide the remaining content
-    $links.not($active).each(function () {
-      $(this.hash).hide();
-    });
-    
-    // Bind the click event handler
-    $this.on('click', 'a', function(e){
-      $tabs_width = $this.width();
-      $tab_width = $this.find('li').first().outerWidth();
-
-      // Make the old tab inactive.
-      $active.removeClass('active');
-      $content.hide();
-    
-      // Update the variables with the new link and content
-      $active = $(this);
-      $content = $(this.hash);
-      $links = $this.find('li.tab a');
-    
-      // Make the tab active.
+    if (window_width > 768) {
+      $this.width('100%');
+      // Set Tab Width for each tab
+      var $num_tabs = $(this).children('li').length;
+      $this.children('li').each(function() {
+        $(this).width((100/$num_tabs)+'%');
+      });
+      var $active, $content, $links = $this.find('li.tab a');
+      var $tabs_width = $this.width();
+      var $tab_width = $this.find('li').first().outerWidth();
+      var $index = 0;
+      
+      // If the location.hash matches one of the links, use that as the active tab.
+      // If no match is found, use the first link as the initial active tab.
+      $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
       $active.addClass('active');
-      var $prev_index = $index;
-      $index = $links.index($(this));
+      $index = $links.index($('.active'));
       if ($index < 0) {
         $index = 0;
       }
-      // Change url to current tab
-      window.location.hash = $active.attr('href');
-      if (location.hash) {
-        window.scrollTo(0, 0);
-      }
-      
-      $content.show();
 
-      // Update indicator
-      if (($index - $prev_index) >= 0) {
-        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 175, queue: false, easing: 'easeOutQuad'});
-        setTimeout(function(){
-          $indicator.animate({"left": $index * $tab_width}, {duration: 225, queue: false, easing: 'easeOutQuad'});
-        }, 20);
+      $content = $($active[0].hash);
+      
+      // append indicator then set indicator width to tab width
+      $this.append('<div class="indicator"></div>');
+      var $indicator = $this.find('.indicator');
+      if ($tab_width !== 0 && $tabs_width !== 0) {
+        $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
+        $indicator.css({"left": $index * $tab_width});
       }
-      else {
-        $indicator.animate({"left": $index * $tab_width}, {duration: 175, queue: false, easing: 'easeOutQuad'});
-        setTimeout(function(){
-          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 225, queue: false, easing: 'easeOutQuad'});
-        }, 20);
-      }
-    
-      // Prevent the anchor's default click action
-      e.preventDefault();
-    });
+      $(window).resize(function () {
+        $tabs_width = $this.width();
+        $tab_width = $this.find('li').first().outerWidth();    
+        $index = $links.index($('.active'));
+        if ($index < 0) {
+          $index = 0;
+        }  
+        if ($tab_width !== 0 && $tabs_width !== 0) {
+          console.log($tabs_width, $tab_width, $index * $tab_width, $index);
+          $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
+          $indicator.css({"left": $index * $tab_width});
+        }
+      });
+
+      // Hide the remaining content
+      $links.not($active).each(function () {
+        $(this.hash).hide();
+      });
+      
+      // Bind the click event handler
+      $this.on('click', 'a', function(e){
+        $tabs_width = $this.width();
+        $tab_width = $this.find('li').first().outerWidth();
+
+        // Make the old tab inactive.
+        $active.removeClass('active');
+        $content.hide();
+      
+        // Update the variables with the new link and content
+        $active = $(this);
+        $content = $(this.hash);
+        $links = $this.find('li.tab a');
+      
+        // Make the tab active.
+        $active.addClass('active');
+        var $prev_index = $index;
+        $index = $links.index($(this));
+        if ($index < 0) {
+          $index = 0;
+        }
+        // Change url to current tab
+        window.location.hash = $active.attr('href');
+        if (location.hash) {
+          window.scrollTo(0, 0);
+        }
+        
+        $content.show();
+
+        // Update indicator
+        if (($index - $prev_index) >= 0) {
+          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+          setTimeout(function(){
+            $indicator.animate({"left": $index * $tab_width}, {duration: 225, queue: false, easing: 'easeOutQuad'});
+          }, 20);
+        }
+        else {
+          $indicator.animate({"left": $index * $tab_width}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+          setTimeout(function(){
+            $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 225, queue: false, easing: 'easeOutQuad'});
+          }, 20);
+        }
+      
+        // Prevent the anchor's default click action
+        e.preventDefault();
+      });
+    }
+    else {
+      $this.hide();
+    }
   });
 
   };
-}( jQuery ));
-
-(function ($) {
+}( jQuery ));function toast(message, displayLength) {
+    if ($('#toast-container').length == 0) {
+        // create notification container
+        var container = $('<div></div>')
+            .attr('id', 'toast-container');
+        $('body').append(container);
+    }
+    
+    // Select and append toast
+    var container = $('#toast-container')
+    var newToast = createToast(message);
+    container.append(newToast);
+    
+    newToast.animate({"top" : "+35px"
+                    , "opacity": 0}, 0);
+    newToast.animate({"top" : "0px"
+                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
+        newToast.delay(displayLength)
+        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
+        .slideUp(200, function(){
+            $(this).remove();
+        });
+    
+    
+    function createToast(message) {
+        var toast = $('<div></div>');
+        toast.addClass('toast');
+        var text = $('<span></span>');
+        text.text(message);
+        toast.append(text);
+        return toast;
+    }
+};(function ($) {
     
     var newTooltip;
     var timeout;
@@ -676,8 +1094,6 @@ jQuery.extend( jQuery.easing,
         });
     };
 }( jQuery ));
-
-
 /*!
  * Waves v0.5.3
  * http://fian.my.id/Waves 
@@ -925,49 +1341,3 @@ jQuery.extend( jQuery.easing,
     Waves.displayEffect();
 
 })(window);
-
-function toast(message, displayLength) {
-    if ($('#toast-container').length == 0) {
-        // create notification container
-        var container = $('<div></div>')
-            .attr('id', 'toast-container');
-        $('body').append(container);
-    }
-    
-    // Select and append toast
-    var container = $('#toast-container')
-    var newToast = createToast(message);
-    container.append(newToast);
-    
-    newToast.animate({"top" : "+35px"
-                    , "opacity": 0}, 0);
-    newToast.animate({"top" : "0px"
-                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
-        newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
-        .slideUp(200, function(){
-            $(this).remove();
-        });
-    
-    
-    function createToast(message) {
-        var toast = $('<div></div>');
-        toast.addClass('toast');
-        var text = $('<span></span>');
-        text.text(message);
-        toast.append(text);
-        return toast;
-    }
-}
-
-// @codekit-prepend "jquery.easing.1.3.js"; 
-// @codekit-prepend "collapsible.js"; 
-// @codekit-prepend "dropdown.js"; 
-// @codekit-prepend "leanModal.js"; 
-// @codekit-prepend "materialbox.js"; 
-// @codekit-prepend "parallax.js"; 
-// @codekit-prepend "tabs.js"; 
-// @codekit-prepend "tooltip.js"; 
-// @codekit-prepend "waves.js"; 
-// @codekit-prepend "toasts.js"; 
-
