@@ -3684,8 +3684,6 @@ p {
   display: inline-block;
   height: 100%;
   pointer-events: none; }
-  #front-page-logo .container {
-    height: inherit; }
 
 #index-banner .header {
   color: #FFF; }
@@ -3716,6 +3714,8 @@ p {
 #front-page-nav {
   background-color: #FFF;
   position: relative; }
+  #front-page-nav .container {
+    height: inherit; }
 
 .col.grid-example {
   background-color: #FFF;

@@ -38,10 +38,6 @@ p {
   display: inline-block;
   height: 100%;
   pointer-events: none;
-
-  .container {
-    height: inherit;
-  }
 }
 
 // Temp
@@ -99,8 +95,10 @@ p {
   li {
     &:hover {
       @extend .red.lighten-5; 
-    }
-    
+    } 
+  }
+  .container {
+    height: inherit;
   }
 }
 
