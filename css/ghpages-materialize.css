@@ -3684,6 +3684,8 @@ p {
   display: inline-block;
   height: 100%;
   pointer-events: none; }
+  #front-page-logo .container {
+    height: inherit; }
 
 #index-banner .header {
   color: #FFF; }
