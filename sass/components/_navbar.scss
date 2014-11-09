@@ -3,7 +3,10 @@ nav {
   @extend .z-depth-1;
   @extend .red.lighten-2;
   width: 100%;
-  position: relative;
+
+  .container {
+    position: relative;
+  }
 
   a { color: #fff; }
   a.logo {
