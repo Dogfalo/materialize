@@ -483,6 +483,24 @@ a {
   }
 }
 
+@media only screen and (min-width: 480px) {
+  show-on-small-only {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 480px) {
+  show-on-med-only {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  show-on-lg-only {
+    display: none !important;
+  }
+}
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");

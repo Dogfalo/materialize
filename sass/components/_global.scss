@@ -101,3 +101,21 @@ a {
     display: none !important;
   }
 }
+
+show-on-small-only {
+  @media only screen and (min-width: $small-screen) {
+    display: none !important; 
+  }
+}
+
+show-on-med-only {
+  @media only screen and (min-width: $medium-screen) and (max-width: $small-screen) {
+    display: none !important; 
+  }
+}
+
+show-on-lg-only {
+  @media only screen and (max-width: $large-screen) {
+    display: none !important; 
+  }
+}
