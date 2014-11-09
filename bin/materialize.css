@@ -4170,7 +4170,7 @@ input:focus {
   margin: 4px;
   width: 12px;
   height: 12px;
-  z-index: 1;
+  z-index: 0;
   -webkit-transition: 0.28s ease;
   -moz-transition: 0.28s ease;
   -o-transition: 0.28s ease;
@@ -4186,7 +4186,7 @@ input:focus {
 [type="radio"]:not(:checked) + label:after {
   border-radius: 50%;
   border: 2px solid #5a5a5a;
-  z-index: 0;
+  z-index: -1;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -4204,7 +4204,7 @@ input:focus {
   border-radius: 50%;
   border: 2px solid #0f9d58;
   background-color: #0f9d58;
-  z-index: 1;
+  z-index: 0;
   -webkit-transform: scale(1.02);
   -moz-transform: scale(1.02);
   -ms-transform: scale(1.02);
@@ -4271,7 +4271,7 @@ form p:last-child {
   position: absolute;
   margin-top: 2px;
   left: 0;
-  z-index: 1;
+  z-index: 0;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   border-radius: 1px;
