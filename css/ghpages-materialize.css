@@ -2414,7 +2414,7 @@ a {
 nav {
   color: #fff;
   width: 100%; }
-  nav .container {
+  nav .nav-wrapper {
     position: relative; }
   nav a {
     color: #fff; }
