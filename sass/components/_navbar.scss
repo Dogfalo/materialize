@@ -3,6 +3,8 @@ nav {
   @extend .z-depth-1;
   @extend .red.lighten-2;
   width: 100%;
+  position: relative;
+
   a { color: #fff; }
   a.logo {
     height: inherit;
@@ -28,7 +30,7 @@ nav {
     padding: 0;
 
     &.right {
-      float: right;
+      right: 0.5rem;
       padding: 0;
     }
   }
@@ -58,6 +60,7 @@ nav {
     }
   }
 }
+
 
 @media #{$small-and-up} {
   nav {
