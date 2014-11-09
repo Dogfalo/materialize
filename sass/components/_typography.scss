@@ -64,7 +64,7 @@ small { font-size: 75%; }
       		font-size: 1rem * (1 + (.03 * $i));
   		}
         @media only screen and (min-width : 0 + ($i * $interval-size)) {
-          line-height: 1.4rem * (1 + (.03 * $i));
+          line-height: 1.4rem * (1 + (.05 * $i));
         }
   		$i: $i + 1;
   	}
