@@ -9,7 +9,7 @@
     var $this = $(this);
     var window_width = $(window).width();
 
-    if (window_width > 768) {
+    if (window_width > 480) {
       $this.width('100%');
       // Set Tab Width for each tab
       var $num_tabs = $(this).children('li').length;
