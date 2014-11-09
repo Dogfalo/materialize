@@ -2463,6 +2463,7 @@ nav {
     line-height: 56px; } }
 @media only screen and (min-width: 480px) {
   nav {
+    z-index:1;
     height: 64px;
     line-height: 64px; } }
 @font-face {
