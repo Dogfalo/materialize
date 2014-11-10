@@ -1,6 +1,8 @@
 (function($){
   $(function(){
 
+    var window_width = $(window).width();
+
     // convert rgb to hex value string
     function rgb2hex(rgb) {
       if (/^#[0-9A-F]{6}$/i.test(rgb)) { return rgb; }
@@ -26,11 +28,11 @@
     // Print out entypo name  
     $('.icon-container').each(function(){
       $(this).children('i').each(function() {
-      var wrapper = $('<div></div>').addClass('icon-holder');
-      var icon = $(this);
-      $(this).wrap(wrapper);
-      $('<p></p>').text($(this).attr('class')).insertAfter(icon);
-    })
+        var wrapper = $('<div></div>').addClass('icon-holder');
+        var icon = $(this);
+        $(this).wrap(wrapper);
+        $('<p></p>').text($(this).attr('class')).insertAfter(icon);
+      });
     });
     
     // Floating-Fixed table of contents
@@ -52,7 +54,12 @@
     // PLugin initialization
     $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown();
-    $('ul.tabs').tabs();
+    if (window_width > 480) {
+      $('ul.tabs').tabs();
+    }
+    else {
+      $('ul.tabs').hide();
+    }
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.tooltipped').tooltip();
