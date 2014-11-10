@@ -95,8 +95,10 @@ p {
   li {
     &:hover {
       @extend .red.lighten-5; 
-    }
-    
+    } 
+  }
+  .container {
+    height: inherit;
   }
 }
 
