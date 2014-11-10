@@ -47,7 +47,6 @@
           $index = 0;
         }  
         if ($tab_width !== 0 && $tabs_width !== 0) {
-          console.log($tabs_width, $tab_width, $index * $tab_width, $index);
           $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
           $indicator.css({"left": $index * $tab_width});
         }
@@ -89,15 +88,15 @@
 
         // Update indicator
         if (($index - $prev_index) >= 0) {
-          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 325, queue: false, easing: 'easeOutQuad'});
           setTimeout(function(){
-            $indicator.animate({"left": $index * $tab_width}, {duration: 225, queue: false, easing: 'easeOutQuad'});
-          }, 20);
+            $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          }, 50);
         }
         else {
-          $indicator.animate({"left": $index * $tab_width}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+          $indicator.animate({"left": $index * $tab_width}, {duration: 325, queue: false, easing: 'easeOutQuad'});
           setTimeout(function(){
-            $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 225, queue: false, easing: 'easeOutQuad'});
+            $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }, 20);
         }
       

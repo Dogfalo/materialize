@@ -56,7 +56,8 @@
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.tooltipped').tooltip();
-    $('.collapsible').collapsible();
+    $('.collapsible-accordion').collapsible();
+    $('.collapsible-expandable').collapsible({"accordion": false});
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav();

@@ -230,11 +230,11 @@
   
 <!--  Collapsible Section  -->
   <div id="tab9" class="section">
-    <h3 class="header">Collapsible</h3>
+    <h2 class="header">Collapsible</h2>
     <p class="caption">
       Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
     </p>
-    <ul class="collapsible">
+    <ul class="collapsible collapsible-accordion">
       <li>
         <div class="collapsible-header"><i class="entypo cog"></i>First</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
@@ -275,7 +275,62 @@
   });
       </code></pre>
     </div>
+  <div class="row">
+    <h4 class="header">Options</h4> 
+    <p>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</p>
   </div>
+    <div class="row">
+      <div class="col s12 m3"><h5>Accordion</h5></div>
+      <div class="col s12 m9">
+        <ul class="collapsible collapsible-accordion">
+      <li>
+        <div class="collapsible-header"><i class="entypo cog"></i>First</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo map"></i>Second</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo flash"></i>Third</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+    </ul>
+      </div>
+      <div class="row">
+      <pre class="col s12 m9 offset-m3"><code class="language-javascript">
+  // This behavior is the default, so nothing needs to be done
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+      </code></pre>
+    </div>
+      
+      <div class="col s12 m3"><h5>Expandable</h5></div>
+      <div class="col s12 m9">
+        <ul class="collapsible collapsible-expandable">
+      <li>
+        <div class="collapsible-header"><i class="entypo cog"></i>First</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo map"></i>Second</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo flash"></i>Third</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+    </ul>
+      </div>
+      <div class="row">
+      <pre class="col s12 m9 offset-m3"><code class="language-javascript">
+  $(document).ready(function(){
+    $('.collapsible').collapsible({ "accordion" : false });
+  });
+      </code></pre>
+    </div>
+    </div>
 </div>  <!--  End of Container -->
 
 
