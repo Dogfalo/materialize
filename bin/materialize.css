@@ -2691,8 +2691,7 @@ small {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box;
-  margin-top: 10px;
-  padding: 1rem; }
+  margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
     color: white; }

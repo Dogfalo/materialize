@@ -3676,62 +3676,50 @@ small {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box;
-  margin-top: 10px;
-  padding: 1rem;
-}
-.card h1 {
-  font-size: 1.71rem;
-  color: #fff;
-}
-.card h2 {
-  font-size: 1.14rem;
-  color: #fff;
-}
-.card h3 {
-  font-size: 1rem;
-  color: #fff;
-}
-.card p {
-  font-size: 0.8rem;
-  color: #fff;
-}
-.card .card-content {
-  position: relative;
-  overflow: hidden;
-  padding: 1rem;
-}
-.card .card-content img {
-  -webkit-border-radius: 2px 2px 0 0;
-  -moz-border-radius: 2px 2px 0 0;
-  border-radius: 2px 2px 0 0;
-  background-clip: padding-box;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: -1;
-}
-.card .card-footer {
-  background-color: #FFF;
-  padding: 2px 1rem 8px 1rem;
-  -webkit-border-radius: 0 0 2px 2px;
-  -moz-border-radius: 0 0 2px 2px;
-  border-radius: 0 0 2px 2px;
-  background-clip: padding-box;
-  margin-bottom: 30px;
-}
-.card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-  color: #000;
-}
-.card a.card-action {
-  margin-right: 20%;
-  color: #ffab2e;
-}
-.card a.card-action:hover {
-  color: #ffcc35;
-}
+  margin-top: 10px; }
+  .card h1 {
+    font-size: 1.71rem;
+    color: white; }
+  .card h2 {
+    font-size: 1.14rem;
+    color: white; }
+  .card h3 {
+    font-size: 1rem;
+    color: white; }
+  .card p {
+    font-size: 0.8rem;
+    color: white; }
+  .card .card-content {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem; }
+    .card .card-content img {
+      -webkit-border-radius: 2px 2px 0 0;
+      -moz-border-radius: 2px 2px 0 0;
+      border-radius: 2px 2px 0 0;
+      background-clip: padding-box;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: -1; }
+  .card .card-footer {
+    background-color: white;
+    padding: 2px 1rem 8px 1rem;
+    -webkit-border-radius: 0 0 2px 2px;
+    -moz-border-radius: 0 0 2px 2px;
+    border-radius: 0 0 2px 2px;
+    background-clip: padding-box;
+    margin-bottom: 30px; }
+    .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
+      color: black; }
+  .card a.card-action {
+    margin-right: 20%;
+    color: #ffab2e; }
+    .card a.card-action:hover {
+      color: #ffcc35; }
 
 #toast-container {
   display: block;

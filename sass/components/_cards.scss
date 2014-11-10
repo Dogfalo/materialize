@@ -9,7 +9,6 @@ $card-link-hover: #ffcc35;
 .card {
   @include border-radius(2px);
 	margin-top: 10px;
-    padding: 1rem;
   h1 {
     font-size: 1.71rem;
 		color: $font-color;
