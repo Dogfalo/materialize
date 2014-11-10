@@ -435,6 +435,12 @@ a {
   show-on-lg-only {
     display: none !important; } }
 
+#footer {
+  text-align: center; }
+  #footer a {
+    vertical-align: top;
+    line-height: 30px; }
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
