@@ -381,22 +381,23 @@
     </div>
   
     <div id="tab6" class="section">
-  <!--   Navbar   -->
+  <!--   Navbar Section  -->
       <div class="row">
         <h2 class="header">Navbar</h2>
         <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
         </p>
-
         <h4 class="header">Right Aligned Links</h4>
+        
         <nav>
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
-              <ul>
+              <ul class="right side-nav" >
                 <li><a href="#!">Sass</a></li>
                 <li><a href="#!">Components</a></li>
                 <li><a href="#!">JavaScript</a></li>
               </ul>
+              <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="entypo list"></i></a>
             </div>
           </div>
         </nav>
@@ -406,11 +407,12 @@
   &lt;nav>
     &lt;div class="nav-wrapper">
       &lt;a href="#" class="brand-logo">Logo&lt;/a>
-      &lt;ul>
+      &lt;ul class="right side-nav">
         &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
         &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
       &lt;/ul>
+      &lt;a class="button-collapse" href="#" data-activates='nav-mobile'>&lt;i class="entypo list">&lt;/i>&lt;/a>
     &lt;/div>
   &lt;/nav>
         </code></pre>
@@ -422,11 +424,12 @@
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="#!" class="brand-logo right">Logo</a>
-            <ul class="left">
+            <ul class="left side-nav">
               <li><a href="#!">Sass</a></li>
               <li><a href="#!">Components</a></li>
               <li><a href="#!">JavaScript</a></li>
             </ul>
+            <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="entypo list"></i></a>
           </div>
         </div>
       </nav>
@@ -436,11 +439,12 @@
   &lt;nav>
     &lt;div class="nav-wrapper">
       &lt;a href="#" class="brand-logo right">Logo&lt;/a>
-      &lt;ul class="left">
+      &lt;ul class="left side-nav">
         &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
         &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
       &lt;/ul>
+      &lt;a class="button-collapse" href="#" data-activates='nav-mobile'>&lt;i class="entypo list">&lt;/i>&lt;/a>
     &lt;/div>
   &lt;/nav>
         </code></pre>
