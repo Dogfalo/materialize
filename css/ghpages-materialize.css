@@ -1319,7 +1319,7 @@ a {
 
 .red {
   background-color: #e51c23; }
-  .red.lighten-1, nav ul li:hover {
+  .red.lighten-1, nav ul li:hover, nav ul li a.active {
     background-color: #ea454b; }
   .red.lighten-2, nav, ul.tabs .indicator, #github-button, #index-banner {
     background-color: #ee6e73; }
@@ -2192,10 +2192,10 @@ a {
     color: #2c3940; }
 
 .white {
-  background-color: white; }
+  background-color: #fff; }
 
 .white-text {
-  color: white; }
+  color: #fff; }
 
 .container {
   padding: 0 1rem;
@@ -2700,16 +2700,16 @@ small {
   margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: white; }
+    color: #fff; }
   .card h2 {
     font-size: 1.14rem;
-    color: white; }
+    color: #fff; }
   .card h3 {
     font-size: 1rem;
-    color: white; }
+    color: #fff; }
   .card p {
     font-size: 0.8rem;
-    color: white; }
+    color: #fff; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2727,7 +2727,7 @@ small {
       width: 100%;
       z-index: -1; }
   .card .card-footer {
-    background-color: white;
+    background-color: #FFF;
     padding: 2px 1rem 8px 1rem;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
@@ -2735,7 +2735,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: black; }
+      color: #000; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -3686,7 +3686,6 @@ p {
 
 #front-page-logo {
   display: inline-block;
-  height: 100%;
   pointer-events: none; }
 
 #index-banner .header {
