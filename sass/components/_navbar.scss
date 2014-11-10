@@ -6,31 +6,33 @@ nav {
 
   .nav-wrapper {
     position: relative;
+    height: 100%;
   }
 
   a { color: #fff; }
-  a.logo {
-    height: inherit;
-    line-height: inherit;
-    display: inline-block;
-    float: left;
-    font-size: 36px;
 
-    i { -webkit-font-smoothing: antialiased; }
-  }
   a.button-collapse {
-    float: right;
+    float: left;
     font-size: 2rem;
     @extend .show-on-med-and-below;
+    position: relative;
+    z-index: 1;
   }
 
   .brand-logo {
     position: absolute;
     color: #fff;
-    float: left;
     display: inline-block;
     font-size: 2.1rem;
     padding: 0;
+    
+    @media #{$medium-and-down} {
+//      position: absolute;
+//      right: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 0;
+    }
 
     &.right {
       right: 0.5rem;
