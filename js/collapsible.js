@@ -26,6 +26,7 @@
       $panel_headers.each(function () {
         $(this).click(function () {
           $(this).parent().toggleClass('active');
+          $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
         });
       });
     }
