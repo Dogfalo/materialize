@@ -5,7 +5,7 @@
     return this.each(function() {
 
     // For each set of tabs, we want to keep track of
-    // which tab is active and it's associated content
+    // which tab is active and its associated content
     var $this = $(this);
     var window_width = $(window).width();
 
