@@ -3743,23 +3743,24 @@ small {
   display: block;
   position: fixed;
 }
-@media only screen and (min-width: 0) {
+@media only screen and (min-width: 0) and (max-width: 768px) {
   #toast-container {
     min-width: 100%;
     bottom: 0%;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 480px) and (max-width: 768px) {
   #toast-container {
-    min-width: 50%;
-    right: 5%;
+    min-width: 30%;
+    left: 5%;
+    bottom: 7%;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   #toast-container {
     min-width: 8%;
-    top: 8%;
-    right: 6%;
+    top: 10%;
+    right: 7%;
   }
 }
 
@@ -4924,11 +4925,12 @@ p {
 }
 
 .icon-holder {
-  display: inline-block;
+  display: block;
   text-align: center;
-  width: 200px;
+  width: 150px;
+  height: 115px;
   float: left;
-  margin: 5px 10px 0px 10px;
+  margin: 0px 10px 15px 10px;
 }
 .icon-holder p {
   margin: 0px 0;

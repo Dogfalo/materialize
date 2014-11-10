@@ -144,18 +144,20 @@ p {
 // Icons
 .icon-container .entypo {
   font-size: 3em;
+  
 }
 .icon-container .entypo-social {
   font-size: 3em;
 }
 
 .icon-holder {
-  display: inline-block;
+  display: block;
   text-align: center;
-  width: 200px;
+  width: 150px;
+  height: 115px;
 
   float: left;
-  margin: 5px 10px 0px 10px;
+  margin: 0px 10px 15px 10px;
   p {
     margin: 0px 0;
   }
