@@ -19,7 +19,7 @@
       float: none;
       padding: 0 15px;
 
-      &:hover { background-color: #ddd; }
+      &:hover, &.active { background-color: #ddd; }
     }
     a {
       color: #444;

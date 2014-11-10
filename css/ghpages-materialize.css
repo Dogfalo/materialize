@@ -1319,7 +1319,7 @@ a {
 
 .red {
   background-color: #e51c23; }
-  .red.lighten-1, nav ul li:hover, nav ul li a.active {
+  .red.lighten-1, nav ul li:hover, nav ul li.active {
     background-color: #ea454b; }
   .red.lighten-2, nav, ul.tabs .indicator, #github-button, #index-banner {
     background-color: #ee6e73; }
@@ -3633,7 +3633,7 @@ ul.table-of-contents a {
     ul.side-nav li {
       float: none;
       padding: 0 15px; }
-      ul.side-nav li:hover {
+      ul.side-nav li:hover, ul.side-nav li.active {
         background-color: #ddd; }
     ul.side-nav a {
       color: #444; }
@@ -3686,6 +3686,7 @@ p {
 
 #front-page-logo {
   display: inline-block;
+  height: 100%;
   pointer-events: none; }
 
 #index-banner .header {
