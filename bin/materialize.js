@@ -241,6 +241,7 @@ jQuery.extend( jQuery.easing,
       $panel_headers.each(function () {
         $(this).click(function () {
           $(this).parent().toggleClass('active');
+          $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
         });
       });
     }
@@ -908,7 +909,7 @@ jQuery.extend( jQuery.easing,
     var $this = $(this);
     var window_width = $(window).width();
 
-    if (window_width > 768) {
+    if (window_width > 480) {
       $this.width('100%');
       // Set Tab Width for each tab
       var $num_tabs = $(this).children('li').length;
@@ -946,7 +947,6 @@ jQuery.extend( jQuery.easing,
           $index = 0;
         }  
         if ($tab_width !== 0 && $tabs_width !== 0) {
-          console.log($tabs_width, $tab_width, $index * $tab_width, $index);
           $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
           $indicator.css({"left": $index * $tab_width});
         }
@@ -988,15 +988,15 @@ jQuery.extend( jQuery.easing,
 
         // Update indicator
         if (($index - $prev_index) >= 0) {
-          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 325, queue: false, easing: 'easeOutQuad'});
           setTimeout(function(){
-            $indicator.animate({"left": $index * $tab_width}, {duration: 225, queue: false, easing: 'easeOutQuad'});
-          }, 20);
+            $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          }, 50);
         }
         else {
-          $indicator.animate({"left": $index * $tab_width}, {duration: 175, queue: false, easing: 'easeOutQuad'});
+          $indicator.animate({"left": $index * $tab_width}, {duration: 325, queue: false, easing: 'easeOutQuad'});
           setTimeout(function(){
-            $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 225, queue: false, easing: 'easeOutQuad'});
+            $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }, 20);
         }
       
@@ -1048,50 +1048,7 @@ jQuery.extend( jQuery.easing,
     var timeout;
     $.fn.tooltip = function () {
         var origin;
-        this.hover(function() {
-            // on mouseover
-            origin = $(this);
-            timeout = setTimeout(function(){
-              newTooltip = $('<div></div>');
-              newTooltip.text($(origin).attr('title'))
-              .addClass("material-tooltip")
-
-              $('body').append(newTooltip);
-              // Get cardinal position of tooltip
-              var location = origin.attr('data-tooltip');
-
-              // Set position of tooltip
-              var leftPos;
-              var topPos;
-              var margin = 15;
-              if (location == 'bottom') {              
-                leftPos = $(origin).offset().left + $(origin).outerWidth()/2 - newTooltip.outerWidth()/2;
-                topPos = $(origin).offset().top + margin;
-              }
-              else if (location == 'top') {
-                leftPos = $(origin).offset().left + $(origin).outerWidth()/2 - newTooltip.outerWidth()/2;
-                topPos = $(origin).offset().top - $(origin).outerHeight() - newTooltip.outerHeight() - margin;
-              }
-              else if (location == 'left') {
-                leftPos = $(origin).offset().left - newTooltip.outerWidth() - margin;
-                topPos = $(origin).offset().top - $(origin).outerHeight()/2 - newTooltip.outerHeight()/2;
-              }
-              else if (location == 'right') {
-                leftPos = $(origin).offset().left + $(origin).outerWidth() + margin;
-                topPos = $(origin).offset().top - $(origin).outerHeight()/2 - newTooltip.outerHeight()/2;
-              }
-
-              newTooltip.css({top: topPos, left: leftPos});
-              // Animation
-              newTooltip.fadeIn(100);
-              origin.removeAttr('title')
-            },200);
-        }, function(){
-            clearTimeout(timeout);
-            origin.attr('title', newTooltip.text());
-            newTooltip.fadeOut(100, function(){
-                newTooltip.remove();});
-        });
+        
     };
 }( jQuery ));
 /*!

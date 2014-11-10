@@ -21,7 +21,7 @@
       <a href="index.html" class="brand-logo">Materialize</a>
       <ul class="right side-nav" id="nav-mobile">
         <li><a href="about.html">About</a></li>
-        <li><a href="sass.html">SASS</a></li>
+        <li><a href="sass.html">Sass</a></li>
         <li><a href="components.html">Components</a></li>
         <li><a href="javascript.html">JavaScript</a></li>
       </ul>
@@ -36,7 +36,7 @@
         <li class="tab"><a href="#tab2">Tooltips</a></li>
         <li class="tab"><a href="#tab3">Dropdowns</a></li>
         <li class="tab"><a href="#tab4">Tabs</a></li>
-        <li class="tab"><a href="#tab5">Parallax</a></li>
+<!--        <li class="tab"><a href="#tab5">Parallax</a></li>-->
         <li class="tab"><a href="#tab6">Waves</a></li>
         <li class="tab"><a href="#tab7">Modals</a></li>
         <li class="tab"><a href="#tab8">Materialbox</a></li>
@@ -161,7 +161,7 @@
     <div class="row">
     <h2 class="header">Waves</h2>
       <p class="caption">Waves is an external library that we've included in Materialize to allow us to create the ink effect outlined in Material Design</p>
-    <a class="waves-effect waves-light button raised" href="#">Wave</a>
+    <a class="waves-effect waves-light button raised" href="#!">Wave</a>
     </div>
     <div class="row">
       <h4 class="header">Button Class</h4>
@@ -230,11 +230,11 @@
   
 <!--  Collapsible Section  -->
   <div id="tab9" class="section">
-    <h3 class="header">Collapsible</h3>
+    <h2 class="header">Collapsible</h2>
     <p class="caption">
       Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
     </p>
-    <ul class="collapsible">
+    <ul class="collapsible collapsible-accordion">
       <li>
         <div class="collapsible-header"><i class="entypo cog"></i>First</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
@@ -275,37 +275,66 @@
   });
       </code></pre>
     </div>
+  <div class="row">
+    <h4 class="header">Options</h4> 
+    <p>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</p>
   </div>
+    <div class="row">
+      <div class="col s12 m3"><h5>Accordion</h5></div>
+      <div class="col s12 m9">
+        <ul class="collapsible collapsible-accordion">
+      <li>
+        <div class="collapsible-header"><i class="entypo cog"></i>First</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo map"></i>Second</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo flash"></i>Third</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+    </ul>
+      </div>
+      <div class="row">
+      <pre class="col s12 m9 offset-m3"><code class="language-javascript">
+  // This behavior is the default, so nothing needs to be done
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+      </code></pre>
+    </div>
+      
+      <div class="col s12 m3"><h5>Expandable</h5></div>
+      <div class="col s12 m9">
+        <ul class="collapsible collapsible-expandable">
+      <li>
+        <div class="collapsible-header"><i class="entypo cog"></i>First</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo map"></i>Second</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="entypo flash"></i>Third</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+      </li>
+    </ul>
+      </div>
+      <div class="row">
+      <pre class="col s12 m9 offset-m3"><code class="language-javascript">
+  $(document).ready(function(){
+    $('.collapsible').collapsible({ "accordion" : false });
+  });
+      </code></pre>
+    </div>
+    </div>
 </div>  <!--  End of Container -->
 
 
-  <!--  Parallax Section  -->
-  <div id="tab5" class="parallax-container">
-    <div class="parallax"><img src="https://unsplash.imgix.net/reserve/EnF7DhHROS8OMEp2pCkx_Dufer%20food%20overhead%20hig%20res.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=7cfd39dc9757597e6c711ca30eaacab5"></div>
-    <div class="row container">
-      <h2 class="white-text">Parallax</h2>
-      <p class="grey-text lighten-3">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
-    </div>
-
-    <div class="row container">
-      <h4 class="white-text">Tabs HTML Structure</h4>
-      <pre><code class="language-markup col s12">
-        &lt;div class="col s12">
-          &lt;ul class="tabs">
-            &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
-          &lt;/ul>
-        &lt;/div>
-        &lt;div id="test1" class="col s12">Test 1&lt;/div>
-        &lt;div id="test2" class="col s12">Test 2&lt;/div>
-        &lt;div id="test3" class="col s12">Test 3&lt;/div>
-        &lt;div id="test4" class="col s12">Test 4&lt;/div>
-      </code></pre>
-    </div>
-    <br><br><br><br>
-  </div>
+  
 
   <div id="footer" class="section">
     <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large"

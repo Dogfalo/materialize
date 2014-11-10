@@ -38,7 +38,7 @@
     -ms-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    @include transition(all .3s ease-out);
+    @include transition(all .4s ease-out);
     
     .waves-ripple {
         position: absolute;
@@ -48,7 +48,7 @@
         height:20px;
         opacity:0;
         background-color: rgba(0, 0, 0, 0.1);
-        @include transition(all 0.3s ease-out);
+        @include transition(all 0.4s ease-out);
         @include transform(scale(0));
     }
 
@@ -79,7 +79,9 @@
     vertical-align: middle;
     cursor: pointer;
     border:none;
-    outline:none;
+//    outline:none;
+//    background:transparent;
+//    color: inherit;
     font-size:14px;
     text-align: center;
     text-decoration:none;

@@ -2192,10 +2192,10 @@ a {
     color: #2c3940; }
 
 .white {
-  background-color: #fff; }
+  background-color: white; }
 
 .white-text {
-  color: #fff; }
+  color: white; }
 
 .container {
   padding: 0 1rem;
@@ -2697,20 +2697,19 @@ small {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box;
-  margin-top: 10px;
-  padding: 1rem; }
+  margin-top: 10px; }
   .card h1 {
     font-size: 1.71rem;
-    color: #fff; }
+    color: white; }
   .card h2 {
     font-size: 1.14rem;
-    color: #fff; }
+    color: white; }
   .card h3 {
     font-size: 1rem;
-    color: #fff; }
+    color: white; }
   .card p {
     font-size: 0.8rem;
-    color: #fff; }
+    color: white; }
   .card .card-content {
     position: relative;
     overflow: hidden;
@@ -2728,7 +2727,7 @@ small {
       width: 100%;
       z-index: -1; }
   .card .card-footer {
-    background-color: #FFF;
+    background-color: white;
     padding: 2px 1rem 8px 1rem;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
@@ -2736,7 +2735,7 @@ small {
     background-clip: padding-box;
     margin-bottom: 30px; }
     .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-      color: #000; }
+      color: black; }
   .card a.card-action {
     margin-right: 20%;
     color: #ffab2e; }
@@ -3244,10 +3243,10 @@ ul.tabs {
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out; }
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out; }
   .waves-effect .waves-ripple {
     position: absolute;
     pointer-events: none;
@@ -3256,10 +3255,10 @@ ul.tabs {
     height: 20px;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.1);
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
@@ -3288,7 +3287,6 @@ ul.tabs {
   vertical-align: middle;
   cursor: pointer;
   border: none;
-  outline: none;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
