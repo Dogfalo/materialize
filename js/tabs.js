@@ -88,16 +88,16 @@
 
         // Update indicator
         if (($index - $prev_index) >= 0) {
-          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 325, queue: false, easing: 'easeOutQuad'});
+          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 280, queue: false, easing: 'easeOutQuad'});
           setTimeout(function(){
-            $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-          }, 50);
+            $indicator.animate({"left": $index * $tab_width}, {duration: 275, queue: false, easing: 'easeOutQuad'});
+          }, 55);
         }
         else {
-          $indicator.animate({"left": $index * $tab_width}, {duration: 325, queue: false, easing: 'easeOutQuad'});
+          $indicator.animate({"left": $index * $tab_width}, {duration: 280, queue: false, easing: 'easeOutQuad'});
           setTimeout(function(){
-            $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-          }, 20);
+            $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 275, queue: false, easing: 'easeOutQuad'});
+          }, 55);
         }
       
         // Prevent the anchor's default click action

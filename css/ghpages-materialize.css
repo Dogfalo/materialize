@@ -2966,11 +2966,11 @@ a {
 }
 
 .white {
-  background-color: white;
+  background-color: #fff;
 }
 
 .white-text {
-  color: white;
+  color: #fff;
 }
 
 .container {
@@ -3285,31 +3285,30 @@ nav {
 }
 nav .nav-wrapper {
   position: relative;
+  height: 100%;
 }
 nav a {
   color: #fff;
 }
-nav a.logo {
-  height: inherit;
-  line-height: inherit;
-  display: inline-block;
-  float: left;
-  font-size: 36px;
-}
-nav a.logo i {
-  -webkit-font-smoothing: antialiased;
-}
 nav a.button-collapse {
-  float: right;
+  float: left;
   font-size: 2rem;
+  position: relative;
+  z-index: 1;
 }
 nav .brand-logo {
   position: absolute;
   color: #fff;
-  float: left;
   display: inline-block;
   font-size: 2.1rem;
   padding: 0;
+}
+@media only screen and (max-width: 768px) {
+  nav .brand-logo {
+    width: 100%;
+    text-align: center;
+    z-index: 0;
+  }
 }
 nav .brand-logo.right {
   right: 0.5rem;
@@ -3688,19 +3687,19 @@ small {
 }
 .card h1 {
   font-size: 1.71rem;
-  color: white;
+  color: #fff;
 }
 .card h2 {
   font-size: 1.14rem;
-  color: white;
+  color: #fff;
 }
 .card h3 {
   font-size: 1rem;
-  color: white;
+  color: #fff;
 }
 .card p {
   font-size: 0.8rem;
-  color: white;
+  color: #fff;
 }
 .card .card-content {
   position: relative;
@@ -3721,7 +3720,7 @@ small {
   z-index: -1;
 }
 .card .card-footer {
-  background-color: white;
+  background-color: #FFF;
   padding: 2px 1rem 8px 1rem;
   -webkit-border-radius: 0 0 2px 2px;
   -moz-border-radius: 0 0 2px 2px;
@@ -3730,7 +3729,7 @@ small {
   margin-bottom: 30px;
 }
 .card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-  color: black;
+  color: #000;
 }
 .card a.card-action {
   margin-right: 20%;
@@ -4822,7 +4821,7 @@ p {
 .preview {
   background-color: #FFF;
   border: 1px solid #eee;
-  padding: 20px 40px;
+  padding: 20px 20px;
 }
 
 #logo-container {
@@ -4938,3 +4937,5 @@ p {
 code, pre {
   font-size: 1.1rem;
 }
+
+/*# sourceMappingURL=ghpages-materialize.css.map */
