@@ -47,7 +47,7 @@ nav {
       padding: 0px;
       @include transition(background-color .3s);
 
-      &:hover {
+      &:hover, &.active {
         @extend .red.lighten-1;
       }
     }

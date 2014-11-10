@@ -501,6 +501,14 @@ a {
   }
 }
 
+#footer {
+  text-align: center;
+}
+#footer a {
+  vertical-align: top;
+  line-height: 30px;
+}
+
 @font-face {
   font-family: 'EntypoRegular';
   src: url("../font/entypo/entypo.eot");
@@ -1668,7 +1676,7 @@ a {
 .red {
   background-color: #e51c23;
 }
-.red.lighten-1, nav ul li:hover {
+.red.lighten-1, nav ul li:hover, nav ul li.active {
   background-color: #ea454b;
 }
 .red.lighten-2, nav, ul.tabs .indicator, #github-button, #index-banner {
@@ -4763,7 +4771,7 @@ ul.table-of-contents a.active {
     float: none;
     padding: 0 15px;
   }
-  ul.side-nav li:hover {
+  ul.side-nav li:hover, ul.side-nav li.active {
     background-color: #ddd;
   }
   ul.side-nav a {
