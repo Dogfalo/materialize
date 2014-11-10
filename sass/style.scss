@@ -31,7 +31,7 @@ p {
   position: absolute;
   top: 50%;
   @include transform( translateY(-50%));
-  height: 90%;
+  height: 80%;
 }
 
 #front-page-logo {
@@ -161,7 +161,25 @@ p {
   }
 }
 
+// Shadow demo styling
+.shadow-demo {
+  width: 125px;
+  height: 125px;
+  margin: 20px auto;
+  
+  @media only screen and (max-width: $large-screen) {
+    width: 100px;
+    height: 100px;
+    
+  }
+  
+  @media only screen and (max-width: $small-screen) {
+    width: 150px;
+    height: 150px;
+  }
+}
+
 // Prism Styling
 code, pre {
-  font-size: 1.1rem
+  font-size: 1.1rem;
 }
