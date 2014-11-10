@@ -4319,10 +4319,10 @@ ul.tabs .indicator {
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
 }
 .waves-effect .waves-ripple {
   position: absolute;
@@ -4332,10 +4332,10 @@ ul.tabs .indicator {
   height: 20px;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -4369,6 +4369,8 @@ ul.tabs .indicator {
   cursor: pointer;
   border: none;
   outline: none;
+  background: transparent;
+  color: inherit;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
