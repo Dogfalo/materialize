@@ -13,7 +13,7 @@ nav {
 
   a.button-collapse {
     float: left;
-    font-size: 2rem;
+    font-size: 2.7rem;
     @extend .show-on-med-and-below;
     position: relative;
     z-index: 1;
@@ -68,13 +68,13 @@ nav {
 
 
 @media #{$small-and-up} {
-  nav {
+  nav, a.button-collapse i {
     height: 56px;
     line-height: 56px;
   }
 }
 @media #{$medium-and-up} {
-  nav {
+  nav, a.button-collapse i {
     height: 64px;
     line-height: 64px;
   }

@@ -3792,7 +3792,7 @@ nav {
     color: #fff; }
   nav a.button-collapse {
     float: left;
-    font-size: 2rem;
+    font-size: 2.7rem;
     position: relative;
     z-index: 1; }
   nav .brand-logo {
@@ -3829,11 +3829,11 @@ nav {
       float: left; }
 
 @media only screen and (min-width: 0) {
-  nav {
+  nav, a.button-collapse i {
     height: 56px;
     line-height: 56px; } }
 @media only screen and (min-width: 480px) {
-  nav {
+  nav, a.button-collapse i {
     height: 64px;
     line-height: 64px; } }
 @font-face {
@@ -4576,6 +4576,9 @@ ul.tabs {
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
     transition: 0.3s; }
+    .button.floating i {
+      font-size: 1.6rem;
+      line-height: 40px; }
 
 .dropdown-content {
   position: absolute;
@@ -4721,6 +4724,8 @@ ul.collapsible {
   border-bottom: 1px solid #ddd; }
   .collapsible-header i {
     width: 2rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
     display: block;
     float: left;
     text-align: center;
@@ -5072,12 +5077,10 @@ p {
     width: 100%;
     margin-bottom: 5em; }
   .promo p {
-    margin-top: -40px;
     font-size: 1.7rem;
     font-weight: 300; }
   .promo i {
-    margin-top: -80px;
-    font-size: 220px;
+    font-size: 7rem;
     display: block; }
 
 #front-page-nav {
