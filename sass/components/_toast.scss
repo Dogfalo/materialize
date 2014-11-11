@@ -1,18 +1,20 @@
 #toast-container {
     display:block;
     position: fixed;
-    @media only screen and (min-width: 0) {
+    @media only screen and (min-width: 0) and (max-width: $medium-screen) {
         min-width: 100%;
         bottom: 0%;    
     }
-    @media only screen and (min-width: $medium-screen) {
-        min-width: 50%;
-        right: 5%;
+    @media only screen and (min-width: $small-screen) and(max-width: $medium-screen) {
+        min-width: 30%;
+        left: 5%;
+        bottom: 7%;
     }
-    @media only screen and (min-width: $large-screen) {
+    @media only screen and (min-width: $medium-screen) {
         min-width: 8%;
-        top: 8%;
-        right: 6%;
+        top: 10%;
+        right: 7%;
+      
     }
 }
 .toast {

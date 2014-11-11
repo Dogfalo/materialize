@@ -3929,132 +3929,132 @@ small {
 
 .flow-text {
   font-weight: 300; }
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 360px) {
     .flow-text {
-      font-size: 1rem; } }
+      font-size: 1.2rem; } }
   @media only screen and (min-width: 0px) {
     .flow-text {
-      line-height: 1.4rem; } }
-  @media only screen and (min-width: 507.2px) {
+      line-height: 0.8rem; } }
+  @media only screen and (min-width: 387.2px) {
     .flow-text {
-      font-size: 1.03rem; } }
+      font-size: 1.224rem; } }
   @media only screen and (min-width: 27.2px) {
     .flow-text {
-      line-height: 1.47rem; } }
-  @media only screen and (min-width: 534.4px) {
+      line-height: 0.904rem; } }
+  @media only screen and (min-width: 414.4px) {
     .flow-text {
-      font-size: 1.06rem; } }
+      font-size: 1.248rem; } }
   @media only screen and (min-width: 54.4px) {
     .flow-text {
-      line-height: 1.54rem; } }
-  @media only screen and (min-width: 561.6px) {
+      line-height: 1.008rem; } }
+  @media only screen and (min-width: 441.6px) {
     .flow-text {
-      font-size: 1.09rem; } }
+      font-size: 1.272rem; } }
   @media only screen and (min-width: 81.6px) {
     .flow-text {
-      line-height: 1.61rem; } }
-  @media only screen and (min-width: 588.8px) {
+      line-height: 1.112rem; } }
+  @media only screen and (min-width: 468.8px) {
     .flow-text {
-      font-size: 1.12rem; } }
+      font-size: 1.296rem; } }
   @media only screen and (min-width: 108.8px) {
     .flow-text {
-      line-height: 1.68rem; } }
-  @media only screen and (min-width: 616px) {
+      line-height: 1.216rem; } }
+  @media only screen and (min-width: 496px) {
     .flow-text {
-      font-size: 1.15rem; } }
+      font-size: 1.32rem; } }
   @media only screen and (min-width: 136px) {
     .flow-text {
-      line-height: 1.75rem; } }
-  @media only screen and (min-width: 643.2px) {
+      line-height: 1.32rem; } }
+  @media only screen and (min-width: 523.2px) {
     .flow-text {
-      font-size: 1.18rem; } }
+      font-size: 1.344rem; } }
   @media only screen and (min-width: 163.2px) {
     .flow-text {
-      line-height: 1.82rem; } }
-  @media only screen and (min-width: 670.4px) {
+      line-height: 1.424rem; } }
+  @media only screen and (min-width: 550.4px) {
     .flow-text {
-      font-size: 1.21rem; } }
+      font-size: 1.368rem; } }
   @media only screen and (min-width: 190.4px) {
     .flow-text {
-      line-height: 1.89rem; } }
-  @media only screen and (min-width: 697.6px) {
+      line-height: 1.528rem; } }
+  @media only screen and (min-width: 577.6px) {
     .flow-text {
-      font-size: 1.24rem; } }
+      font-size: 1.392rem; } }
   @media only screen and (min-width: 217.6px) {
     .flow-text {
-      line-height: 1.96rem; } }
-  @media only screen and (min-width: 724.8px) {
+      line-height: 1.632rem; } }
+  @media only screen and (min-width: 604.8px) {
     .flow-text {
-      font-size: 1.27rem; } }
+      font-size: 1.416rem; } }
   @media only screen and (min-width: 244.8px) {
     .flow-text {
-      line-height: 2.03rem; } }
-  @media only screen and (min-width: 752px) {
+      line-height: 1.736rem; } }
+  @media only screen and (min-width: 632px) {
     .flow-text {
-      font-size: 1.3rem; } }
+      font-size: 1.44rem; } }
   @media only screen and (min-width: 272px) {
     .flow-text {
-      line-height: 2.1rem; } }
-  @media only screen and (min-width: 779.2px) {
+      line-height: 1.84rem; } }
+  @media only screen and (min-width: 659.2px) {
     .flow-text {
-      font-size: 1.33rem; } }
+      font-size: 1.464rem; } }
   @media only screen and (min-width: 299.2px) {
     .flow-text {
-      line-height: 2.17rem; } }
-  @media only screen and (min-width: 806.4px) {
+      line-height: 1.944rem; } }
+  @media only screen and (min-width: 686.4px) {
     .flow-text {
-      font-size: 1.36rem; } }
+      font-size: 1.488rem; } }
   @media only screen and (min-width: 326.4px) {
     .flow-text {
-      line-height: 2.24rem; } }
-  @media only screen and (min-width: 833.6px) {
+      line-height: 2.048rem; } }
+  @media only screen and (min-width: 713.6px) {
     .flow-text {
-      font-size: 1.39rem; } }
+      font-size: 1.512rem; } }
   @media only screen and (min-width: 353.6px) {
     .flow-text {
-      line-height: 2.31rem; } }
-  @media only screen and (min-width: 860.8px) {
+      line-height: 2.152rem; } }
+  @media only screen and (min-width: 740.8px) {
     .flow-text {
-      font-size: 1.42rem; } }
+      font-size: 1.536rem; } }
   @media only screen and (min-width: 380.8px) {
     .flow-text {
-      line-height: 2.38rem; } }
-  @media only screen and (min-width: 888px) {
+      line-height: 2.256rem; } }
+  @media only screen and (min-width: 768px) {
     .flow-text {
-      font-size: 1.45rem; } }
+      font-size: 1.56rem; } }
   @media only screen and (min-width: 408px) {
     .flow-text {
-      line-height: 2.45rem; } }
-  @media only screen and (min-width: 915.2px) {
+      line-height: 2.36rem; } }
+  @media only screen and (min-width: 795.2px) {
     .flow-text {
-      font-size: 1.48rem; } }
+      font-size: 1.584rem; } }
   @media only screen and (min-width: 435.2px) {
     .flow-text {
-      line-height: 2.52rem; } }
-  @media only screen and (min-width: 942.4px) {
+      line-height: 2.464rem; } }
+  @media only screen and (min-width: 822.4px) {
     .flow-text {
-      font-size: 1.51rem; } }
+      font-size: 1.608rem; } }
   @media only screen and (min-width: 462.4px) {
     .flow-text {
-      line-height: 2.59rem; } }
-  @media only screen and (min-width: 969.6px) {
+      line-height: 2.568rem; } }
+  @media only screen and (min-width: 849.6px) {
     .flow-text {
-      font-size: 1.54rem; } }
+      font-size: 1.632rem; } }
   @media only screen and (min-width: 489.6px) {
     .flow-text {
-      line-height: 2.66rem; } }
-  @media only screen and (min-width: 996.8px) {
+      line-height: 2.672rem; } }
+  @media only screen and (min-width: 876.8px) {
     .flow-text {
-      font-size: 1.57rem; } }
+      font-size: 1.656rem; } }
   @media only screen and (min-width: 516.8px) {
     .flow-text {
-      line-height: 2.73rem; } }
-  @media only screen and (min-width: 1024px) {
+      line-height: 2.776rem; } }
+  @media only screen and (min-width: 904px) {
     .flow-text {
-      font-size: 1.6rem; } }
+      font-size: 1.68rem; } }
   @media only screen and (min-width: 544px) {
     .flow-text {
-      line-height: 2.8rem; } }
+      line-height: 2.88rem; } }
 
 .card {
   -webkit-border-radius: 2px;
@@ -4109,19 +4109,20 @@ small {
 #toast-container {
   display: block;
   position: fixed; }
-  @media only screen and (min-width: 0) {
+  @media only screen and (min-width: 0) and (max-width: 768px) {
     #toast-container {
       min-width: 100%;
       bottom: 0%; } }
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    #toast-container {
+      min-width: 30%;
+      left: 5%;
+      bottom: 7%; } }
   @media only screen and (min-width: 768px) {
     #toast-container {
-      min-width: 50%;
-      right: 5%; } }
-  @media only screen and (min-width: 1024px) {
-    #toast-container {
       min-width: 8%;
-      top: 8%;
-      right: 6%; } }
+      top: 10%;
+      right: 7%; } }
 
 .toast {
   margin: 10px auto;
@@ -5046,7 +5047,7 @@ p {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  height: 90%; }
+  height: 80%; }
 
 #front-page-logo {
   display: inline-block;
@@ -5122,13 +5123,27 @@ p {
   text-align: center; }
 
 .icon-holder {
-  display: inline-block;
+  display: block;
   text-align: center;
-  width: 200px;
+  width: 150px;
+  height: 115px;
   float: left;
-  margin: 5px 10px 0px 10px; }
+  margin: 0px 0px 15px 0px; }
   .icon-holder p {
     margin: 0px 0; }
+
+.shadow-demo {
+  width: 125px;
+  height: 125px;
+  margin: 20px auto; }
+  @media only screen and (max-width: 1024px) {
+    .shadow-demo {
+      width: 100px;
+      height: 100px; } }
+  @media only screen and (max-width: 480px) {
+    .shadow-demo {
+      width: 150px;
+      height: 150px; } }
 
 code, pre {
   font-size: 1.1rem; }
