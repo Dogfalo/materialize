@@ -55,6 +55,8 @@ p {
   h4 {
     margin-bottom: 40px;
   }
+  
+  margin-bottom: 25px;
 }
 
 #download-button {
@@ -73,10 +75,12 @@ p {
     margin-bottom:5em;
   }
 
-  p {
-    margin-top: -40px;
+  .promo-caption {
     font-size: 1.7rem;
-    font-weight: 300;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    
   }
 
   i {

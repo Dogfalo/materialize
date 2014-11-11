@@ -4842,6 +4842,9 @@ p {
   pointer-events: none;
 }
 
+#index-banner {
+  margin-bottom: 25px;
+}
 #index-banner .header {
   color: #FFF;
 }
@@ -4864,10 +4867,11 @@ p {
   width: 100%;
   margin-bottom: 5em;
 }
-.promo p {
-  margin-top: -40px;
+.promo .promo-caption {
   font-size: 1.7rem;
-  font-weight: 300;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 .promo i {
   margin-top: -80px;
