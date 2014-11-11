@@ -317,8 +317,8 @@
             <li><a href="#raised">Raised</a></li>
             <li><a href="#floating">Floating</a></li>
             <li><a href="#flat">Flat</a></li>
-            <li><a href="#thick">Thick</a></li>
-            <li><a href="#huge">Huge</a></li>
+            <li><a href="#large">Large</a></li>
+            <li><a href="#disabled">Disabled</a></li>
           </ul>
         </div>
       </div>
@@ -332,16 +332,16 @@
           </div>
           <div class="row">
             <h4 class="header">Raised</h4>
-            <a class="waves-effect waves-light button raised">Stuff</a>
+            <a class="waves-effect waves-light btn">button</a>
             <pre><code class="language-markup col s12">
-&lt;a href="" class="waves-effect button raised">Stuff&lt;/a>
+&lt;a href="" class="waves-effect btn">Stuff&lt;/a>
             </code></pre>
           </div>
         </div>
         <div id="floating" class="scrollspy">
           <div class="row">
             <h4 class="header">Floating</h4>
-            <a class="button floating"><i class="mdi-content-add"></i></a>
+            <a class="btn-floating"><i class="mdi-content-add"></i></a>
             <pre><code class="language-markup col s12">
 &lt;a href="" class="button floating">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
             </code></pre>
@@ -350,30 +350,36 @@
         <div id="flat" class="scrollspy">
           <div class="row">
             <h4 class="header">Flat</h4>
-            <a class="waves-effect waves-button button flat">Button</a>
+            <a class="waves-effect waves-button btn-flat">Button</a>
             <pre><code class="language-markup col s12">
 &lt;a href="" class="waves-effect button flat">Button&lt;/a>
             </code></pre>
           </div>
         </div>
-        <div id="thick" class="scrollspy">
+        <div id="large" class="scrollspy">
           <h3 class="header">Additional Styles</h3>  
           <div class="row">
             <h4 class="header">Thick</h4>
-            <p>This style can be applied to all button types</p>
-            <a class="waves-effect waves-button button raised thick">Button</a>
+            <p>This button has a larger height for buttons that need more attention.</p>
+            <a class="waves-effect waves-light btn-large">Button</a>
             <pre><code class="language-markup col s12">
-&lt;a href="" class="waves-effect button flat">Button&lt;/a>
+&lt;a href="" class="waves-effect btn-large">Button&lt;/a>
             </code></pre>
           </div>
         </div>
-        <div id="huge" class="scrollspy">
+        <div id="disabled" class="scrollspy">
           <div class="row">
-            <h4 class="header">Huge</h4>
+            <h4 class="header">Disabled</h4>
             <p>This style can be applied to all button types</p>
-            <a class="waves-effect waves-button button raised huge">Button</a>
+            <a class="btn-large disabled">Button</a>
+            <a class="btn disabled">Button</a>
+            <a class="btn-flat disabled">Button</a>
+            <a class="btn-floating disabled"><i class="mdi-content-add"></i></a>
             <pre><code class="language-markup col s12">
-&lt;a href="" class="waves-effect button flat">Button&lt;/a>
+  &lt;a class="btn-large disabled">Button&lt;/a>
+  &lt;a class="btn disabled">Button&lt;/a>
+  &lt;a class="btn-flat disabled">Button&lt;/a>
+  &lt;a class="btn-floating disabled">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
             </code></pre>
           </div>
         </div>

@@ -8,26 +8,6 @@
  * https://github.com/fians/Waves/blob/master/LICENSE 
  */
 
-@mixin transition ($transition) {
-    -webkit-transition: $transition;  
-    -moz-transition: $transition; 
-    -o-transition: $transition;
-    transition: $transition;  
-}
-
-@mixin transform($string) {
-    -webkit-transform: $string;
-    -moz-transform: $string;
-    -ms-transform: $string;
-    -o-transform: $string;
-    transform: $string;
-}
-
-@mixin box-shadow($shadow) {
-    -webkit-box-shadow: $shadow;
-    box-shadow: $shadow;
-}
-
 .waves-effect {
     position: relative;
     cursor: pointer;
@@ -38,7 +18,7 @@
     -ms-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    @include transition(all .4s ease-out);
+    // @include transition(all .4s ease-out);
     
     .waves-ripple {
         position: absolute;

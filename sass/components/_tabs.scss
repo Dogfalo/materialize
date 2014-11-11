@@ -4,10 +4,11 @@ ul.tabs {
   background-color: #FFF;
   margin: 0 auto;
   width: 100%;
+  white-space: nowrap;
 
   li.tab {
     @media only screen and (min-width: $large-screen) {
-     max-width: 25%; 
+      max-width: 25%; 
     }
     
     display: block;

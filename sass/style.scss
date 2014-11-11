@@ -64,6 +64,10 @@ p {
   line-height: 70px;
   font-size: 19px;
   font-weight: 500;
+
+  &:hover {
+    background-color: lighten($red, 30%);
+  }
 }
 
 .promo{
