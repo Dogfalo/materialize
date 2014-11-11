@@ -74,15 +74,13 @@ p {
   }
 
   p {
-    margin-top: -40px;
     font-size: 1.7rem;
     font-weight: 300;
   }
 
   i {
     @extend .red-text.lighten-3;
-    margin-top: -80px;
-    font-size: 220px;
+    font-size: 7rem;
     display: block;
   }
 }
@@ -142,12 +140,14 @@ p {
 }
 
 // Icons
-.icon-container .entypo {
+.icon-container i {
   font-size: 3em;
-  
+  display: block;
+  margin-bottom: 10px;
 }
-.icon-container .entypo-social {
-  font-size: 3em;
+.icon-container .icon-preview {
+  height: 120px;
+  text-align: center;
 }
 
 .icon-holder {

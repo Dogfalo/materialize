@@ -78,6 +78,11 @@ $button-width: 120px;
     @include border-radius(50%);
     @extend .z-depth-1;  
     @include transition(.3s);
+
+    i {
+      font-size: 1.6rem;
+      line-height: 40px;
+    }
     
     &:hover {
       @extend .z-depth-2;
