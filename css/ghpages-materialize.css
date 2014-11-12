@@ -6569,7 +6569,6 @@ form p:last-child {
 ***************/
 ul.table-of-contents.fixed {
   position: fixed;
-  top: 48px;
 }
 ul.table-of-contents a {
   color: #757575;
@@ -6823,5 +6822,3 @@ code, pre {
   font-size: 1rem;
   line-height: 1.1rem !important;
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */

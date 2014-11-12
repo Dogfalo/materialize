@@ -29,12 +29,17 @@
     $('.table-of-contents').each(function() {
       var origin = $(this);
       $(window).scroll(function() {
+        var tabs_height = 0;
+        if ($('.tabs-wrapper').length) {
+          tabs_height = $('.tabs-wrapper').height();
+        }
         if (origin.is(":visible")) {
           if(origin.attr('data-origpos') === undefined) {
-            origin.attr('data-origpos', origin.position().top - 48);            
+            origin.attr('data-origpos', origin.position().top - tabs_height);            
           }
           if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
             origin.addClass('fixed');
+            origin.css('top', tabs_height);
           }
           if($(window).scrollTop() < origin.attr('data-origpos')) {
             origin.removeClass('fixed');            
