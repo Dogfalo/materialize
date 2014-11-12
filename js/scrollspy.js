@@ -239,8 +239,8 @@
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
+				$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
 			}
-			$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
 		});
 
 		return selector;
