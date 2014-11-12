@@ -15,6 +15,7 @@ $colors: (
   green: #259b24,
   light-green: #8bc34a,
   lime: #cddc39,
+  yellow: #ffeb3b,
   amber: #ffc107,
   orange: #ff9800,
   deep-orange: #ff5722,
@@ -29,7 +30,7 @@ $colors: (
 
     $i: 1;
     @while $i <= $color-depth {
-      $perc: unquote(6% * $i);
+      $perc: unquote(9% * $i);
       &.lighten-#{$i} {
         background-color: lighten($value, $perc);
       }
