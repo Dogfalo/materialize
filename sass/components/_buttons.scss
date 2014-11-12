@@ -22,6 +22,22 @@ $button-color: $blue;
     color: #9F9F9F;
   }
 }
+// Shared icon styles
+.btn, .btn-floating, .btn-large, .btn-flat {
+  i {
+    font-size: 1.3rem;
+    float: left;
+    line-height: inherit;
+    margin-right: 15px;    
+
+    &.right {
+      float: right;
+      margin-right: 0;
+      margin-left: 15px;
+    }
+  }
+}
+
 
 
 // Raised Button
