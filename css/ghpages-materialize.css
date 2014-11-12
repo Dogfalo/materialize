@@ -6041,15 +6041,14 @@ ul.tabs li.tab {
   background-clip: padding-box;
   line-height: 36px;
   text-transform: uppercase;
-  border: none;
 }
 
-.btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled {
+.btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-floating:disabled {
   background-color: #DFDFDF;
   box-shadow: none;
   color: #9F9F9F;
 }
-.btn.disabled:hover, .disabled.btn-large:hover, .btn-floating.disabled:hover, .btn-large.disabled:hover {
+.btn.disabled:hover, .disabled.btn-large:hover, .btn-floating.disabled:hover, .btn-large.disabled:hover, .btn[disabled]:hover, .btn-large[disabled]:hover, .btn-floating[disabled]:hover {
   background-color: #DFDFDF;
   color: #9F9F9F;
 }
@@ -6570,6 +6569,7 @@ form p:last-child {
 ***************/
 ul.table-of-contents.fixed {
   position: fixed;
+  top: 48px;
 }
 ul.table-of-contents a {
   color: #757575;
@@ -6740,10 +6740,10 @@ p {
 }
 
 .dynamic-color .red, .dynamic-color .pink, .dynamic-color .purple, .dynamic-color .deep-purple, .dynamic-color .indigo, .dynamic-color .blue, .dynamic-color .light-blue, .dynamic-color .cyan, .dynamic-color .teal, .dynamic-color .green, .dynamic-color .light-green, .dynamic-color .lime, .dynamic-color .yellow, .dynamic-color .amber, .dynamic-color .orange, .dynamic-color .deep-orange, .dynamic-color .brown, .dynamic-color .grey, .dynamic-color .blue-gray {
-  height: 55px;
+  height: 40px;
   width: 100%;
   padding: 0 15px;
-  line-height: 55px;
+  line-height: 40px;
   font-size: 12px;
   display: block;
   -webkit-box-sizing: border-box;
@@ -6823,3 +6823,5 @@ code, pre {
   font-size: 1rem;
   line-height: 1.1rem !important;
 }
+
+/*# sourceMappingURL=ghpages-materialize.css.map */
