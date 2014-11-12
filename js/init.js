@@ -52,6 +52,7 @@
     else {
       $('ul.tabs').hide();
     }
+    $('.tab-demo').show().tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.tooltipped').tooltip();

@@ -14,7 +14,6 @@
       $panel_headers.each(function () {
         $(this).click(function () {
           $(this).parent().toggleClass('active');
-          console.log($(this).siblings('.collapsible-body'));
           $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
           $panel_headers.not($(this)).parent().removeClass('active');
           $panel_headers.not($(this)).parent().children('.collapsible-body').slideUp({ duration: 300, easing: "easeOutCubic", queue: false});

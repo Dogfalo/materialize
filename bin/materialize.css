@@ -6067,6 +6067,18 @@ ul.tabs .indicator {
   color: #9F9F9F;
 }
 
+.btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
+  font-size: 1.3rem;
+  float: left;
+  line-height: inherit;
+  margin-right: 15px;
+}
+.btn i.right, .btn-large i.right, .btn-floating i.right, .btn-large i.right, .btn-flat i.right {
+  float: right;
+  margin-right: 0;
+  margin-left: 15px;
+}
+
 .btn, .btn-large {
   text-decoration: none;
   color: #FFFFFF;
@@ -6638,5 +6650,3 @@ ul.table-of-contents a.active {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-
-/*# sourceMappingURL=materialize.css.map */
