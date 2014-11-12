@@ -175,6 +175,20 @@ p {
   }
 }
 
+// tabs 
+.tabs-wrapper {
+  position: relative;
+  height: 48px;
+
+  .row.fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+}
+
+
 // Shadow demo styling
 .shadow-demo {
   width: 125px;
