@@ -6641,6 +6641,10 @@ body {
   background-color: #fcfcfc;
 }
 
+body.parallax-demo {
+  height: 100%;
+}
+
 .header {
   font-weight: 300;
 }
@@ -6815,6 +6819,10 @@ p {
   }
 }
 
+.parallax-container {
+  height: 70%;
+}
+
 code, pre {
   font-size: 1.1rem;
 }
@@ -6823,5 +6831,3 @@ code, pre {
   font-size: 1rem;
   line-height: 1.1rem !important;
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */

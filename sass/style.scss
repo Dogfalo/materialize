@@ -1,6 +1,9 @@
 body {
   background-color: #fcfcfc;
 }
+body.parallax-demo {
+  height: 100%;
+}
 
 .header {
   @extend .red-text.lighten-2;
@@ -207,6 +210,12 @@ p {
     height: 150px;
   }
 }
+
+// parallax demo
+.parallax-container {
+  height: 70%;
+}
+
 
 // Getting Started Styling
 
