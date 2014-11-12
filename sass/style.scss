@@ -179,6 +179,7 @@ p {
 .tabs-wrapper {
   position: relative;
   height: 48px;
+  @extend .hide-on-small-only;
 
   .row.fixed {
     position: fixed;

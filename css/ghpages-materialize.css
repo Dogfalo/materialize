@@ -466,7 +466,7 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
-  .hide-on-small-only, .hide-on-small-and-down {
+  .hide-on-small-only, .tabs-wrapper, .hide-on-small-and-down {
     display: none !important;
   }
 }
