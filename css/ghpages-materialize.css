@@ -6041,6 +6041,7 @@ ul.tabs li.tab {
   background-clip: padding-box;
   line-height: 36px;
   text-transform: uppercase;
+  border: none;
 }
 
 .btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled {
