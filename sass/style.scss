@@ -68,7 +68,7 @@ p {
   font-weight: 500;
 
   &:hover {
-    background-color: lighten($red, 30%);
+    background-color: lighten(map-get($colors, red), 30%);
   }
 }
 
@@ -194,9 +194,7 @@ p {
 }
 
 // Getting Started Styling
-.button-icon {
-  font-size: 1.5rem;
-}
+
 
 // Prism Styling
 code, pre {
