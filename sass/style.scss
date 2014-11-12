@@ -66,6 +66,10 @@ p {
   line-height: 70px;
   font-size: 19px;
   font-weight: 500;
+
+  &:hover {
+    background-color: lighten($red, 30%);
+  }
 }
 
 .promo{
@@ -85,8 +89,7 @@ p {
 
   i {
     @extend .red-text.lighten-3;
-    margin-top: -80px;
-    font-size: 220px;
+    font-size: 7rem;
     display: block;
   }
 }
@@ -146,12 +149,14 @@ p {
 }
 
 // Icons
-.icon-container .entypo {
+.icon-container i {
   font-size: 3em;
-  
+  display: block;
+  margin-bottom: 10px;
 }
-.icon-container .entypo-social {
-  font-size: 3em;
+.icon-container .icon-preview {
+  height: 120px;
+  text-align: center;
 }
 
 .icon-holder {
