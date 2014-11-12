@@ -20,8 +20,8 @@ input{
 }
 
 input:focus {
-  border-bottom: 1px solid map-get($colors, cyan); 
-  @include box-shadow(0 1px 0 0 map-get($colors, cyan));
+  border-bottom: 1px solid map-get($colors, "cyan"); 
+  @include box-shadow(0 1px 0 0 map-get($colors, "cyan"));
 }
 
 /***************

@@ -1,5 +1,5 @@
 $button-height: 36px;
-$button-color: map-get($colors, blue);
+$button-color: map-get($colors, "blue");
 
 // shared styles
 .btn, .btn-flat {
