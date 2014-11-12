@@ -10,6 +10,7 @@ $button-color: map-get($colors, "blue");
   @include border-radius(2px);
   line-height: 36px;
   text-transform: uppercase;
+  border:none;
 }
 // Disabled shared style
 .btn.disabled, .btn-floating.disabled, .btn-large.disabled {
