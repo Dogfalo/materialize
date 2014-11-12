@@ -177,7 +177,6 @@
 			// Smooth scroll to section
 		  $('a[href^=#' + $(element).attr('id') + ']').click(function(e) {
 		    e.preventDefault();
-		    console.log("click");
 		    var offset = $(this.hash).offset().top + 1;
 		    $('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
 		  });		

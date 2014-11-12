@@ -80,8 +80,6 @@
           newHeight = windowHeight * 0.9;
         }
 
-        console.log(originalWidth, originalHeight, ratio, newHeight, newWidth);
-
         // Reposition Element AND Animate image + set z-index
         origin.css('left', 0)
           .css('top', 0)
