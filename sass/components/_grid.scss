@@ -2,10 +2,11 @@
   padding: 0 $gutter-width;
   margin: 0 auto;
   max-width: 1280px;
+  width: 90%;
 }
-@media #{$small-and-up} {
+@media #{$medium-and-up} {
   .container {
-    width: 90%;
+    width: 85%;
   }
 }
 @media #{$large-and-up} {
@@ -44,27 +45,23 @@
     @include box-sizing(border-box);
     padding: 0 $gutter-width / 2;
 
-    @media #{$small-and-up} {
-
-      $i: 1;
-      @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
-        &.s#{$i} { 
-          width: $perc; 
-          margin-left: 0;
-        }
-        $i: $i + 1;
-      } 
-      $i: 1;
-      @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
-        &.offset-s#{$i} { 
-          margin-left: $perc; 
-        }
-        $i: $i + 1;
-      } 
-
-    }
+    $i: 1;
+    @while $i <= $num-cols {
+      $perc: unquote((100 / ($num-cols / $i)) + "%");
+      &.s#{$i} { 
+        width: $perc; 
+        margin-left: 0;
+      }
+      $i: $i + 1;
+    } 
+    $i: 1;
+    @while $i <= $num-cols {
+      $perc: unquote((100 / ($num-cols / $i)) + "%");
+      &.offset-s#{$i} { 
+        margin-left: $perc; 
+      }
+      $i: $i + 1;
+    } 
 
     @media #{$medium-and-up} {
 

@@ -46,7 +46,7 @@
     // PLugin initialization
     $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown();
-    if (window_width > 480) {
+    if (window_width > 600) {
       $('ul.tabs').tabs();
     }
     else {

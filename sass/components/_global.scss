@@ -1,17 +1,15 @@
 @charset "UTF-8";
 
 // Media Query Ranges
-$small-screen: 480px;
-$medium-screen: 768px;
-$large-screen: 1024px;
+$small-screen: 600px;
+$medium-screen: 992px;
+$large-screen: 1200px;
 
-$small-and-up: "only screen and (min-width : 0)";
 $medium-and-up: "only screen and (min-width : #{$small-screen})";
 $large-and-up: "only screen and (min-width : #{$medium-screen})";
 
 $small-and-down: "only screen and (max-width : #{$small-screen})";
 $medium-and-down: "only screen and (max-width : #{$medium-screen})";
-$large-and-down: "only screen and (max-width : #{$large-screen})";
 
 // Grid Variables
 $num-cols: 12;
@@ -81,47 +79,36 @@ a {
 
 
 // Browser Size Dependent Visibility
-.show-on-med-and-below {
-  @media only screen and (min-width: $medium-screen) {
+.hide-on-small-only, .hide-on-small-and-down {
+  @media #{$small-and-down} {
     display: none !important;
   } 
 }
 
-.show-on-lg-and-below {
-  @media only screen and (min-width: $large-screen) {
+.hide-on-med-and-down {
+  @media #{$medium-and-down} {
     display: none !important;
   } 
 }
 
-.hide-on-med-and-below {
-  @media only screen and (max-width: $medium-screen) {
+.hide-on-med-and-up {
+  @media #{$medium-and-up} {
     display: none !important;
   } 
 }
 
-.hide-on-small-and-below {
-  @media only screen and (max-width: $small-screen) {
-    display: none !important;
-  }
-}
-
-show-on-small-only {
-  @media only screen and (min-width: $small-screen) {
+.hide-on-med-only {
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
     display: none !important; 
   }
 }
 
-show-on-med-only {
-  @media only screen and (min-width: $medium-screen) and (max-width: $small-screen) {
+.hide-on-large-only {
+  @media #{$large-and-up} {
     display: none !important; 
   }
 }
 
-show-on-lg-only {
-  @media only screen and (max-width: $large-screen) {
-    display: none !important; 
-  }
-}
 
 // Footer
 #footer {

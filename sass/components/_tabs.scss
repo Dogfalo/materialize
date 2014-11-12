@@ -7,7 +7,7 @@ ul.tabs {
   white-space: nowrap;
 
   li.tab {
-    @media only screen and (min-width: $large-screen) {
+    @media #{$large-and-up} {
       max-width: 25%; 
     }
     
@@ -42,6 +42,4 @@ ul.tabs {
   }
 }
 
-@media #{$small-and-up} {
-  ul.tabs li.tab { padding: 0; }
-}
+ul.tabs li.tab { padding: 0; }

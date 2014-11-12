@@ -3,6 +3,8 @@ nav {
   @extend .z-depth-1;
   @extend .red.lighten-2;
   width: 100%;
+  height: 56px;
+  line-height: 56px;
 
   .nav-wrapper {
     position: relative;
@@ -14,9 +16,14 @@ nav {
   a.button-collapse {
     float: left;
     font-size: 2.7rem;
-    @extend .show-on-med-and-below;
+    @extend .hide-on-large-only;
     position: relative;
     z-index: 1;
+
+    i {
+      height: 56px;
+      line-height: 56px;
+    }
   }
 
   .brand-logo {
@@ -65,16 +72,8 @@ nav {
     }
   }
 }
-
-
-@media #{$small-and-up} {
-  nav, a.button-collapse i {
-    height: 56px;
-    line-height: 56px;
-  }
-}
 @media #{$medium-and-up} {
-  nav, a.button-collapse i {
+  nav, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
   }

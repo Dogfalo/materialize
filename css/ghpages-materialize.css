@@ -465,44 +465,32 @@ a {
   text-decoration: none;
 }
 
-@media only screen and (min-width: 768px) {
-  .show-on-med-and-below, nav a.button-collapse {
+@media only screen and (max-width: 600px) {
+  .hide-on-small-only, .hide-on-small-and-down {
     display: none !important;
   }
 }
 
-@media only screen and (min-width: 1024px) {
-  .show-on-lg-and-below {
+@media only screen and (max-width: 992px) {
+  .hide-on-med-and-down {
     display: none !important;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .hide-on-med-and-below {
+@media only screen and (min-width: 600px) {
+  .hide-on-med-and-up {
     display: none !important;
   }
 }
 
-@media only screen and (max-width: 480px) {
-  .hide-on-small-and-below {
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .hide-on-med-only {
     display: none !important;
   }
 }
 
-@media only screen and (min-width: 480px) {
-  show-on-small-only {
-    display: none !important;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 480px) {
-  show-on-med-only {
-    display: none !important;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  show-on-lg-only {
+@media only screen and (min-width: 992px) {
+  .hide-on-large-only, nav a.button-collapse {
     display: none !important;
   }
 }
@@ -4803,14 +4791,15 @@ a {
   padding: 0 1rem;
   margin: 0 auto;
   max-width: 1280px;
+  width: 90%;
 }
 
-@media only screen and (min-width: 0) {
+@media only screen and (min-width: 600px) {
   .container {
-    width: 90%;
+    width: 85%;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .container {
     width: 70%;
   }
@@ -4846,93 +4835,91 @@ a {
   box-sizing: border-box;
   padding: 0 0.5rem;
 }
-@media only screen and (min-width: 0) {
-  .row .col.s1 {
-    width: 8.33333%;
-    margin-left: 0;
-  }
-  .row .col.s2 {
-    width: 16.66667%;
-    margin-left: 0;
-  }
-  .row .col.s3 {
-    width: 25%;
-    margin-left: 0;
-  }
-  .row .col.s4 {
-    width: 33.33333%;
-    margin-left: 0;
-  }
-  .row .col.s5 {
-    width: 41.66667%;
-    margin-left: 0;
-  }
-  .row .col.s6 {
-    width: 50%;
-    margin-left: 0;
-  }
-  .row .col.s7 {
-    width: 58.33333%;
-    margin-left: 0;
-  }
-  .row .col.s8 {
-    width: 66.66667%;
-    margin-left: 0;
-  }
-  .row .col.s9 {
-    width: 75%;
-    margin-left: 0;
-  }
-  .row .col.s10 {
-    width: 83.33333%;
-    margin-left: 0;
-  }
-  .row .col.s11 {
-    width: 91.66667%;
-    margin-left: 0;
-  }
-  .row .col.s12 {
-    width: 100%;
-    margin-left: 0;
-  }
-  .row .col.offset-s1 {
-    margin-left: 8.33333%;
-  }
-  .row .col.offset-s2 {
-    margin-left: 16.66667%;
-  }
-  .row .col.offset-s3 {
-    margin-left: 25%;
-  }
-  .row .col.offset-s4 {
-    margin-left: 33.33333%;
-  }
-  .row .col.offset-s5 {
-    margin-left: 41.66667%;
-  }
-  .row .col.offset-s6 {
-    margin-left: 50%;
-  }
-  .row .col.offset-s7 {
-    margin-left: 58.33333%;
-  }
-  .row .col.offset-s8 {
-    margin-left: 66.66667%;
-  }
-  .row .col.offset-s9 {
-    margin-left: 75%;
-  }
-  .row .col.offset-s10 {
-    margin-left: 83.33333%;
-  }
-  .row .col.offset-s11 {
-    margin-left: 91.66667%;
-  }
-  .row .col.offset-s12 {
-    margin-left: 100%;
-  }
+.row .col.s1 {
+  width: 8.33333%;
+  margin-left: 0;
 }
-@media only screen and (min-width: 480px) {
+.row .col.s2 {
+  width: 16.66667%;
+  margin-left: 0;
+}
+.row .col.s3 {
+  width: 25%;
+  margin-left: 0;
+}
+.row .col.s4 {
+  width: 33.33333%;
+  margin-left: 0;
+}
+.row .col.s5 {
+  width: 41.66667%;
+  margin-left: 0;
+}
+.row .col.s6 {
+  width: 50%;
+  margin-left: 0;
+}
+.row .col.s7 {
+  width: 58.33333%;
+  margin-left: 0;
+}
+.row .col.s8 {
+  width: 66.66667%;
+  margin-left: 0;
+}
+.row .col.s9 {
+  width: 75%;
+  margin-left: 0;
+}
+.row .col.s10 {
+  width: 83.33333%;
+  margin-left: 0;
+}
+.row .col.s11 {
+  width: 91.66667%;
+  margin-left: 0;
+}
+.row .col.s12 {
+  width: 100%;
+  margin-left: 0;
+}
+.row .col.offset-s1 {
+  margin-left: 8.33333%;
+}
+.row .col.offset-s2 {
+  margin-left: 16.66667%;
+}
+.row .col.offset-s3 {
+  margin-left: 25%;
+}
+.row .col.offset-s4 {
+  margin-left: 33.33333%;
+}
+.row .col.offset-s5 {
+  margin-left: 41.66667%;
+}
+.row .col.offset-s6 {
+  margin-left: 50%;
+}
+.row .col.offset-s7 {
+  margin-left: 58.33333%;
+}
+.row .col.offset-s8 {
+  margin-left: 66.66667%;
+}
+.row .col.offset-s9 {
+  margin-left: 75%;
+}
+.row .col.offset-s10 {
+  margin-left: 83.33333%;
+}
+.row .col.offset-s11 {
+  margin-left: 91.66667%;
+}
+.row .col.offset-s12 {
+  margin-left: 100%;
+}
+@media only screen and (min-width: 600px) {
   .row .col.m1 {
     width: 8.33333%;
     margin-left: 0;
@@ -5018,7 +5005,7 @@ a {
     margin-left: 100%;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .row .col.l1 {
     width: 8.33333%;
     margin-left: 0;
@@ -5108,6 +5095,8 @@ a {
 nav {
   color: #fff;
   width: 100%;
+  height: 56px;
+  line-height: 56px;
 }
 nav .nav-wrapper {
   position: relative;
@@ -5122,6 +5111,10 @@ nav a.button-collapse {
   position: relative;
   z-index: 1;
 }
+nav a.button-collapse i {
+  height: 56px;
+  line-height: 56px;
+}
 nav .brand-logo {
   position: absolute;
   color: #fff;
@@ -5129,7 +5122,7 @@ nav .brand-logo {
   font-size: 2.1rem;
   padding: 0;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   nav .brand-logo {
     width: 100%;
     text-align: center;
@@ -5163,14 +5156,8 @@ nav ul.left {
   float: left;
 }
 
-@media only screen and (min-width: 0) {
-  nav, a.button-collapse i {
-    height: 56px;
-    line-height: 56px;
-  }
-}
-@media only screen and (min-width: 480px) {
-  nav, a.button-collapse i {
+@media only screen and (min-width: 600px) {
+  nav, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
   }
@@ -5215,12 +5202,12 @@ html {
     font-size: 14px;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   html {
     font-size: 14.5px;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1200px) {
   html {
     font-size: 15px;
   }
@@ -5303,202 +5290,202 @@ small {
     line-height: 0.8rem;
   }
 }
-@media only screen and (min-width: 387.2px) {
+@media only screen and (min-width: 390px) {
   .flow-text {
     font-size: 1.224rem;
   }
 }
-@media only screen and (min-width: 27.2px) {
+@media only screen and (min-width: 30px) {
   .flow-text {
     line-height: 0.904rem;
   }
 }
-@media only screen and (min-width: 414.4px) {
+@media only screen and (min-width: 420px) {
   .flow-text {
     font-size: 1.248rem;
   }
 }
-@media only screen and (min-width: 54.4px) {
+@media only screen and (min-width: 60px) {
   .flow-text {
     line-height: 1.008rem;
   }
 }
-@media only screen and (min-width: 441.6px) {
+@media only screen and (min-width: 450px) {
   .flow-text {
     font-size: 1.272rem;
   }
 }
-@media only screen and (min-width: 81.6px) {
+@media only screen and (min-width: 90px) {
   .flow-text {
     line-height: 1.112rem;
   }
 }
-@media only screen and (min-width: 468.8px) {
+@media only screen and (min-width: 480px) {
   .flow-text {
     font-size: 1.296rem;
   }
 }
-@media only screen and (min-width: 108.8px) {
+@media only screen and (min-width: 120px) {
   .flow-text {
     line-height: 1.216rem;
   }
 }
-@media only screen and (min-width: 496px) {
+@media only screen and (min-width: 510px) {
   .flow-text {
     font-size: 1.32rem;
   }
 }
-@media only screen and (min-width: 136px) {
+@media only screen and (min-width: 150px) {
   .flow-text {
     line-height: 1.32rem;
   }
 }
-@media only screen and (min-width: 523.2px) {
+@media only screen and (min-width: 540px) {
   .flow-text {
     font-size: 1.344rem;
   }
 }
-@media only screen and (min-width: 163.2px) {
+@media only screen and (min-width: 180px) {
   .flow-text {
     line-height: 1.424rem;
   }
 }
-@media only screen and (min-width: 550.4px) {
+@media only screen and (min-width: 570px) {
   .flow-text {
     font-size: 1.368rem;
   }
 }
-@media only screen and (min-width: 190.4px) {
+@media only screen and (min-width: 210px) {
   .flow-text {
     line-height: 1.528rem;
   }
 }
-@media only screen and (min-width: 577.6px) {
+@media only screen and (min-width: 600px) {
   .flow-text {
     font-size: 1.392rem;
   }
 }
-@media only screen and (min-width: 217.6px) {
+@media only screen and (min-width: 240px) {
   .flow-text {
     line-height: 1.632rem;
   }
 }
-@media only screen and (min-width: 604.8px) {
+@media only screen and (min-width: 630px) {
   .flow-text {
     font-size: 1.416rem;
   }
 }
-@media only screen and (min-width: 244.8px) {
+@media only screen and (min-width: 270px) {
   .flow-text {
     line-height: 1.736rem;
   }
 }
-@media only screen and (min-width: 632px) {
+@media only screen and (min-width: 660px) {
   .flow-text {
     font-size: 1.44rem;
   }
 }
-@media only screen and (min-width: 272px) {
+@media only screen and (min-width: 300px) {
   .flow-text {
     line-height: 1.84rem;
   }
 }
-@media only screen and (min-width: 659.2px) {
+@media only screen and (min-width: 690px) {
   .flow-text {
     font-size: 1.464rem;
   }
 }
-@media only screen and (min-width: 299.2px) {
+@media only screen and (min-width: 330px) {
   .flow-text {
     line-height: 1.944rem;
   }
 }
-@media only screen and (min-width: 686.4px) {
+@media only screen and (min-width: 720px) {
   .flow-text {
     font-size: 1.488rem;
   }
 }
-@media only screen and (min-width: 326.4px) {
+@media only screen and (min-width: 360px) {
   .flow-text {
     line-height: 2.048rem;
   }
 }
-@media only screen and (min-width: 713.6px) {
+@media only screen and (min-width: 750px) {
   .flow-text {
     font-size: 1.512rem;
   }
 }
-@media only screen and (min-width: 353.6px) {
+@media only screen and (min-width: 390px) {
   .flow-text {
     line-height: 2.152rem;
   }
 }
-@media only screen and (min-width: 740.8px) {
+@media only screen and (min-width: 780px) {
   .flow-text {
     font-size: 1.536rem;
   }
 }
-@media only screen and (min-width: 380.8px) {
+@media only screen and (min-width: 420px) {
   .flow-text {
     line-height: 2.256rem;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 810px) {
   .flow-text {
     font-size: 1.56rem;
   }
 }
-@media only screen and (min-width: 408px) {
+@media only screen and (min-width: 450px) {
   .flow-text {
     line-height: 2.36rem;
   }
 }
-@media only screen and (min-width: 795.2px) {
+@media only screen and (min-width: 840px) {
   .flow-text {
     font-size: 1.584rem;
   }
 }
-@media only screen and (min-width: 435.2px) {
+@media only screen and (min-width: 480px) {
   .flow-text {
     line-height: 2.464rem;
   }
 }
-@media only screen and (min-width: 822.4px) {
+@media only screen and (min-width: 870px) {
   .flow-text {
     font-size: 1.608rem;
   }
 }
-@media only screen and (min-width: 462.4px) {
+@media only screen and (min-width: 510px) {
   .flow-text {
     line-height: 2.568rem;
   }
 }
-@media only screen and (min-width: 849.6px) {
+@media only screen and (min-width: 900px) {
   .flow-text {
     font-size: 1.632rem;
   }
 }
-@media only screen and (min-width: 489.6px) {
+@media only screen and (min-width: 540px) {
   .flow-text {
     line-height: 2.672rem;
   }
 }
-@media only screen and (min-width: 876.8px) {
+@media only screen and (min-width: 930px) {
   .flow-text {
     font-size: 1.656rem;
   }
 }
-@media only screen and (min-width: 516.8px) {
+@media only screen and (min-width: 570px) {
   .flow-text {
     line-height: 2.776rem;
   }
 }
-@media only screen and (min-width: 904px) {
+@media only screen and (min-width: 960px) {
   .flow-text {
     font-size: 1.68rem;
   }
 }
-@media only screen and (min-width: 544px) {
+@media only screen and (min-width: 600px) {
   .flow-text {
     line-height: 2.88rem;
   }
@@ -5569,20 +5556,20 @@ small {
   display: block;
   position: fixed;
 }
-@media only screen and (min-width: 0) and (max-width: 768px) {
+@media only screen and (min-width: 0) and (max-width: 992px) {
   #toast-container {
     min-width: 100%;
     bottom: 0%;
   }
 }
-@media only screen and (min-width: 480px) and (max-width: 768px) {
+@media only screen and (min-width: 600px) and (max-width: 992px) {
   #toast-container {
     min-width: 30%;
     left: 5%;
     bottom: 7%;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   #toast-container {
     min-width: 8%;
     top: 10%;
@@ -5635,7 +5622,7 @@ ul.tabs li.tab {
   letter-spacing: .8px;
   width: 15%;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 992px) {
   ul.tabs li.tab {
     max-width: 25%;
   }
@@ -5657,11 +5644,10 @@ ul.tabs .indicator {
   height: 2px;
 }
 
-@media only screen and (min-width: 0) {
-  ul.tabs li.tab {
-    padding: 0;
-  }
+ul.tabs li.tab {
+  padding: 0;
 }
+
 /*! Hint.css - v1.3.3 - 2014-07-06
 * http://kushagragour.in/lab/hint/
 * Copyright (c) 2014 Kushagra Gour; Licensed MIT */
@@ -6147,7 +6133,7 @@ ul.tabs .indicator {
   color: #212121;
   padding: 1rem 1rem;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1200px) {
   .dropdown-content li:hover {
     background-color: rgba(0, 0, 0, 0.07);
   }
@@ -6597,7 +6583,7 @@ ul.table-of-contents a.active {
   border-right: 4px solid #ea4a4f;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   ul.side-nav {
     position: fixed;
     width: 240px;
@@ -6804,13 +6790,13 @@ p {
   height: 125px;
   margin: 20px auto;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
   .shadow-demo {
     width: 100px;
     height: 100px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
   .shadow-demo {
     width: 150px;
     height: 150px;
