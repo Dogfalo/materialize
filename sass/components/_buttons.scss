@@ -67,7 +67,7 @@ $button-color: map-get($colors, "blue");
   height: 40px;
   line-height: 40px;
   padding: 0;
-  background-color: map-get($colors, blue);
+  background-color: map-get($colors, "blue");
   @include border-radius(50%);
   @extend .z-depth-1;  
   @include transition(.3s);
@@ -82,7 +82,7 @@ $button-color: map-get($colors, "blue");
   }
   
   &:hover {
-    @extend .z-depth-2;
+    @extend .z-depth-1-half;
   }
 }
 
