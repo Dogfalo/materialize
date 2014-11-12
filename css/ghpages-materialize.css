@@ -6708,7 +6708,7 @@ p {
 }
 .promo img {
   width: 100%;
-  margin-bottom: 5em;
+  margin-bottom: 1.5rem;
 }
 .promo i {
   font-size: 7rem;
@@ -6823,3 +6823,5 @@ code, pre {
   font-size: 1rem;
   line-height: 1.1rem !important;
 }
+
+/*# sourceMappingURL=ghpages-materialize.css.map */
