@@ -72,27 +72,30 @@ p {
   }
 }
 
+
+
 .promo{
   padding: 0 20px;
   img {
     width:100%;
     margin-bottom:5em;
   }
-
-  .promo-caption {
-    font-size: 1.7rem;
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 0px;
-    
-  }
-
+  
   i {
     @extend .red-text.lighten-3;
     font-size: 7rem;
     display: block;
   }
 }
+
+.promo-caption {
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 0px;
+
+}
+
 #front-page-nav {
   background-color: #FFF;
   position: relative;
@@ -190,6 +193,10 @@ p {
   }
 }
 
+// Getting Started Styling
+.button-icon {
+  font-size: 1.5rem;
+}
 
 // Prism Styling
 code, pre {

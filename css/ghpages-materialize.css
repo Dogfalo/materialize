@@ -6712,15 +6712,16 @@ p {
   width: 100%;
   margin-bottom: 5em;
 }
-.promo .promo-caption {
+.promo i {
+  font-size: 7rem;
+  display: block;
+}
+
+.promo-caption {
   font-size: 1.7rem;
   font-weight: 400;
   margin-top: 5px;
   margin-bottom: 0px;
-}
-.promo i {
-  font-size: 7rem;
-  display: block;
 }
 
 #front-page-nav {
@@ -6803,6 +6804,10 @@ p {
     width: 150px;
     height: 150px;
   }
+}
+
+.button-icon {
+  font-size: 1.2rem;
 }
 
 code, pre {
