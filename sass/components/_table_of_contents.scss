@@ -1,5 +1,5 @@
 /***************
-    Nav List 
+    Nav List
 ***************/
 ul.table-of-contents {
   &.fixed {
@@ -10,15 +10,15 @@ ul.table-of-contents {
   }
   a {
     color: #757575;
-    
+
     &:hover {
       color: lighten(#757575, 20%);
       padding-right: 10px;
-      border-right: 1px solid lighten(map-get($colors, "red"),10%);
+      border-right: 1px solid lighten(color("red"),10%);
     }
     &.active {
       padding-right: 10px;
-      border-right: 4px solid lighten(map-get($colors, "red"),10%);
+      border-right: 4px solid lighten(color("red"),10%);
     }
   }
 }

@@ -78,7 +78,7 @@ p {
   font-weight: 500;
 
   &:hover {
-    background-color: lighten(map-get($colors, "red"), 30%);
+    background-color: lighten(color("red"), 30%);
   }
 }
 

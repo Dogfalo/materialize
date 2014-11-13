@@ -1,5 +1,5 @@
 $button-height: 36px;
-$button-color: map-get($colors, "blue");
+$button-color: color("blue");
 
 // shared styles
 .btn, .btn-flat {
@@ -67,7 +67,7 @@ $button-color: map-get($colors, "blue");
   height: 40px;
   line-height: 40px;
   padding: 0;
-  background-color: map-get($colors, "blue");
+  background-color: color("blue");
   @include border-radius(50%);
   @extend .z-depth-1;  
   @include transition(.3s);
