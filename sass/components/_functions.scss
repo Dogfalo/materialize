@@ -1,0 +1,10 @@
+// usage: color("name_of_color")
+// to avoid to repeating map-get($colors, ...)
+
+@function color($name) {
+  @if map-has-key($colors, $name) {
+    @return map-get($colors, $name);
+  }
+  @warn "Unknow `#{name}` in $colors.";
+  @return null;
+}
