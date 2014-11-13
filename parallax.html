@@ -1,27 +1,97 @@
-<!--  Parallax Section  -->
-  <div id="tab5" class="parallax-container">
-    <div class="parallax"><img src="https://unsplash.imgix.net/reserve/EnF7DhHROS8OMEp2pCkx_Dufer%20food%20overhead%20hig%20res.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=7cfd39dc9757597e6c711ca30eaacab5"></div>
-    <div class="row container">
-      <h2 class="white-text">Parallax</h2>
-      <p class="grey-text lighten-3">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
-    </div>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materialize - Documentation</title>
 
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+
+  <!-- Android 5 Chrome Color -->
+  <meta name="theme-color" content="#EE6E73">
+
+  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/prism.css" rel="stylesheet" />
+</head>
+
+<body class="parallax-demo">
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">Materialize</a>
+        <ul class="right side-nav" id="nav-mobile">
+          <li><a href="about.html">About</a></li>
+          <li><a href="getting_started.html">Getting Started</a></li>
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="components.html">Components</a></li>
+          <li class="active"><a href="javascript.html">JavaScript</a></li>
+        </ul>
+        <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </div>
+  </nav>
+
+<!--  Parallax Section  -->
+  <div class="parallax-container">
+    <div class="parallax"><img src="images/parallax1.jpg"></div>
+  </div>
+  <div class="section grey lighten-4">
     <div class="row container">
-      <h4 class="white-text">Tabs HTML Structure</h4>
+      <h2 class="header">Parallax</h2>
+      <p class="grey-text darken-3 lighten-3">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+    </div>
+    <div class="row container">
+      <h4 class="grey-text darken-5">Parallax HTML Structure</h4>
       <pre><code class="language-markup col s12">
-        &lt;div class="col s12">
-          &lt;ul class="tabs">
-            &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
-            &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
-          &lt;/ul>
-        &lt;/div>
-        &lt;div id="test1" class="col s12">Test 1&lt;/div>
-        &lt;div id="test2" class="col s12">Test 2&lt;/div>
-        &lt;div id="test3" class="col s12">Test 3&lt;/div>
-        &lt;div id="test4" class="col s12">Test 4&lt;/div>
+  &lt;div class="parallax-container">
+    &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
+  &lt;/div>
       </code></pre>
     </div>
-    <br><br><br><br>
   </div>
+  <div class="parallax-container">
+    <div class="parallax"><img src="images/parallax2.jpg"></div>
+  </div>
+  <div id="footer" class="section">
+    <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+  <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a><a href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+  </div>
+
+  
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/waves.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/toasts.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/leanModal.js"></script>
+  <script src="js/collapsible.js"></script>
+  <script src="js/materialbox.js"></script>
+  <script src="js/scrollspy.js"></script>
+  <script src="js/sideNav.js"></script>
+  <script src="js/init.js"></script>
+  <!-- Twitter Button -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  
+  <!--  Google Analytics  -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56218128-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+  </script>
+</body>
+</html>
