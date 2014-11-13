@@ -1,15 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-;/*
+/*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
  * Uses the built in easing capabilities added In jQuery 1.1
@@ -213,7 +202,9 @@ jQuery.extend( jQuery.easing,
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
  * OF THE POSSIBILITY OF SUCH DAMAGE. 
  *
- */;(function ($) {
+ */
+
+(function ($) {
   $.fn.collapsible = function(options) {
     var defaults = {
         accordion: true
@@ -249,7 +240,9 @@ jQuery.extend( jQuery.easing,
     
     
   };
-}( jQuery ));(function ($) {
+}( jQuery ));
+
+(function ($) {
   $.fn.dropdown = function () {
     var origin = $(this);
     
@@ -282,7 +275,9 @@ jQuery.extend( jQuery.easing,
     
     
   };
-}( jQuery ));(function($){
+}( jQuery ));
+
+(function($){
  
     $.fn.extend({ 
          
@@ -359,7 +354,9 @@ jQuery.extend( jQuery.easing,
         }
     });
      
-})(jQuery);(function ($) {
+})(jQuery);
+
+(function ($) {
 
   $.fn.materialbox = function () {
 
@@ -499,6 +496,8 @@ jQuery.extend( jQuery.easing,
     });
   };
 }( jQuery ));
+
+
 (function ($) {
 
     $.fn.parallax = function () {
@@ -543,7 +542,502 @@ jQuery.extend( jQuery.easing,
       });
 
     };
-}( jQuery ));/**
+}( jQuery ));
+
+(function ($) {
+    
+  $.fn.tabs = function () {
+
+    return this.each(function() {
+
+    // For each set of tabs, we want to keep track of
+    // which tab is active and its associated content
+    var $this = $(this);
+    var window_width = $(window).width();
+
+    $this.width('100%');
+    // Set Tab Width for each tab
+    var $num_tabs = $(this).children('li').length;
+    $this.children('li').each(function() {
+      $(this).width((100/$num_tabs)+'%');
+    });
+    var $active, $content, $links = $this.find('li.tab a');
+    var $tabs_width = $this.width();
+    var $tab_width = $this.find('li').first().outerWidth();
+    var $index = 0;
+    
+    // If the location.hash matches one of the links, use that as the active tab.
+    // If no match is found, use the first link as the initial active tab.
+    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+    $active.addClass('active');
+    $index = $links.index($active);
+    if ($index < 0) {
+      $index = 0;
+    }
+      console.log("Resize index", $index, $links);
+
+    $content = $($active[0].hash);
+    
+    // append indicator then set indicator width to tab width
+    $this.append('<div class="indicator"></div>');
+    var $indicator = $this.find('.indicator');
+    if ($this.is(":visible")) {
+      $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
+      $indicator.css({"left": $index * $tab_width});
+    }
+    $(window).resize(function () {
+      $tabs_width = $this.width();
+      $tab_width = $this.find('li').first().outerWidth();    
+      if ($index < 0) {
+        $index = 0;
+      }  
+      if ($tab_width !== 0 && $tabs_width !== 0) {
+        $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
+        $indicator.css({"left": $index * $tab_width});
+      }
+    });
+
+    // Hide the remaining content
+    $links.not($active).each(function () {
+      $(this.hash).hide();
+    });
+    
+    // Bind the click event handler
+    $this.on('click', 'a', function(e){
+      $tabs_width = $this.width();
+      $tab_width = $this.find('li').first().outerWidth();
+
+      // Make the old tab inactive.
+      $active.removeClass('active');
+      $content.hide();
+    
+      // Update the variables with the new link and content
+      $active = $(this);
+      $content = $(this.hash);
+      $links = $this.find('li.tab a');
+    
+      // Make the tab active.
+      $active.addClass('active');
+      var $prev_index = $index;
+      $index = $links.index($(this));
+      if ($index < 0) {
+        $index = 0;
+      }
+      // Change url to current tab
+//      window.location.hash = $active.attr('href');
+      
+      $content.show();
+
+      // Update indicator
+      if (($index - $prev_index) >= 0) {
+        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+        setTimeout(function(){
+          $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+        }, 60);
+      }
+      else {
+        $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+        setTimeout(function(){
+          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+        }, 60);
+      }
+    
+      // Prevent the anchor's default click action
+      e.preventDefault();
+    });
+  });
+
+  };
+}( jQuery ));
+
+(function ($) {
+    
+    var newTooltip;
+    var timeout;
+    $.fn.tooltip = function () {
+        var origin;
+        
+    };
+}( jQuery ));
+
+
+/*!
+ * Waves v0.5.3
+ * http://fian.my.id/Waves 
+ * 
+ * Copyright 2014 Alfiana E. Sibuea and other contributors 
+ * Released under the MIT license 
+ * https://github.com/fians/Waves/blob/master/LICENSE 
+ */
+
+;(function(window) {
+    'use strict';
+
+    var Waves = Waves || {};
+    var $$ = document.querySelectorAll.bind(document);
+
+    // Find exact position of element
+    function isWindow(obj) {
+        return obj !== null && obj === obj.window;
+    }
+
+    function getWindow(elem) {
+        return isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
+    }
+
+    function offset(elem) {
+
+        var docElem, win,
+            box = {top: 0, left: 0},
+            doc = elem && elem.ownerDocument;
+
+        docElem = doc.documentElement;
+
+        if (typeof elem.getBoundingClientRect !== typeof undefined) {
+            box = elem.getBoundingClientRect();
+        }
+        win = getWindow(doc);
+        return {
+            top: box.top + win.pageYOffset - docElem.clientTop,
+            left: box.left + win.pageXOffset - docElem.clientLeft
+        };
+    }
+
+    function convertStyle(obj) {
+
+        var style = '';
+
+        for (var a in obj) {
+            if (obj.hasOwnProperty(a)) {
+                style += (a + ':' + obj[a] + ';');
+            }
+        }
+
+        return style;
+    }
+
+    var Effect = {
+
+        // Effect delay
+        duration: 500,
+
+        show: function(e) {
+            
+            // Disable right click
+            if (e.button === 2) {
+              return false;
+            }
+          
+            var el = this;
+
+            // Create ripple
+            var ripple = document.createElement('div');
+            ripple.className = 'waves-ripple';
+            el.appendChild(ripple);
+
+            // Get click coordinate and element witdh
+            var pos         = offset(el);
+            var relativeY   = (e.pageY - pos.top) - 10;
+            var relativeX   = (e.pageX - pos.left) - 10;
+            // var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
+            var scale = 'scale(15)';
+
+            // Attach data to element
+            ripple.setAttribute('data-hold', Date.now());
+            ripple.setAttribute('data-scale', scale);
+            ripple.setAttribute('data-x', relativeX);
+            ripple.setAttribute('data-y', relativeY);
+
+            // Set ripple position
+            var rippleStyle = {
+                'top': relativeY+'px',
+                'left': relativeX+'px'
+            };
+            
+            ripple.className = ripple.className + ' waves-notransition';
+            ripple.setAttribute('style', convertStyle(rippleStyle));
+            ripple.className = ripple.className.replace('waves-notransition', '');
+
+            // Scale the ripple
+            rippleStyle['-webkit-transform'] = scale;
+            rippleStyle['-moz-transform'] = scale;
+            rippleStyle['-ms-transform'] = scale;
+            rippleStyle['-o-transform'] = scale;
+            rippleStyle.transform = scale;
+            rippleStyle.opacity   = '1';
+
+            rippleStyle['-webkit-transition-duration'] = Effect.duration + 'ms';
+            rippleStyle['-moz-transition-duration']    = Effect.duration + 'ms';
+            rippleStyle['-o-transition-duration']      = Effect.duration + 'ms';
+            rippleStyle['transition-duration']         = Effect.duration + 'ms';
+
+            ripple.setAttribute('style', convertStyle(rippleStyle));
+
+        },
+
+        hide: function() {
+            
+            var el = this;
+
+            var width = el.clientWidth * 1.4;
+            
+            // Get first ripple
+            var ripple = null;
+
+            var childrenLength = el.children.length;
+
+            for (var a = 0; a < childrenLength; a++) {
+                if (el.children[a].className.indexOf('waves-ripple') !== -1) {
+                    ripple = el.children[a];
+                    continue;
+                }
+            }
+
+            if (!ripple) {
+                return false;
+            }
+
+            var relativeX   = ripple.getAttribute('data-x');
+            var relativeY   = ripple.getAttribute('data-y');
+            var scale       = ripple.getAttribute('data-scale');
+
+            // Get delay beetween mousedown and mouse leave
+            var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
+            var delay = 500 - diff;
+
+            if (delay < 0) {
+                delay = 0;
+            }
+
+            // Fade out ripple after delay
+            setTimeout(function() {
+
+                var style = {
+                    'top': relativeY+'px',
+                    'left': relativeX+'px',
+                    'opacity': '0',
+
+                    // Duration
+                    '-webkit-transition-duration': Effect.duration + 'ms',
+                    '-moz-transition-duration': Effect.duration + 'ms',
+                    '-o-transition-duration': Effect.duration + 'ms',
+                    'transition-duration': Effect.duration + 'ms',
+                    '-webkit-transform': scale,
+                    '-moz-transform': scale,
+                    '-ms-transform': scale,
+                    '-o-transform': scale,
+                    'transform': scale,
+                };
+
+                ripple.setAttribute('style', convertStyle(style));
+
+                setTimeout(function() {
+
+                    try {
+                        el.removeChild(ripple);
+                    } catch(e) {
+                        return false;
+                    }
+
+                    
+                }, Effect.duration);
+
+            }, delay);
+
+        },
+
+        // Little hack to make <input> can perform waves effect
+        wrapInput: function(elements) {
+
+            for (var a = 0; a < elements.length; a++) {
+
+                var el = elements[a];
+
+                if (el.tagName.toLowerCase() === 'input') {
+
+                    var parent = el.parentNode;
+
+                    // If input already have parent just pass through
+                    if (parent.tagName.toLowerCase() === 'i' && parent.className.indexOf('waves-effect') !== -1) {
+                        return false;
+                    }
+
+                    // Put element class and style to the specified parent
+                    var wrapper = document.createElement('i');
+                    wrapper.className = el.className + ' waves-input-wrapper';
+
+                    var elementStyle = el.getAttribute('style');
+                    var dimensionStyle = 'width:'+el.offsetWidth+'px;height:'+el.clientHeight+'px;';
+
+                    if (!elementStyle) {
+                        elementStyle = '';
+                    }
+
+                    wrapper.setAttribute('style', dimensionStyle+elementStyle);
+                    
+                    el.className = 'waves-button-input';
+                    el.removeAttribute('style');
+
+                    // Put element as child
+                    parent.replaceChild(wrapper, el);
+                    wrapper.appendChild(el);
+
+                }
+                
+            }
+        }
+    };
+
+    Waves.displayEffect = function(options) {
+
+        options = options || {};
+
+        if ('duration' in options) {
+            Effect.duration = options.duration;
+        }
+        
+        //Wrap input inside <i> tag
+        Effect.wrapInput($$('.waves-effect'));
+
+        Array.prototype.forEach.call($$('.waves-effect'), function(i) {
+
+            i.addEventListener('mousedown', Effect.show, false);
+            i.addEventListener('mouseup', Effect.hide, false);
+            i.addEventListener('mouseleave', Effect.hide, false);
+
+        });
+
+    };
+
+    window.Waves = Waves;
+    Waves.displayEffect();
+
+})(window);
+
+function toast(message, displayLength) {
+    if ($('#toast-container').length == 0) {
+        // create notification container
+        var container = $('<div></div>')
+            .attr('id', 'toast-container');
+        $('body').append(container);
+    }
+    
+    // Select and append toast
+    var container = $('#toast-container')
+    var newToast = createToast(message);
+    container.append(newToast);
+    
+    newToast.animate({"top" : "+35px"
+                    , "opacity": 0}, 0);
+    newToast.animate({"top" : "0px"
+                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
+        newToast.delay(displayLength)
+        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
+        .slideUp(200, function(){
+            $(this).remove();
+        });
+    
+    
+    function createToast(message) {
+        var toast = $('<div></div>');
+        toast.addClass('toast');
+        var text = $('<span></span>');
+        text.text(message);
+        toast.append(text);
+        return toast;
+    }
+}
+
+(function ($) {
+    // left: 37, up: 38, right: 39, down: 40,
+    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+    var keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+
+    function preventDefault(e) {
+      e = e || window.event;
+      if (e.preventDefault)
+          e.preventDefault();
+      e.returnValue = false;  
+    }
+
+    function keydown(e) {
+        for (var i = keys.length; i--;) {
+            if (e.keyCode === keys[i]) {
+                preventDefault(e);
+                return;
+            }
+        }
+    }
+
+    function wheel(e) {
+      preventDefault(e);
+    }
+
+    function disable_scroll() {
+      if (window.addEventListener) {
+          window.addEventListener('DOMMouseScroll', wheel, false);
+      }
+      window.onmousewheel = document.onmousewheel = wheel;
+      document.onkeydown = keydown;
+    }
+
+    function enable_scroll() {
+        if (window.removeEventListener) {
+            window.removeEventListener('DOMMouseScroll', wheel, false);
+        }
+        window.onmousewheel = document.onmousewheel = document.onkeydown = null;  
+    }
+
+    $.fn.sideNav = function () {
+      var $this = $(this);
+      var menu_id = $("#"+ $this.attr('data-activates'));
+
+      function removeMenu() {
+        $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+          complete: function() {
+            $(this).remove();
+          } });
+        menu_id.removeClass('active');
+        enable_scroll();
+      }
+
+      $this.click(function() {
+        if (menu_id.hasClass('active')) {
+          removeMenu();
+        }
+        else {
+          disable_scroll();
+          menu_id.addClass('active');
+
+          var overlay = $('<div id="sidenav-overlay"></div>');
+          overlay.css('width', $(document).width() + 100) // account for any scrollbar
+            .css('height', $(document).height() + 100) // account for any scrollbar
+            .css('top', 0)
+            .css('left', 0)
+            .css('opacity', 0)
+            .css('will-change', 'opacity')
+            .click(function(){
+              removeMenu();
+              overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+                complete: function() {
+                  $(this).remove();
+                } });
+              
+            });
+          $('body').append(overlay);
+          overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad'}
+          );
+        }
+
+
+        return false;
+      });
+
+
+    };
+}( jQuery ));
+
+/**
  * Extend jquery with a scrollspy plugin.
  * This watches the window scroll and fires events when elements are scrolled into viewport.
  *
@@ -818,487 +1312,18 @@ jQuery.extend( jQuery.easing,
 		return $.scrollSpy($(this), options);
 	};
 
-})(jQuery);(function ($) {
-    // left: 37, up: 38, right: 39, down: 40,
-    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-    var keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+})(jQuery);
+
+// @codekit-prepend "jquery.easing.1.3.js"; 
+// @codekit-prepend "collapsible.js"; 
+// @codekit-prepend "dropdown.js"; 
+// @codekit-prepend "leanModal.js"; 
+// @codekit-prepend "materialbox.js"; 
+// @codekit-prepend "parallax.js"; 
+// @codekit-prepend "tabs.js"; 
+// @codekit-prepend "tooltip.js"; 
+// @codekit-prepend "waves.js"; 
+// @codekit-prepend "toasts.js"; 
+// @codekit-prepend "sideNav.js";
+// @codekit-prepend "scrollspy.js";
 
-    function preventDefault(e) {
-      e = e || window.event;
-      if (e.preventDefault)
-          e.preventDefault();
-      e.returnValue = false;  
-    }
-
-    function keydown(e) {
-        for (var i = keys.length; i--;) {
-            if (e.keyCode === keys[i]) {
-                preventDefault(e);
-                return;
-            }
-        }
-    }
-
-    function wheel(e) {
-      preventDefault(e);
-    }
-
-    function disable_scroll() {
-      if (window.addEventListener) {
-          window.addEventListener('DOMMouseScroll', wheel, false);
-      }
-      window.onmousewheel = document.onmousewheel = wheel;
-      document.onkeydown = keydown;
-    }
-
-    function enable_scroll() {
-        if (window.removeEventListener) {
-            window.removeEventListener('DOMMouseScroll', wheel, false);
-        }
-        window.onmousewheel = document.onmousewheel = document.onkeydown = null;  
-    }
-
-    $.fn.sideNav = function () {
-      var $this = $(this);
-      var menu_id = $("#"+ $this.attr('data-activates'));
-
-      function removeMenu() {
-        $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
-          complete: function() {
-            $(this).remove();
-          } });
-        menu_id.removeClass('active');
-        enable_scroll();
-      }
-
-      $this.click(function() {
-        if (menu_id.hasClass('active')) {
-          removeMenu();
-        }
-        else {
-          disable_scroll();
-          menu_id.addClass('active');
-
-          var overlay = $('<div id="sidenav-overlay"></div>');
-          overlay.css('width', $(document).width() + 100) // account for any scrollbar
-            .css('height', $(document).height() + 100) // account for any scrollbar
-            .css('top', 0)
-            .css('left', 0)
-            .css('opacity', 0)
-            .css('will-change', 'opacity')
-            .click(function(){
-              removeMenu();
-              overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
-                complete: function() {
-                  $(this).remove();
-                } });
-              
-            });
-          $('body').append(overlay);
-          overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad'}
-          );
-        }
-
-
-        return false;
-      });
-
-
-    };
-}( jQuery ));(function ($) {
-    
-  $.fn.tabs = function () {
-
-    return this.each(function() {
-
-    // For each set of tabs, we want to keep track of
-    // which tab is active and its associated content
-    var $this = $(this);
-    var window_width = $(window).width();
-
-    $this.width('100%');
-    // Set Tab Width for each tab
-    var $num_tabs = $(this).children('li').length;
-    $this.children('li').each(function() {
-      $(this).width((100/$num_tabs)+'%');
-    });
-    var $active, $content, $links = $this.find('li.tab a');
-    var $tabs_width = $this.width();
-    var $tab_width = $this.find('li').first().outerWidth();
-    var $index = 0;
-    
-    // If the location.hash matches one of the links, use that as the active tab.
-    // If no match is found, use the first link as the initial active tab.
-    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-    $active.addClass('active');
-    $index = $links.index($active);
-    if ($index < 0) {
-      $index = 0;
-    }
-      console.log("Resize index", $index, $links);
-
-    $content = $($active[0].hash);
-    
-    // append indicator then set indicator width to tab width
-    $this.append('<div class="indicator"></div>');
-    var $indicator = $this.find('.indicator');
-    if ($this.is(":visible")) {
-      $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-      $indicator.css({"left": $index * $tab_width});
-    }
-    $(window).resize(function () {
-      $tabs_width = $this.width();
-      $tab_width = $this.find('li').first().outerWidth();    
-      if ($index < 0) {
-        $index = 0;
-      }  
-      if ($tab_width !== 0 && $tabs_width !== 0) {
-        $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-        $indicator.css({"left": $index * $tab_width});
-      }
-    });
-
-    // Hide the remaining content
-    $links.not($active).each(function () {
-      $(this.hash).hide();
-    });
-    
-    // Bind the click event handler
-    $this.on('click', 'a', function(e){
-      $tabs_width = $this.width();
-      $tab_width = $this.find('li').first().outerWidth();
-
-      // Make the old tab inactive.
-      $active.removeClass('active');
-      $content.hide();
-    
-      // Update the variables with the new link and content
-      $active = $(this);
-      $content = $(this.hash);
-      $links = $this.find('li.tab a');
-    
-      // Make the tab active.
-      $active.addClass('active');
-      var $prev_index = $index;
-      $index = $links.index($(this));
-      if ($index < 0) {
-        $index = 0;
-      }
-      // Change url to current tab
-//      window.location.hash = $active.attr('href');
-      
-      $content.show();
-
-      // Update indicator
-      if (($index - $prev_index) >= 0) {
-        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        setTimeout(function(){
-          $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        }, 60);
-      }
-      else {
-        $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        setTimeout(function(){
-          $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        }, 60);
-      }
-    
-      // Prevent the anchor's default click action
-      e.preventDefault();
-    });
-  });
-
-  };
-}( jQuery ));function toast(message, displayLength) {
-    if ($('#toast-container').length == 0) {
-        // create notification container
-        var container = $('<div></div>')
-            .attr('id', 'toast-container');
-        $('body').append(container);
-    }
-    
-    // Select and append toast
-    var container = $('#toast-container')
-    var newToast = createToast(message);
-    container.append(newToast);
-    
-    newToast.animate({"top" : "+35px"
-                    , "opacity": 0}, 0);
-    newToast.animate({"top" : "0px"
-                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
-        newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
-        .slideUp(200, function(){
-            $(this).remove();
-        });
-    
-    
-    function createToast(message) {
-        var toast = $('<div></div>');
-        toast.addClass('toast');
-        var text = $('<span></span>');
-        text.text(message);
-        toast.append(text);
-        return toast;
-    }
-};(function ($) {
-    
-    var newTooltip;
-    var timeout;
-    $.fn.tooltip = function () {
-        var origin;
-        
-    };
-}( jQuery ));
-/*!
- * Waves v0.5.3
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
- * https://github.com/fians/Waves/blob/master/LICENSE 
- */
-
-;(function(window) {
-    'use strict';
-
-    var Waves = Waves || {};
-    var $$ = document.querySelectorAll.bind(document);
-
-    // Find exact position of element
-    function isWindow(obj) {
-        return obj !== null && obj === obj.window;
-    }
-
-    function getWindow(elem) {
-        return isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
-    }
-
-    function offset(elem) {
-
-        var docElem, win,
-            box = {top: 0, left: 0},
-            doc = elem && elem.ownerDocument;
-
-        docElem = doc.documentElement;
-
-        if (typeof elem.getBoundingClientRect !== typeof undefined) {
-            box = elem.getBoundingClientRect();
-        }
-        win = getWindow(doc);
-        return {
-            top: box.top + win.pageYOffset - docElem.clientTop,
-            left: box.left + win.pageXOffset - docElem.clientLeft
-        };
-    }
-
-    function convertStyle(obj) {
-
-        var style = '';
-
-        for (var a in obj) {
-            if (obj.hasOwnProperty(a)) {
-                style += (a + ':' + obj[a] + ';');
-            }
-        }
-
-        return style;
-    }
-
-    var Effect = {
-
-        // Effect delay
-        duration: 500,
-
-        show: function(e) {
-            
-            // Disable right click
-            if (e.button === 2) {
-              return false;
-            }
-          
-            var el = this;
-
-            // Create ripple
-            var ripple = document.createElement('div');
-            ripple.className = 'waves-ripple';
-            el.appendChild(ripple);
-
-            // Get click coordinate and element witdh
-            var pos         = offset(el);
-            var relativeY   = (e.pageY - pos.top) - 10;
-            var relativeX   = (e.pageX - pos.left) - 10;
-            // var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
-            var scale = 'scale(15)';
-
-            // Attach data to element
-            ripple.setAttribute('data-hold', Date.now());
-            ripple.setAttribute('data-scale', scale);
-            ripple.setAttribute('data-x', relativeX);
-            ripple.setAttribute('data-y', relativeY);
-
-            // Set ripple position
-            var rippleStyle = {
-                'top': relativeY+'px',
-                'left': relativeX+'px'
-            };
-            
-            ripple.className = ripple.className + ' waves-notransition';
-            ripple.setAttribute('style', convertStyle(rippleStyle));
-            ripple.className = ripple.className.replace('waves-notransition', '');
-
-            // Scale the ripple
-            rippleStyle['-webkit-transform'] = scale;
-            rippleStyle['-moz-transform'] = scale;
-            rippleStyle['-ms-transform'] = scale;
-            rippleStyle['-o-transform'] = scale;
-            rippleStyle.transform = scale;
-            rippleStyle.opacity   = '1';
-
-            rippleStyle['-webkit-transition-duration'] = Effect.duration + 'ms';
-            rippleStyle['-moz-transition-duration']    = Effect.duration + 'ms';
-            rippleStyle['-o-transition-duration']      = Effect.duration + 'ms';
-            rippleStyle['transition-duration']         = Effect.duration + 'ms';
-
-            ripple.setAttribute('style', convertStyle(rippleStyle));
-
-        },
-
-        hide: function() {
-            
-            var el = this;
-
-            var width = el.clientWidth * 1.4;
-            
-            // Get first ripple
-            var ripple = null;
-
-            var childrenLength = el.children.length;
-
-            for (var a = 0; a < childrenLength; a++) {
-                if (el.children[a].className.indexOf('waves-ripple') !== -1) {
-                    ripple = el.children[a];
-                    continue;
-                }
-            }
-
-            if (!ripple) {
-                return false;
-            }
-
-            var relativeX   = ripple.getAttribute('data-x');
-            var relativeY   = ripple.getAttribute('data-y');
-            var scale       = ripple.getAttribute('data-scale');
-
-            // Get delay beetween mousedown and mouse leave
-            var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
-            var delay = 500 - diff;
-
-            if (delay < 0) {
-                delay = 0;
-            }
-
-            // Fade out ripple after delay
-            setTimeout(function() {
-
-                var style = {
-                    'top': relativeY+'px',
-                    'left': relativeX+'px',
-                    'opacity': '0',
-
-                    // Duration
-                    '-webkit-transition-duration': Effect.duration + 'ms',
-                    '-moz-transition-duration': Effect.duration + 'ms',
-                    '-o-transition-duration': Effect.duration + 'ms',
-                    'transition-duration': Effect.duration + 'ms',
-                    '-webkit-transform': scale,
-                    '-moz-transform': scale,
-                    '-ms-transform': scale,
-                    '-o-transform': scale,
-                    'transform': scale,
-                };
-
-                ripple.setAttribute('style', convertStyle(style));
-
-                setTimeout(function() {
-
-                    try {
-                        el.removeChild(ripple);
-                    } catch(e) {
-                        return false;
-                    }
-
-                    
-                }, Effect.duration);
-
-            }, delay);
-
-        },
-
-        // Little hack to make <input> can perform waves effect
-        wrapInput: function(elements) {
-
-            for (var a = 0; a < elements.length; a++) {
-
-                var el = elements[a];
-
-                if (el.tagName.toLowerCase() === 'input') {
-
-                    var parent = el.parentNode;
-
-                    // If input already have parent just pass through
-                    if (parent.tagName.toLowerCase() === 'i' && parent.className.indexOf('waves-effect') !== -1) {
-                        return false;
-                    }
-
-                    // Put element class and style to the specified parent
-                    var wrapper = document.createElement('i');
-                    wrapper.className = el.className + ' waves-input-wrapper';
-
-                    var elementStyle = el.getAttribute('style');
-                    var dimensionStyle = 'width:'+el.offsetWidth+'px;height:'+el.clientHeight+'px;';
-
-                    if (!elementStyle) {
-                        elementStyle = '';
-                    }
-
-                    wrapper.setAttribute('style', dimensionStyle+elementStyle);
-                    
-                    el.className = 'waves-button-input';
-                    el.removeAttribute('style');
-
-                    // Put element as child
-                    parent.replaceChild(wrapper, el);
-                    wrapper.appendChild(el);
-
-                }
-                
-            }
-        }
-    };
-
-    Waves.displayEffect = function(options) {
-
-        options = options || {};
-
-        if ('duration' in options) {
-            Effect.duration = options.duration;
-        }
-        
-        //Wrap input inside <i> tag
-        Effect.wrapInput($$('.waves-effect'));
-
-        Array.prototype.forEach.call($$('.waves-effect'), function(i) {
-
-            i.addEventListener('mousedown', Effect.show, false);
-            i.addEventListener('mouseup', Effect.hide, false);
-            i.addEventListener('mouseleave', Effect.hide, false);
-
-        });
-
-    };
-
-    window.Waves = Waves;
-    Waves.displayEffect();
-
-})(window);
