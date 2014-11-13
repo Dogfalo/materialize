@@ -395,6 +395,14 @@ th {
 }
 
 ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
   padding: 0;
 }
 
@@ -457,12 +465,21 @@ li {
   width: 100%;
 }
 
-ul {
-  list-style-type: none;
-}
+@media only screen and (max-width: 992px) {
+  .parallax-container {
+    height: auto;
+  }
 
-a {
-  text-decoration: none;
+  .parallax {
+    position: relative;
+    width: 100%;
+  }
+  .parallax img {
+    position: relative;
+  }
+}
+.text-center {
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -6566,7 +6583,7 @@ form p:last-child {
 }
 
 /***************
-    Nav List 
+    Nav List
 ***************/
 ul.table-of-contents.fixed {
   position: fixed;

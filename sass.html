@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>Materialize - Documentation</title>
   
   <!-- Favicons -->
@@ -55,27 +55,45 @@
     <p class="caption">
     We have 3 media queries for the 3 standard screen sizes you can use in your custom Sass files. This also includes media query variables that will define the range.
     </p>
-    
     <p>
-      Small screens are defined at a max width of 480px
+      Small screens are defined as having a max-width of 600px
       <br>
-      Medium screens are defined at a max width of 768px
+      Medium screens are defined as having a max-width of 992px
       <br>
-      Large screen are defined at a max width of 1024px
+      Large screen are defined as having a min-width of 992px
     </p>
+    
     <div class="row">
+      <h4>CSS</h4>
       <pre><code class="language-css col s12">
-    @media #{$small-and-up} {
-      // styles for small screens and larger
+    // These classes can be added to HTML Elements to affect visibility on certain displays
+    // They apply display:none;
+    .hide-on-small-only
+    .hide-on-small-and-down
+    .hide-on-med-and-down
+    .hide-on-med-and-up
+    .hide-on-med-only
+    .hide-on-large-only
+        </code></pre>
+    </div>
+      
+    <div class="row">
+      <h4>Sass</h4>
+      <pre><code class="language-css col s12">
+    @media #{$small-and-down} {
+      // styles for small screens and down
     }
     @media #{$medium-and-up} {
       // styles for medium screens and larger
     }
+    @media #{$medium-and-down} {
+      // styles for medium screens and down
+    }
     @media #{$large-and-up} {
-      // styles for large screens and larger
+      // styles for large screens and up
     }
         </code></pre>
-      </div>
+    </div>
     </div>
     
 <!--    Prefixer Section-->

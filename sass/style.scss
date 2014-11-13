@@ -1,13 +1,11 @@
+/***************
+  HTML Styles	
+***************/
 body {
   background-color: #fcfcfc;
 }
 body.parallax-demo {
   height: 100%;
-}
-
-.header {
-  @extend .red-text.lighten-2;
-  font-weight: 300;
 }
 
 p.box {
@@ -17,6 +15,16 @@ p {
   padding: 0;
   
 }
+
+.row h3 {
+ margin: 30px 0 20px 0; 
+}
+
+.header {
+  @extend .red-text.lighten-2;
+  font-weight: 300;
+}
+
 .caption {
   font-size: 1.25rem;
   font-weight: 300;
@@ -29,7 +37,10 @@ p {
   padding: 20px 20px;
 }
 
-//Index page Styles
+/********************
+  Index Page Styles	
+********************/
+
 #logo-container {
   position: absolute;
   top: 50%;
@@ -41,6 +52,13 @@ p {
   display: inline-block;
   height: 100%;
   pointer-events: none;
+}
+
+
+#responsive-img {
+  width: 85%;
+  display:block;
+  margin: 0 auto;
 }
 
 // Temp
@@ -71,7 +89,7 @@ p {
   font-weight: 500;
 
   &:hover {
-    background-color: lighten(map-get($colors, "red"), 30%);
+    background-color: lighten(color("red"), 30%);
   }
 }
 
@@ -80,12 +98,12 @@ p {
 .promo{
   padding: 0 20px;
   img {
-    width:100%;
+    width:85%;
     margin-bottom:1.5rem;
   }
   
   i {
-    @extend .red-text.lighten-3;
+    @extend .red-text.lighten-2;
     font-size: 7rem;
     display: block;
   }
@@ -93,7 +111,7 @@ p {
 
 .promo-caption {
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 5px;
   margin-bottom: 0px;
 
@@ -136,6 +154,7 @@ p {
     width: 100%;
     padding: 0 15px;
     line-height: 55px;
+    font-weight: 700;
     font-size: 12px;
     display: block;
     @include box-sizing(border-box);
@@ -188,7 +207,7 @@ p {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 998;
   }
 }
 

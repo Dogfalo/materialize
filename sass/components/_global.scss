@@ -11,6 +11,17 @@ $large-and-up: "only screen and (min-width : #{$medium-screen})";
 $small-and-down: "only screen and (max-width : #{$small-screen})";
 $medium-and-down: "only screen and (max-width : #{$medium-screen})";
 
+//Default styles
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	@extend .light-blue-text.darken-1;
+	text-decoration: none;
+}
+
 // Grid Variables
 $num-cols: 12;
 $gutter-width: 1rem;
@@ -80,16 +91,7 @@ $num-cols: 12;
   }
 }
 
-//Default styles
 
-ul {
-	list-style-type: none;
-}
-
-a {
-	@extend .light-blue-text.darken-1;
-	text-decoration: none;
-}
 
 .text-center {
   text-align: center;

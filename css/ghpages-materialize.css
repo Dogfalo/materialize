@@ -395,6 +395,14 @@ th {
 }
 
 ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
   padding: 0;
 }
 
@@ -470,14 +478,6 @@ li {
     position: relative;
   }
 }
-ul {
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-}
-
 .text-center {
   text-align: center;
 }
@@ -3544,10 +3544,10 @@ a {
 .red-text.lighten-1 {
   color: #ea454b;
 }
-.red-text.lighten-2, .header, #front-page-nav a {
+.red-text.lighten-2, .header, .promo i, #front-page-nav a {
   color: #ee6e73;
 }
-.red-text.lighten-3, .promo i {
+.red-text.lighten-3 {
   color: #f3989b;
 }
 .red-text.lighten-4, ul.tabs li.tab a:hover {
@@ -6584,7 +6584,7 @@ form p:last-child {
 }
 
 /***************
-    Nav List 
+    Nav List
 ***************/
 ul.table-of-contents.fixed {
   position: fixed;
@@ -6655,6 +6655,9 @@ ul.table-of-contents a.active {
   z-index: 999;
 }
 
+/***************
+  HTML Styles	
+***************/
 body {
   background-color: #fcfcfc;
 }
@@ -6663,16 +6666,20 @@ body.parallax-demo {
   height: 100%;
 }
 
-.header {
-  font-weight: 300;
-}
-
 p.box {
   padding: 20px;
 }
 
 p {
   padding: 0;
+}
+
+.row h3 {
+  margin: 30px 0 20px 0;
+}
+
+.header {
+  font-weight: 300;
 }
 
 .caption {
@@ -6687,6 +6694,9 @@ p {
   padding: 20px 20px;
 }
 
+/********************
+  Index Page Styles	
+********************/
 #logo-container {
   position: absolute;
   top: 50%;
@@ -6702,6 +6712,12 @@ p {
   display: inline-block;
   height: 100%;
   pointer-events: none;
+}
+
+#responsive-img {
+  width: 85%;
+  display: block;
+  margin: 0 auto;
 }
 
 #index-banner {
@@ -6729,7 +6745,7 @@ p {
   padding: 0 20px;
 }
 .promo img {
-  width: 100%;
+  width: 85%;
   margin-bottom: 1.5rem;
 }
 .promo i {
@@ -6739,7 +6755,7 @@ p {
 
 .promo-caption {
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 5px;
   margin-bottom: 0px;
 }
@@ -6766,6 +6782,7 @@ p {
   width: 100%;
   padding: 0 15px;
   line-height: 55px;
+  font-weight: 700;
   font-size: 12px;
   display: block;
   -webkit-box-sizing: border-box;
@@ -6816,7 +6833,7 @@ p {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 998;
 }
 
 .shadow-demo {
