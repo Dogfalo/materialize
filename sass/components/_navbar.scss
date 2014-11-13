@@ -73,8 +73,9 @@ nav {
   }
 }
 @media #{$medium-and-up} {
-  nav, nav a.button-collapse i {
+  nav, nav .nav-wrapper i {
     height: 64px;
     line-height: 64px;
+    font-size: 2rem;
   }
 }
