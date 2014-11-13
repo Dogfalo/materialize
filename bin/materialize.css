@@ -457,12 +457,29 @@ li {
   width: 100%;
 }
 
+@media only screen and (max-width: 992px) {
+  .parallax-container {
+    height: auto;
+  }
+
+  .parallax {
+    position: relative;
+    width: 100%;
+  }
+  .parallax img {
+    position: relative;
+  }
+}
 ul {
   list-style-type: none;
 }
 
 a {
   text-decoration: none;
+}
+
+.text-center {
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
