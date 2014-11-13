@@ -28,10 +28,14 @@
             }
 
           }
+          else {
+            $this.children("img").show();
+          }
         }
         updateParallax(true);
         
         $(window).scroll(function() {
+          window_width = $(window).width();;
           updateParallax(false);
         });
 
