@@ -21,12 +21,10 @@
             var parallax = -1 * parallax_dist * percentScrolled;      
 
             if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) { 
-              if (initial) {
-                $this.children("img").first().stop().animate({bottom: parallax + "px"}, {duration: 300, queue: false, easing: 'easeInOutCubic'});
-              }
-              else {
-                $this.children("img").first().css('bottom', parallax + "px");
-              }
+              $this.children("img").first().css('bottom', parallax + "px");
+            }
+            if (initial) {
+              $this.children("img").first().fadeIn();
             }
 
           }

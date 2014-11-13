@@ -460,6 +460,7 @@ li {
   z-index: -1;
 }
 .parallax img {
+  display: none;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -5124,11 +5125,11 @@ nav a {
 }
 nav a.button-collapse {
   float: left;
-  font-size: 2.7rem;
   position: relative;
   z-index: 1;
 }
 nav a.button-collapse i {
+  font-size: 2.7rem;
   height: 56px;
   line-height: 56px;
 }
@@ -5174,9 +5175,12 @@ nav ul.left {
 }
 
 @media only screen and (min-width: 600px) {
-  nav, nav .nav-wrapper i {
+  nav, nav .nav-wrapper i, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
+  }
+
+  nav .nav-wrapper i {
     font-size: 2rem;
   }
 }

@@ -15,12 +15,12 @@ nav {
 
   a.button-collapse {
     float: left;
-    font-size: 2.7rem;
     @extend .hide-on-large-only;
     position: relative;
     z-index: 1;
 
     i {
+      font-size: 2.7rem;
       height: 56px;
       line-height: 56px;
     }
@@ -73,9 +73,11 @@ nav {
   }
 }
 @media #{$medium-and-up} {
-  nav, nav .nav-wrapper i {
+  nav, nav .nav-wrapper i, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
-    font-size: 2rem;
+  }
+  nav .nav-wrapper i {
+    font-size: 2rem;    
   }
 }
