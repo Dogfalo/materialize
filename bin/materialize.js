@@ -229,7 +229,6 @@ jQuery.extend( jQuery.easing,
       $panel_headers.each(function () {
         $(this).click(function () {
           $(this).parent().toggleClass('active');
-          console.log($(this).siblings('.collapsible-body'));
           $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
           $panel_headers.not($(this)).parent().removeClass('active');
           $panel_headers.not($(this)).parent().children('.collapsible-body').slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
@@ -427,22 +426,22 @@ jQuery.extend( jQuery.easing,
 
         
         // Resize Image      
-        var ratio = originalWidth / originalHeight;
+        var ratio = 0;
         var widthPercent = originalWidth / windowWidth;
-        var heightPercent = originalWidth / windowHeight;
+        var heightPercent = originalHeight / windowHeight;
         var newWidth = 0;
         var newHeight = 0;
 
         if (widthPercent > heightPercent) {
+          ratio = originalHeight / originalWidth;
           newWidth = windowWidth * 0.9;
           newHeight = windowWidth * 0.9 * ratio;
         }
         else {
+          ratio = originalWidth / originalHeight;
           newWidth = (windowHeight * 0.9) * ratio;
           newHeight = windowHeight * 0.9;
         }
-
-        console.log(originalWidth, originalHeight, ratio, newHeight, newWidth);
 
         // Reposition Element AND Animate image + set z-index
         origin.css('left', 0)
@@ -505,31 +504,40 @@ jQuery.extend( jQuery.easing,
     $.fn.parallax = function () {
       var window_width = $(window).width();
       // Parallax Scripts
-      return this.each(function() {
+      return this.each(function(i) {
         var $this = $(this);
         $this.addClass('parallax');
 
-        function updateParallax() {
-          if (window_width > 480) {
-            var height = $this.height();
-            var bottom = $this.offset().top + height;
+        function updateParallax(initial) {
+          if (window_width > 992) {
+            var container_height = $this.height();
+            var img_height = $this.children("img").height();
+            var parallax_dist = img_height - container_height;
+            var bottom = $this.offset().top + container_height;
             var top = $this.offset().top;
-            var windowHeight = $(window).height();
             var scrollTop = $(window).scrollTop();
-            var fromTop = scrollTop + top - (windowHeight / 2);
+            var windowHeight = $(window).height();
+            var windowBottom = scrollTop + windowHeight;
+            var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
+            var parallax = -1 * parallax_dist * percentScrolled;      
 
-            if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {   
-              var parallax = fromTop / 3;
-              
-              $this.children("img").first().css('top', parallax + "px");
+            if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) { 
+              $this.children("img").first().css('bottom', parallax + "px");
+            }
+            if (initial) {
+              $this.children("img").first().fadeIn();
             }
 
           }
+          else {
+            $this.children("img").show();
+          }
         }
-        updateParallax();
+        updateParallax(true);
         
         $(window).scroll(function() {
-          updateParallax();
+          window_width = $(window).width();
+          updateParallax(false);
         });
 
       });
@@ -714,7 +722,6 @@ jQuery.extend( jQuery.easing,
 			// Smooth scroll to section
 		  $('a[href^=#' + $(element).attr('id') + ']').click(function(e) {
 		    e.preventDefault();
-		    console.log("click");
 		    var offset = $(this.hash).offset().top + 1;
 		    $('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
 		  });		
@@ -776,8 +783,8 @@ jQuery.extend( jQuery.easing,
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
+				$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
 			}
-			$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
 		});
 
 		return selector;
@@ -978,25 +985,22 @@ jQuery.extend( jQuery.easing,
         $index = 0;
       }
       // Change url to current tab
-      window.location.hash = $active.attr('href');
-      if (location.hash) {
-        window.scrollTo(0, 0);
-      }
+//      window.location.hash = $active.attr('href');
       
       $content.show();
 
       // Update indicator
       if (($index - $prev_index) >= 0) {
-        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 325, queue: false, easing: 'easeOutQuad'});
+        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
         setTimeout(function(){
           $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        }, 50);
+        }, 60);
       }
       else {
-        $indicator.animate({"left": $index * $tab_width}, {duration: 325, queue: false, easing: 'easeOutQuad'});
+        $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
         setTimeout(function(){
           $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        }, 20);
+        }, 60);
       }
     
       // Prevent the anchor's default click action
