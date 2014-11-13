@@ -21,7 +21,7 @@ $colors: (
   "deep-orange": #FF5722,
   "brown": #795548,
   "grey": #9E9E9E,
-  "blue-grey": #607D8B,
+  "blue-grey": #607D8B
 );
 
 @each $name, $value in $colors {
