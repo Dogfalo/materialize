@@ -8,7 +8,7 @@
         $this.addClass('parallax');
 
         function updateParallax(initial) {
-          if (window_width > 480) {
+          if (window_width > 992) {
             var container_height = $this.height();
             var img_height = $this.children("img").height();
             var parallax_dist = img_height - container_height;
@@ -28,10 +28,14 @@
             }
 
           }
+          else {
+            $this.children("img").show();
+          }
         }
         updateParallax(true);
         
         $(window).scroll(function() {
+          window_width = $(window).width();
           updateParallax(false);
         });
 
