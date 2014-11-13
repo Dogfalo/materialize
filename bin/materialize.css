@@ -395,6 +395,14 @@ th {
 }
 
 ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
   padding: 0;
 }
 
@@ -470,14 +478,6 @@ li {
     position: relative;
   }
 }
-ul {
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-}
-
 .text-center {
   text-align: center;
 }

@@ -1,13 +1,11 @@
+/***************
+  HTML Styles	
+***************/
 body {
   background-color: #fcfcfc;
 }
 body.parallax-demo {
   height: 100%;
-}
-
-.header {
-  @extend .red-text.lighten-2;
-  font-weight: 300;
 }
 
 p.box {
@@ -17,6 +15,16 @@ p {
   padding: 0;
   
 }
+
+.row h3 {
+ margin: 30px 0 20px 0; 
+}
+
+.header {
+  @extend .red-text.lighten-2;
+  font-weight: 300;
+}
+
 .caption {
   font-size: 1.25rem;
   font-weight: 300;
@@ -29,7 +37,10 @@ p {
   padding: 20px 20px;
 }
 
-//Index page Styles
+/********************
+  Index Page Styles	
+********************/
+
 #logo-container {
   position: absolute;
   top: 50%;
@@ -87,7 +98,7 @@ p {
 .promo{
   padding: 0 20px;
   img {
-    width:100%;
+    width:85%;
     margin-bottom:1.5rem;
   }
   

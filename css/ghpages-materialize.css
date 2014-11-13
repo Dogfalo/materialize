@@ -395,6 +395,14 @@ th {
 }
 
 ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
   padding: 0;
 }
 
@@ -470,14 +478,6 @@ li {
     position: relative;
   }
 }
-ul {
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-}
-
 .text-center {
   text-align: center;
 }
@@ -6654,6 +6654,9 @@ ul.table-of-contents a.active {
   z-index: 999;
 }
 
+/***************
+  HTML Styles	
+***************/
 body {
   background-color: #fcfcfc;
 }
@@ -6662,16 +6665,20 @@ body.parallax-demo {
   height: 100%;
 }
 
-.header {
-  font-weight: 300;
-}
-
 p.box {
   padding: 20px;
 }
 
 p {
   padding: 0;
+}
+
+.row h3 {
+  margin: 30px 0 20px 0;
+}
+
+.header {
+  font-weight: 300;
 }
 
 .caption {
@@ -6686,6 +6693,9 @@ p {
   padding: 20px 20px;
 }
 
+/********************
+  Index Page Styles	
+********************/
 #logo-container {
   position: absolute;
   top: 50%;
@@ -6734,7 +6744,7 @@ p {
   padding: 0 20px;
 }
 .promo img {
-  width: 100%;
+  width: 85%;
   margin-bottom: 1.5rem;
 }
 .promo i {
