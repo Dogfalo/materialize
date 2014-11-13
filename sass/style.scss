@@ -265,3 +265,20 @@ code, pre {
   line-height: 1.1rem !important;
 }
 
+
+// Footer styling
+#footer .footer-block {
+  display: inline-block;
+ 
+  a {
+    margin-left: 25px;
+    vertical-align: bottom;
+  }
+}
+@media #{$medium-and-down} {
+  .footer-block {
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+

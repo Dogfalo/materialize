@@ -6883,4 +6883,17 @@ code, pre {
   line-height: 1.1rem !important;
 }
 
-/*# sourceMappingURL=ghpages-materialize.css.map */
+#footer .footer-block {
+  display: inline-block;
+}
+#footer .footer-block a {
+  margin-left: 25px;
+  vertical-align: bottom;
+}
+
+@media only screen and (max-width: 992px) {
+  .footer-block {
+    display: block;
+    margin-bottom: 20px;
+  }
+}
