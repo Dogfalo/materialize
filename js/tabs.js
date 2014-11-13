@@ -78,19 +78,19 @@
         $index = 0;
       }
       // Change url to current tab
-      window.location.hash = $active.attr('href');
+//      window.location.hash = $active.attr('href');
       
       $content.show();
 
       // Update indicator
       if (($index - $prev_index) >= 0) {
-        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 325, queue: false, easing: 'easeOutQuad'});
+        $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
         setTimeout(function(){
           $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
         }, 60);
       }
       else {
-        $indicator.animate({"left": $index * $tab_width}, {duration: 325, queue: false, easing: 'easeOutQuad'});
+        $indicator.animate({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad'});
         setTimeout(function(){
           $indicator.animate({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
         }, 60);

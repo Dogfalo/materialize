@@ -43,6 +43,13 @@ p {
   pointer-events: none;
 }
 
+
+#responsive-img {
+  width: 85%;
+  display:block;
+  margin: 0 auto;
+}
+
 // Temp
 #github-button {
   @extend .red.lighten-2;
@@ -85,7 +92,7 @@ p {
   }
   
   i {
-    @extend .red-text.lighten-3;
+    @extend .red-text.lighten-2;
     font-size: 7rem;
     display: block;
   }
@@ -93,7 +100,7 @@ p {
 
 .promo-caption {
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 5px;
   margin-bottom: 0px;
 
@@ -136,6 +143,7 @@ p {
     width: 100%;
     padding: 0 15px;
     line-height: 55px;
+    font-weight: 700;
     font-size: 12px;
     display: block;
     @include box-sizing(border-box);

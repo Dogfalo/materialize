@@ -3544,10 +3544,10 @@ a {
 .red-text.lighten-1 {
   color: #ea454b;
 }
-.red-text.lighten-2, .header, #front-page-nav a {
+.red-text.lighten-2, .header, .promo i, #front-page-nav a {
   color: #ee6e73;
 }
-.red-text.lighten-3, .promo i {
+.red-text.lighten-3 {
   color: #f3989b;
 }
 .red-text.lighten-4, ul.tabs li.tab a:hover {
@@ -6703,6 +6703,12 @@ p {
   pointer-events: none;
 }
 
+#responsive-img {
+  width: 85%;
+  display: block;
+  margin: 0 auto;
+}
+
 #index-banner {
   margin-bottom: 25px;
 }
@@ -6738,7 +6744,7 @@ p {
 
 .promo-caption {
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 5px;
   margin-bottom: 0px;
 }
@@ -6765,6 +6771,7 @@ p {
   width: 100%;
   padding: 0 15px;
   line-height: 55px;
+  font-weight: 700;
   font-size: 12px;
   display: block;
   -webkit-box-sizing: border-box;
