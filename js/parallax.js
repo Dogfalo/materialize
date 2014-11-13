@@ -18,11 +18,7 @@
             var windowHeight = $(window).height();
             var windowBottom = scrollTop + windowHeight;
             var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
-            var parallax = -1 * parallax_dist * percentScrolled;
-            if (i === 0) {
-              console.log((windowBottom - top), (container_height + windowHeight), percentScrolled);
-            }
-      
+            var parallax = -1 * parallax_dist * percentScrolled;      
 
             if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) { 
               if (initial) {
