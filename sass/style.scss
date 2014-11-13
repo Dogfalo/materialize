@@ -214,7 +214,23 @@ p {
 // parallax demo
 .parallax-container {
   height: 70%;
+
+  .text-center {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -27px;
+  }
+
 }
+@media #{$medium-and-down} {
+  .parallax-container {
+    height: auto;
+  }
+}
+
+
 
 
 // Getting Started Styling

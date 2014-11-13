@@ -457,12 +457,29 @@ li {
   width: 100%;
 }
 
+@media only screen and (max-width: 992px) {
+  .parallax-container {
+    height: auto;
+  }
+
+  .parallax {
+    position: relative;
+    width: 100%;
+  }
+  .parallax img {
+    position: relative;
+  }
+}
 ul {
   list-style-type: none;
 }
 
 a {
   text-decoration: none;
+}
+
+.text-center {
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -6822,7 +6839,19 @@ p {
 .parallax-container {
   height: 70%;
 }
+.parallax-container .text-center {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-top: -27px;
+}
 
+@media only screen and (max-width: 992px) {
+  .parallax-container {
+    height: auto;
+  }
+}
 code, pre {
   font-size: 1.1rem;
 }
