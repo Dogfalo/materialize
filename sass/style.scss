@@ -80,6 +80,11 @@ p {
   color: #e5e5e5;
   font-size: .9rem;
 }
+@media #{$medium-and-down} {
+  .github-commit {
+    text-align: center;
+  }
+}
 
 #github-button {
   background-color: #6A6767;

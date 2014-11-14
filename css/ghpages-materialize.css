@@ -6790,6 +6790,11 @@ p {
   font-size: .9rem;
 }
 
+@media only screen and (max-width: 992px) {
+  .github-commit {
+    text-align: center;
+  }
+}
 #github-button {
   background-color: #6A6767;
   -webkit-transition: 0.25s ease;
@@ -6969,5 +6974,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */
