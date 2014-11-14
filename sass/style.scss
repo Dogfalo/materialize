@@ -61,13 +61,6 @@ p {
   margin: 0 auto;
 }
 
-// Temp
-#github-button {
-  @extend .red.lighten-2;
-//  line-height: 19px;
-  
-}
-
 #index-banner {
   @extend .red.lighten-2;
   .header {
@@ -86,6 +79,15 @@ p {
   background-color: #5B5555;
   color: #e5e5e5;
   font-size: .9rem;
+}
+
+#github-button {
+  background-color: #6A6767;
+  @include transition(.25s ease);
+  &:hover {
+//    @extend .z-depth-1;
+    background-color: #6f6d6d;
+  }
 }
 
 .sha {
