@@ -6782,9 +6782,9 @@ p {
 }
 
 .github-commit {
-  padding: 7px 0;
-  height: 50px;
-  line-height: 50px;
+  padding: 14px 0;
+  height: 36px;
+  line-height: 36px;
   background-color: #5B5555;
   color: #e5e5e5;
   font-size: .9rem;
@@ -6957,5 +6957,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */
