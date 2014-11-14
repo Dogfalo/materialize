@@ -161,6 +161,10 @@ table, th, td {
 table {
   width:100%;
   display: table;
+  
+  &.bordered td {
+    border-bottom: 1px solid #e0e0e0;
+  }
 }
 
 thead {
@@ -174,8 +178,3 @@ td, th{
   vertical-align: middle;
   border-radius: 2px;
 }
-
-tr {
-  
-}
-

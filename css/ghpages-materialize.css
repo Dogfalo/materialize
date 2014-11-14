@@ -537,6 +537,9 @@ table {
   width: 100%;
   display: table;
 }
+table.bordered td {
+  border-bottom: 1px solid #e0e0e0;
+}
 
 thead {
   border-bottom: 1px solid #878787;
