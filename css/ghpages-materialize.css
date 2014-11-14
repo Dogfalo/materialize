@@ -6280,7 +6280,19 @@ ul.tabs li.tab {
   display: none;
   background-color: #eee;
   padding: 24px;
-  max-width: 60%;
+  max-height: 70%;
+  max-width: 55%;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  overflow-y: auto;
+  border-radius: 2px;
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -ms-transform: translate(0);
+  -o-transform: translate(0);
+  transform: translate(0);
 }
 .modal h1, .modal h2, .modal h3, .modal h4 {
   margin-top: 0;
@@ -6288,13 +6300,18 @@ ul.tabs li.tab {
 
 #lean_overlay {
   position: fixed;
-  z-index: 100;
+  z-index: 999;
   top: 0px;
   left: 0px;
-  height: 100%;
-  width: 100%;
+  height: 120%;
+  width: 120%;
   background: #000;
   display: none;
+}
+
+.modal-action {
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 ul.collapsible {
@@ -6689,7 +6706,7 @@ p {
 .caption {
   font-size: 1.25rem;
   font-weight: 300;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .preview {
@@ -6837,7 +6854,7 @@ p {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 998;
+  z-index: 10;
 }
 
 .shadow-demo {
@@ -6897,3 +6914,5 @@ code, pre {
     margin-bottom: 20px;
   }
 }
+
+/*# sourceMappingURL=ghpages-materialize.css.map */
