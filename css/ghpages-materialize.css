@@ -6621,19 +6621,20 @@ ul.table-of-contents a {
   display: inline-block;
   font-weight: 300;
   color: #757575;
-  padding-left: 25px;
+  padding-left: 20px;
   height: 1.5rem;
   line-height: 1.5rem;
+  letter-spacing: .4;
   display: inline-block;
 }
 ul.table-of-contents a:hover {
   color: #a8a8a8;
-  padding-left: 24px;
+  padding-left: 19px;
   border-left: 1px solid #ea4a4f;
 }
 ul.table-of-contents a.active {
   font-weight: 600;
-  padding-left: 23px;
+  padding-left: 18px;
   border-left: 2px solid #ea4a4f;
 }
 
@@ -6928,5 +6929,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */
