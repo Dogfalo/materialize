@@ -6770,8 +6770,8 @@ p {
   width: 200px;
   height: 70px;
   line-height: 70px;
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
 }
 #download-button:hover {
   background-color: #f5a5a8;

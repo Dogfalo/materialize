@@ -6614,17 +6614,28 @@ form p:last-child {
 ul.table-of-contents.fixed {
   position: fixed;
 }
+ul.table-of-contents li {
+  padding: 2px 0;
+}
 ul.table-of-contents a {
+  display: inline-block;
+  font-weight: 300;
   color: #757575;
+  padding-left: 20px;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: .4;
+  display: inline-block;
 }
 ul.table-of-contents a:hover {
   color: #a8a8a8;
-  padding-right: 10px;
-  border-right: 1px solid #ea4a4f;
+  padding-left: 19px;
+  border-left: 1px solid #ea4a4f;
 }
 ul.table-of-contents a.active {
-  padding-right: 10px;
-  border-right: 4px solid #ea4a4f;
+  font-weight: 600;
+  padding-left: 18px;
+  border-left: 2px solid #ea4a4f;
 }
 
 @media only screen and (max-width: 992px) {
@@ -6679,5 +6690,3 @@ ul.table-of-contents a.active {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-
-/*# sourceMappingURL=materialize.css.map */
