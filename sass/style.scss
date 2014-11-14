@@ -85,7 +85,8 @@ p {
   width: 200px;
   height: 70px;
   line-height: 70px;
-  font-size: 19px;
+  font-size: 18px;
+  font-weight: 400;
 
   &:hover {
     background-color: lighten(color("red"), 30%);

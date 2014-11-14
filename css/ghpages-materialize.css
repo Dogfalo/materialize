@@ -5750,6 +5750,7 @@ ul.tabs li.tab {
   padding: 10px 11px;
   font-size: 12px;
   line-height: 12px;
+  border-radius: 2px;
   white-space: nowrap;
 }
 
@@ -6770,8 +6771,8 @@ p {
   width: 200px;
   height: 70px;
   line-height: 70px;
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
 }
 #download-button:hover {
   background-color: #f5a5a8;
@@ -6929,3 +6930,5 @@ code, pre {
     margin-bottom: 20px;
   }
 }
+
+/*# sourceMappingURL=ghpages-materialize.css.map */
