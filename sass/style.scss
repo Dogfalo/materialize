@@ -91,11 +91,12 @@ p {
   @include transition(.25s ease);
   &:hover {
 //    @extend .z-depth-1;
-    background-color: #6f6d6d;
+    background-color: #716f6f;
   }
 }
 
 .sha {
+  color: #efefef ;
  margin: 0 6px 0 6px;
 }
 
@@ -270,12 +271,6 @@ p {
     height: auto;
   }
 }
-
-
-
-
-// Getting Started Styling
-
 
 // Prism Styling
 code, pre {

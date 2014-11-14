@@ -6804,10 +6804,11 @@ p {
   transition: 0.25s ease;
 }
 #github-button:hover {
-  background-color: #6f6d6d;
+  background-color: #716f6f;
 }
 
 .sha {
+  color: #efefef;
   margin: 0 6px 0 6px;
 }
 
