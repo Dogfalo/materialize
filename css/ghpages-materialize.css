@@ -5767,6 +5767,7 @@ ul.tabs li.tab {
   padding: 10px 11px;
   font-size: 12px;
   line-height: 12px;
+  border-radius: 2px;
   white-space: nowrap;
 }
 
@@ -6949,3 +6950,5 @@ code, pre {
     margin-bottom: 20px;
   }
 }
+
+/*# sourceMappingURL=ghpages-materialize.css.map */
