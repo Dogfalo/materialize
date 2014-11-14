@@ -1,4 +1,5 @@
-function toast(message, displayLength) {
+function toast(message, displayLength, className) {
+    className = className || "";
     if ($('#toast-container').length == 0) {
         // create notification container
         var container = $('<div></div>')
@@ -25,6 +26,7 @@ function toast(message, displayLength) {
     function createToast(message) {
         var toast = $('<div></div>');
         toast.addClass('toast');
+        toast.addClass(className);
         var text = $('<span></span>');
         text.text(message);
         toast.append(text);
