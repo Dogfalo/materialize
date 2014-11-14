@@ -6284,7 +6284,6 @@ ul.tabs li.tab {
   max-width: 55%;
   left: 0;
   right: 0;
-  top: 10%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
@@ -6293,6 +6292,11 @@ ul.tabs li.tab {
   -ms-transform: translate(0);
   -o-transform: translate(0);
   transform: translate(0);
+}
+@media only screen and (max-width: 992px) {
+  .modal {
+    max-width: 80%;
+  }
 }
 .modal h1, .modal h2, .modal h3, .modal h4 {
   margin-top: 0;

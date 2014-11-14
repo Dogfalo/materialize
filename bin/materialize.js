@@ -327,7 +327,7 @@ jQuery.extend( jQuery.easing,
         		
         		});
 
-        		$(modal_id).animate({opacity: 1}, {duration: 350, easing: 'easeOutQuart'});
+        		$(modal_id).animate({top: '10%', opacity: 1}, {duration: 350, easing: 'easeOutQuart'});
 
                 e.preventDefault();
                 		
@@ -338,7 +338,7 @@ jQuery.extend( jQuery.easing,
 			function close_modal(modal_id){
         		$("#lean_overlay").fadeOut(200);
                 $(modal_id).fadeOut(200, function() {
-//                    $(this).css('top', 0);
+                    $(this).css('top', 0);
                 });
 			
 			}
