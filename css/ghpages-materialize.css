@@ -6593,17 +6593,27 @@ form p:last-child {
 ul.table-of-contents.fixed {
   position: fixed;
 }
+ul.table-of-contents li {
+  padding: 2px 0;
+}
 ul.table-of-contents a {
+  display: inline-block;
+  font-weight: 300;
   color: #757575;
+  padding-left: 25px;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  display: inline-block;
 }
 ul.table-of-contents a:hover {
   color: #a8a8a8;
-  padding-right: 10px;
-  border-right: 1px solid #ea4a4f;
+  padding-left: 24px;
+  border-left: 1px solid #ea4a4f;
 }
 ul.table-of-contents a.active {
-  padding-right: 10px;
-  border-right: 4px solid #ea4a4f;
+  font-weight: 600;
+  padding-left: 23px;
+  border-left: 2px solid #ea4a4f;
 }
 
 @media only screen and (max-width: 992px) {
