@@ -61,13 +61,6 @@ p {
   margin: 0 auto;
 }
 
-// Temp
-#github-button {
-  @extend .red.lighten-2;
-//  line-height: 19px;
-  
-}
-
 #index-banner {
   @extend .red.lighten-2;
   .header {
@@ -76,8 +69,34 @@ p {
   h4 {
     margin-bottom: 40px;
   }
-  
-  margin-bottom: 25px;
+}
+
+// Latest commit widget
+.github-commit {
+  padding: 14px 0;
+  height: 36px;
+  line-height: 36px;
+  background-color: #5B5555;
+  color: #e5e5e5;
+  font-size: .9rem;
+}
+@media #{$medium-and-down} {
+  .github-commit {
+    text-align: center;
+  }
+}
+
+#github-button {
+  background-color: #6A6767;
+  @include transition(.25s ease);
+  &:hover {
+//    @extend .z-depth-1;
+    background-color: #6f6d6d;
+  }
+}
+
+.sha {
+ margin: 0 6px 0 6px;
 }
 
 #download-button {

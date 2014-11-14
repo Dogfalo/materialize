@@ -402,6 +402,14 @@ a {
   text-decoration: none;
 }
 
+.left-align {
+  float: left;
+}
+
+.right-align {
+  float: right;
+}
+
 ul {
   padding: 0;
 }
@@ -3511,7 +3519,7 @@ li {
 .red.lighten-1, nav ul li:hover, nav ul li.active {
   background-color: #ea454b;
 }
-.red.lighten-2, nav, ul.tabs .indicator, #github-button, #index-banner {
+.red.lighten-2, nav, ul.tabs .indicator, #index-banner {
   background-color: #ee6e73;
 }
 .red.lighten-3, #download-button {
@@ -4828,8 +4836,17 @@ li {
 }
 
 .section {
-  padding-top: 2%;
+  padding-top: 3%;
   padding-bottom: 3%;
+}
+.section.no-pad {
+  padding: 0;
+}
+.section.no-pad-bot {
+  padding-bottom: 0;
+}
+.section.no-pad-top {
+  padding-top: 0;
 }
 
 .section .row {
@@ -6757,14 +6774,41 @@ p {
   margin: 0 auto;
 }
 
-#index-banner {
-  margin-bottom: 25px;
-}
 #index-banner .header {
   color: #FFF;
 }
 #index-banner h4 {
   margin-bottom: 40px;
+}
+
+.github-commit {
+  padding: 14px 0;
+  height: 36px;
+  line-height: 36px;
+  background-color: #5B5555;
+  color: #e5e5e5;
+  font-size: .9rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .github-commit {
+    text-align: center;
+  }
+}
+#github-button {
+  background-color: #6A6767;
+  -webkit-transition: 0.25s ease;
+  -moz-transition: 0.25s ease;
+  -o-transition: 0.25s ease;
+  -ms-transition: 0.25s ease;
+  transition: 0.25s ease;
+}
+#github-button:hover {
+  background-color: #6f6d6d;
+}
+
+.sha {
+  margin: 0 6px 0 6px;
 }
 
 #download-button {
@@ -6930,5 +6974,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */

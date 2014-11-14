@@ -28,7 +28,6 @@
     if ($index < 0) {
       $index = 0;
     }
-      console.log("Resize index", $index, $links);
 
     $content = $($active[0].hash);
     
