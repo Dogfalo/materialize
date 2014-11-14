@@ -28,7 +28,7 @@ p {
 .caption {
   font-size: 1.25rem;
   font-weight: 300;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .preview {
@@ -126,7 +126,10 @@ p {
   li {
     &:hover {
       @extend .red.lighten-5; 
-    } 
+    }
+    .active {
+      @extend .red.lighten-5;
+    }
   }
   .container {
     height: inherit;
@@ -207,7 +210,7 @@ p {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 998;
+    z-index: 10;
   }
 }
 
