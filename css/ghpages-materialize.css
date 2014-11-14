@@ -6782,9 +6782,16 @@ p {
 }
 
 .github-commit {
-  padding: 30px 0;
-  height: 36px;
-  line-height: 36px;
+  padding: 7px 0;
+  height: 50px;
+  line-height: 50px;
+  background-color: #5B5555;
+  color: #e5e5e5;
+  font-size: .9rem;
+}
+
+.sha {
+  margin: 0 6px 0 6px;
 }
 
 #download-button {
