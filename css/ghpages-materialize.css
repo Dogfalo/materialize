@@ -6284,7 +6284,7 @@ ul.tabs li.tab {
   max-width: 55%;
   left: 0;
   right: 0;
-  top: 0;
+  top: 10%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;

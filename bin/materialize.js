@@ -314,17 +314,15 @@ jQuery.extend( jQuery.easing,
         		$('#lean_overlay').css({ 'display' : 'block', opacity : 0 });
 
         		$('#lean_overlay').fadeTo(200, o.overlay);
-                  
-                $(".modal").height($(".modal").height());
-                var modal_height = $(modal_id).outerHeight();
-        	  	var modal_width = $(modal_id).outerWidth();
-                  
+//                
+//                var modal_height = $(modal_id).outerHeight();
+//        	  	var modal_width = $(modal_id).outerWidth();
+//                  
         		$(modal_id).css({ 
         		
         			'display' : 'block',
         			'position' : 'fixed',
         			'opacity' : 0,
-                    'bottom' : '15%',
         			'z-index': 1000
         		
         		});
