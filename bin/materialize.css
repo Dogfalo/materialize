@@ -5750,6 +5750,7 @@ ul.tabs li.tab {
   padding: 10px 11px;
   font-size: 12px;
   line-height: 12px;
+  border-radius: 2px;
   white-space: nowrap;
 }
 
@@ -6690,3 +6691,5 @@ ul.table-of-contents a.active {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
+/*# sourceMappingURL=materialize.css.map */
