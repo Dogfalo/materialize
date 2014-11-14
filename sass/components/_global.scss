@@ -22,6 +22,16 @@ a {
 	text-decoration: none;
 }
 
+
+// Generic Floats
+.left-align {
+  float: left;
+}
+.right-align {
+  float: right
+}
+
+
 // Grid Variables
 $num-cols: 12;
 $gutter-width: 1rem;

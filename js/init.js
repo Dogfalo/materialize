@@ -63,6 +63,21 @@
       }
     });
 
+    // Github Latest Commit
+    if ($('.github-commit').length) { // Checks if widget div exists (Index only)
+      $.ajax({
+        url: "https://api.github.com/repos/dogfalo/materialize/commits/master",
+        dataType: "json", 
+        success: function (data) {
+          $('.github-commit').find('.date').html(jQuery.timeago(data.commit.author.date));
+          $('.github-commit').find('.sha').html(data.sha).attr('href', data.html_url);
+          console.log(returndata, returndata.commit.author.date, returndata.sha);
+        }  
+      });      
+    }
+
+
+
     // PLugin initialization
     $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown();

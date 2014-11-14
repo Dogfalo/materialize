@@ -20,8 +20,18 @@
 }
 
 .section {
-	padding-top: 2%;
+	padding-top: 3%;
 	padding-bottom: 3%;
+
+  &.no-pad {
+    padding: 0;
+  }
+  &.no-pad-bot {
+    padding-bottom: 0;
+  }
+  &.no-pad-top {
+    padding-top: 0;
+  }
 }
 
 .section .row {

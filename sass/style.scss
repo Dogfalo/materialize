@@ -76,8 +76,13 @@ p {
   h4 {
     margin-bottom: 40px;
   }
-  
-  margin-bottom: 25px;
+}
+
+// Latest commit widget
+.github-commit {
+  padding: 30px 0;
+  height: 36px;
+  line-height: 36px;
 }
 
 #download-button {
