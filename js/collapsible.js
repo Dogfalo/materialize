@@ -13,10 +13,16 @@
 
       $panel_headers.each(function () {
         $(this).click(function () {
+          
           $(this).parent().toggleClass('active');
-          $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
+          if ($(this).parent().hasClass('active')){
+            $(this).siblings('.collapsible-body').stop(true,false).slideDown({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
+          else{
+            $(this).siblings('.collapsible-body').stop(true,false).slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
           $panel_headers.not($(this)).parent().removeClass('active');
-          $panel_headers.not($(this)).parent().children('.collapsible-body').slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
+          $panel_headers.not($(this)).parent().children('.collapsible-body').stop(true,false).slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
         });
       });
 
@@ -25,13 +31,14 @@
       $panel_headers.each(function () {
         $(this).click(function () {
           $(this).parent().toggleClass('active');
-          $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
+          if ($(this).parent().hasClass('active')){
+            $(this).siblings('.collapsible-body').stop(true,false).slideDown({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
+          else{
+            $(this).siblings('.collapsible-body').stop(true,false).slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
         });
       });
     }
-
-
-    
-    
   };
 }( jQuery ));
