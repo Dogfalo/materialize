@@ -12,15 +12,14 @@
   }
   @media #{$large-and-up} {
     min-width: 8%;
-    top: 12%;
+    top: 10%;
     right: 7%;
   }
 }
 .toast {
-  
+  @extend .z-depth-1;
   width: auto;
   clear: both;
-  @extend .z-depth-1;
   margin: 5px auto;
   position: relative;
   max-width:100%;
@@ -33,8 +32,9 @@
   display: block;
   top: 0px;
   &.rounded{
-    border-radius:24px;
+    border-radius: 24px;
   }
+  
   @media #{$small-and-down} {
     width:100%;
   }

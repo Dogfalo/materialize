@@ -80,10 +80,19 @@
               <pre><code class="language-javascript">
           toast('I am a toast!', 3000) // 3000 is the duration of the toast
               </code></pre>
-              <br>
-              One way to add this into your application is to add this as an onclick event to a button
+              <p>One way to add this into your application is to add this as an onclick event to a button</p>
               <pre><code class="language-markup">
           &lt;a class="btn" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
+              </code></pre>
+              
+              
+              <h4>Styling Toasts</h4>
+              <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+              
+              <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
+              
+              <pre><code class="language-javascript">
+          toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
               </code></pre>
             </div>
           </div>

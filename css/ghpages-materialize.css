@@ -5266,40 +5266,40 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h1 {
   font-size: 4.1rem;
   line-height: 4.51rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: -0.1rem;
 }
 
 h2 {
   font-size: 3.21rem;
   line-height: 3.531rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
 }
 
 h3 {
   font-size: 2.42rem;
   line-height: 2.662rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
 }
 
 h4 {
   font-size: 1.71rem;
   line-height: 1.881rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: .05rem;
 }
 
 h5 {
   font-size: 1.42rem;
   line-height: 1.562rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: .05rem;
 }
 
 h6 {
   font-size: 1rem;
   line-height: 1.1rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: .03rem;
 }
 
@@ -5611,7 +5611,7 @@ small {
 @media only screen and (min-width: 992px) {
   #toast-container {
     min-width: 8%;
-    top: 12%;
+    top: 10%;
     right: 7%;
   }
 }
@@ -6747,8 +6747,8 @@ p {
   padding: 0;
 }
 
-.row h3 {
-  margin: 30px 0 20px 0;
+.row h4 {
+  margin-top: 30px;
 }
 
 .header {
