@@ -6804,7 +6804,7 @@ p {
   padding: 14px 0;
   height: 36px;
   line-height: 36px;
-  background-color: #5B5555;
+  background-color: #5c5757;
   color: #e5e5e5;
   font-size: .9rem;
 }
@@ -6815,7 +6815,7 @@ p {
   }
 }
 #github-button {
-  background-color: #6A6767;
+  background-color: #6f6d6d;
   -webkit-transition: 0.25s ease;
   -moz-transition: 0.25s ease;
   -o-transition: 0.25s ease;
@@ -6823,11 +6823,11 @@ p {
   transition: 0.25s ease;
 }
 #github-button:hover {
-  background-color: #716f6f;
+  background-color: #797777;
 }
 
 .sha {
-  color: #efefef;
+  color: #f0f0f0;
   margin: 0 6px 0 6px;
 }
 
@@ -6843,7 +6843,7 @@ p {
 }
 
 .promo {
-  padding: 0 20px;
+  padding: 0 15px;
 }
 .promo img {
   width: 95%;
