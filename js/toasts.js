@@ -15,10 +15,10 @@ function toast(message, displayLength, className) {
     newToast.animate({"top" : "+35px"
                     , "opacity": 0}, 0);
     newToast.animate({"top" : "0px"
-                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
+                            , opacity: 1}, {duration: 250, easing: 'easeOutCubic'});
         newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
-        .slideUp(200, function(){
+        .animate({"opacity": 0}, {duration: 250, easing: 'easeInExpo'})
+        .slideUp(250, function(){
             $(this).remove();
         });
     

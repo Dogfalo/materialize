@@ -228,10 +228,16 @@ jQuery.extend( jQuery.easing,
 
       $panel_headers.each(function () {
         $(this).click(function () {
+          
           $(this).parent().toggleClass('active');
-          $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
+          if ($(this).parent().hasClass('active')){
+            $(this).siblings('.collapsible-body').stop(true,false).slideDown({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
+          else{
+            $(this).siblings('.collapsible-body').stop(true,false).slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
           $panel_headers.not($(this)).parent().removeClass('active');
-          $panel_headers.not($(this)).parent().children('.collapsible-body').slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
+          $panel_headers.not($(this)).parent().children('.collapsible-body').stop(true,false).slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
         });
       });
 
@@ -240,14 +246,15 @@ jQuery.extend( jQuery.easing,
       $panel_headers.each(function () {
         $(this).click(function () {
           $(this).parent().toggleClass('active');
-          $(this).siblings('.collapsible-body').slideToggle({ duration: 300, easing: "easeOutCubic", queue: false});
+          if ($(this).parent().hasClass('active')){
+            $(this).siblings('.collapsible-body').stop(true,false).slideDown({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
+          else{
+            $(this).siblings('.collapsible-body').stop(true,false).slideUp({ duration: 300, easing: "easeOutCubic", queue: false});
+          }
         });
       });
     }
-
-
-    
-    
   };
 }( jQuery ));(function ($) {
   $.fn.dropdown = function () {
@@ -994,7 +1001,8 @@ jQuery.extend( jQuery.easing,
   });
 
   };
-}( jQuery ));function toast(message, displayLength) {
+}( jQuery ));function toast(message, displayLength, className) {
+    className = className || "";
     if ($('#toast-container').length == 0) {
         // create notification container
         var container = $('<div></div>')
@@ -1010,10 +1018,10 @@ jQuery.extend( jQuery.easing,
     newToast.animate({"top" : "+35px"
                     , "opacity": 0}, 0);
     newToast.animate({"top" : "0px"
-                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
+                            , opacity: 1}, {duration: 250, easing: 'easeOutCubic'});
         newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
-        .slideUp(200, function(){
+        .animate({"opacity": 0}, {duration: 250, easing: 'easeInExpo'})
+        .slideUp(250, function(){
             $(this).remove();
         });
     
@@ -1021,6 +1029,7 @@ jQuery.extend( jQuery.easing,
     function createToast(message) {
         var toast = $('<div></div>');
         toast.addClass('toast');
+        toast.addClass(className);
         var text = $('<span></span>');
         text.text(message);
         toast.append(text);
