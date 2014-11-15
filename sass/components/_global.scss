@@ -153,3 +153,27 @@ $num-cols: 12;
   }
 }
 
+// List 
+.collection {
+  margin-top: 100px;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  .collection-item {
+    padding: 10px 15px;
+    margin: 0px;
+    border-bottom: 1px solid #e0e0e0;
+      &:last-child {
+        border-bottom: none;
+      } 
+  }
+  
+  a.collection-item{
+    display: block;
+    @include transition(.28s);
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+         
+    
+}

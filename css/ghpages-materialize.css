@@ -529,6 +529,31 @@ li {
   line-height: 30px;
 }
 
+.collection {
+  margin-top: 100px;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+}
+.collection .collection-item {
+  padding: 10px 15px;
+  margin: 0px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.collection .collection-item:last-child {
+  border-bottom: none;
+}
+.collection a.collection-item {
+  display: block;
+  -webkit-transition: 0.28s;
+  -moz-transition: 0.28s;
+  -o-transition: 0.28s;
+  -ms-transition: 0.28s;
+  transition: 0.28s;
+}
+.collection a.collection-item:hover {
+  background-color: #e0e0e0;
+}
+
 @font-face {
   font-family: "Material-Design-Icons";
   src: url("../font/material-design-icons/Material-Design-Icons.eot?-g7cqhn");
@@ -6626,6 +6651,9 @@ form p:last-child {
   border-color: #7c7c7c;
 }
 
+/*************
+   Selects 
+*************/
 /***************
     Nav List
 ***************/
@@ -6786,7 +6814,7 @@ p {
   height: 36px;
   line-height: 36px;
   background-color: #5B5555;
-  color: #e5e5e5;
+  color: #d6d6d6;
   font-size: .9rem;
 }
 

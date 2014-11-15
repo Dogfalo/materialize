@@ -77,7 +77,7 @@ p {
   height: 36px;
   line-height: 36px;
   background-color: #5B5555;
-  color: #e5e5e5;
+  color: #d6d6d6;
   font-size: .9rem;
 }
 @media #{$medium-and-down} {
@@ -90,7 +90,6 @@ p {
   background-color: #6A6767;
   @include transition(.25s ease);
   &:hover {
-//    @extend .z-depth-1;
     background-color: #716f6f;
   }
 }
