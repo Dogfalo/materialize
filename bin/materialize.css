@@ -5232,7 +5232,7 @@ a {
 
 html {
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "RobotoDraft", "Roboto", sans-serif;
   font-weight: normal;
   color: #212121;
 }
@@ -5253,8 +5253,8 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #212121;
-  font-family: "Roboto", sans-serif;
+  color: inherit;
+  font-family: "RobotoDraft", "Roboto", sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
@@ -6417,7 +6417,7 @@ ul.collapsible {
 input {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid #757575;
   outline: none;
   height: 3em;
   width: 100%;
@@ -6438,10 +6438,10 @@ input {
 }
 
 input:focus {
-  border-bottom: 1px solid #00BCD4;
-  -webkit-box-shadow: 0 1px 0 0 #00BCD4;
-  -moz-box-shadow: 0 1px 0 0 #00BCD4;
-  box-shadow: 0 1px 0 0 #00BCD4;
+  border-bottom: 1px solid #4059a9;
+  -webkit-box-shadow: 0 1px 0 0 #4059a9;
+  -moz-box-shadow: 0 1px 0 0 #4059a9;
+  box-shadow: 0 1px 0 0 #4059a9;
 }
 
 /***************
