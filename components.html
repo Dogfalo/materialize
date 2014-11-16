@@ -413,7 +413,7 @@
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
-              <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="mdi-navigation-menu"></i></a>
+              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
               <ul class="right side-nav">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="components.html">Components</a></li>
@@ -433,7 +433,7 @@
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
         &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
       &lt;/ul>
-      &lt;a class="button-collapse" href="#" data-activates='nav-mobile'>&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+      &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
     &lt;/div>
   &lt;/nav>
         </code></pre>
@@ -445,7 +445,7 @@
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="#!" class="brand-logo right">Logo</a>
-            <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="mdi-navigation-menu"></i></a>
+            <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
             <ul class="left side-nav">
               <li><a href="sass.html">Sass</a></li>
               <li><a href="components.html">Components</a></li>
@@ -465,10 +465,20 @@
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
         &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
       &lt;/ul>
-      &lt;a class="button-collapse" href="#" data-activates='nav-mobile'>&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+      &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
     &lt;/div>
   &lt;/nav>
         </code></pre>
+      <br>
+      <div class="col s12">
+        <h4 class="header">Mobile Collapse Button</h4>
+        <p>If you already included the code for the button collapse as we did in the examples above, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
+        <pre><code class="language-javascript">
+  $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
+      
+        
       </div>
     </div>
   	
@@ -487,7 +497,7 @@
   					<div class="card-footer">
   						<p>Footer</p>
   						<p>Sample content</p>
-  						<a class='card-action' href='#'>This is a link</a>
+  						<a class="card-action" href="#">This is a link</a>
   						<a class='card-action' href='#'>This is a link</a>
   					</div>
   				</div>
@@ -520,8 +530,8 @@
     			&lt;p>Footer&lt;/p>
     			&lt;p>Sample content&lt;/p>
     			&lt;p>Sample content&lt;/p>
-    			&lt;a class='card-action' href='#'>This is a link&lt;/a>
-    			&lt;a class='card-action' href='#'>This is a link&lt;/a>
+    			&lt;a class="card-action" href="#">This is a link&lt;/a>
+    			&lt;a class="card-action" href="#">This is a link&lt;/a>
     		&lt;/div>
     	&lt;/div>
     &lt;/div>
@@ -537,8 +547,8 @@
           &lt;p>Footer&lt;/p>
           &lt;p>Sample content&lt;/p>
           &lt;p>Sample content&lt;/p>
-          &lt;a class='card-action' href='#'>This is a link&lt;/a>
-          &lt;a class='card-action' href='#'>This is a link&lt;/a>
+          &lt;a class="card-action" href="#">This is a link&lt;/a>
+          &lt;a class="card-action" href="#">This is a link&lt;/a>
         &lt;/div>
       &lt;/div>
     &lt;/div>
