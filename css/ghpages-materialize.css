@@ -5253,7 +5253,6 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #212121;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
@@ -6412,9 +6411,9 @@ ul.collapsible {
 }
 
 /***************
-    Inputs 
+   Text Inputs 
 ***************/
-input {
+input[type=text] {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #bdbdbd;
@@ -6437,7 +6436,7 @@ input {
   transition: 0.3s;
 }
 
-input:focus {
+input[type=text]:focus {
   border-bottom: 1px solid #00BCD4;
   -webkit-box-shadow: 0 1px 0 0 #00BCD4;
   -moz-box-shadow: 0 1px 0 0 #00BCD4;
@@ -6643,6 +6642,18 @@ form p:last-child {
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
   border-color: #7c7c7c;
+}
+
+/***************
+      Range 
+***************/
+input[type=range] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin: 15px 0px;
+  padding: 0;
 }
 
 /***************
