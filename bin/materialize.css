@@ -5266,40 +5266,40 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h1 {
   font-size: 4.1rem;
   line-height: 4.51rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: -0.1rem;
 }
 
 h2 {
   font-size: 3.21rem;
   line-height: 3.531rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
 }
 
 h3 {
   font-size: 2.42rem;
   line-height: 2.662rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
 }
 
 h4 {
   font-size: 1.71rem;
   line-height: 1.881rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: .05rem;
 }
 
 h5 {
   font-size: 1.42rem;
   line-height: 1.562rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: .05rem;
 }
 
 h6 {
   font-size: 1rem;
   line-height: 1.1rem;
-  margin: .25rem 0 .7rem 0;
+  margin: .25rem 0 .25rem 0;
   letter-spacing: .03rem;
 }
 
@@ -5595,7 +5595,7 @@ small {
   display: block;
   position: fixed;
 }
-@media only screen and (min-width: 0) and (max-width: 992px) {
+@media only screen and (max-width: 600px) {
   #toast-container {
     min-width: 100%;
     bottom: 0%;
@@ -5617,26 +5617,45 @@ small {
 }
 
 .toast {
-  margin: 10px auto;
+  width: auto;
+  clear: both;
+  margin: 5px auto;
   position: relative;
-  width: 100%;
+  max-width: 100%;
   height: 40px;
+  line-height: 40px;
   background-color: #323232;
-  padding: 10px 15px;
+  padding: 0px 22px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 2px;
-  display: table;
+  display: block;
   top: 0px;
+}
+.toast.rounded {
+  border-radius: 24px;
+}
+@media only screen and (max-width: 600px) {
+  .toast {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .toast {
+    float: left;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .toast {
+    float: right;
+  }
 }
 .toast span {
   padding: 0px;
   font-size: 1.1rem;
   font-weight: 300;
-  display: table-cell;
   color: #FFF;
-  vertical-align: middle;
   text-align: center;
 }
 

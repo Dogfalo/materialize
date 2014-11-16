@@ -16,8 +16,8 @@ p {
   
 }
 
-.row h3 {
- margin: 30px 0 20px 0; 
+.row h4 {
+  margin-top: 30px;
 }
 
 .header {
@@ -76,7 +76,7 @@ p {
   padding: 14px 0;
   height: 36px;
   line-height: 36px;
-  background-color: #5B5555;
+  background-color: hsl(0, 3%, 35%);
   color: #e5e5e5;
   font-size: .9rem;
 }
@@ -87,15 +87,16 @@ p {
 }
 
 #github-button {
-  background-color: #6A6767;
+  background-color: #6f6d6d;
   @include transition(.25s ease);
   &:hover {
 //    @extend .z-depth-1;
-    background-color: #6f6d6d;
+    background-color: #797777;
   }
 }
 
 .sha {
+  color: hsl(0, 0%, 94%) ;
  margin: 0 6px 0 6px;
 }
 
@@ -113,11 +114,10 @@ p {
 }
 
 
-
 .promo{
-  padding: 0 20px;
+  padding: 0 15px;
   img {
-    width:85%;
+    width:95%;
     margin-bottom:1.5rem;
   }
   
@@ -270,12 +270,6 @@ p {
     height: auto;
   }
 }
-
-
-
-
-// Getting Started Styling
-
 
 // Prism Styling
 code, pre {
