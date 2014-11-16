@@ -5232,7 +5232,7 @@ a {
 
 html {
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "RobotoDraft", "Roboto", sans-serif;
   font-weight: normal;
   color: #212121;
 }
@@ -5253,8 +5253,8 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #212121;
-  font-family: "Roboto", sans-serif;
+  color: inherit;
+  font-family: "RobotoDraft", "Roboto", sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
