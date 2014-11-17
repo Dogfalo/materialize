@@ -6733,6 +6733,9 @@ ul.table-of-contents a.active {
   #front-page-nav ul.side-nav li:hover {
     background-color: #ddd;
   }
+  #front-page-nav ul.side-nav li .active {
+    background-color: transparent;
+  }
   #front-page-nav ul.side-nav a {
     color: #444;
   }
@@ -6744,5 +6747,3 @@ ul.table-of-contents a.active {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-
-/*# sourceMappingURL=materialize.css.map */

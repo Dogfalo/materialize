@@ -6733,6 +6733,9 @@ ul.table-of-contents a.active {
   #front-page-nav ul.side-nav li:hover {
     background-color: #ddd;
   }
+  #front-page-nav ul.side-nav li .active {
+    background-color: transparent;
+  }
   #front-page-nav ul.side-nav a {
     color: #444;
   }
@@ -7011,5 +7014,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */
