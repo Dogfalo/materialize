@@ -521,6 +521,12 @@ li {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .center-on-small-only {
+    text-align: center;
+  }
+}
+
 #footer {
   text-align: center;
 }

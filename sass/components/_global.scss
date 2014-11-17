@@ -142,6 +142,13 @@ $num-cols: 12;
   }
 }
 
+// Center text on mobile 
+.center-on-small-only {
+  @media #{$small-and-down} {
+    text-align: center;
+  } 
+}
+
 
 // Footer
 #footer {
