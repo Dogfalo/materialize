@@ -156,7 +156,8 @@ $num-cols: 12;
 // Collections
 
 .collection {
-  margin-top: 100px;
+  background-color: #FFF;
+  margin: 20px 20px;
   border: 1px solid #e0e0e0;
   border-radius: 2px;
   .collection-item {
@@ -171,8 +172,10 @@ $num-cols: 12;
   a.collection-item{
     display: block;
     @include transition(.28s);
-    &:hover {
-      background-color: #e0e0e0;
+    &:not(.active) {
+      &:hover {
+        background-color: #f2f2f2;
+      }
     }
   }    
   
@@ -188,5 +191,10 @@ $num-cols: 12;
   
   .secondary-action {
     float: right;
+  }
+  
+  .active {
+    @extend .blue.lighten-1;
+    @extend .blue-text.lighten-4;
   }
 }
