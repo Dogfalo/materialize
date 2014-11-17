@@ -535,7 +535,7 @@ li {
   border-radius: 2px;
 }
 .collection .collection-item {
-  padding: 10px 15px;
+  padding: 10px 20px;
   margin: 0px;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -552,6 +552,15 @@ li {
 }
 .collection a.collection-item:hover {
   background-color: #e0e0e0;
+}
+.collection.with-header .collection-header {
+  padding: 10px 20px;
+}
+.collection.with-header .collection-item {
+  padding-left: 30px;
+}
+.collection.with-header .collection-item:first-child {
+  border-top: 1px solid #e0e0e0;
 }
 
 @font-face {
