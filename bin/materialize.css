@@ -554,13 +554,14 @@ li {
   background-color: #e0e0e0;
 }
 .collection.with-header .collection-header {
+  border-bottom: 1px solid #e0e0e0;
   padding: 10px 20px;
 }
 .collection.with-header .collection-item {
   padding-left: 30px;
 }
-.collection.with-header .collection-item:first-child {
-  border-top: 1px solid #e0e0e0;
+.collection .secondary-action {
+  float: right;
 }
 
 @font-face {
@@ -577,7 +578,6 @@ li {
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
