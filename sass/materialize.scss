@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-// Functions
-@import "components/functions";
-
 // Mixins
 @import "components/prefixer";
 @import "components/mixins";
@@ -31,3 +28,6 @@
 @import "components/form";
 @import "components/table_of_contents";
 @import "components/sideNav";
+
+// Functions
+@import "components/functions";
