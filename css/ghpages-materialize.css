@@ -7281,9 +7281,9 @@ input[type=text] {
 
 input[type=text]:focus {
   border-bottom: 1px solid #03a9f4;
-  -webkit-box-shadow: 0 1px 0 0;
-  -moz-box-shadow: 0 1px 0 0;
-  box-shadow: 0 1px 0 0;
+  -webkit-box-shadow: 0 1px 0 0 #03a9f4;
+  -moz-box-shadow: 0 1px 0 0 #03a9f4;
+  box-shadow: 0 1px 0 0 #03a9f4;
 }
 
 /***************
@@ -7521,12 +7521,12 @@ ul.table-of-contents a {
 ul.table-of-contents a:hover {
   color: #a8a8a8;
   padding-left: 19px;
-  border-left: 1px solid #f77066;
+  border-left: 1px solid #ea4a4f;
 }
 ul.table-of-contents a.active {
   font-weight: 600;
   padding-left: 18px;
-  border-left: 2px solid #f77066;
+  border-left: 2px solid #ea4a4f;
 }
 
 @media only screen and (max-width: 992px) {
@@ -7538,19 +7538,23 @@ ul.table-of-contents a.active {
     height: 100%;
     background-color: #FFF;
     z-index: 1000;
-    -webkit-transition: left 0.15s ease-out;
-    -moz-transition: left 0.15s ease-out;
-    -o-transition: left 0.15s ease-out;
-    -ms-transition: left 0.15s ease-out;
-    transition: left 0.15s ease-out;
+    -webkit-transition: transform 0.15s ease-out;
+    -moz-transition: transform 0.15s ease-out;
+    -o-transition: transform 0.15s ease-out;
+    -ms-transition: transform 0.15s ease-out;
+    transition: transform 0.15s ease-out;
   }
   ul.side-nav.active {
-    left: 0;
-    -webkit-transition: left 0.3s ease;
-    -moz-transition: left 0.3s ease;
-    -o-transition: left 0.3s ease;
-    -ms-transition: left 0.3s ease;
-    transition: left 0.3s ease;
+    -webkit-transform: translateX(240px);
+    -moz-transform: translateX(240px);
+    -ms-transform: translateX(240px);
+    -o-transform: translateX(240px);
+    transform: translateX(240px);
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
   }
   ul.side-nav li {
     float: none;
@@ -7866,5 +7870,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */

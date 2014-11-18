@@ -8,11 +8,11 @@
     background-color: #FFF;
     z-index: 1000;
 
-    @include transition(left .15s ease-out);
+    @include transition(transform .15s ease-out);
 
     &.active {
-      left: 0;
-      @include transition(left .3s ease);
+      @include transform(translateX(240px));
+      @include transition(transform .3s ease);
     }
 
     li {
