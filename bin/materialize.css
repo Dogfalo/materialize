@@ -7535,7 +7535,7 @@ ul.table-of-contents a.active {
     width: 240px;
     left: -240px;
     top: 0;
-    height: 100%;
+    height: 120%;
     background-color: #FFF;
     z-index: 1000;
     -webkit-transition: transform 0.15s ease-out;
