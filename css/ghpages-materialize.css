@@ -7636,7 +7636,7 @@ p {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  height: 80%;
+  height: 70%;
 }
 
 #front-page-logo {
@@ -7646,7 +7646,7 @@ p {
 }
 
 #responsive-img {
-  width: 85%;
+  width: 80%;
   display: block;
   margin: 0 auto;
 }
@@ -7734,7 +7734,7 @@ p {
 #front-page-nav li:hover {
   background-color: #fdeaeb;
 }
-#front-page-nav li .active {
+#front-page-nav li.active {
   background-color: #fdeaeb;
 }
 #front-page-nav .container {
