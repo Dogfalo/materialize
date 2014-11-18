@@ -24,7 +24,7 @@
               $this.children("img").first().css('bottom', parallax + "px");
             }
             if (initial) {
-              $this.children("img").first().fadeIn();
+              $this.children("img").first().show();
             }
 
           }
