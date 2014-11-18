@@ -4,15 +4,15 @@
     width: 240px;
     left: -240px;
     top: 0;
-    height: 100%;
+    height: 120%;
     background-color: #FFF;
     z-index: 1000;
 
-    @include transition(left .15s ease-out);
+    @include transition(transform .15s ease-out);
 
     &.active {
-      left: 0;
-      @include transition(left .3s ease);
+      @include transform(translateX(240px));
+      @include transition(transform .3s ease);
     }
 
     li {
@@ -31,6 +31,7 @@
       padding: 0 15px;
 
       &:hover { background-color: #ddd; }
+      .active { background-color: transparent; }
     }
     a {
       color: #444;

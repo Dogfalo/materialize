@@ -11,6 +11,8 @@ $large-and-up: "only screen and (min-width : #{$medium-screen})";
 $small-and-down: "only screen and (max-width : #{$small-screen})";
 $medium-and-down: "only screen and (max-width : #{$medium-screen})";
 
+$medium-only: "only screen and (min-width : #{$small-screen}) and (max-width : #{$medium-screen})";
+
 //Default styles
 
 ul {
@@ -18,7 +20,7 @@ ul {
 }
 
 a {
-	@extend .light-blue-text.darken-1;
+	color: color("blue", "darken-1");
 	text-decoration: none;
 }
 
@@ -140,6 +142,13 @@ $num-cols: 12;
   @media #{$large-and-up} {
     display: none !important; 
   }
+}
+
+// Center text on mobile 
+.center-on-small-only {
+  @media #{$small-and-down} {
+    text-align: center;
+  } 
 }
 
 

@@ -1,10 +1,10 @@
 /***************
-    Inputs 
+   Text Inputs 
 ***************/
 
 $border-color: #bdbdbd;
 
-input{
+input[type=text]{
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $border-color;
@@ -19,9 +19,9 @@ input{
   @include transition(.3s);
 }
 
-input:focus {
-  border-bottom: 1px solid color("cyan");
-  @include box-shadow(0 1px 0 0 color("cyan"));
+input[type=text]:focus {
+  border-bottom: 1px solid color("light-blue", "base");
+  @include box-shadow(0 1px 0 0 color("light-blue", "base"));
 }
 
 /***************
@@ -197,6 +197,15 @@ form p {
 }
 
 
-/*************
-   Selects 
-*************/
+/***************
+      Range 
+***************/
+
+input[type=range] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin: 15px 0px;
+  padding: 0;
+}

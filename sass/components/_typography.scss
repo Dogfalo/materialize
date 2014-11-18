@@ -26,7 +26,6 @@ html{
     color: $off-black;
 }
 h1, h2, h3, h4, h5, h6 {
-		color: $off-black;
 		font-family: "Roboto", sans-serif;
 		font-weight: 400;
         text-rendering: optimizeLegibility;
@@ -40,12 +39,12 @@ $h4-fontsize: 1.71rem;
 $h5-fontsize: 1.42rem;
 $h6-fontsize: 1rem;
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
-h1 { font-size: $h1-fontsize; line-height: 1.1*$h1-fontsize; margin: .25rem 0 .7rem 0; letter-spacing: -0.1rem}
-h2 { font-size: $h2-fontsize; line-height: 1.1*$h2-fontsize; margin: .25rem 0 .7rem 0; }
-h3 { font-size: $h3-fontsize; line-height: 1.1*$h3-fontsize; margin: .25rem 0 .7rem 0; }
-h4 { font-size: $h4-fontsize; line-height: 1.1*$h4-fontsize; margin: .25rem 0 .7rem 0; letter-spacing: .05rem}
-h5 { font-size: $h5-fontsize; line-height: 1.1*$h5-fontsize; margin: .25rem 0 .7rem 0; letter-spacing: .05rem}
-h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; margin: .25rem 0 .7rem 0; letter-spacing: .03rem}
+h1 { font-size: $h1-fontsize; line-height: 1.1*$h1-fontsize; margin: .25rem 0 .25rem 0; letter-spacing: -0.1rem}
+h2 { font-size: $h2-fontsize; line-height: 1.1*$h2-fontsize; margin: .25rem 0 .25rem 0; }
+h3 { font-size: $h3-fontsize; line-height: 1.1*$h3-fontsize; margin: .25rem 0 .25rem 0; }
+h4 { font-size: $h4-fontsize; line-height: 1.1*$h4-fontsize; margin: .25rem 0 .25rem 0; letter-spacing: .05rem}
+h5 { font-size: $h5-fontsize; line-height: 1.1*$h5-fontsize; margin: .25rem 0 .25rem 0; letter-spacing: .05rem}
+h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; margin: .25rem 0 .25rem 0; letter-spacing: .03rem}
 
 // Text Styles
 em { font-style: italic; }

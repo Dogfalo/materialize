@@ -1,4 +1,5 @@
-function toast(message, displayLength) {
+function toast(message, displayLength, className) {
+    className = className || "";
     if ($('#toast-container').length == 0) {
         // create notification container
         var container = $('<div></div>')
@@ -14,10 +15,10 @@ function toast(message, displayLength) {
     newToast.animate({"top" : "+35px"
                     , "opacity": 0}, 0);
     newToast.animate({"top" : "0px"
-                            , opacity: 1}, {duration: 200, easing: 'easeOutExpo'});
+                            , opacity: 1}, {duration: 250, easing: 'easeOutCubic'});
         newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 200, easing: 'easeInExpo'})
-        .slideUp(200, function(){
+        .animate({"opacity": 0}, {duration: 250, easing: 'easeInExpo'})
+        .slideUp(250, function(){
             $(this).remove();
         });
     
@@ -25,6 +26,7 @@ function toast(message, displayLength) {
     function createToast(message) {
         var toast = $('<div></div>');
         toast.addClass('toast');
+        toast.addClass(className);
         var text = $('<span></span>');
         text.text(message);
         toast.append(text);
