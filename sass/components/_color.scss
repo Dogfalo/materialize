@@ -2,6 +2,19 @@
 
 
 
+$materialize-red: (
+  "lighten-5":  #fdeaeb,
+  "lighten-4":  #f8c1c3,
+  "lighten-3":  #f3989b,
+  "lighten-2":  #ee6e73,
+  "lighten-1":  #ea454b,
+  "base":       #e51c23,
+  "darken-1":   #d0181e,
+  "darken-2":   #b9151b,
+  "darken-3":   #a21318,
+  "darken-4":   #8b1014,
+);
+
 $red: (
   "lighten-5":  #fde0dc,
   "lighten-4":  #f9bdbb,
@@ -319,6 +332,7 @@ $shades: (
 );
 
 $colors: (
+  "materialize-red": $materialize-red,
   "red": $red,
   "pink": $pink,
   "purple": $purple,
@@ -347,22 +361,33 @@ $colors: (
   @each $color_type, $color_value in $color {
     @if $color_type == "base" {
       .#{$color_name} {
-        background-color: $color_value;
+        background-color: $color_value !important;
       }
       .#{$color_name}-text {
-        color: $color_value;
+        color: $color_value !important;
       }
     }
     @else {
       .#{$color_name}.#{$color_type} {
-        background-color: $color_value;
+        background-color: $color_value !important;
       }      
       .#{$color_name}-text.#{$color_type} {
-        color: $color_value;
+        color: $color_value !important;
       }
     }
   }
 }
+
+// Shade classes
+@each $color, $color_value in $shades {
+  .#{$color} {
+    background-color: $color_value !important;
+  }
+  .#{$color}-text {
+    color: $color_value !important;
+  }
+}
+
 
 // usage: color("name_of_color", "type_of_color")
 // to avoid to repeating map-get($colors, ...)

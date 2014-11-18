@@ -21,7 +21,7 @@ p {
 }
 
 .header {
-  color: color("red", "lighten-2");
+  color: color("materialize-red", "lighten-2");
   font-weight: 300;
 }
 
@@ -62,7 +62,7 @@ p {
 }
 
 #index-banner {
-  background-color: color("red", "lighten-2");
+  background-color: color("materialize-red", "lighten-2");
   .header {
     color: #FFF;
   }
@@ -101,7 +101,7 @@ p {
 }
 
 #download-button {
-  background-color: color("red", "lighten-3");
+  background-color: color("materialize-red", "lighten-3");
   width: 200px;
   height: 70px;
   line-height: 70px;
@@ -122,7 +122,7 @@ p {
   }
   
   i {
-    color: color("red", "lighten-2");
+    color: color("materialize-red", "lighten-2");
     font-size: 7rem;
     display: block;
   }
@@ -140,14 +140,14 @@ p {
   background-color: #FFF;
   position: relative;
   a {
-      color: color("red", "lighten-2");
+      color: color("materialize-red", "lighten-2");
     }
   li {
     &:hover {
-      background-color: color("red", "lighten-5");
+      background-color: color("materialize-red", "lighten-5");
     }
     .active {
-      background-color: color("red", "lighten-5");
+      background-color: color("materialize-red", "lighten-5");
     }
   }
   .container {
