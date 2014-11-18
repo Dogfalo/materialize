@@ -146,7 +146,7 @@ p {
     &:hover {
       @extend .red.lighten-5; 
     }
-    .active {
+    &.active {
       @extend .red.lighten-5;
     }
   }
