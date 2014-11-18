@@ -21,7 +21,7 @@ p {
 }
 
 .header {
-  @extend .red-text.lighten-2;
+  color: color("red", "lighten-2");
   font-weight: 300;
 }
 
@@ -62,7 +62,7 @@ p {
 }
 
 #index-banner {
-  @extend .red.lighten-2;
+  background-color: color("red", "lighten-2");
   .header {
     color: #FFF;
   }
@@ -101,7 +101,7 @@ p {
 }
 
 #download-button {
-  @extend .red.lighten-3;
+  background-color: color("red", "lighten-3");
   width: 200px;
   height: 70px;
   line-height: 70px;
@@ -109,7 +109,7 @@ p {
   font-weight: 400;
 
   &:hover {
-    background-color: lighten(color("red"), 30%);
+    background-color: lighten(color("red", "base"), 30%);
   }
 }
 
@@ -122,7 +122,7 @@ p {
   }
   
   i {
-    @extend .red-text.lighten-2;
+    color: color("red", "lighten-2");
     font-size: 7rem;
     display: block;
   }
@@ -140,14 +140,14 @@ p {
   background-color: #FFF;
   position: relative;
   a {
-    @extend .red-text.lighten-2;
+      color: color("red", "lighten-2");
     }
   li {
     &:hover {
-      @extend .red.lighten-5; 
+      background-color: color("red", "lighten-5");
     }
     .active {
-      @extend .red.lighten-5;
+      background-color: color("red", "lighten-5");
     }
   }
   .container {
