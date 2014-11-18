@@ -7705,7 +7705,7 @@ p {
   font-weight: 400;
 }
 #download-button:hover {
-  background-color: #fccbc7;
+  background-color: #f5a5a8;
 }
 
 .promo {
@@ -7870,4 +7870,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
