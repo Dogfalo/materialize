@@ -1,5 +1,5 @@
 $button-height: 36px;
-$button-color: color("blue");
+$button-color: color("blue", "base");
 
 // shared styles
 .btn, .btn-flat {
@@ -67,7 +67,7 @@ $button-color: color("blue");
   height: 40px;
   line-height: 40px;
   padding: 0;
-  background-color: color("blue");
+  background-color: $button-color;
   @include border-radius(50%);
   @extend .z-depth-1;  
   @include transition(.3s);

@@ -20,8 +20,8 @@ input[type=text]{
 }
 
 input[type=text]:focus {
-  border-bottom: 1px solid color("cyan");
-  @include box-shadow(0 1px 0 0 color("cyan"));
+  border-bottom: 1px solid color("cyan", "base");
+  @include box-shadow(0 1px 0 0 color("cyan", "base"));
 }
 
 /***************

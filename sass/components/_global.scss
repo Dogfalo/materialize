@@ -20,7 +20,7 @@ ul {
 }
 
 a {
-	@extend .light-blue-text.darken-1;
+	color: color("blue", "darken-1");
 	text-decoration: none;
 }
 

@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-// Functions
-@import "components/functions";
-
 // Mixins
 @import "components/prefixer";
 @import "components/mixins";
@@ -11,9 +8,9 @@
 @import "components/normalize";
 
 // components
+@import "components/color";
 @import "components/global";
 @import "components/icons-material-design";
-@import "components/color";
 @import "components/grid";
 @import "components/navbar";
 @import "components/roboto";
@@ -31,3 +28,5 @@
 @import "components/form";
 @import "components/table_of_contents";
 @import "components/sideNav";
+
+
