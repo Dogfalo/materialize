@@ -9,9 +9,8 @@ input[type=text]{
   border: none;
   border-bottom: 1px solid $border-color;
   outline: none;
-  height: 3em;
+  height: 2rem;
   width: 100%;
-  font-size: 1em;
   margin: 15px 0px;
   padding: 0;
   @include box-shadow(none);
