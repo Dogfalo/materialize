@@ -1,0 +1,23 @@
+
+nav(id=(white_nav == false ? "" : "front-page-nav"))
+  .container
+    .nav-wrapper
+      if white_nav == false
+        a.brand-logo(href='index.html') Materialize
+      else
+        a#logo-container.brand-logo(href='index.html')
+          object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
+
+      ul#nav-mobile.right.side-nav
+        li(class=(page == "about" ? "active" : ""))
+          a(href='about.html') About
+        li(class=(page == "getting_started" ? "active" : ""))
+          a(href='getting_started.html') Getting Started
+        li(class=(page == "sass" ? "active" : ""))
+          a(href='sass.html') Sass
+        li(class=(page == "components" ? "active" : ""))
+          a(href='components.html') Components
+        li(class=(page == "javascript" ? "active" : ""))
+          a(href='javascript.html') JavaScript
+      a.button-collapse(href='#', data-activates='nav-mobile')
+        i.mdi-navigation-menu

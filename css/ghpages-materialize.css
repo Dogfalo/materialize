@@ -3534,7 +3534,7 @@ li {
 .red.lighten-4 {
   background-color: #f8c1c3;
 }
-.red.lighten-5, #front-page-nav li:hover, #front-page-nav li .active {
+.red.lighten-5, #front-page-nav li:hover, #front-page-nav li.active {
   background-color: #fdeaeb;
 }
 .red.darken-1 {
