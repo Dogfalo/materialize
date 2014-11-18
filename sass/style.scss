@@ -104,7 +104,7 @@ p {
   font-weight: 400;
 
   &:hover {
-    background-color: lighten(color("red", "base"), 30%);
+    background-color: lighten(color("materialize-red", "base"), 30%);
   }
 }
 

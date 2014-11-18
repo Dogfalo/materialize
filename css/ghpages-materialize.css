@@ -7295,9 +7295,8 @@ input[type=text] {
   border: none;
   border-bottom: 1px solid #bdbdbd;
   outline: none;
-  height: 3em;
+  height: 2rem;
   width: 100%;
-  font-size: 1em;
   margin: 15px 0px;
   padding: 0;
   -webkit-box-shadow: none;
@@ -7735,7 +7734,7 @@ p {
   font-weight: 400;
 }
 #download-button:hover {
-  background-color: #fccbc7;
+  background-color: #f5a5a8;
 }
 
 .promo {
