@@ -8,6 +8,7 @@
         <li class="tab"><a href="#tab5">Buttons</a></li>
         <li class="tab"><a href="#tab6">Navbar</a></li>
         <li class="tab"><a href="#tab7">Cards</a></li>
+        <li class="tab"><a href="#tab8">Collections</a></li>
       </ul>
     </div>
   </div>
@@ -443,45 +444,44 @@ $(".button-collapse").sideNav();
       </code></pre>
     </div>
 
-
     </div>
   </div>
 
   <div id="tab7" class="section">
       <div class="row">
           <h2 class="header">Cards</h2>
-          <p class="caption">Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable   length.</p>
+          <p class="caption">Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.</p>
     </div>
     <div class="row">
-          <div class="col s12 m6">
-              <div class="card cyan">
-                  <div class="card-content">
-                      <h1>Card Title</h1>
-                      <p>This is sample content</p>
-                  </div>	
-                  <div class="card-footer">
-                      <p>Footer</p>
-                      <p>Sample content</p>
-                      <a class="card-action" href="#">This is a link</a>
-                      <a class='card-action' href='#'>This is a link</a>
-                  </div>
-              </div>
+      <div class="col s12 m6">
+        <div class="card cyan">
+          <div class="card-content">
+            <h1>Card Title</h1>
+            <p>This is sample content</p>
+          </div>	
+          <div class="card-footer">
+            <p>Footer</p>
+            <p>Sample content</p>
+            <a class="card-action" href="#">This is a link</a>
+            <a class='card-action' href='#'>This is a link</a>
           </div>
-          <div class="col s12 m6">
-              <div class="card">
-                  <div class="card-content">
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
             <img src="images/sample-1.jpg">
-                      <h1>Card Title</h1>
-                      <p>This is sample content</p>
-                  </div>	
-                  <div class="card-footer">
-                      <p>Footer</p>
-                      <p>Sample content</p>
-                      <a class='card-action' href='#'>This is a link</a>
-                      <a class='card-action' href='#'>This is a link</a>
-                  </div>
-              </div>
+            <h1>Card Title</h1>
+            <p>This is sample content</p>
+          </div>	
+          <div class="card-footer">
+            <p>Footer</p>
+            <p>Sample content</p>
+            <a class='card-action' href='#'>This is a link</a>
+            <a class='card-action' href='#'>This is a link</a>
           </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <pre><code class="language-markup col s12">
@@ -518,6 +518,108 @@ $(".button-collapse").sideNav();
     &lt;/div>
   &lt;/div>
       </code></pre>
+    </div>
+  </div>
+  
+  <!--  Collections Section  -->
+  
+  <div id="tab8" class="row">
+    
+    <!--  Table of Contents-->
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="table-of-contents">
+          <li><a href="#basic-collection">Basic</a></li>
+          <li><a href="#basic-collection-2">Basic ver. 2</a></li>
+          <li><a href="#headers-collection">Headers</a></li>
+          <li><a href="#secondary-content-collection">Secondary content</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col m9 l10">
+      <h2 class="header">Collections</h2>
+      <p class="caption">Collections allow you to group list objects together.</p>
+      
+      <div id="basic-collection" class="scrollspy">
+        <h4 class="light">Basic</h4>
+        <ul class="collection">
+          <li class="collection-item">Alvin</li>
+          <li class="collection-item">Alvin</li>
+          <li class="collection-item">Alvin</li>
+          <li class="collection-item">Alvin</li>
+        </ul>
+        <pre><code class="language-markup">
+  &lt;ul class="collection">
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+  &lt;/ul>
+        </code></pre>
+        </div>
+      <br>
+      
+      <div id="basic-collection-2" class="scrollspy">
+      <h4 class="light">Basic with different HTML structure</h4>
+      <div class="collection">
+        <a href="#!" class="collection-item">Alvin</a>
+        <a href="#!" class="collection-item active">Alvin</a>
+        <a href="#!" class="collection-item">Alvin</a>
+        <a href="#!" class="collection-item">Alvin</a>
+      </div>
+      <pre><code class="language-markup">
+  &lt;div class="collection">
+    &lt;a href="#!" class="collection-item">Alvin&lt;/a>
+    &lt;a href="#!" class="collection-item active">Alvin&lt;/a>
+    &lt;a href="#!" class="collection-item">Alvin&lt;/a>
+    &lt;a href="#!" class="collection-item">Alvin&lt;/a>
+  &lt;/div>
+      </code></pre>
+      </div>
+      <br>
+      
+      <div id="headers-collection" class="scrollspy">
+      <h4 class="light">Headers</h4>
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>First Names</h4></li>
+        <li class="collection-item">Alvin</li>
+        <li class="collection-item">Alvin</li>
+        <li class="collection-item">Alvin</li>
+        <li class="collection-item">Alvin</li>
+      </ul>
+      <pre><code class="language-markup">
+  &lt;ul class="collection with-header">
+    &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+  &lt;/ul>
+      </code></pre>
+      </div>
+      <br>
+      
+      <div id="secondary-content-collection" class="scrollspy">
+      <h4 class="light">Secondary content</h4>
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>First Names</h4></li>
+        <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="secondary-content mdi-content-send"></i></a></li>
+        <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></li>
+        <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></li>
+        <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></li>
+      </ul>
+      <pre><code class="language-markup">
+  &lt;ul class="collection with-header">
+    &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="secondary-content mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+  &lt;/ul>
+      </code></pre>
+      </div>
+      
     </div>
   </div>
 </div>

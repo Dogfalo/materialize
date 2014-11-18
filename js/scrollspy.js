@@ -161,11 +161,11 @@
 	 * Enables ScrollSpy using a selector
 	 * @param {jQuery|string} selector  The elements collection, or a selector
 	 * @param {Object=} options	Optional.
-											throttle : number -> scrollspy throttling. Default: 100 ms
-											offsetTop : number -> offset from top. Default: 0
-											offsetRight : number -> offset from right. Default: 0
-											offsetBottom : number -> offset from bottom. Default: 0
-											offsetLeft : number -> offset from left. Default: 0
+        throttle : number -> scrollspy throttling. Default: 100 ms
+        offsetTop : number -> offset from top. Default: 0
+        offsetRight : number -> offset from right. Default: 0
+        offsetBottom : number -> offset from bottom. Default: 0
+        offsetLeft : number -> offset from left. Default: 0
 	 * @returns {jQuery}
 	 */
 	$.scrollSpy = function(selector, options) {
@@ -178,7 +178,9 @@
 		  $('a[href^=#' + $(element).attr('id') + ']').click(function(e) {
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
-		    $('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
+            
+//            offset-60 to handle floating fixed tab bar
+		    $('html, body').animate({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
 		  });		
 		});
 		options = options || {

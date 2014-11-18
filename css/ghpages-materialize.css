@@ -2666,7 +2666,7 @@ li {
 
 .collection {
   background-color: #FFF;
-  margin: 20px 20px;
+  margin: 0 0 1rem 0;
   border: 1px solid #e0e0e0;
   border-radius: 2px;
 }
@@ -2680,11 +2680,11 @@ li {
 }
 .collection a.collection-item {
   display: block;
-  -webkit-transition: 0.28s;
-  -moz-transition: 0.28s;
-  -o-transition: 0.28s;
-  -ms-transition: 0.28s;
-  transition: 0.28s;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -ms-transition: 0.25s;
+  transition: 0.25s;
 }
 .collection a.collection-item:not(.active):hover {
   background-color: #f2f2f2;
@@ -2696,7 +2696,7 @@ li {
 .collection.with-header .collection-item {
   padding-left: 30px;
 }
-.collection .secondary-action {
+.collection .secondary-content {
   float: right;
 }
 
@@ -6182,7 +6182,6 @@ em {
 
 strong {
   font-weight: bold;
-  color: #212121;
 }
 
 small {
@@ -7641,10 +7640,6 @@ p.box {
 
 p {
   padding: 0;
-}
-
-.row h4 {
-  margin-top: 30px;
 }
 
 .header {

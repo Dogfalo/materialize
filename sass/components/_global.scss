@@ -166,7 +166,7 @@ $num-cols: 12;
 
 .collection {
   background-color: #FFF;
-  margin: 20px 20px;
+  margin: 0 0 1rem 0;
   border: 1px solid #e0e0e0;
   border-radius: 2px;
   .collection-item {
@@ -180,7 +180,7 @@ $num-cols: 12;
   
   a.collection-item{
     display: block;
-    @include transition(.28s);
+    @include transition(.25s);
     &:not(.active) {
       &:hover {
         background-color: #f2f2f2;
@@ -198,7 +198,7 @@ $num-cols: 12;
     }
   }
   
-  .secondary-action {
+  .secondary-content {
     float: right;
   }
   
