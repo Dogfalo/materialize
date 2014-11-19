@@ -12,12 +12,12 @@ function toast(message, displayLength, className) {
     var newToast = createToast(message);
     container.append(newToast);
     
-    newToast.animate({"top" : "+35px"
-                    , "opacity": 0}, 0);
-    newToast.animate({"top" : "0px"
-                            , opacity: 1}, {duration: 250, easing: 'easeOutCubic'});
+    newToast.css({"top" : parseFloat(newToast.css("top"))+35+"px",
+                  "opacity": 0});
+    newToast.transition({"top" : "0px"
+                            , opacity: 1, duration: 250, easing: 'easeOutCubic'});
         newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 250, easing: 'easeInExpo'})
+        .transition({"opacity": 0, duration: 250, easing: 'easeInExpo'})
         .slideUp(250, function(){
             $(this).remove();
         });
