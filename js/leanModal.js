@@ -38,12 +38,13 @@
         		
         			'display' : 'block',
         			'position' : 'fixed',
+                    'top': 0,
         			'opacity' : 0,
         			'z-index': 1000
         		
         		});
 
-        		$(modal_id).animate({top: '10%', opacity: 1}, {duration: 350, easing: 'easeOutQuart'});
+        		$(modal_id).transition({top: '10%', opacity: 1}, 350, 'ease');
 
                 e.preventDefault();
                 		
@@ -52,7 +53,7 @@
             });
 
 			function close_modal(modal_id){
-        		$("#lean_overlay").fadeOut(200);
+        		$("#lean_overlay").transition({ opacity: 0}, 200, function(){$("#lean_overlay").css({"display":'none'})});
                 $(modal_id).fadeOut(200, function() {
                     $(this).css('top', 0);
                 });
