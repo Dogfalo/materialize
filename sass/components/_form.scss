@@ -1,25 +1,55 @@
+
+
 /***************
    Text Inputs 
 ***************/
 
 $border-color: #bdbdbd;
 
-input[type=text]{
+.input-field {
+  position: relative;
+
+  label {
+    color: $border-color;
+    position: absolute;
+    z-index: -1;
+    top: .8rem;
+    @include transition(transform .2s ease-out);
+  }
+  label.active {
+    color: darken($border-color, 10%);
+    transform: translateY(-130%);
+  }
+
+  input[type=text]:valid,
+  input[type=password]:valid,
+  input[type=email]:valid {
+    border-bottom: 1px solid color("green", "base");
+    @include box-shadow(0 1px 0 0 color("green", "base"));
+  }
+
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $border-color;
   outline: none;
-  height: 3em;
+  height: 3rem;
   width: 100%;
-  font-size: 1em;
-  margin: 15px 0px;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
   padding: 0;
   @include box-shadow(none);
   @include box-sizing(content-box);
   @include transition(.3s);
 }
 
-input[type=text]:focus {
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus {
   border-bottom: 1px solid color("light-blue", "base");
   @include box-shadow(0 1px 0 0 color("light-blue", "base"));
 }

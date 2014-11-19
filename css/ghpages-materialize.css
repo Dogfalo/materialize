@@ -7256,15 +7256,44 @@ ul.collapsible {
 /***************
    Text Inputs 
 ***************/
-input[type=text] {
+.input-field {
+  position: relative;
+}
+.input-field label {
+  color: #bdbdbd;
+  position: absolute;
+  z-index: -1;
+  top: .8rem;
+  -webkit-transition: transform 0.2s ease-out;
+  -moz-transition: transform 0.2s ease-out;
+  -o-transition: transform 0.2s ease-out;
+  -ms-transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+}
+.input-field label.active {
+  color: #a4a4a4;
+  transform: translateY(-130%);
+}
+.input-field input[type=text]:valid,
+.input-field input[type=password]:valid,
+.input-field input[type=email]:valid {
+  border-bottom: 1px solid #4CAF50;
+  -webkit-box-shadow: 0 1px 0 0 #4CAF50;
+  -moz-box-shadow: 0 1px 0 0 #4CAF50;
+  box-shadow: 0 1px 0 0 #4CAF50;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #bdbdbd;
   outline: none;
-  height: 3em;
+  height: 3rem;
   width: 100%;
-  font-size: 1em;
-  margin: 15px 0px;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
   padding: 0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -7279,7 +7308,9 @@ input[type=text] {
   transition: 0.3s;
 }
 
-input[type=text]:focus {
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus {
   border-bottom: 1px solid #03a9f4;
   -webkit-box-shadow: 0 1px 0 0 #03a9f4;
   -moz-box-shadow: 0 1px 0 0 #03a9f4;
@@ -7981,4 +8012,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
