@@ -162,3 +162,48 @@ $num-cols: 12;
   }
 }
 
+// Collections
+
+.collection {
+  background-color: #FFF;
+  margin: 0 0 1rem 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  .collection-item {
+    padding: 10px 20px;
+    margin: 0px;
+    border-bottom: 1px solid #e0e0e0;
+      &:last-child {
+        border-bottom: none;
+      } 
+  }
+  
+  a.collection-item{
+    display: block;
+    @include transition(.25s);
+    &:not(.active) {
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+  }    
+  
+  &.with-header {
+    .collection-header {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 10px 20px;
+    }
+    .collection-item {
+     padding-left: 30px;
+    }
+  }
+  
+  .secondary-content {
+    float: right;
+  }
+  
+  .active {
+    @extend .blue.lighten-1;
+    @extend .blue-text.lighten-4;
+  }
+}

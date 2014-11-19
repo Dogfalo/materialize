@@ -16,10 +16,6 @@ p {
   
 }
 
-.row h4 {
-  margin-top: 30px;
-}
-
 .header {
   color: color("materialize-red", "lighten-2");
   font-weight: 300;
@@ -76,8 +72,8 @@ p {
   padding: 14px 0;
   height: 36px;
   line-height: 36px;
-  background-color: hsl(0, 3%, 35%);
-  color: #e5e5e5;
+  background-color: #5c5757;
+  color: hsl(0, 0%, 90%);
   font-size: .9rem;
 }
 @media #{$medium-and-down} {
@@ -90,7 +86,6 @@ p {
   background-color: #6f6d6d;
   @include transition(.25s ease);
   &:hover {
-//    @extend .z-depth-1;
     background-color: #797777;
   }
 }
