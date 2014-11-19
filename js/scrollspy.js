@@ -71,7 +71,8 @@
 			bottom = top + jWindow.height();
 
 		// determine which elements are in view
-		var intersections = findElements(top+offset.top, right+offset.right, bottom+offset.bottom, left+offset.left);
+//        + 60 accounts for fixed nav
+		var intersections = findElements(top+offset.top + 60, right+offset.right, bottom+offset.bottom, left+offset.left);
 		$.each(intersections, function(i, element) {
 
 			var lastTick = element.data('scrollSpy:ticks');
@@ -175,7 +176,7 @@
 			elements.push($(element));
 			$(element).data("scrollSpy:id", i);
 			// Smooth scroll to section
-		  $('a[href^=#' + $(element).attr('id') + ']').click(function(e) {
+		  $('a[href=#' + $(element).attr('id') + ']').click(function(e) {
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
             
@@ -215,7 +216,7 @@
 			var $this = $(this);
 
 			if (visible[0]) {
-				$('a[href^=#' + visible[0].attr('id') + ']').removeClass('active');
+				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
 				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
 					visible.unshift($(this));
 				}
@@ -227,7 +228,7 @@
 				visible.push($(this));				
 			}
 
-			$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
+			$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
 		});
 		selector.on('scrollSpy:exit', function() {
 			visible = $.grep(visible, function(value) {
@@ -235,12 +236,12 @@
 	    });
 
 			if (visible[0]) {
-				$('a[href^=#' + visible[0].attr('id') + ']').removeClass('active');
+				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
-				$('a[href^=#' + visible[0].attr('id') + ']').addClass('active');
+				$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
 			}
 		});
 
