@@ -39,10 +39,10 @@
                   left: origin.offset().left + origin.outerWidth()/2 - newTooltip.outerWidth()/2 });
 
 
-            newTooltip.velocity({ opacity: 1}, { duration: 300, queue: false });
+            newTooltip.velocity({ opacity: 1}, { duration: 250, queue: false });
             backdrop.css({ display: 'block' })
-            .velocity({opacity:1},{duration: 100, queue: false})
-            .velocity({scale: 12}, {duration: 425, delay: 55, queue: false, easing: 'easeInOutQuad'});
+            .velocity({opacity:1},{duration: 75, queue: false})
+            .velocity({scale: 12}, {duration: 250, delay: 40, queue: false, easing: 'easeInOutQuad'});
           }
         }, 1);
         
@@ -55,12 +55,12 @@
         started = false;
         
         newTooltip.velocity({
-          opacity: 0}, { duration: 275, queue: false, delay: 300 }
+          opacity: 0}, { duration: 250, queue: false, delay: 275 }
         );
         
         backdrop.velocity({opacity: 0, scale: 1},
-                          {duration:275,
-                           delay: 300, queue: false,
+                          {duration:250,
+                           delay: 275, queue: false,
                            complete: function(){
                              backdrop.css('display', 'none');
                              newTooltip.css('display', 'none');
