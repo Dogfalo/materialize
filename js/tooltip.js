@@ -29,14 +29,14 @@
         newTooltip.velocity({ opacity: 1}, { duration: 300, queue: false });
         backdrop.css({ display: 'block', easing: 'easeOutQuart' })
         .velocity({opacity:1},{duration: 100, queue: false})
-        .velocity({scale: 15}, {duration: 350, delay: 100, queue: false, easing: 'easeOutQuart'});
+        .velocity({scale: 15}, {duration: 400, delay: 55, queue: false, easing: 'easeInOutQuart'});
               
       }, function(){
         newTooltip.velocity({
           opacity: 0}, { duration: 200, queue: false });
         
         backdrop.velocity({
-          opacity: 0}, { duration: 200, queue: false, complete: function(){backdrop.velocity({scale: 1},{duration:0, queue: false})} });
+          opacity: 0}, { duration: 200, queue: false, complete: function(){backdrop.velocity({ scale: 1},{duration:0, queue: false})} });
 
       });
     }
