@@ -274,11 +274,6 @@ input[type=range] + .thumb {
   }
 
   &.active {
-    height: 100px;
-    width: 30px;
-    height: 30px;
-    top: -20px;
-    margin-left: -15px;
     border-radius: 50% 50% 50% 0;
 
     .value {
