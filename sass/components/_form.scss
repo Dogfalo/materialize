@@ -240,6 +240,10 @@ form p {
   position: relative;
 }
 
+input[type=range], input[type=range] + .thumb {
+  @extend .no-select;
+}
+
 input[type=range] {
   position: relative;
   background-color: transparent;
