@@ -94,7 +94,7 @@
     $('.tab-demo').show().tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
-    $('.tooltipped').tooltip();
+    $('.tooltipped').tooltip({"delay": 75});
     $('.collapsible-accordion').collapsible();
     $('.collapsible-expandable').collapsible({"accordion": false});
     $('.materialboxed').materialbox();

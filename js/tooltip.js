@@ -2,9 +2,16 @@
     
     var newTooltip;
     var timeout;
-    $.fn.tooltip = function () {
-      var origin = $(this);
+    var counter;
+  var started;
+  var counterInterval
+    $.fn.tooltip = function (options) {
+      var defaults = {
+        delay: 100
+      }
+      options = $.extend(defaults, options);
       
+      var origin = $(this);
       var margin = 15;
       
       // Create tooltip
@@ -19,27 +26,40 @@
               marginLeft: (newTooltip.outerWidth()/2) - (backdrop.width()/2) });
       
       this.hover(function() {
-        newTooltip.css({ display: 'block' });
+        counter = 0;
+        started = false;
+       
+        counterInterval = setInterval(function(){
+          counter += 1;
+          if (counter == defaults.delay && started == false) {
+            newTooltip.css({ display: 'block' });
 
-        //    Bottom Position
-      newTooltip.css({top: origin.offset().top + origin.outerHeight() + margin,
-              left: origin.offset().left + origin.outerWidth()/2 - newTooltip.outerWidth()/2 });
+            //    Bottom Position
+            newTooltip.css({top: origin.offset().top + origin.outerHeight() + margin,
+                  left: origin.offset().left + origin.outerWidth()/2 - newTooltip.outerWidth()/2 });
+
+
+            newTooltip.velocity({ opacity: 1}, { duration: 300, queue: false });
+            backdrop.css({ display: 'block' })
+            .velocity({opacity:1},{duration: 100, queue: false})
+            .velocity({scale: 12}, {duration: 425, delay: 55, queue: false, easing: 'easeInOutQuad'});
+          }
+        }, 1);
         
         
-        newTooltip.velocity({ opacity: 1}, { duration: 300, queue: false });
-        backdrop.css({ display: 'block' })
-        .velocity({opacity:1},{duration: 100, queue: false})
-        .velocity({scale: 12}, {duration: 425, delay: 55, queue: false, easing: 'easeInOutQuad'});
-              
         
-        
+//        Mouse Out
       }, function(){
+        clearInterval(counterInterval);
+        counter = 0;
+        started = false;
+        
         newTooltip.velocity({
-          opacity: 0}, { duration: 300, queue: false, delay: 300 }
+          opacity: 0}, { duration: 275, queue: false, delay: 300 }
         );
         
         backdrop.velocity({opacity: 0, scale: 1},
-                          {duration:300,
+                          {duration:275,
                            delay: 300, queue: false,
                            complete: function(){
                              backdrop.css('display', 'none');
