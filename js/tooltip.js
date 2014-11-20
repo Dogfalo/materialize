@@ -25,13 +25,15 @@
                     left:0,
               marginLeft: (newTooltip.outerWidth()/2) - (backdrop.width()/2) });
       
+      started = false;
       this.hover(function() {
         counter = 0;
-        started = false;
+        
        
         counterInterval = setInterval(function(){
           counter += 1;
           if (counter == defaults.delay && started == false) {
+            started = true
             newTooltip.css({ display: 'block' });
 
             //    Bottom Position
@@ -52,18 +54,19 @@
       }, function(){
         clearInterval(counterInterval);
         counter = 0;
-        started = false;
+        
         
         newTooltip.velocity({
-          opacity: 0}, { duration: 250, queue: false, delay: 275 }
+          opacity: 0}, { duration: 225, queue: false, delay: 275 }
         );
         
         backdrop.velocity({opacity: 0, scale: 1},
-                          {duration:250,
+                          {duration:225,
                            delay: 275, queue: false,
                            complete: function(){
                              backdrop.css('display', 'none');
                              newTooltip.css('display', 'none');
+                             started = false;
                            }
                           }
         );
