@@ -28,6 +28,7 @@
 
   range_wrapper.on("mousedown", function(e) {
     range_mousedown = true;
+    $(this).addClass('active');
 
     var thumb = $(this).children('.thumb');
     if (!thumb.hasClass('active')) {
@@ -48,6 +49,7 @@
   });
   range_wrapper.on("mouseup", function() {
     range_mousedown = false;
+    $(this).removeClass('active');
   });
 
   range_wrapper.on("mousemove", function(e) {
@@ -77,7 +79,7 @@
       var thumb = $(this).children('.thumb');
 
       if (thumb.hasClass('active')) {
-        thumb.velocity({ height: "14px", width: "14px", top: "10px", marginLeft: "-6px"}, { duration: 100 });
+        thumb.velocity({ height: "0", width: "0", top: "10px", marginLeft: "-6px"}, { duration: 100 });
       }
       thumb.removeClass('active');
     

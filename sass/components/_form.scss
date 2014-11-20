@@ -255,12 +255,10 @@ input[type=range] {
   padding: 0;
 }
 input[type=range] + .thumb {
-  content: "";
   position: absolute;
-  -webkit-appearance: none;
   border: none;
-  height: 14px;
-  width: 14px;
+  height: 0;
+  width: 0;
   border-radius: 50%;
   background-color: $fill-color;
   transform-origin: 50% 50%;
@@ -311,8 +309,17 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
-  height: 25px;
-  width: 25px;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: $fill-color;
+  transform-origin: 50% 50%;
+  margin: -5px 0 0 0;
+  @include transition(.3s);
+}
+.range-field.active input[type=range]::-webkit-slider-thumb {
+  height: 0;
+  width: 0;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
