@@ -1,5 +1,4 @@
 .material-tooltip {
-//    @extend .z-depth-2;
     padding: 10px 8px;
     font-size: 1rem;
     z-index: 1000;
@@ -18,7 +17,6 @@
     top:0;
 }
 
-
 .backdrop {
   position: absolute;
   opacity: 0;
@@ -28,6 +26,5 @@
   border-radius: 0 0 14px 14px;
   background-color: #323232;
   z-index: -1;
-  transform-origin: top center;
-//  @include transform-origin( top center);
+  @include transform-origin( top center);
 }

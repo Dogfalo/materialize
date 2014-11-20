@@ -29,17 +29,17 @@
         newTooltip.velocity({ opacity: 1}, { duration: 300, queue: false });
         backdrop.css({ display: 'block' })
         .velocity({opacity:1},{duration: 100, queue: false})
-        .velocity({scale: 12}, {duration: 400, delay: 55, queue: false, easing: 'easeInOutQuad'});
+        .velocity({scale: 12}, {duration: 425, delay: 55, queue: false, easing: 'easeInOutQuad'});
               
         
         
       }, function(){
         newTooltip.velocity({
-          opacity: 0}, { duration: 250, queue: false, delay: 300 }
+          opacity: 0}, { duration: 300, queue: false, delay: 300 }
         );
         
         backdrop.velocity({opacity: 0, scale: 1},
-                          {duration:250,
+                          {duration:300,
                            delay: 300, queue: false,
                            complete: function(){
                              backdrop.css('display', 'none');
