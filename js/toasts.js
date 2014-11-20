@@ -12,15 +12,23 @@ function toast(message, displayLength, className) {
     var newToast = createToast(message);
     container.append(newToast);
     
-    newToast.animate({"top" : "+35px"
-                    , "opacity": 0}, 0);
-    newToast.animate({"top" : "0px"
-                            , opacity: 1}, {duration: 250, easing: 'easeOutCubic'});
-        newToast.delay(displayLength)
-        .animate({"opacity": 0}, {duration: 250, easing: 'easeInExpo'})
-        .slideUp(250, function(){
-            $(this).remove();
-        });
+    newToast.css({"top" : parseFloat(newToast.css("top"))+35+"px",
+                  "opacity": 0});
+    newToast.velocity({"top" : "0px",
+                       opacity: 1},
+                       {duration: 300,
+                       easing: 'easeOutCubic',
+                      queue: false});
+//        newToast.delay(displayLength)
+        newToast.velocity({"opacity": 0, marginTop: '-40px'}, { duration: 375,
+                                           easing: 'easeOutExpo',
+                                           queue: false, delay: displayLength,
+                                           complete: function(){$(this).remove()}
+                                          });
+
+//        .slideUp(250, function(){
+//            $(this).remove();
+//        });
     
     
     function createToast(message) {

@@ -1046,7 +1046,7 @@ th {
   background-color: #BBDEFB !important;
 }
 
-.blue-text.lighten-4 {
+.blue-text.lighten-4, .collection .active {
   color: #BBDEFB !important;
 }
 
@@ -1066,7 +1066,7 @@ th {
   color: #64B5F6 !important;
 }
 
-.blue.lighten-1 {
+.blue.lighten-1, .collection .active {
   background-color: #42A5F5 !important;
 }
 
@@ -2664,6 +2664,42 @@ li {
   line-height: 30px;
 }
 
+.collection {
+  background-color: #FFF;
+  margin: 0 0 1rem 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+}
+.collection .collection-item {
+  padding: 10px 20px;
+  margin: 0px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.collection .collection-item:last-child {
+  border-bottom: none;
+}
+.collection a.collection-item {
+  display: block;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -ms-transition: 0.25s;
+  transition: 0.25s;
+}
+.collection a.collection-item:not(.active):hover {
+  background-color: #f2f2f2;
+}
+.collection.with-header .collection-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+}
+.collection.with-header .collection-item {
+  padding-left: 30px;
+}
+.collection .secondary-content {
+  float: right;
+}
+
 @font-face {
   font-family: "Material-Design-Icons";
   src: url("../font/material-design-icons/Material-Design-Icons.eot?-g7cqhn");
@@ -2678,7 +2714,6 @@ li {
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -6147,7 +6182,6 @@ em {
 
 strong {
   font-weight: bold;
-  color: #212121;
 }
 
 small {
@@ -7784,10 +7818,6 @@ p {
   padding: 0;
 }
 
-.row h4 {
-  margin-top: 30px;
-}
-
 .header {
   color: #ee6e73;
   font-weight: 300;
@@ -7846,7 +7876,7 @@ p {
   height: 36px;
   line-height: 36px;
   background-color: #5c5757;
-  color: #e5e5e5;
+  color: #e6e6e6;
   font-size: .9rem;
 }
 
