@@ -55,7 +55,7 @@
             returnToOriginal();
           });
         $('body').append(overlay);
-        overlay.transition({opacity: 1, duration: inDuration, queue: false, easing: 'easeOutQuad'}
+        overlay.animate({opacity: 1, duration: inDuration, queue: false, easing: 'easeOutQuad'}
         );
         
         // Set states
@@ -120,7 +120,7 @@
           }
           // Remove Overlay
           overlayActive = false;
-          $('#materialbox-overlay').transition({opacity: 0}, outDuration, function(){ 
+          $('#materialbox-overlay').animate({opacity: 0}, outDuration, function(){ 
             $(this).remove(); 
             origin.css('z-index', original_z_index);
           });
