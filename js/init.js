@@ -84,7 +84,6 @@
 
 
     // Plugin initialization
-    $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown();
     if (window_width > 600) {
       $('ul.tabs').tabs();
