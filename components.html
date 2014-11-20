@@ -215,7 +215,7 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" value="" required>
+                <input id="email" type="email" required>
                 <label for="email">Email</label>
               </div>
             </div>
@@ -223,17 +223,38 @@
         </div>
         <div class="row">
           <pre><code class="language-markup col s12">
+  &lt;div class="row">
+    &lt;form class="col s12">
       &lt;div class="row">
-        &lt;form class="col s12 ">
-          &lt;div class="row">
-            &lt;div class="col s6">&lt;input type="text" placeholder="First Name">&lt;/div>
-            &lt;div class="col s6">&lt;input type="text" placeholder="Last Name">&lt;/div>
-          &lt;/div>
-          &lt;div class="row">
-            &lt;div class="col s12">&lt;input type="text" placeholder="Enter Username">&lt;/div>
-          &lt;/div>
-        &lt;/form>
+        &lt;div class="input-field col s6">
+          &lt;input id="first_name" type="text" required>
+          &lt;label for="first_name">First Name&lt;/label>
+        &lt;/div>
+        &lt;div class="input-field col s6">
+          &lt;input id="last_name" type="text" required>
+          &lt;label for="last_name">Last Name&lt;/label>
+        &lt;/div>
       &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="username" type="text" required>
+          &lt;label for="username">Username&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="password" type="password" required>
+          &lt;label for="password">Password&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" required>
+          &lt;label for="email">Email&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
           </code></pre>
         </div>
       </div>
@@ -340,7 +361,7 @@
         <p>Checkboxes</p>
         <div class="row">
           <form action="#">
-            <p>
+            <p class="range-field">
               <input type="range" name="points" min="0" max="100">
               <label for="test5">Red</label>
             </p>
@@ -349,7 +370,7 @@
         <div class="row" >
           <pre><code class="language-markup col s12">
     &lt;form action="#">
-      &lt;p>
+      &lt;p class="range-field">
         &lt;input type="range" id="test5" />
         &lt;label for="test5">Red&lt;/label>
       &lt;/p>

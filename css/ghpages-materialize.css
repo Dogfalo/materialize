@@ -7271,8 +7271,12 @@ ul.collapsible {
   transition: transform 0.2s ease-out;
 }
 .input-field label.active {
-  color: #a4a4a4;
   transform: translateY(-130%);
+}
+.input-field input[type=text]:focus + label,
+.input-field input[type=password]:focus + label,
+.input-field input[type=email]:focus + label {
+  color: #a4a4a4;
 }
 .input-field input[type=text]:valid,
 .input-field input[type=password]:valid,
@@ -7521,6 +7525,10 @@ form p:last-child {
 /***************
       Range 
 ***************/
+.range-field {
+  position: relative;
+}
+
 input[type=range] {
   position: relative;
   background-color: transparent;
@@ -7529,6 +7537,51 @@ input[type=range] {
   width: 100%;
   margin: 15px 0px;
   padding: 0;
+}
+
+input[type=range] + .thumb {
+  content: "";
+  position: absolute;
+  -webkit-appearance: none;
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: #0f9d58;
+  transform-origin: 50% 50%;
+  top: 10px;
+  margin-left: -6px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+input[type=range] + .thumb .value {
+  display: block;
+  width: 30px;
+  text-align: center;
+  color: #0f9d58;
+  font-size: 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+input[type=range] + .thumb.active {
+  height: 100px;
+  width: 30px;
+  height: 30px;
+  top: -20px;
+  margin-left: -15px;
+  border-radius: 50% 50% 50% 0;
+}
+input[type=range] + .thumb.active .value {
+  color: #fff;
+  margin-left: -1px;
+  margin-top: 8px;
+  font-size: 10px;
 }
 
 input[type=range]:focus {
@@ -7547,28 +7600,9 @@ input[type=range]::-webkit-slider-runnable-track {
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  transform: rotate(-45deg);
   border: none;
-  height: 14px;
-  width: 14px;
-  border-radius: 50%;
-  background: #0f9d58;
-  margin-top: -5px;
-  transform-origin: 50% 50%;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s;
-}
-
-input[type=range]:focus::-webkit-slider-thumb {
-  height: 100px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50% 50% 50% 0;
-  left: 0;
-  margin: -40px 0 0 0;
+  height: 25px;
+  width: 25px;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {

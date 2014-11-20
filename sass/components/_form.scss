@@ -17,8 +17,13 @@ $border-color: #bdbdbd;
     @include transition(transform .2s ease-out);
   }
   label.active {
-    color: darken($border-color, 10%);
     transform: translateY(-130%);
+  }
+
+  input[type=text]:focus + label,
+  input[type=password]:focus + label,
+  input[type=email]:focus + label {
+    color: darken($border-color, 10%);
   }
 
   input[type=text]:valid,
@@ -231,6 +236,10 @@ form p {
       Range 
 ***************/
 
+.range-field {
+  position: relative;
+}
+
 input[type=range] {
   position: relative;
   background-color: transparent;
@@ -239,6 +248,46 @@ input[type=range] {
   width: 100%;
   margin: 15px 0px;
   padding: 0;
+}
+input[type=range] + .thumb {
+  content: "";
+  position: absolute;
+  -webkit-appearance: none;
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: $fill-color;
+  transform-origin: 50% 50%;
+  top: 10px;
+  margin-left: -6px;
+
+  @include transform( rotate(-45deg));
+
+  .value {
+    display: block;
+    width: 30px;
+    text-align: center;
+    color: $fill-color;
+    font-size: 0px;
+    @include transform( rotate(45deg));
+  }
+
+  &.active {
+    height: 100px;
+    width: 30px;
+    height: 30px;
+    top: -20px;
+    margin-left: -15px;
+    border-radius: 50% 50% 50% 0;
+
+    .value {
+      color: #fff;
+      margin-left: -1px;
+      margin-top: 8px;
+      font-size: 10px;
+    }
+  }
 }
 
 
@@ -261,26 +310,9 @@ input[type=range]::-webkit-slider-runnable-track {
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  transform: rotate(-45deg);
   border: none;
-  height: 14px;
-  width: 14px;
-  border-radius: 50%;
-  background: $fill-color;
-  margin-top: -5px;
-  transform-origin: 50% 50%;
-
-  @include transition(.3s);
-}
-input[type=range]:focus::-webkit-slider-thumb {
-  height: 100px;
-
-  width: 30px;
-  height: 30px;
-  border-radius: 50% 50% 50% 0;
-  left: 0;
-  margin: -40px 0 0 0;
-
+  height: 25px;
+  width: 25px;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
