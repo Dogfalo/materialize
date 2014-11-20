@@ -7572,6 +7572,10 @@ form p:last-child {
   position: relative;
 }
 
+input[type=range], input[type=range] + .thumb {
+  cursor: pointer;
+}
+
 input[type=range] {
   position: relative;
   background-color: transparent;

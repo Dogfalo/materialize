@@ -242,6 +242,7 @@ form p {
 
 input[type=range], input[type=range] + .thumb {
   @extend .no-select;
+  cursor: pointer;
 }
 
 input[type=range] {
