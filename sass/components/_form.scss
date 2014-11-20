@@ -1,8 +1,8 @@
 
 
-/***************
-   Text Inputs 
-***************/
+/***************************
+   Text Inputs + Textarea
+****************************/
 
 $border-color: #bdbdbd;
 
@@ -22,13 +22,15 @@ $border-color: #bdbdbd;
 
   input[type=text]:focus + label,
   input[type=password]:focus + label,
-  input[type=email]:focus + label {
+  input[type=email]:focus + label,
+  textarea:focus + label {
     color: darken($border-color, 10%);
   }
 
   input[type=text]:valid,
   input[type=password]:valid,
-  input[type=email]:valid {
+  input[type=email]:valid
+  textarea:valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
   }
@@ -37,7 +39,8 @@ $border-color: #bdbdbd;
 
 input[type=text],
 input[type=password],
-input[type=email] {
+input[type=email],
+textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $border-color;
@@ -54,10 +57,18 @@ input[type=email] {
 
 input[type=text]:focus,
 input[type=password]:focus,
-input[type=email]:focus {
+input[type=email]:focus,
+textarea:focus {
   border-bottom: 1px solid color("light-blue", "base");
   @include box-shadow(0 1px 0 0 color("light-blue", "base"));
 }
+
+textarea {
+  overflow-y: hidden; /* prevents scroll bar flash */
+  padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+  resize: none;
+}
+
 
 /***************
   Radio Buttons 

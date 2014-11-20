@@ -2,7 +2,7 @@
    
 
   // Text based inputs
-  var text_inputs = $('input[type=text], input[type=password], input[type=email]');  
+  var text_inputs = $('input[type=text], input[type=password], input[type=email], textarea');  
 
   text_inputs.focus(function () {
     $(this).siblings('label').addClass('active');
@@ -13,6 +13,14 @@
       $(this).siblings('label').removeClass('active');      
     }
   });
+
+
+  // Textarea Auto Resize
+  $('textarea').on( 'keyup', function (){
+    $(this).css('height', 'auto' );
+    $(this).css('height', this.scrollHeight );
+  });
+
 
 
   // Range Input
