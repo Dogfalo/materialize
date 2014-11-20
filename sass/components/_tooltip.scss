@@ -1,7 +1,6 @@
 .material-tooltip {
 //    @extend .z-depth-2;
     padding: 10px 8px;
-    margin: 20px 0px;
     font-size: 1rem;
     z-index: 1000;
     background-color: transparent;
@@ -15,6 +14,8 @@
     position: absolute;
     text-align: center;
     overflow: hidden;
+    left:0;
+    top:0;
 }
 
 
@@ -22,9 +23,9 @@
   position: absolute;
   opacity: 0;
   display: none;
-  height: 5px;
-  width: 10px;
-  border-radius: 0 0 10px 10px;
+  height: 7px;
+  width: 14px;
+  border-radius: 0 0 14px 14px;
   background-color: #323232;
   z-index: -1;
 }
