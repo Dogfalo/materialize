@@ -10,7 +10,7 @@
       // Create tooltip
       var newTooltip = $('<div></div');
       newTooltip.addClass('material-tooltip').text(origin.attr('data-tooltip'));
-      newTooltip.appendTo(origin);
+      newTooltip.appendTo($('body'));
       
       var backdrop = $('<div></div').addClass('backdrop');
       backdrop.appendTo(newTooltip);
@@ -27,18 +27,29 @@
         
         
         newTooltip.velocity({ opacity: 1}, { duration: 300, queue: false });
-        backdrop.css({ display: 'block', easing: 'easeOutQuart' })
+        backdrop.css({ display: 'block' })
         .velocity({opacity:1},{duration: 100, queue: false})
-        .velocity({scale: 15}, {duration: 400, delay: 55, queue: false, easing: 'easeInOutQuart'});
+        .velocity({scale: 12}, {duration: 400, delay: 55, queue: false, easing: 'easeInOutQuad'});
               
+        
+        
       }, function(){
         newTooltip.velocity({
-          opacity: 0}, { duration: 200, queue: false });
+          opacity: 0}, { duration: 250, queue: false, delay: 300 }
+        );
         
-        backdrop.velocity({
-          opacity: 0}, { duration: 200, queue: false, complete: function(){backdrop.velocity({ scale: 1},{duration:0, queue: false})} });
-
+        backdrop.velocity({opacity: 0, scale: 1},
+                          {duration:250,
+                           delay: 300, queue: false,
+                           complete: function(){
+                             backdrop.css('display', 'none');
+                             newTooltip.css('display', 'none');
+                           }
+                          }
+        );
+        
+        
+        
       });
     }
-    
 }( jQuery ));

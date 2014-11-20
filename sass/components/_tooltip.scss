@@ -28,4 +28,6 @@
   border-radius: 0 0 14px 14px;
   background-color: #323232;
   z-index: -1;
+  transform-origin: top center;
+//  @include transform-origin( top center);
 }
