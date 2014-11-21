@@ -6727,6 +6727,7 @@ ul.tabs li.tab {
   min-width: 100px;
 }
 .dropdown-content li {
+  cursor: pointer;
   font-size: 1.2rem;
   color: #212121;
   padding: 1rem 1rem;
@@ -7227,6 +7228,13 @@ form p:last-child {
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
   border-color: #7c7c7c;
+}
+
+/***************
+  Select Field 
+***************/
+select {
+  display: none;
 }
 
 /***************
