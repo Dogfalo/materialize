@@ -16,12 +16,8 @@ p {
   
 }
 
-.row h3 {
- margin: 30px 0 20px 0; 
-}
-
 .header {
-  @extend .red-text.lighten-2;
+  color: color("materialize-red", "lighten-2");
   font-weight: 300;
 }
 
@@ -45,7 +41,7 @@ p {
   position: absolute;
   top: 50%;
   @include transform( translateY(-50%));
-  height: 80%;
+  height: 70%;
 }
 
 #front-page-logo {
@@ -56,13 +52,13 @@ p {
 
 
 #responsive-img {
-  width: 85%;
+  width: 80%;
   display:block;
   margin: 0 auto;
 }
 
 #index-banner {
-  @extend .red.lighten-2;
+  background-color: color("materialize-red", "lighten-2");
   .header {
     color: #FFF;
   }
@@ -76,8 +72,8 @@ p {
   padding: 14px 0;
   height: 36px;
   line-height: 36px;
-  background-color: #5B5555;
-  color: #e5e5e5;
+  background-color: #5c5757;
+  color: hsl(0, 0%, 90%);
   font-size: .9rem;
 }
 @media #{$medium-and-down} {
@@ -87,20 +83,20 @@ p {
 }
 
 #github-button {
-  background-color: #6A6767;
+  background-color: #6f6d6d;
   @include transition(.25s ease);
   &:hover {
-//    @extend .z-depth-1;
-    background-color: #6f6d6d;
+    background-color: #797777;
   }
 }
 
 .sha {
+  color: hsl(0, 0%, 94%) ;
  margin: 0 6px 0 6px;
 }
 
 #download-button {
-  @extend .red.lighten-3;
+  background-color: color("materialize-red", "lighten-3");
   width: 200px;
   height: 70px;
   line-height: 70px;
@@ -108,21 +104,20 @@ p {
   font-weight: 400;
 
   &:hover {
-    background-color: lighten(color("red"), 30%);
+    background-color: lighten(color("materialize-red", "base"), 30%);
   }
 }
 
 
-
 .promo{
-  padding: 0 20px;
+  padding: 0 15px;
   img {
-    width:85%;
+    width:95%;
     margin-bottom:1.5rem;
   }
   
   i {
-    @extend .red-text.lighten-2;
+    color: color("materialize-red", "lighten-2");
     font-size: 7rem;
     display: block;
   }
@@ -140,14 +135,14 @@ p {
   background-color: #FFF;
   position: relative;
   a {
-    @extend .red-text.lighten-2;
+      color: color("materialize-red", "lighten-2");
     }
   li {
     &:hover {
-      @extend .red.lighten-5; 
+      background-color: color("materialize-red", "lighten-5");
     }
-    .active {
-      @extend .red.lighten-5;
+    &.active {
+      background-color: color("materialize-red", "lighten-5");
     }
   }
   .container {
@@ -171,7 +166,7 @@ p {
 // Color Wheel
 .dynamic-color {
 
-  .red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-gray {
+  .red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-grey {
     height: 55px;
     width: 100%;
     padding: 0 15px;
@@ -270,12 +265,6 @@ p {
     height: auto;
   }
 }
-
-
-
-
-// Getting Started Styling
-
 
 // Prism Styling
 code, pre {

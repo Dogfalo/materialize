@@ -1,55 +1,54 @@
+
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <title>Materialize - Documentation</title>
-  
-  <!-- Favicons -->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-  <!-- Android 5 Chrome Color -->
-  <meta name="theme-color" content="#EE6E73">
+<title>Materialize - Documentation</title>
 
-  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-  <link href="css/prism.css" rel="stylesheet" />
-</head>
-<body>
-  <nav>
-    <div class="container">
-      <div class="nav-wrapper">
-        <a href="index.html" class="brand-logo">Materialize</a>
-        <ul class="right side-nav" id="nav-mobile">
-          <li><a href="about.html">About</a></li>
-          <li><a href="getting_started.html">Getting Started</a></li>
-          <li class="active"><a href="sass.html">Sass</a></li>
-          <li><a href="components.html">Components</a></li>
-          <li><a href="javascript.html">JavaScript</a></li>
-        </ul>
-        <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="mdi-navigation-menu"></i></a>
-      </div>
-    </div>
-  </nav>
-  <div class="tabs-wrapper">
-    <div class="row white z-depth-1">
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png" />
+<link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32" />
+
+<!-- Android 5 Chrome Color -->
+<meta name="theme-color" content="#EE6E73" />
+
+<!--  CSS  -->
+<link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
+<link href="css/prism.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav id="">
       <div class="container">
-        <ul class="tabs">
-          <li class="tab"><a href="#tab1">Media Queries</a></li>
-          <li class="tab"><a href="#tab2">Mixins</a></li>
-          <li class="tab"><a href="#tab3">Color</a></li>
-          <li class="tab"><a href="#tab4">Icons</a></li>
-          <li class="tab"><a href="#tab5">Shadows</a></li>
-        </ul>
+        <div class="nav-wrapper"><a href="index.html" class="brand-logo">Materialize</a>
+          <ul id="nav-mobile" class="right side-nav">
+            <li><a href="about.html">About</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li class="active"><a href="sass.html">Sass</a></li>
+            <li><a href="components.html">Components</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+          </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
       </div>
+    </nav><div class="tabs-wrapper">
+  <div class="row white z-depth-1">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab"><a href="#tab1">Media Queries</a></li>
+        <li class="tab"><a href="#tab2">Mixins</a></li>
+        <li class="tab"><a href="#tab3">Color</a></li>
+        <li class="tab"><a href="#tab4">Icons</a></li>
+        <li class="tab"><a href="#tab5">Shadows</a></li>
+      </ul>
     </div>
   </div>
+</div>
 
   <div class="container">
     
-<!--    Media Queries Section-->
+    <!--    Media Queries Section-->
     <div id="tab1" class="section">
     <h2 class="header">Media Queries</h2>
     <p class="caption">
@@ -164,12 +163,12 @@
         transition-timing-function($function)
         </code></pre>
       </div>
-  
     </div>
+    
     <div id="tab3" class="section dynamic-color">
       <h2 class="header">Colors</h2>
       <p class="caption">
-      Here is a color palette based on the material design base colors. Each of these colors are defined with a base color class and  an optional lighten or darken class. To use these classes in a custom Sass file you can extend these classes.
+      Here is a color palette based on the material design base colors. Each of these colors is defined with a base color class and an optional lighten or darken class. To use these classes, create a custom Sass file in which you can extend these classes.
       </p>
       <div class="row">
         <p>
@@ -193,240 +192,301 @@
       </div>
       <h4 class="header">Color Palette</h4>
       <div class="row">
-      <div class="col s12 m6 l4">
-        <div class="red lighten-5"></div>
-        <div class="red lighten-4"></div>
-        <div class="red lighten-3"></div>
-        <div class="red lighten-2"></div>
-        <div class="red lighten-1"></div>
-        <div class="red"></div>
-        <div class="red darken-1"></div>
-        <div class="red darken-2"></div>
-        <div class="red darken-3"></div>
-        <div class="red darken-4"></div>
-        <div class="red darken-5"></div>
+        <div class="col s12 m6 l4">
+          <div class="red lighten-5"></div>
+          <div class="red lighten-4"></div>
+          <div class="red lighten-3"></div>
+          <div class="red lighten-2"></div>
+          <div class="red lighten-1"></div>
+          <div class="red"></div>
+          <div class="red darken-1"></div>
+          <div class="red darken-2"></div>
+          <div class="red darken-3"></div>
+          <div class="red darken-4"></div>
+          <div class="red accent-1"></div>
+          <div class="red accent-2"></div>
+          <div class="red accent-3"></div>
+          <div class="red accent-4"></div>
+        </div>
+          
+        <div class="col s12 m6 l4">
+          <div class="pink lighten-5"></div>
+          <div class="pink lighten-4"></div>
+          <div class="pink lighten-3"></div>
+          <div class="pink lighten-2"></div>
+          <div class="pink lighten-1"></div>
+          <div class="pink"></div>
+          <div class="pink darken-1"></div>
+          <div class="pink darken-2"></div>
+          <div class="pink darken-3"></div>
+          <div class="pink darken-4"></div>
+          <div class="pink accent-1"></div>
+          <div class="pink accent-2"></div>
+          <div class="pink accent-3"></div>
+          <div class="pink accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="purple lighten-5"></div>
+          <div class="purple lighten-4"></div>
+          <div class="purple lighten-3"></div>
+          <div class="purple lighten-2"></div>
+          <div class="purple lighten-1"></div>
+          <div class="purple"></div>
+          <div class="purple darken-1"></div>
+          <div class="purple darken-2"></div>
+          <div class="purple darken-3"></div>
+          <div class="purple darken-4"></div>
+          <div class="purple accent-1"></div>
+          <div class="purple accent-2"></div>
+          <div class="purple accent-3"></div>
+          <div class="purple accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="deep-purple lighten-5"></div>
+          <div class="deep-purple lighten-4"></div>
+          <div class="deep-purple lighten-3"></div>
+          <div class="deep-purple lighten-2"></div>
+          <div class="deep-purple lighten-1"></div>
+          <div class="deep-purple"></div>
+          <div class="deep-purple darken-1"></div>
+          <div class="deep-purple darken-2"></div>
+          <div class="deep-purple darken-3"></div>
+          <div class="deep-purple darken-4"></div>
+          <div class="deep-purple accent-1"></div>
+          <div class="deep-purple accent-2"></div>
+          <div class="deep-purple accent-3"></div>
+          <div class="deep-purple accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="indigo lighten-5"></div>
+          <div class="indigo lighten-4"></div>
+          <div class="indigo lighten-3"></div>
+          <div class="indigo lighten-2"></div>
+          <div class="indigo lighten-1"></div>
+          <div class="indigo"></div>
+          <div class="indigo darken-1"></div>
+          <div class="indigo darken-2"></div>
+          <div class="indigo darken-3"></div>
+          <div class="indigo darken-4"></div>
+          <div class="indigo accent-1"></div>
+          <div class="indigo accent-2"></div>
+          <div class="indigo accent-3"></div>
+          <div class="indigo accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="blue lighten-5"></div>
+          <div class="blue lighten-4"></div>
+          <div class="blue lighten-3"></div>
+          <div class="blue lighten-2"></div>
+          <div class="blue lighten-1"></div>
+          <div class="blue"></div>
+          <div class="blue darken-1"></div>
+          <div class="blue darken-2"></div>
+          <div class="blue darken-3"></div>
+          <div class="blue darken-4"></div>
+          <div class="blue accent-1"></div>
+          <div class="blue accent-2"></div>
+          <div class="blue accent-3"></div>
+          <div class="blue accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="light-blue lighten-5"></div>
+          <div class="light-blue lighten-4"></div>
+          <div class="light-blue lighten-3"></div>
+          <div class="light-blue lighten-2"></div>
+          <div class="light-blue lighten-1"></div>
+          <div class="light-blue"></div>
+          <div class="light-blue darken-1"></div>
+          <div class="light-blue darken-2"></div>
+          <div class="light-blue darken-3"></div>
+          <div class="light-blue darken-4"></div>
+          <div class="light-blue accent-1"></div>
+          <div class="light-blue accent-2"></div>
+          <div class="light-blue accent-3"></div>
+          <div class="light-blue accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="cyan lighten-5"></div>
+          <div class="cyan lighten-4"></div>
+          <div class="cyan lighten-3"></div>
+          <div class="cyan lighten-2"></div>
+          <div class="cyan lighten-1"></div>
+          <div class="cyan"></div>
+          <div class="cyan darken-1"></div>
+          <div class="cyan darken-2"></div>
+          <div class="cyan darken-3"></div>
+          <div class="cyan darken-4"></div>
+          <div class="cyan accent-1"></div>
+          <div class="cyan accent-2"></div>
+          <div class="cyan accent-3"></div>
+          <div class="cyan accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="teal lighten-5"></div>
+          <div class="teal lighten-4"></div>
+          <div class="teal lighten-3"></div>
+          <div class="teal lighten-2"></div>
+          <div class="teal lighten-1"></div>
+          <div class="teal"></div>
+          <div class="teal darken-1"></div>
+          <div class="teal darken-2"></div>
+          <div class="teal darken-3"></div>
+          <div class="teal darken-4"></div>
+          <div class="teal accent-1"></div>
+          <div class="teal accent-2"></div>
+          <div class="teal accent-3"></div>
+          <div class="teal accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="green lighten-5"></div>
+          <div class="green lighten-4"></div>
+          <div class="green lighten-3"></div>
+          <div class="green lighten-2"></div>
+          <div class="green lighten-1"></div>
+          <div class="green"></div>
+          <div class="green darken-1"></div>
+          <div class="green darken-2"></div>
+          <div class="green darken-3"></div>
+          <div class="green darken-4"></div>
+          <div class="green accent-1"></div>
+          <div class="green accent-2"></div>
+          <div class="green accent-3"></div>
+          <div class="green accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="light-green lighten-5"></div>
+          <div class="light-green lighten-4"></div>
+          <div class="light-green lighten-3"></div>
+          <div class="light-green lighten-2"></div>
+          <div class="light-green lighten-1"></div>
+          <div class="light-green"></div>
+          <div class="light-green darken-1"></div>
+          <div class="light-green darken-2"></div>
+          <div class="light-green darken-3"></div>
+          <div class="light-green darken-4"></div>
+          <div class="light-green accent-1"></div>
+          <div class="light-green accent-2"></div>
+          <div class="light-green accent-3"></div>
+          <div class="light-green accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="lime lighten-5"></div>
+          <div class="lime lighten-4"></div>
+          <div class="lime lighten-3"></div>
+          <div class="lime lighten-2"></div>
+          <div class="lime lighten-1"></div>
+          <div class="lime"></div>
+          <div class="lime darken-1"></div>
+          <div class="lime darken-2"></div>
+          <div class="lime darken-3"></div>
+          <div class="lime darken-4"></div>
+          <div class="lime accent-1"></div>
+          <div class="lime accent-2"></div>
+          <div class="lime accent-3"></div>
+          <div class="lime accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="yellow lighten-5"></div>
+          <div class="yellow lighten-4"></div>
+          <div class="yellow lighten-3"></div>
+          <div class="yellow lighten-2"></div>
+          <div class="yellow lighten-1"></div>
+          <div class="yellow"></div>
+          <div class="yellow darken-1"></div>
+          <div class="yellow darken-2"></div>
+          <div class="yellow darken-3"></div>
+          <div class="yellow darken-4"></div>
+          <div class="yellow accent-1"></div>
+          <div class="yellow accent-2"></div>
+          <div class="yellow accent-3"></div>
+          <div class="yellow accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="amber lighten-5"></div>
+          <div class="amber lighten-4"></div>
+          <div class="amber lighten-3"></div>
+          <div class="amber lighten-2"></div>
+          <div class="amber lighten-1"></div>
+          <div class="amber"></div>
+          <div class="amber darken-1"></div>
+          <div class="amber darken-2"></div>
+          <div class="amber darken-3"></div>
+          <div class="amber darken-4"></div>
+          <div class="amber accent-1"></div>
+          <div class="amber accent-2"></div>
+          <div class="amber accent-3"></div>
+          <div class="amber accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="orange lighten-5"></div>
+          <div class="orange lighten-4"></div>
+          <div class="orange lighten-3"></div>
+          <div class="orange lighten-2"></div>
+          <div class="orange lighten-1"></div>
+          <div class="orange"></div>
+          <div class="orange darken-1"></div>
+          <div class="orange darken-2"></div>
+          <div class="orange darken-3"></div>
+          <div class="orange darken-4"></div>
+          <div class="orange accent-1"></div>
+          <div class="orange accent-2"></div>
+          <div class="orange accent-3"></div>
+          <div class="orange accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="deep-orange lighten-5"></div>
+          <div class="deep-orange lighten-4"></div>
+          <div class="deep-orange lighten-3"></div>
+          <div class="deep-orange lighten-2"></div>
+          <div class="deep-orange lighten-1"></div>
+          <div class="deep-orange"></div>
+          <div class="deep-orange darken-1"></div>
+          <div class="deep-orange darken-2"></div>
+          <div class="deep-orange darken-3"></div>
+          <div class="deep-orange darken-4"></div>
+          <div class="deep-orange accent-1"></div>
+          <div class="deep-orange accent-2"></div>
+          <div class="deep-orange accent-3"></div>
+          <div class="deep-orange accent-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="brown lighten-5"></div>
+          <div class="brown lighten-4"></div>
+          <div class="brown lighten-3"></div>
+          <div class="brown lighten-2"></div>
+          <div class="brown lighten-1"></div>
+          <div class="brown"></div>
+          <div class="brown darken-1"></div>
+          <div class="brown darken-2"></div>
+          <div class="brown darken-3"></div>
+          <div class="brown darken-4"></div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="grey lighten-5"></div>
+          <div class="grey lighten-4"></div>
+          <div class="grey lighten-3"></div>
+          <div class="grey lighten-2"></div>
+          <div class="grey lighten-1"></div>
+          <div class="grey"></div>
+          <div class="grey darken-1"></div>
+          <div class="grey darken-2"></div>
+          <div class="grey darken-3"></div>
+          <div class="grey darken-4"></div>
+        </div>
       </div>
-      <div class="col s12 m6 l4">
-        <div class="pink lighten-5"></div>
-        <div class="pink lighten-4"></div>
-        <div class="pink lighten-3"></div>
-        <div class="pink lighten-2"></div>
-        <div class="pink lighten-1"></div>
-        <div class="pink"></div>
-        <div class="pink darken-1"></div>
-        <div class="pink darken-2"></div>
-        <div class="pink darken-3"></div>
-        <div class="pink darken-4"></div>
-        <div class="pink darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="purple lighten-5"></div>
-        <div class="purple lighten-4"></div>
-        <div class="purple lighten-3"></div>
-        <div class="purple lighten-2"></div>
-        <div class="purple lighten-1"></div>
-        <div class="purple"></div>
-        <div class="purple darken-1"></div>
-        <div class="purple darken-2"></div>
-        <div class="purple darken-3"></div>
-        <div class="purple darken-4"></div>
-        <div class="purple darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="deep-purple lighten-5"></div>
-        <div class="deep-purple lighten-4"></div>
-        <div class="deep-purple lighten-3"></div>
-        <div class="deep-purple lighten-2"></div>
-        <div class="deep-purple lighten-1"></div>
-        <div class="deep-purple"></div>
-        <div class="deep-purple darken-1"></div>
-        <div class="deep-purple darken-2"></div>
-        <div class="deep-purple darken-3"></div>
-        <div class="deep-purple darken-4"></div>
-        <div class="deep-purple darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="indigo lighten-5"></div>
-        <div class="indigo lighten-4"></div>
-        <div class="indigo lighten-3"></div>
-        <div class="indigo lighten-2"></div>
-        <div class="indigo lighten-1"></div>
-        <div class="indigo"></div>
-        <div class="indigo darken-1"></div>
-        <div class="indigo darken-2"></div>
-        <div class="indigo darken-3"></div>
-        <div class="indigo darken-4"></div>
-        <div class="indigo darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="blue lighten-5"></div>
-        <div class="blue lighten-4"></div>
-        <div class="blue lighten-3"></div>
-        <div class="blue lighten-2"></div>
-        <div class="blue lighten-1"></div>
-        <div class="blue"></div>
-        <div class="blue darken-1"></div>
-        <div class="blue darken-2"></div>
-        <div class="blue darken-3"></div>
-        <div class="blue darken-4"></div>
-        <div class="blue darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="light-blue lighten-5"></div>
-        <div class="light-blue lighten-4"></div>
-        <div class="light-blue lighten-3"></div>
-        <div class="light-blue lighten-2"></div>
-        <div class="light-blue lighten-1"></div>
-        <div class="light-blue"></div>
-        <div class="light-blue darken-1"></div>
-        <div class="light-blue darken-2"></div>
-        <div class="light-blue darken-3"></div>
-        <div class="light-blue darken-4"></div>
-        <div class="light-blue darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="cyan lighten-5"></div>
-        <div class="cyan lighten-4"></div>
-        <div class="cyan lighten-3"></div>
-        <div class="cyan lighten-2"></div>
-        <div class="cyan lighten-1"></div>
-        <div class="cyan"></div>
-        <div class="cyan darken-1"></div>
-        <div class="cyan darken-2"></div>
-        <div class="cyan darken-3"></div>
-        <div class="cyan darken-4"></div>
-        <div class="cyan darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="teal lighten-5"></div>
-        <div class="teal lighten-4"></div>
-        <div class="teal lighten-3"></div>
-        <div class="teal lighten-2"></div>
-        <div class="teal lighten-1"></div>
-        <div class="teal"></div>
-        <div class="teal darken-1"></div>
-        <div class="teal darken-2"></div>
-        <div class="teal darken-3"></div>
-        <div class="teal darken-4"></div>
-        <div class="teal darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="green lighten-5"></div>
-        <div class="green lighten-4"></div>
-        <div class="green lighten-3"></div>
-        <div class="green lighten-2"></div>
-        <div class="green lighten-1"></div>
-        <div class="green"></div>
-        <div class="green darken-1"></div>
-        <div class="green darken-2"></div>
-        <div class="green darken-3"></div>
-        <div class="green darken-4"></div>
-        <div class="green darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="light-green lighten-5"></div>
-        <div class="light-green lighten-4"></div>
-        <div class="light-green lighten-3"></div>
-        <div class="light-green lighten-2"></div>
-        <div class="light-green lighten-1"></div>
-        <div class="light-green"></div>
-        <div class="light-green darken-1"></div>
-        <div class="light-green darken-2"></div>
-        <div class="light-green darken-3"></div>
-        <div class="light-green darken-4"></div>
-        <div class="light-green darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="lime lighten-5"></div>
-        <div class="lime lighten-4"></div>
-        <div class="lime lighten-3"></div>
-        <div class="lime lighten-2"></div>
-        <div class="lime lighten-1"></div>
-        <div class="lime"></div>
-        <div class="lime darken-1"></div>
-        <div class="lime darken-2"></div>
-        <div class="lime darken-3"></div>
-        <div class="lime darken-4"></div>
-        <div class="lime darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="yellow lighten-5"></div>
-        <div class="yellow lighten-4"></div>
-        <div class="yellow lighten-3"></div>
-        <div class="yellow lighten-2"></div>
-        <div class="yellow lighten-1"></div>
-        <div class="yellow"></div>
-        <div class="yellow darken-1"></div>
-        <div class="yellow darken-2"></div>
-        <div class="yellow darken-3"></div>
-        <div class="yellow darken-4"></div>
-        <div class="yellow darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="amber lighten-5"></div>
-        <div class="amber lighten-4"></div>
-        <div class="amber lighten-3"></div>
-        <div class="amber lighten-2"></div>
-        <div class="amber lighten-1"></div>
-        <div class="amber"></div>
-        <div class="amber darken-1"></div>
-        <div class="amber darken-2"></div>
-        <div class="amber darken-3"></div>
-        <div class="amber darken-4"></div>
-        <div class="amber darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="orange lighten-5"></div>
-        <div class="orange lighten-4"></div>
-        <div class="orange lighten-3"></div>
-        <div class="orange lighten-2"></div>
-        <div class="orange lighten-1"></div>
-        <div class="orange"></div>
-        <div class="orange darken-1"></div>
-        <div class="orange darken-2"></div>
-        <div class="orange darken-3"></div>
-        <div class="orange darken-4"></div>
-        <div class="orange darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="deep-orange lighten-5"></div>
-        <div class="deep-orange lighten-4"></div>
-        <div class="deep-orange lighten-3"></div>
-        <div class="deep-orange lighten-2"></div>
-        <div class="deep-orange lighten-1"></div>
-        <div class="deep-orange"></div>
-        <div class="deep-orange darken-1"></div>
-        <div class="deep-orange darken-2"></div>
-        <div class="deep-orange darken-3"></div>
-        <div class="deep-orange darken-4"></div>
-        <div class="deep-orange darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="brown lighten-5"></div>
-        <div class="brown lighten-4"></div>
-        <div class="brown lighten-3"></div>
-        <div class="brown lighten-2"></div>
-        <div class="brown lighten-1"></div>
-        <div class="brown"></div>
-        <div class="brown darken-1"></div>
-        <div class="brown darken-2"></div>
-        <div class="brown darken-3"></div>
-        <div class="brown darken-4"></div>
-        <div class="brown darken-5"></div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="grey lighten-5"></div>
-        <div class="grey lighten-4"></div>
-        <div class="grey lighten-3"></div>
-        <div class="grey lighten-2"></div>
-        <div class="grey lighten-1"></div>
-        <div class="grey"></div>
-        <div class="grey darken-1"></div>
-        <div class="grey darken-2"></div>
-        <div class="grey darken-3"></div>
-        <div class="grey darken-4"></div>
-        <div class="grey darken-5"></div>
-      </div>
+      <div class="row">
+        <div class="col s12 m6 l4">
+          <div class="blue-grey lighten-5"></div>
+          <div class="blue-grey lighten-4"></div>
+          <div class="blue-grey lighten-3"></div>
+          <div class="blue-grey lighten-2"></div>
+          <div class="blue-grey lighten-1"></div>
+          <div class="blue-grey"></div>
+          <div class="blue-grey darken-1"></div>
+          <div class="blue-grey darken-2"></div>
+          <div class="blue-grey darken-3"></div>
+          <div class="blue-grey darken-4"></div>
+        </div>
       </div>
     </div>
   
@@ -1232,7 +1292,6 @@
     </div>
   </div>
     
-    
     <div id="tab5" class="section">
     <div class="row">
       <h2 class="header">Shadows</h2>
@@ -1277,44 +1336,42 @@
       </code></pre>
     </div>
   </div>
-
-  <div id="footer" class="section">
-    <div class="footer-block">
-      <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
-    </div>
-    <div class="footer-block">
-      <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
-    </div>
-    <div class="footer-block">
-      <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
-    </div>
-    <div class="footer-block">
-      <a href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
-    </div>
+    
+</div><div id="footer" class="section">
+  <div class="footer-block">
+    <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
   </div>
+  <div class="footer-block">
+    <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+  </div>
+  <div class="footer-block">
+    <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+  </div>
+  <div class="footer-block">
+    <a href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+  </div>
+</div><!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.timeago.js"></script>  
+<script src="js/prism.js"></script>
+<script src="bin/materialize.js"></script>
+<script src="js/init.js"></script>
+<!-- Twitter Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/prism.js"></script>
-  <script src="bin/materialize.js"></script>
-  <script src="js/init.js"></script>
+<!-- Google Plus Button-->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
-  <!-- Twitter Button -->
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  
-  <!-- Google Plus Button-->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+<!--  Google Analytics  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  <!--  Google Analytics  -->
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-56218128-1', 'auto');
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview');
-  </script>
-</body>
+ga('create', 'UA-56218128-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+  </body>
 </html>
-

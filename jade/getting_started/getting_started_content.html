@@ -1,0 +1,115 @@
+<div class="section" id="index-banner">
+  <div class="container">
+    <h1 class="header center-on-small-only">Getting Started</h1>
+    <div class="row">
+      <h4 class ="col s12 light red-text lighten-4 center-on-small-only">Learn to how to easily start using Materialize in your website.</h4>
+    </div>
+  </div>
+</div>
+  
+<div class="container">
+  <!--  Outer row  -->
+  <div class="row">
+    
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="table-of-contents">
+          <li><a href="#download">Download</a></li>
+          <li><a href="#setup">Setup</a></li>
+          <li><a href="#sass">Sass</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section col s12 m9">
+      <div id="download" class="row scrollspy">
+          <h2 class="col s12 header">Download</h2>
+        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using materialize, all you have to is download one of the options below.</p>
+
+        <div class="col s12 m5">
+          <p class="promo-caption">Materialize</p>
+          <p>This is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option require little to no setup. Use this if you are unfamiliar with Sass.</p>
+          <a class="btn waves-effect waves-light" href="bin/materialize_v0.69.zip">Materialize<i class="mdi-file-file-download right"></i></a>
+        </div>
+        <div class="col s12 m5 offset-m2">
+          <p class="promo-caption">Sass</p>
+          <p>This version contains the source SCSS files. By choosing this version you have more control over which components to include. You will need a Sass compiler if you choose this option.</p>
+          <a class="btn waves-effect waves-light" href="bin/materialize_sass_v0.69.zip">Source<i class="mdi-file-file-download right"></i></a>
+        </div>
+      </div>
+      
+      <div id="setup" class="row scrollspy">
+        <div class="col s12">
+          <h2 class="header">Setup</h2>
+          <h4 >Project Structure</h4>
+          <p>After downloading, extract the files into the directory where your website is located. Your directory will look something like this.</p>
+          <p>You'll notice that there are two sets of the files. The <code class="language-markup">min</code> means that the file is "compressed" to reduce load times. These minified files are usually used in production while it is better to use the unminified files during development.</p>
+
+          <pre><code class="language-markup directory-markup">
+  MyWebsite/
+  |--css/
+  |  |--materialize.css
+  |
+  |--font/
+  |  |--material-design-icons/
+  |  |--roboto/
+  |
+  |--js/
+  |  |--materialize.js
+  | 
+  |--index.html
+          </code></pre>
+        </div>
+      <div class="col s12">
+        <h4>HTML Setup</h4>
+        <p>Next you just have to make sure you link the files properly in your webpage. Generally it is wise to import javascript files at the end of the body to reduce page load time. Follow the example below on how to import Materialize into your webpage.</p>
+        <p> One last thing to note is that you have to import jQuery before importing materialize.js!</p>
+        <pre><code class="language-markup">
+  &lt;html>
+    &lt;head>
+      &lt;!--Import materialize.css-->
+      &lt;link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    &lt;/head>
+    
+    &lt;body>
+      &lt;!--Import jQuery before materialize.js-->
+      &lt;script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">&lt;/script>
+      &lt;script type="text/javascript" src="js/materialize.min.js">&lt;/script>
+    &lt;/body>
+  &lt;/html>
+        </code></pre>
+      </div> 
+    </div>
+
+    <div id="sass" class="row scrollspy">
+      <div class="col s12">
+        <h2 class="header">Sass Setup</h2>
+        <p class="caption">This section is only relevant if you chose to download the Sass version of Materialize.</p>
+        <h4>Compiling Sass</h4>
+        <p>Instead of having css folder, you will find that the download instead contains many .scss files which contain the styles of individual components. Unfortuantely the browser cannot interpret Sass, so you must have your Sass compiler compile the scss/materialize.scss into a regular CSS file. At this point you can link this newly outputted file in your HTML page</p>
+
+        <pre><code class="language-markup directory-markup">
+  MyWebsite/
+  |--css/
+  |  |--materialize.css &lt;-- compiled from scss/materialize.scss
+  |
+  |--font/
+  |  |--material-design-icons/
+  |  |--roboto/
+  |
+  |--js/
+  |  |--materialize.js
+  |
+  |--scss/
+  |  |--materialize.scss
+  |  |--components/
+  | 
+  |--index.html
+        </code></pre>
+      </div>
+    </div>
+      
+  </div>
+  </div>
+        
+</div>

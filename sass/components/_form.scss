@@ -1,28 +1,74 @@
-/***************
-    Inputs 
-***************/
+
+
+/***************************
+   Text Inputs + Textarea
+****************************/
 
 $border-color: #bdbdbd;
 
-input{
+.input-field {
+  position: relative;
+
+  label {
+    color: $border-color;
+    position: absolute;
+    z-index: -1;
+    top: .8rem;
+    @include transition(transform .2s ease-out);
+  }
+  label.active {
+    transform: translateY(-130%);
+  }
+
+  input[type=text]:focus + label,
+  input[type=password]:focus + label,
+  input[type=email]:focus + label,
+  textarea:focus + label {
+    color: darken($border-color, 10%);
+  }
+
+  input[type=text]:valid,
+  input[type=password]:valid,
+  input[type=email]:valid
+  textarea:valid {
+    border-bottom: 1px solid color("green", "base");
+    @include box-shadow(0 1px 0 0 color("green", "base"));
+  }
+
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $border-color;
   outline: none;
-  height: 3em;
+  height: 3rem;
   width: 100%;
-  font-size: 1em;
-  margin: 15px 0px;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
   padding: 0;
   @include box-shadow(none);
   @include box-sizing(content-box);
   @include transition(.3s);
 }
 
-input:focus {
-  border-bottom: 1px solid color("cyan");
-  @include box-shadow(0 1px 0 0 color("cyan"));
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+textarea:focus {
+  border-bottom: 1px solid color("light-blue", "base");
+  @include box-shadow(0 1px 0 0 color("light-blue", "base"));
 }
+
+textarea {
+  overflow-y: hidden; /* prevents scroll bar flash */
+  padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+  resize: none;
+}
+
 
 /***************
   Radio Buttons 
@@ -196,3 +242,164 @@ form p {
   border-color: $disabled-color;
 }
 
+
+/***************
+      Range 
+***************/
+
+.range-field {
+  position: relative;
+}
+
+input[type=range], input[type=range] + .thumb {
+  @extend .no-select;
+  cursor: pointer;
+}
+
+input[type=range] {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin: 15px 0px;
+  padding: 0;
+}
+input[type=range] + .thumb {
+  position: absolute;
+  border: none;
+  height: 0;
+  width: 0;
+  border-radius: 50%;
+  background-color: $fill-color;
+  transform-origin: 50% 50%;
+  top: 10px;
+  margin-left: -6px;
+
+  @include transform( rotate(-45deg));
+
+  .value {
+    display: block;
+    width: 30px;
+    text-align: center;
+    color: $fill-color;
+    font-size: 0px;
+    @include transform( rotate(45deg));
+  }
+
+  &.active {
+    border-radius: 50% 50% 50% 0;
+
+    .value {
+      color: #fff;
+      margin-left: -1px;
+      margin-top: 8px;
+      font-size: 10px;
+    }
+  }
+}
+
+
+input[type=range]:focus {
+  outline: none;
+}
+
+
+
+// WebKit
+input[type=range]{
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #c2c0c2;
+  border: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: $fill-color;
+  transform-origin: 50% 50%;
+  margin: -5px 0 0 0;
+  @include transition(.3s);
+}
+.range-field.active input[type=range]::-webkit-slider-thumb {
+  height: 0;
+  width: 0;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+// FireFox
+input[type=range]{
+  /* fix for FF unable to apply focus style bug  */
+  border: 1px solid white; 
+
+  /*required for proper track sizing in FF*/
+}
+
+input[type=range]::-moz-range-track {
+  height: 3px;
+  background: #ddd;
+  border: none;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: $fill-color;
+  margin-top: -5px;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type=range]:focus::-moz-range-track {
+  background: #ccc;
+}
+
+// IE 10+
+input[type=range]::-ms-track {
+  height: 3px;
+  
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+  
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+
+  /*remove default tick marks*/
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #777;
+}
+input[type=range]::-ms-fill-upper {
+  background: #ddd;
+}
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: $fill-color;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
+}
