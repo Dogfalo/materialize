@@ -41,8 +41,7 @@
         <li class="tab"><a href="#tab4">Forms</a></li>
         <li class="tab"><a href="#tab5">Buttons</a></li>
         <li class="tab"><a href="#tab6">Navbar</a></li>
-        <li class="tab"><a href="#tab7">Cards</a></li>
-        <li class="tab"><a href="#tab8">Collections</a></li>
+        <li class="tab"><a href="#tab7">Content</a></li>
       </ul>
     </div>
   </div>
@@ -63,7 +62,7 @@
     <div class="col s12 m9 l10">
       <div id="headers" class="scrollspy">
         <h2 class="header">Typography</h2>
-        <h3 class='header light'>Headers</h3>
+        <h4 class="light">Headers</h4>
         <div class="row">
           <div class="col s12">
             <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags</p>
@@ -80,7 +79,7 @@
       </div>
 
       <div id="flow" class="scrollspy">
-        <h3 class='header light'>Flow Text</h3>
+        <h4 class="light">Flow Text</h4>
         <p>
         One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
           </p>
@@ -147,7 +146,7 @@
       </div>
 
     <div id="offset" class="scrollspy">
-      <h3 class="header">Offsets</h3>
+      <h4 class="light">Offsets</h4>
       <p>You can use offsets to make smaller sized columns without needing to fill in the empty space.</p>
 
       <div class="row">
@@ -598,8 +597,24 @@ $(".button-collapse").sideNav();
 
     </div>
   </div>
-
+  
+<!--  Content tab  -->
   <div id="tab7" class="section">
+    <div class="row">
+      
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="table-of-contents">
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#tables">Tables</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class=" col m9 l10">
+<!--    Cards Section-->
+    <div id="cards" class="scrollspy">
       <div class="row">
           <h2 class="header">Cards</h2>
           <p class="caption">Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.</p>
@@ -675,23 +690,10 @@ $(".button-collapse").sideNav();
   
   <!--  Collections Section  -->
   
-  <div id="tab8" class="section">
+  <div id="collections" class="scrollspy">
     
-    <!--  Table of Contents-->
     <div class="row">
-    
-      <div class="col hide-on-small-only m3 l2">
-        <div style="height: 1px;">
-          <ul class="table-of-contents">
-            <li><a href="#basic-collection">Basic</a></li>
-            <li><a href="#basic-collection-2">Basic ver. 2</a></li>
-            <li><a href="#headers-collection">Headers</a></li>
-            <li><a href="#secondary-content-collection">Secondary content</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col m9 l10">
+      <div class="col s12">
         <h2 class="header">Collections</h2>
         <p class="caption">Collections allow you to group list objects together.</p>
 
@@ -774,7 +776,162 @@ $(".button-collapse").sideNav();
         </code></pre>
         </div>
       </div>
+    </div>
+  </div>
       
+<!--  Tables Section-->
+  <div id="tables" class="scrollspy">
+    <div class="row">
+      <h2 class="header">Tables</h2>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4 class="light">Borderless Table</h4>
+        <p>Tables are borderless by default.</p>
+        <table>
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+      <br>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4 class="light">Bordered Table</h4>
+        <p>Add <code class="language-markup">class="bordered"</code> for a bordered table</p>
+        <table class="bordered">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+      <br>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4 class="light">Striped Table</h4>
+        <p>Add <code class="language-markup">class="striped"</code> for a striped table</p>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+      <br>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4 class="light">Hoverable Table</h4>
+        <p>Add <code class="language-markup">class="bordered"</code> for a hoverable table</p>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+    </div>
+  </div>
+  <!--  End Tables Section  -->
+  </div>
+      
+  </div>
+  </div>
+
+  
+  
     </div>
   </div>
 </div><div id="footer" class="section">

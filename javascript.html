@@ -101,7 +101,7 @@
         <div class="row">
           <div class="col s12">
             <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>            
-            <a class="btn tooltipped hint--bottom" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP</a>
+            <a class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP</a>
             <br>
           </div>
         </div>
@@ -109,13 +109,13 @@
           <div class="col s12">
             Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
             <pre><code class="language-markup">
-              &lt;a class=" tooltipped hint--bottom" data-hint="I am a bottom positioned tooltip"> SHOW me TOOLTIP&lt;/a>
+              &lt;class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP&lt;/a>
             </code></pre>
             <br>
-            Then add this to your jQuery file
+            Then add this to your jQuery file, with the hover delay you want as the option
             <pre><code class="language-javascript">
               $(document).ready(function(){
-                $('.tooltipped').tooltip();
+                $('.tooltipped').tooltip({"delay": 50});
               });
             </code></pre>
           </div>
