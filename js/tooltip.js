@@ -44,7 +44,7 @@
             newTooltip.velocity({ opacity: 1}, { duration: 250, queue: false });
             backdrop.css({ display: 'block' })
             .velocity({opacity:1},{duration: 75, queue: false})
-            .velocity({scale: 12}, {duration: 250, delay: 40, queue: false, easing: 'easeInOutQuad'});
+            .velocity({scale: 12}, {duration: 250, delay: 35, queue: false, easing: 'easeInOutCubic'});
           }
         }, 1);
         

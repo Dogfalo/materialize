@@ -51,11 +51,12 @@
           .css('top', 0)
           .css('left', 0)
           .css('opacity', 0)
+          .css('will-change', 'opacity')
           .click(function(){
             returnToOriginal();
           });
         $('body').append(overlay);
-        overlay.animate({opacity: 1, duration: inDuration, queue: false, easing: 'easeOutQuad'}
+        overlay.animate({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
         );
         
         // Set states
@@ -84,7 +85,6 @@
         // Reposition Element AND Animate image + set z-index
         origin.css('left', 0)
           .css('top', 0)
-          .css('height', originalHeight)
           .css('z-index', 1000)
           .css('will-change', 'left, top')
           .animate({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
@@ -120,7 +120,7 @@
           }
           // Remove Overlay
           overlayActive = false;
-          $('#materialbox-overlay').animate({opacity: 0}, outDuration, function(){ 
+          $('#materialbox-overlay').fadeOut(outDuration, function(){ 
             $(this).remove(); 
             origin.css('z-index', original_z_index);
           });
@@ -131,6 +131,7 @@
           // Reposition Element
           origin.animate({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
           origin.animate({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.css('will-change', '');
           // add active class
           origin.removeClass('active');
       }
