@@ -144,6 +144,7 @@
         <ul class="table-of-contents">
           <li><a href="#input">Input Fields</a></li>
           <li><a href="#textarea">Textareas</a></li>
+          <li><a href="#select">Select</a></li>
           <li><a href="#radio">Radio Buttons</a></li>
           <li><a href="#checkbox">Checkboxes</a></li>
           <li><a href="#range">Range</a></li>
@@ -245,35 +246,37 @@
   &lt;div class="row">
     &lt;form class="col s12">
       &lt;div class="row">
-        &lt;div class="input-field col s6">
-          &lt;input id="first_name" type="text" required>
-          &lt;label for="first_name">First Name&lt;/label>
-        &lt;/div>
-        &lt;div class="input-field col s6">
-          &lt;input id="last_name" type="text" required>
-          &lt;label for="last_name">Last Name&lt;/label>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="row">
         &lt;div class="input-field col s12">
-          &lt;input id="username" type="text" required>
-          &lt;label for="username">Username&lt;/label>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="row">
-        &lt;div class="input-field col s12">
-          &lt;input id="password" type="password" required>
-          &lt;label for="password">Password&lt;/label>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="row">
-        &lt;div class="input-field col s12">
-          &lt;input id="email" type="email" required>
-          &lt;label for="email">Email&lt;/label>
+          &lt;textarea>&lt;/textarea>                
+          &lt;label>Textarea&lt;/label>
         &lt;/div>
       &lt;/div>
     &lt;/form>
   &lt;/div>
+          </code></pre>
+        </div>
+      </div>
+      <div id="select" class="scrollspy">
+        <h4 class= "header light">Select</h4>
+        <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. </p>
+        <p><strong>Textareas will auto resize to the text inside.</strong></p>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <select class="cs-select cs-skin-rotate">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+
           </code></pre>
         </div>
       </div>

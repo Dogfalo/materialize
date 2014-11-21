@@ -97,4 +97,31 @@
   });
 
 
+  //  Select Functionality
+  //  Select Functionality
+  //  Select Functionality
+  //  Select Functionality
+
+  var createSelectStructure = function($select) { 
+    var wrapper = $('<div class="select-wrapper"></div>');
+    var options = $('<div class="select-options"><ul></ul></div>');
+    var selectOptions = $select.children('option');
+    var label = selectOptions.first();
+    selectOptions = selectOptions.slice(1);
+
+    selectOptions.each(function () {
+      options.find('ul').append($('<li><span>' + $(this).html() + '</span></li>'));
+    });
+
+    $select.wrap(wrapper);
+    $select.before($('<span>' + label.html() + '</span>'));
+    $select.before(options);
+
+  };
+
+  createSelectStructure($('select.cs-select'));
+
+
+
+
 }( jQuery ));
