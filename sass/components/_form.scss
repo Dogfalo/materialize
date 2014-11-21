@@ -248,9 +248,12 @@ form p {
   Select Field 
 ***************/
 
-select {
-  display: none;
+.select-wrapper span.select-dropdown {
+  cursor: pointer;
 }
+
+select { display: none; }
+select.disabled { display: block; }
 
 
 /***************

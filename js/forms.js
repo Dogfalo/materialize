@@ -115,6 +115,7 @@
     options.find('li').each(function (i) {
       $(this).click(function () {
         $select.find('option').eq(i + 1).prop('selected', true);
+        $select.prev('span.select-dropdown').html($(this).text());
       });
     });
 
@@ -124,7 +125,10 @@
 
   };
 
-  createSelectStructure($('select.cs-select'), 1);
+  $('select').not('.disabled').each(function (i) {
+    createSelectStructure($(this), i);    
+  });
+
 
   $('.select-dropdown').dropdown({"hover": false});
 

@@ -292,17 +292,26 @@
       </div>
       <div id="select" class="scrollspy">
         <h4 class= "header light">Select</h4>
-        <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. </p>
-        <p><strong>Textareas will auto resize to the text inside.</strong></p>
+        <p> Select allows user input through specified options. </p>
         <div class="row">
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <select class="cs-select cs-skin-rotate">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                <select>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="input-field col s12">
+                <br><br><br>
+                <p>You can add the class <code class="language-markup">disabled</code> to get the browser default.</p>
+                <select class="disabled">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
                 </select>
               </div>
             </div>
@@ -310,7 +319,19 @@
         </div>
         <div class="row">
           <pre><code class="language-markup col s12">
+  &lt;select>
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
 
+  &lt;select class="disabled">
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
           </code></pre>
         </div>
       </div>

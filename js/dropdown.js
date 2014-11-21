@@ -44,7 +44,7 @@
 
           if (!activates.is(e.target) && !origin.is(e.target)) {
             activates.hide({duration: 150, easing: 'easeOutCubic'});
-            $(this).unbind();
+            $(document).unbind('click');
           }
 
         });

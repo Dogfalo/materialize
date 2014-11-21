@@ -7233,8 +7233,16 @@ form p:last-child {
 /***************
   Select Field 
 ***************/
+.select-wrapper span.select-dropdown {
+  cursor: pointer;
+}
+
 select {
   display: none;
+}
+
+select.disabled {
+  display: block;
 }
 
 /***************
