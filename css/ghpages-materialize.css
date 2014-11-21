@@ -6670,11 +6670,11 @@ ul.tabs li.tab {
   background-clip: padding-box;
   background-color: #323232;
   z-index: -1;
-  -webkit-transform-origin: top center;
-  -moz-transform-origin: top center;
-  -ms-transform-origin: top center;
-  -o-transform-origin: top center;
-  transform-origin: top center;
+  -webkit-transform-origin: 50% 10%;
+  -moz-transform-origin: 50% 10%;
+  -ms-transform-origin: 50% 10%;
+  -o-transform-origin: 50% 10%;
+  transform-origin: 50% 10%;
 }
 
 .btn, .btn-large, .btn-flat {
