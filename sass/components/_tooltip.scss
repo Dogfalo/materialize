@@ -3,7 +3,7 @@
     font-size: 1rem;
     z-index: 1000;
     background-color: transparent;
-    border-radius: 2px;
+    @include border-radius(2px);
     color: #fff;
     height: 1rem;
     line-height: 1rem;
@@ -23,7 +23,7 @@
   display: none;
   height: 7px;
   width: 14px;
-  border-radius: 0 0 14px 14px;
+  @include border-radius(0 0 14px 14px);
   background-color: #323232;
   z-index: -1;
   @include transform-origin( top center);

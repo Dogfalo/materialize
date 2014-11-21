@@ -6641,7 +6641,10 @@ ul.tabs li.tab {
   font-size: 1rem;
   z-index: 1000;
   background-color: transparent;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
   border-radius: 2px;
+  background-clip: padding-box;
   color: #fff;
   height: 1rem;
   line-height: 1rem;
@@ -6661,7 +6664,10 @@ ul.tabs li.tab {
   display: none;
   height: 7px;
   width: 14px;
+  -webkit-border-radius: 0 0 14px 14px;
+  -moz-border-radius: 0 0 14px 14px;
   border-radius: 0 0 14px 14px;
+  background-clip: padding-box;
   background-color: #323232;
   z-index: -1;
   -webkit-transform-origin: top center;
