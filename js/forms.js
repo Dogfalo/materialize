@@ -97,4 +97,42 @@
   });
 
 
+  //  Select Functionality
+  //  Select Functionality
+  //  Select Functionality
+  //  Select Functionality
+
+  var createSelectStructure = function($select, $index) { 
+    var wrapper = $('<div class="select-wrapper"></div>');
+    var options = $('<ul id="select-options-' + $index +'" class="dropdown-content"></ul>');
+    var selectOptions = $select.children('option');
+    var label = selectOptions.first();
+    selectOptions = selectOptions.slice(1);
+
+    selectOptions.each(function () {
+      options.append($('<li><span>' + $(this).html() + '</span></li>'));
+    });
+    options.find('li').each(function (i) {
+      $(this).click(function () {
+        $select.find('option').eq(i + 1).prop('selected', true);
+        $select.prev('span.select-dropdown').html($(this).text());
+      });
+    });
+
+    $select.wrap(wrapper);
+    $select.before($('<span class="select-dropdown" data-activates="select-options-' + $index +'">' + label.html() + '</span>'));
+    $('body').append(options);
+
+  };
+
+  $('select').not('.disabled').each(function (i) {
+    createSelectStructure($(this), i);    
+  });
+
+
+  $('.select-dropdown').dropdown({"hover": false});
+
+
+
+
 }( jQuery ));
