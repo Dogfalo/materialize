@@ -84,7 +84,6 @@
 
 
     // Plugin initialization
-    $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown();
     if (window_width > 600) {
       $('ul.tabs').tabs();
@@ -95,7 +94,7 @@
     $('.tab-demo').show().tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
-    $('.tooltipped').tooltip();
+    $('.tooltipped').tooltip({"delay": 50});
     $('.collapsible-accordion').collapsible();
     $('.collapsible-expandable').collapsible({"accordion": false});
     $('.materialboxed').materialbox();
