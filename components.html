@@ -41,9 +41,7 @@
         <li class="tab"><a href="#tab4">Forms</a></li>
         <li class="tab"><a href="#tab5">Buttons</a></li>
         <li class="tab"><a href="#tab6">Navbar</a></li>
-        <li class="tab"><a href="#tab7">Cards</a></li>
-        <li class="tab"><a href="#tab8">Collections</a></li>
-        <li class="tab"><a href="#tab9">Tables</a></li>
+        <li class="tab"><a href="#tab7">Content</a></li>
       </ul>
     </div>
   </div>
@@ -599,8 +597,24 @@ $(".button-collapse").sideNav();
 
     </div>
   </div>
-
+  
+<!--  Content tab  -->
   <div id="tab7" class="section">
+    <div class="row">
+      
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="table-of-contents">
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#tables">Tables</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class=" col m9 l10">
+<!--    Cards Section-->
+    <div id="cards" class="scrollspy">
       <div class="row">
           <h2 class="header">Cards</h2>
           <p class="caption">Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.</p>
@@ -676,23 +690,10 @@ $(".button-collapse").sideNav();
   
   <!--  Collections Section  -->
   
-  <div id="tab8" class="section">
+  <div id="collections" class="scrollspy">
     
-    <!--  Table of Contents-->
     <div class="row">
-    
-      <div class="col hide-on-small-only m3 l2">
-        <div style="height: 1px;">
-          <ul class="table-of-contents">
-            <li><a href="#basic-collection">Basic</a></li>
-            <li><a href="#basic-collection-2">Basic ver. 2</a></li>
-            <li><a href="#headers-collection">Headers</a></li>
-            <li><a href="#secondary-content-collection">Secondary content</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col s12 m9 l10">
+      <div class="col s12">
         <h2 class="header">Collections</h2>
         <p class="caption">Collections allow you to group list objects together.</p>
 
@@ -779,7 +780,7 @@ $(".button-collapse").sideNav();
   </div>
       
 <!--  Tables Section-->
-  <div id="tab9" class="section">
+  <div id="tables" class="scrollspy">
     <div class="row">
       <h2 class="header">Tables</h2>
       
@@ -923,7 +924,13 @@ $(".button-collapse").sideNav();
       
     </div>
   </div>
-<!--  End Tables Section  -->
+  <!--  End Tables Section  -->
+  </div>
+      
+  </div>
+  </div>
+
+  
   
     </div>
   </div>
