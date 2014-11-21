@@ -182,6 +182,13 @@ table {
   width:100%;
   display: table;
   
+  @media #{$small-and-down} {
+    thead tr th, tbody tr td {
+      text-align: center;
+      
+    } 
+  }
+  
   &.bordered tr {
     border-bottom: 1px solid #e0e0e0;
   }
@@ -193,13 +200,23 @@ table {
   }
   
   &.hoverable {
-    
-    tbody tr:hover {
-      @include transition(.25s);
-      background-color: #f2f2f2;
+      
+    tbody tr {
+      @include transition(background-color .25s ease);
+//      background-color: transparent;
+      &:hover {
+        background-color: #f2f2f2;
+      }
     }
   }
   
+  &.centered {
+    thead tr th, tbody tr td {
+      text-align: center;
+      
+    }
+  }
+
 }
 
 thead {

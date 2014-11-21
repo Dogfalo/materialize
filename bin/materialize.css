@@ -2681,19 +2681,29 @@ table {
   width: 100%;
   display: table;
 }
+@media only screen and (max-width: 600px) {
+  table thead tr th, table tbody tr td {
+    text-align: center;
+  }
+}
 table.bordered tr {
   border-bottom: 1px solid #e0e0e0;
 }
 table.striped tbody tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
+table.hoverable tbody tr {
+  -webkit-transition: background-color 0.25s ease;
+  -moz-transition: background-color 0.25s ease;
+  -o-transition: background-color 0.25s ease;
+  -ms-transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease;
+}
 table.hoverable tbody tr:hover {
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -ms-transition: 0.25s;
-  transition: 0.25s;
   background-color: #f2f2f2;
+}
+table.centered thead tr th, table.centered tbody tr td {
+  text-align: center;
 }
 
 thead {
