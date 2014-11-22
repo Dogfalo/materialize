@@ -7011,6 +7011,7 @@ ul.collapsible {
   position: absolute;
   z-index: -1;
   top: .8rem;
+  left: .5rem;
   -webkit-transition: transform 0.2s ease-out;
   -moz-transition: transform 0.2s ease-out;
   -o-transition: transform 0.2s ease-out;
@@ -7827,5 +7828,3 @@ code, pre {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */
