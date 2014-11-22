@@ -6670,11 +6670,11 @@ ul.tabs li.tab {
   background-clip: padding-box;
   background-color: #323232;
   z-index: -1;
-  -webkit-transform-origin: top center;
-  -moz-transform-origin: top center;
-  -ms-transform-origin: top center;
-  -o-transform-origin: top center;
-  transform-origin: top center;
+  -webkit-transform-origin: 50% 10%;
+  -moz-transform-origin: 50% 10%;
+  -ms-transform-origin: 50% 10%;
+  -o-transform-origin: 50% 10%;
+  transform-origin: 50% 10%;
 }
 
 .btn, .btn-large, .btn-flat {
@@ -6778,6 +6778,7 @@ ul.tabs li.tab {
   min-width: 100px;
 }
 .dropdown-content li {
+  cursor: pointer;
   font-size: 1.2rem;
   color: #212121;
   padding: 1rem 1rem;
@@ -7010,6 +7011,7 @@ ul.collapsible {
   position: absolute;
   z-index: -1;
   top: .8rem;
+  left: .5rem;
   -webkit-transition: transform 0.2s ease-out;
   -moz-transition: transform 0.2s ease-out;
   -o-transition: transform 0.2s ease-out;
@@ -7281,6 +7283,21 @@ form p:last-child {
 }
 
 /***************
+  Select Field 
+***************/
+.select-wrapper span.select-dropdown {
+  cursor: pointer;
+}
+
+select {
+  display: none;
+}
+
+select.disabled {
+  display: block;
+}
+
+/***************
       Range 
 ***************/
 .range-field {
@@ -7533,5 +7550,3 @@ ul.table-of-contents a.active {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-
-/*# sourceMappingURL=materialize.css.map */
