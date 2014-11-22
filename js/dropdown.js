@@ -1,57 +1,15 @@
 (function ($) {
+  $.fn.dropdown = function () {
+    var origin = $(this);
 
-  $.fn.dropdown = function (options) {
-    var defaults = {
-      hover: true
-    }
-    options = $.extend(defaults, options);
-
-    var origin = $(this);    
-  
     var activates = $("#"+ origin.attr('data-activates'));
 
     activates.hide(0);
 
+    origin.on('click', openDropdown);
 
-    if (defaults.hover) {
-      // Click handler for list container
-      origin.on('mouseover', function(e){ // Mouse over
-        activates.css('width', origin.innerWidth());
-        activates.css('top', origin.offset().top);
-        activates.css('left', origin.offset().left);
-        activates.show({duration: 200, easing: 'easeOutCubic'});
-      });
-      
-      // Document click handler        
-      activates.on('mouseleave', function(e){ // Mouse out
-        activates.hide({duration: 150, easing: 'easeOutCubic'});
-      });
-      
-
-      
-    } else {
-      var open = false;
-
-      // Click handler for list container
-      origin.click( function(e){ // Mouse over
-        e.preventDefault();
-        activates.css('width', origin.innerWidth());
-        activates.css('top', origin.offset().top);
-        activates.css('left', origin.offset().left);
-        activates.show({duration: 200, easing: 'easeOutCubic'});
-
-        $(document).bind('click', function (e) {
-
-          if (!activates.is(e.target) && !origin.is(e.target)) {
-            activates.hide({duration: 150, easing: 'easeOutCubic'});
-            $(document).unbind('click');
-          }
-
-        });
-      });
-      
-      
-    }
+    activates.on('click', closeDropdown);
+    activates.on('mouseleave', closeDropdown);
 
     // Window Resize Reposition
     $(window).on('resize', function(){
@@ -60,6 +18,16 @@
         activates.css('left', origin.offset().left);
       }
     });
-    
+
+    function openDropdown(e) {
+      activates.css('width', origin.innerWidth());
+      activates.css('top', origin.offset().top);
+      activates.css('left', origin.offset().left);
+      activates.show({duration: 200, easing: 'easeOutCubic'});
+    }
+
+    function closeDropdown(e) {
+      activates.hide({ duration: 150, easing: 'easeOutCubic' });
+    }
   };
 }( jQuery ));
