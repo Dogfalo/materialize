@@ -7814,6 +7814,10 @@ code, pre {
   line-height: 1.1rem !important;
 }
 
+pre[class*="language-"] {
+  padding: .9rem;
+}
+
 #footer .footer-block {
   display: inline-block;
 }

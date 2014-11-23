@@ -275,6 +275,9 @@ code, pre {
   font-size: 1rem;
   line-height: 1.1rem !important;
 }
+pre[class*="language-"] {
+  padding: .9rem;
+}
 
 
 // Footer styling
