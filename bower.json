@@ -28,22 +28,22 @@
     "font/robot/Roboto-Thin.ttf"
   ],
   "ignore": [
-    "jade",
-    ".bowerrc",
+    "jade/",
     ".gitignore",
     "CNAME",
-    "css",
+    "css/",
     "bower.json",
     "README.md",
     "images",
-    "js",
+    "js/",
     "LICENSE",
-    "res",
-    "sass",
+    "res/",
+    "sass/",
     "**/*.html",
     "**/*.zip"
+
   ],
   "dependencies": {
         "jquery": ">=2.1.1"
-    },
+    }
 }
