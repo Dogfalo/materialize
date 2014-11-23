@@ -34,13 +34,16 @@
     "css/",
     "bower.json",
     "README.md",
-    "images",
-    "js/",
-    "LICENSE",
+    "images/",
+    "js/jquery.timeago.js",
+    "js/init.js",
+    "js/prism.js",
     "res/",
-    "sass/",
+    "sass/style.scss",
+    "sass/ghpages-materialize.scss",
     "**/*.html",
-    "**/*.zip"
+    "**/*.zip",
+    "**/*.txt"
 
   ],
   "dependencies": {
