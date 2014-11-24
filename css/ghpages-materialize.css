@@ -7829,6 +7829,11 @@ pre[class*="language-"] {
   padding: .9rem;
 }
 
+.buysellads .bsa_it_ad a {
+  display: block;
+  width: 130px;
+}
+
 .bsa_it.one {
   max-width: 270px;
   display: inline-block;
@@ -7852,6 +7857,10 @@ pre[class*="language-"] {
 }
 .bsa_it.one .bsa_it_p a {
   color: #FFCDD2;
+}
+
+.bsa .table-of-contents {
+  margin-top: 122px;
 }
 
 #footer .footer-block {
