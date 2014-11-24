@@ -15,7 +15,7 @@ $border-color: #bdbdbd;
     z-index: -1;
     top: .8rem;
     left: .5rem;
-    @include transition(transform .2s ease-out);
+    @include transition(.2s ease-out);
   }
   label.active {
     @include transform(translateY(-130%));

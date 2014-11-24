@@ -7012,11 +7012,11 @@ ul.collapsible {
   z-index: -1;
   top: .8rem;
   left: .5rem;
-  -webkit-transition: transform 0.2s ease-out;
-  -moz-transition: transform 0.2s ease-out;
-  -o-transition: transform 0.2s ease-out;
-  -ms-transition: transform 0.2s ease-out;
-  transition: transform 0.2s ease-out;
+  -webkit-transition: 0.2s ease-out;
+  -moz-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  -ms-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
 }
 .input-field label.active {
   -webkit-transform: translateY(-130%);
