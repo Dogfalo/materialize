@@ -7713,9 +7713,9 @@ ul.table-of-contents a.active {
   opacity: 1;
 }
 
-@media (min-height: 28.875em) {
+@media (min-height: 35.875em) {
   .picker--opened .picker__frame {
-    top: 15%;
+    top: 10%;
     bottom: 20% auto;
   }
 }
@@ -7729,6 +7729,17 @@ ul.table-of-contents a.active {
   border-color: #E3F2FD;
 }
 
+.picker__frame {
+  margin: 0 auto;
+  max-width: 325px;
+}
+
+@media (min-height: 38.875em) {
+  .picker--opened .picker__frame {
+    top: 10%;
+    bottom: 20% auto;
+  }
+}
 /* ==========================================================================
    $BASE-DATE-PICKER
    ========================================================================== */

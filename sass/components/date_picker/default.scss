@@ -170,9 +170,9 @@
   -moz-opacity: 1;
   opacity: 1;
 }
-@media (min-height: 28.875em) {
+@media (min-height: 35.875em) {
   .picker--opened .picker__frame {
-    top: 15%;
+    top: 10%;
     bottom: 20%auto;
   }
 }
@@ -186,4 +186,16 @@
 
 .picker__input.picker__input--active {
   border-color: color("blue", "lighten-5");
+}
+
+.picker__frame {
+  margin: 0 auto;
+  max-width: 325px;
+}
+
+@media (min-height: 38.875em) {
+  .picker--opened .picker__frame {
+    top: 10%;
+    bottom: 20%auto;
+  }
 }
