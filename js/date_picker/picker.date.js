@@ -1165,7 +1165,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
         } //createYearLabel
 
 
-    // Create and return the entire calendar.
+    // Create and return the entire calendar. This contains the HTML elements
     return _.node(
         'div',
         ( settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel() ) +

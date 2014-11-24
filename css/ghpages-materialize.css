@@ -7641,7 +7641,7 @@ ul.table-of-contents a.active {
   transition: all 0.15s ease-out;
 }
 
-@media (min-height: 33.875em) {
+@media (min-height: 28.875em) {
   .picker__frame {
     overflow: visible;
     top: auto;
@@ -7663,7 +7663,7 @@ ul.table-of-contents a.active {
   height: 100%;
 }
 
-@media (min-height: 33.875em) {
+@media (min-height: 28.875em) {
   .picker__wrap {
     display: block;
   }
@@ -7677,7 +7677,7 @@ ul.table-of-contents a.active {
   vertical-align: middle;
 }
 
-@media (min-height: 33.875em) {
+@media (min-height: 28.875em) {
   .picker__box {
     display: block;
     border: 1px solid #777777;
@@ -7689,15 +7689,6 @@ ul.table-of-contents a.active {
     -webkit-box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);
     -moz-box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);
     box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);
-  }
-}
-@media (min-height: 40.125em) {
-  .picker__box {
-    font-size: 1.5em;
-    border-bottom-width: 1px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
   }
 }
 /**
@@ -7722,10 +7713,10 @@ ul.table-of-contents a.active {
   opacity: 1;
 }
 
-@media (min-height: 33.875em) {
+@media (min-height: 28.875em) {
   .picker--opened .picker__frame {
-    top: auto;
-    bottom: 20%;
+    top: 15%;
+    bottom: 20% auto;
   }
 }
 /**
@@ -7803,32 +7794,16 @@ ul.table-of-contents a.active {
   top: -0.25em;
 }
 
-@media (min-width: 24.5em) {
-  .picker__nav--prev,
-  .picker__nav--next {
-    top: -0.33em;
-  }
-}
 .picker__nav--prev {
   left: -1em;
   padding-right: 1.25em;
 }
 
-@media (min-width: 24.5em) {
-  .picker__nav--prev {
-    padding-right: 1.5em;
-  }
-}
 .picker__nav--next {
   right: -1em;
   padding-left: 1.25em;
 }
 
-@media (min-width: 24.5em) {
-  .picker__nav--next {
-    padding-left: 1.5em;
-  }
-}
 .picker__nav--prev:before,
 .picker__nav--next:before {
   content: " ";
@@ -7912,6 +7887,7 @@ ul.table-of-contents a.active {
  * The days on the calendar
  */
 .picker__day {
+  color: #676767;
   letter-spacing: -.3;
   padding: .75rem 0;
   font-weight: 400;
@@ -7939,6 +7915,7 @@ ul.table-of-contents a.active {
 
 .picker__day--infocus:hover {
   cursor: pointer;
+  color: #000;
   font-weight: 500;
 }
 

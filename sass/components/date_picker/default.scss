@@ -84,7 +84,7 @@
   -moz-transition: all 0.15s ease-out;
   transition: all 0.15s ease-out;
 }
-@media (min-height: 33.875em) {
+@media (min-height: 28.875em) {
   .picker__frame {
     overflow: visible;
     top: auto;
@@ -105,7 +105,7 @@
   width: 100%;
   height: 100%;
 }
-@media (min-height: 33.875em) {
+@media (min-height: 28.875em) {
   .picker__wrap {
     display: block;
   }
@@ -118,12 +118,12 @@
   display: table-cell;
   vertical-align: middle;
 }
-@media (min-height: 26.5em) {
-  .picker__box {
-//    font-size: 1.25em;
-  }
-}
-@media (min-height: 33.875em) {
+//@media (min-height: 26.5em) {
+//  .picker__box {
+////    font-size: 1.25em;
+//  }
+//}
+@media (min-height: 28.875em) {
   .picker__box {
     display: block;
     
@@ -141,15 +141,15 @@
     box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);
   }
 }
-@media (min-height: 40.125em) {
-  .picker__box {
-    font-size: 1.5em;
-    border-bottom-width: 1px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-  }
-}
+//@media (min-height: 40.125em) {
+//  .picker__box {
+//    font-size: 1.1rem;
+//    border-bottom-width: 1px;
+//    -webkit-border-radius: 5px;
+//    -moz-border-radius: 5px;
+//    border-radius: 5px;
+//  }
+//}
 /**
  * When the picker opens...
  */
@@ -170,10 +170,10 @@
   -moz-opacity: 1;
   opacity: 1;
 }
-@media (min-height: 33.875em) {
+@media (min-height: 28.875em) {
   .picker--opened .picker__frame {
-    top: auto;
-    bottom: 20%;
+    top: 15%;
+    bottom: 20%auto;
   }
 }
 /**
