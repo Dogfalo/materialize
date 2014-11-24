@@ -179,3 +179,11 @@
 /**
  * For `large` screens, transform into an inline picker.
  */
+
+/* ==========================================================================
+   CUSTOM MATERIALIZE STYLES
+   ========================================================================== */
+
+.picker__input.picker__input--active {
+  border-color: color("blue", "lighten-5");
+}

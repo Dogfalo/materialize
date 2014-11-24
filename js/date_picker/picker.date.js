@@ -1181,11 +1181,27 @@ DatePicker.prototype.nodes = function( isOpen ) {
         else return _.node( 'div', nowObject.date)
     }
 
+    createWeekdayLabel = function() {
+        var display_day;
+        
+        if (selectedObject != null)
+            display_day = selectedObject.day;
+        else
+            display_day = nowObject.day;
+        var weekday = settings.weekdaysFull[ display_day ]
+        return weekday
+    }
+
     // Create and return the entire calendar. This contains the HTML elements
     return _.node(
         // Date presentation View
         'div',
-        _.node(
+            _.node(
+                'div',
+                createWeekdayLabel(),
+                "picker__weekday-display"
+            )+
+            _.node(
                 // Div for short Month 
                 'div',
                 createMonthLabel("short_months"),

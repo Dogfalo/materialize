@@ -7723,6 +7723,13 @@ ul.table-of-contents a.active {
  * For `large` screens, transform into an inline picker.
  */
 /* ==========================================================================
+   CUSTOM MATERIALIZE STYLES
+   ========================================================================== */
+.picker__input.picker__input--active {
+  border-color: #E3F2FD;
+}
+
+/* ==========================================================================
    $BASE-DATE-PICKER
    ========================================================================== */
 /**
@@ -7804,23 +7811,6 @@ ul.table-of-contents a.active {
   padding-left: 1.25em;
 }
 
-.picker__nav--prev:before,
-.picker__nav--next:before {
-  content: " ";
-  border-top: .5em solid transparent;
-  border-bottom: .5em solid transparent;
-  border-right: 0.75em solid #000000;
-  width: 0;
-  height: 0;
-  display: block;
-  margin: 0 auto;
-}
-
-.picker__nav--next:before {
-  border-right: 0;
-  border-left: 0.75em solid #000000;
-}
-
 .picker__nav--prev:hover,
 .picker__nav--next:hover {
   cursor: pointer;
@@ -7881,16 +7871,13 @@ ul.table-of-contents a.active {
 /**
  * The days on the calendar
  */
-.picker__day {
-  color: #676767;
+.picker__day--today {
+  position: relative;
+  color: #595959;
   letter-spacing: -.3;
   padding: .75rem 0;
   font-weight: 400;
   border: 1px solid transparent;
-}
-
-.picker__day--today {
-  position: relative;
 }
 
 .picker__day--disabled:before {
@@ -8034,17 +8021,31 @@ ul.table-of-contents a.active {
 /* ==========================================================================
    CUSTOM MATERIALIZE STYLES
    ========================================================================== */
+.picker__box {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
 .picker__date-display {
   text-align: center;
   background-color: #26a69a;
   color: #fff;
-  padding: 15px 0;
+  padding-bottom: 15px;
+  font-weight: 300;
+}
+
+.picker__weekday-display {
+  background-color: #009688;
+  padding: 10px;
+  font-weight: 200;
+  letter-spacing: .5;
+  font-size: 1rem;
+  margin-bottom: 15px;
 }
 
 .picker__month-display {
   text-transform: uppercase;
   font-size: 2rem;
-  font-weight: 300;
 }
 
 .picker__day-display {
@@ -8054,7 +8055,6 @@ ul.table-of-contents a.active {
 
 .picker__year-display {
   font-size: 1.8rem;
-  font-weight: 300;
   color: #80cbc4;
 }
 
@@ -8072,6 +8072,14 @@ ul.table-of-contents a.active {
 .picker__table {
   margin-top: 0;
   margin-bottom: .5em;
+}
+
+.picker__day--infocus {
+  color: #595959;
+  letter-spacing: -.3;
+  padding: .75rem 0;
+  font-weight: 400;
+  border: 1px solid transparent;
 }
 
 .picker--focused .picker__day--highlighted {
@@ -8095,11 +8103,29 @@ ul.table-of-contents a.active {
 
 .picker__footer {
   text-align: right;
+  padding: 10px 10px;
 }
 
 .picker__close, .picker__today {
   font-size: 1.1rem;
   color: #26a69a;
+}
+
+.picker__nav--prev:before,
+.picker__nav--next:before {
+  content: " ";
+  border-top: .5em solid transparent;
+  border-bottom: .5em solid transparent;
+  border-right: 0.75em solid #676767;
+  width: 0;
+  height: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.picker__nav--next:before {
+  border-right: 0;
+  border-left: 0.75em solid #676767;
 }
 
 /* ==========================================================================
