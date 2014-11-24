@@ -326,7 +326,7 @@
 }
 
 .picker__weekday-display {
-  background-color: color("teal", "base");
+  background-color: color("teal", "darken-1");
   padding: 10px;
   font-weight: 200;
   letter-spacing: .5;
@@ -388,7 +388,7 @@
   // Circle background
   border-radius: 50%;
   @include transform(scale(.9));
-  background-color: color("teal", "lighten-1");
+  background-color: color("teal", "base");
   color: #ffffff;
 }
 

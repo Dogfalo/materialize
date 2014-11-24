@@ -8035,7 +8035,7 @@ ul.table-of-contents a.active {
 }
 
 .picker__weekday-display {
-  background-color: #009688;
+  background-color: #00897b;
   padding: 10px;
   font-weight: 200;
   letter-spacing: .5;
@@ -8097,13 +8097,13 @@ ul.table-of-contents a.active {
   -ms-transform: scale(0.9);
   -o-transform: scale(0.9);
   transform: scale(0.9);
-  background-color: #26a69a;
+  background-color: #009688;
   color: #ffffff;
 }
 
 .picker__footer {
   text-align: right;
-  padding: 10px 10px;
+  padding: 5px 10px;
 }
 
 .picker__close, .picker__today {
