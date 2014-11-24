@@ -25,6 +25,7 @@
       });
     });
     
+
     // Floating-Fixed table of contents
     $('.table-of-contents').each(function() {
       var origin = $(this);
@@ -34,19 +35,64 @@
           tabs_height = $('.tabs-wrapper').height();
         }
         if (origin.is(":visible")) {
+
           if(origin.attr('data-origpos') === undefined) {
             origin.attr('data-origpos', origin.position().top - tabs_height);            
+          }
+          if(origin.attr('data-origmargin') === undefined) {
+            origin.attr('data-origmargin', '1.5rem');            
           }
           if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
             origin.addClass('fixed');
             origin.css('top', tabs_height);
+            origin.css('marginTop', '1.5rem');
           }
           if($(window).scrollTop() < origin.attr('data-origpos')) {
-            origin.removeClass('fixed');            
-          }
+            origin.removeClass('fixed');     
+            origin.css('marginTop', origin.attr('data-origmargin'));
+          }            
+
         }
       });
     });
+
+    // BuySellAds Detection
+    var $bsa = $(".buysellads");
+    var $timesToCheck = 3;
+    function checkForChanges()
+    {
+        if ($bsa.find('.bsa_it').height() > 0) 
+        {
+              $('.table-of-contents').css('marginTop', 230);
+              // Floating-Fixed table of contents
+              $('.table-of-contents').each(function() {
+                var origin = $(this);
+                var tabs_height = 0;
+                if ($('.tabs-wrapper').length) {
+                  tabs_height = $('.tabs-wrapper').height();
+                }
+                $(window).scroll(function() {
+
+                  if (origin.is(":visible")) {
+                    origin.attr('data-origpos', origin.position().top - tabs_height + 230);            
+                    origin.attr('data-origmargin', 230);            
+                  }
+                });
+              });
+        }
+        else {
+          $timesToCheck -= 1;
+          if ($timesToCheck >= 0) {
+            setTimeout(checkForChanges, 500);            
+          }
+        }
+
+    }
+    checkForChanges();
+
+
+
+    // Tabs Fixed
     $(window).scroll(function() {
       var origin = $('.tabs-wrapper');
       var origin_row = origin.find('.row');

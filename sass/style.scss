@@ -284,9 +284,22 @@ pre[class*="language-"] {
 
 // BuySellAds Styling
 .buysellads {
-  width: 130px;
-  position: absolute;
-  left: 0;
+  position: relative;
+
+  .bsa_it.one {
+    width: 130px;
+    position: absolute;
+    left: 0;
+    top: 50px;
+
+    .bsa_it_p {
+      left: 0;
+      bottom: -15px;
+    }
+    .bsa_it_ad .bsa_it_t { color: color("red", "lighten-2"); }
+    .bsa_it_ad .bsa_it_d { color: color("red", "lighten-3"); }
+  }
+
   .bsa_it_ad a {
     display: block;
     width: 130px;
@@ -303,12 +316,8 @@ pre[class*="language-"] {
     padding: 0;
     background-color: transparent;
 
-    .bsa_it_t {
-      color: #fff;
-    }
-    .bsa_it_d {
-      color: color("red", "lighten-4");
-    }
+    .bsa_it_t { color: #fff; }
+    .bsa_it_d { color: color("red", "lighten-4"); }
   }
 
   .bsa_it_p {
@@ -320,9 +329,6 @@ pre[class*="language-"] {
   }
 }
 
-.bsa .table-of-contents {
-  margin-top: 122px;
-}
 
 
 // Footer styling
