@@ -100,6 +100,7 @@
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav();
+    $('.datepicker').pickadate();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
