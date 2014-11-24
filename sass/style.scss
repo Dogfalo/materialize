@@ -287,12 +287,21 @@ pre[class*="language-"] {
 
   .bsa_it_ad {
     border: 0;
+    padding: 0;
     background-color: transparent;
+
+    .bsa_it_t {
+      color: #fff;
+    }
+    .bsa_it_d {
+      color: color("red", "lighten-4");
+    }
   }
 
   .bsa_it_p {
     right: auto;
-    left: 55px;
+    left: 40px;
+    bottom: -5px;
   }
 }
 

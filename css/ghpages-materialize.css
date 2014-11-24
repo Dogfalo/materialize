@@ -7824,11 +7824,19 @@ pre[class*="language-"] {
 }
 .bsa_it.one .bsa_it_ad {
   border: 0;
+  padding: 0;
   background-color: transparent;
+}
+.bsa_it.one .bsa_it_ad .bsa_it_t {
+  color: #fff;
+}
+.bsa_it.one .bsa_it_ad .bsa_it_d {
+  color: #FFCDD2;
 }
 .bsa_it.one .bsa_it_p {
   right: auto;
-  left: 55px;
+  left: 40px;
+  bottom: -5px;
 }
 
 #footer .footer-block {
