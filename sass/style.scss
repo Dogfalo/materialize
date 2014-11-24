@@ -284,6 +284,7 @@ pre[class*="language-"] {
 .bsa_it.one {
   max-width: 400px;
   display: inline-block;
+  text-align: left;
 
   .bsa_it_ad {
     border: 0;
@@ -302,6 +303,8 @@ pre[class*="language-"] {
     right: auto;
     left: 40px;
     bottom: -5px;
+
+    a { color: color("red", "lighten-4"); }
   }
 }
 

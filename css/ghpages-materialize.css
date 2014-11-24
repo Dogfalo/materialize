@@ -7821,6 +7821,7 @@ pre[class*="language-"] {
 .bsa_it.one {
   max-width: 400px;
   display: inline-block;
+  text-align: left;
 }
 .bsa_it.one .bsa_it_ad {
   border: 0;
@@ -7837,6 +7838,9 @@ pre[class*="language-"] {
   right: auto;
   left: 40px;
   bottom: -5px;
+}
+.bsa_it.one .bsa_it_p a {
+  color: #FFCDD2;
 }
 
 #footer .footer-block {
