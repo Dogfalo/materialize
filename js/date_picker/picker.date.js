@@ -1055,9 +1055,14 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
 
         // Create the month label.
-        createMonthLabel = function() {
+        createMonthLabel = function(override) {
 
             var monthsCollection = settings.showMonthsShort ? settings.monthsShort : settings.monthsFull
+            
+//            use override
+            if (override == "short_months") {
+              monthsCollection = settings.monthsShort;
+            }
 
             // If there are months to select, add a dropdown menu.
             if ( settings.selectMonths ) {
@@ -1164,10 +1169,32 @@ DatePicker.prototype.nodes = function( isOpen ) {
             return _.node( 'div', focusedYear, settings.klass.year )
         } //createYearLabel
 
+    createDayLabel = function() {
+        if (selectedObject != null)
+            return _.node( 'div', selectedObject.date)
+        else return _.node( 'div', nowObject.date)
+    }
 
     // Create and return the entire calendar. This contains the HTML elements
     return _.node(
+        // Div for short Month 
         'div',
+        createMonthLabel("short_months"),
+        settings.klass.header
+    )+
+    _.node(
+        // Div for Day
+        'div',
+        createDayLabel() ,
+        settings.klass.header
+    )+
+    _.node(
+        // Div for Year
+        'div',
+        createYearLabel() ,
+        settings.klass.header
+    )+
+        _.node('div',
         ( settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel() ) +
         createMonthNav() + createMonthNav( 1 ),
         settings.klass.header
@@ -1182,6 +1209,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 i: 1,
                 node: 'tr',
                 item: function( rowCounter ) {
+                    console.log(nowObject)
 
                     // If Monday is the first day and the month starts on Sunday, shift the date back a week.
                     var shiftDateBy = settings.firstDay && calendar.create([ viewsetObject.year, viewsetObject.month, 1 ]).day === 0 ? -7 : 0
