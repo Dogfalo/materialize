@@ -7898,17 +7898,6 @@ ul.table-of-contents a.active {
   position: relative;
 }
 
-.picker__day--today:before {
-  content: " ";
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 0;
-  height: 0;
-  border-top: 0.5em solid #0059bc;
-  border-left: .5em solid transparent;
-}
-
 .picker__day--disabled:before {
   border-top-color: #aaaaaa;
 }
@@ -8048,8 +8037,58 @@ ul.table-of-contents a.active {
 }
 
 /* ==========================================================================
-   $DEFAULT-DATE-PICKER
+   CUSTOM MATERIALIZE STYLES
    ========================================================================== */
+.picker__date-display {
+  text-align: center;
+  background-color: #26a69a;
+  color: #fff;
+  padding: 15px 0;
+}
+
+.picker__month-display {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.picker__day-display {
+  font-size: 4.5rem;
+  font-weight: 400;
+}
+
+.picker__year-display {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #80cbc4;
+}
+
+.picker__box {
+  padding: 0;
+}
+
+.picker__calendar-container {
+  padding: 0 1rem;
+}
+.picker__calendar-container table, .picker__calendar-container tr, .picker__calendar-container th {
+  border: none;
+}
+
+.picker--focused .picker__day--highlighted {
+  color: #26a69a;
+}
+
+.picker--focused .picker__day--selected {
+  border-radius: 50%;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
+  background-color: #26a69a;
+  color: #ffffff;
+}
+
 /* ==========================================================================
    $BASE-TIME-PICKER
    ========================================================================== */

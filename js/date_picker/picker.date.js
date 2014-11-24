@@ -1099,6 +1099,9 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     'title="' + settings.labelMonthSelect + '"'
                 )
             }
+            // Return materialize raw override
+            if (override == "short_months")
+                return _.node( 'div', monthsCollection[ viewsetObject.month ] )
 
             // If there's a need for a month selector
             return _.node( 'div', monthsCollection[ viewsetObject.month ], settings.klass.month )
@@ -1106,7 +1109,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
 
         // Create the year label.
-        createYearLabel = function() {
+        createYearLabel = function(override) {
 
             var focusedYear = viewsetObject.year,
 
@@ -1165,6 +1168,9 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 )
             }
 
+            // If materialize override then
+            if (override == "raw")
+                return _.node( 'div', focusedYear )
             // Otherwise just return the year focused
             return _.node( 'div', focusedYear, settings.klass.year )
         } //createYearLabel
@@ -1177,23 +1183,30 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
     // Create and return the entire calendar. This contains the HTML elements
     return _.node(
-        // Div for short Month 
+        // Date presentation View
         'div',
-        createMonthLabel("short_months"),
-        settings.klass.header
+        _.node(
+                // Div for short Month 
+                'div',
+                createMonthLabel("short_months"),
+                settings.klass.month_display
+            )+
+            _.node(
+                // Div for Day
+                'div',
+                createDayLabel() ,
+                settings.klass.day_display
+            )+
+            _.node(
+                // Div for Year
+                'div',
+                createYearLabel("raw") ,
+                settings.klass.year_display
+            ),
+        settings.klass.date_display
     )+
-    _.node(
-        // Div for Day
-        'div',
-        createDayLabel() ,
-        settings.klass.header
-    )+
-    _.node(
-        // Div for Year
-        'div',
-        createYearLabel() ,
-        settings.klass.header
-    )+
+    // Calendar container
+    _.node('div',
         _.node('div',
         ( settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel() ) +
         createMonthNav() + createMonthNav( 1 ),
@@ -1209,7 +1222,6 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 i: 1,
                 node: 'tr',
                 item: function( rowCounter ) {
-                    console.log(nowObject)
 
                     // If Monday is the first day and the month starts on Sunday, shift the date back a week.
                     var shiftDateBy = settings.firstDay && calendar.create([ viewsetObject.year, viewsetObject.month, 1 ]).day === 0 ? -7 : 0
@@ -1289,7 +1301,11 @@ DatePicker.prototype.nodes = function( isOpen ) {
             controls: calendar.$node[0].id,
             readonly: true
         })
-    ) +
+    ) 
+    
+    , settings.klass.calendar_container) // end calendar 
+
+        +
 
     // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
     _.node(
@@ -1348,6 +1364,14 @@ DatePicker.defaults = (function( prefix ) {
             table: prefix + 'table',
 
             header: prefix + 'header',
+
+            // Materialize Added klasses
+            date_display: prefix + 'date-display',
+            day_display: prefix + 'day-display',
+            month_display: prefix + 'month-display',
+            year_display: prefix + 'year-display',
+            calendar_container: prefix + 'calendar-container',
+            // end
 
             navPrev: prefix + 'nav--prev',
             navNext: prefix + 'nav--next',

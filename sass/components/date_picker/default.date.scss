@@ -184,16 +184,16 @@
   position: relative;
   
 }
-.picker__day--today:before {
-  content: " ";
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 0;
-  height: 0;
-  border-top: 0.5em solid #0059bc;
-  border-left: .5em solid transparent;
-}
+//.picker__day--today:before {
+//  content: " ";
+//  position: absolute;
+//  top: 2px;
+//  right: 2px;
+//  width: 0;
+//  height: 0;
+//  border-top: 0.5em solid #0059bc;
+//  border-left: .5em solid transparent;
+//}
 .picker__day--disabled:before {
   border-top-color: #aaaaaa;
 }
@@ -328,5 +328,68 @@
 }
 
 /* ==========================================================================
-   $DEFAULT-DATE-PICKER
+   CUSTOM MATERIALIZE STYLES
    ========================================================================== */
+.picker__date-display {
+  text-align: center;
+  background-color: color("teal", "lighten-1");
+  color: #fff;
+  padding: 15px 0;
+}
+
+.picker__month-display {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 300; 
+}
+.picker__day-display {
+
+  font-size: 4.5rem;
+  font-weight: 400; 
+}
+.picker__year-display {
+
+  font-size: 1.8rem;
+  font-weight: 300; 
+  color: color("teal", "lighten-3");
+}
+
+.picker__box {
+  padding: 0;
+}
+.picker__calendar-container {
+  padding: 0 1rem;
+  
+  table, tr, th {
+    border: none;
+  }
+}
+
+//Today style
+.picker--focused .picker__day--highlighted {
+  color: color("teal", "lighten-1");
+}
+.picker__day--today:before {
+//  content: " ";
+//  position: absolute;
+//  top: 2px;
+//  right: 2px;
+//  width: 0;
+//  height: 0;
+//  border-top: 0.5em solid #0059bc;
+//  border-left: .5em solid transparent;
+}
+
+
+
+.picker--focused .picker__day--selected {
+  // Circle background
+  border-radius: 50%;
+  @include transform(scale(.9));
+  background-color: color("teal", "lighten-1");
+  color: #ffffff;
+}
+
+.picker__button--close {
+  
+}
