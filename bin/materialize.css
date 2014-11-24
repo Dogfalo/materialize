@@ -5760,8 +5760,8 @@ td, th {
 }
 
 .section {
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
 }
 .section.no-pad {
   padding: 0;
@@ -5773,14 +5773,10 @@ td, th {
   padding-top: 0;
 }
 
-.section .row {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .row {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 }
 .row:after {
   content: "";
@@ -6193,40 +6189,40 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h1 {
   font-size: 4.1rem;
   line-height: 4.51rem;
-  margin: .25rem 0 .25rem 0;
+  margin: 2.05rem 0 1.64rem 0;
   letter-spacing: -0.1rem;
 }
 
 h2 {
   font-size: 3.21rem;
   line-height: 3.531rem;
-  margin: .25rem 0 .25rem 0;
+  margin: 1.605rem 0 1.284rem 0;
 }
 
 h3 {
   font-size: 2.42rem;
   line-height: 2.662rem;
-  margin: .25rem 0 .25rem 0;
+  margin: 1.21rem 0 0.968rem 0;
 }
 
 h4 {
   font-size: 1.71rem;
   line-height: 1.881rem;
-  margin: .25rem 0 .25rem 0;
+  margin: 0.855rem 0 0.684rem 0;
   letter-spacing: .05rem;
 }
 
 h5 {
   font-size: 1.42rem;
   line-height: 1.562rem;
-  margin: .25rem 0 .25rem 0;
+  margin: 0.71rem 0 0.568rem 0;
   letter-spacing: .05rem;
 }
 
 h6 {
   font-size: 1rem;
   line-height: 1.1rem;
-  margin: .25rem 0 .25rem 0;
+  margin: 0.5rem 0 0.4rem 0;
   letter-spacing: .03rem;
 }
 
@@ -6235,11 +6231,15 @@ em {
 }
 
 strong {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 small {
   font-size: 75%;
+}
+
+.light {
+  font-weight: 300;
 }
 
 .flow-text {
@@ -7497,7 +7497,7 @@ ul.table-of-contents a:hover {
   border-left: 1px solid #ea4a4f;
 }
 ul.table-of-contents a.active {
-  font-weight: 600;
+  font-weight: 500;
   padding-left: 18px;
   border-left: 2px solid #ea4a4f;
 }

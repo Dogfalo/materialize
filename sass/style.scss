@@ -186,10 +186,6 @@ p {
   vertical-align: middle;
 }
 
-.light {
-  font-weight: 300; 
-}
-
 // Icons
 .icon-container i {
   font-size: 3em;
@@ -265,6 +261,12 @@ p {
     height: auto;
   }
 }
+
+// Table of contents 
+ul.table-of-contents {
+  margin-top: 1.5rem;
+}
+
 
 // Prism Styling
 code, pre {

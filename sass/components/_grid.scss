@@ -20,8 +20,8 @@
 }
 
 .section {
-	padding-top: 3%;
-	padding-bottom: 3%;
+	padding-top: 1.5rem;
+	padding-bottom: 1rem;
 
   &.no-pad {
     padding: 0;
@@ -34,14 +34,11 @@
   }
 }
 
-.section .row {
-	padding-top: $gutter-width;
-	padding-bottom: $gutter-width;
-}
 
 .row {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 
   // Clear floating children
   &:after {
