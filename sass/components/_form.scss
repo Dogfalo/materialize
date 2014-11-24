@@ -18,7 +18,7 @@ $border-color: #bdbdbd;
     @include transition(transform .2s ease-out);
   }
   label.active {
-    transform: translateY(-130%);
+    @include transform(translateY(-130%));
   }
 
   input[type=text]:focus + label,
@@ -233,8 +233,7 @@ form p {
   background-color: $disabled-color;
   width: 14px; height: 14px;
   border: 2px solid $disabled-color;
-  -webkit-transform: rotateZ(0deg);
-  transform: rotateZ(0deg);
+  @include transform(rotateZ(0deg));
 }
 [type="checkbox"]:disabled + label {
   color: $disabled-color;
@@ -286,11 +285,11 @@ input[type=range] + .thumb {
   width: 0;
   border-radius: 50%;
   background-color: $fill-color;
-  transform-origin: 50% 50%;
   top: 10px;
   margin-left: -6px;
 
-  @include transform( rotate(-45deg));
+  @include transform-origin(50% 50%);
+  @include transform(rotate(-45deg));
 
   .value {
     display: block;
@@ -298,7 +297,7 @@ input[type=range] + .thumb {
     text-align: center;
     color: $fill-color;
     font-size: 0px;
-    @include transform( rotate(45deg));
+    @include transform(rotate(45deg));
   }
 
   &.active {

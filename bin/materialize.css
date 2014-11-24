@@ -7019,6 +7019,10 @@ ul.collapsible {
   transition: transform 0.2s ease-out;
 }
 .input-field label.active {
+  -webkit-transform: translateY(-130%);
+  -moz-transform: translateY(-130%);
+  -ms-transform: translateY(-130%);
+  -o-transform: translateY(-130%);
   transform: translateY(-130%);
 }
 .input-field input[type=text]:focus + label,
@@ -7271,6 +7275,9 @@ form p:last-child {
   height: 14px;
   border: 2px solid #7c7c7c;
   -webkit-transform: rotateZ(0deg);
+  -moz-transform: rotateZ(0deg);
+  -ms-transform: rotateZ(0deg);
+  -o-transform: rotateZ(0deg);
   transform: rotateZ(0deg);
 }
 
@@ -7325,9 +7332,13 @@ input[type=range] + .thumb {
   width: 0;
   border-radius: 50%;
   background-color: #0f9d58;
-  transform-origin: 50% 50%;
   top: 10px;
   margin-left: -6px;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
@@ -7550,5 +7561,3 @@ ul.table-of-contents a.active {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-
-/*# sourceMappingURL=materialize.css.map */

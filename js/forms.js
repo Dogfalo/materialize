@@ -40,7 +40,7 @@
 
     var thumb = $(this).children('.thumb');
     if (!thumb.hasClass('active')) {
-      thumb.velocity({ height: "30px", width: "30px", translateY: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
+      thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
     }
     var left = e.pageX - $(this).offset().left;
     var width = $(this).outerWidth();
@@ -65,7 +65,7 @@
     var thumb = $(this).children('.thumb');
     if (range_mousedown) {
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", translateY: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
+        thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
       }
       var left = e.pageX - $(this).offset().left;
       var width = $(this).outerWidth();
@@ -87,7 +87,7 @@
       var thumb = $(this).children('.thumb');
 
       if (thumb.hasClass('active')) {
-        thumb.velocity({ height: "0", width: "0", translateY: "10px", marginLeft: "-6px"}, { duration: 100 });
+        thumb.velocity({ height: "0", width: "0", top: "10px", marginLeft: "-6px"}, { duration: 100 });
       }
       thumb.removeClass('active');
     
