@@ -7829,6 +7829,11 @@ pre[class*="language-"] {
   padding: .9rem;
 }
 
+.buysellads {
+  width: 130px;
+  position: absolute;
+  left: 0;
+}
 .buysellads .bsa_it_ad a {
   display: block;
   width: 130px;

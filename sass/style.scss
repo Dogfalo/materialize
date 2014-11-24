@@ -284,6 +284,9 @@ pre[class*="language-"] {
 
 // BuySellAds Styling
 .buysellads {
+  width: 130px;
+  position: absolute;
+  left: 0;
   .bsa_it_ad a {
     display: block;
     width: 130px;
