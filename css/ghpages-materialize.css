@@ -7818,6 +7818,19 @@ pre[class*="language-"] {
   padding: .9rem;
 }
 
+.bsa_it.one {
+  max-width: 400px;
+  display: inline-block;
+}
+.bsa_it.one .bsa_it_ad {
+  border: 0;
+  background-color: transparent;
+}
+.bsa_it.one .bsa_it_p {
+  right: auto;
+  left: 55px;
+}
+
 #footer .footer-block {
   display: inline-block;
 }
@@ -7832,5 +7845,3 @@ pre[class*="language-"] {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */

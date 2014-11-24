@@ -280,6 +280,23 @@ pre[class*="language-"] {
 }
 
 
+// BuySellAds Styling
+.bsa_it.one {
+  max-width: 400px;
+  display: inline-block;
+
+  .bsa_it_ad {
+    border: 0;
+    background-color: transparent;
+  }
+
+  .bsa_it_p {
+    right: auto;
+    left: 55px;
+  }
+}
+
+
 // Footer styling
 #footer .footer-block {
   display: inline-block;
