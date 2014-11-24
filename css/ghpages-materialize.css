@@ -7852,11 +7852,6 @@ ul.table-of-contents a.active {
   margin-bottom: .5em;
 }
 
-@media (min-height: 33.875em) {
-  .picker__table {
-    margin-bottom: .75em;
-  }
-}
 .picker__table th, .picker__table td {
   text-align: center;
 }
@@ -8070,12 +8065,21 @@ ul.table-of-contents a.active {
 .picker__calendar-container {
   padding: 0 1rem;
 }
-.picker__calendar-container table, .picker__calendar-container tr, .picker__calendar-container th {
+.picker__calendar-container thead {
   border: none;
+}
+
+.picker__table {
+  margin-top: 0;
+  margin-bottom: .5em;
 }
 
 .picker--focused .picker__day--highlighted {
   color: #26a69a;
+}
+
+.picker__weekday {
+  font-size: .9rem;
 }
 
 .picker--focused .picker__day--selected {
@@ -8087,6 +8091,15 @@ ul.table-of-contents a.active {
   transform: scale(0.9);
   background-color: #26a69a;
   color: #ffffff;
+}
+
+.picker__footer {
+  text-align: right;
+}
+
+.picker__close, .picker__today {
+  font-size: 1.1rem;
+  color: #26a69a;
 }
 
 /* ==========================================================================

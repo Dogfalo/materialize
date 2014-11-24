@@ -134,11 +134,7 @@
   margin-top: .75em;
   margin-bottom: .5em;
 }
-@media (min-height: 33.875em) {
-  .picker__table {
-    margin-bottom: .75em;
-  }
-}
+
 
 
 .picker__table th, .picker__table td {
@@ -360,9 +356,15 @@
 .picker__calendar-container {
   padding: 0 1rem;
   
-  table, tr, th {
+  thead {
     border: none;
   }
+}
+
+// Calendar
+.picker__table {
+  margin-top: 0;
+  margin-bottom: .5em;
 }
 
 //Today style
@@ -380,6 +382,10 @@
 //  border-left: .5em solid transparent;
 }
 
+// Table Header
+.picker__weekday {
+  font-size: .9rem;
+}
 
 
 .picker--focused .picker__day--selected {
@@ -390,6 +396,12 @@
   color: #ffffff;
 }
 
-.picker__button--close {
-  
+.picker__footer {
+  text-align: right;
+  padding: 0 10px;
+}
+
+.picker__close, .picker__today {
+  font-size: 1.1rem;
+  color: color("teal", "lighten-1");
 }
