@@ -20,6 +20,18 @@
 <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
   </head>
   <body>
+    <!-- Buy sell ads-->
+    <script>
+      (function(){
+        var bsa = document.createElement('script');
+           bsa.type = 'text/javascript';
+           bsa.async = true;
+           bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+      })();
+      
+      
+    </script>
     <nav id="">
       <div class="container">
         <div class="nav-wrapper"><a href="index.html" class="brand-logo">Materialize</a>
@@ -526,84 +538,96 @@
     </div>
   </div>
 
-  <div id="tab6">
+  <div id="tab6" class="row">
 <!--   Navbar Section  -->
-    <div class="section">
-      <h2 class="header">Navbar</h2>
-      <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
-      </p>
-      <h4>Right Aligned Links</h4>
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#right">Right Aligned</a></li>
+          <li><a href="#left">Left Aligned</a></li>
+          <li><a href="#flat">Flat</a></li>
+          <li><a href="#large">Large</a></li>
+          <li><a href="#disabled">Disabled</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col s12 m9 l10">
+      <div id="right" class="section scrollspy">
 
-      <nav>
-        <div class="nav-wrapper">
-          <div class="col s12">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-            <ul class="right side-nav">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="components.html">Components</a></li>
-              <li><a href="javascript.html">JavaScript</a></li>
-            </ul>
+        <h2 class="header">Navbar</h2>
+        <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
+        </p>
+        <h4>Right Aligned Links</h4>
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo">Logo</a>
+              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+              <ul class="right side-nav">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="components.html">Components</a></li>
+                <li><a href="javascript.html">JavaScript</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
-    <div class="section row">
-      <pre><code class="language-markup col s12">
-&lt;nav>
-  &lt;div class="nav-wrapper">
-    &lt;a href="#" class="brand-logo">Logo&lt;/a>
-    &lt;ul id="nav-mobile" class="right side-nav">
-      &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
-    &lt;/ul>
-    &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-  &lt;/div>
-&lt;/nav>
-      </code></pre>
-    </div>
-
-  <div class="section">
-    <h4>Left Aligned Links</h4>
-    <nav>
-      <div class="nav-wrapper">
-        <div class="col s12">
-          <a href="#!" class="brand-logo right">Logo</a>
-          <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-          <ul class="left side-nav">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="components.html">Components</a></li>
-            <li><a href="javascript.html">JavaScript</a></li>
-          </ul>
+        </nav><br>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;nav>
+      &lt;div class="nav-wrapper">
+        &lt;a href="#" class="brand-logo">Logo&lt;/a>
+        &lt;ul id="nav-mobile" class="right side-nav">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+        &lt;/ul>
+        &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+      &lt;/div>
+    &lt;/nav>
+          </code></pre>
         </div>
       </div>
-    </nav>
-    </div>
-    <div class="section row">
-      <pre><code class="language-markup col s12">
-&lt;nav>
-  &lt;div class="nav-wrapper">
-    &lt;a href="#" class="brand-logo right">Logo&lt;/a>
-    &lt;ul id="nav-mobile" class="left side-nav">
-      &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
-    &lt;/ul>
-    &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-  &lt;/div>
-&lt;/nav>
-      </code></pre>
-    </div>
+
+      <div id="left" class="section scrollspy">
+        <h4>Left Aligned Links</h4>
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo right">Logo</a>
+              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+              <ul class="left side-nav">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="components.html">Components</a></li>
+                <li><a href="javascript.html">JavaScript</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;nav>
+      &lt;div class="nav-wrapper">
+        &lt;a href="#" class="brand-logo right">Logo&lt;/a>
+        &lt;ul id="nav-mobile" class="left side-nav">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+        &lt;/ul>
+        &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+      &lt;/div>
+    &lt;/nav>
+          </code></pre>
+        </div>
+      </div>
     
-    <div class="section">
-      <h4>Mobile Collapse Button</h4>
-      <p>If you already included the code for the button collapse as we did in the examples above, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
-      <pre><code class="language-javascript">
-  $(".button-collapse").sideNav();
-      </code></pre>
+      <div id="mobile-collapse" class="section scrollspy">
+        <h4>Mobile Collapse Button</h4>
+        <p>If you already included the code for the button collapse as we did in the examples above, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
+        <pre><code class="language-javascript">
+    $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
     </div>
-  </div>
   
 <!--  Content tab  -->
   <div id="tab7" class="row">
@@ -629,7 +653,7 @@
           <div class="card-content">
             <h1>Card Title</h1>
             <p>This is sample content</p>
-          </div>	
+          </div>  
           <div class="card-footer">
             <p>Footer</p>
             <p>Sample content</p>
@@ -644,7 +668,7 @@
             <img src="images/sample-1.jpg">
             <h1>Card Title</h1>
             <p>This is sample content</p>
-          </div>	
+          </div>  
           <div class="card-footer">
             <p>Footer</p>
             <p>Sample content</p>
@@ -661,7 +685,7 @@
           &lt;div class="card-content">
               &lt;h1>Card Title&lt;/h1>
               &lt;p>This is sample content&lt;/p>
-          &lt;/div>	
+          &lt;/div> 
           &lt;div class="card-footer">
               &lt;p>Footer&lt;/p>
               &lt;p>Sample content&lt;/p>
