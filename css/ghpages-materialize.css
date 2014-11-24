@@ -7631,6 +7631,7 @@ ul.table-of-contents a.active {
   margin: 0 auto;
   min-width: 256px;
   max-width: 300px;
+  max-height: 350px;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -7911,6 +7912,7 @@ ul.table-of-contents a.active {
  * The days on the calendar
  */
 .picker__day {
+  letter-spacing: -.3;
   padding: .75rem 0;
   font-weight: 400;
   border: 1px solid transparent;
