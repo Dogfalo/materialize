@@ -2754,6 +2754,31 @@ td, th {
 .collection .secondary-content {
   float: right;
 }
+.collection.pagination {
+  display: inline-block;
+  background-color: transparent;
+}
+.collection.pagination ul {
+  font-size: 0;
+  display: inline-block;
+}
+.collection.pagination li {
+  display: inline;
+  font-weight: 500;
+  margin: 0px;
+  padding: 0px;
+  font-size: 1rem;
+}
+.collection.pagination li a {
+  padding: 0px 5px;
+}
+.collection.pagination liactive {
+  background-color: #03a9f4;
+  color: #FFF;
+}
+.collection.pagination li:hover {
+  background-color: #e1f5fe;
+}
 
 @font-face {
   font-family: "Material-Design-Icons";
@@ -6817,11 +6842,11 @@ ul.tabs li.tab {
   height: 20px;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.4s ease-out;
-  -moz-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
-  -ms-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -7155,7 +7180,7 @@ textarea {
 /* Checked styles */
 [type="radio"]:checked + label:before {
   border-radius: 50%;
-  border: 2px solid #5a5a5a;
+  border: 2px solid transparent;
 }
 
 [type="radio"]:checked + label:after {

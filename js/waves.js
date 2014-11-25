@@ -260,6 +260,9 @@
     };
 
     window.Waves = Waves;
-    Waves.displayEffect();
+
+    $(document).ready(function() {
+      Waves.displayEffect();
+    });
 
 })(window);
