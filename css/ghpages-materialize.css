@@ -7031,7 +7031,7 @@ ul.collapsible {
 .input-field input[type=email]:focus + label,
 .input-field input[type=date]:focus + label,
 .input-field textarea:focus + label {
-  color: #a4a4a4;
+  color: #03a9f4;
 }
 .input-field input[type=text]:valid,
 .input-field input[type=password]:valid,
@@ -7516,11 +7516,11 @@ ul.table-of-contents a.active {
     height: 120%;
     background-color: #FFF;
     z-index: 1000;
-    -webkit-transition: transform 0.15s ease-out;
-    -moz-transition: transform 0.15s ease-out;
-    -o-transition: transform 0.15s ease-out;
-    -ms-transition: transform 0.15s ease-out;
-    transition: transform 0.15s ease-out;
+    -webkit-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    -ms-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   ul.side-nav.active {
     -webkit-transform: translateX(240px);
@@ -7528,11 +7528,11 @@ ul.table-of-contents a.active {
     -ms-transform: translateX(240px);
     -o-transform: translateX(240px);
     transform: translateX(240px);
-    -webkit-transition: transform 0.3s ease;
-    -moz-transition: transform 0.3s ease;
-    -o-transition: transform 0.3s ease;
-    -ms-transition: transform 0.3s ease;
-    transition: transform 0.3s ease;
+    -webkit-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    -ms-transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   ul.side-nav li {
     float: none;
