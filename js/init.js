@@ -30,7 +30,6 @@
     $('.table-of-contents').each(function() {
       var origin = $(this);
       $(window).scroll(function() {
-        console.log("scrollspy");
         var tabs_height = 0;
         if ($('.tabs-wrapper').length) {
           tabs_height = $('.tabs-wrapper').height();
