@@ -281,4 +281,36 @@ td, th{
     @extend .blue.lighten-1;
     @extend .blue-text.lighten-4;
   }
+  
+  //Pagination
+  &.pagination {
+    display: inline-block;
+    
+      ul{
+        background-color: transparent;
+        
+        font-size: 0;
+        display: inline-block;
+      }
+    li {
+      display: inline;
+      font-weight: 500;
+      margin: 0px;
+      padding: 0px;
+      font-size: 1rem;
+      a {
+       padding: 0px 5px; 
+      }
+      &active {
+        background-color: color('light-blue', 'base'); 
+        color: #FFF;
+      }
+      &:hover {
+        background-color: color('light-blue', 'lighten-5');
+      }
+    }
+    
+  }
+  
 }
+

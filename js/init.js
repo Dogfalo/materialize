@@ -146,7 +146,7 @@
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav();
-    $('.datepicker').pickadate();
+    $('.datepicker').pickadate({editable:true});
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

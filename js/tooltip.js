@@ -12,7 +12,7 @@
       options = $.extend(defaults, options);
       
       var origin = $(this);
-      var margin = 15;
+      var margin = 5;
       
       // Create tooltip
       var newTooltip = $('<div></div');
@@ -41,10 +41,10 @@
                   left: origin.offset().left + origin.outerWidth()/2 - newTooltip.outerWidth()/2 });
 
 
-            newTooltip.velocity({ opacity: 1}, { duration: 250, queue: false });
+            newTooltip.velocity({ opacity: 1, marginTop: '+10px'}, { duration: 250, queue: false });
             backdrop.css({ display: 'block' })
-            .velocity({opacity:1},{duration: 75, queue: false})
-            .velocity({scale: 12}, {duration: 250, delay: 35, queue: false, easing: 'easeInOutCubic'});
+            .velocity({opacity:1},{duration: 200, delay: 0, queue: false})
+            .velocity({scale: 12}, {duration: 250, delay: 20, queue: false, easing: 'easeInOutQuad'});
           }
         }, 1);
         
@@ -57,7 +57,7 @@
         
         
         newTooltip.velocity({
-          opacity: 0}, { duration: 225, queue: false, delay: 275 }
+          opacity: 0, marginTop: '-10px'}, { duration: 225, queue: false, delay: 275 }
         );
         
         backdrop.velocity({opacity: 0, scale: 1},
