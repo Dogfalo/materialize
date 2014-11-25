@@ -8410,16 +8410,7 @@ p {
 }
 
 .promo {
-  padding: 0 15px;
-}
-.promo img {
-  width: 95%;
-  margin-bottom: 1.5rem;
-}
-.promo i {
-  color: #ee6e73;
-  font-size: 7rem;
-  display: block;
+  width: 100%;
 }
 
 .promo-caption {
