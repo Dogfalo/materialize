@@ -8356,6 +8356,9 @@ p {
 #index-banner {
   background-color: #ee6e73;
 }
+#index-banner .container {
+  position: relative;
+}
 #index-banner .header {
   color: #FFF;
 }
@@ -8582,6 +8585,14 @@ pre[class*="language-"] {
   width: 130px;
 }
 
+.buysellads-header {
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -60px;
+}
+
 .bsa_it.one {
   max-width: 270px;
   display: inline-block;
@@ -8621,5 +8632,3 @@ pre[class*="language-"] {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */

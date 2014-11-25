@@ -59,6 +59,9 @@ p {
 
 #index-banner {
   background-color: color("materialize-red", "lighten-2");
+  .container {
+    position: relative;
+  }
   .header {
     color: #FFF;
   }
@@ -304,6 +307,14 @@ pre[class*="language-"] {
     display: block;
     width: 130px;
   }
+}
+
+.buysellads-header {
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -60px;
 }
 
 .bsa_it.one {
