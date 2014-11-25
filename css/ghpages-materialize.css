@@ -2532,6 +2532,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  color: #555;
+}
+
 .no-select, input[type=range], input[type=range] + .thumb {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2591,6 +2595,12 @@ li {
   -webkit-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
   -moz-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
   box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+blockquote {
+  margin: 20px 0;
+  padding-left: 1.5rem;
+  border-left: 5px solid #EF9A9A;
 }
 
 .parallax-container {
@@ -7155,7 +7165,7 @@ textarea {
 /* Checked styles */
 [type="radio"]:checked + label:before {
   border-radius: 50%;
-  border: 2px solid #5a5a5a;
+  border: 2px solid transparent;
 }
 
 [type="radio"]:checked + label:after {
