@@ -181,7 +181,12 @@
 		    var offset = $(this.hash).offset().top + 1;
             
 //            offset-60 to handle floating fixed tab bar
-		    $('html, body').animate({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
+				if ($('.tabs-wrapper').length) {
+			    $('html, body').animate({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
+				}
+				else {
+		    	$('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
+				}
 		  });		
 		});
 		options = options || {
