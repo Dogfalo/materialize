@@ -59,6 +59,9 @@ p {
 
 #index-banner {
   background-color: color("materialize-red", "lighten-2");
+  .container {
+    position: relative;
+  }
   .header {
     color: #FFF;
   }
@@ -110,17 +113,7 @@ p {
 
 
 .promo{
-  padding: 0 15px;
-  img {
-    width:95%;
-    margin-bottom:1.5rem;
-  }
-  
-  i {
-    color: color("materialize-red", "lighten-2");
-    font-size: 7rem;
-    display: block;
-  }
+  width: 100%;
 }
 
 .promo-caption {
@@ -304,6 +297,12 @@ pre[class*="language-"] {
     display: block;
     width: 130px;
   }
+}
+
+.buysellads-header {
+  margin-top: 30px;
+
+  .bsa_it.one .bsa_it_p { bottom: -20px; }
 }
 
 .bsa_it.one {
