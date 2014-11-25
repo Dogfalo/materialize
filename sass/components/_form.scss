@@ -5,6 +5,7 @@
 ****************************/
 
 $border-color: #bdbdbd;
+$highlight-color: color("light-blue", "base");
 
 .input-field {
   position: relative;
@@ -26,7 +27,8 @@ $border-color: #bdbdbd;
   input[type=email]:focus + label,
   input[type=date]:focus + label,
   textarea:focus + label {
-    color: darken($border-color, 10%);
+  
+    color: $highlight-color;
   }
 
   input[type=text]:valid,
@@ -64,8 +66,8 @@ input[type=password]:focus,
 input[type=email]:focus,
 input[type=date]:focus,
 textarea:focus {
-  border-bottom: 1px solid color("light-blue", "base");
-  @include box-shadow(0 1px 0 0 color("light-blue", "base"));
+  border-bottom: 1px solid $highlight-color;
+  @include box-shadow(0 1px 0 0 $highlight-color);
 }
 
 textarea {
