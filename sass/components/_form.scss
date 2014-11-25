@@ -138,7 +138,7 @@ $radio-border: #5a5a5a;
 /* Checked styles */
 [type="radio"]:checked + label:before {
   border-radius: 50%;
-  border: 2px solid $radio-border;
+  border: 2px solid transparent;
 }
 [type="radio"]:checked + label:after {
   border-radius: 50%;
