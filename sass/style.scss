@@ -114,6 +114,12 @@ p {
 
 .promo{
   width: 100%;
+
+  i {
+    color: color("materialize-red", "lighten-2");
+    font-size: 7rem;
+    display: block;
+  }
 }
 
 .promo-caption {

@@ -8412,6 +8412,11 @@ p {
 .promo {
   width: 100%;
 }
+.promo i {
+  color: #ee6e73;
+  font-size: 7rem;
+  display: block;
+}
 
 .promo-caption {
   font-size: 1.7rem;
