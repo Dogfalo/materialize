@@ -8586,11 +8586,10 @@ pre[class*="language-"] {
 }
 
 .buysellads-header {
-  height: 100px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  margin-top: -60px;
+  margin-top: 30px;
+}
+.buysellads-header .bsa_it.one .bsa_it_p {
+  bottom: -20px;
 }
 
 .bsa_it.one {
