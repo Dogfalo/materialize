@@ -199,6 +199,7 @@
           <li><a href="#radio">Radio Buttons</a></li>
           <li><a href="#checkbox">Checkboxes</a></li>
           <li><a href="#range">Range</a></li>
+          <li><a href="#date-picker">Date Picker</a></li>
         </ul>
       </div>
     </div>
@@ -380,24 +381,24 @@
         <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
         <div class="row">
           <pre><code class="language-markup col s12">
-      &lt;form action="#">
-        &lt;p>
-          &lt;input name="group1" type="radio" id="test1" />
-          &lt;label for="test1">Red&lt;/label>
-        &lt;/p>
-        &lt;p>
-          &lt;input name="group1" type="radio" id="test2" />
-          &lt;label for="test2">Yellow&lt;/label>
-        &lt;/p>
-        &lt;p>
-          &lt;input name="group1" type="radio" id="test3"  />
-          &lt;label for="test3">Green&lt;/label>
-        &lt;/p>
-          &lt;p>
-            &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
-            &lt;label for="test4">Brown&lt;/label>
-        &lt;/p>
-      &lt;/form>
+  &lt;form action="#">
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test1" />
+      &lt;label for="test1">Red&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test2" />
+      &lt;label for="test2">Yellow&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test3"  />
+      &lt;label for="test3">Green&lt;/label>
+    &lt;/p>
+      &lt;p>
+        &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
+        &lt;label for="test4">Brown&lt;/label>
+    &lt;/p>
+  &lt;/form>
           </code></pre>
         </div>
       </div>
@@ -425,24 +426,24 @@
         </form>
         <div class="row" >
           <pre><code class="language-markup col s12">
-    &lt;form action="#">
+  &lt;form action="#">
+    &lt;p>
+      &lt;input type="checkbox" id="test5" />
+      &lt;label for="test5">Red&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input type="checkbox" id="test6" checked="checked" />
+      &lt;label for="test6">Yellow&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
+      &lt;label for="test7">Green&lt;/label>
+    &lt;/p>
       &lt;p>
-        &lt;input type="checkbox" id="test5" />
-        &lt;label for="test5">Red&lt;/label>
-      &lt;/p>
-      &lt;p>
-        &lt;input type="checkbox" id="test6" checked="checked" />
-        &lt;label for="test6">Yellow&lt;/label>
-      &lt;/p>
-      &lt;p>
-        &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
-        &lt;label for="test7">Green&lt;/label>
-      &lt;/p>
-        &lt;p>
-          &lt;input type="checkbox" id="test8" disabled="disabled" />
-          &lt;label for="test8">Brown&lt;/label>
-      &lt;/p>
-    &lt;/form>
+        &lt;input type="checkbox" id="test8" disabled="disabled" />
+        &lt;label for="test8">Brown&lt;/label>
+    &lt;/p>
+  &lt;/form>
           </code></pre>
         </div>
       </div>
@@ -457,12 +458,23 @@
         </form>
         <div class="row" >
           <pre><code class="language-markup col s12">
-    &lt;form action="#">
-      &lt;p class="range-field">
-        &lt;input type="range" id="test5" />
-        &lt;label for="test5">Red&lt;/label>
-      &lt;/p>
-    &lt;/form>
+  &lt;form action="#">
+    &lt;p class="range-field">
+      &lt;input type="range" id="test5" />
+      &lt;label for="test5">Red&lt;/label>
+    &lt;/p>
+  &lt;/form>
+          </code></pre>
+        </div>
+      </div>
+      
+      <div id="date-picker" class="section scrollspy">
+        <h4>Date Picker</h4>
+        <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
+        <input class="datepicker"></input>
+        <div class="row" >
+          <pre><code class="language-markup col s12">
+    &lt;input class="datepicker">&lt;/div>
           </code></pre>
         </div>
       </div>
