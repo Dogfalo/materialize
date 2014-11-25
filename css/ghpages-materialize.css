@@ -7746,7 +7746,7 @@ ul.table-of-contents a.active {
 
 .picker__frame {
   margin: 0 auto;
-  max-width: 315px;
+  max-width: 325px;
 }
 
 @media (min-height: 38.875em) {
