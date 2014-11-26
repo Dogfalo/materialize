@@ -314,7 +314,7 @@ td, th{
       a {
        padding: 0px 5px; 
       }
-      &active {
+      &.active {
         background-color: color('light-blue', 'base'); 
         color: #FFF;
       }

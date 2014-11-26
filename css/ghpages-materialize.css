@@ -2766,9 +2766,9 @@ td, th {
 }
 .collection.pagination {
   display: inline-block;
-  background-color: transparent;
 }
 .collection.pagination ul {
+  background-color: transparent;
   font-size: 0;
   display: inline-block;
 }
@@ -2782,7 +2782,7 @@ td, th {
 .collection.pagination li a {
   padding: 0px 5px;
 }
-.collection.pagination liactive {
+.collection.pagination li.active {
   background-color: #03a9f4;
   color: #FFF;
 }
@@ -9123,3 +9123,5 @@ pre[class*="language-"] {
     margin-bottom: 20px;
   }
 }
+
+/*# sourceMappingURL=ghpages-materialize.css.map */
