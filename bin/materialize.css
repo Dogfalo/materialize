@@ -2532,6 +2532,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  color: #555;
+}
+
 .no-select, input[type=range], input[type=range] + .thumb {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2591,6 +2595,12 @@ li {
   -webkit-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
   -moz-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
   box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+blockquote {
+  margin: 20px 0;
+  padding-left: 1.5rem;
+  border-left: 5px solid #EF9A9A;
 }
 
 .parallax-container {
@@ -2751,14 +2761,11 @@ td, th {
 .collection.with-header .collection-item {
   padding-left: 30px;
 }
-.collection .secondary-content {
-  float: right;
-}
 .collection.pagination {
   display: inline-block;
-  background-color: transparent;
 }
 .collection.pagination ul {
+  background-color: transparent;
   font-size: 0;
   display: inline-block;
 }
@@ -2772,7 +2779,7 @@ td, th {
 .collection.pagination li a {
   padding: 0px 5px;
 }
-.collection.pagination liactive {
+.collection.pagination li.active {
   background-color: #03a9f4;
   color: #FFF;
 }
@@ -6205,7 +6212,6 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  text-rendering: optimizeLegibility;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -8777,3 +8783,5 @@ ul.table-of-contents a.active {
     margin-bottom: 5em;
   }
 }
+
+/*# sourceMappingURL=materialize.css.map */

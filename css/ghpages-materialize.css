@@ -2761,9 +2761,6 @@ td, th {
 .collection.with-header .collection-item {
   padding-left: 30px;
 }
-.collection .secondary-content {
-  float: right;
-}
 .collection.pagination {
   display: inline-block;
 }
@@ -6215,7 +6212,6 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  text-rendering: optimizeLegibility;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -9131,6 +9127,12 @@ pre[class*="language-"] {
     display: block;
     margin-bottom: 20px;
   }
+}
+.image-container {
+  width: 100%;
+}
+.image-container img {
+  max-width: 100%;
 }
 
 /*# sourceMappingURL=ghpages-materialize.css.map */
