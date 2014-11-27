@@ -9090,6 +9090,7 @@ pre[class*="language-"] {
 }
 
 .bsa_it.one {
+  min-width: 230px;
   max-width: 270px;
   display: inline-block;
   text-align: left;

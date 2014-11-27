@@ -63,7 +63,7 @@
     {
         if ($bsa.find('.bsa_it').height() > 0) 
         {
-              $('.table-of-contents').css('marginTop', 230);
+              $('.table-of-contents').css('marginTop', 270);
               // Floating-Fixed table of contents
               $('.table-of-contents').each(function() {
                 var origin = $(this);
@@ -74,8 +74,8 @@
                 $(window).scroll(function() {
 
                   if (origin.is(":visible")) {
-                    origin.attr('data-origpos', origin.position().top - tabs_height + 230);            
-                    origin.attr('data-origmargin', 230);            
+                    origin.attr('data-origpos', origin.position().top - tabs_height + 270);            
+                    origin.attr('data-origmargin', 270);            
                   }
                 });
               });
