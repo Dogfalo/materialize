@@ -1,11 +1,15 @@
+$border-color: #bdbdbd;
+$highlight-color: color("light-blue", "base");
+$label-font-size: .8rem;
 
+label {
+  font-size: $label-font-size;
+  color: $border-color;
+}
 
 /***************************
    Text Inputs + Textarea
 ****************************/
-
-$border-color: #bdbdbd;
-$highlight-color: color("light-blue", "base");
 
 .input-field {
   position: relative;
@@ -16,9 +20,11 @@ $highlight-color: color("light-blue", "base");
     z-index: -1;
     top: .8rem;
     left: .5rem;
+    font-size: 1rem;
     @include transition(.2s ease-out);
   }
   label.active {
+    font-size: $label-font-size;
     @include transform(translateY(-130%));
   }
 
@@ -33,8 +39,8 @@ $highlight-color: color("light-blue", "base");
 
   input[type=text]:valid,
   input[type=password]:valid,
-  input[type=email]:valid
-  input[type=date]:valid
+  input[type=email]:valid,
+  input[type=date]:valid,
   textarea:valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
@@ -256,6 +262,26 @@ form p {
 
 .select-wrapper span.select-dropdown {
   cursor: pointer;
+  color: #444;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $border-color;
+  outline: none;
+  height: 3rem;
+  line-height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  padding: 0;
+  display: block;
+
+  &:after {
+    position: absolute;
+    right: 0;
+    font-size: 23px;
+    @extend [class^="mdi-"];
+    @extend .mdi-navigation-arrow-drop-down:before;
+  }
 }
 
 select { display: none; }
