@@ -6229,7 +6229,6 @@ h1 {
   font-size: 4.2rem;
   line-height: 4.62rem;
   margin: 2.1rem 0 1.68rem 0;
-  letter-spacing: -0.1rem;
 }
 
 h2 {
@@ -6248,21 +6247,18 @@ h4 {
   font-size: 2.28rem;
   line-height: 2.508rem;
   margin: 1.14rem 0 0.912rem 0;
-  letter-spacing: .05rem;
 }
 
 h5 {
   font-size: 1.64rem;
   line-height: 1.804rem;
   margin: 0.82rem 0 0.656rem 0;
-  letter-spacing: .05rem;
 }
 
 h6 {
   font-size: 1rem;
   line-height: 1.1rem;
   margin: 0.5rem 0 0.4rem 0;
-  letter-spacing: .03rem;
 }
 
 em {
