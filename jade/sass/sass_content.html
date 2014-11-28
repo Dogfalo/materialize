@@ -131,33 +131,61 @@
       </div>
     </div>
     
-    <div id="tab3" class="section dynamic-color">
+    <div id="tab3" class="section">
       <h2 class="header">Colors</h2>
       <p class="caption">
-      Here is a color palette based on the material design base colors. Each of these colors is defined with a base color class and an optional lighten or darken class. To use these classes, create a custom Sass file in which you can extend these classes.
+      Here is a color palette based on the material design base colors. Each of these colors is defined with a base color class and an optional lighten or darken class.
       </p>
+      
+      <h4>Usage</h4>
+      <div class="row section">
+        <h5 class="col s12 m3">Background Color</h5>
+        <div class="col s12 m9">
+          <p>To apply a background color, just add the color name and light/darkness as a class to the element.</p>
+          <div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div>
+          <pre><code class="language-markup">
+  &lt;div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class&lt;/div>
+          </code></pre>
+        </div>
+
+        <br>
+
+        <h5 class="col s12 m3">Text Color</h5>
+        <div class="col s12 m9">
+          <p>To apply a text color, just append <code class="languague-markup">-text</code> to the color class like this:</p>
+          <div class="card-panel"><span class="blue-text darken-2">This is a card panel with dark blue text</span></div>
+          <pre><code class="language-markup">
+  &lt;div class="card-panel">
+    &lt;span class="blue-text darken-2">This is a card panel with dark blue text&lt;/span>
+  &lt;/div>
+          </code></pre>
+        </div>
+      </div>
+      
+      <h4>Sass</h4>
       <div class="row">
         <p>
         For background colors, you can apply the color simply by extending the classes like the example below.
         </p>
         <pre><code class="language-scss col s12">
-    .ilike-blue-container {
-      @extend .blue, .lighten-4;
-    }
+  .ilike-blue-container {
+    @extend .blue, .lighten-4;
+  }
         </code></pre>
-      </div>
-      <div class="row">
+
         <p>
         For changing text color, you can apply the color simply by extending the classes like the example below.
         </p>
         <pre><code class="language-scss col s12">
-    .ilike-blue-container {
-      @extend .blue-text, .lighten-4;
-    }
+  .ilike-blue-container {
+    @extend .blue-text, .lighten-4;
+  }
         </code></pre>
+        
       </div>
-      <h4 class="header">Color Palette</h4>
-      <div class="row">
+      
+      <h3>Color Palette</h3>
+      <div class="row dynamic-color">
         <div class="col s12 m6 l4">
           <div class="red lighten-5"></div>
           <div class="red lighten-4"></div>
@@ -484,6 +512,11 @@
       <div id="action" class="row scrollspy">
         <h2 class="header">Icons</h2>
         <p class="caption">We have included 740 Material Design Icons courtesy of Google. You can download them directly from the <a href="https://github.com/google/material-design-icons">Material Design specs</a>. The icon font was made and packed by <a href="http://fezvrasta.github.io/bootstrap-material-design/">Bootstrap Material Design</a>.</p>
+        <h4>Usage</h4>
+        <p>To use these icons, just place the name of the icon into the class of an i tag</p>
+        <pre><code class="language-markup">
+  &lt;i class="mdi-content-add">&lt;/i>
+        </code></pre>
         <div class="row icon-container">
           <h4 class="light col s12">Action</h4><br>
 

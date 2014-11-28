@@ -223,7 +223,6 @@ table {
       
     tbody tr {
       @include transition(background-color .25s ease);
-//      background-color: transparent;
       &:hover {
         background-color: #f2f2f2;
       }
@@ -284,10 +283,6 @@ td, th{
     .collection-item {
      padding-left: 30px;
     }
-  }
-  
-  .secondary-content {
-    float: right;
   }
   
   .active {

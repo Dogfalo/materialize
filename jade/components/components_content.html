@@ -41,7 +41,7 @@
         <div class="row">
           <div class="col s12">
             <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags</p>
-            <div class="preview">
+            <div class="card-panel">
               <h1>Heading h1</h1>
               <h2>Heading h2</h2>
               <h3>Heading h3</h3>
@@ -73,21 +73,21 @@
 
       <div id="flow" class="section scrollspy">
         <h4>Flow Text</h4>
-        <p>
-        One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
-          </p>
-        <p>
-          To see Flow Text in action, resize your browser and watch the size of the text below change!
-        </p>
-        <p>To activate this, just add the class "flow-text" to a tag, see the code and demo below for a feel of how this works.</p>
+        <a id="flow-toggle" class="btn waves-effect waves-light">Toggle flow-text</a>
+        <div id="flow-text-demo" class="card-panel">
+        <p class="flow-text">
+        One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.</p>
+        <p class="flow-text">To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!</p>
+        </div>
+        
+        <br>
+          
+        <p>To use flow-text on a body of text, simply just add the class <code class="language-markup">flow-text</code> to a tag, see the code blow.</p>
         <div class="row">
         <pre><code class="language-markup col s12">
-&lt;p class="flow-text">I am Flow Text&lt;/p>
+  &lt;p class="flow-text">I am Flow Text&lt;/p>
         </code></pre>
         </div>
-        <p class="flow-text">Post-ironic keffiyeh bitters Banksy street art yr, ennui flexitarian organic bespoke lomo readymade.   Schlitz single-origin coffee Wes Anderson XOXO, literally whatever cliche lo-fi deep v pug beard. Blog whatever banh mi   wayfarers, tousled roof party try-hard gentrify aesthetic ennui 90's Bushwick. Master cleanse American Apparel PBR&B  letterpress, mumblecore fingerstache tousled Thundercats hashtag Wes Anderson quinoa. Yr Brooklyn messenger bag scenester, wolf beard sustainable chia cred sriracha flannel Truffaut Tonx. Butcher 3 wolf moon Vice Banksy, gentrify sartorial XOXO farm-to-table PBR gastropub pop-up. YOLO plaid mustache small batch flannel chambray.
-
-        Typewriter swag Marfa forage, biodiesel Cosby sweater pork belly McSweeney's fap kale chips ugh. Cornhole hoodie chambray   Truffaut, you probably haven't heard of them next level flannel. Plaid cred cray, next level trust fund pork belly vegan  gastropub Blue Bottle artisan. Before they sold out ugh stumptown, bitters wolf banjo YOLO forage direct trade Marfa kitsch try- hard mixtape vegan small batch. Truffaut artisan deep v pickled biodiesel, chambray synth pop-up bicycle rights squid gluten-free mlkshk Godard photo booth roof party. DIY bicycle rights Marfa actually, Blue Bottle normcore Pitchfork organic tofu authentic Austin ennui post-ironic. Synth gastropub church-key, small batch art party 3 wolf moon disrupt cornhole quinoa Thundercats biodiesel Williamsburg Schlitz.</p>
       </div>
 
 
@@ -144,14 +144,14 @@
         <br><br>
         <h4>Grid Examples</h4>
         <div class="row">
-          <div class="col grid-example s12"><p>s12</p></div>
-          <div class="col grid-example s12 m3"><p>s12 m3</p></div>
-          <div class="col grid-example s12 m6"><p>s12 m6</p></div>
-          <div class="col grid-example s12 m3"><p>s12 m3</p></div>
-          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
-          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
-          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
-          <div class="col grid-example s12 m6 l3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 blue lighten-1"><p>s12</p></div>
+          <div class="col grid-example s12 m3 teal lighten-1"><p>s12 m3</p></div>
+          <div class="col grid-example s12 m6 teal lighten-1"><p>s12 m6</p></div>
+          <div class="col grid-example s12 m3 teal lighten-1"><p>s12 m3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
         </div>
         <div class="row">
           <pre><code class="language-markup col s12">

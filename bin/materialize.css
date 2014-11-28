@@ -2532,6 +2532,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  color: #555;
+}
+
 .no-select, input[type=range], input[type=range] + .thumb {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2557,7 +2561,7 @@ li {
   list-style-type: none;
 }
 
-.z-depth-1, nav, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, ul.collapsible {
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, ul.collapsible {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -2591,6 +2595,12 @@ li {
   -webkit-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
   -moz-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
   box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+blockquote {
+  margin: 20px 0;
+  padding-left: 1.5rem;
+  border-left: 5px solid #EF9A9A;
 }
 
 .parallax-container {
@@ -2751,14 +2761,11 @@ td, th {
 .collection.with-header .collection-item {
   padding-left: 30px;
 }
-.collection .secondary-content {
-  float: right;
-}
 .collection.pagination {
   display: inline-block;
-  background-color: transparent;
 }
 .collection.pagination ul {
+  background-color: transparent;
   font-size: 0;
   display: inline-block;
 }
@@ -2772,7 +2779,7 @@ td, th {
 .collection.pagination li a {
   padding: 0px 5px;
 }
-.collection.pagination liactive {
+.collection.pagination li.active {
   background-color: #03a9f4;
   color: #FFF;
 }
@@ -5786,7 +5793,7 @@ td, th {
 }
 
 .section {
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
 }
 .section.no-pad {
@@ -6205,7 +6212,6 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  text-rendering: optimizeLegibility;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -6213,35 +6219,35 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 h1 {
-  font-size: 4.1rem;
-  line-height: 4.51rem;
-  margin: 2.05rem 0 1.64rem 0;
+  font-size: 4.2rem;
+  line-height: 4.62rem;
+  margin: 2.1rem 0 1.68rem 0;
   letter-spacing: -0.1rem;
 }
 
 h2 {
-  font-size: 3.21rem;
-  line-height: 3.531rem;
-  margin: 1.605rem 0 1.284rem 0;
+  font-size: 3.56rem;
+  line-height: 3.916rem;
+  margin: 1.78rem 0 1.424rem 0;
 }
 
 h3 {
-  font-size: 2.42rem;
-  line-height: 2.662rem;
-  margin: 1.21rem 0 0.968rem 0;
+  font-size: 2.92rem;
+  line-height: 3.212rem;
+  margin: 1.46rem 0 1.168rem 0;
 }
 
 h4 {
-  font-size: 1.71rem;
-  line-height: 1.881rem;
-  margin: 0.855rem 0 0.684rem 0;
+  font-size: 2.28rem;
+  line-height: 2.508rem;
+  margin: 1.14rem 0 0.912rem 0;
   letter-spacing: .05rem;
 }
 
 h5 {
-  font-size: 1.42rem;
-  line-height: 1.562rem;
-  margin: 0.71rem 0 0.568rem 0;
+  font-size: 1.64rem;
+  line-height: 1.804rem;
+  margin: 0.82rem 0 0.656rem 0;
   letter-spacing: .05rem;
 }
 
@@ -6480,6 +6486,14 @@ small {
   .flow-text {
     line-height: 2.88rem;
   }
+}
+
+.card-panel {
+  padding: 1rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
 }
 
 .card {
@@ -8777,3 +8791,5 @@ ul.table-of-contents a.active {
     margin-bottom: 5em;
   }
 }
+
+/*# sourceMappingURL=materialize.css.map */

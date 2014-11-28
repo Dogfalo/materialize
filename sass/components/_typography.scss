@@ -28,15 +28,14 @@ html{
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
-  text-rendering: optimizeLegibility;
 }
 		
 // Header Styles
-$h1-fontsize: 4.1rem;
-$h2-fontsize: 3.21rem;
-$h3-fontsize: 2.42rem;
-$h4-fontsize: 1.71rem;
-$h5-fontsize: 1.42rem;
+$h1-fontsize: 4.2rem;
+$h2-fontsize: 3.56rem;
+$h3-fontsize: 2.92rem;
+$h4-fontsize: 2.28rem;
+$h5-fontsize: 1.64rem;
 $h6-fontsize: 1rem;
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 h1 { font-size: $h1-fontsize; line-height: 1.1*$h1-fontsize; margin: ($h1-fontsize / 2) 0 ($h1-fontsize / 2.5) 0; letter-spacing: -0.1rem}

@@ -13,7 +13,17 @@ p.box {
 }
 p {
   padding: 0;
-  
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+ a {
+  -webkit-font-smoothing: antialiased;
+ } 
 }
 
 .header {
@@ -152,13 +162,12 @@ p {
 // Grid doc styles
 
 .col.grid-example {
-
-  background-color: #FFF;
+  @include transition(all .3s cubic-bezier(0.215, 0.61, 0.355, 1));
   border: 1px solid #eee;
-  margin: 10px 0;
+  margin: 7px 0;
 
   p {
-    margin: 10px;
+    margin: 15px;
   }
 }
 
@@ -170,13 +179,13 @@ p {
     width: 100%;
     padding: 0 15px;
     line-height: 55px;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 12px;
     display: block;
     @include box-sizing(border-box);
   }
   .col {
-    margin-bottom: 15px;   
+    margin-bottom: 55px;   
   }
 }
 
@@ -350,6 +359,15 @@ pre[class*="language-"] {
   .footer-block {
     display: block;
     margin-bottom: 20px;
+  }
+}
+
+
+//About page styling
+.image-container {
+  width: 100%;
+  img {
+    max-width: 100%;
   }
 }
 
