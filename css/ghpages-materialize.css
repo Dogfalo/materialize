@@ -2797,7 +2797,7 @@ td, th {
   font-weight: normal;
   font-style: normal;
 }
-[class^="mdi-"], [class*=" mdi-"] {
+[class^="mdi-"], .select-wrapper span.select-dropdown:after, [class*=" mdi-"] {
   font-family: "Material-Design-Icons";
   speak: none;
   font-style: normal;
@@ -5521,7 +5521,7 @@ td, th {
   content: "\e8a5";
 }
 
-.mdi-navigation-unfold-more:before {
+.mdi-navigation-unfold-more:before, .select-wrapper span.select-dropdown:after {
   content: "\e8a6";
 }
 
@@ -7334,6 +7334,23 @@ form p:last-child {
 ***************/
 .select-wrapper span.select-dropdown {
   cursor: pointer;
+  color: #444;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+  outline: none;
+  height: 3rem;
+  line-height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  padding: 0;
+  display: block;
+}
+.select-wrapper span.select-dropdown:after {
+  position: absolute;
+  right: 0;
+  font-size: 23px;
 }
 
 select {
@@ -9124,5 +9141,3 @@ pre[class*="language-"] {
     margin-bottom: 20px;
   }
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */
