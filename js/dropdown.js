@@ -16,7 +16,7 @@
     if (defaults.hover) {
       // Click handler for list container
       origin.on('mouseover', function(e){ // Mouse over
-        activates.css('width', origin.innerWidth());
+        activates.css('width', origin.outerWidth());
         activates.css('top', origin.offset().top);
         activates.css('left', origin.offset().left);
         activates.show({duration: 200, easing: 'easeOutCubic'});
@@ -35,7 +35,7 @@
       // Click handler for list container
       origin.click( function(e){ // Mouse over
         e.preventDefault();
-        activates.css('width', origin.innerWidth());
+        activates.css('width', origin.outerWidth());
         activates.css('top', origin.offset().top);
         activates.css('left', origin.offset().left);
         activates.show({duration: 200, easing: 'easeOutCubic'});

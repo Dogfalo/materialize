@@ -86,27 +86,27 @@
           <div class="col s12">
             To do this, call the toast() function programatically in JavaScript
             <pre><code class="language-javascript">
-        toast('I am a toast!', 3000) // 3000 is the duration of the toast
+  toast('I am a toast!', 3000) // 3000 is the duration of the toast
             </code></pre>
             <p>One way to add this into your application is to add this as an onclick event to a button</p>
             <pre><code class="language-markup">
-        &lt;a class="btn" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
+  &lt;a class="btn" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
             </code></pre>
 
 
-            <h4>Styling Toasts</h4>
+            <h5>Styling Toasts</h5>
             <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
 
             <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
 
             <pre><code class="language-javascript">
-        toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+  toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
             </code></pre>
           </div>
         </div>
       </div>
 
-      <div id="tooltip" class="section scrollspy">
+      <div id="tooltip" class="scrollspy">
         <h4>Tooltips</h4>
         <div class="row">
           <div class="col s12">
@@ -119,14 +119,14 @@
           <div class="col s12">
             Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
             <pre><code class="language-markup">
-              &lt;class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP&lt;/a>
+  &lt;a class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP&lt;/a>
             </code></pre>
             <br>
             Then add this to your jQuery file, with the hover delay you want as the option
             <pre><code class="language-javascript">
-              $(document).ready(function(){
-                $('.tooltipped').tooltip({"delay": 50});
-              });
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({"delay": 50});
+  });
             </code></pre>
           </div>
         </div>
@@ -156,7 +156,7 @@
 &lt;!-- Modal Structure -->
 &lt;div id="modal1" class="modal">
   &lt;h4>Modal Header&lt;/h4>
-  &lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum&lt;/p>
+  &lt;p>A bunch of text&lt;/p>
   &lt;a href="#" class="waves-effect btn flat modal_close">Agree&lt;/a>
 &lt;/div>
             </code></pre>
@@ -174,22 +174,33 @@ $(document).ready(function(){
         </div>
       </div>
 
-      <div id="dropdown" class="section scrollspy">
+      <div id="dropdown" class="scrollspy">
         <h4>Dropdowns</h4>
         <div class="row">
           <div class="col s12">
-            <p>Add a dropdown list to any button.</p>
-            <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
+            <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag</p>
+            <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
             <ul id='dropdown1' class='dropdown-content'>
-              <li>one</li>
-              <li>two</li>
-              <li>three</li>
+              <li><a href="#!">one</a></li>
+              <li><a href="#!">two</a></li>
+              <li><a href="#!">three</a></li>
             </ul>
+            <pre><code class="language-markup">
+  &lt;!-- Dropdown Trigger -->
+  &lt;a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
+  
+  &lt;!-- Dropdown Structure -->
+  &lt;ul id='dropdown1' class='dropdown-content'>
+    &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+  &lt;/ul>
+            </code></pre>
           </div>
         </div>
         <div class="row">
           <div class="col s12">
-            <h4>jQuery Plugin Initialization</h4>
+            <h5>jQuery Plugin Initialization</h5>
             <pre><code class="language-javascript">
 $(document).ready(function(){
   $('.dropdown-button').dropdown();

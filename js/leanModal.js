@@ -5,7 +5,7 @@
         leanModal: function(options) {
  
             var defaults = {
-                overlay: 0.7
+                overlay: 0.5
             }
             
             var overlay = $("<div id='lean_overlay'></div>");

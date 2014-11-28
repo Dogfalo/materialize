@@ -1,4 +1,5 @@
 .modal {
+  @extend .z-depth-1;
   display: none;
   background-color: #eee;
   padding: 24px;
