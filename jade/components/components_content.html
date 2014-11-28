@@ -35,7 +35,7 @@
       <div id="headers" class="section scrollspy">
         <h2 class="header">Typography</h2>
         <p class="caption">
-          The standard font Material Design uses is Roboto. We have included the font files with our framework. It comes with 5 different font weights you can use.
+          The standard font Material Design uses is Roboto. We have included the font files with our framework. It comes with 5 different font weights you can use: 200, 300, 400, 500, 600
         </p>
         <h4>Headers</h4>
         <div class="row">
@@ -645,6 +645,19 @@
     
       <div id="mobile-collapse" class="section scrollspy">
         <h4>Mobile Collapse Button</h4>
+        
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo right">Logo</a>
+              <a style="display: block !important;" class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+            </div>
+          </div>
+        </nav>
+        
+        <br>
+        
+        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="mdi-navigation-menu"></i></p>
         <p>If you already included the code for the button collapse as we did in the examples above, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
         <pre><code class="language-javascript">
     $(".button-collapse").sideNav();
