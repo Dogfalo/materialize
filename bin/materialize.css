@@ -2794,7 +2794,7 @@ td, th {
   font-weight: normal;
   font-style: normal;
 }
-[class^="mdi-"], [class*=" mdi-"] {
+[class^="mdi-"], .select-wrapper span.select-dropdown:after, [class*=" mdi-"] {
   font-family: "Material-Design-Icons";
   speak: none;
   font-style: normal;
@@ -5446,7 +5446,7 @@ td, th {
   content: "\e893";
 }
 
-.mdi-navigation-arrow-drop-down:before {
+.mdi-navigation-arrow-drop-down:before, .select-wrapper span.select-dropdown:after {
   content: "\e894";
 }
 
@@ -7045,6 +7045,11 @@ ul.collapsible {
   z-index: 999;
 }
 
+label {
+  font-size: 0.8rem;
+  color: #bdbdbd;
+}
+
 /***************************
    Text Inputs + Textarea
 ****************************/
@@ -7057,6 +7062,7 @@ ul.collapsible {
   z-index: -1;
   top: .8rem;
   left: .5rem;
+  font-size: 1rem;
   -webkit-transition: 0.2s ease-out;
   -moz-transition: 0.2s ease-out;
   -o-transition: 0.2s ease-out;
@@ -7064,6 +7070,7 @@ ul.collapsible {
   transition: 0.2s ease-out;
 }
 .input-field label.active {
+  font-size: 0.8rem;
   -webkit-transform: translateY(-130%);
   -moz-transform: translateY(-130%);
   -ms-transform: translateY(-130%);
@@ -7079,9 +7086,9 @@ ul.collapsible {
 }
 .input-field input[type=text]:valid,
 .input-field input[type=password]:valid,
-.input-field input[type=email]:valid
-input[type=date]:valid
-textarea:valid {
+.input-field input[type=email]:valid,
+.input-field input[type=date]:valid,
+.input-field textarea:valid {
   border-bottom: 1px solid #4CAF50;
   -webkit-box-shadow: 0 1px 0 0 #4CAF50;
   -moz-box-shadow: 0 1px 0 0 #4CAF50;
@@ -7343,6 +7350,23 @@ form p:last-child {
 ***************/
 .select-wrapper span.select-dropdown {
   cursor: pointer;
+  color: #444;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+  outline: none;
+  height: 3rem;
+  line-height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  padding: 0;
+  display: block;
+}
+.select-wrapper span.select-dropdown:after {
+  position: absolute;
+  right: 0;
+  font-size: 23px;
 }
 
 select {
