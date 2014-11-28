@@ -8,6 +8,7 @@ $card-link-hover: #ffcc35;
 
 .card-panel {
   padding: 1rem;
+  margin-bottom: 20px;
   @include border-radius(2px);
   @extend .z-depth-1;
 }

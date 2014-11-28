@@ -6218,7 +6218,6 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -6498,6 +6497,7 @@ small {
 
 .card-panel {
   padding: 1rem;
+  margin-bottom: 20px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;

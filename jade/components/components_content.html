@@ -19,11 +19,15 @@
     <div id="bsap_1300189" class="bsarocks bsap_b9468009151bf6fe6de9519ffdd7961f"></div>
     <!-- End BuySellAds Zone Code -->
   </div>
+  
+  
+<!--  Typography Section  -->
   <div id="tab1" class="row">
 
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
+          <li><a href="#roboto">Roboto</a></li>
           <li><a href="#headers">Headers</a></li>
           <li><a href="#blockquote">Blockquote</a></li>
           <li><a href="#flow">Flow Text</a></li>
@@ -32,23 +36,37 @@
     </div>
 
     <div class="col s12 m9 l10">
-      <div id="headers" class="section scrollspy">
+      <div class="section">
         <h2 class="header">Typography</h2>
         <p class="caption">
-          The standard font Material Design uses is Roboto. We have included the font files with our framework. It comes with 5 different font weights you can use: 200, 300, 400, 500, 600
+          The standard font Material Design uses is Roboto. We have included the font files with our framework.
         </p>
-        <h4>Headers</h4>
-        <div class="row">
-          <div class="col s12">
-            <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags</p>
-            <div class="card-panel">
-              <h1>Heading h1</h1>
-              <h2>Heading h2</h2>
-              <h3>Heading h3</h3>
-              <h4>Heading h4</h4>
-              <h5>Heading h5</h5>
-              <h6>Heading h6</h6>
-            </div>
+        
+        <div id="roboto" class="scrollspy">
+          <h4>Roboto 2.0</h4>
+          <p class="col s12 m4">We bundle our framework with the latest iteration of Roboto Google has released. It comes with 5 different font weights you can use: 200, 300, 400, 500, 600.<br> <br> Here is an image from Google's Roboto Specimen document displaying the different font weights.</p>
+          <img class="col s12 m8" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7SW9CUzR4MnRpOTg/style_typography_roboto1.png"></img>
+
+          <h4>Removing Roboto</h4>
+          <p>In case you don't want to use Roboto on your webpage, fear not. Simply change the font stack by modifying the code below to your liking and add it to your custom css.</p>
+        <pre class="col s12"><code class="language-css">
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif
+  }
+        </code></pre>
+      </div>
+      
+        
+        <div id="headers" class="col s12 scrollspy">
+          <h4>Headers</h4>
+          <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags</p>
+          <div class="card-panel">
+            <h1>Heading h1</h1>
+            <h2>Heading h2</h2>
+            <h3>Heading h3</h3>
+            <h4>Heading h4</h4>
+            <h5>Heading h5</h5>
+            <h6>Heading h6</h6>
           </div>
         </div>
       </div>
@@ -90,9 +108,10 @@
         </div>
       </div>
 
-
     </div>
-  </div>
+</div>
+<!--    End Typography    -->
+
   <div id="tab2" class="row">
     <!--      table of contents-->
     <div class="col hide-on-small-only m3 l2">
@@ -506,20 +525,22 @@
       </div>
     </div>
     <div class="col s12 m9 l10">
-      <div id="raised" class="section scrollspy">
         <h2 class="header">Buttons</h2>
         <p class="caption">
         There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
         </p>
-        <h4>Raised</h4>
-        <a class="waves-effect waves-light btn">button</a>
-        <a class="waves-effect waves-light btn"><i class="mdi-file-cloud"></i>button</a>
-        <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
-        <pre><code class="language-markup col s12">
-&lt;a href="" class="waves-effect waves-light btn">Stuff&lt;/a>
-&lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud">&lt;/i>button&lt;/a>
-&lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
-        </code></pre>
+      <div id="raised" class="section scrollspy">
+        <h4 class="col s12">Raised</h4>
+        <div class="col s12">
+          <a class="waves-effect waves-light btn">button</a>
+          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud"></i>button</a>
+          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
+          <pre><code class="language-markup col s12">
+  &lt;a href="" class="waves-effect waves-light btn">Stuff&lt;/a>
+  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud">&lt;/i>button&lt;/a>
+  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
+          </code></pre>
+        </div>
       </div>
       <div id="floating" class="section scrollspy">
         <h4>Floating</h4>
@@ -583,6 +604,7 @@
         <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
         </p>
         <h4>Right Aligned Links</h4>
+        <p>To right align your navbar links, just add a <code class="language-markup">right</code> class to your <code class="language-markup">&lt;ul></code> that contains them.</p>
         <nav>
           <div class="nav-wrapper">
             <div class="col s12">
@@ -615,6 +637,7 @@
 
       <div id="left" class="section scrollspy">
         <h4>Left Aligned Links</h4>
+        <p>To left align your navbar links, just add a <code class="language-markup">left</code> class to your <code class="language-markup">&lt;ul></code> that contains them.</p>
         <nav>
           <div class="nav-wrapper">
             <div class="col s12">
@@ -748,6 +771,23 @@
         &lt;p>Sample content&lt;/p>
         &lt;a class="card-action" href="#">This is a link&lt;/a>
         &lt;a class="card-action" href="#">This is a link&lt;/a>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+      </code></pre>
+    </div>
+      
+    <h4>Card Panel</h4>
+    <p>For a simpler card with less markup, try using a card panel which just has padding and a shadow effect</p>
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="card-panel teal"> <span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</span>
+        </div>
+      </div>
+      <pre class="col s12"><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m4">
+      &lt;div class="card-panel teal"> &lt;span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.&lt;/span>
       &lt;/div>
     &lt;/div>
   &lt;/div>
@@ -940,7 +980,6 @@
       </code></pre>
     </div>
   </div>
-
   
   <!--  Collections Section  -->
   <div id="collections" class="section scrollspy">
@@ -1009,7 +1048,7 @@
         </div>
         <br>
 
-        <div id="secondary-content-collection" class="section scrollspy">
+        <div class="section">
         <h4>Secondary content</h4>
         <ul class="collection with-header">
           <li class="collection-header"><h4>First Names</h4></li>
@@ -1028,11 +1067,11 @@
   &lt;/ul>
         </code></pre>
       </div>
-        
-      
-        <!-- End collections -->
+
+      </div>
     </div>
   </div>
+  <!-- End collections -->
       
 <!--  Tables Section-->
   <div id="tables" class="section scrollspy">
