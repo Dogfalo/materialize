@@ -262,7 +262,7 @@
         </p>
 
         <h4>Input fields</h4>
-        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently   editing.</p>
+        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing.</p><br>
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -340,7 +340,7 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <textarea></textarea>                
+                <textarea required></textarea>                
                 <label>Textarea</label>
               </div>
             </div>
@@ -367,7 +367,8 @@
         <div class="row">
           <form class="col s6">
             <div class="row">
-              <div class="input-field col s12">
+              <div class="col s12">
+                <label>Option</label>
                 <select>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
@@ -375,7 +376,7 @@
                   <option value="3">Option 3</option>
                 </select>
               </div>
-              <div class="input-field col s12">
+              <div class="col s12">
                 <br><br><br>
                 <p>You can add the class <code class="language-markup">disabled</code> to get the browser default.</p>
                 <select class="disabled">
@@ -390,6 +391,7 @@
         </div>
         <div class="row">
           <pre><code class="language-markup col s12">
+  &lt;label>Option&lt;/label>
   &lt;select>
     &lt;option value="" disabled selected>Choose your option&lt;/option>
     &lt;option value="1">Option 1&lt;/option>
