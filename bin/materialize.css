@@ -2761,6 +2761,9 @@ td, th {
 .collection.with-header .collection-item {
   padding-left: 30px;
 }
+.collection .secondary-content {
+  float: right;
+}
 .collection.pagination {
   display: inline-block;
 }
@@ -7349,6 +7352,7 @@ form p:last-child {
   Select Field 
 ***************/
 .select-wrapper span.select-dropdown {
+  position: relative;
   cursor: pointer;
   color: #444;
   background-color: transparent;
@@ -7362,6 +7366,7 @@ form p:last-child {
   margin: 0 0 15px 0;
   padding: 0;
   display: block;
+  position: relative;
 }
 .select-wrapper span.select-dropdown:after {
   position: absolute;
