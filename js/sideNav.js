@@ -93,7 +93,10 @@
       }
       else {
         $('ul.side-nav').velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+        $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad', 
+          complete: function () {
+            $(this).remove();
+          }});
       }
     });
 
