@@ -161,7 +161,7 @@
     $('.collapsible-accordion').collapsible();
     $('.collapsible-expandable').collapsible({"accordion": false});
     $('.materialboxed').materialbox();
-    // $('.scrollspy').scrollSpy();
+    $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav();
     $('.datepicker').pickadate();
 
