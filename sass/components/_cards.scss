@@ -1,49 +1,57 @@
 $default-color: #00bcd4; 
-$card-padding: 8px;
-$card-color: #FFF;
-$font-color: #fff;
+$card-padding: 16px;
 $footer-font-color: #000;
-$card-link-color: #ffab2e;
-$card-link-hover: #ffcc35;
 
 .card-panel {
   padding: 1rem;
-  margin-bottom: 20px;
+  margin: 8px 0;
   @include border-radius(2px);
   @extend .z-depth-1;
 }
 
 .card {
+  margin-top: 10px;
+  @include box-sizing(border-box);
   @include border-radius(2px);
-	margin-top: 10px;
-  h1 {
-    font-size: 1.71rem;
-		color: $font-color;
+
+
+  span.card-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
   }
-  h2 {
-    font-size: 1.14rem;
-		color: $font-color;
-  }
-  h3 {
-    font-size: 1rem;
-		color: $font-color;
-  }
-	p {
-		font-size: 0.8rem;
-		color: $font-color;
-	}
   @extend .z-depth-1;
 
 
-  .card-content {
+  &.small {
+    height: 300px;
+    position: relative;
+
+    .card-image {
+      overflow: hidden;
+      height: 150px;
+    }
+    .card-content {
+      overflow: hidden;
+      height: 150px;
+    }
+    .card-action {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+
+  .card-image {
     position: relative;
     overflow: hidden;
-    padding: $gutter-width;
 
     // Image background for content
     img {
       @include border-radius(2px 2px 0 0);
-      position: absolute;
+      position: relative;
       left: 0;
       right: 0;
       top: 0;
@@ -51,23 +59,43 @@ $card-link-hover: #ffcc35;
       width: 100%;
       z-index: -1;
     }
+
+    span.card-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: $card-padding;
+    }
+
   }
 
-  .card-footer {
-    background-color: $card-color;
-    padding: 2px $gutter-width $card-padding $gutter-width;
+  .card-content {
+    padding: $card-padding;
     @include border-radius(0 0 2px 2px);
-    margin-bottom:30px;
-    h1, h2, h3, p {
-      color: $footer-font-color;
+    @include box-sizing(border-box);
+
+    p {
+      margin: 0;
+      color: inherit;
+    }
+    span.card-title {
+      line-height: 48px;
     }
   }
 
-  a.card-action {
-    margin-right:20%;
-    color: $card-link-color;
-    
-    &:hover { color: $card-link-hover; }
+  .card-action {
+    border-top: 1px solid rgba(160,160,160,.2);
+    padding: $card-padding;
+
+    a {
+      color: color("orange", "accent-2");
+      margin-right: $card-padding;
+      @include transition(color .3s ease);
+      text-transform: uppercase;
+
+      &:hover { color: lighten(color("orange", "accent-2"), 20%); }
+    }
   }
+
 
 }

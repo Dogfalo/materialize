@@ -6493,7 +6493,7 @@ small {
 
 .card-panel {
   padding: 1rem;
-  margin-bottom: 20px;
+  margin: 8px 0;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -6501,39 +6501,48 @@ small {
 }
 
 .card {
+  margin-top: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box;
-  margin-top: 10px;
 }
-.card h1 {
-  font-size: 1.71rem;
+.card span.card-title {
   color: #fff;
+  font-size: 24px;
+  font-weight: 300;
 }
-.card h2 {
-  font-size: 1.14rem;
-  color: #fff;
+.card.small {
+  height: 300px;
+  position: relative;
 }
-.card h3 {
-  font-size: 1rem;
-  color: #fff;
+.card.small .card-image {
+  overflow: hidden;
+  height: 150px;
 }
-.card p {
-  font-size: 0.8rem;
-  color: #fff;
+.card.small .card-content {
+  overflow: hidden;
+  height: 150px;
 }
-.card .card-content {
+.card.small .card-action {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.card .card-image {
   position: relative;
   overflow: hidden;
-  padding: 1rem;
 }
-.card .card-content img {
+.card .card-image img {
   -webkit-border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   border-radius: 2px 2px 0 0;
   background-clip: padding-box;
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   top: 0;
@@ -6541,24 +6550,45 @@ small {
   width: 100%;
   z-index: -1;
 }
-.card .card-footer {
-  background-color: #FFF;
-  padding: 2px 1rem 8px 1rem;
+.card .card-image span.card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+}
+.card .card-content {
+  padding: 16px;
   -webkit-border-radius: 0 0 2px 2px;
   -moz-border-radius: 0 0 2px 2px;
   border-radius: 0 0 2px 2px;
   background-clip: padding-box;
-  margin-bottom: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.card .card-footer h1, .card .card-footer h2, .card .card-footer h3, .card .card-footer p {
-  color: #000;
+.card .card-content p {
+  margin: 0;
+  color: inherit;
 }
-.card a.card-action {
-  margin-right: 20%;
-  color: #ffab2e;
+.card .card-content span.card-title {
+  line-height: 48px;
 }
-.card a.card-action:hover {
-  color: #ffcc35;
+.card .card-action {
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 16px;
+}
+.card .card-action a {
+  color: #ffab40;
+  margin-right: 16px;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+.card .card-action a:hover {
+  color: #ffd8a6;
 }
 
 #toast-container {
@@ -9180,5 +9210,3 @@ pre[class*="language-"] {
 .image-container img {
   max-width: 100%;
 }
-
-/*# sourceMappingURL=ghpages-materialize.css.map */
