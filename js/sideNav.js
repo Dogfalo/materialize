@@ -45,58 +45,67 @@
     $('body').hammer({
         prevent_default: false
     }).bind('pan', function(e) {
-        console.log(e.gesture.center.x, e.gesture.center.y);
-        var x = e.gesture.center.x;
-        var y = e.gesture.center.y;
+        console.log(e);
 
-        if (panning) {
-          if (!$('#sidenav-overlay').length) {
-            var overlay = $('<div id="sidenav-overlay"></div>');
-            overlay.css('width', $(document).width() + 100) // account for any scrollbar
-              .css('height', $(document).height() + 100) // account for any scrollbar
-              .css('top', 0)
-              .css('left', 0)
-              .css('opacity', 0)
-              .css('will-change', 'opacity');
-            $('body').append(overlay);
-          }
+        if (e.gesture.pointerType === "touch") {
 
+          var direction = e.gesture.direction;
+          var x = e.gesture.center.x;
+          var y = e.gesture.center.y;
 
-          if (x > menuOutWidth) { x = menuOutWidth; }
-          else if (x < 0) { x = 0; }
-          else if (x < (menuOutWidth / 2)) { menuOut = false; }
-          else if (x >= (menuOutWidth / 2)) { menuOut = true; }
-
-          $('ul.side-nav').velocity({left: -240 + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
-          
-          // Percentage overlay
-          var overlayPerc = x / menuOutWidth;
-          $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-        }
-        else {
-          if (menuOut) {
-            if (e.gesture.center.x > menuOutWidth * .8) {
-              panning = true;
+          if (panning) {
+            if (!$('#sidenav-overlay').length) {
+              var overlay = $('<div id="sidenav-overlay"></div>');
+              overlay.css('width', $(document).width() + 100) // account for any scrollbar
+                .css('height', $(document).height() + 100) // account for any scrollbar
+                .css('top', 0)
+                .css('left', 0)
+                .css('opacity', 0)
+                .css('will-change', 'opacity');
+              $('body').append(overlay);
             }
+
+
+            if (x > menuOutWidth) { x = menuOutWidth; }
+            else if (x < 0) { x = 0; }
+            else if (x < (menuOutWidth / 2)) { menuOut = false; }
+            else if (x >= (menuOutWidth / 2)) { menuOut = true; }
+
+            $('ul.side-nav').velocity({left: -240 + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            
+            // Percentage overlay
+            var overlayPerc = x / menuOutWidth;
+            $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
           }
           else {
-            if (e.gesture.center.x < menuOutWidth / 5) {
-              panning = true;
-            }            
+            if (menuOut) {
+              if ((e.gesture.center.x > menuOutWidth * .8) && direction === 2) {
+                panning = true;
+              }
+            }
+            else {
+              if ((e.gesture.center.x < menuOutWidth / 5) && direction === 4) {
+                panning = true;
+              }            
+            }
           }
         }
     }).bind('panend', function(e) {
-      panning = false;
-      if (menuOut) {
-        $('ul.side-nav').velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-      }
-      else {
-        $('ul.side-nav').velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad', 
-          complete: function () {
-            $(this).remove();
-          }});
+      console.log(e);
+      if (e.gesture.pointerType === "touch") {
+
+        panning = false;
+        if (menuOut) {
+          $('ul.side-nav').velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+        }
+        else {
+          $('ul.side-nav').velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad', 
+            complete: function () {
+              $(this).remove();
+            }});
+        }
       }
     });
 
