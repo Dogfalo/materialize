@@ -7,7 +7,7 @@
   var counterInterval
     $.fn.tooltip = function (options) {
       var defaults = {
-        delay: 100
+        delay: 350
       }
       options = $.extend(defaults, options);
       
@@ -31,8 +31,8 @@
         
        
         counterInterval = setInterval(function(){
-          counter += 1;
-          if (counter == defaults.delay && started == false) {
+          counter += 50;
+          if (counter >= defaults.delay && started == false) {
             started = true
             newTooltip.css({ display: 'block' });
 
@@ -46,7 +46,7 @@
             .velocity({opacity:1},{duration: 200, delay: 0, queue: false})
             .velocity({scale: 12}, {duration: 250, delay: 20, queue: false, easing: 'easeInOutQuad'});
           }
-        }, 1);
+        }, 50);
         
         
         

@@ -157,7 +157,7 @@
     $('.tab-demo').show().tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
-    $('.tooltipped').tooltip({"delay": 45});
+    $('.tooltipped').tooltip({"delay": 300});
     $('.collapsible-accordion').collapsible();
     $('.collapsible-expandable').collapsible({"accordion": false});
     $('.materialboxed').materialbox();

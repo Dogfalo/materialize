@@ -124,7 +124,6 @@
             }
           }
       }).bind('panend', function(e) {
-        console.log(e);
         if (e.gesture.pointerType === "touch") {
 
           panning = false;
