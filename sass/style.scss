@@ -372,3 +372,11 @@ pre[class*="language-"] {
   }
 }
 
+
+// Mobile page styling
+
+.mobile-image {
+ @media #{$small-and-down} {
+  max-width: 100%; 
+ }
+}
