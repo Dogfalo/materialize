@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <title>Documentation - Materialize</title>
+    <title>Mobile - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png"/>
     <meta name="msapplication-TileColor" content="#FFFFFF"/>
@@ -29,97 +29,48 @@
       
       
     </script>
-    <nav id="front-page-nav">
+    <nav id="">
       <div class="container">
-        <div class="nav-wrapper"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
-            <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a>
+        <div class="nav-wrapper"><a href="http://materializecss.com/" class="brand-logo">Materialize</a>
           <ul id="nav-mobile" class="right side-nav">
             <li><a href="http://materializecss.com/about.html">About</a></li>
             <li><a href="http://materializecss.com/getting_started.html">Getting Started</a></li>
             <li><a href="http://materializecss.com/sass.html">Sass</a></li>
             <li><a href="http://materializecss.com/components.html">Components</a></li>
             <li><a href="http://materializecss.com/javascript.html">JavaScript</a></li>
-            <li><a href="http://materializecss.com/mobile.html">Mobile</a></li>
+            <li class="active"><a href="http://materializecss.com/mobile.html">Mobile</a></li>
           </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         </div>
       </div>
-    </nav><div class="section no-pad-bot" id="index-banner">
-  <div class="container">
-    <h1 class="header center-on-small-only">Materialize</h1>
-    <div class='row center'>
-      <h4 class ="header col s12 light center">A modern responsive front-end framework based on Material Design</h4>
-    </div>
-    <div class="row center">
-      <a href="http://materializecss.com/getting_started.html" id="download-button" class="btn-large waves-effect waves-light">Get Started</a>
-    </div>
-    <div class="row center"><a class="red-text lighten-4" href="https://github.com/Dogfalo/materialize">alpha release v0.81</a></div>
-
-    <div class="row center">
-      <!-- BuySellAds Zone Code -->
-      <div id="bsap_1300189" class="bsarocks bsap_b9468009151bf6fe6de9519ffdd7961f"></div>
-      <!-- End BuySellAds Zone Code -->
-    </div>
-    <br>
-
-  </div>
-  <div class="github-commit">
-    <div class="container">
-      <div class="commit">
-        Latest Commit on Github:
-        &nbsp;&nbsp;
-        <a href="" class="sha"></a>
-        &nbsp;&nbsp;
-        <span class="date"></span>
-        <a id="github-button" href="https://github.com/Dogfalo/materialize" class="btn-flat right-align grey-text lighten-5 waves-effect waves-light hide-on-med-and-down">Github</a>
+    </nav><div class="container">
+  <div class="row">
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#right">Sidebar</a></li>
+        </ul>
       </div>
+    </div>
+    <div class="col s12 m9 l10">
+      <div id="right" class="section scrollspy">
+
+        <h2 class="header">Navbar</h2>
+        <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
+        </p>
+        <h4>Drag Out Menu</h4>
+        <p>There are 2 options for this plugin. You can set the menu width and the activation area width. The values shown in the example are the defaults so you don't have to set them if you are okay with those values.</p>
+        <img src="images/menu.gif">
+
+        <div class="row">
+          <pre><code class="language-javascript col s12">
+  $('.button-collapse').sideNav({menuWidth: 240, activationWidth: 70});
+          </code></pre>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
-
-<div class="container">
-  <div class='section'>
-    
-    <div class='row'>
-      <div class='col s12 m8 offset-m2'>
-        <img id="responsive-img" src="images/responsive.png">
-      </div>
-    </div>
-    
-    <div class="row">
-      <h3 class="col s12 light center header">Materialize simplifies life for developers and the users they serve.</h3>
-    </div>
-
-    <!--   Promo Section   -->
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="center promo">
-          <i class="mdi-image-flash-on"></i>
-          <p class="promo-caption">Speeds up development</p>
-          <p class="light center">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="center promo">
-          <i class="mdi-social-group"></i>
-          <p class="promo-caption">User Experience Focused</p>
-          <p class="light center">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="center promo">
-          <i class="mdi-action-settings"></i>
-          <p class="promo-caption">Easy to work with</p>
-          <p class="light center">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-        </div>
-      </div>
-    </div>
-    
- </div>
-</div>
-
-</div><div id="footer" class="section">
+</div> <!-- End Container --><div id="footer" class="section">
   <div class="footer-block">
     <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
   </div>
