@@ -19,14 +19,26 @@ function toast(message, displayLength, className) {
                        {duration: 300,
                        easing: 'easeOutCubic',
                       queue: false});
-
-    newToast.velocity({"opacity": 0, marginTop: '-40px'},
-                      { duration: 375,
-                        easing: 'easeOutExpo',
-                        queue: false, delay: displayLength + 99999,
-                        complete: function(){$(this).remove()}
-                      }
-                     );
+  
+    // Allows timer to be pause while being panned
+    var timeLeft = displayLength;
+    counterInterval = setInterval (function(){
+      if (!newToast.hasClass("panning")) {
+        timeLeft -= 100;
+        console.log(timeLeft);
+      }
+      
+      if (timeLeft <= 0) {
+        newToast.velocity({"opacity": 0, marginTop: '-40px'},
+                        { duration: 375,
+                          easing: 'easeOutExpo',
+                          queue: false,
+                          complete: function(){$(this).remove()}
+                        }
+                       );
+        clearInterval(counterInterval);
+      }
+    }, 100);
 
 
     
@@ -43,7 +55,10 @@ function toast(message, displayLength, className) {
                
                   var deltaX = e.gesture.deltaX;
                   var activationDistance = 80;
-          
+            
+//                  change toast state
+                  if (!toast.hasClass("panning"))
+                    toast.addClass("panning");
           
                   var opacityPercent = 1-Math.abs(deltaX / activationDistance);
                 if (opacityPercent < 0)
@@ -64,6 +79,7 @@ function toast(message, displayLength, className) {
                         complete: function(){$(this).remove()}
                       })
                   } else {
+                    toast.removeClass("panning");
                     // Put toast back into original position
                     toast.velocity({left: 0, opacity: 1},
                                   { duration: 300,
