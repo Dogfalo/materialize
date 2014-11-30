@@ -22,10 +22,9 @@ function toast(message, displayLength, className) {
   
     // Allows timer to be pause while being panned
     var timeLeft = displayLength;
-    counterInterval = setInterval (function(){
+    var counterInterval = setInterval (function(){
       if (!newToast.hasClass("panning")) {
         timeLeft -= 100;
-        console.log(timeLeft);
       }
       
       if (timeLeft <= 0) {
@@ -36,7 +35,7 @@ function toast(message, displayLength, className) {
                           complete: function(){$(this).remove()}
                         }
                        );
-        clearInterval(counterInterval);
+        window.clearInterval(counterInterval);
       }
     }, 100);
 
