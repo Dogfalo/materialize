@@ -1,5 +1,5 @@
-$button-height: 36px;
-$button-color: color("blue", "base");
+$button-height: 36px !default;
+$button-color: color("blue", "base") !default;
 
 // shared styles
 .btn, .btn-flat {

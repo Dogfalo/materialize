@@ -1,6 +1,6 @@
-$border-color: #bdbdbd;
-$highlight-color: color("light-blue", "base");
-$label-font-size: .8rem;
+$border-color: #bdbdbd !default;
+$highlight-color: color("light-blue", "base") !default;
+$label-font-size: .8rem !default;
 
 label {
   font-size: $label-font-size;
