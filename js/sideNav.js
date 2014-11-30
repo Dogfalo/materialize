@@ -160,6 +160,8 @@
             .css('opacity', 0)
             .css('will-change', 'opacity')
             .click(function(){
+              menuOut = false;
+              panning = false;
               removeMenu();
               overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
                 complete: function() {
