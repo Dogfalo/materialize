@@ -143,6 +143,40 @@ module.exports = function(grunt) {
         src: [ 'dist/' ]
       },
     },
+                   
+                  
+//  Jade
+    jade: {
+      compile: {
+        options: {
+          data: {
+            debug: false
+          }
+        },
+        files: {
+          "index.html": "jade/index.jade",
+          "about.html": "jade/about.jade",
+          "getting_started.html": "jade/getting_started.jade",
+          "sass.html": "jade/sass.jade",
+          "componenets.html": "jade/componenets.jade",
+          "javascript.html": "jade/javascript.jade",
+          "mobile.html": "jade/mobile.jade",
+          "parallax.html": "jade/parallax.jade"
+
+        }
+      }
+    }               
+                   
+//  Watch Files
+    watch: {
+      scripts: {
+        files: ['**/*.js'],
+        tasks: ['jshint'],
+        options: {
+          spawn: false,
+        },
+      },
+    },
  
     
     
@@ -150,6 +184,7 @@ module.exports = function(grunt) {
  
   // load the tasks
 //  grunt.loadNpmTasks('grunt-gitinfo');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
