@@ -149,6 +149,7 @@ module.exports = function(grunt) {
     jade: {
       compile: {
         options: {
+          pretty: true,
           data: {
             debug: false
           }
@@ -158,20 +159,20 @@ module.exports = function(grunt) {
           "about.html": "jade/about.jade",
           "getting_started.html": "jade/getting_started.jade",
           "sass.html": "jade/sass.jade",
-          "componenets.html": "jade/componenets.jade",
+          "components.html": "jade/components.jade",
           "javascript.html": "jade/javascript.jade",
           "mobile.html": "jade/mobile.jade",
           "parallax.html": "jade/parallax.jade"
 
         }
       }
-    }               
+    },               
                    
 //  Watch Files
     watch: {
       scripts: {
-        files: ['**/*.js'],
-        tasks: ['jshint'],
+        files: ['jade/**/*'],
+        tasks: ['pages'],
         options: {
           spawn: false,
         },
@@ -191,8 +192,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jade');
 
  
   // define the tasks
   grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify', 'compress:main', 'compress:src', 'clean']);
+  
+  grunt.registerTask('pages', ['jade']);
+  
+//  grunt ('watch'[])
 };
