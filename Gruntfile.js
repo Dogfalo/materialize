@@ -2,7 +2,17 @@ module.exports = function(grunt) {
  
   // configure the tasks
   grunt.initConfig({
- 
+    
+    
+    
+//  Git Info
+//    gitinfo: {
+//        options: {
+//          
+//        },
+//        ...
+//    },
+
 //  Copy
     copy: {
       dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true },
@@ -83,22 +93,23 @@ module.exports = function(grunt) {
       main: {
         options: {
           archive: 'bin/materialize.zip',
-          level: 3
+          level: 6
         },
         files:[
           { expand: true, cwd: 'dist/', src: ['**/*'], dest: 'materialize/'},
-          { expand: true, cwd: '/', src: ['LICENSE, README.md'], dest: 'materialize/'},
+          { expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize/'},
         ]
       },
                    
       src: {
         options: {
           archive: 'bin/materialize-src.zip',
-          level: 8
+          level: 6
         },
         files:[
           {expand: true, cwd: 'font/', src: ['**/*'], dest: 'materialize-src/font/'},
-          {expand: true, cwd: 'sass/', src: ['**/*'], dest: 'materialize-src/sass/'},
+          {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
+          {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: ["jquery.easing.1.3.js",
              "velocity.min.js",
               "hammer.min.js",
@@ -119,10 +130,18 @@ module.exports = function(grunt) {
               "date_picker/picker.date.js",
              ], dest: 'materialize-src/js/'},
         {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
-        {expand: true, cwd: '/', src: ['LICENSE', 'README.md'], dest: 'materialize-src/font/'}
+        {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
         
         ]
       }
+    },
+                   
+    
+//  Clean
+    clean: {
+      build: {
+        src: [ 'dist/' ]
+      },
     },
  
     
@@ -130,13 +149,15 @@ module.exports = function(grunt) {
   });
  
   // load the tasks
+//  grunt.loadNpmTasks('grunt-gitinfo');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
  
   // define the tasks
-  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify', 'compress:main', 'compress:src']);
+  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify', 'compress:main', 'compress:src', 'clean']);
 };
