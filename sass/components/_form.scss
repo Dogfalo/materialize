@@ -450,3 +450,16 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #ccc;
 }
+
+/***************************
+   Text Inputs + Textarea
+****************************/
+
+select {
+   background-color: #fffafa;
+   width: 100%;
+   padding: 5px;
+   border: 1px solid #f2f2f2;
+   border-radius: 2px;
+   height: 3rem;
+   }
