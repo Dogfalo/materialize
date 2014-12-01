@@ -16,11 +16,23 @@
 
 
   // Textarea Auto Resize
-  $('textarea').on( 'keyup', function (){
-    $(this).css('height', 'auto' );
-    $(this).css('height', this.scrollHeight );
-  });
+  $('textarea').each(function () {
+    var hiddenDiv = $('<div class="hiddendiv common"></div>'),
+        content = null;
 
+    $('body').append(hiddenDiv);
+
+    $(this).on('keyup keydown', function () {
+
+        content = $(this).val();
+
+        content = content.replace(/\n/g, '<br>');
+        hiddenDiv.html(content + '<br>');
+
+        $(this).css('height', hiddenDiv.height());
+
+    });
+  });
 
 
   // Range Input
