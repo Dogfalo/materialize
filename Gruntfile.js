@@ -84,6 +84,11 @@ module.exports = function(grunt) {
         files: {
           'dist/js/materialize.min.js': ['dist/js/materialize.js']
         }
+      },
+      bin: {
+        files: {
+          'bin/materialize.js': ['dist/js/materialize.js']
+        }
       }
     },
 
@@ -170,15 +175,52 @@ module.exports = function(grunt) {
                    
 //  Watch Files
     watch: {
-      scripts: {
+      jade: {
         files: ['jade/**/*'],
         tasks: ['pages'],
         options: {
           spawn: false,
         },
       },
+                   
+      js: {
+        files: ["js/jquery.easing.1.3.js",
+                "js/velocity.min.js",
+                 "js/hammer.min.js",
+                 "js/jquery.hammer.js",
+                 "js/collapsible.js",
+                 "js/dropdown.js",
+                 "js/leanModal.js",
+                 "js/materialbox.js",
+                 "js/parallax.js",
+                 "js/tabs.js",
+                 "js/tooltip.js",
+                 "js/waves.js",
+                 "js/toasts.js",
+                 "js/sideNav.js",
+                 "js/scrollspy.js",
+                 "js/forms.js",
+                 "js/date_picker/picker.js",
+                 "js/date_picker/picker.date.js",
+             ],
+        tasks: ['js_compile'],
+        options: {
+          spawn: false,
+        },
+      },
     },
- 
+                   
+                   
+//  Concurrent
+    concurrent: {
+      options: {
+        logConcurrentOutput: true
+      },
+      monitor: {
+        tasks: ["watch:jade", "watch:js"]
+      },
+    }
+
     
     
   });
@@ -193,12 +235,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-concurrent');
 
  
   // define the tasks
-  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify', 'compress:main', 'compress:src', 'clean']);
+  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify:dist', 'compress:main', 'compress:src', 'clean']);
   
   grunt.registerTask('pages', ['jade']);
+  grunt.registerTask('js_compile', ['concat:dist', 'uglify:bin', 'clean'])
   
-//  grunt ('watch'[])
+  grunt.registerTask("monitor", ["concurrent:monitor"]);
 };
