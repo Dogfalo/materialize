@@ -38,6 +38,28 @@ module.exports = function(grunt) {
         files: {                         
           'dist/css/materialize.min.css': 'sass/materialize.scss',
         }
+      },
+      
+      // Compile ghpages css
+      gh: {
+        options: {
+          style: 'compressed',
+          sourcemap: 'none'
+        },
+        files: {
+          'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss',
+        }
+      },
+      
+      // Compile ghpages css
+      bin: {
+        options: {
+          style: 'expanded',
+          sourcemap: 'none'
+        },
+        files: {
+          'bin/materialize.css': 'sass/materialize.scss',
+        }
       }
     },
     
@@ -179,6 +201,7 @@ module.exports = function(grunt) {
         files: ['jade/**/*'],
         tasks: ['pages'],
         options: {
+          interrupt: true,
           spawn: false,
         },
       },
@@ -205,9 +228,19 @@ module.exports = function(grunt) {
              ],
         tasks: ['js_compile'],
         options: {
+          interrupt: true,
           spawn: false,
         },
       },
+      
+      sass: {
+        files: ['sass/**/*'],
+        tasks: ['sass_compile'],
+        options: {
+          interrupt: true,
+          spawn: false,
+        },           
+      }
     },
                    
                    
@@ -217,11 +250,10 @@ module.exports = function(grunt) {
         logConcurrentOutput: true
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js"]
+        tasks: ["watch:jade", "watch:js", "watch:sass"]
       },
     }
 
-    
     
   });
  
@@ -242,7 +274,8 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify:dist', 'compress:main', 'compress:src', 'clean']);
   
   grunt.registerTask('pages', ['jade']);
-  grunt.registerTask('js_compile', ['concat:dist', 'uglify:bin', 'clean'])
+  grunt.registerTask('js_compile', ['concat:dist', 'uglify:bin', 'clean']);
+  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin']);
   
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };

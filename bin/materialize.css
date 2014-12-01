@@ -7165,9 +7165,19 @@ textarea:focus {
 textarea {
   overflow-y: hidden;
   /* prevents scroll bar flash */
-  padding-top: 1.2rem;
+  padding: 1.6rem 0;
   /* prevents text jump on Enter keypress */
   resize: none;
+}
+
+.hiddendiv {
+  display: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  /* future version of deprecated 'word-wrap' */
+  padding-top: 1.2rem;
+  /* prevents text jump on Enter keypress */
 }
 
 /***************
@@ -8848,5 +8858,3 @@ ul.table-of-contents a.active {
     margin-bottom: 5em;
   }
 }
-
-/*# sourceMappingURL=materialize.css.map */
