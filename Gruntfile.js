@@ -250,7 +250,7 @@ module.exports = function(grunt) {
         logConcurrentOutput: true
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching"]
+        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", "connect:server"]
       },
     },
                    
@@ -297,7 +297,27 @@ module.exports = function(grunt) {
         }
       },       
             
+    },
+                   
+              
+//  Server
+    connect: {
+      server: {
+        options: {
+          port: 8000,
+          hostname: '*',
+          keepalive: true,
+      
+          onCreateServer: function(server, connect, options) {
+            var io = require('socket.io').listen(server);
+            io.sockets.on('connection', function(socket) {
+              // do something with socket
+            });
+          }
+        }
+      }
     }
+                  
 
     
   });
@@ -314,6 +334,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-notify');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
  
   // define the tasks
