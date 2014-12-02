@@ -50,6 +50,7 @@ $button-color: color("blue", "base") !default;
   letter-spacing: .8px;
   @extend .z-depth-1; 
   @include transition(.2s ease-out);
+  cursor: pointer;
 
   &:hover {
     background-color: lighten($button-color, 5%);
@@ -71,6 +72,7 @@ $button-color: color("blue", "base") !default;
   @include border-radius(50%);
   @extend .z-depth-1;  
   @include transition(.3s);
+  cursor: pointer;
 
   i {
     width: inherit;
@@ -91,6 +93,7 @@ $button-color: color("blue", "base") !default;
   box-shadow: none;
   background-color: transparent;
   color: #343434;
+  cursor: pointer;
 
   &.disabled {
     color: lighten(#999, 10%);

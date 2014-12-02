@@ -6798,6 +6798,7 @@ ul.tabs li.tab {
   -o-transition: 0.2s ease-out;
   -ms-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
+  cursor: pointer;
 }
 .btn:hover, .btn-large:hover {
   background-color: #39a1f4;
@@ -6821,6 +6822,7 @@ ul.tabs li.tab {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
+  cursor: pointer;
 }
 .btn-floating i {
   width: inherit;
@@ -6835,6 +6837,7 @@ ul.tabs li.tab {
   box-shadow: none;
   background-color: transparent;
   color: #343434;
+  cursor: pointer;
 }
 .btn-flat.disabled {
   color: #b3b3b3;
@@ -6850,6 +6853,7 @@ ul.tabs li.tab {
   background-color: #FFFFFF;
   margin: 0px;
   min-width: 100px;
+  z-index: 1000;
 }
 .dropdown-content li {
   cursor: pointer;
@@ -7638,6 +7642,9 @@ ul.table-of-contents a.active {
     height: 120%;
     background-color: #FFF;
     z-index: 1000;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   }
   ul.side-nav li {
     float: none;
