@@ -6876,6 +6876,7 @@ ul.tabs li.tab {
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
+  vertical-align: bottom;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

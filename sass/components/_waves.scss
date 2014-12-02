@@ -13,6 +13,10 @@
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
+  
+    // Vertical Align bottom fixes overflow hidden
+    vertical-align: bottom;
+  
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
