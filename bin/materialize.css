@@ -2553,6 +2553,16 @@ p {
   float: right;
 }
 
+.center {
+  text-align: center;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 ul {
   padding: 0;
 }

@@ -54,6 +54,16 @@ p {
   float: right
 }
 
+// Positioning
+.center {
+  text-align: center; 
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 // Grid Variables
 $num-cols: 12;
