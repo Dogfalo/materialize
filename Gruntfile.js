@@ -250,7 +250,7 @@ module.exports = function(grunt) {
         logConcurrentOutput: true
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", "connect:server"]
+        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'connect:server', 'notify:server']
       },
     },
                    
@@ -263,7 +263,7 @@ module.exports = function(grunt) {
           message: 'Watching Files!',
           title: "Materialize", // defaults to the name in package.json, or will use project directory's name
           success: true, // whether successful grunt executions should be notified automatically
-          duration: 2 // the duration of notification in seconds, for `notify-send only
+          duration: 1 // the duration of notification in seconds, for `notify-send only
         }
       },
                    
@@ -296,7 +296,16 @@ module.exports = function(grunt) {
           duration: 2 // the duration of notification in seconds, for `notify-send only
         }
       },       
-            
+      
+      server: {
+        options: {
+          enabled: true,
+          message: 'Server Running!',
+          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
+          success: true, // whether successful grunt executions should be notified automatically
+          duration: 1 // the duration of notification in seconds, for `notify-send only
+        }
+      }
     },
                    
               
@@ -305,15 +314,16 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 8000,
+          useAvailablePort: true,
           hostname: '*',
-          keepalive: true,
-      
-          onCreateServer: function(server, connect, options) {
-            var io = require('socket.io').listen(server);
-            io.sockets.on('connection', function(socket) {
-              // do something with socket
-            });
-          }
+          keepalive: true
+//          
+//          ,onCreateServer: function(server, connect, options) {
+//            var io = require('socket.io').listen(server);
+//            io.sockets.on('connection', function(socket) {
+//              // do something with socket
+//            });
+//          }
         }
       }
     }
@@ -343,6 +353,7 @@ module.exports = function(grunt) {
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:dist', 'uglify:bin', 'notify:js_compile', 'clean']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
+  grunt.registerTask('start_server', ['connect:server', 'notify:server']);
   
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };
