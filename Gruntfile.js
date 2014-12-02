@@ -199,7 +199,7 @@ module.exports = function(grunt) {
     watch: {
       jade: {
         files: ['jade/**/*'],
-        tasks: ['pages'],
+        tasks: ['jade_compile'],
         options: {
           interrupt: true,
           spawn: false,
@@ -250,8 +250,53 @@ module.exports = function(grunt) {
         logConcurrentOutput: true
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass"]
+        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching"]
       },
+    },
+                   
+                
+//  Notifications
+    notify: {
+      watching: {
+        options: {
+          enabled: true,
+          message: 'Watching Files!',
+          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
+          success: true, // whether successful grunt executions should be notified automatically
+          duration: 2 // the duration of notification in seconds, for `notify-send only
+        }
+      },
+                   
+      sass_compile: {
+        options: {
+          enabled: true,
+          message: 'Sass Compiled!',
+          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
+          success: true, // whether successful grunt executions should be notified automatically
+          duration: 2 // the duration of notification in seconds, for `notify-send only
+        }
+      },
+                   
+      js_compile: {
+        options: {
+          enabled: true,
+          message: 'JS Compiled!',
+          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
+          success: true, // whether successful grunt executions should be notified automatically
+          duration: 2 // the duration of notification in seconds, for `notify-send only
+        }
+      },
+                   
+      jade_compile: {
+        options: {
+          enabled: true,
+          message: 'Jade Compiled!',
+          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
+          success: true, // whether successful grunt executions should be notified automatically
+          duration: 2 // the duration of notification in seconds, for `notify-send only
+        }
+      },       
+            
     }
 
     
@@ -268,14 +313,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-notify');
 
  
   // define the tasks
   grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify:dist', 'compress:main', 'compress:src', 'clean']);
   
-  grunt.registerTask('pages', ['jade']);
-  grunt.registerTask('js_compile', ['concat:dist', 'uglify:bin', 'clean']);
-  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin']);
+  grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
+  grunt.registerTask('js_compile', ['concat:dist', 'uglify:bin', 'notify:js_compile', 'clean']);
+  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
   
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };
