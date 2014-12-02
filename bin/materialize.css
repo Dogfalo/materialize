@@ -6850,6 +6850,7 @@ ul.tabs li.tab {
   background-color: #FFFFFF;
   margin: 0px;
   min-width: 100px;
+  z-index: 1000;
 }
 .dropdown-content li {
   cursor: pointer;
@@ -7637,6 +7638,9 @@ ul.table-of-contents a.active {
     height: 120%;
     background-color: #FFF;
     z-index: 1000;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   }
   ul.side-nav li {
     float: none;
