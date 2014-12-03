@@ -386,6 +386,9 @@ pre[class*="language-"] {
   .collection-item {
     height: 36px;
     line-height: 36px;
+    code {
+     line-height: 36px; 
+    }
   }
   .btn {
     &:not(.waves-light) {

@@ -276,6 +276,10 @@
     <div class="row">
        <div class="col s12 m5">
         <h4>Available Colors</h4>
+        <p>To use these, just add the corresponding class to your button. Play around with changing the background color of butons and the waves effect to create something cool!</p>
+        <pre><code class="language-markup">
+  &lt;a href="#!" class="btn waves-effect waves-teal">Send&lt;/a>
+        </code></pre>
         <div class="collection waves-color-demo">
           <div class="collection-item">Default<a href="#!" class="waves-effect btn secondary-content">Send</a></div>
           <div class="collection-item"><code class="language-markup">waves-light</code><a href="#!" class="waves-effect waves-light btn secondary-content">Send</a></div>
@@ -289,10 +293,16 @@
       </div>
       <div class="col s12 m6 offset-m1">
         <h4>Custom Colors</h4>
-        <p>If the color you want is not already available, you can easily make your own waves color by creating a custom class</p>
+        <p>If the color you want is not already available, you can easily make your own waves color by creating a custom CSS class. Take a look at the example below where we add a waves-brown effect</p>
         <pre><code class="language-css">
-  .waves-effect.waves-teal .waves-ripple {
-    background-color: rgba(0, 150, 136, 0.65);
+  /*
+  When creating your CSS selector,
+  change "brown" to something of your choosing
+  */
+  .waves-effect.waves-brown .waves-ripple {
+   /* The alpha value allows the text and background color
+   of the button to still show through. */
+    background-color: rgba(121, 85, 72, 0.65); 
   }
         </code></pre>
       </div>
