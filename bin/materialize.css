@@ -6129,12 +6129,27 @@ nav .brand-logo {
   font-size: 2.1rem;
   padding: 0;
 }
+
+.nav-fixed {
+	position: fixed;
+	z-index: 1;
+}
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
     width: 100%;
     text-align: center;
     z-index: 0;
   }
+}
+
+@media (min-width: 1024px) {
+	.brand-logo {
+		margin-left: 30px;
+	}
+
+	.side-nav {
+		margin-right: 30px;
+	}
 }
 nav .brand-logo.right {
   right: 0.5rem;
