@@ -7103,7 +7103,6 @@ label {
 .input-field label {
   color: #bdbdbd;
   position: absolute;
-  z-index: -1;
   top: .8rem;
   left: .5rem;
   font-size: 1rem;
