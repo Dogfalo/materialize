@@ -150,16 +150,16 @@
         <div class="row">
           <div class="col s12">
             <h4>Modals HTML Structure</h4>
-            <pre><code class="language-markup">  &lt;!-- Modal Trigger -->
-&lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
+            <pre><code class="language-markup">  
+  &lt;!-- Modal Trigger -->
+  &lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
 
-
-&lt;!-- Modal Structure -->
-&lt;div id="modal1" class="modal">
-  &lt;h4>Modal Header&lt;/h4>
-  &lt;p>A bunch of text&lt;/p>
-  &lt;a href="#" class="waves-effect btn-flat modal_close">Agree&lt;/a>
-&lt;/div>
+  &lt;!-- Modal Structure -->
+  &lt;div id="modal1" class="modal">
+    &lt;h4>Modal Header&lt;/h4>
+    &lt;p>A bunch of text&lt;/p>
+    &lt;a href="#" class="waves-effect btn-flat modal_close">Agree&lt;/a>
+  &lt;/div>
             </code></pre>
           </div>
         </div>
@@ -167,9 +167,9 @@
           <div class="col s12">
             <h4>jQuery Plugin Initialization</h4>
             <pre><code class="language-javascript">
-$(document).ready(function(){
-  $('.modal-trigger').leanModal();
-});
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+  });
             </code></pre>
           </div>
         </div>
@@ -203,9 +203,9 @@ $(document).ready(function(){
           <div class="col s12">
             <h5>jQuery Plugin Initialization</h5>
             <pre><code class="language-javascript">
-$(document).ready(function(){
-  $('.dropdown-button').dropdown();
-});
+  $(document).ready(function(){
+    $('.dropdown-button').dropdown();
+  });
             </code></pre>
           </div>
         </div>
@@ -267,18 +267,48 @@ $(document).ready(function(){
   <div class="section">
   <h2 class="header">Waves</h2>
     <p class="caption">Waves is an external library that we've included in Materialize to allow us to create the ink effect outlined in Material Design</p>
-  <a class="waves-effect waves-light btn-large" href="#!">Wave</a>
+  <a class="waves-effect waves-light btn" href="#!">Wave</a>
   </div>
+<!--  Customization  -->
   <div class="section">
-    <h4>Button Class</h4>
+    <h3 class="header">Customization</h3>
+    <p>There are several ways to customize waves, you can either use pre-created classes, or you can define your own color by creating a new class</p>
+    <div class="row">
+       <div class="col s12 m5">
+        <h4>Available Colors</h4>
+        <div class="collection waves-color-demo">
+          <div class="collection-item">Default<a href="#!" class="waves-effect btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-light</code><a href="#!" class="waves-effect waves-light btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-red</code><a href="#!" class="waves-effect waves-red btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-yellow</code><a href="#!" class="waves-effect waves-yellow btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-orange</code><a href="#!" class="waves-effect waves-orange btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-purple</code><a href="#!" class="waves-effect waves-purple btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-green</code><a href="#!" class="waves-effect waves-green btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-teal</code><a href="#!" class="waves-effect waves-teal btn secondary-content">Send</a></div>
+        </div>
+      </div>
+      <div class="col s12 m6 offset-m1">
+        <h4>Custom Colors</h4>
+        <p>If the color you want is not already available, you can easily make your own waves color by creating a custom class</p>
+        <pre><code class="language-css">
+  .waves-effect.waves-teal .waves-ripple {
+    background-color: rgba(0, 150, 136, 0.65);
+  }
+        </code></pre>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h4>Waves Class</h4>
     <p>To put the waves effect on buttons, you just have to put the class <code class="language-markup">waves-effect</code> on to the buttons. If you want the waves effect to be white instead, add both <code class="language-markup">waves-effect waves-light</code> as classes.</p>
     <pre><code class="language-markup col s12">
-&lt;a class="waves-effect waves-light btn-large" href="#">Wave&lt;/a>
+  &lt;a class="waves-effect waves-light btn-large" href="#">Wave&lt;/a>
     </code></pre>
   </div>
 </div>
 
-
+<!--Material Box Section-->
 <div id="tab4" class="section row">
   <div class="col hide-on-small-only m3 l2">
     <div style="height: 1px;">

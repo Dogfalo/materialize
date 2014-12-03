@@ -380,3 +380,17 @@ pre[class*="language-"] {
   max-width: 100%; 
  }
 }
+
+// Waves page styling
+.waves-color-demo {
+  .collection-item {
+    height: 36px;
+    line-height: 36px;
+  }
+  .btn {
+    &:not(.waves-light) {
+    background-color: color("shades", "white");
+    color: #212121;
+    }
+  }
+}

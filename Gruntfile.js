@@ -201,7 +201,7 @@ module.exports = function(grunt) {
         files: ['jade/**/*'],
         tasks: ['jade_compile'],
         options: {
-          interrupt: true,
+          interrupt: false,
           spawn: false,
         },
       },
@@ -228,7 +228,7 @@ module.exports = function(grunt) {
              ],
         tasks: ['js_compile'],
         options: {
-          interrupt: true,
+          interrupt: false,
           spawn: false,
         },
       },
@@ -237,7 +237,7 @@ module.exports = function(grunt) {
         files: ['sass/**/*'],
         tasks: ['sass_compile'],
         options: {
-          interrupt: true,
+          interrupt: false,
           spawn: false,
         },           
       }

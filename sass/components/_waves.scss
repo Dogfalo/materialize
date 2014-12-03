@@ -25,19 +25,39 @@
     // @include transition(all .4s ease-out);
     
     .waves-ripple {
-        position: absolute;
-        pointer-events: none;
-        border-radius: 50%;
-        width:20px;
-        height:20px;
-        opacity:0;
-        background-color: rgba(0, 0, 0, 0.1);
-        @include transition(all 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940));
-        @include transform(scale(0));
+      position: absolute;
+      pointer-events: none;
+      border-radius: 50%;
+      width:20px;
+      height:20px;
+      opacity:0;
+      background-color: rgba(0, 0, 0, 0.2);
+      @include transition(all 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940));
+      @include transform(scale(0));
     }
-
+    
+    // Waves Colors
     &.waves-light .waves-ripple {
-        background-color: rgba(255, 255, 255, 0.35);
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+  
+    &.waves-red .waves-ripple {
+      background-color: rgba(244, 67, 54, .65);
+    }
+    &.waves-yellow .waves-ripple {
+      background-color: rgba(255, 235, 59, .65);
+    }
+    &.waves-orange .waves-ripple {
+      background-color: rgba(255, 152, 0, .65);
+    }
+    &.waves-purple .waves-ripple {
+      background-color: rgba(156, 39, 176, 0.65);
+    }
+    &.waves-green .waves-ripple {
+      background-color: rgba(76, 175, 80, 0.65);
+    }
+    &.waves-teal .waves-ripple {
+      background-color: rgba(0, 150, 136, 0.65);
     }
 }
 
@@ -63,9 +83,6 @@
     vertical-align: middle;
     cursor: pointer;
     border:none;
-//    outline:none;
-//    background:transparent;
-//    color: inherit;
     font-size:14px;
     text-align: center;
     text-decoration:none;
