@@ -51,10 +51,15 @@
   var range_wrapper = '.range-field';
 
   $(document).on("mousedown", range_wrapper, function(e) {
+    var thumb = $(this).children('.thumb');
+    if (thumb.length <= 0) {
+      thumb = $('<span class="thumb"><span class="value"></span></span>');
+      $(this).append(thumb);
+    }
+
     range_mousedown = true;
     $(this).addClass('active');
 
-    var thumb = $(this).children('.thumb');
     if (!thumb.hasClass('active')) {
       thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
     }
