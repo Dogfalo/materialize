@@ -27,15 +27,7 @@ $button-color: color("blue", "base") !default;
 .btn, .btn-floating, .btn-large, .btn-flat {
   i {
     font-size: 1.3rem;
-    float: left;
     line-height: inherit;
-    margin-right: 15px;    
-
-    &.right {
-      float: right;
-      margin-right: 0;
-      margin-left: 15px;
-    }
   }
 }
 
@@ -106,6 +98,10 @@ $button-color: color("blue", "base") !default;
   @extend .btn;
   height: $button-height * 1.5;
   line-height: 56px;
+
+  i {
+    font-size: 1.6rem;
+  }
 }
 
 

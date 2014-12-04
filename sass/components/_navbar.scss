@@ -57,7 +57,7 @@ nav {
       @include transition(background-color .3s);
 
       &:hover, &.active {
-        background-color: color("materialize-red", "lighten-1");
+        background-color: rgba(0,0,0,.1);
       }
     }
     a { 
