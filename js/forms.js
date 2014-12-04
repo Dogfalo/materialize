@@ -5,7 +5,6 @@
   
   text_inputs.each(function(){
     if($(this).val().length !== 0) {
-     console.log('not empty') 
      $(this).siblings('label').addClass('active');
     }
   })
@@ -115,9 +114,6 @@
   });
 
 
-  //  Select Functionality
-  //  Select Functionality
-  //  Select Functionality
   //  Select Functionality
 
   var createSelectStructure = function($select, $index) { 
