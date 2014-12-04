@@ -1,0 +1,10 @@
+Changelog
+v0.91
+- bug fixes to forms
+- added waves color classes
+- toast thickened to look better on mobile
+- many other bug fixes
+
+v0.9
+- Touch interactions added
+- tons more...
