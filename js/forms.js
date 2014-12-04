@@ -1,25 +1,24 @@
 (function ($) {
 
   // Text based inputs
-  var text_inputs = $('input[type=text], input[type=password], input[type=email], textarea');  
-  
-  text_inputs.each(function(){
+  var input_selector = 'input[type=text], input[type=password], input[type=email], textarea';
+
+  $(input_selector).each(function(){
     if($(this).val().length !== 0) {
-     console.log('not empty') 
+     console.log('not empty')
      $(this).siblings('label').addClass('active');
     }
-  })
+  });
 
-  text_inputs.focus(function () {
+  $(document).on('focus', input_selector, function () {
     $(this).siblings('label').addClass('active');
   });
 
-  text_inputs.blur(function () {
+  $(document).on('blur', input_selector, function () {
     if ($(this).val().length === 0) {
-      $(this).siblings('label').removeClass('active');      
+      $(this).siblings('label').removeClass('active');
     }
   });
-
 
   // Textarea Auto Resize
   $('textarea').each(function () {
@@ -40,23 +39,27 @@
     });
   });
 
-
   // Range Input
-  var range_input = $('input[type=range]');
+  var range_type = 'input[type=range]';
   var range_mousedown = false;
 
-  range_input.each(function () {
+  $(range_type).each(function () {
     var thumb = $('<span class="thumb"><span class="value"></span></span>');
     $(this).after(thumb);
   });
 
-  var range_wrapper = $('.range-field');
+  var range_wrapper = '.range-field';
 
-  range_wrapper.on("mousedown", function(e) {
+  $(document).on("mousedown", range_wrapper, function(e) {
+    var thumb = $(this).children('.thumb');
+    if (thumb.length <= 0) {
+      thumb = $('<span class="thumb"><span class="value"></span></span>');
+      $(this).append(thumb);
+    }
+
     range_mousedown = true;
     $(this).addClass('active');
 
-    var thumb = $(this).children('.thumb');
     if (!thumb.hasClass('active')) {
       thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
     }
@@ -73,12 +76,12 @@
     thumb.find('.value').html($(this).children('input[type=range]').val());   
  
   });
-  range_wrapper.on("mouseup", function() {
+  $(document).on("mouseup", range_wrapper, function() {
     range_mousedown = false;
     $(this).removeClass('active');
   });
 
-  range_wrapper.on("mousemove", function(e) {
+  $(document).on("mousemove", range_wrapper, function(e) {
 
     var thumb = $(this).children('.thumb');
     if (range_mousedown) {
@@ -99,7 +102,7 @@
     }
     
   });
-  range_wrapper.on("mouseout", function() {
+  $(document).on("mouseout", range_wrapper, function() {
     if (!range_mousedown) {
 
       var thumb = $(this).children('.thumb');
@@ -110,8 +113,6 @@
       thumb.removeClass('active');
     
     }
-
-
   });
 
 
@@ -149,8 +150,4 @@
 
 
   $('.select-dropdown').dropdown({"hover": false});
-
-
-
-
 }( jQuery ));
