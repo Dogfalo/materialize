@@ -6886,6 +6886,7 @@ ul.tabs li.tab {
 }
 
 .dropdown-content {
+  display: none;
   position: absolute;
   background-color: #FFFFFF;
   margin: 0px;
