@@ -64,7 +64,7 @@
       var panning = false;
       var menuOut = false;
 
-      $('body').hammer({
+      $('nothing').hammer({
           prevent_default: false
       }).bind('pan', function(e) {
 

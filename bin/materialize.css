@@ -2629,6 +2629,18 @@ blockquote {
   border-left: 5px solid #EF9A9A;
 }
 
+i {
+  line-height: inherit;
+}
+i.left {
+  float: left;
+  margin-right: 15px;
+}
+i.right {
+  float: right;
+  margin-left: 15px;
+}
+
 .parallax-container {
   position: relative;
   overflow: hidden;
@@ -6170,7 +6182,7 @@ nav ul li {
   transition: background-color 0.3s;
 }
 nav ul li:hover, nav ul li.active {
-  background-color: #ea454b;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 nav ul a {
   font-size: 1rem;
@@ -6806,14 +6818,7 @@ ul.tabs li.tab {
 
 .btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
   font-size: 1.3rem;
-  float: left;
   line-height: inherit;
-  margin-right: 15px;
-}
-.btn i.right, .btn-large i.right, .btn-floating i.right, .btn-large i.right, .btn-flat i.right {
-  float: right;
-  margin-right: 0;
-  margin-left: 15px;
 }
 
 .btn, .btn-large {
@@ -6876,8 +6881,12 @@ ul.tabs li.tab {
   height: 54px;
   line-height: 56px;
 }
+.btn-large i {
+  font-size: 1.6rem;
+}
 
 .dropdown-content {
+  display: none;
   position: absolute;
   background-color: #FFFFFF;
   margin: 0px;

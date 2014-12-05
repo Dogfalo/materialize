@@ -4,10 +4,14 @@
     var defaults = {
       hover: true
     }
-    options = $.extend(defaults, options);
 
-    var origin = $(this);    
-  
+    options = $.extend(defaults, options);
+    
+    this.each(function(){
+    
+
+    var origin = $(this);
+    
     var activates = $("#"+ origin.attr('data-activates'));
 
     activates.hide(0);
@@ -40,11 +44,11 @@
         activates.css('left', origin.offset().left);
         activates.show({duration: 200, easing: 'easeOutCubic'});
 
-        $(document).bind('click', function (e) {
+        $(document).bind('click.'+ activates.attr('id'), function (e) {
 
           if (!activates.is(e.target) && !origin.is(e.target)) {
             activates.hide({duration: 150, easing: 'easeOutCubic'});
-            $(document).unbind('click');
+            $(document).unbind('click.' + activates.attr('id'));
           }
 
         });
@@ -54,12 +58,12 @@
     }
 
     // Window Resize Reposition
-    $(window).on('resize', function(){
+    $(document).on('resize', function(){
       if (origin.is(':visible')) {
         activates.css('top', origin.offset().top);
         activates.css('left', origin.offset().left);
       }
     });
-    
+   }); 
   };
 }( jQuery ));

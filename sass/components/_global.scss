@@ -111,6 +111,21 @@ blockquote {
 }
 
 
+// Icon Styles
+
+i {
+  line-height: inherit;
+
+  &.left {
+    float: left;
+    margin-right: 15px;
+  }
+  &.right {
+    float: right;
+    margin-left: 15px;
+  }
+}
+
 
 // parallax
 .parallax-container {

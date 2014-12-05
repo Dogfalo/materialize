@@ -594,11 +594,11 @@
         <h4 class="col s12">Raised</h4>
         <div class="col s12">
           <a class="waves-effect waves-light btn">button</a>
-          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud"></i>button</a>
+          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i>button</a>
           <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
           <pre><code class="language-markup col s12">
   &lt;a href="" class="waves-effect waves-light btn">Stuff&lt;/a>
-  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud">&lt;/i>button&lt;/a>
+  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
   &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
           </code></pre>
         </div>
@@ -632,11 +632,11 @@
         <h4>Large</h4>
         <p>This button has a larger height for buttons that need more attention.</p>
         <a class="waves-effect waves-light btn-large">Button</a>
-        <a class="waves-effect waves-light btn-large"><i class="mdi-file-cloud"></i>button</a>
+        <a class="waves-effect waves-light btn-large"><i class="mdi-file-cloud left"></i>button</a>
         <a class="waves-effect waves-light btn-large"><i class="mdi-file-cloud right"></i>button</a>
         <pre><code class="language-markup col s12">
 &lt;a href="" class="waves-effect waves-light btn-large">Button&lt;/a>
-&lt;a class="waves-effect waves-light btn-large">&lt;i class="mdi-file-cloud">&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn-large">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
 &lt;a class="waves-effect waves-light btn-large">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
         </code></pre>
       </div>
@@ -665,6 +665,7 @@
         <ul class="section table-of-contents">
           <li><a href="#right">Right Aligned</a></li>
           <li><a href="#left">Left Aligned</a></li>
+          <li><a href="#icons">Icon Links</a></li>
           <li><a href="#mobile-collapse">Mobile Collapse</a></li>
         </ul>
       </div>
@@ -738,6 +739,72 @@
     &lt;/nav>
           </code></pre>
         </div>
+      </div>
+
+      <div id="icons" class="section scrollspy">
+        <h4>Icon Links</h4>
+        
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo">Logo</a>
+              <ul class="side-nav">
+                <li><a href="sass.html"><i class="mdi-action-search"></i></a></li>
+                <li><a href="components.html"><i class="mdi-action-view-module"></i></a></li>
+                <li><a href="javascript.html"><i class="mdi-navigation-refresh"></i></a></li>
+                <li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <br>
+        
+        <p>You can add icons into links. For icon only links you don't need any additional class. Just pop the <code class="language-markup">i</code> tag in and it will work.</p>        
+<pre><code class="language-markup">
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;div class="col s12">
+        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+        &lt;ul class="side-nav">
+          &lt;li>&lt;a href="sass.html">&lt;i class="mdi-action-search">&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">&lt;i class="mdi-action-view-module">&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">&lt;i class="mdi-navigation-refresh">&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="mobile.html">&lt;i class="mdi-navigation-more-vert">&lt;/i>&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/nav></code></pre>
+        <br>
+
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo">Logo</a>
+              <ul class="side-nav">
+                <li><a href="sass.html"><i class="mdi-action-search left"></i>Link with Left Icon</a></li>
+                <li><a href="components.html"><i class="mdi-action-view-module right"></i>Link with Right Icon</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <br>
+
+        <p>For adding an icon to a text link you need to add either a <code class="language-markup">left</code> or <code class="language-markup">right</code> class to the icon depending on where you want the icon to be.</p>
+        <pre><code class="language-markup">
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;div class="col s12">
+        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+        &lt;ul class="side-nav">
+          &lt;li>&lt;a href="sass.html">&lt;i class="mdi-action-search left">&lt;/i>Link with Left Icon&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">&lt;i class="mdi-action-view-module right">&lt;/i>Link with Right Icon&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/nav></code></pre>
+        <br>
       </div>
     
       <div id="mobile-collapse" class="section scrollspy">
