@@ -282,6 +282,7 @@ ul.table-of-contents {
 
 // Prism Styling
 code, pre {
+  position: relative;
   font-size: 1.1rem;
 }
 
@@ -290,6 +291,18 @@ code, pre {
   line-height: 1.1rem !important;
 }
 pre[class*="language-"] {
+  &:before {
+    position: absolute;
+    padding: 1px 5px;
+    background: hsl(30, 10%, 90%);
+    top: 0;
+    left: 0;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #444;
+    content:attr(class);
+    font-size: .9rem;
+  }
   padding: .9rem;
 }
 
