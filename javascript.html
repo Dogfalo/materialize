@@ -179,7 +179,8 @@
               <pre><code class="language-javascript">
   $('.modal-trigger').leanModal({ 
       opacity: .5, // Opacity of modal background
-      complete: function() { console.log('modal closed') } // Callback for Modal close
+      ready: function() { alert('Ready'); }, // Callback for Modal open
+      complete: function() { alert('Closed'); } // Callback for Modal close
     }
   );
               </code></pre>

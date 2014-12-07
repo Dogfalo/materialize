@@ -5,7 +5,8 @@
         leanModal: function(options) {
  
             var defaults = {
-                overlay: 0.5,
+                opacity: 0.5,
+                ready: undefined,
                 complete: undefined
             }
             
@@ -28,7 +29,7 @@
                   
         		$('#lean_overlay').css({ 'display' : 'block', opacity : 0 });
                   
-        		$('#lean_overlay').velocity({opacity: o.overlay}, {duration: 350, queue: false, ease: 'easeOutQuart'});
+        		$('#lean_overlay').velocity({opacity: o.opacity}, {duration: 350, queue: false, ease: 'easeOutQuart'});
 //                
 //                var modal_height = $(modal_id).outerHeight();
 //        	  	var modal_width = $(modal_id).outerWidth();
@@ -41,8 +42,20 @@
                   'opacity' : 0,
                   'z-index': 1000
         		});
-
-        		$(modal_id).velocity({top: '10%', opacity: 1}, {duration: 350, queue: false, ease: 'easeOutQuart'});
+                
+                
+        		  $(modal_id).velocity({top: '10%', opacity: 1},
+                    {
+                      duration: 350,
+                      queue: false,
+                      ease: 'easeOutQuart',
+                      // Handle modal ready callback
+                      complete: function() {
+                        if (typeof(options.ready) === 'function')
+                          options.ready();
+                      }
+                    }
+                  );
 
                 e.preventDefault();
                 		
@@ -55,12 +68,13 @@
                 $(modal_id).fadeOut(200, function() {
                     $(this).css({ "top": 0 });
                     $("#lean_overlay").css({"display":'none'});
+                  
+                    // Call complete callback
+                    if (typeof(options.complete) === 'function')
+                      options.complete();
                 });
               
-                // Call Callback
-              console.log(typeof(options.complete) === 'function')
-              if (typeof(options.complete) === 'function')
-                options.complete();
+              
 
 			}
         }
