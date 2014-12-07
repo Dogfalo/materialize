@@ -48,7 +48,6 @@
       <ul class="tabs">
         <li class="tab"><a href="#tab1">Dialogs</a></li>
         <li class="tab"><a href="#tab2">Tabs</a></li>
-<!--        <li class="tab"><a href="#tab5">Parallax</a></li>-->
         <li class="tab"><a href="#tab3">Waves</a></li>
         <li class="tab"><a href="#tab4">Media</a></li>
         <li class="tab"><a href="#tab5">Collapsible</a></li>
@@ -71,15 +70,16 @@
         </ul>
       </div>
     </div>
-
+  
+<!-- Dialog Section -->
     <div class="col s12 m9 l10">
       <div id="toast" class="section scrollspy">
         <h2 class="header">Dialogs</h2>
         <p class="caption">Dialogs are content that are not original visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user. </p>
-        <h4>Toasts</h4>
+        <h3 class="header">Toasts</h3>
         <div class="row">
           <div class="col s12">
-            <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>            
+            <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
             <a class="waves-effect waves-light btn" onclick="toast('I am a toast', 3000)">Toast!</a>
           </div>
         </div>
@@ -95,7 +95,7 @@
             </code></pre>
 
 
-            <h5>Styling Toasts</h5>
+            <h4>Styling Toasts</h4>
             <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
 
             <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
@@ -108,7 +108,7 @@
       </div>
 
       <div id="tooltip" class="scrollspy">
-        <h4>Tooltips</h4>
+        <h3 class="header">Tooltips</h3>
         <div class="row">
           <div class="col s12">
             <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>            
@@ -134,7 +134,7 @@
       </div>
 
       <div id="modal" class="section scrollspy">
-        <h4>Modals</h4>
+        <h3 class="header">Modals</h3>
         <div class="row">
           <div class="col s12">
             <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal_close</code> to your button.</p>
@@ -190,7 +190,7 @@
       </div>
 
       <div id="dropdown" class="scrollspy">
-        <h4>Dropdowns</h4>
+        <h3 class="header">Dropdowns</h3>
         <div class="row">
           <div class="col s12">
             <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag</p>
@@ -215,7 +215,7 @@
         </div>
         <div class="row">
           <div class="col s12">
-            <h5>jQuery Plugin Initialization</h5>
+            <h4>jQuery Plugin Initialization</h4>
             <pre><code class="language-javascript">
   $(document).ready(function(){
     $('.dropdown-button').dropdown();
