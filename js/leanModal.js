@@ -5,7 +5,8 @@
         leanModal: function(options) {
  
             var defaults = {
-                overlay: 0.5
+                overlay: 0.5,
+                complete: undefined
             }
             
             var overlay = $("<div id='lean_overlay'></div>");
@@ -55,7 +56,12 @@
                     $(this).css({ "top": 0 });
                     $("#lean_overlay").css({"display":'none'});
                 });
-			
+              
+                // Call Callback
+              console.log(typeof(options.complete) === 'function')
+              if (typeof(options.complete) === 'function')
+                options.complete();
+
 			}
         }
     });
