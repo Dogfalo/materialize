@@ -1,24 +1,24 @@
 (function ($) {
 
   // Text based inputs
-  var text_inputs = $('input[type=text], input[type=password], input[type=email], textarea');  
-  
-  text_inputs.each(function(){
-    if($(this).val().length !== 0) {
-     $(this).siblings('label').addClass('active');
+  var text_inputs = ':text, :password, input[type=email], textarea';
+
+  $(document).on({
+    'focus': function() {
+      $(this).siblings('label').addClass('active');
+    },
+    'blur': function() {
+      if ($(this).val().length === 0) {
+        $(this).siblings('label').removeClass('active');
+      }
+    },
+  }, text_inputs);
+
+  $(document).on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
+    if (event.animationName === "nodeInserted" && $(event.target).val().length !== 0) {
+      $(event.target).siblings('label').addClass('active');
     }
-  })
-
-  text_inputs.focus(function () {
-    $(this).siblings('label').addClass('active');
   });
-
-  text_inputs.blur(function () {
-    if ($(this).val().length === 0) {
-      $(this).siblings('label').removeClass('active');      
-    }
-  });
-
 
   // Textarea Auto Resize
   $('textarea').each(function () {

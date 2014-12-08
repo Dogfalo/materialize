@@ -90,6 +90,16 @@ textarea {
   padding-top: 1.2rem; /* prevents text jump on Enter keypress */
 }
 
+// Used to be able to listen to new DOM elements inserted so that labels can be treated accordingly
+@include keyframes(nodeInserted) {
+  from { clip: rect(1px, auto, auto, auto); }
+  to { clip: rect(0px, auto, auto, auto); }
+}
+textarea, input[type=text], input[type=password], input[type=email] {
+  @include animation-duration(0.001s);
+  @include animation-name(nodeInserted);
+}
+
 
 /***************
   Radio Buttons 

@@ -3,3 +3,14 @@
     -moz-box-shadow: $args1, $args2;
     box-shadow: $args1, $args2;
 }
+@mixin keyframes($animation_name) {
+    @-webkit-keyframes #{$animation_name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
