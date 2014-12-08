@@ -46,18 +46,24 @@ p {
 }
 
 
-// Generic Floats
+// Text Align
 .left-align {
-  float: left;
+  text-align: left;
 }
 .right-align {
-  float: right
+  text-align: right
 }
-
-// Positioning
 .center {
   text-align: center; 
 }
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+// Positioning
 .center-block {
   display: block;
   margin-left: auto;
@@ -100,8 +106,6 @@ $num-cols: 12;
     @include box-shadow-2(0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22));
 }
 
-
-
 //  Blockquote 
 
 blockquote {
@@ -109,7 +113,6 @@ blockquote {
   padding-left: 1.5rem;
   border-left: 5px solid color("red", "lighten-3");
 }
-
 
 // Icon Styles
 
@@ -125,7 +128,6 @@ i {
     margin-left: 15px;
   }
 }
-
 
 // parallax
 .parallax-container {
@@ -160,12 +162,6 @@ i {
       position: relative;
     }
   }
-}
-
-
-
-.text-center {
-  text-align: center;
 }
 
 
