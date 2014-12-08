@@ -302,8 +302,11 @@ pre[class*="language-"] {
     color: #444;
     content:attr(class);
     font-size: .9rem;
+    border: solid 1px rgba(51, 51, 51, 0.18);
+    border-top: none;
   }
-  padding: .9rem;
+  padding: 25px 12px 7px 12px;
+  border: solid 1px rgba(51, 51, 51, 0.18);
 }
 
 
