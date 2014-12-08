@@ -313,7 +313,11 @@
        <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged. Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
       <img class="materialboxed" width="650" src="images/sample-1.jpg"></img>
      <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialboxed</code> class to the image tag.</p>
-     <pre><code class="language-markup">&lt;img class="materialboxed" width="650" src="images/sample-1.jpg"></img></code></pre>
+     
+    <pre><code class="language-markup">
+  &lt;img class="materialboxed" width="650" src="images/sample-1.jpg"></img>    
+    </code></pre>
+    
      <p>Next you simply have to add the initialization code </p>
      <pre><code class="language-javascript col s12">
   $(document).ready(function(){
@@ -364,28 +368,28 @@
   <div class="section">
     <h4>Collapsible HTML Structure</h4>
     <pre><code class="language-markup col s12">
-&lt;ul class="collapsible">
-  &lt;li>
-    &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
-    &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-  &lt;/li>
-  &lt;li>
-    &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
-    &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-  &lt;/li>
-  &lt;li>
-    &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
-    &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-  &lt;/li>
-&lt;/ul>
+  &lt;ul class="collapsible">
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+  &lt;/ul>
     </code></pre>
   </div>
   <div class="section">
     <h4>jQuery Plugin Initialization</h4>
     <pre><code class="language-javascript col s12">
-$(document).ready(function(){
-  $('.collapsible').collapsible();
-});
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
     </code></pre>
   </div>
 <div class="section">
@@ -411,11 +415,11 @@ $(document).ready(function(){
       </ul>
     </div>
     <div class="col s12 m9 offset-m3">
-      <pre class="col s12"><code class="language-javascript">
-    // This behavior is the default, so nothing needs to be done
-    $(document).ready(function(){
+      <pre><code class="language-javascript">
+  // This behavior is the default, so nothing needs to be done
+  $(document).ready(function(){
     $('.collapsible').collapsible();
-    });
+  });
       </code></pre>
     </div>
 
@@ -437,7 +441,7 @@ $(document).ready(function(){
       </ul>
     </div>
     <div class="col s12 m9 offset-m3">
-      <pre class="col s12"><code class="language-javascript">
+      <pre><code class="language-javascript">
   $(document).ready(function(){
     $('.collapsible').collapsible({ "accordion" : false });
   });

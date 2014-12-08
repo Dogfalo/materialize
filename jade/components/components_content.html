@@ -553,7 +553,7 @@
           <a class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i>button</a>
           <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
           <pre><code class="language-markup col s12">
-  &lt;a href="" class="waves-effect waves-light btn">Stuff&lt;/a>
+  &lt;a class="waves-effect waves-light btn">Stuff&lt;/a>
   &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
   &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
           </code></pre>
@@ -563,14 +563,14 @@
         <h4>Floating</h4>
         <a class="btn-floating"><i class="mdi-content-add"></i></a>
         <pre><code class="language-markup col s12">
-&lt;a href="" class="btn floating">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
+  &lt;a class="btn-floating">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
         </code></pre>
       </div>
       <div id="flat" class="section scrollspy">
         <h4>Flat</h4>
-        <a class="waves-effect waves-button btn-flat">Button</a>
+        <a class="waves-effect waves-teal btn-flat">Button</a>
         <pre><code class="language-markup col s12">
-&lt;a href="" class="waves-effect button flat">Button&lt;/a>
+  &lt;a class="waves-effect waves-teal btn-flat">Button&lt;/a>
         </code></pre>
       </div>
       <div id="Submit" class="section scrollspy">
@@ -591,7 +591,7 @@
         <a class="waves-effect waves-light btn-large"><i class="mdi-file-cloud left"></i>button</a>
         <a class="waves-effect waves-light btn-large"><i class="mdi-file-cloud right"></i>button</a>
         <pre><code class="language-markup col s12">
-&lt;a href="" class="waves-effect waves-light btn-large">Button&lt;/a>
+&lt;a class="waves-effect waves-light btn-large">Button&lt;/a>
 &lt;a class="waves-effect waves-light btn-large">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
 &lt;a class="waves-effect waves-light btn-large">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
         </code></pre>
@@ -904,7 +904,8 @@
       </div>
     </div>
     <div class="row">
-      <pre><code class="language-markup col s12">
+      <div class="col s12">
+      <pre><code class="language-markup">
       &lt;div class="col s12 m6">
         &lt;div class="card blue-grey darken-1">
           &lt;div class="card-image">
@@ -951,6 +952,7 @@
         &lt;/div>
       &lt;/div>
       </code></pre>
+      </div>
     </div>
       
     <h4>Card Panel</h4>
@@ -960,14 +962,16 @@
         <div class="card-panel teal"> <span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</span>
         </div>
       </div>
-      <pre class="col s12"><code class="language-markup">
+      <div class="col s12">
+        <pre><code class="language-markup">
   &lt;div class="row">
     &lt;div class="col s12 m4">
       &lt;div class="card-panel teal"> &lt;span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.&lt;/span>
       &lt;/div>
     &lt;/div>
   &lt;/div>
-      </code></pre>
+        </code></pre>
+      </div>
     </div>
   </div>
 
@@ -1286,7 +1290,8 @@
           
         </table>
       </div>
-      <pre class="col s12"><code class="language-markup">
+      <div class="col s12">
+        <pre><code class="language-markup">
   &lt;table>
     &lt;thead>
       &lt;tr>
@@ -1295,7 +1300,7 @@
           &lt;th data-field="price">Item Price&lt;/th>
       &lt;/tr>
     &lt;/thead>
-    
+
     &lt;tbody>
       &lt;tr>
         &lt;td>Alvin&lt;/td>
@@ -1314,7 +1319,8 @@
       &lt;/tr>
     &lt;/tbody>
   &lt;/table>
-      </code></pre>
+        </code></pre>
+      </div>
       </div>
       
       <br>
