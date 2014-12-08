@@ -2573,6 +2573,14 @@ p {
   text-align: center;
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 .center-block {
   display: block;
   margin-left: auto;
