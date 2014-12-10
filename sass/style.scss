@@ -415,3 +415,8 @@ pre[class*="language-"] {
     }
   }
 }
+
+// Card Page styling
+.card-panel span, .card-content p{
+  -webkit-font-smoothing: antialiased;
+}
