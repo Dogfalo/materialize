@@ -8205,7 +8205,7 @@ ul.table-of-contents a.active {
    $BASE-PICKER
    ========================================================================== */
 /**
- * Note: the root picker element should *NOT* be styled more than whatΓÇÖs here.
+ * Note: the root picker element should *NOT* be styled more than what’s here.
  */
 .picker {
   font-size: 16px;
@@ -8228,14 +8228,14 @@ ul.table-of-contents a.active {
 }
 
 /**
- * When the picker is opened, the input element is ΓÇ£activatedΓÇ¥.
+ * When the picker is opened, the input element is “activated”.
  */
 .picker__input.picker__input--active {
   border-color: #0089ec;
 }
 
 /**
- * The holder is the only ΓÇ£scrollableΓÇ¥ top-level container element.
+ * The holder is the only “scrollable” top-level container element.
  */
 .picker__holder {
   width: 100%;
@@ -8248,7 +8248,7 @@ ul.table-of-contents a.active {
  * Demo: http://amsul.github.io/pickadate.js
  */
 /**
- * Note: the root picker element should *NOT* be styled more than whatΓÇÖs here.
+ * Note: the root picker element should *NOT* be styled more than what’s here.
  */
 /**
  * Make the holder and frame fullscreen.
