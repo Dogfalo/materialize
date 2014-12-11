@@ -6163,6 +6163,7 @@ nav .brand-logo {
 }
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
+    left: 0;
     width: 100%;
     text-align: center;
     z-index: 0;
