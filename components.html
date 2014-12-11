@@ -902,13 +902,12 @@
       <p class="caption">Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.</p>
     <div class="row">
       <div class="col s12 m6">
+        <!-- Basic Card -->
+        <h4>Basic Card</h4>
         <div class="card blue-grey darken-1">
-          <div class="card-image">
-            <span class="card-title">Card Title</span>
-          </div>  
           <div class="card-content white-text">
             <span class="card-title">Card Title</span>
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively. <br>
+            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
           </div>
           <div class="card-action">
             <a href="#">This is a link</a>
@@ -916,7 +915,33 @@
           </div>
         </div>
       </div>
-      <div class="col s12 m6">
+
+        <div class="col s12">
+          <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m6">
+      &lt;div class="card blue-grey darken-1">
+        &lt;div class="card-content white-text">
+          &lt;span class="card-title">Card Title&lt;/span>
+          &lt;p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.&lt;/p>
+        &lt;/div>
+        &lt;div class="card-action">
+          &lt;a href="#">This is a link&lt;/a>
+          &lt;a href='#'>This is a link&lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+        <br>
+      </div>
+
+      
+
+      <!-- Image Card -->
+      <div class="col s12 m7">
+       <h4>Image Card</h4>
         <div class="card">
           <div class="card-image">
             <img src="images/sample-1.jpg">
@@ -932,6 +957,33 @@
         </div>
       </div>
       <div class="col s12">
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m7">
+      &lt;div class="card">
+        &lt;div class="card-image">
+          &lt;img src="images/sample-1.jpg">
+          &lt;span class="card-title">Card Title&lt;/span>
+        &lt;/div>  
+        &lt;div class="card-content">
+          &lt;p>I am a very simple card. I am good at containing small bits of information. 
+          I am convenient because I require little markup to use effectively.&lt;/p>
+        &lt;/div>
+        &lt;div class="card-action">
+          &lt;a href="#">This is a link&lt;/a>
+          &lt;a href='#'>This is a link&lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+        <br>
+      </div>
+      
+      <!-- Small Card -->
+      <div class="col s12 m6">
+        <h4>Small Card</h4>
+        <p>The Small Card limits the height of the card. We provide this as a utility class for you to easily ensure equal card size.</p>
         <div class="card small">
           <div class="card-image">
             <img src="images/sample-1.jpg">
@@ -946,76 +998,52 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-      <pre><code class="language-markup">
-      &lt;div class="col s12 m6">
-        &lt;div class="card blue-grey darken-1">
-          &lt;div class="card-image">
-            &lt;span class="card-title">Card Title&lt;/span>
-          &lt;/div>  
-          &lt;div class="card-content white-text">
-            &lt;span class="card-title">Card Title&lt;/span>
-            &lt;p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively. &lt;br>
-          &lt;/div>
-          &lt;div class="card-action">
-            &lt;a href="#">This is a link&lt;/a>
-            &lt;a href='#'>This is a link&lt;/a>
-          &lt;/div>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="col s12 m6">
-        &lt;div class="card">
-          &lt;div class="card-image">
-            &lt;img src="images/sample-1.jpg">
-            &lt;span class="card-title">Card Title&lt;/span>
-          &lt;/div>  
-          &lt;div class="card-content">
-            &lt;p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.&lt;/p>
-          &lt;/div>
-          &lt;div class="card-action">
-            &lt;a href="#">This is a link&lt;/a>
-            &lt;a href='#'>This is a link&lt;/a>
-          &lt;/div>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="col s12">
-        &lt;div class="card small">
-          &lt;div class="card-image">
-            &lt;img src="images/sample-1.jpg">
-            &lt;span class="card-title">Card Title&lt;/span>
-          &lt;/div>  
-          &lt;div class="card-content">
-            &lt;p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.&lt;/p>
-          &lt;/div>
-          &lt;div class="card-action">
-            &lt;a href="#">This is a link&lt;/a>
-            &lt;a href='#'>This is a link&lt;/a>
-          &lt;/div>
-        &lt;/div>
-      &lt;/div>
-      </code></pre>
-      </div>
-    </div>
-      
-    <h4>Card Panel</h4>
-    <p>For a simpler card with less markup, try using a card panel which just has padding and a shadow effect</p>
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="card-panel teal"> <span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</span>
-        </div>
-      </div>
+
       <div class="col s12">
         <pre><code class="language-markup">
   &lt;div class="row">
-    &lt;div class="col s12 m4">
-      &lt;div class="card-panel teal"> &lt;span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.&lt;/span>
+    &lt;div class="col s12">
+      &lt;div class="card small">
+        &lt;div class="card-image">
+          &lt;img src="images/sample-1.jpg">
+          &lt;span class="card-title">Card Title&lt;/span>
+        &lt;/div>  
+        &lt;div class="card-content">
+          &lt;p>I am a very simple card. I am good at containing small bits of information. 
+          I am convenient because I require little markup to use effectively.&lt;/p>
+        &lt;/div>
+        &lt;div class="card-action">
+          &lt;a href="#">This is a link&lt;/a>
+          &lt;a href='#'>This is a link&lt;/a>
+        &lt;/div>
       &lt;/div>
     &lt;/div>
   &lt;/div>
         </code></pre>
+        <br>
       </div>
+
+      <!-- Card Panel -->
+      <div class="col s12 m5">
+        <h4>Card Panel</h4>
+        <p>For a simpler card with less markup, try using a card panel which just has padding and a shadow effect</p>
+
+        <div class="card-panel teal"> <span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.</span>
+        </div>
+      </div>
+        <div class="col s12">
+          <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m5">
+      &lt;div class="card-panel teal">
+        &lt;span class="white-text">I am a very simple card. I am good at containing small bits of information. 
+        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+        &lt;/span>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+          </code></pre>
+        </div>
     </div>
   </div>
 
@@ -1517,7 +1545,8 @@
   
     </div>
   </div>
-</div><div id="footer" class="section">
+</div>
+<div id="footer" class="section">
   <div class="footer-block">
     <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
   </div>
