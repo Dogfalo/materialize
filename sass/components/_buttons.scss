@@ -2,18 +2,18 @@ $button-height: 36px !default;
 $button-color: color("blue", "base") !default;
 
 // shared styles
-.btn, .btn-flat {
+.btn, .btn-flat, input[type="button"], input[type="submit"], .button {
   display: inline-block;
   height: $button-height;
   margin-bottom: 15px;
-  padding: 0 2rem; 
+  padding: 0 2rem;
   @include border-radius(2px);
   line-height: 36px;
   text-transform: uppercase;
   border:none;
 }
 // Disabled shared style
-.btn.disabled, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-floating:disabled {
+.btn.disabled, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-floating:disabled, input[type="button"].disabled, input[type="submit"].disabled, input[type="button"]:disabled, input[type="submit"]:disabled, .button.disabled, .button:disabled {
   background-color: #DFDFDF;
   box-shadow: none;
   color: #9F9F9F;
@@ -34,13 +34,13 @@ $button-color: color("blue", "base") !default;
 
 
 // Raised Button
-.btn {
+.btn, input[type="button"], input[type="submit"], .button {
   text-decoration:none;
   color: #FFFFFF;
   background-color: $button-color;
   text-align: center;
   letter-spacing: .8px;
-  @extend .z-depth-1; 
+  @extend .z-depth-1;
   @include transition(.2s ease-out);
   cursor: pointer;
 
@@ -51,7 +51,7 @@ $button-color: color("blue", "base") !default;
 }
 
 
-// Floating button 
+// Floating button
 .btn-floating {
   display: inline-block;
   position: relative;
@@ -62,7 +62,7 @@ $button-color: color("blue", "base") !default;
   padding: 0;
   background-color: $button-color;
   @include border-radius(50%);
-  @extend .z-depth-1;  
+  @extend .z-depth-1;
   @include transition(.3s);
   cursor: pointer;
 
@@ -74,7 +74,7 @@ $button-color: color("blue", "base") !default;
     font-size: 1.6rem;
     line-height: 40px;
   }
-  
+
   &:hover {
     @extend .z-depth-1-half;
   }
@@ -103,5 +103,3 @@ $button-color: color("blue", "base") !default;
     font-size: 1.6rem;
   }
 }
-
-
