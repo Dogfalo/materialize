@@ -5,3 +5,5 @@ test.html
 html/
 node_modules/
 .sass-cache/
+.idea/
+*.iml
