@@ -147,7 +147,7 @@
 
 
     // Plugin initialization
-    $('.dropdown-button').dropdown({"hover": false});
+    $('.dropdown-button').dropdown({hover: false});
     if (window_width > 600) {
       $('ul.tabs').tabs();
     }
