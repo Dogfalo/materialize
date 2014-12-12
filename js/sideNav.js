@@ -77,12 +77,7 @@
             if (panning) {
               if (!$('#sidenav-overlay').length) {
                 var overlay = $('<div id="sidenav-overlay"></div>');
-                overlay.css('width', $(document).width() + 100) // account for any scrollbar
-                  .css('height', $(document).height() + 100) // account for any scrollbar
-                  .css('top', 0)
-                  .css('left', 0)
-                  .css('opacity', 0)
-                  .css('will-change', 'opacity')
+                overlay.css('opacity', 0)
                   .click(function(){
                     panning = false;
                     menuOut = false;
@@ -152,12 +147,7 @@
           menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
 
           var overlay = $('<div id="sidenav-overlay"></div>');
-          overlay.css('width', $(document).width() + 100) // account for any scrollbar
-            .css('height', $(document).height() + 100) // account for any scrollbar
-            .css('top', 0)
-            .css('left', 0)
-            .css('opacity', 0)
-            .css('will-change', 'opacity')
+          overlay.css('opacity', 0)
             .click(function(){
               menuOut = false;
               panning = false;

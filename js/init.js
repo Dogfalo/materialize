@@ -163,7 +163,7 @@
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav();
-    $('.datepicker').pickadate();
+    $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
