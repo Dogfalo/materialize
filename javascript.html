@@ -175,10 +175,12 @@
           <div class="row">
             <div class="col s12">
               <h4>Options</h4>
-              <p>You can customize the behvior of each modal using these options. For example, you can call a custom function to run when a modal is dismissed. To do this, just place your function in the intialization code as shown below.</p>
+              <p>You can customize the behavior of each modal using these options. For example, you can call a custom function to run when a modal is dismissed. To do this, just place your function in the intialization code as shown below.</p>
               <pre><code class="language-javascript">
   $('.modal-trigger').leanModal({ 
       opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
       ready: function() { alert('Ready'); }, // Callback for Modal open
       complete: function() { alert('Closed'); } // Callback for Modal close
     }
@@ -223,6 +225,18 @@
             </code></pre>
           </div>
         </div>
+        <div class="row">
+            <div class="col s12">
+              <h4>Options</h4>
+              <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
+              <pre><code class="language-javascript">
+  $('.dropdown-button').dropdown({
+      hover: false, // Activate on click
+    }
+  );
+              </code></pre>
+            </div>
+          </div>
       </div>
 
     </div>
@@ -505,7 +519,8 @@
       </code></pre>
     </div>
   </div>
-</div>  <!--  End of Container --><div id="footer" class="section">
+</div>  <!--  End of Container -->
+<div id="footer" class="section">
   <div class="footer-block">
     <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
   </div>
