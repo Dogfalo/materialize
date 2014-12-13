@@ -7074,11 +7074,11 @@ ul.tabs li.tab {
   margin-top: 0;
 }
 
-#lean_overlay {
+#lean-overlay {
   position: fixed;
   z-index: 999;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   bottom: 0;
   right: 0;
   height: 115%;

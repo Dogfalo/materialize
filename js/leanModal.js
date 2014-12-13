@@ -25,7 +25,6 @@
         closeModal(modal);
       });
 
-
       $("#lean-overlay").css({ display : "block", opacity : 0 });
 
       $(modal).css({
