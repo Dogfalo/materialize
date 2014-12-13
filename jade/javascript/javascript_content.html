@@ -122,14 +122,14 @@
         <div class="row">
           <div class="col s12">
             <h4>jQuery Plugin Initialization</h4>
-            <p>To open a modal on clicking a modal trigger:</p>
+            <p>To open a modal using a trigger:</p>
             <pre><code class="language-javascript">
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
   });
             </code></pre>
-            <p>To open a modal on document ready:</p>
+            <p>You can also open modals programatically, the below code will make your modal open on document ready:</p>
             <pre><code class="language-javascript">
   $(document).ready(function(){
     $('#modal1').openModal();
