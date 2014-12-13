@@ -1,7 +1,6 @@
 (function($) {
   $.fn.extend({
     openModal: function(options) {
-      debugger
       var modal = this;
       var overlay = $("<div id='lean_overlay'></div>");
       $("body").append(overlay);
