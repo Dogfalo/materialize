@@ -2,7 +2,7 @@
   $.fn.extend({
     openModal: function(options) {
       var modal = this;
-      var overlay = $("<div id='lean_overlay'></div>");
+      var overlay = $('<div id="lean-overlay"></div>');
       $("body").append(overlay);
 
       var defaults = {
@@ -16,17 +16,17 @@
       // Override defaults
       options = $.extend(defaults, options);
 
-      $("#lean_overlay").click(function() {
+      $("#lean-overlay").click(function() {
         closeModal(modal);
       });
 
-      $(modal).find(".modal_close").click(function(e) {
+      $(modal).find(".modal-close").click(function(e) {
         e.preventDefault();
         closeModal(modal);
       });
 
 
-      $("#lean_overlay").css({ display : "block", opacity : 0 });
+      $("#lean-overlay").css({ display : "block", opacity : 0 });
 
       $(modal).css({
         display : "block",
@@ -34,7 +34,7 @@
         opacity: 0
       });
 
-      $("#lean_overlay").velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
+      $("#lean-overlay").velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
 
       $(modal).velocity({top: "10%", opacity: 1}, {
         duration: options.in_duration,
@@ -49,10 +49,10 @@
       });
 
       function closeModal(modal_id) {
-        $("#lean_overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
+        $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
         $(modal_id).fadeOut(options.out_duration, function() {
           $(modal_id).css({ top: 0});
-          $("#lean_overlay").css({display:"none"});
+          $("#lean-overlay").css({display:"none"});
 
           // Call complete callback
           if (typeof(options.complete) === "function") {
