@@ -95,7 +95,7 @@
           <p>In case you don't want to use Roboto on your webpage, fear not. Simply change the font stack by modifying the code below to your liking and add it to your custom css.</p>
         <pre><code class="language-css">
   html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
   }
         </code></pre>
       </div>
@@ -103,7 +103,7 @@
         
         <div id="headers" class="section scrollspy">
           <h4>Headers</h4>
-          <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags</p>
+          <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags.</p>
           <div class="card-panel">
             <h1>Heading h1</h1>
             <h2>Heading h2</h2>
@@ -445,7 +445,7 @@
         <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
         <form action="#">
           <p>
-            <input name="group1" type="radio" id="test1" />
+            <input name="group1" type="radio" id="test1" checked />
             <label for="test1">Red</label>
           </p>
           <p>
@@ -453,7 +453,7 @@
             <label for="test2">Yellow</label>
           </p>
           <p>
-            <input name="group1" type="radio" id="test3"  />
+            <input class="with-gap" name="group1" type="radio" id="test3"  />
             <label for="test3">Green</label>
           </p>
             <p>
@@ -474,7 +474,7 @@
       &lt;label for="test2">Yellow&lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input name="group1" type="radio" id="test3"  />
+      &lt;input class="with-gap" name="group1" type="radio" id="test3"  />
       &lt;label for="test3">Green&lt;/label>
     &lt;/p>
       &lt;p>
@@ -483,6 +483,23 @@
     &lt;/p>
   &lt;/form>
           </code></pre>
+        </div>
+        <div class="row">
+          <h5>Options</h5>
+          <p>To create a radio button with a gap, add <code class="language-markup">class="with-gap"</code> to your input. See the example below.</p>
+          
+          <p>
+            <input class="with-gap" name="group3" type="radio" id="test5" checked />
+            <label for="test5">Red</label>
+          </p>
+          <pre><code class="language-markup">
+  &lt;p>
+    &lt;input class="with-gap" name="group3" type="radio" id="test5" checked />
+    &lt;label for="test5">Red&lt;/label>
+  &lt;/p>
+          </code></pre>
+          
+          
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-$border-color: #bdbdbd !default;
+$border-color: color("grey", "base") !default;
 $highlight-color: color("light-blue", "base") !default;
 $label-font-size: .8rem !default;
 
@@ -95,9 +95,9 @@ textarea {
   Radio Buttons 
 ***************/
 
-$disabled-color: #7c7c7c;
-$fill-color: #0f9d58;
-$radio-border: #5a5a5a;
+$disabled-color: rgba(0,0,0, .26) !default;
+$fill-color: #0f9d58 !default;
+$radio-border: #5a5a5a !default;
 
 /* Remove default checkbox */
 [type="radio"]:not(:checked),
@@ -115,6 +115,8 @@ $radio-border: #5a5a5a;
   display: inline-block;
   height: 25px;
   line-height: 25px;
+  font-size: 1rem;
+  @include transition(.28s ease);
 
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
   -moz-user-select: none; /* mozilla browsers */
@@ -162,11 +164,23 @@ $radio-border: #5a5a5a;
   @include transform(scale(1.02));
 }
 
+/* Radio With gap */
+[type="radio"]:checked + label:before {
+  border-radius: 50%;
+  border: 2px solid $fill-color;
+}
+[type="radio"].with-gap:checked + label:after {
+  border-radius: 50%;
+  border: 2px solid $fill-color;
+  background-color: $fill-color;
+  z-index: 0;
+  @include transform(scale(.5));
+}
 
 /* Disabled style */
 [type="radio"]:disabled:not(:checked) + label:before,
 [type="radio"]:disabled:checked + label:before {
-  background-color: $disabled-color;
+  background-color: transparent;
   border-color: $disabled-color;
 }
 [type="radio"]:disabled + label {
@@ -204,6 +218,7 @@ form p {
   display: inline-block;
   height: 25px;
   line-height: 25px;
+  font-size: 1rem;
 
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
   -moz-user-select: none; /* mozilla browsers */

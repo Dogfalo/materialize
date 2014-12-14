@@ -7151,7 +7151,7 @@ ul.collapsible {
 
 label {
   font-size: 0.8rem;
-  color: #bdbdbd;
+  color: #9e9e9e;
 }
 
 /***************************
@@ -7161,7 +7161,7 @@ label {
   position: relative;
 }
 .input-field label {
-  color: #bdbdbd;
+  color: #9e9e9e;
   position: absolute;
   top: .8rem;
   left: .5rem;
@@ -7205,7 +7205,7 @@ input[type=date],
 textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid #9e9e9e;
   outline: none;
   height: 3rem;
   width: 100%;
@@ -7272,6 +7272,12 @@ textarea {
   display: inline-block;
   height: 25px;
   line-height: 25px;
+  font-size: 1rem;
+  -webkit-transition: 0.28s ease;
+  -moz-transition: 0.28s ease;
+  -o-transition: 0.28s ease;
+  -ms-transition: 0.28s ease;
+  transition: 0.28s ease;
   -webkit-user-select: none;
   /* webkit (safari, chrome) browsers */
   -moz-user-select: none;
@@ -7334,19 +7340,37 @@ textarea {
   transform: scale(1.02);
 }
 
+/* Radio With gap */
+[type="radio"]:checked + label:before {
+  border-radius: 50%;
+  border: 2px solid #0f9d58;
+}
+
+[type="radio"].with-gap:checked + label:after {
+  border-radius: 50%;
+  border: 2px solid #0f9d58;
+  background-color: #0f9d58;
+  z-index: 0;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
 /* Disabled style */
 [type="radio"]:disabled:not(:checked) + label:before,
 [type="radio"]:disabled:checked + label:before {
-  background-color: #7c7c7c;
-  border-color: #7c7c7c;
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.26);
 }
 
 [type="radio"]:disabled + label {
-  color: #7c7c7c;
+  color: rgba(0, 0, 0, 0.26);
 }
 
 [type="radio"]:disabled:not(:checked) + label:hover:before {
-  border-color: #7c7c7c;
+  border-color: rgba(0, 0, 0, 0.26);
 }
 
 /***************
@@ -7377,6 +7401,7 @@ form p:last-child {
   display: inline-block;
   height: 25px;
   line-height: 25px;
+  font-size: 1rem;
   -webkit-user-select: none;
   /* webkit (safari, chrome) browsers */
   -moz-user-select: none;
@@ -7439,10 +7464,10 @@ form p:last-child {
   top: 0;
   left: 0;
   box-shadow: none;
-  background-color: #7c7c7c;
+  background-color: rgba(0, 0, 0, 0.26);
   width: 14px;
   height: 14px;
-  border: 2px solid #7c7c7c;
+  border: 2px solid rgba(0, 0, 0, 0.26);
   -webkit-transform: rotateZ(0deg);
   -moz-transform: rotateZ(0deg);
   -ms-transform: rotateZ(0deg);
@@ -7451,11 +7476,11 @@ form p:last-child {
 }
 
 [type="checkbox"]:disabled + label {
-  color: #7c7c7c;
+  color: rgba(0, 0, 0, 0.26);
 }
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
-  border-color: #7c7c7c;
+  border-color: rgba(0, 0, 0, 0.26);
 }
 
 /***************
@@ -7467,7 +7492,7 @@ form p:last-child {
   color: #444;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid #9e9e9e;
   outline: none;
   height: 3rem;
   line-height: 3rem;
