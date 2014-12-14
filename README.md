@@ -2,9 +2,13 @@
 ===========
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.92.0
+### Current Version : v0.92.1
 
 ##Changelog
+
+- v0.92.1
+  - Bower semver fix
+  - Added new radio button style
 
 - v0.92.0
   - Clicking icon in dropdown in navbar no longer closes dropdown immediately
