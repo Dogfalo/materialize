@@ -147,7 +147,7 @@
 
 
     // Plugin initialization
-    $('.dropdown-button').dropdown({"hover": false});
+    $('.dropdown-button').dropdown({hover: false});
     if (window_width > 600) {
       $('ul.tabs').tabs();
     }
@@ -163,7 +163,7 @@
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav();
-    $('.datepicker').pickadate();
+    $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

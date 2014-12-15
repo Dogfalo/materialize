@@ -1,0 +1,568 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>JavaScript - Materialize</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="../../images/favicon/apple-touch-icon-152x152.png"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF"/>
+    <meta name="msapplication-TileImage" content="../../images/favicon/mstile-144x144.png"/>
+    <link rel="icon" href="../../images/favicon/favicon-32x32.png" sizes="32x32"/>
+    <!--  Android 5 Chrome Color -->
+    <meta name="theme-color" content="#EE6E73"/>
+    <!-- CSS  -->
+    <link href="../../css/prism.css" rel="stylesheet"/>
+    <link href="../../css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!-- Buy sell ads-->
+    <script>
+      (function(){
+        var bsa = document.createElement('script');
+           bsa.type = 'text/javascript';
+           bsa.async = true;
+           bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+      })();
+      
+      
+    </script>
+    <nav id="">
+      <div class="container">
+        <div class="nav-wrapper"><a href="index.html" class="brand-logo">Materialize</a>
+          <ul id="nav-mobile" class="right side-nav">
+            <li><a href="about.html">About</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="components.html">Components</a></li>
+            <li class="active"><a href="javascript.html">JavaScript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+          </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+      </div>
+    </nav><div class="tabs-wrapper">
+  <div class="row white z-depth-1">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab"><a href="#tab1">Dialogs</a></li>
+        <li class="tab"><a href="#tab2">Tabs</a></li>
+        <li class="tab"><a href="#tab3">Waves</a></li>
+        <li class="tab"><a href="#tab4">Media</a></li>
+        <li class="tab"><a href="#tab5">Collapsible</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!--  Toasts Section  -->
+  <div id="tab1" class="row">
+
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#toast">Toasts</a></li>
+          <li><a href="#tooltip">Tooltips</a></li>
+          <li><a href="#modal">Modals</a></li>
+          <li><a href="#dropdown">Dropdowns</a></li>
+        </ul>
+      </div>
+    </div>
+
+<!-- Dialog Section -->
+    <div class="col s12 m9 l10">
+      <div id="toast" class="section scrollspy">
+        <h2 class="header">Dialogs</h2>
+        <p class="caption">Dialogs are content that are not original visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user. </p>
+        <h3 class="header">Toasts</h3>
+        <div class="row">
+          <div class="col s12">
+            <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
+            <a class="waves-effect waves-light btn" onclick="toast('I am a toast', 3000)">Toast!</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            To do this, call the toast() function programatically in JavaScript
+            <pre><code class="language-javascript">
+  toast('I am a toast!', 3000) // 3000 is the duration of the toast
+            </code></pre>
+            <p>One way to add this into your application is to add this as an onclick event to a button</p>
+            <pre><code class="language-markup">
+  &lt;a class="btn" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
+            </code></pre>
+
+
+            <h4>Styling Toasts</h4>
+            <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+
+            <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
+
+            <pre><code class="language-javascript">
+  toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="tooltip" class="scrollspy">
+        <h3 class="header">Tooltips</h3>
+        <div class="row">
+          <div class="col s12">
+            <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
+            <a class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP</a>
+            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
+            <pre><code class="language-markup">
+  &lt;a class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP&lt;/a>
+            </code></pre>
+            <br>
+            Then add this to your jQuery file, with the hover delay you want as the option
+            <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({"delay": 50});
+  });
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="modal" class="section scrollspy">
+        <h3 class="header">Modals</h3>
+        <div class="row">
+          <div class="col s12">
+            <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal-close</code> to your button.</p>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+          </div>
+        </div>
+        <div id="modal1" class="modal">
+          <h4>Modal Header</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <a href="#" class="waves-effect btn-flat modal-action modal-close">Agree</a>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <h4>Modals HTML Structure</h4>
+            <pre><code class="language-markup">
+  &lt;!-- Modal Trigger -->
+  &lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
+
+  &lt;!-- Modal Structure -->
+  &lt;div id="modal1" class="modal">
+    &lt;h4>Modal Header&lt;/h4>
+    &lt;p>A bunch of text&lt;/p>
+    &lt;a href="#" class="waves-effect btn-flat modal-close">Agree&lt;/a>
+  &lt;/div>
+            </code></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <h4>jQuery Plugin Initialization</h4>
+            <p>To open a modal using a trigger:</p>
+            <pre><code class="language-javascript">
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+            </code></pre>
+            <p>You can also open modals programatically, the below code will make your modal open on document ready:</p>
+            <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('#modal1').openModal();
+  });
+            </code></pre>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <h4>Options</h4>
+              <p>You can customize the behavior of each modal using these options. For example, you can call a custom function to run when a modal is dismissed. To do this, just place your function in the intialization code as shown below.</p>
+              <pre><code class="language-javascript">
+  $('.modal-trigger').leanModal({
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+      ready: function() { alert('Ready'); }, // Callback for Modal open
+      complete: function() { alert('Closed'); } // Callback for Modal close
+    }
+  );
+              </code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="dropdown" class="scrollspy">
+        <h3 class="header">Dropdowns</h3>
+        <div class="row">
+          <div class="col s12">
+            <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag</p>
+            <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+            <ul id='dropdown1' class='dropdown-content'>
+              <li><a href="#!">one</a></li>
+              <li><a href="#!">two</a></li>
+              <li><a href="#!">three</a></li>
+            </ul>
+            <pre><code class="language-markup">
+  &lt;!-- Dropdown Trigger -->
+  &lt;a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
+
+  &lt;!-- Dropdown Structure -->
+  &lt;ul id='dropdown1' class='dropdown-content'>
+    &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+  &lt;/ul>
+            </code></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <h4>jQuery Plugin Initialization</h4>
+            <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('.dropdown-button').dropdown();
+  });
+            </code></pre>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+              <h4>Options</h4>
+              <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
+              <pre><code class="language-javascript">
+  $('.dropdown-button').dropdown({
+      hover: false, // Activate on click
+    }
+  );
+              </code></pre>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!--  Tabs Section  -->
+    <div id="tab2">
+      <div class="section">
+        <h2 class="header">Tabs</h2>
+        <p class="caption">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+
+        <div class="col s12">
+          <ul class="tabs tab-demo z-depth-1">
+            <li class="tab"><a href="#test1">Test 1</a></li>
+            <li class="tab"><a href="#test2">Test 2</a></li>
+            <li class="tab"><a href="#test3">Test 3</a></li>
+            <li class="tab"><a href="#test4">Test 4</a></li>
+          </ul>
+        </div>
+        <div id="test1" class="col s12">Test 1</div>
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
+      </div>
+      <div class="section">
+        <h4>Tabs HTML Structure</h4>
+        <pre><code class="language-markup col s12">
+          &lt;div class="col s12">
+            &lt;ul class="tabs">
+              &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+              &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
+              &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
+              &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+            &lt;/ul>
+          &lt;/div>
+          &lt;div id="test1" class="col s12">Test 1&lt;/div>
+          &lt;div id="test2" class="col s12">Test 2&lt;/div>
+          &lt;div id="test3" class="col s12">Test 3&lt;/div>
+          &lt;div id="test4" class="col s12">Test 4&lt;/div>
+        </code></pre>
+      </div>
+      <div class="section">
+        <h4>jQuery Plugin Initialization</h4>
+        <pre><code class="language-javascript col s12">
+          $(document).ready(function(){
+            $('ul.tabs').tabs();
+          });
+        </code></pre>
+      </div>
+    </div>
+
+
+<!--  Waves Section  -->
+<div id="tab3">
+  <div class="section">
+  <h2 class="header">Waves</h2>
+    <p class="caption">Waves is an external library that we've included in Materialize to allow us to create the ink effect outlined in Material Design</p>
+  <a class="waves-effect waves-light btn" href="#!">Wave</a>
+  </div>
+
+  <div class="section">
+    <h4>Applying Waves</h4>
+    <p>To put the waves effect on buttons, you just have to put the class <code class="language-markup">waves-effect</code> on to the buttons. If you want the waves effect to be white instead, add both <code class="language-markup">waves-effect waves-light</code> as classes.</p>
+    <pre><code class="language-markup col s12">
+  &lt;a class="waves-effect waves-light btn-large" href="#">Wave&lt;/a>
+    </code></pre>
+  </div>
+
+<!--  Customization  -->
+  <div class="section">
+    <h3 class="header">Customization</h3>
+    <p>There are several ways to customize waves, you can either use pre-created classes, or you can define your own color by creating a new class</p>
+    <div class="row">
+       <div class="col s12 m5">
+        <h4>Available Colors</h4>
+        <p>To use these, just add the corresponding class to your button. Play around with changing the background color of butons and the waves effect to create something cool!</p>
+        <pre><code class="language-markup">
+  &lt;a href="#!" class="btn waves-effect waves-teal">Send&lt;/a>
+        </code></pre>
+        <div class="collection waves-color-demo">
+          <div class="collection-item">Default<a href="#!" class="waves-effect btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-light</code><a href="#!" class="waves-effect waves-light btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-red</code><a href="#!" class="waves-effect waves-red btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-yellow</code><a href="#!" class="waves-effect waves-yellow btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-orange</code><a href="#!" class="waves-effect waves-orange btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-purple</code><a href="#!" class="waves-effect waves-purple btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-green</code><a href="#!" class="waves-effect waves-green btn secondary-content">Send</a></div>
+          <div class="collection-item"><code class="language-markup">waves-teal</code><a href="#!" class="waves-effect waves-teal btn secondary-content">Send</a></div>
+        </div>
+      </div>
+      <div class="col s12 m6 offset-m1">
+        <h4>Custom Colors</h4>
+        <p>If the color you want is not already available, you can easily make your own waves color by creating a custom CSS class. Take a look at the example below where we add a waves-brown effect</p>
+        <pre><code class="language-css">
+  /*
+  When creating your CSS selector,
+  change "brown" to something of your choosing
+  */
+  .waves-effect.waves-brown .waves-ripple {
+   /* The alpha value allows the text and background color
+   of the button to still show through. */
+    background-color: rgba(121, 85, 72, 0.65);
+  }
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--Material Box Section-->
+<div id="tab4" class="section row">
+  <div class="col hide-on-small-only m3 l2">
+    <div style="height: 1px;">
+      <ul class="table-of-contents">
+        <li><a href="#materialbox">Material Box</a></li>
+        <li><a href="#parallax">Parallax</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="col s12 m9 l10">
+    <!--  Material Box Section  -->
+    <div id="materialbox" class="scrollspy">
+      <h2 class="header">Media</h2>
+      <p class="caption">
+        Media components include things that have to do with large media objects like Images, Video, Audio, etc.
+      </p>
+      <h4>Material Box</h4>
+       <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged. Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
+      <img class="materialboxed" width="650" src="../../images/sample-1.jpg"></img>
+     <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialboxed</code> class to the image tag.</p>
+
+    <pre><code class="language-markup">
+  &lt;img class="materialboxed" width="650" src="images/sample-1.jpg"></img>
+    </code></pre>
+
+     <p>Next you simply have to add the initialization code </p>
+     <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+      </code></pre>
+      <img class="materialboxed" width="200" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg"></img>
+    </div>
+    <br><br>
+    <!--  Parallax Section  -->
+    <div id="parallax" class="scrollspy">
+      <h4>Parallax</h4>
+      <p class="caption">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling. Check out the demo to get a better idea of it.</p>
+      <a href="parallax.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a><br><br>
+      <h5>Parallax HTML Structure</h5>
+      <pre><code class="language-markup col s12">
+  &lt;div class="parallax-container">
+    &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
+  &lt;/div>
+      </code></pre>
+      <h5>Parallax Javascript Initialization</h5>
+      <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.parallax').parallax();
+  });
+      </code></pre>
+      <h5>Parallax Container CSS</h5>
+      <p>The parallax container height is what defines how much of the image can be seen. This is set to a default of 500px. You can add your own style to override this.</p>
+      <pre><code class="language-css col s12">
+  .parallax-container {
+    height: "your height here";
+  }
+      </code></pre>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!--  Collapsible Section  -->
+<div id="tab5" class="section">
+  <h2 class="header">Collapsible</h2>
+  <p class="caption">
+    Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
+  </p>
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+    </li>
+  </ul>
+  <div class="section">
+    <h4>Collapsible HTML Structure</h4>
+    <pre><code class="language-markup col s12">
+  &lt;ul class="collapsible">
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+  &lt;/ul>
+    </code></pre>
+  </div>
+  <div class="section">
+    <h4>jQuery Plugin Initialization</h4>
+    <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+    </code></pre>
+  </div>
+<div class="section">
+  <h4>Options</h4>
+  <p>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</p>
+</div>
+  <div class="row">
+    <div class="col s12 m3"><h5>Accordion</h5></div>
+    <div class="col s12 m9">
+      <ul class="collapsible collapsible-accordion">
+        <li>
+          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="col s12 m9 offset-m3">
+      <pre><code class="language-javascript">
+  // This behavior is the default, so nothing needs to be done
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+      </code></pre>
+    </div>
+
+    <div class="col s12 m3"><h5>Expandable</h5></div>
+    <div class="col s12 m9">
+      <ul class="collapsible collapsible-expandable">
+        <li>
+          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="col s12 m9 offset-m3">
+      <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('.collapsible').collapsible({ "accordion" : false });
+  });
+      </code></pre>
+    </div>
+  </div>
+</div>  <!--  End of Container -->
+<div id="footer" class="section">
+  <div class="footer-block">
+    <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+  </div>
+  <div class="footer-block">
+    <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+  </div>
+  <div class="footer-block">
+    <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+  </div>
+  <div class="footer-block">
+    <a href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+  </div>
+</div><!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../../js/jquery.timeago.js"></script>  
+<script src="../../js/prism.js"></script>
+<script src="../../bin/materialize.js"></script>
+<script src="../../js/init.js"></script>
+<!-- Twitter Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google Plus Button-->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!--  Google Analytics  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56218128-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+  </body>
+</html>

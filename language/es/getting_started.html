@@ -1,0 +1,215 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Getting Started - Materialize</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="../../images/favicon/apple-touch-icon-152x152.png"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF"/>
+    <meta name="msapplication-TileImage" content="../../images/favicon/mstile-144x144.png"/>
+    <link rel="icon" href="../../images/favicon/favicon-32x32.png" sizes="32x32"/>
+    <!--  Android 5 Chrome Color -->
+    <meta name="theme-color" content="#EE6E73"/>
+    <!-- CSS  -->
+    <link href="../../css/prism.css" rel="stylesheet"/>
+    <link href="../../css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!-- Buy sell ads-->
+    <script>
+      (function(){
+        var bsa = document.createElement('script');
+           bsa.type = 'text/javascript';
+           bsa.async = true;
+           bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+      })();
+      
+      
+    </script>
+    <nav id="front-page-nav">
+      <div class="container">
+        <div class="nav-wrapper"><a id="logo-container" href="index.html" class="brand-logo">
+            <object id="front-page-logo" type="image/svg+xml" data="../../res/materialize.svg">Your browser does not support SVG</object></a>
+          <ul id="nav-mobile" class="right side-nav">
+            <li><a href="about.html">About</a></li>
+            <li class="active"><a href="getting_started.html">Getting Started</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="components.html">Components</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+          </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+      </div>
+    </nav><div class="section" id="index-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m9">
+        <h1 class="header center-on-small-only">Getting Started</h1>
+        <h4 class ="light red-text lighten-4 center-on-small-only">Learn how to easily start using Materialize in your website.</h4>
+      </div>
+      <div class="col s12 m3">
+        <!-- BuySellAds Zone Code -->
+        <div class="buysellads-header center-on-small-only">
+          <div id="bsap_1300189" class="bsarocks bsap_b9468009151bf6fe6de9519ffdd7961f"></div>
+        </div>
+        <!-- End BuySellAds Zone Code -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!--  Outer row  -->
+  <div class="row">
+
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="table-of-contents">
+          <li><a href="#download">Download</a></li>
+          <li><a href="#setup">Setup</a></li>
+          <li><a href="#sass">Sass</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section col s12 m9 l10">
+      <div id="download" class="row scrollspy">
+          <h2 class="col s12 header">Download</h2>
+        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using materialize, all you have to is download one of the options below.</p>
+
+        <div class="col s12 m5">
+          <p class="promo-caption">Materialize</p>
+          <p>This is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option require little to no setup. Use this if you are unfamiliar with Sass.</p>
+          <a class="btn waves-effect waves-light" href="../../bin/materialize-v0.92.0.zip">Materialize<i class="mdi-file-file-download right"></i></a>
+        </div>
+        <div class="col s12 m5 offset-m2">
+          <p class="promo-caption">Sass</p>
+          <p>This version contains the source SCSS files. By choosing this version you have more control over which components to include. You will need a Sass compiler if you choose this option.</p>
+          <a class="btn waves-effect waves-light" href="../../bin/materialize-src-v0.92.0.zip">Source<i class="mdi-file-file-download right"></i></a>
+        </div>
+        <div class="col s12">
+          <br>
+          <p class="promo-caption">Bower</p>
+          <p>You can also get the latest release using bower. this release contains source files as well as the compiled CSS and JavaScript files.</p>
+          <pre><code class="language-markup">
+  bower install materialize
+          </code></pre>
+        </div>
+      </div>
+
+      <div id="setup" class="row scrollspy">
+        <div class="col s12">
+          <h2 class="header">Setup</h2>
+          <h4 >Project Structure</h4>
+          <p>After downloading, extract the files into the directory where your website is located. Your directory will look something like this.</p>
+          <p>You'll notice that there are two sets of the files. The <code class="language-markup">min</code> means that the file is "compressed" to reduce load times. These minified files are usually used in production while it is better to use the unminified files during development.</p>
+
+          <pre><code class="language-markup directory-markup">
+  MyWebsite/
+  |--css/
+  |  |--materialize.css
+  |
+  |--font/
+  |  |--material-design-icons/
+  |  |--roboto/
+  |
+  |--js/
+  |  |--materialize.js
+  |
+  |--index.html
+          </code></pre>
+        </div>
+      <div class="col s12">
+        <h4>HTML Setup</h4>
+        <p>Next you just have to make sure you link the files properly in your webpage. Generally it is wise to import javascript files at the end of the body to reduce page load time. Follow the example below on how to import Materialize into your webpage.</p>
+        <p> One last thing to note is that you have to import jQuery before importing materialize.js!</p>
+        <pre><code class="language-markup">
+  &lt;html>
+    &lt;head>
+      &lt;!--Import materialize.css-->
+      &lt;link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    &lt;/head>
+
+    &lt;body>
+      &lt;!--Import jQuery before materialize.js-->
+      &lt;script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">&lt;/script>
+      &lt;script type="text/javascript" src="js/materialize.min.js">&lt;/script>
+    &lt;/body>
+  &lt;/html>
+        </code></pre>
+      </div>
+    </div>
+
+    <div id="sass" class="row scrollspy">
+      <div class="col s12">
+        <h2 class="header">Sass Setup</h2>
+        <p class="caption">This section is only relevant if you chose to download the Sass version of Materialize.</p>
+        <h4>Compiling Sass</h4>
+        <p>Instead of having css folder, you will find that the download instead contains many .scss files which contain the styles of individual components. Unfortunately the browser cannot interpret Sass, so you must have your Sass compiler compile the scss/materialize.scss into a regular CSS file. At this point you can link this newly outputted file in your HTML page</p>
+
+        <pre><code class="language-markup directory-markup">
+  MyWebsite/
+  |--css/
+  |  |--materialize.css &lt;-- compiled from scss/materialize.scss
+  |
+  |--font/
+  |  |--material-design-icons/
+  |  |--roboto/
+  |
+  |--js/
+  |  |--materialize.js
+  |
+  |--scss/
+  |  |--materialize.scss
+  |  |--components/
+  |
+  |--index.html
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+</div>
+<div id="footer" class="section">
+  <div class="footer-block">
+    <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+  </div>
+  <div class="footer-block">
+    <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+  </div>
+  <div class="footer-block">
+    <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+  </div>
+  <div class="footer-block">
+    <a href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+  </div>
+</div><!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../../js/jquery.timeago.js"></script>  
+<script src="../../js/prism.js"></script>
+<script src="../../bin/materialize.js"></script>
+<script src="../../js/init.js"></script>
+<!-- Twitter Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google Plus Button-->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!--  Google Analytics  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56218128-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+  </body>
+</html>

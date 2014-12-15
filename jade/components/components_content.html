@@ -51,7 +51,7 @@
           <p>In case you don't want to use Roboto on your webpage, fear not. Simply change the font stack by modifying the code below to your liking and add it to your custom css.</p>
         <pre><code class="language-css">
   html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
   }
         </code></pre>
       </div>
@@ -59,7 +59,7 @@
         
         <div id="headers" class="section scrollspy">
           <h4>Headers</h4>
-          <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags</p>
+          <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags.</p>
           <div class="card-panel">
             <h1>Heading h1</h1>
             <h2>Heading h2</h2>
@@ -401,7 +401,7 @@
         <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
         <form action="#">
           <p>
-            <input name="group1" type="radio" id="test1" />
+            <input name="group1" type="radio" id="test1" checked />
             <label for="test1">Red</label>
           </p>
           <p>
@@ -409,7 +409,7 @@
             <label for="test2">Yellow</label>
           </p>
           <p>
-            <input name="group1" type="radio" id="test3"  />
+            <input class="with-gap" name="group1" type="radio" id="test3"  />
             <label for="test3">Green</label>
           </p>
             <p>
@@ -430,7 +430,7 @@
       &lt;label for="test2">Yellow&lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input name="group1" type="radio" id="test3"  />
+      &lt;input class="with-gap" name="group1" type="radio" id="test3"  />
       &lt;label for="test3">Green&lt;/label>
     &lt;/p>
       &lt;p>
@@ -440,6 +440,23 @@
   &lt;/form>
           </code></pre>
         </div>
+        <div class="row">
+          <h5>Options</h5>
+          <p>To create a radio button with a gap, add <code class="language-markup">class="with-gap"</code> to your input. See the example below.</p>
+          
+          <p>
+            <input class="with-gap" name="group3" type="radio" id="test5" checked />
+            <label for="test5">Red</label>
+          </p>
+          <pre><code class="language-markup">
+  &lt;p>
+    &lt;input class="with-gap" name="group3" type="radio" id="test5" checked />
+    &lt;label for="test5">Red&lt;/label>
+  &lt;/p>
+          </code></pre>
+          
+          
+        </div>
       </div>
 
       <div id="checkbox" class="section scrollspy">
@@ -447,8 +464,8 @@
         <p>Checkboxes</p>
         <form action="#">
           <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5">Red</label>
+            <input type="checkbox" id="test9" />
+            <label for="test9">Red</label>
           </p>
           <p>
             <input type="checkbox" id="test6" checked="checked" />
@@ -514,7 +531,7 @@
         <input id="birthdate" type="text" class="datepicker"></input>
         <div class="row" >
           <pre><code class="language-markup col s12">
-  &lt;input type="date" class="datepicker">&lt;/div>
+  &lt;input type="date" class="datepicker">
           </code></pre>
         <h5>Initialization</h5>
         <p>At this time, not all pickadate.js options are working with our implementation</p>
@@ -701,10 +718,14 @@
       <div id="navbar-dropdown" class="section scrollspy">
 
         <h4>Navbar Dropdown Menu</h4>
-        <p>To right align your navbar links, just add a <code class="language-markup">right</code> class to your <code class="language-markup">&lt;ul></code> that contains them.</p>
-  
+        <p>
+          To add a navbar dropdown menu, add the <code class="language-markup">ul</code> dropdown structure into the page.
+          Then, add an element to trigger the dropdown menu. Make sure to supply the id of the dropdown structure to the
+          <code class="language-markup">data-activates</code> attribute of the dropdown trigger.
+        </p>
+
         <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
+        <ul id="dropdown1" class="dropdown-content">
           <li><a href="#!">one</a></li>
           <li><a href="#!">two</a></li>
           <li><a href="#!">three</a></li>
@@ -718,7 +739,7 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="components.html">Components</a></li>
                 <!-- Dropdown Trigger -->
-                <li><a class="dropdown-button" href="" data-activates='dropdown1'>Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
               </ul>
             </div>
           </div>
@@ -726,7 +747,7 @@
         <div class="row">
           <pre><code class="language-markup col s12">
   &lt;!-- Dropdown Structure -->
-  &lt;ul id='dropdown1' class='dropdown-content'>
+  &lt;ul id="dropdown1" class="dropdown-content">
     &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
@@ -740,12 +761,22 @@
           &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
           &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
           &lt;!-- Dropdown Trigger -->
-          &lt;li>&lt;a class="dropdown-button" href="" data-activates='dropdown1'>Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>&lt;/li>
         &lt;/ul>
       &lt;/div>
     &lt;/div>
   &lt;/nav>
           </code></pre>
+          <p>To activate the dropdown menu, insert this line of code into your JavaScript file, within the <code class="language-javascript">$( document ).ready(function)</code> block</p>
+          <pre><code class="language-javascript">
+  $(".dropdown-button").dropdown();
+          </code></pre>
+          <h5>Trigger dropdown menu on click</h5>
+          <p>
+            By default, the dropdown menu is activated by hovering over the dropdown trigger.
+            To activate the dropdown menu on click, pass <code class="language-javascript">{ hover: false }</code>
+            into the above <code class="language-javascript">dropdown()</code> function
+          </p>
         </div>
       </div>
 
@@ -976,6 +1007,7 @@
     &lt;/div>
   &lt;/div>
         </code></pre>
+        <br>
       </div>
 
       <!-- Card Panel -->
@@ -999,7 +1031,6 @@
   &lt;/div>
           </code></pre>
         </div>
-
     </div>
   </div>
 

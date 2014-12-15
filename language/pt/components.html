@@ -1,0 +1,1600 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Components - Materialize</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="../../images/favicon/apple-touch-icon-152x152.png"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF"/>
+    <meta name="msapplication-TileImage" content="../../images/favicon/mstile-144x144.png"/>
+    <link rel="icon" href="../../images/favicon/favicon-32x32.png" sizes="32x32"/>
+    <!--  Android 5 Chrome Color -->
+    <meta name="theme-color" content="#EE6E73"/>
+    <!-- CSS  -->
+    <link href="../../css/prism.css" rel="stylesheet"/>
+    <link href="../../css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!-- Buy sell ads-->
+    <script>
+      (function(){
+        var bsa = document.createElement('script');
+           bsa.type = 'text/javascript';
+           bsa.async = true;
+           bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+      })();
+      
+      
+    </script>
+    <nav id="">
+      <div class="container">
+        <div class="nav-wrapper"><a href="index.html" class="brand-logo">Materialize</a>
+          <ul id="nav-mobile" class="right side-nav">
+            <li><a href="about.html">About</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li class="active"><a href="components.html">Components</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+          </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+      </div>
+    </nav><div class="tabs-wrapper">
+  <div class="row white z-depth-1">
+    <div class="container">
+      <ul class="tabs">
+        <li class="tab"><a href="#tab1">Typography</a></li>
+        <li class="tab"><a href="#tab2">Grid</a></li>
+        <li class="tab"><a href="#tab4">Forms</a></li>
+        <li class="tab"><a href="#tab5">Buttons</a></li>
+        <li class="tab"><a href="#tab6">Navbar</a></li>
+        <li class="tab"><a href="#tab7">Content</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container bsa">
+  <div class="buysellads hide-on-small-only">
+    <!-- BuySellAds Zone Code -->
+    <div id="bsap_1300189" class="bsarocks bsap_b9468009151bf6fe6de9519ffdd7961f"></div>
+    <!-- End BuySellAds Zone Code -->
+  </div>
+  
+  
+<!--  Typography Section  -->
+  <div id="tab1" class="row">
+
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#roboto">Roboto</a></li>
+          <li><a href="#headers">Headers</a></li>
+          <li><a href="#blockquote">Blockquote</a></li>
+          <li><a href="#flow">Flow Text</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col s12 m9 l10">
+      <div class="section">
+        <h2 class="header">Typography</h2>
+        <p class="caption">
+          The standard font Material Design uses is Roboto. We have included the font files with our framework.
+        </p>
+        
+        <div id="roboto" class="scrollspy">
+          <h4>Roboto 2.0</h4>
+          <p class="col s12 m4">We bundle our framework with the latest iteration of Roboto Google has released. It comes with 5 different font weights you can use: 200, 300, 400, 500, 600.<br> <br> Here is an image from Google's Roboto Specimen document displaying the different font weights.</p>
+          <img class="col s12 m8" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7SW9CUzR4MnRpOTg/style_typography_roboto1.png"></img>
+
+          <h4>Removing Roboto</h4>
+          <p>In case you don't want to use Roboto on your webpage, fear not. Simply change the font stack by modifying the code below to your liking and add it to your custom css.</p>
+        <pre><code class="language-css">
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif
+  }
+        </code></pre>
+      </div>
+      
+        
+        <div id="headers" class="section scrollspy">
+          <h4>Headers</h4>
+          <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags</p>
+          <div class="card-panel">
+            <h1>Heading h1</h1>
+            <h2>Heading h2</h2>
+            <h3>Heading h3</h3>
+            <h4>Heading h4</h4>
+            <h5>Heading h5</h5>
+            <h6>Heading h6</h6>
+          </div>
+        </div>
+
+        <div id="blockquote" class="section scrollspy">
+          <h4>Blockquotes</h4>
+          <p>
+            Blockquotes are mainly used to give emphasis to a quote or citation. You can also use these for some extra text hierarchy and emphasis.
+            </p>
+          <blockquote>
+            This is an example quotation that uses the blockquote tag.
+            <br>Here is another line to make it look bigger.
+          </blockquote>
+          <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;blockquote>
+      This is an example quotation that uses the blockquote tag.
+    &lt;/blockquote>
+          </code></pre>
+          </div>
+        </div>
+
+        <div id="flow" class="section scrollspy">
+          <h4>Flow Text</h4>
+          <a id="flow-toggle" class="btn waves-effect waves-light">Toggle flow-text</a>
+          <div id="flow-text-demo" class="card-panel">
+          <p class="flow-text">
+          One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.</p>
+          <p class="flow-text">To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!</p>
+          </div>
+          
+          <br>
+            
+          <p>To use flow-text on a body of text, simply just add the class <code class="language-markup">flow-text</code> to a tag, see the code blow.</p>
+          <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;p class="flow-text">I am Flow Text&lt;/p>
+          </code></pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+</div>
+<!--    End Typography    -->
+
+  <div id="tab2" class="row">
+    <!--      table of contents-->
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#grid">Grid</a></li>
+          <li><a href="#offset">Offsets</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col s12 m9 l10">
+      <div id="grid" class="section scrollspy">
+        <h2 class="header">Grids</h2>
+        <p class="caption">
+          We are using a standard 12 column fluid responsive grid system. It comes with 3 standard screen size media queries where you  can alter the columns.</p>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th></th>
+                <th data-field="id">Mobile Devices <br>&lt;= 600px</th>
+                <th data-field="name">Tablet Devices <br>&lt;= 992px</th>
+                <th data-field="price">Desktop Devices <br>&gt;= 992px</th>
+            </tr>
+          </thead>
+            <tbody>
+            <tr>
+              <td><strong>Class Prefix</strong></td>
+              <td><code class="language-markup">.s</code></td>
+              <td><code class="language-markup">.m</code></td>
+              <td><code class="language-markup">.l</code></td>
+            </tr>
+            <tr>
+              <td><strong>Container Width</strong></td>
+              <td>85%</td>
+              <td>85%</td>
+              <td>70%</td>
+            </tr>
+            <tr>
+              <td><strong>Number of Columns</strong></td>
+              <td>12</td>
+              <td>12</td>
+              <td>12</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br><br>
+        <h4>Container</h4>
+        <p>The container class is set to ~70% of the window width. It helps you center and contain your page content. We use the container to contain our body content. Try the button below to see what the page looks like without containers</p>
+        <a id="container-toggle-button" class="btn waves-effect waves-light">Toggle Containers</a>
+        <p>To add a container just put your content inside a <code class="language-markup">&lt;div></code> tag with a <code class="language-markup">container</code> class. Here's an example of how your page might be set up.</p>
+        <pre><code class="language-markup">
+  &lt;body>
+    &lt;div class="container">
+      &lt;!-- Page Content goes here -->
+    &lt;/div>
+  &lt;/body>
+        </code></pre>
+        <h4>Grid Examples</h4>
+        <div class="row">
+          <div class="col grid-example s12 blue lighten-1"><p>s12</p></div>
+          <div class="col grid-example s12 m3 teal lighten-1"><p>s12 m3</p></div>
+          <div class="col grid-example s12 m6 teal lighten-1"><p>s12 m6</p></div>
+          <div class="col grid-example s12 m3 teal lighten-1"><p>s12 m3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
+          <div class="col grid-example s12 m6 l3 purple lighten-3"><p>s12 m6 l3</p></div>
+        </div>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;div class="row">
+    &lt;div class="col s12">&lt;p>s12&lt;/p>&lt;/div>
+    &lt;div class="col s12 m3">&lt;p>s12 m3&lt;/p>&lt;/div>
+    &lt;div class="col s12 m6">&lt;p>s12 m6&lt;/p>&lt;/div>
+    &lt;div class="col s12 m3">&lt;p>s12 m3&lt;/p>&lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+    &lt;div class="col s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;div class="col s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;div class="col s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;div class="col s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>
+    &lt;/div>
+          </code></pre>
+        </div>
+      </div>
+
+      <div id="offset" class="section scrollspy">
+        <h4>Offsets</h4>
+        <p>You can use offsets to make smaller sized columns without needing to fill in the empty space.</p>
+
+        <div class="row">
+          <div class="col grid-example s8 offset-s2 cyan lighten-1"><p>s8 offset-s2</p></div>
+          <div class="col grid-example s8 offset-s2 m8 offset-m4 l10 offset-l2 amber lighten-1"><p>s8 offset-s2 m8 offset-m4 l10 offset-l2</p></div>
+        </div>
+
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;div class="col s8 offset-s2">
+      &lt;p>s8 offset-s2&lt;/p>
+    &lt;/div>
+    &lt;div class="col s6 offset-s6 m8 offset-m4 l10 offset-l2">
+      &lt;p>s8 offset-s2 m8 offset-m4 l10 offset-l2&lt;/p>
+    &lt;/div>
+          </code></pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!--  Forms Section  -->
+  <div id="tab4" class="row">
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#input">Input Fields</a></li>
+          <li><a href="#textarea">Textareas</a></li>
+          <li><a href="#select">Select</a></li>
+          <li><a href="#radio">Radio Buttons</a></li>
+          <li><a href="#checkbox">Checkboxes</a></li>
+          <li><a href="#range">Range</a></li>
+          <li><a href="#date-picker">Date Picker</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col s12 m9 l10">
+
+      <div id="input" class="section scrollspy">
+        <h2 class="header">Forms</h2>
+        <p class="caption">
+          Forms are the standard way to receive user inputted data. The transitions and smoothness of these elements are very important because of the inherent user interaction associated with forms. 
+        </p>
+
+        <h4>Input fields</h4>
+        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" type="text" required>
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" required>
+                <label for="last_name">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="username" type="text" required>
+                <label for="username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" required>
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" required>
+                <label for="email">Email</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s6">
+          &lt;input id="first_name" type="text" required>
+          &lt;label for="first_name">First Name&lt;/label>
+        &lt;/div>
+        &lt;div class="input-field col s6">
+          &lt;input id="last_name" type="text" required>
+          &lt;label for="last_name">Last Name&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="username" type="text" required>
+          &lt;label for="username">Username&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="password" type="password" required>
+          &lt;label for="password">Password&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" required>
+          &lt;label for="email">Email&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+          </code></pre>
+        </div>
+      </div>
+      <div id="textarea" class="section scrollspy">
+        <h4>Textarea</h4>
+        <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. </p>
+        <p><strong>Textareas will auto resize to the text inside.</strong></p>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea required></textarea>                
+                <label>Textarea</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;textarea>&lt;/textarea>                
+          &lt;label>Textarea&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+          </code></pre>
+        </div>
+      </div>
+      <div id="select" class="section scrollspy">
+        <h4>Select</h4>
+        <p> Select allows user input through specified options. </p>
+        <div class="row">
+          <form class="col s6">
+            <div class="row">
+              <div class="col s12">
+                <label>Option</label>
+                <select>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="col s12">
+                <br><br><br>
+                <p>You can add the class <code class="language-markup">disabled</code> to get the browser default.</p>
+                <select class="disabled">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+  &lt;label>Option&lt;/label>
+  &lt;select>
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
+
+  &lt;select class="disabled">
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
+          </code></pre>
+        </div>
+      </div>
+      <div id="radio" class="section scrollspy">
+
+        <h4>Radio Buttons</h4>
+        <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
+        <form action="#">
+          <p>
+            <input name="group1" type="radio" id="test1" />
+            <label for="test1">Red</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="test2" />
+            <label for="test2">Yellow</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="test3"  />
+            <label for="test3">Green</label>
+          </p>
+            <p>
+              <input name="group1" type="radio" id="test4" disabled="disabled" />
+              <label for="test4">Brown</label>
+          </p>
+        </form>
+        <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+  &lt;form action="#">
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test1" />
+      &lt;label for="test1">Red&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test2" />
+      &lt;label for="test2">Yellow&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test3"  />
+      &lt;label for="test3">Green&lt;/label>
+    &lt;/p>
+      &lt;p>
+        &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
+        &lt;label for="test4">Brown&lt;/label>
+    &lt;/p>
+  &lt;/form>
+          </code></pre>
+        </div>
+      </div>
+
+      <div id="checkbox" class="section scrollspy">
+        <h4>Checkboxes</h4>
+        <p>Checkboxes</p>
+        <form action="#">
+          <p>
+            <input type="checkbox" id="test5" />
+            <label for="test5">Red</label>
+          </p>
+          <p>
+            <input type="checkbox" id="test6" checked="checked" />
+            <label for="test6">Yellow</label>
+          </p>
+          <p>
+            <input type="checkbox" id="test7" checked="checked" disabled="disabled" />
+            <label for="test7">Green</label>
+          </p>
+            <p>
+              <input type="checkbox" id="test8" disabled="disabled" />
+              <label for="test8">Brown</label>
+          </p>
+        </form>
+        <div class="row" >
+          <pre><code class="language-markup col s12">
+  &lt;form action="#">
+    &lt;p>
+      &lt;input type="checkbox" id="test5" />
+      &lt;label for="test5">Red&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input type="checkbox" id="test6" checked="checked" />
+      &lt;label for="test6">Yellow&lt;/label>
+    &lt;/p>
+    &lt;p>
+      &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
+      &lt;label for="test7">Green&lt;/label>
+    &lt;/p>
+      &lt;p>
+        &lt;input type="checkbox" id="test8" disabled="disabled" />
+        &lt;label for="test8">Brown&lt;/label>
+    &lt;/p>
+  &lt;/form>
+          </code></pre>
+        </div>
+      </div>
+
+      <div id="range" class="section scrollspy">
+        <h4>Range</h4>
+        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100.</p>
+        <form action="#">
+          <p class="range-field">
+            <input type="range" name="points" min="0" max="100">
+          </p>
+        </form>
+        <div class="row" >
+          <pre><code class="language-markup col s12">
+  &lt;form action="#">
+    &lt;p class="range-field">
+      &lt;input type="range" id="test5" />
+      &lt;label for="test5">Red&lt;/label>
+    &lt;/p>
+  &lt;/form>
+          </code></pre>
+        </div>
+      </div>
+      
+      <div id="date-picker" class="section scrollspy">
+        <h4>Date Picker</h4>
+        <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
+        <label for="birthdate">Birthdate</label>
+        <input id="birthdate" type="text" class="datepicker"></input>
+        <div class="row" >
+          <pre><code class="language-markup col s12">
+  &lt;input type="date" class="datepicker">
+          </code></pre>
+        <h5>Initialization</h5>
+        <p>At this time, not all pickadate.js options are working with our implementation</p>
+        <pre><code class="language-javascript col s12">
+  $('.datepicker').pickadate();
+        </code></pre>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<!--  Buttons Section  -->
+  <div id="tab5" class="row">
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#raised">Raised</a></li>
+          <li><a href="#floating">Floating</a></li>
+          <li><a href="#flat">Flat</a></li>
+          <li><a href="#large">Large</a></li>
+          <li><a href="#disabled">Disabled</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col s12 m9 l10">
+        <h2 class="header">Buttons</h2>
+        <p class="caption">
+        There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
+        </p>
+      <div id="raised" class="section scrollspy">
+        <h4 class="col s12">Raised</h4>
+        <div class="col s12">
+          <a class="waves-effect waves-light btn">button</a>
+          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i>button</a>
+          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
+          <pre><code class="language-markup col s12">
+  &lt;a class="waves-effect waves-light btn">Stuff&lt;/a>
+  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
+  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
+          </code></pre>
+        </div>
+      </div>
+      <div id="floating" class="section scrollspy">
+        <h4>Floating</h4>
+        <a class="btn-floating"><i class="mdi-content-add"></i></a>
+        <pre><code class="language-markup col s12">
+  &lt;a class="btn-floating">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
+        </code></pre>
+      </div>
+      <div id="flat" class="section scrollspy">
+        <h4>Flat</h4>
+        <a class="waves-effect waves-teal btn-flat">Button</a>
+        <pre><code class="language-markup col s12">
+  &lt;a class="waves-effect waves-teal btn-flat">Button&lt;/a>
+        </code></pre>
+      </div>
+      <div id="Submit" class="section scrollspy">
+        <h4>Submit Button</h4>
+        <p>When you use a button to submit a form, instead of using a input tag, use a button tag with a type submit</p>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="mdi-content-send right"></i></button>
+        <pre><code class="language-markup">
+  &lt;button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    &lt;i class="mdi-content-send right">&lt;/i>
+  &lt;/button>
+        </code></pre>
+      </div>
+      <div id="large" class="section scrollspy">
+        <h3 class="header">Additional Styles</h3>  
+        <h4>Large</h4>
+        <p>This button has a larger height for buttons that need more attention.</p>
+        <a class="waves-effect waves-light btn-large">Button</a>
+        <a class="waves-effect waves-light btn-large"><i class="mdi-file-cloud left"></i>button</a>
+        <a class="waves-effect waves-light btn-large"><i class="mdi-file-cloud right"></i>button</a>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn-large">Button&lt;/a>
+&lt;a class="waves-effect waves-light btn-large">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn-large">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
+        </code></pre>
+      </div>
+      <div id="disabled" class="section scrollspy">
+        <h4>Disabled</h4>
+        <p>This style can be applied to all button types</p>
+        <a class="btn-large disabled">Button</a>
+        <a class="btn disabled">Button</a>
+        <a class="btn-flat disabled">Button</a>
+        <a class="btn-floating disabled"><i class="mdi-content-add"></i></a>
+        <pre><code class="language-markup col s12">
+&lt;a class="btn-large disabled">Button&lt;/a>
+&lt;a class="btn disabled">Button&lt;/a>
+&lt;a class="btn-flat disabled">Button&lt;/a>
+&lt;a class="btn-floating disabled">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+
+<!--   Navbar Section  -->
+  <div id="tab6" class="row">
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#right">Right Aligned</a></li>
+          <li><a href="#left">Left Aligned</a></li>
+          <li><a href="#navbar-dropdown">Dropdown Menu</a></li>
+          <li><a href="#icons">Icon Links</a></li>
+          <li><a href="#mobile-collapse">Mobile Collapse</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col s12 m9 l10">
+      <div id="right" class="section scrollspy">
+
+        <h2 class="header">Navbar</h2>
+        <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
+        </p>
+        <h4>Right Aligned Links</h4>
+        <p>To right align your navbar links, just add a <code class="language-markup">right</code> class to your <code class="language-markup">&lt;ul></code> that contains them.</p>
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo">Logo</a>
+              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+              <ul class="right side-nav">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="components.html">Components</a></li>
+                <li><a href="javascript.html">JavaScript</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav><br>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;nav>
+      &lt;div class="nav-wrapper">
+        &lt;a href="#" class="brand-logo">Logo&lt;/a>
+        &lt;ul id="nav-mobile" class="right side-nav">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+        &lt;/ul>
+        &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+      &lt;/div>
+    &lt;/nav>
+          </code></pre>
+        </div>
+      </div>
+
+      <div id="left" class="section scrollspy">
+        <h4>Left Aligned Links</h4>
+        <p>To left align your navbar links, just add a <code class="language-markup">left</code> class to your <code class="language-markup">&lt;ul></code> that contains them.</p>
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo right">Logo</a>
+              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+              <ul class="left side-nav">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="components.html">Components</a></li>
+                <li><a href="javascript.html">JavaScript</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav><br>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+    &lt;nav>
+      &lt;div class="nav-wrapper">
+        &lt;a href="#" class="brand-logo right">Logo&lt;/a>
+        &lt;ul id="nav-mobile" class="left side-nav">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+        &lt;/ul>
+        &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+      &lt;/div>
+    &lt;/nav>
+          </code></pre>
+        </div>
+      </div>
+
+      <div id="navbar-dropdown" class="section scrollspy">
+
+        <h4>Navbar Dropdown Menu</h4>
+        <p>
+          To add a navbar dropdown menu, add the <code class="language-markup">ul</code> dropdown structure into the page.
+          Then, add an element to trigger the dropdown menu. Make sure to supply the id of the dropdown structure to the
+          <code class="language-markup">data-activates</code> attribute of the dropdown trigger.
+        </p>
+
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo">Logo</a>
+              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+              <ul class="right side-nav">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="components.html">Components</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav><br>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+  &lt;!-- Dropdown Structure -->
+  &lt;ul id="dropdown1" class="dropdown-content">
+    &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;div class="col s12">
+        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+        &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+        &lt;ul class="right side-nav">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;!-- Dropdown Trigger -->
+          &lt;li>&lt;a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/nav>
+          </code></pre>
+          <p>To activate the dropdown menu, insert this line of code into your JavaScript file, within the <code class="language-javascript">$( document ).ready(function)</code> block</p>
+          <pre><code class="language-javascript">
+  $(".dropdown-button").dropdown();
+          </code></pre>
+          <h5>Trigger dropdown menu on click</h5>
+          <p>
+            By default, the dropdown menu is activated by hovering over the dropdown trigger.
+            To activate the dropdown menu on click, pass <code class="language-javascript">{ hover: false }</code>
+            into the above <code class="language-javascript">dropdown()</code> function
+          </p>
+        </div>
+      </div>
+
+      <div id="icons" class="section scrollspy">
+        <h4>Icon Links</h4>
+        
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo">Logo</a>
+              <ul class="side-nav">
+                <li><a href="sass.html"><i class="mdi-action-search"></i></a></li>
+                <li><a href="components.html"><i class="mdi-action-view-module"></i></a></li>
+                <li><a href="javascript.html"><i class="mdi-navigation-refresh"></i></a></li>
+                <li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <br>
+        
+        <p>You can add icons into links. For icon only links you don't need any additional class. Just pop the <code class="language-markup">i</code> tag in and it will work.</p>        
+<pre><code class="language-markup">
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;div class="col s12">
+        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+        &lt;ul class="side-nav">
+          &lt;li>&lt;a href="sass.html">&lt;i class="mdi-action-search">&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">&lt;i class="mdi-action-view-module">&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">&lt;i class="mdi-navigation-refresh">&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="mobile.html">&lt;i class="mdi-navigation-more-vert">&lt;/i>&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/nav></code></pre>
+        <br>
+
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo">Logo</a>
+              <ul class="side-nav">
+                <li><a href="sass.html"><i class="mdi-action-search left"></i>Link with Left Icon</a></li>
+                <li><a href="components.html"><i class="mdi-action-view-module right"></i>Link with Right Icon</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <br>
+
+        <p>For adding an icon to a text link you need to add either a <code class="language-markup">left</code> or <code class="language-markup">right</code> class to the icon depending on where you want the icon to be.</p>
+        <pre><code class="language-markup">
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;div class="col s12">
+        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+        &lt;ul class="side-nav">
+          &lt;li>&lt;a href="sass.html">&lt;i class="mdi-action-search left">&lt;/i>Link with Left Icon&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">&lt;i class="mdi-action-view-module right">&lt;/i>Link with Right Icon&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/nav></code></pre>
+        <br>
+      </div>
+    
+      <div id="mobile-collapse" class="section scrollspy">
+        <h4>Mobile Collapse Button</h4>
+        
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo right">Logo</a>
+              <a style="display: block !important;" class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+            </div>
+          </div>
+        </nav>
+        
+        <br>
+        
+        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="mdi-navigation-menu"></i></p>
+        <p>If you already included the code for the button collapse as we did in the examples above, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
+        <pre><code class="language-javascript">
+    $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
+    </div>
+  </div>
+<!--  Content tab  -->
+  <div id="tab7" class="row">
+      
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#preloader">Preloader</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#tables">Tables</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class=" col s12 m9 l10">
+<!--    Cards Section-->
+    <div id="cards" class="section scrollspy">
+      <h2 class="header">Cards</h2>
+      <p class="caption">Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.</p>
+    <div class="row">
+      <div class="col s12 m6">
+        <!-- Basic Card -->
+        <h4>Basic Card</h4>
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Card Title</span>
+            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+            <a href='#'>This is a link</a>
+          </div>
+        </div>
+      </div>
+
+        <div class="col s12">
+          <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m6">
+      &lt;div class="card blue-grey darken-1">
+        &lt;div class="card-content white-text">
+          &lt;span class="card-title">Card Title&lt;/span>
+          &lt;p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.&lt;/p>
+        &lt;/div>
+        &lt;div class="card-action">
+          &lt;a href="#">This is a link&lt;/a>
+          &lt;a href='#'>This is a link&lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+        <br>
+      </div>
+
+      
+
+      <!-- Image Card -->
+      <div class="col s12 m7">
+       <h4>Image Card</h4>
+        <div class="card">
+          <div class="card-image">
+            <img src="../../images/sample-1.jpg">
+            <span class="card-title">Card Title</span>
+          </div>  
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+            <a href='#'>This is a link</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12">
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m7">
+      &lt;div class="card">
+        &lt;div class="card-image">
+          &lt;img src="images/sample-1.jpg">
+          &lt;span class="card-title">Card Title&lt;/span>
+        &lt;/div>  
+        &lt;div class="card-content">
+          &lt;p>I am a very simple card. I am good at containing small bits of information. 
+          I am convenient because I require little markup to use effectively.&lt;/p>
+        &lt;/div>
+        &lt;div class="card-action">
+          &lt;a href="#">This is a link&lt;/a>
+          &lt;a href='#'>This is a link&lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+        <br>
+      </div>
+      
+      <!-- Small Card -->
+      <div class="col s12 m6">
+        <h4>Small Card</h4>
+        <p>The Small Card limits the height of the card. We provide this as a utility class for you to easily ensure equal card size.</p>
+        <div class="card small">
+          <div class="card-image">
+            <img src="../../images/sample-1.jpg">
+            <span class="card-title">Card Title</span>
+          </div>  
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+            <a href='#'>This is a link</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12">
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12">
+      &lt;div class="card small">
+        &lt;div class="card-image">
+          &lt;img src="images/sample-1.jpg">
+          &lt;span class="card-title">Card Title&lt;/span>
+        &lt;/div>  
+        &lt;div class="card-content">
+          &lt;p>I am a very simple card. I am good at containing small bits of information. 
+          I am convenient because I require little markup to use effectively.&lt;/p>
+        &lt;/div>
+        &lt;div class="card-action">
+          &lt;a href="#">This is a link&lt;/a>
+          &lt;a href='#'>This is a link&lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+        <br>
+      </div>
+
+      <!-- Card Panel -->
+      <div class="col s12 m5">
+        <h4>Card Panel</h4>
+        <p>For a simpler card with less markup, try using a card panel which just has padding and a shadow effect</p>
+
+        <div class="card-panel teal"> <span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.</span>
+        </div>
+      </div>
+        <div class="col s12">
+          <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m5">
+      &lt;div class="card-panel teal">
+        &lt;span class="white-text">I am a very simple card. I am good at containing small bits of information. 
+        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+        &lt;/span>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+          </code></pre>
+        </div>
+    </div>
+  </div>
+
+<!--    Preloader Section-->
+    <div id="preloader" class="section scrollspy">
+      <h2 class="header">Preloader</h2>
+      <p class="caption">If you have content that will take a long time to load, you should give the user feedback. In this case we have an animated preloader.</p>
+    <div class="row">
+      <div class="col s12 m4 center">
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4 center">
+
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col s12 m4 center">
+
+        <div class="preloader-wrapper small active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <pre><code class="language-markup col s12">
+  &lt;div class="preloader-wrapper big active">
+    &lt;div class="spinner-layer spinner-blue">
+      &lt;div class="circle-clipper left">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="gap-patch">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="circle-clipper right">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;div class="spinner-layer spinner-red">
+      &lt;div class="circle-clipper left">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="gap-patch">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="circle-clipper right">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;div class="spinner-layer spinner-yellow">
+      &lt;div class="circle-clipper left">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="gap-patch">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="circle-clipper right">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;div class="spinner-layer spinner-green">
+      &lt;div class="circle-clipper left">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="gap-patch">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>&lt;div class="circle-clipper right">
+        &lt;div class="circle">&lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+      </code></pre>
+    </div>
+  </div>
+  
+  <!--  Collections Section  -->
+  <div id="collections" class="section scrollspy">
+    
+    <div class="row">
+      <div class="col s12">
+        <h2 class="header">Collections</h2>
+        <p class="caption">Collections allow you to group list objects together.</p>
+
+        <div id="basic-collection" class="section scrollspy">
+          <h4>Basic</h4>
+          <ul class="collection">
+            <li class="collection-item">Alvin</li>
+            <li class="collection-item">Alvin</li>
+            <li class="collection-item">Alvin</li>
+            <li class="collection-item">Alvin</li>
+          </ul>
+          <pre><code class="language-markup">
+  &lt;ul class="collection">
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+  &lt;/ul>
+          </code></pre>
+          </div>
+        <br>
+
+        <div id="basic-collection-2" class="section scrollspy">
+        <h4>Basic with different HTML structure</h4>
+        <div class="collection">
+          <a href="#!" class="collection-item">Alvin</a>
+          <a href="#!" class="collection-item active">Alvin</a>
+          <a href="#!" class="collection-item">Alvin</a>
+          <a href="#!" class="collection-item">Alvin</a>
+        </div>
+        <pre><code class="language-markup">
+  &lt;div class="collection">
+    &lt;a href="#!" class="collection-item">Alvin&lt;/a>
+    &lt;a href="#!" class="collection-item active">Alvin&lt;/a>
+    &lt;a href="#!" class="collection-item">Alvin&lt;/a>
+    &lt;a href="#!" class="collection-item">Alvin&lt;/a>
+  &lt;/div>
+        </code></pre>
+        </div>
+        <br>
+
+        <div id="headers-collection" class="section scrollspy">
+        <h4>Headers</h4>
+        <ul class="collection with-header">
+          <li class="collection-header"><h4>First Names</h4></li>
+          <li class="collection-item">Alvin</li>
+          <li class="collection-item">Alvin</li>
+          <li class="collection-item">Alvin</li>
+          <li class="collection-item">Alvin</li>
+        </ul>
+        <pre><code class="language-markup">
+  &lt;ul class="collection with-header">
+    &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+    &lt;li class="collection-item">Alvin&lt;/li>
+  &lt;/ul>
+        </code></pre>
+        </div>
+        <br>
+
+        <div class="section">
+        <h4>Secondary content</h4>
+        <ul class="collection with-header">
+          <li class="collection-header"><h4>First Names</h4></li>
+          <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="secondary-content mdi-content-send"></i></a></li>
+          <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></li>
+          <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></li>
+          <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></li>
+        </ul>
+        <pre><code class="language-markup">
+  &lt;ul class="collection with-header">
+    &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="secondary-content mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+    &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="mdi-content-send">&lt;/i>&lt;/a>&lt;/div>&lt;/li>
+  &lt;/ul>
+        </code></pre>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End collections -->
+      
+<!--  Tables Section-->
+  <div id="tables" class="section scrollspy">
+      <h2 class="header">Tables</h2>
+      <p class="caption">Tables are a nice way to organize a lot of data. We provide a few utility classes to help you style your table as easily as possible. In addition, to improve mobile experience, all tables on mobile-screen widths are centered automatically.</p>
+      <div class="row">
+      <div class="col s12">
+        <h4>Borderless Table</h4>
+        <p>Tables are borderless by default.</p>
+        <table>
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+      <div class="col s12">
+        <pre><code class="language-markup">
+  &lt;table>
+    &lt;thead>
+      &lt;tr>
+          &lt;th data-field="id">Name&lt;/th>
+          &lt;th data-field="name">Item Name&lt;/th>
+          &lt;th data-field="price">Item Price&lt;/th>
+      &lt;/tr>
+    &lt;/thead>
+
+    &lt;tbody>
+      &lt;tr>
+        &lt;td>Alvin&lt;/td>
+        &lt;td>Eclair&lt;/td>
+        &lt;td>$0.87&lt;/td>
+      &lt;/tr>
+      &lt;tr>
+        &lt;td>Alan&lt;/td>
+        &lt;td>Jellybean&lt;/td>
+        &lt;td>$3.76&lt;/td>
+      &lt;/tr>
+      &lt;tr>
+        &lt;td>Jonathan&lt;/td>
+        &lt;td>Lollipop&lt;/td>
+        &lt;td>$7.00&lt;/td>
+      &lt;/tr>
+    &lt;/tbody>
+  &lt;/table>
+        </code></pre>
+      </div>
+      </div>
+      
+      <br>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4>Bordered Table</h4>
+        <p>Add <code class="language-markup">class="bordered"</code> to the table tag for a bordered table</p>
+        <table class="bordered">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+      <br>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4>Striped Table</h4>
+        <p>Add <code class="language-markup">class="striped"</code> to the table tag for a striped table</p>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+      <br>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4>Hoverable Table</h4>
+        <p>Add <code class="language-markup">class="hoverable"</code> to the table tag for a hoverable table</p>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+      <div class="row">
+      <div class="col s12">
+        <h4>Centered Table</h4>
+        <p>Add <code class="language-markup">class="centered"</code> to the table tag to center align all the text in the table</p>
+        <table class="centered">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+          </thead
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+    </div>
+  </div> <!--  End Tables Section  -->
+    
+  </div>
+      
+  </div>
+  </div>
+
+  
+  
+    </div>
+  </div>
+</div>
+<div id="footer" class="section">
+  <div class="footer-block">
+    <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+  </div>
+  <div class="footer-block">
+    <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+  </div>
+  <div class="footer-block">
+    <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+  </div>
+  <div class="footer-block">
+    <a href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+  </div>
+</div><!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../../js/jquery.timeago.js"></script>  
+<script src="../../js/prism.js"></script>
+<script src="../../bin/materialize.js"></script>
+<script src="../../js/init.js"></script>
+<!-- Twitter Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google Plus Button-->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!--  Google Analytics  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56218128-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+  </body>
+</html>

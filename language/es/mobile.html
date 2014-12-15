@@ -1,0 +1,119 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Mobile - Materialize</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="../../images/favicon/apple-touch-icon-152x152.png"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF"/>
+    <meta name="msapplication-TileImage" content="../../images/favicon/mstile-144x144.png"/>
+    <link rel="icon" href="../../images/favicon/favicon-32x32.png" sizes="32x32"/>
+    <!--  Android 5 Chrome Color -->
+    <meta name="theme-color" content="#EE6E73"/>
+    <!-- CSS  -->
+    <link href="../../css/prism.css" rel="stylesheet"/>
+    <link href="../../css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!-- Buy sell ads-->
+    <script>
+      (function(){
+        var bsa = document.createElement('script');
+           bsa.type = 'text/javascript';
+           bsa.async = true;
+           bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+      })();
+      
+      
+    </script>
+    <nav id="">
+      <div class="container">
+        <div class="nav-wrapper"><a href="index.html" class="brand-logo">Materialize</a>
+          <ul id="nav-mobile" class="right side-nav">
+            <li><a href="about.html">About</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="components.html">Components</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li class="active"><a href="mobile.html">Mobile</a></li>
+          </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+      </div>
+    </nav><div class="container">
+  <div class="row">
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#right">Sidebar</a></li>
+          <li><a href="#toast-mobile">Toast</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col s12 m9 l10">
+      
+      <!--        Sidenav   -->
+      <div id="right" class="section scrollspy">
+        <h2 class="header">Navbar</h2>
+        <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
+        </p>
+        <h4>Drag Out Menu</h4>
+        <p>There are 2 options for this plugin. You can set the menu width and the activation area width. The values shown in the example are the defaults so you don't have to set them if you are okay with those values.</p>
+        <img class="mobile-image" src="../../images/menu.gif">
+
+        <div class="row">
+          <pre><code class="language-javascript col s12">
+  $('.button-collapse').sideNav({menuWidth: 240, activationWidth: 70});
+          </code></pre>
+        </div>
+      </div>
+      
+    <!--        Toast   -->
+    <div id="toast-mobile"class="section scrollspy">
+      <h2 class="header">Toast</h2>
+      <h4>Swipe to Dismiss</h4>
+      <p>On all devices, you can swipe to dismiss toasts.</p>
+      <img class="mobile-image" src="../../images/toast.gif">
+
+    </div>
+  </div>
+</div> <!-- End Container --><div id="footer" class="section">
+  <div class="footer-block">
+    <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+  </div>
+  <div class="footer-block">
+    <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+  </div>
+  <div class="footer-block">
+    <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+  </div>
+  <div class="footer-block">
+    <a href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+  </div>
+</div><!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../../js/jquery.timeago.js"></script>  
+<script src="../../js/prism.js"></script>
+<script src="../../bin/materialize.js"></script>
+<script src="../../js/init.js"></script>
+<!-- Twitter Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google Plus Button-->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!--  Google Analytics  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56218128-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+  </body>
+</html>

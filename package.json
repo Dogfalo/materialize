@@ -2,6 +2,9 @@
   "name": "Materialize-dist-build",
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
+  "url" : "http://materializecss.com/",
+  "version": "0.92.1",
+  
   "dependencies": {
     "grunt": "0.x.x",
     "grunt-contrib-clean": "0.5.x",

@@ -34,8 +34,7 @@ nav {
     padding: 0;
     
     @media #{$medium-and-down} {
-//      position: absolute;
-//      right: 0;
+      left: 0;
       width: 100%;
       text-align: center;
       z-index: 0;
