@@ -18,6 +18,7 @@ Materialize, a CSS Framework based on material design
   - Modal restructured / can be opened programmatically
   - Callbacks added to modals
   - Added dist folder to repo
+  - Cards restructured
 
 
 - v0.91
