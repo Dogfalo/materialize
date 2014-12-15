@@ -173,11 +173,17 @@ nav {
   font-size: 28px;
   background-color: tomato;
   color: white;
+  padding: 0px;
 
   span {
     font-weight: 200;
     line-height: 50px;
   }
+}
+
+.promo-example {
+  overflow: hidden;
+  border: 2px solid rgba(0,0,0,.15);
 }
 
 // Color Wheel
