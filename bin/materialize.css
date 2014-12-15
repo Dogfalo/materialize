@@ -6903,7 +6903,7 @@ ul.tabs li.tab {
   font-size: 1.2rem;
   color: #212121;
 }
-.dropdown-content li a {
+.dropdown-content li a, .dropdown-content li span {
   display: block;
   padding: 1rem 1rem;
 }
