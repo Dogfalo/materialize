@@ -128,25 +128,55 @@
       <div id="grid" class="section scrollspy">
         <h2 class="header">Grids</h2>
         <p class="caption">
-          We are using a standard 12 column fluid responsive grid system. It comes with 3 standard screen size media queries where you can alter the columns.</p>
+          We are using a standard 12 column fluid responsive grid system.The grid helps you layout your page in an ordered, easy fashion</p>
 
         <!-- Grid visual demo -->
-        <h4>Introduction</h4>
-        <p>Our standard grid has 12 columns. No matter the size of the browser, each of these columns will always be equally sized.</p>
+        <h3 class="header">Introduction</h3>
+
+        <h5>12 Columns</h5>
+        <p>Our standard grid has 12 columns. No matter the size of the browser, each of these columns will always have an equal width.</p>
         <div class="row">
-          <div class="col s1 grid-example">1</div>
-          <div class="col s1 grid-example">2</div>
-          <div class="col s1 grid-example">3</div>
-          <div class="col s1 grid-example">4</div>
-          <div class="col s1 grid-example">5</div>
-          <div class="col s1 grid-example">6</div>
-          <div class="col s1 grid-example">7</div>
-          <div class="col s1 grid-example">8</div>
-          <div class="col s1 grid-example">9</div>
-          <div class="col s1 grid-example">10</div>
-          <div class="col s1 grid-example">11</div>
-          <div class="col s1 grid-example">12</div>
+          <div class="col s1 grid-example"><span class="flow-text">1</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">2</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">3</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">4</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">5</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">6</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">7</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">8</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">9</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">10</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">11</span></div>
+          <div class="col s1 grid-example"><span class="flow-text">12</span></div>
         </div>
+        <p>To get a feel of how the grid is used in HTML. Take a look at this code below which will produce a similar result as the one above.</p>
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s1">1&lt;/div>
+    &lt;div class="col s1">2&lt;/div>
+    &lt;div class="col s1">3&lt;/div>
+    &lt;div class="col s1">4&lt;/div>
+    &lt;div class="col s1">5&lt;/div>
+    &lt;div class="col s1">6&lt;/div>
+    &lt;div class="col s1">7&lt;/div>
+    &lt;div class="col s1">8&lt;/div>
+    &lt;div class="col s1">9&lt;/div>
+    &lt;div class="col s1">10&lt;/div>
+    &lt;div class="col s1">11&lt;/div>
+    &lt;div class="col s1">12&lt;/div>
+  &lt;/div>
+        </code></pre>
+        <p>Note: For now, just know that the <code class="language-markup">s1</code> stands for small-1 which in plain English means "1 column on small screens".</p>
+    
+        <br>
+        
+        <h5>Columns live inside Rows</h5>
+        <p>Remember when you are creating your layout that all </p>
+        <pre><code class="languague-markup">
+  <div class="row">
+    <div class="col s1 grid-example">1</div>
+  </div>
+        </code></pre>
 
 
         <table class="hoverable">

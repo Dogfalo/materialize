@@ -168,9 +168,15 @@ nav {
   @include transition(all .3s cubic-bezier(0.215, 0.61, 0.355, 1));
   border: 1px solid #eee;
   margin: 7px 0;
+  text-align: center;
+  line-height: 50px;
+  font-size: 28px;
+  background-color: tomato;
+  color: white;
 
-  p {
-    margin: 15px;
+  span {
+    font-weight: 200;
+    line-height: 50px;
   }
 }
 
