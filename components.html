@@ -599,6 +599,7 @@
           <li><a href="#raised">Raised</a></li>
           <li><a href="#floating">Floating</a></li>
           <li><a href="#flat">Flat</a></li>
+          <li><a href="#submit">Submit</a></li>
           <li><a href="#large">Large</a></li>
           <li><a href="#disabled">Disabled</a></li>
         </ul>
@@ -610,21 +611,19 @@
         There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
         </p>
       <div id="raised" class="section scrollspy">
-        <h4 class="col s12">Raised</h4>
-        <div class="col s12">
-          <a class="waves-effect waves-light btn">button</a>
-          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i>button</a>
-          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
-          <pre><code class="language-markup col s12">
-  &lt;a class="waves-effect waves-light btn">Stuff&lt;/a>
-  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
-  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
-          </code></pre>
-        </div>
+        <h4>Raised</h4>
+        <a class="waves-effect waves-light btn">button</a>
+        <a class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i>button</a>
+        <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn">Stuff&lt;/a>
+&lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
+        </code></pre>
       </div>
       <div id="floating" class="section scrollspy">
         <h4>Floating</h4>
-        <a class="btn-floating"><i class="mdi-content-add"></i></a>
+        <a class="btn-floating"><i class="mdi-content-add"></i></a><br><br>
         <pre><code class="language-markup col s12">
   &lt;a class="btn-floating">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
         </code></pre>
@@ -636,7 +635,7 @@
   &lt;a class="waves-effect waves-teal btn-flat">Button&lt;/a>
         </code></pre>
       </div>
-      <div id="Submit" class="section scrollspy">
+      <div id="submit" class="section scrollspy">
         <h4>Submit Button</h4>
         <p>When you use a button to submit a form, instead of using a input tag, use a button tag with a type submit</p>
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="mdi-content-send right"></i></button>
