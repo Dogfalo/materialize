@@ -6902,6 +6902,9 @@ ul.tabs li.tab {
   cursor: pointer;
   font-size: 1.2rem;
   color: #212121;
+}
+.dropdown-content li a {
+  display: block;
   padding: 1rem 1rem;
 }
 @media only screen and (min-width: 1200px) {

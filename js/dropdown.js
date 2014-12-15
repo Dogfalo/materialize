@@ -46,7 +46,6 @@
         activates.show({duration: 200, easing: 'easeOutCubic'});
 
         $(document).bind('click.'+ activates.attr('id'), function (e) {
-          e.preventDefault();
           if (!activates.is(e.target) && (!origin.is(e.target))) {
             activates.hide({duration: 175, easing: 'easeOutCubic'});
             $(document).unbind('click.' + activates.attr('id'));
