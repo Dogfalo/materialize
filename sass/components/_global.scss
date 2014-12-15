@@ -22,6 +22,16 @@ $medium-only: "only screen and (min-width : #{$small-screen}) and (max-width : #
 //  box-sizing: inherit;
 //}
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 ul {
 	list-style-type: none;
 }
@@ -206,12 +216,17 @@ i {
 
 
 // Footer
-#footer {
-  text-align: center;
 
-  a {
-    vertical-align: top;
-    line-height: 30px;
+footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: color("materialize-red", "lighten-2");
+
+  .footer-copyright {
+    line-height: 50px;
+    color: rgba(255,255,255,.8);
+    background-color: rgba(255,255,255,.1);
+    @extend .light;
   }
 }
 

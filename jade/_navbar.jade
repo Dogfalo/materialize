@@ -8,28 +8,28 @@ script.
     (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
   })();
 
+header
+  nav(id=(white_nav == false ? "" : "front-page-nav"))
+    .container
+      .nav-wrapper
+        if white_nav == false
+          a.brand-logo(href='http://materializecss.com/') Materialize
+        else
+          a#logo-container.brand-logo(href='http://materializecss.com/')
+            object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
 
-nav(id=(white_nav == false ? "" : "front-page-nav"))
-  .container
-    .nav-wrapper
-      if white_nav == false
-        a.brand-logo(href='http://materializecss.com/') Materialize
-      else
-        a#logo-container.brand-logo(href='http://materializecss.com/')
-          object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
-
-      ul#nav-mobile.right.side-nav
-        li(class=(page == "About" ? "active" : ""))
-          a(href='http://materializecss.com/about.html') About
-        li(class=(page == "Getting Started" ? "active" : ""))
-          a(href='http://materializecss.com/getting_started.html') Getting Started
-        li(class=(page == "Sass" ? "active" : ""))
-          a(href='http://materializecss.com/sass.html') Sass
-        li(class=(page == "Components" ? "active" : ""))
-          a(href='http://materializecss.com/components.html') Components
-        li(class=(page == "JavaScript" ? "active" : ""))
-          a(href='http://materializecss.com/javascript.html') JavaScript
-        li(class=(page == "Mobile" ? "active" : ""))
-          a(href='http://materializecss.com/mobile.html') Mobile
-      a.button-collapse(href='#', data-activates='nav-mobile')
-        i.mdi-navigation-menu
+        ul#nav-mobile.right.side-nav
+          li(class=(page == "About" ? "active" : ""))
+            a(href='http://materializecss.com/about.html') About
+          li(class=(page == "Getting Started" ? "active" : ""))
+            a(href='http://materializecss.com/getting_started.html') Getting Started
+          li(class=(page == "Sass" ? "active" : ""))
+            a(href='http://materializecss.com/sass.html') Sass
+          li(class=(page == "Components" ? "active" : ""))
+            a(href='http://materializecss.com/components.html') Components
+          li(class=(page == "JavaScript" ? "active" : ""))
+            a(href='http://materializecss.com/javascript.html') JavaScript
+          li(class=(page == "Mobile" ? "active" : ""))
+            a(href='http://materializecss.com/mobile.html') Mobile
+        a.button-collapse(href='#', data-activates='nav-mobile')
+          i.mdi-navigation-menu

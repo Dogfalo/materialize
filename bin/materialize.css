@@ -2538,6 +2538,16 @@ th {
   color: #FFFFFF !important;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 ul {
   list-style-type: none;
 }
@@ -2718,12 +2728,15 @@ i.right {
   }
 }
 
-#footer {
-  text-align: center;
+footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: #ee6e73;
 }
-#footer a {
-  vertical-align: top;
-  line-height: 30px;
+footer .footer-copyright {
+  line-height: 50px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 table, th, td {
@@ -6316,7 +6329,7 @@ small {
   font-size: 75%;
 }
 
-.light {
+.light, footer .footer-copyright {
   font-weight: 300;
 }
 
