@@ -366,21 +366,10 @@ pre[class*="language-"] {
 
 
 // Footer styling
-#footer .footer-block {
-  display: inline-block;
- 
-  a {
-    margin-left: 25px;
-    vertical-align: bottom;
-  }
-}
-@media #{$medium-and-down} {
-  .footer-block {
-    display: block;
-    margin-bottom: 20px;
-  }
-}
+footer{
+  font-size: .9rem;
 
+}
 
 //About page styling
 .image-container {
