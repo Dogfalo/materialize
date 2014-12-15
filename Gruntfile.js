@@ -2,17 +2,6 @@ module.exports = function(grunt) {
  
   // configure the tasks
   grunt.initConfig({
-    
-    
-    
-//  Git Info
-//    gitinfo: {
-//        options: {
-//          
-//        },
-//        ...
-//    },
-
 //  Copy
     copy: {
       dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true },
@@ -30,8 +19,8 @@ module.exports = function(grunt) {
         }
       },
       
-      min: {                            // Target
-        options: {                       // Target options
+      min: {
+        options: {
           style: 'compressed',
           sourcemap: 'none'
         },
@@ -93,7 +82,6 @@ module.exports = function(grunt) {
         dest: 'dist/js/materialize.js'
       }
     },
-
 
 //  Uglify
     uglify: {
@@ -170,8 +158,7 @@ module.exports = function(grunt) {
 //        src: [ 'dist/' ]
 //      },
 //    },
-                   
-                  
+
 //  Jade
     jade: {
       compile: {
@@ -207,8 +194,8 @@ module.exports = function(grunt) {
       },
                    
       js: {
-        files: ["js/jquery.easing.1.3.js",
-                "js/velocity.min.js",
+        files: [ "js/jquery.easing.1.3.js",
+                 "js/velocity.min.js",
                  "js/hammer.min.js",
                  "js/jquery.hammer.js",
                  "js/collapsible.js",
@@ -317,19 +304,10 @@ module.exports = function(grunt) {
           useAvailablePort: true,
           hostname: '*',
           keepalive: true
-//          
-//          ,onCreateServer: function(server, connect, options) {
-//            var io = require('socket.io').listen(server);
-//            io.sockets.on('connection', function(socket) {
-//              // do something with socket
-//            });
-//          }
         }
       }
     }
-                  
 
-    
   });
  
   // load the tasks
@@ -346,7 +324,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
- 
   // define the tasks
   grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify:dist', 'compress:main', 'compress:src']);
   
