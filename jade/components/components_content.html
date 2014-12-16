@@ -174,10 +174,29 @@
         <p>Remember when you are creating your layout that all columns must be contained inside a row and that you must add the <code class="language-markup">col</code> class to your inner divs to make them into columns</p>
         <div class="row">
           <div class="col s12 grid-example"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
+          <div class="col s6 grid-example"><span class="flow-text">6-columns (one-half)</span></div>
+          <div class="col s6 grid-example"><span class="flow-text">6-columns (one-half)</span></div>
         </div>
         <pre><code class="language-markup">
   &lt;div class="row">
-    &lt;div class="col s12">This div is 12 columns wide&lt;/div>
+    &lt;div class="col s12">This div is 12-columns wide&lt;/div>
+    &lt;div class="col s6">This div is 6-columns wide&lt;/div>
+    &lt;div class="col s6">This div is 6-columns wide&lt;/div>
+  &lt;/div>
+        </code></pre>
+
+        <br>
+
+        <h5>Offsets</h5>
+        <p>To offset </p>
+        <div class="row">
+          <div class="col s12 grid-example"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
+          <div class="col s6 offset-s6 grid-example"><span class="flow-text">6-columns (offset-by-6)</span></div>
+        </div>
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 grid-example">&lt;span class="flow-text">This div is 12-columns wide on all screen sizes&lt;/span>&lt;/div>
+    &lt;div class="col s6 offset-s6 grid-example">&lt;span class="flow-text">6-columns (offset-by-6)&lt;/span>&lt;/div>
   &lt;/div>
         </code></pre>
 
@@ -231,22 +250,58 @@
 
         <h5>Example Side Navigation Layout</h5>
         <p>You can see how easy it is to create layouts using the grid system. Just remember to make sure your column numbers add up to 12 for a even layout</p>
-        <div class="row">
-          <div id="site-layout-example-top" class="col s12">
-            <!-- <p class="flat-text-logo"></p> -->
-          </div>
-          <div id="site-layout-example-left" class="col s3">
-            <p class="flat-text-header"></p>
-            <p class="flat-text"></p>
-            <p class="flat-text"></p>
-          </div>
-          <div id="site-layout-example-right" class="col s9">
-            <p class="flat-text"></p>
-            <p class="flat-text"></p>
-            <p class="flat-text"></p>
-            <p class="flat-text"></p>
-          </div>
-        </div>
+
+            <div class="row">
+
+              <div id="site-layout-example-top" class="col s12">
+                <!-- <p class="flat-text-logo"></p> -->
+              </div>
+              <div id="site-layout-example-left" class="col s3">
+                <p class="flat-text-header"></p>
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+              </div>
+              <div id="site-layout-example-right" class="col s9">
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+              </div>
+            </div>
+
+
+        <div class='browser-window'>
+    <div class='top-bar'>
+      <div class='circles'>
+         <div class="circle circle-red"></div>
+         <div class="circle circle-yellow"></div>
+         <div class="circle circle-green"></div>
+      </div>
+    </div>
+    <div class='content'>
+      <div class="row">
+
+              <div id="site-layout-example-top" class="col s12">
+                <!-- <p class="flat-text-logo"></p> -->
+              </div>
+              <div id="site-layout-example-left" class="col s3">
+                <p class="flat-text-header"></p>
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+              </div>
+              <div id="site-layout-example-right" class="col s9">
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+                <p class="flat-text"></p>
+              </div>
+            </div>
+    </div>
+    
+  </div>
+
+
+
 
         <pre><code class="language-markup">
   &lt;!-- Navbar goes here -->

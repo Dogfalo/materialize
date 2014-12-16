@@ -222,6 +222,50 @@ nav {
   margin: 27px auto;
 }
 
+// Chrome Browser
+$bottomColor: #E2E2E1;
+$topColor: lighten($bottomColor, 2%);
+
+$border: $bottomColor;
+
+$width: 100%;
+$height: 500px;
+
+.browser-window {
+  text-align: left;
+  margin: 20px;
+  width: $width;
+  height: $height;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.browser-window .top-bar {
+  height: 30px;
+  border-radius: 5px 5px 0 0;
+  border-top: thin solid lighten($topColor, 1%);
+  border-bottom: thin solid darken($bottomColor, 1%);
+  background: linear-gradient($topColor, $bottomColor);
+}
+.browser-window .circle {
+  height: 8px;
+  width: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: lighten($topColor, 10%);
+}
+.browser-window .circles { margin: 5px 11px; }
+.browser-window .content {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  display: inline-block;
+  border-radius: 0 0 5px 5px;
+  background-color: #fafafa;
+}
+
+.clear { clear: both; }
+
 // Color Wheel
 .dynamic-color {
 
