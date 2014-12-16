@@ -2736,7 +2736,7 @@ footer {
 footer .footer-copyright {
   line-height: 50px;
   color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(51, 51, 51, 0.08);
 }
 
 table, th, td {
@@ -5829,7 +5829,7 @@ td, th {
 }
 
 .container {
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   margin: 0 auto;
   max-width: 1280px;
   width: 90%;
@@ -5846,8 +5846,8 @@ td, th {
   }
 }
 .container .row {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
 }
 
 .section {
@@ -5884,7 +5884,7 @@ td, th {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
 }
 .row .col.s1 {
   width: 8.33333%;
@@ -6901,6 +6901,12 @@ ul.tabs li.tab {
 }
 .btn-large i {
   font-size: 1.6rem;
+}
+
+li.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #eeeeee;
 }
 
 .dropdown-content {
