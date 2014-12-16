@@ -222,7 +222,9 @@ nav {
   margin: 27px auto;
 }
 
-// Chrome Browser
+/*****************
+  Chrome Browser
+*****************/
 $bottomColor: #E2E2E1;
 $topColor: lighten($bottomColor, 2%);
 
@@ -233,7 +235,6 @@ $height: 500px;
 
 .browser-window {
   text-align: left;
-  margin: 20px;
   width: $width;
   height: $height;
   display: inline-block;
@@ -248,11 +249,20 @@ $height: 500px;
   background: linear-gradient($topColor, $bottomColor);
 }
 .browser-window .circle {
-  height: 8px;
-  width: 8px;
+  height: 9px;
+  width: 9px;
   display: inline-block;
   border-radius: 50%;
   background-color: lighten($topColor, 10%);
+}
+#close-circle {
+  background-color: #E66966;
+}
+#minimize-circle {
+  background-color: #E9D588;
+}
+#maximize-circle {
+  background-color: #B8E28A;
 }
 .browser-window .circles { margin: 5px 11px; }
 .browser-window .content {
@@ -263,8 +273,15 @@ $height: 500px;
   border-radius: 0 0 5px 5px;
   background-color: #fafafa;
 }
+.browser-window .row {
+  margin: 0;
+}
 
 .clear { clear: both; }
+
+/**********************
+**********************/
+
 
 // Color Wheel
 .dynamic-color {
