@@ -231,7 +231,7 @@ $topColor: lighten($bottomColor, 2%);
 $border: $bottomColor;
 
 $width: 100%;
-$height: 500px;
+$height: auto;
 
 .browser-window {
   text-align: left;
@@ -240,6 +240,7 @@ $height: 500px;
   display: inline-block;
   border-radius: 5px;
   background-color: #fff;
+  margin: 20px 0px;
 }
 .browser-window .top-bar {
   height: 30px;
@@ -268,7 +269,7 @@ $height: 500px;
 .browser-window .content {
   margin: 0;
   width: 100%;
-  min-height: 100%;
+  // min-height: 100%;
   display: inline-block;
   border-radius: 0 0 5px 5px;
   background-color: #fafafa;
