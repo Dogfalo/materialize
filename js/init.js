@@ -139,7 +139,7 @@
 //    Toggle Containers on page
     var toggleContainersButton = $('#container-toggle-button');
     toggleContainersButton.click(function(){
-      $('.container, .had-container').each(function(){
+      $('body .browser-window .container, .had-container').each(function(){
         $(this).toggleClass('had-container');
         $(this).toggleClass('container');
       });
