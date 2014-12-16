@@ -6,7 +6,7 @@
     top: 0;
     height: 120%;
     background-color: #FFF;
-    z-index: 1000;
+    z-index: 999;
     @include box-shadow-2(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
     
     will-change: left;
@@ -42,7 +42,7 @@
   right:0px;
   bottom:0px;
   background-color: rgba(0,0,0,.5);
-  z-index: 999;
+  z-index: 998;
   
   will-change: opacity;
 }

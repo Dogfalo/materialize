@@ -4,9 +4,6 @@
 body {
   background-color: #fcfcfc;
 }
-body.parallax-demo {
-  height: 100%;
-}
 
 p.box {
   padding: 20px;
@@ -488,7 +485,9 @@ pre[class*="language-"] {
 // Footer styling
 footer{
   font-size: .9rem;
-
+}
+body.parallax-demo footer {
+  margin-top: 0;
 }
 
 //About page styling

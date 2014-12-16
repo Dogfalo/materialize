@@ -889,6 +889,7 @@
           <li><a href="#raised">Raised</a></li>
           <li><a href="#floating">Floating</a></li>
           <li><a href="#flat">Flat</a></li>
+          <li><a href="#submit">Submit</a></li>
           <li><a href="#large">Large</a></li>
           <li><a href="#disabled">Disabled</a></li>
         </ul>
@@ -900,21 +901,19 @@
         There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
         </p>
       <div id="raised" class="section scrollspy">
-        <h4 class="col s12">Raised</h4>
-        <div class="col s12">
-          <a class="waves-effect waves-light btn">button</a>
-          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i>button</a>
-          <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
-          <pre><code class="language-markup col s12">
-  &lt;a class="waves-effect waves-light btn">Stuff&lt;/a>
-  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
-  &lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
-          </code></pre>
-        </div>
+        <h4>Raised</h4>
+        <a class="waves-effect waves-light btn">button</a>
+        <a class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i>button</a>
+        <a class="waves-effect waves-light btn"><i class="mdi-file-cloud right"></i>button</a>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn">Stuff&lt;/a>
+&lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud left">&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn">&lt;i class="mdi-file-cloud right">&lt;/i>button&lt;/a>
+        </code></pre>
       </div>
       <div id="floating" class="section scrollspy">
         <h4>Floating</h4>
-        <a class="btn-floating"><i class="mdi-content-add"></i></a>
+        <a class="btn-floating"><i class="mdi-content-add"></i></a><br><br>
         <pre><code class="language-markup col s12">
   &lt;a class="btn-floating">&lt;i class="mdi-content-add">&lt;/i>&lt;/a>
         </code></pre>
@@ -926,7 +925,7 @@
   &lt;a class="waves-effect waves-teal btn-flat">Button&lt;/a>
         </code></pre>
       </div>
-      <div id="Submit" class="section scrollspy">
+      <div id="submit" class="section scrollspy">
         <h4>Submit Button</h4>
         <p>When you use a button to submit a form, instead of using a input tag, use a button tag with a type submit</p>
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="mdi-content-send right"></i></button>
@@ -1064,6 +1063,7 @@
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="#!">one</a></li>
           <li><a href="#!">two</a></li>
+          <li class="divider"></li>
           <li><a href="#!">three</a></li>
         </ul>
         <nav>
@@ -1086,6 +1086,7 @@
   &lt;ul id="dropdown1" class="dropdown-content">
     &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
+    &lt;li class="divider">&lt;/li>
     &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
   &lt;/ul>
   &lt;nav>
@@ -1213,7 +1214,9 @@
           <li><a href="#cards">Cards</a></li>
           <li><a href="#preloader">Preloader</a></li>
           <li><a href="#collections">Collections</a></li>
+          <li><a href="#badges">Badges</a></li>
           <li><a href="#tables">Tables</a></li>
+          <li><a href="#footer">Footer</a></li>
         </ul>
       </div>
     </div>
@@ -1647,6 +1650,52 @@
     </div>
   </div>
   <!-- End collections -->
+
+  <!--  Badges Section  -->
+  <div id="badges" class="section scrollspy">
+    
+    <div class="row">
+      <div class="col s12">
+        <h2 class="header">Badges</h2>
+        <p class="caption">Badges can notify you that there are new or unread messages or notifications. Add the <code class="language-markup">new</code> class to the badge to give it the background.</p>
+
+        <ul class="collection">
+          <a href="#!" class="collection-item">Alan<span class="badge">1</span></a>
+          <a href="#!" class="collection-item">Alan<span class="new badge">4</span></a>
+          <a href="#!" class="collection-item">Alan</li>
+          <a href="#!" class="collection-item">Alan<span class="badge">14</span></a>
+        </ul>
+        <pre><code class="language-markup">
+  &lt;ul class="collection">
+    &lt;a href="#!" class="collection-item">Alan&lt;span class="badge">1&lt;/span>&lt;/a>
+    &lt;a href="#!" class="collection-item">Alan&lt;span class="new badge">4&lt;/span>&lt;/a>
+    &lt;a href="#!" class="collection-item">Alan&lt;/li>
+    &lt;a href="#!" class="collection-item">Alan&lt;span class="badge">14&lt;/span>&lt;/a>
+  &lt;/ul>
+        </code></pre>
+
+        <h4>Badges in Dropdown</h4>
+
+        <ul id="dropdown2" class="dropdown-content">
+          <li><a href="#!">one<span class="badge">1</span></a></li>
+          <li><a href="#!">two<span class="new badge">1</span></a></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+        <a class="btn dropdown-button" href="#!" data-activates="dropdown2">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a>
+
+        <pre><code class="language-markup">
+  &lt;ul id="dropdown2" class="dropdown-content">
+    &lt;li>&lt;a href="#!">one&lt;span class="badge">1&lt;/span>&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">two&lt;span class="new badge">1&lt;/span>&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;a class="btn dropdown-button" href="#!" data-activates="dropdown2">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>
+        </code></pre>
+
+      </div>
+    </div>
+  </div>
+  <!-- End badges -->
       
 <!--  Tables Section-->
   <div id="tables" class="section scrollspy">
@@ -1856,8 +1905,70 @@
       </div>
       </div>
       
+    </div><!--  End Tables Section  -->
+
+<!--  Footer Section-->
+  <div id="footer" class="section scrollspy">
+    <h2 class="header">Footer</h2>
+    <p class="caption">Footers are a great way to organize a lot of site navigation and information at the end of a page. This is where the user will look once hes finished scrolling through the current page or is looking for additional information about your website. </p>
+    <p>Note: We use flexbox to structure our html so that the footer is always on the bottom of the page. It is important to keep the structure of your page within the 3 HTML5 tags: <code class="language-markup">&lt;header></code>, <code class="language-markup">&lt;main></code>, <code class="language-markup">&lt;footer></code></p>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <li><a class="grey-text lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text lighten-3" href="#!">Link 4</a></li>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2014 Copyright Text
+        <a class="grey-text lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>  
+    <div class="row">
+      <div class="col s12">
+        <br>
+        <pre><code class="language-markup">
+    &lt;footer>
+      &lt;div class="container">
+        &lt;div class="row">
+          &lt;div class="col l6 s12">
+            &lt;h5 class="white-text">Footer Content&lt;/h5>
+            &lt;p class="grey-text lighten-4">You can use rows and columns here to organize your footer content.&lt;/p>
+          &lt;/div>
+          &lt;div class="col l4 offset-l2 s12">
+            &lt;h5 class="white-text">Links&lt;/h5>
+            &lt;li>&lt;a class="grey-text lighten-3" href="#!">Link 1&lt;/a>&lt;/li>
+            &lt;li>&lt;a class="grey-text lighten-3" href="#!">Link 2&lt;/a>&lt;/li>
+            &lt;li>&lt;a class="grey-text lighten-3" href="#!">Link 3&lt;/a>&lt;/li>
+            &lt;li>&lt;a class="grey-text lighten-3" href="#!">Link 4&lt;/a>&lt;/li>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="footer-copyright">
+        &lt;div class="container">
+        © 2014 Copyright Text
+        &lt;a class="grey-text lighten-4 right" href="#!">More Links&lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/footer>  
+        </code></pre>
+      </div>
     </div>
-  </div> <!--  End Tables Section  -->
+      
+  </div> <!-- End of footer section -->
+
+  </div> 
     
   </div>
       
@@ -1873,7 +1984,7 @@
     </main>    <footer>
       <div class="container">
         <div class="row">
-          <div class="col l6 s12">
+          <div class="col l4 s12">
             <h5 class="white-text">Help Materialize Grow</h5>
             <p class="grey-text lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -1885,7 +1996,12 @@
 </form>
 
           </div>
-          <div class="col l5 offset-l1 s12" style="overflow: hidden;">
+          <div class="col l4 s12">
+            <h5 class="white-text">Join the Discussion</h5>
+            <p class="grey-text lighten-4">We have a gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+            <a class="btn waves-effect waves-light red lighten-3" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
+          </div>
+          <div class="col l4 s12" style="overflow: hidden;">
             <h5 class="white-text">Connect</h5>
             <iframe src="http://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
             <br>
@@ -1904,7 +2020,7 @@
     </footer>  
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery.timeago.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>  
     <script src="js/prism.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
