@@ -2791,6 +2791,7 @@ td, th {
   border-radius: 2px;
 }
 .collection .collection-item {
+  line-height: 1.5rem;
   padding: 10px 20px;
   margin: 0px;
   border-bottom: 1px solid #e0e0e0;
@@ -2843,6 +2844,32 @@ td, th {
 }
 .collection.pagination li:hover {
   background-color: #e1f5fe;
+}
+
+span.badge {
+  min-width: 3rem;
+  padding: 0 6px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: inherit;
+  color: #757575;
+  float: right;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+span.badge.new {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #2196F3;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+span.badge.new:after {
+  content: " new";
 }
 
 @font-face {
@@ -6921,8 +6948,9 @@ li.divider {
   cursor: pointer;
   font-size: 1.2rem;
   color: #212121;
+  line-height: 1.5rem;
 }
-.dropdown-content li a, .dropdown-content li span {
+.dropdown-content li > a, .dropdown-content li > span {
   display: block;
   padding: 1rem 1rem;
 }
