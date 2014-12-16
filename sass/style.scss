@@ -204,14 +204,6 @@ nav {
   height: 42px;
 }
 
-.flat-text-logo {
-  height: 25px;
-  width: 5%;
-  background-color: rgba(255,255,255,.15);
-  display: block;
-  vertical-align: middle;
-  margin: 0 20px;
-}
 .flat-text-header {
   height: 35px;
   width: 80%;
@@ -225,6 +217,11 @@ nav {
   background-color: rgba(0,0,0,.15);
   display: block;
   margin: 27px auto;
+    &.small {
+    width: 25%;
+    height: 25px;
+    background-color: rgba(0,0,0,.15);
+  }
 }
 
 /**********************
