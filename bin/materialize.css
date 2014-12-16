@@ -7751,7 +7751,7 @@ ul.table-of-contents a.active {
     top: 0;
     height: 120%;
     background-color: #FFF;
-    z-index: 1000;
+    z-index: 999;
     -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -7789,7 +7789,7 @@ ul.table-of-contents a.active {
   right: 0px;
   bottom: 0px;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 998;
   will-change: opacity;
 }
 
