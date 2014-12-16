@@ -1,3 +1,8 @@
+li.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: color("grey", "lighten-3");
+}
 .dropdown-content {
   display:none;
   @extend .z-depth-1;
