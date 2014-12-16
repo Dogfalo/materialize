@@ -5,8 +5,8 @@
   background-color: #FFFFFF;
   margin: 0px;
   min-width: 100px;
-  z-index: 1000;
-  
+  z-index: 1001;
+
   li {
     cursor: pointer;
     font-size: 1.2rem;
@@ -17,7 +17,7 @@
       padding: 1rem 1rem;
     }
   }
-    
+
   @media only screen and (min-width: $large-screen) {
     li:hover {
       background-color: rgba(0,0,0, .07)
