@@ -7070,9 +7070,9 @@ ul.tabs li.tab {
   margin: auto;
   overflow-y: auto;
   z-index: 1000;
-  -webkit-border-radius: "2px";
-  -moz-border-radius: "2px";
-  border-radius: "2px";
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   background-clip: padding-box;
   -webkit-transform: translate(0);
   -moz-transform: translate(0);

@@ -186,6 +186,11 @@ nav {
   border: 2px solid rgba(0,0,0,.15);
 }
 
+
+/*******************
+  Flat Site Mockup
+*******************/
+
 #site-layout-example-left {
   background-color: color("blue-grey", "lighten-2");
   height: 300px;
@@ -196,7 +201,7 @@ nav {
 }
 #site-layout-example-top {
   background-color: color("red", "lighten-2");
-  height: 48px;
+  height: 42px;
 }
 
 .flat-text-logo {
@@ -222,6 +227,9 @@ nav {
   margin: 27px auto;
 }
 
+/**********************
+**********************/
+
 /*****************
   Chrome Browser
 *****************/
@@ -238,17 +246,20 @@ $height: auto;
   width: $width;
   height: $height;
   display: inline-block;
-  border-radius: 5px;
+  @include border-radius(5px 5px 2px 2px);
   background-color: #fff;
   margin: 20px 0px;
+  overflow: hidden;
+
+    .top-bar {
+    height: 30px;
+    @include border-radius(5px 5px 0 0);
+    border-top: thin solid lighten($topColor, 1%);
+    border-bottom: thin solid darken($bottomColor, 1%);
+    background: linear-gradient($topColor, $bottomColor);
+  }
 }
-.browser-window .top-bar {
-  height: 30px;
-  border-radius: 5px 5px 0 0;
-  border-top: thin solid lighten($topColor, 1%);
-  border-bottom: thin solid darken($bottomColor, 1%);
-  background: linear-gradient($topColor, $bottomColor);
-}
+
 .browser-window .circle {
   height: 9px;
   width: 9px;
