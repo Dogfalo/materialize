@@ -186,6 +186,42 @@ nav {
   border: 2px solid rgba(0,0,0,.15);
 }
 
+#site-layout-example-left {
+  background-color: color("blue-grey", "lighten-2");
+  height: 300px;
+}
+#site-layout-example-right {
+  background-color: color("teal", "lighten-1");
+  height: 300px;
+}
+#site-layout-example-top {
+  background-color: color("red", "lighten-2");
+  height: 48px;
+}
+
+.flat-text-logo {
+  height: 25px;
+  width: 5%;
+  background-color: rgba(255,255,255,.15);
+  display: block;
+  vertical-align: middle;
+  margin: 0 20px;
+}
+.flat-text-header {
+  height: 35px;
+  width: 80%;
+  background-color: rgba(255,255,255,.15);
+  display: block;
+  margin: 27px auto;
+}
+.flat-text {
+  height: 25px;
+  width: 80%;
+  background-color: rgba(0,0,0,.15);
+  display: block;
+  margin: 27px auto;
+}
+
 // Color Wheel
 .dynamic-color {
 
