@@ -2736,7 +2736,7 @@ footer {
 footer .footer-copyright {
   line-height: 50px;
   color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(51, 51, 51, 0.08);
 }
 
 table, th, td {
