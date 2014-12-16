@@ -5829,7 +5829,7 @@ td, th {
 }
 
 .container {
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   margin: 0 auto;
   max-width: 1280px;
   width: 90%;
@@ -5846,8 +5846,8 @@ td, th {
   }
 }
 .container .row {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
 }
 
 .section {
@@ -5884,7 +5884,7 @@ td, th {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
 }
 .row .col.s1 {
   width: 8.33333%;
