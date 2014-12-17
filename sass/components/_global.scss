@@ -390,4 +390,6 @@ span.badge {
   }
 }
 
-
+img.circle {
+  @include border-radius(50%);
+}
