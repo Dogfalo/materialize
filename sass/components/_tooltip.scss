@@ -7,7 +7,7 @@
     color: #fff;
     height: 1rem;
     line-height: 1rem;
-    max-width: 200px;
+    // max-width: 350px;
     opacity: 0;
     display: none;
     position: absolute;
@@ -15,6 +15,8 @@
     overflow: hidden;
     left:0;
     top:0;
+
+    will-change: top, left;
 }
 
 .backdrop {
@@ -27,4 +29,6 @@
   background-color: #323232;
   z-index: -1;
   @include transform-origin( 50% 10%);
+
+  will-change: transform, opacity;
 }
