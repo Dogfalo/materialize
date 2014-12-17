@@ -754,11 +754,11 @@ jQuery.extend( jQuery.easing,
                   left: origin.offset().left + origin.outerWidth()/2 - newTooltip.outerWidth()/2 });
 
             // Calculate Scale to fill
-            console.log(newTooltip.width());
-            scale_factor = newTooltip.width() / 11;
-            console.log(backdrop.width());
+            scale_factor = newTooltip.width() / 8;
+            if (scale_factor < 8)
+              scale_factor = 8;
 
-            newTooltip.velocity({ opacity: 1, marginTop: '+15px'}, { duration: 350, queue: false });
+            newTooltip.velocity({ opacity: 1, marginTop: '+10px'}, { duration: 350, queue: false });
             backdrop.css({ display: 'block' })
             .velocity({opacity:1},{duration: 75, delay: 0, queue: false})
             .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
