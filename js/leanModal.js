@@ -17,12 +17,12 @@
       options = $.extend(defaults, options);
 
       $("#lean-overlay").click(function() {
-        closeModal(modal);
+        $(modal).closeModal(options);
       });
 
       $(modal).find(".modal-close").click(function(e) {
         e.preventDefault();
-        closeModal(modal);
+        $(modal).closeModal(options);
       });
 
       $("#lean-overlay").css({ display : "block", opacity : 0 });
@@ -46,22 +46,30 @@
           }
         }
       });
-
-      function closeModal(modal_id) {
-        $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
-        $(modal_id).fadeOut(options.out_duration, function() {
-          $(modal_id).css({ top: 0});
-          $("#lean-overlay").css({display:"none"});
-
-          // Call complete callback
-          if (typeof(options.complete) === "function") {
-            options.complete();
-          }
-        });
-      }
     }
   });
-  
+
+  $.fn.extend({
+    closeModal: function(options) {
+      var defaults = {
+        out_duration: 200,
+        complete: undefined
+      }
+      var options = $.extend(defaults, options);
+
+      $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
+      $(this).fadeOut(options.out_duration, function() {
+        $(this).css({ top: 0});
+        $("#lean-overlay").css({display:"none"});
+
+        // Call complete callback
+        if (typeof(options.complete) === "function") {
+          options.complete();
+        }
+      });
+    }
+  })
+
   $.fn.extend({
     leanModal: function(options) {
       return this.each(function() {
