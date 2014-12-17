@@ -368,12 +368,12 @@ jQuery.extend( jQuery.easing,
       options = $.extend(defaults, options);
 
       $("#lean-overlay").click(function() {
-        closeModal(modal);
+        $(modal).closeModal(options);
       });
 
       $(modal).find(".modal-close").click(function(e) {
         e.preventDefault();
-        closeModal(modal);
+        $(modal).closeModal(options);
       });
 
       $("#lean-overlay").css({ display : "block", opacity : 0 });
@@ -397,22 +397,30 @@ jQuery.extend( jQuery.easing,
           }
         }
       });
-
-      function closeModal(modal_id) {
-        $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
-        $(modal_id).fadeOut(options.out_duration, function() {
-          $(modal_id).css({ top: 0});
-          $("#lean-overlay").css({display:"none"});
-
-          // Call complete callback
-          if (typeof(options.complete) === "function") {
-            options.complete();
-          }
-        });
-      }
     }
   });
-  
+
+  $.fn.extend({
+    closeModal: function(options) {
+      var defaults = {
+        out_duration: 200,
+        complete: undefined
+      }
+      var options = $.extend(defaults, options);
+
+      $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
+      $(this).fadeOut(options.out_duration, function() {
+        $(this).css({ top: 0});
+        $("#lean-overlay").css({display:"none"});
+
+        // Call complete callback
+        if (typeof(options.complete) === "function") {
+          options.complete();
+        }
+      });
+    }
+  })
+
   $.fn.extend({
     leanModal: function(options) {
       return this.each(function() {
@@ -617,8 +625,8 @@ jQuery.extend( jQuery.easing,
 
     // For each set of tabs, we want to keep track of
     // which tab is active and its associated content
-    var $this = $(this);
-    var window_width = $(window).width();
+    var $this = $(this),
+        window_width = $(window).width();
 
     $this.width('100%');
     // Set Tab Width for each tab
@@ -626,10 +634,10 @@ jQuery.extend( jQuery.easing,
     $this.children('li').each(function() {
       $(this).width((100/$num_tabs)+'%');
     });
-    var $active, $content, $links = $this.find('li.tab a');
-    var $tabs_width = $this.width();
-    var $tab_width = $this.find('li').first().outerWidth();
-    var $index = 0;
+    var $active, $content, $links = $this.find('li.tab a'),
+        $tabs_width = $this.width(),
+        $tab_width = $this.find('li').first().outerWidth(),
+        $index = 0;
     
     // If the location.hash matches one of the links, use that as the active tab.
     // If no match is found, use the first link as the initial active tab.
@@ -709,7 +717,8 @@ jQuery.extend( jQuery.easing,
   });
 
   };
-}( jQuery ));;(function ($) {
+}( jQuery ));
+;(function ($) {
     
     var newTooltip;
     var timeout;
