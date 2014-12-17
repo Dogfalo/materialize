@@ -1215,6 +1215,7 @@
           <li><a href="#preloader">Preloader</a></li>
           <li><a href="#collections">Collections</a></li>
           <li><a href="#badges">Badges</a></li>
+          <li><a href="#images">Images</a></li>
           <li><a href="#tables">Tables</a></li>
           <li><a href="#footer">Footer</a></li>
         </ul>
@@ -1696,8 +1697,52 @@
     </div>
   </div>
   <!-- End badges -->
-      
-<!--  Tables Section-->
+
+  <!-- Images -->
+  <div id="images" class="section scrollspy">
+    <h2 class="header">Images</h2>
+    <p class="caption">Images can be styled in different ways using Materialize</p>
+    <h4>Circular images</h4>
+    <div class="row">
+      <div class="col offset-s3 s6">
+        <div class="card-panel grey lighten-5 z-depth-2">
+          <div class="row">
+            <div class="col s2">
+              <img src="images/yuna.jpg" alt="" class="circle">
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <p>To make images appear circular, simply add <code class="language-markup">class="circle"</code> to them</p>
+        <pre><code class="language-markup">
+  &lt;div class="col offset-s3 s6">
+    &lt;div class="card-panel grey lighten-5 z-depth-2">
+      &lt;div class="row">
+        &lt;div class="col s2">
+          &lt;img src="images/yuna.jpg" alt="" class="circle"> &lt;!-- notice the "circle" class -->
+        &lt;/div>
+        &lt;div class="col s10">
+          &lt;span class="black-text">
+            This is a square image. Add the "circle" class to it to make it appear circular.
+          &lt;/span>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!--  Tables Section-->
   <div id="tables" class="section scrollspy">
       <h2 class="header">Tables</h2>
       <p class="caption">Tables are a nice way to organize a lot of data. We provide a few utility classes to help you style your table as easily as possible. In addition, to improve mobile experience, all tables on mobile-screen widths are centered automatically.</p>

@@ -2872,6 +2872,13 @@ span.badge.new:after {
   content: " new";
 }
 
+img.circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+
 @font-face {
   font-family: "Material-Design-Icons";
   src: url("../font/material-design-icons/Material-Design-Icons.eot?-g7cqhn");
