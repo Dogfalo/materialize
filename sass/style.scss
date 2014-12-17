@@ -162,14 +162,134 @@ nav {
 // Grid doc styles
 
 .col.grid-example {
-  @include transition(all .3s cubic-bezier(0.215, 0.61, 0.355, 1));
   border: 1px solid #eee;
   margin: 7px 0;
+  text-align: center;
+  line-height: 50px;
+  font-size: 28px;
+  background-color: tomato;
+  color: white;
+  padding: 0px;
 
-  p {
-    margin: 15px;
+  span {
+    font-weight: 200;
+    line-height: 50px;
   }
 }
+
+.promo-example {
+  overflow: hidden;
+}
+
+
+/*******************
+  Flat Site Mockup
+*******************/
+
+#site-layout-example-left {
+  background-color: color("blue-grey", "lighten-2");
+  height: 300px;
+}
+#site-layout-example-right {
+  background-color: color("teal", "lighten-1");
+  height: 300px;
+}
+#site-layout-example-top {
+  background-color: color("red", "lighten-2");
+  height: 42px;
+}
+
+.flat-text-header {
+  height: 35px;
+  width: 80%;
+  background-color: rgba(255,255,255,.15);
+  display: block;
+  margin: 27px auto;
+}
+.flat-text {
+  height: 25px;
+  width: 80%;
+  background-color: rgba(0,0,0,.15);
+  display: block;
+  margin: 27px auto;
+  &.small {
+    width: 25%;
+    height: 25px;
+    background-color: rgba(0,0,0,.15);
+  }
+  &.full-width {
+    width: 100%;
+  }
+}
+
+/**********************
+**********************/
+
+/*****************
+  Chrome Browser
+*****************/
+$bottomColor: #E2E2E1;
+$topColor: lighten($bottomColor, 2%);
+
+$border: $bottomColor;
+
+$width: 100%;
+$height: auto;
+
+.browser-window {
+  text-align: left;
+  width: $width;
+  height: $height;
+  display: inline-block;
+  @include border-radius(5px 5px 2px 2px);
+  background-color: #fff;
+  margin: 20px 0px;
+  overflow: hidden;
+
+    .top-bar {
+    height: 30px;
+    @include border-radius(5px 5px 0 0);
+    border-top: thin solid lighten($topColor, 1%);
+    border-bottom: thin solid darken($bottomColor, 1%);
+    background: linear-gradient($topColor, $bottomColor);
+  }
+}
+
+.browser-window .circle {
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: lighten($topColor, 10%);
+  margin-right: 1px;
+}
+#close-circle {
+  background-color: #FF5C5A;
+}
+#minimize-circle {
+  background-color: #FFBB50;
+}
+#maximize-circle {
+  background-color: #1BC656;
+}
+.browser-window .circles { margin: 5px 12px; }
+.browser-window .content {
+  margin: 0;
+  width: 100%;
+  // min-height: 100%;
+  display: inline-block;
+  border-radius: 0 0 5px 5px;
+  background-color: #fafafa;
+}
+.browser-window .row {
+  margin: 0;
+}
+
+.clear { clear: both; }
+
+/**********************
+**********************/
+
 
 // Color Wheel
 .dynamic-color {
