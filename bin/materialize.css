@@ -8323,6 +8323,11 @@ ul.table-of-contents a.active {
   width: 16px;
   margin: 0 12px;
   background-color: #e0e0e0;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  transition: background-color 0.3s;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
