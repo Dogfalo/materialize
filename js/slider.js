@@ -131,21 +131,18 @@
 
           var direction = e.gesture.direction;
           var x = e.gesture.deltaX;
-          var y = e.gesture.deltaY;
-
-          console.log(e.gesture.deltaX);
-          console.log(direction);
+          var velocityX = e.gesture.velocityX;
 
           $curr_slide = $slider.find('.active');
           $curr_slide.velocity({ translateX: x
               }, {duration: 50, queue: false, easing: 'easeOutQuad'});      
 
           // Swipe Left
-          if (direction === 4 && x > ($this.innerWidth() / 2)) {
+          if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX > 0.65)) {
             swipeRight = true;
           }
           // Swipe Right
-          else if (direction === 2 && x < (-1 * $this.innerWidth() / 2)) {
+          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.65)) {
             swipeLeft = true;
           }
 
