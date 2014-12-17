@@ -1939,19 +1939,20 @@ jQuery.extend( jQuery.easing,
           }
           swipeLeft = false;
           swipeRight = false;
+
+          // Restart interval
+          clearInterval($interval);
+          $interval = setInterval(
+            function(){
+              $active_index = $slider.find('.active').index();
+              if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
+              else $active_index += 1;
+              
+              moveToSlide($active_index);
+
+            }, $transition_time + $time_between_slides 
+          );
         }
-
-        // Restart interval
-        $interval = setInterval(
-          function(){
-            $active_index = $slider.find('.active').index();
-            if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
-            else $active_index += 1;
-            
-            moveToSlide($active_index);
-
-          }, $transition_time + $time_between_slides 
-        );
       });
 
 
