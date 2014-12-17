@@ -1833,7 +1833,7 @@ jQuery.extend( jQuery.easing,
       // Adjust height to current slide
       $active.find('img').load(function() {
         // Handler for .load() called.
-        $slider.height($active.height());
+        $slider.height($active.find('img').first().height());
       });
 
       // This function will transition the slide to any index of the next slide
@@ -1854,7 +1854,7 @@ jQuery.extend( jQuery.easing,
         
         $slides.eq(index).velocity({opacity: 1}, {duration: $transition_time, queue: false, easing: 'easeOutQuad'});
         $slides.eq(index).addClass('active');
-        $slider.height($active.height());
+        $slider.height($active.find('img').first().height());
 
 
         // Update indicators
