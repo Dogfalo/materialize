@@ -156,6 +156,7 @@
     }
     $('.tab-demo').show().tabs();
     $('.parallax').parallax();
+    $('.slider').slider();
     $('.modal-trigger').leanModal();
     $('.tooltipped').tooltip({"delay": 300});
     $('.collapsible-accordion').collapsible();

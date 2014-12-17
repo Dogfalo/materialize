@@ -1757,6 +1757,125 @@ jQuery.extend( jQuery.easing,
 
 
 
+}( jQuery ));;(function ($) {
+    
+  $.fn.slider = function (options) {
+    var defaults = {
+      full_width: true,
+      indicators: true
+    }
+    options = $.extend(defaults, options);
+
+    return this.each(function() {
+
+      // For each slider, we want to keep track of
+      // which slide is active and its associated content
+      var $this = $(this);
+      var $slider = $this.find('ul.slides').first();
+      var $slides = $slider.find('li');
+      var $active_index = $slider.find('.active').index();
+      var $active;
+      if ($active_index != -1) { $active = $slides.eq($active_index); }
+
+      var $transition_time = 1000; // 1 second
+      var $time_between_slides = 4000; // 4 seconds
+
+      // Make slider full width
+      if (options.full_width) { $this.addClass('full-width'); }
+
+      // dynamically add indicators
+      if (options.indicators) {
+        var $indicators = $('<ul class="indicators"></ul>');
+        $slides.each(function( index ) {
+          var $indicator = $('<li class="indicator-item"></li>');
+
+          // Handle clicks on indicators
+          $indicator.click(function () {
+            var $parent = $slider.parent();
+            var curr_index = $parent.find($(this)).index();
+            moveToSlide(curr_index);
+
+            // reset interval
+            clearInterval($interval);
+            $interval = setInterval(
+              function(){
+                $active_index = $slider.find('.active').index();
+                if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
+                else $active_index += 1;
+                
+                moveToSlide($active_index);
+
+              }, $transition_time + $time_between_slides 
+            );
+          });
+          $indicators.append($indicator);
+        });
+        $this.append($indicators);
+        $indicators = $this.find('ul.indicators').find('li.indicator-item');
+      }
+
+      if ($active) {
+        $active.show();
+      }
+      else {
+        console.log("false");
+        $slides.first().addClass('active').velocity({opacity: 1}, {duration: $transition_time, queue: false, easing: 'easeOutQuad'});
+
+        $active_index = 0;
+        $active = $slides.eq($active_index);
+
+        // Update indicators
+        if (options.indicators) {
+          $indicators.eq($active_index).addClass('active');
+        }
+      }
+
+      // Adjust height to current slide
+      $active.find('img').load(function() {
+        // Handler for .load() called.
+        $slider.height($active.height());
+      });
+
+      // This function will transition the slide to any index of the next slide
+      function moveToSlide(index) {
+        $active_index = $slider.find('.active').index();
+        $active = $slides.eq($active_index);
+
+        $active.removeClass('active');
+        $active.velocity({opacity: 0}, {duration: $transition_time, queue: false, easing: 'easeOutQuad'});
+
+        // Update indicators
+        if (options.indicators) {
+          $indicators.eq($active_index).removeClass('active');
+        }
+        
+        $slides.eq(index).velocity({opacity: 1}, {duration: $transition_time, queue: false, easing: 'easeOutQuad'});
+        $slides.eq(index).addClass('active');
+        $slider.height($active.height());
+
+
+        // Update indicators
+        if (options.indicators) {
+          $indicators.eq(index).addClass('active');
+        }
+      }
+
+      // auto scroll 
+      $interval = setInterval(
+        function(){
+          $active_index = $slider.find('.active').index();
+          if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
+          else $active_index += 1;
+          
+          moveToSlide($active_index);
+
+        }, $transition_time + $time_between_slides 
+      );
+
+
+    });
+
+  };
 }( jQuery ));;/*!
  * pickadate.js v3.5.4, 2014/09/11
  * By Amsul, http://amsul.ca
