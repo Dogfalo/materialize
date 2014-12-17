@@ -8307,6 +8307,10 @@ ul.table-of-contents a.active {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
+}
+.slider ul.slides li.active {
+  z-index: 2;
 }
 .slider ul.indicators {
   position: relative;
