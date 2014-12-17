@@ -6,8 +6,8 @@
 
     // For each set of tabs, we want to keep track of
     // which tab is active and its associated content
-    var $this = $(this);
-    var window_width = $(window).width();
+    var $this = $(this),
+        window_width = $(window).width();
 
     $this.width('100%');
     // Set Tab Width for each tab
@@ -15,10 +15,10 @@
     $this.children('li').each(function() {
       $(this).width((100/$num_tabs)+'%');
     });
-    var $active, $content, $links = $this.find('li.tab a');
-    var $tabs_width = $this.width();
-    var $tab_width = $this.find('li').first().outerWidth();
-    var $index = 0;
+    var $active, $content, $links = $this.find('li.tab a'),
+        $tabs_width = $this.width(),
+        $tab_width = $this.find('li').first().outerWidth(),
+        $index = 0;
     
     // If the location.hash matches one of the links, use that as the active tab.
     // If no match is found, use the first link as the initial active tab.
