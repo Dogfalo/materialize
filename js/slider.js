@@ -2,8 +2,8 @@
     
   $.fn.slider = function (options) {
     var defaults = {
-      full_width: false,
       indicators: true,
+      height: 400,
       transition: 500,
       interval: 6000
     }
@@ -58,7 +58,6 @@
           $slides.eq(index).velocity({opacity: 1}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
           $slides.eq(index).find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, delay: options.transition, queue: false, easing: 'easeOutQuad'});
           $slides.eq(index).addClass('active');
-          $slider.height($active.find('img').first().height());
 
 
           // Update indicators
@@ -68,13 +67,14 @@
         }
       }
 
+      // Set height of slider
+      $this.height(options.height + 40);
+      $slider.height(options.height);
+
       // Set initial positions of captions
       $slides.find('.caption').each(function () {
         captionTransition($(this), 0);
       });
-
-      // Make slider full width
-      if (options.full_width) { $this.addClass('full-width'); }
 
       // dynamically add indicators
       if (options.indicators) {
@@ -126,7 +126,6 @@
       // Adjust height to current slide
       $active.find('img').load(function() {
         // Handler for .load() called.
-        $slider.height($active.find('img').first().height());
         $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
       });
 

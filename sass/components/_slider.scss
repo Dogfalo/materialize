@@ -1,5 +1,7 @@
 .slider {
-  position: relative;  
+  position: relative;
+  height: 400px;  
+  width: 100%;
 
   ul.slides {
     background-color: color('grey', 'base');
@@ -11,6 +13,11 @@
       top: 0; 
       left: 0; 
       z-index: 1;
+      width: 100%;
+      height: inherit;
+      overflow: hidden;
+
+      img { height: 100%; }
 
       .caption {
         color: #fff;
@@ -31,11 +38,12 @@
 
 
   ul.indicators {
-    position: relative;
+    position: absolute;
     text-align: center;
     left: 0;
     right: 0;
     bottom: 0;
+    margin: 0;
 
     li.indicator-item {
       display: inline-block;
@@ -55,12 +63,4 @@
     }
   }
 
-
-  &.full-width {
-    width: 100%;
-
-    li, li img {
-      width: 100%;
-    }
-  }
 }
