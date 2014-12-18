@@ -6591,6 +6591,8 @@ small {
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   margin-top: 10px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -6604,6 +6606,19 @@ small {
   color: #fff;
   font-size: 24px;
   font-weight: 300;
+}
+.card a {
+  color: #ffab40;
+  margin-right: 16px;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+.card a:hover {
+  color: #ffd8a6;
 }
 .card.small {
   height: 300px;
@@ -6667,18 +6682,19 @@ small {
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 16px;
 }
-.card .card-action a {
-  color: #ffab40;
-  margin-right: 16px;
-  -webkit-transition: color 0.3s ease;
-  -moz-transition: color 0.3s ease;
-  -o-transition: color 0.3s ease;
-  -ms-transition: color 0.3s ease;
-  transition: color 0.3s ease;
-  text-transform: uppercase;
+.card .card-reveal {
+  padding: 16px;
+  position: absolute;
+  background-color: #FFF;
+  top: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.card .card-action a:hover {
-  color: #ffd8a6;
+.card .card-reveal span.card-title {
+  cursor: pointer;
+  display: block;
 }
 
 #toast-container {
