@@ -16,8 +16,8 @@
 
     $('.dynamic-color .col').each(function () {
       $(this).children().each(function () {
-        var color = $(this).css('background-color');
-        var classes = $(this).attr('class');
+        var color = $(this).css('background-color'),
+            classes = $(this).attr('class');
         $(this).html(rgb2hex(color) + " " + classes);
         if (classes.indexOf("darken") >= 0) {
           $(this).css('color', 'rgba(255,255,255,.9');
@@ -57,8 +57,8 @@
     });
 
     // BuySellAds Detection
-    var $bsa = $(".buysellads");
-    var $timesToCheck = 3;
+    var $bsa = $(".buysellads"),
+        $timesToCheck = 3;
     function checkForChanges()
     {
         if ($bsa.find('.bsa_it').height() > 0) 
@@ -66,8 +66,8 @@
               $('.table-of-contents').css('marginTop', 285);
               // Floating-Fixed table of contents
               $('.table-of-contents').each(function() {
-                var origin = $(this);
-                var tabs_height = 0;
+                var origin = $(this),
+                    tabs_height = 0;
                 if ($('.tabs-wrapper').length) {
                   tabs_height = $('.tabs-wrapper').height();
                 }
@@ -94,8 +94,8 @@
 
     // Tabs Fixed
     $(window).scroll(function() {
-      var origin = $('.tabs-wrapper');
-      var origin_row = origin.find('.row');
+      var origin = $('.tabs-wrapper'),
+          origin_row = origin.find('.row');
       if (origin.is(":visible")) {
         if(origin.attr('data-origpos') === undefined) {
           origin.attr('data-origpos', origin.position().top);            
@@ -115,8 +115,8 @@
         url: "https://api.github.com/repos/dogfalo/materialize/commits/master",
         dataType: "json", 
         success: function (data) {
-          var sha = data.sha;
-          var date = jQuery.timeago(data.commit.author.date);
+          var sha = data.sha,
+              date = jQuery.timeago(data.commit.author.date);
           if (window_width < 600) {
             sha = sha.substring(0,7);
           }
