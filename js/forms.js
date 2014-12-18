@@ -3,19 +3,19 @@
 
 
     // Text based inputs
-    var text_inputs = $('input[type=text], input[type=password], input[type=email], textarea');  
+    var input_selector = 'input[type=text], input[type=password], input[type=email], textarea';
     
-    text_inputs.each(function(){
+    $(input_selector).each(function(){
       if($(this).val().length !== 0) {
        $(this).siblings('label').addClass('active');
       }
     })
 
-    text_inputs.focus(function () {
+    $(document).on('focus', input_selector, function () {
       $(this).siblings('label').addClass('active');
     });
 
-    text_inputs.blur(function () {
+    $(document).on('blur', input_selector, function () {
       if ($(this).val().length === 0) {
         $(this).siblings('label').removeClass('active');      
       }

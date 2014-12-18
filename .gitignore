@@ -1,6 +1,7 @@
 .DS_Store
 prepros.cfg
 js/materialize.js
+test2.html
 test.html
 html/
 node_modules/
