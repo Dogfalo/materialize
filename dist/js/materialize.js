@@ -1996,10 +1996,10 @@ jQuery.extend( jQuery.easing,
       if ($(this).find('.card-reveal').length) {
         console.log("card reveal");
         if ($(e.target).is($('.card-reveal span.card-title')) || $(e.target).is($('.card-reveal span.card-title i'))) {
-          $(this).find('.card-reveal').velocity({top: '100%'}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
+          $(this).find('.card-reveal').velocity({translateY: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
         }
         else {
-          $(this).find('.card-reveal').velocity({top: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
+          $(this).find('.card-reveal').velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
         }
       }
 

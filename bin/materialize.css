@@ -6686,8 +6686,12 @@ small {
   padding: 16px;
   position: absolute;
   background-color: #FFF;
-  top: 100%;
   height: 100%;
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -o-transform: translateY(100%);
+  transform: translateY(100%);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
