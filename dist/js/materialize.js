@@ -1761,8 +1761,10 @@ jQuery.extend( jQuery.easing,
     
   $.fn.slider = function (options) {
     var defaults = {
-      full_width: true,
-      indicators: true
+      full_width: false,
+      indicators: true,
+      transition: 500,
+      interval: 6000
     }
     options = $.extend(defaults, options);
 
@@ -1777,8 +1779,58 @@ jQuery.extend( jQuery.easing,
       var $active;
       if ($active_index != -1) { $active = $slides.eq($active_index); }
 
-      var $transition_time = 500; // 1 second
-      var $time_between_slides = 4000; // 4 seconds
+      // Transitions the caption depending on alignment
+      function captionTransition(caption, duration) {
+        if (caption.hasClass("center-align")) {
+          caption.velocity({opacity: 0, translateY: -100}, {duration: duration, queue: false});
+        }
+        else if (caption.hasClass("right-align")) {
+          caption.velocity({opacity: 0, translateX: 100}, {duration: duration, queue: false});
+        }
+        else if (caption.hasClass("left-align")) {
+          caption.velocity({opacity: 0, translateX: -100}, {duration: duration, queue: false});
+        }
+      }
+
+      // This function will transition the slide to any index of the next slide
+      function moveToSlide(index) {
+        if (index >= $slides.length) index = 0;
+        else if (index < 0) index = $slides.length -1;
+
+        $active_index = $slider.find('.active').index();
+
+        // Only do if index changes
+        if ($active_index != index) {
+          $active = $slides.eq($active_index);
+          $caption = $active.find('.caption');
+
+          $active.removeClass('active');
+          $active.velocity({opacity: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
+          captionTransition($caption, options.transition);
+
+
+          // Update indicators
+          if (options.indicators) {
+            $indicators.eq($active_index).removeClass('active');
+          }
+          
+          $slides.eq(index).velocity({opacity: 1}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
+          $slides.eq(index).find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, delay: options.transition, queue: false, easing: 'easeOutQuad'});
+          $slides.eq(index).addClass('active');
+          $slider.height($active.find('img').first().height());
+
+
+          // Update indicators
+          if (options.indicators) {
+            $indicators.eq(index).addClass('active');
+          }
+        }
+      }
+
+      // Set initial positions of captions
+      $slides.find('.caption').each(function () {
+        captionTransition($(this), 0);
+      });
 
       // Make slider full width
       if (options.full_width) { $this.addClass('full-width'); }
@@ -1805,7 +1857,7 @@ jQuery.extend( jQuery.easing,
                 
                 moveToSlide($active_index);
 
-              }, $transition_time + $time_between_slides 
+              }, options.transition + options.interval 
             );
           });
           $indicators.append($indicator);
@@ -1819,7 +1871,7 @@ jQuery.extend( jQuery.easing,
       }
       else {
         console.log("false");
-        $slides.first().addClass('active').velocity({opacity: 1}, {duration: $transition_time, queue: false, easing: 'easeOutQuad'});
+        $slides.first().addClass('active').velocity({opacity: 1}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
 
         $active_index = 0;
         $active = $slides.eq($active_index);
@@ -1834,34 +1886,8 @@ jQuery.extend( jQuery.easing,
       $active.find('img').load(function() {
         // Handler for .load() called.
         $slider.height($active.find('img').first().height());
+        $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
       });
-
-      // This function will transition the slide to any index of the next slide
-      function moveToSlide(index) {
-        if (index >= $slides.length) index = 0;
-        else if (index < 0) index = $slides.length -1;
-
-        $active_index = $slider.find('.active').index();
-        $active = $slides.eq($active_index);
-
-        $active.removeClass('active');
-        $active.velocity({opacity: 0}, {duration: $transition_time, queue: false, easing: 'easeOutQuad'});
-
-        // Update indicators
-        if (options.indicators) {
-          $indicators.eq($active_index).removeClass('active');
-        }
-        
-        $slides.eq(index).velocity({opacity: 1}, {duration: $transition_time, queue: false, easing: 'easeOutQuad'});
-        $slides.eq(index).addClass('active');
-        $slider.height($active.find('img').first().height());
-
-
-        // Update indicators
-        if (options.indicators) {
-          $indicators.eq(index).addClass('active');
-        }
-      }
 
       // auto scroll 
       $interval = setInterval(
@@ -1869,7 +1895,7 @@ jQuery.extend( jQuery.easing,
           $active_index = $slider.find('.active').index();          
           moveToSlide($active_index + 1);
 
-        }, $transition_time + $time_between_slides 
+        }, options.transition + options.interval 
       );
 
 
@@ -1947,7 +1973,7 @@ jQuery.extend( jQuery.easing,
               
               moveToSlide($active_index);
 
-            }, $transition_time + $time_between_slides 
+            }, options.transition + options.interval 
           );
         }
       });

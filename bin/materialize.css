@@ -2578,7 +2578,7 @@ p {
   text-align: right;
 }
 
-.center {
+.center, .center-align {
   text-align: center;
 }
 
@@ -8312,6 +8312,21 @@ ul.table-of-contents a.active {
   top: 0;
   left: 0;
   z-index: 1;
+}
+.slider ul.slides li .caption {
+  color: #fff;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+}
+.slider ul.slides li .caption p {
+  color: #e0e0e0;
 }
 .slider ul.slides li.active {
   z-index: 2;
