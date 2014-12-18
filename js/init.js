@@ -171,6 +171,7 @@
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav();
     $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
+    $('select').not('.disabled').material_select();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

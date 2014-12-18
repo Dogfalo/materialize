@@ -729,10 +729,20 @@
     &lt;option value="3">Option 3&lt;/option>
   &lt;/select>
           </code></pre>
+          
+          <br>
+
+          <h5>Initialization</h5>
+          <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
+          <pre><code class="language-javascript col s12">
+  $('select').not('.disabled').material_select();
+          </code></pre>
+
         </div>
       </div>
-      <div id="radio" class="section scrollspy">
 
+
+      <div id="radio" class="section scrollspy">
         <h4>Radio Buttons</h4>
         <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
         <form action="#">
