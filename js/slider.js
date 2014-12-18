@@ -138,11 +138,11 @@
               }, {duration: 50, queue: false, easing: 'easeOutQuad'});      
 
           // Swipe Left
-          if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX > 0.65)) {
+          if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.65)) {
             swipeRight = true;
           }
           // Swipe Right
-          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX < -0.65)) {
+          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.65)) {
             swipeLeft = true;
           }
 
