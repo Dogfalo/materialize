@@ -142,7 +142,7 @@
             swipeRight = true;
           }
           // Swipe Right
-          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.65)) {
+          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX < -0.65)) {
             swipeLeft = true;
           }
 
