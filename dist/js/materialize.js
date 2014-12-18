@@ -1212,7 +1212,7 @@ jQuery.extend( jQuery.easing,
           complete: function() {
             $(this).remove();
           } });
-        menu_id.velocity({left: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+        menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
         enable_scroll();
       }
 

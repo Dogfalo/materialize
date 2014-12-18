@@ -7812,7 +7812,7 @@ ul.table-of-contents a.active {
   ul.side-nav {
     position: fixed;
     width: 240px;
-    left: -240px;
+    left: -250px;
     top: 0;
     height: 120%;
     background-color: #FFF;
