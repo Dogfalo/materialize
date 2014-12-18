@@ -6,6 +6,9 @@ Materialize, a CSS Framework based on material design
 
 ### Current Version : v0.92.1
 
+##Requirements:
+- Ruby Sass 4.3+, LibSass 0.6+
+
 ##Changelog
 
 - v0.92.1

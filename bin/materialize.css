@@ -6815,7 +6815,6 @@ ul.tabs li.tab {
   color: #fff;
   height: 1rem;
   line-height: 1rem;
-  max-width: 200px;
   opacity: 0;
   display: none;
   position: absolute;
@@ -6823,6 +6822,7 @@ ul.tabs li.tab {
   overflow: hidden;
   left: 0;
   top: 0;
+  will-change: top, left;
 }
 
 .backdrop {
@@ -6842,6 +6842,7 @@ ul.tabs li.tab {
   -ms-transform-origin: 50% 10%;
   -o-transform-origin: 50% 10%;
   transform-origin: 50% 10%;
+  will-change: transform, opacity;
 }
 
 .btn, .btn-large, .btn-flat {
