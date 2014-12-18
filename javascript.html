@@ -82,18 +82,25 @@
         <div class="row">
           <div class="col s12">
             <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
-            <a class="waves-effect waves-light btn" onclick="toast('I am a toast', 3000)">Toast!</a>
+            <a class="waves-effect waves-light btn" onclick="toast('I am a toast', 4000)">Toast!</a>
           </div>
         </div>
         <div class="row">
           <div class="col s12">
             To do this, call the toast() function programatically in JavaScript
             <pre><code class="language-javascript">
-  toast('I am a toast!', 3000) // 3000 is the duration of the toast
+  toast('I am a toast!', 4000) // 4000 is the duration of the toast
             </code></pre>
             <p>One way to add this into your application is to add this as an onclick event to a button</p>
             <pre><code class="language-markup">
-  &lt;a class="btn" onclick="toast('I am a toast', 2000)">Toast!&lt;/a>
+  &lt;a class="btn" onclick="toast('I am a toast', 4000)">Toast!&lt;/a>
+            </code></pre>
+
+            <h4>Custom HTML</h4>
+            <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
+            <a class="waves-effect waves-light btn" onclick="toast('<span>Item Deleted</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#1&quot;>Undo<a>', 99000)">Toast with Action</a>
+            <pre><code class="language-javascript">
+  &lt;a class="waves-effect waves-light btn" onclick="toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
             </code></pre>
 
 

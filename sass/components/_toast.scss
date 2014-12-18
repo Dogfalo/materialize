@@ -30,8 +30,19 @@
   line-height: 48px;
   background-color: #323232;
   padding: 0px 24px;
- 
-  display: block;
+  font-size: 1.1rem;
+  font-weight: 300;
+    color: #FFF;
+
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+
+  .btn, .btn-flat {
+    margin: 0;
+    margin-left: auto;
+    padding: 0 0 0 3rem;
+  }
   
   &.rounded{
     border-radius: 24px;
@@ -47,11 +58,4 @@
     float: right;
   }
 
-  span {
-    padding: 0px;
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: #FFF;
-    text-align: center;
-  }
 }
