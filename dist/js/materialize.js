@@ -1738,6 +1738,10 @@ jQuery.extend( jQuery.easing,
     $.fn.material_select = function () {
       $(this).each(function(){
         $select = $(this);
+        if ( $select.hasClass('disabled') || $select.hasClass('initialized') ){
+          return false;
+        }
+
         var uniqueID = guid();
         var wrapper = $('<div class="select-wrapper"></div>');
         var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content"></ul>');
@@ -1754,6 +1758,7 @@ jQuery.extend( jQuery.easing,
 
 
         options.find('li').each(function (i) {
+          console.log('hi');
           $(this).click(function () {
             $select.find('option').eq(i + 1).prop('selected', true);
             $select.prev('span.select-dropdown').html($(this).text());
@@ -1768,6 +1773,8 @@ jQuery.extend( jQuery.easing,
         $select.before($newSelect);
         $('body').append(options);
         $newSelect.dropdown({"hover": false});
+
+        $select.addClass('initialized');
 
       });
     }
