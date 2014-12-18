@@ -1264,7 +1264,7 @@
 
       <!-- Pullup Card -->
       <div class="col s12 m7">
-       <h4>Card Pullup</h4>
+        <h4>Card Reveal</h4>
         <div class="card">
           <div class="card-image">
             <img src="images/office.jpg">
@@ -1280,25 +1280,27 @@
           </div>
         </div>
       </div>
+      <div class="col s12 m5">
+        <br><br>
+        <p class="caption">
+         Here you can add a card that reveals more information once clicked. Just add the <code class="language-markup">card- reveal</code> div with a <code class="language-markup">span.card-title</code> inside to make this work.
+        </p>
+      </div>
       <div class="col s12">
         <br>
         <pre><code class="language-markup">
-  &lt;div class="row">
-    &lt;div class="col s12 m7">
-      &lt;div class="card">
-        &lt;div class="card-image">
-          &lt;img src="images/sample-1.jpg">
-          &lt;span class="card-title">Card Title&lt;/span>
-        &lt;/div>  
-        &lt;div class="card-content">
-          &lt;p>I am a very simple card. I am good at containing small bits of information. 
-          I am convenient because I require little markup to use effectively.&lt;/p>
-        &lt;/div>
-        &lt;div class="card-action">
-          &lt;a href="#">This is a link&lt;/a>
-          &lt;a href='#'>This is a link&lt;/a>
-        &lt;/div>
-      &lt;/div>
+  &lt;div class="card">
+    &lt;div class="card-image">
+      &lt;img src="images/office.jpg">
+    &lt;/div>  
+    &lt;div class="card-content">
+      &lt;span class="card-title grey-text darken-4">Card Title &lt;i class="mdi-navigation-more-vert right">&lt;/i>&lt;/span>
+
+      &lt;p>&lt;a href="#">This is a link&lt;/a>&lt;/p>
+    &lt;/div>
+    &lt;div class="card-reveal">
+      &lt;span class="card-title grey-text darken-4">Card Title &lt;i class="mdi-navigation-close right">&lt;/i>&lt;/span>
+      &lt;p>Here is some more information about this product that is only revealed once clicked on.&lt;/p>
     &lt;/div>
   &lt;/div>
         </code></pre>
