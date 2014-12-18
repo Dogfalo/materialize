@@ -1615,7 +1615,6 @@ jQuery.extend( jQuery.easing,
 })(jQuery);;(function ($) {
   $(document).ready(function() {
 
-
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], textarea';
     
@@ -1637,41 +1636,45 @@ jQuery.extend( jQuery.easing,
 
 
     // Textarea Auto Resize
-    $('textarea').each(function () {
+    if ($('.hiddendiv').length === 0) {
       var hiddenDiv = $('<div class="hiddendiv common"></div>'),
-          content = null;
-
-      $('body').append(hiddenDiv);
-
-      $(this).on('keyup keydown', function () {
-
-          content = $(this).val();
-
-          content = content.replace(/\n/g, '<br>');
-          hiddenDiv.html(content + '<br>');
-
-          $(this).css('height', hiddenDiv.height());
-
+        content = null;
+        $('body').append(hiddenDiv);
+    }
+    var hiddendiv = $('.hiddendiv');
+    var text_area_selector = '.materialize-textarea';
+      $('body').on('keyup keydown',text_area_selector , function () {
+        // console.log($(this).val());
+        content = $(this).val();
+        content = content.replace(/\n/g, '<br>');
+        console.log(content);
+        hiddenDiv.html(content + '<br>');
+        // console.log(hiddenDiv.html());
+        $(this).css('height', hiddenDiv.height());
       });
-    });
 
 
     // Range Input
-    var range_input = $('input[type=range]');
+    var range_type = 'input[type=range]';
     var range_mousedown = false;
 
-    range_input.each(function () {
+    $(range_type).each(function () {
       var thumb = $('<span class="thumb"><span class="value"></span></span>');
       $(this).after(thumb);
     });
 
-    var range_wrapper = $('.range-field');
+    var range_wrapper = '.range-field';
+    
+      $(document).on("mousedown", range_wrapper, function(e) {
+        var thumb = $(this).children('.thumb');
+        if (thumb.length <= 0) {
+          thumb = $('<span class="thumb"><span class="value"></span></span>');
+          $(this).append(thumb);
+        }
 
-    range_wrapper.on("mousedown", function(e) {
       range_mousedown = true;
       $(this).addClass('active');
 
-      var thumb = $(this).children('.thumb');
       if (!thumb.hasClass('active')) {
         thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
       }
@@ -1688,12 +1691,12 @@ jQuery.extend( jQuery.easing,
       thumb.find('.value').html($(this).children('input[type=range]').val());   
    
     });
-    range_wrapper.on("mouseup", function() {
+    $(document).on("mouseup", range_wrapper, function() {
       range_mousedown = false;
       $(this).removeClass('active');
     });
 
-    range_wrapper.on("mousemove", function(e) {
+    $(document).on("mousemove", range_wrapper, function(e) {
 
       var thumb = $(this).children('.thumb');
       if (range_mousedown) {
@@ -1714,7 +1717,7 @@ jQuery.extend( jQuery.easing,
       }
       
     });
-    range_wrapper.on("mouseout", function() {
+    $(document).on("mouseout", range_wrapper, function() {
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
@@ -1723,11 +1726,10 @@ jQuery.extend( jQuery.easing,
           thumb.velocity({ height: "0", width: "0", top: "10px", marginLeft: "-6px"}, { duration: 100 });
         }
         thumb.removeClass('active');
-      
       }
-
-
     });
+
+
 
 
     //  Select Functionality
@@ -1761,11 +1763,10 @@ jQuery.extend( jQuery.easing,
 
 
     $('.select-dropdown').dropdown({"hover": false});
-
-
-
   });
-}( jQuery ));;(function ($) {
+
+}( jQuery ));
+;(function ($) {
     
   $.fn.slider = function (options) {
     var defaults = {
