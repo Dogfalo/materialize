@@ -1110,10 +1110,9 @@ jQuery.extend( jQuery.easing,
 
     
     function createToast(html) {
-        var toast = $('<div></div>');
-        toast.addClass('toast');
-        toast.addClass(className);
-        toast.html(html);
+        var toast = $("<div class='toast'></div>")
+          .addClass(className)
+          .html(html);
         // Bind hammer
         toast.hammer({prevent_default:false
               }).bind('pan', function(e) {
