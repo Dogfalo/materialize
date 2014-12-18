@@ -149,6 +149,45 @@
 
 
     $('.select-dropdown').dropdown({"hover": false});
+
+
+    // Select Plugin
+    $.fn.material_select = function () {
+      this.each(function(){
+        var uniqueID = guid();
+        var wrapper = $('<div class="select-wrapper"></div>');
+        var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content"></ul>');
+        var selectOptions = $select.children('option');
+        var label = selectOptions.first();
+
+        // Generate HTML for Options
+        selectOptions = selectOptions.slice(1);
+        selectOptions.each(function () {
+          options.append($('<li><span>' + $(this).html() + '</span></li>'));
+        });
+        options.find('li').each(function (i) {
+          $(this).click(function () {
+            $select.find('option').eq(i + 1).prop('selected', true);
+            $select.prev('span.select-dropdown').html($(this).text());
+          });
+        });
+
+      });
+    }
+
+    // Unique ID
+    var guid = (function() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+                   .toString(16)
+                   .substring(1);
+      }
+      return function() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+               s4() + '-' + s4() + s4() + s4();
+      };
+    })();
+
   });
 
 }( jQuery ));
