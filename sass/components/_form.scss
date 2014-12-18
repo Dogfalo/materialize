@@ -17,8 +17,8 @@ label {
   label {
     color: $border-color;
     position: absolute;
-    top: .8rem;
-    left: .5rem;
+    top: 0.8rem;
+    left: $gutter-width / 2;
     font-size: 1rem;
     @include transition(.2s ease-out);
   }

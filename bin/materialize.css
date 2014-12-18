@@ -7221,8 +7221,8 @@ label {
 .input-field label {
   color: #9e9e9e;
   position: absolute;
-  top: .8rem;
-  left: .5rem;
+  top: 0.8rem;
+  left: 0.75rem;
   font-size: 1rem;
   -webkit-transition: 0.2s ease-out;
   -moz-transition: 0.2s ease-out;
