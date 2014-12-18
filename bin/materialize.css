@@ -2578,7 +2578,7 @@ p {
   text-align: right;
 }
 
-.center {
+.center, .center-align {
   text-align: center;
 }
 
@@ -8296,6 +8296,77 @@ ul.table-of-contents a.active {
     opacity: 0;
   }
 }
+.slider {
+  position: relative;
+}
+.slider ul.slides {
+  background-color: #9e9e9e;
+  margin: 0;
+}
+.slider ul.slides li {
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.slider ul.slides li .caption {
+  color: #fff;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+}
+.slider ul.slides li .caption p {
+  color: #e0e0e0;
+}
+.slider ul.slides li.active {
+  z-index: 2;
+}
+.slider ul.indicators {
+  position: relative;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.slider ul.indicators li.indicator-item {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  margin: 0 12px;
+  background-color: #e0e0e0;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+.slider ul.indicators li.indicator-item.active {
+  background-color: #4CAF50;
+}
+.slider.full-width {
+  width: 100%;
+}
+.slider.full-width li, .slider.full-width li img {
+  width: 100%;
+}
+
 /* ==========================================================================
    $BASE-PICKER
    ========================================================================== */

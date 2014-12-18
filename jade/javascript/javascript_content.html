@@ -327,6 +327,7 @@
     <div style="height: 1px;">
       <ul class="table-of-contents">
         <li><a href="#materialbox">Material Box</a></li>
+        <li><a href="#slider">Slider</a></li>
         <li><a href="#parallax">Parallax</a></li>
       </ul>
     </div>
@@ -357,6 +358,92 @@
       </code></pre>
       <img class="materialboxed" width="200" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg"></img>
     </div>
+
+    <br><br>
+
+
+    <!--  Slider Section  -->
+    <div id="slider" class="scrollspy">
+      <h4>Slider</h4>
+       <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p>
+       <p>note: This is also Hammer.js compatible! Try swiping with your finger to scroll through the slider.</p><br>
+
+      <div class="slider">
+        <ul class="slides">
+          <li>
+            <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+            <div class="caption center-align">
+              <h3>This is our big Tagline!</h3>
+              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li> 
+          <li>
+            <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+            <div class="caption left-align">
+              <h3>Left Aligned Caption</h3>
+              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li>
+          <li>
+            <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+            <div class="caption right-align">
+              <h3>Right Aligned Caption</h3>
+              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li>
+          <li>
+            <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+            <div class="caption center-align">
+              <h3>This is our big Tagline!</h3>
+              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <pre><code class="language-markup">
+  &lt;div class="slider">
+    &lt;ul class="slides">
+      &lt;li>
+        &lt;img src="http://lorempixel.com/580/250/nature/1"> &lt;!-- random image -->
+        &lt;div class="caption center-align">
+          &lt;h3>This is our big Tagline!&lt;/h3>
+          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+        &lt;/div>
+      &lt;/li> 
+      &lt;li>
+        &lt;img src="http://lorempixel.com/580/250/nature/2"> &lt;!-- random image -->
+        &lt;div class="caption left-align">
+          &lt;h3>Left Aligned Caption&lt;/h3>
+          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+        &lt;/div>
+      &lt;/li>
+      &lt;li>
+        &lt;img src="http://lorempixel.com/580/250/nature/3"> &lt;!-- random image -->
+        &lt;div class="caption right-align">
+          &lt;h3>Right Aligned Caption&lt;/h3>
+          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+        &lt;/div>
+      &lt;/li>
+      &lt;li>
+        &lt;img src="http://lorempixel.com/580/250/nature/4"> &lt;!-- random image -->
+        &lt;div class="caption center-align">
+          &lt;h3>This is our big Tagline!&lt;/h3>
+          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+        &lt;/div>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/div>
+    </code></pre>
+
+     <p>Next you simply have to add the initialization code </p>
+     <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.slider').slider({full_width: true});
+  });
+      </code></pre>
+    </div>
+
     <br><br>
     <!--  Parallax Section  -->
     <div id="parallax" class="scrollspy">

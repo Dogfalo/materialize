@@ -153,6 +153,7 @@
 
 
     // Plugin initialization
+    $('.slider').slider({full_width: true});
     $('.dropdown-button').dropdown({hover: false});
     if (window_width > 600) {
       $('ul.tabs').tabs();
