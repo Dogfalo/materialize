@@ -9,6 +9,7 @@ p.box {
   padding: 20px;
 }
 p {
+  color: rgba(0, 0, 0, 0.71);
   padding: 0;
   -webkit-font-smoothing: antialiased;
 }
@@ -427,6 +428,7 @@ pre[class*="language-"] {
 
 // BuySellAds Styling
 .buysellads {
+  -webkit-font-smoothing: antialiased;
   position: relative;
 
   .bsa_it.one {
