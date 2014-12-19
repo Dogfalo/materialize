@@ -1758,10 +1758,10 @@ jQuery.extend( jQuery.easing,
 
 
         options.find('li').each(function (i) {
-          console.log('hi');
+          var $curr_select = $select;
           $(this).click(function () {
-            $select.find('option').eq(i + 1).prop('selected', true);
-            $select.prev('span.select-dropdown').html($(this).text());
+            $curr_select.find('option').eq(i + 1).prop('selected', true);
+            $curr_select.prev('span.select-dropdown').html($(this).text());
           });
         });
 
