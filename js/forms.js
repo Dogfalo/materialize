@@ -134,8 +134,6 @@
         var selectOptions = $select.children('option');
         var label = selectOptions.first();
 
-        // Select Display Element
-        selectOptions = selectOptions.slice(1);
 
         // Create Dropdown structure
         selectOptions.each(function () {

@@ -1746,8 +1746,6 @@ jQuery.extend( jQuery.easing,
         var selectOptions = $select.children('option');
         var label = selectOptions.first();
 
-        // Select Display Element
-        selectOptions = selectOptions.slice(1);
 
         // Create Dropdown structure
         selectOptions.each(function () {
@@ -2017,6 +2015,24 @@ jQuery.extend( jQuery.easing,
     });
 
   };
+}( jQuery ));;(function ($) {
+  $(document).ready(function() {
+
+    $(document).on('click.card', '.card', function (e) {
+      if ($(this).find('.card-reveal').length) {
+        console.log("card reveal");
+        if ($(e.target).is($('.card-reveal span.card-title')) || $(e.target).is($('.card-reveal span.card-title i'))) {
+          $(this).find('.card-reveal').velocity({translateY: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
+        }
+        else {
+          $(this).find('.card-reveal').velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
+        }
+      }
+
+
+    });  
+
+  });
 }( jQuery ));;/*!
  * pickadate.js v3.5.4, 2014/09/11
  * By Amsul, http://amsul.ca
