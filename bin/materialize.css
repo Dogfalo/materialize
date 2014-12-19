@@ -2658,6 +2658,11 @@ i.right {
   margin-left: 15px;
 }
 
+img.responsive-img {
+  max-width: 100%;
+  height: auto;
+}
+
 .parallax-container {
   position: relative;
   overflow: hidden;
