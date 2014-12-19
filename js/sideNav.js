@@ -48,129 +48,133 @@
       options = $.extend(defaults, options);
 
 
-      var $this = $(this);
-      var menu_id = $("#"+ $this.attr('data-activates'));
-     
-      function removeMenu() {
-        $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
-          complete: function() {
-            $(this).remove();
-          } });
-        menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-        enable_scroll();
-      }
-
-      // Touch Event
-      var panning = false;
-      var menuOut = false;
-
-      $('nothing').hammer({
-          prevent_default: false
-      }).bind('pan', function(e) {
-
-          if (e.gesture.pointerType === "touch") {
-
-            var direction = e.gesture.direction;
-            var x = e.gesture.center.x;
-            var y = e.gesture.center.y;
-
-            if (panning) {
-              if (!$('#sidenav-overlay').length) {
-                var overlay = $('<div id="sidenav-overlay"></div>');
-                overlay.css('opacity', 0)
-                  .click(function(){
-                    panning = false;
-                    menuOut = false;
-                    removeMenu();
-                    menu_id.velocity({left: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-                    overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
-                      complete: function() {
-                        $(this).remove();
-                      } });
-
-                    
-                  });
-                $('body').append(overlay);
-              }
+      $(this).each(function(){
 
 
-              if (x > options.menuWidth) { x = options.menuWidth; }
-              else if (x < 0) { x = 0; }
-              else if (x < (options.menuWidth / 2)) { menuOut = false; }
-              else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+        var $this = $(this);
+        var menu_id = $("#"+ $this.attr('data-activates'));
+        console.log(menu_id);
+       
+        function removeMenu() {
+          $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+            complete: function() {
+              $(this).remove();
+            } });
+          menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          enable_scroll();
+        }
 
-              menu_id.velocity({left: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
-              
-              // Percentage overlay
-              var overlayPerc = x / options.menuWidth;
-              $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-            }
-            else {
-              if (menuOut) {
-                if ((e.gesture.center.x > (options.menuWidth - options.activationWidth)) && direction === 2) {
-                  panning = true;
+        // Touch Event
+        var panning = false;
+        var menuOut = false;
+
+        $('nothing').hammer({
+            prevent_default: false
+        }).bind('pan', function(e) {
+
+            if (e.gesture.pointerType === "touch") {
+
+              var direction = e.gesture.direction;
+              var x = e.gesture.center.x;
+              var y = e.gesture.center.y;
+
+              if (panning) {
+                if (!$('#sidenav-overlay').length) {
+                  var overlay = $('<div id="sidenav-overlay"></div>');
+                  overlay.css('opacity', 0)
+                    .click(function(){
+                      panning = false;
+                      menuOut = false;
+                      removeMenu();
+                      menu_id.velocity({left: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                      overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+                        complete: function() {
+                          $(this).remove();
+                        } });
+
+                      
+                    });
+                  $('body').append(overlay);
                 }
+
+
+                if (x > options.menuWidth) { x = options.menuWidth; }
+                else if (x < 0) { x = 0; }
+                else if (x < (options.menuWidth / 2)) { menuOut = false; }
+                else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+
+                menu_id.velocity({left: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                
+                // Percentage overlay
+                var overlayPerc = x / options.menuWidth;
+                $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                if ((e.gesture.center.x < options.activationWidth) && direction === 4) {
-                  panning = true;
-                }            
+                if (menuOut) {
+                  if ((e.gesture.center.x > (options.menuWidth - options.activationWidth)) && direction === 2) {
+                    panning = true;
+                  }
+                }
+                else {
+                  if ((e.gesture.center.x < options.activationWidth) && direction === 4) {
+                    panning = true;
+                  }            
+                }
               }
             }
-          }
-      }).bind('panend', function(e) {
-        if (e.gesture.pointerType === "touch") {
+        }).bind('panend', function(e) {
+          if (e.gesture.pointerType === "touch") {
 
-          panning = false;
-          if (menuOut) {
-            menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-            $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            panning = false;
+            if (menuOut) {
+              menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+              $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            }
+            else {
+              menu_id.velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+              $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad', 
+                complete: function () {
+                  $(this).remove();
+                }});
+            }
+          }
+        });
+       
+        $this.click(function() {
+          if (menu_id.hasClass('active')) {
+            menuOut = false;
+            panning = false;
+            removeMenu();
           }
           else {
-            menu_id.velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-            $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad', 
+            disable_scroll();
+            menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+
+            var overlay = $('<div id="sidenav-overlay"></div>');
+            overlay.css('opacity', 0)
+              .click(function(){
+                menuOut = false;
+                panning = false;
+                removeMenu();
+                overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+                  complete: function() {
+                    $(this).remove();
+                  } });
+                
+              });
+            $('body').append(overlay);
+            overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
               complete: function () {
-                $(this).remove();
-              }});
-          }
-        }
-      });
-     
-      $this.click(function() {
-        if (menu_id.hasClass('active')) {
-          menuOut = false;
-          panning = false;
-          removeMenu();
-        }
-        else {
-          disable_scroll();
-          menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-
-          var overlay = $('<div id="sidenav-overlay"></div>');
-          overlay.css('opacity', 0)
-            .click(function(){
-              menuOut = false;
-              panning = false;
-              removeMenu();
-              overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
-                complete: function() {
-                  $(this).remove();
-                } });
-              
+                menuOut = true;
+                panning = false;
+              }
             });
-          $('body').append(overlay);
-          overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
-            complete: function () {
-              menuOut = true;
-              panning = false;
-            }
-          });
-        }
+          }
 
 
-        return false;
+          return false;
+        });
       });
-
 
     };
 }( jQuery ));

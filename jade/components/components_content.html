@@ -954,7 +954,6 @@
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
-              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
               <ul class="right side-nav">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="components.html">Components</a></li>
@@ -972,7 +971,6 @@
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
         &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
       &lt;/ul>
-      &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
     &lt;/div>
   &lt;/nav>
         </code></pre>
@@ -985,7 +983,6 @@
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo right">Logo</a>
-              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
               <ul class="left side-nav">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="components.html">Components</a></li>
@@ -1003,7 +1000,6 @@
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
         &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
       &lt;/ul>
-      &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
     &lt;/div>
   &lt;/nav>
         </code></pre>
@@ -1029,7 +1025,6 @@
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
-              <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
               <ul class="right side-nav">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="components.html">Components</a></li>
@@ -1051,7 +1046,6 @@
   &lt;div class="nav-wrapper">
     &lt;div class="col s12">
       &lt;a href="#!" class="brand-logo">Logo&lt;/a>
-      &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
       &lt;ul class="right side-nav">
         &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
@@ -1146,8 +1140,14 @@ $(".dropdown-button").dropdown();
         <nav>
           <div class="nav-wrapper">
             <div class="col s12">
-              <a href="#!" class="brand-logo right">Logo</a>
-              <a style="display: block !important;" class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+              <a href="#!" class="brand-logo">Logo</a>
+              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+              <ul class="side-nav" id="mobile-demo">
+                <li><a href="sass.html">Sass</i></a></li>
+                <li><a href="components.html">Components</a></li>
+                <li><a href="javascript.html">Javascript</a></li>
+                <li><a href="mobile.html">Mobile</a></li>
+              </ul>
             </div>
           </div>
         </nav>
