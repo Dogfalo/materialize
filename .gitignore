@@ -2,6 +2,7 @@
 prepros.cfg
 js/materialize.js
 test.html
+test2.html
 html/
 node_modules/
 .sass-cache/

@@ -7010,20 +7010,34 @@ li.divider {
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 .waves-effect .waves-ripple {
   position: absolute;
   pointer-events: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  background-clip: padding-box;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.2);
-  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -moz-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -ms-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -7056,13 +7070,18 @@ li.divider {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
+  -ms-transition: none !important;
   transition: none !important;
 }
 
 .waves-button,
 .waves-icon {
   -webkit-transform: translateZ(0);
-  -webkit-image-mask: -webkit-radial-gradient(circle, transparent, transparent);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(circle, #ffffff 100%, #000000 100%);
 }
 
 .waves-button,
@@ -7093,7 +7112,7 @@ li.divider {
   padding: 0;
 }
 .waves-input-wrapper .waves-button-input {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 1;

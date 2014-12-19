@@ -22,17 +22,23 @@
     -ms-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    // @include transition(all .4s ease-out);
+    @include transition(all .5s ease-out);
     
     .waves-ripple {
       position: absolute;
       pointer-events: none;
-      border-radius: 50%;
-      width:20px;
-      height:20px;
+      @include border-radius(50%);
+      width:100px;
+      height:100px;
+      margin-top: -50px;
+      margin-left: -50px;
       opacity:0;
       background-color: rgba(0, 0, 0, 0.2);
-      @include transition(all 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940));
+      @include transition(all 0.6s ease-out);
+      -webkit-transition-property: -webkit-transform, opacity;
+      -moz-transition-property: -moz-transform, opacity;
+      -o-transition-property: -o-transform, opacity;
+      transition-property: transform, opacity;
       @include transform(scale(0));
     }
     
@@ -62,16 +68,13 @@
 }
 
 .waves-notransition {
-    -webkit-transition: none !important;  
-    -moz-transition: none !important; 
-    -o-transition: none !important;
-    transition: none !important; 
+    @include transition(none !important); 
 }
 
 .waves-button, 
 .waves-icon {
-    -webkit-transform: translateZ(0);
-    -webkit-image-mask: -webkit-radial-gradient(circle, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    @include transform( translateZ(0) );
+    -webkit-mask-image: -webkit-radial-gradient(circle, #ffffff 100%, #000000 100%);
 }
 
 .waves-button,
@@ -103,7 +106,7 @@
     }
 
     .waves-button-input {
-        position: absolute;
+        position: relative;
         top: 0;
         left: 0;
         z-index: 1;

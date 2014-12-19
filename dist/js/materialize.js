@@ -854,7 +854,7 @@ jQuery.extend( jQuery.easing,
     var Effect = {
 
         // Effect delay
-        duration: 500,
+        duration: 700,
 
         show: function(e) {
             
@@ -872,15 +872,15 @@ jQuery.extend( jQuery.easing,
 
             // Get click coordinate and element witdh
             var pos         = offset(el);
-            var relativeY   = (e.pageY - pos.top) - 10;
-            var relativeX   = (e.pageX - pos.left) - 10;
-            // var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
-            var scale = 'scale(15)';
+            var relativeY   = (e.pageY - pos.top);
+            var relativeX   = (e.pageX - pos.left);
+            var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
+            // var scale = 'scale(15)';
           
             // Support for touch devices
             if ('touches' in e) {
-              relativeY   = (e.touches[0].pageY - pos.top) - 45;
-              relativeX   = (e.touches[0].pageX - pos.left) - 45;
+              relativeY   = (e.touches[0].pageY - pos.top);
+              relativeX   = (e.touches[0].pageX - pos.left);
             }
 
             // Attach data to element
@@ -1008,13 +1008,12 @@ jQuery.extend( jQuery.easing,
                     wrapper.className = el.className + ' waves-input-wrapper';
 
                     var elementStyle = el.getAttribute('style');
-                    var dimensionStyle = 'width:'+el.offsetWidth+'px;height:'+el.clientHeight+'px;';
 
                     if (!elementStyle) {
                         elementStyle = '';
                     }
 
-                    wrapper.setAttribute('style', dimensionStyle+elementStyle);
+                    wrapper.setAttribute('style', elementStyle);
                     
                     el.className = 'waves-button-input';
                     el.removeAttribute('style');
@@ -1043,8 +1042,8 @@ jQuery.extend( jQuery.easing,
         Array.prototype.forEach.call($$('.waves-effect'), function(i) {
 
         if ('ontouchstart' in window) {
-          i.addEventListener('mouseup', Effect.hide, false);		              i.addEventListener('touchstart', Effect.show, false);
-          i.addEventListener('mouseleave', Effect.hide, false);		              i.addEventListener('touchend',   Effect.hide, false);
+          i.addEventListener('mouseup', Effect.hide, false);                      i.addEventListener('touchstart', Effect.show, false);
+          i.addEventListener('mouseleave', Effect.hide, false);                   i.addEventListener('touchend',   Effect.hide, false);
           i.addEventListener('touchcancel',   Effect.hide, false);
         } else {
           i.addEventListener('mousedown', Effect.show, false);
@@ -1062,8 +1061,7 @@ jQuery.extend( jQuery.easing,
       Waves.displayEffect();
     });
 
-})(window);
-;function toast(message, displayLength, className) {
+})(window);;function toast(message, displayLength, className) {
     className = className || "";
     if ($('#toast-container').length == 0) {
         // create notification container
@@ -1989,24 +1987,6 @@ jQuery.extend( jQuery.easing,
     });
 
   };
-}( jQuery ));;(function ($) {
-  $(document).ready(function() {
-
-    $(document).on('click.card', '.card', function (e) {
-      if ($(this).find('.card-reveal').length) {
-        console.log("card reveal");
-        if ($(e.target).is($('.card-reveal span.card-title')) || $(e.target).is($('.card-reveal span.card-title i'))) {
-          $(this).find('.card-reveal').velocity({translateY: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
-        }
-        else {
-          $(this).find('.card-reveal').velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
-        }
-      }
-
-
-    });  
-
-  });
 }( jQuery ));;/*!
  * pickadate.js v3.5.4, 2014/09/11
  * By Amsul, http://amsul.ca
