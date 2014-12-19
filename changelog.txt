@@ -1,4 +1,16 @@
 Changelog
+v0.93.0
+- Card Reveal
+- Image Slider
+- Dynamically loaded forms work correctly
+- Badges added
+- Circular Image
+- Waves Fixes
+- Footer Added
+- Toast support Custom HTML
+- Modals support programmatic opening/closing
+- Responsive Image support
+
 v0.92.1
 - Bower semver fix
 - Added new radio button style
