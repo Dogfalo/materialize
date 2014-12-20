@@ -530,15 +530,8 @@ body.parallax-demo footer {
   -webkit-font-smoothing: antialiased;
 }
 
-#images {
-  .card-panel {
-    img {
-      width: 100%;
-    }
-    .row {
-      margin-bottom: 0;
-    }
-  }
+#images .card-panel .row {
+  margin-bottom: 0;
 }
 
 // Transifex Styling
