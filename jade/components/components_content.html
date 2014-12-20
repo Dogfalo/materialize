@@ -1154,8 +1154,28 @@ $(".dropdown-button").dropdown();
         
         <br>
         
-        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="mdi-navigation-menu"></i></p>
-        <p>If you already included the code for the button collapse as we did in the examples above, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
+        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="mdi-navigation-menu"></i>. Take a look at the example below to get this functionality. Add the entire <code class="language-markup">button-collapse</code> line to your <code class="language-markup">nav</code>.</p>
+        <pre><code class="language-markup">
+  &lt;nav>
+      &lt;div class="nav-wrapper">
+        &lt;a href="#" class="brand-logo">Logo&lt;/a>
+        &lt;ul id="nav-mobile" class="right side-nav">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+        &lt;/ul>
+
+        &lt;!-- Include this line below -->
+        &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+        &lt;!-- End -->
+
+      &lt;/div>
+    &lt;/nav>
+          </code></pre>
+
+          <br>
+        <h4>Initialization</h4>
+        <p>After including the button-collapse line into your navbar, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
         <pre><code class="language-javascript">
     $(".button-collapse").sideNav();
         </code></pre>
