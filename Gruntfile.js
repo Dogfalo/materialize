@@ -11,8 +11,8 @@ module.exports = function(grunt) {
     sass: {                              // Task
       expanded: {                            // Target
         options: {                       // Target options
-          style: 'expanded',
-          sourcemap: 'none'
+          outputStyle: 'expanded',
+          sourcemap: false,
         },
         files: {                         
           'dist/css/materialize.css': 'sass/materialize.scss',
@@ -21,8 +21,8 @@ module.exports = function(grunt) {
       
       min: {
         options: {
-          style: 'compressed',
-          sourcemap: 'none'
+          outputStyle: 'compressed',
+          sourcemap: false
         },
         files: {                         
           'dist/css/materialize.min.css': 'sass/materialize.scss',
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       gh: {
         options: {
           style: 'compressed',
-          sourcemap: 'none'
+          sourcemap: false
         },
         files: {
           'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss',
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
       bin: {
         options: {
           style: 'expanded',
-          sourcemap: 'none'
+          sourcemap: false
         },
         files: {
           'bin/materialize.css': 'sass/materialize.scss',
@@ -266,7 +266,7 @@ module.exports = function(grunt) {
           message: 'Sass Compiled!',
           title: "Materialize", // defaults to the name in package.json, or will use project directory's name
           success: true, // whether successful grunt executions should be notified automatically
-          duration: 2 // the duration of notification in seconds, for `notify-send only
+          duration: 1 // the duration of notification in seconds, for `notify-send only
         }
       },
                    
@@ -276,7 +276,7 @@ module.exports = function(grunt) {
           message: 'JS Compiled!',
           title: "Materialize", // defaults to the name in package.json, or will use project directory's name
           success: true, // whether successful grunt executions should be notified automatically
-          duration: 2 // the duration of notification in seconds, for `notify-send only
+          duration: 1 // the duration of notification in seconds, for `notify-send only
         }
       },
                    
@@ -286,7 +286,7 @@ module.exports = function(grunt) {
           message: 'Jade Compiled!',
           title: "Materialize", // defaults to the name in package.json, or will use project directory's name
           success: true, // whether successful grunt executions should be notified automatically
-          duration: 2 // the duration of notification in seconds, for `notify-send only
+          duration: 1 // the duration of notification in seconds, for `notify-send only
         }
       },       
       
@@ -320,7 +320,7 @@ module.exports = function(grunt) {
 //  grunt.loadNpmTasks('grunt-gitinfo');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
