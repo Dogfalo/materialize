@@ -34,7 +34,7 @@
         content = $(this).val();
         content = content.replace(/\n/g, '<br>');
         console.log(content);
-        hiddenDiv.html(content + '<br>');
+        hiddenDiv.html(content + '<br><br>');
         // console.log(hiddenDiv.html());
         $(this).css('height', hiddenDiv.height());
       });
