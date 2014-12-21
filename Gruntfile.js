@@ -175,7 +175,7 @@ module.exports = function(grunt) {
         files: {
           "index.html": "jade/index.jade",
           "about.html": "jade/about.jade",
-          "getting_started.html": "jade/getting_started.jade",
+          "getting-started.html": "jade/getting-started.jade",
           "sass.html": "jade/sass.jade",
           "components.html": "jade/components.jade",
           "javascript.html": "jade/javascript.jade",
