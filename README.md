@@ -14,6 +14,9 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ##Changelog
 
+- v0.93.1
+  - Flexbox Sticky Footer removed due to IE incompatibility
+
 - v0.93.0
   - Card Reveal
   - Image Slider

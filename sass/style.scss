@@ -530,13 +530,38 @@ body.parallax-demo footer {
   -webkit-font-smoothing: antialiased;
 }
 
-#images {
-  .card-panel {
-    img {
-      width: 100%;
+#images .card-panel .row {
+  margin-bottom: 0;
+}
+
+// Transifex Styling
+
+#tx-live-lang-container {
+  background-color: #fcfcfc;
+
+  #tx-live-lang-picker {
+    background-color: #fcfcfc;
+
+    li {
+      color: $off-black;
+      &:hover{
+      color: inherit;
+      background-color: color("materialize-red", "lighten-5");
+      }
     }
-    .row {
-      margin-bottom: 0;
-    }
+
   }
+
+  .txlive-langselector-toggle {
+    border-bottom: 2px solid color("materialize-red", "lighten-2");
+  }
+
+  .txlive-langselector-current {
+    color: $off-black;
+  }
+
+  .txlive-langselector-marker {
+    border-bottom: 4px solid rgba(0,0,0,.61);
+  }
+
 }

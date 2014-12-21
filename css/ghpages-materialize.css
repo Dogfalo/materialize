@@ -1927,14 +1927,6 @@ td, th {
 .white-text {
   color: #FFFFFF !important; }
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column; }
-
-main {
-  flex: 1 0 auto; }
-
 ul {
   list-style-type: none; }
 
@@ -7610,7 +7602,21 @@ body.parallax-demo footer {
 .card-panel span, .card-content p {
   -webkit-font-smoothing: antialiased; }
 
-#images .card-panel img {
-  width: 100%; }
 #images .card-panel .row {
   margin-bottom: 0; }
+
+#tx-live-lang-container {
+  background-color: #fcfcfc; }
+  #tx-live-lang-container #tx-live-lang-picker {
+    background-color: #fcfcfc; }
+    #tx-live-lang-container #tx-live-lang-picker li {
+      color: rgba(0, 0, 0, 0.87); }
+      #tx-live-lang-container #tx-live-lang-picker li:hover {
+        color: inherit;
+        background-color: #fdeaeb; }
+  #tx-live-lang-container .txlive-langselector-toggle {
+    border-bottom: 2px solid #ee6e73; }
+  #tx-live-lang-container .txlive-langselector-current {
+    color: rgba(0, 0, 0, 0.87); }
+  #tx-live-lang-container .txlive-langselector-marker {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.61); }
