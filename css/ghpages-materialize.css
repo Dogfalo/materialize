@@ -4765,6 +4765,37 @@ nav {
       padding: 0px 15px; }
     nav ul.left {
       float: left; }
+  nav .input-field input {
+    height: 100%;
+    font-size: 1.2rem;
+    border: none;
+    padding-left: 2rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+    nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=date]:valid {
+      border: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none; }
+  nav .input-field label {
+    top: 0;
+    left: 0; }
+    nav .input-field label i {
+      color: rgba(255, 255, 255, 0.7);
+      -webkit-transition: color 0.3s;
+      -moz-transition: color 0.3s;
+      -o-transition: color 0.3s;
+      -ms-transition: color 0.3s;
+      transition: color 0.3s; }
+    nav .input-field label.active i {
+      color: #fff; }
+    nav .input-field label.active {
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0); }
 
 @media only screen and (min-width : 600px) {
   nav, nav .nav-wrapper i, nav a.button-collapse i {
@@ -5717,7 +5748,7 @@ textarea {
   transform: scale(1.02); }
 
 /* Radio With gap */
-[type="radio"]:checked + label:before {
+[type="radio"].with-gap:checked + label:before {
   border-radius: 50%;
   border: 2px solid #0f9d58; }
 

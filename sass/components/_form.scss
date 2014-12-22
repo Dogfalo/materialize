@@ -165,7 +165,7 @@ $radio-border: #5a5a5a !default;
 }
 
 /* Radio With gap */
-[type="radio"]:checked + label:before {
+[type="radio"].with-gap:checked + label:before {
   border-radius: 50%;
   border: 2px solid $fill-color;
 }
