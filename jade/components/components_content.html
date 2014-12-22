@@ -1142,7 +1142,7 @@ $(".dropdown-button").dropdown();
           <div class="nav-wrapper">
             <form>
               <div class="input-field col s12">
-                <input class="right" id="search" type="text" required>
+                <input id="search" type="text" required>
                 <label for="search"><i class="mdi-action-search"></i></label>
               </div>
             </form>
@@ -1151,19 +1151,16 @@ $(".dropdown-button").dropdown();
         
         <br>
         
-        <p>You can add icons into links. For icon only links you don't need any additional class. Just pop the <code class="language-markup">i</code> tag in and it will work.</p>        
+        <p>You can add a search form in the navbar.</p>        
 <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
-      &lt;div class="col s12">
-        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
-        &lt;ul class="side-nav">
-          &lt;li>&lt;a href="sass.html">&lt;i class="mdi-action-search">&lt;/i>&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="components.html">&lt;i class="mdi-action-view-module">&lt;/i>&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="javascript.html">&lt;i class="mdi-navigation-refresh">&lt;/i>&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="mobile.html">&lt;i class="mdi-navigation-more-vert">&lt;/i>&lt;/a>&lt;/li>
-        &lt;/ul>
-      &lt;/div>
+      &lt;form>
+        &lt;div class="input-field col s12">
+          &lt;input id="search" type="text" required>
+          &lt;label for="search">&lt;i class="mdi-action-search">&lt;/i>&lt;/label>
+        &lt;/div>
+      &lt;/form>
     &lt;/div>
   &lt;/nav></code></pre>
         <br>
