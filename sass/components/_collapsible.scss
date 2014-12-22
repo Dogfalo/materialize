@@ -1,6 +1,10 @@
 ul.collapsible {
   border-top: 1px solid #eee;
   @extend .z-depth-1;
+
+  li {
+    @include transition(.3s);
+  }
 }
 
 .collapsible-header {
@@ -19,7 +23,7 @@ ul.collapsible {
     display: block;
     float: left;
     text-align: center;
-    margin-right: 15px;
+    margin-right: 1rem;
   }
 }
 
@@ -38,3 +42,34 @@ ul.collapsible {
 li.active .collapsible-body { 
 
 }
+
+// sideNav collapsible styling 
+ul.side-nav {
+
+  ul.collapsible {
+    border: none;
+    @include box-shadow(none);
+
+    li { padding: 0; }
+  }
+
+  .collapsible-header {
+    background-color: transparent;
+    border: none;
+    line-height: inherit;
+    height: inherit;
+    margin: 0 1rem;
+
+    i { line-height: inherit; }
+  }
+
+  .collapsible-body {
+    border: 0;
+    background-color: #FFF;
+
+    li a { margin: 0 1rem 0 2rem; }
+  }
+
+}
+
+li.no-padding { padding: 0 !important; }

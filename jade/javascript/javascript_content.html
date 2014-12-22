@@ -285,11 +285,25 @@
       <div id="sidebar" class="section scrollspy">
 
         <h4>Sidebar</h4>
-        <p>This is a slide out menu. If you want a sidebar that will work on all widths, just add the class <code class="language-markup">full</code> to your sidebar list.</p>
+        <p>This is a slide out menu. If you want a sidebar that will work on all widths, just add the class <code class="language-markup">full</code> to your sidebar list. You can add a dropdown to your sidebar by using our collapsible component.</p>
         <ul id="slide-out" class="side-nav full">
           <li><a href="#!">First Sidebar Link</a></li>
           <li><a href="#!">Second Sidebar Link</a></li>
-          <li><a href="#!">Third Sidebar Link</a></li>
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+              <li>
+                <div class="collapsible-header">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></div>
+                <div class="collapsible-body">
+                  <ul>
+                    <li><a href="#!">First Dropdown Link</a></li>
+                    <li><a href="#!">Second Dropdown Link</a></li>
+                    <li><a href="#!">Third Dropdown Link</a></li>
+                    <li><a href="#!">Fourth Dropdown Link</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse btn">Open Sidebar</a>
 
@@ -300,7 +314,21 @@
   &lt;ul id="slide-out" class="side-nav full">
     &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Third Sidebar Link&lt;/a>&lt;/li>
+    &lt;li class="no-padding">
+      &lt;ul class="collapsible collapsible-accordion">
+        &lt;li>
+          &lt;div class="collapsible-header">Dropdown&lt;i class="mdi-navigation-arrow-drop-down">&lt;/i>&lt;/div>
+          &lt;div class="collapsible-body">
+            &lt;ul>
+              &lt;li>&lt;a href="#!">First Dropdown Link&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="#!">Second Dropdown Link&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="#!">Third Dropdown Link&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="#!">Fourth Dropdown Link&lt;/a>&lt;/li>
+            &lt;/ul>
+          &lt;/div>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/li>
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
         </code></pre>

@@ -5543,6 +5543,12 @@ li.divider {
 
 ul.collapsible {
   border-top: 1px solid #eee; }
+  ul.collapsible li {
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
 
 .collapsible-header {
   display: block;
@@ -5559,7 +5565,7 @@ ul.collapsible {
     display: block;
     float: left;
     text-align: center;
-    margin-right: 15px; }
+    margin-right: 1rem; }
 
 .collapsible-body {
   overflow: hidden;
@@ -5571,6 +5577,30 @@ ul.collapsible {
   .collapsible-body p {
     margin: 0;
     padding: 2rem; }
+
+ul.side-nav ul.collapsible {
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+  ul.side-nav ul.collapsible li {
+    padding: 0; }
+ul.side-nav .collapsible-header {
+  background-color: transparent;
+  border: none;
+  line-height: inherit;
+  height: inherit;
+  margin: 0 1rem; }
+  ul.side-nav .collapsible-header i {
+    line-height: inherit; }
+ul.side-nav .collapsible-body {
+  border: 0;
+  background-color: #FFF; }
+  ul.side-nav .collapsible-body li a {
+    margin: 0 1rem 0 2rem; }
+
+li.no-padding {
+  padding: 0 !important; }
 
 .materialboxed {
   cursor: zoom-in;
