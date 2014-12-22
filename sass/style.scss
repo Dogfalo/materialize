@@ -61,6 +61,21 @@ nav {
   pointer-events: none;
 }
 
+@media only screen and (max-width: 992px) {
+  #front-page-nav ul.side-nav {
+    li {
+      float: none;
+      padding: 0 15px;
+
+      &:hover { background-color: #ddd; }
+      .active { background-color: transparent; }
+    }
+    a {
+      color: #444;
+    }
+  }
+}
+
 
 #responsive-img {
   width: 80%;

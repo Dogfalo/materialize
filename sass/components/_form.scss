@@ -398,10 +398,10 @@ input[type=range]::-webkit-slider-thumb {
   margin: -5px 0 0 0;
   @include transition(.3s);
 }
-.range-field.active input[type=range]::-webkit-slider-thumb {
-  height: 0;
-  width: 0;
-}
+// .range-field.active input[type=range]::-webkit-slider-thumb {
+//   height: 0;
+//   width: 0;
+// }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #ccc;

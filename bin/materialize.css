@@ -5115,12 +5115,8 @@ small {
     padding: 16px;
     position: absolute;
     background-color: #FFF;
+    top: 100%;
     height: 100%;
-    -webkit-transform: translateY(100%);
-    -moz-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    -o-transform: translateY(100%);
-    transform: translateY(100%);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
@@ -5983,10 +5979,6 @@ input[type=range]::-webkit-slider-thumb {
   -ms-transition: 0.3s;
   transition: 0.3s; }
 
-.range-field.active input[type=range]::-webkit-slider-thumb {
-  height: 0;
-  width: 0; }
-
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #ccc; }
 
@@ -6101,17 +6093,36 @@ ul.table-of-contents a {
         background-color: #ddd; }
     ul.side-nav a {
       color: #444; }
-
-  #front-page-nav ul.side-nav li {
-    float: none;
-    padding: 0 15px; }
-    #front-page-nav ul.side-nav li:hover {
-      background-color: #ddd; }
-    #front-page-nav ul.side-nav li .active {
-      background-color: transparent; }
-  #front-page-nav ul.side-nav a {
-    color: #444; }
  }
+
+ul.side-nav.full {
+  position: fixed;
+  width: 240px;
+  left: -250px;
+  top: 0;
+  height: 120%;
+  margin: 0;
+  background-color: #FFF;
+  z-index: 999;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  will-change: left; }
+  ul.side-nav.full li {
+    float: none;
+    line-height: 64px;
+    padding: 0 15px;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    transition: background-color 0.3s; }
+    ul.side-nav.full li:hover, ul.side-nav.full li.active {
+      background-color: #ddd; }
+  ul.side-nav.full a {
+    display: block;
+    padding: 0 15px;
+    color: #444; }
 
 #sidenav-overlay {
   position: fixed;

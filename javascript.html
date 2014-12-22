@@ -60,7 +60,7 @@
     <div class="container">
       <ul class="tabs">
         <li class="tab"><a href="#tab1">Dialogs</a></li>
-        <li class="tab"><a href="#tab2">Tabs</a></li>
+        <li class="tab"><a href="#tab2">Navigation</a></li>
         <li class="tab"><a href="#tab3">Waves</a></li>
         <li class="tab"><a href="#tab4">Media</a></li>
         <li class="tab"><a href="#tab5">Collapsible</a></li>
@@ -280,27 +280,42 @@
   </div>
 
 
-  <!--  Tabs Section  -->
-    <div id="tab2">
-      <div class="section">
-        <h2 class="header">Tabs</h2>
-        <p class="caption">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+  <!--  Navigation Section  -->
+  <div id="tab2" class="row">
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#tabs">Tabs</a></li>
+          <li><a href="#sidebar">Sidebar</a></li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="col s12">
+    <div class="col s12 m9 l10">
+      <div id="tabs" class="section scrollspy">
+        <h2 class="header">Navigation</h2>
+        
+        <p class="caption">
+          Here you can learn about our different navigation options. These components can help organize and divide your content into easier to read portions.
+        </p>
+
+        <h4>Tabs</h4>
+        <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+
           <ul class="tabs tab-demo z-depth-1">
             <li class="tab"><a href="#test1">Test 1</a></li>
             <li class="tab"><a href="#test2">Test 2</a></li>
             <li class="tab"><a href="#test3">Test 3</a></li>
             <li class="tab"><a href="#test4">Test 4</a></li>
           </ul>
-        </div>
-        <div id="test1" class="col s12">Test 1</div>
-        <div id="test2" class="col s12">Test 2</div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
+        <div id="test1" class="col s12"><p>Test 1</p></div>
+        <div id="test2" class="col s12"><p>Test 2</p></div>
+        <div id="test3" class="col s12"><p>Test 3</p></div>
+        <div id="test4" class="col s12"><p>Test 4</p></div>
+        <br>
       </div>
       <div class="section">
-        <h4>Tabs HTML Structure</h4>
+        <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
           &lt;div class="col s12">
             &lt;ul class="tabs">
@@ -317,14 +332,44 @@
         </code></pre>
       </div>
       <div class="section">
-        <h4>jQuery Plugin Initialization</h4>
+        <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
           $(document).ready(function(){
             $('ul.tabs').tabs();
           });
         </code></pre>
       </div>
+      <div id="sidebar" class="section scrollspy">
+
+        <h4>Sidebar</h4>
+        <p>This is a slide out menu. If you want a sidebar that will work on all widths, just add the class <code class="language-markup">full</code> to your sidebar list.</p>
+        <ul id="slide-out" class="side-nav full">
+          <li><a href="#!">First Sidebar Link</a></li>
+          <li><a href="#!">Second Sidebar Link</a></li>
+          <li><a href="#!">Third Sidebar Link</a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse btn">Open Sidebar</a>
+
+      </div>
+      <div class="section">
+        <h5>Tabs HTML Structure</h5>
+        <pre><code class="language-markup col s12">
+  &lt;ul id="slide-out" class="side-nav full">
+    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">Third Sidebar Link&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+        </code></pre>
+      </div>
+      <div class="section">
+        <h5>jQuery Plugin Initialization</h5>
+        <pre><code class="language-javascript col s12">
+  $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
     </div>
+  </div>
 
 
 <!--  Waves Section  -->
