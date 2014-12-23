@@ -36,6 +36,7 @@
         duration: 300,
         element: ".card-reveal",
         closeButton: ".mdi-navigation-close",
+        hover: false,
         ready: undefined,
         complete: undefined
       }
@@ -43,19 +44,38 @@
       // Override defaults
       options = $.extend(defaults, options);
 
-      $(trigger).on("click", {
-        card: card,
-        element: options.element,
-        duration: options.duration,
-        ready: options.ready
-      }, reveal);
+      if (options.hover) {
+        // trigger on hover
+        $(trigger).on("mouseenter", {
+          card: card,
+          element: options.element,
+          duration: options.duration,
+          ready: options.ready
+        }, reveal);
 
-      $(options.closeButton).on("click", {
-        card: card,
-        element: options.element,
-        duration: options.duration,
-        ready: options.ready
-      }, unreveal);
+        $(options.element).on("mouseleave", {
+          card: card,
+          element: options.element,
+          duration: options.duration,
+          complete: options.complete
+        }, unreveal);
+      }
+      else {
+        // trigger on click
+        $(trigger).on("click", {
+          card: card,
+          element: options.element,
+          duration: options.duration,
+          ready: options.ready
+        }, reveal);
+
+        $(options.closeButton).on("click", {
+          card: card,
+          element: options.element,
+          duration: options.duration,
+          complete: options.complete
+        }, unreveal);
+      }
     }
   });
 }( jQuery ));
