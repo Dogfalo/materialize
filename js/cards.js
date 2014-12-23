@@ -1,4 +1,32 @@
 (function ($) {
+  function reveal(event) {
+    $(event.data.card).find(event.data.element).velocity(
+      { translateY: "-100%" }, {
+      duration: event.data.duration,
+      queue: false,
+      easing: "easeOutQuad",
+      // Handle revealed card event
+      complete: function() {
+        if (typeof(event.data.ready) === "function") {
+          event.data.ready();
+        }
+      }
+    });
+  }
+
+  function unreveal(event) {
+    $(event.data.card).find(event.data.element).velocity({translateY: 0}, {
+      duration: event.data.duration,
+      queue: false,
+      easing: "easeOutQuad",
+      complete: function() {
+        if (typeof(event.data.complete) === "function") {
+          event.data.complete();
+        }
+      }
+    });
+  }
+
   $.fn.extend({
     reveal: function(options) {
       var trigger = this;
@@ -15,32 +43,19 @@
       // Override defaults
       options = $.extend(defaults, options);
 
-      $(trigger).on("click", function() {
-        $(card).find(options.element).velocity({translateY: "-100%"}, {
-          duration: options.duration,
-          queue: false,
-          easing: "easeOutQuad",
-          // Handle revealed card event
-          complete: function() {
-            if (typeof(options.ready) === "function") {
-              options.ready();
-            }
-          }
-        });
-      });
+      $(trigger).on("click", {
+        card: card,
+        element: options.element,
+        duration: options.duration,
+        ready: options.ready
+      }, reveal);
 
-      $(options.closeButton).on("click", function() {
-        $(card).find(options.element).velocity({translateY: 0}, {
-          duration: options.duration,
-          queue: false,
-          easing: "easeOutQuad",
-          complete: function() {
-            if (typeof(options.complete) === "function") {
-              options.complete();
-            }
-          }
-        });
-      });
+      $(options.closeButton).on("click", {
+        card: card,
+        element: options.element,
+        duration: options.duration,
+        ready: options.ready
+      }, unreveal);
     }
   });
 }( jQuery ));
