@@ -2011,6 +2011,12 @@ i {
   i.right {
     float: right;
     margin-left: 15px; }
+  i.small {
+    font-size: 2rem; }
+  i.medium {
+    font-size: 3.5rem; }
+  i.large {
+    font-size: 5rem; }
 
 img.responsive-img {
   max-width: 100%;
@@ -7536,6 +7542,9 @@ nav ul li:hover, nav ul li.active {
 .center {
   text-align: center;
   vertical-align: middle; }
+
+.icon-demo {
+  line-height: 20px; }
 
 .icon-container i {
   font-size: 3em;

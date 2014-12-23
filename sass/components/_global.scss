@@ -135,6 +135,15 @@ i {
     float: right;
     margin-left: 15px;
   }
+  &.small {
+    font-size: 2rem;
+  }
+  &.medium {
+    font-size: 3.5rem;
+  }
+  &.large {
+    font-size: 5rem;
+  }
 }
 
 // Images

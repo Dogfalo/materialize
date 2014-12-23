@@ -2011,6 +2011,12 @@ i {
   i.right {
     float: right;
     margin-left: 15px; }
+  i.small {
+    font-size: 2rem; }
+  i.medium {
+    font-size: 3.5rem; }
+  i.large {
+    font-size: 5rem; }
 
 img.responsive-img {
   max-width: 100%;
