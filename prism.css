@@ -8,8 +8,8 @@
 code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
-/*	text-shadow: 0 1px white;*/
-	font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
