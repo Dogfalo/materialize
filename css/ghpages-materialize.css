@@ -5356,11 +5356,6 @@ ul.tabs li.tab {
   .btn-large i {
     font-size: 1.6rem; }
 
-li.divider {
-  height: 1px;
-  overflow: hidden;
-  background-color: #eeeeee; }
-
 .dropdown-content {
   display: none;
   position: absolute;
