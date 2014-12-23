@@ -82,15 +82,22 @@
           newHeight = windowHeight * 0.9;
         }
 
+
         // Reposition Element AND Animate image + set z-index
-        origin.css('left', 0)
-          .css('top', 0)
-          .css('z-index', 1000)
-          .css('will-change', 'left, top')
-          .animate({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-          .animate({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-          .animate({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
+        origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false, 
+          complete: function(){
+            origin.css('left', 0)
+              .css('top', 0)
+              .css('z-index', 1000)
+              .css('will-change', 'left, top')
+              .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+              .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+              .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
+          }
         });
+
+
+        }); // End origin on click
 
       
       // Return on scroll
@@ -125,12 +132,12 @@
             origin.css('z-index', original_z_index);
           });
           // Resize
-          origin.animate({ width: originalWidth}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.animate({ height: originalHeight}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ width: originalWidth}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ height: originalHeight}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
 
           // Reposition Element
-          origin.animate({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.animate({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
           origin.css('will-change', '');
           // add active class
           origin.removeClass('active');

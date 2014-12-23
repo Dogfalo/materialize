@@ -180,6 +180,7 @@ module.exports = function(grunt) {
           "components.html": "jade/components.jade",
           "javascript.html": "jade/javascript.jade",
           "mobile.html": "jade/mobile.jade",
+          "showcase.html": "jade/showcase.jade",
           "parallax.html": "jade/parallax.jade"
 
         }
