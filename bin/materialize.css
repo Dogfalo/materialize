@@ -5056,10 +5056,12 @@ small {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box; }
-  .card span.card-title {
-    color: #fff;
+  .card h1, .card .card-title {
     font-size: 24px;
-    font-weight: 300; }
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0;
+    padding: 0; }
   .card a {
     color: #ffab40;
     margin-right: 16px;
@@ -5100,7 +5102,7 @@ small {
       bottom: 0;
       width: 100%;
       z-index: -1; }
-    .card .card-image span.card-title {
+    .card .card-image h1, .card .card-image .card-title {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -5117,7 +5119,7 @@ small {
     .card .card-content p {
       margin: 0;
       color: inherit; }
-    .card .card-content span.card-title {
+    .card .card-content h1, .card .card-content .card-title {
       line-height: 48px; }
   .card .card-action {
     border-top: 1px solid rgba(160, 160, 160, 0.2);
@@ -5131,7 +5133,7 @@ small {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
-    .card .card-reveal span.card-title {
+    .card .card-reveal h1, .card .card-reveal .card-title {
       cursor: pointer;
       display: block; }
 
