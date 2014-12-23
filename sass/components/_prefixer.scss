@@ -194,6 +194,14 @@
     column-rule: $args;
 }
 
+// Filter
+@mixin filter($args) {
+    -webkit-filter: $args;
+    -moz-filter: $args;
+    -o-filter: $args;
+    -ms-filter: $args;
+}
+
 
 // Gradients
 

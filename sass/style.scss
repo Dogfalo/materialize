@@ -553,6 +553,7 @@ body.parallax-demo footer {
 
 #tx-live-lang-container {
   background-color: #fcfcfc;
+  z-index: 999;
 
   #tx-live-lang-picker {
     background-color: #fcfcfc;
@@ -578,5 +579,6 @@ body.parallax-demo footer {
   .txlive-langselector-marker {
     border-bottom: 4px solid rgba(0,0,0,.61);
   }
+
 
 }

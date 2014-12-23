@@ -5607,6 +5607,11 @@ li.no-padding {
   position: relative; }
   .materialboxed:hover {
     will-change: left, top; }
+    .materialboxed:hover:not(.active) {
+      -webkit-filter: brightness(95%);
+      -moz-filter: brightness(95%);
+      -o-filter: brightness(95%);
+      -ms-filter: brightness(95%); }
 
 .materialboxed.active {
   cursor: zoom-out; }

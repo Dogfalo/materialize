@@ -3,6 +3,9 @@
   position: relative;
   
   &:hover {
+    &:not(.active) {
+      @include filter(brightness(95%));
+    }
     will-change: left, top;
   }
 }
