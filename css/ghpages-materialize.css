@@ -2014,9 +2014,9 @@ i {
   i.small {
     font-size: 2rem; }
   i.medium {
-    font-size: 3.5rem; }
+    font-size: 4rem; }
   i.large {
-    font-size: 5rem; }
+    font-size: 6rem; }
 
 img.responsive-img {
   max-width: 100%;
@@ -7544,7 +7544,7 @@ nav ul li:hover, nav ul li.active {
   vertical-align: middle; }
 
 .icon-demo {
-  line-height: 20px; }
+  line-height: 50px; }
 
 .icon-container i {
   font-size: 3em;
