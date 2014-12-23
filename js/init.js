@@ -24,7 +24,7 @@
         }
       });
     });
-    
+
 
     // Floating-Fixed table of contents
     $('.table-of-contents').each(function() {
@@ -37,10 +37,10 @@
         if (origin.is(":visible")) {
 
           if(origin.attr('data-origpos') === undefined) {
-            origin.attr('data-origpos', origin.position().top - tabs_height);            
+            origin.attr('data-origpos', origin.position().top - tabs_height);
           }
           if(origin.attr('data-origmargin') === undefined) {
-            origin.attr('data-origmargin', '1.5rem');            
+            origin.attr('data-origmargin', '1.5rem');
           }
           if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
             origin.addClass('fixed');
@@ -48,9 +48,9 @@
             origin.css('marginTop', '1.5rem');
           }
           if($(window).scrollTop() < origin.attr('data-origpos')) {
-            origin.removeClass('fixed');     
+            origin.removeClass('fixed');
             origin.css('marginTop', origin.attr('data-origmargin'));
-          }            
+          }
 
         }
       });
@@ -61,7 +61,7 @@
         $timesToCheck = 3;
     function checkForChanges()
     {
-        if ($bsa.find('.bsa_it').height() > 0) 
+        if ($bsa.find('.bsa_it').height() > 0)
         {
               $('.table-of-contents').css('marginTop', 285);
               // Floating-Fixed table of contents
@@ -74,8 +74,8 @@
                 $(window).scroll(function() {
 
                   if (origin.is(":visible")) {
-                    origin.attr('data-origpos', origin.position().top - tabs_height + 285);            
-                    origin.attr('data-origmargin', 285);            
+                    origin.attr('data-origpos', origin.position().top - tabs_height + 285);
+                    origin.attr('data-origmargin', 285);
                   }
                 });
               });
@@ -83,7 +83,7 @@
         else {
           $timesToCheck -= 1;
           if ($timesToCheck >= 0) {
-            setTimeout(checkForChanges, 500);            
+            setTimeout(checkForChanges, 500);
           }
         }
 
@@ -98,13 +98,13 @@
           origin_row = origin.find('.row');
       if (origin.is(":visible")) {
         if(origin.attr('data-origpos') === undefined) {
-          origin.attr('data-origpos', origin.position().top);            
+          origin.attr('data-origpos', origin.position().top);
         }
         if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
           origin_row.addClass('fixed');
         }
         if($(window).scrollTop() < origin.attr('data-origpos')) {
-          origin_row.removeClass('fixed');            
+          origin_row.removeClass('fixed');
         }
       }
     });
@@ -113,7 +113,7 @@
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
         url: "https://api.github.com/repos/dogfalo/materialize/commits/master",
-        dataType: "json", 
+        dataType: "json",
         success: function (data) {
           var sha = data.sha,
               date = jQuery.timeago(data.commit.author.date);
@@ -124,10 +124,10 @@
           $('.github-commit').find('.sha').html(sha).attr('href', data.html_url);
 
           // console.log(returndata, returndata.commit.author.date, returndata.sha);
-        }  
-      });      
+        }
+      });
     }
-  
+
     // Toggle Flow Text
     var toggleFlowTextButton = $('#flow-toggle')
     toggleFlowTextButton.click( function(){
@@ -135,7 +135,7 @@
           $(this).toggleClass('flow-text');
         })
     });
-    
+
 //    Toggle Containers on page
     var toggleContainersButton = $('#container-toggle-button');
     toggleContainersButton.click(function(){
@@ -172,6 +172,11 @@
     $('.button-collapse').sideNav();
     $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
     $('select').not('.disabled').material_select();
-
+    $('#goTop').go_top({
+			'top':200,
+			'in':200,
+			'out':200,
+			'duration':400
+		});
   }); // end of document ready
 })(jQuery); // end of jQuery name space
