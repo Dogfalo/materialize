@@ -1,19 +1,46 @@
 (function ($) {
-  $(document).ready(function() {
+  $.fn.extend({
+    reveal: function(options) {
+      var trigger = this;
+      var card = $(trigger).hasClass(".card") ? trigger : $(trigger).closest(".card");
 
-    $(document).on('click.card', '.card', function (e) {
-      if ($(this).find('.card-reveal').length) {
-        console.log("card reveal");
-        if ($(e.target).is($('.card-reveal span.card-title')) || $(e.target).is($('.card-reveal span.card-title i'))) {
-          $(this).find('.card-reveal').velocity({translateY: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
-        }
-        else {
-          $(this).find('.card-reveal').velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
-        }
+      var defaults = {
+        duration: 300,
+        element: ".card-reveal",
+        closeButton: ".mdi-navigation-close",
+        ready: undefined,
+        complete: undefined
       }
 
+      // Override defaults
+      options = $.extend(defaults, options);
 
-    });  
+      $(trigger).on("click", function() {
+        $(card).find(options.element).velocity({translateY: "-100%"}, {
+          duration: options.duration,
+          queue: false,
+          easing: "easeOutQuad",
+          // Handle revealed card event
+          complete: function() {
+            if (typeof(options.ready) === "function") {
+              options.ready();
+            }
+          }
+        });
+      });
 
+      $(options.closeButton).on("click", function() {
+        $(card).find(options.element).velocity({translateY: 0}, {
+          duration: options.duration,
+          queue: false,
+          easing: "easeOutQuad",
+          complete: function() {
+            if (typeof(options.complete) === "function") {
+              options.complete();
+            }
+          }
+        });
+      });
+    }
   });
 }( jQuery ));
