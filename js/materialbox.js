@@ -42,7 +42,14 @@
 
         
         origin.css('position', 'absolute');
-        
+
+        // Add caption if it exists
+        if (origin.data('caption') !== "") {
+          var $photo_caption = $('<div class="materialbox-caption"></div');
+          $photo_caption.text(origin.data('caption'));
+          $('body').append($photo_caption);
+        }
+
         // Add overlay
         var overlay = $('<div></div>');
         overlay.attr('id', 'materialbox-overlay')
@@ -68,6 +75,7 @@
         var ratio = 0;
         var widthPercent = originalWidth / windowWidth;
         var heightPercent = originalHeight / windowHeight;
+        
         var newWidth = 0;
         var newHeight = 0;
 
@@ -82,6 +90,11 @@
           newHeight = windowHeight * 0.9;
         }
 
+        // Animate caption
+        if (origin.data('caption') !== "") {
+          $photo_caption.css({ "display": "inline" });
+          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+        }
 
         // Reposition Element AND Animate image + set z-index
         origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false, 
@@ -141,6 +154,9 @@
           origin.css('will-change', '');
           // add active class
           origin.removeClass('active');
+
+          // Remove Caption
+          $('.materialbox-caption').velocity({opacity: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad', complete: function(){$(this).remove();}});
       }
     });
   };
