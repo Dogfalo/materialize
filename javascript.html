@@ -478,13 +478,13 @@
       <p class="caption">
         Media components include things that have to do with large media objects like Images, Video, Audio, etc.
       </p>
-      <h4>Material Box</h4>
+      <h3 class="header">Material Box</h3>
        <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged. Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
-      <img class="materialboxed" data-caption="A picture of a lot of trees and mountains" width="650" src="images/sample-1.jpg"></img>
+      <img class="materialboxed" width="650" src="images/sample-1.jpg">
      <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialboxed</code> class to the image tag.</p>
 
     <pre><code class="language-markup">
-  &lt;img class="materialboxed" width="650" src="images/sample-1.jpg"></img>
+  &lt;img class="materialboxed" width="650" src="images/sample-1.jpg">
     </code></pre>
 
      <p>Next you simply have to add the initialization code </p>
@@ -493,17 +493,23 @@
     $('.materialboxed').materialbox();
   });
       </code></pre>
-      <img class="materialboxed" data-caption="A picture of some deer" width="200" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg"></img>
+
+      <h4>Captions</h4>
+      <p>It is very easy to add a short caption to your photo. Just add the caption as a <code class="language-markup">data-caption</code> attribute.</p>
+      <img class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
+        <pre><code class="language-markup">
+      &lt;img class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
+        </code></pre>
     </div>
 
-    <br><br>
+    <br>
 
 
     <!--  Slider Section  -->
     <div id="slider" class="scrollspy">
-      <h4>Slider</h4>
+      <h3 class="header">Slider</h3>
        <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p>
-       <p>note: This is also Hammer.js compatible! Try swiping with your finger to scroll through the slider.</p><br>
+       <p>Note: This is also Hammer.js compatible! Try swiping with your finger to scroll through the slider.</p><br>
 
       <div class="slider">
         <ul class="slides">
@@ -584,22 +590,22 @@
     <br><br>
     <!--  Parallax Section  -->
     <div id="parallax" class="scrollspy">
-      <h4>Parallax</h4>
+      <h3 class="header">Parallax</h3>
       <p class="caption">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling. Check out the demo to get a better idea of it.</p>
       <a href="parallax.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a><br><br>
-      <h5>Parallax HTML Structure</h5>
+      <h4>Parallax HTML Structure</h4>
       <pre><code class="language-markup col s12">
   &lt;div class="parallax-container">
     &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
   &lt;/div>
       </code></pre>
-      <h5>Parallax Javascript Initialization</h5>
+      <h4>Parallax Javascript Initialization</h4>
       <pre><code class="language-javascript col s12">
   $(document).ready(function(){
     $('.parallax').parallax();
   });
       </code></pre>
-      <h5>Parallax Container CSS</h5>
+      <h4>Parallax Container CSS</h4>
       <p>The parallax container height is what defines how much of the image can be seen. This is set to a default of 500px. You can add your own style to override this.</p>
       <pre><code class="language-css col s12">
   .parallax-container {
