@@ -100,6 +100,7 @@
           <div class="col s12">
             <p>To do this, call the toast() function programatically in JavaScript.</p>
             <pre><code class="language-javascript">
+  // toast(message, displayLength, className, completeCallback);
   toast('I am a toast!', 4000) // 4000 is the duration of the toast
             </code></pre>
             <p>One way to add this into your application is to add this as an onclick event to a button</p>
@@ -114,6 +115,12 @@
   &lt;a class="waves-effect waves-light btn" onclick="toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
             </code></pre>
 
+            <h4>Callback</h4>
+            <p>You can have the toast callback a function when it has been dismissed</p>
+            <a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
+            <pre><code class="language-markup">
+  &lt;a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
+            </code></pre>
 
             <h4>Styling Toasts</h4>
             <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
