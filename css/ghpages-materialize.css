@@ -5137,7 +5137,8 @@ small {
 
 #toast-container {
   display: block;
-  position: fixed; }
+  position: fixed;
+  z-index: 1001; }
   @media only screen and (max-width : 600px) {
     #toast-container {
       min-width: 100%;
@@ -5154,9 +5155,6 @@ small {
       right: 7%; } }
 
 .toast {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -5319,9 +5317,9 @@ ul.tabs li.tab {
   display: inline-block;
   position: relative;
   z-index: 1;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 37px;
+  height: 37px;
+  line-height: 37px;
   padding: 0;
   background-color: #2196F3;
   -webkit-border-radius: 50%;
@@ -5340,7 +5338,12 @@ ul.tabs li.tab {
     text-align: center;
     color: #fff;
     font-size: 1.6rem;
-    line-height: 40px; }
+    line-height: 37px; }
+  .btn-floating.btn-large {
+    width: 55.5px;
+    height: 55.5px; }
+    .btn-floating.btn-large i {
+      line-height: 55.5px; }
 
 .btn-flat {
   box-shadow: none;

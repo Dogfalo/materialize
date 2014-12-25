@@ -1,6 +1,8 @@
 #toast-container {
   display:block;
   position: fixed;
+  z-index: 1001;
+
   @media #{$small-and-down} {
     min-width: 100%;
     bottom: 0%;    
@@ -18,7 +20,6 @@
 }
 .toast {
   @extend .z-depth-1;
-  @include border-box();
   @include border-radius(2px);
   top: 0px;
   width: auto;
@@ -32,12 +33,12 @@
   padding: 0px 20px;
   font-size: 1.1rem;
   font-weight: 300;
-    color: #FFF;
+  color: #FFF;
+
 
   display: flex;
   align-items: center;
   justify-content: space-around;
-  // align-self: flex-start;
 
   .btn, .btn-flat {
     margin: 0;
