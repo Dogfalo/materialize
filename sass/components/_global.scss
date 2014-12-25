@@ -1,17 +1,5 @@
 @charset "UTF-8";
 
-// Media Query Ranges
-$small-screen: 600px !default;
-$medium-screen: 992px !default;
-$large-screen: 1200px !default;
-
-$medium-and-up: "only screen and (min-width : #{$small-screen})";
-$large-and-up: "only screen and (min-width : #{$medium-screen})";
-
-$small-and-down: "only screen and (max-width : #{$small-screen})";
-$medium-and-down: "only screen and (max-width : #{$medium-screen})";
-
-$medium-only: "only screen and (min-width : #{$small-screen}) and (max-width : #{$medium-screen})";
 
 //Default styles
 
@@ -78,20 +66,12 @@ a {
   margin-right: auto;
 }
 
-
-// Grid Variables
-$num-cols: 12;
-$gutter-width: 1.5rem;
-
 ul {
   padding: 0;
 }
 li {
   list-style-type: none;
 }
-
-$num-cols: 12;
-
 
 // Z-levels
 
@@ -114,6 +94,15 @@ $num-cols: 12;
     @include box-shadow-2(0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22));
 }
 
+// Dividers
+
+.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: color("grey", "lighten-2");
+}
+
+
 //  Blockquote 
 
 blockquote {
@@ -134,6 +123,15 @@ i {
   &.right {
     float: right;
     margin-left: 15px;
+  }
+  &.small {
+    font-size: 2rem;
+  }
+  &.medium {
+    font-size: 4rem;
+  }
+  &.large {
+    font-size: 6rem;
   }
 }
 

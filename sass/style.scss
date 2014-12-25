@@ -61,6 +61,21 @@ nav {
   pointer-events: none;
 }
 
+@media only screen and (max-width: 992px) {
+  #front-page-nav ul.side-nav {
+    li {
+      float: none;
+      padding: 0 15px;
+
+      &:hover { background-color: #ddd; }
+      .active { background-color: transparent; }
+    }
+    a {
+      color: #444;
+    }
+  }
+}
+
 
 #responsive-img {
   width: 80%;
@@ -316,6 +331,9 @@ $height: auto;
 }
 
 // Icons
+.icon-demo {
+  line-height: 50px;
+}
 .icon-container i {
   font-size: 3em;
   display: block;
@@ -538,6 +556,7 @@ body.parallax-demo footer {
 
 #tx-live-lang-container {
   background-color: #fcfcfc;
+  z-index: 999;
 
   #tx-live-lang-picker {
     background-color: #fcfcfc;
@@ -563,5 +582,6 @@ body.parallax-demo footer {
   .txlive-langselector-marker {
     border-bottom: 4px solid rgba(0,0,0,.61);
   }
+
 
 }

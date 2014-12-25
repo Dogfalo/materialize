@@ -1,6 +1,3 @@
-$button-height: 36px !default;
-$button-color: color("blue", "base") !default;
-
 // shared styles
 .btn, .btn-flat {
   display: inline-block;
@@ -31,8 +28,6 @@ $button-color: color("blue", "base") !default;
   }
 }
 
-
-
 // Raised Button
 .btn {
   text-decoration:none;
@@ -50,15 +45,14 @@ $button-color: color("blue", "base") !default;
   }
 }
 
-
 // Floating button 
 .btn-floating {
   display: inline-block;
   position: relative;
   z-index: 1;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: $button-floating-size;
+  height: $button-floating-size;
+  line-height: $button-floating-size;
   padding: 0;
   background-color: $button-color;
   @include border-radius(50%);
@@ -72,11 +66,18 @@ $button-color: color("blue", "base") !default;
     text-align: center;
     color: #fff;
     font-size: 1.6rem;
-    line-height: 40px;
+    line-height: $button-floating-size;
   }
   
   &:hover {
     @extend .z-depth-1-half;
+  }
+  &.btn-large {
+    width: $button-floating-size * 1.5;
+    height: $button-floating-size * 1.5;
+    i{
+      line-height: $button-floating-size * 1.5;
+    }
   }
 }
 
@@ -91,7 +92,6 @@ $button-color: color("blue", "base") !default;
     color: lighten(#999, 10%);
   }
 }
-
 
 // Large button
 .btn-large {

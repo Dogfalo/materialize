@@ -21,17 +21,33 @@
       color: #444;
     }
   }
-  #front-page-nav ul.side-nav {
-    li {
-      float: none;
-      padding: 0 15px;
+}
 
-      &:hover { background-color: #ddd; }
-      .active { background-color: transparent; }
-    }
-    a {
-      color: #444;
-    }
+ul.side-nav.full {
+  position: fixed;
+  width: 240px;
+  left: -250px;
+  top: 0;
+  height: 120%;
+  margin: 0;
+  background-color: #FFF;
+  z-index: 999;
+  @include box-shadow-2(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+  
+  will-change: left;
+
+  li {
+    float: none;
+    line-height: 64px;
+    padding: 0 15px;
+    @include transition(background-color .3s);
+
+    &:hover, &.active { background-color: #ddd; }
+  }
+  a {
+    display: block;
+    padding: 0 15px;
+    color: #444;
   }
 }
 

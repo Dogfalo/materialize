@@ -60,7 +60,7 @@
     <div class="container">
       <ul class="tabs">
         <li class="tab"><a href="#tab1">Dialogs</a></li>
-        <li class="tab"><a href="#tab2">Tabs</a></li>
+        <li class="tab"><a href="#tab2">Navigation</a></li>
         <li class="tab"><a href="#tab3">Waves</a></li>
         <li class="tab"><a href="#tab4">Media</a></li>
         <li class="tab"><a href="#tab5">Collapsible</a></li>
@@ -100,6 +100,7 @@
           <div class="col s12">
             <p>To do this, call the toast() function programatically in JavaScript.</p>
             <pre><code class="language-javascript">
+  // toast(message, displayLength, className, completeCallback);
   toast('I am a toast!', 4000) // 4000 is the duration of the toast
             </code></pre>
             <p>One way to add this into your application is to add this as an onclick event to a button</p>
@@ -114,6 +115,12 @@
   &lt;a class="waves-effect waves-light btn" onclick="toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
             </code></pre>
 
+            <h4>Callback</h4>
+            <p>You can have the toast callback a function when it has been dismissed</p>
+            <a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
+            <pre><code class="language-markup">
+  &lt;a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
+            </code></pre>
 
             <h4>Styling Toasts</h4>
             <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
@@ -280,27 +287,42 @@
   </div>
 
 
-  <!--  Tabs Section  -->
-    <div id="tab2">
-      <div class="section">
-        <h2 class="header">Tabs</h2>
-        <p class="caption">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+  <!--  Navigation Section  -->
+  <div id="tab2" class="row">
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#tabs">Tabs</a></li>
+          <li><a href="#sidebar">Sidebar</a></li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="col s12">
+    <div class="col s12 m9 l10">
+      <div id="tabs" class="section scrollspy">
+        <h2 class="header">Navigation</h2>
+        
+        <p class="caption">
+          Here you can learn about our different navigation options. These components can help organize and divide your content into easier to read portions.
+        </p>
+
+        <h4>Tabs</h4>
+        <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+
           <ul class="tabs tab-demo z-depth-1">
             <li class="tab"><a href="#test1">Test 1</a></li>
             <li class="tab"><a href="#test2">Test 2</a></li>
             <li class="tab"><a href="#test3">Test 3</a></li>
             <li class="tab"><a href="#test4">Test 4</a></li>
           </ul>
-        </div>
-        <div id="test1" class="col s12">Test 1</div>
-        <div id="test2" class="col s12">Test 2</div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
+        <div id="test1" class="col s12"><p>Test 1</p></div>
+        <div id="test2" class="col s12"><p>Test 2</p></div>
+        <div id="test3" class="col s12"><p>Test 3</p></div>
+        <div id="test4" class="col s12"><p>Test 4</p></div>
+        <br>
       </div>
       <div class="section">
-        <h4>Tabs HTML Structure</h4>
+        <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
           &lt;div class="col s12">
             &lt;ul class="tabs">
@@ -317,14 +339,72 @@
         </code></pre>
       </div>
       <div class="section">
-        <h4>jQuery Plugin Initialization</h4>
+        <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
           $(document).ready(function(){
             $('ul.tabs').tabs();
           });
         </code></pre>
       </div>
+      <div id="sidebar" class="section scrollspy">
+
+        <h4>Sidebar</h4>
+        <p>This is a slide out menu. If you want a sidebar that will work on all widths, just add the class <code class="language-markup">full</code> to your sidebar list. You can add a dropdown to your sidebar by using our collapsible component.</p>
+        <ul id="slide-out" class="side-nav full">
+          <li><a href="#!">First Sidebar Link</a></li>
+          <li><a href="#!">Second Sidebar Link</a></li>
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+              <li>
+                <div class="collapsible-header">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></div>
+                <div class="collapsible-body">
+                  <ul>
+                    <li><a href="#!">First Dropdown Link</a></li>
+                    <li><a href="#!">Second Dropdown Link</a></li>
+                    <li><a href="#!">Third Dropdown Link</a></li>
+                    <li><a href="#!">Fourth Dropdown Link</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse btn">Open Sidebar</a>
+
+      </div>
+      <div class="section">
+        <h5>Tabs HTML Structure</h5>
+        <pre><code class="language-markup col s12">
+  &lt;ul id="slide-out" class="side-nav full">
+    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+    &lt;li class="no-padding">
+      &lt;ul class="collapsible collapsible-accordion">
+        &lt;li>
+          &lt;div class="collapsible-header">Dropdown&lt;i class="mdi-navigation-arrow-drop-down">&lt;/i>&lt;/div>
+          &lt;div class="collapsible-body">
+            &lt;ul>
+              &lt;li>&lt;a href="#!">First Dropdown Link&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="#!">Second Dropdown Link&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="#!">Third Dropdown Link&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="#!">Fourth Dropdown Link&lt;/a>&lt;/li>
+            &lt;/ul>
+          &lt;/div>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+        </code></pre>
+      </div>
+      <div class="section">
+        <h5>jQuery Plugin Initialization</h5>
+        <pre><code class="language-javascript col s12">
+  $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
     </div>
+  </div>
 
 
 <!--  Waves Section  -->
@@ -405,13 +485,13 @@
       <p class="caption">
         Media components include things that have to do with large media objects like Images, Video, Audio, etc.
       </p>
-      <h4>Material Box</h4>
+      <h3 class="header">Material Box</h3>
        <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged. Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
-      <img class="materialboxed" width="650" src="images/sample-1.jpg"></img>
+      <img class="materialboxed" width="650" src="images/sample-1.jpg">
      <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialboxed</code> class to the image tag.</p>
 
     <pre><code class="language-markup">
-  &lt;img class="materialboxed" width="650" src="images/sample-1.jpg"></img>
+  &lt;img class="materialboxed" width="650" src="images/sample-1.jpg">
     </code></pre>
 
      <p>Next you simply have to add the initialization code </p>
@@ -420,17 +500,23 @@
     $('.materialboxed').materialbox();
   });
       </code></pre>
-      <img class="materialboxed" width="200" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg"></img>
+
+      <h4>Captions</h4>
+      <p>It is very easy to add a short caption to your photo. Just add the caption as a <code class="language-markup">data-caption</code> attribute.</p>
+      <img class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
+        <pre><code class="language-markup">
+      &lt;img class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
+        </code></pre>
     </div>
 
-    <br><br>
+    <br>
 
 
     <!--  Slider Section  -->
     <div id="slider" class="scrollspy">
-      <h4>Slider</h4>
+      <h3 class="header">Slider</h3>
        <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p>
-       <p>note: This is also Hammer.js compatible! Try swiping with your finger to scroll through the slider.</p><br>
+       <p>Note: This is also Hammer.js compatible! Try swiping with your finger to scroll through the slider.</p><br>
 
       <div class="slider">
         <ul class="slides">
@@ -511,22 +597,22 @@
     <br><br>
     <!--  Parallax Section  -->
     <div id="parallax" class="scrollspy">
-      <h4>Parallax</h4>
+      <h3 class="header">Parallax</h3>
       <p class="caption">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling. Check out the demo to get a better idea of it.</p>
       <a href="parallax.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a><br><br>
-      <h5>Parallax HTML Structure</h5>
+      <h4>Parallax HTML Structure</h4>
       <pre><code class="language-markup col s12">
   &lt;div class="parallax-container">
     &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
   &lt;/div>
       </code></pre>
-      <h5>Parallax Javascript Initialization</h5>
+      <h4>Parallax Javascript Initialization</h4>
       <pre><code class="language-javascript col s12">
   $(document).ready(function(){
     $('.parallax').parallax();
   });
       </code></pre>
-      <h5>Parallax Container CSS</h5>
+      <h4>Parallax Container CSS</h4>
       <p>The parallax container height is what defines how much of the image can be seen. This is set to a default of 500px. You can add your own style to override this.</p>
       <pre><code class="language-css col s12">
   .parallax-container {

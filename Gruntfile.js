@@ -180,6 +180,7 @@ module.exports = function(grunt) {
           "components.html": "jade/components.jade",
           "javascript.html": "jade/javascript.jade",
           "mobile.html": "jade/mobile.jade",
+          "showcase.html": "jade/showcase.jade",
           "parallax.html": "jade/parallax.jade"
 
         }
@@ -264,9 +265,9 @@ module.exports = function(grunt) {
         options: {
           enabled: true,
           message: 'Sass Compiled!',
-          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
-          success: true, // whether successful grunt executions should be notified automatically
-          duration: 1 // the duration of notification in seconds, for `notify-send only
+          title: "Materialize",
+          success: true,
+          duration: 1
         }
       },
                    
@@ -274,9 +275,9 @@ module.exports = function(grunt) {
         options: {
           enabled: true,
           message: 'JS Compiled!',
-          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
-          success: true, // whether successful grunt executions should be notified automatically
-          duration: 1 // the duration of notification in seconds, for `notify-send only
+          title: "Materialize",
+          success: true,
+          duration: 1
         }
       },
                    
@@ -284,9 +285,9 @@ module.exports = function(grunt) {
         options: {
           enabled: true,
           message: 'Jade Compiled!',
-          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
-          success: true, // whether successful grunt executions should be notified automatically
-          duration: 1 // the duration of notification in seconds, for `notify-send only
+          title: "Materialize",
+          success: true,
+          duration: 1
         }
       },       
       
@@ -294,9 +295,9 @@ module.exports = function(grunt) {
         options: {
           enabled: true,
           message: 'Server Running!',
-          title: "Materialize", // defaults to the name in package.json, or will use project directory's name
-          success: true, // whether successful grunt executions should be notified automatically
-          duration: 1 // the duration of notification in seconds, for `notify-send only
+          title: "Materialize",
+          success: true,
+          duration: 1
         }
       }
     },

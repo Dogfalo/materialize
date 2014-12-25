@@ -1,6 +1,3 @@
-$default-color: #00bcd4 !default; 
-$card-padding: 16px !default;
-$footer-font-color: #000 !default;
 
 .card-panel {
   padding: 1rem;
@@ -103,8 +100,8 @@ $footer-font-color: #000 !default;
     padding: $card-padding;
     position: absolute;
     background-color: #FFF;
+    top: 100%;
     height: 100%;
-    @include transform(translateY(100%));
 
     span.card-title {
       cursor: pointer;

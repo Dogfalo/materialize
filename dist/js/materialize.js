@@ -478,7 +478,14 @@ jQuery.extend( jQuery.easing,
 
         
         origin.css('position', 'absolute');
-        
+
+        // Add caption if it exists
+        if (origin.data('caption') !== "") {
+          var $photo_caption = $('<div class="materialbox-caption"></div');
+          $photo_caption.text(origin.data('caption'));
+          $('body').append($photo_caption);
+        }
+
         // Add overlay
         var overlay = $('<div></div>');
         overlay.attr('id', 'materialbox-overlay')
@@ -504,6 +511,7 @@ jQuery.extend( jQuery.easing,
         var ratio = 0;
         var widthPercent = originalWidth / windowWidth;
         var heightPercent = originalHeight / windowHeight;
+        
         var newWidth = 0;
         var newHeight = 0;
 
@@ -518,15 +526,27 @@ jQuery.extend( jQuery.easing,
           newHeight = windowHeight * 0.9;
         }
 
+        // Animate caption
+        if (origin.data('caption') !== "") {
+          $photo_caption.css({ "display": "inline" });
+          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+        }
+
         // Reposition Element AND Animate image + set z-index
-        origin.css('left', 0)
-          .css('top', 0)
-          .css('z-index', 1000)
-          .css('will-change', 'left, top')
-          .animate({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-          .animate({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-          .animate({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
+        origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false, 
+          complete: function(){
+            origin.css('left', 0)
+              .css('top', 0)
+              .css('z-index', 1000)
+              .css('will-change', 'left, top')
+              .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+              .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+              .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
+          }
         });
+
+
+        }); // End origin on click
 
       
       // Return on scroll
@@ -561,15 +581,18 @@ jQuery.extend( jQuery.easing,
             origin.css('z-index', original_z_index);
           });
           // Resize
-          origin.animate({ width: originalWidth}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.animate({ height: originalHeight}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ width: originalWidth}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ height: originalHeight}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
 
           // Reposition Element
-          origin.animate({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.animate({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
+          origin.velocity({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
           origin.css('will-change', '');
           // add active class
           origin.removeClass('active');
+
+          // Remove Caption
+          $('.materialbox-caption').velocity({opacity: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad', complete: function(){$(this).remove();}});
       }
     });
   };
@@ -874,8 +897,7 @@ jQuery.extend( jQuery.easing,
             var pos         = offset(el);
             var relativeY   = (e.pageY - pos.top);
             var relativeX   = (e.pageX - pos.left);
-            var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
-            // var scale = 'scale(15)';
+            var scale       = 'scale('+((el.clientWidth / 100) * 22)+')';
           
             // Support for touch devices
             if ('touches' in e) {
@@ -907,10 +929,15 @@ jQuery.extend( jQuery.easing,
             rippleStyle.transform = scale;
             rippleStyle.opacity   = '1';
 
-            rippleStyle['-webkit-transition-duration'] = Effect.duration + 'ms';
-            rippleStyle['-moz-transition-duration']    = Effect.duration + 'ms';
-            rippleStyle['-o-transition-duration']      = Effect.duration + 'ms';
-            rippleStyle['transition-duration']         = Effect.duration + 'ms';
+            rippleStyle['-webkit-transition-duration'] = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+            rippleStyle['-moz-transition-duration']    = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+            rippleStyle['-o-transition-duration']      = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+            rippleStyle['transition-duration']         = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+
+            rippleStyle['-webkit-transition-timing-function'] = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+            rippleStyle['-moz-transition-timing-function']    = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+            rippleStyle['-o-transition-timing-function']      = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+            rippleStyle['transition-timing-function']         = 'cubic-bezier(0.215, 0.610, 0.355, 1.000)';
 
             ripple.setAttribute('style', convertStyle(rippleStyle));
 
@@ -1061,7 +1088,7 @@ jQuery.extend( jQuery.easing,
       Waves.displayEffect();
     });
 
-})(window);;function toast(message, displayLength, className) {
+})(window);;function toast(message, displayLength, className, completeCallback) {
     className = className || "";
     if ($('#toast-container').length == 0) {
         // create notification container
@@ -1098,7 +1125,11 @@ jQuery.extend( jQuery.easing,
                         { duration: 375,
                           easing: 'easeOutExpo',
                           queue: false,
-                          complete: function(){$(this).remove()}
+                          complete: function(){
+                            $(this).remove();
+                            if(typeof(completeCallback) === "function")
+                              completeCallback();
+                          }
                         }
                        );
         window.clearInterval(counterInterval);
