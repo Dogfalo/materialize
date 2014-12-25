@@ -21,8 +21,8 @@
       // Click handler for list container
       origin.on('mouseover', function(e){ // Mouse over
         activates.css('width', origin.outerWidth());
-        activates.css('top', origin.offset().top);
-        activates.css('left', origin.offset().left);
+        activates.css('top', origin.position().top);
+        activates.css('left', origin.position().left);
         activates.show({duration: 200, easing: 'easeOutCubic'});
       });
       
@@ -41,8 +41,8 @@
         e.preventDefault();
         e.stopPropagation();
         activates.css('width', origin.outerWidth());
-        activates.css('top', origin.offset().top);
-        activates.css('left', origin.offset().left);
+        activates.css('top', origin.position().top);
+        activates.css('left', origin.position().left);
         activates.show({duration: 200, easing: 'easeOutCubic'});
 
         $(document).bind('click.'+ activates.attr('id'), function (e) {
