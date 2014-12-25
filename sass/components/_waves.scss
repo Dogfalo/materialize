@@ -32,14 +32,19 @@
       height:10px;
       margin-top: -5px;
       margin-left: -5px;
-      opacity:.3;
+      opacity:.25;
       background-color: rgba(0, 0, 0, 0.2);
-      @include transition(all 700ms ease);
+      // @include transition(all 700ms ease);
       -webkit-transition-property: -webkit-transform, opacity;
       -moz-transition-property: -moz-transform, opacity;
       -o-transition-property: -o-transform, opacity;
       transition-property: transform, opacity;
+      -webkit-transition-duration: 700ms;
+      -moz-transition-duration: 700ms;
+      -o-transition-duration: 700ms;
+      transition-duration: 700ms;
       @include transform(scale(0));
+      will-change: transform, opacity;
     }
     
     // Waves Colors

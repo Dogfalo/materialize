@@ -5420,22 +5420,22 @@ ul.tabs li.tab {
     height: 10px;
     margin-top: -5px;
     margin-left: -5px;
-    opacity: 0.3;
+    opacity: 0.25;
     background-color: rgba(0, 0, 0, 0.2);
-    -webkit-transition: all 700ms ease;
-    -moz-transition: all 700ms ease;
-    -o-transition: all 700ms ease;
-    -ms-transition: all 700ms ease;
-    transition: all 700ms ease;
     -webkit-transition-property: -webkit-transform, opacity;
     -moz-transition-property: -moz-transform, opacity;
     -o-transition-property: -o-transform, opacity;
     transition-property: transform, opacity;
+    -webkit-transition-duration: 700ms;
+    -moz-transition-duration: 700ms;
+    -o-transition-duration: 700ms;
+    transition-duration: 700ms;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
-    transform: scale(0); }
+    transform: scale(0);
+    will-change: transform, opacity; }
   .waves-effect.waves-light .waves-ripple {
     background-color: rgba(255, 255, 255, 0.35); }
   .waves-effect.waves-red .waves-ripple {
