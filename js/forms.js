@@ -155,7 +155,7 @@
         // Add Select Display Element
         var $newSelect = $('<span class="select-dropdown" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
         $select.before($newSelect);
-        $('body').append(options);
+        $newSelect.after(options);
         $newSelect.dropdown({"hover": false});
 
         $select.addClass('initialized');
