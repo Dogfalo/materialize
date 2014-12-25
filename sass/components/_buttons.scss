@@ -1,7 +1,3 @@
-$button-height: 36px !default;
-$button-color: color("blue", "base") !default;
-$button-floating-size: 37px !default;
-
 // shared styles
 .btn, .btn-flat {
   display: inline-block;
@@ -32,8 +28,6 @@ $button-floating-size: 37px !default;
   }
 }
 
-
-
 // Raised Button
 .btn {
   text-decoration:none;
@@ -50,7 +44,6 @@ $button-floating-size: 37px !default;
     @extend .z-depth-1-half;
   }
 }
-
 
 // Floating button 
 .btn-floating {
@@ -99,7 +92,6 @@ $button-floating-size: 37px !default;
     color: lighten(#999, 10%);
   }
 }
-
 
 // Large button
 .btn-large {

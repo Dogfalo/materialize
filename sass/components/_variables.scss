@@ -1,0 +1,63 @@
+/*** Buttons ***/
+$button-height: 36px !default;
+$button-color: color("blue", "base") !default;
+$button-floating-size: 37px !default;
+
+
+
+/*** Cards ***/
+$default-color: #00bcd4 !default; 
+$card-padding: 16px !default;
+$footer-font-color: #000 !default;
+
+
+
+/*** Forms ***/
+// Text Inputs + Textarea
+$border-color: color("grey", "base") !default;
+$highlight-color: color("light-blue", "base") !default;
+$label-font-size: .8rem !default;
+
+// Radio Buttons
+$disabled-color: rgba(0,0,0, .26) !default;
+$fill-color: #0f9d58 !default;
+$radio-border: #5a5a5a !default;
+
+
+
+/*** Global ***/
+// Media Query Ranges
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+$medium-and-up: "only screen and (min-width : #{$small-screen})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen}) and (max-width : #{$medium-screen})" !default;
+
+// Grid Variables
+$num-cols: 12 !default;
+$gutter-width: 1.5rem !default;
+
+
+
+/*** Toasts ***/
+$toast-height: 48px !default;
+
+
+
+/*** Typography ***/
+$off-black: rgba(0, 0, 0, 0.87) !default;
+// Header Styles
+$h1-fontsize: 4.2rem !default;
+$h2-fontsize: 3.56rem !default;
+$h3-fontsize: 2.92rem !default;
+$h4-fontsize: 2.28rem !default;
+$h5-fontsize: 1.64rem !default;
+$h6-fontsize: 1rem !default;
+
+// Flowtext
+$range : $large-screen - $small-screen !default;
+$intervals: 20 !default;
+$interval-size: $range / $intervals !default;

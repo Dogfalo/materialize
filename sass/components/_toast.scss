@@ -5,7 +5,7 @@
 
   @media #{$small-and-down} {
     min-width: 100%;
-    bottom: 0%;    
+    bottom: 0%;
   }
   @media #{$medium-only} {
     min-width: 30%;
@@ -18,6 +18,7 @@
     right: 7%;
   }
 }
+
 .toast {
   @extend .z-depth-1;
   @include border-radius(2px);
@@ -27,14 +28,13 @@
   margin-top: 10px;
   position: relative;
   max-width:100%;
-  height: 48px;
-  line-height: 48px;
+  height: $toast-height;
+  line-height: $toast-height;
   background-color: #323232;
   padding: 0px 20px;
   font-size: 1.1rem;
   font-weight: 300;
   color: #FFF;
-
 
   display: flex;
   align-items: center;
@@ -44,11 +44,11 @@
     margin: 0;
     margin-left: 3rem;
   }
-  
+
   &.rounded{
     border-radius: 24px;
   }
-  
+
   @media #{$small-and-down} {
     width:100%;
   }
