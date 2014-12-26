@@ -61,7 +61,7 @@
         $timesToCheck = 3;
     function checkForChanges()
     {
-        if ($bsa.find('.bsa_it').height() > 0) 
+        if ($bsa.find('#carbonads').height() > 0) 
         {
               $('.table-of-contents').css('marginTop', 285);
               // Floating-Fixed table of contents
