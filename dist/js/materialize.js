@@ -1777,8 +1777,11 @@ jQuery.extend( jQuery.easing,
         var selectOptions = $select.children('option');
         var label = selectOptions.first();
 
+        // Add Select Display Element
+        var $newSelect = $('<span class="select-dropdown" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
 
-        // Create Dropdown structure
+
+          // Create Dropdown structure
         selectOptions.each(function () {
           options.append($('<li><span>' + $(this).html() + '</span></li>'));
         });
@@ -1788,15 +1791,14 @@ jQuery.extend( jQuery.easing,
           var $curr_select = $select;
           $(this).click(function () {
             $curr_select.find('option').eq(i + 1).prop('selected', true);
-            $curr_select.prev('span.select-dropdown').html($(this).text());
+            $newSelect.html($(this).text());
           });
         });
 
         // Wrap Elements
         $select.wrap(wrapper);
 
-        // Add Select Display Element
-        var $newSelect = $('<span class="select-dropdown" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
+
         $select.before($newSelect);
         $newSelect.after(options);
         $newSelect.dropdown({"hover": false});
@@ -1804,7 +1806,7 @@ jQuery.extend( jQuery.easing,
         $select.addClass('initialized');
 
       });
-    }
+    };
 
     // Unique ID
     var guid = (function() {
