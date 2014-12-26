@@ -15,7 +15,7 @@
   @extend .z-depth-1;
 
 
-  span.card-title {
+  .card-title {
     color: #fff;
     font-size: 24px;
     font-weight: 300;
@@ -68,7 +68,7 @@
       z-index: -1;
     }
 
-    span.card-title {
+    .card-title {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -86,7 +86,7 @@
       margin: 0;
       color: inherit;
     }
-    span.card-title {
+    .card-title {
       line-height: 48px;
     }
   }
@@ -103,7 +103,7 @@
     top: 100%;
     height: 100%;
 
-    span.card-title {
+    .card-title {
       cursor: pointer;
       display: block;
     }
