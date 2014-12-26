@@ -136,7 +136,9 @@
 
         // Create Dropdown structure
         selectOptions.each(function () {
-          options.append($('<li><span>' + $(this).html() + '</span></li>'));
+          if($(this).attr('disabled') !== 'disabled') {
+            options.append($('<li><span>' + $(this).html() + '</span></li>'));
+          }
         });
 
 
