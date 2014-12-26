@@ -572,42 +572,79 @@
             </div>
           </form>
         </div>
+        <pre><code class="language-markup">
+&lt;div class="row">
+  &lt;form class="col s12">
+    &lt;div class="row">
+      &lt;div class="input-field col s6">
+        &lt;input id="first_name" type="text" required>
+        &lt;label for="first_name">First Name&lt;/label>
+      &lt;/div>
+      &lt;div class="input-field col s6">
+        &lt;input id="last_name" type="text" required>
+        &lt;label for="last_name">Last Name&lt;/label>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+      &lt;div class="input-field col s12">
+        &lt;input id="username" type="text" required>
+        &lt;label for="username">Username&lt;/label>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+      &lt;div class="input-field col s12">
+        &lt;input id="password" type="password" required>
+        &lt;label for="password">Password&lt;/label>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+      &lt;div class="input-field col s12">
+        &lt;input id="email" type="email" required>
+        &lt;label for="email">Email&lt;/label>
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+&lt;/div>
+        </code></pre><br>
+
+        <h5>Icon Prefixes</h5>
+        <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
         <div class="row">
-          <pre><code class="language-markup col s12">
-  &lt;div class="row">
-    &lt;form class="col s12">
-      &lt;div class="row">
-        &lt;div class="input-field col s6">
-          &lt;input id="first_name" type="text" required>
-          &lt;label for="first_name">First Name&lt;/label>
-        &lt;/div>
-        &lt;div class="input-field col s6">
-          &lt;input id="last_name" type="text" required>
-          &lt;label for="last_name">Last Name&lt;/label>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="row">
-        &lt;div class="input-field col s12">
-          &lt;input id="username" type="text" required>
-          &lt;label for="username">Username&lt;/label>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="row">
-        &lt;div class="input-field col s12">
-          &lt;input id="password" type="password" required>
-          &lt;label for="password">Password&lt;/label>
-        &lt;/div>
-      &lt;/div>
-      &lt;div class="row">
-        &lt;div class="input-field col s12">
-          &lt;input id="email" type="email" required>
-          &lt;label for="email">Email&lt;/label>
-        &lt;/div>
-      &lt;/div>
-    &lt;/form>
-  &lt;/div>
-          </code></pre>
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="mdi-action-account-circle prefix"></i>
+                <input id="icon_prefix" type="text" required>
+                <label for="icon_prefix">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="mdi-communication-phone prefix"></i>
+                <input id="icon_telephone" type="text" required>
+                <label for="icon_telephone">Telephone</label>
+              </div>
+            </div>
+          </form>
         </div>
+
+        <pre><code class="language-markup">
+&lt;div class="row">
+  &lt;form class="col s12">
+    &lt;div class="row">
+      &lt;div class="input-field col s6">
+        &lt;i class="mdi-action-account-circle prefix">&lt;/i>
+        &lt;input id="icon_prefix" type="text" required>
+        &lt;label for="icon_prefix">First Name&lt;/label>
+      &lt;/div>
+      &lt;div class="input-field col s6">
+        &lt;i class="mdi-communication-phone prefix">&lt;/i>
+        &lt;input id="icon_telephone" type="text" required>
+        &lt;label for="icon_telephone">Telephone&lt;/label>
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+&lt;/div>
+        </code></pre>
+
       </div>
       <div id="textarea" class="section scrollspy">
         <h4>Textarea</h4>

@@ -5692,6 +5692,31 @@ label {
     -webkit-box-shadow: 0 1px 0 0 #4CAF50;
     -moz-box-shadow: 0 1px 0 0 #4CAF50;
     box-shadow: 0 1px 0 0 #4CAF50; }
+  .input-field .prefix {
+    position: absolute;
+    width: 3rem;
+    font-size: 2rem;
+    -webkit-transition: color 0.2s;
+    -moz-transition: color 0.2s;
+    -o-transition: color 0.2s;
+    -ms-transition: color 0.2s;
+    transition: color 0.2s; }
+    .input-field .prefix.active {
+      color: #03a9f4; }
+  .input-field .prefix ~ input, .input-field .prefix ~ label {
+    margin-left: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem); }
+  @media only screen and (max-width : 992px) {
+    .input-field .prefix ~ input, .input-field .prefix ~ label {
+      width: 86%;
+      width: calc(100% - 3rem); }
+ }
+  @media only screen and (max-width : 600px) {
+    .input-field .prefix ~ input, .input-field .prefix ~ label {
+      width: 80%;
+      width: calc(100% - 3rem); }
+ }
 
 input[type=text], input[type=password], input[type=email], input[type=date], textarea {
   background-color: transparent;

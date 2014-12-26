@@ -29,7 +29,6 @@ label {
   input[type=email]:focus + label,
   input[type=date]:focus + label,
   textarea:focus + label {
-  
     color: $highlight-color;
   }
 
@@ -40,6 +39,37 @@ label {
   textarea:valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
+  }
+
+  // Prefix Icons
+  .prefix {
+    position: absolute;
+    width: 3rem;
+    font-size: 2rem;
+    @include transition(color .2s);
+
+    &.active { color: $highlight-color; }
+  }
+  .prefix ~ input,
+  .prefix ~ label {
+    margin-left: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem);
+  }
+
+  @media #{$medium-and-down} {
+    .prefix ~ input,
+    .prefix ~ label {
+      width: 86%;
+      width: calc(100% - 3rem);
+    }
+  }
+  @media #{$small-and-down} {
+    .prefix ~ input,
+    .prefix ~ label {
+      width: 80%;
+      width: calc(100% - 3rem);
+    }
   }
 
 }

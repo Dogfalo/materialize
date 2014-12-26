@@ -1653,17 +1653,17 @@ jQuery.extend( jQuery.easing,
     
     $(input_selector).each(function(){
       if($(this).val().length !== 0) {
-       $(this).siblings('label').addClass('active');
+       $(this).siblings('label, i').addClass('active');
       }
     })
 
     $(document).on('focus', input_selector, function () {
-      $(this).siblings('label').addClass('active');
+      $(this).siblings('label, i').addClass('active');
     });
 
     $(document).on('blur', input_selector, function () {
       if ($(this).val().length === 0) {
-        $(this).siblings('label').removeClass('active');      
+        $(this).siblings('label, i').removeClass('active');      
       }
     });
 
