@@ -6,6 +6,8 @@
   margin: 0px;
   min-width: 100px;
   z-index: 1000;
+
+  will-change: width, height;
   
   li {
     cursor: pointer;

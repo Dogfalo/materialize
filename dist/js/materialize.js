@@ -313,7 +313,7 @@ jQuery.extend( jQuery.easing,
       }
       activates.css('top', origin.offset().top);
       activates.css('left', origin.offset().left);
-      activates.show({duration: 200, easing: 'easeOutCubic'});
+      activates.show({duration: 250, easing: 'easeOutCubic'});
     }
 
 

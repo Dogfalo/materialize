@@ -5165,6 +5165,9 @@ small {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   top: 0px;
   width: auto;
   clear: both;
@@ -5372,7 +5375,8 @@ ul.tabs li.tab {
   background-color: #FFFFFF;
   margin: 0px;
   min-width: 100px;
-  z-index: 1000; }
+  z-index: 1000;
+  will-change: width, height; }
   .dropdown-content li {
     cursor: pointer;
     font-size: 1.2rem;
