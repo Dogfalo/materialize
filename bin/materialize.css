@@ -5610,14 +5610,20 @@ li.no-padding {
 
 .materialboxed {
   cursor: zoom-in;
-  position: relative; }
+  position: relative;
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -ms-transition: opacity 0.4s;
+  transition: opacity 0.4s; }
   .materialboxed:hover {
     will-change: left, top; }
     .materialboxed:hover:not(.active) {
-      -webkit-filter: brightness(95%);
-      -moz-filter: brightness(95%);
-      -o-filter: brightness(95%);
-      -ms-filter: brightness(95%); }
+      -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+      filter: "alpha(opacity=(${iefactor}))";
+      -moz-opacity: 0.8;
+      -khtml-opacity: 0.8;
+      opacity: 0.8; }
 
 .materialboxed.active {
   cursor: zoom-out; }

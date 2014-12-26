@@ -1,10 +1,11 @@
 .materialboxed {
   cursor: zoom-in;
   position: relative;
+  @include transition(opacity .4s);
   
   &:hover {
     &:not(.active) {
-      @include filter(brightness(95%));
+      @include opacity(0.8);
     }
     will-change: left, top;
   }
