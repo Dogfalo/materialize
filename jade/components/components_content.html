@@ -1345,31 +1345,55 @@ $(".dropdown-button").dropdown();
       <div class="col s12 m5">
         <br><br>
         <p class="caption">
-         Here you can add a card that reveals more information once clicked. Just add the <code class="language-markup">card-reveal</code> div with a <code class="language-markup">span.card-title</code> inside to make this work.
+          Here you can add a card that reveals more information. Many ways to control the reveal action are provided.
         </p>
       </div>
       <div class="col s12">
         <br>
         <pre><code class="language-markup">
-  &lt;div class="card">
-    &lt;div class="card-image">
-      &lt;img src="images/office.jpg">
-    &lt;/div>  
-    &lt;div class="card-content">
-      &lt;span class="card-title grey-text darken-4">Card Title &lt;i class="mdi-navigation-more-vert right">&lt;/i>&lt;/span>
-
-      &lt;p>&lt;a href="#">This is a link&lt;/a>&lt;/p>
+    &lt;div class="card">
+      &lt;div class="card-image">
+        &lt;img src="images/office.jpg">
+      &lt;/div>
+      &lt;div class="card-content">
+        &lt;span class="card-title grey-text darken-4">Card Title &lt;i class="mdi-navigation-more-vert right">&lt;/i>&lt;/span>
+        &lt;p>&lt;a href="#!">This is a link&lt;/a>&lt;/p>
+      &lt;/div>
+      &lt;div class="card-reveal">
+        &lt;span class="card-title grey-text darken-4">Card Title &lt;i class="mdi-navigation-close right">&lt;/i>&lt;/span>
+        &lt;p>Here is some more information about this product that is only revealed once clicked on.&lt;/p>
+      &lt;/div>
     &lt;/div>
-    &lt;div class="card-reveal">
-      &lt;span class="card-title grey-text darken-4">Card Title &lt;i class="mdi-navigation-close right">&lt;/i>&lt;/span>
-      &lt;p>Here is some more information about this product that is only revealed once clicked on.&lt;/p>
-    &lt;/div>
-  &lt;/div>
+        </code></pre>
+        <br>
+        <p>To have the extra information section revealed on click:</p>
+        <pre><code class="language-javascript">
+    $(document).ready(function() {
+      $(".mdi-navigation-more-vert").reveal({ element: ".card-reveal" });
+    });
+        </code></pre>
+        <br>
+        <p>To have the extra information section revealed on hover:</p>
+        <pre><code class="language-javascript">
+    $(document).ready(function() {
+      $(".card-content").reveal({ element: ".card-reveal", hover: true });
+    });
+        </code></pre>
+        <br>
+        <p>All available options for this feature:</p>
+        <pre><code class="language-javascript">
+    var options = {
+      duration: 300,
+      element: ".card-reveal",
+      closeButton: ".mdi-navigation-close",
+      hover: false,
+      ready: function() { alert("Card pulled up!"); },
+      complete: function() { alert("Card pushed back down!"); }
+    }
         </code></pre>
         <br>
       </div>
 
-      
       <!-- Small Card -->
       <div class="col s12 m6">
         <h4>Small Card</h4>

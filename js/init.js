@@ -172,6 +172,6 @@
     $('.button-collapse').sideNav();
     $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
     $('select').not('.disabled').material_select();
-
+    $('.mdi-navigation-more-vert').reveal();
   }); // end of document ready
 })(jQuery); // end of jQuery name space
