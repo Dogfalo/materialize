@@ -289,16 +289,17 @@ jQuery.extend( jQuery.easing,
     }
 
     options = $.extend(defaults, options);
-    
     this.each(function(){
-    
-
     var origin = $(this);
     
-    var activates = $("#"+ origin.attr('data-activates')); // Dropdown menu
+    // Dropdown menu
+    var temp_activates = $("#"+ origin.attr('data-activates'));
+    temp_activates.hide(0);
 
-    activates.hide(0);
-
+    // Move Dropdown menu to body. This allows for absolute positioning to work
+    var activates = temp_activates.clone();
+    $('body').append(activates);
+    temp_activates.remove();
 
     if (defaults.hover) {
       // Click handler for list container
@@ -313,9 +314,7 @@ jQuery.extend( jQuery.easing,
       activates.on('mouseleave', function(e){ // Mouse out
         activates.hide({duration: 175, easing: 'easeOutCubic'});
       });
-      
 
-      
     } else {
       var open = false;
 

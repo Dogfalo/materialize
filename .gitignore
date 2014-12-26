@@ -7,3 +7,4 @@ test2.html
 html/
 node_modules/
 .sass-cache/
+bin/jquery-2.1.1.min.js
