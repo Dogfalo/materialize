@@ -1067,18 +1067,11 @@
 
         <h4>Navbar Dropdown Menu</h4>
         <p>
-          To add a navbar dropdown menu, add the <code class="language-markup">ul</code> dropdown structure into the page.
-          Then, add an element to trigger the dropdown menu. Make sure to supply the id of the dropdown structure to the
+          To add a navbar dropdown menu, add an element to trigger the dropdown menu. Then add the <code class="language-markup">ul</code> dropdown structure into the page below the trigger element.
+          Make sure to supply the id of the dropdown structure to the
           <code class="language-markup">data-activates</code> attribute of the dropdown trigger.
         </p>
 
-        <!-- Dropdown Structure -->
-        <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!">one</a></li>
-          <li><a href="#!">two</a></li>
-          <li class="divider"></li>
-          <li><a href="#!">three</a></li>
-        </ul>
         <nav>
           <div class="nav-wrapper">
             <div class="col s12">
@@ -1087,19 +1080,22 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="components.html">Components</a></li>
                 <!-- Dropdown Trigger -->
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+                <li>
+                  <a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <!-- Dropdown Structure -->
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="#!">one</a></li>
+                        <li><a href="#!">two</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!">three</a></li>
+                    </ul>
+                </li>
+
               </ul>
             </div>
           </div>
         </nav><br>
         <pre><code class="language-markup">
-&lt;!-- Dropdown Structure -->
-&lt;ul id="dropdown1" class="dropdown-content">
-  &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
-  &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
-  &lt;li class="divider">&lt;/li>
-  &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
-&lt;/ul>
 &lt;nav>
   &lt;div class="nav-wrapper">
     &lt;div class="col s12">
@@ -1107,8 +1103,17 @@
       &lt;ul class="right side-nav">
         &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
         &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
-        &lt;!-- Dropdown Trigger -->
-        &lt;li>&lt;a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>&lt;/li>
+        &lt;li>
+          &lt;!-- Dropdown Trigger -->
+          &lt;a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>
+          &lt;!-- Dropdown Structure -->
+          &lt;ul id="dropdown1" class="dropdown-content">
+            &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
+            &lt;li class="divider">&lt;/li>
+            &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/li>
       &lt;/ul>
     &lt;/div>
   &lt;/div>
