@@ -5234,7 +5234,8 @@ ul.tabs {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #ee6e73; }
+    background-color: #ee6e73;
+    will-change: left, right; }
 
 ul.tabs li.tab {
   padding: 0; }

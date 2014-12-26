@@ -39,6 +39,7 @@ ul.tabs {
     bottom: 0;
     height: 2px;
     background-color: color("materialize-red", "lighten-2");
+    will-change: left, right;
   }
 }
 
