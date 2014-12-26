@@ -2,6 +2,7 @@
 
   $.fn.dropdown = function (options) {
     var defaults = {
+      constrain_width: true, // Constrains width of dropdown to the activator
       hover: true
     }
 
@@ -21,7 +22,9 @@
     if (defaults.hover) {
       // Click handler for list container
       origin.on('mouseover', function(e){ // Mouse over
-        activates.css('width', origin.outerWidth());
+        if (options.constrain_width === true) {
+          activates.css('width', origin.outerWidth());
+        }
         activates.css('top', origin.offset().top);
         activates.css('left', origin.offset().left);
         activates.show({duration: 200, easing: 'easeOutCubic'});
@@ -39,7 +42,9 @@
       origin.click( function(e){ // Click
         e.preventDefault();
         e.stopPropagation();
-        activates.css('width', origin.outerWidth());
+        if (options.constrain_width === true) {
+          activates.css('width', origin.outerWidth());
+        }
         activates.css('top', origin.offset().top);
         activates.css('left', origin.offset().left);
         activates.show({duration: 200, easing: 'easeOutCubic'});
