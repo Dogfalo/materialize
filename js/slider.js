@@ -13,23 +13,21 @@
 
       // For each slider, we want to keep track of
       // which slide is active and its associated content
-      var $this = $(this);
-      var $slider = $this.find('ul.slides').first();
-      var $slides = $slider.find('li');
-      var $active_index = $slider.find('.active').index();
-      var $active;
-      if ($active_index != -1) { $active = $slides.eq($active_index); }
+    var $this = $(this),
+        $slider = $this.find('ul.slides').first(),
+        $slides = $slider.find('li'),
+        $active_index = $slider.find('.active').index(),
+        $active;
+        
+    if ($active_index != -1) { $active = $slides.eq($active_index); }
 
       // Transitions the caption depending on alignment
       function captionTransition(caption, duration) {
-        if (caption.hasClass("center-align")) {
+        if ( caption.hasClass("center-align") || caption.hasClass("left-align") ) {
           caption.velocity({opacity: 0, translateY: -100}, {duration: duration, queue: false});
         }
         else if (caption.hasClass("right-align")) {
           caption.velocity({opacity: 0, translateX: 100}, {duration: duration, queue: false});
-        }
-        else if (caption.hasClass("left-align")) {
-          caption.velocity({opacity: 0, translateX: -100}, {duration: duration, queue: false});
         }
       }
 
@@ -84,8 +82,8 @@
 
           // Handle clicks on indicators
           $indicator.click(function () {
-            var $parent = $slider.parent();
-            var curr_index = $parent.find($(this)).index();
+            var $parent = $slider.parent(),
+                curr_index = $parent.find($(this)).index();
             moveToSlide(curr_index);
 
             // reset interval
@@ -142,36 +140,35 @@
       // HammerJS, Swipe navigation
 
       // Touch Event
-      var panning = false;
-      var swipeLeft = false;
-      var swipeRight = false;
+    var panning = false,
+        swipeLeft = false,
+        swipeRight = false;
 
       $this.hammer({
           prevent_default: false
       }).bind('pan', function(e) {
         if (e.gesture.pointerType === "touch") {
 
-          // reset interval
-          clearInterval($interval);
+            // reset interval
+            clearInterval($interval);
 
-          var direction = e.gesture.direction;
-          var x = e.gesture.deltaX;
-          var velocityX = e.gesture.velocityX;
+            var direction = e.gesture.direction;
+            x = e.gesture.deltaX,
+            velocityX = e.gesture.velocityX;
 
-          $curr_slide = $slider.find('.active');
-          $curr_slide.velocity({ translateX: x
-              }, {duration: 50, queue: false, easing: 'easeOutQuad'});      
+            $curr_slide = $slider.find('.active');
+            $curr_slide.velocity({ translateX: x
+                }, {duration: 50, queue: false, easing: 'easeOutQuad'});      
 
-          // Swipe Left
-          if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.65)) {
-            swipeRight = true;
-          }
-          // Swipe Right
-          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.65)) {
-            swipeLeft = true;
-          }
-
-          
+            // Swipe Left
+            if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.65)) {
+                swipeRight = true;
+            }
+            // Swipe Right
+            else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.65)) {
+                swipeLeft = true;
+            }
+            
         }
       
       }).bind('panend', function(e) {
