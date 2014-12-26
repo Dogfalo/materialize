@@ -302,15 +302,26 @@ jQuery.extend( jQuery.easing,
     $('body').append(activates);
     temp_activates.remove();
 
-    if (defaults.hover) {
-      // Click handler for list container
+
+    /*    
+      Helper function to position and resize dropdown.
+      Used in hover and click handler.
+    */    
+    function placeDropdown() {
+      if (options.constrain_width === true) {
+        activates.css('width', origin.outerWidth());
+      }
+      activates.css('top', origin.offset().top);
+      activates.css('left', origin.offset().left);
+      activates.show({duration: 200, easing: 'easeOutCubic'});
+    }
+
+
+    // Hover
+    if (options.hover) {
+      // Hover handler to show dropdown
       origin.on('mouseover', function(e){ // Mouse over
-        if (options.constrain_width === true) {
-          activates.css('width', origin.outerWidth());
-        }
-        activates.css('top', origin.offset().top);
-        activates.css('left', origin.offset().left);
-        activates.show({duration: 200, easing: 'easeOutCubic'});
+        placeDropdown();
       });
       
       // Document click handler        
@@ -318,31 +329,23 @@ jQuery.extend( jQuery.easing,
         activates.hide({duration: 175, easing: 'easeOutCubic'});
       });
 
+    // Click
     } else {
       var open = false;
 
-      // Click handler for list container
+      // Click handler yo show dropdown
       origin.click( function(e){ // Click
-        e.preventDefault();
         e.stopPropagation();
-        if (options.constrain_width === true) {
-          activates.css('width', origin.outerWidth());
-        }
-        activates.css('top', origin.offset().top);
-        activates.css('left', origin.offset().left);
-        activates.show({duration: 200, easing: 'easeOutCubic'});
-
+        placeDropdown();
         $(document).bind('click.'+ activates.attr('id'), function (e) {
           if (!activates.is(e.target) && (!origin.is(e.target))) {
             activates.hide({duration: 175, easing: 'easeOutCubic'});
             $(document).unbind('click.' + activates.attr('id'));
           }
-
         });
       });
-      
-      
-    }
+
+    } // End else
 
     // Window Resize Reposition
     $(document).on('resize', function(){
@@ -351,8 +354,8 @@ jQuery.extend( jQuery.easing,
         activates.css('left', origin.offset().left);
       }
     });
-   }); 
-  };
+   });
+  }; // End dropdown plugin
 }( jQuery ));;(function($) {
   $.fn.extend({
     openModal: function(options) {
