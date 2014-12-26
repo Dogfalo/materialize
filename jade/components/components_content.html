@@ -691,8 +691,26 @@
               </div>
               <div class="col s12">
                 <br><br><br>
-                <p>You can add the class <code class="language-markup">disabled</code> to get the browser default.</p>
-                <select class="disabled">
+                <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
+                <select class="browser-default">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+
+              <div class="col s12">
+                <br><br><br>
+                <p>You can also add <code class="language-markup">disabled</code> to the select element to make the whole thing disabled.</p>
+                <p>Or if you add <code class="language-markup">disabled</code> to the options, the individual options will be unselectable. </p>
+                <select disabled>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+                <select class="browser-default" disabled>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
                   <option value="2">Option 2</option>

@@ -1782,28 +1782,34 @@ jQuery.extend( jQuery.easing,
     $.fn.material_select = function () {
       $(this).each(function(){
         $select = $(this);
-        if ( $select.hasClass('disabled') || $select.hasClass('initialized') ){
-          return false;
+        if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
+          return; // Continue to next (return false breaks out of entire loop)
         }
 
         var uniqueID = guid();
         var wrapper = $('<div class="select-wrapper"></div>');
-        var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content"></ul>');
+        var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content select-dropdown"></ul>');
         var selectOptions = $select.children('option');
         var label = selectOptions.first();
 
 
         // Create Dropdown structure
         selectOptions.each(function () {
-          options.append($('<li><span>' + $(this).html() + '</span></li>'));
+          // Add disabled attr if disabled
+          options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
         });
 
 
         options.find('li').each(function (i) {
           var $curr_select = $select;
           $(this).click(function () {
-            $curr_select.find('option').eq(i + 1).prop('selected', true);
-            $curr_select.prev('span.select-dropdown').html($(this).text());
+            // Check if option element is disabled
+            if (!$(this).hasClass('disabled')) {
+              console.log("Not disabled");
+              console.log($(this));
+              $curr_select.find('option').eq(i + 1).prop('selected', true);
+              $curr_select.prev('span.select-dropdown').html($(this).text());
+            }
           });
         });
 
@@ -1811,10 +1817,15 @@ jQuery.extend( jQuery.easing,
         $select.wrap(wrapper);
 
         // Add Select Display Element
-        var $newSelect = $('<span class="select-dropdown" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
+        var $newSelect = $('<span class="select-dropdown ' + (($select.is(':disabled')) ? 'disabled' : '') 
+                         + '" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
         $select.before($newSelect);
         $('body').append(options);
-        $newSelect.dropdown({"hover": false});
+
+        // Check if section element is disabled
+        if (!$select.is(':disabled')) {
+          $newSelect.dropdown({"hover": false});
+        }
 
         $select.addClass('initialized');
 

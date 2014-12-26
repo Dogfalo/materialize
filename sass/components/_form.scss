@@ -332,7 +332,21 @@ form p {
 }
 
 select { display: none; }
-select.disabled { display: block; }
+select.browser-default { display: block; }
+
+
+// Disabled styles
+select:disabled {
+  color: rgba(0,0,0,.3);
+}
+.select-wrapper span.select-dropdown.disabled {
+  color: rgba(0,0,0,.3);
+}
+.select-dropdown li.disabled {
+  color: rgba(0,0,0,.3);
+
+  &:hover { background-color: transparent; }
+}
 
 
 /***************
