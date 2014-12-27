@@ -316,6 +316,23 @@ jQuery.extend( jQuery.easing,
       activates.css('left', origin.offset().left);
       activates.show({duration: 250, easing: 'easeOutCubic'});
     }
+    function elementOrParentIsFixed(element) {
+        var $element = $(element);
+        var $checkElements = $element.add($element.parents());
+        var isFixed = false;
+        $checkElements.each(function(){
+            if ($(this).css("position") === "fixed") {
+                isFixed = true;
+                return false;
+            }
+        });
+        return isFixed;
+    }
+
+    if (elementOrParentIsFixed(origin[0])) {
+      console.log('fixed it is');
+      activates.css('position', 'fixed');
+    }
 
 
     // Hover
@@ -336,6 +353,7 @@ jQuery.extend( jQuery.easing,
 
       // Click handler to show dropdown
       origin.click( function(e){ // Click
+        e.preventDefault(); // Prevents button click from moving window
         e.stopPropagation();
         placeDropdown();
         $(document).bind('click.'+ activates.attr('id'), function (e) {
@@ -350,13 +368,7 @@ jQuery.extend( jQuery.easing,
 
     // Window Resize Reposition
     $(document).on('resize', function(){
-      console.log('hey');
-        $('.dropdown-content').each(function(){
-          console.log('hi');
-          if( $(this).is(':visible') )
-            $(this).hide({duration: 175, easing: 'easeOutCubic'});
-        });
-      
+
     });
    });
   }; // End dropdown plugin
