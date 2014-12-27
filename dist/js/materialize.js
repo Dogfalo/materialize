@@ -359,7 +359,6 @@ jQuery.extend( jQuery.easing,
       
     });
    });
-
   }; // End dropdown plugin
 }( jQuery ));;(function($) {
   $.fn.extend({
@@ -2087,10 +2086,12 @@ jQuery.extend( jQuery.easing,
 
     $(document).on('click.card', '.card', function (e) {
       if ($(this).find('.card-reveal').length) {
-        if ($(e.target).is($('.card-reveal span.card-title')) || $(e.target).is($('.card-reveal span.card-title i'))) {
+        if ($(e.target).is($('.card-reveal .card-title')) || $(e.target).is($('.card-reveal .card-title i'))) {
           $(this).find('.card-reveal').velocity({translateY: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
         }
-        else {
+        else if ($(e.target).is($('.card .card-title')) || 
+                 $(e.target).is($('.card .card-title i')) ||
+                 $(e.target).is($('.card .card-image')) ) {
           $(this).find('.card-reveal').velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeOutQuad'});        
         }
       }

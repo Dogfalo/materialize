@@ -17,6 +17,7 @@ label {
     top: 0.8rem;
     left: $gutter-width / 2;
     font-size: 1rem;
+    cursor: text;
     @include transition(.2s ease-out);
   }
   label.active {
@@ -50,23 +51,21 @@ label {
 
     &.active { color: $highlight-color; }
   }
-  .prefix ~ input,
-  .prefix ~ label {
+  .prefix ~ input {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem);
   }
+  .prefix ~ label { margin-left: 3rem; }
 
   @media #{$medium-and-down} {
-    .prefix ~ input,
-    .prefix ~ label {
+    .prefix ~ input {
       width: 86%;
       width: calc(100% - 3rem);
     }
   }
   @media #{$small-and-down} {
-    .prefix ~ input,
-    .prefix ~ label {
+    .prefix ~ input {
       width: 80%;
       width: calc(100% - 3rem);
     }

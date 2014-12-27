@@ -76,6 +76,5 @@
       
     });
    });
-
   }; // End dropdown plugin
 }( jQuery ));
