@@ -444,6 +444,68 @@ pre[class*="language-"] {
   border: solid 1px rgba(51, 51, 51, 0.12);
 }
 
+
+// Carbon Ads styling
+#carbonads {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+
+  & > span,
+  span.carbon-wrap {
+    height: 100px;
+    display: block;
+  }
+  a.carbon-img {
+    height: 100px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  a.carbon-text {
+    position: relative;
+    top: 0;
+    width: 150px;
+    vertical-align: top;
+    display: inline-block;
+    font-size: 13px;
+    color: color("red", "lighten-2");
+  }
+  a.carbon-poweredby {
+    position: relative;
+    left: 28px;
+    font-size: 11px;
+    color: color("red", "lighten-3");
+  }
+}
+.buysellads #carbonads {
+  position: absolute;
+  top: 50px;
+
+  & > span,
+  span.carbon-wrap { height: auto; }
+
+  a.carbon-text {
+    top: 5px;
+    left: 0;
+    width: 130px;
+    display: block;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+    color: #E57373;
+  }
+  a.carbon-poweredby {
+    top: 5px;
+  }
+}
+.buysellads-header #carbonads {
+  & > span,
+  span.carbon-wrap { height: auto; }
+  a.carbon-text { color: #fff; }
+  a.carbon-poweredby { color: rgba(255,255,255,.8); }
+}
+
+
 // BuySellAds Styling
 .buysellads {
   -webkit-font-smoothing: antialiased;

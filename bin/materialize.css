@@ -5994,8 +5994,19 @@ form p:last-child {
 select {
   display: none; }
 
-select.disabled {
+select.browser-default {
   display: block; }
+
+select:disabled {
+  color: rgba(0, 0, 0, 0.3); }
+
+.select-wrapper span.select-dropdown.disabled {
+  color: rgba(0, 0, 0, 0.3); }
+
+.select-dropdown li.disabled {
+  color: rgba(0, 0, 0, 0.3); }
+  .select-dropdown li.disabled:hover {
+    background-color: transparent; }
 
 /***************
       Range 
