@@ -5,25 +5,25 @@
   margin-bottom: 15px;
   padding: 0 2rem; 
   @include border-radius(2px);
-  line-height: 36px;
+  line-height: $button-line-height;
   text-transform: uppercase;
   border:none;
 }
 // Disabled shared style
 .btn.disabled, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-floating:disabled {
-  background-color: #DFDFDF;
+  background-color: $button-background-disabled;
   box-shadow: none;
-  color: #9F9F9F;
+  color: $button-color-disabled;
 
   &:hover {
-    background-color: #DFDFDF;
-    color: #9F9F9F;
+    background-color: $button-background-disabled;
+    color: $button-color-disabled;
   }
 }
 // Shared icon styles
 .btn, .btn-floating, .btn-large, .btn-flat {
   i {
-    font-size: 1.3rem;
+    font-size: $button-font-size-shared;
     line-height: inherit;
   }
 }
@@ -31,7 +31,7 @@
 // Raised Button
 .btn {
   text-decoration:none;
-  color: #FFFFFF;
+  color: $button-color-raised;
   background-color: $button-color;
   text-align: center;
   letter-spacing: .8px;
@@ -64,7 +64,7 @@
     width: inherit;
     display: inline-block;
     text-align: center;
-    color: #fff;
+    color: $button-color-raised;
     font-size: 1.6rem;
     line-height: $button-floating-size;
   }
@@ -85,7 +85,7 @@
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
-  color: #343434;
+  color: $button-color-flat;
   cursor: pointer;
 
   &.disabled {
