@@ -1,8 +1,13 @@
 /*** Buttons ***/
-$button-height: 36px !default;
+$button-background-disabled: #DFDFDF;
 $button-color: color("blue", "base") !default;
+$button-color-disabled: #9F9F9F;
+$button-color-flat: #343434;
+$button-color-raised: #FFF;
 $button-floating-size: 37px !default;
-
+$button-height: 36px !default;
+$button-font-size-shared: 1.3rem;
+$button-line-height: 36px;
 
 
 /*** Cards ***/
