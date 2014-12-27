@@ -11,13 +11,14 @@
     var origin = $(this);
     
     // Dropdown menu
-    var temp_activates = $("#"+ origin.attr('data-activates'));
-    temp_activates.hide(0);
+    var activates = $("#"+ origin.attr('data-activates'));
+    activates.hide(0);
 
     // Move Dropdown menu to body. This allows for absolute positioning to work
-    var activates = temp_activates.clone();
-    $('body').append(activates);
-    temp_activates.remove();
+    if ( !(activates.parent().is($('body'))) ) {
+      activates.detach();
+      $('body').append(activates);
+    }
 
 
     /*    
