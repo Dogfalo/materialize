@@ -51,7 +51,7 @@
     } else {
       var open = false;
 
-      // Click handler yo show dropdown
+      // Click handler to show dropdown
       origin.click( function(e){ // Click
         e.stopPropagation();
         placeDropdown();
@@ -67,11 +67,15 @@
 
     // Window Resize Reposition
     $(document).on('resize', function(){
-      if (origin.is(':visible')) {
-        activates.css('top', origin.offset().top);
-        activates.css('left', origin.offset().left);
-      }
+      console.log('hey');
+        $('.dropdown-content').each(function(){
+          console.log('hi');
+          if( $(this).is(':visible') )
+            $(this).hide({duration: 175, easing: 'easeOutCubic'});
+        });
+      
     });
    });
+
   }; // End dropdown plugin
 }( jQuery ));

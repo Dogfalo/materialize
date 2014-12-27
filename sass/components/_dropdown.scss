@@ -15,16 +15,13 @@
     color: $off-black;
     line-height: 1.5rem;
 
+    &:hover {
+      background-color: rgba(0,0,0, .07);
+    }
+
     & > a,& > span {
       display: block;
       padding: 1rem 1rem;
     }
   }
-    
-  @media only screen and (min-width: $large-screen) {
-    li:hover {
-      background-color: rgba(0,0,0, .07)
-    }
-  }
-
 }

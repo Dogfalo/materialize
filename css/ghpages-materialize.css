@@ -5382,13 +5382,11 @@ ul.tabs li.tab {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.87);
     line-height: 1.5rem; }
+    .dropdown-content li:hover {
+      background-color: rgba(0, 0, 0, 0.07); }
     .dropdown-content li > a, .dropdown-content li > span {
       display: block;
       padding: 1rem 1rem; }
-  @media only screen and (min-width: 1200px) {
-    .dropdown-content li:hover {
-      background-color: rgba(0, 0, 0, 0.07); }
- }
 
 /*!
  * Waves v0.5.3
