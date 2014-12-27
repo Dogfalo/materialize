@@ -5678,6 +5678,7 @@ label {
     top: 0.8rem;
     left: 0.75rem;
     font-size: 1rem;
+    cursor: text;
     -webkit-transition: 0.2s ease-out;
     -moz-transition: 0.2s ease-out;
     -o-transition: 0.2s ease-out;
@@ -5708,17 +5709,19 @@ label {
     transition: color 0.2s; }
     .input-field .prefix.active {
       color: #03a9f4; }
-  .input-field .prefix ~ input, .input-field .prefix ~ label {
+  .input-field .prefix ~ input {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem); }
+  .input-field .prefix ~ label {
+    margin-left: 3rem; }
   @media only screen and (max-width : 992px) {
-    .input-field .prefix ~ input, .input-field .prefix ~ label {
+    .input-field .prefix ~ input {
       width: 86%;
       width: calc(100% - 3rem); }
  }
   @media only screen and (max-width : 600px) {
-    .input-field .prefix ~ input, .input-field .prefix ~ label {
+    .input-field .prefix ~ input {
       width: 80%;
       width: calc(100% - 3rem); }
  }
