@@ -1828,7 +1828,7 @@ jQuery.extend( jQuery.easing,
           $(this).click(function () {
             // Check if option element is disabled
             if (!$(this).hasClass('disabled')) {
-              $curr_select.find('option').eq(i + 1).prop('selected', true);
+              $curr_select.find('option').eq(i).prop('selected', true);
               $curr_select.prev('span.select-dropdown').html($(this).text());
             }
           });
