@@ -70,7 +70,7 @@
         updateElements($this, $(window).scrollTop());
         $(window).on('scroll.' + $uniqueId, function () {
           var $scrolled = $(window).scrollTop() + options.offset;
-          console.log($(window).scrollTop(), $scrolled);
+          // console.log($(window).scrollTop(), $scrolled);
           updateElements($this, $scrolled);
         });
 

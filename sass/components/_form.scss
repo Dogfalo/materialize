@@ -33,13 +33,22 @@ label {
     color: $highlight-color;
   }
 
-  input[type=text]:valid,
-  input[type=password]:valid,
-  input[type=email]:valid,
-  input[type=date]:valid,
-  textarea:valid {
+  input[type=text].valid,
+  input[type=password].valid,
+  input[type=email].valid,
+  input[type=date].valid,
+  textarea.valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
+  }
+
+  input[type=text].invalid,
+  input[type=password].invalid,
+  input[type=email].invalid,
+  input[type=date].invalid,
+  textarea.invalid {
+    border-bottom: 1px solid color("red", "base");
+    @include box-shadow(0 1px 0 0 color("red", "base"));
   }
 
   // Prefix Icons

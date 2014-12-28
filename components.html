@@ -595,34 +595,36 @@
         </p>
 
         <h4>Input fields</h4>
-        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p><br>
+        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
+        <p>If you don't want the Green and Red validation states, just remove the <code class="language-markup">validate</code> class from your inputs.</p>
+        <br>
         <div class="row">
           <form class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <input id="first_name" type="text" required>
+                <input id="first_name" type="text" class="validate">
                 <label for="first_name">First Name</label>
               </div>
               <div class="input-field col s6">
-                <input id="last_name" type="text" required>
+                <input id="last_name" type="text" class="validate">
                 <label for="last_name">Last Name</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="username" type="text" required>
+                <input id="username" type="text" class="validate">
                 <label for="username">Username</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" required>
+                <input id="password" type="password" class="validate">
                 <label for="password">Password</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" required>
+                <input id="email" type="email" class="validate">
                 <label for="email">Email</label>
               </div>
             </div>
@@ -633,29 +635,29 @@
   &lt;form class="col s12">
     &lt;div class="row">
       &lt;div class="input-field col s6">
-        &lt;input id="first_name" type="text" required>
+        &lt;input id="first_name" type="text" class="validate">
         &lt;label for="first_name">First Name&lt;/label>
       &lt;/div>
       &lt;div class="input-field col s6">
-        &lt;input id="last_name" type="text" required>
+        &lt;input id="last_name" type="text" class="validate">
         &lt;label for="last_name">Last Name&lt;/label>
       &lt;/div>
     &lt;/div>
     &lt;div class="row">
       &lt;div class="input-field col s12">
-        &lt;input id="username" type="text" required>
+        &lt;input id="username" type="text" class="validate">
         &lt;label for="username">Username&lt;/label>
       &lt;/div>
     &lt;/div>
     &lt;div class="row">
       &lt;div class="input-field col s12">
-        &lt;input id="password" type="password" required>
+        &lt;input id="password" type="password" class="validate">
         &lt;label for="password">Password&lt;/label>
       &lt;/div>
     &lt;/div>
     &lt;div class="row">
       &lt;div class="input-field col s12">
-        &lt;input id="email" type="email" required>
+        &lt;input id="email" type="email" class="validate">
         &lt;label for="email">Email&lt;/label>
       &lt;/div>
     &lt;/div>
@@ -670,12 +672,12 @@
             <div class="row">
               <div class="input-field col s6">
                 <i class="mdi-action-account-circle prefix"></i>
-                <input id="icon_prefix" type="text" required>
+                <input id="icon_prefix" type="text" class="validate">
                 <label for="icon_prefix">First Name</label>
               </div>
               <div class="input-field col s6">
                 <i class="mdi-communication-phone prefix"></i>
-                <input id="icon_telephone" type="text" required>
+                <input id="icon_telephone" type="text" class="validate">
                 <label for="icon_telephone">Telephone</label>
               </div>
             </div>
@@ -688,12 +690,12 @@
     &lt;div class="row">
       &lt;div class="input-field col s6">
         &lt;i class="mdi-action-account-circle prefix">&lt;/i>
-        &lt;input id="icon_prefix" type="text" required>
+        &lt;input id="icon_prefix" type="text">
         &lt;label for="icon_prefix">First Name&lt;/label>
       &lt;/div>
       &lt;div class="input-field col s6">
         &lt;i class="mdi-communication-phone prefix">&lt;/i>
-        &lt;input id="icon_telephone" type="text" required>
+        &lt;input id="icon_telephone" type="text">
         &lt;label for="icon_telephone">Telephone&lt;/label>
       &lt;/div>
     &lt;/div>
@@ -710,7 +712,7 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <textarea class="materialize-textarea" required></textarea>                
+                <textarea class="materialize-textarea"></textarea>                
                 <label>Textarea</label>
               </div>
             </div>

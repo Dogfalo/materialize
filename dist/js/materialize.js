@@ -1697,8 +1697,26 @@ jQuery.extend( jQuery.easing,
     });
 
     $(document).on('blur', input_selector, function () {
+      console.log($(this).is(':valid'));
       if ($(this).val().length === 0) {
-        $(this).siblings('label, i').removeClass('active');      
+        $(this).siblings('label, i').removeClass('active');     
+
+        if ($(this).hasClass('validate')) {
+          $(this).removeClass('valid');          
+          $(this).removeClass('invalid');                 
+        } 
+      }
+      else {
+        if ($(this).hasClass('validate')) {
+          if ($(this).is(':valid')) {
+            $(this).removeClass('invalid');
+            $(this).addClass('valid');
+          }
+          else {
+            $(this).removeClass('valid');
+            $(this).addClass('invalid');         
+          }                          
+        } 
       }
     });
 
@@ -2184,7 +2202,7 @@ jQuery.extend( jQuery.easing,
         updateElements($this, $(window).scrollTop());
         $(window).on('scroll.' + $uniqueId, function () {
           var $scrolled = $(window).scrollTop() + options.offset;
-          console.log($(window).scrollTop(), $scrolled);
+          // console.log($(window).scrollTop(), $scrolled);
           updateElements($this, $scrolled);
         });
 
