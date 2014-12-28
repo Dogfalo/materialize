@@ -402,39 +402,38 @@
       </div>
       <div id="pushpin" class="section scrollspy">
         <h4>Pushpin</h4>
-        <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
-
-        <div class="row">
-          <div class="pushpin-demo col s6">
-            <div id="pushpin-demo-1">
-              This will scroll for 400 pixels
-            </div>
-          </div>
-        </div>
-
-
-
-        <h5>Tabs HTML Structure</h5>
-        <pre><code class="language-markup col s12">
-          &lt;div class="col s12">
-            &lt;ul class="tabs">
-              &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
-            &lt;/ul>
-          &lt;/div>
-          &lt;div id="test1" class="col s12">Test 1&lt;/div>
-          &lt;div id="test2" class="col s12">Test 2&lt;/div>
-          &lt;div id="test3" class="col s12">Test 3&lt;/div>
-          &lt;div id="test4" class="col s12">Test 4&lt;/div>
-        </code></pre>
+        <p>Pushpin is our fixed positioning plugin. You can check out our live examples: The fixed tabs on top, and our fixed categories on the left. </p>
         
+        <h5>jQuery Plugin Options</h5>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Top</td>
+              <td>The distance in pixels from the top of the page where the element becomes fixed. (Default: 0)</td>
+            </tr>
+            <tr>
+              <td>Bottom</td>
+              <td>The distance in pixels from the top of the page where the elements stops being fixed. (Default: Infinity)</td>
+            </tr>
+            <tr>
+              <td>Offset</td>
+              <td>The offset from the top the element will be fixed at. (Default: 0)</td>
+            </tr>
+          </tbody>
+        </table>
+
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
-          $(document).ready(function(){
-            $('ul.tabs').tabs();
-          });
+  $(document).ready(function(){
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
+  });
         </code></pre>
       </div>
     </div>

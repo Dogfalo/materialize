@@ -28,7 +28,7 @@
         var $uniqueId = guid(),
             $this = $(this),
             $original_offset = $(this).offset().top;
-        console.log(options.top, options.bottom, $(this).offset().top);
+        // console.log(options.top, options.bottom, $(this).offset().top);
 
         function removePinClasses(object) {
           object.removeClass('pin-top');
@@ -44,7 +44,7 @@
               removePinClasses($(this));
               $(this).css('top', options.offset / 2);
               $(this).addClass('pinned');
-              console.log("Pinned!", $(this));
+              // console.log("Pinned!", $(this));
             }
 
             // Add pin-top (when scrolled position is above top)
@@ -52,7 +52,7 @@
               removePinClasses($(this));
               $(this).css('top', 0);
               $(this).addClass('pin-top');
-              console.log("Pin Top!", $(this));
+              // console.log("Pin Top!", $(this));
             }
 
             // Add pin-bottom (when scrolled position is below bottom)
@@ -60,7 +60,7 @@
               removePinClasses($(this));
               $(this).addClass('pin-bottom');
               $(this).css('top', options.bottom - $original_offset);
-              console.log("Pin Bottom!", $(this));
+              // console.log("Pin Bottom!", $(this));
             }
           });
         }
@@ -70,7 +70,7 @@
         updateElements($this, $(window).scrollTop());
         $(window).on('scroll.' + $uniqueId, function () {
           var $scrolled = $(window).scrollTop() + options.offset;
-          console.log($(window).scrollTop(), $scrolled);
+          // console.log($(window).scrollTop(), $scrolled);
           updateElements($this, $scrolled);
         });
 
