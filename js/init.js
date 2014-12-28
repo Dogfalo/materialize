@@ -93,21 +93,7 @@
 
 
     // Tabs Fixed
-    $(window).scroll(function() {
-      var origin = $('.tabs-wrapper'),
-          origin_row = origin.find('.row');
-      if (origin.is(":visible")) {
-        if(origin.attr('data-origpos') === undefined) {
-          origin.attr('data-origpos', origin.position().top);            
-        }
-        if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
-          origin_row.addClass('fixed');
-        }
-        if($(window).scrollTop() < origin.attr('data-origpos')) {
-          origin_row.removeClass('fixed');            
-        }
-      }
-    });
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top, bottom: 2000 });
 
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
@@ -172,6 +158,11 @@
     $('.button-collapse').sideNav();
     $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
     $('select').not('.disabled').material_select();
+
+    // pushpin demo
+
+    $('#pushpin-demo-1').pushpin({ top: $('#pushpin-demo-1').offset().top, offset: $('.tabs-wrapper').height() });
+
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

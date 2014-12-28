@@ -179,6 +179,16 @@ img.responsive-img {
 }
 
 
+// Pushpin
+.pin-top, .pin-bottom {
+  position: relative;
+}
+.pinned {
+  position: fixed;
+}
+
+
+
 // Browser Size Dependent Visibility
 .hide-on-small-only, .hide-on-small-and-down {
   @media #{$small-and-down} {

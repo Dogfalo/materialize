@@ -363,7 +363,7 @@ $height: auto;
   height: 48px;
   @extend .hide-on-small-only;
 
-  .row.fixed {
+  .row.pinned {
     position: fixed;
     width: 100%;
     top: 0;
@@ -612,6 +612,17 @@ body.parallax-demo footer {
 
 #images .card-panel .row {
   margin-bottom: 0;
+}
+
+// Pushpin Demo styles
+.pushpin-demo {
+  position: relative;
+  height: 100px;
+}
+#pushpin-demo-1 {
+  display: block;
+  height: inherit;
+  background-color: #ddd;
 }
 
 // Transifex Styling

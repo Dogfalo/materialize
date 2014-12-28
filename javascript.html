@@ -1,21 +1,21 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="description" content="Learn how to use our JavaScript components to add meaningful animations and transitions to your website."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Learn how to use our JavaScript components to add meaningful animations and transitions to your website.">
     <title>JavaScript - Materialize</title>
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png"/>
-    <meta name="msapplication-TileColor" content="#FFFFFF"/>
-    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png"/>
-    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32"/>
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
     <!--  Android 5 Chrome Color -->
-    <meta name="theme-color" content="#EE6E73"/>
+    <meta name="theme-color" content="#EE6E73">
     <!-- CSS  -->
-    <link href="css/prism.css" rel="stylesheet"/>
-    <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css"/>
+    <link href="css/prism.css" rel="stylesheet">
+    <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -295,6 +295,7 @@
         <ul class="section table-of-contents">
           <li><a href="#tabs">Tabs</a></li>
           <li><a href="#sidebar">Sidebar</a></li>
+          <li><a href="#pushpin">Pushpin</a></li>
         </ul>
       </div>
     </div>
@@ -321,8 +322,7 @@
         <div id="test3" class="col s12"><p>Test 3</p></div>
         <div id="test4" class="col s12"><p>Test 4</p></div>
         <br>
-      </div>
-      <div class="section">
+
         <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
           &lt;div class="col s12">
@@ -338,8 +338,7 @@
           &lt;div id="test3" class="col s12">Test 3&lt;/div>
           &lt;div id="test4" class="col s12">Test 4&lt;/div>
         </code></pre>
-      </div>
-      <div class="section">
+
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
           $(document).ready(function(){
@@ -372,8 +371,6 @@
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse btn">Open Sidebar</a>
 
-      </div>
-      <div class="section">
         <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav full">
@@ -397,11 +394,47 @@
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
         </code></pre>
-      </div>
-      <div class="section">
+
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
   $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
+      <div id="pushpin" class="section scrollspy">
+        <h4>Pushpin</h4>
+        <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
+
+        <div class="row">
+          <div class="pushpin-demo col s6">
+            <div id="pushpin-demo-1">
+              This will scroll for 400 pixels
+            </div>
+          </div>
+        </div>
+
+
+
+        <h5>Tabs HTML Structure</h5>
+        <pre><code class="language-markup col s12">
+          &lt;div class="col s12">
+            &lt;ul class="tabs">
+              &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+              &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
+              &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
+              &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+            &lt;/ul>
+          &lt;/div>
+          &lt;div id="test1" class="col s12">Test 1&lt;/div>
+          &lt;div id="test2" class="col s12">Test 2&lt;/div>
+          &lt;div id="test3" class="col s12">Test 3&lt;/div>
+          &lt;div id="test4" class="col s12">Test 4&lt;/div>
+        </code></pre>
+        
+        <h5>jQuery Plugin Initialization</h5>
+        <pre><code class="language-javascript col s12">
+          $(document).ready(function(){
+            $('ul.tabs').tabs();
+          });
         </code></pre>
       </div>
     </div>
@@ -770,7 +803,7 @@
       </div>
     </footer>  
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
     <script src="js/jquery.timeago.min.js"></script>  
