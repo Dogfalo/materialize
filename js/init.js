@@ -29,32 +29,39 @@
     // Floating-Fixed table of contents
     $('.table-of-contents').each(function() {
       var origin = $(this);
-      $(window).scroll(function() {
-        var tabs_height = 0;
-        if ($('.tabs-wrapper').length) {
-          tabs_height = $('.tabs-wrapper').height();
-        }
-        if (origin.is(":visible")) {
-
-          if(origin.attr('data-origpos') === undefined) {
-            origin.attr('data-origpos', origin.position().top - tabs_height);            
-          }
-          if(origin.attr('data-origmargin') === undefined) {
-            origin.attr('data-origmargin', '1.5rem');            
-          }
-          if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
-            origin.addClass('fixed');
-            origin.css('top', tabs_height);
-            origin.css('marginTop', '1.5rem');
-          }
-          if($(window).scrollTop() < origin.attr('data-origpos')) {
-            origin.removeClass('fixed');     
-            origin.css('marginTop', origin.attr('data-origmargin'));
-          }            
-
-        }
-      });
+      origin.pushpin({ top: origin.offset().top, offset: $('.tabs-wrapper').height() });
     });
+
+    // $('.table-of-contents').each(function() {
+    //   var origin = $(this);
+    //   $(window).scroll(function() {
+    //     var tabs_height = 0;
+    //     if ($('.tabs-wrapper').length) {
+    //       tabs_height = $('.tabs-wrapper').height();
+    //     }
+    //     if (origin.is(":visible")) {
+
+    //       if(origin.attr('data-origpos') === undefined) {
+    //         origin.attr('data-origpos', origin.position().top - tabs_height);            
+    //       }
+    //       if(origin.attr('data-origmargin') === undefined) {
+    //         origin.attr('data-origmargin', '1.5rem');            
+    //       }
+    //       if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
+    //         origin.addClass('fixed');
+    //         origin.css('top', tabs_height);
+    //         origin.css('marginTop', '1.5rem');
+    //       }
+    //       if($(window).scrollTop() < origin.attr('data-origpos')) {
+    //         origin.removeClass('fixed');     
+    //         origin.css('marginTop', origin.attr('data-origmargin'));
+    //       }            
+
+    //     }
+    //   });
+    // });
+
+
 
     // BuySellAds Detection
     var $bsa = $(".buysellads"),
@@ -93,7 +100,7 @@
 
 
     // Tabs Fixed
-    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top, bottom: 2000 });
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
 
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
@@ -161,7 +168,7 @@
 
     // pushpin demo
 
-    $('#pushpin-demo-1').pushpin({ top: $('#pushpin-demo-1').offset().top, offset: $('.tabs-wrapper').height() });
+    // $('#pushpin-demo-1').pushpin({ top: $('#pushpin-demo-1').offset().top, offset: $('.tabs-wrapper').height() });
 
 
   }); // end of document ready
