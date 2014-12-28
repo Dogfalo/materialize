@@ -2076,7 +2076,7 @@ img.responsive-img {
   .hide-on-med-and-down {
     display: none !important; } }
 
-@media only screen and (min-width : 600px) {
+@media only screen and (min-width : 601px) {
   .hide-on-med-and-up {
     display: none !important; } }
 
@@ -2084,7 +2084,7 @@ img.responsive-img {
   .hide-on-med-only {
     display: none !important; } }
 
-@media only screen and (min-width : 992px) {
+@media only screen and (min-width : 993px) {
   .hide-on-large-only, nav a.button-collapse {
     display: none !important; } }
 
@@ -4460,12 +4460,12 @@ img.circle {
   max-width: 1280px;
   width: 90%; }
 
-@media only screen and (min-width : 600px) {
+@media only screen and (min-width : 601px) {
   .container {
     width: 85%; }
  }
 
-@media only screen and (min-width : 992px) {
+@media only screen and (min-width : 993px) {
   .container {
     width: 70%; }
  }
@@ -4563,7 +4563,7 @@ img.circle {
       margin-left: 91.66667%; }
     .row .col.offset-s12 {
       margin-left: 100%; }
-    @media only screen and (min-width : 600px) {
+    @media only screen and (min-width : 601px) {
       .row .col.m1 {
         width: 8.33333%;
         margin-left: 0; }
@@ -4648,7 +4648,7 @@ img.circle {
       .row .col.offset-m12 {
         margin-left: 100%; }
  }
-    @media only screen and (min-width : 992px) {
+    @media only screen and (min-width : 993px) {
       .row .col.l1 {
         width: 8.33333%;
         margin-left: 0; }
@@ -4820,7 +4820,7 @@ nav {
       -o-transform: translateY(0);
       transform: translateY(0); }
 
-@media only screen and (min-width : 600px) {
+@media only screen and (min-width : 601px) {
   nav, nav .nav-wrapper i, nav a.button-collapse i {
     height: 64px;
     line-height: 64px; }
@@ -5155,12 +5155,12 @@ small {
     #toast-container {
       min-width: 100%;
       bottom: 0%; } }
-  @media only screen and (min-width : 600px) and (max-width : 992px) {
+  @media only screen and (min-width : 601px) and (max-width : 992px) {
     #toast-container {
       min-width: 30%;
       left: 5%;
       bottom: 7%; } }
-  @media only screen and (min-width : 992px) {
+  @media only screen and (min-width : 993px) {
     #toast-container {
       min-width: 8%;
       top: 10%;
@@ -5198,10 +5198,10 @@ small {
   @media only screen and (max-width : 600px) {
     .toast {
       width: 100%; } }
-  @media only screen and (min-width : 600px) and (max-width : 992px) {
+  @media only screen and (min-width : 601px) and (max-width : 992px) {
     .toast {
       float: left; } }
-  @media only screen and (min-width : 992px) {
+  @media only screen and (min-width : 993px) {
     .toast {
       float: right; } }
 
@@ -5224,7 +5224,7 @@ ul.tabs {
     text-transform: uppercase;
     letter-spacing: 0.8px;
     width: 15%; }
-    @media only screen and (min-width : 992px) {
+    @media only screen and (min-width : 993px) {
       ul.tabs li.tab {
         max-width: 25%; } }
     ul.tabs li.tab a {
