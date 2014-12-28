@@ -2062,6 +2062,12 @@ img.responsive-img {
       position: relative; }
  }
 
+.pin-top, .pin-bottom {
+  position: relative; }
+
+.pinned {
+  position: fixed; }
+
 @media only screen and (max-width : 600px) {
   .hide-on-small-only, .hide-on-small-and-down {
     display: none !important; } }

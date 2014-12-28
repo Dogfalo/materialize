@@ -27,34 +27,13 @@
     
 
     // Floating-Fixed table of contents
+    var toc_offset = $('.table-of-contents').first().offset().top;
     $('.table-of-contents').each(function() {
       var origin = $(this);
-      $(window).scroll(function() {
-        var tabs_height = 0;
-        if ($('.tabs-wrapper').length) {
-          tabs_height = $('.tabs-wrapper').height();
-        }
-        if (origin.is(":visible")) {
-
-          if(origin.attr('data-origpos') === undefined) {
-            origin.attr('data-origpos', origin.position().top - tabs_height);            
-          }
-          if(origin.attr('data-origmargin') === undefined) {
-            origin.attr('data-origmargin', '1.5rem');            
-          }
-          if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
-            origin.addClass('fixed');
-            origin.css('top', tabs_height);
-            origin.css('marginTop', '1.5rem');
-          }
-          if($(window).scrollTop() < origin.attr('data-origpos')) {
-            origin.removeClass('fixed');     
-            origin.css('marginTop', origin.attr('data-origmargin'));
-          }            
-
-        }
-      });
+      origin.pushpin({ top: toc_offset, bottom: $(document).height() - $('footer').height(), offset: $('.tabs-wrapper').height() });
     });
+
+
 
     // BuySellAds Detection
     var $bsa = $(".buysellads"),
@@ -93,21 +72,7 @@
 
 
     // Tabs Fixed
-    $(window).scroll(function() {
-      var origin = $('.tabs-wrapper'),
-          origin_row = origin.find('.row');
-      if (origin.is(":visible")) {
-        if(origin.attr('data-origpos') === undefined) {
-          origin.attr('data-origpos', origin.position().top);            
-        }
-        if($(window).scrollTop() >= origin.attr('data-origpos') && !origin.hasClass('fixed')) {
-          origin_row.addClass('fixed');
-        }
-        if($(window).scrollTop() < origin.attr('data-origpos')) {
-          origin_row.removeClass('fixed');            
-        }
-      }
-    });
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
 
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
@@ -172,6 +137,7 @@
     $('.button-collapse').sideNav();
     $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
     $('select').not('.disabled').material_select();
+
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

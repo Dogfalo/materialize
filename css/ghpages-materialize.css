@@ -2062,6 +2062,12 @@ img.responsive-img {
       position: relative; }
  }
 
+.pin-top, .pin-bottom {
+  position: relative; }
+
+.pinned {
+  position: fixed; }
+
 @media only screen and (max-width : 600px) {
   .hide-on-small-only, .tabs-wrapper, .hide-on-small-and-down {
     display: none !important; } }
@@ -7639,7 +7645,7 @@ nav ul li:hover, nav ul li.active {
 .tabs-wrapper {
   position: relative;
   height: 48px; }
-  .tabs-wrapper .row.fixed {
+  .tabs-wrapper .row.pinned {
     position: fixed;
     width: 100%;
     top: 0;
@@ -7822,6 +7828,15 @@ body.parallax-demo footer {
 
 #images .card-panel .row {
   margin-bottom: 0; }
+
+.pushpin-demo {
+  position: relative;
+  height: 100px; }
+
+#pushpin-demo-1 {
+  display: block;
+  height: inherit;
+  background-color: #ddd; }
 
 #tx-live-lang-container {
   background-color: #fcfcfc;
