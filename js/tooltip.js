@@ -38,9 +38,18 @@
             started = true
             newTooltip.css({ display: 'block' });
 
+            // Tooltip positioning
+            var tooltipPosition =  origin.attr('data-position');
+            if (tooltipPosition === "top") {
+            // Top Position
+            newTooltip.css({
+              top: origin.offset().top - origin.outerHeight() - margin,
+              left: origin.offset().left + origin.outerWidth()/2 - newTooltip.outerWidth()/2});
+            }
             // Bottom Position
             newTooltip.css({top: origin.offset().top + origin.outerHeight() + margin,
                   left: origin.offset().left + origin.outerWidth()/2 - newTooltip.outerWidth()/2 });
+
 
             // Calculate Scale to fill
             scale_factor = newTooltip.width() / 8;
