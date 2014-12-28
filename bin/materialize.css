@@ -3410,16 +3410,16 @@ img.circle {
 .mdi-editor-format-strikethrough:before {
   content: "\e788"; }
 
-.mdi-editor-format-textdirection-l-to-r:before {
+.mdi-editor-functions:before {
   content: "\e789"; }
 
-.mdi-editor-format-textdirection-r-to-l:before {
+.mdi-editor-format-textdirection-l-to-r:before {
   content: "\e78a"; }
 
 .mdi-editor-format-underline:before {
   content: "\e78b"; }
 
-.mdi-editor-functions:before {
+.mdi-editor-format-textdirection-r-to-l:before {
   content: "\e78c"; }
 
 .mdi-editor-insert-chart:before {
