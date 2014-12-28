@@ -831,6 +831,12 @@ jQuery.extend( jQuery.easing,
               left: origin.offset().left + originWidth/2 - tooltipWidth/2
             });
             tooltipVerticalMovement = '-10px';
+            backdrop.css({
+              borderRadius: '14px 14px 0 0',
+              transformOrigin: '50% 90%',
+              marginTop: tooltipHeight
+
+            });
             }
             // Left Position
             else if (tooltipPosition === "left") {
