@@ -2156,7 +2156,7 @@ jQuery.extend( jQuery.easing,
             // Add position fixed (because its between top and bottom)
             if (options.top <= scrolled && options.bottom >= scrolled && !$(this).hasClass('pinned')) {
               removePinClasses($(this));
-              $(this).css('top', options.offset / 2);
+              $(this).css('top', options.offset);
               $(this).addClass('pinned');
               // console.log("Pinned!", $(this));
             }
@@ -2184,7 +2184,7 @@ jQuery.extend( jQuery.easing,
         updateElements($this, $(window).scrollTop());
         $(window).on('scroll.' + $uniqueId, function () {
           var $scrolled = $(window).scrollTop() + options.offset;
-          // console.log($(window).scrollTop(), $scrolled);
+          console.log($(window).scrollTop(), $scrolled);
           updateElements($this, $scrolled);
         });
 

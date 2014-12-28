@@ -7678,7 +7678,8 @@ nav ul li:hover, nav ul li.active {
  }
 
 ul.table-of-contents {
-  margin-top: 1.5rem; }
+  margin-top: 0;
+  padding-top: 48px; }
 
 code, pre {
   position: relative;
