@@ -46,7 +46,10 @@
           $caption = $active.find('.caption');
 
           $active.removeClass('active');
-          $active.velocity({opacity: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
+          $active.velocity({opacity: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad',
+                            complete: function() {
+                              $slides.not('.active').velocity({opacity: 0, translateX: 0, translateY: 0}, {duration: 0, queue: false});
+                            } });
           captionTransition($caption, options.transition);
 
 
@@ -111,7 +114,6 @@
         $active.show();
       }
       else {
-        console.log("false");
         $slides.first().addClass('active').velocity({opacity: 1}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
 
         $active_index = 0;
@@ -169,6 +171,25 @@
           // Swipe Right
           else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.65)) {
             swipeLeft = true;
+          }
+
+          // Make Slide Behind active slide visible
+          var next_slide;
+          if (swipeLeft) {
+            next_slide = $curr_slide.next();
+            if (next_slide.length === 0) {
+              next_slide = $slides.first();
+            }
+            next_slide.velocity({ opacity: 1
+                }, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          }
+          if (swipeRight) {
+            next_slide = $curr_slide.prev();
+            if (next_slide.length === 0) {
+              next_slide = $slides.last();
+            }
+            next_slide.velocity({ opacity: 1
+                }, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }
 
           
