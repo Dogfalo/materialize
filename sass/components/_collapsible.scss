@@ -1,5 +1,12 @@
+$collapsible-height: 3rem;
+$collapsible-header-color: #fff;
+$collapsible-border-color: #ddd;
+
+
 ul.collapsible {
-  border-top: 1px solid #eee;
+  border-top: 1px solid $collapsible-border-color;
+  border-right: 1px solid $collapsible-border-color;
+  border-left: 1px solid $collapsible-border-color;
   @extend .z-depth-1;
 
   li {
@@ -10,16 +17,16 @@ ul.collapsible {
 .collapsible-header {
   display: block;
   cursor: pointer;
-  height: 3rem;
-  line-height: 3rem;
+  height: $collapsible-height;
+  line-height: $collapsible-height;
   padding: 0 1rem;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  background-color: $collapsible-header-color;
+  border-bottom: 1px solid $collapsible-border-color;
 
   i {
     width: 2rem;
     font-size: 1.6rem;
-    line-height: 3rem;
+    line-height: $collapsible-height;
     display: block;
     float: left;
     text-align: center;
@@ -30,7 +37,7 @@ ul.collapsible {
 .collapsible-body {
   overflow: hidden;
   display: none;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid $collapsible-border-color;
   @include box-sizing(border-box);
 
   p {

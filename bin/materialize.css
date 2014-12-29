@@ -1608,6 +1608,7 @@
 
 /*** Buttons ***/
 /*** Cards ***/
+/*** Collapsible ***/
 /*** Forms ***/
 /*** Global ***/
 /*** Toasts ***/
@@ -5566,7 +5567,9 @@ ul.tabs li.tab {
   margin-bottom: 0px; }
 
 ul.collapsible {
-  border-top: 1px solid #eee; }
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd; }
   ul.collapsible li {
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;

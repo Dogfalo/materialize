@@ -15,7 +15,10 @@ $default-color: #00bcd4 !default;
 $card-padding: 16px !default;
 $footer-font-color: #000 !default;
 
-
+/*** Collapsible ***/
+$collapsible-height: 3rem;
+$collapsible-header-color: #fff;
+$collapsible-border-color: #ddd;
 
 /*** Forms ***/
 // Text Inputs + Textarea
