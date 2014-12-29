@@ -1,9 +1,10 @@
 /* Remove Focus Boxes */
 select:focus {
-  outline: none;
+  outline: 1px solid color("materialize-red", "lighten-4");
 }
 button:focus {
   outline: none;
+  background-color: lighten($button-color, 10%);
 }
 
 

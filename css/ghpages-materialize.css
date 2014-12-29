@@ -5669,10 +5669,11 @@ li.no-padding {
 
 /* Remove Focus Boxes */
 select:focus {
-  outline: none; }
+  outline: 1px solid #f8c1c3; }
 
 button:focus {
-  outline: none; }
+  outline: none;
+  background-color: #51adf6; }
 
 label {
   font-size: 0.8rem;
