@@ -783,7 +783,7 @@ jQuery.extend( jQuery.easing,
     var counterInterval;
     $.fn.tooltip = function (options) {
       var margin = 5;
-      var newTooltip;
+      
       started = false;
 
       // Defaults
@@ -802,7 +802,7 @@ jQuery.extend( jQuery.easing,
       
       var backdrop = $('<div></div').addClass('backdrop');
       backdrop.appendTo(newTooltip);
-      backdrop.css({ top: 0, left:0, marginLeft: (newTooltip.outerWidth()/2) - (backdrop.width()/2) });
+      backdrop.css({ top: 0, left:0 });
       
 
       // Mouse In
@@ -813,7 +813,7 @@ jQuery.extend( jQuery.easing,
           counter += 50;
           if (counter >= defaults.delay && started == false) {
             started = true
-            newTooltip.css({ display: 'block' });
+            newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
             // Tooltip positioning
             var originWidth = origin.outerWidth();
@@ -825,6 +825,8 @@ jQuery.extend( jQuery.easing,
             var tooltipHorizontalMovement = '0px';
             var scale_factor = 8;
 
+            // console.log(origin.offset().left);
+
             if (tooltipPosition === "top") {
             // Top Position
             newTooltip.css({
@@ -835,7 +837,8 @@ jQuery.extend( jQuery.easing,
             backdrop.css({
               borderRadius: '14px 14px 0 0',
               transformOrigin: '50% 90%',
-              marginTop: tooltipHeight
+              marginTop: tooltipHeight,
+              marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
 
             });
             }
@@ -872,12 +875,18 @@ jQuery.extend( jQuery.easing,
               });
             }
             else {
-            // Bottom Position
-            newTooltip.css({
-              top: origin.offset().top + origin.outerHeight() + margin,
-              left: origin.offset().left + originWidth/2 - tooltipWidth/2
-            });
-            tooltipVerticalMovement = '+10px';
+              // Bottom Position
+              newTooltip.css({
+                top: origin.offset().top + origin.outerHeight() + margin,
+                left: origin.offset().left + originWidth/2 - tooltipWidth/2
+              });
+              console.log(origin.offset().left)
+              console.log(originWidth/2)
+              console.log(tooltipWidth/2)
+              tooltipVerticalMovement = '+10px';
+              backdrop.css({
+                marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
+              });
             }
 
             // Calculate Scale to fill
