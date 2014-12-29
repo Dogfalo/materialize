@@ -69,7 +69,12 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container bsa">
+  <div class="buysellads hide-on-small-only">
+    <!-- CarbonAds Zone Code -->
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+  </div>
+
   <!--  Toasts Section  -->
   <div id="tab1" class="row">
 
@@ -446,61 +451,76 @@
 
 
 <!--  Waves Section  -->
-<div id="tab3">
-  <div class="section">
-  <h2 class="header">Waves</h2>
-    <p class="caption">Waves is an external library that we've included in Materialize to allow us to create the ink effect outlined in Material Design</p>
-  <a class="waves-effect waves-light btn" href="#!">Wave</a>
-  </div>
-
-  <div class="section">
-    <h4>Applying Waves</h4>
-    <p>To put the waves effect on buttons, you just have to put the class <code class="language-markup">waves-effect</code> on to the buttons. If you want the waves effect to be white instead, add both <code class="language-markup">waves-effect waves-light</code> as classes.</p>
-    <pre><code class="language-markup col s12">
-  &lt;a class="waves-effect waves-light btn-large" href="#">Wave&lt;/a>
-    </code></pre>
-  </div>
-
-<!--  Customization  -->
-  <div class="section">
-    <h3 class="header">Customization</h3>
-    <p>There are several ways to customize waves, you can either use pre-created classes, or you can define your own color by creating a new class</p>
-    <div class="row">
-       <div class="col s12 m6">
-        <h4>Available Colors</h4>
-        <p>To use these, just add the corresponding class to your button. Play around with changing the background color of butons and the waves effect to create something cool!</p>
-        <pre><code class="language-markup">
-  &lt;a href="#!" class="btn waves-effect waves-teal">Send&lt;/a>
-        </code></pre>
-        <div class="collection waves-color-demo">
-          <div class="collection-item">Default<a href="#!" class="waves-effect btn secondary-content">Send</a></div>
-          <div class="collection-item"><code class="language-markup">waves-light</code><a href="#!" class="waves-effect waves-light btn secondary-content">Send</a></div>
-          <div class="collection-item"><code class="language-markup">waves-red</code><a href="#!" class="waves-effect waves-red btn secondary-content">Send</a></div>
-          <div class="collection-item"><code class="language-markup">waves-yellow</code><a href="#!" class="waves-effect waves-yellow btn secondary-content">Send</a></div>
-          <div class="collection-item"><code class="language-markup">waves-orange</code><a href="#!" class="waves-effect waves-orange btn secondary-content">Send</a></div>
-          <div class="collection-item"><code class="language-markup">waves-purple</code><a href="#!" class="waves-effect waves-purple btn secondary-content">Send</a></div>
-          <div class="collection-item"><code class="language-markup">waves-green</code><a href="#!" class="waves-effect waves-green btn secondary-content">Send</a></div>
-          <div class="collection-item"><code class="language-markup">waves-teal</code><a href="#!" class="waves-effect waves-teal btn secondary-content">Send</a></div>
-        </div>
-      </div>
-      <div class="col s12 m6">
-        <h4>Custom Colors</h4>
-        <p>If the color you want is not already available, you can easily make your own waves color by creating a custom CSS class. Take a look at the example below where we add a waves-brown effect</p>
-        <pre><code class="language-css">
-  /*
-  When creating your CSS selector,
-  change "brown" to something of your choosing
-  */
-  .waves-effect.waves-brown .waves-ripple {
-   /* The alpha value allows the text and background color
-   of the button to still show through. */
-    background-color: rgba(121, 85, 72, 0.65);
-  }
-        </code></pre>
-      </div>
+<div id="tab3" class="row">
+  <div class="col hide-on-small-only m3 l2">
+    <div style="height: 1px;">
+      <ul class="section table-of-contents">
+        <li><a href="#waves">Waves</a></li>        
+        <li><a href="#customization">Customization</a></li>
+      </ul>
     </div>
   </div>
 
+  <div class="col s12 m9 l10">
+    <div id="waves" class="section scrollspy">
+
+      <h2 class="header">Waves</h2>
+        <p class="caption">Waves is an external library that we've included in Materialize to allow us to create the ink effect outlined in Material Design</p>
+      <a class="waves-effect waves-light btn" href="#!">Wave</a>
+
+      <h4>Applying Waves</h4>
+      <p>To put the waves effect on buttons, you just have to put the class <code class="language-markup">waves-effect</code> on to the buttons. If you want the waves effect to be white instead, add both <code class="language-markup">waves-effect waves-light</code> as classes.</p>
+      <pre><code class="language-markup col s12">
+    &lt;a class="waves-effect waves-light btn-large" href="#">Wave&lt;/a>
+      </code></pre>
+    </div>
+
+    <div id="customization" class="section scrollspy">
+      <!--  Customization  -->
+      <h3 class="header">Customization</h3>
+      <p>There are several ways to customize waves, you can either use pre-created classes, or you can define your own color by creating a new class</p>
+      <div class="row">
+         <div class="col s12 m6">
+          <h4>Available Colors</h4>
+          <p>To use these, just add the corresponding class to your button. Play around with changing the background color of butons and the waves effect to create something cool!</p>
+         </div>
+         <div class="col s12 m6">
+          <h4>Custom Colors</h4>
+          <p>If the color you want is not already available, you can easily make your own waves color by creating a custom CSS class. Take a look at the example below where we add a waves-brown effect</p>
+         </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <pre><code class="language-markup">
+    &lt;a href="#!" class="btn waves-effect waves-teal">Send&lt;/a>
+          </code></pre>
+          <div class="collection waves-color-demo">
+            <div class="collection-item">Default<a href="#!" class="waves-effect btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-light</code><a href="#!" class="waves-effect waves-light btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-red</code><a href="#!" class="waves-effect waves-red btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-yellow</code><a href="#!" class="waves-effect waves-yellow btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-orange</code><a href="#!" class="waves-effect waves-orange btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-purple</code><a href="#!" class="waves-effect waves-purple btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-green</code><a href="#!" class="waves-effect waves-green btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-teal</code><a href="#!" class="waves-effect waves-teal btn secondary-content">Send</a></div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <pre><code class="language-css">
+    /*
+    When creating your CSS selector,
+    change "brown" to something of your choosing
+    */
+    .waves-effect.waves-brown .waves-ripple {
+     /* The alpha value allows the text and background color
+     of the button to still show through. */
+      background-color: rgba(121, 85, 72, 0.65);
+    }
+          </code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--Material Box Section-->
@@ -665,63 +685,28 @@
 
 
 <!--  Collapsible Section  -->
-<div id="tab5" class="section">
-  <h2 class="header">Collapsible</h2>
-  <p class="caption">
-    Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
-  </p>
-  <ul class="collapsible collapsible-accordion">
-    <li>
-      <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
-    </li>
-  </ul>
-  <div class="section">
-    <h4>Collapsible HTML Structure</h4>
-    <pre><code class="language-markup col s12">
-  &lt;ul class="collapsible">
-    &lt;li>
-      &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
-      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-    &lt;/li>
-    &lt;li>
-      &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
-      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-    &lt;/li>
-    &lt;li>
-      &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
-      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-    &lt;/li>
-  &lt;/ul>
-    </code></pre>
+<div id="tab5" class="row">
+  <div class="col hide-on-small-only m3 l2">
+    <div style="height: 1px;">
+      <ul class="section table-of-contents">
+        <li><a href="#collapsible">Collapsible</a></li>        
+        <li><a href="#accordion">Accordion</a></li>
+        <li><a href="#expandable">Expandable</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="section">
-    <h4>jQuery Plugin Initialization</h4>
-    <pre><code class="language-javascript col s12">
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-    </code></pre>
-  </div>
-<div class="section">
-  <h4>Options</h4>
-  <p>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</p>
-</div>
-  <div class="row">
-    <div class="col s12 m3"><h5>Accordion</h5></div>
-    <div class="col s12 m9">
+
+  <div class="col s12 m9 l10">
+    <div id="collapsible" class="section scrollspy">
+
+      <h2 class="header">Collapsible</h2>
+      <p class="caption">
+        Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
+      </p>
       <ul class="collapsible collapsible-accordion">
         <li>
           <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
         </li>
         <li>
           <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
@@ -732,40 +717,94 @@
           <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
         </li>
       </ul>
-    </div>
-    <div class="col s12 m9 offset-m3">
-      <pre><code class="language-javascript">
-  // This behavior is the default, so nothing needs to be done
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
+
+
+      <h4>Collapsible HTML Structure</h4>
+      <pre><code class="language-markup col s12">
+    &lt;ul class="collapsible">
+      &lt;li>
+        &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
+        &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+      &lt;/li>
+      &lt;li>
+        &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
+        &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+      &lt;/li>
+      &lt;li>
+        &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
+        &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+      &lt;/li>
+    &lt;/ul>
       </code></pre>
+
+      <h4>jQuery Plugin Initialization</h4>
+      <pre><code class="language-javascript col s12">
+    $(document).ready(function(){
+      $('.collapsible').collapsible();
+    });
+      </code></pre>
+
+      <h4>Options</h4>
+      <p>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</p>
+    </div>
+    <div id="accordion" class="section scrollspy">
+      <div class="row">
+        <div class="col s12 m3"><h5>Accordion</h5></div>
+        <div class="col s12 m9">
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+            </li>
+          </ul>
+        </div>
+        <div class="col s12 m9 offset-m3">
+          <pre><code class="language-javascript">
+      // This behavior is the default, so nothing needs to be done
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+      });
+          </code></pre>
+        </div>
+      </div>
+    </div>
+    <div id="expandable" class="section scrollspy">
+      <div class="row">
+        <div class="col s12 m3"><h5>Expandable</h5></div>
+        <div class="col s12 m9">
+          <ul class="collapsible collapsible-expandable">
+            <li>
+              <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+            </li>
+          </ul>
+        </div>
+        <div class="col s12 m9 offset-m3">
+          <pre><code class="language-javascript">
+      $(document).ready(function(){
+        $('.collapsible').collapsible({ "accordion" : false });
+      });
+          </code></pre>
+        </div>
+      </div>
     </div>
 
-    <div class="col s12 m3"><h5>Expandable</h5></div>
-    <div class="col s12 m9">
-      <ul class="collapsible collapsible-expandable">
-        <li>
-          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
-        </li>
-      </ul>
-    </div>
-    <div class="col s12 m9 offset-m3">
-      <pre><code class="language-javascript">
-  $(document).ready(function(){
-    $('.collapsible').collapsible({ "accordion" : false });
-  });
-      </code></pre>
-    </div>
   </div>
 </div>  <!--  End of Container -->
 

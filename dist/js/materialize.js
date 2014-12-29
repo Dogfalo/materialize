@@ -1709,6 +1709,7 @@ jQuery.extend( jQuery.easing,
 			else {
 				visible.push($(this));				
 			}
+				
 
 			$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
 		});
@@ -1717,13 +1718,15 @@ jQuery.extend( jQuery.easing,
 	      return value.height() != 0;
 	    });
 
-			if (visible[0]) {
+			if (visible[0]) {			
 				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
-				$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
+	      if (visible[0]) { // Check if empty
+					$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
+	      }
 			}
 		});
 
