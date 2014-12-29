@@ -243,6 +243,7 @@
         <ul class="section table-of-contents">
           <li><a href="#tabs">Tabs</a></li>
           <li><a href="#sidebar">Sidebar</a></li>
+          <li><a href="#pushpin">Pushpin</a></li>
         </ul>
       </div>
     </div>
@@ -269,8 +270,7 @@
         <div id="test3" class="col s12"><p>Test 3</p></div>
         <div id="test4" class="col s12"><p>Test 4</p></div>
         <br>
-      </div>
-      <div class="section">
+
         <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
           &lt;div class="col s12">
@@ -286,8 +286,7 @@
           &lt;div id="test3" class="col s12">Test 3&lt;/div>
           &lt;div id="test4" class="col s12">Test 4&lt;/div>
         </code></pre>
-      </div>
-      <div class="section">
+
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
           $(document).ready(function(){
@@ -320,8 +319,6 @@
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse btn">Open Sidebar</a>
 
-      </div>
-      <div class="section">
         <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav full">
@@ -345,11 +342,46 @@
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
         </code></pre>
-      </div>
-      <div class="section">
+
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
   $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
+      <div id="pushpin" class="section scrollspy">
+        <h4>Pushpin</h4>
+        <p>Pushpin is our fixed positioning plugin. You can check out our live examples: The fixed tabs on top, and our fixed categories on the left. </p>
+        
+        <h5>jQuery Plugin Options</h5>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Top</td>
+              <td>The distance in pixels from the top of the page where the element becomes fixed. (Default: 0)</td>
+            </tr>
+            <tr>
+              <td>Bottom</td>
+              <td>The distance in pixels from the top of the page where the elements stops being fixed. (Default: Infinity)</td>
+            </tr>
+            <tr>
+              <td>Offset</td>
+              <td>The offset from the top the element will be fixed at. (Default: 0)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5>jQuery Plugin Initialization</h5>
+        <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
+  });
         </code></pre>
       </div>
     </div>
@@ -473,28 +505,28 @@
             <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
             <div class="caption center-align">
               <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li> 
           <li>
             <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
             <div class="caption left-align">
               <h3>Left Aligned Caption</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
           <li>
             <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
             <div class="caption right-align">
               <h3>Right Aligned Caption</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
           <li>
             <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
             <div class="caption center-align">
               <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
         </ul>
@@ -507,28 +539,28 @@
         &lt;img src="http://lorempixel.com/580/250/nature/1"> &lt;!-- random image -->
         &lt;div class="caption center-align">
           &lt;h3>This is our big Tagline!&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li> 
       &lt;li>
         &lt;img src="http://lorempixel.com/580/250/nature/2"> &lt;!-- random image -->
         &lt;div class="caption left-align">
           &lt;h3>Left Aligned Caption&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li>
       &lt;li>
         &lt;img src="http://lorempixel.com/580/250/nature/3"> &lt;!-- random image -->
         &lt;div class="caption right-align">
           &lt;h3>Right Aligned Caption&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li>
       &lt;li>
         &lt;img src="http://lorempixel.com/580/250/nature/4"> &lt;!-- random image -->
         &lt;div class="caption center-align">
           &lt;h3>This is our big Tagline!&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li>
     &lt;/ul>

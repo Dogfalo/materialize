@@ -1,21 +1,21 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="description" content="Learn how to use our JavaScript components to add meaningful animations and transitions to your website."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Learn how to use our JavaScript components to add meaningful animations and transitions to your website.">
     <title>JavaScript - Materialize</title>
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png"/>
-    <meta name="msapplication-TileColor" content="#FFFFFF"/>
-    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png"/>
-    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32"/>
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
     <!--  Android 5 Chrome Color -->
-    <meta name="theme-color" content="#EE6E73"/>
+    <meta name="theme-color" content="#EE6E73">
     <!-- CSS  -->
-    <link href="css/prism.css" rel="stylesheet"/>
-    <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css"/>
+    <link href="css/prism.css" rel="stylesheet">
+    <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -300,6 +300,7 @@
         <ul class="section table-of-contents">
           <li><a href="#tabs">Tabs</a></li>
           <li><a href="#sidebar">Sidebar</a></li>
+          <li><a href="#pushpin">Pushpin</a></li>
         </ul>
       </div>
     </div>
@@ -326,8 +327,7 @@
         <div id="test3" class="col s12"><p>Test 3</p></div>
         <div id="test4" class="col s12"><p>Test 4</p></div>
         <br>
-      </div>
-      <div class="section">
+
         <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
           &lt;div class="col s12">
@@ -343,8 +343,7 @@
           &lt;div id="test3" class="col s12">Test 3&lt;/div>
           &lt;div id="test4" class="col s12">Test 4&lt;/div>
         </code></pre>
-      </div>
-      <div class="section">
+
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
           $(document).ready(function(){
@@ -377,8 +376,6 @@
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse btn">Open Sidebar</a>
 
-      </div>
-      <div class="section">
         <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav full">
@@ -402,11 +399,46 @@
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
         </code></pre>
-      </div>
-      <div class="section">
+
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
   $(".button-collapse").sideNav();
+        </code></pre>
+      </div>
+      <div id="pushpin" class="section scrollspy">
+        <h4>Pushpin</h4>
+        <p>Pushpin is our fixed positioning plugin. You can check out our live examples: The fixed tabs on top, and our fixed categories on the left. </p>
+        
+        <h5>jQuery Plugin Options</h5>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Top</td>
+              <td>The distance in pixels from the top of the page where the element becomes fixed. (Default: 0)</td>
+            </tr>
+            <tr>
+              <td>Bottom</td>
+              <td>The distance in pixels from the top of the page where the elements stops being fixed. (Default: Infinity)</td>
+            </tr>
+            <tr>
+              <td>Offset</td>
+              <td>The offset from the top the element will be fixed at. (Default: 0)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5>jQuery Plugin Initialization</h5>
+        <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
+  });
         </code></pre>
       </div>
     </div>
@@ -530,28 +562,28 @@
             <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
             <div class="caption center-align">
               <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li> 
           <li>
             <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
             <div class="caption left-align">
               <h3>Left Aligned Caption</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
           <li>
             <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
             <div class="caption right-align">
               <h3>Right Aligned Caption</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
           <li>
             <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
             <div class="caption center-align">
               <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text lighten-3">Here's our small slogan.</h5>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
         </ul>
@@ -564,28 +596,28 @@
         &lt;img src="http://lorempixel.com/580/250/nature/1"> &lt;!-- random image -->
         &lt;div class="caption center-align">
           &lt;h3>This is our big Tagline!&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li> 
       &lt;li>
         &lt;img src="http://lorempixel.com/580/250/nature/2"> &lt;!-- random image -->
         &lt;div class="caption left-align">
           &lt;h3>Left Aligned Caption&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li>
       &lt;li>
         &lt;img src="http://lorempixel.com/580/250/nature/3"> &lt;!-- random image -->
         &lt;div class="caption right-align">
           &lt;h3>Right Aligned Caption&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li>
       &lt;li>
         &lt;img src="http://lorempixel.com/580/250/nature/4"> &lt;!-- random image -->
         &lt;div class="caption center-align">
           &lt;h3>This is our big Tagline!&lt;/h3>
-          &lt;h5 class="light grey-text lighten-3">Here's our small slogan.&lt;/h5>
+          &lt;h5 class="light grey-text text-lighten-3">Here's our small slogan.&lt;/h5>
         &lt;/div>
       &lt;/li>
     &lt;/ul>
@@ -742,7 +774,7 @@
         <div class="row">
           <div class="col l4 s12">
             <h5 class="white-text">Help Materialize Grow</h5>
-            <p class="grey-text lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
@@ -754,7 +786,7 @@
           </div>
           <div class="col l4 s12">
             <h5 class="white-text">Join the Discussion</h5>
-            <p class="grey-text lighten-4">We have a gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+            <p class="grey-text text-lighten-4">We have a gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
             <a class="btn waves-effect waves-light red lighten-3" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
           </div>
           <div class="col l4 s12" style="overflow: hidden;">
@@ -770,7 +802,7 @@
       <div class="footer-copyright">
         <div class="container">
         © 2014 Materialize, All rights reserved.
-        <a class="grey-text lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+        <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>
     </footer>  

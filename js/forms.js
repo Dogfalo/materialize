@@ -15,8 +15,26 @@
     });
 
     $(document).on('blur', input_selector, function () {
+      console.log($(this).is(':valid'));
       if ($(this).val().length === 0) {
-        $(this).siblings('label, i').removeClass('active');      
+        $(this).siblings('label, i').removeClass('active');     
+
+        if ($(this).hasClass('validate')) {
+          $(this).removeClass('valid');          
+          $(this).removeClass('invalid');                 
+        } 
+      }
+      else {
+        if ($(this).hasClass('validate')) {
+          if ($(this).is(':valid')) {
+            $(this).removeClass('invalid');
+            $(this).addClass('valid');
+          }
+          else {
+            $(this).removeClass('valid');
+            $(this).addClass('invalid');         
+          }                          
+        } 
       }
     });
 
