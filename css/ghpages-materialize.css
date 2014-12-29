@@ -5667,6 +5667,13 @@ li.no-padding {
   z-index: 1000;
   -webkit-font-smoothing: antialiased; }
 
+/* Remove Focus Boxes */
+select:focus {
+  outline: none; }
+
+button:focus {
+  outline: none; }
+
 label {
   font-size: 0.8rem;
   color: #9e9e9e; }

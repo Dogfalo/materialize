@@ -1,3 +1,11 @@
+/* Remove Focus Boxes */
+select:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+
 
 label {
   font-size: $label-font-size;
