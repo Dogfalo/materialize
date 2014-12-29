@@ -823,6 +823,7 @@ jQuery.extend( jQuery.easing,
             var tooltipWidth = newTooltip.outerWidth();
             var tooltipVerticalMovement = '0px';
             var tooltipHorizontalMovement = '0px';
+            var scale_factor = 8;
 
             if (tooltipPosition === "top") {
             // Top Position
@@ -845,6 +846,14 @@ jQuery.extend( jQuery.easing,
                 left: origin.offset().left - tooltipWidth - margin
               });
               tooltipHorizontalMovement = '-10px';
+              backdrop.css({
+                width: '14px',
+                height: '14px',
+                borderRadius: '14px 0 0 14px',
+                transformOrigin: '95% 50%',
+                marginTop: tooltipHeight/2,
+                marginLeft: tooltipWidth
+              });
             }
             // Right Position
             else if (tooltipPosition === "right") {
@@ -853,6 +862,14 @@ jQuery.extend( jQuery.easing,
                 left: origin.offset().left + originWidth + margin
               });
               tooltipHorizontalMovement = '+10px';
+              backdrop.css({
+                width: '14px',
+                height: '14px',
+                borderRadius: '0 14px 14px 0',
+                transformOrigin: '5% 50%',
+                marginTop: tooltipHeight/2,
+                marginLeft: '0px'
+              });
             }
             else {
             // Bottom Position
@@ -864,14 +881,17 @@ jQuery.extend( jQuery.easing,
             }
 
             // Calculate Scale to fill
-            scale_factor = newTooltip.width() / 8;
-            if (scale_factor < 8)
+            scale_factor = tooltipWidth / 8;
+            if (scale_factor < 8) {
               scale_factor = 8;
+            }
+            if (tooltipPosition === "right" || tooltipPosition === "left") {
+              scale_factor = tooltipHeight / 4;
+            }
 
-            
             newTooltip.velocity({ opacity: 1, marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement}, { duration: 350, queue: false });
             backdrop.css({ display: 'block' })
-            .velocity({opacity:1},{duration: 75, delay: 0, queue: false})
+            .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
             .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
 
           }
