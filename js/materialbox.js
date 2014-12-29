@@ -20,12 +20,18 @@
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
         
-          // If already modal, do nothing
-         if (overlayActive || doneAnimating === false) {
-           returnToOriginal();
-           return false;
-         }
-        
+        // If already modal, do nothing
+        if (overlayActive || doneAnimating === false) {
+          returnToOriginal();
+          return false;
+        }
+        origin.stop();
+        $('#materialbox-overlay').stop(true, true, true);
+
+
+        // Stop ongoing animation
+        // origin.stop( {jumpToEnd: true} );
+
         // add active class
         origin.addClass('active');
         originalWidth = origin.width();
@@ -37,8 +43,7 @@
           .css('height', originalHeight)
           .css('position', 'relative')
           .css('top', 0)
-          .css('left', 0)
-          .css('z-index', origin.attr('z-indez'));
+          .css('left', 0);
 
         
         origin.css('position', 'absolute');
@@ -97,13 +102,14 @@
         }
 
         // Reposition Element AND Animate image + set z-index
+        origin.css('z-index', 1000)
+        .css('will-change', 'left, top')
         if(origin.hasClass('responsive-img')) {
           origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false, 
             complete: function(){
               origin.css('left', 0)
                 .css('top', 0)
-                .css('z-index', 1000)
-                .css('will-change', 'left, top')
+                
                 .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
                 .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
                 .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
@@ -113,8 +119,6 @@
         else {
           origin.css('left', 0)
             .css('top', 0)
-            .css('z-index', 1000)
-            .css('will-change', 'left, top')
             .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
             .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
             .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
