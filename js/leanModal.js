@@ -11,13 +11,13 @@
         out_duration: 200,
         ready: undefined,
         complete: undefined,
-        dismissable: true
+        dismissible: true
       }
 
       // Override defaults
       options = $.extend(defaults, options);
 
-      if (options.dismissable) {
+      if (options.dismissible) {
         $("#lean-overlay").click(function() {
           $(modal).closeModal(options);
         });
