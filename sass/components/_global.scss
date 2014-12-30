@@ -50,7 +50,7 @@ a {
   text-align: right
 }
 .center, .center-align {
-  text-align: center; 
+  text-align: center;
 }
 
 .left {
@@ -70,7 +70,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   .valign {
     display: block;
   }
@@ -114,7 +114,7 @@ li {
 }
 
 
-//  Blockquote 
+//  Blockquote
 
 blockquote {
   margin: 20px 0;
@@ -204,38 +204,38 @@ img.responsive-img {
 .hide-on-small-only, .hide-on-small-and-down {
   @media #{$small-and-down} {
     display: none !important;
-  } 
+  }
 }
 
 .hide-on-med-and-down {
   @media #{$medium-and-down} {
     display: none !important;
-  } 
+  }
 }
 
 .hide-on-med-and-up {
   @media #{$medium-and-up} {
     display: none !important;
-  } 
+  }
 }
 
 .hide-on-med-only {
   @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
-    display: none !important; 
+    display: none !important;
   }
 }
 
 .hide-on-large-only {
   @media #{$large-and-up} {
-    display: none !important; 
+    display: none !important;
   }
 }
 
-// Center text on mobile 
+// Center text on mobile
 .center-on-small-only {
   @media #{$small-and-down} {
     text-align: center;
-  } 
+  }
 }
 
 
@@ -262,26 +262,26 @@ table, th, td {
 table {
   width:100%;
   display: table;
-  
+
   @media #{$small-and-down} {
     thead tr th, tbody tr td {
       text-align: center;
-      
-    } 
+
+    }
   }
-  
+
   &.bordered tr {
     border-bottom: 1px solid #e0e0e0;
   }
-  
+
   &.striped {
     tbody tr:nth-child(odd) {
       background-color: #f2f2f2;
     }
   }
-  
+
   &.hoverable {
-      
+
     tbody tr {
       @include transition(background-color .25s ease);
       &:hover {
@@ -289,11 +289,11 @@ table {
       }
     }
   }
-  
+
   &.centered {
     thead tr th, tbody tr td {
       text-align: center;
-      
+
     }
   }
 
@@ -325,9 +325,9 @@ td, th{
     border-bottom: 1px solid #e0e0e0;
       &:last-child {
         border-bottom: none;
-      } 
+      }
   }
-  
+
   a.collection-item{
     display: block;
     @include transition(.25s);
@@ -336,8 +336,8 @@ td, th{
         background-color: #f2f2f2;
       }
     }
-  }    
-  
+  }
+
   &.with-header {
     .collection-header {
       border-bottom: 1px solid #e0e0e0;
@@ -347,24 +347,24 @@ td, th{
      padding-left: 30px;
     }
   }
-  
+
   .active {
     @extend .blue.lighten-1;
     @extend .blue-text.lighten-4;
   }
-  
-  .secondary-content {		
-    float: right;		
+
+  .secondary-content {
+    float: right;
   }
-  
-  
+
+
   //Pagination
   &.pagination {
     display: inline-block;
-    
+
       ul{
         background-color: transparent;
-        
+
         font-size: 0;
         display: inline-block;
       }
@@ -376,19 +376,19 @@ td, th{
       font-size: 1rem;
 
       a {
-       padding: 0px 5px; 
+       padding: 0px 5px;
       }
       &.active {
-        background-color: color('light-blue', 'base'); 
+        background-color: color('light-blue', 'base');
         color: #FFF;
       }
       &:hover {
         background-color: color('light-blue', 'lighten-5');
       }
     }
-    
+
   }
-  
+
 }
 
 // Badges
@@ -416,4 +416,21 @@ span.badge {
 
 img.circle {
   @include border-radius(50%);
+}
+
+// Responsive Videos
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+
+    iframe, object, embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 }
