@@ -101,7 +101,7 @@ nav {
 // Latest commit widget
 .github-commit {
   padding: 14px 0;
-  height: 36px;
+  height: 64px;
   line-height: 36px;
   background-color: #5c5757;
   color: hsl(0, 0%, 90%);
@@ -128,7 +128,7 @@ nav {
 
 #download-button {
   background-color: color("materialize-red", "lighten-3");
-  width: 200px;
+  width: 260px;
   height: 70px;
   line-height: 70px;
   font-size: 18px;
@@ -138,7 +138,6 @@ nav {
     background-color: lighten(color("materialize-red", "base"), 30%);
   }
 }
-
 
 .promo{
   width: 100%;
@@ -594,10 +593,10 @@ body.parallax-demo footer {
 // Waves page styling
 .waves-color-demo {
   .collection-item {
-    height: 36px;
-    line-height: 36px;
+    height: 57px;
+    line-height: 57px;
     code {
-     line-height: 36px; 
+     line-height: 57px; 
     }
   }
   .btn {

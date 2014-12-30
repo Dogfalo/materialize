@@ -172,6 +172,7 @@
               <p>You can customize the behavior of each modal using these options. For example, you can call a custom function to run when a modal is dismissed. To do this, just place your function in the intialization code as shown below.</p>
               <pre><code class="language-javascript">
   $('.modal-trigger').leanModal({
+      dismissible: true // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
       in_duration: 300, // Transition in duration
       out_duration: 200, // Transition out duration
@@ -423,17 +424,10 @@
       <h3 class="header">Customization</h3>
       <p>There are several ways to customize waves, you can either use pre-created classes, or you can define your own color by creating a new class</p>
       <div class="row">
-         <div class="col s12 m6">
+         <div class="col s12 l6">
           <h4>Available Colors</h4>
           <p>To use these, just add the corresponding class to your button. Play around with changing the background color of butons and the waves effect to create something cool!</p>
-         </div>
-         <div class="col s12 m6">
-          <h4>Custom Colors</h4>
-          <p>If the color you want is not already available, you can easily make your own waves color by creating a custom CSS class. Take a look at the example below where we add a waves-brown effect</p>
-         </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m6">
+
           <pre><code class="language-markup">
     &lt;a href="#!" class="btn waves-effect waves-teal">Send&lt;/a>
           </code></pre>
@@ -448,7 +442,11 @@
             <div class="collection-item"><code class="language-markup">waves-teal</code><a href="#!" class="waves-effect waves-teal btn secondary-content">Send</a></div>
           </div>
         </div>
-        <div class="col s12 m6">
+
+        <div class="col s12 l6">
+          <h4>Custom Colors</h4>
+          <p>If the color you want is not already available, you can easily make your own waves color by creating a custom CSS class. Take a look at the example below where we add a waves-brown effect</p>
+
           <pre><code class="language-css">
     /*
     When creating your CSS selector,
