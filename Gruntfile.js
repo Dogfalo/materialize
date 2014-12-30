@@ -201,11 +201,11 @@ module.exports = function(grunt) {
 
 
 //  Clean
-//    clean: {
-//      build: {
-//        src: [ 'temp/' ]
-//      },
-//    },
+   clean: {
+     temp: {
+       src: [ 'temp/' ]
+     },
+   },
 
 //  Jade
     jade: {
@@ -370,7 +370,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
-//  grunt.loadNpmTasks('grunt-contrib-clean');
+ grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-notify');
@@ -380,7 +380,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src']);
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile']);
+  grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
   grunt.registerTask('start_server', ['connect:server', 'notify:server']);
 
