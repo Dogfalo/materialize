@@ -49,7 +49,7 @@
 
 				if (isIntersect) {
 					hits.push(element);
-				}				
+				}
 			}
 		});
 
@@ -179,7 +179,7 @@
 		  $('a[href=#' + $(element).attr('id') + ']').click(function(e) {
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
-            
+
 //            offset-60 to handle floating fixed tab bar
 				if ($('.tabs-wrapper').length) {
 			    $('html, body').animate({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
@@ -187,7 +187,7 @@
 				else {
 		    	$('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
 				}
-		  });		
+		  });
 		});
 		options = options || {
 			throttle: 100
@@ -226,13 +226,13 @@
 					visible.unshift($(this));
 				}
 				else {
-					visible.push($(this));				
+					visible.push($(this));
 				}
 			}
 			else {
-				visible.push($(this));				
+				visible.push($(this));
 			}
-				
+
 
 			$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
 		});
@@ -241,7 +241,7 @@
 	      return value.height() != 0;
 	    });
 
-			if (visible[0]) {			
+			if (visible[0]) {
 				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {

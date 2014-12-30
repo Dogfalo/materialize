@@ -1,12 +1,12 @@
 module.exports = function(grunt) {
- 
+
   // configure the tasks
   grunt.initConfig({
 //  Copy
     copy: {
       dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true },
     },
-    
+
 //  Sass
     sass: {                              // Task
       expanded: {                            // Target
@@ -14,21 +14,21 @@ module.exports = function(grunt) {
           outputStyle: 'expanded',
           sourcemap: false,
         },
-        files: {                         
+        files: {
           'dist/css/materialize.css': 'sass/materialize.scss',
         }
       },
-      
+
       min: {
         options: {
           outputStyle: 'compressed',
           sourcemap: false
         },
-        files: {                         
+        files: {
           'dist/css/materialize.min.css': 'sass/materialize.scss',
         }
       },
-      
+
       // Compile ghpages css
       gh: {
         options: {
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
           'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss',
         }
       },
-      
+
       // Compile ghpages css
       bin: {
         options: {
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
 //  Concat
     concat: {
       options: {
@@ -83,13 +83,40 @@ module.exports = function(grunt) {
              ],
         // the location of the resulting JS file
         dest: 'dist/js/materialize.js'
-      }
+      },
+      temp: {
+        // the files to concatenate
+        src: ["js/jquery.easing.1.3.js",
+             "js/velocity.min.js",
+              "js/hammer.min.js",
+              "js/jquery.hammer.js",
+              "js/collapsible.js",
+              "js/dropdown.js",
+              "js/leanModal.js",
+              "js/materialbox.js",
+              "js/parallax.js",
+              "js/tabs.js",
+              "js/tooltip.js",
+              "js/waves.js",
+              "js/toasts.js",
+              "js/sideNav.js",
+              "js/scrollspy.js",
+              "js/forms.js",
+              "js/slider.js",
+              "js/cards.js",
+              "js/pushpin.js",
+              "js/date_picker/picker.js",
+              "js/date_picker/picker.date.js",
+             ],
+        // the location of the resulting JS file
+        dest: 'temp/js/materialize.js'
+      },
     },
 
 //  Uglify
     uglify: {
       options: {
-              
+
         // the banner is inserted at the top of the output
 //        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
@@ -100,7 +127,7 @@ module.exports = function(grunt) {
       },
       bin: {
         files: {
-          'bin/materialize.js': ['dist/js/materialize.js']
+          'bin/materialize.js': ['temp/js/materialize.js']
         }
       }
     },
@@ -118,7 +145,7 @@ module.exports = function(grunt) {
           { expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize/'},
         ]
       },
-                   
+
       src: {
         options: {
           archive: 'bin/materialize-src.zip',
@@ -152,7 +179,7 @@ module.exports = function(grunt) {
              ], dest: 'materialize-src/js/'},
         {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
         {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
-        
+
         ]
       },
 
@@ -171,12 +198,12 @@ module.exports = function(grunt) {
       }
 
     },
-                   
-    
+
+
 //  Clean
 //    clean: {
 //      build: {
-//        src: [ 'dist/' ]
+//        src: [ 'temp/' ]
 //      },
 //    },
 
@@ -202,8 +229,8 @@ module.exports = function(grunt) {
 
         }
       }
-    },               
-                   
+    },
+
 //  Watch Files
     watch: {
       jade: {
@@ -214,7 +241,7 @@ module.exports = function(grunt) {
           spawn: false,
         },
       },
-                   
+
       js: {
         files: [ "js/jquery.easing.1.3.js",
                  "js/velocity.min.js",
@@ -244,18 +271,18 @@ module.exports = function(grunt) {
           spawn: false,
         },
       },
-      
+
       sass: {
         files: ['sass/**/*'],
         tasks: ['sass_compile'],
         options: {
           interrupt: false,
           spawn: false,
-        },           
+        },
       }
     },
-                   
-                   
+
+
 //  Concurrent
     concurrent: {
       options: {
@@ -265,8 +292,8 @@ module.exports = function(grunt) {
         tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'connect:server', 'notify:server']
       },
     },
-                   
-                
+
+
 //  Notifications
     notify: {
       watching: {
@@ -278,7 +305,7 @@ module.exports = function(grunt) {
           duration: 1 // the duration of notification in seconds, for `notify-send only
         }
       },
-                   
+
       sass_compile: {
         options: {
           enabled: true,
@@ -288,7 +315,7 @@ module.exports = function(grunt) {
           duration: 1
         }
       },
-                   
+
       js_compile: {
         options: {
           enabled: true,
@@ -298,7 +325,7 @@ module.exports = function(grunt) {
           duration: 1
         }
       },
-                   
+
       jade_compile: {
         options: {
           enabled: true,
@@ -307,8 +334,8 @@ module.exports = function(grunt) {
           success: true,
           duration: 1
         }
-      },       
-      
+      },
+
       server: {
         options: {
           enabled: true,
@@ -319,8 +346,8 @@ module.exports = function(grunt) {
         }
       }
     },
-                   
-              
+
+
 //  Server
     connect: {
       server: {
@@ -334,7 +361,7 @@ module.exports = function(grunt) {
     }
 
   });
- 
+
   // load the tasks
 //  grunt.loadNpmTasks('grunt-gitinfo');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -350,12 +377,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // define the tasks
-  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat', 'uglify:dist', 'compress:main', 'compress:src']);
-  
+  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src']);
+
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  grunt.registerTask('js_compile', ['concat:dist', 'uglify:bin', 'notify:js_compile']);
+  grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
   grunt.registerTask('start_server', ['connect:server', 'notify:server']);
-  
+
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };
