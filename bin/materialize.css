@@ -5192,13 +5192,13 @@ small {
   height: 48px;
   line-height: 48px;
   background-color: #323232;
-  padding: 0px 20px;
+  padding: 0px 25px;
   font-size: 1.1rem;
   font-weight: 300;
   color: #FFF;
   display: flex;
   align-items: center;
-  justify-content: space-around; }
+  justify-content: space-between; }
   .toast .btn, .toast .btn-large, .toast .btn-flat {
     margin: 0;
     margin-left: 3rem; }
