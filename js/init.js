@@ -27,12 +27,14 @@
     
 
     // Floating-Fixed table of contents
-    var toc_offset = $('.table-of-contents').first().offset().top;
-    console.log(toc_offset);
-    $('.table-of-contents').each(function() {
-      var origin = $(this);
-      origin.pushpin({ top: toc_offset, bottom: $(document).height() - $('footer').height(), offset: $('.tabs-wrapper').height() });
-    });
+    if ($('.table-of-contents').length) {
+      var toc_offset = $('.table-of-contents').first().offset().top;
+      $('.table-of-contents').each(function() {
+        var origin = $(this);
+        origin.pushpin({ top: toc_offset, bottom: $(document).height() - $('footer').height(), offset: $('.tabs-wrapper').height() });
+      });      
+    }
+
 
 
 
@@ -73,7 +75,9 @@
 
 
     // Tabs Fixed
-    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
+    if ($('.tabs-wrapper').length) {
+      $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });      
+    }
 
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
