@@ -321,6 +321,52 @@
         <div id="creating-layouts" class="scrollspy">
           <h3 class="header">Creating Layouts</h3>
           <p>Here we will show you how to create some commonly used layouts with our grid system. Hopefully these will get you more comfortable with laying out elements. To keep these demos simple, the ones here will not be responsive.</p>
+          <div class="row">
+            <div class="col s12 m6">
+              <h4>Section</h4>
+              <p>The section class is used for simple top and bottom padding. Just add the <code class="language-markup">section</code> class to your div's containing large blocks of content.</p>
+            </div>
+            <div class="col s12 m6">
+              <h4>Divider</h4>
+              <p>Dividers are 1 pixel lines that help break up your content. Just add the <code class="language-markup">divider</code> to a div in between your content.</p>
+            </div>
+          </div>
+
+          <h4>Example Sections and Dividers</h4>
+          <div class="divider"></div>
+          <div class="section">
+            <h5>Section 1</h5>
+            <p>Stuff</p>
+          </div>
+          <div class="divider"></div>
+          <div class="section">
+            <h5>Section 2</h5>
+            <p>Stuff</p>
+          </div>
+          <div class="divider"></div>
+          <div class="section">
+            <h5>Section 3</h5>
+            <p>Stuff</p>
+          </div>
+          <div class="divider"></div>
+          <pre><code class="language-markup">
+  &lt;div class="divider">&lt;/div>
+  &lt;div class="section">
+    &lt;h5>Section 1&lt;/h5>
+    &lt;p>Stuff&lt;/p>
+  &lt;/div>
+  &lt;div class="divider">&lt;/div>
+  &lt;div class="section">
+    &lt;h5>Section 2&lt;/h5>
+    &lt;p>Stuff&lt;/p>
+  &lt;/div>
+  &lt;div class="divider">&lt;/div>
+  &lt;div class="section">
+    &lt;h5>Section 3&lt;/h5>
+    &lt;p>Stuff&lt;/p>
+  &lt;/div>
+          </code></pre><br>
+
           <h4>Example Promotion Table</h4>
           <p>If we want 3 divs that are equal size, we define the divs with a width of 4-columns, 4+4+4 = 12, which nicely adds up to 12. Inside those divs, we can put our content. Take our front page content for example. We've modified it slightly for the sake of this example.</p>
           <div class="row">
