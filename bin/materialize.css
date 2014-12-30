@@ -1975,6 +1975,13 @@ a {
   margin-left: auto;
   margin-right: auto; }
 
+.valign-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .valign-wrapper .valign {
+    display: block; }
+
 ul {
   padding: 0; }
 

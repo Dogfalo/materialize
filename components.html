@@ -367,6 +367,17 @@
   &lt;/div>
           </code></pre><br>
 
+          <h4>Vertical Centering</h4>
+          <p>You can easily vertically center things by adding the class <code class="language-markup">valign-wrapper</code> to the container holding the items you want to vertically align.</p>
+          <div class="valign-demo valign-wrapper">
+            <h5>This should be vertically aligned</h5>
+          </div>
+          <pre><code class="language-markup">
+  &lt;div class="valign-demo valign-wrapper">
+    &lt;h5>This should be vertically aligned&lt;/h5>
+  &lt;/div>
+          </code></pre><br>
+
           <h4>Example Promotion Table</h4>
           <p>If we want 3 divs that are equal size, we define the divs with a width of 4-columns, 4+4+4 = 12, which nicely adds up to 12. Inside those divs, we can put our content. Take our front page content for example. We've modified it slightly for the sake of this example.</p>
           <div class="row">
@@ -1968,11 +1979,11 @@ $(".dropdown-button").dropdown();
       <h4>Circular images</h4>
       <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="card-panel grey lighten-5 z-depth-1">
-          <div class="row">
-            <div class="col s2">
-              <img src="images/yuna.jpg" alt="" class="circle responsive-img">
+          <div class="row valign-wrapper">
+            <div class="col s4 m2">
+              <img src="images/yuna.jpg" alt="" class="circle responsive-img valign">
             </div>
-            <div class="col s10">
+            <div class="col s8 m10">
               <span class="black-text">
                 This is a square image. Add the "circle" class to it to make it appear circular.
               </span>

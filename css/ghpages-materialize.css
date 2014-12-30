@@ -1975,6 +1975,13 @@ a {
   margin-left: auto;
   margin-right: auto; }
 
+.valign-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .valign-wrapper .valign {
+    display: block; }
+
 ul {
   padding: 0; }
 
@@ -7863,6 +7870,10 @@ body.parallax-demo footer {
 #pushpin-demo-1 {
   display: block;
   height: inherit;
+  background-color: #ddd; }
+
+.valign-demo {
+  height: 400px;
   background-color: #ddd; }
 
 #tx-live-lang-container {
