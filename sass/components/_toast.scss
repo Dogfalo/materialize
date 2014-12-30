@@ -32,14 +32,14 @@
   height: $toast-height;
   line-height: $toast-height;
   background-color: #323232;
-  padding: 0px 20px;
+  padding: 0px 25px;
   font-size: 1.1rem;
   font-weight: 300;
   color: #FFF;
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
   .btn, .btn-flat {
     margin: 0;

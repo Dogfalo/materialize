@@ -899,7 +899,9 @@ jQuery.extend( jQuery.easing,
               scale_factor = 8;
             }
             if (tooltipPosition === "right" || tooltipPosition === "left") {
-              scale_factor = tooltipHeight / 4;
+              scale_factor = tooltipWidth / 10;
+              if (scale_factor < 6)
+                scale_factor = 6;
             }
 
             newTooltip.velocity({ opacity: 1, marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement}, { duration: 350, queue: false });

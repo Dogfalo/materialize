@@ -5,7 +5,7 @@
     background-color: transparent;
     @include border-radius(2px);
     color: #fff;
-    height: 1rem;
+    min-height: 36px;
     line-height: 1rem;
     // max-width: 350px;
     opacity: 0;

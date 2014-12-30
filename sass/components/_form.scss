@@ -139,7 +139,7 @@ textarea {
   Radio Buttons 
 ***************/
 
-/* Remove default checkbox */
+/* Remove default Radio Buttons */
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
@@ -170,8 +170,8 @@ textarea {
   left: 0px;
   top: 0px;
   margin: 4px;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   z-index: 0;
   @include transition(.28s ease);
 }
@@ -278,7 +278,7 @@ form p {
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
   top: 0px;
-  width: 14px; height: 14px;
+  width: 18px; height: 18px;
   border: 2px solid $radio-border;
 }
 
@@ -286,7 +286,7 @@ form p {
 [type="checkbox"]:checked + label:before {
   left: -3px;
   top: -4px;
-  width: 8px; height: 18px;
+  width: 12px; height: 22px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
   border-right: 2px solid $fill-color;
@@ -305,7 +305,7 @@ form p {
   left: 0;
   box-shadow: none;
   background-color: $disabled-color;
-  width: 14px; height: 14px;
+  width: 18px; height: 18px;
   border: 2px solid $disabled-color;
   @include transform(rotateZ(0deg));
 }
