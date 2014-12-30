@@ -5268,7 +5268,7 @@ ul.tabs li.tab {
   border-radius: 2px;
   background-clip: padding-box;
   color: #fff;
-  height: 1rem;
+  min-height: 36px;
   line-height: 1rem;
   opacity: 0;
   display: none;
