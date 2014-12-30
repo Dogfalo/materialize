@@ -28,7 +28,7 @@
 
     // Floating-Fixed table of contents
     if ($('.table-of-contents').length) {
-      var toc_offset = $('.table-of-contents').first().offset().top;
+      var toc_offset = 112;
       $('.table-of-contents').each(function() {
         var origin = $(this);
         origin.pushpin({ top: toc_offset, bottom: $(document).height() - $('footer').height(), offset: $('.tabs-wrapper').height() });
