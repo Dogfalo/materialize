@@ -154,7 +154,22 @@ module.exports = function(grunt) {
         {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
         
         ]
+      },
+
+      template: {
+        options: {
+          archive: 'templates/starter-template.zip',
+          level: 6
+        },
+        files:[
+          { expand: true, cwd: 'dist/', src: ['**/*'], dest: 'starter-template/'},
+          { expand: true, cwd: 'templates/starter-template/', src: ['index.html', 'LICENSE', 'README.md'], dest: 'starter-template/'},
+          { expand: true, cwd: 'templates/starter-template/css', src: ['style.css'], dest: 'starter-template/css'},
+          { expand: true, cwd: 'templates/starter-template/js', src: ['init.js'], dest: 'starter-template/js'}
+
+        ]
       }
+
     },
                    
     
