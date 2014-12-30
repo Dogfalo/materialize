@@ -10,15 +10,18 @@
         in_duration: 300,
         out_duration: 200,
         ready: undefined,
-        complete: undefined
+        complete: undefined,
+        dismissable: true
       }
 
       // Override defaults
       options = $.extend(defaults, options);
 
-      $("#lean-overlay").click(function() {
-        $(modal).closeModal(options);
-      });
+      if (options.dismissable) {
+        $("#lean-overlay").click(function() {
+          $(modal).closeModal(options);
+        });
+      }
 
       $(modal).find(".modal-close").click(function(e) {
         e.preventDefault();
