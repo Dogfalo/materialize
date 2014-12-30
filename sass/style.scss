@@ -101,7 +101,7 @@ nav {
 // Latest commit widget
 .github-commit {
   padding: 14px 0;
-  height: 36px;
+  height: 64px;
   line-height: 36px;
   background-color: #5c5757;
   color: hsl(0, 0%, 90%);
@@ -138,7 +138,6 @@ nav {
     background-color: lighten(color("materialize-red", "base"), 30%);
   }
 }
-
 
 .promo{
   width: 100%;
