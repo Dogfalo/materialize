@@ -1934,6 +1934,12 @@ table {
 td, th {
   padding: 0; }
 
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
 ul {
   list-style-type: none; }
 
@@ -5073,6 +5079,8 @@ small {
     color: #fff;
     font-size: 24px;
     font-weight: 300; }
+    .card .card-title.activator {
+      cursor: pointer; }
   .card a {
     color: #ffab40;
     margin-right: 16px;
