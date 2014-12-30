@@ -5801,7 +5801,7 @@ textarea {
 /***************
   Radio Buttons 
 ***************/
-/* Remove default checkbox */
+/* Remove default Radio Buttons */
 [type="radio"]:not(:checked), [type="radio"]:checked {
   position: absolute;
   left: -9999px; }
@@ -5834,8 +5834,8 @@ textarea {
   left: 0px;
   top: 0px;
   margin: 4px;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   z-index: 0;
   -webkit-transition: 0.28s ease;
   -moz-transition: 0.28s ease;
@@ -5954,16 +5954,16 @@ form p:last-child {
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
   top: 0px;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border: 2px solid #5a5a5a; }
 
 /* Checked styles */
 [type="checkbox"]:checked + label:before {
   left: -3px;
   top: -4px;
-  width: 8px;
-  height: 18px;
+  width: 12px;
+  height: 22px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
   border-right: 2px solid #0f9d58;
@@ -5983,8 +5983,8 @@ form p:last-child {
   left: 0;
   box-shadow: none;
   background-color: rgba(0, 0, 0, 0.26);
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border: 2px solid rgba(0, 0, 0, 0.26);
   -webkit-transform: rotateZ(0deg);
   -moz-transform: rotateZ(0deg);
