@@ -1,5 +1,5 @@
 /***************
-  HTML Styles	
+  HTML Styles
 ***************/
 body {
   background-color: #fcfcfc;
@@ -23,7 +23,7 @@ nav {
 
   a {
     -webkit-font-smoothing: antialiased;
-  } 
+  }
   ul li:hover, ul li.active {
     background-color: color("materialize-red", "lighten-1");
   }
@@ -47,7 +47,7 @@ nav {
 }
 
 /********************
-  Index Page Styles	
+  Index Page Styles
 ********************/
 
 #logo-container {
@@ -141,6 +141,11 @@ nav {
 
 .promo{
   width: 100%;
+  @media #{$medium-and-down} {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
 
   i {
     color: color("materialize-red", "lighten-2");
@@ -322,7 +327,7 @@ $height: auto;
     @include box-sizing(border-box);
   }
   .col {
-    margin-bottom: 55px;   
+    margin-bottom: 55px;
   }
 }
 
@@ -358,7 +363,7 @@ $height: auto;
   }
 }
 
-// tabs 
+// tabs
 .tabs-wrapper {
   position: relative;
   height: 48px;
@@ -379,13 +384,13 @@ $height: auto;
   width: 125px;
   height: 125px;
   margin: 20px auto;
-  
+
   @media only screen and (max-width: $large-screen) {
     width: 100px;
     height: 100px;
-    
+
   }
-  
+
   @media only screen and (max-width: $small-screen) {
     width: 150px;
     height: 150px;
@@ -410,7 +415,7 @@ $height: auto;
   }
 }
 
-// Table of contents 
+// Table of contents
 ul.table-of-contents {
   margin-top: 0;
   padding-top: 48px;
@@ -586,7 +591,7 @@ body.parallax-demo footer {
 
 .mobile-image {
  @media #{$small-and-down} {
-  max-width: 100%; 
+  max-width: 100%;
  }
 }
 
@@ -596,7 +601,7 @@ body.parallax-demo footer {
     height: 57px;
     line-height: 57px;
     code {
-     line-height: 57px; 
+     line-height: 57px;
     }
   }
   .btn {
