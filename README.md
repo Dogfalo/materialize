@@ -14,6 +14,21 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ##Changelog
 
+- v0.94.0
+  - Sidenav supports right edge positioning
+  - Responsive Embeds
+  - Image Vertical align classes
+  - border-box added
+  - Variable file created
+  - Pushpin added
+  - Tooltips support all directions
+  - Layout helper classes added
+  - Materialbox Fixes
+  - Form Element Enhancements
+  - Navbar supports search bar
+  - Waves fixes
+  - Materialbox Captions
+
 - v0.93.1
   - Flexbox Sticky Footer removed due to IE incompatibility
 

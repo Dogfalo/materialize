@@ -1309,17 +1309,17 @@ jQuery.extend( jQuery.easing,
     function preventDefault(e) {
       e = e || window.event;
       if (e.preventDefault)
-          e.preventDefault();
-      e.returnValue = false;  
+        e.preventDefault();
+      e.returnValue = false;
     }
 
     function keydown(e) {
-        for (var i = keys.length; i--;) {
-            if (e.keyCode === keys[i]) {
-                preventDefault(e);
-                return;
-            }
+      for (var i = keys.length; i--;) {
+        if (e.keyCode === keys[i]) {
+          preventDefault(e);
+          return;
         }
+      }
     }
 
     function wheel(e) {
@@ -1328,42 +1328,46 @@ jQuery.extend( jQuery.easing,
 
     function disable_scroll() {
       if (window.addEventListener) {
-          window.addEventListener('DOMMouseScroll', wheel, false);
+        window.addEventListener('DOMMouseScroll', wheel, false);
       }
       window.onmousewheel = document.onmousewheel = wheel;
       document.onkeydown = keydown;
     }
 
     function enable_scroll() {
-        if (window.removeEventListener) {
-            window.removeEventListener('DOMMouseScroll', wheel, false);
-        }
-        window.onmousewheel = document.onmousewheel = document.onkeydown = null;  
+      if (window.removeEventListener) {
+        window.removeEventListener('DOMMouseScroll', wheel, false);
+      }
+      window.onmousewheel = document.onmousewheel = document.onkeydown = null;
     }
-
-
 
     $.fn.sideNav = function (options) {
       var defaults = {
         menuWidth: 240,
-        activationWidth: 70
+        activationWidth: 70,
+        edge: 'left'
       }
       options = $.extend(defaults, options);
 
-
       $(this).each(function(){
-
-
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
-        console.log(menu_id);
-       
+        if (options.edge != 'left') {
+          menu_id.addClass('right');
+        }
+
         function removeMenu() {
-          $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+          $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
             complete: function() {
               $(this).remove();
             } });
-          menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+
+          if (options.edge === 'left') {
+            menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          }
+          else {
+            menu_id.velocity({right: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+          }
           enable_scroll();
         }
 
@@ -1372,42 +1376,53 @@ jQuery.extend( jQuery.easing,
         var menuOut = false;
 
         $('nothing').hammer({
-            prevent_default: false
+          prevent_default: false
         }).bind('pan', function(e) {
 
-            if (e.gesture.pointerType === "touch") {
+          if (e.gesture.pointerType === "touch") {
 
-              var direction = e.gesture.direction;
-              var x = e.gesture.center.x;
-              var y = e.gesture.center.y;
+            var direction = e.gesture.direction;
+            var x = e.gesture.center.x;
+            var y = e.gesture.center.y;
 
-              if (panning) {
-                if (!$('#sidenav-overlay').length) {
-                  var overlay = $('<div id="sidenav-overlay"></div>');
-                  overlay.css('opacity', 0)
-                    .click(function(){
-                      panning = false;
-                      menuOut = false;
-                      removeMenu();
-                      menu_id.velocity({left: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-                      overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
-                        complete: function() {
-                          $(this).remove();
-                        } });
+            if (panning) {
+              if (!$('#sidenav-overlay').length) {
+                var overlay = $('<div id="sidenav-overlay"></div>');
+                overlay.css('opacity', 0)
+                .click(function(){
+                  panning = false;
+                  menuOut = false;
+                  removeMenu();
 
-                      
-                    });
-                  $('body').append(overlay);
-                }
+                  if (options.edge === 'left') {
+                    menu_id.velocity({left: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                  }
+                  else {
+                    menu_id.velocity({right: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                  }
+                  overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                    complete: function() {
+                      $(this).remove();
+                    } });
 
 
-                if (x > options.menuWidth) { x = options.menuWidth; }
-                else if (x < 0) { x = 0; }
-                else if (x < (options.menuWidth / 2)) { menuOut = false; }
-                else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+                });
+                $('body').append(overlay);
+              }
 
+
+              if (x > options.menuWidth) { x = options.menuWidth; }
+              else if (x < 0) { x = 0; }
+              else if (x < (options.menuWidth / 2)) { menuOut = false; }
+              else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+
+              if (options.edge === 'left') {
                 menu_id.velocity({left: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
-                
+              }
+              else {
+                menu_id.velocity({right: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+              }
+
                 // Percentage overlay
                 var overlayPerc = x / options.menuWidth;
                 $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
@@ -1421,65 +1436,69 @@ jQuery.extend( jQuery.easing,
                 else {
                   if ((e.gesture.center.x < options.activationWidth) && direction === 4) {
                     panning = true;
-                  }            
+                  }
                 }
               }
             }
-        }).bind('panend', function(e) {
-          if (e.gesture.pointerType === "touch") {
+          }).bind('panend', function(e) {
+            if (e.gesture.pointerType === "touch") {
 
-            panning = false;
-            if (menuOut) {
-              menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-              $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+              panning = false;
+              if (menuOut) {
+                menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+              }
+              else {
+                menu_id.velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad',
+                  complete: function () {
+                    $(this).remove();
+                  }});
+              }
+            }
+          });
+
+          $this.click(function() {
+            if (menu_id.hasClass('active')) {
+              menuOut = false;
+              panning = false;
+              removeMenu();
             }
             else {
-              menu_id.velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-              $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad', 
-                complete: function () {
-                  $(this).remove();
-                }});
-            }
-          }
-        });
-       
-        $this.click(function() {
-          if (menu_id.hasClass('active')) {
-            menuOut = false;
-            panning = false;
-            removeMenu();
-          }
-          else {
-            disable_scroll();
-            menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+              disable_scroll();
+              if (options.edge === 'left') {
+                menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+              }
+              else {
+                menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+              }
 
-            var overlay = $('<div id="sidenav-overlay"></div>');
-            overlay.css('opacity', 0)
+              var overlay = $('<div id="sidenav-overlay"></div>');
+              overlay.css('opacity', 0)
               .click(function(){
                 menuOut = false;
                 panning = false;
                 removeMenu();
-                overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
+                overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
                   complete: function() {
                     $(this).remove();
                   } });
-                
+
               });
-            $('body').append(overlay);
-            overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
-              complete: function () {
-                menuOut = true;
-                panning = false;
-              }
-            });
-          }
+              $('body').append(overlay);
+              overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                complete: function () {
+                  menuOut = true;
+                  panning = false;
+                }
+              });
+            }
 
+            return false;
+          });
+});
 
-          return false;
-        });
-      });
-
-    };
+};
 }( jQuery ));;/**
  * Extend jquery with a scrollspy plugin.
  * This watches the window scroll and fires events when elements are scrolled into viewport.
@@ -1974,7 +1993,7 @@ jQuery.extend( jQuery.easing,
 
 }( jQuery ));
 ;(function ($) {
-    
+
   $.fn.slider = function (options) {
     var defaults = {
       indicators: true,
@@ -2032,7 +2051,7 @@ jQuery.extend( jQuery.easing,
           if (options.indicators) {
             $indicators.eq($active_index).removeClass('active');
           }
-          
+
           $slides.eq(index).velocity({opacity: 1}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
           $slides.eq(index).find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, delay: options.transition, queue: false, easing: 'easeOutQuad'});
           $slides.eq(index).addClass('active');
@@ -2073,10 +2092,10 @@ jQuery.extend( jQuery.easing,
                 $active_index = $slider.find('.active').index();
                 if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
                 else $active_index += 1;
-                
+
                 moveToSlide($active_index);
 
-              }, options.transition + options.interval 
+              }, options.transition + options.interval
             );
           });
           $indicators.append($indicator);
@@ -2106,13 +2125,13 @@ jQuery.extend( jQuery.easing,
         $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
       });
 
-      // auto scroll 
+      // auto scroll
       $interval = setInterval(
         function(){
-          $active_index = $slider.find('.active').index();          
+          $active_index = $slider.find('.active').index();
           moveToSlide($active_index + 1);
 
-        }, options.transition + options.interval 
+        }, options.transition + options.interval
       );
 
 
@@ -2137,7 +2156,7 @@ jQuery.extend( jQuery.easing,
 
           $curr_slide = $slider.find('.active');
           $curr_slide.velocity({ translateX: x
-              }, {duration: 50, queue: false, easing: 'easeOutQuad'});      
+              }, {duration: 50, queue: false, easing: 'easeOutQuad'});
 
           // Swipe Left
           if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.65)) {
@@ -2167,9 +2186,9 @@ jQuery.extend( jQuery.easing,
                 }, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }
 
-          
+
         }
-      
+
       }).bind('panend', function(e) {
         if (e.gesture.pointerType === "touch") {
 
@@ -2184,14 +2203,14 @@ jQuery.extend( jQuery.easing,
           }
           else if (swipeLeft) {
             moveToSlide(curr_index + 1);
-            $curr_slide.velocity({translateX: -1 * $this.innerWidth() }, {duration: 300, queue: false, easing: 'easeOutQuad', 
+            $curr_slide.velocity({translateX: -1 * $this.innerWidth() }, {duration: 300, queue: false, easing: 'easeOutQuad',
                                   complete: function() {
                                     $curr_slide.velocity({opacity: 0, translateX: 0}, {duration: 0, queue: false});
                                   } });
           }
           else if (swipeRight) {
             moveToSlide(curr_index - 1);
-            $curr_slide.velocity({translateX: $this.innerWidth() }, {duration: 300, queue: false, easing: 'easeOutQuad', 
+            $curr_slide.velocity({translateX: $this.innerWidth() }, {duration: 300, queue: false, easing: 'easeOutQuad',
                                   complete: function() {
                                     $curr_slide.velocity({opacity: 0, translateX: 0}, {duration: 0, queue: false});
                                   } });
@@ -2206,10 +2225,10 @@ jQuery.extend( jQuery.easing,
               $active_index = $slider.find('.active').index();
               if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
               else $active_index += 1;
-              
+
               moveToSlide($active_index);
 
-            }, options.transition + options.interval 
+            }, options.transition + options.interval
           );
         }
       });
