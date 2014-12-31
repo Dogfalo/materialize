@@ -4775,7 +4775,8 @@ nav {
   nav a.button-collapse {
     float: left;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    height: 56px; }
     nav a.button-collapse i {
       font-size: 2.7rem;
       height: 56px;
@@ -4848,7 +4849,7 @@ nav {
       transform: translateY(0); }
 
 @media only screen and (min-width : 601px) {
-  nav, nav .nav-wrapper i, nav a.button-collapse i {
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px; }
 
