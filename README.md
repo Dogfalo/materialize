@@ -28,6 +28,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Navbar supports search bar
   - Waves fixes
   - Materialbox Captions
+  - Image Slider Fixes
 
 - v0.93.1
   - Flexbox Sticky Footer removed due to IE incompatibility
