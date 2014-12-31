@@ -50,7 +50,7 @@
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
         if (options.edge != 'left') {
-          menu_id.addClass('right');
+          menu_id.addClass('right-aligned');
         }
 
         function removeMenu() {

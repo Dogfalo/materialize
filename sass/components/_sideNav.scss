@@ -12,7 +12,7 @@
     will-change: left;
 
     // Right Align
-    &.right {
+    &.right-aligned {
       will-change: right;
       right: -250px;
       left: auto;
@@ -45,7 +45,7 @@ ul.side-nav.full {
   will-change: left;
 
   // Right Align
-  &.right {
+  &.right-aligned {
     will-change: right;
     right: -250px;
     left: auto;

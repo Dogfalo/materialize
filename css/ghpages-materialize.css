@@ -6248,7 +6248,7 @@ ul.table-of-contents a {
     -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     will-change: left; }
-    ul.side-nav.right {
+    ul.side-nav.right-aligned {
       will-change: right;
       right: -250px;
       left: auto; }
@@ -6274,7 +6274,7 @@ ul.side-nav.full {
   -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   will-change: left; }
-  ul.side-nav.full.right {
+  ul.side-nav.full.right-aligned {
     will-change: right;
     right: -250px;
     left: auto; }
