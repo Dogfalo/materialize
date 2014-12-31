@@ -138,7 +138,7 @@
     //  Select Functionality
 
     // Select Plugin
-    $.fn.material_select = function () {
+    $.fn.material_select = function (callback) {
       $(this).each(function(){
         $select = $(this);
         if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
@@ -166,6 +166,7 @@
             if (!$(this).hasClass('disabled')) {
               $curr_select.find('option').eq(i).prop('selected', true);
               $curr_select.prev('span.select-dropdown').html($(this).text());
+              if (typeof callback !== 'undefined') callback();
             }
           });
         });
