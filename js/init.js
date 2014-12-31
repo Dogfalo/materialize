@@ -24,7 +24,7 @@
         }
       });
     });
-    
+
 
     // Floating-Fixed table of contents
     if ($('.table-of-contents').length) {
@@ -32,7 +32,7 @@
       $('.table-of-contents').each(function() {
         var origin = $(this);
         origin.pushpin({ top: toc_offset, bottom: $(document).height() - $('footer').height(), offset: $('.tabs-wrapper').height() });
-      });      
+      });
     }
 
 
@@ -43,7 +43,7 @@
         $timesToCheck = 3;
     function checkForChanges()
     {
-        if ($bsa.find('#carbonads').height() > 0) 
+        if ($bsa.find('#carbonads').height() > 0)
         {
               $('.table-of-contents').css('marginTop', 285);
               // Floating-Fixed table of contents
@@ -56,8 +56,8 @@
                 $(window).scroll(function() {
 
                   if (origin.is(":visible")) {
-                    origin.attr('data-origpos', origin.position().top - tabs_height + 285);            
-                    origin.attr('data-origmargin', 285);            
+                    origin.attr('data-origpos', origin.position().top - tabs_height + 285);
+                    origin.attr('data-origmargin', 285);
                   }
                 });
               });
@@ -65,7 +65,7 @@
         else {
           $timesToCheck -= 1;
           if ($timesToCheck >= 0) {
-            setTimeout(checkForChanges, 500);            
+            setTimeout(checkForChanges, 500);
           }
         }
 
@@ -76,14 +76,14 @@
 
     // Tabs Fixed
     if ($('.tabs-wrapper').length) {
-      $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });      
+      $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
     }
 
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
         url: "https://api.github.com/repos/dogfalo/materialize/commits/master",
-        dataType: "json", 
+        dataType: "json",
         success: function (data) {
           var sha = data.sha,
               date = jQuery.timeago(data.commit.author.date);
@@ -94,10 +94,10 @@
           $('.github-commit').find('.sha').html(sha).attr('href', data.html_url);
 
           // console.log(returndata, returndata.commit.author.date, returndata.sha);
-        }  
-      });      
+        }
+      });
     }
-  
+
     // Toggle Flow Text
     var toggleFlowTextButton = $('#flow-toggle')
     toggleFlowTextButton.click( function(){
@@ -105,7 +105,7 @@
           $(this).toggleClass('flow-text');
         })
     });
-    
+
 //    Toggle Containers on page
     var toggleContainersButton = $('#container-toggle-button');
     toggleContainersButton.click(function(){

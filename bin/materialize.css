@@ -6248,6 +6248,10 @@ ul.table-of-contents a {
     -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     will-change: left; }
+    ul.side-nav.right {
+      will-change: right;
+      right: -250px;
+      left: auto; }
     ul.side-nav li {
       float: none;
       padding: 0 15px; }
@@ -6270,6 +6274,10 @@ ul.side-nav.full {
   -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   will-change: left; }
+  ul.side-nav.full.right {
+    will-change: right;
+    right: -250px;
+    left: auto; }
   ul.side-nav.full li {
     float: none;
     line-height: 64px;
