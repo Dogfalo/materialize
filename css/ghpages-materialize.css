@@ -7400,7 +7400,7 @@ ul.side-nav.full {
  }
 
 /***************
-  HTML Styles	
+  HTML Styles
 ***************/
 body {
   background-color: #fcfcfc; }
@@ -7438,7 +7438,7 @@ nav {
   padding: 20px 20px; }
 
 /********************
-  Index Page Styles	
+  Index Page Styles
 ********************/
 #logo-container {
   position: absolute;
@@ -7520,6 +7520,11 @@ nav {
 
 .promo {
   width: 100%; }
+  @media only screen and (max-width : 992px) {
+    .promo {
+      width: 60%;
+      margin: 0 auto;
+      display: block; } }
   .promo i {
     color: #ee6e73;
     font-size: 7rem;
