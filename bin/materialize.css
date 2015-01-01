@@ -5216,7 +5216,7 @@ small {
   padding: 0px 25px;
   font-size: 1.1rem;
   font-weight: 300;
-  color: #FFF;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between; }
@@ -5820,7 +5820,7 @@ textarea {
   /* prevents text jump on Enter keypress */ }
 
 /***************
-  Radio Buttons 
+  Radio Buttons
 ***************/
 /* Remove default Radio Buttons */
 [type="radio"]:not(:checked), [type="radio"]:checked {
@@ -5923,7 +5923,7 @@ textarea {
   border-color: rgba(0, 0, 0, 0.26); }
 
 /***************
-   Checkboxes 
+   Checkboxes
 ***************/
 /* CUSTOM CSS CHECKBOXES */
 form p {
@@ -5995,7 +5995,10 @@ form p:last-child {
   -o-transform: rotateZ(40deg);
   transform: rotateZ(40deg);
   -webkit-backface-visibility: hidden;
-  -webkit-transform-origin: 20% 40%;
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
   transform-origin: 100% 100%; }
 
 /* disabled checkbox */
@@ -6020,7 +6023,7 @@ form p:last-child {
   border-color: rgba(0, 0, 0, 0.26); }
 
 /***************
-  Select Field 
+  Select Field
 ***************/
 .select-wrapper span.select-dropdown {
   position: relative;
@@ -6061,7 +6064,7 @@ select:disabled {
     background-color: transparent; }
 
 /***************
-      Range 
+      Range
 ***************/
 .range-field {
   position: relative; }
