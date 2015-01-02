@@ -10,16 +10,16 @@
       var outDuration = 225;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
-      var originalWidth = origin.width();
-      var originalHeight = origin.height(); 
+      var originalWidth;
+      var originalHeight;
 
       origin.wrap(placeholder);
       origin.on('click', function(){
-        
+
 
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
-        
+
         // If already modal, do nothing
         if (overlayActive || doneAnimating === false) {
           returnToOriginal();
@@ -34,18 +34,18 @@
 
         // add active class
         origin.addClass('active');
-        originalWidth = origin.width();
-        originalHeight = origin.height();
+        originalWidth = origin[0].getBoundingClientRect().width;
+        originalHeight = origin[0].getBoundingClientRect().height;
 
-        
+
         // Set positioning for placeholder
-        origin.parent('.material-placeholder').css('width', origin.innerWidth())
+        origin.parent('.material-placeholder').css('width', originalWidth)
           .css('height', originalHeight)
           .css('position', 'relative')
           .css('top', 0)
           .css('left', 0);
 
-        
+
         origin.css('position', 'absolute');
 
         // Add caption if it exists
@@ -70,17 +70,17 @@
         $('body').append(overlay);
         overlay.animate({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
         );
-        
+
         // Set states
         overlayActive = true;
         doneAnimating = false;
 
-        
-        // Resize Image      
+
+        // Resize Image
         var ratio = 0;
         var widthPercent = originalWidth / windowWidth;
         var heightPercent = originalHeight / windowHeight;
-        
+
         var newWidth = 0;
         var newHeight = 0;
 
@@ -105,11 +105,11 @@
         origin.css('z-index', 1000)
         .css('will-change', 'left, top')
         if(origin.hasClass('responsive-img')) {
-          origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false, 
+          origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false,
             complete: function(){
               origin.css('left', 0)
                 .css('top', 0)
-                
+
                 .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
                 .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
                 .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
@@ -128,25 +128,25 @@
 
         }); // End origin on click
 
-      
+
       // Return on scroll
       $(window).scroll(function() {
         if (overlayActive) {
-          returnToOriginal();    
+          returnToOriginal();
         }
       });
-      
+
       // Return on ESC
       $(document).keyup(function(e) {
 
         if (e.keyCode === 27) {   // ESC key
           if (overlayActive) {
-            returnToOriginal();    
+            returnToOriginal();
           }
         }
       });
-      
-      
+
+
       // This function returns the modaled image to the original spot
       function returnToOriginal() {
           // Reset z-index
@@ -156,8 +156,8 @@
           }
           // Remove Overlay
           overlayActive = false;
-          $('#materialbox-overlay').fadeOut(outDuration, function(){ 
-            $(this).remove(); 
+          $('#materialbox-overlay').fadeOut(outDuration, function(){
+            $(this).remove();
             origin.css('z-index', original_z_index);
           });
           // Resize
