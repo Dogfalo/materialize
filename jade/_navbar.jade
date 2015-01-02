@@ -13,13 +13,16 @@ header
     .container
       .nav-wrapper
         if white_nav == false
-          a.brand-logo(href='http://materializecss.com/') Materialize
+          a.page-title #{page}
         else
           a#logo-container.brand-logo(href='http://materializecss.com/')
             object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
         a.button-collapse(href='#', data-activates='nav-mobile')
           i.mdi-navigation-menu
   ul#nav-mobile.side-nav.fixed
+    li(class="logo")
+      a#logo-container.brand-logo(href='http://materializecss.com/')
+        object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
     li(class=(page == "About" ? "active" : ""))
       a(href='http://materializecss.com/about.html') About
     li(class=(page == "Getting Started" ? "active" : ""))

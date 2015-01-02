@@ -59,12 +59,62 @@ header, main, footer {
   Index Page Styles
 ********************/
 
-#logo-container {
-  position: absolute;
-  top: 50%;
-  @include transform( translateY(-50%));
-  height: 70%;
+// custom styled sidebar
+ul.side-nav.fixed li.logo {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+
+  &:hover {
+    background-color: transparent;
+  }
 }
+ul.side-nav.fixed {
+  overflow-x: hidden;
+
+  li {
+    line-height: 44px;
+
+    a { font-size: 13px; }
+  }
+}
+#logo-container {
+  height: 57px;
+  margin-bottom: 32px;
+}
+
+nav {
+  height: 122px;
+  @include box-shadow(none);
+
+  a.page-title {
+    line-height: 122px;
+    font-size: 48px;
+  }
+  a.button-collapse {
+    position: absolute;
+    float: none;
+    left: 0;
+  }
+}
+
+@media #{$medium-and-down} {
+  nav .nav-wrapper {
+    text-align: center;
+
+    a.page-title {
+      font-size: 36px;
+    }
+  }
+}
+
+@media #{$large-and-up} {
+  .container {
+    width: 85%;
+  }
+}
+
 
 #front-page-logo {
   display: inline-block;

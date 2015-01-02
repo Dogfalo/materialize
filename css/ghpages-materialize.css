@@ -7468,15 +7468,49 @@ header, main, footer {
 /********************
   Index Page Styles
 ********************/
+ul.side-nav.fixed li.logo {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd; }
+  ul.side-nav.fixed li.logo:hover {
+    background-color: transparent; }
+
+ul.side-nav.fixed {
+  overflow-x: hidden; }
+  ul.side-nav.fixed li {
+    line-height: 44px; }
+    ul.side-nav.fixed li a {
+      font-size: 13px; }
+
 #logo-container {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  height: 70%; }
+  height: 57px;
+  margin-bottom: 32px; }
+
+nav {
+  height: 122px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+  nav a.page-title {
+    line-height: 122px;
+    font-size: 48px; }
+  nav a.button-collapse {
+    position: absolute;
+    float: none;
+    left: 0; }
+
+@media only screen and (max-width : 992px) {
+  nav .nav-wrapper {
+    text-align: center; }
+    nav .nav-wrapper a.page-title {
+      font-size: 36px; }
+ }
+
+@media only screen and (min-width : 993px) {
+  .container {
+    width: 85%; }
+ }
 
 #front-page-logo {
   display: inline-block;
