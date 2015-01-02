@@ -149,7 +149,12 @@
         var wrapper = $('<div class="select-wrapper"></div>');
         var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content select-dropdown"></ul>');
         var selectOptions = $select.children('option');
-        var label = selectOptions.first();
+        if ($select.find('option:selected') !== undefined) {
+          var label = $select.find('option:selected');
+        }
+        else {
+          var label = options.first();
+        }
 
 
         // Create Dropdown structure
@@ -172,12 +177,15 @@
               $curr_select.prev('span.select-dropdown').html($(this).text());
             }
           });
+
         });
+
 
         // Wrap Elements
         $select.wrap(wrapper);
 
         // Add Select Display Element
+
         var $newSelect = $('<span class="select-dropdown ' + (($select.is(':disabled')) ? 'disabled' : '')
                          + '" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
         $select.before($newSelect);

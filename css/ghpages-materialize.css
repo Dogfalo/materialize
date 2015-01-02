@@ -487,7 +487,7 @@
 .blue.lighten-4 {
   background-color: #BBDEFB !important; }
 
-.blue-text.text-lighten-4 {
+.blue-text.text-lighten-4, .collection .active {
   color: #BBDEFB !important; }
 
 .blue.lighten-3 {
