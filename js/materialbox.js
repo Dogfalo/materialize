@@ -10,8 +10,8 @@
       var outDuration = 225;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
-      var originalWidth;
-      var originalHeight;
+      var originalWidth = 0;
+      var originalHeight = 0;
 
       origin.wrap(placeholder);
       origin.on('click', function(){
@@ -28,9 +28,7 @@
           return false;
         }
 
-
         origin.velocity("stop");
-        $('#materialbox-overlay').velocity("stop");
 
         // Set states
         doneAnimating = false;
@@ -141,8 +139,10 @@
 
       // This function returns the modaled image to the original spot
       function returnToOriginal() {
-          origin.velocity("stop");
-          $('#materialbox-overlay').velocity("stop");
+
+          origin.velocity("reverse");
+
+
           var placeholder = origin.parent('.material-placeholder');
           var windowWidth = window.innerWidth;
           var windowHeight = window.innerHeight;
@@ -151,15 +151,9 @@
           // Remove class
           origin.removeClass('active');
 
-          // Reset z-index
-          var original_z_index = origin.parent('.material-placeholder').attr('z-index');
-          if (!original_z_index) {
-            original_z_index = 0;
-          }
-
           $('#materialbox-overlay').fadeOut(outDuration, function(){
             $(this).remove();
-            origin.css('z-index', original_z_index);
+
           });
           // Resize
           origin.velocity({ width: originalWidth}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
@@ -186,7 +180,6 @@
                 'z-index': ''
 
               });
-              console.log(placeholder);
               placeholder.css({
                 height: '',
                 width: '',
