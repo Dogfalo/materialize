@@ -10,44 +10,45 @@
       var outDuration = 225;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
-      var originalWidth = origin.width();
-      var originalHeight = origin.height();
+      var originalWidth;
+      var originalHeight;
 
       origin.wrap(placeholder);
       origin.on('click', function(){
 
-
+        var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
+        var originalWidth = placeholder[0].getBoundingClientRect().width;
+        var originalHeight = placeholder[0].getBoundingClientRect().height;
 
-        // If already modal, do nothing
+        // If already modal, return to original
         if (overlayActive || doneAnimating === false) {
           returnToOriginal();
           return false;
         }
-        origin.stop();
-        $('#materialbox-overlay').stop(true, true, true);
 
 
-        // Stop ongoing animation
-        // origin.stop( {jumpToEnd: true} );
+        origin.velocity("stop");
+        $('#materialbox-overlay').velocity("stop");
 
-        // add active class
+        // Set states
+        doneAnimating = false;
         origin.addClass('active');
-        originalWidth = origin.width();
-        originalHeight = origin.height();
-
+        overlayActive = true;
 
         // Set positioning for placeholder
-        placeholder = origin.parent('.material-placeholder');
-        placeholder.css('width', origin.innerWidth())
+
+        placeholder.css('width', originalWidth)
         .css('height', originalHeight)
         .css('position', 'relative')
         .css('top', 0)
         .css('left', 0);
 
-
-        origin.css('position', 'absolute');
+        // Set css on origin
+        origin.css('position', 'absolute')
+        .css('z-index', 1000)
+        .css('will-change', 'left, top');
 
         // Add caption if it exists
         if (origin.data('caption') !== "") {
@@ -59,12 +60,12 @@
         // Add overlay
         var overlay = $('<div></div>');
         overlay.attr('id', 'materialbox-overlay')
+          .css('will-change', 'opacity')
           .css('width', $(document).width() + 100) // account for any scrollbar
           .css('height', $(document).height() + 100) // account for any scrollbar
           .css('top', 0)
           .css('left', 0)
           .css('opacity', 0)
-          .css('will-change', 'opacity')
           .click(function(){
             returnToOriginal();
           });
@@ -72,16 +73,16 @@
           overlay.animate({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
             );
 
-        // Set states
-        overlayActive = true;
-        doneAnimating = false;
-
+        // Animate caption
+        if (origin.data('caption') !== "") {
+          $photo_caption.css({ "display": "inline" });
+          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+        }
 
         // Resize Image
         var ratio = 0;
         var widthPercent = originalWidth / windowWidth;
         var heightPercent = originalHeight / windowHeight;
-
         var newWidth = 0;
         var newHeight = 0;
 
@@ -96,15 +97,7 @@
           newHeight = windowHeight * 0.9;
         }
 
-        // Animate caption
-        if (origin.data('caption') !== "") {
-          $photo_caption.css({ "display": "inline" });
-          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-        }
-
-        // Reposition Element AND Animate image + set z-index
-        origin.css('z-index', 1000)
-        .css('will-change', 'left, top')
+        // Animate image + set z-index
         if(origin.hasClass('responsive-img')) {
           origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false,
             complete: function(){
@@ -125,9 +118,7 @@
           .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
         }
 
-
-
-        }); // End origin on click
+    }); // End origin on click
 
 
       // Return on scroll
@@ -150,13 +141,22 @@
 
       // This function returns the modaled image to the original spot
       function returnToOriginal() {
+          origin.velocity("stop");
+          $('#materialbox-overlay').velocity("stop");
+          var placeholder = origin.parent('.material-placeholder');
+          var windowWidth = window.innerWidth;
+          var windowHeight = window.innerHeight;
+          var originalWidth = placeholder[0].getBoundingClientRect().width;
+          var originalHeight = placeholder[0].getBoundingClientRect().height;
+          // Remove class
+          origin.removeClass('active');
+
           // Reset z-index
           var original_z_index = origin.parent('.material-placeholder').attr('z-index');
           if (!original_z_index) {
             original_z_index = 0;
           }
-          // Remove Overlay
-          overlayActive = false;
+
           $('#materialbox-overlay').fadeOut(outDuration, function(){
             $(this).remove();
             origin.css('z-index', original_z_index);
@@ -169,8 +169,7 @@
           origin.velocity({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
           origin.velocity({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
           origin.css('will-change', '');
-          // add active class
-          origin.removeClass('active');
+
 
           // Remove Caption
           $('.materialbox-caption').velocity({opacity: 0}, {
@@ -195,11 +194,12 @@
                 top: '',
                 left: ''
               });
+              // Remove Overlay
+              overlayActive = false;
               $(this).remove();
 
             }
-          });
-        }
-      });
+          });      }
+        });
 };
 }( jQuery ));
