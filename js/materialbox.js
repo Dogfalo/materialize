@@ -10,8 +10,8 @@
       var outDuration = 225;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
-      var originalWidth;
-      var originalHeight;
+      var originalWidth = origin[0].getBoundingClientRect().width;
+      var originalHeight = origin[0].getBoundingClientRect().height;
 
       origin.wrap(placeholder);
       origin.on('click', function(){
@@ -25,7 +25,7 @@
           returnToOriginal();
           return false;
         }
-        origin.stop();
+        origin.stop({jumpToEnd: true});
         $('#materialbox-overlay').stop(true, true, true);
 
 
@@ -34,8 +34,7 @@
 
         // add active class
         origin.addClass('active');
-        originalWidth = origin[0].getBoundingClientRect().width;
-        originalHeight = origin[0].getBoundingClientRect().height;
+
 
 
         // Set positioning for placeholder
