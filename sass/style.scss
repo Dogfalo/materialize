@@ -46,6 +46,15 @@ nav {
   padding: 20px 20px;
 }
 
+header, main, footer {
+  padding-left: 240px;
+}
+@media #{$medium-and-down} {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+
 /********************
   Index Page Styles
 ********************/

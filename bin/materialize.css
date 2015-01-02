@@ -6239,7 +6239,7 @@ ul.table-of-contents a {
     padding-left: 18px;
     border-left: 2px solid #ea4a4f; }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width : 992px) {
   ul.side-nav {
     position: fixed;
     width: 240px;
@@ -6265,7 +6265,7 @@ ul.table-of-contents a {
       color: #444; }
  }
 
-ul.side-nav.full {
+ul.side-nav.full, ul.side-nav.fixed {
   position: fixed;
   width: 240px;
   left: -250px;
@@ -6278,11 +6278,11 @@ ul.side-nav.full {
   -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   will-change: left; }
-  ul.side-nav.full.right-aligned {
+  ul.side-nav.full.right-aligned, ul.side-nav.fixed.right-aligned {
     will-change: right;
     right: -250px;
     left: auto; }
-  ul.side-nav.full li {
+  ul.side-nav.full li, ul.side-nav.fixed li {
     float: none;
     line-height: 64px;
     padding: 0 15px;
@@ -6291,12 +6291,28 @@ ul.side-nav.full {
     -o-transition: background-color 0.3s;
     -ms-transition: background-color 0.3s;
     transition: background-color 0.3s; }
-    ul.side-nav.full li:hover, ul.side-nav.full li.active {
+    ul.side-nav.full li:hover, ul.side-nav.full li.active, ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
       background-color: #ddd; }
-  ul.side-nav.full a {
+  ul.side-nav.full a, ul.side-nav.fixed a {
     display: block;
     padding: 0 15px;
     color: #444; }
+
+ul.side-nav.fixed {
+  left: 0;
+  position: fixed; }
+  ul.side-nav.fixed.right-aligned {
+    will-change: right;
+    right: 0;
+    left: auto; }
+
+@media only screen and (max-width : 992px) {
+  ul.side-nav.fixed {
+    left: -250px; }
+    ul.side-nav.fixed.right-aligned {
+      right: -250px;
+      left: auto; }
+ }
 
 #sidenav-overlay {
   position: fixed;

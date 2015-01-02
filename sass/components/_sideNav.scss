@@ -1,4 +1,4 @@
-@media only screen and (max-width: 992px) {
+@media #{$medium-and-down} {
   ul.side-nav {
     position: fixed;
     width: 240px;
@@ -29,9 +29,12 @@
       color: #444;
     }
   }
+
 }
 
-ul.side-nav.full {
+// Hidden side-nav for all sizes
+ul.side-nav.full,
+ul.side-nav.fixed {
   position: fixed;
   width: 240px;
   left: -250px;
@@ -65,6 +68,33 @@ ul.side-nav.full {
     color: #444;
   }
 }
+
+
+// Fixed side-nav shown
+ul.side-nav.fixed {
+  left: 0;
+  position: fixed;
+
+  // Right Align
+  &.right-aligned {
+    will-change: right;
+    right: 0;
+    left: auto;
+  }
+}
+
+// Fixed sideNav hide on smaller
+@media #{$medium-and-down} {
+  ul.side-nav.fixed {
+    left: -250px;
+
+    &.right-aligned {
+      right: -250px;
+      left: auto;
+    }
+  }
+}
+
 
 #sidenav-overlay {
   position: fixed;

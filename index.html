@@ -37,24 +37,24 @@
            bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
         (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
       })();
-
+      
     </script>
     <header>
       <nav id="front-page-nav">
         <div class="container">
           <div class="nav-wrapper"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
-              <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a>
-            <ul id="nav-mobile" class="right side-nav">
-              <li><a href="http://materializecss.com/about.html">About</a></li>
-              <li><a href="http://materializecss.com/getting-started.html">Getting Started</a></li>
-              <li><a href="http://materializecss.com/sass.html">Sass</a></li>
-              <li><a href="http://materializecss.com/components.html">Components</a></li>
-              <li><a href="http://materializecss.com/javascript.html">JavaScript</a></li>
-              <li><a href="http://materializecss.com/mobile.html">Mobile</a></li>
-            </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+              <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
           </div>
         </div>
       </nav>
+      <ul id="nav-mobile" class="side-nav fixed">
+        <li><a href="http://materializecss.com/about.html">About</a></li>
+        <li><a href="http://materializecss.com/getting-started.html">Getting Started</a></li>
+        <li><a href="http://materializecss.com/sass.html">Sass</a></li>
+        <li><a href="http://materializecss.com/components.html">Components</a></li>
+        <li><a href="http://materializecss.com/javascript.html">JavaScript</a></li>
+        <li><a href="http://materializecss.com/mobile.html">Mobile</a></li>
+      </ul>
     </header>
     <main>
       <div class="section no-pad-bot" id="index-banner">
@@ -178,12 +178,12 @@
         <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>
-    </footer>
+    </footer>  
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>
+    <script src="js/jquery.timeago.min.js"></script>  
     <script src="js/prism.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
