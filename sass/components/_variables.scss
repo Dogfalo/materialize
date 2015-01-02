@@ -11,7 +11,7 @@ $button-line-height: 36px;
 
 
 /*** Cards ***/
-$default-color: #00bcd4 !default; 
+$default-color: #00bcd4 !default;
 $card-padding: 16px !default;
 $footer-font-color: #000 !default;
 
@@ -56,8 +56,8 @@ $gutter-width: 1.5rem !default;
 
 /*** Toasts ***/
 $toast-height: 48px !default;
-
-
+$toast-color: #323232 !default;
+$toast-text-color: #fff !default;
 
 /*** Typography ***/
 $off-black: rgba(0, 0, 0, 0.87) !default;

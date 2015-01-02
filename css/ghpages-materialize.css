@@ -487,7 +487,7 @@
 .blue.lighten-4 {
   background-color: #BBDEFB !important; }
 
-.blue-text.text-lighten-4 {
+.blue-text.text-lighten-4, .collection .active {
   color: #BBDEFB !important; }
 
 .blue.lighten-3 {
@@ -4775,7 +4775,8 @@ nav {
   nav a.button-collapse {
     float: left;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    height: 56px; }
     nav a.button-collapse i {
       font-size: 2.7rem;
       height: 56px;
@@ -4848,7 +4849,7 @@ nav {
       transform: translateY(0); }
 
 @media only screen and (min-width : 601px) {
-  nav, nav .nav-wrapper i, nav a.button-collapse i {
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px; }
 
@@ -5215,7 +5216,7 @@ small {
   padding: 0px 25px;
   font-size: 1.1rem;
   font-weight: 300;
-  color: #FFF;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between; }
@@ -5411,6 +5412,8 @@ ul.tabs li.tab {
   margin: 0px;
   min-width: 100px;
   z-index: 1000;
+  max-height: 50%;
+  overflow-y: scroll;
   will-change: width, height; }
   .dropdown-content li {
     cursor: pointer;
@@ -5819,7 +5822,7 @@ textarea {
   /* prevents text jump on Enter keypress */ }
 
 /***************
-  Radio Buttons 
+  Radio Buttons
 ***************/
 /* Remove default Radio Buttons */
 [type="radio"]:not(:checked), [type="radio"]:checked {
@@ -5922,7 +5925,7 @@ textarea {
   border-color: rgba(0, 0, 0, 0.26); }
 
 /***************
-   Checkboxes 
+   Checkboxes
 ***************/
 /* CUSTOM CSS CHECKBOXES */
 form p {
@@ -5994,7 +5997,10 @@ form p:last-child {
   -o-transform: rotateZ(40deg);
   transform: rotateZ(40deg);
   -webkit-backface-visibility: hidden;
-  -webkit-transform-origin: 20% 40%;
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
   transform-origin: 100% 100%; }
 
 /* disabled checkbox */
@@ -6019,7 +6025,7 @@ form p:last-child {
   border-color: rgba(0, 0, 0, 0.26); }
 
 /***************
-  Select Field 
+  Select Field
 ***************/
 .select-wrapper span.select-dropdown {
   position: relative;
@@ -6060,7 +6066,7 @@ select:disabled {
     background-color: transparent; }
 
 /***************
-      Range 
+      Range
 ***************/
 .range-field {
   position: relative; }
@@ -6248,7 +6254,7 @@ ul.table-of-contents a {
     -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     will-change: left; }
-    ul.side-nav.right {
+    ul.side-nav.right-aligned {
       will-change: right;
       right: -250px;
       left: auto; }
@@ -6274,7 +6280,7 @@ ul.side-nav.full {
   -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   will-change: left; }
-  ul.side-nav.full.right {
+  ul.side-nav.full.right-aligned {
     will-change: right;
     right: -250px;
     left: auto; }

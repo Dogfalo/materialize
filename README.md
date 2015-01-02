@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.93.1
+### Current Version : v0.94.0
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -28,6 +28,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Navbar supports search bar
   - Waves fixes
   - Materialbox Captions
+  - Image Slider Fixes
 
 - v0.93.1
   - Flexbox Sticky Footer removed due to IE incompatibility

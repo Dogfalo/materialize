@@ -350,7 +350,7 @@ td, th{
 
   .active {
     @extend .blue.lighten-1;
-    @extend .blue-text.lighten-4;
+    @extend .blue-text.text-lighten-4;
   }
 
   .secondary-content {
