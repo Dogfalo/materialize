@@ -3,8 +3,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Learn how to quickly get started using our CSS framework. We have guides for a variety of skill levels.">
-    <title>Getting Started - Materialize</title>
+    <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
+    <title>Shadow - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -40,12 +40,17 @@
       
     </script>
     <header>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a></div>
+      <nav>
+        <div class="container">
+          <div class="nav-wrapper"><a class="page-title">Shadow</a></div>
+        </div>
+      </nav>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse full"><i class="mdi-navigation-menu"></i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
         <li><a href="http://materializecss.com/about.html">About</a></li>
-        <li class="active"><a href="http://materializecss.com/getting-started.html">Getting Started</a></li>
+        <li><a href="http://materializecss.com/getting-started.html">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li></li><a class="collapsible-header active">CSS</a>
@@ -54,7 +59,7 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="typography.html">Typography</a></li>
                 <li><a href="color.html">Color</a></li>
-                <li><a href="shadow.html">Shadow</a></li>
+                <li class="active"><a href="shadow.html">Shadow</a></li>
                 <li><a href="#!">Fourth Dropdown Link</a></li>
               </ul>
             </div>
@@ -65,182 +70,68 @@
         <li><a href="http://materializecss.com/mobile.html">Mobile</a></li>
       </ul>
     </header>
-    <main><div class="section" id="index-banner">
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m9">
-        <h1 class="header center-on-small-only">Getting Started</h1>
-        <h4 class ="light red-text text-lighten-4 center-on-small-only">Learn how to easily start using Materialize in your website.</h4>
-      </div>
-      <div class="col s12 m3">
-        <!-- BuySellAds Zone Code -->
-        <div class="buysellads-header center-on-small-only">
-          <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
-        </div>
-        <!-- End BuySellAds Zone Code -->
-      </div>
-    </div>
-  </div>
-</div>
+    <main><div class="container">
 
-<div class="container">
-  <!--  Outer row  -->
   <div class="row">
 
-    <div class="section col s12 m9 l10">
-      <div id="download" class="row scrollspy">
-          <h2 class="col s12 header">Download</h2>
-        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using Materialize, all you have to is download one of the options below.</p>
+    <div class="col s12 m9 l10">
 
-        <div class="col s12 m6">
-          <p class="promo-caption">Materialize</p>
-          <p>This is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option require little to no setup. Use this if you are unfamiliar with Sass.</p>
-          <a class="btn waves-effect waves-light" href="bin/materialize-v0.94.0.zip">Materialize<i class="mdi-file-file-download right"></i></a>
+      <div id="shadow" class="section scrollspy">
+        <div class="row">
+          <h2 class="header">Shadows</h2>
+          <p class="caption">In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is.</p>
+          <p>You can easily apply this shadow effect by adding a <code class="language-markup">class="z-depth-2"</code> to an HTML tag. Alternatively you can extend any of these shadows with Sass using <code class="language-scss">@extend .z-depth-2</code>.</p>
         </div>
-        <div class="col s12 m6">
-          <p class="promo-caption">Sass</p>
-          <p>This version contains the source SCSS files. By choosing this version you have more control over which components to include. You will need a Sass compiler if you choose this option.</p>
-          <a class="btn waves-effect waves-light" href="bin/materialize-src-v0.94.0.zip">Source<i class="mdi-file-file-download right"></i></a>
+        <div class="row preview">
+          <div class="col s12 m4 l2 offset-l1">
+            <p class="z-depth-1 shadow-demo"></p>
+          </div>
+          <div class="col s12 m4 l2">
+            <p class="z-depth-2 shadow-demo"></p>
+          </div>
+          <div class="col s12 m4 l2">
+            <p class="z-depth-3 shadow-demo"></p>
+          </div>
+          <div class="col s12 m4 l2">
+            <p class="z-depth-4 shadow-demo"></p>
+          </div>
+          <div class="col s12 m4 l2">
+            <p class="z-depth-5 shadow-demo"></p>
+          </div>
         </div>
-        <div class="col s12">
-          <br>
-          <p class="promo-caption">Bower</p>
-          <p>You can also get the latest release using bower. this release contains source files as well as the compiled CSS and JavaScript files.</p>
-          <pre><code class="language-bash">
-  bower install materialize
+        <div class="row">
+          <pre>
+          <code class="language-markup col s12">
+      &lt;div class="col s12 m2">
+        &lt;p class="z-depth-1">z-depth-1&lt;/p>
+      &lt;/div>
+      &lt;div class="col s12 m2">
+        &lt;p class="z-depth-2">z-depth-2&lt;/p>
+      &lt;/div>
+      &lt;div class="col s12 m2">
+        &lt;p class="z-depth-3">z-depth-3&lt;/p>
+      &lt;/div>
+      &lt;div class="col s12 m2">
+        &lt;p class="z-depth-4">z-depth-4&lt;/p>
+      &lt;/div>
+      &lt;div class="col s12 m2">
+        &lt;p class="z-depth-5">z-depth-5&lt;/p>
+      &lt;/div>
           </code></pre>
         </div>
-      </div>
-
-      <div id="setup" class="row scrollspy">
-        <div class="col s12">
-          <h2 class="header">Setup</h2>
-          <h4 >Project Structure</h4>
-          <p>After downloading, extract the files into the directory where your website is located. Your directory will look something like this.</p>
-          <p>You'll notice that there are two sets of the files. The <code class="language-markup">min</code> means that the file is "compressed" to reduce load times. These minified files are usually used in production while it is better to use the unminified files during development.</p>
-
-          <pre><code class="language-markup directory-markup">
-  MyWebsite/
-  |--css/
-  |  |--materialize.css
-  |
-  |--font/
-  |  |--material-design-icons/
-  |  |--roboto/
-  |
-  |--js/
-  |  |--materialize.js
-  |
-  |--index.html
-          </code></pre>
-        </div>
-      <div class="col s12">
-        <h4>HTML Setup</h4>
-        <p>Next you just have to make sure you link the files properly in your webpage. Generally it is wise to import javascript files at the end of the body to reduce page load time. Follow the example below on how to import Materialize into your webpage.</p>
-        <p> One last thing to note is that you have to import jQuery before importing materialize.js!</p>
-        <pre><code class="language-markup">
-  &lt;html>
-    &lt;head>
-      &lt;!--Import materialize.css-->
-      &lt;link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    &lt;/head>
-
-    &lt;body>
-      &lt;!--Import jQuery before materialize.js-->
-      &lt;script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">&lt;/script>
-      &lt;script type="text/javascript" src="js/materialize.min.js">&lt;/script>
-    &lt;/body>
-  &lt;/html>
-        </code></pre>
       </div>
     </div>
 
-    <div id="templates" class="row scrollspy">
-      <h2 class="col s12 header">Templates</h2>
-      <p class="caption col s12">We have created some starter templates so you can easily start designing your website with minimal setup up time. Browse through our collection and download your best fit. </p>
-
-      <div class="col s12 m6">
-        <p class="promo-caption">Starter Template</p>
-        <a href="templates/starter-template/index.html"><img class="z-depth-1" style="width: 100%;" src="images/starter-template.gif"></a>
-        <p>This is the simplest starter page with a Header, Call-to-Action, and Icon Features. </p>
-        <a class="btn waves-effect waves-light" href="templates/starter-template/preview.html">Demo<i class="mdi-action-search right"></i></a>
-        <a class="btn waves-effect waves-light" href="templates/starter-template.zip">Download<i class="mdi-file-file-download right"></i></a>
-      </div>
-    </div>
-
-
-      <!-- Third Party Options -->
-      <div id="third-party-options" class="row scrollspy">
-        <div class="col s12">
-          <h2 class="header">Third-party Options</h2>
-          <p class="caption">There are a few community-made options for you to easily include Materialize in your project. Keep in mind these are untested and may be out-of-date.</p>
-          <p class="promo-caption">Ruby Gem</p>
-          <pre><code class="language-bash">
-  gem 'rails-assets-materialize'
-          </code></pre>
-          <p class="promo-caption">Meteor Package</p>
-          <pre><code class="language-bash">
-  meteor add d0minikk:materialize-meteor
-          </code></pre>
-          <p class="promo-caption">Ember Package</p>
-          <pre><code class="language-bash">
-  # install via npm
-  $ npm install ember-cli-materialize --save-dev
-  # make ember-cli fetch internal dependencies
-  $ ember g ember-cli-materialize
-          </code></pre>
-
-      </div>
-    </div>
-
-    <div id="sass" class="row scrollspy">
-      <div class="col s12">
-        <h2 class="header">Sass Setup</h2>
-        <p class="caption">This section is only relevant if you chose to download the Sass version of Materialize.</p>
-        <h4>Compiling Sass</h4>
-        <p>Instead of having css folder, you will find that the download instead contains many .scss files which contain the styles of individual components. Unfortunately the browser cannot interpret Sass, so you must have your Sass compiler compile the scss/materialize.scss into a regular CSS file. At this point you can link this newly outputted file in your HTML page</p>
-
-        <pre><code class="language-markup directory-markup">
-  MyWebsite/
-  |--css/
-  |  |--materialize.css &lt;-- compiled from scss/materialize.scss
-  |
-  |--font/
-  |  |--material-design-icons/
-  |  |--roboto/
-  |
-  |--js/
-  |  |--materialize.js
-  |
-  |--scss/
-  |  |--materialize.scss
-  |  |--components/
-  |
-  |--index.html
-        </code></pre>
-      </div>
-    </div>
-
-  </div>
-  <!-- Table of contents -->
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
-        <ul class="table-of-contents">
-          <li><a href="#download">Download</a></li>
-          <li><a href="#setup">Setup</a></li>
-          <li><a href="#templates">Templates</a></li>
-          <li><a href="#third-party-options">Third-party Options</a></li>
-          <li><a href="#sass">Sass</a></li>
+        <ul class="section table-of-contents">
+          <li><a href="#shadow">Shadows</a></li>
         </ul>
       </div>
     </div>
 
   </div>
-
-
 </div>
-
     </main>    <footer>
       <div class="container">
         <div class="row">
