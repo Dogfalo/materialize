@@ -29,16 +29,16 @@ header
     li.no-padding
       ul.collapsible.collapsible-accordion
         li
-        a.collapsible-header
+        a.collapsible-header.active
           | CSS
         .collapsible-body
           ul
-            li
+            li(class=(page == "Sass" ? "active" : ""))
               a(href='sass.html') Sass
-            li
+            li(class=(page == "Typography" ? "active" : ""))
               a(href='typography.html') Typography
-            li
-              a(href='#!') Third Dropdown Link
+            li(class=(page == "Color" ? "active" : ""))
+              a(href='typography.html') Color
             li
               a(href='#!') Fourth Dropdown Link
 

@@ -53,6 +53,17 @@
           menu_id.addClass('right-aligned');
         }
 
+        // Window resize to reset on large screens fixed
+        if (menu_id.hasClass('fixed')) {
+          $(window).resize( function() {
+            if ($(window).width() > 1200) {
+              if (menu_id.attr('style')) {
+                menu_id.removeAttr('style');
+              }
+            }
+          });
+        }
+
         function removeMenu() {
           $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
             complete: function() {

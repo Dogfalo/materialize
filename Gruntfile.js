@@ -226,7 +226,8 @@ module.exports = function(grunt) {
           "mobile.html": "jade/mobile.jade",
           "showcase.html": "jade/showcase.jade",
           "parallax.html": "jade/parallax.jade",
-          "typography.html": "jade/typography.jade"
+          "typography.html": "jade/typography.jade",
+          "color.html": "jade/color.jade"
 
         }
       }
