@@ -1,0 +1,135 @@
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col s12 m9 l10">
+      <!--    Media Queries Section-->
+      <div id="variables" class="section scrollspy">
+      <h2 class="header">Media Queries</h2>
+      <p class="caption">
+      We have 3 media queries for the 3 standard screen sizes you can use in your custom Sass files. This also includes media query variables that will define the range.
+      </p>
+      <p>
+        Small screens are defined as having a max-width of 600px
+        <br>
+        Medium screens are defined as having a max-width of 992px
+        <br>
+        Large screen are defined as having a min-width of 992px
+      </p>
+
+      <div class="row">
+        <h4>CSS</h4>
+        <pre><code class="language-css col s12">
+      // These classes can be added to HTML Elements to affect visibility on certain displays
+      // They apply display:none;
+      .hide-on-small-only
+      .hide-on-small-and-down
+      .hide-on-med-and-down
+      .hide-on-med-and-up
+      .hide-on-med-only
+      .hide-on-large-only
+          </code></pre>
+      </div>
+
+      <div class="row">
+        <h4>Sass</h4>
+        <pre><code class="language-css col s12">
+      @media #{$small-and-down} {
+        // styles for small screens and down
+      }
+      @media #{$medium-and-up} {
+        // styles for medium screens and larger
+      }
+      @media #{$medium-and-down} {
+        // styles for medium screens and down
+      }
+      @media #{$large-and-up} {
+        // styles for large screens and up
+      }
+          </code></pre>
+      </div>
+      </div>
+
+      <!--    Prefixer Section-->
+      <div id="mixins" class="section scrollspy">
+      <h2 class="header">Prefixer</h2>
+      <p class="caption">
+      One major goal of this framework is to be as adaptable as possible which includes cross browser compatibility. We have adapted a prefixer script to Sass which will automatically add all browser prefixes for certain CSS properties.
+      </p>
+
+
+      For Example: Using this Sass mixin
+      <div class="row">
+        <pre><code class="language-scss col s12">
+      @include transition(.3s);
+          </code></pre>
+        </div>
+        Will Output This
+        <div class="row">
+          <pre><code class="language-css col s12">
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -o-transition: 0.3s;
+      -ms-transition: 0.3s;
+      transition: 0.3s;
+          </code></pre>
+        </div>
+        Here is the full list of mixins
+        <div class="row">
+          <pre><code class="language-css col s12">
+      animation($args)
+      animation-delay($delay)
+      animation-direction($direction)
+      animation-duration($duration)
+      animation-fill-mode($mode)
+      animation-iteration-count($count)
+      animation-name($name)
+      animation-play-state($state)
+      animation-timing-function($function)
+      background-size($args)
+      border-radius($args)
+      box-shadow($args)
+          inner-shadow($args)
+      box-sizing($args)
+          border-box()
+          content-box()
+      columns($args)
+          column-count($count)
+          column-gap($gap)
+          column-rule($args)
+          column-width($width)
+      gradient($default,$start,$stop)
+          linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+          linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+      opacity($factor)
+      transform($args)
+          transform-origin($args)
+          transform-style($style)
+          rotate($deg)
+          scale($factor)
+          translate($x,$y)
+          translate3d($x,$y,$z)
+          translateHardware($x,$y)
+      text-shadow($args)
+      transition($args)
+          transition-delay($delay)
+          transition-duration($duration)
+          transition-property($property)
+          transition-timing-function($function)
+          </code></pre>
+        </div>
+      </div>
+    </div>
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#variables">Variables</a></li>
+          <li><a href="#mixins">Mixins</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div> <!-- end row -->
+
+</div>

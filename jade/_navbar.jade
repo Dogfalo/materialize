@@ -15,7 +15,7 @@ header
         .nav-wrapper
           a.page-title #{page}
   .container
-    a.button-collapse(href='#', data-activates='nav-mobile')
+    a.button-collapse(href='#', data-activates='nav-mobile', class=(no_nav == false ? "full" : ""))
       i.mdi-navigation-menu
   ul#nav-mobile.side-nav.fixed
     li(class="logo")
@@ -25,8 +25,23 @@ header
       a(href='http://materializecss.com/about.html') About
     li(class=(page == "Getting Started" ? "active" : ""))
       a(href='http://materializecss.com/getting-started.html') Getting Started
-    li(class=(page == "Sass" ? "active" : ""))
-      a(href='http://materializecss.com/sass.html') Sass
+
+    li.no-padding
+      ul.collapsible.collapsible-accordion
+        li
+        a.collapsible-header
+          | CSS
+        .collapsible-body
+          ul
+            li
+              a(href='sass.html') Sass
+            li
+              a(href='typography.html') Typography
+            li
+              a(href='#!') Third Dropdown Link
+            li
+              a(href='#!') Fourth Dropdown Link
+
     li(class=(page == "Components" ? "active" : ""))
       a(href='http://materializecss.com/components.html') Components
     li(class=(page == "JavaScript" ? "active" : ""))

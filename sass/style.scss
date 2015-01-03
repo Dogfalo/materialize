@@ -95,12 +95,17 @@ nav {
 }
 a.button-collapse {
   position: absolute;
-  float: none;
   left: 7.5%;
+  top: 0;
+  float: none;
   margin-left: 1.5rem;
   color: #fff;
   font-size: 32px;
   z-index: 2;
+
+  &.full {
+    line-height: 122px;
+  }
 }
 @media #{$small-and-down} {
   a.button-collapse {
