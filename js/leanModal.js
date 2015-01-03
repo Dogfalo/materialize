@@ -21,6 +21,13 @@
         $("#lean-overlay").click(function() {
           $(modal).closeModal(options);
         });
+        // Return on ESC
+        $(document).keyup(function(e) {
+          if (e.keyCode === 27) {   // ESC key
+            $(modal).closeModal(options);
+            $(this).off();
+          }
+        });
       }
 
       $(modal).find(".modal-close").click(function(e) {
