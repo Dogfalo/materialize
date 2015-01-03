@@ -9,16 +9,14 @@ script.
   })();
 
 header
-  nav(id=(white_nav == false ? "" : "front-page-nav"))
-    .container
-      .nav-wrapper
-        if white_nav == false
+  if no_nav == false
+    nav
+      .container
+        .nav-wrapper
           a.page-title #{page}
-        else
-          a#logo-container.brand-logo(href='http://materializecss.com/')
-            object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
-        a.button-collapse(href='#', data-activates='nav-mobile')
-          i.mdi-navigation-menu
+  .container
+    a.button-collapse(href='#', data-activates='nav-mobile')
+      i.mdi-navigation-menu
   ul#nav-mobile.side-nav.fixed
     li(class="logo")
       a#logo-container.brand-logo(href='http://materializecss.com/')

@@ -87,7 +87,7 @@
         success: function (data) {
           var sha = data.sha,
               date = jQuery.timeago(data.commit.author.date);
-          if (window_width < 600) {
+          if (window_width < 1120) {
             sha = sha.substring(0,7);
           }
           $('.github-commit').find('.date').html(date);

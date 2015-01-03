@@ -92,10 +92,19 @@ nav {
     line-height: 122px;
     font-size: 48px;
   }
+}
+a.button-collapse {
+  position: absolute;
+  float: none;
+  left: 7.5%;
+  margin-left: 1.5rem;
+  color: #fff;
+  font-size: 32px;
+  z-index: 2;
+}
+@media #{$small-and-down} {
   a.button-collapse {
-    position: absolute;
-    float: none;
-    left: 0;
+    left: 5%;
   }
 }
 
@@ -154,6 +163,26 @@ nav {
   }
   h4 {
     margin-bottom: 40px;
+  }
+  h1 {
+    margin-top: 16px;
+  }
+}
+@media #{$medium-and-down} {
+  #index-banner {
+    h1 {
+      margin-top: 60px;
+    }
+    h4 {
+      margin-bottom: 15px;
+    }
+  }
+}
+@media #{$small-and-down} {
+  #index-banner {
+    h4 {
+      margin-bottom: 0;
+    }
   }
 }
 

@@ -7495,10 +7495,20 @@ nav {
   nav a.page-title {
     line-height: 122px;
     font-size: 48px; }
-  nav a.button-collapse {
-    position: absolute;
-    float: none;
-    left: 0; }
+
+a.button-collapse {
+  position: absolute;
+  float: none;
+  left: 7.5%;
+  margin-left: 1.5rem;
+  color: #fff;
+  font-size: 32px;
+  z-index: 2; }
+
+@media only screen and (max-width : 600px) {
+  a.button-collapse {
+    left: 5%; }
+ }
 
 @media only screen and (max-width : 992px) {
   nav .nav-wrapper {
@@ -7542,6 +7552,20 @@ nav {
     color: #FFF; }
   #index-banner h4 {
     margin-bottom: 40px; }
+  #index-banner h1 {
+    margin-top: 16px; }
+
+@media only screen and (max-width : 992px) {
+  #index-banner h1 {
+    margin-top: 60px; }
+  #index-banner h4 {
+    margin-bottom: 15px; }
+ }
+
+@media only screen and (max-width : 600px) {
+  #index-banner h4 {
+    margin-bottom: 0; }
+ }
 
 .github-commit {
   padding: 14px 0;
