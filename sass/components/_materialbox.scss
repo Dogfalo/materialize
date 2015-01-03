@@ -2,12 +2,12 @@
   cursor: zoom-in;
   position: relative;
   @include transition(opacity .4s);
-  
+
   &:hover {
     &:not(.active) {
       @include opacity(0.8);
     }
-    will-change: left, top;
+    will-change: left, top, width, height;
   }
 }
 

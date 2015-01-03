@@ -19,16 +19,17 @@
         var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
-        var originalWidth = placeholder[0].getBoundingClientRect().width;
-        var originalHeight = placeholder[0].getBoundingClientRect().height;
+        var originalWidth = origin.width();
+        var originalHeight = origin.height();
 
         // If already modal, return to original
         if (overlayActive || doneAnimating === false) {
+          origin.velocity("stop");
           returnToOriginal();
           return false;
         }
 
-        origin.velocity("stop");
+        // origin.velocity("stop");
 
         // Set states
         doneAnimating = false;
@@ -37,16 +38,17 @@
 
         // Set positioning for placeholder
 
-        placeholder.css('width', originalWidth)
-        .css('height', originalHeight)
+        placeholder.css('width', placeholder.width())
+        .css('height', placeholder.height())
         .css('position', 'relative')
         .css('top', 0)
         .css('left', 0);
 
         // Set css on origin
         origin.css('position', 'absolute')
-        .css('z-index', 1000)
-        .css('will-change', 'left, top');
+        .css('z-index', 1000);
+        origin.data('width', originalWidth);
+        origin.data('height', originalHeight);
 
         // Add caption if it exists
         if (origin.data('caption') !== "") {
@@ -83,8 +85,13 @@
         var heightPercent = originalHeight / windowHeight;
         var newWidth = 0;
         var newHeight = 0;
+        console.log(widthPercent)
+        console.log(heightPercent)
+
 
         if (widthPercent > heightPercent) {
+          console.log(originalHeight)
+           console.log(originalWidth)
           ratio = originalHeight / originalWidth;
           newWidth = windowWidth * 0.9;
           newHeight = windowWidth * 0.9 * ratio;
@@ -140,14 +147,14 @@
       // This function returns the modaled image to the original spot
       function returnToOriginal() {
 
-          origin.velocity("reverse");
+          // origin.velocity("reverse");
 
 
           var placeholder = origin.parent('.material-placeholder');
           var windowWidth = window.innerWidth;
           var windowHeight = window.innerHeight;
-          var originalWidth = placeholder[0].getBoundingClientRect().width;
-          var originalHeight = placeholder[0].getBoundingClientRect().height;
+          var originalWidth = origin.data('width');
+          var originalHeight = origin.data('height');
           // Remove class
           origin.removeClass('active');
 
@@ -162,7 +169,6 @@
           // Reposition Element
           origin.velocity({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
           origin.velocity({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.css('will-change', '');
 
 
           // Remove Caption

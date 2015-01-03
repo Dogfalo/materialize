@@ -5669,7 +5669,7 @@ li.no-padding {
   -ms-transition: opacity 0.4s;
   transition: opacity 0.4s; }
   .materialboxed:hover {
-    will-change: left, top; }
+    will-change: left, top, width, height; }
     .materialboxed:hover:not(.active) {
       -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
       filter: "alpha(opacity=(${iefactor}))";
