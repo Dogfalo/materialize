@@ -8,14 +8,12 @@
 
     <div class="col s12 m9 l10">
 
-
       <div id="input" class="section scrollspy">
-        <h2 class="header">Forms</h2>
         <p class="caption">
           Forms are the standard way to receive user inputted data. The transitions and smoothness of these elements are very important because of the inherent user interaction associated with forms.
         </p>
 
-        <h4>Input fields</h4>
+        <h2 class="header">Input fields</h2>
         <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
         <p>If you don't want the Green and Red validation states, just remove the <code class="language-markup">validate</code> class from your inputs.</p>
         <br>
@@ -86,7 +84,7 @@
 &lt;/div>
         </code></pre><br>
 
-        <h5>Icon Prefixes</h5>
+        <h4>Icon Prefixes</h4>
         <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
         <div class="row">
           <form class="col s12">
@@ -126,7 +124,7 @@
 
       </div>
       <div id="textarea" class="section scrollspy">
-        <h4>Textarea</h4>
+        <h2 class="header">Textarea</h2>
         <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
         <p><strong>Textareas will auto resize to the text inside.</strong></p>
         <div class="row">
@@ -139,23 +137,21 @@
             </div>
           </form>
         </div>
-        <div class="row">
-          <pre><code class="language-markup col s12">
-  &lt;div class="row">
-    &lt;form class="col s12">
-      &lt;div class="row">
-        &lt;div class="input-field col s12">
-          &lt;textarea class="materialize-textarea" required>&lt;/textarea>
-          &lt;label>Textarea&lt;/label>
-        &lt;/div>
+        <pre><code class="language-markup">
+&lt;div class="row">
+  &lt;form class="col s12">
+    &lt;div class="row">
+      &lt;div class="input-field col s12">
+        &lt;textarea class="materialize-textarea" required>&lt;/textarea>
+        &lt;label>Textarea&lt;/label>
       &lt;/div>
-    &lt;/form>
-  &lt;/div>
-          </code></pre>
-        </div>
+    &lt;/div>
+  &lt;/form>
+&lt;/div>
+        </code></pre>
       </div>
       <div id="select" class="section scrollspy">
-        <h4>Select</h4>
+        <h2 class="header">Select</h2>
         <p> Select allows user input through specified options. </p>
         <div class="row">
           <form class="col s6">
@@ -203,7 +199,7 @@
           </div>
           <div class="col s12">
             <br><br>
-            <h5>Disabled Styles</h5>
+            <h4>Disabled Styles</h4>
             <p>You can also add <code class="language-markup">disabled</code> to the select element to make the whole thing disabled. Or if you add <code class="language-markup">disabled</code> to the options, the individual options will be unselectable. </p>
           </div>
           <form class="col s6">
@@ -246,7 +242,7 @@
             </code></pre>
           </div>
           <div class="col s12">
-            <h5>Initialization</h5>
+            <h4>Initialization</h4>
             <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
             <pre><code class="language-javascript col s12">
     $('select').material_select();
@@ -257,7 +253,7 @@
 
 
       <div id="radio" class="section scrollspy">
-        <h4>Radio Buttons</h4>
+        <h2 class="header">Radio Buttons</h2>
         <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
         <form action="#">
           <p>
@@ -278,49 +274,44 @@
           </p>
         </form>
         <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
-        <div class="row">
-          <pre><code class="language-markup col s12">
-  &lt;form action="#">
-    &lt;p>
-      &lt;input name="group1" type="radio" id="test1" />
-      &lt;label for="test1">Red&lt;/label>
-    &lt;/p>
-    &lt;p>
-      &lt;input name="group1" type="radio" id="test2" />
-      &lt;label for="test2">Yellow&lt;/label>
-    &lt;/p>
-    &lt;p>
-      &lt;input class="with-gap" name="group1" type="radio" id="test3"  />
-      &lt;label for="test3">Green&lt;/label>
-    &lt;/p>
-      &lt;p>
-        &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
-        &lt;label for="test4">Brown&lt;/label>
-    &lt;/p>
-  &lt;/form>
-          </code></pre>
-        </div>
-        <div class="row">
-          <h5>Options</h5>
-          <p>To create a radio button with a gap, add <code class="language-markup">class="with-gap"</code> to your input. See the example below.</p>
-
-          <p>
-            <input class="with-gap" name="group3" type="radio" id="test5" checked />
-            <label for="test5">Red</label>
-          </p>
-          <pre><code class="language-markup">
+        <pre><code class="language-markup">
+&lt;form action="#">
   &lt;p>
-    &lt;input class="with-gap" name="group3" type="radio" id="test5" checked />
-    &lt;label for="test5">Red&lt;/label>
+    &lt;input name="group1" type="radio" id="test1" />
+    &lt;label for="test1">Red&lt;/label>
   &lt;/p>
-          </code></pre>
+  &lt;p>
+    &lt;input name="group1" type="radio" id="test2" />
+    &lt;label for="test2">Yellow&lt;/label>
+  &lt;/p>
+  &lt;p>
+    &lt;input class="with-gap" name="group1" type="radio" id="test3"  />
+    &lt;label for="test3">Green&lt;/label>
+  &lt;/p>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
+      &lt;label for="test4">Brown&lt;/label>
+  &lt;/p>
+&lt;/form>
+        </code></pre>
+        <h4>Options</h4>
+        <p>To create a radio button with a gap, add <code class="language-markup">class="with-gap"</code> to your input. See the example below.</p>
 
+        <p>
+          <input class="with-gap" name="group3" type="radio" id="test5" checked />
+          <label for="test5">Red</label>
+        </p>
+        <pre><code class="language-markup">
+&lt;p>
+  &lt;input class="with-gap" name="group3" type="radio" id="test5" checked />
+  &lt;label for="test5">Red&lt;/label>
+&lt;/p>
+        </code></pre>
 
-        </div>
       </div>
 
       <div id="checkbox" class="section scrollspy">
-        <h4>Checkboxes</h4>
+        <h2 class="header">Checkboxes</h2>
         <p>Checkboxes</p>
         <form action="#">
           <p>
@@ -340,64 +331,59 @@
               <label for="test8">Brown</label>
           </p>
         </form>
-        <div class="row" >
-          <pre><code class="language-markup col s12">
-  &lt;form action="#">
+        <pre><code class="language-markup">
+&lt;form action="#">
+  &lt;p>
+    &lt;input type="checkbox" id="test5" />
+    &lt;label for="test5">Red&lt;/label>
+  &lt;/p>
+  &lt;p>
+    &lt;input type="checkbox" id="test6" checked="checked" />
+    &lt;label for="test6">Yellow&lt;/label>
+  &lt;/p>
+  &lt;p>
+    &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
+    &lt;label for="test7">Green&lt;/label>
+  &lt;/p>
     &lt;p>
-      &lt;input type="checkbox" id="test5" />
-      &lt;label for="test5">Red&lt;/label>
-    &lt;/p>
-    &lt;p>
-      &lt;input type="checkbox" id="test6" checked="checked" />
-      &lt;label for="test6">Yellow&lt;/label>
-    &lt;/p>
-    &lt;p>
-      &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
-      &lt;label for="test7">Green&lt;/label>
-    &lt;/p>
-      &lt;p>
-        &lt;input type="checkbox" id="test8" disabled="disabled" />
-        &lt;label for="test8">Brown&lt;/label>
-    &lt;/p>
-  &lt;/form>
-          </code></pre>
-        </div>
+      &lt;input type="checkbox" id="test8" disabled="disabled" />
+      &lt;label for="test8">Brown&lt;/label>
+  &lt;/p>
+&lt;/form>
+        </code></pre>
       </div>
 
       <div id="range" class="section scrollspy">
-        <h4>Range</h4>
+        <h2 class="header">Range</h2>
         <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100.</p>
         <form action="#">
           <p class="range-field">
             <input type="range" name="points" min="0" max="100">
           </p>
         </form>
-        <div class="row" >
-          <pre><code class="language-markup col s12">
-  &lt;form action="#">
-    &lt;p class="range-field">
-      &lt;input type="range" id="test5" min="0" max="100" />
-    &lt;/p>
-  &lt;/form>
-          </code></pre>
-        </div>
+        <pre><code class="language-markup">
+&lt;form action="#">
+  &lt;p class="range-field">
+    &lt;input type="range" id="test5" min="0" max="100" />
+  &lt;/p>
+&lt;/form>
+        </code></pre>
       </div>
 
       <div id="date-picker" class="section scrollspy">
-        <h4>Date Picker</h4>
+        <h2 class="header">Date Picker</h2>
         <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
         <label for="birthdate">Birthdate</label>
         <input id="birthdate" type="text" class="datepicker"></input>
-        <div class="row" >
-          <pre><code class="language-markup col s12">
-  &lt;input type="date" class="datepicker">
-          </code></pre>
-        <h5>Initialization</h5>
+        <pre><code class="language-markup">
+&lt;input type="date" class="datepicker">
+        </code></pre>
+
+        <h4>Initialization</h4>
         <p>At this time, not all pickadate.js options are working with our implementation</p>
-        <pre><code class="language-javascript col s12">
+        <pre><code class="language-javascript">
   $('.datepicker').pickadate();
         </code></pre>
-        </div>
       </div>
 
 
