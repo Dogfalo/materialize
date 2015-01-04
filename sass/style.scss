@@ -85,7 +85,7 @@ ul.side-nav.fixed {
   margin-bottom: 32px;
 }
 
-nav {
+nav.top-nav {
   height: 122px;
   @include box-shadow(none);
 
@@ -582,6 +582,7 @@ pre[class*="language-"] {
 .buysellads #carbonads {
   position: absolute;
   top: 50px;
+  right: 0;
 
   & > span,
   span.carbon-wrap { height: auto; }
