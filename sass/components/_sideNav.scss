@@ -4,7 +4,7 @@
     width: 240px;
     left: -250px;
     top: 0;
-    height: 120%;
+    bottom: 0;
     background-color: #FFF;
     z-index: 999;
     @extend .z-depth-1;
@@ -40,7 +40,7 @@ ul.side-nav.fixed {
   width: 240px;
   left: -250px;
   top: 0;
-  height: 120%;
+  bottom: 0;
   margin: 0;
   background-color: #FFF;
   z-index: 999;
