@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Shadow - Materialize</title>
+    <title>Preloader - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -42,7 +42,7 @@
     <header>
       <nav>
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Shadow</a></div>
+          <div class="nav-wrapper"><a class="page-title">Preloader</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse full"><i class="mdi-navigation-menu"></i></a></div>
@@ -59,7 +59,7 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="typography.html">Typography</a></li>
                 <li><a href="color.html">Color</a></li>
-                <li class="active"><a href="shadow.html">Shadow</a></li>
+                <li><a href="shadow.html">Shadow</a></li>
                 <li><a href="grid.html">Grid</a></li>
                 <li><a href="media-css.html">Media</a></li>
                 <li><a href="table.html">Table</a></li>
@@ -77,7 +77,7 @@
                 <li><a href="buttons.html">Buttons</a></li>
                 <li><a href="navbar.html">Navbar</a></li>
                 <li><a href="cards.html">Cards</a></li>
-                <li><a href="preloader.html">Preloader</a></li>
+                <li class="active"><a href="preloader.html">Preloader</a></li>
                 <li><a href="collections.html">Collections</a></li>
                 <li><a href="badges.html">Badges</a></li>
                 <li><a href="footer.html">Footer</a></li>
@@ -96,56 +96,207 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="shadow" class="section scrollspy">
-        <p class="caption">In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is.</p>
-        <p>You can easily apply this shadow effect by adding a <code class="language-markup">class="z-depth-2"</code> to an HTML tag. Alternatively you can extend any of these shadows with Sass using <code class="language-scss">@extend .z-depth-2</code>.</p>
+  <!-- Preloader Section-->
+      <div id="preloader" class="section scrollspy">
+        <h2 class="header">Preloader</h2>
+        <p class="caption">If you have content that will take a long time to load, you should give the user feedback. In this case we have an animated preloader.</p>
         <div class="row">
-          <div class="col s12 m4 l2 offset-l1">
-            <p class="z-depth-1 shadow-demo"></p>
+          <div class="col s12 m4 center">
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-2 shadow-demo"></p>
+          <div class="col s12 m4 center">
+
+            <div class="preloader-wrapper active">
+              <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-3 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-4 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-5 shadow-demo"></p>
+          <div class="col s12 m4 center">
+
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+
+              <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <pre><code class="language-markup col s12">
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-1">z-depth-1&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-2">z-depth-2&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-3">z-depth-3&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-4">z-depth-4&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-5">z-depth-5&lt;/p>
-    &lt;/div>
-        </code></pre>
+        <div class="row">
+          <pre><code class="language-markup col s12">
+      &lt;div class="preloader-wrapper big active">
+        &lt;div class="spinner-layer spinner-blue">
+          &lt;div class="circle-clipper left">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="gap-patch">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="circle-clipper right">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div class="spinner-layer spinner-red">
+          &lt;div class="circle-clipper left">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="gap-patch">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="circle-clipper right">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div class="spinner-layer spinner-yellow">
+          &lt;div class="circle-clipper left">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="gap-patch">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="circle-clipper right">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div class="spinner-layer spinner-green">
+          &lt;div class="circle-clipper left">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="gap-patch">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>&lt;div class="circle-clipper right">
+            &lt;div class="circle">&lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+          </code></pre>
+        </div>
       </div>
+
+
     </div>
 
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#shadow">Shadows</a></li>
+          <li><a href="#preloader">Preloader</a></li>
         </ul>
       </div>
     </div>
 
   </div>
 </div>
+
+
     </main>    <footer>
       <div class="container">
         <div class="row">

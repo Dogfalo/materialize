@@ -29,7 +29,7 @@ header
     li.no-padding
       ul.collapsible.collapsible-accordion
         li
-        a.collapsible-header.active
+        a.collapsible-header
           | CSS
         .collapsible-body
           ul
@@ -43,8 +43,36 @@ header
               a(href='shadow.html') Shadow
             li(class=(page == "Grid" ? "active" : ""))
               a(href='grid.html') Grid
-            li
-              a(href='#!') Fourth Dropdown Link
+            li(class=(page == "Media" ? "active" : ""))
+              a(href='media-css.html') Media
+            li(class=(page == "Table" ? "active" : ""))
+              a(href='table.html') Table
+            li(class=(page == "Helpers" ? "active" : ""))
+              a(href='helpers.html') Helpers
+
+    li.no-padding
+      ul.collapsible.collapsible-accordion
+        li
+        a.collapsible-header.active
+          | Components
+        .collapsible-body
+          ul
+            li(class=(page == "Forms" ? "active" : ""))
+              a(href='forms.html') Forms
+            li(class=(page == "Buttons" ? "active" : ""))
+              a(href='buttons.html') Buttons
+            li(class=(page == "Navbar" ? "active" : ""))
+              a(href='navbar.html') Navbar
+            li(class=(page == "Cards" ? "active" : ""))
+              a(href='cards.html') Cards
+            li(class=(page == "Preloader" ? "active" : ""))
+              a(href='preloader.html') Preloader
+            li(class=(page == "Collections" ? "active" : ""))
+              a(href='collections.html') Collections
+            li(class=(page == "Badges" ? "active" : ""))
+              a(href='badges.html') Badges
+            li(class=(page == "Footer" ? "active" : ""))
+              a(href='footer.html') Footer
 
     li(class=(page == "Components" ? "active" : ""))
       a(href='http://materializecss.com/components.html') Components

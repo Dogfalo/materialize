@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Shadow - Materialize</title>
+    <title>Media - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -42,7 +42,7 @@
     <header>
       <nav>
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Shadow</a></div>
+          <div class="nav-wrapper"><a class="page-title">Media</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse full"><i class="mdi-navigation-menu"></i></a></div>
@@ -59,9 +59,9 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="typography.html">Typography</a></li>
                 <li><a href="color.html">Color</a></li>
-                <li class="active"><a href="shadow.html">Shadow</a></li>
+                <li><a href="shadow.html">Shadow</a></li>
                 <li><a href="grid.html">Grid</a></li>
-                <li><a href="media-css.html">Media</a></li>
+                <li class="active"><a href="media-css.html">Media</a></li>
                 <li><a href="table.html">Table</a></li>
                 <li><a href="helpers.html">Helpers</a></li>
               </ul>
@@ -96,56 +96,89 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="shadow" class="section scrollspy">
-        <p class="caption">In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is.</p>
-        <p>You can easily apply this shadow effect by adding a <code class="language-markup">class="z-depth-2"</code> to an HTML tag. Alternatively you can extend any of these shadows with Sass using <code class="language-scss">@extend .z-depth-2</code>.</p>
+      <!-- Images -->
+      <div id="images" class="section scrollspy">
+        <h2 class="header">Images</h2>
+        <p class="caption">Images can be styled in different ways using Materialize</p>
         <div class="row">
-          <div class="col s12 m4 l2 offset-l1">
-            <p class="z-depth-1 shadow-demo"></p>
+          <h4>Responsive Images</h4>
+          <p>To make images resize responsively to page width, you can add the class <code class="language-markup">responsive-img</code> to your image tag. It will now have a <code class="language-markup">max-width: 100%</code> and <code class="language-markup">height:auto</code>.</p>
+          <pre><code class="language-markup">
+      &lt;img class="responsive-img" src="cool_pic.jpg">
+          </code></pre>
+          <h4>Circular images</h4>
+          <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <div class="card-panel grey lighten-5 z-depth-1">
+              <div class="row valign-wrapper">
+                <div class="col s4 m2">
+                  <img src="images/yuna.jpg" alt="" class="circle responsive-img valign">
+                </div>
+                <div class="col s8 m10">
+                  <span class="black-text">
+                    This is a square image. Add the "circle" class to it to make it appear circular.
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-2 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-3 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-4 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-5 shadow-demo"></p>
+
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <p>To make images appear circular, simply add <code class="language-markup">class="circle"</code> to them</p>
+            <pre><code class="language-markup">
+      &lt;div class="col s12 m8 offset-m2 l6 offset-l3">
+        &lt;div class="card-panel grey lighten-5 z-depth-1">
+          &lt;div class="row valign-wrapper">
+            &lt;div class="col s2">
+              &lt;img src="images/yuna.jpg" alt="" class="circle responsive-img"> &lt;!-- notice the "circle" class -->
+            &lt;/div>
+            &lt;div class="col s10">
+              &lt;span class="black-text">
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              &lt;/span>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+            </code></pre>
           </div>
         </div>
-        <pre><code class="language-markup col s12">
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-1">z-depth-1&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-2">z-depth-2&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-3">z-depth-3&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-4">z-depth-4&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-5">z-depth-5&lt;/p>
-    &lt;/div>
-        </code></pre>
       </div>
+
+      <!-- Videos Section -->
+      <div id="videos" class="section scrollspy">
+        <h2 class="header">Videos</h2>
+        <p class="caption">We provide a container for Embedded Videos that resizes them responsively.</p>
+        <h4>Responsive Videos</h4>
+        <p>To make your videos responsive, merely wrap them with a containing div which has the class <code class="language-markup">video-container</code></p>
+        <div class="video-container">
+          <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <pre><code class="language-markup">
+      &lt;div class="video-container">
+        &lt;iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen>&lt;/iframe>
+      &lt;/div>
+        </code></pre>
+
+      </div>
+
+
     </div>
 
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#shadow">Shadows</a></li>
+          <li><a href="#images">Images</a></li>
+          <li><a href="#videos">Videos</a></li>
         </ul>
       </div>
     </div>
 
   </div>
 </div>
+
+
     </main>    <footer>
       <div class="container">
         <div class="row">

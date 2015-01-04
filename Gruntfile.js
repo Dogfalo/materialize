@@ -229,7 +229,19 @@ module.exports = function(grunt) {
           "typography.html": "jade/typography.jade",
           "color.html": "jade/color.jade",
           "shadow.html": "jade/shadow.jade",
-          "grid.html": "jade/grid.jade"
+          "grid.html": "jade/grid.jade",
+          "media-css.html": "jade/media-css.jade",
+          "table.html": "jade/table.jade",
+          "helpers.html": "jade/helpers.jade",
+          "forms.html": "jade/forms.jade",
+          "buttons.html": "jade/buttons.jade",
+          "navbar.html": "jade/navbar.jade",
+          "cards.html": "jade/cards.jade",
+          "preloader.html": "jade/preloader.jade",
+          "collections.html": "jade/collections.jade",
+          "badges.html": "jade/badges.jade",
+          "footer.html": "jade/footer.jade"
+
 
         }
       }

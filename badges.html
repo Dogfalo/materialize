@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Shadow - Materialize</title>
+    <title>Badges - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -42,7 +42,7 @@
     <header>
       <nav>
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Shadow</a></div>
+          <div class="nav-wrapper"><a class="page-title">Badges</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse full"><i class="mdi-navigation-menu"></i></a></div>
@@ -59,7 +59,7 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="typography.html">Typography</a></li>
                 <li><a href="color.html">Color</a></li>
-                <li class="active"><a href="shadow.html">Shadow</a></li>
+                <li><a href="shadow.html">Shadow</a></li>
                 <li><a href="grid.html">Grid</a></li>
                 <li><a href="media-css.html">Media</a></li>
                 <li><a href="table.html">Table</a></li>
@@ -79,7 +79,7 @@
                 <li><a href="cards.html">Cards</a></li>
                 <li><a href="preloader.html">Preloader</a></li>
                 <li><a href="collections.html">Collections</a></li>
-                <li><a href="badges.html">Badges</a></li>
+                <li class="active"><a href="badges.html">Badges</a></li>
                 <li><a href="footer.html">Footer</a></li>
               </ul>
             </div>
@@ -96,56 +96,67 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="shadow" class="section scrollspy">
-        <p class="caption">In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is.</p>
-        <p>You can easily apply this shadow effect by adding a <code class="language-markup">class="z-depth-2"</code> to an HTML tag. Alternatively you can extend any of these shadows with Sass using <code class="language-scss">@extend .z-depth-2</code>.</p>
+      <!--  Badges Section  -->
+      <div id="badges" class="section scrollspy">
+
         <div class="row">
-          <div class="col s12 m4 l2 offset-l1">
-            <p class="z-depth-1 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-2 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-3 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-4 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-5 shadow-demo"></p>
+          <div class="col s12">
+            <h2 class="header">Badges</h2>
+            <p class="caption">Badges can notify you that there are new or unread messages or notifications. Add the <code class="language-markup">new</code> class to the badge to give it the background.</p>
+
+            <ul class="collection">
+              <a href="#!" class="collection-item">Alan<span class="badge">1</span></a>
+              <a href="#!" class="collection-item">Alan<span class="new badge">4</span></a>
+              <a href="#!" class="collection-item">Alan</li>
+              <a href="#!" class="collection-item">Alan<span class="badge">14</span></a>
+            </ul>
+            <pre><code class="language-markup">
+      &lt;ul class="collection">
+        &lt;a href="#!" class="collection-item">Alan&lt;span class="badge">1&lt;/span>&lt;/a>
+        &lt;a href="#!" class="collection-item">Alan&lt;span class="new badge">4&lt;/span>&lt;/a>
+        &lt;a href="#!" class="collection-item">Alan&lt;/li>
+        &lt;a href="#!" class="collection-item">Alan&lt;span class="badge">14&lt;/span>&lt;/a>
+      &lt;/ul>
+            </code></pre>
+
+            <h4>Badges in Dropdown</h4>
+
+            <ul id="dropdown2" class="dropdown-content">
+              <li><a href="#!">one<span class="badge">1</span></a></li>
+              <li><a href="#!">two<span class="new badge">1</span></a></li>
+              <li><a href="#!">three</a></li>
+            </ul>
+            <a class="btn dropdown-button" href="#!" data-activates="dropdown2">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a>
+
+            <pre><code class="language-markup">
+      &lt;ul id="dropdown2" class="dropdown-content">
+        &lt;li>&lt;a href="#!">one&lt;span class="badge">1&lt;/span>&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#!">two&lt;span class="new badge">1&lt;/span>&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+      &lt;/ul>
+      &lt;a class="btn dropdown-button" href="#!" data-activates="dropdown2">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>
+            </code></pre>
+
           </div>
         </div>
-        <pre><code class="language-markup col s12">
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-1">z-depth-1&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-2">z-depth-2&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-3">z-depth-3&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-4">z-depth-4&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-5">z-depth-5&lt;/p>
-    &lt;/div>
-        </code></pre>
       </div>
+      <!-- End badges -->
+
+
     </div>
 
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#shadow">Shadows</a></li>
+          <li><a href="#badges">Badges</a></li>
         </ul>
       </div>
     </div>
 
   </div>
 </div>
+
+
     </main>    <footer>
       <div class="container">
         <div class="row">

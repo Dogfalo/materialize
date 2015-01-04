@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Shadow - Materialize</title>
+    <title>Table - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -42,7 +42,7 @@
     <header>
       <nav>
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Shadow</a></div>
+          <div class="nav-wrapper"><a class="page-title">Table</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse full"><i class="mdi-navigation-menu"></i></a></div>
@@ -59,10 +59,10 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="typography.html">Typography</a></li>
                 <li><a href="color.html">Color</a></li>
-                <li class="active"><a href="shadow.html">Shadow</a></li>
+                <li><a href="shadow.html">Shadow</a></li>
                 <li><a href="grid.html">Grid</a></li>
                 <li><a href="media-css.html">Media</a></li>
-                <li><a href="table.html">Table</a></li>
+                <li class="active"><a href="table.html">Table</a></li>
                 <li><a href="helpers.html">Helpers</a></li>
               </ul>
             </div>
@@ -96,56 +96,231 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="shadow" class="section scrollspy">
-        <p class="caption">In material design, everything should have a certain z-depth that determines how far raised or close to the page the element is.</p>
-        <p>You can easily apply this shadow effect by adding a <code class="language-markup">class="z-depth-2"</code> to an HTML tag. Alternatively you can extend any of these shadows with Sass using <code class="language-scss">@extend .z-depth-2</code>.</p>
+      <!--  Tables Section-->
+      <div id="tables" class="section scrollspy">
+        <h2 class="header">Tables</h2>
+        <p class="caption">Tables are a nice way to organize a lot of data. We provide a few utility classes to help you style your table as easily as possible. In addition, to improve mobile experience, all tables on mobile-screen widths are centered automatically.</p>
         <div class="row">
-          <div class="col s12 m4 l2 offset-l1">
-            <p class="z-depth-1 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-2 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-3 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-4 shadow-demo"></p>
-          </div>
-          <div class="col s12 m4 l2">
-            <p class="z-depth-5 shadow-demo"></p>
-          </div>
+        <div class="col s12">
+          <h4>Borderless Table</h4>
+          <p>Tables are borderless by default.</p>
+          <table>
+            <thead>
+              <tr>
+                  <th data-field="id">Name</th>
+                  <th data-field="name">Item Name</th>
+                  <th data-field="price">Item Price</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+              </tr>
+              <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+              </tr>
+              <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+              </tr>
+            </tbody>
+
+          </table>
         </div>
-        <pre><code class="language-markup col s12">
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-1">z-depth-1&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-2">z-depth-2&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-3">z-depth-3&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-4">z-depth-4&lt;/p>
-    &lt;/div>
-    &lt;div class="col s12 m2">
-      &lt;p class="z-depth-5">z-depth-5&lt;/p>
-    &lt;/div>
-        </code></pre>
-      </div>
+        <div class="col s12">
+          <pre><code class="language-markup">
+    &lt;table>
+      &lt;thead>
+        &lt;tr>
+            &lt;th data-field="id">Name&lt;/th>
+            &lt;th data-field="name">Item Name&lt;/th>
+            &lt;th data-field="price">Item Price&lt;/th>
+        &lt;/tr>
+      &lt;/thead>
+
+      &lt;tbody>
+        &lt;tr>
+          &lt;td>Alvin&lt;/td>
+          &lt;td>Eclair&lt;/td>
+          &lt;td>$0.87&lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>Alan&lt;/td>
+          &lt;td>Jellybean&lt;/td>
+          &lt;td>$3.76&lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>Jonathan&lt;/td>
+          &lt;td>Lollipop&lt;/td>
+          &lt;td>$7.00&lt;/td>
+        &lt;/tr>
+      &lt;/tbody>
+    &lt;/table>
+          </code></pre>
+        </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+        <div class="col s12">
+          <h4>Bordered Table</h4>
+          <p>Add <code class="language-markup">class="bordered"</code> to the table tag for a bordered table</p>
+          <table class="bordered">
+            <thead>
+              <tr>
+                  <th data-field="id">Name</th>
+                  <th data-field="name">Item Name</th>
+                  <th data-field="price">Item Price</th>
+              </tr>
+            </thead
+            <tbody>
+              <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+              </tr>
+              <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+              </tr>
+              <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+        <div class="col s12">
+          <h4>Striped Table</h4>
+          <p>Add <code class="language-markup">class="striped"</code> to the table tag for a striped table</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th data-field="id">Name</th>
+                  <th data-field="name">Item Name</th>
+                  <th data-field="price">Item Price</th>
+              </tr>
+            </thead
+            <tbody>
+              <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+              </tr>
+              <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+              </tr>
+              <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+        <div class="col s12">
+          <h4>Hoverable Table</h4>
+          <p>Add <code class="language-markup">class="hoverable"</code> to the table tag for a hoverable table</p>
+          <table class="hoverable">
+            <thead>
+              <tr>
+                  <th data-field="id">Name</th>
+                  <th data-field="name">Item Name</th>
+                  <th data-field="price">Item Price</th>
+              </tr>
+            </thead
+            <tbody>
+              <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+              </tr>
+              <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+              </tr>
+              <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col s12">
+          <h4>Centered Table</h4>
+          <p>Add <code class="language-markup">class="centered"</code> to the table tag to center align all the text in the table</p>
+          <table class="centered">
+            <thead>
+              <tr>
+                  <th data-field="id">Name</th>
+                  <th data-field="name">Item Name</th>
+                  <th data-field="price">Item Price</th>
+              </tr>
+            </thead
+            <tbody>
+              <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+              </tr>
+              <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+              </tr>
+              <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+      </div><!--  End Tables Section  -->
+
+
     </div>
 
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#shadow">Shadows</a></li>
+          <li><a href="#tables">Tables</a></li>
         </ul>
       </div>
     </div>
 
   </div>
 </div>
+
+
     </main>    <footer>
       <div class="container">
         <div class="row">
