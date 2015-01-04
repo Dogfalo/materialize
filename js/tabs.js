@@ -23,13 +23,13 @@
     // If the location.hash matches one of the links, use that as the active tab.
     // console.log($(".tabs .tab a[href='#tab3']"));
     $active = $($links.filter('[href="'+location.hash+'"]'));
-    console.log($active);
+
     // If no match is found, use the first link or any with class 'active' as the initial active tab.
-    if (location.hash === "") {
-        $active = $('.tabs').find('li.tab a.active').first();
+    if ($active.length === 0) {
+        $active = $(this).find('li.tab a.active').first();
     }
     if ($active.length === 0) {
-      $active = $links.first();
+      $active = $(this).find('li.tab a').first();
     }
 
     $active.addClass('active');
