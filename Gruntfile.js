@@ -240,7 +240,17 @@ module.exports = function(grunt) {
           "preloader.html": "jade/preloader.jade",
           "collections.html": "jade/collections.jade",
           "badges.html": "jade/badges.jade",
-          "footer.html": "jade/footer.jade"
+          "footer.html": "jade/footer.jade",
+          "dialogs.html": "jade/dialogs.jade",
+          "modals.html": "jade/modals.jade",
+          "dropdown.html": "jade/dropdown.jade",
+          "tabs.html": "jade/tabs.jade",
+          "side-nav.html": "jade/sideNav.jade",
+          "pushpin.html": "jade/pushpin.jade",
+          "waves.html": "jade/waves.jade",
+          "media.html": "jade/media.jade",
+          "parallax.html": "jade/parallax.jade",
+          "collapsible.html": "jade/collapsible.jade",
 
 
         }

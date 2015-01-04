@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Media CSS - Materialize</title>
+    <title>Dialogs - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -42,7 +42,7 @@
     <header>
       <nav>
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Media CSS</a></div>
+          <div class="nav-wrapper"><a class="page-title">Dialogs</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
@@ -53,7 +53,7 @@
         <li><a href="http://materializecss.com/getting-started.html">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li></li><a class="collapsible-header active">CSS</a>
+            <li></li><a class="collapsible-header">CSS</a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="sass.html">Sass</a></li>
@@ -87,10 +87,10 @@
         </li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li></li><a class="collapsible-header">JavaScript</a>
+            <li></li><a class="collapsible-header active">JavaScript</a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="dialogs.html">Dialogs</a></li>
+                <li class="active"><a href="dialogs.html">Dialogs</a></li>
                 <li><a href="modals.html">Modals</a></li>
                 <li><a href="dropdown.html">Dropdown</a></li>
                 <li><a href="tabs.html">Tabs</a></li>
@@ -113,71 +113,83 @@
 
     <div class="col s12 m9 l10">
 
-      <!-- Images -->
-      <div id="images" class="section scrollspy">
-        <h2 class="header">Images</h2>
-        <p class="caption">Images can be styled in different ways using Materialize</p>
+      <div id="toast" class="section scrollspy">
+        <h2 class="header">Dialogs</h2>
+        <p class="caption">Dialogs are content that are not original visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user. </p>
+        <h3 class="header">Toasts</h3>
         <div class="row">
-          <h4>Responsive Images</h4>
-          <p>To make images resize responsively to page width, you can add the class <code class="language-markup">responsive-img</code> to your image tag. It will now have a <code class="language-markup">max-width: 100%</code> and <code class="language-markup">height:auto</code>.</p>
-          <pre><code class="language-markup">
-      &lt;img class="responsive-img" src="cool_pic.jpg">
-          </code></pre>
-          <h4>Circular images</h4>
-          <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <div class="card-panel grey lighten-5 z-depth-1">
-              <div class="row valign-wrapper">
-                <div class="col s4 m2">
-                  <img src="images/yuna.jpg" alt="" class="circle responsive-img valign">
-                </div>
-                <div class="col s8 m10">
-                  <span class="black-text">
-                    This is a square image. Add the "circle" class to it to make it appear circular.
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div class="col s12">
+            <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
+            <a class="waves-effect waves-light btn" onclick="toast('I am a toast', 4000)">Toast!</a>
           </div>
-
         </div>
         <div class="row">
           <div class="col s12">
-            <p>To make images appear circular, simply add <code class="language-markup">class="circle"</code> to them</p>
+            <p>To do this, call the toast() function programatically in JavaScript.</p>
+            <pre><code class="language-javascript">
+  // toast(message, displayLength, className, completeCallback);
+  toast('I am a toast!', 4000) // 4000 is the duration of the toast
+            </code></pre>
+            <p>One way to add this into your application is to add this as an onclick event to a button</p>
             <pre><code class="language-markup">
-      &lt;div class="col s12 m8 offset-m2 l6 offset-l3">
-        &lt;div class="card-panel grey lighten-5 z-depth-1">
-          &lt;div class="row valign-wrapper">
-            &lt;div class="col s2">
-              &lt;img src="images/yuna.jpg" alt="" class="circle responsive-img"> &lt;!-- notice the "circle" class -->
-            &lt;/div>
-            &lt;div class="col s10">
-              &lt;span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              &lt;/span>
-            &lt;/div>
-          &lt;/div>
-        &lt;/div>
-      &lt;/div>
+  &lt;a class="btn" onclick="toast('I am a toast', 4000)">Toast!&lt;/a>
+            </code></pre>
+
+            <h4>Custom HTML</h4>
+            <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
+            <a class="waves-effect waves-light btn" onclick="toast('<span>Item Deleted</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#1&quot;>Undo</a>', 5000)">Toast with Action</a>
+            <pre><code class="language-javascript">
+  &lt;a class="waves-effect waves-light btn" onclick="toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
+            </code></pre>
+
+            <h4>Callback</h4>
+            <p>You can have the toast callback a function when it has been dismissed</p>
+            <a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
+            <pre><code class="language-markup">
+  &lt;a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
+            </code></pre>
+
+            <h4>Styling Toasts</h4>
+            <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+
+            <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
+
+            <pre><code class="language-javascript">
+  toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
             </code></pre>
           </div>
         </div>
       </div>
 
-      <!-- Videos Section -->
-      <div id="videos" class="section scrollspy">
-        <h2 class="header">Videos</h2>
-        <p class="caption">We provide a container for Embedded Videos that resizes them responsively.</p>
-        <h4>Responsive Videos</h4>
-        <p>To make your videos responsive, merely wrap them with a containing div which has the class <code class="language-markup">video-container</code></p>
-        <div class="video-container">
-          <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+      <!-- Tooltip Section -->
+      <div id="tooltip" class="scrollspy">
+        <h3 class="header">Tooltips</h3>
+        <div class="row">
+          <div class="col s12">
+            <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="bottom" data-tooltip="I am tooltip"> Bottom Tooltip</a>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="top" data-tooltip="I am tooltip"> Top Tooltip</a>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="left" data-tooltip="I am tooltip"> Left Tooltip</a>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="right" data-tooltip="I am tooltip"> Right Tooltip</a>
+            <br>
+          </div>
         </div>
-        <pre><code class="language-markup">
-      &lt;div class="video-container">
-        &lt;iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen>&lt;/iframe>
-      &lt;/div>
-        </code></pre>
-
+        <div class="row">
+          <div class="col s12">
+            Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
+            <pre><code class="language-markup">
+  &lt;!-- data-position can be : bottom, top, left, or right -->
+  &lt;a class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP&lt;/a>
+            </code></pre>
+            <br>
+            Then add this to your jQuery file, with the hover delay you want as the option
+            <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({"delay": 50});
+  });
+            </code></pre>
+          </div>
+        </div>
       </div>
 
 
@@ -186,8 +198,8 @@
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#images">Images</a></li>
-          <li><a href="#videos">Videos</a></li>
+          <li><a href="#toast">Toasts</a></li>
+          <li><a href="#tooltip">Tooltips</a></li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,57 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col s12 m9 l10">
+
+      <div id="pushpin" class="section scrollspy">
+        <h4>Pushpin</h4>
+        <p>Pushpin is our fixed positioning plugin. You can check out our live examples: The fixed tabs on top, and our fixed categories on the left. </p>
+
+        <h5>jQuery Plugin Options</h5>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Top</td>
+              <td>The distance in pixels from the top of the page where the element becomes fixed. (Default: 0)</td>
+            </tr>
+            <tr>
+              <td>Bottom</td>
+              <td>The distance in pixels from the top of the page where the elements stops being fixed. (Default: Infinity)</td>
+            </tr>
+            <tr>
+              <td>Offset</td>
+              <td>The offset from the top the element will be fixed at. (Default: 0)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5>jQuery Plugin Initialization</h5>
+        <pre><code class="language-javascript col s12">
+  $(document).ready(function(){
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
+  });
+        </code></pre>
+      </div>
+
+
+    </div>
+
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#pushpin">Pushpin</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+

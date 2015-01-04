@@ -93,7 +93,7 @@ nav {
     font-size: 48px;
   }
 }
-a.button-collapse {
+a.button-collapse.top-nav {
   position: absolute;
   left: 7.5%;
   top: 0;
@@ -108,7 +108,7 @@ a.button-collapse {
   }
 }
 @media #{$small-and-down} {
-  a.button-collapse {
+  a.button-collapse.top-nav {
     left: 5%;
   }
 }

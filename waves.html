@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Media CSS - Materialize</title>
+    <title>Waves - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -42,7 +42,7 @@
     <header>
       <nav>
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Media CSS</a></div>
+          <div class="nav-wrapper"><a class="page-title">Waves</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
@@ -53,7 +53,7 @@
         <li><a href="http://materializecss.com/getting-started.html">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li></li><a class="collapsible-header active">CSS</a>
+            <li></li><a class="collapsible-header">CSS</a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="sass.html">Sass</a></li>
@@ -87,7 +87,7 @@
         </li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li></li><a class="collapsible-header">JavaScript</a>
+            <li></li><a class="collapsible-header active">JavaScript</a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="dialogs.html">Dialogs</a></li>
@@ -96,7 +96,7 @@
                 <li><a href="tabs.html">Tabs</a></li>
                 <li><a href="side-nav.html">SideNav</a></li>
                 <li><a href="pushpin.html">Pushpin</a></li>
-                <li><a href="waves.html">Waves</a></li>
+                <li class="active"><a href="waves.html">Waves</a></li>
                 <li><a href="media.html">Media</a></li>
                 <li><a href="parallax.html">Parallax</a></li>
                 <li><a href="collapsible.html">Collapsible</a></li>
@@ -113,72 +113,61 @@
 
     <div class="col s12 m9 l10">
 
-      <!-- Images -->
-      <div id="images" class="section scrollspy">
-        <h2 class="header">Images</h2>
-        <p class="caption">Images can be styled in different ways using Materialize</p>
-        <div class="row">
-          <h4>Responsive Images</h4>
-          <p>To make images resize responsively to page width, you can add the class <code class="language-markup">responsive-img</code> to your image tag. It will now have a <code class="language-markup">max-width: 100%</code> and <code class="language-markup">height:auto</code>.</p>
+    <div id="waves" class="section scrollspy">
+
+      <h2 class="header">Waves</h2>
+        <p class="caption">Waves is an external library that we've included in Materialize to allow us to create the ink effect outlined in Material Design</p>
+      <a class="waves-effect waves-light btn" href="#!">Wave</a>
+
+      <h4>Applying Waves</h4>
+      <p>To put the waves effect on buttons, you just have to put the class <code class="language-markup">waves-effect</code> on to the buttons. If you want the waves effect to be white instead, add both <code class="language-markup">waves-effect waves-light</code> as classes.</p>
+      <pre><code class="language-markup col s12">
+    &lt;a class="waves-effect waves-light btn-large" href="#">Wave&lt;/a>
+      </code></pre>
+    </div>
+
+    <div id="customization" class="section scrollspy">
+      <!--  Customization  -->
+      <h3 class="header">Customization</h3>
+      <p>There are several ways to customize waves, you can either use pre-created classes, or you can define your own color by creating a new class</p>
+      <div class="row">
+         <div class="col s12 l6">
+          <h4>Available Colors</h4>
+          <p>To use these, just add the corresponding class to your button. Play around with changing the background color of butons and the waves effect to create something cool!</p>
+
           <pre><code class="language-markup">
-      &lt;img class="responsive-img" src="cool_pic.jpg">
+    &lt;a href="#!" class="btn waves-effect waves-teal">Send&lt;/a>
           </code></pre>
-          <h4>Circular images</h4>
-          <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <div class="card-panel grey lighten-5 z-depth-1">
-              <div class="row valign-wrapper">
-                <div class="col s4 m2">
-                  <img src="images/yuna.jpg" alt="" class="circle responsive-img valign">
-                </div>
-                <div class="col s8 m10">
-                  <span class="black-text">
-                    This is a square image. Add the "circle" class to it to make it appear circular.
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <p>To make images appear circular, simply add <code class="language-markup">class="circle"</code> to them</p>
-            <pre><code class="language-markup">
-      &lt;div class="col s12 m8 offset-m2 l6 offset-l3">
-        &lt;div class="card-panel grey lighten-5 z-depth-1">
-          &lt;div class="row valign-wrapper">
-            &lt;div class="col s2">
-              &lt;img src="images/yuna.jpg" alt="" class="circle responsive-img"> &lt;!-- notice the "circle" class -->
-            &lt;/div>
-            &lt;div class="col s10">
-              &lt;span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              &lt;/span>
-            &lt;/div>
-          &lt;/div>
-        &lt;/div>
-      &lt;/div>
-            </code></pre>
+          <div class="collection waves-color-demo">
+            <div class="collection-item">Default<a href="#!" class="waves-effect btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-light</code><a href="#!" class="waves-effect waves-light btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-red</code><a href="#!" class="waves-effect waves-red btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-yellow</code><a href="#!" class="waves-effect waves-yellow btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-orange</code><a href="#!" class="waves-effect waves-orange btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-purple</code><a href="#!" class="waves-effect waves-purple btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-green</code><a href="#!" class="waves-effect waves-green btn secondary-content">Send</a></div>
+            <div class="collection-item"><code class="language-markup">waves-teal</code><a href="#!" class="waves-effect waves-teal btn secondary-content">Send</a></div>
           </div>
         </div>
-      </div>
 
-      <!-- Videos Section -->
-      <div id="videos" class="section scrollspy">
-        <h2 class="header">Videos</h2>
-        <p class="caption">We provide a container for Embedded Videos that resizes them responsively.</p>
-        <h4>Responsive Videos</h4>
-        <p>To make your videos responsive, merely wrap them with a containing div which has the class <code class="language-markup">video-container</code></p>
-        <div class="video-container">
-          <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+        <div class="col s12 l6">
+          <h4>Custom Colors</h4>
+          <p>If the color you want is not already available, you can easily make your own waves color by creating a custom CSS class. Take a look at the example below where we add a waves-brown effect</p>
+
+          <pre><code class="language-css">
+    /*
+    When creating your CSS selector,
+    change "brown" to something of your choosing
+    */
+    .waves-effect.waves-brown .waves-ripple {
+     /* The alpha value allows the text and background color
+     of the button to still show through. */
+      background-color: rgba(121, 85, 72, 0.65);
+    }
+          </code></pre>
         </div>
-        <pre><code class="language-markup">
-      &lt;div class="video-container">
-        &lt;iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen>&lt;/iframe>
-      &lt;/div>
-        </code></pre>
-
       </div>
+    </div>
 
 
     </div>
@@ -186,8 +175,8 @@
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#images">Images</a></li>
-          <li><a href="#videos">Videos</a></li>
+          <li><a href="#waves">Waves</a></li>
+          <li><a href="#customization">Customization</a></li>
         </ul>
       </div>
     </div>

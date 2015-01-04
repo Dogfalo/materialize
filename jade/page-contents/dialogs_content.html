@@ -1,0 +1,100 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col s12 m9 l10">
+
+      <div id="toast" class="section scrollspy">
+        <h2 class="header">Dialogs</h2>
+        <p class="caption">Dialogs are content that are not original visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user. </p>
+        <h3 class="header">Toasts</h3>
+        <div class="row">
+          <div class="col s12">
+            <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
+            <a class="waves-effect waves-light btn" onclick="toast('I am a toast', 4000)">Toast!</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <p>To do this, call the toast() function programatically in JavaScript.</p>
+            <pre><code class="language-javascript">
+  // toast(message, displayLength, className, completeCallback);
+  toast('I am a toast!', 4000) // 4000 is the duration of the toast
+            </code></pre>
+            <p>One way to add this into your application is to add this as an onclick event to a button</p>
+            <pre><code class="language-markup">
+  &lt;a class="btn" onclick="toast('I am a toast', 4000)">Toast!&lt;/a>
+            </code></pre>
+
+            <h4>Custom HTML</h4>
+            <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
+            <a class="waves-effect waves-light btn" onclick="toast('<span>Item Deleted</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#1&quot;>Undo</a>', 5000)">Toast with Action</a>
+            <pre><code class="language-javascript">
+  &lt;a class="waves-effect waves-light btn" onclick="toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
+            </code></pre>
+
+            <h4>Callback</h4>
+            <p>You can have the toast callback a function when it has been dismissed</p>
+            <a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
+            <pre><code class="language-markup">
+  &lt;a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
+            </code></pre>
+
+            <h4>Styling Toasts</h4>
+            <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+
+            <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
+
+            <pre><code class="language-javascript">
+  toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tooltip Section -->
+      <div id="tooltip" class="scrollspy">
+        <h3 class="header">Tooltips</h3>
+        <div class="row">
+          <div class="col s12">
+            <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="bottom" data-tooltip="I am tooltip"> Bottom Tooltip</a>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="top" data-tooltip="I am tooltip"> Top Tooltip</a>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="left" data-tooltip="I am tooltip"> Left Tooltip</a>
+            <a class="btn tooltipped col s4 offset-s4 m3" data-position="right" data-tooltip="I am tooltip"> Right Tooltip</a>
+            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position
+            <pre><code class="language-markup">
+  &lt;!-- data-position can be : bottom, top, left, or right -->
+  &lt;a class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP&lt;/a>
+            </code></pre>
+            <br>
+            Then add this to your jQuery file, with the hover delay you want as the option
+            <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({"delay": 50});
+  });
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#toast">Toasts</a></li>
+          <li><a href="#tooltip">Tooltips</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+

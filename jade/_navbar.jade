@@ -15,7 +15,7 @@ header
         .nav-wrapper
           a.page-title #{page}
   .container
-    a.button-collapse(href='#', data-activates='nav-mobile', class=(no_nav == false ? "full" : ""))
+    a.button-collapse.top-nav(href='#', data-activates='nav-mobile', class=(no_nav == false ? "full" : ""))
       i.mdi-navigation-menu
   ul#nav-mobile.side-nav.fixed
     li(class="logo")
@@ -29,7 +29,7 @@ header
     li.no-padding
       ul.collapsible.collapsible-accordion
         li
-        a.collapsible-header
+        a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Table" || page == "Helpers" ? "active" : ""))
           | CSS
         .collapsible-body
           ul
@@ -53,7 +53,7 @@ header
     li.no-padding
       ul.collapsible.collapsible-accordion
         li
-        a.collapsible-header.active
+        a.collapsible-header(class=(page == "Forms" || page == "Buttons" || page == "Navbar" || page == "Cards" || page == "Preloader" || page == "Collections" || page == "Badges" || page == "Footer" ? "active" : ""))
           | Components
         .collapsible-body
           ul
@@ -74,9 +74,33 @@ header
             li(class=(page == "Footer" ? "active" : ""))
               a(href='footer.html') Footer
 
-    li(class=(page == "Components" ? "active" : ""))
-      a(href='http://materializecss.com/components.html') Components
-    li(class=(page == "JavaScript" ? "active" : ""))
-      a(href='http://materializecss.com/javascript.html') JavaScript
+    li.no-padding
+      ul.collapsible.collapsible-accordion
+        li
+        a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "Tabs" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Parallax" || page == "Collapsible" ? "active" : ""))
+          | JavaScript
+        .collapsible-body
+          ul
+            li(class=(page == "Dialogs" ? "active" : ""))
+              a(href='dialogs.html') Dialogs
+            li(class=(page == "Modals" ? "active" : ""))
+              a(href='modals.html') Modals
+            li(class=(page == "Dropdown" ? "active" : ""))
+              a(href='dropdown.html') Dropdown
+            li(class=(page == "Tabs" ? "active" : ""))
+              a(href='tabs.html') Tabs
+            li(class=(page == "SideNav" ? "active" : ""))
+              a(href='side-nav.html') SideNav
+            li(class=(page == "Pushpin" ? "active" : ""))
+              a(href='pushpin.html') Pushpin
+            li(class=(page == "Waves" ? "active" : ""))
+              a(href='waves.html') Waves
+            li(class=(page == "Media" ? "active" : ""))
+              a(href='media.html') Media
+            li(class=(page == "Parallax" ? "active" : ""))
+              a(href='parallax.html') Parallax
+            li(class=(page == "Collapsible" ? "active" : ""))
+              a(href='collapsible.html') Collapsible
+
     li(class=(page == "Mobile" ? "active" : ""))
       a(href='http://materializecss.com/mobile.html') Mobile

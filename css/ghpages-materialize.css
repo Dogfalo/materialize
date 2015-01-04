@@ -7490,7 +7490,7 @@ nav {
     line-height: 122px;
     font-size: 48px; }
 
-a.button-collapse {
+a.button-collapse.top-nav {
   position: absolute;
   left: 7.5%;
   top: 0;
@@ -7499,11 +7499,11 @@ a.button-collapse {
   color: #fff;
   font-size: 32px;
   z-index: 2; }
-  a.button-collapse.full {
+  a.button-collapse.top-nav.full {
     line-height: 122px; }
 
 @media only screen and (max-width : 600px) {
-  a.button-collapse {
+  a.button-collapse.top-nav {
     left: 5%; }
  }
 
