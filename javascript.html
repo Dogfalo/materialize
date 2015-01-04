@@ -287,6 +287,8 @@
               <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
               <pre><code class="language-javascript">
   $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false // Activate on click
     }

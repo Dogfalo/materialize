@@ -2,6 +2,8 @@
 
   $.fn.dropdown = function (options) {
     var defaults = {
+      inDuration: 300,
+      outDuration: 225,
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: true
     }
@@ -35,8 +37,8 @@
         left: origin.offset().left,
         height: 0
       });
-
-      activates.velocity({height: dropdownRealHeight, opacity: 1}, {duration: 250, easing: 'easeOutCubic'});
+      activates.velocity({opacity: 1}, {duration: options.inDuration/2, queue: false, easing: 'easeOutSine'})
+      .velocity({height: dropdownRealHeight}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'});
     }
     function elementOrParentIsFixed(element) {
         var $element = $(element);
@@ -70,7 +72,7 @@
             opacity: 0
           },
           {
-            duration: 225,
+            duration: options.outDuration,
             easing: 'easeOutQuad',
             complete: function(){
               activates.css({
@@ -95,7 +97,7 @@
               opacity: 0
             },
             {
-              duration: 225,
+              duration: options.outDuration,
               easing: 'easeOutQuad',
               complete: function(){
                 activates.css({
