@@ -9,10 +9,9 @@
     options = $.extend(defaults, options);
     this.each(function(){
     var origin = $(this);
-    
+
     // Dropdown menu
     var activates = $("#"+ origin.attr('data-activates'));
-    activates.hide(0);
 
     // Move Dropdown menu to body. This allows for absolute positioning to work
     if ( !(activates.parent().is($('body'))) ) {
@@ -21,17 +20,23 @@
     }
 
 
-    /*    
+    /*
       Helper function to position and resize dropdown.
       Used in hover and click handler.
-    */    
+    */
     function placeDropdown() {
+      var dropdownRealHeight = activates.height();
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
-      activates.css('top', origin.offset().top);
-      activates.css('left', origin.offset().left);
-      activates.show({duration: 250, easing: 'easeOutCubic'});
+      activates.css({
+        display: 'block',
+        top: origin.offset().top,
+        left: origin.offset().left,
+        height: 0
+      });
+
+      activates.velocity({height: dropdownRealHeight, opacity: 1}, {duration: 250, easing: 'easeOutCubic'});
     }
     function elementOrParentIsFixed(element) {
         var $element = $(element);
@@ -47,7 +52,6 @@
     }
 
     if (elementOrParentIsFixed(origin[0])) {
-      console.log('fixed it is');
       activates.css('position', 'fixed');
     }
 
@@ -58,10 +62,22 @@
       origin.on('mouseover', function(e){ // Mouse over
         placeDropdown();
       });
-      
-      // Document click handler        
+
+      // Document click handler
       activates.on('mouseleave', function(e){ // Mouse out
-        activates.hide({duration: 175, easing: 'easeOutCubic'});
+        activates.velocity(
+          {
+            opacity: 0
+          },
+          {
+            duration: 225,
+            easing: 'easeOutQuad',
+            complete: function(){
+              activates.css({
+                display: 'none'
+              });
+            }
+          });
       });
 
     // Click
@@ -75,7 +91,18 @@
         placeDropdown();
         $(document).bind('click.'+ activates.attr('id'), function (e) {
           if (!activates.is(e.target) && (!origin.is(e.target))) {
-            activates.hide({duration: 175, easing: 'easeOutCubic'});
+            activates.velocity({
+              opacity: 0
+            },
+            {
+              duration: 225,
+              easing: 'easeOutQuad',
+              complete: function(){
+                activates.css({
+                  display: 'none'
+                });
+              }
+            });
             $(document).unbind('click.' + activates.attr('id'));
           }
         });
