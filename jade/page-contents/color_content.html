@@ -10,7 +10,7 @@
     <div class="col s12 m9 l10">
 
       <div id="color-usage" class="section scrollspy">
-        <h4>Usage</h4>
+        <h2 class="header">Usage</h2>
         <p class="caption">
         Here is a color palette based on the material design base colors. Each of these colors is defined with a base color class and an optional lighten or darken class.
         </p>
@@ -37,32 +37,31 @@
             </code></pre>
           </div>
         </div>
+      </div>
 
-        <h4>Sass</h4>
-        <div class="row">
-          <p>
-          For background colors, you can apply the color simply by extending the classes like the example below.
-          </p>
-          <pre><code class="language-scss col s12">
-    .ilike-blue-container {
-      @extend .blue, .lighten-4;
-    }
-          </code></pre>
+      <div id="sass" class="section scrollspy">
+        <h2 class="header">Sass</h2>
+        <p>
+        For background colors, you can apply the color simply by extending the classes like the example below.
+        </p>
+        <pre><code class="language-scss col s12">
+  .ilike-blue-container {
+    @extend .blue, .lighten-4;
+  }
+        </code></pre>
 
-          <p>
-          For changing text color, you can apply the color simply by extending the classes like the example below.
-          </p>
-          <pre><code class="language-scss col s12">
-    .ilike-blue-container {
-      @extend .blue-text, .text-lighten-4;
-    }
-          </code></pre>
-
-        </div>
+        <p>
+        For changing text color, you can apply the color simply by extending the classes like the example below.
+        </p>
+        <pre><code class="language-scss col s12">
+  .ilike-blue-container {
+    @extend .blue-text, .text-lighten-4;
+  }
+        </code></pre>
       </div>
       <div id="palette" class="section scrollspy">
 
-        <h4>Color Palette</h4>
+        <h2 class="header">Color Palette</h2>
         <div class="row dynamic-color">
           <div class="col s12 m6 l4">
             <div class="red lighten-5"></div>
@@ -367,6 +366,7 @@
       <div style="height: 1px;">
         <ul class="section table-of-contents">
           <li><a href="#color-usage">Usage</a></li>
+          <li><a href="#sass">Sass</a></li>
           <li><a href="#palette">Color Palette</a></li>
         </ul>
       </div>
