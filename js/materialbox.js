@@ -7,7 +7,7 @@
       var overlayActive = false;
       var doneAnimating = true;
       var inDuration = 275;
-      var outDuration = 225;
+      var outDuration = 200;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
       var originalWidth = 0;
@@ -38,47 +38,44 @@
 
         // Set positioning for placeholder
 
-        placeholder.css('width', placeholder[0].getBoundingClientRect().width)
-        .css('height', placeholder[0].getBoundingClientRect().height)
-        .css('position', 'relative')
-        .css('top', 0)
-        .css('left', 0);
+        placeholder.css({
+          width: placeholder[0].getBoundingClientRect().width,
+          height: placeholder[0].getBoundingClientRect().height,
+          position: 'relative',
+          top: 0,
+          left: 0
+        })
 
         // Set css on origin
-        origin.css('position', 'absolute')
-        .css('z-index', 1000);
-        origin.data('width', originalWidth);
-        origin.data('height', originalHeight);
-
-        // Add caption if it exists
-        if (origin.data('caption') !== "") {
-          var $photo_caption = $('<div class="materialbox-caption"></div');
-          $photo_caption.text(origin.data('caption'));
-          $('body').append($photo_caption);
-        }
+        origin.css({position: 'absolute', 'z-index': 1000})
+        .data('width', originalWidth)
+        .data('height', originalHeight);
 
         // Add overlay
-        var overlay = $('<div></div>');
-        overlay.attr('id', 'materialbox-overlay')
-          .css('will-change', 'opacity')
-          .css('width', $(document).width() + 100) // account for any scrollbar
-          .css('height', $(document).height() + 100) // account for any scrollbar
-          .css('top', 0)
-          .css('left', 0)
-          .css('opacity', 0)
+        var overlay = $('<div id="materialbox-overlay"></div>')
+          .css({
+            opacity: 0
+          })
           .click(function(){
             if (doneAnimating === true)
             returnToOriginal();
           });
+          // Animate Overlay
           $('body').append(overlay);
-          overlay.animate({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
+          overlay.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
             );
 
-        // Animate caption
+
+        // Add and animate caption if it exists
         if (origin.data('caption') !== "") {
+          var $photo_caption = $('<div class="materialbox-caption"></div');
+          $photo_caption.text(origin.data('caption'));
+          $('body').append($photo_caption);
           $photo_caption.css({ "display": "inline" });
           $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
         }
+
+
 
         // Resize Image
         var ratio = 0;
@@ -102,21 +99,41 @@
         if(origin.hasClass('responsive-img')) {
           origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false,
             complete: function(){
-              origin.css('left', 0)
-              .css('top', 0)
-
-              .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-              .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-              .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
-            }
-          });
+              origin.css({left: 0, top: 0})
+              .velocity(
+                {
+                  height: newHeight,
+                  width: newWidth,
+                  left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2,
+                  top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2
+                },
+                {
+                  duration: inDuration,
+                  queue: false,
+                  easing: 'easeOutQuad',
+                  complete: function(){doneAnimating = true;}
+                }
+              );
+            } // End Complete
+          }); // End Velocity
         }
         else {
           origin.css('left', 0)
           .css('top', 0)
-          .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-          .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-          .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
+          .velocity(
+            {
+              height: newHeight,
+              width: newWidth,
+              left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2,
+              top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2
+            },
+            {
+              duration: inDuration,
+              queue: false,
+              easing: 'easeOutQuad',
+              complete: function(){doneAnimating = true;}
+            }
+            ); // End Velocity
         }
 
     }); // End origin on click
@@ -175,7 +192,7 @@
 
           // Remove Caption + reset css settings on image
           $('.materialbox-caption').velocity({opacity: 0}, {
-            duration: outDuration + 225,
+            duration: outDuration + 10, // Delay prevents animation overlapping
             queue: false, easing: 'easeOutQuad',
             complete: function(){
               placeholder.css({
