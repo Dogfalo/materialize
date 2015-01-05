@@ -6255,7 +6255,8 @@ ul.table-of-contents a {
       left: auto; }
     ul.side-nav li {
       float: none;
-      padding: 0 15px; }
+      padding: 0 15px;
+      width: 240px; }
       ul.side-nav li:hover, ul.side-nav li.active {
         background-color: #ddd; }
     ul.side-nav a {
@@ -6280,6 +6281,7 @@ ul.side-nav.full, ul.side-nav.fixed {
     float: none;
     line-height: 64px;
     padding: 0 15px;
+    width: 240px;
     -webkit-transition: background-color 0.3s;
     -moz-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;
@@ -7474,12 +7476,14 @@ ul.side-nav.fixed li.logo {
     background-color: transparent; }
 
 ul.side-nav.fixed {
-  overflow-x: hidden;
+  overflow: hidden;
   padding-bottom: 50px; }
   ul.side-nav.fixed li {
     line-height: 44px; }
     ul.side-nav.fixed li a {
       font-size: 13px; }
+  ul.side-nav.fixed:hover {
+    overflow-y: auto; }
 
 #logo-container {
   height: 57px;

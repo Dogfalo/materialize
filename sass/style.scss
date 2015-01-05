@@ -75,13 +75,18 @@ ul.side-nav.fixed li.logo {
   }
 }
 ul.side-nav.fixed {
-  overflow-x: hidden;
+  overflow: hidden;
   padding-bottom: 50px;
 
   li {
     line-height: 44px;
 
     a { font-size: 13px; }
+  }
+
+  // Only show scrollbar on hover
+  &:hover {
+    overflow-y: auto;
   }
 }
 #logo-container {

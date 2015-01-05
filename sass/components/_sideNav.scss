@@ -21,6 +21,7 @@
     li {
       float: none;
       padding: 0 15px;
+      width: 240px;
 
       &:hover, &.active { background-color: #ddd; }
     }
@@ -57,6 +58,8 @@ ul.side-nav.fixed {
     float: none;
     line-height: 64px;
     padding: 0 15px;
+    width: 240px;
+
     @include transition(background-color .3s);
 
     &:hover, &.active { background-color: #ddd; }
