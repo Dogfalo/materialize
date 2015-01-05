@@ -7482,8 +7482,16 @@ ul.side-nav.fixed {
     line-height: 44px; }
     ul.side-nav.fixed li a {
       font-size: 13px; }
+  ul.side-nav.fixed ul.collapsible-accordion {
+    background-color: #FFF; }
   ul.side-nav.fixed:hover {
     overflow-y: auto; }
+
+.bold > a {
+  font-weight: bold; }
+
+ul.side-nav .collapsible-body li.active {
+  background-color: #f3989b; }
 
 #logo-container {
   height: 57px;

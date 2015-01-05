@@ -84,11 +84,24 @@ ul.side-nav.fixed {
     a { font-size: 13px; }
   }
 
+  ul.collapsible-accordion {
+    background-color: #FFF;
+  }
+
   // Only show scrollbar on hover
   &:hover {
     overflow-y: auto;
   }
 }
+
+.bold > a {
+  font-weight: bold;
+}
+
+ul.side-nav .collapsible-body li.active {
+  background-color: color('materialize-red', 'lighten-3');
+}
+
 #logo-container {
   height: 57px;
   margin-bottom: 32px;
