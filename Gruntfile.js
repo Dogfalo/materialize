@@ -388,14 +388,28 @@ module.exports = function(grunt) {
 
     // Text Replace
     replace: {
-      version: {
-        src: ['package.json'],
-        overwrite: true, // overwrite matched source files
+      version: { // Does not edit README.md
+        src: [
+          'bower.json',
+          'package.json',
+          'jade/**/*.html'
+        ],
+        overwrite: true,
         replacements: [{
           from: grunt.option( "oldver" ),
           to: grunt.option( "newver" )
         }]
-      }
+      },
+      readme: { // Changes README.md
+        src: [
+          'README.md'
+        ],
+        overwrite: true,
+        replacements: [{
+          from: 'Current Version : v'+grunt.option( "oldver" ),
+          to: 'Current Version : v'+grunt.option( "newver" )
+        }]
+      },
     },
 
     // Create Version Header for files
@@ -451,20 +465,21 @@ module.exports = function(grunt) {
 
   // define the tasks
   grunt.registerTask(
-      'release',[
-          'copy',
-          'sass:expanded',
-          'sass:min',
-          'concat:dist',
-          'uglify:dist',
-          'usebanner:release',
-          'compress:main',
-          'compress:src',
-          'compress:templates',
-          'replace:version',
-          'rename:rename_src',
-          'rename:rename_compiled'
-      ]
+    'release',[
+      'copy',
+      'sass:expanded',
+      'sass:min',
+      'concat:dist',
+      'uglify:dist',
+      'usebanner:release',
+      'compress:main',
+      'compress:src',
+      'compress:templates',
+      'replace:version',
+      'replace:readme'
+      'rename:rename_src',
+      'rename:rename_compiled'
+    ]
   );
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
