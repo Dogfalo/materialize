@@ -46,7 +46,6 @@
         });
 
         // Open first active
-        console.log($panel_headers.filter('.active').first());
         accordionOpen($panel_headers.filter('.active').first());
       }
       else {
