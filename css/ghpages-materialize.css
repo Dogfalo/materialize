@@ -5420,7 +5420,6 @@ ul.tabs li.tab {
   min-width: 100px;
   z-index: 1000;
   max-height: 50%;
-  overflow-y: scroll;
   opacity: 0;
   will-change: width, height; }
   .dropdown-content li {
@@ -5429,7 +5428,7 @@ ul.tabs li.tab {
     color: rgba(0, 0, 0, 0.87);
     line-height: 1.5rem; }
     .dropdown-content li:hover {
-      background-color: rgba(0, 0, 0, 0.07); }
+      background-color: rgba(0, 0, 0, 0.06); }
     .dropdown-content li > a, .dropdown-content li > span {
       display: block;
       padding: 1rem 1rem; }
