@@ -5,12 +5,10 @@
   </div>
 
   <div class="row">
-
     <div class="col s12 m9 l10">
 
-      <div id="collapsible" class="section scrollspy">
-
-        <h2 class="header">Collapsible</h2>
+      <div id="introduction" class="section scrollspy">
+        <h4>Introduction</h4>
         <p class="caption">
           Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
         </p>
@@ -28,10 +26,13 @@
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
         </ul>
+      </div>
 
 
+
+      <div id="structure" class="section scrollspy">
         <h4>Collapsible HTML Structure</h4>
-        <pre><code class="language-markup col s12">
+        <pre><code class="language-markup">
       &lt;ul class="collapsible">
         &lt;li>
           &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
@@ -47,20 +48,28 @@
         &lt;/li>
       &lt;/ul>
         </code></pre>
+      </div>
 
-        <h4>jQuery Plugin Initialization</h4>
-        <pre><code class="language-javascript col s12">
+
+
+      <div id="intialization" class="section scrollspy">
+        <h4>Initialization</h4>
+        <pre><code class="language-javascript">
       $(document).ready(function(){
         $('.collapsible').collapsible();
       });
         </code></pre>
+      </div>
 
+
+
+      <div id="options" class="section scrollspy">
         <h4>Options</h4>
         <p>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</p>
       </div>
       <div id="accordion" class="section scrollspy">
         <div class="row">
-          <div class="col s12 m3"><h5>Accordion</h5></div>
+          <div class="col s12 m3"><h5 class="light">Accordion</h5></div>
           <div class="col s12 m9">
             <ul class="collapsible collapsible-accordion">
               <li>
@@ -89,7 +98,7 @@
       </div>
       <div id="expandable" class="section scrollspy">
         <div class="row">
-          <div class="col s12 m3"><h5>Expandable</h5></div>
+          <div class="col s12 m3"><h5 class="light">Expandable</h5></div>
           <div class="col s12 m9">
             <ul class="collapsible collapsible-expandable">
               <li>
@@ -116,13 +125,16 @@
         </div>
       </div>
 
-
     </div>
 
+
+    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#collapsible">Collapsible</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="#intialization">Initialization</a></li>
           <li><a href="#accordion">Accordion</a></li>
           <li><a href="#expandable">Expandable</a></li>
         </ul>

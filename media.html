@@ -109,25 +109,23 @@
   </div>
 
   <div class="row">
-
     <div class="col s12 m9 l10">
+      <p class="caption">Media components include things that have to do with large media objects like Images, Video, Audio, etc.</p>
 
-      <div id="materialbox" class="scrollspy">
-        <h2 class="header">Media</h2>
-        <p class="caption">
-          Media components include things that have to do with large media objects like Images, Video, Audio, etc.
-        </p>
-        <h3 class="header">Material Box</h3>
+      <div id="materialbox" class="scrollspy section">
+        <h2 class="header">Material Box</h2>
          <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged. Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
         <img class="materialboxed responsive-img" width="650" src="images/sample-1.jpg">
-       <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialboxed</code> class to the image tag.</p>
 
+       <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialboxed</code> class to the image tag.</p>
       <pre><code class="language-markup">
     &lt;img class="materialboxed" width="650" src="images/sample-1.jpg">
       </code></pre>
 
+
+      <h4>Initialization</h4>
        <p>Next you simply have to add the initialization code </p>
-       <pre><code class="language-javascript col s12">
+       <pre><code class="language-javascript">
     $(document).ready(function(){
       $('.materialboxed').materialbox();
     });
@@ -145,7 +143,7 @@
 
 
       <!--  Slider Section  -->
-      <div id="slider" class="scrollspy">
+      <div id="slider" class="scrollspy section">
         <h3 class="header">Slider</h3>
          <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p>
          <p>Note: This is also Hammer.js compatible! Try swiping with your finger to scroll through the slider.</p><br>
@@ -219,16 +217,17 @@
       </code></pre>
 
        <p>Next you simply have to add the initialization code </p>
-       <pre><code class="language-javascript col s12">
+       <pre><code class="language-javascript">
     $(document).ready(function(){
       $('.slider').slider({full_width: true});
     });
         </code></pre>
       </div>
 
-
     </div>
 
+
+    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">

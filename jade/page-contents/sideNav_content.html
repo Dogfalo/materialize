@@ -5,12 +5,10 @@
   </div>
 
   <div class="row">
-
     <div class="col s12 m9 l10">
 
-      <div id="sidebar" class="section scrollspy">
-
-        <h4>Sidebar</h4>
+      <div id="introduction" class="section scrollspy">
+        <h4>Introduction</h4>
         <p>This is a slide out menu. If you want a sidebar that will work on all widths, just add the class <code class="language-markup">full</code> to your sidebar list. You can add a dropdown to your sidebar by using our collapsible component.</p>
         <ul id="slide-out" class="side-nav full">
           <li><a href="#!">First Sidebar Link</a></li>
@@ -32,8 +30,11 @@
           </li>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse btn">Open Sidebar</a>
+      </div>
 
-        <h5>Tabs HTML Structure</h5>
+
+      <div id="structure" class="section scrollspy">
+        <h4>Tabs HTML Structure</h4>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav full">
     &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
@@ -55,27 +56,37 @@
     &lt;/li>
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        </code></pre><br>
+        </code></pre>
+      </div>
 
-        <h5>jQuery Plugin Initialization</h5>
+
+      <div id="initialization" class="section scrollspy">
+        <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript col s12">
   $(".button-collapse").sideNav();
-        </code></pre><br>
+        </code></pre>
+      </div>
 
-        <h5>Sidebar Alignment</h5>
+
+      <div id="alignment" class="section scrollspy">
+        <h4>Sidebar Alignment</h4>
         <p>Add the option <code class="language-markup">right</code> to your initialization.</p>
         <pre><code class="language-javascript col s12">
   $(".button-collapse").sideNav({edge: 'right'});
         </code></pre>
       </div>
 
-
     </div>
 
+
+    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#sidebar">Sidebar</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="#initialization">Intialization</a></li>
+          <li><a href="#alignment">Alignment</a></li>
         </ul>
       </div>
     </div>

@@ -109,49 +109,51 @@
   </div>
 
   <div class="row">
-
     <div class="col s12 m9 l10">
 
-      <div id="tabs" class="section scrollspy">
-        <h2 class="header">Navigation</h2>
-
-        <p class="caption">
-          Here you can learn about our different navigation options. These components can help organize and divide your content into easier to read portions.
-        </p>
-
-        <h4>Tabs</h4>
+      <div id="introduction" class="section scrollspy">
+        <h4>Introduction</h4>
         <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.</p>
 
-          <ul class="tabs tab-demo z-depth-1">
-            <li class="tab"><a href="#test1">Test 1</a></li>
-            <li class="tab"><a href="#test2">Test 2</a></li>
-            <li class="tab"><a href="#test3">Test 3</a></li>
-            <li class="tab"><a href="#test4">Test 4</a></li>
-          </ul>
+        <ul class="tabs tab-demo z-depth-1">
+          <li class="tab"><a href="#test1">Test 1</a></li>
+          <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+          <li class="tab"><a href="#test3">Test 3</a></li>
+          <li class="tab"><a href="#test4">Test 4</a></li>
+        </ul>
         <div id="test1" class="col s12"><p>Test 1</p></div>
         <div id="test2" class="col s12"><p>Test 2</p></div>
         <div id="test3" class="col s12"><p>Test 3</p></div>
         <div id="test4" class="col s12"><p>Test 4</p></div>
         <br>
+      </div>
 
-        <h5>Tabs HTML Structure</h5>
-        <pre><code class="language-markup col s12">
-          &lt;div class="col s12">
-            &lt;ul class="tabs">
-              &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
-            &lt;/ul>
-          &lt;/div>
-          &lt;div id="test1" class="col s12">Test 1&lt;/div>
-          &lt;div id="test2" class="col s12">Test 2&lt;/div>
-          &lt;div id="test3" class="col s12">Test 3&lt;/div>
-          &lt;div id="test4" class="col s12">Test 4&lt;/div>
+
+      <div id="structure" class="section scrollspy">
+        <h4>Tabs HTML Structure</h4>
+        <pre><code class="language-markup">
+  &lt;div class="row"
+    &lt;div class="col s12">
+      &lt;ul class="tabs">
+        &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+        &lt;li class="tab col s2">&lt;a class="active" href="#test2">Test 2&lt;/a>&lt;/li>
+        &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
+        &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+    &lt;div id="test1" class="col s12">Test 1&lt;/div>
+    &lt;div id="test2" class="col s12">Test 2&lt;/div>
+    &lt;div id="test3" class="col s12">Test 3&lt;/div>
+    &lt;div id="test4" class="col s12">Test 4&lt;/div>
+  &lt;/div>
         </code></pre>
+      </div>
 
-        <h5>jQuery Plugin Initialization</h5>
-        <pre><code class="language-javascript col s12">
+
+
+      <div id="initialization" class="section scrollspy">
+        <h4>jQuery Plugin Initialization</h4>
+        <pre><code class="language-javascript">
           $(document).ready(function(){
             $('ul.tabs').tabs();
           });
@@ -159,12 +161,25 @@
       </div>
 
 
+
+      <div id="preselecting" class="section scrollspy">
+        <h4>Preselecting a tab</h4>
+          <p>By default, the first tab is selected. But if this is not what you want, you can preselect a tab by either passing in the hash in the url ex:<code class="language-markup">#test2</code>. Or you can add the class <code class="language-markup">active</code> to the <code class="language-markup">a</code> tag.</p>
+        <pre><code class="language-markup col s12">
+  &lt;li class="tab col s2">&lt;a class="active" href="#test3">Test 3&lt;/a>&lt;/li>
+        </code></pre>
+      </div>
+
     </div>
 
+    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#tabs">Tabs</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="#initialization">Intialization</a></li>
+          <li><a href="#preselecting">Preselecting</a></li>
         </ul>
       </div>
     </div>

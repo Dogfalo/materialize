@@ -109,23 +109,20 @@
   </div>
 
   <div class="row">
-
     <div class="col s12 m9 l10">
 
-      <div id="dropdown" class="scrollspy">
-        <h3 class="header">Dropdowns</h3>
-        <div class="row">
-          <div class="col s12">
-            <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. </p>
-            <p>You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. </p>
-            <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="#!">one</a></li>
-              <li><a href="#!">two</a></li>
-              <li class="divider"></li>
-              <li><a href="#!">three</a></li>
-            </ul>
-            <pre><code class="language-markup">
+      <div id="introduction" class="scrollspy section">
+        <h4>Introduction</h4>
+        <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. </p>
+        <p>You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. </p>
+        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li class="divider"></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+        <pre><code class="language-markup">
   &lt;!-- Dropdown Trigger -->
   &lt;a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
 
@@ -136,41 +133,43 @@
     &lt;li class="divider">&lt;/li>
     &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
   &lt;/ul>
-            </code></pre>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <h4>jQuery Plugin Initialization</h4>
-            <pre><code class="language-javascript">
+        </code></pre>
+      </div>
+
+
+
+      <div id="initialization" class="section scrollspy">
+        <h4>jQuery Plugin Initialization</h4>
+        <pre><code class="language-javascript">
   $(document).ready(function(){
     $('.dropdown-button').dropdown();
   });
-            </code></pre>
-          </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-              <h4>Options</h4>
-              <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
-              <pre><code class="language-javascript">
+        </code></pre>
+      </div>
+
+
+
+      <div id="options" class="section scrollspy">
+        <h4>Options</h4>
+        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
+        <pre><code class="language-javascript">
   $('.dropdown-button').dropdown({
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false // Activate on click
     }
   );
-              </code></pre>
-            </div>
-          </div>
+        </code></pre>
       </div>
 
+</div>
 
-    </div>
-
+    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#dropdown">Dropdown</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#initialization">Initialization</a></li>
+          <li><a href="#options">Options</a></li>
         </ul>
       </div>
     </div>
