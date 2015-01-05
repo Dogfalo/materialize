@@ -81,6 +81,10 @@ ul.side-nav.fixed {
   li {
     line-height: 44px;
 
+    &:hover, &.active {
+      background-color: rgba(0,0,0,.05);
+    }
+
     a { font-size: 13px; }
   }
 
@@ -99,7 +103,10 @@ ul.side-nav.fixed {
 }
 
 ul.side-nav .collapsible-body li.active {
-  background-color: color('materialize-red', 'lighten-3');
+  a {
+  color: #fff;
+  }
+  background-color: color('materialize-red', 'lighten-2');
 }
 
 #logo-container {
