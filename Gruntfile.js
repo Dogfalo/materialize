@@ -400,16 +400,34 @@ module.exports = function(grunt) {
 
     // Create Version Header for files
     usebanner: {
-        css: {
+        release: {
           options: {
             position: 'top',
-            banner: "/*!\n * Materialize v0.94.0 (http://materializecss.com)\n * Copyright 2014-2015 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */",
+            banner: "/*!\n * Materialize v"+ grunt.option( "newver" ) +" (http://materializecss.com)\n * Copyright 2014-2015 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */",
             linebreak: true
           },
           files: {
             src: [ 'dist/css/*.css', 'dist/js/*.js']
           }
         }
+      },
+
+      // Rename files
+      rename: {
+          rename_src: {
+              src: 'bin/materialize-src-v'+grunt.option( "oldver" )+'.zip',
+              dest: 'bin/materialize-src-v'+grunt.option( "newver" )+'.zip',
+              options: {
+                ignore: true
+              }
+          },
+          rename_compiled: {
+              src: 'bin/materialize-v'+grunt.option( "oldver" )+'.zip',
+              dest: 'bin/materialize-v'+grunt.option( "newver" )+'.zip',
+              options: {
+                ignore: true
+              }
+          },
       }
 
   });
@@ -429,9 +447,25 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
+  grunt.loadNpmTasks('grunt-rename');
 
   // define the tasks
-  grunt.registerTask('release', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src', 'compress:templates', 'replace:version']);
+  grunt.registerTask(
+      'release',[
+          'copy',
+          'sass:expanded',
+          'sass:min',
+          'concat:dist',
+          'uglify:dist',
+          'usebanner:release',
+          'compress:main',
+          'compress:src',
+          'compress:templates',
+          'replace:version',
+          'rename:rename_src',
+          'rename:rename_compiled'
+      ]
+  );
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);

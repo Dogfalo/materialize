@@ -23,6 +23,7 @@
   "engine": "node >= 0.10",
   "devDependencies": {
     "grunt-banner": "^0.3.0",
-    "grunt-gitinfo": "^0.1.7"
+    "grunt-gitinfo": "^0.1.7",
+    "grunt-rename": "^0.1.4"
   }
 }
