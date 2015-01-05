@@ -17,10 +17,12 @@
     "grunt-contrib-compress": "^0.12.0",
     "grunt-contrib-watch": "^0.5.3",
     "grunt-concurrent": "^1.0.0",
-    "grunt-notify": "^0.4.1"
+    "grunt-notify": "^0.4.1",
+    "grunt-text-replace": "^0.4.0"
   },
   "engine": "node >= 0.10",
   "devDependencies": {
+    "grunt-banner": "^0.3.0",
     "grunt-gitinfo": "^0.1.7"
   }
 }

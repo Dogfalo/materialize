@@ -384,7 +384,33 @@ module.exports = function(grunt) {
           keepalive: true
         }
       }
-    }
+    },
+
+    // Text Replace
+    replace: {
+      version: {
+        src: ['package.json'],
+        overwrite: true, // overwrite matched source files
+        replacements: [{
+          from: grunt.option( "oldver" ),
+          to: grunt.option( "newver" )
+        }]
+      }
+    },
+
+    // Create Version Header for files
+    usebanner: {
+        css: {
+          options: {
+            position: 'top',
+            banner: "/*!\n * Materialize v0.94.0 (http://materializecss.com)\n * Copyright 2014-2015 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */",
+            linebreak: true
+          },
+          files: {
+            src: [ 'dist/css/*.css', 'dist/js/*.js']
+          }
+        }
+      }
 
   });
 
@@ -396,14 +422,16 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
- grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-banner');
 
   // define the tasks
-  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src', 'compress:templates']);
+  grunt.registerTask('release', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src', 'compress:templates', 'replace:version']);
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
