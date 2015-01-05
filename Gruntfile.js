@@ -403,7 +403,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // define the tasks
-  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src']);
+  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src', 'compress:templates']);
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);

@@ -502,7 +502,7 @@
 .blue-text.text-lighten-2 {
   color: #64B5F6 !important; }
 
-.blue.lighten-1, .collection .active {
+.blue.lighten-1 {
   background-color: #42A5F5 !important; }
 
 .blue-text.text-lighten-1 {
@@ -1613,6 +1613,7 @@
 /*** Global ***/
 /*** Toasts ***/
 /*** Typography ***/
+/*** Collections ***/
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -1947,34 +1948,6 @@ a {
   color: #1E88E5;
   text-decoration: none; }
 
-.no-select, input[type=range], input[type=range] + .thumb {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-.left-align {
-  text-align: left; }
-
-.right-align {
-  text-align: right; }
-
-.center, .center-align {
-  text-align: center; }
-
-.left {
-  float: left; }
-
-.right {
-  float: right; }
-
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-
 .valign-wrapper {
   display: flex;
   align-items: center;
@@ -2151,7 +2124,7 @@ td, th {
   border-radius: 2px; }
 
 .collection {
-  background-color: #FFF;
+  background-color: #fff;
   margin: 0 0 1rem 0;
   border: 1px solid #e0e0e0;
   border-radius: 2px; }
@@ -2170,12 +2143,15 @@ td, th {
     -ms-transition: 0.25s;
     transition: 0.25s; }
     .collection a.collection-item:not(.active):hover {
-      background-color: #f2f2f2; }
+      background-color: rgba(0, 0, 0, 0.08); }
   .collection.with-header .collection-header {
     border-bottom: 1px solid #e0e0e0;
     padding: 10px 20px; }
   .collection.with-header .collection-item {
     padding-left: 30px; }
+  .collection .active {
+    background-color: #42A5F5;
+    color: #BBDEFB; }
   .collection .secondary-content {
     float: right; }
   .collection.pagination {
@@ -2221,12 +2197,6 @@ span.badge {
   span.badge.new:after {
     content: " new"; }
 
-img.circle {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  background-clip: padding-box; }
-
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -2239,6 +2209,43 @@ img.circle {
     left: 0;
     width: 100%;
     height: 100%; }
+
+/*******************
+  Utility Classes
+*******************/
+.left-align {
+  text-align: left; }
+
+.right-align {
+  text-align: right; }
+
+.center, .center-align {
+  text-align: center; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.no-select, input[type=range], input[type=range] + .thumb {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-clip: padding-box; }
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 @font-face {
   font-family: "Material-Design-Icons";
@@ -5412,6 +5419,9 @@ ul.tabs li.tab {
   margin: 0px;
   min-width: 100px;
   z-index: 1000;
+  max-height: 50%;
+  overflow-y: scroll;
+  opacity: 0;
   will-change: width, height; }
   .dropdown-content li {
     cursor: pointer;
@@ -5667,7 +5677,7 @@ li.no-padding {
   -ms-transition: opacity 0.4s;
   transition: opacity 0.4s; }
   .materialboxed:hover {
-    will-change: left, top; }
+    will-change: left, top, width, height; }
     .materialboxed:hover:not(.active) {
       -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
       filter: "alpha(opacity=(${iefactor}))";
@@ -5680,10 +5690,13 @@ li.no-padding {
 
 #materialbox-overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #292929;
-  z-index: 999; }
+  z-index: 999;
+  will-change: opacity; }
 
 .materialbox-caption {
   position: fixed;

@@ -71,7 +71,7 @@
             </code></pre>
 
             <h4>Styling Toasts</h4>
-            <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast functions like this: <code class="language-javascript">toast('I am a rounded toast', 2000, 'rounded')</code>. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+            <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
 
             <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
 
@@ -230,6 +230,8 @@
               <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
               <pre><code class="language-javascript">
   $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false // Activate on click
     }
@@ -269,7 +271,7 @@
           <ul class="tabs tab-demo z-depth-1">
             <li class="tab"><a href="#test1">Test 1</a></li>
             <li class="tab"><a href="#test2">Test 2</a></li>
-            <li class="tab"><a href="#test3">Test 3</a></li>
+            <li class="tab"><a class="active" href="#test3">Test 3</a></li>
             <li class="tab"><a href="#test4">Test 4</a></li>
           </ul>
         <div id="test1" class="col s12"><p>Test 1</p></div>
@@ -280,20 +282,28 @@
 
         <h5>Tabs HTML Structure</h5>
         <pre><code class="language-markup col s12">
-          &lt;div class="col s12">
-            &lt;ul class="tabs">
-              &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test3">Test 3&lt;/a>&lt;/li>
-              &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
-            &lt;/ul>
-          &lt;/div>
-          &lt;div id="test1" class="col s12">Test 1&lt;/div>
-          &lt;div id="test2" class="col s12">Test 2&lt;/div>
-          &lt;div id="test3" class="col s12">Test 3&lt;/div>
-          &lt;div id="test4" class="col s12">Test 4&lt;/div>
+  &lt;!-- Tabs -->
+  &lt;div class="col s12">
+    &lt;ul class="tabs">
+      &lt;li class="tab col s2">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+      &lt;li class="tab col s2">&lt;a href="#test2">Test 2&lt;/a>&lt;/li>
+      &lt;li class="tab col s2">&lt;a class="active" href="#test3">Test 3&lt;/a>&lt;/li>
+      &lt;li class="tab col s2">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+    &lt;/ul>
+  &lt;/div>
+
+  &lt;!-- Tab Content -->
+  &lt;div id="test1" class="col s12">Test 1&lt;/div>
+  &lt;div id="test2" class="col s12">Test 2&lt;/div>
+  &lt;div id="test3" class="col s12">Test 3&lt;/div>
+  &lt;div id="test4" class="col s12">Test 4&lt;/div>
         </code></pre>
 
+        <h5>Preselecting a tab</h5>
+          <p>By default, the first tab is selected. But if this is not what you want, you can preselect a tab by either passing in the hash in the url ex:<code class="language-markup">#test2</code>. Or you can add the class <code class="language-markup">active</code> to the <code class="language-markup">a</code> tag.</p>
+        <pre><code class="language-markup col s12">
+  &lt;li class="tab col s2">&lt;a class="active" href="#test3">Test 3&lt;/a>&lt;/li>
+        </code></pre>
         <h5>jQuery Plugin Initialization</h5>
         <pre><code class="language-javascript col s12">
           $(document).ready(function(){
