@@ -6282,11 +6282,11 @@ ul.side-nav.full, ul.side-nav.fixed {
     line-height: 64px;
     padding: 0 15px;
     width: 240px;
-    -webkit-transition: background-color 0.3s;
-    -moz-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
-    -ms-transition: background-color 0.3s;
-    transition: background-color 0.3s; }
+    -webkit-transition: background-color 0s;
+    -moz-transition: background-color 0s;
+    -o-transition: background-color 0s;
+    -ms-transition: background-color 0s;
+    transition: background-color 0s; }
     ul.side-nav.full li:hover, ul.side-nav.full li.active, ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
       background-color: #ddd; }
   ul.side-nav.full a, ul.side-nav.fixed a {
