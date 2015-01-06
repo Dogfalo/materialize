@@ -219,6 +219,7 @@ module.exports = function(grunt) {
         files: {
           "index.html": "jade/index.jade",
           "about.html": "jade/about.jade",
+          "sass.html": "jade/sass.jade",
           "getting-started.html": "jade/getting-started.jade",
           "mobile.html": "jade/mobile.jade",
           "showcase.html": "jade/showcase.jade",
