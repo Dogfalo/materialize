@@ -476,7 +476,7 @@ module.exports = function(grunt) {
       'compress:src',
       'compress:templates',
       'replace:version',
-      'replace:readme'
+      'replace:readme',
       'rename:rename_src',
       'rename:rename_compiled'
     ]
