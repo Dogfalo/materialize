@@ -7475,6 +7475,9 @@ nav {
 header, main, footer {
   padding-left: 240px; }
 
+.parallax-demo header, .parallax-demo main, .parallax-demo footer {
+  padding-left: 0; }
+
 footer.example {
   padding-left: 0; }
 
