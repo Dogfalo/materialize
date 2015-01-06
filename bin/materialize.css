@@ -5091,12 +5091,14 @@ small {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box; }
+  background-clip: padding-box;
+  background-color: #fff; }
 
 .card {
   position: relative;
   overflow: hidden;
   margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -5148,8 +5150,7 @@ small {
       right: 0;
       top: 0;
       bottom: 0;
-      width: 100%;
-      z-index: -1; }
+      width: 100%; }
     .card .card-image .card-title {
       position: absolute;
       bottom: 0;
