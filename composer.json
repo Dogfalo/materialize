@@ -1,0 +1,29 @@
+{
+    "name": "raser/materialize",
+    "description": "A modern responsive front-end framework based on Material Design",
+    "license": "MIT",
+    "keywords": ["front-end", "framework", "material", "design"],
+    "homepage": "http://dogfalo.github.io/materialize/index.html",
+    "authors": [
+        {
+            "name": "Alvin Wang",
+            "email": "alvin7@gmail.com"
+        },
+        {
+            "name": "Alan Chang"
+        },
+        {
+            "name": "Alex Mark",
+            "email": "ajmark@andrew.cmu.edu",
+            "homepage" : "http://ajmark.com"
+        },
+        {
+            "name": "Kevin Louie"
+        }
+    ],
+    "minimum-stability": "dev",
+	"require": {},
+	"support": {
+		"issues": "https://github.com/Dogfalo/materialize/issues"
+	  }
+}
