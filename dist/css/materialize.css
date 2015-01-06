@@ -1,3 +1,8 @@
+/*!
+ * Materialize v0.94.1 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important; }
 
@@ -502,7 +507,7 @@
 .blue-text.text-lighten-2 {
   color: #64B5F6 !important; }
 
-.blue.lighten-1, .collection .active {
+.blue.lighten-1 {
   background-color: #42A5F5 !important; }
 
 .blue-text.text-lighten-1 {
@@ -1611,8 +1616,10 @@
 /*** Collapsible ***/
 /*** Forms ***/
 /*** Global ***/
+/*** SideNav ***/
 /*** Toasts ***/
 /*** Typography ***/
+/*** Collections ***/
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -1947,34 +1954,6 @@ a {
   color: #1E88E5;
   text-decoration: none; }
 
-.no-select, input[type=range], input[type=range] + .thumb {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-.left-align {
-  text-align: left; }
-
-.right-align {
-  text-align: right; }
-
-.center, .center-align {
-  text-align: center; }
-
-.left {
-  float: left; }
-
-.right {
-  float: right; }
-
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-
 .valign-wrapper {
   display: flex;
   align-items: center;
@@ -1988,7 +1967,7 @@ ul {
 li {
   list-style-type: none; }
 
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, ul.collapsible {
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, ul.side-nav.full, ul.side-nav.fixed {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
@@ -2151,8 +2130,8 @@ td, th {
   border-radius: 2px; }
 
 .collection {
-  background-color: #FFF;
-  margin: 0 0 1rem 0;
+  background-color: #fff;
+  margin: 0.5rem 0 1rem 0;
   border: 1px solid #e0e0e0;
   border-radius: 2px; }
   .collection .collection-item {
@@ -2170,12 +2149,15 @@ td, th {
     -ms-transition: 0.25s;
     transition: 0.25s; }
     .collection a.collection-item:not(.active):hover {
-      background-color: #f2f2f2; }
+      background-color: rgba(0, 0, 0, 0.08); }
   .collection.with-header .collection-header {
     border-bottom: 1px solid #e0e0e0;
     padding: 10px 20px; }
   .collection.with-header .collection-item {
     padding-left: 30px; }
+  .collection .active {
+    background-color: #42A5F5;
+    color: #BBDEFB; }
   .collection .secondary-content {
     float: right; }
   .collection.pagination {
@@ -2221,12 +2203,6 @@ span.badge {
   span.badge.new:after {
     content: " new"; }
 
-img.circle {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  background-clip: padding-box; }
-
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -2239,6 +2215,43 @@ img.circle {
     left: 0;
     width: 100%;
     height: 100%; }
+
+/*******************
+  Utility Classes
+*******************/
+.left-align {
+  text-align: left; }
+
+.right-align {
+  text-align: right; }
+
+.center, .center-align {
+  text-align: center; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.no-select, input[type=range], input[type=range] + .thumb {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-clip: padding-box; }
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 @font-face {
   font-family: "Material-Design-Icons";
@@ -4775,7 +4788,8 @@ nav {
   nav a.button-collapse {
     float: left;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    height: 56px; }
     nav a.button-collapse i {
       font-size: 2.7rem;
       height: 56px;
@@ -4848,7 +4862,7 @@ nav {
       transform: translateY(0); }
 
 @media only screen and (min-width : 601px) {
-  nav, nav .nav-wrapper i, nav a.button-collapse i {
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px; }
 
@@ -5078,7 +5092,7 @@ small {
 
 .card-panel {
   padding: 1rem;
-  margin: 8px 0;
+  margin: 0.5rem 0 1rem 0;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -5087,7 +5101,7 @@ small {
 .card {
   position: relative;
   overflow: hidden;
-  margin-top: 10px;
+  margin: 0.5rem 0 1rem 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -5215,7 +5229,7 @@ small {
   padding: 0px 25px;
   font-size: 1.1rem;
   font-weight: 300;
-  color: #FFF;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between; }
@@ -5329,7 +5343,8 @@ ul.tabs li.tab {
   background-clip: padding-box;
   line-height: 36px;
   text-transform: uppercase;
-  border: none; }
+  border: none;
+  -webkit-tap-highlight-color: transparent; }
 
 .btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {
   background-color: #DFDFDF;
@@ -5411,6 +5426,8 @@ ul.tabs li.tab {
   margin: 0px;
   min-width: 100px;
   z-index: 1000;
+  max-height: 50%;
+  opacity: 0;
   will-change: width, height; }
   .dropdown-content li {
     cursor: pointer;
@@ -5418,7 +5435,7 @@ ul.tabs li.tab {
     color: rgba(0, 0, 0, 0.87);
     line-height: 1.5rem; }
     .dropdown-content li:hover {
-      background-color: rgba(0, 0, 0, 0.07); }
+      background-color: rgba(0, 0, 0, 0.06); }
     .dropdown-content li > a, .dropdown-content li > span {
       display: block;
       padding: 1rem 1rem; }
@@ -5594,11 +5611,12 @@ ul.tabs li.tab {
   margin-top: 10px;
   margin-bottom: 0px; }
 
-ul.collapsible {
+.collapsible {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd; }
-  ul.collapsible li {
+  border-left: 1px solid #ddd;
+  margin: 0.5rem 0 1rem 0; }
+  .collapsible li {
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
@@ -5666,7 +5684,7 @@ li.no-padding {
   -ms-transition: opacity 0.4s;
   transition: opacity 0.4s; }
   .materialboxed:hover {
-    will-change: left, top; }
+    will-change: left, top, width, height; }
     .materialboxed:hover:not(.active) {
       -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
       filter: "alpha(opacity=(${iefactor}))";
@@ -5679,10 +5697,13 @@ li.no-padding {
 
 #materialbox-overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #292929;
-  z-index: 999; }
+  z-index: 999;
+  will-change: opacity; }
 
 .materialbox-caption {
   position: fixed;
@@ -5819,7 +5840,7 @@ textarea {
   /* prevents text jump on Enter keypress */ }
 
 /***************
-  Radio Buttons 
+  Radio Buttons
 ***************/
 /* Remove default Radio Buttons */
 [type="radio"]:not(:checked), [type="radio"]:checked {
@@ -5922,7 +5943,7 @@ textarea {
   border-color: rgba(0, 0, 0, 0.26); }
 
 /***************
-   Checkboxes 
+   Checkboxes
 ***************/
 /* CUSTOM CSS CHECKBOXES */
 form p {
@@ -5994,7 +6015,10 @@ form p:last-child {
   -o-transform: rotateZ(40deg);
   transform: rotateZ(40deg);
   -webkit-backface-visibility: hidden;
-  -webkit-transform-origin: 20% 40%;
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
   transform-origin: 100% 100%; }
 
 /* disabled checkbox */
@@ -6019,7 +6043,7 @@ form p:last-child {
   border-color: rgba(0, 0, 0, 0.26); }
 
 /***************
-  Select Field 
+  Select Field
 ***************/
 .select-wrapper span.select-dropdown {
   position: relative;
@@ -6060,7 +6084,7 @@ select:disabled {
     background-color: transparent; }
 
 /***************
-      Range 
+      Range
 ***************/
 .range-field {
   position: relative; }
@@ -6235,64 +6259,80 @@ ul.table-of-contents a {
     padding-left: 18px;
     border-left: 2px solid #ea4a4f; }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width : 992px) {
   ul.side-nav {
     position: fixed;
     width: 240px;
     left: -250px;
     top: 0;
-    height: 120%;
+    bottom: 0;
     background-color: #FFF;
     z-index: 999;
-    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     will-change: left; }
-    ul.side-nav.right {
+    ul.side-nav.right-aligned {
       will-change: right;
       right: -250px;
       left: auto; }
+    ul.side-nav .collapsible {
+      margin: 0; }
     ul.side-nav li {
       float: none;
-      padding: 0 15px; }
+      padding: 0 15px;
+      width: 240px; }
       ul.side-nav li:hover, ul.side-nav li.active {
         background-color: #ddd; }
     ul.side-nav a {
       color: #444; }
  }
 
-ul.side-nav.full {
+ul.side-nav.full, ul.side-nav.fixed {
   position: fixed;
   width: 240px;
   left: -250px;
   top: 0;
-  height: 120%;
+  bottom: 0;
   margin: 0;
   background-color: #FFF;
   z-index: 999;
-  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   will-change: left; }
-  ul.side-nav.full.right {
+  ul.side-nav.full.right-aligned, ul.side-nav.fixed.right-aligned {
     will-change: right;
     right: -250px;
     left: auto; }
-  ul.side-nav.full li {
+  ul.side-nav.full .collapsible, ul.side-nav.fixed .collapsible {
+    margin: 0; }
+  ul.side-nav.full li, ul.side-nav.fixed li {
     float: none;
     line-height: 64px;
     padding: 0 15px;
-    -webkit-transition: background-color 0.3s;
-    -moz-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
-    -ms-transition: background-color 0.3s;
-    transition: background-color 0.3s; }
-    ul.side-nav.full li:hover, ul.side-nav.full li.active {
+    width: 240px;
+    -webkit-transition: background-color 0s;
+    -moz-transition: background-color 0s;
+    -o-transition: background-color 0s;
+    -ms-transition: background-color 0s;
+    transition: background-color 0s; }
+    ul.side-nav.full li:hover, ul.side-nav.full li.active, ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
       background-color: #ddd; }
-  ul.side-nav.full a {
+  ul.side-nav.full a, ul.side-nav.fixed a {
     display: block;
     padding: 0 15px;
     color: #444; }
+
+ul.side-nav.fixed {
+  left: 0;
+  position: fixed; }
+  ul.side-nav.fixed.right-aligned {
+    will-change: right;
+    right: 0;
+    left: auto; }
+
+@media only screen and (max-width : 992px) {
+  ul.side-nav.fixed {
+    left: -250px; }
+    ul.side-nav.fixed.right-aligned {
+      right: -250px;
+      left: auto; }
+ }
 
 #sidenav-overlay {
   position: fixed;

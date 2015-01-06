@@ -471,7 +471,7 @@ module.exports = function(grunt) {
       'usebanner:release',
       'compress:main',
       'compress:src',
-      'compress:templates',
+      'compress:template',
       'replace:version',
       'replace:readme',
       'rename:rename_src',

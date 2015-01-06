@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.94.0
+### Current Version : v0.94.1
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -13,6 +13,17 @@ Materialize, a CSS Framework based on material design
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ##Changelog
+
+- v0.94.1
+  - Standardized components top and bottom margin
+  - Fixed Sidebar added
+  - Dropdown has cleaner animation
+  - Tabs/Collapsibles supports active class
+  - Materialbox bug fixes
+  - Collapsible bug fixes
+  - Sidebar bug fixes
+  - Checkbox cross-browser fixes
+  - Modal supports ESC closing
 
 - v0.94.0
   - Sidenav supports right edge positioning
