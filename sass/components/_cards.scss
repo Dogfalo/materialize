@@ -5,12 +5,14 @@
   margin: $element-top-margin 0 $element-bottom-margin 0;
   @include border-radius(2px);
   @extend .z-depth-1;
+  background-color: $card-bg-color;
 }
 
 .card {
   position: relative;
   overflow: hidden;
   margin: $element-top-margin 0 $element-bottom-margin 0;
+  background-color: $card-bg-color;
   @include box-sizing(border-box);
   @include border-radius(2px);
   @extend .z-depth-1;
@@ -69,7 +71,6 @@
       top: 0;
       bottom: 0;
       width: 100%;
-      z-index: -1;
     }
 
     .card-title {
