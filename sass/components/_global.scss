@@ -30,11 +30,7 @@ a {
 }
 
 
-
-
-
 // Positioning
-
 .valign-wrapper {
   display: flex;
   align-items: center;
@@ -283,7 +279,7 @@ td, th{
 // Collections
 .collection {
   background-color: $collection-bg-color;
-  margin: 0 0 1rem 0;
+  margin: $element-top-margin 0 $element-bottom-margin 0;
   border: 1px solid $collection-border-color;
   border-radius: 2px;
 
