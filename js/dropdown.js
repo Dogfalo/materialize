@@ -31,14 +31,25 @@
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
-      activates.css({
-        display: 'block',
-        top: origin.offset().top,
-        left: origin.offset().left,
-        height: 0
-      });
-      activates.velocity({opacity: 1}, {duration: options.inDuration/2, queue: false, easing: 'easeOutSine'})
-      .velocity({height: dropdownRealHeight}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'});
+      if (elementOrParentIsFixed(origin[0])) {
+        activates.css({
+          display: 'block',
+          position: 'fixed',
+          height: 0,
+          top: origin.position().top,
+          left:origin.position().left
+        });
+      }
+      else {
+        activates.css({
+          display: 'block',
+          top: origin.offset().top,
+          left: origin.offset().left,
+          height: 0
+        });
+      }
+      activates.velocity({opacity: 1}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'})
+      .velocity({height: dropdownRealHeight}, {duration: options.inDuration, queue: false, easing: 'easeOutCubic'});
     }
     function elementOrParentIsFixed(element) {
         var $element = $(element);
@@ -53,9 +64,7 @@
         return isFixed;
     }
 
-    if (elementOrParentIsFixed(origin[0])) {
-      activates.css('position', 'fixed');
-    }
+
 
 
     // Hover
