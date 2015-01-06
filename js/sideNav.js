@@ -48,6 +48,8 @@
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
+        var menuWidth = menu_id.width();
+
         if (options.edge != 'left') {
           menu_id.addClass('right-aligned');
         }
@@ -68,12 +70,12 @@
             complete: function() {
               $(this).remove();
             } });
-
           if (options.edge === 'left') {
-            menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+
+            menu_id.velocity({left: -1 * (menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }
           else {
-            menu_id.velocity({right: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+            menu_id.velocity({right: -1 * (menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }
           enable_scroll();
         }
@@ -102,10 +104,10 @@
                   removeMenu();
 
                   if (options.edge === 'left') {
-                    menu_id.velocity({left: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                    menu_id.velocity({left: -1 * menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                   }
                   else {
-                    menu_id.velocity({right: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                    menu_id.velocity({right: -1 * menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                   }
                   overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
                     complete: function() {
@@ -118,25 +120,25 @@
               }
 
 
-              if (x > options.menuWidth) { x = options.menuWidth; }
+              if (x > menuWidth) { x = menuWidth; }
               else if (x < 0) { x = 0; }
-              else if (x < (options.menuWidth / 2)) { menuOut = false; }
-              else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+              else if (x < (menuWidth / 2)) { menuOut = false; }
+              else if (x >= (menuWidth / 2)) { menuOut = true; }
 
               if (options.edge === 'left') {
-                menu_id.velocity({left: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({left: (-1 * menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                menu_id.velocity({right: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({right: (-1 * menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
               }
 
                 // Percentage overlay
-                var overlayPerc = x / options.menuWidth;
+                var overlayPerc = x / menuWidth;
                 $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
               }
               else {
                 if (menuOut) {
-                  if ((e.gesture.center.x > (options.menuWidth - options.activationWidth)) && direction === 2) {
+                  if ((e.gesture.center.x > (menuWidth - options.activationWidth)) && direction === 2) {
                     panning = true;
                   }
                 }
