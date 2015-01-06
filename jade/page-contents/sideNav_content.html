@@ -34,7 +34,8 @@
 
 
       <div id="structure" class="section scrollspy">
-        <h4>Tabs HTML Structure</h4>
+        <h4>Full HTML Structure</h4>
+        <p>Add the class <code class="language-markup">full</code> to have the sideNav openable on all screen sizes like the example above.</p>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav full">
     &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
@@ -54,6 +55,16 @@
         &lt;/li>
       &lt;/ul>
     &lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+        </code></pre>
+
+        <h4>Fixed HTML Structure</h4>
+        <p>Add the class <code class="language-markup">fixed</code> to have the sideNav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sideNav on the left is an example of this.</p>
+        <pre><code class="language-markup col s12">
+  &lt;ul id="slide-out" class="side-nav fixed">
+    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
         </code></pre>
