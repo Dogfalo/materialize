@@ -40,7 +40,6 @@
 
     $.fn.sideNav = function (options) {
       var defaults = {
-        menuWidth: 240,
         activationWidth: 70,
         edge: 'left'
       }
@@ -50,7 +49,18 @@
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
         if (options.edge != 'left') {
-          menu_id.addClass('right');
+          menu_id.addClass('right-aligned');
+        }
+
+        // Window resize to reset on large screens fixed
+        if (menu_id.hasClass('fixed')) {
+          $(window).resize( function() {
+            if ($(window).width() > 1200) {
+              if (menu_id.attr('style')) {
+                menu_id.removeAttr('style');
+              }
+            }
+          });
         }
 
         function removeMenu() {

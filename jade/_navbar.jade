@@ -1,35 +1,92 @@
-// Buy sell ads
-script.
-  (function(){
-    var bsa = document.createElement('script');
-       bsa.type = 'text/javascript';
-       bsa.async = true;
-       bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
-    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-  })();
-
 header
-  nav(id=(white_nav == false ? "" : "front-page-nav"))
-    .container
-      .nav-wrapper
-        if white_nav == false
-          a.brand-logo(href='http://materializecss.com/') Materialize
-        else
-          a#logo-container.brand-logo(href='http://materializecss.com/')
-            object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
+  if no_nav == false
+    nav.top-nav
+      .container
+        .nav-wrapper
+          a.page-title #{page}
+  .container
+    a.button-collapse.top-nav(href='#', data-activates='nav-mobile', class=(no_nav == false ? "full" : ""))
+      i.mdi-navigation-menu
+  ul#nav-mobile.side-nav.fixed
+    li(class="logo")
+      a#logo-container.brand-logo(href='http://materializecss.com/')
+        object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
+    li.bold(class=(page == "About" ? "active" : ""))
+      a(href='about.html') About
+    li.bold(class=(page == "Getting Started" ? "active" : ""))
+      a(href='getting-started.html') Getting Started
 
-        ul#nav-mobile.right.side-nav
-          li(class=(page == "About" ? "active" : ""))
-            a(href='http://materializecss.com/about.html') About
-          li(class=(page == "Getting Started" ? "active" : ""))
-            a(href='http://materializecss.com/getting-started.html') Getting Started
-          li(class=(page == "Sass" ? "active" : ""))
-            a(href='http://materializecss.com/sass.html') Sass
-          li(class=(page == "Components" ? "active" : ""))
-            a(href='http://materializecss.com/components.html') Components
-          li(class=(page == "JavaScript" ? "active" : ""))
-            a(href='http://materializecss.com/javascript.html') JavaScript
-          li(class=(page == "Mobile" ? "active" : ""))
-            a(href='http://materializecss.com/mobile.html') Mobile
-        a.button-collapse(href='#', data-activates='nav-mobile')
-          i.mdi-navigation-menu
+    li.no-padding
+      ul.collapsible.collapsible-accordion
+        li.bold
+          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Table" || page == "Helpers" ? "active" : ""))
+            | CSS
+          .collapsible-body
+            ul
+              li(class=(page == "Sass" ? "active" : ""))
+                a(href='sass.html') Sass
+              li(class=(page == "Typography" ? "active" : ""))
+                a(href='typography.html') Typography
+              li(class=(page == "Color" ? "active" : ""))
+                a(href='color.html') Color
+              li(class=(page == "Shadow" ? "active" : ""))
+                a(href='shadow.html') Shadow
+              li(class=(page == "Grid" ? "active" : ""))
+                a(href='grid.html') Grid
+              li(class=(page == "Media CSS" ? "active" : ""))
+                a(href='media-css.html') Media
+              li(class=(page == "Table" ? "active" : ""))
+                a(href='table.html') Table
+              li(class=(page == "Helpers" ? "active" : ""))
+                a(href='helpers.html') Helpers
+        li.bold
+          a.collapsible-header(class=(page == "Forms" || page == "Buttons" || page == "Navbar" || page == "Cards" || page == "Preloader" || page == "Collections" || page == "Badges" || page == "Footer" ? "active" : "" || page == "Icons" ? "active" : ""))
+            | Components
+          .collapsible-body
+            ul
+              li(class=(page == "Badges" ? "active" : ""))
+                a(href='badges.html') Badges
+              li(class=(page == "Buttons" ? "active" : ""))
+                a(href='buttons.html') Buttons
+              li(class=(page == "Cards" ? "active" : ""))
+                a(href='cards.html') Cards
+              li(class=(page == "Collections" ? "active" : ""))
+                a(href='collections.html') Collections
+              li(class=(page == "Footer" ? "active" : ""))
+                a(href='footer.html') Footer
+              li(class=(page == "Forms" ? "active" : ""))
+                a(href='forms.html') Forms
+              li(class=(page == "Icons" ? "active" : ""))
+                a(href='icons.html') Icons
+              li(class=(page == "Navbar" ? "active" : ""))
+                a(href='navbar.html') Navbar
+              li(class=(page == "Preloader" ? "active" : ""))
+                a(href='preloader.html') Preloader
+        li.bold
+          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "Tabs" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Parallax" || page == "Collapsible" ? "active" : ""))
+            | JavaScript
+          .collapsible-body
+            ul
+              li(class=(page == "Dialogs" ? "active" : ""))
+                a(href='dialogs.html') Dialogs
+              li(class=(page == "Modals" ? "active" : ""))
+                a(href='modals.html') Modals
+              li(class=(page == "Dropdown" ? "active" : ""))
+                a(href='dropdown.html') Dropdown
+              li(class=(page == "Tabs" ? "active" : ""))
+                a(href='tabs.html') Tabs
+              li(class=(page == "SideNav" ? "active" : ""))
+                a(href='side-nav.html') SideNav
+              li(class=(page == "Pushpin" ? "active" : ""))
+                a(href='pushpin.html') Pushpin
+              li(class=(page == "Waves" ? "active" : ""))
+                a(href='waves.html') Waves
+              li(class=(page == "Media" ? "active" : ""))
+                a(href='media.html') Media
+              li(class=(page == "Parallax" ? "active" : ""))
+                a(href='parallax.html') Parallax
+              li(class=(page == "Collapsible" ? "active" : ""))
+                a(href='collapsible.html') Collapsible
+
+    li.bold(class=(page == "Mobile" ? "active" : ""))
+      a(href='http://materializecss.com/mobile.html') Mobile

@@ -1,5 +1,5 @@
 (function ($) {
-    
+
   $.fn.tabs = function () {
 
     return this.each(function() {
@@ -19,10 +19,19 @@
         $tabs_width = $this.width(),
         $tab_width = $this.find('li').first().outerWidth(),
         $index = 0;
-    
+
     // If the location.hash matches one of the links, use that as the active tab.
-    // If no match is found, use the first link as the initial active tab.
-    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+    // console.log($(".tabs .tab a[href='#tab3']"));
+    $active = $($links.filter('[href="'+location.hash+'"]'));
+
+    // If no match is found, use the first link or any with class 'active' as the initial active tab.
+    if ($active.length === 0) {
+        $active = $(this).find('li.tab a.active').first();
+    }
+    if ($active.length === 0) {
+      $active = $(this).find('li.tab a').first();
+    }
+
     $active.addClass('active');
     $index = $links.index($active);
     if ($index < 0) {
@@ -30,7 +39,7 @@
     }
 
     $content = $($active[0].hash);
-    
+
     // append indicator then set indicator width to tab width
     $this.append('<div class="indicator"></div>');
     var $indicator = $this.find('.indicator');
@@ -40,10 +49,10 @@
     }
     $(window).resize(function () {
       $tabs_width = $this.width();
-      $tab_width = $this.find('li').first().outerWidth();    
+      $tab_width = $this.find('li').first().outerWidth();
       if ($index < 0) {
         $index = 0;
-      }  
+      }
       if ($tab_width !== 0 && $tabs_width !== 0) {
         $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
         $indicator.css({"left": $index * $tab_width});
@@ -54,7 +63,8 @@
     $links.not($active).each(function () {
       $(this.hash).hide();
     });
-    
+
+
     // Bind the click event handler
     $this.on('click', 'a', function(e){
       $tabs_width = $this.width();
@@ -63,12 +73,12 @@
       // Make the old tab inactive.
       $active.removeClass('active');
       $content.hide();
-    
+
       // Update the variables with the new link and content
       $active = $(this);
       $content = $(this.hash);
       $links = $this.find('li.tab a');
-    
+
       // Make the tab active.
       $active.addClass('active');
       var $prev_index = $index;
@@ -78,7 +88,7 @@
       }
       // Change url to current tab
 //      window.location.hash = $active.attr('href');
-      
+
       $content.show();
 
       // Update indicator
@@ -91,7 +101,7 @@
         $indicator.velocity({"left": $index * $tab_width}, { duration: 300, queue: false, easing: 'easeOutQuad'});
         $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 80});
       }
-    
+
       // Prevent the anchor's default click action
       e.preventDefault();
     });

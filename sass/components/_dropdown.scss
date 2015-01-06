@@ -6,9 +6,11 @@
   margin: 0px;
   min-width: 100px;
   z-index: 1000;
+  max-height: 50%;
+  opacity: 0;
 
   will-change: width, height;
-  
+
   li {
     cursor: pointer;
     font-size: 1.2rem;
@@ -16,7 +18,7 @@
     line-height: 1.5rem;
 
     &:hover {
-      background-color: rgba(0,0,0, .07);
+      background-color: rgba(0,0,0, .06);
     }
 
     & > a,& > span {

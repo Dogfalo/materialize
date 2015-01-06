@@ -11,14 +11,14 @@ $button-line-height: 36px;
 
 
 /*** Cards ***/
-$default-color: #00bcd4 !default; 
+$default-color: #00bcd4 !default;
 $card-padding: 16px !default;
 $footer-font-color: #000 !default;
 
 /*** Collapsible ***/
-$collapsible-height: 3rem;
-$collapsible-header-color: #fff;
-$collapsible-border-color: #ddd;
+$collapsible-height: 3rem !default;
+$collapsible-header-color: #fff !default;
+$collapsible-border-color: #ddd !default;
 
 /*** Forms ***/
 // Text Inputs + Textarea
@@ -48,16 +48,24 @@ $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
+
+
 // Grid Variables
 $num-cols: 12 !default;
 $gutter-width: 1.5rem !default;
 
+$element-top-margin: $gutter-width/3 !default;
+$element-bottom-margin: ($gutter-width*2)/3 !default;
+
+
+/*** SideNav ***/
+$sidenav-width: 240px;
 
 
 /*** Toasts ***/
 $toast-height: 48px !default;
-
-
+$toast-color: #323232 !default;
+$toast-text-color: #fff !default;
 
 /*** Typography ***/
 $off-black: rgba(0, 0, 0, 0.87) !default;
@@ -73,3 +81,10 @@ $h6-fontsize: 1rem !default;
 $range : $large-screen - $small-screen !default;
 $intervals: 20 !default;
 $interval-size: $range / $intervals !default;
+
+/*** Collections ***/
+$collection-border-color: #e0e0e0 !default;
+$collection-bg-color: #fff !default;
+$collection-active-bg-color: color("blue", "lighten-1") !default;
+$collection-active-color: color("blue", "lighten-4") !default;
+$collection-hover-bg-color: rgba(0,0,0,.08) !default;

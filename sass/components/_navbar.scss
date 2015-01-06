@@ -18,6 +18,7 @@ nav {
     @extend .hide-on-large-only;
     position: relative;
     z-index: 1;
+    height: 56px;
 
     i {
       font-size: 2.7rem;
@@ -32,7 +33,7 @@ nav {
     display: inline-block;
     font-size: 2.1rem;
     padding: 0;
-    
+
     @media #{$medium-and-down} {
       left: 0;
       width: 100%;
@@ -50,7 +51,7 @@ nav {
     margin: 0;
     float: right;
 
-    li { 
+    li {
       float: left;
       padding: 0px;
       @include transition(background-color .3s);
@@ -59,9 +60,9 @@ nav {
         background-color: rgba(0,0,0,.1);
       }
     }
-    a { 
+    a {
       font-size: 1rem;
-      color: #fff; 
+      color: #fff;
       display: block;
       padding: 0px 15px;
     }
@@ -80,7 +81,7 @@ nav {
       padding-left: 2rem;
       @include box-sizing(border-box);
 
-      &:focus, &[type=text]:valid, &[type=password]:valid, 
+      &:focus, &[type=text]:valid, &[type=password]:valid,
       &[type=email]:valid, &[type=date]:valid {
         border: none;
         @include box-shadow(none);
@@ -90,13 +91,13 @@ nav {
       top: 0;
       left: 0;
 
-      i { 
-        color: rgba(255,255,255,.7); 
+      i {
+        color: rgba(255,255,255,.7);
         @include transition(color .3s);
       }
       &.active i { color: #fff; }
-      &.active { 
-        @include transform(translateY(0)); 
+      &.active {
+        @include transform(translateY(0));
       }
     }
 
@@ -104,11 +105,11 @@ nav {
 
 }
 @media #{$medium-and-up} {
-  nav, nav .nav-wrapper i, nav a.button-collapse i {
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
   }
   nav .nav-wrapper i {
-    font-size: 2rem;    
+    font-size: 2rem;
   }
 }

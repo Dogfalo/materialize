@@ -31,11 +31,11 @@
   max-width:100%;
   height: $toast-height;
   line-height: $toast-height;
-  background-color: #323232;
+  background-color: $toast-color;
   padding: 0px 25px;
   font-size: 1.1rem;
   font-weight: 300;
-  color: #FFF;
+  color: $toast-text-color;
 
   display: flex;
   align-items: center;

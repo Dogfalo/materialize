@@ -1,12 +1,8 @@
-$collapsible-height: 3rem;
-$collapsible-header-color: #fff;
-$collapsible-border-color: #ddd;
-
-
-ul.collapsible {
+.collapsible {
   border-top: 1px solid $collapsible-border-color;
   border-right: 1px solid $collapsible-border-color;
   border-left: 1px solid $collapsible-border-color;
+  margin: $element-top-margin 0 $element-bottom-margin 0;
   @extend .z-depth-1;
 
   li {
@@ -46,11 +42,11 @@ ul.collapsible {
   }
 }
 
-li.active .collapsible-body { 
+li.active .collapsible-body {
 
 }
 
-// sideNav collapsible styling 
+// sideNav collapsible styling
 ul.side-nav {
 
   ul.collapsible {

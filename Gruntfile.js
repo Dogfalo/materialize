@@ -218,14 +218,40 @@ module.exports = function(grunt) {
         },
         files: {
           "index.html": "jade/index.jade",
+          "icons.html": "jade/icons.jade",
           "about.html": "jade/about.jade",
-          "getting-started.html": "jade/getting-started.jade",
           "sass.html": "jade/sass.jade",
-          "components.html": "jade/components.jade",
-          "javascript.html": "jade/javascript.jade",
+          "getting-started.html": "jade/getting-started.jade",
           "mobile.html": "jade/mobile.jade",
           "showcase.html": "jade/showcase.jade",
-          "parallax.html": "jade/parallax.jade"
+          "parallax.html": "jade/parallax.jade",
+          "parallax-demo.html": "jade/parallax-demo.jade",
+          "typography.html": "jade/typography.jade",
+          "color.html": "jade/color.jade",
+          "shadow.html": "jade/shadow.jade",
+          "grid.html": "jade/grid.jade",
+          "media-css.html": "jade/media-css.jade",
+          "table.html": "jade/table.jade",
+          "helpers.html": "jade/helpers.jade",
+          "forms.html": "jade/forms.jade",
+          "buttons.html": "jade/buttons.jade",
+          "navbar.html": "jade/navbar.jade",
+          "cards.html": "jade/cards.jade",
+          "preloader.html": "jade/preloader.jade",
+          "collections.html": "jade/collections.jade",
+          "badges.html": "jade/badges.jade",
+          "footer.html": "jade/footer.jade",
+          "dialogs.html": "jade/dialogs.jade",
+          "modals.html": "jade/modals.jade",
+          "dropdown.html": "jade/dropdown.jade",
+          "tabs.html": "jade/tabs.jade",
+          "side-nav.html": "jade/sideNav.jade",
+          "pushpin.html": "jade/pushpin.jade",
+          "waves.html": "jade/waves.jade",
+          "media.html": "jade/media.jade",
+          "parallax.html": "jade/parallax.jade",
+          "collapsible.html": "jade/collapsible.jade",
+
 
         }
       }
@@ -358,7 +384,65 @@ module.exports = function(grunt) {
           keepalive: true
         }
       }
-    }
+    },
+
+    // Text Replace
+    replace: {
+      version: { // Does not edit README.md
+        src: [
+          'bower.json',
+          'package.json',
+          'jade/**/*.html'
+        ],
+        overwrite: true,
+        replacements: [{
+          from: grunt.option( "oldver" ),
+          to: grunt.option( "newver" )
+        }]
+      },
+      readme: { // Changes README.md
+        src: [
+          'README.md'
+        ],
+        overwrite: true,
+        replacements: [{
+          from: 'Current Version : v'+grunt.option( "oldver" ),
+          to: 'Current Version : v'+grunt.option( "newver" )
+        }]
+      },
+    },
+
+    // Create Version Header for files
+    usebanner: {
+        release: {
+          options: {
+            position: 'top',
+            banner: "/*!\n * Materialize v"+ grunt.option( "newver" ) +" (http://materializecss.com)\n * Copyright 2014-2015 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */",
+            linebreak: true
+          },
+          files: {
+            src: [ 'dist/css/*.css', 'dist/js/*.js']
+          }
+        }
+      },
+
+      // Rename files
+      rename: {
+          rename_src: {
+              src: 'bin/materialize-src-v'+grunt.option( "oldver" )+'.zip',
+              dest: 'bin/materialize-src-v'+grunt.option( "newver" )+'.zip',
+              options: {
+                ignore: true
+              }
+          },
+          rename_compiled: {
+              src: 'bin/materialize-v'+grunt.option( "oldver" )+'.zip',
+              dest: 'bin/materialize-v'+grunt.option( "newver" )+'.zip',
+              options: {
+                ignore: true
+              }
+          },
+      }
 
   });
 
@@ -370,14 +454,33 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
- grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-banner');
+  grunt.loadNpmTasks('grunt-rename');
 
   // define the tasks
-  grunt.registerTask('default', ['copy', 'sass:expanded', 'sass:min', 'concat:dist', 'uglify:dist', 'compress:main', 'compress:src']);
+  grunt.registerTask(
+    'release',[
+      'copy',
+      'sass:expanded',
+      'sass:min',
+      'concat:dist',
+      'uglify:dist',
+      'usebanner:release',
+      'compress:main',
+      'compress:src',
+      'compress:template',
+      'replace:version',
+      'replace:readme',
+      'rename:rename_src',
+      'rename:rename_compiled'
+    ]
+  );
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);

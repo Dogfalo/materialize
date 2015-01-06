@@ -1,7 +1,8 @@
 
+
 .card-panel {
   padding: 1rem;
-  margin: 8px 0;
+  margin: $element-top-margin 0 $element-bottom-margin 0;
   @include border-radius(2px);
   @extend .z-depth-1;
 }
@@ -9,7 +10,7 @@
 .card {
   position: relative;
   overflow: hidden;
-  margin-top: 10px;
+  margin: $element-top-margin 0 $element-bottom-margin 0;
   @include box-sizing(border-box);
   @include border-radius(2px);
   @extend .z-depth-1;
@@ -113,5 +114,4 @@
 
     @include box-sizing(border-box);
   }
-
 }

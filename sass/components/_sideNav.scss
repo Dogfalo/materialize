@@ -1,61 +1,73 @@
-@media only screen and (max-width: 992px) {
+@media #{$medium-and-down} {
   ul.side-nav {
     position: fixed;
-    width: 240px;
-    left: -250px;
+    width: $sidenav-width;
+    left: -1 * ($sidenav-width + 10);
     top: 0;
-    height: 120%;
+    bottom: 0;
     background-color: #FFF;
     z-index: 999;
-    @include box-shadow-2(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 
     will-change: left;
 
     // Right Align
-    &.right {
+    &.right-aligned {
       will-change: right;
-      right: -250px;
+      right: -1 * ($sidenav-width + 10);
       left: auto;
+    }
+
+    .collapsible{
+      margin: 0;
     }
 
 
     li {
       float: none;
       padding: 0 15px;
-
+      width: 240px;
       &:hover, &.active { background-color: #ddd; }
     }
     a {
       color: #444;
     }
   }
+
 }
 
-ul.side-nav.full {
+// Hidden side-nav for all sizes
+ul.side-nav.full,
+ul.side-nav.fixed {
   position: fixed;
-  width: 240px;
-  left: -250px;
+  width: $sidenav-width;
+  left: -1 * ($sidenav-width + 10);
   top: 0;
-  height: 120%;
+  bottom: 0;
   margin: 0;
   background-color: #FFF;
   z-index: 999;
-  @include box-shadow-2(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+  @extend .z-depth-1;
 
   will-change: left;
 
   // Right Align
-  &.right {
+  &.right-aligned {
     will-change: right;
-    right: -250px;
+    right: -1 * ($sidenav-width + 10);
     left: auto;
+  }
+
+  .collapsible{
+    margin: 0;
   }
 
   li {
     float: none;
     line-height: 64px;
     padding: 0 15px;
-    @include transition(background-color .3s);
+    width: $sidenav-width;
+
+    @include transition(background-color 0s);
 
     &:hover, &.active { background-color: #ddd; }
   }
@@ -65,6 +77,33 @@ ul.side-nav.full {
     color: #444;
   }
 }
+
+
+// Fixed side-nav shown
+ul.side-nav.fixed {
+  left: 0;
+  position: fixed;
+
+  // Right Align
+  &.right-aligned {
+    will-change: right;
+    right: 0;
+    left: auto;
+  }
+}
+
+// Fixed sideNav hide on smaller
+@media #{$medium-and-down} {
+  ul.side-nav.fixed {
+    left: -1 * ($sidenav-width + 10);
+
+    &.right-aligned {
+      right: -1 * ($sidenav-width + 10);
+      left: auto;
+    }
+  }
+}
+
 
 #sidenav-overlay {
   position: fixed;

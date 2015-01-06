@@ -1,3 +1,8 @@
+/*!
+ * Materialize v0.94.1 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -245,46 +250,71 @@ jQuery.extend( jQuery.easing,
     };
 
     options = $.extend(defaults, options);
-    var $this = $(this);
-    
-    var $panel_headers = $(this).find('.collapsible-header');
-  
-    if (defaults.accordion) {
 
-      $panel_headers.each(function () {
-        $(this).click(function () {
-          
-          $(this).parent().toggleClass('active');
-          if ($(this).parent().hasClass('active')){
-            $(this).siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false});
-          }
-          else{
-            $(this).siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
-          }
-          $panel_headers.not($(this)).parent().removeClass('active');
-          $panel_headers.not($(this)).parent().children('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
-        });
-      });
 
-    }
-    else {
-      $panel_headers.each(function () {
-        $(this).click(function () {
-          $(this).parent().toggleClass('active');
-          if ($(this).parent().hasClass('active')){
-            $(this).siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false});
-          }
-          else{
-            $(this).siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
-          }
+    return this.each(function() {
+
+      var $this = $(this);
+
+      var $panel_headers = $(this).find('.collapsible-header');
+
+      // Accordion Open
+      function accordionOpen(object) {
+        object.parent().toggleClass('active');
+        if (object.parent().hasClass('active')){
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false});
+        }
+        else{
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
+        }
+        $panel_headers.not(object).parent().removeClass('active');
+        $panel_headers.not(object).parent().children('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
+      }
+
+      // Collapsible Open
+      function collapsibleOpen(object) {
+        object.parent().toggleClass('active');
+        if (object.parent().hasClass('active')){
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false});
+        }
+        else{
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
+        }
+      }
+
+      if (defaults.accordion) {
+
+        $panel_headers.each(function () {
+          $(this).click(function () {
+            accordionOpen($(this));
+          });
         });
-      });
-    }
+
+        // Open first active
+        accordionOpen($panel_headers.filter('.active').first());
+      }
+      else {
+        $panel_headers.each(function () {
+
+          // Open any bodies that have the active class
+          if ($(this).hasClass('active')) {
+            collapsibleOpen($(this));
+          }
+
+          $(this).click(function () {
+            collapsibleOpen($(this));
+          });
+        });
+      }
+
+    });
   };
 }( jQuery ));;(function ($) {
 
   $.fn.dropdown = function (options) {
     var defaults = {
+      inDuration: 300,
+      outDuration: 225,
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: true
     }
@@ -292,10 +322,9 @@ jQuery.extend( jQuery.easing,
     options = $.extend(defaults, options);
     this.each(function(){
     var origin = $(this);
-    
+
     // Dropdown menu
     var activates = $("#"+ origin.attr('data-activates'));
-    activates.hide(0);
 
     // Move Dropdown menu to body. This allows for absolute positioning to work
     if ( !(activates.parent().is($('body'))) ) {
@@ -304,17 +333,23 @@ jQuery.extend( jQuery.easing,
     }
 
 
-    /*    
+    /*
       Helper function to position and resize dropdown.
       Used in hover and click handler.
-    */    
+    */
     function placeDropdown() {
+      var dropdownRealHeight = activates.height();
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
-      activates.css('top', origin.offset().top);
-      activates.css('left', origin.offset().left);
-      activates.show({duration: 250, easing: 'easeOutCubic'});
+      activates.css({
+        display: 'block',
+        top: origin.offset().top,
+        left: origin.offset().left,
+        height: 0
+      });
+      activates.velocity({opacity: 1}, {duration: options.inDuration/2, queue: false, easing: 'easeOutSine'})
+      .velocity({height: dropdownRealHeight}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'});
     }
     function elementOrParentIsFixed(element) {
         var $element = $(element);
@@ -330,7 +365,6 @@ jQuery.extend( jQuery.easing,
     }
 
     if (elementOrParentIsFixed(origin[0])) {
-      console.log('fixed it is');
       activates.css('position', 'fixed');
     }
 
@@ -341,10 +375,22 @@ jQuery.extend( jQuery.easing,
       origin.on('mouseover', function(e){ // Mouse over
         placeDropdown();
       });
-      
-      // Document click handler        
+
+      // Document click handler
       activates.on('mouseleave', function(e){ // Mouse out
-        activates.hide({duration: 175, easing: 'easeOutCubic'});
+        activates.velocity(
+          {
+            opacity: 0
+          },
+          {
+            duration: options.outDuration,
+            easing: 'easeOutQuad',
+            complete: function(){
+              activates.css({
+                display: 'none'
+              });
+            }
+          });
       });
 
     // Click
@@ -358,7 +404,18 @@ jQuery.extend( jQuery.easing,
         placeDropdown();
         $(document).bind('click.'+ activates.attr('id'), function (e) {
           if (!activates.is(e.target) && (!origin.is(e.target))) {
-            activates.hide({duration: 175, easing: 'easeOutCubic'});
+            activates.velocity({
+              opacity: 0
+            },
+            {
+              duration: options.outDuration,
+              easing: 'easeOutQuad',
+              complete: function(){
+                activates.css({
+                  display: 'none'
+                });
+              }
+            });
             $(document).unbind('click.' + activates.attr('id'));
           }
         });
@@ -394,6 +451,13 @@ jQuery.extend( jQuery.easing,
       if (options.dismissible) {
         $("#lean-overlay").click(function() {
           $(modal).closeModal(options);
+        });
+        // Return on ESC
+        $(document).keyup(function(e) {
+          if (e.keyCode === 27) {   // ESC key
+            $(modal).closeModal(options);
+            $(this).off();
+          }
         });
       }
 
@@ -469,80 +533,80 @@ jQuery.extend( jQuery.easing,
       var overlayActive = false;
       var doneAnimating = true;
       var inDuration = 275;
-      var outDuration = 225;
+      var outDuration = 200;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
-      var originalWidth = origin.width();
-      var originalHeight = origin.height(); 
+      var originalWidth = 0;
+      var originalHeight = 0;
 
       origin.wrap(placeholder);
       origin.on('click', function(){
-        
 
+        var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
-        
-        // If already modal, do nothing
-        if (overlayActive || doneAnimating === false) {
+        var originalWidth = origin.width();
+        var originalHeight = origin.height();
+
+        // If already modal, return to original
+        if (doneAnimating === false) {
+          return false;
+        }
+        else if (overlayActive && doneAnimating===true) {
           returnToOriginal();
           return false;
         }
-        origin.stop();
-        $('#materialbox-overlay').stop(true, true, true);
 
-
-        // Stop ongoing animation
-        // origin.stop( {jumpToEnd: true} );
-
-        // add active class
+        // Set states
+        doneAnimating = false;
         origin.addClass('active');
-        originalWidth = origin.width();
-        originalHeight = origin.height();
+        overlayActive = true;
 
-        
         // Set positioning for placeholder
-        origin.parent('.material-placeholder').css('width', origin.innerWidth())
-          .css('height', originalHeight)
-          .css('position', 'relative')
-          .css('top', 0)
-          .css('left', 0);
 
-        
-        origin.css('position', 'absolute');
+        placeholder.css({
+          width: placeholder[0].getBoundingClientRect().width,
+          height: placeholder[0].getBoundingClientRect().height,
+          position: 'relative',
+          top: 0,
+          left: 0
+        })
 
-        // Add caption if it exists
+        // Set css on origin
+        origin.css({position: 'absolute', 'z-index': 1000})
+        .data('width', originalWidth)
+        .data('height', originalHeight);
+
+        // Add overlay
+        var overlay = $('<div id="materialbox-overlay"></div>')
+          .css({
+            opacity: 0
+          })
+          .click(function(){
+            if (doneAnimating === true)
+            returnToOriginal();
+          });
+          // Animate Overlay
+          $('body').append(overlay);
+          overlay.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
+            );
+
+
+        // Add and animate caption if it exists
         if (origin.data('caption') !== "") {
           var $photo_caption = $('<div class="materialbox-caption"></div');
           $photo_caption.text(origin.data('caption'));
           $('body').append($photo_caption);
+          $photo_caption.css({ "display": "inline" });
+          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
         }
 
-        // Add overlay
-        var overlay = $('<div></div>');
-        overlay.attr('id', 'materialbox-overlay')
-          .css('width', $(document).width() + 100) // account for any scrollbar
-          .css('height', $(document).height() + 100) // account for any scrollbar
-          .css('top', 0)
-          .css('left', 0)
-          .css('opacity', 0)
-          .css('will-change', 'opacity')
-          .click(function(){
-            returnToOriginal();
-          });
-        $('body').append(overlay);
-        overlay.animate({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
-        );
-        
-        // Set states
-        overlayActive = true;
-        doneAnimating = false;
 
-        
-        // Resize Image      
+
+        // Resize Image
         var ratio = 0;
         var widthPercent = originalWidth / windowWidth;
         var heightPercent = originalHeight / windowHeight;
-        
         var newWidth = 0;
         var newHeight = 0;
 
@@ -557,87 +621,134 @@ jQuery.extend( jQuery.easing,
           newHeight = windowHeight * 0.9;
         }
 
-        // Animate caption
-        if (origin.data('caption') !== "") {
-          $photo_caption.css({ "display": "inline" });
-          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-        }
-
-        // Reposition Element AND Animate image + set z-index
-        origin.css('z-index', 1000)
-        .css('will-change', 'left, top')
+        // Animate image + set z-index
         if(origin.hasClass('responsive-img')) {
-          origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false, 
+          origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false,
             complete: function(){
-              origin.css('left', 0)
-                .css('top', 0)
-                
-                .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-                .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-                .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
-            }
-          });
+              origin.css({left: 0, top: 0})
+              .velocity(
+                {
+                  height: newHeight,
+                  width: newWidth,
+                  left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2,
+                  top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2
+                },
+                {
+                  duration: inDuration,
+                  queue: false,
+                  easing: 'easeOutQuad',
+                  complete: function(){doneAnimating = true;}
+                }
+              );
+            } // End Complete
+          }); // End Velocity
         }
         else {
           origin.css('left', 0)
-            .css('top', 0)
-            .velocity({ height: newHeight, width: newWidth }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-            .velocity({ left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2 }, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
-            .velocity({ top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2}, {duration: inDuration, queue: false, easing: 'easeOutQuad', complete: function(){doneAnimating = true;} });
+          .css('top', 0)
+          .velocity(
+            {
+              height: newHeight,
+              width: newWidth,
+              left: $(document).scrollLeft() + windowWidth/2 - origin.parent('.material-placeholder').offset().left - newWidth/2,
+              top: $(document).scrollTop() + windowHeight/2 - origin.parent('.material-placeholder').offset().top - newHeight/ 2
+            },
+            {
+              duration: inDuration,
+              queue: false,
+              easing: 'easeOutQuad',
+              complete: function(){doneAnimating = true;}
+            }
+            ); // End Velocity
         }
 
+    }); // End origin on click
 
 
-        }); // End origin on click
-
-      
       // Return on scroll
       $(window).scroll(function() {
-        if (overlayActive) {
-          returnToOriginal();    
+        if (overlayActive ) {
+          returnToOriginal();
         }
       });
-      
+
       // Return on ESC
       $(document).keyup(function(e) {
 
-        if (e.keyCode === 27) {   // ESC key
+        if (e.keyCode === 27 && doneAnimating === true) {   // ESC key
           if (overlayActive) {
-            returnToOriginal();    
+            returnToOriginal();
           }
         }
       });
-      
-      
+
+
       // This function returns the modaled image to the original spot
       function returnToOriginal() {
-          // Reset z-index
-          var original_z_index = origin.parent('.material-placeholder').attr('z-index');
-          if (!original_z_index) {
-            original_z_index = 0;
-          }
-          // Remove Overlay
-          overlayActive = false;
-          $('#materialbox-overlay').fadeOut(outDuration, function(){ 
-            $(this).remove(); 
-            origin.css('z-index', original_z_index);
+
+          doneAnimating = false;
+
+          var placeholder = origin.parent('.material-placeholder');
+          var windowWidth = window.innerWidth;
+          var windowHeight = window.innerHeight;
+          var originalWidth = origin.data('width');
+          var originalHeight = origin.data('height');
+
+
+          $('#materialbox-overlay').fadeOut(outDuration, function(){
+            // Remove Overlay
+            overlayActive = false;
+            $(this).remove();
           });
-          // Resize
-          origin.velocity({ width: originalWidth}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.velocity({ height: originalHeight}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
 
-          // Reposition Element
-          origin.velocity({ left: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.velocity({ top: 0 }, {duration: outDuration, queue: false, easing: 'easeOutQuad'});
-          origin.css('will-change', '');
-          // add active class
-          origin.removeClass('active');
+          // Resize Image
+          origin.velocity(
+            {
+              width: originalWidth,
+              height: originalHeight,
+              left: 0,
+              top: 0
+            },
+            {
+              duration: outDuration,
+              queue: false, easing: 'easeOutQuad'
+            }
+          );
 
-          // Remove Caption
-          $('.materialbox-caption').velocity({opacity: 0}, {duration: outDuration, queue: false, easing: 'easeOutQuad', complete: function(){$(this).remove();}});
-      }
-    });
-  };
+          // Remove Caption + reset css settings on image
+          $('.materialbox-caption').velocity({opacity: 0}, {
+            duration: outDuration + 200, // Delay prevents animation overlapping
+            queue: false, easing: 'easeOutQuad',
+            complete: function(){
+              placeholder.css({
+                height: '',
+                width: '',
+                position: '',
+                top: '',
+                left: ''
+              });
+
+              origin.css({
+                height: '',
+                position: '',
+                top: '',
+                left: '',
+                width: '',
+                'max-width': '',
+                position: '',
+                'z-index': ''
+              });
+
+              // Remove class
+              origin.removeClass('active');
+              doneAnimating = true;
+              $(this).remove();
+            }
+          });
+
+        }
+        });
+};
 }( jQuery ));;(function ($) {
 
     $.fn.parallax = function () {
@@ -683,7 +794,7 @@ jQuery.extend( jQuery.easing,
 
     };
 }( jQuery ));;(function ($) {
-    
+
   $.fn.tabs = function () {
 
     return this.each(function() {
@@ -703,10 +814,19 @@ jQuery.extend( jQuery.easing,
         $tabs_width = $this.width(),
         $tab_width = $this.find('li').first().outerWidth(),
         $index = 0;
-    
+
     // If the location.hash matches one of the links, use that as the active tab.
-    // If no match is found, use the first link as the initial active tab.
-    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+    // console.log($(".tabs .tab a[href='#tab3']"));
+    $active = $($links.filter('[href="'+location.hash+'"]'));
+
+    // If no match is found, use the first link or any with class 'active' as the initial active tab.
+    if ($active.length === 0) {
+        $active = $(this).find('li.tab a.active').first();
+    }
+    if ($active.length === 0) {
+      $active = $(this).find('li.tab a').first();
+    }
+
     $active.addClass('active');
     $index = $links.index($active);
     if ($index < 0) {
@@ -714,7 +834,7 @@ jQuery.extend( jQuery.easing,
     }
 
     $content = $($active[0].hash);
-    
+
     // append indicator then set indicator width to tab width
     $this.append('<div class="indicator"></div>');
     var $indicator = $this.find('.indicator');
@@ -724,10 +844,10 @@ jQuery.extend( jQuery.easing,
     }
     $(window).resize(function () {
       $tabs_width = $this.width();
-      $tab_width = $this.find('li').first().outerWidth();    
+      $tab_width = $this.find('li').first().outerWidth();
       if ($index < 0) {
         $index = 0;
-      }  
+      }
       if ($tab_width !== 0 && $tabs_width !== 0) {
         $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
         $indicator.css({"left": $index * $tab_width});
@@ -738,7 +858,8 @@ jQuery.extend( jQuery.easing,
     $links.not($active).each(function () {
       $(this.hash).hide();
     });
-    
+
+
     // Bind the click event handler
     $this.on('click', 'a', function(e){
       $tabs_width = $this.width();
@@ -747,12 +868,12 @@ jQuery.extend( jQuery.easing,
       // Make the old tab inactive.
       $active.removeClass('active');
       $content.hide();
-    
+
       // Update the variables with the new link and content
       $active = $(this);
       $content = $(this.hash);
       $links = $this.find('li.tab a');
-    
+
       // Make the tab active.
       $active.addClass('active');
       var $prev_index = $index;
@@ -762,7 +883,7 @@ jQuery.extend( jQuery.easing,
       }
       // Change url to current tab
 //      window.location.hash = $active.attr('href');
-      
+
       $content.show();
 
       // Update indicator
@@ -775,7 +896,7 @@ jQuery.extend( jQuery.easing,
         $indicator.velocity({"left": $index * $tab_width}, { duration: 300, queue: false, easing: 'easeOutQuad'});
         $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 80});
       }
-    
+
       // Prevent the anchor's default click action
       e.preventDefault();
     });
@@ -1343,7 +1464,6 @@ jQuery.extend( jQuery.easing,
 
     $.fn.sideNav = function (options) {
       var defaults = {
-        menuWidth: 240,
         activationWidth: 70,
         edge: 'left'
       }
@@ -1353,7 +1473,18 @@ jQuery.extend( jQuery.easing,
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
         if (options.edge != 'left') {
-          menu_id.addClass('right');
+          menu_id.addClass('right-aligned');
+        }
+
+        // Window resize to reset on large screens fixed
+        if (menu_id.hasClass('fixed')) {
+          $(window).resize( function() {
+            if ($(window).width() > 1200) {
+              if (menu_id.attr('style')) {
+                menu_id.removeAttr('style');
+              }
+            }
+          });
         }
 
         function removeMenu() {
@@ -1790,7 +1921,7 @@ jQuery.extend( jQuery.easing,
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], textarea';
-    
+
     $(input_selector).each(function(){
       if($(this).val().length !== 0) {
        $(this).siblings('label, i').addClass('active');
@@ -1804,12 +1935,12 @@ jQuery.extend( jQuery.easing,
     $(document).on('blur', input_selector, function () {
       console.log($(this).is(':valid'));
       if ($(this).val().length === 0) {
-        $(this).siblings('label, i').removeClass('active');     
+        $(this).siblings('label, i').removeClass('active');
 
         if ($(this).hasClass('validate')) {
-          $(this).removeClass('valid');          
-          $(this).removeClass('invalid');                 
-        } 
+          $(this).removeClass('valid');
+          $(this).removeClass('invalid');
+        }
       }
       else {
         if ($(this).hasClass('validate')) {
@@ -1819,9 +1950,9 @@ jQuery.extend( jQuery.easing,
           }
           else {
             $(this).removeClass('valid');
-            $(this).addClass('invalid');         
-          }                          
-        } 
+            $(this).addClass('invalid');
+          }
+        }
       }
     });
 
@@ -1854,7 +1985,7 @@ jQuery.extend( jQuery.easing,
     });
 
     var range_wrapper = '.range-field';
-    
+
       $(document).on("mousedown", range_wrapper, function(e) {
         var thumb = $(this).children('.thumb');
         if (thumb.length <= 0) {
@@ -1866,7 +1997,7 @@ jQuery.extend( jQuery.easing,
       $(this).addClass('active');
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
+        thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
       }
       var left = e.pageX - $(this).offset().left;
       var width = $(this).outerWidth();
@@ -1878,8 +2009,8 @@ jQuery.extend( jQuery.easing,
         left = width;
       }
       thumb.addClass('active').css('left', left);
-      thumb.find('.value').html($(this).children('input[type=range]').val());   
-   
+      thumb.find('.value').html($(this).children('input[type=range]').val());
+
     });
     $(document).on("mouseup", range_wrapper, function() {
       range_mousedown = false;
@@ -1891,7 +2022,7 @@ jQuery.extend( jQuery.easing,
       var thumb = $(this).children('.thumb');
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });  
+          thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
         }
         var left = e.pageX - $(this).offset().left;
         var width = $(this).outerWidth();
@@ -1903,9 +2034,9 @@ jQuery.extend( jQuery.easing,
           left = width;
         }
         thumb.addClass('active').css('left', left);
-        thumb.find('.value').html($(this).children('input[type=range]').val());   
+        thumb.find('.value').html($(this).children('input[type=range]').val());
       }
-      
+
     });
     $(document).on("mouseout", range_wrapper, function() {
       if (!range_mousedown) {
@@ -1936,7 +2067,12 @@ jQuery.extend( jQuery.easing,
         var wrapper = $('<div class="select-wrapper"></div>');
         var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content select-dropdown"></ul>');
         var selectOptions = $select.children('option');
-        var label = selectOptions.first();
+        if ($select.find('option:selected') !== undefined) {
+          var label = $select.find('option:selected');
+        }
+        else {
+          var label = options.first();
+        }
 
 
         // Create Dropdown structure
@@ -1952,16 +2088,23 @@ jQuery.extend( jQuery.easing,
             // Check if option element is disabled
             if (!$(this).hasClass('disabled')) {
               $curr_select.find('option').eq(i).prop('selected', true);
+              // Trigger onchange() event
+              if (typeof($curr_select.context.onchange) === "function") {
+                $curr_select[0].onchange();
+              }
               $curr_select.prev('span.select-dropdown').html($(this).text());
             }
           });
+
         });
+
 
         // Wrap Elements
         $select.wrap(wrapper);
 
         // Add Select Display Element
-        var $newSelect = $('<span class="select-dropdown ' + (($select.is(':disabled')) ? 'disabled' : '') 
+
+        var $newSelect = $('<span class="select-dropdown ' + (($select.is(':disabled')) ? 'disabled' : '')
                          + '" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
         $select.before($newSelect);
         $('body').append(options);
