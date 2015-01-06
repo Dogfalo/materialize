@@ -6268,6 +6268,8 @@ ul.table-of-contents a {
       will-change: right;
       right: -250px;
       left: auto; }
+    ul.side-nav .collapsible {
+      margin: 0; }
     ul.side-nav li {
       float: none;
       padding: 0 15px;
@@ -6292,6 +6294,8 @@ ul.side-nav.full, ul.side-nav.fixed {
     will-change: right;
     right: -250px;
     left: auto; }
+  ul.side-nav.full .collapsible, ul.side-nav.fixed .collapsible {
+    margin: 0; }
   ul.side-nav.full li, ul.side-nav.fixed li {
     float: none;
     line-height: 64px;

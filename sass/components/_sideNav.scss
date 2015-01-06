@@ -17,12 +17,15 @@
       left: auto;
     }
 
+    .collapsible{
+      margin: 0;
+    }
+
 
     li {
       float: none;
       padding: 0 15px;
       width: 240px;
-
       &:hover, &.active { background-color: #ddd; }
     }
     a {
@@ -52,6 +55,10 @@ ul.side-nav.fixed {
     will-change: right;
     right: -1 * ($sidenav-width + 10);
     left: auto;
+  }
+
+  .collapsible{
+    margin: 0;
   }
 
   li {

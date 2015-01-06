@@ -1962,7 +1962,7 @@ ul {
 li {
   list-style-type: none; }
 
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, ul.collapsible, ul.side-nav.full, ul.side-nav.fixed {
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, ul.side-nav.full, ul.side-nav.fixed {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
@@ -2126,7 +2126,7 @@ td, th {
 
 .collection {
   background-color: #fff;
-  margin: 0 0 1rem 0;
+  margin: 0.5rem 0 1rem 0;
   border: 1px solid #e0e0e0;
   border-radius: 2px; }
   .collection .collection-item {
@@ -5087,7 +5087,7 @@ small {
 
 .card-panel {
   padding: 1rem;
-  margin: 8px 0;
+  margin: 0.5rem 0 1rem 0;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -5096,7 +5096,7 @@ small {
 .card {
   position: relative;
   overflow: hidden;
-  margin-top: 10px;
+  margin: 0.5rem 0 1rem 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -5338,7 +5338,8 @@ ul.tabs li.tab {
   background-clip: padding-box;
   line-height: 36px;
   text-transform: uppercase;
-  border: none; }
+  border: none;
+  -webkit-tap-highlight-color: transparent; }
 
 .btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {
   background-color: #DFDFDF;
@@ -5605,11 +5606,12 @@ ul.tabs li.tab {
   margin-top: 10px;
   margin-bottom: 0px; }
 
-ul.collapsible {
+.collapsible {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd; }
-  ul.collapsible li {
+  border-left: 1px solid #ddd;
+  margin: 0.5rem 0 1rem 0; }
+  .collapsible li {
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
@@ -6266,6 +6268,8 @@ ul.table-of-contents a {
       will-change: right;
       right: -250px;
       left: auto; }
+    ul.side-nav .collapsible {
+      margin: 0; }
     ul.side-nav li {
       float: none;
       padding: 0 15px;
@@ -6290,6 +6294,8 @@ ul.side-nav.full, ul.side-nav.fixed {
     will-change: right;
     right: -250px;
     left: auto; }
+  ul.side-nav.full .collapsible, ul.side-nav.fixed .collapsible {
+    margin: 0; }
   ul.side-nav.full li, ul.side-nav.fixed li {
     float: none;
     line-height: 64px;
