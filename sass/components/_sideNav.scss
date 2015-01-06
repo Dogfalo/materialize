@@ -1,8 +1,8 @@
 @media #{$medium-and-down} {
   ul.side-nav {
     position: fixed;
-    width: 240px;
-    left: -250px;
+    width: $sidenav-width;
+    left: -1 * ($sidenav-width + 10);
     top: 0;
     bottom: 0;
     background-color: #FFF;
@@ -13,7 +13,7 @@
     // Right Align
     &.right-aligned {
       will-change: right;
-      right: -250px;
+      right: -1 * ($sidenav-width + 10);
       left: auto;
     }
 
@@ -36,8 +36,8 @@
 ul.side-nav.full,
 ul.side-nav.fixed {
   position: fixed;
-  width: 240px;
-  left: -250px;
+  width: $sidenav-width;
+  left: -1 * ($sidenav-width + 10);
   top: 0;
   bottom: 0;
   margin: 0;
@@ -50,7 +50,7 @@ ul.side-nav.fixed {
   // Right Align
   &.right-aligned {
     will-change: right;
-    right: -250px;
+    right: -1 * ($sidenav-width + 10);
     left: auto;
   }
 
@@ -58,7 +58,7 @@ ul.side-nav.fixed {
     float: none;
     line-height: 64px;
     padding: 0 15px;
-    width: 240px;
+    width: $sidenav-width;
 
     @include transition(background-color 0s);
 
@@ -88,10 +88,10 @@ ul.side-nav.fixed {
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
   ul.side-nav.fixed {
-    left: -250px;
+    left: -1 * ($sidenav-width + 10);
 
     &.right-aligned {
-      right: -250px;
+      right: -1 * ($sidenav-width + 10);
       left: auto;
     }
   }

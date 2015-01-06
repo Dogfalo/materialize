@@ -139,7 +139,7 @@
     $('.collapsible-expandable').collapsible({"accordion": false});
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sideNav({'menuWidth': 400});
     $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
     $('select').not('.disabled').material_select();
 
