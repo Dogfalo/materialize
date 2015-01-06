@@ -171,9 +171,7 @@
             if (!$(this).hasClass('disabled')) {
               $curr_select.find('option').eq(i).prop('selected', true);
               // Trigger onchange() event
-              if (typeof($curr_select.context.onchange) === "function") {
-                $curr_select[0].onchange();
-              }
+              $curr_select.trigger('change');
               $curr_select.prev('span.select-dropdown').html($(this).text());
             }
           });
