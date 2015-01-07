@@ -3,8 +3,8 @@ nav {
   @extend .z-depth-1;
   background-color: color("materialize-red", "lighten-2");
   width: 100%;
-  height: 56px;
-  line-height: 56px;
+  height: $navbar-height-mobile;
+  line-height: $navbar-height-mobile;
 
   .nav-wrapper {
     position: relative;
@@ -18,12 +18,12 @@ nav {
     @extend .hide-on-large-only;
     position: relative;
     z-index: 1;
-    height: 56px;
+    height: $navbar-height-mobile;
 
     i {
       font-size: 2.7rem;
-      height: 56px;
-      line-height: 56px;
+      height: $navbar-height-mobile;
+      line-height: $navbar-height-mobile;
     }
   }
 
@@ -104,12 +104,26 @@ nav {
   }
 
 }
+
+// Fixed Navbar
+.navbar-fixed {
+  position: relative;
+  height: $navbar-height-mobile;
+  z-index: 998;
+
+  nav {
+    position: fixed;
+  }
+}
 @media #{$medium-and-up} {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 64px;
-    line-height: 64px;
+    height: $navbar-height;
+    line-height: $navbar-height;
   }
   nav .nav-wrapper i {
     font-size: 2rem;
+  }
+  .navbar-fixed {
+    height: $navbar-height;
   }
 }

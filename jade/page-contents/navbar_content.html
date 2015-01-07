@@ -69,6 +69,30 @@
         </code></pre>
       </div>
 
+      <div id="navbar-fixed" class="section scrollspy">
+
+        <h2 class="header">Fixed Navbar</h2>
+        <p>
+          To make the navbar fixed, you have to add an outer wrapping div with the class <code class="language-markup">navbar-fixed</code>. This will offset your other content while making your nav fixed. You can adjust the height of this outer div to change how much offset is on your content.
+        </p>
+
+        <pre><code class="language-markup">
+  &lt;div class="navbar-fixed">
+    &lt;nav>
+      &lt;div class="nav-wrapper">
+        &lt;div class="col s12">
+          &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+          &lt;ul class="right side-nav">
+            &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/div>
+      &lt;/div>
+    &lt;/nav>
+  &lt;/div>
+        </code></pre>
+      </div>
+
       <div id="navbar-dropdown" class="section scrollspy">
 
         <h2 class="header">Navbar Dropdown Menu</h2>
@@ -284,6 +308,7 @@ $(".dropdown-button").dropdown();
         <ul class="section table-of-contents">
           <li><a href="#right">Right Aligned</a></li>
           <li><a href="#left">Left Aligned</a></li>
+          <li><a href="#navbar-fixed">Fixed Navbar</a></li>
           <li><a href="#navbar-dropdown">Dropdown Menu</a></li>
           <li><a href="#icons">Icon Links</a></li>
           <li><a href="#search">Search Bar</a></li>

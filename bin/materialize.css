@@ -1611,6 +1611,7 @@
 /*** Collapsible ***/
 /*** Forms ***/
 /*** Global ***/
+/*** Navbar ***/
 /*** SideNav ***/
 /*** Toasts ***/
 /*** Typography ***/
@@ -4856,6 +4857,13 @@ nav {
       -o-transform: translateY(0);
       transform: translateY(0); }
 
+.navbar-fixed {
+  position: relative;
+  height: 56px;
+  z-index: 998; }
+  .navbar-fixed nav {
+    position: fixed; }
+
 @media only screen and (min-width : 601px) {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
@@ -4863,6 +4871,9 @@ nav {
 
   nav .nav-wrapper i {
     font-size: 2rem; }
+
+  .navbar-fixed {
+    height: 64px; }
  }
 
 @font-face {

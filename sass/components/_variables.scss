@@ -59,6 +59,11 @@ $element-top-margin: $gutter-width/3 !default;
 $element-bottom-margin: ($gutter-width*2)/3 !default;
 
 
+/*** Navbar ***/
+$navbar-height: 64px;
+$navbar-height-mobile: 56px;
+
+
 /*** SideNav ***/
 $sidenav-width: 240px;
 
