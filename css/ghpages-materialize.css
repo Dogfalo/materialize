@@ -5255,14 +5255,14 @@ small {
     .toast {
       float: right; } }
 
-ul.tabs {
+.tabs {
   position: relative;
   height: 48px;
   background-color: #FFF;
   margin: 0 auto;
   width: 100%;
   white-space: nowrap; }
-  ul.tabs li.tab {
+  .tabs li.tab {
     display: block;
     float: left;
     text-align: center;
@@ -5274,10 +5274,7 @@ ul.tabs {
     text-transform: uppercase;
     letter-spacing: 0.8px;
     width: 15%; }
-    @media only screen and (min-width : 993px) {
-      ul.tabs li.tab {
-        max-width: 25%; } }
-    ul.tabs li.tab a {
+    .tabs li.tab a {
       color: #ee6e73;
       display: block;
       width: 100%;
@@ -5287,9 +5284,9 @@ ul.tabs {
       -o-transition: color 0.28s ease;
       -ms-transition: color 0.28s ease;
       transition: color 0.28s ease; }
-      ul.tabs li.tab a:hover {
+      .tabs li.tab a:hover {
         color: #f8c1c3; }
-  ul.tabs .indicator {
+  .tabs .indicator {
     position: absolute;
     bottom: 0;
     height: 2px;
