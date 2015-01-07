@@ -141,7 +141,7 @@
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'menuWidth': 400});
-    $('.datepicker').pickadate({ formatSubmit: 'yyyy/mm/dd' });
+    $('.datepicker').pickadate();
     $('select').not('.disabled').material_select();
 
 

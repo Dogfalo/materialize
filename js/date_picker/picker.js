@@ -715,7 +715,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                 // If something is picked, set `select` then close with focus.
                 else if ( !targetDisabled && 'pick' in targetData ) {
-                    P.set( 'select', targetData.pick ).close( true )
+                    P.set( 'select', targetData.pick )
                 }
 
                 // If a “clear” button is pressed, empty the values and close with focus.
