@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.94.1 (http://materializecss.com)
+ * Materialize v0.94.2 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -1616,6 +1616,7 @@
 /*** Collapsible ***/
 /*** Forms ***/
 /*** Global ***/
+/*** Navbar ***/
 /*** SideNav ***/
 /*** Toasts ***/
 /*** Typography ***/
@@ -2229,10 +2230,10 @@ span.badge {
   text-align: center; }
 
 .left {
-  float: left; }
+  float: left !important; }
 
 .right {
-  float: right; }
+  float: right !important; }
 
 .no-select, input[type=range], input[type=range] + .thumb {
   -webkit-touch-callout: none;
@@ -4861,6 +4862,13 @@ nav {
       -o-transform: translateY(0);
       transform: translateY(0); }
 
+.navbar-fixed {
+  position: relative;
+  height: 56px;
+  z-index: 998; }
+  .navbar-fixed nav {
+    position: fixed; }
+
 @media only screen and (min-width : 601px) {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
@@ -4868,6 +4876,9 @@ nav {
 
   nav .nav-wrapper i {
     font-size: 2rem; }
+
+  .navbar-fixed {
+    height: 64px; }
  }
 
 @font-face {
@@ -5096,12 +5107,14 @@ small {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box; }
+  background-clip: padding-box;
+  background-color: #fff; }
 
 .card {
   position: relative;
   overflow: hidden;
   margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -5153,8 +5166,7 @@ small {
       right: 0;
       top: 0;
       bottom: 0;
-      width: 100%;
-      z-index: -1; }
+      width: 100%; }
     .card .card-image .card-title {
       position: absolute;
       bottom: 0;
@@ -5248,14 +5260,14 @@ small {
     .toast {
       float: right; } }
 
-ul.tabs {
+.tabs {
   position: relative;
   height: 48px;
   background-color: #FFF;
   margin: 0 auto;
   width: 100%;
   white-space: nowrap; }
-  ul.tabs li.tab {
+  .tabs li.tab {
     display: block;
     float: left;
     text-align: center;
@@ -5267,10 +5279,7 @@ ul.tabs {
     text-transform: uppercase;
     letter-spacing: 0.8px;
     width: 15%; }
-    @media only screen and (min-width : 993px) {
-      ul.tabs li.tab {
-        max-width: 25%; } }
-    ul.tabs li.tab a {
+    .tabs li.tab a {
       color: #ee6e73;
       display: block;
       width: 100%;
@@ -5280,9 +5289,9 @@ ul.tabs {
       -o-transition: color 0.28s ease;
       -ms-transition: color 0.28s ease;
       transition: color 0.28s ease; }
-      ul.tabs li.tab a:hover {
+      .tabs li.tab a:hover {
         color: #f8c1c3; }
-  ul.tabs .indicator {
+  .tabs .indicator {
     position: absolute;
     bottom: 0;
     height: 2px;
@@ -5426,8 +5435,9 @@ ul.tabs li.tab {
   margin: 0px;
   min-width: 100px;
   z-index: 1000;
-  max-height: 50%;
+  max-height: 70%;
   opacity: 0;
+  overflow-y: hidden;
   will-change: width, height; }
   .dropdown-content li {
     cursor: pointer;
@@ -5778,10 +5788,12 @@ label {
     transition: color 0.2s; }
     .input-field .prefix.active {
       color: #03a9f4; }
-  .input-field .prefix ~ input {
+  .input-field .prefix ~ input, .input-field .prefix ~ textarea {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem); }
+  .input-field .prefix ~ textarea {
+    padding-top: 0.8rem; }
   .input-field .prefix ~ label {
     margin-left: 3rem; }
   @media only screen and (max-width : 992px) {
@@ -7137,6 +7149,7 @@ ul.side-nav.fixed {
   font-weight: 500; }
 
 .picker__day--outfocus {
+  padding: 0.75rem 0;
   color: #fff; }
 
 .picker__day--outfocus:hover {
@@ -7171,7 +7184,10 @@ ul.side-nav.fixed {
  * The footer containing the "today", "clear", and "close" buttons.
  */
 .picker__footer {
-  text-align: center; }
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
 
 .picker__button--today, .picker__button--clear, .picker__button--close {
   border: 1px solid #ffffff;
@@ -7299,6 +7315,8 @@ ul.side-nav.fixed {
   transform: scale(0.9);
   background-color: #009688;
   color: #ffffff; }
+  .picker--focused .picker__day--selected.picker__day--outfocus {
+    background-color: #b2dfdb; }
 
 .picker__footer {
   text-align: right;
@@ -7306,6 +7324,7 @@ ul.side-nav.fixed {
 
 .picker__close, .picker__today {
   font-size: 1.1rem;
+  padding: 0 1rem;
   color: #26a69a; }
 
 .picker__nav--prev:before, .picker__nav--next:before {

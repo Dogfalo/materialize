@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.94.1 (http://materializecss.com)
+ * Materialize v0.94.2 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -342,14 +342,35 @@ jQuery.extend( jQuery.easing,
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
-      activates.css({
-        display: 'block',
-        top: origin.offset().top,
-        left: origin.offset().left,
-        height: 0
+      if (elementOrParentIsFixed(origin[0])) {
+        activates.css({
+          display: 'block',
+          position: 'fixed',
+          height: 0,
+          top: origin.position().top,
+          left:origin.position().left
+        });
+      }
+      else {
+        activates.css({
+          display: 'block',
+          top: origin.offset().top,
+          left: origin.offset().left,
+          height: 0
+        });
+      }
+      activates.velocity({opacity: 1}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'})
+      .velocity(
+      {
+        height: dropdownRealHeight
+      },
+      {duration: options.inDuration,
+        queue: false,
+        easing: 'easeOutCubic',
+        complete: function(){
+          activates.css('overflow-y', 'auto')
+        }
       });
-      activates.velocity({opacity: 1}, {duration: options.inDuration/2, queue: false, easing: 'easeOutSine'})
-      .velocity({height: dropdownRealHeight}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'});
     }
     function elementOrParentIsFixed(element) {
         var $element = $(element);
@@ -364,9 +385,7 @@ jQuery.extend( jQuery.easing,
         return isFixed;
     }
 
-    if (elementOrParentIsFixed(origin[0])) {
-      activates.css('position', 'fixed');
-    }
+
 
 
     // Hover
@@ -387,7 +406,8 @@ jQuery.extend( jQuery.easing,
             easing: 'easeOutQuad',
             complete: function(){
               activates.css({
-                display: 'none'
+                display: 'none',
+                'overflow-y': ''
               });
             }
           });
@@ -412,7 +432,8 @@ jQuery.extend( jQuery.easing,
               easing: 'easeOutQuad',
               complete: function(){
                 activates.css({
-                  display: 'none'
+                  display: 'none',
+                  'overflow-y': ''
                 });
               }
             });
@@ -1060,11 +1081,11 @@ jQuery.extend( jQuery.easing,
 }( jQuery ));;
 /*!
  * Waves v0.5.3
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
- * https://github.com/fians/Waves/blob/master/LICENSE 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
  */
 
 ;(function(window) {
@@ -1119,12 +1140,12 @@ jQuery.extend( jQuery.easing,
         duration: 700,
 
         show: function(e) {
-            
+
             // Disable right click
             if (e.button === 2) {
               return false;
             }
-          
+
             var el = this;
 
             // Create ripple
@@ -1137,7 +1158,7 @@ jQuery.extend( jQuery.easing,
             var relativeY   = (e.pageY - pos.top);
             var relativeX   = (e.pageX - pos.left);
             var scale       = 'scale('+((el.clientWidth / 100) * 22)+')';
-          
+
             // Support for touch devices
             if ('touches' in e) {
               relativeY   = (e.touches[0].pageY - pos.top);
@@ -1155,7 +1176,7 @@ jQuery.extend( jQuery.easing,
                 'top': relativeY+'px',
                 'left': relativeX+'px'
             };
-            
+
             ripple.className = ripple.className + ' waves-notransition';
             ripple.setAttribute('style', convertStyle(rippleStyle));
             ripple.className = ripple.className.replace('waves-notransition', '');
@@ -1183,11 +1204,11 @@ jQuery.extend( jQuery.easing,
         },
 
         hide: function() {
-            
+
             var el = this;
 
             var width = el.clientWidth * 1.4;
-            
+
             // Get first ripple
             var ripple = null;
 
@@ -1246,7 +1267,7 @@ jQuery.extend( jQuery.easing,
                         return false;
                     }
 
-                    
+
                 }, Effect.duration);
 
             }, delay);
@@ -1280,7 +1301,7 @@ jQuery.extend( jQuery.easing,
                     }
 
                     wrapper.setAttribute('style', elementStyle);
-                    
+
                     el.className = 'waves-button-input';
                     el.removeAttribute('style');
 
@@ -1289,7 +1310,7 @@ jQuery.extend( jQuery.easing,
                     wrapper.appendChild(el);
 
                 }
-                
+
             }
         }
     };
@@ -1301,7 +1322,7 @@ jQuery.extend( jQuery.easing,
         if ('duration' in options) {
             Effect.duration = options.duration;
         }
-        
+
         //Wrap input inside <i> tag
         Effect.wrapInput($$('.waves-effect'));
 
@@ -1311,11 +1332,12 @@ jQuery.extend( jQuery.easing,
           i.addEventListener('mouseup', Effect.hide, false);                      i.addEventListener('touchstart', Effect.show, false);
           i.addEventListener('mouseleave', Effect.hide, false);                   i.addEventListener('touchend',   Effect.hide, false);
           i.addEventListener('touchcancel',   Effect.hide, false);
-        } else {
-          i.addEventListener('mousedown', Effect.show, false);
-          i.addEventListener('mouseup', Effect.hide, false);
-          i.addEventListener('mouseleave', Effect.hide, false);
         }
+
+        i.addEventListener('mousedown', Effect.show, false);
+        i.addEventListener('mouseup', Effect.hide, false);
+        i.addEventListener('mouseleave', Effect.hide, false);
+
 
         });
 
@@ -1472,6 +1494,8 @@ jQuery.extend( jQuery.easing,
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
+        var menuWidth = menu_id.width();
+
         if (options.edge != 'left') {
           menu_id.addClass('right-aligned');
         }
@@ -1492,12 +1516,12 @@ jQuery.extend( jQuery.easing,
             complete: function() {
               $(this).remove();
             } });
-
           if (options.edge === 'left') {
-            menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+
+            menu_id.velocity({left: -1 * (menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }
           else {
-            menu_id.velocity({right: -1 * (options.menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+            menu_id.velocity({right: -1 * (menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
           }
           enable_scroll();
         }
@@ -1526,10 +1550,10 @@ jQuery.extend( jQuery.easing,
                   removeMenu();
 
                   if (options.edge === 'left') {
-                    menu_id.velocity({left: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                    menu_id.velocity({left: -1 * menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                   }
                   else {
-                    menu_id.velocity({right: -1 * options.menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                    menu_id.velocity({right: -1 * menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                   }
                   overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
                     complete: function() {
@@ -1542,25 +1566,25 @@ jQuery.extend( jQuery.easing,
               }
 
 
-              if (x > options.menuWidth) { x = options.menuWidth; }
+              if (x > menuWidth) { x = menuWidth; }
               else if (x < 0) { x = 0; }
-              else if (x < (options.menuWidth / 2)) { menuOut = false; }
-              else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+              else if (x < (menuWidth / 2)) { menuOut = false; }
+              else if (x >= (menuWidth / 2)) { menuOut = true; }
 
               if (options.edge === 'left') {
-                menu_id.velocity({left: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({left: (-1 * menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                menu_id.velocity({right: (-1 * options.menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({right: (-1 * menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
               }
 
                 // Percentage overlay
-                var overlayPerc = x / options.menuWidth;
+                var overlayPerc = x / menuWidth;
                 $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
               }
               else {
                 if (menuOut) {
-                  if ((e.gesture.center.x > (options.menuWidth - options.activationWidth)) && direction === 2) {
+                  if ((e.gesture.center.x > (menuWidth - options.activationWidth)) && direction === 2) {
                     panning = true;
                   }
                 }
@@ -2098,22 +2122,17 @@ jQuery.extend( jQuery.easing,
 
         });
 
-
         // Wrap Elements
         $select.wrap(wrapper);
-
         // Add Select Display Element
-
         var $newSelect = $('<span class="select-dropdown ' + (($select.is(':disabled')) ? 'disabled' : '')
                          + '" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
         $select.before($newSelect);
         $('body').append(options);
-
         // Check if section element is disabled
         if (!$select.is(':disabled')) {
           $newSelect.dropdown({"hover": false});
         }
-
         $select.addClass('initialized');
 
       });
@@ -2486,7 +2505,7 @@ jQuery.extend( jQuery.easing,
 
   });
 }( jQuery ));;/*!
- * pickadate.js v3.5.4, 2014/09/11
+ * pickadate.js v3.5.0, 2014/04/13
  * By Amsul, http://amsul.ca
  * Hosted on http://amsul.github.io/pickadate.js
  * Licensed under MIT
@@ -2931,7 +2950,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     if ( P._hidden ) {
                         return P._hidden.value
                     }
-                    thing = value
+                    thing = 'value'
                 }
 
                 // Return the value, if that.
@@ -3114,7 +3133,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             haspopup: true,
             expanded: false,
             readonly: false,
-            owns: ELEMENT.id + '_root' + (P._hidden ? ' ' + P._hidden.id : '')
+            owns: ELEMENT.id + '_root'
         })
     }
 
@@ -3153,7 +3172,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                         //   prevent cases where focus is shifted onto external elements
                         //   when using things like jQuery mobile or MagnificPopup (ref: #249 & #120).
                         //   Also, for Firefox, don’t prevent action on the `option` element.
-                        if ( event.type == 'mousedown' && !$( target ).is( ':input' ) && target.nodeName != 'OPTION' ) {
+                        if ( event.type == 'mousedown' && !$( target ).is( 'input, select, textarea, button, option' )) {
 
                             event.preventDefault()
 
@@ -3202,7 +3221,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                 // If something is picked, set `select` then close with focus.
                 else if ( !targetDisabled && 'pick' in targetData ) {
-                    P.set( 'select', targetData.pick ).close( true )
+                    P.set( 'select', targetData.pick )
                 }
 
                 // If a “clear” button is pressed, empty the values and close with focus.
@@ -3262,10 +3281,12 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 P._hidden.value = ELEMENT.value ?
                     P.get('select', SETTINGS.formatSubmit) :
                     ''
-            }).
+            })
 
-            // Insert the hidden input after the element.
-            after(P._hidden)
+
+        // Insert the hidden input as specified in the settings.
+        if ( SETTINGS.container ) $( SETTINGS.container ).append( P._hidden )
+        else $ELEMENT.after( P._hidden )
     }
 
 
@@ -3606,10 +3627,8 @@ return PickerConstructor
 }));
 
 
-
-;
-/*!
- * Date picker for pickadate.js v3.5.4
+;/*!
+ * Date picker for pickadate.js v3.5.0
  * http://amsul.github.io/pickadate.js/date.htm
  */
 
@@ -3617,7 +3636,7 @@ return PickerConstructor
 
     // AMD.
     if ( typeof define == 'function' && define.amd )
-        define( ['picker','jquery'], factory )
+        define( ['picker', 'jquery'], factory )
 
     // Node.js/browserify.
     else if ( typeof exports == 'object' )
@@ -3636,23 +3655,6 @@ var DAYS_IN_WEEK = 7,
     WEEKS_IN_CALENDAR = 6,
     _ = Picker._
 
-
-/**
- * Local date comparison helpers
- */
-var timezoneOffset = new Date().getTimezoneOffset()
-var timezoneOffsetMS = timezoneOffset * 60 * 1000
-var isLocalDateSame = function(relative, absolute) {
-    return relative.getDate() === absolute.getUTCDate() &&
-        relative.getMonth() === absolute.getUTCMonth() &&
-        relative.getFullYear() === absolute.getUTCFullYear()
-}
-var isLocalDateLessThan = function(one, two) {
-    return new Date(one.year, one.month, one.date) < new Date(two.year, two.month, two.date)
-}
-var isLocalDateGreaterThan = function(one, two) {
-    return new Date(one.year, one.month, one.date) > new Date(two.year, two.month, two.date)
-}
 
 
 /**
@@ -3728,7 +3730,7 @@ function DatePicker( picker, settings ) {
         37: function() { return isRTL() ? 1 : -1 }, // Left
         go: function( timeChange ) {
             var highlightedObject = calendar.item.highlight,
-                targetDate = new Date(highlightedObject.year, highlightedObject.month, highlightedObject.date + timeChange)
+                targetDate = new Date( highlightedObject.year, highlightedObject.month, highlightedObject.date + timeChange )
             calendar.set(
                 'highlight',
                 targetDate,
@@ -3828,57 +3830,48 @@ DatePicker.prototype.get = function( type ) {
  */
 DatePicker.prototype.create = function( type, value, options ) {
 
-    options = options || {}
+    var isInfiniteValue,
+        calendar = this
 
     // If there’s no value, use the type as the value.
     value = value === undefined ? type : value
 
-    // If it’s infinite, return that.
+
+    // If it’s infinity, update the value.
     if ( value == -Infinity || value == Infinity ) {
-        return {
-            year: value,
-            month: value,
-            date: value,
-            day: value,
-            obj: value,
-            pick: value
-        }
+        isInfiniteValue = value
     }
 
-    // If it’s a literal `true`, set it to today.
-    if ( value === true ) {
-        value = new Date()
-        if ( options.rel ) {
-            value.setDate(value.getDate() + options.rel)
-        }
+    // If it’s an object, use the native date object.
+    else if ( $.isPlainObject( value ) && _.isInteger( value.pick ) ) {
+        value = value.obj
     }
 
-    // If it’s an object, create an array out of it.
-    else if ( $.isPlainObject(value) && _.isInteger(value.pick) ) {
-        value = [value.year, value.month, value.date]
+    // If it’s an array, convert it into a date and make sure
+    // that it’s a valid date – otherwise default to today.
+    else if ( $.isArray( value ) ) {
+        value = new Date( value[ 0 ], value[ 1 ], value[ 2 ] )
+        value = _.isDate( value ) ? value : calendar.create().obj
     }
 
-    // If it’s an array, create a date.
-    if ( Array.isArray(value) ) {
-        value = new Date(value[0], value[1], value[2])
+    // If it’s a number or date object, make a normalized date.
+    else if ( _.isInteger( value ) || _.isDate( value ) ) {
+        value = calendar.normalize( new Date( value ), options )
     }
 
-    // Now it’s either a date or an integer. So create a new date.
-    value = new Date(value)
+    // If it’s a literal true or any other case, set it to now.
+    else /*if ( value === true )*/ {
+        value = calendar.now( type, value, options )
+    }
 
-    // Update the hours based on the timezone offset
-    value.setHours(-timezoneOffset / 60, -timezoneOffset % 60, 0, 0)
-
-    // Create another new date by updating by the offset.
-    value = new Date(value.getTime() + timezoneOffsetMS)
-
+    // Return the compiled object.
     return {
-        year: value.getFullYear(),
-        month: value.getMonth(),
-        date: value.getDate(),
-        day: value.getDay(),
-        obj: value,
-        pick: value.getTime()
+        year: isInfiniteValue || value.getFullYear(),
+        month: isInfiniteValue || value.getMonth(),
+        date: isInfiniteValue || value.getDate(),
+        day: isInfiniteValue || value.getDay(),
+        obj: isInfiniteValue || value,
+        pick: isInfiniteValue || value.getTime()
     }
 } //DatePicker.prototype.create
 
@@ -3948,8 +3941,12 @@ DatePicker.prototype.overlapRanges = function( one, two ) {
 /**
  * Get the date today.
  */
-DatePicker.prototype.now = function(/* type, value, options */) {
-    return true
+DatePicker.prototype.now = function( type, value, options ) {
+    value = new Date()
+    if ( options && options.rel ) {
+        value.setDate( value.getDate() + options.rel )
+    }
+    return this.normalize( value, options )
 }
 
 
@@ -3964,8 +3961,8 @@ DatePicker.prototype.navigate = function( type, value, options ) {
         targetDate,
         isTargetArray = $.isArray( value ),
         isTargetObject = $.isPlainObject( value ),
-        viewsetObject = this.item.view,
-        safety = 100
+        viewsetObject = this.item.view/*,
+        safety = 100*/
 
 
     if ( isTargetArray || isTargetObject ) {
@@ -3995,12 +3992,12 @@ DatePicker.prototype.navigate = function( type, value, options ) {
 
         // If the month we’re going to doesn’t have enough days,
         // keep decreasing the date until we reach the month’s last date.
-        while ( safety && new Date( targetYear, targetMonth, targetDate ).getMonth() !== targetMonth ) {
+        while ( /*safety &&*/ new Date( targetYear, targetMonth, targetDate ).getMonth() !== targetMonth ) {
             targetDate -= 1
-            safety -= 1
+            /*safety -= 1
             if ( !safety ) {
                 throw 'Fell into an infinite loop while navigating to ' + new Date( targetYear, targetMonth, targetDate ) + '.'
-            }
+            }*/
         }
 
         value = [ targetYear, targetMonth, targetDate ]
@@ -4011,11 +4008,18 @@ DatePicker.prototype.navigate = function( type, value, options ) {
 
 
 /**
+ * Normalize a date by setting the hours to midnight.
+ */
+DatePicker.prototype.normalize = function( value/*, options*/ ) {
+    value.setHours( 0, 0, 0, 0 )
+    return value
+}
+
+
+/**
  * Measure the range of dates.
  */
-DatePicker.prototype.measure = function( type, value, options ) {
-
-    options = options || {}
+DatePicker.prototype.measure = function( type, value/*, options*/ ) {
 
     var calendar = this
 
@@ -4031,8 +4035,7 @@ DatePicker.prototype.measure = function( type, value, options ) {
 
     // If it's an integer, get a date relative to today.
     else if ( _.isInteger( value ) ) {
-        options.rel = value
-        value = true
+        value = calendar.now( type, value, { rel: value } )
     }
 
     return value
@@ -4085,9 +4088,9 @@ DatePicker.prototype.validate = function( type, dateObject, options ) {
 
             // Return only integers for enabled weekdays.
             return _.isInteger( value )
-        }).length,
+        }).length/*,
 
-        safety = 100
+        safety = 100*/
 
 
 
@@ -4116,12 +4119,12 @@ DatePicker.prototype.validate = function( type, dateObject, options ) {
 
 
         // Keep looping until we reach an enabled date.
-        while ( safety && calendar.disabled( dateObject ) ) {
+        while ( /*safety &&*/ calendar.disabled( dateObject ) ) {
 
-            safety -= 1
+            /*safety -= 1
             if ( !safety ) {
                 throw 'Fell into an infinite loop while validating ' + dateObject.obj + '.'
-            }
+            }*/
 
 
             // If we’ve looped into the next/prev month with a large interval, return to the original date and flatten the interval.
@@ -4636,6 +4639,8 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     })
                 )
             ) //endreturn
+
+        // Materialize modified
         })( ( settings.showWeekdaysFull ? settings.weekdaysFull : settings.weekdaysLetter ).slice( 0 ), settings.weekdaysFull.slice( 0 ) ), //tableHead
 
 
@@ -4664,11 +4669,12 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
 
         // Create the month label.
+        //Materialize modified
         createMonthLabel = function(override) {
 
             var monthsCollection = settings.showMonthsShort ? settings.monthsShort : settings.monthsFull
-            
-//            use override
+
+             // Materialize modified
             if (override == "short_months") {
               monthsCollection = settings.monthsShort;
             }
@@ -4708,7 +4714,8 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     'title="' + settings.labelMonthSelect + '"'
                 )
             }
-            // Return materialize raw override
+
+            // Materialize modified
             if (override == "short_months")
                 return _.node( 'div', monthsCollection[ viewsetObject.month ] )
 
@@ -4718,6 +4725,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
 
         // Create the year label.
+        // Materialize modified
         createYearLabel = function(override) {
 
             var focusedYear = viewsetObject.year,
@@ -4754,6 +4762,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     highestYear = maxYear
                 }
 
+
                 return _.node( 'select',
                     _.group({
                         min: lowestYear,
@@ -4777,32 +4786,35 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 )
             }
 
-            // If materialize override then
+            // Materialize modified
             if (override == "raw")
                 return _.node( 'div', focusedYear )
+
             // Otherwise just return the year focused
             return _.node( 'div', focusedYear, settings.klass.year )
         } //createYearLabel
 
-    createDayLabel = function() {
-        if (selectedObject != null)
-            return _.node( 'div', selectedObject.date)
-        else return _.node( 'div', nowObject.date)
-    }
 
-    createWeekdayLabel = function() {
-        var display_day;
-        
-        if (selectedObject != null)
-            display_day = selectedObject.day;
-        else
-            display_day = nowObject.day;
-        var weekday = settings.weekdaysFull[ display_day ]
-        return weekday
-    }
+        // Materialize modified
+        createDayLabel = function() {
+                if (selectedObject != null)
+                    return _.node( 'div', selectedObject.date)
+                else return _.node( 'div', nowObject.date)
+            }
+        createWeekdayLabel = function() {
+            var display_day;
 
-    // Create and return the entire calendar. This contains the HTML elements
-    return _.node(
+            if (selectedObject != null)
+                display_day = selectedObject.day;
+            else
+                display_day = nowObject.day;
+            var weekday = settings.weekdaysFull[ display_day ]
+            return weekday
+        }
+
+
+    // Create and return the entire calendar.
+return _.node(
         // Date presentation View
         'div',
             _.node(
@@ -4811,7 +4823,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 "picker__weekday-display"
             )+
             _.node(
-                // Div for short Month 
+                // Div for short Month
                 'div',
                 createMonthLabel("short_months"),
                 settings.klass.month_display
@@ -4864,22 +4876,22 @@ DatePicker.prototype.nodes = function( isOpen ) {
                                 // Convert the time date from a relative date to a target date.
                                 targetDate = calendar.create([ viewsetObject.year, viewsetObject.month, targetDate + ( settings.firstDay ? 1 : 0 ) ])
 
-                                var isToday = isLocalDateSame(nowObject.obj, targetDate.obj),
-                                    isSelected = selectedObject && isLocalDateSame(selectedObject.obj, targetDate.obj),
-                                    isHighlighted = highlightedObject && isLocalDateSame(highlightedObject.obj, targetDate.obj),
-                                    isDisabled = disabledCollection && calendar.disabled( targetDate ) || isLocalDateLessThan(targetDate, minLimitObject) || isLocalDateGreaterThan(targetDate, maxLimitObject)
+                                var isSelected = selectedObject && selectedObject.pick == targetDate.pick,
+                                    isHighlighted = highlightedObject && highlightedObject.pick == targetDate.pick,
+                                    isDisabled = disabledCollection && calendar.disabled( targetDate ) || targetDate.pick < minLimitObject.pick || targetDate.pick > maxLimitObject.pick,
+                                    formattedDate = _.trigger( calendar.formats.toString, calendar, [ settings.format, targetDate ] )
 
                                 return [
                                     _.node(
                                         'div',
-                                        targetDate.obj.getUTCDate(),
+                                        targetDate.date,
                                         (function( klasses ) {
 
                                             // Add the `infocus` or `outfocus` classes based on month in view.
                                             klasses.push( viewsetObject.month == targetDate.month ? settings.klass.infocus : settings.klass.outfocus )
 
                                             // Add the `today` class if needed.
-                                            if ( isToday ) {
+                                            if ( nowObject.pick == targetDate.pick ) {
                                                 klasses.push( settings.klass.now )
                                             }
 
@@ -4902,11 +4914,8 @@ DatePicker.prototype.nodes = function( isOpen ) {
                                         })([ settings.klass.day ]),
                                         'data-pick=' + targetDate.pick + ' ' + _.ariaAttr({
                                             role: 'gridcell',
-                                            selected: isSelected && calendar.$node.val() === _.trigger(
-                                                    calendar.formats.toString,
-                                                    calendar,
-                                                    [ settings.format, targetDate ]
-                                                ) ? true : null,
+                                            label: formattedDate,
+                                            selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
                                             activedescendant: isHighlighted ? true : null,
                                             disabled: isDisabled ? true : null
                                         })
@@ -4926,11 +4935,10 @@ DatePicker.prototype.nodes = function( isOpen ) {
             controls: calendar.$node[0].id,
             readonly: true
         })
-    ) 
-    
-    , settings.klass.calendar_container) // end calendar 
+    )
+    , settings.klass.calendar_container) // end calendar
 
-        +
+     +
 
     // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
     _.node(
@@ -4939,10 +4947,10 @@ DatePicker.prototype.nodes = function( isOpen ) {
             'type=button data-pick=' + nowObject.pick +
             ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        // _.node( 'button', settings.clear, settings.klass.buttonClear,
-        //     'type=button data-clear=1' +
-        //     ( isOpen ? '' : ' disabled' ) + ' ' +
-        //     _.ariaAttr({ controls: calendar.$node[0].id }) ) +
+        _.node( 'button', settings.clear, "btn-flat picker__clear",
+            'type=button data-clear=1' +
+            ( isOpen ? '' : ' disabled' ) + ' ' +
+            _.ariaAttr({ controls: calendar.$node[0].id }) ) +
         _.node('button', settings.close, "btn-flat picker__close",
             'type=button data-close=true ' +
             ( isOpen ? '' : ' disabled' ) + ' ' +
@@ -4975,7 +4983,7 @@ DatePicker.defaults = (function( prefix ) {
         weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
         weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
 
-        // Materialize Added
+        // Materialize modified
         weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
 
         // Today and clear
@@ -4993,6 +5001,7 @@ DatePicker.defaults = (function( prefix ) {
 
             header: prefix + 'header',
 
+
             // Materialize Added klasses
             date_display: prefix + 'date-display',
             day_display: prefix + 'day-display',
@@ -5000,6 +5009,8 @@ DatePicker.defaults = (function( prefix ) {
             year_display: prefix + 'year-display',
             calendar_container: prefix + 'calendar-container',
             // end
+
+
 
             navPrev: prefix + 'nav--prev',
             navNext: prefix + 'nav--next',
@@ -5041,6 +5052,5 @@ Picker.extend( 'pickadate', DatePicker )
 
 
 }));
-
 
 
