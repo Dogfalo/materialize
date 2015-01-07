@@ -1010,7 +1010,9 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     })
                 )
             ) //endreturn
-        })( ( settings.showWeekdaysFull ? settings.weekdaysFull : settings.weekdaysShort ).slice( 0 ), settings.weekdaysFull.slice( 0 ) ), //tableHead
+
+        // Materialize modified
+        })( ( settings.showWeekdaysFull ? settings.weekdaysFull : settings.weekdaysLetter ).slice( 0 ), settings.weekdaysFull.slice( 0 ) ), //tableHead
 
 
         // Create the nav for next/prev month.
@@ -1038,9 +1040,15 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
 
         // Create the month label.
-        createMonthLabel = function() {
+        //Materialize modified
+        createMonthLabel = function(override) {
 
             var monthsCollection = settings.showMonthsShort ? settings.monthsShort : settings.monthsFull
+
+             // Materialize modified
+            if (override == "short_months") {
+              monthsCollection = settings.monthsShort;
+            }
 
             // If there are months to select, add a dropdown menu.
             if ( settings.selectMonths ) {
@@ -1078,13 +1086,18 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 )
             }
 
+            // Materialize modified
+            if (override == "short_months")
+                return _.node( 'div', monthsCollection[ viewsetObject.month ] )
+
             // If there's a need for a month selector
             return _.node( 'div', monthsCollection[ viewsetObject.month ], settings.klass.month )
         }, //createMonthLabel
 
 
         // Create the year label.
-        createYearLabel = function() {
+        // Materialize modified
+        createYearLabel = function(override) {
 
             var focusedYear = viewsetObject.year,
 
@@ -1120,6 +1133,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     highestYear = maxYear
                 }
 
+
                 return _.node( 'select',
                     _.group({
                         min: lowestYear,
@@ -1143,14 +1157,65 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 )
             }
 
+            // Materialize modified
+            if (override == "raw")
+                return _.node( 'div', focusedYear )
+
             // Otherwise just return the year focused
             return _.node( 'div', focusedYear, settings.klass.year )
         } //createYearLabel
 
 
+        // Materialize modified
+        createDayLabel = function() {
+                if (selectedObject != null)
+                    return _.node( 'div', selectedObject.date)
+                else return _.node( 'div', nowObject.date)
+            }
+        createWeekdayLabel = function() {
+            var display_day;
+
+            if (selectedObject != null)
+                display_day = selectedObject.day;
+            else
+                display_day = nowObject.day;
+            var weekday = settings.weekdaysFull[ display_day ]
+            return weekday
+        }
+
+
     // Create and return the entire calendar.
-    return _.node(
+return _.node(
+        // Date presentation View
         'div',
+            _.node(
+                'div',
+                createWeekdayLabel(),
+                "picker__weekday-display"
+            )+
+            _.node(
+                // Div for short Month
+                'div',
+                createMonthLabel("short_months"),
+                settings.klass.month_display
+            )+
+            _.node(
+                // Div for Day
+                'div',
+                createDayLabel() ,
+                settings.klass.day_display
+            )+
+            _.node(
+                // Div for Year
+                'div',
+                createYearLabel("raw") ,
+                settings.klass.year_display
+            ),
+        settings.klass.date_display
+    )+
+    // Calendar container
+    _.node('div',
+        _.node('div',
         ( settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel() ) +
         createMonthNav() + createMonthNav( 1 ),
         settings.klass.header
@@ -1241,20 +1306,23 @@ DatePicker.prototype.nodes = function( isOpen ) {
             controls: calendar.$node[0].id,
             readonly: true
         })
-    ) +
+    )
+    , settings.klass.calendar_container) // end calendar
+
+     +
 
     // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
     _.node(
         'div',
-        _.node( 'button', settings.today, settings.klass.buttonToday,
+        _.node( 'button', settings.today, "btn-flat picker__today",
             'type=button data-pick=' + nowObject.pick +
             ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node( 'button', settings.clear, settings.klass.buttonClear,
-            'type=button data-clear=1' +
-            ( isOpen ? '' : ' disabled' ) + ' ' +
-            _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node('button', settings.close, settings.klass.buttonClose,
+        // _.node( 'button', settings.clear, settings.klass.buttonClear,
+        //     'type=button data-clear=1' +
+        //     ( isOpen ? '' : ' disabled' ) + ' ' +
+        //     _.ariaAttr({ controls: calendar.$node[0].id }) ) +
+        _.node('button', settings.close, "btn-flat picker__close",
             'type=button data-close=true ' +
             ( isOpen ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ),
@@ -1286,6 +1354,9 @@ DatePicker.defaults = (function( prefix ) {
         weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
         weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
 
+        // Materialize modified
+        weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+
         // Today and clear
         today: 'Today',
         clear: 'Clear',
@@ -1300,6 +1371,17 @@ DatePicker.defaults = (function( prefix ) {
             table: prefix + 'table',
 
             header: prefix + 'header',
+
+
+            // Materialize Added klasses
+            date_display: prefix + 'date-display',
+            day_display: prefix + 'day-display',
+            month_display: prefix + 'month-display',
+            year_display: prefix + 'year-display',
+            calendar_container: prefix + 'calendar-container',
+            // end
+
+
 
             navPrev: prefix + 'nav--prev',
             navNext: prefix + 'nav--next',
