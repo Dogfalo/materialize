@@ -2225,10 +2225,10 @@ span.badge {
   text-align: center; }
 
 .left {
-  float: left; }
+  float: left !important; }
 
 .right {
-  float: right; }
+  float: right !important; }
 
 .no-select, input[type=range], input[type=range] + .thumb {
   -webkit-touch-callout: none;
