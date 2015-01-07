@@ -1318,10 +1318,10 @@ return _.node(
             'type=button data-pick=' + nowObject.pick +
             ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        // _.node( 'button', settings.clear, settings.klass.buttonClear,
-        //     'type=button data-clear=1' +
-        //     ( isOpen ? '' : ' disabled' ) + ' ' +
-        //     _.ariaAttr({ controls: calendar.$node[0].id }) ) +
+        _.node( 'button', settings.clear, "btn-flat picker__clear",
+            'type=button data-clear=1' +
+            ( isOpen ? '' : ' disabled' ) + ' ' +
+            _.ariaAttr({ controls: calendar.$node[0].id }) ) +
         _.node('button', settings.close, "btn-flat picker__close",
             'type=button data-close=true ' +
             ( isOpen ? '' : ' disabled' ) + ' ' +

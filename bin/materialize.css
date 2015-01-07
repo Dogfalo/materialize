@@ -7178,7 +7178,10 @@ ul.side-nav.fixed {
  * The footer containing the "today", "clear", and "close" buttons.
  */
 .picker__footer {
-  text-align: center; }
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
 
 .picker__button--today, .picker__button--clear, .picker__button--close {
   border: 1px solid #ffffff;
@@ -7313,6 +7316,7 @@ ul.side-nav.fixed {
 
 .picker__close, .picker__today {
   font-size: 1.1rem;
+  padding: 0 1rem;
   color: #26a69a; }
 
 .picker__nav--prev:before, .picker__nav--next:before {
