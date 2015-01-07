@@ -49,7 +49,17 @@
         });
       }
       activates.velocity({opacity: 1}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'})
-      .velocity({height: dropdownRealHeight}, {duration: options.inDuration, queue: false, easing: 'easeOutCubic'});
+      .velocity(
+      {
+        height: dropdownRealHeight
+      },
+      {duration: options.inDuration,
+        queue: false,
+        easing: 'easeOutCubic',
+        complete: function(){
+          activates.css('overflow-y', 'auto')
+        }
+      });
     }
     function elementOrParentIsFixed(element) {
         var $element = $(element);
@@ -85,7 +95,8 @@
             easing: 'easeOutQuad',
             complete: function(){
               activates.css({
-                display: 'none'
+                display: 'none',
+                'overflow-y': ''
               });
             }
           });
@@ -110,7 +121,8 @@
               easing: 'easeOutQuad',
               complete: function(){
                 activates.css({
-                  display: 'none'
+                  display: 'none',
+                  'overflow-y': ''
                 });
               }
             });
