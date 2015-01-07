@@ -7144,6 +7144,7 @@ ul.side-nav.fixed {
   font-weight: 500; }
 
 .picker__day--outfocus {
+  padding: 0.75rem 0;
   color: #fff; }
 
 .picker__day--outfocus:hover {
@@ -7309,6 +7310,8 @@ ul.side-nav.fixed {
   transform: scale(0.9);
   background-color: #009688;
   color: #ffffff; }
+  .picker--focused .picker__day--selected.picker__day--outfocus {
+    background-color: #b2dfdb; }
 
 .picker__footer {
   text-align: right;

@@ -189,7 +189,10 @@
 }
 
 .picker__day--outfocus {
+
+  padding: .75rem 0;
   color: #fff;
+
 }
 .picker__day--outfocus:hover {
   cursor: pointer;
@@ -392,6 +395,9 @@
   border-radius: 50%;
   @include transform(scale(.9));
   background-color: color("teal", "base");
+  &.picker__day--outfocus {
+    background-color: color("teal", "lighten-4");
+  }
   color: #ffffff;
 }
 
