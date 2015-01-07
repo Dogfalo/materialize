@@ -5424,7 +5424,7 @@ ul.tabs li.tab {
   z-index: 1000;
   max-height: 70%;
   opacity: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
   will-change: width, height; }
   .dropdown-content li {
     cursor: pointer;
