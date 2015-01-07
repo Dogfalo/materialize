@@ -69,11 +69,13 @@ label {
 
     &.active { color: $highlight-color; }
   }
-  .prefix ~ input {
+  .prefix ~ input,
+  .prefix ~ textarea {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem);
   }
+  .prefix ~ textarea { padding-top: .8rem; }
   .prefix ~ label { margin-left: 3rem; }
 
   @media #{$medium-and-down} {

@@ -5774,10 +5774,12 @@ label {
     transition: color 0.2s; }
     .input-field .prefix.active {
       color: #03a9f4; }
-  .input-field .prefix ~ input {
+  .input-field .prefix ~ input, .input-field .prefix ~ textarea {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem); }
+  .input-field .prefix ~ textarea {
+    padding-top: 0.8rem; }
   .input-field .prefix ~ label {
     margin-left: 3rem; }
   @media only screen and (max-width : 992px) {
