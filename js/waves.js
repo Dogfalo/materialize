@@ -1,11 +1,11 @@
 
 /*!
  * Waves v0.5.3
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
- * https://github.com/fians/Waves/blob/master/LICENSE 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
  */
 
 ;(function(window) {
@@ -60,12 +60,12 @@
         duration: 700,
 
         show: function(e) {
-            
+
             // Disable right click
             if (e.button === 2) {
               return false;
             }
-          
+
             var el = this;
 
             // Create ripple
@@ -78,7 +78,7 @@
             var relativeY   = (e.pageY - pos.top);
             var relativeX   = (e.pageX - pos.left);
             var scale       = 'scale('+((el.clientWidth / 100) * 22)+')';
-          
+
             // Support for touch devices
             if ('touches' in e) {
               relativeY   = (e.touches[0].pageY - pos.top);
@@ -96,7 +96,7 @@
                 'top': relativeY+'px',
                 'left': relativeX+'px'
             };
-            
+
             ripple.className = ripple.className + ' waves-notransition';
             ripple.setAttribute('style', convertStyle(rippleStyle));
             ripple.className = ripple.className.replace('waves-notransition', '');
@@ -124,11 +124,11 @@
         },
 
         hide: function() {
-            
+
             var el = this;
 
             var width = el.clientWidth * 1.4;
-            
+
             // Get first ripple
             var ripple = null;
 
@@ -187,7 +187,7 @@
                         return false;
                     }
 
-                    
+
                 }, Effect.duration);
 
             }, delay);
@@ -221,7 +221,7 @@
                     }
 
                     wrapper.setAttribute('style', elementStyle);
-                    
+
                     el.className = 'waves-button-input';
                     el.removeAttribute('style');
 
@@ -230,7 +230,7 @@
                     wrapper.appendChild(el);
 
                 }
-                
+
             }
         }
     };
@@ -242,7 +242,7 @@
         if ('duration' in options) {
             Effect.duration = options.duration;
         }
-        
+
         //Wrap input inside <i> tag
         Effect.wrapInput($$('.waves-effect'));
 
@@ -252,11 +252,12 @@
           i.addEventListener('mouseup', Effect.hide, false);                      i.addEventListener('touchstart', Effect.show, false);
           i.addEventListener('mouseleave', Effect.hide, false);                   i.addEventListener('touchend',   Effect.hide, false);
           i.addEventListener('touchcancel',   Effect.hide, false);
-        } else {
-          i.addEventListener('mousedown', Effect.show, false);
-          i.addEventListener('mouseup', Effect.hide, false);
-          i.addEventListener('mouseleave', Effect.hide, false);
         }
+
+        i.addEventListener('mousedown', Effect.show, false);
+        i.addEventListener('mouseup', Effect.hide, false);
+        i.addEventListener('mouseleave', Effect.hide, false);
+
 
         });
 

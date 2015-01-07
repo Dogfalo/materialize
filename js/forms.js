@@ -180,22 +180,17 @@
 
         });
 
-
         // Wrap Elements
         $select.wrap(wrapper);
-
         // Add Select Display Element
-
         var $newSelect = $('<span class="select-dropdown ' + (($select.is(':disabled')) ? 'disabled' : '')
                          + '" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
         $select.before($newSelect);
         $('body').append(options);
-
         // Check if section element is disabled
         if (!$select.is(':disabled')) {
           $newSelect.dropdown({"hover": false});
         }
-
         $select.addClass('initialized');
 
       });

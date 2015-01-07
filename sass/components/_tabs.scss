@@ -1,4 +1,4 @@
-ul.tabs {
+.tabs {
   position: relative;
   height: 48px;
   background-color: #FFF;
@@ -7,10 +7,6 @@ ul.tabs {
   white-space: nowrap;
 
   li.tab {
-    @media #{$large-and-up} {
-      max-width: 25%; 
-    }
-    
     display: block;
     float: left;
     text-align: center;
