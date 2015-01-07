@@ -1,5 +1,5 @@
 /*!
- * pickadate.js v3.5.4, 2014/09/11
+ * pickadate.js v3.5.0, 2014/04/13
  * By Amsul, http://amsul.ca
  * Hosted on http://amsul.github.io/pickadate.js
  * Licensed under MIT
@@ -444,7 +444,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     if ( P._hidden ) {
                         return P._hidden.value
                     }
-                    thing = value
+                    thing = 'value'
                 }
 
                 // Return the value, if that.
@@ -627,7 +627,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             haspopup: true,
             expanded: false,
             readonly: false,
-            owns: ELEMENT.id + '_root' + (P._hidden ? ' ' + P._hidden.id : '')
+            owns: ELEMENT.id + '_root'
         })
     }
 
@@ -666,7 +666,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                         //   prevent cases where focus is shifted onto external elements
                         //   when using things like jQuery mobile or MagnificPopup (ref: #249 & #120).
                         //   Also, for Firefox, don’t prevent action on the `option` element.
-                        if ( event.type == 'mousedown' && !$( target ).is( ':input' ) && target.nodeName != 'OPTION' ) {
+                        if ( event.type == 'mousedown' && !$( target ).is( 'input, select, textarea, button, option' )) {
 
                             event.preventDefault()
 
@@ -775,10 +775,12 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 P._hidden.value = ELEMENT.value ?
                     P.get('select', SETTINGS.formatSubmit) :
                     ''
-            }).
+            })
 
-            // Insert the hidden input after the element.
-            after(P._hidden)
+
+        // Insert the hidden input as specified in the settings.
+        if ( SETTINGS.container ) $( SETTINGS.container ).append( P._hidden )
+        else $ELEMENT.after( P._hidden )
     }
 
 
@@ -1117,6 +1119,5 @@ return PickerConstructor
 
 
 }));
-
 
 
