@@ -110,13 +110,26 @@
     animation-timing-function: $function;
 }
 
+// Keyframes
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
 // Backface-visibility
 
 @mixin backface-visibility($args) {
     -webkit-backface-visibility: $args;
-    -moz-backface-visibility:    $args;
-    -ms-backface-visibility:     $args;
-    backface-visibility:     $args;
+    -moz-backface-visibility: $args;
+    -ms-backface-visibility: $args;
+    backface-visibility: $args;
 }
 
 
@@ -288,21 +301,21 @@
 @mixin transform($args) {
     -webkit-transform: $args;
     -moz-transform: $args;
-    -ms-transform: $args; 
+    -ms-transform: $args;
     -o-transform: $args;
     transform: $args;
 }
 @mixin transform-origin($args) {
     -webkit-transform-origin: $args;
     -moz-transform-origin: $args;
-    -ms-transform-origin: $args; 
+    -ms-transform-origin: $args;
     -o-transform-origin: $args;
     transform-origin: $args;
 }
 @mixin transform-style($style) {
     -webkit-transform-style: $style;
     -moz-transform-style: $style;
-    -ms-transform-style: $style; 
+    -ms-transform-style: $style;
     -o-transform-style: $style;
     transform-style: $style;
 }

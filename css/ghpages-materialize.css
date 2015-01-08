@@ -1616,6 +1616,7 @@
 /*** Toasts ***/
 /*** Typography ***/
 /*** Collections ***/
+/* Progress Bar */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -2217,58 +2218,119 @@ span.badge {
   height: 4px;
   display: block;
   width: 100%;
-  background-color: #fff;
-  margin: 1em 0;
+  background-color: #c5ecfe;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
   overflow: hidden; }
-
-.progress > div {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; }
-
-.indeterminate:before {
-  content: '';
-  background-color: tomato;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  -webkit-animation: indeterminate 2s ease-in infinite; }
-.indeterminate:after {
-  content: '';
-  position: absolute;
-  background-color: tomato;
-  top: 0;
-  bottom: 0;
-  -webkit-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-  -webkit-animation-delay: 0.9s; }
+  .progress .indeterminate {
+    background-color: #03a9f4; }
+    .progress .indeterminate:before {
+      content: '';
+      background-color: inherit;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      -webkit-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+      -moz-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+      -ms-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+      -o-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+      animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite; }
+    .progress .indeterminate:after {
+      content: '';
+      position: absolute;
+      background-color: inherit;
+      top: 0;
+      bottom: 0;
+      -webkit-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      -moz-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      -ms-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      -o-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      -webkit-animation-delay: 1.05s;
+      -moz-animation-delay: 1.05s;
+      -ms-animation-delay: 1.05s;
+      -o-animation-delay: 1.05s;
+      animation-delay: 1.05s; }
 
 @-webkit-keyframes indeterminate {
   0% {
-    left: -25%;
+    left: -35%;
     right: 100%; }
 
-  50% {
+  60% {
     left: 100%;
-    right: -75%; }
+    right: -80%; }
 
   100% {
     left: 100%;
-    right: -75%; } }
+    right: -80%; } }
+
+@-moz-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%; }
+
+  60% {
+    left: 100%;
+    right: -80%; }
+
+  100% {
+    left: 100%;
+    right: -80%; } }
+
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%; }
+
+  60% {
+    left: 100%;
+    right: -80%; }
+
+  100% {
+    left: 100%;
+    right: -80%; } }
 
 @-webkit-keyframes indeterminate-short {
   0% {
-    left: -100%;
+    left: -80%;
     right: 100%; }
 
   50% {
-    left: 105%;
-    right: 0; }
+    left: 103%;
+    right: -6%; }
 
   100% {
-    left: 105%;
-    right: 0; } }
+    left: 103%;
+    right: -6%; } }
+
+@-moz-keyframes indeterminate-short {
+  0% {
+    left: -80%;
+    right: 100%; }
+
+  50% {
+    left: 103%;
+    right: -6%; }
+
+  100% {
+    left: 103%;
+    right: -6%; } }
+
+@keyframes indeterminate-short {
+  0% {
+    left: -80%;
+    right: 100%; }
+
+  50% {
+    left: 103%;
+    right: -6%; }
+
+  100% {
+    left: 103%;
+    right: -6%; } }
 
 /*******************
   Utility Classes

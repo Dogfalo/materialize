@@ -396,66 +396,59 @@ span.badge {
     height: 4px;
     display: block;
     width: 100%;
-    background-color: #fff;
-    margin: 1em 0;
+    background-color: lighten($progress-bar-color, 40%);
+    @include border-radius(2px);
+    // margin: 1rem 0;
     overflow: hidden;
-}
-.progress > div{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-.indeterminate {
-  &:before {
-    content: '';
-    background-color: tomato;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    -webkit-animation: indeterminate 2s ease-in infinite;
+  .indeterminate {
+    background-color: $progress-bar-color;
+    &:before {
+      content: '';
+      background-color: inherit;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      @include animation(indeterminate 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite);
 
-  }
-
+    }
     &:after {
       content: '';
       position: absolute;
-      background-color: tomato;
+      background-color: inherit;
       top: 0;
       bottom: 0;
-      // width: 60%;
-      -webkit-animation: indeterminate-short 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite;
-    -webkit-animation-delay: .9s;
+      @include animation(indeterminate-short 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite);
+      @include animation-delay(1.05s);
     }
+  }
 }
-@-webkit-keyframes indeterminate {
+@include keyframes(indeterminate) {
     0% {
-            left: -25%;
+            left: -35%;
             right:100%;
         }
-        50% {
+        60% {
             left: 100%;
-            right: -75%;
+            right: -80%;
         }
         100% {
             left: 100%;
-            right: -75%;
+            right: -80%;
         }
 }
 
-@-webkit-keyframes indeterminate-short {
+@include keyframes(indeterminate-short) {
     0% {
-        left: -100%;
+        left: -80%;
         right: 100%;
     }
     50% {
-        left: 105%;
-        right: 0;
+        left: 103%;
+        right: -6%;
     }
     100% {
-      left: 105%;
-      right: 0;
+      left: 103%;
+      right: -6%;
     }
 }
 /*******************
