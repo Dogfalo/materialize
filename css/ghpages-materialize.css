@@ -1613,6 +1613,7 @@
 /*** Global ***/
 /*** Navbar ***/
 /*** SideNav ***/
+/*** Tables ***/
 /*** Toasts ***/
 /*** Typography ***/
 /*** Collections ***/
@@ -2096,12 +2097,8 @@ table, th, td {
 table {
   width: 100%;
   display: table; }
-  @media only screen and (max-width : 600px) {
-    table thead tr th, table tbody tr td {
-      text-align: center; }
- }
   table.bordered tr {
-    border-bottom: 1px solid #e0e0e0; }
+    border-bottom: 1px solid #d0d0d0; }
   table.striped tbody tr:nth-child(odd) {
     background-color: #f2f2f2; }
   table.hoverable tbody tr {
@@ -2116,7 +2113,7 @@ table {
     text-align: center; }
 
 thead {
-  border-bottom: 1px solid #878787; }
+  border-bottom: 1px solid #d0d0d0; }
 
 td, th {
   padding: 15px 5px;
@@ -2124,6 +2121,59 @@ td, th {
   text-align: left;
   vertical-align: middle;
   border-radius: 2px; }
+
+@media only screen and (max-width : 992px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    position: relative;
+    /* sort out borders */ }
+    table th, table td {
+      margin: 0;
+      vertical-align: top; }
+    table th {
+      text-align: left; }
+    table thead {
+      display: block;
+      float: left; }
+      table thead tr {
+        display: block;
+        padding: 0 10px 0 0; }
+    table tbody {
+      display: block;
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap; }
+      table tbody tr {
+        display: inline-block;
+        vertical-align: top; }
+    table th {
+      display: block;
+      text-align: right; }
+    table td {
+      display: block;
+      min-height: 1.25em;
+      text-align: left; }
+    table tr {
+      padding: 0 10px; }
+    table thead {
+      border: 0;
+      border-right: 1px solid #d0d0d0; }
+    table.bordered th {
+      border-bottom: 0;
+      border-left: 0; }
+    table.bordered td {
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0; }
+    table.bordered tr {
+      border: 0; }
+    table.bordered tbody tr {
+      border-right: 1px solid #d0d0d0; }
+ }
 
 .collection {
   background-color: #fff;
