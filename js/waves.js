@@ -149,7 +149,7 @@
             var relativeY   = ripple.getAttribute('data-y');
             var scale       = ripple.getAttribute('data-scale');
 
-            // Get delay beetween mousedown and mouse leave
+            // Get delay between mouse down and mouse leave
             var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
             var delay = 500 - diff;
 
@@ -174,7 +174,7 @@
                     '-moz-transform': scale,
                     '-ms-transform': scale,
                     '-o-transform': scale,
-                    'transform': scale,
+                    'transform': scale
                 };
 
                 ripple.setAttribute('style', convertStyle(style));
