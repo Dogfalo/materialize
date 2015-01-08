@@ -29,6 +29,7 @@
       }
       window.onmousewheel = document.onmousewheel = wheel;
       document.onkeydown = keydown;
+      $('body').css({'overflow-y' : 'hidden'});
     }
 
     function enable_scroll() {
@@ -36,6 +37,8 @@
         window.removeEventListener('DOMMouseScroll', wheel, false);
       }
       window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+      $('body').css({'overflow-y' : ''});
+
     }
 
     $.fn.sideNav = function (options) {
