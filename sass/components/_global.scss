@@ -351,6 +351,11 @@ td, th{
       &:last-child {
         border-bottom: none;
       }
+
+    &.active {
+      background-color: $collection-active-bg-color;
+      color: $collection-active-color;
+    }
   }
   a.collection-item{
     display: block;
@@ -371,10 +376,7 @@ td, th{
      padding-left: 30px;
     }
   }
-  .active {
-    background-color: $collection-active-bg-color;
-    color: $collection-active-color;
-  }
+
   .secondary-content {
     float: right;
   }

@@ -2188,6 +2188,9 @@ td, th {
     border-bottom: 1px solid #e0e0e0; }
     .collection .collection-item:last-child {
       border-bottom: none; }
+    .collection .collection-item.active {
+      background-color: #42A5F5;
+      color: #BBDEFB; }
   .collection a.collection-item {
     display: block;
     -webkit-transition: 0.25s;
@@ -2202,9 +2205,6 @@ td, th {
     padding: 10px 20px; }
   .collection.with-header .collection-item {
     padding-left: 30px; }
-  .collection .active {
-    background-color: #42A5F5;
-    color: #BBDEFB; }
   .collection .secondary-content {
     float: right; }
   .collection.pagination {
