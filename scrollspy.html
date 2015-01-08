@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Typography - Materialize</title>
+    <title>Scrollspy - Materialize</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -31,7 +31,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Typography</a></div>
+          <div class="nav-wrapper"><a class="page-title">Scrollspy</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
@@ -42,7 +42,7 @@
         <li class="bold"><a href="getting-started.html">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header active">CSS</a>
+            <li class="bold"><a class="collapsible-header">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
@@ -52,7 +52,7 @@
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
-                  <li class="active"><a href="typography.html">Typography</a></li>
+                  <li><a href="typography.html">Typography</a></li>
                 </ul>
               </div>
             </li>
@@ -71,7 +71,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header">JavaScript</a>
+            <li class="bold"><a class="collapsible-header active">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="collapsible.html">Collapsible</a></li>
@@ -81,7 +81,7 @@
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
                   <li><a href="pushpin.html">Pushpin</a></li>
-                  <li><a href="scrollspy.html">Scrollspy</a></li>
+                  <li class="active"><a href="scrollspy.html">Scrollspy</a></li>
                   <li><a href="side-nav.html">SideNav</a></li>
                   <li><a href="tabs.html">Tabs</a></li>
                   <li><a href="waves.html">Waves</a></li>
@@ -102,90 +102,67 @@
   <div class="row">
     <div class="col s12 m9 l10">
 
-      <div class="section">
-        <div id="roboto" class="scrollspy">
-          <h2 class="header">Roboto 2.0</h2>
-          <p class="caption">
-            The standard font Material Design uses is Roboto. We have included the font files with our framework.
-          </p>
-          <div class="row">
-            <p class="col s12 m4">We bundle our framework with the latest iteration of Roboto Google has released. It comes with 5 different font weights you can use: 200, 300, 400, 500, 600.<br> <br> Here is an image from Google's Roboto Specimen document displaying the different font weights.</p>
-            <img class="col s12 m8" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7SW9CUzR4MnRpOTg/style_typography_roboto1.png">
-          </div>
+      <div id="introduction" class="section scrollspy">
+        <h4>Introduction</h4>
+        <p>Scrollspy is a jQuery plugin that tracks certain elements and which element the user's screen is currently centered on. Our main demo of this is our table of contents on every documentation page to the right. Clicking on these links will also scroll the page to that element. </p>
+      </div>
 
-          <h4>Removing Roboto</h4>
-          <p>In case you don't want to use Roboto on your webpage, fear not. Simply change the font stack by modifying the code below to your liking and add it to your custom css.</p>
-        <pre><code class="language-css">
-  html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  }
+      <div id="structure" class="section scrollspy">
+        <h4>Table of Contents Structure</h4>
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m9 l10">
+      &lt;div id="introduction" class="section scrollspy">
+        &lt;p>Content &lt;/p>
+      &lt;/div>
+
+      &lt;div id="structure" class="section scrollspy">
+        &lt;p>Content &lt;/p>
+      &lt;/div>
+
+      &lt;div id="initialization" class="section scrollspy">
+        &lt;p>Content &lt;/p>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="col hide-on-small-only m3 l2">
+      &lt;ul class="section table-of-contents">
+        &lt;li>&lt;a href="#introduction">Introduction&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#structure">Structure&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#initialization">Intialization&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/div>
         </code></pre>
       </div>
 
 
-        <div id="headers" class="section scrollspy">
-          <h2 class="header">Headers</h2>
-          <p>We provide some basic styling on header tags. In the example on the right, you can see the difference in sizes between the 6 header tags.</p>
-          <div class="card-panel">
-            <h1>Heading h1</h1>
-            <h2>Heading h2</h2>
-            <h3>Heading h3</h3>
-            <h4>Heading h4</h4>
-            <h5>Heading h5</h5>
-            <h6>Heading h6</h6>
-          </div>
-        </div>
 
-        <div id="blockquote" class="section scrollspy">
-          <h2 class="header">Blockquotes</h2>
-          <p>
-            Blockquotes are mainly used to give emphasis to a quote or citation. You can also use these for some extra text hierarchy and emphasis.
-            </p>
-          <blockquote>
-            This is an example quotation that uses the blockquote tag.
-            <br>Here is another line to make it look bigger.
-          </blockquote>
-          <pre><code class="language-markup">
-    &lt;blockquote>
-      This is an example quotation that uses the blockquote tag.
-    &lt;/blockquote>
-          </code></pre>
-        </div>
-
-        <div id="flow" class="section scrollspy">
-          <h2 class="header">Flow Text</h2>
-          <a id="flow-toggle" class="btn waves-effect waves-light">Toggle flow-text</a>
-          <div id="flow-text-demo" class="card-panel">
-          <p class="flow-text">
-          One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.</p>
-          <p class="flow-text">To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!</p>
-          </div>
-
-          <br>
-
-          <p>To use flow-text on a body of text, simply just add the class <code class="language-markup">flow-text</code> to a tag, see the code blow.</p>
-          <div class="row">
-          <pre><code class="language-markup col s12">
-    &lt;p class="flow-text">I am Flow Text&lt;/p>
-          </code></pre>
-          </div>
-        </div>
-
+      <div id="initialization" class="section scrollspy">
+        <h4>jQuery Plugin Initialization</h4>
+        <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
+        </code></pre>
       </div>
 
     </div>
+
+    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#roboto">Roboto</a></li>
-          <li><a href="#headers">Headers</a></li>
-          <li><a href="#blockquote">Blockquotes</a></li>
-          <li><a href="#flow">Flow Text</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="#initialization">Intialization</a></li>
         </ul>
       </div>
     </div>
+
   </div>
-</div> <!-- End Container -->
+</div>
+
+
     </main>    <footer>
       <div class="container">
         <div class="row">

@@ -251,6 +251,7 @@ module.exports = function(grunt) {
           "media.html": "jade/media.jade",
           "parallax.html": "jade/parallax.jade",
           "collapsible.html": "jade/collapsible.jade",
+          "scrollspy.html": "jade/scrollspy.jade",
 
 
         }
