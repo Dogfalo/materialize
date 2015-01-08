@@ -2273,6 +2273,7 @@ span.badge {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background-clip: padding-box;
+  margin: 0.5rem 0 1rem 0;
   overflow: hidden; }
   .progress .indeterminate {
     background-color: #03a9f4; }
@@ -2282,27 +2283,27 @@ span.badge {
       position: absolute;
       top: 0;
       bottom: 0;
-      -webkit-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-      -moz-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-      -ms-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-      -o-animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-      animation: indeterminate 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite; }
+      -webkit-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
+      -moz-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
+      -ms-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
+      -o-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
+      animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite; }
     .progress .indeterminate:after {
       content: '';
       position: absolute;
       background-color: inherit;
       top: 0;
       bottom: 0;
-      -webkit-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      -moz-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      -ms-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      -o-animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      animation: indeterminate-short 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      -webkit-animation-delay: 1.05s;
-      -moz-animation-delay: 1.05s;
-      -ms-animation-delay: 1.05s;
-      -o-animation-delay: 1.05s;
-      animation-delay: 1.05s; }
+      -webkit-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -moz-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -ms-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -o-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -webkit-animation-delay: 1.15s;
+      -moz-animation-delay: 1.15s;
+      -ms-animation-delay: 1.15s;
+      -o-animation-delay: 1.15s;
+      animation-delay: 1.15s; }
 
 @-webkit-keyframes indeterminate {
   0% {
@@ -2311,11 +2312,11 @@ span.badge {
 
   60% {
     left: 100%;
-    right: -80%; }
+    right: -90%; }
 
   100% {
     left: 100%;
-    right: -80%; } }
+    right: -90%; } }
 
 @-moz-keyframes indeterminate {
   0% {
@@ -2324,11 +2325,11 @@ span.badge {
 
   60% {
     left: 100%;
-    right: -80%; }
+    right: -90%; }
 
   100% {
     left: 100%;
-    right: -80%; } }
+    right: -90%; } }
 
 @keyframes indeterminate {
   0% {
@@ -2337,50 +2338,50 @@ span.badge {
 
   60% {
     left: 100%;
-    right: -80%; }
+    right: -90%; }
 
   100% {
     left: 100%;
-    right: -80%; } }
+    right: -90%; } }
 
 @-webkit-keyframes indeterminate-short {
   0% {
-    left: -80%;
+    left: -100%;
     right: 100%; }
 
-  50% {
-    left: 103%;
-    right: -6%; }
+  60% {
+    left: 105%;
+    right: -10%; }
 
   100% {
-    left: 103%;
-    right: -6%; } }
+    left: 105%;
+    right: -15%; } }
 
 @-moz-keyframes indeterminate-short {
   0% {
-    left: -80%;
+    left: -100%;
     right: 100%; }
 
-  50% {
-    left: 103%;
-    right: -6%; }
+  60% {
+    left: 105%;
+    right: -10%; }
 
   100% {
-    left: 103%;
-    right: -6%; } }
+    left: 105%;
+    right: -15%; } }
 
 @keyframes indeterminate-short {
   0% {
-    left: -80%;
+    left: -100%;
     right: 100%; }
 
-  50% {
-    left: 103%;
-    right: -6%; }
+  60% {
+    left: 105%;
+    right: -10%; }
 
   100% {
-    left: 103%;
-    right: -6%; } }
+    left: 105%;
+    right: -15%; } }
 
 /*******************
   Utility Classes

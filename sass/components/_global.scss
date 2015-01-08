@@ -460,7 +460,7 @@ span.badge {
     width: 100%;
     background-color: lighten($progress-bar-color, 40%);
     @include border-radius(2px);
-    // margin: 1rem 0;
+    margin: $element-top-margin 0 $element-bottom-margin 0;
     overflow: hidden;
   .indeterminate {
     background-color: $progress-bar-color;
@@ -470,7 +470,7 @@ span.badge {
       position: absolute;
       top: 0;
       bottom: 0;
-      @include animation(indeterminate 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite);
+      @include animation(indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.730, 0.530) infinite);
 
     }
     &:after {
@@ -479,8 +479,9 @@ span.badge {
       background-color: inherit;
       top: 0;
       bottom: 0;
-      @include animation(indeterminate-short 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite);
-      @include animation-delay(1.05s);
+      // Custom bezier
+      @include animation(indeterminate-short 2.2s cubic-bezier(0.285, 0.590, 0.355, 1.000) infinite);
+      @include animation-delay(1.15s);
     }
   }
 }
@@ -489,28 +490,28 @@ span.badge {
             left: -35%;
             right:100%;
         }
-        60% {
-            left: 100%;
-            right: -80%;
-        }
-        100% {
-            left: 100%;
-            right: -80%;
-        }
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+    100% {
+        left: 100%;
+        right: -90%;
+    }
 }
 
 @include keyframes(indeterminate-short) {
     0% {
-        left: -80%;
+        left: -100%;
         right: 100%;
     }
-    50% {
-        left: 103%;
-        right: -6%;
+    60% {
+        left: 105%;
+        right: -10%;
     }
     100% {
-      left: 103%;
-      right: -6%;
+      left: 105%;
+      right: -15%;
     }
 }
 /*******************
