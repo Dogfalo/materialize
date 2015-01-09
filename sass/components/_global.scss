@@ -462,15 +462,24 @@ span.badge {
     @include border-radius(2px);
     margin: $element-top-margin 0 $element-bottom-margin 0;
     overflow: hidden;
+  .determinate {
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    bottom: 0;
+    background-color: $progress-bar-color;
+    @include transition(width .3s linear);
+  }
   .indeterminate {
     background-color: $progress-bar-color;
     &:before {
       content: '';
-      background-color: inherit;
       position: absolute;
+      background-color: inherit;
       top: 0;
+      left:0;
       bottom: 0;
-      @include animation(indeterminate 2.0s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite);
+      @include animation(indeterminate 2.1s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite);
 
     }
     &:after {
@@ -478,10 +487,11 @@ span.badge {
       position: absolute;
       background-color: inherit;
       top: 0;
+      left:0;
       bottom: 0;
       // Custom bezier
-      @include animation(indeterminate-short 2.0s cubic-bezier(0.285, 0.590, 0.355, 1.000) infinite);
-      @include animation-delay(1.05s);
+      @include animation(indeterminate-short 2.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite);
+      @include animation-delay(1.15s);
     }
   }
 }
@@ -502,16 +512,16 @@ span.badge {
 
 @include keyframes(indeterminate-short) {
     0% {
-        left: -100%;
+        left: -200%;
         right: 100%;
     }
     60% {
-        left: 105%;
-        right: -10%;
+        left: 107%;
+        right: -8%;
     }
     100% {
-      left: 105%;
-      right: -15%;
+      left: 107%;
+      right: -8%;
     }
 }
 /*******************
