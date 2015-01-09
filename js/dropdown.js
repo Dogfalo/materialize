@@ -5,7 +5,9 @@
       inDuration: 300,
       outDuration: 225,
       constrain_width: true, // Constrains width of dropdown to the activator
-      hover: true
+      hover: true,
+      align: 'left',
+      gutter: 5
     }
 
     options = $.extend(defaults, options);
@@ -28,6 +30,20 @@
     */
     function placeDropdown() {
       var dropdownRealHeight = activates.height();
+      var left = origin.position().left;
+      var top = origin.position().top;
+      if(options.align === 'right'){
+          left = left - activates.width() + origin.outerWidth();
+          if((left + activates.width() + options.gutter) >= window.innerWidth){
+              left = (window.innerWidth - activates.width() - options.gutter);
+          }
+      }
+      else if(left <options.gutter){
+          left = options.gutter;
+      }
+      if(top<options.gutter){
+          top = options.gutter;
+      }
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
@@ -36,15 +52,15 @@
           display: 'block',
           position: 'fixed',
           height: 0,
-          top: origin.position().top,
-          left:origin.position().left
+          top: top,
+          left: left
         });
       }
       else {
         activates.css({
           display: 'block',
-          top: origin.offset().top,
-          left: origin.offset().left,
+          top: top,
+          left: left,
           height: 0
         });
       }
