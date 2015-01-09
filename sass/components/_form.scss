@@ -38,6 +38,8 @@ label {
   input[type=password]:focus + label,
   input[type=email]:focus + label,
   input[type=date]:focus + label,
+  input[type=tel]:focus + label,
+  input[type=number]:focus + label,
   textarea:focus + label {
     color: $highlight-color;
   }
@@ -46,6 +48,8 @@ label {
   input[type=password].valid,
   input[type=email].valid,
   input[type=date].valid,
+  input[type=tel].valid,
+  input[type=number].valid,
   textarea.valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
@@ -55,6 +59,8 @@ label {
   input[type=password].invalid,
   input[type=email].invalid,
   input[type=date].invalid,
+  input[type=tel].invalid,
+  input[type=number].invalid,
   textarea.invalid {
     border-bottom: 1px solid color("red", "base");
     @include box-shadow(0 1px 0 0 color("red", "base"));
@@ -97,6 +103,8 @@ input[type=text],
 input[type=password],
 input[type=email],
 input[type=date],
+input[type=tel],
+input[type=number],
 textarea {
   background-color: transparent;
   border: none;
@@ -116,6 +124,8 @@ input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
 input[type=date]:focus,
+input[type=tel]:focus,
+input[type=number]:focus,
 textarea:focus {
   border-bottom: 1px solid $highlight-color;
   @include box-shadow(0 1px 0 0 $highlight-color);

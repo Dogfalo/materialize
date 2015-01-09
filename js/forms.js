@@ -2,7 +2,7 @@
   $(document).ready(function() {
 
     // Text based inputs
-    var input_selector = 'input[type=text], input[type=password], input[type=email], textarea';
+    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
 
     $(input_selector).each(function(){
       if($(this).val().length !== 0) {
