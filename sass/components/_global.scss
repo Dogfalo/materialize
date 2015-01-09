@@ -470,7 +470,7 @@ span.badge {
       position: absolute;
       top: 0;
       bottom: 0;
-      @include animation(indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.730, 0.530) infinite);
+      @include animation(indeterminate 2.0s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite);
 
     }
     &:after {
@@ -480,8 +480,8 @@ span.badge {
       top: 0;
       bottom: 0;
       // Custom bezier
-      @include animation(indeterminate-short 2.2s cubic-bezier(0.285, 0.590, 0.355, 1.000) infinite);
-      @include animation-delay(1.15s);
+      @include animation(indeterminate-short 2.0s cubic-bezier(0.285, 0.590, 0.355, 1.000) infinite);
+      @include animation-delay(1.05s);
     }
   }
 }

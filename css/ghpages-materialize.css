@@ -2283,27 +2283,27 @@ span.badge {
       position: absolute;
       top: 0;
       bottom: 0;
-      -webkit-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
-      -moz-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
-      -ms-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
-      -o-animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite;
-      animation: indeterminate 2.2s cubic-bezier(0.5, 0.5, 0.73, 0.53) infinite; }
+      -webkit-animation: indeterminate 2s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      -moz-animation: indeterminate 2s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      -ms-animation: indeterminate 2s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      -o-animation: indeterminate 2s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      animation: indeterminate 2s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite; }
     .progress .indeterminate:after {
       content: '';
       position: absolute;
       background-color: inherit;
       top: 0;
       bottom: 0;
-      -webkit-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
-      -moz-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
-      -ms-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
-      -o-animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
-      animation: indeterminate-short 2.2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
-      -webkit-animation-delay: 1.15s;
-      -moz-animation-delay: 1.15s;
-      -ms-animation-delay: 1.15s;
-      -o-animation-delay: 1.15s;
-      animation-delay: 1.15s; }
+      -webkit-animation: indeterminate-short 2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -moz-animation: indeterminate-short 2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -ms-animation: indeterminate-short 2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -o-animation: indeterminate-short 2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      animation: indeterminate-short 2s cubic-bezier(0.285, 0.59, 0.355, 1) infinite;
+      -webkit-animation-delay: 1.05s;
+      -moz-animation-delay: 1.05s;
+      -ms-animation-delay: 1.05s;
+      -o-animation-delay: 1.05s;
+      animation-delay: 1.05s; }
 
 @-webkit-keyframes indeterminate {
   0% {
