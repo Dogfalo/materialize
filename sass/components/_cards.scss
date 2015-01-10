@@ -103,6 +103,8 @@
     padding: $card-padding;
     position: absolute;
     background-color: #FFF;
+    width: 100%;
+    overflow-y: auto;
     top: 100%;
     height: 100%;
 
