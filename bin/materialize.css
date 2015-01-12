@@ -1,3 +1,7 @@
+.text-center {
+  text-align:center;
+}
+
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important; }
 
