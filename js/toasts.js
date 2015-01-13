@@ -13,9 +13,7 @@ function toast(message, displayLength, className, completeCallback) {
     container.append(newToast);
 
     container.on('click', function(e) {
-        if ($(e.target).data('dismiss') !== 'undefined') {
-            dismiss();
-        }
+        if (typeof $(e.target).attr('data-dismiss') !== 'undefined') dismiss();
     });
 
     newToast.css({"top" : parseFloat(newToast.css("top"))+35+"px",
@@ -37,25 +35,26 @@ function toast(message, displayLength, className, completeCallback) {
       }
       
       if (timeLeft <= 0) {
-        newToast.velocity({"opacity": 0, marginTop: '-40px'},
-                        { duration: 375,
-                          easing: 'easeOutExpo',
-                          queue: false,
-                          complete: function(){
-                            dismiss();
-                          }
-                        }
-                       );
+        dismiss();
         window.clearInterval(counterInterval);
       }
     }, 100);
 
 
     function dismiss() {
-        $(this).remove();
-        if(typeof(completeCallback) === "function") completeCallback();
+        newToast.velocity({"opacity": 0, marginTop: '-40px'},
+            {
+                duration: 375,
+                easing: 'easeOutExpo',
+                queue: false,
+                complete: function () {
+                    $(this).remove();
+                    if(typeof(completeCallback) === "function") completeCallback();
+                }
+            }
+        );
     }
-    
+
     function createToast(html) {
         var toast = $("<div class='toast'></div>")
           .addClass(className)
