@@ -207,12 +207,48 @@
     &lt;/div>
       </code></pre>
 
-       <p>Next you simply have to add the initialization code </p>
+      <br>
+      <h4>Fullscreen Slider</h4>
+      <p>You can easliy make this slider a fullscreen slider by adding the class <code class="language-markup">fullscreen</code> to the slider div. Here's a quick demo.</p>
+      <a href="fullscreen-slider-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
+
+      <br>
+      <h4>jQuery Initialization</h4>
        <pre><code class="language-javascript">
     $(document).ready(function(){
       $('.slider').slider({full_width: true});
     });
         </code></pre>
+        <br>
+
+        <h4>jQuery Plugin Options</h4>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Indicators</td>
+              <td>Set to false to hide slide indicators. (Default: True)</td>
+            </tr>
+            <tr>
+              <td>Height</td>
+              <td>Set height of slider. (Default: 400)</td>
+            </tr>
+            <tr>
+              <td>Transition</td>
+              <td>Set the duration of the transition animation in ms. (Default: 500)</td>
+            </tr>
+            <tr>
+              <td>Interval</td>
+              <td>Set the duration between transitions in ms. (Default: 6000)</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
