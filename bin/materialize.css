@@ -7022,11 +7022,25 @@ ul.side-nav.fixed {
 
 .slider {
   position: relative;
-  height: 400px;
+  height: 440px;
   width: 100%; }
+  .slider.fullscreen {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+    .slider.fullscreen ul.slides {
+      height: 100%; }
+    .slider.fullscreen ul.indicators {
+      z-index: 2;
+      bottom: 30px; }
   .slider ul.slides {
     background-color: #9e9e9e;
-    margin: 0; }
+    margin: 0;
+    height: 400px; }
     .slider ul.slides li {
       -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
       filter: "alpha(opacity=(${iefactor}))";
