@@ -8,10 +8,16 @@ function toast(message, displayLength, className, completeCallback) {
     }
     
     // Select and append toast
-    var container = $('#toast-container')
+    var container = $('#toast-container');
     var newToast = createToast(message);
     container.append(newToast);
-    
+
+    container.on('click', function(e) {
+        if ($(e.target).data('dismiss') !== 'undefined') {
+            dismiss();
+        }
+    });
+
     newToast.css({"top" : parseFloat(newToast.css("top"))+35+"px",
                   "opacity": 0});
     newToast.velocity({"top" : "0px",
@@ -36,9 +42,7 @@ function toast(message, displayLength, className, completeCallback) {
                           easing: 'easeOutExpo',
                           queue: false,
                           complete: function(){
-                            $(this).remove();
-                            if(typeof(completeCallback) === "function")
-                              completeCallback();
+                            dismiss();
                           }
                         }
                        );
@@ -47,6 +51,10 @@ function toast(message, displayLength, className, completeCallback) {
     }, 100);
 
 
+    function dismiss() {
+        $(this).remove();
+        if(typeof(completeCallback) === "function") completeCallback();
+    }
     
     function createToast(html) {
         var toast = $("<div class='toast'></div>")
