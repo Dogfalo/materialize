@@ -4,19 +4,25 @@
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
 
-    // Add active if value was embedded in HTML
+    // Add active if value was embedded in HTML or form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0) {
        $(this).siblings('label, i').addClass('active');
       }
     });
 
-    // Add active if Form auto complete was used
-    $(document).on('change', input_selector, function () {
-      if($(this).val().length !== 0) {
-       $(this).siblings('label, i').addClass('active');
+    // HTML DOM FORM RESET handling
+    $(document).on('reset', function(e) {
+      if ($(e.target).is('form')) {
+        $(this).find(input_selector).removeClass('valid').removeClass('invalid');
+
+        // Reset select
+        $(this).find('select.initialized').each(function () {
+          var reset_text = $(this).find('option[selected]').text();
+          $(this).prev('span.select-dropdown').html(reset_text);
+        });
       }
-    })
+    });
 
     // Add active when element has focus
     $(document).on('focus', input_selector, function () {
