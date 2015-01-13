@@ -2083,11 +2083,11 @@ img.responsive-img {
   .center-on-small-only {
     text-align: center; } }
 
-footer {
+footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: #ee6e73; }
-  footer .footer-copyright {
+  footer.page-footer .footer-copyright {
     line-height: 50px;
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(51, 51, 51, 0.08); }
@@ -5150,7 +5150,7 @@ strong {
 small {
   font-size: 75%; }
 
-.light, footer .footer-copyright {
+.light, footer.page-footer .footer-copyright {
   font-weight: 300; }
 
 .flow-text {

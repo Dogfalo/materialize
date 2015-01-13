@@ -84,8 +84,7 @@
       // Set initial dimensions of images
       $slides.find('img').each(function () {
         $(this).load(function () {
-          console.log($(this).width(), $(window).width());
-          if ($(this).width() < $(window).width()) {
+          if ($(this).width() < $(this).parent().width()) {
             $(this).css({width: '100%', height: 'auto'});
           }
         });
