@@ -24,6 +24,15 @@
       }
     });
 
+    // Add active if input element has been pre-populated on document ready
+    $(document).ready(function() {
+      $(input_selector).each(function(index, element) {
+        if($(element).val().length > 0) {
+          $(this).siblings('label, i').addClass('active');
+        }
+      });
+    });
+
     // Add active when element has focus
     $(document).on('focus', input_selector, function () {
       $(this).siblings('label, i').addClass('active');
