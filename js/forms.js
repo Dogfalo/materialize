@@ -4,11 +4,20 @@
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
 
-    // Add active if value was embedded in HTML or form auto complete
+    // Add active if form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0) {
        $(this).siblings('label, i').addClass('active');
       }
+    });
+
+    // Add active if input element has been pre-populated on document ready
+    $(document).ready(function() {
+      $(input_selector).each(function(index, element) {
+        if($(element).val().length > 0) {
+          $(this).siblings('label, i').addClass('active');
+        }
+      });
     });
 
     // HTML DOM FORM RESET handling
