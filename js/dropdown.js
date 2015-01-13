@@ -36,15 +36,15 @@
           display: 'block',
           position: 'fixed',
           height: 0,
-          top: origin.position().top,
-          left:origin.position().left
+          top: origin.offset().top,
+          left:origin.offset().left
         });
       }
       else {
         activates.css({
           display: 'block',
-          top: origin.offset().top,
-          left: origin.offset().left,
+          top: origin.position().top,
+          left: origin.position().left,
           height: 0
         });
       }
