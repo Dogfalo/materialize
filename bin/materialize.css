@@ -6536,7 +6536,9 @@ ul.table-of-contents a {
     width: 240px;
     left: -250px;
     top: 0;
-    bottom: 0;
+    height: 100%;
+    height: calc(100% + 60px);
+    padding-bottom: 60px;
     background-color: #FFF;
     z-index: 999;
     will-change: left; }
@@ -6561,8 +6563,10 @@ ul.side-nav.full, ul.side-nav.fixed {
   width: 240px;
   left: -250px;
   top: 0;
-  bottom: 0;
   margin: 0;
+  padding-bottom: 60px;
+  height: 100%;
+  height: calc(100% + 60px);
   background-color: #FFF;
   z-index: 999;
   will-change: left; }
