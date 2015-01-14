@@ -5534,6 +5534,7 @@ ul.tabs li.tab {
   line-height: 36px;
   text-transform: uppercase;
   border: none;
+  outline: 0;
   -webkit-tap-highlight-color: transparent; }
 
 .btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {
