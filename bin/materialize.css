@@ -5429,8 +5429,16 @@ small {
   font-size: 1.1rem;
   font-weight: 300;
   color: #fff;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: space-between;
   justify-content: space-between; }
   .toast .btn, .toast .btn-large, .toast .btn-flat {
     margin: 0;

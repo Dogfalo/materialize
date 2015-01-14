@@ -30,6 +30,7 @@
 //          flex($args)
 //          order($args)
 //          align($args)
+//          justify-content($args)
 //      gradient($default,$start,$stop) *
 //          linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
 //          linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
@@ -246,6 +247,10 @@
       -ms-flex-align: $align;
       -webkit-align-items: $align;
       align-items: $align;
+    }
+    @mixin justify-content($val) {
+      -webkit-justify-content: $val;
+      justify-content: $val;
     }
 // Gradients
 
