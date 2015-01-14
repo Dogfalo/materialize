@@ -8,6 +8,7 @@
   line-height: $button-line-height;
   text-transform: uppercase;
   border:none;
+  outline: 0;
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
 }

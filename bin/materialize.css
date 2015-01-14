@@ -1968,9 +1968,8 @@ a {
 
 ul {
   padding: 0; }
-
-li {
-  list-style-type: none; }
+  ul li {
+    list-style-type: none; }
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, ul.side-nav.full, ul.side-nav.fixed {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -2090,11 +2089,11 @@ img.responsive-img {
   .center-on-small-only {
     text-align: center; } }
 
-footer {
+footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: #ee6e73; }
-  footer .footer-copyright {
+  footer.page-footer .footer-copyright {
     line-height: 50px;
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(51, 51, 51, 0.08); }
@@ -2302,6 +2301,7 @@ span.badge {
       top: 0;
       left: 0;
       bottom: 0;
+      will-change: left, right;
       -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
       -moz-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
       -ms-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
@@ -2314,6 +2314,7 @@ span.badge {
       top: 0;
       left: 0;
       bottom: 0;
+      will-change: left, right;
       -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
       -moz-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
       -ms-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
@@ -5155,7 +5156,7 @@ strong {
 small {
   font-size: 75%; }
 
-.light, footer .footer-copyright {
+.light, footer.page-footer .footer-copyright {
   font-weight: 300; }
 
 .flow-text {
@@ -5539,6 +5540,7 @@ ul.tabs li.tab {
   line-height: 36px;
   text-transform: uppercase;
   border: none;
+  outline: 0;
   -webkit-tap-highlight-color: transparent; }
 
 .btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {

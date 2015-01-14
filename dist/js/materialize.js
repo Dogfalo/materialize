@@ -1,8 +1,3 @@
-/*!
- * Materialize v0.94.2 (http://materializecss.com)
- * Copyright 2014-2015 Materialize
- * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
- */
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -615,7 +610,7 @@ jQuery.extend( jQuery.easing,
 
         // Add and animate caption if it exists
         if (origin.data('caption') !== "") {
-          var $photo_caption = $('<div class="materialbox-caption"></div');
+          var $photo_caption = $('<div class="materialbox-caption"></div>');
           $photo_caption.text(origin.data('caption'));
           $('body').append($photo_caption);
           $photo_caption.css({ "display": "inline" });
@@ -932,27 +927,27 @@ jQuery.extend( jQuery.easing,
     var counterInterval;
     $.fn.tooltip = function (options) {
       var margin = 5;
-      
+
       started = false;
 
       // Defaults
       var defaults = {
         delay: 350
-      }
+      };
       options = $.extend(defaults, options);
-      
+
       return this.each(function(){
         var origin = $(this);
-      
+
       // Create tooltip
-      var newTooltip = $('<div></div');
+      var newTooltip = $('<div></div>');
       newTooltip.addClass('material-tooltip').text(origin.attr('data-tooltip'));
       newTooltip.appendTo($('body'));
-      
-      var backdrop = $('<div></div').addClass('backdrop');
+
+      var backdrop = $('<div></div>').addClass('backdrop');
       backdrop.appendTo(newTooltip);
       backdrop.css({ top: 0, left:0 });
-      
+
 
       // Mouse In
       $(this).hover(function(e) {
@@ -961,7 +956,7 @@ jQuery.extend( jQuery.easing,
         counterInterval = setInterval(function(){
           counter += 50;
           if (counter >= defaults.delay && started == false) {
-            started = true
+            started = true;
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
             // Tooltip positioning
@@ -1029,9 +1024,9 @@ jQuery.extend( jQuery.easing,
                 top: origin.offset().top + origin.outerHeight() + margin,
                 left: origin.offset().left + originWidth/2 - tooltipWidth/2
               });
-              console.log(origin.offset().left)
-              console.log(originWidth/2)
-              console.log(tooltipWidth/2)
+              //console.log(origin.offset().left)
+              //console.log(originWidth/2)
+              //console.log(tooltipWidth/2)
               tooltipVerticalMovement = '+10px';
               backdrop.css({
                 marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
@@ -1229,7 +1224,7 @@ jQuery.extend( jQuery.easing,
             var relativeY   = ripple.getAttribute('data-y');
             var scale       = ripple.getAttribute('data-scale');
 
-            // Get delay beetween mousedown and mouse leave
+            // Get delay between mouse down and mouse leave
             var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
             var delay = 500 - diff;
 
@@ -1254,7 +1249,7 @@ jQuery.extend( jQuery.easing,
                     '-moz-transform': scale,
                     '-ms-transform': scale,
                     '-o-transform': scale,
-                    'transform': scale,
+                    'transform': scale
                 };
 
                 ripple.setAttribute('style', convertStyle(style));
@@ -1475,6 +1470,7 @@ jQuery.extend( jQuery.easing,
       }
       window.onmousewheel = document.onmousewheel = wheel;
       document.onkeydown = keydown;
+      $('body').css({'overflow-y' : 'hidden'});
     }
 
     function enable_scroll() {
@@ -1482,6 +1478,8 @@ jQuery.extend( jQuery.easing,
         window.removeEventListener('DOMMouseScroll', wheel, false);
       }
       window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+      $('body').css({'overflow-y' : ''});
+
     }
 
     $.fn.sideNav = function (options) {
@@ -1944,20 +1942,28 @@ jQuery.extend( jQuery.easing,
   $(document).ready(function() {
 
     // Text based inputs
-    var input_selector = 'input[type=text], input[type=password], input[type=email], textarea';
+    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
 
-    $(input_selector).each(function(){
+    // Add active if value was embedded in HTML
+    $(document).on('change', input_selector, function () {
+      if($(this).val().length !== 0) {
+       $(this).siblings('label, i').addClass('active');
+      }
+    });
+
+    // Add active if Form auto complete was used
+    $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0) {
        $(this).siblings('label, i').addClass('active');
       }
     })
 
+    // Add active when element has focus
     $(document).on('focus', input_selector, function () {
       $(this).siblings('label, i').addClass('active');
     });
 
     $(document).on('blur', input_selector, function () {
-      console.log($(this).is(':valid'));
       if ($(this).val().length === 0) {
         $(this).siblings('label, i').removeClass('active');
 
@@ -2080,7 +2086,7 @@ jQuery.extend( jQuery.easing,
     //  Select Functionality
 
     // Select Plugin
-    $.fn.material_select = function () {
+    $.fn.material_select = function (callback) {
       $(this).each(function(){
         $select = $(this);
         if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
@@ -2113,10 +2119,9 @@ jQuery.extend( jQuery.easing,
             if (!$(this).hasClass('disabled')) {
               $curr_select.find('option').eq(i).prop('selected', true);
               // Trigger onchange() event
-              if (typeof($curr_select.context.onchange) === "function") {
-                $curr_select[0].onchange();
-              }
+              $curr_select.trigger('change');
               $curr_select.prev('span.select-dropdown').html($(this).text());
+              if (typeof callback !== 'undefined') callback();
             }
           });
 
@@ -2416,92 +2421,6 @@ jQuery.extend( jQuery.easing,
 
 
     });  
-
-  });
-}( jQuery ));;(function ($) {
-  $(document).ready(function() {
-
-    // Unique ID
-    var guid = (function() {
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-                   .toString(16)
-                   .substring(1);
-      }
-      return function() {
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-               s4() + '-' + s4() + s4() + s4();
-      };
-    })();
-
-    $.fn.pushpin = function (options) {
-
-      var defaults = {
-        top: 0,
-        bottom: Infinity,
-        offset: 0
-      }
-      options = $.extend(defaults, options);
-
-      $index = 0;
-      return this.each(function() {
-        var $uniqueId = guid(),
-            $this = $(this),
-            $original_offset = $(this).offset().top;
-        // console.log(options.top, options.bottom, $(this).offset().top);
-
-        function removePinClasses(object) {
-          object.removeClass('pin-top');
-          object.removeClass('pinned');
-          object.removeClass('pin-bottom');
-        }
-
-        function updateElements(objects, scrolled) {
-          // console.log("OBJECTS", objects);
-          objects.each(function () {
-            // Add position fixed (because its between top and bottom)
-            if (options.top <= scrolled && options.bottom >= scrolled && !$(this).hasClass('pinned')) {
-              removePinClasses($(this));
-              $(this).css('top', options.offset);
-              $(this).addClass('pinned');
-              // console.log("Pinned!", $(this));
-            }
-
-            // Add pin-top (when scrolled position is above top)
-            if (scrolled < options.top && !$(this).hasClass('pin-top')) {
-              removePinClasses($(this));
-              $(this).css('top', 0);
-              $(this).addClass('pin-top');
-              // console.log("Pin Top!", $(this));
-            }
-
-            // Add pin-bottom (when scrolled position is below bottom)
-            if (scrolled > options.bottom && !$(this).hasClass('pin-bottom')) {
-              removePinClasses($(this));
-              $(this).addClass('pin-bottom');
-              $(this).css('top', options.bottom - $original_offset);
-              // console.log("Pin Bottom!", $(this));
-            }
-          });
-        }
-
-
-        
-        updateElements($this, $(window).scrollTop());
-        $(window).on('scroll.' + $uniqueId, function () {
-          var $scrolled = $(window).scrollTop() + options.offset;
-          // console.log($(window).scrollTop(), $scrolled);
-          updateElements($this, $scrolled);
-        });
-
-      }); 
-
-
-
-    };
-
-  
-  
 
   });
 }( jQuery ));;/*!

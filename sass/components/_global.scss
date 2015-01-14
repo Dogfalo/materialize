@@ -44,10 +44,11 @@ a {
 
 ul {
   padding: 0;
+  li {
+    list-style-type: none;
+  }
 }
-li {
-  list-style-type: none;
-}
+
 
 // Z-levels
 
@@ -206,7 +207,7 @@ img.responsive-img {
 
 // Footer
 
-footer {
+footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: color("materialize-red", "lighten-2");
@@ -479,6 +480,8 @@ span.badge {
       top: 0;
       left:0;
       bottom: 0;
+      will-change: left, right;
+      // Custom bezier
       @include animation(indeterminate 2.1s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite);
 
     }
@@ -489,6 +492,7 @@ span.badge {
       top: 0;
       left:0;
       bottom: 0;
+      will-change: left, right;
       // Custom bezier
       @include animation(indeterminate-short 2.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite);
       @include animation-delay(1.15s);
