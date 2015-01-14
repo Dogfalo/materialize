@@ -44,10 +44,11 @@ a {
 
 ul {
   padding: 0;
+  li {
+    list-style-type: none;
+  }
 }
-li {
-  list-style-type: none;
-}
+
 
 // Z-levels
 
