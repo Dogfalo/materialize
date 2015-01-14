@@ -34,9 +34,9 @@ a {
 .valign-wrapper {
   @include flexbox();
   @include align(center);
+  @include justify-content(center);
 
   .valign {
-    margin: 0 auto;
     display: block;
   }
 }

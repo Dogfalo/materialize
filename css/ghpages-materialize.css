@@ -1961,9 +1961,10 @@ a {
   -webkit-flex-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center; }
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
   .valign-wrapper .valign {
-    margin: 0 auto;
     display: block; }
 
 ul {
