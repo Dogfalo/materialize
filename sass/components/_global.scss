@@ -32,11 +32,11 @@ a {
 
 // Positioning
 .valign-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox();
+  @include align(center);
 
   .valign {
+    margin: 0 auto;
     display: block;
   }
 }

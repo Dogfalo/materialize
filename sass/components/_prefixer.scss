@@ -26,6 +26,10 @@
 //          column-gap($gap)
 //          column-rule($args)
 //          column-width($width)
+//      flexbox()
+//          flex($args)
+//          order($args)
+//          align($args)
 //      gradient($default,$start,$stop) *
 //          linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
 //          linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
@@ -215,7 +219,34 @@
     -ms-filter: $args;
 }
 
-
+// Flexbox
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+    @mixin flex($values) {
+      -webkit-box-flex: $values;
+      -moz-box-flex:  $values;
+      -webkit-flex:  $values;
+      -ms-flex:  $values;
+      flex:  $values;
+    }
+    @mixin order($val) {
+      -webkit-box-ordinal-group: $val;
+      -moz-box-ordinal-group: $val;
+      -ms-flex-order: $val;
+      -webkit-order: $val;
+      order: $val;
+    }
+    @mixin align($align) {
+      -webkit-flex-align: $align;
+      -ms-flex-align: $align;
+      -webkit-align-items: $align;
+      align-items: $align;
+    }
 // Gradients
 
 @mixin gradient($default: #F5F5F5, $start: #EEE, $stop: #FFF) {

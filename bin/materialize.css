@@ -1953,10 +1953,17 @@ a {
   text-decoration: none; }
 
 .valign-wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  align-items: center;
-  justify-content: center; }
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center; }
   .valign-wrapper .valign {
+    margin: 0 auto;
     display: block; }
 
 ul {
