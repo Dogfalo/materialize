@@ -51,7 +51,7 @@
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
-        var menuWidth = menu_id.width();
+        var menuWidth = 240;
 
         if (options.edge != 'left') {
           menu_id.addClass('right-aligned');
