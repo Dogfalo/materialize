@@ -5290,7 +5290,7 @@ small {
       line-height: 2.88rem; } }
 
 .card-panel {
-  padding: 1rem;
+  padding: 20px;
   margin: 0.5rem 0 1rem 0;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -5318,7 +5318,7 @@ small {
       cursor: pointer; }
   .card a {
     color: #ffab40;
-    margin-right: 16px;
+    margin-right: 20px;
     -webkit-transition: color 0.3s ease;
     -moz-transition: color 0.3s ease;
     -o-transition: color 0.3s ease;
@@ -5359,9 +5359,9 @@ small {
       position: absolute;
       bottom: 0;
       left: 0;
-      padding: 16px; }
+      padding: 20px; }
   .card .card-content {
-    padding: 16px;
+    padding: 20px;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
     border-radius: 0 0 2px 2px;
@@ -5376,9 +5376,9 @@ small {
       line-height: 48px; }
   .card .card-action {
     border-top: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 16px; }
+    padding: 20px; }
   .card .card-reveal {
-    padding: 16px;
+    padding: 20px;
     position: absolute;
     background-color: #FFF;
     top: 100%;

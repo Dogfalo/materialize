@@ -1,7 +1,7 @@
 
 
 .card-panel {
-  padding: 1rem;
+  padding: $card-padding;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   @include border-radius(2px);
   @extend .z-depth-1;
