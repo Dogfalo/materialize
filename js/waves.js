@@ -265,8 +265,8 @@
 
     window.Waves = Waves;
 
-    $(document).ready(function() {
-      Waves.displayEffect();
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        Waves.displayEffect();
+    }, false);
 
 })(window);
