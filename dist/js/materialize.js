@@ -1,3 +1,8 @@
+/*!
+ * Materialize v0.95.0 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -342,8 +347,8 @@ jQuery.extend( jQuery.easing,
           display: 'block',
           position: 'fixed',
           height: 0,
-          top: origin.position().top,
-          left:origin.position().left
+          top: origin.offset().top - $(window).scrollTop(),
+          left: origin.offset().left
         });
       }
       else {
@@ -1442,45 +1447,45 @@ jQuery.extend( jQuery.easing,
 };(function ($) {
     // left: 37, up: 38, right: 39, down: 40,
     // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-    var keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+    // var keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
 
-    function preventDefault(e) {
-      e = e || window.event;
-      if (e.preventDefault)
-        e.preventDefault();
-      e.returnValue = false;
-    }
+    // function preventDefault(e) {
+    //   e = e || window.event;
+    //   if (e.preventDefault)
+    //     e.preventDefault();
+    //   e.returnValue = false;
+    // }
 
-    function keydown(e) {
-      for (var i = keys.length; i--;) {
-        if (e.keyCode === keys[i]) {
-          preventDefault(e);
-          return;
-        }
-      }
-    }
+    // function keydown(e) {
+    //   for (var i = keys.length; i--;) {
+    //     if (e.keyCode === keys[i]) {
+    //       preventDefault(e);
+    //       return;
+    //     }
+    //   }
+    // }
 
-    function wheel(e) {
-      preventDefault(e);
-    }
+    // function wheel(e) {
+    //   preventDefault(e);
+    // }
 
-    function disable_scroll() {
-      if (window.addEventListener) {
-        window.addEventListener('DOMMouseScroll', wheel, false);
-      }
-      window.onmousewheel = document.onmousewheel = wheel;
-      document.onkeydown = keydown;
-      $('body').css({'overflow-y' : 'hidden'});
-    }
+    // function disable_scroll() {
+    //   if (window.addEventListener) {
+    //     window.addEventListener('DOMMouseScroll', wheel, false);
+    //   }
+    //   window.onmousewheel = document.onmousewheel = wheel;
+    //   document.onkeydown = keydown;
+    //   $('body').css({'overflow-y' : 'hidden'});
+    // }
 
-    function enable_scroll() {
-      if (window.removeEventListener) {
-        window.removeEventListener('DOMMouseScroll', wheel, false);
-      }
-      window.onmousewheel = document.onmousewheel = document.onkeydown = null;
-      $('body').css({'overflow-y' : ''});
+    // function enable_scroll() {
+    //   if (window.removeEventListener) {
+    //     window.removeEventListener('DOMMouseScroll', wheel, false);
+    //   }
+    //   window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+    //   $('body').css({'overflow-y' : ''});
 
-    }
+    // }
 
     $.fn.sideNav = function (options) {
       var defaults = {
@@ -1492,10 +1497,20 @@ jQuery.extend( jQuery.easing,
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
-        var menuWidth = menu_id.width();
+        var menuWidth = 240;
 
+        // Add alignment
         if (options.edge != 'left') {
           menu_id.addClass('right-aligned');
+        }
+
+        // Add Touch Area
+        $('body').append($('<div class="drag-target"></div>'));
+        if (options.edge === 'left') {
+          $('.drag-target').css({'left': 0})
+        }
+        else {
+          $('.drag-target').css({'right': 0})
         }
 
         // Window resize to reset on large screens fixed
@@ -1510,26 +1525,37 @@ jQuery.extend( jQuery.easing,
         }
 
         function removeMenu() {
-          $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
+          panning = false;
+          menuOut = false;
+          $('#sidenav-overlay').animate({opacity: 0}, {duration: 200, queue: false, easing: 'easeOutQuad',
             complete: function() {
               $(this).remove();
             } });
           if (options.edge === 'left') {
-
-            menu_id.velocity({left: -1 * (menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+            // Reset phantom div
+            $('.drag-target').css({width: '', right: '', left: '0'});
+            menu_id.velocity({left: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
           else {
-            menu_id.velocity({right: -1 * (menuWidth + 10)}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+            // Reset phantom div
+            $('.drag-target').css({width: '', right: '0', left: ''});
+            menu_id.velocity({right: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
-          enable_scroll();
+
+          // enable_scroll();
         }
 
         // Touch Event
         var panning = false;
         var menuOut = false;
 
-        $('nothing').hammer({
+        $('.drag-target').hammer({
           prevent_default: false
+        }).bind('tap', function(e) {
+          // capture overlay click on drag target
+          if (menuOut && !panning) {
+            $('#sidenav-overlay').trigger('click');
+          }
         }).bind('pan', function(e) {
 
           if (e.gesture.pointerType === "touch") {
@@ -1537,79 +1563,93 @@ jQuery.extend( jQuery.easing,
             var direction = e.gesture.direction;
             var x = e.gesture.center.x;
             var y = e.gesture.center.y;
+            var velocityX = e.gesture.velocityX;
 
-            if (panning) {
-              if (!$('#sidenav-overlay').length) {
-                var overlay = $('<div id="sidenav-overlay"></div>');
-                overlay.css('opacity', 0)
-                .click(function(){
-                  panning = false;
-                  menuOut = false;
-                  removeMenu();
+            if (!$('#sidenav-overlay').length) {
+              var overlay = $('<div id="sidenav-overlay"></div>');
+              overlay.css('opacity', 0).click(function(){ removeMenu(); });
+              $('body').append(overlay);
+            }
 
-                  if (options.edge === 'left') {
-                    menu_id.velocity({left: -1 * menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-                  }
-                  else {
-                    menu_id.velocity({right: -1 * menuWidth}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-                  }
-                  overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
-                    complete: function() {
-                      $(this).remove();
-                    } });
-
-
-                });
-                $('body').append(overlay);
-              }
-
-
+            // Keep within boundaries
+            if (options.edge === 'left') {
               if (x > menuWidth) { x = menuWidth; }
               else if (x < 0) { x = 0; }
-              else if (x < (menuWidth / 2)) { menuOut = false; }
-              else if (x >= (menuWidth / 2)) { menuOut = true; }
-
-              if (options.edge === 'left') {
-                menu_id.velocity({left: (-1 * menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
-              }
-              else {
-                menu_id.velocity({right: (-1 * menuWidth) + x}, {duration: 50, queue: false, easing: 'easeOutQuad'});
-              }
-
-                // Percentage overlay
-                var overlayPerc = x / menuWidth;
-                $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-              }
-              else {
-                if (menuOut) {
-                  if ((e.gesture.center.x > (menuWidth - options.activationWidth)) && direction === 2) {
-                    panning = true;
-                  }
-                }
-                else {
-                  if ((e.gesture.center.x < options.activationWidth) && direction === 4) {
-                    panning = true;
-                  }
-                }
-              }
             }
-          }).bind('panend', function(e) {
-            if (e.gesture.pointerType === "touch") {
+            else {
+              if (x < $(window).width() - menuWidth) { x = $(window).width() - menuWidth; }
+            }
 
-              panning = false;
-              if (menuOut) {
+            if (options.edge === 'left') {
+              // Left Direction
+              if (x < (menuWidth / 2)) { menuOut = false; }
+              // Right Direction
+              else if (x >= (menuWidth / 2)) { menuOut = true; }
+            }
+            else {
+              // Left Direction
+              if (x < ($(window).width() - menuWidth / 2)) { menuOut = true; }
+              // Right Direction
+              else if (x >= ($(window).width() - menuWidth / 2)) { menuOut = false; }
+            }
+
+
+            if (options.edge === 'left') {
+              menu_id.css('left', (x - menuWidth));
+            }
+            else {
+              menu_id.css('right', -1 *(x - menuWidth / 2));
+            }
+
+            // Percentage overlay
+            if (options.edge === 'left') {
+              var overlayPerc = x / menuWidth;
+              $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            }
+            else {
+              var overlayPerc = Math.abs((x - $(window).width()) / menuWidth);
+              $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            }
+          }
+        }).bind('panend', function(e) {
+          if (e.gesture.pointerType === "touch") {
+            var velocityX = e.gesture.velocityX;
+            panning = false;
+
+            if (options.edge === 'left') {
+              if (menuOut || velocityX < -0.5) {
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                $('.drag-target').css({width: '50%', right: 0, left: ''});
               }
-              else {
+              else if (!menuOut || velocityX > 0.3) {
                 menu_id.velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad',
                   complete: function () {
                     $(this).remove();
                   }});
+                $('.drag-target').css({width: '10%', right: '', left: 0});
               }
             }
-          });
+            else {
+              if (menuOut || velocityX > 0.5) {
+                menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                $('.drag-target').css({width: '50%', right: '', left: 0});
+              }
+              else if (!menuOut || velocityX < -0.3) {
+                menu_id.velocity({right: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad',
+                  complete: function () {
+                    $(this).remove();
+                  }});
+                $('.drag-target').css({width: '10%', right: 0, left: ''});
+              }
+            }
+
+
+          }
+        });
 
           $this.click(function() {
             if (menu_id.hasClass('active')) {
@@ -1618,11 +1658,14 @@ jQuery.extend( jQuery.easing,
               removeMenu();
             }
             else {
-              disable_scroll();
+              // disable_scroll();
+
               if (options.edge === 'left') {
+                $('.drag-target').css({width: '50%', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
+                $('.drag-target').css({width: '50%', right: '', left: 0});
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
 
@@ -1944,19 +1987,34 @@ jQuery.extend( jQuery.easing,
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
 
-    // Add active if value was embedded in HTML
+    // Add active if form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0) {
        $(this).siblings('label, i').addClass('active');
       }
     });
 
-    // Add active if Form auto complete was used
-    $(document).on('change', input_selector, function () {
-      if($(this).val().length !== 0) {
-       $(this).siblings('label, i').addClass('active');
+    // Add active if input element has been pre-populated on document ready
+    $(document).ready(function() {
+      $(input_selector).each(function(index, element) {
+        if($(element).val().length > 0) {
+          $(this).siblings('label, i').addClass('active');
+        }
+      });
+    });
+
+    // HTML DOM FORM RESET handling
+    $(document).on('reset', function(e) {
+      if ($(e.target).is('form')) {
+        $(this).find(input_selector).removeClass('valid').removeClass('invalid');
+
+        // Reset select
+        $(this).find('select.initialized').each(function () {
+          var reset_text = $(this).find('option[selected]').text();
+          $(this).prev('span.select-dropdown').html(reset_text);
+        });
       }
-    })
+    });
 
     // Add active when element has focus
     $(document).on('focus', input_selector, function () {
@@ -2232,12 +2290,23 @@ jQuery.extend( jQuery.easing,
       }
 
       // Set height of slider
-      $this.height(options.height + 40);
-      $slider.height(options.height);
+      if (options.height != 400) {
+        $this.height(options.height + 40);
+        $slider.height(options.height);
+      }
 
       // Set initial positions of captions
       $slides.find('.caption').each(function () {
         captionTransition($(this), 0);
+      });
+
+      // Set initial dimensions of images
+      $slides.find('img').each(function () {
+        $(this).load(function () {
+          if ($(this).width() < $(this).parent().width()) {
+            $(this).css({width: '100%', height: 'auto'});
+          }
+        });
       });
 
       // dynamically add indicators
@@ -2421,6 +2490,92 @@ jQuery.extend( jQuery.easing,
 
 
     });  
+
+  });
+}( jQuery ));;(function ($) {
+  $(document).ready(function() {
+
+    // Unique ID
+    var guid = (function() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+                   .toString(16)
+                   .substring(1);
+      }
+      return function() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+               s4() + '-' + s4() + s4() + s4();
+      };
+    })();
+
+    $.fn.pushpin = function (options) {
+
+      var defaults = {
+        top: 0,
+        bottom: Infinity,
+        offset: 0
+      }
+      options = $.extend(defaults, options);
+
+      $index = 0;
+      return this.each(function() {
+        var $uniqueId = guid(),
+            $this = $(this),
+            $original_offset = $(this).offset().top;
+        // console.log(options.top, options.bottom, $(this).offset().top);
+
+        function removePinClasses(object) {
+          object.removeClass('pin-top');
+          object.removeClass('pinned');
+          object.removeClass('pin-bottom');
+        }
+
+        function updateElements(objects, scrolled) {
+          // console.log("OBJECTS", objects);
+          objects.each(function () {
+            // Add position fixed (because its between top and bottom)
+            if (options.top <= scrolled && options.bottom >= scrolled && !$(this).hasClass('pinned')) {
+              removePinClasses($(this));
+              $(this).css('top', options.offset);
+              $(this).addClass('pinned');
+              // console.log("Pinned!", $(this));
+            }
+
+            // Add pin-top (when scrolled position is above top)
+            if (scrolled < options.top && !$(this).hasClass('pin-top')) {
+              removePinClasses($(this));
+              $(this).css('top', 0);
+              $(this).addClass('pin-top');
+              // console.log("Pin Top!", $(this));
+            }
+
+            // Add pin-bottom (when scrolled position is below bottom)
+            if (scrolled > options.bottom && !$(this).hasClass('pin-bottom')) {
+              removePinClasses($(this));
+              $(this).addClass('pin-bottom');
+              $(this).css('top', options.bottom - $original_offset);
+              // console.log("Pin Bottom!", $(this));
+            }
+          });
+        }
+
+
+        
+        updateElements($this, $(window).scrollTop());
+        $(window).on('scroll.' + $uniqueId, function () {
+          var $scrolled = $(window).scrollTop() + options.offset;
+          // console.log($(window).scrollTop(), $scrolled);
+          updateElements($this, $scrolled);
+        });
+
+      }); 
+
+
+
+    };
+
+  
+  
 
   });
 }( jQuery ));;/*!
