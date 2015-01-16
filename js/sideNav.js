@@ -60,6 +60,12 @@
 
         // Add Touch Area
         $('body').append($('<div class="drag-target"></div>'));
+        if (options.edge === 'left') {
+          $('.drag-target').css({'left': 0})
+        }
+        else {
+          $('.drag-target').css({'right': 0})
+        }
 
         // Window resize to reset on large screens fixed
         if (menu_id.hasClass('fixed')) {
@@ -78,15 +84,15 @@
           $('#sidenav-overlay').animate({opacity: 0}, {duration: 200, queue: false, easing: 'easeOutQuad',
             complete: function() {
               $(this).remove();
-
-              // Reset phantom div
-              $('.drag-target').css({width: '', right: '', left: ''});
             } });
           if (options.edge === 'left') {
-
+            // Reset phantom div
+            $('.drag-target').css({width: '', right: '', left: '0'});
             menu_id.velocity({left: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
           else {
+            // Reset phantom div
+            $('.drag-target').css({width: '', right: '0', left: ''});
             menu_id.velocity({right: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
 
@@ -113,66 +119,89 @@
             var y = e.gesture.center.y;
             var velocityX = e.gesture.velocityX;
 
-            if (panning) {
-              if (!$('#sidenav-overlay').length) {
-                var overlay = $('<div id="sidenav-overlay"></div>');
-                overlay.css('opacity', 0).click(function(){ removeMenu(); });
-                $('body').append(overlay);
-              }
+            if (!$('#sidenav-overlay').length) {
+              var overlay = $('<div id="sidenav-overlay"></div>');
+              overlay.css('opacity', 0).click(function(){ removeMenu(); });
+              $('body').append(overlay);
+            }
 
-              // Keep within boundaries
+            // Keep within boundaries
+            if (options.edge === 'left') {
               if (x > menuWidth) { x = menuWidth; }
               else if (x < 0) { x = 0; }
+            }
+            else {
+              if (x < $(window).width() - menuWidth) { x = $(window).width() - menuWidth; }
+            }
 
+            if (options.edge === 'left') {
               // Left Direction
               if (x < (menuWidth / 2)) { menuOut = false; }
               // Right Direction
               else if (x >= (menuWidth / 2)) { menuOut = true; }
-
-
-              if (options.edge === 'left') {
-                menu_id.css('left', (-1 * menuWidth) + x);
-              }
-              else {
-                menu_id.css('right', (-1 * menuWidth) + x);
-              }
-
-                // Percentage overlay
-                var overlayPerc = x / menuWidth;
-                $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-              }
+            }
             else {
-              if (menuOut) {
-                if ((e.gesture.center.x > (menuWidth - options.activationWidth)) && direction === 2) {
-                  panning = true;
-                }
-              }
-              else {
-                if ((e.gesture.center.x < options.activationWidth) && direction === 4) {
-                  panning = true;
-                }
-              }
+              // Left Direction
+              if (x < ($(window).width() - menuWidth / 2)) { menuOut = true; }
+              // Right Direction
+              else if (x >= ($(window).width() - menuWidth / 2)) { menuOut = false; }
+            }
+
+
+            if (options.edge === 'left') {
+              menu_id.css('left', (x - menuWidth));
+            }
+            else {
+              menu_id.css('right', -1 *(x - menuWidth / 2));
+            }
+
+            // Percentage overlay
+            if (options.edge === 'left') {
+              var overlayPerc = x / menuWidth;
+              $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            }
+            else {
+              var overlayPerc = Math.abs((x - $(window).width()) / menuWidth);
+              $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }
         }).bind('panend', function(e) {
           if (e.gesture.pointerType === "touch") {
             var velocityX = e.gesture.velocityX;
-            console.log(velocityX);
-
             panning = false;
-            if (menuOut || velocityX < -0.5) {
-              menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-              $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-              $('.drag-target').css({width: '50%', right: 0, left: 'auto'});
+
+            if (options.edge === 'left') {
+              if (menuOut || velocityX < -0.5) {
+                menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                $('.drag-target').css({width: '50%', right: 0, left: ''});
+              }
+              else if (!menuOut || velocityX > 0.3) {
+                menu_id.velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad',
+                  complete: function () {
+                    $(this).remove();
+                  }});
+                $('.drag-target').css({width: '10%', right: '', left: 0});
+              }
             }
-            else if (!menuOut || velocityX > 0.3) {
-              menu_id.velocity({left: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
-              $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad',
-                complete: function () {
-                  $(this).remove();
-                }});
-              $('.drag-target').css({width: '10%', right: 'auto', left: 0});
+            else {
+              if (menuOut || velocityX > 0.5) {
+                menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+                $('.drag-target').css({width: '50%', right: '', left: 0});
+              }
+              else if (!menuOut || velocityX < -0.3) {
+                menu_id.velocity({right: -240}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 50, queue: false, easing: 'easeOutQuad',
+                  complete: function () {
+                    $(this).remove();
+                  }});
+                $('.drag-target').css({width: '10%', right: 0, left: ''});
+              }
             }
+
+
           }
         });
 
@@ -183,13 +212,14 @@
               removeMenu();
             }
             else {
-              $('.drag-target').css({width: '50%', right: 0, left: 'auto'});
-
               // disable_scroll();
+
               if (options.edge === 'left') {
+                $('.drag-target').css({width: '50%', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
+                $('.drag-target').css({width: '50%', right: '', left: 0});
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
 
