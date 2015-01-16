@@ -6,12 +6,12 @@ function toast(message, displayLength, className, completeCallback) {
             .attr('id', 'toast-container');
         $('body').append(container);
     }
-    
+
     // Select and append toast
     var container = $('#toast-container')
     var newToast = createToast(message);
     container.append(newToast);
-    
+
     newToast.css({"top" : parseFloat(newToast.css("top"))+35+"px",
                   "opacity": 0});
     newToast.velocity({"top" : "0px",
@@ -19,17 +19,17 @@ function toast(message, displayLength, className, completeCallback) {
                        {duration: 300,
                        easing: 'easeOutCubic',
                       queue: false});
-  
+
     // Allows timer to be pause while being panned
     var timeLeft = displayLength;
     var counterInterval = setInterval (function(){
       if (newToast.parent().length === 0)
         window.clearInterval(counterInterval);
-      
+
       if (!newToast.hasClass("panning")) {
         timeLeft -= 100;
       }
-      
+
       if (timeLeft <= 0) {
         newToast.velocity({"opacity": 0, marginTop: '-40px'},
                         { duration: 375,
@@ -47,7 +47,7 @@ function toast(message, displayLength, className, completeCallback) {
     }, 100);
 
 
-    
+
     function createToast(html) {
         var toast = $("<div class='toast'></div>")
           .addClass(className)
@@ -55,24 +55,24 @@ function toast(message, displayLength, className, completeCallback) {
         // Bind hammer
         toast.hammer({prevent_default:false
               }).bind('pan', function(e) {
-               
+
                   var deltaX = e.gesture.deltaX;
                   var activationDistance = 80;
-            
+
 //                  change toast state
                   if (!toast.hasClass("panning"))
                     toast.addClass("panning");
-          
+
                   var opacityPercent = 1-Math.abs(deltaX / activationDistance);
                 if (opacityPercent < 0)
                   opacityPercent = 0;
-          
+
                   toast.velocity({left: deltaX, opacity: opacityPercent }, {duration: 50, queue: false, easing: 'easeOutQuad'});
 
                 }).bind('panend', function(e) {
                   var deltaX = e.gesture.deltaX;
                   var activationDistance = 80;
-          
+
                   // If toast dragged past activation point
                   if (Math.abs(deltaX) > activationDistance) {
                     toast.velocity({marginTop: '-40px'},
