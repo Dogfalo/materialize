@@ -18,10 +18,6 @@ h1,h2,h3,h4,h5,h6 {
   -webkit-font-smoothing: antialiased;
 }
 
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
 nav {
   overflow: hidden;
 
@@ -85,7 +81,6 @@ ul.side-nav.fixed li.logo {
 }
 ul.side-nav.fixed {
   overflow: hidden;
-  padding-bottom: 50px;
 
   li {
     line-height: 44px;

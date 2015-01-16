@@ -6558,6 +6558,14 @@ ul.table-of-contents a {
       color: #444; }
  }
 
+.drag-target {
+  height: 100%;
+  width: 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; }
+
 ul.side-nav.full, ul.side-nav.fixed {
   position: fixed;
   width: 240px;

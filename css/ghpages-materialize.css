@@ -6558,6 +6558,14 @@ ul.table-of-contents a {
       color: #444; }
  }
 
+.drag-target {
+  height: 100%;
+  width: 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; }
+
 ul.side-nav.full, ul.side-nav.fixed {
   position: fixed;
   width: 240px;
@@ -7752,9 +7760,6 @@ p {
 h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased; }
 
-a {
-  -webkit-tap-highlight-color: transparent; }
-
 nav {
   overflow: hidden; }
   nav a {
@@ -7802,8 +7807,7 @@ ul.side-nav.fixed li.logo {
     background-color: transparent; }
 
 ul.side-nav.fixed {
-  overflow: hidden;
-  padding-bottom: 50px; }
+  overflow: hidden; }
   ul.side-nav.fixed li {
     line-height: 44px; }
     ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
