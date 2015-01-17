@@ -24,6 +24,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Form autofill support added
   - Responsive Tables support added
   - Scrollspy Plugin released
+  - Waves events are now delegated / behavior enhanced
 
 - v0.94.2
   - Sidebar dissmiss issues fixed
