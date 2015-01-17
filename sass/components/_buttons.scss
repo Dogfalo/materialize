@@ -37,7 +37,7 @@
   color: $button-color-raised;
   background-color: $button-color;
   text-align: center;
-  letter-spacing: .8px;
+  letter-spacing: .5px;
   @extend .z-depth-1;
   @include transition(.2s ease-out);
   cursor: pointer;

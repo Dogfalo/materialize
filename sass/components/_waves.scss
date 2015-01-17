@@ -33,6 +33,7 @@
     // text-align: center;
     // text-decoration: none;
     z-index: 1;
+    will-change: opacity, transform;
     @include transition(all .3s ease-out);
 
     .waves-ripple {

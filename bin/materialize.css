@@ -5569,7 +5569,7 @@ ul.tabs li.tab {
   color: #FFF;
   background-color: #2196F3;
   text-align: center;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   -webkit-transition: 0.2s ease-out;
   -moz-transition: 0.2s ease-out;
   -o-transition: 0.2s ease-out;
@@ -5666,6 +5666,7 @@ ul.tabs li.tab {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   z-index: 1;
+  will-change: opacity, transform;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
