@@ -17,9 +17,12 @@
       return this.each(function(){
         var origin = $(this);
 
+      // Create Text span
+      var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+
       // Create tooltip
       var newTooltip = $('<div></div>');
-      newTooltip.addClass('material-tooltip').text(origin.attr('data-tooltip'));
+      newTooltip.addClass('material-tooltip').append(tooltip_text);
       newTooltip.appendTo($('body'));
 
       var backdrop = $('<div></div>').addClass('backdrop');
@@ -37,6 +40,9 @@
             started = true;
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
+            // Set Tooltip text
+            newTooltip.children('span').text(origin.attr('data-tooltip'));
+
             // Tooltip positioning
             var originWidth = origin.outerWidth();
             var originHeight = origin.outerHeight();
@@ -47,7 +53,6 @@
             var tooltipHorizontalMovement = '0px';
             var scale_factor = 8;
 
-            // console.log(origin.offset().left);
 
             if (tooltipPosition === "top") {
             // Top Position
