@@ -183,16 +183,30 @@ module.exports = function(grunt) {
         ]
       },
 
-      template: {
+      starter_template: {
         options: {
           archive: 'templates/starter-template.zip',
           level: 6
         },
         files:[
           { expand: true, cwd: 'dist/', src: ['**/*'], dest: 'starter-template/'},
-          { expand: true, cwd: 'templates/starter-template/', src: ['index.html', 'LICENSE', 'README.md'], dest: 'starter-template/'},
+          { expand: true, cwd: 'templates/starter-template/', src: ['index.html', 'LICENSE'], dest: 'starter-template/'},
           { expand: true, cwd: 'templates/starter-template/css', src: ['style.css'], dest: 'starter-template/css'},
           { expand: true, cwd: 'templates/starter-template/js', src: ['init.js'], dest: 'starter-template/js'}
+
+        ]
+      },
+
+      parallax_template: {
+        options: {
+          archive: 'templates/parallax-template.zip',
+          level: 6
+        },
+        files:[
+          { expand: true, cwd: 'dist/', src: ['**/*'], dest: 'parallax-template/'},
+          { expand: true, cwd: 'templates/parallax-template/', src: ['index.html', 'LICENSE', 'background1.jpg', 'background2.jpg', 'background3.jpg'], dest: 'parallax-template/'},
+          { expand: true, cwd: 'templates/parallax-template/css', src: ['style.css'], dest: 'parallax-template/css'},
+          { expand: true, cwd: 'templates/parallax-template/js', src: ['init.js'], dest: 'parallax-template/js'}
 
         ]
       }

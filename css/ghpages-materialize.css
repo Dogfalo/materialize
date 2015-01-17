@@ -6539,7 +6539,7 @@ ul.table-of-contents a {
   width: 10%;
   position: fixed;
   top: 0;
-  z-index: 1000; }
+  z-index: 998; }
 
 ul.side-nav.full, ul.side-nav.fixed {
   position: fixed;
@@ -6599,7 +6599,7 @@ ul.side-nav.fixed {
   right: 0px;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
+  z-index: 997;
   will-change: opacity; }
 
 /*
