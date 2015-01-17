@@ -75,8 +75,6 @@
     }
 
 
-
-
     // Hover
     if (options.hover) {
       // Hover handler to show dropdown
@@ -109,7 +107,6 @@
       // Click handler to show dropdown
       origin.click( function(e){ // Click
         e.preventDefault(); // Prevents button click from moving window
-        e.stopPropagation();
         placeDropdown();
         $(document).bind('click.'+ activates.attr('id'), function (e) {
           if (!activates.is(e.target) && (!origin.is(e.target))) {
