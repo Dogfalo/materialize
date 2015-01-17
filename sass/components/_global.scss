@@ -32,9 +32,9 @@ a {
 
 // Positioning
 .valign-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox();
+  @include align(center);
+  @include justify-content(center);
 
   .valign {
     display: block;
@@ -44,10 +44,11 @@ a {
 
 ul {
   padding: 0;
+  li {
+    list-style-type: none;
+  }
 }
-li {
-  list-style-type: none;
-}
+
 
 // Z-levels
 
@@ -206,7 +207,7 @@ img.responsive-img {
 
 // Footer
 
-footer {
+footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: color("materialize-red", "lighten-2");
@@ -228,20 +229,13 @@ table {
   width:100%;
   display: table;
 
-  @media #{$small-and-down} {
-    thead tr th, tbody tr td {
-      text-align: center;
-
-    }
-  }
-
   &.bordered tr {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $table-border-color;
   }
 
   &.striped {
     tbody tr:nth-child(odd) {
-      background-color: #f2f2f2;
+      background-color: $table-striped-color;
     }
   }
 
@@ -250,7 +244,7 @@ table {
     tbody tr {
       @include transition(background-color .25s ease);
       &:hover {
-        background-color: #f2f2f2;
+        background-color: $table-striped-color;
       }
     }
   }
@@ -265,7 +259,7 @@ table {
 }
 
 thead {
-  border-bottom: 1px solid #878787;
+  border-bottom: 1px solid $table-border-color;
 }
 
 td, th{
@@ -275,6 +269,73 @@ td, th{
   vertical-align: middle;
   border-radius: 2px;
 }
+
+// Responsive Table
+@media #{$medium-and-down} {
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    position: relative;
+
+    th,
+    td {
+      margin: 0;
+      vertical-align: top;
+    }
+
+    th { text-align: left; }
+    thead {
+      display: block;
+      float: left;
+
+      tr {
+        display: block;
+        padding: 0 10px 0 0;
+      }
+    }
+    tbody {
+      display: block;
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap;
+
+      tr {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    th {
+      display: block;
+      text-align: right;
+    }
+    td {
+      display: block;
+      min-height: 1.25em;
+      text-align: left;
+    }
+    tr { padding: 0 10px; }
+
+    /* sort out borders */
+    thead {
+      border: 0;
+      border-right: 1px solid $table-border-color;
+    }
+
+    &.bordered {
+      th { border-bottom: 0; border-left: 0; }
+      td { border-left: 0; border-right: 0; border-bottom: 0; }
+      tr { border: 0; }
+      tbody tr { border-right: 1px solid $table-border-color; }
+    }
+
+  }
+
+}
+
 
 // Collections
 .collection {
@@ -291,6 +352,11 @@ td, th{
       &:last-child {
         border-bottom: none;
       }
+
+    &.active {
+      background-color: $collection-active-bg-color;
+      color: $collection-active-color;
+    }
   }
   a.collection-item{
     display: block;
@@ -311,10 +377,7 @@ td, th{
      padding-left: 30px;
     }
   }
-  .active {
-    background-color: $collection-active-bg-color;
-    color: $collection-active-color;
-  }
+
   .secondary-content {
     float: right;
   }
@@ -390,6 +453,81 @@ span.badge {
     }
 }
 
+// Progress Bar
+.progress {
+    position: relative;
+    height: 4px;
+    display: block;
+    width: 100%;
+    background-color: lighten($progress-bar-color, 40%);
+    @include border-radius(2px);
+    margin: $element-top-margin 0 $element-bottom-margin 0;
+    overflow: hidden;
+  .determinate {
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    bottom: 0;
+    background-color: $progress-bar-color;
+    @include transition(width .3s linear);
+  }
+  .indeterminate {
+    background-color: $progress-bar-color;
+    &:before {
+      content: '';
+      position: absolute;
+      background-color: inherit;
+      top: 0;
+      left:0;
+      bottom: 0;
+      will-change: left, right;
+      // Custom bezier
+      @include animation(indeterminate 2.1s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite);
+
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: inherit;
+      top: 0;
+      left:0;
+      bottom: 0;
+      will-change: left, right;
+      // Custom bezier
+      @include animation(indeterminate-short 2.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite);
+      @include animation-delay(1.15s);
+    }
+  }
+}
+@include keyframes(indeterminate) {
+    0% {
+            left: -35%;
+            right:100%;
+        }
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+    100% {
+        left: 100%;
+        right: -90%;
+    }
+}
+
+@include keyframes(indeterminate-short) {
+    0% {
+        left: -200%;
+        right: 100%;
+    }
+    60% {
+        left: 107%;
+        right: -8%;
+    }
+    100% {
+      left: 107%;
+      right: -8%;
+    }
+}
 /*******************
   Utility Classes
 *******************/

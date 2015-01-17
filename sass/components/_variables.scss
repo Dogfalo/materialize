@@ -12,7 +12,7 @@ $button-line-height: 36px;
 
 /*** Cards ***/
 $default-color: #00bcd4 !default;
-$card-padding: 16px !default;
+$card-padding: 20px !default;
 $footer-font-color: #000 !default;
 $card-bg-color: #fff !default;
 
@@ -65,8 +65,12 @@ $navbar-height-mobile: 56px;
 
 
 /*** SideNav ***/
-$sidenav-width: 240px;
 
+
+
+/*** Tables ***/
+$table-border-color: #d0d0d0;
+$table-striped-color: #f2f2f2;
 
 /*** Toasts ***/
 $toast-height: 48px !default;
@@ -94,3 +98,6 @@ $collection-bg-color: #fff !default;
 $collection-active-bg-color: color("blue", "lighten-1") !default;
 $collection-active-color: color("blue", "lighten-4") !default;
 $collection-hover-bg-color: rgba(0,0,0,.08) !default;
+
+/* Progress Bar */
+$progress-bar-color: color("light-blue", "base");

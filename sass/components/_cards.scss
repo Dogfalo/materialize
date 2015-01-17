@@ -1,7 +1,7 @@
 
 
 .card-panel {
-  padding: 1rem;
+  padding: $card-padding;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   @include border-radius(2px);
   @extend .z-depth-1;
@@ -107,6 +107,7 @@
     background-color: #FFF;
     top: 100%;
     height: 100%;
+    z-index: 1;
 
     .card-title {
       cursor: pointer;

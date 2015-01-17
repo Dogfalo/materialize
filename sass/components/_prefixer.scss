@@ -26,6 +26,11 @@
 //          column-gap($gap)
 //          column-rule($args)
 //          column-width($width)
+//      flexbox()
+//          flex($args)
+//          order($args)
+//          align($args)
+//          justify-content($args)
 //      gradient($default,$start,$stop) *
 //          linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
 //          linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
@@ -110,13 +115,26 @@
     animation-timing-function: $function;
 }
 
+// Keyframes
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
 // Backface-visibility
 
 @mixin backface-visibility($args) {
     -webkit-backface-visibility: $args;
-    -moz-backface-visibility:    $args;
-    -ms-backface-visibility:     $args;
-    backface-visibility:     $args;
+    -moz-backface-visibility: $args;
+    -ms-backface-visibility: $args;
+    backface-visibility: $args;
 }
 
 
@@ -202,7 +220,38 @@
     -ms-filter: $args;
 }
 
-
+// Flexbox
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+    @mixin flex($values) {
+      -webkit-box-flex: $values;
+      -moz-box-flex:  $values;
+      -webkit-flex:  $values;
+      -ms-flex:  $values;
+      flex:  $values;
+    }
+    @mixin order($val) {
+      -webkit-box-ordinal-group: $val;
+      -moz-box-ordinal-group: $val;
+      -ms-flex-order: $val;
+      -webkit-order: $val;
+      order: $val;
+    }
+    @mixin align($align) {
+      -webkit-flex-align: $align;
+      -ms-flex-align: $align;
+      -webkit-align-items: $align;
+      align-items: $align;
+    }
+    @mixin justify-content($val) {
+      -webkit-justify-content: $val;
+      justify-content: $val;
+    }
 // Gradients
 
 @mixin gradient($default: #F5F5F5, $start: #EEE, $stop: #FFF) {
@@ -288,21 +337,21 @@
 @mixin transform($args) {
     -webkit-transform: $args;
     -moz-transform: $args;
-    -ms-transform: $args; 
+    -ms-transform: $args;
     -o-transform: $args;
     transform: $args;
 }
 @mixin transform-origin($args) {
     -webkit-transform-origin: $args;
     -moz-transform-origin: $args;
-    -ms-transform-origin: $args; 
+    -ms-transform-origin: $args;
     -o-transform-origin: $args;
     transform-origin: $args;
 }
 @mixin transform-style($style) {
     -webkit-transform-style: $style;
     -moz-transform-style: $style;
-    -ms-transform-style: $style; 
+    -ms-transform-style: $style;
     -o-transform-style: $style;
     transform-style: $style;
 }

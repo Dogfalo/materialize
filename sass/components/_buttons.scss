@@ -7,7 +7,8 @@
   @include border-radius(2px);
   line-height: $button-line-height;
   text-transform: uppercase;
-  border:none;
+  border: none;
+  outline: 0;
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
 }
@@ -36,7 +37,7 @@
   color: $button-color-raised;
   background-color: $button-color;
   text-align: center;
-  letter-spacing: .8px;
+  letter-spacing: .5px;
   @extend .z-depth-1;
   @include transition(.2s ease-out);
   cursor: pointer;

@@ -81,6 +81,7 @@
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
                   <li><a href="pushpin.html">Pushpin</a></li>
+                  <li><a href="scrollspy.html">Scrollspy</a></li>
                   <li><a href="side-nav.html">SideNav</a></li>
                   <li><a href="tabs.html">Tabs</a></li>
                   <li><a href="waves.html">Waves</a></li>
@@ -203,8 +204,8 @@
           <div class="col s12 m7">
             <h2 class="header">Card Reveal</h2>
             <div class="card">
-              <div class="waves-effect waves-block waves-light card-image">
-                <img src="images/office.jpg">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/office.jpg">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Card Title <i class="mdi-navigation-more-vert right"></i></span>
@@ -220,7 +221,7 @@
           <div class="col s12 m5">
             <br><br><br><br>
             <p class="caption">
-             Here you can add a card that reveals more information once clicked. Just add the <code class="language-markup">card-reveal</code> div with a <code class="language-markup">span.card-title</code> inside to make this work.
+             Here you can add a card that reveals more information once clicked. Just add the <code class="language-markup">card-reveal</code> div with a <code class="language-markup">span.card-title</code> inside to make this work. Add the class <code class="language-markup">activator</code> to an element inside the card to allow it to open the card reveal.
             </p>
           </div>
           <div class="col s12">
@@ -228,7 +229,7 @@
             <pre><code class="language-markup">
       &lt;div class="card">
         &lt;div class="card-image waves-effect waves-block waves-light">
-          &lt;img src="images/office.jpg">
+          &lt;img class="activator" src="images/office.jpg">
         &lt;/div>
         &lt;div class="card-content">
           &lt;span class="card-title activator grey-text text-darken-4">Card Title &lt;i class="mdi-navigation-more-vert right">&lt;/i>&lt;/span>
@@ -349,7 +350,7 @@
 </div>
 
 
-    </main>    <footer>
+    </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">
@@ -385,7 +386,7 @@
         <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>
-    </footer>  
+    </footer>
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }

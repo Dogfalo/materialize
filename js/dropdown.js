@@ -36,8 +36,8 @@
           display: 'block',
           position: 'fixed',
           height: 0,
-          top: origin.position().top,
-          left:origin.position().left
+          top: origin.offset().top - $(window).scrollTop(),
+          left: origin.offset().left
         });
       }
       else {

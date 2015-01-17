@@ -5,27 +5,27 @@
     var counterInterval;
     $.fn.tooltip = function (options) {
       var margin = 5;
-      
+
       started = false;
 
       // Defaults
       var defaults = {
         delay: 350
-      }
+      };
       options = $.extend(defaults, options);
-      
+
       return this.each(function(){
         var origin = $(this);
-      
+
       // Create tooltip
-      var newTooltip = $('<div></div');
+      var newTooltip = $('<div></div>');
       newTooltip.addClass('material-tooltip').text(origin.attr('data-tooltip'));
       newTooltip.appendTo($('body'));
-      
-      var backdrop = $('<div></div').addClass('backdrop');
+
+      var backdrop = $('<div></div>').addClass('backdrop');
       backdrop.appendTo(newTooltip);
       backdrop.css({ top: 0, left:0 });
-      
+
 
       // Mouse In
       $(this).hover(function(e) {
@@ -34,7 +34,7 @@
         counterInterval = setInterval(function(){
           counter += 50;
           if (counter >= defaults.delay && started == false) {
-            started = true
+            started = true;
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
             // Tooltip positioning
@@ -102,9 +102,9 @@
                 top: origin.offset().top + origin.outerHeight() + margin,
                 left: origin.offset().left + originWidth/2 - tooltipWidth/2
               });
-              console.log(origin.offset().left)
-              console.log(originWidth/2)
-              console.log(tooltipWidth/2)
+              //console.log(origin.offset().left)
+              //console.log(originWidth/2)
+              //console.log(tooltipWidth/2)
               tooltipVerticalMovement = '+10px';
               backdrop.css({
                 marginLeft: (tooltipWidth/2) - (backdrop.width()/2)

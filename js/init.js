@@ -153,7 +153,7 @@
     $('.collapsible-expandable').collapsible({"accordion": false});
     $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
-    $('.button-collapse').sideNav({'menuWidth': 400});
+    $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate();
     $('select').not('.disabled').material_select();
 

@@ -81,6 +81,7 @@
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
                   <li><a href="pushpin.html">Pushpin</a></li>
+                  <li><a href="scrollspy.html">Scrollspy</a></li>
                   <li><a href="side-nav.html">SideNav</a></li>
                   <li><a href="tabs.html">Tabs</a></li>
                   <li><a href="waves.html">Waves</a></li>
@@ -102,10 +103,44 @@
   <div class="row">
 
     <div class="col s12 m9 l10">
+      <p class="caption">If you have content that will take a long time to load, you should give the user feedback. For this reason we provide a number activity + progress indicators.</p>
 
-  <!-- Preloader Section-->
-      <div id="preloader" class="section scrollspy">
-        <p class="caption">If you have content that will take a long time to load, you should give the user feedback. In this case we have an animated preloader.</p>
+      <div id="linear" class="section scrollspy">
+        <h2 class="header">Linear</h2>
+        <p>There are a couple different types of linear progress bars.</p>
+        <h4>Determinate</h4>
+        <div class="row">
+          <div class="div col s8 offset-s2">
+            <div class="progress">
+                <div class="determinate" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+        <pre><code class="language-markup">
+  &lt;div class="progress">
+      &lt;div class="determinate" style="width: 70%">&lt;/div>
+  &lt;/div>
+        </code></pre>
+
+        <h4>Indeterminate</h4>
+        <div class="row">
+          <div class="div col s8 offset-s2">
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+          </div>
+        </div>
+        <pre><code class="language-markup">
+  &lt;div class="progress">
+      &lt;div class="indeterminate">&lt;/div>
+  &lt;/div>
+        </code></pre>
+
+      </div>
+
+      <!-- Preloader Section-->
+      <div id="circular" class="section scrollspy">
+        <h2 class="header">Circular</h2>
         <div class="row">
           <div class="col s12 m4 center">
             <div class="preloader-wrapper big active">
@@ -292,7 +327,8 @@
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#preloader">Preloader</a></li>
+          <li><a href="#linear">Linear</a></li>
+          <li><a href="#circular">Circular</a></li>
         </ul>
       </div>
     </div>
@@ -301,7 +337,7 @@
 </div>
 
 
-    </main>    <footer>
+    </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">
@@ -337,7 +373,7 @@
         <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>
-    </footer>  
+    </footer>
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }

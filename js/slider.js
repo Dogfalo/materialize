@@ -71,12 +71,23 @@
       }
 
       // Set height of slider
-      $this.height(options.height + 40);
-      $slider.height(options.height);
+      if (options.height != 400) {
+        $this.height(options.height + 40);
+        $slider.height(options.height);
+      }
 
       // Set initial positions of captions
       $slides.find('.caption').each(function () {
         captionTransition($(this), 0);
+      });
+
+      // Set initial dimensions of images
+      $slides.find('img').each(function () {
+        $(this).load(function () {
+          if ($(this).width() < $(this).parent().width()) {
+            $(this).css({width: '100%', height: 'auto'});
+          }
+        });
       });
 
       // dynamically add indicators

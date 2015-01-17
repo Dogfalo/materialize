@@ -7,7 +7,6 @@ button:focus {
   background-color: lighten($button-color, 10%);
 }
 
-
 label {
   font-size: $label-font-size;
   color: $border-color;
@@ -19,6 +18,7 @@ label {
 
 .input-field {
   position: relative;
+  margin-top: 1rem;
 
   label {
     color: $border-color;
@@ -38,7 +38,9 @@ label {
   input[type=password]:focus + label,
   input[type=email]:focus + label,
   input[type=date]:focus + label,
-  textarea:focus + label {
+  input[type=tel]:focus + label,
+  input[type=number]:focus + label,
+  textarea:focus.materialize-textarea + label {
     color: $highlight-color;
   }
 
@@ -46,7 +48,9 @@ label {
   input[type=password].valid,
   input[type=email].valid,
   input[type=date].valid,
-  textarea.valid {
+  input[type=tel].valid,
+  input[type=number].valid,
+  textarea.materialize-textarea.valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
   }
@@ -55,7 +59,9 @@ label {
   input[type=password].invalid,
   input[type=email].invalid,
   input[type=date].invalid,
-  textarea.invalid {
+  input[type=tel].invalid,
+  input[type=number].invalid,
+  textarea.materialize-textarea.invalid {
     border-bottom: 1px solid color("red", "base");
     @include box-shadow(0 1px 0 0 color("red", "base"));
   }
@@ -93,17 +99,27 @@ label {
 
 }
 
+// Default textarea
+textarea {
+   width: 100%;
+   height: 3rem;
+   background-color: transparent;
+}
+
 input[type=text],
 input[type=password],
 input[type=email],
 input[type=date],
-textarea {
+input[type=tel],
+input[type=number],
+textarea.materialize-textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $border-color;
   outline: none;
   height: 3rem;
   width: 100%;
+
   font-size: 1rem;
   margin: 0 0 15px 0;
   padding: 0;
@@ -116,12 +132,14 @@ input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
 input[type=date]:focus,
-textarea:focus {
+input[type=tel]:focus,
+input[type=number]:focus,
+textarea:focus.materialize-textarea {
   border-bottom: 1px solid $highlight-color;
   @include box-shadow(0 1px 0 0 $highlight-color);
 }
 
-textarea {
+textarea.materialize-textarea {
   overflow-y: hidden; /* prevents scroll bar flash */
   padding: 1.6rem 0; /* prevents text jump on Enter keypress */
   resize: none;
@@ -317,6 +335,68 @@ form p {
   border-color: $disabled-color;
 }
 
+
+// Switch
+.switch,
+.switch * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.switch label {
+    cursor: pointer;
+}
+.switch label input[type=checkbox]:first-child {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.switch label input[type=checkbox]:first-child:checked + .lever {
+    background-color: #7bc5be;
+}
+.switch label input[type=checkbox]:first-child:checked + .lever:after {
+    background-color: #009587;
+}
+.switch label .lever,
+.switch label input[type=checkbox][disabled]:first-child + .lever {
+    content: "";
+    display: inline-block;
+    width: 45px;
+    height: 15px;
+    background-color: #818181;
+    border-radius: 15px;
+    margin-right: 10px;
+    transition: background 0.3s ease;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+.switch label .lever:after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #F1F1F1;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
+    left: -5px;
+    top: -2px;
+    transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
+}
+.switch label input[type=checkbox][disabled]:first-child + .lever:after,
+.switch label input[type=checkbox][disabled]:checked:first-child + .lever:after {
+    background-color: #BDBDBD;
+}
+input[type=checkbox]:first-child:checked ~ .lever:active:after {
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 149, 135, 0.1);
+}
+input[type=checkbox]:first-child ~ .lever:active:after,
+input[type=checkbox][disabled]:first-child ~ .lever:active:after {
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.switch label input[type=checkbox]:first-child:checked + .lever:after {
+    left: 30px;
+}
 
 
 /***************

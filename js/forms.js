@@ -2,20 +2,43 @@
   $(document).ready(function() {
 
     // Text based inputs
-    var input_selector = 'input[type=text], input[type=password], input[type=email], textarea';
+    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
 
-    $(input_selector).each(function(){
+    // Add active if form auto complete
+    $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0) {
        $(this).siblings('label, i').addClass('active');
       }
-    })
+    });
 
+    // Add active if input element has been pre-populated on document ready
+    $(document).ready(function() {
+      $(input_selector).each(function(index, element) {
+        if($(element).val().length > 0) {
+          $(this).siblings('label, i').addClass('active');
+        }
+      });
+    });
+
+    // HTML DOM FORM RESET handling
+    $(document).on('reset', function(e) {
+      if ($(e.target).is('form')) {
+        $(this).find(input_selector).removeClass('valid').removeClass('invalid');
+
+        // Reset select
+        $(this).find('select.initialized').each(function () {
+          var reset_text = $(this).find('option[selected]').text();
+          $(this).prev('span.select-dropdown').html(reset_text);
+        });
+      }
+    });
+
+    // Add active when element has focus
     $(document).on('focus', input_selector, function () {
       $(this).siblings('label, i').addClass('active');
     });
 
     $(document).on('blur', input_selector, function () {
-      console.log($(this).is(':valid'));
       if ($(this).val().length === 0) {
         $(this).siblings('label, i').removeClass('active');
 
@@ -138,7 +161,7 @@
     //  Select Functionality
 
     // Select Plugin
-    $.fn.material_select = function () {
+    $.fn.material_select = function (callback) {
       $(this).each(function(){
         $select = $(this);
         if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
@@ -171,10 +194,9 @@
             if (!$(this).hasClass('disabled')) {
               $curr_select.find('option').eq(i).prop('selected', true);
               // Trigger onchange() event
-              if (typeof($curr_select.context.onchange) === "function") {
-                $curr_select[0].onchange();
-              }
+              $curr_select.trigger('change');
               $curr_select.prev('span.select-dropdown').html($(this).text());
+              if (typeof callback !== 'undefined') callback();
             }
           });
 

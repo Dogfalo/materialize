@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.94.2
+### Current Version : v0.95.0
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -13,6 +13,18 @@ Materialize, a CSS Framework based on material design
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ##Changelog
+
+- v0.95.0
+  - Drag Out Menu fixed with Touch Interactions
+  - Toasts minor bugfix
+  - OL element has default styling
+  - Fullscreen Slider added
+  - Footer requires page-footer class
+  - Progress Bars added
+  - Form autofill support added
+  - Responsive Tables support added
+  - Scrollspy Plugin released
+  - Waves events are now delegated / behavior enhanced
 
 - v0.94.2
   - Sidebar dissmiss issues fixed
