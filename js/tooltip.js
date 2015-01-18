@@ -1,18 +1,19 @@
 (function ($) {
-    var timeout;
-    var counter;
-    var started;
-    var counterInterval;
     $.fn.tooltip = function (options) {
-      var margin = 5;
-
-      started = false;
+        var timeout = null,
+    		counter = null,
+    		started = false,
+    		counterInterval = null,
+    		margin = 5;
 
       // Defaults
       var defaults = {
         delay: 350
       };
       options = $.extend(defaults, options);
+
+      //Remove previously created html
+      $('.material-tooltip').remove();
 
       return this.each(function(){
         var origin = $(this);
@@ -30,14 +31,17 @@
       backdrop.css({ top: 0, left:0 });
 
 
+     //Destroy previously binded events
+    $(this).off('mouseenter mouseleave');
       // Mouse In
-      $(this).hover(function(e) {
+    $(this).on({
+      mouseenter: function(e) {
         e.stopPropagation();
         counter = 0;
         counterInterval = setInterval(function(){
-          counter += 50;
-          if (counter >= defaults.delay && started == false) {
-            started = true;
+          counter += 10;
+          if (counter >= options.delay && started == false) {
+            started = true
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
             // Set Tooltip text
@@ -52,7 +56,6 @@
             var tooltipVerticalMovement = '0px';
             var tooltipHorizontalMovement = '0px';
             var scale_factor = 8;
-
 
             if (tooltipPosition === "top") {
             // Top Position
@@ -107,9 +110,6 @@
                 top: origin.offset().top + origin.outerHeight() + margin,
                 left: origin.offset().left + originWidth/2 - tooltipWidth/2
               });
-              //console.log(origin.offset().left)
-              //console.log(originWidth/2)
-              //console.log(tooltipWidth/2)
               tooltipVerticalMovement = '+10px';
               backdrop.css({
                 marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
@@ -133,10 +133,11 @@
             .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
 
           }
-        }, 50); // End Interval
+        }, 10); // End Interval
 
       // Mouse Out
-      }, function(){
+      },
+      mouseleave: function(){
         // Reset State
         clearInterval(counterInterval);
         counter = 0;
@@ -153,6 +154,7 @@
             newTooltip.css('display', 'none');
             started = false;}
         });
+      }
       });
     });
   }
