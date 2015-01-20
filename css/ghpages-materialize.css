@@ -2020,6 +2020,8 @@ i {
   i.right {
     float: right;
     margin-left: 15px; }
+  i.tiny {
+    font-size: 1rem; }
   i.small {
     font-size: 2rem; }
   i.medium {
