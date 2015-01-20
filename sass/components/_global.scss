@@ -213,6 +213,8 @@ footer.page-footer {
   background-color: color("materialize-red", "lighten-2");
 
   .footer-copyright {
+    overflow: hidden;
+    height: 50px;
     line-height: 50px;
     color: rgba(255,255,255,.8);
     background-color: rgba(51,51,51,.08);;
