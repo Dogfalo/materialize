@@ -82,7 +82,7 @@ nav {
       @include box-sizing(border-box);
 
       &:focus, &[type=text]:valid, &[type=password]:valid,
-      &[type=email]:valid, &[type=date]:valid {
+      &[type=email]:valid, &[type=url]:valid, &[type=date]:valid {
         border: none;
         @include box-shadow(none);
       }
