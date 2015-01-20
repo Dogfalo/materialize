@@ -273,7 +273,7 @@ td, th{
 // Responsive Table
 @media #{$medium-and-down} {
 
-  table {
+  table.responsive-table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;

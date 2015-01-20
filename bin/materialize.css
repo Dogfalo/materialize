@@ -2131,55 +2131,55 @@ td, th {
   border-radius: 2px; }
 
 @media only screen and (max-width : 992px) {
-  table {
+  table.responsive-table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     display: block;
     position: relative;
     /* sort out borders */ }
-    table th, table td {
+    table.responsive-table th, table.responsive-table td {
       margin: 0;
       vertical-align: top; }
-    table th {
+    table.responsive-table th {
       text-align: left; }
-    table thead {
+    table.responsive-table thead {
       display: block;
       float: left; }
-      table thead tr {
+      table.responsive-table thead tr {
         display: block;
         padding: 0 10px 0 0; }
-    table tbody {
+    table.responsive-table tbody {
       display: block;
       width: auto;
       position: relative;
       overflow-x: auto;
       white-space: nowrap; }
-      table tbody tr {
+      table.responsive-table tbody tr {
         display: inline-block;
         vertical-align: top; }
-    table th {
+    table.responsive-table th {
       display: block;
       text-align: right; }
-    table td {
+    table.responsive-table td {
       display: block;
       min-height: 1.25em;
       text-align: left; }
-    table tr {
+    table.responsive-table tr {
       padding: 0 10px; }
-    table thead {
+    table.responsive-table thead {
       border: 0;
       border-right: 1px solid #d0d0d0; }
-    table.bordered th {
+    table.responsive-table.bordered th {
       border-bottom: 0;
       border-left: 0; }
-    table.bordered td {
+    table.responsive-table.bordered td {
       border-left: 0;
       border-right: 0;
       border-bottom: 0; }
-    table.bordered tr {
+    table.responsive-table.bordered tr {
       border: 0; }
-    table.bordered tbody tr {
+    table.responsive-table.bordered tbody tr {
       border-right: 1px solid #d0d0d0; }
  }
 
