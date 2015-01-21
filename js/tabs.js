@@ -107,5 +107,9 @@
     });
   });
 
-  };
+  }; // End Plugin
+
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
 }( jQuery ));

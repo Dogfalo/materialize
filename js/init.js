@@ -139,12 +139,6 @@
     // Plugin initialization
     $('.slider').slider({full_width: true});
     $('.dropdown-button').dropdown({hover: false});
-    if (window_width > 600) {
-      $('ul.tabs').tabs();
-    }
-    else {
-      $('ul.tabs').hide();
-    }
     $('.tab-demo').show().tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
