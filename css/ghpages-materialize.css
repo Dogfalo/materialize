@@ -6545,7 +6545,7 @@ ul.table-of-contents a {
 
 .drag-target {
   height: 100%;
-  width: 15px;
+  width: 10px;
   position: fixed;
   top: 0;
   z-index: 998; }
