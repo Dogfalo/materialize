@@ -145,7 +145,6 @@
     $('.tooltipped').tooltip({"delay": 300});
     $('.collapsible-accordion').collapsible();
     $('.collapsible-expandable').collapsible({"accordion": false});
-    $('.materialboxed').materialbox();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate();
