@@ -57,6 +57,16 @@
         </code></pre>
       </div>
 
+      <div id="method" class="section scrollspy">
+        <h4>jQuery Plugin Methods</h4>
+        <p>You can programmatically trigger a tab change with our <code class="language-javascript">select_tab</code> method. You have to input the id of the tab you want to switch to. In the case of our demo it would be either test1, test2, test3, or test4.</p>
+        <pre><code class="language-javascript">
+  $(document).ready(function(){
+    $('ul.tabs').tabs('select_tab', 'tab_id');
+  });
+        </code></pre>
+      </div>
+
 
 
       <div id="preselecting" class="section scrollspy">
@@ -76,6 +86,7 @@
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#structure">Structure</a></li>
           <li><a href="#initialization">Intialization</a></li>
+          <li><a href="#method">Methods</a></li>
           <li><a href="#preselecting">Preselecting</a></li>
         </ul>
       </div>
