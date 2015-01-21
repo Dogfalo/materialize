@@ -5764,8 +5764,6 @@ a.waves-effect .waves-ripple {
   padding: 24px;
   max-height: 70%;
   max-width: 55%;
-  left: 0;
-  right: 0;
   margin: auto;
   overflow-y: auto;
   z-index: 1000;
