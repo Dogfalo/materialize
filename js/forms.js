@@ -70,6 +70,7 @@
     }
     var hiddendiv = $('.hiddendiv');
     var text_area_selector = '.materialize-textarea';
+    $('.hiddendiv').css('width', $(text_area_selector).width());
       $('body').on('keyup keydown',text_area_selector , function () {
         // console.log($(this).val());
         content = $(this).val();
