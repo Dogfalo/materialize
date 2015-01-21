@@ -143,8 +143,6 @@
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.tooltipped').tooltip({"delay": 300});
-    $('.collapsible-accordion').collapsible();
-    $('.collapsible-expandable').collapsible({"accordion": false});
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate();
