@@ -1613,6 +1613,7 @@
 /*** Global ***/
 /*** Navbar ***/
 /*** SideNav ***/
+/*** Tabs ***/
 /*** Tables ***/
 /*** Toasts ***/
 /*** Typography ***/
@@ -5483,7 +5484,7 @@ small {
     letter-spacing: 0.8px;
     width: 15%; }
     .tabs li.tab a {
-      color: #ee6e73;
+      color: #ea454b;
       display: block;
       width: 100%;
       height: 100%;
@@ -5493,7 +5494,7 @@ small {
       -ms-transition: color 0.28s ease;
       transition: color 0.28s ease; }
       .tabs li.tab a:hover {
-        color: #f8c1c3; }
+        color: #f4a1a4; }
   .tabs .indicator {
     position: absolute;
     bottom: 0;

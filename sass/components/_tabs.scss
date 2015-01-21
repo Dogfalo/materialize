@@ -20,13 +20,13 @@
     width: 15%;
 
     a {
-      color: lighten(color("materialize-red", "base"), 18%);
+      color: $tabs-text-color;
       display: block;
       width: 100%;
       height: 100%;
       @include transition( color .28s ease);
       &:hover {
-        color: color("materialize-red", "lighten-4");
+        color: lighten($tabs-text-color, 20%);
       }
     }
   }
@@ -34,7 +34,7 @@
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: color("materialize-red", "lighten-2");
+    background-color: $tabs-underline-color;
     will-change: left, right;
   }
 }
