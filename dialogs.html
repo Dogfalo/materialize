@@ -149,23 +149,25 @@
 
         <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
         <div class="row">
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="bottom" data-tooltip="I am tooltip"> Bottom Tooltip</a>
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="top" data-tooltip="I am tooltip"> Top Tooltip</a>
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="left" data-tooltip="I am tooltip"> Left Tooltip</a>
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="right" data-tooltip="I am tooltip"> Right Tooltip</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"> Bottom Tooltip</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="top" data-delay="50" data-tooltip="I am tooltip"> Top Tooltip</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="left" data-delay="50" data-tooltip="I am tooltip"> Left Tooltip</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="50" data-tooltip="I am tooltip"> Right Tooltip</a>
         </div>
 
 
         <p>Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position.</p>
         <pre><code class="language-markup">
   &lt;!-- data-position can be : bottom, top, left, or right -->
-  &lt;a class="btn tooltipped" data-position="bottom" data-tooltip="I am tooltip"> SHOW me TOOLTIP&lt;/a>
+  &lt;!-- data-delay controls delay before tooltip shows (in milliseconds)-->
+  &lt;a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">Hover me!&lt;/a>
         </code></pre>
         <br>
-        Then add this to your jQuery file, with the hover delay you want as the option
+        <h4>Initialization</h4>
+        <p>Tooltips are initialized automatically, but if you have dynamically added tooltips, you will need to initialize them.</p>
         <pre><code class="language-javascript">
   $(document).ready(function(){
-    $('.tooltipped').tooltip({"delay": 50});
+    $('.tooltipped').tooltip({delay: 50});
   });
       </code></pre>
     </div>

@@ -142,7 +142,6 @@
     $('.tab-demo').show().tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
-    $('.tooltipped').tooltip({"delay": 300});
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate();

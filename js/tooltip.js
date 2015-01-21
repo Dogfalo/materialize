@@ -37,10 +37,13 @@
     $(this).on({
       mouseenter: function(e) {
         e.stopPropagation();
+        console.log(origin.data("delay"));
+        var tooltip_delay = origin.data("delay");
+        tooltip_delay = (tooltip_delay == undefined || tooltip_delay == "") ? options.delay : tooltip_delay;
         counter = 0;
         counterInterval = setInterval(function(){
           counter += 10;
-          if (counter >= options.delay && started == false) {
+          if (counter >= tooltip_delay && started == false) {
             started = true
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
@@ -157,5 +160,9 @@
       }
       });
     });
-  }
+  };
+
+  $(document).ready(function(){
+     $('.tooltipped').tooltip();
+   });
 }( jQuery ));
