@@ -107,6 +107,7 @@
       // Click handler to show dropdown
       origin.click( function(e){ // Click
         e.preventDefault(); // Prevents button click from moving window
+        e.stopPropagation(); // Allows clicking on icon
         placeDropdown();
         $(document).bind('click.'+ activates.attr('id'), function (e) {
           if (!activates.is(e.target) && (!origin.is(e.target))) {
