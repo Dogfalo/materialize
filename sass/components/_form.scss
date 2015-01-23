@@ -41,6 +41,7 @@ label {
   input[type=date]:focus + label,
   input[type=tel]:focus + label,
   input[type=number]:focus + label,
+  input[type=search]:focus + label,
   textarea:focus.materialize-textarea + label {
     color: $highlight-color;
   }
@@ -52,6 +53,7 @@ label {
   input[type=date].valid,
   input[type=tel].valid,
   input[type=number].valid,
+  input[type=search].valid,
   textarea.materialize-textarea.valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
@@ -64,6 +66,7 @@ label {
   input[type=date].invalid,
   input[type=tel].invalid,
   input[type=number].invalid,
+  input[type=search].invalid,
   textarea.materialize-textarea.invalid {
     border-bottom: 1px solid color("red", "base");
     @include box-shadow(0 1px 0 0 color("red", "base"));
@@ -116,6 +119,7 @@ input[type=url],
 input[type=date],
 input[type=tel],
 input[type=number],
+input[type=search],
 textarea.materialize-textarea {
   background-color: transparent;
   border: none;
@@ -139,6 +143,7 @@ input[type=url]:focus,
 input[type=date]:focus,
 input[type=tel]:focus,
 input[type=number]:focus,
+input[type=search]:focus,
 textarea:focus.materialize-textarea {
   border-bottom: 1px solid $highlight-color;
   @include box-shadow(0 1px 0 0 $highlight-color);
