@@ -2,7 +2,7 @@
   $(document).ready(function() {
 
     // Text based inputs
-    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
+    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], textarea';
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
