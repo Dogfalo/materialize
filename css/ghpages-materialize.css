@@ -1607,6 +1607,7 @@
   color: #FFFFFF !important; }
 
 /*** Colors ***/
+/*** Badges ***/
 /*** Buttons ***/
 /*** Cards ***/
 /*** Collapsible ***/
@@ -2258,7 +2259,7 @@ span.badge {
     font-weight: 300;
     font-size: 0.8rem;
     color: #fff;
-    background-color: #2196F3;
+    background-color: #26a69a;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;

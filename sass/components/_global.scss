@@ -437,7 +437,7 @@ span.badge {
     font-weight: 300;
     font-size: 0.8rem;
     color: #fff;
-    background-color: color('blue', 'base');
+    background-color: $badge-bg-color;
     @include border-radius(2px);
   }
   &.new:after {
