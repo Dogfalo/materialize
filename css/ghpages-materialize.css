@@ -5765,10 +5765,12 @@ a.waves-effect .waves-ripple {
 .modal {
   display: none;
   position: fixed;
+  left: 0;
+  right: 0;
   background-color: #eee;
   padding: 24px;
   max-height: 70%;
-  max-width: 55%;
+  width: 55%;
   margin: auto;
   overflow-y: auto;
   z-index: 1000;
