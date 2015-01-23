@@ -120,6 +120,15 @@ ul.side-nav.fixed {
 }
 
 
+ul.side-nav .collapsible-body li.active,
+ul.side-nav.fixed .collapsible-body li.active {
+  background-color: $primary-color;
+  a {
+    color: #fff;
+  }
+}
+
+
 #sidenav-overlay {
   position: fixed;
   top: 0px;

@@ -9,7 +9,7 @@ button:focus {
 
 label {
   font-size: $label-font-size;
-  color: $border-color;
+  color: $input-border-color;
 }
 
 /***************************
@@ -21,7 +21,7 @@ label {
   margin-top: 1rem;
 
   label {
-    color: $border-color;
+    color: $input-border-color;
     position: absolute;
     top: 0.8rem;
     left: $gutter-width / 2;
@@ -43,7 +43,7 @@ label {
   input[type=number]:focus + label,
   input[type=search]:focus + label,
   textarea:focus.materialize-textarea + label {
-    color: $highlight-color;
+    color: $input-focus-color;
   }
 
   input[type=text].valid,
@@ -55,8 +55,8 @@ label {
   input[type=number].valid,
   input[type=search].valid,
   textarea.materialize-textarea.valid {
-    border-bottom: 1px solid color("green", "base");
-    @include box-shadow(0 1px 0 0 color("green", "base"));
+    border-bottom: 1px solid $input-success-color;
+    @include box-shadow(0 1px 0 0 $input-success-color);
   }
 
   input[type=text].invalid,
@@ -68,8 +68,8 @@ label {
   input[type=number].invalid,
   input[type=search].invalid,
   textarea.materialize-textarea.invalid {
-    border-bottom: 1px solid color("red", "base");
-    @include box-shadow(0 1px 0 0 color("red", "base"));
+    border-bottom: 1px solid $input-error-color;
+    @include box-shadow(0 1px 0 0 $input-error-color);
   }
 
   // Prefix Icons
@@ -79,7 +79,7 @@ label {
     font-size: 2rem;
     @include transition(color .2s);
 
-    &.active { color: $highlight-color; }
+    &.active { color: $input-focus-color; }
   }
   .prefix ~ input,
   .prefix ~ textarea {
@@ -123,7 +123,7 @@ input[type=search],
 textarea.materialize-textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $input-border-color;
   outline: none;
   height: 3rem;
   width: 100%;
@@ -145,8 +145,8 @@ input[type=tel]:focus,
 input[type=number]:focus,
 input[type=search]:focus,
 textarea:focus.materialize-textarea {
-  border-bottom: 1px solid $highlight-color;
-  @include box-shadow(0 1px 0 0 $highlight-color);
+  border-bottom: 1px solid $input-focus-color;
+  @include box-shadow(0 1px 0 0 $input-focus-color);
 }
 
 textarea.materialize-textarea {
@@ -210,11 +210,11 @@ textarea.materialize-textarea {
 /* Unchecked styles */
 [type="radio"]:not(:checked) + label:before {
   border-radius: 50%;
-  border: 2px solid $radio-border;
+  border: 2px solid $radio-empty-color;
 }
 [type="radio"]:not(:checked) + label:after {
   border-radius: 50%;
-  border: 2px solid $radio-border;
+  border: 2px solid $radio-empty-color;
   z-index: -1;
 
   @include transform(scale(0));
@@ -227,8 +227,8 @@ textarea.materialize-textarea {
 }
 [type="radio"]:checked + label:after {
   border-radius: 50%;
-  border: 2px solid $fill-color;
-  background-color: $fill-color;
+  border: 2px solid $radio-fill-color;
+  background-color: $radio-fill-color;
   z-index: 0;
   @include transform(scale(1.02));
 }
@@ -236,12 +236,12 @@ textarea.materialize-textarea {
 /* Radio With gap */
 [type="radio"].with-gap:checked + label:before {
   border-radius: 50%;
-  border: 2px solid $fill-color;
+  border: 2px solid $radio-fill-color;
 }
 [type="radio"].with-gap:checked + label:after {
   border-radius: 50%;
-  border: 2px solid $fill-color;
-  background-color: $fill-color;
+  border: 2px solid $radio-fill-color;
+  background-color: $radio-fill-color;
   z-index: 0;
   @include transform(scale(.5));
 }
@@ -250,13 +250,13 @@ textarea.materialize-textarea {
 [type="radio"]:disabled:not(:checked) + label:before,
 [type="radio"]:disabled:checked + label:before {
   background-color: transparent;
-  border-color: $disabled-color;
+  border-color: $input-disabled-color;
 }
 [type="radio"]:disabled + label {
-  color: $disabled-color;
+  color: $input-disabled-color;
 }
 [type="radio"]:disabled:not(:checked) + label:hover:before {
-  border-color: $disabled-color;
+  border-color: $input-disabled-color;
 }
 
 
@@ -309,7 +309,7 @@ form p {
 [type="checkbox"]:not(:checked) + label:before {
   top: 0px;
   width: 18px; height: 18px;
-  border: 2px solid $radio-border;
+  border: 2px solid $radio-empty-color;
 }
 
 /* Checked styles */
@@ -319,8 +319,8 @@ form p {
   width: 12px; height: 22px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
-  border-right: 2px solid $fill-color;
-  border-bottom: 2px solid $fill-color;
+  border-right: 2px solid $radio-fill-color;
+  border-bottom: 2px solid $radio-fill-color;
   @include transform(rotateZ(40deg));
   -webkit-backface-visibility: hidden;
 
@@ -333,16 +333,16 @@ form p {
   top: 0;
   left: 0;
   box-shadow: none;
-  background-color: $disabled-color;
+  background-color: $input-disabled-color;
   width: 18px; height: 18px;
-  border: 2px solid $disabled-color;
+  border: 2px solid $input-disabled-color;
   @include transform(rotateZ(0deg));
 }
 [type="checkbox"]:disabled + label {
-  color: $disabled-color;
+  color: $input-disabled-color;
 }
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
-  border-color: $disabled-color;
+  border-color: $input-disabled-color;
 }
 
 
@@ -419,7 +419,7 @@ input[type=checkbox][disabled]:first-child ~ .lever:active:after {
   color: #444;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $input-border-color;
   outline: none;
   height: 3rem;
   line-height: 3rem;
@@ -485,7 +485,7 @@ input[type=range] + .thumb {
   height: 0;
   width: 0;
   border-radius: 50%;
-  background-color: $fill-color;
+  background-color: $radio-fill-color;
   top: 10px;
   margin-left: -6px;
 
@@ -496,7 +496,7 @@ input[type=range] + .thumb {
     display: block;
     width: 30px;
     text-align: center;
-    color: $fill-color;
+    color: $radio-fill-color;
     font-size: 0px;
     @include transform(rotate(45deg));
   }
@@ -537,7 +537,7 @@ input[type=range]::-webkit-slider-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background-color: $fill-color;
+  background-color: $radio-fill-color;
   transform-origin: 50% 50%;
   margin: -5px 0 0 0;
   @include transition(.3s);
@@ -566,7 +566,7 @@ input[type=range]::-moz-range-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background: $fill-color;
+  background: $radio-fill-color;
   margin-top: -5px;
 }
 
@@ -605,7 +605,7 @@ input[type=range]::-ms-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background: $fill-color;
+  background: $radio-fill-color;
 }
 input[type=range]:focus::-ms-fill-lower {
   background: #888;

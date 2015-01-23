@@ -25,7 +25,7 @@ ul {
 }
 
 a {
-	color: color("blue", "darken-1");
+	color: $link-color;
 	text-decoration: none;
 }
 
@@ -362,10 +362,16 @@ td, th{
       background-color: $collection-active-bg-color;
       color: $collection-active-color;
     }
+
+    .secondary-content {
+      float: right;
+      color: $secondary-color;
+    }
   }
   a.collection-item{
     display: block;
     @include transition(.25s);
+    color: $secondary-color;
     &:not(.active) {
       &:hover {
         background-color: $collection-hover-bg-color;
@@ -383,9 +389,7 @@ td, th{
     }
   }
 
-  .secondary-content {
-    float: right;
-  }
+
 
   //Pagination
   &.pagination {

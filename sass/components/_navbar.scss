@@ -1,7 +1,7 @@
 nav {
   color: #fff;
   @extend .z-depth-1;
-  background-color: color("materialize-red", "lighten-2");
+  background-color: $primary-color;
   width: 100%;
   height: $navbar-height-mobile;
   line-height: $navbar-height-mobile;
