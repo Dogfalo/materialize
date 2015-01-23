@@ -100,11 +100,6 @@
           // enable_scroll();
         }
 
-        // Event handlers for <a> tags to close side nav
-        menu_id.on("click", "a:not(.collapsible-header)", function(){
-          removeMenu();
-        });
-
         // Touch Event
         var panning = false;
         var menuOut = false;
