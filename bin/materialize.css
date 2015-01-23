@@ -1611,6 +1611,7 @@
 /*** Buttons ***/
 /*** Cards ***/
 /*** Collapsible ***/
+/*** Dropdown ***/
 /*** Forms ***/
 /*** Global ***/
 /*** Navbar ***/
@@ -5662,7 +5663,8 @@ ul.tabs li.tab {
       background-color: rgba(0, 0, 0, 0.06); }
     .dropdown-content li > a, .dropdown-content li > span {
       display: block;
-      padding: 1rem 1rem; }
+      padding: 1rem 1rem;
+      color: #26a69a; }
 
 /*!
  * Waves v0.6.0

@@ -22,9 +22,10 @@
       background-color: rgba(0,0,0, .06);
     }
 
-    & > a,& > span {
+    & > a, & > span {
       display: block;
       padding: 1rem 1rem;
+      color: $dropdown-color;
     }
   }
 }

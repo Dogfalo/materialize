@@ -40,6 +40,11 @@ $collapsible-height: 3rem !default;
 $collapsible-header-color: #fff !default;
 $collapsible-border-color: #ddd !default;
 
+
+/*** Dropdown ***/
+$dropdown-color: $secondary-color;
+
+
 /*** Forms ***/
 // Text Inputs + Textarea
 $input-border-color: color("grey", "base") !default;
