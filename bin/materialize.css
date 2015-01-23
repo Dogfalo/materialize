@@ -5456,7 +5456,11 @@ small {
     border-radius: 24px; }
   @media only screen and (max-width : 600px) {
     .toast {
-      width: 100%; } }
+      width: 100%;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      border-radius: 0px;
+      background-clip: padding-box; } }
   @media only screen and (min-width : 601px) and (max-width : 992px) {
     .toast {
       float: left; } }
