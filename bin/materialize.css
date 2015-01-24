@@ -6235,7 +6235,7 @@ form p:last-child {
   transform-origin: 100% 100%; }
 
 /* disabled checkbox */
-[type="checkbox"]:disabled:not(:checked) + label:before, [type="checkbox"]:disabled:checked + label:before {
+[type="checkbox"]:disabled:not(:checked) + label:before {
   top: 0;
   left: 0;
   box-shadow: none;
@@ -6249,7 +6249,28 @@ form p:last-child {
   -o-transform: rotateZ(0deg);
   transform: rotateZ(0deg); }
 
-[type="checkbox"]:disabled + label {
+[type="checkbox"]:disabled:checked + label:before {
+  left: -3px;
+  top: -4px;
+  width: 12px;
+  height: 22px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid rgba(0, 0, 0, 0.26);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.26);
+  -webkit-transform: rotateZ(40deg);
+  -moz-transform: rotateZ(40deg);
+  -ms-transform: rotateZ(40deg);
+  -o-transform: rotateZ(40deg);
+  transform: rotateZ(40deg);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%; }
+
+[type="checkbox"]:disabled:checked + label {
   color: rgba(0, 0, 0, 0.26); }
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
