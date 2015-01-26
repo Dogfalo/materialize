@@ -5,7 +5,8 @@
       inDuration: 300,
       outDuration: 225,
       constrain_width: true, // Constrains width of dropdown to the activator
-      hover: true
+      hover: true,
+      alignment: 'left'
     }
 
     options = $.extend(defaults, options);
@@ -15,21 +16,43 @@
     // Dropdown menu
     var activates = $("#"+ origin.attr('data-activates'));
 
+    function updateOptions() {
+      if (origin.data('inDuration') != undefined)
+        options.inDuration = origin.data('inDuration');
+      if (origin.data('outDuration') != undefined)
+        options.outDuration = origin.data('outDuration');
+      if (origin.data('constrainwidth') != undefined)
+        options.constrain_width = origin.data('constrainwidth');
+      if (origin.data('hover') != undefined)
+        options.hover = origin.data('hover');
+      if (origin.data('alignment') != undefined)
+        options.alignment = origin.data('alignment');
+    }
+
+    updateOptions();
+
     // Move Dropdown menu to body. This allows for absolute positioning to work
     if ( !(activates.parent().is($('body'))) ) {
       activates.detach();
       $('body').append(activates);
     }
 
-
     /*
       Helper function to position and resize dropdown.
       Used in hover and click handler.
     */
     function placeDropdown() {
+      // Check html data attributes
+      updateOptions();
+
       var dropdownRealHeight = activates.height();
-      if (options.constrain_width === true) {
+      if (options.constrain_width == true) {
         activates.css('width', origin.outerWidth());
+      }
+      // Handle edge alignment
+      var width_difference = 0;
+      if (options.alignment == 'right') {
+        width_difference = origin.innerWidth() - activates.innerWidth();
       }
       if (elementOrParentIsFixed(origin[0])) {
         activates.css({
@@ -37,14 +60,14 @@
           position: 'fixed',
           height: 0,
           top: origin.offset().top - $(window).scrollTop(),
-          left: origin.offset().left
+          left: origin.offset().left + width_difference
         });
       }
       else {
         activates.css({
           display: 'block',
           top: origin.offset().top,
-          left: origin.offset().left,
+          left: origin.offset().left + width_difference,
           height: 0
         });
       }

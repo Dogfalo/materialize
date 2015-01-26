@@ -107,7 +107,7 @@
         <h4>Introduction</h4>
         <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. </p>
         <p>You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. </p>
-        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+        <a class='dropdown-button btn' data-constrainwidth="false" href='#' data-activates='dropdown1'>Drop Me!</a>
         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="#!">one</a></li>
           <li><a href="#!">two</a></li>
@@ -131,11 +131,17 @@
 
 
       <div id="initialization" class="section scrollspy">
+        <p>Initialization for dropdowns is only necessary if you create them dynamically.</p>
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript">
-  $(document).ready(function(){
-    $('.dropdown-button').dropdown();
-  });
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: false // Activate on click
+      alignment: 'left' // Aligns dropdown to left or right edge (works with constrain_width)
+    }
+  );
         </code></pre>
       </div>
 
@@ -143,13 +149,9 @@
 
       <div id="options" class="section scrollspy">
         <h4>Options</h4>
-        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
-        <pre><code class="language-javascript">
-  $('.dropdown-button').dropdown({
-      constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: false // Activate on click
-    }
-  );
+        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option in either JavaScript as show above, or in HTML as shown below.</p>
+        <pre><code class="language-markup">
+  &lt;a class='dropdown-button btn' data-constrainwidth="false" data-alignment="right" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
         </code></pre>
       </div>
 
