@@ -23,6 +23,7 @@
   },
   "engine": "node >= 0.10",
   "devDependencies": {
-    "grunt-banner": "^0.3.0"
+    "grunt-banner": "^0.3.0",
+    "grunt-browser-sync": "^1.9.1"
   }
 }
