@@ -4,6 +4,12 @@
 
     return this.each(function() {
 
+      if ($(this).hasClass('intialized')) {
+        return;
+      }
+
+      $(this).addClass('intialized');
+
       var overlayActive = false;
       var doneAnimating = true;
       var inDuration = 275;
@@ -223,4 +229,9 @@
         }
         });
 };
+
+$(document).ready(function(){
+  $('.materialboxed').materialbox();
+});
+
 }( jQuery ));

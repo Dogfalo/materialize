@@ -76,6 +76,7 @@
         if (typeof(options.complete) === "function") {
           options.complete();
         }
+        $('#lean-overlay').remove();
       });
     }
   })

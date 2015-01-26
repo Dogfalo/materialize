@@ -41,7 +41,7 @@ $sidenav-width: 240px;
 // Touch interaction
 .drag-target {
   height: 100%;
-  width: 10%;
+  width: 10px;
   position: fixed;
   top: 0;
   z-index: 998;
@@ -116,6 +116,15 @@ ul.side-nav.fixed {
       right: -1 * ($sidenav-width + 10);
       left: auto;
     }
+  }
+}
+
+
+ul.side-nav .collapsible-body li.active,
+ul.side-nav.fixed .collapsible-body li.active {
+  background-color: $primary-color;
+  a {
+    color: #fff;
   }
 }
 

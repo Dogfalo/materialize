@@ -3,16 +3,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
     <title>Modals - Materialize</title>
-    <!-- Favicons -->
+    <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <!--  Android 5 Chrome Color -->
+    <!--  Android 5 Chrome Color-->
     <meta name="theme-color" content="#EE6E73">
-    <!-- CSS  -->
+    <!-- CSS-->
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
@@ -25,7 +26,7 @@
         autocollect: true
       };
     </script>
-    <script src="//cdn.transifex.com/live.js"> </script>
+    <script src="//cdn.transifex.com/live.js"></script>
   </head>
   <body>
     <header>
@@ -110,7 +111,9 @@
         <div id="modal1" class="modal">
           <h4>Modal Header</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+          <div class="action-bar">
+            <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+          </div>
         </div>
       </div>
 
@@ -126,7 +129,9 @@
   &lt;div id="modal1" class="modal">
     &lt;h4>Modal Header&lt;/h4>
     &lt;p>A bunch of text&lt;/p>
-    &lt;a href="#" class="waves-effect btn-flat modal-close">Agree&lt;/a>
+    &lt;div class="action-bar">
+      &lt;a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree&lt;/a>
+    &lt;/div>
   &lt;/div>
           </code></pre>
         </div>

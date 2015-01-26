@@ -218,7 +218,7 @@
   &lt;/select>
 
   &lt;label>Browser Select&lt;/label>
-  &lt;select class="disabled">
+  &lt;select class="browser-default">
     &lt;option value="" disabled selected>Choose your option&lt;/option>
     &lt;option value="1">Option 1&lt;/option>
     &lt;option value="2">Option 2&lt;/option>
@@ -262,7 +262,7 @@
   &lt;/select>
 
   &lt;label>Browser Disabled&lt;/label>
-  &lt;select class="disabled">
+  &lt;select class="browser-default">
     &lt;option value="" disabled selected>Choose your option&lt;/option>
     &lt;option value="1">Option 1&lt;/option>
     &lt;option value="2">Option 2&lt;/option>
@@ -274,7 +274,9 @@
             <h4>Initialization</h4>
             <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
             <pre><code class="language-javascript col s12">
+  $(document).ready(function() {
     $('select').material_select();
+  });
             </code></pre>
           </div>
         </div>

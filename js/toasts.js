@@ -36,9 +36,9 @@ function toast(message, displayLength, className, completeCallback) {
                           easing: 'easeOutExpo',
                           queue: false,
                           complete: function(){
-                            $(this).remove();
                             if(typeof(completeCallback) === "function")
                               completeCallback();
+                            $(this).remove();
                           }
                         }
                        );
@@ -79,7 +79,11 @@ function toast(message, displayLength, className, completeCallback) {
                                   { duration: 375,
                         easing: 'easeOutExpo',
                         queue: false,
-                        complete: function(){toast.remove()}
+                        complete: function(){
+                          if(typeof(completeCallback) === "function")
+                            completeCallback();
+                          toast.remove()
+                        }
                       })
                   } else {
                     toast.removeClass("panning");

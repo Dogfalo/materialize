@@ -1,12 +1,10 @@
 (function ($) {
-    var timeout;
-    var counter;
-    var started;
-    var counterInterval;
     $.fn.tooltip = function (options) {
-      var margin = 5;
-
-      started = false;
+        var timeout = null,
+    		counter = null,
+    		started = false,
+    		counterInterval = null,
+    		margin = 5;
 
       // Defaults
       var defaults = {
@@ -14,12 +12,18 @@
       };
       options = $.extend(defaults, options);
 
+      //Remove previously created html
+      $('.material-tooltip').remove();
+
       return this.each(function(){
         var origin = $(this);
 
+      // Create Text span
+      var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+
       // Create tooltip
       var newTooltip = $('<div></div>');
-      newTooltip.addClass('material-tooltip').text(origin.attr('data-tooltip'));
+      newTooltip.addClass('material-tooltip').append(tooltip_text);
       newTooltip.appendTo($('body'));
 
       var backdrop = $('<div></div>').addClass('backdrop');
@@ -27,15 +31,23 @@
       backdrop.css({ top: 0, left:0 });
 
 
+     //Destroy previously binded events
+    $(this).off('mouseenter mouseleave');
       // Mouse In
-      $(this).hover(function(e) {
+    $(this).on({
+      mouseenter: function(e) {
         e.stopPropagation();
+        var tooltip_delay = origin.data("delay");
+        tooltip_delay = (tooltip_delay == undefined || tooltip_delay == "") ? options.delay : tooltip_delay;
         counter = 0;
         counterInterval = setInterval(function(){
-          counter += 50;
-          if (counter >= defaults.delay && started == false) {
-            started = true;
+          counter += 10;
+          if (counter >= tooltip_delay && started == false) {
+            started = true
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
+
+            // Set Tooltip text
+            newTooltip.children('span').text(origin.attr('data-tooltip'));
 
             // Tooltip positioning
             var originWidth = origin.outerWidth();
@@ -46,8 +58,6 @@
             var tooltipVerticalMovement = '0px';
             var tooltipHorizontalMovement = '0px';
             var scale_factor = 8;
-
-            // console.log(origin.offset().left);
 
             if (tooltipPosition === "top") {
             // Top Position
@@ -102,9 +112,6 @@
                 top: origin.offset().top + origin.outerHeight() + margin,
                 left: origin.offset().left + originWidth/2 - tooltipWidth/2
               });
-              //console.log(origin.offset().left)
-              //console.log(originWidth/2)
-              //console.log(tooltipWidth/2)
               tooltipVerticalMovement = '+10px';
               backdrop.css({
                 marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
@@ -128,10 +135,11 @@
             .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
 
           }
-        }, 50); // End Interval
+        }, 10); // End Interval
 
       // Mouse Out
-      }, function(){
+      },
+      mouseleave: function(){
         // Reset State
         clearInterval(counterInterval);
         counter = 0;
@@ -148,7 +156,12 @@
             newTooltip.css('display', 'none');
             started = false;}
         });
+      }
       });
     });
-  }
+  };
+
+  $(document).ready(function(){
+     $('.tooltipped').tooltip();
+   });
 }( jQuery ));

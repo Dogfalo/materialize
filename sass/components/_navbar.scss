@@ -1,7 +1,7 @@
 nav {
   color: #fff;
   @extend .z-depth-1;
-  background-color: color("materialize-red", "lighten-2");
+  background-color: $primary-color;
   width: 100%;
   height: $navbar-height-mobile;
   line-height: $navbar-height-mobile;
@@ -82,7 +82,7 @@ nav {
       @include box-sizing(border-box);
 
       &:focus, &[type=text]:valid, &[type=password]:valid,
-      &[type=email]:valid, &[type=date]:valid {
+      &[type=email]:valid, &[type=url]:valid, &[type=date]:valid {
         border: none;
         @include box-shadow(none);
       }

@@ -52,6 +52,7 @@
 
   @media #{$small-and-down} {
     width:100%;
+    @include border-radius(0px);
   }
   @media #{$medium-only} {
     float: left;

@@ -35,11 +35,18 @@
 
 
       <div id="initialization" class="section scrollspy">
+        <p>Initialization for dropdowns is only necessary if you create them dynamically.</p>
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript">
-  $(document).ready(function(){
-    $('.dropdown-button').dropdown();
-  });
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: false // Activate on click
+      alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
+      gutter: 0, // Spacing from edge
+    }
+  );
         </code></pre>
       </div>
 
@@ -47,13 +54,9 @@
 
       <div id="options" class="section scrollspy">
         <h4>Options</h4>
-        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option.</p>
-        <pre><code class="language-javascript">
-  $('.dropdown-button').dropdown({
-      constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: false // Activate on click
-    }
-  );
+        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option in either JavaScript as show above, or in HTML as shown below.</p>
+        <pre><code class="language-markup">
+  &lt;a class='dropdown-button btn' data-constrainwidth="false" data-alignment="right" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
         </code></pre>
       </div>
 

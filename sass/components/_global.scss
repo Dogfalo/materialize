@@ -25,7 +25,7 @@ ul {
 }
 
 a {
-	color: color("blue", "darken-1");
+	color: $link-color;
 	text-decoration: none;
 }
 
@@ -100,6 +100,9 @@ i {
   &.right {
     float: right;
     margin-left: 15px;
+  }
+  &.tiny {
+    font-size: 1rem;
   }
   &.small {
     font-size: 2rem;
@@ -213,6 +216,8 @@ footer.page-footer {
   background-color: color("materialize-red", "lighten-2");
 
   .footer-copyright {
+    overflow: hidden;
+    height: 50px;
     line-height: 50px;
     color: rgba(255,255,255,.8);
     background-color: rgba(51,51,51,.08);;
@@ -273,7 +278,7 @@ td, th{
 // Responsive Table
 @media #{$medium-and-down} {
 
-  table {
+  table.responsive-table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -361,6 +366,7 @@ td, th{
   a.collection-item{
     display: block;
     @include transition(.25s);
+    color: $secondary-color;
     &:not(.active) {
       &:hover {
         background-color: $collection-hover-bg-color;
@@ -378,9 +384,7 @@ td, th{
     }
   }
 
-  .secondary-content {
-    float: right;
-  }
+
 
   //Pagination
   &.pagination {
@@ -412,6 +416,12 @@ td, th{
   }
 
 }
+// Made less specific to allow easier overriding
+.secondary-content {
+  float: right;
+  color: $secondary-color;
+}
+
 
 // Badges
 span.badge {
@@ -428,7 +438,7 @@ span.badge {
     font-weight: 300;
     font-size: 0.8rem;
     color: #fff;
-    background-color: color('blue', 'base');
+    background-color: $badge-bg-color;
     @include border-radius(2px);
   }
   &.new:after {

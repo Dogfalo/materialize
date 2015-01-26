@@ -3,16 +3,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
     <title>Table - Materialize</title>
-    <!-- Favicons -->
+    <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <!--  Android 5 Chrome Color -->
+    <!--  Android 5 Chrome Color-->
     <meta name="theme-color" content="#EE6E73">
-    <!-- CSS  -->
+    <!-- CSS-->
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
@@ -25,7 +26,7 @@
         autocollect: true
       };
     </script>
-    <script src="//cdn.transifex.com/live.js"> </script>
+    <script src="//cdn.transifex.com/live.js"></script>
   </head>
   <body>
     <header>
@@ -338,10 +339,51 @@
           </div>
         </div>
 
-      </div><!--  End Tables Section  -->
+      </div>
+
+      <div id="centered" class="section scrollspy">
+        <h2 class="header">Responsive Table</h2>
+        <div class="row">
+          <div class="col s12">
+            <p>Add <code class="language-markup">class="responsive-table"</code> to the table tag to make the table horizontally scrollable on smaller screen widths.</p>
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                    <th data-field="id">Name</th>
+                    <th data-field="name">Item Name</th>
+                    <th data-field="price">Item Price</th>
+                </tr>
+              </thead
+              <tbody>
+                <tr>
+                  <td>Alvin</td>
+                  <td>Eclair</td>
+                  <td>$0.87</td>
+                </tr>
+                <tr>
+                  <td>Alan</td>
+                  <td>Jellybean</td>
+                  <td>$3.76</td>
+                </tr>
+                <tr>
+                  <td>Jonathan</td>
+                  <td>Lollipop</td>
+                  <td>$7.00</td>
+                </tr>
+                <tr>
+                  <td>Shannon</td>
+                  <td>KitKat</td>
+                  <td>$9.99</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
 
 
-    </div>
+    </div><!--  End Tables Section  -->
 
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
@@ -351,6 +393,7 @@
           <li><a href="#striped">Striped</a></li>
           <li><a href="#hoverable">Hoverable</a></li>
           <li><a href="#centered">Centered</a></li>
+          <li><a href="#responsive">Responsive</a></li>
         </ul>
       </div>
     </div>

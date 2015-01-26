@@ -14,12 +14,12 @@
 }
 // Disabled shared style
 .btn.disabled, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-floating:disabled {
-  background-color: $button-background-disabled;
+  background-color: $button-bg-color-disabled;
   box-shadow: none;
   color: $button-color-disabled;
 
   &:hover {
-    background-color: $button-background-disabled;
+    background-color: $button-bg-color-disabled;
     color: $button-color-disabled;
   }
 }
@@ -51,6 +51,7 @@
 // Floating button
 .btn-floating {
   display: inline-block;
+  color: $button-color-raised;
   position: relative;
   z-index: 1;
   width: $button-floating-size;

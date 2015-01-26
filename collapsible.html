@@ -3,16 +3,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
     <title>Collapsible - Materialize</title>
-    <!-- Favicons -->
+    <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <!--  Android 5 Chrome Color -->
+    <!--  Android 5 Chrome Color-->
     <meta name="theme-color" content="#EE6E73">
-    <!-- CSS  -->
+    <!-- CSS-->
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
@@ -25,7 +26,7 @@
         autocollect: true
       };
     </script>
-    <script src="//cdn.transifex.com/live.js"> </script>
+    <script src="//cdn.transifex.com/live.js"></script>
   </head>
   <body>
     <header>
@@ -108,7 +109,7 @@
         <p class="caption">
           Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
         </p>
-        <ul class="collapsible collapsible-accordion">
+        <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
           <li>
             <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
@@ -129,35 +130,34 @@
       <div id="structure" class="section scrollspy">
         <h4>Collapsible HTML Structure</h4>
         <pre><code class="language-markup">
-      &lt;ul class="collapsible">
-        &lt;li>
-          &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
-          &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-        &lt;/li>
-        &lt;li>
-          &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
-          &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-        &lt;/li>
-        &lt;li>
-          &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
-          &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
-        &lt;/li>
-      &lt;/ul>
+  &lt;ul class="collapsible" data-collapsible="accordion">
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+    &lt;li>
+      &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
+      &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
+    &lt;/li>
+  &lt;/ul>
         </code></pre>
       </div>
-
-
 
       <div id="intialization" class="section scrollspy">
         <h4>Initialization</h4>
+        <p>Collapsible elements only need initialization if they are added dynamically. You can also pass in options inside the initialization, however this can be done in the HTML markup as well.</p>
         <pre><code class="language-javascript">
-      $(document).ready(function(){
-        $('.collapsible').collapsible();
-      });
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
         </code></pre>
       </div>
-
-
 
       <div id="options" class="section scrollspy">
         <h4>Options</h4>
@@ -167,7 +167,7 @@
         <div class="row">
           <div class="col s12 m3"><h5 class="light">Accordion</h5></div>
           <div class="col s12 m9">
-            <ul class="collapsible collapsible-accordion">
+            <ul class="collapsible" data-collapsible="accordion">
               <li>
                 <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></div>
@@ -183,11 +183,9 @@
             </ul>
           </div>
           <div class="col s12 m9 offset-m3">
-            <pre><code class="language-javascript">
-        // This behavior is the default, so nothing needs to be done
-        $(document).ready(function(){
-          $('.collapsible').collapsible();
-        });
+            <p>This is default behavior, but you can explicitly set it by setting the <code class="language-markup">data-collapsible</code> attribute in HTML.</p>
+            <pre><code class="language-markup">
+    &lt;ul class="collapsible" data-collapsible="accordion">
             </code></pre>
           </div>
         </div>
@@ -196,7 +194,7 @@
         <div class="row">
           <div class="col s12 m3"><h5 class="light">Expandable</h5></div>
           <div class="col s12 m9">
-            <ul class="collapsible collapsible-expandable">
+            <ul class="collapsible" data-collapsible="expandable">
               <li>
                 <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
@@ -212,10 +210,8 @@
             </ul>
           </div>
           <div class="col s12 m9 offset-m3">
-            <pre><code class="language-javascript">
-        $(document).ready(function(){
-          $('.collapsible').collapsible({ "accordion" : false });
-        });
+            <pre><code class="language-markup">
+  &lt;ul class="collapsible" data-collapsible="expandable">
             </code></pre>
           </div>
         </div>

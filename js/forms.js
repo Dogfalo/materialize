@@ -2,7 +2,7 @@
   $(document).ready(function() {
 
     // Text based inputs
-    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
+    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
@@ -68,8 +68,17 @@
         content = null;
         $('body').append(hiddenDiv);
     }
-    var hiddendiv = $('.hiddendiv');
     var text_area_selector = '.materialize-textarea';
+    $('.hiddendiv').css('width', $(text_area_selector).width());
+
+    $(text_area_selector).each(function () {
+      if ($(this).val().length) {
+        content = $(this).val();
+        content = content.replace(/\n/g, '<br>');
+        hiddenDiv.html(content + '<br>');
+        $(this).css('height', hiddenDiv.height());
+      }
+    });
       $('body').on('keyup keydown',text_area_selector , function () {
         // console.log($(this).val());
         content = $(this).val();

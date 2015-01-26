@@ -8,9 +8,12 @@
 
     <div class="col s12 m9 l10">
 
-      <!--  Tables Section-->
+      <!--  Valign Section-->
       <div id="valign" class="section scrollspy">
-        <h2 class="header">Vertical Centering</h2>
+        <h2 class="header">Alignment</h2>
+        <p class="caption">We have easy to use classes to help you align your content.</p>
+
+        <h5 class="light">Vertical Align</h5>
         <p>You can easily vertically center things by adding the class <code class="language-markup">valign-wrapper</code> to the container holding the items you want to vertically align.</p>
         <div class="valign-demo valign-wrapper">
           <h5 class="valign">This should be vertically aligned</h5>
@@ -21,7 +24,77 @@
 &lt;/div>
         </code></pre><br>
 
-      </div><!--  End Tables Section  -->
+        <h5 class="light">Text Align</h5>
+        <p>These classes are for horizontally aligning content. We have <code class="language-markup">.left-align</code>, <code class="language-markup">.right-align</code> and <code class="language-markup">.center-align</code></p>
+        <div class="talign-demo">
+          <br>
+          <h5 class="left-align">This should be left aligned</h5>
+        </div>
+        <br>
+        <div class="talign-demo">
+          <br>
+          <h5 class="right-align">This should be right aligned</h5>
+        </div>
+        <br>
+        <div class="talign-demo">
+          <br>
+          <h5 class="center-align">This should be center aligned</h5>
+        </div>
+        <pre><code class="language-markup">
+  &lt;div>
+    &lt;h5 class="left-align">This should be left aligned&lt;/h5>
+  &lt;/div>
+  &lt;div>
+    &lt;h5 class="right-align">This should be right aligned&lt;/h5>
+  &lt;/div>
+  &lt;div>
+    &lt;h5 class="center-align">This should be center aligned&lt;/h5>
+  &lt;/div>
+        </code></pre><br>
+
+      </div><!--  End Valign Section  -->
+
+      <!--  Hiding Section-->
+      <div id="hiding" class="section scrollspy">
+        <h2 class="header">Hiding Content</h2>
+        <p>We provide easy to use classes to hide content on specific screen sizes. </p>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Screen Range</th>
+            </tr>
+          </thead>
+            <tbody>
+            <tr>
+              <td><code class="language-markup"><strong>.hide-on-small-only</strong></code></td>
+              <td>Hidden for Mobile Only</td>
+            </tr>
+            <tr>
+              <td><code class="language-markup"><strong>.hide-on-med-only</strong></code></td>
+              <td>Hidden for Tablet Only</td>
+            </tr>
+            <tr>
+              <td><code class="language-markup"><strong>.hide-on-med-and-down</strong></code></td>
+              <td>Hidden for Tablet and Below</td>
+            </tr>
+            <tr>
+              <td><code class="language-markup"><strong>.hide-on-med-and-up</strong></code></td>
+              <td>Hidden for Tablet and Above</td>
+            </tr>
+            <tr>
+              <td><code class="language-markup"><strong>.hide-on-large-only</strong></code></td>
+              <td>Hidden for Desktop Only</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h5 class="light">Usage</h5>
+        <pre><code class="language-markup">
+  &lt;div class="hide-on-small-only">&lt;/div>
+        </code></pre><br>
+
+      </div><!--  End Hiding Section  -->
 
 
     </div>
@@ -29,7 +102,8 @@
     <div class="col hide-on-small-only m3 l2">
       <div style="height: 1px;">
         <ul class="section table-of-contents">
-          <li><a href="#valign">Vertical Centering</a></li>
+          <li><a href="#valign">Alignment</a></li>
+          <li><a href="#hiding">Hiding Content</a></li>
         </ul>
       </div>
     </div>
