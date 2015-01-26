@@ -362,11 +362,6 @@ td, th{
       background-color: $collection-active-bg-color;
       color: $collection-active-color;
     }
-
-    .secondary-content {
-      float: right;
-      color: $secondary-color;
-    }
   }
   a.collection-item{
     display: block;
@@ -421,6 +416,12 @@ td, th{
   }
 
 }
+// Made less specific to allow easier overriding
+.secondary-content {
+  float: right;
+  color: $secondary-color;
+}
+
 
 // Badges
 span.badge {

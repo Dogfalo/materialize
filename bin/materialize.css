@@ -2207,9 +2207,6 @@ td, th {
     .collection .collection-item.active {
       background-color: #26a69a;
       color: #eafaf9; }
-    .collection .collection-item .secondary-content {
-      float: right;
-      color: #26a69a; }
   .collection a.collection-item {
     display: block;
     -webkit-transition: 0.25s;
@@ -2244,6 +2241,10 @@ td, th {
         color: #FFF; }
       .collection.pagination li:hover {
         background-color: #e1f5fe; }
+
+.secondary-content {
+  float: right;
+  color: #26a69a; }
 
 span.badge {
   min-width: 3rem;
@@ -5599,6 +5600,7 @@ ul.tabs li.tab {
 
 .btn-floating {
   display: inline-block;
+  color: #FFF;
   position: relative;
   z-index: 1;
   width: 37px;
@@ -5759,7 +5761,8 @@ ul.tabs li.tab {
   width: 2.5em;
   height: 2.5em;
   line-height: 2.5em;
-  border-radius: 50%; }
+  border-radius: 50%;
+  -webkit-mask-image: none; }
 
 .waves-block {
   display: block; }

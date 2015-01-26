@@ -51,6 +51,7 @@
 // Floating button
 .btn-floating {
   display: inline-block;
+  color: $button-color-raised;
   position: relative;
   z-index: 1;
   width: $button-floating-size;
