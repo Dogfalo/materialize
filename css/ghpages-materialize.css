@@ -8357,6 +8357,10 @@ body.parallax-demo footer {
   height: 400px;
   background-color: #ddd; }
 
+.talign-demo {
+  height: 100px;
+  background-color: #ddd; }
+
 #tx-live-lang-container {
   background-color: #fcfcfc;
   z-index: 999; }
