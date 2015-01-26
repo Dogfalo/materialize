@@ -76,6 +76,10 @@
                 menu_id.removeAttr('style');
               }
             }
+            if ($('#sidenav-overlay').css('opacity') != 0 && menuOut) {
+              console.log("once");
+              $('#sidenav-overlay').trigger('click');
+            }
           });
         }
 
@@ -99,6 +103,8 @@
 
           // enable_scroll();
         }
+
+
 
         // Touch Event
         var panning = false;
