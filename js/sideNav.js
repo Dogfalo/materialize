@@ -108,9 +108,9 @@
           prevent_default: false
         }).bind('tap', function(e) {
           // capture overlay click on drag target
-          if (menuOut && !panning) {
+          // if (menuOut && !panning) {
             $('#sidenav-overlay').trigger('click');
-          }
+          // }
         }).bind('pan', function(e) {
 
           if (e.gesture.pointerType === "touch") {
