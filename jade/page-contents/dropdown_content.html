@@ -11,7 +11,7 @@
         <h4>Introduction</h4>
         <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. </p>
         <p>You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. </p>
-        <a class='dropdown-button btn' data-constrainwidth="false" href='#' data-activates='dropdown1'>Drop Me!</a>
+        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="#!">one</a></li>
           <li><a href="#!">two</a></li>
@@ -43,7 +43,8 @@
       outDuration: 225,
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false // Activate on click
-      alignment: 'left' // Aligns dropdown to left or right edge (works with constrain_width)
+      alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
+      gutter: 0, // Spacing from edge
     }
   );
         </code></pre>
