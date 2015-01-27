@@ -7,7 +7,7 @@
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: true,
       alignment: 'left',
-      gutter: 0, // Spacing from edge
+      gutter: 0 // Spacing from edge
     }
 
     options = $.extend(defaults, options);
