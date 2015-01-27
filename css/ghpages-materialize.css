@@ -5777,11 +5777,9 @@ a.waves-effect .waves-ripple {
   left: 0;
   right: 0;
   background-color: #eee;
-  padding: 24px;
-  max-height: 70%;
+  height: 70%;
   width: 55%;
   margin: auto;
-  overflow-y: auto;
   z-index: 1000;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -5798,6 +5796,22 @@ a.waves-effect .waves-ripple {
       max-width: 80%; } }
   .modal h1, .modal h2, .modal h3, .modal h4 {
     margin-top: 0; }
+  .modal .modal-content {
+    position: fixed;
+    padding: 24px;
+    max-height: 100%;
+    width: 100%;
+    overflow-y: auto; }
+  .modal .modal-action {
+    padding: 0 6px;
+    position: fixed;
+    bottom: 0;
+    height: 48px;
+    width: 100%;
+    border-top: 1px solid #ddd; }
+    .modal .modal-action .btn, .modal .modal-action .btn-large, .modal .modal-action .btn-flat {
+      float: right;
+      margin: 6px 0; }
 
 #lean-overlay {
   position: fixed;
@@ -5815,9 +5829,6 @@ a.waves-effect .waves-ripple {
 .action-bar {
   text-align: right;
   margin-top: 10px; }
-
-.modal-action {
-  margin-bottom: 0px; }
 
 .collapsible {
   border-top: 1px solid #ddd;
