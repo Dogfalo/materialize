@@ -5631,6 +5631,28 @@ ul.tabs li.tab {
     .btn-floating.btn-large i {
       line-height: 55.5px; }
 
+.fixed-action-btn {
+  position: fixed;
+  right: 23px;
+  bottom: 23px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 1000; }
+  .fixed-action-btn ul {
+    left: 0;
+    right: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 64px; }
+    .fixed-action-btn ul li {
+      margin-bottom: 15px; }
+    .fixed-action-btn ul a.btn-floating {
+      -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+      filter: "alpha(opacity=(${iefactor}))";
+      -moz-opacity: 0;
+      -khtml-opacity: 0;
+      opacity: 0; }
+
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
