@@ -52,7 +52,7 @@
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
-        var menuWidth = 240;
+        var menuWidth = - (parseInt($(menu_id).css(options.edge)) - 10);
 
         // Add alignment
         if (options.edge != 'left') {
