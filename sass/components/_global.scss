@@ -213,7 +213,7 @@ img.responsive-img {
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
-  background-color: color("materialize-red", "lighten-2");
+  background-color: $primary-color
 
   .footer-copyright {
     overflow: hidden;
