@@ -5312,7 +5312,6 @@ small {
 
 .card {
   position: relative;
-  overflow: hidden;
   margin: 0.5rem 0 1rem 0;
   background-color: #fff;
   -webkit-box-sizing: border-box;
@@ -5354,8 +5353,7 @@ small {
       left: 0;
       right: 0; }
   .card .card-image {
-    position: relative;
-    overflow: hidden; }
+    position: relative; }
     .card .card-image img {
       -webkit-border-radius: 2px 2px 0 0;
       -moz-border-radius: 2px 2px 0 0;
