@@ -45,7 +45,8 @@ $collapsible-border-color: #ddd !default;
 $dropdown-color: $secondary-color;
 
 /*** Fonts ***/
-$roboto-font-path: "../font/roboto/";
+$roboto-font-path: "../font/roboto/" !default;
+$icons-font-path: "../font/material-design-icons/" !default;
 
 /*** Forms ***/
 // Text Inputs + Textarea
@@ -131,6 +132,3 @@ $collection-hover-bg-color: rgba(0,0,0,.08) !default;
 
 /* Progress Bar */
 $progress-bar-color: $secondary-color;
-
-/* font */
-$icons-font-path: "../font/material-design-icons/" !default;
