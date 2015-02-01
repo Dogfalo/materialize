@@ -49,6 +49,11 @@ ul {
   }
 }
 
+// classic clearfix
+.clearfix {
+  clear: both;
+}
+
 
 // Z-levels
 
@@ -213,7 +218,7 @@ img.responsive-img {
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
-  background-color: color("materialize-red", "lighten-2");
+  background-color: $footer-bg-color;
 
   .footer-copyright {
     overflow: hidden;

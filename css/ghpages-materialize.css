@@ -1612,6 +1612,7 @@
 /*** Cards ***/
 /*** Collapsible ***/
 /*** Dropdown ***/
+/*** Fonts ***/
 /*** Forms ***/
 /*** Global ***/
 /*** Navbar ***/
@@ -1976,6 +1977,9 @@ ul {
   padding: 0; }
   ul li {
     list-style-type: none; }
+
+.clearfix {
+  clear: both; }
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, ul.side-nav.full, ul.side-nav.fixed {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -5030,37 +5034,39 @@ nav {
       padding: 0px 15px; }
     nav ul.left {
       float: left; }
-  nav .input-field input {
-    height: 100%;
-    font-size: 1.2rem;
-    border: none;
-    padding-left: 2rem;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
-    nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=url]:valid, nav .input-field input[type=date]:valid {
+  nav .input-field {
+    margin: 0; }
+    nav .input-field input {
+      height: 100%;
+      font-size: 1.2rem;
       border: none;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none; }
-  nav .input-field label {
-    top: 0;
-    left: 0; }
-    nav .input-field label i {
-      color: rgba(255, 255, 255, 0.7);
-      -webkit-transition: color 0.3s;
-      -moz-transition: color 0.3s;
-      -o-transition: color 0.3s;
-      -ms-transition: color 0.3s;
-      transition: color 0.3s; }
-    nav .input-field label.active i {
-      color: #fff; }
-    nav .input-field label.active {
-      -webkit-transform: translateY(0);
-      -moz-transform: translateY(0);
-      -ms-transform: translateY(0);
-      -o-transform: translateY(0);
-      transform: translateY(0); }
+      padding-left: 2rem;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=url]:valid, nav .input-field input[type=date]:valid {
+        border: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none; }
+    nav .input-field label {
+      top: 0;
+      left: 0; }
+      nav .input-field label i {
+        color: rgba(255, 255, 255, 0.7);
+        -webkit-transition: color 0.3s;
+        -moz-transition: color 0.3s;
+        -o-transition: color 0.3s;
+        -ms-transition: color 0.3s;
+        transition: color 0.3s; }
+      nav .input-field label.active i {
+        color: #fff; }
+      nav .input-field label.active {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0); }
 
 .navbar-fixed {
   position: relative;
@@ -5083,27 +5089,27 @@ nav {
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Thin.ttf);
+  src: url("../font/roboto/Roboto-Thin.ttf");
   font-weight: 200; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Light.ttf);
+  src: url("../font/roboto/Roboto-Light.ttf");
   font-weight: 300; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Regular.ttf);
+  src: url("../font/roboto/Roboto-Regular.ttf");
   font-weight: 400; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Medium.ttf);
+  src: url("../font/roboto/Roboto-Medium.ttf");
   font-weight: 500; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Bold.ttf);
+  src: url("../font/roboto/Roboto-Bold.ttf");
   font-weight: 700; }
 
 a {
@@ -5312,7 +5318,6 @@ small {
 
 .card {
   position: relative;
-  overflow: hidden;
   margin: 0.5rem 0 1rem 0;
   background-color: #fff;
   -webkit-box-sizing: border-box;
@@ -5354,8 +5359,7 @@ small {
       left: 0;
       right: 0; }
   .card .card-image {
-    position: relative;
-    overflow: hidden; }
+    position: relative; }
     .card .card-image img {
       -webkit-border-radius: 2px 2px 0 0;
       -moz-border-radius: 2px 2px 0 0;
@@ -5630,6 +5634,28 @@ ul.tabs li.tab {
     height: 55.5px; }
     .btn-floating.btn-large i {
       line-height: 55.5px; }
+
+.fixed-action-btn {
+  position: fixed;
+  right: 23px;
+  bottom: 23px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 1000; }
+  .fixed-action-btn ul {
+    left: 0;
+    right: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 64px; }
+    .fixed-action-btn ul li {
+      margin-bottom: 15px; }
+    .fixed-action-btn ul a.btn-floating {
+      -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+      filter: "alpha(opacity=(${iefactor}))";
+      -moz-opacity: 0;
+      -khtml-opacity: 0;
+      opacity: 0; }
 
 .btn-flat {
   box-shadow: none;
