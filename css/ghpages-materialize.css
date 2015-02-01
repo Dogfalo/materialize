@@ -2493,7 +2493,7 @@ span.badge {
   font-weight: normal;
   font-style: normal; }
 
-[class^="mdi-"], .select-wrapper span.select-dropdown:after, [class*=" mdi-"] {
+[class^="mdi-"], [class*=" mdi-"] {
   font-family: "Material-Design-Icons";
   speak: none;
   font-style: normal;
@@ -4484,7 +4484,7 @@ span.badge {
 .mdi-navigation-arrow-back:before {
   content: "\e893"; }
 
-.mdi-navigation-arrow-drop-down:before, .select-wrapper span.select-dropdown:after {
+.mdi-navigation-arrow-drop-down:before {
   content: "\e894"; }
 
 .mdi-navigation-arrow-drop-down-circle:before {
@@ -5736,7 +5736,7 @@ ul.tabs li.tab {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.87);
     line-height: 1.5rem; }
-    .dropdown-content li:hover {
+    .dropdown-content li:hover, .dropdown-content li.active {
       background-color: rgba(0, 0, 0, 0.06); }
     .dropdown-content li > a, .dropdown-content li > span {
       display: block;
@@ -6431,25 +6431,27 @@ input[type=checkbox]:first-child ~ .lever:active:after, input[type=checkbox][dis
 /***************
   Select Field
 ***************/
-.select-wrapper span.select-dropdown {
-  position: relative;
-  cursor: pointer;
-  color: #444;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #9e9e9e;
-  outline: none;
-  height: 3rem;
-  line-height: 3rem;
-  width: 100%;
-  font-size: 1rem;
-  margin: 0 0 15px 0;
-  padding: 0;
-  display: block;
+.select-wrapper {
   position: relative; }
-  .select-wrapper span.select-dropdown:after {
+  .select-wrapper input.select-dropdown {
+    position: relative;
+    cursor: pointer;
+    color: #444;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+    height: 3rem;
+    line-height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+    display: block; }
+  .select-wrapper .mdi-navigation-arrow-drop-down {
     position: absolute;
     right: 0;
+    top: 0;
     font-size: 23px; }
 
 select {
@@ -6461,7 +6463,7 @@ select.browser-default {
 select:disabled {
   color: rgba(0, 0, 0, 0.3); }
 
-.select-wrapper span.select-dropdown.disabled {
+.select-wrapper input.select-dropdown.disabled {
   color: rgba(0, 0, 0, 0.3); }
 
 .select-dropdown li.disabled {
