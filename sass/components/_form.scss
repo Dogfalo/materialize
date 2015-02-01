@@ -426,30 +426,31 @@ input[type=checkbox][disabled]:first-child ~ .lever:active:after {
   Select Field
 ***************/
 
-.select-wrapper span.select-dropdown {
-  position: relative;
-  cursor: pointer;
-  color: #444;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid $input-border-color;
-  outline: none;
-  height: 3rem;
-  line-height: 3rem;
-  width: 100%;
-  font-size: 1rem;
-  margin: 0 0 15px 0;
-  padding: 0;
-  display: block;
+.select-wrapper {
   position: relative;
 
-  &:after {
-    position: absolute;
-    right: 0;
-    font-size: 23px;
-    @extend [class^="mdi-"];
-    @extend .mdi-navigation-arrow-drop-down:before;
+  input.select-dropdown {
+    position: relative;
+    cursor: pointer;
+    color: #444;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $input-border-color;
+    outline: none;
+    height: 3rem;
+    line-height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+    display: block;
   }
+  .mdi-navigation-arrow-drop-down {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 23px;
+    }
 }
 
 select { display: none; }
@@ -460,7 +461,7 @@ select.browser-default { display: block; }
 select:disabled {
   color: rgba(0,0,0,.3);
 }
-.select-wrapper span.select-dropdown.disabled {
+.select-wrapper input.select-dropdown.disabled {
   color: rgba(0,0,0,.3);
 }
 .select-dropdown li.disabled {

@@ -18,7 +18,7 @@
     color: $off-black;
     line-height: 1.5rem;
 
-    &:hover {
+    &:hover, &.active {
       background-color: rgba(0,0,0, .06);
     }
 

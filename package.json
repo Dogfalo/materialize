@@ -23,6 +23,7 @@
   },
   "engine": "node >= 0.10",
   "devDependencies": {
+    "grunt": "^0.4.5",
     "grunt-banner": "^0.3.0"
   }
 }
