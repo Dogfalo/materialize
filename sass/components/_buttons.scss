@@ -83,6 +83,33 @@
       line-height: $button-floating-size * 1.5;
     }
   }
+
+}
+
+// Fixed Action Button
+&.fixed-action-btn {
+  position: fixed;
+  right: 23px;
+  bottom: 23px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 1000;
+
+  ul {
+    left: 0;
+    right: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 64px;
+
+    li {
+      margin-bottom: 15px;
+    }
+
+    a.btn-floating {
+      @include opacity(0);
+    }
+  }
 }
 
 // Flat button

@@ -40,6 +40,8 @@
       $('body').append(activates);
     }
 
+    var dropdownRealHeight = activates.height();
+
     /*
       Helper function to position and resize dropdown.
       Used in hover and click handler.
@@ -48,7 +50,6 @@
       // Check html data attributes
       updateOptions();
 
-      var dropdownRealHeight = activates.height();
       if (options.constrain_width == true) {
         activates.css('width', origin.outerWidth());
       }
