@@ -5344,20 +5344,35 @@ small {
     text-transform: uppercase; }
     .card a:hover {
       color: #ffd8a6; }
-  .card.small {
-    height: 300px;
+  .card.small, .card.medium, .card.large {
     position: relative; }
-    .card.small .card-image {
-      overflow: hidden;
-      height: 150px; }
-    .card.small .card-content {
-      overflow: hidden;
-      height: 150px; }
-    .card.small .card-action {
+    .card.small .card-image, .card.medium .card-image, .card.large .card-image {
+      overflow: hidden; }
+    .card.small .card-content, .card.medium .card-content, .card.large .card-content {
+      overflow: hidden; }
+    .card.small .card-action, .card.medium .card-action, .card.large .card-action {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0; }
+  .card.small {
+    height: 300px; }
+    .card.small .card-image {
+      height: 150px; }
+    .card.small .card-content {
+      height: 150px; }
+  .card.medium {
+    height: 400px; }
+    .card.medium .card-image {
+      height: 250px; }
+    .card.medium .card-content {
+      height: 150px; }
+  .card.large {
+    height: 500px; }
+    .card.large .card-image {
+      height: 330px; }
+    .card.large .card-content {
+      height: 170px; }
   .card .card-image {
     position: relative; }
     .card .card-image img {
