@@ -1,42 +1,40 @@
-$sidenav-width: 240px;
-@media #{$medium-and-down} {
-  ul.side-nav {
-    position: fixed;
-    width: $sidenav-width;
-    left: -1 * ($sidenav-width + 10);
-    top: 0;
-    height: 100%;
-    height: calc(100% + 60px);
-    padding-bottom: 60px;
-    background-color: #FFF;
-    z-index: 999;
+ul.side-nav {
+  position: fixed;
+  width: 240px;
+  left: -105%;
+  top: 0;
+  margin: 0;
+  height: 100%;
+  height: calc(100% + 60px);
+  padding-bottom: 60px;
+  background-color: #FFF;
+  z-index: 999;
 
-    will-change: left;
+  @extend .z-depth-1;
+  will-change: left;
 
-    // Right Align
-    &.right-aligned {
-      will-change: right;
-      right: -1 * ($sidenav-width + 10);
-      left: auto;
-    }
-
-    .collapsible{
-      margin: 0;
-    }
-
-
-    li {
-      float: none;
-      padding: 0 15px;
-      width: 240px;
-      &:hover, &.active { background-color: #ddd; }
-    }
-    a {
-      color: #444;
-    }
+  // Right Align
+  &.right-aligned {
+    will-change: right;
+    right: -105%;
+    left: auto;
   }
 
+  .collapsible{
+    margin: 0;
+  }
+
+
+  li {
+    float: none;
+    padding: 0 15px;
+    &:hover, &.active { background-color: #ddd; }
+  }
+  a {
+    color: #444;
+  }
 }
+
 
 // Touch interaction
 .drag-target {
@@ -49,43 +47,7 @@ $sidenav-width: 240px;
 
 
 // Hidden side-nav for all sizes
-ul.side-nav.full,
 ul.side-nav.fixed {
-  position: fixed;
-  width: $sidenav-width;
-  left: -1 * ($sidenav-width + 10);
-  top: 0;
-  margin: 0;
-  padding-bottom: 60px;
-  height: 100%;
-  height: calc(100% + 60px);
-  background-color: #FFF;
-  z-index: 999;
-  @extend .z-depth-1;
-
-  will-change: left;
-
-  // Right Align
-  &.right-aligned {
-    will-change: right;
-    right: -1 * ($sidenav-width + 10);
-    left: auto;
-  }
-
-  .collapsible{
-    margin: 0;
-  }
-
-  li {
-    float: none;
-    line-height: 64px;
-    padding: 0 15px;
-    width: $sidenav-width;
-
-    @include transition(background-color 0s);
-
-    &:hover, &.active { background-color: #ddd; }
-  }
   a {
     display: block;
     padding: 0 15px;
@@ -101,7 +63,6 @@ ul.side-nav.fixed {
 
   // Right Align
   &.right-aligned {
-    will-change: right;
     right: 0;
     left: auto;
   }
@@ -110,10 +71,10 @@ ul.side-nav.fixed {
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
   ul.side-nav.fixed {
-    left: -1 * ($sidenav-width + 10);
+    left: -105%;
 
     &.right-aligned {
-      right: -1 * ($sidenav-width + 10);
+      right: 105%;
       left: auto;
     }
   }

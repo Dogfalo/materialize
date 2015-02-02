@@ -44,6 +44,7 @@
   var methods = {
     init : function(options) {
       var defaults = {
+        menuWidth: 240,
         activationWidth: 70,
         edge: 'left'
       }
@@ -52,7 +53,14 @@
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
-        var menuWidth = 240;
+
+        // Set to width
+        if (options.menuWidth != 240) {
+          menu_id.css('width', options.menuWidth);
+          if (!menu_id.hasClass('fixed')) {
+            menu_id.css('left', -1 * (options.menuWidth + 10));
+          }
+        }
 
         // Add alignment
         if (options.edge != 'left') {
@@ -74,6 +82,7 @@
             if ($(window).width() > 1200) {
               if (menu_id.attr('style')) {
                 menu_id.removeAttr('style');
+                menu_id.css('width', options.menuWidth);
               }
             }
             if ($('#sidenav-overlay').css('opacity') != 0 && menuOut) {
@@ -92,12 +101,12 @@
           if (options.edge === 'left') {
             // Reset phantom div
             $('.drag-target').css({width: '', right: '', left: '0'});
-            menu_id.velocity({left: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
+            menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
           else {
             // Reset phantom div
             $('.drag-target').css({width: '', right: '0', left: ''});
-            menu_id.velocity({right: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
+            menu_id.velocity({right: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
 
           // enable_scroll();
@@ -133,41 +142,41 @@
 
             // Keep within boundaries
             if (options.edge === 'left') {
-              if (x > menuWidth) { x = menuWidth; }
+              if (x > options.menuWidth) { x = options.menuWidth; }
               else if (x < 0) { x = 0; }
             }
             else {
-              if (x < $(window).width() - menuWidth) { x = $(window).width() - menuWidth; }
+              if (x < $(window).width() - options.menuWidth) { x = $(window).width() - options.menuWidth; }
             }
 
             if (options.edge === 'left') {
               // Left Direction
-              if (x < (menuWidth / 2)) { menuOut = false; }
+              if (x < (options.menuWidth / 2)) { menuOut = false; }
               // Right Direction
-              else if (x >= (menuWidth / 2)) { menuOut = true; }
+              else if (x >= (options.menuWidth / 2)) { menuOut = true; }
             }
             else {
               // Left Direction
-              if (x < ($(window).width() - menuWidth / 2)) { menuOut = true; }
+              if (x < ($(window).width() - options.menuWidth / 2)) { menuOut = true; }
               // Right Direction
-              else if (x >= ($(window).width() - menuWidth / 2)) { menuOut = false; }
+              else if (x >= ($(window).width() - options.menuWidth / 2)) { menuOut = false; }
             }
 
 
             if (options.edge === 'left') {
-              menu_id.css('left', (x - menuWidth));
+              menu_id.css('left', (x - options.menuWidth));
             }
             else {
-              menu_id.css('right', -1 *(x - menuWidth / 2));
+              menu_id.css('right', -1 *(x - options.menuWidth / 2));
             }
 
             // Percentage overlay
             if (options.edge === 'left') {
-              var overlayPerc = x / menuWidth;
+              var overlayPerc = x / options.menuWidth;
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
             else {
-              var overlayPerc = Math.abs((x - $(window).width()) / menuWidth);
+              var overlayPerc = Math.abs((x - $(window).width()) / options.menuWidth);
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }

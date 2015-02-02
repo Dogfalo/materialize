@@ -106,15 +106,14 @@
 
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
-        <p>This is a slide out menu. If you want a sidebar that will work on all widths, just add the class <code class="language-markup">full</code> to your sidebar list. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens.</p>
+        <p>This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
       </div>
 
 
       <div id="structure" class="section scrollspy">
-        <h4>Full HTML Structure</h4>
-        <p>Add the class <code class="language-markup">full</code> to have the sideNav openable on all screen sizes like the example above.</p>
+        <h4>HTML Structure</h4>
         <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav full">
+  &lt;ul id="slide-out" class="side-nav">
     &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;li class="no-padding">
@@ -134,6 +133,17 @@
     &lt;/li>
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+        </code></pre>
+
+        <h4>Fullscreen HTML Structure</h4>
+        <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.button-collapse</code>. </p>
+
+        <pre><code class="language-markup col s12">
+  &lt;ul id="slide-out" class="side-nav">
+    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-activates="slide-out" class="button-collapse show-on-large">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
         </code></pre>
 
         <h4>Fixed HTML Structure</h4>
