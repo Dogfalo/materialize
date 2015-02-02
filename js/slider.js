@@ -5,7 +5,7 @@
       indicators: true,
       height: 400,
       transition: 500,
-      interval: 6000
+      interval: 60000
     }
     options = $.extend(defaults, options);
 
@@ -82,12 +82,18 @@
       });
 
       // Set initial dimensions of images
+      // $slides.find('img').each(function () {
+      //   $(this).load(function () {
+      //     if ($(this).width() < $(this).parent().width()) {
+      //       $(this).css({width: '100%', height: 'auto'});
+      //     }
+      //   });
+      // });
+
+      // Move img src into background-image
       $slides.find('img').each(function () {
-        $(this).load(function () {
-          if ($(this).width() < $(this).parent().width()) {
-            $(this).css({width: '100%', height: 'auto'});
-          }
-        });
+        $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+        $(this).attr('src', '');
       });
 
       // dynamically add indicators
@@ -250,8 +256,9 @@
         }
       });
 
-
     });
+
+
 
   };
 }( jQuery ));

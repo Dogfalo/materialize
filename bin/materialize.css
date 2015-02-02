@@ -7175,7 +7175,9 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
       height: inherit;
       overflow: hidden; }
       .slider ul.slides li img {
-        height: 100%; }
+        height: 100%;
+        width: 100%;
+        background-size: cover; }
       .slider ul.slides li .caption {
         color: #fff;
         position: absolute;
