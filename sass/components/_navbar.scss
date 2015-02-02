@@ -13,9 +13,13 @@ nav {
 
   a { color: #fff; }
 
+  @media #{$large-and-up} {
+    a.button-collapse { display: none; }
+  }
+
+
   a.button-collapse {
     float: left;
-    @extend .hide-on-large-only;
     position: relative;
     z-index: 1;
     height: $navbar-height-mobile;

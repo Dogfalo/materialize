@@ -2097,7 +2097,7 @@ img.responsive-img {
     display: none !important; } }
 
 @media only screen and (min-width : 993px) {
-  .hide-on-large-only, nav a.button-collapse {
+  .hide-on-large-only {
     display: none !important; } }
 
 @media only screen and (min-width : 993px) {
@@ -5018,6 +5018,10 @@ nav {
     height: 100%; }
   nav a {
     color: #fff; }
+  @media only screen and (min-width : 993px) {
+    nav a.button-collapse {
+      display: none; }
+ }
   nav a.button-collapse {
     float: left;
     position: relative;
