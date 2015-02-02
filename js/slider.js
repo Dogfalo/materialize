@@ -35,6 +35,7 @@
 
       // This function will transition the slide to any index of the next slide
       function moveToSlide(index) {
+        console.log("Move to slide");
         if (index >= $slides.length) index = 0;
         else if (index < 0) index = $slides.length -1;
 
@@ -143,8 +144,7 @@
       }
 
       // Adjust height to current slide
-      $active.find('img').load(function() {
-        // Handler for .load() called.
+      $active.find('img').each(function() {
         $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
       });
 
