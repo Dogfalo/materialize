@@ -5850,9 +5850,8 @@ a.waves-effect .waves-ripple {
     padding: 24px; }
   .modal .modal-footer {
     background-color: #eee;
-    padding: 0 6px;
-    margin: 8px 0;
-    height: 48px;
+    padding: 4px 6px;
+    height: 56px;
     width: 100%; }
     .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
       float: right;
@@ -5877,9 +5876,11 @@ a.waves-effect .waves-ripple {
   .modal.modal-fixed-footer .modal-content {
     position: fixed;
     max-height: 100%;
+    padding-bottom: 64px;
     width: 100%;
     overflow-y: auto; }
   .modal.modal-fixed-footer .modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     position: fixed;
     bottom: 0; }
 
