@@ -6090,7 +6090,8 @@ textarea.materialize-textarea {
   /* prevents scroll bar flash */
   padding: 1.6rem 0;
   /* prevents text jump on Enter keypress */
-  resize: none; }
+  resize: none;
+  min-height: 3rem; }
 
 .hiddendiv {
   display: none;
