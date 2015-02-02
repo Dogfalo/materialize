@@ -171,9 +171,6 @@
       $(this).each(function(){
         $select = $(this);
 
-        // FIXED LABEL ACTIVE
-        $select.parents('.select').find('label').addClass('active');
-
         if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
           return; // Continue to next (return false breaks out of entire loop)
         }
@@ -242,7 +239,9 @@
         activateOption = function(collection, newOption) {
           collection.find('li.active').removeClass('active');
           $(newOption).addClass('active');
-          collection.scrollTo(newOption);
+          setTimeout(function(){
+            collection.scrollTo(newOption);
+          }, 1000)
         }
 
         // Allow user to search by typing
