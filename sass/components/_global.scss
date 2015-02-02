@@ -585,3 +585,9 @@ span.badge {
   margin-left: auto;
   margin-right: auto;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -2458,6 +2458,11 @@ span.badge {
   margin-left: auto;
   margin-right: auto; }
 
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 @font-face {
   font-family: "Material-Design-Icons";
   src: url("../font/material-design-icons/Material-Design-Icons.eot?-g7cqhn");
