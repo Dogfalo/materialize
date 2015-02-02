@@ -173,37 +173,60 @@ img.responsive-img {
 }
 
 
-
-// Browser Size Dependent Visibility
+/*********************
+  Media Query Classes
+**********************/
 .hide-on-small-only, .hide-on-small-and-down {
   @media #{$small-and-down} {
     display: none !important;
   }
 }
-
 .hide-on-med-and-down {
   @media #{$medium-and-down} {
     display: none !important;
   }
 }
-
 .hide-on-med-and-up {
   @media #{$medium-and-up} {
     display: none !important;
   }
 }
-
 .hide-on-med-only {
   @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
     display: none !important;
   }
 }
-
 .hide-on-large-only {
   @media #{$large-and-up} {
     display: none !important;
   }
 }
+.show-on-large {
+  @media #{$large-and-up} {
+    display: initial !important;
+  }
+}
+.show-on-medium {
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+    display: initial !important;
+  }
+}
+.show-on-small {
+  @media #{$small-and-down} {
+    display: initial !important;
+  }
+}
+.show-on-medium-and-up {
+  @media #{$medium-and-up} {
+    display: initial !important;
+  }
+}
+.show-on-medium-and-down {
+  @media #{$medium-and-down} {
+    display: initial !important;
+  }
+}
+
 
 // Center text on mobile
 .center-on-small-only {
@@ -212,9 +235,7 @@ img.responsive-img {
   }
 }
 
-
 // Footer
-
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
@@ -543,6 +564,8 @@ span.badge {
       right: -8%;
     }
 }
+
+
 /*******************
   Utility Classes
 *******************/

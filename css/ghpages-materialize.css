@@ -2077,6 +2077,9 @@ img.responsive-img {
 .pinned {
   position: fixed; }
 
+/*********************
+  Media Query Classes
+**********************/
 @media only screen and (max-width : 600px) {
   .hide-on-small-only, .tabs-wrapper, .hide-on-small-and-down {
     display: none !important; } }
@@ -2096,6 +2099,26 @@ img.responsive-img {
 @media only screen and (min-width : 993px) {
   .hide-on-large-only, nav a.button-collapse {
     display: none !important; } }
+
+@media only screen and (min-width : 993px) {
+  .show-on-large {
+    display: initial !important; } }
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .show-on-medium {
+    display: initial !important; } }
+
+@media only screen and (max-width : 600px) {
+  .show-on-small {
+    display: initial !important; } }
+
+@media only screen and (min-width : 601px) {
+  .show-on-medium-and-up {
+    display: initial !important; } }
+
+@media only screen and (max-width : 992px) {
+  .show-on-medium-and-down {
+    display: initial !important; } }
 
 @media only screen and (max-width : 600px) {
   .center-on-small-only {

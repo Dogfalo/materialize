@@ -7,8 +7,35 @@
   <div class="row">
 
     <div class="col s12 m9 l10">
-      <!--    Media Queries Section-->
+
+      <!--  Variables Section  -->
       <div id="variables" class="section scrollspy">
+        <h2 class="header">Variables</h2>
+        <p class="caption">
+        When using Sass, you can change the color scheme of your site extremely quickly. Below is a very small sample of what you can change through sass in <code class="language-scss">_variables.scss</code>.
+        </p>
+        <pre><code class="language-scss">
+  $primary-color: color("materialize-red", "lighten-2") !default;
+  $primary-color-light: false !default;
+  $primary-color-dark: false !default;
+  @if not $primary-color-light {
+    $primary-color-light: lighten($primary-color, 15%);
+  }
+  @if not $primary-color-dark {
+    $primary-color-dark: darken($primary-color, 15%);
+  }
+  $secondary-color: color("teal", "lighten-1") !default;
+  $success-color: color("green", "base") !default;
+  $error-color: color("red", "base") !default;
+
+  $link-color: color("light-blue", "darken-1") !default;
+
+  /*** More variables not shown here.. ***/
+        </code></pre>
+      </div>
+
+      <!--  Media Queries Section  -->
+      <div id="media" class="section scrollspy">
         <h2 class="header">Media Queries</h2>
         <p class="caption">
         We have 3 media queries for the 3 standard screen sizes you can use in your custom Sass files. This also includes media query variables that will define the range.
@@ -23,30 +50,36 @@
 
           <h4>CSS</h4>
           <pre><code class="language-css col s12">
-        // These classes can be added to HTML Elements to affect visibility on certain displays
-        // They apply display:none;
-        .hide-on-small-only
-        .hide-on-small-and-down
-        .hide-on-med-and-down
-        .hide-on-med-and-up
-        .hide-on-med-only
-        .hide-on-large-only
+  /* These classes can be added to HTML Elements
+   * to affect visibility on certain displays.
+   */
+  .hide-on-small-only
+  .hide-on-small-and-down
+  .hide-on-med-and-down
+  .hide-on-med-and-up
+  .hide-on-med-only
+  .hide-on-large-only
+  .show-on-large
+  .show-on-medium
+  .show-on-small
+  .show-on-medium-and-up
+  .show-on-medium-and-down
             </code></pre>
 
           <h4>Sass</h4>
-          <pre><code class="language-css col s12">
-        @media #{$small-and-down} {
-          // styles for small screens and down
-        }
-        @media #{$medium-and-up} {
-          // styles for medium screens and larger
-        }
-        @media #{$medium-and-down} {
-          // styles for medium screens and down
-        }
-        @media #{$large-and-up} {
-          // styles for large screens and up
-        }
+          <pre><code class="language-scss col s12">
+  @media #{$small-and-down} {
+    // styles for small screens and down
+  }
+  @media #{$medium-and-up} {
+    // styles for medium screens and larger
+  }
+  @media #{$medium-and-down} {
+    // styles for medium screens and down
+  }
+  @media #{$large-and-up} {
+    // styles for large screens and up
+  }
             </code></pre>
       </div>
 
@@ -60,57 +93,57 @@
 
         For Example: Using this Sass mixin
         <pre><code class="language-scss">
-      @include transition(.3s);
+  @include transition(.3s);
         </code></pre>
         Will Output This
         <pre><code class="language-css">
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -o-transition: 0.3s;
-    -ms-transition: 0.3s;
-    transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
         </code></pre>
         Here is the full list of mixins
         <pre><code class="language-css">
-    animation($args)
-    animation-delay($delay)
-    animation-direction($direction)
-    animation-duration($duration)
-    animation-fill-mode($mode)
-    animation-iteration-count($count)
-    animation-name($name)
-    animation-play-state($state)
-    animation-timing-function($function)
-    background-size($args)
-    border-radius($args)
-    box-shadow($args)
-        inner-shadow($args)
-    box-sizing($args)
-        border-box()
-        content-box()
-    columns($args)
-        column-count($count)
-        column-gap($gap)
-        column-rule($args)
-        column-width($width)
-    gradient($default,$start,$stop)
-        linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
-        linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
-    opacity($factor)
-    transform($args)
-        transform-origin($args)
-        transform-style($style)
-        rotate($deg)
-        scale($factor)
-        translate($x,$y)
-        translate3d($x,$y,$z)
-        translateHardware($x,$y)
-    text-shadow($args)
-    transition($args)
-        transition-delay($delay)
-        transition-duration($duration)
-        transition-property($property)
-        transition-timing-function($function)
+  animation($args)
+  animation-delay($delay)
+  animation-direction($direction)
+  animation-duration($duration)
+  animation-fill-mode($mode)
+  animation-iteration-count($count)
+  animation-name($name)
+  animation-play-state($state)
+  animation-timing-function($function)
+  background-size($args)
+  border-radius($args)
+  box-shadow($args)
+      inner-shadow($args)
+  box-sizing($args)
+      border-box()
+      content-box()
+  columns($args)
+      column-count($count)
+      column-gap($gap)
+      column-rule($args)
+      column-width($width)
+  gradient($default,$start,$stop)
+      linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+      linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
+  opacity($factor)
+  transform($args)
+      transform-origin($args)
+      transform-style($style)
+      rotate($deg)
+      scale($factor)
+      translate($x,$y)
+      translate3d($x,$y,$z)
+      translateHardware($x,$y)
+  text-shadow($args)
+  transition($args)
+      transition-delay($delay)
+      transition-duration($duration)
+      transition-property($property)
+      transition-timing-function($function)
         </code></pre>
       </div>
     </div>
@@ -118,6 +151,7 @@
       <div style="height: 1px;">
         <ul class="section table-of-contents">
           <li><a href="#variables">Variables</a></li>
+          <li><a href="#media">Media Queries</a></li>
           <li><a href="#mixins">Mixins</a></li>
         </ul>
       </div>
