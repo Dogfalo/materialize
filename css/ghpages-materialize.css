@@ -5823,9 +5823,11 @@ a.waves-effect .waves-ripple {
   left: 0;
   right: 0;
   background-color: #eee;
-  height: 70%;
+  padding: 0;
+  max-height: 70%;
   width: 55%;
   margin: auto;
+  overflow-y: auto;
   z-index: 1000;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -5843,19 +5845,14 @@ a.waves-effect .waves-ripple {
   .modal h1, .modal h2, .modal h3, .modal h4 {
     margin-top: 0; }
   .modal .modal-content {
-    position: fixed;
-    padding: 24px;
-    max-height: 100%;
-    width: 100%;
-    overflow-y: auto; }
-  .modal .modal-action {
+    padding: 24px; }
+  .modal .modal-footer {
+    background-color: #eee;
     padding: 0 6px;
-    position: fixed;
-    bottom: 0;
+    margin: 8px 0;
     height: 48px;
-    width: 100%;
-    border-top: 1px solid #ddd; }
-    .modal .modal-action .btn, .modal .modal-action .btn-large, .modal .modal-action .btn-flat {
+    width: 100%; }
+    .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
       float: right;
       margin: 6px 0; }
 
@@ -5872,9 +5869,17 @@ a.waves-effect .waves-ripple {
   display: none;
   will-change: opacity; }
 
-.action-bar {
-  text-align: right;
-  margin-top: 10px; }
+.modal.modal-fixed-footer {
+  padding: 0;
+  height: 70%; }
+  .modal.modal-fixed-footer .modal-content {
+    position: fixed;
+    max-height: 100%;
+    width: 100%;
+    overflow-y: auto; }
+  .modal.modal-fixed-footer .modal-footer {
+    position: fixed;
+    bottom: 0; }
 
 .collapsible {
   border-top: 1px solid #ddd;

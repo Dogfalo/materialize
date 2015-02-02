@@ -6,10 +6,11 @@
   left: 0;
   right: 0;
   background-color: #eee;
-  height: 70%;
+  padding: 0;
+  max-height: 70%;
   width: 55%;
   margin: auto;
-
+  overflow-y: auto;
   z-index: 1000;
 
   @include border-radius(2px);
@@ -25,25 +26,20 @@
   }
 
   .modal-content {
-    position: fixed;
     padding: 24px;
-    max-height: 100%;
-    width: 100%;
-    overflow-y: auto;
   }
 
-  .modal-action {
+  .modal-footer {
+    background-color: #eee;
     padding: 0 6px;
-    position: fixed;
-    bottom: 0;
+    margin: 8px 0;
     height: 48px;
     width: 100%;
-    border-top: 1px solid #ddd;
 
-     .btn, .btn-flat {
+    .btn, .btn-flat {
       float: right;
       margin: 6px 0;
-     }
+    }
   }
 }
 #lean-overlay {
@@ -61,7 +57,19 @@
     will-change: opacity;
 }
 
-.action-bar {
-  text-align: right;
-    margin-top: 10px;
+.modal.modal-fixed-footer {
+  padding: 0;
+  height: 70%;
+
+  .modal-content {
+    position: fixed;
+    max-height: 100%;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    position: fixed;
+    bottom: 0;
+  }
 }
