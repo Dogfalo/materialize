@@ -66,13 +66,7 @@
         </code></pre>
       </div>
 
-      <div id="alignment" class="section scrollspy">
-        <h4>Sidebar Alignment</h4>
-        <p>Add the option <code class="language-markup">right</code> to your initialization.</p>
-        <pre><code class="language-javascript col s12">
-  $(".button-collapse").sideNav({edge: 'right'});
-        </code></pre>
-      </div>
+
 
       <div id="initialization" class="section scrollspy">
         <h4>jQuery Plugin Initialization</h4>
@@ -83,6 +77,19 @@
   $('.collapsible').collapsible();
         </code></pre>
       </div>
+
+
+      <div id="options" class="scrollspy section">
+        <h4>Options</h4>
+        <p>You can customize the sideNav by setting your own width and the alignment of the menu. </p>
+        <pre><code class="language-javascript">
+  $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 240
+      edge: 'right' // Choose the horizontal origin
+    }
+  );
+      </code></pre>
+    </div>
 
 
       <div id="method" class="section scrollspy">
@@ -96,16 +103,6 @@
         </code></pre>
       </div>
 
-
-      <div id="sass" class="section scrollspy">
-        <h4>Sass Variables</h4>
-        <p>If you are using the Sass version you can specify the width in the variables.scss file. </p>
-        <pre><code class="language-css">
-  $sidenav-width: 240px;
-        </code></pre>
-
-      </div>
-
     </div>
 
 
@@ -115,10 +112,9 @@
         <ul class="section table-of-contents">
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#structure">Structure</a></li>
-          <li><a href="#alignment">Alignment</a></li>
           <li><a href="#initialization">Intialization</a></li>
+          <li><a href="#options">Plugin Options</a></li>
           <li><a href="#method">Methods</a></li>
-          <li><a href="#sass">Sass Variables</a></li>
         </ul>
       </div>
     </div>

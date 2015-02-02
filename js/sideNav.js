@@ -45,7 +45,6 @@
     init : function(options) {
       var defaults = {
         menuWidth: 240,
-        activationWidth: 70,
         edge: 'left'
       }
       options = $.extend(defaults, options);
