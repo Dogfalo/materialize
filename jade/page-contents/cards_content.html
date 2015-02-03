@@ -151,11 +151,22 @@
       </div>
 
 
-      <div id="small" class="section scrollspy">
+      <div id="sizes" class="section scrollspy">
         <div class="row">
           <!-- Small Card -->
+          <div class="col s12">
+            <h2 class="header">Card Sizes</h2>
+            <p class="caption">If you want to have uniformly sized cards, you can use our premade size classes. Just add the size class in addition to the card class. </p>
+            <pre><code class="language-markup">
+  &lt;div class="card small">
+    &lt;!-- Card Content -->
+  &lt;/div>
+            </code></pre>
+          </div>
+        </div>
+        <div class="row">
           <div class="col s12 m6">
-            <h2 class="header">Small Card</h2>
+            <h4 class="light">Small</h4>
             <div class="card small">
               <div class="card-image">
                 <img src="images/sample-1.jpg">
@@ -171,34 +182,60 @@
             </div>
           </div>
           <div class="col s12 m6">
-            <br><br><br><br>
+            <br><br>
             <p class="caption">
-             The Small Card limits the height of the card. We provide this as a utility class for you to easily ensure equal card size.
+             The Small Card limits the height of the card to 300px.
             </p>
           </div>
-          <div class="col s12">
-            <br>
-            <pre><code class="language-markup">
-      &lt;div class="row">
-        &lt;div class="col s12">
-          &lt;div class="card small">
-            &lt;div class="card-image">
-              &lt;img src="images/sample-1.jpg">
-              &lt;span class="card-title">Card Title&lt;/span>
-            &lt;/div>
-            &lt;div class="card-content">
-              &lt;p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.&lt;/p>
-            &lt;/div>
-            &lt;div class="card-action">
-              &lt;a href="#">This is a link&lt;/a>
-              &lt;a href='#'>This is a link&lt;/a>
-            &lt;/div>
-          &lt;/div>
-        &lt;/div>
-      &lt;/div>
-            </code></pre>
-            <br>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m7">
+            <h4 class="light">Medium</h4>
+            <div class="card medium">
+              <div class="card-image">
+                <img src="images/sample-1.jpg">
+                <span class="card-title">Card Title</span>
+              </div>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href='#'>This is a link</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m5">
+            <br><br>
+            <p class="caption">
+             The Medium Card limits the height of the card to 400px.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m8">
+            <h4 class="light">Large</h4>
+            <div class="card large">
+              <div class="card-image">
+                <img src="images/sample-1.jpg">
+                <span class="card-title">Card Title</span>
+              </div>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href='#'>This is a link</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <br><br>
+            <p class="caption">
+             The Large Card limits the height of the card to 500px.
+            </p>
           </div>
         </div>
       </div>
@@ -244,7 +281,7 @@
           <li><a href="#basic">Basic Card</a></li>
           <li><a href="#image">Image Card</a></li>
           <li><a href="#reveal">Card Reveal</a></li>
-          <li><a href="#small">Small Card</a></li>
+          <li><a href="#sizes">Card Sizes</a></li>
           <li><a href="#panel">Card Panel</a></li>
         </ul>
       </div>

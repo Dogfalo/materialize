@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   background-color: #eee;
-  padding: 24px;
+  padding: 0;
   max-height: 70%;
   width: 55%;
   margin: auto;
@@ -24,6 +24,22 @@
   h1,h2,h3,h4 {
     margin-top: 0;
   }
+
+  .modal-content {
+    padding: 24px;
+  }
+
+  .modal-footer {
+    background-color: #eee;
+    padding: 4px 6px;
+    height: 56px;
+    width: 100%;
+
+    .btn, .btn-flat {
+      float: right;
+      margin: 6px 0;
+    }
+  }
 }
 #lean-overlay {
     position: fixed;
@@ -40,11 +56,21 @@
     will-change: opacity;
 }
 
-.action-bar {
-  text-align: right;
-    margin-top: 10px;
-}
+.modal.modal-fixed-footer {
+  padding: 0;
+  height: 70%;
 
-.modal-action {
-  margin-bottom: 0px;
+  .modal-content {
+    position: fixed;
+    max-height: 100%;
+    padding-bottom: 64px;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    border-top: 1px solid rgba(0,0,0,.1);
+    position: fixed;
+    bottom: 0;
+  }
 }

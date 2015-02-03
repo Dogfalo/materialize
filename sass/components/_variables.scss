@@ -12,9 +12,7 @@ $primary-color-dark: false !default;
 $secondary-color: color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-
 $link-color: color("light-blue", "darken-1") !default;
-
 
 /*** Badges ***/
 $badge-bg-color: $secondary-color;
@@ -44,6 +42,9 @@ $collapsible-border-color: #ddd !default;
 /*** Dropdown ***/
 $dropdown-color: $secondary-color;
 
+/*** Fonts ***/
+$roboto-font-path: "../font/roboto/" !default;
+$icons-font-path: "../font/material-design-icons/" !default;
 
 /*** Forms ***/
 // Text Inputs + Textarea

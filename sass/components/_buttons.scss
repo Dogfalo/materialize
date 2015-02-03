@@ -17,6 +17,7 @@
   background-color: $button-bg-color-disabled;
   box-shadow: none;
   color: $button-color-disabled;
+  cursor: default;
 
   &:hover {
     background-color: $button-bg-color-disabled;
@@ -121,6 +122,7 @@
 
   &.disabled {
     color: lighten(#999, 10%);
+    cursor: default;
   }
 }
 

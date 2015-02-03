@@ -107,11 +107,27 @@
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
         <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal-close</code> to your button.</p>
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn modal-trigger" href="#modal2">Modal With Fixed Footer</a>
         <div id="modal1" class="modal">
-          <h4>Modal Header</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          <div class="action-bar">
+          <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
+            <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+          </div>
+        </div>
+        <div id="modal2" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
             <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
           </div>
         </div>
@@ -127,9 +143,32 @@
 
   &lt;!-- Modal Structure -->
   &lt;div id="modal1" class="modal">
-    &lt;h4>Modal Header&lt;/h4>
-    &lt;p>A bunch of text&lt;/p>
-    &lt;div class="action-bar">
+    &lt;div class="modal-content">
+      &lt;h4>Modal Header&lt;/h4>
+      &lt;p>A bunch of text&lt;/p>
+    &lt;/div>
+    &lt;div class="modal-footer">
+      &lt;a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree&lt;/a>
+    &lt;/div>
+  &lt;/div>
+          </code></pre>
+        </div>
+
+
+        <div id="fixed-footer" class="scrollspy section">
+          <h4>Modals with Fixed Footer</h4>
+          <p>If you have content that is very long and you want the action buttons to be visible all the time, you can add the <code class="language-markup">modal-fixed-footer</code> class to the modal. </p>
+          <pre><code class="language-markup">
+  &lt;!-- Modal Trigger -->
+  &lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
+
+  &lt;!-- Modal Structure -->
+  &lt;div id="modal1" class="modal modal-fixed-footer">
+    &lt;div class="modal-content">
+      &lt;h4>Modal Header&lt;/h4>
+      &lt;p>A bunch of text&lt;/p>
+    &lt;/div>
+    &lt;div class="modal-footer">
       &lt;a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree&lt;/a>
     &lt;/div>
   &lt;/div>
@@ -187,6 +226,7 @@
     <ul class="section table-of-contents">
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#structure">Structure</a></li>
+      <li><a href="#fixed-footer">Fixed Footer</a></li>
       <li><a href="#initialization">Intialization</a></li>
       <li><a href="#options">Options</a></li>
     </ul>

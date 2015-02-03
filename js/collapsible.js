@@ -54,7 +54,7 @@
 
       if (options.accordion || collapsible_type == "accordion" || collapsible_type == undefined) { // Handle Accordion
 
-        // Event delegation to open collapsible section
+        // Event delegation to all collapsible section
         $this.on('click', '.collapsible-header', function (e) {
           accordionOpen($(e.currentTarget));
         });
@@ -66,7 +66,7 @@
         $panel_headers.each(function () {
 
           // Event delegation to open collapsible section
-          $this.on('click', '.collapsible-header', function (e) {
+          $(this).on('click', function (e) {
             collapsibleOpen($(e.currentTarget));
           });
 

@@ -1612,6 +1612,7 @@
 /*** Cards ***/
 /*** Collapsible ***/
 /*** Dropdown ***/
+/*** Fonts ***/
 /*** Forms ***/
 /*** Global ***/
 /*** Navbar ***/
@@ -1980,7 +1981,7 @@ ul {
 .clearfix {
   clear: both; }
 
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, ul.side-nav.full, ul.side-nav.fixed {
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, ul.side-nav {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
@@ -2076,6 +2077,9 @@ img.responsive-img {
 .pinned {
   position: fixed; }
 
+/*********************
+  Media Query Classes
+**********************/
 @media only screen and (max-width : 600px) {
   .hide-on-small-only, .tabs-wrapper, .hide-on-small-and-down {
     display: none !important; } }
@@ -2093,8 +2097,28 @@ img.responsive-img {
     display: none !important; } }
 
 @media only screen and (min-width : 993px) {
-  .hide-on-large-only, nav a.button-collapse {
+  .hide-on-large-only {
     display: none !important; } }
+
+@media only screen and (min-width : 993px) {
+  .show-on-large {
+    display: initial !important; } }
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .show-on-medium {
+    display: initial !important; } }
+
+@media only screen and (max-width : 600px) {
+  .show-on-small {
+    display: initial !important; } }
+
+@media only screen and (min-width : 601px) {
+  .show-on-medium-and-up {
+    display: initial !important; } }
+
+@media only screen and (max-width : 992px) {
+  .show-on-medium-and-down {
+    display: initial !important; } }
 
 @media only screen and (max-width : 600px) {
   .center-on-small-only {
@@ -2456,6 +2480,11 @@ span.badge {
   display: block;
   margin-left: auto;
   margin-right: auto; }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 @font-face {
   font-family: "Material-Design-Icons";
@@ -4989,6 +5018,10 @@ nav {
     height: 100%; }
   nav a {
     color: #fff; }
+  @media only screen and (min-width : 993px) {
+    nav a.button-collapse {
+      display: none; }
+ }
   nav a.button-collapse {
     float: left;
     position: relative;
@@ -5088,27 +5121,27 @@ nav {
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Thin.ttf);
+  src: url("../font/roboto/Roboto-Thin.ttf");
   font-weight: 200; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Light.ttf);
+  src: url("../font/roboto/Roboto-Light.ttf");
   font-weight: 300; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Regular.ttf);
+  src: url("../font/roboto/Roboto-Regular.ttf");
   font-weight: 400; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Medium.ttf);
+  src: url("../font/roboto/Roboto-Medium.ttf");
   font-weight: 500; }
 
 @font-face {
   font-family: "Roboto";
-  src: url(../font/roboto/Roboto-Bold.ttf);
+  src: url("../font/roboto/Roboto-Bold.ttf");
   font-weight: 700; }
 
 a {
@@ -5343,20 +5376,35 @@ small {
     text-transform: uppercase; }
     .card a:hover {
       color: #ffd8a6; }
-  .card.small {
-    height: 300px;
+  .card.small, .card.medium, .card.large {
     position: relative; }
-    .card.small .card-image {
-      overflow: hidden;
-      height: 150px; }
-    .card.small .card-content {
-      overflow: hidden;
-      height: 150px; }
-    .card.small .card-action {
+    .card.small .card-image, .card.medium .card-image, .card.large .card-image {
+      overflow: hidden; }
+    .card.small .card-content, .card.medium .card-content, .card.large .card-content {
+      overflow: hidden; }
+    .card.small .card-action, .card.medium .card-action, .card.large .card-action {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0; }
+  .card.small {
+    height: 300px; }
+    .card.small .card-image {
+      height: 150px; }
+    .card.small .card-content {
+      height: 150px; }
+  .card.medium {
+    height: 400px; }
+    .card.medium .card-image {
+      height: 250px; }
+    .card.medium .card-content {
+      height: 150px; }
+  .card.large {
+    height: 500px; }
+    .card.large .card-image {
+      height: 330px; }
+    .card.large .card-content {
+      height: 170px; }
   .card .card-image {
     position: relative; }
     .card .card-image img {
@@ -5577,7 +5625,8 @@ ul.tabs li.tab {
 .btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {
   background-color: #DFDFDF;
   box-shadow: none;
-  color: #9F9F9F; }
+  color: #9F9F9F;
+  cursor: default; }
   .btn.disabled:hover, .disabled.btn-large:hover, .btn-floating.disabled:hover, .btn-large.disabled:hover, .btn:disabled:hover, .btn-large:disabled:hover, .btn-large:disabled:hover, .btn-floating:disabled:hover {
     background-color: #DFDFDF;
     color: #9F9F9F; }
@@ -5662,7 +5711,8 @@ ul.tabs li.tab {
   color: #343434;
   cursor: pointer; }
   .btn-flat.disabled {
-    color: #b3b3b3; }
+    color: #b3b3b3;
+    cursor: default; }
 
 .btn-large {
   height: 54px;
@@ -5802,7 +5852,7 @@ a.waves-effect .waves-ripple {
   left: 0;
   right: 0;
   background-color: #eee;
-  padding: 24px;
+  padding: 0;
   max-height: 70%;
   width: 55%;
   margin: auto;
@@ -5823,6 +5873,16 @@ a.waves-effect .waves-ripple {
       max-width: 80%; } }
   .modal h1, .modal h2, .modal h3, .modal h4 {
     margin-top: 0; }
+  .modal .modal-content {
+    padding: 24px; }
+  .modal .modal-footer {
+    background-color: #eee;
+    padding: 4px 6px;
+    height: 56px;
+    width: 100%; }
+    .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
+      float: right;
+      margin: 6px 0; }
 
 #lean-overlay {
   position: fixed;
@@ -5837,12 +5897,19 @@ a.waves-effect .waves-ripple {
   display: none;
   will-change: opacity; }
 
-.action-bar {
-  text-align: right;
-  margin-top: 10px; }
-
-.modal-action {
-  margin-bottom: 0px; }
+.modal.modal-fixed-footer {
+  padding: 0;
+  height: 70%; }
+  .modal.modal-fixed-footer .modal-content {
+    position: fixed;
+    max-height: 100%;
+    padding-bottom: 64px;
+    width: 100%;
+    overflow-y: auto; }
+  .modal.modal-fixed-footer .modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0; }
 
 .collapsible {
   border-top: 1px solid #ddd;
@@ -6069,7 +6136,8 @@ textarea.materialize-textarea {
   /* prevents scroll bar flash */
   padding: 1.6rem 0;
   /* prevents text jump on Enter keypress */
-  resize: none; }
+  resize: none;
+  min-height: 3rem; }
 
 .hiddendiv {
   display: none;
@@ -6579,33 +6647,31 @@ ul.table-of-contents a {
     padding-left: 18px;
     border-left: 2px solid #ea4a4f; }
 
-@media only screen and (max-width : 992px) {
-  ul.side-nav {
-    position: fixed;
-    width: 240px;
-    left: -250px;
-    top: 0;
-    height: 100%;
-    height: calc(100% + 60px);
-    padding-bottom: 60px;
-    background-color: #FFF;
-    z-index: 999;
-    will-change: left; }
-    ul.side-nav.right-aligned {
-      will-change: right;
-      right: -250px;
-      left: auto; }
-    ul.side-nav .collapsible {
-      margin: 0; }
-    ul.side-nav li {
-      float: none;
-      padding: 0 15px;
-      width: 240px; }
-      ul.side-nav li:hover, ul.side-nav li.active {
-        background-color: #ddd; }
-    ul.side-nav a {
-      color: #444; }
- }
+ul.side-nav {
+  position: fixed;
+  width: 240px;
+  left: -105%;
+  top: 0;
+  margin: 0;
+  height: 100%;
+  height: calc(100% + 60px);
+  padding-bottom: 60px;
+  background-color: #FFF;
+  z-index: 999;
+  will-change: left; }
+  ul.side-nav.right-aligned {
+    will-change: right;
+    right: -105%;
+    left: auto; }
+  ul.side-nav .collapsible {
+    margin: 0; }
+  ul.side-nav li {
+    float: none;
+    padding: 0 15px; }
+    ul.side-nav li:hover, ul.side-nav li.active {
+      background-color: #ddd; }
+  ul.side-nav a {
+    color: #444; }
 
 .drag-target {
   height: 100%;
@@ -6614,54 +6680,23 @@ ul.table-of-contents a {
   top: 0;
   z-index: 998; }
 
-ul.side-nav.full, ul.side-nav.fixed {
-  position: fixed;
-  width: 240px;
-  left: -250px;
-  top: 0;
-  margin: 0;
-  padding-bottom: 60px;
-  height: 100%;
-  height: calc(100% + 60px);
-  background-color: #FFF;
-  z-index: 999;
-  will-change: left; }
-  ul.side-nav.full.right-aligned, ul.side-nav.fixed.right-aligned {
-    will-change: right;
-    right: -250px;
-    left: auto; }
-  ul.side-nav.full .collapsible, ul.side-nav.fixed .collapsible {
-    margin: 0; }
-  ul.side-nav.full li, ul.side-nav.fixed li {
-    float: none;
-    line-height: 64px;
-    padding: 0 15px;
-    width: 240px;
-    -webkit-transition: background-color 0s;
-    -moz-transition: background-color 0s;
-    -o-transition: background-color 0s;
-    -ms-transition: background-color 0s;
-    transition: background-color 0s; }
-    ul.side-nav.full li:hover, ul.side-nav.full li.active, ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
-      background-color: #ddd; }
-  ul.side-nav.full a, ul.side-nav.fixed a {
-    display: block;
-    padding: 0 15px;
-    color: #444; }
+ul.side-nav.fixed a {
+  display: block;
+  padding: 0 15px;
+  color: #444; }
 
 ul.side-nav.fixed {
   left: 0;
   position: fixed; }
   ul.side-nav.fixed.right-aligned {
-    will-change: right;
     right: 0;
     left: auto; }
 
 @media only screen and (max-width : 992px) {
   ul.side-nav.fixed {
-    left: -250px; }
+    left: -105%; }
     ul.side-nav.fixed.right-aligned {
-      right: -250px;
+      right: 105%;
       left: auto; }
  }
 
@@ -7136,7 +7171,9 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
       height: inherit;
       overflow: hidden; }
       .slider ul.slides li img {
-        height: 100%; }
+        height: 100%;
+        width: 100%;
+        background-size: cover; }
       .slider ul.slides li .caption {
         color: #fff;
         position: absolute;

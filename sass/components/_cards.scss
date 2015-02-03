@@ -35,24 +35,55 @@
     &:hover { color: lighten(color("orange", "accent-2"), 20%); }
   }
 
-
-  &.small {
-    height: 300px;
+  // Card Sizes
+  &.small, &.medium, &.large {
     position: relative;
 
     .card-image {
       overflow: hidden;
-      height: 150px;
     }
     .card-content {
       overflow: hidden;
-      height: 150px;
     }
     .card-action {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
+    }
+  }
+
+  &.small {
+    height: 300px;
+
+    .card-image {
+      height: 150px;
+    }
+    .card-content {
+      height: 150px;
+    }
+
+  }
+
+  &.medium {
+    height: 400px;
+
+    .card-image {
+      height: 250px;
+    }
+    .card-content {
+      height: 150px;
+    }
+  }
+
+  &.large {
+    height: 500px;
+
+    .card-image {
+      height: 330px;
+    }
+    .card-content {
+      height: 170px;
     }
   }
 

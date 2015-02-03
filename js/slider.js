@@ -5,7 +5,7 @@
       indicators: true,
       height: 400,
       transition: 500,
-      interval: 6000
+      interval: 60000
     }
     options = $.extend(defaults, options);
 
@@ -35,6 +35,7 @@
 
       // This function will transition the slide to any index of the next slide
       function moveToSlide(index) {
+        console.log("Move to slide");
         if (index >= $slides.length) index = 0;
         else if (index < 0) index = $slides.length -1;
 
@@ -82,12 +83,18 @@
       });
 
       // Set initial dimensions of images
+      // $slides.find('img').each(function () {
+      //   $(this).load(function () {
+      //     if ($(this).width() < $(this).parent().width()) {
+      //       $(this).css({width: '100%', height: 'auto'});
+      //     }
+      //   });
+      // });
+
+      // Move img src into background-image
       $slides.find('img').each(function () {
-        $(this).load(function () {
-          if ($(this).width() < $(this).parent().width()) {
-            $(this).css({width: '100%', height: 'auto'});
-          }
-        });
+        $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+        $(this).attr('src', '');
       });
 
       // dynamically add indicators
@@ -137,8 +144,7 @@
       }
 
       // Adjust height to current slide
-      $active.find('img').load(function() {
-        // Handler for .load() called.
+      $active.find('img').each(function() {
         $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
       });
 
@@ -250,8 +256,9 @@
         }
       });
 
-
     });
+
+
 
   };
 }( jQuery ));
