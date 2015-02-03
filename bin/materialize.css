@@ -5870,7 +5870,7 @@ a.waves-effect .waves-ripple {
   will-change: top, opacity; }
   @media only screen and (max-width : 992px) {
     .modal {
-      max-width: 80%; } }
+      width: 80%; } }
   .modal h1, .modal h2, .modal h3, .modal h4 {
     margin-top: 0; }
   .modal .modal-content {

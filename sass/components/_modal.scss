@@ -18,7 +18,7 @@
   will-change: top, opacity;
 
   @media #{$medium-and-down} {
-   max-width: 80%;
+   width: 80%;
   }
 
   h1,h2,h3,h4 {
