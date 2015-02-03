@@ -239,9 +239,7 @@
         activateOption = function(collection, newOption) {
           collection.find('li.active').removeClass('active');
           $(newOption).addClass('active');
-          setTimeout(function(){
-            collection.scrollTo(newOption);
-          }, 1000)
+          collection.scrollTo(newOption);
         }
 
         // Allow user to search by typing
