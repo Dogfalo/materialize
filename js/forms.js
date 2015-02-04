@@ -63,13 +63,14 @@
 
 
     // Textarea Auto Resize
-    if ($('.hiddendiv').length === 0) {
-      var hiddenDiv = $('<div class="hiddendiv common"></div>'),
+    var hiddenDiv = $('.hiddendiv');
+    if (hiddenDiv.length === 0) {
+      hiddenDiv = $('<div class="hiddendiv common"></div>'),
         content = null;
         $('body').append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
-    $('.hiddendiv').css('width', $(text_area_selector).width());
+    hiddenDiv.css('width', $(text_area_selector).width());
 
     $(text_area_selector).each(function () {
       if ($(this).val().length) {
