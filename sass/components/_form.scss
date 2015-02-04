@@ -31,7 +31,7 @@ label {
   }
   label.active {
     font-size: $label-font-size;
-    @include transform(translateY(-130%));
+    @include transform(translateY(-140%));
   }
 
   input[type=text]:focus + label,
@@ -427,8 +427,13 @@ input[type=checkbox][disabled]:first-child ~ .lever:active:after {
   Select Field
 ***************/
 
+.select-label {
+  position: absolute;
+}
+
 .select-wrapper {
   position: relative;
+  margin-top: 15px;
 
   input.select-dropdown {
     position: relative;
