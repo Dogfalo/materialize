@@ -477,6 +477,46 @@ select:disabled {
 }
 
 
+/*********************
+      File Input
+**********************/
+.file-field {
+  position: relative;
+  overflow: hidden;
+
+  input.file-path {
+    margin-left: 100px;
+  }
+
+  .btn {
+    position: absolute;
+    top: 0;
+    height: 3rem;
+    line-height: 3rem;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}
+
+
+
 /***************
       Range
 ***************/
