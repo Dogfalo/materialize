@@ -5062,7 +5062,7 @@ nav {
     nav ul a {
       font-size: 1rem;
       color: #fff;
-      display: block;
+      display: inline-block;
       padding: 0px 15px; }
     nav ul.left {
       float: left; }
