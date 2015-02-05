@@ -56,6 +56,10 @@
         // Set to width
         if (options.menuWidth != 240) {
           menu_id.css('width', options.menuWidth);
+          // Converts to px if width is a percentage
+          if(options.menuWidth.indexOf('%') !== -1){
+            options.menuWidth = Number(options.menuWidth.replace('%','')) * window.outerWidth / 100;
+          }
           if (!menu_id.hasClass('fixed')) {
             menu_id.css('left', -1 * (options.menuWidth + 10));
           }
