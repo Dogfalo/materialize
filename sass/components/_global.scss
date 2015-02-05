@@ -175,6 +175,19 @@ video.responsive-video {
   position: fixed;
 }
 
+/*********************
+  Transition Classes
+**********************/
+
+ul.staggered-list li {
+  @include opacity(0);
+}
+
+.fade-in {
+  @include opacity(0);
+  transform-origin: 0 50%;
+}
+
 
 /*********************
   Media Query Classes
