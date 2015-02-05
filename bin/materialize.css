@@ -2038,7 +2038,7 @@ i {
   i.large {
     font-size: 6rem; }
 
-img.responsive-img {
+img.responsive-img, video.responsive-video {
   max-width: 100%;
   height: auto; }
 

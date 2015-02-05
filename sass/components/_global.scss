@@ -121,10 +121,13 @@ i {
 }
 
 // Images
-img.responsive-img {
+img.responsive-img,
+video.responsive-video {
   max-width: 100%;
   height: auto;
 }
+
+
 
 
 // parallax
