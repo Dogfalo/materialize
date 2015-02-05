@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.95.1 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -299,7 +299,7 @@ jQuery.extend( jQuery.easing,
 
       if (options.accordion || collapsible_type == "accordion" || collapsible_type == undefined) { // Handle Accordion
 
-        // Event delegation to open collapsible section
+        // Event delegation to all collapsible section
         $this.on('click', '.collapsible-header', function (e) {
           accordionOpen($(e.currentTarget));
         });
@@ -311,7 +311,7 @@ jQuery.extend( jQuery.easing,
         $panel_headers.each(function () {
 
           // Event delegation to open collapsible section
-          $this.on('click', '.collapsible-header', function (e) {
+          $(this).on('click', function (e) {
             collapsibleOpen($(e.currentTarget));
           });
 
@@ -331,6 +331,13 @@ jQuery.extend( jQuery.easing,
   });
 }( jQuery ));;(function ($) {
 
+  // Add posibility to scroll to selected option
+  // usefull for select for example
+  $.fn.scrollTo = function(elem) {
+    $(this).scrollTop($(this).scrollTop() - $(this).offset().top + $(elem).offset().top);
+    return this;
+  };
+
   $.fn.dropdown = function (options) {
     var defaults = {
       inDuration: 300,
@@ -338,7 +345,7 @@ jQuery.extend( jQuery.easing,
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: true,
       alignment: 'left',
-      gutter: 0, // Spacing from edge
+      gutter: 0 // Spacing from edge
     }
 
     options = $.extend(defaults, options);
@@ -371,6 +378,8 @@ jQuery.extend( jQuery.easing,
       $('body').append(activates);
     }
 
+    var dropdownRealHeight = activates.height();
+
     /*
       Helper function to position and resize dropdown.
       Used in hover and click handler.
@@ -379,7 +388,6 @@ jQuery.extend( jQuery.easing,
       // Check html data attributes
       updateOptions();
 
-      var dropdownRealHeight = activates.height();
       if (options.constrain_width == true) {
         activates.css('width', origin.outerWidth());
       }
@@ -433,6 +441,22 @@ jQuery.extend( jQuery.easing,
         return isFixed;
     }
 
+    function hideDropdown() {
+      activates.velocity(
+        {
+          opacity: 0
+        },
+        {
+          duration: options.outDuration,
+          easing: 'easeOutQuad',
+          complete: function(){
+            activates.css({
+              display: 'none',
+              'overflow-y': ''
+            });
+          }
+        });
+    }
 
     // Hover
     if (options.hover) {
@@ -443,20 +467,7 @@ jQuery.extend( jQuery.easing,
 
       // Document click handler
       activates.on('mouseleave', function(e){ // Mouse out
-        activates.velocity(
-          {
-            opacity: 0
-          },
-          {
-            duration: options.outDuration,
-            easing: 'easeOutQuad',
-            complete: function(){
-              activates.css({
-                display: 'none',
-                'overflow-y': ''
-              });
-            }
-          });
+        hideDropdown();
       });
 
     // Click
@@ -470,19 +481,7 @@ jQuery.extend( jQuery.easing,
         placeDropdown();
         $(document).bind('click.'+ activates.attr('id'), function (e) {
           if (!activates.is(e.target) && (!origin.is(e.target))) {
-            activates.velocity({
-              opacity: 0
-            },
-            {
-              duration: options.outDuration,
-              easing: 'easeOutQuad',
-              complete: function(){
-                activates.css({
-                  display: 'none',
-                  'overflow-y': ''
-                });
-              }
-            });
+            hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
           }
         });
@@ -490,13 +489,18 @@ jQuery.extend( jQuery.easing,
 
     } // End else
 
+    // Listen to open and close event - usefull for select component
+    origin.on('open', placeDropdown);
+    origin.on('close', hideDropdown);
+
     // Window Resize Reposition
     $(document).on('resize', function(){
 
     });
    });
   }; // End dropdown plugin
-}( jQuery ));;(function($) {
+}( jQuery ));
+;(function($) {
   $.fn.extend({
     openModal: function(options) {
       var modal = this;
@@ -1653,7 +1657,7 @@ $(document).ready(function(){
   var methods = {
     init : function(options) {
       var defaults = {
-        activationWidth: 70,
+        menuWidth: 240,
         edge: 'left'
       }
       options = $.extend(defaults, options);
@@ -1661,7 +1665,18 @@ $(document).ready(function(){
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
-        var menuWidth = 240;
+
+        // Set to width
+        if (options.menuWidth != 240) {
+          menu_id.css('width', options.menuWidth);
+          // Converts to px if width is a percentage
+          if(options.menuWidth.indexOf('%') !== -1){
+            options.menuWidth = Number(options.menuWidth.replace('%','')) * window.outerWidth / 100;
+          }
+          if (!menu_id.hasClass('fixed')) {
+              menu_id.css('left', -1 * (options.menuWidth + 10));
+          }
+        }
 
         // Add alignment
         if (options.edge != 'left') {
@@ -1683,6 +1698,7 @@ $(document).ready(function(){
             if ($(window).width() > 1200) {
               if (menu_id.attr('style')) {
                 menu_id.removeAttr('style');
+                menu_id.css('width', options.menuWidth);
               }
             }
             if ($('#sidenav-overlay').css('opacity') != 0 && menuOut) {
@@ -1701,12 +1717,12 @@ $(document).ready(function(){
           if (options.edge === 'left') {
             // Reset phantom div
             $('.drag-target').css({width: '', right: '', left: '0'});
-            menu_id.velocity({left: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
+            menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
           else {
             // Reset phantom div
             $('.drag-target').css({width: '', right: '0', left: ''});
-            menu_id.velocity({right: -1 * (menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
+            menu_id.velocity({right: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutCubic'});
           }
 
           // enable_scroll();
@@ -1742,41 +1758,41 @@ $(document).ready(function(){
 
             // Keep within boundaries
             if (options.edge === 'left') {
-              if (x > menuWidth) { x = menuWidth; }
+              if (x > options.menuWidth) { x = options.menuWidth; }
               else if (x < 0) { x = 0; }
             }
             else {
-              if (x < $(window).width() - menuWidth) { x = $(window).width() - menuWidth; }
+              if (x < $(window).width() - options.menuWidth) { x = $(window).width() - options.menuWidth; }
             }
 
             if (options.edge === 'left') {
               // Left Direction
-              if (x < (menuWidth / 2)) { menuOut = false; }
+              if (x < (options.menuWidth / 2)) { menuOut = false; }
               // Right Direction
-              else if (x >= (menuWidth / 2)) { menuOut = true; }
+              else if (x >= (options.menuWidth / 2)) { menuOut = true; }
             }
             else {
               // Left Direction
-              if (x < ($(window).width() - menuWidth / 2)) { menuOut = true; }
+              if (x < ($(window).width() - options.menuWidth / 2)) { menuOut = true; }
               // Right Direction
-              else if (x >= ($(window).width() - menuWidth / 2)) { menuOut = false; }
+              else if (x >= ($(window).width() - options.menuWidth / 2)) { menuOut = false; }
             }
 
 
             if (options.edge === 'left') {
-              menu_id.css('left', (x - menuWidth));
+              menu_id.css('left', (x - options.menuWidth));
             }
             else {
-              menu_id.css('right', -1 *(x - menuWidth / 2));
+              menu_id.css('right', -1 *(x - options.menuWidth / 2));
             }
 
             // Percentage overlay
             if (options.edge === 'left') {
-              var overlayPerc = x / menuWidth;
+              var overlayPerc = x / options.menuWidth;
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
             else {
-              var overlayPerc = Math.abs((x - $(window).width()) / menuWidth);
+              var overlayPerc = Math.abs((x - $(window).width()) / options.menuWidth);
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }
@@ -1884,7 +1900,8 @@ $(document).ready(function(){
         $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tooltip' );
       }
     }; // PLugin end
-}( jQuery ));;/**
+}( jQuery ));
+;/**
  * Extend jquery with a scrollspy plugin.
  * This watches the window scroll and fires events when elements are scrolled into viewport.
  *
@@ -2179,8 +2196,9 @@ $(document).ready(function(){
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0) {
-       $(this).siblings('label, i').addClass('active');
+        $(this).siblings('label, i').addClass('active');
       }
+      validate_field($(this));
     });
 
     // Add active if input element has been pre-populated on document ready
@@ -2200,7 +2218,7 @@ $(document).ready(function(){
         // Reset select
         $(this).find('select.initialized').each(function () {
           var reset_text = $(this).find('option[selected]').text();
-          $(this).prev('span.select-dropdown').html(reset_text);
+          $(this).siblings('input.select-dropdown').val(reset_text);
         });
       }
     });
@@ -2213,25 +2231,30 @@ $(document).ready(function(){
     $(document).on('blur', input_selector, function () {
       if ($(this).val().length === 0) {
         $(this).siblings('label, i').removeClass('active');
+      }
+      validate_field($(this));
+    });
 
-        if ($(this).hasClass('validate')) {
-          $(this).removeClass('valid');
-          $(this).removeClass('invalid');
+    validate_field = function(object) {
+      if (object.val().length === 0) {
+        if (object.hasClass('validate')) {
+          object.removeClass('valid');
+          object.removeClass('invalid');
         }
       }
       else {
-        if ($(this).hasClass('validate')) {
-          if ($(this).is(':valid')) {
-            $(this).removeClass('invalid');
-            $(this).addClass('valid');
+        if (object.hasClass('validate')) {
+          if (object.is(':valid')) {
+            object.removeClass('invalid');
+            object.addClass('valid');
           }
           else {
-            $(this).removeClass('valid');
-            $(this).addClass('invalid');
+            object.removeClass('valid');
+            object.addClass('invalid');
           }
         }
       }
-    });
+    }
 
 
     // Textarea Auto Resize
@@ -2259,6 +2282,16 @@ $(document).ready(function(){
         // console.log(hiddenDiv.html());
         $(this).css('height', hiddenDiv.height());
       });
+
+
+    // File Input Path
+    $('.file-field').each(function() {
+      var path_input = $(this).find('input.file-path');
+      $(this).find('input[type="file"]').change(function () {
+        path_input.val($(this).val());
+        path_input.trigger('change');
+      });
+    });
 
 
     // Range Input
@@ -2336,15 +2369,13 @@ $(document).ready(function(){
       }
     });
 
-
-
-
     //  Select Functionality
 
     // Select Plugin
     $.fn.material_select = function (callback) {
       $(this).each(function(){
         $select = $(this);
+
         if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
           return; // Continue to next (return false breaks out of entire loop)
         }
@@ -2376,7 +2407,7 @@ $(document).ready(function(){
               $curr_select.find('option').eq(i).prop('selected', true);
               // Trigger onchange() event
               $curr_select.trigger('change');
-              $curr_select.prev('span.select-dropdown').html($(this).text());
+              $curr_select.siblings('input.select-dropdown').val($(this).text());
               if (typeof callback !== 'undefined') callback();
             }
           });
@@ -2386,8 +2417,8 @@ $(document).ready(function(){
         // Wrap Elements
         $select.wrap(wrapper);
         // Add Select Display Element
-        var $newSelect = $('<span class="select-dropdown ' + (($select.is(':disabled')) ? 'disabled' : '')
-                         + '" data-activates="select-options-' + uniqueID +'">' + label.html() + '</span>');
+        var $newSelect = $('<input type="text" class="select-dropdown" ' + (($select.is(':disabled')) ? 'disabled' : '')
+                         + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/><i class="mdi-navigation-arrow-drop-down">');
         $select.before($newSelect);
         $('body').append(options);
         // Check if section element is disabled
@@ -2396,6 +2427,104 @@ $(document).ready(function(){
         }
         $select.addClass('initialized');
 
+        $newSelect.on('focus', function(){
+          $(this).trigger('open');
+          label = $(this).val();
+          selectedOption = options.find('li').filter(function() {
+            return $(this).text().toLowerCase() === label.toLowerCase();
+          })[0];
+          activateOption(options, selectedOption);
+        });
+
+        $newSelect.on('blur', function(){
+          $(this).trigger('close');
+        });
+
+        // Make option as selected and scroll to selected position
+        activateOption = function(collection, newOption) {
+          collection.find('li.active').removeClass('active');
+          $(newOption).addClass('active');
+          setTimeout(function(){
+            collection.scrollTo(newOption);
+          }, 1000)
+        }
+
+        // Allow user to search by typing
+        // this array is cleared after 1 second
+        filterQuery = []
+
+        onKeyDown = function(event){
+          // TAB - switch to another input
+          if(event.which == 9){
+            $newSelect.trigger('close');
+            return
+          }
+
+          // ARROW DOWN WHEN SELECT IS CLOSED - open select options
+          if(event.which == 40 && !options.is(":visible")){
+            $newSelect.trigger('open');
+            return
+          }
+
+          // ENTER WHEN SELECT IS CLOSED - submit form
+          if(event.which == 13 && !options.is(":visible")){
+            return
+          }
+
+          event.preventDefault();
+
+          // CASE WHEN USER TYPE LETTERS
+          letter = String.fromCharCode(event.which).toLowerCase();
+
+          if (letter){
+            filterQuery.push(letter);
+
+            string = filterQuery.join("");
+
+            newOption = options.find('li').filter(function() {
+              return $(this).text().toLowerCase().indexOf(string) === 0;
+            })[0];
+
+            if(newOption){
+              activateOption(options, newOption);
+            }
+          }
+
+          // ENTER - select option and close when select options are opened
+          if(event.which == 13){
+            activeOption = options.find('li.active:not(.disabled)')[0];
+            if(activeOption){
+              $(activeOption).trigger('click');
+              $newSelect.trigger('close');
+            }
+          }
+
+          // ARROW DOWN - move to next not disabled option
+          if(event.which == 40){
+            newOption = options.find('li.active').next('li:not(.disabled)')[0];
+            if(newOption){
+              activateOption(options, newOption);
+            }
+          }
+
+          // ESC - close options
+          if(event.which == 27){
+            $newSelect.trigger('close');
+          }
+
+          // ARROW UP - move to previous not disabled option
+          if(event.which == 38){
+            newOption = options.find('li.active').prev('li:not(.disabled)')[0];
+            if(newOption){
+              activateOption(options, newOption);
+            }
+          }
+
+          // Automaticaly clean filter query so user can search again by starting letters
+          setTimeout(function(){filterQuery = []}, 1000)
+        }
+
+        $newSelect.on('keydown', onKeyDown);
       });
     }
 
@@ -2422,7 +2551,7 @@ $(document).ready(function(){
       indicators: true,
       height: 400,
       transition: 500,
-      interval: 6000
+      interval: 60000
     }
     options = $.extend(defaults, options);
 
@@ -2452,6 +2581,7 @@ $(document).ready(function(){
 
       // This function will transition the slide to any index of the next slide
       function moveToSlide(index) {
+        console.log("Move to slide");
         if (index >= $slides.length) index = 0;
         else if (index < 0) index = $slides.length -1;
 
@@ -2499,12 +2629,18 @@ $(document).ready(function(){
       });
 
       // Set initial dimensions of images
+      // $slides.find('img').each(function () {
+      //   $(this).load(function () {
+      //     if ($(this).width() < $(this).parent().width()) {
+      //       $(this).css({width: '100%', height: 'auto'});
+      //     }
+      //   });
+      // });
+
+      // Move img src into background-image
       $slides.find('img').each(function () {
-        $(this).load(function () {
-          if ($(this).width() < $(this).parent().width()) {
-            $(this).css({width: '100%', height: 'auto'});
-          }
-        });
+        $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+        $(this).attr('src', '');
       });
 
       // dynamically add indicators
@@ -2554,8 +2690,7 @@ $(document).ready(function(){
       }
 
       // Adjust height to current slide
-      $active.find('img').load(function() {
-        // Handler for .load() called.
+      $active.find('img').each(function() {
         $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
       });
 
@@ -2667,12 +2802,17 @@ $(document).ready(function(){
         }
       });
 
-
     });
+
+
 
   };
 }( jQuery ));;(function ($) {
   $(document).ready(function() {
+
+    $('.card > .card-reveal').each(function() {
+      $(this).parent().css('overflow', 'hidden');
+    });
 
     $(document).on('click.card', '.card', function (e) {
       if ($(this).find('.card-reveal').length) {
@@ -2775,7 +2915,42 @@ $(document).ready(function(){
   
 
   });
-}( jQuery ));;/*!
+}( jQuery ));;(function ($) {
+  $(document).ready(function() {
+
+    // jQuery reverse
+    jQuery.fn.reverse = [].reverse;
+
+    $('.fixed-action-btn').each(function (i) {
+      var $this = $(this);
+      $this.find('ul a.btn-floating').velocity(
+        { scaleY: ".4", scaleX: ".4", translateY: "40px"},
+        { duration: 0 });
+
+
+      var timer;
+      $this.hover(
+        function() {
+          var time = 0;
+          $this.find('ul a.btn-floating').reverse().each(function () {
+            $(this).velocity(
+              { opacity: "1", scaleX: "1", scaleY: "1", translateY: "0"},
+              { duration: 100, delay: time });
+            time += 40;
+          });
+        }, function() {
+          var time = 0;
+          $this.find('ul a.btn-floating').velocity("stop", true);
+          $this.find('ul a.btn-floating').velocity(
+            { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: "40px"},
+            { duration: 100 });
+        }
+      );
+    });
+
+  });
+}( jQuery ));
+;/*!
  * pickadate.js v3.5.0, 2014/04/13
  * By Amsul, http://amsul.ca
  * Hosted on http://amsul.github.io/pickadate.js
