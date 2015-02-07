@@ -2038,7 +2038,7 @@ i {
   i.large {
     font-size: 6rem; }
 
-img.responsive-img {
+img.responsive-img, video.responsive-video {
   max-width: 100%;
   height: auto; }
 
@@ -2076,6 +2076,24 @@ img.responsive-img {
 
 .pinned {
   position: fixed; }
+
+/*********************
+  Transition Classes
+**********************/
+ul.staggered-list li {
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0; }
+
+.fade-in {
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+  transform-origin: 0 50%; }
 
 /*********************
   Media Query Classes
@@ -5047,8 +5065,7 @@ nav {
       right: 0.5rem;
       padding: 0; }
   nav ul {
-    margin: 0;
-    float: right; }
+    margin: 0; }
     nav ul li {
       float: left;
       padding: 0px;
@@ -5062,7 +5079,7 @@ nav {
     nav ul a {
       font-size: 1rem;
       color: #fff;
-      display: block;
+      display: inline-block;
       padding: 0px 15px; }
     nav ul.left {
       float: left; }
@@ -6475,6 +6492,35 @@ select:disabled {
   .select-dropdown li.disabled:hover {
     background-color: transparent; }
 
+/*********************
+      File Input
+**********************/
+.file-field {
+  position: relative;
+  overflow: hidden; }
+  .file-field input.file-path {
+    margin-left: 100px; }
+  .file-field .btn, .file-field .btn-large {
+    position: absolute;
+    top: 0;
+    height: 3rem;
+    line-height: 3rem; }
+  .file-field span {
+    cursor: pointer; }
+  .file-field input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0); }
+
 /***************
       Range
 ***************/
@@ -6700,7 +6746,7 @@ ul.side-nav.fixed {
   ul.side-nav.fixed {
     left: -105%; }
     ul.side-nav.fixed.right-aligned {
-      right: 105%;
+      right: -105%;
       left: auto; }
  }
 

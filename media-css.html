@@ -158,8 +158,8 @@
       <div id="videos" class="section scrollspy">
         <h2 class="header">Videos</h2>
         <p class="caption">We provide a container for Embedded Videos that resizes them responsively.</p>
-        <h4>Responsive Videos</h4>
-        <p>To make your videos responsive, merely wrap them with a containing div which has the class <code class="language-markup">video-container</code></p>
+        <h4>Responsive Embeds</h4>
+        <p>To make your embeds responsive, merely wrap them with a containing div which has the class <code class="language-markup">video-container</code></p>
         <div class="video-container">
           <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
@@ -167,6 +167,17 @@
       &lt;div class="video-container">
         &lt;iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen>&lt;/iframe>
       &lt;/div>
+        </code></pre>
+        <h4>Responsive Videos</h4>
+        <p>To make your HTML5 Videos responsive just add the class <code class="language-markup">responsive-video</code> to the video tag.</p>
+
+        <video width="100%" controls>
+          <source src="res/movie.mp4" type="video/mp4">
+        </video>
+        <pre><code class="language-markup">
+  &lt;video class="responsive-video" controls>
+    &lt;source src="movie.mp4" type="video/mp4">
+  &lt;/video>
         </code></pre>
 
       </div>

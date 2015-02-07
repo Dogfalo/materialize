@@ -121,10 +121,13 @@ i {
 }
 
 // Images
-img.responsive-img {
+img.responsive-img,
+video.responsive-video {
   max-width: 100%;
   height: auto;
 }
+
+
 
 
 // parallax
@@ -170,6 +173,19 @@ img.responsive-img {
 }
 .pinned {
   position: fixed;
+}
+
+/*********************
+  Transition Classes
+**********************/
+
+ul.staggered-list li {
+  @include opacity(0);
+}
+
+.fade-in {
+  @include opacity(0);
+  transform-origin: 0 50%;
 }
 
 

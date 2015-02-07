@@ -7,8 +7,9 @@
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0) {
-       $(this).siblings('label, i').addClass('active');
+        $(this).siblings('label, i').addClass('active');
       }
+      validate_field($(this));
     });
 
     // Add active if input element has been pre-populated on document ready
@@ -41,25 +42,30 @@
     $(document).on('blur', input_selector, function () {
       if ($(this).val().length === 0) {
         $(this).siblings('label, i').removeClass('active');
+      }
+      validate_field($(this));
+    });
 
-        if ($(this).hasClass('validate')) {
-          $(this).removeClass('valid');
-          $(this).removeClass('invalid');
+    validate_field = function(object) {
+      if (object.val().length === 0) {
+        if (object.hasClass('validate')) {
+          object.removeClass('valid');
+          object.removeClass('invalid');
         }
       }
       else {
-        if ($(this).hasClass('validate')) {
-          if ($(this).is(':valid')) {
-            $(this).removeClass('invalid');
-            $(this).addClass('valid');
+        if (object.hasClass('validate')) {
+          if (object.is(':valid')) {
+            object.removeClass('invalid');
+            object.addClass('valid');
           }
           else {
-            $(this).removeClass('valid');
-            $(this).addClass('invalid');
+            object.removeClass('valid');
+            object.addClass('invalid');
           }
         }
       }
-    });
+    }
 
 
     // Textarea Auto Resize
@@ -87,6 +93,16 @@
         // console.log(hiddenDiv.html());
         $(this).css('height', hiddenDiv.height());
       });
+
+
+    // File Input Path
+    $('.file-field').each(function() {
+      var path_input = $(this).find('input.file-path');
+      $(this).find('input[type="file"]').change(function () {
+        path_input.val($(this).val());
+        path_input.trigger('change');
+      });
+    });
 
 
     // Range Input
