@@ -15,10 +15,6 @@
 
       var collapsible_type = $this.data("collapsible");
 
-      // Turn off any existing event handlers
-       $this.off();
-       $this.children().off();
-
 
        /****************
        Helper Functions
