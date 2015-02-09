@@ -91,7 +91,8 @@ module.exports = function(grunt) {
       temp: {
         // the files to concatenate
         src: ["js/jquery.easing.1.3.js",
-             "js/velocity.min.js",
+              "js/animation.js",
+              "js/velocity.min.js",
               "js/hammer.min.js",
               "js/jquery.hammer.js",
               "js/collapsible.js",
