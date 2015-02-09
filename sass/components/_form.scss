@@ -467,7 +467,11 @@ select.browser-default { display: block; }
 select:disabled {
   color: rgba(0,0,0,.3);
 }
-.select-wrapper input.select-dropdown.disabled {
+.select-wrapper input.select-dropdown:disabled {
+  color: rgba(0,0,0,.3);
+  border-bottom: 1px solid rgba(0,0,0,.3);
+}
+.select-wrapper i {
   color: rgba(0,0,0,.3);
 }
 .select-dropdown li.disabled {

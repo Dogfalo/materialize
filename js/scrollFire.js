@@ -13,7 +13,6 @@
 
         var elementOffset = $(selector).offset().top;
 
-
         if (windowScroll > (elementOffset + offset)) {
           if ($(selector).data('done') === undefined) {
             var callbackFunc = new Function(callback);
