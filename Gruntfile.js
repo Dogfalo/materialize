@@ -60,6 +60,7 @@ module.exports = function(grunt) {
       dist: {
         // the files to concatenate
         src: ["js/jquery.easing.1.3.js",
+              "js/animation.js",
               "js/velocity.min.js",
               "js/hammer.min.js",
               "js/jquery.hammer.js",
@@ -161,8 +162,10 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'font/', src: ['**/*'], dest: 'materialize-src/font/'},
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
-          {expand: true, cwd: 'js/', src: ["jquery.easing.1.3.js",
-             "velocity.min.js",
+          {expand: true, cwd: 'js/', src: [
+              "jquery.easing.1.3.js",
+              "animation.js",
+              "velocity.min.js",
               "hammer.min.js",
               "jquery.hammer.js",
               "collapsible.js",
@@ -294,6 +297,7 @@ module.exports = function(grunt) {
 
       js: {
         files: [ "js/jquery.easing.1.3.js",
+                 "js/animation.js",
                  "js/velocity.min.js",
                  "js/hammer.min.js",
                  "js/jquery.hammer.js",

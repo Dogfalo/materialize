@@ -12,14 +12,14 @@ header
       a#logo-container.brand-logo(href='http://materializecss.com/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
     li.bold(class=(page == "About" ? "active" : ""))
-      a(href='about.html') About
+      a.waves-effect.waves-teal(href='about.html') About
     li.bold(class=(page == "Getting Started" ? "active" : ""))
-      a(href='getting-started.html') Getting Started
+      a.waves-effect.waves-teal(href='getting-started.html') Getting Started
 
     li.no-padding
       ul.collapsible.collapsible-accordion
         li.bold
-          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Table" || page == "Helpers" ? "active" : ""))
+          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Table" || page == "Helpers" ? "active" : "")+"waves-effect waves-teal")
             | CSS
           .collapsible-body
             ul
@@ -40,7 +40,7 @@ header
               li(class=(page == "Typography" ? "active" : ""))
                 a(href='typography.html') Typography
         li.bold
-          a.collapsible-header(class=(page == "Forms" || page == "Buttons" || page == "Navbar" || page == "Cards" || page == "Preloader" || page == "Collections" || page == "Badges" || page == "Footer" ? "active" : "" || page == "Icons" ? "active" : ""))
+          a.collapsible-header(class=(page == "Forms" || page == "Buttons" || page == "Navbar" || page == "Cards" || page == "Preloader" || page == "Collections" || page == "Badges" || page == "Footer" ? "active" : "" || page == "Icons" ? "active" : "")+"waves-effect waves-teal")
             | Components
           .collapsible-body
             ul
@@ -63,7 +63,7 @@ header
               li(class=(page == "Preloader" ? "active" : ""))
                 a(href='preloader.html') Preloader
         li.bold
-          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "Tabs" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Parallax" || page == "Collapsible" ? "active" : ""))
+          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "Tabs" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Parallax" || page == "Collapsible" ? "active" : "")+"waves-effect waves-teal")
             | JavaScript
           .collapsible-body
             ul
