@@ -45,7 +45,8 @@
     init : function(options) {
       var defaults = {
         menuWidth: 240,
-        edge: 'left'
+        edge: 'left',
+        closeOnClick: false
       }
       options = $.extend(defaults, options);
 
@@ -87,6 +88,13 @@
             if ($('#sidenav-overlay').css('opacity') != 0 && menuOut) {
               $('#sidenav-overlay').trigger('click');
             }
+          });
+        }
+
+        // if closeOnClick, then add close event for all a tags in side sideNav
+        if (options.closeOnClick == true) {
+          menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
+            removeMenu();
           });
         }
 
