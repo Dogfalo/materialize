@@ -39,11 +39,11 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
-        <li class="bold"><a href="about.html">About</a></li>
-        <li class="bold"><a href="getting-started.html">Getting Started</a></li>
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header">CSS</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
@@ -57,7 +57,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header">Components</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
@@ -72,7 +72,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header active">JavaScript</a>
+            <li class="bold"><a class="collapsible-header activewaves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="collapsible.html">Collapsible</a></li>
@@ -129,6 +129,14 @@
         </code></pre>
       </div>
 
+      <div id="options" class="section scrollspy">
+        <h4>Options</h4>
+        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option in either JavaScript as show above, or in HTML as shown below.</p>
+        <pre><code class="language-markup">
+  &lt;a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
+        </code></pre>
+      </div>
+
 
 
       <div id="initialization" class="section scrollspy">
@@ -141,21 +149,13 @@
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false, // Activate on click
       alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
-      gutter: 0 // Spacing from edge
+      gutter: 0, // Spacing from edge
+      belowOrigin: false // Displays dropdown below the button
     }
   );
         </code></pre>
       </div>
 
-
-
-      <div id="options" class="section scrollspy">
-        <h4>Options</h4>
-        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option in either JavaScript as show above, or in HTML as shown below.</p>
-        <pre><code class="language-markup">
-  &lt;a class='dropdown-button btn' data-constrainwidth="false" data-alignment="right" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
-        </code></pre>
-      </div>
 
 </div>
 
@@ -164,8 +164,8 @@
       <div style="height: 1px;">
         <ul class="section table-of-contents">
           <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#initialization">Initialization</a></li>
           <li><a href="#options">Options</a></li>
+          <li><a href="#initialization">Initialization</a></li>
         </ul>
       </div>
     </div>

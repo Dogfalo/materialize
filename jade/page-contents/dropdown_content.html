@@ -32,6 +32,14 @@
         </code></pre>
       </div>
 
+      <div id="options" class="section scrollspy">
+        <h4>Options</h4>
+        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option in either JavaScript as show above, or in HTML as shown below.</p>
+        <pre><code class="language-markup">
+  &lt;a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
+        </code></pre>
+      </div>
+
 
 
       <div id="initialization" class="section scrollspy">
@@ -44,21 +52,13 @@
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false, // Activate on click
       alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
-      gutter: 0 // Spacing from edge
+      gutter: 0, // Spacing from edge
+      belowOrigin: false // Displays dropdown below the button
     }
   );
         </code></pre>
       </div>
 
-
-
-      <div id="options" class="section scrollspy">
-        <h4>Options</h4>
-        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option in either JavaScript as show above, or in HTML as shown below.</p>
-        <pre><code class="language-markup">
-  &lt;a class='dropdown-button btn' data-constrainwidth="false" data-alignment="right" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
-        </code></pre>
-      </div>
 
 </div>
 
@@ -67,8 +67,8 @@
       <div style="height: 1px;">
         <ul class="section table-of-contents">
           <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#initialization">Initialization</a></li>
           <li><a href="#options">Options</a></li>
+          <li><a href="#initialization">Initialization</a></li>
         </ul>
       </div>
     </div>

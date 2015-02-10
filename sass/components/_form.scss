@@ -31,7 +31,7 @@ label {
   }
   label.active {
     font-size: $label-font-size;
-    @include transform(translateY(-130%));
+    @include transform(translateY(-140%));
   }
 
   input[type=text]:focus + label,
@@ -427,8 +427,13 @@ input[type=checkbox][disabled]:first-child ~ .lever:active:after {
   Select Field
 ***************/
 
+.select-label {
+  position: absolute;
+}
+
 .select-wrapper {
   position: relative;
+  margin-top: 15px;
 
   input.select-dropdown {
     position: relative;
@@ -462,7 +467,11 @@ select.browser-default { display: block; }
 select:disabled {
   color: rgba(0,0,0,.3);
 }
-.select-wrapper input.select-dropdown.disabled {
+.select-wrapper input.select-dropdown:disabled {
+  color: rgba(0,0,0,.3);
+  border-bottom: 1px solid rgba(0,0,0,.3);
+}
+.select-wrapper i {
   color: rgba(0,0,0,.3);
 }
 .select-dropdown li.disabled {
@@ -470,6 +479,46 @@ select:disabled {
 
   &:hover { background-color: transparent; }
 }
+
+
+/*********************
+      File Input
+**********************/
+.file-field {
+  position: relative;
+  overflow: hidden;
+
+  input.file-path {
+    margin-left: 100px;
+  }
+
+  .btn {
+    position: absolute;
+    top: 0;
+    height: 3rem;
+    line-height: 3rem;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}
+
 
 
 /***************

@@ -60,6 +60,7 @@ module.exports = function(grunt) {
       dist: {
         // the files to concatenate
         src: ["js/jquery.easing.1.3.js",
+              "js/animation.js",
               "js/hammer.min.js",
               "js/jquery.hammer.js",
               "js/velocity.min.js",
@@ -79,6 +80,8 @@ module.exports = function(grunt) {
               "js/cards.js",
               "js/pushpin.js",
               "js/buttons.js",
+              "js/transitions.js",
+              "js/scrollFire.js",
               "js/date_picker/picker.js",
               "js/date_picker/picker.date.js",
              ],
@@ -88,6 +91,7 @@ module.exports = function(grunt) {
       temp: {
         // the files to concatenate
         src: ["js/jquery.easing.1.3.js",
+              "js/animation.js",
               "js/hammer.min.js",
               "js/jquery.hammer.js",
               "js/velocity.min.js",
@@ -107,6 +111,8 @@ module.exports = function(grunt) {
               "js/cards.js",
               "js/pushpin.js",
               "js/buttons.js",
+              "js/transitions.js",
+              "js/scrollFire.js",
               "js/date_picker/picker.js",
               "js/date_picker/picker.date.js",
              ],
@@ -157,8 +163,10 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'font/', src: ['**/*'], dest: 'materialize-src/font/'},
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
-          {expand: true, cwd: 'js/', src: ["jquery.easing.1.3.js",
-             "velocity.min.js",
+          {expand: true, cwd: 'js/', src: [
+              "jquery.easing.1.3.js",
+              "animation.js",
+              "velocity.min.js",
               "hammer.min.js",
               "jquery.hammer.js",
               "collapsible.js",
@@ -177,6 +185,8 @@ module.exports = function(grunt) {
               "cards.js",
               "pushpin.js",
               "buttons.js",
+              "transitions.js",
+              "scrollFire.js",
               "date_picker/picker.js",
               "date_picker/picker.date.js",
              ], dest: 'materialize-src/js/'},
@@ -288,6 +298,7 @@ module.exports = function(grunt) {
 
       js: {
         files: [ "js/jquery.easing.1.3.js",
+                 "js/animation.js",
                  "js/velocity.min.js",
                  "js/hammer.min.js",
                  "js/jquery.hammer.js",
@@ -307,6 +318,8 @@ module.exports = function(grunt) {
                  "js/cards.js",
                  "js/pushpin.js",
                  "js/buttons.js",
+                 "js/transitions.js",
+                 "js/scrollFire.js",
                  "js/date_picker/picker.js",
                  "js/date_picker/picker.date.js",
              ],

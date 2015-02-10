@@ -39,11 +39,11 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
-        <li class="bold"><a href="about.html">About</a></li>
-        <li class="bold"><a href="getting-started.html">Getting Started</a></li>
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header active">CSS</a>
+            <li class="bold"><a class="collapsible-header activewaves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
@@ -57,7 +57,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header">Components</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
@@ -72,7 +72,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header">JavaScript</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="collapsible.html">Collapsible</a></li>
@@ -158,8 +158,8 @@
       <div id="videos" class="section scrollspy">
         <h2 class="header">Videos</h2>
         <p class="caption">We provide a container for Embedded Videos that resizes them responsively.</p>
-        <h4>Responsive Videos</h4>
-        <p>To make your videos responsive, merely wrap them with a containing div which has the class <code class="language-markup">video-container</code></p>
+        <h4>Responsive Embeds</h4>
+        <p>To make your embeds responsive, merely wrap them with a containing div which has the class <code class="language-markup">video-container</code></p>
         <div class="video-container">
           <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
@@ -167,6 +167,17 @@
       &lt;div class="video-container">
         &lt;iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen>&lt;/iframe>
       &lt;/div>
+        </code></pre>
+        <h4>Responsive Videos</h4>
+        <p>To make your HTML5 Videos responsive just add the class <code class="language-markup">responsive-video</code> to the video tag.</p>
+
+        <video width="100%" controls>
+          <source src="res/movie.mp4" type="video/mp4">
+        </video>
+        <pre><code class="language-markup">
+  &lt;video class="responsive-video" controls>
+    &lt;source src="movie.mp4" type="video/mp4">
+  &lt;/video>
         </code></pre>
 
       </div>

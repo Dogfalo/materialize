@@ -2038,7 +2038,7 @@ i {
   i.large {
     font-size: 6rem; }
 
-img.responsive-img {
+img.responsive-img, video.responsive-video {
   max-width: 100%;
   height: auto; }
 
@@ -2076,6 +2076,24 @@ img.responsive-img {
 
 .pinned {
   position: fixed; }
+
+/*********************
+  Transition Classes
+**********************/
+ul.staggered-list li {
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0; }
+
+.fade-in {
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+  transform-origin: 0 50%; }
 
 /*********************
   Media Query Classes
@@ -5047,8 +5065,7 @@ nav {
       right: 0.5rem;
       padding: 0; }
   nav ul {
-    margin: 0;
-    float: right; }
+    margin: 0; }
     nav ul li {
       float: left;
       padding: 0px;
@@ -5062,7 +5079,7 @@ nav {
     nav ul a {
       font-size: 1rem;
       color: #fff;
-      display: block;
+      display: inline-block;
       padding: 0px 15px; }
     nav ul.left {
       float: left; }
@@ -6051,11 +6068,11 @@ label {
     transition: 0.2s ease-out; }
   .input-field label.active {
     font-size: 0.8rem;
-    -webkit-transform: translateY(-130%);
-    -moz-transform: translateY(-130%);
-    -ms-transform: translateY(-130%);
-    -o-transform: translateY(-130%);
-    transform: translateY(-130%); }
+    -webkit-transform: translateY(-140%);
+    -moz-transform: translateY(-140%);
+    -ms-transform: translateY(-140%);
+    -o-transform: translateY(-140%);
+    transform: translateY(-140%); }
   .input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label, .input-field input[type=email]:focus + label, .input-field input[type=url]:focus + label, .input-field input[type=date]:focus + label, .input-field input[type=tel]:focus + label, .input-field input[type=number]:focus + label, .input-field input[type=search]:focus + label, .input-field textarea:focus.materialize-textarea + label {
     color: #26a69a; }
   .input-field input[type=text].valid, .input-field input[type=password].valid, .input-field input[type=email].valid, .input-field input[type=url].valid, .input-field input[type=date].valid, .input-field input[type=tel].valid, .input-field input[type=number].valid, .input-field input[type=search].valid, .input-field textarea.materialize-textarea.valid {
@@ -6431,8 +6448,12 @@ input[type=checkbox]:first-child ~ .lever:active:after, input[type=checkbox][dis
 /***************
   Select Field
 ***************/
+.select-label {
+  position: absolute; }
+
 .select-wrapper {
-  position: relative; }
+  position: relative;
+  margin-top: 15px; }
   .select-wrapper input.select-dropdown {
     position: relative;
     cursor: pointer;
@@ -6463,13 +6484,46 @@ select.browser-default {
 select:disabled {
   color: rgba(0, 0, 0, 0.3); }
 
-.select-wrapper input.select-dropdown.disabled {
+.select-wrapper input.select-dropdown:disabled {
+  color: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
+
+.select-wrapper i {
   color: rgba(0, 0, 0, 0.3); }
 
 .select-dropdown li.disabled {
   color: rgba(0, 0, 0, 0.3); }
   .select-dropdown li.disabled:hover {
     background-color: transparent; }
+
+/*********************
+      File Input
+**********************/
+.file-field {
+  position: relative;
+  overflow: hidden; }
+  .file-field input.file-path {
+    margin-left: 100px; }
+  .file-field .btn, .file-field .btn-large {
+    position: absolute;
+    top: 0;
+    height: 3rem;
+    line-height: 3rem; }
+  .file-field span {
+    cursor: pointer; }
+  .file-field input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0); }
 
 /***************
       Range
@@ -6696,7 +6750,7 @@ ul.side-nav.fixed {
   ul.side-nav.fixed {
     left: -105%; }
     ul.side-nav.fixed.right-aligned {
-      right: 105%;
+      right: -105%;
       left: auto; }
  }
 

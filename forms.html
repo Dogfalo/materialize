@@ -39,11 +39,11 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
-        <li class="bold"><a href="about.html">About</a></li>
-        <li class="bold"><a href="getting-started.html">Getting Started</a></li>
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header">CSS</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
@@ -57,7 +57,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header active">Components</a>
+            <li class="bold"><a class="collapsible-header activewaves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
@@ -72,7 +72,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header">JavaScript</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="collapsible.html">Collapsible</a></li>
@@ -220,8 +220,7 @@
         </code></pre>
 
 
-        <h4>Customization</h4>
-        <h5>Chaging colors</h5>
+        <h4>Chaging colors</h4>
         <p>Here is a CSS template for modifying input fields in CSS. With Sass, you can achieve this by just changing a variable. The CSS shown below is unprefixed. Depending on what you use, you may have to change the type attribute selector.</p>
         <pre><code class="language-css">
   /* label color */
@@ -516,6 +515,33 @@
         </code></pre>
       </div>
 
+
+      <div id="file" class="section scrollspy">
+        <h2 class="header">File Input</h2>
+        <p>If you want to style an input button with a path input we provide this structure.</p>
+        <form action="#">
+          <div class="file-field input-field">
+            <input class="file-path validate" type="text"/>
+            <div class="btn">
+              <span>File</span>
+              <input type="file" />
+            </div>
+          </div>
+        </form>
+        <pre><code class="language-markup">
+  &lt;form action="#">
+    &lt;div class="file-field input-field">
+      &lt;input class="file-path validate" type="text"/>
+      &lt;div class="btn">
+        &lt;span>File&lt;/span>
+        &lt;input type="file" />
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+        </code></pre>
+      </div>
+
+
       <div id="range" class="section scrollspy">
         <h2 class="header">Range</h2>
         <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100.</p>
@@ -560,6 +586,7 @@
           <li><a href="#select">Select</a></li>
           <li><a href="#radio">Radio Buttons</a></li>
           <li><a href="#checkbox">Checkboxes</a></li>
+          <li><a href="#file">File Input Button</a></li>
           <li><a href="#range">Range</a></li>
           <li><a href="#date-picker">Date Picker</a></li>
         </ul>

@@ -53,7 +53,6 @@ nav {
 
   ul {
     margin: 0;
-    float: right;
 
     li {
       float: left;
@@ -67,7 +66,7 @@ nav {
     a {
       font-size: 1rem;
       color: #fff;
-      display: block;
+      display: inline-block;
       padding: 0px 15px;
     }
 
