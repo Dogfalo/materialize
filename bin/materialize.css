@@ -2075,7 +2075,7 @@ img.responsive-img, video.responsive-video {
   position: relative; }
 
 .pinned {
-  position: fixed; }
+  position: fixed !important; }
 
 /*********************
   Transition Classes

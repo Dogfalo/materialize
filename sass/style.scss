@@ -575,7 +575,12 @@ pre[class*="language-"] {
 
 
 // Carbon Ads styling
+.toc-wrapper {
+  margin-top: 42px;
+}
+
 #carbonads {
+  max-width: 150px;
   display: inline-block;
   position: relative;
   text-align: left;
@@ -591,7 +596,8 @@ pre[class*="language-"] {
     display: inline-block;
     margin-right: 10px;
   }
-  a.carbon-text {
+  a.carbon-text,
+  input[type="submit"] {
     position: relative;
     top: 0;
     width: 150px;
@@ -608,9 +614,6 @@ pre[class*="language-"] {
   }
 }
 .buysellads #carbonads {
-  position: absolute;
-  top: 50px;
-  right: 0;
 
   & > span,
   span.carbon-wrap { height: auto; }
