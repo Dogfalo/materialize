@@ -49,6 +49,13 @@
   &.rounded{
     border-radius: 24px;
   }
+  &.toptoast{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    opacity: 0.95;
+  }
 
   @media #{$small-and-down} {
     width:100%;
