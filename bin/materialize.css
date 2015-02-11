@@ -6418,7 +6418,7 @@ form p:last-child {
   margin-right: 10px;
   transition: background 0.3s ease;
   vertical-align: middle;
-  margin-left: 16px; }
+  margin: 0px 16px; }
 
 .switch label .lever:after {
   content: "";
