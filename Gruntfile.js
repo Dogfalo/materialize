@@ -426,6 +426,7 @@ module.exports = function(grunt) {
         src: [
           'bower.json',
           'package.json',
+          'package.js',
           'jade/**/*.html'
         ],
         overwrite: true,
