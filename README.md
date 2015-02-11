@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.95.1
+### Current Version : v0.95.2
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -28,7 +28,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Custom File Input Button added
   - Modals has a fixed footer option
   - SideNav implementation changed (needs 2 UL menus)
-
+  - Slider Responsive Fixes
 
 - v0.95.1 (Jan 26, 2015)
   - Sidenav Fixes
