@@ -228,7 +228,7 @@
         // Wrap Elements
         $select.wrap(wrapper);
         // Add Select Display Element
-        var $newSelect = $('<input type="text" class="select-dropdown" ' + (($select.is(':disabled')) ? 'disabled' : '')
+        var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '')
                          + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/><i class="mdi-navigation-arrow-drop-down">');
         $select.before($newSelect);
         $('body').append(options);
