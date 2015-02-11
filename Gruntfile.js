@@ -279,6 +279,7 @@ module.exports = function(grunt) {
           "collapsible.html": "jade/collapsible.jade",
           "scrollfire.html": "jade/scrollFire.jade",
           "scrollspy.html": "jade/scrollspy.jade",
+          "transitions.html": "jade/transitions.jade",
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
 
 

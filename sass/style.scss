@@ -769,6 +769,12 @@ body.parallax-demo footer {
   background-color: #ddd;
 }
 
+// Transitions demos
+#staggered-test li,
+#image-test {
+  @include opacity(0);
+}
+
 // Transifex Styling
 
 #tx-live-lang-container {

@@ -8480,6 +8480,13 @@ body.parallax-demo footer {
   height: 100px;
   background-color: #ddd; }
 
+#staggered-test li, #image-test {
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0; }
+
 #tx-live-lang-container {
   background-color: #fcfcfc;
   z-index: 999; }
