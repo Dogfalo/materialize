@@ -1956,7 +1956,8 @@ ul {
 
 a {
   color: #039be5;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent; }
 
 .valign-wrapper {
   display: -webkit-box;
