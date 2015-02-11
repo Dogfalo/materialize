@@ -2075,7 +2075,7 @@ img.responsive-img, video.responsive-video {
   position: relative; }
 
 .pinned {
-  position: fixed; }
+  position: fixed !important; }
 
 /*********************
   Transition Classes
@@ -8338,7 +8338,12 @@ pre[class*="language-"] {
     border-top: none;
     border-left: none; }
 
+.toc-wrapper {
+  position: relative;
+  margin-top: 42px; }
+
 #carbonads {
+  max-width: 150px;
   display: inline-block;
   position: relative;
   text-align: left;
@@ -8350,7 +8355,7 @@ pre[class*="language-"] {
     height: 100px;
     display: inline-block;
     margin-right: 10px; }
-  #carbonads a.carbon-text {
+  #carbonads a.carbon-text, #carbonads input[type="submit"] {
     position: relative;
     top: 0;
     width: 150px;
@@ -8364,22 +8369,18 @@ pre[class*="language-"] {
     font-size: 11px;
     color: #EF9A9A; }
 
-.buysellads #carbonads {
-  position: absolute;
-  top: 50px;
-  right: 0; }
-  .buysellads #carbonads > span, .buysellads #carbonads span.carbon-wrap {
-    height: auto; }
-  .buysellads #carbonads a.carbon-text {
-    top: 5px;
-    left: 0;
-    width: 130px;
-    display: block;
-    font-size: 13px;
-    -webkit-font-smoothing: antialiased;
-    color: #E57373; }
-  .buysellads #carbonads a.carbon-poweredby {
-    top: 5px; }
+.buysellads #carbonads > span, .buysellads #carbonads span.carbon-wrap {
+  height: auto; }
+.buysellads #carbonads a.carbon-text {
+  top: 5px;
+  left: 0;
+  width: 130px;
+  display: block;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  color: #E57373; }
+.buysellads #carbonads a.carbon-poweredby {
+  top: 5px; }
 
 .buysellads-header #carbonads > span, .buysellads-header #carbonads span.carbon-wrap {
   height: auto; }
