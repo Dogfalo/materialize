@@ -5473,6 +5473,12 @@ small {
       cursor: pointer;
       display: block; }
 
+#toptoast-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001; }
+
 #toast-container {
   display: block;
   position: fixed;
@@ -5530,11 +5536,9 @@ small {
   .toast.rounded {
     border-radius: 24px; }
   .toast.toptoast {
-    position: fixed;
-    left: 0;
-    width: 100%;
     margin: 0;
-    opacity: 0.95; }
+    opacity: 0.95;
+    float: none; }
   @media only screen and (max-width : 600px) {
     .toast {
       width: 100%;

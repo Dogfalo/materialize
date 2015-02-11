@@ -1,14 +1,31 @@
 function toast(message, displayLength, className, completeCallback) {
     className = className || "";
-    if ($('#toast-container').length == 0) {
+    
+    var container = null;
+
+    if (className == 'toptoast' || className.toLowerCase().indexOf("toptoast") >= 0){
+      if ($('#toptoast-container').length === 0) {
         // create notification container
-        var container = $('<div></div>')
-            .attr('id', 'toast-container');
-        $('body').append(container);
+        var containertop = $('<div></div>')
+            .attr('id', 'toptoast-container');
+        $('body').append(containertop);
+      }
+      container = $('#toptoast-container');
     }
+    else{
+      if ($('#toast-container').length === 0) {
+        // create notification container
+        var containertoast = $('<div></div>')
+            .attr('id', 'toast-container');
+        $('body').append(containertoast);
+      }
+      container = $('#toast-container');
+    }
+    
+
+    
 
     // Select and append toast
-    var container = $('#toast-container')
     var newToast = createToast(message);
     container.append(newToast);
 
