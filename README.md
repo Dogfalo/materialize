@@ -20,6 +20,16 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ##Changelog
 
+- v0.95.2 (Feb 10, 2015)
+  - Switches added
+  - Transition animation functions added
+  - ScrollFire Plugin added (fires functions dependent on scroll position)
+  - Responsive Video tag added
+  - Custom File Input Button added
+  - Modals has a fixed footer option
+  - SideNav implementation changed (needs 2 UL menus)
+
+
 - v0.95.1 (Jan 26, 2015)
   - Sidenav Fixes
   - Dropdown alignment/gutter options added
@@ -28,7 +38,6 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - HTML options through data-attributes
   - Site colors can be defined through Primary and Secondary color in Sass
   - Tables no longer resonsive by default
-
 
 - v0.95.0 (Jan 17, 2015)
   - Drag Out Menu fixed with Touch Interactions
