@@ -35,6 +35,7 @@
         $(modal).closeModal(options);
       });
 
+      $(modal).trigger('opening');
       $("#lean-overlay").css({ display : "block", opacity : 0 });
 
       $(modal).css({
@@ -54,6 +55,7 @@
           if (typeof(options.ready) === "function") {
             options.ready();
           }
+          $(modal).trigger('opened');
         }
       });
     }
@@ -61,12 +63,14 @@
 
   $.fn.extend({
     closeModal: function(options) {
+      var modal = this;
       var defaults = {
         out_duration: 200,
         complete: undefined
       }
       var options = $.extend(defaults, options);
 
+      $(modal).trigger('closing');
       $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
       $(this).fadeOut(options.out_duration, function() {
         $(this).css({ top: 0});
@@ -77,6 +81,7 @@
           options.complete();
         }
         $('#lean-overlay').remove();
+        $(modal).trigger('closed');
       });
     }
   })
