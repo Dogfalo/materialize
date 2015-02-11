@@ -36,7 +36,6 @@
       // Mouse In
     $(this).on({
       mouseenter: function(e) {
-        e.stopPropagation();
         var tooltip_delay = origin.data("delay");
         tooltip_delay = (tooltip_delay == undefined || tooltip_delay == "") ? options.delay : tooltip_delay;
         counter = 0;
