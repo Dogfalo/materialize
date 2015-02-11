@@ -576,6 +576,7 @@ pre[class*="language-"] {
 
 // Carbon Ads styling
 .toc-wrapper {
+  position: relative;
   margin-top: 42px;
 }
 
@@ -766,6 +767,12 @@ body.parallax-demo footer {
 .talign-demo {
   height: 100px;
   background-color: #ddd;
+}
+
+// Transitions demos
+#staggered-test li,
+#image-test {
+  @include opacity(0);
 }
 
 // Transifex Styling

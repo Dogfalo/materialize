@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -82,9 +82,11 @@
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
                   <li><a href="pushpin.html">Pushpin</a></li>
+                  <li><a href="scrollfire.html">ScrollFire</a></li>
                   <li><a href="scrollspy.html">Scrollspy</a></li>
                   <li><a href="side-nav.html">SideNav</a></li>
                   <li><a href="tabs.html">Tabs</a></li>
+                  <li><a href="transitions.html">Transitions</a></li>
                   <li><a href="waves.html">Waves</a></li>
                 </ul>
               </div>
@@ -255,7 +257,7 @@ $(".dropdown-button").dropdown();
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
-              <ul class="hide-on-med-and-down">
+              <ul class="right hide-on-med-and-down">
                 <li><a href="sass.html"><i class="mdi-action-search"></i></a></li>
                 <li><a href="components.html"><i class="mdi-action-view-module"></i></a></li>
                 <li><a href="javascript.html"><i class="mdi-navigation-refresh"></i></a></li>
@@ -273,7 +275,7 @@ $(".dropdown-button").dropdown();
     &lt;div class="nav-wrapper">
       &lt;div class="col s12">
         &lt;a href="#!" class="brand-logo">Logo&lt;/a>
-        &lt;ul class="hide-on-med-and-down">
+        &lt;ul class="right hide-on-med-and-down">
           &lt;li>&lt;a href="sass.html">&lt;i class="mdi-action-search">&lt;/i>&lt;/a>&lt;/li>
           &lt;li>&lt;a href="components.html">&lt;i class="mdi-action-view-module">&lt;/i>&lt;/a>&lt;/li>
           &lt;li>&lt;a href="javascript.html">&lt;i class="mdi-navigation-refresh">&lt;/i>&lt;/a>&lt;/li>
@@ -288,7 +290,7 @@ $(".dropdown-button").dropdown();
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
-              <ul class="hide-on-med-and-down">
+              <ul class="right hide-on-med-and-down">
                 <li><a href="sass.html"><i class="mdi-action-search left"></i>Link with Left Icon</a></li>
                 <li><a href="components.html"><i class="mdi-action-view-module right"></i>Link with Right Icon</a></li>
               </ul>
@@ -304,7 +306,7 @@ $(".dropdown-button").dropdown();
     &lt;div class="nav-wrapper">
       &lt;div class="col s12">
         &lt;a href="#!" class="brand-logo">Logo&lt;/a>
-        &lt;ul class="hide-on-med-and-down">
+        &lt;ul class="right hide-on-med-and-down">
           &lt;li>&lt;a href="sass.html">&lt;i class="mdi-action-search left">&lt;/i>Link with Left Icon&lt;/a>&lt;/li>
           &lt;li>&lt;a href="components.html">&lt;i class="mdi-action-view-module right">&lt;/i>Link with Right Icon&lt;/a>&lt;/li>
         &lt;/ul>
@@ -354,7 +356,7 @@ $(".dropdown-button").dropdown();
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
               <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-              <ul class="hide-on-med-and-down">
+              <ul class="right hide-on-med-and-down">
                 <li><a href="sass.html">Sass</i></a></li>
                 <li><a href="components.html">Components</a></li>
                 <li><a href="javascript.html">Javascript</a></li>
@@ -375,20 +377,25 @@ $(".dropdown-button").dropdown();
         <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="mdi-navigation-menu"></i>. Take a look at the example below to get this functionality. Add the entire <code class="language-markup">button-collapse</code> line to your <code class="language-markup">nav</code>.</p>
         <pre><code class="language-markup">
   &lt;nav>
-      &lt;div class="nav-wrapper">
-        &lt;a href="#" class="brand-logo">Logo&lt;/a>
-        &lt;ul id="nav-mobile" class="right hide-on-med-and-down">
-          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+    &lt;div class="nav-wrapper">
+      &lt;div class="col s12">
+        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+        &lt;a href="#" data-activates="mobile-demo" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+        &lt;ul class="right hide-on-med-and-down">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/i>&lt;/a>&lt;/li>
           &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">Javascript&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="mobile.html">Mobile&lt;/a>&lt;/li>
         &lt;/ul>
-
-        &lt;!-- Include this line below -->
-        &lt;a class="button-collapse" href="#" data-activates="nav-mobile">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        &lt;!-- End -->
-
+        &lt;ul class="side-nav" id="mobile-demo">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/i>&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="javascript.html">Javascript&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="mobile.html">Mobile&lt;/a>&lt;/li>
+        &lt;/ul>
       &lt;/div>
-    &lt;/nav>
+    &lt;/div>
+  &lt;/nav>
           </code></pre>
 
           <br>
@@ -457,7 +464,7 @@ $(".dropdown-button").dropdown();
       </div>
       <div class="footer-copyright">
         <div class="container">
-        © 2014 Materialize, All rights reserved.
+        © 2014-2015 Materialize, All rights reserved.
         <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>

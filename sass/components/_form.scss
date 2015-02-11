@@ -392,7 +392,7 @@ form p {
     margin-right: 10px;
     transition: background 0.3s ease;
     vertical-align: middle;
-    margin-left: 5px;
+    margin: 0px 16px;
 }
 .switch label .lever:after {
     content: "";
@@ -407,20 +407,26 @@ form p {
     top: -2px;
     transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
 }
+// Switch active style
+input[type=checkbox]:first-child:checked:not(:disabled) ~ .lever:active:after {
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 149, 135, 0.1);
+}
+input[type=checkbox]:first-child:not(:disabled) ~ .lever:active:after {
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+// Disabled Styles
 .switch label input[type=checkbox][disabled]:first-child + .lever:after,
 .switch label input[type=checkbox][disabled]:checked:first-child + .lever:after {
     background-color: #BDBDBD;
 }
-input[type=checkbox]:first-child:checked ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 149, 135, 0.1);
-}
-input[type=checkbox]:first-child ~ .lever:active:after,
-input[type=checkbox][disabled]:first-child ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
-}
+
 .switch label input[type=checkbox]:first-child:checked + .lever:after {
     left: 30px;
 }
+
+
+
 
 
 /***************

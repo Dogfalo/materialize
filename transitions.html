@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>SideNav - Materialize</title>
+    <title>Transitions - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -32,7 +32,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">SideNav</a></div>
+          <div class="nav-wrapper"><a class="page-title">Transitions</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
@@ -84,9 +84,9 @@
                   <li><a href="pushpin.html">Pushpin</a></li>
                   <li><a href="scrollfire.html">ScrollFire</a></li>
                   <li><a href="scrollspy.html">Scrollspy</a></li>
-                  <li class="active"><a href="side-nav.html">SideNav</a></li>
+                  <li><a href="side-nav.html">SideNav</a></li>
                   <li><a href="tabs.html">Tabs</a></li>
-                  <li><a href="transitions.html">Transitions</a></li>
+                  <li class="active"><a href="transitions.html">Transitions</a></li>
                   <li><a href="waves.html">Waves</a></li>
                 </ul>
               </div>
@@ -102,141 +102,51 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="introduction" class="section scrollspy">
-        <h4>Introduction</h4>
-        <p>This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
+      <div id="staggered" class="section scrollspy">
+        <p class="caption">We've made some custom animation functions that will transition your content. It's recommended to use this with our <a href="/scrollfire.html">ScrollFire Plugin</a> to make your content transition in as you scroll.</p>
+
+
+        <h4>showStaggeredList</h4>
+        <p>Use this to create a staggered reveal effect for any <code class="language-markup">UL</code> Tag with list items. Just make sure the list items in the <code class="language-markup">UL</code> are <code class="language-css">opacity: 0; to ensure the animation works correctly.</code></p>
+        <a href="#!" class="btn" onclick="showStaggeredList('#staggered-test')">Click Me</a>
+        <pre><code class="language-markup">
+  &lt;a href="#!" class="btn" onclick="showStaggeredList('#staggered-test')">Click Me&lt;/a>
+        </code></pre>
+        <ul id="staggered-test">
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+        </ul>
       </div>
 
-
-      <div id="structure" class="section scrollspy">
-        <h4>HTML Structure</h4>
-        <pre><code class="language-markup col s12">
-&lt;nav>
-  &lt;ul class="right hide-on-med-and-down">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-&lt;/nav>
+      <div id="fadeImage" class="section scrollspy">
+        <h4>fadeInImage</h4>
+        <p>Use this to fade in images. It also animates grayscale and brightness to give it a unique effect.</p>
+        <a href="#!" class="btn" onclick="fadeInImage('#image-test')">Click Me</a>
+        <pre><code class="language-markup">
+  &lt;a href="#!" class="btn" onclick="fadeInImage('#image-test')">Click Me&lt;/a>
         </code></pre>
-
-      <div id="initialization" class="section scrollspy">
-        <h4>jQuery Plugin Initialization</h4>
-        <pre><code class="language-javascript col s12">
-  // Initialize collapse button
-  $(".button-collapse").sideNav();
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
-        </code></pre>
-      </div>
-
-
-      <div id="options" class="scrollspy section">
-        <h4>Options</h4>
-        <p>You can customize the sideNav by setting your own width and the alignment of the menu. </p>
-        <pre><code class="language-javascript">
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 240
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: true // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
-    }
-  );
-      </code></pre>
-    </div>
-
-    <div id="method" class="section scrollspy">
-      <h4>jQuery Plugin Methods</h4>
-      <p>We have methods to show and hide your sidebar you can use to programmatically control your sidebar.</p>
-      <pre><code class="language-javascript col s12">
-// Show sideNav
-$('.button-collapse').sideNav('show');
-// Hide sideNav
-$('.button-collapse').sideNav('hide');
-      </code></pre>
-    </div>
-
-
-    <div id="Variations" class="scrollspy section">
-      <h2 class="header">Variations</h2>
-      <h4>Dropdown HTML Structure</h4>
-        <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-    &lt;li class="no-padding">
-      &lt;ul class="collapsible collapsible-accordion">
-        &lt;li>
-          &lt;a class="collapsible-header">Dropdown&lt;i class="mdi-navigation-arrow-drop-down">&lt;/i>&lt;/a>
-          &lt;div class="collapsible-body">
-            &lt;ul>
-              &lt;li>&lt;a href="#!">First&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="#!">Second&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="#!">Third&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
-            &lt;/ul>
-          &lt;/div>
-        &lt;/li>
-      &lt;/ul>
-    &lt;/li>
-  &lt;/ul>
-  &lt;ul class="right hide-on-med-and-down">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>&lt;/li>
-    &lt;ul id='dropdown1' class='dropdown-content'>
-      &lt;li>&lt;a href="#!">First&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="#!">Second&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="#!">Third&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
-    &lt;/ul>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        </code></pre>
-
-        <h4>Fullscreen HTML Structure</h4>
-        <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.button-collapse</code>. </p>
-
-        <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse show-on-large">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        </code></pre>
-
-        <h4>Fixed HTML Structure</h4>
-        <p>Add the class <code class="language-markup">fixed</code> to have the sideNav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sideNav on the left is an example of this.</p>
-        <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav fixed">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        </code></pre>
-        <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding on where the offset content will be, which in our case is in header, main and footer.</p>
-        <pre><code class="language-css col s12">
-  header, main, footer {
-    padding-left: 240px;
-  }
-
-  @media only screen and (max-width : 992px) {
-    header, main, footer {
-      padding-left: 0;
-    }
-  }
-        </code></pre>
+        <img id="image-test" class="responsive-img" src="https://unsplash.imgix.net/reserve/nE6neNVdRPSIasnmePZe_IMG_1950.jpg?dpr=1.25&fit=crop&fm=jpg&h=700&q=75&w=1050">
       </div>
     </div>
 
-
-    </div>
-
-
-    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
@@ -245,12 +155,8 @@ $('.button-collapse').sideNav('hide');
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#structure">Structure</a></li>
-            <li><a href="#initialization">Intialization</a></li>
-            <li><a href="#options">Plugin Options</a></li>
-            <li><a href="#method">Methods</a></li>
-            <li><a href="#variations">Variations</a></li>
+            <li><a href="#staggered">showStaggeredList</a></li>
+            <li><a href="#fadeImage">fadeInImage</a></li>
           </ul>
         </div>
       </div>

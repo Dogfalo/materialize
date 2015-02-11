@@ -5,21 +5,21 @@
 
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
-        <p class="caption">Pushpin is our fixed positioning plugin. You can check out our live examples: the fixed Table of Contents on the right. </p>
+        <p class="caption">ScrollFire is a jQuery Plugin that executes callback functions depending on how far into the page you've scrolled. We'll show you how you can use this plugin with many demos and examples.</p>
       </div>
-
 
 
       <div id="initialization" class="section scrollspy">
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript col s12">
-  $(document).ready(function(){
-    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
-  });
+
+  var options = [
+    {selector: '.class', offset: 200, callback: 'globalFunction()'' },
+    {selector: '.other-class', offset: 200, callback: 'globalFunction()'' },
+  ];
+  scrollFire(options);
         </code></pre>
       </div>
-
-
 
       <div id="options" class="section scrollspy">
         <h4>jQuery Plugin Options</h4>
@@ -33,25 +33,24 @@
 
           <tbody>
             <tr>
-              <td>Top</td>
-              <td>The distance in pixels from the top of the page where the element becomes fixed. (Default: 0)</td>
-            </tr>
-            <tr>
-              <td>Bottom</td>
-              <td>The distance in pixels from the top of the page where the elements stops being fixed. (Default: Infinity)</td>
+              <td>Selector</td>
+              <td>The selector for the element that is being tracked.</td>
             </tr>
             <tr>
               <td>Offset</td>
-              <td>The offset from the top the element will be fixed at. (Default: 0)</td>
+              <td>If this is 0, the callback will be fired when the selector element is at the very bottom of the user's window.</td>
+            </tr>
+            <tr>
+              <td>Callback</td>
+              <td>This string is the function call that you want to make when the user scrolls to the threshold. It will only be called once.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
+
     </div>
 
-
-    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">

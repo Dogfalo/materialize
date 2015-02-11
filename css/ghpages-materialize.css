@@ -6428,7 +6428,7 @@ form p:last-child {
   margin-right: 10px;
   transition: background 0.3s ease;
   vertical-align: middle;
-  margin-left: 5px; }
+  margin: 0px 16px; }
 
 .switch label .lever:after {
   content: "";
@@ -6443,14 +6443,14 @@ form p:last-child {
   top: -2px;
   transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease; }
 
-.switch label input[type=checkbox][disabled]:first-child + .lever:after, .switch label input[type=checkbox][disabled]:checked:first-child + .lever:after {
-  background-color: #BDBDBD; }
-
-input[type=checkbox]:first-child:checked ~ .lever:active:after {
+input[type=checkbox]:first-child:checked:not(:disabled) ~ .lever:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 149, 135, 0.1); }
 
-input[type=checkbox]:first-child ~ .lever:active:after, input[type=checkbox][disabled]:first-child ~ .lever:active:after {
+input[type=checkbox]:first-child:not(:disabled) ~ .lever:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.1); }
+
+.switch label input[type=checkbox][disabled]:first-child + .lever:after, .switch label input[type=checkbox][disabled]:checked:first-child + .lever:after {
+  background-color: #BDBDBD; }
 
 .switch label input[type=checkbox]:first-child:checked + .lever:after {
   left: 30px; }
@@ -8349,6 +8349,7 @@ pre[class*="language-"] {
     border-left: none; }
 
 .toc-wrapper {
+  position: relative;
   margin-top: 42px; }
 
 #carbonads {
@@ -8488,6 +8489,13 @@ body.parallax-demo footer {
 .talign-demo {
   height: 100px;
   background-color: #ddd; }
+
+#staggered-test li, #image-test {
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0; }
 
 #tx-live-lang-container {
   background-color: #fcfcfc;

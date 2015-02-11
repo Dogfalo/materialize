@@ -12,6 +12,7 @@
       <div id="structure" class="section scrollspy">
         <h4>HTML Structure</h4>
         <pre><code class="language-markup col s12">
+&lt;nav>
   &lt;ul class="right hide-on-med-and-down">
     &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
@@ -21,9 +22,48 @@
     &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
+&lt;/nav>
         </code></pre>
 
-        <h4>Dropdown HTML Structure</h4>
+      <div id="initialization" class="section scrollspy">
+        <h4>jQuery Plugin Initialization</h4>
+        <pre><code class="language-javascript col s12">
+  // Initialize collapse button
+  $(".button-collapse").sideNav();
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+        </code></pre>
+      </div>
+
+
+      <div id="options" class="scrollspy section">
+        <h4>Options</h4>
+        <p>You can customize the sideNav by setting your own width and the alignment of the menu. </p>
+        <pre><code class="language-javascript">
+  $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 240
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: true // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
+    }
+  );
+      </code></pre>
+    </div>
+
+    <div id="method" class="section scrollspy">
+      <h4>jQuery Plugin Methods</h4>
+      <p>We have methods to show and hide your sidebar you can use to programmatically control your sidebar.</p>
+      <pre><code class="language-javascript col s12">
+// Show sideNav
+$('.button-collapse').sideNav('show');
+// Hide sideNav
+$('.button-collapse').sideNav('hide');
+      </code></pre>
+    </div>
+
+
+    <div id="Variations" class="scrollspy section">
+      <h2 class="header">Variations</h2>
+      <h4>Dropdown HTML Structure</h4>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav">
     &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
@@ -91,44 +131,8 @@
   }
         </code></pre>
       </div>
-
-
-
-      <div id="initialization" class="section scrollspy">
-        <h4>jQuery Plugin Initialization</h4>
-        <pre><code class="language-javascript col s12">
-  // Initialize collapse button
-  $(".button-collapse").sideNav();
-  // Initialize collapsible
-  $('.collapsible').collapsible();
-        </code></pre>
-      </div>
-
-
-      <div id="options" class="scrollspy section">
-        <h4>Options</h4>
-        <p>You can customize the sideNav by setting your own width and the alignment of the menu. </p>
-        <pre><code class="language-javascript">
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 240
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: true // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
-    }
-  );
-      </code></pre>
     </div>
 
-
-      <div id="method" class="section scrollspy">
-        <h4>jQuery Plugin Methods</h4>
-        <p>We have methods to show and hide your sidebar you can use to programmatically control your sidebar.</p>
-        <pre><code class="language-javascript col s12">
-  // Show sideNav
-  $('.button-collapse').sideNav('show');
-  // Hide sideNav
-  $('.button-collapse').sideNav('hide');
-        </code></pre>
-      </div>
 
     </div>
 
@@ -147,6 +151,7 @@
             <li><a href="#initialization">Intialization</a></li>
             <li><a href="#options">Plugin Options</a></li>
             <li><a href="#method">Methods</a></li>
+            <li><a href="#variations">Variations</a></li>
           </ul>
         </div>
       </div>

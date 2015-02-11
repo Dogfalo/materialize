@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>SideNav - Materialize</title>
+    <title>ScrollFire - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -32,7 +32,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">SideNav</a></div>
+          <div class="nav-wrapper"><a class="page-title">ScrollFire</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
@@ -82,9 +82,9 @@
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
                   <li><a href="pushpin.html">Pushpin</a></li>
-                  <li><a href="scrollfire.html">ScrollFire</a></li>
+                  <li class="active"><a href="scrollfire.html">ScrollFire</a></li>
                   <li><a href="scrollspy.html">Scrollspy</a></li>
-                  <li class="active"><a href="side-nav.html">SideNav</a></li>
+                  <li><a href="side-nav.html">SideNav</a></li>
                   <li><a href="tabs.html">Tabs</a></li>
                   <li><a href="transitions.html">Transitions</a></li>
                   <li><a href="waves.html">Waves</a></li>
@@ -104,139 +104,52 @@
 
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
-        <p>This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
+        <p class="caption">ScrollFire is a jQuery Plugin that executes callback functions depending on how far into the page you've scrolled. We'll show you how you can use this plugin with many demos and examples.</p>
       </div>
 
-
-      <div id="structure" class="section scrollspy">
-        <h4>HTML Structure</h4>
-        <pre><code class="language-markup col s12">
-&lt;nav>
-  &lt;ul class="right hide-on-med-and-down">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-&lt;/nav>
-        </code></pre>
 
       <div id="initialization" class="section scrollspy">
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript col s12">
-  // Initialize collapse button
-  $(".button-collapse").sideNav();
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
+
+  var options = [
+    {selector: '.class', offset: 200, callback: 'globalFunction()'' },
+    {selector: '.other-class', offset: 200, callback: 'globalFunction()'' },
+  ];
+  scrollFire(options);
         </code></pre>
       </div>
 
+      <div id="options" class="section scrollspy">
+        <h4>jQuery Plugin Options</h4>
+        <table class="hoverable">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
 
-      <div id="options" class="scrollspy section">
-        <h4>Options</h4>
-        <p>You can customize the sideNav by setting your own width and the alignment of the menu. </p>
-        <pre><code class="language-javascript">
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 240
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: true // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
-    }
-  );
-      </code></pre>
-    </div>
-
-    <div id="method" class="section scrollspy">
-      <h4>jQuery Plugin Methods</h4>
-      <p>We have methods to show and hide your sidebar you can use to programmatically control your sidebar.</p>
-      <pre><code class="language-javascript col s12">
-// Show sideNav
-$('.button-collapse').sideNav('show');
-// Hide sideNav
-$('.button-collapse').sideNav('hide');
-      </code></pre>
-    </div>
-
-
-    <div id="Variations" class="scrollspy section">
-      <h2 class="header">Variations</h2>
-      <h4>Dropdown HTML Structure</h4>
-        <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-    &lt;li class="no-padding">
-      &lt;ul class="collapsible collapsible-accordion">
-        &lt;li>
-          &lt;a class="collapsible-header">Dropdown&lt;i class="mdi-navigation-arrow-drop-down">&lt;/i>&lt;/a>
-          &lt;div class="collapsible-body">
-            &lt;ul>
-              &lt;li>&lt;a href="#!">First&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="#!">Second&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="#!">Third&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
-            &lt;/ul>
-          &lt;/div>
-        &lt;/li>
-      &lt;/ul>
-    &lt;/li>
-  &lt;/ul>
-  &lt;ul class="right hide-on-med-and-down">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown&lt;i class="mdi-navigation-arrow-drop-down right">&lt;/i>&lt;/a>&lt;/li>
-    &lt;ul id='dropdown1' class='dropdown-content'>
-      &lt;li>&lt;a href="#!">First&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="#!">Second&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="#!">Third&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
-    &lt;/ul>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        </code></pre>
-
-        <h4>Fullscreen HTML Structure</h4>
-        <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.button-collapse</code>. </p>
-
-        <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse show-on-large">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        </code></pre>
-
-        <h4>Fixed HTML Structure</h4>
-        <p>Add the class <code class="language-markup">fixed</code> to have the sideNav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sideNav on the left is an example of this.</p>
-        <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav fixed">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="mdi-navigation-menu">&lt;/i>&lt;/a>
-        </code></pre>
-        <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding on where the offset content will be, which in our case is in header, main and footer.</p>
-        <pre><code class="language-css col s12">
-  header, main, footer {
-    padding-left: 240px;
-  }
-
-  @media only screen and (max-width : 992px) {
-    header, main, footer {
-      padding-left: 0;
-    }
-  }
-        </code></pre>
+          <tbody>
+            <tr>
+              <td>Selector</td>
+              <td>The selector for the element that is being tracked.</td>
+            </tr>
+            <tr>
+              <td>Offset</td>
+              <td>If this is 0, the callback will be fired when the selector element is at the very bottom of the user's window.</td>
+            </tr>
+            <tr>
+              <td>Callback</td>
+              <td>This string is the function call that you want to make when the user scrolls to the threshold. It will only be called once.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
 
 
     </div>
 
-
-    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
@@ -246,11 +159,8 @@ $('.button-collapse').sideNav('hide');
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#structure">Structure</a></li>
-            <li><a href="#initialization">Intialization</a></li>
-            <li><a href="#options">Plugin Options</a></li>
-            <li><a href="#method">Methods</a></li>
-            <li><a href="#variations">Variations</a></li>
+            <li><a href="#initialization">Initialization</a></li>
+            <li><a href="#options">Options</a></li>
           </ul>
         </div>
       </div>

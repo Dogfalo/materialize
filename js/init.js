@@ -57,12 +57,6 @@
     checkForChanges();
 
 
-
-    // Tabs Fixed
-    if ($('.tabs-wrapper').length) {
-      $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
-    }
-
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
