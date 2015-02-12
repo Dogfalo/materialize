@@ -1956,7 +1956,8 @@ ul {
 
 a {
   color: #039be5;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent; }
 
 .valign-wrapper {
   display: -webkit-box;
@@ -2506,8 +2507,8 @@ span.badge {
 
 @font-face {
   font-family: "Material-Design-Icons";
-  src: url("../font/material-design-icons/Material-Design-Icons.eot?-g7cqhn");
-  src: url("../font/material-design-icons/Material-Design-Icons.eot?#iefix-g7cqhn") format("embedded-opentype"), url("../font/material-design-icons/Material-Design-Icons.woff?-g7cqhn") format("woff"), url("../font/material-design-icons/Material-Design-Icons.ttf?-g7cqhn") format("truetype"), url("../font/material-design-icons/Material-Design-Icons.svg?-g7cqhn#Material-Design-Icons") format("svg");
+  src: url("../font/material-design-icons/Material-Design-Icons.eot");
+  src: url("../font/material-design-icons/Material-Design-Icons.eot?#iefix") format("embedded-opentype"), url("../font/material-design-icons/Material-Design-Icons.woff") format("woff"), url("../font/material-design-icons/Material-Design-Icons.ttf") format("truetype"), url("../font/material-design-icons/Material-Design-Icons.svg#Material-Design-Icons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -7237,7 +7238,8 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
       .slider ul.slides li img {
         height: 100%;
         width: 100%;
-        background-size: cover; }
+        background-size: cover;
+        background-position: center; }
       .slider ul.slides li .caption {
         color: #fff;
         position: absolute;

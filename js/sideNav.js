@@ -191,9 +191,9 @@
           if (e.gesture.pointerType === "touch") {
             var velocityX = e.gesture.velocityX;
             panning = false;
-
             if (options.edge === 'left') {
-              if (menuOut || velocityX < -0.5) {
+              // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
+              if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
@@ -208,7 +208,7 @@
               }
             }
             else {
-              if (menuOut || velocityX > 0.5) {
+              if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 $('.drag-target').css({width: '50%', right: '', left: 0});

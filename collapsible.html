@@ -4,6 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
     <title>Collapsible - Materialize</title>
     <!-- Favicons-->
@@ -93,8 +95,8 @@
             </li>
           </ul>
         </li>
-        <li class="bold"><a href="http://materializecss.com/mobile.html">Mobile</a></li>
-        <li class="bold"><a href="showcase.html">Showcase</a></li>
+        <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
+        <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
       </ul>
     </header>
     <main><div class="container">
@@ -154,6 +156,27 @@
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
   });
+        </code></pre>
+
+        <br><br>
+        <h5>Preselected Section</h5>
+        <p>If you want a collapsible with a preopened section just add the <code class="language-markup">active</code> class to the collapsible-header. </p>
+        <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+          </li>
+          <li>
+            <div class="collapsible-header active"><i class="mdi-maps-place"></i>Second</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+          </li>
+        </ul>
+        <pre><code class="language-markup">
+  &lt;div class="collapsible-header active">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
         </code></pre>
       </div>
 
