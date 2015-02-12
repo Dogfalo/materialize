@@ -6,7 +6,6 @@
 
     $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn', function(e) {
       var $this = $(this);
-      console.log(e);
 
       $this.find('ul a.btn-floating').velocity(
         { scaleY: ".4", scaleX: ".4", translateY: "40px"},
