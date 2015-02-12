@@ -126,7 +126,7 @@
         var menuOut = false;
 
         $('.drag-target').hammer({
-          prevent_default: true
+          prevent_default: false
         }).bind('tap', function(e) {
           // capture overlay click on drag target
           // if (menuOut && !panning) {
@@ -237,7 +237,6 @@
               // disable_scroll();
 
               if (options.edge === 'left') {
-                console.log('showing');
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
