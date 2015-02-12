@@ -7228,7 +7228,8 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
       .slider ul.slides li img {
         height: 100%;
         width: 100%;
-        background-size: cover; }
+        background-size: cover;
+        background-position: center; }
       .slider ul.slides li .caption {
         color: #fff;
         position: absolute;
