@@ -35,7 +35,6 @@
 
       // This function will transition the slide to any index of the next slide
       function moveToSlide(index) {
-        console.log("Move to slide");
         if (index >= $slides.length) index = 0;
         else if (index < 0) index = $slides.length -1;
 
@@ -94,7 +93,7 @@
       // Move img src into background-image
       $slides.find('img').each(function () {
         $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
-        $(this).attr('src', '');
+        $(this).attr('src', 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
       });
 
       // dynamically add indicators
