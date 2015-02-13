@@ -32,8 +32,12 @@
             $this.children("img").first().css('display', 'block');
           }
         }
-        $this.children("img").load(function () {
+
+        // Wait for image load
+        $this.children("img").one("load", function() {
           updateParallax(true);
+        }).each(function() {
+          if(this.complete) $(this).load();
         });
 
         $(window).scroll(function() {
