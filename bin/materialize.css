@@ -6043,7 +6043,7 @@ select:focus {
 
 button:focus {
   outline: none;
-  background-color: #30d0c1; }
+  background-color: #2ab7a9; }
 
 label {
   font-size: 0.8rem;
@@ -7499,7 +7499,7 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
   width: 22.5%; }
 
 .picker__select--month:focus, .picker__select--year:focus {
-  border-color: #0089ec; }
+  border-color: rgba(0, 0, 0, 0.05); }
 
 /**
  * The month navigation buttons.
@@ -7519,11 +7519,6 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 .picker__nav--next {
   right: -1em;
   padding-left: 1.25em; }
-
-.picker__nav--prev:hover, .picker__nav--next:hover {
-  cursor: pointer;
-  color: #000000;
-  background: #b1dcfb; }
 
 .picker__nav--disabled, .picker__nav--disabled:hover, .picker__nav--disabled:before, .picker__nav--disabled:before:hover {
   cursor: default;
@@ -7596,8 +7591,7 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
   font-weight: 500; }
 
 .picker__day--highlighted:hover, .picker--focused .picker__day--highlighted {
-  cursor: pointer;
-  color: #000000; }
+  cursor: pointer; }
 
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
   border-radius: 50%;
@@ -7645,7 +7639,7 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 
 .picker__button--today:focus, .picker__button--clear:focus, .picker__button--close:focus {
   background: #b1dcfb;
-  border-color: #0089ec;
+  border-color: rgba(0, 0, 0, 0.05);
   outline: none; }
 
 .picker__button--today:before, .picker__button--clear:before, .picker__button--close:before {
@@ -7699,8 +7693,13 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
   padding-bottom: 15px;
   font-weight: 300; }
 
+.picker__nav--prev:hover, .picker__nav--next:hover {
+  cursor: pointer;
+  color: #000000;
+  background: #a1ded8; }
+
 .picker__weekday-display {
-  background-color: #00897b;
+  background-color: #1f897f;
   padding: 10px;
   font-weight: 200;
   letter-spacing: 0.5;
@@ -7717,7 +7716,7 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 
 .picker__year-display {
   font-size: 1.8rem;
-  color: #80cbc4; }
+  color: rgba(255, 255, 255, 0.4); }
 
 .picker__box {
   padding: 0; }
@@ -7738,23 +7737,26 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
   font-weight: 400;
   border: 1px solid transparent; }
 
-.picker--focused .picker__day--highlighted {
+.picker__day.picker__day--today {
   color: #26a69a; }
+
+.picker__day.picker__day--today.picker__day--selected {
+  color: #fff; }
 
 .picker__weekday {
   font-size: 0.9rem; }
 
-.picker--focused .picker__day--selected {
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
   border-radius: 50%;
   -webkit-transform: scale(0.9);
   -moz-transform: scale(0.9);
   -ms-transform: scale(0.9);
   -o-transform: scale(0.9);
   transform: scale(0.9);
-  background-color: #009688;
+  background-color: #26a69a;
   color: #ffffff; }
-  .picker--focused .picker__day--selected.picker__day--outfocus {
-    background-color: #b2dfdb; }
+  .picker__day--selected.picker__day--outfocus, .picker__day--selected:hover.picker__day--outfocus, .picker--focused .picker__day--selected.picker__day--outfocus {
+    background-color: #a1ded8; }
 
 .picker__footer {
   text-align: right;
@@ -7778,6 +7780,9 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 .picker__nav--next:before {
   border-right: 0;
   border-left: 0.75em solid #676767; }
+
+button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
+  background-color: #a1ded8; }
 
 /* ==========================================================================
    $BASE-TIME-PICKER

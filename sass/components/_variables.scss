@@ -67,6 +67,13 @@ $switch-checked-lever-bg: desaturate(lighten($secondary-color, 25%), 25%) !defau
 $switch-unchecked-bg: #F1F1F1 !default;
 $switch-unchecked-lever-bg: #818181 !default;
 
+// Date Picker
+$datepicker-weekday-bg: darken($secondary_color, 7%) !default;
+$datepicker-date-bg: $secondary_color !default;
+$datepicker-year: rgba(255, 255, 255, .4) !default;
+$datepicker-focus: rgba(0,0,0, .05) !default;
+$datepicker-selected: $secondary-color;
+$datepicker-selected-outfocus: desaturate(lighten($secondary-color, 35%), 15%);
 
 
 /*** Global ***/

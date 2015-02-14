@@ -4,7 +4,7 @@ select:focus {
 }
 button:focus {
   outline: none;
-  background-color: lighten($button-color, 10%);
+  background-color: lighten($button-color, 4%);
 }
 
 label {

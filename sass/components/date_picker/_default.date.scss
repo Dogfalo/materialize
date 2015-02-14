@@ -53,7 +53,7 @@
 }
 .picker__select--month:focus,
 .picker__select--year:focus {
-  border-color: #0089ec;
+  border-color: $datepicker-focus;
 }
 /**
  * The month navigation buttons.
@@ -92,12 +92,6 @@
 //  }
 //}
 
-.picker__nav--prev:hover,
-.picker__nav--next:hover {
-  cursor: pointer;
-  color: #000000;
-  background: #b1dcfb;
-}
 .picker__nav--disabled,
 .picker__nav--disabled:hover,
 .picker__nav--disabled:before,
@@ -208,7 +202,7 @@
 .picker__day--highlighted:hover,
 .picker--focused .picker__day--highlighted {
   cursor: pointer;
-  color: #000000;
+//  color: #000000;
 //  background: #b1dcfb;
 //  font-weight: 500;
 }
@@ -220,8 +214,6 @@
 //  Circle background
    border-radius: 50%;
   @include transform(scale(.75));
-
-
   background: #0089ec;
   color: #ffffff;
 }
@@ -270,7 +262,7 @@
 .picker__button--clear:focus,
 .picker__button--close:focus {
   background: #b1dcfb;
-  border-color: #0089ec;
+  border-color: $datepicker-focus;
   outline: none;
 }
 .picker__button--today:before,
@@ -325,14 +317,21 @@
 
 .picker__date-display {
   text-align: center;
-  background-color: color("teal", "lighten-1");
+  background-color: $datepicker-date-bg;
   color: #fff;
   padding-bottom: 15px;
   font-weight: 300;
 }
 
+.picker__nav--prev:hover,
+.picker__nav--next:hover {
+  cursor: pointer;
+  color: #000000;
+  background: $datepicker-selected-outfocus;
+}
+
 .picker__weekday-display {
-  background-color: color("teal", "darken-1");
+  background-color: $datepicker-weekday-bg;
   padding: 10px;
   font-weight: 200;
   letter-spacing: .5;
@@ -351,7 +350,7 @@
 }
 .picker__year-display {
   font-size: 1.8rem;
-  color: color("teal", "lighten-3");
+  color: $datepicker-year;
 }
 
 .picker__box {
@@ -380,8 +379,12 @@
 }
 
 //Today style
-.picker--focused .picker__day--highlighted {
-  color: color("teal", "lighten-1");
+.picker__day.picker__day--today {
+  color: $datepicker-selected;
+}
+
+.picker__day.picker__day--today.picker__day--selected {
+  color: #fff;
 }
 
 // Table Header
@@ -390,13 +393,15 @@
 }
 
 
+.picker__day--selected,
+.picker__day--selected:hover,
 .picker--focused .picker__day--selected {
   // Circle background
   border-radius: 50%;
   @include transform(scale(.9));
-  background-color: color("teal", "base");
+  background-color: $datepicker-selected;
   &.picker__day--outfocus {
-    background-color: color("teal", "lighten-4");
+    background-color: $datepicker-selected-outfocus;
   }
   color: #ffffff;
 }
@@ -410,7 +415,7 @@
 .picker__close, .picker__today {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: color("teal", "lighten-1");
+  color: $datepicker-selected;
 }
 
 //month nav buttons
@@ -428,4 +433,7 @@
 .picker__nav--next:before {
   border-right: 0;
   border-left: 0.75em solid #676767;
+}
+button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
+  background-color: $datepicker-selected-outfocus;
 }
