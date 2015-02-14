@@ -378,19 +378,18 @@ form p {
     height: 0;
 }
 .switch label input[type=checkbox]:checked + .lever {
-    background-color: #7bc5be;
+    background-color: $switch-checked-lever-bg;
 }
 .switch label input[type=checkbox]:checked + .lever:after {
-    background-color: #009587;
+    background-color: $switch-bg-color;
 }
-.switch label .lever,
-.switch label input[type=checkbox][disabled] + .lever {
+.switch label .lever {
     content: "";
     display: inline-block;
     position: relative;
-    width: 45px;
+    width: 40px;
     height: 15px;
-    background-color: #818181;
+    background-color: $switch-unchecked-lever-bg;
     border-radius: 15px;
     margin-right: 10px;
     transition: background 0.3s ease;
@@ -401,13 +400,13 @@ form p {
     content: "";
     position: absolute;
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #F1F1F1;
-    border-radius: 20px;
+    width: 21px;
+    height: 21px;
+    background-color: $switch-unchecked-bg;
+    border-radius: 21px;
     box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
     left: -5px;
-    top: -2px;
+    top: -3px;
     transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
 }
 // Switch active style
@@ -418,7 +417,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
        box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
 }
 .switch label input[type=checkbox]:checked + .lever:after {
-    left: 30px;
+    left: 24px;
 }
 
 // Disabled Styles
@@ -428,7 +427,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 .switch label input[type=checkbox][disabled] + .lever:after,
 .switch label input[type=checkbox][disabled]:checked + .lever:after {
-    background-color: #BDBDBD;
+    background-color: $input-disabled-solid-color;
 }
 
 

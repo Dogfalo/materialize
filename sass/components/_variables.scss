@@ -54,11 +54,20 @@ $input-success-color: $success-color !default;
 $input-focus-color: $secondary-color !default;
 $label-font-size: .8rem !default;
 $input-disabled-color: rgba(0,0,0, .26) !default;
+$input-disabled-solid-color: #BDBDBD !default;
 
 
 // Radio Buttons
 $radio-fill-color: $secondary-color !default;
 $radio-empty-color: #5a5a5a !default;
+
+// Switches
+$switch-bg-color: $secondary-color !default;
+$switch-checked-lever-bg: desaturate(lighten($secondary-color, 25%), 25%) !default;
+$switch-unchecked-bg: #F1F1F1 !default;
+$switch-unchecked-lever-bg: #818181 !default;
+
+
 
 /*** Global ***/
 // Media Query Ranges
