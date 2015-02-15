@@ -29,7 +29,6 @@
          offset: 200,
          callback: 'showStaggeredList("ul.staggered-list.' + label + '")'});
     });
-    console.log(staggeredListOptions);
     scrollFire(staggeredListOptions);
 
 
