@@ -117,6 +117,7 @@
           }
 
           // enable_scroll();
+          menu_id.removeClass('active');
         }
 
 
@@ -235,6 +236,7 @@
             }
             else {
               // disable_scroll();
+              menu_id.addClass('active');
 
               if (options.edge === 'left') {
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
@@ -273,9 +275,18 @@
 
     },
     show : function() {
+      var menu_id = $("#"+ this.attr('data-activates'));
+      if (menu_id.hasClass('active')) {
+      	return;
+      }
+
       this.trigger('click');
     },
     hide : function() {
+      if ($('#sidenav-overlay').length == 0) {
+      	return;
+      }
+
       $('#sidenav-overlay').trigger('click');
     }
   };
