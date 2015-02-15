@@ -133,12 +133,17 @@
         </code></pre>
 
         <h4>Styling Toasts</h4>
-        <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+        <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded and a top class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
 
         <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
-
+        <a class="waves-effect waves-light btn " onclick="toast('I am a toptoast', 4000, 'toptoast')">Top Toast</a>
+        <a class="waves-effect waves-light btn " onclick="toast('I am a styled toptoast', 4000, 'toptoast  teal grey-text text-lighten-5')">Styled Toast</a>
+        
         <pre><code class="language-javascript">
-  toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+  // 'rounded' is the class I'm applying to the toast        
+  toast('I am a toast!', 3000, 'rounded') 
+  toast('I am a toptoast', 4000, 'toptoast')
+  toast('I am a styled toptoast ', 4000, 'toptoast  teal grey-text text-lighten-5')
         </code></pre>
       </div>
 

@@ -1,3 +1,10 @@
+#toptoast-container {
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 1001;
+}
+
 #toast-container {
   display:block;
   position: fixed;
@@ -48,6 +55,10 @@
 
   &.rounded{
     border-radius: 24px;
+  }
+  &.toptoast{
+    margin: 0;
+    float:none;
   }
 
   @media #{$small-and-down} {
