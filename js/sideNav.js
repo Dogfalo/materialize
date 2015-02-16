@@ -58,7 +58,11 @@
         if (options.menuWidth != 240) {
           menu_id.css('width', options.menuWidth);
           if (!menu_id.hasClass('fixed')) {
-            menu_id.css('left', -1 * (options.menuWidth + 10));
+            if(options.edge === 'left'){
+                menu_id.css('left', -1 * (options.menuWidth + 10));
+            }else{
+                menu_id.css('right', -1 * (options.menuWidth + 10));
+            }
           }
         }
 
