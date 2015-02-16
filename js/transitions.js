@@ -21,7 +21,6 @@
     var staggeredListOptions = [];
     $('ul.staggered-list').each(function (i) {
 
-      console.log(i);
       var label = 'scrollFire-' + i;
       $(this).addClass(label);
       staggeredListOptions.push(
@@ -78,7 +77,6 @@
 
                 if (brightness_setting < 100)
                   brightness_setting = 100;
-                console.log(grayscale_setting)
                 if (now >= 0) {
                   $(this).css({
                       "-webkit-filter": "grayscale("+grayscale_setting+")" + "brightness("+brightness_setting+"%)",
