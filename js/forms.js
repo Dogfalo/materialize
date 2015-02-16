@@ -86,11 +86,9 @@
       }
     });
       $('body').on('keyup keydown',text_area_selector , function () {
-        // console.log($(this).val());
         content = $(this).val();
         content = content.replace(/\n/g, '<br>');
         hiddenDiv.html(content + '<br>');
-        // console.log(hiddenDiv.html());
         $(this).css('height', hiddenDiv.height());
       });
 
