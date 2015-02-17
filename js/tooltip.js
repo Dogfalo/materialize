@@ -24,7 +24,7 @@
       // Create tooltip
       var newTooltip = $('<div></div>');
       newTooltip.addClass('material-tooltip').append(tooltip_text);
-      newTooltip.appendTo($('body'));
+      newTooltip.appendTo($(this).parent());
 
       var backdrop = $('<div></div>').addClass('backdrop');
       backdrop.appendTo(newTooltip);
