@@ -161,21 +161,20 @@
               if (x < (options.menuWidth / 2)) { menuOut = false; }
               // Right Direction
               else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+
+              menu_id.css('left', (x - options.menuWidth));
             }
             else {
               // Left Direction
               if (x < ($(window).width() - options.menuWidth / 2)) { menuOut = true; }
               // Right Direction
               else if (x >= ($(window).width() - options.menuWidth / 2)) { menuOut = false; }
-            }
 
-
-            if (options.edge === 'left') {
-              menu_id.css('left', (x - options.menuWidth));
-            }
-            else {
               menu_id.css('right', -1 *(x - options.menuWidth / 2));
             }
+
+
+
 
             // Percentage overlay
             if (options.edge === 'left') {
@@ -187,6 +186,7 @@
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }
+
         }).bind('panend', function(e) {
           if (e.gesture.pointerType === "touch") {
             var velocityX = e.gesture.velocityX;
@@ -228,13 +228,12 @@
         });
 
           $this.click(function() {
-            if (menu_id.hasClass('active')) {
+            if (menuOut == true) {
               menuOut = false;
               panning = false;
               removeMenu();
             }
             else {
-              // disable_scroll();
 
               if (options.edge === 'left') {
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
@@ -243,6 +242,7 @@
               else {
                 $('.drag-target').css({width: '50%', right: '', left: 0});
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                menu_id.css('left','');
               }
 
               var overlay = $('<div id="sidenav-overlay"></div>');

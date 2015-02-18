@@ -2,7 +2,7 @@
   $(document).ready(function() {
 
     // jQuery reverse
-    jQuery.fn.reverse = [].reverse;
+    $.fn.reverse = [].reverse;
 
     $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn', function(e) {
       var $this = $(this);
