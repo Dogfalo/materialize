@@ -169,6 +169,24 @@
 
       </div> <!-- End of footer section -->
 
+      <div id="sticky-footer" class="section scrollspy">
+        <h2 class="header">Sticky Footer</h2>
+        <p>A sticky footer always stays on the bottom of the page regardless of how little content is on the page. However, this footer will be pushed down if there is a lot of content, so it is different from a fixed footer. Add the following code to your CSS file.</p>
+        <p>Note: This may cause issues in Internet Explorer which has weak support for flexbox.</p>
+      </div>
+
+      <pre><code class="language-css">
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      </code></pre>
+
     </div>
 
     <div class="col hide-on-small-only m3 l2">
@@ -180,6 +198,7 @@
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#footer">Footer</a></li>
+            <li><a href="#sticky-footer">Sticky Footer</a></li>
           </ul>
         </div>
       </div>
