@@ -5357,6 +5357,12 @@ small {
     .flow-text {
       line-height: 2.88rem; } }
 
+.dismiss {
+  -webkit-transform: translateX(300%);
+  -webkit-transition: -webkit-transform 650ms ease-in-out;
+  transform: translateX(300%);
+  transition: transform 650ms ease-in-out; }
+
 .card-panel {
   padding: 20px;
   margin: 0.5rem 0 1rem 0;

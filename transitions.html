@@ -159,12 +159,40 @@
           <ul class="section table-of-contents">
             <li><a href="#staggered">showStaggeredList</a></li>
             <li><a href="#fadeImage">fadeInImage</a></li>
+            <li><a href="#dismissCard">dismissCard</a></li>
           </ul>
         </div>
       </div>
     </div>
 
   </div>
+
+  <div class="row section scrollspy" id="dismissCard">
+  <div class="col s12 m9 l10">
+    <h4>dismissCard</h4>
+    <p>Use this method to create a swipe-right animation, after this the card will be removed.</p>
+    <div id="dismissableCard" class="card ">
+      <div class="card-content">
+        <span class="card-title black-text">Dismissable card.</span>
+        <p>I am a very simple card. dismiss me!</p>
+      </div>
+      <div class="card-action">
+        <a onclick="dismissCard('#dismissableCard')" href="#!">Dismiss me.</a>
+      </div>
+    </div>
+    <pre><code class="language-markup">
+  &lt;div id="dismissableCard" class="card ">
+    &lt;div class="card-content">
+      &lt;span class="card-title black-text">Dismissable card.&lt;/span>
+      &lt;p>I am a very simple card. dismiss me!&lt;/p>
+    &lt;/div>
+    &lt;div class="card-action">
+      &lt;a onclick="dismissCard('#dismissableCard')" href="#!">Dismiss me.&lt;/a>
+    &lt;/div>
+  &lt;/div>
+      </code></pre>
+  </div>
+</div>
 </div>
 
 

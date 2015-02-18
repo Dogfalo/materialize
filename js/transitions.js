@@ -57,7 +57,16 @@
     //     { duration: 800, easing: [60, 10] });
     // });
 
-
+    //DismissCard animation    
+    dismissCard = function (selector){
+      $(selector).addClass("dismiss");
+    };
+    $(".card").on("transitionend", function(e){
+      if (e.currentTarget.className.indexOf("dismiss") >=0){
+        $(this).remove();
+      }
+    });
+    
     // Image transition function
     fadeInImage =  function(selector){
       var element = $(selector);
