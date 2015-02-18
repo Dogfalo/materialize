@@ -165,6 +165,35 @@
         </code></pre>
       </div>
 
+      <div id="center" class="section scrollspy">
+        <h2 class="header">Centering the logo</h2>
+        <p>The logo will center itself on medium and down screens, but if you want the logo to always be centered, add the <code class="language-markup">center</code> class to your <code class="language-markup">&lt;a class="brand-logo"></code>. You will have to make sure yourself that links do not overlap if you use this.</p>
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="brand-logo center">Logo</a>
+              <ul class="left hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="components.html">Components</a></li>
+                <li><a href="javascript.html">JavaScript</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav><br>
+        <pre><code class="language-markup">
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;a href="#" class="brand-logo center">Logo&lt;/a>
+      &lt;ul id="nav-mobile" class="left hide-on-med-and-down">
+        &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/nav>
+        </code></pre>
+      </div>
+
       <div id="navbar-fixed" class="section scrollspy">
 
         <h2 class="header">Fixed Navbar</h2>
@@ -420,6 +449,7 @@ $(".dropdown-button").dropdown();
           <ul class="section table-of-contents">
             <li><a href="#right">Right Aligned</a></li>
             <li><a href="#left">Left Aligned</a></li>
+            <li><a href="#center">Center Logo</a></li>
             <li><a href="#navbar-fixed">Fixed Navbar</a></li>
             <li><a href="#navbar-dropdown">Dropdown Menu</a></li>
             <li><a href="#icons">Icon Links</a></li>
