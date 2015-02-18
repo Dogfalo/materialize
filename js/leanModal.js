@@ -67,6 +67,8 @@
       }
       var options = $.extend(defaults, options);
 
+      $('.modal-close').off();
+
       $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
       $(this).fadeOut(options.out_duration, function() {
         $(this).css({ top: 0});
