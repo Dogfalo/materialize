@@ -4785,11 +4785,6 @@ span.badge {
     display: table;
     clear: both; }
   .row .col {
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    transition: all 0.3s;
     float: left;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
