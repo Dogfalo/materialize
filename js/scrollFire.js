@@ -14,11 +14,10 @@
         var elementOffset = $(selector).offset().top;
 
         if (windowScroll > (elementOffset + offset)) {
-          if ($(selector).data('done') === undefined) {
+          if (value.done != true) {
             var callbackFunc = new Function(callback);
             callbackFunc();
-
-            $(selector).data('done', true);
+            value.done = true;
           }
         }
 

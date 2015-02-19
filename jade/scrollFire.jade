@@ -11,3 +11,12 @@ html(lang="en")
       include page-contents/scrollfire_content.html
     include _footer.html
     include _scripts.html
+    //- Scrollfire Script
+    script(type='text/javascript').
+      var options = [
+        {selector: '#staggered-test', offset: 50, callback: 'toast("This is our ScrollFire Demo!", 1500); $("#call-1").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500}); ' },
+        {selector: '#staggered-test', offset: 205, callback: 'toast("Please continue scrolling!", 1500); $("#call-2").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
+        {selector: '#staggered-test', offset: 500, callback: 'showStaggeredList("#staggered-test"); $("#call-3").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
+        {selector: '#image-test', offset: 500, callback: 'fadeInImage("#image-test"); $("#call-4").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' }
+      ];
+      scrollFire(options);
