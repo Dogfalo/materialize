@@ -46,7 +46,6 @@
             setTimeout(checkForChanges, 500);
           }
           else {
-            console.log("no ad");
             var donateAd = $('<div id="carbonads"><span><a class="carbon-text" href="#" onclick="document.getElementById("paypal_donate").submit();"><img src="images/donate.png" /> Help support us by turning off adblock. If you still prefer to keep adblock on for this page but still want to support us, feel free to donate. Any little bit helps.</a></form></span></div>');
 
             $bsa.append(donateAd);
@@ -71,7 +70,6 @@
           $('.github-commit').find('.date').html(date);
           $('.github-commit').find('.sha').html(sha).attr('href', data.html_url);
 
-          // console.log(returndata, returndata.commit.author.date, returndata.sha);
         }
       });
     }
