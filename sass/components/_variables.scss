@@ -1,13 +1,7 @@
 /*** Colors ***/
 $primary-color: color("materialize-red", "lighten-2") !default;
-$primary-color-light: false !default;
-$primary-color-dark: false !default;
-@if not $primary-color-light {
-  $primary-color-light: lighten($primary-color, 15%);
-}
-@if not $primary-color-dark {
-  $primary-color-dark: darken($primary-color, 15%);
-}
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
 
 $secondary-color: color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
