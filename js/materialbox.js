@@ -210,7 +210,6 @@
 
               origin.css({
                 height: '',
-                position: '',
                 top: '',
                 left: '',
                 width: '',
