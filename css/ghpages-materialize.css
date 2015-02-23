@@ -2265,14 +2265,16 @@ td, th {
  }
 
 .collection {
-  background-color: #fff;
+  background-color: #999;
   margin: 0.5rem 0 1rem 0;
   border: 1px solid #e0e0e0;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box; }
+  background-clip: padding-box;
+  overflow: hidden; }
   .collection .collection-item {
+    background-color: #fff;
     line-height: 1.5rem;
     padding: 10px 20px;
     margin: 0px;
@@ -2317,8 +2319,9 @@ td, th {
     transition: 0.25s;
     color: #26a69a; }
     .collection a.collection-item:not(.active):hover {
-      background-color: rgba(0, 0, 0, 0.08); }
+      background-color: #ddd; }
   .collection.with-header .collection-header {
+    background-color: #fff;
     border-bottom: 1px solid #e0e0e0;
     padding: 10px 20px; }
   .collection.with-header .collection-item {

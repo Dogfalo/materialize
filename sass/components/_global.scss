@@ -416,12 +416,14 @@ td, th{
 
 // Collections
 .collection {
-  background-color: $collection-bg-color;
+  background-color: #999;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   border: 1px solid $collection-border-color;
   @include border-radius(2px);
+  overflow: hidden;
 
   .collection-item {
+    background-color: $collection-bg-color;
     line-height: 1.5rem;
     padding: 10px 20px;
     margin: 0px;
@@ -490,6 +492,7 @@ td, th{
 
   &.with-header {
     .collection-header {
+      background-color: $collection-bg-color;
       border-bottom: 1px solid $collection-border-color;
       padding: 10px 20px;
     }
