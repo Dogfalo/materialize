@@ -131,9 +131,36 @@ video.responsive-video {
 }
 
 
+// Pagination
+
+.pagination {
+
+  li {
+    font-size: 1.2rem;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    @include border-radius(2px);
+    text-align: center;
+
+    a { color: #444; }
+
+    &.active a { color: #fff; }
+
+    &.active { background-color: $primary-color; }
+
+    &.disabled a { color: #999; }
+
+    i {
+      font-size: 2rem;
+      line-height: 1.8rem;
+    }
+  }
+}
 
 
-// parallax
+// Parallax
 .parallax-container {
   position: relative;
   overflow: hidden;
@@ -317,7 +344,7 @@ td, th{
   display: table-cell;
   text-align: left;
   vertical-align: middle;
-  border-radius: 2px;
+  @include border-radius(2px);
 }
 
 // Responsive Table
@@ -392,7 +419,7 @@ td, th{
   background-color: $collection-bg-color;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   border: 1px solid $collection-border-color;
-  border-radius: 2px;
+  @include border-radius(2px);
 
   .collection-item {
     line-height: 1.5rem;
@@ -426,37 +453,6 @@ td, th{
     }
     .collection-item {
      padding-left: 30px;
-    }
-  }
-
-
-
-  //Pagination
-  &.pagination {
-    display: inline-block;
-
-      ul{
-        background-color: transparent;
-        font-size: 0;
-        display: inline-block;
-      }
-    li {
-      display: inline;
-      font-weight: 500;
-      margin: 0px;
-      padding: 0px;
-      font-size: 1rem;
-
-      a {
-       padding: 0px 5px;
-      }
-      &.active {
-        background-color: color('light-blue', 'base');
-        color: #FFF;
-      }
-      &:hover {
-        background-color: color('light-blue', 'lighten-5');
-      }
     }
   }
 

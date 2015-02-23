@@ -2043,6 +2043,29 @@ img.responsive-img, video.responsive-video {
   max-width: 100%;
   height: auto; }
 
+.pagination li {
+  font-size: 1.2rem;
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
+  text-align: center; }
+  .pagination li a {
+    color: #444; }
+  .pagination li.active a {
+    color: #fff; }
+  .pagination li.active {
+    background-color: #ee6e73; }
+  .pagination li.disabled a {
+    color: #999; }
+  .pagination li i {
+    font-size: 2rem;
+    line-height: 1.8rem; }
+
 .parallax-container {
   position: relative;
   overflow: hidden;
@@ -2183,7 +2206,10 @@ td, th {
   display: table-cell;
   text-align: left;
   vertical-align: middle;
-  border-radius: 2px; }
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box; }
 
 @media only screen and (max-width : 992px) {
   table.responsive-table {
@@ -2242,7 +2268,10 @@ td, th {
   background-color: #fff;
   margin: 0.5rem 0 1rem 0;
   border: 1px solid #e0e0e0;
-  border-radius: 2px; }
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box; }
   .collection .collection-item {
     line-height: 1.5rem;
     padding: 10px 20px;
@@ -2268,25 +2297,6 @@ td, th {
     padding: 10px 20px; }
   .collection.with-header .collection-item {
     padding-left: 30px; }
-  .collection.pagination {
-    display: inline-block; }
-    .collection.pagination ul {
-      background-color: transparent;
-      font-size: 0;
-      display: inline-block; }
-    .collection.pagination li {
-      display: inline;
-      font-weight: 500;
-      margin: 0px;
-      padding: 0px;
-      font-size: 1rem; }
-      .collection.pagination li a {
-        padding: 0px 5px; }
-      .collection.pagination li.active {
-        background-color: #03a9f4;
-        color: #FFF; }
-      .collection.pagination li:hover {
-        background-color: #e1f5fe; }
 
 .secondary-content {
   float: right;

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Sass - Materialize</title>
+    <title>Pagination - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -34,7 +34,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Sass</a></div>
+          <div class="nav-wrapper"><a class="page-title">Pagination</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
@@ -45,21 +45,21 @@
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">CSS</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
                   <li><a href="grid.html">Grid</a></li>
                   <li><a href="helpers.html">Helpers</a></li>
                   <li><a href="media-css.html">Media</a></li>
-                  <li class="active"><a href="sass.html">Sass</a></li>
+                  <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
                   <li><a href="typography.html">Typography</a></li>
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Components</a>
+            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
@@ -70,7 +70,7 @@
                   <li><a href="forms.html">Forms</a></li>
                   <li><a href="icons.html">Icons</a></li>
                   <li><a href="navbar.html">Navbar</a></li>
-                  <li><a href="pagination.html">Pagination</a></li>
+                  <li class="active"><a href="pagination.html">Pagination</a></li>
                   <li><a href="preloader.html">Preloader</a></li>
                 </ul>
               </div>
@@ -105,145 +105,43 @@
 
     <div class="col s12 m9 l10">
 
-      <!--  Variables Section  -->
-      <div id="variables" class="section scrollspy">
-        <h2 class="header">Variables</h2>
-        <p class="caption">
-        When using Sass, you can change the color scheme of your site extremely quickly. Below is a very small sample of what you can change through sass in <code class="language-scss">_variables.scss</code>.
-        </p>
-        <pre><code class="language-scss">
-  $primary-color: color("materialize-red", "lighten-2") !default;
-  $primary-color-light: false !default;
-  $primary-color-dark: false !default;
-  @if not $primary-color-light {
-    $primary-color-light: lighten($primary-color, 15%);
-  }
-  @if not $primary-color-dark {
-    $primary-color-dark: darken($primary-color, 15%);
-  }
-  $secondary-color: color("teal", "lighten-1") !default;
-  $success-color: color("green", "base") !default;
-  $error-color: color("red", "base") !default;
+      <!--  Collections Section  -->
+      <div id="basic" class="section scrollspy">
 
-  $link-color: color("light-blue", "darken-1") !default;
-
-  /*** More variables not shown here.. ***/
-        </code></pre>
-      </div>
-
-      <!--  Media Queries Section  -->
-      <div id="media" class="section scrollspy">
-        <h2 class="header">Media Queries</h2>
-        <p class="caption">
-        We have 3 media queries for the 3 standard screen sizes you can use in your custom Sass files. This also includes media query variables that will define the range.
-        </p>
-        <p>
-          Small screens are defined as having a max-width of 600px
-          <br>
-          Medium screens are defined as having a max-width of 992px
-          <br>
-          Large screen are defined as having a min-width of 992px
-        </p>
-
-          <h4>CSS</h4>
-          <pre><code class="language-css col s12">
-  /* These classes can be added to HTML Elements
-   * to affect visibility on certain displays.
-   */
-  .hide-on-small-only
-  .hide-on-small-and-down
-  .hide-on-med-and-down
-  .hide-on-med-and-up
-  .hide-on-med-only
-  .hide-on-large-only
-  .show-on-large
-  .show-on-medium
-  .show-on-small
-  .show-on-medium-and-up
-  .show-on-medium-and-down
+        <div class="row">
+          <div class="col s12">
+            <p class="caption">Add pagination links to help split up your long content into shorter, easier to understand blocks.</p>
+            <h2 class="header">Basic</h2>
+            <ul class="pagination">
+              <li class="disabled"><a href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
+              <li class="active"><a href="#!">1</a></li>
+              <li class="waves-effect"><a href="#!">2</a></li>
+              <li class="waves-effect"><a href="#!">3</a></li>
+              <li class="waves-effect"><a href="#!">4</a></li>
+              <li class="waves-effect"><a href="#!">5</a></li>
+              <li class="waves-effect"><a href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
+            </ul>
+            <br><br>
+            <pre><code class="language-markup">
+  &lt;ul class="pagination">
+    &lt;li class="disabled">&lt;a href="#!">&lt;i class="mdi-navigation-chevron-left">&lt;/i>&lt;/a>&lt;/li>
+    &lt;li class="active">&lt;a href="#!">1&lt;/a>&lt;/li>
+    &lt;li class="waves-effect">&lt;a href="#!">2&lt;/a>&lt;/li>
+    &lt;li class="waves-effect">&lt;a href="#!">3&lt;/a>&lt;/li>
+    &lt;li class="waves-effect">&lt;a href="#!">4&lt;/a>&lt;/li>
+    &lt;li class="waves-effect">&lt;a href="#!">5&lt;/a>&lt;/li>
+    &lt;li class="waves-effect">&lt;a href="#!">&lt;i class="mdi-navigation-chevron-right">&lt;/i>&lt;/a>&lt;/li>
+  &lt;/ul>
             </code></pre>
-
-          <h4>Sass</h4>
-          <pre><code class="language-scss col s12">
-  @media #{$small-and-down} {
-    // styles for small screens and down
-  }
-  @media #{$medium-and-up} {
-    // styles for medium screens and larger
-  }
-  @media #{$medium-and-down} {
-    // styles for medium screens and down
-  }
-  @media #{$large-and-up} {
-    // styles for large screens and up
-  }
-            </code></pre>
+            <br>
+          </div>
+        </div>
       </div>
-
-      <!--    Prefixer Section-->
-      <div id="mixins" class="section scrollspy">
-        <h2 class="header">Prefixer</h2>
-        <p class="caption">
-        One major goal of this framework is to be as adaptable as possible which includes cross browser compatibility. We have adapted a prefixer script to Sass which will automatically add all browser prefixes for certain CSS properties.
-        </p>
+      <!-- End collections -->
 
 
-        For Example: Using this Sass mixin
-        <pre><code class="language-scss">
-  @include transition(.3s);
-        </code></pre>
-        Will Output This
-        <pre><code class="language-css">
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s;
-        </code></pre>
-        Here is the full list of mixins
-        <pre><code class="language-css">
-  animation($args)
-  animation-delay($delay)
-  animation-direction($direction)
-  animation-duration($duration)
-  animation-fill-mode($mode)
-  animation-iteration-count($count)
-  animation-name($name)
-  animation-play-state($state)
-  animation-timing-function($function)
-  background-size($args)
-  border-radius($args)
-  box-shadow($args)
-      inner-shadow($args)
-  box-sizing($args)
-      border-box()
-      content-box()
-  columns($args)
-      column-count($count)
-      column-gap($gap)
-      column-rule($args)
-      column-width($width)
-  gradient($default,$start,$stop)
-      linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
-      linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])
-  opacity($factor)
-  transform($args)
-      transform-origin($args)
-      transform-style($style)
-      rotate($deg)
-      scale($factor)
-      translate($x,$y)
-      translate3d($x,$y,$z)
-      translateHardware($x,$y)
-  text-shadow($args)
-  transition($args)
-      transition-delay($delay)
-      transition-duration($duration)
-      transition-property($property)
-      transition-timing-function($function)
-        </code></pre>
-      </div>
     </div>
+
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
@@ -252,17 +150,16 @@
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#variables">Variables</a></li>
-            <li><a href="#media">Media Queries</a></li>
-            <li><a href="#mixins">Mixins</a></li>
+            <li><a href="#basic">Basic</a></li>
           </ul>
         </div>
       </div>
     </div>
 
-  </div> <!-- end row -->
-
+  </div>
 </div>
+
+
     </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
