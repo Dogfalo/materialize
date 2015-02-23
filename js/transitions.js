@@ -1,10 +1,10 @@
 (function ($) {
   $(document).ready(function() {
 
-    var time = 0;
 
     // Horizontal staggered list
     showStaggeredList = function(selector) {
+      var time = 0;
       $(selector).find('li').velocity(
           { translateX: "-100px"},
           { duration: 0 });
