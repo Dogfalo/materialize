@@ -1968,9 +1968,7 @@ a {
   -webkit-flex-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center; }
+  align-items: center; }
   .valign-wrapper .valign {
     display: block; }
 
@@ -2082,18 +2080,9 @@ img.responsive-img, video.responsive-video {
     display: none;
     position: absolute;
     bottom: 0;
-    width: 100%; }
-
-@media only screen and (max-width : 992px) {
-  .parallax-container {
-    height: auto; }
-
-  .parallax {
-    position: relative;
-    width: 100%; }
-    .parallax img {
-      position: relative; }
- }
+    width: 100%;
+    min-height: 100%;
+    background-position: center; }
 
 .pin-top, .pin-bottom {
   position: relative; }

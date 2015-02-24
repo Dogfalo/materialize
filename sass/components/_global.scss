@@ -37,7 +37,6 @@ a {
 .valign-wrapper {
   @include flexbox();
   @include align(center);
-  @include justify-content(center);
 
   .valign {
     display: block;
@@ -180,22 +179,11 @@ video.responsive-video {
     position: absolute;
     bottom: 0;
     width: 100%;
+    min-height: 100%;
+    // background-size: cover;
+    background-position: center;
   }
 }
-@media #{$medium-and-down} {
-  .parallax-container {
-    height: auto;
-  }
-  .parallax {
-    position: relative;
-    width: 100%;
-
-    img {
-      position: relative;
-    }
-  }
-}
-
 
 // Pushpin
 .pin-top, .pin-bottom {

@@ -531,11 +531,6 @@ $height: auto;
   }
 
 }
-@media #{$medium-and-down} {
-  .parallax-container {
-    height: auto;
-  }
-}
 
 // Table of contents
 ul.table-of-contents {
