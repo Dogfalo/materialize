@@ -69,8 +69,8 @@
 
 
     // Textarea Auto Resize
-    var hiddenDiv;
-    if ($('.hiddendiv').length === 0) {
+    var hiddenDiv = $('.hiddendiv').first();
+    if (!hiddenDiv.length) {
       hiddenDiv = $('<div class="hiddendiv common"></div>');
       $('body').append(hiddenDiv);
     }
