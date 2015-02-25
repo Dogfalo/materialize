@@ -39,6 +39,12 @@ p {
   }
 }
 
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
 
 .icon-block {
   padding: 0 15px;
