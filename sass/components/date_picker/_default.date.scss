@@ -45,11 +45,16 @@
     margin-top: -0.5em;
   }
 }
-.picker__select--month {
-  width: 35%;
+// Modified
+.picker__select--month.browser-default {
+  display: inline;
+  background-color: #FFFFFF;
+  width: 40%;
 }
-.picker__select--year {
-  width: 22.5%;
+.picker__select--year.browser-default {
+  display: inline;
+  background-color: #FFFFFF;
+  width: 25%;
 }
 .picker__select--month:focus,
 .picker__select--year:focus {

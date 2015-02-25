@@ -1051,7 +1051,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             }
 
             // If there are months to select, add a dropdown menu.
-            if ( settings.selectMonths ) {
+            if ( settings.selectMonths  && override == undefined) {
 
                 return _.node( 'select',
                     _.group({
@@ -1079,7 +1079,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                             ]
                         }
                     }),
-                    settings.klass.selectMonth,
+                    settings.klass.selectMonth + ' browser-default',
                     ( isOpen ? '' : 'disabled' ) + ' ' +
                     _.ariaAttr({ controls: calendar.$node[0].id + '_table' }) + ' ' +
                     'title="' + settings.labelMonthSelect + '"'
@@ -1135,28 +1135,29 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     highestYear = maxYear
                 }
 
+                if ( settings.selectYears  && override == undefined ) {
+                    return _.node( 'select',
+                        _.group({
+                            min: lowestYear,
+                            max: highestYear,
+                            i: 1,
+                            node: 'option',
+                            item: function( loopedYear ) {
+                                return [
 
-                return _.node( 'select',
-                    _.group({
-                        min: lowestYear,
-                        max: highestYear,
-                        i: 1,
-                        node: 'option',
-                        item: function( loopedYear ) {
-                            return [
+                                    // The looped year and no classes.
+                                    loopedYear, 0,
 
-                                // The looped year and no classes.
-                                loopedYear, 0,
-
-                                // Set the value and selected index.
-                                'value=' + loopedYear + ( focusedYear == loopedYear ? ' selected' : '' )
-                            ]
-                        }
-                    }),
-                    settings.klass.selectYear,
-                    ( isOpen ? '' : 'disabled' ) + ' ' + _.ariaAttr({ controls: calendar.$node[0].id + '_table' }) + ' ' +
-                    'title="' + settings.labelYearSelect + '"'
-                )
+                                    // Set the value and selected index.
+                                    'value=' + loopedYear + ( focusedYear == loopedYear ? ' selected' : '' )
+                                ]
+                            }
+                        }),
+                        settings.klass.selectYear + ' browser-default',
+                        ( isOpen ? '' : 'disabled' ) + ' ' + _.ariaAttr({ controls: calendar.$node[0].id + '_table' }) + ' ' +
+                        'title="' + settings.labelYearSelect + '"'
+                    )
+                }
             }
 
             // Materialize modified
@@ -1218,7 +1219,7 @@ return _.node(
     // Calendar container
     _.node('div',
         _.node('div',
-        ( settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel() ) +
+        ( settings.selectYears ?  createMonthLabel() + createYearLabel() : createMonthLabel() + createYearLabel() ) +
         createMonthNav() + createMonthNav( 1 ),
         settings.klass.header
     ) + _.node(

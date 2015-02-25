@@ -7529,11 +7529,15 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
     margin-top: -0.5em; }
  }
 
-.picker__select--month {
-  width: 35%; }
+.picker__select--month.browser-default {
+  display: inline;
+  background-color: #FFFFFF;
+  width: 40%; }
 
-.picker__select--year {
-  width: 22.5%; }
+.picker__select--year.browser-default {
+  display: inline;
+  background-color: #FFFFFF;
+  width: 25%; }
 
 .picker__select--month:focus, .picker__select--year:focus {
   border-color: rgba(0, 0, 0, 0.05); }
