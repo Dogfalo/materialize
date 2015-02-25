@@ -21,7 +21,6 @@
           $index = 0;
 
       // If the location.hash matches one of the links, use that as the active tab.
-      // console.log($(".tabs .tab a[href='#tab3']"));
       $active = $($links.filter('[href="'+location.hash+'"]'));
 
       // If no match is found, use the first link or any with class 'active' as the initial active tab.
@@ -87,7 +86,7 @@
           $index = 0;
         }
         // Change url to current tab
-  //      window.location.hash = $active.attr('href');
+        // window.location.hash = $active.attr('href');
 
         $content.show();
 

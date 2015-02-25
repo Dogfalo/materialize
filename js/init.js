@@ -69,8 +69,6 @@
           }
           $('.github-commit').find('.date').html(date);
           $('.github-commit').find('.sha').html(sha).attr('href', data.html_url);
-
-          // console.log(returndata, returndata.commit.author.date, returndata.sha);
         }
       });
     }

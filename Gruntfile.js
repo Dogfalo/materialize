@@ -300,32 +300,7 @@ module.exports = function(grunt) {
       },
 
       js: {
-        files: [ "js/jquery.easing.1.3.js",
-                 "js/animation.js",
-                 "js/velocity.min.js",
-                 "js/hammer.min.js",
-                 "js/jquery.hammer.js",
-                 "js/collapsible.js",
-                 "js/dropdown.js",
-                 "js/leanModal.js",
-                 "js/materialbox.js",
-                 "js/parallax.js",
-                 "js/tabs.js",
-                 "js/tooltip.js",
-                 "js/waves.js",
-                 "js/toasts.js",
-                 "js/sideNav.js",
-                 "js/scrollspy.js",
-                 "js/forms.js",
-                 "js/slider.js",
-                 "js/cards.js",
-                 "js/pushpin.js",
-                 "js/buttons.js",
-                 "js/transitions.js",
-                 "js/scrollFire.js",
-                 "js/date_picker/picker.js",
-                 "js/date_picker/picker.date.js",
-             ],
+        files: [ "js/**/*"],
         tasks: ['js_compile'],
         options: {
           interrupt: false,
@@ -478,7 +453,17 @@ module.exports = function(grunt) {
                 ignore: true
               }
           },
-      }
+      },
+
+      // Removes console logs
+      removelogging: {
+          source: {
+            src: ["js/**/*.js", "!js/velocity.min.js"],
+            options: {
+              // see below for options. this is optional.
+            }
+          }
+        }
 
   });
 
@@ -498,10 +483,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename');
-
+  grunt.loadNpmTasks("grunt-remove-logging");
   // define the tasks
   grunt.registerTask(
     'release',[
+      'lint',
       'copy',
       'sass:expanded',
       'sass:min',
@@ -523,6 +509,6 @@ module.exports = function(grunt) {
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
   grunt.registerTask('start_server', ['connect:server', 'notify:server']);
-
+  grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };
