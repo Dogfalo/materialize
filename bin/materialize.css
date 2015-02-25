@@ -6867,18 +6867,22 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
   position: absolute;
   width: 100%;
   height: 100%;
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
   opacity: 0; }
 
-.spinner-blue {
+.spinner-blue, .spinner-blue-only {
   border-color: #4285f4; }
 
-.spinner-red {
+.spinner-red, .spinner-red-only {
   border-color: #db4437; }
 
-.spinner-yellow {
+.spinner-yellow, .spinner-yellow-only {
   border-color: #f4b400; }
 
-.spinner-green {
+.spinner-green, .spinner-green-only {
   border-color: #0f9d58; }
 
 /**
@@ -6913,6 +6917,16 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
   /* durations: 4 * ARCTIME */
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both; }
+
+.active .spinner-layer.spinner-blue-only, .active .spinner-layer.spinner-red-only, .active .spinner-layer.spinner-yellow-only, .active .spinner-layer.spinner-green-only {
+  /* durations: 4 * ARCTIME */
+  -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
+  filter: "alpha(opacity=(${iefactor}))";
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both; }
 
 @-webkit-keyframes fill-unfill-rotate {
   /* 0.5 * ARCSIZE */
