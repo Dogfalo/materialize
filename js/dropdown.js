@@ -151,7 +151,8 @@
       var open = false;
 
       // Click handler to show dropdown
-      origin.click( function(e){ // Click
+      origin.unbind('click.' + origin.attr('id'));
+      origin.bind('click.'+origin.attr('id'), function(e){ // Click
         e.preventDefault(); // Prevents button click from moving window
         e.stopPropagation(); // Allows clicking on icon
         placeDropdown();
