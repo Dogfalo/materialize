@@ -69,28 +69,32 @@
 
 
     // Textarea Auto Resize
+    var hiddenDiv;
     if ($('.hiddendiv').length === 0) {
-      var hiddenDiv = $('<div class="hiddendiv common"></div>'),
-        content = null;
-        $('body').append(hiddenDiv);
+      hiddenDiv = $('<div class="hiddendiv common"></div>');
+      $('body').append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
-    $('.hiddendiv').css('width', $(text_area_selector).width());
+
+    function textareaAutoResize($textarea) {
+      hiddenDiv.text($textarea.val() + '\n');
+      var content = hiddenDiv.html().replace(/\n/g, '<br>');
+      hiddenDiv.html(content);
+      hiddenDiv.css('width', $(this).width());
+      hiddenDiv.html(hiddenDiv.html()).html(content + '<br>');
+      $textarea.css('height', hiddenDiv.height());
+    }
 
     $(text_area_selector).each(function () {
-      if ($(this).val().length) {
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br>');
-        $(this).css('height', hiddenDiv.height());
+      var $textarea = $(this);
+      if ($textarea.val().length) {
+        textareaAutoResize($textarea);
       }
     });
-      $('body').on('keyup keydown',text_area_selector , function () {
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br>');
-        $(this).css('height', hiddenDiv.height());
-      });
+
+    $('body').on('keyup keydown', text_area_selector, function () {
+      textareaAutoResize($(this));
+    });
 
 
     // File Input Path
