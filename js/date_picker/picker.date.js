@@ -1088,7 +1088,9 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
             // Materialize modified
             if (override == "short_months")
-                return _.node( 'div', monthsCollection[ viewsetObject.month ] )
+                if (selectedObject != null)
+                return _.node( 'div', monthsCollection[ selectedObject.month ] );
+                else return _.node( 'div', monthsCollection[ viewsetObject.month ] );
 
             // If there's a need for a month selector
             return _.node( 'div', monthsCollection[ viewsetObject.month ], settings.klass.month )
