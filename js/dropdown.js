@@ -152,12 +152,15 @@
 
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
-      origin.bind('click.'+origin.attr('id'), function(e){ // Click
-        e.preventDefault(); // Prevents button click from moving window
-        e.stopPropagation(); // Allows clicking on icon
-        placeDropdown();
+      origin.bind('click.'+origin.attr('id'), function(e){
+        if (origin[0] == e.currentTarget) {
+
+          e.preventDefault(); // Prevents button click from moving window
+          placeDropdown();
+        }
+
         $(document).bind('click.'+ activates.attr('id'), function (e) {
-          if (!activates.is(e.target) && (!origin.is(e.target))) {
+          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0) ) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
           }
@@ -166,14 +169,11 @@
 
     } // End else
 
-    // Listen to open and close event - usefull for select component
+    // Listen to open and close event - useful for select component
     origin.on('open', placeDropdown);
     origin.on('close', hideDropdown);
 
-    // Window Resize Reposition
-    $(document).on('resize', function(){
 
-    });
    });
   }; // End dropdown plugin
 }( jQuery ));
