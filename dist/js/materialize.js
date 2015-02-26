@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.95.2 (http://materializecss.com)
+ * Materialize v0.95.3 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -491,12 +491,16 @@ jQuery.extend( jQuery.easing,
       var open = false;
 
       // Click handler to show dropdown
-      origin.click( function(e){ // Click
-        e.preventDefault(); // Prevents button click from moving window
-        e.stopPropagation(); // Allows clicking on icon
-        placeDropdown();
+      origin.unbind('click.' + origin.attr('id'));
+      origin.bind('click.'+origin.attr('id'), function(e){
+        if (origin[0] == e.currentTarget) {
+
+          e.preventDefault(); // Prevents button click from moving window
+          placeDropdown();
+        }
+
         $(document).bind('click.'+ activates.attr('id'), function (e) {
-          if (!activates.is(e.target) && (!origin.is(e.target))) {
+          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0) ) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
           }
@@ -505,14 +509,11 @@ jQuery.extend( jQuery.easing,
 
     } // End else
 
-    // Listen to open and close event - usefull for select component
+    // Listen to open and close event - useful for select component
     origin.on('open', placeDropdown);
     origin.on('close', hideDropdown);
 
-    // Window Resize Reposition
-    $(document).on('resize', function(){
 
-    });
    });
   }; // End dropdown plugin
 }( jQuery ));
@@ -584,6 +585,8 @@ jQuery.extend( jQuery.easing,
         complete: undefined
       }
       var options = $.extend(defaults, options);
+
+      $('.modal-close').off();
 
       $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
       $(this).fadeOut(options.out_duration, function() {
@@ -824,7 +827,6 @@ jQuery.extend( jQuery.easing,
 
               origin.css({
                 height: '',
-                position: '',
                 top: '',
                 left: '',
                 width: '',
@@ -848,7 +850,8 @@ $(document).ready(function(){
   $('.materialboxed').materialbox();
 });
 
-}( jQuery ));;(function ($) {
+}( jQuery ));
+;(function ($) {
 
     $.fn.parallax = function () {
       var window_width = $(window).width();
@@ -856,6 +859,11 @@ $(document).ready(function(){
       return this.each(function(i) {
         var $this = $(this);
         $this.addClass('parallax');
+
+        $this.find('img').each(function () {
+          $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+          $(this).attr('src', 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+        });
 
         function updateParallax(initial) {
           var container_height;
@@ -882,8 +890,12 @@ $(document).ready(function(){
             $this.children("img").first().css('display', 'block');
           }
         }
-        $this.children("img").load(function () {
+
+        // Wait for image load
+        $this.children("img").one("load", function() {
           updateParallax(true);
+        }).each(function() {
+          if(this.complete) $(this).load();
         });
 
         $(window).scroll(function() {
@@ -922,7 +934,6 @@ $(document).ready(function(){
           $index = 0;
 
       // If the location.hash matches one of the links, use that as the active tab.
-      // console.log($(".tabs .tab a[href='#tab3']"));
       $active = $($links.filter('[href="'+location.hash+'"]'));
 
       // If no match is found, use the first link or any with class 'active' as the initial active tab.
@@ -988,7 +999,7 @@ $(document).ready(function(){
           $index = 0;
         }
         // Change url to current tab
-  //      window.location.hash = $active.attr('href');
+        // window.location.hash = $active.attr('href');
 
         $content.show();
 
@@ -1067,7 +1078,6 @@ $(document).ready(function(){
       // Mouse In
     $(this).on({
       mouseenter: function(e) {
-        e.stopPropagation();
         var tooltip_delay = origin.data("delay");
         tooltip_delay = (tooltip_delay == undefined || tooltip_delay == "") ? options.delay : tooltip_delay;
         counter = 0;
@@ -1792,21 +1802,20 @@ $(document).ready(function(){
               if (x < (options.menuWidth / 2)) { menuOut = false; }
               // Right Direction
               else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+
+              menu_id.css('left', (x - options.menuWidth));
             }
             else {
               // Left Direction
               if (x < ($(window).width() - options.menuWidth / 2)) { menuOut = true; }
               // Right Direction
               else if (x >= ($(window).width() - options.menuWidth / 2)) { menuOut = false; }
-            }
 
-
-            if (options.edge === 'left') {
-              menu_id.css('left', (x - options.menuWidth));
-            }
-            else {
               menu_id.css('right', -1 *(x - options.menuWidth / 2));
             }
+
+
+
 
             // Percentage overlay
             if (options.edge === 'left') {
@@ -1818,13 +1827,14 @@ $(document).ready(function(){
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }
+
         }).bind('panend', function(e) {
           if (e.gesture.pointerType === "touch") {
             var velocityX = e.gesture.velocityX;
             panning = false;
-
             if (options.edge === 'left') {
-              if (menuOut || velocityX < -0.5) {
+              // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
+              if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
@@ -1839,7 +1849,7 @@ $(document).ready(function(){
               }
             }
             else {
-              if (menuOut || velocityX > 0.5) {
+              if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 $('.drag-target').css({width: '50%', right: '', left: 0});
@@ -1859,13 +1869,12 @@ $(document).ready(function(){
         });
 
           $this.click(function() {
-            if (menu_id.hasClass('active')) {
+            if (menuOut == true) {
               menuOut = false;
               panning = false;
               removeMenu();
             }
             else {
-              // disable_scroll();
 
               if (options.edge === 'left') {
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
@@ -1874,6 +1883,7 @@ $(document).ready(function(){
               else {
                 $('.drag-target').css({width: '50%', right: '', left: 0});
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                menu_id.css('left','');
               }
 
               var overlay = $('<div id="sidenav-overlay"></div>');
@@ -1922,7 +1932,8 @@ $(document).ready(function(){
         $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tooltip' );
       }
     }; // PLugin end
-}( jQuery ));;/**
+}( jQuery ));
+;/**
  * Extend jquery with a scrollspy plugin.
  * This watches the window scroll and fires events when elements are scrolled into viewport.
  *
@@ -2296,11 +2307,9 @@ $(document).ready(function(){
       }
     });
       $('body').on('keyup keydown',text_area_selector , function () {
-        // console.log($(this).val());
         content = $(this).val();
         content = content.replace(/\n/g, '<br>');
         hiddenDiv.html(content + '<br>');
-        // console.log(hiddenDiv.html());
         $(this).css('height', hiddenDiv.height());
       });
 
@@ -2600,7 +2609,6 @@ $(document).ready(function(){
 
       // This function will transition the slide to any index of the next slide
       function moveToSlide(index) {
-        console.log("Move to slide");
         if (index >= $slides.length) index = 0;
         else if (index < 0) index = $slides.length -1;
 
@@ -2659,7 +2667,7 @@ $(document).ready(function(){
       // Move img src into background-image
       $slides.find('img').each(function () {
         $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
-        $(this).attr('src', '');
+        $(this).attr('src', 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
       });
 
       // dynamically add indicators
@@ -2826,12 +2834,9 @@ $(document).ready(function(){
 
 
   };
-}( jQuery ));;(function ($) {
+}( jQuery ));
+;(function ($) {
   $(document).ready(function() {
-
-    $('.card > .card-reveal').each(function() {
-      $(this).parent().css('overflow', 'hidden');
-    });
 
     $(document).on('click.card', '.card', function (e) {
       if ($(this).find('.card-reveal').length) {
@@ -2878,7 +2883,6 @@ $(document).ready(function(){
         var $uniqueId = guid(),
             $this = $(this),
             $original_offset = $(this).offset().top;
-        // console.log(options.top, options.bottom, $(this).offset().top);
 
         function removePinClasses(object) {
           object.removeClass('pin-top');
@@ -2887,14 +2891,12 @@ $(document).ready(function(){
         }
 
         function updateElements(objects, scrolled) {
-          // console.log("OBJECTS", objects);
           objects.each(function () {
             // Add position fixed (because its between top and bottom)
             if (options.top <= scrolled && options.bottom >= scrolled && !$(this).hasClass('pinned')) {
               removePinClasses($(this));
               $(this).css('top', options.offset);
               $(this).addClass('pinned');
-              // console.log("Pinned!", $(this));
             }
 
             // Add pin-top (when scrolled position is above top)
@@ -2902,7 +2904,6 @@ $(document).ready(function(){
               removePinClasses($(this));
               $(this).css('top', 0);
               $(this).addClass('pin-top');
-              // console.log("Pin Top!", $(this));
             }
 
             // Add pin-bottom (when scrolled position is below bottom)
@@ -2910,61 +2911,53 @@ $(document).ready(function(){
               removePinClasses($(this));
               $(this).addClass('pin-bottom');
               $(this).css('top', options.bottom - $original_offset);
-              // console.log("Pin Bottom!", $(this));
             }
           });
         }
 
-
-        
         updateElements($this, $(window).scrollTop());
         $(window).on('scroll.' + $uniqueId, function () {
           var $scrolled = $(window).scrollTop() + options.offset;
-          // console.log($(window).scrollTop(), $scrolled);
           updateElements($this, $scrolled);
         });
 
-      }); 
-
-
+      });
 
     };
 
-  
-  
 
   });
 }( jQuery ));;(function ($) {
   $(document).ready(function() {
 
     // jQuery reverse
-    jQuery.fn.reverse = [].reverse;
+    $.fn.reverse = [].reverse;
 
-    $('.fixed-action-btn').each(function (i) {
+    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn', function(e) {
       var $this = $(this);
+
       $this.find('ul a.btn-floating').velocity(
         { scaleY: ".4", scaleX: ".4", translateY: "40px"},
         { duration: 0 });
 
+      var time = 0;
+      $this.find('ul a.btn-floating').reverse().each(function () {
+        $(this).velocity(
+          { opacity: "1", scaleX: "1", scaleY: "1", translateY: "0"},
+          { duration: 80, delay: time });
+        time += 40;
+      });
 
-      var timer;
-      $this.hover(
-        function() {
-          var time = 0;
-          $this.find('ul a.btn-floating').reverse().each(function () {
-            $(this).velocity(
-              { opacity: "1", scaleX: "1", scaleY: "1", translateY: "0"},
-              { duration: 100, delay: time });
-            time += 40;
-          });
-        }, function() {
-          var time = 0;
-          $this.find('ul a.btn-floating').velocity("stop", true);
-          $this.find('ul a.btn-floating').velocity(
-            { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: "40px"},
-            { duration: 100 });
-        }
-      );
+    });
+
+    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn', function(e) {
+      var $this = $(this);
+
+      var time = 0;
+      $this.find('ul a.btn-floating').velocity("stop", true);
+      $this.find('ul a.btn-floating').velocity(
+        { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: "40px"},
+        { duration: 80 });
     });
 
   });
@@ -2972,10 +2965,10 @@ $(document).ready(function(){
 ;(function ($) {
   $(document).ready(function() {
 
-    var time = 0;
 
     // Horizontal staggered list
     showStaggeredList = function(selector) {
+      var time = 0;
       $(selector).find('li').velocity(
           { translateX: "-100px"},
           { duration: 0 });
@@ -2992,7 +2985,6 @@ $(document).ready(function(){
     var staggeredListOptions = [];
     $('ul.staggered-list').each(function (i) {
 
-      console.log(i);
       var label = 'scrollFire-' + i;
       $(this).addClass(label);
       staggeredListOptions.push(
@@ -3000,10 +2992,66 @@ $(document).ready(function(){
          offset: 200,
          callback: 'showStaggeredList("ul.staggered-list.' + label + '")'});
     });
-    console.log(staggeredListOptions);
     scrollFire(staggeredListOptions);
 
 
+    // HammerJS, Swipe navigation
+
+    // Touch Event
+    var swipeLeft = false;
+    var swipeRight = false;
+
+    $('.dismissable').each(function() {
+      $(this).hammer({
+        prevent_default: false
+      }).bind('pan', function(e) {
+        if (e.gesture.pointerType === "touch") {
+          var $this = $(this);
+          var direction = e.gesture.direction;
+          var x = e.gesture.deltaX;
+          var velocityX = e.gesture.velocityX;
+
+          $this.velocity({ translateX: x
+              }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+
+          // Swipe Left
+          if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.75)) {
+            swipeLeft = true;
+          }
+          // Swipe Right
+          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.75)) {
+            swipeRight = true;
+          }
+        }
+      }).bind('panend', function(e) {
+        if (e.gesture.pointerType === "touch") {
+          var $this = $(this);
+          if (swipeLeft || swipeRight) {
+            var fullWidth;
+            if (swipeLeft) { fullWidth = $this.innerWidth() }
+            else { fullWidth = -1 * $this.innerWidth() }
+
+            $this.velocity({ translateX: fullWidth,
+              }, {duration: 100, queue: false, easing: 'easeOutQuad', complete:
+              function() {
+                $this.css('border', 'none');
+                $this.velocity({ height: 0, padding: 0,
+                  }, {duration: 200, queue: false, easing: 'easeOutQuad', complete:
+                    function() { $this.remove(); }
+                  });
+              }
+            });
+          }
+          else {
+            $this.velocity({ translateX: 0,
+              }, {duration: 100, queue: false, easing: 'easeOutQuad'});
+          }
+          swipeLeft = false;
+          swipeRight = false;
+        }
+      });
+
+    });
 
 
     // time = 0
@@ -3048,9 +3096,9 @@ $(document).ready(function(){
                 var grayscale_setting = now/100;
                 var brightness_setting = 150 - (100 - now)/1.75;
 
-                if (brightness_setting < 100)
+                if (brightness_setting < 100) {
                   brightness_setting = 100;
-                console.log(grayscale_setting)
+                }
                 if (now >= 0) {
                   $(this).css({
                       "-webkit-filter": "grayscale("+grayscale_setting+")" + "brightness("+brightness_setting+"%)",
@@ -3062,7 +3110,8 @@ $(document).ready(function(){
     };
 
   });
-}( jQuery ));;(function($) {
+}( jQuery ));
+;(function($) {
 
   // Input: Array of JSON objects {selector, offset, callback}
 
@@ -3078,11 +3127,10 @@ $(document).ready(function(){
         var elementOffset = $(selector).offset().top;
 
         if (windowScroll > (elementOffset + offset)) {
-          if ($(selector).data('done') === undefined) {
+          if (value.done != true) {
             var callbackFunc = new Function(callback);
             callbackFunc();
-
-            $(selector).data('done', true);
+            value.done = true;
           }
         }
 
@@ -5266,7 +5314,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             }
 
             // If there are months to select, add a dropdown menu.
-            if ( settings.selectMonths ) {
+            if ( settings.selectMonths  && override == undefined) {
 
                 return _.node( 'select',
                     _.group({
@@ -5294,7 +5342,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                             ]
                         }
                     }),
-                    settings.klass.selectMonth,
+                    settings.klass.selectMonth + ' browser-default',
                     ( isOpen ? '' : 'disabled' ) + ' ' +
                     _.ariaAttr({ controls: calendar.$node[0].id + '_table' }) + ' ' +
                     'title="' + settings.labelMonthSelect + '"'
@@ -5303,7 +5351,9 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
             // Materialize modified
             if (override == "short_months")
-                return _.node( 'div', monthsCollection[ viewsetObject.month ] )
+                if (selectedObject != null)
+                return _.node( 'div', monthsCollection[ selectedObject.month ] );
+                else return _.node( 'div', monthsCollection[ viewsetObject.month ] );
 
             // If there's a need for a month selector
             return _.node( 'div', monthsCollection[ viewsetObject.month ], settings.klass.month )
@@ -5348,28 +5398,29 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     highestYear = maxYear
                 }
 
+                if ( settings.selectYears  && override == undefined ) {
+                    return _.node( 'select',
+                        _.group({
+                            min: lowestYear,
+                            max: highestYear,
+                            i: 1,
+                            node: 'option',
+                            item: function( loopedYear ) {
+                                return [
 
-                return _.node( 'select',
-                    _.group({
-                        min: lowestYear,
-                        max: highestYear,
-                        i: 1,
-                        node: 'option',
-                        item: function( loopedYear ) {
-                            return [
+                                    // The looped year and no classes.
+                                    loopedYear, 0,
 
-                                // The looped year and no classes.
-                                loopedYear, 0,
-
-                                // Set the value and selected index.
-                                'value=' + loopedYear + ( focusedYear == loopedYear ? ' selected' : '' )
-                            ]
-                        }
-                    }),
-                    settings.klass.selectYear,
-                    ( isOpen ? '' : 'disabled' ) + ' ' + _.ariaAttr({ controls: calendar.$node[0].id + '_table' }) + ' ' +
-                    'title="' + settings.labelYearSelect + '"'
-                )
+                                    // Set the value and selected index.
+                                    'value=' + loopedYear + ( focusedYear == loopedYear ? ' selected' : '' )
+                                ]
+                            }
+                        }),
+                        settings.klass.selectYear + ' browser-default',
+                        ( isOpen ? '' : 'disabled' ) + ' ' + _.ariaAttr({ controls: calendar.$node[0].id + '_table' }) + ' ' +
+                        'title="' + settings.labelYearSelect + '"'
+                    )
+                }
             }
 
             // Materialize modified
@@ -5431,7 +5482,7 @@ return _.node(
     // Calendar container
     _.node('div',
         _.node('div',
-        ( settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel() ) +
+        ( settings.selectYears ?  createMonthLabel() + createYearLabel() : createMonthLabel() + createYearLabel() ) +
         createMonthNav() + createMonthNav( 1 ),
         settings.klass.header
     ) + _.node(
