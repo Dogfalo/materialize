@@ -31,20 +31,12 @@
 .picker__select--month,
 .picker__select--year {
 
-
-//  border: 1px solid #b7b7b7;
-
   height: 2em;
-  padding: .5em;
+  padding: 0;
   margin-left: .25em;
   margin-right: .25em;
 }
-@media (min-width: 24.5em) {
-  .picker__select--month,
-  .picker__select--year {
-    margin-top: -0.5em;
-  }
-}
+
 // Modified
 .picker__select--month.browser-default {
   display: inline;
