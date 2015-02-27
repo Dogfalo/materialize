@@ -6754,6 +6754,7 @@ ul.side-nav {
   margin: 0;
   height: 100%;
   height: calc(100% + 60px);
+  height: -moz-calc(100%);
   padding-bottom: 60px;
   background-color: #FFF;
   z-index: 999;
