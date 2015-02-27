@@ -124,10 +124,11 @@ textarea.materialize-textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $input-border-color;
-  border-radius: 0px;
+  border-radius: 0;
   outline: none;
   height: 3rem;
   width: 100%;
+
   font-size: 1rem;
   margin: 0 0 15px 0;
   padding: 0;
