@@ -80,8 +80,17 @@
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
       hiddenDiv.html(content);
-      hiddenDiv.css('width', $(this).width());
-      hiddenDiv.html(hiddenDiv.html()).html(content + '<br>');
+
+      // When textarea is hidden, width goes crazy.
+      // Approximate with half of window size
+
+      if ($textarea.is(':visible')) {
+        hiddenDiv.css('width', $textarea.width());
+      }
+      else {
+        hiddenDiv.css('width', $(window).width()/2);
+      }
+
       $textarea.css('height', hiddenDiv.height());
     }
 
