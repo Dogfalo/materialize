@@ -1,5 +1,5 @@
 {
-  "name": "Materialize-dist-build",
+  "name": "materialize-css",
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
