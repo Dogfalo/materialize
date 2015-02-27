@@ -7534,14 +7534,9 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
  */
 .picker__select--month, .picker__select--year {
   height: 2em;
-  padding: 0.5em;
+  padding: 0;
   margin-left: 0.25em;
   margin-right: 0.25em; }
-
-@media (min-width: 24.5em) {
-  .picker__select--month, .picker__select--year {
-    margin-top: -0.5em; }
- }
 
 .picker__select--month.browser-default {
   display: inline;
