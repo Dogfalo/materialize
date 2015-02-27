@@ -1,5 +1,6 @@
 .DS_Store
 prepros.cfg
+Thumbs.db
 js/materialize.js
 test2.html
 test.html
