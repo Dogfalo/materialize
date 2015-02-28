@@ -25,7 +25,6 @@
         $(document).keyup(function(e) {
           if (e.keyCode === 27) {   // ESC key
             $(modal).closeModal(options);
-            $(this).off();
           }
         });
       }
@@ -88,6 +87,7 @@
       var options = $.extend(defaults, options);
 
       $('.modal-close').off();
+      $(document).off('keyup');
 
       $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
 
