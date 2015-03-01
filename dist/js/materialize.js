@@ -1,8 +1,5 @@
-/*!
- * Materialize v0.95.3 (http://materializecss.com)
- * Copyright 2014-2015 Materialize
- * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
- */
+define.amd = false; // important to prevent other plugins from being treated like they are on a seperate file
+// it also should be before any other define.amd to work properly
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -2290,28 +2287,41 @@ $(document).ready(function(){
 
 
     // Textarea Auto Resize
-    if ($('.hiddendiv').length === 0) {
-      var hiddenDiv = $('<div class="hiddendiv common"></div>'),
-        content = null;
-        $('body').append(hiddenDiv);
+    var hiddenDiv = $('.hiddendiv').first();
+    if (!hiddenDiv.length) {
+      hiddenDiv = $('<div class="hiddendiv common"></div>');
+      $('body').append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
-    $('.hiddendiv').css('width', $(text_area_selector).width());
+
+    function textareaAutoResize($textarea) {
+      hiddenDiv.text($textarea.val() + '\n');
+      var content = hiddenDiv.html().replace(/\n/g, '<br>');
+      hiddenDiv.html(content);
+
+      // When textarea is hidden, width goes crazy.
+      // Approximate with half of window size
+
+      if ($textarea.is(':visible')) {
+        hiddenDiv.css('width', $textarea.width());
+      }
+      else {
+        hiddenDiv.css('width', $(window).width()/2);
+      }
+
+      $textarea.css('height', hiddenDiv.height());
+    }
 
     $(text_area_selector).each(function () {
-      if ($(this).val().length) {
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br>');
-        $(this).css('height', hiddenDiv.height());
+      var $textarea = $(this);
+      if ($textarea.val().length) {
+        textareaAutoResize($textarea);
       }
     });
-      $('body').on('keyup keydown',text_area_selector , function () {
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br>');
-        $(this).css('height', hiddenDiv.height());
-      });
+
+    $('body').on('keyup keydown', text_area_selector, function () {
+      textareaAutoResize($(this));
+    });
 
 
     // File Input Path
@@ -5689,5 +5699,3 @@ Picker.extend( 'pickadate', DatePicker )
 
 
 }));
-
-

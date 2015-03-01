@@ -2,6 +2,29 @@ module.exports = function(grunt) {
 
   // configure the tasks
   grunt.initConfig({
+
+// file append
+// this should run every time we compile to materialize.js (combine all the code in one file)
+// but should only run once (exist once) on each file
+    file_append: {
+      dist: {
+        files: [
+          {
+            prepend: "define.amd = false; // important to prevent other plugins from being treated like they are on a seperate file\n// it also should be before any other define.amd to work properly\n",
+            input: 'dist/js/materialize.js'
+          }
+        ]
+      },
+      temp: {
+        files: [
+          {
+            prepend: "define.amd = false; // important to prevent other plugins from being treated like they are on a seperate file\n// it also should be before any other define.amd to work properly\n",
+            input: 'temp/js/materialize.js'
+          }
+        ]
+      }
+    },
+
 //  Copy
     copy: {
       dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true },
@@ -484,6 +507,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename');
   grunt.loadNpmTasks("grunt-remove-logging");
+  grunt.loadNpmTasks('grunt-file-append');
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -506,7 +530,7 @@ module.exports = function(grunt) {
   );
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
+  grunt.registerTask('js_compile', ['concat:temp', 'file_append:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
   grunt.registerTask('start_server', ['connect:server', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
