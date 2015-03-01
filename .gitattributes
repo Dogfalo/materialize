@@ -1,2 +1,7 @@
 * text=auto
 **/*.html linguist-documentation
+sitemap.xml text eol=crlf
+res/materialize.svg text eol=crlf
+robots.txt text eol=crlf
+sass/components/_typography.scss text eol=crlf
+templates/starter-template/css/style.css text eol=crlf
