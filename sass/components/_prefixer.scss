@@ -242,11 +242,24 @@
       -webkit-order: $val;
       order: $val;
     }
+    @mixin align-self($align) {
+      -webkit-align-self: $align;
+      align-self: $align;
+    }
+    @mixin flex-direction($direction) {
+      -ms-flex-direction: $direction;
+      -webkit-flex-direction: $direction;
+      flex-direction: $direction;
+    }
     @mixin align($align) {
       -webkit-flex-align: $align;
       -ms-flex-align: $align;
       -webkit-align-items: $align;
       align-items: $align;
+    }
+    @mixin align-content($align) {
+      -webkit-align-content: $align;
+      align-content: $align;
     }
     @mixin justify-content($val) {
       -webkit-justify-content: $val;
