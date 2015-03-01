@@ -1,6 +1,13 @@
 (function(factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'hammerjs'], factory);
+    if (typeof define === 'function' && define.amd == false) {
+        // hammerjs will already be publicly available
+        define(['jquery'], function($, Hammer) {
+          factory($, Hammer);
+          // fix waves effect when used with require,
+          // both waves and require use the same event so only one fires,
+          // the waves event listener never gets called, so that's why we are doing it manually
+          Waves.displayEffect();
+        });
     } else if (typeof exports === 'object') {
         factory(require('jquery'), require('hammerjs'));
     } else {
