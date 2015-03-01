@@ -5505,6 +5505,7 @@ small {
     top: 100%;
     height: 100%;
     z-index: 1;
+    display: none;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
