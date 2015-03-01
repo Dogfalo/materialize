@@ -10,6 +10,9 @@ nav {
   a { color: #fff; }
 
   .nav-wrapper {
+    // Fix floating content
+    @include clearfix;
+
     position: relative;
     height: 100%;
 
