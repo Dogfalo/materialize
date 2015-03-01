@@ -2082,7 +2082,9 @@ img.responsive-img, video.responsive-video {
     bottom: 0;
     width: 100%;
     min-height: 100%;
-    background-position: center; }
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
 
 .pin-top, .pin-bottom {
   position: relative; }
