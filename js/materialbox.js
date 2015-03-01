@@ -18,24 +18,27 @@
       var placeholder = $('<div></div>').addClass('material-placeholder');
       var originalWidth = 0;
       var originalHeight = 0;
-
       origin.wrap(placeholder);
+      
+      
       origin.on('click', function(){
-
         var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
         var originalWidth = origin.width();
         var originalHeight = origin.height();
+        
 
         // If already modal, return to original
         if (doneAnimating === false) {
+          returnToOriginal();
           return false;
         }
         else if (overlayActive && doneAnimating===true) {
           returnToOriginal();
           return false;
         }
+        
 
         // Set states
         doneAnimating = false;
@@ -50,7 +53,9 @@
           position: 'relative',
           top: 0,
           left: 0
-        })
+        });
+        
+        
 
         // Set css on origin
         origin.css({position: 'absolute', 'z-index': 1000})
@@ -173,12 +178,20 @@
           var windowHeight = window.innerHeight;
           var originalWidth = origin.data('width');
           var originalHeight = origin.data('height');
+       
+          origin.velocity("stop", true);
+          $('#materialbox-overlay').velocity("stop", true);
+          $('.materialbox-caption').velocity("stop", true);
 
 
-          $('#materialbox-overlay').fadeOut(outDuration, function(){
-            // Remove Overlay
-            overlayActive = false;
-            $(this).remove();
+          $('#materialbox-overlay').velocity({opacity: 0}, {
+            duration: outDuration, // Delay prevents animation overlapping
+            queue: false, easing: 'easeOutQuad',
+            complete: function(){
+              // Remove Overlay
+              overlayActive = false;
+              $(this).remove();
+            }
           });
 
           // Resize Image
@@ -197,7 +210,7 @@
 
           // Remove Caption + reset css settings on image
           $('.materialbox-caption').velocity({opacity: 0}, {
-            duration: outDuration + 200, // Delay prevents animation overlapping
+            duration: outDuration, // Delay prevents animation overlapping
             queue: false, easing: 'easeOutQuad',
             complete: function(){
               placeholder.css({
