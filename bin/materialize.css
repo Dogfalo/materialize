@@ -4807,10 +4807,13 @@ span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px; }
-  .row:after {
-    content: "";
+  margin-bottom: 20px;
+  *zoom: 1; }
+  .row:before, .row:after {
     display: table;
+    content: "";
+    line-height: 0; }
+  .row:after {
     clear: both; }
   .row .col {
     float: left;

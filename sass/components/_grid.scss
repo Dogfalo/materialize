@@ -41,11 +41,7 @@
   margin-bottom: 20px;
 
   // Clear floating children
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+  @include clearfix;
 
   .col {
     float: left;
