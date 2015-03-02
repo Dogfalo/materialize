@@ -146,39 +146,57 @@
           </form>
         </div>
         <pre><code class="language-markup">
-&lt;div class="row">
-  &lt;form class="col s12">
-    &lt;div class="row">
-      &lt;div class="input-field col s6">
-        &lt;input id="first_name" type="text" class="validate">
-        &lt;label for="first_name">First Name&lt;/label>
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s6">
+          &lt;input id="first_name" type="text" class="validate">
+          &lt;label for="first_name">First Name&lt;/label>
+        &lt;/div>
+        &lt;div class="input-field col s6">
+          &lt;input id="last_name" type="text" class="validate">
+          &lt;label for="last_name">Last Name&lt;/label>
+        &lt;/div>
       &lt;/div>
-      &lt;div class="input-field col s6">
-        &lt;input id="last_name" type="text" class="validate">
-        &lt;label for="last_name">Last Name&lt;/label>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="username" type="text" class="validate">
+          &lt;label for="username">Username&lt;/label>
+        &lt;/div>
       &lt;/div>
-    &lt;/div>
-    &lt;div class="row">
-      &lt;div class="input-field col s12">
-        &lt;input id="username" type="text" class="validate">
-        &lt;label for="username">Username&lt;/label>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="password" type="password" class="validate">
+          &lt;label for="password">Password&lt;/label>
+        &lt;/div>
       &lt;/div>
-    &lt;/div>
-    &lt;div class="row">
-      &lt;div class="input-field col s12">
-        &lt;input id="password" type="password" class="validate">
-        &lt;label for="password">Password&lt;/label>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" class="validate">
+          &lt;label for="email">Email&lt;/label>
+        &lt;/div>
       &lt;/div>
-    &lt;/div>
-    &lt;div class="row">
-      &lt;div class="input-field col s12">
-        &lt;input id="email" type="email" class="validate">
-        &lt;label for="email">Email&lt;/label>
-      &lt;/div>
-    &lt;/div>
-  &lt;/form>
-&lt;/div>
+    &lt;/form>
+  &lt;/div>
         </code></pre><br>
+        <h4>Prefilling Text Inputs</h4>
+        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label</p>
+        <div class="row">
+          <div class="input-field col s6">
+            <input value="Alvin" id="first_name2" type="text" class="validate">
+            <label class="active" for="first_name2">First Name</label>
+          </div>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="input-field col s6">
+      &lt;input value="Alvin" id="first_name2" type="text" class="validate">
+      &lt;label class="active" for="first_name2">First Name&lt;/label>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+
 
         <h4>Icon Prefixes</h4>
         <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
