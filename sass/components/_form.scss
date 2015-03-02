@@ -322,7 +322,7 @@ form p {
   border-left: 2px solid transparent;
   border-right: 2px solid $radio-fill-color;
   border-bottom: 2px solid $radio-fill-color;
-  @include transform(rotateZ(40deg));
+  @include transform(rotate(40deg));
   -webkit-backface-visibility: hidden;
 
   @include transform-origin(100% 100%);
@@ -336,7 +336,7 @@ form p {
   background-color: $input-disabled-color;
   width: 18px; height: 18px;
   border: 2px solid $input-disabled-color;
-  @include transform(rotateZ(0deg));
+  @include transform(rotate(0deg));
 }
 
 [type="checkbox"]:disabled:checked + label:before {
@@ -347,7 +347,7 @@ form p {
   border-left: 2px solid transparent;
   border-right: 2px solid $input-disabled-color;
   border-bottom: 2px solid $input-disabled-color;
-  @include transform(rotateZ(40deg));
+  @include transform(rotate(40deg));
   -webkit-backface-visibility: hidden;
 
   @include transform-origin(100% 100%);
