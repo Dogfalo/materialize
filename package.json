@@ -5,7 +5,11 @@
   "url": "http://materializecss.com/",
   "version": "0.95.3",
   "dependencies": {
-    "grunt": "0.x.x",
+  },
+  "engine": "node >= 0.10",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-banner": "^0.3.0",
     "grunt-contrib-clean": "0.5.x",
     "grunt-contrib-connect": "^0.4.2",
     "grunt-contrib-copy": "0.4.x",
@@ -21,10 +25,5 @@
     "grunt-text-replace": "^0.4.0",
     "grunt-rename": "^0.1.4",
     "grunt-remove-logging": "^0.2.0"
-  },
-  "engine": "node >= 0.10",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-banner": "^0.3.0"
   }
 }
