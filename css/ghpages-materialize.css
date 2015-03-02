@@ -5970,6 +5970,18 @@ a.waves-effect .waves-ripple {
     position: fixed;
     bottom: 0; }
 
+.modal.bottom-sheet {
+  top: auto;
+  bottom: -100%;
+  margin: 0;
+  width: 100%;
+  max-height: 45%;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  background-clip: padding-box;
+  will-change: bottom, opacity; }
+
 .collapsible {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
