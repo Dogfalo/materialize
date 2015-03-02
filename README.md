@@ -13,6 +13,11 @@ Materialize, a CSS Framework based on material design
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Contributing
+- Compiling Files
+  - `npm install`
+  - `grunt monitor`, this will compile .scss, .js., .jade files
+- Documentation
+  - If you notice an error in the documentation. Please edit the corresponding .html page under jade/page-contents/.
 - Issues
   - If you have an issue please make sure you document the problems in depth. One line issues with no explanations will be closed.
 - Feature Requests
