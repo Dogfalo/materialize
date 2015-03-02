@@ -26,9 +26,9 @@
     var activates = $("#"+ origin.attr('data-activates'));
 
     function updateOptions() {
-      if (origin.data('inDuration') != undefined)
+      if (origin.data('induration') != undefined)
         options.inDuration = origin.data('inDuration');
-      if (origin.data('outDuration') != undefined)
+      if (origin.data('outduration') != undefined)
         options.outDuration = origin.data('outDuration');
       if (origin.data('constrainwidth') != undefined)
         options.constrain_width = origin.data('constrainwidth');

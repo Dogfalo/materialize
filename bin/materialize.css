@@ -5787,6 +5787,7 @@ ul.tabs li.tab {
   max-height: 70%;
   opacity: 0;
   overflow-y: hidden;
+  white-space: nowrap;
   will-change: width, height; }
   .dropdown-content li {
     cursor: pointer;

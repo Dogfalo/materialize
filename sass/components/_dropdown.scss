@@ -9,6 +9,7 @@
   max-height: 70%;
   opacity: 0;
   overflow-y: hidden;
+  white-space: nowrap; // Force one line
 
   will-change: width, height;
 
