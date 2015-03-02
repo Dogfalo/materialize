@@ -73,6 +73,11 @@
           $('.drag-target').css({'right': 0}); // Add Touch Area
         }
 
+        // If fixed sidenav, bring menu out
+        if (menu_id.hasClass('fixed')) {
+            menu_id.css('left', 0);
+          }
+
 
 
         // Window resize to reset on large screens fixed
@@ -129,7 +134,7 @@
             $('#sidenav-overlay').trigger('click');
         }).bind('pan', function(e) {
 
-          if (e.gesture.pointerType != null) {
+          if (e.gesture.pointerType == "touch") {
 
             var direction = e.gesture.direction;
             var x = e.gesture.center.x;
@@ -188,7 +193,7 @@
           }
 
         }).bind('panend', function(e) {
-          if (e.gesture.pointerType != null) {
+          if (e.gesture.pointerType == "touch") {
             var velocityX = e.gesture.velocityX;
             panning = false;
             if (options.edge === 'left') {
