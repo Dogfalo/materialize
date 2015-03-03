@@ -19,7 +19,8 @@
       var defaults = {
         top: 0,
         bottom: Infinity,
-        offset: 0
+        offset: 0,
+        parent: window
       }
       options = $.extend(defaults, options);
 
@@ -60,9 +61,9 @@
           });
         }
 
-        updateElements($this, $(window).scrollTop());
-        $(window).on('scroll.' + $uniqueId, function () {
-          var $scrolled = $(window).scrollTop() + options.offset;
+        updateElements($this, $(options.parent).scrollTop());
+        $(options.parent).on('scroll.' + $uniqueId, function () {
+          var $scrolled = $(options.parent).scrollTop() + options.offset;
           updateElements($this, $scrolled);
         });
 
