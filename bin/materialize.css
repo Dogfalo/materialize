@@ -5739,6 +5739,9 @@ ul.tabs li.tab {
     .btn-floating.btn-large i {
       line-height: 55.5px; }
 
+button.btn-floating {
+  border: none; }
+
 .fixed-action-btn {
   position: fixed;
   right: 23px;
