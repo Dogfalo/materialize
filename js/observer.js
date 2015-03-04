@@ -29,5 +29,7 @@ observeDOM( document.body ,function(mutations){
       $inserted_obj.collapsible();
     if ($inserted_obj.hasClass('tooltipped'))
       $('.tooltipped').tooltip();
+    if ($inserted_obj.hasClass('materialboxed'))
+      $inserted_obj.materialbox();
   }
 });
