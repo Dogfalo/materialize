@@ -55,6 +55,7 @@ nav {
     }
 
     @media #{$medium-and-down} {
+      padding-top: 60px;
       top: 50%;
       left: 50%;
       @include transform(translate(-50%, -50%));
