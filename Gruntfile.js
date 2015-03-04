@@ -115,6 +115,7 @@ module.exports = function(grunt) {
               "js/scrollFire.js",
               "js/date_picker/picker.js",
               "js/date_picker/picker.date.js",
+              "js/global.js"
              ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
