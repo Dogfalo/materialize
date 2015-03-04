@@ -59,19 +59,27 @@
       $('body').append(" <div class='slider'> <ul class='slides'> <li> <img src='http://lorempixel.com/580/250/nature/1'> <!-- random image --> <div class='caption center-align'> <h3>This is our big Tagline!</h3> <h5 class='light grey-text text-lighten-3'>Here's our small slogan.</h5> </div> </li> <li> <img src='http://lorempixel.com/580/250/nature/2'> <!-- random image --> <div class='caption left-align'> <h3>Left Aligned Caption</h3> <h5 class='light grey-text text-lighten-3'>Here's our small slogan.</h5> </div> </li> </ul> </div>");
     };
 
+
     var modalCounter = 0;
     insertModal = function() {
       $('body').append("<a class='waves-effect waves-light btn modal-trigger' href='#modal" + modalCounter + "'>Modal</a>");
       $('body').append("<div id='modal" + modalCounter + "' class='modal'> <div class='modal-content'> <h4>Modal Header</h4> <p>" + modalCounter + "</p> </div> <div class='modal-footer'> <a href='#' class='waves-effect waves-green btn-flat modal-action modal-close'>Agree</a> </div> </div>");
       modalCounter++;
     };
+
+    var tabCounter = 0;
+    insertTab = function() {
+      $('body').append("<ul class='tabs'> <li class='tab col s3'><a href='#test" + tabCounter + "'>Test " + tabCounter + "</a></li> <li class='tab col s3'><a class='active' href='#test" + (tabCounter+1) + "'>Test " + (tabCounter+1) + "</a></li> </ul> <div id='test" + tabCounter + "' class='col s12'>Test " + tabCounter + "</div> <div id='test" + (tabCounter+1) + "' class='col s12'>Test " + (tabCounter+1) + "</div>");
+      tabCounter = tabCounter + 2;
+    };
   
-      insertDropdown();
+      // insertDropdown();
       // insertCollapsible();
       // insertTooltip();
       // insertMaterialbox();
       // insertSlider(); // Slider has problem
       // insertModal();
+      insertTab();
   });
   </script>
 

@@ -35,5 +35,7 @@ observeDOM( document.body ,function(mutations){
       $inserted_obj.slider({full_width: true});
     if ($inserted_obj.hasClass('modal-trigger'))
       $inserted_obj.leanModal();
+    if ($inserted_obj.hasClass('tabs'))
+      $inserted_obj.tabs();
   }
 });
