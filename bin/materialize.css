@@ -5094,6 +5094,7 @@ nav {
       transform: translate(-50%, -50%); }
     @media only screen and (max-width : 992px) {
       nav .brand-logo {
+        padding-top: 60px;
         top: 50%;
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
