@@ -147,6 +147,15 @@
         hideDropdown();
       });
 
+      if (options.belowOrigin) {
+        origin.on('mouseleave', function(e){ // Mouse out of activator
+          toElement = $(e.toElement || e.relatedTarget);
+          if (!toElement.is('.dropdown-content') && toElement.parents('.dropdown-content').length === 0) {
+            hideDropdown();
+          }
+        });
+      }
+
     // Click
     } else {
       var open = false;
