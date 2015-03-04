@@ -31,5 +31,9 @@ observeDOM( document.body ,function(mutations){
       $('.tooltipped').tooltip();
     if ($inserted_obj.hasClass('materialboxed'))
       $inserted_obj.materialbox();
+    if ($inserted_obj.hasClass('slider'))
+      $inserted_obj.slider({full_width: true});
+    if ($inserted_obj.hasClass('modal-trigger'))
+      $inserted_obj.leanModal();
   }
 });
