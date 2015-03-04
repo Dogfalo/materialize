@@ -101,12 +101,13 @@
           // Handle modal ready callback
           complete: function() {
             $("#lean-overlay").css({display:"none"});
+            $('#lean-overlay').remove();
 
             // Call complete callback
             if (typeof(options.complete) === "function") {
               options.complete();
             }
-            $('#lean-overlay').remove();
+
           }
         });
       }
@@ -114,12 +115,13 @@
         $(this).fadeOut(options.out_duration, function() {
           $(this).css({ top: 0});
           $("#lean-overlay").css({display:"none"});
+          $('#lean-overlay').remove();
 
           // Call complete callback
           if (typeof(options.complete) === "function") {
             options.complete();
           }
-          $('#lean-overlay').remove();
+
         });
       }
 
