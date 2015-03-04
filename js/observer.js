@@ -27,5 +27,7 @@ observeDOM( document.body ,function(mutations){
       $inserted_obj.dropdown();
     if ($inserted_obj.hasClass('collapsible'))
       $inserted_obj.collapsible();
+    if ($inserted_obj.hasClass('tooltipped'))
+      $('.tooltipped').tooltip();
   }
 });

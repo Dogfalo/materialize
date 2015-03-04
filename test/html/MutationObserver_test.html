@@ -42,9 +42,14 @@
          $('body').append("<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>");
          $('body').append("<ul id='dropdown1' class='dropdown-content'><li><a href='#!'>one</a></li></ul");
        }
+
+       insertTooltip = function() {
+         $('body').append("<a class='btn tooltipped' data-position='bottom' data-delay='50' data-tooltip='I am tooltip'>Hover me!</a>");
+       }
     
       // insertDropdown();
-      insertCollapsible();
+      // insertCollapsible();
+      insertTooltip();
   });
   </script>
 
