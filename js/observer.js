@@ -21,10 +21,11 @@ var observeDOM = (function() {
 
 // Observe a specific DOM element:
 observeDOM( document.body ,function(mutations){ 
-  console.log(mutations);
   for (var i = 0; i < mutations.length; i++) {
     var $inserted_obj = $(mutations[i].addedNodes[0]);
     if ($inserted_obj.hasClass('dropdown-button'))
-       $inserted_obj.dropdown();
+      $inserted_obj.dropdown();
+    if ($inserted_obj.hasClass('collapsible'))
+      $inserted_obj.collapsible();
   }
 });

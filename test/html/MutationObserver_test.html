@@ -1,0 +1,52 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <title>Materialize - Documentation</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+
+  <!-- Android 5 Chrome Color -->
+  <meta name="theme-color" content="#EE6E73">
+  
+  <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+<!--  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
+<!--  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>-->
+  <link href="../../../css/prism.css" rel="stylesheet" />
+</head>
+  
+<body>
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../../../bin/materialize.js"></script>
+<!--     <script src="js/velocity.min.js"></script>-->
+<!--  <script src="js/leanModal.js"></script>-->
+
+  <script>
+   $(document).ready(function(){
+
+        insertCollapsible = function() {
+         $('body').append("<ul class='collapsible' data-collapsible='accordion'> <li> <div class='collapsible-header'><i class='mdi-image-filter-drama'></i>First</div> <div class='collapsible-body'><p>Lorem ipsum dolor sit amet.</p></div> </li> <li> <div class='collapsible-header'><i class='mdi-maps-place'></i>Second</div> <div class='collapsible-body'><p>Lorem ipsum dolor sit amet.</p></div> </li> <li> <div class='collapsible-header'><i class='mdi-social-whatshot'></i>Third</div> <div class='collapsible-body'><p>Lorem ipsum dolor sit amet.</p></div> </li> </ul>");
+       }
+
+
+       insertDropdown = function() {
+         $('body').append("<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>");
+         $('body').append("<ul id='dropdown1' class='dropdown-content'><li><a href='#!'>one</a></li></ul");
+       }
+    
+      // insertDropdown();
+      insertCollapsible();
+  });
+  </script>
+
+</body>
+</html>
