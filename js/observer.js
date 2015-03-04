@@ -2,7 +2,7 @@ var observeDOM = (function() {
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
   eventListenerSupported = window.addEventListener;
 
-  return function(obj, callback) 
+  return function(obj, callback) {
     if ( MutationObserver ) {
       // define a new observer
       var obs = new MutationObserver(function(mutations, observer){
@@ -22,4 +22,9 @@ var observeDOM = (function() {
 // Observe a specific DOM element:
 observeDOM( document.body ,function(mutations){ 
   console.log(mutations);
+  for (var i = 0; i < mutations.length; i++) {
+    var $inserted_obj = $(mutations[i].addedNodes[0]);
+    if ($inserted_obj.hasClass('dropdown-button'))
+       $inserted_obj.dropdown();
+  }
 });
