@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Material-Design-Icons";
-    src:url("#{$icons-font-path}Material-Design-Icons.eot");
     src:url("#{$icons-font-path}Material-Design-Icons.eot?#iefix") format("embedded-opentype"),
+        url("#{$icons-font-path}Material-Design-Icons.woff2") format("woff2"),
         url("#{$icons-font-path}Material-Design-Icons.woff") format("woff"),
         url("#{$icons-font-path}Material-Design-Icons.ttf") format("truetype"),
         url("#{$icons-font-path}Material-Design-Icons.svg#Material-Design-Icons") format("svg");

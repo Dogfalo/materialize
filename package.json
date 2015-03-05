@@ -4,6 +4,10 @@
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
   "version": "0.95.3",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Dogfalo/materialize.git"
+  },
   "dependencies": {
   },
   "engine": "node >= 0.10",

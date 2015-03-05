@@ -30,6 +30,7 @@
   }
 
   .modal-footer {
+    @include border-radius(0 0 2px 2px);
     background-color: #eee;
     padding: 4px 6px;
     height: 56px;
@@ -56,6 +57,7 @@
     will-change: opacity;
 }
 
+// Modal with fixed action footer
 .modal.modal-fixed-footer {
   padding: 0;
   height: 70%;
@@ -73,4 +75,15 @@
     position: fixed;
     bottom: 0;
   }
+}
+
+// Modal Bottom Sheet Style
+.modal.bottom-sheet {
+  top: auto;
+  bottom: -100%;
+  margin: 0;
+  width: 100%;
+  max-height: 45%;
+  @include border-radius(0);
+  will-change: bottom, opacity;
 }

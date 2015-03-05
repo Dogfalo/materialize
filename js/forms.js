@@ -198,11 +198,22 @@
       $(this).each(function(){
         $select = $(this);
 
-        if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
+        if ( $select.hasClass('browser-default')) {
           return; // Continue to next (return false breaks out of entire loop)
         }
 
+        // Tear down structure if Select needs to be rebuilt
+        var lastID = $select.data('select-id');
+        if (lastID) {
+          $select.parent().find('i').remove();
+          $select.parent().find('input').remove();
+
+          $select.unwrap();
+          $('ul#select-options-'+lastID).remove();
+        }
+
         var uniqueID = guid();
+        $select.data('select-id', uniqueID);
         var wrapper = $('<div class="select-wrapper"></div>');
         var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content select-dropdown"></ul>');
         var selectOptions = $select.children('option');
