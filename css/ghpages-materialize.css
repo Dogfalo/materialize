@@ -5937,6 +5937,10 @@ a.waves-effect .waves-ripple {
   .modal .modal-content {
     padding: 24px; }
   .modal .modal-footer {
+    -webkit-border-radius: 0 0 2px 2px;
+    -moz-border-radius: 0 0 2px 2px;
+    border-radius: 0 0 2px 2px;
+    background-clip: padding-box;
     background-color: #eee;
     padding: 4px 6px;
     height: 56px;
