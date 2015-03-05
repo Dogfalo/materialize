@@ -30,6 +30,7 @@
   }
 
   .modal-footer {
+    @include border-radius(0 0 2px 2px);
     background-color: #eee;
     padding: 4px 6px;
     height: 56px;
