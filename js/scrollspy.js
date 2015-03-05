@@ -181,7 +181,7 @@
 		    var offset = $(this.hash).offset().top + 1;
 
 //            offset-60 to handle floating fixed tab bar
-				if ($('.nav-wrapper').length) {
+				if ($('.navbar-fixed').length) {
 			    $('html, body').animate({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
 				}
 				else {
