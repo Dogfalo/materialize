@@ -9,7 +9,7 @@ $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 
 /*** Badges ***/
-$badge-bg-color: $secondary-color;
+$badge-bg-color: $secondary-color !default;
 
 /*** Buttons ***/
 $button-bg-color-disabled: #DFDFDF !default;
@@ -34,7 +34,7 @@ $collapsible-border-color: #ddd !default;
 
 
 /*** Dropdown ***/
-$dropdown-color: $secondary-color;
+$dropdown-color: $secondary-color !default;
 
 /*** Fonts ***/
 $roboto-font-path: "../font/roboto/" !default;
@@ -66,8 +66,8 @@ $datepicker-weekday-bg: darken($secondary_color, 7%) !default;
 $datepicker-date-bg: $secondary_color !default;
 $datepicker-year: rgba(255, 255, 255, .4) !default;
 $datepicker-focus: rgba(0,0,0, .05) !default;
-$datepicker-selected: $secondary-color;
-$datepicker-selected-outfocus: desaturate(lighten($secondary-color, 35%), 15%);
+$datepicker-selected: $secondary-color !default;
+$datepicker-selected-outfocus: desaturate(lighten($secondary-color, 35%), 15%) !default;
 
 
 /*** Global ***/
@@ -102,11 +102,11 @@ $navbar-height-mobile: 56px !default;
 
 /*** Tabs ***/
 $tabs-underline-color: $primary-color-light !default;
-$tabs-text-color: $primary-color;
+$tabs-text-color: $primary-color !default;
 
 /*** Tables ***/
-$table-border-color: #d0d0d0;
-$table-striped-color: #f2f2f2;
+$table-border-color: #d0d0d0 !default;
+$table-striped-color: #f2f2f2 !default;
 
 /*** Toasts ***/
 $toast-height: 48px !default;
@@ -124,7 +124,7 @@ $h5-fontsize: 1.64rem !default;
 $h6-fontsize: 1rem !default;
 
 // Footer
-$footer-bg-color: $primary-color;
+$footer-bg-color: $primary-color !default;
 
 // Flowtext
 $range : $large-screen - $small-screen !default;
@@ -139,4 +139,4 @@ $collection-active-color: lighten($secondary-color, 55%) !default;
 $collection-hover-bg-color: #ddd !default;
 
 /* Progress Bar */
-$progress-bar-color: $secondary-color;
+$progress-bar-color: $secondary-color !default;
