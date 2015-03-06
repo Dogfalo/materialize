@@ -83,7 +83,7 @@
         // Window resize to reset on large screens fixed
         if (menu_id.hasClass('fixed')) {
           $(window).resize( function() {
-            if ($(window).width() > 1200) {
+            if ($(window).width() > 992) {
               if (menu_id.attr('style')) {
                 menu_id.removeAttr('style');
                 menu_id.css('width', options.menuWidth);
@@ -255,14 +255,14 @@
                 menuOut = false;
                 panning = false;
                 removeMenu();
-                overlay.animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                overlay.velocity({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
                   complete: function() {
                     $(this).remove();
                   } });
 
               });
               $('body').append(overlay);
-              overlay.animate({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
+              overlay.velocity({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
                 complete: function () {
                   menuOut = true;
                   panning = false;
