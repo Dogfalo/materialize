@@ -59,7 +59,9 @@ module.exports = function(grunt) {
       },
       dist: {
         // the files to concatenate
-        src: ["js/jquery.easing.1.3.js",
+        src: [
+              "js/global.js",
+              "js/jquery.easing.1.3.js",
               "js/animation.js",
               "js/velocity.min.js",
               "js/hammer.min.js",
@@ -84,14 +86,16 @@ module.exports = function(grunt) {
               "js/scrollFire.js",
               "js/date_picker/picker.js",
               "js/date_picker/picker.date.js",
-              "js/observer.js",
+              "js/observer.js"
              ],
         // the location of the resulting JS file
         dest: 'dist/js/materialize.js'
       },
       temp: {
         // the files to concatenate
-        src: ["js/jquery.easing.1.3.js",
+        src: [
+              "js/global.js",
+              "js/jquery.easing.1.3.js",
               "js/animation.js",
               "js/velocity.min.js",
               "js/hammer.min.js",
@@ -116,7 +120,7 @@ module.exports = function(grunt) {
               "js/scrollFire.js",
               "js/date_picker/picker.js",
               "js/date_picker/picker.date.js",
-              "js/observer.js",
+              "js/observer.js"
              ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
@@ -166,6 +170,7 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
+              "global.js",
               "jquery.easing.1.3.js",
               "animation.js",
               "velocity.min.js",

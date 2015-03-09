@@ -12,6 +12,8 @@ Package.onUse(function (api) {
 
   api.use('jquery', 'client');
 
+  api.export('Materialize', 'client');
+
   api.addFiles([
     'font/material-design-icons/Material-Design-Icons.eot',
     'font/material-design-icons/Material-Design-Icons.svg',

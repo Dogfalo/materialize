@@ -6,38 +6,38 @@
         <p class="caption">Dialogs are content that are not original visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user.</p>
         <h2 class="header">Toasts</h2>
         <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
-        <a class="waves-effect waves-light btn" onclick="toast('I am a toast', 4000)">Toast!</a>
-        <p>To do this, call the toast() function programatically in JavaScript.</p>
+        <a class="waves-effect waves-light btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
+        <p>To do this, call the Materialize.toast() function programatically in JavaScript.</p>
         <pre><code class="language-javascript">
-  // toast(message, displayLength, className, completeCallback);
-  toast('I am a toast!', 4000) // 4000 is the duration of the toast
+  // Materialize.toast(message, displayLength, className, completeCallback);
+  Materialize.toast('I am a toast!', 4000) // 4000 is the duration of the toast
         </code></pre>
         <p>One way to add this into your application is to add this as an onclick event to a button</p>
         <pre><code class="language-markup">
-  &lt;a class="btn" onclick="toast('I am a toast', 4000)">Toast!&lt;/a>
+  &lt;a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!&lt;/a>
         </code></pre>
 
         <h4>Custom HTML</h4>
         <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
-        <a class="waves-effect waves-light btn" onclick="toast('<span>Item Deleted</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#1&quot;>Undo</a>', 5000)">Toast with Action</a>
+        <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item Deleted</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#1&quot;>Undo</a>', 5000)">Toast with Action</a>
         <pre><code class="language-markup">
-  &lt;a class="waves-effect waves-light btn" onclick="toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
+  &lt;a class="waves-effect waves-light btn" onclick="Materialize.toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
         </code></pre>
 
         <h4>Callback</h4>
         <p>You can have the toast callback a function when it has been dismissed</p>
-        <a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
+        <a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
         <pre><code class="language-markup">
-  &lt;a class="btn" onclick="toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
+  &lt;a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
         </code></pre>
 
         <h4>Styling Toasts</h4>
         <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
 
-        <a class="waves-effect waves-light btn" onclick="toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
+        <a class="waves-effect waves-light btn" onclick="Materialize.toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
 
         <pre><code class="language-javascript">
-  toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+  Materialize.toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
         </code></pre>
       </div>
 

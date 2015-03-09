@@ -20,7 +20,8 @@ var observeDOM = (function() {
     })();
 
 // Observe a specific DOM element:
-observeDOM( document.body ,function(mutations){ 
+observeDOM( document.body ,function(mutations){
+  console.log(mutations);
   for (var i = 0; i < mutations.length; i++) {
     var $inserted_obj = $(mutations[i].addedNodes[0]);
     if ($inserted_obj.hasClass('dropdown-button'))
@@ -37,5 +38,15 @@ observeDOM( document.body ,function(mutations){
       $inserted_obj.leanModal();
     if ($inserted_obj.hasClass('tabs'))
       $inserted_obj.tabs();
+    if ($inserted_obj.hasClass('input-field')) {
+      // Add active class if input has text prefilled
+      var $text_input = $inserted_obj.children(":first");
+      if ($text_input.val().length > 0) {
+        $text_input.siblings('label, i').addClass('active');
+      }
+      else {
+        $text_input.siblings('label, i').removeClass('active');
+      }
+    }
   }
 });

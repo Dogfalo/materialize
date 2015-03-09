@@ -1,4 +1,4 @@
-function toast(message, displayLength, className, completeCallback) {
+Materialize.toast = function (message, displayLength, className, completeCallback) {
     className = className || "";
     if ($('#toast-container').length == 0) {
         // create notification container

@@ -22,10 +22,9 @@
           $(modal).closeModal(options);
         });
         // Return on ESC
-        $(document).keyup(function(e) {
+        $(document).on('keyup.leanModal', function(e) {
           if (e.keyCode === 27) {   // ESC key
             $(modal).closeModal(options);
-            $(this).off();
           }
         });
       }
@@ -88,6 +87,7 @@
       var options = $.extend(defaults, options);
 
       $('.modal-close').off();
+      $(document).off('keyup.leanModal');
 
       $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
 

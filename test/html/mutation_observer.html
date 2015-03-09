@@ -13,13 +13,13 @@
 
   <!-- Android 5 Chrome Color -->
   <meta name="theme-color" content="#EE6E73">
-  
+
   <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 <!--  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
 <!--  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>-->
   <link href="../../../css/prism.css" rel="stylesheet" />
 </head>
-  
+
 <body>
 
 
@@ -72,14 +72,19 @@
       $('body').append("<ul class='tabs'> <li class='tab col s3'><a href='#test" + tabCounter + "'>Test " + tabCounter + "</a></li> <li class='tab col s3'><a class='active' href='#test" + (tabCounter+1) + "'>Test " + (tabCounter+1) + "</a></li> </ul> <div id='test" + tabCounter + "' class='col s12'>Test " + tabCounter + "</div> <div id='test" + (tabCounter+1) + "' class='col s12'>Test " + (tabCounter+1) + "</div>");
       tabCounter = tabCounter + 2;
     };
-  
+
+    insertTextField = function() {
+      $('body').append("<div class='input-field'><input value='Alvin' id='first_name2' type='text' class='validate'> <label for='first_name2'>First Name</label></div>");
+    };
+
       // insertDropdown();
       // insertCollapsible();
       // insertTooltip();
       // insertMaterialbox();
       // insertSlider(); // Slider has problem
       // insertModal();
-      insertTab();
+      // insertTab();
+      insertTextField();
   });
   </script>
 
