@@ -8,7 +8,7 @@
         queue: false,
         easing: 'easeOutSine'
       });
-    $(element).animate({opacity: 1}, {
+    $(element).velocity({opacity: 1}, {
           duration: 1300,
           queue: false,
           easing: 'swing',

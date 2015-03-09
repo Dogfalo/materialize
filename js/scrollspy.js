@@ -182,10 +182,10 @@
 
 //            offset-60 to handle floating fixed tab bar
 				if ($('.tabs-wrapper').length) {
-			    $('html, body').animate({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
+			    $('html, body').velocity({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
 				}
 				else {
-		    	$('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
+		    	$('html, body').velocity({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
 				}
 		  });
 		});
