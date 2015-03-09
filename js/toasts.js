@@ -14,11 +14,10 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
     newToast.css({"top" : parseFloat(newToast.css("top"))+35+"px",
                   "opacity": 0});
-    newToast.velocity({"top" : "0px",
-                       opacity: 1},
-                       {duration: 300,
-                       easing: 'easeOutCubic',
-                      queue: false});
+    newToast.velocity({ "top" : "0px", opacity: 1 },
+      {duration: 300,
+      easing: 'easeOutCubic',
+      queue: false});
 
     // Allows timer to be pause while being panned
     var timeLeft = displayLength;
@@ -32,16 +31,15 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
       if (timeLeft <= 0) {
         newToast.velocity({"opacity": 0, marginTop: '-40px'},
-                        { duration: 375,
-                          easing: 'easeOutExpo',
-                          queue: false,
-                          complete: function(){
-                            if(typeof(completeCallback) === "function")
-                              completeCallback();
-                            $(this).remove();
-                          }
-                        }
-                       );
+          { duration: 375,
+            easing: 'easeOutExpo',
+            queue: false,
+            complete: function(){
+              if(typeof(completeCallback) === "function")
+                completeCallback();
+              $(this).remove();
+            }
+          });
         window.clearInterval(counterInterval);
       }
     }, 100);
@@ -54,47 +52,47 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
           .html(html);
         // Bind hammer
         toast.hammer({prevent_default:false
-              }).bind('pan', function(e) {
+          }).bind('pan', function(e) {
 
-                  var deltaX = e.gesture.deltaX;
-                  var activationDistance = 80;
+            var deltaX = e.gesture.deltaX;
+            var activationDistance = 80;
 
-//                  change toast state
-                  if (!toast.hasClass("panning"))
-                    toast.addClass("panning");
+            // Change toast state
+            if (!toast.hasClass("panning"))
+              toast.addClass("panning");
 
-                  var opacityPercent = 1-Math.abs(deltaX / activationDistance);
-                if (opacityPercent < 0)
-                  opacityPercent = 0;
+            var opacityPercent = 1-Math.abs(deltaX / activationDistance);
+            if (opacityPercent < 0)
+              opacityPercent = 0;
 
-                  toast.velocity({left: deltaX, opacity: opacityPercent }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            toast.velocity({left: deltaX, opacity: opacityPercent }, {duration: 50, queue: false, easing: 'easeOutQuad'});
 
-                }).bind('panend', function(e) {
-                  var deltaX = e.gesture.deltaX;
-                  var activationDistance = 80;
+          }).bind('panend', function(e) {
+              var deltaX = e.gesture.deltaX;
+              var activationDistance = 80;
 
-                  // If toast dragged past activation point
-                  if (Math.abs(deltaX) > activationDistance) {
-                    toast.velocity({marginTop: '-40px'},
-                                  { duration: 375,
-                        easing: 'easeOutExpo',
-                        queue: false,
-                        complete: function(){
-                          if(typeof(completeCallback) === "function")
-                            completeCallback();
-                          toast.remove()
-                        }
-                      })
-                  } else {
-                    toast.removeClass("panning");
-                    // Put toast back into original position
-                    toast.velocity({left: 0, opacity: 1},
-                                  { duration: 300,
-                        easing: 'easeOutExpo',
-                        queue: false
-                      })
-                  }
-                });
+              // If toast dragged past activation point
+              if (Math.abs(deltaX) > activationDistance) {
+                toast.velocity({marginTop: '-40px'},
+                              { duration: 375,
+                    easing: 'easeOutExpo',
+                    queue: false,
+                    complete: function(){
+                      if(typeof(completeCallback) === "function")
+                        completeCallback();
+                      toast.remove()
+                    }
+                  })
+              } else {
+                toast.removeClass("panning");
+                // Put toast back into original position
+                toast.velocity({left: 0, opacity: 1},
+                  { duration: 300,
+                    easing: 'easeOutExpo',
+                    queue: false
+                  });
+              }
+            });
         return toast;
     }
 }

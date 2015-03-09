@@ -27,7 +27,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
 - v0.96.0 (Upcoming)
-  - *Toasts, transitions, scrollfire added under Materialize namespace*
+  - **Toasts, transitions, scrollfire added under Materialize namespace**
   - Collapsibles supports nesting
 
 - v0.95.3 (Feb 25, 2015)
