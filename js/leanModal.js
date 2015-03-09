@@ -138,6 +138,21 @@
           e.preventDefault();
         }); // done set on click
       }); // done return
+    },
+
+    switchModal: function(options) {
+      var visibleModal = $('.modal:visible'),
+          modalToOpen = $(this);
+
+      if(visibleModal.length) {
+        visibleModal.closeModal({
+          complete: function() {
+              modalToOpen.openModal(options);
+          }
+        });
+      } else {
+        modalToOpen.openModal(options);
+      }
     }
   });
 })(jQuery);
