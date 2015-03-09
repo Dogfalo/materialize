@@ -26,6 +26,9 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Use this [codepen](http://codepen.io/Dogfalo/pen/xbzPQV) to illustrate your problem.
 
 ## Changelog
+- v0.96.0 (Upcoming)
+  - *Toasts, transitions, scrollfire added under Materialize namespace*
+  - Collapsibles supports nesting
 
 - v0.95.3 (Feb 25, 2015)
   - Parallax image loading / responsiveness fixes
