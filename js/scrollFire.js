@@ -2,7 +2,7 @@
 
   // Input: Array of JSON objects {selector, offset, callback}
 
-  scrollFire = function(options) {
+  Materialize.scrollFire = function(options) {
     $(window).scroll(function () {
       var windowScroll = $(window).scrollTop() + $(window).height();
 
@@ -10,7 +10,7 @@
         var selector = value.selector,
             offset = value.offset,
             callback = value.callback;
-        
+
         if ($(selector).length != 0) {
           var elementOffset = $(selector).offset().top;
 
