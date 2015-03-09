@@ -42,14 +42,10 @@
   }
 }
 
-li.active .collapsible-body {
-
-}
-
 // sideNav collapsible styling
-ul.side-nav {
+.side-nav {
 
-  ul.collapsible {
+  .collapsible {
     border: none;
     box-shadow: none;
 
@@ -75,4 +71,4 @@ ul.side-nav {
 
 }
 
-li.no-padding { padding: 0 !important; }
+.no-padding { padding: 0 !important; }

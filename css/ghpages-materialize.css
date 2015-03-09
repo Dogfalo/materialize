@@ -5902,26 +5902,26 @@ a.waves-effect .waves-ripple {
     margin: 0;
     padding: 2rem; }
 
-ul.side-nav ul.collapsible {
+.side-nav .collapsible {
   border: none;
   box-shadow: none; }
-  ul.side-nav ul.collapsible li {
+  .side-nav .collapsible li {
     padding: 0; }
-ul.side-nav .collapsible-header {
+.side-nav .collapsible-header {
   background-color: transparent;
   border: none;
   line-height: inherit;
   height: inherit;
   margin: 0 1rem; }
-  ul.side-nav .collapsible-header i {
+  .side-nav .collapsible-header i {
     line-height: inherit; }
-ul.side-nav .collapsible-body {
+.side-nav .collapsible-body {
   border: 0;
   background-color: #FFF; }
-  ul.side-nav .collapsible-body li a {
+  .side-nav .collapsible-body li a {
     margin: 0 1rem 0 2rem; }
 
-li.no-padding {
+.no-padding {
   padding: 0 !important; }
 
 .materialboxed {
