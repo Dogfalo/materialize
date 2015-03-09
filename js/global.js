@@ -1,4 +1,1 @@
-if (!Materialize) {
-  Materialize = {};
-}
-Materialize.toast = toast;
+var Materialize = {};
