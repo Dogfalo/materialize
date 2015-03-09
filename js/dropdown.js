@@ -12,7 +12,7 @@
       inDuration: 300,
       outDuration: 225,
       constrain_width: true, // Constrains width of dropdown to the activator
-      hover: true,
+      hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false
     }
@@ -177,4 +177,8 @@
 
    });
   }; // End dropdown plugin
+
+  $(document).ready(function(){
+    $('.dropdown-button').dropdown();
+  });
 }( jQuery ));

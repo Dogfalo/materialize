@@ -115,7 +115,6 @@
 
     // Plugin initialization
     $('.slider').slider({full_width: true});
-    $('.dropdown-button').dropdown({hover: false});
     $('.tab-demo').show().tabs();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
