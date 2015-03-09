@@ -4,7 +4,7 @@
   height: $button-height;
   margin-bottom: 15px;
   padding: 0 2rem;
-  @include border-radius(2px);
+  border-radius: 2px;
   line-height: $button-line-height;
   text-transform: uppercase;
   border: none;
@@ -60,7 +60,7 @@
   line-height: $button-floating-size;
   padding: 0;
   background-color: $button-color;
-  @include border-radius(50%);
+  border-radius: 50%;
   @extend .z-depth-1;
   @include transition(.3s);
   cursor: pointer;

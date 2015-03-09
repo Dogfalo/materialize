@@ -3,7 +3,7 @@
 .card-panel {
   padding: $card-padding;
   margin: $element-top-margin 0 $element-bottom-margin 0;
-  @include border-radius(2px);
+  border-radius: 2px;
   @extend .z-depth-1;
   background-color: $card-bg-color;
 }
@@ -14,7 +14,7 @@
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
   @include box-sizing(border-box);
-  @include border-radius(2px);
+  border-radius: 2px;
   @extend .z-depth-1;
 
 
@@ -94,7 +94,7 @@
 
     // Image background for content
     img {
-      @include border-radius(2px 2px 0 0);
+      border-radius: 2px 2px 0 0;
       position: relative;
       left: 0;
       right: 0;
@@ -114,7 +114,7 @@
 
   .card-content {
     padding: $card-padding;
-    @include border-radius(0 0 2px 2px);
+    border-radius: 0 0 2px 2px;
     @include box-sizing(border-box);
 
     p {

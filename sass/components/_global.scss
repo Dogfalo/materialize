@@ -140,7 +140,7 @@ video.responsive-video {
     width: 30px;
     height: 30px;
     margin: 0 10px;
-    @include border-radius(2px);
+    border-radius: 2px;
     text-align: center;
 
     a { color: #444; }
@@ -333,7 +333,7 @@ td, th{
   display: table-cell;
   text-align: left;
   vertical-align: middle;
-  @include border-radius(2px);
+  border-radius: 2px;
 }
 
 // Responsive Table
@@ -408,7 +408,7 @@ td, th{
   background-color: #999;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   border: 1px solid $collection-border-color;
-  @include border-radius(2px);
+  border-radius: 2px;
   overflow: hidden;
 
   .collection-item {
@@ -514,7 +514,7 @@ span.badge {
     font-size: 0.8rem;
     color: #fff;
     background-color: $badge-bg-color;
-    @include border-radius(2px);
+    border-radius: 2px;
   }
   &.new:after {
     content: " new";
@@ -545,7 +545,7 @@ span.badge {
     display: block;
     width: 100%;
     background-color: lighten($progress-bar-color, 40%);
-    @include border-radius(2px);
+    border-radius: 2px;
     margin: $element-top-margin 0 $element-bottom-margin 0;
     overflow: hidden;
   .determinate {
@@ -649,7 +649,7 @@ span.badge {
 
 // Circle
 .circle {
-  @include border-radius(50%);
+  border-radius: 50%;
 }
 
 .center-block {

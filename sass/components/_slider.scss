@@ -81,7 +81,7 @@
       background-color: color('grey', 'lighten-2');
 
       @include transition(background-color .3s);
-      @include border-radius(50%);
+      border-radius: 50%;
 
       &.active {
         background-color: color('green', 'base');

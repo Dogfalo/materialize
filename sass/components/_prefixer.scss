@@ -15,7 +15,6 @@
 //          animation-play-state($state)
 //          animation-timing-function($function)
 //      background-size($args)
-//      border-radius($args)
 //      box-shadow($args)
 //          inner-shadow($args) *
 //      box-sizing($args)
@@ -142,17 +141,6 @@
 @mixin background-size($args) {
     -webkit-background-size: $args;
     background-size: $args;
-}
-
-
-// Border Radius
-
-@mixin border-radius($args) {
-    -webkit-border-radius: $args;
-    -moz-border-radius: $args;
-    border-radius: $args;
-
-    background-clip: padding-box;
 }
 
 

@@ -2047,10 +2047,7 @@ img.responsive-img, video.responsive-video {
   width: 30px;
   height: 30px;
   margin: 0 10px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   text-align: center; }
   .pagination li a {
     color: #444; }
@@ -2189,10 +2186,7 @@ td, th {
   display: table-cell;
   text-align: left;
   vertical-align: middle;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background-clip: padding-box; }
+  border-radius: 2px; }
 
 @media only screen and (max-width : 992px) {
   table.responsive-table {
@@ -2251,10 +2245,7 @@ td, th {
   background-color: #999;
   margin: 0.5rem 0 1rem 0;
   border: 1px solid #e0e0e0;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   overflow: hidden; }
   .collection .collection-item {
     background-color: #fff;
@@ -2330,10 +2321,7 @@ span.badge {
     font-size: 0.8rem;
     color: #fff;
     background-color: #26a69a;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    background-clip: padding-box; }
+    border-radius: 2px; }
   span.badge.new:after {
     content: " new"; }
 
@@ -2356,10 +2344,7 @@ span.badge {
   display: block;
   width: 100%;
   background-color: #acece6;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   margin: 0.5rem 0 1rem 0;
   overflow: hidden; }
   .progress .determinate {
@@ -2512,10 +2497,7 @@ span.badge {
   user-select: none; }
 
 .circle {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  background-clip: padding-box; }
+  border-radius: 50%; }
 
 .center-block {
   display: block;
@@ -5388,10 +5370,7 @@ small {
 .card-panel {
   padding: 20px;
   margin: 0.5rem 0 1rem 0;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   background-color: #fff; }
 
 .card {
@@ -5402,10 +5381,7 @@ small {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background-clip: padding-box; }
+  border-radius: 2px; }
   .card .card-title {
     color: #fff;
     font-size: 24px;
@@ -5455,10 +5431,7 @@ small {
   .card .card-image {
     position: relative; }
     .card .card-image img {
-      -webkit-border-radius: 2px 2px 0 0;
-      -moz-border-radius: 2px 2px 0 0;
       border-radius: 2px 2px 0 0;
-      background-clip: padding-box;
       position: relative;
       left: 0;
       right: 0;
@@ -5472,10 +5445,7 @@ small {
       padding: 20px; }
   .card .card-content {
     padding: 20px;
-    -webkit-border-radius: 0 0 2px 2px;
-    -moz-border-radius: 0 0 2px 2px;
     border-radius: 0 0 2px 2px;
-    background-clip: padding-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
@@ -5524,14 +5494,11 @@ small {
       right: 7%; } }
 
 .toast {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  top: 0px;
+  top: 0;
   width: auto;
   clear: both;
   margin-top: 10px;
@@ -5540,7 +5507,7 @@ small {
   height: 48px;
   line-height: 48px;
   background-color: #323232;
-  padding: 0px 25px;
+  padding: 0 25px;
   font-size: 1.1rem;
   font-weight: 300;
   color: #fff;
@@ -5563,10 +5530,7 @@ small {
   @media only screen and (max-width : 600px) {
     .toast {
       width: 100%;
-      -webkit-border-radius: 0px;
-      -moz-border-radius: 0px;
-      border-radius: 0px;
-      background-clip: padding-box; } }
+      border-radius: 0; } }
   @media only screen and (min-width : 601px) and (max-width : 992px) {
     .toast {
       float: left; } }
@@ -5620,10 +5584,7 @@ ul.tabs li.tab {
   font-size: 1rem;
   z-index: 1000;
   background-color: transparent;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   color: #fff;
   min-height: 36px;
   line-height: 1rem;
@@ -5642,10 +5603,7 @@ ul.tabs li.tab {
   display: none;
   height: 7px;
   width: 14px;
-  -webkit-border-radius: 0 0 14px 14px;
-  -moz-border-radius: 0 0 14px 14px;
   border-radius: 0 0 14px 14px;
-  background-clip: padding-box;
   background-color: #323232;
   z-index: -1;
   -webkit-transform-origin: 50% 10%;
@@ -5660,10 +5618,7 @@ ul.tabs li.tab {
   height: 36px;
   margin-bottom: 15px;
   padding: 0 2rem;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   line-height: 36px;
   text-transform: uppercase;
   border: none;
@@ -5708,10 +5663,7 @@ ul.tabs li.tab {
   line-height: 37px;
   padding: 0;
   background-color: #26a69a;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
-  background-clip: padding-box;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
@@ -5907,10 +5859,7 @@ a.waves-effect .waves-ripple {
   margin: auto;
   overflow-y: auto;
   z-index: 1000;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
-  background-clip: padding-box;
   -webkit-transform: translate(0);
   -moz-transform: translate(0);
   -ms-transform: translate(0);
@@ -5925,10 +5874,7 @@ a.waves-effect .waves-ripple {
   .modal .modal-content {
     padding: 24px; }
   .modal .modal-footer {
-    -webkit-border-radius: 0 0 2px 2px;
-    -moz-border-radius: 0 0 2px 2px;
     border-radius: 0 0 2px 2px;
-    background-clip: padding-box;
     background-color: #eee;
     padding: 4px 6px;
     height: 56px;
@@ -5970,10 +5916,7 @@ a.waves-effect .waves-ripple {
   margin: 0;
   width: 100%;
   max-height: 45%;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
   border-radius: 0;
-  background-clip: padding-box;
   will-change: bottom, opacity; }
 
 .collapsible {
@@ -6352,10 +6295,7 @@ form p:last-child {
   margin-top: 2px;
   left: 0;
   z-index: 0;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
   border-radius: 1px;
-  background-clip: padding-box;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
@@ -7314,10 +7254,7 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
       -o-transition: background-color 0.3s;
       -ms-transition: background-color 0.3s;
       transition: background-color 0.3s;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
-      background-clip: padding-box; }
+      border-radius: 50%; }
       .slider ul.indicators li.indicator-item.active {
         background-color: #4CAF50; }
 
@@ -8236,19 +8173,13 @@ a.button-collapse.top-nav {
   width: 100%;
   height: auto;
   display: inline-block;
-  -webkit-border-radius: 5px 5px 2px 2px;
-  -moz-border-radius: 5px 5px 2px 2px;
   border-radius: 5px 5px 2px 2px;
-  background-clip: padding-box;
   background-color: #fff;
   margin: 20px 0px;
   overflow: hidden; }
   .browser-window .top-bar {
     height: 30px;
-    -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
-    background-clip: padding-box;
     border-top: thin solid #eaeae9;
     border-bottom: thin solid #dfdfde;
     background: linear-gradient(#e7e7e6, #E2E2E1); }

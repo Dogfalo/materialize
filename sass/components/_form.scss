@@ -303,7 +303,7 @@ form p {
   margin-top: 2px;
   left: 0;
   z-index: 0;
-  @include border-radius(1px);
+  border-radius: 1px;
   @include transition(.2s);
 }
 /* Unchecked styles */
