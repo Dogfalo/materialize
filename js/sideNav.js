@@ -75,10 +75,10 @@
 
         // If fixed sidenav, bring menu out
         if (menu_id.hasClass('fixed')) {
-            menu_id.css('left', 0);
+            if ($(window).width() > 992) {
+              menu_id.css('left', 0);
+            }
           }
-
-
 
         // Window resize to reset on large screens fixed
         if (menu_id.hasClass('fixed')) {
