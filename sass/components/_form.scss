@@ -56,7 +56,7 @@ label {
   input[type=search].valid,
   textarea.materialize-textarea.valid {
     border-bottom: 1px solid $input-success-color;
-    @include box-shadow(0 1px 0 0 $input-success-color);
+    box-shadow: 0 1px 0 0 $input-success-color;
   }
 
   input[type=text].invalid,
@@ -69,7 +69,7 @@ label {
   input[type=search].invalid,
   textarea.materialize-textarea.invalid {
     border-bottom: 1px solid $input-error-color;
-    @include box-shadow(0 1px 0 0 $input-error-color);
+    box-shadow: 0 1px 0 0 $input-error-color;
   }
 
   // Prefix Icons
@@ -131,7 +131,7 @@ textarea.materialize-textarea {
   font-size: 1rem;
   margin: 0 0 15px 0;
   padding: 0;
-  @include box-shadow(none);
+  box-shadow: none;
   @include box-sizing(content-box);
   @include transition(.3s);
 }
@@ -146,7 +146,7 @@ input[type=number]:focus,
 input[type=search]:focus,
 textarea:focus.materialize-textarea {
   border-bottom: 1px solid $input-focus-color;
-  @include box-shadow(0 1px 0 0 $input-focus-color);
+  box-shadow: 0 1px 0 0 $input-focus-color;
 }
 
 textarea.materialize-textarea {
@@ -198,8 +198,8 @@ textarea.materialize-textarea {
 [type="radio"] + label:after {
   content: '';
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   margin: 4px;
   width: 16px;
   height: 16px;
@@ -271,7 +271,7 @@ form p {
   text-align: left;
 }
   form p:last-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
 /* Remove default checkbox */
@@ -308,7 +308,7 @@ form p {
 }
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
-  top: 0px;
+  top: 0;
   width: 18px; height: 18px;
   border: 2px solid $radio-empty-color;
 }
@@ -394,7 +394,7 @@ form p {
     margin-right: 10px;
     transition: background 0.3s ease;
     vertical-align: middle;
-    margin: 0px 16px;
+    margin: 0 16px;
 }
 .switch label .lever:after {
     content: "";
@@ -571,7 +571,7 @@ input[type=range] + .thumb {
     width: 30px;
     text-align: center;
     color: $radio-fill-color;
-    font-size: 0px;
+    font-size: 0;
     @include transform(rotate(45deg));
   }
 

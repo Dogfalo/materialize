@@ -15,7 +15,6 @@
 //          animation-play-state($state)
 //          animation-timing-function($function)
 //      background-size($args)
-//      box-shadow($args)
 //          inner-shadow($args) *
 //      box-sizing($args)
 //          border-box() *
@@ -142,19 +141,6 @@
     -webkit-background-size: $args;
     background-size: $args;
 }
-
-
-// Box Shadows
-
-@mixin box-shadow($args) {
-    -webkit-box-shadow: $args;
-    -moz-box-shadow: $args;
-    box-shadow: $args;
-}
-@mixin inner-shadow($args) {
-    @include box-shadow(inset $args);
-}
-
 
 // Box Sizing
 

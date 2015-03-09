@@ -2271,7 +2271,7 @@ td, th {
     background-color: #fff;
     line-height: 1.5rem;
     padding: 10px 20px;
-    margin: 0px;
+    margin: 0;
     border-bottom: 1px solid #e0e0e0; }
     .collection .collection-item.avatar {
       height: 84px;
@@ -5117,14 +5117,14 @@ nav {
       -ms-transition: background-color 0.3s;
       transition: background-color 0.3s;
       float: left;
-      padding: 0px; }
+      padding: 0; }
       nav ul li:hover, nav ul li.active {
         background-color: rgba(0, 0, 0, 0.1); }
     nav ul a {
       font-size: 1rem;
       color: #fff;
       display: inline-block;
-      padding: 0px 15px; }
+      padding: 0 15px; }
     nav ul.left {
       float: left; }
   nav .input-field {
@@ -5273,7 +5273,7 @@ small {
   @media only screen and (min-width: 360px) {
     .flow-text {
       font-size: 1.2rem; } }
-  @media only screen and (min-width: 0px) {
+  @media only screen and (min-width: 0) {
     .flow-text {
       line-height: 0.8rem; } }
   @media only screen and (min-width: 390px) {
@@ -5542,7 +5542,7 @@ small {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  top: 0px;
+  top: 0;
   width: auto;
   clear: both;
   margin-top: 10px;
@@ -5551,7 +5551,7 @@ small {
   height: 48px;
   line-height: 48px;
   background-color: #323232;
-  padding: 0px 25px;
+  padding: 0 25px;
   font-size: 1.1rem;
   font-weight: 300;
   color: #fff;
@@ -5574,9 +5574,9 @@ small {
   @media only screen and (max-width : 600px) {
     .toast {
       width: 100%;
-      -webkit-border-radius: 0px;
-      -moz-border-radius: 0px;
-      border-radius: 0px;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
       background-clip: padding-box; } }
   @media only screen and (min-width : 601px) and (max-width : 992px) {
     .toast {
@@ -5783,7 +5783,7 @@ ul.tabs li.tab {
   display: none;
   position: absolute;
   background-color: #FFFFFF;
-  margin: 0px;
+  margin: 0;
   min-width: 100px;
   z-index: 1000;
   max-height: 70%;
@@ -6070,7 +6070,7 @@ li.no-padding {
   display: none;
   color: #fff;
   line-height: 50px;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   box-sizing: border-box;
   text-align: center;
@@ -6241,8 +6241,8 @@ textarea.materialize-textarea {
 [type="radio"] + label:before, [type="radio"] + label:after {
   content: '';
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   margin: 4px;
   width: 16px;
   height: 16px;
@@ -6320,7 +6320,7 @@ form p {
   text-align: left; }
 
 form p:last-child {
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
@@ -6363,7 +6363,7 @@ form p:last-child {
 
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
-  top: 0px;
+  top: 0;
   width: 18px;
   height: 18px;
   border: 2px solid #5a5a5a; }
@@ -6465,7 +6465,7 @@ form p:last-child {
   margin-right: 10px;
   transition: background 0.3s ease;
   vertical-align: middle;
-  margin: 0px 16px; }
+  margin: 0 16px; }
 
 .switch label .lever:after {
   content: "";
@@ -6617,7 +6617,7 @@ input[type=range] + .thumb {
     width: 30px;
     text-align: center;
     color: #26a69a;
-    font-size: 0px;
+    font-size: 0;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -6811,9 +6811,9 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 
 #sidenav-overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 997;

@@ -2251,7 +2251,7 @@ td, th {
     background-color: #fff;
     line-height: 1.5rem;
     padding: 10px 20px;
-    margin: 0px;
+    margin: 0;
     border-bottom: 1px solid #e0e0e0; }
     .collection .collection-item.avatar {
       height: 84px;
@@ -5087,14 +5087,14 @@ nav {
       -ms-transition: background-color 0.3s;
       transition: background-color 0.3s;
       float: left;
-      padding: 0px; }
+      padding: 0; }
       nav ul li:hover, nav ul li.active {
         background-color: rgba(0, 0, 0, 0.1); }
     nav ul a {
       font-size: 1rem;
       color: #fff;
       display: inline-block;
-      padding: 0px 15px; }
+      padding: 0 15px; }
     nav ul.left {
       float: left; }
   nav .input-field {
@@ -5109,8 +5109,6 @@ nav {
       box-sizing: border-box; }
       nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=url]:valid, nav .input-field input[type=date]:valid {
         border: none;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
         box-shadow: none; }
     nav .input-field label {
       top: 0;
@@ -5723,7 +5721,7 @@ button.btn-floating {
   display: none;
   position: absolute;
   background-color: #FFFFFF;
-  margin: 0px;
+  margin: 0;
   min-width: 100px;
   z-index: 1000;
   max-height: 70%;
@@ -5961,8 +5959,6 @@ a.waves-effect .waves-ripple {
 
 ul.side-nav ul.collapsible {
   border: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none; }
   ul.side-nav ul.collapsible li {
     padding: 0; }
@@ -6014,7 +6010,7 @@ li.no-padding {
   display: none;
   color: #fff;
   line-height: 50px;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   box-sizing: border-box;
   text-align: center;
@@ -6064,13 +6060,9 @@ label {
     color: #26a69a; }
   .input-field input[type=text].valid, .input-field input[type=password].valid, .input-field input[type=email].valid, .input-field input[type=url].valid, .input-field input[type=date].valid, .input-field input[type=tel].valid, .input-field input[type=number].valid, .input-field input[type=search].valid, .input-field textarea.materialize-textarea.valid {
     border-bottom: 1px solid #4CAF50;
-    -webkit-box-shadow: 0 1px 0 0 #4CAF50;
-    -moz-box-shadow: 0 1px 0 0 #4CAF50;
     box-shadow: 0 1px 0 0 #4CAF50; }
   .input-field input[type=text].invalid, .input-field input[type=password].invalid, .input-field input[type=email].invalid, .input-field input[type=url].invalid, .input-field input[type=date].invalid, .input-field input[type=tel].invalid, .input-field input[type=number].invalid, .input-field input[type=search].invalid, .input-field textarea.materialize-textarea.invalid {
     border-bottom: 1px solid #F44336;
-    -webkit-box-shadow: 0 1px 0 0 #F44336;
-    -moz-box-shadow: 0 1px 0 0 #F44336;
     box-shadow: 0 1px 0 0 #F44336; }
   .input-field .prefix {
     position: absolute;
@@ -6117,8 +6109,6 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   font-size: 1rem;
   margin: 0 0 15px 0;
   padding: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -6131,8 +6121,6 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=url]:focus, input[type=date]:focus, input[type=tel]:focus, input[type=number]:focus, input[type=search]:focus, textarea:focus.materialize-textarea {
   border-bottom: 1px solid #26a69a;
-  -webkit-box-shadow: 0 1px 0 0 #26a69a;
-  -moz-box-shadow: 0 1px 0 0 #26a69a;
   box-shadow: 0 1px 0 0 #26a69a; }
 
 textarea.materialize-textarea {
@@ -6185,8 +6173,8 @@ textarea.materialize-textarea {
 [type="radio"] + label:before, [type="radio"] + label:after {
   content: '';
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   margin: 4px;
   width: 16px;
   height: 16px;
@@ -6264,7 +6252,7 @@ form p {
   text-align: left; }
 
 form p:last-child {
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
@@ -6304,7 +6292,7 @@ form p:last-child {
 
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
-  top: 0px;
+  top: 0;
   width: 18px;
   height: 18px;
   border: 2px solid #5a5a5a; }
@@ -6406,7 +6394,7 @@ form p:last-child {
   margin-right: 10px;
   transition: background 0.3s ease;
   vertical-align: middle;
-  margin: 0px 16px; }
+  margin: 0 16px; }
 
 .switch label .lever:after {
   content: "";
@@ -6558,7 +6546,7 @@ input[type=range] + .thumb {
     width: 30px;
     text-align: center;
     color: #26a69a;
-    font-size: 0px;
+    font-size: 0;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -6753,9 +6741,9 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 
 #sidenav-overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 997;
@@ -7964,8 +7952,6 @@ ul.side-nav.fixed {
 
 nav.top-nav {
   height: 122px;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none; }
   nav.top-nav a.page-title {
     line-height: 122px;
@@ -8098,7 +8084,7 @@ a.button-collapse.top-nav {
   font-size: 1.7rem;
   font-weight: 500;
   margin-top: 5px;
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 #front-page-nav {
   background-color: #FFF;
@@ -8120,7 +8106,7 @@ a.button-collapse.top-nav {
   font-size: 28px;
   background-color: tomato;
   color: white;
-  padding: 0px; }
+  padding: 0; }
   .col.grid-example span {
     font-weight: 200;
     line-height: 50px; }
@@ -8255,9 +8241,9 @@ a.button-collapse.top-nav {
   width: 150px;
   height: 115px;
   float: left;
-  margin: 0px 0px 15px 0px; }
+  margin: 0 0px 15px 0px; }
   .icon-holder p {
-    margin: 0px 0; }
+    margin: 0 0; }
 
 .tabs-wrapper {
   position: relative;

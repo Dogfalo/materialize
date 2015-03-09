@@ -115,7 +115,7 @@ ul.side-nav.fixed {
 
 nav.top-nav {
   height: 122px;
-  @include box-shadow(none);
+  box-shadow: none;
 
   a.page-title {
     line-height: 122px;
@@ -280,7 +280,7 @@ a.button-collapse.top-nav {
   font-size: 1.7rem;
   font-weight: 500;
   margin-top: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
 }
 
@@ -313,7 +313,7 @@ a.button-collapse.top-nav {
   font-size: 28px;
   background-color: tomato;
   color: white;
-  padding: 0px;
+  padding: 0;
 
   span {
     font-weight: 200;
@@ -479,9 +479,9 @@ $height: auto;
   height: 115px;
 
   float: left;
-  margin: 0px 0px 15px 0px;
+  margin: 0 0px 15px 0px;
   p {
-    margin: 0px 0;
+    margin: 0 0;
   }
 }
 

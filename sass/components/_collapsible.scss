@@ -51,7 +51,7 @@ ul.side-nav {
 
   ul.collapsible {
     border: none;
-    @include box-shadow(none);
+    box-shadow: none;
 
     li { padding: 0; }
   }

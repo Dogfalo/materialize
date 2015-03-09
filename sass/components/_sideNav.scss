@@ -93,9 +93,9 @@ ul.side-nav.fixed .collapsible-body li.active {
 
 #sidenav-overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
 
   height: 120vh;
   background-color: rgba(0,0,0,.5);
