@@ -112,7 +112,7 @@ button.btn-floating {
     }
 
     a.btn-floating {
-      @include opacity(0);
+      opacity: 0;
     }
   }
 }

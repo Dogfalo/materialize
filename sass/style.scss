@@ -767,7 +767,8 @@ body.parallax-demo footer {
 // Transitions demos
 #staggered-test li,
 #image-test {
-  @include opacity(0);
+  opacity: 0;
+
 }
 
 // Transifex Styling
