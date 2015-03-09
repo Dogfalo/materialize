@@ -16,6 +16,24 @@ label {
    Text Inputs + Textarea
 ****************************/
 
+// Style Placeholders
+::-webkit-input-placeholder {
+   color: lighten($input-border-color, 20%);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: lighten($input-border-color, 20%);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: lighten($input-border-color, 20%);
+}
+
+:-ms-input-placeholder {
+   color: lighten($input-border-color, 20%);
+}
+
+
 .input-field {
   position: relative;
   margin-top: 1rem;

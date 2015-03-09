@@ -5979,6 +5979,20 @@ label {
 /***************************
    Text Inputs + Textarea
 ****************************/
+::-webkit-input-placeholder {
+  color: #d1d1d1; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #d1d1d1; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #d1d1d1; }
+
+:-ms-input-placeholder {
+  color: #d1d1d1; }
+
 .input-field {
   position: relative;
   margin-top: 1rem; }

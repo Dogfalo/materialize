@@ -5,7 +5,7 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0) {
+        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined) {
           $(this).siblings('label, i').addClass('active');
         }
         else {
@@ -22,7 +22,7 @@
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
-      if($(this).val().length !== 0) {
+      if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
         $(this).siblings('label, i').addClass('active');
       }
       validate_field($(this));
@@ -52,7 +52,7 @@
     });
 
     $(document).on('blur', input_selector, function () {
-      if ($(this).val().length === 0) {
+      if ($(this).val().length === 0 && $(this).attr('placeholder') === undefined) {
         $(this).siblings('label, i').removeClass('active');
       }
       validate_field($(this));
