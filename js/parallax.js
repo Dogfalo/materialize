@@ -56,10 +56,15 @@ var parallax = (function() {
     var windowHeight = window.innerHeight;
     var windowBottom = scrollTop + windowHeight;
     var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
-    var parallax = -1 * parallax_dist * percentScrolled;
+    var parallax = (-1 * parallax_dist * percentScrolled) + container_height;
 
     if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {
-      image.style.bottom = parallax + "px";
+      image.style.transform = "translate3d(0," + parallax + "px,0)";
+      image.style.webkitTransform = "translate3d(0," + parallax + "px,0)";
+      image.style.MozTransform = "translate3d(0," + parallax + "px,0)";
+      image.style.MozTransform = "translate3d(0," + parallax + "px,0)";
+      image.style.msTransform = "translate3d(0," + parallax + "px,0)";
+      image.style.OTransform = "translate3d(0," + parallax + "px,0)";
     }
     if (initial) {
       image.style.display = "block";
