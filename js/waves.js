@@ -1,10 +1,10 @@
 /*!
- * Waves v0.6.0
- * http://fian.my.id/Waves
- *
- * Copyright 2014 Alfiana E. Sibuea and other contributors
- * Released under the MIT license
- * https://github.com/fians/Waves/blob/master/LICENSE
+ * Waves v0.6.4
+ * http://fian.my.id/Waves 
+ * 
+ * Copyright 2014 Alfiana E. Sibuea and other contributors 
+ * Released under the MIT license 
+ * https://github.com/fians/Waves/blob/master/LICENSE 
  */
 
 ;(function(window) {
@@ -74,8 +74,8 @@
             var pos         = offset(el);
             var relativeY   = (e.pageY - pos.top);
             var relativeX   = (e.pageX - pos.left);
-            var scale       = 'scale('+((el.clientWidth / 100) * 10)+')';
-
+            var scale       = 'scale('+((el.clientWidth / 100) * 3)+')';
+            
             // Support for touch devices
             if ('touches' in e) {
               relativeY   = (e.touches[0].pageY - pos.top);
@@ -93,7 +93,7 @@
                 'top': relativeY+'px',
                 'left': relativeX+'px'
             };
-
+            
             ripple.className = ripple.className + ' waves-notransition';
             ripple.setAttribute('style', convertStyle(rippleStyle));
             ripple.className = ripple.className.replace('waves-notransition', '');
@@ -111,11 +111,6 @@
             rippleStyle['-o-transition-duration']      = Effect.duration + 'ms';
             rippleStyle['transition-duration']         = Effect.duration + 'ms';
 
-            rippleStyle['-webkit-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-            rippleStyle['-moz-transition-timing-function']    = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-            rippleStyle['-o-transition-timing-function']      = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-            rippleStyle['transition-timing-function']         = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-
             ripple.setAttribute('style', convertStyle(rippleStyle));
         },
 
@@ -124,7 +119,7 @@
 
             var el = this;
             var width = el.clientWidth * 1.4;
-
+            
             // Get first ripple
             var ripple = null;
             var ripples = el.getElementsByClassName('waves-ripple');
@@ -181,7 +176,7 @@
         wrapInput: function(elements) {
             for (var a = 0; a < elements.length; a++) {
                 var el = elements[a];
-
+                
                 if (el.tagName.toLowerCase() === 'input') {
                     var parent = el.parentNode;
 
@@ -201,7 +196,7 @@
                     }
 
                     wrapper.setAttribute('style', elementStyle);
-
+                    
                     el.className = 'waves-button-input';
                     el.removeAttribute('style');
 
@@ -259,7 +254,10 @@
         var target = e.target || e.srcElement;
 
         while (target.parentElement !== null) {
-            if (target.className.indexOf('waves-effect') !== -1) {
+            if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
+                element = target;
+                break;
+            } else if (target.classList.contains('waves-effect')) {
                 element = target;
                 break;
             }
@@ -294,14 +292,14 @@
         if ('duration' in options) {
             Effect.duration = options.duration;
         }
-
+        
         //Wrap input inside <i> tag
         Effect.wrapInput($$('.waves-effect'));
-
+        
         if ('ontouchstart' in window) {
             document.body.addEventListener('touchstart', showEffect, false);
         }
-
+        
         document.body.addEventListener('mousedown', showEffect, false);
     };
 
@@ -327,9 +325,4 @@
     };
 
     window.Waves = Waves;
-
-    document.addEventListener('DOMContentLoaded', function() {
-        Waves.displayEffect();
-    }, false);
-
 })(window);
