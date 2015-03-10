@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Documentation - Materialize</title>
+    <!-- CSS  -->
+    <link href="bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+  <body>
+    <style type="text/css">
+    </style>
+
+
+    <!-- Nested Accordion -->
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+        <div class="collapsible-body">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+    </ul>
+
+
+    <!-- Nested Expandable -->
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+        <div class="collapsible-body">
+          <ul class="collapsible" data-collapsible="expandable">
+            <li>
+              <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+    </ul>
+
+
+
+    <script src="bin/jquery-2.1.1.min.js"></script>
+    <!-- <script src="js/jquery.timeago.js"></script>   -->
+    <!-- <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/velocity.min.js"></script>
+    <script src="js/materialbox.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/dropdown.js"></script> -->
+    <script src="bin/materialize.js"></script>
+    <!-- <script src="js/init.js"></script> -->
+
+    <script type="text/javascript">
+    $( document ).ready(function() {
+      $(".button-collapse").sideNav({
+         edge: 'right', menuWidth: '90%'
+       });
+
+      $('select').material_select();
+
+
+
+    });
+
+
+
+    </script>
+  </body>
+</html>
