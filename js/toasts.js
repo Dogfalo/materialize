@@ -33,7 +33,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
       // If toast is not being dragged, decrease its time remaining
       if (!newToast.classList.contains('panning')) {
-        timeLeft -= 100;
+        timeLeft -= 20;
       }
 
       if (timeLeft <= 0) {
@@ -51,7 +51,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
           });
         window.clearInterval(counterInterval);
       }
-    }, 100);
+    }, 20);
 
 
 
@@ -60,7 +60,9 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         // Create toast
         var toast = document.createElement('div');
         toast.classList.add('toast');
-        toast.classList.add(className);
+        if (className) {
+          toast.classList.add(className);
+        }
         toast.innerHTML = html;
 
         // Bind hammer
