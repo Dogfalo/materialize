@@ -63,7 +63,6 @@
       }
       else { // Handle Expandables
         $panel_headers.each(function () {
-          console.log($(this));
           // Add click handler to only direct collapsible header children
           $(this).on('click.collapse', function (e) {
             expandableOpen($(e.target));
