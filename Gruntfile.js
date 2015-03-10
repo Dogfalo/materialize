@@ -128,9 +128,11 @@ module.exports = function(grunt) {
 //  Uglify
     uglify: {
       options: {
+        // Use these options when debugging
+        // mangle: false,
+        // compress: false,
+        // beautify: true
 
-        // the banner is inserted at the top of the output
-//        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       dist: {
         files: {
