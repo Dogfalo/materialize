@@ -74,7 +74,7 @@
             var pos         = offset(el);
             var relativeY   = (e.pageY - pos.top);
             var relativeX   = (e.pageX - pos.left);
-            var scale       = 'scale('+((el.clientWidth / 100) * 3)+')';
+            var scale       = 'scale('+((el.clientWidth / 100) * 10)+')';
             
             // Support for touch devices
             if ('touches' in e) {
@@ -110,6 +110,11 @@
             rippleStyle['-moz-transition-duration']    = Effect.duration + 'ms';
             rippleStyle['-o-transition-duration']      = Effect.duration + 'ms';
             rippleStyle['transition-duration']         = Effect.duration + 'ms';
+
+            rippleStyle['-webkit-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+            rippleStyle['-moz-transition-timing-function']    = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+            rippleStyle['-o-transition-timing-function']      = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+            rippleStyle['transition-timing-function']         = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
 
             ripple.setAttribute('style', convertStyle(rippleStyle));
         },
@@ -325,4 +330,9 @@
     };
 
     window.Waves = Waves;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        Waves.displayEffect();
+    }, false);    
+    
 })(window);
