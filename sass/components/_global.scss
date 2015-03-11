@@ -360,6 +360,10 @@ td, th{
       tr {
         display: block;
         padding: 0 10px 0 0;
+
+        th::before {
+          content: "\00a0";
+        }
       }
     }
     tbody {

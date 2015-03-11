@@ -2207,6 +2207,8 @@ td, th {
       table.responsive-table thead tr {
         display: block;
         padding: 0 10px 0 0; }
+        table.responsive-table thead tr th::before {
+          content: "\00a0"; }
     table.responsive-table tbody {
       display: block;
       width: auto;
