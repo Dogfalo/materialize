@@ -13,7 +13,6 @@
   overflow: hidden;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
-  @include box-sizing(border-box);
   border-radius: 2px;
   @extend .z-depth-1;
 
