@@ -30,7 +30,6 @@
       }
 
       $(modal).find(".modal-close").click(function(e) {
-        e.preventDefault();
         $(modal).closeModal(options);
       });
 
