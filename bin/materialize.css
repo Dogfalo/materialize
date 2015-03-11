@@ -5049,10 +5049,7 @@ nav {
       height: 100%;
       font-size: 1.2rem;
       border: none;
-      padding-left: 2rem;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box; }
+      padding-left: 2rem; }
       nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=url]:valid, nav .input-field input[type=date]:valid {
         border: none;
         box-shadow: none; }
@@ -5434,9 +5431,6 @@ small {
 
 .toast {
   border-radius: 2px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   top: 0;
   width: auto;
   clear: both;
@@ -5953,7 +5947,6 @@ a.waves-effect .waves-ripple {
   line-height: 50px;
   bottom: 0;
   width: 100%;
-  box-sizing: border-box;
   text-align: center;
   padding: 0% 15%;
   height: 50px;
@@ -7013,7 +7006,6 @@ ul.table-of-contents a {
  */
 .gap-patch {
   position: absolute;
-  box-sizing: border-box;
   top: 0;
   left: 45%;
   width: 10%;
@@ -7034,7 +7026,6 @@ ul.table-of-contents a {
   border-color: inherit; }
   .circle-clipper .circle {
     width: 200%;
-    box-sizing: border-box;
     height: 100%;
     border-width: 3px;
     /* STROKEWIDTH */

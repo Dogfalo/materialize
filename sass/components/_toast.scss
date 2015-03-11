@@ -22,7 +22,6 @@
 .toast {
   @extend .z-depth-1;
   border-radius: 2px;
-  @include box-sizing(border-box);
   top: 0;
   width: auto;
   clear: both;
