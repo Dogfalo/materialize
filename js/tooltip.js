@@ -13,7 +13,9 @@
       options = $.extend(defaults, options);
 
       //Remove previously created html
-      $('.material-tooltip').remove();
+      $('.material-tooltip').remove(); // this should be removed if used in a MVC framework
+                                       // since every template will call tooltip() on his own elements
+                                       // so there is no need to destroy preiovus created tooltips
 
       return this.each(function(){
         var origin = $(this);
@@ -24,7 +26,7 @@
       // Create tooltip
       var newTooltip = $('<div></div>');
       newTooltip.addClass('material-tooltip').append(tooltip_text);
-      newTooltip.appendTo($('body'));
+      newTooltip.appendTo($(this).parent());
 
       var backdrop = $('<div></div>').addClass('backdrop');
       backdrop.appendTo(newTooltip);
