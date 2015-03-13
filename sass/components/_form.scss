@@ -365,18 +365,36 @@ form p:last-child {
 
 
 /* indeterminate checkbox */
-[type="checkbox"]:indeterminate + label:before {
-  left: -10px;
-  top: -11px;
-  width: 10px; height: 22px;
-  border-top: none;
-  border-left: none;
-  border-right: 2px solid $radio-fill-color;
-  border-bottom: none;
-  @include transform(rotate(90deg));
-  -webkit-backface-visibility: hidden;
+[type="checkbox"]:indeterminate {
+  +label:before {
+    left: -10px;
+    top: -11px;
+    width: 10px; height: 22px;
+    border-top: none;
+    border-left: none;
+    border-right: 2px solid $radio-fill-color;
+    border-bottom: none;
+    @include transform(rotate(90deg));
+    -webkit-backface-visibility: hidden;
+    @include transform-origin(100% 100%);
+  }
 
-  @include transform-origin(100% 100%);
+  // Disabled indeterminate label
+
+  // Disabled indeterminate
+  &:disabled + label:before {
+    left: -10px;
+    top: -11px;
+    width: 10px; height: 22px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: 2px solid $input-disabled-color;
+    border-bottom: none;
+    @include transform(rotate(90deg));
+    -webkit-backface-visibility: hidden;
+    @include transform-origin(100% 100%);
+  }
 }
 
 /***************

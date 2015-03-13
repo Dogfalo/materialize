@@ -6321,6 +6321,27 @@ form p:last-child {
   -ms-transform-origin: 100% 100%;
   -o-transform-origin: 100% 100%;
   transform-origin: 100% 100%; }
+[type="checkbox"]:indeterminate:disabled + label:before {
+  left: -10px;
+  top: -11px;
+  width: 10px;
+  height: 22px;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: 2px solid rgba(0, 0, 0, 0.26);
+  border-bottom: none;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%; }
 
 /***************
      Switch
