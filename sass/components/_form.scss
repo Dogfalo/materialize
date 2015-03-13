@@ -274,9 +274,9 @@ form p {
   margin-bottom: 10px;
   text-align: left;
 }
-  form p:last-child {
-    margin-bottom: 0;
-  }
+form p:last-child {
+  margin-bottom: 0;
+}
 
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked),
@@ -363,6 +363,21 @@ form p {
   border-color: $input-disabled-color;
 }
 
+
+/* indeterminate checkbox */
+[type="checkbox"]:indeterminate + label:before {
+  left: -10px;
+  top: -11px;
+  width: 10px; height: 22px;
+  border-top: none;
+  border-left: none;
+  border-right: 2px solid $radio-fill-color;
+  border-bottom: none;
+  @include transform(rotate(90deg));
+  -webkit-backface-visibility: hidden;
+
+  @include transform-origin(100% 100%);
+}
 
 /***************
      Switch

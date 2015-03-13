@@ -5976,7 +5976,7 @@ label {
 :-ms-input-placeholder {
   color: #d1d1d1; }
 
-input[type=text], input[type=password], input[type=email], input[type=url], input[type=date], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #9e9e9e;
@@ -5991,20 +5991,20 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   transition: all .3s; }
-  input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=url]:disabled, input[type=date]:disabled, input[type=tel]:disabled, input[type=number]:disabled, input[type=search]:disabled, textarea.materialize-textarea:disabled {
+  input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=url]:disabled, input[type=time]:disabled, input[type=date]:disabled, input[type=datetime-local]:disabled, input[type=tel]:disabled, input[type=number]:disabled, input[type=search]:disabled, textarea.materialize-textarea:disabled {
     color: rgba(0, 0, 0, 0.26);
     border-bottom: 1px dotted rgba(0, 0, 0, 0.26); }
-  input[type=text]:disabled + label, input[type=password]:disabled + label, input[type=email]:disabled + label, input[type=url]:disabled + label, input[type=date]:disabled + label, input[type=tel]:disabled + label, input[type=number]:disabled + label, input[type=search]:disabled + label, textarea.materialize-textarea:disabled + label {
+  input[type=text]:disabled + label, input[type=password]:disabled + label, input[type=email]:disabled + label, input[type=url]:disabled + label, input[type=time]:disabled + label, input[type=date]:disabled + label, input[type=datetime-local]:disabled + label, input[type=tel]:disabled + label, input[type=number]:disabled + label, input[type=search]:disabled + label, textarea.materialize-textarea:disabled + label {
     color: rgba(0, 0, 0, 0.26); }
-  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=url]:focus, input[type=date]:focus, input[type=tel]:focus, input[type=number]:focus, input[type=search]:focus, textarea.materialize-textarea:focus {
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=url]:focus, input[type=time]:focus, input[type=date]:focus, input[type=datetime-local]:focus, input[type=tel]:focus, input[type=number]:focus, input[type=search]:focus, textarea.materialize-textarea:focus {
     border-bottom: 1px solid #26a69a;
     box-shadow: 0 1px 0 0 #26a69a; }
-  input[type=text]:focus + label, input[type=password]:focus + label, input[type=email]:focus + label, input[type=url]:focus + label, input[type=date]:focus + label, input[type=tel]:focus + label, input[type=number]:focus + label, input[type=search]:focus + label, textarea.materialize-textarea:focus + label {
+  input[type=text]:focus + label, input[type=password]:focus + label, input[type=email]:focus + label, input[type=url]:focus + label, input[type=time]:focus + label, input[type=date]:focus + label, input[type=datetime-local]:focus + label, input[type=tel]:focus + label, input[type=number]:focus + label, input[type=search]:focus + label, textarea.materialize-textarea:focus + label {
     color: #26a69a; }
-  input[type=text].valid, input[type=password].valid, input[type=email].valid, input[type=url].valid, input[type=date].valid, input[type=tel].valid, input[type=number].valid, input[type=search].valid, textarea.materialize-textarea.valid {
+  input[type=text].valid, input[type=password].valid, input[type=email].valid, input[type=url].valid, input[type=time].valid, input[type=date].valid, input[type=datetime-local].valid, input[type=tel].valid, input[type=number].valid, input[type=search].valid, textarea.materialize-textarea.valid {
     border-bottom: 1px solid #4CAF50;
     box-shadow: 0 1px 0 0 #4CAF50; }
-  input[type=text].invalid, input[type=password].invalid, input[type=email].invalid, input[type=url].invalid, input[type=date].invalid, input[type=tel].invalid, input[type=number].invalid, input[type=search].invalid, textarea.materialize-textarea.invalid {
+  input[type=text].invalid, input[type=password].invalid, input[type=email].invalid, input[type=url].invalid, input[type=time].invalid, input[type=date].invalid, input[type=datetime-local].invalid, input[type=tel].invalid, input[type=number].invalid, input[type=search].invalid, textarea.materialize-textarea.invalid {
     border-bottom: 1px solid #F44336;
     box-shadow: 0 1px 0 0 #F44336; }
 
@@ -6299,6 +6299,28 @@ form p:last-child {
 
 [type="checkbox"]:disabled:not(:checked) + label:hover:before {
   border-color: rgba(0, 0, 0, 0.26); }
+
+/* indeterminate checkbox */
+[type="checkbox"]:indeterminate + label:before {
+  left: -10px;
+  top: -11px;
+  width: 10px;
+  height: 22px;
+  border-top: none;
+  border-left: none;
+  border-right: 2px solid #26a69a;
+  border-bottom: none;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%; }
 
 /***************
      Switch

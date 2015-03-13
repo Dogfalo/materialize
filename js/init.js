@@ -112,6 +112,9 @@
       $('#nav-mobile').css({ overflow: 'auto'})
     }
 
+    // Set checkbox on forms.html to indeterminate
+    document.getElementById('indeterminate-checkbox').indeterminate = true;
+
 
     // Plugin initialization
     $('.slider').slider({full_width: true});
