@@ -273,6 +273,12 @@
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({"hover": false});
       }
+
+      // Copy tabindex
+      if ($select.attr('tabindex')) {
+        $($newSelect[0]).attr('tabindex', $select.attr('tabindex'));
+      }
+
       $select.addClass('initialized');
 
       $newSelect.on('focus', function(){
