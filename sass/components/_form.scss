@@ -284,85 +284,68 @@ form p:last-child {
   position: absolute;
   left: -9999px;
 }
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  font-size: 1rem;
 
-  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-  -moz-user-select: none; /* mozilla browsers */
-  -khtml-user-select: none; /* webkit (konqueror) browsers */
-  -ms-user-select: none; /* IE10+ */
+
+[type="checkbox"] {
+
+  + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1rem;
+
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+
+  }
+
+  /* checkbox aspect */
+  + label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid $radio-empty-color;
+    border-radius: 1px;
+    margin-top: 2px;
+    @include transition(.2s);
+  }
+
+  &:not(:checked):disabled + label:before {
+    border: none;
+    background-color: $input-disabled-color;
+  }
+
 }
 
-/* checkbox aspect */
-[type="checkbox"] + label:before {
-  content: '';
-  position: absolute;
-  margin-top: 2px;
-  left: 0;
-  z-index: 0;
-  border-radius: 1px;
-  @include transition(.2s);
-}
-/* Unchecked styles */
-[type="checkbox"]:not(:checked) + label:before {
-  top: 0;
-  width: 18px; height: 18px;
-  border: 2px solid $radio-empty-color;
-}
+[type="checkbox"]:checked {
+  + label:before {
+    top: -4px;
+    left: -3px;
+    width: 12px; height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid $radio-fill-color;
+    border-bottom: 2px solid $radio-fill-color;
+    @include transform(rotate(40deg));
+    -webkit-backface-visibility: hidden;
+    @include transform-origin(100% 100%);
+  }
 
-/* Checked styles */
-[type="checkbox"]:checked + label:before {
-  left: -3px;
-  top: -4px;
-  width: 12px; height: 22px;
-  border-top: 2px solid transparent;
-  border-left: 2px solid transparent;
-  border-right: 2px solid $radio-fill-color;
-  border-bottom: 2px solid $radio-fill-color;
-  @include transform(rotate(40deg));
-  -webkit-backface-visibility: hidden;
+  &:disabled + label:before {
+    border-right: 2px solid $input-disabled-color;
+    border-bottom: 2px solid $input-disabled-color;
+  }
 
-  @include transform-origin(100% 100%);
 }
-
-/* disabled checkbox */
-[type="checkbox"]:disabled:not(:checked) + label:before {
-  top: 0;
-  left: 0;
-  box-shadow: none;
-  background-color: $input-disabled-color;
-  width: 18px; height: 18px;
-  border: none;
-  @include transform(rotate(0deg));
-}
-
-[type="checkbox"]:disabled:checked + label:before {
-  left: -3px;
-  top: -4px;
-  width: 12px; height: 22px;
-  border-top: 2px solid transparent;
-  border-left: 2px solid transparent;
-  border-right: 2px solid $input-disabled-color;
-  border-bottom: 2px solid $input-disabled-color;
-  @include transform(rotate(40deg));
-  -webkit-backface-visibility: hidden;
-
-  @include transform-origin(100% 100%);
-}
-[type="checkbox"]:disabled:checked + label {
-  color: $input-disabled-color;
-}
-[type="checkbox"]:disabled:not(:checked) + label:hover:before {
-  border-color: $input-disabled-color;
-}
-
 
 /* indeterminate checkbox */
 [type="checkbox"]:indeterminate {
@@ -379,21 +362,10 @@ form p:last-child {
     @include transform-origin(100% 100%);
   }
 
-  // Disabled indeterminate label
-
   // Disabled indeterminate
   &:disabled + label:before {
-    left: -10px;
-    top: -11px;
-    width: 10px; height: 22px;
-    background-color: transparent;
-    border-top: none;
-    border-left: none;
     border-right: 2px solid $input-disabled-color;
-    border-bottom: none;
-    @include transform(rotate(90deg));
-    -webkit-backface-visibility: hidden;
-    @include transform-origin(100% 100%);
+    background-color: transparent;
   }
 }
 
