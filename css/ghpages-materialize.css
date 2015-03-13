@@ -5384,10 +5384,7 @@ small {
       padding: 20px; }
   .card .card-content {
     padding: 20px;
-    border-radius: 0 0 2px 2px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
+    border-radius: 0 0 2px 2px; }
     .card .card-content p {
       margin: 0;
       color: inherit; }
@@ -5405,10 +5402,7 @@ small {
     top: 100%;
     height: 100%;
     z-index: 1;
-    display: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
+    display: none; }
     .card .card-reveal .card-title {
       cursor: pointer;
       display: block; }
@@ -5481,7 +5475,7 @@ small {
   margin: 0 auto;
   width: 100%;
   white-space: nowrap; }
-  .tabs li.tab {
+  .tabs .tab {
     display: block;
     float: left;
     text-align: center;
@@ -5493,7 +5487,7 @@ small {
     text-transform: uppercase;
     letter-spacing: .8px;
     width: 15%; }
-    .tabs li.tab a {
+    .tabs .tab a {
       color: #ee6e73;
       display: block;
       width: 100%;
@@ -5503,7 +5497,7 @@ small {
       -o-transition: color .28s ease;
       -ms-transition: color .28s ease;
       transition: color .28s ease; }
-      .tabs li.tab a:hover {
+      .tabs .tab a:hover {
         color: #f9c9cb; }
   .tabs .indicator {
     position: absolute;
@@ -5512,7 +5506,7 @@ small {
     background-color: #f6b2b5;
     will-change: left, right; }
 
-ul.tabs li.tab {
+.tabs .tab {
   padding: 0; }
 
 .material-tooltip {
@@ -6585,11 +6579,11 @@ select {
 /***************
     Nav List
 ***************/
-ul.table-of-contents.fixed {
+.table-of-contents.fixed {
   position: fixed; }
-ul.table-of-contents li {
+.table-of-contents li {
   padding: 2px 0; }
-ul.table-of-contents a {
+.table-of-contents a {
   display: inline-block;
   font-weight: 300;
   color: #757575;
@@ -6598,11 +6592,11 @@ ul.table-of-contents a {
   line-height: 1.5rem;
   letter-spacing: .4;
   display: inline-block; }
-  ul.table-of-contents a:hover {
+  .table-of-contents a:hover {
     color: #a8a8a8;
     padding-left: 19px;
     border-left: 1px solid #ea4a4f; }
-  ul.table-of-contents a.active {
+  .table-of-contents a.active {
     font-weight: 500;
     padding-left: 18px;
     border-left: 2px solid #ea4a4f; }
@@ -7117,11 +7111,11 @@ ul.table-of-contents a {
     .slider.fullscreen ul.indicators {
       z-index: 2;
       bottom: 30px; }
-  .slider ul.slides {
+  .slider .slides {
     background-color: #9e9e9e;
     margin: 0;
     height: 400px; }
-    .slider ul.slides li {
+    .slider .slides li {
       opacity: 0;
       position: absolute;
       top: 0;
@@ -7130,30 +7124,30 @@ ul.table-of-contents a {
       width: 100%;
       height: inherit;
       overflow: hidden; }
-      .slider ul.slides li img {
+      .slider .slides li img {
         height: 100%;
         width: 100%;
         background-size: cover;
         background-position: center; }
-      .slider ul.slides li .caption {
+      .slider .slides li .caption {
         color: #fff;
         position: absolute;
         top: 15%;
         left: 15%;
         width: 70%;
         opacity: 0; }
-        .slider ul.slides li .caption p {
+        .slider .slides li .caption p {
           color: #e0e0e0; }
-      .slider ul.slides li.active {
+      .slider .slides li.active {
         z-index: 2; }
-  .slider ul.indicators {
+  .slider .indicators {
     position: absolute;
     text-align: center;
     left: 0;
     right: 0;
     bottom: 0;
     margin: 0; }
-    .slider ul.indicators li.indicator-item {
+    .slider .indicators .indicator-item {
       display: inline-block;
       position: relative;
       cursor: pointer;
@@ -7167,7 +7161,7 @@ ul.table-of-contents a {
       -ms-transition: background-color .3s;
       transition: background-color .3s;
       border-radius: 50%; }
-      .slider ul.indicators li.indicator-item.active {
+      .slider .indicators .indicator-item.active {
         background-color: #4CAF50; }
 
 /* ==========================================================================

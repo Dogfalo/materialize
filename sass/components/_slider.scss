@@ -23,7 +23,7 @@
     }
   }
 
-  ul.slides {
+  .slides {
     background-color: color('grey', 'base');
     margin: 0;
     height: 400px;
@@ -63,7 +63,7 @@
   }
 
 
-  ul.indicators {
+  .indicators {
     position: absolute;
     text-align: center;
     left: 0;
@@ -71,7 +71,7 @@
     bottom: 0;
     margin: 0;
 
-    li.indicator-item {
+    .indicator-item {
       display: inline-block;
       position: relative;
       cursor: pointer;

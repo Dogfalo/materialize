@@ -6,7 +6,7 @@
   width: 100%;
   white-space: nowrap;
 
-  li.tab {
+  .tab {
     display: block;
     float: left;
     text-align: center;
@@ -39,5 +39,5 @@
   }
 }
 
-ul.tabs li.tab { padding: 0; }
+.tabs .tab { padding: 0; }
 

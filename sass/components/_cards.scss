@@ -114,7 +114,7 @@
   .card-content {
     padding: $card-padding;
     border-radius: 0 0 2px 2px;
-    @include box-sizing(border-box);
+
 
     p {
       margin: 0;
@@ -146,6 +146,5 @@
       display: block;
     }
 
-    @include box-sizing(border-box);
   }
 }
