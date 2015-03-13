@@ -33,7 +33,64 @@ label {
    color: lighten($input-border-color, 20%);
 }
 
+// Text inputs
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=date],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea.materialize-textarea {
 
+  // General Styles
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $input-border-color;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  padding: 0;
+  box-shadow: none;
+  @include box-sizing(content-box);
+  transition: all .3s;
+
+
+  // Disabled input style
+  &:disabled {
+    color: $input-disabled-color;
+    border-bottom: 1px dotted $input-disabled-color;
+  }
+  // Disabled label style
+  &:disabled+label {
+    color: $input-disabled-color;
+  }
+  // Focused input style
+  &:focus {
+    border-bottom: 1px solid $input-focus-color;
+    box-shadow: 0 1px 0 0 $input-focus-color;
+  }
+  // Focused label style
+  &:focus+label {
+    color: $input-focus-color;
+  }
+  // Valid Input Style
+  &.valid {
+    border-bottom: 1px solid $input-success-color;
+    box-shadow: 0 1px 0 0 $input-success-color;
+  }
+  // Invalid Input Style
+  &.invalid {
+    border-bottom: 1px solid $input-error-color;
+    box-shadow: 0 1px 0 0 $input-error-color;
+  }
+}
+
+// Styling for input field wrapper
 .input-field {
   position: relative;
   margin-top: 1rem;
@@ -50,64 +107,6 @@ label {
   label.active {
     font-size: $label-font-size;
     @include transform(translateY(-140%));
-  }
-
-
-  // Text inputs
-  input[type=text],
-  input[type=password],
-  input[type=email],
-  input[type=url],
-  input[type=date],
-  input[type=tel],
-  input[type=number],
-  input[type=search],
-  textarea.materialize-textarea {
-
-    // General Styles
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid $input-border-color;
-    outline: none;
-    height: 3rem;
-    width: 100%;
-
-    font-size: 1rem;
-    margin: 0 0 15px 0;
-    padding: 0;
-    box-shadow: none;
-    @include box-sizing(content-box);
-    transition: all .3s;
-
-
-    // Disabled input style
-    &:disabled {
-      color: $input-disabled-color;
-      border-bottom: 1px dotted $input-disabled-color;
-    }
-    // Disabled label style
-    &:disabled+label {
-      color: $input-disabled-color;
-    }
-    // Focused input style
-    &:focus {
-      border-bottom: 1px solid $input-focus-color;
-      box-shadow: 0 1px 0 0 $input-focus-color;
-    }
-    // Focused label style
-    &:focus+label {
-      color: $input-focus-color;
-    }
-    // Valid Input Style
-    &.valid {
-      border-bottom: 1px solid $input-success-color;
-      box-shadow: 0 1px 0 0 $input-success-color;
-    }
-    // Invalid Input Style
-    &.invalid {
-      border-bottom: 1px solid $input-error-color;
-      box-shadow: 0 1px 0 0 $input-error-color;
-    }
   }
 
 
@@ -338,7 +337,7 @@ form p {
   box-shadow: none;
   background-color: $input-disabled-color;
   width: 18px; height: 18px;
-  border: 2px solid $input-disabled-color;
+  border: none;
   @include transform(rotate(0deg));
 }
 

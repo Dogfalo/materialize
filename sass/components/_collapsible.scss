@@ -5,9 +5,6 @@
   margin: $element-top-margin 0 $element-bottom-margin 0;
   @extend .z-depth-1;
 
-  li {
-    @include transition(.3s);
-  }
 }
 
 .collapsible-header {
@@ -71,4 +68,3 @@
 
 }
 
-.no-padding { padding: 0 !important; }
