@@ -6065,6 +6065,9 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   -ms-transition: 0.3s;
   transition: 0.3s; }
 
+input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=url]:disabled, input[type=date]:disabled, input[type=tel]:disabled, input[type=number]:disabled, input[type=search]:disabled, textarea.materialize-textarea:disabled {
+  border-bottom: 2px dotted #ababab; }
+
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=url]:focus, input[type=date]:focus, input[type=tel]:focus, input[type=number]:focus, input[type=search]:focus, textarea:focus.materialize-textarea {
   border-bottom: 1px solid #26a69a;
   box-shadow: 0 1px 0 0 #26a69a; }

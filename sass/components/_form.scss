@@ -154,6 +154,18 @@ textarea.materialize-textarea {
   @include transition(.3s);
 }
 
+input[type=text]:disabled,
+input[type=password]:disabled,
+input[type=email]:disabled,
+input[type=url]:disabled,
+input[type=date]:disabled,
+input[type=tel]:disabled,
+input[type=number]:disabled,
+input[type=search]:disabled,
+textarea.materialize-textarea:disabled {
+  border-bottom: 2px dotted lighten($input-border-color, 5%);
+}
+
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
