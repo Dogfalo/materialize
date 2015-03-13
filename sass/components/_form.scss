@@ -450,7 +450,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   input.select-dropdown {
     position: relative;
     cursor: pointer;
-    color: #444;
+    // color: #444;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid $input-border-color;
@@ -464,10 +464,14 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     display: block;
   }
   .mdi-navigation-arrow-drop-down {
+      color: initial;
       position: absolute;
       right: 0;
       top: 0;
       font-size: 23px;
+      &.disabled {
+        color: $input-disabled-color;
+      }
     }
 }
 
@@ -695,7 +699,7 @@ input[type=range]:focus::-ms-fill-upper {
 ****************************/
 
 select {
-   background-color: #fffafa;
+   background-color: rgba(255, 255, 255, 0.90);
    width: 100%;
    padding: 5px;
    border: 1px solid #f2f2f2;
