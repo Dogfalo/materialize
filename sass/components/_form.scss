@@ -63,21 +63,21 @@ textarea.materialize-textarea {
 
 
   // Disabled input style
-  &:disabled {
+  &:disabled, &[readonly="readonly"] {
     color: $input-disabled-color;
     border-bottom: 1px dotted $input-disabled-color;
   }
   // Disabled label style
-  &:disabled+label {
+  &:disabled+label, &[readonly="readonly"]+label {
     color: $input-disabled-color;
   }
   // Focused input style
-  &:focus {
+  &:focus:not([readonly]) {
     border-bottom: 1px solid $input-focus-color;
     box-shadow: 0 1px 0 0 $input-focus-color;
   }
   // Focused label style
-  &:focus+label {
+  &:focus:not([readonly])+label {
     color: $input-focus-color;
   }
   // Valid Input Style
@@ -286,8 +286,10 @@ form p:last-child {
 }
 
 
+// Checkbox Styles
 [type="checkbox"] {
 
+  // Text Label Style
   + label {
     position: relative;
     padding-left: 35px;
@@ -347,7 +349,7 @@ form p:last-child {
 
 }
 
-/* indeterminate checkbox */
+/* Indeterminate checkbox */
 [type="checkbox"]:indeterminate {
   +label:before {
     left: -10px;
@@ -376,6 +378,7 @@ form p:last-child {
 .switch * {
     -webkit-user-select: none;
     -moz-user-select: none;
+    -khtml-user-select: none;
     -ms-user-select: none;
 }
 .switch label {
