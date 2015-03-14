@@ -113,7 +113,9 @@
     }
 
     // Set checkbox on forms.html to indeterminate
-    document.getElementById('indeterminate-checkbox').indeterminate = true;
+    var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
+    if (indeterminateCheckbox !== null)
+      indeterminateCheckbox.indeterminate = true;
 
 
     // Plugin initialization
