@@ -130,7 +130,7 @@
       return this.each(function() {
         // Close Handlers
         $(this).click(function(e) {
-          var modal_id = $(this).attr("href");
+          var modal_id = $(this).attr("href") || '#' + $(this).data('target');
           $(modal_id).openModal(options);
           e.preventDefault();
         }); // done set on click
