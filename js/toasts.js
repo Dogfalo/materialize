@@ -61,7 +61,11 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         var toast = document.createElement('div');
         toast.classList.add('toast');
         if (className) {
-          toast.classList.add(className);
+            var classes = className.split(' ');
+
+            for (var i = 0, count = classes.length; i < count; i++) {
+                toast.classList.add(classes[i]);
+            }
         }
         toast.innerHTML = html;
 
