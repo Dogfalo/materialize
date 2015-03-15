@@ -26,13 +26,13 @@
     }
   }
 
-  a {
-    color: color("orange", "accent-2");
+  a:not(.btn):not(.collection-item) {
+    color: $card-link-color;
     margin-right: $card-padding;
     @include transition(color .3s ease);
     text-transform: uppercase;
 
-    &:hover { color: lighten(color("orange", "accent-2"), 20%); }
+    &:hover { color: lighten($card-link-color, 20%); }
   }
 
   // Card Sizes
