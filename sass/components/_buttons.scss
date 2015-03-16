@@ -140,3 +140,14 @@ button.btn-floating {
     font-size: 1.6rem;
   }
 }
+
+// Small button
+.btn-small {
+  @extend .btn;
+  height: $button-height * 0.75;
+  line-height: 30px;
+
+  i {
+    font-size: 1rem;
+  }
+}
