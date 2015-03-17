@@ -426,6 +426,13 @@
   });
             </code></pre>
           </div>
+          <div class="col s12">
+            <h4>Dynamically disable select elements</h4>
+            <p>After initialization the disabled attribute of the select element is no longer used. If you wish to disable the select element after initalization, you must disable the input element with class 'select-dropdown' created by the the initialization function instead.</p>
+            <pre><code class="language-javascript col s12">
+  $('.select-dropdown').prop('disabled', true);
+            </code></pre>
+          </div>
         </div>
       </div>
 
