@@ -211,6 +211,9 @@ ul.staggered-list li {
 /*********************
   Media Query Classes
 **********************/
+.hide {
+  display: none !important;
+}
 .hide-on-small-only, .hide-on-small-and-down {
   @media #{$small-and-down} {
     display: none !important;
