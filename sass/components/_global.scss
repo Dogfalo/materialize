@@ -618,6 +618,10 @@ span.badge {
   Utility Classes
 *******************/
 
+.hide {
+  display: none !important;
+}
+
 // Text Align
 .left-align {
   text-align: left;
@@ -663,4 +667,6 @@ span.badge {
   text-overflow: ellipsis;
 }
 
-.no-padding { padding: 0 !important; }
+.no-padding {
+  padding: 0 !important;
+}
