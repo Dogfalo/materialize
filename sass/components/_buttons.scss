@@ -62,8 +62,9 @@
   background-color: $button-color;
   border-radius: 50%;
   @extend .z-depth-1;
-  @include transition(.3s);
+  transition: .3s;
   cursor: pointer;
+  vertical-align: middle;
 
   i {
     width: inherit;
