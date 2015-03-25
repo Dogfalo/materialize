@@ -179,6 +179,7 @@ textarea {
 [type="radio"]:checked {
   position: absolute;
   left: -9999px;
+  visibility: hidden;
 }
 
 [type="radio"]:not(:checked) + label,

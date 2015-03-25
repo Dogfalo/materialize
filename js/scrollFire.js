@@ -12,32 +12,32 @@
 
     // Rate limit to 100ms
     setInterval(function() {
-        if(didScroll) {
-            didScroll = false;
+      if(didScroll) {
+          didScroll = false;
 
-            var windowScroll = window.pageYOffset + window.innerHeight;
+          var windowScroll = window.pageYOffset + window.innerHeight;
 
-            for (var i = 0 ; i < options.length; i++) {
-              // Get options from each line
-              var value = options[i];
-              var selector = value.selector,
-                  offset = value.offset,
-                  callback = value.callback;
+          for (var i = 0 ; i < options.length; i++) {
+            // Get options from each line
+            var value = options[i];
+            var selector = value.selector,
+                offset = value.offset,
+                callback = value.callback;
 
-              var currentElement = document.querySelector(selector);
-              if ( currentElement !== null) {
-                var elementOffset = currentElement.getBoundingClientRect().top + document.body.scrollTop;
+            var currentElement = document.querySelector(selector);
+            if ( currentElement !== null) {
+              var elementOffset = currentElement.getBoundingClientRect().top + document.body.scrollTop;
 
-                if (windowScroll > (elementOffset + offset)) {
-                  if (value.done != true) {
-                    var callbackFunc = new Function(callback);
-                    callbackFunc();
-                    value.done = true;
-                  }
+              if (windowScroll > (elementOffset + offset)) {
+                if (value.done != true) {
+                  var callbackFunc = new Function(callback);
+                  callbackFunc();
+                  value.done = true;
                 }
               }
-            };
-        }
+            }
+          };
+      }
     }, 100);
 
 
