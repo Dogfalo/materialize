@@ -1,14 +1,15 @@
 // shared styles
 .btn, .btn-flat {
+  border: none;
+  border-radius: 2px;
   display: inline-block;
   height: $button-height;
-  margin-bottom: 15px;
-  padding: 0 2rem;
-  border-radius: 2px;
   line-height: $button-line-height;
-  text-transform: uppercase;
-  border: none;
+  // margin-bottom: 15px;
   outline: 0;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  vertical-align: middle;
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
 }
