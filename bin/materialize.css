@@ -2247,7 +2247,8 @@ td, th {
   margin: 0.5rem 0 1rem 0;
   border: 1px solid #e0e0e0;
   border-radius: 2px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
   .collection .collection-item {
     background-color: #fff;
     line-height: 1.5rem;
@@ -2313,7 +2314,8 @@ span.badge {
   font-size: 1rem;
   line-height: inherit;
   color: #757575;
-  float: right;
+  position: absolute;
+  right: 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }

@@ -411,6 +411,7 @@ td, th{
   border: 1px solid $collection-border-color;
   border-radius: 2px;
   overflow: hidden;
+  position: relative;
 
   .collection-item {
     background-color: $collection-bg-color;
@@ -507,7 +508,8 @@ span.badge {
   font-size: 1rem;
   line-height: inherit;
   color: color('grey', 'darken-1');
-  float: right;
+  position: absolute;
+  right: 15px;
   @include box-sizing(border-box);
 
   &.new {
