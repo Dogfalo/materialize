@@ -34,6 +34,7 @@
       });
 
       $("#lean-overlay").css({ display : "block", opacity : 0 });
+      $('body').
 
       $(modal).css({
         display : "block",
