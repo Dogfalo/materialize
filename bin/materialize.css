@@ -6624,6 +6624,7 @@ select {
   padding-bottom: 60px;
   background-color: #FFF;
   z-index: 999;
+  overflow-y: auto;
   will-change: left; }
   .side-nav.right-aligned {
     will-change: right;
