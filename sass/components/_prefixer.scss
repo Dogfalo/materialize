@@ -239,7 +239,7 @@
     background-image: -o-linear-gradient(top, $color1 $stop1, $color2 $stop2);
     background-image: linear-gradient(top, $color1 $stop1, $color2 $stop2);
 }
-@mixin linear-gradient-top($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
+@mixin linear-gradient-top2($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3));
     background-image: -webkit-linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3);
@@ -248,7 +248,7 @@
     background-image: -o-linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3);
     background-image: linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3);
 }
-@mixin linear-gradient-top($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
+@mixin linear-gradient-top3($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3), color-stop($stop4 $color4));
     background-image: -webkit-linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
@@ -266,7 +266,7 @@
     background-image: -o-linear-gradient(left, $color1 $stop1, $color2 $stop2);
     background-image: linear-gradient(left, $color1 $stop1, $color2 $stop2);
 }
-@mixin linear-gradient-left($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
+@mixin linear-gradient-left2($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left top, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3));
     background-image: -webkit-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3);
@@ -275,7 +275,7 @@
     background-image: -o-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3);
     background-image: linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3);
 }
-@mixin linear-gradient-left($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
+@mixin linear-gradient-left3($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left top, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3), color-stop($stop4 $color4));
     background-image: -webkit-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
