@@ -19,6 +19,9 @@
   box-shadow: none;
   color: $button-color-disabled;
   cursor: default;
+  * {
+    pointer-events: none;
+  }
 
   &:hover {
     background-color: $button-bg-color-disabled;
