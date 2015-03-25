@@ -6413,7 +6413,8 @@ select:disabled {
   position: relative;
   overflow: hidden; }
   .file-field input.file-path {
-    margin-left: 100px; }
+    margin-left: 100px;
+    width: calc(100% - 100px); }
   .file-field .btn, .file-field .btn-large {
     position: absolute;
     top: 0;

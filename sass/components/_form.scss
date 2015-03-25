@@ -516,6 +516,7 @@ select:disabled {
 
   input.file-path {
     margin-left: 100px;
+    width: calc(100% - 100px);
   }
 
   .btn {
