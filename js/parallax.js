@@ -28,14 +28,15 @@
           var windowHeight = window.innerHeight;
           var windowBottom = scrollTop + windowHeight;
           var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
-          var parallax = -1 * parallax_dist * percentScrolled;
+          var parallax = Math.round((parallax_dist * percentScrolled));
 
-          if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {
-            $this.children("img").first().css('bottom', parallax + "px");
-          }
           if (initial) {
             $this.children("img").first().css('display', 'block');
           }
+          if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {
+            $this.children("img").first().css('transform', "translate3d(0," + parallax + "px,0)");
+          }
+
         }
 
         // Wait for image load
