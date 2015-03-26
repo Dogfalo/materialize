@@ -6637,6 +6637,8 @@ select {
     .side-nav li:hover, .side-nav li.active {
       background-color: #ddd; }
   .side-nav a {
+     display: block;
+    padding: 0 15px;
     color: #444; }
 
 .drag-target {
