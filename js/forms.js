@@ -37,6 +37,7 @@
     $(document).on('reset', function(e) {
       if ($(e.target).is('form')) {
         $(this).find(input_selector).removeClass('valid').removeClass('invalid');
+        $(this).find(input_selector).siblings('label, i').removeClass('active');
 
         // Reset select
         $(this).find('select.initialized').each(function () {
