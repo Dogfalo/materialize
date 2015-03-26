@@ -5337,17 +5337,6 @@ small {
     font-weight: 300; }
     .card .card-title.activator {
       cursor: pointer; }
-  .card a {
-    color: #ffab40;
-    margin-right: 20px;
-    -webkit-transition: color .3s ease;
-    -moz-transition: color .3s ease;
-    -o-transition: color .3s ease;
-    -ms-transition: color .3s ease;
-    transition: color .3s ease;
-    text-transform: uppercase; }
-    .card a:hover {
-      color: #ffd8a6; }
   .card.small, .card.medium, .card.large {
     position: relative; }
     .card.small .card-image, .card.medium .card-image, .card.large .card-image {
@@ -5403,6 +5392,17 @@ small {
   .card .card-action {
     border-top: 1px solid rgba(160, 160, 160, 0.2);
     padding: 20px; }
+    .card .card-action a {
+      color: #ffab40;
+      margin-right: 20px;
+      -webkit-transition: color .3s ease;
+      -moz-transition: color .3s ease;
+      -o-transition: color .3s ease;
+      -ms-transition: color .3s ease;
+      transition: color .3s ease;
+      text-transform: uppercase; }
+      .card .card-action a:hover {
+        color: #ffd8a6; }
   .card .card-reveal {
     padding: 20px;
     position: absolute;
