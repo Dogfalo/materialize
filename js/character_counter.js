@@ -20,12 +20,14 @@
     isValidLength     = actualLength <= maxLength;
 
     addCounterElement($(this));
-    $(this).next().html( actualLength + '/' + maxLength);
+    $(this).parent().find('span[class="character-counter"]')
+                    .html( actualLength + '/' + maxLength);
+
     addInputStyle(isValidLength, $(this));
   }
 
   function addCounterElement($input){
-    isAlreadyAdded = $input.next().is('span') && $input.next().hasClass('character-counter');
+    isAlreadyAdded = $input.parent().find('span[class="character-counter"]').length;
 
     if(!isAlreadyAdded){
       $counterElement = $('<span/>')
@@ -33,12 +35,12 @@
                           .css('float','right')
                           .css('font-size','12px');
 
-      $input.after($counterElement);
+      $input.parent().append($counterElement);
     }
   }
 
   function removeCounterElement(){
-    $(this).next().remove();
+    $(this).parent().find('span[class="character-counter"]').remove();
   }
 
   function addInputStyle(isValidLength, $input){
