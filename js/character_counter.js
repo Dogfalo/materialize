@@ -9,6 +9,8 @@
         $(this).on('input', updateCounter);
         $(this).on('focus', updateCounter);
         $(this).on('blur', removeCounterElement);
+
+        addCounterElement($(this));
       }
 
     });
@@ -19,7 +21,6 @@
     actualLength      = +$(this).val().length,
     isValidLength     = actualLength <= maxLength;
 
-    addCounterElement($(this));
     $(this).parent().find('span[class="character-counter"]')
                     .html( actualLength + '/' + maxLength);
 
@@ -27,20 +28,17 @@
   }
 
   function addCounterElement($input){
-    isAlreadyAdded = $input.parent().find('span[class="character-counter"]').length;
+    $counterElement = $('<span/>')
+                        .addClass('character-counter')
+                        .css('float','right')
+                        .css('font-size','12px')
+                        .css('height', 1);
 
-    if(!isAlreadyAdded){
-      $counterElement = $('<span/>')
-                          .addClass('character-counter')
-                          .css('float','right')
-                          .css('font-size','12px');
-
-      $input.parent().append($counterElement);
-    }
+    $input.parent().append($counterElement);
   }
 
   function removeCounterElement(){
-    $(this).parent().find('span[class="character-counter"]').remove();
+    $(this).parent().find('span[class="character-counter"]').html('');
   }
 
   function addInputStyle(isValidLength, $input){
