@@ -1,3 +1,6 @@
+.dropdown-button {
+  position: relative;
+}
 .dropdown-content {
   @extend .z-depth-1;
   background-color: #FFFFFF;
@@ -5,18 +8,10 @@
   display: none;
   min-width: 100px;
   opacity: 0;
-  position: absolute;
+  position: fixed;
   white-space: nowrap; // Force one line
   z-index: 1000;
-  // visibility: hidden;
   will-change: width, height;
-  // transition: visibility 0s .3s, opacity .3s 0s;
-
-  &.active {
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0s;
-  }
 
   li {
     clear: both;
@@ -24,6 +19,7 @@
     cursor: pointer;
     font-size: 1.2rem;
     line-height: 1.5rem;
+    width: 100%;
 
     &:hover, &.active {
       background-color: rgba(0,0,0, .06);

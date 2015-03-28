@@ -55,7 +55,6 @@
       // Check html data attributes
       updateOptions();
 
-      
       // Constrain width
       if (options.constrain_width == true) {
         activates.css('width', origin.outerWidth());
@@ -71,29 +70,41 @@
       var width_difference = 0;
       var gutter_spacing = options.gutter;
 
-      // Show dropdown
-      // activates.addClass('active');
-      activates.slideDown( {queue: false, duration: options.inDuration, easing: 'easeOutCubic'})
-        .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeInSine'});
 
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         width_difference = origin.innerWidth() - activates.innerWidth();
         gutter_spacing = gutter_spacing * -1;
       }
-      // Placement
+      // If fixed placement
       if (elementOrParentIsFixed(origin[0])) {
+        console.log(origin.position());
         activates.css({
-          position: 'fixed',
-          top: origin.offset().top - $(window).scrollTop() + offset,
-          left: origin.offset().left + width_difference + gutter_spacing
+          top: origin.position().top + offset,
+          left: origin.position().left + width_difference + gutter_spacing
         });
       }
+      // If relative placement
       else {
+
         activates.css({
-          top: origin.offset().top + offset,
-          left: origin.offset().left + width_difference + gutter_spacing
+          position: 'absolute',
+          top: 0 + offset,
+          left: 0 + width_difference + gutter_spacing
         });
+        
       }
+
+      // Show dropdown
+      activates.stop(true, true).css('opacity', 0)
+        .slideDown({
+        queue: false, 
+        duration: options.inDuration, 
+        easing: 'easeOutCubic', 
+        complete: function() {
+          $(this).css('height', '');
+        } 
+      })
+        .velocity( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeInSine'});
 
 
     }
@@ -103,6 +114,8 @@
         var isFixed = false;
         $checkElements.each(function(){
             if ($(this).css("position") === "fixed") {
+                console.log($(this));
+                console.log('fixed');
                 isFixed = true;
                 return false;
             }
@@ -111,20 +124,7 @@
     }
 
     function hideDropdown() {
-      activates.velocity(
-        {
-          opacity: 0
-        },
-        {
-          duration: options.outDuration,
-          easing: 'easeOutQuad',
-          complete: function(){
-            activates.css({
-              display: 'none',
-              'overflow-y': ''
-            });
-          }
-        });
+      activates.fadeOut(options.outDuration);
     }
 
     // Hover

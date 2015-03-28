@@ -5657,29 +5657,32 @@ button.btn-floating {
   .btn-large i {
     font-size: 1.6rem; }
 
+.dropdown-button {
+  position: relative; }
+
 .dropdown-content {
-  display: none;
-  position: absolute;
   background-color: #FFFFFF;
   margin: 0;
+  display: none;
   min-width: 100px;
-  z-index: 1000;
-  max-height: 70%;
   opacity: 0;
-  overflow-y: hidden;
+  position: fixed;
   white-space: nowrap;
+  z-index: 1000;
   will-change: width, height; }
   .dropdown-content li {
+    clear: both;
+    color: rgba(0, 0, 0, 0.87);
     cursor: pointer;
     font-size: 1.2rem;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 1.5rem; }
+    line-height: 1.5rem;
+    width: 100%; }
     .dropdown-content li:hover, .dropdown-content li.active {
       background-color: rgba(0, 0, 0, 0.06); }
     .dropdown-content li > a, .dropdown-content li > span {
+      color: #26a69a;
       display: block;
-      padding: 1rem 1rem;
-      color: #26a69a; }
+      padding: 1rem 1rem; }
 
 /*!
  * Waves v0.6.0
