@@ -41,13 +41,11 @@
 
     updateOptions();
 
-    // Move Dropdown menu to body. This allows for absolute positioning to work
-    if ( !(activates.parent().is($('body'))) ) {
-      activates.detach();
-      $('body').append(activates);
-    }
+    // Attach dropdown to its activator
+    origin.append(activates);
+    
 
-    var dropdownRealHeight = activates.height();
+
 
     /*
       Helper function to position and resize dropdown.
@@ -57,6 +55,8 @@
       // Check html data attributes
       updateOptions();
 
+      
+      // Constrain width
       if (options.constrain_width == true) {
         activates.css('width', origin.outerWidth());
       }
@@ -71,39 +71,31 @@
       var width_difference = 0;
       var gutter_spacing = options.gutter;
 
+      // Show dropdown
+      // activates.addClass('active');
+      activates.slideDown( {queue: false, duration: options.inDuration, easing: 'easeOutCubic'})
+        .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeInSine'});
+
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         width_difference = origin.innerWidth() - activates.innerWidth();
         gutter_spacing = gutter_spacing * -1;
       }
+      // Placement
       if (elementOrParentIsFixed(origin[0])) {
         activates.css({
-          display: 'block',
           position: 'fixed',
-          height: 0,
           top: origin.offset().top - $(window).scrollTop() + offset,
           left: origin.offset().left + width_difference + gutter_spacing
         });
       }
       else {
         activates.css({
-          display: 'block',
           top: origin.offset().top + offset,
-          left: origin.offset().left + width_difference + gutter_spacing,
-          height: 0
+          left: origin.offset().left + width_difference + gutter_spacing
         });
       }
-      activates.velocity({opacity: 1}, {duration: options.inDuration, queue: false, easing: 'easeOutQuad'})
-      .velocity(
-      {
-        height: dropdownRealHeight
-      },
-      {duration: options.inDuration,
-        queue: false,
-        easing: 'easeOutCubic',
-        complete: function(){
-          activates.css('overflow-y', 'auto')
-        }
-      });
+
+
     }
     function elementOrParentIsFixed(element) {
         var $element = $(element);
@@ -138,12 +130,11 @@
     // Hover
     if (options.hover) {
       // Hover handler to show dropdown
-      origin.on('mouseover', function(e){ // Mouse over
-        placeDropdown();
+      origin.on('mouseenter', function(e){ // Mouse over
+          placeDropdown();
       });
 
-      // Document click handler
-      activates.on('mouseleave', function(e){ // Mouse out
+      origin.on('mouseleave', function(e){ // Mouse out
         hideDropdown();
       });
 

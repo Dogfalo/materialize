@@ -1,22 +1,28 @@
 .dropdown-content {
-  display:none;
   @extend .z-depth-1;
-  position: absolute;
   background-color: #FFFFFF;
   margin: 0;
+  display: none;
   min-width: 100px;
-  z-index: 1000;
-  max-height: 70%;
   opacity: 0;
-  overflow-y: hidden;
+  position: absolute;
   white-space: nowrap; // Force one line
-
+  z-index: 1000;
+  // visibility: hidden;
   will-change: width, height;
+  // transition: visibility 0s .3s, opacity .3s 0s;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
 
   li {
+    clear: both;
+    color: $off-black;
     cursor: pointer;
     font-size: 1.2rem;
-    color: $off-black;
     line-height: 1.5rem;
 
     &:hover, &.active {
@@ -24,9 +30,9 @@
     }
 
     & > a, & > span {
+      color: $dropdown-color;
       display: block;
       padding: 1rem 1rem;
-      color: $dropdown-color;
     }
   }
 }
