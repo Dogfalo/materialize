@@ -5657,6 +5657,15 @@ button.btn-floating {
   .btn-large i {
     font-size: 1.6rem; }
 
+.btn-container {
+  display: flex; }
+
+.btn-container > div {
+  width: auto; }
+
+.btn-container .btn, .btn-container .btn-large, .btn-container .btn-flat, .btn-container .btn-large {
+  display: block; }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -7788,6 +7797,37 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .picker--time .picker__box {
     margin-bottom: 5em; } }
 
+@media only screen and (min-width : 601px) {
+  ul.bottombar {
+    display: none; } }
+
+@media only screen and (max-width : 600px) {
+  ul.bottombar {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: table;
+    margin: 0px;
+    border-top: solid 1px #DADADA; }
+    ul.bottombar li {
+      display: table-cell;
+      text-align: center; }
+      ul.bottombar li a {
+        width: 100%;
+        display: block; }
+        ul.bottombar li a i {
+          font-size: 1.8rem;
+          display: block;
+          text-align: center;
+          color: #444444; }
+        ul.bottombar li a span {
+          font-size: 1.4rem;
+          color: #444444;
+          display: block;
+          text-align: center; }
+  body.bottombar-active #toast-container {
+    bottom: 68px; } }
+
 /***************
   HTML Styles
 ***************/
@@ -8382,3 +8422,8 @@ body.parallax-demo footer {
     color: rgba(0, 0, 0, 0.87); }
   #tx-live-lang-container .txlive-langselector-marker {
     border-bottom: 4px solid rgba(0, 0, 0, 0.61); }
+
+.btn-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center; }

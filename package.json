@@ -9,6 +9,7 @@
     "url": "git://github.com/Dogfalo/materialize.git"
   },
   "dependencies": {
+    "grunt-cli": "^0.1.13"
   },
   "engine": "node >= 0.10",
   "devDependencies": {
