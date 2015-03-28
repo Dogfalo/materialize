@@ -85,7 +85,8 @@ module.exports = function(grunt) {
               "js/transitions.js",
               "js/scrollFire.js",
               "js/date_picker/picker.js",
-              "js/date_picker/picker.date.js"
+              "js/date_picker/picker.date.js",
+              "js/character_counter.js",
              ],
         // the location of the resulting JS file
         dest: 'dist/js/materialize.js'
@@ -118,7 +119,8 @@ module.exports = function(grunt) {
               "js/transitions.js",
               "js/scrollFire.js",
               "js/date_picker/picker.js",
-              "js/date_picker/picker.date.js"
+              "js/date_picker/picker.date.js",
+              "js/character_counter.js",
              ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
@@ -196,6 +198,7 @@ module.exports = function(grunt) {
               "scrollFire.js",
               "date_picker/picker.js",
               "date_picker/picker.date.js",
+              "character_counter.js",
              ], dest: 'materialize-src/js/'},
         {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
         {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
@@ -288,7 +291,7 @@ module.exports = function(grunt) {
           "scrollspy.html": "jade/scrollspy.jade",
           "transitions.html": "jade/transitions.jade",
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
-          "pagination.html": "jade/pagination.jade",
+          "pagination.html": "jade/pagination.jade"
 
 
         }

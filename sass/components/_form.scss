@@ -81,12 +81,14 @@ textarea.materialize-textarea {
     color: $input-focus-color;
   }
   // Valid Input Style
-  &.valid {
+  &.valid,
+  &:focus.valid {
     border-bottom: 1px solid $input-success-color;
     box-shadow: 0 1px 0 0 $input-success-color;
   }
   // Invalid Input Style
-  &.invalid {
+  &.invalid,
+  &:focus.invalid {
     border-bottom: 1px solid $input-error-color;
     box-shadow: 0 1px 0 0 $input-error-color;
   }
