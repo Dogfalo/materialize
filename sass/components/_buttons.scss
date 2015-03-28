@@ -145,3 +145,17 @@ button.btn-floating {
     font-size: 1.6rem;
   }
 }
+
+// Same width buttons
+.btn-container {
+  display: flex;
+
+}
+
+.btn-container > div {
+  width: auto;
+}
+
+.btn-container .btn, .btn-container .btn-flat, .btn-container .btn-large {
+  display: block;
+}

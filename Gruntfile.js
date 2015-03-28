@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 //  Copy
     copy: {
-      dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true },
+      dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true }
     },
 
 //  Sass
@@ -12,10 +12,10 @@ module.exports = function(grunt) {
       expanded: {                            // Target
         options: {                       // Target options
           outputStyle: 'expanded',
-          sourcemap: false,
+          sourcemap: false
         },
         files: {
-          'dist/css/materialize.css': 'sass/materialize.scss',
+          'dist/css/materialize.css': 'sass/materialize.scss'
         }
       },
 
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'dist/css/materialize.min.css': 'sass/materialize.scss',
+          'dist/css/materialize.min.css': 'sass/materialize.scss'
         }
       },
 
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss',
+          'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss'
         }
       },
 
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'bin/materialize.css': 'sass/materialize.scss',
+          'bin/materialize.css': 'sass/materialize.scss'
         }
       }
     },
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
              ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
-      },
+      }
     },
 
 //  Uglify
@@ -222,7 +222,7 @@ module.exports = function(grunt) {
 
       parallax_template: {
         options: {
-          archive: 'templates/parallax-template.zip',
+          archive: 'templateLibSasss/parallax-template.zip',
           level: 6
         },
         files:[
@@ -241,7 +241,7 @@ module.exports = function(grunt) {
    clean: {
      temp: {
        src: [ 'temp/' ]
-     },
+     }
    },
 
 //  Jade
@@ -305,8 +305,8 @@ module.exports = function(grunt) {
         tasks: ['jade_compile'],
         options: {
           interrupt: false,
-          spawn: false,
-        },
+          spawn: false
+        }
       },
 
       js: {
@@ -314,8 +314,8 @@ module.exports = function(grunt) {
         tasks: ['js_compile'],
         options: {
           interrupt: false,
-          spawn: false,
-        },
+          spawn: false
+        }
       },
 
       sass: {
@@ -323,8 +323,8 @@ module.exports = function(grunt) {
         tasks: ['sass_compile'],
         options: {
           interrupt: false,
-          spawn: false,
-        },
+          spawn: false
+        }
       }
     },
 
@@ -336,7 +336,7 @@ module.exports = function(grunt) {
       },
       monitor: {
         tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'connect:server', 'notify:server']
-      },
+      }
     },
 
 
@@ -430,7 +430,7 @@ module.exports = function(grunt) {
           from: 'Current Version : v'+grunt.option( "oldver" ),
           to: 'Current Version : v'+grunt.option( "newver" )
         }]
-      },
+      }
     },
 
     // Create Version Header for files
@@ -462,7 +462,7 @@ module.exports = function(grunt) {
               options: {
                 ignore: true
               }
-          },
+          }
       },
 
       // Removes console logs

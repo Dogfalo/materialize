@@ -1,0 +1,42 @@
+@media #{$medium-and-up} {
+  ul.bottombar {
+    display: none;
+  }
+}
+
+@media #{$small-and-down} {
+  ul.bottombar {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: table;
+    margin: 0px;
+    border-top: solid 1px #DADADA;
+    li {
+      display: table-cell;
+      text-align: center;
+      a {
+        width: 100%;
+        display: block;
+
+        i {
+          font-size: 1.8rem;
+          display: block;
+          text-align: center;
+          color: #444444;
+        }
+
+        span {
+          font-size: 1.4rem;
+          color: #444444;
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  body.bottombar-active #toast-container {
+    bottom: 68px;
+  }
+}
