@@ -5678,7 +5678,9 @@ button.btn-floating {
     cursor: pointer;
     font-size: 1.2rem;
     line-height: 1.5rem;
-    width: 100%; }
+    width: 100%;
+    text-align: left;
+    text-transform: none; }
     .dropdown-content li:hover, .dropdown-content li.active {
       background-color: #eee; }
     .dropdown-content li > a, .dropdown-content li > span {
