@@ -142,7 +142,10 @@
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-
+        // Handles case for select plugin
+        if (origin.hasClass('select-dropdown')) {
+          return false;
+        }
         if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
@@ -151,6 +154,7 @@
         }
         // If origin is clicked and menu is open, close menu
         else {
+          console.log('d')
           if (open === true) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
