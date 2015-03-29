@@ -177,16 +177,33 @@ video.responsive-video {
   img {
     display: none;
     position: absolute;
+    left: 50%;
     bottom: 0;
-    width: 100%;
+    min-width: 100%;
     min-height: 100%;
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: no-repeat;
     -webkit-transform: translate3d(0,0,0);
             transform: translate3d(0,0,0);
+    transform: translateX(-50%);
   }
 }
+
+@media #{$small-and-down} {
+  .parallax-container {
+    height: auto;
+
+    .parallax {
+      position: relative;
+
+      img {
+        position: relative;
+        min-height: 0;
+        min-width: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
 
 // Pushpin
 .pin-top, .pin-bottom {
