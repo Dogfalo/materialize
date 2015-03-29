@@ -435,6 +435,25 @@ form p:last-child {
       z-index: 0;
     }
   }
+  // Disabled style
+  &:disabled:not(:checked) + label:before {
+
+    background-color: transparent;
+    border: 2px solid transparent;
+
+  }
+  &:disabled:not(:checked) + label:after {
+    border-color: transparent;
+    background-color: $input-disabled-solid-color;
+  }
+  &:disabled:checked + label:before {
+    background-color: transparent;
+    
+  }
+  &:disabled:checked + label:after {
+    background-color: $input-disabled-solid-color;
+    border-color: $input-disabled-solid-color;
+  }
  
 }
 

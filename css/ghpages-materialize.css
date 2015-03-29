@@ -6378,6 +6378,17 @@ form p:last-child {
   border: 2px solid #26a69a;
   background-color: #26a69a;
   z-index: 0; }
+[type="checkbox"].filled-in:disabled:not(:checked) + label:before {
+  background-color: transparent;
+  border: 2px solid transparent; }
+[type="checkbox"].filled-in:disabled:not(:checked) + label:after {
+  border-color: transparent;
+  background-color: #BDBDBD; }
+[type="checkbox"].filled-in:disabled:checked + label:before {
+  background-color: transparent; }
+[type="checkbox"].filled-in:disabled:checked + label:after {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD; }
 
 /***************
      Switch
