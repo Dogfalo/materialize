@@ -23,6 +23,7 @@
   }
 
   .collapsible{
+
     margin: 0;
   }
 
@@ -30,16 +31,16 @@
   li {
 
     float: none;
-    padding: 0;
+    padding: 0 15px;
     &:hover, &.active { background-color: #ddd; }
   }
-  a {
+  > a {
     color: #444;
     display: block;
     font-size: 1rem;
     height: 64px;
     line-height: 64px;
-    padding: 0 30px;
+    padding: 0 15px;
   }
 }
 

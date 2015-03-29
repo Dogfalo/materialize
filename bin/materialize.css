@@ -6640,16 +6640,16 @@ select {
     margin: 0; }
   .side-nav li {
     float: none;
-    padding: 0; }
+    padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {
       background-color: #ddd; }
-  .side-nav a {
+  .side-nav > a {
     color: #444;
     display: block;
     font-size: 1rem;
     height: 64px;
     line-height: 64px;
-    padding: 0 30px; }
+    padding: 0 15px; }
 
 .drag-target {
   height: 100%;
