@@ -7,11 +7,6 @@
         var $this = $(this);
         $this.addClass('parallax');
 
-        $this.find('img').each(function () {
-          $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
-          $(this).attr('src', 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
-        });
-
         function updateParallax(initial) {
           var container_height;
           if (window_width < 992) {
