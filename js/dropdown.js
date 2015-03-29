@@ -42,7 +42,12 @@
     updateOptions();
 
     // Attach dropdown to its activator
-    origin.append(activates);
+    if (origin.hasClass('select-dropdown')) {
+      origin.after(activates)
+    }
+    else {
+      origin.append(activates);
+    }
     
 
 
