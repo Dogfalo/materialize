@@ -13,6 +13,19 @@ Materialize.guid = (function() {
   };
 })();
 
+Materialize.elementOrParentIsFixed = function(element) {
+    var $element = $(element);
+    var $checkElements = $element.add($element.parents());
+    var isFixed = false;
+    $checkElements.each(function(){
+        if ($(this).css("position") === "fixed") {
+            isFixed = true;
+            return false;
+        }
+    });
+    return isFixed;
+}
+
 // Velocity has conflicts when loaded with jQuery, this will check for it
 var Vel;
 if ($) { Vel = $.Velocity } else { Vel = Velocity};

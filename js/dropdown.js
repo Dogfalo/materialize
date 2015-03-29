@@ -76,11 +76,10 @@
         gutter_spacing = gutter_spacing * -1;
       }
       // If fixed placement
-      if (elementOrParentIsFixed(origin[0])) {
-        console.log(origin.position());
+      if (Materialize.elementOrParentIsFixed(origin[0])) {
         activates.css({
-          top: origin.position().top + offset,
-          left: origin.position().left + width_difference + gutter_spacing
+          top: 0 + offset,
+          left: 0 + width_difference + gutter_spacing
         });
       }
       // If relative placement
@@ -104,24 +103,11 @@
           $(this).css('height', '');
         } 
       })
-        .velocity( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeInSine'});
+        .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeOutSine'});
 
 
     }
-    function elementOrParentIsFixed(element) {
-        var $element = $(element);
-        var $checkElements = $element.add($element.parents());
-        var isFixed = false;
-        $checkElements.each(function(){
-            if ($(this).css("position") === "fixed") {
-                console.log($(this));
-                console.log('fixed');
-                isFixed = true;
-                return false;
-            }
-        });
-        return isFixed;
-    }
+
 
     function hideDropdown() {
       activates.fadeOut(options.outDuration);
@@ -135,6 +121,7 @@
       });
 
       origin.on('mouseleave', function(e){ // Mouse out
+        activates.stop(true, true);
         hideDropdown();
       });
 
@@ -145,18 +132,30 @@
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-        if (origin[0] == e.currentTarget) {
 
+        if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
-        }
+          open = true;
 
-        $(document).bind('click.'+ activates.attr('id'), function (e) {
-          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0) ) {
+        }
+        // If origin is clicked and menu is open, close menu
+        else {
+          if (open === true) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
+            open = false;
           }
-        });
+        }
+        // If menu open, add click close handler to document
+        if (open === true) {
+          $(document).bind('click.'+ activates.attr('id'), function (e) {
+            if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0) ) {
+              hideDropdown();
+              $(document).unbind('click.' + activates.attr('id'));
+            }
+          });
+        }
       });
 
     } // End else

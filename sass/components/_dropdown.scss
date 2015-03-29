@@ -8,7 +8,7 @@
   display: none;
   min-width: 100px;
   opacity: 0;
-  position: fixed;
+  position: absolute;
   white-space: nowrap; // Force one line
   z-index: 1000;
   will-change: width, height;
