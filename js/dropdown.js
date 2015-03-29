@@ -7,7 +7,7 @@
     return this;
   };
 
-  $.fn.dropdown = function (options) {
+  $.fn.dropdown = function (option) {
     var defaults = {
       inDuration: 300,
       outDuration: 225,
@@ -17,9 +17,9 @@
       belowOrigin: false
     }
 
-    options = $.extend(defaults, options);
     this.each(function(){
     var origin = $(this);
+    var options = $.extend({}, defaults, option);
 
     // Dropdown menu
     var activates = $("#"+ origin.attr('data-activates'));
@@ -118,11 +118,16 @@
       activates.fadeOut(options.outDuration);
     }
 
+    activates.on('hover', function(e) {
+      e.stopPropagation();
+    });
+
     // Hover
     if (options.hover) {
+      origin.unbind('click.' + origin.attr('id'));
       // Hover handler to show dropdown
       origin.on('mouseenter', function(e){ // Mouse over
-          placeDropdown();
+        placeDropdown();
       });
 
       origin.on('mouseleave', function(e){ // Mouse out

@@ -5665,10 +5665,12 @@ button.btn-floating {
   margin: 0;
   display: none;
   min-width: 100px;
+  max-height: 650px;
+  overflow-y: auto;
   opacity: 0;
   position: absolute;
   white-space: nowrap;
-  z-index: 1000;
+  z-index: 1;
   will-change: width, height; }
   .dropdown-content li {
     clear: both;
@@ -5678,7 +5680,7 @@ button.btn-floating {
     line-height: 1.5rem;
     width: 100%; }
     .dropdown-content li:hover, .dropdown-content li.active {
-      background-color: rgba(0, 0, 0, 0.06); }
+      background-color: #eee; }
     .dropdown-content li > a, .dropdown-content li > span {
       color: #26a69a;
       display: block;

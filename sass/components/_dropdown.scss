@@ -7,10 +7,12 @@
   margin: 0;
   display: none;
   min-width: 100px;
+  max-height: 650px;
+  overflow-y: auto;
   opacity: 0;
   position: absolute;
   white-space: nowrap; // Force one line
-  z-index: 1000;
+  z-index: 1;
   will-change: width, height;
 
   li {
@@ -22,7 +24,7 @@
     width: 100%;
 
     &:hover, &.active {
-      background-color: rgba(0,0,0, .06);
+      background-color: #eee;
     }
 
     & > a, & > span {
