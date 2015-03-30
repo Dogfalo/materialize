@@ -56,7 +56,7 @@
   &:before {
     content: '';
     opacity: 0;
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.08);
     border-radius: 2px;
     position: absolute;
     width: 100%;
@@ -73,6 +73,7 @@
   display: inline-block;
   color: $button-color-raised;
   position: relative;
+  overflow: hidden;
   z-index: 1;
   width: $button-floating-size;
   height: $button-floating-size;
@@ -96,6 +97,9 @@
 
   &:hover {
     @extend .z-depth-1-half;
+  }
+  &:before {
+    border-radius: 0;
   }
   &.btn-large {
     width: $button-floating-size * 1.5;

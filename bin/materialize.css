@@ -5608,7 +5608,7 @@ small {
   .btn:before, .btn-large:before {
     content: '';
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.08);
     border-radius: 2px;
     position: absolute;
     width: 100%;
@@ -5622,6 +5622,7 @@ small {
   display: inline-block;
   color: #FFF;
   position: relative;
+  overflow: hidden;
   z-index: 1;
   width: 37px;
   height: 37px;
@@ -5639,6 +5640,8 @@ small {
     color: #FFF;
     font-size: 1.6rem;
     line-height: 37px; }
+  .btn-floating:before {
+    border-radius: 0; }
   .btn-floating.btn-large {
     width: 55.5px;
     height: 55.5px; }
