@@ -449,13 +449,13 @@ form p:last-child {
   }
   &:disabled:checked + label:before {
     background-color: transparent;
-    
+
   }
   &:disabled:checked + label:after {
     background-color: $input-disabled-solid-color;
     border-color: $input-disabled-solid-color;
   }
- 
+
 }
 
 /***************
@@ -599,7 +599,6 @@ select:disabled {
 **********************/
 .file-field {
   position: relative;
-  overflow: hidden;
 
   input.file-path {
     margin-left: 100px;
@@ -609,6 +608,7 @@ select:disabled {
   .btn {
     position: absolute;
     top: 0;
+    left: 0;
     height: 3rem;
     line-height: 3rem;
   }

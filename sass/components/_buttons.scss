@@ -47,13 +47,17 @@
   @include transition(.2s ease-out);
   cursor: pointer;
 
+  &:hover {
+    @extend .z-depth-1-half;
+  }
   &:hover:before {
     opacity: 1;
   }
   &:before {
     content: '';
     opacity: 0;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.1);
+    border-radius: 2px;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -61,7 +65,6 @@
     top: 0;
     transition: opacity .2s;
     z-index: -1;
-    
   }
 }
 
