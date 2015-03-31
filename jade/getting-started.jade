@@ -12,3 +12,16 @@ html(lang="en")
       include getting_started/getting_started_content.html
     include _footer.html
     include _scripts.html
+    script
+      $('#download-source, #download-sass').on('click', function () {
+        console.log("ahsdfjkgasdf");
+        $('#download').slideUp(
+          { duration: 500,
+            easing: "easeOutQuart",
+            queue: false,
+            complete: function()
+              { $('#download-thanks').slideDown({ duration: 300,
+            easing: "easeOutQuart"}); }
+          });
+
+      });

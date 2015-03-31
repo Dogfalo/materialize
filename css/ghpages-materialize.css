@@ -8494,3 +8494,9 @@ body.parallax-demo footer {
     color: rgba(0, 0, 0, 0.87); }
   #tx-live-lang-container .txlive-langselector-marker {
     border-bottom: 4px solid rgba(0, 0, 0, 0.61); }
+
+#download-thanks {
+  display: none; }
+
+#twitter-widget-0 {
+  width: 190px !important; }
