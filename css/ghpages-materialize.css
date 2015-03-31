@@ -7917,12 +7917,10 @@ p {
 h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased; }
 
-nav {
-  overflow: hidden; }
-  nav a {
-    -webkit-font-smoothing: antialiased; }
-  nav ul li:hover, nav ul li.active {
-    background-color: #ea454b; }
+nav a {
+  -webkit-font-smoothing: antialiased; }
+nav ul li:hover, nav ul li.active {
+  background-color: #ea454b; }
 
 .header {
   color: #ee6e73;
