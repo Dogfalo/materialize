@@ -6743,7 +6743,7 @@ select {
     padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {
       background-color: #ddd; }
-  .side-nav > a {
+  .side-nav a {
     color: #444;
     display: block;
     font-size: 1rem;

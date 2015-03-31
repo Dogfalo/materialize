@@ -29,12 +29,11 @@
 
 
   li {
-
     float: none;
     padding: 0 15px;
     &:hover, &.active { background-color: #ddd; }
   }
-  > a {
+  a {
     color: #444;
     display: block;
     font-size: 1rem;
