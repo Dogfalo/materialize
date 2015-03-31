@@ -1606,6 +1606,12 @@
 .white-text {
   color: #FFFFFF !important; }
 
+.transparent {
+  background-color: transparent !important; }
+
+.transparent-text {
+  color: transparent !important; }
+
 /*** Colors ***/
 /*** Badges ***/
 /*** Buttons ***/
