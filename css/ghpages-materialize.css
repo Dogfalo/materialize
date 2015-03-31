@@ -1594,6 +1594,12 @@
 .shades-text.text-white {
   color: #FFFFFF !important; }
 
+.shades.transparent {
+  background-color: transparent !important; }
+
+.shades-text.text-transparent {
+  color: transparent !important; }
+
 .black {
   background-color: #000000 !important; }
 
@@ -1605,6 +1611,12 @@
 
 .white-text {
   color: #FFFFFF !important; }
+
+.transparent {
+  background-color: transparent !important; }
+
+.transparent-text {
+  color: transparent !important; }
 
 /*** Colors ***/
 /*** Badges ***/
@@ -7967,7 +7979,9 @@ ul.side-nav.fixed {
     ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
       background-color: rgba(0, 0, 0, 0.05); }
     ul.side-nav.fixed li a {
-      font-size: 13px; }
+      font-size: 13px;
+      line-height: 44px;
+      height: 44px; }
   ul.side-nav.fixed ul.collapsible-accordion {
     background-color: #FFF; }
   ul.side-nav.fixed:hover {
@@ -8231,7 +8245,7 @@ a.button-collapse.top-nav {
 
 /**********************
 **********************/
-.dynamic-color .red, .dynamic-color .pink, .dynamic-color .purple, .dynamic-color .deep-purple, .dynamic-color .indigo, .dynamic-color .blue, .dynamic-color .light-blue, .dynamic-color .cyan, .dynamic-color .teal, .dynamic-color .green, .dynamic-color .light-green, .dynamic-color .lime, .dynamic-color .yellow, .dynamic-color .amber, .dynamic-color .orange, .dynamic-color .deep-orange, .dynamic-color .brown, .dynamic-color .grey, .dynamic-color .blue-grey {
+.dynamic-color .red, .dynamic-color .pink, .dynamic-color .purple, .dynamic-color .deep-purple, .dynamic-color .indigo, .dynamic-color .blue, .dynamic-color .light-blue, .dynamic-color .cyan, .dynamic-color .teal, .dynamic-color .green, .dynamic-color .light-green, .dynamic-color .lime, .dynamic-color .yellow, .dynamic-color .amber, .dynamic-color .orange, .dynamic-color .deep-orange, .dynamic-color .brown, .dynamic-color .grey, .dynamic-color .blue-grey, .dynamic-color .black, .dynamic-color .white, .dynamic-color .transparent {
   height: 55px;
   width: 100%;
   padding: 0 15px;

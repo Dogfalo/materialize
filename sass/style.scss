@@ -89,7 +89,11 @@ ul.side-nav.fixed {
       background-color: rgba(0,0,0,.05);
     }
 
-    a { font-size: 13px; }
+    a {
+      font-size: 13px;
+      line-height: 44px;
+      height: 44px;
+    }
   }
 
   ul.collapsible-accordion {
@@ -439,7 +443,7 @@ $height: auto;
 // Color Wheel
 .dynamic-color {
 
-  .red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-grey {
+  .red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-grey, .black, .white, .transparent {
     height: 55px;
     width: 100%;
     padding: 0 15px;
