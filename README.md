@@ -28,12 +28,15 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 ## Changelog
 - v0.96.0 (Upcoming)
   - **Toasts, transitions, scrollfire added under Materialize namespace**
+  - **Dropdown is now created as a child of its parent**
   - Collapsibles supports nesting
   - Modal Bottom Sheet added
   - Indeterminate Checkboxes added
+  - New Checkbox Style Added
   - Text Inputs supports placeholder/readonly
-  - Better Meteor support
-
+  - Google Inbox-like Collapsible added
+  - Text Character Counter added
+  - Waves no longer breaks on SVG's
 
 - v0.95.3 (Feb 25, 2015)
   - Parallax image loading / responsiveness fixes
