@@ -5616,20 +5616,6 @@ small {
   -ms-transition: .2s ease-out;
   transition: .2s ease-out;
   cursor: pointer; }
-  .btn:hover:before, .btn-large:hover:before {
-    opacity: 1; }
-  .btn:before, .btn-large:before {
-    content: '';
-    opacity: 0;
-    background-color: rgba(0, 0, 0, 0.08);
-    border-radius: 2px;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    transition: opacity .2s;
-    z-index: -1; }
 
 .btn-floating {
   display: inline-block;
