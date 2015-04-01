@@ -5058,8 +5058,10 @@ nav {
       right: 0.5rem;
       padding: 0; }
   nav ul {
+    height: 100%;
     margin: 0; }
     nav ul li {
+      height: 100%;
       -webkit-transition: background-color .3s;
       -moz-transition: background-color .3s;
       -o-transition: background-color .3s;

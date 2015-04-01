@@ -65,9 +65,11 @@ nav {
 
   // Navbar Links
   ul {
+    height: 100%;
     margin: 0;
 
     li {
+      height: 100%;
       @include transition(background-color .3s);
       float: left;
       padding: 0;
