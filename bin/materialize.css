@@ -5616,6 +5616,8 @@ small {
   -ms-transition: .2s ease-out;
   transition: .2s ease-out;
   cursor: pointer; }
+  .btn:hover, .btn-large:hover {
+    background-color: #2bbbad; }
 
 .btn-floating {
   display: inline-block;
