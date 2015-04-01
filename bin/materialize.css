@@ -5053,7 +5053,7 @@ nav {
         -moz-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
-        transform: translateX(-50%); }
+        transform: translateX(-50%); } }
     nav .brand-logo.right {
       right: 0.5rem;
       padding: 0; }
