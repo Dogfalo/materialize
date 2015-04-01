@@ -370,17 +370,29 @@ $colors: (
       .#{$color_name} {
         background-color: $color_value !important;
       }
+      .#{$color_name}-hover:hover {
+        background-color: $color_value !important;
+      }      
       .#{$color_name}-text {
         color: $color_value !important;
       }
+      .#{$color_name}-text-hover:hover {
+        color: $color_value !important;
+      }      
     }
     @else {
       .#{$color_name}.#{$color_type} {
+        background-color: $color_value !important;
+      }
+      .#{$color_name}-hover:hover.#{$color_type} {
         background-color: $color_value !important;
       }      
       .#{$color_name}-text.text-#{$color_type} {
         color: $color_value !important;
       }
+      .#{$color_name}-text-hover:hover.text-#{$color_type} {
+        color: $color_value !important;
+      }      
     }
   }
 }
@@ -390,9 +402,15 @@ $colors: (
   .#{$color} {
     background-color: $color_value !important;
   }
+  .#{$color}-hover:hover {
+    background-color: $color_value !important;
+  }  
   .#{$color}-text {
     color: $color_value !important;
   }
+  .#{$color}-text-hover:hover {
+    color: $color_value !important;
+  }  
 }
 
 
