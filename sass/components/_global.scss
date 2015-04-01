@@ -140,7 +140,7 @@ video.responsive-video {
     width: 30px;
     height: 30px;
     margin: 0 10px;
-    @include border-radius(2px);
+    border-radius: 2px;
     text-align: center;
 
     a { color: #444; }
@@ -177,14 +177,33 @@ video.responsive-video {
   img {
     display: none;
     position: absolute;
+    left: 50%;
     bottom: 0;
-    width: 100%;
+    min-width: 100%;
     min-height: 100%;
-     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+    transform: translateX(-50%);
   }
 }
+
+@media #{$small-and-down} {
+  .parallax-container {
+    height: auto;
+
+    .parallax {
+      position: relative;
+
+      img {
+        position: relative;
+        min-height: 0;
+        min-width: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
 
 // Pushpin
 .pin-top, .pin-bottom {
@@ -199,11 +218,11 @@ video.responsive-video {
 **********************/
 
 ul.staggered-list li {
-  @include opacity(0);
+  opacity: 0;
 }
 
 .fade-in {
-  @include opacity(0);
+  opacity: 0;
   transform-origin: 0 50%;
 }
 
@@ -333,7 +352,7 @@ td, th{
   display: table-cell;
   text-align: left;
   vertical-align: middle;
-  @include border-radius(2px);
+  border-radius: 2px;
 }
 
 // Responsive Table
@@ -360,6 +379,10 @@ td, th{
       tr {
         display: block;
         padding: 0 10px 0 0;
+
+        th::before {
+          content: "\00a0";
+        }
       }
     }
     tbody {
@@ -405,17 +428,17 @@ td, th{
 
 // Collections
 .collection {
-  background-color: #999;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   border: 1px solid $collection-border-color;
-  @include border-radius(2px);
+  border-radius: 2px;
   overflow: hidden;
+  position: relative;
 
   .collection-item {
     background-color: $collection-bg-color;
     line-height: 1.5rem;
     padding: 10px 20px;
-    margin: 0px;
+    margin: 0;
     border-bottom: 1px solid $collection-border-color;
 
     // Avatar Collection
@@ -506,7 +529,8 @@ span.badge {
   font-size: 1rem;
   line-height: inherit;
   color: color('grey', 'darken-1');
-  float: right;
+  position: absolute;
+  right: 15px;
   @include box-sizing(border-box);
 
   &.new {
@@ -514,7 +538,7 @@ span.badge {
     font-size: 0.8rem;
     color: #fff;
     background-color: $badge-bg-color;
-    @include border-radius(2px);
+    border-radius: 2px;
   }
   &.new:after {
     content: " new";
@@ -545,7 +569,7 @@ span.badge {
     display: block;
     width: 100%;
     background-color: lighten($progress-bar-color, 40%);
-    @include border-radius(2px);
+    border-radius: 2px;
     margin: $element-top-margin 0 $element-bottom-margin 0;
     overflow: hidden;
   .determinate {
@@ -619,6 +643,10 @@ span.badge {
   Utility Classes
 *******************/
 
+.hide {
+  display: none !important;
+}
+
 // Text Align
 .left-align {
   text-align: left;
@@ -649,7 +677,7 @@ span.badge {
 
 // Circle
 .circle {
-  @include border-radius(50%);
+  border-radius: 50%;
 }
 
 .center-block {
@@ -662,4 +690,8 @@ span.badge {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.no-padding {
+  padding: 0 !important;
 }

@@ -1,5 +1,5 @@
 /*!
- * Waves v0.6.0
+ * Waves v0.6.4
  * http://fian.my.id/Waves
  *
  * Copyright 2014 Alfiana E. Sibuea and other contributors
@@ -259,7 +259,10 @@
         var target = e.target || e.srcElement;
 
         while (target.parentElement !== null) {
-            if (target.className.indexOf('waves-effect') !== -1) {
+            if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
+                element = target;
+                break;
+            } else if (target.classList.contains('waves-effect')) {
                 element = target;
                 break;
             }

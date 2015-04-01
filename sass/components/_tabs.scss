@@ -1,16 +1,15 @@
 .tabs {
   position: relative;
   height: 48px;
-  background-color: #FFF;
+  background-color: $tabs-bg-color;
   margin: 0 auto;
   width: 100%;
   white-space: nowrap;
 
-  li.tab {
+  .tab {
     display: block;
     float: left;
     text-align: center;
-    background-color: #fff;
     line-height: 48px;
     height: 48px;
     padding: 0 20px;
@@ -39,5 +38,5 @@
   }
 }
 
-ul.tabs li.tab { padding: 0; }
+.tabs .tab { padding: 0; }
 

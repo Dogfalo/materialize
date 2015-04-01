@@ -117,7 +117,7 @@
     {selector: '.class', offset: 200, callback: 'globalFunction()' },
     {selector: '.other-class', offset: 200, callback: 'globalFunction()' },
   ];
-  scrollFire(options);
+  Materialize.scrollFire(options);
         </code></pre>
       </div>
 
@@ -154,12 +154,12 @@
       <pre>
   <code class="language-javascript">
   var options = [</code>
-    <code id="call-1" class="language-javascript">{selector: '#staggered-test', offset: 50, callback: 'toast("This is our ScrollFire Demo!", 1500 )' },</code>
-    <code id="call-2" class="language-javascript">{selector: '#staggered-test', offset: 205, callback: 'toast("Please continue scrolling!", 1500 )' },</code>
-    <code id="call-3" class="language-javascript">{selector: '#staggered-test', offset: 400, callback: 'showStaggeredList("#staggered-test")' },</code>
-    <code id="call-4" class="language-javascript">{selector: '#image-test', offset: 500, callback: 'fadeInImage("#image-test")' }</code>
+    <code id="call-1" class="language-javascript">{selector: '#staggered-test', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500 )' },</code>
+    <code id="call-2" class="language-javascript">{selector: '#staggered-test', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' },</code>
+    <code id="call-3" class="language-javascript">{selector: '#staggered-test', offset: 400, callback: 'Materialize.showStaggeredList("#staggered-test")' },</code>
+    <code id="call-4" class="language-javascript">{selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test")' }</code>
   ];
-  scrollFire(options);
+  Materialize.scrollFire(options);
       </code></pre>
       <ul id="staggered-test">
         <li>
@@ -277,12 +277,12 @@
     </script>
     <script type="text/javascript">
       var options = [
-        {selector: '#staggered-test', offset: 50, callback: 'toast("This is our ScrollFire Demo!", 1500); $("#call-1").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500}); ' },
-        {selector: '#staggered-test', offset: 205, callback: 'toast("Please continue scrolling!", 1500); $("#call-2").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
-        {selector: '#staggered-test', offset: 500, callback: 'showStaggeredList("#staggered-test"); $("#call-3").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
-        {selector: '#image-test', offset: 500, callback: 'fadeInImage("#image-test"); $("#call-4").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' }
+        {selector: '#staggered-test', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500); $("#call-1").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500}); ' },
+        {selector: '#staggered-test', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500); $("#call-2").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
+        {selector: '#staggered-test', offset: 500, callback: 'Materialize.showStaggeredList("#staggered-test"); $("#call-3").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
+        {selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test"); $("#call-4").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' }
       ];
-      scrollFire(options);
+      Materialize.scrollFire(options);
     </script>
   </body>
 </html>

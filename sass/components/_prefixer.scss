@@ -15,8 +15,6 @@
 //          animation-play-state($state)
 //          animation-timing-function($function)
 //      background-size($args)
-//      border-radius($args)
-//      box-shadow($args)
 //          inner-shadow($args) *
 //      box-sizing($args)
 //          border-box() *
@@ -34,7 +32,6 @@
 //      gradient($default,$start,$stop) *
 //          linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
 //          linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
-//      opacity($factor)
 //      transform($args)
 //          transform-origin($args)
 //          transform-style($style)
@@ -145,30 +142,6 @@
     background-size: $args;
 }
 
-
-// Border Radius
-
-@mixin border-radius($args) {
-    -webkit-border-radius: $args;
-    -moz-border-radius: $args;
-    border-radius: $args;
-
-    background-clip: padding-box;
-}
-
-
-// Box Shadows
-
-@mixin box-shadow($args) {
-    -webkit-box-shadow: $args;
-    -moz-box-shadow: $args;
-    box-shadow: $args;
-}
-@mixin inner-shadow($args) {
-    @include box-shadow(inset $args);
-}
-
-
 // Box Sizing
 
 @mixin box-sizing($args) {
@@ -266,7 +239,7 @@
     background-image: -o-linear-gradient(top, $color1 $stop1, $color2 $stop2);
     background-image: linear-gradient(top, $color1 $stop1, $color2 $stop2);
 }
-@mixin linear-gradient-top($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
+@mixin linear-gradient-top2($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3));
     background-image: -webkit-linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3);
@@ -275,7 +248,7 @@
     background-image: -o-linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3);
     background-image: linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3);
 }
-@mixin linear-gradient-top($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
+@mixin linear-gradient-top3($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3), color-stop($stop4 $color4));
     background-image: -webkit-linear-gradient(top, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
@@ -293,7 +266,7 @@
     background-image: -o-linear-gradient(left, $color1 $stop1, $color2 $stop2);
     background-image: linear-gradient(left, $color1 $stop1, $color2 $stop2);
 }
-@mixin linear-gradient-left($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
+@mixin linear-gradient-left2($default,$color1,$stop1,$color2,$stop2,$color3,$stop3) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left top, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3));
     background-image: -webkit-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3);
@@ -302,7 +275,7 @@
     background-image: -o-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3);
     background-image: linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3);
 }
-@mixin linear-gradient-left($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
+@mixin linear-gradient-left3($default,$color1,$stop1,$color2,$stop2,$color3,$stop3,$color4,$stop4) {
     background-color: $default;
     background-image: -webkit-gradient(linear, left top, left top, color-stop($stop1, $color1), color-stop($stop2 $color2), color-stop($stop3 $color3), color-stop($stop4 $color4));
     background-image: -webkit-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
@@ -311,19 +284,6 @@
     background-image: -o-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
     background-image: linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
 }
-
-
-// Opacity
-
-@mixin opacity($factor) {
-    $iefactor: $factor*100;
-    -ms-filter: "progid:DXImageTransform@mixin Microsoft@mixin Alpha(Opacity=${iefactor})";
-	filter: "alpha(opacity=(${iefactor}))";
-    -moz-opacity: $factor;
-    -khtml-opacity: $factor;
-    opacity: $factor;
-}
-
 
 // Text Shadow
 

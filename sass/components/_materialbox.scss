@@ -5,7 +5,7 @@
 
   &:hover {
     &:not(.active) {
-      @include opacity(0.8);
+      opacity: .8;
     }
     will-change: left, top, width, height;
   }
@@ -31,9 +31,8 @@
   display: none;
   color: #fff;
   line-height: 50px;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
-  box-sizing: border-box;
   text-align: center;
   padding: 0% 15%;
   height: 50px;

@@ -11,7 +11,7 @@
 
       var $this = $(this);
 
-      var $panel_headers = $(this).find('.collapsible-header');
+      var $panel_headers = $(this).find('> li > .collapsible-header');
 
       var collapsible_type = $this.data("collapsible");
 
@@ -26,25 +26,46 @@
 
       // Accordion Open
       function accordionOpen(object) {
-        $panel_headers = $this.find('.collapsible-header');
-        object.parent().toggleClass('active');
+        $panel_headers = $this.find('> li > .collapsible-header');
+        if (object.hasClass('active')) {
+            object.parent().addClass('active');
+        }
+        else {
+            object.parent().removeClass('active');
+        }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false});
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '')}});
         }
         else{
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '')}});
         }
-        $panel_headers.not(object).parent().removeClass('active');
-        $panel_headers.not(object).parent().children('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
+
+        $panel_headers.not(object).removeClass('active').parent().removeClass('active');
+        $panel_headers.not(object).parent().children('.collapsible-body').stop(true,false).slideUp(
+          {
+            duration: 350,
+            easing: "easeOutQuart",
+            queue: false,
+            complete:
+              function() {
+                $(this).css('height', '')
+              }
+          });
       }
-      // Collapsible Open
-      function collapsibleOpen(object) {
-        object.parent().toggleClass('active');
+
+      // Expandable Open
+      function expandableOpen(object) {
+        if (object.hasClass('active')) {
+            object.parent().addClass('active');
+        }
+        else {
+            object.parent().removeClass('active');
+        }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false});
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '')}});
         }
         else{
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false});
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '')}});
         }
       }
 
@@ -53,26 +74,26 @@
 
 
       if (options.accordion || collapsible_type == "accordion" || collapsible_type == undefined) { // Handle Accordion
-
-        // Event delegation to all collapsible section
-        $this.on('click.collapse', '.collapsible-header', function (e) {
-          accordionOpen($(e.currentTarget));
+        // Add click handler to only direct collapsible header children
+        $this.find('> li > .collapsible-header').on('click.collapse', function (e) {
+            var header = $(e.target);
+            header.toggleClass('active');
+          accordionOpen(header);
         });
-
         // Open first active
         accordionOpen($panel_headers.filter('.active').first());
       }
       else { // Handle Expandables
         $panel_headers.each(function () {
-
-          // Event delegation to open collapsible section
+          // Add click handler to only direct collapsible header children
           $(this).on('click.collapse', function (e) {
-            collapsibleOpen($(e.currentTarget));
+            var header = $(e.target);
+            header.toggleClass('active');
+            expandableOpen(header);
           });
-
           // Open any bodies that have the active class
           if ($(this).hasClass('active')) {
-            collapsibleOpen($(this));
+            expandableOpen($(this));
           }
 
         });

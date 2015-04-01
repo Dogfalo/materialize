@@ -4,19 +4,19 @@ a {
 
 html{
   line-height: 1.5;
-  
+
   @media only screen and (min-width: 0) {
     font-size: 14px;
   }
-  
+
   @media only screen and (min-width: $medium-screen) {
     font-size: 14.5px;
   }
-  
+
   @media only screen and (min-width: $large-screen) {
     font-size: 15px;
   }
-  
+
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   color: $off-black;
@@ -39,6 +39,8 @@ em { font-style: italic; }
 strong { font-weight: 500; }
 small { font-size: 75%; }
 .light { font-weight: 300; }
+.thin { font-weight: 200; }
+
 
 .flow-text{
   font-weight: 300;
@@ -52,4 +54,8 @@ small { font-size: 75%; }
     }
     $i: $i + 1;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

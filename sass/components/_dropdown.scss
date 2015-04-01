@@ -1,31 +1,38 @@
+.dropdown-button {
+  position: relative;
+}
 .dropdown-content {
-  display:none;
   @extend .z-depth-1;
-  position: absolute;
   background-color: #FFFFFF;
-  margin: 0px;
+  margin: 0;
+  display: none;
   min-width: 100px;
-  z-index: 1000;
-  max-height: 70%;
+  max-height: 650px;
+  overflow-y: auto;
   opacity: 0;
-  overflow-y: hidden;
-
+  position: absolute;
+  white-space: nowrap; // Force one line
+  z-index: 1;
   will-change: width, height;
 
   li {
-    cursor: pointer;
-    font-size: 1.2rem;
+    clear: both;
     color: $off-black;
+    cursor: pointer;
     line-height: 1.5rem;
+    width: 100%;
+    text-align: left;
+    text-transform: none;
 
     &:hover, &.active {
-      background-color: rgba(0,0,0, .06);
+      background-color: #eee;
     }
 
     & > a, & > span {
+      font-size: 1.2rem;
+      color: $dropdown-color;
       display: block;
       padding: 1rem 1rem;
-      color: $dropdown-color;
     }
   }
 }

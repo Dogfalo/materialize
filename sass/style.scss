@@ -1,4 +1,3 @@
-
 /***************
   HTML Styles
 ***************/
@@ -20,7 +19,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 nav {
-  overflow: hidden;
   // background-color: color("materialize-red", "lighten-2");
 
   a {
@@ -91,7 +89,11 @@ ul.side-nav.fixed {
       background-color: rgba(0,0,0,.05);
     }
 
-    a { font-size: 13px; }
+    a {
+      font-size: 13px;
+      line-height: 44px;
+      height: 44px;
+    }
   }
 
   ul.collapsible-accordion {
@@ -115,7 +117,7 @@ ul.side-nav.fixed {
 
 nav.top-nav {
   height: 122px;
-  @include box-shadow(none);
+  box-shadow: none;
 
   a.page-title {
     line-height: 122px;
@@ -124,6 +126,9 @@ nav.top-nav {
 }
 a.button-collapse.top-nav {
   position: absolute;
+  text-align: center;
+  height: 48px;
+  width: 48px;
   left: 7.5%;
   top: 0;
   float: none;
@@ -280,7 +285,7 @@ a.button-collapse.top-nav {
   font-size: 1.7rem;
   font-weight: 500;
   margin-top: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
 }
 
@@ -313,7 +318,7 @@ a.button-collapse.top-nav {
   font-size: 28px;
   background-color: tomato;
   color: white;
-  padding: 0px;
+  padding: 0;
 
   span {
     font-weight: 200;
@@ -385,14 +390,14 @@ $height: auto;
   width: $width;
   height: $height;
   display: inline-block;
-  @include border-radius(5px 5px 2px 2px);
+  border-radius: 5px 5px 2px 2px;
   background-color: #fff;
   margin: 20px 0px;
   overflow: hidden;
 
     .top-bar {
     height: 30px;
-    @include border-radius(5px 5px 0 0);
+    border-radius: 5px 5px 0 0;
     border-top: thin solid lighten($topColor, 1%);
     border-bottom: thin solid darken($bottomColor, 1%);
     background: linear-gradient($topColor, $bottomColor);
@@ -438,7 +443,7 @@ $height: auto;
 // Color Wheel
 .dynamic-color {
 
-  .red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-grey {
+  .red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-grey, .black, .white, .transparent {
     height: 55px;
     width: 100%;
     padding: 0 15px;
@@ -479,9 +484,9 @@ $height: auto;
   height: 115px;
 
   float: left;
-  margin: 0px 0px 15px 0px;
+  margin: 0 0px 15px 0px;
   p {
-    margin: 0px 0;
+    margin: 0 0;
   }
 }
 
@@ -767,7 +772,8 @@ body.parallax-demo footer {
 // Transitions demos
 #staggered-test li,
 #image-test {
-  @include opacity(0);
+  opacity: 0;
+
 }
 
 // Transifex Styling
@@ -802,4 +808,17 @@ body.parallax-demo footer {
   }
 
 
+}
+
+
+// Thanks for Downloading
+
+#download-thanks {
+  display: none;
+}
+
+
+// Twitter widget
+#twitter-widget-0 {
+  width: 190px !important;
 }

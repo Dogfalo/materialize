@@ -191,6 +191,40 @@
         </code></pre>
       </div>
 
+      <div id="active-label" class="section scrollspy">
+
+        <h2 class="header">Active Items</h2>
+        <p>
+          Add active class to your li tags to denote the current page.
+        </p>
+
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center">Logo</a>
+            <ul class="left hide-on-med-and-down">
+              <li><a href="sass.html">Sass</a></li>
+              <li><a href="components.html">Components</a></li>
+              <li class="active"><a href="javascript.html">JavaScript</a></li>
+            </ul>
+          </div>
+        </nav><br>
+
+        <pre><code class="language-markup">
+  &lt;div class="navbar-fixed">
+    &lt;nav>
+      &lt;div class="nav-wrapper">
+        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+        &lt;ul class="right hide-on-med-and-down">
+          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="components.html">Components&lt;/a>&lt;/li>
+          &lt;li class="active">&lt;a href="javascript.html">JavaScript&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/nav>
+  &lt;/div>
+        </code></pre>
+      </div>
+
       <div id="navbar-fixed" class="section scrollspy">
 
         <h2 class="header">Fixed Navbar</h2>
@@ -429,6 +463,7 @@ $(".dropdown-button").dropdown();
             <li><a href="#right">Right Aligned</a></li>
             <li><a href="#left">Left Aligned</a></li>
             <li><a href="#center">Center Logo</a></li>
+            <li><a href="#active-label">Active Items</a></li>
             <li><a href="#navbar-fixed">Fixed Navbar</a></li>
             <li><a href="#navbar-dropdown">Dropdown Menu</a></li>
             <li><a href="#icons">Icon Links</a></li>

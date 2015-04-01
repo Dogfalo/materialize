@@ -1,4 +1,4 @@
-ul.side-nav {
+.side-nav {
   position: fixed;
   width: 240px;
   left: -105%;
@@ -10,6 +10,7 @@ ul.side-nav {
   padding-bottom: 60px;
   background-color: #FFF;
   z-index: 999;
+  overflow-y: auto;
 
   @extend .z-depth-1;
   will-change: left;
@@ -33,6 +34,11 @@ ul.side-nav {
   }
   a {
     color: #444;
+    display: block;
+    font-size: 1rem;
+    height: 64px;
+    line-height: 64px;
+    padding: 0 15px;
   }
 }
 
@@ -48,7 +54,7 @@ ul.side-nav {
 
 
 // Hidden side-nav for all sizes
-ul.side-nav.fixed {
+.side-nav.fixed {
   a {
     display: block;
     padding: 0 15px;
@@ -58,7 +64,7 @@ ul.side-nav.fixed {
 
 
 // Fixed side-nav shown
-ul.side-nav.fixed {
+.side-nav.fixed {
   left: 0;
   position: fixed;
 
@@ -71,7 +77,7 @@ ul.side-nav.fixed {
 
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
-  ul.side-nav.fixed {
+  .side-nav.fixed {
     left: -105%;
 
     &.right-aligned {
@@ -82,8 +88,8 @@ ul.side-nav.fixed {
 }
 
 
-ul.side-nav .collapsible-body li.active,
-ul.side-nav.fixed .collapsible-body li.active {
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active {
   background-color: $primary-color;
   a {
     color: #fff;
@@ -93,9 +99,9 @@ ul.side-nav.fixed .collapsible-body li.active {
 
 #sidenav-overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
 
   height: 120vh;
   background-color: rgba(0,0,0,.5);

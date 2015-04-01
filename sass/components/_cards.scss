@@ -3,7 +3,7 @@
 .card-panel {
   padding: $card-padding;
   margin: $element-top-margin 0 $element-bottom-margin 0;
-  @include border-radius(2px);
+  border-radius: 2px;
   @extend .z-depth-1;
   background-color: $card-bg-color;
 }
@@ -13,8 +13,7 @@
   overflow: hidden;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
-  @include box-sizing(border-box);
-  @include border-radius(2px);
+  border-radius: 2px;
   @extend .z-depth-1;
 
 
@@ -25,15 +24,6 @@
     &.activator {
       cursor: pointer;
     }
-  }
-
-  a {
-    color: color("orange", "accent-2");
-    margin-right: $card-padding;
-    @include transition(color .3s ease);
-    text-transform: uppercase;
-
-    &:hover { color: lighten(color("orange", "accent-2"), 20%); }
   }
 
   // Card Sizes
@@ -94,7 +84,7 @@
 
     // Image background for content
     img {
-      @include border-radius(2px 2px 0 0);
+      border-radius: 2px 2px 0 0;
       position: relative;
       left: 0;
       right: 0;
@@ -114,8 +104,8 @@
 
   .card-content {
     padding: $card-padding;
-    @include border-radius(0 0 2px 2px);
-    @include box-sizing(border-box);
+    border-radius: 0 0 2px 2px;
+
 
     p {
       margin: 0;
@@ -129,6 +119,15 @@
   .card-action {
     border-top: 1px solid rgba(160,160,160,.2);
     padding: $card-padding;
+
+    a {
+      color: color("orange", "accent-2");
+      margin-right: $card-padding;
+      @include transition(color .3s ease);
+      text-transform: uppercase;
+
+      &:hover { color: lighten(color("orange", "accent-2"), 20%); }
+    }
   }
 
   .card-reveal {
@@ -147,6 +146,5 @@
       display: block;
     }
 
-    @include box-sizing(border-box);
   }
 }

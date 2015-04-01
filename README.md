@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.95.3
+### Current Version : v0.96.0
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -13,6 +13,11 @@ Materialize, a CSS Framework based on material design
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Contributing
+- Compiling Files
+  - `npm install`
+  - `grunt monitor`, this will compile .scss, .js., .jade files
+- Documentation
+  - If you notice an error in the documentation. Please edit the corresponding .html page under jade/page-contents/.
 - Issues
   - If you have an issue please make sure you document the problems in depth. One line issues with no explanations will be closed.
 - Feature Requests
@@ -21,6 +26,17 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Use this [codepen](http://codepen.io/Dogfalo/pen/xbzPQV) to illustrate your problem.
 
 ## Changelog
+- v0.96.0 (April 1, 2015)
+  - **Toasts, transitions, scrollfire added under Materialize namespace**
+  - **Dropdown is now created as a child of its parent**
+  - Collapsibles supports nesting
+  - Modal Bottom Sheet added
+  - Indeterminate Checkboxes added
+  - New Checkbox Style Added
+  - Text Inputs supports placeholder/readonly
+  - Google Inbox-like Collapsible added
+  - Text Character Counter added
+  - Waves no longer breaks on SVG's
 
 - v0.95.3 (Feb 25, 2015)
   - Parallax image loading / responsiveness fixes

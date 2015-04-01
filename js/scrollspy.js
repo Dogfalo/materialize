@@ -180,13 +180,10 @@
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
 
-//            offset-60 to handle floating fixed tab bar
-				if ($('.tabs-wrapper').length) {
-			    $('html, body').animate({ scrollTop: offset-60 }, {duration: 400, easing: 'easeOutCubic'});
-				}
-				else {
-		    	$('html, body').animate({ scrollTop: offset }, {duration: 400, easing: 'easeOutCubic'});
-				}
+//          offset - 200 allows elements near bottom of page to scroll
+			
+	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, easing: 'easeOutCubic'});
+			
 		  });
 		});
 		options = options || {

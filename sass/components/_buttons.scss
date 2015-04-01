@@ -1,14 +1,15 @@
 // shared styles
 .btn, .btn-flat {
+  border: none;
+  border-radius: 2px;
   display: inline-block;
   height: $button-height;
-  margin-bottom: 15px;
-  padding: 0 2rem;
-  @include border-radius(2px);
   line-height: $button-line-height;
-  text-transform: uppercase;
-  border: none;
+  // margin-bottom: 15px;
   outline: 0;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  vertical-align: middle;
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
 }
@@ -18,6 +19,9 @@
   box-shadow: none;
   color: $button-color-disabled;
   cursor: default;
+  * {
+    pointer-events: none;
+  }
 
   &:hover {
     background-color: $button-bg-color-disabled;
@@ -54,16 +58,18 @@
   display: inline-block;
   color: $button-color-raised;
   position: relative;
+  overflow: hidden;
   z-index: 1;
   width: $button-floating-size;
   height: $button-floating-size;
   line-height: $button-floating-size;
   padding: 0;
   background-color: $button-color;
-  @include border-radius(50%);
+  border-radius: 50%;
   @extend .z-depth-1;
-  @include transition(.3s);
+  transition: .3s;
   cursor: pointer;
+  vertical-align: middle;
 
   i {
     width: inherit;
@@ -77,6 +83,9 @@
   &:hover {
     @extend .z-depth-1-half;
   }
+  &:before {
+    border-radius: 0;
+  }
   &.btn-large {
     width: $button-floating-size * 1.5;
     height: $button-floating-size * 1.5;
@@ -86,6 +95,10 @@
   }
 
 }
+// button fix
+button.btn-floating {
+  border: none;
+}
 
 // Fixed Action Button
 .fixed-action-btn {
@@ -94,7 +107,7 @@
   bottom: 23px;
   padding-top: 15px;
   margin-bottom: 0;
-  z-index: 1000;
+  z-index: 998;
 
   ul {
     left: 0;
@@ -108,7 +121,7 @@
     }
 
     a.btn-floating {
-      @include opacity(0);
+      opacity: 0;
     }
   }
 }

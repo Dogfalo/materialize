@@ -29,7 +29,42 @@
 
       <div id="options" class="section scrollspy">
         <h4>Options</h4>
-        <p>The default behavior of dropdown is to activate on hover. To have it activate on a click, you can pass that as an option in either JavaScript as show above, or in HTML as shown below.</p>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>induration</td>
+              <td>The duration of the transition enter in milliseconds. Default: 300</td>
+            </tr>
+            <tr>
+              <td>outduration</td>
+              <td>The duration of the transition out in milliseconds. Default: 225</td>
+            </tr>
+            <tr>
+              <td>constrainwidth</td>
+              <td>If true, constrainWidth to the size of the dropdown activator. Default: true</td>
+            </tr>
+            <tr>
+              <td>hover</td>
+              <td>If true, the dropdown will open on hover. Default: false</td>
+            </tr>
+            <tr>
+              <td>gutter</td>
+              <td>This defines the spacing from the aligned edge. Default: 0</td>
+            </tr>
+            <tr>
+              <td>beloworigin</td>
+              <td>If true, the dropdown will show below the activator. Default: false</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>To use these inline you have to add them as data attributes. If you want more dynamic control, you can define them using the jQuery plugin below. </p>
         <pre><code class="language-markup">
   &lt;a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
         </code></pre>
@@ -38,15 +73,14 @@
 
 
       <div id="initialization" class="section scrollspy">
-        <p>Initialization for dropdowns is only necessary if you create them dynamically.</p>
         <h4>jQuery Plugin Initialization</h4>
+        <p>Initialization for dropdowns is only necessary if you create them dynamically.</p>
         <pre><code class="language-javascript">
   $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,
       constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: false, // Activate on click
-      alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
+      hover: true, // Activate on hover
       gutter: 0, // Spacing from edge
       belowOrigin: false // Displays dropdown below the button
     }
