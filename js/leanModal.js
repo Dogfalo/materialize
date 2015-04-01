@@ -7,8 +7,8 @@
 
       var defaults = {
         opacity: 0.5,
-        in_duration: 300,
-        out_duration: 200,
+        in_duration: 350,
+        out_duration: 250,
         ready: undefined,
         complete: undefined,
         dismissible: true
@@ -80,7 +80,7 @@
   $.fn.extend({
     closeModal: function(options) {
       var defaults = {
-        out_duration: 200,
+        out_duration: 250,
         complete: undefined
       }
       var options = $.extend(defaults, options);

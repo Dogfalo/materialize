@@ -5947,7 +5947,7 @@ a.waves-effect .waves-ripple {
   .collapsible.popout > li {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     transform: scaleX(.92) translate3d(0, 0, 0);
-    transition: margin .35s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform .25s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    transition: margin .35s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform .35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .collapsible.popout > li:hover {
       will-change: margin, transform; }
   .collapsible.popout > li.active {
