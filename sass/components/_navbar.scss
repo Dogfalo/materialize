@@ -47,15 +47,13 @@ nav {
     padding: 0;
 
     &.center {
-      top: 50%;
       left: 50%;
-      @include transform(translate(-50%, -50%));
+      @include transform(translateX(-50%));
     }
 
     @media #{$medium-and-down} {
-      top: 50%;
       left: 50%;
-      @include transform(translate(-50%, -50%));
+      @include transform(translateX(-50%));
     }
 
     &.right {
