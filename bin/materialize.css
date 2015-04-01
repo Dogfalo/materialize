@@ -5703,7 +5703,6 @@ button.btn-floating {
     clear: both;
     color: rgba(0, 0, 0, 0.87);
     cursor: pointer;
-    font-size: 1.2rem;
     line-height: 1.5rem;
     width: 100%;
     text-align: left;
@@ -5711,6 +5710,7 @@ button.btn-floating {
     .dropdown-content li:hover, .dropdown-content li.active {
       background-color: #eee; }
     .dropdown-content li > a, .dropdown-content li > span {
+      font-size: 1.2rem;
       color: #26a69a;
       display: block;
       padding: 1rem 1rem; }

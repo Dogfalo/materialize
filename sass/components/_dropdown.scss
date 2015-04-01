@@ -19,7 +19,6 @@
     clear: both;
     color: $off-black;
     cursor: pointer;
-    font-size: 1.2rem;
     line-height: 1.5rem;
     width: 100%;
     text-align: left;
@@ -30,6 +29,7 @@
     }
 
     & > a, & > span {
+      font-size: 1.2rem;
       color: $dropdown-color;
       display: block;
       padding: 1rem 1rem;
