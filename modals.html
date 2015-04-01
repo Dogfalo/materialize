@@ -213,6 +213,16 @@
           </code></pre>
         </div>
 
+        <div id="button-trigger" class="scrollspy section">
+          <h4>Modals with Button trigger</h4>
+          <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather that the href attribute. </p>
+
+          <pre><code class="language-markup">
+  &lt;!-- Modal Trigger -->
+  &lt;button data-target="modal1" class="btn modal-trigger">Modal&lt;/button>
+          </code></pre>
+        </div>
+
 
 
         <div id="initialization" class="scrollspy section">
@@ -226,15 +236,11 @@
           </code></pre>
           <p>You can also open modals programatically, the below code will make your modal open on document ready:</p>
           <pre><code class="language-javascript">
-  $(document).ready(function(){
-    $('#modal1').openModal();
-  });
+  $('#modal1').openModal();
           </code></pre>
           <p>You can also close them programatically:</p>
           <pre><code class="language-javascript">
-  $(document).ready(function(){
-    $('#modal1').closeModal();
-  });
+  $('#modal1').closeModal();
         </code></pre>
       </div>
 
@@ -270,6 +276,7 @@
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#structure">Structure</a></li>
           <li><a href="#fixed-footer">Fixed Footer</a></li>
+          <li><a href="#button-trigger">Button Trigger</a></li>
           <li><a href="#initialization">Intialization</a></li>
           <li><a href="#options">Options</a></li>
         </ul>
