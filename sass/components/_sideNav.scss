@@ -23,13 +23,11 @@
   }
 
   .collapsible{
-
     margin: 0;
   }
 
 
   li {
-    height: auto;
     float: none;
     padding: 0 15px;
     &:hover, &.active { background-color: #ddd; }

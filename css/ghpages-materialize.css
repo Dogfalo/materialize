@@ -5020,6 +5020,7 @@ nav {
     position: relative;
     height: 100%; }
     nav .nav-wrapper i {
+      display: block;
       font-size: 2rem; }
   @media only screen and (min-width : 993px) {
     nav a.button-collapse {
@@ -5058,10 +5059,8 @@ nav {
       right: 0.5rem;
       padding: 0; }
   nav ul {
-    height: 100%;
     margin: 0; }
     nav ul li {
-      height: 100%;
       -webkit-transition: background-color .3s;
       -moz-transition: background-color .3s;
       -o-transition: background-color .3s;
@@ -5074,7 +5073,7 @@ nav {
     nav ul a {
       font-size: 1rem;
       color: #fff;
-      display: inline-block;
+      display: block;
       padding: 0 15px; }
     nav ul.left {
       float: left; }
@@ -6740,7 +6739,6 @@ select {
   .side-nav .collapsible {
     margin: 0; }
   .side-nav li {
-    height: auto;
     float: none;
     padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {

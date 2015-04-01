@@ -13,6 +13,7 @@ nav {
     height: 100%;
 
     i {
+      display: block;
       font-size: 2rem;
     }
   }
@@ -30,7 +31,6 @@ nav {
     height: $navbar-height-mobile;
 
     i {
-
       font-size: 2.7rem;
       height: $navbar-height-mobile;
       line-height: $navbar-height-mobile;
@@ -65,11 +65,9 @@ nav {
 
   // Navbar Links
   ul {
-    height: 100%;
     margin: 0;
 
     li {
-      height: 100%;
       @include transition(background-color .3s);
       float: left;
       padding: 0;
@@ -81,7 +79,7 @@ nav {
     a {
       font-size: 1rem;
       color: #fff;
-      display: inline-block;
+      display: block;
       padding: 0 15px;
     }
 
