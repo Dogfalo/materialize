@@ -384,13 +384,13 @@ $colors: (
       .#{$color_name}.#{$color_type} {
         background-color: $color_value !important;
       }
-      .#{$color_name}-hover:hover.#{$color_type} {
+      .#{$color_name}.#{$color_type}-hover:hover {
         background-color: $color_value !important;
       }      
       .#{$color_name}-text.text-#{$color_type} {
         color: $color_value !important;
       }
-      .#{$color_name}-text-hover:hover.text-#{$color_type} {
+      .#{$color_name}-text.text-#{$color_type}-hover:hover {
         color: $color_value !important;
       }      
     }
