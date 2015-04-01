@@ -45,7 +45,6 @@
 
       // Define Bottom Sheet animation
       if ($(modal).hasClass('bottom-sheet')) {
-        console.log("Bottom");
         $(modal).velocity({bottom: "0", opacity: 1}, {
           duration: options.in_duration,
           queue: false,

@@ -48,7 +48,7 @@
     else {
       origin.append(activates);
     }
-    
+
 
 
 
@@ -95,18 +95,18 @@
           top: 0 + offset,
           left: 0 + width_difference + gutter_spacing
         });
-        
+
       }
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
         .slideDown({
-        queue: false, 
-        duration: options.inDuration, 
-        easing: 'easeOutCubic', 
+        queue: false,
+        duration: options.inDuration,
+        easing: 'easeOutCubic',
         complete: function() {
           $(this).css('height', '');
-        } 
+        }
       })
         .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeOutSine'});
 
@@ -154,7 +154,6 @@
         }
         // If origin is clicked and menu is open, close menu
         else {
-          console.log('d')
           if (open === true) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
