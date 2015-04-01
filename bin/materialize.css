@@ -6738,6 +6738,7 @@ select {
   .side-nav .collapsible {
     margin: 0; }
   .side-nav li {
+    height: 50px;
     float: none;
     padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {
@@ -6746,8 +6747,8 @@ select {
     color: #444;
     display: block;
     font-size: 1rem;
-    height: 64px;
-    line-height: 64px;
+    height: 50px;
+    line-height: 50px;
     padding: 0 15px; }
 
 .drag-target {
