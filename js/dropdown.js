@@ -21,8 +21,21 @@
     var origin = $(this);
     var options = $.extend({}, defaults, option);
 
-    // Dropdown menu
-    var activates = $("#"+ origin.attr('data-activates'));
+    var activates,
+      selector = '#' + origin.attr('data-activates');
+
+    // Object/Element passed in as actives option
+    if (options.activates && typeof options.activates !== 'string') {
+      activates = options.activates;
+    } else {
+      if (options.activates) {
+        // Selector string passed as option
+        selector = options.activates;
+      }
+    }
+
+    // Dropdown menu selector
+    activates = activates ? activates : $(selector);
 
     function updateOptions() {
       if (origin.data('induration') != undefined)
@@ -48,7 +61,7 @@
     else {
       origin.append(activates);
     }
-    
+
 
 
 
@@ -95,18 +108,18 @@
           top: 0 + offset,
           left: 0 + width_difference + gutter_spacing
         });
-        
+
       }
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
         .slideDown({
-        queue: false, 
-        duration: options.inDuration, 
-        easing: 'easeOutCubic', 
+        queue: false,
+        duration: options.inDuration,
+        easing: 'easeOutCubic',
         complete: function() {
           $(this).css('height', '');
-        } 
+        }
       })
         .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeOutSine'});
 
