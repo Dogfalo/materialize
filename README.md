@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.95.3
+### Current Version : v0.96.0
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -26,7 +26,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Use this [codepen](http://codepen.io/Dogfalo/pen/xbzPQV) to illustrate your problem.
 
 ## Changelog
-- v0.96.0 (Upcoming)
+- v0.96.0 (April 1, 2015)
   - **Toasts, transitions, scrollfire added under Materialize namespace**
   - **Dropdown is now created as a child of its parent**
   - Collapsibles supports nesting
