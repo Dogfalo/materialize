@@ -3,7 +3,7 @@
   function CharacterCounter( $el, options ) {
     var _this = this;
 
-    this.options = $.extend( {}, CharacterCounter.defaults, options );
+    this.options = $.extend( true, {}, CharacterCounter.defaults, options );
 
     this.$el = $el;
     this.$counter = $( '<span />' )
