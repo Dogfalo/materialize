@@ -1,59 +1,75 @@
-(function ($) {
+( function( $ ) {
 
-  $.fn.characterCounter = function(){
-    return this.each(function(){
+  function CharacterCounter( $el, options ) {
+    var _this = this;
 
-      itHasLengthAttribute = $(this).attr('length') != undefined;
+    this.options = $.extend( {}, CharacterCounter.defaults, options );
 
-      if(itHasLengthAttribute){
-        $(this).on('input', updateCounter);
-        $(this).on('focus', updateCounter);
-        $(this).on('blur', removeCounterElement);
+    this.$el = $el;
+    this.$counter = $( '<span />' )
+      .addClass( this.options.counterClass )
+      .css( this.options.counterCss );
 
-        addCounterElement($(this));
+    this.$el.parent().append( this.$counter );
+
+    this.$el
+      .on( 'input focus', function() {
+        _this.updateHandler();
+      })
+      .on( 'blur', function() {
+        _this.removeHandler();
+      })
+  }
+
+  CharacterCounter.defaults = {
+    counterClass : 'character-counter',
+    counterCss : {
+      'float' : 'right',
+      'font-size' : '12px',
+      'height' : 1
+    },
+    invalidClass : 'invalid',
+    validClass : 'valid',
+  };
+
+  CharacterCounter.prototype.updateHandler = function() {
+    var maxLength = this.options.maxLength;
+    var curLength = this.$el.val().length;
+    var isValid = curLength <= maxLength;
+    var hasInvalidClass = this.$el.hasClass( this.options.invalidClass );
+
+    this.$counter.html( curLength + '/' + maxLength );
+
+    if ( isValid && hasInvalidClass ) {
+      this.$el.removeClass( this.options.invalidClass );
+    } else if ( !isValid && !hasInvalidClass ) {
+      this.$el
+        .removeClass( this.options.validClass )
+        .addClass( this.options.invalidClass );
+    }
+  };
+
+  CharacterCounter.prototype.removeHandler = function() {
+    this.$counter.html( '' );
+  };
+
+  $.fn.characterCounter = function( options ) {
+    this.each( function() {
+      var $this = $( this );
+      var maxLengthStr = $this.attr( 'length' );
+
+      if ( maxLengthStr !== undefined ) {
+        options = options || {};
+        options.maxLength = parseInt( maxLengthStr, 10 );
+        $this.data( 'characterCounter', new CharacterCounter( $this, options ) );
       }
-
     });
   };
 
-  function updateCounter(){
-    var maxLength     = +$(this).attr('length'),
-    actualLength      = +$(this).val().length,
-    isValidLength     = actualLength <= maxLength;
+  $.fn.characterCounter.CharacterCounter = CharacterCounter;
 
-    $(this).parent().find('span[class="character-counter"]')
-                    .html( actualLength + '/' + maxLength);
-
-    addInputStyle(isValidLength, $(this));
-  }
-
-  function addCounterElement($input){
-    $counterElement = $('<span/>')
-                        .addClass('character-counter')
-                        .css('float','right')
-                        .css('font-size','12px')
-                        .css('height', 1);
-
-    $input.parent().append($counterElement);
-  }
-
-  function removeCounterElement(){
-    $(this).parent().find('span[class="character-counter"]').html('');
-  }
-
-  function addInputStyle(isValidLength, $input){
-    inputHasInvalidClass = $input.hasClass('invalid');
-    if (isValidLength && inputHasInvalidClass) {
-      $input.removeClass('invalid');
-    }
-    else if(!isValidLength && !inputHasInvalidClass){
-      $input.removeClass('valid');
-      $input.addClass('invalid');
-    }
-  }
-
-  $(document).ready(function(){
+  $( function() {
     $('input, textarea').characterCounter();
   });
 
-}( jQuery ));
+})( jQuery );
