@@ -589,8 +589,8 @@ select:disabled {
 }
 .select-dropdown li.disabled {
   color: rgba(0,0,0,.3);
-
-  &:hover { background-color: transparent; }
+  cursor: initial;
+  background-color: transparent;
 }
 
 
