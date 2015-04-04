@@ -69,16 +69,44 @@
         }
       }
 
+      /**
+       * Check if object is children of panel header
+       * @param  {Object}  object Jquery object
+       * @return {Boolean}        true if it is children
+       */
+      function isChildrenOfPanelHeader(object) {
+
+        var panelHeader = getPanelHeader(object);
+
+        return panelHeader.length > 0;
+      }
+
+      /**
+       * Get panel header from a children element
+       * @param  {Object} object Jquery object
+       * @return {Object}        panel header object
+       */
+      function getPanelHeader(object) {
+
+        return object.closest('li > .collapsible-header');
+      }
+
       /*****  End Helper Functions  *****/
 
 
 
       if (options.accordion || collapsible_type == "accordion" || collapsible_type == undefined) { // Handle Accordion
         // Add click handler to only direct collapsible header children
-        $this.find('> li > .collapsible-header').on('click.collapse', function (e) {
-            var header = $(e.target);
-            header.toggleClass('active');
-          accordionOpen(header);
+        $panel_headers = $this.find('> li > .collapsible-header');
+        $panel_headers.on('click.collapse', function (e) {
+          var element = $(e.target);
+
+          if (isChildrenOfPanelHeader(element)) {
+            element = getPanelHeader(element);
+          }
+
+          element.toggleClass('active');
+          accordionOpen(element);
         });
         // Open first active
         accordionOpen($panel_headers.filter('.active').first());
