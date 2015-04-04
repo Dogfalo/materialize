@@ -2071,8 +2071,7 @@ img.responsive-img, video.responsive-video {
   .pagination li.disabled a {
     color: #999; }
   .pagination li i {
-    font-size: 2rem;
-    line-height: 1.8rem; }
+    font-size: 2rem; }
 
 .parallax-container {
   position: relative;
