@@ -6466,8 +6466,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   position: absolute; }
 
 .select-wrapper {
-  position: relative;
-  margin-top: 15px; }
+  position: relative; }
   .select-wrapper input.select-dropdown {
     position: relative;
     cursor: pointer;
@@ -6490,6 +6489,10 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     font-size: 23px; }
     .select-wrapper .mdi-navigation-arrow-drop-down.disabled {
       color: rgba(0, 0, 0, 0.26); }
+  .select-wrapper + label {
+    position: absolute;
+    top: -14px;
+    font-size: 0.8rem; }
 
 select {
   display: none; }

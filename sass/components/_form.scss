@@ -542,7 +542,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 
 .select-wrapper {
   position: relative;
-  margin-top: 15px;
 
   input.select-dropdown {
     position: relative;
@@ -561,15 +560,20 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     display: block;
   }
   .mdi-navigation-arrow-drop-down {
-      color: initial;
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-size: 23px;
-      &.disabled {
-        color: $input-disabled-color;
-      }
+    color: initial;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 23px;
+    &.disabled {
+      color: $input-disabled-color;
     }
+  }
+  & + label {
+    position: absolute;
+    top: -14px;
+    font-size: $label-font-size;
+  }
 }
 
 select { display: none; }
