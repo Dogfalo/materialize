@@ -6508,9 +6508,9 @@ select:disabled {
   color: rgba(0, 0, 0, 0.3); }
 
 .select-dropdown li.disabled {
-  color: rgba(0, 0, 0, 0.3); }
-  .select-dropdown li.disabled:hover {
-    background-color: transparent; }
+  color: rgba(0, 0, 0, 0.3);
+  cursor: initial;
+  background-color: transparent; }
 
 /*********************
       File Input
