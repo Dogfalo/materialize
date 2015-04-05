@@ -115,9 +115,15 @@
       origin.on('mouseenter', function(e){ // Mouse over
         placeDropdown();
       });
+      origin.on('mouseleave', function(e){
+        // If hover on origin then to something other than dropdown content, then close
+        if(!$(e.toElement).closest('.dropdown-content').is(activates)) {
+          activates.stop(true, true);
+          hideDropdown();
+        }
+      });
 
       activates.on('mouseleave', function(e){ // Mouse out
-        console.log(e);
         activates.stop(true, true);
         hideDropdown();
       });
