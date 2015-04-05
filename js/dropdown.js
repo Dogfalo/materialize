@@ -42,13 +42,8 @@
     updateOptions();
 
     // Attach dropdown to its activator
-    if (origin.hasClass('select-dropdown')) {
-      origin.after(activates)
-    }
-    else {
-      origin.append(activates);
-    }
 
+    origin.after(activates)
 
 
 
@@ -71,7 +66,6 @@
 
       // Handle edge alignment
       var offsetLeft = origin.offset().left;
-
       var width_difference = 0;
       var gutter_spacing = options.gutter;
 
@@ -83,8 +77,8 @@
       // If fixed placement
       if (Materialize.elementOrParentIsFixed(origin[0])) {
         activates.css({
-          top: 0 + offset,
-          left: 0 + width_difference + gutter_spacing
+          top: origin.position().top + offset,
+          left: origin.position().left + width_difference + gutter_spacing
         });
       }
       // If relative placement
@@ -92,8 +86,8 @@
 
         activates.css({
           position: 'absolute',
-          top: 0 + offset,
-          left: 0 + width_difference + gutter_spacing
+          top: origin.position().top + offset,
+          left: origin.position().left + width_difference + gutter_spacing
         });
 
       }
