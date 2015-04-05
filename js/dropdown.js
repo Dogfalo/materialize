@@ -74,23 +74,15 @@
         width_difference = origin.innerWidth() - activates.innerWidth();
         gutter_spacing = gutter_spacing * -1;
       }
-      // If fixed placement
-      if (Materialize.elementOrParentIsFixed(origin[0])) {
-        activates.css({
-          top: origin.position().top + offset,
-          left: origin.position().left + width_difference + gutter_spacing
-        });
-      }
-      // If relative placement
-      else {
+  
+      // Position dropdown
+      activates.css({
+        position: 'absolute',
+        top: origin.position().top + offset,
+        left: origin.position().left + width_difference + gutter_spacing
+      });
 
-        activates.css({
-          position: 'absolute',
-          top: origin.position().top + offset,
-          left: origin.position().left + width_difference + gutter_spacing
-        });
-
-      }
+    
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
@@ -112,9 +104,9 @@
       activates.fadeOut(options.outDuration);
     }
 
-    activates.on('hover', function(e) {
-      e.stopPropagation();
-    });
+    // activates.on('hover', function(e) {
+    //   e.stopPropagation();
+    // });
 
     // Hover
     if (options.hover) {
@@ -124,7 +116,8 @@
         placeDropdown();
       });
 
-      origin.on('mouseleave', function(e){ // Mouse out
+      activates.on('mouseleave', function(e){ // Mouse out
+        console.log(e);
         activates.stop(true, true);
         hideDropdown();
       });
