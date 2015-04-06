@@ -534,6 +534,9 @@ span.badge {
     padding-top: 30px;
     height: 0;
     overflow: hidden;
+    &.no-controls {
+      padding-top: 0;
+    }
 
     iframe, object, embed {
       position: absolute;
