@@ -114,7 +114,6 @@
       origin.unbind('click.' + origin.attr('id'));
       // Hover handler to show dropdown
       origin.on('mouseenter', function(e){ // Mouse over
-        console.log('enter');
         if (open === false) {
           placeDropdown();
           open = true
@@ -130,10 +129,11 @@
       });
 
       activates.on('mouseleave', function(e){ // Mouse out
-        activates.stop(true, true);
-        hideDropdown();
-        console.log('here');
-        open = false;
+        if(!$(e.toElement).closest('.dropdown-button').is(origin)) {
+          activates.stop(true, true);
+          hideDropdown();
+          open = false;
+        }
       });
 
     // Click
