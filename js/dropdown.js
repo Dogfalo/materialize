@@ -74,7 +74,7 @@
         width_difference = origin.innerWidth() - activates.innerWidth();
         gutter_spacing = gutter_spacing * -1;
       }
-  
+
       // Position dropdown
       activates.css({
         position: 'absolute',
@@ -82,7 +82,7 @@
         left: origin.position().left + width_difference + gutter_spacing
       });
 
-    
+
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
@@ -110,22 +110,30 @@
 
     // Hover
     if (options.hover) {
+      var open = false;
       origin.unbind('click.' + origin.attr('id'));
       // Hover handler to show dropdown
       origin.on('mouseenter', function(e){ // Mouse over
-        placeDropdown();
+        console.log('enter');
+        if (open === false) {
+          placeDropdown();
+          open = true
+        }
       });
       origin.on('mouseleave', function(e){
         // If hover on origin then to something other than dropdown content, then close
         if(!$(e.toElement).closest('.dropdown-content').is(activates)) {
           activates.stop(true, true);
           hideDropdown();
+          open = false;
         }
       });
 
       activates.on('mouseleave', function(e){ // Mouse out
         activates.stop(true, true);
         hideDropdown();
+        console.log('here');
+        open = false;
       });
 
     // Click
