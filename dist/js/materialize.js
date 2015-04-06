@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.96.0 (http://materializecss.com)
+ * Materialize v0.96.1 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -252,7 +252,7 @@ jQuery.extend( jQuery.easing,
         };
     })(Hammer.Manager.prototype.emit);
 }));
-;var Materialize = {};
+;Materialize = {};
 
 // Unique ID
 Materialize.guid = (function() {
@@ -354,16 +354,44 @@ if ($) { Vel = $.Velocity } else { Vel = Velocity};
         }
       }
 
+      /**
+       * Check if object is children of panel header
+       * @param  {Object}  object Jquery object
+       * @return {Boolean} true if it is children
+       */
+      function isChildrenOfPanelHeader(object) {
+
+        var panelHeader = getPanelHeader(object);
+
+        return panelHeader.length > 0;
+      }
+
+      /**
+       * Get panel header from a children element
+       * @param  {Object} object Jquery object
+       * @return {Object} panel header object
+       */
+      function getPanelHeader(object) {
+
+        return object.closest('li > .collapsible-header');
+      }
+
       /*****  End Helper Functions  *****/
 
 
 
       if (options.accordion || collapsible_type == "accordion" || collapsible_type == undefined) { // Handle Accordion
         // Add click handler to only direct collapsible header children
-        $this.find('> li > .collapsible-header').on('click.collapse', function (e) {
-            var header = $(e.target);
-            header.toggleClass('active');
-          accordionOpen(header);
+        $panel_headers = $this.find('> li > .collapsible-header');
+        $panel_headers.on('click.collapse', function (e) {
+          var element = $(e.target);
+
+          if (isChildrenOfPanelHeader(element)) {
+            element = getPanelHeader(element);
+          }
+
+          element.toggleClass('active');
+          accordionOpen(element);
         });
         // Open first active
         accordionOpen($panel_headers.filter('.active').first());
@@ -372,9 +400,12 @@ if ($) { Vel = $.Velocity } else { Vel = Velocity};
         $panel_headers.each(function () {
           // Add click handler to only direct collapsible header children
           $(this).on('click.collapse', function (e) {
-            var header = $(e.target);
-            header.toggleClass('active');
-            expandableOpen(header);
+            var element = $(e.target);
+            if (isChildrenOfPanelHeader(element)) {
+              element = getPanelHeader(element);
+            }
+            element.toggleClass('active');
+            expandableOpen(element);
           });
           // Open any bodies that have the active class
           if ($(this).hasClass('active')) {
@@ -434,15 +465,7 @@ if ($) { Vel = $.Velocity } else { Vel = Velocity};
     updateOptions();
 
     // Attach dropdown to its activator
-    if (origin.hasClass('select-dropdown')) {
-      origin.after(activates)
-    }
-    else {
-      origin.append(activates);
-    }
-
-
-
+    origin.after(activates);
 
     /*
       Helper function to position and resize dropdown.
@@ -451,6 +474,9 @@ if ($) { Vel = $.Velocity } else { Vel = Velocity};
     function placeDropdown() {
       // Check html data attributes
       updateOptions();
+
+      // Set Dropdown state
+      activates.addClass('active');
 
       // Constrain width
       if (options.constrain_width == true) {
@@ -463,7 +489,6 @@ if ($) { Vel = $.Velocity } else { Vel = Velocity};
 
       // Handle edge alignment
       var offsetLeft = origin.offset().left;
-
       var width_difference = 0;
       var gutter_spacing = options.gutter;
 
@@ -472,23 +497,15 @@ if ($) { Vel = $.Velocity } else { Vel = Velocity};
         width_difference = origin.innerWidth() - activates.innerWidth();
         gutter_spacing = gutter_spacing * -1;
       }
-      // If fixed placement
-      if (Materialize.elementOrParentIsFixed(origin[0])) {
-        activates.css({
-          top: 0 + offset,
-          left: 0 + width_difference + gutter_spacing
-        });
-      }
-      // If relative placement
-      else {
 
-        activates.css({
-          position: 'absolute',
-          top: 0 + offset,
-          left: 0 + width_difference + gutter_spacing
-        });
+      // Position dropdown
+      activates.css({
+        position: 'absolute',
+        top: origin.position().top + offset,
+        left: origin.position().left + width_difference + gutter_spacing
+      });
 
-      }
+
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
@@ -501,59 +518,62 @@ if ($) { Vel = $.Velocity } else { Vel = Velocity};
         }
       })
         .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeOutSine'});
-
-
     }
-
 
     function hideDropdown() {
       activates.fadeOut(options.outDuration);
+      activates.removeClass('active');
     }
-
-    activates.on('hover', function(e) {
-      e.stopPropagation();
-    });
 
     // Hover
     if (options.hover) {
+      var open = false;
       origin.unbind('click.' + origin.attr('id'));
       // Hover handler to show dropdown
       origin.on('mouseenter', function(e){ // Mouse over
-        placeDropdown();
+        if (open === false) {
+          placeDropdown();
+          open = true
+        }
+      });
+      origin.on('mouseleave', function(e){
+        // If hover on origin then to something other than dropdown content, then close
+        if(!$(e.toElement).closest('.dropdown-content').is(activates)) {
+          activates.stop(true, true);
+          hideDropdown();
+          open = false;
+        }
       });
 
-      origin.on('mouseleave', function(e){ // Mouse out
-        activates.stop(true, true);
-        hideDropdown();
+      activates.on('mouseleave', function(e){ // Mouse out
+        if(!$(e.toElement).closest('.dropdown-button').is(origin)) {
+          activates.stop(true, true);
+          hideDropdown();
+          open = false;
+        }
       });
 
     // Click
     } else {
-      var open = false;
 
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-        // Handles case for select plugin
-        if (origin.hasClass('select-dropdown')) {
-          return false;
-        }
+
         if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
-          open = true;
 
         }
         // If origin is clicked and menu is open, close menu
         else {
-          if (open === true) {
+          if (origin.hasClass('active')) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
-            open = false;
           }
         }
         // If menu open, add click close handler to document
-        if (open === true) {
+        if (activates.hasClass('active')) {
           $(document).bind('click.'+ activates.attr('id'), function (e) {
             if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0) ) {
               hideDropdown();
@@ -2295,7 +2315,7 @@ $(document).ready(function(){
 
 //          offset - 200 allows elements near bottom of page to scroll
 			
-	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, easing: 'easeOutCubic'});
+	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, queue: false, easing: 'easeOutCubic'});
 			
 		  });
 		});
