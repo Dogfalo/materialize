@@ -5675,9 +5675,6 @@ button.btn-floating {
   .btn-large i {
     font-size: 1.6rem; }
 
-.dropdown-button {
-  position: relative; }
-
 .dropdown-content {
   background-color: #FFFFFF;
   margin: 0;
