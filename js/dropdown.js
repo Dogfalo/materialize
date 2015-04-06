@@ -42,10 +42,7 @@
     updateOptions();
 
     // Attach dropdown to its activator
-
-    origin.after(activates)
-
-
+    origin.after(activates);
 
     /*
       Helper function to position and resize dropdown.
@@ -54,6 +51,9 @@
     function placeDropdown() {
       // Check html data attributes
       updateOptions();
+
+      // Set Dropdown state
+      activates.addClass('active');
 
       // Constrain width
       if (options.constrain_width == true) {
@@ -95,18 +95,12 @@
         }
       })
         .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeOutSine'});
-
-
     }
-
 
     function hideDropdown() {
       activates.fadeOut(options.outDuration);
+      activates.removeClass('active');
     }
-
-    // activates.on('hover', function(e) {
-    //   e.stopPropagation();
-    // });
 
     // Hover
     if (options.hover) {
@@ -138,31 +132,25 @@
 
     // Click
     } else {
-      var open = false;
 
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-        // Handles case for select plugin
-        if (origin.hasClass('select-dropdown')) {
-          return false;
-        }
+
         if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
-          open = true;
 
         }
         // If origin is clicked and menu is open, close menu
         else {
-          if (open === true) {
+          if (origin.hasClass('active')) {
             hideDropdown();
             $(document).unbind('click.' + activates.attr('id'));
-            open = false;
           }
         }
         // If menu open, add click close handler to document
-        if (open === true) {
+        if (activates.hasClass('active')) {
           $(document).bind('click.'+ activates.attr('id'), function (e) {
             if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0) ) {
               hideDropdown();
