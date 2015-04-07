@@ -12,6 +12,7 @@
   },
   "engine": "node >= 0.10",
   "devDependencies": {
+    "node-sass": "^2.1.1",
     "grunt": "^0.4.5",
     "grunt-banner": "^0.3.0",
     "grunt-contrib-clean": "0.5.x",
