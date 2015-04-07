@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.96.0 (http://materializecss.com)
+ * Materialize v0.96.1 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -2102,17 +2102,6 @@ img.responsive-img, video.responsive-video {
     transform: translate3d(0, 0, 0);
     transform: translateX(-50%); }
 
-@media only screen and (max-width : 600px) {
-  .parallax-container {
-    height: auto; }
-    .parallax-container .parallax {
-      position: relative; }
-      .parallax-container .parallax img {
-        position: relative;
-        min-height: 0;
-        min-width: 0;
-        width: 100%; } }
-
 .pin-top, .pin-bottom {
   position: relative; }
 
@@ -2363,6 +2352,8 @@ span.badge {
   padding-top: 30px;
   height: 0;
   overflow: hidden; }
+  .video-container.no-controls {
+    padding-top: 0; }
   .video-container iframe, .video-container object, .video-container embed {
     position: absolute;
     top: 0;
@@ -5689,9 +5680,6 @@ button.btn-floating {
   .btn-large i {
     font-size: 1.6rem; }
 
-.dropdown-button {
-  position: relative; }
-
 .dropdown-content {
   background-color: #FFFFFF;
   margin: 0;
@@ -6114,6 +6102,29 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
       width: 80%;
       width: calc(100% - 3rem); } }
 
+.input-field input[type=search] {
+  display: block;
+  line-height: inherit;
+  padding-left: 4rem;
+  width: calc(100% - 4rem); }
+  .input-field input[type=search]:focus {
+    background-color: #FFF;
+    border: 0;
+    box-shadow: none;
+    color: #444; }
+    .input-field input[type=search]:focus + label i, .input-field input[type=search]:focus ~ .mdi-navigation-close {
+      color: #444; }
+  .input-field input[type=search] + label {
+    left: 1rem; }
+  .input-field input[type=search] ~ .mdi-navigation-close {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    color: transparent;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: .3s color; }
+
 textarea {
   width: 100%;
   height: 3rem;
@@ -6471,8 +6482,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   position: absolute; }
 
 .select-wrapper {
-  position: relative;
-  margin-top: 15px; }
+  position: relative; }
   .select-wrapper input.select-dropdown {
     position: relative;
     cursor: pointer;
@@ -6495,6 +6505,10 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     font-size: 23px; }
     .select-wrapper .mdi-navigation-arrow-drop-down.disabled {
       color: rgba(0, 0, 0, 0.26); }
+  .select-wrapper + label {
+    position: absolute;
+    top: -14px;
+    font-size: 0.8rem; }
 
 select {
   display: none; }
@@ -6507,15 +6521,21 @@ select:disabled {
 
 .select-wrapper input.select-dropdown:disabled {
   color: rgba(0, 0, 0, 0.3);
+  cursor: default;
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -ms-user-select: none;
+  /* IE10+ */
   border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
 
 .select-wrapper i {
   color: rgba(0, 0, 0, 0.3); }
 
 .select-dropdown li.disabled {
-  color: rgba(0, 0, 0, 0.3); }
-  .select-dropdown li.disabled:hover {
-    background-color: transparent; }
+  color: rgba(0, 0, 0, 0.3);
+  background-color: transparent; }
 
 /*********************
       File Input

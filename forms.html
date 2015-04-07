@@ -328,18 +328,18 @@
       </div>
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
-        <p> Select allows user input through specified options. </p>
+        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field for proper alignment with other text fields.</code> </p>
         <div class="row">
           <form class="col s12 m6">
             <div class="row">
-              <div class="col s12">
-                <label>Materialize Select</label>
+              <div class="input-field col s12">
                 <select>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
                   <option value="2">Option 2</option>
                   <option value="3">Option 3</option>
                 </select>
+                <label>Materialize Select</label>
               </div>
               <div class="col s12">
                 <br>
@@ -356,21 +356,23 @@
           </form>
           <div class="col s12">
             <pre><code class="language-markup">
-  &lt;label>Materialize Select&lt;/label>
-  &lt;select>
-    &lt;option value="" disabled selected>Choose your option&lt;/option>
-    &lt;option value="1">Option 1&lt;/option>
-    &lt;option value="2">Option 2&lt;/option>
-    &lt;option value="3">Option 3&lt;/option>
-  &lt;/select>
+  &lt;div class="input-field col s12">
+    &lt;select>
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="1">Option 1&lt;/option>
+      &lt;option value="2">Option 2&lt;/option>
+      &lt;option value="3">Option 3&lt;/option>
+    &lt;/select>
+    &lt;label>Materialize Select&lt;/label>
+  &lt;/div>
 
-  &lt;label>Browser Select&lt;/label>
-  &lt;select class="browser-default">
-    &lt;option value="" disabled selected>Choose your option&lt;/option>
-    &lt;option value="1">Option 1&lt;/option>
-    &lt;option value="2">Option 2&lt;/option>
-    &lt;option value="3">Option 3&lt;/option>
-  &lt;/select>
+    &lt;label>Browser Select&lt;/label>
+    &lt;select class="browser-default">
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="1">Option 1&lt;/option>
+      &lt;option value="2">Option 2&lt;/option>
+      &lt;option value="3">Option 3&lt;/option>
+    &lt;/select>
             </code></pre>
           </div>
           <div class="col s12">
@@ -752,7 +754,7 @@
           </div>
           <div class="col l4 s12">
             <h5 class="white-text">Join the Discussion</h5>
-            <p class="grey-text text-lighten-4">We have a gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+            <p class="grey-text text-lighten-4">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
             <a class="btn waves-effect waves-light red lighten-3" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
           </div>
           <div class="col l4 s12" style="overflow: hidden;">
