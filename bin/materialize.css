@@ -2057,9 +2057,9 @@ img.responsive-img, video.responsive-video {
 .pagination li {
   font-size: 1.2rem;
   float: left;
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
+  padding: 0 5px;
+  line-height: 30px;
+  margin: 0 5px;
   border-radius: 2px;
   text-align: center; }
   .pagination li a {
