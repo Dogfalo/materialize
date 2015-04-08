@@ -5030,7 +5030,8 @@ nav {
     color: #fff;
     display: inline-block;
     font-size: 2.1rem;
-    padding: 0; }
+    padding: 0;
+    white-space: nowrap; }
     nav .brand-logo.center {
       left: 50%;
       -webkit-transform: translateX(-50%);
