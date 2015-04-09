@@ -92,7 +92,7 @@ ul {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid color("red", "lighten-3");
+  border-left: 5px solid $primary-color;
 }
 
 // Icon Styles
@@ -137,9 +137,9 @@ video.responsive-video {
   li {
     font-size: 1.2rem;
     float: left;
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
+    padding: 0 5px;
+    line-height: 30px;
+    margin: 0 5px;
     border-radius: 2px;
     text-align: center;
 

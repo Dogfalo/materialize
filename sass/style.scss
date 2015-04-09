@@ -469,12 +469,14 @@ $height: auto;
 }
 .icon-container i {
   font-size: 3em;
-  display: block;
   margin-bottom: 10px;
 }
 .icon-container .icon-preview {
   height: 120px;
   text-align: center;
+}
+.icon-container span {
+  display: block;
 }
 
 .icon-holder {

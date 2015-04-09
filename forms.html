@@ -140,7 +140,7 @@
             <div class="row">
               <div class="input-field col s12">
                 <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
+                <label for="email" data-error="wrong" data-success="right">Email</label>
               </div>
             </div>
           </form>
@@ -229,6 +229,32 @@
           &lt;i class="mdi-communication-phone prefix">&lt;/i>
           &lt;input id="icon_telephone" type="tel" class="validate">
           &lt;label for="icon_telephone">Telephone&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+
+        <h4>Custom Error or Success Messages</h4>
+        <p>You can add custom validation messages by adding either <code class="language-markup">data-error</code> or <code class="language-markup">data-success</code> attributes to your input field labels.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email" data-error="wrong" data-success="right">Email</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" class="validate">
+          &lt;label for="email" data-error="wrong" data-success="right">Email&lt;/label>
         &lt;/div>
       &lt;/div>
     &lt;/form>

@@ -87,11 +87,35 @@ textarea.materialize-textarea {
     border-bottom: 1px solid $input-success-color;
     box-shadow: 0 1px 0 0 $input-success-color;
   }
+  // Custom Success Message
+  &.valid + label:after,
+  &:focus.valid + label:after {
+    content: attr(data-success);
+    color: $input-success-color;
+    opacity: 1;
+  }
   // Invalid Input Style
   &.invalid,
   &:focus.invalid {
     border-bottom: 1px solid $input-error-color;
     box-shadow: 0 1px 0 0 $input-error-color;
+  }
+  // Custom Error message
+  &.invalid + label:after,
+  &:focus.invalid + label:after {
+    content: attr(data-error);
+    color: $input-error-color;
+    opacity: 1;
+  }
+
+  // Form Message Shared Styles
+  & + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 65px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
   }
 }
 
