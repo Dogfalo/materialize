@@ -7,8 +7,8 @@
 
       var defaults = {
         opacity: 0.5,
-        in_duration: 300,
-        out_duration: 200,
+        in_duration: 350,
+        out_duration: 250,
         ready: undefined,
         complete: undefined,
         dismissible: true
@@ -45,7 +45,6 @@
 
       // Define Bottom Sheet animation
       if ($(modal).hasClass('bottom-sheet')) {
-        console.log("Bottom");
         $(modal).velocity({bottom: "0", opacity: 1}, {
           duration: options.in_duration,
           queue: false,
@@ -80,7 +79,7 @@
   $.fn.extend({
     closeModal: function(options) {
       var defaults = {
-        out_duration: 200,
+        out_duration: 250,
         complete: undefined
       }
       var options = $.extend(defaults, options);
@@ -130,7 +129,7 @@
       return this.each(function() {
         // Close Handlers
         $(this).click(function(e) {
-          var modal_id = $(this).attr("href");
+          var modal_id = $(this).attr("href") || '#' + $(this).data('target');
           $(modal_id).openModal(options);
           e.preventDefault();
         }); // done set on click

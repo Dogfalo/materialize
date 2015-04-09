@@ -182,7 +182,7 @@
 
 //          offset - 200 allows elements near bottom of page to scroll
 			
-	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, easing: 'easeOutCubic'});
+	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, queue: false, easing: 'easeOutCubic'});
 			
 		  });
 		});

@@ -71,11 +71,11 @@
   position: absolute;
   margin: 0 auto;
   min-width: 256px;
-  
+
 //  picker width
-  max-width: 300px;
+  width: 300px;
   max-height: 350px;
-  
+
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -126,10 +126,10 @@
 @media (min-height: 28.875em) {
   .picker__box {
     display: block;
-    
+
 //    picker header font-size
 //    font-size: 1rem;
-    
+
     border: 1px solid #777777;
     border-top-color: #898989;
     border-bottom-width: 0;

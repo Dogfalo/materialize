@@ -87,11 +87,35 @@ textarea.materialize-textarea {
     border-bottom: 1px solid $input-success-color;
     box-shadow: 0 1px 0 0 $input-success-color;
   }
+  // Custom Success Message
+  &.valid + label:after,
+  &:focus.valid + label:after {
+    content: attr(data-success);
+    color: $input-success-color;
+    opacity: 1;
+  }
   // Invalid Input Style
   &.invalid,
   &:focus.invalid {
     border-bottom: 1px solid $input-error-color;
     box-shadow: 0 1px 0 0 $input-error-color;
+  }
+  // Custom Error message
+  &.invalid + label:after,
+  &:focus.invalid + label:after {
+    content: attr(data-error);
+    color: $input-error-color;
+    opacity: 1;
+  }
+
+  // Form Message Shared Styles
+  & + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 65px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
   }
 }
 
@@ -144,8 +168,45 @@ textarea.materialize-textarea {
       width: calc(100% - 3rem);
     }
   }
-
 }
+
+
+// Search Field
+
+
+.input-field input[type=search] {
+  display: block;
+  line-height: inherit;
+  padding-left: 4rem;
+  width: calc(100% - 4rem);
+
+  &:focus {
+    background-color: #FFF;
+    border: 0;
+    box-shadow: none;
+    color: #444;
+
+    & + label i,
+    & ~ .mdi-navigation-close {
+      color: #444;
+    }
+  }
+
+  & + label {
+    left: 1rem;
+  }
+
+  & ~ .mdi-navigation-close {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    color: transparent;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: .3s color;
+  }
+}
+
 
 // Default textarea
 textarea {
@@ -542,7 +603,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 
 .select-wrapper {
   position: relative;
-  margin-top: 15px;
 
   input.select-dropdown {
     position: relative;
@@ -561,15 +621,20 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     display: block;
   }
   .mdi-navigation-arrow-drop-down {
-      color: initial;
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-size: 23px;
-      &.disabled {
-        color: $input-disabled-color;
-      }
+    color: initial;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 23px;
+    &.disabled {
+      color: $input-disabled-color;
     }
+  }
+  & + label {
+    position: absolute;
+    top: -14px;
+    font-size: $label-font-size;
+  }
 }
 
 select { display: none; }
@@ -582,6 +647,10 @@ select:disabled {
 }
 .select-wrapper input.select-dropdown:disabled {
   color: rgba(0,0,0,.3);
+  cursor: default;
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -ms-user-select: none; /* IE10+ */
   border-bottom: 1px solid rgba(0,0,0,.3);
 }
 .select-wrapper i {
@@ -589,8 +658,7 @@ select:disabled {
 }
 .select-dropdown li.disabled {
   color: rgba(0,0,0,.3);
-
-  &:hover { background-color: transparent; }
+  background-color: transparent;
 }
 
 

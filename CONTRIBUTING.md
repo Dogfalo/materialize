@@ -1,0 +1,12 @@
+## Contributing
+- Compiling Files
+  - `npm install`
+  - `grunt monitor`, this will compile .scss, .js., .jade files
+- Documentation
+  - If you notice an error in the documentation, please edit the corresponding .html page under jade/page-contents/.
+- Issues
+  - If you have an issue please make sure you document the problems in depth. One line issues with no explanations will be closed.
+- Feature Requests
+  - We like feature requests but make sure that it can be seen within the goals of the project and not just something you need individually. Also you should try and give as much examples and details about the new feature as possible.
+- Code Examples
+  - Use this [codepen](http://codepen.io/Dogfalo/pen/xbzPQV) to illustrate your problem.

@@ -228,6 +228,12 @@
         $('ul#select-options-'+lastID).remove();
       }
 
+      // If destroying the select, remove the selelct-id and reset it to it's uninitialized state.
+      if(callback === 'destroy') {
+          $select.data('select-id', null).removeClass('initialized');
+          return;
+      }
+
       var uniqueID = Materialize.guid();
       $select.data('select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
@@ -281,6 +287,12 @@
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({"hover": false});
       }
+
+      // Copy tabindex
+      if ($select.attr('tabindex')) {
+        $($newSelect[0]).attr('tabindex', $select.attr('tabindex'));
+      }
+
       $select.addClass('initialized');
 
       $newSelect.on('focus', function(){

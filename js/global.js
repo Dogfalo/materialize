@@ -1,4 +1,4 @@
-var Materialize = {};
+Materialize = {};
 
 // Unique ID
 Materialize.guid = (function() {

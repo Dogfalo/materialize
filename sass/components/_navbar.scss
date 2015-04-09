@@ -13,6 +13,7 @@ nav {
     height: 100%;
 
     i {
+      display: block;
       font-size: 2rem;
     }
   }
@@ -30,7 +31,6 @@ nav {
     height: $navbar-height-mobile;
 
     i {
-
       font-size: 2.7rem;
       height: $navbar-height-mobile;
       line-height: $navbar-height-mobile;
@@ -45,17 +45,16 @@ nav {
     display: inline-block;
     font-size: 2.1rem;
     padding: 0;
+    white-space: nowrap;
 
     &.center {
-      top: 50%;
       left: 50%;
-      @include transform(translate(-50%, -50%));
+      @include transform(translateX(-50%));
     }
 
     @media #{$medium-and-down} {
-      top: 50%;
       left: 50%;
-      @include transform(translate(-50%, -50%));
+      @include transform(translateX(-50%));
     }
 
     &.right {
@@ -81,7 +80,7 @@ nav {
     a {
       font-size: 1rem;
       color: #fff;
-      display: inline-block;
+      display: block;
       padding: 0 15px;
     }
 

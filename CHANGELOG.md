@@ -1,3 +1,34 @@
+- v0.95.2 (Feb 10, 2015)
+  - Switches added
+  - Transition animation functions added
+  - ScrollFire Plugin added (fires functions dependent on scroll position)
+  - Responsive Video tag added
+  - Custom File Input Button added
+  - Modals has a fixed footer option
+  - SideNav implementation changed (needs 2 UL menus)
+  - Slider Responsive Fixes
+
+- v0.95.1 (Jan 26, 2015)
+  - Sidenav Fixes
+  - Dropdown alignment/gutter options added
+  - Parallax fixes
+  - JavaScript Initialization no longer needed for many components
+  - HTML options through data-attributes
+  - Site colors can be defined through Primary and Secondary color in Sass
+  - Tables no longer resonsive by default
+
+- v0.95.0 (Jan 17, 2015)
+  - Drag Out Menu fixed with Touch Interactions
+  - Toasts minor bugfix
+  - OL element has default styling
+  - Fullscreen Slider added
+  - Footer requires page-footer class
+  - Progress Bars added
+  - Form autofill support added
+  - Responsive Tables support added
+  - Scrollspy Plugin released
+  - Waves events are now delegated / behavior enhanced
+
 - v0.94.0 (Dec 30, 2014)
   - Sidenav supports right edge positioning
   - Responsive Embeds

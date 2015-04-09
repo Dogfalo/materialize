@@ -1,0 +1,99 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <title>Materialize - Documentation</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+
+  <!-- Android 5 Chrome Color -->
+  <meta name="theme-color" content="#EE6E73">
+
+  <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+<!--  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
+<!--  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>-->
+  <link href="../../../css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s4">
+          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+        <div class="input-field col s4">
+          <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Materialize Select</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled">Disabled</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label for="search"><i class="mdi-action-search"></i></label>
+          <i class="mdi-navigation-close"></i>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+
+
+
+
+<!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../../../bin/materialize.js"></script>
+<!--     <script src="js/velocity.min.js"></script>-->
+<!--  <script src="js/leanModal.js"></script>-->
+
+  <script>
+    $(document).ready(function(){
+        $('select').material_select();
+    });
+  </script>
+
+</body>
+</html>

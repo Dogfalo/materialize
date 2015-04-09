@@ -92,7 +92,7 @@ ul {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid color("red", "lighten-3");
+  border-left: 5px solid $primary-color;
 }
 
 // Icon Styles
@@ -137,9 +137,9 @@ video.responsive-video {
   li {
     font-size: 1.2rem;
     float: left;
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
+    padding: 0 5px;
+    line-height: 30px;
+    margin: 0 5px;
     border-radius: 2px;
     text-align: center;
 
@@ -186,24 +186,6 @@ video.responsive-video {
     transform: translateX(-50%);
   }
 }
-
-@media #{$small-and-down} {
-  .parallax-container {
-    height: auto;
-
-    .parallax {
-      position: relative;
-
-      img {
-        position: relative;
-        min-height: 0;
-        min-width: 0;
-        width: 100%;
-      }
-    }
-  }
-}
-
 
 // Pushpin
 .pin-top, .pin-bottom {
@@ -552,6 +534,9 @@ span.badge {
     padding-top: 30px;
     height: 0;
     overflow: hidden;
+    &.no-controls {
+      padding-top: 0;
+    }
 
     iframe, object, embed {
       position: absolute;

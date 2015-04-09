@@ -39,7 +39,7 @@
             <div class="row">
               <div class="input-field col s12">
                 <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
+                <label for="email" data-error="wrong" data-success="right">Email</label>
               </div>
             </div>
           </form>
@@ -128,6 +128,32 @@
           &lt;i class="mdi-communication-phone prefix">&lt;/i>
           &lt;input id="icon_telephone" type="tel" class="validate">
           &lt;label for="icon_telephone">Telephone&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+
+        <h4>Custom Error or Success Messages</h4>
+        <p>You can add custom validation messages by adding either <code class="language-markup">data-error</code> or <code class="language-markup">data-success</code> attributes to your input field labels.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email" data-error="wrong" data-success="right">Email</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" class="validate">
+          &lt;label for="email" data-error="wrong" data-success="right">Email&lt;/label>
         &lt;/div>
       &lt;/div>
     &lt;/form>
@@ -227,18 +253,18 @@
       </div>
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
-        <p> Select allows user input through specified options. </p>
+        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field for proper alignment with other text fields.</code> </p>
         <div class="row">
           <form class="col s12 m6">
             <div class="row">
-              <div class="col s12">
-                <label>Materialize Select</label>
+              <div class="input-field col s12">
                 <select>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
                   <option value="2">Option 2</option>
                   <option value="3">Option 3</option>
                 </select>
+                <label>Materialize Select</label>
               </div>
               <div class="col s12">
                 <br>
@@ -255,21 +281,23 @@
           </form>
           <div class="col s12">
             <pre><code class="language-markup">
-  &lt;label>Materialize Select&lt;/label>
-  &lt;select>
-    &lt;option value="" disabled selected>Choose your option&lt;/option>
-    &lt;option value="1">Option 1&lt;/option>
-    &lt;option value="2">Option 2&lt;/option>
-    &lt;option value="3">Option 3&lt;/option>
-  &lt;/select>
+  &lt;div class="input-field col s12">
+    &lt;select>
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="1">Option 1&lt;/option>
+      &lt;option value="2">Option 2&lt;/option>
+      &lt;option value="3">Option 3&lt;/option>
+    &lt;/select>
+    &lt;label>Materialize Select&lt;/label>
+  &lt;/div>
 
-  &lt;label>Browser Select&lt;/label>
-  &lt;select class="browser-default">
-    &lt;option value="" disabled selected>Choose your option&lt;/option>
-    &lt;option value="1">Option 1&lt;/option>
-    &lt;option value="2">Option 2&lt;/option>
-    &lt;option value="3">Option 3&lt;/option>
-  &lt;/select>
+    &lt;label>Browser Select&lt;/label>
+    &lt;select class="browser-default">
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="1">Option 1&lt;/option>
+      &lt;option value="2">Option 2&lt;/option>
+      &lt;option value="3">Option 3&lt;/option>
+    &lt;/select>
             </code></pre>
           </div>
           <div class="col s12">
@@ -323,6 +351,13 @@
   $(document).ready(function() {
     $('select').material_select();
   });
+            </code></pre>
+          </div>
+          <div class="col s12">
+            <h4>Updating/Destroying Select</h4>
+            <p>If you want to update the items inside the select, just rerun the initialization code from above after editing the original select. Or you can destroy the material select with this function below, and create a new select altogether</p>
+            <pre><code class="language-javascript">
+  $('select').material_select('destroy');
             </code></pre>
           </div>
         </div>
