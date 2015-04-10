@@ -65,7 +65,8 @@ module.exports = function(grunt) {
               weinre: {
                   port: 9090
               }
-          }
+          },
+          open: false
       }
     },
 
