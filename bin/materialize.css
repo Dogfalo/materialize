@@ -2069,6 +2069,7 @@ img.responsive-img, video.responsive-video {
   .pagination li.active {
     background-color: #ee6e73; }
   .pagination li.disabled a {
+    cursor: default;
     color: #999; }
   .pagination li i {
     font-size: 2rem; }
