@@ -315,6 +315,15 @@ textarea {
   @include transform(scale(.5));
 }
 
+/* Disabled Radio With gap */
+[type="radio"].with-gap:disabled:checked + label:before {
+  border: 2px solid $input-disabled-color;
+}
+[type="radio"].with-gap:disabled:checked + label:after {
+  border: none;
+  background-color: $input-disabled-color;
+}
+
 /* Disabled style */
 [type="radio"]:disabled:not(:checked) + label:before,
 [type="radio"]:disabled:checked + label:before {
@@ -324,8 +333,12 @@ textarea {
 [type="radio"]:disabled + label {
   color: $input-disabled-color;
 }
-[type="radio"]:disabled:not(:checked) + label:hover:before {
+[type="radio"]:disabled:not(:checked) + label:before {
   border-color: $input-disabled-color;
+}
+[type="radio"]:disabled:checked + label:after {
+  background-color: $input-disabled-color;
+  border-color: $input-disabled-solid-color;
 }
 
 
@@ -347,6 +360,7 @@ form p:last-child {
 [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
+  visibility: hidden;
 }
 
 

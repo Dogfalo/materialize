@@ -2369,6 +2369,7 @@ span.badge {
     position: absolute;
     background-color: inherit;
     top: 0;
+    left: 0;
     bottom: 0;
     background-color: #26a69a;
     -webkit-transition: width .3s linear;
@@ -6474,6 +6475,14 @@ textarea {
   -o-transform: scale(.5);
   transform: scale(.5); }
 
+/* Disabled Radio With gap */
+[type="radio"].with-gap:disabled:checked + label:before {
+  border: 2px solid rgba(0, 0, 0, 0.26); }
+
+[type="radio"].with-gap:disabled:checked + label:after {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.26); }
+
 /* Disabled style */
 [type="radio"]:disabled:not(:checked) + label:before, [type="radio"]:disabled:checked + label:before {
   background-color: transparent;
@@ -6482,8 +6491,12 @@ textarea {
 [type="radio"]:disabled + label {
   color: rgba(0, 0, 0, 0.26); }
 
-[type="radio"]:disabled:not(:checked) + label:hover:before {
+[type="radio"]:disabled:not(:checked) + label:before {
   border-color: rgba(0, 0, 0, 0.26); }
+
+[type="radio"]:disabled:checked + label:after {
+  background-color: rgba(0, 0, 0, 0.26);
+  border-color: #BDBDBD; }
 
 /***************
    Checkboxes
@@ -6499,7 +6512,8 @@ form p:last-child {
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px; }
+  left: -9999px;
+  visibility: hidden; }
 
 [type="checkbox"] {
   /* checkbox aspect */ }
