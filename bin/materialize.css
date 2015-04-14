@@ -6059,6 +6059,8 @@ a.waves-effect .waves-ripple {
     margin-top: 0; }
   .modal .modal-content {
     padding: 24px; }
+  .modal .modal-close {
+    cursor: pointer; }
   .modal .modal-footer {
     border-radius: 0 0 2px 2px;
     background-color: #fafafa;
