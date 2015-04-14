@@ -22,7 +22,7 @@
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
-      if($(this).val() != "" || $(this).attr('placeholder') !== undefined) {
+      if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
         $(this).siblings('label, i').addClass('active');
       }
       validate_field($(this));
