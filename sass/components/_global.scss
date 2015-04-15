@@ -298,23 +298,19 @@ table {
   width:100%;
   display: table;
 
-  &.bordered tr {
+  &.bordered > thead > tr,
+  &.bordered > tbody > tr {
     border-bottom: 1px solid $table-border-color;
   }
 
-  &.striped {
-    tbody tr:nth-child(odd) {
-      background-color: $table-striped-color;
-    }
+  &.striped > tbody > tr:nth-child(odd) {
+    background-color: $table-striped-color;
   }
 
-  &.hoverable {
-
-    tbody tr {
-      @include transition(background-color .25s ease);
-      &:hover {
-        background-color: $table-striped-color;
-      }
+  &.hoverable > tbody > tr {
+    @include transition(background-color .25s ease);
+    &:hover {
+      background-color: $table-striped-color;
     }
   }
 

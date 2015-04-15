@@ -2177,17 +2177,17 @@ table, th, td {
 table {
   width: 100%;
   display: table; }
-  table.bordered tr {
+  table.bordered > thead > tr, table.bordered > tbody > tr {
     border-bottom: 1px solid #d0d0d0; }
-  table.striped tbody tr:nth-child(odd) {
+  table.striped > tbody > tr:nth-child(odd) {
     background-color: #f2f2f2; }
-  table.hoverable tbody tr {
+  table.hoverable > tbody > tr {
     -webkit-transition: background-color .25s ease;
     -moz-transition: background-color .25s ease;
     -o-transition: background-color .25s ease;
     -ms-transition: background-color .25s ease;
     transition: background-color .25s ease; }
-    table.hoverable tbody tr:hover {
+    table.hoverable > tbody > tr:hover {
       background-color: #f2f2f2; }
   table.centered thead tr th, table.centered tbody tr td {
     text-align: center; }
