@@ -342,8 +342,8 @@
 
         // CASE WHEN USER TYPE LETTERS
         letter = String.fromCharCode(event.which).toLowerCase();
-
-        if (letter){
+        var nonLetters = [9,13,27,38,40]
+        if (letter && (nonLetters.indexOf(event.which) === -1)){
           filterQuery.push(letter);
 
           string = filterQuery.join("");
