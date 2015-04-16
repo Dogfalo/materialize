@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.96.1 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -1177,6 +1177,7 @@ $(document).ready(function(){
     		counter = null,
     		started = false,
     		counterInterval = null,
+            customCSS = null,
     		margin = 5;
 
       // Defaults
@@ -1192,11 +1193,14 @@ $(document).ready(function(){
         var origin = $(this);
 
       // Create Text span
-      var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+        var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+       
+      customCSS = origin.attr('data-customcss') || customCSS; 
 
       // Create tooltip
       var newTooltip = $('<div></div>');
       newTooltip.addClass('material-tooltip').append(tooltip_text);
+      newTooltip.addClass(customCSS);
       newTooltip.appendTo($('body'));
 
       var backdrop = $('<div></div>').addClass('backdrop');
@@ -2421,7 +2425,7 @@ $(document).ready(function(){
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined) {
+        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
           $(this).siblings('label, i').addClass('active');
         }
         else {
@@ -2442,6 +2446,14 @@ $(document).ready(function(){
         $(this).siblings('label, i').addClass('active');
       }
       validate_field($(this));
+    });
+
+      // Add active if form auto complete
+    $(document).on('change', input_selector, function () {
+        if ($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
+            $(this).siblings('label, i').addClass('active');
+        }
+        validate_field($(this));
     });
 
     // Add active if input element has been pre-populated on document ready
@@ -2469,14 +2481,15 @@ $(document).ready(function(){
     });
 
     $(document).on('blur', input_selector, function () {
-      if ($(this).val().length === 0 && $(this).attr('placeholder') === undefined) {
-        $(this).siblings('label, i').removeClass('active');
+      var $inputElement = $(this);
+      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
+        $inputElement.siblings('label, i').removeClass('active');
       }
-      validate_field($(this));
+      validate_field($inputElement);
     });
 
     validate_field = function(object) {
-      if (object.val().length === 0) {
+      if (object.val().length === 0 && object[0].validity.badInput === false) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
@@ -2542,6 +2555,14 @@ $(document).ready(function(){
         path_input.val($(this)[0].files[0].name);
         path_input.trigger('change');
       });
+    });
+
+    $('.file-field').each(function () {
+        var path_input = $(this).find('input.file-path');
+        $(this).find('input[type="file"]').change(function () {
+            path_input.val($(this)[0].files[0].name);
+            path_input.trigger('change');
+        });
     });
 
 
@@ -2757,8 +2778,8 @@ $(document).ready(function(){
 
         // CASE WHEN USER TYPE LETTERS
         letter = String.fromCharCode(event.which).toLowerCase();
-
-        if (letter){
+        var nonLetters = [9,13,27,38,40]
+        if (letter && (nonLetters.indexOf(event.which) === -1)){
           filterQuery.push(letter);
 
           string = filterQuery.join("");

@@ -22,7 +22,7 @@
       // Create Text span
         var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
        
-      customCSS = origin.attr('data-customCSS') || customCSS;
+      customCSS = origin.attr('data-customcss') || customCSS; 
 
       // Create tooltip
       var newTooltip = $('<div></div>');
