@@ -1,6 +1,17 @@
 (function ($) {
   $(document).ready(function() {
 
+      Materialize.fileInput = function(controlSelector)
+      {
+          $(controlSelector).each(function () {
+              var path_input = $(this).find('input.file-path');
+              $(this).find('input[type="file"]').change(function () {
+                  path_input.val($(this)[0].files[0].name);
+                  path_input.trigger('change');
+              });
+          });
+      }
+
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
@@ -26,6 +37,14 @@
         $(this).siblings('label, i').addClass('active');
       }
       validate_field($(this));
+    });
+
+      // Add active if form auto complete
+    $(document).on('change', input_selector, function () {
+        if ($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
+            $(this).siblings('label, i').addClass('active');
+        }
+        validate_field($(this));
     });
 
     // Add active if input element has been pre-populated on document ready
@@ -120,15 +139,8 @@
     });
 
 
-    // File Input Path
-    $('.file-field').each(function() {
-      var path_input = $(this).find('input.file-path');
-      $(this).find('input[type="file"]').change(function () {
-        path_input.val($(this)[0].files[0].name);
-        path_input.trigger('change');
-      });
-    });
-
+    Materialize.fileInput('.file-field');
+ 
 
     // Range Input
     var range_type = 'input[type=range]';

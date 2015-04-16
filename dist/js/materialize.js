@@ -2421,6 +2421,17 @@ $(document).ready(function(){
 })(jQuery);;(function ($) {
   $(document).ready(function() {
 
+      Materialize.fileInput = function(controlSelector)
+      {
+          $(controlSelector).each(function () {
+              var path_input = $(this).find('input.file-path');
+              $(this).find('input[type="file"]').change(function () {
+                  path_input.val($(this)[0].files[0].name);
+                  path_input.trigger('change');
+              });
+          });
+      }
+
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
@@ -2548,23 +2559,8 @@ $(document).ready(function(){
     });
 
 
-    // File Input Path
-    $('.file-field').each(function() {
-      var path_input = $(this).find('input.file-path');
-      $(this).find('input[type="file"]').change(function () {
-        path_input.val($(this)[0].files[0].name);
-        path_input.trigger('change');
-      });
-    });
-
-    $('.file-field').each(function () {
-        var path_input = $(this).find('input.file-path');
-        $(this).find('input[type="file"]').change(function () {
-            path_input.val($(this)[0].files[0].name);
-            path_input.trigger('change');
-        });
-    });
-
+    Materialize.fileInput('.file-field');
+ 
 
     // Range Input
     var range_type = 'input[type=range]';
