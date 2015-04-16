@@ -4,6 +4,7 @@
     		counter = null,
     		started = false,
     		counterInterval = null,
+            customCSS = null,
     		margin = 5;
 
       // Defaults
@@ -19,11 +20,14 @@
         var origin = $(this);
 
       // Create Text span
-      var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+        var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+       
+      customCSS = origin.attr('data-customcss') || customCSS; 
 
       // Create tooltip
       var newTooltip = $('<div></div>');
       newTooltip.addClass('material-tooltip').append(tooltip_text);
+      newTooltip.addClass(customCSS);
       newTooltip.appendTo($('body'));
 
       var backdrop = $('<div></div>').addClass('backdrop');
