@@ -31,5 +31,11 @@
       display: block;
       padding: 1rem 1rem;
     }
+
+    // Icon alignment override
+    & > a > i {
+      height: inherit;
+      line-height: inherit;
+    }
   }
 }

@@ -5919,6 +5919,9 @@ button.btn-floating {
       color: #26a69a;
       display: block;
       padding: 1rem 1rem; }
+    .dropdown-content li > a > i {
+      height: inherit;
+      line-height: inherit; }
 
 /*!
  * Waves v0.6.0
