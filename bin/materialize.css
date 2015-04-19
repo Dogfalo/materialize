@@ -2518,6 +2518,7 @@ span.badge {
   margin-right: auto; }
 
 .truncate {
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }

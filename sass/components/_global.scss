@@ -661,7 +661,6 @@ span.badge {
   user-select: none;
 }
 
-// Circle
 .circle {
   border-radius: 50%;
 }
@@ -673,6 +672,7 @@ span.badge {
 }
 
 .truncate {
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
