@@ -27,7 +27,6 @@
 }
 
 .collapsible-body {
-  overflow: hidden;
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
   @include box-sizing(border-box);

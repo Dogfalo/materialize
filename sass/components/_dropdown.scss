@@ -8,8 +8,7 @@
   overflow-y: auto;
   opacity: 0;
   position: absolute;
-  white-space: nowrap; // Force one line
-  z-index: 1;
+  z-index: 999;
   will-change: width, height;
 
   li {
