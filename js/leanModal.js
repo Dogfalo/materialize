@@ -3,7 +3,7 @@
     openModal: function(options) {
       var modal = this;
       var overlay = $('<div id="lean-overlay"></div>');
-      $("body").append(overlay);
+      $('body').css('overflow', 'hidden').append(overlay);
 
       var defaults = {
         opacity: 0.5,
@@ -83,7 +83,7 @@
         complete: undefined
       }
       var options = $.extend(defaults, options);
-
+      $('body').css('overflow', '');
       $('.modal-close').off();
       $(document).off('keyup.leanModal');
 
