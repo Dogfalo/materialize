@@ -7,8 +7,7 @@ $secondary-color: color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
-// off black will be used in navbar below, therefore moved from *** Typography *** section
-$off-black: rgba(0, 0, 0, 0.87) !default;
+
 /*** Badges ***/
 $badge-bg-color: $secondary-color !default;
 
@@ -95,8 +94,8 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 /*** Navbar ***/
 $navbar-height: 64px !default;
 $navbar-height-mobile: 56px !default;
-$navbar-font-color: $off-black;
-$navbar-brand-font-size: 1.5rem;
+$navbar-font-color: #fff;
+$navbar-brand-font-size: 1rem;
 
 /*** SideNav ***/
 
@@ -117,6 +116,7 @@ $toast-color: #323232 !default;
 $toast-text-color: #fff !default;
 
 /*** Typography ***/
+$off-black: rgba(0, 0, 0, 0.87) !default;
 // Header Styles
 $h1-fontsize: 4.2rem !default;
 $h2-fontsize: 3.56rem !default;
