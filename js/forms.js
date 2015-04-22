@@ -91,9 +91,16 @@
     var text_area_selector = '.materialize-textarea';
 
     function textareaAutoResize($textarea) {
+      // Set fontsize of hiddenDiv
+      var fontSize = $textarea.css('font-size');
+      if (fontSize) {
+        hiddenDiv.css('font-size', fontSize);
+      }
+
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
       hiddenDiv.html(content);
+
 
       // When textarea is hidden, width goes crazy.
       // Approximate with half of window size

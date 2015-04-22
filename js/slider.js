@@ -70,11 +70,17 @@
         }
       }
 
+      console.log(options.height);
       // Set height of slider
-      if (options.height != 400) {
+      if (options.indicators) {
+        // Add height if indicators are present
         $this.height(options.height + 40);
-        $slider.height(options.height);
       }
+      else {
+        $this.height(options.height);
+      }
+      $slider.height(options.height);
+
 
       // Set initial positions of captions
       $slides.find('.caption').each(function () {

@@ -27,7 +27,6 @@
 }
 
 .collapsible-body {
-  overflow: hidden;
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
   @include box-sizing(border-box);
@@ -73,16 +72,14 @@
   border: none;
   box-shadow: none;
   > li {
-    &:hover {
-      will-change: margin, transform;
-    }
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    transform: scaleX(.92) translate3d(0,0,0);
-    transition: margin .35s cubic-bezier(0.250, 0.460, 0.450, 0.940), transform .35s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    // transform: scaleX(.92);
+    margin: 0 24px;
+    transition: margin .35s cubic-bezier(0.250, 0.460, 0.450, 0.940);
   }
   > li.active {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     margin: 16px 0;
-    transform: scaleX(1) translate3d(0,0,0);
+    // transform: scaleX(1);
   }
 }
