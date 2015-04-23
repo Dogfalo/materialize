@@ -6,7 +6,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     // Create toast container if it does not exist
     if (container === null) {
         // create notification container
-        var container = document.createElement('div');
+        container = document.createElement('div');
         container.id = 'toast-container';
         document.body.appendChild(container);
     }
@@ -118,4 +118,4 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
         return toast;
     }
-}
+};

@@ -93,8 +93,8 @@
           var $this = $(this);
           if (swipeLeft || swipeRight) {
             var fullWidth;
-            if (swipeLeft) { fullWidth = $this.innerWidth() }
-            else { fullWidth = -1 * $this.innerWidth() }
+            if (swipeLeft) { fullWidth = $this.innerWidth(); }
+            else { fullWidth = -1 * $this.innerWidth(); }
 
             $this.velocity({ translateX: fullWidth,
               }, {duration: 100, queue: false, easing: 'easeOutQuad', complete:

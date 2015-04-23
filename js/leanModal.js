@@ -12,7 +12,7 @@
         ready: undefined,
         complete: undefined,
         dismissible: true
-      }
+      };
 
       // Override defaults
       options = $.extend(defaults, options);
@@ -81,8 +81,8 @@
       var defaults = {
         out_duration: 250,
         complete: undefined
-      }
-      var options = $.extend(defaults, options);
+      };
+      options = $.extend(defaults, options);
       $('body').css('overflow', '');
       $('.modal-close').off();
       $(document).off('keyup.leanModal');
@@ -122,7 +122,7 @@
       }
 
     }
-  })
+  });
 
   $.fn.extend({
     leanModal: function(options) {
