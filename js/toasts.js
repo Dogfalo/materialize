@@ -13,7 +13,11 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
     // Select and append toast
     var newToast = createToast(message);
-    container.appendChild(newToast);
+
+    // only append toast if message is not undefined
+    if(message){
+        container.appendChild(newToast);
+    }
 
     newToast.style.top = '35px';
     newToast.style.opacity = 0;
