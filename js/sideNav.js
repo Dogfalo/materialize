@@ -47,7 +47,7 @@
         menuWidth: 240,
         edge: 'left',
         closeOnClick: false
-      }
+      };
       options = $.extend(defaults, options);
 
       $(this).each(function(){
@@ -85,7 +85,7 @@
           $(window).resize( function() {
             if (window.innerWidth > 992) {
               // Close menu if window is resized bigger than 992 and user has fixed sidenav
-              if ($('#sidenav-overlay').css('opacity') != 0 && menuOut) {
+              if ($('#sidenav-overlay').css('opacity') !== 0 && menuOut) {
                 removeMenu(true);
               }
               else {
@@ -104,7 +104,7 @@
         }
 
         // if closeOnClick, then add close event for all a tags in side sideNav
-        if (options.closeOnClick == true) {
+        if (options.closeOnClick === true) {
           menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
             removeMenu();
           });
@@ -126,7 +126,7 @@
                 queue: false,
                 easing: 'easeOutCubic',
                 complete: function() {
-                  if (restoreNav == true) {
+                  if (restoreNav === true) {
                     // Restore Fixed sidenav
                     menu_id.removeAttr('style');
                     menu_id.css('width', options.menuWidth);
@@ -144,7 +144,7 @@
                 queue: false,
                 easing: 'easeOutCubic',
                 complete: function() {
-                  if (restoreNav == true) {
+                  if (restoreNav === true) {
                     // Restore Fixed sidenav
                     menu_id.removeAttr('style');
                     menu_id.css('width', options.menuWidth);
@@ -162,7 +162,7 @@
 
         $('.drag-target').on('click', function(){
           removeMenu();
-        })
+        });
 
         $('.drag-target').hammer({
           prevent_default: false
@@ -219,12 +219,13 @@
 
 
             // Percentage overlay
+            var overlayPerc;
             if (options.edge === 'left') {
-              var overlayPerc = x / options.menuWidth;
+              overlayPerc = x / options.menuWidth;
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
             else {
-              var overlayPerc = Math.abs((x - $(window).width()) / options.menuWidth);
+              overlayPerc = Math.abs((x - $(window).width()) / options.menuWidth);
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }
@@ -269,7 +270,7 @@
         });
 
           $this.click(function() {
-            if (menuOut == true) {
+            if (menuOut === true) {
               menuOut = false;
               panning = false;
               removeMenu();
@@ -331,5 +332,5 @@
       } else {
         $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tooltip' );
       }
-    }; // PLugin end
+    }; // Plugin end
 }( jQuery ));

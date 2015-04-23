@@ -83,7 +83,7 @@
           $photo_caption.text(origin.data('caption'));
           $('body').append($photo_caption);
           $photo_caption.css({ "display": "inline" });
-          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'});
         }
 
 
