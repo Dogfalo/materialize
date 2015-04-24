@@ -148,7 +148,8 @@ textarea.materialize-textarea {
     &.active { color: $input-focus-color; }
   }
   .prefix ~ input,
-  .prefix ~ textarea {
+  .prefix ~ textarea,
+  .prefix ~ .select-wrapper {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem);
