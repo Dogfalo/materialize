@@ -5872,7 +5872,8 @@ button.btn-floating {
     right: 0;
     text-align: center;
     position: absolute;
-    bottom: 64px; }
+    bottom: 64px;
+    margin: 0; }
     .fixed-action-btn ul li {
       margin-bottom: 15px; }
     .fixed-action-btn ul a.btn-floating {
@@ -6699,7 +6700,7 @@ form p:last-child {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
   left: -5px;
   top: -3px;
-  transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease; }
+  transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease; }
 
 input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(38, 166, 154, 0.1); }
