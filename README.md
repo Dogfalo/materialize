@@ -38,4 +38,4 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 
 ## Contributing
-[CONTRIBUTING.md](Please read CONTRIBUTING.md for more info)
+[Please read CONTRIBUTING.md for more information](CONTRIBUTING.md)
