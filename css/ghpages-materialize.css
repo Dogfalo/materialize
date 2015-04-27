@@ -6504,7 +6504,7 @@ form p:last-child {
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
+  left: 0;
   visibility: hidden; }
 
 [type="checkbox"] {
