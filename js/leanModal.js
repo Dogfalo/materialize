@@ -99,12 +99,13 @@
           // Handle modal ready callback
           complete: function() {
             $("#lean-overlay").css({display:"none"});
+            $('#lean-overlay').remove();
 
             // Call complete callback
             if (typeof(options.complete) === "function") {
               options.complete();
             }
-            $('#lean-overlay').remove();
+
           }
         });
       }
@@ -112,12 +113,13 @@
         $(this).fadeOut(options.out_duration, function() {
           $(this).css({ top: 0});
           $("#lean-overlay").css({display:"none"});
+          $('#lean-overlay').remove();
 
           // Call complete callback
           if (typeof(options.complete) === "function") {
             options.complete();
           }
-          $('#lean-overlay').remove();
+
         });
       }
 
@@ -134,6 +136,21 @@
           e.preventDefault();
         }); // done set on click
       }); // done return
+    },
+
+    switchModal: function(options) {
+      var visibleModal = $('.modal:visible'),
+          modalToOpen = $(this);
+
+      if(visibleModal.length) {
+        visibleModal.closeModal({
+          complete: function() {
+              modalToOpen.openModal(options);
+          }
+        });
+      } else {
+        modalToOpen.openModal(options);
+      }
     }
   });
 })(jQuery);
