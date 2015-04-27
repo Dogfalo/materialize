@@ -37,3 +37,9 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - ScrollFire fixes
 
 
+
+## Contribution Guidelines
+- Fork this repo to your own git.
+- Make your changes.
+- Submit a pull request with full remarks documenting your changes.
+- Pull request MAY then be accepted by project creators. 
