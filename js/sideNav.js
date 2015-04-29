@@ -34,7 +34,7 @@
 
         // If fixed sidenav, bring menu out
         if (menu_id.hasClass('fixed')) {
-            if ($(window).width() > 992) {
+            if (window.innerWidth > 992) {
               menu_id.css('left', 0);
             }
           }
@@ -166,11 +166,11 @@
             }
             else {
               // Left Direction
-              if (x < ($(window).width() - options.menuWidth / 2)) {
+              if (x < (window.innerWidth - options.menuWidth / 2)) {
                 menuOut = true;
               }
               // Right Direction
-              else if (x >= ($(window).width() - options.menuWidth / 2)) {
+              else if (x >= (window.innerWidth - options.menuWidth / 2)) {
                menuOut = false;
              }
               var rightPos = -1 *(x - options.menuWidth / 2);
@@ -191,7 +191,7 @@
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
             else {
-              overlayPerc = Math.abs((x - $(window).width()) / options.menuWidth);
+              overlayPerc = Math.abs((x - window.innerWidth) / options.menuWidth);
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }
