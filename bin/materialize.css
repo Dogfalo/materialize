@@ -2172,6 +2172,8 @@ table {
     border-bottom: 1px solid #d0d0d0; }
   table.striped > tbody > tr:nth-child(odd) {
     background-color: #f2f2f2; }
+  table.striped > tbody > tr > td {
+    border-radius: 0px; }
   table.hoverable > tbody > tr {
     -webkit-transition: background-color .25s ease;
     -moz-transition: background-color .25s ease;

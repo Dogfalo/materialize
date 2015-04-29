@@ -305,8 +305,14 @@ table {
     border-bottom: 1px solid $table-border-color;
   }
 
-  &.striped > tbody > tr:nth-child(odd) {
-    background-color: $table-striped-color;
+  &.striped > tbody {
+    > tr:nth-child(odd) {
+      background-color: $table-striped-color;
+    }
+
+    > tr > td {
+      border-radius: 0px;
+    }
   }
 
   &.hoverable > tbody > tr {
