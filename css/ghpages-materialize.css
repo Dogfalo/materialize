@@ -5685,7 +5685,8 @@ small {
       .tabs .tab a:hover {
         color: #f9c9cb; }
     .tabs .tab.disabled a {
-      color: #f9c9cb; }
+      color: #f9c9cb;
+      cursor: default; }
   .tabs .indicator {
     position: absolute;
     bottom: 0;
