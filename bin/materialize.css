@@ -6236,6 +6236,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     left: 0.75rem;
     font-size: 1rem;
     cursor: text;
+    pointer-events: none;
     -webkit-transition: .2s ease-out;
     -moz-transition: .2s ease-out;
     -o-transition: .2s ease-out;
@@ -6243,6 +6244,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     transition: .2s ease-out; }
   .input-field label.active {
     font-size: 0.8rem;
+    pointer-events: auto;
     -webkit-transform: translateY(-140%);
     -moz-transform: translateY(-140%);
     -ms-transform: translateY(-140%);

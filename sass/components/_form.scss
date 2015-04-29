@@ -131,10 +131,12 @@ textarea.materialize-textarea {
     left: $gutter-width / 2;
     font-size: 1rem;
     cursor: text;
+    pointer-events: none;
     @include transition(.2s ease-out);
   }
   label.active {
     font-size: $label-font-size;
+    pointer-events: auto;
     @include transform(translateY(-140%));
   }
 
