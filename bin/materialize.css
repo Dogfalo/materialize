@@ -5684,6 +5684,8 @@ small {
       transition: color .28s ease; }
       .tabs .tab a:hover {
         color: #f9c9cb; }
+    .tabs .tab.disabled a {
+      color: #f9c9cb; }
   .tabs .indicator {
     position: absolute;
     bottom: 0;

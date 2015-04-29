@@ -28,6 +28,10 @@
         color: lighten($tabs-text-color, 20%);
       }
     }
+
+    &.disabled a {
+      color: lighten($tabs-text-color, 20%)
+    }
   }
   .indicator {
     position: absolute;
