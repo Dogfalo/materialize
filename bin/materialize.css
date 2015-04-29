@@ -5697,7 +5697,7 @@ small {
 .material-tooltip {
   padding: 10px 8px;
   font-size: 1rem;
-  z-index: 1000;
+  z-index: 2000;
   background-color: transparent;
   border-radius: 2px;
   color: #fff;
@@ -5985,7 +5985,6 @@ a.waves-effect .waves-ripple {
   width: 55%;
   margin: auto;
   overflow-y: auto;
-  z-index: 1000;
   border-radius: 2px;
   -webkit-transform: translate(0);
   -moz-transform: translate(0);
@@ -6012,7 +6011,7 @@ a.waves-effect .waves-ripple {
       float: right;
       margin: 6px 0; }
 
-#lean-overlay {
+.lean-overlay {
   position: fixed;
   z-index: 999;
   top: -100px;
