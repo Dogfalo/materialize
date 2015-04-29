@@ -8499,13 +8499,9 @@ a.button-collapse.top-nav {
 
 .shadow-demo {
   background-color: #26a69a;
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 100px;
   margin: 20px auto; }
-  @media only screen and (max-width: 1200px) {
-    .shadow-demo {
-      width: 100px;
-      height: 100px; } }
   @media only screen and (max-width: 600px) {
     .shadow-demo {
       width: 150px;

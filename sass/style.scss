@@ -510,15 +510,9 @@ $height: auto;
 // Shadow demo styling
 .shadow-demo {
   background-color: color("teal", "lighten-1");
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 100px;
   margin: 20px auto;
-
-  @media only screen and (max-width: $large-screen) {
-    width: 100px;
-    height: 100px;
-
-  }
 
   @media only screen and (max-width: $small-screen) {
     width: 150px;
