@@ -5375,7 +5375,8 @@ html {
       font-size: 15px; } }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400; }
+  font-weight: 400;
+  line-height: 1.1; }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: inherit; }
@@ -5430,129 +5431,66 @@ small {
   @media only screen and (min-width: 360px) {
     .flow-text {
       font-size: 1.2rem; } }
-  @media only screen and (min-width: 0px) {
-    .flow-text {
-      line-height: .8rem; } }
   @media only screen and (min-width: 390px) {
     .flow-text {
       font-size: 1.224rem; } }
-  @media only screen and (min-width: 30px) {
-    .flow-text {
-      line-height: .904rem; } }
   @media only screen and (min-width: 420px) {
     .flow-text {
       font-size: 1.248rem; } }
-  @media only screen and (min-width: 60px) {
-    .flow-text {
-      line-height: 1.008rem; } }
   @media only screen and (min-width: 450px) {
     .flow-text {
       font-size: 1.272rem; } }
-  @media only screen and (min-width: 90px) {
-    .flow-text {
-      line-height: 1.112rem; } }
   @media only screen and (min-width: 480px) {
     .flow-text {
       font-size: 1.296rem; } }
-  @media only screen and (min-width: 120px) {
-    .flow-text {
-      line-height: 1.216rem; } }
   @media only screen and (min-width: 510px) {
     .flow-text {
       font-size: 1.32rem; } }
-  @media only screen and (min-width: 150px) {
-    .flow-text {
-      line-height: 1.32rem; } }
   @media only screen and (min-width: 540px) {
     .flow-text {
       font-size: 1.344rem; } }
-  @media only screen and (min-width: 180px) {
-    .flow-text {
-      line-height: 1.424rem; } }
   @media only screen and (min-width: 570px) {
     .flow-text {
       font-size: 1.368rem; } }
-  @media only screen and (min-width: 210px) {
-    .flow-text {
-      line-height: 1.528rem; } }
   @media only screen and (min-width: 600px) {
     .flow-text {
       font-size: 1.392rem; } }
-  @media only screen and (min-width: 240px) {
-    .flow-text {
-      line-height: 1.632rem; } }
   @media only screen and (min-width: 630px) {
     .flow-text {
       font-size: 1.416rem; } }
-  @media only screen and (min-width: 270px) {
-    .flow-text {
-      line-height: 1.736rem; } }
   @media only screen and (min-width: 660px) {
     .flow-text {
       font-size: 1.44rem; } }
-  @media only screen and (min-width: 300px) {
-    .flow-text {
-      line-height: 1.84rem; } }
   @media only screen and (min-width: 690px) {
     .flow-text {
       font-size: 1.464rem; } }
-  @media only screen and (min-width: 330px) {
-    .flow-text {
-      line-height: 1.944rem; } }
   @media only screen and (min-width: 720px) {
     .flow-text {
       font-size: 1.488rem; } }
-  @media only screen and (min-width: 360px) {
-    .flow-text {
-      line-height: 2.048rem; } }
   @media only screen and (min-width: 750px) {
     .flow-text {
       font-size: 1.512rem; } }
-  @media only screen and (min-width: 390px) {
-    .flow-text {
-      line-height: 2.152rem; } }
   @media only screen and (min-width: 780px) {
     .flow-text {
       font-size: 1.536rem; } }
-  @media only screen and (min-width: 420px) {
-    .flow-text {
-      line-height: 2.256rem; } }
   @media only screen and (min-width: 810px) {
     .flow-text {
       font-size: 1.56rem; } }
-  @media only screen and (min-width: 450px) {
-    .flow-text {
-      line-height: 2.36rem; } }
   @media only screen and (min-width: 840px) {
     .flow-text {
       font-size: 1.584rem; } }
-  @media only screen and (min-width: 480px) {
-    .flow-text {
-      line-height: 2.464rem; } }
   @media only screen and (min-width: 870px) {
     .flow-text {
       font-size: 1.608rem; } }
-  @media only screen and (min-width: 510px) {
-    .flow-text {
-      line-height: 2.568rem; } }
   @media only screen and (min-width: 900px) {
     .flow-text {
       font-size: 1.632rem; } }
-  @media only screen and (min-width: 540px) {
-    .flow-text {
-      line-height: 2.672rem; } }
   @media only screen and (min-width: 930px) {
     .flow-text {
       font-size: 1.656rem; } }
-  @media only screen and (min-width: 570px) {
-    .flow-text {
-      line-height: 2.776rem; } }
   @media only screen and (min-width: 960px) {
     .flow-text {
       font-size: 1.68rem; } }
-  @media only screen and (min-width: 600px) {
-    .flow-text {
-      line-height: 2.88rem; } }
 
 .card-panel {
   padding: 20px;
@@ -5895,6 +5833,9 @@ button.btn-floating {
   line-height: 56px; }
   .btn-large i {
     font-size: 1.6rem; }
+
+.btn-block {
+  display: block; }
 
 .dropdown-content {
   background-color: #FFFFFF;
