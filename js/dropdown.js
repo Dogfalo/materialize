@@ -37,6 +37,8 @@
         options.gutter = origin.data('gutter');
       if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
+      if (origin.data('dropup') != undefined)
+        options.dropUp = origin.data('dropup');
     }
 
     updateOptions();
@@ -75,12 +77,28 @@
         gutter_spacing = gutter_spacing * -1;
       }
 
+       // If dropUp is enabled
+      if (options.dropUp == true) {
+        if (options.belowOrigin == false) {
+          // Open menu on top of button, if dropUp is on AND belowOrigin is false
+          top_offset = origin.position().top-activates.height() + origin.height();
+        } else {
+          // Show menu above button, if dropUp is enabled, belowOrigin is true
+          top_offset = origin.position().top-activates.height();
+        }
+      } else {
+        // Show regular menu
+        top_offset = origin.position().top + offset;
+      }
+
+
       // Position dropdown
       activates.css({
         position: 'absolute',
-        top: origin.position().top + offset,
+        top: top_offset,
         left: origin.position().left + width_difference + gutter_spacing
       });
+
 
 
 
