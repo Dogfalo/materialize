@@ -171,7 +171,6 @@
         left = width;
       }
       thumb.addClass('active').css('left', left);
-      thumb.find('.value').html($(this).children('input[type=range]').val());
 
     });
     $(document).on("mouseup", range_wrapper, function() {
@@ -179,7 +178,7 @@
       $(this).removeClass('active');
     });
 
-    $(document).on("mousemove", range_wrapper, function(e) {
+    $(document).on("change mousemove", range_wrapper, function(e) {
 
       var thumb = $(this).children('.thumb');
       if (range_mousedown) {
@@ -196,8 +195,10 @@
           left = width;
         }
         thumb.addClass('active').css('left', left);
-        thumb.find('.value').html($(this).children('input[type=range]').val());
+        
       }
+      
+      thumb.find('.value').html($(this).children('input[type=range]').val());
 
     });
     $(document).on("mouseout", range_wrapper, function() {
