@@ -81,11 +81,11 @@
     }
 
     // Toggle Flow Text
-    var toggleFlowTextButton = $('#flow-toggle')
+    var toggleFlowTextButton = $('#flow-toggle');
     toggleFlowTextButton.click( function(){
       $('#flow-text-demo').children('p').each(function(){
           $(this).toggleClass('flow-text');
-        })
+        });
     });
 
 //    Toggle Containers on page
@@ -113,7 +113,7 @@
       }
     }
     if (is_touch_device()) {
-      $('#nav-mobile').css({ overflow: 'auto'})
+      $('#nav-mobile').css({ overflow: 'auto'});
     }
 
     // Set checkbox on forms.html to indeterminate
@@ -123,8 +123,7 @@
 
 
     // Plugin initialization
-    $('.slider').slider({full_width: true, indicators: false});
-    $('.tab-demo').show().tabs();
+    $('.slider').slider({full_width: true});
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.scrollspy').scrollSpy();

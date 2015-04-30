@@ -6,14 +6,18 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     // Create toast container if it does not exist
     if (container === null) {
         // create notification container
-        var container = document.createElement('div');
+        container = document.createElement('div');
         container.id = 'toast-container';
         document.body.appendChild(container);
     }
 
     // Select and append toast
     var newToast = createToast(message);
-    container.appendChild(newToast);
+
+    // only append toast if message is not undefined
+    if(message){
+        container.appendChild(newToast);
+    }
 
     newToast.style.top = '35px';
     newToast.style.opacity = 0;
@@ -118,4 +122,4 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
         return toast;
     }
-}
+};

@@ -516,7 +516,6 @@ form p:last-child {
 
     background-color: transparent;
     border: 2px solid transparent;
-
   }
   &:disabled:not(:checked) + label:after {
     border-color: transparent;
@@ -578,17 +577,17 @@ form p:last-child {
     height: 21px;
     background-color: $switch-unchecked-bg;
     border-radius: 21px;
-    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
     left: -5px;
     top: -3px;
-    transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
+    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
 }
 // Switch active style
 input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px transparentize($switch-bg-color, .9);
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px transparentize($switch-bg-color, .9);
 }
 input[type=checkbox]:not(:disabled) ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.08);
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px rgba(0, 0, 0, .08);
 }
 .switch label input[type=checkbox]:checked + .lever:after {
     left: 24px;

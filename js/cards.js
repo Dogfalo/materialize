@@ -10,7 +10,7 @@
               duration: 225,
               queue: false,
               easing: 'easeInOutQuad',
-              complete: function() { $(this).css({ display: 'none'}) }
+              complete: function() { $(this).css({ display: 'none'}); }
             }
           );
         }

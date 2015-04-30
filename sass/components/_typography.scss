@@ -23,6 +23,7 @@ html{
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
+	line-height: 1.1;
 }
 
 // Header Styles
@@ -47,9 +48,6 @@ small { font-size: 75%; }
   @while $i <= $intervals {
     @media only screen and (min-width : 360 + ($i * $interval-size)) {
       font-size: 1.2rem * (1 + (.02 * $i));
-    }
-    @media only screen and (min-width : 0 + ($i * $interval-size)) {
-      line-height: .8rem * (1 + (.13 * $i));
     }
     $i: $i + 1;
   }
