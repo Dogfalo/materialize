@@ -3,7 +3,7 @@
   $.fn.characterCounter = function(){
     return this.each(function(){
 
-      itHasLengthAttribute = $(this).attr('length') != undefined;
+      itHasLengthAttribute = $(this).attr('length') !== undefined;
 
       if(itHasLengthAttribute){
         $(this).on('input', updateCounter);
