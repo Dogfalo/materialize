@@ -106,6 +106,9 @@
           $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
         }
 
+        // Trigger for post-tab change handling
+        $('ul.tabs').trigger('tab_change', $active);
+
         // Prevent the anchor's default click action
         e.preventDefault();
       });
