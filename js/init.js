@@ -123,8 +123,7 @@
 
 
     // Plugin initialization
-    $('.slider').slider({full_width: true, indicators: false});
-    $('.tab-demo').show().tabs();
+    $('.slider').slider({full_width: true});
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.scrollspy').scrollSpy();

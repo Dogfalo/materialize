@@ -1,45 +1,4 @@
 (function ($) {
-    // left: 37, up: 38, right: 39, down: 40,
-    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-    // var keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
-
-    // function preventDefault(e) {
-    //   e = e || window.event;
-    //   if (e.preventDefault)
-    //     e.preventDefault();
-    //   e.returnValue = false;
-    // }
-
-    // function keydown(e) {
-    //   for (var i = keys.length; i--;) {
-    //     if (e.keyCode === keys[i]) {
-    //       preventDefault(e);
-    //       return;
-    //     }
-    //   }
-    // }
-
-    // function wheel(e) {
-    //   preventDefault(e);
-    // }
-
-    // function disable_scroll() {
-    //   if (window.addEventListener) {
-    //     window.addEventListener('DOMMouseScroll', wheel, false);
-    //   }
-    //   window.onmousewheel = document.onmousewheel = wheel;
-    //   document.onkeydown = keydown;
-    //   $('body').css({'overflow-y' : 'hidden'});
-    // }
-
-    // function enable_scroll() {
-    //   if (window.removeEventListener) {
-    //     window.removeEventListener('DOMMouseScroll', wheel, false);
-    //   }
-    //   window.onmousewheel = document.onmousewheel = document.onkeydown = null;
-    //   $('body').css({'overflow-y' : ''});
-
-    // }
 
   var methods = {
     init : function(options) {
@@ -75,7 +34,7 @@
 
         // If fixed sidenav, bring menu out
         if (menu_id.hasClass('fixed')) {
-            if ($(window).width() > 992) {
+            if (window.innerWidth > 992) {
               menu_id.css('left', 0);
             }
           }
@@ -113,6 +72,10 @@
         function removeMenu(restoreNav) {
           panning = false;
           menuOut = false;
+
+          // Reenable scrolling
+          $('body').css('overflow', '');
+
           $('#sidenav-overlay').velocity({opacity: 0}, {duration: 200, queue: false, easing: 'easeOutQuad',
             complete: function() {
               $(this).remove();
@@ -175,6 +138,9 @@
             var y = e.gesture.center.y;
             var velocityX = e.gesture.velocityX;
 
+            // Disable Scrolling
+            $('body').css('overflow', 'hidden');
+
             // If overlay does not exist, create one and if it is clicked, close menu
             if ($('#sidenav-overlay').length === 0) {
               var overlay = $('<div id="sidenav-overlay"></div>');
@@ -200,11 +166,11 @@
             }
             else {
               // Left Direction
-              if (x < ($(window).width() - options.menuWidth / 2)) {
+              if (x < (window.innerWidth - options.menuWidth / 2)) {
                 menuOut = true;
               }
               // Right Direction
-              else if (x >= ($(window).width() - options.menuWidth / 2)) {
+              else if (x >= (window.innerWidth - options.menuWidth / 2)) {
                menuOut = false;
              }
               var rightPos = -1 *(x - options.menuWidth / 2);
@@ -225,12 +191,13 @@
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
             else {
-              overlayPerc = Math.abs((x - $(window).width()) / options.menuWidth);
+              overlayPerc = Math.abs((x - window.innerWidth) / options.menuWidth);
               $('#sidenav-overlay').velocity({opacity: overlayPerc }, {duration: 50, queue: false, easing: 'easeOutQuad'});
             }
           }
 
         }).bind('panend', function(e) {
+
           if (e.gesture.pointerType == "touch") {
             var velocityX = e.gesture.velocityX;
             panning = false;
@@ -242,6 +209,9 @@
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
               }
               else if (!menuOut || velocityX > 0.3) {
+                // Enable Scrolling
+                $('body').css('overflow', '');
+                // Slide menu closed
                 menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
                   complete: function () {
@@ -257,6 +227,9 @@
                 $('.drag-target').css({width: '50%', right: '', left: 0});
               }
               else if (!menuOut || velocityX < -0.3) {
+                // Enable Scrolling
+                $('body').css('overflow', '');
+                // Slide menu closed
                 menu_id.velocity({right: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
                   complete: function () {
@@ -276,6 +249,9 @@
               removeMenu();
             }
             else {
+
+              // Disable Scrolling
+              $('body').css('overflow', 'hidden');
 
               if (options.edge === 'left') {
                 $('.drag-target').css({width: '50%', right: 0, left: ''});
