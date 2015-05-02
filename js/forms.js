@@ -35,14 +35,17 @@
 
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {
-      if ($(e.target).is('form')) {
-        $(this).find(input_selector).removeClass('valid').removeClass('invalid');
-        $(this).find(input_selector).siblings('label, i').removeClass('active');
+      // Get targeted form
+      var tgt = $(e.target);
+
+      if (tgt.is('form')) {
+        tgt.find(input_selector).removeClass('valid').removeClass('invalid');
+        tgt.find(input_selector).siblings('label, i').removeClass('active');
 
         // Reset select
-        $(this).find('select.initialized').each(function () {
-          var reset_text = $(this).find('option[selected]').text();
-          $(this).siblings('input.select-dropdown').val(reset_text);
+        tgt.find('select.initialized').each(function () {
+            var reset_text = tgt.find('option[selected]').text();
+            tgt.siblings('input.select-dropdown').val(reset_text);
         });
       }
     });
