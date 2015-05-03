@@ -145,7 +145,7 @@ video.responsive-video {
     border-radius: 2px;
     text-align: center;
 
-    a { color: #444; }
+    a { color: #444; display: block; padding-bottom: 3px;}
 
     &.active a { color: #fff;}
 
