@@ -61,6 +61,10 @@
     });
 
     validate_field = function(object) {
+      var hasLength = object.attr('length') !== undefined;
+      var lenAttr = parseInt(object.attr('length'));
+      var len = object.val().length;
+
       if (object.val().length === 0 && object[0].validity.badInput === false) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
@@ -69,7 +73,8 @@
       }
       else {
         if (object.hasClass('validate')) {
-          if (object.is(':valid')) {
+          // Check for character counter attributes
+          if ((object.is(':valid') && hasLength && (len < lenAttr)) || (object.is(':valid') && !hasLength)) {
             object.removeClass('invalid');
             object.addClass('valid');
           }
