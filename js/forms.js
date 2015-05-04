@@ -35,14 +35,15 @@
 
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {
-      if ($(e.target).is('form')) {
-        $(this).find(input_selector).removeClass('valid').removeClass('invalid');
-        $(this).find(input_selector).siblings('label, i').removeClass('active');
+      var formReset = $(e.target);
+      if (formReset.is('form')) {
+        formReset.find(input_selector).removeClass('valid').removeClass('invalid');
+        formReset.find(input_selector).siblings('label, i').removeClass('active');
 
         // Reset select
-        $(this).find('select.initialized').each(function () {
-          var reset_text = $(this).find('option[selected]').text();
-          $(this).siblings('input.select-dropdown').val(reset_text);
+        formReset.find('select.initialized').each(function () {
+          var reset_text = formReset.find('option[selected]').text();
+          formReset.siblings('input.select-dropdown').val(reset_text);
         });
       }
     });
@@ -61,6 +62,10 @@
     });
 
     validate_field = function(object) {
+      var hasLength = object.attr('length') !== undefined;
+      var lenAttr = parseInt(object.attr('length'));
+      var len = object.val().length;
+
       if (object.val().length === 0 && object[0].validity.badInput === false) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
@@ -69,7 +74,8 @@
       }
       else {
         if (object.hasClass('validate')) {
-          if (object.is(':valid')) {
+          // Check for character counter attributes
+          if ((object.is(':valid') && hasLength && (len < lenAttr)) || (object.is(':valid') && !hasLength)) {
             object.removeClass('invalid');
             object.addClass('valid');
           }
