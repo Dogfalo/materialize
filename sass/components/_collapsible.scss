@@ -59,7 +59,7 @@
 
   .collapsible-body {
     border: 0;
-    background-color: #FFF;
+    background-color: $collapsible-header-color;
 
     li a { margin: 0 1rem 0 2rem; }
   }

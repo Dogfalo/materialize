@@ -113,7 +113,7 @@ nav {
         color: rgba(255,255,255,.7);
         @include transition(color .3s);
       }
-      &.active i { color: #fff; }
+      &.active i { color: $navbar-font-color; }
       &.active {
         @include transform(translateY(0));
       }
