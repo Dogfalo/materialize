@@ -20,18 +20,19 @@ $button-color-raised: #FFF !default;
 $button-floating-size: 37px !default;
 $button-height: 36px !default;
 $button-font-size-shared: 1.3rem !default;
+$button-large-icon-font-size: 1.6rem !default;
 $button-line-height: 36px !default;
-
 
 /*** Cards ***/
 $card-padding: 20px !default;
 $card-bg-color: #fff !default;
+$card-link-color: color("orange", "accent-2") !default;
+$card-link-color-light: lighten($card-link-color, 20%) !default;
 
 /*** Collapsible ***/
 $collapsible-height: 3rem !default;
 $collapsible-header-color: #fff !default;
 $collapsible-border-color: #ddd !default;
-
 
 /*** Dropdown ***/
 $dropdown-color: $secondary-color !default;
@@ -49,7 +50,6 @@ $input-focus-color: $secondary-color !default;
 $label-font-size: .8rem !default;
 $input-disabled-color: rgba(0,0,0, .26) !default;
 $input-disabled-solid-color: #BDBDBD !default;
-
 
 // Radio Buttons
 $radio-fill-color: $secondary-color !default;
