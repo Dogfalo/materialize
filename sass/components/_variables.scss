@@ -16,7 +16,7 @@ $button-bg-color-disabled: #DFDFDF !default;
 $button-color: $secondary-color !default;
 $button-color-disabled: #9F9F9F !default;
 $button-color-flat: #343434 !default;
-$button-color-raised: white !default;
+$button-color-raised: #fff !default;
 $button-floating-size: 37px !default;
 $button-height: 36px !default;
 $button-font-size-shared: 1.3rem !default;
@@ -25,17 +25,17 @@ $button-line-height: 36px !default;
 
 /*** Cards ***/
 $card-padding: 20px !default;
-$card-bg-color: white !default;
+$card-bg-color: #fff !default;
 $card-link-color: color("orange", "accent-2") !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
 /*** Collapsible ***/
 $collapsible-height: 3rem !default;
-$collapsible-header-color: white !default;
+$collapsible-header-color: #fff !default;
 $collapsible-border-color: #ddd !default;
 
 /*** Dropdown ***/
-$dropdown-bg-color: white !default;
+$dropdown-bg-color: #fff !default;
 $dropdown-hover-bg-color: #eee !default;
 $dropdown-color: $secondary-color !default;
 
@@ -46,7 +46,7 @@ $icons-font-path: "../font/material-design-icons/" !default;
 /*** Forms ***/
 // Text Inputs + Textarea
 $input-border-color: color("grey", "base") !default;
-$input-bg-color: white !default;
+$input-bg-color: #fff !default;
 $input-error-color: $error-color !default;
 $input-success-color: $success-color !default;
 $input-focus-color: $secondary-color !default;
@@ -97,21 +97,22 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 /*** Navbar ***/
 $navbar-height: 64px !default;
 $navbar-height-mobile: 56px !default;
-$navbar-font-color: white !default;
+$navbar-font-color: #fff !default;
 $navbar-brand-font-size: 2.1rem !default;
 
 /*** SideNav ***/
-$sidenav-bg-color: white !default;
+$sidenav-bg-color: #fff !default;
 $sidenav-padding-right: 15px !default;
 
-/*** Slider ***/
+/*** Photo Slider ***/
 $slider-bg-color: color('grey', 'base') !default;
 $slider-bg-color-light: color('grey', 'lighten-2') !default;
+$slider-indicator-color: color('green', 'base') !default;
 
 /*** Tabs ***/
 $tabs-underline-color: $primary-color-light !default;
 $tabs-text-color: $primary-color !default;
-$tabs-bg-color: white !default;
+$tabs-bg-color: #fff !default;
 
 /*** Tables ***/
 $table-border-color: #d0d0d0 !default;
@@ -120,7 +121,7 @@ $table-striped-color: #f2f2f2 !default;
 /*** Toasts ***/
 $toast-height: 48px !default;
 $toast-color: #323232 !default;
-$toast-text-color: white !default;
+$toast-text-color: #fff !default;
 
 /*** Typography ***/
 $off-black: rgba(0, 0, 0, 0.87) !default;
@@ -142,7 +143,7 @@ $interval-size: $range / $intervals !default;
 
 /*** Collections ***/
 $collection-border-color: #e0e0e0 !default;
-$collection-bg-color: white !default;
+$collection-bg-color: #fff !default;
 $collection-active-bg-color: $secondary-color !default;
 $collection-active-color: lighten($secondary-color, 55%) !default;
 $collection-hover-bg-color: #ddd !default;

@@ -1629,6 +1629,7 @@
 /*** Global ***/
 /*** Navbar ***/
 /*** SideNav ***/
+/*** Photo Slider ***/
 /*** Tabs ***/
 /*** Tables ***/
 /*** Toasts ***/
@@ -5582,7 +5583,7 @@ small {
   .card .card-reveal {
     padding: 20px;
     position: absolute;
-    background-color: #FFF;
+    background-color: #fff;
     width: 100%;
     overflow-y: auto;
     top: 100%;
@@ -5760,7 +5761,7 @@ small {
 
 .btn, .btn-large {
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
   background-color: #26a69a;
   text-align: center;
   letter-spacing: .5px;
@@ -5775,7 +5776,7 @@ small {
 
 .btn-floating {
   display: inline-block;
-  color: #FFF;
+  color: #fff;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -5792,7 +5793,7 @@ small {
     width: inherit;
     display: inline-block;
     text-align: center;
-    color: #FFF;
+    color: #fff;
     font-size: 1.6rem;
     line-height: 37px; }
   .btn-floating:before {
@@ -5844,7 +5845,7 @@ button.btn-floating {
   display: block; }
 
 .dropdown-content {
-  background-color: #FFFFFF;
+  background-color: #fff;
   margin: 0;
   display: none;
   min-width: 100px;
@@ -6098,7 +6099,7 @@ a.waves-effect .waves-ripple {
     line-height: inherit; }
 .side-nav .collapsible-body {
   border: 0;
-  background-color: #FFF; }
+  background-color: #fff; }
   .side-nav .collapsible-body li a {
     margin: 0 1rem 0 2rem; }
 
@@ -6285,7 +6286,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   padding-left: 4rem;
   width: calc(100% - 4rem); }
   .input-field input[type=search]:focus {
-    background-color: #FFF;
+    background-color: #fff;
     border: 0;
     box-shadow: none;
     color: #444; }
@@ -6943,7 +6944,7 @@ select {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #FFF;
+  background-color: #fff;
   z-index: 999;
   overflow-y: auto;
   will-change: left; }
