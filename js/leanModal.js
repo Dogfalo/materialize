@@ -9,8 +9,7 @@
   $.fn.extend({
     openModal: function(options) {
 
-      var overlay = $('<div id="lean-overlay"></div>');
-      $('body').css('overflow', 'hidden').append(overlay);
+      $('body').css('overflow', 'hidden');
 
       var defaults = {
         opacity: 0.5,
