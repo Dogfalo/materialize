@@ -158,13 +158,22 @@
     });
 
     var range_wrapper = '.range-field';
+    $(document).on('change', range_type, function(e) {
+      var thumb = $(this).siblings('.thumb');
+      thumb.find('.value').html($(this).val());
+    });
 
-      $(document).on('mousedown touchstart', range_type, function(e) {
-        var thumb = $(this).siblings('.thumb');
-        if (thumb.length <= 0) {
-          thumb = $('<span class="thumb"><span class="value"></span></span>');
-          $(this).append(thumb);
-        }
+    $(document).on('mousedown touchstart', range_type, function(e) {
+      var thumb = $(this).siblings('.thumb');
+
+      // If thumb indicator does not exist yet, create it
+      if (thumb.length <= 0) {
+        thumb = $('<span class="thumb"><span class="value"></span></span>');
+        $(this).append(thumb);
+      }
+
+      // Set indicator value
+      thumb.find('.value').html($(this).val());
 
       range_mousedown = true;
       $(this).addClass('active');
@@ -172,12 +181,13 @@
       if (!thumb.hasClass('active')) {
         thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
       }
+
       if(e.pageX === undefined || e.pageX === null){//mobile
          left = e.originalEvent.touches[0].pageX - $(this).offset().left;
-    }
-    else{ // desktop
-       left = e.pageX - $(this).offset().left;
-    }
+      }
+      else{ // desktop
+         left = e.pageX - $(this).offset().left;
+      }
       var width = $(this).outerWidth();
 
       if (left < 0) {
@@ -187,7 +197,8 @@
         left = width;
       }
       thumb.addClass('active').css('left', left);
-      thumb.find('.value').html($(this).children('input[type=range]').val());
+      thumb.find('.value').html($(this).val());
+
 
     });
 
@@ -218,7 +229,7 @@
           left = width;
         }
         thumb.addClass('active').css('left', left);
-        thumb.find('.value').html($(this).children('input[type=range]').val());
+
       }
 
     });
@@ -310,8 +321,7 @@
       if ( $select.is(':disabled') )
         dropdownIcon.addClass('disabled');
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '')
-                       + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
+      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
