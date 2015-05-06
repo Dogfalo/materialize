@@ -181,7 +181,7 @@ textarea.materialize-textarea {
   width: calc(100% - 4rem);
 
   &:focus {
-    background-color: #FFF;
+    background-color: $input-bg-color;
     border: 0;
     box-shadow: none;
     color: #444;
@@ -494,8 +494,8 @@ form p:last-child {
       height: 13px;
       border-top: 2px solid transparent;
       border-left: 2px solid transparent;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
+      border-right: 2px solid $input-bg-color;
+      border-bottom: 2px solid $input-bg-color;
       -webkit-transform: rotateZ(37deg);
       transform: rotateZ(37deg);
 
@@ -764,7 +764,7 @@ input[type=range] + .thumb {
     border-radius: 50% 50% 50% 0;
 
     .value {
-      color: #fff;
+      color: $input-bg-color;
       margin-left: -1px;
       margin-top: 8px;
       font-size: 10px;
