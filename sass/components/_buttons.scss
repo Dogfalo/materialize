@@ -76,7 +76,7 @@
     display: inline-block;
     text-align: center;
     color: $button-color-raised;
-    font-size: 1.6rem;
+    font-size: $button-large-icon-font-size;
     line-height: $button-floating-size;
   }
 
@@ -147,7 +147,7 @@ button.btn-floating {
   line-height: 56px;
 
   i {
-    font-size: 1.6rem;
+    font-size: $button-large-icon-font-size;
   }
 }
 
