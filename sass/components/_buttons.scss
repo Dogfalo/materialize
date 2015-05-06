@@ -15,9 +15,9 @@
 }
 // Disabled shared style
 .btn.disabled, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-floating:disabled {
-  background-color: $button-bg-color-disabled;
+  background-color: $button-bg-color-disabled !important;
   box-shadow: none;
-  color: $button-color-disabled;
+  color: $button-color-disabled !important;
   cursor: default;
   * {
     pointer-events: none;
