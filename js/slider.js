@@ -10,7 +10,6 @@
         interval: 6000
       };
       options = $.extend(defaults, options);
-      console.log(options);
 
       return this.each(function() {
 
@@ -73,7 +72,6 @@
           }
         }
 
-        console.log(options.height);
         // Set height of slider
         if (options.indicators) {
           // Add height if indicators are present
@@ -89,15 +87,6 @@
         $slides.find('.caption').each(function () {
           captionTransition($(this), 0);
         });
-
-        // Set initial dimensions of images
-        // $slides.find('img').each(function () {
-        //   $(this).load(function () {
-        //     if ($(this).width() < $(this).parent().width()) {
-        //       $(this).css({width: '100%', height: 'auto'});
-        //     }
-        //   });
-        // });
 
         // Move img src into background-image
         $slides.find('img').each(function () {
