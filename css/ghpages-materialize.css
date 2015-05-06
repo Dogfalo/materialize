@@ -2309,6 +2309,8 @@ td, th {
     padding: 10px 20px; }
   .collection.with-header .collection-item {
     padding-left: 30px; }
+  .collection.with-header .collection-item.avatar {
+    padding-left: 72px; }
 
 .secondary-content {
   float: right;
