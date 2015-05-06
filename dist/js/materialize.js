@@ -2556,7 +2556,7 @@ $(document).ready(function(){
 
     var range_wrapper = '.range-field';
 
-      $(document).on("mousedown", range_wrapper, function(e) {
+      $(document).on("mousedown touchstart", range_wrapper, function(e) {
         var thumb = $(this).children('.thumb');
         if (thumb.length <= 0) {
           thumb = $('<span class="thumb"><span class="value"></span></span>');
@@ -2569,7 +2569,12 @@ $(document).ready(function(){
       if (!thumb.hasClass('active')) {
         thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
       }
-      var left = e.pageX - $(this).offset().left;
+	  if(e.pageX === undefined || e.pageX === null){//mobile
+      	var left = e.originalEvent.touches[0].pageX - $(this).offset().left;
+	  }
+	  else{ // desktop
+	  	var left = e.pageX - $(this).offset().left;
+	  }
       var width = $(this).outerWidth();
 
       if (left < 0) {
@@ -2582,19 +2587,23 @@ $(document).ready(function(){
       thumb.find('.value').html($(this).children('input[type=range]').val());
 
     });
-    $(document).on("mouseup", range_wrapper, function() {
+    $(document).on("mouseup touchend", range_wrapper, function() {
       range_mousedown = false;
       $(this).removeClass('active');
     });
 
-    $(document).on("mousemove", range_wrapper, function(e) {
-
+    $(document).on("mousemove touchmove", range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
           thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
         }
-        var left = e.pageX - $(this).offset().left;
+        if(e.pageX === undefined || e.pageX === null){//mobile
+			var left = e.originalEvent.touches[0].pageX - $(this).offset().left;
+		  }
+		  else{ // desktop
+			var left = e.pageX - $(this).offset().left;
+		  }
         var width = $(this).outerWidth();
 
         if (left < 0) {
@@ -2608,7 +2617,8 @@ $(document).ready(function(){
       }
 
     });
-    $(document).on("mouseout", range_wrapper, function() {
+	
+    $(document).on("mouseout touchend", range_wrapper, function() {
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
