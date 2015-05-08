@@ -1,6 +1,10 @@
 .dropdown-content {
   @extend .z-depth-1;
-  background-color: #FFFFFF;
+  @if $dark-theme == true {
+    background-color: color("grey", "darken-3");
+  } @else {
+    background-color: #FFFFFF;
+  }
   margin: 0;
   display: none;
   min-width: 100px;
@@ -21,7 +25,11 @@
     text-transform: none;
 
     &:hover, &.active {
-      background-color: #eee;
+      @if $dark-theme == true {
+        background-color: #666;
+      } @else {
+        background-color: #eee;
+      }
     }
 
     & > a, & > span {
