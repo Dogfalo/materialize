@@ -27,7 +27,11 @@ $button-line-height: 36px !default;
 
 /*** Cards ***/
 $card-padding: 20px !default;
-$card-bg-color: #fff !default;
+@if $dark-theme == true {
+  $card-bg-color: color("grey", "darken-3") !default;
+} @else {
+  $card-bg-color: #FFF !default;
+}
 
 /*** Collapsible ***/
 $collapsible-height: 3rem !default;
