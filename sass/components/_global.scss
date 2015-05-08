@@ -14,6 +14,7 @@ body {
   // display: flex;
   // min-height: 100vh;
   // flex-direction: column;
+    @if $dark-theme == true { background-color: #303030; }
 }
 
 main {
