@@ -113,8 +113,13 @@ $tabs-text-color: $primary-color !default;
 $tabs-bg-color: #fff !default;
 
 /*** Tables ***/
-$table-border-color: #d0d0d0 !default;
-$table-striped-color: #f2f2f2 !default;
+@if $dark-theme == true {
+  $table-border-color: color("grey", "base") !default;
+  $table-striped-color: #393939 !default;
+} @else {
+  $table-border-color: #d0d0d0 !default;
+  $table-striped-color: #f2f2f2 !default;
+}
 
 /*** Toasts ***/
 $toast-height: 48px !default;
