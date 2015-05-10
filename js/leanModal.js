@@ -17,7 +17,8 @@
         out_duration: 250,
         ready: undefined,
         complete: undefined,
-        dismissible: true
+        dismissible: true,
+        starting_top: '4%'
       },
       overlayID = _generateID(),
       $modal = $(this),
@@ -74,8 +75,9 @@
         });
       }
       else {
-        $modal.css({ top: "4%" });
-        $modal.velocity({top: "10%", opacity: 1}, {
+        $.Velocity.hook($modal, "scaleX", 0.7);
+        $modal.css({ top: options.starting_top });
+        $modal.velocity({top: "10%", opacity: 1, scaleX: '1'}, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
@@ -98,10 +100,11 @@
         out_duration: 250,
         complete: undefined
       },
-      options = $.extend(defaults, options),
       $modal = $(this),
       overlayID = $modal.data('overlay-id'),
       $overlay = $('#' + overlayID);
+
+      options = $.extend(defaults, options);
 
       // Disable scrolling
       $('body').css('overflow', '');
@@ -132,19 +135,23 @@
         });
       }
       else {
-        $modal.fadeOut(options.out_duration, function() {
-          $modal.css({ top: 0});
-          $overlay.css({display:"none"});
+        $modal.velocity(
+          { top: options.starting_top, opacity: 0, scaleX: 0.7}, {
+          duration: options.out_duration,
+          complete:
+            function() {
 
-          // Call complete callback
-          if (typeof(options.complete) === "function") {
-            options.complete();
+              $(this).css('display', 'none');
+              // Call complete callback
+              if (typeof(options.complete) === "function") {
+                options.complete();
+              }
+              $overlay.remove();
+              _stack--;
+            }
           }
-          $overlay.remove();
-          _stack--;
-        });
+        );
       }
-
     }
   });
 
@@ -153,6 +160,7 @@
       return this.each(function() {
         // Close Handlers
         $(this).click(function(e) {
+          options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.25;
           var modal_id = $(this).attr("href") || '#' + $(this).data('target');
           $(modal_id).openModal(options);
           e.preventDefault();

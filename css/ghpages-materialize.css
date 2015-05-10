@@ -5991,11 +5991,6 @@ a.waves-effect .waves-ripple {
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
-  -webkit-transform: translate(0);
-  -moz-transform: translate(0);
-  -ms-transform: translate(0);
-  -o-transform: translate(0);
-  transform: translate(0);
   will-change: top, opacity; }
   @media only screen and (max-width : 992px) {
     .modal {
