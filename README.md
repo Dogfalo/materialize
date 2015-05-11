@@ -37,3 +37,5 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - ScrollFire fixes
 
 
+## Contributing
+[Please read CONTRIBUTING.md for more information](CONTRIBUTING.md)

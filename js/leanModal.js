@@ -1,9 +1,15 @@
 (function($) {
+    var _stack = 0,
+    _lastID = 0,
+    _generateID = function() {
+      _lastID++;
+      return 'materialize-lean-overlay-' + _lastID;
+    };
+
   $.fn.extend({
     openModal: function(options) {
-      var modal = this;
-      var overlay = $('<div id="lean-overlay"></div>');
-      $("body").append(overlay);
+
+      $('body').css('overflow', 'hidden');
 
       var defaults = {
         opacity: 0.5,
@@ -12,40 +18,50 @@
         ready: undefined,
         complete: undefined,
         dismissible: true
-      }
+      },
+      overlayID = _generateID(),
+      $modal = $(this),
+      $overlay = $('<div class="lean-overlay"></div>'),
+      lStack = (++_stack);
+
+      // Store a reference of the overlay
+      $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
+      $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
+
+      $("body").append($overlay);
 
       // Override defaults
       options = $.extend(defaults, options);
 
       if (options.dismissible) {
-        $("#lean-overlay").click(function() {
-          $(modal).closeModal(options);
+        $overlay.click(function() {
+          $modal.closeModal(options);
         });
         // Return on ESC
-        $(document).on('keyup.leanModal', function(e) {
+        $(document).on('keyup.leanModal' + overlayID, function(e) {
           if (e.keyCode === 27) {   // ESC key
-            $(modal).closeModal(options);
+            $modal.closeModal(options);
           }
         });
       }
 
-      $(modal).find(".modal-close").click(function(e) {
-        $(modal).closeModal(options);
+      $modal.find(".modal-close").click(function(e) {
+        $modal.closeModal(options);
       });
 
-      $("#lean-overlay").css({ display : "block", opacity : 0 });
+      $overlay.css({ display : "block", opacity : 0 });
 
-      $(modal).css({
+      $modal.css({
         display : "block",
         opacity: 0
       });
 
-      $("#lean-overlay").velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
-
+      $overlay.velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
+      $modal.data('associated-overlay', $overlay[0]);
 
       // Define Bottom Sheet animation
-      if ($(modal).hasClass('bottom-sheet')) {
-        $(modal).velocity({bottom: "0", opacity: 1}, {
+      if ($modal.hasClass('bottom-sheet')) {
+        $modal.velocity({bottom: "0", opacity: 1}, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
@@ -58,8 +74,8 @@
         });
       }
       else {
-        $(modal).css({ top: "4%" });
-        $(modal).velocity({top: "10%", opacity: 1}, {
+        $modal.css({ top: "4%" });
+        $modal.velocity({top: "10%", opacity: 1}, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
@@ -81,48 +97,56 @@
       var defaults = {
         out_duration: 250,
         complete: undefined
-      }
-      var options = $.extend(defaults, options);
+      },
+      options = $.extend(defaults, options),
+      $modal = $(this),
+      overlayID = $modal.data('overlay-id'),
+      $overlay = $('#' + overlayID);
 
-      $('.modal-close').off();
-      $(document).off('keyup.leanModal');
+      // Disable scrolling
+      $('body').css('overflow', '');
 
-      $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
+      $modal.find('.modal-close').off();
+      $(document).off('keyup.leanModal' + overlayID);
+
+      $overlay.velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
 
 
       // Define Bottom Sheet animation
-      if ($(this).hasClass('bottom-sheet')) {
-        $(this).velocity({bottom: "-100%", opacity: 0}, {
+      if ($modal.hasClass('bottom-sheet')) {
+        $modal.velocity({bottom: "-100%", opacity: 0}, {
           duration: options.out_duration,
           queue: false,
           ease: "easeOutCubic",
           // Handle modal ready callback
           complete: function() {
-            $("#lean-overlay").css({display:"none"});
+            $overlay.css({display:"none"});
 
             // Call complete callback
             if (typeof(options.complete) === "function") {
               options.complete();
             }
-            $('#lean-overlay').remove();
+            $overlay.remove();
+            _stack--;
           }
         });
       }
       else {
-        $(this).fadeOut(options.out_duration, function() {
-          $(this).css({ top: 0});
-          $("#lean-overlay").css({display:"none"});
+        $modal.fadeOut(options.out_duration, function() {
+          $modal.css({ top: 0});
+          $overlay.css({display:"none"});
 
           // Call complete callback
           if (typeof(options.complete) === "function") {
             options.complete();
           }
-          $('#lean-overlay').remove();
+          $overlay.remove();
+          _stack--;
         });
       }
 
     }
-  })
+  });
 
   $.fn.extend({
     leanModal: function(options) {

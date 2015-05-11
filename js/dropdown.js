@@ -15,7 +15,7 @@
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false
-    }
+    };
 
     this.each(function(){
     var origin = $(this);
@@ -38,17 +38,17 @@
     activates = activates ? activates : $(selector);
 
     function updateOptions() {
-      if (origin.data('induration') != undefined)
+      if (origin.data('induration') !== undefined)
         options.inDuration = origin.data('inDuration');
-      if (origin.data('outduration') != undefined)
+      if (origin.data('outduration') !== undefined)
         options.outDuration = origin.data('outDuration');
-      if (origin.data('constrainwidth') != undefined)
+      if (origin.data('constrainwidth') !== undefined)
         options.constrain_width = origin.data('constrainwidth');
-      if (origin.data('hover') != undefined)
+      if (origin.data('hover') !== undefined)
         options.hover = origin.data('hover');
-      if (origin.data('gutter') != undefined)
+      if (origin.data('gutter') !== undefined)
         options.gutter = origin.data('gutter');
-      if (origin.data('beloworigin') != undefined)
+      if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
     }
 
@@ -68,11 +68,11 @@
       activates.addClass('active');
 
       // Constrain width
-      if (options.constrain_width == true) {
+      if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
       var offset = 0;
-      if (options.belowOrigin == true) {
+      if (options.belowOrigin === true) {
         offset = origin.height();
       }
 
@@ -120,7 +120,7 @@
       origin.on('mouseenter', function(e){ // Mouse over
         if (open === false) {
           placeDropdown();
-          open = true
+          open = true;
         }
       });
       origin.on('mouseleave', function(e){

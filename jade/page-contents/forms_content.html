@@ -253,7 +253,7 @@
       </div>
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
-        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field for proper alignment with other text fields.</code> </p>
+        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
         <div class="row">
           <form class="col s12 m6">
             <div class="row">
@@ -575,7 +575,7 @@
         <h2 class="header">Date Picker</h2>
         <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
         <label for="birthdate">Birthdate</label>
-        <input id="birthdate" type="text" class="datepicker"></input>
+        <input id="birthdate" type="text" class="datepicker">
         <pre><code class="language-markup">
   &lt;input type="date" class="datepicker">
         </code></pre>
@@ -630,6 +630,13 @@
     &lt;/div>
           </code></pre>
         <br>
+        <h4>Initialization</h4>
+        <p>There are no options for this plugin, but if you are adding these dynamically, you can use this to initialize them.</p>
+        <pre><code class="language-javascript">
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea1').characterCounter();
+  });
+        </code></pre>
       </div>
 
 

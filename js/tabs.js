@@ -66,6 +66,11 @@
 
       // Bind the click event handler
       $this.on('click', 'a', function(e){
+        if ($(this).parent().hasClass('disabled')) {
+          e.preventDefault();
+          return;
+        }
+
         $tabs_width = $this.width();
         $tab_width = $this.find('li').first().outerWidth();
 

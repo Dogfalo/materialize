@@ -5,14 +5,14 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined) {
+        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
           $(this).siblings('label, i').addClass('active');
         }
         else {
           $(this).siblings('label, i').removeClass('active');
         }
       });
-    }
+    };
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
@@ -35,14 +35,19 @@
 
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {
-      if ($(e.target).is('form')) {
-        $(this).find(input_selector).removeClass('valid').removeClass('invalid');
-        $(this).find(input_selector).siblings('label, i').removeClass('active');
+      var formReset = $(e.target);
+      if (formReset.is('form')) {
+        formReset.find(input_selector).removeClass('valid').removeClass('invalid');
+        formReset.find(input_selector).each(function () {
+          if ($(this).attr('value') === '') {
+            $(this).siblings('label, i').removeClass('active');
+          }
+        });
 
         // Reset select
-        $(this).find('select.initialized').each(function () {
-          var reset_text = $(this).find('option[selected]').text();
-          $(this).siblings('input.select-dropdown').val(reset_text);
+        formReset.find('select.initialized').each(function () {
+          var reset_text = formReset.find('option[selected]').text();
+          formReset.siblings('input.select-dropdown').val(reset_text);
         });
       }
     });
@@ -53,14 +58,19 @@
     });
 
     $(document).on('blur', input_selector, function () {
-      if ($(this).val().length === 0 && $(this).attr('placeholder') === undefined) {
-        $(this).siblings('label, i').removeClass('active');
+      var $inputElement = $(this);
+      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
+        $inputElement.siblings('label, i').removeClass('active');
       }
-      validate_field($(this));
+      validate_field($inputElement);
     });
 
     validate_field = function(object) {
-      if (object.val().length === 0) {
+      var hasLength = object.attr('length') !== undefined;
+      var lenAttr = parseInt(object.attr('length'));
+      var len = object.val().length;
+
+      if (object.val().length === 0 && object[0].validity.badInput === false) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
@@ -68,7 +78,8 @@
       }
       else {
         if (object.hasClass('validate')) {
-          if (object.is(':valid')) {
+          // Check for character counter attributes
+          if ((object.is(':valid') && hasLength && (len < lenAttr)) || (object.is(':valid') && !hasLength)) {
             object.removeClass('invalid');
             object.addClass('valid');
           }
@@ -78,7 +89,7 @@
           }
         }
       }
-    }
+    };
 
 
     // Textarea Auto Resize
@@ -90,9 +101,16 @@
     var text_area_selector = '.materialize-textarea';
 
     function textareaAutoResize($textarea) {
+      // Set fontsize of hiddenDiv
+      var fontSize = $textarea.css('font-size');
+      if (fontSize) {
+        hiddenDiv.css('font-size', fontSize);
+      }
+
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
       hiddenDiv.html(content);
+
 
       // When textarea is hidden, width goes crazy.
       // Approximate with half of window size
@@ -129,9 +147,14 @@
     });
 
 
-    // Range Input
+
+    /****************
+    *  Range Input  *
+    ****************/
+
     var range_type = 'input[type=range]';
     var range_mousedown = false;
+    var left;
 
     $(range_type).each(function () {
       var thumb = $('<span class="thumb"><span class="value"></span></span>');
@@ -139,13 +162,22 @@
     });
 
     var range_wrapper = '.range-field';
+    $(document).on('change', range_type, function(e) {
+      var thumb = $(this).siblings('.thumb');
+      thumb.find('.value').html($(this).val());
+    });
 
-      $(document).on("mousedown", range_wrapper, function(e) {
-        var thumb = $(this).children('.thumb');
-        if (thumb.length <= 0) {
-          thumb = $('<span class="thumb"><span class="value"></span></span>');
-          $(this).append(thumb);
-        }
+    $(document).on('mousedown touchstart', range_type, function(e) {
+      var thumb = $(this).siblings('.thumb');
+
+      // If thumb indicator does not exist yet, create it
+      if (thumb.length <= 0) {
+        thumb = $('<span class="thumb"><span class="value"></span></span>');
+        $(this).append(thumb);
+      }
+
+      // Set indicator value
+      thumb.find('.value').html($(this).val());
 
       range_mousedown = true;
       $(this).addClass('active');
@@ -153,7 +185,13 @@
       if (!thumb.hasClass('active')) {
         thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
       }
-      var left = e.pageX - $(this).offset().left;
+
+      if(e.pageX === undefined || e.pageX === null){//mobile
+         left = e.originalEvent.touches[0].pageX - $(this).offset().left;
+      }
+      else{ // desktop
+         left = e.pageX - $(this).offset().left;
+      }
       var width = $(this).outerWidth();
 
       if (left < 0) {
@@ -163,22 +201,29 @@
         left = width;
       }
       thumb.addClass('active').css('left', left);
-      thumb.find('.value').html($(this).children('input[type=range]').val());
+      thumb.find('.value').html($(this).val());
+
 
     });
-    $(document).on("mouseup", range_wrapper, function() {
+
+    $(document).on('mouseup touchend', range_wrapper, function() {
       range_mousedown = false;
       $(this).removeClass('active');
     });
 
-    $(document).on("mousemove", range_wrapper, function(e) {
-
+    $(document).on('mousemove touchmove', range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
+      var left;
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
+          thumb.velocity({ height: '30px', width: '30px', top: '-20px', marginLeft: '-15px'}, { duration: 300, easing: 'easeOutExpo' });
         }
-        var left = e.pageX - $(this).offset().left;
+        if (e.pageX === undefined || e.pageX === null) { //mobile
+          left = e.originalEvent.touches[0].pageX - $(this).offset().left;
+        }
+        else{ // desktop
+          left = e.pageX - $(this).offset().left;
+        }
         var width = $(this).outerWidth();
 
         if (left < 0) {
@@ -188,17 +233,18 @@
           left = width;
         }
         thumb.addClass('active').css('left', left);
-        thumb.find('.value').html($(this).children('input[type=range]').val());
+
       }
 
     });
-    $(document).on("mouseout", range_wrapper, function() {
+
+    $(document).on('mouseout touchleave', range_wrapper, function() {
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
 
         if (thumb.hasClass('active')) {
-          thumb.velocity({ height: "0", width: "0", top: "10px", marginLeft: "-6px"}, { duration: 100 });
+          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '-6px'}, { duration: 100 });
         }
         thumb.removeClass('active');
       }
@@ -240,11 +286,13 @@
       wrapper.addClass($select.attr('class'));
       var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content select-dropdown"></ul>');
       var selectOptions = $select.children('option');
+
+      var label;
       if ($select.find('option:selected') !== undefined) {
-        var label = $select.find('option:selected');
+        label = $select.find('option:selected');
       }
       else {
-        var label = options.first();
+        label = options.first();
       }
 
 
@@ -277,8 +325,7 @@
       if ( $select.is(':disabled') )
         dropdownIcon.addClass('disabled');
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '')
-                       + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
+      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
@@ -313,36 +360,36 @@
         collection.find('li.active').removeClass('active');
         $(newOption).addClass('active');
         collection.scrollTo(newOption);
-      }
+      };
 
       // Allow user to search by typing
       // this array is cleared after 1 second
-      filterQuery = []
+      filterQuery = [];
 
       onKeyDown = function(event){
         // TAB - switch to another input
         if(event.which == 9){
           $newSelect.trigger('close');
-          return
+          return;
         }
 
         // ARROW DOWN WHEN SELECT IS CLOSED - open select options
         if(event.which == 40 && !options.is(":visible")){
           $newSelect.trigger('open');
-          return
+          return;
         }
 
         // ENTER WHEN SELECT IS CLOSED - submit form
         if(event.which == 13 && !options.is(":visible")){
-          return
+          return;
         }
 
         event.preventDefault();
 
         // CASE WHEN USER TYPE LETTERS
         letter = String.fromCharCode(event.which).toLowerCase();
-
-        if (letter){
+        var nonLetters = [9,13,27,38,40];
+        if (letter && (nonLetters.indexOf(event.which) === -1)){
           filterQuery.push(letter);
 
           string = filterQuery.join("");
@@ -387,11 +434,11 @@
         }
 
         // Automaticaly clean filter query so user can search again by starting letters
-        setTimeout(function(){filterQuery = []}, 1000)
-      }
+        setTimeout(function(){ filterQuery = []; }, 1000);
+      };
 
       $newSelect.on('keydown', onKeyDown);
     });
-  }
+  };
 
 }( jQuery ));

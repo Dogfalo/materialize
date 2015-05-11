@@ -112,6 +112,26 @@
           </code></pre>
         </div>
 
+        <div id="bottom-sheet" class="scrollspy section">
+          <h4>Bottom Sheet Modals</h4>
+          <p>Bottom Sheet Modals are good for displaying actions to the user on the bottom of a screen. They still act the same as regular modals.</p>
+          <pre><code class="language-markup">
+  &lt;!-- Modal Trigger -->
+  &lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
+
+  &lt;!-- Modal Structure -->
+  &lt;div id="modal1" class="modal bottom-sheet">
+    &lt;div class="modal-content">
+      &lt;h4>Modal Header&lt;/h4>
+      &lt;p>A bunch of text&lt;/p>
+    &lt;/div>
+    &lt;div class="modal-footer">
+      &lt;a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree&lt;/a>
+    &lt;/div>
+  &lt;/div>
+          </code></pre>
+        </div>
+
         <div id="button-trigger" class="scrollspy section">
           <h4>Modals with Button trigger</h4>
           <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather that the href attribute. </p>
@@ -175,6 +195,7 @@
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#structure">Structure</a></li>
           <li><a href="#fixed-footer">Fixed Footer</a></li>
+          <li><a href="#bottom-sheet">Bottom Sheet</a></li>
           <li><a href="#button-trigger">Button Trigger</a></li>
           <li><a href="#initialization">Intialization</a></li>
           <li><a href="#options">Options</a></li>
