@@ -22,6 +22,10 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     newToast.style.top = '35px';
     newToast.style.opacity = 0;
 
+    newToast.onclick = function(e) {
+      if (e.target.classList.contains('toast-dismiss')) dismissToast();
+    };
+
     // Animate toast in
     Vel(newToast, { "top" : "0px", opacity: 1 }, {duration: 300,
       easing: 'easeOutCubic',
@@ -30,7 +34,6 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     // Allows timer to be pause while being panned
     var timeLeft = displayLength;
     var counterInterval = setInterval (function(){
-
 
       if (newToast.parentNode === null)
         window.clearInterval(counterInterval);
@@ -41,22 +44,9 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
       }
 
       if (timeLeft <= 0) {
-        // Animate toast out
-        Vel(newToast, {"opacity": 0, marginTop: '-40px'}, { duration: 375,
-            easing: 'easeOutExpo',
-            queue: false,
-            complete: function(){
-              // Call the optional callback
-              if(typeof(completeCallback) === "function")
-                completeCallback();
-              // Remove toast after it times out
-              this[0].parentNode.removeChild(this[0]);
-            }
-          });
-        window.clearInterval(counterInterval);
+        dismissToast()
       }
     }, 20);
-
 
 
     function createToast(html) {
@@ -121,5 +111,21 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         });
 
         return toast;
+    }
+
+    function dismissToast() {
+      // Animate toast out
+      Vel(newToast, {"opacity": 0, marginTop: '-40px'}, { duration: 375,
+          easing: 'easeOutExpo',
+          queue: false,
+          complete: function(){
+            // Call the optional callback
+            if(typeof(completeCallback) === "function")
+              completeCallback();
+            // Remove toast after it times out
+            this[0].parentNode.removeChild(this[0]);
+          }
+        });
+      window.clearInterval(counterInterval);
     }
 };
