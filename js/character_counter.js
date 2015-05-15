@@ -17,8 +17,15 @@
   };
 
   function updateCounter(){
+    var value = $(this).val(),
+    regExp = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+
+    if (regExp.test(value)) {
+      value = value.replace(regExp, '_');
+    }
+
     var maxLength     = +$(this).attr('length'),
-    actualLength      = +$(this).val().length,
+    actualLength      = +value.length,
     isValidLength     = actualLength <= maxLength;
 
     $(this).parent().find('span[class="character-counter"]')
