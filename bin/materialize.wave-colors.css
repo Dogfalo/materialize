@@ -1,0 +1,512 @@
+.waves-effect.waves-red-lighten-5 .waves-ripple {
+background-color: rgba(255, 235, 238, 0.7); }
+.waves-effect.waves-red-lighten-4 .waves-ripple {
+background-color: rgba(255, 205, 210, 0.7); }
+.waves-effect.waves-red-lighten-3 .waves-ripple {
+background-color: rgba(239, 154, 154, 0.7); }
+.waves-effect.waves-red-lighten-2 .waves-ripple {
+background-color: rgba(229, 115, 115, 0.7); }
+.waves-effect.waves-red-lighten-1 .waves-ripple {
+background-color: rgba(239, 83, 80, 0.7); }
+.waves-effect.waves-red .waves-ripple {
+background-color: rgba(244, 67, 54, 0.7); }
+.waves-effect.waves-red-darken-1 .waves-ripple {
+background-color: rgba(229, 57, 53, 0.7); }
+.waves-effect.waves-red-darken-2 .waves-ripple {
+background-color: rgba(211, 47, 47, 0.7); }
+.waves-effect.waves-red-darken-3 .waves-ripple {
+background-color: rgba(198, 40, 40, 0.7); }
+.waves-effect.waves-red-darken-4 .waves-ripple {
+background-color: rgba(183, 28, 28, 0.7); }
+.waves-effect.waves-red-accent-1 .waves-ripple {
+background-color: rgba(255, 138, 128, 0.7); }
+.waves-effect.waves-red-accent-2 .waves-ripple {
+background-color: rgba(255, 82, 82, 0.7); }
+.waves-effect.waves-red-accent-3 .waves-ripple {
+background-color: rgba(255, 23, 68, 0.7); }
+.waves-effect.waves-red-accent-4 .waves-ripple {
+background-color: rgba(213, 0, 0, 0.7); }
+.waves-effect.waves-pink-lighten-5 .waves-ripple {
+background-color: rgba(252, 228, 236, 0.7); }
+.waves-effect.waves-pink-lighten-4 .waves-ripple {
+background-color: rgba(248, 187, 208, 0.7); }
+.waves-effect.waves-pink-lighten-3 .waves-ripple {
+background-color: rgba(244, 143, 177, 0.7); }
+.waves-effect.waves-pink-lighten-2 .waves-ripple {
+background-color: rgba(240, 98, 146, 0.7); }
+.waves-effect.waves-pink-lighten-1 .waves-ripple {
+background-color: rgba(236, 64, 122, 0.7); }
+.waves-effect.waves-pink .waves-ripple {
+background-color: rgba(233, 30, 99, 0.7); }
+.waves-effect.waves-pink-darken-1 .waves-ripple {
+background-color: rgba(216, 27, 96, 0.7); }
+.waves-effect.waves-pink-darken-2 .waves-ripple {
+background-color: rgba(194, 24, 91, 0.7); }
+.waves-effect.waves-pink-darken-3 .waves-ripple {
+background-color: rgba(173, 20, 87, 0.7); }
+.waves-effect.waves-pink-darken-4 .waves-ripple {
+background-color: rgba(136, 14, 79, 0.7); }
+.waves-effect.waves-pink-accent-1 .waves-ripple {
+background-color: rgba(255, 128, 171, 0.7); }
+.waves-effect.waves-pink-accent-2 .waves-ripple {
+background-color: rgba(255, 64, 129, 0.7); }
+.waves-effect.waves-pink-accent-3 .waves-ripple {
+background-color: rgba(245, 0, 87, 0.7); }
+.waves-effect.waves-pink-accent-4 .waves-ripple {
+background-color: rgba(197, 17, 98, 0.7); }
+.waves-effect.waves-purple-lighten-5 .waves-ripple {
+background-color: rgba(243, 229, 245, 0.7); }
+.waves-effect.waves-purple-lighten-4 .waves-ripple {
+background-color: rgba(225, 190, 231, 0.7); }
+.waves-effect.waves-purple-lighten-3 .waves-ripple {
+background-color: rgba(206, 147, 216, 0.7); }
+.waves-effect.waves-purple-lighten-2 .waves-ripple {
+background-color: rgba(186, 104, 200, 0.7); }
+.waves-effect.waves-purple-lighten-1 .waves-ripple {
+background-color: rgba(171, 71, 188, 0.7); }
+.waves-effect.waves-purple .waves-ripple {
+background-color: rgba(156, 39, 176, 0.7); }
+.waves-effect.waves-purple-darken-1 .waves-ripple {
+background-color: rgba(142, 36, 170, 0.7); }
+.waves-effect.waves-purple-darken-2 .waves-ripple {
+background-color: rgba(123, 31, 162, 0.7); }
+.waves-effect.waves-purple-darken-3 .waves-ripple {
+background-color: rgba(106, 27, 154, 0.7); }
+.waves-effect.waves-purple-darken-4 .waves-ripple {
+background-color: rgba(74, 20, 140, 0.7); }
+.waves-effect.waves-purple-accent-1 .waves-ripple {
+background-color: rgba(234, 128, 252, 0.7); }
+.waves-effect.waves-purple-accent-2 .waves-ripple {
+background-color: rgba(224, 64, 251, 0.7); }
+.waves-effect.waves-purple-accent-3 .waves-ripple {
+background-color: rgba(213, 0, 249, 0.7); }
+.waves-effect.waves-purple-accent-4 .waves-ripple {
+background-color: rgba(170, 0, 255, 0.7); }
+.waves-effect.waves-deep-purple-lighten-5 .waves-ripple {
+background-color: rgba(237, 231, 246, 0.7); }
+.waves-effect.waves-deep-purple-lighten-4 .waves-ripple {
+background-color: rgba(209, 196, 233, 0.7); }
+.waves-effect.waves-deep-purple-lighten-3 .waves-ripple {
+background-color: rgba(179, 157, 219, 0.7); }
+.waves-effect.waves-deep-purple-lighten-2 .waves-ripple {
+background-color: rgba(149, 117, 205, 0.7); }
+.waves-effect.waves-deep-purple-lighten-1 .waves-ripple {
+background-color: rgba(126, 87, 194, 0.7); }
+.waves-effect.waves-deep-purple .waves-ripple {
+background-color: rgba(103, 58, 183, 0.7); }
+.waves-effect.waves-deep-purple-darken-1 .waves-ripple {
+background-color: rgba(94, 53, 177, 0.7); }
+.waves-effect.waves-deep-purple-darken-2 .waves-ripple {
+background-color: rgba(81, 45, 168, 0.7); }
+.waves-effect.waves-deep-purple-darken-3 .waves-ripple {
+background-color: rgba(69, 39, 160, 0.7); }
+.waves-effect.waves-deep-purple-darken-4 .waves-ripple {
+background-color: rgba(49, 27, 146, 0.7); }
+.waves-effect.waves-deep-purple-accent-1 .waves-ripple {
+background-color: rgba(179, 136, 255, 0.7); }
+.waves-effect.waves-deep-purple-accent-2 .waves-ripple {
+background-color: rgba(124, 77, 255, 0.7); }
+.waves-effect.waves-deep-purple-accent-3 .waves-ripple {
+background-color: rgba(101, 31, 255, 0.7); }
+.waves-effect.waves-deep-purple-accent-4 .waves-ripple {
+background-color: rgba(98, 0, 234, 0.7); }
+.waves-effect.waves-indigo-lighten-5 .waves-ripple {
+background-color: rgba(232, 234, 246, 0.7); }
+.waves-effect.waves-indigo-lighten-4 .waves-ripple {
+background-color: rgba(197, 202, 233, 0.7); }
+.waves-effect.waves-indigo-lighten-3 .waves-ripple {
+background-color: rgba(159, 168, 218, 0.7); }
+.waves-effect.waves-indigo-lighten-2 .waves-ripple {
+background-color: rgba(121, 134, 203, 0.7); }
+.waves-effect.waves-indigo-lighten-1 .waves-ripple {
+background-color: rgba(92, 107, 192, 0.7); }
+.waves-effect.waves-indigo .waves-ripple {
+background-color: rgba(63, 81, 181, 0.7); }
+.waves-effect.waves-indigo-darken-1 .waves-ripple {
+background-color: rgba(57, 73, 171, 0.7); }
+.waves-effect.waves-indigo-darken-2 .waves-ripple {
+background-color: rgba(48, 63, 159, 0.7); }
+.waves-effect.waves-indigo-darken-3 .waves-ripple {
+background-color: rgba(40, 53, 147, 0.7); }
+.waves-effect.waves-indigo-darken-4 .waves-ripple {
+background-color: rgba(26, 35, 126, 0.7); }
+.waves-effect.waves-indigo-accent-1 .waves-ripple {
+background-color: rgba(140, 158, 255, 0.7); }
+.waves-effect.waves-indigo-accent-2 .waves-ripple {
+background-color: rgba(83, 109, 254, 0.7); }
+.waves-effect.waves-indigo-accent-3 .waves-ripple {
+background-color: rgba(61, 90, 254, 0.7); }
+.waves-effect.waves-indigo-accent-4 .waves-ripple {
+background-color: rgba(48, 79, 254, 0.7); }
+.waves-effect.waves-blue-lighten-5 .waves-ripple {
+background-color: rgba(227, 242, 253, 0.7); }
+.waves-effect.waves-blue-lighten-4 .waves-ripple {
+background-color: rgba(187, 222, 251, 0.7); }
+.waves-effect.waves-blue-lighten-3 .waves-ripple {
+background-color: rgba(144, 202, 249, 0.7); }
+.waves-effect.waves-blue-lighten-2 .waves-ripple {
+background-color: rgba(100, 181, 246, 0.7); }
+.waves-effect.waves-blue-lighten-1 .waves-ripple {
+background-color: rgba(66, 165, 245, 0.7); }
+.waves-effect.waves-blue .waves-ripple {
+background-color: rgba(33, 150, 243, 0.7); }
+.waves-effect.waves-blue-darken-1 .waves-ripple {
+background-color: rgba(30, 136, 229, 0.7); }
+.waves-effect.waves-blue-darken-2 .waves-ripple {
+background-color: rgba(25, 118, 210, 0.7); }
+.waves-effect.waves-blue-darken-3 .waves-ripple {
+background-color: rgba(21, 101, 192, 0.7); }
+.waves-effect.waves-blue-darken-4 .waves-ripple {
+background-color: rgba(13, 71, 161, 0.7); }
+.waves-effect.waves-blue-accent-1 .waves-ripple {
+background-color: rgba(130, 177, 255, 0.7); }
+.waves-effect.waves-blue-accent-2 .waves-ripple {
+background-color: rgba(68, 138, 255, 0.7); }
+.waves-effect.waves-blue-accent-3 .waves-ripple {
+background-color: rgba(41, 121, 255, 0.7); }
+.waves-effect.waves-blue-accent-4 .waves-ripple {
+background-color: rgba(41, 98, 255, 0.7); }
+.waves-effect.waves-light-blue-lighten-5 .waves-ripple {
+background-color: rgba(225, 245, 254, 0.7); }
+.waves-effect.waves-light-blue-lighten-4 .waves-ripple {
+background-color: rgba(179, 229, 252, 0.7); }
+.waves-effect.waves-light-blue-lighten-3 .waves-ripple {
+background-color: rgba(129, 212, 250, 0.7); }
+.waves-effect.waves-light-blue-lighten-2 .waves-ripple {
+background-color: rgba(79, 195, 247, 0.7); }
+.waves-effect.waves-light-blue-lighten-1 .waves-ripple {
+background-color: rgba(41, 182, 246, 0.7); }
+.waves-effect.waves-light-blue .waves-ripple {
+background-color: rgba(3, 169, 244, 0.7); }
+.waves-effect.waves-light-blue-darken-1 .waves-ripple {
+background-color: rgba(3, 155, 229, 0.7); }
+.waves-effect.waves-light-blue-darken-2 .waves-ripple {
+background-color: rgba(2, 136, 209, 0.7); }
+.waves-effect.waves-light-blue-darken-3 .waves-ripple {
+background-color: rgba(2, 119, 189, 0.7); }
+.waves-effect.waves-light-blue-darken-4 .waves-ripple {
+background-color: rgba(1, 87, 155, 0.7); }
+.waves-effect.waves-light-blue-accent-1 .waves-ripple {
+background-color: rgba(128, 216, 255, 0.7); }
+.waves-effect.waves-light-blue-accent-2 .waves-ripple {
+background-color: rgba(64, 196, 255, 0.7); }
+.waves-effect.waves-light-blue-accent-3 .waves-ripple {
+background-color: rgba(0, 176, 255, 0.7); }
+.waves-effect.waves-light-blue-accent-4 .waves-ripple {
+background-color: rgba(0, 145, 234, 0.7); }
+.waves-effect.waves-cyan-lighten-5 .waves-ripple {
+background-color: rgba(224, 247, 250, 0.7); }
+.waves-effect.waves-cyan-lighten-4 .waves-ripple {
+background-color: rgba(178, 235, 242, 0.7); }
+.waves-effect.waves-cyan-lighten-3 .waves-ripple {
+background-color: rgba(128, 222, 234, 0.7); }
+.waves-effect.waves-cyan-lighten-2 .waves-ripple {
+background-color: rgba(77, 208, 225, 0.7); }
+.waves-effect.waves-cyan-lighten-1 .waves-ripple {
+background-color: rgba(38, 198, 218, 0.7); }
+.waves-effect.waves-cyan .waves-ripple {
+background-color: rgba(0, 188, 212, 0.7); }
+.waves-effect.waves-cyan-darken-1 .waves-ripple {
+background-color: rgba(0, 172, 193, 0.7); }
+.waves-effect.waves-cyan-darken-2 .waves-ripple {
+background-color: rgba(0, 151, 167, 0.7); }
+.waves-effect.waves-cyan-darken-3 .waves-ripple {
+background-color: rgba(0, 131, 143, 0.7); }
+.waves-effect.waves-cyan-darken-4 .waves-ripple {
+background-color: rgba(0, 96, 100, 0.7); }
+.waves-effect.waves-cyan-accent-1 .waves-ripple {
+background-color: rgba(132, 255, 255, 0.7); }
+.waves-effect.waves-cyan-accent-2 .waves-ripple {
+background-color: rgba(24, 255, 255, 0.7); }
+.waves-effect.waves-cyan-accent-3 .waves-ripple {
+background-color: rgba(0, 229, 255, 0.7); }
+.waves-effect.waves-cyan-accent-4 .waves-ripple {
+background-color: rgba(0, 184, 212, 0.7); }
+.waves-effect.waves-teal-lighten-5 .waves-ripple {
+background-color: rgba(224, 242, 241, 0.7); }
+.waves-effect.waves-teal-lighten-4 .waves-ripple {
+background-color: rgba(178, 223, 219, 0.7); }
+.waves-effect.waves-teal-lighten-3 .waves-ripple {
+background-color: rgba(128, 203, 196, 0.7); }
+.waves-effect.waves-teal-lighten-2 .waves-ripple {
+background-color: rgba(77, 182, 172, 0.7); }
+.waves-effect.waves-teal-lighten-1 .waves-ripple {
+background-color: rgba(38, 166, 154, 0.7); }
+.waves-effect.waves-teal .waves-ripple {
+background-color: rgba(0, 150, 136, 0.7); }
+.waves-effect.waves-teal-darken-1 .waves-ripple {
+background-color: rgba(0, 137, 123, 0.7); }
+.waves-effect.waves-teal-darken-2 .waves-ripple {
+background-color: rgba(0, 121, 107, 0.7); }
+.waves-effect.waves-teal-darken-3 .waves-ripple {
+background-color: rgba(0, 105, 92, 0.7); }
+.waves-effect.waves-teal-darken-4 .waves-ripple {
+background-color: rgba(0, 77, 64, 0.7); }
+.waves-effect.waves-teal-accent-1 .waves-ripple {
+background-color: rgba(167, 255, 235, 0.7); }
+.waves-effect.waves-teal-accent-2 .waves-ripple {
+background-color: rgba(100, 255, 218, 0.7); }
+.waves-effect.waves-teal-accent-3 .waves-ripple {
+background-color: rgba(29, 233, 182, 0.7); }
+.waves-effect.waves-teal-accent-4 .waves-ripple {
+background-color: rgba(0, 191, 165, 0.7); }
+.waves-effect.waves-green-lighten-5 .waves-ripple {
+background-color: rgba(232, 245, 233, 0.7); }
+.waves-effect.waves-green-lighten-4 .waves-ripple {
+background-color: rgba(200, 230, 201, 0.7); }
+.waves-effect.waves-green-lighten-3 .waves-ripple {
+background-color: rgba(165, 214, 167, 0.7); }
+.waves-effect.waves-green-lighten-2 .waves-ripple {
+background-color: rgba(129, 199, 132, 0.7); }
+.waves-effect.waves-green-lighten-1 .waves-ripple {
+background-color: rgba(102, 187, 106, 0.7); }
+.waves-effect.waves-green .waves-ripple {
+background-color: rgba(76, 175, 80, 0.7); }
+.waves-effect.waves-green-darken-1 .waves-ripple {
+background-color: rgba(67, 160, 71, 0.7); }
+.waves-effect.waves-green-darken-2 .waves-ripple {
+background-color: rgba(56, 142, 60, 0.7); }
+.waves-effect.waves-green-darken-3 .waves-ripple {
+background-color: rgba(46, 125, 50, 0.7); }
+.waves-effect.waves-green-darken-4 .waves-ripple {
+background-color: rgba(27, 94, 32, 0.7); }
+.waves-effect.waves-green-accent-1 .waves-ripple {
+background-color: rgba(185, 246, 202, 0.7); }
+.waves-effect.waves-green-accent-2 .waves-ripple {
+background-color: rgba(105, 240, 174, 0.7); }
+.waves-effect.waves-green-accent-3 .waves-ripple {
+background-color: rgba(0, 230, 118, 0.7); }
+.waves-effect.waves-green-accent-4 .waves-ripple {
+background-color: rgba(0, 200, 83, 0.7); }
+.waves-effect.waves-light-green-lighten-5 .waves-ripple {
+background-color: rgba(241, 248, 233, 0.7); }
+.waves-effect.waves-light-green-lighten-4 .waves-ripple {
+background-color: rgba(220, 237, 200, 0.7); }
+.waves-effect.waves-light-green-lighten-3 .waves-ripple {
+background-color: rgba(197, 225, 165, 0.7); }
+.waves-effect.waves-light-green-lighten-2 .waves-ripple {
+background-color: rgba(174, 213, 129, 0.7); }
+.waves-effect.waves-light-green-lighten-1 .waves-ripple {
+background-color: rgba(156, 204, 101, 0.7); }
+.waves-effect.waves-light-green .waves-ripple {
+background-color: rgba(139, 195, 74, 0.7); }
+.waves-effect.waves-light-green-darken-1 .waves-ripple {
+background-color: rgba(124, 179, 66, 0.7); }
+.waves-effect.waves-light-green-darken-2 .waves-ripple {
+background-color: rgba(104, 159, 56, 0.7); }
+.waves-effect.waves-light-green-darken-3 .waves-ripple {
+background-color: rgba(85, 139, 47, 0.7); }
+.waves-effect.waves-light-green-darken-4 .waves-ripple {
+background-color: rgba(51, 105, 30, 0.7); }
+.waves-effect.waves-light-green-accent-1 .waves-ripple {
+background-color: rgba(204, 255, 144, 0.7); }
+.waves-effect.waves-light-green-accent-2 .waves-ripple {
+background-color: rgba(178, 255, 89, 0.7); }
+.waves-effect.waves-light-green-accent-3 .waves-ripple {
+background-color: rgba(118, 255, 3, 0.7); }
+.waves-effect.waves-light-green-accent-4 .waves-ripple {
+background-color: rgba(100, 221, 23, 0.7); }
+.waves-effect.waves-lime-lighten-5 .waves-ripple {
+background-color: rgba(249, 251, 231, 0.7); }
+.waves-effect.waves-lime-lighten-4 .waves-ripple {
+background-color: rgba(240, 244, 195, 0.7); }
+.waves-effect.waves-lime-lighten-3 .waves-ripple {
+background-color: rgba(230, 238, 156, 0.7); }
+.waves-effect.waves-lime-lighten-2 .waves-ripple {
+background-color: rgba(220, 231, 117, 0.7); }
+.waves-effect.waves-lime-lighten-1 .waves-ripple {
+background-color: rgba(212, 225, 87, 0.7); }
+.waves-effect.waves-lime .waves-ripple {
+background-color: rgba(205, 220, 57, 0.7); }
+.waves-effect.waves-lime-darken-1 .waves-ripple {
+background-color: rgba(192, 202, 51, 0.7); }
+.waves-effect.waves-lime-darken-2 .waves-ripple {
+background-color: rgba(175, 180, 43, 0.7); }
+.waves-effect.waves-lime-darken-3 .waves-ripple {
+background-color: rgba(158, 157, 36, 0.7); }
+.waves-effect.waves-lime-darken-4 .waves-ripple {
+background-color: rgba(130, 119, 23, 0.7); }
+.waves-effect.waves-lime-accent-1 .waves-ripple {
+background-color: rgba(244, 255, 129, 0.7); }
+.waves-effect.waves-lime-accent-2 .waves-ripple {
+background-color: rgba(238, 255, 65, 0.7); }
+.waves-effect.waves-lime-accent-3 .waves-ripple {
+background-color: rgba(198, 255, 0, 0.7); }
+.waves-effect.waves-lime-accent-4 .waves-ripple {
+background-color: rgba(174, 234, 0, 0.7); }
+.waves-effect.waves-yellow-lighten-5 .waves-ripple {
+background-color: rgba(255, 253, 231, 0.7); }
+.waves-effect.waves-yellow-lighten-4 .waves-ripple {
+background-color: rgba(255, 249, 196, 0.7); }
+.waves-effect.waves-yellow-lighten-3 .waves-ripple {
+background-color: rgba(255, 245, 157, 0.7); }
+.waves-effect.waves-yellow-lighten-2 .waves-ripple {
+background-color: rgba(255, 241, 118, 0.7); }
+.waves-effect.waves-yellow-lighten-1 .waves-ripple {
+background-color: rgba(255, 238, 88, 0.7); }
+.waves-effect.waves-yellow .waves-ripple {
+background-color: rgba(255, 235, 59, 0.7); }
+.waves-effect.waves-yellow-darken-1 .waves-ripple {
+background-color: rgba(253, 216, 53, 0.7); }
+.waves-effect.waves-yellow-darken-2 .waves-ripple {
+background-color: rgba(251, 192, 45, 0.7); }
+.waves-effect.waves-yellow-darken-3 .waves-ripple {
+background-color: rgba(249, 168, 37, 0.7); }
+.waves-effect.waves-yellow-darken-4 .waves-ripple {
+background-color: rgba(245, 127, 23, 0.7); }
+.waves-effect.waves-yellow-accent-1 .waves-ripple {
+background-color: rgba(255, 255, 141, 0.7); }
+.waves-effect.waves-yellow-accent-2 .waves-ripple {
+background-color: rgba(255, 255, 0, 0.7); }
+.waves-effect.waves-yellow-accent-3 .waves-ripple {
+background-color: rgba(255, 234, 0, 0.7); }
+.waves-effect.waves-yellow-accent-4 .waves-ripple {
+background-color: rgba(255, 214, 0, 0.7); }
+.waves-effect.waves-amber-lighten-5 .waves-ripple {
+background-color: rgba(255, 248, 225, 0.7); }
+.waves-effect.waves-amber-lighten-4 .waves-ripple {
+background-color: rgba(255, 236, 179, 0.7); }
+.waves-effect.waves-amber-lighten-3 .waves-ripple {
+background-color: rgba(255, 224, 130, 0.7); }
+.waves-effect.waves-amber-lighten-2 .waves-ripple {
+background-color: rgba(255, 213, 79, 0.7); }
+.waves-effect.waves-amber-lighten-1 .waves-ripple {
+background-color: rgba(255, 202, 40, 0.7); }
+.waves-effect.waves-amber .waves-ripple {
+background-color: rgba(255, 193, 7, 0.7); }
+.waves-effect.waves-amber-darken-1 .waves-ripple {
+background-color: rgba(255, 179, 0, 0.7); }
+.waves-effect.waves-amber-darken-2 .waves-ripple {
+background-color: rgba(255, 160, 0, 0.7); }
+.waves-effect.waves-amber-darken-3 .waves-ripple {
+background-color: rgba(255, 143, 0, 0.7); }
+.waves-effect.waves-amber-darken-4 .waves-ripple {
+background-color: rgba(255, 111, 0, 0.7); }
+.waves-effect.waves-amber-accent-1 .waves-ripple {
+background-color: rgba(255, 229, 127, 0.7); }
+.waves-effect.waves-amber-accent-2 .waves-ripple {
+background-color: rgba(255, 215, 64, 0.7); }
+.waves-effect.waves-amber-accent-3 .waves-ripple {
+background-color: rgba(255, 196, 0, 0.7); }
+.waves-effect.waves-amber-accent-4 .waves-ripple {
+background-color: rgba(255, 171, 0, 0.7); }
+.waves-effect.waves-orange-lighten-5 .waves-ripple {
+background-color: rgba(255, 243, 224, 0.7); }
+.waves-effect.waves-orange-lighten-4 .waves-ripple {
+background-color: rgba(255, 224, 178, 0.7); }
+.waves-effect.waves-orange-lighten-3 .waves-ripple {
+background-color: rgba(255, 204, 128, 0.7); }
+.waves-effect.waves-orange-lighten-2 .waves-ripple {
+background-color: rgba(255, 183, 77, 0.7); }
+.waves-effect.waves-orange-lighten-1 .waves-ripple {
+background-color: rgba(255, 167, 38, 0.7); }
+.waves-effect.waves-orange .waves-ripple {
+background-color: rgba(255, 152, 0, 0.7); }
+.waves-effect.waves-orange-darken-1 .waves-ripple {
+background-color: rgba(251, 140, 0, 0.7); }
+.waves-effect.waves-orange-darken-2 .waves-ripple {
+background-color: rgba(245, 124, 0, 0.7); }
+.waves-effect.waves-orange-darken-3 .waves-ripple {
+background-color: rgba(239, 108, 0, 0.7); }
+.waves-effect.waves-orange-darken-4 .waves-ripple {
+background-color: rgba(230, 81, 0, 0.7); }
+.waves-effect.waves-orange-accent-1 .waves-ripple {
+background-color: rgba(255, 209, 128, 0.7); }
+.waves-effect.waves-orange-accent-2 .waves-ripple {
+background-color: rgba(255, 171, 64, 0.7); }
+.waves-effect.waves-orange-accent-3 .waves-ripple {
+background-color: rgba(255, 145, 0, 0.7); }
+.waves-effect.waves-orange-accent-4 .waves-ripple {
+background-color: rgba(255, 109, 0, 0.7); }
+.waves-effect.waves-deep-orange-lighten-5 .waves-ripple {
+background-color: rgba(251, 233, 231, 0.7); }
+.waves-effect.waves-deep-orange-lighten-4 .waves-ripple {
+background-color: rgba(255, 204, 188, 0.7); }
+.waves-effect.waves-deep-orange-lighten-3 .waves-ripple {
+background-color: rgba(255, 171, 145, 0.7); }
+.waves-effect.waves-deep-orange-lighten-2 .waves-ripple {
+background-color: rgba(255, 138, 101, 0.7); }
+.waves-effect.waves-deep-orange-lighten-1 .waves-ripple {
+background-color: rgba(255, 112, 67, 0.7); }
+.waves-effect.waves-deep-orange .waves-ripple {
+background-color: rgba(255, 87, 34, 0.7); }
+.waves-effect.waves-deep-orange-darken-1 .waves-ripple {
+background-color: rgba(244, 81, 30, 0.7); }
+.waves-effect.waves-deep-orange-darken-2 .waves-ripple {
+background-color: rgba(230, 74, 25, 0.7); }
+.waves-effect.waves-deep-orange-darken-3 .waves-ripple {
+background-color: rgba(216, 67, 21, 0.7); }
+.waves-effect.waves-deep-orange-darken-4 .waves-ripple {
+background-color: rgba(191, 54, 12, 0.7); }
+.waves-effect.waves-deep-orange-accent-1 .waves-ripple {
+background-color: rgba(255, 158, 128, 0.7); }
+.waves-effect.waves-deep-orange-accent-2 .waves-ripple {
+background-color: rgba(255, 110, 64, 0.7); }
+.waves-effect.waves-deep-orange-accent-3 .waves-ripple {
+background-color: rgba(255, 61, 0, 0.7); }
+.waves-effect.waves-deep-orange-accent-4 .waves-ripple {
+background-color: rgba(221, 44, 0, 0.7); }
+.waves-effect.waves-brown-lighten-5 .waves-ripple {
+background-color: rgba(239, 235, 233, 0.7); }
+.waves-effect.waves-brown-lighten-4 .waves-ripple {
+background-color: rgba(215, 204, 200, 0.7); }
+.waves-effect.waves-brown-lighten-3 .waves-ripple {
+background-color: rgba(188, 170, 164, 0.7); }
+.waves-effect.waves-brown-lighten-2 .waves-ripple {
+background-color: rgba(161, 136, 127, 0.7); }
+.waves-effect.waves-brown-lighten-1 .waves-ripple {
+background-color: rgba(141, 110, 99, 0.7); }
+.waves-effect.waves-brown .waves-ripple {
+background-color: rgba(121, 85, 72, 0.7); }
+.waves-effect.waves-brown-darken-1 .waves-ripple {
+background-color: rgba(109, 76, 65, 0.7); }
+.waves-effect.waves-brown-darken-2 .waves-ripple {
+background-color: rgba(93, 64, 55, 0.7); }
+.waves-effect.waves-brown-darken-3 .waves-ripple {
+background-color: rgba(78, 52, 46, 0.7); }
+.waves-effect.waves-brown-darken-4 .waves-ripple {
+background-color: rgba(62, 39, 35, 0.7); }
+.waves-effect.waves-grey-lighten-5 .waves-ripple {
+background-color: rgba(250, 250, 250, 0.7); }
+.waves-effect.waves-grey-lighten-4 .waves-ripple {
+background-color: rgba(245, 245, 245, 0.7); }
+.waves-effect.waves-grey-lighten-3 .waves-ripple {
+background-color: rgba(238, 238, 238, 0.7); }
+.waves-effect.waves-grey-lighten-2 .waves-ripple {
+background-color: rgba(224, 224, 224, 0.7); }
+.waves-effect.waves-grey-lighten-1 .waves-ripple {
+background-color: rgba(189, 189, 189, 0.7); }
+.waves-effect.waves-grey .waves-ripple {
+background-color: rgba(158, 158, 158, 0.7); }
+.waves-effect.waves-grey-darken-1 .waves-ripple {
+background-color: rgba(117, 117, 117, 0.7); }
+.waves-effect.waves-grey-darken-2 .waves-ripple {
+background-color: rgba(97, 97, 97, 0.7); }
+.waves-effect.waves-grey-darken-3 .waves-ripple {
+background-color: rgba(66, 66, 66, 0.7); }
+.waves-effect.waves-grey-darken-4 .waves-ripple {
+background-color: rgba(33, 33, 33, 0.7); }
+.waves-effect.waves-blue-grey-lighten-5 .waves-ripple {
+background-color: rgba(236, 239, 241, 0.7); }
+.waves-effect.waves-blue-grey-lighten-4 .waves-ripple {
+background-color: rgba(207, 216, 220, 0.7); }
+.waves-effect.waves-blue-grey-lighten-3 .waves-ripple {
+background-color: rgba(176, 190, 197, 0.7); }
+.waves-effect.waves-blue-grey-lighten-2 .waves-ripple {
+background-color: rgba(144, 164, 174, 0.7); }
+.waves-effect.waves-blue-grey-lighten-1 .waves-ripple {
+background-color: rgba(120, 144, 156, 0.7); }
+.waves-effect.waves-blue-grey .waves-ripple {
+background-color: rgba(96, 125, 139, 0.7); }
+.waves-effect.waves-blue-grey-darken-1 .waves-ripple {
+background-color: rgba(84, 110, 122, 0.7); }
+.waves-effect.waves-blue-grey-darken-2 .waves-ripple {
+background-color: rgba(69, 90, 100, 0.7); }
+.waves-effect.waves-blue-grey-darken-3 .waves-ripple {
+background-color: rgba(55, 71, 79, 0.7); }
+.waves-effect.waves-blue-grey-darken-4 .waves-ripple {
+background-color: rgba(38, 50, 56, 0.7); }
+.waves-effect.waves-black .waves-ripple {
+background-color: rgba(0, 0, 0, 0.7); }
+.waves-effect.waves-white .waves-ripple {
+background-color: rgba(255, 255, 255, 0.7); }
