@@ -156,11 +156,18 @@
   });
 
   $.fn.extend({
-    leanModal: function(options) {
+    leanModal: function(option) {
       return this.each(function() {
+
+        var defaults = {
+          starting_top: '4%'
+        },
+        // Override defaults
+        options = $.extend(defaults, option);
+
         // Close Handlers
         $(this).click(function(e) {
-          options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.25;
+          options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.15;
           var modal_id = $(this).attr("href") || '#' + $(this).data('target');
           $(modal_id).openModal(options);
           e.preventDefault();
