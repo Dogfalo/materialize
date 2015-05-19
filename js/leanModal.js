@@ -46,7 +46,7 @@
         });
       }
 
-      $modal.find(".modal-close").click(function(e) {
+      $modal.find(".modal-close").on('click.close', function(e) {
         $modal.closeModal(options);
       });
 
@@ -109,7 +109,7 @@
       // Disable scrolling
       $('body').css('overflow', '');
 
-      $modal.find('.modal-close').off();
+      $modal.find('.modal-close').off('click.close');
       $(document).off('keyup.leanModal' + overlayID);
 
       $overlay.velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
