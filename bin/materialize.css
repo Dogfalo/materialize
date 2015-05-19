@@ -5496,6 +5496,9 @@ small {
   @media only screen and (min-width: 960px) {
     .flow-text {
       font-size: 1.68rem; } }
+  @media only screen and (max-width: 360px) {
+    .flow-text {
+      font-size: 1.2rem; } }
 
 .card-panel {
   padding: 20px;
