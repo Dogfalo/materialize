@@ -66,6 +66,8 @@
     var swipeLeft = false;
     var swipeRight = false;
 
+
+    // Dismissible Collections
     $('.dismissable').each(function() {
       $(this).hammer({
         prevent_default: false
@@ -83,12 +85,19 @@
           if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.75)) {
             swipeLeft = true;
           }
+
           // Swipe Right
-          else if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.75)) {
+          if (direction === 2 && (x < (-1 * $this.innerWidth() / 2) || velocityX > 0.75)) {
             swipeRight = true;
           }
         }
       }).bind('panend', function(e) {
+        // Reset if collection is moved back into original position
+        if (Math.abs(e.gesture.deltaX) < ($(this).innerWidth() / 2)) {
+          swipeRight = false;
+          swipeLeft = false;
+        }
+
         if (e.gesture.pointerType === "touch") {
           var $this = $(this);
           if (swipeLeft || swipeRight) {
