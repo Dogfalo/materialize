@@ -5529,6 +5529,8 @@ small {
       bottom: 0;
       left: 0;
       right: 0; }
+    .card.small .card-buttons, .card.medium .card-buttons, .card.large .card-buttons {
+      top: -30px; }
   .card.small {
     height: 300px; }
     .card.small .card-image {
@@ -5597,6 +5599,17 @@ small {
     .card .card-reveal .card-title {
       cursor: pointer;
       display: block; }
+  .card .card-buttons {
+    position: relative;
+    top: -35px;
+    text-align: right;
+    padding-right: 20px;
+    height: 0; }
+    .card .card-buttons .btn-floating {
+      margin-left: 10px;
+      margin-top: -37px/2; }
+      .card .card-buttons .btn-floating.btn-large {
+        margin-top: -55.5px/2; }
 
 #toast-container {
   display: block;

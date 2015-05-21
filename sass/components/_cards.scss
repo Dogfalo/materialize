@@ -42,6 +42,9 @@
       left: 0;
       right: 0;
     }
+    .card-buttons {
+      top: -30px;
+    }
   }
 
   &.small {
@@ -146,5 +149,20 @@
       display: block;
     }
 
+  }
+
+  .card-buttons {
+    position: relative;
+    top: -35px;
+    text-align: right;
+    padding-right: 20px;
+    height: 0;
+    .btn-floating {
+      margin-left: 10px;
+      margin-top: -37px/2;
+      &.btn-large {
+        margin-top: -55.5px/2;
+      }
+    }
   }
 }
