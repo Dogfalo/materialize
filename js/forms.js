@@ -101,11 +101,21 @@
     var text_area_selector = '.materialize-textarea';
 
     function textareaAutoResize($textarea) {
-      // Set fontsize of hiddenDiv
+      // Set font properties of hiddenDiv
+
+      var fontFamily = $textarea.css('font-family');
       var fontSize = $textarea.css('font-size');
-      if (fontSize) {
-        hiddenDiv.css('font-size', fontSize);
+
+      if (fontSize) { hiddenDiv.css('font-size', fontSize); }
+      if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
+
+      if ($textarea.attr('wrap') === "off") {
+        hiddenDiv.css('overflow-wrap', "normal")
+                 .css('white-space', "pre");
       }
+
+
+
 
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
