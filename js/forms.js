@@ -357,16 +357,12 @@
 
       $newSelect.on('focus', function(){
         $(this).trigger('open');
-        
-        //
-        // Moved that code to event listener of list item. Any reason why it's here ? 
-        //
 
-        // label = $(this).val();
-        // selectedOption = options.find('li').filter(function() {
-        //   return $(this).text().toLowerCase() === label.toLowerCase();
-        // })[0];
-        // activateOption(options, selectedOption);
+        label = $(this).val();
+        selectedOption = options.find('li').filter(function() {
+          return $(this).text().toLowerCase() === label.toLowerCase();
+        })[0];
+        activateOption(options, selectedOption);
       });
 
       $newSelect.on('blur', function(){
