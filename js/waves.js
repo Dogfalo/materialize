@@ -282,12 +282,11 @@
             Effect.show(e, element);
 
             if ('ontouchstart' in window) {
-                element.addEventListener('touchend', Effect.hide, false);
-                element.addEventListener('touchcancel', Effect.hide, false);
+                $(element).on('touchend', Effect.hide);
+                $(element).on('touchcancel', Effect.hide);
             }
-
-            element.addEventListener('mouseup', Effect.hide, false);
-            element.addEventListener('mouseleave', Effect.hide, false);
+            $(element).on('mouseup', Effect.hide);
+            $(element).on('mouseleave', Effect.hide);
         }
     }
 
@@ -302,10 +301,9 @@
         Effect.wrapInput($$('.waves-effect'));
 
         if ('ontouchstart' in window) {
-            document.body.addEventListener('touchstart', showEffect, false);
+            $(document.body).on('touchstart', showEffect);
         }
-
-        document.body.addEventListener('mousedown', showEffect, false);
+        $(document.body).on('mousedown', showEffect);
     };
 
     /**
@@ -323,10 +321,10 @@
         }
 
         if ('ontouchstart' in window) {
-            element.addEventListener('touchstart', showEffect, false);
+            $(element).on('touchstart', showEffect);
         }
 
-        element.addEventListener('mousedown', showEffect, false);
+        $(element).on('mousedown', showEffect);
     };
 
     window.Waves = Waves;
