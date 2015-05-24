@@ -515,6 +515,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             off: function() {
                 var i, thingName,
                     names = arguments;
+                var namesCount;
                 for ( i = 0, namesCount = names.length; i < namesCount; i += 1 ) {
                     thingName = names[i]
                     if ( thingName in STATE.methods ) {
