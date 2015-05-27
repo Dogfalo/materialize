@@ -36,6 +36,9 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Pagination Added
   - ScrollFire fixes
 
+## Additional Resources
+A quick way to setup Materialize in your next Flask project
+[Flask-Material](https://github.com/HellerCommaA/flask-material)
 
 ## Contributing
 [Please read CONTRIBUTING.md for more information](CONTRIBUTING.md)
