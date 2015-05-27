@@ -312,16 +312,21 @@
         options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
       });
 
+      options.find('li').first().addClass('active');
 
       options.find('li').each(function (i) {
         var $curr_select = $select;
-        $(this).click(function () {
+        $(this).on('click',function () {
           // Check if option element is disabled
           if (!$(this).hasClass('disabled')) {
+
             $curr_select.find('option').eq(i).prop('selected', true);
             // Trigger onchange() event
             $curr_select.trigger('change');
             $curr_select.siblings('input.select-dropdown').val($(this).text());
+
+            activateOption(options, $(this));
+            
             if (typeof callback !== 'undefined') callback();
           }
         });
@@ -354,11 +359,7 @@
 
       $newSelect.on('focus', function(){
         $(this).trigger('open');
-        label = $(this).val();
-        selectedOption = options.find('li').filter(function() {
-          return $(this).text().toLowerCase() === label.toLowerCase();
-        })[0];
-        activateOption(options, selectedOption);
+
       });
 
       $newSelect.on('blur', function(){
