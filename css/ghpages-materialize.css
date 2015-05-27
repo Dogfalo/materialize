@@ -1629,6 +1629,7 @@
 /*** Global ***/
 /*** Navbar ***/
 /*** SideNav ***/
+/*** Photo Slider ***/
 /*** Tabs ***/
 /*** Tables ***/
 /*** Toasts ***/
@@ -2308,6 +2309,8 @@ td, th {
     padding: 10px 20px; }
   .collection.with-header .collection-item {
     padding-left: 30px; }
+  .collection.with-header .collection-item.avatar {
+    padding-left: 72px; }
 
 .secondary-content {
   float: right;
@@ -4997,7 +5000,6 @@ span.badge {
   content: "\e8f5"; }
 
 .container {
-  padding: 0 1.5rem;
   margin: 0 auto;
   max-width: 1280px;
   width: 90%; }
@@ -5386,32 +5388,32 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 h1 {
   font-size: 4.2rem;
-  line-height: 4.62rem;
+  line-height: 110%;
   margin: 2.1rem 0 1.68rem 0; }
 
 h2 {
   font-size: 3.56rem;
-  line-height: 3.916rem;
+  line-height: 110%;
   margin: 1.78rem 0 1.424rem 0; }
 
 h3 {
   font-size: 2.92rem;
-  line-height: 3.212rem;
+  line-height: 110%;
   margin: 1.46rem 0 1.168rem 0; }
 
 h4 {
   font-size: 2.28rem;
-  line-height: 2.508rem;
+  line-height: 110%;
   margin: 1.14rem 0 0.912rem 0; }
 
 h5 {
   font-size: 1.64rem;
-  line-height: 1.804rem;
+  line-height: 110%;
   margin: 0.82rem 0 0.656rem 0; }
 
 h6 {
   font-size: 1rem;
-  line-height: 1.1rem;
+  line-height: 110%;
   margin: 0.5rem 0 0.4rem 0; }
 
 em {
@@ -5494,6 +5496,9 @@ small {
   @media only screen and (min-width: 960px) {
     .flow-text {
       font-size: 1.68rem; } }
+  @media only screen and (max-width: 360px) {
+    .flow-text {
+      font-size: 1.2rem; } }
 
 .card-panel {
   padding: 20px;
@@ -5582,7 +5587,7 @@ small {
   .card .card-reveal {
     padding: 20px;
     position: absolute;
-    background-color: #FFF;
+    background-color: #fff;
     width: 100%;
     overflow-y: auto;
     top: 100%;
@@ -5744,9 +5749,9 @@ small {
   -webkit-tap-highlight-color: transparent; }
 
 .btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {
-  background-color: #DFDFDF;
+  background-color: #DFDFDF !important;
   box-shadow: none;
-  color: #9F9F9F;
+  color: #9F9F9F !important;
   cursor: default; }
   .btn.disabled *, .disabled.btn-large *, .btn-floating.disabled *, .btn-large.disabled *, .btn:disabled *, .btn-large:disabled *, .btn-large:disabled *, .btn-floating:disabled * {
     pointer-events: none; }
@@ -5760,7 +5765,7 @@ small {
 
 .btn, .btn-large {
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
   background-color: #26a69a;
   text-align: center;
   letter-spacing: .5px;
@@ -5775,7 +5780,7 @@ small {
 
 .btn-floating {
   display: inline-block;
-  color: #FFF;
+  color: #fff;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -5792,7 +5797,7 @@ small {
     width: inherit;
     display: inline-block;
     text-align: center;
-    color: #FFF;
+    color: #fff;
     font-size: 1.6rem;
     line-height: 37px; }
   .btn-floating:before {
@@ -5844,7 +5849,7 @@ button.btn-floating {
   display: block; }
 
 .dropdown-content {
-  background-color: #FFFFFF;
+  background-color: #fff;
   margin: 0;
   display: none;
   min-width: 100px;
@@ -5989,11 +5994,6 @@ a.waves-effect .waves-ripple {
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
-  -webkit-transform: translate(0);
-  -moz-transform: translate(0);
-  -ms-transform: translate(0);
-  -o-transform: translate(0);
-  transform: translate(0);
   will-change: top, opacity; }
   @media only screen and (max-width : 992px) {
     .modal {
@@ -6098,7 +6098,7 @@ a.waves-effect .waves-ripple {
     line-height: inherit; }
 .side-nav .collapsible-body {
   border: 0;
-  background-color: #FFF; }
+  background-color: #fff; }
   .side-nav .collapsible-body li a {
     margin: 0 1rem 0 2rem; }
 
@@ -6285,7 +6285,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   padding-left: 4rem;
   width: calc(100% - 4rem); }
   .input-field input[type=search]:focus {
-    background-color: #FFF;
+    background-color: #fff;
     border: 0;
     box-shadow: none;
     color: #444; }
@@ -6943,7 +6943,7 @@ select {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #FFF;
+  background-color: #fff;
   z-index: 999;
   overflow-y: auto;
   will-change: left; }

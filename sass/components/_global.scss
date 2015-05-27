@@ -497,7 +497,10 @@ td, th{
       padding: 10px 20px;
     }
     .collection-item {
-     padding-left: 30px;
+      padding-left: 30px;
+    }
+    .collection-item.avatar {
+      padding-left: 72px;
     }
   }
 

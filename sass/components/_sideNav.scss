@@ -8,7 +8,7 @@
   height: calc(100% + 60px);
   height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
-  background-color: #FFF;
+  background-color: $sidenav-bg-color;
   z-index: 999;
   overflow-y: auto;
 
@@ -29,7 +29,7 @@
 
   li {
     float: none;
-    padding: 0 15px;
+    padding: 0 $sidenav-padding-right;
     &:hover, &.active { background-color: #ddd; }
   }
   a {
@@ -38,7 +38,7 @@
     font-size: 1rem;
     height: 64px;
     line-height: 64px;
-    padding: 0 15px;
+    padding: 0 $sidenav-padding-right;
   }
 }
 
@@ -57,7 +57,7 @@
 .side-nav.fixed {
   a {
     display: block;
-    padding: 0 15px;
+    padding: 0 $sidenav-padding-right;
     color: #444;
   }
 }
@@ -92,7 +92,7 @@
 .side-nav.fixed .collapsible-body li.active {
   background-color: $primary-color;
   a {
-    color: #fff;
+    color: $sidenav-bg-color;
   }
 }
 

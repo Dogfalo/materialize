@@ -35,14 +35,19 @@
 
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {
-      if ($(e.target).is('form')) {
-        $(this).find(input_selector).removeClass('valid').removeClass('invalid');
-        $(this).find(input_selector).siblings('label, i').removeClass('active');
+      var formReset = $(e.target);
+      if (formReset.is('form')) {
+        formReset.find(input_selector).removeClass('valid').removeClass('invalid');
+        formReset.find(input_selector).each(function () {
+          if ($(this).attr('value') === '') {
+            $(this).siblings('label, i').removeClass('active');
+          }
+        });
 
         // Reset select
-        $(this).find('select.initialized').each(function () {
-          var reset_text = $(this).find('option[selected]').text();
-          $(this).siblings('input.select-dropdown').val(reset_text);
+        formReset.find('select.initialized').each(function () {
+          var reset_text = formReset.find('option[selected]').text();
+          formReset.siblings('input.select-dropdown').val(reset_text);
         });
       }
     });
@@ -61,6 +66,10 @@
     });
 
     validate_field = function(object) {
+      var hasLength = object.attr('length') !== undefined;
+      var lenAttr = parseInt(object.attr('length'));
+      var len = object.val().length;
+
       if (object.val().length === 0 && object[0].validity.badInput === false) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
@@ -69,7 +78,8 @@
       }
       else {
         if (object.hasClass('validate')) {
-          if (object.is(':valid')) {
+          // Check for character counter attributes
+          if ((object.is(':valid') && hasLength && (len < lenAttr)) || (object.is(':valid') && !hasLength)) {
             object.removeClass('invalid');
             object.addClass('valid');
           }
@@ -91,11 +101,21 @@
     var text_area_selector = '.materialize-textarea';
 
     function textareaAutoResize($textarea) {
-      // Set fontsize of hiddenDiv
+      // Set font properties of hiddenDiv
+
+      var fontFamily = $textarea.css('font-family');
       var fontSize = $textarea.css('font-size');
-      if (fontSize) {
-        hiddenDiv.css('font-size', fontSize);
+
+      if (fontSize) { hiddenDiv.css('font-size', fontSize); }
+      if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
+
+      if ($textarea.attr('wrap') === "off") {
+        hiddenDiv.css('overflow-wrap', "normal")
+                 .css('white-space', "pre");
       }
+
+
+
 
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
@@ -137,9 +157,14 @@
     });
 
 
-    // Range Input
+
+    /****************
+    *  Range Input  *
+    ****************/
+
     var range_type = 'input[type=range]';
     var range_mousedown = false;
+    var left;
 
     $(range_type).each(function () {
       var thumb = $('<span class="thumb"><span class="value"></span></span>');
@@ -147,13 +172,22 @@
     });
 
     var range_wrapper = '.range-field';
+    $(document).on('change', range_type, function(e) {
+      var thumb = $(this).siblings('.thumb');
+      thumb.find('.value').html($(this).val());
+    });
 
-      $(document).on("mousedown", range_wrapper, function(e) {
-        var thumb = $(this).children('.thumb');
-        if (thumb.length <= 0) {
-          thumb = $('<span class="thumb"><span class="value"></span></span>');
-          $(this).append(thumb);
-        }
+    $(document).on('mousedown touchstart', range_type, function(e) {
+      var thumb = $(this).siblings('.thumb');
+
+      // If thumb indicator does not exist yet, create it
+      if (thumb.length <= 0) {
+        thumb = $('<span class="thumb"><span class="value"></span></span>');
+        $(this).append(thumb);
+      }
+
+      // Set indicator value
+      thumb.find('.value').html($(this).val());
 
       range_mousedown = true;
       $(this).addClass('active');
@@ -161,7 +195,13 @@
       if (!thumb.hasClass('active')) {
         thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
       }
-      var left = e.pageX - $(this).offset().left;
+
+      if(e.pageX === undefined || e.pageX === null){//mobile
+         left = e.originalEvent.touches[0].pageX - $(this).offset().left;
+      }
+      else{ // desktop
+         left = e.pageX - $(this).offset().left;
+      }
       var width = $(this).outerWidth();
 
       if (left < 0) {
@@ -171,22 +211,29 @@
         left = width;
       }
       thumb.addClass('active').css('left', left);
-      thumb.find('.value').html($(this).children('input[type=range]').val());
+      thumb.find('.value').html($(this).val());
+
 
     });
-    $(document).on("mouseup", range_wrapper, function() {
+
+    $(document).on('mouseup touchend', range_wrapper, function() {
       range_mousedown = false;
       $(this).removeClass('active');
     });
 
-    $(document).on("mousemove", range_wrapper, function(e) {
-
+    $(document).on('mousemove touchmove', range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
+      var left;
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
+          thumb.velocity({ height: '30px', width: '30px', top: '-20px', marginLeft: '-15px'}, { duration: 300, easing: 'easeOutExpo' });
         }
-        var left = e.pageX - $(this).offset().left;
+        if (e.pageX === undefined || e.pageX === null) { //mobile
+          left = e.originalEvent.touches[0].pageX - $(this).offset().left;
+        }
+        else{ // desktop
+          left = e.pageX - $(this).offset().left;
+        }
         var width = $(this).outerWidth();
 
         if (left < 0) {
@@ -196,17 +243,18 @@
           left = width;
         }
         thumb.addClass('active').css('left', left);
-        thumb.find('.value').html($(this).children('input[type=range]').val());
+
       }
 
     });
-    $(document).on("mouseout", range_wrapper, function() {
+
+    $(document).on('mouseout touchleave', range_wrapper, function() {
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
 
         if (thumb.hasClass('active')) {
-          thumb.velocity({ height: "0", width: "0", top: "10px", marginLeft: "-6px"}, { duration: 100 });
+          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '-6px'}, { duration: 100 });
         }
         thumb.removeClass('active');
       }
@@ -287,8 +335,7 @@
       if ( $select.is(':disabled') )
         dropdownIcon.addClass('disabled');
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '')
-                       + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
+      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 

@@ -18,7 +18,7 @@
 
 
   .card-title {
-    color: #fff;
+    color: $card-bg-color;
     font-size: 24px;
     font-weight: 300;
     &.activator {
@@ -121,19 +121,19 @@
     padding: $card-padding;
 
     a {
-      color: color("orange", "accent-2");
+      color: $card-link-color;
       margin-right: $card-padding;
       @include transition(color .3s ease);
       text-transform: uppercase;
 
-      &:hover { color: lighten(color("orange", "accent-2"), 20%); }
+      &:hover { color: $card-link-color-light; }
     }
   }
 
   .card-reveal {
     padding: $card-padding;
     position: absolute;
-    background-color: #FFF;
+    background-color: $card-bg-color;
     width: 100%;
     overflow-y: auto;
     top: 100%;

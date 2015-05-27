@@ -306,7 +306,7 @@
         // Default to "init"
         return methods.init.apply( this, arguments );
       } else {
-        $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tooltip' );
+        $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.sideNav' );
       }
     }; // Plugin end
 }( jQuery ));
