@@ -6031,14 +6031,14 @@ a.waves-effect .waves-ripple {
   padding: 0;
   height: 70%; }
   .modal.modal-fixed-footer .modal-content {
-    position: fixed;
+    position: absolute;
+    height: calc(100% - 56px);
     max-height: 100%;
-    padding-bottom: 64px;
     width: 100%;
     overflow-y: auto; }
   .modal.modal-fixed-footer .modal-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    position: fixed;
+    position: absolute;
     bottom: 0; }
 
 .modal.bottom-sheet {
