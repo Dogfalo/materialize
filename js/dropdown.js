@@ -41,8 +41,6 @@
 
     updateOptions();
 
-    // Attach dropdown to its activator
-    origin.after(activates);
 
     /*
       Helper function to position and resize dropdown.
@@ -78,8 +76,8 @@
       // Position dropdown
       activates.css({
         position: 'absolute',
-        top: origin.position().top + offset,
-        left: origin.position().left + width_difference + gutter_spacing
+        top: origin.offset().top + offset,
+        left: origin.offset().left + width_difference + gutter_spacing
       });
 
 
