@@ -272,9 +272,11 @@ virtualenv .
 pip install flask-material
 	  </code></pre>
 	  <pre><code class="language-bash">
-from flask-material import Material
+from flask_material import Material
 # [...Init your app, etc...]
 Material(app)
+# Be sure your application page
+# uses: {% extends "material/base.html" %}
 	  </code></pre>
 	  <p class="promo-caption">Ruby Gem</p>
           <p>See <a href="https://github.com/mkhairi/materialize-sass">here</a> for documentation on this gem.</p>
