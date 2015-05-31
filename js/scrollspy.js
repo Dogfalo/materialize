@@ -187,7 +187,7 @@
 
 //          offset - 200 allows elements near bottom of page to scroll
 
-              var scrollOffset = options.scrollOffset || 200;
+              var scrollOffset = typeof options.scrollOffset !== 'undefined' ? options.scrollOffset : 200;
               $('html, body').animate({ scrollTop: offset - scrollOffset }, {duration: 400, queue: false, easing: 'easeOutCubic'});
 			
 		  });
