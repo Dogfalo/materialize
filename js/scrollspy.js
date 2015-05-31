@@ -167,9 +167,14 @@
         offsetRight : number -> offset from right. Default: 0
         offsetBottom : number -> offset from bottom. Default: 0
         offsetLeft : number -> offset from left. Default: 0
+        scrollOffset : number -> the distance from the top of the window that the target element should be when
+                                 automatically scrolled to. Default: 200
 	 * @returns {jQuery}
 	 */
 	$.scrollSpy = function(selector, options) {
+
+        options = options || {};
+
 		var visible = [];
 		selector = $(selector);
 		selector.each(function(i, element) {
@@ -181,14 +186,12 @@
 		    var offset = $(this.hash).offset().top + 1;
 
 //          offset - 200 allows elements near bottom of page to scroll
-			
-	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, queue: false, easing: 'easeOutCubic'});
+
+              var scrollOffset = options.scrollOffset || 200;
+              $('html, body').animate({ scrollTop: offset - scrollOffset }, {duration: 400, queue: false, easing: 'easeOutCubic'});
 			
 		  });
 		});
-		options = options || {
-			throttle: 100
-		};
 
 		offset.top = options.offsetTop || 0;
 		offset.right = options.offsetRight || 0;
