@@ -15,7 +15,7 @@
   - JavaScript Initialization no longer needed for many components
   - HTML options through data-attributes
   - Site colors can be defined through Primary and Secondary color in Sass
-  - Tables no longer resonsive by default
+  - Tables no longer responsive by default
 
 - v0.95.0 (Jan 17, 2015)
   - Drag Out Menu fixed with Touch Interactions
