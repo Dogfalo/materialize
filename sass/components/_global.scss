@@ -137,11 +137,10 @@ video.responsive-video {
 .pagination {
 
   li {
-    font-size: 1.2rem;
     float: left;
-    padding: 0 5px;
+    font-size: 1.2rem;
+    padding: 0 10px;
     line-height: 30px;
-    margin: 0 5px;
     border-radius: 2px;
     text-align: center;
 
@@ -158,6 +157,28 @@ video.responsive-video {
 
     i {
       font-size: 2rem;
+    }
+  }
+
+
+  li.pages ul li {
+    display: inline-block;
+    float: none;
+  }
+}
+@media #{$medium-and-down} {
+  .pagination {
+    width: 100%;
+
+    li.prev,
+    li.next {
+      width: 10%;
+    }
+
+    li.pages {
+      width: 80%;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 }

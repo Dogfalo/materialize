@@ -2047,11 +2047,10 @@ img.responsive-img, video.responsive-video {
   height: auto; }
 
 .pagination li {
-  font-size: 1.2rem;
   float: left;
-  padding: 0 5px;
+  font-size: 1.2rem;
+  padding: 0 10px;
   line-height: 30px;
-  margin: 0 5px;
   border-radius: 2px;
   text-align: center; }
   .pagination li a {
@@ -2065,6 +2064,19 @@ img.responsive-img, video.responsive-video {
     color: #999; }
   .pagination li i {
     font-size: 2rem; }
+.pagination li.pages ul li {
+  display: inline-block;
+  float: none; }
+
+@media only screen and (max-width : 992px) {
+  .pagination {
+    width: 100%; }
+    .pagination li.prev, .pagination li.next {
+      width: 10%; }
+    .pagination li.pages {
+      width: 80%;
+      overflow: hidden;
+      white-space: nowrap; } }
 
 .parallax-container {
   position: relative;
