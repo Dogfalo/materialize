@@ -115,7 +115,8 @@
       });
       origin.on('mouseleave', function(e){
         // If hover on origin then to something other than dropdown content, then close
-        if(!$(e.toElement).closest('.dropdown-content').is(activates)) {
+        var toEl = e.toElement || e.relatedTarget; // added browser compatibility for target element
+        if(!$(toEl).closest('.dropdown-content').is(activates)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
@@ -123,7 +124,8 @@
       });
 
       activates.on('mouseleave', function(e){ // Mouse out
-        if(!$(e.toElement).closest('.dropdown-button').is(origin)) {
+        var toEl = e.toElement || e.relatedTarget;
+        if(!$(toEl).closest('.dropdown-button').is(origin)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
