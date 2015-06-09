@@ -25,6 +25,15 @@
       cursor: pointer;
     }
   }
+  
+  //cards hoverable
+  &.card-hoverable {
+    transition: all .3s;
+    &:hover {
+      transform: translate3d(0, -3px, 0);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+    }
+  }
 
   // Card Sizes
   &.small, &.medium, &.large {
