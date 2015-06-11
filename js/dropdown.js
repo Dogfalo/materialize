@@ -85,16 +85,16 @@
 
 
       // Show dropdown
-      activates.stop(true, true).css('opacity', 0)
+      activates.stop(true, true).css({'opacity': 0, 'display' : 'block'})
         .slideDown({
-        queue: false,
-        duration: options.inDuration,
-        easing: 'easeOutCubic',
-        complete: function() {
-          $(this).css('height', '');
-        }
-      })
-        .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeOutSine'});
+          queue: false,
+          duration: options.inDuration,
+          easing: 'easeOutCubic',
+          complete: function() {
+            $(this).css('height', '');
+          }
+        })
+        .animate( {opacity: 1}, {queue: false, duration: options.inDuration, easing: 'easeInSine'});
     }
 
     function hideDropdown() {
