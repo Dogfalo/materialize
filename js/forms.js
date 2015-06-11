@@ -142,7 +142,7 @@
       }
     });
 
-    $('body').on('keyup keydown', text_area_selector, function () {
+    $('body').on('keyup keydown focus', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
