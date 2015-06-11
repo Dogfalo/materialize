@@ -85,7 +85,7 @@
 
 
       // Show dropdown
-      activates.stop(true, true).css({'opacity': 0, 'display' : 'block'})
+      activates.stop(true, true).css({'opacity': 0})
         .slideDown({
           queue: false,
           duration: options.inDuration,
