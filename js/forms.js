@@ -315,7 +315,9 @@
 
       options.find('li').each(function (i) {
         var $curr_select = $select;
-        $(this).click(function () {
+        $(this).click(function (event) {
+          //Prevents the event from bubbling up the DOM tree
+          event.stopPropagation();
           // Check if option element is disabled
           if (!$(this).hasClass('disabled')) {
             $curr_select.find('option').eq(i).prop('selected', true);
