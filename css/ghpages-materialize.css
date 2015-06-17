@@ -5715,13 +5715,13 @@ small {
   padding: 0; }
 
 .material-tooltip {
-  padding: 10px 8px;
-  font-size: 1rem;
+  padding: 5px 8px;
+  font-size: 0.9rem;
   z-index: 2000;
   background-color: transparent;
   border-radius: 2px;
   color: #fff;
-  min-height: 36px;
+  min-height: 22px;
   line-height: 1rem;
   opacity: 0;
   display: none;
@@ -5739,7 +5739,7 @@ small {
   height: 7px;
   width: 14px;
   border-radius: 0 0 14px 14px;
-  background-color: #323232;
+  background-color: rgba(97, 97, 97, 0.9);
   z-index: -1;
   -webkit-transform-origin: 50% 10%;
   -moz-transform-origin: 50% 10%;
