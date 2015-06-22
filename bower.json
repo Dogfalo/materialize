@@ -35,7 +35,8 @@
     "font/roboto/Roboto-Regular.woff2",
     "font/roboto/Roboto-Thin.ttf",
     "font/roboto/Roboto-Thin.woff",
-    "font/roboto/Roboto-Thin.woff2"
+    "font/roboto/Roboto-Thin.woff2",
+    "sass/*"
   ],
   "ignore": [
     "jade/",
