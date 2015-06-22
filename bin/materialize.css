@@ -6699,13 +6699,13 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     margin: 0 0 15px 0;
     padding: 0;
     display: block; }
-  .select-wrapper .mdi-navigation-arrow-drop-down {
+  .select-wrapper span.caret {
     color: initial;
     position: absolute;
     right: 0;
-    top: 0;
-    font-size: 23px; }
-    .select-wrapper .mdi-navigation-arrow-drop-down.disabled {
+    top: 16px;
+    font-size: 10px; }
+    .select-wrapper span.caret.disabled {
       color: rgba(0, 0, 0, 0.26); }
   .select-wrapper + label {
     position: absolute;
