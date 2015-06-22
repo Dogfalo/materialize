@@ -8331,6 +8331,7 @@ a.button-collapse.top-nav {
       margin: 0 auto;
       display: block; } }
   .promo i {
+    margin: 40px 0;
     color: #ee6e73;
     font-size: 7rem;
     display: block; }
