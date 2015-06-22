@@ -633,12 +633,12 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     padding: 0;
     display: block;
   }
-  .mdi-navigation-arrow-drop-down {
+  span.caret {
     color: initial;
     position: absolute;
     right: 0;
-    top: 0;
-    font-size: 23px;
+    top: 16px;
+    font-size: 10px;
     &.disabled {
       color: $input-disabled-color;
     }

@@ -6705,13 +6705,13 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     margin: 0 0 15px 0;
     padding: 0;
     display: block; }
-  .select-wrapper .mdi-navigation-arrow-drop-down {
+  .select-wrapper span.caret {
     color: initial;
     position: absolute;
     right: 0;
-    top: 0;
-    font-size: 23px; }
-    .select-wrapper .mdi-navigation-arrow-drop-down.disabled {
+    top: 16px;
+    font-size: 10px; }
+    .select-wrapper span.caret.disabled {
       color: rgba(0, 0, 0, 0.26); }
   .select-wrapper + label {
     position: absolute;
@@ -8337,6 +8337,7 @@ a.button-collapse.top-nav {
       margin: 0 auto;
       display: block; } }
   .promo i {
+    margin: 40px 0;
     color: #ee6e73;
     font-size: 7rem;
     display: block; }
@@ -8484,7 +8485,7 @@ a.button-collapse.top-nav {
   text-align: center;
   vertical-align: middle; }
 
-.icon-demo {
+.material-icons.icon-demo {
   line-height: 50px; }
 
 .icon-container i {

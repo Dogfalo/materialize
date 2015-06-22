@@ -331,7 +331,7 @@
       // Wrap Elements
       $select.wrap(wrapper);
       // Add Select Display Element
-      var dropdownIcon = $('<i class="mdi-navigation-arrow-drop-down"></i>');
+      var dropdownIcon = $('<span class="caret">&#9660;</span>');
       if ( $select.is(':disabled') )
         dropdownIcon.addClass('disabled');
 
