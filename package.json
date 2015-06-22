@@ -11,10 +11,10 @@
   "dependencies": {
   },
   "directories" : {
-    "sass",
-    "bin",
-    "font"
-  }
+    "sass": "sass",
+    "bin": "bin",
+    "font": "font"
+  },
   "engine": "node >= 0.10",
   "devDependencies": {
     "node-sass": "^2.1.1",
