@@ -39,7 +39,7 @@
             <div class="row">
               <div class="input-field col s12">
                 <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
+                <label for="email" data-error="wrong" data-success="right">Email</label>
               </div>
             </div>
           </form>
@@ -102,12 +102,12 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <i class="mdi-action-account-circle prefix"></i>
+                <i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" class="validate">
                 <label for="icon_prefix">First Name</label>
               </div>
               <div class="input-field col s6">
-                <i class="mdi-communication-phone prefix"></i>
+                <i class="material-icons prefix">phone</i>
                 <input id="icon_telephone" type="tel" class="validate">
                 <label for="icon_telephone">Telephone</label>
               </div>
@@ -120,14 +120,40 @@
     &lt;form class="col s12">
       &lt;div class="row">
         &lt;div class="input-field col s6">
-          &lt;i class="mdi-action-account-circle prefix">&lt;/i>
+          &lt;i class="material-icons prefix">account_circle</i>&lt;/i>
           &lt;input id="icon_prefix" type="text" class="validate">
           &lt;label for="icon_prefix">First Name&lt;/label>
         &lt;/div>
         &lt;div class="input-field col s6">
-          &lt;i class="mdi-communication-phone prefix">&lt;/i>
+          &lt;i class="material-icons prefix">phone</i>&lt;/i>
           &lt;input id="icon_telephone" type="tel" class="validate">
           &lt;label for="icon_telephone">Telephone&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+
+        <h4>Custom Error or Success Messages</h4>
+        <p>You can add custom validation messages by adding either <code class="language-markup">data-error</code> or <code class="language-markup">data-success</code> attributes to your input field labels.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email" data-error="wrong" data-success="right">Email</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" class="validate">
+          &lt;label for="email" data-error="wrong" data-success="right">Email&lt;/label>
         &lt;/div>
       &lt;/div>
     &lt;/form>
@@ -203,7 +229,7 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <i class="mdi-editor-mode-edit prefix"></i>
+                <i class="material-icons prefix">mode_edit</i>
                 <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
                 <label for="icon_prefix2">Message</label>
               </div>
@@ -216,7 +242,7 @@
     &lt;form class="col s12">
       &lt;div class="row">
         &lt;div class="input-field col s6">
-          &lt;i class="mdi-editor-mode-edit prefix">&lt;/i>
+          &lt;i class="material-icons prefix">mode_edit</i>
           &lt;textarea id="icon_prefix2" class="materialize-textarea">&lt;/textarea>
           &lt;label for="icon_prefix2">First Name&lt;/label>
         &lt;/div>
@@ -227,7 +253,7 @@
       </div>
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
-        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field for proper alignment with other text fields.</code> </p>
+        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
         <div class="row">
           <form class="col s12 m6">
             <div class="row">
@@ -400,7 +426,7 @@
       <!-- Checkboxes -->
       <div id="checkbox" class="section scrollspy">
         <h2 class="header">Checkboxes</h2>
-        <p>Checkboxes</p>
+        <p>Use checkboxes when looking for yes or no answers. The <code class="language-markup">for</code> attribute is necessary to bind the our custom checkbox with the input. Add the input's <code class="language-markup">id</code> as the value of the <code class="language-markup">for</code> attribute of the label. </p>
         <form action="#">
           <p>
             <input type="checkbox" id="test9" />
@@ -507,10 +533,12 @@
         <p>If you want to style an input button with a path input we provide this structure.</p>
         <form action="#">
           <div class="file-field input-field">
-            <input class="file-path validate" type="text"/>
             <div class="btn">
               <span>File</span>
-              <input type="file" />
+              <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
             </div>
           </div>
         </form>
@@ -549,7 +577,7 @@
         <h2 class="header">Date Picker</h2>
         <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
         <label for="birthdate">Birthdate</label>
-        <input id="birthdate" type="text" class="datepicker"></input>
+        <input id="birthdate" type="text" class="datepicker">
         <pre><code class="language-markup">
   &lt;input type="date" class="datepicker">
         </code></pre>
@@ -604,6 +632,13 @@
     &lt;/div>
           </code></pre>
         <br>
+        <h4>Initialization</h4>
+        <p>There are no options for this plugin, but if you are adding these dynamically, you can use this to initialize them.</p>
+        <pre><code class="language-javascript">
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea1').characterCounter();
+  });
+        </code></pre>
       </div>
 
 

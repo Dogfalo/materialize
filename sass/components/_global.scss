@@ -58,24 +58,31 @@ ul {
 
 
 // Z-levels
-
+.z-depth-0 {
+  box-shadow: none !important;
+}
 .z-depth-1{
-    @include box-shadow-2(0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12));
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 .z-depth-1-half{
-    @include box-shadow-2(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 .z-depth-2{
-    @include box-shadow-2(0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .z-depth-3{
-    @include box-shadow-2(0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19));
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .z-depth-4{
-    @include box-shadow-2(0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21));
+  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
 }
 .z-depth-5{
-    @include box-shadow-2(0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22));
+  box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+.hoverable:hover {
+  transition: box-shadow .25s;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 // Dividers
@@ -92,7 +99,7 @@ ul {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid color("red", "lighten-3");
+  border-left: 5px solid $primary-color;
 }
 
 // Icon Styles
@@ -135,11 +142,10 @@ video.responsive-video {
 .pagination {
 
   li {
-    font-size: 1.2rem;
     float: left;
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 30px;
     border-radius: 2px;
     text-align: center;
 
@@ -149,11 +155,35 @@ video.responsive-video {
 
     &.active { background-color: $primary-color; }
 
-    &.disabled a { color: #999; }
+    &.disabled a {
+      cursor: default;
+      color: #999;
+    }
 
     i {
       font-size: 2rem;
-      line-height: 1.8rem;
+    }
+  }
+
+
+  li.pages ul li {
+    display: inline-block;
+    float: none;
+  }
+}
+@media #{$medium-and-down} {
+  .pagination {
+    width: 100%;
+
+    li.prev,
+    li.next {
+      width: 10%;
+    }
+
+    li.pages {
+      width: 80%;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 }
@@ -296,23 +326,25 @@ table {
   width:100%;
   display: table;
 
-  &.bordered tr {
+  &.bordered > thead > tr,
+  &.bordered > tbody > tr {
     border-bottom: 1px solid $table-border-color;
   }
 
-  &.striped {
-    tbody tr:nth-child(odd) {
+  &.striped > tbody {
+    > tr:nth-child(odd) {
       background-color: $table-striped-color;
+    }
+
+    > tr > td {
+      border-radius: 0px;
     }
   }
 
-  &.hoverable {
-
-    tbody tr {
-      @include transition(background-color .25s ease);
-      &:hover {
-        background-color: $table-striped-color;
-      }
+  &.hoverable > tbody > tr {
+    @include transition(background-color .25s ease);
+    &:hover {
+      background-color: $table-striped-color;
     }
   }
 
@@ -425,7 +457,7 @@ td, th{
 
     // Avatar Collection
     &.avatar {
-      height: 84px;
+      min-height: 84px;
       padding-left: 72px;
       position: relative;
 
@@ -491,7 +523,10 @@ td, th{
       padding: 10px 20px;
     }
     .collection-item {
-     padding-left: 30px;
+      padding-left: 30px;
+    }
+    .collection-item.avatar {
+      padding-left: 72px;
     }
   }
 
@@ -561,6 +596,7 @@ span.badge {
     position: absolute;
     background-color: inherit;
     top: 0;
+    left: 0;
     bottom: 0;
     background-color: $progress-bar-color;
     @include transition(width .3s linear);
@@ -660,7 +696,6 @@ span.badge {
   user-select: none;
 }
 
-// Circle
 .circle {
   border-radius: 50%;
 }
@@ -672,6 +707,7 @@ span.badge {
 }
 
 .truncate {
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

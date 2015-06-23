@@ -1,6 +1,6 @@
 .dropdown-content {
   @extend .z-depth-1;
-  background-color: #FFFFFF;
+  background-color: $dropdown-bg-color;
   margin: 0;
   display: none;
   min-width: 100px;
@@ -8,8 +8,7 @@
   overflow-y: auto;
   opacity: 0;
   position: absolute;
-  white-space: nowrap; // Force one line
-  z-index: 1;
+  z-index: 999;
   will-change: width, height;
 
   li {
@@ -22,7 +21,7 @@
     text-transform: none;
 
     &:hover, &.active {
-      background-color: #eee;
+      background-color: $dropdown-hover-bg-color;
     }
 
     & > a, & > span {
@@ -30,6 +29,12 @@
       color: $dropdown-color;
       display: block;
       padding: 1rem 1rem;
+    }
+
+    // Icon alignment override
+    & > a > i {
+      height: inherit;
+      line-height: inherit;
     }
   }
 }

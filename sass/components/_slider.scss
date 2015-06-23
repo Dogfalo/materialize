@@ -1,6 +1,6 @@
 .slider {
   position: relative;
-  height: 440px;
+  height: 400px;
   width: 100%;
 
   // Fullscreen slider
@@ -24,7 +24,7 @@
   }
 
   .slides {
-    background-color: color('grey', 'base');
+    background-color: $slider-bg-color;
     margin: 0;
     height: 400px;
 
@@ -53,7 +53,7 @@
         width: 70%;
         opacity: 0;
 
-        p { color: color('grey', 'lighten-2'); }
+        p { color: $slider-bg-color-light; }
       }
 
       &.active {
@@ -78,13 +78,13 @@
       height: 16px;
       width: 16px;
       margin: 0 12px;
-      background-color: color('grey', 'lighten-2');
+      background-color: $slider-bg-color-light;
 
       @include transition(background-color .3s);
       border-radius: 50%;
 
       &.active {
-        background-color: color('green', 'base');
+        background-color: $slider-indicator-color;
       }
     }
   }

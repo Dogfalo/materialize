@@ -52,6 +52,24 @@ module.exports = function(grunt) {
       }
     },
 
+  // Browser Sync integration
+    browserSync: {
+      bsFiles: ["bin/*.js", "bin/*.css", "!**/node_modules/**/*"],
+      options: {
+          server: {
+              baseDir: "./" // make server from root dir
+          },
+          port: 8000,
+          ui: {
+              port: 8080,
+              weinre: {
+                  port: 9090
+              }
+          },
+          open: false
+      }
+    },
+
 //  Concat
     concat: {
       options: {
@@ -332,10 +350,11 @@ module.exports = function(grunt) {
 //  Concurrent
     concurrent: {
       options: {
-        logConcurrentOutput: true
+        logConcurrentOutput: true,
+        limit: 10,
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'connect:server', 'notify:server']
+        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'server']
       },
     },
 
@@ -393,19 +412,6 @@ module.exports = function(grunt) {
       }
     },
 
-
-//  Server
-    connect: {
-      server: {
-        options: {
-          port: 8000,
-          useAvailablePort: true,
-          hostname: '*',
-          keepalive: true
-        }
-      }
-    },
-
     // Text Replace
     replace: {
       version: { // Does not edit README.md
@@ -448,7 +454,7 @@ module.exports = function(grunt) {
       },
 
       // Rename files
-      rename: {
+    rename: {
           rename_src: {
               src: 'bin/materialize-src'+'.zip',
               dest: 'bin/materialize-src-v'+grunt.option( "newver" )+'.zip',
@@ -478,7 +484,7 @@ module.exports = function(grunt) {
   });
 
   // load the tasks
-//  grunt.loadNpmTasks('grunt-gitinfo');
+  // grunt.loadNpmTasks('grunt-gitinfo');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sass');
@@ -489,11 +495,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-notify');
-  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename');
   grunt.loadNpmTasks("grunt-remove-logging");
+  grunt.loadNpmTasks('grunt-browser-sync');
+
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -518,7 +525,8 @@ module.exports = function(grunt) {
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
-  grunt.registerTask('start_server', ['connect:server', 'notify:server']);
+  grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };
+

@@ -1,6 +1,5 @@
 {
   "name": "Materialize",
-  "version": "0.96.1",
   "description": "A modern responsive front-end framework based on Material Design",
   "keywords": [
     "css",
@@ -36,7 +35,8 @@
     "font/roboto/Roboto-Regular.woff2",
     "font/roboto/Roboto-Thin.ttf",
     "font/roboto/Roboto-Thin.woff",
-    "font/roboto/Roboto-Thin.woff2"
+    "font/roboto/Roboto-Thin.woff2",
+    "sass/*"
   ],
   "ignore": [
     "jade/",

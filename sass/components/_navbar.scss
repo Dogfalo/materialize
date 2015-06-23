@@ -1,12 +1,12 @@
 nav {
-  color: #fff;
+  color: $navbar-font-color;
   @extend .z-depth-1;
   background-color: $primary-color;
   width: 100%;
   height: $navbar-height-mobile;
   line-height: $navbar-height-mobile;
 
-  a { color: #fff; }
+  a { color: $navbar-font-color; }
 
   .nav-wrapper {
     position: relative;
@@ -41,10 +41,11 @@ nav {
   // Logo
   .brand-logo {
     position: absolute;
-    color: #fff;
+    color: $navbar-font-color;
     display: inline-block;
-    font-size: 2.1rem;
+    font-size: $navbar-brand-font-size;
     padding: 0;
+    white-space: nowrap;
 
     &.center {
       left: 50%;
@@ -78,7 +79,7 @@ nav {
     }
     a {
       font-size: 1rem;
-      color: #fff;
+      color: $navbar-font-color;
       display: block;
       padding: 0 15px;
     }
@@ -112,7 +113,7 @@ nav {
         color: rgba(255,255,255,.7);
         @include transition(color .3s);
       }
-      &.active i { color: #fff; }
+      &.active i { color: $navbar-font-color; }
       &.active {
         @include transform(translateY(0));
       }

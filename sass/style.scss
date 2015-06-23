@@ -275,6 +275,7 @@ a.button-collapse.top-nav {
   }
 
   i {
+    margin: 40px 0;
     color: color("materialize-red", "lighten-2");
     font-size: 7rem;
     display: block;
@@ -464,17 +465,19 @@ $height: auto;
 }
 
 // Icons
-.icon-demo {
+.material-icons.icon-demo {
   line-height: 50px;
 }
 .icon-container i {
   font-size: 3em;
-  display: block;
   margin-bottom: 10px;
 }
 .icon-container .icon-preview {
   height: 120px;
   text-align: center;
+}
+.icon-container span {
+  display: block;
 }
 
 .icon-holder {
@@ -508,15 +511,9 @@ $height: auto;
 // Shadow demo styling
 .shadow-demo {
   background-color: color("teal", "lighten-1");
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 100px;
   margin: 20px auto;
-
-  @media only screen and (max-width: $large-screen) {
-    width: 100px;
-    height: 100px;
-
-  }
 
   @media only screen and (max-width: $small-screen) {
     width: 150px;

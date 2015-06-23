@@ -1,10 +1,10 @@
 (function ($) {
     $.fn.tooltip = function (options) {
         var timeout = null,
-    		counter = null,
-    		started = false,
-    		counterInterval = null,
-    		margin = 5;
+        counter = null,
+        started = false,
+        counterInterval = null,
+        margin = 5;
 
       // Defaults
       var defaults = {
@@ -37,12 +37,12 @@
     $(this).on({
       mouseenter: function(e) {
         var tooltip_delay = origin.data("delay");
-        tooltip_delay = (tooltip_delay == undefined || tooltip_delay == "") ? options.delay : tooltip_delay;
+        tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ? options.delay : tooltip_delay;
         counter = 0;
         counterInterval = setInterval(function(){
           counter += 10;
-          if (counter >= tooltip_delay && started == false) {
-            started = true
+          if (counter >= tooltip_delay && started === false) {
+            started = true;
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
             // Set Tooltip text

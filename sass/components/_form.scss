@@ -87,11 +87,35 @@ textarea.materialize-textarea {
     border-bottom: 1px solid $input-success-color;
     box-shadow: 0 1px 0 0 $input-success-color;
   }
+  // Custom Success Message
+  &.valid + label:after,
+  &:focus.valid + label:after {
+    content: attr(data-success);
+    color: $input-success-color;
+    opacity: 1;
+  }
   // Invalid Input Style
   &.invalid,
   &:focus.invalid {
     border-bottom: 1px solid $input-error-color;
     box-shadow: 0 1px 0 0 $input-error-color;
+  }
+  // Custom Error message
+  &.invalid + label:after,
+  &:focus.invalid + label:after {
+    content: attr(data-error);
+    color: $input-error-color;
+    opacity: 1;
+  }
+
+  // Form Message Shared Styles
+  & + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 65px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
   }
 }
 
@@ -157,7 +181,7 @@ textarea.materialize-textarea {
   width: calc(100% - 4rem);
 
   &:focus {
-    background-color: #FFF;
+    background-color: $input-bg-color;
     border: 0;
     box-shadow: none;
     color: #444;
@@ -291,6 +315,15 @@ textarea {
   @include transform(scale(.5));
 }
 
+/* Disabled Radio With gap */
+[type="radio"].with-gap:disabled:checked + label:before {
+  border: 2px solid $input-disabled-color;
+}
+[type="radio"].with-gap:disabled:checked + label:after {
+  border: none;
+  background-color: $input-disabled-color;
+}
+
 /* Disabled style */
 [type="radio"]:disabled:not(:checked) + label:before,
 [type="radio"]:disabled:checked + label:before {
@@ -300,8 +333,12 @@ textarea {
 [type="radio"]:disabled + label {
   color: $input-disabled-color;
 }
-[type="radio"]:disabled:not(:checked) + label:hover:before {
+[type="radio"]:disabled:not(:checked) + label:before {
   border-color: $input-disabled-color;
+}
+[type="radio"]:disabled:checked + label:after {
+  background-color: $input-disabled-color;
+  border-color: $input-disabled-solid-color;
 }
 
 
@@ -323,6 +360,7 @@ form p:last-child {
 [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
+  visibility: hidden;
 }
 
 
@@ -456,8 +494,8 @@ form p:last-child {
       height: 13px;
       border-top: 2px solid transparent;
       border-left: 2px solid transparent;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
+      border-right: 2px solid $input-bg-color;
+      border-bottom: 2px solid $input-bg-color;
       -webkit-transform: rotateZ(37deg);
       transform: rotateZ(37deg);
 
@@ -478,7 +516,6 @@ form p:last-child {
 
     background-color: transparent;
     border: 2px solid transparent;
-
   }
   &:disabled:not(:checked) + label:after {
     border-color: transparent;
@@ -540,17 +577,17 @@ form p:last-child {
     height: 21px;
     background-color: $switch-unchecked-bg;
     border-radius: 21px;
-    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
     left: -5px;
     top: -3px;
-    transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
+    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
 }
 // Switch active style
 input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px transparentize($switch-bg-color, .9);
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px transparentize($switch-bg-color, .9);
 }
 input[type=checkbox]:not(:disabled) ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.08);
+       box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px rgba(0, 0, 0, .08);
 }
 .switch label input[type=checkbox]:checked + .lever:after {
     left: 24px;
@@ -596,12 +633,12 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     padding: 0;
     display: block;
   }
-  .mdi-navigation-arrow-drop-down {
+  span.caret {
     color: initial;
     position: absolute;
     right: 0;
-    top: 0;
-    font-size: 23px;
+    top: 16px;
+    font-size: 10px;
     &.disabled {
       color: $input-disabled-color;
     }
@@ -644,15 +681,14 @@ select:disabled {
 .file-field {
   position: relative;
 
-  input.file-path {
-    margin-left: 100px;
-    width: calc(100% - 100px);
+  .file-path-wrapper {
+    overflow: hidden;
+    padding-left: 10px;
   }
+  input.file-path { width: 100%; }
 
   .btn {
-    position: absolute;
-    top: 0;
-    left: 0;
+    float: left;
     height: 3rem;
     line-height: 3rem;
   }
@@ -727,7 +763,7 @@ input[type=range] + .thumb {
     border-radius: 50% 50% 50% 0;
 
     .value {
-      color: #fff;
+      color: $input-bg-color;
       margin-left: -1px;
       margin-top: 8px;
       font-size: 10px;
