@@ -1,3 +1,4 @@
+(function ($) {
     // Custom Easing
     jQuery.extend( jQuery.easing,
     {
@@ -6,4 +7,4 @@
         return c/4*((t-=2)*t*t + 2) + b;
       }
     });
-
+}(jQuery));
