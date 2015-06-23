@@ -279,6 +279,7 @@
       if (lastID) {
         $select.parent().find('i').remove();
         $select.parent().find('input').remove();
+        $select.parent().find('.caret').remove();
 
         $select.unwrap();
         $('ul#select-options-'+lastID).remove();
