@@ -1,4 +1,4 @@
-Materialize = {};
+window.Materialize = {};
 
 // Unique ID
 Materialize.guid = (function() {
