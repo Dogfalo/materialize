@@ -14,7 +14,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
 - v0.97.0 (June 21, 2015)
-  - **Documentatiion changed to use Official Google Icon web font**
+  - **Documentation changed to use Official Google Icon web font**
   - **Input errors added**
   - Flicker on Firefox on dropdowns fixed
   - Pagination made more responsive
