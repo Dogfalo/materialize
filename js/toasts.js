@@ -71,8 +71,19 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
                 toast.classList.add(classes[i]);
             }
         }
-        toast.innerHTML = html;
-
+        // If type of parameter is HTML Element
+        if ( typeof HTMLElement === "object" ? html instanceof HTMLElement : html && typeof html === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName==="string"
+) {
+          toast.appendChild(html);
+        }
+        else if (html instanceof jQuery) {
+          // Check if it is jQuery object
+          toast.appendChild(html[0]);
+        }
+        else {
+          // Insert as text;
+          toast.innerHTML = html; 
+        }
         // Bind hammer
         var hammerHandler = new Hammer(toast, {prevent_default: false});
         hammerHandler.on('pan', function(e) {
