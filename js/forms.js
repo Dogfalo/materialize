@@ -309,7 +309,7 @@
       // Create Dropdown structure
       selectOptions.each(function () {
         // Add disabled attr if disabled
-        options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
+        options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).prop('label') + '</span></li>'));
       });
 
 
@@ -335,7 +335,7 @@
       if ( $select.is(':disabled') )
         dropdownIcon.addClass('disabled');
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
+      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ label.prop('label') +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
