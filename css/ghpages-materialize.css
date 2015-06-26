@@ -5678,6 +5678,7 @@ small {
       float: right; } }
 
 .tabs {
+  display: flex;
   position: relative;
   height: 48px;
   background-color: #fff;
@@ -5685,6 +5686,10 @@ small {
   width: 100%;
   white-space: nowrap; }
   .tabs .tab {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
     display: block;
     float: left;
     text-align: center;
