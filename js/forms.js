@@ -243,6 +243,7 @@
           left = width;
         }
         thumb.addClass('active').css('left', left);
+        thumb.find('.value').html(thumb.siblings(range_type).val());
 
       }
 
