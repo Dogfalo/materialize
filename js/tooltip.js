@@ -8,7 +8,8 @@
 
       // Defaults
       var defaults = {
-        delay: 350
+        delay: 350,
+        position: 'bottom'
       };
       options = $.extend(defaults, options);
 
@@ -38,6 +39,8 @@
       mouseenter: function(e) {
         var tooltip_delay = origin.data("delay");
         tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ? options.delay : tooltip_delay;
+        var tooltipPosition =  origin.data('position');
+        tooltipPosition = (tooltipPosition === undefined || tooltipPosition === '') ? options.position : tooltipPosition;
         counter = 0;
         counterInterval = setInterval(function(){
           counter += 10;
@@ -51,7 +54,6 @@
             // Tooltip positioning
             var originWidth = origin.outerWidth();
             var originHeight = origin.outerHeight();
-            var tooltipPosition =  origin.attr('data-position');
             var tooltipHeight = newTooltip.outerHeight();
             var tooltipWidth = newTooltip.outerWidth();
             var tooltipVerticalMovement = '0px';
