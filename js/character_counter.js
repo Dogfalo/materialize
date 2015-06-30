@@ -26,6 +26,10 @@
   }
 
   function addCounterElement($input){
+    if($input.parent().find(".character-counter").length > 0){
+		return;
+	}	
+	  
     var $counterElement = $('<span/>')
                         .addClass('character-counter')
                         .css('float','right')
