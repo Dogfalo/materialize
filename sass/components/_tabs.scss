@@ -1,5 +1,5 @@
 .tabs {
-  @include flex();
+  @include flexbox();
   position: relative;
   height: 48px;
   background-color: $tabs-bg-color;
