@@ -61,6 +61,6 @@
 
   ],
   "dependencies": {
-        "jquery": ">=2.1.1"
+        "jquery": ">=1.11.1"
     }
 }
