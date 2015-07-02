@@ -2725,7 +2725,7 @@ $(document).ready(function(){
       // Tear down structure if Select needs to be rebuilt
       var lastID = $select.data('select-id');
       if (lastID) {
-        $select.parent().find('i').remove();
+        $select.parent().find('span').remove();
         $select.parent().find('input').remove();
 
         $select.unwrap();
