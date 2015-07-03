@@ -248,9 +248,8 @@
           left = width;
         }
         thumb.addClass('active').css('left', left);
-
+        thumb.find('.value').html(thumb.siblings(range_type).val());
       }
-
     });
 
     $(document).on('mouseout touchleave', range_wrapper, function() {
