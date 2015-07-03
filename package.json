@@ -8,12 +8,13 @@
     "type": "git",
     "url": "git://github.com/Dogfalo/materialize.git"
   },
-  "directories" : {
+  "directories": {
     "sass": "sass",
     "bin": "bin",
     "font": "font"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "engine": "node >= 0.10",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -35,7 +36,8 @@
     "grunt-rename": "^0.1.4",
     "grunt-sass": "^0.18.1",
     "grunt-text-replace": "^0.4.0",
-    "node-sass": "^2.1.1"
+    "node-sass": "^2.1.1",
+    "qunit": "^0.7.6"
   },
   "scripts": {
     "test": "grunt testem:run:default"
