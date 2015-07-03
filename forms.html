@@ -302,6 +302,8 @@
         <h2 class="header">Textarea</h2>
         <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
         <p><strong>Textareas will auto resize to the text inside.</strong></p>
+
+
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -323,7 +325,13 @@
       &lt;/div>
     &lt;/form>
   &lt;/div>
-        </code></pre><br>
+        </code></pre>
+        <p>advanced note: When dynamically changing the value of a textarea with methods like jQuery's <code class="language-markup">.val()</code>, you must trigger an autoresize on it afterwords because .val() does not automatically trigger the events we've binded to the textarea. </p>
+        <pre><code class="language-javascript">
+  $('#textarea1').val('New Text');
+  $('#textarea1').trigger('autoresize');
+        </code></pre>
+        <br>
 
         <h4>Icon Prefixes</h4>
         <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
