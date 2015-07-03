@@ -36,5 +36,8 @@
     "grunt-sass": "^0.18.1",
     "grunt-text-replace": "^0.4.0",
     "node-sass": "^2.1.1"
+  },
+  "scripts": {
+    "test": "grunt testem:run:default"
   }
 }
