@@ -2191,13 +2191,13 @@ table {
     background-color: #f2f2f2; }
   table.striped > tbody > tr > td {
     border-radius: 0px; }
-  table.hoverable > tbody > tr {
+  table.highlight > tbody > tr {
     -webkit-transition: background-color .25s ease;
     -moz-transition: background-color .25s ease;
     -o-transition: background-color .25s ease;
     -ms-transition: background-color .25s ease;
     transition: background-color .25s ease; }
-    table.hoverable > tbody > tr:hover {
+    table.highlight > tbody > tr:hover {
       background-color: #f2f2f2; }
   table.centered thead tr th, table.centered tbody tr td {
     text-align: center; }
