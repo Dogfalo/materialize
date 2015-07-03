@@ -13,7 +13,16 @@
       options = $.extend(defaults, options);
 
       //Remove previously created html
-      $('.material-tooltip').remove();
+      var that = this;
+      $('.material-tooltip').each(function (index, element) {
+        var origin = $(element).data("origin");
+        // Checking if the element is still attached to the dom. http://stackoverflow.com/questions/3086068/how-do-i-check-whether-a-jquery-element-is-in-the-dom#answer-3086084
+        if (!jQuery.contains(document, origin[0])) {
+          $(element).remove(); // The origin is detached, so no need for the material-tooltip.
+        } else if (that.filter(origin).length) {
+          $(element).remove(); // We are about to reinitialize this one, so we remove it.
+        }
+      });
 
       return this.each(function(){
         var origin = $(this);
