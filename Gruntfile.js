@@ -96,6 +96,7 @@ module.exports = function(grunt) {
               "js/sideNav.js",
               "js/scrollspy.js",
               "js/forms.js",
+              "js/select.js",
               "js/slider.js",
               "js/cards.js",
               "js/pushpin.js",
@@ -130,6 +131,7 @@ module.exports = function(grunt) {
               "js/sideNav.js",
               "js/scrollspy.js",
               "js/forms.js",
+              "js/select.js",
               "js/slider.js",
               "js/cards.js",
               "js/pushpin.js",
@@ -573,4 +575,3 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };
-
