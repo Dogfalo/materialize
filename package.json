@@ -38,8 +38,5 @@
     "grunt-text-replace": "^0.4.0",
     "node-sass": "^2.1.1",
     "qunit": "^0.7.6"
-  },
-  "scripts": {
-    "test": "grunt testem:run:default"
   }
 }
