@@ -383,7 +383,7 @@
       onKeyDown = function(event){
 
         // event.which is deprecated!
-        var keyCode = event.keyCode,
+        var keyCode = event.keyCode || event.charCode || event.which,
             // get the right letter
             letter = event.key || String.fromCharCode(keyCode).toLowerCase();
 
