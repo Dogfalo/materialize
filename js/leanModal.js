@@ -8,7 +8,8 @@
 
   $.fn.extend({
     openModal: function(options) {
-
+      
+      
       $('body').css('overflow', 'hidden');
 
       var defaults = {
@@ -20,14 +21,25 @@
         dismissible: true,
         starting_top: '4%'
       },
-      overlayID = _generateID(),
       $modal = $(this),
-      $overlay = $('<div class="lean-overlay"></div>'),
       lStack = (++_stack);
-
-      // Store a reference of the overlay
-      $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
-      $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
+      
+      if ($modal.css("display") == "block") {
+        // The modal is already opened, just put it back on top
+        associatedOverlayID = $modal.data('overlay-id'),
+        $associatedOverlay = $('#' + associatedOverlayID);
+        $associatedOverlay.css('z-index', 1000 + lStack * 2);
+        $modal.css('z-index', 1000 + lStack * 2 + 1);
+        return
+      }
+      else {
+        overlayID = _generateID(),
+        $overlay = $('<div class="lean-overlay"></div>');
+        // Store a reference of the overlay
+        $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
+        $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
+      }
+      
 
       $("body").append($overlay);
 
