@@ -455,7 +455,7 @@
 
         // Automaticaly clean filter query so user can search again by starting letters
         setTimeout(function(){ filterQuery = []; }, 1000);
-    };
+      };
 
       $newSelect.on('keydown', onKeyDown);
     });
