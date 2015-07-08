@@ -1,6 +1,6 @@
 (function(factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'hammerjs'], factory);
+        define(['jquery', './hammer.min'], factory);
     } else if (typeof exports === 'object') {
         factory(require('jquery'), require('hammerjs'));
     } else {
@@ -30,4 +30,6 @@
             });
         };
     })(Hammer.Manager.prototype.emit);
+
+    return Hammer;
 }));

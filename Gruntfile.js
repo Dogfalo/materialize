@@ -72,6 +72,9 @@ module.exports = function(grunt) {
 
 //  Concat
     concat: {
+      process: {
+        //compile-modules animation.js --to test-c.js --type globals --imports "jquery:jQuery,./jquery.easing.1.3:jQuery"
+      },
       options: {
         separator: ';'
       },
