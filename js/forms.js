@@ -407,14 +407,14 @@
 
         if (letter && (nonLetters.indexOf(event.which) === -1)){
 
-            filterQuery.push(letter);
-            string = filterQuery.join("");
+          filterQuery.push(letter);
+          string = filterQuery.join("");
 
-            var regex = new RegExp(string, "gmi")
+          var regex = new RegExp(string, "gmi")
 
-            newOption = options.find('li').filter(function() {
-              return regex.test($(this).text().toLowerCase());
-            }).sort()[0];
+          newOption = options.find('li').filter(function() {
+            return regex.test($(this).text().toLowerCase());
+          }).sort()[0];
 
           if(newOption){
             activateOption(options, newOption);
