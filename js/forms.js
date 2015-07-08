@@ -381,29 +381,35 @@
       filterQuery = [];
 
       onKeyDown = function(event){
+
+        // event.which is deprecated!
+        var keyCode = event.keyCode,
+            // get the right letter
+            letter = event.key || String.fromCharCode(keyCode).toLowerCase();
+
         // TAB - switch to another input
-        if(event.which == 9){
+        if(keyCode == 9){
           $newSelect.trigger('close');
           return;
         }
 
         // ARROW DOWN WHEN SELECT IS CLOSED - open select options
-        if(event.which == 40 && !options.is(":visible")){
+        if(keyCode == 40 && !options.is(":visible")){
           $newSelect.trigger('open');
           return;
         }
 
         // ENTER WHEN SELECT IS CLOSED - submit form
-        if(event.which == 13 && !options.is(":visible")){
+        if(keyCode == 13 && !options.is(":visible")){
           return;
         }
 
         event.preventDefault();
 
-        // CASE WHEN USER TYPE LETTERS
-        letter = String.fromCharCode(event.which).toLowerCase();
+
+
         var nonLetters = [9,13,27,38,40];
-        if (letter && (nonLetters.indexOf(event.which) === -1)){
+        if (letter && (nonLetters.indexOf(keyCode) === -1)){
           filterQuery.push(letter);
 
           string = filterQuery.join("");
@@ -418,7 +424,7 @@
         }
 
         // ENTER - select option and close when select options are opened
-        if(event.which == 13){
+        if(keyCode == 13){
           activeOption = options.find('li.active:not(.disabled)')[0];
           if(activeOption){
             $(activeOption).trigger('click');
@@ -427,7 +433,7 @@
         }
 
         // ARROW DOWN - move to next not disabled option
-        if(event.which == 40){
+        if(keyCode == 40){
           newOption = options.find('li.active').next('li:not(.disabled)')[0];
           if(newOption){
             activateOption(options, newOption);
@@ -435,12 +441,12 @@
         }
 
         // ESC - close options
-        if(event.which == 27){
+        if(keyCode == 27){
           $newSelect.trigger('close');
         }
 
         // ARROW UP - move to previous not disabled option
-        if(event.which == 38){
+        if(keyCode == 38){
           newOption = options.find('li.active').prev('li:not(.disabled)')[0];
           if(newOption){
             activateOption(options, newOption);
@@ -449,7 +455,7 @@
 
         // Automaticaly clean filter query so user can search again by starting letters
         setTimeout(function(){ filterQuery = []; }, 1000);
-      };
+    };
 
       $newSelect.on('keydown', onKeyDown);
     });
