@@ -457,7 +457,7 @@
         setTimeout(function(){ filterQuery = []; }, 1000);
       };
 
-      $newSelect.on('keydown', onKeyDown);
+      $newSelect.on('keypress', onKeyDown);
     });
   };
 
