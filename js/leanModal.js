@@ -30,13 +30,12 @@
         $modal.css('z-index', 1000 + lStack * 2 + 1);
         return;
       }
-      else {
-        overlayID = _generateID(),
-        $overlay = $('<div class="lean-overlay"></div>');
-        // Store a reference of the overlay
-        $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
-        $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
-      }
+      
+      overlayID = _generateID(),
+      $overlay = $('<div class="lean-overlay"></div>');
+      // Store a reference of the overlay
+      $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
+      $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
       
       $("body").append($overlay);
 
