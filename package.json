@@ -17,6 +17,7 @@
   },
   "engine": "node >= 0.10",
   "devDependencies": {
+    "es6-module-clean-transpilation": "0.3.2",
     "grunt": "^0.4.5",
     "grunt-banner": "^0.3.0",
     "grunt-browser-sync": "^2.1.1",
