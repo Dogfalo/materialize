@@ -24,11 +24,11 @@
       
       if ($modal.css("display") == "block") {
         // The modal is already opened, just put it back on top
-        associatedOverlayID = $modal.data('overlay-id'),
+        associatedOverlayID = $modal.data('overlay-id');
         $associatedOverlay = $('#' + associatedOverlayID);
         $associatedOverlay.css('z-index', 1000 + lStack * 2);
         $modal.css('z-index', 1000 + lStack * 2 + 1);
-        return
+        return;
       }
       else {
         overlayID = _generateID(),
