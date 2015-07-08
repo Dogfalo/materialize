@@ -380,7 +380,7 @@
       // this array is cleared after 1 second
       filterQuery = [];
       // variable that will hold the keydown timer to clean the search
-      keydownTimer,
+      var keydownTimer;
       onKeyDown = function(event){
         // TAB - switch to another input
         if(event.which == 9){
