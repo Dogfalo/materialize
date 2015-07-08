@@ -8,8 +8,6 @@
 
   $.fn.extend({
     openModal: function(options) {
-      
-      
       $('body').css('overflow', 'hidden');
 
       var defaults = {
@@ -40,7 +38,6 @@
         $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
       }
       
-
       $("body").append($overlay);
 
       // Override defaults
