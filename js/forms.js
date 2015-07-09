@@ -23,7 +23,7 @@
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
-        $(this).siblings('label, i').addClass('active');
+        $(this).siblings('label').addClass('active');
       }
       validate_field($(this));
     });
@@ -61,6 +61,10 @@
       var $inputElement = $(this);
       if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
         $inputElement.siblings('label, i').removeClass('active');
+      }
+
+      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') !== undefined) {
+        $inputElement.siblings('i').removeClass('active');
       }
       validate_field($inputElement);
     });
