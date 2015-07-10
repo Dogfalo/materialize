@@ -1,3 +1,8 @@
+import jQuery from 'jquery';
+import Vel from './velocity-fix';
+import Materialize from './global';
+
+var $ = jQuery;
 Materialize.toast = function (message, displayLength, className, completeCallback) {
     className = className || "";
 
@@ -82,7 +87,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         }
         else {
           // Insert as text;
-          toast.innerHTML = html; 
+          toast.innerHTML = html;
         }
         // Bind hammer
         var hammerHandler = new Hammer(toast, {prevent_default: false});
@@ -134,3 +139,5 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         return toast;
     }
 };
+
+export default jQuery;

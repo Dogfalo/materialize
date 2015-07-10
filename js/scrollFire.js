@@ -1,44 +1,45 @@
-(function($) {
+import Materialize from'./global';
 
-  // Input: Array of JSON objects {selector, offset, callback}
 
-  Materialize.scrollFire = function(options) {
+// Input: Array of JSON objects {selector, offset, callback}
 
-    var didScroll = false;
+Materialize.scrollFire = function(options) {
 
-    window.addEventListener("scroll", function() {
-      didScroll = true;
-    });
+  var didScroll = false;
 
-    // Rate limit to 100ms
-    setInterval(function() {
-      if(didScroll) {
-          didScroll = false;
+  window.addEventListener("scroll", function() {
+    didScroll = true;
+  });
 
-          var windowScroll = window.pageYOffset + window.innerHeight;
+  // Rate limit to 100ms
+  setInterval(function() {
+    if(didScroll) {
+        didScroll = false;
 
-          for (var i = 0 ; i < options.length; i++) {
-            // Get options from each line
-            var value = options[i];
-            var selector = value.selector,
-                offset = value.offset,
-                callback = value.callback;
+        var windowScroll = window.pageYOffset + window.innerHeight;
 
-            var currentElement = document.querySelector(selector);
-            if ( currentElement !== null) {
-              var elementOffset = currentElement.getBoundingClientRect().top + document.body.scrollTop;
+        for (var i = 0 ; i < options.length; i++) {
+          // Get options from each line
+          var value = options[i];
+          var selector = value.selector,
+              offset = value.offset,
+              callback = value.callback;
 
-              if (windowScroll > (elementOffset + offset)) {
-                if (value.done !== true) {
-                  var callbackFunc = new Function(callback);
-                  callbackFunc();
-                  value.done = true;
-                }
+          var currentElement = document.querySelector(selector);
+          if ( currentElement !== null) {
+            var elementOffset = currentElement.getBoundingClientRect().top + document.body.scrollTop;
+
+            if (windowScroll > (elementOffset + offset)) {
+              if (value.done !== true) {
+                var callbackFunc = new Function(callback);
+                callbackFunc();
+                value.done = true;
               }
             }
           }
-      }
-    }, 100);
-  };
+        }
+    }
+  }, 100);
+};
 
-})(jQuery);
+export default Materialize;

@@ -73,6 +73,10 @@ module.exports = function(grunt) {
 //  Concat
     concat: {
       options: {
+        process: function(src, filepath) {
+          var compiler = require('es6-module-clean-transpilation');
+          return compiler({src: src, type: 'globals'});
+        },
         separator: ';'
       },
       dist: {
@@ -142,7 +146,7 @@ module.exports = function(grunt) {
              ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
-      },
+      }
     },
 
 //  Uglify
