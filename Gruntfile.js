@@ -197,6 +197,7 @@ module.exports = function(grunt) {
               "jquery.easing.1.3.js",
               "animation.js",
               "velocity.min.js",
+              "velocity-fix.js",
               "hammer.min.js",
               "jquery.hammer.js",
               "global.js",
@@ -416,6 +417,15 @@ module.exports = function(grunt) {
       }
     },
 
+    shell: {
+      before_tests: {
+        options: {
+            stderr: false
+        },
+        command: 'rm -fr temp-js/; node node_modules/es6-module-clean-transpilation/transpiler.js -t globals -i js/ -o temp-js/'
+      }
+    },
+
     // Text Replace
     replace: {
       version: { // Does not edit README.md
@@ -490,33 +500,34 @@ module.exports = function(grunt) {
           src: [
             'bower_components/qunit/qunit/qunit.js',
             'bower_components/jquery/dist/jquery.min.js',
-            'js/jquery.easing.1.3.js',
-            'js/animation.js',
-            'js/velocity.min.js',
-            'js/hammer.min.js',
-            'js/jquery.hammer.js',
-            'js/global.js',
-            'js/collapsible.js',
-            'js/dropdown.js',
-            'js/leanModal.js',
-            'js/materialbox.js',
-            'js/parallax.js',
-            'js/tabs.js',
-            'js/tooltip.js',
-            'js/waves.js',
-            'js/toasts.js',
-            'js/sideNav.js',
-            'js/scrollspy.js',
-            'js/forms.js',
-            'js/slider.js',
-            'js/cards.js',
-            'js/pushpin.js',
-            'js/buttons.js',
-            'js/transitions.js',
-            'js/scrollFire.js',
-            'js/date_picker/picker.js',
-            'js/date_picker/picker.date.js',
-            'js/character_counter.js',
+            'temp-js/jquery.easing.1.3.js',
+            'temp-js/animation.js',
+            'temp-js/velocity.min.js',
+            'temp-js/velocity-fix.js',
+            'temp-js/hammer.min.js',
+            'temp-js/jquery.hammer.js',
+            'temp-js/global.js',
+            'temp-js/collapsible.js',
+            'temp-js/dropdown.js',
+            'temp-js/leanModal.js',
+            'temp-js/materialbox.js',
+            'temp-js/parallax.js',
+            'temp-js/tabs.js',
+            'temp-js/tooltip.js',
+            'temp-js/waves.js',
+            'temp-js/toasts.js',
+            'temp-js/sideNav.js',
+            'temp-js/scrollspy.js',
+            'temp-js/forms.js',
+            'temp-js/slider.js',
+            'temp-js/cards.js',
+            'temp-js/pushpin.js',
+            'temp-js/buttons.js',
+            'temp-js/transitions.js',
+            'temp-js/scrollFire.js',
+            'temp-js/date_picker/picker.js',
+            'temp-js/date_picker/picker.date.js',
+            'temp-js/character_counter.js',
             'tests/setup.js',
             'tests/helpers/**/*.js',
             'tests/**/*-test.js'
@@ -525,6 +536,7 @@ module.exports = function(grunt) {
             framework: "qunit",
             test_page: 'tests/index.mustache?hidepassed',
             launch_in_dev: ['PhantomJS', 'Chrome', 'Firefox'],
+            after_tests: "rm -fr temp-js/"
           }
         }
       }
@@ -536,6 +548,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
@@ -573,6 +586,7 @@ module.exports = function(grunt) {
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
+  grunt.registerTask('test', ['shell:before_tests', 'testem:default']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);

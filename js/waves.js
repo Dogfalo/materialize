@@ -332,4 +332,4 @@ document.addEventListener('DOMContentLoaded', function() {
     Waves.displayEffect();
 }, false);
 
-exports default Waves;
+export default Waves;
