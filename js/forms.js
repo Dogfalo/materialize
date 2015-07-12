@@ -186,7 +186,7 @@
       thumb.find('.value').html($(this).val());
     });
 
-    $(document).on('mousedown touchstart', range_type, function(e) {
+    $(document).on('input mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
 
       // If thumb indicator does not exist yet, create it
