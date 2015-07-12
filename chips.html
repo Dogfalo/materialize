@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Showcase - Materialize</title>
+    <title>Chips - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -34,7 +34,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Showcase</a></div>
+          <div class="nav-wrapper"><a class="page-title">Chips</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
@@ -59,13 +59,13 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Components</a>
+            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="cards.html">Cards</a></li>
-                  <li><a href="chips.html">Chips</a></li>
+                  <li class="active"><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -98,129 +98,76 @@
           </ul>
         </li>
         <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
-        <li class="bold active"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
+        <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
       </ul>
     </header>
-    <main><div class="container section">
+    <main><div class="container">
   <div class="row">
-    <div class="center col s12">
-      <br><br>
-      <a href="mailto:materializeframework@gmail.com?subject=showcase" class="waves-effect waves-light btn">Submit your site</a>
-      <br><br>
-      <!-- CarbonAds Zone Code -->
-      <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+
+    <div class="col s12 m9 l10">
+
+      <div id="introduction" class="section scrollspy">
+        <h4>Introduction</h4>
+        <p class="caption">
+          Collapsibles can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.
+        </p>
+        <div class="chip">
+          <img src="images/yuna.jpg" alt="Contact Person">
+          Jane Doe
+        </div>
+        <div class="chip">
+          Tag
+          <i class="material-icons">close</i>
+        </div>
+      </div>
+
+      <div id="contact" class="section scrollspy">
+        <h4>Contacts</h4>
+         <p class="caption">
+          To create a contact chip just add an img inside.
+        </p>
+        <pre><code class="language-markup">
+  &lt;div class="chip">
+    &lt;img src="images/yuna.jpg" alt="Contact Person">
+    Jane Doe
+  &lt;/div>
+        </code></pre>
+      </div>
+
+      <div id="tag" class="section scrollspy">
+        <h4>Tags</h4>
+         <p class="caption">
+          To create a tag chip just add an close icon inside.
+        </p>
+        <pre><code class="language-markup">
+  &lt;div class="chip">
+    Tag
+    &lt;i class="material-icons">close&lt;/i>
+  &lt;/div>
+        </code></pre>
+      </div>
+
     </div>
+
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 l2">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#contact">Contacts</a></li>
+            <li><a href="#tag">Tags</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Daniel Angel" src="images/showcase/danielangel.png">
-      <h5 class="center"><a href="http://danielangel.media/" target="_blank">Daniel Angel</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Stamplay" src="images/showcase/stamplay.png">
-      <h5 class="center"><a href="https://stamplay.com/" target="_blank">Stamplay</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Material Admin Template" src="http://puu.sh/i7MD1/5eb94d6470.png">
-      <h5 class="center"><a href="http://demo.geekslabs.com/materialize-v1.0/index.html" target="_blank">Material Admin Template</a></h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Absurdo Burger" src="images/showcase/absurdoburger.png">
-      <h5 class="center"><a href="http://absurdoburger.com.br/" target="_blank">Absurdo Burger</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Kiosk Browser" src="images/showcase/kioskbrowser.png">
-      <h5 class="center"><a href="http://www.android-kiosk.com/" target="_blank">Kiosk Browser</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Straphq" src="images/showcase/straphq.png">
-      <h5 class="center"><a href="http://www.straphq.com/" target="_blank">Straphq</a></h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Varun Malhotra" src="images/showcase/varun_malhotra.png">
-      <h5 class="center"><a href="http://softvar.github.io/" target="_blank">Varun Malhotra</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Adbeus" src="images/showcase/adbeus.png">
-      <h5 class="center"><a href="http://adbeus.com/" target="_blank" >Adbeus</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Roboterwelt" src="images/showcase/roboterwelt.png">
-      <h5 class="center"><a href="http://www.roboterwelt.de/" target="_blank">Roboterwelt</a></h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Alexander Web Service" src="images/showcase/alexander_web_service.png">
-      <h5 class="center"><a href="http://www.alexanderwebservice.com/" target="_blank" >Alexander Web Service</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Tuan Phong Truong" src="images/showcase/tuanphongtruong.png">
-      <h5 class="center"><a href="http://tuanphongtruong.com/" target="_blank">Tuan Phong Truong</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Joel Cox" src="images/showcase/joelcox.png">
-      <h5 class="center"><a href="http://joelcox.io/" target="_blank">Joel Cox</a></h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Webonise" src="images/showcase/webonise.png">
-      <h5 class="center"><a href="http://webonise.co.uk/" target="_blank" >Webonise</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Kenya Apps" src="images/showcase/kenyaapps.png">
-      <h5 class="center"><a href="http://kenyaapps.net/" target="_blank">Kenya Apps</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Adolfo Gutierrez" src="images/showcase/adolfo.jpg">
-      <h5 class="center"><a href="http://adolfogutierrez.me/" target="_blank">Adolfo Gutierrez</a></h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="DiskForYou" src="images/showcase/ocloud.png">
-      <h5 class="center"><a href="http://diskforyou.com/" target="_blank">DiskForYou</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Stephanie Jagiello" src="images/showcase/stephaniejagiello.png">
-      <h5 class="center"><a href="http://stephaniejagiello.com/" target="_blank">Stephanie Jagiello</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Lifeaweso.me" src="images/showcase/lifeawesome.png">
-      <h5 class="center"><a href="http://lifeaweso.me/" target="_blank" >Lifeaweso.me</a></h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Jakub Sobotka" src="images/showcase/jsobotka.png">
-      <h5 class="center"><a href="http://www.jsobotka.cz/" target="_blank">Jakub Sobotka</a></h5>
-    </div>
-    <div class="col s12 m4">
-      <img class="materialboxed responsive-img z-depth-1" data-caption="Mako" src="images/showcase/makoframework.png">
-      <h5 class="center"><a href="http://makoframework.com/" target="_blank">Mako</a></h5>
-    </div>
-  </div>
-
-
-
 </div>
-
-
-
 
 
     </main>    <footer class="page-footer">
