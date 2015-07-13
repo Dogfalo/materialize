@@ -40,8 +40,8 @@
 	z-index: 10;
 }
 .noUi-state-tap .noUi-origin {
--webkit-transition: left 0.3s, top 0.3s;
-	transition: left 0.3s, top 0.3s;
+-webkit-transition: left 0.25s, top 0.25s;
+	transition: left 0.25s, top 0.25s;
 }
 .noUi-state-drag * {
 	cursor: inherit !important;
@@ -197,10 +197,10 @@
   border: none;
   left: -5px;
   top: -6px;
-  transition: width .3s cubic-bezier(0.215, 0.610, 0.355, 1.000),
-              height .3s cubic-bezier(0.215, 0.610, 0.355, 1.000),
-              left .3s cubic-bezier(0.215, 0.610, 0.355, 1.000),
-              top .3s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition: width .2s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+              height .2s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+              left .2s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+              top .2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
 }
 .noUi-handle:before {
   content: none;
@@ -226,8 +226,8 @@
   left: -2px;
   background-color: #26A69A;
   border-radius: 50%;
-  transition: border-radius .3s cubic-bezier(0.215, 0.610, 0.355, 1.000),
-              transform .3s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition: border-radius .25s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+              transform .25s cubic-bezier(0.215, 0.610, 0.355, 1.000);
   transform: scale(.5) rotate(-45deg);
   transform-origin: 50% 100%;
 }
@@ -246,7 +246,7 @@
   position: absolute;
   top: 7px;
   left: -1px;
-  transition: opacity .3s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition: opacity .25s cubic-bezier(0.215, 0.610, 0.355, 1.000);
 }
 .noUi-active .range-label span {
   opacity: 1;
