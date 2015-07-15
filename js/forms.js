@@ -59,7 +59,7 @@
 
     $(document).on('blur', input_selector, function () {
       var $inputElement = $(this);
-      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
+      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && ($inputElement.attr('placeholder') === undefined || $(this).attr('placeholder') === "")) {
         $inputElement.siblings('label, i').removeClass('active');
       }
 
