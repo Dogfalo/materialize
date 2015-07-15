@@ -75,11 +75,19 @@
         gutter_spacing = gutter_spacing * -1;
       }
 
+      // Get and set max height
+      var maxHeight = activates.css('maxHeight').replace(/[^-\d\.]/g, '');
+
+      if (maxHeight > $(document).height() - origin.offset().top){
+        maxHeight = $(document).height() - origin.offset().top;
+      }
+
       // Position dropdown
       activates.css({
         position: 'absolute',
         top: origin.position().top + offset,
-        left: origin.position().left + width_difference + gutter_spacing
+        left: origin.position().left + width_difference + gutter_spacing,
+        maxHeight: maxHeight
       });
 
 
