@@ -5286,7 +5286,19 @@ nav {
         -moz-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
-        transform: translateX(-50%); } }
+        transform: translateX(-50%); }
+        nav .brand-logo.left, nav .brand-logo.right {
+          padding: 0;
+          -webkit-transform: none;
+          -moz-transform: none;
+          -ms-transform: none;
+          -o-transform: none;
+          transform: none; }
+        nav .brand-logo.left {
+          left: 0.5rem; }
+        nav .brand-logo.right {
+          right: 0.5rem;
+          left: auto; } }
     nav .brand-logo.right {
       right: 0.5rem;
       padding: 0; }
