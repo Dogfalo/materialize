@@ -33,6 +33,14 @@
       Materialize.updateTextFields();
     });
 
+    //the labels the same color in the checked state
+    $(document).ready(function() {
+         $(':checkbox:not(:checked)').siblings("label").css("color", "#9E9E97");
+         $(':checkbox[disabled!=disabled]:checked').siblings("label").css("color", "#26a69a");
+         $(":radio[disabled!=disabled]").siblings("label").css("color", "#9E9E97");
+         $(":radio[disabled!=disabled]:checked").siblings("label").css("color", "#26a69a");
+     });
+
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {
       var formReset = $(e.target);
@@ -457,5 +465,14 @@
       $newSelect.on('keydown', onKeyDown);
     });
   };
+  //the labels the same color in the checked state
+  $(':radio').click(function() {
+    $(":radio[disabled!=disabled]").siblings("label").css("color", "#9E9E97");
+    $(this).siblings("label").css("color", "#26a69a");
+  });
+  $(':checkbox').click(function() {
+    $(':checkbox:not(:checked)').siblings("label").css("color", "#9E9E97");
+    $(':checkbox[disabled!=disabled]:checked').siblings("label").css("color", "#26a69a");
+  });
 
 }( jQuery ));
