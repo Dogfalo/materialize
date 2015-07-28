@@ -76,7 +76,7 @@
         // Update the variables with the new link and content
         $active = $(this);
         $content = $(this.hash);
-        $links = $this.find('li.tab a');
+        $links = $this.find('li.tab:visible a');
 
         // Make the tab active.
         $active.addClass('active');
