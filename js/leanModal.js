@@ -9,7 +9,7 @@
   $.fn.extend({
     openModal: function(options) {
 
-      $('body').css('overflow', 'hidden');
+      $('body').addClass('modal-opened').css('overflow', 'hidden');
 
       var defaults = {
         opacity: 0.5,
@@ -107,7 +107,7 @@
       options = $.extend(defaults, options);
 
       // Disable scrolling
-      $('body').css('overflow', '');
+      $('body').removeClass('modal-opened').css('overflow', '');
 
       $modal.find('.modal-close').off('click.close');
       $(document).off('keyup.leanModal' + overlayID);
