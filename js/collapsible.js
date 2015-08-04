@@ -95,7 +95,7 @@
 
 
 
-      if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
+      if (options.accordion || collapsible_type === "accordion" || (collapsible_type === undefined && options.accordion === undefined)) { // Handle Accordion
         // Add click handler to only direct collapsible header children
         $panel_headers = $this.find('> li > .collapsible-header');
         $panel_headers.on('click.collapse', function (e) {
