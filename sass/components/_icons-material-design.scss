@@ -15,7 +15,10 @@ $mdi-prefix : 'mdi-';
 [class^="mdi-"], [class*="mdi-"] {
     speak: none;
     display: inline-block;
-    font: normal normal normal 24px/1 'Material-Design-Icons';
+    font-family: "Material-Design-Icons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
     text-rendering: auto;
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;

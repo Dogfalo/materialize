@@ -53,7 +53,7 @@
             setTimeout(checkForChanges, 500);
           }
           else {
-            var donateAd = $('<div id="carbonads"><span><a class="carbon-text" href="#" onclick="document.getElementById("paypal_donate").submit();"><img src="images/donate.png" /> Help support us by turning off adblock. If you still prefer to keep adblock on for this page but still want to support us, feel free to donate. Any little bit helps.</a></form></span></div>');
+            var donateAd = $('<div id="carbonads"><span><a class="carbon-text" href="#!" onclick="document.getElementById(\'paypal-donate\').submit();"><img src="images/donate.png" /> Help support us by turning off adblock. If you still prefer to keep adblock on for this page but still want to support us, feel free to donate. Any little bit helps.</a></form></span></div>');
 
             $bsa.append(donateAd);
           }
@@ -123,8 +123,7 @@
 
 
     // Plugin initialization
-    $('.slider').slider({full_width: true, indicators: false});
-    $('.tab-demo').show().tabs();
+    $('.slider').slider({full_width: true});
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
     $('.scrollspy').scrollSpy();

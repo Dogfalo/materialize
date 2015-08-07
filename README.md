@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.96.1
+### Current Version : v0.97.0
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -13,6 +13,17 @@ Materialize, a CSS Framework based on material design
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
+- v0.97.0 (June 21, 2015)
+  - **Documentation changed to use Official Google Icon web font**
+  - **Input errors added**
+  - Flicker on Firefox on dropdowns fixed
+  - Pagination made more responsive
+  - Modal now prevents scrolling
+  - Modal animation added
+  - Support for multiple modals added
+  - Programmatic control of FAB to open/close added
+  - Programmatic control of slider to play/pause added
+  - Plus many more bug fixes
 - v0.96.1 (April 6, 2015)
   - Dropdown Fixes
   - Materialize functions fixed for Meteor
@@ -37,3 +48,5 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - ScrollFire fixes
 
 
+## Contributing
+[Please read CONTRIBUTING.md for more information](CONTRIBUTING.md)

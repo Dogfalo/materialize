@@ -11,3 +11,8 @@ html(lang="en")
       include page-contents/dialogs_content.html
     include _footer.html
     include _scripts.html
+  script(type='text/javascript').
+    var displayCustomHTMLToast = function () {
+      var $toastContent = $('<span>I am toast content</span>');
+      Materialize.toast($toastContent, 5000);
+    }
