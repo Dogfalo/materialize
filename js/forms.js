@@ -69,7 +69,7 @@
       validate_field($inputElement);
     });
 
-    validate_field = function(object) {
+    window.validate_field = function(object) {
       var hasLength = object.attr('length') !== undefined;
       var lenAttr = parseInt(object.attr('length'));
       var len = object.val().length;
