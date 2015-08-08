@@ -36,7 +36,7 @@
         // If fixed sidenav, bring menu out
         if (menu_id.hasClass('fixed')) {
             if (window.innerWidth > 992) {
-              menu_id.css('left', 0);
+              menu_id.css(options.edge, 0);
             }
           }
 
