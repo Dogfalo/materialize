@@ -5335,6 +5335,7 @@ nav {
       top: 0;
       left: 0; }
       nav .input-field label i {
+        line-height: inherit;
         color: rgba(255, 255, 255, 0.7);
         -webkit-transition: color .3s;
         -moz-transition: color .3s;

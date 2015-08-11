@@ -121,6 +121,7 @@ nav {
       left: 0;
 
       i {
+        line-height: inherit;
         color: rgba(255,255,255,.7);
         @include transition(color .3s);
       }
