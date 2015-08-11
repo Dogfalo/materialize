@@ -5251,6 +5251,7 @@ nav {
     position: relative;
     height: 100%; }
     nav .nav-wrapper i {
+      line-height: inherit;
       display: block;
       font-size: 2rem; }
   @media only screen and (min-width : 993px) {
@@ -5335,7 +5336,6 @@ nav {
       top: 0;
       left: 0; }
       nav .input-field label i {
-        line-height: inherit;
         color: rgba(255, 255, 255, 0.7);
         -webkit-transition: color .3s;
         -moz-transition: color .3s;

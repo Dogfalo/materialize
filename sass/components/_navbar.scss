@@ -13,6 +13,7 @@ nav {
     height: 100%;
 
     i {
+      line-height: inherit;
       display: block;
       font-size: 2rem;
     }
@@ -121,7 +122,6 @@ nav {
       left: 0;
 
       i {
-        line-height: inherit;
         color: rgba(255,255,255,.7);
         @include transition(color .3s);
       }
