@@ -18,6 +18,7 @@
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -36,7 +37,7 @@
           <div class="nav-wrapper"><a class="page-title">Grid</a></div>
         </div>
       </nav>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
@@ -64,6 +65,7 @@
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -181,7 +183,7 @@
             <div class="col s1 grid-example"><span class="flow-text">11</span></div>
             <div class="col s1 grid-example"><span class="flow-text">12</span></div>
           </div>
-          <p>To get a feel of how the grid is used in HTML. Take a look at this code below which will produce a similar result as the one above.</p>
+          <p>To get a feel of how the grid is used in HTML, take a look at the code below which will produce a similar result to the one above.</p>
           <pre><code class="language-markup">
     &lt;div class="row">
       &lt;div class="col s1">1&lt;/div>
@@ -291,21 +293,21 @@
           <div class="row">
             <div class="col s4">
               <div class="center promo promo-example">
-                <i class="mdi-image-flash-on"></i>
+                <i class="material-icons">flash_on</i>
                 <p class="promo-caption">Speeds up development</p>
                 <p class="light center">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</p>
               </div>
             </div>
             <div class="col s4">
               <div class="center promo promo-example">
-                <i class="mdi-social-group"></i>
+                <i class="material-icons">group</i>
                 <p class="promo-caption">User Experience Focused</p>
                 <p class="light center">By utilizing elements and principles of Material Design, we were able to create a framework that focuses on User Experience.</p>
               </div>
             </div>
             <div class="col s4">
               <div class="center promo promo-example">
-                <i class="mdi-action-settings"></i>
+                <i class="material-icons">settings</i>
                 <p class="promo-caption">Easy to work with</p>
                 <p class="light center">We have provided detailed documentation as well as specific code examples to help new users get started.</p>
               </div>
@@ -331,7 +333,7 @@
           <br>
 
           <h4>Example Side Navigation Layout</h4>
-          <p>You can see how easy it is to create layouts using the grid system. Just remember to make sure your column numbers add up to 12 for a even layout</p>
+          <p>You can see how easy it is to create layouts using the grid system. Just remember to make sure your column numbers add up to 12 for an even layout.</p>
 
           <div class="row">
             <div class="col s12">
@@ -424,7 +426,7 @@
           <br>
 
           <h4>Adding Responsiveness</h4>
-          <p>In the previous examples, we only defined the size for small screens using <code class="language-markup">"col s12"</code>. This is fine if we want a fixed layout since the rules propogate upwards. By just saying s12, we are essentially saying <code class="language-markup">"col s12 m12 l12"</code>. But by explicitly defining the size we can make our website more responsive.</p>
+          <p>In the previous examples, we only defined the size for small screens using <code class="language-markup">"col s12"</code>. This is fine if we want a fixed layout since the rules propagate upwards. By just saying s12, we are essentially saying <code class="language-markup">"col s12 m12 l12"</code>. But by explicitly defining the size we can make our website more responsive.</p>
 
           <div class="row">
             <div class="grid-example col s12 teal lighten-2"><span class="flow-text">I am always full-width (col s12)</span></div>
@@ -519,9 +521,9 @@
             <pre><code class="language-markup col s12">
   &lt;div class="row">
     &lt;div class="col s12">&lt;p>s12&lt;/p>&lt;/div>
-    &lt;div class="col s12 m3 l2">&lt;p>s12 m4&lt;/p>&lt;/div>
-    &lt;div class="col s12 m6 l8">&lt;p>s12 m4&lt;/p>&lt;/div>
-    &lt;div class="col s12 m3 l2">&lt;p>s12 m4&lt;/p>&lt;/div>
+    &lt;div class="col s12 m4 l2">&lt;p>s12 m4&lt;/p>&lt;/div>
+    &lt;div class="col s12 m4 l8">&lt;p>s12 m4&lt;/p>&lt;/div>
+    &lt;div class="col s12 m4 l2">&lt;p>s12 m4&lt;/p>&lt;/div>
   &lt;/div>
   &lt;div class="row">
     &lt;div class="col s12 m6 l3">&lt;p>s12 m6 l3&lt;/p>&lt;/div>

@@ -1,13 +1,15 @@
 @font-face {
     font-family: "Roboto";
-    src: url("#{$roboto-font-path}Roboto-Thin.woff2") format("woff2"),
+    src: local(Roboto Thin),
+        url("#{$roboto-font-path}Roboto-Thin.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Thin.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Thin.ttf") format("truetype");
     font-weight: 200;
 }
 @font-face {
     font-family: "Roboto";
-    src: url("#{$roboto-font-path}Roboto-Light.woff2") format("woff2"),
+    src: local(Roboto Light),
+        url("#{$roboto-font-path}Roboto-Light.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Light.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Light.ttf") format("truetype");
     font-weight: 300;
@@ -15,7 +17,9 @@
 
 @font-face {
     font-family: "Roboto";
-    src: url("#{$roboto-font-path}Roboto-Regular.woff2") format("woff2"),
+    src:
+        local(Roboto Regular),
+        url("#{$roboto-font-path}Roboto-Regular.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Regular.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Regular.ttf") format("truetype");
     font-weight: 400;

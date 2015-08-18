@@ -187,7 +187,8 @@ textarea.materialize-textarea {
     color: #444;
 
     & + label i,
-    & ~ .mdi-navigation-close {
+    & ~ .mdi-navigation-close,
+    & ~ .material-icons {
       color: #444;
     }
   }
@@ -196,7 +197,8 @@ textarea.materialize-textarea {
     left: 1rem;
   }
 
-  & ~ .mdi-navigation-close {
+  & ~ .mdi-navigation-close,
+  & ~ .material-icons {
     position: absolute;
     top: 0;
     right: 1rem;
@@ -633,12 +635,12 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     padding: 0;
     display: block;
   }
-  .mdi-navigation-arrow-drop-down {
+  span.caret {
     color: initial;
     position: absolute;
     right: 0;
-    top: 0;
-    font-size: 23px;
+    top: 16px;
+    font-size: 10px;
     &.disabled {
       color: $input-disabled-color;
     }
@@ -681,15 +683,14 @@ select:disabled {
 .file-field {
   position: relative;
 
-  input.file-path {
-    margin-left: 100px;
-    width: calc(100% - 100px);
+  .file-path-wrapper {
+    overflow: hidden;
+    padding-left: 10px;
   }
+  input.file-path { width: 100%; }
 
   .btn {
-    position: absolute;
-    top: 0;
-    left: 0;
+    float: left;
     height: 3rem;
     line-height: 3rem;
   }

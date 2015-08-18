@@ -1,4 +1,5 @@
 .tabs {
+  @include flexbox();
   position: relative;
   height: 48px;
   background-color: $tabs-bg-color;
@@ -7,6 +8,10 @@
   white-space: nowrap;
 
   .tab {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     display: block;
     float: left;
     text-align: center;

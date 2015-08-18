@@ -18,6 +18,7 @@
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -36,7 +37,7 @@
           <div class="nav-wrapper"><a class="page-title">Cards</a></div>
         </div>
       </nav>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i class="mdi-navigation-menu"></i></a></div>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
@@ -64,6 +65,7 @@
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li class="active"><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -187,7 +189,6 @@
             &lt;/div>
             &lt;div class="card-action">
               &lt;a href="#">This is a link&lt;/a>
-              &lt;a href="#">This is a link&lt;/a>
             &lt;/div>
           &lt;/div>
         &lt;/div>
@@ -208,12 +209,12 @@
                 <img class="activator" src="images/office.jpg">
               </div>
               <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Card Title <i class="mdi-navigation-more-vert right"></i></span>
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
 
                 <p><a href="#!">This is a link</a></p>
               </div>
               <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title <i class="mdi-navigation-close right"></i></span>
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></i></span>
                 <p>Here is some more information about this product that is only revealed once clicked on.</p>
               </div>
             </div>
@@ -227,19 +228,19 @@
           <div class="col s12">
             <br>
             <pre><code class="language-markup">
-      &lt;div class="card">
-        &lt;div class="card-image waves-effect waves-block waves-light">
-          &lt;img class="activator" src="images/office.jpg">
-        &lt;/div>
-        &lt;div class="card-content">
-          &lt;span class="card-title activator grey-text text-darken-4">Card Title &lt;i class="mdi-navigation-more-vert right">&lt;/i>&lt;/span>
-          &lt;p>&lt;a href="#">This is a link&lt;/a>&lt;/p>
-        &lt;/div>
-        &lt;div class="card-reveal">
-          &lt;span class="card-title grey-text text-darken-4">Card Title &lt;i class="mdi-navigation-close right">&lt;/i>&lt;/span>
-          &lt;p>Here is some more information about this product that is only revealed once clicked on.&lt;/p>
-        &lt;/div>
-      &lt;/div>
+  &lt;div class="card">
+    &lt;div class="card-image waves-effect waves-block waves-light">
+      &lt;img class="activator" src="images/office.jpg">
+    &lt;/div>
+    &lt;div class="card-content">
+      &lt;span class="card-title activator grey-text text-darken-4">Card Title&lt;i class="material-icons right">more_vert</i>&lt;/i>&lt;/span>
+      &lt;p>&lt;a href="#">This is a link&lt;/a>&lt;/p>
+    &lt;/div>
+    &lt;div class="card-reveal">
+      &lt;span class="card-title grey-text text-darken-4">Card Title&lt;i class="material-icons right">close</i>&lt;/i>&lt;/span>
+      &lt;p>Here is some more information about this product that is only revealed once clicked on.&lt;/p>
+    &lt;/div>
+  &lt;/div>
             </code></pre>
             <br>
           </div>
