@@ -11,7 +11,7 @@
     var defaults = {
       inDuration: 300,
       outDuration: 225,
-      constrain_width: true, // Constrains width of dropdown to the activator
+      constrainWidth: true, // Constrains width of dropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false
@@ -30,7 +30,7 @@
       if (origin.data('outduration') !== undefined)
         options.outDuration = origin.data('outDuration');
       if (origin.data('constrainwidth') !== undefined)
-        options.constrain_width = origin.data('constrainwidth');
+        options.constrainWidth = origin.data('constrainwidth');
       if (origin.data('hover') !== undefined)
         options.hover = origin.data('hover');
       if (origin.data('gutter') !== undefined)
@@ -56,7 +56,7 @@
       activates.addClass('active');
 
       // Constrain width
-      if (options.constrain_width === true) {
+      if (options.constrainWidth === true) {
         activates.css('width', origin.outerWidth());
       }
       var offset = 0;
