@@ -2309,6 +2309,8 @@ td, th {
     .collection .collection-item.active {
       background-color: #26a69a;
       color: #eafaf9; }
+      .collection .collection-item.active .secondary-content {
+        color: #fff; }
   .collection a.collection-item {
     display: block;
     -webkit-transition: 0.25s;

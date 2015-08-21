@@ -500,6 +500,10 @@ td, th{
     &.active {
       background-color: $collection-active-bg-color;
       color: $collection-active-color;
+
+      .secondary-content {
+        color: #fff;
+      }
     }
   }
   a.collection-item{
