@@ -14,7 +14,9 @@
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
-      belowOrigin: false
+      belowOrigin: false,
+      alignment: 'left',
+      container: false
     };
 
     this.each(function(){
@@ -37,6 +39,10 @@
         options.gutter = origin.data('gutter');
       if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
+      if (origin.data('alignment') !== undefined)
+        options.alignment = origin.data('alignment');
+      if (origin.data('container') !== undefined)
+        options.container = origin.data('container');
     }
 
     updateOptions();
@@ -70,7 +76,16 @@
       var gutter_spacing = options.gutter;
 
 
-      if (offsetLeft + activates.innerWidth() > $(window).width()) {
+
+      if (options.container) {
+        var container = activates.parents(options.container);
+        var containerWidth = container.width() + container.offset().left;
+      } else {
+        var container = $(window);
+        var containerWidth = container.width();
+      }
+
+        if (options.alignment == 'right' || offsetLeft + activates.innerWidth() > containerWidth) {
         width_difference = origin.innerWidth() - activates.innerWidth();
         gutter_spacing = gutter_spacing * -1;
       }
