@@ -3,8 +3,7 @@
   $.fn.characterCounter = function(){
     return this.each(function(){
 
-      var itHasLengthAttribute = $(this).attr('length') !== undefined;
-
+      var itHasLengthAttribute = getMaxLength($(this)) !== undefined;
       if(itHasLengthAttribute){
         $(this).on('input', updateCounter);
         $(this).on('focus', updateCounter);
@@ -17,10 +16,9 @@
   };
 
   function updateCounter(){
-    var maxLength     = +$(this).attr('length'),
+    var maxLength     = +getMaxLength($(this)),
     actualLength      = +$(this).val().length,
     isValidLength     = actualLength <= maxLength;
-
     $(this).parent().find('span[class="character-counter"]')
                     .html( actualLength + '/' + maxLength);
 
@@ -28,6 +26,10 @@
   }
 
   function addCounterElement($input){
+    if($input.parent().find(".character-counter").length > 0){
+		return;
+	}	
+	  
     var $counterElement = $('<span/>')
                         .addClass('character-counter')
                         .css('float','right')
@@ -50,6 +52,14 @@
       $input.removeClass('valid');
       $input.addClass('invalid');
     }
+  }
+
+  function getMaxLength($input){
+    //Backwards compatability with  html length attribute
+    if($input.attr('length') === undefined){
+      return $input.data('max-length');
+    }
+    return $input.attr('length');
   }
 
   $(document).ready(function(){

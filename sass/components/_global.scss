@@ -140,13 +140,15 @@ video.responsive-video {
 
   li {
     float: left;
-    font-size: 1.2rem;
-    padding: 0 10px;
+    font-size: 1.2rem;    
     line-height: 30px;
     border-radius: 2px;
     text-align: center;
 
-    a { color: #444; }
+    a { 
+		color: #444;
+		padding: 0 10px;
+	}
 
     &.active a { color: #fff; }
 
