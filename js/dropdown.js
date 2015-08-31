@@ -14,7 +14,8 @@
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
-      belowOrigin: false
+      belowOrigin: false,
+      alignment: 'left'
     };
 
     this.each(function(){
@@ -37,6 +38,8 @@
         options.gutter = origin.data('gutter');
       if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
+      if (origin.data('alignment') !== undefined)
+        options.alignment = origin.data('alignment');
     }
 
     updateOptions();
@@ -66,21 +69,38 @@
 
       // Handle edge alignment
       var offsetLeft = origin.offset().left;
-      var width_difference = 0;
-      var gutter_spacing = options.gutter;
+      if (options.alignment === 'left') {
+        var width_difference = 0;
+        var gutter_spacing = options.gutter;
 
 
-      if (offsetLeft + activates.innerWidth() > $(window).width()) {
-        width_difference = origin.innerWidth() - activates.innerWidth();
-        gutter_spacing = gutter_spacing * -1;
+        if (offsetLeft + activates.innerWidth() > $(window).width()) {
+          width_difference = origin.innerWidth() - activates.innerWidth();
+          gutter_spacing *= -1;
+        }
+
+        // Position dropdown
+        activates.css({
+          position: 'absolute',
+          top: origin.position().top + offset,
+          left: origin.position().left + width_difference + gutter_spacing
+        });
+      } else if (options.alignment === 'right') {
+        var offsetRight = $(window).width() - offsetLeft - origin.innerWidth();
+        var width_difference = 0;
+        var gutter_spacing = options.gutter;
+
+        if (offsetRight + activates.innerWidth() > $(window).width()) {
+          gutter_spacing *= -1;
+        }
+
+        // Position dropdown
+        activates.css({
+          position: 'absolute',
+          top: origin.position().top + offset,
+          right: ( $(window).width() - origin.position().left - origin.innerWidth() ) + gutter_spacing
+        });
       }
-
-      // Position dropdown
-      activates.css({
-        position: 'absolute',
-        top: origin.position().top + offset,
-        left: origin.position().left + width_difference + gutter_spacing
-      });
 
 
 
