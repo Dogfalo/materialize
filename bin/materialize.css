@@ -2051,7 +2051,7 @@ img.responsive-img, video.responsive-video {
   height: auto; }
 
 .pagination li {
-  float: left;
+  display: inline-block;
   font-size: 1.2rem;
   padding: 0 10px;
   line-height: 30px;
