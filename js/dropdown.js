@@ -90,10 +90,6 @@
         var width_difference = 0;
         var gutter_spacing = options.gutter;
 
-        if (offsetRight + activates.innerWidth() > $(window).width()) {
-          gutter_spacing *= -1;
-        }
-
         // Position dropdown
         activates.css({
           position: 'absolute',
