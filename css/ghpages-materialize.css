@@ -2051,7 +2051,7 @@ img.responsive-img, video.responsive-video {
   height: auto; }
 
 .pagination li {
-  float: left;
+  display: inline-block;
   font-size: 1.2rem;
   padding: 0 10px;
   line-height: 30px;
@@ -5633,7 +5633,7 @@ small {
 #toast-container {
   display: block;
   position: fixed;
-  z-index: 1001; }
+  z-index: 10000; }
   @media only screen and (max-width : 600px) {
     #toast-container {
       min-width: 100%;
