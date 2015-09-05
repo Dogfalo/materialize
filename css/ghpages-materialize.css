@@ -5582,6 +5582,7 @@ small {
   .card .card-image {
     position: relative; }
     .card .card-image img {
+      display: block;
       border-radius: 2px 2px 0 0;
       position: relative;
       left: 0;
