@@ -2358,7 +2358,8 @@ span.badge {
 
 nav ul a span.badge {
   position: static;
-  margin-left: 4px; }
+  margin-left: 4px;
+  line-height: 0; }
 
 .video-container {
   position: relative;
