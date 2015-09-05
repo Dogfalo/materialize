@@ -1,4 +1,5 @@
 .materialboxed {
+  display: block;
   cursor: zoom-in;
   position: relative;
   @include transition(opacity .4s);

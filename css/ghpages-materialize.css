@@ -6178,6 +6178,7 @@ a.waves-effect .waves-ripple {
     padding-left: 8px; }
 
 .materialboxed {
+  display: block;
   cursor: zoom-in;
   position: relative;
   -webkit-transition: opacity .4s;
