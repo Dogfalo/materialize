@@ -2356,6 +2356,10 @@ span.badge {
   span.badge.new:after {
     content: " new"; }
 
+nav ul a span.badge {
+  position: static;
+  margin-left: 4px; }
+
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
