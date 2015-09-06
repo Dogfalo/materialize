@@ -62,41 +62,47 @@
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
+      else {
+        activates.css('white-space', 'nowrap');
+      }
       var offset = 0;
       if (options.belowOrigin === true) {
         offset = origin.height();
       }
 
-      // Handle edge alignment
+      // Offscreen detection
       var offsetLeft = origin.offset().left;
-      if (options.alignment === 'left') {
-        var width_difference = 0;
-        var gutter_spacing = options.gutter;
-
-
-        if (offsetLeft + activates.innerWidth() > $(window).width()) {
-          width_difference = origin.innerWidth() - activates.innerWidth();
-          gutter_spacing *= -1;
-        }
-
-        // Position dropdown
-        activates.css({
-          position: 'absolute',
-          top: origin.position().top + offset,
-          left: origin.position().left + width_difference + gutter_spacing
-        });
-      } else if (options.alignment === 'right') {
-        var offsetRight = $(window).width() - offsetLeft - origin.innerWidth();
-        var width_difference = 0;
-        var gutter_spacing = options.gutter;
-
-        // Position dropdown
-        activates.css({
-          position: 'absolute',
-          top: origin.position().top + offset,
-          right: ( $(window).width() - origin.position().left - origin.innerWidth() ) + gutter_spacing
-        });
+      var activatesLeft, width_difference, gutter_spacing;
+      if (offsetLeft + activates.innerWidth() > $(window).width()) {
+        options.alignment = 'right';
       }
+      else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
+        options.alignment = 'left';
+      }
+
+      // Handle edge alignment
+      if (options.alignment === 'left') {
+        width_difference = 0;
+        gutter_spacing = options.gutter;
+        activatesLeft = origin.position().left + width_difference + gutter_spacing;
+
+        // Position dropdown
+        activates.css({ left: activatesLeft });
+      }
+      else if (options.alignment === 'right') {
+        var offsetRight = $(window).width() - offsetLeft - origin.innerWidth();
+        width_difference = 0;
+        gutter_spacing = options.gutter;
+        activatesLeft =  ( $(window).width() - origin.position().left - origin.innerWidth() ) + gutter_spacing;
+
+        // Position dropdown
+        activates.css({ right: activatesLeft });
+      }
+      // Position dropdown
+      activates.css({
+        position: 'absolute',
+        top: origin.position().top + offset,
+      });
 
 
 
