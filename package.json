@@ -4,6 +4,7 @@
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
   "version": "0.97.0",
+  "main": "dist/js/materialize.min.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/Dogfalo/materialize.git"
