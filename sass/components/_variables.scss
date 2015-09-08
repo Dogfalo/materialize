@@ -109,6 +109,9 @@ $slider-bg-color: color('grey', 'base') !default;
 $slider-bg-color-light: color('grey', 'lighten-2') !default;
 $slider-indicator-color: color('green', 'base') !default;
 
+/*** Spinners | Loaders ***/
+$spinner-default-color: $secondary-color !default;
+
 /*** Tabs ***/
 $tabs-underline-color: $primary-color-light !default;
 $tabs-text-color: $primary-color !default;

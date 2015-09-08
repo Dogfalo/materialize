@@ -562,6 +562,11 @@ span.badge {
     content: " new";
   }
 }
+nav ul a span.badge {
+  position: static;
+  margin-left: 4px;
+  line-height: 0;
+}
 
 // Responsive Videos
 .video-container {
