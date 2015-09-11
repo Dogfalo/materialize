@@ -1236,9 +1236,6 @@ $(document).ready(function(){
       };
       options = $.extend(defaults, options);
 
-      //Remove previously created html
-      $('.material-tooltip').remove();
-
       return this.each(function(){
         var origin = $(this);
 
@@ -1257,6 +1254,18 @@ $(document).ready(function(){
 
      //Destroy previously binded events
     $(this).off('mouseenter mouseleave');
+     
+    //Remove the tooltip when the tooltipped element is removed from the DOM
+    $.event.special.destroyed = {
+        remove: function(o) {
+          if (o.handler) {
+            o.handler();
+          }
+        }
+    };
+    $(this).bind('destroyed', function() {
+        newTooltip.remove();
+    });
       // Mouse In
     $(this).on({
       mouseenter: function(e) {
