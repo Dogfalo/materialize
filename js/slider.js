@@ -7,7 +7,8 @@
         indicators: true,
         height: 400,
         transition: 500,
-        interval: 6000
+        interval: 6000,
+        indicatorsHeight: 40
       };
       options = $.extend(defaults, options);
 
@@ -77,7 +78,7 @@
         if (!$this.hasClass('fullscreen')) {
           if (options.indicators) {
             // Add height if indicators are present
-            $this.height(options.height + 40);
+            $this.height(options.height + options.indicatorsHeight);
           }
           else {
             $this.height(options.height);
