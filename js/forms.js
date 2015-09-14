@@ -6,7 +6,7 @@
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
         if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label, i').addClass('active');
+          $(this).siblings('label').addClass('active');
         }
         else {
           $(this).siblings('label, i').removeClass('active');
@@ -23,7 +23,7 @@
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
-        $(this).siblings('label, i').addClass('active');
+        $(this).siblings('label').addClass('active');
       }
       validate_field($(this));
     });
@@ -62,10 +62,14 @@
       if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
         $inputElement.siblings('label, i').removeClass('active');
       }
+
+      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') !== undefined) {
+        $inputElement.siblings('i').removeClass('active');
+      }
       validate_field($inputElement);
     });
 
-    validate_field = function(object) {
+    window.validate_field = function(object) {
       var hasLength = object.attr('length') !== undefined;
       var lenAttr = parseInt(object.attr('length'));
       var len = object.val().length;
@@ -79,7 +83,7 @@
       else {
         if (object.hasClass('validate')) {
           // Check for character counter attributes
-          if ((object.is(':valid') && hasLength && (len < lenAttr)) || (object.is(':valid') && !hasLength)) {
+          if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
             object.removeClass('invalid');
             object.addClass('valid');
           }
@@ -142,20 +146,24 @@
       }
     });
 
-    $('body').on('keyup keydown', text_area_selector, function () {
+    $('body').on('keyup keydown autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
 
     // File Input Path
-    $('.file-field').each(function() {
-      var path_input = $(this).find('input.file-path');
-      $(this).find('input[type="file"]').change(function () {
-        path_input.val($(this)[0].files[0].name);
-        path_input.trigger('change');
-      });
-    });
 
+    $(document).on('change', '.file-field input[type="file"]', function () {
+      var file_field = $(this).closest('.file-field');
+      var path_input = file_field.find('input.file-path');
+      var files      = $(this)[0].files;
+      var file_names = [];
+      for (var i = 0; i < files.length; i++) {
+        file_names.push(files[i].name);
+      }
+      path_input.val(file_names.join(", "));
+      path_input.trigger('change');
+    });
 
 
     /****************
@@ -177,7 +185,7 @@
       thumb.find('.value').html($(this).val());
     });
 
-    $(document).on('mousedown touchstart', range_type, function(e) {
+    $(document).on('input mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
 
       // If thumb indicator does not exist yet, create it
@@ -243,9 +251,8 @@
           left = width;
         }
         thumb.addClass('active').css('left', left);
-
+        thumb.find('.value').html(thumb.siblings(range_type).val());
       }
-
     });
 
     $(document).on('mouseout touchleave', range_wrapper, function() {
@@ -277,7 +284,7 @@
       // Tear down structure if Select needs to be rebuilt
       var lastID = $select.data('select-id');
       if (lastID) {
-        $select.parent().find('i').remove();
+        $select.parent().find('span.caret').remove();
         $select.parent().find('input').remove();
 
         $select.unwrap();
@@ -335,7 +342,10 @@
       if ( $select.is(':disabled') )
         dropdownIcon.addClass('disabled');
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ label.html() +'"/>');
+      // escape double quotes
+      var sanitizedLabelHtml = label.html().replace(/"/g, '&quot;');
+
+      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 

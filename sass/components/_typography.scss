@@ -53,7 +53,6 @@ small { font-size: 75%; }
     }
     $i: $i + 1;
   }
-}
 
   // Handle below 360px screen
   @media only screen and (max-width: 360px) {

@@ -3,7 +3,7 @@
 Package.describe({
   name: 'materialize:materialize',  // http://atmospherejs.com/materialize/materialize
   summary: 'Materialize (official): A modern responsive front-end framework based on Material Design',
-  version: '0.97.0',
+  version: '0.97.1',
   git: 'https://github.com/Dogfalo/materialize.git'
 });
 
@@ -11,6 +11,7 @@ Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
 
   api.use('jquery', 'client');
+  api.imply('jquery', 'client');
 
   api.export('Materialize', 'client');
 

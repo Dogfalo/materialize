@@ -98,6 +98,7 @@ module.exports = function(grunt) {
               "js/forms.js",
               "js/slider.js",
               "js/cards.js",
+              "js/chips.js",
               "js/pushpin.js",
               "js/buttons.js",
               "js/transitions.js",
@@ -132,6 +133,7 @@ module.exports = function(grunt) {
               "js/forms.js",
               "js/slider.js",
               "js/cards.js",
+              "js/chips.js",
               "js/pushpin.js",
               "js/buttons.js",
               "js/transitions.js",
@@ -162,6 +164,11 @@ module.exports = function(grunt) {
       bin: {
         files: {
           'bin/materialize.js': ['temp/js/materialize.js']
+        }
+      },
+      extras: {
+        files: {
+          'extras/noUiSlider/nouislider.min.js': ['extras/noUiSlider/nouislider.js']
         }
       }
     },
@@ -210,6 +217,7 @@ module.exports = function(grunt) {
               "forms.js",
               "slider.js",
               "cards.js",
+              "chips.js",
               "pushpin.js",
               "buttons.js",
               "transitions.js",
@@ -305,6 +313,7 @@ module.exports = function(grunt) {
           "waves.html": "jade/waves.jade",
           "media.html": "jade/media.jade",
           "collapsible.html": "jade/collapsible.jade",
+          "chips.html": "jade/chips.jade",
           "scrollfire.html": "jade/scrollFire.jade",
           "scrollspy.html": "jade/scrollspy.jade",
           "transitions.html": "jade/transitions.jade",
@@ -448,7 +457,7 @@ module.exports = function(grunt) {
             linebreak: true
           },
           files: {
-            src: [ 'dist/css/*.css', 'dist/js/*.js']
+            src: [ 'extras/**/*','dist/css/*.css', 'dist/js/*.js']
           }
         }
       },
@@ -479,7 +488,52 @@ module.exports = function(grunt) {
               // see below for options. this is optional.
             }
           }
+      },
+      // Testem
+      testem: {
+        'default': {
+          src: [
+            'bower_components/qunit/qunit/qunit.js',
+            'bower_components/jquery/dist/jquery.min.js',
+            'js/jquery.easing.1.3.js',
+            'js/animation.js',
+            'js/velocity.min.js',
+            'js/hammer.min.js',
+            'js/jquery.hammer.js',
+            'js/global.js',
+            'js/collapsible.js',
+            'js/dropdown.js',
+            'js/leanModal.js',
+            'js/materialbox.js',
+            'js/parallax.js',
+            'js/tabs.js',
+            'js/tooltip.js',
+            'js/waves.js',
+            'js/toasts.js',
+            'js/sideNav.js',
+            'js/scrollspy.js',
+            'js/forms.js',
+            'js/slider.js',
+            'js/cards.js',
+            'js/chips.js',
+            'js/pushpin.js',
+            'js/buttons.js',
+            'js/transitions.js',
+            'js/scrollFire.js',
+            'js/date_picker/picker.js',
+            'js/date_picker/picker.date.js',
+            'js/character_counter.js',
+            'tests/setup.js',
+            'tests/helpers/**/*.js',
+            'tests/**/*-test.js'
+          ],
+          options: {
+            framework: "qunit",
+            test_page: 'tests/index.mustache?hidepassed',
+            launch_in_dev: ['PhantomJS', 'Chrome', 'Firefox'],
+          }
         }
+      }
 
   });
 
@@ -500,7 +554,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rename');
   grunt.loadNpmTasks("grunt-remove-logging");
   grunt.loadNpmTasks('grunt-browser-sync');
-
+  grunt.loadNpmTasks('grunt-contrib-testem');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -510,6 +565,7 @@ module.exports = function(grunt) {
       'sass:min',
       'concat:dist',
       'uglify:dist',
+      'uglify:extras',
       'usebanner:release',
       'compress:main',
       'compress:src',

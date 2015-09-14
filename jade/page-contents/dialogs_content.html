@@ -19,9 +19,10 @@
 
         <h4>Custom HTML</h4>
         <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
-        <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item Deleted</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#1&quot;>Undo</a>', 5000)">Toast with Action</a>
-        <pre><code class="language-markup">
-  &lt;a class="waves-effect waves-light btn" onclick="Materialize.toast('&lt;span>Item Deleted&lt;/span>&lt;a class=<xmp>&quot;</xmp>btn-flat yellow-text<xmp>&quot;</xmp> href=<xmp>&quot;</xmp>#!<xmp>&quot;</xmp>>Undo&lt;a>', 5000)">Toast!&lt;/a>
+        <a class="waves-effect waves-light btn" onclick="displayCustomHTMLToast()">Toast with Action</a>
+        <pre><code class="language-javascript">
+  var $toastContent = $('<span>I am toast content</span>');
+  Materialize.toast($toastContent, 5000);
         </code></pre>
 
         <h4>Callback</h4>
@@ -69,7 +70,14 @@
   $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
   });
-      </code></pre>
+        </code></pre>
+
+        <h4>Removal</h4>
+        <p>To remove the tooltip from the button, pass in <code class="language-javascript">'remove'</code> as the option to the tooltip function</p>
+        <pre><code class="language-javascript">
+  // This will remove the tooltip functionality for the buttons on this page
+  $('.tooltipped').tooltip('remove');
+        </code></pre>
     </div>
 
   </div>

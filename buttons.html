@@ -65,6 +65,7 @@
                   <li><a href="badges.html">Badges</a></li>
                   <li class="active"><a href="buttons.html">Buttons</a></li>
                   <li><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -110,17 +111,17 @@
         </p>
         <h2 class="header">Raised</h2>
         <a class="waves-effect waves-light btn">button</a>
-        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i></i>button</a>
-        <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i></i>button</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
         <pre><code class="language-markup col s12">
 &lt;a class="waves-effect waves-light btn">Stuff&lt;/a>
-&lt;a class="waves-effect waves-light btn">&lt;i class="material-icons left">&lt;/i>button&lt;/a>
-&lt;a class="waves-effect waves-light btn">&lt;i class="material-icons right">&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn">&lt;i class="material-icons left">cloud&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn">&lt;i class="material-icons right">cloud&lt;/i>button&lt;/a>
         </code></pre>
       </div>
       <div id="floating" class="section scrollspy">
         <h2 class="header">Floating</h2>
-        <a class="btn-floating waves-effect waves-light btn-large red"><i class="material-icons">add</i></i></a><br><br>
+        <a class="btn-floating waves-effect waves-light btn-large red"><i class="material-icons">add</i></a><br><br>
         <pre><code class="language-markup col s12">
   &lt;a class="btn-floating btn-large waves-effect waves-light red">&lt;i class="material-icons">add</i>&lt;/i>&lt;/a>
         </code></pre>
@@ -156,7 +157,7 @@
             <i class="material-icons">mode_edit</i>
           </a>
           <ul>
-            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></i></a></li>
+            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
             <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
             <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
@@ -173,10 +174,10 @@
       <div id="submit" class="section scrollspy">
         <h2 class="header">Submit Button</h2>
         <p>When you use a button to submit a form, instead of using a input tag, use a button tag with a type submit</p>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></i></button>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
         <pre><code class="language-markup">
   &lt;button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    &lt;i class="material-icons">send</i>&lt;/i>
+    &lt;i class="material-icons right">send</i>&lt;/i>
   &lt;/button>
         </code></pre>
       </div>
@@ -188,8 +189,8 @@
         <a class="waves-effect waves-light btn-large"><i class="material-icons right">cloud</i>button</a>
         <pre><code class="language-markup col s12">
 &lt;a class="waves-effect waves-light btn-large">Button&lt;/a>
-&lt;a class="waves-effect waves-light btn-large">&lt;i class="material-icons left">&lt;/i>button&lt;/a>
-&lt;a class="waves-effect waves-light btn-large">&lt;i class="material-icons right">cloud</i>&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn-large">&lt;i class="material-icons left">cloud&lt;/i>button&lt;/a>
+&lt;a class="waves-effect waves-light btn-large">&lt;i class="material-icons right">cloud&lt;/i>button&lt;/a>
         </code></pre>
       </div>
       <div id="disabled" class="section scrollspy">
@@ -237,7 +238,7 @@
         <div class="row">
           <div class="col l4 s12">
             <h5 class="white-text">Help Materialize Grow</h5>
-            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+            <p class="grey-text text-lighten-4">We hope you have enjoyed using Materialize! If you feel Materialize has helped you out and want to support the team, send us over a donation! Any amount would help support and continue development on this project and is greatly appreciated.</p>
             <form id="paypal-donate" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----

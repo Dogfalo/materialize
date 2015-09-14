@@ -14,7 +14,8 @@
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
-      belowOrigin: false
+      belowOrigin: false,
+      alignment: 'left'
     };
 
     this.each(function(){
@@ -37,6 +38,8 @@
         options.gutter = origin.data('gutter');
       if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
+      if (origin.data('alignment') !== undefined)
+        options.alignment = origin.data('alignment');
     }
 
     updateOptions();
@@ -59,27 +62,46 @@
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
+      else {
+        activates.css('white-space', 'nowrap');
+      }
       var offset = 0;
       if (options.belowOrigin === true) {
         offset = origin.height();
       }
 
-      // Handle edge alignment
+      // Offscreen detection
       var offsetLeft = origin.offset().left;
-      var width_difference = 0;
-      var gutter_spacing = options.gutter;
-
-
+      var activatesLeft, width_difference, gutter_spacing;
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
-        width_difference = origin.innerWidth() - activates.innerWidth();
-        gutter_spacing = gutter_spacing * -1;
+        options.alignment = 'right';
+      }
+      else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
+        options.alignment = 'left';
       }
 
+      // Handle edge alignment
+      if (options.alignment === 'left') {
+        width_difference = 0;
+        gutter_spacing = options.gutter;
+        activatesLeft = origin.position().left + width_difference + gutter_spacing;
+
+        // Position dropdown
+        activates.css({ left: activatesLeft });
+      }
+      else if (options.alignment === 'right') {
+        var offsetRight = $(window).width() - offsetLeft - origin.innerWidth();
+        width_difference = 0;
+        gutter_spacing = options.gutter;
+        activatesLeft =  ( $(window).width() - origin.position().left - origin.innerWidth() ) + gutter_spacing;
+
+        // Position dropdown
+        activates.css({ right: activatesLeft });
+      }
       // Position dropdown
       activates.css({
         position: 'absolute',
         top: origin.position().top + offset,
-        left: origin.position().left + width_difference + gutter_spacing
       });
 
 
