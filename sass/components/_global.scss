@@ -537,6 +537,11 @@ td, th{
   float: right;
   color: $secondary-color;
 }
+.collapsible .collection {
+  margin: 0;
+  border: none;
+}
+
 
 
 // Badges

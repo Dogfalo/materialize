@@ -2335,6 +2335,10 @@ td, th {
   float: right;
   color: #26a69a; }
 
+.collapsible .collection {
+  margin: 0;
+  border: none; }
+
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
