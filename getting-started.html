@@ -60,6 +60,7 @@
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -121,17 +122,17 @@
     <div class="section col s12 m9 l10">
       <div id="download" class="row scrollspy">
           <h2 class="col s12 header">Download</h2>
-        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using Materialize, all you have to is download one of the options below.</p>
+        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using Materialize, all you have to do is download one of the options below.</p>
 
         <div class="col s12 m6">
           <p class="promo-caption">Materialize</p>
           <p>This is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option requires little to no setup. Use this if you are unfamiliar with Sass.</p>
-          <a id="download-source" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-v0.97.0.zip">Materialize<i class="material-icons right">file_download</i></a>
+          <a id="download-source" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-v0.97.1.zip">Materialize<i class="material-icons right">file_download</i></a>
         </div>
         <div class="col s12 m6">
           <p class="promo-caption">Sass</p>
           <p>This version contains the source SCSS files. By choosing this version you have more control over which components to include. You will need a Sass compiler if you choose this option.</p>
-          <a id="download-sass" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-src-v0.97.0.zip">Source<i class="material-icons right">file_download</i></a>
+          <a id="download-sass" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-src-v0.97.1.zip">Source<i class="material-icons right">file_download</i></a>
         </div>
         <div class="col s12">
           <br>
@@ -139,16 +140,16 @@
           <p>You can find all the versions of the CDN at <a href="https://cdnjs.com/libraries/materialize">cdnjs</a>.</p>
           <pre><code class="language-markup">
   &lt;!-- Compiled and minified CSS -->
-  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 
   &lt;!-- Compiled and minified JavaScript -->
-  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js">&lt;/script>
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js">&lt;/script>
           </code></pre>
         </div>
         <div class="col s12">
           <br>
           <p class="promo-caption">NPM</p>
-          <p>You can also get the latest release using NPM. this release contains source files as well as the compiled CSS and JavaScript files.</p>
+          <p>You can also get the latest release using NPM. This release contains source files as well as the compiled CSS and JavaScript files.</p>
           <pre><code class="language-bash">
   npm install materialize-css
           </code></pre>
@@ -156,7 +157,7 @@
         <div class="col s12">
           <br>
           <p class="promo-caption">Bower</p>
-          <p>You can also get the latest release using bower. this release contains source files as well as the compiled CSS and JavaScript files.</p>
+          <p>You can also get the latest release using bower. This release contains source files as well as the compiled CSS and JavaScript files.</p>
           <pre><code class="language-bash">
   bower install materialize
           </code></pre>
@@ -222,6 +223,8 @@
   &lt;!DOCTYPE html>
   &lt;html>
     &lt;head>
+      &lt;!--Import Google Icon Font-->
+      &lt;link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       &lt;!--Import materialize.css-->
       &lt;link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 

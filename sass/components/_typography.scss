@@ -1,3 +1,4 @@
+
 a {
   text-decoration: none;
 }
@@ -42,6 +43,7 @@ small { font-size: 75%; }
 .light { font-weight: 300; }
 .thin { font-weight: 200; }
 
+
 .flow-text{
   font-weight: 300;
   $i: 0;
@@ -51,6 +53,7 @@ small { font-size: 75%; }
     }
     $i: $i + 1;
   }
+
   // Handle below 360px screen
   @media only screen and (max-width: 360px) {
     font-size: 1.2rem;

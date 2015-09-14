@@ -200,6 +200,8 @@
         <h2 class="header">Textarea</h2>
         <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
         <p><strong>Textareas will auto resize to the text inside.</strong></p>
+
+
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -221,7 +223,13 @@
       &lt;/div>
     &lt;/form>
   &lt;/div>
-        </code></pre><br>
+        </code></pre>
+        <p>advanced note: When dynamically changing the value of a textarea with methods like jQuery's <code class="language-markup">.val()</code>, you must trigger an autoresize on it afterwords because .val() does not automatically trigger the events we've binded to the textarea. </p>
+        <pre><code class="language-javascript">
+  $('#textarea1').val('New Text');
+  $('#textarea1').trigger('autoresize');
+        </code></pre>
+        <br>
 
         <h4>Icon Prefixes</h4>
         <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
@@ -242,7 +250,7 @@
     &lt;form class="col s12">
       &lt;div class="row">
         &lt;div class="input-field col s6">
-          &lt;i class="material-icons prefix">mode_edit</i>
+          &lt;i class="material-icons prefix">mode_edit&lt;/i>
           &lt;textarea id="icon_prefix2" class="materialize-textarea">&lt;/textarea>
           &lt;label for="icon_prefix2">First Name&lt;/label>
         &lt;/div>
@@ -448,9 +456,9 @@
             <input type="checkbox" id="test7" checked="checked" disabled="disabled" />
             <label for="test7">Green</label>
           </p>
-            <p>
-              <input type="checkbox" id="test8" disabled="disabled" />
-              <label for="test8">Brown</label>
+          <p>
+            <input type="checkbox" id="test8" disabled="disabled" />
+            <label for="test8">Brown</label>
           </p>
         </form>
         <pre><code class="language-markup">
@@ -545,10 +553,38 @@
         <pre><code class="language-markup">
   &lt;form action="#">
     &lt;div class="file-field input-field">
-      &lt;input class="file-path validate" type="text"/>
       &lt;div class="btn">
         &lt;span>File&lt;/span>
-        &lt;input type="file" />
+        &lt;input type="file">
+      &lt;/div>
+      &lt;div class="file-path-wrapper">
+        &lt;input class="file-path validate" type="text">
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+        </code></pre>
+
+        <p>You can also use the <code class="language-markup">multiple</code> attribute to allow multiple file uploads. </p>
+        <form action="#">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload one or more files">
+            </div>
+          </div>
+        </form>
+        <pre><code class="language-markup">
+  &lt;form action="#">
+    &lt;div class="file-field input-field">
+      &lt;div class="btn">
+        &lt;span>File&lt;/span>
+        &lt;input type="file" multiple>
+      &lt;/div>
+      &lt;div class="file-path-wrapper">
+        &lt;input class="file-path validate" type="text" placeholder="Upload one or more files">
       &lt;/div>
     &lt;/div>
   &lt;/form>
@@ -558,7 +594,27 @@
 
       <div id="range" class="section scrollspy">
         <h2 class="header">Range</h2>
-        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100.</p>
+        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100. We have two different types of sliders. nouiSlider is a 3rd party plugin which we've modified. To use the noUiSlider, you will have to manually link the <code class="language-markup">nouislider.css</code> and <code class="language-markup">nouislider.js</code> files located in the extras folder.</p>
+        <h4>noUiSlider</h4>
+        <p>See noUiSlider's official documentation <a href="http://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
+        <div id="range-input"></div>
+        <p>&nbsp;</p>
+        <pre><code class="language-javascript">
+  var slider = document.getElementById('test5');
+  noUiSlider.create(slider, {
+   start: [20, 80],
+   connect: true,
+   step: 1,
+   range: {
+     'min': 0,
+     'max': 100
+   },
+   format: wNumb({
+     decimals: 0
+   })
+  });
+        </code></pre>
+        <h4>HTML5 Range</h4>
         <form action="#">
           <p class="range-field">
             <input type="range" name="points" min="0" max="100">
