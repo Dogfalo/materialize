@@ -3,7 +3,7 @@
 Package.describe({
   name: 'materialize:materialize',  // http://atmospherejs.com/materialize/materialize
   summary: 'Materialize (official): A modern responsive front-end framework based on Material Design',
-  version: '0.97.1',
+  version: '0.97.1_1',
   git: 'https://github.com/Dogfalo/materialize.git'
 });
 
@@ -36,7 +36,7 @@ Package.onUse(function (api) {
     'font/roboto/Roboto-Thin.ttf',
     'font/roboto/Roboto-Thin.woff',
     'font/roboto/Roboto-Thin.woff2',
-    'bin/materialize.css',
-    'bin/materialize.js',
+    'dist/css/materialize.css',
+    'dist/js/materialize.js',
   ], 'client');
 });
