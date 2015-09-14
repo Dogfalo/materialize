@@ -11,6 +11,7 @@ Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
 
   api.use('jquery', 'client');
+  api.imply('jquery', 'client');
 
   api.export('Materialize', 'client');
 

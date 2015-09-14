@@ -8,11 +8,6 @@
     "type": "git",
     "url": "git://github.com/Dogfalo/materialize.git"
   },
-  "directories": {
-    "sass": "sass",
-    "bin": "bin",
-    "font": "font"
-  },
   "dependencies": {},
   "engine": "node >= 0.10",
   "devDependencies": {
