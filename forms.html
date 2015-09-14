@@ -29,6 +29,7 @@
       };
     </script>
     <script src="//cdn.transifex.com/live.js"></script>
+    <link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -697,7 +698,27 @@
 
       <div id="range" class="section scrollspy">
         <h2 class="header">Range</h2>
-        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100.</p>
+        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100. We have two different types of sliders. nouiSlider is a 3rd party plugin which we've modified </p>
+        <h4>noUiSlider</h4>
+        <p>See noUiSlider's official documentation <a href="http://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
+        <div id="range-input"></div>
+        <p>&nbsp;</p>
+        <pre><code class="language-javascript">
+  var slider = document.getElementById('test5');
+  noUiSlider.create(slider, {
+   start: [20, 80],
+   connect: true,
+   step: 1,
+   range: {
+     'min': 0,
+     'max': 100
+   },
+   format: wNumb({
+     decimals: 0
+   })
+  });
+        </code></pre>
+        <h4>HTML5 Range</h4>
         <form action="#">
           <p class="range-field">
             <input type="range" name="points" min="0" max="100">
@@ -871,6 +892,22 @@
     ga('create', 'UA-56218128-1', 'auto');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
+    </script>
+    <script src="/extras/noUiSlider/nouislider.js"></script>
+    <script type="text/javascript">
+      var slider = document.getElementById('range-input');
+      noUiSlider.create(slider, {
+       start: [20, 80],
+       connect: true,
+       step: 1,
+       range: {
+         'min': 0,
+         'max': 100
+       },
+       format: wNumb({
+         decimals: 0
+       })
+      });
     </script>
   </body>
 </html>
