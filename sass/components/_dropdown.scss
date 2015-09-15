@@ -20,8 +20,12 @@
     text-align: left;
     text-transform: none;
 
-    &:hover, &.active {
+    &:hover, &.active, &.selected {
       background-color: $dropdown-hover-bg-color;
+    }
+
+    &.active.selected {
+      background-color: darken($dropdown-hover-bg-color, 5%);
     }
 
     & > a, & > span {
@@ -29,6 +33,11 @@
       color: $dropdown-color;
       display: block;
       padding: 1rem 1rem;
+    }
+
+    & > span > label {
+      top: 0.6rem;
+      left: 0.2rem;
     }
 
     // Icon alignment override
