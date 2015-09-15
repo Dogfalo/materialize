@@ -72,39 +72,34 @@
 
       // Offscreen detection
       var offsetLeft = origin.offset().left;
-      var activatesLeft, width_difference, gutter_spacing;
+      var alignment = options.alignment;
+      var leftPosition, gutter_spacing;
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
-        options.alignment = 'right';
+        //console.log("Forcing right alignnment.");
+        alignment = 'right';
       }
-      else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
-        options.alignment = 'left';
+      else if (offsetLeft - activates.innerWidth() + origin.outerWidth() < 0) {
+        //console.log("Forcing left alignment.");
+        alignment = 'left';
       }
 
       // Handle edge alignment
-      if (options.alignment === 'left') {
-        width_difference = 0;
+      if (alignment === 'left') {
         gutter_spacing = options.gutter;
-        activatesLeft = origin.position().left + width_difference + gutter_spacing;
-
-        // Position dropdown
-        activates.css({ left: activatesLeft });
+        leftPosition = origin.position().left + gutter_spacing;
       }
-      else if (options.alignment === 'right') {
-        var offsetRight = $(window).width() - offsetLeft - origin.innerWidth();
-        width_difference = 0;
-        gutter_spacing = options.gutter;
-        activatesLeft =  ( $(window).width() - origin.position().left - origin.innerWidth() ) + gutter_spacing;
-
-        // Position dropdown
-        activates.css({ right: activatesLeft });
+      else if (alignment === 'right') {
+        var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
+        gutter_spacing = -options.gutter;
+        leftPosition =  offsetRight + gutter_spacing;
       }
+
       // Position dropdown
       activates.css({
         position: 'absolute',
         top: origin.position().top + offset,
+        left: leftPosition
       });
-
-
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
