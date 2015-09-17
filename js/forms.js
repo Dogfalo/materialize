@@ -386,9 +386,10 @@
 
           label = $(this).val();
 
-          if (multiple && !$(this).siblings('ul.dropdown-content').is(':visible')) {
-            $(this).trigger('open');
-          } else if (multiple) {
+          if (multiple) {
+            if (!$(this).siblings('ul.dropdown-content').is(':visible'))
+              $(this).trigger('open');
+
             var selectedOption = options.find('li:not(.disabled)')[0];
           } else {
             $(this).trigger('open');
