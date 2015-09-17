@@ -380,13 +380,15 @@
       $select.addClass('initialized');
 
       $newSelect.on({
-        'focus': function (e){
+        'focus': function (){
           if ($('ul.select-dropdown').not(options[0]).is(':visible'))
             $('input.select-dropdown').trigger('close');
 
           label = $(this).val();
 
-          if (multiple) {
+          if (multiple && !$(this).siblings('ul.dropdown-content').is(':visible')) {
+            $(this).trigger('open');
+          } else if (multiple) {
             var selectedOption = options.find('li:not(.disabled)')[0];
           } else {
             $(this).trigger('open');
@@ -400,11 +402,6 @@
         },
         'click': function (e){
           e.stopPropagation();
-        },
-        'keyup': function () {
-          if (multiple && !$(this).siblings('ul.dropdown-content').is(':visible')) {
-            $(this).trigger('open');
-          }
         }
       });
 
