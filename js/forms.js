@@ -387,9 +387,6 @@
           label = $(this).val();
 
           if (multiple) {
-            if (e.relatedTarget)
-              $(this).trigger('open');
-
             var selectedOption = options.find('li:not(.disabled)')[0];
           } else {
             $(this).trigger('open');
@@ -403,6 +400,11 @@
         },
         'click': function (e){
           e.stopPropagation();
+        },
+        'keyup': function () {
+          if (multiple && !$(this).siblings('ul.dropdown-content').is(':visible')) {
+            $(this).trigger('open');
+          }
         }
       });
 
