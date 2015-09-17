@@ -31,7 +31,7 @@ nav {
     height: $navbar-height-mobile;
 
     i {
-      font-size: 2.7rem;
+      font-size: $navbar-button-collapse-font-size;
       height: $navbar-height-mobile;
       line-height: $navbar-height-mobile;
     }
