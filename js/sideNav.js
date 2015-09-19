@@ -125,7 +125,7 @@
         var menuOut = false;
 
         dragTarget.on('click', function(){
-          removeMenu();
+          $('#sidenav-overlay').trigger('click');
         });
 
         dragTarget.hammer({
