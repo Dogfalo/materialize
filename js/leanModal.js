@@ -168,7 +168,7 @@
         // Close Handlers
         $(this).click(function(e) {
           options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.15;
-          var modal_id = $(this).attr("href") || '#' + $(this).data('target');
+          var modal_id = this.hash || '#' + $(this).data('target');
           $(modal_id).openModal(options);
           e.preventDefault();
         }); // done set on click
