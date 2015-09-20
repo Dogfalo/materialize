@@ -161,17 +161,15 @@
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
 
-        if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
+        if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) && !$(e.currentTarget).next('.dropdown-content').hasClass('active')) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
 
         }
         // If origin is clicked and menu is open, close menu
         else {
-          if (origin.hasClass('active')) {
-            hideDropdown();
-            $(document).unbind('click.' + activates.attr('id'));
-          }
+          hideDropdown();
+          $(document).unbind('click.' + activates.attr('id'));
         }
         // If menu open, add click close handler to document
         if (activates.hasClass('active')) {
