@@ -252,7 +252,7 @@ jQuery.extend( jQuery.easing,
         };
     })(Hammer.Manager.prototype.emit);
 }));
-;window.Materialize = {};
+;Materialize = {};
 
 // Unique ID
 Materialize.guid = (function() {
