@@ -48,7 +48,9 @@
       updateOptions();
 
       // Attach dropdown to its activator
-      origin.after(activates);
+      origin.on("click", function () {
+        origin.after(activates);
+      });
 
       /*
        Helper function to position and resize dropdown.
