@@ -1,4 +1,7 @@
+//fixed in v0.97.1 
 window.Materialize = {};
+// fix for issue 2077 
+Materialize = window.Materialize;
 
 // Unique ID
 Materialize.guid = (function() {
