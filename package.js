@@ -13,8 +13,7 @@ Package.onUse(function (api) {
   api.use('jquery', 'client');
   api.imply('jquery', 'client');
 
-
-  api.addFiles([
+  var assets = [
     'font/material-design-icons/Material-Design-Icons.eot',
     'font/material-design-icons/Material-Design-Icons.svg',
     'font/material-design-icons/Material-Design-Icons.ttf',
@@ -35,9 +34,23 @@ Package.onUse(function (api) {
     'font/roboto/Roboto-Thin.ttf',
     'font/roboto/Roboto-Thin.woff',
     'font/roboto/Roboto-Thin.woff2',
-    'bin/materialize.css',
+  ];
+
+  addAssets(api, assets);
+  
+  api.addFiles([
     'dist/js/materialize.js',
+    'bin/materialize.css'
   ], 'client');
 
   api.export('Materialize', 'client');
 });
+
+
+function addAssets(api, assets){
+  if(api.addAssets){
+    api.addAssets(assets, 'client');
+  } else {
+    api.addFiles(assets, 'client', {isAsset: true});
+  }
+}
