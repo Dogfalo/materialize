@@ -5870,6 +5870,8 @@ button.btn-floating {
   padding-top: 15px;
   margin-bottom: 0;
   z-index: 998; }
+  .fixed-action-btn.active ul {
+    visibility: visible; }
   .fixed-action-btn.horizontal {
     padding: 0 0 0 15px; }
     .fixed-action-btn.horizontal ul {
@@ -5890,7 +5892,8 @@ button.btn-floating {
     text-align: center;
     position: absolute;
     bottom: 64px;
-    margin: 0; }
+    margin: 0;
+    visibility: hidden; }
     .fixed-action-btn ul li {
       margin-bottom: 15px; }
     .fixed-action-btn ul a.btn-floating {
