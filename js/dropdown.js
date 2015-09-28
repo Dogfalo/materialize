@@ -21,9 +21,17 @@
     this.each(function(){
     var origin = $(this);
     var options = $.extend({}, defaults, option);
+    var id = origin.attr('data-activates');
+
+    // Generate an id to next element if not exists
+    if (!id) {
+        id = ('' + Math.random()).replace('.', '');
+        origin.attr('data-activates', id);
+        $(origin).next().attr('id', id);
+    }
 
     // Dropdown menu
-    var activates = $("#"+ origin.attr('data-activates'));
+    var activates = $("#" + id);
 
     function updateOptions() {
       if (origin.data('induration') !== undefined)
