@@ -39,6 +39,34 @@
     &lt;/ul>
   &lt;/div>
         </code></pre>
+        <h4 class="light">Horizontal FAB</h4>
+        <p>Creating a horizontal FAB is easy! Just add the class <code class="language-markup">horizontal</code> to the FAB.</p>
+        <div style="position: relative;">
+          <div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 24px;">
+            <a class="btn-floating btn-large red">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></i></a></li>
+              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            </ul>
+          </div>
+        </div>
+        <pre><code class="language-markup col s12">
+  &lt;div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    &lt;a class="btn-floating btn-large red">
+      &lt;i class="large material-icons">mode_edit&lt;/i>
+    &lt;/a>
+    &lt;ul>
+      &lt;li>&lt;a class="btn-floating red">&lt;i class="material-icons">insert_chart&lt;/i>&lt;/i>&lt;/a>&lt;/li>
+      &lt;li>&lt;a class="btn-floating yellow darken-1">&lt;i class="material-icons">format_quote&lt;/i>&lt;/a>&lt;/li>
+      &lt;li>&lt;a class="btn-floating green">&lt;i class="material-icons">publish&lt;/i>&lt;/a>&lt;/li>
+      &lt;li>&lt;a class="btn-floating blue">&lt;i class="material-icons">attach_file&lt;/i>&lt;/a>&lt;/li>
+    &lt;/ul>
+  &lt;/div>
+        </code></pre>
 
         <p>You can also open the Fixed Action Button Menu programatically, the below code will make your FAB Menu open:</p>
           <pre><code class="language-javascript">
