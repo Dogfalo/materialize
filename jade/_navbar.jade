@@ -12,8 +12,10 @@ header
       a#logo-container.brand-logo(href='http://materializecss.com/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
     li(class="search")
-      input(id="search")
-      div.search-results
+      div.search-wrapper.card
+        input(id="search")
+        i.material-icons search
+        div.search-results
     li.bold(class=(page == "About" ? "active" : ""))
       a.waves-effect.waves-teal(href='about.html') About
     li.bold(class=(page == "Getting Started" ? "active" : ""))
