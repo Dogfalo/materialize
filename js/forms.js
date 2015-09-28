@@ -302,7 +302,7 @@
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
       var options = $('<ul id="select-options-' + uniqueID+'" class="dropdown-content select-dropdown"></ul>');
-      var selectOptions = $select.children('option');
+      var selectOptions = $select.children('option,optgroup');
 
       var label;
       if ($select.find('option:selected') !== undefined) {
@@ -311,14 +311,21 @@
       else {
         label = options.first();
       }
-
+    
+      var addOptions = function ($this, options) {
+          var container = options;
+          if ($this.is('optgroup')) {
+              container = $('<ul class="' + (($this.is(':disabled')) ? 'disabled' : '') + '"><span>' + $this.attr('label') + '</span></ul>');
+              options.append(container);
+              $this.children('option,optgroup').each(function() { addOptions($(this), container); });
+          } else {
+              // Add disabled attr if disabled
+              container.append($('<li class="' + (($this.is(':disabled')) ? 'disabled' : '') + '"><span>' + $this.html() + '</span></li>'));
+          }
+      };
 
       // Create Dropdown structure
-      selectOptions.each(function () {
-        // Add disabled attr if disabled
-        options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
-      });
-
+      selectOptions.each(function() { addOptions($(this), options); });
 
       options.find('li').each(function (i) {
         var $curr_select = $select;
