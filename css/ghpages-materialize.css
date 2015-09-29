@@ -8264,8 +8264,7 @@ footer.example {
 ul.side-nav.fixed li.logo {
   text-align: center;
   margin-top: 32px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #ddd; }
+  margin-bottom: 80px; }
   ul.side-nav.fixed li.logo:hover {
     background-color: transparent; }
 
@@ -8808,3 +8807,48 @@ body.parallax-demo footer {
 
 #twitter-widget-0 {
   width: 190px !important; }
+
+#nav-mobile li.search {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 120px;
+  margin-top: 1px;
+  padding: 1px 0 0 0;
+  z-index: 2; }
+  #nav-mobile li.search:hover {
+    background-color: #fff; }
+  #nav-mobile li.search .search-wrapper {
+    margin: 0 12px;
+    -webkit-transition: margin .25s ease;
+    -moz-transition: margin .25s ease;
+    -o-transition: margin .25s ease;
+    -ms-transition: margin .25s ease;
+    transition: margin .25s ease; }
+    #nav-mobile li.search .search-wrapper.focused {
+      margin: 0; }
+    #nav-mobile li.search .search-wrapper input#search {
+      display: block;
+      font-size: 16px;
+      font-weight: 300;
+      width: 100%;
+      height: 45px;
+      padding: 0 45px 0 15px;
+      border: 0; }
+      #nav-mobile li.search .search-wrapper input#search:focus {
+        outline: none; }
+    #nav-mobile li.search .search-wrapper i.material-icons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer; }
+  #nav-mobile li.search .search-results {
+    margin: 0;
+    border-top: 1px solid #e9e9e9;
+    background-color: #fff; }
+    #nav-mobile li.search .search-results a {
+      font-size: 12px;
+      white-space: nowrap; }
+      #nav-mobile li.search .search-results a:hover, #nav-mobile li.search .search-results a.focused {
+        background-color: #eee;
+        outline: none; }
