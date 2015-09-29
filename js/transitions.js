@@ -33,11 +33,17 @@
   // Horizontal staggered list
   Materialize.showStaggeredList = function(selector) {
     var time = 0;
-    $(selector).find('li').velocity(
+    var elementType = $(selector).prop('nodeName').toLowerCase();
+    var children = 'li';
+    // if selector is a table, animate the rows instead
+    if (elementType === 'table') {
+      children = 'tr';
+    }
+    $(selector).find(children).velocity(
         { translateX: "-100px"},
         { duration: 0 });
 
-    $(selector).find('li').each(function() {
+    $(selector).find(children).each(function() {
       $(this).velocity(
         { opacity: "1", translateX: "0"},
         { duration: 800, delay: time, easing: [60, 10] });
