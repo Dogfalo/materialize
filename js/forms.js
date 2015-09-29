@@ -382,6 +382,9 @@
 
       $newSelect.on({
         'focus': function (){
+          if (!options.is(':visible')) {
+            $(this).trigger('open');
+          }
           if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
             $('input.select-dropdown').trigger('close');
           }
@@ -460,8 +463,9 @@
               var activeOption = options.find('li.selected:not(.disabled)')[0];
               if(activeOption){
                 $(activeOption).trigger('click');
-                if (!multiple)
+                if (!multiple) {
                   $newSelect.trigger('close');
+                }
               }
             }
 
