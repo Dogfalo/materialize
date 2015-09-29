@@ -5936,13 +5936,19 @@ button.btn-floating {
     width: 100%;
     text-align: left;
     text-transform: none; }
-    .dropdown-content li:hover, .dropdown-content li.active {
+    .dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected {
       background-color: #eee; }
+    .dropdown-content li.active.selected {
+      background-color: #e1e1e1;
+    }
     .dropdown-content li > a, .dropdown-content li > span {
       font-size: 1.2rem;
       color: #26a69a;
       display: block;
       padding: 1rem 1rem; }
+    .dropdown-content li > a, .dropdown-content li > span > label {
+      top: 0.6rem;
+      left: 0.2rem; }
     .dropdown-content li > a > i {
       height: inherit;
       line-height: inherit; }
