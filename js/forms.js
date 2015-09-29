@@ -311,8 +311,7 @@
       var label;
       if ($select.find('option:selected') !== undefined) {
         label = $select.find('option:selected');
-      }
-      else {
+      } else {
         label = options.first();
       }
 
@@ -336,12 +335,14 @@
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
               toggleEntryFromArray(valuesSelected, $(this).index(), $curr_select);
               $newSelect.trigger('focus');
+
             } else {
               options.find('li').removeClass('active');
               $(this).toggleClass('active');
               $curr_select.siblings('input.select-dropdown').val($(this).text());
             }
 
+            activateOption(options, $(this));
             $curr_select.find('option').eq(i).prop('selected', true);
             // Trigger onchange() event
             $curr_select.trigger('change');
@@ -381,25 +382,9 @@
 
       $newSelect.on({
         'focus': function (){
-          if ($('ul.select-dropdown').not(options[0]).is(':visible'))
+          if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
             $('input.select-dropdown').trigger('close');
-
-          label = $(this).val();
-
-          if (multiple) {
-            if (!$(this).siblings('ul.dropdown-content').is(':visible'))
-              $(this).trigger('open');
-
-            var selectedOption = options.find('li:not(.disabled)')[0];
-          } else {
-            $(this).trigger('open');
-
-            var selectedOption = options.find('li').filter(function() {
-              return $(this).text().toLowerCase() === label.toLowerCase();
-            })[0];
           }
-
-          activateOption(options, selectedOption);
         },
         'click': function (e){
           e.stopPropagation();
@@ -407,8 +392,10 @@
       });
 
       $newSelect.on('blur', function() {
-        if (!multiple)
+        if (!multiple) {
           $(this).trigger('close');
+        }
+        options.find('li.selected').removeClass('selected');
       });
 
       options.hover(function() {
@@ -427,7 +414,6 @@
       activateOption = function(collection, newOption) {
         collection.find('li.selected').removeClass('selected');
         $(newOption).addClass('selected');
-        collection.scrollTo(newOption);
       };
 
       // Allow user to search by typing
@@ -481,9 +467,12 @@
 
             // ARROW DOWN - move to next not disabled option
             if(e.which == 40){
-              newOption = options.find('li.selected').next('li:not(.disabled)')[0];
-              if(newOption)
-                activateOption(options, newOption);
+              if (options.find('li.selected').length) {
+                newOption = options.find('li.selected').next('li:not(.disabled)')[0];
+              } else {
+                newOption = options.find('li:not(.disabled)')[0];
+              }
+              activateOption(options, newOption);
             }
 
             // ESC - close options
