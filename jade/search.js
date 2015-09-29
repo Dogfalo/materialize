@@ -57,7 +57,7 @@
 
     window.index.add({
       href: 'http://materializecss.com/dialogs.html',
-      title: 'dialogs',
+      title: 'dialogs tooltips toasts',
       body: 'Dialogs are content that are not original visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user.'
     });
 
@@ -75,7 +75,7 @@
 
     window.index.add({
       href: 'http://materializecss.com/forms.html',
-      title: 'forms',
+      title: 'forms select radio checkbox switch range textarea',
       body: 'Forms are the standard way to receive user inputted data. The transitions and smoothness of these elements are very important because of the inherent user interaction associated with forms.'
     });
 
@@ -117,7 +117,7 @@
 
     window.index.add({
       href: 'http://materializecss.com/media.html',
-      title: 'Media JavaScript',
+      title: 'Media JavaScript slider materialbox',
       body: 'Media components include things that have to do with large media objects like Images, Video, Audio, etc.'
     });
 
@@ -213,7 +213,7 @@
 
     window.index.add({
       href: 'http://materializecss.com/transitions.html',
-      title: 'transitions',
+      title: 'transitions animation',
       body: 'Weve made some custom animation functions that will transition your content.'
     });
 
@@ -227,6 +227,15 @@
       href: 'http://materializecss.com/waves.html',
       title: 'waves',
       body: 'Waves is an external library that weve included in Materialize to allow us to create the ink effect outlined in Material Design'
+    });
+
+    // icon click
+    $('ul#nav-mobile li.search .search-wrapper i.material-icons').click(function() {
+      if ($('.search-results .focused').length) {
+        $('.search-results .focused').first()[0].click();
+      } else if ($('.search-results').children().length) {
+        $('.search-results').children().first()[0].click();
+      }
     });
 
     var renderResults = function(results) {
@@ -279,10 +288,16 @@
       // Escape.
       if (e.keyCode === 27) {
         $(this).val('');
+        $(this).blur();
         renderResults([]);
         return;
       } else if (e.keyCode === 13) {
-        $('.search-results .focused').first()[0].click();
+        // enter
+        if ($('.search-results .focused').length) {
+          $('.search-results .focused').first()[0].click();
+        } else if ($('.search-results').children().length) {
+          $('.search-results').children().first()[0].click();
+        }
         return;
       }
 
