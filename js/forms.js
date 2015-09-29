@@ -361,7 +361,7 @@
         dropdownIcon.addClass('disabled');
 
       // escape double quotes
-      var sanitizedLabelHtml = label.html().replace(/"/g, '&quot;');
+      var sanitizedLabelHtml = label.html() && label.html().replace(/"/g, '&quot;');
 
       var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
