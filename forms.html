@@ -42,6 +42,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -367,9 +373,9 @@
         <h2 class="header">Select</h2>
         <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
         <div class="row">
-          <form class="col s12 m6">
+          <form class="col s12">
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s12 m6">
                 <select>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
@@ -380,7 +386,22 @@
               </div>
               <div class="col s12">
                 <br>
+                <p>You can add the property <code class="language-markup">multiple</code> to get the multiple select and select several options.</p>
+              </div>
+              <div class="input-field col s12 m6">
+                <select multiple>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+                <label>Materialize Multiple Select</label>
+              </div>
+              <div class="col s12">
+                <br>
                 <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
+              </div>
+              <div class="col s12 m6">
                 <label>Browser Select</label>
                 <select class="browser-default">
                   <option value="" disabled selected>Choose your option</option>
@@ -403,13 +424,23 @@
     &lt;label>Materialize Select&lt;/label>
   &lt;/div>
 
-    &lt;label>Browser Select&lt;/label>
-    &lt;select class="browser-default">
+  &lt;div class="input-field col s12">
+    &lt;select multiple>
       &lt;option value="" disabled selected>Choose your option&lt;/option>
       &lt;option value="1">Option 1&lt;/option>
       &lt;option value="2">Option 2&lt;/option>
       &lt;option value="3">Option 3&lt;/option>
     &lt;/select>
+    &lt;label>Materialize Multiple Select&lt;/label>
+  &lt;/div>
+
+  &lt;label>Browser Select&lt;/label>
+  &lt;select class="browser-default">
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
             </code></pre>
           </div>
           <div class="col s12">
@@ -872,8 +903,10 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
