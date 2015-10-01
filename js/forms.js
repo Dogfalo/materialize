@@ -5,7 +5,7 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
+        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true || $(this).is('input:-webkit-autofill')) {
           $(this).siblings('label').addClass('active');
         }
         else {
@@ -30,7 +30,7 @@
 
     // Add active if input element has been pre-populated on document ready
     $(document).ready(function() {
-      Materialize.updateTextFields();
+      setTimeout(Materialize.updateTextFields, 10);
     });
 
     // HTML DOM FORM RESET handling
