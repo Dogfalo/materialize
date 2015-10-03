@@ -61,39 +61,42 @@
       // Constrain width
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
-      }
-      else {
+
+      } else {
         activates.css('white-space', 'nowrap');
       }
-      var offset = 0;
+
+      // Below Origin
+      var verticalOffset = 0;
       if (options.belowOrigin === true) {
-        offset = origin.height();
+        verticalOffset = origin.height();
       }
 
       // Offscreen detection
       var offsetLeft = origin.offset().left;
-      var activatesLeft, width_difference, gutter_spacing;
+      var activatesLeft, widthDifference, gutterSpacing;
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
+        // Dropdown goes past screen on right, force right alignment
         options.alignment = 'right';
       }
       else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
+        // Dropdown goes past screen on left, force left alignment
         options.alignment = 'left';
       }
 
       // Handle edge alignment
       if (options.alignment === 'left') {
-        width_difference = 0;
-        gutter_spacing = options.gutter;
-        activatesLeft = origin.position().left + width_difference + gutter_spacing;
+        widthDifference = 0;
+        gutterSpacing = options.gutter;
+        activatesLeft = origin.position().left + widthDifference + gutterSpacing;
 
         // Position dropdown
         activates.css({ left: activatesLeft });
       }
       else if (options.alignment === 'right') {
-        var offsetRight = $(window).width() - offsetLeft - origin.innerWidth();
-        width_difference = 0;
-        gutter_spacing = options.gutter;
-        activatesLeft =  ( $(window).width() - origin.position().left - origin.innerWidth() ) + gutter_spacing;
+        widthDifference = 0;
+        gutterSpacing = options.gutter;
+        activatesLeft =  ( $(window).width() - origin.offset().left - origin.innerWidth() ) + gutterSpacing;
 
         // Position dropdown
         activates.css({ right: activatesLeft });
@@ -101,7 +104,7 @@
       // Position dropdown
       activates.css({
         position: 'absolute',
-        top: origin.position().top + offset,
+        top: origin.position().top + verticalOffset,
       });
 
 
