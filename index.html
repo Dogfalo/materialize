@@ -36,6 +36,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -106,7 +112,7 @@
           <div class="row center">
             <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light">Get Started</a>
           </div>
-          <div class="row center"><a class="red-text text-lighten-4" href="https://github.com/Dogfalo/materialize">alpha release v0.97.0</a></div>
+          <div class="row center"><a class="red-text text-lighten-4" href="https://github.com/Dogfalo/materialize">alpha release v0.97.1</a></div>
 
           <div class="buysellads-header row center">
             <!-- CarbonAds Zone Code -->
@@ -223,8 +229,10 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
