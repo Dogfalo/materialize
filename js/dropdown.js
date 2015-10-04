@@ -147,7 +147,7 @@
 
       activates.on('mouseleave', function(e){ // Mouse out
         var toEl = e.toElement || e.relatedTarget;
-        if ($(toEl).closest(origin)) {
+        if(!$(toEl).closest('.dropdown-button').is(origin)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
