@@ -74,39 +74,34 @@
 
       // Offscreen detection
       var offsetLeft = origin.offset().left;
-      var activatesLeft, widthDifference, gutterSpacing;
+      var currAlignment = options.alignment;
+      var activatesLeft, gutterSpacing;
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         // Dropdown goes past screen on right, force right alignment
-        options.alignment = 'right';
-      }
-      else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
+        currAlignment = 'right';
+
+      } else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
         // Dropdown goes past screen on left, force left alignment
-        options.alignment = 'left';
+        currAlignment = 'left';
       }
 
       // Handle edge alignment
-      if (options.alignment === 'left') {
-        widthDifference = 0;
+      if (currAlignment === 'left') {
         gutterSpacing = options.gutter;
-        activatesLeft = origin.position().left + widthDifference + gutterSpacing;
-
-        // Position dropdown
-        activates.css({ left: activatesLeft });
+        leftPosition = origin.position().left + gutterSpacing;
       }
-      else if (options.alignment === 'right') {
-        widthDifference = 0;
-        gutterSpacing = options.gutter;
-        activatesLeft =  ( $(window).width() - origin.offset().left - origin.innerWidth() ) + gutterSpacing;
-
-        // Position dropdown
-        activates.css({ right: activatesLeft });
+      else if (currAlignment === 'right') {
+        var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
+        gutterSpacing = -options.gutter;
+        leftPosition =  offsetRight + gutterSpacing;
       }
+
       // Position dropdown
       activates.css({
         position: 'absolute',
         top: origin.position().top + verticalOffset,
+        left: leftPosition
       });
-
 
 
       // Show dropdown
