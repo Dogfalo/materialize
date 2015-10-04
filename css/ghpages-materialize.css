@@ -5724,16 +5724,21 @@ small {
     text-align: center;
     line-height: 48px;
     height: 48px;
-    padding: 0 20px;
+    padding: 0;
     margin: 0;
     text-transform: uppercase;
+    text-overflow: ellipsis;
+    overflow: hidden;
     letter-spacing: .8px;
-    width: 15%; }
+    width: 15%;
+    min-width: 80px; }
     .tabs .tab a {
       color: #ee6e73;
       display: block;
       width: 100%;
       height: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
       -webkit-transition: color .28s ease;
       -moz-transition: color .28s ease;
       -o-transition: color .28s ease;
@@ -5751,8 +5756,20 @@ small {
     background-color: #f6b2b5;
     will-change: left, right; }
 
-.tabs .tab {
-  padding: 0; }
+.hide-tab-scrollbar {
+  position: relative;
+  height: 48px;
+  overflow: hidden; }
+  .hide-tab-scrollbar .tabs {
+    overflow-x: scroll;
+    overflow-y: hidden; }
+
+.scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px; }
 
 .material-tooltip {
   padding: 10px 8px;
