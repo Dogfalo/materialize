@@ -15,12 +15,13 @@
     });
 
     // Toggle-on-click behaviour.
-    $(document).on('click.fixedActionBtn', '.fixed-action-btn.click-to-toggle', function(e) {
+    $(document).on('click.fixedActionBtn', '.fixed-action-btn.click-to-toggle > a', function(e) {
       var $this = $(this);
-      if ($this.hasClass('active')) {
-        closeFABMenu($this);
+      var $menu = $this.parent();
+      if ($menu.hasClass('active')) {
+        closeFABMenu($menu);
       } else {
-        openFABMenu($this);
+        openFABMenu($menu);
       }
     });
 
