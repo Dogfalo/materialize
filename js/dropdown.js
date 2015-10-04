@@ -57,6 +57,7 @@
 
       // Set Dropdown state
       activates.addClass('active');
+      origin.addClass('active');
 
       // Constrain width
       if (options.constrain_width === true) {
@@ -120,6 +121,7 @@
     function hideDropdown() {
       activates.fadeOut(options.outDuration);
       activates.removeClass('active');
+      origin.removeClass('active');
     }
 
     // Hover
@@ -145,7 +147,7 @@
 
       activates.on('mouseleave', function(e){ // Mouse out
         var toEl = e.toElement || e.relatedTarget;
-        if(!$(toEl).closest('.dropdown-button').is(origin)) {
+        if ($(toEl).closest(origin)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
@@ -154,22 +156,19 @@
 
     // Click
     } else {
-
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-
-        if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
+        if ( origin[0] == e.currentTarget &&
+             !origin.hasClass('active') &&
+             ($(e.target).closest('.dropdown-content').length === 0)) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
-
         }
         // If origin is clicked and menu is open, close menu
-        else {
-          if (origin.hasClass('active')) {
-            hideDropdown();
-            $(document).unbind('click.' + activates.attr('id'));
-          }
+        else if (origin.hasClass('active')) {
+          hideDropdown();
+          $(document).unbind('click.' + activates.attr('id'));
         }
         // If menu open, add click close handler to document
         if (activates.hasClass('active')) {
