@@ -148,6 +148,16 @@
     &lt;/ul>
   &lt;/div>
         </code></pre>
+
+        <p>You can also open the Fixed Action Button Menu programatically, the below code will make your FAB Menu open:</p>
+          <pre><code class="language-javascript">
+  $('.fixed-action-btn').openFAB();
+          </code></pre>
+          <p>You can also close them programatically:</p>
+          <pre><code class="language-javascript">
+  $('.fixed-action-btn').closeFAB();
+        </code></pre>
+        <br>
         <h4 class="light">Horizontal FAB</h4>
         <p>Creating a horizontal FAB is easy! Just add the class <code class="language-markup">horizontal</code> to the FAB.</p>
         <div style="position: relative;">
@@ -177,15 +187,6 @@
   &lt;/div>
         </code></pre>
 
-        <p>You can also open the Fixed Action Button Menu programatically, the below code will make your FAB Menu open:</p>
-          <pre><code class="language-javascript">
-  $('.fixed-action-btn').openFAB();
-          </code></pre>
-          <p>You can also close them programatically:</p>
-          <pre><code class="language-javascript">
-  $('.fixed-action-btn').closeFAB();
-        </code></pre>
-
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
           <a class="btn-floating btn-large red">
             <i class="material-icons">mode_edit</i>
@@ -197,6 +198,7 @@
             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
           </ul>
         </div>
+        <br>
 
         <h4 class="light">Click-only FAB</h4>
         <p>If you want to disable the hover behaviour, and instead toggle the FAB menu when the user clicks on the large button (works great on mobile!), just add the <code class="language-markup">click-to-toggle</code> class to the FAB.</p>
@@ -230,6 +232,7 @@
       </div>
       <div id="flat" class="section scrollspy">
         <h2 class="header">Flat</h2>
+        <p>Flat buttons are used to reduce excessive layering. For example, flat buttons are usually used for actions within a card or modal so there aren't too many overlapping shadows.</p>
         <a class="waves-effect waves-teal btn-flat">Button</a>
         <pre><code class="language-markup col s12">
   &lt;a class="waves-effect waves-teal btn-flat">Button&lt;/a>
