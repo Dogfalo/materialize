@@ -5669,7 +5669,7 @@ small {
   position: relative;
   max-width: 100%;
   height: 48px;
-  line-height: 48px;
+  line-height: inherit;
   background-color: #323232;
   padding: 0 25px;
   font-size: 1.1rem;
