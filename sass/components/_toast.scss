@@ -10,12 +10,14 @@
   @media #{$medium-only} {
     min-width: 30%;
     left: 5%;
+    right: 5%;
     bottom: 7%;
   }
   @media #{$large-and-up} {
     min-width: 8%;
     top: 10%;
     right: 7%;
+    left: 7%;
   }
 }
 
@@ -28,10 +30,12 @@
   margin-top: 10px;
   position: relative;
   max-width:100%;
-  height: $toast-height;
-  line-height: $toast-height;
+  height: auto;
+  min-height: $toast-height;
+  line-height: 1.5em;
+  word-break: break-all;
   background-color: $toast-color;
-  padding: 0 25px;
+  padding: 10px 25px;
   font-size: 1.1rem;
   font-weight: 300;
   color: $toast-text-color;
