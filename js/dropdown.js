@@ -57,53 +57,52 @@
 
       // Set Dropdown state
       activates.addClass('active');
+      origin.addClass('active');
 
       // Constrain width
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
-      }
-      else {
+
+      } else {
         activates.css('white-space', 'nowrap');
       }
-      var offset = 0;
+
+      // Below Origin
+      var verticalOffset = 0;
       if (options.belowOrigin === true) {
-        offset = origin.height();
+        verticalOffset = origin.height();
       }
 
       // Offscreen detection
       var offsetLeft = origin.offset().left;
-      var activatesLeft, width_difference, gutter_spacing;
+      var currAlignment = options.alignment;
+      var activatesLeft, gutterSpacing;
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
-        options.alignment = 'right';
-      }
-      else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
-        options.alignment = 'left';
+        // Dropdown goes past screen on right, force right alignment
+        currAlignment = 'right';
+
+      } else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
+        // Dropdown goes past screen on left, force left alignment
+        currAlignment = 'left';
       }
 
       // Handle edge alignment
-      if (options.alignment === 'left') {
-        width_difference = 0;
-        gutter_spacing = options.gutter;
-        activatesLeft = origin.position().left + width_difference + gutter_spacing;
-
-        // Position dropdown
-        activates.css({ left: activatesLeft });
+      if (currAlignment === 'left') {
+        gutterSpacing = options.gutter;
+        leftPosition = origin.position().left + gutterSpacing;
       }
-      else if (options.alignment === 'right') {
-        var offsetRight = $(window).width() - offsetLeft - origin.innerWidth();
-        width_difference = 0;
-        gutter_spacing = options.gutter;
-        activatesLeft =  ( $(window).width() - origin.position().left - origin.innerWidth() ) + gutter_spacing;
-
-        // Position dropdown
-        activates.css({ right: activatesLeft });
+      else if (currAlignment === 'right') {
+        var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
+        gutterSpacing = -options.gutter;
+        leftPosition =  offsetRight + gutterSpacing;
       }
+
       // Position dropdown
       activates.css({
         position: 'absolute',
-        top: origin.position().top + offset,
+        top: origin.position().top + verticalOffset,
+        left: leftPosition
       });
-
 
 
       // Show dropdown
@@ -122,6 +121,7 @@
     function hideDropdown() {
       activates.fadeOut(options.outDuration);
       activates.removeClass('active');
+      origin.removeClass('active');
     }
 
     // Hover
@@ -156,22 +156,19 @@
 
     // Click
     } else {
-
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-
-        if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
+        if ( origin[0] == e.currentTarget &&
+             !origin.hasClass('active') &&
+             ($(e.target).closest('.dropdown-content').length === 0)) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
-
         }
         // If origin is clicked and menu is open, close menu
-        else {
-          if (origin.hasClass('active')) {
-            hideDropdown();
-            $(document).unbind('click.' + activates.attr('id'));
-          }
+        else if (origin.hasClass('active')) {
+          hideDropdown();
+          $(document).unbind('click.' + activates.attr('id'));
         }
         // If menu open, add click close handler to document
         if (activates.hasClass('active')) {

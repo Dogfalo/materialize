@@ -103,6 +103,29 @@
     </div>
 </nav>
 
+<nav style="margin-top: 50px;">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left">
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="14" data-constrainwidth="false" data-alignment="right" id="button6">
+                    Left edge detection<i class="mdi-navigation-arrow-drop-down right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="15" data-gutter="100" id="button4">
+                    Gutter 100<i class="mdi-navigation-arrow-drop-down right"></i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-activates="16" data-beloworigin="true" id="button5">
+                    Below Origin<i class="mdi-navigation-arrow-drop-down right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br>
+
 
 
 
@@ -273,18 +296,10 @@
 
 <!-- Options testing -->
 <ul id="7" class="dropdown-content">
-    <li>
-        <a href="http://myapp.dev/things">Index</a>
-    </li>
-    <li>
-        <a href="http://myapp.dev/place/logs">Logs</a>
-    </li>
-    <li>
-        <a href="http://myapp.dev/place/create">Create Thing</a>
-    </li>
-    <li>
-        <a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a>
-    </li>
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
 </ul>
 <ul id="8" class="dropdown-content">
     <li>
@@ -342,7 +357,24 @@
         <a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a>
     </li>
 </ul>
-
+<ul id="14" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="15" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="16" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
 
 
 <br>
@@ -382,8 +414,27 @@ Align right: --------------------------------
 
 
 
+<br>
+<div class="row" style="padding-left: 300px;">
 
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Logo</a>
+        <ul class="right">
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown with padding on ancestor</a></li>
+        </ul>
+      </div>
+    </nav>
 
+</div>
 
 
 

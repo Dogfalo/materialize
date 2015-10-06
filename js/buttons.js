@@ -4,15 +4,25 @@
     // jQuery reverse
     $.fn.reverse = [].reverse;
 
-    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn', function(e) {
+    // Hover behaviour: make sure this doesn't work on .click-to-toggle FABs!
+    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle)', function(e) {
       var $this = $(this);
       openFABMenu($this);
-
     });
-
-    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn', function(e) {
+    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle)', function(e) {
       var $this = $(this);
       closeFABMenu($this);
+    });
+
+    // Toggle-on-click behaviour.
+    $(document).on('click.fixedActionBtn', '.fixed-action-btn.click-to-toggle > a', function(e) {
+      var $this = $(this);
+      var $menu = $this.parent();
+      if ($menu.hasClass('active')) {
+        closeFABMenu($menu);
+      } else {
+        openFABMenu($menu);
+      }
     });
 
   });
@@ -35,13 +45,13 @@
       // Get direction option
       var horizontal = $this.hasClass('horizontal');
       var offsetY, offsetX;
-      
+
       if (horizontal === true) {
         offsetX = 40;
       } else {
         offsetY = 40;
       }
-      
+
       $this.addClass('active');
       $this.find('ul .btn-floating').velocity(
         { scaleY: ".4", scaleX: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
