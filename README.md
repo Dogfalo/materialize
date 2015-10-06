@@ -20,7 +20,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Fixed select destroy/creation bug
   - Bugfixes for dropdown, badges, collections, scrollfire
   - Added default preloader color variable
-  - File input now supports multiple fles and dynamically loaded elements
+  - File input now supports multiple files and dynamically loaded elements
 - v0.97.0 (June 21, 2015)
   - **Documentation changed to use Official Google Icon web font**
   - **Input errors added**
