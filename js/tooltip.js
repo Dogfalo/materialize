@@ -88,7 +88,6 @@
                 targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
                 targetLeft =  origin.offset().left - tooltipWidth - margin;
                 newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
-console.log(newCoordinates);
 
                 tooltipHorizontalMovement = '-10px';
                 backdrop.css({
@@ -189,7 +188,7 @@ console.log(newCoordinates);
 
     if (newY < 0) {
       newY = 4;
-    } else if (newY + height > window.innerHeight) {
+    } else if (newY + height > window.innerHeight + $(window).scrollTop) {
       newY -= newY + height - window.innerHeight;
     }
 
