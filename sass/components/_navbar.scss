@@ -153,9 +153,3 @@ nav {
     height: $navbar-height;
   }
 }
-@media #{$small-screen} {
-  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: $navbar-height-mobile;
-    line-height: $navbar-height-mobile;
-  }
-}
