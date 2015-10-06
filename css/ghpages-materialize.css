@@ -5653,12 +5653,14 @@ small {
     #toast-container {
       min-width: 30%;
       left: 5%;
+      right: 5%;
       bottom: 7%; } }
   @media only screen and (min-width : 993px) {
     #toast-container {
       min-width: 8%;
       top: 10%;
-      right: 7%; } }
+      right: 7%;
+      left: 7%; } }
 
 .toast {
   border-radius: 2px;
@@ -5668,10 +5670,12 @@ small {
   margin-top: 10px;
   position: relative;
   max-width: 100%;
-  height: 48px;
-  line-height: 48px;
+  height: auto;
+  min-height: 48px;
+  line-height: 1.5em;
+  word-break: break-all;
   background-color: #323232;
-  padding: 0 25px;
+  padding: 10px 25px;
   font-size: 1.1rem;
   font-weight: 300;
   color: #fff;
