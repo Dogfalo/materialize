@@ -509,7 +509,7 @@ td, th{
   a.collection-item{
     display: block;
     @include transition(.25s);
-    color: $secondary-color;
+    color: $collection-link-color;
     &:not(.active) {
       &:hover {
         background-color: $collection-hover-bg-color;
