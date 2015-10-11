@@ -382,11 +382,11 @@
 
       $newSelect.on({
         'focus': function (){
-          if (!options.is(':visible')) {
-            $(this).trigger('open');
-          }
           if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
             $('input.select-dropdown').trigger('close');
+          }
+          if (!options.is(':visible')) {
+            $(this).trigger('open', ['focus']);
           }
         },
         'click': function (e){
