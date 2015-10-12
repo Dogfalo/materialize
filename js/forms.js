@@ -304,6 +304,7 @@
       wrapper.addClass($select.attr('class'));
       var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>');
       var selectOptions = $select.children('option');
+      var selectOptGroups = $select.children('optgroup');
 
       var valuesSelected = [],
           optionsHover = false;
@@ -315,16 +316,32 @@
         label = options.first();
       }
 
+      /* Create dropdown structure. */
+      if (selectOptGroups.length) {
+        // Check for optgroup
+        selectOptGroups.each(function() {
+          selectOptions = $(this).children('option');
+          options.append($('<li class="optgroup disabled"><span>' + $(this).attr('label') + '</span></li>'));
+          selectOptions.each(function() {
+            console.log($(this).html());
+            options.append($('<li><span>' + $(this).html() + '</span></li>'));
+          });
+        });
 
-      // Create Dropdown structure
-      selectOptions.each(function () {
-        // Add disabled attr if disabled
-        if (multiple) {
-          options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span><input type="checkbox"' + (($(this).is(':disabled')) ? 'disabled' : '') + '/><label></label>' + $(this).html() + '</span></li>'));
-        } else {
-          options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
-        }
-      });
+      } else {
+        selectOptions.each(function () {
+          // Add disabled attr if disabled
+          if (multiple) {
+            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span><input type="checkbox"' + (($(this).is(':disabled')) ? 'disabled' : '') + '/><label></label>' + $(this).html() + '</span></li>'));
+          } else {
+            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
+          }
+        });
+      }
+
+
+
+
 
       options.find('li').each(function (i) {
         var $curr_select = $select;

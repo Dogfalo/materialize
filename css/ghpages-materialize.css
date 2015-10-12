@@ -5964,6 +5964,12 @@ button.btn-floating {
       background-color: #eee; }
     .dropdown-content li.active.selected {
       background-color: #e1e1e1; }
+    .dropdown-content li.optgroup {
+      border-top: 1px solid #eee; }
+      .dropdown-content li.optgroup > span {
+        color: rgba(0, 0, 0, 0.4); }
+      .dropdown-content li.optgroup ~ li:not(.optgroup) {
+        padding-left: 1rem; }
     .dropdown-content li > a, .dropdown-content li > span {
       font-size: 1.2rem;
       color: #26a69a;
