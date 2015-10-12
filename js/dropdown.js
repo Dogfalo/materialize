@@ -185,14 +185,14 @@
           // If origin is clicked and menu is open, close menu
           else if (origin.hasClass('active')) {
             hideDropdown();
-            $(document).unbind('click.' + activates.attr('id'));
+            $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
           }
           // If menu open, add click close handler to document
           if (activates.hasClass('active')) {
-            $(document).bind('click.'+ activates.attr('id'), function (e) {
+            $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
               if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
                 hideDropdown();
-                $(document).unbind('click.' + activates.attr('id'));
+                $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
               }
             });
           }
