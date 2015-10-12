@@ -323,7 +323,6 @@
           selectOptions = $(this).children('option');
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
           selectOptions.each(function() {
-            console.log($(this).html());
             options.append($('<li><span>' + $(this).html() + '</span></li>'));
           });
         });
