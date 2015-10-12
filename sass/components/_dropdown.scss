@@ -28,18 +28,6 @@
       background-color: darken($dropdown-hover-bg-color, 5%);
     }
 
-    &.optgroup {
-      border-top: 1px solid $dropdown-hover-bg-color;
-
-      & > span {
-        color: rgba(0,0,0, .4);
-      }
-
-      & ~ li:not(.optgroup) {
-        padding-left: 1rem;
-      }
-    }
-
     & > a, & > span {
       font-size: 1.2rem;
       color: $dropdown-color;

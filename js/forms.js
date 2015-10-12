@@ -321,7 +321,7 @@
         // Check for optgroup
         selectOptGroups.each(function() {
           selectOptions = $(this).children('option');
-          options.append($('<li class="optgroup disabled"><span>' + $(this).attr('label') + '</span></li>'));
+          options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
           selectOptions.each(function() {
             console.log($(this).html());
             options.append($('<li><span>' + $(this).html() + '</span></li>'));
@@ -347,7 +347,7 @@
         var $curr_select = $select;
         $(this).click(function (e) {
           // Check if option element is disabled
-          if (!$(this).hasClass('disabled')) {
+          if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup')) {
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
               toggleEntryFromArray(valuesSelected, $(this).index(), $curr_select);
@@ -462,7 +462,7 @@
             // CASE WHEN USER TYPE LETTERS
             var letter = String.fromCharCode(e.which).toLowerCase(),
                 nonLetters = [9,13,27,38,40];
-            if (letter && (nonLetters.indexOf(e.which) === -1)){
+            if (letter && (nonLetters.indexOf(e.which) === -1)) {
               filterQuery.push(letter);
 
               var string = filterQuery.join(''),
@@ -470,13 +470,13 @@
                     return $(this).text().toLowerCase().indexOf(string) === 0;
                   })[0];
 
-              if(newOption){
+              if (newOption) {
                 activateOption(options, newOption);
               }
             }
 
             // ENTER - select option and close when select options are opened
-            if(e.which == 13){
+            if (e.which == 13) {
               var activeOption = options.find('li.selected:not(.disabled)')[0];
               if(activeOption){
                 $(activeOption).trigger('click');
@@ -487,7 +487,7 @@
             }
 
             // ARROW DOWN - move to next not disabled option
-            if(e.which == 40){
+            if (e.which == 40) {
               if (options.find('li.selected').length) {
                 newOption = options.find('li.selected').next('li:not(.disabled)')[0];
               } else {
@@ -497,12 +497,12 @@
             }
 
             // ESC - close options
-            if(e.which == 27){
+            if (e.which == 27) {
               $newSelect.trigger('close');
             }
 
             // ARROW UP - move to previous not disabled option
-            if(e.which == 38){
+            if (e.which == 38) {
               newOption = options.find('li.selected').prev('li:not(.disabled)')[0];
               if(newOption)
                 activateOption(options, newOption);
