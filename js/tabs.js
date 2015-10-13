@@ -1,7 +1,12 @@
 (function ($) {
 
   var methods = {
-    init : function() {
+    init : function(options) {
+      var defaults = {
+        draggable: false,
+      };
+      options = $.extend(defaults, options);
+
       return this.each(function() {
 
       // For each set of tabs, we want to keep track of
@@ -10,7 +15,8 @@
           window_width = $(window).width();
 
       $this.width('100%');
-      var $active, $content, $links = $this.find('li.tab a'),
+      var $active, $content, $content_wrapper,
+          $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
           $tab_width = $this.find('li').first().outerWidth(),
           $tab_min_width = parseInt($this.find('li').first().css('minWidth')),
@@ -34,6 +40,27 @@
       }
 
       $content = $($active[0].hash);
+      $content_wrapper = $content.parent();
+
+      // Create draggable container if necessary
+      if ($content_wrapper.data('draggable') !== undefined) {
+        options.draggable = $content_wrapper.data('draggable');
+      }
+      if (options.draggable) {
+        $content_wrapper.hammer({
+          prevent_default: false
+        }).bind('pan', function(e) {
+          if (e.gesture.direction === Hammer.DIRECTION_LEFT || e.gesture.direction === Hammer.DIRECTION_RIGHT) {
+
+          console.log(e, Hammer);
+          }
+
+        }).bind('panend', function(e) {
+
+
+
+        });
+      }
 
       // append indicator then set indicator width to tab width
       $this.append('<div class="indicator"></div>');
