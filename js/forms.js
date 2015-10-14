@@ -325,7 +325,7 @@
           selectOptions = $(this).children('option');
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
           selectOptions.each(function() {
-            options.append($('<li><span>' + $(this).html() + '</span></li>'));
+            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
           });
         });
 
@@ -344,7 +344,7 @@
 
 
 
-      options.find('li').each(function (i) {
+      options.find('li:not(.optgroup)').each(function (i) {
         var $curr_select = $select;
         $(this).click(function (e) {
           // Check if option element is disabled

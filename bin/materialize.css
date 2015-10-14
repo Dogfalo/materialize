@@ -6846,7 +6846,7 @@ select:disabled {
 .select-wrapper i {
   color: rgba(0, 0, 0, 0.3); }
 
-.select-dropdown li.disabled, .select-dropdown li.optgroup {
+.select-dropdown li.disabled, .select-dropdown li.disabled > span, .select-dropdown li.optgroup {
   color: rgba(0, 0, 0, 0.3);
   background-color: transparent; }
 
