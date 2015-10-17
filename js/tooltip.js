@@ -56,7 +56,9 @@
               newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
               // Set Tooltip text
-              newTooltip.children('span').text(origin.attr('data-tooltip'));
+              newTooltip.children('span').html(origin.attr('data-tooltip').replace(/[&<>]/g,
+                function(tag) { return { '&': '&amp', '<': '&lt', '>': '&gt' }[tag] || tag; }
+              ).replace('\\A', '<br/>'));
 
               // Tooltip positioning
               var originWidth = origin.outerWidth();
