@@ -1,8 +1,3 @@
-/*!
- * Materialize v0.97.1 (http://materializecss.com)
- * Copyright 2014-2015 Materialize
- * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
- */
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -252,7 +247,14 @@ jQuery.extend( jQuery.easing,
         };
     })(Hammer.Manager.prototype.emit);
 }));
-;window.Materialize = {};
+;(function(window){
+  if(window.Package){
+    Materialize = {};
+  } else {
+    window.Materialize = {};
+  }
+})(window);
+
 
 // Unique ID
 Materialize.guid = (function() {
