@@ -57,7 +57,7 @@
 
               // Set Tooltip text
               newTooltip.children('span').html(origin.attr('data-tooltip').replace(/[&<>]/g,
-                function(tag) { return { '&': '&amp', '<': '&lt', '>': '&gt' }[tag] || tag; }
+                function(tag) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[tag] || tag; }
               ).replace('\\A', '<br/>'));
 
               // Tooltip positioning
