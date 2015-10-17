@@ -325,23 +325,23 @@
           selectOptions = $(this).children('option');
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
           selectOptions.each(function() {
-            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
+            var itemClass = (($(this).is(':disabled')) ? 'disabled ' : '') + (($(this).is(':selected')) ? 'active' : '');
+            options.append($('<li class="' + itemClass + '"><span>' + $(this).html() + '</span></li>'));
           });
         });
 
       } else {
         selectOptions.each(function () {
           // Add disabled attr if disabled
+          var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
+          var itemClass = disabledClass + (($(this).is(':selected')) ? 'active' : '');
           if (multiple) {
-            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span><input type="checkbox"' + (($(this).is(':disabled')) ? 'disabled' : '') + '/><label></label>' + $(this).html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
           } else {
-            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
+            options.append($('<li class="' + itemClass + '"><span>' + $(this).html() + '</span></li>'));
           }
         });
       }
-
-
-
 
 
       options.find('li:not(.optgroup)').each(function (i) {
