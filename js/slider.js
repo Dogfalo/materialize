@@ -19,7 +19,7 @@
         var $slider = $this.find('ul.slides').first();
         var $slides = $slider.find('li');
         var $active_index = $slider.find('.active').index();
-        var $active;
+        var $active, $indicators, $interval;
         if ($active_index != -1) { $active = $slides.eq($active_index); }
 
         // Transitions the caption depending on alignment
@@ -99,7 +99,7 @@
 
         // dynamically add indicators
         if (options.indicators) {
-          var $indicators = $('<ul class="indicators"></ul>');
+          $indicators = $('<ul class="indicators"></ul>');
           $slides.each(function( index ) {
             var $indicator = $('<li class="indicator-item"></li>');
 
@@ -257,6 +257,7 @@
         });
 
         $this.on('sliderPause', function() {
+          console.log($(this), $interval.function);
           clearInterval($interval);
         });
 
@@ -280,6 +281,7 @@
 
     },
     pause : function() {
+      console.log($(this));
       $(this).trigger('sliderPause');
     },
     start : function() {
