@@ -1,3 +1,4 @@
+// Required for Meteor package, the use of window prevents export by Meteor
 (function(window){
   if(window.Package){
     Materialize = {};

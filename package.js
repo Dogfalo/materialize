@@ -40,7 +40,7 @@ Package.onUse(function (api) {
   
   api.addFiles([
     'dist/js/materialize.js',
-    'bin/materialize.css'
+    'dist/css/materialize.css'
   ], 'client');
 
   api.export('Materialize', 'client');
