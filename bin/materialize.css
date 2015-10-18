@@ -7654,6 +7654,50 @@ select {
       .slider .indicators .indicator-item.active {
         background-color: #4CAF50; }
 
+#content {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
+img.leftcard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; }
+
+img.centercard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; }
+
+img.rightcard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; }
+
+div#stash {
+  visibility: hidden; }
+
+div.cover {
+  perspective: 500px;
+  -webkit-perspective: 500px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-origin: 0% 50%; }
+
+div.cover img {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  border: none; }
+
 /* ==========================================================================
    $BASE-PICKER
    ========================================================================== */
