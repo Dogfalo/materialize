@@ -584,11 +584,9 @@ else {
 
     // Click
     } else {
-
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-
         if ( origin[0] == e.currentTarget && ($(e.target).closest('.dropdown-content').length === 0) ) {
           e.preventDefault(); // Prevents button click from moving window
           placeDropdown();
@@ -603,13 +601,24 @@ else {
         }
         // If menu open, add click close handler to document
         if (activates.hasClass('active')) {
-          $(document).bind('click.'+ activates.attr('id'), function (e) {
-            if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0) ) {
-              hideDropdown();
-              $(document).unbind('click.' + activates.attr('id'));
-            }
-          });
-        }
+		     $(document).bind('click.' + activates.attr('id'), function(e) {
+		         if($(e.target).closest('label').length !== 0){
+		         	e.preventDefault();
+		         	var input = $(e.target).closest('label').find('input');
+		         	if(input.prop('checked')){
+		         		input.prop('checked',false);
+		         	}else{
+		         		input.prop('checked',true);
+		         	}
+
+		         }else if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length > 0)) {
+		             hideDropdown();
+		             $(document).unbind('click.' + activates.attr('id'));
+		         }
+
+		     });
+		 }
+
       });
 
     } // End else
@@ -687,7 +696,6 @@ else {
 
       $overlay.velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
       $modal.data('associated-overlay', $overlay[0]);
-
       // Define Bottom Sheet animation
       if ($modal.hasClass('bottom-sheet')) {
         $modal.velocity({bottom: "0", opacity: 1}, {
@@ -731,7 +739,6 @@ else {
       $modal = $(this),
       overlayID = $modal.data('overlay-id'),
       $overlay = $('#' + overlayID);
-
       options = $.extend(defaults, options);
 
       // Disable scrolling
@@ -2853,7 +2860,7 @@ $(document).ready(function(){
       $select.addClass('initialized');
 
       $newSelect.on('focus', function(){
-        $(this).trigger('open', ['focus']);
+        $(this).trigger('open');
         label = $(this).val();
         selectedOption = options.find('li').filter(function() {
           return $(this).text().toLowerCase() === label.toLowerCase();
