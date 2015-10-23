@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Roboto";
+    font-family: "Roboto-Thin";
     src: local(Roboto Thin),
         url("#{$roboto-font-path}Roboto-Thin.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Thin.woff") format("woff"),
@@ -7,7 +7,7 @@
     font-weight: 200;
 }
 @font-face {
-    font-family: "Roboto";
+    font-family: "Roboto-Light";
     src: local(Roboto Light),
         url("#{$roboto-font-path}Roboto-Light.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Light.woff") format("woff"),
@@ -26,7 +26,7 @@
 }
 
 @font-face {
-    font-family: "Roboto";
+    font-family: "Roboto-Medium";
     src: url("#{$roboto-font-path}Roboto-Medium.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Medium.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Medium.ttf") format("truetype");
@@ -34,7 +34,7 @@
 }
 
 @font-face {
-    font-family: "Roboto";
+    font-family: "Roboto-Bold";
     src: url("#{$roboto-font-path}Roboto-Bold.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Bold.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Bold.ttf") format("truetype");
