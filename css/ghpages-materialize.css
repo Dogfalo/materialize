@@ -6869,6 +6869,12 @@ select:disabled {
   color: rgba(0, 0, 0, 0.3);
   background-color: transparent; }
 
+.select-dropdown li img {
+  height: 52px;
+  width: 52px;
+  padding: 5px;
+  margin: 0 15px; }
+
 .select-dropdown li.optgroup {
   border-top: 1px solid #eee; }
   .select-dropdown li.optgroup.selected > span {

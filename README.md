@@ -12,7 +12,15 @@ Materialize, a CSS Framework based on material design
 ## Supported Browsers:
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
+
 ## Changelog
+- Oct 23, 2015
+  - Added icons to select
+  - Edited the following:
+  	- HTML forms.html lines: 433 - 446 (example result), 492 - 499 (example code);
+  	- JavaScript form.js lines: 285 - 301 (gathering icons), 337 (store position of li), 343 - 354, 357 - 370, 377 - 391 (add icons in html);
+  	- CSS _form.scss lines: 286 - 291 (style images)
+
 - v0.97.1 (Sep 13, 2015)
   - Added new range slider with uses noUiSlider to provide powerful options
   - Added CSS for Chips

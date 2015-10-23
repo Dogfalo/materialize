@@ -679,6 +679,16 @@ select:disabled {
   background-color: transparent;
 }
 
+// Icons
+.select-dropdown li {
+	img {
+		height: 52px;
+		width: 52px;
+		padding: 5px;
+		margin: 0 15px;
+	}
+}
+
 // Optgroup styles
 .select-dropdown li.optgroup {
   border-top: 1px solid $dropdown-hover-bg-color;

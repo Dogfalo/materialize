@@ -6,30 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Forms - Materialize</title>
-    <!-- Favicons-->
+   <title>Forms - Materialize</title>
+    <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <!--  Android 5 Chrome Color-->
+    <!--  Android 5 Chrome Color -->
     <meta name="theme-color" content="#EE6E73">
     <!-- CSS-->
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script>
-      window.liveSettings = {
-        api_key: "a0b49b34b93844c38eaee15690d86413",
-        picker: "bottom-right",
-        detectlang: true,
-        dynamic: true,
-        autocollect: true
-      };
-    </script>
-    <script src="//cdn.transifex.com/live.js"></script>
-    <link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
+		<script>
+			window.liveSettings = {
+				api_key: "a0b49b34b93844c38eaee15690d86413",
+				picker: "bottom-right",
+				detectlang: true,
+				dynamic: true,
+				autocollect: true
+			};
+		</script>
+		<script src="//cdn.transifex.com/live.js"></script>
+		<link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -370,6 +370,8 @@
   &lt;/div>
         </code></pre>
       </div>
+
+			<!-- Select Section -->
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
         <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
@@ -428,6 +430,20 @@
                   <option value="3">Option 3</option>
                 </select>
               </div>
+              <div class="col s12">
+								<br>
+								<p>You can add the class <code class="language-markup">.icons</code> to get icons with your options</p>
+								<p>In the option you have to add two data attributes <code class="language-markup">data-icon</code> and <code class="language-markup">data-icon-classes</code></p>
+              </div>
+              <div class="input-field col s12 m6">
+								<label>Icons select</label>
+								<select class="icons">
+									<option></option>
+									<option value="" data-icon="images/sample-1.jpg" data-icon-classes="right">example</option>
+									<option value="" data-icon="images/office.jpg" data-icon-classes="left circle">example 1</option>
+									<option value="">example 2</option>
+								</select>
+              </div>
             </div>
           </form>
           <div class="col s12">
@@ -473,6 +489,14 @@
     &lt;option value="2">Option 2&lt;/option>
     &lt;option value="3">Option 3&lt;/option>
   &lt;/select>
+
+	&lt;label>Icons select&lt;/label>
+	&lt;select class="icons">
+		&lt;option>&lt;/option>
+		&lt;option value="" data-icon="images/sample-1.jpg" data-icon-classes="right">example&lt;/option>
+		&lt;option value="" data-icon="images/office.jpg" data-icon-classes="left circle">example 1&lt;/option>
+		&lt;option value="">example 2&lt;/option>
+	&lt;/select>
             </code></pre>
           </div>
           <div class="col s12">
@@ -870,7 +894,7 @@
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
-          <!-- CarbonAds Zone Code -->
+          CarbonAds Zone Code
           <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
@@ -894,7 +918,8 @@
 </div>
 
 
-    </main>    <footer class="page-footer">
+    </main>
+		<footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">
@@ -944,10 +969,10 @@
     <!-- Twitter Button -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-    <!-- Google Plus Button-->
+    <!-- Google Plus Button -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <!--  Google Analytics  -->
+    <!--  Google Analytics -->
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
