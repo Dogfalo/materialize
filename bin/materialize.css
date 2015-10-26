@@ -7691,7 +7691,7 @@ div.cover {
   transform-origin: 0% 50%; }
 
 div.cover img {
-  width: 200px;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;

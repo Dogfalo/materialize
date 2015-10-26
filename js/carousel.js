@@ -6,8 +6,8 @@
       var defaults = {
         timeConstant: 250, // ms
         dist: 0, // zoom scale TODO: make this more intuitive as an option
-        shift: 20, // spacing for center image
-        padding: 20 // Padding between non center items
+        shift: 0, // spacing for center image
+        padding: 0 // Padding between non center items
       };
       options = $.extend(defaults, options);
 
