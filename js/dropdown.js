@@ -21,6 +21,7 @@
     this.each(function(){
     var origin = $(this);
     var options = $.extend({}, defaults, option);
+    var isFocused = false;
 
     // Dropdown menu
     var activates = $("#"+ origin.attr('data-activates'));
@@ -51,7 +52,12 @@
       Helper function to position and resize dropdown.
       Used in hover and click handler.
     */
-    function placeDropdown() {
+    function placeDropdown(eventType) {
+      // Check for simultaneous focus and click events.
+      if (eventType === 'focus') {
+        isFocused = true;
+      }
+
       // Check html data attributes
       updateOptions();
 
@@ -75,6 +81,7 @@
 
       // Offscreen detection
       var offsetLeft = origin.offset().left;
+      var offsetTop = origin.offset().top - $(window).scrollTop();
       var currAlignment = options.alignment;
       var activatesLeft, gutterSpacing;
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
@@ -84,6 +91,13 @@
       } else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
         // Dropdown goes past screen on left, force left alignment
         currAlignment = 'left';
+      }
+      // Vertical bottom offscreen detection
+      if (offsetTop + activates.innerHeight() > window.innerHeight) {
+        if (!verticalOffset) {
+          verticalOffset += origin.innerHeight();
+        }
+        verticalOffset -= activates.innerHeight();
       }
 
       // Handle edge alignment
@@ -119,6 +133,8 @@
     }
 
     function hideDropdown() {
+      // Check for simultaneous focus and click events.
+      isFocused = false;
       activates.fadeOut(options.outDuration);
       activates.removeClass('active');
       origin.removeClass('active');
@@ -159,32 +175,36 @@
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-        if ( origin[0] == e.currentTarget &&
-             !origin.hasClass('active') &&
-             ($(e.target).closest('.dropdown-content').length === 0)) {
-          e.preventDefault(); // Prevents button click from moving window
-          placeDropdown();
-        }
-        // If origin is clicked and menu is open, close menu
-        else if (origin.hasClass('active')) {
-          hideDropdown();
-          $(document).unbind('click.' + activates.attr('id'));
-        }
-        // If menu open, add click close handler to document
-        if (activates.hasClass('active')) {
-          $(document).bind('click.'+ activates.attr('id'), function (e) {
-            if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
-              hideDropdown();
-              $(document).unbind('click.' + activates.attr('id'));
-            }
-          });
+        if (!isFocused) {
+          if ( origin[0] == e.currentTarget &&
+               !origin.hasClass('active') &&
+               ($(e.target).closest('.dropdown-content').length === 0)) {
+            e.preventDefault(); // Prevents button click from moving window
+            placeDropdown('click');
+          }
+          // If origin is clicked and menu is open, close menu
+          else if (origin.hasClass('active')) {
+            hideDropdown();
+            $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+          }
+          // If menu open, add click close handler to document
+          if (activates.hasClass('active')) {
+            $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
+              if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
+                hideDropdown();
+                $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+              }
+            });
+          }
         }
       });
 
     } // End else
 
     // Listen to open and close event - useful for select component
-    origin.on('open', placeDropdown);
+    origin.on('open', function(e, eventType) {
+      placeDropdown(eventType);
+    });
     origin.on('close', hideDropdown);
 
 

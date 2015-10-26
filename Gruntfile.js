@@ -318,7 +318,8 @@ module.exports = function(grunt) {
           "scrollspy.html": "jade/scrollspy.jade",
           "transitions.html": "jade/transitions.jade",
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
-          "pagination.html": "jade/pagination.jade"
+          "pagination.html": "jade/pagination.jade",
+          "breadcrumbs.html": "jade/breadcrumbs.jade"
 
 
         }

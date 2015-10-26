@@ -1623,6 +1623,8 @@
 /*** Buttons ***/
 /*** Cards ***/
 /*** Collapsible ***/
+/*** Chips ***/
+/*** Date Picker ***/
 /*** Dropdown ***/
 /*** Fonts ***/
 /*** Forms ***/
@@ -2082,6 +2084,25 @@ img.responsive-img, video.responsive-video {
       width: 80%;
       overflow: hidden;
       white-space: nowrap; } }
+
+.breadcrumb {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7); }
+  .breadcrumb:before {
+    content: '\E5CC';
+    color: rgba(255, 255, 255, 0.7);
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 25px;
+    margin: 0 10px 0 8px;
+    -webkit-font-smoothing: antialiased; }
+  .breadcrumb:first-child:before {
+    display: none; }
+  .breadcrumb:last-child {
+    color: #fff; }
 
 .parallax-container {
   position: relative;
@@ -6219,7 +6240,7 @@ a.waves-effect .waves-ripple {
   line-height: 32px;
   padding: 0 12px;
   border-radius: 16px;
-  background-color: #E4E4E4; }
+  background-color: #e4e4e4; }
   .chip img {
     float: left;
     margin: 0 8px 0 -12px;
@@ -6844,9 +6865,18 @@ select:disabled {
 .select-wrapper i {
   color: rgba(0, 0, 0, 0.3); }
 
-.select-dropdown li.disabled {
+.select-dropdown li.disabled, .select-dropdown li.disabled > span, .select-dropdown li.optgroup {
   color: rgba(0, 0, 0, 0.3);
   background-color: transparent; }
+
+.select-dropdown li.optgroup {
+  border-top: 1px solid #eee; }
+  .select-dropdown li.optgroup.selected > span {
+    color: rgba(0, 0, 0, 0.7); }
+  .select-dropdown li.optgroup > span {
+    color: rgba(0, 0, 0, 0.4); }
+  .select-dropdown li.optgroup ~ li:not(.optgroup) {
+    padding-left: 1rem; }
 
 /*********************
       File Input
