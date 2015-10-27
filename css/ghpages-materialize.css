@@ -2070,7 +2070,8 @@ img.responsive-img, video.responsive-video {
     cursor: default;
     color: #999; }
   .pagination li i {
-    font-size: 2rem; }
+    font-size: 2.2rem;
+    vertical-align: middle; }
 .pagination li.pages ul li {
   display: inline-block;
   float: none; }
