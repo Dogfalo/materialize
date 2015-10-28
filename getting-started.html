@@ -18,6 +18,7 @@
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -35,6 +36,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold active"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -58,7 +65,9 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -120,17 +129,17 @@
     <div class="section col s12 m9 l10">
       <div id="download" class="row scrollspy">
           <h2 class="col s12 header">Download</h2>
-        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using Materialize, all you have to is download one of the options below.</p>
+        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using Materialize, all you have to do is download one of the options below.</p>
 
         <div class="col s12 m6">
           <p class="promo-caption">Materialize</p>
           <p>This is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option requires little to no setup. Use this if you are unfamiliar with Sass.</p>
-          <a id="download-source" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-v0.96.1.zip">Materialize<i class="mdi-file-file-download right"></i></a>
+          <a id="download-source" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-v0.97.1.zip">Materialize<i class="material-icons right">file_download</i></a>
         </div>
         <div class="col s12 m6">
           <p class="promo-caption">Sass</p>
           <p>This version contains the source SCSS files. By choosing this version you have more control over which components to include. You will need a Sass compiler if you choose this option.</p>
-          <a id="download-sass" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-src-v0.96.1.zip">Source<i class="mdi-file-file-download right"></i></a>
+          <a id="download-sass" class="btn waves-effect waves-light" href="http://materializecss.com/bin/materialize-src-v0.97.1.zip">Source<i class="material-icons right">file_download</i></a>
         </div>
         <div class="col s12">
           <br>
@@ -138,16 +147,16 @@
           <p>You can find all the versions of the CDN at <a href="https://cdnjs.com/libraries/materialize">cdnjs</a>.</p>
           <pre><code class="language-markup">
   &lt;!-- Compiled and minified CSS -->
-  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 
   &lt;!-- Compiled and minified JavaScript -->
-  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js">&lt;/script>
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js">&lt;/script>
           </code></pre>
         </div>
         <div class="col s12">
           <br>
           <p class="promo-caption">NPM</p>
-          <p>You can also get the latest release using NPM. this release contains source files as well as the compiled CSS and JavaScript files.</p>
+          <p>You can also get the latest release using NPM. This release contains source files as well as the compiled CSS and JavaScript files.</p>
           <pre><code class="language-bash">
   npm install materialize-css
           </code></pre>
@@ -155,7 +164,7 @@
         <div class="col s12">
           <br>
           <p class="promo-caption">Bower</p>
-          <p>You can also get the latest release using bower. this release contains source files as well as the compiled CSS and JavaScript files.</p>
+          <p>You can also get the latest release using bower. This release contains source files as well as the compiled CSS and JavaScript files.</p>
           <pre><code class="language-bash">
   bower install materialize
           </code></pre>
@@ -221,6 +230,8 @@
   &lt;!DOCTYPE html>
   &lt;html>
     &lt;head>
+      &lt;!--Import Google Icon Font-->
+      &lt;link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       &lt;!--Import materialize.css-->
       &lt;link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
@@ -246,8 +257,8 @@
         <p class="promo-caption">Starter Template</p>
         <a href="templates/starter-template/preview.html"><img class="z-depth-1" style="width: 100%;" src="images/starter-template.gif"></a>
         <p>This is the simplest starter page with a Header, Call-to-Action, and Icon Features. </p>
-        <a class="btn waves-effect waves-light" href="templates/starter-template/preview.html">Demo<i class="mdi-action-search right"></i></a>
-        <a class="btn waves-effect waves-light" href="templates/starter-template.zip">Download<i class="mdi-file-file-download right"></i></a>
+        <a class="btn waves-effect waves-light" href="templates/starter-template/preview.html">Demo<i class="material-icons right">search</i></a>
+        <a class="btn waves-effect waves-light" href="templates/starter-template.zip">Download<i class="material-icons right">file_download</i></a>
       </div>
 
       <div class="col s12 m6">
@@ -373,8 +384,10 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->

@@ -10,3 +10,7 @@ node_modules/
 bin/jquery-2.1.1.min.js
 /.idea/
 **/*.log
+bower_components
+.projectile
+**/#*#
+**/.#*

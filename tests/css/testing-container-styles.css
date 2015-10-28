@@ -1,0 +1,21 @@
+/**
+ * The MIT License (MIT)
+ * Copyright (c) 2015 ember-cli
+ * 
+ * see: https://github.com/ember-cli/ember-cli-qunit/commit/2603576ee98933eecabae8f9454f397af3fd5a5f
+ */
+#materialize-testing-container {
+  position: relative;
+  background: white;
+  bottom: 0;
+  right: 0;
+  width: 640px;
+  height: 384px;
+  overflow: auto;
+  z-index: 9999;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+}
+#materialize-testing {
+  zoom: 50%;
+}

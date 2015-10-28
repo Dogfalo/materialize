@@ -18,6 +18,7 @@
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -28,6 +29,7 @@
       };
     </script>
     <script src="//cdn.transifex.com/live.js"></script>
+    <link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -40,6 +42,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -63,7 +71,9 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li class="active"><a href="forms.html">Forms</a></li>
@@ -203,12 +213,12 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <i class="mdi-action-account-circle prefix"></i>
+                <i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" class="validate">
                 <label for="icon_prefix">First Name</label>
               </div>
               <div class="input-field col s6">
-                <i class="mdi-communication-phone prefix"></i>
+                <i class="material-icons prefix">phone</i>
                 <input id="icon_telephone" type="tel" class="validate">
                 <label for="icon_telephone">Telephone</label>
               </div>
@@ -221,12 +231,12 @@
     &lt;form class="col s12">
       &lt;div class="row">
         &lt;div class="input-field col s6">
-          &lt;i class="mdi-action-account-circle prefix">&lt;/i>
+          &lt;i class="material-icons prefix">account_circle</i>&lt;/i>
           &lt;input id="icon_prefix" type="text" class="validate">
           &lt;label for="icon_prefix">First Name&lt;/label>
         &lt;/div>
         &lt;div class="input-field col s6">
-          &lt;i class="mdi-communication-phone prefix">&lt;/i>
+          &lt;i class="material-icons prefix">phone</i>&lt;/i>
           &lt;input id="icon_telephone" type="tel" class="validate">
           &lt;label for="icon_telephone">Telephone&lt;/label>
         &lt;/div>
@@ -301,6 +311,8 @@
         <h2 class="header">Textarea</h2>
         <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
         <p><strong>Textareas will auto resize to the text inside.</strong></p>
+
+
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -322,7 +334,13 @@
       &lt;/div>
     &lt;/form>
   &lt;/div>
-        </code></pre><br>
+        </code></pre>
+        <p>advanced note: When dynamically changing the value of a textarea with methods like jQuery's <code class="language-markup">.val()</code>, you must trigger an autoresize on it afterwords because .val() does not automatically trigger the events we've binded to the textarea. </p>
+        <pre><code class="language-javascript">
+  $('#textarea1').val('New Text');
+  $('#textarea1').trigger('autoresize');
+        </code></pre>
+        <br>
 
         <h4>Icon Prefixes</h4>
         <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
@@ -330,7 +348,7 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <i class="mdi-editor-mode-edit prefix"></i>
+                <i class="material-icons prefix">mode_edit</i>
                 <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
                 <label for="icon_prefix2">Message</label>
               </div>
@@ -343,7 +361,7 @@
     &lt;form class="col s12">
       &lt;div class="row">
         &lt;div class="input-field col s6">
-          &lt;i class="mdi-editor-mode-edit prefix">&lt;/i>
+          &lt;i class="material-icons prefix">mode_edit&lt;/i>
           &lt;textarea id="icon_prefix2" class="materialize-textarea">&lt;/textarea>
           &lt;label for="icon_prefix2">First Name&lt;/label>
         &lt;/div>
@@ -356,9 +374,9 @@
         <h2 class="header">Select</h2>
         <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
         <div class="row">
-          <form class="col s12 m6">
+          <form class="col s12">
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s12 m6">
                 <select>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
@@ -369,7 +387,39 @@
               </div>
               <div class="col s12">
                 <br>
+                <p>You can add the property <code class="language-markup">multiple</code> to get the multiple select and select several options.</p>
+              </div>
+              <div class="input-field col s12 m6">
+                <select multiple>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+                <label>Materialize Multiple Select</label>
+              </div>
+              <div class="col s12">
+                <br>
+                <p>We also support optgroups in our selects.</p>
+              </div>
+              <div class="input-field col s12 m6">
+                <select>
+                  <optgroup label="team 1">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                  </optgroup>
+                  <optgroup label="team 2">
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                  </optgroup>
+                </select>
+                <label>Optgroups</label>
+              </div>
+              <div class="col s12">
+                <br>
                 <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
+              </div>
+              <div class="col s12 m6">
                 <label>Browser Select</label>
                 <select class="browser-default">
                   <option value="" disabled selected>Choose your option</option>
@@ -392,13 +442,37 @@
     &lt;label>Materialize Select&lt;/label>
   &lt;/div>
 
-    &lt;label>Browser Select&lt;/label>
-    &lt;select class="browser-default">
+  &lt;div class="input-field col s12">
+    &lt;select multiple>
       &lt;option value="" disabled selected>Choose your option&lt;/option>
       &lt;option value="1">Option 1&lt;/option>
       &lt;option value="2">Option 2&lt;/option>
       &lt;option value="3">Option 3&lt;/option>
     &lt;/select>
+    &lt;label>Materialize Multiple Select&lt;/label>
+  &lt;/div>
+
+  &lt;div class="input-field col s12">
+    &lt;select multiple>
+      &lt;optgroup label="team 1">
+        &lt;option value="1">Option 1&lt;/option>
+        &lt;option value="2">Option 2&lt;/option>
+      &lt;/optgroup>
+      &lt;optgroup label="team 2">
+        &lt;option value="3">Option 3&lt;/option>
+        &lt;option value="4">Option 4&lt;/option>
+      &lt;/optgroup>
+    &lt;/select>
+    &lt;label>Optgroups&lt;/label>
+  &lt;/div>
+
+  &lt;label>Browser Select&lt;/label>
+  &lt;select class="browser-default">
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
             </code></pre>
           </div>
           <div class="col s12">
@@ -549,9 +623,9 @@
             <input type="checkbox" id="test7" checked="checked" disabled="disabled" />
             <label for="test7">Green</label>
           </p>
-            <p>
-              <input type="checkbox" id="test8" disabled="disabled" />
-              <label for="test8">Brown</label>
+          <p>
+            <input type="checkbox" id="test8" disabled="disabled" />
+            <label for="test8">Brown</label>
           </p>
         </form>
         <pre><code class="language-markup">
@@ -646,10 +720,38 @@
         <pre><code class="language-markup">
   &lt;form action="#">
     &lt;div class="file-field input-field">
-      &lt;input class="file-path validate" type="text"/>
       &lt;div class="btn">
         &lt;span>File&lt;/span>
-        &lt;input type="file" />
+        &lt;input type="file">
+      &lt;/div>
+      &lt;div class="file-path-wrapper">
+        &lt;input class="file-path validate" type="text">
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+        </code></pre>
+
+        <p>You can also use the <code class="language-markup">multiple</code> attribute to allow multiple file uploads. </p>
+        <form action="#">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload one or more files">
+            </div>
+          </div>
+        </form>
+        <pre><code class="language-markup">
+  &lt;form action="#">
+    &lt;div class="file-field input-field">
+      &lt;div class="btn">
+        &lt;span>File&lt;/span>
+        &lt;input type="file" multiple>
+      &lt;/div>
+      &lt;div class="file-path-wrapper">
+        &lt;input class="file-path validate" type="text" placeholder="Upload one or more files">
       &lt;/div>
     &lt;/div>
   &lt;/form>
@@ -659,7 +761,27 @@
 
       <div id="range" class="section scrollspy">
         <h2 class="header">Range</h2>
-        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100.</p>
+        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100. We have two different types of sliders. nouiSlider is a 3rd party plugin which we've modified. To use the noUiSlider, you will have to manually link the <code class="language-markup">nouislider.css</code> and <code class="language-markup">nouislider.js</code> files located in the extras folder.</p>
+        <h4>noUiSlider</h4>
+        <p>See noUiSlider's official documentation <a href="http://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
+        <div id="range-input"></div>
+        <p>&nbsp;</p>
+        <pre><code class="language-javascript">
+  var slider = document.getElementById('test5');
+  noUiSlider.create(slider, {
+   start: [20, 80],
+   connect: true,
+   step: 1,
+   range: {
+     'min': 0,
+     'max': 100
+   },
+   format: wNumb({
+     decimals: 0
+   })
+  });
+        </code></pre>
+        <h4>HTML5 Range</h4>
         <form action="#">
           <p class="range-field">
             <input type="range" name="points" min="0" max="100">
@@ -813,8 +935,10 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
@@ -833,6 +957,22 @@
     ga('create', 'UA-56218128-1', 'auto');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
+    </script>
+    <script src="/extras/noUiSlider/nouislider.js"></script>
+    <script type="text/javascript">
+      var slider = document.getElementById('range-input');
+      noUiSlider.create(slider, {
+       start: [20, 80],
+       connect: true,
+       step: 1,
+       range: {
+         'min': 0,
+         'max': 100
+       },
+       format: wNumb({
+         decimals: 0
+       })
+      });
     </script>
   </body>
 </html>

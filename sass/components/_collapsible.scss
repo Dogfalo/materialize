@@ -9,7 +9,7 @@
 .collapsible-header {
   display: block;
   cursor: pointer;
-  height: $collapsible-height;
+  min-height: $collapsible-height;
   line-height: $collapsible-height;
   padding: 0 1rem;
   background-color: $collapsible-header-color;

@@ -187,7 +187,8 @@ textarea.materialize-textarea {
     color: #444;
 
     & + label i,
-    & ~ .mdi-navigation-close {
+    & ~ .mdi-navigation-close,
+    & ~ .material-icons {
       color: #444;
     }
   }
@@ -196,7 +197,8 @@ textarea.materialize-textarea {
     left: 1rem;
   }
 
-  & ~ .mdi-navigation-close {
+  & ~ .mdi-navigation-close,
+  & ~ .material-icons {
     position: absolute;
     top: 0;
     right: 1rem;
@@ -633,16 +635,17 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     padding: 0;
     display: block;
   }
-  .mdi-navigation-arrow-drop-down {
+  span.caret {
     color: initial;
     position: absolute;
     right: 0;
-    top: 0;
-    font-size: 23px;
+    top: 16px;
+    font-size: 10px;
     &.disabled {
       color: $input-disabled-color;
     }
   }
+
   & + label {
     position: absolute;
     top: -14px;
@@ -669,9 +672,28 @@ select:disabled {
 .select-wrapper i {
   color: rgba(0,0,0,.3);
 }
-.select-dropdown li.disabled {
+.select-dropdown li.disabled,
+.select-dropdown li.disabled > span,
+.select-dropdown li.optgroup, {
   color: rgba(0,0,0,.3);
   background-color: transparent;
+}
+
+// Optgroup styles
+.select-dropdown li.optgroup {
+  border-top: 1px solid $dropdown-hover-bg-color;
+
+  &.selected > span {
+    color: rgba(0,0,0, .7);
+  }
+
+  & > span {
+    color: rgba(0,0,0, .4);
+  }
+
+  & ~ li:not(.optgroup) {
+    padding-left: 1rem;
+  }
 }
 
 

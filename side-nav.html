@@ -18,6 +18,7 @@
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -40,6 +41,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -63,7 +70,9 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -106,7 +115,7 @@
 
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
-        <p>This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
+        <p class="caption">This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
       </div>
 
 
@@ -162,7 +171,7 @@ $('.button-collapse').sideNav('hide');
     </div>
 
 
-    <div id="Variations" class="scrollspy section">
+    <div id="variations" class="scrollspy section">
       <h2 class="header">Variations</h2>
       <h4>Dropdown HTML Structure</h4>
         <pre><code class="language-markup col s12">
@@ -303,8 +312,10 @@ $('.button-collapse').sideNav('hide');
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->

@@ -18,6 +18,7 @@
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -40,6 +41,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -63,7 +70,9 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -111,15 +120,15 @@
         </p>
         <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
           <li>
-            <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
           <li>
-            <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
           <li>
-            <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
         </ul>
@@ -132,15 +141,15 @@
         </p>
         <ul class="collapsible popout collapsible-accordion" data-collapsible="accordion">
           <li>
-            <div class="collapsible-header"><i class="mdi-av-subtitles"></i>First</div>
+            <div class="collapsible-header"><i class="material-icons">subtitles</i>First</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
           <li>
-            <div class="collapsible-header active"><i class="mdi-av-games"></i>Second</div>
+            <div class="collapsible-header active"><i class="material-icons">games</i>Second</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
           <li>
-            <div class="collapsible-header"><i class="mdi-av-my-library-books"></i>Third</div>
+            <div class="collapsible-header"><i class="material-icons">library_books</i>Third</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
         </ul>
@@ -156,15 +165,15 @@
         <pre><code class="language-markup">
   &lt;ul class="collapsible" data-collapsible="accordion">
     &lt;li>
-      &lt;div class="collapsible-header">&lt;i class="mdi-image-filter-drama">&lt;/i>First&lt;/div>
+      &lt;div class="collapsible-header">&lt;i class="material-icons">filter_drama&lt;/i>First&lt;/div>
       &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
     &lt;/li>
     &lt;li>
-      &lt;div class="collapsible-header">&lt;i class="mdi-maps-place">&lt;/i>Second&lt;/div>
+      &lt;div class="collapsible-header">&lt;i class="material-icons">place&lt;/i>Second&lt;/div>
       &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
     &lt;/li>
     &lt;li>
-      &lt;div class="collapsible-header">&lt;i class="mdi-social-whatshot">&lt;/i>Third&lt;/div>
+      &lt;div class="collapsible-header">&lt;i class="material-icons">whatshot&lt;/i>Third&lt;/div>
       &lt;div class="collapsible-body">&lt;p>Lorem ipsum dolor sit amet.&lt;/p>&lt;/div>
     &lt;/li>
   &lt;/ul>
@@ -187,15 +196,15 @@
         <p>If you want a collapsible with a preopened section just add the <code class="language-markup">active</code> class to the collapsible-header. </p>
         <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
           <li>
-            <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
           <li>
-            <div class="collapsible-header active"><i class="mdi-maps-place"></i>Second</div>
+            <div class="collapsible-header active"><i class="material-icons">place</i>Second</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
           <li>
-            <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
           </li>
         </ul>
@@ -214,15 +223,15 @@
           <div class="col s12 m9">
             <ul class="collapsible" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
               </li>
             </ul>
@@ -241,15 +250,15 @@
           <div class="col s12 m9">
             <ul class="collapsible" data-collapsible="expandable">
               <li>
-                <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div>
+                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
               </li>
             </ul>
@@ -330,8 +339,10 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
