@@ -16,6 +16,7 @@
         }
         else if ($(e.target).is($('.card .activator')) ||
                  $(e.target).is($('.card .activator i')) ) {
+          $(e.target).closest('.card').css('overflow', 'hidden');
           $(this).find('.card-reveal').css({ display: 'block'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});
         }
       }
