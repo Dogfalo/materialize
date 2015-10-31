@@ -11,7 +11,6 @@
 
 .card {
   position: relative;
-  overflow: hidden;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
   transition: box-shadow .25s;
@@ -20,7 +19,6 @@
 
 
   .card-title {
-    color: $card-bg-color;
     font-size: 24px;
     font-weight: 300;
     &.activator {
@@ -97,6 +95,7 @@
     }
 
     .card-title {
+      color: $card-bg-color;
       position: absolute;
       bottom: 0;
       left: 0;

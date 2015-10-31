@@ -5571,13 +5571,11 @@ small {
 
 .card {
   position: relative;
-  overflow: hidden;
   margin: 0.5rem 0 1rem 0;
   background-color: #fff;
   transition: box-shadow .25s;
   border-radius: 2px; }
   .card .card-title {
-    color: #fff;
     font-size: 24px;
     font-weight: 300; }
     .card .card-title.activator {
@@ -5623,6 +5621,7 @@ small {
       bottom: 0;
       width: 100%; }
     .card .card-image .card-title {
+      color: #fff;
       position: absolute;
       bottom: 0;
       left: 0;
