@@ -2000,7 +2000,7 @@ ul {
 .z-depth-0 {
   box-shadow: none !important; }
 
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .autocomplete-content, .side-nav {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .z-depth-1-half, .btn:hover, .btn-large:hover, .btn-floating:hover {
@@ -6420,6 +6420,30 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     .input-field .prefix ~ input {
       width: 80%;
       width: calc(100% - 3rem); } }
+
+.autocomplete-content {
+  margin-top: -1rem; }
+  .autocomplete-content li {
+    clear: both;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+    line-height: 1.5rem;
+    width: 100%;
+    text-align: left;
+    text-transform: none; }
+    .autocomplete-content li > span {
+      color: #26a69a;
+      font-size: 1.2rem;
+      padding: 1rem;
+      display: block; }
+    .autocomplete-content li img {
+      height: 52px;
+      width: 52px;
+      padding: 5px;
+      margin: 0 15px; }
+    .autocomplete-content li:hover {
+      background: #eee;
+      cursor: pointer; }
 
 .input-field input[type=search] {
   display: block;

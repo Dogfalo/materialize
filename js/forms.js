@@ -1,4 +1,5 @@
 (function ($) {
+	var $body = $('body');
   $(document).ready(function() {
 
     // Function to update labels of text fields
@@ -100,7 +101,7 @@
     var hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
       hiddenDiv = $('<div class="hiddendiv common"></div>');
-      $('body').append(hiddenDiv);
+      $body.append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
 
@@ -117,9 +118,6 @@
         hiddenDiv.css('overflow-wrap', "normal")
                  .css('white-space', "pre");
       }
-
-
-
 
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
@@ -146,13 +144,11 @@
       }
     });
 
-    $('body').on('keyup keydown autoresize', text_area_selector, function () {
+    $body.on('keyup keydown autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
-
     // File Input Path
-
     $(document).on('change', '.file-field input[type="file"]', function () {
       var file_field = $(this).closest('.file-field');
       var path_input = file_field.find('input.file-path');
@@ -164,7 +160,6 @@
       path_input.val(file_names.join(", "));
       path_input.trigger('change');
     });
-
 
     /****************
     *  Range Input  *
@@ -222,8 +217,6 @@
       }
 
       thumb.find('.value').html($(this).val());
-
-
     });
 
     $(document).on('mouseup touchend', range_wrapper, function() {
@@ -269,12 +262,80 @@
       }
     });
 
+		/**************************
+		 *  Auto complete plugin  *
+		 *************************/
+		$(input_selector).each(function() {
+			var $input = $(this);
+
+			if( $input.hasClass('autocomplete') ) {
+				var $array = $input.data('array'),
+						$inputDiv = $input.closest('.input-field'), // Div to append on
+						$width = $input.css('width'); // Width to give to ul
+
+				// Check if "data-array" isn't empty
+				if( $array !== '' ) {
+					// Create html element
+					var $html = '<ul class="autocomplete-content hide">';
+
+					for( var i = 0; i < $array.length; i++ ) {
+						// If path and class aren't empty add image to auto complete else create normal element
+						if( $array[i]['path'] !== '' && $array[i]['class'] !== '' ) {
+							$html += '<li><img src="'+$array[i]['path']+'" class="'+$array[i]['class']+'"><span>'+$array[i]['value']+'</span></li>'
+						} else {
+							$html += '<li><span>'+$array[i]['value']+'</span></li>';
+						}
+					}
+					$html += '</ul>';
+					$inputDiv.append($html); // Set ul in body
+
+					// Perform search
+					$(document).on('keyup', $input, function () {
+						var $val = $input.val(),
+								$select = $('.autocomplete-content');
+						// Check if the input isn't empty
+						if( $val != '' ) {
+							$select.children('li').each(function() {
+								var $this = $(this),
+										$html = $this.html(), // Get html in case it has image. Also to append span
+										$text = $this.text();
+
+								// Check if the value has atleast 1 match else hide
+								if( $text.indexOf($val) > -1 ) {
+									// Remove class hide when input changes and finds a match
+									if( $this.hasClass('hide') ) {
+										$this.removeClass('hide');
+									}
+
+									// Unhide "ul.autocomplete-content"
+									if( $select.hasClass('hide') ) {
+										$select.removeClass('hide'); // Show options
+									}
+
+									// Set input value
+									$this.click(function() {
+										$input.val($text);
+									});
+								} else {
+									$this.addClass('hide');
+									$select.addClass('hide'); // Hide options
+								}
+							});
+						} else {
+							$select.addClass('hide');
+						}
+					});
+				} else {
+					return false;
+				}
+			}
+		});
+
   }); // End of $(document).ready
 
-
-
-
-  // Select Plugin
+	/*******************
+	 *  Select Plugin  *
+	 ******************/
   $.fn.material_select = function (callback) {
     $(this).each(function(){
       var $select = $(this);
@@ -285,7 +346,6 @@
 
 			// If select has icons
 			if( $select.hasClass('icons') ) {
-				console.log('test');
 				// Gather all icons
 				var	icons = [],
 						i = 0;
@@ -434,7 +494,7 @@
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
-      $('body').append(options);
+      $body.append(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false, 'closeOnClick': false});
