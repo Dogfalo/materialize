@@ -14,8 +14,13 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 
 ## Changelog
+- Oct 31, 2015
+ - Adding autocomplete
+ - Added images
+ - Added styling
+ - Todo: Fix bug when comparing strings, add styling for matching characters
 - Oct 23, 2015
-  - Added icons to select
+  - Added images to select
   - Edited the following:
   	- HTML forms.html lines: 433 - 446 (example result), 492 - 499 (example code);
   	- JavaScript form.js lines: 285 - 301 (gathering icons), 337 (store position of li), 343 - 354, 357 - 370, 377 - 391 (add icons in html);
