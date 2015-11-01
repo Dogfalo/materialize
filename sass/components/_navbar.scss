@@ -84,7 +84,7 @@ nav {
       float: left;
       padding: 0;
 
-      &:hover, &.active {
+      &:hover, &:active {
         background-color: rgba(0,0,0,.1);
       }
     }
