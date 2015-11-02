@@ -305,7 +305,7 @@
 								});
 
 								// Check if the value has atleast 1 match else hide
-								if( $text.includes($val) ) {
+								if( $text.indexOf($val) > -1 ) {
 									// Remove class hide when input changes and finds a match
 									if( $li.hasClass('hide') ) {
 										$li.removeClass('hide');
