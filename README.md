@@ -14,6 +14,10 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 
 ## Changelog
+- Nov 2, 2015
+ - Updated documentation for image in select
+ - Added documentation for autocomplete
+ - Added example code of autocomplete
 - Oct 31, 2015
  - Adding autocomplete
  - Added images

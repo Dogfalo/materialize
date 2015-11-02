@@ -306,17 +306,53 @@
         </code></pre>
 
 				<h4>Autocomplete</h4>
+				<p>To add autocomplete to an input field you need to add a couple of things.</p>
+				<p>The <code class="language-markup">input</code> needs to have class <code class="language-markup">autocomplete</code> </p>
+				<p>The second thing need is a data attribute <code class="language-markup">array</code>. This attribute will hold all data needed.</p>
+				<div class="row">
+					<div class="col s12">
+						<p>How the array should look:</p>
+						<pre>
+							<code class="language-markup">
+			[
+				{
+					"value": "Select text",
+					"path": "Image path",
+					"class": "Image class"
+				}
+			]
+							</code>
+						</pre>
+					</div>
+				</div>
+				<p>The array is a json array so it's easy to maintain with PHP. <em>This might need to be changed because it gets quite long</em>.</p>
 
 				<div class="row">
 					<div class="col s12">
 						<div class="row">
 							<div class="input-field col s12">
-								<input type="text" class="autocomplete" data-array='[{"value": "example","path": "images/sample-1.jpg","class": "left circle"},{"value": "example 2","path": "images/sample-1.jpg","class": "right circle"},{"value": "test","path": "images/sample-1.jpg","class": "right circle"}]'>
+								<i class="material-icons prefix">textsms</i>
+								<input type="text" id="autocomplete" class="autocomplete" data-array='[{"value": "example","path": "images/sample-1.jpg","class": "left circle"},{"value": "example 2","path": "images/sample-1.jpg","class": "right circle"},{"value": "test","path": "images/sample-1.jpg","class": "right circle"}]'>
+								<label for="autocomplete">Autocomplete</label>
 							</div>
 						</div>
 					</div>
 				</div>
       </div>
+
+			<div class="row">
+				<div class="col s12">
+					<pre>
+						<code class="language-markup">
+		&lt;div class="input-field col s12">
+			&lt;i class="material-icons prefix">textsms&lt;/i>
+			&lt;input type="text" id="autocomplete" class="autocomplete" data-array='[{"value": "example","path": "images/sample-1.jpg","class": "left circle"},{"value": "example 2","path": "images/sample-1.jpg","class": "right circle"},{"value": "test","path": "images/sample-1.jpg","class": "right circle"}]'>
+			&lt;label for="autocomplete">Autocomplete&lt;/label>
+		&lt;/div>
+						</code>
+					</pre>
+				</div>
+			</div>
 
 
 
@@ -446,11 +482,12 @@
               </div>
               <div class="col s12">
 								<br>
-								<p>You can add the class <code class="language-markup">.icons</code> to get icons with your options</p>
+								<p>You can add the class <code class="language-markup">icons</code> to get icons with your options</p>
 								<p>In the option you have to add two data attributes <code class="language-markup">data-icon</code> and <code class="language-markup">data-icon-classes</code></p>
+								<p>The class <code class="language-markup">left</code> or <code class="language-markup">right</code> is required to align the image and text</p>
               </div>
               <div class="input-field col s12 m6">
-								<label>Icons select</label>
+								<label>Images in select</label>
 								<select class="icons">
 									<option></option>
 									<option value="" data-icon="images/sample-1.jpg" data-icon-classes="right">example</option>

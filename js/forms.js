@@ -270,8 +270,7 @@
 
 			if( $input.hasClass('autocomplete') ) {
 				var $array = $input.data('array'),
-						$inputDiv = $input.closest('.input-field'), // Div to append on
-						$width = $input.css('width'); // Width to give to ul
+						$inputDiv = $input.closest('.input-field'); // Div to append on
 
 				// Check if "data-array" isn't empty
 				if( $array !== '' ) {
@@ -281,9 +280,9 @@
 					for( var i = 0; i < $array.length; i++ ) {
 						// If path and class aren't empty add image to auto complete else create normal element
 						if( $array[i]['path'] !== '' && $array[i]['class'] !== '' ) {
-							$html += '<li><img src="'+$array[i]['path']+'" class="'+$array[i]['class']+'"><span>'+$array[i]['value']+'</span></li>'
+							$html += '<li class="'+$array[i]['value']+'"><img src="'+$array[i]['path']+'" class="'+$array[i]['class']+'"><span>'+$array[i]['value']+'</span></li>'
 						} else {
-							$html += '<li><span>'+$array[i]['value']+'</span></li>';
+							$html += '<li class="'+$array[i]['value']+'"><span>'+$array[i]['value']+'</span></li>';
 						}
 					}
 					$html += '</ul>';
@@ -296,28 +295,28 @@
 						// Check if the input isn't empty
 						if( $val != '' ) {
 							$select.children('li').each(function() {
-								var $this = $(this),
-										$html = $this.html(), // Get html in case it has image. Also to append span
-										$text = $this.text();
+								var $li = $(this),
+										$html = $li.html(), // Get html in case it has image. Also to append span
+										$text = $li.text();
+
+								// Set input value
+								$li.click(function() {
+									$input.val($text);
+								});
 
 								// Check if the value has atleast 1 match else hide
-								if( $text.indexOf($val) > -1 ) {
+								if( $text.includes($val) ) {
 									// Remove class hide when input changes and finds a match
-									if( $this.hasClass('hide') ) {
-										$this.removeClass('hide');
+									if( $li.hasClass('hide') ) {
+										$li.removeClass('hide');
 									}
 
 									// Unhide "ul.autocomplete-content"
 									if( $select.hasClass('hide') ) {
 										$select.removeClass('hide'); // Show options
 									}
-
-									// Set input value
-									$this.click(function() {
-										$input.val($text);
-									});
 								} else {
-									$this.addClass('hide');
+									$li.addClass('hide');
 									$select.addClass('hide'); // Hide options
 								}
 							});
