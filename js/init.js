@@ -123,6 +123,7 @@
 
 
     // Plugin initialization
+    $('.carousel').carousel();
     $('.slider').slider({full_width: true});
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();

@@ -4,10 +4,11 @@
 
     init : function(options) {
       var defaults = {
-        timeConstant: 250, // ms
-        dist: 0, // zoom scale TODO: make this more intuitive as an option
+        timeConstant: 200, // ms
+        dist: -100, // zoom scale TODO: make this more intuitive as an option
         shift: 0, // spacing for center image
-        padding: 0 // Padding between non center items
+        padding: 0, // Padding between non center items
+        fullWidth: false // Change to full width styles
       };
       options = $.extend(defaults, options);
 
@@ -15,9 +16,12 @@
 
         var images, offset, center, pressed, dim,
             reference, amplitude, target, velocity,
-            xform, frame, timestamp, ticker;
+            xform, frame, timestamp, ticker, dragged;
 
         // Options
+        if (options.fullWidth) {
+          options.dist = 0;
+        }
 
 
         // Initialize
@@ -44,6 +48,7 @@
           view[0].addEventListener('mousedown', tap);
           view[0].addEventListener('mousemove', drag);
           view[0].addEventListener('mouseup', release);
+          view[0].addEventListener('click', click);
         }
 
         function xpos(e) {
@@ -61,16 +66,15 @@
         }
 
         function scroll(x) {
-          var i, half, delta, dir, tween, el, alignment;
+          var i, half, delta, dir, tween, el, alignment, xTranslation;
 
           offset = (typeof x === 'number') ? x : offset;
           center = Math.floor((offset + dim / 2) / dim);
           delta = offset - center * dim;
           dir = (delta < 0) ? 1 : -1;
           tween = -dir * delta * 2 / dim;
-
-          alignment = 'translateX(' + (window.innerWidth - item_width) / 2 + 'px) ';
-          alignment += 'translateY(' + (window.innerHeight - item_width) / 2 + 'px)';
+          alignment = 'translateX(' + (view[0].clientWidth - item_width) / 2 + 'px) ';
+          alignment += 'translateY(' + (view[0].clientHeight - item_width) / 2 + 'px)';
 
           // center
           el = images[wrap(center)];
@@ -79,25 +83,42 @@
             ' translateX(' + (dir * options.shift * tween * i) + 'px)' +
             ' translateZ(' + (options.dist * tween) + 'px)';
           el.style.zIndex = 0;
-          el.style.opacity = 1;
-
+          if (options.fullWidth) { tweenedOpacity = 1; }
+          else { tweenedOpacity = 1 - 0.2 * tween; }
+          el.style.opacity = tweenedOpacity;
           half = count >> 1;
+
           for (i = 1; i <= half; ++i) {
             // right side
+            if (options.fullWidth) {
+              zTranslation = options.dist;
+              tweenedOpacity = (i === half && delta < 0) ? 1 - tween : 1;
+            } else {
+              zTranslation = options.dist * (i * 2 + tween * dir);
+              tweenedOpacity = 1 - 0.2 * (i * 2 + tween * dir);
+            }
             el = images[wrap(center + i)];
             el.style[xform] = alignment +
               ' translateX(' + (options.shift + (dim * i - delta) / 2) + 'px)' +
-              ' translateZ(' + options.dist + 'px)';
+              ' translateZ(' + zTranslation + 'px)';
             el.style.zIndex = -i;
-            el.style.opacity = (i === half && delta < 0) ? 1 - tween : 1;
+            el.style.opacity = tweenedOpacity;
+
 
             // left side
+            if (options.fullWidth) {
+              zTranslation = options.dist;
+              tweenedOpacity = (i === half && delta > 0) ? 1 - tween : 1;
+            } else {
+              zTranslation = options.dist * (i * 2 - tween * dir);
+              tweenedOpacity = 1 - 0.2 * (i * 2 - tween * dir);
+            }
             el = images[wrap(center - i)];
             el.style[xform] = alignment +
               ' translateX(' + (-options.shift + (-dim * i - delta) / 2) + 'px)' +
-              ' translateZ(' + options.dist + 'px)';
+              ' translateZ(' + zTranslation + 'px)';
             el.style.zIndex = -i;
-            el.style.opacity = (i === half && delta > 0) ? 1 - tween : 1;
+            el.style.opacity = tweenedOpacity;
           }
 
           // center
@@ -107,7 +128,9 @@
             ' translateX(' + (dir * options.shift * tween) + 'px)' +
             ' translateZ(' + (options.dist * tween) + 'px)';
           el.style.zIndex = 0;
-          el.style.opacity = 1;
+          if (options.fullWidth) { tweenedOpacity = 1; }
+          else { tweenedOpacity = 1 - 0.2 * tween; }
+          el.style.opacity = tweenedOpacity;
         }
 
         function track() {
@@ -138,8 +161,18 @@
           }
         }
 
+        function click(e) {
+          // Disable clicks if carousel was dragged.
+          if (dragged) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+        }
+
         function tap(e) {
           pressed = true;
+          dragged = false;
           reference = xpos(e);
 
           velocity = amplitude = 0;
@@ -155,6 +188,7 @@
 
         function drag(e) {
           var x, delta;
+          dragged = true;
           if (pressed) {
             x = xpos(e);
             delta = reference - x;
