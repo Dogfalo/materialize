@@ -9,6 +9,9 @@ nav {
   a { color: $navbar-font-color; }
 
   .nav-wrapper {
+    // Fix floating content
+    @include clearfix;
+
     position: relative;
     height: 100%;
 

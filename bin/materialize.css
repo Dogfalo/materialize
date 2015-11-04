@@ -5076,10 +5076,13 @@ nav ul a span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px; }
-  .row:after {
-    content: "";
+  margin-bottom: 20px;
+  *zoom: 1; }
+  .row:before, .row:after {
     display: table;
+    content: "";
+    line-height: 0; }
+  .row:after {
     clear: both; }
   .row .col {
     float: left;
@@ -5279,8 +5282,15 @@ nav {
   nav a {
     color: #fff; }
   nav .nav-wrapper {
+    *zoom: 1;
     position: relative;
     height: 100%; }
+    nav .nav-wrapper:before, nav .nav-wrapper:after {
+      display: table;
+      content: "";
+      line-height: 0; }
+    nav .nav-wrapper:after {
+      clear: both; }
     nav .nav-wrapper i {
       display: block;
       font-size: 2rem; }
