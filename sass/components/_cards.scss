@@ -11,7 +11,6 @@
 
 .card {
   position: relative;
-  overflow: hidden;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
   transition: box-shadow .25s;
@@ -20,7 +19,6 @@
 
 
   .card-title {
-    color: $card-bg-color;
     font-size: 24px;
     font-weight: 300;
     &.activator {
@@ -33,9 +31,11 @@
     position: relative;
 
     .card-image {
+      max-height: 60%;
       overflow: hidden;
     }
     .card-content {
+      max-height: 40%;
       overflow: hidden;
     }
     .card-action {
@@ -43,41 +43,21 @@
       bottom: 0;
       left: 0;
       right: 0;
+      z-index: 1;
+      background-color: inherit;
     }
   }
 
   &.small {
     height: 300px;
-
-    .card-image {
-      height: 150px;
-    }
-    .card-content {
-      height: 150px;
-    }
-
   }
 
   &.medium {
     height: 400px;
-
-    .card-image {
-      height: 250px;
-    }
-    .card-content {
-      height: 150px;
-    }
   }
 
   &.large {
     height: 500px;
-
-    .card-image {
-      height: 330px;
-    }
-    .card-content {
-      height: 170px;
-    }
   }
 
 
@@ -97,6 +77,7 @@
     }
 
     .card-title {
+      color: $card-bg-color;
       position: absolute;
       bottom: 0;
       left: 0;

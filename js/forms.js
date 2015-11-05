@@ -311,10 +311,10 @@
       var valuesSelected = [],
           optionsHover = false;
 
-      if ($select.find('option:selected') !== undefined) {
+      if ($select.find('option:selected').length > 0) {
         label = $select.find('option:selected');
       } else {
-        label = options.first();
+        label = selectOptions.first();
       }
 
       /* Create dropdown structure. */
