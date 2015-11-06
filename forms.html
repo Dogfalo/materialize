@@ -6,30 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-   <title>Forms - Materialize</title>
-    <!-- Favicons -->
+    <title>Forms - Materialize</title>
+    <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <!--  Android 5 Chrome Color -->
+    <!--  Android 5 Chrome Color-->
     <meta name="theme-color" content="#EE6E73">
     <!-- CSS-->
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script>
-			window.liveSettings = {
-				api_key: "a0b49b34b93844c38eaee15690d86413",
-				picker: "bottom-right",
-				detectlang: true,
-				dynamic: true,
-				autocollect: true
-			};
-		</script>
-		<script src="//cdn.transifex.com/live.js"></script>
-		<link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
+    <script>
+      window.liveSettings = {
+        api_key: "a0b49b34b93844c38eaee15690d86413",
+        picker: "bottom-right",
+        detectlang: true,
+        dynamic: true,
+        autocollect: true
+      };
+    </script>
+    <script src="//cdn.transifex.com/live.js"></script>
+    <link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -303,56 +303,7 @@
      color: #000;
    }
         </code></pre>
-
-				<h4>Autocomplete</h4>
-				<p>To add autocomplete to an input field you need to add a couple of things.</p>
-				<p>The <code class="language-markup">input</code> needs to have class <code class="language-markup">autocomplete</code> </p>
-				<p>The second thing need is a data attribute <code class="language-markup">array</code>. This attribute will hold all data needed.</p>
-				<div class="row">
-					<div class="col s12">
-						<p>How the array should look:</p>
-						<pre>
-							<code class="language-markup">
-								[
-								{
-								"value": "Select text",
-								"path": "Image path",
-								"class": "Image class"
-								}
-								]
-							</code>
-						</pre>
-					</div>
-				</div>
-				<p>The array is a json array so it's easy to maintain with PHP. <em>This might need to be changed because it gets quite long</em>.</p>
-
-				<div class="row">
-					<div class="col s12">
-						<div class="row">
-							<div class="input-field col s12">
-								<i class="material-icons prefix">textsms</i>
-								<input type="text" id="autocomplete" class="autocomplete" data-array='[{"value": "example","path": "images/sample-1.jpg","class": "left circle"},{"value": "example 2","path": "images/sample-1.jpg","class": "right circle"},{"value": "test","path": "images/sample-1.jpg","class": "right circle"}]'>
-								<label for="autocomplete">Autocomplete</label>
-							</div>
-						</div>
-					</div>
-				</div>
       </div>
-
-			<div class="row">
-				<div class="col s12">
-					<pre>
-						<code class="language-markup">
-		&lt;div class="input-field col s12">
-			&lt;i class="material-icons prefix">textsms&lt;/i>
-			&lt;input type="text" id="autocomplete" class="autocomplete" data-array='[{"value": "example","path": "images/sample-1.jpg","class": "left circle"},{"value": "example 2","path": "images/sample-1.jpg","class": "right circle"},{"value": "test","path": "images/sample-1.jpg","class": "right circle"}]'>
-			&lt;label for="autocomplete">Autocomplete&lt;/label>
-		&lt;/div>
-						</code>
-					</pre>
-				</div>
-			</div>
-
 
 
       <!-- Textarea Section -->
@@ -419,8 +370,6 @@
   &lt;/div>
         </code></pre>
       </div>
-
-			<!-- Select Section -->
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
         <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
@@ -479,21 +428,6 @@
                   <option value="3">Option 3</option>
                 </select>
               </div>
-              <div class="col s12">
-								<br>
-								<p>You can add the class <code class="language-markup">icons</code> to get icons with your options</p>
-								<p>In the option you have to add two data attributes <code class="language-markup">data-icon</code> and <code class="language-markup">data-icon-classes</code></p>
-								<p>The class <code class="language-markup">left</code> or <code class="language-markup">right</code> is required to align the image and text</p>
-              </div>
-              <div class="input-field col s12 m6">
-								<label>Images in select</label>
-								<select class="icons">
-									<option></option>
-									<option value="" data-icon="images/sample-1.jpg" data-icon-classes="right">example</option>
-									<option value="" data-icon="images/office.jpg" data-icon-classes="left circle">example 1</option>
-									<option value="">example 2</option>
-								</select>
-              </div>
             </div>
           </form>
           <div class="col s12">
@@ -539,14 +473,6 @@
     &lt;option value="2">Option 2&lt;/option>
     &lt;option value="3">Option 3&lt;/option>
   &lt;/select>
-
-	&lt;label>Icons select&lt;/label>
-	&lt;select class="icons">
-		&lt;option>&lt;/option>
-		&lt;option value="" data-icon="images/sample-1.jpg" data-icon-classes="right">example&lt;/option>
-		&lt;option value="" data-icon="images/office.jpg" data-icon-classes="left circle">example 1&lt;/option>
-		&lt;option value="">example 2&lt;/option>
-	&lt;/select>
             </code></pre>
           </div>
           <div class="col s12">
@@ -968,8 +894,7 @@
 </div>
 
 
-    </main>
-		<footer class="page-footer">
+    </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">
@@ -982,6 +907,7 @@
 <button class="btn waves-effect waves-light red lighten-3" type="submit" name="action" alt="PayPal - The safer, easier way to pay online!">Donate Now
 </button>
 </form>
+
           </div>
           <div class="col l4 s12">
             <h5 class="white-text">Join the Discussion</h5>
@@ -1018,10 +944,10 @@
     <!-- Twitter Button -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-    <!-- Google Plus Button -->
+    <!-- Google Plus Button-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <!--  Google Analytics -->
+    <!--  Google Analytics  -->
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
