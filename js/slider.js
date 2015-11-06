@@ -1,25 +1,32 @@
 (function ($) {
+  var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
   var methods = {
 
-    init : function(options) {
+    init : function(passedOptions) {
       var defaults = {
         indicators: true,
         height: 400,
         transition: 500,
         interval: 6000
       };
-      options = $.extend(defaults, options);
 
       return this.each(function() {
 
         // For each slider, we want to keep track of
         // which slide is active and its associated content
         var $this = $(this);
+        // store options on slider to allow re-init
+        var options = $this.data("slider");
+        if (!options)
+          options = $.extend({}, defaults, passedOptions);
+        else
+          options = $.extend(options, passedOptions);
+        $this.data("slider", options);
         var $slider = $this.find('ul.slides').first();
         var $slides = $slider.find('> li');
         var $active_index = $slider.find('.active').index();
-        var $active, $indicators, $interval;
+        var $active;
         if ($active_index != -1) { $active = $slides.eq($active_index); }
 
         // Transitions the caption depending on alignment
@@ -94,16 +101,20 @@
 
         // Move img src into background-image
         $slides.find('img').each(function () {
-          var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-          if ($(this).attr('src') !== placeholderBase64) {
-            $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+          if ($(this).attr('src') != placeholderBase64) {
+            $(this).css('background-image', 'url("' + $(this).attr('src') + '")'); //urls should be quoted
             $(this).attr('src', placeholderBase64);
           }
         });
 
+        //clean up any previous
+        if (options.$indicators) {
+          options.$indicators.remove();
+        }
+
         // dynamically add indicators
         if (options.indicators) {
-          $indicators = $('<ul class="indicators"></ul>');
+          var indicatorList = $('<ul class="indicators"></ul>');
           $slides.each(function( index ) {
             var $indicator = $('<li class="indicator-item"></li>');
 
@@ -114,8 +125,8 @@
               moveToSlide(curr_index);
 
               // reset interval
-              clearInterval($interval);
-              $interval = setInterval(
+              clearInterval(options.timer);
+              options.timer = setInterval(
                 function(){
                   $active_index = $slider.find('.active').index();
                   if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
@@ -126,10 +137,10 @@
                 }, options.transition + options.interval
               );
             });
-            $indicators.append($indicator);
+            indicatorList.append($indicator);
           });
-          $this.append($indicators);
-          $indicators = $this.find('ul.indicators').find('li.indicator-item');
+          $this.append(indicatorList);
+          options.$indicators = $this.find(indicatorList).find('li.indicator-item');
         }
 
         if ($active) {
@@ -153,7 +164,7 @@
         });
 
         // auto scroll
-        $interval = setInterval(
+        options.timer = setInterval(
           function(){
             $active_index = $slider.find('.active').index();
             moveToSlide($active_index + 1);
@@ -175,7 +186,7 @@
           if (e.gesture.pointerType === "touch") {
 
             // reset interval
-            clearInterval($interval);
+            clearInterval(options.timer);
 
             var direction = e.gesture.direction;
             var x = e.gesture.deltaX;
@@ -246,8 +257,8 @@
             swipeRight = false;
 
             // Restart interval
-            clearInterval($interval);
-            $interval = setInterval(
+            clearInterval(options.timer);
+            options.timer = setInterval(
               function(){
                 $active_index = $slider.find('.active').index();
                 if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
@@ -261,12 +272,12 @@
         });
 
         $this.on('sliderPause', function() {
-          clearInterval($interval);
+          clearInterval(options.timer);
         });
 
         $this.on('sliderStart', function() {
-          clearInterval($interval);
-          $interval = setInterval(
+          clearInterval(options.timer);
+          options.timer = setInterval(
             function(){
               $active_index = $slider.find('.active').index();
               if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
@@ -279,11 +290,13 @@
         });
 
         $this.on('sliderNext', function() {
+          clearInterval(options.timer);
           $active_index = $slider.find('.active').index();
           moveToSlide($active_index + 1);
         });
 
         $this.on('sliderPrev', function() {
+          clearInterval(options.timer);
           $active_index = $slider.find('.active').index();
           moveToSlide($active_index - 1);
         });
@@ -301,9 +314,32 @@
     },
     next : function() {
       $(this).trigger('sliderNext');
+      $(this).trigger('sliderStart');
     },
     prev : function() {
       $(this).trigger('sliderPrev');
+      $(this).trigger('sliderStart');
+    },
+    destroy : function () {
+        $(this).trigger('sliderPause');
+        return this.each(function () {
+            var $this = $(this);
+            var slider = $this.data("slider");
+            if (slider) {
+                clearTimeout(slider.timer);
+                if (slider.$indicators)
+                    slider.$indicators.remove();
+            }
+            $this.find("li").each(function () {
+                var li = $(this);
+                var img = li.find("img");
+                if (img.attr("src") == placeholderBase64) {
+                    img.attr("src", img.css("background-image").replace(/url\(\s*(?:"|')?([^)'"]*)\s*(?:"|')?\)/g, "$1"));
+                    img.css({"background-image": ""});
+                }
+                li.css({opacity: "", transform: ""});
+            })
+        });
     }
   };
 
