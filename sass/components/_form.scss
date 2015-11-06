@@ -708,19 +708,9 @@ select:disabled {
 }
 .select-dropdown li.disabled,
 .select-dropdown li.disabled > span,
-.select-dropdown li.optgroup, {
+.select-dropdown li.optgroup {
   color: rgba(0,0,0,.3);
   background-color: transparent;
-}
-
-// Icons
-.select-dropdown li {
-	img {
-		height: 52px;
-		width: 52px;
-		padding: 5px;
-		margin: 0 15px;
-	}
 }
 
 // Optgroup styles

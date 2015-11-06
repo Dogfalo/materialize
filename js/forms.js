@@ -343,22 +343,6 @@
         return; // Continue to next (return false breaks out of entire loop)
       }
 
-			// If select has icons
-			if( $select.hasClass('icons') ) {
-				// Gather all icons
-				var	icons = [],
-						i = 0;
-
-				$select.children('option').each(function() {
-					var $this = $(this),
-							$icon = $this.data('icon'),
-							$classes = $this.data('icon-classes');
-
-					icons[i] = [$icon, $classes];
-					i++;
-				});
-			}
-
       var multiple = $select.attr('multiple') ? true : false,
           lastID = $select.data('select-id'); // Tear down structure if Select needs to be rebuilt
 
@@ -399,31 +383,11 @@
         // Check for optgroup
         selectOptGroups.each(function() {
           selectOptions = $(this).children('option');
-
-					// Add icons
-					if( $select.hasClass('icons') ) {
-						if( icons[j][0] !== undefined ) {
-							options.append($('<li class="optgroup"><img src="' + icons[j][0] + '" class="' + icons[j][1] + '"><span>' + $(this).attr('label') + '</span></li>'));
-						} else {
-							options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
-						}
-					} else {
-						options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
-					}
+					options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
           selectOptions.each(function() {
             var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
-
-						// Add icons
-						if( $select.hasClass('icons') ) {
-							if( icons[j][0] !== undefined ) {
-								options.append($('<li class="' + disabledClass + '"><img src="' + icons[j][0] + '" class="' + icons[j][1] + '"><span>' + $(this).html() + '</span></li>'));
-							} else {
-								options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
-							}
-						} else {
-							options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
-						}
+						options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
           });
 
 					j++;
@@ -435,16 +399,7 @@
           if (multiple) {
 						options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
           } else {
-						// Add icons
-						if( $select.hasClass('icons') ) {
-							if( icons[j][0] !== undefined ) {
-								options.append($('<li class="' + disabledClass + '"><img src="' + icons[j][0] + '" class="' + icons[j][1] + '"><span>' + $(this).html() + '</span></li>'));
-							} else {
-								options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
-							}
-						} else {
-							options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
-						}
+						options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
           }
 
 					j++;
