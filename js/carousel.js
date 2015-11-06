@@ -4,11 +4,11 @@
 
     init : function(options) {
       var defaults = {
-        timeConstant: 200, // ms
+        time_constant: 200, // ms
         dist: -100, // zoom scale TODO: make this more intuitive as an option
         shift: 0, // spacing for center image
         padding: 0, // Padding between non center items
-        fullWidth: false // Change to full width styles
+        full_width: false // Change to full width styles
       };
       options = $.extend(defaults, options);
 
@@ -19,7 +19,7 @@
             xform, frame, timestamp, ticker, dragged;
 
         // Options
-        if (options.fullWidth) {
+        if (options.full_width) {
           options.dist = 0;
         }
 
@@ -83,14 +83,14 @@
             ' translateX(' + (dir * options.shift * tween * i) + 'px)' +
             ' translateZ(' + (options.dist * tween) + 'px)';
           el.style.zIndex = 0;
-          if (options.fullWidth) { tweenedOpacity = 1; }
+          if (options.full_width) { tweenedOpacity = 1; }
           else { tweenedOpacity = 1 - 0.2 * tween; }
           el.style.opacity = tweenedOpacity;
           half = count >> 1;
 
           for (i = 1; i <= half; ++i) {
             // right side
-            if (options.fullWidth) {
+            if (options.full_width) {
               zTranslation = options.dist;
               tweenedOpacity = (i === half && delta < 0) ? 1 - tween : 1;
             } else {
@@ -106,7 +106,7 @@
 
 
             // left side
-            if (options.fullWidth) {
+            if (options.full_width) {
               zTranslation = options.dist;
               tweenedOpacity = (i === half && delta > 0) ? 1 - tween : 1;
             } else {
@@ -128,7 +128,7 @@
             ' translateX(' + (dir * options.shift * tween) + 'px)' +
             ' translateZ(' + (options.dist * tween) + 'px)';
           el.style.zIndex = 0;
-          if (options.fullWidth) { tweenedOpacity = 1; }
+          if (options.full_width) { tweenedOpacity = 1; }
           else { tweenedOpacity = 1 - 0.2 * tween; }
           el.style.opacity = tweenedOpacity;
         }
@@ -151,7 +151,7 @@
 
           if (amplitude) {
             elapsed = Date.now() - timestamp;
-            delta = amplitude * Math.exp(-elapsed / options.timeConstant);
+            delta = amplitude * Math.exp(-elapsed / options.time_constant);
             if (delta > 2 || delta < -2) {
                 scroll(target - delta);
                 requestAnimationFrame(autoScroll);
