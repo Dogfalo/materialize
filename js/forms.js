@@ -270,7 +270,7 @@
 
 			if( $input.hasClass('autocomplete') ) {
 				var $array = $input.data('array'),
-						$inputDiv = $input.closest('.input-field'); // Div to append on
+					$inputDiv = $input.closest('.input-field'); // Div to append on
 
 				// Check if "data-array" isn't empty
 				if( $array !== '' ) {
@@ -291,13 +291,13 @@
 					// Perform search
 					$(document).on('keyup', $input, function () {
 						var $val = $input.val(),
-								$select = $('.autocomplete-content');
+							$select = $('.autocomplete-content');
 						// Check if the input isn't empty
 						if( $val != '' ) {
 							$select.children('li').each(function() {
 								var $li = $(this),
-										$html = $li.html(), // Get html in case it has image. Also to append span
-										$text = $li.text();
+									$html = $li.html(), // Get html in case it has image. Also to append span
+									$text = $li.text();
 
 								// Set input value
 								$li.click(function() {
