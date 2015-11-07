@@ -1,4 +1,5 @@
 (function ($) {
+  var $body = $('body');
   $(document).ready(function() {
 
     // Function to update labels of text fields
@@ -100,7 +101,7 @@
     var hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
       hiddenDiv = $('<div class="hiddendiv common"></div>');
-      $('body').append(hiddenDiv);
+      $body.append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
 
@@ -117,9 +118,6 @@
         hiddenDiv.css('overflow-wrap', "normal")
                  .css('white-space', "pre");
       }
-
-
-
 
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
@@ -146,13 +144,11 @@
       }
     });
 
-    $('body').on('keyup keydown autoresize', text_area_selector, function () {
+    $body.on('keyup keydown autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
-
     // File Input Path
-
     $(document).on('change', '.file-field input[type="file"]', function () {
       var file_field = $(this).closest('.file-field');
       var path_input = file_field.find('input.file-path');
@@ -164,7 +160,6 @@
       path_input.val(file_names.join(", "));
       path_input.trigger('change');
     });
-
 
     /****************
     *  Range Input  *
@@ -222,8 +217,6 @@
       }
 
       thumb.find('.value').html($(this).val());
-
-
     });
 
     $(document).on('mouseup touchend', range_wrapper, function() {
@@ -268,13 +261,11 @@
         thumb.removeClass('active');
       }
     });
-
   }); // End of $(document).ready
 
-
-
-
-  // Select Plugin
+  /*******************
+   *  Select Plugin  *
+   ******************/
   $.fn.material_select = function (callback) {
     $(this).each(function(){
       var $select = $(this);
@@ -323,12 +314,22 @@
         selectOptGroups.each(function() {
           selectOptions = $(this).children('option');
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
+
           selectOptions.each(function() {
             var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
+
+            // Add icons
+            if ($select.hasClass('icons')) {
+              var icon_url = $(this).data('icon');
+              var classes = $(this).attr('class');
+              if (!!icon_url) {
+                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
+                return true;
+              }
+            }
             options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
           });
         });
-
       } else {
         selectOptions.each(function () {
           // Add disabled attr if disabled
@@ -336,6 +337,15 @@
           if (multiple) {
             options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
           } else {
+            // Add icons
+            if ($select.hasClass('icons')) {
+              var icon_url = $(this).data('icon');
+              var classes = $(this).attr('class');
+              if (!!icon_url) {
+                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
+                return true;
+              }
+            }
             options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
           }
         });
@@ -383,7 +393,7 @@
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
-      $('body').append(options);
+      $body.append(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false, 'closeOnClick': false});
