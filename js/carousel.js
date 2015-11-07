@@ -14,7 +14,7 @@
 
       return this.each(function() {
 
-        var images, offset, center, pressed, dim,
+        var images, offset, center, pressed, dim, count,
             reference, amplitude, target, velocity,
             xform, frame, timestamp, ticker, dragged;
 
@@ -26,6 +26,12 @@
 
         // Initialize
         var view = $(this);
+        // Don't double initialize.
+        if (view.hasClass('initialized')) {
+          return true;
+        }
+        console.log(view);
+        view.addClass('initialized');
         pressed = false;
         offset = target = 0;
         images = [];
@@ -73,8 +79,13 @@
           delta = offset - center * dim;
           dir = (delta < 0) ? 1 : -1;
           tween = -dir * delta * 2 / dim;
-          alignment = 'translateX(' + (view[0].clientWidth - item_width) / 2 + 'px) ';
-          alignment += 'translateY(' + (view[0].clientHeight - item_width) / 2 + 'px)';
+
+          if (!options.full_width) {
+            alignment = 'translateX(' + (view[0].clientWidth - item_width) / 2 + 'px) ';
+            alignment += 'translateY(' + (view[0].clientHeight - item_width) / 2 + 'px)';
+          } else {
+            alignment = 'translateX(0)';
+          }
 
           // center
           el = images[wrap(center)];
