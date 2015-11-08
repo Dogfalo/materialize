@@ -1126,7 +1126,10 @@ $(document).ready(function(){
       $this.width('100%');
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
-          $tab_width = $this.find('li').first().outerWidth(),
+          $tab_width = [];
+          $this.find('li').each(function() {
+          	$tab_width.push($(this).outerWidth());
+          });
           $index = 0;
 
       // If the location.hash matches one of the links, use that as the active tab.
@@ -1149,21 +1152,26 @@ $(document).ready(function(){
       $content = $($active[0].hash);
 
       // append indicator then set indicator width to tab width
-      $this.append('<div class="indicator"></div>');
+      if($this.find('.indicator').length < 1) {
+      	$this.append('<div class="indicator"></div>');
+      }
       var $indicator = $this.find('.indicator');
       if ($this.is(":visible")) {
-        $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-        $indicator.css({"left": $index * $tab_width});
+        $indicator.css({"right": $tabs_width - ($active.position().left + $active.width())});
+        $indicator.css({"left": $active.position().left});
       }
       $(window).resize(function () {
         $tabs_width = $this.width();
-        $tab_width = $this.find('li').first().outerWidth();
+        $tab_width = [];
+        $this.find('li').each(function() {
+          $tab_width.push($(this).outerWidth());
+        });
         if ($index < 0) {
           $index = 0;
         }
         if ($tab_width !== 0 && $tabs_width !== 0) {
-          $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-          $indicator.css({"left": $index * $tab_width});
+          $indicator.css({"right": $tabs_width - ($active.position().left + $active.width())});
+          $indicator.css({"left": $active.position().left});
         }
       });
 
@@ -1179,10 +1187,6 @@ $(document).ready(function(){
           e.preventDefault();
           return;
         }
-
-        $tabs_width = $this.width();
-        $tab_width = $this.find('li').first().outerWidth();
-
         // Make the old tab inactive.
         $active.removeClass('active');
         $content.hide();
@@ -1204,15 +1208,21 @@ $(document).ready(function(){
 
         $content.show();
 
+        $tabs_width = $this.width();
+        $tab_width = [];
+        $this.find('li').each(function() {
+          $tab_width.push($(this).outerWidth());
+        });
+
         // Update indicator
         if (($index - $prev_index) >= 0) {
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+          $indicator.velocity({"right": $tabs_width - ($active.position().left + $active.width())}, { duration: 300, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"left": $active.position().left}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
 
         }
         else {
-          $indicator.velocity({"left": $index * $tab_width}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+          $indicator.velocity({"left": $active.position().left}, { duration: 300, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"right": $tabs_width - ($active.position().left + $active.width())}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
         }
 
         // Prevent the anchor's default click action
