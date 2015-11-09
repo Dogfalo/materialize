@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Helpers - Materialize</title>
+    <title>Breadcrumbs - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -34,7 +34,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Helpers</a></div>
+          <div class="nav-wrapper"><a class="page-title">Breadcrumbs</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
@@ -51,12 +51,12 @@
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">CSS</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
                   <li><a href="grid.html">Grid</a></li>
-                  <li class="active"><a href="helpers.html">Helpers</a></li>
+                  <li><a href="helpers.html">Helpers</a></li>
                   <li><a href="media-css.html">Media</a></li>
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
@@ -65,12 +65,12 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Components</a>
+            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
-                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+                  <li class="active"><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
@@ -113,147 +113,41 @@
 
     <div class="col s12 m9 l10">
 
-      <!--  Valign Section-->
-      <div id="valign" class="section scrollspy">
-        <h2 class="header">Alignment</h2>
-        <p class="caption">We have easy to use classes to help you align your content.</p>
-
-        <h5 class="light">Vertical Align</h5>
-        <p>You can easily vertically center things by adding the class <code class="language-markup">valign-wrapper</code> to the container holding the items you want to vertically align.</p>
-        <div class="valign-demo valign-wrapper">
-          <h5 class="valign center" style="width: 100%;">This should be vertically aligned</h5>
-        </div>
-        <pre><code class="language-markup">
-&lt;div class="valign-wrapper">
-  &lt;h5 class="valign">This should be vertically aligned&lt;/h5>
-&lt;/div>
-        </code></pre><br>
-
-        <h5 class="light">Text Align</h5>
-        <p>These classes are for horizontally aligning content. We have <code class="language-markup">.left-align</code>, <code class="language-markup">.right-align</code> and <code class="language-markup">.center-align</code></p>
-        <div class="talign-demo">
-          <br>
-          <h5 class="left-align">This should be left aligned</h5>
-        </div>
-        <br>
-        <div class="talign-demo">
-          <br>
-          <h5 class="right-align">This should be right aligned</h5>
-        </div>
-        <br>
-        <div class="talign-demo">
-          <br>
-          <h5 class="center-align">This should be center aligned</h5>
-        </div>
-        <pre><code class="language-markup">
-  &lt;div>
-    &lt;h5 class="left-align">This should be left aligned&lt;/h5>
-  &lt;/div>
-  &lt;div>
-    &lt;h5 class="right-align">This should be right aligned&lt;/h5>
-  &lt;/div>
-  &lt;div>
-    &lt;h5 class="center-align">This should be center aligned&lt;/h5>
-  &lt;/div>
-        </code></pre><br>
-
-        <h5 class="light">Quick Floats</h5>
-        <p>Quickly float things by adding the class <code class="language-markup">left</code> or <code class="language-markup">right</code> to the element. <code class="language-markup">!important</code> is used to avoid specificity issues.</p>
-        <pre><code class="language-markup">
-&lt;div class="left">...&lt;/div>
-&lt;div class="right">...&lt;/div>
-        </code></pre><br>
-
-      </div><!--  End Valign Section  -->
-
-      <!--  Hiding Section-->
-      <div id="hiding" class="section scrollspy">
-        <h2 class="header">Hiding Content</h2>
-        <p>We provide easy to use classes to hide content on specific screen sizes. </p>
-        <table class="striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Screen Range</th>
-            </tr>
-          </thead>
-            <tbody>
-            <tr>
-              <td><code class="language-markup"><strong>.hide</strong></code></td>
-              <td>Hidden for all Devices</td>
-            </tr>
-            <tr>
-              <td><code class="language-markup"><strong>.hide-on-small-only</strong></code></td>
-              <td>Hidden for Mobile Only</td>
-            </tr>
-            <tr>
-              <td><code class="language-markup"><strong>.hide-on-med-only</strong></code></td>
-              <td>Hidden for Tablet Only</td>
-            </tr>
-            <tr>
-              <td><code class="language-markup"><strong>.hide-on-med-and-down</strong></code></td>
-              <td>Hidden for Tablet and Below</td>
-            </tr>
-            <tr>
-              <td><code class="language-markup"><strong>.hide-on-med-and-up</strong></code></td>
-              <td>Hidden for Tablet and Above</td>
-            </tr>
-            <tr>
-              <td><code class="language-markup"><strong>.hide-on-large-only</strong></code></td>
-              <td>Hidden for Desktop Only</td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-        <h5 class="light">Usage</h5>
-        <pre><code class="language-markup">
-  &lt;div class="hide-on-small-only">&lt;/div>
-        </code></pre><br>
-
-      </div><!--  End Hiding Section  -->
-
-
-
-      <!--  Formatting Section-->
-      <div id="formatting" class="section scrollspy">
-        <h2 class="header">Formatting</h2>
-        <p>These classes help format various content on your site.</p>
-
-        <h5 class="light">Truncation</h5>
-        <p>To truncate long lines of text in an ellipsis, add the class <code class="language-markup">truncate</code> to the tag which contains the text. See an example below of a header being truncated inside a card.</p>
+      <!--  Collections Section  -->
+      <div id="basic" class="section scrollspy">
 
         <div class="row">
-          <div class="col s6 offset-s3 m6 offset-m3">
-            <div class="card-panel">
-              <h4 class="truncate">This is an extremely long title that will be truncated</h4>
-            </div>
+          <div class="col s12">
+            <p class="caption">Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content. </p>
+            <h2 class="header">Basic</h2>
+
+            <nav>
+              <div class="nav-wrapper">
+                <div class="col s12">
+                  <a href="#!" class="breadcrumb">First</a>
+                  <a href="#!" class="breadcrumb">Second</a>
+                  <a href="#!" class="breadcrumb">Third</a>
+                </div>
+              </div>
+            </nav>
+
+            <br><br>
+            <pre><code class="language-markup">
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;div class="col s12">
+        &lt;a href="#!" class="breadcrumb">First&lt;/a>
+        &lt;a href="#!" class="breadcrumb">Second&lt;/a>
+        &lt;a href="#!" class="breadcrumb">Third&lt;/a>
+      &lt;/div>
+    &lt;/div>
+  &lt;/nav>
+            </code></pre>
+            <br>
           </div>
         </div>
-
-        <pre><code class="language-markup">
-  &lt;h4 class="truncate">This is an extremely long title that will be truncated&lt;/h4>
-        </code></pre><br>
-
-        <h5 class="light">Hover</h5>
-        <p>The <code class="language-markup">hoverable</code> is a hover class that adds an animation for box shadow as seen below. It can be used on most elements, but meant for use on cards.</p>
-        <div class="card hoverable small">
-          <div class="card-image">
-            <img src="images/sample-1.jpg">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-
-        <pre><code class="language-markup">
-  &lt;div class="card-panel hoverable"> Hoverable Card Panel&lt;/div>
-        </code></pre>
-
-      </div><!--  End Formatting Section  -->
+      </div>
+      <!-- End collections -->
 
 
     </div>
@@ -266,9 +160,7 @@
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#valign">Alignment</a></li>
-            <li><a href="#hiding">Hiding Content</a></li>
-            <li><a href="#formatting">Formatting</a></li>
+            <li><a href="#basic">Basic</a></li>
           </ul>
         </div>
       </div>
@@ -277,12 +169,13 @@
   </div>
 </div>
 
+
     </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">
             <h5 class="white-text">Help Materialize Grow</h5>
-            <p class="grey-text text-lighten-4">We hope you have enjoyed using Materialize! If you feel Materialize has helped you out and want to support the team, send us over a donation! Any amount would help support and continue development on this project and is greatly appreciated.</p>
+            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
             <form id="paypal-donate" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----

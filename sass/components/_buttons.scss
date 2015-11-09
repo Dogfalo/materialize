@@ -102,6 +102,28 @@ button.btn-floating {
 
 // Fixed Action Button
 .fixed-action-btn {
+  &.active {
+    ul {
+     visibility: visible;
+    }
+  }
+  &.horizontal {
+    padding: 0 0 0 15px;
+    ul {
+      text-align: right;
+      right: 64px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+      left: initial;
+      width: 500px; /*width 100% only goes to width of button container */
+
+      li {
+        display: inline-block;
+        margin: 15px 15px 0 0;
+      }
+    }
+  }
   position: fixed;
   right: 23px;
   bottom: 23px;
@@ -116,6 +138,7 @@ button.btn-floating {
     position: absolute;
     bottom: 64px;
     margin: 0;
+    visibility: hidden;
 
     li {
       margin-bottom: 15px;
