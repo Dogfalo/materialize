@@ -11,8 +11,8 @@
   "dependencies": {},
   "engine": "node >= 0.10",
   "devDependencies": {
+    "autoprefixer": "^6.1.0",
     "grunt": "^0.4.5",
-    "grunt-autoprefixer": "^3.0.3",
     "grunt-banner": "^0.6.0",
     "grunt-browser-sync": "^2.1.1",
     "grunt-concurrent": "^2.0.4",
@@ -27,6 +27,7 @@
     "grunt-contrib-uglify": "0.10.x",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-notify": "^0.4.1",
+    "grunt-postcss": "^0.7.1",
     "grunt-remove-logging": "^0.2.0",
     "grunt-rename": "^0.1.4",
     "grunt-sass": "^1.1.0",

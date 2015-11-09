@@ -52,26 +52,26 @@ module.exports = function(grunt) {
       }
     },
 
-    // Autoprefixer
-    autoprefixer: {
+    // PostCss Autoprefixer
+    postcss: {
       options: {
-        browsers: ['last 2 versions', 'ie >= 10']
+        processors: [
+          require('autoprefixer')({
+            browsers: ['last 2 versions', 'ie >= 10']
+          })
+        ]
       },
       expended: {
-        src: 'dist/css/materialize.css',
-        dest: 'dist/css/materialize.css'
+        src: 'dist/css/materialize.css'
       },
       min: {
-        src: 'dist/css/materialize.min.css',
-        dest: 'dist/css/materialize.min.css'
+        src: 'dist/css/materialize.min.css'
       },
       gh: {
-        src: 'css/ghpages-materialize.css',
-        dest: 'css/ghpages-materialize.css'
+        src: 'css/ghpages-materialize.css'
       },
       bin: {
-        src: 'bin/materialize.css',
-        dest: 'bin/materialize.css'
+        src: 'bin/materialize.css'
       }
     },
 
@@ -580,7 +580,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-testem');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-postcss');
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -588,8 +588,8 @@ module.exports = function(grunt) {
       'copy',
       'sass:expanded',
       'sass:min',
-      'autoprefixer:expended',
-      'autoprefixer:min',
+      'postcss:expended',
+      'postcss:min',
       'concat:dist',
       'uglify:dist',
       'uglify:extras',
@@ -607,7 +607,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
-  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'autoprefixer:gh', 'autoprefixer:bin', 'notify:sass_compile']);
+  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);
