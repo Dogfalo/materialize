@@ -28,8 +28,7 @@
         }
         else {
           menu_id.addClass('right-aligned') // Change text-alignment to right
-            .css('transform', 'translateX(100%)')
-            .css('left', '');
+            .css('transform', 'translateX(100%)');
           dragTarget.css({'right': 0}); // Add Touch Area
         }
 
@@ -182,7 +181,6 @@
                 rightPos = 0;
               }
 
-
               menu_id.css('transform', 'translateX(' + rightPos + 'px)');
             }
 
@@ -263,7 +261,6 @@
                 menu_id.velocity({'translateX': [0, '-100%']}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                console.log('here');
                 dragTarget.css({width: '50%', right: '', left: 0});
                 menu_id.velocity({'translateX': [0, '100%']}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
