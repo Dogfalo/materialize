@@ -165,6 +165,11 @@ module.exports = function(grunt) {
         files: {
           'bin/materialize.js': ['temp/js/materialize.js']
         }
+      },
+      extras: {
+        files: {
+          'extras/noUiSlider/nouislider.min.js': ['extras/noUiSlider/nouislider.js']
+        }
       }
     },
 
@@ -313,7 +318,8 @@ module.exports = function(grunt) {
           "scrollspy.html": "jade/scrollspy.jade",
           "transitions.html": "jade/transitions.jade",
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
-          "pagination.html": "jade/pagination.jade"
+          "pagination.html": "jade/pagination.jade",
+          "breadcrumbs.html": "jade/breadcrumbs.jade"
 
 
         }
@@ -452,7 +458,7 @@ module.exports = function(grunt) {
             linebreak: true
           },
           files: {
-            src: [ 'dist/css/*.css', 'dist/js/*.js']
+            src: [ 'extras/**/*','dist/css/*.css', 'dist/js/*.js']
           }
         }
       },
@@ -550,6 +556,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-remove-logging");
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-testem');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -559,6 +566,7 @@ module.exports = function(grunt) {
       'sass:min',
       'concat:dist',
       'uglify:dist',
+      'uglify:extras',
       'usebanner:release',
       'compress:main',
       'compress:src',

@@ -17,17 +17,22 @@
     text-align: center;
     line-height: 48px;
     height: 48px;
-    padding: 0 20px;
+    padding: 0;
     margin: 0;
     text-transform: uppercase;
+    text-overflow: ellipsis;
+    overflow: hidden;
     letter-spacing: .8px;
     width: 15%;
+    min-width: 80px;
 
     a {
       color: $tabs-text-color;
       display: block;
       width: 100%;
       height: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
       @include transition( color .28s ease);
       &:hover {
         color: lighten($tabs-text-color, 20%);
@@ -48,5 +53,22 @@
   }
 }
 
-.tabs .tab { padding: 0; }
+.hide-tab-scrollbar {
+  position: relative;
+  height: 48px;
+  overflow: hidden;
 
+  .tabs {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
+// Hacky way to find scrollbar width or height.
+.scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+}

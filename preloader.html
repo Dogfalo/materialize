@@ -41,6 +41,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -64,6 +70,7 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
@@ -106,7 +113,6 @@
 
     <div class="col s12 m9 l10">
       <p class="caption">If you have content that will take a long time to load, you should give the user feedback. For this reason we provide a number activity + progress indicators.</p>
-
       <div id="linear" class="section scrollspy">
         <h2 class="header">Linear</h2>
         <p>There are a couple different types of linear progress bars.</p>
@@ -143,7 +149,8 @@
       <!-- Preloader Section-->
       <div id="circular" class="section scrollspy">
         <h2 class="header">Circular</h2>
-        <p>There are 4 colors that are built in. You can add the classes <code class="language-markup">spinner-red-only</code>, <code class="language-markup">spinner-blue-only</code>, <code class="language-markup">spinner-yellow-only</code> and <code class="language-markup">spinner-green-only</code>. You can also leave this class as just <code class="language-markup">spinner-layer</code> and it will be set to the <code class="language-css">$spinner-default-color</code> variable in our variables.scss file.</p>
+        <p>There are 4 colors and 3 sizes of circular spinners. The spinner should be nested in a <code class="language-markup">preloader-wrapper</code> div. The default size is medium, but you can add the classes <code class="language-markup">big</code> or <code class="language-markup">small</code> to adjust the size accordingly. You can add the classes <code class="language-markup">spinner-red-only</code>, <code class="language-markup">spinner-blue-only</code>, <code class="language-markup">spinner-yellow-only</code> and <code class="language-markup">spinner-green-only</code>. You can also leave this class as just <code class="language-markup">spinner-layer</code> and it will be set to the <code class="language-css">$spinner-default-color</code> variable in our variables.scss file.</p>
+        <h4>Colors</h4>
         <div class="row">
           <div class="col s12 m4 center">
             <div class="preloader-wrapper big active">
@@ -202,6 +209,30 @@
       &lt;/div>
     &lt;/div>
   &lt;/div>
+
+  &lt;div class=&quot;preloader-wrapper active&quot;&gt;
+    &lt;div class=&quot;spinner-layer spinner-red-only&quot;&gt;
+      &lt;div class=&quot;circle-clipper left&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;gap-patch&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;circle-clipper right&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;preloader-wrapper small active&quot;&gt;
+    &lt;div class=&quot;spinner-layer spinner-green-only&quot;&gt;
+      &lt;div class=&quot;circle-clipper left&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;gap-patch&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;circle-clipper right&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
         </code></pre>
       </div>
 
@@ -452,8 +483,10 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
