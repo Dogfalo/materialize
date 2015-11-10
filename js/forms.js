@@ -1,5 +1,4 @@
 (function ($) {
-  var $body = $('body');
   $(document).ready(function() {
 
     // Function to update labels of text fields
@@ -101,7 +100,7 @@
     var hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
       hiddenDiv = $('<div class="hiddendiv common"></div>');
-      $body.append(hiddenDiv);
+      $('body').append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
 
@@ -144,7 +143,7 @@
       }
     });
 
-    $body.on('keyup keydown autoresize', text_area_selector, function () {
+    $('body').on('keyup keydown autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
@@ -393,7 +392,7 @@
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
-      $body.append(options);
+      $('body').append(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false, 'closeOnClick': false});
