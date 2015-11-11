@@ -6,30 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-   <title>Forms - Materialize</title>
-    <!-- Favicons -->
+    <title>Forms - Materialize</title>
+    <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <!--  Android 5 Chrome Color -->
+    <!--  Android 5 Chrome Color-->
     <meta name="theme-color" content="#EE6E73">
     <!-- CSS-->
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script>
-			window.liveSettings = {
-				api_key: "a0b49b34b93844c38eaee15690d86413",
-				picker: "bottom-right",
-				detectlang: true,
-				dynamic: true,
-				autocollect: true
-			};
-		</script>
-		<script src="//cdn.transifex.com/live.js"></script>
-		<link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
+    <script>
+      window.liveSettings = {
+        api_key: "a0b49b34b93844c38eaee15690d86413",
+        picker: "bottom-right",
+        detectlang: true,
+        dynamic: true,
+        autocollect: true
+      };
+    </script>
+    <script src="//cdn.transifex.com/live.js"></script>
+    <link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -303,8 +303,9 @@
      color: #000;
    }
         </code></pre>
-
       </div>
+
+
       <!-- Textarea Section -->
       <div id="textarea" class="section scrollspy">
         <h2 class="header">Textarea</h2>
@@ -369,8 +370,6 @@
   &lt;/div>
         </code></pre>
       </div>
-
-			<!-- Select Section -->
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
         <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
@@ -399,9 +398,24 @@
                 </select>
                 <label>Materialize Multiple Select</label>
               </div>
+							<div class="col s12">
+								<br>
+								<p>You can add the property <code class="language-markup">multiple</code> and the class <code class="language-markup">icons</code> to get the multiple select with images and select several options.</p>
+								<p>To properly align the image and to not interfere with the checkbox the image is automatically placed on the right. Also not that adding the class <code class="language-markup">left</code> to an image will make it go over the checkbox</p>
+							</div>
+							<div class="input-field col s12 m6">
+								<select multiple class="icons">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="1" data-icon="images/sample-1.jpg" class="circle">Option 1</option>
+									<option value="2" data-icon="images/sample-1.jpg" class="circle">Option 2</option>
+									<option value="3" data-icon="images/sample-1.jpg" class="circle">Option 3</option>
+								</select>
+								<label>Materialize Multiple Select with icons</label>
+							</div>
               <div class="col s12">
                 <br>
                 <p>We also support optgroups in our selects.</p>
+								<p>Images in optgroups are also support simply add the class <code class="language-markup">icons</code>.</p>
               </div>
               <div class="input-field col s12 m6">
                 <select>
@@ -416,6 +430,19 @@
                 </select>
                 <label>Optgroups</label>
               </div>
+							<div class="input-field col s12 m6">
+								<select class="icons">
+									<optgroup label="team 1" data-icon="images/sample-1.jpg" class="circle">
+										<option value="1" data-icon="images/sample-1.jpg" class="circle left">Option 1</option>
+										<option value="2" data-icon="images/sample-1.jpg" class="circle left">Option 2</option>
+									</optgroup>
+									<optgroup label="team 2" data-icon="images/sample-1.jpg" class="circle right">
+										<option value="3" data-icon="images/sample-1.jpg" class="circle right">Option 3</option>
+										<option value="4" data-icon="images/sample-1.jpg" class="circle right">Option 4</option>
+									</optgroup>
+								</select>
+								<label>Optgroups</label>
+							</div>
               <div class="col s12">
                 <br>
                 <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
@@ -430,19 +457,26 @@
                 </select>
               </div>
               <div class="col s12">
-								<br>
-								<p>You can add the class <code class="language-markup">icons</code> to get icons with your options</p>
-								<p>In the option you have to add two data attributes <code class="language-markup">data-icon</code> and <code class="language-markup">data-icon-classes</code></p>
-								<p>The class <code class="language-markup">left</code> or <code class="language-markup">right</code> is required to align the image and text</p>
+                <br>
+                <p>You can add the class <code class="language-markup">icons</code> to get icons with your options. In the option you add the image source with the <code class="language-markup">data-icon</code> attribute. You can add the <code class="language-markup">left</code> or <code class="language-markup">right</code> class to align your icon. You can also add <code class="language-markup">circle</code> to your icon.</p>
               </div>
               <div class="input-field col s12 m6">
-								<label>Images in select</label>
-								<select class="icons">
-									<option></option>
-									<option value="" data-icon="images/sample-1.jpg" data-icon-classes="right">example</option>
-									<option value="" data-icon="images/office.jpg" data-icon-classes="left circle">example 1</option>
-									<option value="">example 2</option>
-								</select>
+                <select class="icons">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" data-icon="images/sample-1.jpg" class="circle">example 1</option>
+                  <option value="" data-icon="images/office.jpg" class="circle">example 2</option>
+                  <option value="" data-icon="images/yuna.jpg" class="circle">example 1</option>
+                </select>
+                <label>Images in select</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <select class="icons">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
+                  <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
+                  <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+                </select>
+                <label>Images in select</label>
               </div>
             </div>
           </form>
@@ -490,13 +524,24 @@
     &lt;option value="3">Option 3&lt;/option>
   &lt;/select>
 
-	&lt;label>Icons select&lt;/label>
-	&lt;select class="icons">
-		&lt;option>&lt;/option>
-		&lt;option value="" data-icon="images/sample-1.jpg" data-icon-classes="right">example&lt;/option>
-		&lt;option value="" data-icon="images/office.jpg" data-icon-classes="left circle">example 1&lt;/option>
-		&lt;option value="">example 2&lt;/option>
-	&lt;/select>
+  &lt;div class="input-field col s12 m6">
+    &lt;select class="icons">
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="" data-icon="images/sample-1.jpg" class="circle">example 1&lt;/option>
+      &lt;option value="" data-icon="images/office.jpg" class="circle">example 2&lt;/option>
+      &lt;option value="" data-icon="images/yuna.jpg" class="circle">example 1&lt;/option>
+    &lt;/select>
+    &lt;label>Images in select&lt;/label>
+  &lt;/div>
+  &lt;div class="input-field col s12 m6">
+    &lt;select class="icons">
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="" data-icon="images/sample-1.jpg" class="left circle">example 1&lt;/option>
+      &lt;option value="" data-icon="images/office.jpg" class="left circle">example 2&lt;/option>
+      &lt;option value="" data-icon="images/yuna.jpg" class="left circle">example 3&lt;/option>
+    &lt;/select>
+    &lt;label>Images in select&lt;/label>
+  &lt;/div>
             </code></pre>
           </div>
           <div class="col s12">
@@ -918,8 +963,7 @@
 </div>
 
 
-    </main>
-		<footer class="page-footer">
+    </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">
@@ -932,6 +976,7 @@
 <button class="btn waves-effect waves-light red lighten-3" type="submit" name="action" alt="PayPal - The safer, easier way to pay online!">Donate Now
 </button>
 </form>
+
           </div>
           <div class="col l4 s12">
             <h5 class="white-text">Join the Discussion</h5>
@@ -968,10 +1013,10 @@
     <!-- Twitter Button -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-    <!-- Google Plus Button -->
+    <!-- Google Plus Button-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <!--  Google Analytics -->
+    <!--  Google Analytics  -->
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
