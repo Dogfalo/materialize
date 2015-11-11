@@ -112,21 +112,21 @@
         accordionOpen($panel_headers.filter('.active').first());
       }
       else { // Handle Expandables
-        $panel_headers.each(function () {
-          // Add click handler to only direct collapsible header children
-          $(this).on('click.collapse', function (e) {
-            var element = $(e.target);
-            if (isChildrenOfPanelHeader(element)) {
-              element = getPanelHeader(element);
-            }
-            element.toggleClass('active');
-            expandableOpen(element);
-          });
-          // Open any bodies that have the active class
-          if ($(this).hasClass('active')) {
-            expandableOpen($(this));
+        // Add click handler to only direct collapsible header children
+        $this.on('click', '> li > .collapsible-header', function(e) {
+          var $header = $(this),
+          element = $(e.target);
+
+          if (isChildrenOfPanelHeader(element)) {
+            element = getPanelHeader(element);
           }
 
+          element.toggleClass('active');
+          expandableOpen(element);
+
+          if ($header.hasClass('active')) {
+            expandableOpen($header);
+          }
         });
       }
 
