@@ -682,11 +682,20 @@ select:disabled {
 
 // Icons
 .select-dropdown li {
+  img {
+    height: $dropdown-item-height - 10;
+    width: $dropdown-item-height - 10;
+    margin: 5px 15px;
+    float: right;
+  }
+}
+
+.multiple-select-dropdown li {
 	img {
-		height: 52px;
-		width: 52px;
-		padding: 5px;
-		margin: 0 15px;
+		height: $dropdown-item-height - 10;
+		width: $dropdown-item-height - 10;
+		margin: -2.5rem 5px 5px 5px;
+		float: right;
 	}
 }
 
@@ -695,11 +704,11 @@ select:disabled {
   border-top: 1px solid $dropdown-hover-bg-color;
 
   &.selected > span {
-    color: rgba(0,0,0, .7);
+    color: rgba(0, 0, 0, .7);
   }
 
   & > span {
-    color: rgba(0,0,0, .4);
+    color: rgba(0, 0, 0, .4);
   }
 
   & ~ li:not(.optgroup) {

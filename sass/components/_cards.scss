@@ -31,9 +31,11 @@
     position: relative;
 
     .card-image {
+      max-height: 60%;
       overflow: hidden;
     }
     .card-content {
+      max-height: 40%;
       overflow: hidden;
     }
     .card-action {
@@ -41,41 +43,21 @@
       bottom: 0;
       left: 0;
       right: 0;
+      z-index: 1;
+      background-color: inherit;
     }
   }
 
   &.small {
     height: 300px;
-
-    .card-image {
-      height: 150px;
-    }
-    .card-content {
-      height: 150px;
-    }
-
   }
 
   &.medium {
     height: 400px;
-
-    .card-image {
-      height: 250px;
-    }
-    .card-content {
-      height: 150px;
-    }
   }
 
   &.large {
     height: 500px;
-
-    .card-image {
-      height: 330px;
-    }
-    .card-content {
-      height: 170px;
-    }
   }
 
 

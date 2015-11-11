@@ -21,6 +21,7 @@
         }
       }
 
+      $('.card-reveal').closest('.card').css('overflow', 'hidden');
 
     });
 

@@ -15,6 +15,7 @@
     clear: both;
     color: $off-black;
     cursor: pointer;
+    min-height: $dropdown-item-height;
     line-height: 1.5rem;
     width: 100%;
     text-align: left;
@@ -28,11 +29,17 @@
       background-color: darken($dropdown-hover-bg-color, 5%);
     }
 
+    &.divider {
+      min-height: 0;
+      height: 1px;
+    }
+
     & > a, & > span {
-      font-size: 1.2rem;
+      font-size: 16px;
       color: $dropdown-color;
       display: block;
-      padding: 1rem 1rem;
+      line-height: 22px;
+      padding: (($dropdown-item-height - 22) / 2) 16px;
     }
 
     & > span > label {

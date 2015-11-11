@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.97.1
+### Current Version : v0.97.2
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -12,24 +12,21 @@ Materialize, a CSS Framework based on material design
 ## Supported Browsers:
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
-
 ## Changelog
-- Nov 2, 2015
- - Updated documentation for image in select
- - Added documentation for autocomplete
- - Added example code of autocomplete
-- Oct 31, 2015
- - Adding autocomplete
- - Added images
- - Added styling
- - Todo: Fix bug when comparing strings, add styling for matching characters
-- Oct 23, 2015
-  - Added images to select
-  - Edited the following:
-  	- HTML forms.html lines: 433 - 446 (example result), 492 - 499 (example code);
-  	- JavaScript form.js lines: 285 - 301 (gathering icons), 337 (store position of li), 343 - 354, 357 - 370, 377 - 391 (add icons in html);
-  	- CSS _form.scss lines: 286 - 291 (style images)
-
+- Nov 11, 2015
+ - Added support for images in optgroups
+ - Added support for images in multiple
+ 	- Todo need to tweak styling for images in multiple
+- v0.97.2 (Nov 8, 2015)
+  - Image support inside select
+  - Optgroup supported in select
+  - Multiple select added
+  - Card styling fixes
+  - Breadcrumbs added
+  - Scrollable tabs
+  - Tooltips and dropdowns position themselves more intelligently inside the window
+  - FAB menu is click-toggleable
+  - Horizontal FAB support added
 - v0.97.1 (Sep 13, 2015)
   - Added new range slider with uses noUiSlider to provide powerful options
   - Added CSS for Chips
