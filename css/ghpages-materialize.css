@@ -7021,6 +7021,12 @@ select:disabled {
   margin: 5px 15px;
   float: right; }
 
+.multiple-select-dropdown li img {
+  height: 40px;
+  width: 40px;
+  margin: -2.5rem 5px 5px 5px;
+  float: right; }
+
 .select-dropdown li.optgroup {
   border-top: 1px solid #eee; }
   .select-dropdown li.optgroup.selected > span {

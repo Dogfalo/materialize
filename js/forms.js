@@ -334,6 +334,15 @@
           // Add disabled attr if disabled
           var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
           if (multiple) {
+                        // Add icons
+                        if ($select.hasClass('icons')) {
+                            var icon_url = $(this).data('icon');
+                            var classes = $(this).attr('class');
+                            if (!!icon_url) {
+                                options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span><img src="' + icon_url + '" class="' + classes + '"></li>'));
+                                return true;
+                            }
+                        }
             options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
           } else {
             // Add icons
