@@ -1,21 +1,18 @@
 (function ($) {
   $(document).ready(function() {
 
-    // Function to update labels of text fields
-    Materialize.updateTextFields = function() {
-      var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-      $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label').addClass('active');
-        }
-        else {
-          $(this).siblings('label, i').removeClass('active');
-        }
-      });
-    };
-
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
+
+    // Add active if input element has been pre-populated on document ready
+    $(input_selector).each(function(index, element) {
+      if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
+        $(this).siblings('label, i').addClass('active');
+      }
+      else {
+        $(this).siblings('label, i').removeClass('active');
+      }
+    });
 
     // Handle HTML5 autofocus
     $('input[autofocus]').siblings('label, i').addClass('active');
@@ -26,11 +23,6 @@
         $(this).siblings('label').addClass('active');
       }
       validate_field($(this));
-    });
-
-    // Add active if input element has been pre-populated on document ready
-    $(document).ready(function() {
-      Materialize.updateTextFields();
     });
 
     // HTML DOM FORM RESET handling
