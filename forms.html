@@ -398,24 +398,9 @@
                 </select>
                 <label>Materialize Multiple Select</label>
               </div>
-							<div class="col s12">
-								<br>
-								<p>You can add the property <code class="language-markup">multiple</code> and the class <code class="language-markup">icons</code> to get the multiple select with images and select several options.</p>
-								<p>To properly align the image and to not interfere with the checkbox the image is automatically placed on the right. Also note that adding the class <code class="language-markup">left</code> to an image will make it go over the checkbox</p>
-							</div>
-							<div class="input-field col s12 m6">
-								<select multiple class="icons">
-									<option value="" disabled selected>Choose your option</option>
-									<option value="1" data-icon="images/sample-1.jpg" class="circle">Option 1</option>
-									<option value="2" data-icon="images/sample-1.jpg" class="circle">Option 2</option>
-									<option value="3" data-icon="images/sample-1.jpg" class="circle">Option 3</option>
-								</select>
-								<label>Materialize Multiple Select with icons</label>
-							</div>
               <div class="col s12">
                 <br>
                 <p>We also support optgroups in our selects.</p>
-								<p>Images in optgroups are also support simply add the class <code class="language-markup">icons</code>.</p>
               </div>
               <div class="input-field col s12 m6">
                 <select>
@@ -430,35 +415,9 @@
                 </select>
                 <label>Optgroups</label>
               </div>
-							<div class="input-field col s12 m6">
-								<select class="icons">
-									<optgroup label="team 1" data-icon="images/sample-1.jpg" class="circle">
-										<option value="1" data-icon="images/sample-1.jpg" class="circle left">Option 1</option>
-										<option value="2" data-icon="images/sample-1.jpg" class="circle left">Option 2</option>
-									</optgroup>
-									<optgroup label="team 2" data-icon="images/sample-1.jpg" class="circle right">
-										<option value="3" data-icon="images/sample-1.jpg" class="circle right">Option 3</option>
-										<option value="4" data-icon="images/sample-1.jpg" class="circle right">Option 4</option>
-									</optgroup>
-								</select>
-								<label>Optgroups</label>
-							</div>
               <div class="col s12">
                 <br>
-                <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
-              </div>
-              <div class="col s12 m6">
-                <label>Browser Select</label>
-                <select class="browser-default">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
-              </div>
-              <div class="col s12">
-                <br>
-                <p>You can add the class <code class="language-markup">icons</code> to get icons with your options. In the option you add the image source with the <code class="language-markup">data-icon</code> attribute. You can add the <code class="language-markup">left</code> or <code class="language-markup">right</code> class to align your icon. You can also add <code class="language-markup">circle</code> to your icon.</p>
+                <p>You can add icons to your options in any type of select. In the option you add the image source with the <code class="language-markup">data-icon</code> attribute. You can add the <code class="language-markup">left</code> or <code class="language-markup">right</code> class to align your icon. You can also add the <code class="language-markup">circle</code> class to your icon.</p>
               </div>
               <div class="input-field col s12 m6">
                 <select class="icons">
@@ -477,6 +436,19 @@
                   <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
                 </select>
                 <label>Images in select</label>
+              </div>
+              <div class="col s12">
+                <br>
+                <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
+              </div>
+              <div class="col s12 m6">
+                <label>Browser Select</label>
+                <select class="browser-default">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
               </div>
             </div>
           </form>
@@ -516,14 +488,6 @@
     &lt;label>Optgroups&lt;/label>
   &lt;/div>
 
-  &lt;label>Browser Select&lt;/label>
-  &lt;select class="browser-default">
-    &lt;option value="" disabled selected>Choose your option&lt;/option>
-    &lt;option value="1">Option 1&lt;/option>
-    &lt;option value="2">Option 2&lt;/option>
-    &lt;option value="3">Option 3&lt;/option>
-  &lt;/select>
-
   &lt;div class="input-field col s12 m6">
     &lt;select class="icons">
       &lt;option value="" disabled selected>Choose your option&lt;/option>
@@ -542,6 +506,14 @@
     &lt;/select>
     &lt;label>Images in select&lt;/label>
   &lt;/div>
+
+  &lt;label>Browser Select&lt;/label>
+  &lt;select class="browser-default">
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
             </code></pre>
           </div>
           <div class="col s12">

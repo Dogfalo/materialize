@@ -690,15 +690,6 @@ select:disabled {
   }
 }
 
-.multiple-select-dropdown li {
-	img {
-		height: $dropdown-item-height - 10;
-		width: $dropdown-item-height - 10;
-		margin: -2.5rem 5px 5px 5px;
-		float: right;
-	}
-}
-
 // Optgroup styles
 .select-dropdown li.optgroup {
   border-top: 1px solid $dropdown-hover-bg-color;

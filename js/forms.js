@@ -307,6 +307,36 @@
         label = selectOptions.first();
       }
 
+      // Function that renders and appends the option taking into
+      // account type and possible image icon.
+      var appendOptionWithIcon = function(select, option, type) {
+        // Add disabled attr if disabled
+        var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
+
+        // add icons
+        var icon_url = option.data('icon');
+        var classes = option.attr('class');
+        if (!!icon_url) {
+          var classString = '';
+          if (!!classes) classString = ' class="' + classes + '"';
+
+          // Check for multiple type.
+          if (type === 'multiple') {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          } else {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+          }
+          return true;
+        }
+
+        // Check for multiple type.
+        if (type === 'multiple') {
+          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+        } else {
+          options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+        }
+      };
+
       /* Create dropdown structure. */
       if (selectOptGroups.length) {
         // Check for optgroup
@@ -315,46 +345,17 @@
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
           selectOptions.each(function() {
-            var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
-
-            // Add icons
-            if ($select.hasClass('icons')) {
-              var icon_url = $(this).data('icon');
-              var classes = $(this).attr('class');
-              if (!!icon_url) {
-                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
-                return true;
-              }
-            }
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           });
         });
       } else {
         selectOptions.each(function () {
-          // Add disabled attr if disabled
           var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
           if (multiple) {
-                        // Add icons
-                        if ($select.hasClass('icons')) {
-                            var icon_url = $(this).data('icon');
-                            var classes = $(this).attr('class');
-                            if (!!icon_url) {
-                                options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span><img src="' + icon_url + '" class="' + classes + '"></li>'));
-                                return true;
-                            }
-                        }
-            options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this), 'multiple');
+
           } else {
-            // Add icons
-            if ($select.hasClass('icons')) {
-              var icon_url = $(this).data('icon');
-              var classes = $(this).attr('class');
-              if (!!icon_url) {
-                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
-                return true;
-              }
-            }
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           }
         });
       }
