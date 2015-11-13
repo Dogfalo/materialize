@@ -193,7 +193,7 @@ module.exports = function(grunt) {
           level: 6
         },
         files:[
-          {expand: true, cwd: 'font/', src: ['**/*'], dest: 'materialize-src/font/'},
+          {expand: true, cwd: 'fonts/', src: ['**/*'], dest: 'materialize-src/fonts/'},
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
