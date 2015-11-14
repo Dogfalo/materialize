@@ -695,11 +695,11 @@ select:disabled {
   border-top: 1px solid $dropdown-hover-bg-color;
 
   &.selected > span {
-    color: rgba(0,0,0, .7);
+    color: rgba(0, 0, 0, .7);
   }
 
   & > span {
-    color: rgba(0,0,0, .4);
+    color: rgba(0, 0, 0, .4);
   }
 
   & ~ li:not(.optgroup) {

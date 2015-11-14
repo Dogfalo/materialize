@@ -118,6 +118,8 @@
 
           <br>
         </div>
+
+        <!-- Grid Offsets -->
         <div id="grid-offsets" class="section scrollspy">
           <h2 class="header">Offsets</h2>
           <p>To offset, simply add <code class="language-markup">offset-s2</code> to the class where <code class="language-markup">s</code> signifies the screen class-prefix (s = small, m = medium, l = large) and the number after is the number of columns you want to offset by.</p>
@@ -127,8 +129,26 @@
           </div>
           <pre><code class="language-markup">
     &lt;div class="row">
-      &lt;div class="col s12 grid-example">&lt;span class="flow-text">This div is 12-columns wide on all screen sizes&lt;/span>&lt;/div>
-      &lt;div class="col s6 offset-s6 grid-example">&lt;span class="flow-text">6-columns (offset-by-6)&lt;/span>&lt;/div>
+      &lt;div class="col s12">&lt;span class="flow-text">This div is 12-columns wide on all screen sizes&lt;/span>&lt;/div>
+      &lt;div class="col s6 offset-s6">&lt;span class="flow-text">6-columns (offset-by-6)&lt;/span>&lt;/div>
+    &lt;/div>
+          </code></pre>
+        </div>
+
+        <br>
+
+        <!-- Grid push and pull -->
+        <div id="grid-push" class="section scrollspy">
+          <h2 class="header">Push and Pull</h2>
+          <p>You can easily change the order of your columns with push and pull. Simply add <code class="language-markup">push-s2</code> or <code class="language-markup">pull-s2</code> to the class where <code class="language-markup">s</code> signifies the screen class-prefix (s = small, m = medium, l = large) and the number after is the number of columns you want to push or pull by.</p>
+          <div class="row">
+            <div class="col s7 push-s5 grid-example"><span style="font-size: 14px;">This div is 7-columns wide on pushed to the right by 5-columns.</span></div>
+            <div class="col s5 pull-s7 grid-example"><span style="font-size: 14px;">5-columns wide pulled to the left by 7-columns.</span></div>
+          </div>
+          <pre><code class="language-markup">
+    &lt;div class="row">
+      &lt;div class="col s7 push-s5">&lt;span class="flow-text">This div is 7-columns wide on pushed to the right by 5-columns.&lt;/span>&lt;/div>
+      &lt;div class="col s5 pull-s7">&lt;span class="flow-text">5-columns wide pulled to the left by 7-columns.&lt;/span>&lt;/div>
     &lt;/div>
           </code></pre>
         </div>
@@ -447,6 +467,7 @@
             <li><a href="#grid-container">Container</a></li>
             <li><a href="#grid-intro">Introduction</a></li>
             <li><a href="#grid-offsets">Offsets</a></li>
+            <li><a href="#grid-push">Push and Pull</a></li>
             <li><a href="#grid-layouts">Creating Layouts</a></li>
             <li><a href="#grid-responsive">Responsive Layouts</a></li>
           </ul>
