@@ -186,9 +186,10 @@
 			
 		  });
 		});
-		options = options || {
-			throttle: 100
-		};
+		options = options || {};
+		options.throttle = options.throttle || 100;
+		options.activeClass = options.activeClass || 'active';
+		options.getActiveElement = options.getActiveElement || function(base){ return base; };
 
 		offset.top = options.offsetTop || 0;
 		offset.right = options.offsetRight || 0;
@@ -212,13 +213,13 @@
 
 		selector.on('scrollSpy:enter', function() {
 			visible = $.grep(visible, function(value) {
-	      return value.height() != 0;
-	    });
+		      	return value.height() != 0;
+		    });
 
 			var $this = $(this);
 
 			if (visible[0]) {
-				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
+				options.getActiveElement($('a[href=#' + visible[0].attr('id') + ']')).removeClass(options.activeClass);
 				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
 					visible.unshift($(this));
 				}
@@ -231,22 +232,22 @@
 			}
 
 
-			$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
+			options.getActiveElement($('a[href=#' + visible[0].attr('id') + ']')).addClass(options.activeClass);
 		});
 		selector.on('scrollSpy:exit', function() {
 			visible = $.grep(visible, function(value) {
-	      return value.height() != 0;
-	    });
+		    	return value.height() != 0;
+		    });
 
 			if (visible[0]) {
-				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
+				options.getActiveElement($('a[href=#' + visible[0].attr('id') + ']')).removeClass(options.activeClass);
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
-	        return value.attr('id') != $this.attr('id');
-	      });
-	      if (visible[0]) { // Check if empty
-					$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
-	      }
+			        return value.attr('id') != $this.attr('id');
+		    	});
+		    	if (visible[0]) { // Check if empty
+					options.getActiveElement($('a[href=#' + visible[0].attr('id') + ']')).addClass(options.activeClass);
+			    }
 			}
 		});
 
@@ -275,6 +276,8 @@
 											offsetRight : number -> offset from right. Default: 0
 											offsetBottom : number -> offset from bottom. Default: 0
 											offsetLeft : number -> offset from left. Default: 0
+											activeClass : string -> the class will be added to the element. Default: active
+											getActiveElement : function(base) -> return the element where add the class. Default: function(base){return base;}
 	 * @returns {jQuery}
 	 */
 	$.fn.scrollSpy = function(options) {
