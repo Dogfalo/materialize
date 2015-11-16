@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.97.2 (http://materializecss.com)
+ * Materialize v0.97.3 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -298,7 +298,7 @@ if ($) {
 else {
   Vel = Velocity;
 }
-;(function ($) {
+;  (function ($) {
   $.fn.collapsible = function(options) {
     var defaults = {
         accordion: undefined
@@ -395,38 +395,36 @@ else {
 
 
 
-      if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
-        // Add click handler to only direct collapsible header children
-        $panel_headers = $this.find('> li > .collapsible-header');
-        $panel_headers.on('click.collapse', function (e) {
-          var element = $(e.target);
+      // Add click handler to only direct collapsible header children
+      $this.on('click.collapse', '> li > .collapsible-header', function(e) {
+        var $header = $(this),
+            element = $(e.target);
 
-          if (isChildrenOfPanelHeader(element)) {
-            element = getPanelHeader(element);
-          }
+        if (isChildrenOfPanelHeader(element)) {
+          element = getPanelHeader(element);
+        }
 
-          element.toggleClass('active');
+        element.toggleClass('active');
+
+        if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
           accordionOpen(element);
-        });
-        // Open first active
+        } else { // Handle Expandables
+          expandableOpen(element);
+
+          if ($header.hasClass('active')) {
+            expandableOpen($header);
+          }
+        }
+      });
+
+      // Open first active
+      var $panel_headers = $this.find('> li > .collapsible-header');
+      if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
         accordionOpen($panel_headers.filter('.active').first());
       }
       else { // Handle Expandables
-        $panel_headers.each(function () {
-          // Add click handler to only direct collapsible header children
-          $(this).on('click.collapse', function (e) {
-            var element = $(e.target);
-            if (isChildrenOfPanelHeader(element)) {
-              element = getPanelHeader(element);
-            }
-            element.toggleClass('active');
-            expandableOpen(element);
-          });
-          // Open any bodies that have the active class
-          if ($(this).hasClass('active')) {
-            expandableOpen($(this));
-          }
-
+        $panel_headers.filter('.active').each(function() {
+          expandableOpen($(this));
         });
       }
 
@@ -511,17 +509,20 @@ else {
         activates.css('white-space', 'nowrap');
       }
 
-      // Below Origin
-      var verticalOffset = 0;
-      if (options.belowOrigin === true) {
-        verticalOffset = origin.height();
-      }
-
       // Offscreen detection
+      var windowHeight = window.innerHeight;
+      var originHeight = origin.innerHeight();
       var offsetLeft = origin.offset().left;
       var offsetTop = origin.offset().top - $(window).scrollTop();
       var currAlignment = options.alignment;
       var activatesLeft, gutterSpacing;
+
+      // Below Origin
+      var verticalOffset = 0;
+      if (options.belowOrigin === true) {
+        verticalOffset = originHeight;
+      }
+
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         // Dropdown goes past screen on right, force right alignment
         currAlignment = 'right';
@@ -531,11 +532,18 @@ else {
         currAlignment = 'left';
       }
       // Vertical bottom offscreen detection
-      if (offsetTop + activates.innerHeight() > window.innerHeight) {
-        if (!verticalOffset) {
-          verticalOffset += origin.innerHeight();
+      if (offsetTop + activates.innerHeight() > windowHeight) {
+        // If going upwards still goes offscreen, just crop height of dropdown.
+        if (offsetTop + originHeight - activates.innerHeight() < 0) {
+          var adjustedHeight = windowHeight - offsetTop - verticalOffset;
+          activates.css('max-height', adjustedHeight);
+        } else {
+          // Flow upwards.
+          if (!verticalOffset) {
+            verticalOffset += originHeight;
+          }
+          verticalOffset -= activates.innerHeight();
         }
-        verticalOffset -= activates.innerHeight();
       }
 
       // Handle edge alignment
@@ -575,6 +583,7 @@ else {
       isFocused = false;
       activates.fadeOut(options.outDuration);
       activates.removeClass('active');
+      activates.css('max-height', '');
       origin.removeClass('active');
     }
 
@@ -2578,7 +2587,6 @@ $(document).ready(function(){
 	};
 
 })(jQuery);;(function ($) {
-  var $body = $('body');
   $(document).ready(function() {
 
     // Function to update labels of text fields
@@ -2680,7 +2688,7 @@ $(document).ready(function(){
     var hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
       hiddenDiv = $('<div class="hiddendiv common"></div>');
-      $body.append(hiddenDiv);
+      $('body').append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
 
@@ -2723,7 +2731,7 @@ $(document).ready(function(){
       }
     });
 
-    $body.on('keyup keydown autoresize', text_area_selector, function () {
+    $('body').on('keyup keydown autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
@@ -2887,6 +2895,36 @@ $(document).ready(function(){
         label = selectOptions.first();
       }
 
+      // Function that renders and appends the option taking into
+      // account type and possible image icon.
+      var appendOptionWithIcon = function(select, option, type) {
+        // Add disabled attr if disabled
+        var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
+
+        // add icons
+        var icon_url = option.data('icon');
+        var classes = option.attr('class');
+        if (!!icon_url) {
+          var classString = '';
+          if (!!classes) classString = ' class="' + classes + '"';
+
+          // Check for multiple type.
+          if (type === 'multiple') {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          } else {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+          }
+          return true;
+        }
+
+        // Check for multiple type.
+        if (type === 'multiple') {
+          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+        } else {
+          options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+        }
+      };
+
       /* Create dropdown structure. */
       if (selectOptGroups.length) {
         // Check for optgroup
@@ -2895,37 +2933,17 @@ $(document).ready(function(){
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
           selectOptions.each(function() {
-            var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
-
-            // Add icons
-            if ($select.hasClass('icons')) {
-              var icon_url = $(this).data('icon');
-              var classes = $(this).attr('class');
-              if (!!icon_url) {
-                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
-                return true;
-              }
-            }
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           });
         });
       } else {
         selectOptions.each(function () {
-          // Add disabled attr if disabled
           var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
           if (multiple) {
-            options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this), 'multiple');
+
           } else {
-            // Add icons
-            if ($select.hasClass('icons')) {
-              var icon_url = $(this).data('icon');
-              var classes = $(this).attr('class');
-              if (!!icon_url) {
-                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
-                return true;
-              }
-            }
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           }
         });
       }
@@ -2972,7 +2990,7 @@ $(document).ready(function(){
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
-      $body.append(options);
+      $newSelect.after(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false, 'closeOnClick': false});
@@ -3483,6 +3501,7 @@ $(document).ready(function(){
         }
       }
 
+      $('.card-reveal').closest('.card').css('overflow', 'hidden');
 
     });
 

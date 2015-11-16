@@ -1,5 +1,4 @@
 (function ($) {
-  var $body = $('body');
   $(document).ready(function() {
 
     // Function to update labels of text fields
@@ -101,7 +100,7 @@
     var hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
       hiddenDiv = $('<div class="hiddendiv common"></div>');
-      $body.append(hiddenDiv);
+      $('body').append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
 
@@ -144,7 +143,7 @@
       }
     });
 
-    $body.on('keyup keydown autoresize', text_area_selector, function () {
+    $('body').on('keyup keydown autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
@@ -308,6 +307,36 @@
         label = selectOptions.first();
       }
 
+      // Function that renders and appends the option taking into
+      // account type and possible image icon.
+      var appendOptionWithIcon = function(select, option, type) {
+        // Add disabled attr if disabled
+        var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
+
+        // add icons
+        var icon_url = option.data('icon');
+        var classes = option.attr('class');
+        if (!!icon_url) {
+          var classString = '';
+          if (!!classes) classString = ' class="' + classes + '"';
+
+          // Check for multiple type.
+          if (type === 'multiple') {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          } else {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+          }
+          return true;
+        }
+
+        // Check for multiple type.
+        if (type === 'multiple') {
+          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+        } else {
+          options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+        }
+      };
+
       /* Create dropdown structure. */
       if (selectOptGroups.length) {
         // Check for optgroup
@@ -316,37 +345,17 @@
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
           selectOptions.each(function() {
-            var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
-
-            // Add icons
-            if ($select.hasClass('icons')) {
-              var icon_url = $(this).data('icon');
-              var classes = $(this).attr('class');
-              if (!!icon_url) {
-                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
-                return true;
-              }
-            }
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           });
         });
       } else {
         selectOptions.each(function () {
-          // Add disabled attr if disabled
           var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
           if (multiple) {
-            options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this), 'multiple');
+
           } else {
-            // Add icons
-            if ($select.hasClass('icons')) {
-              var icon_url = $(this).data('icon');
-              var classes = $(this).attr('class');
-              if (!!icon_url) {
-                options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '" class="' + classes + '"><span>' + $(this).html() + '</span></li>'));
-                return true;
-              }
-            }
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           }
         });
       }
@@ -393,7 +402,7 @@
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
-      $body.append(options);
+      $newSelect.after(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false, 'closeOnClick': false});
