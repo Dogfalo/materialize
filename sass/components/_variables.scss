@@ -34,10 +34,22 @@ $collapsible-height: 3rem !default;
 $collapsible-header-color: #fff !default;
 $collapsible-border-color: #ddd !default;
 
+/*** Chips ***/
+$chip-bg-color: #e4e4e4 !default;
+
+/*** Date Picker ***/
+$datepicker-weekday-bg: darken($secondary_color, 7%) !default;
+$datepicker-date-bg: $secondary_color !default;
+$datepicker-year: rgba(255, 255, 255, .4) !default;
+$datepicker-focus: rgba(0,0,0, .05) !default;
+$datepicker-selected: $secondary-color !default;
+$datepicker-selected-outfocus: desaturate(lighten($secondary-color, 35%), 15%) !default;
+
 /*** Dropdown ***/
 $dropdown-bg-color: #fff !default;
 $dropdown-hover-bg-color: #eee !default;
 $dropdown-color: $secondary-color !default;
+$dropdown-item-height: 50px !default;
 
 /*** Fonts ***/
 $roboto-font-path: "../font/roboto/" !default;
@@ -63,14 +75,6 @@ $switch-bg-color: $secondary-color !default;
 $switch-checked-lever-bg: desaturate(lighten($secondary-color, 25%), 25%) !default;
 $switch-unchecked-bg: #F1F1F1 !default;
 $switch-unchecked-lever-bg: #818181 !default;
-
-// Date Picker
-$datepicker-weekday-bg: darken($secondary_color, 7%) !default;
-$datepicker-date-bg: $secondary_color !default;
-$datepicker-year: rgba(255, 255, 255, .4) !default;
-$datepicker-focus: rgba(0,0,0, .05) !default;
-$datepicker-selected: $secondary-color !default;
-$datepicker-selected-outfocus: desaturate(lighten($secondary-color, 35%), 15%) !default;
 
 
 /*** Global ***/
@@ -150,6 +154,7 @@ $collection-bg-color: #fff !default;
 $collection-active-bg-color: $secondary-color !default;
 $collection-active-color: lighten($secondary-color, 55%) !default;
 $collection-hover-bg-color: #ddd !default;
+$collection-link-color: $secondary-color !default;
 
 /* Progress Bar */
 $progress-bar-color: $secondary-color !default;

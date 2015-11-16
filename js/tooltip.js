@@ -67,28 +67,28 @@
               var tooltipVerticalMovement = '0px';
               var tooltipHorizontalMovement = '0px';
               var scale_factor = 8;
+              var targetTop, targetLeft, newCoordinates;
 
               if (tooltipPosition === "top") {
-              // Top Position
-              newTooltip.css({
-                top: origin.offset().top - tooltipHeight - margin,
-                left: origin.offset().left + originWidth/2 - tooltipWidth/2
-              });
-              tooltipVerticalMovement = '-10px';
-              backdrop.css({
-                borderRadius: '14px 14px 0 0',
-                transformOrigin: '50% 90%',
-                marginTop: tooltipHeight,
-                marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
+                // Top Position
+                targetTop = origin.offset().top - tooltipHeight - margin;
+                targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
+                newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
-              });
+                tooltipVerticalMovement = '-10px';
+                backdrop.css({
+                  borderRadius: '14px 14px 0 0',
+                  transformOrigin: '50% 90%',
+                  marginTop: tooltipHeight,
+                  marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
+                });
               }
               // Left Position
               else if (tooltipPosition === "left") {
-                newTooltip.css({
-                  top: origin.offset().top + originHeight/2 - tooltipHeight/2,
-                  left: origin.offset().left - tooltipWidth - margin
-                });
+                targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
+                targetLeft =  origin.offset().left - tooltipWidth - margin;
+                newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
+
                 tooltipHorizontalMovement = '-10px';
                 backdrop.css({
                   width: '14px',
@@ -101,10 +101,10 @@
               }
               // Right Position
               else if (tooltipPosition === "right") {
-                newTooltip.css({
-                  top: origin.offset().top + originHeight/2 - tooltipHeight/2,
-                  left: origin.offset().left + originWidth + margin
-                });
+                targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
+                targetLeft = origin.offset().left + originWidth + margin;
+                newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
+
                 tooltipHorizontalMovement = '+10px';
                 backdrop.css({
                   width: '14px',
@@ -117,15 +117,20 @@
               }
               else {
                 // Bottom Position
-                newTooltip.css({
-                  top: origin.offset().top + origin.outerHeight() + margin,
-                  left: origin.offset().left + originWidth/2 - tooltipWidth/2
-                });
+                targetTop = origin.offset().top + origin.outerHeight() + margin;
+                targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
+                newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
                 tooltipVerticalMovement = '+10px';
                 backdrop.css({
                   marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
                 });
               }
+
+              // Set tooptip css placement
+              newTooltip.css({
+                top: newCoordinates.y,
+                left: newCoordinates.x
+              });
 
               // Calculate Scale to fill
               scale_factor = tooltipWidth / 8;
@@ -169,6 +174,25 @@
         }
         });
     });
+  };
+
+  var repositionWithinScreen = function(x, y, width, height) {
+    var newX = x
+    var newY = y;
+
+    if (newX < 0) {
+      newX = 4;
+    } else if (newX + width > window.innerWidth) {
+      newX -= newX + width - window.innerWidth;
+    }
+
+    if (newY < 0) {
+      newY = 4;
+    } else if (newY + height > window.innerHeight + $(window).scrollTop) {
+      newY -= newY + height - window.innerHeight;
+    }
+
+    return {x: newX, y: newY};
   };
 
   $(document).ready(function(){

@@ -13,6 +13,7 @@
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
           $tab_width = $this.find('li').first().outerWidth(),
+          $tab_min_width = parseInt($this.find('li').first().css('minWidth')),
           $index = 0;
 
       // If the location.hash matches one of the links, use that as the active tab.
@@ -60,7 +61,7 @@
 
 
       // Bind the click event handler
-      $this.on('click', 'a', function(e){
+      $this.on('click', 'a', function(e) {
         if ($(this).parent().hasClass('disabled')) {
           e.preventDefault();
           return;
@@ -104,6 +105,24 @@
         // Prevent the anchor's default click action
         e.preventDefault();
       });
+
+      // Add scroll for small screens
+      if ($tab_width <= $tab_min_width) {
+        $this.wrap('<div class="hide-tab-scrollbar"></div>');
+
+        // Create the measurement node
+        var scrollDiv = document.createElement("div");
+        scrollDiv.className = "scrollbar-measure";
+        document.body.appendChild(scrollDiv);
+        var scrollbarHeight = scrollDiv.offsetHeight - scrollDiv.clientHeight;
+        document.body.removeChild(scrollDiv);
+
+        if (scrollbarHeight === 0) {
+          scrollbarHeight = 15;
+          $this.find('.indicator').css('bottom', scrollbarHeight);
+        }
+        $this.height($(this).height() + scrollbarHeight);
+      }
     });
 
     },

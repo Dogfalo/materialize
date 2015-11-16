@@ -158,7 +158,8 @@ video.responsive-video {
     }
 
     i {
-      font-size: 2rem;
+      font-size: 2.2rem;
+      vertical-align: middle;
     }
   }
 
@@ -182,6 +183,33 @@ video.responsive-video {
       overflow: hidden;
       white-space: nowrap;
     }
+  }
+}
+
+// Breadcrumbs
+.breadcrumb {
+  font-size: 18px;
+  color: rgba(255,255,255, .7);
+
+  &:before {
+    content: '\E5CC';
+    color: rgba(255,255,255, .7);
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 25px;
+    margin: 0 10px 0 8px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  &:first-child:before {
+    display: none;
+  }
+
+  &:last-child {
+    color: #fff;
   }
 }
 
@@ -509,7 +537,7 @@ td, th{
   a.collection-item{
     display: block;
     @include transition(.25s);
-    color: $secondary-color;
+    color: $collection-link-color;
     &:not(.active) {
       &:hover {
         background-color: $collection-hover-bg-color;
@@ -577,12 +605,8 @@ nav ul a span.badge {
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
-    padding-top: 30px;
     height: 0;
     overflow: hidden;
-    &.no-controls {
-      padding-top: 0;
-    }
 
     iframe, object, embed {
       position: absolute;
