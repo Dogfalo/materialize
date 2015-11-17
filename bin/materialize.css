@@ -5833,6 +5833,8 @@ small {
   display: -webkit-flex;
   display: flex;
   position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
   height: 48px;
   background-color: #fff;
   margin: 0 auto;
@@ -5879,21 +5881,6 @@ small {
     height: 2px;
     background-color: #f6b2b5;
     will-change: left, right; }
-
-.hide-tab-scrollbar {
-  position: relative;
-  height: 48px;
-  overflow: hidden; }
-  .hide-tab-scrollbar .tabs {
-    overflow-x: scroll;
-    overflow-y: hidden; }
-
-.scrollbar-measure {
-  width: 100px;
-  height: 100px;
-  overflow: scroll;
-  position: absolute;
-  top: -9999px; }
 
 .material-tooltip {
   padding: 10px 8px;
