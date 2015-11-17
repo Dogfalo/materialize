@@ -4,7 +4,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.97.2
+### Current Version : v0.97.3
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -13,6 +13,11 @@ Materialize, a CSS Framework based on material design
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
+- v0.97.3 (Nov 15, 2015)
+  - Meteor font issues fixed
+  - Select rendering issue fixed
+  - Added Push and Pull to grid
+  - Dynamic accordion appends fixed
 - v0.97.2 (Nov 8, 2015)
   - Image support inside select
   - Optgroup supported in select

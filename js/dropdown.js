@@ -73,17 +73,20 @@
         activates.css('white-space', 'nowrap');
       }
 
-      // Below Origin
-      var verticalOffset = 0;
-      if (options.belowOrigin === true) {
-        verticalOffset = origin.height();
-      }
-
       // Offscreen detection
+      var windowHeight = window.innerHeight;
+      var originHeight = origin.innerHeight();
       var offsetLeft = origin.offset().left;
       var offsetTop = origin.offset().top - $(window).scrollTop();
       var currAlignment = options.alignment;
       var activatesLeft, gutterSpacing;
+
+      // Below Origin
+      var verticalOffset = 0;
+      if (options.belowOrigin === true) {
+        verticalOffset = originHeight;
+      }
+
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         // Dropdown goes past screen on right, force right alignment
         currAlignment = 'right';
@@ -93,11 +96,18 @@
         currAlignment = 'left';
       }
       // Vertical bottom offscreen detection
-      if (offsetTop + activates.innerHeight() > window.innerHeight) {
-        if (!verticalOffset) {
-          verticalOffset += origin.innerHeight();
+      if (offsetTop + activates.innerHeight() > windowHeight) {
+        // If going upwards still goes offscreen, just crop height of dropdown.
+        if (offsetTop + originHeight - activates.innerHeight() < 0) {
+          var adjustedHeight = windowHeight - offsetTop - verticalOffset;
+          activates.css('max-height', adjustedHeight);
+        } else {
+          // Flow upwards.
+          if (!verticalOffset) {
+            verticalOffset += originHeight;
+          }
+          verticalOffset -= activates.innerHeight();
         }
-        verticalOffset -= activates.innerHeight();
       }
 
       // Handle edge alignment
@@ -137,6 +147,7 @@
       isFocused = false;
       activates.fadeOut(options.outDuration);
       activates.removeClass('active');
+      activates.css('max-height', '');
       origin.removeClass('active');
     }
 

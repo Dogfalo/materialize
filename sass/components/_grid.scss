@@ -61,7 +61,6 @@
       $perc: unquote((100 / ($num-cols / $i)) + "%");
       &.s#{$i} {
         width: $perc;
-        margin-left: 0;
       }
       &.offset-s#{$i} {
         margin-left: $perc;
@@ -82,7 +81,6 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.m#{$i} {
           width: $perc;
-          margin-left: 0;
         }
         &.offset-m#{$i} {
           margin-left: $perc;
@@ -104,7 +102,6 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.l#{$i} {
           width: $perc;
-          margin-left: 0;
         }
         &.offset-l#{$i} {
           margin-left: $perc;
