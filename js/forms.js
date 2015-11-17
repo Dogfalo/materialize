@@ -414,7 +414,7 @@
       $newSelect.on({
         'focus': function (){
           if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
-            $newSelect.trigger('close');
+            $('input.select-dropdown').trigger('close');
           }
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
