@@ -4,11 +4,15 @@
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
   "version": "0.97.3",
+  "main": "bin/materialize.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/Dogfalo/materialize.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "hammerjs": "^2.0.4",
+    "jquery": "^2.1.4"
+  },
   "engine": "node >= 0.10",
   "devDependencies": {
     "grunt": "^0.4.5",
