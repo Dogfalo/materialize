@@ -118,9 +118,6 @@
                  .css('white-space', "pre");
       }
 
-
-
-
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
       hiddenDiv.html(content);
@@ -150,9 +147,7 @@
       textareaAutoResize($(this));
     });
 
-
     // File Input Path
-
     $(document).on('change', '.file-field input[type="file"]', function () {
       var file_field = $(this).closest('.file-field');
       var path_input = file_field.find('input.file-path');
@@ -164,7 +159,6 @@
       path_input.val(file_names.join(", "));
       path_input.trigger('change');
     });
-
 
     /****************
     *  Range Input  *
@@ -222,8 +216,6 @@
       }
 
       thumb.find('.value').html($(this).val());
-
-
     });
 
     $(document).on('mouseup touchend', range_wrapper, function() {
@@ -268,13 +260,11 @@
         thumb.removeClass('active');
       }
     });
-
   }); // End of $(document).ready
 
-
-
-
-  // Select Plugin
+  /*******************
+   *  Select Plugin  *
+   ******************/
   $.fn.material_select = function (callback) {
     $(this).each(function(){
       var $select = $(this);
@@ -311,11 +301,41 @@
       var valuesSelected = [],
           optionsHover = false;
 
-      if ($select.find('option:selected') !== undefined) {
+      if ($select.find('option:selected').length > 0) {
         label = $select.find('option:selected');
       } else {
-        label = options.first();
+        label = selectOptions.first();
       }
+
+      // Function that renders and appends the option taking into
+      // account type and possible image icon.
+      var appendOptionWithIcon = function(select, option, type) {
+        // Add disabled attr if disabled
+        var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
+
+        // add icons
+        var icon_url = option.data('icon');
+        var classes = option.attr('class');
+        if (!!icon_url) {
+          var classString = '';
+          if (!!classes) classString = ' class="' + classes + '"';
+
+          // Check for multiple type.
+          if (type === 'multiple') {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          } else {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+          }
+          return true;
+        }
+
+        // Check for multiple type.
+        if (type === 'multiple') {
+          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+        } else {
+          options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+        }
+      };
 
       /* Create dropdown structure. */
       if (selectOptGroups.length) {
@@ -323,20 +343,19 @@
         selectOptGroups.each(function() {
           selectOptions = $(this).children('option');
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
+
           selectOptions.each(function() {
-            var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           });
         });
-
       } else {
         selectOptions.each(function () {
-          // Add disabled attr if disabled
           var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
           if (multiple) {
-            options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this), 'multiple');
+
           } else {
-            options.append($('<li class="' + disabledClass + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           }
         });
       }
@@ -383,7 +402,7 @@
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
-      $('body').append(options);
+      $newSelect.after(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false, 'closeOnClick': false});

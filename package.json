@@ -3,7 +3,7 @@
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
-  "version": "0.97.1",
+  "version": "0.97.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/Dogfalo/materialize.git"
