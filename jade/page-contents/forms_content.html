@@ -328,6 +328,19 @@
               </div>
               <div class="col s12">
                 <br>
+                <p>You can define custom html to any option, which will override option's content. Remember to use <code class="language-markup">'</code> instead of <code class="language-markup">"</code>.</p>
+              </div>
+              <div class="col s12 m6">
+                <label>Custom HTML Select</label>
+                <select>
+                  <option value="" data-html="Choose your <strong class='black-text'>option</strong>" disabled selected>Choose your option</option>
+                  <option value="1" data-html="example <span class='red-text text-darken-2'>1</span>">example 1</option>
+                  <option value="2" data-html="example <span class='green-text text-darken-2'>2</span>">example 2</option>
+                  <option value="3" data-html="example <span class='blue-text text-darken-2'>3</span>">example 3</option>
+                </select>
+              </div>
+              <div class="col s12">
+                <br>
                 <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
               </div>
               <div class="col s12 m6">
@@ -822,4 +835,3 @@
 
   </div>
 </div>
-
