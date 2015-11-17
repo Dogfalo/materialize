@@ -366,11 +366,12 @@
         $(this).click(function (e) {
           // Check if option element is disabled
           if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup')) {
+            var selected = true;
+            
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              toggleEntryFromArray(valuesSelected, $(this).index(), $curr_select);
+              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $curr_select);
               $newSelect.trigger('focus');
-
             } else {
               options.find('li').removeClass('active');
               $(this).toggleClass('active');
@@ -378,7 +379,7 @@
             }
 
             activateOption(options, $(this));
-            $curr_select.find('option').eq(i).prop('selected', true);
+            $curr_select.find('option').eq(i).prop('selected', selected);
             // Trigger onchange() event
             $curr_select.trigger('change');
             if (typeof callback !== 'undefined') callback();
@@ -540,8 +541,9 @@
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
       var index = entriesArray.indexOf(entryIndex);
+      var added = (index === -1);
 
-      if (index === -1) {
+      if (added) {
         entriesArray.push(entryIndex);
       } else {
         entriesArray.splice(index, 1);
@@ -550,6 +552,7 @@
       select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
       select.find('option').eq(entryIndex).prop('selected', true);
       setValueToInput(entriesArray, select);
+      return added;
     }
 
     function setValueToInput(entriesArray, select) {
