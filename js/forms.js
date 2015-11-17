@@ -554,6 +554,16 @@
           };
 
       $newSelect.on('keydown', onKeyDown);
+
+      var onMouseDown = function(e) {
+        // preventing the default still allows the scroll, but blocks the blur.
+        // We're inside the scrollbar if the clientX is >= the clientWidth.
+        if (e.clientX >= e.target.clientWidth || e.clientY >= e.target.clientHeight) {
+          e.preventDefault();
+        }
+      };
+
+      $newSelect.on('mousedown', onMouseDown);
     });
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
