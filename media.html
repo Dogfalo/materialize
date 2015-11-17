@@ -289,13 +289,11 @@ $('.slider').slider('prev');
           <a class="carousel-item" href="#five!"><img src="http://lorempixel.com/250/250/nature/5"></a>
         </div><br>
 
-        <div style="position: relative; height: 400px;">
-          <div class="carousel slider">
-            <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
-            <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
-            <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
-            <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
-          </div>
+        <div class="carousel carousel-slider">
+          <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
+          <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
+          <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
+          <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
         </div>
 
         <br><br>
@@ -309,13 +307,11 @@ $('.slider').slider('prev');
     &lt;a class="carousel-item" href="#five!">&lt;img src="http://lorempixel.com/250/250/nature/5">&lt;/a>
   &lt;/div>
 
-  &lt;div style="position: relative; height: 400px;">
-    &lt;div class="carousel slider">
-      &lt;a class="carousel-item" href="#one!">&lt;img src="http://lorempixel.com/800/400/food/1">&lt;/a>
-      &lt;a class="carousel-item" href="#two!">&lt;img src="http://lorempixel.com/800/400/food/2">&lt;/a>
-      &lt;a class="carousel-item" href="#three!">&lt;img src="http://lorempixel.com/800/400/food/3">&lt;/a>
-      &lt;a class="carousel-item" href="#four!">&lt;img src="http://lorempixel.com/800/400/food/4">&lt;/a>
-    &lt;/div>
+  &lt;div class="carousel carousel-slider">
+    &lt;a class="carousel-item" href="#one!">&lt;img src="http://lorempixel.com/800/400/food/1">&lt;/a>
+    &lt;a class="carousel-item" href="#two!">&lt;img src="http://lorempixel.com/800/400/food/2">&lt;/a>
+    &lt;a class="carousel-item" href="#three!">&lt;img src="http://lorempixel.com/800/400/food/3">&lt;/a>
+    &lt;a class="carousel-item" href="#four!">&lt;img src="http://lorempixel.com/800/400/food/4">&lt;/a>
   &lt;/div>
       </code></pre>
 
@@ -367,8 +363,10 @@ $('.slider').slider('prev');
       <pre><code class="language-javascript col s12">
 // Next slide
 $('.carousel').carousel('next');
+$('.carousel').carousel('next', [3]); // Move next n times.
 // Previous slide
 $('.carousel').carousel('prev');
+$('.carousel').carousel('prev', [4]); // Move prev n times.
       </code></pre>
       </div>
 

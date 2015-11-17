@@ -21,14 +21,14 @@
     }
   }
 
-  &.slider {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 100%;
+  &.carousel-slider {
+    top: 0;
+    left: 0;
+    height: 0;
 
     .carousel-item {
       width: 100%;
+      height: 100%;
       position: absolute;
       top: 0;
       left: 0;
