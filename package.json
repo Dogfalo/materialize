@@ -33,7 +33,11 @@
     "node-sass": "^2.1.1",
     "qunit": "^0.7.6"
   },
+  // "scripts": {
+  //   "test": "grunt testem:run:default"
+  // }
   "scripts": {
-    "test": "grunt testem:run:default"
+    "test": "grunt travis --verbose"
   }
 }
+

@@ -7,6 +7,20 @@ module.exports = function(grunt) {
       dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true },
     },
 
+//  Jasmine
+    jasmine: {
+      components: {
+	src: [
+          'components/*js'
+        ],
+        options: {
+          specs: 'tests/spec/*Spec.js',
+          keepRunner : true,
+          //helpers: 'test/spec/*.js'
+        }
+    }
+
+
 //  Sass
     sass: {                              // Task
       expanded: {                            // Target
@@ -589,5 +603,6 @@ module.exports = function(grunt) {
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);
+  grunt.registerTask('travis', ['jshint', 'jasmine']);
 };
 
