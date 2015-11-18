@@ -11,14 +11,14 @@ module.exports = function(grunt) {
     jasmine: {
       components: {
 	      src: [
-          'components/*js'
+          'bin/materialize.js'
         ],
         options: {
           vendor: [
             'tests/jquery-2.1.4.min.js',
-            'bin/materialize.js',
-            'tests/jasmine-jquery.js'
+            'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
           ],
+          styles: 'bin/materialize.css',
           specs: 'tests/spec/*Spec.js',
           keepRunner : true,
           //helpers: 'test/spec/*.js'
@@ -514,53 +514,6 @@ module.exports = function(grunt) {
             }
           }
       },
-      // Testem
-      testem: {
-        'default': {
-          src: [
-            'bower_components/qunit/qunit/qunit.js',
-            'bower_components/jquery/dist/jquery.min.js',
-            'js/jquery.easing.1.3.js',
-            'js/animation.js',
-            'js/velocity.min.js',
-            'js/hammer.min.js',
-            'js/jquery.hammer.js',
-            'js/global.js',
-            'js/collapsible.js',
-            'js/dropdown.js',
-            'js/leanModal.js',
-            'js/materialbox.js',
-            'js/parallax.js',
-            'js/tabs.js',
-            'js/tooltip.js',
-            'js/waves.js',
-            'js/toasts.js',
-            'js/sideNav.js',
-            'js/scrollspy.js',
-            'js/forms.js',
-            'js/slider.js',
-            'js/cards.js',
-            'js/chips.js',
-            'js/pushpin.js',
-            'js/buttons.js',
-            'js/transitions.js',
-            'js/scrollFire.js',
-            'js/date_picker/picker.js',
-            'js/date_picker/picker.date.js',
-            'js/character_counter.js',
-            'js/carousel.js',
-            'tests/setup.js',
-            'tests/helpers/**/*.js',
-            'tests/**/*-test.js'
-          ],
-          options: {
-            framework: "qunit",
-            test_page: 'tests/index.mustache?hidepassed',
-            launch_in_dev: ['PhantomJS', 'Chrome', 'Firefox'],
-          }
-        }
-      }
-
   });
 
   // load the tasks
@@ -580,7 +533,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rename');
   grunt.loadNpmTasks("grunt-remove-logging");
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-testem');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   // define the tasks
