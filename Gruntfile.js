@@ -14,6 +14,10 @@ module.exports = function(grunt) {
           'components/*js'
         ],
         options: {
+          vendor: [
+            'tests/jquery-2.1.4.min.js',
+            'tests/jasmine-jquery.js'
+          ],
           specs: 'tests/spec/*Spec.js',
           keepRunner : true,
           //helpers: 'test/spec/*.js'
