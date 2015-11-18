@@ -16,6 +16,7 @@ module.exports = function(grunt) {
         options: {
           vendor: [
             'tests/jquery-2.1.4.min.js',
+            'bin/materialize.js',
             'tests/jasmine-jquery.js'
           ],
           specs: 'tests/spec/*Spec.js',
