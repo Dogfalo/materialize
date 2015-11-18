@@ -18,7 +18,9 @@ module.exports = function(grunt) {
           keepRunner : true,
           //helpers: 'test/spec/*.js'
         }
+      },
     },
+
 
 
 //  Sass
@@ -575,6 +577,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-testem');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   // define the tasks
   grunt.registerTask(
     'release',[
