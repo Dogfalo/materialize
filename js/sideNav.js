@@ -44,12 +44,14 @@
           $(window).resize( function() {
             if (window.innerWidth > 992) {
               // Close menu if window is resized bigger than 992 and user has fixed sidenav
-              if ($('#sidenav-overlay').css('opacity') !== 0 && menuOut) {
+              console.log(menuOut);
+              if ($('#sidenav-overlay').length != 0 && menuOut) {
                 removeMenu(true);
               }
               else {
-                menu_id.removeAttr('style');
-                menu_id.css('width', options.menuWidth);
+                // menu_id.removeAttr('style');
+                menu_id.css('transform', 'translateX(0%)');
+                // menu_id.css('width', options.menuWidth);
               }
             }
             else if (menuOut === false){
