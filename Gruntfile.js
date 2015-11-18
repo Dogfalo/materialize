@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 //  Jasmine
     jasmine: {
       components: {
-	src: [
+	      src: [
           'components/*js'
         ],
         options: {
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
           keepRunner : true,
           //helpers: 'test/spec/*.js'
         }
-      },
+      }
     },
 
 
@@ -606,6 +606,6 @@ module.exports = function(grunt) {
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);
-  grunt.registerTask('travis', ['jshint', 'jasmine']);
+  grunt.registerTask('travis', ['jasmine']);
+  grunt.registerTask('jasmine', ['jasmine']);
 };
-
