@@ -18,7 +18,7 @@ module.exports = function(grunt) {
           keepRunner : true,
           //helpers: 'test/spec/*.js'
         }
-    }
+    },
 
 
 //  Sass
