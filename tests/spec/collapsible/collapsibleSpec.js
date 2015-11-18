@@ -1,4 +1,4 @@
-jasmine.getFixtures().fixturesPath = 'tests/fixtures';
+jasmine.getFixtures().fixturesPath = 'tests/spec/collapsible';
 
 describe( "Collapsible Plugin", function () {
   var elem;

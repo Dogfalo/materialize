@@ -15,11 +15,11 @@ module.exports = function(grunt) {
         ],
         options: {
           vendor: [
-            'tests/jquery-2.1.4.min.js',
+            'node_modules/jquery/dist/jquery.min.js',
             'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
           ],
           styles: 'bin/materialize.css',
-          specs: 'tests/spec/*Spec.js',
+          specs: 'tests/spec/**/*Spec.js',
           keepRunner : true,
           //helpers: 'test/spec/*.js'
         }
