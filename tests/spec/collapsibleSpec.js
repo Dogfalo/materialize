@@ -14,7 +14,7 @@ describe( "Collapsible Plugin", function () {
       var firstHeader = elem.find('.collapsible-header').first();
       var firstBody = elem.find('.collapsible-body').first();
       firstHeader.click();
-      var firstBodyHeight = firstBody.css('height');
+      var firstBodyHeight = parseInt(firstBody.css('height'));
 
       expect(firstBodyHeight).toBeGreaterThan(0);
 
