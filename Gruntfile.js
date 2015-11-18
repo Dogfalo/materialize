@@ -612,5 +612,4 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask("monitor", ["concurrent:monitor"]);
   grunt.registerTask('travis', ['jasmine']);
-  grunt.registerTask('jasmine', ['jasmine']);
 };
