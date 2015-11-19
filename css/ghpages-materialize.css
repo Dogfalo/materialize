@@ -5736,7 +5736,7 @@ small {
   .card .card-action {
     border-top: 1px solid rgba(160, 160, 160, 0.2);
     padding: 20px; }
-    .card .card-action a:not(.btn, .btn-large, .btn-floating) {
+    .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: #ffab40;
       margin-right: 20px;
       -webkit-transition: color .3s ease;
@@ -5745,7 +5745,7 @@ small {
       -ms-transition: color .3s ease;
       transition: color .3s ease;
       text-transform: uppercase; }
-      .card .card-action a:not(.btn, .btn-large, .btn-floating):hover {
+      .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
         color: #ffd8a6; }
   .card .card-reveal {
     padding: 20px;

@@ -19,7 +19,7 @@ describe( "Collapsible Plugin", function () {
       var bodies = collapsible.find('.collapsible-body');
 
       bodies.each(function() {
-        expect($(this)).toBeHidden();
+        expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
       });
 
       // Collapsible body height should be > 0 after being opened.
@@ -27,7 +27,7 @@ describe( "Collapsible Plugin", function () {
         $(this).click();
       });
       bodies.each(function() {
-        expect($(this)).toBeVisible();
+        expect($(this)).toBeVisible('because collapsible bodies not visible after being opened.');
       });
     });
   });
@@ -40,19 +40,19 @@ describe( "Collapsible Plugin", function () {
       var firstBody = accordion.find('.collapsible-body').first();
       var secondHeader = accordion.find('.collapsible-header').eq(1);
       var secondBody = accordion.find('.collapsible-body').eq(1);
-      expect(firstBody).toBeHidden();
-      expect(secondBody).toBeHidden();
+      expect(firstBody).toBeHidden('because accordion bodies should be hidden initially.');
+      expect(secondBody).toBeHidden('because accordion bodies should be hidden initially.');
 
       // Collapsible body height should be > 0 after being opened.
       firstHeader.click();
 
       setTimeout(function() {
-        expect(firstBody).toBeVisible();
+        expect(firstBody).toBeVisible('because accordion bodies not visible after being opened.');
         secondHeader.click();
 
         setTimeout(function() {
-          expect(firstBody).toBeHidden();
-          // expect(secondBody).toBeVisible();
+          expect(firstBody).toBeHidden('because accordion bodies should be hidden when another item is opened.');
+          expect(secondBody).toBeVisible('because accordion bodies not visible after being opened.');
           done();
         }, 400);
       }, 200);
@@ -67,14 +67,14 @@ describe( "Collapsible Plugin", function () {
       var firstLi = popout.find('li').first();
       var firstHeader = popout.find('.collapsible-header').first();
       var firstBody = popout.find('.collapsible-body').first();
-      expect(firstBody).toBeHidden();
+      expect(firstBody).toBeHidden('because accordion bodies should be hidden initially.');
 
       // Expect margin to be > 0 because not popped out.
       popout.find('li').each(function () {
         var marginLeft = parseInt($(this).css('margin-left'));
         var marginRight = parseInt($(this).css('margin-right'));
-        expect(marginLeft).toBeGreaterThan(0);
-        expect(marginRight).toBeGreaterThan(0);
+        expect(marginLeft).toBeGreaterThan(0, 'because closed popout items should have horizontal margins.');
+        expect(marginRight).toBeGreaterThan(0, 'because closed popout items should have horizontal margins.');
       });
 
       // expect margin to be 0 because popped out.
@@ -82,9 +82,9 @@ describe( "Collapsible Plugin", function () {
       setTimeout(function() {
         var firstMarginLeft = parseInt(firstLi.css('margin-left'));
         var firstMarginRight = parseInt(firstLi.css('margin-right'));
-        expect(firstMarginLeft).toEqual(0);
-        expect(firstMarginRight).toEqual(0);
-        expect(firstBody).toBeVisible();
+        expect(firstMarginLeft).toEqual(0, 'because opened popout items should have no horizontal margins.');
+        expect(firstMarginRight).toEqual(0, 'because opened popout items should have no horizontal margins.');
+        expect(firstBody).toBeVisible('because accordion bodies not visible after being opened.');
 
         done();
       }, 400);
