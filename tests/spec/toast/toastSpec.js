@@ -1,11 +1,10 @@
 describe( 'Toasts:', function() {
   var toastOutDuration = 375;
   var toastInDuration = 300;
+  var toast;
 
   beforeEach(function() {
     loadFixtures('toast/toastFixture.html');
-    // elem = $(.toast);
-    // elem.toast()
   });
 
   describe('Toast javascript functions', function() {
@@ -14,7 +13,7 @@ describe( 'Toasts:', function() {
       Materialize.toast('Test toast', toastInDuration);
 
       setTimeout(function() {
-        var toast = $('.toast');
+        toast = $('.toast');
         expect(toast.length).toBe(1);
         expect(toast).toBeVisible();
         expect(toast.text()).toBe('Test toast');
@@ -26,7 +25,7 @@ describe( 'Toasts:', function() {
             toast = $('.toast');
             expect(toast.length).toBe(0, 'because toast should be removed by now');
             done();
-          }, toastOutDuration - 10);
+          }, toastOutDuration + 90); // .1s leeway is given
         }, 10);
       }, toastInDuration);
     });
@@ -34,7 +33,8 @@ describe( 'Toasts:', function() {
     it('Opens a toast with HTML content', function() {
       var $toastContent = $('<span>I am toast content</span>');
       Materialize.toast($toastContent, 500);
-
+      toast = $('.toast');
+      expect(toast.first('span').text()).toBe('I am toast content');
 
     });
   });
