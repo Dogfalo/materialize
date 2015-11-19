@@ -36,7 +36,6 @@
     "jquery": "^2.1.4",
     "node-sass": "^2.1.1",
     "phantomjs": "^1.9.18",
-    "qunit": "^0.7.6"
   },
   "scripts": {
     "test": "grunt travis --verbose"

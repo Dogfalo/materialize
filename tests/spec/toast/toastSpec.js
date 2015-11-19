@@ -1,10 +1,8 @@
-jasmine.getFixtures().fixturesPath = 'tests/spec/toast';
-
 describe( 'Toast Plugin', function() {
   var elem;
 
   beforeEach(function() {
-    loadFixtures('toastFixture.html');
+    loadFixtures('toast/toastFixture.html');
     // elem = $(.toast);
     // elem.toast()
   });
@@ -13,10 +11,14 @@ describe( 'Toast Plugin', function() {
     it('Open a .5s toast', function() {
       Materialize.toast('Test toast', 500);
       setTimeout(function() {
-        var $toast = $(.toast);
-        expect($toast.length !== 0);
         done();
-      }, 200);
+      }, 250);
+
+      var toast = $('.toast');
+      expect(toast.length).toBe(1);
+      expect(toast).toBeVisible();
+      expect(toast.text()).toBe('Test toast');
+
     });
   });
 });
