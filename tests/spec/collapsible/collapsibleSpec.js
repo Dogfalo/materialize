@@ -1,10 +1,10 @@
-jasmine.getFixtures().fixturesPath = 'tests/spec/collapsible';
+jasmine.getFixtures().fixturesPath = 'tests/spec';
 
 describe( "Collapsible Plugin", function () {
   var collapsible, accordion;
 
   beforeEach(function() {
-    loadFixtures('collapsible.html');
+    loadFixtures('collapsible/collapsible.html');
     collapsible = $('.collapsible');
     accordion = $('.accordion');
     popout = $('.popout');
