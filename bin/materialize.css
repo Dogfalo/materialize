@@ -5833,7 +5833,7 @@ small {
   display: -webkit-flex;
   display: flex;
   position: relative;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   height: 48px;
   background-color: #fff;

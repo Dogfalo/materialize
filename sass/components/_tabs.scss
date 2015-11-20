@@ -1,7 +1,7 @@
 .tabs {
   @include flexbox();
   position: relative;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   height: 48px;
   background-color: $tabs-bg-color;
