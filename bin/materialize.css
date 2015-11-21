@@ -5561,7 +5561,7 @@ nav {
       transition: background-color .3s;
       float: left;
       padding: 0; }
-      nav ul li:hover, nav ul li.active {
+      nav ul li:hover, nav ul li.active, nav ul a.active {
         background-color: rgba(0, 0, 0, 0.1); }
     nav ul a {
       font-size: 1rem;
