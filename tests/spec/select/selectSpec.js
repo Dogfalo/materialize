@@ -13,7 +13,7 @@ describe("Select Plugin", function () {
       $('select').not('.disabled').material_select();
     });
 
-    it("should open select dropdown", function (done) {
+    it("should open dropdown and select option", function (done) {
       normalInput = browserSelect.parent().find('input.select-dropdown');
       normalDropdown = browserSelect.parent().find('ul.select-dropdown');
 
@@ -26,8 +26,25 @@ describe("Select Plugin", function () {
 
       setTimeout(function() {
         expect(normalDropdown).toBeVisible('Should be visible after opening.');
-        done();
+        var firstOption = normalDropdown.find('li:not(.disabled)').first();
+        firstOption.click();
+        normalInput.blur();
+
+        setTimeout(function() {
+          expect(normalDropdown).toBeHidden('Should be hidden after choosing item.');
+          expect(normalInput.val()).toEqual(firstOption[0].innerText, 'Value should equal chosen option.');
+          done();
+        }, 400);
       }, 400);
+    });
+
+    it("should have pre-selected value", function () {
+      normalInput = browserSelect.parent().find('input.select-dropdown');
+      normalDropdown = browserSelect.parent().find('ul.select-dropdown');
+
+      var firstOption = browserSelect.find('option[selected]');
+      console.log(normalInput.val(), firstOption.text());
+      expect(normalInput.val()).toEqual(firstOption.text(), 'Value should be equal to preselected option.');
     });
   });
 });
