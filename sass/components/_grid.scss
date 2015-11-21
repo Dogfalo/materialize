@@ -61,7 +61,9 @@
       $perc: unquote((100 / ($num-cols / $i)) + "%");
       &.s#{$i} {
         width: $perc;
-        margin-left: 0;
+        margin-left: auto;
+        left: auto;
+        right: auto;
       }
       $i: $i + 1;
     }
@@ -88,7 +90,9 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.m#{$i} {
           width: $perc;
-          margin-left: 0;
+          margin-left: auto;
+          left: auto;
+          right: auto;
         }
         $i: $i + 1
       }
@@ -116,7 +120,9 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.l#{$i} {
           width: $perc;
-          margin-left: 0;
+          margin-left: auto;
+          left: auto;
+          right: auto;
         }
         $i: $i + 1;
       }
