@@ -5879,16 +5879,12 @@ small {
       bottom: 0%; } }
   @media only screen and (min-width : 601px) and (max-width : 992px) {
     #toast-container {
-      min-width: 30%;
       left: 5%;
-      right: 5%;
       bottom: 7%; } }
   @media only screen and (min-width : 993px) {
     #toast-container {
-      min-width: 8%;
       top: 10%;
-      right: 7%;
-      left: 7%; } }
+      right: 7%; } }
 
 .toast {
   border-radius: 2px;
