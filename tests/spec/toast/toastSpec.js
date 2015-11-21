@@ -3,10 +3,6 @@ describe( 'Toasts:', function() {
   var toastInDuration = 300;
   var toast;
 
-  beforeEach(function() {
-    loadFixtures('toast/toastFixture.html');
-  });
-
   describe('Toast javascript functions', function() {
     // Toast out animation duration does not count as part of its timer.
     it('should display and remove a toast', function(done) {
@@ -35,6 +31,7 @@ describe( 'Toasts:', function() {
       Materialize.toast($toastContent, 400);
       toast = $('.toast');
       expect(toast.first('span').text()).toBe('I am toast content');
+      expect(toast.first('span').text()).not.toBe('I am toast')
     });
 
     it('Toasts should call the callback function when dismissed',
@@ -49,6 +46,13 @@ describe( 'Toasts:', function() {
             'because the callback set it to true');
         done();
       }, 500);
+    });
+
+    it('Apply two custom class to a toast', function() {
+      Materialize.toast('Hi', 400, 'round flat');
+      toast = $('.toast');
+      expect(toast.closest('.round.flat').length).toBe(1,
+          'because the class parameter was passed with two classes');
     });
 
   });
