@@ -32,11 +32,25 @@ describe( 'Toasts:', function() {
 
     it('Opens a toast with HTML content', function() {
       var $toastContent = $('<span>I am toast content</span>');
-      Materialize.toast($toastContent, 500);
+      Materialize.toast($toastContent, 400);
       toast = $('.toast');
       expect(toast.first('span').text()).toBe('I am toast content');
-
     });
+
+    it('Toasts should call the callback function when dismissed',
+        function(done) {
+      var boolObj = {wasCalled: false};
+      var callback = function() {
+        boolObj.wasCalled = true;
+      };
+      Materialize.toast('I am a toast', 100, '', callback);
+      setTimeout(function() {
+        expect(boolObj.wasCalled).toBe(true,
+            'because the callback set it to true');
+        done();
+      }, 500);
+    });
+
   });
 
 
