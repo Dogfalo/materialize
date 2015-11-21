@@ -129,7 +129,7 @@
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('#birthdate.datepicker').pickadate({selectYears: 20});
-    $('#birthdateHapanese.datepicker').pickadate({
+    $('#birthdateJapanese.datepicker').pickadate({
       selectMonths: true,
       selectYears: 20,
       monthsFull:  ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
