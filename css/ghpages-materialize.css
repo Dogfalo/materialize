@@ -5500,6 +5500,7 @@ nav {
     position: relative;
     height: 100%; }
     nav .nav-wrapper i {
+      line-height: inherit;
       display: block;
       font-size: 2rem; }
   @media only screen and (min-width : 993px) {
