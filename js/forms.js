@@ -381,7 +381,7 @@
             $curr_select.find('option').eq(i).prop('selected', true);
             // Trigger onchange() event
             $curr_select.trigger('change');
-            if (typeof callback !== 'undefined') callback();
+            if (typeof callback !== 'undefined') callback($select);
           }
 
           e.stopPropagation();
