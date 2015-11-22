@@ -14,7 +14,7 @@
         <pre><code class="language-javascript col s12">
   var options = [
     {selector: '.class', offset: 200, callback: 'globalFunction()' },
-    {selector: '.other-class', offset: 200, callback: this.onOtherClassVisible },
+    {selector: '.other-class', offset: 200, callback: this.onOtherClassVisible, repeat: true },
   ];
   Materialize.scrollFire(options);
         </code></pre>
@@ -41,7 +41,11 @@
             </tr>
             <tr>
               <td>Callback</td>
-              <td>The function call that you want to make when the user scrolls to the threshold. It will only be called once.  This can be a string or function object.</td>
+              <td>The function call that you want to make when the user scrolls to the threshold. By default, it will only be called once.  This can be a string or function object.</td>
+            </tr>
+            <tr>
+              <td>Repeat</td>
+              <td>Set to true to invoke the callback every time the selector reaches the bottom of the user's window.  Default is false; the callback will be called only once.</td>
             </tr>
           </tbody>
         </table>

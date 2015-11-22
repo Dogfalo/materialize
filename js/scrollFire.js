@@ -23,13 +23,14 @@
             var selector = value.selector,
                 offset = value.offset,
                 callback = value.callback;
+                repeat = value.repeat;
 
             var currentElement = document.querySelector(selector);
             if ( currentElement !== null) {
               var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
 
               if (windowScroll > (elementOffset + offset)) {
-                if (value.done !== true) {
+                if (repeat || value.done !== true) {
                   if (typeof callback === 'function') {
                     callback();
                   } else {
