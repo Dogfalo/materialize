@@ -82,4 +82,74 @@ describe("Select Plugin", function () {
     });
 
   });
+
+  describe("Optgroup Select", function () {
+    var browserSelect, optInput, optDropdown;
+
+    beforeEach(function() {
+      browserSelect = $('select.optgroup');
+    });
+
+    it("should open dropdown and select options", function(done) {
+      optInput = browserSelect.parent().find('input.select-dropdown');
+      optDropdown = browserSelect.parent().find('ul.select-dropdown');
+
+      var optgroups = optDropdown.find('li.optgroup');
+      browserSelect.find('optgroup').each(function(i) {
+        expect($(this).attr('label')).toEqual(optgroups.eq(i)[0].innerText, 'should generate optgroup structure.');
+      });
+
+      expect(optInput).toExist('Should dynamically generate select dropdown structure.');
+      expect(optDropdown).toExist('Should dynamically generate select dropdown structure.');
+      expect(optInput).toBeVisible('Should be hidden before dropdown is opened.');
+      expect(optDropdown).toBeHidden('Should be hidden before dropdown is opened.');
+
+      optInput.click();
+
+      setTimeout(function() {
+        expect(optDropdown).toBeVisible('Should be visible after opening.');
+        var secondOption = optDropdown.find('li:not(.disabled):not(.optgroup)').eq(1);
+        secondOption.click();
+        optInput.blur();
+
+        setTimeout(function() {
+          expect(optDropdown).toBeHidden('Should be hidden after choosing item.');
+          expect(optInput.val()).toEqual(secondOption[0].innerText, 'Value should be equal to selected option.');
+          done();
+        }, 400);
+      }, 400);
+    });
+
+    it("should not do anything when optgroup li clicked", function(done) {
+      optInput = browserSelect.parent().find('input.select-dropdown');
+      optDropdown = browserSelect.parent().find('ul.select-dropdown');
+      var originalVal = optInput.val();
+
+      var optgroups = optDropdown.find('li.optgroup');
+      browserSelect.find('optgroup').each(function(i) {
+        expect($(this).attr('label')).toEqual(optgroups.eq(i)[0].innerText, 'should generate optgroup structure.');
+      });
+
+      expect(optInput).toExist('Should dynamically generate select dropdown structure.');
+      expect(optDropdown).toExist('Should dynamically generate select dropdown structure.');
+      expect(optInput).toBeVisible('Should be hidden before dropdown is opened.');
+      expect(optDropdown).toBeHidden('Should be hidden before dropdown is opened.');
+
+      optInput.click();
+
+      setTimeout(function() {
+        expect(optDropdown).toBeVisible('Should be visible after opening.');
+        var optgroup = optDropdown.find('li.optgroup').first();
+        optgroup.click();
+        optInput.blur();
+
+        setTimeout(function() {
+          expect(optDropdown).toBeHidden('Should be hidden after choosing invalid item.');
+          expect(optInput.val()).toEqual(originalVal, 'Value should be equal to original option.');
+          done();
+        }, 400);
+      }, 400);
+    });
+
+  });
 });
