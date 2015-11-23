@@ -8,14 +8,16 @@ nav {
 
   a { color: $navbar-font-color; }
 
+  i,
+  [class^="mdi-"], [class*="mdi-"],
+  i.material-icons {
+    display: block;
+    font-size: 2rem;
+  }
+
   .nav-wrapper {
     position: relative;
     height: 100%;
-
-    i {
-      display: block;
-      font-size: 2rem;
-    }
   }
 
   @media #{$large-and-up} {

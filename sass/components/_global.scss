@@ -191,6 +191,14 @@ video.responsive-video {
   font-size: 18px;
   color: rgba(255,255,255, .7);
 
+  i,
+  [class^="mdi-"], [class*="mdi-"],
+  i.material-icons {
+    display: inline-block;
+    float: left;
+    font-size: 24px;
+  }
+
   &:before {
     content: '\E5CC';
     color: rgba(255,255,255, .7);

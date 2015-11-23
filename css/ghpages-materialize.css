@@ -2089,6 +2089,10 @@ img.responsive-img, video.responsive-video {
 .breadcrumb {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7); }
+  .breadcrumb i, .breadcrumb [class^="mdi-"], .breadcrumb [class*="mdi-"], .breadcrumb i.material-icons {
+    display: inline-block;
+    float: left;
+    font-size: 24px; }
   .breadcrumb:before {
     content: '\E5CC';
     color: rgba(255, 255, 255, 0.7);
@@ -5496,12 +5500,12 @@ nav {
   line-height: 56px; }
   nav a {
     color: #fff; }
+  nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    display: block;
+    font-size: 2rem; }
   nav .nav-wrapper {
     position: relative;
     height: 100%; }
-    nav .nav-wrapper i {
-      display: block;
-      font-size: 2rem; }
   @media only screen and (min-width : 993px) {
     nav a.button-collapse {
       display: none; } }
