@@ -1,14 +1,17 @@
 @font-face {
     font-family: "Roboto";
-    src: local(Roboto Thin),
+    src: local(Roboto Thin), url('#{$roboto-font-path}Roboto-Thin.eot');
+    src: url("#{$roboto-font-path}Roboto-Thin.eot?#iefix") format('embedded-opentype'),
         url("#{$roboto-font-path}Roboto-Thin.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Thin.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Thin.ttf") format("truetype");
+
     font-weight: 200;
 }
 @font-face {
     font-family: "Roboto";
-    src: local(Roboto Light),
+    src: local(Roboto Light), url('#{$roboto-font-path}Roboto-Light.eot');
+    src: url("#{$roboto-font-path}Roboto-Light.eot?#iefix") format('embedded-opentype'),
         url("#{$roboto-font-path}Roboto-Light.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Light.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Light.ttf") format("truetype");
@@ -17,8 +20,8 @@
 
 @font-face {
     font-family: "Roboto";
-    src:
-        local(Roboto Regular),
+    src: local(Roboto Regular), url('#{$roboto-font-path}Roboto-Regular.eot');
+    src: url("#{$roboto-font-path}Roboto-Regular.eot?#iefix") format('embedded-opentype'),
         url("#{$roboto-font-path}Roboto-Regular.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Regular.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Regular.ttf") format("truetype");
@@ -27,7 +30,9 @@
 
 @font-face {
     font-family: "Roboto";
-    src: url("#{$roboto-font-path}Roboto-Medium.woff2") format("woff2"),
+    src: url('#{$roboto-font-path}Roboto-Medium.eot');
+    src: url("#{$roboto-font-path}Roboto-Medium.eot?#iefix") format('embedded-opentype'),
+        url("#{$roboto-font-path}Roboto-Medium.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Medium.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Medium.ttf") format("truetype");
     font-weight: 500;
@@ -35,7 +40,9 @@
 
 @font-face {
     font-family: "Roboto";
-    src: url("#{$roboto-font-path}Roboto-Bold.woff2") format("woff2"),
+    src: url('#{$roboto-font-path}Roboto-Bold.eot');
+    src: url("#{$roboto-font-path}Roboto-Bold.eot?#iefix") format('embedded-opentype'),
+        url("#{$roboto-font-path}Roboto-Bold.woff2") format("woff2"),
         url("#{$roboto-font-path}Roboto-Bold.woff") format("woff"),
         url("#{$roboto-font-path}Roboto-Bold.ttf") format("truetype");
     font-weight: 700;
