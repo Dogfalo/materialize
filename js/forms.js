@@ -186,7 +186,7 @@
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
         thumb = $('<span class="thumb"><span class="value"></span></span>');
-        $(this).append(thumb);
+        $(this).after(thumb);
       }
 
       // Set indicator value
