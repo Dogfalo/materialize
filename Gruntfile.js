@@ -53,7 +53,7 @@ module.exports = function(grunt) {
       // Compile ghpages css
       gh: {
         options: {
-          style: 'compressed',
+          outputStyle: 'compressed',
           sourcemap: false
         },
         files: {
@@ -61,10 +61,10 @@ module.exports = function(grunt) {
         }
       },
 
-      // Compile ghpages css
+      // Compile bin css
       bin: {
         options: {
-          style: 'expanded',
+          outputStyle: 'expanded',
           sourcemap: false
         },
         files: {
@@ -533,7 +533,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rename');
   grunt.loadNpmTasks("grunt-remove-logging");
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   // define the tasks
   grunt.registerTask(
