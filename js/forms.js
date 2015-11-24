@@ -294,11 +294,10 @@
       $select.data('select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
-      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>');
-      var selectOptions = $select.children('option');
-      var selectOptGroups = $select.children('optgroup');
-
-      var valuesSelected = [],
+      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
+          selectOptions = $select.children('option'),
+          selectOptGroups = $select.children('optgroup'),
+          valuesSelected = [],
           optionsHover = false;
 
       if ($select.find('option:selected').length > 0) {
@@ -350,7 +349,6 @@
         });
       } else {
         selectOptions.each(function () {
-          var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
           if (multiple) {
             appendOptionWithIcon($select, $(this), 'multiple');
 
@@ -360,27 +358,26 @@
         });
       }
 
-
       options.find('li:not(.optgroup)').each(function (i) {
-        var $curr_select = $select;
         $(this).click(function (e) {
           // Check if option element is disabled
           if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup')) {
+            var selected = true;
+
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              toggleEntryFromArray(valuesSelected, $(this).index(), $curr_select);
+              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
               $newSelect.trigger('focus');
-
             } else {
               options.find('li').removeClass('active');
               $(this).toggleClass('active');
-              $curr_select.siblings('input.select-dropdown').val($(this).text());
+              $newSelect.val($(this).text());
             }
 
             activateOption(options, $(this));
-            $curr_select.find('option').eq(i).prop('selected', true);
+            $select.find('option').eq(i).prop('selected', selected);
             // Trigger onchange() event
-            $curr_select.trigger('change');
+            $select.trigger('change');
             if (typeof callback !== 'undefined') callback();
           }
 
@@ -448,15 +445,31 @@
       });
 
       $(window).on({
-        'click': function (e){
+        'click': function () {
           multiple && (optionsHover || $newSelect.trigger('close'));
+        },
+        'resize': function () {
+          options.width($newSelect.width());
         }
+      });
+
+      $select.find("option:selected").each(function () {
+        var index = $(this).index();
+
+        toggleEntryFromArray(valuesSelected, index, $select);
+        options.find("li").eq(index).find(":checkbox").prop("checked", true);
       });
 
       // Make option as selected and scroll to selected position
       activateOption = function(collection, newOption) {
+        var option = $(newOption);
+
         collection.find('li.selected').removeClass('selected');
-        $(newOption).addClass('selected');
+        option.addClass('selected');
+        if (newOption) {
+          option.addClass('selected');
+          options.scrollTo(option);
+        }
       };
 
       // Allow user to search by typing
@@ -539,9 +552,10 @@
     });
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
-      var index = entriesArray.indexOf(entryIndex);
+      var index = entriesArray.indexOf(entryIndex),
+          notAdded = index === -1;
 
-      if (index === -1) {
+      if (notAdded) {
         entriesArray.push(entryIndex);
       } else {
         entriesArray.splice(index, 1);
@@ -550,6 +564,8 @@
       select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
       select.find('option').eq(entryIndex).prop('selected', true);
       setValueToInput(entriesArray, select);
+
+      return notAdded;
     }
 
     function setValueToInput(entriesArray, select) {
