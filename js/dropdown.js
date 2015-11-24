@@ -147,8 +147,8 @@
       isFocused = false;
       activates.fadeOut(options.outDuration);
       activates.removeClass('active');
-      activates.css('max-height', '');
       origin.removeClass('active');
+      setTimeout(function() { activates.css('max-height', ''); }, options.outDuration);
     }
 
     // Hover

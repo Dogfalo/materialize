@@ -447,26 +447,24 @@
       $(window).on({
         'click': function () {
           multiple && (optionsHover || $newSelect.trigger('close'));
-        },
-        'resize': function () {
-          options.width($newSelect.width());
         }
       });
 
-      $select.find("option:selected").each(function () {
-        var index = $(this).index();
+      // Add initial multiple selections.
+      if (multiple) {
+        $select.find("option:selected:not(:disabled)").each(function () {
+          var index = $(this).index();
 
-        toggleEntryFromArray(valuesSelected, index, $select);
-        options.find("li").eq(index).find(":checkbox").prop("checked", true);
-      });
+          toggleEntryFromArray(valuesSelected, index, $select);
+          options.find("li").eq(index).find(":checkbox").prop("checked", true);
+        });
+      }
 
       // Make option as selected and scroll to selected position
       activateOption = function(collection, newOption) {
-        var option = $(newOption);
-
-        collection.find('li.selected').removeClass('selected');
-        option.addClass('selected');
         if (newOption) {
+          collection.find('li.selected').removeClass('selected');
+          var option = $(newOption);
           option.addClass('selected');
           options.scrollTo(option);
         }
