@@ -32,6 +32,7 @@
 //      gradient($default,$start,$stop) *
 //          linear-gradient-top($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
 //          linear-gradient-left($default,$color1,$stop1,$color2,$stop2,[$color3,$stop3,$color4,$stop4])*
+//      perspective($pixels)
 //      transform($args)
 //          transform-origin($args)
 //          transform-style($style)
@@ -284,6 +285,13 @@
     background-image: -o-linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
     background-image: linear-gradient(left, $color1 $stop1, $color2 $stop2, $color3 $stop3, $color4 $stop4);
 }
+
+// Perspective
+@mixin perspective($pixels) {
+    perspective: $pixels;
+    -webkit-perspective: $pixels;
+}
+
 
 // Text Shadow
 

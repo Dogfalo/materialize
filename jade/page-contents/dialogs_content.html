@@ -21,7 +21,7 @@
         <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
         <a class="waves-effect waves-light btn" onclick="displayCustomHTMLToast()">Toast with Action</a>
         <pre><code class="language-javascript">
-  var $toastContent = $('<span>I am toast content</span>');
+  var $toastContent = $('&lt;span>I am toast content&lt;/span>');
   Materialize.toast($toastContent, 5000);
         </code></pre>
 

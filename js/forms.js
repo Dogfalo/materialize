@@ -118,9 +118,6 @@
                  .css('white-space', "pre");
       }
 
-
-
-
       hiddenDiv.text($textarea.val() + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
       hiddenDiv.html(content);
@@ -150,9 +147,7 @@
       textareaAutoResize($(this));
     });
 
-
     // File Input Path
-
     $(document).on('change', '.file-field input[type="file"]', function () {
       var file_field = $(this).closest('.file-field');
       var path_input = file_field.find('input.file-path');
@@ -164,7 +159,6 @@
       path_input.val(file_names.join(", "));
       path_input.trigger('change');
     });
-
 
     /****************
     *  Range Input  *
@@ -192,7 +186,7 @@
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
         thumb = $('<span class="thumb"><span class="value"></span></span>');
-        $(this).append(thumb);
+        $(this).after(thumb);
       }
 
       // Set indicator value
@@ -222,8 +216,6 @@
       }
 
       thumb.find('.value').html($(this).val());
-
-
     });
 
     $(document).on('mouseup touchend', range_wrapper, function() {
@@ -268,13 +260,11 @@
         thumb.removeClass('active');
       }
     });
-
   }); // End of $(document).ready
 
-
-
-
-  // Select Plugin
+  /*******************
+   *  Select Plugin  *
+   ******************/
   $.fn.material_select = function (callback) {
     $(this).each(function(){
       var $select = $(this);
@@ -304,19 +294,47 @@
       $select.data('select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
-      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>');
-      var selectOptions = $select.children('option');
-      var selectOptGroups = $select.children('optgroup');
-
-      var valuesSelected = [],
+      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
+          selectOptions = $select.children('option'),
+          selectOptGroups = $select.children('optgroup'),
+          valuesSelected = [],
           optionsHover = false;
 
-      var label;
-      if ($select.find('option:selected') !== undefined) {
+      if ($select.find('option:selected').length > 0) {
         label = $select.find('option:selected');
       } else {
-        label = options.first();
+        label = selectOptions.first();
       }
+
+      // Function that renders and appends the option taking into
+      // account type and possible image icon.
+      var appendOptionWithIcon = function(select, option, type) {
+        // Add disabled attr if disabled
+        var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
+
+        // add icons
+        var icon_url = option.data('icon');
+        var classes = option.attr('class');
+        if (!!icon_url) {
+          var classString = '';
+          if (!!classes) classString = ' class="' + classes + '"';
+
+          // Check for multiple type.
+          if (type === 'multiple') {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          } else {
+            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+          }
+          return true;
+        }
+
+        // Check for multiple type.
+        if (type === 'multiple') {
+          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+        } else {
+          options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+        }
+      };
 
       /* Create dropdown structure. */
       if (selectOptGroups.length) {
@@ -324,46 +342,42 @@
         selectOptGroups.each(function() {
           selectOptions = $(this).children('option');
           options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
+
           selectOptions.each(function() {
-            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           });
         });
-
       } else {
         selectOptions.each(function () {
-          // Add disabled attr if disabled
           if (multiple) {
-            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span><input type="checkbox"' + (($(this).is(':disabled')) ? 'disabled' : '') + '/><label></label>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this), 'multiple');
+
           } else {
-            options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + '"><span>' + $(this).html() + '</span></li>'));
+            appendOptionWithIcon($select, $(this));
           }
         });
       }
 
-
-
-
-
       options.find('li:not(.optgroup)').each(function (i) {
-        var $curr_select = $select;
         $(this).click(function (e) {
           // Check if option element is disabled
           if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup')) {
+            var selected = true;
+
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              toggleEntryFromArray(valuesSelected, $(this).index(), $curr_select);
+              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
               $newSelect.trigger('focus');
-
             } else {
               options.find('li').removeClass('active');
               $(this).toggleClass('active');
-              $curr_select.siblings('input.select-dropdown').val($(this).text());
+              $newSelect.val($(this).text());
             }
 
             activateOption(options, $(this));
-            $curr_select.find('option').eq(i).prop('selected', true);
+            $select.find('option').eq(i).prop('selected', selected);
             // Trigger onchange() event
-            $curr_select.trigger('change');
+            $select.trigger('change');
             if (typeof callback !== 'undefined') callback();
           }
 
@@ -385,7 +399,7 @@
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
-      $('body').append(options);
+      $newSelect.after(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false, 'closeOnClick': false});
@@ -405,6 +419,11 @@
           }
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
+            var label = $(this).val();
+            var selectedOption = options.find('li').filter(function() {
+              return $(this).text().toLowerCase() === label.toLowerCase();
+            })[0];
+            activateOption(options, selectedOption);
           }
         },
         'click': function (e){
@@ -426,15 +445,29 @@
       });
 
       $(window).on({
-        'click': function (e){
+        'click': function () {
           multiple && (optionsHover || $newSelect.trigger('close'));
         }
       });
 
+      // Add initial multiple selections.
+      if (multiple) {
+        $select.find("option:selected:not(:disabled)").each(function () {
+          var index = $(this).index();
+
+          toggleEntryFromArray(valuesSelected, index, $select);
+          options.find("li").eq(index).find(":checkbox").prop("checked", true);
+        });
+      }
+
       // Make option as selected and scroll to selected position
       activateOption = function(collection, newOption) {
-        collection.find('li.selected').removeClass('selected');
-        $(newOption).addClass('selected');
+        if (newOption) {
+          collection.find('li.selected').removeClass('selected');
+          var option = $(newOption);
+          option.addClass('selected');
+          options.scrollTo(option);
+        }
       };
 
       // Allow user to search by typing
@@ -517,9 +550,10 @@
     });
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
-      var index = entriesArray.indexOf(entryIndex);
+      var index = entriesArray.indexOf(entryIndex),
+          notAdded = index === -1;
 
-      if (index === -1) {
+      if (notAdded) {
         entriesArray.push(entryIndex);
       } else {
         entriesArray.splice(index, 1);
@@ -528,6 +562,8 @@
       select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
       select.find('option').eq(entryIndex).prop('selected', true);
       setValueToInput(entriesArray, select);
+
+      return notAdded;
     }
 
     function setValueToInput(entriesArray, select) {

@@ -26,9 +26,15 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/breadcrumbs.html',
+      title: 'Breadcrumbs',
+      body: 'There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/cards.html',
       title: 'Cards',
-      body: 'Cards are a convenient means of displaying content composed of different types of objects. They’re also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length.'
+      body: 'Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content.'
     });
 
     window.index.add({
