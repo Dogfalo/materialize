@@ -8,6 +8,18 @@
   padding: 0 12px;
   border-radius: 16px;
   background-color: $chip-bg-color;
+  
+  &.large {
+    height: 54px;
+    line-height: 54px;
+    border-radius: 25px;
+    padding-right: 7px;
+    
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
 
   img {
     float: left;
@@ -17,7 +29,7 @@
     border-radius: 50%;
   }
 
-  i.material-icons {
+  .close {
     cursor: pointer;
     float: right;
     font-size: 16px;
