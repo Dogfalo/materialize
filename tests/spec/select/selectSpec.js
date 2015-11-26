@@ -68,19 +68,27 @@ describe("Select Plugin", function () {
       setTimeout(function() {
         expect(multipleDropdown).toBeVisible('Should be visible after opening.');
         var firstOption = multipleDropdown.find('li:not(.disabled)').first();
+        var secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
         var thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
         firstOption.click();
-        thirdOption.click();
         $('body').click();
 
         setTimeout(function() {
           expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');
-          expect(multipleInput.val()).toEqual(firstOption[0].innerText + ', ' + thirdOption[0].innerText, 'Value should equal chosen multiple options.');
+          expect(multipleInput.val()).toEqual(secondOption[0].innerText + ', ' + thirdOption[0].innerText + ', ' + firstOption[0].innerText, 'Value should equal chosen multiple options.');
           done();
         }, 400);
       }, 400);
     });
 
+    it("should have multiple pre-selected values", function () {
+      multipleInput = browserSelect.parent().find('input.select-dropdown');
+      multipleDropdown = browserSelect.parent().find('ul.select-dropdown');
+
+      var secondOption = browserSelect.find('option[selected]').eq(0);
+      var thirdOption = browserSelect.find('option[selected]').eq(1);
+      expect(multipleInput.val()).toEqual(secondOption.text() + ', ' + thirdOption.text(), 'Value should be equal to preselected option.');
+    });
   });
 
   describe("Optgroup Select", function () {
