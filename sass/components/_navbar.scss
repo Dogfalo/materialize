@@ -13,6 +13,8 @@ nav {
   i.material-icons {
     display: block;
     font-size: 2rem;
+    height: $navbar-height-mobile;
+    line-height: $navbar-height-mobile;
   }
 
   .nav-wrapper {
