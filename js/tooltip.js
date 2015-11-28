@@ -1,9 +1,6 @@
 (function ($) {
     $.fn.tooltip = function (options) {
         var timeout = null,
-        counter = null,
-        started = false,
-        counterInterval = null,
         margin = 5;
 
       // Defaults
@@ -15,6 +12,7 @@
       if (options === "remove") {
         this.each(function(){
           $('#' + $(this).attr('data-tooltip-id')).remove();
+          $(this).off('mouseenter.tooltip mouseleave.tooltip');
         });
         return false;
       }
@@ -41,17 +39,17 @@
         backdrop.css({ top: 0, left:0 });
 
 
-       //Destroy previously binded events
+      //Destroy previously binded events
       origin.off('mouseenter.tooltip mouseleave.tooltip');
-        // Mouse In
+      // Mouse In
+      var started = false, timeoutRef;
       origin.on({
         'mouseenter.tooltip': function(e) {
-          var tooltip_delay = origin.data("delay");
-          tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ? options.delay : tooltip_delay;
-          counter = 0;
-          counterInterval = setInterval(function(){
-            counter += 10;
-            if (counter >= tooltip_delay && started === false) {
+          var tooltip_delay = origin.attr('data-delay');
+          tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ?
+              options.delay : tooltip_delay;
+          timeoutRef = setTimeout(function(){
+            if (started === false) {
               started = true;
               newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
@@ -150,14 +148,13 @@
               .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
 
             }
-          }, 10); // End Interval
+          }, tooltip_delay); // End Interval
 
         // Mouse Out
         },
         'mouseleave.tooltip': function(){
           // Reset State
-          clearInterval(counterInterval);
-          counter = 0;
+          clearTimeout(timeoutRef);
 
           // Animate back
           newTooltip.velocity({
