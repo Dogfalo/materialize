@@ -1,5 +1,3 @@
-jasmine.getFixtures().fixturesPath = 'tests/spec';
-
 describe("Select Plugin", function () {
   beforeEach(function() {
     loadFixtures('select/selectFixture.html');

@@ -1,5 +1,3 @@
-jasmine.getFixtures().fixturesPath = 'tests/spec';
-
 describe("Tabs Plugin", function () {
   beforeEach(function() {
     loadFixtures('tabs/tabsFixture.html');
