@@ -2370,7 +2370,6 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
-  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
@@ -2488,8 +2487,7 @@ input {
  */
 input[type="checkbox"],
 input[type="radio"] {
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -2513,7 +2511,6 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -2579,13 +2576,11 @@ th {
 }
 
 html {
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *, *:before, *:after {
-  -moz-box-sizing: inherit;
-       box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 ul {
@@ -2600,11 +2595,9 @@ a {
 
 .valign-wrapper {
   display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-     -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
@@ -3156,8 +3149,7 @@ span.badge {
   color: #757575;
   position: absolute;
   right: 15px;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 span.badge.new {
@@ -6695,8 +6687,7 @@ nav ul a span.badge {
 
 .row .col {
   float: left;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0 0.75rem;
 }
 
@@ -7898,15 +7889,12 @@ small {
   font-weight: 300;
   color: #fff;
   display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-     -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-justify-content: space-between;
-     -moz-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
@@ -7941,7 +7929,6 @@ small {
 
 .tabs {
   display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
@@ -7958,8 +7945,7 @@ small {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
-  -moz-box-flex: 1;
-       flex-grow: 1;
+  flex-grow: 1;
   display: block;
   float: left;
   text-align: center;
@@ -8497,8 +8483,7 @@ a.waves-effect .waves-ripple {
 .collapsible-body {
   display: none;
   border-bottom: 1px solid #ddd;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .collapsible-body p {
@@ -8583,7 +8568,6 @@ a.waves-effect .waves-ripple {
 .materialboxed {
   display: block;
   cursor: -webkit-zoom-in;
-  cursor: -moz-zoom-in;
   cursor: zoom-in;
   position: relative;
   transition: opacity .4s;
@@ -8599,7 +8583,6 @@ a.waves-effect .waves-ripple {
 
 .materialboxed.active {
   cursor: -webkit-zoom-out;
-  cursor: -moz-zoom-out;
   cursor: zoom-out;
 }
 
@@ -8686,8 +8669,7 @@ textarea.materialize-textarea {
   margin: 0 0 15px 0;
   padding: 0;
   box-shadow: none;
-  -moz-box-sizing: content-box;
-       box-sizing: content-box;
+  box-sizing: content-box;
   transition: all .3s;
 }
 
@@ -10727,8 +10709,7 @@ select {
   padding: .5em 1.25em;
   width: 1em;
   height: 1em;
-  -moz-box-sizing: content-box;
-       box-sizing: content-box;
+  box-sizing: content-box;
   top: -0.25em;
 }
 
@@ -10862,15 +10843,12 @@ select {
 .picker__footer {
   text-align: center;
   display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-     -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-justify-content: space-between;
-     -moz-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
