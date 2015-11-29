@@ -20,6 +20,7 @@ module.exports = function(grunt) {
           ],
           styles: 'bin/materialize.css',
           specs: 'tests/spec/**/*Spec.js',
+          helpers: 'tests/spec/helper.js',
           keepRunner : true,
           //helpers: 'test/spec/*.js'
         }
