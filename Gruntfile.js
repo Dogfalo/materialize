@@ -73,6 +73,29 @@ module.exports = function(grunt) {
       }
     },
 
+    // PostCss Autoprefixer
+    postcss: {
+      options: {
+        processors: [
+          require('autoprefixer')({
+            browsers: ['last 2 versions', 'ie >= 10', 'firefox 20']
+          })
+        ]
+      },
+      expended: {
+        src: 'dist/css/materialize.css'
+      },
+      min: {
+        src: 'dist/css/materialize.min.css'
+      },
+      gh: {
+        src: 'css/ghpages-materialize.css'
+      },
+      bin: {
+        src: 'bin/materialize.css'
+      }
+    },
+
   // Browser Sync integration
     browserSync: {
       bsFiles: ["bin/*.js", "bin/*.css", "!**/node_modules/**/*"],
@@ -534,9 +557,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename');
-  grunt.loadNpmTasks("grunt-remove-logging");
+  grunt.loadNpmTasks('grunt-remove-logging');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-postcss');
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -544,6 +568,8 @@ module.exports = function(grunt) {
       'copy',
       'sass:expanded',
       'sass:min',
+      'postcss:expended',
+      'postcss:min',
       'concat:dist',
       'uglify:dist',
       'uglify:extras',
@@ -561,9 +587,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
-  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
+  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
-  grunt.registerTask("monitor", ["concurrent:monitor"]);
+  grunt.registerTask('monitor', ["concurrent:monitor"]);
   grunt.registerTask('travis', ['jasmine']);
 };

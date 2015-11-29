@@ -29,7 +29,7 @@
 .collapsible-body {
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
-  @include box-sizing(border-box);
+  box-sizing: border-box;
 
   p {
     margin: 0;

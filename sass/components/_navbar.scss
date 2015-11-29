@@ -53,16 +53,16 @@ nav {
 
     &.center {
       left: 50%;
-      @include transform(translateX(-50%));
+      transform: translateX(-50%);
     }
 
     @media #{$medium-and-down} {
       left: 50%;
-      @include transform(translateX(-50%));
+      transform: translateX(-50%);
 
       &.left, &.right {
         padding: 0;
-        @include transform(none);
+        transform: none;
       }
 
       &.left { left: 0.5rem; }
@@ -84,7 +84,7 @@ nav {
     margin: 0;
 
     li {
-      @include transition(background-color .3s);
+      transition: background-color .3s;
       float: left;
       padding: 0;
 
@@ -126,11 +126,11 @@ nav {
 
       i {
         color: rgba(255,255,255,.7);
-        @include transition(color .3s);
+        transition: color .3s;
       }
       &.active i { color: $navbar-font-color; }
       &.active {
-        @include transform(translateY(0));
+        transform: translateY(0);
       }
     }
 
