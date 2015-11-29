@@ -1,5 +1,3 @@
-jasmine.getFixtures().fixturesPath = 'tests/spec';
-
 describe( "Cards", function () {
   var reveal;
 
