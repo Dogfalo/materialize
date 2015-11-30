@@ -152,7 +152,17 @@
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript">
   $(document).ready(function(){
-    $('.scrollspy').scrollSpy();
+    $('.scrollspy').scrollSpy({
+      throttle : 100, //-> scrollspy throttling.
+      offsetTop : 0, //-> offset from top.
+      offsetRight : 0, //-> offset from right.
+      offsetBottom : 0, //-> offset from bottom.
+      offsetLeft : 0, //-> offset from left.
+      activeClass : 'active', //-> the class will be added to the element.
+      getActiveElement : function(base){ //-> return the jQuery element where add the class.
+        return base; // -> return the link element itself.
+      }
+    });
   });
         </code></pre>
       </div>
