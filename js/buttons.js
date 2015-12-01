@@ -33,6 +33,7 @@
       openFABMenu($this);
     },
     closeFAB: function() {
+      var $this = $(this);
       closeFABMenu($this);
     }
   });
