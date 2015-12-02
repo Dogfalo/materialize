@@ -295,8 +295,7 @@
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
       var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
-          selectOptions = $select.children('option'),
-          selectOptGroups = $select.children('optgroup'),
+          selectChildren = $select.children('option, optgroup'),
           valuesSelected = [],
           optionsHover = false;
 
@@ -337,23 +336,24 @@
       };
 
       /* Create dropdown structure. */
-      if (selectOptGroups.length) {
-        // Check for optgroup
-        selectOptGroups.each(function() {
-          selectOptions = $(this).children('option');
-          options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
+      if (selectChildren.length) {
+        selectChildren.each(function() {
+          if ($(this).is('option')) {
+            // Direct descendant option.
+            if (multiple) {
+              appendOptionWithIcon($select, $(this), 'multiple');
 
-          selectOptions.each(function() {
-            appendOptionWithIcon($select, $(this));
-          });
-        });
-      } else {
-        selectOptions.each(function () {
-          if (multiple) {
-            appendOptionWithIcon($select, $(this), 'multiple');
+            } else {
+              appendOptionWithIcon($select, $(this));
+            }
+          } else if ($(this).is('optgroup')) {
+            // Optgroup.
+            var selectOptions = $(this).children('option');
+            options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
-          } else {
-            appendOptionWithIcon($select, $(this));
+            selectOptions.each(function() {
+              appendOptionWithIcon($select, $(this));
+            });
           }
         });
       }
