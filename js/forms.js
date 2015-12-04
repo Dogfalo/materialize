@@ -560,7 +560,7 @@
       }
 
       select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
-      select.find('option').eq(entryIndex).prop('selected', true);
+      select.find('option').eq(entryIndex).prop('selected', notAdded);
       setValueToInput(entriesArray, select);
 
       return notAdded;
