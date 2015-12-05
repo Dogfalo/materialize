@@ -15,7 +15,8 @@
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false,
-      alignment: 'left'
+      alignment: 'left',
+			dropUp: false
     };
 
     this.each(function(){
@@ -125,25 +126,29 @@
 			
 			// If dropUp is enabled
       if (options.dropUp == true) {
+				var bottom_offset = 0;
         if (options.belowOrigin == false) {
           // Open menu on top of button, if dropUp is on AND belowOrigin is false
-          top_offset = origin.position().top-activates.height() + origin.height();
-        } else {
-          // Show menu above button, if dropUp is enabled, belowOrigin is true
-          top_offset = origin.position().top-activates.height();
+          bottom_offset += origin.height();
         }
+				
+				// Position dropdown
+				activates.css({
+					position: 'absolute',
+					bottom: $(window).height() - origin.position().top - bottom_offset,
+					left: leftPosition
+				});
       } else {
         // Show regular menu
-        top_offset = origin.position().top + verticalOffset;
+				
+				// Position dropdown
+				activates.css({
+					position: 'absolute',
+					top: origin.position().top + verticalOffset,
+					left: leftPosition
+				});
       }
-
-      // Position dropdown
-      activates.css({
-        position: 'absolute',
-				top: top_offset,
-        left: leftPosition
-      });
-
+			
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
