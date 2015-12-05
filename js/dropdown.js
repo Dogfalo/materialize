@@ -124,7 +124,7 @@
         leftPosition =  offsetRight + gutterSpacing;
       }
 			
-			// If dropUp is enabled
+			
       if (options.dropUp == true) {
 				var bottom_offset = 0;
         if (options.belowOrigin == false) {
@@ -132,10 +132,25 @@
           bottom_offset += origin.height();
         }
 				
+				// If dropUp is enabled
+				var el = origin.parent();
+				var parentHeight = null;
+				while(el[0].tagName != 'BODY') {
+					var position = el.css('position');
+					if (position == 'relative' || position == 'absolute') {
+						parentHeight = el.height();
+						break;
+					}
+					el = el.parent();
+				}
+				if (parentHeight == null) {
+					parentHeight = $(window).height();
+				}
+				
 				// Position dropdown
 				activates.css({
 					position: 'absolute',
-					bottom: $(window).height() - origin.position().top - bottom_offset,
+					bottom: parentHeight - origin.position().top - bottom_offset,
 					left: leftPosition
 				});
       } else {
