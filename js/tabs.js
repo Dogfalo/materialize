@@ -10,7 +10,7 @@
           window_width = $(window).width();
 
       $this.width('100%');
-      var $active, $content, $links = $this.find('li.tab a'),
+      var $active, $content, $links = $this.find('li.tab:visible a'),
           $tabs_width = $this.width(),
           $tab_width = $this.find('li').first().outerWidth(),
           $index = 0;
@@ -76,7 +76,7 @@
         // Update the variables with the new link and content
         $active = $(this);
         $content = $(this.hash);
-        $links = $this.find('li.tab a');
+        $links = $this.find('li.tab:visible a');
 
         // Make the tab active.
         $active.addClass('active');
