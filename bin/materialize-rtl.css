@@ -5112,8 +5112,7 @@ nav ul a span.badge {
     .row .col[class*="push-"], .row .col[class*="pull-"] {
       position: relative; }
     .row .col.s1 {
-      width: 8.33333%;
-      margin-left: 0; }
+      width: 8.33333%; }
     .row .col.offset-s1 {
       margin-right: 8.33333%; }
     .row .col.pull-s1 {
@@ -5121,8 +5120,7 @@ nav ul a span.badge {
     .row .col.push-s1 {
       right: 8.33333%; }
     .row .col.s2 {
-      width: 16.66667%;
-      margin-left: 0; }
+      width: 16.66667%; }
     .row .col.offset-s2 {
       margin-right: 16.66667%; }
     .row .col.pull-s2 {
@@ -5130,8 +5128,7 @@ nav ul a span.badge {
     .row .col.push-s2 {
       right: 16.66667%; }
     .row .col.s3 {
-      width: 25%;
-      margin-left: 0; }
+      width: 25%; }
     .row .col.offset-s3 {
       margin-right: 25%; }
     .row .col.pull-s3 {
@@ -5139,8 +5136,7 @@ nav ul a span.badge {
     .row .col.push-s3 {
       right: 25%; }
     .row .col.s4 {
-      width: 33.33333%;
-      margin-left: 0; }
+      width: 33.33333%; }
     .row .col.offset-s4 {
       margin-right: 33.33333%; }
     .row .col.pull-s4 {
@@ -5148,8 +5144,7 @@ nav ul a span.badge {
     .row .col.push-s4 {
       right: 33.33333%; }
     .row .col.s5 {
-      width: 41.66667%;
-      margin-left: 0; }
+      width: 41.66667%; }
     .row .col.offset-s5 {
       margin-right: 41.66667%; }
     .row .col.pull-s5 {
@@ -5157,8 +5152,7 @@ nav ul a span.badge {
     .row .col.push-s5 {
       right: 41.66667%; }
     .row .col.s6 {
-      width: 50%;
-      margin-left: 0; }
+      width: 50%; }
     .row .col.offset-s6 {
       margin-right: 50%; }
     .row .col.pull-s6 {
@@ -5166,8 +5160,7 @@ nav ul a span.badge {
     .row .col.push-s6 {
       right: 50%; }
     .row .col.s7 {
-      width: 58.33333%;
-      margin-left: 0; }
+      width: 58.33333%; }
     .row .col.offset-s7 {
       margin-right: 58.33333%; }
     .row .col.pull-s7 {
@@ -5175,8 +5168,7 @@ nav ul a span.badge {
     .row .col.push-s7 {
       right: 58.33333%; }
     .row .col.s8 {
-      width: 66.66667%;
-      margin-left: 0; }
+      width: 66.66667%; }
     .row .col.offset-s8 {
       margin-right: 66.66667%; }
     .row .col.pull-s8 {
@@ -5184,8 +5176,7 @@ nav ul a span.badge {
     .row .col.push-s8 {
       right: 66.66667%; }
     .row .col.s9 {
-      width: 75%;
-      margin-left: 0; }
+      width: 75%; }
     .row .col.offset-s9 {
       margin-right: 75%; }
     .row .col.pull-s9 {
@@ -5193,8 +5184,7 @@ nav ul a span.badge {
     .row .col.push-s9 {
       right: 75%; }
     .row .col.s10 {
-      width: 83.33333%;
-      margin-left: 0; }
+      width: 83.33333%; }
     .row .col.offset-s10 {
       margin-right: 83.33333%; }
     .row .col.pull-s10 {
@@ -5202,8 +5192,7 @@ nav ul a span.badge {
     .row .col.push-s10 {
       right: 83.33333%; }
     .row .col.s11 {
-      width: 91.66667%;
-      margin-left: 0; }
+      width: 91.66667%; }
     .row .col.offset-s11 {
       margin-right: 91.66667%; }
     .row .col.pull-s11 {
@@ -5211,8 +5200,7 @@ nav ul a span.badge {
     .row .col.push-s11 {
       right: 91.66667%; }
     .row .col.s12 {
-      width: 100%;
-      margin-left: 0; }
+      width: 100%; }
     .row .col.offset-s12 {
       margin-right: 100%; }
     .row .col.pull-s12 {
@@ -5221,8 +5209,7 @@ nav ul a span.badge {
       right: 100%; }
     @media only screen and (min-width : 601px) {
       .row .col.m1 {
-        width: 8.33333%;
-        margin-left: 0; }
+        width: 8.33333%; }
       .row .col.offset-m1 {
         margin-right: 8.33333%; }
       .row .col.pull-m1 {
@@ -5230,8 +5217,7 @@ nav ul a span.badge {
       .row .col.push-m1 {
         right: 8.33333%; }
       .row .col.m2 {
-        width: 16.66667%;
-        margin-left: 0; }
+        width: 16.66667%; }
       .row .col.offset-m2 {
         margin-right: 16.66667%; }
       .row .col.pull-m2 {
@@ -5239,8 +5225,7 @@ nav ul a span.badge {
       .row .col.push-m2 {
         right: 16.66667%; }
       .row .col.m3 {
-        width: 25%;
-        margin-left: 0; }
+        width: 25%; }
       .row .col.offset-m3 {
         margin-right: 25%; }
       .row .col.pull-m3 {
@@ -5248,8 +5233,7 @@ nav ul a span.badge {
       .row .col.push-m3 {
         right: 25%; }
       .row .col.m4 {
-        width: 33.33333%;
-        margin-left: 0; }
+        width: 33.33333%; }
       .row .col.offset-m4 {
         margin-right: 33.33333%; }
       .row .col.pull-m4 {
@@ -5257,8 +5241,7 @@ nav ul a span.badge {
       .row .col.push-m4 {
         right: 33.33333%; }
       .row .col.m5 {
-        width: 41.66667%;
-        margin-left: 0; }
+        width: 41.66667%; }
       .row .col.offset-m5 {
         margin-right: 41.66667%; }
       .row .col.pull-m5 {
@@ -5266,8 +5249,7 @@ nav ul a span.badge {
       .row .col.push-m5 {
         right: 41.66667%; }
       .row .col.m6 {
-        width: 50%;
-        margin-left: 0; }
+        width: 50%; }
       .row .col.offset-m6 {
         margin-right: 50%; }
       .row .col.pull-m6 {
@@ -5275,8 +5257,7 @@ nav ul a span.badge {
       .row .col.push-m6 {
         right: 50%; }
       .row .col.m7 {
-        width: 58.33333%;
-        margin-left: 0; }
+        width: 58.33333%; }
       .row .col.offset-m7 {
         margin-right: 58.33333%; }
       .row .col.pull-m7 {
@@ -5284,8 +5265,7 @@ nav ul a span.badge {
       .row .col.push-m7 {
         right: 58.33333%; }
       .row .col.m8 {
-        width: 66.66667%;
-        margin-left: 0; }
+        width: 66.66667%; }
       .row .col.offset-m8 {
         margin-right: 66.66667%; }
       .row .col.pull-m8 {
@@ -5293,8 +5273,7 @@ nav ul a span.badge {
       .row .col.push-m8 {
         right: 66.66667%; }
       .row .col.m9 {
-        width: 75%;
-        margin-left: 0; }
+        width: 75%; }
       .row .col.offset-m9 {
         margin-right: 75%; }
       .row .col.pull-m9 {
@@ -5302,8 +5281,7 @@ nav ul a span.badge {
       .row .col.push-m9 {
         right: 75%; }
       .row .col.m10 {
-        width: 83.33333%;
-        margin-left: 0; }
+        width: 83.33333%; }
       .row .col.offset-m10 {
         margin-right: 83.33333%; }
       .row .col.pull-m10 {
@@ -5311,8 +5289,7 @@ nav ul a span.badge {
       .row .col.push-m10 {
         right: 83.33333%; }
       .row .col.m11 {
-        width: 91.66667%;
-        margin-left: 0; }
+        width: 91.66667%; }
       .row .col.offset-m11 {
         margin-right: 91.66667%; }
       .row .col.pull-m11 {
@@ -5320,8 +5297,7 @@ nav ul a span.badge {
       .row .col.push-m11 {
         right: 91.66667%; }
       .row .col.m12 {
-        width: 100%;
-        margin-left: 0; }
+        width: 100%; }
       .row .col.offset-m12 {
         margin-right: 100%; }
       .row .col.pull-m12 {
@@ -5330,8 +5306,7 @@ nav ul a span.badge {
         right: 100%; } }
     @media only screen and (min-width : 993px) {
       .row .col.l1 {
-        width: 8.33333%;
-        margin-left: 0; }
+        width: 8.33333%; }
       .row .col.offset-l1 {
         margin-right: 8.33333%; }
       .row .col.pull-l1 {
@@ -5339,8 +5314,7 @@ nav ul a span.badge {
       .row .col.push-l1 {
         right: 8.33333%; }
       .row .col.l2 {
-        width: 16.66667%;
-        margin-left: 0; }
+        width: 16.66667%; }
       .row .col.offset-l2 {
         margin-right: 16.66667%; }
       .row .col.pull-l2 {
@@ -5348,8 +5322,7 @@ nav ul a span.badge {
       .row .col.push-l2 {
         right: 16.66667%; }
       .row .col.l3 {
-        width: 25%;
-        margin-left: 0; }
+        width: 25%; }
       .row .col.offset-l3 {
         margin-right: 25%; }
       .row .col.pull-l3 {
@@ -5357,8 +5330,7 @@ nav ul a span.badge {
       .row .col.push-l3 {
         right: 25%; }
       .row .col.l4 {
-        width: 33.33333%;
-        margin-left: 0; }
+        width: 33.33333%; }
       .row .col.offset-l4 {
         margin-right: 33.33333%; }
       .row .col.pull-l4 {
@@ -5366,8 +5338,7 @@ nav ul a span.badge {
       .row .col.push-l4 {
         right: 33.33333%; }
       .row .col.l5 {
-        width: 41.66667%;
-        margin-left: 0; }
+        width: 41.66667%; }
       .row .col.offset-l5 {
         margin-right: 41.66667%; }
       .row .col.pull-l5 {
@@ -5375,8 +5346,7 @@ nav ul a span.badge {
       .row .col.push-l5 {
         right: 41.66667%; }
       .row .col.l6 {
-        width: 50%;
-        margin-left: 0; }
+        width: 50%; }
       .row .col.offset-l6 {
         margin-right: 50%; }
       .row .col.pull-l6 {
@@ -5384,8 +5354,7 @@ nav ul a span.badge {
       .row .col.push-l6 {
         right: 50%; }
       .row .col.l7 {
-        width: 58.33333%;
-        margin-left: 0; }
+        width: 58.33333%; }
       .row .col.offset-l7 {
         margin-right: 58.33333%; }
       .row .col.pull-l7 {
@@ -5393,8 +5362,7 @@ nav ul a span.badge {
       .row .col.push-l7 {
         right: 58.33333%; }
       .row .col.l8 {
-        width: 66.66667%;
-        margin-left: 0; }
+        width: 66.66667%; }
       .row .col.offset-l8 {
         margin-right: 66.66667%; }
       .row .col.pull-l8 {
@@ -5402,8 +5370,7 @@ nav ul a span.badge {
       .row .col.push-l8 {
         right: 66.66667%; }
       .row .col.l9 {
-        width: 75%;
-        margin-left: 0; }
+        width: 75%; }
       .row .col.offset-l9 {
         margin-right: 75%; }
       .row .col.pull-l9 {
@@ -5411,8 +5378,7 @@ nav ul a span.badge {
       .row .col.push-l9 {
         right: 75%; }
       .row .col.l10 {
-        width: 83.33333%;
-        margin-left: 0; }
+        width: 83.33333%; }
       .row .col.offset-l10 {
         margin-right: 83.33333%; }
       .row .col.pull-l10 {
@@ -5420,8 +5386,7 @@ nav ul a span.badge {
       .row .col.push-l10 {
         right: 83.33333%; }
       .row .col.l11 {
-        width: 91.66667%;
-        margin-left: 0; }
+        width: 91.66667%; }
       .row .col.offset-l11 {
         margin-right: 91.66667%; }
       .row .col.pull-l11 {
@@ -5429,8 +5394,7 @@ nav ul a span.badge {
       .row .col.push-l11 {
         right: 91.66667%; }
       .row .col.l12 {
-        width: 100%;
-        margin-left: 0; }
+        width: 100%; }
       .row .col.offset-l12 {
         margin-right: 100%; }
       .row .col.pull-l12 {
