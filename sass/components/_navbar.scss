@@ -88,15 +88,25 @@ nav {
       float: left;
       padding: 0;
 
-      &:hover, &.active {
+      &.active {
         background-color: rgba(0,0,0,.1);
       }
     }
     a {
+      transition: background-color .3s;
       font-size: 1rem;
       color: $navbar-font-color;
       display: block;
       padding: 0 15px;
+
+      &.btn, &.btn-large {
+          margin-left: 10px;
+          margin-right: 10px;
+      }
+
+      &:hover {
+        background-color: rgba(0,0,0,.1);
+      }
     }
 
     &.left {
