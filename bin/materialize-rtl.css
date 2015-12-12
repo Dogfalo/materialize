@@ -5364,6 +5364,11 @@ nav {
   line-height: 56px; }
   nav a {
     color: #fff; }
+  nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+  display: block;
+  font-size: 2rem;
+  height: 56px;
+  line-height: 56px; }  
   nav .nav-wrapper {
     position: relative;
     height: 100%; }
