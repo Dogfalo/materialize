@@ -98,8 +98,9 @@ nav {
       color: $navbar-font-color;
       display: block;
       padding: 0 15px;
+      cursor: pointer;
 
-      &.btn, &.btn-large {
+      &.btn, &.btn-large, &.btn-flat, &.btn-floating {
           margin-left: 10px;
           margin-right: 10px;
       }
