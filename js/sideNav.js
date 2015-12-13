@@ -65,12 +65,10 @@
         }
 
         // if closeOnClick, then add close event for all a tags in side sideNav
-        if (options.closeOnClick === true) {
-          if (window.innerWidth < 992 || options.closeOnLarge === true) {
-            menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
-              removeMenu();
-            });
-          }
+        if (options.closeOnClick === true && (window.innerWidth < 992 || options.closeOnLarge === true)) {
+          menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
+            removeMenu();
+          });
         }
 
         function removeMenu(restoreNav) {
