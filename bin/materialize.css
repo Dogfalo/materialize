@@ -7869,6 +7869,7 @@ small {
   #toast-container {
     left: 5%;
     bottom: 7%;
+    max-width: 90%;
   }
 }
 
@@ -7876,6 +7877,7 @@ small {
   #toast-container {
     top: 10%;
     right: 7%;
+    max-width: 86%;
   }
 }
 
@@ -8915,7 +8917,8 @@ textarea.materialize-textarea + label:after {
 }
 
 .input-field .prefix ~ input,
-.input-field .prefix ~ textarea {
+.input-field .prefix ~ textarea,
+.input-field .prefix ~ .select-wrapper {
   margin-left: 3rem;
   width: 92%;
   width: calc(100% - 3rem);
