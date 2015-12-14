@@ -204,26 +204,13 @@ video.responsive-video {
     font-size: 24px;
   }
 
-  &:before {
-    content: '\E5CC';
-    color: rgba(255,255,255, .7);
-    vertical-align: top;
-    display: inline-block;
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 25px;
-    margin: 0 10px 0 8px;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  &:first-child:before {
-    display: none;
-  }
-
   &:last-child {
     color: #fff;
   }
+}
+
+.breadcrumbs .separator {
+  padding: 0 1rem;
 }
 
 
@@ -715,6 +702,18 @@ nav ul a span.badge {
 .hide {
   display: none !important;
 }
+
+// Screen reader only : hide content, for accessility purpose
+ .sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   margin: -1px;
+   padding: 0;
+   overflow: hidden;
+   clip: rect(0,0,0,0);
+   border: 0;
+ }
 
 // Text Align
 .left-align {
