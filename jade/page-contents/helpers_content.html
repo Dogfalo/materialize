@@ -100,6 +100,20 @@
   &lt;div class="hide-on-small-only">&lt;/div>
         </code></pre><br>
 
+        <p>
+          We also provide a dedicated class in order to hide contents (ie aria labels, descriptions) that have to be read by screen readers.
+        </p>
+        <h5 class="light">Here is an example</h5>
+        <pre><code class="language-markup">
+  &lt;div id="modal1" class="modal" aria-labelledby="myAriaLabel" aria-describedby="myAriaDescription">
+    &lt;div class="modal-content">
+      &lt;h4 id="myAriaLabel">Modal Header&lt;/h4>
+      &lt;p id="myAriaDescription" class="sr-only">This is a helpfull description that would be read by screen readers and help people with disabilities to have a better understanding of what that modal is aimed to do… &lt;/p>
+      &lt;p>A bunch of text&lt;/p>
+    &lt;/div>
+  &lt;/div>
+        </code></pre><br>
+
       </div><!--  End Hiding Section  -->
 
 

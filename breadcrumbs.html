@@ -118,16 +118,26 @@
 
         <div class="row">
           <div class="col s12">
-            <p class="caption">Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content. </p>
+            <p class="caption">Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content.
+            <br/>
+            For accessibility purpose it has to be an ordered list with a dedicated label (optional).
+            </p>
             <h2 class="header">Basic</h2>
 
             <nav>
               <div class="nav-wrapper">
-                <div class="col s12">
-                  <a href="#!" class="breadcrumb">First</a>
-                  <a href="#!" class="breadcrumb">Second</a>
-                  <a href="#!" class="breadcrumb">Third</a>
-                </div>
+                <p id="breadcrumblabel" class="sr-only">You are here:</p>
+                <ol class="breadcrumbs col s12" aria-labelledby="breadcrumblabel">
+                  <li class="breadcrumb">
+                    <a href="#!">First</a>
+                  </li>
+                  <li class="breadcrumb">
+                    <a href="#!">Second</a>
+                  </li>
+                  <li class="breadcrumb">
+                    <a href="#!">Third</a>
+                  </li>
+                </ol>
               </div>
             </nav>
 
@@ -135,11 +145,18 @@
             <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
-      &lt;div class="col s12">
-        &lt;a href="#!" class="breadcrumb">First&lt;/a>
-        &lt;a href="#!" class="breadcrumb">Second&lt;/a>
-        &lt;a href="#!" class="breadcrumb">Third&lt;/a>
-      &lt;/div>
+      &lt;p id="breadcrumblabel" class="sr-only">You are here:&lt;/p>
+      &lt;ol class="breadcrumbs col s12" aria-labelledby="breadcrumblabel">
+        &lt;li class="breadcrumb">
+          &lt;a href="#!">First&lt;/a>
+        &lt;/li>
+        &lt;li class="breadcrumb">
+          &lt;a href="#!">Second&lt;/a>
+        &lt;/li>
+        &lt;li class="breadcrumb">
+          &lt;a href="#!">Third&lt;/a>
+        &lt;/li>
+      &lt;/ol>
     &lt;/div>
   &lt;/nav>
             </code></pre>

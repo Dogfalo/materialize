@@ -2755,8 +2755,21 @@ video.responsive-video {
   }
 }
 
+ol.breadcrumbs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol.breadcrumbs li {
+  display: inline;
+}
+
 .breadcrumb {
   font-size: 18px;
+}
+
+.breadcrumb a {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -2785,7 +2798,7 @@ video.responsive-video {
   display: none;
 }
 
-.breadcrumb:last-child {
+.breadcrumb:last-child a {
   color: #fff;
 }
 
@@ -3301,6 +3314,17 @@ nav ul a span.badge {
 *******************/
 .hide {
   display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .left-align {
