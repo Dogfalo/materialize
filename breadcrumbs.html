@@ -118,28 +118,31 @@
 
         <div class="row">
           <div class="col s12">
-            <p class="caption">Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content. </p>
+            <p class="caption">Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content.
+            <br/>
+            Separators have to be manually set for accessibility purpose (we don't want screen readers to explicitely say "greater than" or any other special character you'd like to use).
+            </p>
             <h2 class="header">Basic</h2>
 
-            <nav>
-              <div class="nav-wrapper">
-                <div class="col s12">
-                  <a href="#!" class="breadcrumb">First</a>
-                  <a href="#!" class="breadcrumb">Second</a>
-                  <a href="#!" class="breadcrumb">Third</a>
-                </div>
+            <nav class="breadcrumbs" role="navigation" aria-label="You are here:">
+              <div class="nav-wrapper col s12">
+                <a href="#!" class="breadcrumb">First</a>
+                <span aria-hidden="true" class="separator">›</span>
+                <a href="#!" class="breadcrumb">Second</a>
+                <span aria-hidden="true" class="separator">›</span>
+                <a href="#!" class="breadcrumb">Third</a>
               </div>
             </nav>
 
             <br><br>
             <pre><code class="language-markup">
-  &lt;nav>
-    &lt;div class="nav-wrapper">
-      &lt;div class="col s12">
-        &lt;a href="#!" class="breadcrumb">First&lt;/a>
-        &lt;a href="#!" class="breadcrumb">Second&lt;/a>
-        &lt;a href="#!" class="breadcrumb">Third&lt;/a>
-      &lt;/div>
+  &lt;nav class="breadcrumbs" role="navigation" aria-label="You are here:">
+    &lt;div class="nav-wrapper col s12">
+      &lt;a href="#!" class="breadcrumb">First&lt;/a>
+      &lt;span aria-hidden="true" class="separator">›&lt;/span>
+      &lt;a href="#!" class="breadcrumb">Second&lt;/a>
+      &lt;span aria-hidden="true" class="separator">›&lt;/span>
+      &lt;a href="#!" class="breadcrumb">Third&lt;/a>
     &lt;/div>
   &lt;/nav>
             </code></pre>
