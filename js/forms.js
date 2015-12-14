@@ -299,11 +299,7 @@
           valuesSelected = [],
           optionsHover = false;
 
-      if ($select.find('option:selected').length > 0) {
-        label = $select.find('option:selected');
-      } else {
-        label = selectOptions.first();
-      }
+      var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
       // Function that renders and appends the option taking into
       // account type and possible image icon.
@@ -393,7 +389,7 @@
         dropdownIcon.addClass('disabled');
 
       // escape double quotes
-      var sanitizedLabelHtml = label.html() && label.html().replace(/"/g, '&quot;');
+      var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
 
       var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
@@ -560,7 +556,9 @@
       }
 
       select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
-      select.find('option').eq(entryIndex).prop('selected', true);
+
+      // use notAdded instead of true (to detect if the option is selected or not)
+      select.find('option').eq(entryIndex).prop('selected', notAdded);
       setValueToInput(entriesArray, select);
 
       return notAdded;
