@@ -16,6 +16,7 @@
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
+	var dropdown_selector = '.select-wrapper';
 
     // Handle HTML5 autofocus
     $('input[autofocus]').siblings('label, i').addClass('active');
@@ -56,6 +57,14 @@
     $(document).on('focus', input_selector, function () {
       $(this).siblings('label, i').addClass('active');
     });
+	
+	$(document).on('focus', dropdown_selector, function () {
+      $(this).siblings('i').addClass('active');
+    });
+	$(document).on('blur', dropdown_selector, function () {
+		var $inputElement = $(this);
+        $inputElement.siblings('i').removeClass('active');
+	});
 
     $(document).on('blur', input_selector, function () {
       var $inputElement = $(this);

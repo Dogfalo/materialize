@@ -139,7 +139,7 @@ textarea.materialize-textarea {
   }
 
   // Prefix Icons
-  .prefix {
+  .prefix, .suffix {
     position: absolute;
     width: 3rem;
     font-size: 2rem;
@@ -148,22 +148,39 @@ textarea.materialize-textarea {
     &.active { color: $input-focus-color; }
   }
   .prefix ~ input,
-  .prefix ~ textarea {
+  .prefix ~ textarea,
+  .prefix ~ .select-wrapper {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem);
   }
-  .prefix ~ textarea { padding-top: .8rem; }
-  .prefix ~ label { margin-left: 3rem; }
+  .suffix ~ input,
+  .suffix ~ textarea,
+  .suffix ~ .select-wrapper {
+    margin-right: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem);
+  }
+  
+  .suffix {
+    right: 0;
+  }
 
+  .prefix ~ textarea, .suffix ~ textarea { padding-top: .8rem; }
+  
+  .prefix ~ label { margin-left: 3rem; } 
+  .suffix ~ label { /* No need to move the margin-left */ } 
+  
   @media #{$medium-and-down} {
-    .prefix ~ input {
+    .prefix ~ input,
+	.suffix ~ input {
       width: 86%;
       width: calc(100% - 3rem);
     }
   }
   @media #{$small-and-down} {
-    .prefix ~ input {
+    .prefix ~ input,
+	.suffix ~ input {
       width: 80%;
       width: calc(100% - 3rem);
     }
