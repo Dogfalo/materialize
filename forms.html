@@ -207,7 +207,7 @@
   &lt;/div>
         </code></pre>
 
-        <h4>Icon Prefixes</h4>
+        <h4>Icon Prefixes and Suffixes</h4>
         <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
         <div class="row">
           <form class="col s12">
@@ -225,7 +225,23 @@
             </div>
           </form>
         </div>
-
+		<p>An icon suffix is just like a prefix except it follows the input. Just add an icon with the class <code class="language-markup">suffix</code> before the input and label.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+			  <div class="input-field col s6">
+                <i class="material-icons suffix">account_circle</i>
+                <input id="icon_suffix" type="text" class="validate">
+                <label for="icon_suffix">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons suffix">phone</i>
+                <input id="icon_suffix_telephone" type="tel" class="validate">
+                <label for="icon_suffix_telephone">Telephone</label>
+              </div>
+            </div>
+          </form>
+        </div>
         <pre><code class="language-markup">
   &lt;div class="row">
     &lt;form class="col s12">
@@ -239,6 +255,23 @@
           &lt;i class="material-icons prefix">phone</i>&lt;/i>
           &lt;input id="icon_telephone" type="tel" class="validate">
           &lt;label for="icon_telephone">Telephone&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+  
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s6">
+          &lt;i class="material-icons suffix">account_circle</i>&lt;/i>
+          &lt;input id="icon_suffix" type="text" class="validate">
+          &lt;label for="icon_suffix">First Name&lt;/label>
+        &lt;/div>
+        &lt;div class="input-field col s6">
+          &lt;i class="material-icons suffix">phone</i>&lt;/i>
+          &lt;input id="icon_suffix_telephone" type="tel" class="validate">
+          &lt;label for="icon_suffix_telephone">Telephone&lt;/label>
         &lt;/div>
       &lt;/div>
     &lt;/form>
@@ -398,6 +431,20 @@
                 </select>
                 <label>Materialize Multiple Select</label>
               </div>
+			  <div class="col s12">
+                <br>
+                <p>Icon prefixes are availble with selects too.</p>
+              </div>
+              <div class="input-field col s12 m6">
+				<i class="material-icons prefix">account_circle</i>
+                <select>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                </select>
+                <label>Icon Prefix</label>
+              </div>
               <div class="col s12">
                 <br>
                 <p>We also support optgroups in our selects.</p>
@@ -462,6 +509,18 @@
       &lt;option value="3">Option 3&lt;/option>
     &lt;/select>
     &lt;label>Materialize Select&lt;/label>
+  &lt;/div>
+  
+  
+    &lt;div class="input-field col s12">
+	&lt;i class="material-icons prefix">account_circle&lt;/i>
+    &lt;select>
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="1">Option 1&lt;/option>
+      &lt;option value="2">Option 2&lt;/option>
+      &lt;option value="3">Option 3&lt;/option>
+    &lt;/select>
+    &lt;label>Icon Prefix&lt;/label>
   &lt;/div>
 
   &lt;div class="input-field col s12">
