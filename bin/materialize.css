@@ -8905,14 +8905,14 @@ textarea.materialize-textarea + label:after {
           transform: translateY(-140%);
 }
 
-.input-field .prefix {
+.input-field .prefix, .input-field .suffix {
   position: absolute;
   width: 3rem;
   font-size: 2rem;
   transition: color .2s;
 }
 
-.input-field .prefix.active {
+.input-field .prefix.active, .input-field .suffix.active {
   color: #26a69a;
 }
 
@@ -8924,7 +8924,19 @@ textarea.materialize-textarea + label:after {
   width: calc(100% - 3rem);
 }
 
-.input-field .prefix ~ textarea {
+.input-field .suffix ~ input,
+.input-field .suffix ~ textarea,
+.input-field .suffix ~ .select-wrapper {
+  margin-right: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.input-field .suffix {
+  right: 0;
+}
+
+.input-field .prefix ~ textarea, .input-field .suffix ~ textarea {
   padding-top: .8rem;
 }
 
@@ -8932,15 +8944,21 @@ textarea.materialize-textarea + label:after {
   margin-left: 3rem;
 }
 
+.input-field .suffix ~ label {
+  /* No need to move the margin-left */
+}
+
 @media only screen and (max-width: 992px) {
-  .input-field .prefix ~ input {
+  .input-field .prefix ~ input,
+  .input-field .suffix ~ input {
     width: 86%;
     width: calc(100% - 3rem);
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .input-field .prefix ~ input {
+  .input-field .prefix ~ input,
+  .input-field .suffix ~ input {
     width: 80%;
     width: calc(100% - 3rem);
   }
