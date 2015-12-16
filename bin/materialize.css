@@ -7869,6 +7869,7 @@ small {
   #toast-container {
     left: 5%;
     bottom: 7%;
+    max-width: 90%;
   }
 }
 
@@ -7876,6 +7877,7 @@ small {
   #toast-container {
     top: 10%;
     right: 7%;
+    max-width: 86%;
   }
 }
 
@@ -9754,6 +9756,7 @@ select {
 .side-nav li {
   float: none;
   padding: 0 15px;
+  line-height: 64px;
 }
 
 .side-nav li:hover, .side-nav li.active {

@@ -30,14 +30,15 @@
   li {
     float: none;
     padding: 0 $sidenav-padding-right;
+    line-height: $sidenav-item-height;
     &:hover, &.active { background-color: #ddd; }
   }
   a {
     color: #444;
     display: block;
     font-size: 1rem;
-    height: 64px;
-    line-height: 64px;
+    height: $sidenav-item-height;
+    line-height: $sidenav-item-height;
     padding: 0 $sidenav-padding-right;
   }
 }
