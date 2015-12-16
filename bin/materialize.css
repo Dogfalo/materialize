@@ -8657,6 +8657,7 @@ label {
   color: #d1d1d1;
 }
 
+input:not([type]),
 input[type=text],
 input[type=password],
 input[type=email],
@@ -8683,7 +8684,9 @@ textarea.materialize-textarea {
   transition: all .3s;
 }
 
-input[type=text]:disabled, input[type=text][readonly="readonly"],
+input:not([type]):disabled, input:not([type])[readonly="readonly"],
+input[type=text]:disabled,
+input[type=text][readonly="readonly"],
 input[type=password]:disabled,
 input[type=password][readonly="readonly"],
 input[type=email]:disabled,
@@ -8708,7 +8711,9 @@ textarea.materialize-textarea[readonly="readonly"] {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.26);
 }
 
-input[type=text]:disabled + label, input[type=text][readonly="readonly"] + label,
+input:not([type]):disabled + label, input:not([type])[readonly="readonly"] + label,
+input[type=text]:disabled + label,
+input[type=text][readonly="readonly"] + label,
 input[type=password]:disabled + label,
 input[type=password][readonly="readonly"] + label,
 input[type=email]:disabled + label,
@@ -8732,6 +8737,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   color: rgba(0, 0, 0, 0.26);
 }
 
+input:not([type]):focus:not([readonly]),
 input[type=text]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]),
 input[type=email]:focus:not([readonly]),
@@ -8747,6 +8753,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 #26a69a;
 }
 
+input:not([type]):focus:not([readonly]) + label,
 input[type=text]:focus:not([readonly]) + label,
 input[type=password]:focus:not([readonly]) + label,
 input[type=email]:focus:not([readonly]) + label,
@@ -8761,7 +8768,9 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #26a69a;
 }
 
-input[type=text].valid, input[type=text]:focus.valid,
+input:not([type]).valid, input:not([type]):focus.valid,
+input[type=text].valid,
+input[type=text]:focus.valid,
 input[type=password].valid,
 input[type=password]:focus.valid,
 input[type=email].valid,
@@ -8786,6 +8795,8 @@ textarea.materialize-textarea:focus.valid {
   box-shadow: 0 1px 0 0 #4CAF50;
 }
 
+input:not([type]).valid + label:after,
+input:not([type]):focus.valid + label:after,
 input[type=text].valid + label:after,
 input[type=text]:focus.valid + label:after,
 input[type=password].valid + label:after,
@@ -8813,7 +8824,9 @@ textarea.materialize-textarea:focus.valid + label:after {
   opacity: 1;
 }
 
-input[type=text].invalid, input[type=text]:focus.invalid,
+input:not([type]).invalid, input:not([type]):focus.invalid,
+input[type=text].invalid,
+input[type=text]:focus.invalid,
 input[type=password].invalid,
 input[type=password]:focus.invalid,
 input[type=email].invalid,
@@ -8838,6 +8851,8 @@ textarea.materialize-textarea:focus.invalid {
   box-shadow: 0 1px 0 0 #F44336;
 }
 
+input:not([type]).invalid + label:after,
+input:not([type]):focus.invalid + label:after,
 input[type=text].invalid + label:after,
 input[type=text]:focus.invalid + label:after,
 input[type=password].invalid + label:after,
@@ -8865,6 +8880,7 @@ textarea.materialize-textarea:focus.invalid + label:after {
   opacity: 1;
 }
 
+input:not([type]) + label:after,
 input[type=text] + label:after,
 input[type=password] + label:after,
 input[type=email] + label:after,
