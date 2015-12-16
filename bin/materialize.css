@@ -7392,15 +7392,27 @@ nav ul li {
   padding: 0;
 }
 
-nav ul li:hover, nav ul li.active {
+nav ul li.active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 nav ul a {
+  transition: background-color .3s;
   font-size: 1rem;
   color: #fff;
   display: block;
   padding: 0 15px;
+  cursor: pointer;
+}
+
+nav ul a.btn, nav ul a.btn-large, nav ul a.btn-large, nav ul a.btn-flat, nav ul a.btn-floating {
+  margin-top: -2px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+nav ul a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 nav ul.left {
@@ -8109,6 +8121,10 @@ small {
   color: #fff;
   font-size: 1.6rem;
   line-height: 37px;
+}
+
+.btn-floating:hover {
+  background-color: #26a69a;
 }
 
 .btn-floating:before {

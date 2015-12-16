@@ -50,7 +50,6 @@ nav {
     font-size: $navbar-brand-font-size;
     padding: 0;
     white-space: nowrap;
-    margin-left: 10px;
 
     &.center {
       left: 50%;
@@ -102,8 +101,9 @@ nav {
       cursor: pointer;
 
       &.btn, &.btn-large, &.btn-flat, &.btn-floating {
-          margin-left: 10px;
-          margin-right: 10px;
+        margin-top: -2px;
+        margin-left: 15px;
+        margin-right: 15px;
       }
 
       &:hover {
