@@ -81,6 +81,7 @@
   }
 
   &:hover {
+    background-color: $button-color;
     @extend .z-depth-1-half;
   }
   &:before {
