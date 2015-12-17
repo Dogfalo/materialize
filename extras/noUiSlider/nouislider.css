@@ -1,3 +1,18 @@
+/*!
+ * Materialize v0.97.3 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
+/*!
+ * Materialize v0.97.2 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
+/*!
+ * Materialize v0.97.1 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
 
 /* Functional styling;
  * These styles are required for noUiSlider to function.
@@ -26,7 +41,7 @@
 .noUi-origin {
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 6px;
 	left: 0;
 	bottom: 0;
 }
@@ -168,7 +183,7 @@
   box-shadow: none;
   border: none;
 }
-.noUI-base {
+.noUi-base {
   height: 15px;
   top: -6px;
 }
@@ -180,7 +195,7 @@
 .noUi-horizontal {
   height: 3px;
 }
-.noUI-connect {
+.noUi-connect {
   height: 3px;
   top: 6px;
   background-color: #26A69A;
@@ -209,16 +224,16 @@
   content: none;
 }
 /*Handle on Drag*/
-.noui-target .noUi-active.noUi-handle {
+.noUi-target .noUi-active.noUi-handle {
   width: 3px;
   height: 3px;
   left: 0;
   top: 0;
 }
 
-.noui-target .noUi-active .range-label span {
+.noUi-target .noUi-active .range-label span {
 }
-.noui-target .range-label {
+.noUi-target .range-label {
   position: absolute;
   height: 30px;
   width: 30px;
@@ -231,7 +246,7 @@
   transform: scale(.5) rotate(-45deg);
   transform-origin: 50% 100%;
 }
-.noui-target .noUi-active .range-label {
+.noUi-target .noUi-active .range-label {
   border-radius: 15px 15px 15px 0;
   transform: rotate(-45deg) translate(23px, -25px);
 

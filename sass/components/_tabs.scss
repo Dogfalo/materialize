@@ -1,6 +1,8 @@
 .tabs {
-  @include flexbox();
+  display: flex;
   position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
   height: 48px;
   background-color: $tabs-bg-color;
   margin: 0 auto;
@@ -17,18 +19,23 @@
     text-align: center;
     line-height: 48px;
     height: 48px;
-    padding: 0 20px;
+    padding: 0;
     margin: 0;
     text-transform: uppercase;
+    text-overflow: ellipsis;
+    overflow: hidden;
     letter-spacing: .8px;
     width: 15%;
+    min-width: 80px;
 
     a {
       color: $tabs-text-color;
       display: block;
       width: 100%;
       height: 100%;
-      @include transition( color .28s ease);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      transition: color .28s ease;
       &:hover {
         color: lighten($tabs-text-color, 20%);
       }
@@ -47,6 +54,3 @@
     will-change: left, right;
   }
 }
-
-.tabs .tab { padding: 0; }
-

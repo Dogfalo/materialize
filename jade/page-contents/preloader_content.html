@@ -3,7 +3,6 @@
 
     <div class="col s12 m9 l10">
       <p class="caption">If you have content that will take a long time to load, you should give the user feedback. For this reason we provide a number activity + progress indicators.</p>
-
       <div id="linear" class="section scrollspy">
         <h2 class="header">Linear</h2>
         <p>There are a couple different types of linear progress bars.</p>
@@ -40,6 +39,8 @@
       <!-- Preloader Section-->
       <div id="circular" class="section scrollspy">
         <h2 class="header">Circular</h2>
+        <p>There are 4 colors and 3 sizes of circular spinners. The spinner should be nested in a <code class="language-markup">preloader-wrapper</code> div. The default size is medium, but you can add the classes <code class="language-markup">big</code> or <code class="language-markup">small</code> to adjust the size accordingly. You can add the classes <code class="language-markup">spinner-red-only</code>, <code class="language-markup">spinner-blue-only</code>, <code class="language-markup">spinner-yellow-only</code> and <code class="language-markup">spinner-green-only</code>. You can also leave this class as just <code class="language-markup">spinner-layer</code> and it will be set to the <code class="language-css">$spinner-default-color</code> variable in our variables.scss file.</p>
+        <h4>Colors</h4>
         <div class="row">
           <div class="col s12 m4 center">
             <div class="preloader-wrapper big active">
@@ -98,6 +99,30 @@
       &lt;/div>
     &lt;/div>
   &lt;/div>
+
+  &lt;div class=&quot;preloader-wrapper active&quot;&gt;
+    &lt;div class=&quot;spinner-layer spinner-red-only&quot;&gt;
+      &lt;div class=&quot;circle-clipper left&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;gap-patch&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;circle-clipper right&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;preloader-wrapper small active&quot;&gt;
+    &lt;div class=&quot;spinner-layer spinner-green-only&quot;&gt;
+      &lt;div class=&quot;circle-clipper left&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;gap-patch&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;&lt;div class=&quot;circle-clipper right&quot;&gt;
+        &lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
         </code></pre>
       </div>
 

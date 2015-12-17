@@ -29,6 +29,7 @@
       };
     </script>
     <script src="//cdn.transifex.com/live.js"></script>
+    <link href="/extras/noUiSlider/nouislider.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -41,6 +42,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -64,6 +71,7 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
@@ -366,9 +374,9 @@
         <h2 class="header">Select</h2>
         <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
         <div class="row">
-          <form class="col s12 m6">
+          <form class="col s12">
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s12 m6">
                 <select>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
@@ -379,7 +387,61 @@
               </div>
               <div class="col s12">
                 <br>
+                <p>You can add the property <code class="language-markup">multiple</code> to get the multiple select and select several options.</p>
+              </div>
+              <div class="input-field col s12 m6">
+                <select multiple>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+                <label>Materialize Multiple Select</label>
+              </div>
+              <div class="col s12">
+                <br>
+                <p>We also support optgroups in our selects.</p>
+              </div>
+              <div class="input-field col s12 m6">
+                <select>
+                  <optgroup label="team 1">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                  </optgroup>
+                  <optgroup label="team 2">
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                  </optgroup>
+                </select>
+                <label>Optgroups</label>
+              </div>
+              <div class="col s12">
+                <br>
+                <p>You can add icons to your options in any type of select. In the option you add the image source with the <code class="language-markup">data-icon</code> attribute. You can add the <code class="language-markup">left</code> or <code class="language-markup">right</code> class to align your icon. You can also add the <code class="language-markup">circle</code> class to your icon.</p>
+              </div>
+              <div class="input-field col s12 m6">
+                <select class="icons">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" data-icon="images/sample-1.jpg" class="circle">example 1</option>
+                  <option value="" data-icon="images/office.jpg" class="circle">example 2</option>
+                  <option value="" data-icon="images/yuna.jpg" class="circle">example 1</option>
+                </select>
+                <label>Images in select</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <select class="icons">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
+                  <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
+                  <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+                </select>
+                <label>Images in select</label>
+              </div>
+              <div class="col s12">
+                <br>
                 <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
+              </div>
+              <div class="col s12 m6">
                 <label>Browser Select</label>
                 <select class="browser-default">
                   <option value="" disabled selected>Choose your option</option>
@@ -402,13 +464,56 @@
     &lt;label>Materialize Select&lt;/label>
   &lt;/div>
 
-    &lt;label>Browser Select&lt;/label>
-    &lt;select class="browser-default">
+  &lt;div class="input-field col s12">
+    &lt;select multiple>
       &lt;option value="" disabled selected>Choose your option&lt;/option>
       &lt;option value="1">Option 1&lt;/option>
       &lt;option value="2">Option 2&lt;/option>
       &lt;option value="3">Option 3&lt;/option>
     &lt;/select>
+    &lt;label>Materialize Multiple Select&lt;/label>
+  &lt;/div>
+
+  &lt;div class="input-field col s12">
+    &lt;select multiple>
+      &lt;optgroup label="team 1">
+        &lt;option value="1">Option 1&lt;/option>
+        &lt;option value="2">Option 2&lt;/option>
+      &lt;/optgroup>
+      &lt;optgroup label="team 2">
+        &lt;option value="3">Option 3&lt;/option>
+        &lt;option value="4">Option 4&lt;/option>
+      &lt;/optgroup>
+    &lt;/select>
+    &lt;label>Optgroups&lt;/label>
+  &lt;/div>
+
+  &lt;div class="input-field col s12 m6">
+    &lt;select class="icons">
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="" data-icon="images/sample-1.jpg" class="circle">example 1&lt;/option>
+      &lt;option value="" data-icon="images/office.jpg" class="circle">example 2&lt;/option>
+      &lt;option value="" data-icon="images/yuna.jpg" class="circle">example 1&lt;/option>
+    &lt;/select>
+    &lt;label>Images in select&lt;/label>
+  &lt;/div>
+  &lt;div class="input-field col s12 m6">
+    &lt;select class="icons">
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="" data-icon="images/sample-1.jpg" class="left circle">example 1&lt;/option>
+      &lt;option value="" data-icon="images/office.jpg" class="left circle">example 2&lt;/option>
+      &lt;option value="" data-icon="images/yuna.jpg" class="left circle">example 3&lt;/option>
+    &lt;/select>
+    &lt;label>Images in select&lt;/label>
+  &lt;/div>
+
+  &lt;label>Browser Select&lt;/label>
+  &lt;select class="browser-default">
+    &lt;option value="" disabled selected>Choose your option&lt;/option>
+    &lt;option value="1">Option 1&lt;/option>
+    &lt;option value="2">Option 2&lt;/option>
+    &lt;option value="3">Option 3&lt;/option>
+  &lt;/select>
             </code></pre>
           </div>
           <div class="col s12">
@@ -559,9 +664,9 @@
             <input type="checkbox" id="test7" checked="checked" disabled="disabled" />
             <label for="test7">Green</label>
           </p>
-            <p>
-              <input type="checkbox" id="test8" disabled="disabled" />
-              <label for="test8">Brown</label>
+          <p>
+            <input type="checkbox" id="test8" disabled="disabled" />
+            <label for="test8">Brown</label>
           </p>
         </form>
         <pre><code class="language-markup">
@@ -697,7 +802,27 @@
 
       <div id="range" class="section scrollspy">
         <h2 class="header">Range</h2>
-        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100.</p>
+        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100. We have two different types of sliders. nouiSlider is a 3rd party plugin which we've modified. To use the noUiSlider, you will have to manually link the <code class="language-markup">nouislider.css</code> and <code class="language-markup">nouislider.js</code> files located in the extras folder.</p>
+        <h4>noUiSlider</h4>
+        <p>See noUiSlider's official documentation <a href="http://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
+        <div id="range-input"></div>
+        <p>&nbsp;</p>
+        <pre><code class="language-javascript">
+  var slider = document.getElementById('test5');
+  noUiSlider.create(slider, {
+   start: [20, 80],
+   connect: true,
+   step: 1,
+   range: {
+     'min': 0,
+     'max': 100
+   },
+   format: wNumb({
+     decimals: 0
+   })
+  });
+        </code></pre>
+        <h4>HTML5 Range</h4>
         <form action="#">
           <p class="range-field">
             <input type="range" name="points" min="0" max="100">
@@ -848,11 +973,13 @@
       </div>
     </footer>
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
@@ -871,6 +998,23 @@
     ga('create', 'UA-56218128-1', 'auto');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
+    </script>
+
+    <script src="/extras/noUiSlider/nouislider.js"></script>
+    <script type="text/javascript">
+      var slider = document.getElementById('range-input');
+      noUiSlider.create(slider, {
+       start: [20, 80],
+       connect: true,
+       step: 1,
+       range: {
+         'min': 0,
+         'max': 100
+       },
+       format: wNumb({
+         decimals: 0
+       })
+      });
     </script>
   </body>
 </html>

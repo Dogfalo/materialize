@@ -41,6 +41,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -64,6 +70,7 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
@@ -113,24 +120,19 @@
           <div class="col s12">
             <p class="caption">Add pagination links to help split up your long content into shorter, easier to understand blocks.</p>
             <h2 class="header">Basic</h2>
-            <ul class="pagination">
-
-              <li class="prev disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-              <li class="pages">
-                <ul>
-                  <li class="active"><a href="#!">1</a></li>
-                  <li class="waves-effect"><a href="#!">2</a></li>
-                  <li class="waves-effect"><a href="#!">3</a></li>
-                  <li class="waves-effect"><a href="#!">4</a></li>
-                  <li class="waves-effect"><a href="#!">5</a></li>
-                  <li class="waves-effect"><a href="#!">6</a></li>
-                  <li class="waves-effect"><a href="#!">7</a></li>
-                  <li class="waves-effect"><a href="#!">8</a></li>
-                  <li class="waves-effect"><a href="#!">9</a></li>
-                </ul>
-              </li>
-              <li class="next waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-            </ul>
+              <ul class="pagination">
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                <li class="active"><a href="#!">1</a></li>
+                <li class="waves-effect"><a href="#!">2</a></li>
+                <li class="waves-effect"><a href="#!">3</a></li>
+                <li class="waves-effect"><a href="#!">4</a></li>
+                <li class="waves-effect"><a href="#!">5</a></li>
+                <li class="waves-effect"><a href="#!">6</a></li>
+                <li class="waves-effect"><a href="#!">7</a></li>
+                <li class="waves-effect"><a href="#!">8</a></li>
+                <li class="waves-effect"><a href="#!">9</a></li>
+                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+              </ul>
             <br><br>
             <pre><code class="language-markup">
   &lt;ul class="pagination">
@@ -208,11 +210,13 @@
       </div>
     </footer>
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
@@ -232,5 +236,6 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
     </script>
+
   </body>
 </html>

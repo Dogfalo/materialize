@@ -41,6 +41,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -64,6 +70,7 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
@@ -366,14 +373,14 @@ $(".dropdown-button").dropdown();
         <br>
       </div>
 
-      <div id="search" class="section scrollspy">
+      <div id="search-docs" class="section scrollspy">
         <h2 class="header">Search Bar</h2>
 
         <nav>
           <div class="nav-wrapper">
             <form>
               <div class="input-field">
-                <input id="search" type="search" required>
+                <input id="search-example" type="search" required>
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
@@ -471,7 +478,7 @@ $(".dropdown-button").dropdown();
             <li><a href="#navbar-fixed">Fixed Navbar</a></li>
             <li><a href="#navbar-dropdown">Dropdown Menu</a></li>
             <li><a href="#icons">Icon Links</a></li>
-            <li><a href="#search">Search Bar</a></li>
+            <li><a href="#search-docs">Search Bar</a></li>
             <li><a href="#mobile-collapse">Mobile Collapse</a></li>
           </ul>
         </div>
@@ -520,11 +527,13 @@ $(".dropdown-button").dropdown();
       </div>
     </footer>
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
@@ -544,5 +553,6 @@ $(".dropdown-button").dropdown();
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
     </script>
+
   </body>
 </html>

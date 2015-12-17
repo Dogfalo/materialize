@@ -41,6 +41,12 @@
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
@@ -64,6 +70,7 @@
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
@@ -108,19 +115,46 @@
 
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
-        <p>The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible. You can add the class <code class="language-markup">.disabled</code> to make a tab inaccessible. </p>
+        <p class="caption">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible. You can add the class <code class="language-markup">.disabled</code> to make a tab inaccessible. </p>
 
         <ul class="tabs tab-demo z-depth-1">
           <li class="tab col s3"><a href="#test1">Test 1</a></li>
           <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
           <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
           <li class="tab col s3"><a href="#test4">Test 4</a></li>
+          <li class="tab col s3"><a href="#test0">Test 5</a></li>
         </ul>
         <div id="test1" class="col s12"><p>Test 1</p></div>
         <div id="test2" class="col s12"><p>Test 2</p></div>
         <div id="test3" class="col s12"><p>Test 3</p></div>
         <div id="test4" class="col s12"><p>Test 4</p></div>
+
         <br>
+        <h5>Scrollable tabs</h5>
+        <ul class="tabs tab-demo z-depth-1">
+          <li class="tab col s3"><a href="#test5">Test 1</a></li>
+          <li class="tab col s3"><a class="active" href="#test6">Test 2</a></li>
+          <li class="tab col s3"><a href="#test7">Test 4</a></li>
+          <li class="tab col s3"><a href="#test8">Test 1</a></li>
+          <li class="tab col s3"><a class="active" href="#test9">Test 2</a></li>
+          <li class="tab col s3 disabled"><a href="#test10">Disabled Tab</a></li>
+          <li class="tab col s3"><a href="#test11">Test 4</a></li>
+          <li class="tab col s3"><a href="#test12">Test 1</a></li>
+          <li class="tab col s3"><a class="active" href="#test13">Test 2</a></li>
+          <li class="tab col s3 disabled"><a href="#test14">Disabled Tab</a></li>
+          <li class="tab col s3"><a href="#test15">Test 4</a></li>
+        </ul>
+        <div id="test5" class="col s12"><p>Test 5</p></div>
+        <div id="test6" class="col s12"><p>Test 6</p></div>
+        <div id="test7" class="col s12"><p>Test 7</p></div>
+        <div id="test8" class="col s12"><p>Test 8</p></div>
+        <div id="test9" class="col s12"><p>Test 9</p></div>
+        <div id="test10" class="col s12"><p>Test 10</p></div>
+        <div id="test11" class="col s12"><p>Test 11</p></div>
+        <div id="test12" class="col s12"><p>Test 12</p></div>
+        <div id="test13" class="col s12"><p>Test 13</p></div>
+        <div id="test14" class="col s12"><p>Test 14</p></div>
+        <div id="test15" class="col s12"><p>Test 15</p></div>
       </div>
 
 
@@ -143,8 +177,6 @@
   &lt;/div>
         </code></pre>
       </div>
-
-
 
       <div id="initialization" class="section scrollspy">
         <h4>jQuery Plugin Initialization</h4>
@@ -239,11 +271,13 @@
       </div>
     </footer>
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
-    <script src="js/jquery.timeago.min.js"></script>  
+    <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
     <!-- Twitter Button -->
@@ -263,5 +297,6 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
     </script>
+
   </body>
 </html>
