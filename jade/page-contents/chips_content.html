@@ -44,8 +44,120 @@
         </code></pre>
       </div>
 
-    </div>
+      <div id="basic" class="section scrollspy">
+        <h4>Basic Usage</h4>
+        <p class="caption">Use the default chip template.</p>
+        <div class="chips chips-default"></div>
+        <p class="caption">Use a custom chip template.</p>
+        <div class="chips chips-custom"></div>
+        <p class="caption">Use placeholders and override hint texts.</p>
+        <div class="chips chips-placeholder"></div>
+      </div>
 
+      <div id="properties" class="section scrollspy">
+        <h4>Properties</h4>
+        <p class="caption">Available properties.</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>allowDelete</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>data</td>
+              <td>array</td>
+              <td>[]</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td>''</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>readOnly</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>secondaryPlaceholder</td>
+              <td>string</td>
+              <td>''</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>separator</td>
+              <td>string</td>
+              <td>','</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>template</td>
+              <td>string</td>
+              <td>''</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="events" class="section scrollspy">
+        <h4>Events</h4>
+        <p class="caption">Material chips exposes a few events for hooking 
+          into chips functionality.</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>chips.add</td>
+              <td>this method is triggered when a chip is <strong>added</strong>.</td>
+            </tr>
+            <tr>
+              <td>chips.delete</td>
+              <td>this method is triggered when a chip is <strong>deleted</strong>.</td>
+            </tr>
+            <tr>
+              <td>chips.select</td>
+              <td>this method is triggered when a chip is <strong>selected</strong>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="methods" class="section scrollspy">
+        <h4>Methods</h4>
+        <p class="caption">Usable methods</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$chips.material_chip('data')</td>
+              <td>It returns the stored data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
@@ -58,6 +170,10 @@
           <ul class="section table-of-contents">
             <li><a href="#contact">Contacts</a></li>
             <li><a href="#tag">Tags</a></li>
+            <li><a href="#basic">Basic usage</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#methods">Methods</a></li>
           </ul>
         </div>
       </div>
@@ -65,4 +181,3 @@
 
   </div>
 </div>
-

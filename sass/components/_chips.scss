@@ -1,3 +1,5 @@
+$chip-separation: 4px;
+
 .chip {
   display: inline-block;
   height: 32px;
@@ -8,6 +10,8 @@
   padding: 0 12px;
   border-radius: 16px;
   background-color: $chip-bg-color;
+  margin-bottom: $chip-separation * 2;
+  margin-right: $chip-separation;
 
   img {
     float: left;
@@ -23,5 +27,44 @@
     font-size: 16px;
     line-height: 32px;
     padding-left: 8px;
+  }
+}
+
+.chips {
+  border: none;
+  border-bottom: 1px solid $input-border-color;
+  box-shadow: none;  
+  margin-bottom: 30px;
+  min-height: 45px;
+  outline: none;
+  padding-bottom: $chip-separation;
+  transition: all .3s;
+
+  &.focus {
+    border-bottom: 1px solid $input-focus-color;
+    box-shadow: 0 1px 0 0 $input-focus-color;
+  }
+
+  &:hover {
+    cursor: text;
+  }
+
+  .chip.selected {
+    background-color: $input-focus-color;
+    color: #fff;
+  }
+
+  .input {
+    background: none;
+    border: 0;
+    color: rgba(0,0,0,.6);
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    height: 32px;
+    margin-right: 20px;
+    line-height: 32px;
+    outline: 0;
+    padding: 12px 0;
   }
 }

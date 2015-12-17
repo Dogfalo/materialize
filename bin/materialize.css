@@ -7869,6 +7869,7 @@ small {
   #toast-container {
     left: 5%;
     bottom: 7%;
+    max-width: 90%;
   }
 }
 
@@ -7876,6 +7877,7 @@ small {
   #toast-container {
     top: 10%;
     right: 7%;
+    max-width: 86%;
   }
 }
 
@@ -8555,6 +8557,8 @@ a.waves-effect .waves-ripple {
   padding: 0 12px;
   border-radius: 16px;
   background-color: #e4e4e4;
+  margin-bottom: 8px;
+  margin-right: 4px;
 }
 
 .chip img {
@@ -8571,6 +8575,45 @@ a.waves-effect .waves-ripple {
   font-size: 16px;
   line-height: 32px;
   padding-left: 8px;
+}
+
+.chips {
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  box-shadow: none;
+  margin-bottom: 30px;
+  min-height: 45px;
+  outline: none;
+  padding-bottom: 4px;
+  transition: all .3s;
+}
+
+.chips.focus {
+  border-bottom: 1px solid #26a69a;
+  box-shadow: 0 1px 0 0 #26a69a;
+}
+
+.chips:hover {
+  cursor: text;
+}
+
+.chips .chip.selected {
+  background-color: #26a69a;
+  color: #fff;
+}
+
+.chips .input {
+  background: none;
+  border: 0;
+  color: rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  height: 32px;
+  margin-right: 20px;
+  line-height: 32px;
+  outline: 0;
+  padding: 12px 0;
 }
 
 .materialboxed {
