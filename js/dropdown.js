@@ -80,6 +80,7 @@
       var offsetTop = origin.offset().top - $(window).scrollTop();
       var currAlignment = options.alignment;
       var activatesLeft, gutterSpacing;
+      var leftPosition;
 
       // Below Origin
       var verticalOffset = 0;
