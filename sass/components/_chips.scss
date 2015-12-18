@@ -1,4 +1,9 @@
-$chip-separation: 4px;
+
+$chips-border-color: #9e9e9e;
+
+$chips-bg-color: #e4e4e4;
+$chips-separation: 4px;
+$chips-selected-color: #26a69a;
 
 .chip {
   display: inline-block;
@@ -9,9 +14,9 @@ $chip-separation: 4px;
   line-height: 32px;
   padding: 0 12px;
   border-radius: 16px;
-  background-color: $chip-bg-color;
-  margin-bottom: $chip-separation * 2;
-  margin-right: $chip-separation;
+  background-color: $chips-bg-color;
+  margin-bottom: $chips-separation * 2;
+  margin-right: $chips-separation;
 
   img {
     float: left;
@@ -32,17 +37,17 @@ $chip-separation: 4px;
 
 .chips {
   border: none;
-  border-bottom: 1px solid $input-border-color;
+  border-bottom: 1px solid $chips-border-color;
   box-shadow: none;  
   margin-bottom: 30px;
   min-height: 45px;
   outline: none;
-  padding-bottom: $chip-separation;
+  padding-bottom: $chips-separation;
   transition: all .3s;
 
   &.focus {
-    border-bottom: 1px solid $input-focus-color;
-    box-shadow: 0 1px 0 0 $input-focus-color;
+    border-bottom: 1px solid $chips-selected-color;
+    box-shadow: 0 1px 0 0 $chips-selected-color;
   }
 
   &:hover {
@@ -50,7 +55,7 @@ $chip-separation: 4px;
   }
 
   .chip.selected {
-    background-color: $input-focus-color;
+    background-color: $chips-selected-color;
     color: #fff;
   }
 
