@@ -131,6 +131,34 @@
     $('.datepicker').pickadate({selectYears: 20});
     $('select').not('.disabled').material_select();
 
+    $('.chips-default').material_chip({
+      data: [{
+        tag: 'Apple',
+      }, {
+        tag: 'Microsoft',
+      }, {
+        tag: 'Google',
+      }],
+    });
 
+    var template = '';
+    template += '<div class="chip">';
+    template += '{{image}}';
+    template += '{{tag}} (fruits)';
+    template += '</div>';
+
+    $('.chips-custom').material_chip({
+      data: [{
+        tag: 'Orange',
+      }, {
+        tag: 'Apple',
+      }],
+      template: template,
+    });
+
+    $('.chips-placeholder').material_chip({
+      placeholder: 'Enter a tag',
+      secondaryPlaceholder: '+Tag',
+    });
   }); // end of document ready
 })(jQuery); // end of jQuery name space

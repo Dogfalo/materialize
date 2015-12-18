@@ -1,3 +1,10 @@
+
+$chips-border-color: #9e9e9e;
+
+$chips-bg-color: #e4e4e4;
+$chips-separation: 4px;
+$chips-selected-color: #26a69a;
+
 .chip {
   display: inline-block;
   height: 32px;
@@ -7,7 +14,9 @@
   line-height: 32px;
   padding: 0 12px;
   border-radius: 16px;
-  background-color: #E4E4E4;
+  background-color: $chips-bg-color;
+  margin-bottom: $chips-separation * 2;
+  margin-right: $chips-separation;
 
   img {
     float: left;
@@ -23,5 +32,44 @@
     font-size: 16px;
     line-height: 32px;
     padding-left: 8px;
+  }
+}
+
+.chips {
+  border: none;
+  border-bottom: 1px solid $chips-border-color;
+  box-shadow: none;  
+  margin-bottom: 30px;
+  min-height: 45px;
+  outline: none;
+  padding-bottom: $chips-separation;
+  transition: all .3s;
+
+  &.focus {
+    border-bottom: 1px solid $chips-selected-color;
+    box-shadow: 0 1px 0 0 $chips-selected-color;
+  }
+
+  &:hover {
+    cursor: text;
+  }
+
+  .chip.selected {
+    background-color: $chips-selected-color;
+    color: #fff;
+  }
+
+  .input {
+    background: none;
+    border: 0;
+    color: rgba(0,0,0,.6);
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    height: 32px;
+    margin-right: 20px;
+    line-height: 32px;
+    outline: 0;
+    padding: 12px 0;
   }
 }
