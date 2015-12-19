@@ -34,7 +34,7 @@
       return this.$el.data('chips');
     }
 
-    if ('params' === options) {
+    if ('options' === options) {
       return this.$el.data('options');
     }
     
@@ -54,6 +54,11 @@
         $chips.data('index', i);
         $chips.data('selector', self.$el.get());
         $chips.data('initialized', true);
+
+        if (!$chips.hasClass(self.SELS.CHIPS)) {
+          $chips.addClass('chips');
+        }
+
         self.chips($chips);
         i++;
       });
@@ -244,7 +249,7 @@
       $chips.data('chips').push(elem);
       var tpl = self.chipTemplate(elem, options.allowDelete, options.template);
       $(tpl).insertBefore($chips.find('input'));
-      $(self.SELS.CHIPS).trigger('chip.add', elem);
+      $($chips.data('selector')).trigger('chip.add', elem);
       self.setPlaceholder($chips);
     };
 
@@ -253,7 +258,7 @@
       $chips.find('.chip').eq(chipIndex).remove();
       var chip = $chips.data('chips')[chipIndex];
       $chips.data('chips').splice(chipIndex, 1);
-      $(self.SELS.CHIPS).trigger('chip.delete', chip);
+      $($chips.data('selector')).trigger('chip.delete', chip);
       self.setPlaceholder($chips);
     };
 
@@ -262,7 +267,7 @@
       var $chip = $chips.find('.chip').eq(chipIndex);
       if ($chip && false === $chip.hasClass('selected')) {
         $chip.addClass('selected');
-        $(self.SELS.CHIPS).trigger('chip.select', $chips.data('chips')[chipIndex]);
+        $($chips.data('selector')).trigger('chip.select', $chips.data('chips')[chipIndex]);
       }
     };
 

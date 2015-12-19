@@ -163,5 +163,20 @@
       secondaryPlaceholder: '+Tag',
     });
 
+    $('.chips-default').on('chip.add', function(e, chip){
+      // you have the added chip here
+      console.log('chips: a new chip has been added', chip);
+    });
+
+    $('.chips-default').on('chip.delete', function(e, chip){
+      // you have the deleted chip here
+      console.log('chips: a new chip has been deleted', chip);
+    });
+
+    $('.chips-default').on('chip.select', function(e, chip){
+      // you have the selected chip here
+      console.log('chips: a new chip has been selected', chip);
+    });
+
   }); // end of document ready
 })(jQuery); // end of jQuery name space

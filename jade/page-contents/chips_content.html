@@ -55,9 +55,35 @@
       </div>
 
       <div id="properties" class="section scrollspy">
-        <h4>Properties</h4>
-        <p class="caption">Available properties.</p>
-        <table class="table table-bordered">
+        <h4>Markup</h4>
+        <pre><code class="language-markup">
+        &lt;div class="chips-init">&lt;/div>
+        </code></pre>
+        <h4>Initialize</h4>
+        <p class="caption">Initialize chips</p>
+        <pre><code class="language-javascript">
+        $('.chips-init').material_chip({
+          placeholder: 'Enter a tag',
+          secondaryPlaceholder: '+Tag',
+          data: [{
+            tag: 'Apple',
+          }, {
+            tag: 'Microsoft',
+          }, {
+            tag: 'Google',
+          }],
+        });
+        </code></pre>
+        <p class="caption">Chip json</p>
+        <pre><code class="language-javascript">
+        var chip = {
+          tag: 'chip content', 
+          image: '', //optional
+          id: 1, //optional
+        };
+        </code></pre>
+        <p class="caption">Available properties</p>
+        <table class="table bordered">
           <thead>
             <tr>
               <th>Property</th>
@@ -112,11 +138,13 @@
           </tbody>
         </table>
       </div>
+
       <div id="events" class="section scrollspy">
         <h4>Events</h4>
         <p class="caption">Material chips exposes a few events for hooking 
-          into chips functionality.</p>
-        <table class="table table-bordered">
+          into chips functionality.
+        </p>        
+        <table class="table bordered">
           <thead>
             <tr>
               <th>Event</th>
@@ -138,21 +166,44 @@
             </tr>
           </tbody>
         </table>
+
+        <br><br>   
+
+        <pre><code class="language-javascript">
+        $('.chips-init').on('chip.add', function(e, chip){
+          // you have the added chip here
+        });
+
+        $('.chips-init').on('chip.delete', function(e, chip){
+          // you have the deleted chip here
+        });
+
+        $('.chips-init').on('chip.select', function(e, chip){
+          // you have the selected chip here
+        });
+        </code></pre>
+
       </div>
       <div id="methods" class="section scrollspy">
-        <h4>Methods</h4>
-        <p class="caption">Usable methods</p>
-        <table class="table table-bordered">
+        <h4>Api</h4>
+        <table class="table bordered">
           <thead>
             <tr>
-              <th>Method</th>
+              <th>Parameter</th>
+              <th>Example</th>
               <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>data</td>
               <td>$chips.material_chip('data')</td>
               <td>It returns the stored data.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>$chips.material_chip('options')</td>
+              <td>It returns the given options.</td>
             </tr>
           </tbody>
         </table>
