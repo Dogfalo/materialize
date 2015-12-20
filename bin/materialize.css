@@ -2873,31 +2873,31 @@ ul.staggered-list li {
 
 @media only screen and (min-width: 993px) {
   .show-on-large {
-    display: initial !important;
+    display: block !important;
   }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 992px) {
   .show-on-medium {
-    display: initial !important;
+    display: block !important;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .show-on-small {
-    display: initial !important;
+    display: block !important;
   }
 }
 
 @media only screen and (min-width: 601px) {
   .show-on-medium-and-up {
-    display: initial !important;
+    display: block !important;
   }
 }
 
 @media only screen and (max-width: 992px) {
   .show-on-medium-and-down {
-    display: initial !important;
+    display: block !important;
   }
 }
 
