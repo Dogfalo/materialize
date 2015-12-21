@@ -5,8 +5,8 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label').addClass('active');
+        if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
+          $(this).siblings('label, i').addClass('active');
         }
         else {
           $(this).siblings('label, i').removeClass('active');
@@ -16,9 +16,6 @@
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-
-    // Handle HTML5 autofocus
-    $('input[autofocus]').siblings('label, i').addClass('active');
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
@@ -186,7 +183,7 @@
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
         thumb = $('<span class="thumb"><span class="value"></span></span>');
-        $(this).append(thumb);
+        $(this).after(thumb);
       }
 
       // Set indicator value
@@ -294,18 +291,12 @@
       $select.data('select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
-      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>');
-      var selectOptions = $select.children('option');
-      var selectOptGroups = $select.children('optgroup');
-
-      var valuesSelected = [],
+      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
+          selectChildren = $select.children('option, optgroup'),
+          valuesSelected = [],
           optionsHover = false;
 
-      if ($select.find('option:selected').length > 0) {
-        label = $select.find('option:selected');
-      } else {
-        label = selectOptions.first();
-      }
+      var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
       // Function that renders and appends the option taking into
       // account type and possible image icon.
@@ -338,49 +329,48 @@
       };
 
       /* Create dropdown structure. */
-      if (selectOptGroups.length) {
-        // Check for optgroup
-        selectOptGroups.each(function() {
-          selectOptions = $(this).children('option');
-          options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
+      if (selectChildren.length) {
+        selectChildren.each(function() {
+          if ($(this).is('option')) {
+            // Direct descendant option.
+            if (multiple) {
+              appendOptionWithIcon($select, $(this), 'multiple');
 
-          selectOptions.each(function() {
-            appendOptionWithIcon($select, $(this));
-          });
-        });
-      } else {
-        selectOptions.each(function () {
-          var disabledClass = ($(this).is(':disabled')) ? 'disabled ' : '';
-          if (multiple) {
-            appendOptionWithIcon($select, $(this), 'multiple');
+            } else {
+              appendOptionWithIcon($select, $(this));
+            }
+          } else if ($(this).is('optgroup')) {
+            // Optgroup.
+            var selectOptions = $(this).children('option');
+            options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
-          } else {
-            appendOptionWithIcon($select, $(this));
+            selectOptions.each(function() {
+              appendOptionWithIcon($select, $(this));
+            });
           }
         });
       }
 
-
       options.find('li:not(.optgroup)').each(function (i) {
-        var $curr_select = $select;
         $(this).click(function (e) {
           // Check if option element is disabled
           if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup')) {
+            var selected = true;
+
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              toggleEntryFromArray(valuesSelected, $(this).index(), $curr_select);
+              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
               $newSelect.trigger('focus');
-
             } else {
               options.find('li').removeClass('active');
               $(this).toggleClass('active');
-              $curr_select.siblings('input.select-dropdown').val($(this).text());
+              $newSelect.val($(this).text());
             }
 
             activateOption(options, $(this));
-            $curr_select.find('option').eq(i).prop('selected', true);
+            $select.find('option').eq(i).prop('selected', selected);
             // Trigger onchange() event
-            $curr_select.trigger('change');
+            $select.trigger('change');
             if (typeof callback !== 'undefined') callback();
           }
 
@@ -396,7 +386,7 @@
         dropdownIcon.addClass('disabled');
 
       // escape double quotes
-      var sanitizedLabelHtml = label.html() && label.html().replace(/"/g, '&quot;');
+      var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
 
       var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
@@ -448,15 +438,29 @@
       });
 
       $(window).on({
-        'click': function (e){
+        'click': function () {
           multiple && (optionsHover || $newSelect.trigger('close'));
         }
       });
 
+      // Add initial multiple selections.
+      if (multiple) {
+        $select.find("option:selected:not(:disabled)").each(function () {
+          var index = $(this).index();
+
+          toggleEntryFromArray(valuesSelected, index, $select);
+          options.find("li").eq(index).find(":checkbox").prop("checked", true);
+        });
+      }
+
       // Make option as selected and scroll to selected position
       activateOption = function(collection, newOption) {
-        collection.find('li.selected').removeClass('selected');
-        $(newOption).addClass('selected');
+        if (newOption) {
+          collection.find('li.selected').removeClass('selected');
+          var option = $(newOption);
+          option.addClass('selected');
+          options.scrollTo(option);
+        }
       };
 
       // Allow user to search by typing
@@ -539,17 +543,22 @@
     });
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
-      var index = entriesArray.indexOf(entryIndex);
+      var index = entriesArray.indexOf(entryIndex),
+          notAdded = index === -1;
 
-      if (index === -1) {
+      if (notAdded) {
         entriesArray.push(entryIndex);
       } else {
         entriesArray.splice(index, 1);
       }
 
       select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
-      select.find('option').eq(entryIndex).prop('selected', true);
+
+      // use notAdded instead of true (to detect if the option is selected or not)
+      select.find('option').eq(entryIndex).prop('selected', notAdded);
       setValueToInput(entriesArray, select);
+
+      return notAdded;
     }
 
     function setValueToInput(entriesArray, select) {

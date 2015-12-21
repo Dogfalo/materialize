@@ -1,8 +1,7 @@
 language: node_js
+node_js:
+  - "0.12"
+before_install:
+  - npm install -g grunt-cli
 git:
   depth: 10
-node_js:
-  - "0.10"
-before_install:
-  - npm install -g grunt
-  - npm install -g grunt-cli

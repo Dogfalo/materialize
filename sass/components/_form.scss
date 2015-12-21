@@ -34,6 +34,7 @@ label {
 }
 
 // Text inputs
+input:not([type]),
 input[type=text],
 input[type=password],
 input[type=email],
@@ -59,7 +60,7 @@ textarea.materialize-textarea {
   margin: 0 0 15px 0;
   padding: 0;
   box-shadow: none;
-  @include box-sizing(content-box);
+  box-sizing: content-box;
   transition: all .3s;
 
 
@@ -131,11 +132,11 @@ textarea.materialize-textarea {
     left: $gutter-width / 2;
     font-size: 1rem;
     cursor: text;
-    @include transition(.2s ease-out);
+    transition: .2s ease-out;
   }
   label.active {
     font-size: $label-font-size;
-    @include transform(translateY(-140%));
+    transform: translateY(-140%);
   }
 
   // Prefix Icons
@@ -143,7 +144,7 @@ textarea.materialize-textarea {
     position: absolute;
     width: 3rem;
     font-size: 2rem;
-    @include transition(color .2s);
+    transition: color .2s;
 
     &.active { color: $input-focus-color; }
   }
@@ -252,12 +253,10 @@ textarea {
   height: 25px;
   line-height: 25px;
   font-size: 1rem;
-  @include transition(.28s ease);
+  transition: .28s ease;
 
-  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-  -moz-user-select: none; /* mozilla browsers */
   -khtml-user-select: none; /* webkit (konqueror) browsers */
-  -ms-user-select: none; /* IE10+ */
+  user-select: none;
 }
 
 [type="radio"] + label:before,
@@ -270,7 +269,7 @@ textarea {
   width: 16px;
   height: 16px;
   z-index: 0;
-  @include transition(.28s ease);
+  transition: .28s ease;
 }
 
 /* Unchecked styles */
@@ -283,7 +282,7 @@ textarea {
   border: 2px solid $radio-empty-color;
   z-index: -1;
 
-  @include transform(scale(0));
+  transform: scale(0);
 }
 
 /* Checked styles */
@@ -296,7 +295,7 @@ textarea {
   border: 2px solid $radio-fill-color;
   background-color: $radio-fill-color;
   z-index: 0;
-  @include transform(scale(1.02));
+  transform: scale(1.02);
 }
 
 /* Radio With gap */
@@ -309,7 +308,7 @@ textarea {
   border: 2px solid $radio-fill-color;
   background-color: $radio-fill-color;
   z-index: 0;
-  @include transform(scale(.5));
+  transform: scale(.5);
 }
 
 /* Disabled Radio With gap */
@@ -390,7 +389,7 @@ form p:last-child {
     border: 2px solid $radio-empty-color;
     border-radius: 1px;
     margin-top: 2px;
-    @include transition(.2s);
+    transition: .2s;
   }
 
   &:not(:checked):disabled + label:before {
@@ -408,9 +407,9 @@ form p:last-child {
     border-left: 2px solid transparent;
     border-right: 2px solid $radio-fill-color;
     border-bottom: 2px solid $radio-fill-color;
-    @include transform(rotate(40deg));
-    -webkit-backface-visibility: hidden;
-    @include transform-origin(100% 100%);
+    transform: rotate(40deg);
+    backface-visibility: hidden;
+    transform-origin: 100% 100%;
   }
 
   &:disabled + label:before {
@@ -429,9 +428,9 @@ form p:last-child {
     border-left: none;
     border-right: 2px solid $radio-fill-color;
     border-bottom: none;
-    @include transform(rotate(90deg));
-    -webkit-backface-visibility: hidden;
-    @include transform-origin(100% 100%);
+    transform: rotate(90deg);
+    backface-visibility: hidden;
+    transform-origin: 100% 100%;
   }
 
   // Disabled indeterminate
@@ -778,8 +777,8 @@ input[type=range] + .thumb {
   top: 10px;
   margin-left: -6px;
 
-  @include transform-origin(50% 50%);
-  @include transform(rotate(-45deg));
+  transform-origin: 50% 50%;
+  transform: rotate(-45deg);
 
   .value {
     display: block;
@@ -787,7 +786,7 @@ input[type=range] + .thumb {
     text-align: center;
     color: $radio-fill-color;
     font-size: 0;
-    @include transform(rotate(45deg));
+    transform: rotate(45deg);
   }
 
   &.active {
@@ -827,7 +826,7 @@ input[type=range]::-webkit-slider-thumb {
   background-color: $radio-fill-color;
   transform-origin: 50% 50%;
   margin: -5px 0 0 0;
-  @include transition(.3s);
+  transition: .3s;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {

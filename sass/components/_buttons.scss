@@ -44,7 +44,7 @@
   text-align: center;
   letter-spacing: .5px;
   @extend .z-depth-1;
-  @include transition(.2s ease-out);
+  transition: .2s ease-out;
   cursor: pointer;
 
   &:hover {
@@ -81,6 +81,7 @@
   }
 
   &:hover {
+    background-color: $button-color;
     @extend .z-depth-1-half;
   }
   &:before {

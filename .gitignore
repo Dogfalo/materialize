@@ -14,3 +14,4 @@ bower_components
 .projectile
 **/#*#
 **/.#*
+.grunt/

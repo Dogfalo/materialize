@@ -104,10 +104,10 @@
     border-top: 1px solid rgba(160,160,160,.2);
     padding: $card-padding;
 
-    a {
+    a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: $card-link-color;
       margin-right: $card-padding;
-      @include transition(color .3s ease);
+      transition: color .3s ease;
       text-transform: uppercase;
 
       &:hover { color: $card-link-color-light; }
