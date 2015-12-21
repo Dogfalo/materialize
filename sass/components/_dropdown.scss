@@ -21,12 +21,8 @@
     text-align: left;
     text-transform: none;
 
-    &:hover, &.active, &.selected {
+    &:hover, &.active {
       background-color: $dropdown-hover-bg-color;
-    }
-
-    &.active.selected {
-      background-color: darken($dropdown-hover-bg-color, 5%);
     }
 
     &.divider {
