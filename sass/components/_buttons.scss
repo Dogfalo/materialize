@@ -169,11 +169,21 @@ button.btn-floating {
   @extend .btn;
   height: $button-height * 1.5;
   line-height: 56px;
-
   i {
     font-size: $button-large-icon-font-size;
   }
 }
+// Extra Large button
+.btn-extra-large {
+    @extend .btn;
+    width: $button-height * 1.75;
+    height: $button-height * 1.75;
+i {
+  font-size: 2.3rem;
+  line-height: 75px;
+}
+}
+
 
 // Block button
 .btn-block {
