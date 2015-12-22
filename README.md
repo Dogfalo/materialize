@@ -5,7 +5,7 @@
 
 Materialize-rtl, a CSS Framework based on material design and materializecss framwork
 
-### Current Version : v0.97.3
+### Current Version : v0.97.5
 
 ## Sass Requirements:
 - Not Yet :(
@@ -14,6 +14,14 @@ Materialize-rtl, a CSS Framework based on material design and materializecss fra
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
+- v0.97.5 (Dec 21, 2015)
+  - Fixed Meteor package crash
+- v0.97.4 (Dec 20, 2015)
+  - Added Jasmine testing with Travis CI
+  - Select bugfixes
+  - Grid Offset bugfix
+  - Dropdown overflow bugfix
+  - Range slider error bugfix
 - v0.97.3 (Nov 15, 2015)
   - Meteor font issues fixed
   - Select rendering issue fixed
