@@ -31,8 +31,13 @@
     float: none;
     padding: 0 $sidenav-padding-right;
     line-height: $sidenav-item-height;
-    &:hover, &.active { background-color: #ddd; }
+    transition: background-color .3s;
+
+    &.active {
+      background-color: rgba(0,0,0,.1);
+    }
   }
+
   a {
     color: #444;
     display: block;
@@ -40,6 +45,17 @@
     height: $sidenav-item-height;
     line-height: $sidenav-item-height;
     padding: 0 $sidenav-padding-right;
+    transition: background-color .3s;
+
+    &:hover {
+      background-color: rgba(0,0,0,.1);
+    }
+
+    &.btn, &.btn-large, &.btn-flat, &.btn-floating {
+      margin-top: 15px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
   }
 }
 
