@@ -514,7 +514,7 @@ module.exports = function(grunt) {
             linebreak: true
           },
           files: {
-            src: [ 'extras/**/*','dist/css/*.css', 'dist/js/*.js']
+            src: [ 'dist/css/*.css', 'dist/js/*.js']
           }
         }
       },

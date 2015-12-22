@@ -5,7 +5,7 @@
 
 Materialize, a CSS Framework based on material design
 
-### Current Version : v0.97.4
+### Current Version : v0.97.5
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -14,6 +14,8 @@ Materialize, a CSS Framework based on material design
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
+- v0.97.5 (Dec 21, 2015)
+  - Fixed Meteor package crash
 - v0.97.4 (Dec 20, 2015)
   - Added Jasmine testing with Travis CI
   - Select bugfixes
