@@ -94,6 +94,7 @@ textarea.materialize-textarea {
     content: attr(data-success);
     color: $input-success-color;
     opacity: 1;
+    white-space: nowrap;
   }
   // Invalid Input Style
   &.invalid,
@@ -107,6 +108,7 @@ textarea.materialize-textarea {
     content: attr(data-error);
     color: $input-error-color;
     opacity: 1;
+    white-space: nowrap;
   }
 
   // Form Message Shared Styles
