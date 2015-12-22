@@ -1,11 +1,18 @@
 /*!
- * Materialize v0.97.4 (http://materializecss.com)
+ * Materialize v0.97.5 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 // Check for jQuery.
 if (typeof(jQuery) === 'undefined') {
-  var jQuery = $ = require('jQuery');
+  var jQuery;
+  // Check if require is a defined function.
+  if (typeof(require) === 'function') {
+    jQuery = $ = require('jQuery');
+  // Else use the dollar sign alias.
+  } else {
+    jQuery = $;
+  }
 };/*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
