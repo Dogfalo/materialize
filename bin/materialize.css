@@ -9175,7 +9175,6 @@ form p:last-child {
 [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
-  visibility: hidden;
 }
 
 [type="checkbox"] {
