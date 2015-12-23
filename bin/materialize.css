@@ -8074,8 +8074,8 @@ small {
 }
 
 .btn.disabled:hover, .disabled.btn-large:hover, .btn-floating.disabled:hover, .btn-large.disabled:hover, .btn:disabled:hover, .btn-large:disabled:hover, .btn-large:disabled:hover, .btn-floating:disabled:hover {
-  background-color: #DFDFDF;
-  color: #9F9F9F;
+  background-color: #DFDFDF !important;
+  color: #9F9F9F !important;
 }
 
 .btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
@@ -9791,12 +9791,11 @@ select {
 
 .side-nav li {
   float: none;
-  padding: 0 15px;
   line-height: 64px;
 }
 
-.side-nav li:hover, .side-nav li.active {
-  background-color: #ddd;
+.side-nav li.active {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .side-nav a {
@@ -9806,6 +9805,30 @@ select {
   height: 64px;
   line-height: 64px;
   padding: 0 15px;
+}
+
+.side-nav a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-flat, .side-nav a.btn-floating {
+  margin: 10px 15px;
+}
+
+.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-floating {
+  color: #fff;
+}
+
+.side-nav a.btn-flat {
+  color: #343434;
+}
+
+.side-nav a.btn:hover, .side-nav a.btn-large:hover, .side-nav a.btn-large:hover {
+  background-color: #2bbbad;
+}
+
+.side-nav a.btn-floating:hover {
+  background-color: #26a69a;
 }
 
 .drag-target {
