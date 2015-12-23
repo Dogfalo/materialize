@@ -24,8 +24,8 @@
   }
 
   &:hover {
-    background-color: $button-bg-color-disabled;
-    color: $button-color-disabled;
+    background-color: $button-bg-color-disabled !important;
+    color: $button-color-disabled !important;
   }
 }
 // Shared icon styles
@@ -39,8 +39,8 @@
 // Raised Button
 .btn {
   text-decoration:none;
-  color: $button-color-raised;
-  background-color: $button-color;
+  color: $button-color-raised !important;
+  background-color: $button-color !important;
   text-align: center;
   letter-spacing: .5px;
   @extend .z-depth-1;
@@ -48,7 +48,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: lighten($button-color, 5%);
+    background-color: lighten($button-color, 5%) !important;
     @extend .z-depth-1-half;
   }
 }
@@ -56,7 +56,7 @@
 // Floating button
 .btn-floating {
   display: inline-block;
-  color: $button-color-raised;
+  color: $button-color-raised !important;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -64,7 +64,7 @@
   height: $button-floating-size;
   line-height: $button-floating-size;
   padding: 0;
-  background-color: $button-color;
+  background-color: $button-color !important;
   border-radius: 50%;
   @extend .z-depth-1;
   transition: .3s;
@@ -81,7 +81,7 @@
   }
 
   &:hover {
-    background-color: $button-color;
+    background-color: $button-color !important;
     @extend .z-depth-1-half;
   }
   &:before {
@@ -154,12 +154,12 @@ button.btn-floating {
 // Flat button
 .btn-flat {
   box-shadow: none;
-  background-color: transparent;
-  color: $button-color-flat;
+  background-color: transparent !important;
+  color: $button-color-flat !important;
   cursor: pointer;
 
   &.disabled {
-    color: lighten(#999, 10%);
+    color: lighten(#999, 10%) !important;
     cursor: default;
   }
 }
