@@ -5914,8 +5914,8 @@ small {
   .btn.disabled *, .disabled.btn-large *, .btn-floating.disabled *, .btn-large.disabled *, .btn:disabled *, .btn-large:disabled *, .btn-large:disabled *, .btn-floating:disabled * {
     pointer-events: none; }
   .btn.disabled:hover, .disabled.btn-large:hover, .btn-floating.disabled:hover, .btn-large.disabled:hover, .btn:disabled:hover, .btn-large:disabled:hover, .btn-large:disabled:hover, .btn-floating:disabled:hover {
-    background-color: #DFDFDF;
-    color: #9F9F9F; }
+    background-color: #DFDFDF !important;
+    color: #9F9F9F !important; }
 
 .btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
   font-size: 1.3rem;
@@ -6628,8 +6628,7 @@ form p:last-child {
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
-  visibility: hidden; }
+  left: -9999px; }
 
 [type="checkbox"] {
   /* checkbox aspect */ }
@@ -7123,7 +7122,7 @@ select {
     float: none;
     padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {
-      background-color: #ddd; }
+      background-color: rgba(0, 0, 0, 0.1); }
   .side-nav a {
     color: #444;
     display: block;
@@ -7131,6 +7130,23 @@ select {
     height: 64px;
     line-height: 64px;
     padding: 0 15px; }
+  .side-nav a:hover {
+  background-color: rgba(0, 0, 0, 0.1); }
+
+.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-flat, .side-nav a.btn-floating {
+  margin: 10px 15px; }
+
+.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-floating {
+  color: #fff; }
+
+.side-nav a.btn-flat {
+  color: #343434; }
+
+.side-nav a.btn:hover, .side-nav a.btn-large:hover, .side-nav a.btn-large:hover {
+  background-color: #2bbbad; }
+
+.side-nav a.btn-floating:hover {
+  background-color: #26a69a; }
 
 .drag-target {
   height: 100%;
