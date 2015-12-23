@@ -31,7 +31,7 @@
     float: none;
     line-height: $sidenav-item-height;
 
-    &.active { background-color: rgba(0,0,0,.1); }
+    &.active { background-color: rgba(0,0,0,.05); }
   }
 
   a {
@@ -42,9 +42,7 @@
     line-height: $sidenav-item-height;
     padding: 0 $sidenav-padding-right;
 
-    &:hover {
-      background-color: rgba(0,0,0,.1);
-    }
+    &:hover { background-color: rgba(0,0,0,.05);}
 
     &.btn, &.btn-large, &.btn-flat, &.btn-floating {
       margin: 10px 15px;

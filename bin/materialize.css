@@ -8522,34 +8522,45 @@ a.waves-effect .waves-ripple {
   padding: 2rem;
 }
 
-.side-nav .collapsible {
+.side-nav .collapsible,
+.side-nav.fixed .collapsible {
   border: none;
   box-shadow: none;
 }
 
-.side-nav .collapsible li {
+.side-nav .collapsible li,
+.side-nav.fixed .collapsible li {
   padding: 0;
 }
 
-.side-nav .collapsible-header {
+.side-nav .collapsible-header,
+.side-nav.fixed .collapsible-header {
   background-color: transparent;
   border: none;
   line-height: inherit;
   height: inherit;
-  margin: 0 1rem;
+  padding: 0 30px;
 }
 
-.side-nav .collapsible-header i {
+.side-nav .collapsible-header:hover,
+.side-nav.fixed .collapsible-header:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.side-nav .collapsible-header i,
+.side-nav.fixed .collapsible-header i {
   line-height: inherit;
 }
 
-.side-nav .collapsible-body {
+.side-nav .collapsible-body,
+.side-nav.fixed .collapsible-body {
   border: 0;
   background-color: #fff;
 }
 
-.side-nav .collapsible-body li a {
-  margin: 0 1rem 0 2rem;
+.side-nav .collapsible-body li a,
+.side-nav.fixed .collapsible-body li a {
+  padding: 0 37.5px 0 45px;
 }
 
 .collapsible.popout {
@@ -9795,7 +9806,7 @@ select {
 }
 
 .side-nav li.active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .side-nav a {
@@ -9804,11 +9815,11 @@ select {
   font-size: 1rem;
   height: 64px;
   line-height: 64px;
-  padding: 0 15px;
+  padding: 0 30px;
 }
 
 .side-nav a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-flat, .side-nav a.btn-floating {
@@ -9841,7 +9852,7 @@ select {
 
 .side-nav.fixed a {
   display: block;
-  padding: 0 15px;
+  padding: 0 30px;
   color: #444;
 }
 
