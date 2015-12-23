@@ -407,7 +407,7 @@
       $select.addClass('initialized');
 
       // Select change event - Update the select's values on the fly by passing new values from an array
-      $select.on('change.update', function () {
+      $select.on('update', function () {
         if (multiple) {
           resetOptions();
 
