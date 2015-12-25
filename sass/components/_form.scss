@@ -652,7 +652,13 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 
 select { display: none; }
-select.browser-default { display: block; }
+select.browser-default {
+  display: block;
+  margin-top: 15px;
+}
+select.browser-default + label {
+  top: -0.8rem;
+}
 
 // Disabled styles
 select:disabled {
@@ -693,7 +699,7 @@ select:disabled {
 .select-dropdown li.optgroup {
   border-top: 1px solid $dropdown-hover-bg-color;
 
-  &.active > span {
+  &.selected > span {
     color: rgba(0, 0, 0, .7);
   }
 
