@@ -306,7 +306,7 @@
         }
       }
 
-      var label = $select.find('option:selected').html() || "";
+      var label = $select.find('option:selected').html() || $select.find('option:disabled').eq(0).html() || "";
 
       // Function that renders and appends the option taking into
       // account type and possible image icon.
@@ -361,37 +361,36 @@
       }
 
       options.find('li:not(.optgroup)').each(function(i) {
-        $(this).click(function(e) {
+        var _this = $(this);
+
+        _this.click(function(e) {
           // Check if option element is disabled
-          if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup')) {
-            var selected = true,
-                indexLi = $(this).index();
+          if (!_this.hasClass('disabled') && !_this.hasClass('optgroup')) {
+            var indexLi = _this.index();
 
             if (multiple) {
               if (optgroups) {
-                var currentListItem = $(this).text(),
-                    selectedOption = $select.find('option').filter(function() {
-                      return $(this).text().toLowerCase() === currentListItem.toLowerCase();
-                    }),
-                    indexOption = selectedOption.index(),
-                    indexOptgroup = selectedOption.parent().index();
+                var indexes = returnIndexes(_this);
 
-                selected = toggleIndexFromArray(indexOption, indexLi, indexOptgroup);
+                toggleIndexFromArray(indexes.element, indexLi, indexes.optgroup);
               } else {
-                selected = toggleIndexFromArray(indexLi);
+                toggleIndexFromArray(indexLi);
               }
 
-              options.scrollTo($(this));
-              $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
+              options.scrollTo(_this);
+              $('input[type="checkbox"]', _this[0]).prop('checked', function(i, v) {
+                return !v;
+              });
               $newSelect.trigger('focus');
             } else {
               options.find('li.active').removeClass('active');
-              $(this).addClass('active');
-              $newSelect.val($(this).text());
+              _this.addClass('active');
+              $newSelect.val(_this.text());
 
-              activateOption(options, $(this), 'active');
-              $select.find('option').eq(i).prop('selected', selected);
+              activateOption(options, _this, 'active');
+              $select.find('option').eq(i).prop('selected', true);
             }
+
             // Trigger onchange() event
             $select.trigger('change');
             if (typeof callback !== 'undefined') callback();
@@ -440,15 +439,10 @@
               var indexOption = $(this).index();
 
               if (optgroups) {
-                var textLi = $(this).text(),
-                    li = options.find('li').filter(function() {
-                      return $(this).text().toLowerCase() === textLi.toLowerCase();
-                    }),
-                    indexLi = li.index(),
-                    indexOptgroup = $(this).parent().index();
+                var indexes = returnIndexes($(this));
 
-                options.find("li").eq(indexLi).find(":checkbox").prop("checked", true);
-                toggleIndexFromArray(indexOption, indexLi, indexOptgroup);
+                toggleIndexFromArray(indexOption, indexes.element, indexes.optgroup);
+                options.find("li").eq(indexes.element).find(":checkbox").prop("checked", true);
               } else {
                 toggleIndexFromArray(indexOption);
                 options.find('li').eq(indexOption).find(':checkbox').prop('checked', true);
@@ -514,27 +508,23 @@
         }
       });
 
-      // Add initial multiple selections.
+      // Add initial multiple selections
       if (multiple) {
         $select.find("option:selected:not(:disabled)").each(function() {
-          var indexOption = $(this).index();
+          var _this = $(this),
+              indexOption = _this.index();
 
           if (optgroups) {
-            var textLi = $(this).text(),
-                li = options.find('li').filter(function() {
-                  return $(this).text().toLowerCase() === textLi.toLowerCase();
-                }),
-                indexLi = li.index(),
-                indexOptgroup = $(this).parent().index();
+            var indexes = returnIndexes(_this);
 
-            options.find("li").eq(indexLi).find(":checkbox").prop("checked", true);
-            toggleIndexFromArray(indexOption, indexLi, indexOptgroup);
+            toggleIndexFromArray(indexOption, indexes.element, indexes.optgroup);
+            options.find("li").eq(indexes.element).find(":checkbox").prop("checked", true);
           } else {
-            options.find("li").eq(indexOption).find(":checkbox").prop("checked", true);
             toggleIndexFromArray(indexOption);
+            options.find("li").eq(indexOption).find(":checkbox").prop("checked", true);
           }
 
-          options.scrollTo($(this));
+          options.scrollTo(_this);
         });
       }
 
@@ -699,8 +689,43 @@
           $select.find('option').eq(indexOption).prop('selected', notAdded);
           generatesValuesArray();
         }
+      }
 
-        return notAdded;
+      // Returns indexes used for toggleIndexFromArray
+      function returnIndexes(_this) {
+        var indexes = {},
+            text = _this.text(),
+            selectedElement;
+
+        if (_this.is('li')) {
+          selectedElement = $select.find('option').filter(function() {
+            return $(this).text().toLowerCase() === text.toLowerCase();
+          });
+        } else {
+          selectedElement = options.find('li').filter(function() {
+            return $(this).text().toLowerCase() === text.toLowerCase();
+          });
+        }
+
+        var indexElement = selectedElement.index(),
+            indexOptgroup, disabledPrevOptions;
+
+        if (_this.is('li')) {
+          indexOptgroup = selectedElement.parent().index();
+          disabledPrevOptions = selectedElement.parent().prevUntil($select, 'option:disabled');
+        } else {
+          indexOptgroup = _this.parent().index();
+          disabledPrevOptions = selectedElement.prevUntil(options, 'li.disabled');
+        }
+
+        for (var i = 0, count = disabledPrevOptions.length; i < count; i++) {
+          indexOptgroup--;
+        }
+
+        indexes.element = indexElement;
+        indexes.optgroup = indexOptgroup;
+
+        return indexes;
       }
 
       // Creates an array with the values to display
