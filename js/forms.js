@@ -655,16 +655,14 @@
             }
 
             // Automatically clean filter query so user can search again by starting letters
-            setTimeout(function() {
-              filterQuery = [];
-            }, 1000);
+            setTimeout(function() { filterQuery = []; }, 1000);
           };
 
       $newSelect.on('keydown', onKeyDown);
 
       /* Functions */
 
-      // Updates from the variable entries (entriesArray) to match the dropdown options
+      // Updates from optionsValuesSelected to match active dropdown items to the selected select options
       function toggleIndexFromArray(indexOption, indexLi, indexOptgroup) {
         var index, notAdded;
 

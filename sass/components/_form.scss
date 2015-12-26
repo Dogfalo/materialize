@@ -656,9 +656,7 @@ select.browser-default {
   display: block;
   margin-top: 15px;
 }
-select.browser-default + label {
-  top: -0.8rem;
-}
+select.browser-default + label { top: -0.8rem; }
 
 // Disabled styles
 select:disabled {
