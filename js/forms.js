@@ -294,7 +294,7 @@
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
       var options = $('<ul id="select-options-' + uniqueID + '" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
-          selectChildren = $select.find('option, optgroup'),
+          selectChildren = optgroups ? $select.find('optgroup, option:not(select > option:not(:disabled))') : $select.find('optgroup, option'),
           optionsValuesSelected = [],
           optionsHover = false;
 
@@ -308,54 +308,74 @@
 
       var label = $select.find('option:selected').html() || $select.find('option:disabled').eq(0).html() || "";
 
-      // Function that renders and appends the option taking into
+      // Function that renders and appends the element taking into
       // account type and possible image icon.
-      var appendOptionWithIcon = function(select, option, type, optgroup) {
-        // Add icons
-        var icon_url = option.data('icon') ? option.data('icon').trim() : '',
-            classes = option.attr('class') ? ' class="' + option.attr('class').trim() + '"' : '',
-            disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
+      var generateOptionsElement = function(element, multiple, optgroup) {
+        var icon_url = element.data('icon') ? element.data('icon').trim() : '',
+            imageClasses = element.attr('class') ? element.attr('class').trim() : '',
+            disabledClass = (element.is(':disabled')) ? 'disabled ' : '',
+            sanitizedText = optgroup ? element.attr('label').trim() : element.html().trim();
 
-        if (!optgroup) {
-          var sanitizedOptionHtml = option.html().trim();
+        options.append(createElement());
+
+        function createElement() {
+          var element = document.createElement('li'),
+              spanElement = document.createElement('span');
 
           if (icon_url) {
-            // Check for multiple type.
-            if (type === 'multiple') {
-              options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classes + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + sanitizedOptionHtml + '</span></li>'));
-            } else {
-              options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classes + '><span>' + option.html() + '</span></li>'));
-            }
-            return true;
+            var image = document.createElement('img');
+            image.src = icon_url;
+            image.className = imageClasses;
+
+            element.appendChild(image);
           }
 
-          // Check for multiple type.
-          if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + sanitizedOptionHtml + '</span></li>'));
-          } else {
-            options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+          if (multiple) {
+            var input = document.createElement('input'),
+                labelCheckbox = document.createElement('label');
+
+            input.type = 'checkbox';
+
+            spanElement.appendChild(input);
+            spanElement.appendChild(labelCheckbox);
           }
-        } else {
-          if (icon_url) {
-            options.append($('<li class="optgroup ' + disabledClass + '"><img src="' + icon_url + '"' + classes + '><span>' + option.attr('label') + '</span></li>'));
-          } else {
-            options.append($('<li class="optgroup ' + disabledClass + '"><span>' + option.attr('label') + '</span></li>'));
-          }
+
+          element.className += optgroup ? 'optgroup ' + disabledClass : disabledClass;
+
+          spanElement.innerHTML += sanitizedText;
+          element.appendChild(spanElement);
+
+          return element;
         }
       };
+
+      // Scan for existing options before an optgroup
+      if (optgroups) {
+        if ($select.find('> option:not(:disabled)').length) {
+          $select.find('> option:not(:disabled)').each(function() {
+            // Put it in comments
+            $(this).wrap(function() {
+              return '<!-- ' + this.outerHTML + ' -->';
+            });
+            $(this).remove();
+          });
+        }
+      }
 
       /* Create dropdown structure. */
       if (selectChildren.length) {
         selectChildren.each(function() {
-          if ($(this).is('option')) {
-            // Direct descendant option.
+          var _this = $(this);
+
+          if (_this.is('option')) {
+            // generateOptionsElement = function(select, element, multiple, optgroup)
             if (multiple) {
-              appendOptionWithIcon($select, $(this), 'multiple', false);
+              generateOptionsElement(_this, true, false);
             } else {
-              appendOptionWithIcon($select, $(this), 'single', false);
+              generateOptionsElement(_this, false, false);
             }
           } else if ($(this).is('optgroup')) {
-            appendOptionWithIcon($select, $(this), 'single', true);
+            generateOptionsElement(_this, false, true);
           }
         });
       }
@@ -417,7 +437,10 @@
       $newSelect.after(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
-        $newSelect.dropdown({'hover': false, 'closeOnClick': false});
+        $newSelect.dropdown({
+          'hover': false,
+          'closeOnClick': false
+        });
       }
 
       // Copy tabindex
@@ -645,7 +668,9 @@
             }
 
             // Automatically clean filter query so user can search again by starting letters
-            setTimeout(function() { filterQuery = []; }, 1000);
+            setTimeout(function() {
+              filterQuery = [];
+            }, 1000);
           };
 
       $newSelect.on('keydown', onKeyDown);

@@ -655,8 +655,9 @@ select { display: none; }
 select.browser-default {
   display: block;
   margin-top: 15px;
+
+  & + label { top: -0.8rem; }
 }
-select.browser-default + label { top: -0.8rem; }
 
 // Disabled styles
 select:disabled {
@@ -681,6 +682,17 @@ select:disabled {
 .select-dropdown li.optgroup {
   color: rgba(0,0,0,.3);
   background-color: transparent;
+}
+
+.select-dropdown {
+  li.disabled, li.disabled > span, li.optgroup {
+    color: rgba(0,0,0,.3);
+    background-color: transparent;
+  }
+
+  li.disabled > span label::before {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+  }
 }
 
 // Icons
