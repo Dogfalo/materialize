@@ -306,6 +306,19 @@
         }
       }
 
+      // Scan for existing options before an optgroup
+      if (optgroups) {
+        if ($select.find('> option:not(:disabled)').length) {
+          $select.find('> option:not(:disabled)').each(function() {
+            // Put it in comments
+            $(this).wrap(function() {
+              return '<!-- ' + this.outerHTML + ' -->';
+            });
+            $(this).remove();
+          });
+        }
+      }
+
       var label = $select.find('option:selected').html() || $select.find('option:disabled').eq(0).html() || "";
 
       // Function that renders and appends the element taking into
@@ -348,19 +361,6 @@
           return element;
         }
       };
-
-      // Scan for existing options before an optgroup
-      if (optgroups) {
-        if ($select.find('> option:not(:disabled)').length) {
-          $select.find('> option:not(:disabled)').each(function() {
-            // Put it in comments
-            $(this).wrap(function() {
-              return '<!-- ' + this.outerHTML + ' -->';
-            });
-            $(this).remove();
-          });
-        }
-      }
 
       /* Create dropdown structure. */
       if (selectChildren.length) {
