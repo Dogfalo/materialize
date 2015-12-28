@@ -15,7 +15,8 @@
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false,
-      alignment: 'left'
+      alignment: 'left',
+      closeOnSelect:true
     };
 
     this.each(function(){
@@ -41,6 +42,8 @@
         options.belowOrigin = origin.data('beloworigin');
       if (origin.data('alignment') !== undefined)
         options.alignment = origin.data('alignment');
+      if (origin.data('closeonselect') !== undefined)
+        options.closeOnSelect = origin.data('closeonselect');
     }
 
     updateOptions();
@@ -201,7 +204,7 @@
           // If menu open, add click close handler to document
           if (activates.hasClass('active')) {
             $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
-              if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
+              if ( !(activates.find(e.target).length && !options.closeOnSelect ) && !activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
                 hideDropdown();
                 $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
               }
