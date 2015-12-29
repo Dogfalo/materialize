@@ -171,7 +171,7 @@
     });
 
     var range_wrapper = '.range-field';
-    $(document).on('change', range_type, function(e) {
+    $(document).on('change', range_type, function() {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
     });
@@ -298,11 +298,13 @@
           optionsValuesSelected = [],
           optionsHover = false;
 
-      if (multiple && optgroups) {
-        var optgroupValuesSelected = [];
+      if (multiple) {
+        if (optgroups) {
+          var optgroupValuesSelected = [];
 
-        for (var i = 0, optgroupsCount = $select.find('optgroup').length; i < optgroupsCount; i++) {
-          optionsValuesSelected.push([]);
+          for (var i = 0, optgroupsCount = $select.find('optgroup').length; i < optgroupsCount; i++) {
+            optionsValuesSelected.push([]);
+          }
         }
       }
 
@@ -324,10 +326,12 @@
       // Function that renders and appends the element taking into
       // account type and possible image icon.
       var generateOptionsElement = function(element, multiple, optgroup) {
+        // Add icons
         var icon_url = element.data('icon') ? element.data('icon').trim() : '',
             imageClasses = element.attr('class') ? element.attr('class').trim() : '',
-            disabledClass = (element.is(':disabled')) ? 'disabled ' : '',
-            sanitizedText = optgroup ? element.attr('label').trim() : element.html().trim();
+            disabledClass = (element.is(':disabled')) ? 'disabled' : '',
+            sanitizedText = optgroup ? element.attr('label').trim() : element.html().trim(),
+            dataValue = optgroup ? element.attr('label') : element.val();
 
         options.append(createElement());
 
@@ -353,7 +357,8 @@
             spanElement.appendChild(labelCheckbox);
           }
 
-          element.className += optgroup ? 'optgroup ' + disabledClass : disabledClass;
+          element.className += optgroup ? 'optgroup' + (disabledClass ? ' ' + disabledClass : '') : disabledClass;
+          element.dataset.value = dataValue;
 
           spanElement.innerHTML += sanitizedText;
           element.appendChild(spanElement);
@@ -375,7 +380,11 @@
               generateOptionsElement(_this, false, false);
             }
           } else if ($(this).is('optgroup')) {
-            generateOptionsElement(_this, false, true);
+            if (multiple) {
+              generateOptionsElement(_this, true, true);
+            } else {
+              generateOptionsElement(_this, false, true);
+            }
           }
         });
       }
@@ -383,7 +392,7 @@
       options.find('li:not(.optgroup)').each(function(i) {
         var _this = $(this);
 
-        _this.click(function(e) {
+        _this.on('click', function(e) {
           // Check if option element is disabled
           if (!_this.hasClass('disabled') && !_this.hasClass('optgroup')) {
             var indexLi = _this.index();
@@ -393,6 +402,7 @@
                 var indexes = returnIndexes(_this);
 
                 toggleIndexFromArray(indexes.element, indexLi, indexes.optgroup);
+                toggleActivationOptgroupParent(_this);
               } else {
                 toggleIndexFromArray(indexLi);
               }
@@ -415,6 +425,43 @@
             $select.trigger('change');
             if (typeof callback !== 'undefined') callback();
           }
+
+          e.stopPropagation();
+        });
+      });
+
+      options.find('li.optgroup:not(.disabled)').has(':checkbox').each(function() {
+        var _this = $(this);
+
+        _this.on('click', function(e) {
+          var status = _this.find(':checkbox').is(':checked') ? true : false;
+
+          if (!_this.hasClass('disabled')) {
+            var children;
+
+            if (status) {
+              children = _this.nextUntil(options.find('li.optgroup'), 'li.active:not(.disabled)')
+            } else {
+              children = _this.nextUntil(options.find('li.optgroup'), 'li:not(.active, .disabled)')
+            }
+
+            children.each(function() {
+              var _this = $(this),
+                  indexes = returnIndexes(_this);
+
+              toggleIndexFromArray(indexes.element, _this.index(), indexes.optgroup);
+              options.scrollTo(_this);
+              $('input[type="checkbox"]', _this[0]).prop('checked', function(i, v) {
+                return !v;
+              });
+            });
+          }
+
+          _this.toggleClass('active');
+          $('input[type="checkbox"]', _this[0]).prop('checked', function(i, v) {
+            return !v;
+          });
+          $newSelect.trigger('focus');
 
           e.stopPropagation();
         });
@@ -452,20 +499,24 @@
 
       // Select change event - Update the select's values on the fly by passing new values from an array
       $select.on('update', function() {
-        var selectedOptions = $select.find('option:selected:not(:disabled)');
+        var selectedOptions = $select.find("option:selected:not(:disabled)").map(function() {
+          return $(this).parent().is(':disabled') ? null : $(this);
+        });
 
         if (selectedOptions.length) {
           if (multiple) {
             resetOptions();
 
             selectedOptions.each(function() {
-              var indexOption = $(this).index();
+              var _this = $(this),
+                  indexOption = _this.index();
 
               if (optgroups) {
-                var indexes = returnIndexes($(this));
+                var indexes = returnIndexes(_this);
 
                 toggleIndexFromArray(indexOption, indexes.element, indexes.optgroup);
                 options.find("li").eq(indexes.element).find(":checkbox").prop("checked", true);
+                toggleActivationOptgroupParent(_this);
               } else {
                 toggleIndexFromArray(indexOption);
                 options.find('li').eq(indexOption).find(':checkbox').prop('checked', true);
@@ -500,10 +551,7 @@
             $(this).trigger('open', ['focus']);
 
             if (!multiple) {
-              var label = $(this).val(),
-                  selectedOption = options.find('li').filter(function() {
-                    return $(this).text().toLowerCase() === label.toLowerCase();
-                  })[0];
+              var selectedOption = options.find('li[data-value="' + $select.find('option:not(:disabled):selected').val() + '"]')[0];
               activateOption(options, selectedOption, 'active');
             }
           }
@@ -533,7 +581,11 @@
 
       // Add initial multiple selections
       if (multiple) {
-        $select.find("option:selected:not(:disabled)").each(function() {
+        var selectedOptions = $select.find("option:selected:not(:disabled)").map(function() {
+          return $(this).parent().is(':disabled') ? null : $(this);
+        });
+
+        selectedOptions.each(function() {
           var _this = $(this),
               indexOption = _this.index();
 
@@ -542,6 +594,7 @@
 
             toggleIndexFromArray(indexOption, indexes.element, indexes.optgroup);
             options.find("li").eq(indexes.element).find(":checkbox").prop("checked", true);
+            toggleActivationOptgroupParent(_this);
           } else {
             toggleIndexFromArray(indexOption);
             options.find("li").eq(indexOption).find(":checkbox").prop("checked", true);
@@ -555,6 +608,7 @@
       var activateOption = function(collection, newOption, _class) {
         if (newOption) {
           collection.find('li.' + _class).removeClass(_class);
+
           var option = $(newOption);
           option.addClass(_class);
           options.scrollTo(option);
@@ -603,6 +657,7 @@
             // CASE WHEN USER TYPE LETTERS
             var letter = String.fromCharCode(e.which).toLowerCase(),
                 nonLetters = [9, 13, 27, 38, 40];
+
             if (letter && (nonLetters.indexOf(e.which) === -1)) {
               filterQuery.push(letter);
 
@@ -631,13 +686,9 @@
             // ARROW DOWN - move to next not disabled option
             if (e.which == 40) {
               if (options.find('li.selected').length) {
-                newOption = options.find('li.selected').next('li:not(.disabled)');
-
-                if (optgroups && newOption.hasClass('optgroup')) {
-                  newOption = newOption.next('li:not(.disabled)');
-                }
+                newOption = options.find('li.selected').next('li');
               } else {
-                newOption = options.find('li:not(.disabled, .optgroup)');
+                newOption = options.find('li:not(.disabled)');
               }
 
               newOption = newOption[0];
@@ -654,13 +705,7 @@
 
             // ARROW UP - move to previous not disabled option
             if (e.which == 38) {
-              newOption = options.find('li.selected').prev('li:not(.disabled)');
-
-              if (optgroups && newOption.hasClass('optgroup')) {
-                newOption = newOption.prev('li:not(.disabled, .optgroup)');
-              }
-
-              newOption = newOption[0];
+              newOption = options.find('li.selected').prev('li')[0];
 
               if (newOption) {
                 activateOption(options, newOption, 'selected');
@@ -719,28 +764,23 @@
       // Returns indexes used for toggleIndexFromArray
       function returnIndexes(_this) {
         var indexes = {},
-            text = _this.text(),
+            text = _this.val() || _this.data('value'),
             selectedElement;
 
         if (_this.is('li')) {
-          selectedElement = $select.find('option').filter(function() {
-            return $(this).text().toLowerCase() === text.toLowerCase();
-          });
+          selectedElement = $select.find('option:not(:disabled)[value="' + text + '"]');
         } else {
-          selectedElement = options.find('li').filter(function() {
-            return $(this).text().toLowerCase() === text.toLowerCase();
-          });
+          selectedElement = options.find('li:not(.disabled)[data-value="' + text + '"]');
         }
 
         var indexElement = selectedElement.index(),
-            indexOptgroup, disabledPrevOptions;
+            disabledPrevOptions = $select.find('> option:disabled'),
+            indexOptgroup;
 
         if (_this.is('li')) {
           indexOptgroup = selectedElement.parent().index();
-          disabledPrevOptions = selectedElement.parent().prevUntil($select, 'option:disabled');
         } else {
           indexOptgroup = _this.parent().index();
-          disabledPrevOptions = selectedElement.prevUntil(options, 'li.disabled');
         }
 
         for (var i = 0, count = disabledPrevOptions.length; i < count; i++) {
@@ -777,6 +817,54 @@
         }
 
         $newSelect.val(value);
+      }
+
+      // Toggle activation of the optgroup's checkbox parent
+      function toggleActivationOptgroupParent(child) {
+        var liTagName = child[0].tagName === "LI",
+            checkForActiveClass = [],
+            children, prevOptgroup, convertElement;
+
+        if (liTagName) {
+          children = child.prevUntil('li.optgroup', 'li:not(.disabled)').add(child.nextUntil('li.optgroup', 'li:not(.disabled)')).add(child);
+          prevOptgroup = child.prevAll('li.optgroup').eq(0);
+        } else {
+          children = child.prevUntil('optgroup', 'option:not(:disabled)').add(child.nextUntil('optgroup', 'option:not(:disabled)')).add(child);
+          prevOptgroup = child.parent();
+        }
+
+        // For each li in optgroup, check the active class and fill the array
+        for (var i = 0, count = children.length; i < count; i++) {
+          var element = $(children[i]);
+
+          if (liTagName) {
+            if (element.hasClass('active')) {
+              checkForActiveClass.push(true);
+            } else {
+              checkForActiveClass.push(false);
+            }
+          } else {
+            convertElement = options.find('li:not(:disabled)[data-value="' + element.val() + '"]');
+
+            i === 0 ? prevOptgroup = convertElement.prevAll('li.optgroup').eq(0) : '';
+
+            if (element.is(':selected') || convertElement.hasClass('active')) {
+              checkForActiveClass.push(true);
+            } else {
+              checkForActiveClass.push(false);
+            }
+          }
+        }
+
+        var oneChildIsNotSelected = checkForActiveClass.indexOf(false) > -1;
+
+        if (oneChildIsNotSelected) {
+          prevOptgroup.find(':checkbox').prop('checked', false);
+          prevOptgroup.removeClass('active');
+        } else {
+          prevOptgroup.find(':checkbox').prop('checked', true);
+          prevOptgroup.addClass('active');
+        }
       }
 
       // Sorts the values from the array in alphabetical order

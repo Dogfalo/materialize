@@ -637,8 +637,12 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     color: initial;
     position: absolute;
     right: 0;
-    top: 16px;
+    top: 6px;
     font-size: 10px;
+    background-color: #FFF;
+    padding: 5px 0;
+    z-index: 1;
+
     &.disabled {
       color: $input-disabled-color;
     }
@@ -679,9 +683,9 @@ select:disabled {
 
 .select-dropdown li.disabled,
 .select-dropdown li.disabled > span,
+.select-dropdown li.optgroup.disabled > span,
 .select-dropdown li.optgroup {
   color: rgba(0,0,0,.3);
-  background-color: transparent;
 }
 
 .select-dropdown {
@@ -691,7 +695,7 @@ select:disabled {
   }
 
   li.disabled > span label::before {
-    border: 2px solid rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(0, 0, 0, .3);
   }
 }
 
@@ -714,7 +718,7 @@ select:disabled {
   }
 
   & > span {
-    color: rgba(0, 0, 0, .4);
+    color: $radio-empty-color;
   }
 
   & ~ li:not(.optgroup) {
