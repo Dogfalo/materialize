@@ -462,6 +462,7 @@
             return !v;
           });
           $newSelect.trigger('focus');
+          $select.trigger('change');
 
           e.stopPropagation();
         });
@@ -538,6 +539,8 @@
             setValueToInput(optgroupValuesSelected);
           }
         }
+
+        $select.trigger('change');
       });
 
       // Input events
