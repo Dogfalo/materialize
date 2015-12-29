@@ -478,7 +478,7 @@
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;').trim();
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID + '" value="' + sanitizedLabelHtml + '" ' + (required ? 'required' : '') + '/>');
+      var $newSelect = $('<input type="text" class="select-dropdown" readonly="readonly" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID + '" value="' + sanitizedLabelHtml + '" ' + (required ? 'required' : '') + '/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
