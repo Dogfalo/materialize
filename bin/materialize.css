@@ -9061,7 +9061,7 @@ textarea.materialize-textarea {
 [type="radio"]:checked {
   position: absolute;
   left: -9999px;
-  visibility: hidden;
+  opacity: 0;
 }
 
 [type="radio"]:not(:checked) + label,
@@ -9138,6 +9138,11 @@ textarea.materialize-textarea {
           transform: scale(0.5);
 }
 
+/* Focused styles */
+[type="radio"].tabbed:focus + label:before {
+  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
 /* Disabled Radio With gap */
 [type="radio"].with-gap:disabled:checked + label:before {
   border: 2px solid rgba(0, 0, 0, 0.26);
@@ -9186,6 +9191,7 @@ form p:last-child {
 [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
+  opacity: 0;
 }
 
 [type="checkbox"] {
@@ -9210,7 +9216,8 @@ form p:last-child {
   /* IE10+ */
 }
 
-[type="checkbox"] + label:before {
+[type="checkbox"] + label:before,
+[type="checkbox"]:not(.filled-in) + label:after {
   content: '';
   position: absolute;
   top: 0;
@@ -9224,14 +9231,29 @@ form p:last-child {
   transition: .2s;
 }
 
+[type="checkbox"]:not(.filled-in) + label:after {
+  border: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
 [type="checkbox"]:not(:checked):disabled + label:before {
   border: none;
   background-color: rgba(0, 0, 0, 0.26);
 }
 
+[type="checkbox"].tabbed:focus + label:after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 [type="checkbox"]:checked + label:before {
   top: -4px;
-  left: -3px;
+  left: -5px;
   width: 12px;
   height: 22px;
   border-top: 2px solid transparent;
@@ -9253,8 +9275,8 @@ form p:last-child {
 
 /* Indeterminate checkbox */
 [type="checkbox"]:indeterminate + label:before {
-  left: -10px;
   top: -11px;
+  left: -12px;
   width: 10px;
   height: 22px;
   border-top: none;
@@ -9331,6 +9353,18 @@ form p:last-child {
   border: 2px solid #26a69a;
   background-color: #26a69a;
   z-index: 0;
+}
+
+[type="checkbox"].filled-in.tabbed:focus + label:after {
+  border-radius: 2px;
+  border-color: #5a5a5a;
+  background-color: #5a5a5a;
+}
+
+[type="checkbox"].filled-in.tabbed:checked:focus + label:after {
+  border-radius: 2px;
+  background-color: #26a69a;
+  border-color: #26a69a;
 }
 
 [type="checkbox"].filled-in:disabled:not(:checked) + label:before {
