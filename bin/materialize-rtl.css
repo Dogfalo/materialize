@@ -6533,7 +6533,7 @@ textarea {
 [type="radio"]:not(:checked), [type="radio"]:checked {
   position: absolute;
   left: -9999px;
-  visibility: hidden; }
+  opacity: 0; }
 
 [type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
   position: relative;
@@ -6590,6 +6590,9 @@ textarea {
 [type="radio"].with-gap:checked + label:before {
   border-radius: 50%;
   border: 2px solid #26a69a; }
+  
+[type="radio"].tabbed:focus + label:before {
+  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1); }
 
 [type="radio"].with-gap:checked + label:after {
   border-radius: 50%;
@@ -6636,7 +6639,8 @@ form p:last-child {
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px; }
+  left: -9999px;
+  opacity: 0; }
 
 [type="checkbox"] {
   /* checkbox aspect */ }
@@ -6656,7 +6660,7 @@ form p:last-child {
     /* webkit (konqueror) browsers */
     -ms-user-select: none;
     /* IE10+ */ }
-  [type="checkbox"] + label:before {
+  [type="checkbox"] + label:before, [type="checkbox"]:not(.filled-in) + label:after {
     content: '';
     position: absolute;
     top: 0;
@@ -6668,13 +6672,24 @@ form p:last-child {
     border-radius: 1px;
     margin-top: 2px;
     transition: 0.2s; }
+  [type="checkbox"]:not(.filled-in) + label:after {
+    border: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0); }
   [type="checkbox"]:not(:checked):disabled + label:before {
     border: none;
     background-color: rgba(0, 0, 0, 0.26); }
+  [type="checkbox"].tabbed:focus + label:after {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1); }
 
 [type="checkbox"]:checked + label:before {
   top: -4px;
-  right: 3px;
+  right: 5px;
   width: 12px;
   height: 22px;
   border-top: 2px solid transparent;
@@ -6693,7 +6708,7 @@ form p:last-child {
 
 /* Indeterminate checkbox */
 [type="checkbox"]:indeterminate + label:before {
-  right: 10px;
+  right: 12px;
   top: -11px;
   width: 10px;
   height: 22px;
@@ -6757,6 +6772,14 @@ form p:last-child {
   border: 2px solid #26a69a;
   background-color: #26a69a;
   z-index: 0; }
+[type="checkbox"].filled-in.tabbed:focus + label:after {
+  border-radius: 2px;
+  border-color: #5a5a5a;
+  background-color: #5a5a5a; }
+[type="checkbox"].filled-in.tabbed:checked:focus + label:after {
+  border-radius: 2px;
+  background-color: #26a69a;
+  border-color: #26a69a; }
 [type="checkbox"].filled-in:disabled:not(:checked) + label:before {
   background-color: transparent;
   border: 2px solid transparent; }
