@@ -569,11 +569,6 @@
             $(this).trigger('close');
             options.find('li.active:not(.disabled)').removeClass('active');
           }
-        },
-        'keydown': function (e) {
-          if ($newSelect.is(':disabled')) {
-            onKeyDown(e);
-          }
         }
       });
 
@@ -586,6 +581,15 @@
       $(window).on({
         'click': function() {
           multiple && (optionsHover || $newSelect.trigger('close'));
+
+          if ($newSelect.is(':disabled')) {
+            $newSelect.prop('disabled', false);
+          }
+        },
+        'keydown': function(e) {
+          if ($newSelect.is(':disabled')) {
+            onKeyDown(e);
+          }
         }
       });
 
