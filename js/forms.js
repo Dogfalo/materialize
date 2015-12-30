@@ -558,6 +558,8 @@
               activateOption(options, selectedOption, 'active');
             }
           }
+
+          $newSelect.prop('disabled', true);
         },
         'click': function(e) {
           e.stopPropagation();
@@ -566,6 +568,11 @@
           if (!multiple) {
             $(this).trigger('close');
             options.find('li.active:not(.disabled)').removeClass('active');
+          }
+        },
+        'keydown': function (e) {
+          if ($newSelect.is(':disabled')) {
+            onKeyDown(e);
           }
         }
       });
@@ -704,6 +711,7 @@
             // ESC - close options
             if (e.which == 27) {
               $newSelect.trigger('close');
+              $newSelect.prop('disabled', false);
             }
 
             // ARROW UP - move to previous not disabled option
