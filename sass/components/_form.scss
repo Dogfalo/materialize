@@ -530,7 +530,7 @@ form p:last-child {
   &.tabbed:focus + label:after {
     border-radius: 2px;
     border-color: $radio-empty-color;
-    background-color: $radio-empty-color;
+    background-color: rgba(0,0,0,.1);
   }
   &.tabbed:checked:focus + label:after {
     border-radius: 2px;

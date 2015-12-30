@@ -96,13 +96,12 @@
     var radio_checkbox = 'input[type=radio], input[type=checkbox]';
     $(document).on('keyup.radio', radio_checkbox, function(e) {
       // TAB, check if tabbing to radio or checkbox.
-        console.log($(this));
       if (e.which === 9) {
         $(this).addClass('tabbed');
         var $this = $(this);
-        $(document).on('click.radio keydown.radio', function() {
-          $this.removeClass('tabbed');
-          $(document).off('click.radio keydown.radio');
+        $this.one('blur', function(e) {
+          console.log(e);
+          $(this).removeClass('tabbed');
         });
         return;
       }
