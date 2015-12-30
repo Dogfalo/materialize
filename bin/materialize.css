@@ -9777,7 +9777,7 @@ select {
 .side-nav {
   position: fixed;
   width: 240px;
-  left: -105%;
+  left: 0;
   top: 0;
   margin: 0;
   height: 100%;
@@ -9787,12 +9787,15 @@ select {
   background-color: #fff;
   z-index: 999;
   overflow-y: auto;
-  will-change: left;
+  will-change: transform;
+  -webkit-transform: translateX(-105%);
+          transform: translateX(-105%);
 }
 
 .side-nav.right-aligned {
-  will-change: right;
-  right: -105%;
+  right: 0;
+  -webkit-transform: translateX(105%);
+          transform: translateX(105%);
   left: auto;
 }
 
@@ -9858,6 +9861,8 @@ select {
 
 .side-nav.fixed {
   left: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
   position: fixed;
 }
 
@@ -9868,11 +9873,12 @@ select {
 
 @media only screen and (max-width: 992px) {
   .side-nav.fixed {
-    left: -105%;
+    -webkit-transform: translateX(-105%);
+            transform: translateX(-105%);
   }
   .side-nav.fixed.right-aligned {
-    right: -105%;
-    left: auto;
+    -webkit-transform: translateX(105%);
+            transform: translateX(105%);
   }
 }
 

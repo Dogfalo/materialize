@@ -23,20 +23,19 @@
         $('body').append(dragTarget);
 
         if (options.edge == 'left') {
-          menu_id.css('left', -1 * (options.menuWidth + 10));
+          menu_id.css('transform', 'translateX('+(-1 * (options.menuWidth + 10))+'px)');
           dragTarget.css({'left': 0}); // Add Touch Area
         }
         else {
           menu_id.addClass('right-aligned') // Change text-alignment to right
-            .css('right', -1 * (options.menuWidth + 10))
-            .css('left', '');
+            .css('transform', 'translateX('+(options.menuWidth + 10)+'px)');
           dragTarget.css({'right': 0}); // Add Touch Area
         }
 
         // If fixed sidenav, bring menu out
         if (menu_id.hasClass('fixed')) {
             if (window.innerWidth > 992) {
-              menu_id.css('left', 0);
+              menu_id.css('transform', 'translateX(0px)');
             }
           }
 
@@ -55,9 +54,9 @@
             }
             else if (menuOut === false){
               if (options.edge === 'left')
-                menu_id.css('left', -1 * (options.menuWidth + 10));
+                menu_id.css('transform', 'translateX('+(-1 * (options.menuWidth + 10))+'px)');
               else
-                menu_id.css('right', -1 * (options.menuWidth + 10));
+                menu_id.css('transform', 'translateX('+(options.menuWidth + 10)+'px)');
             }
 
           });
@@ -85,7 +84,7 @@
             // Reset phantom div
             dragTarget.css({width: '', right: '', left: '0'});
             menu_id.velocity(
-              {left: -1 * (options.menuWidth + 10)},
+              {translateX: -1 * (options.menuWidth + 10) },
               { duration: 200,
                 queue: false,
                 easing: 'easeOutCubic',
@@ -103,7 +102,7 @@
             // Reset phantom div
             dragTarget.css({width: '', right: '0', left: ''});
             menu_id.velocity(
-              {right: -1 * (options.menuWidth + 10)},
+              {translateX: (options.menuWidth + 10)},
               { duration: 200,
                 queue: false,
                 easing: 'easeOutCubic',
@@ -163,7 +162,7 @@
               // Right Direction
               else if (x >= (options.menuWidth / 2)) { menuOut = true; }
 
-              menu_id.css('left', (x - options.menuWidth));
+              menu_id.css('transform', 'translateX('+(x - options.menuWidth)+'px)');
             }
             else {
               // Left Direction
@@ -179,7 +178,7 @@
                 rightPos = 0;
               }
 
-              menu_id.css('right', rightPos);
+              menu_id.css('transform', 'translateX('+(-rightPos)+'px)');
             }
 
 
@@ -205,7 +204,7 @@
             if (options.edge === 'left') {
               // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
               if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
-                menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({translateX: [0, e.gesture.center.x - options.menuWidth] }, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: 0, left: ''});
               }
@@ -213,7 +212,7 @@
                 // Enable Scrolling
                 $('body').css('overflow', '');
                 // Slide menu closed
-                menu_id.velocity({left: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({translateX: [-1 * (options.menuWidth + 10), e.gesture.center.x - options.menuWidth] }, {duration: 200, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
                   complete: function () {
                     $(this).remove();
@@ -223,7 +222,7 @@
             }
             else {
               if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
-                menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({translateX: [0, e.gesture.center.x - window.innerWidth + options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: '', left: 0});
               }
@@ -231,7 +230,7 @@
                 // Enable Scrolling
                 $('body').css('overflow', '');
                 // Slide menu closed
-                menu_id.velocity({right: -1 * (options.menuWidth + 10)}, {duration: 200, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({translateX: [(options.menuWidth + 10), e.gesture.center.x - window.innerWidth + options.menuWidth]}, {duration: 200, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
                   complete: function () {
                     $(this).remove();
@@ -258,11 +257,11 @@
               
               if (options.edge === 'left') {
                 dragTarget.css({width: '50%', right: 0, left: ''});
-                menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({translateX: [0,-options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
                 dragTarget.css({width: '50%', right: '', left: 0});
-                menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                menu_id.velocity({translateX: [0,options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 menu_id.css('left','');
               }
 
