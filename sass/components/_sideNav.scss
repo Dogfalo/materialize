@@ -1,7 +1,7 @@
 .side-nav {
   position: fixed;
   width: 240px;
-  left: -105%;
+  left: 0;
   top: 0;
   margin: 0;
   height: 100%;
@@ -11,14 +11,15 @@
   background-color: $sidenav-bg-color;
   z-index: 999;
   overflow-y: auto;
+  will-change: transform;
+  transform: translateX(-105%);
 
   @extend .z-depth-1;
-  will-change: left;
 
   // Right Align
   &.right-aligned {
-    will-change: right;
-    right: -105%;
+    right: 0;
+    transform: translateX(105%);
     left: auto;
   }
 
@@ -83,6 +84,7 @@
 // Fixed side-nav shown
 .side-nav.fixed {
   left: 0;
+  transform: translateX(0);
   position: fixed;
 
   // Right Align
@@ -95,11 +97,10 @@
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
   .side-nav.fixed {
-    left: -105%;
+    transform: translateX(-105%);
 
     &.right-aligned {
-      right: -105%;
-      left: auto;
+      transform: translateX(105%);
     }
   }
 }
