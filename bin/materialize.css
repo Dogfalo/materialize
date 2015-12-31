@@ -8912,6 +8912,22 @@ textarea.materialize-textarea:focus.invalid + label:after {
   opacity: 1;
 }
 
+input:not([type]).validate + label,
+input[type=text].validate + label,
+input[type=password].validate + label,
+input[type=email].validate + label,
+input[type=url].validate + label,
+input[type=time].validate + label,
+input[type=date].validate + label,
+input[type=datetime-local].validate + label,
+input[type=tel].validate + label,
+input[type=number].validate + label,
+input[type=search].validate + label,
+textarea.materialize-textarea.validate + label {
+  width: 100%;
+  z-index: -1;
+}
+
 input:not([type]) + label:after,
 input[type=text] + label:after,
 input[type=password] + label:after,

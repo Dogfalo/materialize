@@ -55,7 +55,6 @@ textarea.materialize-textarea {
   outline: none;
   height: 3rem;
   width: 100%;
-
   font-size: 1rem;
   margin: 0 0 15px 0;
   padding: 0;
@@ -107,6 +106,11 @@ textarea.materialize-textarea {
     content: attr(data-error);
     color: $input-error-color;
     opacity: 1;
+  }
+  // Full width label when using validate for error messages
+  &.validate + label {
+    width: 100%;
+    z-index: -1;
   }
 
   // Form Message Shared Styles
