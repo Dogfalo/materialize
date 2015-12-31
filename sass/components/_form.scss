@@ -10,6 +10,8 @@ button:focus {
 label {
   font-size: $label-font-size;
   color: $input-border-color;
+  pointer-events: none;
+  width: 100%;
 }
 
 /***************************
