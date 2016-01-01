@@ -6428,6 +6428,9 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     content: attr(data-error);
     color: #F44336;
     opacity: 1; }
+  input:not([type]).validate + label, input[type=text].validate + label, input[type=password].validate + label, input[type=email].validate + label, input[type=url].validate + label, input[type=time].validate + label, input[type=date].validate + label, input[type=datetime-local].validate + label, input[type=tel].validate + label, input[type=number].validate + label, input[type=search].validate + label, textarea.materialize-textarea.validate + label {
+    width: 100%;
+    z-index: -1; }
   input[type=text] + label:after, input[type=password] + label:after, input[type=email] + label:after, input[type=url] + label:after, input[type=time] + label:after, input[type=date] + label:after, input[type=datetime-local] + label:after, input[type=tel] + label:after, input[type=number] + label:after, input[type=search] + label:after, textarea.materialize-textarea + label:after {
     display: block;
     content: "";
