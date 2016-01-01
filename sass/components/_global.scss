@@ -330,7 +330,31 @@ ul.staggered-list li {
     display: block !important;
   }
 }
-
+.show-on-large-inline {
+  @media #{$large-and-up} {
+    display: inline-block !important;
+  }
+}
+.show-on-medium-inline {
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+    display: inline-block !important;
+  }
+}
+.show-on-small-inline {
+  @media #{$small-and-down} {
+    display: inline-block !important;
+  }
+}
+.show-on-medium-and-up-inline {
+  @media #{$medium-and-up} {
+    display: inline-block !important;
+  }
+}
+.show-on-medium-and-down-inline {
+  @media #{$medium-and-down} {
+    display: inline-block !important;
+  }
+}
 
 // Center text on mobile
 .center-on-small-only {
