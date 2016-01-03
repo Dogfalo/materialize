@@ -50,12 +50,12 @@
 
     &.btn,
     &.btn-large,
-    &.btn-floating { color: $button-color-raised; }
-    &.btn-flat { color: $button-color-flat; }
+    &.btn-floating { color: $button-raised-color; }
+    &.btn-flat { color: $button-flat-color; }
 
     &.btn:hover,
-    &.btn-large:hover { background-color: lighten($button-color, 5%); }
-    &.btn-floating:hover { background-color: $button-color; }
+    &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
+    &.btn-floating:hover { background-color: $button-raised-background; }
   }
 }
 
