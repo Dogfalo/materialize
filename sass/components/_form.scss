@@ -55,7 +55,6 @@ textarea.materialize-textarea {
   outline: none;
   height: 3rem;
   width: 100%;
-
   font-size: 1rem;
   margin: 0 0 15px 0;
   padding: 0;
@@ -107,6 +106,11 @@ textarea.materialize-textarea {
     content: attr(data-error);
     color: $input-error-color;
     opacity: 1;
+  }
+  // Full width label when using validate for error messages
+  &.validate + label {
+    width: 100%;
+    z-index: -1;
   }
 
   // Form Message Shared Styles
@@ -241,7 +245,7 @@ textarea {
 [type="radio"]:checked {
   position: absolute;
   left: -9999px;
-  visibility: hidden;
+  opacity: 0;
 }
 
 [type="radio"]:not(:checked) + label,
@@ -311,6 +315,11 @@ textarea {
   transform: scale(.5);
 }
 
+/* Focused styles */
+[type="radio"].tabbed:focus + label:before {
+  box-shadow: 0px 0px 0px 10px rgba(0,0,0,.1);
+}
+
 /* Disabled Radio With gap */
 [type="radio"].with-gap:disabled:checked + label:before {
   border: 2px solid $input-disabled-color;
@@ -355,6 +364,7 @@ form p:last-child {
 [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
+  opacity: 0;
 }
 
 // Checkbox Styles
@@ -377,7 +387,8 @@ form p:last-child {
   }
 
   /* checkbox aspect */
-  + label:before {
+  + label:before,
+  &:not(.filled-in) + label:after {
     content: '';
     position: absolute;
     top: 0;
@@ -390,17 +401,30 @@ form p:last-child {
     margin-top: 2px;
     transition: .2s;
   }
+  &:not(.filled-in) + label:after {
+    border: 0;
+    transform: scale(0);
+  }
 
   &:not(:checked):disabled + label:before {
     border: none;
     background-color: $input-disabled-color;
+  }
+
+  // Focused styles
+  &.tabbed:focus + label:after {
+    transform: scale(1);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 10px rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.1);
   }
 }
 
 [type="checkbox"]:checked {
   + label:before {
     top: -4px;
-    left: -3px;
+    left: -5px;
     width: 12px; height: 22px;
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
@@ -420,8 +444,8 @@ form p:last-child {
 /* Indeterminate checkbox */
 [type="checkbox"]:indeterminate {
   +label:before {
-    left: -10px;
     top: -11px;
+    left: -12px;
     width: 10px; height: 22px;
     border-top: none;
     border-left: none;
@@ -505,6 +529,19 @@ form p:last-child {
       z-index: 0;
     }
   }
+
+  // Focused styles
+  &.tabbed:focus + label:after {
+    border-radius: 2px;
+    border-color: $radio-empty-color;
+    background-color: rgba(0,0,0,.1);
+  }
+  &.tabbed:checked:focus + label:after {
+    border-radius: 2px;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+
   // Disabled style
   &:disabled:not(:checked) + label:before {
     background-color: transparent;
