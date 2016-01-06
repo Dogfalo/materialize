@@ -137,12 +137,12 @@ textarea.materialize-textarea {
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
-    width: 100%;
-    text-align: left;
   }
   label.active {
     font-size: $label-font-size;
     transform: translateY(-140%);
+    width: 100%;
+    text-align: left;
   }
 
   // Prefix Icons
