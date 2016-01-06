@@ -557,9 +557,7 @@
               var selectedOption = options.find('li[data-value="' + $select.find('option:not(:disabled):selected').val() + '"]')[0];
               activateOption(options, selectedOption, 'active');
             }
-          }
-
-          $newSelect.prop('disabled', true);
+          }²
         },
         'click': function(e) {
           e.stopPropagation();
@@ -581,15 +579,6 @@
       $(window).on({
         'click': function() {
           multiple && (optionsHover || $newSelect.trigger('close'));
-
-          if ($newSelect.is(':disabled')) {
-            $newSelect.prop('disabled', false);
-          }
-        },
-        'keydown': function(e) {
-          if ($newSelect.is(':disabled')) {
-            onKeyDown(e);
-          }
         }
       });
 
@@ -715,7 +704,6 @@
             // ESC - close options
             if (e.which == 27) {
               $newSelect.trigger('close');
-              $newSelect.prop('disabled', false);
             }
 
             // ARROW UP - move to previous not disabled option
