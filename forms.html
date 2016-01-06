@@ -405,7 +405,7 @@
               <div class="input-field col s12 m6">
                 <select>
                   <optgroup label="team 1">
-                    <option value="1">Option 1</option>
+                    <option value="1" selected>Option 1</option>
                     <option value="2">Option 2</option>
                   </optgroup>
                   <optgroup label="team 2">
@@ -413,7 +413,20 @@
                     <option value="4">Option 4</option>
                   </optgroup>
                 </select>
-                <label>Optgroups</label>
+                <label>Single Select with optgroups</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <select multiple>
+                  <optgroup label="team 1">
+                    <option value="1" selected>Option 1</option>
+                    <option value="2">Option 2</option>
+                  </optgroup>
+                  <optgroup label="team 2">
+                    <option value="3" selected>Option 3</option>
+                    <option value="4">Option 4</option>
+                  </optgroup>
+                </select>
+                <label>Multiple Select with optgroups</label>
               </div>
               <div class="col s12">
                 <br>
@@ -424,7 +437,7 @@
                   <option value="" disabled selected>Choose your option</option>
                   <option value="" data-icon="images/sample-1.jpg" class="circle">example 1</option>
                   <option value="" data-icon="images/office.jpg" class="circle">example 2</option>
-                  <option value="" data-icon="images/yuna.jpg" class="circle">example 1</option>
+                  <option value="" data-icon="images/yuna.jpg" class="circle">example 3</option>
                 </select>
                 <label>Images in select</label>
               </div>
@@ -474,10 +487,10 @@
     &lt;label>Materialize Multiple Select&lt;/label>
   &lt;/div>
 
-  &lt;div class="input-field col s12">
-    &lt;select multiple>
+  &lt;div class="input-field col s12 m6">
+    &lt;select>
       &lt;optgroup label="team 1">
-        &lt;option value="1">Option 1&lt;/option>
+        &lt;option value="1" selected>Option 1&lt;/option>
         &lt;option value="2">Option 2&lt;/option>
       &lt;/optgroup>
       &lt;optgroup label="team 2">
@@ -485,7 +498,21 @@
         &lt;option value="4">Option 4&lt;/option>
       &lt;/optgroup>
     &lt;/select>
-    &lt;label>Optgroups&lt;/label>
+    &lt;label>Single Select with optgroups&lt;/label>
+  &lt;/div>
+  
+  &lt;div class="input-field col s12 m6">
+    &lt;select multiple>
+      &lt;optgroup label="team 1">
+        &lt;option value="1" selected>Option 1&lt;/option>
+        &lt;option value="2">Option 2&lt;/option>
+      &lt;/optgroup>
+      &lt;optgroup label="team 2">
+        &lt;option value="3" selected>Option 3&lt;/option>
+        &lt;option value="4">Option 4&lt;/option>
+      &lt;/optgroup>
+    &lt;/select>
+    &lt;label>Multiple Select with optgroups&lt;/label>
   &lt;/div>
 
   &lt;div class="input-field col s12 m6">
@@ -493,7 +520,7 @@
       &lt;option value="" disabled selected>Choose your option&lt;/option>
       &lt;option value="" data-icon="images/sample-1.jpg" class="circle">example 1&lt;/option>
       &lt;option value="" data-icon="images/office.jpg" class="circle">example 2&lt;/option>
-      &lt;option value="" data-icon="images/yuna.jpg" class="circle">example 1&lt;/option>
+      &lt;option value="" data-icon="images/yuna.jpg" class="circle">example 3&lt;/option>
     &lt;/select>
     &lt;label>Images in select&lt;/label>
   &lt;/div>
@@ -564,16 +591,24 @@
             <h4>Initialization</h4>
             <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
             <pre><code class="language-javascript col s12">
-  $(document).ready(function() {
-    $('select').material_select();
-  });
+$(document).ready(function() {
+  $('select').material_select();
+});
             </code></pre>
           </div>
           <div class="col s12">
-            <h4>Updating/Destroying Select</h4>
-            <p>If you want to update the items inside the select, just rerun the initialization code from above after editing the original select. Or you can destroy the material select with this function below, and create a new select altogether</p>
+            <h4>Updating Select</h4>
+            <p>You can update the material select by passing new values with this function below, in this case you don't need to use the destroying select function.</p>
             <pre><code class="language-javascript">
-  $('select').material_select('destroy');
+  $('select').val([value1, value2]).trigger('update'); // for multiple select
+  $('select').val(value).trigger('update'); // for single select
+            </code></pre>
+          </div>
+          <div class="col s12">
+            <h4>Destroying Select</h4>
+            <p>Or you can destroy the material select with this function below, and create a new select altogether</p>
+            <pre><code class="language-javascript">
+$('select').material_select('destroy');
             </code></pre>
           </div>
         </div>

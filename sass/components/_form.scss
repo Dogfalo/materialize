@@ -18,19 +18,19 @@ label {
 
 // Style Placeholders
 ::-webkit-input-placeholder {
-   color: lighten($input-border-color, 20%);
+  color: lighten($input-border-color, 20%);
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: lighten($input-border-color, 20%);
+  color: lighten($input-border-color, 20%);
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: lighten($input-border-color, 20%);
+  color: lighten($input-border-color, 20%);
 }
 
 :-ms-input-placeholder {
-   color: lighten($input-border-color, 20%);
+  color: lighten($input-border-color, 20%);
 }
 
 // Text inputs
@@ -214,9 +214,9 @@ textarea.materialize-textarea {
 
 // Default textarea
 textarea {
-   width: 100%;
-   height: 3rem;
-   background-color: transparent;
+  width: 100%;
+  height: 3rem;
+  background-color: transparent;
 
   &.materialize-textarea {
     overflow-y: hidden; /* prevents scroll bar flash */
@@ -482,15 +482,15 @@ form p:last-child {
   // Unchecked style
   &:not(:checked) + label:before {
     width: 0;
-     height: 0;
-     border: 3px solid transparent;
-     left: 6px;
-     top: 10px;
+    height: 0;
+    border: 3px solid transparent;
+    left: 6px;
+    top: 10px;
 
-     -webkit-transform: rotateZ(37deg);
-             transform: rotateZ(37deg);
-     -webkit-transform-origin: 20% 40%;
-             transform-origin: 100% 100%;
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 20% 40%;
+    transform-origin: 100% 100%;
   }
 
   &:not(:checked) + label:after {
@@ -568,69 +568,69 @@ form p:last-child {
 ***************/
 .switch,
 .switch * {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
 }
 
 .switch label {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .switch label input[type=checkbox]{
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .switch label input[type=checkbox]:checked + .lever {
-    background-color: $switch-checked-lever-bg;
+  background-color: $switch-checked-lever-bg;
 }
 
 .switch label input[type=checkbox]:checked + .lever:after {
-    background-color: $switch-bg-color;
+  background-color: $switch-bg-color;
 }
 
 .switch label .lever {
-    content: "";
-    display: inline-block;
-    position: relative;
-    width: 40px;
-    height: 15px;
-    background-color: $switch-unchecked-lever-bg;
-    border-radius: 15px;
-    margin-right: 10px;
-    transition: background 0.3s ease;
-    vertical-align: middle;
-    margin: 0 16px;
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 15px;
+  background-color: $switch-unchecked-lever-bg;
+  border-radius: 15px;
+  margin-right: 10px;
+  transition: background 0.3s ease;
+  vertical-align: middle;
+  margin: 0 16px;
 }
 
 .switch label .lever:after {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    width: 21px;
-    height: 21px;
-    background-color: $switch-unchecked-bg;
-    border-radius: 21px;
-    box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
-    left: -5px;
-    top: -3px;
-    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  background-color: $switch-unchecked-bg;
+  border-radius: 21px;
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
+  left: -5px;
+  top: -3px;
+  transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
 }
 
 // Switch active style
 input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px transparentize($switch-bg-color, .9);
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px transparentize($switch-bg-color, .9);
 }
 
 input[type=checkbox]:not(:disabled) ~ .lever:active:after {
-       box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px rgba(0, 0, 0, .08);
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px rgba(0, 0, 0, .08);
 }
 
 .switch label input[type=checkbox]:checked + .lever:after {
-    left: 24px;
+  left: 24px;
 }
 
 // Disabled Styles
@@ -639,7 +639,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 .switch label input[type=checkbox][disabled] + .lever:after,
 .switch label input[type=checkbox][disabled]:checked + .lever:after {
-    background-color: $input-disabled-solid-color;
+  background-color: $input-disabled-solid-color;
 }
 
 /***************
@@ -673,8 +673,12 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     color: initial;
     position: absolute;
     right: 0;
-    top: 16px;
+    top: 6px;
     font-size: 10px;
+    background-color: #FFF;
+    padding: 5px 0;
+    z-index: 1;
+
     &.disabled {
       color: $input-disabled-color;
     }
@@ -688,7 +692,12 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 
 select { display: none; }
-select.browser-default { display: block; }
+select.browser-default {
+  display: block;
+  margin-top: 15px;
+
+  & + label { top: -0.8rem; }
+}
 
 // Disabled styles
 select:disabled {
@@ -710,9 +719,20 @@ select:disabled {
 
 .select-dropdown li.disabled,
 .select-dropdown li.disabled > span,
+.select-dropdown li.optgroup.disabled > span,
 .select-dropdown li.optgroup {
   color: rgba(0,0,0,.3);
-  background-color: transparent;
+}
+
+.select-dropdown {
+  li.disabled, li.disabled > span, li.optgroup {
+    color: rgba(0,0,0,.3);
+    background-color: transparent;
+  }
+
+  li.disabled > span label::before {
+    border: 2px solid rgba(0, 0, 0, .3);
+  }
 }
 
 // Icons
@@ -734,7 +754,7 @@ select:disabled {
   }
 
   & > span {
-    color: rgba(0, 0, 0, .4);
+    color: $radio-empty-color;
   }
 
   & ~ li:not(.optgroup) {
@@ -945,10 +965,10 @@ input[type=range]:focus::-ms-fill-upper {
    Text Inputs + Textarea
 ****************************/
 select {
-   background-color: rgba(255, 255, 255, 0.90);
-   width: 100%;
-   padding: 5px;
-   border: 1px solid #f2f2f2;
-   border-radius: 2px;
-   height: 3rem;
+  background-color: rgba(255, 255, 255, 0.90);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
 }
