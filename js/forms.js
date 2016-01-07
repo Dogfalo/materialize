@@ -468,7 +468,7 @@
       }
 
       // Make option as selected and scroll to selected position
-      activateOption = function(collection, newOption) {
+      var activateOption = function(collection, newOption) {
         if (newOption) {
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
