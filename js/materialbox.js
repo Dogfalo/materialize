@@ -253,8 +253,9 @@
               doneAnimating = true;
               $(this).remove();
 
-              // Remove overflow overrides on ancestors
-              ancestorsChanged.css('overflow', '');
+                // Remove overflow overrides on ancestors
+              if(ancestorsChanged !== undefined)
+                ancestorsChanged.css('overflow', '');
             }
           });
 
