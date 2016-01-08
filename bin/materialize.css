@@ -7400,7 +7400,7 @@ nav ul a {
   transition: background-color .3s;
   font-size: 1rem;
   color: #fff;
-  display: block;
+  display: inline-block;
   padding: 0 15px;
   cursor: pointer;
 }
