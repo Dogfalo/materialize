@@ -254,7 +254,9 @@
               $(this).remove();
 
               // Remove overflow overrides on ancestors
-              ancestorsChanged.css('overflow', '');
+              if (ancestorsChanged) {
+                ancestorsChanged.css('overflow', '');
+              }
             }
           });
 
