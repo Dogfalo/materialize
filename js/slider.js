@@ -287,6 +287,10 @@
           $active_index = $slider.find('.active').index();
           moveToSlide($active_index - 1);
         });
+        
+        $this.on('sliderTo', function(event,index) {
+          moveToSlide(index);
+        });
 
       });
 
@@ -304,7 +308,11 @@
     },
     prev : function() {
       $(this).trigger('sliderPrev');
+    },
+    to : function(index) {
+      $(this).trigger('sliderTo',index);
     }
+
   };
 
 
