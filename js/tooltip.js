@@ -26,7 +26,7 @@
         origin.attr('data-tooltip-id', tooltipId);
 
         // Create Text span
-        var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+        var tooltip_text = $('<span></span>').html(origin.attr('data-tooltip'));
 
         // Create tooltip
         var newTooltip = $('<div></div>');
@@ -41,21 +41,25 @@
 
       //Destroy previously binded events
       origin.off('mouseenter.tooltip mouseleave.tooltip');
+      newTooltip.off('mouseenter.tooltip mouseleave.tooltip');
+	  
       // Mouse In
       var started = false, timeoutRef;
-      origin.on({
+	  var events = {
         'mouseenter.tooltip': function(e) {
+          // Init State
+          started = true;
+		  
           var tooltip_delay = origin.attr('data-delay');
           tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ?
               options.delay : tooltip_delay;
           timeoutRef = setTimeout(function(){
-            started = true;
             newTooltip.velocity('stop');
             backdrop.velocity('stop');
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
             // Set Tooltip text
-            newTooltip.children('span').text(origin.attr('data-tooltip'));
+            newTooltip.children('span').html(origin.attr('data-tooltip'));
 
             // Tooltip positioning
             var originWidth = origin.outerWidth();
@@ -174,7 +178,10 @@
             }
           },225);
         }
-        });
+        };
+		
+		origin.on(events);
+		newTooltip.on(events);
     });
   };
 
