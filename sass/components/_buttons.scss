@@ -24,8 +24,8 @@
   }
 
   &:hover {
-    background-color: $button-bg-color-disabled;
-    color: $button-color-disabled;
+    background-color: $button-bg-color-disabled !important;
+    color: $button-color-disabled !important;
   }
 }
 // Shared icon styles
@@ -81,6 +81,7 @@
   }
 
   &:hover {
+    background-color: $button-color;
     @extend .z-depth-1-half;
   }
   &:before {

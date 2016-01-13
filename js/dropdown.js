@@ -87,6 +87,14 @@
         verticalOffset = originHeight;
       }
 
+      // Check for scrolling positioned container.
+      var scrollOffset = 0;
+      var wrapper = origin.parent();
+      if (!wrapper.is('body') && wrapper[0].scrollHeight > wrapper[0].clientHeight) {
+        scrollOffset = wrapper[0].scrollTop;
+      }
+
+
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         // Dropdown goes past screen on right, force right alignment
         currAlignment = 'right';
@@ -124,7 +132,7 @@
       // Position dropdown
       activates.css({
         position: 'absolute',
-        top: origin.position().top + verticalOffset,
+        top: origin.position().top + verticalOffset + scrollOffset,
         left: leftPosition
       });
 

@@ -307,27 +307,27 @@ ul.staggered-list li {
 }
 .show-on-large {
   @media #{$large-and-up} {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-medium {
   @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-small {
   @media #{$small-and-down} {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-medium-and-up {
   @media #{$medium-and-up} {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-medium-and-down {
   @media #{$medium-and-down} {
-    display: initial !important;
+    display: block !important;
   }
 }
 

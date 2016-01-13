@@ -16,7 +16,7 @@
       var collapsible_type = $this.data("collapsible");
 
       // Turn off any existing event handlers
-       $this.off('click.collapse', '.collapsible-header');
+       $this.off('click.collapse', '> li > .collapsible-header');
        $panel_headers.off('click.collapse');
 
 

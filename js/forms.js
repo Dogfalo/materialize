@@ -5,8 +5,8 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label').addClass('active');
+        if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
+          $(this).siblings('label, i').addClass('active');
         }
         else {
           $(this).siblings('label, i').removeClass('active');
@@ -16,9 +16,6 @@
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-
-    // Handle HTML5 autofocus
-    $('input[autofocus]').siblings('label, i').addClass('active');
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
@@ -95,6 +92,20 @@
       }
     };
 
+    // Radio and Checkbox focus class
+    var radio_checkbox = 'input[type=radio], input[type=checkbox]';
+    $(document).on('keyup.radio', radio_checkbox, function(e) {
+      // TAB, check if tabbing to radio or checkbox.
+      if (e.which === 9) {
+        $(this).addClass('tabbed');
+        var $this = $(this);
+        $this.one('blur', function(e) {
+          console.log(e);
+          $(this).removeClass('tabbed');
+        });
+        return;
+      }
+    });
 
     // Textarea Auto Resize
     var hiddenDiv = $('.hiddendiv').first();
@@ -299,11 +310,7 @@
           valuesSelected = [],
           optionsHover = false;
 
-      if ($select.find('option:selected').length > 0) {
-        label = $select.find('option:selected');
-      } else {
-        label = selectOptions.first();
-      }
+      var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
       // Function that renders and appends the option taking into
       // account type and possible image icon.
@@ -393,7 +400,7 @@
         dropdownIcon.addClass('disabled');
 
       // escape double quotes
-      var sanitizedLabelHtml = label.html() && label.html().replace(/"/g, '&quot;');
+      var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
 
       var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
@@ -461,7 +468,7 @@
       }
 
       // Make option as selected and scroll to selected position
-      activateOption = function(collection, newOption) {
+      var activateOption = function(collection, newOption) {
         if (newOption) {
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
@@ -560,7 +567,9 @@
       }
 
       select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
-      select.find('option').eq(entryIndex).prop('selected', true);
+
+      // use notAdded instead of true (to detect if the option is selected or not)
+      select.find('option').eq(entryIndex).prop('selected', notAdded);
       setValueToInput(entriesArray, select);
 
       return notAdded;
