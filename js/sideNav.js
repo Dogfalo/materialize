@@ -18,6 +18,9 @@
           menu_id.css('width', options.menuWidth);
         }
 
+        // Clear old Touch Area
+        $('div.drag-target').remove();
+
         // Add Touch Area
         var dragTarget = $('<div class="drag-target"></div>');
         $('body').append(dragTarget);
