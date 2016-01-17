@@ -715,14 +715,18 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     }
 
     [type="checkbox"]:checked + label:before, [type="checkbox"]:checked:not(.filled-in) + label:after {
-      border-right: 2px solid rgba(0, 0, 0, 0.3);
-      border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+      border-right: 2px solid rgba(0, 0, 0, .3);
+      border-bottom: 2px solid rgba(0, 0, 0, .3);
     }
   }
 }
 
 // Icons
 .select-dropdown li {
+  &[data-optgroup] {
+    padding-left: 1rem;
+  }
+
   img {
     height: $dropdown-item-height - 10;
     width: $dropdown-item-height - 10;
@@ -733,15 +737,15 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 
 // Optgroup styles
 .select-dropdown li.optgroup {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgba(0, 0, 0, .02);
   border-top: 1px solid $dropdown-hover-bg-color;
 
   &.selected, .active {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, .1);
   }
 
   & > span {
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, .7);
   }
 }
 
