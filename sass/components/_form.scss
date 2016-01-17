@@ -176,6 +176,47 @@ textarea.materialize-textarea {
   }
 }
 
+// Auto complete
+.autocomplete-content {
+	margin-top: -1rem;
+	@extend .z-depth-1;
+
+		li {
+			clear: both;
+			color: rgba(0, 0, 0, 0.87);
+			cursor: pointer;
+			line-height: 1.5rem;
+			width: 100%;
+			text-align: left;
+			text-transform: none;
+
+			> span {
+				color: $input-focus-color;
+				font-size: 1.2rem;
+				padding: 1rem;
+				display: block;
+
+				.highlight {
+					color: #000000;
+				}
+			}
+
+			img {
+				height: 52px;
+				width: 52px;
+				padding: 5px;
+				margin: 0 15px;
+			}
+
+
+
+			&:hover {
+				background: #eee;
+				cursor: pointer;
+			}
+		}
+}
+
 // Search Field
 .input-field input[type=search] {
   display: block;
