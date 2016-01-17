@@ -688,14 +688,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   }
 }
 
-select { display: none; }
-select.browser-default { display: block; }
-
-// Disabled styles
-select:disabled {
-  color: rgba(0,0,0,.3);
-}
-
 .select-wrapper input.select-dropdown:disabled {
   color: rgba(0,0,0,.3);
   cursor: default;
@@ -709,11 +701,24 @@ select:disabled {
   color: rgba(0,0,0,.3);
 }
 
-.select-dropdown li.disabled,
-.select-dropdown li.disabled > span,
-.select-dropdown li.optgroup {
-  color: rgba(0,0,0,.3);
-  background-color: transparent;
+.select-dropdown li {
+  &.disabled, &.disabled > span, &.optgroup {
+    color: rgba(0,0,0,.3);
+    background-color: transparent;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    &.selected {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    [type="checkbox"]:checked + label:before, [type="checkbox"]:checked:not(.filled-in) + label:after {
+      border-right: 2px solid rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    }
+  }
 }
 
 // Icons
@@ -728,18 +733,15 @@ select:disabled {
 
 // Optgroup styles
 .select-dropdown li.optgroup {
+  background-color: rgba(0, 0, 0, 0.02);
   border-top: 1px solid $dropdown-hover-bg-color;
 
-  &.selected > span {
-    color: rgba(0, 0, 0, .7);
+  &.selected, .active {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   & > span {
     color: rgba(0, 0, 0, .4);
-  }
-
-  & ~ li:not(.optgroup) {
-    padding-left: 1rem;
   }
 }
 
@@ -952,4 +954,14 @@ select {
    border: 1px solid #f2f2f2;
    border-radius: 2px;
    height: 3rem;
+  display: none;
+
+  &.browser-default {
+    display: block;
+  }
+
+  // Disabled styles
+  &:disabled {
+    color: rgba(0,0,0,.3);
+  }
 }
