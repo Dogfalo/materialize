@@ -378,7 +378,7 @@
      * Select Constructor
      *
      */
-    function CreateSelect(select) {
+    function CreateSelect(select, options) {
       var _this = {};
 
       // Reference for class and optgroup and multiple attributes
@@ -389,12 +389,12 @@
         self.optgroup = select.querySelector('optgroup') ? true : false;
         self.multiple = select.getAttribute('multiple') !== null ? true : false;
         self.hover = false;
-        self.elements = select.querySelectorAll('*'),
-          self.isSelectedOption = function() {
-            var selectedOption = select.options[_this.elements.select.selectedIndex] ? true : false;
+        self.elements = select.querySelectorAll('*');
+        self.isSelectedOption = function() {
+          var selectedOption = select.options[_this.elements.select.selectedIndex] ? true : false;
 
-            return selectedOption;
-          },
+          return selectedOption;
+        },
           self.selected = function() {
             var list = [],
               option;
@@ -409,6 +409,7 @@
 
             return list;
           };
+        self.options = {};
 
         return self;
       })();
@@ -639,10 +640,25 @@
         }
       }
 
+      // Initialize options
+      if (options.hover !== undefined) {
+        _this.prop.options.hover = options.hover;
+      }
+      if (options.belowOrigin !== undefined) {
+        _this.prop.options.belowOrigin = options.belowOrigin;
+      }
+      if (options.maxHeight !== undefined) {
+        _this.prop.options.maxHeight = options.maxHeight;
+      }
+      if (options.maxWidth !== undefined) {
+        _this.prop.options.maxWidth = options.maxWidth;
+      }
+      if (options.arrangement !== undefined) {
+        _this.prop.options.arrangement = options.arrangement;
+      }
+
       // Initialize the dropdown
-      $(_this.elements.input).dropdown({
-        'hover': false
-      });
+      $(_this.elements.input).dropdown(_this.prop.options);
 
       return _this;
     }
@@ -950,7 +966,7 @@
       }
 
       // Initialize the select
-      var Select = CreateSelect(selectElement);
+      var Select = CreateSelect(selectElement, callback);
     });
 
     // For not breaking jQuery chaining return a jQuery element
