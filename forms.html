@@ -597,6 +597,21 @@
             </code></pre>
           </div>
           <div class="col s12">
+            <h4>Initialization with options</h4>
+            <p>You can initialize the select element with some options.</p>
+            <pre><code class="language-javascript col s12">
+  $(document).ready(function() {
+    $('select').material_select({
+      'hover': false,
+      'belowOrigin': true,
+      'maxWidth': 500, // width 500px
+      'maxHeight': 200, // height 200px
+      'arrangement': 'top' // Open the dropdown to top
+    });
+  });
+            </code></pre>
+          </div>
+          <div class="col s12">
             <h4>Updating Select</h4>
             <p>You can update the material select by passing new values with this function below, in this case you don't need to use the destroying select function.</p>
             <pre><code class="language-javascript">
