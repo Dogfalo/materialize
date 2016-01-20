@@ -9545,7 +9545,8 @@ select {
   display: none;
 }
 
-select.browser-default {
+select.browser-default,
+select.browser-default + label {
   display: block;
   cursor: pointer;
 }

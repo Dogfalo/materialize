@@ -689,7 +689,11 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 
 select { display: none; }
-select.browser-default { display: block; cursor:pointer; }
+select.browser-default,
+select.browser-default + label { 
+  display: block; 
+  cursor:pointer; 
+}
 
 // Disabled styles
 select:disabled {

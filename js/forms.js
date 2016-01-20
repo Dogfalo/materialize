@@ -1,6 +1,39 @@
 (function ($) {
   $(document).ready(function() {
 
+    var select_selector = 'select.browser-default';
+
+    // Function to update labels of select fields
+    Materialize.updateSelectFields = function() {
+      $(select_selector).each(function() {
+        if ($(this).find('option:selected').text()) {
+          $(this).siblings('label, i').addClass('active');
+        }
+        else {
+          $(this).siblings('label, i').removeClass('active');
+        }
+      });
+    };
+
+    // Add active when element has focus
+    $(document).on('focus', select_selector, function () {
+      $(this).siblings('label').addClass('active');
+    });
+
+    $(document).on('blur', select_selector, function () {
+        if ($(this).find('option:selected').text()) {
+          $(this).siblings('label, i').addClass('active');
+        }
+        else {
+          $(this).siblings('label, i').removeClass('active');
+        }
+    });
+
+    // Add active if select element has been pre-populated on document ready
+    $(document).ready(function() {
+      Materialize.updateSelectFields();
+    });
+
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
