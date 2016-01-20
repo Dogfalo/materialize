@@ -45,7 +45,8 @@ input[type=datetime-local],
 input[type=tel],
 input[type=number],
 input[type=search],
-textarea.materialize-textarea {
+textarea.materialize-textarea,
+select.browser-default {
 
   // General Styles
   background-color: transparent;
@@ -688,7 +689,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 
 select { display: none; }
-select.browser-default { display: block; }
+select.browser-default { display: block; cursor:pointer; }
 
 // Disabled styles
 select:disabled {

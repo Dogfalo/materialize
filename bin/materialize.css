@@ -7969,7 +7969,6 @@ small {
 }
 
 .tabs .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -8700,7 +8699,8 @@ input[type=datetime-local],
 input[type=tel],
 input[type=number],
 input[type=search],
-textarea.materialize-textarea {
+textarea.materialize-textarea,
+select.browser-default {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #9e9e9e;
@@ -8738,7 +8738,9 @@ input[type=number][readonly="readonly"],
 input[type=search]:disabled,
 input[type=search][readonly="readonly"],
 textarea.materialize-textarea:disabled,
-textarea.materialize-textarea[readonly="readonly"] {
+textarea.materialize-textarea[readonly="readonly"],
+select.browser-default:disabled,
+select.browser-default[readonly="readonly"] {
   color: rgba(0, 0, 0, 0.26);
   border-bottom: 1px dotted rgba(0, 0, 0, 0.26);
 }
@@ -8765,7 +8767,9 @@ input[type=number][readonly="readonly"] + label,
 input[type=search]:disabled + label,
 input[type=search][readonly="readonly"] + label,
 textarea.materialize-textarea:disabled + label,
-textarea.materialize-textarea[readonly="readonly"] + label {
+textarea.materialize-textarea[readonly="readonly"] + label,
+select.browser-default:disabled + label,
+select.browser-default[readonly="readonly"] + label {
   color: rgba(0, 0, 0, 0.26);
 }
 
@@ -8780,7 +8784,8 @@ input[type=datetime-local]:focus:not([readonly]),
 input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]) {
+textarea.materialize-textarea:focus:not([readonly]),
+select.browser-default:focus:not([readonly]) {
   border-bottom: 1px solid #26a69a;
   box-shadow: 0 1px 0 0 #26a69a;
 }
@@ -8796,7 +8801,8 @@ input[type=datetime-local]:focus:not([readonly]) + label,
 input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
-textarea.materialize-textarea:focus:not([readonly]) + label {
+textarea.materialize-textarea:focus:not([readonly]) + label,
+select.browser-default:focus:not([readonly]) + label {
   color: #26a69a;
 }
 
@@ -8822,7 +8828,9 @@ input[type=number]:focus.valid,
 input[type=search].valid,
 input[type=search]:focus.valid,
 textarea.materialize-textarea.valid,
-textarea.materialize-textarea:focus.valid {
+textarea.materialize-textarea:focus.valid,
+select.browser-default.valid,
+select.browser-default:focus.valid {
   border-bottom: 1px solid #4CAF50;
   box-shadow: 0 1px 0 0 #4CAF50;
 }
@@ -8850,7 +8858,9 @@ input[type=number]:focus.valid + label:after,
 input[type=search].valid + label:after,
 input[type=search]:focus.valid + label:after,
 textarea.materialize-textarea.valid + label:after,
-textarea.materialize-textarea:focus.valid + label:after {
+textarea.materialize-textarea:focus.valid + label:after,
+select.browser-default.valid + label:after,
+select.browser-default:focus.valid + label:after {
   content: attr(data-success);
   color: #4CAF50;
   opacity: 1;
@@ -8878,7 +8888,9 @@ input[type=number]:focus.invalid,
 input[type=search].invalid,
 input[type=search]:focus.invalid,
 textarea.materialize-textarea.invalid,
-textarea.materialize-textarea:focus.invalid {
+textarea.materialize-textarea:focus.invalid,
+select.browser-default.invalid,
+select.browser-default:focus.invalid {
   border-bottom: 1px solid #F44336;
   box-shadow: 0 1px 0 0 #F44336;
 }
@@ -8906,7 +8918,9 @@ input[type=number]:focus.invalid + label:after,
 input[type=search].invalid + label:after,
 input[type=search]:focus.invalid + label:after,
 textarea.materialize-textarea.invalid + label:after,
-textarea.materialize-textarea:focus.invalid + label:after {
+textarea.materialize-textarea:focus.invalid + label:after,
+select.browser-default.invalid + label:after,
+select.browser-default:focus.invalid + label:after {
   content: attr(data-error);
   color: #F44336;
   opacity: 1;
@@ -8923,7 +8937,8 @@ input[type=datetime-local].validate + label,
 input[type=tel].validate + label,
 input[type=number].validate + label,
 input[type=search].validate + label,
-textarea.materialize-textarea.validate + label {
+textarea.materialize-textarea.validate + label,
+select.browser-default.validate + label {
   width: 100%;
   z-index: -1;
 }
@@ -8939,7 +8954,8 @@ input[type=datetime-local] + label:after,
 input[type=tel] + label:after,
 input[type=number] + label:after,
 input[type=search] + label:after,
-textarea.materialize-textarea + label:after {
+textarea.materialize-textarea + label:after,
+select.browser-default + label:after {
   display: block;
   content: "";
   position: absolute;
@@ -9531,6 +9547,7 @@ select {
 
 select.browser-default {
   display: block;
+  cursor: pointer;
 }
 
 select:disabled {
