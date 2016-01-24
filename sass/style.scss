@@ -767,9 +767,13 @@ body.parallax-demo footer {
 
 // Transitions demos
 #staggered-test li,
+#staggered-test-right li,
 #image-test {
   opacity: 0;
 
+}
+#staggered-test-right {
+    text-align: right;
 }
 
 // Transifex Styling

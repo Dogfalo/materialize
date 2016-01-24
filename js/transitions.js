@@ -31,10 +31,20 @@
   };
 
   // Horizontal staggered list
-  Materialize.showStaggeredList = function(selector) {
+  Materialize.showStaggeredList = function(selector, start) {
     var time = 0;
+    var starting_position;
+
+    start = start || $(selector).data('start') || "left";
+    if (start == "left"){
+        starting_position = "-100px";
+    }
+    if (start == "right"){
+        starting_position = "100px";
+    }
+    
     $(selector).find('li').velocity(
-        { translateX: "-100px"},
+        { translateX: starting_position},
         { duration: 0 });
 
     $(selector).find('li').each(function() {
