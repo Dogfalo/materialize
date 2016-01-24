@@ -8,7 +8,7 @@
 
 
         <h4>showStaggeredList</h4>
-        <p>Use this to create a staggered reveal effect for any <code class="language-markup">UL</code> Tag with list items. Just make sure the list items in the <code class="language-markup">UL</code> are <code class="language-css">opacity: 0; to ensure the animation works correctly.</code></p>
+        <p>Use this to create a staggered reveal effect for any <code class="language-markup">UL</code> Tag with list items. Just make sure the list items in the <code class="language-markup">UL</code> are <code class="language-css">opacity: 0;</code> to ensure the animation works correctly.</p>
         <a href="#!" class="btn" onclick="Materialize.showStaggeredList('#staggered-test')">Click Me</a>
         <pre><code class="language-markup">
   &lt;a href="#!" class="btn" onclick="Materialize.showStaggeredList('#staggered-test')">Click Me&lt;/a>
@@ -35,6 +35,38 @@
             <p>This is a description</p>
           </li>
         </ul>
+
+        <p>Use the starting position option  <code class="language-markup">'right'</code> in the function call to stagger in from the right side.</p>
+        <a href="#!" class="btn" onclick="Materialize.showStaggeredList('#staggered-test-right', 'right')">Click Me</a>
+        <pre><code class="language-markup">
+  &lt;a href="#!" class="btn" onclick="Materialize.showStaggeredList('#staggered-test-right', 'right')">Click Me&lt;/a>
+        </code></pre>
+        <ul id="staggered-test-right" data-start="right">
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+        </ul>
+        <p>The option could alternatively be used as a data tag.</p>
+        <pre><code class="language-markup">
+  &lt;a href="#!" class="btn" data-start="right" onclick="Materialize.showStaggeredList('#staggered-test-right')">Click Me&lt;/a>
+        </code></pre>
       </div>
 
       <div id="fadeImage" class="section scrollspy">
@@ -65,4 +97,3 @@
 
   </div>
 </div>
-
