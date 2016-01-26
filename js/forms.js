@@ -321,24 +321,28 @@
         // add icons
         var icon_url = option.data('icon');
         var classes = option.attr('class');
+        var placeholder = option.attr('data-placeholder');
+        var optionContent = option.data('content') || option.html();
+        var placeholderString = '';
+        if (!!placeholder) placeholderString = ' data-placeholder="' + option.data('placeholder') + '"'; 
         if (!!icon_url) {
           var classString = '';
           if (!!classes) classString = ' class="' + classes + '"';
 
           // Check for multiple type.
           if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + '"' + placeholderString + '><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + optionContent + '</span></li>'));
           } else {
-            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+            options.append($('<li li class="' + disabledClass + '"' + placeholderString + '><img src="' + icon_url + '"' + classString + '><span>' + optionContent + '</span></li>'));
           }
           return true;
         }
 
         // Check for multiple type.
         if (type === 'multiple') {
-          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          options.append($('<li li class="' + disabledClass + '"' + placeholderString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + optionContent + '</span></li>'));
         } else {
-          options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+          options.append($('<li li class="' + disabledClass + '"' + placeholderString + '><span>' + optionContent + '</span></li>'));
         }
       };
 
@@ -378,7 +382,9 @@
             } else {
               options.find('li').removeClass('active');
               $(this).toggleClass('active');
-              $newSelect.val($(this).text());
+              //CHANGED: Get text for value from the data-placeholder attribute instead
+              var newValue = $(this).data('placeholder') || $(this).text();
+              $newSelect.val(newValue);
             }
 
             activateOption(options, $(this));
@@ -579,7 +585,7 @@
       var value = '';
 
       for (var i = 0, count = entriesArray.length; i < count; i++) {
-        var text = select.find('option').eq(entriesArray[i]).text();
+        var text = select.find('option').eq(entriesArray[i]).data('placeholder') || select.find('option').eq(entriesArray[i]).text();
 
         i === 0 ? value += text : value += ', ' + text;
       }
