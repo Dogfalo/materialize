@@ -4,7 +4,7 @@ select:focus {
 }
 button:focus {
   outline: none;
-  background-color: lighten($button-color, 4%);
+  background-color: lighten($button-raised-background, 4%);
 }
 
 label {
@@ -34,12 +34,14 @@ label {
 }
 
 // Text inputs
+input:not([type]),
 input[type=text],
 input[type=password],
 input[type=email],
 input[type=url],
 input[type=time],
 input[type=date],
+input[type=datetime],
 input[type=datetime-local],
 input[type=tel],
 input[type=number],
@@ -54,12 +56,11 @@ textarea.materialize-textarea {
   outline: none;
   height: 3rem;
   width: 100%;
-
   font-size: 1rem;
   margin: 0 0 15px 0;
   padding: 0;
   box-shadow: none;
-  @include box-sizing(content-box);
+  box-sizing: content-box;
   transition: all .3s;
 
 
@@ -107,6 +108,11 @@ textarea.materialize-textarea {
     color: $input-error-color;
     opacity: 1;
   }
+  // Full width label when using validate for error messages
+  &.validate + label {
+    width: 100%;
+    z-index: -1;
+  }
 
   // Form Message Shared Styles
   & + label:after {
@@ -131,11 +137,11 @@ textarea.materialize-textarea {
     left: $gutter-width / 2;
     font-size: 1rem;
     cursor: text;
-    @include transition(.2s ease-out);
+    transition: .2s ease-out;
   }
   label.active {
     font-size: $label-font-size;
-    @include transform(translateY(-140%));
+    transform: translateY(-140%);
   }
 
   // Prefix Icons
@@ -143,7 +149,7 @@ textarea.materialize-textarea {
     position: absolute;
     width: 3rem;
     font-size: 2rem;
-    @include transition(color .2s);
+    transition: color .2s;
 
     &.active { color: $input-focus-color; }
   }
@@ -240,7 +246,7 @@ textarea {
 [type="radio"]:checked {
   position: absolute;
   left: -9999px;
-  visibility: hidden;
+  opacity: 0;
 }
 
 [type="radio"]:not(:checked) + label,
@@ -252,12 +258,10 @@ textarea {
   height: 25px;
   line-height: 25px;
   font-size: 1rem;
-  @include transition(.28s ease);
+  transition: .28s ease;
 
-  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-  -moz-user-select: none; /* mozilla browsers */
   -khtml-user-select: none; /* webkit (konqueror) browsers */
-  -ms-user-select: none; /* IE10+ */
+  user-select: none;
 }
 
 [type="radio"] + label:before,
@@ -270,7 +274,7 @@ textarea {
   width: 16px;
   height: 16px;
   z-index: 0;
-  @include transition(.28s ease);
+  transition: .28s ease;
 }
 
 /* Unchecked styles */
@@ -283,7 +287,7 @@ textarea {
   border: 2px solid $radio-empty-color;
   z-index: -1;
 
-  @include transform(scale(0));
+  transform: scale(0);
 }
 
 /* Checked styles */
@@ -296,7 +300,7 @@ textarea {
   border: 2px solid $radio-fill-color;
   background-color: $radio-fill-color;
   z-index: 0;
-  @include transform(scale(1.02));
+  transform: scale(1.02);
 }
 
 /* Radio With gap */
@@ -309,7 +313,12 @@ textarea {
   border: 2px solid $radio-fill-color;
   background-color: $radio-fill-color;
   z-index: 0;
-  @include transform(scale(.5));
+  transform: scale(.5);
+}
+
+/* Focused styles */
+[type="radio"].tabbed:focus + label:before {
+  box-shadow: 0px 0px 0px 10px rgba(0,0,0,.1);
 }
 
 /* Disabled Radio With gap */
@@ -356,7 +365,7 @@ form p:last-child {
 [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
-  visibility: hidden;
+  opacity: 0;
 }
 
 // Checkbox Styles
@@ -379,7 +388,8 @@ form p:last-child {
   }
 
   /* checkbox aspect */
-  + label:before {
+  + label:before,
+  &:not(.filled-in) + label:after {
     content: '';
     position: absolute;
     top: 0;
@@ -390,27 +400,40 @@ form p:last-child {
     border: 2px solid $radio-empty-color;
     border-radius: 1px;
     margin-top: 2px;
-    @include transition(.2s);
+    transition: .2s;
+  }
+  &:not(.filled-in) + label:after {
+    border: 0;
+    transform: scale(0);
   }
 
   &:not(:checked):disabled + label:before {
     border: none;
     background-color: $input-disabled-color;
   }
+
+  // Focused styles
+  &.tabbed:focus + label:after {
+    transform: scale(1);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 10px rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.1);
+  }
 }
 
 [type="checkbox"]:checked {
   + label:before {
     top: -4px;
-    left: -3px;
+    left: -5px;
     width: 12px; height: 22px;
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
     border-right: 2px solid $radio-fill-color;
     border-bottom: 2px solid $radio-fill-color;
-    @include transform(rotate(40deg));
-    -webkit-backface-visibility: hidden;
-    @include transform-origin(100% 100%);
+    transform: rotate(40deg);
+    backface-visibility: hidden;
+    transform-origin: 100% 100%;
   }
 
   &:disabled + label:before {
@@ -422,16 +445,16 @@ form p:last-child {
 /* Indeterminate checkbox */
 [type="checkbox"]:indeterminate {
   +label:before {
-    left: -10px;
     top: -11px;
+    left: -12px;
     width: 10px; height: 22px;
     border-top: none;
     border-left: none;
     border-right: 2px solid $radio-fill-color;
     border-bottom: none;
-    @include transform(rotate(90deg));
-    -webkit-backface-visibility: hidden;
-    @include transform-origin(100% 100%);
+    transform: rotate(90deg);
+    backface-visibility: hidden;
+    transform-origin: 100% 100%;
   }
 
   // Disabled indeterminate
@@ -507,6 +530,19 @@ form p:last-child {
       z-index: 0;
     }
   }
+
+  // Focused styles
+  &.tabbed:focus + label:after {
+    border-radius: 2px;
+    border-color: $radio-empty-color;
+    background-color: rgba(0,0,0,.1);
+  }
+  &.tabbed:checked:focus + label:after {
+    border-radius: 2px;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+
   // Disabled style
   &:disabled:not(:checked) + label:before {
     background-color: transparent;
@@ -778,8 +814,8 @@ input[type=range] + .thumb {
   top: 10px;
   margin-left: -6px;
 
-  @include transform-origin(50% 50%);
-  @include transform(rotate(-45deg));
+  transform-origin: 50% 50%;
+  transform: rotate(-45deg);
 
   .value {
     display: block;
@@ -787,7 +823,7 @@ input[type=range] + .thumb {
     text-align: center;
     color: $radio-fill-color;
     font-size: 0;
-    @include transform(rotate(45deg));
+    transform: rotate(45deg);
   }
 
   &.active {
@@ -827,7 +863,7 @@ input[type=range]::-webkit-slider-thumb {
   background-color: $radio-fill-color;
   transform-origin: 50% 50%;
   margin: -5px 0 0 0;
-  @include transition(.3s);
+  transition: .3s;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {

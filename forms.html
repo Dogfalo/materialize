@@ -121,7 +121,7 @@
 
         <h2 class="header">Input fields</h2>
         <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
-        <p>If you don't want the Green and Red validation states, just remove the <code class="language-markup">validate</code> class from your inputs.</p>
+        <p>The validate class leverages HTML5 validation and will add a <code class="language-markup">valid</code> and <code class="language-markup">invalid</code> class accordingly. If you don't want the Green and Red validation states, just remove the <code class="language-markup">validate</code> class from your inputs.</p>
         <br>
         <div class="row">
           <form class="col s12">
@@ -251,8 +251,8 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email" data-error="wrong" data-success="right">Email</label>
+                <input id="email2" type="email" class="validate">
+                <label for="email2" data-error="wrong" data-success="right">Email</label>
               </div>
             </div>
           </form>
@@ -934,7 +934,6 @@
   </div>
 </div>
 
-
     </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
@@ -973,7 +972,7 @@
       </div>
     </footer>
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>
     <script src="js/jquery.timeago.min.js"></script>
@@ -999,6 +998,7 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
     </script>
+
     <script src="/extras/noUiSlider/nouislider.js"></script>
     <script type="text/javascript">
       var slider = document.getElementById('range-input');

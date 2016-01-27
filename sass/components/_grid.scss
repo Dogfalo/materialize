@@ -48,7 +48,7 @@
 
   .col {
     float: left;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     padding: 0 $gutter-width / 2;
 
     &[class*="push-"],

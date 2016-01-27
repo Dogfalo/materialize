@@ -1,6 +1,3 @@
-jasmine.getFixtures().fixturesPath = 'tests/spec';
-
-
 describe( "Collapsible Plugin", function () {
   var collapsible, accordion;
 

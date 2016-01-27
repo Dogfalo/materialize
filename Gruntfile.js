@@ -20,6 +20,7 @@ module.exports = function(grunt) {
           ],
           styles: 'bin/materialize.css',
           specs: 'tests/spec/**/*Spec.js',
+          helpers: 'tests/spec/helper.js',
           keepRunner : true,
           //helpers: 'test/spec/*.js'
         }
@@ -53,7 +54,7 @@ module.exports = function(grunt) {
       // Compile ghpages css
       gh: {
         options: {
-          style: 'compressed',
+          outputStyle: 'compressed',
           sourcemap: false
         },
         files: {
@@ -61,15 +62,43 @@ module.exports = function(grunt) {
         }
       },
 
-      // Compile ghpages css
+      // Compile bin css
       bin: {
         options: {
-          style: 'expanded',
+          outputStyle: 'expanded',
           sourcemap: false
         },
         files: {
           'bin/materialize.css': 'sass/materialize.scss',
         }
+      }
+    },
+
+    // PostCss Autoprefixer
+    postcss: {
+      options: {
+        processors: [
+          require('autoprefixer')({
+            browsers: [
+                'last 2 versions',
+                'Chrome >= 30',
+                'Firefox >= 30',
+                'ie >= 10',
+                'Safari >= 8']
+          })
+        ]
+      },
+      expended: {
+        src: 'dist/css/materialize.css'
+      },
+      min: {
+        src: 'dist/css/materialize.min.css'
+      },
+      gh: {
+        src: 'css/ghpages-materialize.css'
+      },
+      bin: {
+        src: 'bin/materialize.css'
       }
     },
 
@@ -99,6 +128,7 @@ module.exports = function(grunt) {
       dist: {
         // the files to concatenate
         src: [
+              "js/initial.js",
               "js/jquery.easing.1.3.js",
               "js/animation.js",
               "js/velocity.min.js",
@@ -135,6 +165,7 @@ module.exports = function(grunt) {
       temp: {
         // the files to concatenate
         src: [
+              "js/initial.js",
               "js/jquery.easing.1.3.js",
               "js/animation.js",
               "js/velocity.min.js",
@@ -220,6 +251,7 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
+              "initial.js",
               "jquery.easing.1.3.js",
               "animation.js",
               "velocity.min.js",
@@ -482,7 +514,7 @@ module.exports = function(grunt) {
             linebreak: true
           },
           files: {
-            src: [ 'extras/**/*','dist/css/*.css', 'dist/js/*.js']
+            src: [ 'dist/css/*.css', 'dist/js/*.js']
           }
         }
       },
@@ -531,10 +563,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename');
-  grunt.loadNpmTasks("grunt-remove-logging");
+  grunt.loadNpmTasks('grunt-remove-logging');
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-postcss');
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -542,6 +574,8 @@ module.exports = function(grunt) {
       'copy',
       'sass:expanded',
       'sass:min',
+      'postcss:expended',
+      'postcss:min',
       'concat:dist',
       'uglify:dist',
       'uglify:extras',
@@ -559,9 +593,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
-  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
+  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
-  grunt.registerTask("monitor", ["concurrent:monitor"]);
+  grunt.registerTask('monitor', ["concurrent:monitor"]);
   grunt.registerTask('travis', ['jasmine']);
 };

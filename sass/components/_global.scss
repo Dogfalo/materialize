@@ -32,8 +32,8 @@ a {
 
 // Positioning
 .valign-wrapper {
-  @include flexbox();
-  @include align(center);
+  display: flex;
+  align-items: center;
 
   .valign {
     display: block;
@@ -75,6 +75,11 @@ ul {
 }
 .z-depth-5{
   box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+.hoverable {
+  transition: box-shadow .25s;
+  box-shadow: 0;
 }
 
 .hoverable:hover {
@@ -191,6 +196,14 @@ video.responsive-video {
   font-size: 18px;
   color: rgba(255,255,255, .7);
 
+  i,
+  [class^="mdi-"], [class*="mdi-"],
+  i.material-icons {
+    display: inline-block;
+    float: left;
+    font-size: 24px;
+  }
+
   &:before {
     content: '\E5CC';
     color: rgba(255,255,255, .7);
@@ -294,27 +307,27 @@ ul.staggered-list li {
 }
 .show-on-large {
   @media #{$large-and-up} {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-medium {
   @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-small {
   @media #{$small-and-down} {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-medium-and-up {
   @media #{$medium-and-up} {
-    display: initial !important;
+    display: block !important;
   }
 }
 .show-on-medium-and-down {
   @media #{$medium-and-down} {
-    display: initial !important;
+    display: block !important;
   }
 }
 
@@ -367,7 +380,7 @@ table {
   }
 
   &.highlight > tbody > tr {
-    @include transition(background-color .25s ease);
+    transition: background-color .25s ease;
     &:hover {
       background-color: $table-striped-color;
     }
@@ -536,7 +549,7 @@ td, th{
   }
   a.collection-item{
     display: block;
-    @include transition(.25s);
+    transition: .25s;
     color: $collection-link-color;
     &:not(.active) {
       &:hover {
@@ -582,7 +595,7 @@ span.badge {
   color: color('grey', 'darken-1');
   position: absolute;
   right: 15px;
-  @include box-sizing(border-box);
+  box-sizing: border-box;
 
   &.new {
     font-weight: 300;
@@ -634,7 +647,7 @@ nav ul a span.badge {
     left: 0;
     bottom: 0;
     background-color: $progress-bar-color;
-    @include transition(width .3s linear);
+    transition: width .3s linear;
   }
   .indeterminate {
     background-color: $progress-bar-color;
@@ -647,7 +660,7 @@ nav ul a span.badge {
       bottom: 0;
       will-change: left, right;
       // Custom bezier
-      @include animation(indeterminate 2.1s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite);
+      animation: indeterminate 2.1s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite;
 
     }
     &:after {
@@ -659,34 +672,34 @@ nav ul a span.badge {
       bottom: 0;
       will-change: left, right;
       // Custom bezier
-      @include animation(indeterminate-short 2.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite);
-      @include animation-delay(1.15s);
+      animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite;
+      animation-delay: 1.15s;
     }
   }
 }
-@include keyframes(indeterminate) {
+@keyframes indeterminate {
     0% {
-            left: -35%;
-            right:100%;
-        }
+      left: -35%;
+      right:100%;
+    }
     60% {
-        left: 100%;
-        right: -90%;
+      left: 100%;
+      right: -90%;
     }
     100% {
-        left: 100%;
-        right: -90%;
+      left: 100%;
+      right: -90%;
     }
 }
 
-@include keyframes(indeterminate-short) {
+@keyframes indeterminate-short {
     0% {
-        left: -200%;
-        right: 100%;
+      left: -200%;
+      right: 100%;
     }
     60% {
-        left: 107%;
-        right: -8%;
+      left: 107%;
+      right: -8%;
     }
     100% {
       left: 107%;
