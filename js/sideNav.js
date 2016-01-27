@@ -202,12 +202,13 @@
           if (e.gesture.pointerType == "touch") {
             var velocityX = e.gesture.velocityX;
             panning = false;
+            var width = window.innerWidth - menu_id.width();
             if (options.edge === 'left') {
               // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
               if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-                dragTarget.css({width: '50%', right: 0, left: ''});
+                dragTarget.css({width: width+'px', right: 0, left: ''});
               }
               else if (!menuOut || velocityX > 0.3) {
                 // Enable Scrolling
@@ -225,7 +226,7 @@
               if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-                dragTarget.css({width: '50%', right: '', left: 0});
+                dragTarget.css({width: width+'px', right: '', left: 0});
               }
               else if (!menuOut || velocityX < -0.3) {
                 // Enable Scrolling
@@ -256,12 +257,13 @@
               // Push current drag target on top of DOM tree
               $('body').append(dragTarget);
               
+              var width = window.innerWidth - menu_id.width();
               if (options.edge === 'left') {
-                dragTarget.css({width: '50%', right: 0, left: ''});
+                dragTarget.css({width: width+'px', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                dragTarget.css({width: '50%', right: '', left: 0});
+                dragTarget.css({width: width+'px', right: '', left: 0});
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 menu_id.css('left','');
               }
