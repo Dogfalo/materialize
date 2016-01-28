@@ -2,7 +2,6 @@
  var methods = {
     init : function() {
       return this.each(function() {
-debugger;
       // For each set of tabs, we want to keep track of
       // which tab is active and its associated content
       var $this = $(this),
