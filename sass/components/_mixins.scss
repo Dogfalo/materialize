@@ -3,3 +3,29 @@
 //     -moz-box-shadow: $args1, $args2;
 //     box-shadow: $args1, $args2;
 // }
+
+%radio-checkbox__basic-style {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  font-size: 1rem;
+
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+}
+%normal-input__basic-style {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $input-border-color;
+  font-size: 1rem;
+  height: 3rem;
+  margin: 0 0 15px 0;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}

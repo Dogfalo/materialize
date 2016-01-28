@@ -49,16 +49,8 @@ input[type=search],
 textarea.materialize-textarea {
 
   // General Styles
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid $input-border-color;
   border-radius: 0;
-  outline: none;
-  height: 3rem;
-  width: 100%;
-  font-size: 1rem;
-  margin: 0 0 15px 0;
-  padding: 0;
+  @extend %normal-input__basic-style;
   box-shadow: none;
   box-sizing: content-box;
   transition: all .3s;
@@ -251,17 +243,8 @@ textarea {
 
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  font-size: 1rem;
+  @extend %radio-checkbox__basic-style;
   transition: .28s ease;
-
-  -khtml-user-select: none; /* webkit (konqueror) browsers */
-  user-select: none;
 }
 
 [type="radio"] + label:before,
@@ -373,18 +356,7 @@ form p:last-child {
 
   // Text Label Style
   + label {
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    display: inline-block;
-    height: 25px;
-    line-height: 25px;
-    font-size: 1rem;
-
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
+    @extend %radio-checkbox__basic-style;
   }
 
   /* checkbox aspect */
@@ -514,11 +486,11 @@ form p:last-child {
       border-left: 2px solid transparent;
       border-right: 2px solid $input-bg-color;
       border-bottom: 2px solid $input-bg-color;
-      -webkit-transform: rotateZ(37deg);
-      transform: rotateZ(37deg);
 
       -webkit-transform-origin: 100% 100%;
       transform-origin: 100% 100%;
+      -webkit-transform: rotateZ(37deg);
+      transform: rotateZ(37deg);
     }
 
     + label:after {
@@ -657,16 +629,8 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     position: relative;
     cursor: pointer;
     // color: #444;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid $input-border-color;
-    outline: none;
-    height: 3rem;
+    @extend %normal-input__basic-style;
     line-height: 3rem;
-    width: 100%;
-    font-size: 1rem;
-    margin: 0 0 15px 0;
-    padding: 0;
     display: block;
   }
 
