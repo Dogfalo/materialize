@@ -202,7 +202,7 @@
           if (e.gesture.pointerType == "touch") {
             var velocityX = e.gesture.velocityX;
             panning = false;
-            var width = window.innerWidth - menu_id.width();
+            var width = Math.min(window.innerWidth/2, window.innerWidth - menu_id.width());
             if (options.edge === 'left') {
               // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
               if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
@@ -257,7 +257,7 @@
               // Push current drag target on top of DOM tree
               $('body').append(dragTarget);
               
-              var width = window.innerWidth - menu_id.width();
+              var width = Math.min(window.innerWidth/2, window.innerWidth - menu_id.width());
               if (options.edge === 'left') {
                 dragTarget.css({width: width+'px', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
