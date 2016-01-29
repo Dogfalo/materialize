@@ -168,7 +168,7 @@ button.btn-floating {
 .btn-large {
   @extend .btn;
   height: $button-height * 1.5;
-  line-height: 56px;
+  line-height: $button-height * 1.5;
 
   i {
     font-size: $button-large-icon-font-size;
