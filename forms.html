@@ -413,7 +413,20 @@
                     <option value="4">Option 4</option>
                   </optgroup>
                 </select>
-                <label>Optgroups</label>
+                <label>Materialize Select with Optgroups</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <select multiple>
+                  <optgroup label="team 1">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                  </optgroup>
+                  <optgroup label="team 2">
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                  </optgroup>
+                </select>
+                <label>Materialize Multiple Select with Optgroups</label>
               </div>
               <div class="col s12">
                 <br>
@@ -475,6 +488,20 @@
   &lt;/div>
 
   &lt;div class="input-field col s12">
+    &lt;select>
+      &lt;optgroup label="team 1">
+        &lt;option value="1">Option 1&lt;/option>
+        &lt;option value="2">Option 2&lt;/option>
+      &lt;/optgroup>
+      &lt;optgroup label="team 2">
+        &lt;option value="3">Option 3&lt;/option>
+        &lt;option value="4">Option 4&lt;/option>
+      &lt;/optgroup>
+    &lt;/select>
+    &lt;label>Materialize Select with Optgroups&lt;/label>
+  &lt;/div>
+
+  &lt;div class="input-field col s12">
     &lt;select multiple>
       &lt;optgroup label="team 1">
         &lt;option value="1">Option 1&lt;/option>
@@ -485,7 +512,7 @@
         &lt;option value="4">Option 4&lt;/option>
       &lt;/optgroup>
     &lt;/select>
-    &lt;label>Optgroups&lt;/label>
+    &lt;label>Materialize Multiple Select with Optgroups&lt;/label>
   &lt;/div>
 
   &lt;div class="input-field col s12 m6">
@@ -570,8 +597,31 @@
             </code></pre>
           </div>
           <div class="col s12">
-            <h4>Updating/Destroying Select</h4>
-            <p>If you want to update the items inside the select, just rerun the initialization code from above after editing the original select. Or you can destroy the material select with this function below, and create a new select altogether</p>
+            <h4>Initialization with options</h4>
+            <p>You can initialize the select element with some options.</p>
+            <pre><code class="language-javascript col s12">
+  $(document).ready(function() {
+    $('select').material_select({
+      'hover': false,
+      'belowOrigin': true,
+      'maxWidth': 500, // width 500px
+      'maxHeight': 200, // height 200px
+      'arrangement': 'top' // Open the dropdown to top
+    });
+  });
+            </code></pre>
+          </div>
+          <div class="col s12">
+            <h4>Updating Select</h4>
+            <p>You can update the material select by passing new values with this function below, in this case you don't need to use the destroying select function.</p>
+            <pre><code class="language-javascript">
+  $('select').val([value1, value2]).trigger('update'); // for multiple select
+  $('select').val(value).trigger('update'); // for single select
+            </code></pre>
+          </div>
+          <div class="col s12">
+            <h4>Destroying Select</h4>
+            <p>Or you can destroy the material select with this function below, and create a new select altogether</p>
             <pre><code class="language-javascript">
   $('select').material_select('destroy');
             </code></pre>
@@ -579,6 +629,39 @@
         </div>
       </div>
 
+      <div id="select-option" class="section">
+        <h4>Options</h4>
+        <table class="striped">
+          <thead>
+          <tr>
+            <th>Option name</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>hover</td>
+            <td>If true, the dropdown will open on hover. Default: false. Available: true. Typeof: boolean</td>
+          </tr>
+          <tr>
+            <td>belowOrigin</td>
+            <td>If true, the dropdown will show below the activator. Default: false. Available: true. Typeof: boolean</td>
+          </tr>
+          <tr>
+            <td>maxHeight</td>
+            <td>Defines the max-height CSS property of the dropdown Default: null. Typeof: number (100)</td>
+          </tr>
+          <tr>
+            <td>maxWidth</td>
+            <td>Defines the max-width CSS property of the dropdown. Default: null. Typeof: number (100)</td>
+          </tr>
+          <tr>
+            <td>arrangement</td>
+            <td>Defines the direction of the opening menu (dropdown). Default: 'bottom'. Available: 'bottom'. Typeof: string</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div id="radio" class="section scrollspy">
         <h2 class="header">Radio Buttons</h2>
