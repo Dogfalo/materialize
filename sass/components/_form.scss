@@ -4,7 +4,7 @@ select:focus {
 }
 button:focus {
   outline: none;
-  background-color: lighten($button-color, 4%);
+  background-color: lighten($button-raised-background, 4%);
 }
 
 label {
@@ -41,6 +41,7 @@ input[type=email],
 input[type=url],
 input[type=time],
 input[type=date],
+input[type=datetime],
 input[type=datetime-local],
 input[type=tel],
 input[type=number],
