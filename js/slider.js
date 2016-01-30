@@ -288,6 +288,10 @@
           moveToSlide($active_index - 1);
         });
 
+        $this.on('change', function(event, slide) {
+          moveToSlide(slide);
+        });
+
       });
 
 
@@ -304,6 +308,9 @@
     },
     prev : function() {
       $(this).trigger('sliderPrev');
+    },
+    change : function(slide) {
+      $(this).trigger('change', slide);
     }
   };
 
