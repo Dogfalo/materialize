@@ -77,7 +77,14 @@
       else {
         $.Velocity.hook($modal, "scaleX", 0.7);
         $modal.css({ top: options.starting_top });
-        $modal.velocity({top: "10%", opacity: 1, scaleX: '1'}, {
+        var velocityOptions = {top: "10%", opacity: 1, scaleX: '1'};
+        if (options.fullscreen) {
+          velocityOptions.top = "0";
+          velocityOptions.width = "100%";
+          velocityOptions.height = "100%";
+          velocityOptions["max-height"] = "100%"
+        }
+        $modal.velocity(velocityOptions, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
