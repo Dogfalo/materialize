@@ -25,6 +25,9 @@
       $overlay = $('<div class="lean-overlay"></div>'),
       lStack = (++_stack);
 
+      // clear previous overlay
+      $('.lean-overlay').remove();
+
       // Store a reference of the overlay
       $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
       $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
