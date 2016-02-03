@@ -181,6 +181,7 @@
   height: 3px;
   top: 6px;
   background-color: #bfbfbf;
+  box-shadow: none;
 }
 .noUi-horizontal {
   height: 3px;
