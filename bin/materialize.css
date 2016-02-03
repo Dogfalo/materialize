@@ -3323,7 +3323,8 @@ nav ul a span.badge {
   float: right !important;
 }
 
-.no-select, input[type=range], input[type=range] + .thumb {
+.no-select, input[type=range],
+input[type=range] + .thumb {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8734,7 +8735,7 @@ textarea.materialize-textarea {
   padding: 0;
   box-shadow: none;
   box-sizing: content-box;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
@@ -8766,7 +8767,8 @@ textarea.materialize-textarea[readonly="readonly"] {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.26);
 }
 
-input:not([type]):disabled + label, input:not([type])[readonly="readonly"] + label,
+input:not([type]):disabled + label,
+input:not([type])[readonly="readonly"] + label,
 input[type=text]:disabled + label,
 input[type=text][readonly="readonly"] + label,
 input[type=password]:disabled + label,
@@ -9148,14 +9150,21 @@ textarea.materialize-textarea {
 }
 
 /* Unchecked styles */
-[type="radio"]:not(:checked) + label:before {
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after,
+[type="radio"]:checked + label:before,
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
   border-radius: 50%;
+}
+
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after {
   border: 2px solid #5a5a5a;
 }
 
 [type="radio"]:not(:checked) + label:after {
-  border-radius: 50%;
-  border: 2px solid #5a5a5a;
   z-index: -1;
   -webkit-transform: scale(0);
           transform: scale(0);
@@ -9163,37 +9172,35 @@ textarea.materialize-textarea {
 
 /* Checked styles */
 [type="radio"]:checked + label:before {
-  border-radius: 50%;
   border: 2px solid transparent;
 }
 
-[type="radio"]:checked + label:after {
-  border-radius: 50%;
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
   border: 2px solid #26a69a;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:after {
   background-color: #26a69a;
   z-index: 0;
+}
+
+[type="radio"]:checked + label:after {
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
 
 /* Radio With gap */
-[type="radio"].with-gap:checked + label:before {
-  border-radius: 50%;
-  border: 2px solid #26a69a;
-}
-
 [type="radio"].with-gap:checked + label:after {
-  border-radius: 50%;
-  border: 2px solid #26a69a;
-  background-color: #26a69a;
-  z-index: 0;
   -webkit-transform: scale(0.5);
           transform: scale(0.5);
 }
 
 /* Focused styles */
 [type="radio"].tabbed:focus + label:before {
-  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Disabled Radio With gap */
@@ -9300,7 +9307,7 @@ form p:last-child {
           transform: scale(1);
   border: 0;
   border-radius: 50%;
-  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -9668,7 +9675,8 @@ select:disabled {
   position: relative;
 }
 
-input[type=range], input[type=range] + .thumb {
+input[type=range],
+input[type=range] + .thumb {
   cursor: pointer;
 }
 
@@ -9678,8 +9686,12 @@ input[type=range] {
   border: none;
   outline: none;
   width: 100%;
-  margin: 15px 0px;
+  margin: 15px 0;
   padding: 0;
+}
+
+input[type=range]:focus {
+  outline: none;
 }
 
 input[type=range] + .thumb {
@@ -9716,10 +9728,6 @@ input[type=range] + .thumb.active .value {
   margin-left: -1px;
   margin-top: 8px;
   font-size: 10px;
-}
-
-input[type=range]:focus {
-  outline: none;
 }
 
 input[type=range] {
@@ -9772,7 +9780,7 @@ input[type=range]::-moz-range-thumb {
 
 /*hide the outline behind the border*/
 input[type=range]:-moz-focusring {
-  outline: 1px solid white;
+  outline: 1px solid #fff;
   outline-offset: -1px;
 }
 

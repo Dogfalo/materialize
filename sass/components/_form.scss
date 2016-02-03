@@ -1,10 +1,11 @@
 /* Remove Focus Boxes */
 select:focus {
-  outline: 1px solid lighten($secondary-color, 47%);
+  outline: $select-focus;
 }
+
 button:focus {
   outline: none;
-  background-color: lighten($button-raised-background, 4%);
+  background-color: $button-background-focus;
 }
 
 label {
@@ -18,19 +19,19 @@ label {
 
 // Style Placeholders
 ::-webkit-input-placeholder {
-   color: lighten($input-border-color, 20%);
+   color: $placeholder-text-color;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: lighten($input-border-color, 20%);
+   color: $placeholder-text-color;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: lighten($input-border-color, 20%);
+   color: $placeholder-text-color;
 }
 
 :-ms-input-placeholder {
-   color: lighten($input-border-color, 20%);
+   color: $placeholder-text-color;
 }
 
 // Text inputs
@@ -51,43 +52,50 @@ textarea.materialize-textarea {
   // General Styles
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $input-border-color;
+  border-bottom: $input-border;
   border-radius: 0;
   outline: none;
-  height: 3rem;
+  height: $input-height;
   width: 100%;
-  font-size: 1rem;
-  margin: 0 0 15px 0;
-  padding: 0;
+  font-size: $input-font-size;
+  margin: $input-margin;
+  padding: $input-padding;
   box-shadow: none;
   box-sizing: content-box;
-  transition: all .3s;
+  transition: $input-transition;
 
 
   // Disabled input style
-  &:disabled, &[readonly="readonly"] {
+  &:disabled,
+  &[readonly="readonly"] {
     color: $input-disabled-color;
-    border-bottom: 1px dotted $input-disabled-color;
+    border-bottom: $input-disabled-border;
   }
+
   // Disabled label style
-  &:disabled+label, &[readonly="readonly"]+label {
+  &:disabled+label,
+  &[readonly="readonly"]+label {
     color: $input-disabled-color;
   }
+
   // Focused input style
   &:focus:not([readonly]) {
     border-bottom: 1px solid $input-focus-color;
     box-shadow: 0 1px 0 0 $input-focus-color;
   }
+
   // Focused label style
   &:focus:not([readonly])+label {
     color: $input-focus-color;
   }
+
   // Valid Input Style
   &.valid,
   &:focus.valid {
     border-bottom: 1px solid $input-success-color;
     box-shadow: 0 1px 0 0 $input-success-color;
   }
+
   // Custom Success Message
   &.valid + label:after,
   &:focus.valid + label:after {
@@ -95,12 +103,14 @@ textarea.materialize-textarea {
     color: $input-success-color;
     opacity: 1;
   }
+
   // Invalid Input Style
   &.invalid,
   &:focus.invalid {
-    border-bottom: 1px solid $input-error-color;
+    border-bottom: $input-invalid-border;
     box-shadow: 0 1px 0 0 $input-error-color;
   }
+
   // Custom Error message
   &.invalid + label:after,
   &:focus.invalid + label:after {
@@ -108,6 +118,7 @@ textarea.materialize-textarea {
     color: $input-error-color;
     opacity: 1;
   }
+
   // Full width label when using validate for error messages
   &.validate + label {
     width: 100%;
@@ -139,6 +150,7 @@ textarea.materialize-textarea {
     cursor: text;
     transition: .2s ease-out;
   }
+
   label.active {
     font-size: $label-font-size;
     transform: translateY(-140%);
@@ -147,18 +159,20 @@ textarea.materialize-textarea {
   // Prefix Icons
   .prefix {
     position: absolute;
-    width: 3rem;
+    width: $input-height;
     font-size: 2rem;
     transition: color .2s;
 
     &.active { color: $input-focus-color; }
   }
+
   .prefix ~ input,
   .prefix ~ textarea {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem);
   }
+
   .prefix ~ textarea { padding-top: .8rem; }
   .prefix ~ label { margin-left: 3rem; }
 
@@ -168,6 +182,7 @@ textarea.materialize-textarea {
       width: calc(100% - 3rem);
     }
   }
+
   @media #{$small-and-down} {
     .prefix ~ input {
       width: 80%;
@@ -184,7 +199,7 @@ textarea.materialize-textarea {
   width: calc(100% - 4rem);
 
   &:focus {
-    background-color: $input-bg-color;
+    background-color: $input-background;
     border: 0;
     box-shadow: none;
     color: #444;
@@ -216,14 +231,14 @@ textarea.materialize-textarea {
 // Default textarea
 textarea {
    width: 100%;
-   height: 3rem;
+   height: $input-height;
    background-color: transparent;
 
   &.materialize-textarea {
     overflow-y: hidden; /* prevents scroll bar flash */
     padding: 1.6rem 0; /* prevents text jump on Enter keypress */
     resize: none;
-    min-height: 3rem;
+    min-height: $input-height;
   }
 }
 
@@ -278,53 +293,61 @@ textarea {
 }
 
 /* Unchecked styles */
-[type="radio"]:not(:checked) + label:before {
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after,
+[type="radio"]:checked + label:before,
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
   border-radius: 50%;
+}
+
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after {
   border: 2px solid $radio-empty-color;
 }
-[type="radio"]:not(:checked) + label:after {
-  border-radius: 50%;
-  border: 2px solid $radio-empty-color;
-  z-index: -1;
 
+[type="radio"]:not(:checked) + label:after {
+  z-index: -1;
   transform: scale(0);
 }
 
 /* Checked styles */
 [type="radio"]:checked + label:before {
-  border-radius: 50%;
   border: 2px solid transparent;
 }
-[type="radio"]:checked + label:after {
-  border-radius: 50%;
-  border: 2px solid $radio-fill-color;
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
+    border: $radio-border;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:after {
   background-color: $radio-fill-color;
   z-index: 0;
+}
+
+[type="radio"]:checked + label:after, {
   transform: scale(1.02);
 }
 
 /* Radio With gap */
-[type="radio"].with-gap:checked + label:before {
-  border-radius: 50%;
-  border: 2px solid $radio-fill-color;
-}
 [type="radio"].with-gap:checked + label:after {
-  border-radius: 50%;
-  border: 2px solid $radio-fill-color;
-  background-color: $radio-fill-color;
-  z-index: 0;
   transform: scale(.5);
 }
 
 /* Focused styles */
 [type="radio"].tabbed:focus + label:before {
-  box-shadow: 0px 0px 0px 10px rgba(0,0,0,.1);
+  box-shadow: 0 0 0 10px rgba(0,0,0,.1);
 }
 
 /* Disabled Radio With gap */
 [type="radio"].with-gap:disabled:checked + label:before {
   border: 2px solid $input-disabled-color;
 }
+
 [type="radio"].with-gap:disabled:checked + label:after {
   border: none;
   background-color: $input-disabled-color;
@@ -336,12 +359,15 @@ textarea {
   background-color: transparent;
   border-color: $input-disabled-color;
 }
+
 [type="radio"]:disabled + label {
   color: $input-disabled-color;
 }
+
 [type="radio"]:disabled:not(:checked) + label:before {
   border-color: $input-disabled-color;
 }
+
 [type="radio"]:disabled:checked + label:after {
   background-color: $input-disabled-color;
   border-color: $input-disabled-solid-color;
@@ -356,6 +382,7 @@ form p {
   margin-bottom: 10px;
   text-align: left;
 }
+
 form p:last-child {
   margin-bottom: 0;
 }
@@ -402,6 +429,7 @@ form p:last-child {
     margin-top: 2px;
     transition: .2s;
   }
+
   &:not(.filled-in) + label:after {
     border: 0;
     transform: scale(0);
@@ -417,7 +445,7 @@ form p:last-child {
     transform: scale(1);
     border: 0;
     border-radius: 50%;
-    box-shadow: 0px 0px 0px 10px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
     background-color: rgba(0,0,0,.1);
   }
 }
@@ -426,11 +454,12 @@ form p:last-child {
   + label:before {
     top: -4px;
     left: -5px;
-    width: 12px; height: 22px;
+    width: 12px;
+    height: 22px;
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
-    border-right: 2px solid $radio-fill-color;
-    border-bottom: 2px solid $radio-fill-color;
+    border-right: $radio-border;
+    border-bottom: $radio-border;
     transform: rotate(40deg);
     backface-visibility: hidden;
     transform-origin: 100% 100%;
@@ -447,10 +476,11 @@ form p:last-child {
   +label:before {
     top: -11px;
     left: -12px;
-    width: 10px; height: 22px;
+    width: 10px;
+    height: 22px;
     border-top: none;
     border-left: none;
-    border-right: 2px solid $radio-fill-color;
+    border-right: $radio-border;
     border-bottom: none;
     transform: rotate(90deg);
     backface-visibility: hidden;
@@ -470,6 +500,7 @@ form p:last-child {
   + label:after {
     border-radius: 2px;
   }
+
   + label:before,
   + label:after {
     content: '';
@@ -512,8 +543,8 @@ form p:last-child {
       height: 13px;
       border-top: 2px solid transparent;
       border-left: 2px solid transparent;
-      border-right: 2px solid $input-bg-color;
-      border-bottom: 2px solid $input-bg-color;
+      border-right: 2px solid $input-background;
+      border-bottom: 2px solid $input-background;
       -webkit-transform: rotateZ(37deg);
       transform: rotateZ(37deg);
 
@@ -537,6 +568,7 @@ form p:last-child {
     border-color: $radio-empty-color;
     background-color: rgba(0,0,0,.1);
   }
+
   &.tabbed:checked:focus + label:after {
     border-radius: 2px;
     background-color: $secondary-color;
@@ -579,7 +611,7 @@ form p:last-child {
     cursor: pointer;
 }
 
-.switch label input[type=checkbox]{
+.switch label input[type=checkbox] {
     opacity: 0;
     width: 0;
     height: 0;
@@ -600,7 +632,7 @@ form p:last-child {
     width: 40px;
     height: 15px;
     background-color: $switch-unchecked-lever-bg;
-    border-radius: 15px;
+    border-radius: $switch-radius;
     margin-right: 10px;
     transition: background 0.3s ease;
     vertical-align: middle;
@@ -635,9 +667,10 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 
 // Disabled Styles
-.switch input[type=checkbox][disabled] + .lever{
+.switch input[type=checkbox][disabled] + .lever {
   cursor: default;
 }
+
 .switch label input[type=checkbox][disabled] + .lever:after,
 .switch label input[type=checkbox][disabled]:checked + .lever:after {
     background-color: $input-disabled-solid-color;
@@ -656,16 +689,15 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   input.select-dropdown {
     position: relative;
     cursor: pointer;
-    // color: #444;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid $input-border-color;
+    border-bottom: $input-border;
     outline: none;
-    height: 3rem;
-    line-height: 3rem;
+    height: $input-height;
+    line-height: $input-height;
     width: 100%;
-    font-size: 1rem;
-    margin: 0 0 15px 0;
+    font-size: $input-font-size;
+    margin: $input-margin;
     padding: 0;
     display: block;
   }
@@ -758,8 +790,8 @@ select:disabled {
 
   .btn {
     float: left;
-    height: 3rem;
-    line-height: 3rem;
+    height: $input-height;
+    line-height: $input-height;
   }
 
   span {
@@ -790,7 +822,8 @@ select:disabled {
   position: relative;
 }
 
-input[type=range], input[type=range] + .thumb {
+input[type=range],
+input[type=range] + .thumb {
   @extend .no-select;
   cursor: pointer;
 }
@@ -801,9 +834,14 @@ input[type=range] {
   border: none;
   outline: none;
   width: 100%;
-  margin: 15px 0px;
+  margin: 15px 0;
   padding: 0;
+
+  &:focus {
+    outline: none;
+  }
 }
+
 input[type=range] + .thumb {
   position: absolute;
   border: none;
@@ -830,7 +868,7 @@ input[type=range] + .thumb {
     border-radius: 50% 50% 50% 0;
 
     .value {
-      color: $input-bg-color;
+      color: $input-background;
       margin-left: -1px;
       margin-top: 8px;
       font-size: 10px;
@@ -838,18 +876,13 @@ input[type=range] + .thumb {
   }
 }
 
-
-input[type=range]:focus {
-  outline: none;
-}
-
 // WebKit
-input[type=range]{
+input[type=range] {
   -webkit-appearance: none;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-  height: 3px;
+  height: $track-height;
   background: #c2c0c2;
   border: none;
 }
@@ -857,8 +890,8 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
-  height: 14px;
-  width: 14px;
+  height: $range-height;
+  width: $range-width;
   border-radius: 50%;
   background-color: $radio-fill-color;
   transform-origin: 50% 50%;
@@ -871,7 +904,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 // FireFox
-input[type=range]{
+input[type=range] {
   /* fix for FF unable to apply focus style bug  */
   border: 1px solid white;
 
@@ -879,23 +912,23 @@ input[type=range]{
 }
 
 input[type=range]::-moz-range-track {
-  height: 3px;
+  height: $track-height;
   background: #ddd;
   border: none;
 }
 
 input[type=range]::-moz-range-thumb {
   border: none;
-  height: 14px;
-  width: 14px;
+  height: $range-height;
+  width: $range-width;
   border-radius: 50%;
   background: $radio-fill-color;
   margin-top: -5px;
 }
 
 /*hide the outline behind the border*/
-input[type=range]:-moz-focusring{
-  outline: 1px solid white;
+input[type=range]:-moz-focusring {
+  outline: 1px solid #fff;
   outline-offset: -1px;
 }
 
@@ -905,7 +938,7 @@ input[type=range]:focus::-moz-range-track {
 
 // IE 10+
 input[type=range]::-ms-track {
-  height: 3px;
+  height: $track-height;
 
   /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
@@ -928,8 +961,8 @@ input[type=range]::-ms-fill-upper {
 
 input[type=range]::-ms-thumb {
   border: none;
-  height: 14px;
-  width: 14px;
+  height: $range-height;
+  width: $range-width;
   border-radius: 50%;
   background: $radio-fill-color;
 }
@@ -946,10 +979,10 @@ input[type=range]:focus::-ms-fill-upper {
    Text Inputs + Textarea
 ****************************/
 select {
-   background-color: rgba(255, 255, 255, 0.90);
+   background-color: $select-background;
    width: 100%;
-   padding: 5px;
-   border: 1px solid #f2f2f2;
-   border-radius: 2px;
-   height: 3rem;
+   padding: $select-padding;
+   border: $select-border;
+   border-radius: $select-radius;
+   height: $input-height;
 }
