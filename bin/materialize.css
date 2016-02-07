@@ -8731,7 +8731,6 @@ a.waves-effect .waves-ripple {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Remove Focus Boxes */
 select:focus {
   outline: 1px solid #c9f3ef;
 }
@@ -8746,9 +8745,9 @@ label {
   color: #9e9e9e;
 }
 
-/***************************
-   Text Inputs + Textarea
-****************************/
+/* Text Inputs + Textarea
+   ========================================================================== */
+/* Style Placeholders */
 ::-webkit-input-placeholder {
   color: #d1d1d1;
 }
@@ -8767,6 +8766,7 @@ label {
   color: #d1d1d1;
 }
 
+/* Text inputs */
 input:not([type]),
 input[type=text],
 input[type=password],
@@ -9105,6 +9105,7 @@ textarea.materialize-textarea + label:after {
   }
 }
 
+/* Search Field */
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
@@ -9140,6 +9141,7 @@ textarea.materialize-textarea + label:after {
   transition: .3s color;
 }
 
+/* Textarea */
 textarea {
   width: 100%;
   height: 3rem;
@@ -9165,10 +9167,8 @@ textarea.materialize-textarea {
   /* prevents text jump on Enter keypress */
 }
 
-/***************
-  Radio Buttons
-***************/
-/* Remove default Radio Buttons */
+/* Radio Buttons
+   ========================================================================== */
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
@@ -9290,9 +9290,8 @@ textarea.materialize-textarea {
   border-color: #BDBDBD;
 }
 
-/***************
-   Checkboxes
-***************/
+/* Checkboxes
+   ========================================================================== */
 /* CUSTOM CSS CHECKBOXES */
 form p {
   margin-bottom: 10px;
@@ -9503,9 +9502,8 @@ form p:last-child {
   border-color: #BDBDBD;
 }
 
-/***************
-     Switch
-***************/
+/* Switch
+   ========================================================================== */
 .switch,
 .switch * {
   -webkit-user-select: none;
@@ -9530,6 +9528,7 @@ form p:last-child {
 
 .switch label input[type=checkbox]:checked + .lever:after {
   background-color: #26a69a;
+  left: 24px;
 }
 
 .switch label .lever {
@@ -9568,10 +9567,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.08);
 }
 
-.switch label input[type=checkbox]:checked + .lever:after {
-  left: 24px;
-}
-
 .switch input[type=checkbox][disabled] + .lever {
   cursor: default;
 }
@@ -9581,9 +9576,25 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   background-color: #BDBDBD;
 }
 
-/***************
-  Select Field
-***************/
+/* Select Field
+   ========================================================================== */
+select {
+  display: none;
+}
+
+select.browser-default {
+  display: block;
+}
+
+select {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+}
+
 .select-label {
   position: absolute;
 }
@@ -9624,14 +9635,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   position: absolute;
   top: -14px;
   font-size: 0.8rem;
-}
-
-select {
-  display: none;
-}
-
-select.browser-default {
-  display: block;
 }
 
 select:disabled {
@@ -9684,9 +9687,8 @@ select:disabled {
   padding-left: 1rem;
 }
 
-/*********************
-      File Input
-**********************/
+/* File Input
+   ========================================================================== */
 .file-field {
   position: relative;
 }
@@ -9725,9 +9727,8 @@ select:disabled {
   filter: alpha(opacity=0);
 }
 
-/***************
-      Range
-***************/
+/* Range
+   ========================================================================== */
 .range-field {
   position: relative;
 }
@@ -9835,7 +9836,6 @@ input[type=range]::-moz-range-thumb {
   margin-top: -5px;
 }
 
-/*hide the outline behind the border*/
 input[type=range]:-moz-focusring {
   outline: 1px solid #fff;
   outline-offset: -1px;
@@ -9847,9 +9847,7 @@ input[type=range]:focus::-moz-range-track {
 
 input[type=range]::-ms-track {
   height: 3px;
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
-  /*leave room for the larger thumb to overflow with a transparent border */
   border-color: transparent;
   border-width: 6px 0;
   /*remove default tick marks*/
@@ -9878,18 +9876,6 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
   background: #ccc;
-}
-
-/***************************
-   Text Inputs + Textarea
-****************************/
-select {
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #f2f2f2;
-  border-radius: 2px;
-  height: 3rem;
 }
 
 /***************

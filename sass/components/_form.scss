@@ -1,4 +1,4 @@
-/* Remove Focus Boxes */
+// Remove Focus Boxes
 select:focus {
   outline: $select-focus;
 }
@@ -13,11 +13,12 @@ label {
   color: $input-border-color;
 }
 
-/***************************
-   Text Inputs + Textarea
-****************************/
 
-// Style Placeholders
+/* Text Inputs + Textarea
+   ========================================================================== */
+
+/* Style Placeholders */
+
 ::-webkit-input-placeholder {
    color: $placeholder-text-color;
 }
@@ -34,7 +35,8 @@ label {
    color: $placeholder-text-color;
 }
 
-// Text inputs
+/* Text inputs */
+
 input:not([type]),
 input[type=text],
 input[type=password],
@@ -63,7 +65,6 @@ textarea.materialize-textarea {
   box-shadow: none;
   box-sizing: content-box;
   transition: $input-transition;
-
 
   // Disabled input style
   &:disabled,
@@ -191,7 +192,9 @@ textarea.materialize-textarea {
   }
 }
 
-// Search Field
+
+/* Search Field */
+
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
@@ -228,6 +231,8 @@ textarea.materialize-textarea {
 }
 
 
+/* Textarea */
+
 // Default textarea
 textarea {
    width: 100%;
@@ -252,11 +257,10 @@ textarea {
 }
 
 
-/***************
-  Radio Buttons
-***************/
+/* Radio Buttons
+   ========================================================================== */
 
-/* Remove default Radio Buttons */
+// Remove default Radio Buttons
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
@@ -373,9 +377,9 @@ textarea {
   border-color: $input-disabled-solid-color;
 }
 
-/***************
-   Checkboxes
-***************/
+
+/* Checkboxes
+   ========================================================================== */
 
 /* CUSTOM CSS CHECKBOXES */
 form p {
@@ -397,7 +401,6 @@ form p:last-child {
 
 // Checkbox Styles
 [type="checkbox"] {
-
   // Text Label Style
   + label {
     position: relative;
@@ -596,9 +599,10 @@ form p:last-child {
   }
 }
 
-/***************
-     Switch
-***************/
+
+/* Switch
+   ========================================================================== */
+
 .switch,
 .switch * {
     -webkit-user-select: none;
@@ -615,14 +619,15 @@ form p:last-child {
     opacity: 0;
     width: 0;
     height: 0;
-}
 
-.switch label input[type=checkbox]:checked + .lever {
-    background-color: $switch-checked-lever-bg;
-}
+    &:checked + .lever {
+      background-color: $switch-checked-lever-bg;
 
-.switch label input[type=checkbox]:checked + .lever:after {
-    background-color: $switch-bg-color;
+      &:after {
+        background-color: $switch-bg-color;
+        left: 24px;
+      }
+    }
 }
 
 .switch label .lever {
@@ -637,20 +642,20 @@ form p:last-child {
     transition: background 0.3s ease;
     vertical-align: middle;
     margin: 0 16px;
-}
 
-.switch label .lever:after {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    width: 21px;
-    height: 21px;
-    background-color: $switch-unchecked-bg;
-    border-radius: 21px;
-    box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
-    left: -5px;
-    top: -3px;
-    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
+    &:after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      width: 21px;
+      height: 21px;
+      background-color: $switch-unchecked-bg;
+      border-radius: 21px;
+      box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
+      left: -5px;
+      top: -3px;
+      transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
+    }
 }
 
 // Switch active style
@@ -660,10 +665,6 @@ input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
 
 input[type=checkbox]:not(:disabled) ~ .lever:active:after {
        box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px rgba(0, 0, 0, .08);
-}
-
-.switch label input[type=checkbox]:checked + .lever:after {
-    left: 24px;
 }
 
 // Disabled Styles
@@ -676,9 +677,21 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     background-color: $input-disabled-solid-color;
 }
 
-/***************
-  Select Field
-***************/
+/* Select Field
+   ========================================================================== */
+
+select { display: none; }
+select.browser-default { display: block; }
+
+select {
+   background-color: $select-background;
+   width: 100%;
+   padding: $select-padding;
+   border: $select-border;
+   border-radius: $select-radius;
+   height: $input-height;
+}
+
 .select-label {
   position: absolute;
 }
@@ -720,9 +733,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   }
 }
 
-select { display: none; }
-select.browser-default { display: block; }
-
 // Disabled styles
 select:disabled {
   color: rgba(0,0,0,.3);
@@ -738,13 +748,13 @@ select:disabled {
 }
 
 .select-wrapper i {
-  color: rgba(0,0,0,.3);
+  color: $select-disabled-color;
 }
 
 .select-dropdown li.disabled,
 .select-dropdown li.disabled > span,
 .select-dropdown li.optgroup {
-  color: rgba(0,0,0,.3);
+  color: $select-disabled-color;
   background-color: transparent;
 }
 
@@ -775,9 +785,9 @@ select:disabled {
   }
 }
 
-/*********************
-      File Input
-**********************/
+/* File Input
+   ========================================================================== */
+
 .file-field {
   position: relative;
 
@@ -814,9 +824,9 @@ select:disabled {
   }
 }
 
-/***************
-      Range
-***************/
+
+/* Range
+   ========================================================================== */
 
 .range-field {
   position: relative;
@@ -926,7 +936,7 @@ input[type=range]::-moz-range-thumb {
   margin-top: -5px;
 }
 
-/*hide the outline behind the border*/
+// hide the outline behind the border
 input[type=range]:-moz-focusring {
   outline: 1px solid #fff;
   outline-offset: -1px;
@@ -940,10 +950,10 @@ input[type=range]:focus::-moz-range-track {
 input[type=range]::-ms-track {
   height: $track-height;
 
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  // remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead
   background: transparent;
 
-  /*leave room for the larger thumb to overflow with a transparent border */
+  // leave room for the larger thumb to overflow with a transparent border */
   border-color: transparent;
   border-width: 6px 0;
 
@@ -973,16 +983,4 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
   background: #ccc;
-}
-
-/***************************
-   Text Inputs + Textarea
-****************************/
-select {
-   background-color: $select-background;
-   width: 100%;
-   padding: $select-padding;
-   border: $select-border;
-   border-radius: $select-radius;
-   height: $input-height;
 }
