@@ -7784,8 +7784,6 @@ small {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
-  background-color: inherit;
 }
 
 .card.small {
@@ -7838,8 +7836,11 @@ small {
 }
 
 .card .card-action {
+  position: relative;
+  background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 20px;
+  z-index: 2;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
@@ -7853,6 +7854,11 @@ small {
   color: #ffd8a6;
 }
 
+.card .card-action + .card-reveal {
+  z-index: 1;
+  padding-bottom: 64px;
+}
+
 .card .card-reveal {
   padding: 20px;
   position: absolute;
@@ -7861,7 +7867,7 @@ small {
   overflow-y: auto;
   top: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 3;
   display: none;
 }
 
