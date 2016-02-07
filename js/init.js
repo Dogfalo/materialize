@@ -130,7 +130,9 @@
     $('.modal-trigger').leanModal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
-    $('.datepicker').pickadate({selectYears: 20});
+    $('input[type=date]').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD', time: false });
+    $('input[type=time]').bootstrapMaterialDatePicker({ format: 'HH:mm', date: false });
+    $('input[type=datetime], input[type=datetime-local').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm' });
     $('select').not('.disabled').material_select();
 
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -838,21 +838,32 @@
       </div>
 
       <div id="date-picker" class="section scrollspy">
-        <h2 class="header">Date Picker</h2>
-        <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
+        <h2 class="header">Date Time Pickers</h2>
+        <p>We use a modified version of bootstrap-material-datetimepicker.js to create a materialized date/time picker. Test it out below! </p>
         <label for="birthdate">Birthdate</label>
-        <input id="birthdate" type="text" class="datepicker">
+        <input id="birthdate" type="date">
         <pre><code class="language-markup">
-  &lt;input type="date" class="datepicker">
+  &lt;input type="date"/>
+      </code></pre>
+        <br/>
+        <label for="birthdate">Birthdate</label>
+        <input id="birthdate" type="datetime">
+        <pre><code class="language-markup">
+  &lt;input type="datetime"/>
+      </code></pre>
+        <br/>
+        <label for="birthdate">Birthdate</label>
+        <input id="birthdate" type="time">
+        <pre><code class="language-markup">
+  &lt;input type="time"/>
         </code></pre>
-
+        <br/>
         <h4>Initialization</h4>
-        <p>At this time, not all pickadate.js options are working with our implementation</p>
+        <p>A full list of options are available on the project's <a href="https://github.com/T00rk/bootstrap-material-datetimepicker">github page</a></p>
         <pre><code class="language-javascript">
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
+    $('input[type=date]').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD', time: false });
+    $('input[type=time]').bootstrapMaterialDatePicker({ format: 'HH:mm', date: false });
+    $('input[type=datetime], input[type=datetime-local').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm' });
         </code></pre>
       </div>
 
@@ -924,7 +935,7 @@
             <li><a href="#switches">Switches</a></li>
             <li><a href="#file">File Input Button</a></li>
             <li><a href="#range">Range</a></li>
-            <li><a href="#date-picker">Date Picker</a></li>
+            <li><a href="#date-picker">Date Time Pickers</a></li>
             <li><a href="#character-counter">Character Counter</a></li>
           </ul>
         </div>
