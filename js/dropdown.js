@@ -15,7 +15,8 @@
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false,
-      alignment: 'left'
+      alignment: 'left',
+      stopPropagation: true
     };
 
     this.each(function(){
@@ -40,7 +41,9 @@
       if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
       if (origin.data('alignment') !== undefined)
-        options.alignment = origin.data('alignment');
+          options.alignment = origin.data('alignment');
+      if (origin.data('stopPropagation') !== undefined)
+          options.stopPropagation = origin.data('stopPropagation');
     }
 
     updateOptions();
@@ -198,7 +201,9 @@
           if ( origin[0] == e.currentTarget &&
                !origin.hasClass('active') &&
                ($(e.target).closest('.dropdown-content').length === 0)) {
-            e.preventDefault(); // Prevents button click from moving window
+              e.preventDefault(); // Prevents button click from moving window
+              if (options.stopPropagation)
+                  e.stopPropagation();
             placeDropdown('click');
           }
           // If origin is clicked and menu is open, close menu
