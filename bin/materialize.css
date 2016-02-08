@@ -1,3 +1,11 @@
+.materialize-red {
+  background-color: #e51c23 !important;
+}
+
+.materialize-red-text {
+  color: #e51c23 !important;
+}
+
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important;
 }
@@ -38,14 +46,6 @@
   color: #ea454b !important;
 }
 
-.materialize-red {
-  background-color: #e51c23 !important;
-}
-
-.materialize-red-text {
-  color: #e51c23 !important;
-}
-
 .materialize-red.darken-1 {
   background-color: #d0181e !important;
 }
@@ -76,6 +76,14 @@
 
 .materialize-red-text.text-darken-4 {
   color: #8b1014 !important;
+}
+
+.red {
+  background-color: #F44336 !important;
+}
+
+.red-text {
+  color: #F44336 !important;
 }
 
 .red.lighten-5 {
@@ -116,14 +124,6 @@
 
 .red-text.text-lighten-1 {
   color: #EF5350 !important;
-}
-
-.red {
-  background-color: #F44336 !important;
-}
-
-.red-text {
-  color: #F44336 !important;
 }
 
 .red.darken-1 {
@@ -190,6 +190,14 @@
   color: #D50000 !important;
 }
 
+.pink {
+  background-color: #e91e63 !important;
+}
+
+.pink-text {
+  color: #e91e63 !important;
+}
+
 .pink.lighten-5 {
   background-color: #fce4ec !important;
 }
@@ -228,14 +236,6 @@
 
 .pink-text.text-lighten-1 {
   color: #ec407a !important;
-}
-
-.pink {
-  background-color: #e91e63 !important;
-}
-
-.pink-text {
-  color: #e91e63 !important;
 }
 
 .pink.darken-1 {
@@ -302,6 +302,14 @@
   color: #c51162 !important;
 }
 
+.purple {
+  background-color: #9c27b0 !important;
+}
+
+.purple-text {
+  color: #9c27b0 !important;
+}
+
 .purple.lighten-5 {
   background-color: #f3e5f5 !important;
 }
@@ -340,14 +348,6 @@
 
 .purple-text.text-lighten-1 {
   color: #ab47bc !important;
-}
-
-.purple {
-  background-color: #9c27b0 !important;
-}
-
-.purple-text {
-  color: #9c27b0 !important;
 }
 
 .purple.darken-1 {
@@ -414,6 +414,14 @@
   color: #aa00ff !important;
 }
 
+.deep-purple {
+  background-color: #673ab7 !important;
+}
+
+.deep-purple-text {
+  color: #673ab7 !important;
+}
+
 .deep-purple.lighten-5 {
   background-color: #ede7f6 !important;
 }
@@ -452,14 +460,6 @@
 
 .deep-purple-text.text-lighten-1 {
   color: #7e57c2 !important;
-}
-
-.deep-purple {
-  background-color: #673ab7 !important;
-}
-
-.deep-purple-text {
-  color: #673ab7 !important;
 }
 
 .deep-purple.darken-1 {
@@ -526,6 +526,14 @@
   color: #6200ea !important;
 }
 
+.indigo {
+  background-color: #3f51b5 !important;
+}
+
+.indigo-text {
+  color: #3f51b5 !important;
+}
+
 .indigo.lighten-5 {
   background-color: #e8eaf6 !important;
 }
@@ -564,14 +572,6 @@
 
 .indigo-text.text-lighten-1 {
   color: #5c6bc0 !important;
-}
-
-.indigo {
-  background-color: #3f51b5 !important;
-}
-
-.indigo-text {
-  color: #3f51b5 !important;
 }
 
 .indigo.darken-1 {
@@ -638,6 +638,14 @@
   color: #304ffe !important;
 }
 
+.blue {
+  background-color: #2196F3 !important;
+}
+
+.blue-text {
+  color: #2196F3 !important;
+}
+
 .blue.lighten-5 {
   background-color: #E3F2FD !important;
 }
@@ -676,14 +684,6 @@
 
 .blue-text.text-lighten-1 {
   color: #42A5F5 !important;
-}
-
-.blue {
-  background-color: #2196F3 !important;
-}
-
-.blue-text {
-  color: #2196F3 !important;
 }
 
 .blue.darken-1 {
@@ -750,6 +750,14 @@
   color: #2962FF !important;
 }
 
+.light-blue {
+  background-color: #03a9f4 !important;
+}
+
+.light-blue-text {
+  color: #03a9f4 !important;
+}
+
 .light-blue.lighten-5 {
   background-color: #e1f5fe !important;
 }
@@ -788,14 +796,6 @@
 
 .light-blue-text.text-lighten-1 {
   color: #29b6f6 !important;
-}
-
-.light-blue {
-  background-color: #03a9f4 !important;
-}
-
-.light-blue-text {
-  color: #03a9f4 !important;
 }
 
 .light-blue.darken-1 {
@@ -862,6 +862,14 @@
   color: #0091ea !important;
 }
 
+.cyan {
+  background-color: #00bcd4 !important;
+}
+
+.cyan-text {
+  color: #00bcd4 !important;
+}
+
 .cyan.lighten-5 {
   background-color: #e0f7fa !important;
 }
@@ -900,14 +908,6 @@
 
 .cyan-text.text-lighten-1 {
   color: #26c6da !important;
-}
-
-.cyan {
-  background-color: #00bcd4 !important;
-}
-
-.cyan-text {
-  color: #00bcd4 !important;
 }
 
 .cyan.darken-1 {
@@ -974,6 +974,14 @@
   color: #00b8d4 !important;
 }
 
+.teal {
+  background-color: #009688 !important;
+}
+
+.teal-text {
+  color: #009688 !important;
+}
+
 .teal.lighten-5 {
   background-color: #e0f2f1 !important;
 }
@@ -1012,14 +1020,6 @@
 
 .teal-text.text-lighten-1 {
   color: #26a69a !important;
-}
-
-.teal {
-  background-color: #009688 !important;
-}
-
-.teal-text {
-  color: #009688 !important;
 }
 
 .teal.darken-1 {
@@ -1086,6 +1086,14 @@
   color: #00bfa5 !important;
 }
 
+.green {
+  background-color: #4CAF50 !important;
+}
+
+.green-text {
+  color: #4CAF50 !important;
+}
+
 .green.lighten-5 {
   background-color: #E8F5E9 !important;
 }
@@ -1124,14 +1132,6 @@
 
 .green-text.text-lighten-1 {
   color: #66BB6A !important;
-}
-
-.green {
-  background-color: #4CAF50 !important;
-}
-
-.green-text {
-  color: #4CAF50 !important;
 }
 
 .green.darken-1 {
@@ -1198,6 +1198,14 @@
   color: #00C853 !important;
 }
 
+.light-green {
+  background-color: #8bc34a !important;
+}
+
+.light-green-text {
+  color: #8bc34a !important;
+}
+
 .light-green.lighten-5 {
   background-color: #f1f8e9 !important;
 }
@@ -1236,14 +1244,6 @@
 
 .light-green-text.text-lighten-1 {
   color: #9ccc65 !important;
-}
-
-.light-green {
-  background-color: #8bc34a !important;
-}
-
-.light-green-text {
-  color: #8bc34a !important;
 }
 
 .light-green.darken-1 {
@@ -1310,6 +1310,14 @@
   color: #64dd17 !important;
 }
 
+.lime {
+  background-color: #cddc39 !important;
+}
+
+.lime-text {
+  color: #cddc39 !important;
+}
+
 .lime.lighten-5 {
   background-color: #f9fbe7 !important;
 }
@@ -1348,14 +1356,6 @@
 
 .lime-text.text-lighten-1 {
   color: #d4e157 !important;
-}
-
-.lime {
-  background-color: #cddc39 !important;
-}
-
-.lime-text {
-  color: #cddc39 !important;
 }
 
 .lime.darken-1 {
@@ -1422,6 +1422,14 @@
   color: #aeea00 !important;
 }
 
+.yellow {
+  background-color: #ffeb3b !important;
+}
+
+.yellow-text {
+  color: #ffeb3b !important;
+}
+
 .yellow.lighten-5 {
   background-color: #fffde7 !important;
 }
@@ -1460,14 +1468,6 @@
 
 .yellow-text.text-lighten-1 {
   color: #ffee58 !important;
-}
-
-.yellow {
-  background-color: #ffeb3b !important;
-}
-
-.yellow-text {
-  color: #ffeb3b !important;
 }
 
 .yellow.darken-1 {
@@ -1534,6 +1534,14 @@
   color: #ffd600 !important;
 }
 
+.amber {
+  background-color: #ffc107 !important;
+}
+
+.amber-text {
+  color: #ffc107 !important;
+}
+
 .amber.lighten-5 {
   background-color: #fff8e1 !important;
 }
@@ -1572,14 +1580,6 @@
 
 .amber-text.text-lighten-1 {
   color: #ffca28 !important;
-}
-
-.amber {
-  background-color: #ffc107 !important;
-}
-
-.amber-text {
-  color: #ffc107 !important;
 }
 
 .amber.darken-1 {
@@ -1646,6 +1646,14 @@
   color: #ffab00 !important;
 }
 
+.orange {
+  background-color: #ff9800 !important;
+}
+
+.orange-text {
+  color: #ff9800 !important;
+}
+
 .orange.lighten-5 {
   background-color: #fff3e0 !important;
 }
@@ -1684,14 +1692,6 @@
 
 .orange-text.text-lighten-1 {
   color: #ffa726 !important;
-}
-
-.orange {
-  background-color: #ff9800 !important;
-}
-
-.orange-text {
-  color: #ff9800 !important;
 }
 
 .orange.darken-1 {
@@ -1758,6 +1758,14 @@
   color: #ff6d00 !important;
 }
 
+.deep-orange {
+  background-color: #ff5722 !important;
+}
+
+.deep-orange-text {
+  color: #ff5722 !important;
+}
+
 .deep-orange.lighten-5 {
   background-color: #fbe9e7 !important;
 }
@@ -1796,14 +1804,6 @@
 
 .deep-orange-text.text-lighten-1 {
   color: #ff7043 !important;
-}
-
-.deep-orange {
-  background-color: #ff5722 !important;
-}
-
-.deep-orange-text {
-  color: #ff5722 !important;
 }
 
 .deep-orange.darken-1 {
@@ -1870,6 +1870,14 @@
   color: #dd2c00 !important;
 }
 
+.brown {
+  background-color: #795548 !important;
+}
+
+.brown-text {
+  color: #795548 !important;
+}
+
 .brown.lighten-5 {
   background-color: #efebe9 !important;
 }
@@ -1910,14 +1918,6 @@
   color: #8d6e63 !important;
 }
 
-.brown {
-  background-color: #795548 !important;
-}
-
-.brown-text {
-  color: #795548 !important;
-}
-
 .brown.darken-1 {
   background-color: #6d4c41 !important;
 }
@@ -1948,6 +1948,14 @@
 
 .brown-text.text-darken-4 {
   color: #3e2723 !important;
+}
+
+.blue-grey {
+  background-color: #607d8b !important;
+}
+
+.blue-grey-text {
+  color: #607d8b !important;
 }
 
 .blue-grey.lighten-5 {
@@ -1990,14 +1998,6 @@
   color: #78909c !important;
 }
 
-.blue-grey {
-  background-color: #607d8b !important;
-}
-
-.blue-grey-text {
-  color: #607d8b !important;
-}
-
 .blue-grey.darken-1 {
   background-color: #546e7a !important;
 }
@@ -2028,6 +2028,14 @@
 
 .blue-grey-text.text-darken-4 {
   color: #263238 !important;
+}
+
+.grey {
+  background-color: #9e9e9e !important;
+}
+
+.grey-text {
+  color: #9e9e9e !important;
 }
 
 .grey.lighten-5 {
@@ -2068,14 +2076,6 @@
 
 .grey-text.text-lighten-1 {
   color: #bdbdbd !important;
-}
-
-.grey {
-  background-color: #9e9e9e !important;
-}
-
-.grey-text {
-  color: #9e9e9e !important;
 }
 
 .grey.darken-1 {
@@ -2158,27 +2158,84 @@
   color: transparent !important;
 }
 
-/*** Colors ***/
-/*** Badges ***/
-/*** Buttons ***/
-/*** Cards ***/
-/*** Collapsible ***/
-/*** Chips ***/
-/*** Date Picker ***/
-/*** Dropdown ***/
-/*** Fonts ***/
-/*** Forms ***/
-/*** Global ***/
-/*** Navbar ***/
-/*** SideNav ***/
-/*** Photo Slider ***/
-/*** Spinners | Loaders ***/
-/*** Tabs ***/
-/*** Tables ***/
-/*** Toasts ***/
-/*** Typography ***/
-/*** Collections ***/
-/* Progress Bar */
+/* ==========================================================================
+   Materialize variables
+   ========================================================================== */
+/**
+ * Table of Contents:
+ *
+ *  1. Colors
+ *  2. Badges
+ *  3. Buttons
+ *  4. Cards
+ *  5. Collapsible
+ *  6. Chips
+ *  7. Date Picker
+ *  8. Dropdown
+ *  10. Forms
+ *  11. Global
+ *  12. Grid
+ *  13. Navigation Bar
+ *  14. Side Navigation
+ *  15. Photo Slider
+ *  16. Spinners | Loaders
+ *  17. Tabs
+ *  18. Tables
+ *  19. Toasts
+ *  20. Typography
+ *  21. Footer
+ *  22. Flow Text
+ *  23. Collections
+ *  24. Progress Bar
+ */
+/* 1. Colors
+   ========================================================================== */
+/* 2. Badges
+   ========================================================================== */
+/* 3. Buttons
+   ========================================================================== */
+/* 4. Cards
+   ========================================================================== */
+/* 5. Collapsible
+   ========================================================================== */
+/* 6. Chips
+   ========================================================================== */
+/* 7. Date Picker
+   ========================================================================== */
+/* 8. Dropdown
+   ========================================================================== */
+/* 9. Fonts
+   ========================================================================== */
+/* 10. Forms
+   ========================================================================== */
+/* 11. Global
+   ========================================================================== */
+/* 12. Grid
+   ========================================================================== */
+/* 13. Navigation Bar
+   ========================================================================== */
+/* 14. Side Navigation
+   ========================================================================== */
+/* 15. Photo Slider
+   ========================================================================== */
+/* 16. Spinners | Loaders
+   ========================================================================== */
+/* 17. Tabs
+   ========================================================================== */
+/* 18. Tables
+   ========================================================================== */
+/* 19. Toasts
+   ========================================================================== */
+/* 20. Typography
+   ========================================================================== */
+/* 21. Footer
+   ========================================================================== */
+/* 22. Flow Text
+   ========================================================================== */
+/* 23. Collections
+   ========================================================================== */
+/* 24. Progress Bar
+   ========================================================================== */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -3323,7 +3380,8 @@ nav ul a span.badge {
   float: right !important;
 }
 
-.no-select, input[type=range], input[type=range] + .thumb {
+.no-select, input[type=range],
+input[type=range] + .thumb {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -7400,7 +7458,7 @@ nav ul a {
   transition: background-color .3s;
   font-size: 1rem;
   color: #fff;
-  display: block;
+  display: inline-block;
   padding: 0 15px;
   cursor: pointer;
 }
@@ -7783,8 +7841,6 @@ small {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
-  background-color: inherit;
 }
 
 .card.small {
@@ -7837,8 +7893,11 @@ small {
 }
 
 .card .card-action {
+  position: relative;
+  background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 20px;
+  z-index: 2;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
@@ -7852,6 +7911,11 @@ small {
   color: #ffd8a6;
 }
 
+.card .card-action + .card-reveal {
+  z-index: 1;
+  padding-bottom: 64px;
+}
+
 .card .card-reveal {
   padding: 20px;
   position: absolute;
@@ -7860,7 +7924,7 @@ small {
   overflow-y: auto;
   top: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 3;
   display: none;
 }
 
@@ -8032,6 +8096,7 @@ small {
   overflow: hidden;
   left: 0;
   top: 0;
+  pointer-events: none;
   will-change: top, left;
 }
 
@@ -8049,7 +8114,8 @@ small {
   will-change: transform, opacity;
 }
 
-.btn, .btn-large, .btn-flat {
+.btn, .btn-large,
+.btn-flat {
   border: none;
   border-radius: 2px;
   display: inline-block;
@@ -8062,23 +8128,41 @@ small {
   -webkit-tap-highlight-color: transparent;
 }
 
-.btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {
+.btn.disabled, .disabled.btn-large,
+.btn-floating.disabled,
+.btn-large.disabled,
+.btn:disabled
+.btn-large:disabled, .btn-large:disabled .btn-large:disabled,
+.btn-floating:disabled {
   background-color: #DFDFDF !important;
   box-shadow: none;
   color: #9F9F9F !important;
   cursor: default;
 }
 
-.btn.disabled *, .disabled.btn-large *, .btn-floating.disabled *, .btn-large.disabled *, .btn:disabled *, .btn-large:disabled *, .btn-large:disabled *, .btn-floating:disabled * {
+.btn.disabled *, .disabled.btn-large *,
+.btn-floating.disabled *,
+.btn-large.disabled *,
+.btn:disabled
+.btn-large:disabled *, .btn-large:disabled .btn-large:disabled *,
+.btn-floating:disabled * {
   pointer-events: none;
 }
 
-.btn.disabled:hover, .disabled.btn-large:hover, .btn-floating.disabled:hover, .btn-large.disabled:hover, .btn:disabled:hover, .btn-large:disabled:hover, .btn-large:disabled:hover, .btn-floating:disabled:hover {
+.btn.disabled:hover, .disabled.btn-large:hover,
+.btn-floating.disabled:hover,
+.btn-large.disabled:hover,
+.btn:disabled
+.btn-large:disabled:hover, .btn-large:disabled .btn-large:disabled:hover,
+.btn-floating:disabled:hover {
   background-color: #DFDFDF !important;
   color: #9F9F9F !important;
 }
 
-.btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
+.btn i, .btn-large i,
+.btn-floating i,
+.btn-large i,
+.btn-flat i {
   font-size: 1.3rem;
   line-height: inherit;
 }
@@ -8210,7 +8294,7 @@ button.btn-floating {
 
 .btn-large {
   height: 54px;
-  line-height: 56px;
+  line-height: 54px;
 }
 
 .btn-large i {
@@ -8635,7 +8719,7 @@ a.waves-effect .waves-ripple {
   right: 0;
   bottom: 0;
   background-color: #292929;
-  z-index: 999;
+  z-index: 1000;
   will-change: opacity;
 }
 
@@ -8653,7 +8737,6 @@ a.waves-effect .waves-ripple {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Remove Focus Boxes */
 select:focus {
   outline: 1px solid #c9f3ef;
 }
@@ -8668,9 +8751,9 @@ label {
   color: #9e9e9e;
 }
 
-/***************************
-   Text Inputs + Textarea
-****************************/
+/* Text Inputs + Textarea
+   ========================================================================== */
+/* Style Placeholders */
 ::-webkit-input-placeholder {
   color: #d1d1d1;
 }
@@ -8689,6 +8772,7 @@ label {
   color: #d1d1d1;
 }
 
+/* Text inputs */
 input:not([type]),
 input[type=text],
 input[type=password],
@@ -8696,6 +8780,7 @@ input[type=email],
 input[type=url],
 input[type=time],
 input[type=date],
+input[type=datetime],
 input[type=datetime-local],
 input[type=tel],
 input[type=number],
@@ -8713,7 +8798,7 @@ textarea.materialize-textarea {
   padding: 0;
   box-shadow: none;
   box-sizing: content-box;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
@@ -8729,6 +8814,8 @@ input[type=time]:disabled,
 input[type=time][readonly="readonly"],
 input[type=date]:disabled,
 input[type=date][readonly="readonly"],
+input[type=datetime]:disabled,
+input[type=datetime][readonly="readonly"],
 input[type=datetime-local]:disabled,
 input[type=datetime-local][readonly="readonly"],
 input[type=tel]:disabled,
@@ -8743,7 +8830,8 @@ textarea.materialize-textarea[readonly="readonly"] {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.26);
 }
 
-input:not([type]):disabled + label, input:not([type])[readonly="readonly"] + label,
+input:not([type]):disabled + label,
+input:not([type])[readonly="readonly"] + label,
 input[type=text]:disabled + label,
 input[type=text][readonly="readonly"] + label,
 input[type=password]:disabled + label,
@@ -8756,6 +8844,8 @@ input[type=time]:disabled + label,
 input[type=time][readonly="readonly"] + label,
 input[type=date]:disabled + label,
 input[type=date][readonly="readonly"] + label,
+input[type=datetime]:disabled + label,
+input[type=datetime][readonly="readonly"] + label,
 input[type=datetime-local]:disabled + label,
 input[type=datetime-local][readonly="readonly"] + label,
 input[type=tel]:disabled + label,
@@ -8776,6 +8866,7 @@ input[type=email]:focus:not([readonly]),
 input[type=url]:focus:not([readonly]),
 input[type=time]:focus:not([readonly]),
 input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
 input[type=datetime-local]:focus:not([readonly]),
 input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
@@ -8792,6 +8883,7 @@ input[type=email]:focus:not([readonly]) + label,
 input[type=url]:focus:not([readonly]) + label,
 input[type=time]:focus:not([readonly]) + label,
 input[type=date]:focus:not([readonly]) + label,
+input[type=datetime]:focus:not([readonly]) + label,
 input[type=datetime-local]:focus:not([readonly]) + label,
 input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
@@ -8813,6 +8905,8 @@ input[type=time].valid,
 input[type=time]:focus.valid,
 input[type=date].valid,
 input[type=date]:focus.valid,
+input[type=datetime].valid,
+input[type=datetime]:focus.valid,
 input[type=datetime-local].valid,
 input[type=datetime-local]:focus.valid,
 input[type=tel].valid,
@@ -8841,6 +8935,8 @@ input[type=time].valid + label:after,
 input[type=time]:focus.valid + label:after,
 input[type=date].valid + label:after,
 input[type=date]:focus.valid + label:after,
+input[type=datetime].valid + label:after,
+input[type=datetime]:focus.valid + label:after,
 input[type=datetime-local].valid + label:after,
 input[type=datetime-local]:focus.valid + label:after,
 input[type=tel].valid + label:after,
@@ -8869,6 +8965,8 @@ input[type=time].invalid,
 input[type=time]:focus.invalid,
 input[type=date].invalid,
 input[type=date]:focus.invalid,
+input[type=datetime].invalid,
+input[type=datetime]:focus.invalid,
 input[type=datetime-local].invalid,
 input[type=datetime-local]:focus.invalid,
 input[type=tel].invalid,
@@ -8897,6 +8995,8 @@ input[type=time].invalid + label:after,
 input[type=time]:focus.invalid + label:after,
 input[type=date].invalid + label:after,
 input[type=date]:focus.invalid + label:after,
+input[type=datetime].invalid + label:after,
+input[type=datetime]:focus.invalid + label:after,
 input[type=datetime-local].invalid + label:after,
 input[type=datetime-local]:focus.invalid + label:after,
 input[type=tel].invalid + label:after,
@@ -8919,6 +9019,7 @@ input[type=email].validate + label,
 input[type=url].validate + label,
 input[type=time].validate + label,
 input[type=date].validate + label,
+input[type=datetime].validate + label,
 input[type=datetime-local].validate + label,
 input[type=tel].validate + label,
 input[type=number].validate + label,
@@ -8935,6 +9036,7 @@ input[type=email] + label:after,
 input[type=url] + label:after,
 input[type=time] + label:after,
 input[type=date] + label:after,
+input[type=datetime] + label:after,
 input[type=datetime-local] + label:after,
 input[type=tel] + label:after,
 input[type=number] + label:after,
@@ -9009,6 +9111,7 @@ textarea.materialize-textarea + label:after {
   }
 }
 
+/* Search Field */
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
@@ -9044,6 +9147,7 @@ textarea.materialize-textarea + label:after {
   transition: .3s color;
 }
 
+/* Textarea */
 textarea {
   width: 100%;
   height: 3rem;
@@ -9069,10 +9173,8 @@ textarea.materialize-textarea {
   /* prevents text jump on Enter keypress */
 }
 
-/***************
-  Radio Buttons
-***************/
-/* Remove default Radio Buttons */
+/* Radio Buttons
+   ========================================================================== */
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
@@ -9111,14 +9213,21 @@ textarea.materialize-textarea {
 }
 
 /* Unchecked styles */
-[type="radio"]:not(:checked) + label:before {
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after,
+[type="radio"]:checked + label:before,
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
   border-radius: 50%;
+}
+
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after {
   border: 2px solid #5a5a5a;
 }
 
 [type="radio"]:not(:checked) + label:after {
-  border-radius: 50%;
-  border: 2px solid #5a5a5a;
   z-index: -1;
   -webkit-transform: scale(0);
           transform: scale(0);
@@ -9126,37 +9235,35 @@ textarea.materialize-textarea {
 
 /* Checked styles */
 [type="radio"]:checked + label:before {
-  border-radius: 50%;
   border: 2px solid transparent;
 }
 
-[type="radio"]:checked + label:after {
-  border-radius: 50%;
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
   border: 2px solid #26a69a;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:after {
   background-color: #26a69a;
   z-index: 0;
+}
+
+[type="radio"]:checked + label:after {
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
 
 /* Radio With gap */
-[type="radio"].with-gap:checked + label:before {
-  border-radius: 50%;
-  border: 2px solid #26a69a;
-}
-
 [type="radio"].with-gap:checked + label:after {
-  border-radius: 50%;
-  border: 2px solid #26a69a;
-  background-color: #26a69a;
-  z-index: 0;
   -webkit-transform: scale(0.5);
           transform: scale(0.5);
 }
 
 /* Focused styles */
 [type="radio"].tabbed:focus + label:before {
-  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Disabled Radio With gap */
@@ -9189,9 +9296,8 @@ textarea.materialize-textarea {
   border-color: #BDBDBD;
 }
 
-/***************
-   Checkboxes
-***************/
+/* Checkboxes
+   ========================================================================== */
 /* CUSTOM CSS CHECKBOXES */
 form p {
   margin-bottom: 10px;
@@ -9263,7 +9369,7 @@ form p:last-child {
           transform: scale(1);
   border: 0;
   border-radius: 50%;
-  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -9402,9 +9508,8 @@ form p:last-child {
   border-color: #BDBDBD;
 }
 
-/***************
-     Switch
-***************/
+/* Switch
+   ========================================================================== */
 .switch,
 .switch * {
   -webkit-user-select: none;
@@ -9429,6 +9534,7 @@ form p:last-child {
 
 .switch label input[type=checkbox]:checked + .lever:after {
   background-color: #26a69a;
+  left: 24px;
 }
 
 .switch label .lever {
@@ -9467,10 +9573,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.08);
 }
 
-.switch label input[type=checkbox]:checked + .lever:after {
-  left: 24px;
-}
-
 .switch input[type=checkbox][disabled] + .lever {
   cursor: default;
 }
@@ -9480,9 +9582,25 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   background-color: #BDBDBD;
 }
 
-/***************
-  Select Field
-***************/
+/* Select Field
+   ========================================================================== */
+select {
+  display: none;
+}
+
+select.browser-default {
+  display: block;
+}
+
+select {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+}
+
 .select-label {
   position: absolute;
 }
@@ -9523,14 +9641,6 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   position: absolute;
   top: -14px;
   font-size: 0.8rem;
-}
-
-select {
-  display: none;
-}
-
-select.browser-default {
-  display: block;
 }
 
 select:disabled {
@@ -9583,9 +9693,8 @@ select:disabled {
   padding-left: 1rem;
 }
 
-/*********************
-      File Input
-**********************/
+/* File Input
+   ========================================================================== */
 .file-field {
   position: relative;
 }
@@ -9624,14 +9733,14 @@ select:disabled {
   filter: alpha(opacity=0);
 }
 
-/***************
-      Range
-***************/
+/* Range
+   ========================================================================== */
 .range-field {
   position: relative;
 }
 
-input[type=range], input[type=range] + .thumb {
+input[type=range],
+input[type=range] + .thumb {
   cursor: pointer;
 }
 
@@ -9641,8 +9750,12 @@ input[type=range] {
   border: none;
   outline: none;
   width: 100%;
-  margin: 15px 0px;
+  margin: 15px 0;
   padding: 0;
+}
+
+input[type=range]:focus {
+  outline: none;
 }
 
 input[type=range] + .thumb {
@@ -9679,10 +9792,6 @@ input[type=range] + .thumb.active .value {
   margin-left: -1px;
   margin-top: 8px;
   font-size: 10px;
-}
-
-input[type=range]:focus {
-  outline: none;
 }
 
 input[type=range] {
@@ -9733,9 +9842,8 @@ input[type=range]::-moz-range-thumb {
   margin-top: -5px;
 }
 
-/*hide the outline behind the border*/
 input[type=range]:-moz-focusring {
-  outline: 1px solid white;
+  outline: 1px solid #fff;
   outline-offset: -1px;
 }
 
@@ -9745,9 +9853,7 @@ input[type=range]:focus::-moz-range-track {
 
 input[type=range]::-ms-track {
   height: 3px;
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
-  /*leave room for the larger thumb to overflow with a transparent border */
   border-color: transparent;
   border-width: 6px 0;
   /*remove default tick marks*/
@@ -9776,18 +9882,6 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
   background: #ccc;
-}
-
-/***************************
-   Text Inputs + Textarea
-****************************/
-select {
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #f2f2f2;
-  border-radius: 2px;
-  height: 3rem;
 }
 
 /***************
