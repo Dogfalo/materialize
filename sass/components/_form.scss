@@ -103,6 +103,7 @@ textarea.materialize-textarea {
     content: attr(data-success);
     color: $input-success-color;
     opacity: 1;
+    white-space: nowrap;
   }
 
   // Invalid Input Style
@@ -118,6 +119,7 @@ textarea.materialize-textarea {
     content: attr(data-error);
     color: $input-error-color;
     opacity: 1;
+    white-space: nowrap;
   }
 
   // Full width label when using validate for error messages
