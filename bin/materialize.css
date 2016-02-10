@@ -9469,7 +9469,7 @@ form p:last-child {
 }
 
 [type="checkbox"].filled-in:checked + label:after {
-  top: 0px;
+  top: 0;
   width: 20px;
   height: 20px;
   border: 2px solid #26a69a;
