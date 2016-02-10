@@ -163,6 +163,17 @@ $radio-fill-color: $secondary-color !default;
 $radio-empty-color: #5a5a5a !default;
 $radio-border: 2px solid $radio-fill-color !default;
 
+// Checkboxes
+// * Shared styles
+$checkbox-fill-color: $secondary-color !default;
+$checkbox-tabbedfocus-radius: 50% !default;
+$checkbox-border: 2px solid $checkbox-fill-color !default;
+
+// * Not filled in
+$checkbox-notfilledin-size: 18px !default;
+$checkbox-notfilledin-border: 2px solid $radio-empty-color !default;
+$checkbox-notfilledin-radius: 1px !default;
+
 // Range
 $range-height: 14px !default;
 $range-width: 14px !default;
