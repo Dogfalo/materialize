@@ -385,6 +385,8 @@
             $select.find('option').eq(i).prop('selected', selected);
             // Trigger onchange() event
             $select.trigger('change');
+            // Trigger close() event to .select-dropdown
+            $select.siblings('input.select-dropdown').trigger('close');
             if (typeof callback !== 'undefined') callback();
           }
 
