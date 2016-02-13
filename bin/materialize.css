@@ -9569,11 +9569,13 @@ form p:last-child {
   transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
 }
 
-input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
+input[type=checkbox]:checked:not(:disabled) ~ .lever:active::after,
+input[type=checkbox]:checked:not(:disabled).tabbed:focus ~ .lever::after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(38, 166, 154, 0.1);
 }
 
-input[type=checkbox]:not(:disabled) ~ .lever:active:after {
+input[type=checkbox]:not(:disabled) ~ .lever:active:after,
+input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.08);
 }
 
@@ -10921,7 +10923,7 @@ input[type=range]:focus::-ms-fill-upper {
 .picker__select--year.browser-default {
   display: inline;
   background-color: #FFFFFF;
-  width: 25%;
+  width: 26%;
 }
 
 .picker__select--month:focus,
