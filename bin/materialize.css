@@ -2644,6 +2644,10 @@ ul {
   list-style-type: none;
 }
 
+ul.browser-default {
+  list-style-type: initial;
+}
+
 a {
   color: #039be5;
   text-decoration: none;
