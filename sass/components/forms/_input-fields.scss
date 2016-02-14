@@ -107,7 +107,7 @@ textarea.materialize-textarea {
   // Full width label when using validate for error messages
   &.validate + label {
     width: 100%;
-    z-index: -1;
+    pointer-events: none;
   }
 
   // Form Message Shared Styles
