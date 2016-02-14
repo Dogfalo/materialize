@@ -137,15 +137,15 @@ form p:last-child {
   // Unchecked style
   &:not(:checked) + label:before {
     width: 0;
-     height: 0;
-     border: 3px solid transparent;
-     left: 6px;
-     top: 10px;
+    height: 0;
+    border: 3px solid transparent;
+    left: 6px;
+    top: 10px;
 
-     -webkit-transform: rotateZ(37deg);
-             transform: rotateZ(37deg);
-     -webkit-transform-origin: 20% 40%;
-             transform-origin: 100% 100%;
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 20% 40%;
+    transform-origin: 100% 100%;
   }
 
   &:not(:checked) + label:after {
