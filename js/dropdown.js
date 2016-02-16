@@ -16,7 +16,7 @@
       gutter: 0, // Spacing from edge
       belowOrigin: false,
       alignment: 'left',
-      stopPropagation: true
+      stopPropagation: false
     };
 
     this.each(function(){
@@ -197,7 +197,7 @@
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
-        if (!isFocused) {
+          if (!isFocused) {
           if ( origin[0] == e.currentTarget &&
                !origin.hasClass('active') &&
                ($(e.target).closest('.dropdown-content').length === 0)) {
