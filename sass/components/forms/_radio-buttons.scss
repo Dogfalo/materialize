@@ -74,7 +74,7 @@
   z-index: 0;
 }
 
-[type="radio"]:checked + label:after, {
+[type="radio"]:checked + label:after {
   transform: scale(1.02);
 }
 
