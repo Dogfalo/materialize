@@ -133,13 +133,18 @@ a.button-collapse.top-nav {
   float: none;
   margin-left: 1.5rem;
   color: #fff;
-  font-size: 32px;
+  font-size: 36px;
   z-index: 2;
 
   &.full {
     line-height: 122px;
   }
+
+  i {
+    font-size: 32px;
+  }
 }
+
 @media #{$small-and-down} {
   a.button-collapse.top-nav {
     left: 5%;
@@ -267,11 +272,6 @@ a.button-collapse.top-nav {
 
 .promo{
   width: 100%;
-  @media #{$medium-and-down} {
-    width: 60%;
-    margin: 0 auto;
-    display: block;
-  }
 
   i {
     margin: 40px 0;
