@@ -38,7 +38,8 @@ Materialize.elementOrParentIsFixed = function(element) {
 var Vel;
 if ($) {
   Vel = $.Velocity;
-}
-else {
+} else if (jQuery) {
+  Vel = jQuery.Velocity;
+} else {
   Vel = Velocity;
 }

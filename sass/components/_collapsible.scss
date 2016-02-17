@@ -29,7 +29,7 @@
 .collapsible-body {
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
-  @include box-sizing(border-box);
+  box-sizing: border-box;
 
   p {
     margin: 0;
@@ -38,7 +38,8 @@
 }
 
 // sideNav collapsible styling
-.side-nav {
+.side-nav,
+.side-nav.fixed {
 
   .collapsible {
     border: none;
@@ -52,8 +53,9 @@
     border: none;
     line-height: inherit;
     height: inherit;
-    margin: 0 1rem;
+    padding: 0 $sidenav-padding-right;
 
+    &:hover { background-color: rgba(0,0,0,.05); }
     i { line-height: inherit; }
   }
 
@@ -61,7 +63,10 @@
     border: 0;
     background-color: $collapsible-header-color;
 
-    li a { margin: 0 1rem 0 2rem; }
+    li a {
+      padding: 0 (7.5px + $sidenav-padding-right)
+               0 (15px + $sidenav-padding-right);
+    }
   }
 
 }

@@ -176,7 +176,7 @@
 			elements.push($(element));
 			$(element).data("scrollSpy:id", i);
 			// Smooth scroll to section
-		  $('a[href=#' + $(element).attr('id') + ']').click(function(e) {
+		  $('a[href="#' + $(element).attr('id') + '"]').click(function(e) {
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
 
@@ -218,7 +218,7 @@
 			var $this = $(this);
 
 			if (visible[0]) {
-				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
+				$('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
 				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
 					visible.unshift($(this));
 				}
@@ -231,7 +231,7 @@
 			}
 
 
-			$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
+			$('a[href="#' + visible[0].attr('id') + '"]').addClass('active');
 		});
 		selector.on('scrollSpy:exit', function() {
 			visible = $.grep(visible, function(value) {
@@ -239,13 +239,13 @@
 	    });
 
 			if (visible[0]) {
-				$('a[href=#' + visible[0].attr('id') + ']').removeClass('active');
+				$('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
 	      if (visible[0]) { // Check if empty
-					$('a[href=#' + visible[0].attr('id') + ']').addClass('active');
+					$('a[href="#' + visible[0].attr('id') + '"]').addClass('active');
 	      }
 			}
 		});

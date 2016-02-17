@@ -29,11 +29,10 @@
 
   $.fn.extend({
     openFAB: function() {
-      var $this = $(this);
-      openFABMenu($this);
+      openFABMenu($(this));
     },
     closeFAB: function() {
-      closeFABMenu($this);
+      closeFABMenu($(this));
     }
   });
 

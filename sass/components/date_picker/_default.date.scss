@@ -46,7 +46,7 @@
 .picker__select--year.browser-default {
   display: inline;
   background-color: #FFFFFF;
-  width: 25%;
+  width: 26%;
 }
 .picker__select--month:focus,
 .picker__select--year:focus {
@@ -209,7 +209,7 @@
 
 //  Circle background
    border-radius: 50%;
-  @include transform(scale(.75));
+  transform: scale(.75);
   background: #0089ec;
   color: #ffffff;
 }
@@ -394,7 +394,7 @@
 .picker--focused .picker__day--selected {
   // Circle background
   border-radius: 50%;
-  @include transform(scale(.9));
+  transform: scale(.9);
   background-color: $datepicker-selected;
   &.picker__day--outfocus {
     background-color: $datepicker-selected-outfocus;

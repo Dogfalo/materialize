@@ -8,14 +8,18 @@ nav {
 
   a { color: $navbar-font-color; }
 
+  i,
+  [class^="mdi-"], [class*="mdi-"],
+  i.material-icons {
+    display: block;
+    font-size: 2rem;
+    height: $navbar-height-mobile;
+    line-height: $navbar-height-mobile;
+  }
+
   .nav-wrapper {
     position: relative;
     height: 100%;
-
-    i {
-      display: block;
-      font-size: 2rem;
-    }
   }
 
   @media #{$large-and-up} {
@@ -49,16 +53,16 @@ nav {
 
     &.center {
       left: 50%;
-      @include transform(translateX(-50%));
+      transform: translateX(-50%);
     }
 
     @media #{$medium-and-down} {
       left: 50%;
-      @include transform(translateX(-50%));
+      transform: translateX(-50%);
 
       &.left, &.right {
         padding: 0;
-        @include transform(none);
+        transform: none;
       }
 
       &.left { left: 0.5rem; }
@@ -80,19 +84,31 @@ nav {
     margin: 0;
 
     li {
-      @include transition(background-color .3s);
+      transition: background-color .3s;
       float: left;
       padding: 0;
 
-      &:hover, &.active {
+      &.active {
         background-color: rgba(0,0,0,.1);
       }
     }
     a {
+      transition: background-color .3s;
       font-size: 1rem;
       color: $navbar-font-color;
-      display: block;
+      display: inline-block;
       padding: 0 15px;
+      cursor: pointer;
+
+      &.btn, &.btn-large, &.btn-flat, &.btn-floating {
+        margin-top: -2px;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+      &:hover {
+        background-color: rgba(0,0,0,.1);
+      }
     }
 
     &.left {
@@ -122,11 +138,11 @@ nav {
 
       i {
         color: rgba(255,255,255,.7);
-        @include transition(color .3s);
+        transition: color .3s;
       }
       &.active i { color: $navbar-font-color; }
       &.active {
-        @include transform(translateY(0));
+        transform: translateY(0);
       }
     }
 
