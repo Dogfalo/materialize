@@ -18,7 +18,11 @@ main {
 }
 
 ul {
-	list-style-type: none;
+  &.browser-default {
+    list-style-type: initial;
+  }
+
+  list-style-type: none;
 }
 
 a {
