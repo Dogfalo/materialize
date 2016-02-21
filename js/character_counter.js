@@ -2,18 +2,23 @@
 
   $.fn.characterCounter = function(){
     return this.each(function(){
+      var $input = $(this);
+      var $counterElement = $input.parent().find('span[class="character-counter"]');
 
-      var itHasLengthAttribute = $(this).attr('length') !== undefined;
-
-      if(itHasLengthAttribute){
-        $(this).on('input', updateCounter);
-        $(this).on('focus', updateCounter);
-        $(this).on('blur', removeCounterElement);
-
-        addCounterElement($(this));
+      // character counter has already been added appended to the parent container
+      if ($counterElement.length) {
+        return;
       }
 
-    });
+      var itHasLengthAttribute = $input.attr('length') !== undefined;
+
+      if(itHasLengthAttribute){
+        $input.on('input', updateCounter);
+        $input.on('focus', updateCounter);
+        $input.on('blur', removeCounterElement);
+
+        addCounterElement($input);
+      }
   };
 
   function updateCounter(){
@@ -27,8 +32,14 @@
     addInputStyle(isValidLength, $(this));
   }
 
-  function addCounterElement($input){
-    var $counterElement = $('<span/>')
+  function addCounterElement($input) {
+    var $counterElement = $input.parent().find('span[class="character-counter"]');
+
+    if ($counterElement.length) {
+      return;
+    }
+
+    $counterElement = $('<span/>')
                         .addClass('character-counter')
                         .css('float','right')
                         .css('font-size','12px')
