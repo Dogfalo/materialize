@@ -31,8 +31,10 @@
       if ($index < 0) {
         $index = 0;
       }
-
-      $content = $($active[0].hash);
+      
+      if ($active[0] !== undefined) {
+        $content = $($active[0].hash);
+      }
 
       // append indicator then set indicator width to tab width
       $this.append('<div class="indicator"></div>');
@@ -71,7 +73,9 @@
 
         // Make the old tab inactive.
         $active.removeClass('active');
-        $content.hide();
+        if ($content !== undefined) {
+          $content.hide();
+        }
 
         // Update the variables with the new link and content
         $active = $(this);
