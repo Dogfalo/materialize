@@ -1,0 +1,119 @@
+/* Radio Buttons
+   ========================================================================== */
+
+// Remove default Radio Buttons
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+[type="radio"]:not(:checked) + label,
+[type="radio"]:checked + label {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  font-size: 1rem;
+  transition: .28s ease;
+
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  user-select: none;
+}
+
+[type="radio"] + label:before,
+[type="radio"] + label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 4px;
+  width: 16px;
+  height: 16px;
+  z-index: 0;
+  transition: .28s ease;
+}
+
+/* Unchecked styles */
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after,
+[type="radio"]:checked + label:before,
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
+  border-radius: 50%;
+}
+
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after {
+  border: 2px solid $radio-empty-color;
+}
+
+[type="radio"]:not(:checked) + label:after {
+  z-index: -1;
+  transform: scale(0);
+}
+
+/* Checked styles */
+[type="radio"]:checked + label:before {
+  border: 2px solid transparent;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
+  border: $radio-border;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:after {
+  background-color: $radio-fill-color;
+  z-index: 0;
+}
+
+[type="radio"]:checked + label:after {
+  transform: scale(1.02);
+}
+
+/* Radio With gap */
+[type="radio"].with-gap:checked + label:after {
+  transform: scale(.5);
+}
+
+/* Focused styles */
+[type="radio"].tabbed:focus + label:before {
+  box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+}
+
+/* Disabled Radio With gap */
+[type="radio"].with-gap:disabled:checked + label:before {
+  border: 2px solid $input-disabled-color;
+}
+
+[type="radio"].with-gap:disabled:checked + label:after {
+  border: none;
+  background-color: $input-disabled-color;
+}
+
+/* Disabled style */
+[type="radio"]:disabled:not(:checked) + label:before,
+[type="radio"]:disabled:checked + label:before {
+  background-color: transparent;
+  border-color: $input-disabled-color;
+}
+
+[type="radio"]:disabled + label {
+  color: $input-disabled-color;
+}
+
+[type="radio"]:disabled:not(:checked) + label:before {
+  border-color: $input-disabled-color;
+}
+
+[type="radio"]:disabled:checked + label:after {
+  background-color: $input-disabled-color;
+  border-color: $input-disabled-solid-color;
+}
