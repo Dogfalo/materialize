@@ -1,0 +1,90 @@
+@function blackOrWhiteText($color) {
+  $result: #000;
+  @if lightness($color) < 60% {
+      $result: #fff;
+   }
+  @return $result;
+}
+
+//$primary-color: #424242;
+$primary-color: #bdbdbd;
+
+$primary-color-b1: lighten($primary-color, 20%);
+$primary-color-b2: lighten($primary-color, 40%);
+$primary-color-b3: lighten($primary-color, 60%);
+$primary-color-b4: lighten($primary-color, 80%);
+
+// $hilight-color: #03a9f4;
+$hilight-color: #ff5722;
+
+$hilight-color-text: #000;
+
+@if lightness($hilight-color) < 60% {
+   $hilight-color-text: #fff;
+}
+
+.primary-color{
+   background-color: $primary-color !important;
+}
+
+.hilight-color{
+   background-color: $hilight-color !important;
+}
+
+.hilight-color-text{
+   color: $hilight-color !important;
+}
+
+.list-card > * .collection > .collection-item.active{
+   background-color: $hilight-color !important;
+   color: $hilight-color-text;
+   transition: all 0.5s ease;
+}
+
+.list-card > * .collection > .collection-item:hover:not(.active){
+   background-color: mix($primary-color, $primary-color-b1, 50%) !important;
+   color: #ffffff;
+   transition: all 0.5s ease;
+}
+
+.list-card > * .collection > .collection-item{
+   background-color: $primary-color-b1 !important;
+   background: linear-gradient(to right, rgba($primary-color-b1, 0) 85%, rgba($primary-color-b3, 0.5) 99%);
+   border-color: $primary-color !important;
+   $tc: blackOrWhiteText($primary-color-b1);
+   color: rgba($tc, .65);
+   transition: all 0.5s ease;
+}
+
+.list-card > * .collection{
+   border-color: $primary-color !important;
+   margin: 0;
+}
+
+.list-card > div > .collection{
+   float: left;
+   width: 100%;
+}
+
+.list-card{
+   overflow-x: hidden;
+}
+
+.list-header > span{
+   $tc: blackOrWhiteText($hilight-color);
+   color: rgba($tc, .5) !important;
+   overflow: hidden;
+   padding: 1em 0.2em;
+}
+
+.list-header > span:last-child{
+   $tc: blackOrWhiteText($hilight-color);
+   color: rgba($tc, .85) !important;
+   overflow: hidden;
+   font-weight: 800;
+}
+
+.list-header {
+   font-size: 1.125em;
+   padding: 1em 1.25em !important;
+}

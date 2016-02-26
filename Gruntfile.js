@@ -158,6 +158,7 @@ module.exports = function(grunt) {
           "js/date_picker/picker.date.js",
           "js/character_counter.js",
           "js/carousel.js",
+          "js/datalist.js",
         ],
         // the location of the resulting JS file
         dest: 'dist/js/materialize.js'
@@ -195,6 +196,7 @@ module.exports = function(grunt) {
           "js/date_picker/picker.date.js",
           "js/character_counter.js",
           "js/carousel.js",
+          "js/datalist.js",
         ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
@@ -281,6 +283,7 @@ module.exports = function(grunt) {
             "date_picker/picker.date.js",
             "character_counter.js",
             "carousel.js",
+            "datalist.js",
           ], dest: 'materialize-src/js/'},
           {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
           {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
