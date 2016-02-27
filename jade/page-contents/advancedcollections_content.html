@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m9 l10">
+
+      <!--  Collections Section  -->
+      <div id="basic" class="section scrollspy">
+
+        <div class="row">
+          <div class="col s12">
+            <p class="caption">Collections allow you to group list objects together.</p>
+            <h2 class="header">Basic</h2>
+            <div id="list1"></div>
+            <h2 class="header">Multi List</h2>
+            <div id="list2"></div>
+            <script>
+            $(document).ready(function(){
+              var list1 = new DataList("t", [{
+                 t: "Sam"
+              }, {
+                 t: "Allissa"
+              }, {
+                 t: "Deb"
+              }, {
+                 t: "Mike"
+              }, {
+                 t: "Eli"
+              }]).setName("list1");
+
+              $("#list1").replaceWith(list1.renderToHTML());
+
+              // multi list
+
+              var data = [{
+                 text: "Mobile Bay",
+                 value: 1
+              }, {
+                 text: "Pensacola",
+                 value: 2
+              }, {
+                 text: "FT Walton",
+                 value: 3
+              }, {
+                 text: "Gulf Port",
+                 value: 4
+              }];
+
+              var districtList = new DataList("t", [{
+                 t: "SAM"
+              }, {
+                 t: "NWP"
+              }, {
+                 t: "UND"
+              }]).setName("District");
+              var projectList = new DataList("text", "value", data).setName("Project Area");
+
+              var MyMultiList = new MultiList([districtList, projectList]);
+
+              $("#list2").append(MyMultiList.renderToHTML());
+            });
+            </script>
+            <pre><code class="language-markup">
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col s12&quot;&gt;
+    &lt;div id=&quot;list1&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+            <pre><code class=" language-javascript">
+$(document).ready(function(){
+    var list1 = new DataList("t",
+              [{t: "Sam"},{t: "Allissa"}, {t: "Deb"}, {t: "Mike"}, {t: "Eli"}]
+              ).setName("list1");
+
+    $("#list1").replaceWith(list1.renderToHTML());
+});
+            </code></pre>
+            <br>
+          </div>
+        </div>
+      </div>
+      <!-- End collections -->
+
+
+    </div>
+
+    <div class="col hide-on-small-only m3 l2">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#basic">Basic</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#headers">Headers</a></li>
+            <li><a href="#secondary">Secondary Content</a></li>
+            <li><a href="#circle">Avatar Content</a></li>
+            <li><a href="#dismiss">Dismissable Content</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

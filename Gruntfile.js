@@ -361,6 +361,7 @@ module.exports = function(grunt) {
           "cards.html": "jade/cards.jade",
           "preloader.html": "jade/preloader.jade",
           "collections.html": "jade/collections.jade",
+          "advancedcollections.html": "jade/advancedcollections.jade",
           "badges.html": "jade/badges.jade",
           "footer.html": "jade/footer.jade",
           "dialogs.html": "jade/dialogs.jade",

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Chips - Materialize</title>
+    <title>Advanced Collections - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -31,10 +31,38 @@
     <script src="//cdn.transifex.com/live.js"></script>
   </head>
   <body>
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
+    </script>
+    <script src="js/jquery.timeago.min.js"></script>
+    <script src="js/prism.js"></script>
+    <script src="jade/lunr.min.js"></script>
+    <script src="jade/search.js"></script>
+    <script src="bin/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <!-- Twitter Button -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <!-- Google Plus Button-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!--  Google Analytics  -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56218128-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+    </script>
+
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Chips</a></div>
+          <div class="nav-wrapper"><a class="page-title">Advanced Collections</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
@@ -65,14 +93,14 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">Components</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
-                  <li class="active"><a href="chips.html">Chips</a></li>
+                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
@@ -83,11 +111,11 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">JavaScript</a>
+            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="collapsible.html">Collapsible</a></li>
-                  <li><a href="advancedcollections.html">Advanced Collections</a></li>
+                  <li class="active"><a href="advancedcollections.html">Advanced Collections</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
                   <li><a href="media.html">Media</a></li>
@@ -114,51 +142,86 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="introduction" class="section scrollspy">
-        <h4>Introduction</h4>
-        <p class="caption">
-          Chips can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.
-        </p>
-        <div class="chip">
-          <img src="images/yuna.jpg" alt="Contact Person">
-          Jane Doe
-        </div>
-        <div class="chip">
-          Tag
-          <i class="material-icons">close</i>
-        </div>
-      </div>
+      <!--  Collections Section  -->
+      <div id="basic" class="section scrollspy">
 
-      <div id="contact" class="section scrollspy">
-        <h4>Contacts</h4>
-         <p class="caption">
-          To create a contact chip just add an img inside.
-        </p>
-        <pre><code class="language-markup">
-  &lt;div class="chip">
-    &lt;img src="images/yuna.jpg" alt="Contact Person">
-    Jane Doe
-  &lt;/div>
-        </code></pre>
-      </div>
+        <div class="row">
+          <div class="col s12">
+            <p class="caption">Collections allow you to group list objects together.</p>
+            <h2 class="header">Basic</h2>
+            <div id="list1"></div>
+            <h2 class="header">Multi List</h2>
+            <div id="list2"></div>
+            <script>
+            $(document).ready(function(){
+              var list1 = new DataList("t", [{
+                 t: "Sam"
+              }, {
+                 t: "Allissa"
+              }, {
+                 t: "Deb"
+              }, {
+                 t: "Mike"
+              }, {
+                 t: "Eli"
+              }]).setName("list1");
 
-      <div id="tag" class="section scrollspy">
-        <h4>Tags</h4>
-         <p class="caption">
-          To create a tag chip just add an close icon inside.
-        </p>
-        <pre><code class="language-markup">
-  &lt;div class="chip">
-    Tag
-    &lt;i class="material-icons">close&lt;/i>
-  &lt;/div>
-        </code></pre>
+              $("#list1").replaceWith(list1.renderToHTML());
+
+              // multi list
+
+              var data = [{
+                 text: "Mobile Bay",
+                 value: 1
+              }, {
+                 text: "Pensacola",
+                 value: 2
+              }, {
+                 text: "FT Walton",
+                 value: 3
+              }, {
+                 text: "Gulf Port",
+                 value: 4
+              }];
+
+              var districtList = new DataList("t", [{
+                 t: "SAM"
+              }, {
+                 t: "NWP"
+              }, {
+                 t: "UND"
+              }]).setName("District");
+              var projectList = new DataList("text", "value", data).setName("Project Area");
+
+              var MyMultiList = new MultiList([districtList, projectList]);
+
+              $("#list2").append(MyMultiList.renderToHTML());
+            });
+            </script>
+            <pre><code class="language-markup">
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col s12&quot;&gt;
+    &lt;div id=&quot;list1&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+            <pre><code class=" language-javascript">
+$(document).ready(function(){
+    var list1 = new DataList("t",
+              [{t: "Sam"},{t: "Allissa"}, {t: "Deb"}, {t: "Mike"}, {t: "Eli"}]
+              ).setName("list1");
+
+    $("#list1").replaceWith(list1.renderToHTML());
+});
+            </code></pre>
+            <br>
+          </div>
+        </div>
       </div>
+      <!-- End collections -->
+
 
     </div>
 
-
-    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
@@ -167,8 +230,12 @@
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#contact">Contacts</a></li>
-            <li><a href="#tag">Tags</a></li>
+            <li><a href="#basic">Basic</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#headers">Headers</a></li>
+            <li><a href="#secondary">Secondary Content</a></li>
+            <li><a href="#circle">Avatar Content</a></li>
+            <li><a href="#dismiss">Dismissable Content</a></li>
           </ul>
         </div>
       </div>
@@ -215,34 +282,6 @@
         </div>
       </div>
     </footer>
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
-    </script>
-    <script src="js/jquery.timeago.min.js"></script>
-    <script src="js/prism.js"></script>
-    <script src="jade/lunr.min.js"></script>
-    <script src="jade/search.js"></script>
-    <script src="bin/materialize.js"></script>
-    <script src="js/init.js"></script>
-    <!-- Twitter Button -->
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-    <!-- Google Plus Button-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-    <!--  Google Analytics  -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-56218128-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-    </script>
 
   </body>
 </html>

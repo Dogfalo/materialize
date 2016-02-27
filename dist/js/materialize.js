@@ -6979,7 +6979,7 @@ DataList.prototype.getSelectedText = function() {
    return this._element.find(".collection-item.active").text();
 }
 
-DataList.prototype.getElement  = MJS_DataList.prototype.renderToHTML;
+DataList.prototype.getElement  = DataList.prototype.renderToHTML;
 
 /////////////////////////////////////////////////////////////
 
@@ -7103,9 +7103,9 @@ MultiList.prototype._populateHeader = function(callback) {
    });
 }
 
-MultiList.prototype.getElement = MJS_MultiList.prototype.renderToHTML;
+MultiList.prototype.getElement = MultiList.prototype.renderToHTML;
 
-MJS_MultiList.prototype.getSelectionAsArray = function(){
+MultiList.prototype.getSelectionAsArray = function(){
     var list = this;
     var result = [];
 
