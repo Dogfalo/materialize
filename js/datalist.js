@@ -113,6 +113,8 @@ DataList.prototype.getSelectedText = function() {
    return this._element.find(".collection-item.active").text();
 }
 
+DataList.prototype.getElement  = MJS_DataList.prototype.renderToHTML;
+
 /////////////////////////////////////////////////////////////
 
 function MultiList(lists) {
@@ -234,3 +236,21 @@ MultiList.prototype._populateHeader = function(callback) {
       header.append(item);
    });
 }
+
+MultiList.prototype.getElement = MJS_MultiList.prototype.renderToHTML;
+
+MJS_MultiList.prototype.getSelectionAsArray = function(){
+    var list = this;
+    var result = [];
+
+    $.each(this.lists, function(i, o){
+        if(i>list.listIndex){
+            result.push({text: "", value: ""});
+        }
+        else {
+            result.push({text: o.getSelectedText(), value: o.selectedValue});
+        }
+    });
+
+    return result;
+} 
