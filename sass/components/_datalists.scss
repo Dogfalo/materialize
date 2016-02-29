@@ -6,16 +6,13 @@
   @return $result;
 }
 
-//$primary-color: #424242;
-$primary-color: #bdbdbd;
-
 $primary-color-b1: lighten($primary-color, 20%);
 $primary-color-b2: lighten($primary-color, 40%);
 $primary-color-b3: lighten($primary-color, 60%);
 $primary-color-b4: lighten($primary-color, 80%);
 
 // $hilight-color: #03a9f4;
-$hilight-color: #ff5722;
+$hilight-color: $secondary-color;
 
 $hilight-color-text: #000;
 
@@ -42,22 +39,23 @@ $hilight-color-text: #000;
 }
 
 .list-card > * .collection > .collection-item:hover:not(.active){
-   background-color: mix($primary-color, $primary-color-b1, 50%) !important;
-   color: #ffffff;
+   background-color: $collection-hover-bg-color !important;
+   $tc: blackOrWhiteText($collection-hover-bg-color);
+   color: rgba($tc, .65);
    transition: all 0.5s ease;
 }
 
 .list-card > * .collection > .collection-item{
-   background-color: $primary-color-b1 !important;
-   background: linear-gradient(to right, rgba($primary-color-b1, 0) 85%, rgba($primary-color-b3, 0.5) 99%);
-   border-color: $primary-color !important;
-   $tc: blackOrWhiteText($primary-color-b1);
+   background-color: $collection-bg-color !important;
+   background: linear-gradient(to right, rgba($collection-bg-color, 0) 85%, rgba($primary-color-b3, 0.5) 99%);
+   border-color: $collection-border-color !important;
+   $tc: blackOrWhiteText($collection-bg-color);
    color: rgba($tc, .65);
    transition: all 0.5s ease;
 }
 
 .list-card > * .collection{
-   border-color: $primary-color !important;
+   border-color: $collection-border-color !important;
    margin: 0;
 }
 

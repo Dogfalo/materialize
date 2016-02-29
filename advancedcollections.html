@@ -150,8 +150,6 @@
             <p class="caption">Collections allow you to group list objects together.</p>
             <h2 class="header">Basic</h2>
             <div id="list1"></div>
-            <h2 class="header">Multi List</h2>
-            <div id="list2"></div>
             <script>
             $(document).ready(function(){
               var list1 = new DataList("t", [{
@@ -171,26 +169,26 @@
               // multi list
 
               var data = [{
-                 text: "Mobile Bay",
+                 text: "Ford Mustang",
                  value: 1
               }, {
-                 text: "Pensacola",
+                 text: "Ford GT",
                  value: 2
               }, {
-                 text: "FT Walton",
+                 text: "McLaren P1",
                  value: 3
               }, {
-                 text: "Gulf Port",
+                 text: "Koenigsegg Regera",
                  value: 4
               }];
 
               var districtList = new DataList("t", [{
-                 t: "SAM"
+                 t: "Cars"
               }, {
-                 t: "NWP"
+                 t: "Boats"
               }, {
-                 t: "UND"
-              }]).setName("District");
+                 t: "Airplanes"
+              }]).setName("Vehicles");
               var projectList = new DataList("text", "value", data).setName("Project Area");
 
               var MyMultiList = new MultiList([districtList, projectList]);
@@ -201,7 +199,8 @@
             <pre><code class="language-markup">
 &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col s12&quot;&gt;
-    &lt;div id=&quot;list1&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;list1&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
             </code></pre>
             <pre><code class=" language-javascript">
@@ -213,6 +212,8 @@ $(document).ready(function(){
     $("#list1").replaceWith(list1.renderToHTML());
 });
             </code></pre>
+            <h2 class="header">Multi List</h2>
+            <div id="list2"></div>
             <br>
           </div>
         </div>

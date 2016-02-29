@@ -8171,39 +8171,39 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 }
 
 .primary-color {
-  background-color: #bdbdbd !important;
+  background-color: #ee6e73 !important;
 }
 
 .hilight-color {
-  background-color: #ff5722 !important;
+  background-color: #26a69a !important;
 }
 
 .hilight-color-text {
-  color: #ff5722 !important;
+  color: #26a69a !important;
 }
 
 .list-card > * .collection > .collection-item.active {
-  background-color: #ff5722 !important;
+  background-color: #26a69a !important;
   color: #fff;
   transition: all 0.5s ease;
 }
 
 .list-card > * .collection > .collection-item:hover:not(.active) {
-  background-color: #d7d7d7 !important;
-  color: #ffffff;
+  background-color: #ddd !important;
+  color: rgba(0, 0, 0, 0.65);
   transition: all 0.5s ease;
 }
 
 .list-card > * .collection > .collection-item {
-  background-color: #f0f0f0 !important;
-  background: linear-gradient(to right, rgba(240, 240, 240, 0) 85%, rgba(255, 255, 255, 0.5) 99%);
-  border-color: #bdbdbd !important;
+  background-color: #fff !important;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 85%, rgba(255, 255, 255, 0.5) 99%);
+  border-color: #e0e0e0 !important;
   color: rgba(0, 0, 0, 0.65);
   transition: all 0.5s ease;
 }
 
 .list-card > * .collection {
-  border-color: #bdbdbd !important;
+  border-color: #e0e0e0 !important;
   margin: 0;
 }
 

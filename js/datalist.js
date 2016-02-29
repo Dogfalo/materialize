@@ -152,7 +152,7 @@ MultiList.prototype.renderToHTML = function() {
 
    // If the list already has an element use it!
    if (!this._element) {
-      this._element = $("<div>").addClass("card list-card primary-color");
+      this._element = $("<div>").addClass("card list-card");
       this._element_header = $("<div>").addClass("card-content list-header hilight-color");
       this._element_lists = $("<div>");
       this._element_lists.width(list.lists.length + "00%");
