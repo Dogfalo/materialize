@@ -379,7 +379,7 @@ table {
     }
 
     > tr > td {
-      border-radius: 0px;
+      border-radius: 0;
     }
   }
 
@@ -393,7 +393,6 @@ table {
   &.centered {
     thead tr th, tbody tr td {
       text-align: center;
-
     }
   }
 
@@ -646,7 +645,6 @@ nav ul a span.badge {
     overflow: hidden;
   .determinate {
     position: absolute;
-    background-color: inherit;
     top: 0;
     left: 0;
     bottom: 0;
