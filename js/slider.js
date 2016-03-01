@@ -4,10 +4,10 @@
 
     init : function(options) {
       var defaults = {
-        indicators: true,
+        indicators: 'below', // options: 'below' | 'bottom' | 'right' | 'left' | 'top' | false
         height: 400,
         transition: 500,
-        interval: 6000
+        interval: 6000,
       };
       options = $.extend(defaults, options);
 
@@ -76,7 +76,7 @@
         // Set height of slider
         // If fullscreen, do nothing
         if (!$this.hasClass('fullscreen')) {
-          if (options.indicators) {
+          if (options.indicators === 'below') {
             // Add height if indicators are present
             $this.height(options.height + 40);
           }
@@ -128,7 +128,8 @@
             });
             $indicators.append($indicator);
           });
-          $this.append($indicators);
+          var $indicators_wrapper = $('<div class="indicators-wrapper position-'+options.indicators+'"></div').append($indicators);
+          $this.append($indicators_wrapper);
           $indicators = $this.find('ul.indicators').find('li.indicator-item');
         }
 

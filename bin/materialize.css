@@ -4756,7 +4756,6 @@ small {
 }
 
 .tabs .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -7360,16 +7359,17 @@ input[type=range]:focus::-ms-fill-upper {
   z-index: 2;
 }
 
-.slider .indicators {
+.slider .indicators-wrapper {
   position: absolute;
+  z-index: 2;
   text-align: center;
-  left: 0;
-  right: 0;
-  bottom: 0;
+}
+
+.slider .indicators-wrapper .indicators {
   margin: 0;
 }
 
-.slider .indicators .indicator-item {
+.slider .indicators-wrapper .indicators .indicator-item {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -7381,8 +7381,56 @@ input[type=range]:focus::-ms-fill-upper {
   border-radius: 50%;
 }
 
-.slider .indicators .indicator-item.active {
+.slider .indicators-wrapper .indicators .indicator-item.active {
   background-color: #4CAF50;
+}
+
+.slider .indicators-wrapper.position-below {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.slider .indicators-wrapper.position-bottom {
+  width: 100%;
+  left: 0;
+  bottom: 10px;
+}
+
+.slider .indicators-wrapper.position-top {
+  width: 100%;
+  left: 0;
+  top: 14px;
+}
+
+.slider .indicators-wrapper.position-right {
+  right: 0;
+  top: 50%;
+}
+
+.slider .indicators-wrapper.position-right .indicators {
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.slider .indicators-wrapper.position-right .indicators .indicator-item {
+  display: block;
+  margin: 12px 12px;
+}
+
+.slider .indicators-wrapper.position-left {
+  left: 0;
+  top: 50%;
+}
+
+.slider .indicators-wrapper.position-left .indicators {
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.slider .indicators-wrapper.position-left .indicators .indicator-item {
+  display: block;
+  margin: 12px 12px;
 }
 
 .carousel {
