@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: $grid-width;
   width: 90%;
 }
 @media #{$medium-and-up} {
