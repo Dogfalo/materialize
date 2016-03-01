@@ -103,7 +103,7 @@
 
         // dynamically add indicators
         if (options.indicators) {
-          $indicators = $('<ul class="indicators pos-"'+options.indicators+'></ul>');
+          $indicators = $('<ul class="indicators"></ul>');
           $slides.each(function( index ) {
             var $indicator = $('<li class="indicator-item"></li>');
 
@@ -128,7 +128,8 @@
             });
             $indicators.append($indicator);
           });
-          $this.append($indicators);
+          var $indicators_wrapper = $('<div class="indicators-wrapper position-'+options.indicators+'"></div').append($indicators);
+          $this.append($indicators_wrapper);
           $indicators = $this.find('ul.indicators').find('li.indicator-item');
         }
 
