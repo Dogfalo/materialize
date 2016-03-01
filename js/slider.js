@@ -4,10 +4,10 @@
 
     init : function(options) {
       var defaults = {
-        indicators: true,
+        indicators: 'below', // options: 'below' | 'bottom' | 'right' | 'left' | 'top' | false
         height: 400,
         transition: 500,
-        interval: 6000
+        interval: 6000,
       };
       options = $.extend(defaults, options);
 
@@ -76,7 +76,7 @@
         // Set height of slider
         // If fullscreen, do nothing
         if (!$this.hasClass('fullscreen')) {
-          if (options.indicators) {
+          if (options.indicators === 'below') {
             // Add height if indicators are present
             $this.height(options.height + 40);
           }
@@ -103,7 +103,7 @@
 
         // dynamically add indicators
         if (options.indicators) {
-          $indicators = $('<ul class="indicators"></ul>');
+          $indicators = $('<ul class="indicators pos-"'+options.indicators+'></ul>');
           $slides.each(function( index ) {
             var $indicator = $('<li class="indicator-item"></li>');
 
