@@ -5,7 +5,8 @@
 
       // Defaults
       var defaults = {
-        delay: 350
+        delay: 350,
+        timer: 0
       };
 
       // Remove tooltip from the activator
@@ -42,12 +43,15 @@
       //Destroy previously binded events
       origin.off('mouseenter.tooltip mouseleave.tooltip');
       // Mouse In
-      var started = false, timeoutRef;
+      var started = false, timeoutRef, timeoutTimer;
       origin.on({
         'mouseenter.tooltip': function(e) {
           var tooltip_delay = origin.attr('data-delay');
           tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ?
               options.delay : tooltip_delay;
+          var tooltip_timer = origin.attr('data-timer');
+          tooltip_timer = (tooltip_timer === undefined || tooltip_timer === '') ?
+              options.timer : tooltip_timer;
           timeoutRef = setTimeout(function(){
             started = true;
             newTooltip.velocity('stop');
@@ -148,6 +152,11 @@
               .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
               .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
 
+            if (tooltip_timer !== 0) {
+              timeoutTimer = setTimeout(function() {
+                  origin.trigger('mouseleave.tooltip');
+              }, tooltip_timer);
+            }
 
           }, tooltip_delay); // End Interval
 
@@ -157,6 +166,7 @@
           // Reset State
           started = false;
           clearTimeout(timeoutRef);
+          clearTimeout(timeoutTimer);
 
           // Animate back
           setTimeout(function() {
