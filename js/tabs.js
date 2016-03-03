@@ -31,7 +31,7 @@
       if ($index < 0) {
         $index = 0;
       }
-      
+
       if ($active[0] !== undefined) {
         $content = $($active[0].hash);
       }
@@ -92,7 +92,9 @@
         // Change url to current tab
         // window.location.hash = $active.attr('href');
 
-        $content.show();
+        if ($content !== undefined) {
+          $content.show();
+        }
 
         // Update indicator
         if (($index - $prev_index) >= 0) {
