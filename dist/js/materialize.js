@@ -6864,8 +6864,10 @@ Picker.extend( 'pickadate', DatePicker )
         $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.carousel' );
       }
     }; // Plugin end
-}( jQuery ));;'use strict';
+}( jQuery ));;/////////////////////////////////////////////////////////////////////////
+// DataList class
 
+// Constructor
 function DataList(textColumn, valueColumn, data) {
    if (!this) {
 
@@ -6902,29 +6904,8 @@ function DataList(textColumn, valueColumn, data) {
    return this;
 }
 
-DataList.prototype.callOnChangeCallbacks = function() {
-   for(var i=0; i<this.onChangeCallbacks.length; i++){
-      this.onChangeCallbacks[i]();
-   }
-
-   return this;
-}
-
-DataList.prototype.bindToData = function() {
-   var list = this;
-
-   //defining a 'watcher' for an attribute
-   watch(this, "data", function() {
-      list.renderToHTML();
-   });
-
-   return this;
-}
-
-DataList.prototype.setName = function(name) {
-   this.name = name;
-   return this;
-}
+////////////////////////
+// Internal functions //
 
 // Internal ONLY!...
 DataList.prototype._clearHTML = function(callback) {
@@ -6954,11 +6935,45 @@ DataList.prototype._populateHTML = function(callback) {
       });
       element.append(item);
    });
-   if (list.selectedValue) {
+
+   /*if (list.selectedValue) {
       element.children().filter(function(o) {
          return $(this).data().value == list.selectedValue;
-      }).addClass("active");
+      }).click();
+   }*/
+}
+
+
+////////////////////////
+// External functions //
+
+DataList.prototype.bindToData = function() {
+   var list = this;
+
+   //defining a 'watcher' for an attribute
+   watch(this, "data", function() {
+      list.renderToHTML();
+   });
+
+   return this;
+}
+
+DataList.prototype.callOnChangeCallbacks = function() {
+   for(var i=0; i<this.onChangeCallbacks.length; i++){
+      this.onChangeCallbacks[i]();
    }
+
+   return this;
+}
+
+DataList.prototype.getElement = function(){
+	if(this._element) return _element;
+	else return this.renderToHTML();
+};
+
+DataList.prototype.getSelectedText = function() {
+    if(!this._element) return "";
+    return this._element.find(".collection-item.active").text();
 }
 
 DataList.prototype.renderToHTML = function() {
@@ -6975,14 +6990,16 @@ DataList.prototype.renderToHTML = function() {
    return this._element;
 }
 
-DataList.prototype.getSelectedText = function() {
-   return this._element.find(".collection-item.active").text();
+DataList.prototype.setName = function(name) {
+   this.name = name;
+   return this;
 }
 
-DataList.prototype.getElement  = DataList.prototype.renderToHTML;
 
-/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+// MultiList class
 
+// Constructor
 function MultiList(lists) {
    if (!this) {
 
@@ -6998,6 +7015,7 @@ function MultiList(lists) {
          return null;
       }
 
+      this.onChangeCallbacks = [];
       this._index = 0;
       this.lists = lists;
    }
@@ -7008,63 +7026,8 @@ function MultiList(lists) {
    return this;
 }
 
-MultiList.prototype.setName = function(name) {
-   this.name = name;
-   return this;
-}
-
-MultiList.prototype.renderToHTML = function() {
-   var list = this;
-
-   // If the list already has an element use it!
-   if (!this._element) {
-      this._element = $("<div>").addClass("card list-card");
-      this._element_header = $("<div>").addClass("card-content list-header hilight-color");
-      this._element_lists = $("<div>");
-      this._element_lists.width(list.lists.length + "00%");
-
-      //
-      $.each(this.lists, function(i, o) {
-         //debugger;
-         var listElement = $(o.renderToHTML())
-         $(listElement).width((100/list.lists.length) + "%");
-         list._element_lists.append(listElement);
-         o.onChangeCallbacks.push(
-            function(){
-               list._gotoNextList();
-            }
-         );
-      });
-
-      this._element.append(this._element_header);
-      this._element.append(this._element_lists);
-   }
-
-   // Clear element
-   this._clearHeader(function() {
-      list._populateHeader();
-   });
-
-   return this._element;
-}
-
-// Internal ONLY!...
-MultiList.prototype._gotoList = function(index) {
-   if(index == undefined) index = this._index;
-   var list = this;
-
-   this._element_lists.velocity({translateX: ((-index*100)/this.lists.length) + "%"}, 300);
-
-   this._clearHeader(function() {
-      list._populateHeader();
-   });
-}
-
-// Internal ONLY!...
-MultiList.prototype._gotoNextList = function() {
-   this._index = Math.min(this._index+1, this.lists.length-1);
-   this._gotoList();
-}
+////////////////////////
+// Internal functions //
 
 // Internal ONLY!...
 MultiList.prototype._clearHeader = function(callback) {
@@ -7082,9 +7045,9 @@ MultiList.prototype._populateHeader = function(callback) {
    var header = this._element_header;
 
    $.each(this.lists, function(i, o) {
-      var text;
-
       if (i > list._index) return;
+
+      var text;
 
       if (i < list._index) {
          text = o.getSelectedText() + " &#10093;";
@@ -7103,20 +7066,243 @@ MultiList.prototype._populateHeader = function(callback) {
    });
 }
 
-MultiList.prototype.getElement = MultiList.prototype.renderToHTML;
+// Internal ONLY!...
+MultiList.prototype._gotoList = function(index) {
+   if(index == undefined) index = this._index;
+   var list = this;
+
+   this._element_lists.velocity(
+    {
+        translateX: ((-index*100)/this.lists.length) + "%"
+    }, 
+    {
+        duration: 300,
+        complete: function(elements) {
+            list._index = index;
+            list._clearHeader(function() {
+                list._populateHeader();
+            });
+        }
+    });
+
+   
+	if(typeof this.lists[index]._loadData == "function"){
+		//o.showLoader();
+		this.lists[index]._loadData();
+	}
+}
+
+// Internal ONLY!...
+MultiList.prototype._gotoNextList = function() {
+   var index = Math.min(this._index+1, this.lists.length-1);
+   this._gotoList(index);
+}
+
+
+////////////////////////
+// External functions //
+
+MultiList.prototype.callOnChangeCallbacks = function() {
+   for(var i=0; i<this.onChangeCallbacks.length; i++){
+      this.onChangeCallbacks[i]();
+   }
+
+   return this;
+}
+
+MultiList.prototype.getElement = function(){
+	if(this._element) return _element;
+	else return this.renderToHTML();
+};
+
+MultiList.prototype.getNext = function(){
+    if(!this._element) return null;
+
+    var nextElement = this._element.parent().next().find(".multilist:first");
+    if(!nextElement.length) return null;
+
+    var nextMultilist = nextElement.data().srcObject;
+    if(!nextMultilist) return null;
+
+    return nextMultilist;
+}
+
+MultiList.prototype.getPrevious = function(){
+    if(!this._element) return null;
+
+    var nextElement = this._element.parent().prev().find(".multilist:first");
+    if(!nextElement.length) return null;
+
+    var nextMultilist = nextElement.data().srcObject;
+    if(!nextMultilist) return null;
+
+    return nextMultilist;
+}
 
 MultiList.prototype.getSelectionAsArray = function(){
     var list = this;
     var result = [];
 
     $.each(this.lists, function(i, o){
-        if(i>list.listIndex){
+        if(i>list._index){
             result.push({text: "", value: ""});
         }
         else {
-            result.push({text: o.getSelectedText(), value: o.selectedValue});
+        	var value = "";
+        	if(o._element && o._element.find(".active").length) value =  o.selectedValue;
+            result.push({text: o.getSelectedText(), value: value});
         }
     });
 
     return result;
-} 
+}
+
+MultiList.prototype.getSelectionPrev2CurrentAsArray = function(){
+    var prev = this;
+    var result = {};
+
+    do{
+       result[prev.name] = prev.getSelectionAsArray();
+       prev = prev.getPrevious();
+    }while(prev)
+
+    return result;
+}
+
+MultiList.prototype.hideLoader = function() {
+    if(!this._element) return this;
+   
+   this._element_preloader.fadeOut();
+   this._element_loader.fadeOut();
+
+   return this;
+}
+
+MultiList.prototype.renderToHTML = function() {
+   var list = this;
+
+   // If the list already has an element use it!
+   if (!this._element) {
+      this._element = $("<div>").addClass("card list-card multilist");
+      this._element.data().srcObject = this;
+
+      this._element_loader = $("<div>").addClass("loader");
+      this._element_loader.hide();
+      
+      this._element_header = $("<div>").addClass("card-content list-header hilight-color");
+      
+      this._element_preloader = $("<div class='progress'><div class='indeterminate'></div></div>");
+      this._element_preloader.hide();
+      
+      this._element_lists = $("<div>");
+      this._element_lists.width(list.lists.length + "00%");
+
+      //
+      $.each(this.lists, function(i, o) {
+         //debugger;
+         var listElement = $(o.renderToHTML())
+         $(listElement).width((100/list.lists.length) + "%");
+         list._element_lists.append(listElement);
+         o.onChangeCallbacks.push(
+            function(){
+               list._gotoNextList();
+               list.callOnChangeCallbacks();
+            }
+         );
+      });
+
+      this._element.append(this._element_loader);
+      this._element.append(this._element_header);
+      this._element.append(this._element_preloader);
+      this._element.append(this._element_lists);
+      //this.hideLoader();
+   }
+
+   // Clear element
+   this._clearHeader(function() {
+      list._populateHeader();
+   });
+
+   return this._element;
+}
+
+MultiList.prototype.reset = function(){
+	$.each(this.lists, function(i, o){
+		o.selectedValue = null;
+		o.renderToHTML();
+	});
+
+    this._gotoList(0);
+    this.callOnChangeCallbacks();
+
+    return this;
+}
+
+MultiList.prototype.setName = function(name) {
+   this.name = name;
+   return this;
+}
+
+MultiList.prototype.showLoader = function() {
+    if(!this._element) return this;
+   
+   this._element_preloader.fadeIn();
+   this._element_loader.fadeIn();
+
+   return this;
+}
+
+/////////////////////////////////////////////////////////////////////////
+// MegaList class aka Selectron
+
+// Constructor
+function MegaList(lists) {
+   if (!this) {
+
+      return null;
+   }
+
+   // Validate arguements
+   if (lists != undefined) {
+
+      // Make sure we are getting an array
+      if (!Array.isArray(lists)) {
+
+         return null;
+      }
+
+      this.onChangeCallbacks = [];
+      this.multilists = lists;
+   }
+
+   this.name = "unnamed";
+   this._element = null;
+
+   return this;
+}
+
+MegaList.prototype.renderToHTML = function() {
+	if (!this._element) {
+		this._element = $("<div>").addClass("megalist");
+
+		var columnWidth = 100/this.multilists.length;
+      var list = this;
+
+		$.each(this.multilists, function(i, o){
+			var column = $("<div>").addClass("megalist-col");
+			column.width(columnWidth + "%");
+         column.append(o.renderToHTML());
+         column.click(function(){
+            list._activeList = o;
+            Materialize.toast("column clicked : " + i, 8000);
+         });
+			list._element.append(column);
+		});
+	}
+
+	return this._element;
+}
+
+MegaList.prototype.getSelection = function(){
+   return this._activeList.getSelectionPrev2CurrentAsArray();
+}

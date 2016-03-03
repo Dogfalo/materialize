@@ -8231,4 +8231,39 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .list-header {
   font-size: 1.125em;
   padding: 1em 1.25em !important;
+  z-index: 2;
+  position: relative;
+}
+
+.card.list-card.multilist {
+  position: relative;
+}
+
+.list-card > .progress {
+  margin: 0;
+  z-index: 2;
+  position: relative;
+}
+
+.list-card > .loader {
+  background-color: rgba(196, 196, 196, 0.75);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.megalist-col {
+  padding: 1em;
+  display: inline-block;
+  float: left;
+  height: 100%;
+  border: transparent solid 2px;
+  transition: border .5s;
+}
+
+.megalist-col:hover {
+  border: #26A69A solid 2px;
 }
