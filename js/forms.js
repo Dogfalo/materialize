@@ -284,11 +284,6 @@
         return; // Continue to next (return false breaks out of entire loop)
       }
 
-      //check if element is a select and if it has already been initialized
-      //fixes a bug when calling this method on class selectors
-      if ($select.prop('tagName').toLowerCase() != 'select') return;   
-      if ($select.hasClass('initialized')) return;
-
       var multiple = $select.attr('multiple') ? true : false,
           lastID = $select.data('select-id'); // Tear down structure if Select needs to be rebuilt
 
