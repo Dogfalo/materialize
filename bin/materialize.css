@@ -3037,6 +3037,9 @@ td, th {
     position: relative;
     /* sort out borders */
   }
+  table.responsive-table td:empty:before {
+    content: '\00a0';
+  }
   table.responsive-table th,
   table.responsive-table td {
     margin: 0;

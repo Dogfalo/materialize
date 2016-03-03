@@ -421,6 +421,10 @@ td, th{
     display: block;
     position: relative;
 
+    td:empty:before {
+      content: '\00a0';
+    }
+
     th,
     td {
       margin: 0;
