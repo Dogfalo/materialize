@@ -82,7 +82,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         }
         else {
           // Insert as text;
-          toast.innerHTML = html;
+          toast.innerHTML = html; 
         }
         // Bind hammer
         var hammerHandler = new Hammer(toast, {prevent_default: false});
@@ -133,19 +133,4 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
         return toast;
     }
-};
-Materialize.dismissAllToasts = function (message, displayLength, className, completeCallback) {  
-  $('.toast').each(function() {
-    Vel($(this), {"opacity": 0, marginTop: '-40px'}, { duration: 375,
-        easing: 'easeOutExpo',
-        queue: false,
-        complete: function(){
-          // Call the optional callback
-          if(typeof(completeCallback) === "function")
-            completeCallback();
-          // Remove toast after it times out
-          this[0].parentNode.removeChild(this[0]);
-        }
-      });
-  })
 };
