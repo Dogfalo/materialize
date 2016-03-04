@@ -4,19 +4,19 @@
 /* Style Placeholders */
 
 ::-webkit-input-placeholder {
-   color: $placeholder-text-color;
+  color: $placeholder-text-color;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: $placeholder-text-color;
+  color: $placeholder-text-color;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: $placeholder-text-color;
+  color: $placeholder-text-color;
 }
 
 :-ms-input-placeholder {
-   color: $placeholder-text-color;
+  color: $placeholder-text-color;
 }
 
 /* Text inputs */
@@ -107,7 +107,7 @@ textarea.materialize-textarea {
   // Full width label when using validate for error messages
   &.validate + label {
     width: 100%;
-    z-index: -1;
+    pointer-events: none;
   }
 
   // Form Message Shared Styles
@@ -219,9 +219,9 @@ textarea.materialize-textarea {
 
 // Default textarea
 textarea {
-   width: 100%;
-   height: $input-height;
-   background-color: transparent;
+  width: 100%;
+  height: $input-height;
+  background-color: transparent;
 
   &.materialize-textarea {
     overflow-y: hidden; /* prevents scroll bar flash */

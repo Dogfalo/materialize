@@ -65,7 +65,7 @@
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:before,
 [type="radio"].with-gap:checked + label:after {
-    border: $radio-border;
+  border: $radio-border;
 }
 
 [type="radio"]:checked + label:after,
@@ -74,7 +74,7 @@
   z-index: 0;
 }
 
-[type="radio"]:checked + label:after, {
+[type="radio"]:checked + label:after {
   transform: scale(1.02);
 }
 

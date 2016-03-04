@@ -18,7 +18,11 @@ main {
 }
 
 ul {
-	list-style-type: none;
+  &.browser-default {
+    list-style-type: initial;
+  }
+
+  list-style-type: none;
 }
 
 a {
@@ -416,6 +420,10 @@ td, th{
     border-spacing: 0;
     display: block;
     position: relative;
+
+    td:empty:before {
+      content: '\00a0';
+    }
 
     th,
     td {
