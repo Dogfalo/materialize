@@ -20,14 +20,20 @@
         dismissible: true,
         starting_top: '4%'
       },
-      overlayID = _generateID(),
-      $modal = $(this),
-      $overlay = $('<div class="lean-overlay"></div>'),
+      $modal = $(this);
+
+      if ($modal.hasClass('open')) {
+        return;
+      }
+
+      overlayID = _generateID();
+      $overlay = $('<div class="lean-overlay"></div>');
       lStack = (++_stack);
 
       // Store a reference of the overlay
       $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
       $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
+      $modal.addClass('open');
 
       $("body").append($overlay);
 
@@ -103,6 +109,7 @@
       $modal = $(this),
       overlayID = $modal.data('overlay-id'),
       $overlay = $('#' + overlayID);
+      $modal.removeClass('open');
 
       options = $.extend(defaults, options);
 
