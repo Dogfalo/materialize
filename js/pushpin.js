@@ -7,7 +7,7 @@
         top: 0,
         bottom: Infinity,
         offset: 0
-      }
+      };
       options = $.extend(defaults, options);
 
       $index = 0;

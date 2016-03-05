@@ -31,16 +31,32 @@
 
 
     // Floating-Fixed table of contents
-    if ($('nav').length) {
-      $('.toc-wrapper').pushpin({ top: $('nav').height() });
-    }
-    else if ($('#index-banner').length) {
-      $('.toc-wrapper').pushpin({ top: $('#index-banner').height() });
-    }
-    else {
-      $('.toc-wrapper').pushpin({ top: 0 });
-    }
 
+    setTimeout(function() {
+      var tocWrapperHeight = 260; // Max height of ads.
+      var tocHeight = $('.toc-wrapper .table-of-contents').length ? $('.toc-wrapper .table-of-contents').height() : 0;
+      var socialHeight = 95; // Height of unloaded social media in footer.
+      var bottomOffset = $('footer').offset().top - socialHeight - tocHeight - tocWrapperHeight;
+
+      if ($('nav').length) {
+        $('.toc-wrapper').pushpin({
+          top: $('nav').height(),
+          bottom: bottomOffset
+        });
+      }
+      else if ($('#index-banner').length) {
+        $('.toc-wrapper').pushpin({
+          top: $('#index-banner').height(),
+          bottom: bottomOffset
+        });
+      }
+      else {
+        $('.toc-wrapper').pushpin({
+          top: 0,
+          bottom: bottomOffset
+        });
+      }
+    }, 100);
 
 
     // BuySellAds Detection
