@@ -100,8 +100,17 @@ DataList.prototype.callOnChangeCallbacks = function() {
    return this;
 }
 
+DataList.prototype.clearSelection = function(){
+    this.selectedValue = null;
+    if(this._element){
+    	this._element.find(".active").removeClass("active");
+    }
+
+    return this;
+}
+
 DataList.prototype.getElement = function(){
-	if(this._element) return _element;
+	if(this._element) return this._element;
 	else return this.renderToHTML();
 };
 
@@ -222,14 +231,22 @@ MultiList.prototype._gotoList = function(index) {
    
 	if(typeof this.lists[index]._loadData == "function"){
 		//o.showLoader();
+
+		this.lists[index].clearSelection();
 		this.lists[index]._loadData();
+
+		var next = this.getNext();
+		if(next){
+			next.reset()
+		}
 	}
 }
 
 // Internal ONLY!...
 MultiList.prototype._gotoNextList = function() {
    var index = Math.min(this._index+1, this.lists.length-1);
-   this._gotoList(index);
+
+   if(index != this._index) this._gotoList(index);
 }
 
 
@@ -337,12 +354,11 @@ MultiList.prototype.renderToHTML = function() {
          var listElement = $(o.renderToHTML())
          $(listElement).width((100/list.lists.length) + "%");
          list._element_lists.append(listElement);
-         o.onChangeCallbacks.push(
-            function(){
+         o.onChangeCallbacks = 
+         [function(){
                list._gotoNextList();
                list.callOnChangeCallbacks();
-            }
-         );
+         }].concat(o.onChangeCallbacks);
       });
 
       this._element.append(this._element_loader);
@@ -362,7 +378,7 @@ MultiList.prototype.renderToHTML = function() {
 
 MultiList.prototype.reset = function(){
 	$.each(this.lists, function(i, o){
-		o.selectedValue = null;
+		o.clearSelection();
 		o.renderToHTML();
 	});
 
@@ -426,17 +442,20 @@ MegaList.prototype.renderToHTML = function() {
 			var column = $("<div>").addClass("megalist-col");
 			column.width(columnWidth + "%");
          column.append(o.renderToHTML());
-         column.click(function(){
+         column.mousedown(function(){
             list._activeList = o;
-            Materialize.toast("column clicked : " + i, 8000);
+            //Materialize.toast("column clicked : " + i, 8000);
          });
 			list._element.append(column);
 		});
+
+		this._activeList = this.multilists[0];
 	}
 
 	return this._element;
 }
 
 MegaList.prototype.getSelection = function(){
-   return this._activeList.getSelectionPrev2CurrentAsArray();
+	if(!this._activeList) return {};
+    return this._activeList.getSelectionPrev2CurrentAsArray();
 }
