@@ -19,6 +19,8 @@
 
         addCounterElement($input);
       }
+
+    });
   };
 
   function updateCounter(){
