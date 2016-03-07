@@ -3001,7 +3001,7 @@ table.striped > tbody > tr:nth-child(odd) {
 }
 
 table.striped > tbody > tr > td {
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 table.highlight > tbody > tr {
@@ -3262,7 +3262,6 @@ nav ul a span.badge {
 
 .progress .determinate {
   position: absolute;
-  background-color: inherit;
   top: 0;
   left: 0;
   bottom: 0;
@@ -7584,7 +7583,7 @@ input[type=range]:focus::-ms-fill-upper {
 @media (min-height: 35.875em) {
   .picker--opened .picker__frame {
     top: 10%;
-    bottom: 20%auto;
+    bottom: auto;
   }
 }
 

@@ -79,7 +79,8 @@
       var offsetLeft = origin.offset().left;
       var offsetTop = origin.offset().top - $(window).scrollTop();
       var currAlignment = options.alignment;
-      var activatesLeft, gutterSpacing, leftPosition;
+      var gutterSpacing = 0;
+      var leftPosition = 0;
 
       // Below Origin
       var verticalOffset = 0;
