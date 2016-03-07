@@ -1,7 +1,7 @@
 (function ($) {
 
   var methods = {
-    init : function() {
+    init : function(options) {
 
       var defaults = {
         changeListener: undefined
