@@ -633,6 +633,7 @@ if ($) {
       // Click handler to show dropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
+
         if (!isFocused) {
           if ( origin[0] == e.currentTarget &&
                !origin.hasClass('active') &&
@@ -648,13 +649,21 @@ if ($) {
           // If menu open, add click close handler to document
           if (activates.hasClass('active')) {
             $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
-              if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
+              if($(e.target).closest('.switch').length !== 0){
+		         	var input = $(e.target).closest('.switch').find('input');
+		         	if(input.is(':checked')){
+		         		input.prop('checked','checked');
+		         	}else{
+		         		input.prop('checked',false);
+		         	}
+		         }else if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
                 hideDropdown();
                 $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
               }
             });
           }
         }
+
       });
 
     } // End else
@@ -722,6 +731,7 @@ if ($) {
 
       $modal.find(".modal-close").on('click.close', function(e) {
         $modal.closeModal(options);
+        return false;
       });
 
       $overlay.css({ display : "block", opacity : 0 });
@@ -733,7 +743,6 @@ if ($) {
 
       $overlay.velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
       $modal.data('associated-overlay', $overlay[0]);
-
       // Define Bottom Sheet animation
       if ($modal.hasClass('bottom-sheet')) {
         $modal.velocity({bottom: "0", opacity: 1}, {
@@ -751,7 +760,7 @@ if ($) {
       else {
         $.Velocity.hook($modal, "scaleX", 0.7);
         $modal.css({ top: options.starting_top });
-        $modal.velocity({top: "10%", opacity: 1, scaleX: '1'}, {
+        $modal.velocity({top: "20%", opacity: 1, scaleX: '1'}, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
@@ -777,7 +786,6 @@ if ($) {
       $modal = $(this),
       overlayID = $modal.data('overlay-id'),
       $overlay = $('#' + overlayID);
-
       options = $.extend(defaults, options);
 
       // Disable scrolling
@@ -927,7 +935,7 @@ if ($) {
         }
 
         // Set css on origin
-        origin.css({position: 'absolute', 'z-index': 1000})
+        origin.css({position: 'absolute', 'z-index': 1000,'max-width':'none'})
         .data('width', originalWidth)
         .data('height', originalHeight);
 
@@ -1861,7 +1869,6 @@ $(document).ready(function(){
 
     // Select and append toast
     var newToast = createToast(message);
-
     // only append toast if message is not undefined
     if(message){
         container.appendChild(newToast);
@@ -1930,7 +1937,7 @@ $(document).ready(function(){
         }
         else {
           // Insert as text;
-          toast.innerHTML = html; 
+          toast.innerHTML = html;
         }
         // Bind hammer
         var hammerHandler = new Hammer(toast, {prevent_default: false});
@@ -1996,11 +2003,11 @@ $(document).ready(function(){
       $(this).each(function(){
         var $this = $(this);
         var menu_id = $("#"+ $this.attr('data-activates'));
-
+        options.menuWidth = menu_id.width() || defaults.menuWidth;
         // Set to width
-        if (options.menuWidth != 240) {
-          menu_id.css('width', options.menuWidth);
-        }
+        // if (options.menuWidth != 240) {
+        //   menu_id.css('width', options.menuWidth);
+        // }
 
         // Add Touch Area
         var dragTarget = $('<div class="drag-target"></div>');
@@ -2239,7 +2246,7 @@ $(document).ready(function(){
               $('body').css('overflow', 'hidden');
               // Push current drag target on top of DOM tree
               $('body').append(dragTarget);
-              
+
               if (options.edge === 'left') {
                 dragTarget.css({width: '50%', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
@@ -2480,9 +2487,9 @@ $(document).ready(function(){
 		    var offset = $(this.hash).offset().top + 1;
 
 //          offset - 200 allows elements near bottom of page to scroll
-			
+
 	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, queue: false, easing: 'easeOutCubic'});
-			
+
 		  });
 		});
 		options = options || {
@@ -2986,6 +2993,7 @@ $(document).ready(function(){
       }
 
       $select.addClass('initialized');
+
 
       $newSelect.on({
         'focus': function (){
@@ -3512,8 +3520,8 @@ $(document).ready(function(){
 }( jQuery ));;(function ($) {
   $(document).ready(function() {
 
-    $(document).on('click.chip', '.chip .material-icons', function (e) {
-      $(this).parent().remove();
+    $(document).on('click.chip', '.chip .fa', function (e) {
+      $(this).parents('.chip').remove();
     });
 
   });
