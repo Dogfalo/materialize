@@ -12,7 +12,7 @@
       $this.width('100%');
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
-          $tab_width = $this.find('li').first().outerWidth(),
+          $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
           $index = 0;
 
       // If the location.hash matches one of the links, use that as the active tab.
@@ -45,7 +45,7 @@
       }
       $(window).resize(function () {
         $tabs_width = $this.width();
-        $tab_width = $this.find('li').first().outerWidth();
+        $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
         if ($index < 0) {
           $index = 0;
         }
@@ -69,7 +69,7 @@
         }
 
         $tabs_width = $this.width();
-        $tab_width = $this.find('li').first().outerWidth();
+        $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
 
         // Make the old tab inactive.
         $active.removeClass('active');
