@@ -209,7 +209,7 @@
             placeDropdown('click');
           }
           // If origin is clicked and menu is open, close menu
-          else if (origin.hasClass('active') && !dropdownCloser) {
+          else if (origin.hasClass('active')) {
             hideDropdown();
             $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
           }
