@@ -25,6 +25,10 @@
 
     // Dropdown menu
     var activates = $("#"+ origin.attr('data-activates'));
+    // Dropdown closer
+    var dropdownCloser = null;
+    if (origin.attr('data-dropdown-closer'))
+        dropdownCloser = $("#"+ origin.attr('data-dropdown-closer'));
 
     function updateOptions() {
       if (origin.data('induration') !== undefined)
@@ -41,6 +45,8 @@
         options.belowOrigin = origin.data('beloworigin');
       if (origin.data('alignment') !== undefined)
         options.alignment = origin.data('alignment');
+      if (origin.data('dropdownCloser') !== undefined)
+        options.dropdownCloser = origin.data('dropdownCloser');
     }
 
     updateOptions();
@@ -203,12 +209,12 @@
             placeDropdown('click');
           }
           // If origin is clicked and menu is open, close menu
-          else if (origin.hasClass('active')) {
+          else if (origin.hasClass('active') && !dropdownCloser) {
             hideDropdown();
             $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
           }
           // If menu open, add click close handler to document
-          if (activates.hasClass('active')) {
+          if (activates.hasClass('active') && !dropdownCloser) {
             $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
               if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
                 hideDropdown();
@@ -220,6 +226,13 @@
       });
 
     } // End else
+
+    // Permanent dropdowns
+    if (dropdownCloser)
+        dropdownCloser.on('click', function() {
+            if (origin.hasClass('active'))
+                hideDropdown();
+        });
 
     // Listen to open and close event - useful for select component
     origin.on('open', function(e, eventType) {
