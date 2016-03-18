@@ -79,6 +79,15 @@ select:disabled {
   background-color: transparent;
 }
 
+// Prefix Icons
+.prefix ~ .select-wrapper {
+  margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.prefix ~ label { margin-left: 3rem; }
+
 // Icons
 .select-dropdown li {
   img {

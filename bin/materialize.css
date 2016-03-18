@@ -6397,6 +6397,16 @@ select:disabled {
   background-color: transparent;
 }
 
+.prefix ~ .select-wrapper {
+  margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.prefix ~ label {
+  margin-left: 3rem;
+}
+
 .select-dropdown li img {
   height: 40px;
   width: 40px;
