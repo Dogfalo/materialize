@@ -328,6 +328,8 @@
           // Check for multiple type.
           if (type === 'multiple') {
             options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          } else if (type === 'optgroup-option') {
+            options.append($('<li class="optgroup-option ' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
           } else {
             options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
           }
@@ -337,6 +339,8 @@
         // Check for multiple type.
         if (type === 'multiple') {
           options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+        } else if (type === 'optgroup-option') {
+          options.append($('<li class="optgroup-option ' + disabledClass + '"><span>' + option.html() + '</span></li>'));
         } else {
           options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
         }
@@ -359,7 +363,7 @@
             options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
             selectOptions.each(function() {
-              appendOptionWithIcon($select, $(this));
+              appendOptionWithIcon($select, $(this), 'optgroup-option');
             });
           }
         });

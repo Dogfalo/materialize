@@ -6425,7 +6425,7 @@ select:disabled {
   color: rgba(0, 0, 0, 0.4);
 }
 
-.select-dropdown li.optgroup ~ li:not(.optgroup) {
+.select-dropdown li.optgroup ~ li.optgroup-option {
   padding-left: 1rem;
 }
 

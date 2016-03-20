@@ -110,7 +110,7 @@ select:disabled {
     color: rgba(0, 0, 0, .4);
   }
 
-  & ~ li:not(.optgroup) {
+  & ~ li.optgroup-option {
     padding-left: 1rem;
   }
 }
