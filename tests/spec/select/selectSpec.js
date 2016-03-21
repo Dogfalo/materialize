@@ -120,7 +120,7 @@ describe("Select Plugin", function () {
   });
 
   describe("Optgroup Select", function () {
-    var browserSelect, optInput, optDropdown;
+    var browserSelect, optInput, optDropdown, optionInOptgroup, optionAfterOptGroup;
 
     beforeEach(function() {
       browserSelect = $('select.optgroup');
@@ -154,6 +154,14 @@ describe("Select Plugin", function () {
           done();
         }, 400);
       }, 400);
+    });
+
+    it("should have options inside optgroup indented", function() {
+      optionInOptgroup = browserSelect.parent().find('li.optgroup + li');
+      optionAfterOptGroup = browserSelect.parent().find('ul li:last-child');
+
+      expect(optionInOptgroup).toHaveClass('optgroup-option', 'Should have optgroup-option class');
+      expect(optionAfterOptGroup).not.toHaveClass('optgroup-option', 'Should not have optgroup-option class');
     });
 
     it("should not do anything when optgroup li clicked", function(done) {
