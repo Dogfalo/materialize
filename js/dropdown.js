@@ -28,7 +28,7 @@
     // Dropdown closer
     var dropdownCloser = null;
     if (origin.attr('data-dropdown-closer'))
-        dropdownCloser = $("#"+ origin.attr('data-dropdown-closer'));
+        dropdownCloser = $("."+ origin.attr('data-dropdown-closer'));
 
     function updateOptions() {
       if (origin.data('induration') !== undefined)
