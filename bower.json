@@ -30,7 +30,7 @@
     "fonts/roboto/Roboto-Regular.woff2",
     "fonts/roboto/Roboto-Thin.ttf",
     "fonts/roboto/Roboto-Thin.woff",
-    "fonts/roboto/Roboto-Thin.woff2",
+    "fonts/roboto/Roboto-Thin.woff2"
   ],
   "ignore": [
     "jade/",
