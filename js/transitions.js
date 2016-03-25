@@ -105,16 +105,22 @@
             if (swipeLeft) { fullWidth = $this.innerWidth(); }
             else { fullWidth = -1 * $this.innerWidth(); }
 
-            $this.velocity({ translateX: fullWidth,
-              }, {duration: 100, queue: false, easing: 'easeOutQuad', complete:
-              function() {
-                $this.css('border', 'none');
-                $this.velocity({ height: 0, padding: 0,
-                  }, {duration: 200, queue: false, easing: 'easeOutQuad', complete:
-                    function() { $this.remove(); }
-                  });
-              }
-            });
+            var cancel = false;
+            //Event when the element is dismissing
+            $this.trigger("dismissing", [cancel]);
+            // If not canceled, continue
+            if( !cancel ) {
+              $this.velocity({ translateX: fullWidth,
+                }, {duration: 100, queue: false, easing: 'easeOutQuad', complete:
+                function() {
+                  $this.css('border', 'none');
+                  $this.velocity({ height: 0, padding: 0,
+                    }, {duration: 200, queue: false, easing: 'easeOutQuad', complete:
+                      function() { $this.remove(); }
+                    });
+                }
+              });
+            }
           }
           else {
             $this.velocity({ translateX: 0,
