@@ -144,14 +144,31 @@
         hiddenDiv.css('width', $(window).width()/2);
       }
 
-      $textarea.css('height', hiddenDiv.height());
+      /**
+       * Resize if the new height is greater than the
+       * original height of the textarea
+       */
+      if($textarea.data("original-height") <= hiddenDiv.height()){
+        $textarea.css('height', hiddenDiv.height());
+      }else if($textarea.val().length < $textarea.data("previous-length")){
+        /**
+         * In case the new height is less than original height, it
+         * means the textarea has less text than before
+         * So we set the height to the original one
+         */
+        $textarea.css('height', $textarea.data("original-height"));
+      }
+      $textarea.data("previous-length", $textarea.val().length);
     }
 
     $(text_area_selector).each(function () {
       var $textarea = $(this);
-      if ($textarea.val().length) {
-        textareaAutoResize($textarea);
-      }
+      /**
+       * Instead of resizing textarea on document load,
+       * store the original height and the original length
+       */
+      $textarea.data("original-height", $textarea.height());
+      $textarea.data("previous-length", $textarea.val().length);
     });
 
     $('body').on('keyup keydown autoresize', text_area_selector, function () {
