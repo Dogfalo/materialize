@@ -23,15 +23,20 @@
             var selector = value.selector,
                 offset = value.offset,
                 callback = value.callback;
+                repeat = value.repeat;
 
             var currentElement = document.querySelector(selector);
             if ( currentElement !== null) {
               var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
 
               if (windowScroll > (elementOffset + offset)) {
-                if (value.done !== true) {
-                  var callbackFunc = new Function(callback);
-                  callbackFunc();
+                if (repeat || value.done !== true) {
+                  if (typeof callback === 'function') {
+                    callback();
+                  } else {
+                    var callbackFunc = new Function(callback);
+                    callbackFunc();
+                  }
                   value.done = true;
                 }
               }
