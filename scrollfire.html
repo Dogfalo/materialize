@@ -125,6 +125,7 @@
   var options = [
     {selector: '.class', offset: 200, callback: 'globalFunction()' },
     {selector: '.other-class', offset: 200, callback: 'globalFunction()' },
+    {selector: '.yet-another-class', offset: 200, callback: anyFunctionReference },
   ];
   Materialize.scrollFire(options);
         </code></pre>
@@ -162,11 +163,12 @@
       <p>Scroll through slowly to get sense of what ScrollFire can do for you. This is the ScrollFire code that we have used on this page.</p>
       <pre>
   <code class="language-javascript">
-  var options = [</code>
+  var options = [
     <code id="call-1" class="language-javascript">{selector: '#staggered-test', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500 )' },</code>
     <code id="call-2" class="language-javascript">{selector: '#staggered-test', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' },</code>
     <code id="call-3" class="language-javascript">{selector: '#staggered-test', offset: 400, callback: 'Materialize.showStaggeredList("#staggered-test")' },</code>
-    <code id="call-4" class="language-javascript">{selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test")' }</code>
+    <code id="call-4" class="language-javascript">{selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test")' },</code>
+    <code id="call-5" class="language-javascript">{selector: '#function-reference-test', offset: 400, callback: window.scrollFireCallback }</code>
   ];
   Materialize.scrollFire(options);
       </code></pre>
@@ -195,7 +197,32 @@
 
       <img id="image-test" class="responsive-img" src="https://unsplash.imgix.net/reserve/nE6neNVdRPSIasnmePZe_IMG_1950.jpg?dpr=1.25&fit=crop&fm=jpg&h=700&q=75&w=1050">
 
+      <div id="function-reference-test" style="height: 500px;">
+          Please scroll a little more.
 
+          <ul id="staggered-test-2">
+            <li style="opacity: 0;">
+              <h4><a href="#">List Item</a></h4>
+              <p>This is a description</p>
+            </li>
+            <li style="opacity: 0;">
+              <h4><a href="#">List Item</a></h4>
+              <p>This is a description</p>
+            </li>
+            <li style="opacity: 0;">
+              <h4><a href="#">List Item</a></h4>
+              <p>This is a description</p>
+            </li>
+            <li style="opacity: 0;">
+              <h4><a href="#">List Item</a></h4>
+              <p>This is a description</p>
+            </li>
+            <li style="opacity: 0;">
+              <h4><a href="#">List Item</a></h4>
+              <p>This is a description</p>
+            </li>
+          </ul>
+      </div>
     </div>
 
     <div class="col hide-on-small-only m3 l2">
@@ -289,11 +316,18 @@
     </script>
 
     <script type="text/javascript">
+      window.scrollFireCallback = function() {
+          // for #function-reference-test
+          Materialize.toast("ScrollFire with a function reference!", 1500);
+          Materialize.showStaggeredList("#staggered-test-2");
+          $("#call-5").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});
+      }
       var options = [
         {selector: '#staggered-test', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500); $("#call-1").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500}); ' },
         {selector: '#staggered-test', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500); $("#call-2").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
         {selector: '#staggered-test', offset: 500, callback: 'Materialize.showStaggeredList("#staggered-test"); $("#call-3").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
-        {selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test"); $("#call-4").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' }
+        {selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test"); $("#call-4").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});' },
+        {selector: '#function-reference-test', offset: 400, callback: window.scrollFireCallback }
       ];
       Materialize.scrollFire(options);
     </script>
