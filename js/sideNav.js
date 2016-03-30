@@ -76,7 +76,10 @@
           panning = false;
           menuOut = false;
           // Reenable scrolling
-          $('body').css('overflow', '');
+          $('body').css({
+            overflow: '',
+            width: ''
+          });
 
           $('#sidenav-overlay').velocity({opacity: 0}, {duration: 200,
               queue: false, easing: 'easeOutQuad',
@@ -142,7 +145,10 @@
             var velocityX = e.gesture.velocityX;
 
             // Disable Scrolling
-            $('body').css('overflow', 'hidden');
+            var $body = $('body');
+            var oldWidth = $body.innerWidth();
+            $body.css('overflow', 'hidden');
+            $body.width(oldWidth);
 
             // If overlay does not exist, create one and if it is clicked, close menu
             if ($('#sidenav-overlay').length === 0) {
@@ -224,7 +230,10 @@
               }
               else if (!menuOut || velocityX > 0.3) {
                 // Enable Scrolling
-                $('body').css('overflow', '');
+                $('body').css({
+                  overflow: '',
+                  width: ''
+                });
                 // Slide menu closed
                 menu_id.velocity({'translateX': [-1 * options.menuWidth - 10, leftPos]}, {duration: 200, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
@@ -242,7 +251,11 @@
               }
               else if (!menuOut || velocityX < -0.3) {
                 // Enable Scrolling
-                $('body').css('overflow', '');
+                $('body').css({
+                  overflow: '',
+                  width: ''
+                });
+
                 // Slide menu closed
                 menu_id.velocity({'translateX': [options.menuWidth + 10, rightPos]}, {duration: 200, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
@@ -265,7 +278,11 @@
             else {
 
               // Disable Scrolling
-              $('body').css('overflow', 'hidden');
+              var $body = $('body');
+              var oldWidth = $body.innerWidth();
+              $body.css('overflow', 'hidden');
+              $body.width(oldWidth);
+
               // Push current drag target on top of DOM tree
               $('body').append(dragTarget);
 
