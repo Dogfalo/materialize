@@ -123,6 +123,9 @@
 
       if (fontSize) { hiddenDiv.css('font-size', fontSize); }
       if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
+      
+      hiddenDiv.css('padding', $textarea.css('padding'));
+	  	hiddenDiv.css('box-sizing', $textarea.css('box-sizing'));
 
       if ($textarea.attr('wrap') === "off") {
         hiddenDiv.css('overflow-wrap', "normal")
@@ -144,7 +147,7 @@
         hiddenDiv.css('width', $(window).width()/2);
       }
 
-      $textarea.css('height', hiddenDiv.height());
+      $textarea.css('height', hiddenDiv.outerHeight());
     }
 
     $(text_area_selector).each(function () {
