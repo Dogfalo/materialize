@@ -5,7 +5,7 @@
 
 [Materialize](http://materializecss.com/), a CSS Framework based on material design
 
-### Current Version : v0.97.5
+### Current Version : v0.97.6
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -14,6 +14,15 @@
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
+- v0.97.6 (April 1st)
+  - **Removed deprecated material icons from project**
+  - **Changed /font directory to /fonts**
+  - Datepicker and ScrollSpy now compatible with jQuery 2.2.x
+  - Responsive tables now work with empty cells
+  - Added focus states to checkboxes, switches, and radio buttons
+  - Sidenav and Modals no longer cause flicker with scrollbar
+  - Materialbox overflow and z-index issues fixed
+  - Added new option for Card actions within a Card reveal
 - v0.97.5 (Dec 21, 2015)
   - Fixed Meteor package crash
 - v0.97.4 (Dec 20, 2015)
