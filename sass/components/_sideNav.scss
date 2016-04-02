@@ -1,45 +1,66 @@
 .side-nav {
   position: fixed;
   width: 240px;
-  left: -105%;
+  left: 0;
   top: 0;
   margin: 0;
+  transform: translateX(-100%);
   height: 100%;
   height: calc(100% + 60px);
   height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
   background-color: $sidenav-bg-color;
   z-index: 999;
+  backface-visibility: hidden;
   overflow-y: auto;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateX(-105%);
 
   @extend .z-depth-1;
-  will-change: left;
 
   // Right Align
   &.right-aligned {
-    will-change: right;
-    right: -105%;
+    right: 0;
+    transform: translateX(105%);
     left: auto;
+    transform: translateX(100%);
   }
 
-  .collapsible{
+  .collapsible {
     margin: 0;
   }
 
 
   li {
     float: none;
-    padding: 0 $sidenav-padding-right;
     line-height: $sidenav-item-height;
-    &:hover, &.active { background-color: #ddd; }
+
+    &.active { background-color: rgba(0,0,0,.05); }
   }
+
   a {
-    color: #444;
+    color: $sidenav-font-color;
     display: block;
     font-size: 1rem;
     height: $sidenav-item-height;
     line-height: $sidenav-item-height;
     padding: 0 $sidenav-padding-right;
+
+    &:hover { background-color: rgba(0,0,0,.05);}
+
+    &.btn, &.btn-large, &.btn-flat, &.btn-floating {
+      margin: 10px 15px;
+    }
+
+    &.btn,
+    &.btn-large,
+    &.btn-floating { color: $button-raised-color; }
+    &.btn-flat { color: $button-flat-color; }
+
+    &.btn:hover,
+    &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
+    &.btn-floating:hover { background-color: $button-raised-background; }
   }
 }
 
@@ -59,7 +80,7 @@
   a {
     display: block;
     padding: 0 $sidenav-padding-right;
-    color: #444;
+    color: $sidenav-font-color;
   }
 }
 
@@ -67,6 +88,7 @@
 // Fixed side-nav shown
 .side-nav.fixed {
   left: 0;
+  transform: translateX(0);
   position: fixed;
 
   // Right Align
@@ -79,11 +101,10 @@
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
   .side-nav.fixed {
-    left: -105%;
+    transform: translateX(-105%);
 
     &.right-aligned {
-      right: -105%;
-      left: auto;
+      transform: translateX(105%);
     }
   }
 }

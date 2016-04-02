@@ -79,13 +79,22 @@
       var offsetLeft = origin.offset().left;
       var offsetTop = origin.offset().top - $(window).scrollTop();
       var currAlignment = options.alignment;
-      var activatesLeft, gutterSpacing;
+      var gutterSpacing = 0;
+      var leftPosition = 0;
 
       // Below Origin
       var verticalOffset = 0;
       if (options.belowOrigin === true) {
         verticalOffset = originHeight;
       }
+
+      // Check for scrolling positioned container.
+      var scrollOffset = 0;
+      var wrapper = origin.parent();
+      if (!wrapper.is('body') && wrapper[0].scrollHeight > wrapper[0].clientHeight) {
+        scrollOffset = wrapper[0].scrollTop;
+      }
+
 
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         // Dropdown goes past screen on right, force right alignment
@@ -124,7 +133,7 @@
       // Position dropdown
       activates.css({
         position: 'absolute',
-        top: origin.position().top + verticalOffset,
+        top: origin.position().top + verticalOffset + scrollOffset,
         left: leftPosition
       });
 

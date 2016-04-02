@@ -152,17 +152,29 @@
     <div class="input-field col s6">
       <select>
         <option value="" disabled >Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2" selected>Option 2</option>
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
-        <option value="6">Option 6</option>
-        <option value="7">Option 7</option>
-        <option value="8">Option 8</option>
-        <option value="9">Option 9</option>
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
       </select>
-      <label>Materialize Select optgroups with selected</label>
+      <label>Materialize Select with overflow</label>
+    </div>
+
+    <div class="input-field col s6">
+      <select id="optgroups-select">
+        <option>Option before optgroup</option>
+        <optgroup label="Optgroup">
+          <option>Option inside optigroup 1</option>
+          <option>Option inside optigroup 2</option>
+        </optgroup>
+        <option>Option after optgroup</option>
+      </select>
+      <label>Optgroup in the middle of non optgroup options.</label>
     </div>
   </div>
 

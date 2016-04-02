@@ -43,8 +43,6 @@
       bottom: 0;
       left: 0;
       right: 0;
-      z-index: 1;
-      background-color: inherit;
     }
   }
 
@@ -90,7 +88,6 @@
     padding: $card-padding;
     border-radius: 0 0 2px 2px;
 
-
     p {
       margin: 0;
       color: inherit;
@@ -101,8 +98,11 @@
   }
 
   .card-action {
+    position: relative;
+    background-color: inherit;
     border-top: 1px solid rgba(160,160,160,.2);
     padding: $card-padding;
+    z-index: 2;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: $card-link-color;
@@ -111,6 +111,11 @@
       text-transform: uppercase;
 
       &:hover { color: $card-link-color-light; }
+    }
+
+    & + .card-reveal {
+      z-index: 1;
+      padding-bottom: 64px;
     }
   }
 
@@ -122,13 +127,12 @@
     overflow-y: auto;
     top: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 3;
     display: none;
 
     .card-title {
       cursor: pointer;
       display: block;
     }
-
   }
 }

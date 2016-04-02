@@ -18,7 +18,11 @@ main {
 }
 
 ul {
-	list-style-type: none;
+  &.browser-default {
+    list-style-type: initial;
+  }
+
+  list-style-type: none;
 }
 
 a {
@@ -375,7 +379,7 @@ table {
     }
 
     > tr > td {
-      border-radius: 0px;
+      border-radius: 0;
     }
   }
 
@@ -389,7 +393,6 @@ table {
   &.centered {
     thead tr th, tbody tr td {
       text-align: center;
-
     }
   }
 
@@ -416,6 +419,10 @@ td, th{
     border-spacing: 0;
     display: block;
     position: relative;
+
+    td:empty:before {
+      content: '\00a0';
+    }
 
     th,
     td {
@@ -642,7 +649,6 @@ nav ul a span.badge {
     overflow: hidden;
   .determinate {
     position: absolute;
-    background-color: inherit;
     top: 0;
     left: 0;
     bottom: 0;

@@ -1,0 +1,220 @@
+/* Checkboxes
+   ========================================================================== */
+
+/* CUSTOM CSS CHECKBOXES */
+form p {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+form p:last-child {
+  margin-bottom: 0;
+}
+
+/* Remove default checkbox */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+// Checkbox Styles
+[type="checkbox"] {
+  // Text Label Style
+  + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1rem;
+
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+  }
+
+  /* checkbox aspect */
+  + label:before,
+  &:not(.filled-in) + label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid $radio-empty-color;
+    border-radius: 1px;
+    margin-top: 2px;
+    transition: .2s;
+  }
+
+  &:not(.filled-in) + label:after {
+    border: 0;
+    transform: scale(0);
+  }
+
+  &:not(:checked):disabled + label:before {
+    border: none;
+    background-color: $input-disabled-color;
+  }
+
+  // Focused styles
+  &.tabbed:focus + label:after {
+    transform: scale(1);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.1);
+  }
+}
+
+[type="checkbox"]:checked {
+  + label:before {
+    top: -4px;
+    left: -5px;
+    width: 12px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: $radio-border;
+    border-bottom: $radio-border;
+    transform: rotate(40deg);
+    backface-visibility: hidden;
+    transform-origin: 100% 100%;
+  }
+
+  &:disabled + label:before {
+    border-right: 2px solid $input-disabled-color;
+    border-bottom: 2px solid $input-disabled-color;
+  }
+}
+
+/* Indeterminate checkbox */
+[type="checkbox"]:indeterminate {
+  +label:before {
+    top: -11px;
+    left: -12px;
+    width: 10px;
+    height: 22px;
+    border-top: none;
+    border-left: none;
+    border-right: $radio-border;
+    border-bottom: none;
+    transform: rotate(90deg);
+    backface-visibility: hidden;
+    transform-origin: 100% 100%;
+  }
+
+  // Disabled indeterminate
+  &:disabled + label:before {
+    border-right: 2px solid $input-disabled-color;
+    background-color: transparent;
+  }
+}
+
+// Filled in Style
+[type="checkbox"].filled-in {
+  // General
+  + label:after {
+    border-radius: 2px;
+  }
+
+  + label:before,
+  + label:after {
+    content: '';
+    left: 0;
+    position: absolute;
+    /* .1s delay is for check animation */
+    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+    z-index: 1;
+  }
+
+  // Unchecked style
+  &:not(:checked) + label:before {
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    left: 6px;
+    top: 10px;
+
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 20% 40%;
+    transform-origin: 100% 100%;
+  }
+
+  &:not(:checked) + label:after {
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid $radio-empty-color;
+    top: 0px;
+    z-index: 0;
+  }
+
+  // Checked style
+  &:checked {
+    + label:before {
+      top: 0;
+      left: 1px;
+      width: 8px;
+      height: 13px;
+      border-top: 2px solid transparent;
+      border-left: 2px solid transparent;
+      border-right: 2px solid $input-background;
+      border-bottom: 2px solid $input-background;
+      -webkit-transform: rotateZ(37deg);
+      transform: rotateZ(37deg);
+
+      -webkit-transform-origin: 100% 100%;
+      transform-origin: 100% 100%;
+    }
+
+    + label:after {
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid $secondary-color;
+      background-color: $secondary-color;
+      z-index: 0;
+    }
+  }
+
+  // Focused styles
+  &.tabbed:focus + label:after {
+    border-radius: 2px;
+    border-color: $radio-empty-color;
+    background-color: rgba(0,0,0,.1);
+  }
+
+  &.tabbed:checked:focus + label:after {
+    border-radius: 2px;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+
+  // Disabled style
+  &:disabled:not(:checked) + label:before {
+    background-color: transparent;
+    border: 2px solid transparent;
+  }
+
+  &:disabled:not(:checked) + label:after {
+    border-color: transparent;
+    background-color: $input-disabled-solid-color;
+  }
+
+  &:disabled:checked + label:before {
+    background-color: transparent;
+  }
+
+  &:disabled:checked + label:after {
+    background-color: $input-disabled-solid-color;
+    border-color: $input-disabled-solid-color;
+  }
+}
