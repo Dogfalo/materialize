@@ -5,7 +5,8 @@
 
       // Defaults
       var defaults = {
-        delay: 350
+        delay: 350,
+        position: 'bottom'
       };
 
       // Remove tooltip from the activator
@@ -48,6 +49,9 @@
           var tooltip_delay = origin.attr('data-delay');
           tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ?
               options.delay : tooltip_delay;
+          var tooltip_position = origin.attr('data-position');
+          tooltip_position = (tooltip_position === undefined || tooltip_position === '') ?
+              options.position : tooltip_position;
           timeoutRef = setTimeout(function(){
             started = true;
             newTooltip.velocity('stop');
@@ -60,7 +64,6 @@
             // Tooltip positioning
             var originWidth = origin.outerWidth();
             var originHeight = origin.outerHeight();
-            var tooltipPosition =  origin.attr('data-position');
             var tooltipHeight = newTooltip.outerHeight();
             var tooltipWidth = newTooltip.outerWidth();
             var tooltipVerticalMovement = '0px';
@@ -68,7 +71,7 @@
             var scale_factor = 8;
             var targetTop, targetLeft, newCoordinates;
 
-            if (tooltipPosition === "top") {
+            if (tooltip_position === "top") {
               // Top Position
               targetTop = origin.offset().top - tooltipHeight - margin;
               targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
@@ -83,7 +86,7 @@
               });
             }
             // Left Position
-            else if (tooltipPosition === "left") {
+            else if (tooltip_position === "left") {
               targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
               targetLeft =  origin.offset().left - tooltipWidth - margin;
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
@@ -99,7 +102,7 @@
               });
             }
             // Right Position
-            else if (tooltipPosition === "right") {
+            else if (tooltip_position === "right") {
               targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
               targetLeft = origin.offset().left + originWidth + margin;
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
@@ -136,7 +139,7 @@
             if (scale_factor < 8) {
               scale_factor = 8;
             }
-            if (tooltipPosition === "right" || tooltipPosition === "left") {
+            if (tooltip_position === "right" || tooltip_position === "left") {
               scale_factor = tooltipWidth / 10;
               if (scale_factor < 6)
                 scale_factor = 6;
