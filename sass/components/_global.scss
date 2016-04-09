@@ -614,6 +614,12 @@ span.badge {
   &.new:after {
     content: " new";
   }
+
+  &[data-badge-caption]::after {
+    content: " " attr(data-badge-caption);
+  }
+
+
 }
 nav ul a span.badge {
   position: static;

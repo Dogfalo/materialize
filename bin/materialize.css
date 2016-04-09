@@ -3227,6 +3227,10 @@ span.badge.new:after {
   content: " new";
 }
 
+span.badge[data-badge-caption]::after {
+  content: " " attr(data-badge-caption);
+}
+
 nav ul a span.badge {
   position: static;
   margin-left: 4px;
