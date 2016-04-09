@@ -5785,11 +5785,19 @@ textarea.materialize-textarea + label:after {
   margin-top: 1rem;
 }
 
+.input-field.col label {
+  left: 0.75rem;
+}
+
+.input-field.col .prefix ~ label,
+.input-field.col .prefix ~ .validate ~ label {
+  width: calc(100% - 3rem - 1.5rem);
+}
+
 .input-field label {
   color: #9e9e9e;
   position: absolute;
   top: 0.8rem;
-  left: 0.75rem;
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
@@ -5813,7 +5821,9 @@ textarea.materialize-textarea + label:after {
 }
 
 .input-field .prefix ~ input,
-.input-field .prefix ~ textarea {
+.input-field .prefix ~ textarea,
+.input-field .prefix ~ label,
+.input-field .prefix ~ .validate ~ label {
   margin-left: 3rem;
   width: 92%;
   width: calc(100% - 3rem);
