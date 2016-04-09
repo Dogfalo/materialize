@@ -74,7 +74,8 @@ ul.side-nav.fixed li.logo {
   margin-top: 32px;
   margin-bottom: 80px;
 
-  &:hover {
+  &:hover,
+  #logo-container:hover {
     background-color: transparent;
   }
 }
