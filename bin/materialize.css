@@ -2766,15 +2766,18 @@ video.responsive-video {
 
 .pagination li {
   display: inline-block;
-  font-size: 1.2rem;
-  padding: 0 10px;
-  line-height: 30px;
   border-radius: 2px;
   text-align: center;
+  vertical-align: top;
+  height: 30px;
 }
 
 .pagination li a {
   color: #444;
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  line-height: 30px;
 }
 
 .pagination li.active a {
@@ -2791,8 +2794,7 @@ video.responsive-video {
 }
 
 .pagination li i {
-  font-size: 2.2rem;
-  vertical-align: middle;
+  font-size: 2rem;
 }
 
 .pagination li.pages ul li {
