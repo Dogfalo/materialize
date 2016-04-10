@@ -10,9 +10,7 @@
     openModal: function(options) {
 
       var $body = $('body');
-      var oldWidth = $body.innerWidth();
       $body.css('overflow', 'hidden');
-      $body.width(oldWidth);
 
       var defaults = {
         opacity: 0.5,
