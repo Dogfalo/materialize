@@ -130,7 +130,9 @@
         var menuOut = false;
 
         dragTarget.on('click', function(){
-          removeMenu();
+          if(menuOut == true) {
+            removeMenu();
+          }
         });
 
         dragTarget.hammer({
