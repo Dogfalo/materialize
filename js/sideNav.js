@@ -130,7 +130,9 @@
         var menuOut = false;
 
         dragTarget.on('click', function(){
-          removeMenu();
+          if(menuOut == true) {
+            removeMenu();
+          }
         });
 
         dragTarget.hammer({
@@ -227,6 +229,8 @@
                 // menu_id.css({'translateX': 0});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: 0, left: ''});
+                
+                menuOut = true;
               }
               else if (!menuOut || velocityX > 0.3) {
                 // Enable Scrolling
@@ -248,6 +252,8 @@
                 menu_id.velocity({'translateX': [0, rightPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: '', left: 0});
+                
+                menuOut = true;
               }
               else if (!menuOut || velocityX < -0.3) {
                 // Enable Scrolling
