@@ -44,7 +44,7 @@
           $(window).resize( function() {
             if (window.innerWidth > 992) {
               // Close menu if window is resized bigger than 992 and user has fixed sidenav
-              if ($('#sidenav-overlay').length != 0 && menuOut) {
+              if ($('#sidenav-overlay').length !== 0 && menuOut) {
                 removeMenu(true);
               }
               else {
@@ -130,7 +130,7 @@
         var menuOut = false;
 
         dragTarget.on('click', function(){
-          if(menuOut == true) {
+          if (menuOut) {
             removeMenu();
           }
         });
@@ -222,14 +222,13 @@
             if (options.edge === 'left') {
               // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
               if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
-                if (leftPos != 0) {
+                // Return menu to open
+                if (leftPos !== 0) {
                   menu_id.velocity({'translateX': [0, leftPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 }
 
-                // menu_id.css({'translateX': 0});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: 0, left: ''});
-                
                 menuOut = true;
               }
               else if (!menuOut || velocityX > 0.3) {
@@ -249,10 +248,13 @@
             }
             else {
               if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
-                menu_id.velocity({'translateX': [0, rightPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                // Return menu to open
+                if (rightPos !== 0) {
+                  menu_id.velocity({'translateX': [0, rightPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+                }
+
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: '', left: 0});
-                
                 menuOut = true;
               }
               else if (!menuOut || velocityX < -0.3) {
