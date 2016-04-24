@@ -21,7 +21,8 @@
         ready: undefined,
         complete: undefined,
         dismissible: true,
-        starting_top: '4%'
+        starting_top: '4%',
+        ending_top: '10%'
       },
       $modal = $(this);
 
@@ -86,7 +87,7 @@
       else {
         $.Velocity.hook($modal, "scaleX", 0.7);
         $modal.css({ top: options.starting_top });
-        $modal.velocity({top: "10%", opacity: 1, scaleX: '1'}, {
+        $modal.velocity({top: options.ending_top, opacity: 1, scaleX: '1'}, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
