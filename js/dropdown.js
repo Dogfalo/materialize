@@ -28,9 +28,9 @@
 
     function updateOptions() {
       if (origin.data('induration') !== undefined)
-        options.inDuration = origin.data('inDuration');
+        options.inDuration = origin.data('induration');
       if (origin.data('outduration') !== undefined)
-        options.outDuration = origin.data('outDuration');
+        options.outDuration = origin.data('outduration');
       if (origin.data('constrainwidth') !== undefined)
         options.constrain_width = origin.data('constrainwidth');
       if (origin.data('hover') !== undefined)
