@@ -5381,8 +5381,8 @@ a.waves-effect .waves-ripple {
   padding: 0 12px;
   border-radius: 16px;
   background-color: #e4e4e4;
-  margin-bottom: 8px;
-  margin-right: 4px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
 .chip img {
@@ -5408,7 +5408,7 @@ a.waves-effect .waves-ripple {
   margin-bottom: 30px;
   min-height: 45px;
   outline: none;
-  padding-bottom: 4px;
+  padding-bottom: 5px;
   transition: all .3s;
 }
 

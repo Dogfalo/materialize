@@ -1,13 +1,9 @@
 (function ($) {
   var chipsHandleEvents = false;
   var materialChipsDefaults = {
-    allowDelete: true,
     data: [],
-    readOnly: false,
-    separator: ',',
     placeholder: '',
     secondaryPlaceholder: '',
-    template: '',
   };
 
   $(document).ready(function(){
@@ -170,13 +166,14 @@
         }
       });
 
-      self.$document.on('click', SELS.CHIPS + ' ' + SELS.DELETE, function(e){
+      self.$document.on('click', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
+        var $chip = $target.closest(SELS.CHIP);
         e.stopPropagation();
         self.deleteChip(
-          $(this).closest(SELS.CHIPS).data('index'),
-          $(this).closest(SELS.CHIP).index(),
+          $chips.data('index'),
+          $chip.index(),
           $chips
         );
         $chips.find('input').focus();
@@ -187,33 +184,21 @@
       var html = '';
       var options = $chips.data('options');
       $chips.data('chips').forEach(function(elem){
-        html += self.chipTemplate(elem, options.allowDelete, options.template);
+        html += self.renderChip(elem);
       });
       html += '<input class="input" placeholder="">';
       $chips.html(html);
       self.setPlaceholder($chips);
     };
 
-    this.chipTemplate = function(elem, allowDelete, tpl) {
+    this.renderChip = function(elem) {
       if (!elem.tag) return;
-
-      if (tpl) {
-        tpl = tpl.replace('{{tag}}', elem.tag);
-        if (elem.image) {
-          tpl = tpl.replace('{{image}}', '<img src="' + elem.image + '">');
-        } else {
-          tpl = tpl.replace('{{image}}', '');
-        }
-        return tpl;
-      }
 
       var html = '<div class="chip">' + elem.tag;
       if (elem.image) {
         html += ' <img src="' + elem.image + '"> ';
       }
-      if (allowDelete) {
-        html += '<i class="material-icons">close</i>';
-      }
+      html += '<i class="material-icons">close</i>';
       html += '</div>';
       return html;
     };
@@ -244,9 +229,9 @@
         return;
       }
       var options = $chips.data('options');
-      var tpl = self.chipTemplate(elem, options.allowDelete, options.template);
+      var chipHtml = self.renderChip(elem);
       $chips.data('chips').push(elem);
-      $(tpl).insertBefore($chips.find('input'));
+      $(chipHtml).insertBefore($chips.find('input'));
       $chips.trigger('chip.add', elem);
       self.setPlaceholder($chips);
     };

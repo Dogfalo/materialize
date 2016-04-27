@@ -1,10 +1,3 @@
-
-$chips-border-color: #9e9e9e;
-
-$chips-bg-color: #e4e4e4;
-$chips-separation: 4px;
-$chips-selected-color: #26a69a;
-
 .chip {
   display: inline-block;
   height: 32px;
@@ -14,9 +7,9 @@ $chips-selected-color: #26a69a;
   line-height: 32px;
   padding: 0 12px;
   border-radius: 16px;
-  background-color: $chips-bg-color;
-  margin-bottom: $chips-separation * 2;
-  margin-right: $chips-separation;
+  background-color: $chip-bg-color;
+  margin-bottom: $chip-margin;
+  margin-right: $chip-margin;
 
   img {
     float: left;
@@ -37,17 +30,17 @@ $chips-selected-color: #26a69a;
 
 .chips {
   border: none;
-  border-bottom: 1px solid $chips-border-color;
-  box-shadow: none;  
+  border-bottom: 1px solid $chip-border-color;
+  box-shadow: none;
   margin-bottom: 30px;
   min-height: 45px;
   outline: none;
-  padding-bottom: $chips-separation;
+  padding-bottom: $chip-margin;
   transition: all .3s;
 
   &.focus {
-    border-bottom: 1px solid $chips-selected-color;
-    box-shadow: 0 1px 0 0 $chips-selected-color;
+    border-bottom: 1px solid $chip-selected-color;
+    box-shadow: 0 1px 0 0 $chip-selected-color;
   }
 
   &:hover {
@@ -55,7 +48,7 @@ $chips-selected-color: #26a69a;
   }
 
   .chip.selected {
-    background-color: $chips-selected-color;
+    background-color: $chip-selected-color;
     color: #fff;
   }
 

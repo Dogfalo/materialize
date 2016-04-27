@@ -150,29 +150,15 @@
     $('.datepicker').pickadate({selectYears: 20});
     $('select').not('.disabled').material_select();
 
-    $('.chips-default').material_chip({
+    $('.chips-initial').material_chip({
+      readOnly: true,
       data: [{
         tag: 'Apple',
       }, {
         tag: 'Microsoft',
       }, {
         tag: 'Google',
-      }],
-    });
-
-    var template = '';
-    template += '<div class="chip">';
-    template += '{{image}}';
-    template += '{{tag}} (fruits)';
-    template += '</div>';
-
-    $('.chips-custom').material_chip({
-      data: [{
-        tag: 'Orange',
-      }, {
-        tag: 'Apple',
-      }],
-      template: template,
+      }]
     });
 
     $('.chips-placeholder').material_chip({
@@ -180,20 +166,7 @@
       secondaryPlaceholder: '+Tag',
     });
 
-    $('.chips-default').on('chip.add', function(e, chip){
-      // you have the added chip here
-      console.log('chips: a new chip has been added', chip);
-    });
-
-    $('.chips-default').on('chip.delete', function(e, chip){
-      // you have the deleted chip here
-      console.log('chips: a new chip has been deleted', chip);
-    });
-
-    $('.chips-default').on('chip.select', function(e, chip){
-      // you have the selected chip here
-      console.log('chips: a new chip has been selected', chip);
-    });
+    $('.chips').material_chip();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
