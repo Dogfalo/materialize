@@ -5393,7 +5393,7 @@ a.waves-effect .waves-ripple {
   border-radius: 50%;
 }
 
-.chip i.material-icons {
+.chip .close {
   cursor: pointer;
   float: right;
   font-size: 16px;
