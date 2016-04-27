@@ -198,7 +198,7 @@
       if (elem.image) {
         html += ' <img src="' + elem.image + '"> ';
       }
-      html += '<i class="material-icons">close</i>';
+      html += '<i class="material-icons close">close</i>';
       html += '</div>';
       return html;
     };
