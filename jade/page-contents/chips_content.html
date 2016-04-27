@@ -14,7 +14,7 @@
         </div>
         <div class="chip">
           Tag
-          <i class="material-icons">close</i>
+          <i class="close material-icons">close</i>
         </div>
       </div>
 
@@ -44,8 +44,171 @@
         </code></pre>
       </div>
 
-    </div>
+      <div id="basic" class="section scrollspy">
+        <h4>Basic Usage</h4>
+        <p class="caption">Use the default chip template.</p>
+        <div class="chips chips-default"></div>
+        <p class="caption">Use a custom chip template.</p>
+        <div class="chips chips-custom"></div>
+        <p class="caption">Use placeholders and override hint texts.</p>
+        <div class="chips chips-placeholder"></div>
+      </div>
 
+      <div id="properties" class="section scrollspy">
+        <h4>Markup</h4>
+        <pre><code class="language-markup">
+        &lt;div class="chips-init">&lt;/div>
+        </code></pre>
+        <h4>Initialize</h4>
+        <p class="caption">Initialize chips</p>
+        <pre><code class="language-javascript">
+        $('.chips-init').material_chip({
+          placeholder: 'Enter a tag',
+          secondaryPlaceholder: '+Tag',
+          data: [{
+            tag: 'Apple',
+          }, {
+            tag: 'Microsoft',
+          }, {
+            tag: 'Google',
+          }],
+        });
+        </code></pre>
+        <p class="caption">Chip json</p>
+        <pre><code class="language-javascript">
+        var chip = {
+          tag: 'chip content',
+          image: '', //optional
+          id: 1, //optional
+        };
+        </code></pre>
+        <p class="caption">Available properties</p>
+        <table class="table bordered">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>allowDelete</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>data</td>
+              <td>array</td>
+              <td>[]</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td>''</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>readOnly</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>secondaryPlaceholder</td>
+              <td>string</td>
+              <td>''</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>separator</td>
+              <td>string</td>
+              <td>','</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>template</td>
+              <td>string</td>
+              <td>''</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="events" class="section scrollspy">
+        <h4>Events</h4>
+        <p class="caption">Material chips exposes a few events for hooking
+          into chips functionality.
+        </p>
+        <table class="table bordered">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>chips.add</td>
+              <td>this method is triggered when a chip is <strong>added</strong>.</td>
+            </tr>
+            <tr>
+              <td>chips.delete</td>
+              <td>this method is triggered when a chip is <strong>deleted</strong>.</td>
+            </tr>
+            <tr>
+              <td>chips.select</td>
+              <td>this method is triggered when a chip is <strong>selected</strong>.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br><br>
+
+        <pre><code class="language-javascript">
+        $('.chips-init').on('chip.add', function(e, chip){
+          // you have the added chip here
+        });
+
+        $('.chips-init').on('chip.delete', function(e, chip){
+          // you have the deleted chip here
+        });
+
+        $('.chips-init').on('chip.select', function(e, chip){
+          // you have the selected chip here
+        });
+        </code></pre>
+
+      </div>
+      <div id="methods" class="section scrollspy">
+        <h4>Api</h4>
+        <table class="table bordered">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>data</td>
+              <td>$chips.material_chip('data')</td>
+              <td>It returns the stored data.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>$chips.material_chip('options')</td>
+              <td>It returns the given options.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
@@ -58,6 +221,10 @@
           <ul class="section table-of-contents">
             <li><a href="#contact">Contacts</a></li>
             <li><a href="#tag">Tags</a></li>
+            <li><a href="#basic">Basic usage</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#methods">Methods</a></li>
           </ul>
         </div>
       </div>
@@ -65,4 +232,3 @@
 
   </div>
 </div>
-
