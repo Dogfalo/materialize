@@ -3,14 +3,10 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="introduction" class="section scrollspy">
-        <h4>Introduction</h4>
-        <p class="caption">Pushpin is our fixed positioning plugin. You can check out our live examples: the fixed Table of Contents on the right. </p>
-      </div>
-
-
-
       <div id="initialization" class="section scrollspy">
+        <h4>Introduction</h4>
+        <p class="caption">Pushpin is our fixed positioning plugin. Use this to pin elements to your page during specific scroll ranges. You can check out our live example: the fixed table of contents on the right. </p>
+
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript col s12">
   $(document).ready(function(){
@@ -19,6 +15,26 @@
         </code></pre>
       </div>
 
+      <div id="classes" class="section scrollspy">
+        <h4>CSS Classes</h4>
+        <p class="caption">A pushpinned element has 3 states. One above and below the scrolling threshold, and the pinned state where the element becomes fixed. Because pushpin changes positioning, chances are your element will look different when the states change. Use these css classes to correctly style your 3 states.</p>
+        <pre><code class="language-css col s12">
+  // Class for when element is above threshold
+  .pin-top {
+    position: relative;
+  }
+
+  // Class for when element is below threshold
+  .pin-bottom {
+    position: relative;
+  }
+
+  // Class for when element is pinned
+  .pinned {
+    position: fixed !important;
+  }
+        </code></pre>
+      </div>
 
 
       <div id="options" class="section scrollspy">
@@ -60,8 +76,8 @@
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
             <li><a href="#initialization">Initialization</a></li>
+            <li><a href="#classes">CSS classes</a></li>
             <li><a href="#options">Options</a></li>
           </ul>
         </div>
