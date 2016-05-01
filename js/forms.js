@@ -290,66 +290,64 @@
 
         // Check if data isn't empty
         if(!$.isEmptyObject(data)) {
-          // Create html element
-          var $autocomplete = $('<ul class="autocomplete-content dropdown-content hide"></ul>');
+          // Create autocomplete element
+          var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
 
-          for(var key in data) {
-            if (data.hasOwnProperty(key)) {
-              console.log(data[key]);
-              // If path and class aren't empty add image to auto complete else create normal element
-              if( !!data[key]) {
-                $autocomplete.append('<li><img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span></li>');
-              } else {
-                $autocomplete.append('<li><span>'+ key +'</span></li>');
-              }
-            }
-          }
-
+          // Append autocomplete element
           if ($inputDiv.length) {
             $inputDiv.append($autocomplete); // Set ul in body
           } else {
             $input.after($autocomplete);
           }
-          // End create html element
 
           var highlight = function(string, $el) {
+            var img = $el.find('img');
             var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
                 matchEnd = matchStart + string.length - 1,
                 beforeMatch = $el.text().slice(0, matchStart),
                 matchText = $el.text().slice(matchStart, matchEnd + 1),
                 afterMatch = $el.text().slice(matchEnd + 1);
             $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
+            if (img.length) {
+              $el.prepend(img);
+            }
           };
 
           // Perform search
-          $input.on('keyup', function () {
-            var val = $input.val().trim().toLowerCase();
+          $input.on('keyup', function (e) {
+            // Capture Enter
+            if (e.which === 13) {
+              $autocomplete.find('li').first().click();
+              return;
+            }
+
+            var val = $input.val().toLowerCase();
+            $autocomplete.empty();
 
             // Check if the input isn't empty
             if (val !== '') {
-              $autocomplete.find('li').addClass('hide');
-              $autocomplete.find('li').filter(function() {
-                // Show results
-                $autocomplete.removeClass('hide');
+              for(var key in data) {
+                if (data.hasOwnProperty(key) &&
+                    key.toLowerCase().indexOf(val) !== -1 &&
+                    key.toLowerCase() !== val) {
+                  var autocompleteOption = $('<li></li>');
+                  if(!!data[key]) {
+                    autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+                  } else {
+                    autocompleteOption.append('<span>'+ key +'</span>');
+                  }
+                  $autocomplete.append(autocompleteOption);
 
-                // If text needs to highlighted
-                if($input.hasClass('highlight-matching') ) {
-                  highlight(val, $(this));
+                  highlight(val, autocompleteOption);
                 }
-
-                return $(this).text().toLowerCase().indexOf(val) !== -1;
-              }).removeClass('hide');
-            } else {
-              $autocomplete.find('li').addClass('hide');
-              $autocomplete.addClass('hide');
+              }
             }
           });
 
           // Set input value
           $autocomplete.on('click', 'li', function () {
             $input.val($(this).text().trim());
-            $autocomplete.find('li').addClass('hide');
-            $autocomplete.addClass('hide');
+            $autocomplete.empty();
           });
         }
       });

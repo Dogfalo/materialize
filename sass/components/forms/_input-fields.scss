@@ -256,10 +256,19 @@ textarea {
 
 
 /* Autocomplete */
-
 .autocomplete-content {
   margin-top: -15px;
   display: block;
   opacity: 1;
   position: static;
+
+  li {
+    .highlight { color: #444; }
+
+    img {
+      height: $dropdown-item-height - 10;
+      width: $dropdown-item-height - 10;
+      margin: 5px 15px;
+    }
+  }
 }

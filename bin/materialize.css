@@ -5947,6 +5947,16 @@ textarea.materialize-textarea {
   position: static;
 }
 
+.autocomplete-content li .highlight {
+  color: #444;
+}
+
+.autocomplete-content li img {
+  height: 40px;
+  width: 40px;
+  margin: 5px 15px;
+}
+
 /* Radio Buttons
    ========================================================================== */
 [type="radio"]:not(:checked),
