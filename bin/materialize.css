@@ -5848,7 +5848,8 @@ textarea.materialize-textarea + label:after {
 .input-field .prefix ~ input,
 .input-field .prefix ~ textarea,
 .input-field .prefix ~ label,
-.input-field .prefix ~ .validate ~ label {
+.input-field .prefix ~ .validate ~ label,
+.input-field .prefix ~ .autocomplete-content {
   margin-left: 3rem;
   width: 92%;
   width: calc(100% - 3rem);
@@ -5936,6 +5937,24 @@ textarea.materialize-textarea {
   /* future version of deprecated 'word-wrap' */
   padding-top: 1.2rem;
   /* prevents text jump on Enter keypress */
+}
+
+/* Autocomplete */
+.autocomplete-content {
+  margin-top: -15px;
+  display: block;
+  opacity: 1;
+  position: static;
+}
+
+.autocomplete-content li .highlight {
+  color: #444;
+}
+
+.autocomplete-content li img {
+  height: 40px;
+  width: 40px;
+  margin: 5px 15px;
 }
 
 /* Radio Buttons

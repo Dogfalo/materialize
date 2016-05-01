@@ -147,6 +147,9 @@
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
     $('select').not('.disabled').material_select();
+    $('input.autocomplete').autocomplete({
+      data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
+    });
 
     $('.chips-initial').material_chip({
       readOnly: true,
