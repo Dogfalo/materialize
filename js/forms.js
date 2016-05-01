@@ -100,7 +100,7 @@
         $(this).addClass('tabbed');
         var $this = $(this);
         $this.one('blur', function(e) {
-          
+
           $(this).removeClass('tabbed');
         });
         return;
@@ -271,6 +271,90 @@
         thumb.removeClass('active');
       }
     });
+
+    /**************************
+     * Auto complete plugin  *
+     *************************/
+    $.fn.autocomplete = function (options) {
+      // Defaults
+      var defaults = {
+        data: []
+      };
+
+      options = $.extend(defaults, options);
+
+      return this.each(function() {
+        var $input = $(this);
+        var data = options.data,
+            $inputDiv = $input.closest('.input-field'); // Div to append on
+
+        // Check if data isn't empty
+        if(!$.isEmptyObject(data)) {
+          // Create html element
+          var $autocomplete = $('<ul class="autocomplete-content dropdown-content hide"></ul>');
+
+          for(var key in data) {
+            if (data.hasOwnProperty(key)) {
+              console.log(data[key]);
+              // If path and class aren't empty add image to auto complete else create normal element
+              if( !!data[key]) {
+                $autocomplete.append('<li><img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span></li>');
+              } else {
+                $autocomplete.append('<li><span>'+ key +'</span></li>');
+              }
+            }
+          }
+
+          if ($inputDiv.length) {
+            $inputDiv.append($autocomplete); // Set ul in body
+          } else {
+            $input.after($autocomplete);
+          }
+          // End create html element
+
+          var highlight = function(string, $el) {
+            var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
+                matchEnd = matchStart + string.length - 1,
+                beforeMatch = $el.text().slice(0, matchStart),
+                matchText = $el.text().slice(matchStart, matchEnd + 1),
+                afterMatch = $el.text().slice(matchEnd + 1);
+            $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
+          };
+
+          // Perform search
+          $input.on('keyup', function () {
+            var val = $input.val().trim().toLowerCase();
+
+            // Check if the input isn't empty
+            if (val !== '') {
+              $autocomplete.find('li').addClass('hide');
+              $autocomplete.find('li').filter(function() {
+                // Show results
+                $autocomplete.removeClass('hide');
+
+                // If text needs to highlighted
+                if($input.hasClass('highlight-matching') ) {
+                  highlight(val, $(this));
+                }
+
+                return $(this).text().toLowerCase().indexOf(val) !== -1;
+              }).removeClass('hide');
+            } else {
+              $autocomplete.find('li').addClass('hide');
+              $autocomplete.addClass('hide');
+            }
+          });
+
+          // Set input value
+          $autocomplete.on('click', 'li', function () {
+            $input.val($(this).text().trim());
+            $autocomplete.find('li').addClass('hide');
+            $autocomplete.addClass('hide');
+          });
+        }
+      });
+    };
+
   }); // End of $(document).ready
 
   /*******************

@@ -165,7 +165,8 @@ textarea.materialize-textarea {
   .prefix ~ input,
   .prefix ~ textarea,
   .prefix ~ label,
-  .prefix ~ .validate ~ label {
+  .prefix ~ .validate ~ label,
+  .prefix ~ .autocomplete-content {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem);
@@ -251,4 +252,14 @@ textarea {
   word-wrap: break-word;
   overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
   padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+}
+
+
+/* Autocomplete */
+
+.autocomplete-content {
+  margin-top: -15px;
+  display: block;
+  opacity: 1;
+  position: static;
 }
