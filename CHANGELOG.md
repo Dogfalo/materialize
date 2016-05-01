@@ -1,7 +1,3 @@
-## v0.97.5 (January 17, 2016)
-- Added autocomplete to input (tested and working with: text, email, number)
-- Added highlighting to autocomplete (not working with images and is bugged)
-
 ## v0.96.0 (April 1, 2015)
 - Toasts, transitions, scrollfire added under Materialize namespace
 - Dropdown is now created as a child of its parent

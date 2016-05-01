@@ -278,7 +278,7 @@
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
-        data: []
+        data: {}
       };
 
       options = $.extend(defaults, options);
@@ -289,7 +289,7 @@
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
         // Check if data isn't empty
-        if(!$.isEmptyObject(data)) {
+        if (!$.isEmptyObject(data)) {
           // Create autocomplete element
           var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
 
