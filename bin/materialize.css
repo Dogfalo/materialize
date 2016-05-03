@@ -5893,6 +5893,7 @@ textarea.materialize-textarea + label:after {
 .input-field input[type=search]:focus {
   background-color: #fff;
   border: 0;
+  height:auto;
   box-shadow: none;
   color: #444;
 }
