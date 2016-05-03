@@ -108,7 +108,8 @@
     closeModal: function(options) {
       var defaults = {
         out_duration: 250,
-        complete: undefined
+        complete: undefined,
+        resetContentScrollPosition: true
       },
       $modal = $(this),
       overlayID = $modal.data('overlay-id'),
@@ -122,6 +123,9 @@
         overflow: '',
         width: ''
       });
+
+      //If user scrolled to the bottom of content then reset scroll position on exit if option allows.
+      if (options.resetContentScrollPosition) $modal.find(".modal-content").scrollTop(0, 0);
 
       $modal.find('.modal-close').off('click.close');
       $(document).off('keyup.leanModal' + overlayID);
