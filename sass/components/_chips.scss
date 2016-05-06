@@ -8,6 +8,8 @@
   padding: 0 12px;
   border-radius: 16px;
   background-color: $chip-bg-color;
+  margin-bottom: $chip-margin;
+  margin-right: $chip-margin;
 
   img {
     float: left;
@@ -17,11 +19,56 @@
     border-radius: 50%;
   }
 
-  i.material-icons {
+  .close {
     cursor: pointer;
     float: right;
     font-size: 16px;
     line-height: 32px;
     padding-left: 8px;
+  }
+}
+
+.chips {
+  border: none;
+  border-bottom: 1px solid $chip-border-color;
+  box-shadow: none;
+  margin-bottom: 30px;
+  min-height: 45px;
+  outline: none;
+  padding-bottom: $chip-margin;
+  transition: all .3s;
+
+  &.focus {
+    border-bottom: 1px solid $chip-selected-color;
+    box-shadow: 0 1px 0 0 $chip-selected-color;
+  }
+
+  &:hover {
+    cursor: text;
+  }
+
+  .chip.selected {
+    background-color: $chip-selected-color;
+    color: #fff;
+  }
+
+  .input {
+    background: none;
+    border: 0;
+    color: rgba(0,0,0,.6);
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    height: 32px;
+    margin-right: 20px;
+    line-height: 32px;
+    outline: 0;
+    padding: 0 !important;
+    width: 120px !important;
+  }
+
+  .input:focus {
+    border: 0 !important;
+    box-shadow: none !important;
   }
 }

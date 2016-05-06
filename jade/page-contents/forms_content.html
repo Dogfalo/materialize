@@ -79,7 +79,7 @@
   &lt;/div>
         </code></pre><br>
         <h4>Prefilling Text Inputs</h4>
-        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label</p>
+        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">Materialize.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
         <div class="row">
           <div class="input-field col s6">
             <input value="Alvin" id="first_name2" type="text" class="validate">
@@ -94,6 +94,12 @@
       &lt;label class="active" for="first_name2">First Name&lt;/label>
     &lt;/div>
   &lt;/div>
+        </code></pre>
+
+        <pre><code class="language-javascript">
+  $(document).ready(function() {
+    Materialize.updateTextFields();
+  });
         </code></pre>
 
         <h4>Icon Prefixes</h4>
@@ -531,7 +537,7 @@
       <!-- Checkboxes -->
       <div id="checkbox" class="section scrollspy">
         <h2 class="header">Checkboxes</h2>
-        <p>Use checkboxes when looking for yes or no answers. The <code class="language-markup">for</code> attribute is necessary to bind the our custom checkbox with the input. Add the input's <code class="language-markup">id</code> as the value of the <code class="language-markup">for</code> attribute of the label. </p>
+        <p>Use checkboxes when looking for yes or no answers. The <code class="language-markup">for</code> attribute is necessary to bind our custom checkbox with the input. Add the input's <code class="language-markup">id</code> as the value of the <code class="language-markup">for</code> attribute of the label. </p>
         <form action="#">
           <p>
             <input type="checkbox" id="test9" />
@@ -794,6 +800,51 @@
         </code></pre>
       </div>
 
+      <div id="autocomplete" class="section scrollspy">
+        <h2 class="header">Autocomplete</h2>
+        <p class="caption">
+          Add an autocomplete dropdown below your input to suggest possible values.
+        </p>
+
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">textsms</i>
+                <input type="text" id="autocomplete-input" class="autocomplete">
+                <label for="autocomplete-input">Autocomplete</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;i class="material-icons prefix">textsms&lt;/i>
+          &lt;input type="text" id="autocomplete">
+          &lt;label for="autocomplete">Autocomplete&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+
+        <h4>Initialization</h4>
+        <p>The data is a json object where the key is the matching string and the value is an optional image url.</p>
+        <pre><code class="language-javascript">
+  $('input.autocomplete').autocomplete({
+    data: {
+      "Apple": null,
+      "Microsoft": null,
+      "Google": 'http://placehold.it/250x250'
+    }
+  });
+        </code></pre>
+      </div>
+
 
 
     </div>
@@ -815,6 +866,7 @@
             <li><a href="#range">Range</a></li>
             <li><a href="#date-picker">Date Picker</a></li>
             <li><a href="#character-counter">Character Counter</a></li>
+            <li><a href="#autocomplete">Autocomplete</a></li>
           </ul>
         </div>
       </div>

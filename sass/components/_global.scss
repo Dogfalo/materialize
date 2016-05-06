@@ -18,7 +18,11 @@ main {
 }
 
 ul {
-	list-style-type: none;
+  &.browser-default {
+    list-style-type: initial;
+  }
+
+  list-style-type: none;
 }
 
 a {
@@ -145,13 +149,18 @@ video.responsive-video {
 
   li {
     display: inline-block;
-    font-size: 1.2rem;
-    padding: 0 10px;
-    line-height: 30px;
     border-radius: 2px;
     text-align: center;
+    vertical-align: top;
+    height: 30px;
 
-    a { color: #444; }
+    a {
+      color: #444;
+      display: inline-block;
+      font-size: 1.2rem;
+      padding: 0 10px;
+      line-height: 30px;
+    }
 
     &.active a { color: #fff; }
 
@@ -163,8 +172,7 @@ video.responsive-video {
     }
 
     i {
-      font-size: 2.2rem;
-      vertical-align: middle;
+      font-size: 2rem;
     }
   }
 
@@ -375,7 +383,7 @@ table {
     }
 
     > tr > td {
-      border-radius: 0px;
+      border-radius: 0;
     }
   }
 
@@ -389,7 +397,6 @@ table {
   &.centered {
     thead tr th, tbody tr td {
       text-align: center;
-
     }
   }
 
@@ -416,6 +423,10 @@ td, th{
     border-spacing: 0;
     display: block;
     position: relative;
+
+    td:empty:before {
+      content: '\00a0';
+    }
 
     th,
     td {
@@ -607,6 +618,12 @@ span.badge {
   &.new:after {
     content: " new";
   }
+
+  &[data-badge-caption]::after {
+    content: " " attr(data-badge-caption);
+  }
+
+
 }
 nav ul a span.badge {
   position: static;
@@ -642,7 +659,6 @@ nav ul a span.badge {
     overflow: hidden;
   .determinate {
     position: absolute;
-    background-color: inherit;
     top: 0;
     left: 0;
     bottom: 0;

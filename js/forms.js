@@ -100,7 +100,7 @@
         $(this).addClass('tabbed');
         var $this = $(this);
         $this.one('blur', function(e) {
-          console.log(e);
+
           $(this).removeClass('tabbed');
         });
         return;
@@ -271,6 +271,88 @@
         thumb.removeClass('active');
       }
     });
+
+    /**************************
+     * Auto complete plugin  *
+     *************************/
+    $.fn.autocomplete = function (options) {
+      // Defaults
+      var defaults = {
+        data: {}
+      };
+
+      options = $.extend(defaults, options);
+
+      return this.each(function() {
+        var $input = $(this);
+        var data = options.data,
+            $inputDiv = $input.closest('.input-field'); // Div to append on
+
+        // Check if data isn't empty
+        if (!$.isEmptyObject(data)) {
+          // Create autocomplete element
+          var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
+
+          // Append autocomplete element
+          if ($inputDiv.length) {
+            $inputDiv.append($autocomplete); // Set ul in body
+          } else {
+            $input.after($autocomplete);
+          }
+
+          var highlight = function(string, $el) {
+            var img = $el.find('img');
+            var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
+                matchEnd = matchStart + string.length - 1,
+                beforeMatch = $el.text().slice(0, matchStart),
+                matchText = $el.text().slice(matchStart, matchEnd + 1),
+                afterMatch = $el.text().slice(matchEnd + 1);
+            $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
+            if (img.length) {
+              $el.prepend(img);
+            }
+          };
+
+          // Perform search
+          $input.on('keyup', function (e) {
+            // Capture Enter
+            if (e.which === 13) {
+              $autocomplete.find('li').first().click();
+              return;
+            }
+
+            var val = $input.val().toLowerCase();
+            $autocomplete.empty();
+
+            // Check if the input isn't empty
+            if (val !== '') {
+              for(var key in data) {
+                if (data.hasOwnProperty(key) &&
+                    key.toLowerCase().indexOf(val) !== -1 &&
+                    key.toLowerCase() !== val) {
+                  var autocompleteOption = $('<li></li>');
+                  if(!!data[key]) {
+                    autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+                  } else {
+                    autocompleteOption.append('<span>'+ key +'</span>');
+                  }
+                  $autocomplete.append(autocompleteOption);
+
+                  highlight(val, autocompleteOption);
+                }
+              }
+            }
+          });
+
+          // Set input value
+          $autocomplete.on('click', 'li', function () {
+            $input.val($(this).text().trim());
+            $autocomplete.empty();
+          });
+        }
+      });
+    };
+
   }); // End of $(document).ready
 
   /*******************
@@ -317,6 +399,7 @@
       var appendOptionWithIcon = function(select, option, type) {
         // Add disabled attr if disabled
         var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
+        var optgroupClass = (type === 'optgroup-option') ? 'optgroup-option ' : '';
 
         // add icons
         var icon_url = option.data('icon');
@@ -329,7 +412,7 @@
           if (type === 'multiple') {
             options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
           } else {
-            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + optgroupClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
           }
           return true;
         }
@@ -338,7 +421,7 @@
         if (type === 'multiple') {
           options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
         } else {
-          options.append($('<li class="' + disabledClass + '"><span>' + option.html() + '</span></li>'));
+          options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + option.html() + '</span></li>'));
         }
       };
 
@@ -359,7 +442,7 @@
             options.append($('<li class="optgroup"><span>' + $(this).attr('label') + '</span></li>'));
 
             selectOptions.each(function() {
-              appendOptionWithIcon($select, $(this));
+              appendOptionWithIcon($select, $(this), 'optgroup-option');
             });
           }
         });

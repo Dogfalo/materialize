@@ -117,8 +117,13 @@ nav {
   }
 
   // Navbar Search Form
+  form {
+    height: 100%;
+  }
+
   .input-field {
     margin: 0;
+    height: 100%;
 
     input {
       height: 100%;
@@ -132,6 +137,7 @@ nav {
         box-shadow: none;
       }
     }
+
     label {
       top: 0;
       left: 0;
@@ -145,9 +151,7 @@ nav {
         transform: translateY(0);
       }
     }
-
   }
-
 }
 
 // Fixed Navbar

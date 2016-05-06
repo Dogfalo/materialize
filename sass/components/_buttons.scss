@@ -18,7 +18,7 @@
 .btn.disabled,
 .btn-floating.disabled,
 .btn-large.disabled,
-.btn:disabled
+.btn:disabled,
 .btn-large:disabled,
 .btn-floating:disabled {
   background-color: $button-disabled-background !important;
@@ -131,7 +131,7 @@ button.btn-floating {
       top: 50%;
       transform: translateY(-50%);
       height: 100%;
-      left: initial;
+      left: auto;
       width: 500px; /*width 100% only goes to width of button container */
 
       li {

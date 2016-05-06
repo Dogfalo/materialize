@@ -134,7 +134,7 @@
 
         <div id="button-trigger" class="scrollspy section">
           <h4>Modals with Button trigger</h4>
-          <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather that the href attribute. </p>
+          <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather than the href attribute. </p>
 
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
@@ -174,6 +174,8 @@
       opacity: .5, // Opacity of modal background
       in_duration: 300, // Transition in duration
       out_duration: 200, // Transition out duration
+      starting_top: '4%', // Starting top style attribute
+      ending_top: '10%', // Ending top style attribute
       ready: function() { alert('Ready'); }, // Callback for Modal open
       complete: function() { alert('Closed'); } // Callback for Modal close
     }
@@ -206,4 +208,3 @@
 
 </div>
 </div>
-

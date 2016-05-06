@@ -5,13 +5,14 @@
       // For each set of tabs, we want to keep track of
       // which tab is active and its associated content
       var $this = $(this),
-          window_width = $(window).width();
+          window_width = $(window).width(); 
 
       $this.width('100%');
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
        //Get only visible li.
           $tab_width = $this.find('li:visible').first().outerWidth(),
+
           $index = 0;
 
       // If the location.hash matches one of the links, use that as the active tab.
@@ -31,7 +32,9 @@
         $index = 0;
       }
 
-      $content = $($active[0].hash);
+      if ($active[0] !== undefined) {
+        $content = $($active[0].hash);
+      }
 
       // append indicator then set indicator width to tab width
       $this.append('<div class="indicator"></div>');
@@ -43,6 +46,7 @@
       $(window).resize(function () {
         $tabs_width = $this.width();
         $tab_width = $this.find('li:visible').first().outerWidth();
+
         if ($index < 0) {
           $index = 0;
         }
@@ -68,9 +72,12 @@
         //$tabs_width = $this.width();
         //$tab_width = $this.find('li:visible').first().outerWidth();
 
+
         // Make the old tab inactive.
         $active.removeClass('active');
-        $content.hide();
+        if ($content !== undefined) {
+          $content.hide();
+        }
 
         // Update the variables with the new link and content
         $active = $(this);
@@ -87,7 +94,9 @@
         // Change url to current tab
         // window.location.hash = $active.attr('href');
 
-        $content.show();
+        if ($content !== undefined) {
+          $content.show();
+        }
 
         //Gettting tab width only after $content is shown. Since a vertical scroll will change 
         // tabs width. 

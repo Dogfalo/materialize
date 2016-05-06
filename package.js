@@ -3,7 +3,7 @@
 Package.describe({
   name: 'materialize:materialize',  // http://atmospherejs.com/materialize/materialize
   summary: 'Materialize (official): A modern responsive front-end framework based on Material Design',
-  version: '0.97.5',
+  version: '0.97.6',
   git: 'https://github.com/Dogfalo/materialize.git'
 });
 
@@ -14,26 +14,21 @@ Package.onUse(function (api) {
   api.imply('jquery', 'client');
 
   var assets = [
-    'dist/font/material-design-icons/Material-Design-Icons.eot',
-    'dist/font/material-design-icons/Material-Design-Icons.svg',
-    'dist/font/material-design-icons/Material-Design-Icons.ttf',
-    'dist/font/material-design-icons/Material-Design-Icons.woff',
-    'dist/font/material-design-icons/Material-Design-Icons.woff2',
-    'dist/font/roboto/Roboto-Bold.ttf',
-    'dist/font/roboto/Roboto-Bold.woff',
-    'dist/font/roboto/Roboto-Bold.woff2',
-    'dist/font/roboto/Roboto-Light.ttf',
-    'dist/font/roboto/Roboto-Light.woff',
-    'dist/font/roboto/Roboto-Light.woff2',
-    'dist/font/roboto/Roboto-Medium.ttf',
-    'dist/font/roboto/Roboto-Medium.woff',
-    'dist/font/roboto/Roboto-Medium.woff2',
-    'dist/font/roboto/Roboto-Regular.ttf',
-    'dist/font/roboto/Roboto-Regular.woff',
-    'dist/font/roboto/Roboto-Regular.woff2',
-    'dist/font/roboto/Roboto-Thin.ttf',
-    'dist/font/roboto/Roboto-Thin.woff',
-    'dist/font/roboto/Roboto-Thin.woff2',
+    'dist/fonts/roboto/Roboto-Bold.ttf',
+    'dist/fonts/roboto/Roboto-Bold.woff',
+    'dist/fonts/roboto/Roboto-Bold.woff2',
+    'dist/fonts/roboto/Roboto-Light.ttf',
+    'dist/fonts/roboto/Roboto-Light.woff',
+    'dist/fonts/roboto/Roboto-Light.woff2',
+    'dist/fonts/roboto/Roboto-Medium.ttf',
+    'dist/fonts/roboto/Roboto-Medium.woff',
+    'dist/fonts/roboto/Roboto-Medium.woff2',
+    'dist/fonts/roboto/Roboto-Regular.ttf',
+    'dist/fonts/roboto/Roboto-Regular.woff',
+    'dist/fonts/roboto/Roboto-Regular.woff2',
+    'dist/fonts/roboto/Roboto-Thin.ttf',
+    'dist/fonts/roboto/Roboto-Thin.woff',
+    'dist/fonts/roboto/Roboto-Thin.woff2',
   ];
 
   addAssets(api, assets);

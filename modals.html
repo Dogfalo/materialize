@@ -37,7 +37,7 @@
           <div class="nav-wrapper"><a class="page-title">Modals</a></div>
         </div>
       </nav>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
@@ -244,7 +244,7 @@
 
         <div id="button-trigger" class="scrollspy section">
           <h4>Modals with Button trigger</h4>
-          <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather that the href attribute. </p>
+          <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather than the href attribute. </p>
 
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
@@ -284,6 +284,8 @@
       opacity: .5, // Opacity of modal background
       in_duration: 300, // Transition in duration
       out_duration: 200, // Transition out duration
+      starting_top: '4%', // Starting top style attribute
+      ending_top: '10%', // Ending top style attribute
       ready: function() { alert('Ready'); }, // Callback for Modal open
       complete: function() { alert('Closed'); } // Callback for Modal close
     }
@@ -316,7 +318,6 @@
 
 </div>
 </div>
-
 
     </main>    <footer class="page-footer">
       <div class="container">
