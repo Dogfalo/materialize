@@ -1,7 +1,14 @@
 (function ($) {
 
   var methods = {
-    init : function() {
+    init : function(options) {
+
+      var defaults = {
+        changeListener: undefined
+      }
+      // Override defaults
+      options = $.extend(defaults, options);
+
       return this.each(function() {
 
       // For each set of tabs, we want to keep track of
@@ -94,6 +101,10 @@
 
         if ($content !== undefined) {
           $content.show();
+        }
+
+        if (typeof(options.changeListener()) === "function") {
+          options.changeListener($content);
         }
 
         // Update indicator

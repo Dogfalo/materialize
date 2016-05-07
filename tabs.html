@@ -189,6 +189,20 @@
         </code></pre>
       </div>
 
+      <div id="callback" class="section scrollspy">
+        <h4>jQuery Plugin Callback</h4>
+        <p>You could also use listeners on change tab. </p>
+        <pre><code class="language-javascript">
+  $(document).ready(function(){
+   $('ul.tabs').tabs({
+      changeListener: function () {
+        console.log("changed")
+      }
+    });
+  });
+        </code></pre>
+      </div>
+
       <div id="method" class="section scrollspy">
         <h4>jQuery Plugin Methods</h4>
         <p>You can programmatically trigger a tab change with our <code class="language-javascript">select_tab</code> method. You have to input the id of the tab you want to switch to. In the case of our demo it would be either test1, test2, test3, or test4.</p>
