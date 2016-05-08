@@ -120,9 +120,11 @@
 
       var fontFamily = $textarea.css('font-family');
       var fontSize = $textarea.css('font-size');
+      var lineHeight = $textarea.css('line-height');
 
       if (fontSize) { hiddenDiv.css('font-size', fontSize); }
       if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
+      if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
 
       if ($textarea.attr('wrap') === "off") {
         hiddenDiv.css('overflow-wrap', "normal")
