@@ -1872,7 +1872,7 @@ $(document).ready(function(){
     window.Waves = Waves;
 
     document.addEventListener('DOMContentLoaded', function() {
-        Waves.displayEffect();
+        Waves.init();
     }, false);
 
 })(window);
