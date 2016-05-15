@@ -22,6 +22,8 @@
         var view = $(this);
         // Don't double initialize.
         if (view.hasClass('initialized')) {
+          // Redraw carousel.
+          $(this).trigger('carouselNext', [.000001]);
           return true;
         }
 
