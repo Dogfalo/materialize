@@ -1,18 +1,18 @@
 (function ($) {
-
-  var methods = {
+ var methods = {
     init : function() {
       return this.each(function() {
-
       // For each set of tabs, we want to keep track of
       // which tab is active and its associated content
       var $this = $(this),
-          window_width = $(window).width();
+          window_width = $(window).width(); 
 
       $this.width('100%');
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
-          $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
+       //Get only visible li.
+          $tab_width = $this.find('li:visible').first().outerWidth(),
+
           $index = 0;
 
       // If the location.hash matches one of the links, use that as the active tab.
@@ -45,7 +45,8 @@
       }
       $(window).resize(function () {
         $tabs_width = $this.width();
-        $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
+        $tab_width = $this.find('li:visible').first().outerWidth();
+
         if ($index < 0) {
           $index = 0;
         }
@@ -68,8 +69,9 @@
           return;
         }
 
-        $tabs_width = $this.width();
-        $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
+        //$tabs_width = $this.width();
+        //$tab_width = $this.find('li:visible').first().outerWidth();
+
 
         // Make the old tab inactive.
         $active.removeClass('active');
@@ -80,7 +82,7 @@
         // Update the variables with the new link and content
         $active = $(this);
         $content = $(this.hash);
-        $links = $this.find('li.tab a');
+        $links = $this.find('li.tab:visible a');
 
         // Make the tab active.
         $active.addClass('active');
@@ -95,6 +97,12 @@
         if ($content !== undefined) {
           $content.show();
         }
+
+        //Gettting tab width only after $content is shown. Since a vertical scroll will change 
+        // tabs width. 
+        $tabs_width = $this.outerWidth();
+        //$tab_width = $this.find('li:visible').first().outerWidth();
+        $tab_width = $(this).outerWidth();
 
         // Update indicator
         if (($index - $prev_index) >= 0) {

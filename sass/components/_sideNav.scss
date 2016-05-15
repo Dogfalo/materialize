@@ -1,30 +1,25 @@
 .side-nav {
   position: fixed;
   width: 240px;
-  left: 0;
+  left: -105%;
   top: 0;
   margin: 0;
-  transform: translateX(-100%);
   height: 100%;
   height: calc(100% + 60px);
   height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
   background-color: $sidenav-bg-color;
   z-index: 999;
-  backface-visibility: hidden;
   overflow-y: auto;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translateX(-105%);
 
   @extend .z-depth-1;
+  will-change: left;
 
   // Right Align
   &.right-aligned {
-    right: 0;
-    transform: translateX(105%);
+    will-change: right;
+    right: -105%;
     left: auto;
-    transform: translateX(100%);
   }
 
   .collapsible {
@@ -88,7 +83,6 @@
 // Fixed side-nav shown
 .side-nav.fixed {
   left: 0;
-  transform: translateX(0);
   position: fixed;
 
   // Right Align
@@ -101,10 +95,11 @@
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
   .side-nav.fixed {
-    transform: translateX(-105%);
+    left: -105%;
 
     &.right-aligned {
-      transform: translateX(105%);
+      right: -105%;
+      left: auto;
     }
   }
 }

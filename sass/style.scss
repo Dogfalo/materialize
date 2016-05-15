@@ -74,8 +74,7 @@ ul.side-nav.fixed li.logo {
   margin-top: 32px;
   margin-bottom: 80px;
 
-  &:hover,
-  #logo-container:hover {
+  &:hover {
     background-color: transparent;
   }
 }
@@ -134,18 +133,13 @@ a.button-collapse.top-nav {
   float: none;
   margin-left: 1.5rem;
   color: #fff;
-  font-size: 36px;
+  font-size: 32px;
   z-index: 2;
 
   &.full {
     line-height: 122px;
   }
-
-  i {
-    font-size: 32px;
-  }
 }
-
 @media #{$small-and-down} {
   a.button-collapse.top-nav {
     left: 5%;
@@ -273,6 +267,11 @@ a.button-collapse.top-nav {
 
 .promo{
   width: 100%;
+  @media #{$medium-and-down} {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
 
   i {
     margin: 40px 0;
@@ -573,10 +572,6 @@ pre[class*="language-"] {
 
 // Carbon Ads styling
 .toc-wrapper {
-  &.pin-bottom {
-    margin-top: 84px;
-  }
-
   position: relative;
   margin-top: 42px;
 }
