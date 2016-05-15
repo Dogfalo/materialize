@@ -20,7 +20,10 @@
 .btn-large.disabled,
 .btn:disabled,
 .btn-large:disabled,
-.btn-floating:disabled {
+.btn-floating:disabled,
+.btn[disabled],
+.btn-large[disabled],
+.btn-floating[disabled] {
   background-color: $button-disabled-background !important;
   box-shadow: none;
   color: $button-disabled-color !important;

@@ -4845,7 +4845,11 @@ small {
 .btn:disabled,
 .btn-large:disabled,
 .btn-large:disabled,
-.btn-floating:disabled {
+.btn-floating:disabled,
+.btn[disabled],
+[disabled].btn-large,
+.btn-large[disabled],
+.btn-floating[disabled] {
   background-color: #DFDFDF !important;
   box-shadow: none;
   color: #9F9F9F !important;
@@ -4857,7 +4861,10 @@ small {
 .btn-large.disabled *,
 .btn:disabled *, .btn-large:disabled *,
 .btn-large:disabled *,
-.btn-floating:disabled * {
+.btn-floating:disabled *,
+.btn[disabled] *, [disabled].btn-large *,
+.btn-large[disabled] *,
+.btn-floating[disabled] * {
   pointer-events: none;
 }
 
@@ -4867,7 +4874,11 @@ small {
 .btn:disabled:hover,
 .btn-large:disabled:hover,
 .btn-large:disabled:hover,
-.btn-floating:disabled:hover {
+.btn-floating:disabled:hover,
+.btn[disabled]:hover,
+[disabled].btn-large:hover,
+.btn-large[disabled]:hover,
+.btn-floating[disabled]:hover {
   background-color: #DFDFDF !important;
   color: #9F9F9F !important;
 }
