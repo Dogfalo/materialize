@@ -1,7 +1,12 @@
 (function ($) {
 
   var methods = {
-    init : function() {
+    init : function(options) {
+      var defaults = {
+        onShow: null
+      };
+      options = $.extend(defaults, options);
+
       return this.each(function() {
 
       // For each set of tabs, we want to keep track of
@@ -94,6 +99,9 @@
 
         if ($content !== undefined) {
           $content.show();
+          if (typeof(options.onShow) === "function") {
+            options.onShow.call(this, $content);
+          }
         }
 
         // Update indicator
