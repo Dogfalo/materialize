@@ -170,11 +170,13 @@
 	 * @returns {jQuery}
 	 */
 	$.scrollSpy = function(selector, options) {
-		var visible = [];
-		options = options || {
+	  var defaults = {
 			throttle: 100,
-			scrollOffsetFix: 200 // offset - 200 allows elements near bottom of page to scroll
-		};
+			scrollOffset: 200 // offset - 200 allows elements near bottom of page to scroll
+    };
+    options = $.extend(defaults, options);
+
+		var visible = [];
 		selector = $(selector);
 		selector.each(function(i, element) {
 			elements.push($(element));
@@ -183,7 +185,7 @@
 		  $('a[href="#' + $(element).attr('id') + '"]').click(function(e) {
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
-	    	$('html, body').animate({ scrollTop: offset - options.scrollOffsetFix }, {duration: 400, queue: false, easing: 'easeOutCubic'});
+	    	$('html, body').animate({ scrollTop: offset - options.scrollOffset }, {duration: 400, queue: false, easing: 'easeOutCubic'});
 		  });
 		});
 

@@ -8,6 +8,7 @@
         <p class="caption">Scrollspy is a jQuery plugin that tracks certain elements and which element the user's screen is currently centered on. Our main demo of this is our table of contents on every documentation page to the right. Clicking on these links will also scroll the page to that element. </p>
       </div>
 
+
       <div id="structure" class="section scrollspy">
         <h4>Table of Contents Structure</h4>
         <pre><code class="language-markup">
@@ -37,7 +38,6 @@
       </div>
 
 
-
       <div id="initialization" class="section scrollspy">
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript">
@@ -45,6 +45,26 @@
     $('.scrollspy').scrollSpy();
   });
         </code></pre>
+      </div>
+
+
+      <div id="options" class="section scrollspy">
+        <h4>jQuery Plugin Options</h4>
+        <table class="highlight">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>scrollOffset</td>
+              <td>Offset for centering element when scrolled to. Default: 200</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
@@ -61,6 +81,7 @@
             <li><a href="#introduction">Introduction</a></li>
             <li><a href="#structure">Structure</a></li>
             <li><a href="#initialization">Intialization</a></li>
+            <li><a href="#options">Options</a></li>
           </ul>
         </div>
       </div>
