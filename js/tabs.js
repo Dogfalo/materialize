@@ -115,8 +115,11 @@
           $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
         }
 
-        // Prevent the anchor's default click action
-        e.preventDefault();
+        // Prevent the anchor's default click action -- unless this tab
+        // opens an external link!
+        if ( !$(this).attr("target") ) {
+          e.preventDefault();
+        }
       });
     });
 
