@@ -3367,6 +3367,14 @@ nav ul a span.badge {
   float: right !important;
 }
 
+.rtl {
+	direction: rtl !important;
+}
+
+.ltr {
+	direction: ltr !important;
+}
+
 .no-select, input[type=range],
 input[type=range] + .thumb {
   -webkit-touch-callout: none;
