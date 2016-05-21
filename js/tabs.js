@@ -25,7 +25,7 @@
 
       // If no match is found, use the first link or any with class 'active' as the initial active tab.
       if ($active.length === 0) {
-          $active = $(this).find('li.tab a.active').first();
+        $active = $(this).find('li.tab a.active').first();
       }
       if ($active.length === 0) {
         $active = $(this).find('li.tab a').first();
@@ -73,6 +73,11 @@
           return;
         }
 
+        // Act as regular link if target attribute is specified.
+        if (!!$(this).attr("target")) {
+          return;
+        }
+
         $tabs_width = $this.width();
         $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
 
@@ -115,11 +120,8 @@
           $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
         }
 
-        // Prevent the anchor's default click action -- unless this tab
-        // opens an external link!
-        if ( !$(this).attr("target") ) {
-          e.preventDefault();
-        }
+        // Prevent the anchor's default click action
+        e.preventDefault();
       });
     });
 
