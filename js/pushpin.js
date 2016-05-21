@@ -1,5 +1,11 @@
 (function ($) {
   $.fn.pushpin = function (options) {
+    // Defaults
+    var defaults = {
+      top: 0,
+      bottom: Infinity,
+      offset: 0
+    };
 
     // Remove pushpin event and classes
     if (options === "remove") {
@@ -11,12 +17,6 @@
       });
       return false;
     }
-
-    var defaults = {
-      top: 0,
-      bottom: Infinity,
-      offset: 0
-    };
 
     options = $.extend(defaults, options);
 

@@ -1,7 +1,7 @@
 (function ($) {
     $.fn.tooltip = function (options) {
-        var timeout = null,
-        margin = 5;
+      var timeout = null,
+      margin = 5;
 
       // Defaults
       var defaults = {
@@ -10,7 +10,7 @@
 
       // Remove tooltip from the activator
       if (options === "remove") {
-        this.each(function(){
+        this.each(function() {
           $('#' + $(this).attr('data-tooltip-id')).remove();
           $(this).off('mouseenter.tooltip mouseleave.tooltip');
         });
