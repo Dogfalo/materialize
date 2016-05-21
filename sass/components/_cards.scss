@@ -58,6 +58,17 @@
     height: 500px;
   }
 
+  &.sticky-action {
+    .card-action {
+      z-index: 2;
+    }
+
+    .card-reveal {
+      z-index: 1;
+      padding-bottom: 64px;
+    }
+  }
+
 
   .card-image {
     position: relative;
@@ -102,7 +113,6 @@
     background-color: inherit;
     border-top: 1px solid rgba(160,160,160,.2);
     padding: $card-padding;
-    z-index: 2;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: $card-link-color;
@@ -111,11 +121,6 @@
       text-transform: uppercase;
 
       &:hover { color: $card-link-color-light; }
-    }
-
-    & + .card-reveal {
-      z-index: 1;
-      padding-bottom: 64px;
     }
   }
 

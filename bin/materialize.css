@@ -4566,6 +4566,15 @@ small {
   height: 500px;
 }
 
+.card.sticky-action .card-action {
+  z-index: 2;
+}
+
+.card.sticky-action .card-reveal {
+  z-index: 1;
+  padding-bottom: 64px;
+}
+
 .card .card-image {
   position: relative;
 }
@@ -4608,7 +4617,6 @@ small {
   background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 20px;
-  z-index: 2;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
@@ -4620,11 +4628,6 @@ small {
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
-}
-
-.card .card-action + .card-reveal {
-  z-index: 1;
-  padding-bottom: 64px;
 }
 
 .card .card-reveal {

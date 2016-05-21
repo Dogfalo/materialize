@@ -167,13 +167,13 @@
           <div class="col s12 m6">
             <br><br>
             <p class="caption">
-             The default option is having the card-reveal go over the card-action. This is achieved by placing the card-action div after the card-reveal div in your HTML.
+             The default state is having the card-reveal go over the card-action.
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col s12 m6">
-            <div class="card">
+            <div class="card sticky-action">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="images/office.jpg">
               </div>
@@ -196,8 +196,20 @@
           </div>
           <div class="col s12 m6">
             <p class="caption">
-             You can have your card-action always visible by placing the card-reveal div directly after the card-action div.
+             You can make your card-action always visible by adding the class <code class="language-markup">sticky-action</code> to the overall card.
             </p>
+          </div>
+          <div class="col s12">
+            <br>
+            <pre><code class="language-markup">
+  &lt;div class="card sticky-action">
+    ...
+
+    &lt;div class="card-action">...&lt;/div>
+
+    &lt;div class="card-reveal">...&lt;/div>
+  &lt;/div>
+            </code></pre>
           </div>
         </div>
       </div>
