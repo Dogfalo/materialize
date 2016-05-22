@@ -176,6 +176,17 @@ button.btn-floating {
   background-color: transparent;
   color: $button-flat-color;
   cursor: pointer;
+  transition: background-color .2s;
+
+  &:focus,
+  &:active {
+    background-color: transparent;
+  }
+
+  &:hover {
+    background-color: rgba(0,0,0,.1);
+    box-shadow: none;
+  }
 
   &.disabled {
     color: $button-flat-disabled-color;

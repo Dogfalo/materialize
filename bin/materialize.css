@@ -5012,6 +5012,16 @@ button.btn-floating {
   background-color: transparent;
   color: #343434;
   cursor: pointer;
+  transition: background-color .2s;
+}
+
+.btn-flat:focus, .btn-flat:active {
+  background-color: transparent;
+}
+
+.btn-flat:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .btn-flat.disabled {
@@ -5202,7 +5212,7 @@ button.btn-floating {
 }
 
 /* Firefox Bug: link not triggered */
-a.waves-effect .waves-ripple {
+.waves-effect .waves-ripple {
   z-index: -1;
 }
 
