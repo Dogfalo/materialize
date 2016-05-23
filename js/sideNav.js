@@ -335,6 +335,7 @@
                 complete: function () {
                   menuOut = true;
                   panning = false;
+                  $this.trigger("side-nav-opened");
                 }
               });
             }
