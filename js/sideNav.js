@@ -73,6 +73,7 @@
         }
 
         function removeMenu(restoreNav) {
+          $this.trigger("side-nav-closing");
           panning = false;
           menuOut = false;
           // Reenable scrolling
@@ -100,6 +101,7 @@
                     menu_id.removeAttr('style');
                     menu_id.css('width', options.menuWidth);
                   }
+                  $this.trigger("side-nav-closed");
                 }
 
             });
@@ -118,6 +120,7 @@
                     menu_id.removeAttr('style');
                     menu_id.css('width', options.menuWidth);
                   }
+                  $this.trigger("side-nav-closed");
                 }
               });
           }
@@ -169,19 +172,27 @@
 
             if (options.edge === 'left') {
               // Left Direction
-              if (x < (options.menuWidth / 2)) { menuOut = false; }
+              if (x < (options.menuWidth / 2)) {
+                menuOut = false;
+                $this.trigger("side-nav-closed");
+              }
               // Right Direction
-              else if (x >= (options.menuWidth / 2)) { menuOut = true; }
+              else if (x >= (options.menuWidth / 2)) {
+                menuOut = true;
+                $this.trigger("side-nav-opened");
+              }
               menu_id.css('transform', 'translateX(' + (x - options.menuWidth) + 'px)');
             }
             else {
               // Left Direction
               if (x < (window.innerWidth - options.menuWidth / 2)) {
                 menuOut = true;
+                $this.trigger("side-nav-opened");
               }
               // Right Direction
               else if (x >= (window.innerWidth - options.menuWidth / 2)) {
                menuOut = false;
+               $this.trigger("side-nav-closed");
              }
               var rightPos = (x - options.menuWidth / 2);
               if (rightPos < 0) {
@@ -229,7 +240,9 @@
 
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: 0, left: ''});
+
                 menuOut = true;
+                $this.trigger("side-nav-opened");
               }
               else if (!menuOut || velocityX > 0.3) {
                 // Enable Scrolling
@@ -255,7 +268,9 @@
 
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: '', left: 0});
+
                 menuOut = true;
+                $this.trigger("side-nav-opened");
               }
               else if (!menuOut || velocityX < -0.3) {
                 // Enable Scrolling
