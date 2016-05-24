@@ -33,7 +33,7 @@ select {
     font-size: $input-font-size;
     margin: $input-margin;
     padding: 0;
-    display: block;
+    display: inline-block;
   }
 
   span.caret {
