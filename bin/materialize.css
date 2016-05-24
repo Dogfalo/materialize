@@ -4533,18 +4533,24 @@ small {
   cursor: pointer;
 }
 
-.card.small, .card.medium, .card.large {
-  position: relative;
-}
-
 .card.small .card-image, .card.medium .card-image, .card.large .card-image {
   max-height: 60%;
   overflow: hidden;
 }
 
-.card.small .card-content, .card.medium .card-content, .card.large .card-content {
+.card.small .card-image + .card-content, .card.medium .card-image + .card-content, .card.large .card-image + .card-content {
   max-height: 40%;
   overflow: hidden;
+}
+
+.card.small .card-content, .card.medium .card-content, .card.large .card-content {
+  max-height: 90%;
+  overflow: hidden;
+}
+
+.card.small .card-content + .card-image, .card.medium .card-content + .card-image, .card.large .card-content + .card-image {
+  position: absolute;
+  top: 40%;
 }
 
 .card.small .card-action, .card.medium .card-action, .card.large .card-action {
@@ -4599,6 +4605,7 @@ small {
 }
 
 .card .card-content {
+  box-sizing: border-box;
   padding: 20px;
   border-radius: 0 0 2px 2px;
 }
@@ -4619,14 +4626,14 @@ small {
   padding: 20px;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 20px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
 }
 
@@ -4637,6 +4644,7 @@ small {
   width: 100%;
   overflow-y: auto;
   top: 100%;
+  left: 0%;
   height: 100%;
   z-index: 3;
   display: none;
@@ -4747,7 +4755,6 @@ small {
 }
 
 .tabs .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -6761,8 +6768,7 @@ input[type=range]:focus::-ms-fill-upper {
           backface-visibility: hidden;
   overflow-y: auto;
   will-change: transform;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateX(-105%);
           transform: translateX(-105%);
 }

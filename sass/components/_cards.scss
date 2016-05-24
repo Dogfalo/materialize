@@ -28,15 +28,24 @@
 
   // Card Sizes
   &.small, &.medium, &.large {
-    position: relative;
-
+    
     .card-image {
       max-height: 60%;
       overflow: hidden;
+      
+      &+.card-content {
+        max-height: 40%;
+        overflow: hidden;
+      }
     }
     .card-content {
-      max-height: 40%;
+      max-height: 90%;
       overflow: hidden;
+      
+      &+.card-image {
+        position: absolute;
+        top: 40%;
+      }
     }
     .card-action {
       position: absolute;
@@ -96,6 +105,7 @@
   }
 
   .card-content {
+    box-sizing: border-box ;
     padding: $card-padding;
     border-radius: 0 0 2px 2px;
 
@@ -131,6 +141,7 @@
     width: 100%;
     overflow-y: auto;
     top: 100%;
+    left: 0%;
     height: 100%;
     z-index: 3;
     display: none;
