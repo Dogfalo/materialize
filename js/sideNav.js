@@ -299,6 +299,7 @@
               removeMenu();
             }
             else {
+              $this.trigger("side-nav-opening");
 
               // Disable Scrolling
               var $body = $('body');
