@@ -2616,11 +2616,17 @@ html {
 }
 
 ul {
+  padding: 0;
   list-style-type: none;
 }
 
-ul.browser-default {
+ul.browser-default,
+ul.browser-default li {
   list-style-type: initial;
+}
+
+ul li {
+  list-style-type: none;
 }
 
 a {
@@ -2640,14 +2646,6 @@ a {
 
 .valign-wrapper .valign {
   display: block;
-}
-
-ul {
-  padding: 0;
-}
-
-ul li {
-  list-style-type: none;
 }
 
 .clearfix {
