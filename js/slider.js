@@ -290,10 +290,11 @@
 
         $this.on('sliderTo', function(e, n) {
           if (n === undefined) {
-              n = 1;
+            n = 1;
           }
           $active_index = n;
           moveToSlide(n);
+          $(this).trigger('sliderStart');
         });
       });
 
