@@ -186,6 +186,7 @@
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
 	    	$('html, body').animate({ scrollTop: offset - options.scrollOffset }, {duration: 400, queue: false, easing: 'easeOutCubic'});
+		    window.location.hash = this.hash;
 		  });
 		});
 
