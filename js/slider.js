@@ -288,6 +288,13 @@
           moveToSlide($active_index - 1);
         });
 
+        $this.on('sliderTo', function(e, n) {
+          if (n === undefined) {
+              n = 1;
+          }
+          $active_index = n;
+          moveToSlide(n);
+        });
       });
 
 
@@ -304,6 +311,9 @@
     },
     prev : function() {
       $(this).trigger('sliderPrev');
+    },
+    to : function(n) {
+      $(this).trigger('sliderTo', n);
     }
   };
 
