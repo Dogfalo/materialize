@@ -288,6 +288,14 @@
           moveToSlide($active_index - 1);
         });
 
+        $this.on('sliderTo', function(e, n) {
+          if (n === undefined) {
+            n = 1;
+          }
+          $active_index = n;
+          moveToSlide(n);
+          $(this).trigger('sliderStart');
+        });
       });
 
 
@@ -304,6 +312,9 @@
     },
     prev : function() {
       $(this).trigger('sliderPrev');
+    },
+    to : function(n) {
+      $(this).trigger('sliderTo', n);
     }
   };
 
@@ -315,7 +326,7 @@
         // Default to "init"
         return methods.init.apply( this, arguments );
       } else {
-        $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tooltip' );
+        $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.slider' );
       }
     }; // Plugin end
 }( jQuery ));
