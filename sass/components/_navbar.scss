@@ -76,6 +76,13 @@ nav {
       right: 0.5rem;
       padding: 0;
     }
+
+    i,
+    [class^="mdi-"], [class*="mdi-"],
+    i.material-icons {
+      float: left;
+      margin-right: 15px;
+    }
   }
 
 
@@ -96,7 +103,7 @@ nav {
       transition: background-color .3s;
       font-size: 1rem;
       color: $navbar-font-color;
-      display: inline-block;
+      display: block;
       padding: 0 15px;
       cursor: pointer;
 

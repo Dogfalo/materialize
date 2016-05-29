@@ -4144,6 +4144,13 @@ nav .brand-logo.right {
   padding: 0;
 }
 
+nav .brand-logo i,
+nav .brand-logo [class^="mdi-"], nav .brand-logo [class*="mdi-"],
+nav .brand-logo i.material-icons {
+  float: left;
+  margin-right: 15px;
+}
+
 nav ul {
   margin: 0;
 }
@@ -4162,7 +4169,7 @@ nav ul a {
   transition: background-color .3s;
   font-size: 1rem;
   color: #fff;
-  display: inline-block;
+  display: block;
   padding: 0 15px;
   cursor: pointer;
 }
