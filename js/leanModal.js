@@ -24,22 +24,29 @@
         starting_top: '4%',
         ending_top: '10%'
       },
+    
       $modal = $(this);
+    // Prevent appending several times the lean-overlay
+      if ( $(".lean-overlay").length > 0 ){
+    	  $overlay = $(".lean-overlay");
+    	  overlayID = $overlay.attr("id");
+    	  lStack = (++_stack);
+    	// Store a reference of the overlay
+          $overlay.css('z-index', 1000 + lStack * 2);
+          $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
+      }else{
+    	  overlayID = _generateID();
+    	  $overlay = $('<div class="lean-overlay"></div>');
+    	  lStack = (++_stack);
 
-      if ($modal.hasClass('open')) {
-        return;
+          // Store a reference of the overlay
+          $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
+          $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
+
+          $("body").append($overlay);
       }
-
-      overlayID = _generateID();
-      $overlay = $('<div class="lean-overlay"></div>');
-      lStack = (++_stack);
-
-      // Store a reference of the overlay
-      $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
-      $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
-      $modal.addClass('open');
-
-      $("body").append($overlay);
+      
+      
 
       // Override defaults
       options = $.extend(defaults, options);

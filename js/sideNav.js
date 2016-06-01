@@ -19,9 +19,13 @@
         }
 
         // Add Touch Area
-        var dragTarget = $('<div class="drag-target"></div>');
-        $('body').append(dragTarget);
-
+        // Check if .drag-target already exists otherwise use the existing one
+        if ( $(".drag-target").length > 0){
+        	var dragTarget = $(".drag-target");
+        }else{
+	        var dragTarget = $('<div class="drag-target"></div>');
+	        $('body').append(dragTarget);
+        }
         if (options.edge == 'left') {
           menu_id.css('transform', 'translateX(-100%)');
           dragTarget.css({'left': 0}); // Add Touch Area
