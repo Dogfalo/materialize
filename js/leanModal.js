@@ -31,7 +31,7 @@
       }
 
       overlayID = _generateID();
-      $overlay = $('<div class="lean-overlay"></div>');
+      var $overlay = $('<div class="lean-overlay"></div>');
       lStack = (++_stack);
 
       // Store a reference of the overlay
@@ -111,8 +111,8 @@
         complete: undefined
       },
       $modal = $(this),
-      overlayID = $modal.data('overlay-id'),
-      $overlay = $('#' + overlayID);
+      var overlayID = $modal.data('overlay-id'),
+      var $overlay = $('#' + overlayID);
       $modal.removeClass('open');
 
       options = $.extend(defaults, options);
