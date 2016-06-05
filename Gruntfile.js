@@ -22,6 +22,39 @@ module.exports = function(grunt) {
           specs: 'tests/spec/**/*Spec.js',
           helpers: 'tests/spec/helper.js',
           keepRunner : true,
+          template: require('grunt-template-jasmine-istanbul'),
+          templateOptions: {
+            coverage: 'bin/report/coverage/coverage.json',
+            report: [
+                {
+                    type: 'html',
+                    options: {
+                        dir: 'bin/report/coverage/html'
+                    }
+                },
+                {
+                    type: 'cobertura',
+                    options: {
+                        dir: 'bin/report/coverage/cobertura'
+                    }
+                },
+                {
+                    type: 'lcov',
+                    options: {
+                        dir: 'bin/report/coverage/lcov'
+                    }
+                },
+                {
+                    type: 'text-summary'
+                }
+            ],
+            thresholds: {
+              lines: 75,
+              statements: 30,
+              branches: 15,
+              functions: 30
+            }
+          }
           //helpers: 'test/spec/*.js'
         }
       }
@@ -566,6 +599,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-remove-logging');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+
   grunt.loadNpmTasks('grunt-postcss');
   // define the tasks
   grunt.registerTask(
