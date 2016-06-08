@@ -1,6 +1,7 @@
 (function ($) {
 
-    $.fn.parallax = function () {
+    $.fn.parallax = function (speed) {
+      var parallaxSpeed = speed || 1;
       var window_width = $(window).width();
       // Parallax Scripts
       return this.each(function(i) {
@@ -20,7 +21,7 @@
           var parallax_dist = img_height - container_height;
           var bottom = $this.offset().top + container_height;
           var top = $this.offset().top;
-          var scrollTop = $(window).scrollTop();
+          var scrollTop = $(window).scrollTop() * parallaxSpeed;
           var windowHeight = window.innerHeight;
           var windowBottom = scrollTop + windowHeight;
           var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
