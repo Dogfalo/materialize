@@ -23,14 +23,14 @@
         dismissible: true,
         starting_top: '4%',
         ending_top: '10%'
-      },
-      $modal = $(this);
+      };
+      var $modal = $(this);
 
       if ($modal.hasClass('open')) {
         return;
       }
 
-      overlayID = _generateID();
+      var overlayID = _generateID();
       var $overlay = $('<div class="lean-overlay"></div>');
       lStack = (++_stack);
 
@@ -109,9 +109,9 @@
       var defaults = {
         out_duration: 250,
         complete: undefined
-      },
-      $modal = $(this),
-      var overlayID = $modal.data('overlay-id'),
+      };
+      var $modal = $(this);
+      var overlayID = $modal.data('overlay-id');
       var $overlay = $('#' + overlayID);
       $modal.removeClass('open');
 
