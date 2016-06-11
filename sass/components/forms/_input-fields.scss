@@ -70,8 +70,11 @@ textarea.materialize-textarea {
   }
 
   // Focused label style
-  &:focus:not([readonly])+label {
-    color: $input-focus-color;
+  &:focus:not([readonly]){
+    &[placeholder] + label,
+    &[value] + label {
+      color: $input-focus-color;
+    }
   }
 
   // Valid Input Style
@@ -147,7 +150,8 @@ textarea.materialize-textarea {
     transition: .2s ease-out;
   }
 
-  label.active {
+  & input[placeholder] + label,
+  & input[value] + label {
     font-size: $label-font-size;
     transform: translateY(-140%);
   }
