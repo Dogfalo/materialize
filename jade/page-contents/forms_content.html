@@ -77,29 +77,6 @@
       &lt;/div>
     &lt;/form>
   &lt;/div>
-        </code></pre><br>
-        <h4>Prefilling Text Inputs</h4>
-        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">Materialize.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
-        <div class="row">
-          <div class="input-field col s6">
-            <input value="Alvin" id="first_name2" type="text" class="validate">
-            <label class="active" for="first_name2">First Name</label>
-          </div>
-        </div>
-
-        <pre><code class="language-markup">
-  &lt;div class="row">
-    &lt;div class="input-field col s6">
-      &lt;input value="Alvin" id="first_name2" type="text" class="validate">
-      &lt;label class="active" for="first_name2">First Name&lt;/label>
-    &lt;/div>
-  &lt;/div>
-        </code></pre>
-
-        <pre><code class="language-javascript">
-  $(document).ready(function() {
-    Materialize.updateTextFields();
-  });
         </code></pre>
 
         <h4>Icon Prefixes</h4>

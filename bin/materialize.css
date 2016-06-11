@@ -4624,14 +4624,14 @@ small {
   padding: 20px;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 20px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
 }
 
@@ -4752,7 +4752,6 @@ small {
 }
 
 .tabs .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -5665,19 +5664,32 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 #26a69a;
 }
 
-input:not([type]):focus:not([readonly]) + label,
-input[type=text]:focus:not([readonly]) + label,
-input[type=password]:focus:not([readonly]) + label,
-input[type=email]:focus:not([readonly]) + label,
-input[type=url]:focus:not([readonly]) + label,
-input[type=time]:focus:not([readonly]) + label,
-input[type=date]:focus:not([readonly]) + label,
-input[type=datetime]:focus:not([readonly]) + label,
-input[type=datetime-local]:focus:not([readonly]) + label,
-input[type=tel]:focus:not([readonly]) + label,
-input[type=number]:focus:not([readonly]) + label,
-input[type=search]:focus:not([readonly]) + label,
-textarea.materialize-textarea:focus:not([readonly]) + label {
+input:not([type]):focus:not([readonly])[placeholder] + label,
+input:not([type]):focus:not([readonly])[value] + label,
+input[type=text]:focus:not([readonly])[placeholder] + label,
+input[type=text]:focus:not([readonly])[value] + label,
+input[type=password]:focus:not([readonly])[placeholder] + label,
+input[type=password]:focus:not([readonly])[value] + label,
+input[type=email]:focus:not([readonly])[placeholder] + label,
+input[type=email]:focus:not([readonly])[value] + label,
+input[type=url]:focus:not([readonly])[placeholder] + label,
+input[type=url]:focus:not([readonly])[value] + label,
+input[type=time]:focus:not([readonly])[placeholder] + label,
+input[type=time]:focus:not([readonly])[value] + label,
+input[type=date]:focus:not([readonly])[placeholder] + label,
+input[type=date]:focus:not([readonly])[value] + label,
+input[type=datetime]:focus:not([readonly])[placeholder] + label,
+input[type=datetime]:focus:not([readonly])[value] + label,
+input[type=datetime-local]:focus:not([readonly])[placeholder] + label,
+input[type=datetime-local]:focus:not([readonly])[value] + label,
+input[type=tel]:focus:not([readonly])[placeholder] + label,
+input[type=tel]:focus:not([readonly])[value] + label,
+input[type=number]:focus:not([readonly])[placeholder] + label,
+input[type=number]:focus:not([readonly])[value] + label,
+input[type=search]:focus:not([readonly])[placeholder] + label,
+input[type=search]:focus:not([readonly])[value] + label,
+textarea.materialize-textarea:focus:not([readonly])[placeholder] + label,
+textarea.materialize-textarea:focus:not([readonly])[value] + label {
   color: #26a69a;
 }
 
@@ -5862,7 +5874,8 @@ textarea.materialize-textarea + label:after {
   transition: .2s ease-out;
 }
 
-.input-field label.active {
+.input-field input[placeholder] + label,
+.input-field input[value] + label {
   font-size: 0.8rem;
   -webkit-transform: translateY(-140%);
           transform: translateY(-140%);
@@ -6457,6 +6470,7 @@ select {
   color: rgba(0, 0, 0, 0.26);
 }
 
+.input-field select + label,
 .select-wrapper + label {
   position: absolute;
   top: -14px;
@@ -6766,8 +6780,7 @@ input[type=range]:focus::-ms-fill-upper {
           backface-visibility: hidden;
   overflow-y: auto;
   will-change: transform;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateX(-105%);
           transform: translateX(-105%);
 }

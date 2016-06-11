@@ -3,31 +3,34 @@
 
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
-      var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-      $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label, i').addClass('active');
-        }
-        else {
-          $(this).siblings('label, i').removeClass('active');
-        }
-      });
+      if (console.warn) {
+        console.warn("Materialize.updateTextFields should no longer be needed and is deprecated");
+      }
     };
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
 
-    // Add active if form auto complete
-    $(document).on('change', input_selector, function () {
-      if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
-        $(this).siblings('label').addClass('active');
-      }
-      validate_field($(this));
+    // Highlight icon prefix on focus
+    $(document).on('focus', input_selector, function () {
+      $(this).siblings('.prefix').addClass('active');
     });
 
-    // Add active if input element has been pre-populated on document ready
-    $(document).ready(function() {
-      Materialize.updateTextFields();
+    // Remove highlight from icon prefix on blur
+    $(document).on('blur', input_selector, function () {
+      $(this).siblings('.prefix').removeClass('active');
+    });
+
+    // Add active if form auto complete
+    $(document).on('input', input_selector, function () {
+      var $this = $(this);
+
+      if (!this.value) {
+        $this.removeAttr('value');
+      } else {
+        $this.attr('value', this.value);
+      }
+      validate_field($this);
     });
 
     // HTML DOM FORM RESET handling
@@ -35,11 +38,6 @@
       var formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
-        formReset.find(input_selector).each(function () {
-          if ($(this).attr('value') === '') {
-            $(this).siblings('label, i').removeClass('active');
-          }
-        });
 
         // Reset select
         formReset.find('select.initialized').each(function () {
@@ -47,23 +45,6 @@
           formReset.siblings('input.select-dropdown').val(reset_text);
         });
       }
-    });
-
-    // Add active when element has focus
-    $(document).on('focus', input_selector, function () {
-      $(this).siblings('label, i').addClass('active');
-    });
-
-    $(document).on('blur', input_selector, function () {
-      var $inputElement = $(this);
-      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
-        $inputElement.siblings('label, i').removeClass('active');
-      }
-
-      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') !== undefined) {
-        $inputElement.siblings('i').removeClass('active');
-      }
-      validate_field($inputElement);
     });
 
     window.validate_field = function(object) {
