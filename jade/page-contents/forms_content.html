@@ -96,28 +96,71 @@
     &lt;/form>
   &lt;/div>
         </code></pre><br>
-        <h4>Prefilling Text Inputs</h4>
-        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">Materialize.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
+        <h4>Dynamically Filling Text Inputs</h4>
+        <p>If you are having trouble with the labels overlapping dynamically updated inputs, try calling the function <code class="language-javascript">Materialize.updateTextField(element)</code> to reinitialize the element.</p>
         <div class="row">
           <div class="input-field col s6">
-            <input value="Alvin" id="first_name2" type="text" class="validate">
-            <label class="active" for="first_name2">First Name</label>
+            <input id="first_name2" type="text" class="validate">
+            <label for="first_name2">First Name</label>
           </div>
         </div>
 
         <pre><code class="language-markup">
   &lt;div class="row">
     &lt;div class="input-field col s6">
-      &lt;input value="Alvin" id="first_name2" type="text" class="validate">
-      &lt;label class="active" for="first_name2">First Name&lt;/label>
+      &lt;input id="first_name2" type="text" class="validate">
+      &lt;label for="first_name2">First Name&lt;/label>
     &lt;/div>
   &lt;/div>
         </code></pre>
 
         <pre><code class="language-javascript">
-  $(document).ready(function() {
-    Materialize.updateTextFields();
-  });
+  var element = document.getElementById('first_name2');
+  element.value = 'Alvin';
+  Materialize.updateTextField(element);
+        </code></pre>
+        <p>If you are adding new elements and want to reinitialize more than one element at once, you can call <code class="language-javascript">Materialize.updateTextFields(optionalContext)</code>, where <code class="language-markup">optionalContext</code> can be an element, a jQuery object, or a selector indicating that only input elements found within that subset should be updated. By default it will update all elements on the page. Alternatively, you could pass the singular function into a jQuery map/each.</p>
+        <div class="row">
+          <div id="update-names">
+            <div class="input-field col s4">
+              <input id="update-first_name" type="text" class="validate">
+              <label for="update-first_name">First Name</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="update-last_name" type="text" class="validate">
+              <label for="update-last_name">Last Name</label>
+            </div>
+          </div>
+          <div class="input-field col s4">
+            <input id="update-email" type="text" class="validate">
+            <label for="update-email">Email</label>
+          </div>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div id="update-names">
+      &lt;div class="input-field col s4">
+        &lt;input value="Alvin" id="update-first_name" type="text" class="validate">
+        &lt;label for="update-first_name">First Name&lt;/label>
+      &lt;/div>
+      &lt;div class="input-field col s4">
+        &lt;input value="Alvin" id="update-last_name" type="text" class="validate">
+        &lt;label for="update-last_name">Last Name&lt;/label>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="input-field col s4">
+      &lt;input value="" id="update-email" type="text" class="validate">
+      &lt;label for="first_name3">Email&lt;/label>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+
+        <pre><code class="language-javascript">
+  $("#update-first_name").val("Simon");
+  $("#update-last_name").val("Seville");
+  Materialize.updateTextFields("#update-names");
+  // or $("#update-names input").each(Materialize.updateTextField);
         </code></pre>
 
         <h4>Icon Prefixes</h4>

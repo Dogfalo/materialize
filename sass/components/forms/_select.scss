@@ -92,7 +92,10 @@ select {
     font-size: 10px;
     line-height: 10px;
   }
+}
 
+.input-field select,
+.select-wrapper {
   & + label {
     position: absolute;
     top: -26px;
