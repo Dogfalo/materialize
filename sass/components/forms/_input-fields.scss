@@ -172,7 +172,6 @@ textarea.materialize-textarea {
     width: calc(100% - 3rem);
   }
 
-  .prefix ~ textarea { padding-top: .8rem; }
   .prefix ~ label { margin-left: 3rem; }
 
   @media #{$medium-and-down} {
@@ -239,7 +238,7 @@ textarea {
 
   &.materialize-textarea {
     overflow-y: hidden; /* prevents scroll bar flash */
-    padding: 1.6rem 0; /* prevents text jump on Enter keypress */
+    padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
     resize: none;
     min-height: $input-height;
   }
