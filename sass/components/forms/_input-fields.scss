@@ -70,7 +70,7 @@ textarea.materialize-textarea {
   }
 
   // Focused label style
-  &:focus:not([readonly])+label {
+  &:focus:not([readonly])+label.active {
     color: $input-focus-color;
   }
 

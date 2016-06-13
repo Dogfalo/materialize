@@ -51,7 +51,14 @@
 
     // Add active when element has focus
     $(document).on('focus', input_selector, function () {
-      $(this).siblings('label, .prefix').addClass('active');
+      $(this).siblings('.prefix').addClass('active');
+    });
+
+    $(document).on('input', input_selector, function () {
+      var $this = $(this);
+      $this.siblings('label').toggleClass('active',
+        $this.val().length !== 0 || $this.attr('placeholder') !== undefined
+      );
     });
 
     $(document).on('blur', input_selector, function () {
