@@ -5889,10 +5889,6 @@ textarea.materialize-textarea + label:after {
   width: calc(100% - 3rem);
 }
 
-.input-field .prefix ~ textarea {
-  padding-top: .8rem;
-}
-
 .input-field .prefix ~ label {
   margin-left: 3rem;
 }
@@ -5957,7 +5953,7 @@ textarea {
 textarea.materialize-textarea {
   overflow-y: hidden;
   /* prevents scroll bar flash */
-  padding: 1.6rem 0;
+  padding: .8rem 0 1.6rem 0;
   /* prevents text jump on Enter keypress */
   resize: none;
   min-height: 3rem;
