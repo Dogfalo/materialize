@@ -60,6 +60,7 @@ Package.onUse(function (api) {
     'sass/components/_dropdown.scss',
     'sass/components/_global.scss',
     'sass/components/_grid.scss',
+    'sass/components/_icons-material-design.scss',
     'sass/components/_materialbox.scss',
     'sass/components/_mixins.scss',
     'sass/components/_modal.scss',
