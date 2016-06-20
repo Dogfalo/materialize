@@ -4,13 +4,16 @@
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-      $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label').addClass('active');
+      $(input_selector).each(function() {
+        var $this = $(this);
+        if ($this.val().length > 0 || this.autofocus || $this.attr('placeholder') !== undefined || this.validity.badInput === true) {
+          $this.siblings('label').addClass('active');
         }
         else {
-          $(this).siblings('label').removeClass('active');
+          $this.siblings('label').removeClass('active');
         }
+
+        validate_field($this);
       });
     };
 
@@ -22,6 +25,11 @@
       if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
         $(this).siblings('label').addClass('active');
       }
+      validate_field($(this));
+    });
+
+    // validate form on input
+    $(document).on('input', input_selector, function () {
       validate_field($(this));
     });
 
@@ -63,23 +71,20 @@
       }
 
       $inputElement.siblings(selector).removeClass('active');
-
-      validate_field($inputElement);
     });
 
     window.validate_field = function(object) {
+      if (!object.hasClass('validate')) return;
+
       var hasLength = object.attr('length') !== undefined;
       var lenAttr = parseInt(object.attr('length'));
       var len = object.val().length;
 
       if (object.val().length === 0 && object[0].validity.badInput === false) {
-        if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
-        }
       }
       else {
-        if (object.hasClass('validate')) {
           // Check for character counter attributes
           if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
             object.removeClass('invalid');
@@ -89,7 +94,6 @@
             object.removeClass('valid');
             object.addClass('invalid');
           }
-        }
       }
     };
 
