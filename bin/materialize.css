@@ -5840,7 +5840,7 @@ textarea.materialize-textarea + label:after {
   display: block;
   content: "";
   position: absolute;
-  top: 65px;
+  top: 54px;
   opacity: 0;
   transition: .2s opacity ease-out, .2s color ease-out;
 }
@@ -5870,8 +5870,8 @@ textarea.materialize-textarea + label:after {
 
 .input-field label.active {
   font-size: 0.8rem;
-  -webkit-transform: translateY(-140%);
-          transform: translateY(-140%);
+  -webkit-transform: translateY(-120%);
+          transform: translateY(-120%);
 }
 
 .input-field .prefix {
