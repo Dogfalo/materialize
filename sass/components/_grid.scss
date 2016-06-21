@@ -50,6 +50,7 @@
     float: left;
     box-sizing: border-box;
     padding: 0 $gutter-width / 2;
+    min-height: 1px;
 
     &[class*="push-"],
     &[class*="pull-"] {
