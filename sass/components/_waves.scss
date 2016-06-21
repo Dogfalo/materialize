@@ -90,6 +90,10 @@
         background: none;
     }
 
+    img {
+        position: relative;
+        z-index: -1;
+    }
 }
 
 .waves-notransition {
