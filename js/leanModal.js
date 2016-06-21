@@ -45,19 +45,19 @@
       options = $.extend(defaults, options);
 
       if (options.dismissible) {
-        $overlay.click(function() {
-          $modal.closeModal(options);
+        $overlay.click(function(e) {
+          $modal.closeModal(options, e);
         });
         // Return on ESC
         $(document).on('keyup.leanModal' + overlayID, function(e) {
           if (e.keyCode === 27) {   // ESC key
-            $modal.closeModal(options);
+            $modal.closeModal(options, e);
           }
         });
       }
 
       $modal.find(".modal-close").on('click.close', function(e) {
-        $modal.closeModal(options);
+        $modal.closeModal(options, e);
       });
 
       $overlay.css({ display : "block", opacity : 0 });
@@ -105,7 +105,7 @@
   });
 
   $.fn.extend({
-    closeModal: function(options) {
+    closeModal: function(options, event) {
       var defaults = {
         out_duration: 250,
         complete: undefined
@@ -141,7 +141,7 @@
 
             // Call complete callback
             if (typeof(options.complete) === "function") {
-              options.complete();
+              options.complete(event);
             }
             $overlay.remove();
             _stack--;
@@ -158,7 +158,7 @@
               $(this).css('display', 'none');
               // Call complete callback
               if (typeof(options.complete) === "function") {
-                options.complete();
+                options.complete(event);
               }
               $overlay.remove();
               _stack--;
