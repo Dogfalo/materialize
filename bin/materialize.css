@@ -5589,7 +5589,7 @@ textarea.materialize-textarea {
   height: 3rem;
   width: 100%;
   font-size: 1rem;
-  margin: 0 0 15px 0;
+  margin: 0 0 20px 0;
   padding: 0;
   box-shadow: none;
   box-sizing: content-box;
@@ -5840,7 +5840,7 @@ textarea.materialize-textarea + label:after {
   display: block;
   content: "";
   position: absolute;
-  top: 54px;
+  top: 60px;
   opacity: 0;
   transition: .2s opacity ease-out, .2s color ease-out;
 }
@@ -5870,8 +5870,8 @@ textarea.materialize-textarea + label:after {
 
 .input-field label.active {
   font-size: 0.8rem;
-  -webkit-transform: translateY(-120%);
-          transform: translateY(-120%);
+  -webkit-transform: translateY(-140%);
+          transform: translateY(-140%);
 }
 
 .input-field .prefix {
@@ -6442,7 +6442,7 @@ select {
   line-height: 3rem;
   width: 100%;
   font-size: 1rem;
-  margin: 0 0 15px 0;
+  margin: 0 0 20px 0;
   padding: 0;
   display: block;
 }
