@@ -58,6 +58,7 @@
           view[0].addEventListener('mousedown', tap);
           view[0].addEventListener('mousemove', drag);
           view[0].addEventListener('mouseup', release);
+          view[0].addEventListener('mouseleave', release);
           view[0].addEventListener('click', click);
         }
 
@@ -197,6 +198,12 @@
             var clickedIndex = $(e.target).closest('.carousel-item').index();
             var diff = (center % count) - clickedIndex;
 
+            // Disable clicks if carousel was shifted by click
+            if (diff !== 0) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+
             // Account for wraparound.
             if (diff < 0) {
               if (Math.abs(diff + count) < Math.abs(diff)) { diff += count; }
@@ -279,8 +286,10 @@
           timestamp = Date.now();
           requestAnimationFrame(autoScroll);
 
-          e.preventDefault();
-          e.stopPropagation();
+          if (dragged) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
           return false;
         }
 
