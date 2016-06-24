@@ -74,10 +74,12 @@ header
               li(class=(page == "Preloader" ? "active" : ""))
                 a(href='preloader.html') Preloader
         li.bold
-          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "Tabs" || page == "ScrollFire" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Transitions" || page == "Parallax" || page == "Collapsible" ? "active" : "")+" waves-effect waves-teal")
+          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "Tabs" || page == "ScrollFire" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Transitions" || page == "Parallax" || page == "Collapsible" ? "active" : "" || page == "Carousel" ? "active" : "")+" waves-effect waves-teal")
             | JavaScript
           .collapsible-body
             ul
+              li(class=(page == "Carousel" ? "active" : ""))
+                a(href='carousel.html') Carousel
               li(class=(page == "Collapsible" ? "active" : ""))
                 a(href='collapsible.html') Collapsible
               li(class=(page == "Dialogs" ? "active" : ""))

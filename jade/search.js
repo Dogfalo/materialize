@@ -38,6 +38,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/carousel.html',
+      title: 'Carousel',
+      body: 'Our Carousel is a robust and versatile component that can be an image slider, to an item carousel, to an onboarding experience.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/chips.html',
       title: 'Chips',
       body: 'Chips can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.'
