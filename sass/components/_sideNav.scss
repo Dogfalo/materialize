@@ -1,6 +1,6 @@
 .side-nav {
   position: fixed;
-  width: 240px;
+  width: 300px;
   left: 0;
   top: 0;
   margin: 0;
@@ -42,10 +42,11 @@
   a {
     color: $sidenav-font-color;
     display: block;
-    font-size: 1rem;
+    font-size: $sidenav-font-size;
+    font-weight: 500;
     height: $sidenav-item-height;
     line-height: $sidenav-item-height;
-    padding: 0 $sidenav-padding-right;
+    padding: 0 ($sidenav-padding * 2);
 
     &:hover { background-color: rgba(0,0,0,.05);}
 
@@ -61,6 +62,80 @@
     &.btn:hover,
     &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
     &.btn-floating:hover { background-color: $button-raised-background; }
+  }
+
+  li > a > i,
+  li > a > [class^="mdi-"], li > a > [class*="mdi-"],
+  li > a > i.material-icons {
+    float: left;
+    line-height: $sidenav-item-height;
+    margin: 0 ($sidenav-padding * 2) 0 0;
+    width: $sidenav-item-height / 2;
+    color: rgba(0,0,0,.54);
+  }
+
+  .divider {
+    margin: ($sidenav-padding / 2) 0 0 0;
+  }
+
+  .subheader {
+    &:hover {
+      background-color: transparent;
+    }
+
+    cursor: initial;
+    pointer-events: none;
+    color: rgba(0,0,0,.54);
+    font-size: $sidenav-font-size;
+    font-weight: 500;
+    line-height: $sidenav-item-height;
+  }
+
+  .userView {
+    overflow: hidden;
+    position: relative;
+    padding: ($sidenav-padding * 2) ($sidenav-padding * 2) 0;
+    margin-bottom: $sidenav-padding / 2;
+
+    a {
+      &:hover { background-color: transparent; }
+      height: auto;
+      padding: 0;
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .circle, .name, .email {
+      display: block;
+    }
+
+    .circle {
+      height: 64px;
+      width: 64px;
+    }
+
+    .name,
+    .email {
+      font-weight: $sidenav-font-size;
+      line-height: 24px;
+    }
+
+    .name {
+      margin-top: 16px;
+      font-weight: 500;
+    }
+
+    .email {
+      padding-bottom: 16px;
+      font-weight: 400;
+    }
   }
 }
 
@@ -79,7 +154,7 @@
 .side-nav.fixed {
   a {
     display: block;
-    padding: 0 $sidenav-padding-right;
+    padding: 0 $sidenav-padding;
     color: $sidenav-font-color;
   }
 }
@@ -100,11 +175,21 @@
 
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
-  .side-nav.fixed {
-    transform: translateX(-105%);
+  .side-nav {
+    &.fixed {
+      transform: translateX(-105%);
 
-    &.right-aligned {
-      transform: translateX(105%);
+      &.right-aligned {
+        transform: translateX(105%);
+      }
+    }
+
+    a {
+      padding: 0 $sidenav-padding;
+    }
+
+    .userView {
+      padding: $sidenav-padding $sidenav-padding 0;
     }
   }
 }

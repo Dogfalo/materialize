@@ -225,10 +225,11 @@ $navbar-brand-font-size: 2.1rem !default;
 /* 14. Side Navigation
    ========================================================================== */
 
-$sidenav-font-color: #444 !default;
+$sidenav-font-size: 14px !default;
+$sidenav-font-color: rgba(0,0,0,.87) !default;
 $sidenav-bg-color: #fff !default;
-$sidenav-padding-right: 30px !default;
-$sidenav-item-height: 64px !default;
+$sidenav-padding: 16px !default;
+$sidenav-item-height: 48px !default;
 
 
 /* 15. Photo Slider

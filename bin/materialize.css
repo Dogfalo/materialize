@@ -5371,7 +5371,7 @@ button.btn-floating {
   border: none;
   line-height: inherit;
   height: inherit;
-  padding: 0 30px;
+  padding: 0 16px;
 }
 
 .side-nav .collapsible-header:hover,
@@ -5392,7 +5392,7 @@ button.btn-floating {
 
 .side-nav .collapsible-body li a,
 .side-nav.fixed .collapsible-body li a {
-  padding: 0 37.5px 0 45px;
+  padding: 0 23.5px 0 31px;
 }
 
 .collapsible.popout {
@@ -6752,7 +6752,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav {
   position: fixed;
-  width: 240px;
+  width: 300px;
   left: 0;
   top: 0;
   margin: 0;
@@ -6789,7 +6789,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav li {
   float: none;
-  line-height: 64px;
+  line-height: 48px;
 }
 
 .side-nav li.active {
@@ -6797,12 +6797,13 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .side-nav a {
-  color: #444;
+  color: rgba(0, 0, 0, 0.87);
   display: block;
-  font-size: 1rem;
-  height: 64px;
-  line-height: 64px;
-  padding: 0 30px;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 32px;
 }
 
 .side-nav a:hover {
@@ -6829,6 +6830,83 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: #26a69a;
 }
 
+.side-nav li > a > i,
+.side-nav li > a > [class^="mdi-"], .side-nav li > a > [class*="mdi-"],
+.side-nav li > a > i.material-icons {
+  float: left;
+  line-height: 48px;
+  margin: 0 32px 0 0;
+  width: 24px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.side-nav .divider {
+  margin: 8px 0 0 0;
+}
+
+.side-nav .subheader {
+  cursor: initial;
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 48px;
+}
+
+.side-nav .subheader:hover {
+  background-color: transparent;
+}
+
+.side-nav .userView {
+  overflow: hidden;
+  position: relative;
+  padding: 32px 32px 0;
+  margin-bottom: 8px;
+}
+
+.side-nav .userView a {
+  height: auto;
+  padding: 0;
+}
+
+.side-nav .userView a:hover {
+  background-color: transparent;
+}
+
+.side-nav .userView .background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.side-nav .userView .circle, .side-nav .userView .name, .side-nav .userView .email {
+  display: block;
+}
+
+.side-nav .userView .circle {
+  height: 64px;
+  width: 64px;
+}
+
+.side-nav .userView .name,
+.side-nav .userView .email {
+  font-weight: 14px;
+  line-height: 24px;
+}
+
+.side-nav .userView .name {
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.side-nav .userView .email {
+  padding-bottom: 16px;
+  font-weight: 400;
+}
+
 .drag-target {
   height: 100%;
   width: 10px;
@@ -6839,8 +6917,8 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav.fixed a {
   display: block;
-  padding: 0 30px;
-  color: #444;
+  padding: 0 16px;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .side-nav.fixed {
@@ -6863,6 +6941,12 @@ input[type=range]:focus::-ms-fill-upper {
   .side-nav.fixed.right-aligned {
     -webkit-transform: translateX(105%);
             transform: translateX(105%);
+  }
+  .side-nav a {
+    padding: 0 16px;
+  }
+  .side-nav .userView {
+    padding: 16px 16px 0;
   }
 }
 
