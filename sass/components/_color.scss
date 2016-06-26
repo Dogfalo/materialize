@@ -408,7 +408,7 @@ $colors: (
   .#{$color}-btn {
       background-color: $color_value !important;
       &:hover {
-          background-color: lighten($color_value, 12%)!important;
+          background-color: lighten($color_value, 5%)!important;
       }
   }
 }
