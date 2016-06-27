@@ -5,9 +5,7 @@
 
       // Defaults
       var defaults = {
-        delay: 350,
-        tooltip: '',
-        position: 'bottom'
+        delay: 350
       };
 
       // Remove tooltip from the activator
@@ -25,30 +23,10 @@
       return this.each(function(){
         var tooltipId = Materialize.guid();
         var origin = $(this);
- 	var previousTooltipId = origin.attr('data-tooltip-id');
-        if (previousTooltipId) {
-          $('#' + previousTooltipId).remove();
-        }
         origin.attr('data-tooltip-id', tooltipId);
 
-	//Check html or not
-        var html = origin.attr('data-html') === 'true';
-
-       // Create Text span
-        var tooltip_text ='';
-        if (html) {
-          if(typeof options.tooltip != 'undefined' && options.tooltip != ''){
-            tooltip_text = $('<span></span>').html(options.tooltip);
-          }else{
-            tooltip_text= $('<span></span>').html(origin.attr('data-tooltip'));
-          }
-        }else{
-          if(typeof options.tooltip != 'undefined' && options.tooltip != ''){
-            tooltip_text = $('<span></span>').text(options.tooltip);
-          }else{
-            tooltip_text= $('<span></span>').text(origin.attr('data-tooltip'));
-          }
-        }
+        // Create Text span
+        var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
 
         // Create tooltip
         var newTooltip = $('<div></div>');
@@ -67,37 +45,22 @@
       var started = false, timeoutRef;
       origin.on({
         'mouseenter.tooltip': function(e) {
-           var tooltip_delay = origin.attr('data-delay');
+          var tooltip_delay = origin.attr('data-delay');
           tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ?
               options.delay : tooltip_delay;
-          var tooltip_position = origin.attr('data-position');
-          tooltip_position = (tooltip_position === undefined || tooltip_position === '') ?
-              options.position : tooltip_position;
-          var tooltip_text = origin.attr('data-tooltip');
-          tooltip_text = (tooltip_text === undefined || tooltip_text === '') ?
-              options.tooltip : tooltip_text;
           timeoutRef = setTimeout(function(){
             started = true;
             newTooltip.velocity('stop');
             backdrop.velocity('stop');
             newTooltip.css({ display: 'block', left: '0px', top: '0px' });
 
-
-          //Check if html or not
-            var html = origin.attr('data-html') === 'true';
-
             // Set Tooltip text
-            if (html) {
-              newTooltip.children('span').html(tooltip_text);
-            }else{
-              newTooltip.children('span').text(tooltip_text);
-            }
-
+            newTooltip.children('span').text(origin.attr('data-tooltip'));
 
             // Tooltip positioning
             var originWidth = origin.outerWidth();
             var originHeight = origin.outerHeight();
-
+            var tooltipPosition =  origin.attr('data-position');
             var tooltipHeight = newTooltip.outerHeight();
             var tooltipWidth = newTooltip.outerWidth();
             var tooltipVerticalMovement = '0px';
@@ -105,7 +68,7 @@
             var scale_factor = 8;
             var targetTop, targetLeft, newCoordinates;
 
-            if (tooltip_position === "top") {
+            if (tooltipPosition === "top") {
               // Top Position
               targetTop = origin.offset().top - tooltipHeight - margin;
               targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
@@ -120,7 +83,7 @@
               });
             }
             // Left Position
-            else if (tooltip_position === "left") {
+            else if (tooltipPosition === "left") {
               targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
               targetLeft =  origin.offset().left - tooltipWidth - margin;
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
@@ -136,7 +99,7 @@
               });
             }
             // Right Position
-            else if (tooltip_position === "right") {
+            else if (tooltipPosition === "right") {
               targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
               targetLeft = origin.offset().left + originWidth + margin;
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
@@ -173,7 +136,7 @@
             if (scale_factor < 8) {
               scale_factor = 8;
             }
-            if (tooltip_position === "right" || tooltip_position === "left") {
+            if (tooltipPosition === "right" || tooltipPosition === "left") {
               scale_factor = tooltipWidth / 10;
               if (scale_factor < 6)
                 scale_factor = 6;
