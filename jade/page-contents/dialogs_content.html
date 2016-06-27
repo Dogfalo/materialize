@@ -61,14 +61,15 @@
         <pre><code class="language-markup">
   &lt;!-- data-position can be : bottom, top, left, or right -->
   &lt;!-- data-delay controls delay before tooltip shows (in milliseconds)-->
-  &lt;a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">Hover me!&lt;/a>
+  &lt;!-- data-timer controls delay before tooltip disappears (in milliseconds)-->
+  &lt;a class="btn tooltipped" data-position="bottom" data-delay="50" data-timer="0" data-tooltip="I am tooltip">Hover me!&lt;/a>
         </code></pre>
         <br>
         <h4>Initialization</h4>
         <p>Tooltips are initialized automatically, but if you have dynamically added tooltips, you will need to initialize them.</p>
         <pre><code class="language-javascript">
   $(document).ready(function(){
-    $('.tooltipped').tooltip({delay: 50});
+    $('.tooltipped').tooltip({delay: 50, timer: 0});
   });
         </code></pre>
 
