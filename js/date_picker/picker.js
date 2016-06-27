@@ -299,7 +299,10 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                             // On “enter”, if the highlighted item isn’t disabled, set the value and close.
                             else if ( !P.$root.find( '.' + CLASSES.highlighted ).hasClass( CLASSES.disabled ) ) {
-                                P.set( 'select', P.component.item.highlight ).close()
+                                P.set( 'select', P.component.item.highlight )
+                                if ( SETTINGS.closeOnSelect ) {
+                                    P.close( true )
+                                }
                             }
                         }
 
@@ -716,11 +719,17 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 // If something is picked, set `select` then close with focus.
                 else if ( !targetDisabled && 'pick' in targetData ) {
                     P.set( 'select', targetData.pick )
+                    if ( SETTINGS.closeOnSelect ) {
+                        P.close( true )
+                    }
                 }
 
                 // If a “clear” button is pressed, empty the values and close with focus.
                 else if ( targetData.clear ) {
-                    P.clear().close( true )
+                    P.clear()
+                    if ( SETTINGS.closeOnClear ) {
+                        P.close( true )
+                    }
                 }
 
                 else if ( targetData.close ) {
