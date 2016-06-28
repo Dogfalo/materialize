@@ -7,7 +7,8 @@
       var defaults = {
         delay: 350,
         tooltip: '',
-        position: 'bottom'
+        position: 'bottom',
+        html: false
       };
 
       // Remove tooltip from the activator
@@ -21,91 +22,79 @@
 
       options = $.extend(defaults, options);
 
-
-      return this.each(function(){
+      return this.each(function() {
         var tooltipId = Materialize.guid();
         var origin = $(this);
- 	var previousTooltipId = origin.attr('data-tooltip-id');
-        if (previousTooltipId) {
-          $('#' + previousTooltipId).remove();
-        }
         origin.attr('data-tooltip-id', tooltipId);
 
-	//Check html or not
-        var html = origin.attr('data-html') === 'true';
+        // Get attributes.
+        var allowHtml,
+            tooltipDelay,
+            tooltipPosition,
+            tooltipText,
+            tooltipEl,
+            backdrop;
+        var setAttributes = function() {
+          allowHtml = origin.attr('data-html') ? origin.attr('data-html') === 'true' : options.html;
+          tooltipDelay = origin.attr('data-delay');
+          tooltipDelay = (tooltipDelay === undefined || tooltipDelay === '') ?
+              options.delay : tooltipDelay;
+          tooltipPosition = origin.attr('data-position');
+          tooltipPosition = (tooltipPosition === undefined || tooltipPosition === '') ?
+              options.position : tooltipPosition;
+          tooltipText = origin.attr('data-tooltip');
+          tooltipText = (tooltipText === undefined || tooltipText === '') ?
+              options.tooltip : tooltipText;
+        };
+        setAttributes();
 
-       // Create Text span
-        var tooltip_text ='';
-        if (html) {
-          if(typeof options.tooltip != 'undefined' && options.tooltip != ''){
-            tooltip_text = $('<span></span>').html(options.tooltip);
-          }else{
-            tooltip_text= $('<span></span>').html(origin.attr('data-tooltip'));
+        var renderTooltipEl = function() {
+          var tooltip = $('<div class="material-tooltip"></div>');
+
+          // Create Text span
+          if (allowHtml) {
+            tooltipText = $('<span></span>').html(tooltipText);
+          } else{
+            tooltipText = $('<span></span>').text(tooltipText);
           }
-        }else{
-          if(typeof options.tooltip != 'undefined' && options.tooltip != ''){
-            tooltip_text = $('<span></span>').text(options.tooltip);
-          }else{
-            tooltip_text= $('<span></span>').text(origin.attr('data-tooltip'));
-          }
-        }
 
-        // Create tooltip
-        var newTooltip = $('<div></div>');
-        newTooltip.addClass('material-tooltip').append(tooltip_text)
-          .appendTo($('body'))
-          .attr('id', tooltipId);
+          // Create tooltip
+          tooltip.append(tooltipText)
+            .appendTo($('body'))
+            .attr('id', tooltipId);
 
-        var backdrop = $('<div></div>').addClass('backdrop');
-        backdrop.appendTo(newTooltip);
-        backdrop.css({ top: 0, left:0 });
+          // Create backdrop
+          backdrop = $('<div class="backdrop"></div>');
+          backdrop.appendTo(tooltip);
+          backdrop.css({ top: 0, left:0 });
+          return tooltip;
+        };
+        tooltipEl = renderTooltipEl();
 
-
-      //Destroy previously binded events
-      origin.off('mouseenter.tooltip mouseleave.tooltip');
-      // Mouse In
-      var started = false, timeoutRef;
-      origin.on({
-        'mouseenter.tooltip': function(e) {
-           var tooltip_delay = origin.attr('data-delay');
-          tooltip_delay = (tooltip_delay === undefined || tooltip_delay === '') ?
-              options.delay : tooltip_delay;
-          var tooltip_position = origin.attr('data-position');
-          tooltip_position = (tooltip_position === undefined || tooltip_position === '') ?
-              options.position : tooltip_position;
-          var tooltip_text = origin.attr('data-tooltip');
-          tooltip_text = (tooltip_text === undefined || tooltip_text === '') ?
-              options.tooltip : tooltip_text;
-          timeoutRef = setTimeout(function(){
+        // Destroy previously binded events
+        origin.off('mouseenter.tooltip mouseleave.tooltip');
+        // Mouse In
+        var started = false, timeoutRef;
+        origin.on({'mouseenter.tooltip': function(e) {
+          var showTooltip = function() {
+            console.log(tooltipPosition);
             started = true;
-            newTooltip.velocity('stop');
+            tooltipEl.velocity('stop');
             backdrop.velocity('stop');
-            newTooltip.css({ display: 'block', left: '0px', top: '0px' });
-
-
-          //Check if html or not
-            var html = origin.attr('data-html') === 'true';
-
-            // Set Tooltip text
-            if (html) {
-              newTooltip.children('span').html(tooltip_text);
-            }else{
-              newTooltip.children('span').text(tooltip_text);
-            }
-
+            tooltipEl.css({ display: 'block', left: '0px', top: '0px' });
 
             // Tooltip positioning
             var originWidth = origin.outerWidth();
             var originHeight = origin.outerHeight();
 
-            var tooltipHeight = newTooltip.outerHeight();
-            var tooltipWidth = newTooltip.outerWidth();
+            var tooltipHeight = tooltipEl.outerHeight();
+            var tooltipWidth = tooltipEl.outerWidth();
             var tooltipVerticalMovement = '0px';
             var tooltipHorizontalMovement = '0px';
             var scale_factor = 8;
             var targetTop, targetLeft, newCoordinates;
 
-            if (tooltip_position === "top") {
+            if (tooltipPosition === "top") {
               // Top Position
               targetTop = origin.offset().top - tooltipHeight - margin;
               targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
@@ -120,7 +109,7 @@
               });
             }
             // Left Position
-            else if (tooltip_position === "left") {
+            else if (tooltipPosition === "left") {
               targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
               targetLeft =  origin.offset().left - tooltipWidth - margin;
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
@@ -136,7 +125,7 @@
               });
             }
             // Right Position
-            else if (tooltip_position === "right") {
+            else if (tooltipPosition === "right") {
               targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
               targetLeft = origin.offset().left + originWidth + margin;
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
@@ -163,7 +152,7 @@
             }
 
             // Set tooptip css placement
-            newTooltip.css({
+            tooltipEl.css({
               top: newCoordinates.y,
               left: newCoordinates.x
             });
@@ -173,20 +162,20 @@
             if (scale_factor < 8) {
               scale_factor = 8;
             }
-            if (tooltip_position === "right" || tooltip_position === "left") {
+            if (tooltipPosition === "right" || tooltipPosition === "left") {
               scale_factor = tooltipWidth / 10;
               if (scale_factor < 6)
                 scale_factor = 6;
             }
 
-            newTooltip.velocity({ marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement}, { duration: 350, queue: false })
+            tooltipEl.velocity({ marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement}, { duration: 350, queue: false })
               .velocity({opacity: 1}, {duration: 300, delay: 50, queue: false});
             backdrop.css({ display: 'block' })
               .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
               .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
+          };
 
-
-          }, tooltip_delay); // End Interval
+          timeoutRef = setTimeout(showTooltip, tooltipDelay); // End Interval
 
         // Mouse Out
         },
@@ -197,15 +186,15 @@
 
           // Animate back
           setTimeout(function() {
-            if (started != true) {
-              newTooltip.velocity({
+            if (started !== true) {
+              tooltipEl.velocity({
                 opacity: 0, marginTop: 0, marginLeft: 0}, { duration: 225, queue: false});
               backdrop.velocity({opacity: 0, scale: 1}, {
                 duration:225,
                 queue: false,
                 complete: function(){
                   backdrop.css('display', 'none');
-                  newTooltip.css('display', 'none');
+                  tooltipEl.css('display', 'none');
                   started = false;}
               });
             }
@@ -216,7 +205,7 @@
   };
 
   var repositionWithinScreen = function(x, y, width, height) {
-    var newX = x
+    var newX = x;
     var newY = y;
 
     if (newX < 0) {
