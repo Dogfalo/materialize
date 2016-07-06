@@ -248,7 +248,7 @@
               e.preventDefault();
               e.stopPropagation();
             }
-            console.log($(this));
+            
             cycleTo(clickedIndex);
           }
         }
@@ -266,7 +266,7 @@
 
           // Call prev or next accordingly.
           if (diff < 0) {
-            console.log("TRIGGER", $(this));
+            
             view.trigger('carouselNext', [Math.abs(diff)]);
 
           } else if (diff > 0) {
@@ -367,7 +367,7 @@
         scroll(offset);
 
         $(this).on('carouselNext', function(e, n) {
-          console.log("NEXT");
+          
           if (n === undefined) {
             n = 1;
           }
