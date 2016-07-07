@@ -62,6 +62,12 @@
 
       // Bind the click event handler
       $this.on('click', 'a', function(e) {
+
+        // Continue with the default action if the anchor is an external link
+        if ($(this).attr('target')) {
+          return;
+        }
+
         if ($(this).parent().hasClass('disabled')) {
           e.preventDefault();
           return;
