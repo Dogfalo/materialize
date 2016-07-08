@@ -77,7 +77,7 @@
         var started = false, timeoutRef;
         origin.on({'mouseenter.tooltip': function(e) {
           var showTooltip = function() {
-            console.log(tooltipPosition);
+            setAttributes();
             started = true;
             tooltipEl.velocity('stop');
             backdrop.velocity('stop');
