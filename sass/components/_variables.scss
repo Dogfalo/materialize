@@ -202,11 +202,16 @@ $large-screen: 1200px !default;
 $large-screen-up: 1201px !default;
 // Large here
 
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
-$large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
+
+// Extra-small here
 $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$small-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+$medium-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+
+$large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
 
 
 /* 12. Grid
