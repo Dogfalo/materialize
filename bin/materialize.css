@@ -4817,7 +4817,6 @@ small {
   left: 0;
   top: 0;
   pointer-events: none;
-  will-change: top, left;
 }
 
 .backdrop {
@@ -4826,12 +4825,13 @@ small {
   display: none;
   height: 7px;
   width: 14px;
-  border-radius: 0 0 14px 14px;
+  border-radius: 0 0 50% 50%;
   background-color: #323232;
   z-index: -1;
-  -webkit-transform-origin: 50% 10%;
-          transform-origin: 50% 10%;
-  will-change: transform, opacity;
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .btn, .btn-large,
