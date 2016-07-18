@@ -47,6 +47,11 @@
     height: $sidenav-item-height;
     line-height: $sidenav-item-height;
     padding: 0 ($sidenav-padding * 2);
+    vertical-align: middle;
+
+    * {
+      vertical-align: middle;
+    }
 
     &:hover { background-color: rgba(0,0,0,.05);}
 
