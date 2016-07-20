@@ -44,6 +44,7 @@
     "phantomjs": "^1.9.18"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt travis --verbose",
+    "release": "grunt release"
   }
 }
