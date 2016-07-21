@@ -95,7 +95,7 @@
           view[0].addEventListener('mousedown', tap);
           view[0].addEventListener('mousemove', drag);
           view[0].addEventListener('mouseup', release);
-          // view[0].addEventListener('mouseleave', release);
+          view[0].addEventListener('mouseleave', release);
           view[0].addEventListener('click', click);
         }
 
