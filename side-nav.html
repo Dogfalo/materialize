@@ -172,6 +172,8 @@
       menuWidth: 300, // Default is 240
       edge: 'right', // Choose the horizontal origin
       closeOnClick: true // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
+      onOpen: function() { /* Do Stuff* / }, // A function to be called when sideNav is opened.
+      onClose: function() { /* Do Stuff* / } // A function to be called when sideNav is closed.
     }
   );
         </code></pre>

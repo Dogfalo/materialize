@@ -5,7 +5,9 @@
       var defaults = {
         menuWidth: 300,
         edge: 'left',
-        closeOnClick: false
+        closeOnClick: false,
+		onOpen: null,
+		onClose: null
       };
       options = $.extend(defaults, options);
 
@@ -121,6 +123,9 @@
                 }
               });
           }
+		  if(typeof(options.onClose) === 'function'){
+			options.onClose();
+		  }
         }
 
 
@@ -322,6 +327,9 @@
                   panning = false;
                 }
               });
+			  if(typeof(options.onOpen) === 'function'){
+				options.onOpen();
+			  }
             }
 
             return false;
