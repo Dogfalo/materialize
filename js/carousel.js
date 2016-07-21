@@ -274,11 +274,13 @@
           var diff = (center % count) - n;
 
           // Account for wraparound.
-          if (diff < 0) {
-            if (Math.abs(diff + count) < Math.abs(diff)) { diff += count; }
+          if (!options.no_wrap) {
+            if (diff < 0) {
+              if (Math.abs(diff + count) < Math.abs(diff)) { diff += count; }
 
-          } else if (diff > 0) {
-            if (Math.abs(diff - count) < diff) { diff -= count; }
+            } else if (diff > 0) {
+              if (Math.abs(diff - count) < diff) { diff -= count; }
+            }
           }
 
           // Call prev or next accordingly.
