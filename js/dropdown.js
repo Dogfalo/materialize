@@ -108,10 +108,16 @@
         }
 
         // Check for scrolling positioned container.
-        var scrollOffset = 0;
+        var scrollYOffset = 0;
+        var scrollXOffset = 0;
         var wrapper = origin.parent();
-        if (!wrapper.is('body') && wrapper[0].scrollHeight > wrapper[0].clientHeight) {
-          scrollOffset = wrapper[0].scrollTop;
+        if (!wrapper.is('body')) {
+          if (wrapper[0].scrollHeight > wrapper[0].clientHeight) {
+            scrollYOffset = wrapper[0].scrollTop;
+          }
+          if (wrapper[0].scrollWidth > wrapper[0].clientWidth) {
+            scrollXOffset = wrapper[0].scrollLeft;
+          }
         }
 
 
@@ -152,8 +158,8 @@
         // Position dropdown
         activates.css({
           position: 'absolute',
-          top: origin.position().top + verticalOffset + scrollOffset,
-          left: leftPosition
+          top: origin.position().top + verticalOffset + scrollYOffset,
+          left: leftPosition + scrollXOffset
         });
 
 
