@@ -18,11 +18,17 @@ main {
 }
 
 ul {
-  &.browser-default {
+  &.browser-default,
+  &.browser-default li {
     list-style-type: initial;
   }
 
+  padding: 0;
   list-style-type: none;
+
+  li {
+    list-style-type: none;
+  }
 }
 
 a {
@@ -44,13 +50,6 @@ a {
   }
 }
 
-
-ul {
-  padding: 0;
-  li {
-    list-style-type: none;
-  }
-}
 
 // classic clearfix
 .clearfix {
@@ -149,13 +148,18 @@ video.responsive-video {
 
   li {
     display: inline-block;
-    font-size: 1.2rem;
-    padding: 0 10px;
-    line-height: 30px;
     border-radius: 2px;
     text-align: center;
+    vertical-align: top;
+    height: 30px;
 
-    a { color: #444; }
+    a {
+      color: #444;
+      display: inline-block;
+      font-size: 1.2rem;
+      padding: 0 10px;
+      line-height: 30px;
+    }
 
     &.active a { color: #fff; }
 
@@ -167,8 +171,7 @@ video.responsive-video {
     }
 
     i {
-      font-size: 2.2rem;
-      vertical-align: middle;
+      font-size: 2rem;
     }
   }
 
@@ -614,6 +617,12 @@ span.badge {
   &.new:after {
     content: " new";
   }
+
+  &[data-badge-caption]::after {
+    content: " " attr(data-badge-caption);
+  }
+
+
 }
 nav ul a span.badge {
   position: static;

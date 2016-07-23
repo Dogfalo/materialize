@@ -107,13 +107,16 @@ $collapsible-border-color: #ddd !default;
    ========================================================================== */
 
 $chip-bg-color: #e4e4e4 !default;
+$chip-border-color: #9e9e9e !default;
+$chip-selected-color: #26a69a !default;
+$chip-margin: 5px !default;
 
 
 /* 7. Date Picker
    ========================================================================== */
 
-$datepicker-weekday-bg: darken($secondary_color, 7%) !default;
-$datepicker-date-bg: $secondary_color !default;
+$datepicker-weekday-bg: darken($secondary-color, 7%) !default;
+$datepicker-date-bg: $secondary-color !default;
 $datepicker-year: rgba(255, 255, 255, .4) !default;
 $datepicker-focus: rgba(0,0,0, .05) !default;
 $datepicker-selected: $secondary-color !default;
@@ -147,7 +150,7 @@ $input-error-color: $error-color !default;
 $input-success-color: $success-color !default;
 $input-focus-color: $secondary-color !default;
 $input-font-size: 1rem !default;
-$input-margin: 0 0 15px 0 !default;
+$input-margin: 0 0 20px 0 !default;
 $input-padding: 0 !default;
 $input-transition: all .3s !default;
 $label-font-size: .8rem !default;
@@ -215,17 +218,18 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 
 $navbar-height: 64px !default;
 $navbar-height-mobile: 56px !default;
+$navbar-font-size: 1rem !default;
 $navbar-font-color: #fff !default;
 $navbar-brand-font-size: 2.1rem !default;
-
 
 /* 14. Side Navigation
    ========================================================================== */
 
-$sidenav-font-color: #444 !default;
+$sidenav-font-size: 14px !default;
+$sidenav-font-color: rgba(0,0,0,.87) !default;
 $sidenav-bg-color: #fff !default;
-$sidenav-padding-right: 30px !default;
-$sidenav-item-height: 64px !default;
+$sidenav-padding: 16px !default;
+$sidenav-item-height: 48px !default;
 
 
 /* 15. Photo Slider

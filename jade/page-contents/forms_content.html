@@ -804,6 +804,51 @@
         </code></pre>
       </div>
 
+      <div id="autocomplete" class="section scrollspy">
+        <h2 class="header">Autocomplete</h2>
+        <p class="caption">
+          Add an autocomplete dropdown below your input to suggest possible values.
+        </p>
+
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">textsms</i>
+                <input type="text" id="autocomplete-input" class="autocomplete">
+                <label for="autocomplete-input">Autocomplete</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;i class="material-icons prefix">textsms&lt;/i>
+          &lt;input type="text" id="autocomplete">
+          &lt;label for="autocomplete">Autocomplete&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+
+        <h4>Initialization</h4>
+        <p>The data is a json object where the key is the matching string and the value is an optional image url.</p>
+        <pre><code class="language-javascript">
+  $('input.autocomplete').autocomplete({
+    data: {
+      "Apple": null,
+      "Microsoft": null,
+      "Google": 'http://placehold.it/250x250'
+    }
+  });
+        </code></pre>
+      </div>
+
 
 
     </div>
@@ -825,6 +870,7 @@
             <li><a href="#range">Range</a></li>
             <li><a href="#date-picker">Date Picker</a></li>
             <li><a href="#character-counter">Character Counter</a></li>
+            <li><a href="#autocomplete">Autocomplete</a></li>
           </ul>
         </div>
       </div>

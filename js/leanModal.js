@@ -21,16 +21,17 @@
         ready: undefined,
         complete: undefined,
         dismissible: true,
-        starting_top: '4%'
-      },
-      $modal = $(this);
+        starting_top: '4%',
+        ending_top: '10%'
+      };
+      var $modal = $(this);
 
       if ($modal.hasClass('open')) {
         return;
       }
 
-      overlayID = _generateID();
-      $overlay = $('<div class="lean-overlay"></div>');
+      var overlayID = _generateID();
+      var $overlay = $('<div class="lean-overlay"></div>');
       lStack = (++_stack);
 
       // Store a reference of the overlay
@@ -86,7 +87,7 @@
       else {
         $.Velocity.hook($modal, "scaleX", 0.7);
         $modal.css({ top: options.starting_top });
-        $modal.velocity({top: "10%", opacity: 1, scaleX: '1'}, {
+        $modal.velocity({top: options.ending_top, opacity: 1, scaleX: '1'}, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
@@ -108,10 +109,10 @@
       var defaults = {
         out_duration: 250,
         complete: undefined
-      },
-      $modal = $(this),
-      overlayID = $modal.data('overlay-id'),
-      $overlay = $('#' + overlayID);
+      };
+      var $modal = $(this);
+      var overlayID = $modal.data('overlay-id');
+      var $overlay = $('#' + overlayID);
       $modal.removeClass('open');
 
       options = $.extend(defaults, options);

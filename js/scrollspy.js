@@ -170,6 +170,12 @@
 	 * @returns {jQuery}
 	 */
 	$.scrollSpy = function(selector, options) {
+	  var defaults = {
+			throttle: 100,
+			scrollOffset: 200 // offset - 200 allows elements near bottom of page to scroll
+    };
+    options = $.extend(defaults, options);
+
 		var visible = [];
 		selector = $(selector);
 		selector.each(function(i, element) {
@@ -179,16 +185,9 @@
 		  $('a[href="#' + $(element).attr('id') + '"]').click(function(e) {
 		    e.preventDefault();
 		    var offset = $(this.hash).offset().top + 1;
-
-//          offset - 200 allows elements near bottom of page to scroll
-			
-	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, queue: false, easing: 'easeOutCubic'});
-			
+	    	$('html, body').animate({ scrollTop: offset - options.scrollOffset }, {duration: 400, queue: false, easing: 'easeOutCubic'});
 		  });
 		});
-		options = options || {
-			throttle: 100
-		};
 
 		offset.top = options.offsetTop || 0;
 		offset.right = options.offsetRight || 0;

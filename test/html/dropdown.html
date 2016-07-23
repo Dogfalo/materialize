@@ -153,6 +153,13 @@
                     Long List Overflow<i class="mdi-navigation-arrow-drop-down right"></i>
                 </a>
             </li>
+            <li>
+              <button onClick="alert('Stop Propagation failed');" style="background: transparent; border: 0;">
+                <a  class="dropdown-button" href="#!" data-activates="23" data-stopPropagation="true">
+                  Stop Propagation<i class="mdi-navigation-arrow-drop-down right"></i>
+                </a>
+              </button>
+            </li>
         </ul>
     </div>
 </nav>
@@ -432,6 +439,12 @@
   <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
   <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
 </ul>
+<ul id="23" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
 
 
 <br>
@@ -493,8 +506,8 @@ Align right: --------------------------------
 
 </div>
 
-<div style="width: 400px; height: 400px; overflow:scroll; background: grey; position: absolute;">
-    <h2>Scrolling in absolute container</h2>
+<div class="center" style="width: 400px; height: 400px; overflow:scroll; background: grey; position: absolute;">
+    <h2 style="width: 600px;">Scrolling in absolute container</h2>
     <a class="btn-floating btn-large waves-effect waves-light red dropdown-button" data-activates="21" data-constrainwidth="false" data-alignment="right">+</a>
     <br>s
     <br>s

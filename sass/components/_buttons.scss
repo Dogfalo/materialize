@@ -18,9 +18,12 @@
 .btn.disabled,
 .btn-floating.disabled,
 .btn-large.disabled,
-.btn:disabled
+.btn:disabled,
 .btn-large:disabled,
-.btn-floating:disabled {
+.btn-floating:disabled,
+.btn[disabled],
+.btn-large[disabled],
+.btn-floating[disabled] {
   background-color: $button-disabled-background !important;
   box-shadow: none;
   color: $button-disabled-color !important;
@@ -173,6 +176,17 @@ button.btn-floating {
   background-color: transparent;
   color: $button-flat-color;
   cursor: pointer;
+  transition: background-color .2s;
+
+  &:focus,
+  &:active {
+    background-color: transparent;
+  }
+
+  &:hover {
+    background-color: rgba(0,0,0,.1);
+    box-shadow: none;
+  }
 
   &.disabled {
     color: $button-flat-disabled-color;

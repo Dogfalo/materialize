@@ -375,7 +375,8 @@ module.exports = function(grunt) {
           "transitions.html": "jade/transitions.jade",
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
           "pagination.html": "jade/pagination.jade",
-          "breadcrumbs.html": "jade/breadcrumbs.jade"
+          "breadcrumbs.html": "jade/breadcrumbs.jade",
+          "carousel.html": "jade/carousel.jade"
 
 
         }

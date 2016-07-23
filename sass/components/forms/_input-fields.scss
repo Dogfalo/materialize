@@ -115,7 +115,7 @@ textarea.materialize-textarea {
     display: block;
     content: "";
     position: absolute;
-    top: 65px;
+    top: 60px;
     opacity: 0;
     transition: .2s opacity ease-out, .2s color ease-out;
   }
@@ -123,6 +123,18 @@ textarea.materialize-textarea {
 
 // Styling for input field wrapper
 .input-field {
+  // Gutter spacing
+  &.col {
+    label {
+      left: $gutter-width / 2;
+    }
+
+    .prefix ~ label,
+    .prefix ~ .validate ~ label {
+      width: calc(100% - 3rem - #{$gutter-width});
+    }
+  }
+
   position: relative;
   margin-top: 1rem;
 
@@ -130,7 +142,6 @@ textarea.materialize-textarea {
     color: $input-border-color;
     position: absolute;
     top: 0.8rem;
-    left: $gutter-width / 2;
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
@@ -152,13 +163,15 @@ textarea.materialize-textarea {
   }
 
   .prefix ~ input,
-  .prefix ~ textarea {
+  .prefix ~ textarea,
+  .prefix ~ label,
+  .prefix ~ .validate ~ label,
+  .prefix ~ .autocomplete-content {
     margin-left: 3rem;
     width: 92%;
     width: calc(100% - 3rem);
   }
 
-  .prefix ~ textarea { padding-top: .8rem; }
   .prefix ~ label { margin-left: 3rem; }
 
   @media #{$medium-and-down} {
@@ -225,7 +238,7 @@ textarea {
 
   &.materialize-textarea {
     overflow-y: hidden; /* prevents scroll bar flash */
-    padding: 1.6rem 0; /* prevents text jump on Enter keypress */
+    padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
     resize: none;
     min-height: $input-height;
   }
@@ -238,4 +251,23 @@ textarea {
   word-wrap: break-word;
   overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
   padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+}
+
+
+/* Autocomplete */
+.autocomplete-content {
+  margin-top: -15px;
+  display: block;
+  opacity: 1;
+  position: static;
+
+  li {
+    .highlight { color: #444; }
+
+    img {
+      height: $dropdown-item-height - 10;
+      width: $dropdown-item-height - 10;
+      margin: 5px 15px;
+    }
+  }
 }

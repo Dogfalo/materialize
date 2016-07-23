@@ -86,6 +86,7 @@
             <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
+                  <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
@@ -284,6 +285,8 @@
       opacity: .5, // Opacity of modal background
       in_duration: 300, // Transition in duration
       out_duration: 200, // Transition out duration
+      starting_top: '4%', // Starting top style attribute
+      ending_top: '10%', // Ending top style attribute
       ready: function() { alert('Ready'); }, // Callback for Modal open
       complete: function() { alert('Closed'); } // Callback for Modal close
     }

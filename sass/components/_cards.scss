@@ -34,8 +34,11 @@
       max-height: 60%;
       overflow: hidden;
     }
-    .card-content {
+    .card-image + .card-content {
       max-height: 40%;
+    }
+    .card-content {
+      max-height: 100%;
       overflow: hidden;
     }
     .card-action {
@@ -57,6 +60,56 @@
   &.large {
     height: 500px;
   }
+
+  // Horizontal Cards
+  &.horizontal {
+    &.small, &.medium, &.large {
+      .card-image {
+        height: 100%;
+        max-height: none;
+        overflow: visible;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    display: flex;
+
+    .card-image {
+      max-width: 50%;
+      img {
+        max-width: 100%;
+        width: auto;
+      }
+    }
+
+    .card-stacked {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      position: relative;
+
+      .card-content {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  // Sticky Action Section
+  &.sticky-action {
+    .card-action {
+      z-index: 2;
+    }
+
+    .card-reveal {
+      z-index: 1;
+      padding-bottom: 64px;
+    }
+  }
+
+
 
 
   .card-image {
@@ -102,7 +155,6 @@
     background-color: inherit;
     border-top: 1px solid rgba(160,160,160,.2);
     padding: $card-padding;
-    z-index: 2;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: $card-link-color;
@@ -111,11 +163,6 @@
       text-transform: uppercase;
 
       &:hover { color: $card-link-color-light; }
-    }
-
-    & + .card-reveal {
-      z-index: 1;
-      padding-bottom: 64px;
     }
   }
 

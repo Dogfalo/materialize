@@ -76,6 +76,13 @@ nav {
       right: 0.5rem;
       padding: 0;
     }
+
+    i,
+    [class^="mdi-"], [class*="mdi-"],
+    i.material-icons {
+      float: left;
+      margin-right: 15px;
+    }
   }
 
 
@@ -94,9 +101,9 @@ nav {
     }
     a {
       transition: background-color .3s;
-      font-size: 1rem;
+      font-size: $navbar-font-size;
       color: $navbar-font-color;
-      display: inline-block;
+      display: block;
       padding: 0 15px;
       cursor: pointer;
 
@@ -117,8 +124,13 @@ nav {
   }
 
   // Navbar Search Form
+  form {
+    height: 100%;
+  }
+
   .input-field {
     margin: 0;
+    height: 100%;
 
     input {
       height: 100%;
@@ -132,6 +144,7 @@ nav {
         box-shadow: none;
       }
     }
+
     label {
       top: 0;
       left: 0;
@@ -145,9 +158,7 @@ nav {
         transform: translateY(0);
       }
     }
-
   }
-
 }
 
 // Fixed Navbar

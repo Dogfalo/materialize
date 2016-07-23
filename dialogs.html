@@ -86,6 +86,7 @@
             <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
+                  <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li class="active"><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
@@ -160,7 +161,7 @@
 
         <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
         <div class="row">
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"> Bottom</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-html="true" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"> Bottom</a>
           <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="top" data-delay="50" data-tooltip="I am tooltip"> Top</a>
           <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="left" data-delay="50" data-tooltip="I am tooltip"> Left</a>
           <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="50" data-tooltip="I am tooltip"> Right</a>
@@ -180,8 +181,38 @@
   $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
   });
-        </code></pre>
+        </code></pre><br>
 
+        <h4>jQuery Plugin Options</h4>
+        <table class="highlight">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>delay</td>
+              <td>Delay time before tooltip appears. (Default: 350)</td>
+            </tr>
+            <tr>
+              <td>tooltip</td>
+              <td>Tooltip text. Can use custom HTML if you set the html option.</td>
+            </tr>
+            <tr>
+              <td>position</td>
+              <td>Set the direction of the tooltip. 'top', 'right', 'bottom', 'left'. (Default: 'bottom')</td>
+            </tr>
+            <tr>
+              <td>html</td>
+              <td>Allow custom html inside the tooltip. (Default: false)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
         <h4>Removal</h4>
         <p>To remove the tooltip from the button, pass in <code class="language-javascript">'remove'</code> as the option to the tooltip function</p>
         <pre><code class="language-javascript">

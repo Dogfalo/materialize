@@ -86,6 +86,7 @@
             <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
+                  <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
@@ -200,12 +201,45 @@
       </div>
 
 
+      <div id="options" class="section scrollspy">
+        <h4>jQuery Plugin Options</h4>
+        <table class="highlight">
+          <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>onShow</td>
+              <td>Execute a callback function when the tab is changed. <br /> The callback provides a parameter which refers to the current tab being shown.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
 
       <div id="preselecting" class="section scrollspy">
         <h4>Preselecting a tab</h4>
           <p>By default, the first tab is selected. But if this is not what you want, you can preselect a tab by either passing in the hash in the url ex:<code class="language-markup">#test2</code>. Or you can add the class <code class="language-markup">active</code> to the <code class="language-markup">a</code> tag.</p>
         <pre><code class="language-markup col s12">
   &lt;li class="tab col s2">&lt;a class="active" href="#test3">Test 3&lt;/a>&lt;/li>
+        </code></pre>
+      </div>
+
+
+      <div id="external" class="section scrollspy">
+        <h4>Linking to an External Page</h4>
+          <p>By default, Materialize tabs will ignore their default anchor behaviour.  To force a tab to behave as a regular hyperlink, just specify the <code class="language-markup">target</code> property of that link!  A list of <code class="language-markup">target</code> values may be <a href="http://www.w3schools.com/tags/att_a_target.asp">found here</a>.</p>
+        <pre><code class="language-markup col s12">
+  &lt;li class="tab col s2">
+    &lt;a target="_blank" href="https://github.com/Dogfalo/materialize">External link in new window&lt;/a>
+  &lt;/li>
+  &lt;li class="tab col s2">
+    &lt;a target="_self" href="https://github.com/Dogfalo/materialize">External link in same window&lt;/a>
+  &lt;/li>
         </code></pre>
       </div>
 
@@ -224,7 +258,9 @@
             <li><a href="#structure">Structure</a></li>
             <li><a href="#initialization">Intialization</a></li>
             <li><a href="#method">Methods</a></li>
+            <li><a href="#options">Options</a></li>
             <li><a href="#preselecting">Preselecting</a></li>
+            <li><a href="#external">External Links</a></li>
           </ul>
         </div>
       </div>

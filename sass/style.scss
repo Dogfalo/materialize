@@ -47,7 +47,7 @@ nav {
 }
 
 header, main, footer {
-  padding-left: 240px;
+  padding-left: 300px;
 }
 .parallax-demo header,
 .parallax-demo main,
@@ -93,11 +93,21 @@ ul.side-nav.fixed {
       font-size: 13px;
       line-height: 44px;
       height: 44px;
+      padding: 0 30px;
     }
   }
 
   ul.collapsible-accordion {
     background-color: #FFF;
+
+    a.collapsible-header {
+      padding: 0 30px;
+    }
+
+    .collapsible-body li a {
+      font-weight: 400;
+      padding: 0 37.5px 0 45px;
+    }
   }
 
   // Only show scrollbar on hover

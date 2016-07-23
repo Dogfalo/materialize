@@ -1,7 +1,12 @@
 (function ($) {
 
   var methods = {
-    init : function() {
+    init : function(options) {
+      var defaults = {
+        onShow: null
+      };
+      options = $.extend(defaults, options);
+
       return this.each(function() {
 
       // For each set of tabs, we want to keep track of
@@ -20,7 +25,7 @@
 
       // If no match is found, use the first link or any with class 'active' as the initial active tab.
       if ($active.length === 0) {
-          $active = $(this).find('li.tab a.active').first();
+        $active = $(this).find('li.tab a.active').first();
       }
       if ($active.length === 0) {
         $active = $(this).find('li.tab a').first();
@@ -68,6 +73,11 @@
           return;
         }
 
+        // Act as regular link if target attribute is specified.
+        if (!!$(this).attr("target")) {
+          return;
+        }
+
         $tabs_width = $this.width();
         $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
 
@@ -94,6 +104,9 @@
 
         if ($content !== undefined) {
           $content.show();
+          if (typeof(options.onShow) === "function") {
+            options.onShow.call(this, $content);
+          }
         }
 
         // Update indicator
