@@ -221,10 +221,10 @@
         origin.unbind('click.' + origin.attr('id'));
         origin.bind('click.'+origin.attr('id'), function(e){
           if (!isFocused) {
+            e.preventDefault(); // Prevents button click from moving window
             if ( origin[0] == e.currentTarget &&
                  !origin.hasClass('active') &&
                  ($(e.target).closest('.dropdown-content').length === 0)) {
-              e.preventDefault(); // Prevents button click from moving window
               if (options.stopPropagation) {
                 e.stopPropagation();
               }
