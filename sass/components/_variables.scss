@@ -115,8 +115,8 @@ $chip-margin: 5px !default;
 /* 7. Date Picker
    ========================================================================== */
 
-$datepicker-weekday-bg: darken($secondary_color, 7%) !default;
-$datepicker-date-bg: $secondary_color !default;
+$datepicker-weekday-bg: darken($secondary-color, 7%) !default;
+$datepicker-date-bg: $secondary-color !default;
 $datepicker-year: rgba(255, 255, 255, .4) !default;
 $datepicker-focus: rgba(0,0,0, .05) !default;
 $datepicker-selected: $secondary-color !default;
