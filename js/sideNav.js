@@ -302,26 +302,27 @@
                 dragTarget.css({width: '50%', right: '', left: 0});
                 menu_id.velocity({'translateX': [0, options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
-
-              var overlay = $('<div id="sidenav-overlay"></div>');
-              overlay.css('opacity', 0)
-              .click(function(){
-                menuOut = false;
-                panning = false;
-                removeMenu();
-                overlay.velocity({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
-                  complete: function() {
-                    $(this).remove();
-                  } });
-
-              });
-              $('body').append(overlay);
-              overlay.velocity({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
-                complete: function () {
-                  menuOut = true;
+              if($('#sidenav-overlay').length == 0) {
+                var overlay = $('<div id="sidenav-overlay"></div>');
+                overlay.css('opacity', 0)
+                .click(function(){
+                  menuOut = false;
                   panning = false;
-                }
-              });
+                  removeMenu();
+                  overlay.velocity({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                    complete: function() {
+                      $(this).remove();
+                    } });
+
+                });
+                $('body').append(overlay);
+                overlay.velocity({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                  complete: function () {
+                    menuOut = true;
+                    panning = false;
+                  }
+                });
+              }
             }
 
             return false;
