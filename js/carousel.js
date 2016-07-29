@@ -9,7 +9,8 @@
         shift: 0, // spacing for center image
         padding: 0, // Padding between non center items
         full_width: false, // Change to full width styles
-        indicators: false // Toggle indicators
+        indicators: false, // Toggle indicators
+        no_wrap: false // Don't wrap around and cycle through items.
       };
       options = $.extend(defaults, options);
 
@@ -28,9 +29,10 @@
         // Don't double initialize.
         if (view.hasClass('initialized')) {
           // Redraw carousel.
-          $(this).trigger('carouselNext', [.000001]);
+          $(this).trigger('carouselNext', [0.000001]);
           return true;
         }
+
 
         // Options
         if (options.full_width) {
@@ -129,6 +131,7 @@
           delta = offset - center * dim;
           dir = (delta < 0) ? 1 : -1;
           tween = -dir * delta * 2 / dim;
+          half = count >> 1;
 
           if (!options.full_width) {
             alignment = 'translateX(' + (view[0].clientWidth - item_width) / 2 + 'px) ';
@@ -148,16 +151,19 @@
           }
 
           // center
-          el = images[wrap(center)];
-          el.style[xform] = alignment +
-            ' translateX(' + (-delta / 2) + 'px)' +
-            ' translateX(' + (dir * options.shift * tween * i) + 'px)' +
-            ' translateZ(' + (options.dist * tween) + 'px)';
-          el.style.zIndex = 0;
-          if (options.full_width) { tweenedOpacity = 1; }
-          else { tweenedOpacity = 1 - 0.2 * tween; }
-          el.style.opacity = tweenedOpacity;
-          half = count >> 1;
+          // Don't show wrapped items.
+          if (!options.no_wrap || (center >= 0 && center < count)) {
+            el = images[wrap(center)];
+            el.style[xform] = alignment +
+              ' translateX(' + (-delta / 2) + 'px)' +
+              ' translateX(' + (dir * options.shift * tween * i) + 'px)' +
+              ' translateZ(' + (options.dist * tween) + 'px)';
+            el.style.zIndex = 0;
+            if (options.full_width) { tweenedOpacity = 1; }
+            else { tweenedOpacity = 1 - 0.2 * tween; }
+            el.style.opacity = tweenedOpacity;
+            el.style.display = 'block';
+          }
 
           for (i = 1; i <= half; ++i) {
             // right side
@@ -168,12 +174,16 @@
               zTranslation = options.dist * (i * 2 + tween * dir);
               tweenedOpacity = 1 - 0.2 * (i * 2 + tween * dir);
             }
-            el = images[wrap(center + i)];
-            el.style[xform] = alignment +
-              ' translateX(' + (options.shift + (dim * i - delta) / 2) + 'px)' +
-              ' translateZ(' + zTranslation + 'px)';
-            el.style.zIndex = -i;
-            el.style.opacity = tweenedOpacity;
+            // Don't show wrapped items.
+            if (!options.no_wrap || center + i < count) {
+              el = images[wrap(center + i)];
+              el.style[xform] = alignment +
+                ' translateX(' + (options.shift + (dim * i - delta) / 2) + 'px)' +
+                ' translateZ(' + zTranslation + 'px)';
+              el.style.zIndex = -i;
+              el.style.opacity = tweenedOpacity;
+              el.style.display = 'block';
+            }
 
 
             // left side
@@ -184,24 +194,32 @@
               zTranslation = options.dist * (i * 2 - tween * dir);
               tweenedOpacity = 1 - 0.2 * (i * 2 - tween * dir);
             }
-            el = images[wrap(center - i)];
-            el.style[xform] = alignment +
-              ' translateX(' + (-options.shift + (-dim * i - delta) / 2) + 'px)' +
-              ' translateZ(' + zTranslation + 'px)';
-            el.style.zIndex = -i;
-            el.style.opacity = tweenedOpacity;
+            // Don't show wrapped items.
+            if (!options.no_wrap || center - i >= 0) {
+              el = images[wrap(center - i)];
+              el.style[xform] = alignment +
+                ' translateX(' + (-options.shift + (-dim * i - delta) / 2) + 'px)' +
+                ' translateZ(' + zTranslation + 'px)';
+              el.style.zIndex = -i;
+              el.style.opacity = tweenedOpacity;
+              el.style.display = 'block';
+            }
           }
 
           // center
-          el = images[wrap(center)];
-          el.style[xform] = alignment +
-            ' translateX(' + (-delta / 2) + 'px)' +
-            ' translateX(' + (dir * options.shift * tween) + 'px)' +
-            ' translateZ(' + (options.dist * tween) + 'px)';
-          el.style.zIndex = 0;
-          if (options.full_width) { tweenedOpacity = 1; }
-          else { tweenedOpacity = 1 - 0.2 * tween; }
-          el.style.opacity = tweenedOpacity;
+          // Don't show wrapped items.
+          if (!options.no_wrap || (center >= 0 && center < count)) {
+            el = images[wrap(center)];
+            el.style[xform] = alignment +
+              ' translateX(' + (-delta / 2) + 'px)' +
+              ' translateX(' + (dir * options.shift * tween) + 'px)' +
+              ' translateZ(' + (options.dist * tween) + 'px)';
+            el.style.zIndex = 0;
+            if (options.full_width) { tweenedOpacity = 1; }
+            else { tweenedOpacity = 1 - 0.2 * tween; }
+            el.style.opacity = tweenedOpacity;
+            el.style.display = 'block';
+          }
         }
 
         function track() {
@@ -248,7 +266,6 @@
               e.preventDefault();
               e.stopPropagation();
             }
-            console.log($(this));
             cycleTo(clickedIndex);
           }
         }
@@ -257,16 +274,17 @@
           var diff = (center % count) - n;
 
           // Account for wraparound.
-          if (diff < 0) {
-            if (Math.abs(diff + count) < Math.abs(diff)) { diff += count; }
+          if (!options.no_wrap) {
+            if (diff < 0) {
+              if (Math.abs(diff + count) < Math.abs(diff)) { diff += count; }
 
-          } else if (diff > 0) {
-            if (Math.abs(diff - count) < diff) { diff -= count; }
+            } else if (diff > 0) {
+              if (Math.abs(diff - count) < diff) { diff -= count; }
+            }
           }
 
           // Call prev or next accordingly.
           if (diff < 0) {
-            console.log("TRIGGER", $(this));
             view.trigger('carouselNext', [Math.abs(diff)]);
 
           } else if (diff > 0) {
@@ -338,6 +356,15 @@
             target = offset + amplitude;
           }
           target = Math.round(target / dim) * dim;
+
+          // No wrap of items.
+          if (options.no_wrap) {
+            if (target >= dim * (count - 1)) {
+              target = dim * (count - 1);
+            } else if (target < 0) {
+              target = 0;
+            }
+          }
           amplitude = target - offset;
           timestamp = Date.now();
           requestAnimationFrame(autoScroll);
@@ -367,7 +394,6 @@
         scroll(offset);
 
         $(this).on('carouselNext', function(e, n) {
-          console.log("NEXT");
           if (n === undefined) {
             n = 1;
           }
