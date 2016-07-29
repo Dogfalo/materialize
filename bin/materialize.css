@@ -4968,9 +4968,9 @@ small {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  width: 37px;
-  height: 37px;
-  line-height: 37px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   padding: 0;
   background-color: #26a69a;
   border-radius: 50%;
@@ -4985,7 +4985,7 @@ small {
   text-align: center;
   color: #fff;
   font-size: 1.6rem;
-  line-height: 37px;
+  line-height: 40px;
 }
 
 .btn-floating:hover {
@@ -4997,12 +4997,12 @@ small {
 }
 
 .btn-floating.btn-large {
-  width: 55.5px;
-  height: 55.5px;
+  width: 56px;
+  height: 56px;
 }
 
 .btn-floating.btn-large i {
-  line-height: 55.5px;
+  line-height: 56px;
 }
 
 button.btn-floating {
@@ -5043,6 +5043,38 @@ button.btn-floating {
   margin: 15px 15px 0 0;
 }
 
+.fixed-action-btn.toolbar {
+  padding: 0;
+}
+
+.fixed-action-btn.toolbar.active > .btn-floating i {
+  opacity: 0;
+}
+
+.fixed-action-btn.toolbar ul {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fixed-action-btn.toolbar ul li {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: inline-block;
+  margin: 0;
+}
+
+.fixed-action-btn.toolbar ul li a {
+  background-color: transparent;
+  box-shadow: none;
+}
+
 .fixed-action-btn ul {
   left: 0;
   right: 0;
@@ -5059,6 +5091,19 @@ button.btn-floating {
 
 .fixed-action-btn ul a.btn-floating {
   opacity: 0;
+}
+
+.fixed-action-btn .fab-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 40px;
+  height: 40px;
+  background-color: #26a69a;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 .btn-flat {

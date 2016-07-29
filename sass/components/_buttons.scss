@@ -144,6 +144,34 @@ button.btn-floating {
     }
   }
 
+  &.toolbar {
+    &.active {
+      & > .btn-floating i {
+        opacity: 0;
+      }
+    }
+
+    padding: 0;
+
+    ul {
+      display: flex;
+      top: 0;
+      bottom: 0;
+      align-items: center;
+
+      li {
+        flex: 1;
+        display: inline-block;
+        margin: 0;
+
+        a {
+          background-color: transparent;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
   position: fixed;
   right: 23px;
   bottom: 23px;
@@ -167,6 +195,18 @@ button.btn-floating {
     a.btn-floating {
       opacity: 0;
     }
+  }
+
+  .fab-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: $button-floating-size;
+    height: $button-floating-size;
+    background-color: $button-floating-background;
+    border-radius: $button-floating-radius;
+    transform: scale(0);
   }
 }
 

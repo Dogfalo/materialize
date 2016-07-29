@@ -5,17 +5,17 @@
     $.fn.reverse = [].reverse;
 
     // Hover behaviour: make sure this doesn't work on .click-to-toggle FABs!
-    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle)', function(e) {
+    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
       var $this = $(this);
       openFABMenu($this);
     });
-    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle)', function(e) {
+    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
       var $this = $(this);
       closeFABMenu($this);
     });
 
     // Toggle-on-click behaviour.
-    $(document).on('click.fixedActionBtn', '.fixed-action-btn.click-to-toggle > a', function(e) {
+    $(document).on('click.fabClickToggle', '.fixed-action-btn.click-to-toggle > a', function(e) {
       var $this = $(this);
       var $menu = $this.parent();
       if ($menu.hasClass('active')) {
@@ -23,6 +23,13 @@
       } else {
         openFABMenu($menu);
       }
+    });
+
+    // Toolbar transition behaviour.
+    $(document).on('click.fabToolbar', '.fixed-action-btn.toolbar > a', function(e) {
+      var $this = $(this);
+      var $menu = $this.parent();
+      FABtoToolbar($menu);
     });
 
   });
@@ -33,6 +40,9 @@
     },
     closeFAB: function() {
       closeFABMenu($(this));
+    },
+    transformFAB: function() {
+      FABtoToolbar($(this));
     }
   });
 
@@ -85,6 +95,80 @@
       { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
       { duration: 80 }
     );
+  };
+
+
+  /**
+   * Transform FAB into toolbar
+   * @param  {Object}  object jQuery object
+   */
+  var FABtoToolbar = function(btn) {
+    var offsetX, offsetY, scaleFactor;
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var btnRect = btn[0].getBoundingClientRect();
+    var anchor = btn.find('> .btn-floating').first();
+    var menu = btn.find('> ul').first();
+    var backdrop = $('<div class="fab-backdrop"></div>');
+    var fabColor = anchor.css('background-color');
+    anchor.append(backdrop);
+
+    offsetX = btnRect.left - (windowWidth / 2) + (btnRect.width / 2);
+    offsetY = windowHeight - btnRect.bottom;
+    scaleFactor = windowWidth / backdrop.width();
+
+    // Set initial state
+    btn.addClass('active');
+    btn.css({
+      'text-align': 'center',
+      width: '100%',
+      bottom: 0,
+      left: 0,
+      transform: 'translateX(' + offsetX + 'px)',
+      transition: 'none'
+    });
+    anchor.css({
+      transform: 'translateY(' + -offsetY + 'px)',
+      transition: 'none'
+    });
+    backdrop.css({
+      'background-color': fabColor
+    });
+
+
+    setTimeout(function() {
+      btn.css({
+        transform: '',
+        transition: 'transform .2s cubic-bezier(0.550, 0.085, 0.680, 0.530), background-color 0s linear .2s'
+      });
+      anchor.css({
+        overflow: 'visible',
+        transform: '',
+        transition: 'transform .2s'
+      });
+
+      setTimeout(function() {
+        btn.css({
+          overflow: 'hidden',
+          'background-color': fabColor
+        });
+        backdrop.css({
+          transform: 'scale(' + scaleFactor + ')',
+          transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
+        });
+        menu.find('> li > a').css({
+          opacity: 1
+        });
+      }, 100);
+    }, 0);
+  };
+
+  /**
+   * Transform toolbar back into FAB
+   * @param  {Object}  object jQuery object
+   */
+  var toolbarToFAB = function(btn) {
+
   };
 
 
