@@ -1,9 +1,5 @@
 (function ($) {
 
-  var $dragTarget = $('<div class="drag-target"></div>');
-  var $overlay = $('<div id="sidenav-overlay"></div>');
-  var removeMenu = function(){};
-
   var methods = {
     init : function(options) {
       var defaults = {
@@ -23,7 +19,7 @@
         }
 
         // Add Touch Area
-        var $dragTarget = $('<div class="drag-target"></div>');
+        var $dragTarget = $('<div class="drag-target"></div>').attr('data-sidenav', $this.attr('data-activates'));
         $('body').append($dragTarget);
 
         if (options.edge == 'left') {
@@ -76,7 +72,7 @@
           });
         }
 
-        removeMenu = function(restoreNav) {
+        var removeMenu = function(restoreNav) {
           panning = false;
           menuOut = false;
           // Reenable scrolling
@@ -85,7 +81,7 @@
             width: ''
           });
 
-          $overlay.velocity({opacity: 0}, {duration: 200,
+          $('#sidenav-overlay').velocity({opacity: 0}, {duration: 200,
               queue: false, easing: 'easeOutQuad',
             complete: function() {
               $(this).remove();
@@ -125,7 +121,7 @@
                 }
               });
           }
-        }
+        };
 
 
 
@@ -152,12 +148,13 @@
 
             // Disable Scrolling
             var $body = $('body');
+            var $overlay = $('<div id="sidenav-overlay"></div>');
             var oldWidth = $body.innerWidth();
             $body.css('overflow', 'hidden');
             $body.width(oldWidth);
 
             // If overlay does not exist, create one and if it is clicked, close menu
-            if ($('#sidenav-overlay').length === 0) {
+            if ($overlay.length === 0) {
               $overlay.css('opacity', 0).click( function(){
                 removeMenu();
               });
@@ -210,6 +207,7 @@
         }).bind('panend', function(e) {
 
           if (e.gesture.pointerType == "touch") {
+            var $overlay = $('<div id="sidenav-overlay"></div>');
             var velocityX = e.gesture.velocityX;
             var x = e.gesture.center.x;
             var leftPos = x - options.menuWidth;
@@ -290,6 +288,7 @@
 
               // Disable Scrolling
               var $body = $('body');
+              var $overlay = $('<div id="sidenav-overlay"></div>');
               var oldWidth = $body.innerWidth();
               $body.css('overflow', 'hidden');
               $body.width(oldWidth);
@@ -333,12 +332,9 @@
 
     },
     destroy: function () {
-      removeMenu();
-      $dragTarget.off();
-      var hammer = $dragTarget.data("hammer")
-      if (hammer) {
-        hammer.destroy();
-      }
+      var $overlay = $('#sidenav-overlay');
+      var $dragTarget = $('.drag-target[data-sidenav="' + $(this).attr('data-activates') + '"]');
+      $overlay.trigger('click');
       $dragTarget.remove();
       $(this).off('click');
       $overlay.remove();
@@ -347,7 +343,7 @@
       this.trigger('click');
     },
     hide : function() {
-      $overlay.trigger('click');
+      $('#sidenav-overlay').trigger('click');
     }
   };
 
