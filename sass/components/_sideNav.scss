@@ -68,6 +68,7 @@
   li > a > [class^="mdi-"], li > a > [class*="mdi-"],
   li > a > i.material-icons {
     float: left;
+    height: $sidenav-item-height;
     line-height: $sidenav-item-height;
     margin: 0 ($sidenav-padding * 2) 0 0;
     width: $sidenav-item-height / 2;
@@ -212,7 +213,7 @@
 
   height: 120vh;
   background-color: rgba(0,0,0,.5);
-  z-index: 997;
+  z-index: 998;
 
   will-change: opacity;
 }

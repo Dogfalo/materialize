@@ -66,7 +66,6 @@
           // Create backdrop
           backdrop = $('<div class="backdrop"></div>');
           backdrop.appendTo(tooltip);
-          backdrop.css({ top: 0, left:0 });
           return tooltip;
         };
         tooltipEl = renderTooltipEl();
@@ -77,7 +76,7 @@
         var started = false, timeoutRef;
         origin.on({'mouseenter.tooltip': function(e) {
           var showTooltip = function() {
-            console.log(tooltipPosition);
+            setAttributes();
             started = true;
             tooltipEl.velocity('stop');
             backdrop.velocity('stop');
@@ -91,7 +90,8 @@
             var tooltipWidth = tooltipEl.outerWidth();
             var tooltipVerticalMovement = '0px';
             var tooltipHorizontalMovement = '0px';
-            var scale_factor = 8;
+            var scaleXFactor = 8;
+            var scaleYFactor = 8;
             var targetTop, targetLeft, newCoordinates;
 
             if (tooltipPosition === "top") {
@@ -102,8 +102,10 @@
 
               tooltipVerticalMovement = '-10px';
               backdrop.css({
+                bottom: 0,
+                left: 0,
                 borderRadius: '14px 14px 0 0',
-                transformOrigin: '50% 90%',
+                transformOrigin: '50% 100%',
                 marginTop: tooltipHeight,
                 marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
               });
@@ -116,6 +118,8 @@
 
               tooltipHorizontalMovement = '-10px';
               backdrop.css({
+                top: '-7px',
+                right: 0,
                 width: '14px',
                 height: '14px',
                 borderRadius: '14px 0 0 14px',
@@ -132,6 +136,8 @@
 
               tooltipHorizontalMovement = '+10px';
               backdrop.css({
+                top: '-7px',
+                left: 0,
                 width: '14px',
                 height: '14px',
                 borderRadius: '0 14px 14px 0',
@@ -147,6 +153,8 @@
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
               tooltipVerticalMovement = '+10px';
               backdrop.css({
+                top: 0,
+                left: 0,
                 marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
               });
             }
@@ -158,21 +166,14 @@
             });
 
             // Calculate Scale to fill
-            scale_factor = tooltipWidth / 8;
-            if (scale_factor < 8) {
-              scale_factor = 8;
-            }
-            if (tooltipPosition === "right" || tooltipPosition === "left") {
-              scale_factor = tooltipWidth / 10;
-              if (scale_factor < 6)
-                scale_factor = 6;
-            }
+            scaleXFactor = Math.SQRT2 * tooltipWidth / parseInt(backdrop.css('width'));
+            scaleYFactor = Math.SQRT2 * tooltipHeight / parseInt(backdrop.css('height'));
 
             tooltipEl.velocity({ marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement}, { duration: 350, queue: false })
               .velocity({opacity: 1}, {duration: 300, delay: 50, queue: false});
             backdrop.css({ display: 'block' })
               .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
-              .velocity({scale: scale_factor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
+              .velocity({scaleX: scaleXFactor, scaleY: scaleYFactor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
           };
 
           timeoutRef = setTimeout(showTooltip, tooltipDelay); // End Interval
@@ -189,7 +190,7 @@
             if (started !== true) {
               tooltipEl.velocity({
                 opacity: 0, marginTop: 0, marginLeft: 0}, { duration: 225, queue: false});
-              backdrop.velocity({opacity: 0, scale: 1}, {
+              backdrop.velocity({opacity: 0, scaleX: 1, scaleY: 1}, {
                 duration:225,
                 queue: false,
                 complete: function(){
