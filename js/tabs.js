@@ -109,16 +109,25 @@
           }
         }
 
-        // Update indicator
-        if (($index - $prev_index) >= 0) {
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+        // Update indicator based on direction of tabs (multilingual support)
+        var leading = {};
+        var trailing = {};
 
-        }
-        else {
-          $indicator.velocity({"left": $index * $tab_width}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
-        }
+       	if ($(this).css("direction") == 'rtl') {
+       		leading['left'] = $tabs_width - (($index + 1) * $tab_width);
+        	trailing['right'] = $index * $tab_width;
+       	} else {
+       		leading['right'] = $tabs_width - (($index + 1) * $tab_width);
+        	trailing['left'] = $index * $tab_width;
+       	}
+       	
+       	if (($index - $prev_index) >= 0) {
+	        $indicator.velocity(leading, {duration: 300, queue: false, easing: 'easeOutQuad'});
+	        $indicator.velocity(trailing, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+	      } else {
+	        $indicator.velocity(leading, {duration: 300, queue: false, easing: 'easeOutQuad'});
+	        $indicator.velocity(trailing, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+	      }
 
         // Prevent the anchor's default click action
         e.preventDefault();
