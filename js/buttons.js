@@ -116,6 +116,9 @@
     offsetX = btnRect.left - (windowWidth / 2) + (btnRect.width / 2);
     offsetY = windowHeight - btnRect.bottom;
     scaleFactor = windowWidth / backdrop.width();
+    btn.attr('data-origin-bottom', btnRect.bottom);
+    btn.attr('data-origin-left', btnRect.left);
+    btn.attr('data-origin-width', btnRect.width);
 
     // Set initial state
     btn.addClass('active');
@@ -159,6 +162,14 @@
         menu.find('> li > a').css({
           opacity: 1
         });
+
+        // Scroll to close.
+        console.log($('body'));
+        $(window).on('scroll.fabToolbarClose', function() {
+          console.log("HI");
+          toolbarToFAB(btn);
+          $(window).off('scroll.fabToolbarClose');
+        });
       }, 100);
     }, 0);
   };
@@ -168,7 +179,68 @@
    * @param  {Object}  object jQuery object
    */
   var toolbarToFAB = function(btn) {
+    var offsetX, offsetY, scaleFactor;
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var btnWidth = btn.attr('data-origin-width');
+    var btnBottom = btn.attr('data-origin-bottom');
+    var btnLeft = btn.attr('data-origin-left');
+    var anchor = btn.find('> .btn-floating').first();
+    var menu = btn.find('> ul').first();
+    var backdrop = btn.find('.fab-backdrop');
+    var fabColor = anchor.css('background-color');
 
+    offsetX = btnLeft - (windowWidth / 2) + (btnWidth / 2);
+    offsetY = windowHeight - btnBottom;
+    scaleFactor = windowWidth / backdrop.width();
+
+
+    // Hide backdrop
+    btn.removeClass('active');
+    btn.css({
+      'background-color': 'transparent',
+      transition: 'none'
+    });
+    anchor.css({
+      transition: 'none'
+    });
+    backdrop.css({
+      transform: 'scale(0)',
+      'background-color': fabColor
+    });
+    menu.find('> li > a').css({
+      opacity: ''
+    });
+
+    setTimeout(function() {
+      backdrop.remove();
+
+      // Set initial state.
+      btn.css({
+        'text-align': '',
+        width: '',
+        bottom: '',
+        left: '',
+        overflow: '',
+        'background-color': '',
+        transform: 'translate3d(' + -offsetX + 'px,0,0)'
+      });
+      anchor.css({
+        overflow: '',
+        transform: 'translate3d(0,' + offsetY + 'px,0)'
+      });
+
+      setTimeout(function() {
+        btn.css({
+          transform: 'translate3d(0,0,0)',
+          transition: 'transform .2s'
+        });
+        anchor.css({
+          transform: 'translate3d(0,0,0)',
+          transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
+        });
+      }, 10);
+    }, 200);
   };
 
 
