@@ -326,6 +326,8 @@
 
             var val = $input.val().toLowerCase();
             $autocomplete.empty();
+            
+            var appropData = [];
 
             // Check if the input isn't empty
             if (val !== '') {
@@ -333,17 +335,28 @@
                 if (data.hasOwnProperty(key) &&
                     key.toLowerCase().indexOf(val) !== -1 &&
                     key.toLowerCase() !== val) {
-                  var autocompleteOption = $('<li></li>');
-                  if(!!data[key]) {
-                    autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
-                  } else {
-                    autocompleteOption.append('<span>'+ key +'</span>');
-                  }
-                  $autocomplete.append(autocompleteOption);
-
-                  highlight(val, autocompleteOption);
+                    appropData[appropData.length] = key;
                 }
               }
+              
+              //If there is a limit, slice the array to the limit
+      			  if(options.limit != null && options.limit > 0) {
+      				  appropData = appropData.slice(0, options.limit);
+      			  }
+      			  
+      			  //Display the auto complete values
+      			  for(var index in appropData) {
+      			    var key = appropData[index];
+      			    var autocompleteOption = $('<li></li>');
+                if(!!data[key]) {
+                  autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+                } else {
+                  autocompleteOption.append('<span>'+ key +'</span>');
+                }
+                $autocomplete.append(autocompleteOption);
+                
+                highlight(val, autocompleteOption);
+      			  }
             }
           });
 
