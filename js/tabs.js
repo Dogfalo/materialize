@@ -14,11 +14,22 @@
       var $this = $(this),
           window_width = $(window).width();
 
-      $this.width('100%');
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
           $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
           $index = 0;
+
+      // Finds right attribute for indicator based on active tab.
+      // el: jQuery Object
+      var calcRightPos = function(el) {
+        return $tabs_width - el.position().left - el.outerWidth() - $this.scrollLeft();
+      };
+
+      // Finds left attribute for indicator based on active tab.
+      // el: jQuery Object
+      var calcLeftPos = function(el) {
+        return el.position().left + $this.scrollLeft();
+      };
 
       // If the location.hash matches one of the links, use that as the active tab.
       $active = $($links.filter('[href="'+location.hash+'"]'));
@@ -45,8 +56,12 @@
       $this.append('<div class="indicator"></div>');
       var $indicator = $this.find('.indicator');
       if ($this.is(":visible")) {
-        $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-        $indicator.css({"left": $index * $tab_width});
+        // $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
+        // $indicator.css({"left": $index * $tab_width});
+        setTimeout(function() {
+          $indicator.css({"right": calcRightPos($active) });
+          $indicator.css({"left": calcLeftPos($active) });
+        }, 0);
       }
       $(window).resize(function () {
         $tabs_width = $this.width();
@@ -55,8 +70,8 @@
           $index = 0;
         }
         if ($tab_width !== 0 && $tabs_width !== 0) {
-          $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-          $indicator.css({"left": $index * $tab_width});
+          $indicator.css({"right": calcRightPos($active) });
+          $indicator.css({"left": calcLeftPos($active) });
         }
       });
 
@@ -91,6 +106,7 @@
         $active = $(this);
         $content = $(this.hash);
         $links = $this.find('li.tab a');
+        var activeRect = $active.position();
 
         // Make the tab active.
         $active.addClass('active');
@@ -110,14 +126,14 @@
         }
 
         // Update indicator
-        if (($index - $prev_index) >= 0) {
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
 
-        }
-        else {
-          $indicator.velocity({"left": $index * $tab_width}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+        if (($index - $prev_index) >= 0) {
+          $indicator.velocity({"right": calcRightPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"left": calcLeftPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+
+        } else {
+          $indicator.velocity({"left": calcLeftPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"right": calcRightPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
         }
 
         // Prevent the anchor's default click action
