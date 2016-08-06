@@ -46,9 +46,6 @@
     padding: 0;
     margin: 0;
     text-transform: uppercase;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    letter-spacing: .8px;
 
     a {
       &:hover,
@@ -86,8 +83,17 @@
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
   .tabs {
-    .tab a {
-      padding: 0 12px;
+    display: flex;
+
+    .tab {
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+
+      a {
+        padding: 0 12px;
+      }
     }
   }
 }

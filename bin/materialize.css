@@ -4084,7 +4084,7 @@ nav i,
 nav [class^="mdi-"], nav [class*="mdi-"],
 nav i.material-icons {
   display: block;
-  font-size: 2rem;
+  font-size: 24px;
   height: 56px;
   line-height: 56px;
 }
@@ -4105,10 +4105,10 @@ nav .button-collapse {
   position: relative;
   z-index: 1;
   height: 56px;
+  margin: 0 18px;
 }
 
 nav .button-collapse i {
-  font-size: 2.7rem;
   height: 56px;
   line-height: 56px;
 }
@@ -4845,9 +4845,6 @@ small {
   padding: 0;
   margin: 0;
   text-transform: uppercase;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  letter-spacing: .8px;
 }
 
 .tabs .tab a {
@@ -4882,6 +4879,17 @@ small {
 }
 
 @media only screen and (max-width: 992px) {
+  .tabs {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .tabs .tab {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
   .tabs .tab a {
     padding: 0 12px;
   }
