@@ -5541,10 +5541,9 @@ button.btn-floating {
   border: none;
   border-bottom: 1px solid #9e9e9e;
   box-shadow: none;
-  margin-bottom: 30px;
+  margin: 0 0 20px 0;
   min-height: 45px;
   outline: none;
-  padding-bottom: 5px;
   transition: all .3s;
 }
 
@@ -5567,12 +5566,11 @@ button.btn-floating {
   border: 0;
   color: rgba(0, 0, 0, 0.6);
   display: inline-block;
-  font-size: 13px;
-  font-weight: 500;
-  height: 32px;
-  margin-right: 20px;
+  font-size: 1rem;
+  height: 3rem;
   line-height: 32px;
   outline: 0;
+  margin: 0;
   padding: 0 !important;
   width: 120px !important;
 }
@@ -5580,6 +5578,18 @@ button.btn-floating {
 .chips .input:focus {
   border: 0 !important;
   box-shadow: none !important;
+}
+
+.prefix ~ .chips {
+  margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.chips:empty ~ label {
+  font-size: 0.8rem;
+  -webkit-transform: translateY(-140%);
+          transform: translateY(-140%);
 }
 
 .materialboxed {
