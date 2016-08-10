@@ -7000,7 +7000,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav .userView .name,
 .side-nav .userView .email {
-  font-weight: 14px;
+  font-size: 14px;
   line-height: 24px;
 }
 
