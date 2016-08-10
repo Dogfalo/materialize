@@ -8459,3 +8459,13 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+
+/*autocomplite fix*/
+/* Pawe³ Duszak */
+.autocomplete-content {
+    margin-top: -15px;
+    display: block;
+    opacity: 1;
+    position: absolute;
+    width: calc(100% - 23px);
+}
