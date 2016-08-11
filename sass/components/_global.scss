@@ -599,12 +599,12 @@ td, th{
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
+  margin-left: 14px;
   text-align: center;
   font-size: 1rem;
   line-height: inherit;
   color: color('grey', 'darken-1');
-  position: absolute;
-  right: 15px;
+  float: right;
   box-sizing: border-box;
 
   &.new {
@@ -625,9 +625,11 @@ span.badge {
 
 }
 nav ul a span.badge {
-  position: static;
+  display: inline-block;
+  float: none;
   margin-left: 4px;
-  line-height: 0;
+  line-height: 22px;
+  height: 22px;
 }
 
 // Responsive Videos

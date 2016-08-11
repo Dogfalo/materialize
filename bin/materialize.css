@@ -3182,12 +3182,12 @@ td, th {
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
+  margin-left: 14px;
   text-align: center;
   font-size: 1rem;
   line-height: inherit;
   color: #757575;
-  position: absolute;
-  right: 15px;
+  float: right;
   box-sizing: border-box;
 }
 
@@ -3208,9 +3208,11 @@ span.badge[data-badge-caption]::after {
 }
 
 nav ul a span.badge {
-  position: static;
+  display: inline-block;
+  float: none;
   margin-left: 4px;
-  line-height: 0;
+  line-height: 22px;
+  height: 22px;
 }
 
 .video-container {
@@ -5191,13 +5193,19 @@ button.btn-floating {
 
 .dropdown-content li > span > label {
   top: 1px;
-  left: 3px;
+  left: 0;
   height: 18px;
 }
 
 .dropdown-content li > a > i {
   height: inherit;
   line-height: inherit;
+}
+
+.input-field.col .dropdown-content [type="checkbox"] + label {
+  top: 1px;
+  left: 0;
+  height: 18px;
 }
 
 /*!
