@@ -3,7 +3,7 @@
   _lastID = 0,
   _generateID = function() {
     _lastID++;
-    return 'materialize-lean-overlay-' + _lastID;
+    return 'materialize-modal-overlay-' + _lastID;
   };
 
   var methods = {
@@ -38,7 +38,7 @@
           });
 
           $modal.find('.modal-close').off('click.close');
-          $(document).off('keyup.leanModal' + overlayID);
+          $(document).off('keyup.modal' + overlayID);
 
           $overlay.velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
 
@@ -93,7 +93,7 @@
           }
 
           var overlayID = _generateID();
-          var $overlay = $('<div class="lean-overlay"></div>');
+          var $overlay = $('<div class="modal-overlay"></div>');
           lStack = (++_stack);
 
           // Store a reference of the overlay
@@ -108,7 +108,7 @@
               closeModal();
             });
             // Return on ESC
-            $(document).on('keyup.leanModal' + overlayID, function(e) {
+            $(document).on('keyup.modal' + overlayID, function(e) {
               if (e.keyCode === 27) {   // ESC key
                 closeModal();
               }
@@ -162,32 +162,40 @@
         };
 
         // Close Handlers
+        console.log('a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]');
         $(document).on('click', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
+          console.log("CLICK");
           options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.15;
           openModal();
           e.preventDefault();
         }); // done set on click
 
         $(this).on('openModal', function() {
-          options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.15;
           var modal_id = $(this).attr("href") || '#' + $(this).data('target');
           openModal();
+        });
+
+        $(this).on('closeModal', function() {
+          closeModal();
         });
       }); // done return
     },
     open : function() {
       $(this).trigger('openModal');
+    },
+    open : function() {
+      $(this).trigger('closeModal');
     }
   };
 
-  $.fn.leanModal = function(methodOrOptions) {
+  $.fn.modal = function(methodOrOptions) {
     if ( methods[methodOrOptions] ) {
       return methods[ methodOrOptions ].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
       // Default to "init"
       return methods.init.apply( this, arguments );
     } else {
-      $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.leanModal' );
+      $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.modal' );
     }
   };
 })(jQuery);

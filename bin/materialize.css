@@ -5377,7 +5377,7 @@ button.btn-floating {
   margin: 6px 0;
 }
 
-.lean-overlay {
+.modal-overlay {
   position: fixed;
   z-index: 999;
   top: -100px;
