@@ -4700,6 +4700,7 @@ small {
   background-color: #fff;
   width: 100%;
   overflow-y: auto;
+  left: 0;
   top: 100%;
   height: 100%;
   z-index: 3;
