@@ -167,6 +167,13 @@
       secondaryPlaceholder: '+Tag',
     });
 
+    $('.chips-validator').material_chip({
+      placeholder: 'Starts with \'m\' tag',
+      validator: function (chip, chips) {
+        return chip.tag.startsWith('m');
+      }
+    });
+
     $('.chips').material_chip();
 
   }); // end of document ready

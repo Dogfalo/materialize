@@ -55,6 +55,9 @@
         $chips.attr('data-index', i);
         $chips.attr('data-initialized', true);
 
+        delete curr_options.data;
+        $chips.data('options', curr_options);
+
         if (!$chips.hasClass(self.SELS.CHIPS)) {
           $chips.addClass('chips');
         }
@@ -214,16 +217,20 @@
     };
 
     this.setPlaceholder = function($chips) {
-      if ($chips.data('chips').length && curr_options.placeholder) {
-        $chips.find('input').prop('placeholder', curr_options.placeholder);
-
-      } else if (!$chips.data('chips').length && curr_options.secondaryPlaceholder) {
-        $chips.find('input').prop('placeholder', curr_options.secondaryPlaceholder);
+      var options = $chips.data('options');
+      if (!$chips.data('chips').length && options.placeholder) {
+        $chips.find('input').prop('placeholder', options.placeholder);
+      } else if ($chips.data('chips').length && options.secondaryPlaceholder) {
+        $chips.find('input').prop('placeholder', options.secondaryPlaceholder);
+      } else {
+        $chips.find('input').prop('placeholder', '');
       }
     };
 
     this.isValid = function($chips, elem) {
       var chips = $chips.data('chips');
+      var validator = $chips.data('options').validator;
+
       var exists = false;
       for (var i=0; i < chips.length; i++) {
         if (chips[i].tag === elem.tag) {
@@ -231,7 +238,7 @@
             return;
         }
       }
-      return '' !== elem.tag && !exists;
+      return '' !== elem.tag && !exists && (!validator || validator(elem, chips));
     };
 
     this.addChip = function(elem, $chips) {

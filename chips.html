@@ -163,6 +163,8 @@
         <div class="chips chips-initial"></div>
         <p class="caption">Use placeholders and override hint texts.</p>
         <div class="chips chips-placeholder"></div>
+        <p class="caption">Use validator to avoid adding a chip.</p>
+        <div class="chips chips-validator"></div>
       </div>
 
       <div id="properties" class="section scrollspy">
@@ -187,6 +189,11 @@
   $('.chips-placeholder').material_chip({
     placeholder: 'Enter a tag',
     secondaryPlaceholder: '+Tag',
+  });
+  $('.chips-validator').material_chip({
+    validator: function (chip, chips) {
+      return chip.tag.startsWith('m');
+    }
   });
         </code></pre>
         <p class="caption">Chip data object</p>
@@ -225,6 +232,10 @@
               <td>Set second placeholder when adding additional tags.</td>
             </tr>
             <tr>
+              <td>validator</td>
+              <td>function</td>
+              <td>Set validator function to avoid adding tags.</td>
+            </tr>
           </tbody>
         </table>
       </div>
