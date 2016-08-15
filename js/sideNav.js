@@ -6,6 +6,7 @@
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false
+        closeOnLarge: false
       };
       options = $.extend(defaults, options);
 
@@ -66,7 +67,7 @@
         }
 
         // if closeOnClick, then add close event for all a tags in side sideNav
-        if (options.closeOnClick === true) {
+        if (options.closeOnClick && (window.innerWidth <= 992 || options.closeOnLarge)) {
           menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
             removeMenu();
           });
