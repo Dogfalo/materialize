@@ -494,7 +494,7 @@
 
       $newSelect.after(options);
       // Replicate label if id exists with guid to match
-      if (typeof $select.attr('id') !== typeof undefined && $select.attr('id') !== false) {
+      if (typeof $select.attr('id') !== typeof undefined && $select.attr('id') !== false && $('label[for=' + $select.attr('id') + ']').length) {
         // keep but hide previous label to have screen readers be consistent yet ignore
         var newLabel = $('label[for=' + $select.attr('id') + ']').clone();
         $('label[for=' + $select.attr('id') + ']').addClass('initialized').css('display', 'none');
