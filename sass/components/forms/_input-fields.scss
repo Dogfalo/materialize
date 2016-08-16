@@ -146,7 +146,7 @@ textarea.materialize-textarea {
     cursor: text;
     transition: .2s ease-out;
     @include not-selectable;
-		@include not-clickable;
+    @include not-clickable;
   }
 
   label.active {
