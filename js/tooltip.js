@@ -25,6 +25,10 @@
       return this.each(function() {
         var tooltipId = Materialize.guid();
         var origin = $(this);
+        var previousTooltipId = origin.attr('data-tooltip-id');
+        if (previousTooltipId) {
+          $('#' + previousTooltipId).remove();
+        }
         origin.attr('data-tooltip-id', tooltipId);
 
         // Get attributes.
