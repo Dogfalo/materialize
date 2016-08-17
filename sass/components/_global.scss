@@ -621,8 +621,6 @@ span.badge {
   &[data-badge-caption]::after {
     content: " " attr(data-badge-caption);
   }
-
-
 }
 nav ul a span.badge {
   display: inline-block;
@@ -631,6 +629,24 @@ nav ul a span.badge {
   line-height: 22px;
   height: 22px;
 }
+.side-nav span.badge.new {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    background-color: $badge-bg-color;
+    border-radius: 2px;
+    z-index: -1;
+  }
+
+  position: relative;
+  background-color: transparent;
+}
+
+
 
 // Responsive Videos
 .video-container {
