@@ -4259,7 +4259,7 @@ nav .input-field label.active {
 .navbar-fixed {
   position: relative;
   height: 56px;
-  z-index: 998;
+  z-index: 997;
 }
 
 .navbar-fixed nav {
@@ -7100,7 +7100,7 @@ input[type=range]:focus::-ms-fill-upper {
   right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
+  z-index: 997;
   will-change: opacity;
 }
 
