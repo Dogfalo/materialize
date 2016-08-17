@@ -566,7 +566,7 @@
       // Allow user to search by typing
       // this array is cleared after 1 second
       var filterQuery = [],
-          onKeyDown = function(e){
+          onKeyPress = function(e){
             // TAB - switch to another input
             if(e.which == 9){
               $newSelect.trigger('close');
@@ -639,7 +639,7 @@
             setTimeout(function(){ filterQuery = []; }, 1000);
           };
 
-      $newSelect.on('keydown', onKeyDown);
+      $newSelect.on('keypress', onKeyPress);
     });
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
