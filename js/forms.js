@@ -372,6 +372,13 @@
         // Set input value
         $autocomplete.on('click', 'li', function () {
           $input.val($(this).text().trim());
+
+          if($('.autocomplete-id').length == 0) {
+            $input.after("<input type='hidden' class='autocomplete-id' name='autocomplete-id' value='" + $(this).attr('data-id') + "'>");
+          } else {
+            $('.autocomplete-id').val($(this).attr('data-id'));
+          }
+          
           $autocomplete.empty();
         });
       });
