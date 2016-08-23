@@ -468,9 +468,12 @@
             }
 
             activateOption(options, $(this));
-            $select.find('option').eq(i).prop('selected', selected);
-            // Trigger onchange() event
-            $select.trigger('change');
+            var option = $select.find('option').eq(i);
+            if (!option.is(":selected")) {
+              option.prop('selected', selected);
+              // Trigger onchange() event
+              $select.trigger('change');
+            }
             if (typeof callback !== 'undefined') callback();
           }
 
