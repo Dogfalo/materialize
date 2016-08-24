@@ -967,18 +967,62 @@
         </code></pre>
 
         <h4>Initialization</h4>
-        <p>The data is a json object where the key is the matching string and the value is an optional image url.</p>
+        <p>The data is a array of json objects with id, value and image keys. image is an optional image url.</p>
         <pre><code class="language-javascript">
   $('input.autocomplete').autocomplete({
-    data: {
-      "Apple": null,
-      "Microsoft": null,
-      "Google": 'http://placehold.it/250x250'
-    }
+    data: [
+      {
+        id: 1,
+        value: "Apple"
+      },
+      {
+        id: 1,
+        value: "Microsoft"
+      },
+      {
+        id: 1,
+        value: "Google"
+        image: 'http://placehold.it/250x250'
+      }
+    ]
+  });
+        </code></pre>
+
+        <h4>Work with ajax</h4>
+        <p>For getting data from ajax response, need set <b>ajax</b> option and set <i>data-url</i> attribute for autocomplete text input</p>
+        <pre><code class="language-markup">
+&lt;input type="text" id="autocomplete-input" data-url="/get/data" class="autocomplete">
+        </code></pre>
+         <pre><code class="language-javascript">
+  var $input = $('input.autocomplete');
+
+  $input.autocomplete({
+    ajax: {
+      url: $input.attr('data-url'),
+      method: 'post',
+      dataType: 'json',
+      error: null
+     }
   });
         </code></pre>
       </div>
 
+      <p>For work with response data after ajax, use <b>callback</b> option</p>
+ <pre><code class="language-javascript">
+  var $input = $('input.autocomplete');
+
+  $input.autocomplete({
+    ajax: {
+      url: $input.attr('data-url'),
+      method: 'post',
+      dataType: 'json',
+      error: null
+    },
+    callback: function(res) {
+        console.log(res);
+    }
+  });
+        </code></pre>
 
 
     </div>
