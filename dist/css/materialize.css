@@ -6029,11 +6029,13 @@ textarea.materialize-textarea {
 }
 
 /* Autocomplete */
+/* some fixes - Pawe³ Duszak */
 .autocomplete-content {
   margin-top: -15px;
   display: block;
   opacity: 1;
-  position: static;
+  position: absolute;
+  width: calc(100% - 23px);
 }
 
 .autocomplete-content li .highlight {
