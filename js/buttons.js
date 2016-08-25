@@ -39,6 +39,14 @@
 
   var openFABMenu = function (btn) {
     $this = btn;
+
+    // show mask
+    if($this.hasClass('with-mask')) {
+      var maskDiv = $('<div id="fab-mask"></div>');
+      $('body').append(maskDiv);
+    }
+    // end show mask
+
     if ($this.hasClass('active') === false) {
 
       // Get direction option
@@ -68,6 +76,9 @@
 
   var closeFABMenu = function (btn) {
     $this = btn;
+    if($this.hasClass('with-mask')) {
+      $('#fab-mask').remove();
+    }
     // Get direction option
     var horizontal = $this.hasClass('horizontal');
     var offsetY, offsetX;
