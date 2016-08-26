@@ -350,6 +350,7 @@
           // Set input value
           $autocomplete.on('click', 'li', function () {
             $input.val($(this).text().trim());
+            $input.trigger('change');
             $autocomplete.empty();
           });
         }
