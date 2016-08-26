@@ -18,6 +18,8 @@
         opacity: 0.5,
         in_duration: 350,
         out_duration: 250,
+        beforeOpen: undefined,
+        beforeClose: undefined,
         ready: undefined,
         complete: undefined,
         dismissible: true,
@@ -81,6 +83,11 @@
             if (typeof(options.ready) === "function") {
               options.ready();
             }
+          },
+          begin: function() {
+            if (typeof(options.beforeOpen) === "function") {
+              options.beforeOpen();
+            }
           }
         });
       }
@@ -95,6 +102,11 @@
           complete: function() {
             if (typeof(options.ready) === "function") {
               options.ready();
+            }
+          },
+          begin: function() {
+            if (typeof(options.beforeOpen) === "function") {
+              options.beforeOpen();
             }
           }
         });
@@ -145,6 +157,11 @@
             }
             $overlay.remove();
             _stack--;
+          },
+          begin: function() {
+            if (typeof(options.beforeClose) === "function") {
+              options.beforeClose();
+            }
           }
         });
       }
@@ -162,6 +179,11 @@
               }
               $overlay.remove();
               _stack--;
+            }
+          },
+          begin: function() {
+            if (typeof(options.beforeClose) === "function") {
+              options.beforeClose();
             }
           }
         );
