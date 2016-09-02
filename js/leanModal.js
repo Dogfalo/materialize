@@ -189,4 +189,15 @@
       }); // done return
     }
   });
+  
+   $.fn.extend({
+    refreshModal: function(option) {
+      $modal = $(this);
+      
+      $modal.find('.modal-close').off('click.close');
+      $modal.find(".modal-close").on('click.close', function(e) {
+        $modal.closeModal(options);
+      });
+    }
+   })
 })(jQuery);
