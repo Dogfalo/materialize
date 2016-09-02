@@ -3215,6 +3215,29 @@ nav ul a span.badge {
   height: 22px;
 }
 
+.side-nav span.badge.new,
+.collapsible span.badge.new {
+  position: relative;
+  background-color: transparent;
+}
+
+.side-nav span.badge.new::before,
+.collapsible span.badge.new::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  background-color: #26a69a;
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.collapsible span.badge.new {
+  z-index: 1;
+}
+
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -4242,7 +4265,7 @@ nav .input-field label.active {
 .navbar-fixed {
   position: relative;
   height: 56px;
-  z-index: 998;
+  z-index: 997;
 }
 
 .navbar-fixed nav {
@@ -4607,6 +4630,7 @@ small {
 }
 
 .card.horizontal .card-image img {
+  border-radius: 2px 0 0 2px;
   max-width: 100%;
   width: auto;
 }
@@ -4700,6 +4724,7 @@ small {
   background-color: #fff;
   width: 100%;
   overflow-y: auto;
+  left: 0;
   top: 100%;
   height: 100%;
   z-index: 3;
@@ -5964,6 +5989,17 @@ textarea.materialize-textarea + label:after {
   margin-top: 1rem;
 }
 
+.input-field.inline {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.input-field.inline input,
+.input-field.inline .select-dropdown {
+  margin-bottom: 1rem;
+}
+
 .input-field.col label {
   left: 0.75rem;
 }
@@ -5977,6 +6013,7 @@ textarea.materialize-textarea + label:after {
   color: #9e9e9e;
   position: absolute;
   top: 0.8rem;
+  left: 0;
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
@@ -6878,8 +6915,6 @@ input[type=range]:focus::-ms-fill-upper {
   padding-bottom: 60px;
   background-color: #fff;
   z-index: 999;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   overflow-y: auto;
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -7082,7 +7117,7 @@ input[type=range]:focus::-ms-fill-upper {
   right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
+  z-index: 997;
   will-change: opacity;
 }
 
