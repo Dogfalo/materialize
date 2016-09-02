@@ -142,7 +142,7 @@
     $('.carousel').carousel();
     $('.slider').slider({full_width: true});
     $('.parallax').parallax();
-    $('.modal-trigger').leanModal();
+    $('.modal').modal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
