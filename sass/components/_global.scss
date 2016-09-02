@@ -629,7 +629,8 @@ nav ul a span.badge {
   line-height: 22px;
   height: 22px;
 }
-.side-nav span.badge.new {
+.side-nav span.badge.new,
+.collapsible span.badge.new {
   &::before {
     content: '';
     position: absolute;
@@ -644,6 +645,9 @@ nav ul a span.badge {
 
   position: relative;
   background-color: transparent;
+}
+.collapsible span.badge.new {
+  z-index: 1;
 }
 
 
