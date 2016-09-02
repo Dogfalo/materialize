@@ -44,40 +44,29 @@
 
 
           // Define Bottom Sheet animation
-          if ($modal.hasClass('bottom-sheet')) {
-            $modal.velocity({bottom: "-100%", opacity: 0}, {
-              duration: options.out_duration,
-              queue: false,
-              ease: "easeOutCubic",
-              // Handle modal ready callback
-              complete: function() {
-                $overlay.css({display:"none"});
+          var exitVelocityOptions = {
+            duration: options.out_duration,
+            queue: false,
+            ease: "easeOutCubic",
+            // Handle modal ready callback
+            complete: function() {
+              $overlay.css({display:"none"});
 
-                // Call complete callback
-                if (typeof(options.complete) === "function") {
-                  options.complete();
-                }
-                $overlay.remove();
-                _stack--;
+              // Call complete callback
+              if (typeof(options.complete) === "function") {
+                options.complete.call(this, $modal);
               }
-            });
+              $overlay.remove();
+              _stack--;
+            }
+          };
+          if ($modal.hasClass('bottom-sheet')) {
+            $modal.velocity({bottom: "-100%", opacity: 0}, exitVelocityOptions);
           }
           else {
             $modal.velocity(
-              { top: options.starting_top, opacity: 0, scaleX: 0.7}, {
-              duration: options.out_duration,
-              complete:
-                function() {
-
-                  $(this).css('display', 'none');
-                  // Call complete callback
-                  if (typeof(options.complete) === "function") {
-                    options.complete();
-                  }
-                  $overlay.remove();
-                  _stack--;
-                }
-              }
+              { top: options.starting_top, opacity: 0, scaleX: 0.7},
+              exitVelocityOptions
             );
           }
         };
@@ -130,33 +119,24 @@
           $modal.data('associated-overlay', $overlay[0]);
 
           // Define Bottom Sheet animation
-          if ($modal.hasClass('bottom-sheet')) {
-            $modal.velocity({bottom: "0", opacity: 1}, {
-              duration: options.in_duration,
-              queue: false,
-              ease: "easeOutCubic",
-              // Handle modal ready callback
-              complete: function() {
-                if (typeof(options.ready) === "function") {
-                  options.ready();
-                }
+          var enterVelocityOptions = {
+            duration: options.in_duration,
+            queue: false,
+            ease: "easeOutCubic",
+            // Handle modal ready callback
+            complete: function() {
+              if (typeof(options.ready) === "function") {
+                options.ready.call(this, $modal);
               }
-            });
+            }
+          };
+          if ($modal.hasClass('bottom-sheet')) {
+            $modal.velocity({bottom: "0", opacity: 1}, enterVelocityOptions);
           }
           else {
             $.Velocity.hook($modal, "scaleX", 0.7);
             $modal.css({ top: options.starting_top });
-            $modal.velocity({top: options.ending_top, opacity: 1, scaleX: '1'}, {
-              duration: options.in_duration,
-              queue: false,
-              ease: "easeOutCubic",
-              // Handle modal ready callback
-              complete: function() {
-                if (typeof(options.ready) === "function") {
-                  options.ready();
-                }
-              }
-            });
+            $modal.velocity({top: options.ending_top, opacity: 1, scaleX: '1'}, enterVelocityOptions);
           }
 
         };
