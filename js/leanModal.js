@@ -43,6 +43,7 @@
 
       // Override defaults
       options = $.extend(defaults, options);
+      $modal.data('options', options);
 
       if (options.dismissible) {
         $overlay.click(function() {
@@ -115,6 +116,8 @@
       var $overlay = $('#' + overlayID);
       $modal.removeClass('open');
 
+      if (!options)
+        options = $modal.data('options');
       options = $.extend(defaults, options);
 
       // Enable scrolling
