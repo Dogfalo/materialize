@@ -18,20 +18,20 @@
 .btn.disabled,
 .btn-floating.disabled,
 .btn-large.disabled,
+.btn-flat.disabled,
 .btn:disabled,
-.btn-large:disabled,
 .btn-floating:disabled,
+.btn-large:disabled,
+.btn-flat:disabled,
 .btn[disabled],
+.btn-floating[disabled],
 .btn-large[disabled],
-.btn-floating[disabled] {
+.btn-flat[disabled] {
+  pointer-events: none;
   background-color: $button-disabled-background !important;
   box-shadow: none;
   color: $button-disabled-color !important;
   cursor: default;
-
-  * {
-    pointer-events: none;
-  }
 
   &:hover {
     background-color: $button-disabled-background !important;
@@ -189,7 +189,8 @@ button.btn-floating {
   }
 
   &.disabled {
-    color: $button-flat-disabled-color;
+    background-color: transparent !important;
+    color: $button-flat-disabled-color !important;
     cursor: default;
   }
 }
