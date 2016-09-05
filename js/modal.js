@@ -142,9 +142,7 @@
         };
 
         // Close Handlers
-        console.log('a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]');
         $(document).on('click', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
-          console.log("CLICK");
           options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.15;
           openModal();
           e.preventDefault();
@@ -163,7 +161,7 @@
     open : function() {
       $(this).trigger('openModal');
     },
-    open : function() {
+    close : function() {
       $(this).trigger('closeModal');
     }
   };
