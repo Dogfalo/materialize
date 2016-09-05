@@ -42,7 +42,7 @@
         width: 20px;
         height: 20px;
         margin-top:-10px;
-        margin-left:-10px;
+        @include MarginLeftOrRight("margin-left", -10px);
         opacity: 0;
 
         background: rgba(0,0,0,0.2);
@@ -144,7 +144,7 @@
     .waves-button-input {
         position: relative;
         top: 0;
-        left: 0;
+        @include DockItem("left", 0);
         z-index: 1;
     }
 }

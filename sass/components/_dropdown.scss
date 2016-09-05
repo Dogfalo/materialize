@@ -18,7 +18,7 @@
     min-height: $dropdown-item-height;
     line-height: 1.5rem;
     width: 100%;
-    text-align: left;
+    @include TextAlignTo("left");
     text-transform: none;
 
     &:hover, &.active, &.selected {
@@ -44,7 +44,7 @@
 
     & > span > label {
       top: 1px;
-      left: 0;
+      @include DockItem("left", 0);
       height: 18px;
     }
 
@@ -59,7 +59,7 @@
 // Input field specificity bugfix
 .input-field.col .dropdown-content [type="checkbox"] + label {
   top: 1px;
-  left: 0;
+  @include DockItem("left", 0);
   height: 18px;
 }
 

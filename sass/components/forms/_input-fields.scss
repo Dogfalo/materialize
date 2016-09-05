@@ -127,7 +127,7 @@ textarea.materialize-textarea {
   &.inline {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 5px;
+    @include MarginLeftOrRight("margin-left", 5px);
 
     input,
     .select-dropdown {
@@ -154,7 +154,7 @@ textarea.materialize-textarea {
     color: $input-border-color;
     position: absolute;
     top: 0.8rem;
-    left: 0;
+    @include DockItem("left", 0);
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
@@ -180,12 +180,12 @@ textarea.materialize-textarea {
   .prefix ~ label,
   .prefix ~ .validate ~ label,
   .prefix ~ .autocomplete-content {
-    margin-left: 3rem;
+    @include MarginLeftOrRight("margin-left", 3rem);
     width: 92%;
     width: calc(100% - 3rem);
   }
 
-  .prefix ~ label { margin-left: 3rem; }
+  .prefix ~ label { @include MarginLeftOrRight("margin-left", 3rem); }
 
   @media #{$medium-and-down} {
     .prefix ~ input {
@@ -208,7 +208,7 @@ textarea.materialize-textarea {
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
-  padding-left: 4rem;
+  @include PaddingLeftOrRight("padding-left", 4rem);
   width: calc(100% - 4rem);
 
   &:focus {
@@ -225,14 +225,14 @@ textarea.materialize-textarea {
   }
 
   & + label {
-    left: 1rem;
+    @include DockItem("left", 1rem);
   }
 
   & ~ .mdi-navigation-close,
   & ~ .material-icons {
     position: absolute;
     top: 0;
-    right: 1rem;
+    @include DockItem("right", 1rem);
     color: transparent;
     cursor: pointer;
     font-size: 2rem;
@@ -251,7 +251,7 @@ textarea {
 
   &.materialize-textarea {
     overflow-y: hidden; /* prevents scroll bar flash */
-    padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
+    @include SwapPadding(.8rem, 0, 1.6rem, 0); /* prevents text jump on Enter keypress */
     resize: none;
     min-height: $input-height;
   }

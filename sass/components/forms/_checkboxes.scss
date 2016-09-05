@@ -4,7 +4,7 @@
 /* CUSTOM CSS CHECKBOXES */
 form p {
   margin-bottom: 10px;
-  text-align: left;
+  @include TextAlignTo("left");
 }
 
 form p:last-child {
@@ -15,7 +15,7 @@ form p:last-child {
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
+  @include DockItem("left", -9999px);
   opacity: 0;
 }
 
@@ -24,7 +24,7 @@ form p:last-child {
   // Text Label Style
   + label {
     position: relative;
-    padding-left: 35px;
+    @include PaddingLeftOrRight("padding-left", 35px);
     cursor: pointer;
     display: inline-block;
     height: 25px;
@@ -43,7 +43,7 @@ form p:last-child {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    @include DockItem("left", 0);
     width: 18px;
     height: 18px;
     z-index: 0;
@@ -76,12 +76,12 @@ form p:last-child {
 [type="checkbox"]:checked {
   + label:before {
     top: -4px;
-    left: -5px;
+    @include DockItem("left", -5px);
     width: 12px;
     height: 22px;
     border-top: 2px solid transparent;
-    border-left: 2px solid transparent;
-    border-right: $radio-border;
+    @include BorderLeftOrRight("border-left", 2px, transparent, solid);
+    @include BorderRight($radio-border);
     border-bottom: $radio-border;
     transform: rotate(40deg);
     backface-visibility: hidden;
@@ -89,7 +89,7 @@ form p:last-child {
   }
 
   &:disabled + label:before {
-    border-right: 2px solid $input-disabled-color;
+    @include BorderLeftOrRight("border-right", 2px, $input-disabled-color, solid);
     border-bottom: 2px solid $input-disabled-color;
   }
 }
@@ -98,12 +98,12 @@ form p:last-child {
 [type="checkbox"]:indeterminate {
   +label:before {
     top: -11px;
-    left: -12px;
+    @include DockItem("left", -12px);
     width: 10px;
     height: 22px;
     border-top: none;
-    border-left: none;
-    border-right: $radio-border;
+    @include BorderLeft(none);
+    @include BorderRight($radio-border);
     border-bottom: none;
     transform: rotate(90deg);
     backface-visibility: hidden;
@@ -112,7 +112,7 @@ form p:last-child {
 
   // Disabled indeterminate
   &:disabled + label:before {
-    border-right: 2px solid $input-disabled-color;
+    @include BorderLeftOrRight("border-right", 2px, $input-disabled-color, solid);
     background-color: transparent;
   }
 }
@@ -127,7 +127,7 @@ form p:last-child {
   + label:before,
   + label:after {
     content: '';
-    left: 0;
+    @include DockItem("left", 0);
     position: absolute;
     /* .1s delay is for check animation */
     transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
@@ -139,7 +139,7 @@ form p:last-child {
     width: 0;
     height: 0;
     border: 3px solid transparent;
-    left: 6px;
+    @include DockItem("left", 6px);
     top: 10px;
 
     -webkit-transform: rotateZ(37deg);
@@ -161,12 +161,12 @@ form p:last-child {
   &:checked {
     + label:before {
       top: 0;
-      left: 1px;
+      @include DockItem("left", 1px);
       width: 8px;
       height: 13px;
       border-top: 2px solid transparent;
-      border-left: 2px solid transparent;
-      border-right: 2px solid $input-background;
+      @include BorderLeftOrRight("border-left", 2px, transparent, solid);
+      @include BorderLeftOrRight("border-right", 2px, $input-background, solid);
       border-bottom: 2px solid $input-background;
       -webkit-transform: rotateZ(37deg);
       transform: rotateZ(37deg);

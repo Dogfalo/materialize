@@ -33,7 +33,7 @@ input[type=range] + .thumb {
   border-radius: 50%;
   background-color: $radio-fill-color;
   top: 10px;
-  margin-left: -6px;
+  @include MarginLeftOrRight("margin-left", -6px);
 
   transform-origin: 50% 50%;
   transform: rotate(-45deg);
@@ -48,11 +48,11 @@ input[type=range] + .thumb {
   }
 
   &.active {
-    border-radius: 50% 50% 50% 0;
+    @include BorderRadius(50%, 50%, 50%, 0);
 
     .value {
       color: $input-background;
-      margin-left: -1px;
+      @include MarginLeftOrRight("margin-left", -1px);
       margin-top: 8px;
       font-size: 10px;
     }
@@ -78,7 +78,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 50%;
   background-color: $radio-fill-color;
   transform-origin: 50% 50%;
-  margin: -5px 0 0 0;
+  @include SwapMargin(-5px, 0, 0, 0);
   transition: .3s;
 }
 

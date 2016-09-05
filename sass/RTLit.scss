@@ -1,0 +1,255 @@
+﻿html {
+    direction: $direction;
+}
+
+body {
+    direction: $direction;
+}
+
+@mixin FloatItem($value, $important: false) {
+    $important: if($important, "!important", "");
+    @if ($value = "left") and ($direction = $ltr) {
+        float: left #{$important};
+    }
+    @if ($value = "right") and ($direction = $ltr) {
+        float: right #{$important};
+    }
+    @if ($value = "left") and ($direction = $rtl) {
+        float: right #{$important};
+    }
+    @if ($value = "right") and ($direction = $rtl) {
+        float: left #{$important};
+    }
+    @if ($value = "none") {
+        float: none #{$important};
+    }
+}
+
+@mixin TextAlignTo($value) {
+    @if ($value = "left") and ($direction = $ltr) {
+        text-align: left;
+    }
+    @if ($value = "right") and ($direction = $ltr) {
+        text-align: right;
+    }
+    @if ($value = "left") and ($direction = $rtl) {
+        text-align: right;
+    }
+    @if ($value = "right") and ($direction = $rtl) {
+        text-align: left;
+    }
+}
+
+@mixin DockItem($location, $value) {
+    @if ($location = "left") and ($direction = $ltr) {
+        left: $value;
+    }
+    @if ($location = "right") and ($direction = $ltr) {
+        right: $value;
+    }
+    @if ($location = "left") and ($direction = $rtl) {
+        right: $value;
+    }
+    @if ($location = "right") and ($direction = $rtl) {
+        left: $value;
+    }
+}
+
+@mixin SwapMargin($topMargin, $rightMargin, $bottomMargin, $leftMargin) {
+    @if ($direction = $ltr) {
+        margin: $topMargin $rightMargin $bottomMargin $leftMargin;
+    }
+    @if ($direction = $rtl) {
+        margin: $topMargin $leftMargin $bottomMargin $rightMargin;
+    }
+}
+
+@mixin MarginLeftOrRight($command, $value) {
+    @if ($command = "margin-left") and ($direction = $ltr) {
+        margin-left: $value;
+    }
+    @if ($command = "margin-right") and ($direction = $ltr) {
+        margin-right: $value;
+    }
+    @if ($command = "margin-left") and ($direction = $rtl) {
+        margin-right: $value;
+    }
+    @if ($command = "margin-right") and ($direction = $rtl) {
+        margin-left: $value;
+    }
+}
+
+@mixin SwapPadding($topPadding, $rightPadding, $bottomPadding, $leftPadding) {
+    @if ($direction = $ltr) {
+        padding: $topPadding $rightPadding $bottomPadding $leftPadding;
+    }
+    @if ($direction = $rtl) {
+        padding: $topPadding $leftPadding $bottomPadding $rightPadding;
+    }
+}
+
+@mixin PaddingLeftOrRight($command, $value) {
+    @if ($command = "padding-left") and ($direction = $ltr) {
+        padding-left: $value;
+    }
+    @if ($command = "padding-right") and ($direction = $ltr) {
+        padding-right: $value;
+    }
+    @if ($command = "padding-left") and ($direction = $rtl) {
+        padding-right: $value;
+    }
+    @if ($command = "padding-right") and ($direction = $rtl) {
+        padding-left: $value;
+    }
+}
+
+@mixin BorderLeftOrRight($command, $borderSize, $borderColor, $bordertype) {
+    @if ($command = "border-left") and ($direction = $ltr) {
+        border-left: $borderSize $borderColor $bordertype;
+    }
+    @if ($command = "border-right") and ($direction = $ltr) {
+        border-right: $borderSize $borderColor $bordertype;
+    }
+    @if ($command = "border-left") and ($direction = $rtl) {
+        border-right: $borderSize $borderColor $bordertype;
+    }
+    @if ($command = "border-right") and ($direction = $rtl) {
+        border-left: $borderSize $borderColor $bordertype;
+    }
+}
+
+@mixin BorderLeftOrRightColor($command, $value) {
+    @if ($command = "border-left-color") and ($direction = $ltr) {
+        border-left-color: $value;
+    }
+    @if ($command = "border-left-color") and ($direction = $rtl) {
+        border-right-color: $value;
+    }
+    @if ($command = "border-right-color") and ($direction = $ltr) {
+        border-right-color: $value;
+    }
+    @if ($command = "border-right-color") and ($direction = $rtl) {
+        border-left-color: $value;
+    }
+}
+
+@mixin BorderLeftOrRightWidth($command, $value) {
+    @if ($command = "border-left-width") and ($direction = $ltr) {
+        border-left-width: $value;
+    }
+    @if ($command = "border-left-width") and ($direction = $rtl) {
+        border-right-width: $value;
+    }
+    @if ($command = "border-right-width") and ($direction = $ltr) {
+        border-right-width: $value;
+    }
+    @if ($command = "border-right-width") and ($direction = $rtl) {
+        border-left-width: $value;
+    }
+}
+
+@mixin BorderTopLeftOrRightRadius($command, $value) {
+    @if ($command = "border-top-left-radius") and ($direction = $ltr) {
+        border-top-left-radius: $value;
+    }
+    @if ($command = "border-top-left-radius") and ($direction = $rtl) {
+        border-top-right-radius: $value;
+    }
+    @if ($command = "border-top-right-radius") and ($direction = $ltr) {
+        border-top-right-radius: $value;
+    }
+    @if ($command = "border-top-right-radius") and ($direction = $rtl) {
+        border-top-left-radius: $value;
+    }
+}
+
+@mixin BorderBottomLeftOrRightRadius($command, $value) {
+    @if ($command = "border-bottom-left-radius") and ($direction = $ltr) {
+        border-bottom-left-radius: $value;
+    }
+    @if ($command = "border-bottom-left-radius") and ($direction = $rtl) {
+        border-bottom-right-radius: $value;
+    }
+    @if ($command = "border-bottom-right-radius") and ($direction = $ltr) {
+        border-bottom-right-radius: $value;
+    }
+    @if ($command = "border-bottom-right-radius") and ($direction = $rtl) {
+        border-bottom-left-radius: $value;
+    }
+}
+
+@mixin Border-width($top, $right, $bottom, $left) {
+    @if ($direction = $ltr) {
+        border-width: $top $right $bottom $left;
+    }
+    @if ($direction = $rtl) {
+        border-width: $top $left $bottom $right;
+    }
+}
+
+@mixin BorderLeft($value) {
+    @if ($direction = $ltr) {
+        border-left: $value;
+    }
+    @if ($direction = $rtl) {
+        border-right: $value;
+    }
+}
+
+@mixin BorderRight($value) {
+    @if ($direction = $ltr) {
+        border-right: $value;
+    }
+    @if ($direction = $rtl) {
+        border-left: $value;
+    }
+}
+
+@mixin BorderLeftWidth($value) {
+    @if ($direction = $ltr) {
+        border-left-width: $value;
+    }
+    @if ($direction = $rtl) {
+        border-right-width: $value;
+    }
+}
+
+@mixin BorderRightWidth($value) {
+    @if ($direction = $ltr) {
+        border-right-width: $value;
+    }
+    @if ($direction = $rtl) {
+        border-left-width: $value;
+    }
+}
+
+@mixin BorderLeftColor($value) {
+    @if ($direction = $ltr) {
+        border-left-color: $value;
+    }
+    @if ($direction = $rtl) {
+        border-right-color: $value;
+    }
+}
+
+@mixin BorderRightColor($value) {
+    @if ($direction = $ltr) {
+        border-right-color: $value;
+    }
+    @if ($direction = $rtl) {
+        border-left-color: $value;
+    }
+}
+
+@mixin BorderRadius($topRadius, $rightRadius, $bottomRadius, $leftRadius) {
+    @if ($direction = $ltr) {
+        -webkit-border-radius: $topRadius $rightRadius $bottomRadius $leftRadius;
+        -moz-border-radius: $topRadius $rightRadius $bottomRadius $leftRadius;
+        border-radius: $topRadius $rightRadius $bottomRadius $leftRadius;
+    }
+    @if ($direction = $rtl) {
+        -webkit-border-radius: $topRadius $leftRadius $bottomRadius $rightRadius;
+        -moz-border-radius: $topRadius $leftRadius $bottomRadius $rightRadius;
+        border-radius: $topRadius $leftRadius $bottomRadius $rightRadius;
+    }
+}

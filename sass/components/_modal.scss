@@ -3,8 +3,8 @@
 
   display: none;
   position: fixed;
-  left: 0;
-  right: 0;
+  @include DockItem("left", 0);
+  @include DockItem("right", 0);
   background-color: #fafafa;
   padding: 0;
   max-height: 70%;
@@ -31,14 +31,14 @@
   }
 
   .modal-footer {
-    border-radius: 0 0 2px 2px;
+    @include BorderRadius(0, 0, 2px, 2px);
     background-color: #fafafa;
     padding: 4px 6px;
     height: 56px;
     width: 100%;
 
     .btn, .btn-flat {
-      float: right;
+      @include FloatItem("right");
       margin: 6px 0;
     }
   }
@@ -47,9 +47,9 @@
   position: fixed;
   z-index: 999;
   top: -100px;
-  left: 0;
+  @include DockItem("left", 0);
   bottom: 0;
-  right: 0;
+  @include DockItem("right", 0);
   height: 125%;
   width: 100%;
   background: #000;

@@ -20,7 +20,7 @@ h1,h2,h3,h4,h5,h6 {
 
 h5 > span {
   font-size: 14px;
-  margin-left: 15px;
+  @include MarginLeftOrRight("margin-left", 15px);
   color: #777;
 }
 
@@ -53,24 +53,24 @@ nav {
 }
 
 header, main, footer {
-  padding-left: 300px;
+  @include PaddingLeftOrRight("padding-left", 300px);
 }
 .parallax-demo header,
 .parallax-demo main,
 .parallax-demo footer {
-  padding-left: 0;
+  @include PaddingLeftOrRight("padding-left", 0);
 }
 footer.example {
-  padding-left: 0;
+  @include PaddingLeftOrRight("padding-left", 0);
 }
 
 @media #{$medium-and-down} {
   header, main, footer {
-    padding-left: 0;
+    @include PaddingLeftOrRight("padding-left", 0);
   }
   h5 > span {
     display: block;
-    margin: 0 0 15px 0;
+    @include SwapMargin(0, 0, 15px, 0);
   }
 
 }
@@ -117,7 +117,7 @@ ul.side-nav.fixed {
 
     .collapsible-body li a {
       font-weight: 400;
-      padding: 0 37.5px 0 45px;
+      @include SwapPadding(0, 37.5px, 0, 45px);
     }
   }
 
@@ -150,10 +150,10 @@ a.button-collapse.top-nav {
   text-align: center;
   height: 48px;
   width: 48px;
-  left: 7.5%;
+  @include DockItem("left", 7.5%);
   top: 0;
-  float: none;
-  margin-left: 1.5rem;
+  @include FloatItem("none");
+  @include MarginLeftOrRight("margin-left", 1.5rem);
   color: #fff;
   font-size: 36px;
   z-index: 2;
@@ -169,7 +169,7 @@ a.button-collapse.top-nav {
 
 @media #{$small-and-down} {
   a.button-collapse.top-nav {
-    left: 5%;
+    @include DockItem("left", 5%);
   }
 }
 
@@ -199,7 +199,7 @@ a.button-collapse.top-nav {
 @media only screen and (max-width: 992px) {
   #front-page-nav ul.side-nav {
     li {
-      float: none;
+      @include FloatItem("none");
       padding: 0 15px;
 
       &:hover { background-color: #ddd; }
@@ -276,7 +276,7 @@ a.button-collapse.top-nav {
 
 .sha {
   color: hsl(0, 0%, 94%) ;
- margin: 0 6px 0 6px;
+ @include SwapMargin(0, 6px, 0, 6px);
 }
 
 #download-button {
@@ -408,18 +408,18 @@ $width: 100%;
 $height: auto;
 
 .browser-window {
-  text-align: left;
+  @include TextAlignTo("left");
   width: $width;
   height: $height;
   display: inline-block;
-  border-radius: 5px 5px 2px 2px;
+  @include BorderRadius(5px, 5px, 2px, 2px);
   background-color: #fff;
   margin: 20px 0px;
   overflow: hidden;
 
     .top-bar {
     height: 30px;
-    border-radius: 5px 5px 0 0;
+    @include BorderRadius(5px, 5px, 0, 0);
     border-top: thin solid lighten($topColor, 1%);
     border-bottom: thin solid darken($bottomColor, 1%);
     background: linear-gradient($topColor, $bottomColor);
@@ -432,7 +432,7 @@ $height: auto;
   display: inline-block;
   border-radius: 50%;
   background-color: lighten($topColor, 10%);
-  margin-right: 1px;
+  @include MarginLeftOrRight("margin-right", 1px);
 }
 #close-circle {
   background-color: #FF5C5A;
@@ -449,7 +449,7 @@ $height: auto;
   width: 100%;
   // min-height: 100%;
   display: inline-block;
-  border-radius: 0 0 5px 5px;
+  @include BorderRadius(0, 0, 5px, 5px);
   background-color: #fafafa;
 }
 .browser-window .row {
@@ -507,8 +507,8 @@ $height: auto;
   width: 150px;
   height: 115px;
 
-  float: left;
-  margin: 0 0px 15px 0px;
+  @include FloatItem("left");
+  @include SwapMargin(0, 0px, 15px, 0px);
   p {
     margin: 0 0;
   }
@@ -548,8 +548,8 @@ $height: auto;
   .text-center {
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
+    @include DockItem("left", 0);
+    @include DockItem("right", 0);
     margin-top: -27px;
   }
 
@@ -577,7 +577,7 @@ pre[class*="language-"] {
     padding: 1px 5px;
     background: hsl(30, 10%, 90%);
     top: 0;
-    left: 0;
+    @include DockItem("left", 0);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     color: #555;
@@ -585,9 +585,9 @@ pre[class*="language-"] {
     font-size: .9rem;
     border: solid 1px rgba(51, 51, 51, 0.12);
     border-top: none;
-    border-left: none;
+    @include BorderLeft(none);
   }
-  padding: 25px 12px 7px 12px;
+  @include SwapPadding(25px, 12px, 7px, 12px);
   border: solid 1px rgba(51, 51, 51, 0.12);
 }
 
@@ -606,7 +606,7 @@ pre[class*="language-"] {
   max-width: 150px;
   display: inline-block;
   position: relative;
-  text-align: left;
+  @include TextAlignTo("left");
   -webkit-font-smoothing: antialiased;
 
   & > span,
@@ -617,7 +617,7 @@ pre[class*="language-"] {
   a.carbon-img {
     height: 100px;
     display: inline-block;
-    margin-right: 10px;
+    @include MarginLeftOrRight("margin-right", 10px);
   }
   a.carbon-text,
   input[type="submit"] {
@@ -643,7 +643,7 @@ pre[class*="language-"] {
 
   a.carbon-text {
     top: 5px;
-    left: 0;
+    @include DockItem("left", 0);
     width: 130px;
     display: block;
     font-size: 13px;
@@ -670,11 +670,11 @@ pre[class*="language-"] {
   .bsa_it.one {
     width: 130px;
     position: absolute;
-    left: 0;
+    @include DockItem("left", 0);
     top: 50px;
 
     .bsa_it_p {
-      left: 0;
+      @include DockItem("left", 0);
       bottom: -15px;
     }
     .bsa_it_ad .bsa_it_t { color: color("red", "lighten-2"); }
@@ -697,7 +697,7 @@ pre[class*="language-"] {
   min-width: 230px;
   max-width: 270px;
   display: inline-block;
-  text-align: left;
+  @include TextAlignTo("left");
 
   .bsa_it_ad {
     border: 0;
@@ -709,8 +709,8 @@ pre[class*="language-"] {
   }
 
   .bsa_it_p {
-    right: auto;
-    left: 40px;
+    @include DockItem("right", auto);
+    @include DockItem("left", 40px);
     bottom: -5px;
 
     a { color: color("red", "lighten-4"); }
@@ -850,11 +850,11 @@ body.parallax-demo footer {
   &:hover { background-color: #fff; }
 
   position: absolute;
-  left: 0;
-  right: 0;
+  @include DockItem("left", 0);
+  @include DockItem("right", 0);
   top: 120px;
   margin-top: 1px;
-  padding: 1px 0 0 0;
+  @include SwapPadding(1px, 0, 0, 0);
   z-index: 2;
 
   .search-wrapper {
@@ -872,14 +872,14 @@ body.parallax-demo footer {
       width: 100%;
       height: 45px;
       margin: 0;
-      padding: 0 45px 0 15px;
+      @include SwapPadding(0, 45px, 0, 15px);
       border: 0;
     }
 
     i.material-icons {
       position: absolute;
       top: 10px;
-      right: 10px;
+      @include DockItem("right", 10px);
       cursor: pointer;
     }
   }

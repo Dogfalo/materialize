@@ -3,7 +3,7 @@
 .card-panel {
   transition: box-shadow .25s;
   padding: $card-padding;
-  margin: $element-top-margin 0 $element-bottom-margin 0;
+  @include SwapMargin($element-top-margin, 0, $element-bottom-margin, 0);
   border-radius: 2px;
   @extend .z-depth-1;
   background-color: $card-bg-color;
@@ -11,7 +11,7 @@
 
 .card {
   position: relative;
-  margin: $element-top-margin 0 $element-bottom-margin 0;
+  @include SwapMargin($element-top-margin, 0, $element-bottom-margin, 0);
   background-color: $card-bg-color;
   transition: box-shadow .25s;
   border-radius: 2px;
@@ -44,8 +44,8 @@
     .card-action {
       position: absolute;
       bottom: 0;
-      left: 0;
-      right: 0;
+      @include DockItem("left", 0);
+      @include DockItem("right", 0);
     }
   }
 
@@ -80,7 +80,7 @@
     .card-image {
       max-width: 50%;
       img {
-        border-radius: 2px 0 0 2px;
+        @include BorderRadius(2px, 0, 0, 2px);
         max-width: 100%;
         width: auto;
       }
@@ -119,10 +119,10 @@
     // Image background for content
     img {
       display: block;
-      border-radius: 2px 2px 0 0;
+      @include BorderRadius(2px, 2px, 0, 0);
       position: relative;
-      left: 0;
-      right: 0;
+      @include DockItem("left", 0);
+      @include DockItem("right", 0);
       top: 0;
       bottom: 0;
       width: 100%;
@@ -132,7 +132,7 @@
       color: $card-bg-color;
       position: absolute;
       bottom: 0;
-      left: 0;
+      @include DockItem("left", 0);
       padding: $card-padding;
     }
 
@@ -140,7 +140,7 @@
 
   .card-content {
     padding: $card-padding;
-    border-radius: 0 0 2px 2px;
+    @include BorderRadius(0, 0, 2px, 2px);
 
     p {
       margin: 0;
@@ -159,7 +159,7 @@
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: $card-link-color;
-      margin-right: $card-padding;
+      @include MarginLeftOrRight("margin-right", $card-padding);
       transition: color .3s ease;
       text-transform: uppercase;
 
@@ -173,7 +173,7 @@
     background-color: $card-bg-color;
     width: 100%;
     overflow-y: auto;
-    left: 0;
+    @include DockItem("left", 0);
     top: 100%;
     height: 100%;
     z-index: 3;
