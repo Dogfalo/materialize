@@ -163,7 +163,7 @@
     open : function() {
       $(this).trigger('openModal');
     },
-    open : function() {
+    close : function() {
       $(this).trigger('closeModal');
     }
   };
