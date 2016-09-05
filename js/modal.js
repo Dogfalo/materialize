@@ -50,7 +50,7 @@
             ease: "easeOutCubic",
             // Handle modal ready callback
             complete: function() {
-              $overlay.css({display:"none"});
+              $(this).css({display:"none"});
 
               // Call complete callback
               if (typeof(options.complete) === "function") {
