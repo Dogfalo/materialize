@@ -13,7 +13,7 @@
   text-align: center;
   max-width: calc(100% - 4px);
   overflow: hidden;
-  left: 0;
+  @include DockItem("left", 0);
   top: 0;
   pointer-events: none;
 }
@@ -24,7 +24,7 @@
   display: none;
   height: 7px;
   width: 14px;
-  border-radius: 0 0 50% 50%;
+  @include BorderRadius(0, 0, 50%, 50%);
   background-color: #323232;
   z-index: -1;
   transform-origin: 50% 0%;

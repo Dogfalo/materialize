@@ -9,8 +9,8 @@
     width: 100%;
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    @include DockItem("left", 0);
+    @include DockItem("right", 0);
     bottom: 0;
 
     ul.slides {
@@ -32,7 +32,7 @@
       opacity: 0;
       position: absolute;
       top: 0;
-      left: 0;
+      @include DockItem("left", 0);
       z-index: 1;
       width: 100%;
       height: inherit;
@@ -49,7 +49,7 @@
         color: #fff;
         position: absolute;
         top: 15%;
-        left: 15%;
+        @include DockItem("left", 15%);
         width: 70%;
         opacity: 0;
 
@@ -66,8 +66,8 @@
   .indicators {
     position: absolute;
     text-align: center;
-    left: 0;
-    right: 0;
+    @include DockItem("left", 0);
+    @include DockItem("right", 0);
     bottom: 0;
     margin: 0;
 

@@ -229,7 +229,7 @@
 .gap-patch {
   position: absolute;
   top: 0;
-  left: 45%;
+  @include DockItem("left", 45%);
   width: 10%;
   height: 100%;
   overflow: hidden;
@@ -238,7 +238,7 @@
 
 .gap-patch .circle {
   width: 1000%;
-  left: -450%;
+  @include DockItem("left", -450%);
 }
 
 .circle-clipper {
@@ -261,19 +261,19 @@
     animation: none;
     position: absolute;
     top: 0;
-    right: 0;
+    @include DockItem("right", 0);
     bottom: 0;
   }
 
   &.left .circle {
-    left: 0;
-    border-right-color: transparent !important;
+    @include DockItem("left", 0);
+    @include BorderLeftOrRightColor("border-right-color", transparent !important);
     -webkit-transform: rotate(129deg);
     transform: rotate(129deg);
   }
   &.right .circle {
-    left: -100%;
-    border-left-color: transparent !important;
+    @include DockItem("left", -100%);
+    @include BorderLeftOrRightColor("border-left-color", transparent !important);
     -webkit-transform: rotate(-129deg);
     transform: rotate(-129deg);
   }

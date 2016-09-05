@@ -6,7 +6,7 @@
  */
 .picker__list {
   list-style: none;
-  padding: 0.75em 0 4.2em;
+  @include SwapPadding(0.75em, 0, 4.2em, 0);
   margin: 0;
 }
 /**
@@ -69,7 +69,7 @@
 .picker--time .picker__button--clear {
   display: block;
   width: 80%;
-  margin: 1em auto 0;
+  @include SwapMargin(1em, auto, 0, auto);
   padding: 1em 1.25em;
   background: none;
   border: 0;

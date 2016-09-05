@@ -6,7 +6,7 @@
  */
 .picker {
   font-size: 16px;
-  text-align: left;
+  @include TextAlignTo("left");
   line-height: 1.2;
   color: #000000;
   position: absolute;
@@ -50,8 +50,8 @@
 .picker__holder,
 .picker__frame {
   bottom: 0;
-  left: 0;
-  right: 0;
+  @include DockItem("left", 0);
+  @include DockItem("right", 0);
   top: 100%;
 }
 /**
@@ -133,9 +133,7 @@
     border: 1px solid #777777;
     border-top-color: #898989;
     border-bottom-width: 0;
-    -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
-    border-radius: 5px 5px 0 0;
+    @include BorderRadius(5px, 5px, 0, 0);
     -webkit-box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);
     -moz-box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);
     box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);

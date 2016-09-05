@@ -5,14 +5,14 @@
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
-  left: -9999px;
+  @include DockItem("left", -9999px);
   opacity: 0;
 }
 
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {
   position: relative;
-  padding-left: 35px;
+  @include PaddingLeftOrRight("padding-left", 35px);
   cursor: pointer;
   display: inline-block;
   height: 25px;
@@ -28,7 +28,7 @@
 [type="radio"] + label:after {
   content: '';
   position: absolute;
-  left: 0;
+  @include DockItem("left", 0);
   top: 0;
   margin: 4px;
   width: 16px;

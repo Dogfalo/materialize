@@ -1,7 +1,7 @@
 .side-nav {
   position: fixed;
   width: 300px;
-  left: 0;
+  @include DockItem("left", 0);
   top: 0;
   margin: 0;
   transform: translateX(-100%);
@@ -20,9 +20,9 @@
 
   // Right Align
   &.right-aligned {
-    right: 0;
+    @include DockItem("right", 0);
     transform: translateX(105%);
-    left: auto;
+    @include DockItem("left", auto);
     transform: translateX(100%);
   }
 
@@ -32,7 +32,7 @@
 
 
   li {
-    float: none;
+    @include FloatItem("none");
     line-height: $sidenav-item-height;
 
     &.active { background-color: rgba(0,0,0,.05); }
@@ -66,16 +66,16 @@
   li > a > i,
   li > a > [class^="mdi-"], li > a > [class*="mdi-"],
   li > a > i.material-icons {
-    float: left;
+    @include FloatItem("left");
     height: $sidenav-item-height;
     line-height: $sidenav-item-height;
-    margin: 0 ($sidenav-padding * 2) 0 0;
+    @include SwapMargin(0, ($sidenav-padding * 2), 0, 0);
     width: $sidenav-item-height / 2;
     color: rgba(0,0,0,.54);
   }
 
   .divider {
-    margin: ($sidenav-padding / 2) 0 0 0;
+    @include SwapMargin(($sidenav-padding / 2), 0, 0, 0);
   }
 
   .subheader {
@@ -94,7 +94,7 @@
   .userView {
     overflow: hidden;
     position: relative;
-    padding: ($sidenav-padding * 2) ($sidenav-padding * 2) 0;
+    @include SwapPadding(($sidenav-padding * 2), ($sidenav-padding * 2), 0, ($sidenav-padding * 2));
     margin-bottom: $sidenav-padding / 2;
 
     a {
@@ -106,9 +106,9 @@
     .background {
       position: absolute;
       top: 0;
-      right: 0;
+      @include DockItem("right", 0);
       bottom: 0;
-      left: 0;
+      @include DockItem("left", 0);
       z-index: -1;
     }
 
@@ -162,14 +162,14 @@
 
 // Fixed side-nav shown
 .side-nav.fixed {
-  left: 0;
+  @include DockItem("left", 0);
   transform: translateX(0);
   position: fixed;
 
   // Right Align
   &.right-aligned {
-    right: 0;
-    left: auto;
+    @include DockItem("right", 0);
+    @include DockItem("left", auto);
   }
 }
 
@@ -189,7 +189,7 @@
     }
 
     .userView {
-      padding: $sidenav-padding $sidenav-padding 0;
+      @include SwapPadding($sidenav-padding, $sidenav-padding, 0, $sidenav-padding);
     }
   }
 }
@@ -207,8 +207,8 @@
 #sidenav-overlay {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  @include DockItem("left", 0);
+  @include DockItem("right", 0);
 
   height: 120vh;
   background-color: rgba(0,0,0,.5);

@@ -9,11 +9,11 @@
   border-radius: 16px;
   background-color: $chip-bg-color;
   margin-bottom: $chip-margin;
-  margin-right: $chip-margin;
+  @include MarginLeftOrRight("margin-right", $chip-margin);
 
   img {
-    float: left;
-    margin: 0 8px 0 -12px;
+    @include FloatItem("left");
+    @include SwapMargin(0, 8px, 0, -12px);
     height: 32px;
     width: 32px;
     border-radius: 50%;
@@ -21,10 +21,10 @@
 
   .close {
     cursor: pointer;
-    float: right;
+    @include FloatItem("right");
     font-size: 16px;
     line-height: 32px;
-    padding-left: 8px;
+    @include PaddingLeftOrRight("padding-left", 8px);
   }
 }
 
@@ -73,7 +73,7 @@
 
 // Form prefix
 .prefix ~ .chips {
-  margin-left: 3rem;
+  @include MarginLeftOrRight("margin-left", 3rem);
   width: 92%;
   width: calc(100% - 3rem);
 }

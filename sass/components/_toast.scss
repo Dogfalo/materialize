@@ -8,13 +8,13 @@
     bottom: 0%;
   }
   @media #{$medium-only} {
-    left: 5%;
+    @include DockItem("left", 5%);
     bottom: 7%;
     max-width: 90%;
   }
   @media #{$large-and-up} {
     top: 10%;
-    right: 7%;
+    @include DockItem("right", 7%);
     max-width: 86%;
   }
 }
@@ -44,7 +44,7 @@
 
   .btn, .btn-flat {
     margin: 0;
-    margin-left: 3rem;
+    @include MarginLeftOrRight("margin-left", 3rem);
   }
 
   &.rounded{
@@ -56,10 +56,10 @@
     border-radius: 0;
   }
   @media #{$medium-only} {
-    float: left;
+    @include FloatItem("left");
   }
   @media #{$large-and-up} {
-    float: right;
+    @include FloatItem("right");
   }
 
 }

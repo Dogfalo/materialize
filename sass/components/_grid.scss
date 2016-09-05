@@ -14,8 +14,8 @@
   }
 }
 .container .row {
-  margin-left: (-1 * $gutter-width / 2);
-  margin-right: (-1 * $gutter-width / 2);
+  @include MarginLeftOrRight("margin-left", (-1 * $gutter-width / 2));
+  @include MarginLeftOrRight("margin-right", (-1 * $gutter-width / 2));
 }
 
 .section {
@@ -35,8 +35,8 @@
 
 
 .row {
-  margin-left: auto;
-  margin-right: auto;
+  @include MarginLeftOrRight("margin-left", auto);
+  @include MarginLeftOrRight("margin-right", auto);
   margin-bottom: 20px;
 
   // Clear floating children
@@ -47,7 +47,7 @@
   }
 
   .col {
-    float: left;
+    @include FloatItem("left");
     box-sizing: border-box;
     padding: 0 $gutter-width / 2;
     min-height: 1px;
@@ -62,9 +62,9 @@
       $perc: unquote((100 / ($num-cols / $i)) + "%");
       &.s#{$i} {
         width: $perc;
-        margin-left: auto;
-        left: auto;
-        right: auto;
+        @include MarginLeftOrRight("margin-left", auto);
+        @include DockItem("left", auto);
+        @include DockItem("right", auto);
       }
       $i: $i + 1;
     }
@@ -73,13 +73,13 @@
     @while $i <= $num-cols {
       $perc: unquote((100 / ($num-cols / $i)) + "%");
       &.offset-s#{$i} {
-        margin-left: $perc;
+        @include MarginLeftOrRight("margin-left", $perc);
       }
       &.pull-s#{$i} {
-        right: $perc;
+        @include DockItem("right", $perc);
       }
       &.push-s#{$i} {
-        left: $perc;
+        @include DockItem("left", $perc);
       }
       $i: $i + 1;
     }
@@ -91,9 +91,9 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.m#{$i} {
           width: $perc;
-          margin-left: auto;
-          left: auto;
-          right: auto;
+          @include MarginLeftOrRight("margin-left", auto);
+          @include DockItem("left", auto);
+          @include DockItem("right", auto);
         }
         $i: $i + 1
       }
@@ -102,13 +102,13 @@
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.offset-m#{$i} {
-          margin-left: $perc;
+          @include MarginLeftOrRight("margin-left", $perc);
         }
         &.pull-m#{$i} {
-          right: $perc;
+          @include DockItem("right", $perc);
         }
         &.push-m#{$i} {
-          left: $perc;
+          @include DockItem("left", $perc);
         }
         $i: $i + 1;
       }
@@ -121,9 +121,9 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.l#{$i} {
           width: $perc;
-          margin-left: auto;
-          left: auto;
-          right: auto;
+          @include MarginLeftOrRight("margin-left", auto);
+          @include DockItem("left", auto);
+          @include DockItem("right", auto);
         }
         $i: $i + 1;
       }
@@ -132,13 +132,13 @@
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.offset-l#{$i} {
-          margin-left: $perc;
+          @include MarginLeftOrRight("margin-left", $perc);
         }
         &.pull-l#{$i} {
-          right: $perc;
+          @include DockItem("right", $perc);
         }
         &.push-l#{$i} {
-          left: $perc;
+          @include DockItem("left", $perc);
         }
         $i: $i + 1;
       }

@@ -126,34 +126,34 @@ button.btn-floating {
   }
 
   &.horizontal {
-    padding: 0 0 0 15px;
+    @include SwapPadding(0, 0, 0, 15px);
 
     ul {
-      text-align: right;
-      right: 64px;
+      @include TextAlignTo("right");
+      @include DockItem("right", 64px);
       top: 50%;
       transform: translateY(-50%);
       height: 100%;
-      left: auto;
+      @include DockItem("left", auto);
       width: 500px; /*width 100% only goes to width of button container */
 
       li {
         display: inline-block;
-        margin: 15px 15px 0 0;
+        @include SwapMargin(15px, 15px, 0, 0);
       }
     }
   }
 
   position: fixed;
-  right: 23px;
+  @include DockItem("right", 23px);
   bottom: 23px;
   padding-top: 15px;
   margin-bottom: 0;
   z-index: 998;
 
   ul {
-    left: 0;
-    right: 0;
+    @include DockItem("left", 0);
+    @include DockItem("right", 0);
     text-align: center;
     position: absolute;
     bottom: 64px;
