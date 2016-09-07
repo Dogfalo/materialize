@@ -2615,17 +2615,12 @@ html {
   box-sizing: inherit;
 }
 
-ul {
+ul:not(.browser-default) {
   padding: 0;
   list-style-type: none;
 }
 
-ul.browser-default,
-ul.browser-default li {
-  list-style-type: initial;
-}
-
-ul li {
+ul:not(.browser-default) li {
   list-style-type: none;
 }
 

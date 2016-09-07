@@ -18,16 +18,13 @@ main {
 }
 
 ul {
-  &.browser-default,
-  &.browser-default li {
-    list-style-type: initial;
-  }
-
-  padding: 0;
-  list-style-type: none;
-
-  li {
+  &:not(.browser-default) {
+    padding: 0;
     list-style-type: none;
+
+    li {
+      list-style-type: none;
+    }
   }
 }
 
