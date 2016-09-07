@@ -71,7 +71,7 @@
           }
         };
 
-        var openModal = function() {
+        var openModal = function($trigger) {
           var $body = $('body');
           var oldWidth = $body.innerWidth();
           $body.css('overflow', 'hidden');
@@ -126,7 +126,7 @@
             // Handle modal ready callback
             complete: function() {
               if (typeof(options.ready) === "function") {
-                options.ready.call(this, $modal);
+                options.ready.call(this, $modal, $trigger);
               }
             }
           };
@@ -141,10 +141,15 @@
 
         };
 
+        // Reset handlers
+        $(document).off('click.modalTrigger', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]');
+        $(this).off('openModal');
+        $(this).off('closeModal');
+
         // Close Handlers
-        $(document).on('click', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
+        $(document).on('click.modalTrigger', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
           options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.15;
-          openModal();
+          openModal($(this));
           e.preventDefault();
         }); // done set on click
 
