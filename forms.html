@@ -595,6 +595,13 @@
             </code></pre>
           </div>
           <div class="col s12">
+            <h4>Callback</h4>
+            <p>If you pass a callback function in the initialization or later on it will call that function whenever the selected option changes</p>
+            <pre><code class="language-javascript col s12">
+    $('select').material_select(callback);
+            </code></pre>
+          </div>
+          <div class="col s12">
             <h4>Updating/Destroying Select</h4>
             <p>If you want to update the items inside the select, just rerun the initialization code from above after editing the original select. Or you can destroy the material select with this function below, and create a new select altogether</p>
             <pre><code class="language-javascript">
