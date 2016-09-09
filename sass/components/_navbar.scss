@@ -85,6 +85,11 @@ nav {
       padding: 0;
     }
 
+    &.left {
+      left: 0.5rem;
+      padding: 0;
+    }
+
     i,
     [class^="mdi-"], [class*="mdi-"],
     i.material-icons {
