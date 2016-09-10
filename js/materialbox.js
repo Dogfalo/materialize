@@ -87,11 +87,11 @@
           .click(function(){
             if (doneAnimating === true)
             returnToOriginal();
-          });
+          });o
           // Animate Overlay
           // Put before in origin image to preserve z-index layering.
           origin.before(overlay);
-          overlay.velocity({opacity: 1},
+          overlay.velocity({opacity: 0.8},
                            {duration: inDuration, queue: false, easing: 'easeOutQuad'} );
 
         // Add and animate caption if it exists
