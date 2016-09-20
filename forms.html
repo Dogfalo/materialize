@@ -87,6 +87,7 @@
             <li class="bold"><a class="collapsible-header  waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
+                  <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
@@ -153,6 +154,15 @@
                 <label for="email" data-error="wrong" data-success="right">Email</label>
               </div>
             </div>
+            <div class="row">
+              <div class="col s12">
+                This is an inline input field:
+                <div class="input-field inline">
+                  <input id="email" type="email" class="validate">
+                  <label for="email" data-error="wrong" data-success="right">Email</label>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
         <pre><code class="language-markup">
@@ -184,6 +194,15 @@
         &lt;div class="input-field col s12">
           &lt;input id="email" type="email" class="validate">
           &lt;label for="email">Email&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="col s12">
+          This is an inline input field:
+          &lt;div class="input-field inline">
+            &lt;input id="email" type="email" class="validate">
+            &lt;label for="email" data-error="wrong" data-success="right">Email&lt;/label>
+          &lt;/div>
         &lt;/div>
       &lt;/div>
     &lt;/form>
@@ -690,6 +709,10 @@
       &lt;label for="filled-in-box">Filled in&lt;/label>
     &lt;/p>
     &lt;p>
+      &lt;input type="checkbox" id="indeterminate-checkbox" />
+      &lt;label for="indeterminate-checkbox">Indeterminate Style&lt;/label>
+    &lt;/p>
+    &lt;p>
       &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
       &lt;label for="test7">Green&lt;/label>
     &lt;/p>
@@ -935,8 +958,8 @@
       &lt;div class="row">
         &lt;div class="input-field col s12">
           &lt;i class="material-icons prefix">textsms&lt;/i>
-          &lt;input type="text" id="autocomplete">
-          &lt;label for="autocomplete">Autocomplete&lt;/label>
+          &lt;input type="text" id="autocomplete-input" class="autocomplete">
+          &lt;label for="autocomplete-input">Autocomplete&lt;/label>
         &lt;/div>
       &lt;/div>
     &lt;/div>

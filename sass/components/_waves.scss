@@ -90,6 +90,10 @@
         background: none;
     }
 
+    img {
+        position: relative;
+        z-index: -1;
+    }
 }
 
 .waves-notransition {
@@ -168,6 +172,6 @@
 }
 
 /* Firefox Bug: link not triggered */
-a.waves-effect .waves-ripple {
+.waves-effect .waves-ripple {
     z-index: -1;
 }

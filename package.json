@@ -3,7 +3,7 @@
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
-  "version": "0.97.6",
+  "version": "0.97.7",
   "main": "bin/materialize.js",
   "license": "MIT",
   "repository": {
@@ -13,7 +13,7 @@
   "dependencies": {
     "hammerjs": "^2.0.4",
     "jquery": "^2.1.4",
-    "node-archiver": "^0.2.0"
+    "node-archiver": "^0.3.0"
   },
   "engine": "node >= 0.10",
   "devDependencies": {

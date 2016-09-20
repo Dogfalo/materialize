@@ -7,19 +7,38 @@
         <h4>Introduction</h4>
         <p class="caption">This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
 
+        <a href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>
+
+        <ul id="slide-out" class="side-nav">
+          <li><div class="userView">
+            <img class="background" src="images/office.jpg">
+            <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+            <a href="#!name"><span class="white-text name">John Doe</span></a>
+            <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+          </div></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+          <li><a href="#!">Second Link</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Subheader</a></li>
+          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>
+
         <h4>HTML Structure</h4>
         <pre><code class="language-markup col s12">
-&lt;nav>
-  &lt;ul class="right hide-on-med-and-down">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
-  &lt;/ul>
   &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+    &lt;li>&lt;div class="userView">
+      &lt;img class="background" src="images/office.jpg">
+      &lt;a href="#!user">&lt;img class="circle" src="images/yuna.jpg">&lt;/a>
+      &lt;a href="#!name">&lt;span class="white-text name">John Doe&lt;/span>&lt;/a>
+      &lt;a href="#!email">&lt;span class="white-text email">jdandturk@gmail.com&lt;/span>&lt;/a>
+    &lt;/div>&lt;/li>
+    &lt;li>&lt;a href="#!">&lt;i class="material-icons">cloud&lt;/i>First Link With Icon&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">Second Link&lt;/a>&lt;/li>
+    &lt;li>&lt;div class="divider">&lt;/div>&lt;/li>
+    &lt;li>&lt;a class="subheader">Subheader&lt;/a>&lt;/li>
+    &lt;li>&lt;a class="waves-effect" href="#!">Third Link With Waves&lt;/a>&lt;/li>
   &lt;/ul>
   &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
-&lt;/nav>
         </code></pre>
       </div>
 
@@ -41,7 +60,8 @@
   $('.button-collapse').sideNav({
       menuWidth: 300, // Default is 240
       edge: 'right', // Choose the horizontal origin
-      closeOnClick: true // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
+      closeOnClick: true, // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
     }
   );
         </code></pre>
@@ -55,12 +75,19 @@
   $('.button-collapse').sideNav('show');
   // Hide sideNav
   $('.button-collapse').sideNav('hide');
+  // Destroy sideNav
+  $('.button-collapse').sideNav('destroy');
         </code></pre>
       </div>
 
       <div id="variations" class="scrollspy section">
         <h2 class="header">Variations</h2>
+        <p class="caption">
+          Here are some useful variations and additional elements you can add to your sidebar.
+        </p>
+
         <h4>Dropdown HTML Structure</h4>
+          <p>Add collapsible menus to your sidebar.</p>
           <pre><code class="language-markup col s12">
     &lt;ul id="slide-out" class="side-nav">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
@@ -93,7 +120,7 @@
       &lt;/ul>
     &lt;/ul>
     &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
-          </code></pre>
+          </code></pre><br>
 
           <h4>Fullscreen HTML Structure</h4>
           <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.button-collapse</code>. </p>
@@ -104,7 +131,7 @@
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
     &lt;a href="#" data-activates="slide-out" class="button-collapse show-on-large">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
-          </code></pre>
+          </code></pre><br>
 
           <h4>Fixed HTML Structure</h4>
           <p>Add the class <code class="language-markup">fixed</code> to have the sideNav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sideNav on the left is an example of this.</p>
@@ -118,7 +145,7 @@
           <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding on where the offset content will be, which in our case is in header, main and footer.</p>
           <pre><code class="language-css col s12">
     header, main, footer {
-      padding-left: 240px;
+      padding-left: 300px;
     }
 
     @media only screen and (max-width : 992px) {

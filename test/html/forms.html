@@ -18,6 +18,7 @@
 <!--  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
 <!--  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>-->
   <link href="../../../css/prism.css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -29,6 +30,7 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
           <input placeholder="Placeholder" id="first_name" type="text" class="validate">
           <label for="first_name">First Name</label>
         </div>
@@ -60,8 +62,32 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
           <input id="email" type="email" class="validate">
           <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <p>Make sure these textareas are aligned correctly.</p>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="textarea-prefix" class="materialize-textarea"></textarea>
+          <label for="textarea-prefix">Text area with a prefix</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="textarea-normal" class="materialize-textarea"></textarea>
+          <label for="textarea-normal">Text area</label>
+        </div>
+      </div>
+      <div class="row">
+        <p>Make sure error message and label don't overlap.</p>
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email</label>
         </div>
       </div>
     </form>
@@ -72,8 +98,8 @@
       <form>
         <div class="input-field">
           <input id="search" type="search" required>
-          <label for="search"><i class="mdi-action-search"></i></label>
-          <i class="mdi-navigation-close"></i>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
         </div>
       </form>
     </div>
@@ -81,6 +107,7 @@
   <br>
   <br>
 
+  <h3>Select</h3>
   <!-- materialize select multiple -->
   <div class="row">
     <div class="input-field col s6">
@@ -179,6 +206,21 @@
   </div>
 
   <div class="row">
+    <div class="col s12">
+      This is an inline select:
+      <div class="input-field inline">
+        <select>
+          <option value="" disabled >Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2"selected>Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Materialize Select</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <h2>Select Icons</h2>
     <div class="input-field col s12">
       <select multiple>
@@ -215,7 +257,6 @@
       <input type="range" id="test5" min="0" max="100" />
     </p>
   </form>
-
 
 
 <!--  Scripts-->

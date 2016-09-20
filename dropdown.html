@@ -86,6 +86,7 @@
             <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
+                  <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li class="active"><a href="dropdown.html">Dropdown</a></li>
@@ -204,6 +205,22 @@
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
     }
   );
+        </code></pre>
+
+        <p>
+        You can also open dropdowns programatically, the below code will make your modal open on document ready:
+        </p>
+
+        <pre><code class="language-javascript">
+  $('.dropdown-button').dropdown('open');
+        </code></pre>
+
+        <p>
+        You can also close dropdowns programatically:
+        </p>
+
+        <pre><code class="language-javascript">
+  $('.dropdown-button').dropdown('close');
         </code></pre>
       </div>
 

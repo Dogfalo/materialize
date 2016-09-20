@@ -18,6 +18,12 @@ h1,h2,h3,h4,h5,h6 {
   -webkit-font-smoothing: antialiased;
 }
 
+h5 > span {
+  font-size: 14px;
+  margin-left: 15px;
+  color: #777;
+}
+
 nav {
   // background-color: color("materialize-red", "lighten-2");
 
@@ -47,7 +53,7 @@ nav {
 }
 
 header, main, footer {
-  padding-left: 240px;
+  padding-left: 300px;
 }
 .parallax-demo header,
 .parallax-demo main,
@@ -62,6 +68,11 @@ footer.example {
   header, main, footer {
     padding-left: 0;
   }
+  h5 > span {
+    display: block;
+    margin: 0 0 15px 0;
+  }
+
 }
 
 /********************
@@ -93,11 +104,21 @@ ul.side-nav.fixed {
       font-size: 13px;
       line-height: 44px;
       height: 44px;
+      padding: 0 30px;
     }
   }
 
   ul.collapsible-accordion {
     background-color: #FFF;
+
+    a.collapsible-header {
+      padding: 0 30px;
+    }
+
+    .collapsible-body li a {
+      font-weight: 400;
+      padding: 0 37.5px 0 45px;
+    }
   }
 
   // Only show scrollbar on hover

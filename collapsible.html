@@ -86,6 +86,7 @@
             <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
+                  <li><a href="carousel.html">Carousel</a></li>
                   <li class="active"><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
@@ -185,9 +186,7 @@
         <p>Collapsible elements only need initialization if they are added dynamically. You can also pass in options inside the initialization, however this can be done in the HTML markup as well.</p>
         <pre><code class="language-javascript">
   $(document).ready(function(){
-    $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
+    $('.collapsible').collapsible();
   });
         </code></pre>
 
@@ -213,8 +212,20 @@
         </code></pre>
       </div>
 
-      <div id="options" class="section scrollspy">
+      <div id="options" class="scrollspy section">
         <h4>Options</h4>
+        <p>You can customize the behavior of each collapsible using these options. For example, you can call a custom function to run when a collapsbile is opened or closed. The function passes the <span class="language-markup">li</span> element that was opened or closed as an argument.</p>
+        <pre><code class="language-javascript">
+  $('.collapsible').collapsible({
+      accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
+      onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
+    }
+  );
+        </code></pre>
+        <br><br>
+
+        <h4>Collapsible Types</h4>
         <p>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</p>
       </div>
       <div id="accordion" class="section scrollspy">
@@ -287,6 +298,7 @@
             <li><a href="#popout">Popout</a></li>
             <li><a href="#structure">Structure</a></li>
             <li><a href="#intialization">Initialization</a></li>
+            <li><a href="#options">Options</a></li>
             <li><a href="#accordion">Accordion</a></li>
             <li><a href="#expandable">Expandable</a></li>
           </ul>

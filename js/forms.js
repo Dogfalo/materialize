@@ -6,10 +6,10 @@
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
         if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label, i').addClass('active');
+          $(this).siblings('label').addClass('active');
         }
         else {
-          $(this).siblings('label, i').removeClass('active');
+          $(this).siblings('label').removeClass('active');
         }
       });
     };
@@ -37,7 +37,7 @@
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
         formReset.find(input_selector).each(function () {
           if ($(this).attr('value') === '') {
-            $(this).siblings('label, i').removeClass('active');
+            $(this).siblings('label').removeClass('active');
           }
         });
 
@@ -51,18 +51,19 @@
 
     // Add active when element has focus
     $(document).on('focus', input_selector, function () {
-      $(this).siblings('label, i').addClass('active');
+      $(this).siblings('label, .prefix').addClass('active');
     });
 
     $(document).on('blur', input_selector, function () {
       var $inputElement = $(this);
+      var selector = ".prefix";
+
       if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
-        $inputElement.siblings('label, i').removeClass('active');
+        selector += ", label";
       }
 
-      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') !== undefined) {
-        $inputElement.siblings('i').removeClass('active');
-      }
+      $inputElement.siblings(selector).removeClass('active');
+
       validate_field($inputElement);
     });
 
@@ -349,6 +350,7 @@
           // Set input value
           $autocomplete.on('click', 'li', function () {
             $input.val($(this).text().trim());
+            $input.trigger('change');
             $autocomplete.empty();
           });
         }
@@ -412,9 +414,9 @@
 
           // Check for multiple type.
           if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
           } else {
-            options.append($('<li class="' + disabledClass + optgroupClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
           }
           return true;
         }

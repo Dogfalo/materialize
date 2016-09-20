@@ -96,6 +96,56 @@
         </div>
       </div>
 
+      <div id="horizontal" class="section scrollspy">
+        <div class="row">
+          <!-- Horizontal Card -->
+          <div class="col s12 m7">
+            <h2 class="header">Horizontal Card</h2>
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="http://lorempixel.com/100/190/nature/6">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>I am a very simple card. I am good at containing small bits of information.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m5">
+            <br><br><br><br>
+            <p class="caption">
+             Here is the standard card with a horizontal image.
+            </p>
+          </div>
+          <div class="col s12">
+            <br>
+            <pre><code class="language-markup">
+  &lt;div class="col s12 m7">
+    &lt;h2 class="header">Horizontal Card&lt;/h2>
+    &lt;div class="card horizontal">
+      &lt;div class="card-image">
+        &lt;img src="http://lorempixel.com/100/190/nature/6">
+      &lt;/div>
+      &lt;div class="card-stacked">
+        &lt;div class="card-content">
+          &lt;p>I am a very simple card. I am good at containing small bits of information.&lt;/p>
+        &lt;/div>
+        &lt;div class="card-action">
+          &lt;a href="#">This is a link&lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+            </code></pre>
+            <br>
+          </div>
+        </div>
+      </div>
+
       <div id="reveal" class="section scrollspy">
         <div class="row">
           <!-- Pullup Card -->
@@ -167,13 +217,13 @@
           <div class="col s12 m6">
             <br><br>
             <p class="caption">
-             The default option is having the card-reveal go over the card-action. This is achieved by placing the card-action div after the card-reveal div in your HTML.
+             The default state is having the card-reveal go over the card-action.
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col s12 m6">
-            <div class="card">
+            <div class="card sticky-action">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="images/office.jpg">
               </div>
@@ -196,8 +246,20 @@
           </div>
           <div class="col s12 m6">
             <p class="caption">
-             You can have your card-action always visible by placing the card-reveal div directly after the card-action div.
+             You can make your card-action always visible by adding the class <code class="language-markup">sticky-action</code> to the overall card.
             </p>
+          </div>
+          <div class="col s12">
+            <br>
+            <pre><code class="language-markup">
+  &lt;div class="card sticky-action">
+    ...
+
+    &lt;div class="card-action">...&lt;/div>
+
+    &lt;div class="card-reveal">...&lt;/div>
+  &lt;/div>
+            </code></pre>
           </div>
         </div>
       </div>
@@ -337,6 +399,7 @@
           <ul class="section table-of-contents">
             <li><a href="#basic">Basic Card</a></li>
             <li><a href="#image">Image Card</a></li>
+            <li><a href="#horizontal">Horizontal Card</a></li>
             <li><a href="#reveal">Card Reveal</a></li>
             <li><a href="#sizes">Card Sizes</a></li>
             <li><a href="#panel">Card Panel</a></li>
