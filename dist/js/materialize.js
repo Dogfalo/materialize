@@ -3790,6 +3790,10 @@ $(document).ready(function(){
       var chips;
       self.$el.each(function(){
         var $chips = $(this);
+        if ($chips.data('initialized')) {
+          // Prevent double initialization.
+          return;
+        }
         var options = $chips.data('options');
         if (!options.data || !options.data instanceof Array) {
           options.data = [];
@@ -3810,16 +3814,16 @@ $(document).ready(function(){
     this.handleEvents = function(){
       var SELS = self.SELS;
 
-      self.$document.off('click', SELS.CHIPS).on('click', SELS.CHIPS, function(e){
+      self.$document.on('click', SELS.CHIPS, function(e){
         $(e.target).find(SELS.INPUT).focus();
       });
 
-      self.$document.off('click', SELS.CHIP).on('click', SELS.CHIP, function(e){
+      self.$document.on('click', SELS.CHIP, function(e){
         $(SELS.CHIP).removeClass('selected');
         $(this).toggleClass('selected');
       });
 
-      self.$document.off('keydown').on('keydown', function(e){
+      self.$document.on('keydown', function(e){
         if ($(e.target).is('input, textarea')) {
           return;
         }
@@ -3876,16 +3880,16 @@ $(document).ready(function(){
         }
       });
 
-      self.$document.off('focusin', SELS.CHIPS + ' ' + SELS.INPUT).on('focusin', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.on('focusin', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
         $(e.target).closest(SELS.CHIPS).addClass('focus');
         $(SELS.CHIP).removeClass('selected');
       });
 
-      self.$document.off('focusout', SELS.CHIPS + ' ' + SELS.INPUT).on('focusout', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.on('focusout', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
         $(e.target).closest(SELS.CHIPS).removeClass('focus');
       });
 
-      self.$document.off('keydown', SELS.CHIPS + ' ' + SELS.INPUT).on('keydown', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.on('keydown', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
         var chipsIndex = $chips.data('index');
@@ -3907,7 +3911,7 @@ $(document).ready(function(){
         }
       });
 
-      self.$document.off('click', SELS.CHIPS + ' ' + SELS.DELETE).on('click', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
+      self.$document.on('click', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
         var $chip = $target.closest(SELS.CHIP);
