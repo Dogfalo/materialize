@@ -281,7 +281,8 @@
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
-        data: {}
+        data: {},
+        rewrite: false
       };
 
       options = $.extend(defaults, options);
@@ -295,6 +296,11 @@
         if (!$.isEmptyObject(data)) {
           // Create autocomplete element
           var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
+
+          // Remove autocomplete list to add new one
+          if (options.rewrite) {
+            $input.nextAll('ul.autocomplete-content').remove();
+          }
 
           // Append autocomplete element
           if ($inputDiv.length) {
