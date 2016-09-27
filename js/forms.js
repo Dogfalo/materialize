@@ -313,9 +313,8 @@
 
       // function on keyUp
       function keyUp(e, data, $input, $autocomplete) {
-        var val = $input.val().toLowerCase();
 
-        // Capture Enter
+        // select element on Enter
         if (e.which === 13) {
           $autocomplete.find('li')[currentLi].click();
           return;
@@ -326,12 +325,25 @@
           $input.blur();
         }
 
-        // Check if the input isn't empty and it's not equal to old option
+        // prevent refreshing list on pressing ctrl, shif, alt, arrow, f1-f12, etc
+        // helpful if we selected something using arrow and we press ctrl for example
+        if(
+        [9, 16, 17, 18, 19, 20, 33, 34, 35, 36, 37, 38, 39, 40, 45, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123].indexOf(e.which) < 0
+        ){
+          highlightElements(data, $input, $autocomplete);
+        }
+      }
+
+      // function to displaying elements
+      function highlightElements(data, $input, $autocomplete){
+        // Check if the input isn't empty and isn't equal to the old option
         if (val !== '' && currentAutocompleteVal !== val) {
-          var maxElementsAmount = options.maxElementsAmount;
+          var val = $input.val().toLowerCase(),
+          maxElementsAmount = options.maxElementsAmount;
           $autocomplete.empty();
 
           for (var key in data) {
+
             if (maxElementsAmount === 0) {
               break;
             }
@@ -352,7 +364,6 @@
               $autocomplete.append(autocompleteOption);
 
               highlight(val, autocompleteOption);
-
             }
           }
 
@@ -399,10 +410,16 @@
         data = options.data,
         $inputDiv = $input.closest('.input-field');
 
+        // remove list if it exist
+        if($inputDiv.find('.autocomplete-content').length !== 0){
+          $inputDiv.find('.autocomplete-content').remove();
+        }
+
         // Check if data isn't empty and append autocomplete element if doesn't exist yet - run only once
-        if
-        (!$.isEmptyObject(data)
-        && $inputDiv.find('.autocomplete-content').length === 0) {
+        if(
+        !$.isEmptyObject(data)
+        && $inputDiv.find('.autocomplete-content').length === 0
+        ) {
           var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
 
           if ($inputDiv.length) {
@@ -410,6 +427,9 @@
           } else {
             $input.after($autocomplete);
           }
+
+          // trigger list displaying
+          highlightElements(data, $input, $autocomplete);
 
           // Perform key button
           $input.on('keyup', function (e) {
