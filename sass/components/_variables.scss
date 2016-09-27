@@ -203,6 +203,11 @@ $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
+$grid-sizes: (
+  (s,"only screen and (min-width: 0)"),
+  (m,$medium-and-up),
+  (l,$large-and-up)
+);
 
 /* 12. Grid
    ========================================================================== */
