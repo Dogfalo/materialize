@@ -4954,7 +4954,7 @@ small {
   background-color: #26a69a;
   text-align: center;
   letter-spacing: .5px;
-  transition: background-color .2s ease-out, box-shadow .2s ease-out;
+  transition: .2s ease-out;
   cursor: pointer;
 }
 
@@ -4974,7 +4974,7 @@ small {
   padding: 0;
   background-color: #26a69a;
   border-radius: 50%;
-  transition: background-color .3s, box-shadow .3s;
+  transition: .3s;
   cursor: pointer;
   vertical-align: middle;
 }

@@ -58,9 +58,7 @@
   text-align: center;
   letter-spacing: .5px;
   @extend .z-depth-1;
-  transition:
-    background-color .2s ease-out,
-    box-shadow .2s ease-out;
+  transition: .2s ease-out;
   cursor: pointer;
 
   &:hover {
@@ -83,9 +81,7 @@
   background-color: $button-floating-background;
   border-radius: $button-floating-radius;
   @extend .z-depth-1;
-  transition:
-    background-color .3s,
-    box-shadow .3s;
+  transition: .3s;
   cursor: pointer;
   vertical-align: middle;
 
