@@ -34,7 +34,9 @@
     // text-decoration: none;
     z-index: 1;
     will-change: opacity, transform;
-    transition: all .3s ease-out;
+    transition:
+        opacity .3s ease-out,
+        transform .3s ease-out;
 
     .waves-ripple {
         position: absolute;

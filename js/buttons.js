@@ -103,11 +103,15 @@
    * @param  {Object}  object jQuery object
    */
   var FABtoToolbar = function(btn) {
+    if (btn.attr('data-open') === "true") {
+      return;
+    }
+
     var offsetX, offsetY, scaleFactor;
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
     var btnRect = btn[0].getBoundingClientRect();
-    var anchor = btn.find('> .btn-floating').first();
+    var anchor = btn.find('> a').first();
     var menu = btn.find('> ul').first();
     var backdrop = $('<div class="fab-backdrop"></div>');
     var fabColor = anchor.css('background-color');
@@ -122,6 +126,7 @@
 
     // Set initial state
     btn.addClass('active');
+    btn.attr('data-open', true);
     btn.css({
       'text-align': 'center',
       width: '100%',
@@ -164,9 +169,7 @@
         });
 
         // Scroll to close.
-        console.log($('body'));
         $(window).on('scroll.fabToolbarClose', function() {
-          console.log("HI");
           toolbarToFAB(btn);
           $(window).off('scroll.fabToolbarClose');
         });
@@ -179,6 +182,10 @@
    * @param  {Object}  object jQuery object
    */
   var toolbarToFAB = function(btn) {
+    if (btn.attr('data-open') !== "true") {
+      return;
+    }
+
     var offsetX, offsetY, scaleFactor;
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
@@ -197,6 +204,7 @@
 
     // Hide backdrop
     btn.removeClass('active');
+    btn.attr('data-open', false);
     btn.css({
       'background-color': 'transparent',
       transition: 'none'
@@ -239,7 +247,7 @@
           transform: 'translate3d(0,0,0)',
           transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
         });
-      }, 10);
+      }, 20);
     }, 200);
   };
 
