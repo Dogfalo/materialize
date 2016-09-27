@@ -270,9 +270,14 @@ textarea {
 /* Autocomplete */
 .autocomplete-content {
   margin-top: -15px;
-  display: block;
+  display: none;
   opacity: 1;
-  position: static;
+  position: absolute;
+
+  & ~ .autocomplete-content,
+  &:hover {
+    display: block;
+  }
 
   li {
     .highlight { color: #444; }
@@ -283,4 +288,8 @@ textarea {
       margin: 5px 15px;
     }
   }
+}
+
+.autocomplete:focus ~ .autocomplete-content {
+  display: block;
 }
