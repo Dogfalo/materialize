@@ -5067,6 +5067,7 @@ button.btn-floating {
   display: inline-block;
   margin: 0;
   height: 100%;
+  transition: none;
 }
 
 .fixed-action-btn.toolbar ul li a {
@@ -5229,9 +5230,7 @@ button.btn-floating {
   vertical-align: middle;
   z-index: 1;
   will-change: opacity, transform;
-  transition: opacity .3s ease-out, -webkit-transform .3s ease-out;
-  transition: opacity .3s ease-out, transform .3s ease-out;
-  transition: opacity .3s ease-out, transform .3s ease-out, -webkit-transform .3s ease-out;
+  transition: .3s ease-out;
 }
 
 .waves-effect .waves-ripple {
