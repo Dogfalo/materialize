@@ -67,6 +67,19 @@
               <td>activeClass</td>
               <td>Class name to be added to the active link. Default: active</td>
             </tr>
+            <tr>
+              <td>getActiveElement</td>
+              <td>
+                Function that returns an element / jquery selector to add <code>activeClass<code> to.
+                It is called with the section id.
+
+                Default: <code class="language-javascript">
+  function(id) {
+    return 'a[href=#' + id + ']';
+  }
+                </code>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

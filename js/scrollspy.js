@@ -174,7 +174,10 @@
 	  var defaults = {
 			throttle: 100,
 			scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
-			activeClass: 'active'
+			activeClass: 'active',
+			getActiveElement: function(id) {
+				return 'a[href=#' + id + ']';
+			}
     };
     options = $.extend(defaults, options);
 
@@ -219,7 +222,7 @@
 			var $this = $(this);
 
 			if (visible[0]) {
-				$('a[href="#' + visible[0].attr('id') + '"]').removeClass(options.activeClass);
+				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
 				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
 					visible.unshift($(this));
 				}
@@ -232,7 +235,7 @@
 			}
 
 
-			$('a[href="#' + visible[0].attr('id') + '"]').addClass(options.activeClass);
+			$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
 		});
 		selector.on('scrollSpy:exit', function() {
 			visible = $.grep(visible, function(value) {
@@ -240,13 +243,13 @@
 	    });
 
 			if (visible[0]) {
-				$('a[href="#' + visible[0].attr('id') + '"]').removeClass(options.activeClass);
+				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
 	      if (visible[0]) { // Check if empty
-					$('a[href="#' + visible[0].attr('id') + '"]').addClass(options.activeClass);
+					$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
 	      }
 			}
 		});
