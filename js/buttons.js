@@ -41,8 +41,11 @@
     closeFAB: function() {
       closeFABMenu($(this));
     },
-    transformFAB: function() {
+    openToolbar: function() {
       FABtoToolbar($(this));
+    },
+    closeToolbar: function() {
+      toolbarToFAB($(this));
     }
   });
 
@@ -172,6 +175,15 @@
         $(window).on('scroll.fabToolbarClose', function() {
           toolbarToFAB(btn);
           $(window).off('scroll.fabToolbarClose');
+          $(document).off('click.fabToolbarClose');
+        });
+
+        $(document).on('click.fabToolbarClose', function(e) {
+          if (!$(e.target).closest(menu).length) {
+            toolbarToFAB(btn);
+            $(window).off('scroll.fabToolbarClose');
+            $(document).off('click.fabToolbarClose');
+          }
         });
       }, 100);
     }, 0);
