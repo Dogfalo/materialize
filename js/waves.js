@@ -55,6 +55,7 @@
 
         // Effect delay
         duration: 750,
+        long_duration: 2250,
 
         show: function(e, element) {
 
@@ -69,6 +70,8 @@
             var ripple = document.createElement('div');
             ripple.className = 'waves-ripple';
             el.appendChild(ripple);
+            var long=el.className.indexOf('waves-long') !== -1;
+            var duration = long?Effect.long_duration:Effect.duration;
 
             // Get click coordinate and element witdh
             var pos         = offset(el);
@@ -106,10 +109,10 @@
             rippleStyle.transform = scale;
             rippleStyle.opacity   = '1';
 
-            rippleStyle['-webkit-transition-duration'] = Effect.duration + 'ms';
-            rippleStyle['-moz-transition-duration']    = Effect.duration + 'ms';
-            rippleStyle['-o-transition-duration']      = Effect.duration + 'ms';
-            rippleStyle['transition-duration']         = Effect.duration + 'ms';
+            rippleStyle['-webkit-transition-duration'] = duration + 'ms';
+            rippleStyle['-moz-transition-duration']    = duration + 'ms';
+            rippleStyle['-o-transition-duration']      = duration + 'ms';
+            rippleStyle['transition-duration']         = duration + 'ms';
 
             rippleStyle['-webkit-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
             rippleStyle['-moz-transition-timing-function']    = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
