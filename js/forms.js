@@ -396,7 +396,7 @@
           valuesSelected = [],
           optionsHover = false;
 
-      var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
+      var label = $select.find('option:selected').html() || !multiple && $select.find('option:first').html() || "";
 
       // Function that renders and appends the option taking into
       // account type and possible image icon.
