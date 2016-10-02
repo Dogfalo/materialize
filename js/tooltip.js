@@ -100,6 +100,10 @@
             var scaleYFactor = 8;
             var targetTop, targetLeft, newCoordinates;
 
+            if (typeof(origin.offset()) === "undefined") {
+              return;
+            }
+            
             if (tooltipPosition === "top") {
               // Top Position
               targetTop = origin.offset().top - tooltipHeight - margin;
