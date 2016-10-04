@@ -3,46 +3,48 @@
 
 [![Travis CI](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize)[![devDependency Status](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies)[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[Materialize](http://materializecss.com/), a CSS Framework based on material design
+[Materialize](http://materializecss.com/), 基于材料设计的CSS框架
 
-### Current Version : v0.97.7
+### 当前版本：v0.97.7
 
-## Sass Requirements:
-- Ruby Sass 3.3+, LibSass 0.6+
+## Sass要求：
+- 红宝石在3.3 libsass 0.6
 
-## Supported Browsers:
-Chrome 35+, Firefox 31+, Safari 7+, IE 10+
+## 支持的浏览器：
+Chrome 35，Firefox 31，Safari 7，IE 10
 
-## Changelog
-- v0.97.7 (July 23rd)
-  - Basic horizontal cards
-  - Carousel bug fixes and new features
-  - Updated sidenav styles and new component
-  - Meteor package now supports Sass
-  - Autocomplete form component
-  - Chips jQuery plugin
-- v0.97.6 (April 1st)
-  - **Removed deprecated material icons from project**
-  - **Changed /font directory to /fonts**
-  - Datepicker and ScrollSpy now compatible with jQuery 2.2.x
-  - Responsive tables now work with empty cells
-  - Added focus states to checkboxes, switches, and radio buttons
-  - Sidenav and Modals no longer cause flicker with scrollbar
-  - Materialbox overflow and z-index issues fixed
-  - Added new option for Card actions within a Card reveal
-- v0.97.5 (Dec 21, 2015)
-  - Fixed Meteor package crash
+## 更新日志
+- v0.97.7（7月23日）
+  - 基本水平的卡
+  - 旋转木马的bug修复和新功能
+  - 更新sidenav风格和新组件
+  - 流星包现在支持萨斯
+  - 自动完成表单组件
+  - 芯片的jQuery插件
+- v0.97.6（April 1st）
+  - 从项目中删除过时的材料图标
+  - 改变/字体/字体目录
+  - DatePicker和scrollspy现在兼容jQuery 2.2 X。
+  - 现在的工作空细胞响应表
+  - 添加焦点状态复选框和单选按钮，开关，
+  - sidenav和情态动词不再导致出现滚动条
+  - materialbox溢出和Z指数固定的问题
+  - 卡在卡的行动增加了新的选项显示
+（12月21 v0.97.5 2015）
+流星撞击固定包
+- v0.97.4（12月20日，2015年）
+  -固定流星包碰撞
 - v0.97.4 (Dec 20, 2015)
-  - Added Jasmine testing with Travis CI
-  - Select bugfixes
-  - Grid Offset bugfix
-  - Dropdown overflow bugfix
-  - Range slider error bugfix
+  - 补充Jasmine测试与Travis CI
+  - 选择错误修正
+  - 网格偏移修正
+  - 修正下拉溢出
+  - 范围滑块误差修正
 
 
 
-## Contributing
+## 贡献
 [Please read CONTRIBUTING.md for more information](CONTRIBUTING.md)
 
-## Testing
-We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
+## 测试
+我们使用Jasmine作为我们的测试框架，我们试图为我们的组件编写一个强大的测试套件。如果你想帮助，[here's a starting guide on how to write tests in Jasmine](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
