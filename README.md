@@ -33,18 +33,18 @@ Chrome 35，Firefox 31，Safari 7，IE 10
 （12月21 v0.97.5 2015）
 流星撞击固定包
 - v0.97.4（12月20日，2015年）
-  - Fixed Meteor package crash
+  -固定流星包碰撞
 - v0.97.4 (Dec 20, 2015)
-  - Added Jasmine testing with Travis CI
-  - Select bugfixes
-  - Grid Offset bugfix
-  - Dropdown overflow bugfix
-  - Range slider error bugfix
+  - 补充Jasmine测试与Travis CI
+  - 选择错误修正
+  - 网格偏移修正
+  - 修正下拉溢出
+  - 范围滑块误差修正
 
 
 
-## Contributing
+## 贡献
 [Please read CONTRIBUTING.md for more information](CONTRIBUTING.md)
 
-## Testing
-We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
+## 测试
+我们使用Jasmine作为我们的测试框架，我们试图为我们的组件编写一个强大的测试套件。如果你想帮助，[here's a starting guide on how to write tests in Jasmine](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
