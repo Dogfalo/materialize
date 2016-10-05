@@ -281,7 +281,8 @@
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
-        data: {}
+        data: {},
+        showSingleMatch: false
       };
 
       options = $.extend(defaults, options);
@@ -290,6 +291,8 @@
         var $input = $(this);
         var data = options.data,
             $inputDiv = $input.closest('.input-field'); // Div to append on
+
+        var showSingleMatch = options.showSingleMatch;
 
         // Check if data isn't empty
         if (!$.isEmptyObject(data)) {
@@ -329,10 +332,12 @@
 
             // Check if the input isn't empty
             if (val !== '') {
+              var lowerKey;
               for(var key in data) {
+                lowerKey = key.toLowerCase();
                 if (data.hasOwnProperty(key) &&
-                    key.toLowerCase().indexOf(val) !== -1 &&
-                    key.toLowerCase() !== val) {
+                    lowerKey.indexOf(val) !== -1 &&
+                    (showSingleMatch || lowerKey !== val)) {
                   var autocompleteOption = $('<li></li>');
                   if(!!data[key]) {
                     autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
