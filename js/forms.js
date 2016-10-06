@@ -281,7 +281,8 @@
     $.fn.autocomplete = function (options) {
       var defaults = {
         data: {},
-        maxElementsAmount: null
+        maxElementsAmount: null,
+        onSelect: null
       },
       currentLi = 0,
       autocompleteOption = null,
@@ -294,6 +295,9 @@
         ulElement.on('click', 'li', function () {
           inputElement.val($(this).text().trim());
           ulElement.empty();
+          if( typeof defaults.onSelect === 'function' ){
+            defaults.onSelect(this);
+          }
         });
       }
 
