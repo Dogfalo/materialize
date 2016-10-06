@@ -41,8 +41,7 @@
 
 
 ## 贡献
-[请有关详细信息，阅读](CONTRIBUTING.md)
-
+[请阅读contributing.md 或更多信息](CONTRIBUTING.md)
 
 
 ## 测试
