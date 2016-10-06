@@ -290,7 +290,7 @@
       options = $.extend(defaults, options);
 
       // Set input value
-      function setIputValue(ulElement, inputElement) {
+      function setInputValue(ulElement, inputElement) {
         ulElement.on('click', 'li', function () {
           inputElement.val($(this).text().trim());
           ulElement.empty();
@@ -299,8 +299,8 @@
 
       // highlight elements
       function highlight(string, $el) {
-        var img = $el.find('img');
-        var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
+        var img = $el.find('img'),
+        matchStart = $el.text().toLowerCase().indexOf(string.toLowerCase()),
         matchEnd = matchStart + string.length - 1,
         beforeMatch = $el.text().slice(0, matchStart),
         matchText = $el.text().slice(matchStart, matchEnd + 1),
@@ -336,10 +336,11 @@
 
       // function to displaying elements
       function highlightElements(data, $input, $autocomplete){
+        var val = $input.val().toLowerCase();
+
         // Check if the input isn't empty and isn't equal to the old option
         if (val !== '' && currentAutocompleteVal !== val) {
-          var val = $input.val().toLowerCase(),
-          maxElementsAmount = options.maxElementsAmount;
+          var maxElementsAmount = options.maxElementsAmount;
           $autocomplete.empty();
 
           for (var key in data) {
@@ -376,18 +377,16 @@
 
       // arrow usage - on key down
       function arrowUsage(e, $autocomplete) {
+        var keyCode = e.which;
         // Capture up and down key
-        if (
-        e.which === 38
-        || e.which === 40
-        ) {
+        if ( keyCode === 38 || keyCode === 40 ) {
           e.preventDefault();
 
-          if (currentLi > 0 && e.which === 38) {
+          if (currentLi > 0 && keyCode === 38) {
             currentLi--;
           }
 
-          if (currentLi < (autocompleteOption.length - 1) && e.which === 40) {
+          if (currentLi < (autocompleteOption.length - 1) && keyCode === 40) {
             currentLi++;
           }
 
@@ -416,10 +415,7 @@
         }
 
         // Check if data isn't empty and append autocomplete element if doesn't exist yet - run only once
-        if(
-        !$.isEmptyObject(data)
-        && $inputDiv.find('.autocomplete-content').length === 0
-        ) {
+        if( !$.isEmptyObject(data) && $inputDiv.find('.autocomplete-content').length === 0 ) {
           var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
 
           if ($inputDiv.length) {
@@ -447,7 +443,7 @@
           });
 
           // updating input value
-          setIputValue($autocomplete, $input);
+          setInputValue($autocomplete, $input);
         }
       });
     };
