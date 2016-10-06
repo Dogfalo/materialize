@@ -44,6 +44,5 @@
 ## 贡献
 [请阅读contributing.md 或更多信息](CONTRIBUTING.md)
 
-
 ## 测试
 我们用Jasmine作为我们的测试框架和我们试图写我们的组件的鲁棒性测试套件。如果你想要帮助， [这里是如何编写测试在Jasmine起始的指南](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
