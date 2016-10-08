@@ -64,8 +64,9 @@
                 </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">"
-                <div class="chips chips-duplicates"></div>
+              <div class="input-field col s12">
+                <div class="chips chips-duplicates" id="duplicateChips"></div>
+                <label for="duplicateChips">Duplicate Chips Allowed</label>
               </div>
             </div>
         </form>
@@ -104,9 +105,7 @@
       },{
         tag: "Item 2"
       }],
-      placeholder: "Duplicates Allowed",
-      secondaryPlaceholder: '+Tag',
-      allowDuplicates: false
+      allowDuplicates: true
     })
     </script>
 
