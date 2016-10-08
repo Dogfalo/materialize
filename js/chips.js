@@ -236,7 +236,6 @@
     };
 
     this.addChip = function(elem, $chips) {
-      console.log(curr_options)
       if (curr_options.allowDuplicates==false){
         if (!self.isValid($chips, elem)) {
           return;
