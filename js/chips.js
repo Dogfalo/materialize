@@ -4,6 +4,7 @@
     data: [],
     placeholder: '',
     secondaryPlaceholder: '',
+    allowDuplicates: false
   };
 
   $(document).ready(function() {
@@ -235,8 +236,11 @@
     };
 
     this.addChip = function(elem, $chips) {
-      if (!self.isValid($chips, elem)) {
-        return;
+      console.log(curr_options)
+      if (curr_options.allowDuplicates==false){
+        if (!self.isValid($chips, elem)) {
+          return;
+        }
       }
       var chipHtml = self.renderChip(elem);
       var newData = [];

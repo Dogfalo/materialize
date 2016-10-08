@@ -63,6 +63,11 @@
                     <label for="chips-2">Tags</label>
                 </div>
             </div>
+            <div class="row">
+              <div class="input-field col s12">"
+                <div class="chips chips-duplicates"></div>
+              </div>
+            </div>
         </form>
     </div>
 </body>
@@ -92,6 +97,17 @@
         secondaryPlaceholder: '+Tag',
       })
     });
+
+    $('.chips.chips-duplicates').material_chip({
+      data:[{
+        tag: "Item 1"
+      },{
+        tag: "Item 2"
+      }],
+      placeholder: "Duplicates Allowed",
+      secondaryPlaceholder: '+Tag',
+      allowDuplicates: false
+    })
     </script>
 
 </body>
