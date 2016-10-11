@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Noto';
+  src: url("#{$noto-font-path}NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto';
+  src: url("#{$noto-font-path}NotoSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto';
+  src: url("#{$noto-font-path}NotoSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Noto';
+  src: url("#{$noto-font-path}NotoSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+}
