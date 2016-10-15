@@ -167,7 +167,9 @@
         <p>You can programmatically trigger a tab change with our <code class="language-javascript">select_tab</code> method. You have to input the id of the tab you want to switch to. In the case of our demo it would be either test1, test2, test3, or test4.</p>
         <pre><code class="language-javascript">
   $(document).ready(function(){
-    $('ul.tabs').tabs('select_tab', 'tab_id');
+    $('ul.tabs').tabs({
+      'select_tab', 'tab_id'
+    });
   });
         </code></pre>
       </div>
