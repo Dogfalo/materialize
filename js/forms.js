@@ -329,6 +329,9 @@
               },
               dataType: options.ajax.dataType,
               error: options.ajax.error,
+              beforeSend: function(jqXHR, settings) {
+                options.ajax.beforeSend(jqXHR, settings);
+              },
               success: function(res) {
                 data = res;
 
