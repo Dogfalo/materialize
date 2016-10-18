@@ -64,6 +64,15 @@ Materialize.guid = (function() {
   };
 })();
 
+/**
+ * Escapes hash from special characters
+ * @param {string} hash  String returned from this.hash
+ * @returns {string}
+ */
+Materialize.escapeHash = function(hash) {
+  return hash.replace( /(:|\.|\[|\]|,|=)/g, "\\$1" );
+};
+
 Materialize.elementOrParentIsFixed = function(element) {
     var $element = $(element);
     var $checkElements = $element.add($element.parents());
