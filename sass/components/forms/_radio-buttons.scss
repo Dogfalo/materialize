@@ -53,7 +53,6 @@
 }
 
 [type="radio"]:not(:checked) + label:after {
-  z-index: -1;
   transform: scale(0);
 }
 
@@ -71,7 +70,6 @@
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:after {
   background-color: $radio-fill-color;
-  z-index: 0;
 }
 
 [type="radio"]:checked + label:after {

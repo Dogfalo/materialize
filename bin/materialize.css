@@ -6169,7 +6169,6 @@ textarea.materialize-textarea {
 }
 
 [type="radio"]:not(:checked) + label:after {
-  z-index: -1;
   -webkit-transform: scale(0);
           transform: scale(0);
 }
@@ -6188,7 +6187,6 @@ textarea.materialize-textarea {
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:after {
   background-color: #26a69a;
-  z-index: 0;
 }
 
 [type="radio"]:checked + label:after {
