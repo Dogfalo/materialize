@@ -10,8 +10,8 @@
     init : function(options) {
       var defaults = {
         opacity: 0.5,
-        in_duration: 350,
-        out_duration: 250,
+        inDuration: 350,
+        outDuration: 250,
         ready: undefined,
         complete: undefined,
         dismissible: true,
@@ -40,12 +40,12 @@
           $modal.find('.modal-close').off('click.close');
           $(document).off('keyup.modal' + overlayID);
 
-          $overlay.velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
+          $overlay.velocity( { opacity: 0}, {duration: options.outDuration, queue: false, ease: "easeOutQuart"});
 
 
           // Define Bottom Sheet animation
           var exitVelocityOptions = {
-            duration: options.out_duration,
+            duration: options.outDuration,
             queue: false,
             ease: "easeOutCubic",
             // Handle modal ready callback
@@ -115,12 +115,12 @@
             opacity: 0
           });
 
-          $overlay.velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
+          $overlay.velocity({opacity: options.opacity}, {duration: options.inDuration, queue: false, ease: "easeOutCubic"});
           $modal.data('associated-overlay', $overlay[0]);
 
           // Define Bottom Sheet animation
           var enterVelocityOptions = {
-            duration: options.in_duration,
+            duration: options.inDuration,
             queue: false,
             ease: "easeOutCubic",
             // Handle modal ready callback
