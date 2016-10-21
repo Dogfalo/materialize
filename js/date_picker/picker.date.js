@@ -1290,12 +1290,11 @@ return _.node(
                                             role: 'gridcell',
                                             label: formattedDate,
                                             selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
-                                            activedescendant: isHighlighted ? true : null,
                                             disabled: isDisabled ? true : null
                                         })
                                     ),
                                     '',
-                                    _.ariaAttr({ role: 'presentation' })
+                                    _.ariaAttr({ role: 'row' })
                                 ] //endreturn
                             }
                         })
