@@ -1292,7 +1292,7 @@ return _.node(
                                             selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
                                             activedescendant: isHighlighted ? true : null,
                                             disabled: isDisabled ? true : null
-                                        })
+                                        }) + ' ' + (isDisabled ? '' : 'tabindex="0"')
                                     ),
                                     '',
                                     _.ariaAttr({ role: 'presentation' })
