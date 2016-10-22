@@ -151,6 +151,8 @@
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
     });
 
+    $('.chips').material_chip();
+
     $('.chips-initial').material_chip({
       readOnly: true,
       data: [{
@@ -167,7 +169,6 @@
       secondaryPlaceholder: '+Tag',
     });
 
-    $('.chips').material_chip();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
