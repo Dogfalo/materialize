@@ -408,7 +408,7 @@ if ($) {
 
 
       // Add click handler to only direct collapsible header children
-      $this.on('click.collapse', '> li > .collapsible-header', function(e) {
+      $this.on('click.collapse', '> li > .collapsible-header .collapsible-clickable', function(e) {
         var $header = $(this),
             element = $(e.target);
 
