@@ -408,7 +408,7 @@
 }
 
 // Materialize modified
-.picker__close, .picker__today {
+.picker__close.btn-flat, .picker__today.btn-flat {
   font-size: 1.1rem;
   padding: 0 1rem;
   color: $datepicker-selected;
