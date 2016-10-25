@@ -1,6 +1,5 @@
 // shared styles
-.btn,
-.btn-flat {
+.btn {
   border: $button-border;
   border-radius: $button-radius;
   display: inline-block;
@@ -231,6 +230,20 @@ button.btn-floating {
   color: $button-flat-color;
   cursor: pointer;
   transition: background-color .2s;
+  border: $button-border;
+  border-radius: $button-radius;
+  display: inline-block;
+  outline: 0;
+  text-transform: uppercase;
+  vertical-align: middle;
+  // Gets rid of tap active state
+  -webkit-tap-highlight-color: transparent;
+
+  input {
+    height: $button-height;
+    line-height: $button-height;
+    padding: $button-padding;
+  }
 
   &:focus,
   &:active {
@@ -246,6 +259,14 @@ button.btn-floating {
     background-color: transparent !important;
     color: $button-flat-disabled-color !important;
     cursor: default;
+  }
+}
+
+a, button {
+  &.btn-flat {
+    height: $button-height;
+    line-height: $button-height;
+    padding: $button-padding;
   }
 }
 
