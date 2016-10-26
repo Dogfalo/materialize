@@ -318,12 +318,6 @@
       // function on keyUp
       function keyUp(e, data, $input, $autocomplete) {
 
-        // select element on Enter
-        if (e.which === 13) {
-          $autocomplete.find('li')[currentLi].click();
-          return;
-        }
-
         // hide list on ESC button
         if (e.which === 27) {
           $input.blur();
@@ -379,9 +373,21 @@
         }
       }
 
-      // arrow usage - on key down
-      function arrowUsage(e, $autocomplete) {
-        var keyCode = e.which;
+      // Arrow keys and enter key usage
+      function keyDown(e, $autocomplete) {
+        var keyCode = e.which,
+          liElement;
+
+          // select element on Enter
+          if (keyCode === 13) {
+              liElement = $autocomplete.find('li')[currentLi];
+              if (liElement !== undefined) {
+                  $autocomplete.find('li')[currentLi].click();
+                  e.preventDefault();
+              }
+              return;
+          }
+
         // Capture up and down key
         if ( keyCode === 38 || keyCode === 40 ) {
           e.preventDefault();
@@ -438,7 +444,7 @@
 
           // arrow key usage
           $input.on('keydown', function (e) {
-            arrowUsage(e, $autocomplete);
+            keyDown(e, $autocomplete);
           });
 
           // reset selected element on the list
