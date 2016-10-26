@@ -116,6 +116,7 @@ textarea.materialize-textarea {
     content: "";
     position: absolute;
     top: 60px;
+    left: 0;
     opacity: 0;
     transition: .2s opacity ease-out, .2s color ease-out;
   }
