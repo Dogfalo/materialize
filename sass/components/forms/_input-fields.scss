@@ -158,6 +158,8 @@ textarea.materialize-textarea {
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
+    @include no-select;
+    @include no-click;
   }
 
   label.active {

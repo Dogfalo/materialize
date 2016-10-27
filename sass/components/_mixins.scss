@@ -3,3 +3,11 @@
 //     -moz-box-shadow: $args1, $args2;
 //     box-shadow: $args1, $args2;
 // }
+
+@mixin no-select {
+    user-select: none;
+}
+
+@mixin no-click {
+    pointer-events: none;
+}
