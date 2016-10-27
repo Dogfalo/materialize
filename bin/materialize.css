@@ -4881,7 +4881,6 @@ small {
   display: inline-block;
   height: 36px;
   line-height: 36px;
-  outline: 0;
   padding: 0 2rem;
   text-transform: uppercase;
   vertical-align: middle;
@@ -4927,12 +4926,24 @@ small {
   color: #9F9F9F !important;
 }
 
+.btn, .btn-large,
+.btn-floating,
+.btn-large,
+.btn-flat {
+  outline: 0;
+}
+
 .btn i, .btn-large i,
 .btn-floating i,
 .btn-large i,
 .btn-flat i {
   font-size: 1.3rem;
   line-height: inherit;
+}
+
+.btn:focus, .btn-large:focus,
+.btn-floating:focus {
+  background-color: #1d7d74;
 }
 
 .btn, .btn-large {
@@ -5117,9 +5128,13 @@ button.btn-floating {
   background-color: transparent;
 }
 
-.btn-flat:hover {
+.btn-flat:focus, .btn-flat:hover {
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: none;
+}
+
+.btn-flat:active {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .btn-flat.disabled {

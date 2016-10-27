@@ -6,7 +6,6 @@
   display: inline-block;
   height: $button-height;
   line-height: $button-height;
-  outline: 0;
   padding: $button-padding;
   text-transform: uppercase;
   vertical-align: middle;
@@ -44,9 +43,20 @@
 .btn-floating,
 .btn-large,
 .btn-flat {
+
+  outline: 0;
+
   i {
     font-size: $button-font-size;
     line-height: inherit;
+  }
+}
+
+// Shared focus button style
+.btn,
+.btn-floating {
+  &:focus {
+    background-color: darken($button-raised-background, 10%);
   }
 }
 
@@ -237,9 +247,14 @@ button.btn-floating {
     background-color: transparent;
   }
 
+  &:focus,
   &:hover {
     background-color: rgba(0,0,0,.1);
     box-shadow: none;
+  }
+
+  &:active {
+    background-color: rgba(0,0,0,.2);
   }
 
   &.disabled {
