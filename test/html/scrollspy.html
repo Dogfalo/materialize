@@ -44,7 +44,7 @@
     <script type="text/javascript">
       $( document ).ready(function() {
 
-        $('.scrollspy').scrollSpy();
+        $('.scrollspy').scrollSpy({'scrollOffset': 0});
 
         $(window).on('scroll', function() {
           $('#scrollTop').text($(window).scrollTop());
