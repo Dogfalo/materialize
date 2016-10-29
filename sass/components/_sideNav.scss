@@ -92,18 +92,18 @@
   }
 
   .userView {
-    overflow: hidden;
     position: relative;
     padding: ($sidenav-padding * 2) ($sidenav-padding * 2) 0;
     margin-bottom: $sidenav-padding / 2;
 
-    a {
+    & > a {
       &:hover { background-color: transparent; }
       height: auto;
       padding: 0;
     }
 
     .background {
+      overflow: hidden;
       position: absolute;
       top: 0;
       right: 0;
@@ -147,16 +147,6 @@
   position: fixed;
   top: 0;
   z-index: 998;
-}
-
-
-// Hidden side-nav for all sizes
-.side-nav.fixed {
-  a {
-    display: block;
-    padding: 0 $sidenav-padding;
-    color: $sidenav-font-color;
-  }
 }
 
 
