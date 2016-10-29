@@ -13,6 +13,7 @@
 (function($) {
 
 	var jWindow = $(window);
+  var sharedOptions;
 	var elements = [];
 	var elementsInView = [];
 	var isSpying = false;
@@ -72,7 +73,7 @@
 
 		// determine which elements are in view
 //        + 60 accounts for fixed nav
-		var intersections = findElements(top+offset.top + 200, right+offset.right, bottom+offset.bottom, left+offset.left);
+		var intersections = findElements(top+offset.top+sharedOptions, right+offset.right, bottom+offset.bottom, left+offset.left);
 		$.each(intersections, function(i, element) {
 
 			var lastTick = element.data('scrollSpy:ticks');
@@ -175,6 +176,7 @@
 			scrollOffset: 200 // offset - 200 allows elements near bottom of page to scroll
     };
     options = $.extend(defaults, options);
+    sharedOptions = options;
 
 		var visible = [];
 		selector = $(selector);
