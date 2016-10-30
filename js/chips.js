@@ -6,11 +6,11 @@
     secondaryPlaceholder: '',
   };
 
-  $(document).ready(function(){
+  $(document).ready(function() {
     // Handle removal of static chips.
     $(document).on('click', '.chip .close', function(e){
       var $chips = $(this).closest('.chips');
-      if ($chips.data('initialized')) {
+      if ($chips.attr('data-initialized')) {
         return;
       }
       $(this).closest('.chip').remove();
@@ -33,11 +33,8 @@
       return this.$el.data('chips');
     }
 
-    if ('options' === options) {
-      return this.$el.data('options');
-    }
+    var curr_options = $.extend({}, materialChipsDefaults, options);
 
-    this.$el.data('options', $.extend({}, materialChipsDefaults, options));
 
     // Initialize
     this.init = function() {
@@ -45,23 +42,20 @@
       var chips;
       self.$el.each(function(){
         var $chips = $(this);
-        if ($chips.data('initialized')) {
-          // Prevent double initialization.
-          return;
+        var chipId = Materialize.guid();
+
+        if (!curr_options.data || !(curr_options.data instanceof Array)) {
+          curr_options.data = [];
         }
-        var options = $chips.data('options');
-        if (!options.data || !options.data instanceof Array) {
-          options.data = [];
-        }
-        $chips.data('chips', options.data);
-        $chips.data('index', i);
-        $chips.data('initialized', true);
+        $chips.data('chips', curr_options.data);
+        $chips.attr('data-index', i);
+        $chips.attr('data-initialized', true);
 
         if (!$chips.hasClass(self.SELS.CHIPS)) {
           $chips.addClass('chips');
         }
 
-        self.chips($chips);
+        self.chips($chips, chipId);
         i++;
       });
     };
@@ -69,16 +63,16 @@
     this.handleEvents = function(){
       var SELS = self.SELS;
 
-      self.$document.on('click', SELS.CHIPS, function(e){
+      self.$document.off('click.chips-focus', SELS.CHIPS).on('click.chips-focus', SELS.CHIPS, function(e){
         $(e.target).find(SELS.INPUT).focus();
       });
 
-      self.$document.on('click', SELS.CHIP, function(e){
+      self.$document.off('click.chips-select', SELS.CHIP).on('click.chips-select', SELS.CHIP, function(e){
         $(SELS.CHIP).removeClass('selected');
         $(this).toggleClass('selected');
       });
 
-      self.$document.on('keydown', function(e){
+      self.$document.off('keydown.chips').on('keydown.chips', function(e){
         if ($(e.target).is('input, textarea')) {
           return;
         }
@@ -95,10 +89,9 @@
 
         if (e.which === 8 || e.which === 46) {
           e.preventDefault();
-          var chipsIndex = $chips.data('index');
 
           index = $chip.index();
-          self.deleteChip(chipsIndex, index, $chips);
+          self.deleteChip(index, $chips);
 
           var selectIndex = null;
           if ((index + 1) < length) {
@@ -110,7 +103,7 @@
           if (selectIndex < 0) selectIndex = null;
 
           if (null !== selectIndex) {
-            self.selectChip(chipsIndex, selectIndex, $chips);
+            self.selectChip(selectIndex, $chips);
           }
           if (!length) $chips.find('input').focus();
 
@@ -121,7 +114,7 @@
             return;
           }
           $(SELS.CHIP).removeClass('selected');
-          self.selectChip($chips.data('index'), index, $chips);
+          self.selectChip(index, $chips);
 
         // right
         } else if (e.which === 39) {
@@ -131,64 +124,78 @@
             $chips.find('input').focus();
             return;
           }
-          self.selectChip($chips.data('index'), index, $chips);
+          self.selectChip(index, $chips);
         }
       });
 
-      self.$document.on('focusin', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
-        $(e.target).closest(SELS.CHIPS).addClass('focus');
+      self.$document.off('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+        var $currChips = $(e.target).closest(SELS.CHIPS);
+        $currChips.addClass('focus');
+        $currChips.siblings('label, .prefix').addClass('active');
         $(SELS.CHIP).removeClass('selected');
       });
 
-      self.$document.on('focusout', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
-        $(e.target).closest(SELS.CHIPS).removeClass('focus');
+      self.$document.off('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+        var $currChips = $(e.target).closest(SELS.CHIPS);
+        $currChips.removeClass('focus');
+
+        // Remove active if empty
+        if (!$currChips.data('chips').length) {
+          $currChips.siblings('label').removeClass('active');
+        }
+        $currChips.siblings('.prefix').removeClass('active');
       });
 
-      self.$document.on('keydown', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.off('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT).on('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
-        var chipsIndex = $chips.data('index');
         var chipsLength = $chips.children(SELS.CHIP).length;
 
         // enter
         if (13 === e.which) {
           e.preventDefault();
-          self.addChip(chipsIndex, {tag: $target.val()}, $chips);
+          self.addChip({tag: $target.val()}, $chips);
           $target.val('');
           return;
         }
 
         // delete or left
          if ((8 === e.keyCode || 37 === e.keyCode) && '' === $target.val() && chipsLength) {
-          self.selectChip(chipsIndex, chipsLength - 1, $chips);
+          self.selectChip(chipsLength - 1, $chips);
           $target.blur();
           return;
         }
       });
 
-      self.$document.on('click', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
+      // Click on delete icon in chip.
+      self.$document.off('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE).on('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
         var $chip = $target.closest(SELS.CHIP);
         e.stopPropagation();
-        self.deleteChip(
-          $chips.data('index'),
-          $chip.index(),
-          $chips
-        );
+        self.deleteChip($chip.index(), $chips);
         $chips.find('input').focus();
       });
     };
 
-    this.chips = function($chips) {
+    this.chips = function($chips, chipId) {
       var html = '';
-      var options = $chips.data('options');
       $chips.data('chips').forEach(function(elem){
         html += self.renderChip(elem);
       });
-      html += '<input class="input" placeholder="">';
+      html += '<input id="' + chipId +'" class="input" placeholder="">';
       $chips.html(html);
       self.setPlaceholder($chips);
+
+      // Set for attribute for label
+      var label = $chips.next('label');
+      if (label.length) {
+        label.attr('for', chipId);
+
+        if ($chips.data('chips').length) {
+          label.addClass('active');
+        }
+      }
     };
 
     this.renderChip = function(elem) {
@@ -204,11 +211,11 @@
     };
 
     this.setPlaceholder = function($chips) {
-      var options = $chips.data('options');
-      if ($chips.data('chips').length && options.placeholder) {
-        $chips.find('input').prop('placeholder', options.placeholder);
-      } else if (!$chips.data('chips').length && options.secondaryPlaceholder) {
-        $chips.find('input').prop('placeholder', options.secondaryPlaceholder);
+      if ($chips.data('chips').length && curr_options.placeholder) {
+        $chips.find('input').prop('placeholder', curr_options.placeholder);
+
+      } else if (!$chips.data('chips').length && curr_options.secondaryPlaceholder) {
+        $chips.find('input').prop('placeholder', curr_options.secondaryPlaceholder);
       }
     };
 
@@ -224,27 +231,42 @@
       return '' !== elem.tag && !exists;
     };
 
-    this.addChip = function(chipsIndex, elem, $chips) {
+    this.addChip = function(elem, $chips) {
       if (!self.isValid($chips, elem)) {
         return;
       }
-      var options = $chips.data('options');
       var chipHtml = self.renderChip(elem);
-      $chips.data('chips').push(elem);
+      var newData = [];
+      var oldData = $chips.data('chips');
+      for (var i = 0; i < oldData.length; i++) {
+        newData.push(oldData[i]);
+      }
+      newData.push(elem);
+
+      $chips.data('chips', newData);
       $(chipHtml).insertBefore($chips.find('input'));
       $chips.trigger('chip.add', elem);
       self.setPlaceholder($chips);
     };
 
-    this.deleteChip = function(chipsIndex, chipIndex, $chips) {
+    this.deleteChip = function(chipIndex, $chips) {
       var chip = $chips.data('chips')[chipIndex];
       $chips.find('.chip').eq(chipIndex).remove();
-      $chips.data('chips').splice(chipIndex, 1);
+
+      var newData = [];
+      var oldData = $chips.data('chips');
+      for (var i = 0; i < oldData.length; i++) {
+        if (i !== chipIndex) {
+          newData.push(oldData[i]);
+        }
+      }
+
+      $chips.data('chips', newData);
       $chips.trigger('chip.delete', chip);
       self.setPlaceholder($chips);
     };
 
-    this.selectChip = function(chipsIndex, chipIndex, $chips) {
+    this.selectChip = function(chipIndex, $chips) {
       var $chip = $chips.find('.chip').eq(chipIndex);
       if ($chip && false === $chip.hasClass('selected')) {
         $chip.addClass('selected');

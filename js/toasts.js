@@ -29,33 +29,34 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
     // Allows timer to be pause while being panned
     var timeLeft = displayLength;
-    var counterInterval = setInterval (function(){
+    var counterInterval;
+    if (timeLeft != null)  {
+      counterInterval = setInterval (function(){
+        if (newToast.parentNode === null)
+          window.clearInterval(counterInterval);
 
+        // If toast is not being dragged, decrease its time remaining
+        if (!newToast.classList.contains('panning')) {
+          timeLeft -= 20;
+        }
 
-      if (newToast.parentNode === null)
-        window.clearInterval(counterInterval);
-
-      // If toast is not being dragged, decrease its time remaining
-      if (!newToast.classList.contains('panning')) {
-        timeLeft -= 20;
-      }
-
-      if (timeLeft <= 0) {
-        // Animate toast out
-        Vel(newToast, {"opacity": 0, marginTop: '-40px'}, { duration: 375,
-            easing: 'easeOutExpo',
-            queue: false,
-            complete: function(){
-              // Call the optional callback
-              if(typeof(completeCallback) === "function")
-                completeCallback();
-              // Remove toast after it times out
-              this[0].parentNode.removeChild(this[0]);
-            }
-          });
-        window.clearInterval(counterInterval);
-      }
-    }, 20);
+        if (timeLeft <= 0) {
+          // Animate toast out
+          Vel(newToast, {"opacity": 0, marginTop: '-40px'}, { duration: 375,
+              easing: 'easeOutExpo',
+              queue: false,
+              complete: function(){
+                // Call the optional callback
+                if(typeof(completeCallback) === "function")
+                  completeCallback();
+                // Remove toast after it times out
+                this[0].parentNode.removeChild(this[0]);
+              }
+            });
+          window.clearInterval(counterInterval);
+        }
+      }, 20);
+    }
 
 
 
@@ -82,7 +83,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         }
         else {
           // Insert as text;
-          toast.innerHTML = html; 
+          toast.innerHTML = html;
         }
         // Bind hammer
         var hammerHandler = new Hammer(toast, {prevent_default: false});

@@ -18,6 +18,12 @@ h1,h2,h3,h4,h5,h6 {
   -webkit-font-smoothing: antialiased;
 }
 
+h5 > span {
+  font-size: 14px;
+  margin-left: 15px;
+  color: #777;
+}
+
 nav {
   // background-color: color("materialize-red", "lighten-2");
 
@@ -62,6 +68,11 @@ footer.example {
   header, main, footer {
     padding-left: 0;
   }
+  h5 > span {
+    display: block;
+    margin: 0 0 15px 0;
+  }
+
 }
 
 /********************

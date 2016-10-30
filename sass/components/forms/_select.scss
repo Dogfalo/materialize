@@ -40,8 +40,13 @@ select {
     color: initial;
     position: absolute;
     right: 0;
-    top: 16px;
+    top: 0;
+    bottom: 0;
+    height: 10px;
+    margin: auto 0;
     font-size: 10px;
+    line-height: 10px;
+
     &.disabled {
       color: $input-disabled-color;
     }

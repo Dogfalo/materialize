@@ -143,7 +143,7 @@
     $('.carousel').carousel();
     $('.slider').slider({full_width: true});
     $('.parallax').parallax();
-    $('.modal-trigger').leanModal();
+    $('.modal').modal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
@@ -151,6 +151,8 @@
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
     });
+
+    $('.chips').material_chip();
 
     $('.chips-initial').material_chip({
       readOnly: true,
@@ -168,7 +170,6 @@
       secondaryPlaceholder: '+Tag',
     });
 
-    $('.chips').material_chip();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

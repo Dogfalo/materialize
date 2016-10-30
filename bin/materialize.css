@@ -2134,84 +2134,6 @@
   color: transparent !important;
 }
 
-/* ==========================================================================
-   Materialize variables
-   ========================================================================== */
-/**
- * Table of Contents:
- *
- *  1. Colors
- *  2. Badges
- *  3. Buttons
- *  4. Cards
- *  5. Collapsible
- *  6. Chips
- *  7. Date Picker
- *  8. Dropdown
- *  10. Forms
- *  11. Global
- *  12. Grid
- *  13. Navigation Bar
- *  14. Side Navigation
- *  15. Photo Slider
- *  16. Spinners | Loaders
- *  17. Tabs
- *  18. Tables
- *  19. Toasts
- *  20. Typography
- *  21. Footer
- *  22. Flow Text
- *  23. Collections
- *  24. Progress Bar
- */
-/* 1. Colors
-   ========================================================================== */
-/* 2. Badges
-   ========================================================================== */
-/* 3. Buttons
-   ========================================================================== */
-/* 4. Cards
-   ========================================================================== */
-/* 5. Collapsible
-   ========================================================================== */
-/* 6. Chips
-   ========================================================================== */
-/* 7. Date Picker
-   ========================================================================== */
-/* 8. Dropdown
-   ========================================================================== */
-/* 9. Fonts
-   ========================================================================== */
-/* 10. Forms
-   ========================================================================== */
-/* 11. Global
-   ========================================================================== */
-/* 12. Grid
-   ========================================================================== */
-/* 13. Navigation Bar
-   ========================================================================== */
-/* 14. Side Navigation
-   ========================================================================== */
-/* 15. Photo Slider
-   ========================================================================== */
-/* 16. Spinners | Loaders
-   ========================================================================== */
-/* 17. Tabs
-   ========================================================================== */
-/* 18. Tables
-   ========================================================================== */
-/* 19. Toasts
-   ========================================================================== */
-/* 20. Typography
-   ========================================================================== */
-/* 21. Footer
-   ========================================================================== */
-/* 22. Flow Text
-   ========================================================================== */
-/* 23. Collections
-   ========================================================================== */
-/* 24. Progress Bar
-   ========================================================================== */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -2615,17 +2537,12 @@ html {
   box-sizing: inherit;
 }
 
-ul {
-  padding: 0;
+ul:not(.browser-default) {
+  padding-left: 0;
   list-style-type: none;
 }
 
-ul.browser-default,
-ul.browser-default li {
-  list-style-type: initial;
-}
-
-ul li {
+ul:not(.browser-default) li {
   list-style-type: none;
 }
 
@@ -2657,27 +2574,27 @@ a {
 }
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .z-depth-1-half, .btn:hover, .btn-large:hover, .btn-floating:hover {
-  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
 
 .z-depth-2 {
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 .z-depth-3 {
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
 }
 
 .z-depth-4, .modal {
-  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
 }
 
 .z-depth-5 {
-  box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
 .hoverable {
@@ -3182,12 +3099,12 @@ td, th {
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
+  margin-left: 14px;
   text-align: center;
   font-size: 1rem;
   line-height: inherit;
   color: #757575;
-  position: absolute;
-  right: 15px;
+  float: right;
   box-sizing: border-box;
 }
 
@@ -3208,9 +3125,34 @@ span.badge[data-badge-caption]::after {
 }
 
 nav ul a span.badge {
-  position: static;
+  display: inline-block;
+  float: none;
   margin-left: 4px;
-  line-height: 0;
+  line-height: 22px;
+  height: 22px;
+}
+
+.side-nav span.badge.new,
+.collapsible span.badge.new {
+  position: relative;
+  background-color: transparent;
+}
+
+.side-nav span.badge.new::before,
+.collapsible span.badge.new::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  background-color: #26a69a;
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.collapsible span.badge.new {
+  z-index: 1;
 }
 
 .video-container {
@@ -4068,6 +4010,14 @@ nav {
   line-height: 56px;
 }
 
+nav.nav-extended {
+  height: auto;
+}
+
+nav.nav-extended .nav-wrapper {
+  height: auto;
+}
+
 nav a {
   color: #fff;
 }
@@ -4076,7 +4026,7 @@ nav i,
 nav [class^="mdi-"], nav [class*="mdi-"],
 nav i.material-icons {
   display: block;
-  font-size: 2rem;
+  font-size: 24px;
   height: 56px;
   line-height: 56px;
 }
@@ -4097,10 +4047,10 @@ nav .button-collapse {
   position: relative;
   z-index: 1;
   height: 56px;
+  margin: 0 18px;
 }
 
 nav .button-collapse i {
-  font-size: 2.7rem;
   height: 56px;
   line-height: 56px;
 }
@@ -4232,7 +4182,7 @@ nav .input-field label.active {
 .navbar-fixed {
   position: relative;
   height: 56px;
-  z-index: 998;
+  z-index: 997;
 }
 
 .navbar-fixed nav {
@@ -4597,6 +4547,7 @@ small {
 }
 
 .card.horizontal .card-image img {
+  border-radius: 2px 0 0 2px;
   max-width: 100%;
   width: auto;
 }
@@ -4690,6 +4641,7 @@ small {
   background-color: #fff;
   width: 100%;
   overflow-y: auto;
+  left: 0;
   top: 100%;
   height: 100%;
   z-index: 3;
@@ -4787,55 +4739,78 @@ small {
 }
 
 .tabs {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   position: relative;
   overflow-x: auto;
   overflow-y: hidden;
   height: 48px;
+  width: 100%;
   background-color: #fff;
   margin: 0 auto;
-  width: 100%;
   white-space: nowrap;
 }
 
-.tabs .tab {
+.tabs.tabs-transparent {
+  background-color: transparent;
+}
+
+.tabs.tabs-transparent .tab a,
+.tabs.tabs-transparent .tab.disabled a,
+.tabs.tabs-transparent .tab.disabled a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tabs.tabs-transparent .tab a:hover,
+.tabs.tabs-transparent .tab a.active {
+  color: #fff;
+}
+
+.tabs.tabs-transparent .indicator {
+  background-color: #fff;
+}
+
+.tabs.tabs-fixed-width {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tabs.tabs-fixed-width .tab {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  display: block;
-  float: left;
+}
+
+.tabs .tab {
+  display: inline-block;
   text-align: center;
   line-height: 48px;
   height: 48px;
   padding: 0;
   margin: 0;
   text-transform: uppercase;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  letter-spacing: .8px;
-  width: 15%;
-  min-width: 80px;
 }
 
 .tabs .tab a {
-  color: #ee6e73;
+  color: rgba(238, 110, 115, 0.7);
   display: block;
   width: 100%;
   height: 100%;
+  padding: 0 24px;
+  font-size: 14px;
   text-overflow: ellipsis;
   overflow: hidden;
   transition: color .28s ease;
 }
 
-.tabs .tab a:hover {
-  color: #f9c9cb;
+.tabs .tab a:hover, .tabs .tab a.active {
+  background-color: transparent;
+  color: #ee6e73;
 }
 
-.tabs .tab.disabled a {
-  color: #f9c9cb;
+.tabs .tab.disabled a,
+.tabs .tab.disabled a:hover {
+  color: rgba(238, 110, 115, 0.7);
   cursor: default;
 }
 
@@ -4845,6 +4820,23 @@ small {
   height: 2px;
   background-color: #f6b2b5;
   will-change: left, right;
+}
+
+@media only screen and (max-width: 992px) {
+  .tabs {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .tabs .tab {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
+  .tabs .tab a {
+    padding: 0 12px;
+  }
 }
 
 .material-tooltip {
@@ -4889,7 +4881,6 @@ small {
   display: inline-block;
   height: 36px;
   line-height: 36px;
-  outline: 0;
   padding: 0 2rem;
   text-transform: uppercase;
   vertical-align: middle;
@@ -4899,45 +4890,47 @@ small {
 .btn.disabled, .disabled.btn-large,
 .btn-floating.disabled,
 .btn-large.disabled,
+.btn-flat.disabled,
 .btn:disabled,
 .btn-large:disabled,
-.btn-large:disabled,
 .btn-floating:disabled,
+.btn-large:disabled,
+.btn-flat:disabled,
 .btn[disabled],
 [disabled].btn-large,
+.btn-floating[disabled],
 .btn-large[disabled],
-.btn-floating[disabled] {
+.btn-flat[disabled] {
+  pointer-events: none;
   background-color: #DFDFDF !important;
   box-shadow: none;
   color: #9F9F9F !important;
   cursor: default;
 }
 
-.btn.disabled *, .disabled.btn-large *,
-.btn-floating.disabled *,
-.btn-large.disabled *,
-.btn:disabled *, .btn-large:disabled *,
-.btn-large:disabled *,
-.btn-floating:disabled *,
-.btn[disabled] *, [disabled].btn-large *,
-.btn-large[disabled] *,
-.btn-floating[disabled] * {
-  pointer-events: none;
-}
-
 .btn.disabled:hover, .disabled.btn-large:hover,
 .btn-floating.disabled:hover,
 .btn-large.disabled:hover,
+.btn-flat.disabled:hover,
 .btn:disabled:hover,
 .btn-large:disabled:hover,
-.btn-large:disabled:hover,
 .btn-floating:disabled:hover,
+.btn-large:disabled:hover,
+.btn-flat:disabled:hover,
 .btn[disabled]:hover,
 [disabled].btn-large:hover,
+.btn-floating[disabled]:hover,
 .btn-large[disabled]:hover,
-.btn-floating[disabled]:hover {
+.btn-flat[disabled]:hover {
   background-color: #DFDFDF !important;
   color: #9F9F9F !important;
+}
+
+.btn, .btn-large,
+.btn-floating,
+.btn-large,
+.btn-flat {
+  outline: 0;
 }
 
 .btn i, .btn-large i,
@@ -4946,6 +4939,11 @@ small {
 .btn-flat i {
   font-size: 1.3rem;
   line-height: inherit;
+}
+
+.btn:focus, .btn-large:focus,
+.btn-floating:focus {
+  background-color: #1d7d74;
 }
 
 .btn, .btn-large {
@@ -4968,9 +4966,9 @@ small {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  width: 37px;
-  height: 37px;
-  line-height: 37px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   padding: 0;
   background-color: #26a69a;
   border-radius: 50%;
@@ -4985,7 +4983,7 @@ small {
   text-align: center;
   color: #fff;
   font-size: 1.6rem;
-  line-height: 37px;
+  line-height: 40px;
 }
 
 .btn-floating:hover {
@@ -4997,12 +4995,12 @@ small {
 }
 
 .btn-floating.btn-large {
-  width: 55.5px;
-  height: 55.5px;
+  width: 56px;
+  height: 56px;
 }
 
 .btn-floating.btn-large i {
-  line-height: 55.5px;
+  line-height: 56px;
 }
 
 button.btn-floating {
@@ -5043,6 +5041,50 @@ button.btn-floating {
   margin: 15px 15px 0 0;
 }
 
+.fixed-action-btn.toolbar {
+  padding: 0;
+  height: 56px;
+}
+
+.fixed-action-btn.toolbar.active > a i {
+  opacity: 0;
+}
+
+.fixed-action-btn.toolbar ul {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  bottom: 0;
+}
+
+.fixed-action-btn.toolbar ul li {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: inline-block;
+  margin: 0;
+  height: 100%;
+  transition: none;
+}
+
+.fixed-action-btn.toolbar ul li a {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-shadow: none;
+  color: #fff;
+  line-height: 56px;
+  z-index: 1;
+}
+
+.fixed-action-btn.toolbar ul li a i {
+  line-height: inherit;
+}
+
 .fixed-action-btn ul {
   left: 0;
   right: 0;
@@ -5061,6 +5103,19 @@ button.btn-floating {
   opacity: 0;
 }
 
+.fixed-action-btn .fab-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 40px;
+  height: 40px;
+  background-color: #26a69a;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
@@ -5073,13 +5128,18 @@ button.btn-floating {
   background-color: transparent;
 }
 
-.btn-flat:hover {
+.btn-flat:focus, .btn-flat:hover {
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: none;
 }
 
+.btn-flat:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .btn-flat.disabled {
-  color: #b3b3b3;
+  background-color: transparent !important;
+  color: #b3b3b3 !important;
   cursor: default;
 }
 
@@ -5143,13 +5203,19 @@ button.btn-floating {
 
 .dropdown-content li > span > label {
   top: 1px;
-  left: 3px;
+  left: 0;
   height: 18px;
 }
 
 .dropdown-content li > a > i {
   height: inherit;
   line-height: inherit;
+}
+
+.input-field.col .dropdown-content [type="checkbox"] + label {
+  top: 1px;
+  left: 0;
+  height: 18px;
 }
 
 /*!
@@ -5173,7 +5239,7 @@ button.btn-floating {
   vertical-align: middle;
   z-index: 1;
   will-change: opacity, transform;
-  transition: all .3s ease-out;
+  transition: .3s ease-out;
 }
 
 .waves-effect .waves-ripple {
@@ -5321,7 +5387,7 @@ button.btn-floating {
   margin: 6px 0;
 }
 
-.lean-overlay {
+.modal-overlay {
   position: fixed;
   z-index: 999;
   top: -100px;
@@ -5493,10 +5559,9 @@ button.btn-floating {
   border: none;
   border-bottom: 1px solid #9e9e9e;
   box-shadow: none;
-  margin-bottom: 30px;
+  margin: 0 0 20px 0;
   min-height: 45px;
   outline: none;
-  padding-bottom: 5px;
   transition: all .3s;
 }
 
@@ -5519,12 +5584,11 @@ button.btn-floating {
   border: 0;
   color: rgba(0, 0, 0, 0.6);
   display: inline-block;
-  font-size: 13px;
-  font-weight: 500;
-  height: 32px;
-  margin-right: 20px;
+  font-size: 1rem;
+  height: 3rem;
   line-height: 32px;
   outline: 0;
+  margin: 0;
   padding: 0 !important;
   width: 120px !important;
 }
@@ -5532,6 +5596,18 @@ button.btn-floating {
 .chips .input:focus {
   border: 0 !important;
   box-shadow: none !important;
+}
+
+.prefix ~ .chips {
+  margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.chips:empty ~ label {
+  font-size: 0.8rem;
+  -webkit-transform: translateY(-140%);
+          transform: translateY(-140%);
 }
 
 .materialboxed {
@@ -5898,6 +5974,17 @@ textarea.materialize-textarea + label:after {
   margin-top: 1rem;
 }
 
+.input-field.inline {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.input-field.inline input,
+.input-field.inline .select-dropdown {
+  margin-bottom: 1rem;
+}
+
 .input-field.col label {
   left: 0.75rem;
 }
@@ -5911,6 +5998,7 @@ textarea.materialize-textarea + label:after {
   color: #9e9e9e;
   position: absolute;
   top: 0.8rem;
+  left: 0;
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
@@ -6096,7 +6184,6 @@ textarea.materialize-textarea {
 }
 
 [type="radio"]:not(:checked) + label:after {
-  z-index: -1;
   -webkit-transform: scale(0);
           transform: scale(0);
 }
@@ -6115,7 +6202,6 @@ textarea.materialize-textarea {
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:after {
   background-color: #26a69a;
-  z-index: 0;
 }
 
 [type="radio"]:checked + label:after {
@@ -6499,8 +6585,12 @@ select {
   color: initial;
   position: absolute;
   right: 0;
-  top: 16px;
+  top: 0;
+  bottom: 0;
+  height: 10px;
+  margin: auto 0;
   font-size: 10px;
+  line-height: 10px;
 }
 
 .select-wrapper span.caret.disabled {
@@ -6812,8 +6902,6 @@ input[type=range]:focus::-ms-fill-upper {
   padding-bottom: 60px;
   background-color: #fff;
   z-index: 999;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   overflow-y: auto;
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -6882,6 +6970,7 @@ input[type=range]:focus::-ms-fill-upper {
 .side-nav li > a > [class^="mdi-"], .side-nav li > a > [class*="mdi-"],
 .side-nav li > a > i.material-icons {
   float: left;
+  height: 48px;
   line-height: 48px;
   margin: 0 32px 0 0;
   width: 24px;
@@ -6906,22 +6995,22 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .side-nav .userView {
-  overflow: hidden;
   position: relative;
   padding: 32px 32px 0;
   margin-bottom: 8px;
 }
 
-.side-nav .userView a {
+.side-nav .userView > a {
   height: auto;
   padding: 0;
 }
 
-.side-nav .userView a:hover {
+.side-nav .userView > a:hover {
   background-color: transparent;
 }
 
 .side-nav .userView .background {
+  overflow: hidden;
   position: absolute;
   top: 0;
   right: 0;
@@ -6941,7 +7030,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav .userView .name,
 .side-nav .userView .email {
-  font-weight: 14px;
+  font-size: 14px;
   line-height: 24px;
 }
 
@@ -6961,12 +7050,6 @@ input[type=range]:focus::-ms-fill-upper {
   position: fixed;
   top: 0;
   z-index: 998;
-}
-
-.side-nav.fixed a {
-  display: block;
-  padding: 0 16px;
-  color: rgba(0, 0, 0, 0.87);
 }
 
 .side-nav.fixed {
@@ -6998,13 +7081,13 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 
-.side-nav .collapsible-body li.active,
-.side-nav.fixed .collapsible-body li.active {
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
   background-color: #ee6e73;
 }
 
-.side-nav .collapsible-body li.active a,
-.side-nav.fixed .collapsible-body li.active a {
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active a,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active a {
   color: #fff;
 }
 

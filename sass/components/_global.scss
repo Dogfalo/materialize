@@ -18,16 +18,13 @@ main {
 }
 
 ul {
-  &.browser-default,
-  &.browser-default li {
-    list-style-type: initial;
-  }
-
-  padding: 0;
-  list-style-type: none;
-
-  li {
+  &:not(.browser-default) {
+    padding-left: 0;
     list-style-type: none;
+
+    li {
+      list-style-type: none;
+    }
   }
 }
 
@@ -61,23 +58,23 @@ a {
 .z-depth-0 {
   box-shadow: none !important;
 }
-.z-depth-1{
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+.z-depth-1 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
-.z-depth-1-half{
-  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+.z-depth-1-half {
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
-.z-depth-2{
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.z-depth-2 {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
-.z-depth-3{
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+.z-depth-3 {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
 }
-.z-depth-4{
-  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+.z-depth-4 {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
 }
-.z-depth-5{
-  box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+.z-depth-5 {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
 .hoverable {
@@ -599,12 +596,12 @@ td, th{
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
+  margin-left: 14px;
   text-align: center;
   font-size: 1rem;
   line-height: inherit;
   color: color('grey', 'darken-1');
-  position: absolute;
-  right: 15px;
+  float: right;
   box-sizing: border-box;
 
   &.new {
@@ -621,14 +618,36 @@ span.badge {
   &[data-badge-caption]::after {
     content: " " attr(data-badge-caption);
   }
-
-
 }
 nav ul a span.badge {
-  position: static;
+  display: inline-block;
+  float: none;
   margin-left: 4px;
-  line-height: 0;
+  line-height: 22px;
+  height: 22px;
 }
+.side-nav span.badge.new,
+.collapsible span.badge.new {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    background-color: $badge-bg-color;
+    border-radius: 2px;
+    z-index: -1;
+  }
+
+  position: relative;
+  background-color: transparent;
+}
+.collapsible span.badge.new {
+  z-index: 1;
+}
+
+
 
 // Responsive Videos
 .video-container {
