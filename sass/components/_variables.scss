@@ -85,6 +85,12 @@ $button-floating-size: 40px !default;
 $button-floating-large-size: 56px !default;
 $button-floating-radius: 50% !default;
 
+// Floating button - spin close animation
+$fab-close-line-length: 1.6rem;
+$fab-close-line-thickness: 2px;
+$fab-close-animation-time: .3s;
+$fab-close-spins: 1;
+
 
 // 4. Cards
 // ==========================================================================

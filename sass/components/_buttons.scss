@@ -232,6 +232,65 @@ button.btn-floating {
     border-radius: $button-floating-radius;
     transform: scale(0);
   }
+  
+  // Spin-close animation
+  // CodePen http://codepen.io/deseanwu/pen/gwNjve
+  &.spin-close {
+    .btn-large {
+      position: relative;
+      i {
+        opacity: 1;
+        transition: transform $fab-close-animation-time, 
+      opacity $fab-close-animation-time;
+      }
+      &:before {
+        transition: transform $fab-close-animation-time, 
+      opacity $fab-close-animation-time;
+        content: ' ';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: $fab-close-line-length;
+        height: $fab-close-line-thickness;
+        background: white;
+        margin-top: -2px;
+        margin-left: -$fab-close-line-length/2;
+        transform: rotate(0);
+        opacity: 0;
+
+      }
+      &:after {
+        transition: transform $fab-close-animation-time, 
+      opacity $fab-close-animation-time;
+        content: ' ';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: $fab-close-line-length;
+        height: $fab-close-line-thickness;
+        background: white;
+        margin-top: -2px;
+        margin-left: -$fab-close-line-length/2;
+        transform: rotate(0);
+        opacity: 0;
+      }
+    }
+    &.active{
+      .btn-large{
+        i{
+          opacity: 0;
+        }
+        &:before{
+          opacity: 1;
+          transform: rotate(($fab-close-spins*2+1)*45deg);
+        }
+        &:after{
+          opacity: 1;
+          transform: rotate(($fab-close-spins*2+1)*135deg);
+        }
+      }
+    }
+  }
 }
 
 // Flat button
