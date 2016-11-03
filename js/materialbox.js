@@ -30,6 +30,18 @@
         var originalWidth = origin.width();
         var originalHeight = origin.height();
 
+        // Save the attribute-value pairs of the element we will change later.
+        // Used to recover to origin.
+        var originStyle = {
+          width: originWidth,
+          height: originHeight,
+          position: origin.css('position'),
+          top: origin.position().top,
+          left: origin.position().left,
+          z-index: origin.css('z-index'),
+          max-width: origin.css('max-width'),
+        }
+
 
         // If already modal, return to original
         if (doneAnimating === false) {
@@ -76,8 +88,7 @@
 
         // Set css on origin
         origin.css({position: 'absolute', 'z-index': 1000})
-        .data('width', originalWidth)
-        .data('height', originalHeight);
+              .data('originStyle', originStyle);
 
         // Add overlay
         var overlay = $('<div id="materialbox-overlay"></div>')
@@ -189,11 +200,8 @@
           doneAnimating = false;
 
           var placeholder = origin.parent('.material-placeholder');
-          var windowWidth = window.innerWidth;
-          var windowHeight = window.innerHeight;
-          var originalWidth = origin.data('width');
-          var originalHeight = origin.data('height');
-
+          var originStyle = origin.data('originStyle');
+        
           origin.velocity("stop", true);
           $('#materialbox-overlay').velocity("stop", true);
           $('.materialbox-caption').velocity("stop", true);
@@ -209,14 +217,9 @@
             }
           });
 
-          // Resize Image
+          // Restore to original
           origin.velocity(
-            {
-              width: originalWidth,
-              height: originalHeight,
-              left: 0,
-              top: 0
-            },
+            originStyle,
             {
               duration: outDuration,
               queue: false, easing: 'easeOutQuad'
@@ -234,16 +237,6 @@
                 position: '',
                 top: '',
                 left: ''
-              });
-
-              origin.css({
-                height: '',
-                top: '',
-                left: '',
-                width: '',
-                'max-width': '',
-                position: '',
-                'z-index': ''
               });
 
               // Remove class
