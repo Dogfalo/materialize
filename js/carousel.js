@@ -397,7 +397,7 @@
           if (n === undefined) {
             n = 1;
           }
-          target = offset + dim * n;
+          target = (dim * Math.round(offset / dim) + dim * n);
           if (offset !== target) {
             amplitude = target - offset;
             timestamp = Date.now();
@@ -409,7 +409,7 @@
           if (n === undefined) {
             n = 1;
           }
-          target = offset - dim * n;
+          target = (dim * Math.round(offset / dim) - dim * n);
           if (offset !== target) {
             amplitude = target - offset;
             timestamp = Date.now();
