@@ -2682,6 +2682,7 @@ video.responsive-video {
 .pagination li.disabled a {
   cursor: default;
   color: #999;
+  pointer-events: none !important;
 }
 
 .pagination li i {
