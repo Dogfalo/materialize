@@ -5616,10 +5616,7 @@ button.btn-floating {
   cursor: zoom-in;
   position: relative;
   transition: opacity .4s;
-}
-
-.materialboxed:hover {
-  will-change: left, top, width, height;
+  -webkit-backface-visibility: hidden;
 }
 
 .materialboxed:hover:not(.active) {
