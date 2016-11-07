@@ -3,7 +3,13 @@ nav {
     height: auto;
 
     .nav-wrapper {
+      min-height: $navbar-height-mobile;
       height: auto;
+    }
+
+    .nav-content {
+      position: relative;
+      line-height: normal;
     }
   }
 
@@ -94,6 +100,14 @@ nav {
   }
 
 
+  // Title
+  .nav-title {
+    display: inline-block;
+    font-size: 32px;
+    padding: 28px 0;
+  }
+
+
   // Navbar Links
   ul {
     margin: 0;
@@ -180,6 +194,9 @@ nav {
   }
 }
 @media #{$medium-and-up} {
+  nav.nav-extended .nav-wrapper {
+    min-height: $navbar-height;
+  }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: $navbar-height;
     line-height: $navbar-height;
