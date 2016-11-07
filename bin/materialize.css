@@ -4015,7 +4015,13 @@ nav.nav-extended {
 }
 
 nav.nav-extended .nav-wrapper {
+  min-height: 56px;
   height: auto;
+}
+
+nav.nav-extended .nav-content {
+  position: relative;
+  line-height: normal;
 }
 
 nav a {
@@ -4100,6 +4106,12 @@ nav .brand-logo [class^="mdi-"], nav .brand-logo [class*="mdi-"],
 nav .brand-logo i.material-icons {
   float: left;
   margin-right: 15px;
+}
+
+nav .nav-title {
+  display: inline-block;
+  font-size: 32px;
+  padding: 28px 0;
 }
 
 nav ul {
@@ -4190,6 +4202,9 @@ nav .input-field label.active {
 }
 
 @media only screen and (min-width: 601px) {
+  nav.nav-extended .nav-wrapper {
+    min-height: 64px;
+  }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
@@ -4603,13 +4618,6 @@ small {
   padding: 24px;
 }
 
-.card .card-image .btn-floating {
-  position: absolute;
-  right: 24px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
 .card .card-content {
   padding: 24px;
   border-radius: 0 0 2px 2px;
@@ -4990,15 +4998,6 @@ small {
   vertical-align: middle;
 }
 
-.btn-floating i {
-  width: inherit;
-  display: inline-block;
-  text-align: center;
-  color: #fff;
-  font-size: 1.6rem;
-  line-height: 40px;
-}
-
 .btn-floating:hover {
   background-color: #26a69a;
 }
@@ -5014,6 +5013,28 @@ small {
 
 .btn-floating.btn-large i {
   line-height: 56px;
+}
+
+.btn-floating.halfway-fab {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+.btn-floating.halfway-fab.left {
+  right: auto;
+  left: 24px;
+}
+
+.btn-floating i {
+  width: inherit;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 40px;
 }
 
 button.btn-floating {
