@@ -4186,11 +4186,6 @@ nav .input-field label.active i {
   color: #fff;
 }
 
-nav .input-field label.active {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
 .navbar-fixed {
   position: relative;
   height: 56px;
@@ -6035,7 +6030,7 @@ textarea.materialize-textarea + label:after {
   transition: .2s ease-out;
 }
 
-.input-field label.active {
+.input-field label:not(.label-icon).active {
   font-size: 0.8rem;
   -webkit-transform: translateY(-140%);
           transform: translateY(-140%);

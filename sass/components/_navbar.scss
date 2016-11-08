@@ -176,9 +176,6 @@ nav {
         transition: color .3s;
       }
       &.active i { color: $navbar-font-color; }
-      &.active {
-        transform: translateY(0);
-      }
     }
   }
 }
