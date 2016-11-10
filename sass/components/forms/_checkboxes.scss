@@ -218,3 +218,23 @@ form p:last-child {
     border-color: $input-disabled-solid-color;
   }
 }
+
+/* -- Generate Color Classes for fill color on .filled-in -- */
+@each $color_name,
+$color in $colors {
+  @each $color_type,
+  $color_value in $color {
+    @if $color_type=="base" {
+      [type="checkbox"].filled-in:checked.#{$color_name} + label::after {
+        border: 2px solid $color_value;
+        background-color: $color_value;
+      }
+    }
+    @else if $color_name !="shades" {
+      [type="checkbox"].filled-in:checked.#{$color_name}.#{$color_type} + label::after {
+        border: 2px solid $color_value;
+        background-color: $color_value;
+      }
+    }
+  }
+}
