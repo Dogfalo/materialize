@@ -3,7 +3,8 @@
   var methods = {
     init : function(options) {
       var defaults = {
-        onShow: null
+        onShow: null,
+        swipeable: false
       };
       options = $.extend(defaults, options);
 
@@ -75,10 +76,23 @@
         }
       });
 
-      // Hide the remaining content
-      $links.not($active).each(function () {
-        $(Materialize.escapeHash(this.hash)).hide();
-      });
+      // Initialize Tabs Content.
+      if (options.swipeable) {
+        var $content = $();
+        $links.each(function () {
+          var $curr_content = $(Materialize.escapeHash(this.hash));
+          $curr_content.addClass('carousel-item');
+          $content = $content.add($curr_content);
+        });
+        $content.wrapAll('<div class="tabs-content carousel"></div>');
+        $content.css('display', '');
+        $('.tabs-content.carousel').carousel({full_width: true});
+      } else {
+        // Hide the remaining content
+        $links.not($active).each(function () {
+          $(Materialize.escapeHash(this.hash)).hide();
+        });
+      }
 
 
       // Bind the click event handler
