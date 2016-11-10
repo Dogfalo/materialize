@@ -10,7 +10,8 @@
         padding: 0, // Padding between non center items
         full_width: false, // Change to full width styles
         indicators: false, // Toggle indicators
-        no_wrap: false // Don't wrap around and cycle through items.
+        no_wrap: false, // Don't wrap around and cycle through items.
+        onCycleTo: null // Callback for when a new slide is cycled to.
       };
       options = $.extend(defaults, options);
 
@@ -127,6 +128,7 @@
 
         function scroll(x) {
           var i, half, delta, dir, tween, el, alignment, xTranslation;
+          var lastCenter = center;
 
           offset = (typeof x === 'number') ? x : offset;
           center = Math.floor((offset + dim / 2) / dim);
@@ -221,6 +223,13 @@
             else { tweenedOpacity = 1 - 0.2 * tween; }
             el.style.opacity = tweenedOpacity;
             el.style.display = 'block';
+          }
+
+          // onCycleTo callback
+          if (lastCenter !== center &&
+              typeof(options.onCycleTo) === "function") {
+            var $curr_item = view.find('.carousel-item').eq(center);
+            options.onCycleTo.call(this, $curr_item);
           }
         }
 

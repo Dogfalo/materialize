@@ -17,8 +17,11 @@
 
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
+          $tabs_content = $(),
+          $tabs_wrapper,
           $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
-          $index = 0;
+          $index = 0,
+          $indicator;
 
       // Finds right attribute for indicator based on active tab.
       // el: jQuery Object
@@ -31,6 +34,20 @@
       var calcLeftPos = function(el) {
         return el.position().left + $this.scrollLeft();
       };
+
+      // Animates Indicator to active tab.
+      // prev_index: Number
+      var animateIndicator = function(prev_index) {
+        if (($index - prev_index) >= 0) {
+          $indicator.velocity({"right": calcRightPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"left": calcLeftPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+
+        } else {
+          $indicator.velocity({"left": calcLeftPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"right": calcRightPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+        }
+      };
+
 
       // If the location.hash matches one of the links, use that as the active tab.
       $active = $($links.filter('[href="'+location.hash+'"]'));
@@ -54,8 +71,10 @@
       }
 
       // append indicator then set indicator width to tab width
-      $this.append('<div class="indicator"></div>');
-      var $indicator = $this.find('.indicator');
+      if (!$this.find('.indicator').length) {
+        $this.append('<div class="indicator"></div>');
+      }
+      $indicator = $this.find('.indicator');
       if ($this.is(":visible")) {
         // $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
         // $indicator.css({"left": $index * $tab_width});
@@ -78,15 +97,25 @@
 
       // Initialize Tabs Content.
       if (options.swipeable) {
-        var $content = $();
+        // TODO: Duplicate calls with swipeable? handle multiple div wrapping.
         $links.each(function () {
           var $curr_content = $(Materialize.escapeHash(this.hash));
           $curr_content.addClass('carousel-item');
-          $content = $content.add($curr_content);
+          $tabs_content = $tabs_content.add($curr_content);
         });
-        $content.wrapAll('<div class="tabs-content carousel"></div>');
-        $content.css('display', '');
-        $('.tabs-content.carousel').carousel({full_width: true});
+        $tabs_wrapper = $tabs_content.wrapAll('<div class="tabs-content carousel"></div>');
+        $tabs_content.css('display', '');
+        $('.tabs-content.carousel').carousel({
+          full_width: true,
+          onCycleTo: function(item) {
+            console.log(item, $tabs_wrapper);
+            var $prev_index = $index;
+            $index = $tabs_wrapper.index(item);
+            $active = $links.eq($index);
+            console.log($prev_index, $index);
+            animateIndicator($prev_index);
+          },
+        });
       } else {
         // Hide the remaining content
         $links.not($active).each(function () {
@@ -132,23 +161,21 @@
         // Change url to current tab
         // window.location.hash = $active.attr('href');
 
-        if ($content !== undefined) {
-          $content.show();
-          if (typeof(options.onShow) === "function") {
-            options.onShow.call(this, $content);
+        if (options.swipeable) {
+          if ($tabs_content.length) {
+            $tabs_content.carousel('set', $index);
+          }
+        } else {
+          if ($content !== undefined) {
+            $content.show();
+            if (typeof(options.onShow) === "function") {
+              options.onShow.call(this, $content);
+            }
           }
         }
 
         // Update indicator
-
-        if (($index - $prev_index) >= 0) {
-          $indicator.velocity({"right": calcRightPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"left": calcLeftPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
-
-        } else {
-          $indicator.velocity({"left": calcLeftPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"right": calcRightPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
-        }
+        animateIndicator($prev_index);
 
         // Prevent the anchor's default click action
         e.preventDefault();
