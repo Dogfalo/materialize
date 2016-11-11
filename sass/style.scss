@@ -663,6 +663,19 @@ pre[class*="language-"] {
 
 // BuySellAds Styling
 .buysellads {
+  &.buysellads-demo {
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    padding: 10px;
+    background-color: rgba(255,255,255,.9);
+    z-index: 1000;
+
+    #carbonads a.carbon-img {
+      margin-right: 0;
+    }
+  }
+
   -webkit-font-smoothing: antialiased;
   position: relative;
 

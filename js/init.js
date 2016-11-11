@@ -138,6 +138,18 @@
       indeterminateCheckbox.indeterminate = true;
 
 
+    // Pushpin Demo Init
+    if ($('.pushpin-demo-nav').length) {
+      $('.pushpin-demo-nav').each(function() {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: $target.offset().top + $target.outerHeight() - $this.height()
+        });
+      });
+    }
+
     // Plugin initialization
     $('.carousel.carousel-slider').carousel({full_width: true});
     $('.carousel').carousel();
