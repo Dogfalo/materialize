@@ -16,7 +16,7 @@
 
       return this.each(function() {
 
-        var images, offset, center, pressed, dim, count,
+        var images, item_width, offset, center, pressed, dim, count,
             reference, referenceY, amplitude, target, velocity,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
@@ -389,8 +389,16 @@
         });
 
 
-
-        window.onresize = scroll;
+        $(window).on('resize.carousel', function() {
+          if (options.full_width) {
+            item_width = view.find('.carousel-item').first().innerWidth();
+            dim = item_width * 2 + options.padding;
+            offset = center * 2 * item_width;
+            target = offset;
+          } else {
+            scroll();
+          }
+        });
 
         setupEvents();
         scroll(offset);
