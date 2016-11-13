@@ -674,6 +674,31 @@ pre[class*="language-"] {
     #carbonads a.carbon-img {
       margin-right: 0;
     }
+
+    #carbonads a.carbon-text {
+      top: 0;
+    }
+
+    a.close {
+      &:hover {
+        background-color: #ddd;
+      }
+      .material-icons {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      text-align: center;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      z-index: 1;
+      transition: background-color .2s;
+    }
   }
 
   -webkit-font-smoothing: antialiased;
