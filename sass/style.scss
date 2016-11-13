@@ -676,6 +676,10 @@ pre[class*="language-"] {
       margin-right: 0;
     }
 
+    #carbonads a.carbon-text {
+      top: 0;
+    }
+
     a.close {
       &:hover {
         background-color: #ddd;
