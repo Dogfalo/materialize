@@ -58,7 +58,7 @@
       var $inputElement = $(this);
       var selector = ".prefix";
 
-      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
+      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined && $inputElement[0].required === false) {
         selector += ", label";
       }
 
@@ -72,7 +72,7 @@
       var lenAttr = parseInt(object.attr('length'));
       var len = object.val().length;
 
-      if (object.val().length === 0 && object[0].validity.badInput === false) {
+      if (object.val().length === 0 && object[0].validity.badInput === false && object[0].required === false) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
