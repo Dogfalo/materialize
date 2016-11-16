@@ -325,12 +325,13 @@
               url: options.ajax.url,
               method: options.ajax.method,
               data: {
-                data: $input.val()
+                data: $input.val(),
+                ajax_data: options.ajax.data
               },
               dataType: options.ajax.dataType,
               error: options.ajax.error,
               beforeSend: function(jqXHR, settings) {
-                options.ajax.beforeSend(jqXHR, settings);
+                options.ajax.beforeSend ? options.ajax.beforeSend(jqXHR, settings) : null;
               },
               success: function(res) {
                 data = res;
