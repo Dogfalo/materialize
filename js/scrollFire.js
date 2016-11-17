@@ -45,6 +45,7 @@
           // stop listening if no more handlers
           clearTimeout(timer);
           window.removeEventListener('scroll', scrollListener);
+          listening = false;
         }
       }
     }, timerInterval);
