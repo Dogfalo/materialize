@@ -9,7 +9,7 @@
     var scrollListener = function () {
       didScroll = true;
     };
-    var timer = setInterval(funciton () {
+    var timer = setInterval(function () {
       if (didScroll) {
         didScroll = false;
 
@@ -27,9 +27,9 @@
             var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
 
             if (windowScroll > (elementOffset + offset)) {
-              if (typeof(callback) === 'function') {
-                callback.call(this, currentElement);
-              } else if (typeof(callback) === 'string') {
+              if (typeof callback === 'function') {
+                callback(currentElement);
+              } else if (typeof callback === 'string') {
                 var callbackFunc = new Function(callback);
                 callbackFunc(currentElement);
               }
@@ -54,7 +54,6 @@
 
     listening = true;
   }
-
 
   // Input: Array of JSON objects {selector, offset, callback}
 
