@@ -18,16 +18,13 @@ main {
 }
 
 ul {
-  &.browser-default,
-  &.browser-default li {
-    list-style-type: initial;
-  }
-
-  padding: 0;
-  list-style-type: none;
-
-  li {
+  &:not(.browser-default) {
+    padding-left: 0;
     list-style-type: none;
+
+    li {
+      list-style-type: none;
+    }
   }
 }
 
@@ -348,7 +345,6 @@ ul.staggered-list li {
 
 // Footer
 footer.page-footer {
-  margin-top: 20px;
   padding-top: 20px;
   background-color: $footer-bg-color;
 
@@ -599,12 +595,12 @@ td, th{
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
+  margin-left: 14px;
   text-align: center;
   font-size: 1rem;
   line-height: inherit;
   color: color('grey', 'darken-1');
-  position: absolute;
-  right: 15px;
+  float: right;
   box-sizing: border-box;
 
   &.new {
@@ -621,14 +617,36 @@ span.badge {
   &[data-badge-caption]::after {
     content: " " attr(data-badge-caption);
   }
-
-
 }
 nav ul a span.badge {
-  position: static;
+  display: inline-block;
+  float: none;
   margin-left: 4px;
-  line-height: 0;
+  line-height: 22px;
+  height: 22px;
 }
+.side-nav span.badge.new,
+.collapsible span.badge.new {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    background-color: $badge-bg-color;
+    border-radius: 2px;
+    z-index: -1;
+  }
+
+  position: relative;
+  background-color: transparent;
+}
+.collapsible span.badge.new {
+  z-index: 1;
+}
+
+
 
 // Responsive Videos
 .video-container {

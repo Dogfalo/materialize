@@ -42,6 +42,15 @@
                 <label for="email" data-error="wrong" data-success="right">Email</label>
               </div>
             </div>
+            <div class="row">
+              <div class="col s12">
+                This is an inline input field:
+                <div class="input-field inline">
+                  <input id="email" type="email" class="validate">
+                  <label for="email" data-error="wrong" data-success="right">Email</label>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
         <pre><code class="language-markup">
@@ -73,6 +82,15 @@
         &lt;div class="input-field col s12">
           &lt;input id="email" type="email" class="validate">
           &lt;label for="email">Email&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="col s12">
+          This is an inline input field:
+          &lt;div class="input-field inline">
+            &lt;input id="email" type="email" class="validate">
+            &lt;label for="email" data-error="wrong" data-success="right">Email&lt;/label>
+          &lt;/div>
         &lt;/div>
       &lt;/div>
     &lt;/form>
@@ -267,7 +285,7 @@
       </div>
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
-        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
+        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields. Remember that this is a jQuery plugin so make sure you <a href="#select-initialization">initialize</a> this in your document ready. </p>
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -456,6 +474,7 @@
             </code></pre>
           </div>
           <div class="col s12">
+            <a name="select-initialization"></a>
             <h4>Initialization</h4>
             <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
             <pre><code class="language-javascript col s12">
@@ -828,8 +847,8 @@
       &lt;div class="row">
         &lt;div class="input-field col s12">
           &lt;i class="material-icons prefix">textsms&lt;/i>
-          &lt;input type="text" id="autocomplete">
-          &lt;label for="autocomplete">Autocomplete&lt;/label>
+          &lt;input type="text" id="autocomplete-input" class="autocomplete">
+          &lt;label for="autocomplete-input">Autocomplete&lt;/label>
         &lt;/div>
       &lt;/div>
     &lt;/div>

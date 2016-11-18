@@ -16,7 +16,7 @@
 
       return this.each(function() {
 
-        var images, offset, center, pressed, dim, count,
+        var images, item_width, offset, center, pressed, dim, count,
             reference, referenceY, amplitude, target, velocity,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
@@ -39,7 +39,7 @@
           options.dist = 0;
           var firstImage = view.find('.carousel-item img').first();
           if (firstImage.length) {
-            imageHeight = firstImage.load(function(){
+            imageHeight = firstImage.on('load', function(){
               view.css('height', $(this).height());
             });
           } else {
@@ -72,7 +72,9 @@
             }
 
             // Handle clicks on indicators.
-            $indicator.click(function () {
+            $indicator.click(function (e) {
+              e.stopPropagation();
+
               var index = $(this).index();
               cycleTo(index);
             });
@@ -387,8 +389,16 @@
         });
 
 
-
-        window.onresize = scroll;
+        $(window).on('resize.carousel', function() {
+          if (options.full_width) {
+            item_width = view.find('.carousel-item').first().innerWidth();
+            dim = item_width * 2 + options.padding;
+            offset = center * 2 * item_width;
+            target = offset;
+          } else {
+            scroll();
+          }
+        });
 
         setupEvents();
         scroll(offset);
@@ -397,7 +407,7 @@
           if (n === undefined) {
             n = 1;
           }
-          target = offset + dim * n;
+          target = (dim * Math.round(offset / dim)) + (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
             timestamp = Date.now();
@@ -409,7 +419,7 @@
           if (n === undefined) {
             n = 1;
           }
-          target = offset - dim * n;
+          target = (dim * Math.round(offset / dim)) - (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
             timestamp = Date.now();

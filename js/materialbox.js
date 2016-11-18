@@ -75,7 +75,11 @@
         }
 
         // Set css on origin
-        origin.css({position: 'absolute', 'z-index': 1000})
+        origin.css({
+          position: 'absolute',
+          'z-index': 1000,
+          'will-change': 'left, top, width, height'
+        })
         .data('width', originalWidth)
         .data('height', originalHeight);
 
@@ -243,7 +247,8 @@
                 width: '',
                 'max-width': '',
                 position: '',
-                'z-index': ''
+                'z-index': '',
+                'will-change': ''
               });
 
               // Remove class

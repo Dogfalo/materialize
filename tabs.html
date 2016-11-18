@@ -118,12 +118,27 @@
         <h4>Introduction</h4>
         <p class="caption">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible. You can add the class <code class="language-markup">.disabled</code> to make a tab inaccessible. </p>
 
+        <br>
+        <h5>Variable Width Tabs<span>Default</span></h5>
         <ul class="tabs tab-demo z-depth-1">
-          <li class="tab col s3"><a href="#test1">Test 1</a></li>
-          <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
-          <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
-          <li class="tab col s3"><a href="#test4">Test 4</a></li>
-          <li class="tab col s3"><a href="#test0">Test 5</a></li>
+          <li class="tab"><a href="#test16">Test 1</a></li>
+          <li class="tab"><a class="active" href="#test17">Test 2</a></li>
+          <li class="tab"><a href="#test18">Test 3</a></li>
+          <li class="tab"><a href="#test19">Test 4</a></li>
+        </ul>
+        <div id="test16" class="col s12"><p>Test 1</p></div>
+        <div id="test17" class="col s12"><p>Test 2</p></div>
+        <div id="test18" class="col s12"><p>Test 3</p></div>
+        <div id="test19" class="col s12"><p>Test 4</p></div>
+
+        <br>
+        <h5>Fixed Width Tabs<span>Add the <code class="language-markup">.tabs-fixed-width</code> class</span></h5>
+        <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+          <li class="tab"><a href="#test1">Test 1</a></li>
+          <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+          <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+          <li class="tab"><a href="#test4">Test 4</a></li>
+          <li class="tab"><a href="#test0">Test 5</a></li>
         </ul>
         <div id="test1" class="col s12"><p>Test 1</p></div>
         <div id="test2" class="col s12"><p>Test 2</p></div>
@@ -132,17 +147,17 @@
         <div id="test0" class="col s12"><p>Test 5</p></div>
 
         <br>
-        <h5>Scrollable tabs</h5>
+        <h5>Scrollable Tabs <span>Tabs automatically become scrollable</span></h5>
         <ul class="tabs tab-demo z-depth-1">
-          <li class="tab col s3"><a href="#test5">Test 1</a></li>
-          <li class="tab col s3"><a class="active" href="#test6">Test 2</a></li>
-          <li class="tab col s3"><a href="#test7">Test 4</a></li>
-          <li class="tab col s3"><a href="#test8">Test 1</a></li>
-          <li class="tab col s3"><a class="active" href="#test9">Test 2</a></li>
-          <li class="tab col s3 disabled"><a href="#test10">Disabled Tab</a></li>
-          <li class="tab col s3"><a href="#test11">Test 4</a></li>
-          <li class="tab col s3"><a href="#test12">Test 1</a></li>
-          <li class="tab col s3"><a class="active" href="#test13">Test 2</a></li>
+          <li class="tab"><a href="#test5">Test 1</a></li>
+          <li class="tab"><a class="active" href="#test6">Test 2</a></li>
+          <li class="tab"><a href="#test7">Test 4</a></li>
+          <li class="tab"><a href="#test8">Test 1</a></li>
+          <li class="tab"><a class="active" href="#test9">Test 2</a></li>
+          <li class="tab disabled"><a href="#test10">Disabled Tab</a></li>
+          <li class="tab"><a href="#test11">Test 4</a></li>
+          <li class="tab"><a href="#test12">Test 1</a></li>
+          <li class="tab"><a class="active" href="#test13">Test 2</a></li>
           <li class="tab col s3 disabled"><a href="#test14">Disabled Tab</a></li>
           <li class="tab col s3"><a href="#test15">Test 4</a></li>
         </ul>
