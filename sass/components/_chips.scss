@@ -32,10 +32,9 @@
   border: none;
   border-bottom: 1px solid $chip-border-color;
   box-shadow: none;
-  margin-bottom: 30px;
+  margin: $input-margin;
   min-height: 45px;
   outline: none;
-  padding-bottom: $chip-margin;
   transition: all .3s;
 
   &.focus {
@@ -57,12 +56,11 @@
     border: 0;
     color: rgba(0,0,0,.6);
     display: inline-block;
-    font-size: 13px;
-    font-weight: 500;
-    height: 32px;
-    margin-right: 20px;
+    font-size: $input-font-size;
+    height: $input-height;
     line-height: 32px;
     outline: 0;
+    margin: 0;
     padding: 0 !important;
     width: 120px !important;
   }
@@ -71,4 +69,15 @@
     border: 0 !important;
     box-shadow: none !important;
   }
+}
+
+// Form prefix
+.prefix ~ .chips {
+  margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+.chips:empty ~ label  {
+  font-size: 0.8rem;
+  transform: translateY(-140%);
 }

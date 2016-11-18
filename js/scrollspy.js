@@ -60,7 +60,7 @@
 	/**
 	 * Called when the user scrolls the window
 	 */
-	function onScroll() {
+	function onScroll(scrollOffset) {
 		// unique tick id
 		++ticks;
 
@@ -71,8 +71,7 @@
 			bottom = top + jWindow.height();
 
 		// determine which elements are in view
-//        + 60 accounts for fixed nav
-		var intersections = findElements(top+offset.top + 200, right+offset.right, bottom+offset.bottom, left+offset.left);
+		var intersections = findElements(top+offset.top + scrollOffset || 200, right+offset.right, bottom+offset.bottom, left+offset.left);
 		$.each(intersections, function(i, element) {
 
 			var lastTick = element.data('scrollSpy:ticks');
@@ -184,7 +183,7 @@
 			// Smooth scroll to section
 		  $('a[href="#' + $(element).attr('id') + '"]').click(function(e) {
 		    e.preventDefault();
-		    var offset = $(this.hash).offset().top + 1;
+		    var offset = $(Materialize.escapeHash(this.hash)).offset().top + 1;
 	    	$('html, body').animate({ scrollTop: offset - options.scrollOffset }, {duration: 400, queue: false, easing: 'easeOutCubic'});
 		  });
 		});
@@ -194,7 +193,9 @@
 		offset.bottom = options.offsetBottom || 0;
 		offset.left = options.offsetLeft || 0;
 
-		var throttledScroll = throttle(onScroll, options.throttle || 100);
+		var throttledScroll = throttle(function() {
+			onScroll(options.scrollOffset);
+		}, options.throttle || 100);
 		var readyScroll = function(){
 			$(document).ready(throttledScroll);
 		};

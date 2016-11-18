@@ -350,6 +350,7 @@
           // Set input value
           $autocomplete.on('click', 'li', function () {
             $input.val($(this).text().trim());
+            $input.trigger('change');
             $autocomplete.empty();
           });
         }
@@ -413,9 +414,9 @@
 
           // Check for multiple type.
           if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
           } else {
-            options.append($('<li class="' + disabledClass + optgroupClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
           }
           return true;
         }

@@ -137,7 +137,7 @@ module.exports = function(grunt) {
           "js/global.js",
           "js/collapsible.js",
           "js/dropdown.js",
-          "js/leanModal.js",
+          "js/modal.js",
           "js/materialbox.js",
           "js/parallax.js",
           "js/tabs.js",
@@ -174,7 +174,7 @@ module.exports = function(grunt) {
           "js/global.js",
           "js/collapsible.js",
           "js/dropdown.js",
-          "js/leanModal.js",
+          "js/modal.js",
           "js/materialbox.js",
           "js/parallax.js",
           "js/tabs.js",
@@ -260,7 +260,7 @@ module.exports = function(grunt) {
             "global.js",
             "collapsible.js",
             "dropdown.js",
-            "leanModal.js",
+            "modal.js",
             "materialbox.js",
             "parallax.js",
             "tabs.js",
@@ -376,8 +376,9 @@ module.exports = function(grunt) {
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
           "pagination.html": "jade/pagination.jade",
           "breadcrumbs.html": "jade/breadcrumbs.jade",
-          "carousel.html": "jade/carousel.jade"
-
+          "carousel.html": "jade/carousel.jade",
+          "pushpin-demo.html": "jade/pushpin-demo.jade",
+          "404.html": "jade/404.jade",
 
         }
       }

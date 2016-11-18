@@ -39,7 +39,7 @@
         $this.children("img").one("load", function() {
           updateParallax(true);
         }).each(function() {
-          if(this.complete) $(this).load();
+          if (this.complete) $(this).trigger("load");
         });
 
         $(window).scroll(function() {
