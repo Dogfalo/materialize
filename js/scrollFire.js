@@ -1,10 +1,12 @@
 (function($) {
 
-  // Input: Array of JSON objects {selector, offset, callback}
+  /* Input: options - Array of JSON objects {selector, offset, callback}
+            evaluateOnLoad - Override that tells scrollfire to evaluate items 
+                              on page load.
+  */
+  Materialize.scrollFire = function(options, evaluateOnLoad) {
 
-  Materialize.scrollFire = function(options) {
-
-    var didScroll = false;
+    var didScroll = false || evaluateOnLoad;
 
     window.addEventListener("scroll", function() {
       didScroll = true;
