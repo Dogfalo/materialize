@@ -29,7 +29,7 @@
         }
 
         if (options.edge == 'left') {
-          menu_id.css('transform', 'translateX(-100%)');
+          menu_id.css('transform', 'translateX(-110%)');
           $dragTarget.css({'left': 0}); // Add Touch Area
         }
         else {
@@ -61,7 +61,7 @@
             }
             else if (menuOut === false){
               if (options.edge === 'left') {
-                menu_id.css('transform', 'translateX(-100%)');
+                menu_id.css('transform', 'translateX(-110%)');
               } else {
                 menu_id.css('transform', 'translateX(100%)');
               }
@@ -96,7 +96,7 @@
             // Reset phantom div
             $dragTarget.css({width: '', right: '', left: '0'});
             menu_id.velocity(
-              {'translateX': '-100%'},
+              {'translateX': '-110%'},
               { duration: 200,
                 queue: false,
                 easing: 'easeOutCubic',
