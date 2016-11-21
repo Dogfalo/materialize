@@ -261,8 +261,7 @@
 
           } else if (!options.full_width) {
             var clickedIndex = $(e.target).closest('.carousel-item').index();
-            var diff = (center % count) - clickedIndex;
-
+            var diff = Math.abs(center % count < 0?center % count + count:center%count) - clickedIndex;
             // Disable clicks if carousel was shifted by click
             if (diff !== 0) {
               e.preventDefault();
