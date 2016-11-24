@@ -116,7 +116,6 @@
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
         <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal-close</code> to your button.</p>
-        <a class="waves-effect waves-light btn" href="#modal1">Modal</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" href="#modal2">Modal With Fixed Footer</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" href="#modal3">Modal Bottom Sheet Style</a>
         <div id="modal1" class="modal">
           <div class="modal-content">
             <h4>Modal Header</h4>
@@ -180,8 +179,48 @@
           </div>
         </div>
       </div>
+      <div id="modal4" class="modal top-sheet">
+          <div class="modal-content">
+            <h4>Modal Header</h4>
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <img src="images/yuna.jpg" alt="" class="circle">
+                <span class="title">Title</span>
+                <p>First Line <br>
+                   Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              </li>
+              <li class="collection-item avatar">
+                <i class="material-icons circle">folder</i>
+                <span class="title">Title</span>
+                <p>First Line <br>
+                   Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              </li>
+              <li class="collection-item avatar">
+                <i class="material-icons circle green">assessment</i>
+                <span class="title">Title</span>
+                <p>First Line <br>
+                   Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              </li>
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">play_arrow</i>
+                <span class="title">Title</span>
+                <p>First Line <br>
+                   Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-
+        <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
 
         <div id="structure" class="scrollspy section">
           <h4>Modals HTML Structure</h4>
@@ -202,6 +241,7 @@
           </code></pre>
         </div>
 
+        <a class="waves-effect waves-light btn" href="#modal2">Modal With Fixed Footer</a>
 
         <div id="fixed-footer" class="scrollspy section">
           <h4>Modals with Fixed Footer</h4>
@@ -223,6 +263,8 @@
           </code></pre>
         </div>
 
+        <a class="waves-effect waves-light btn" href="#modal3">Modal Bottom Sheet Style</a>
+
         <div id="bottom-sheet" class="scrollspy section">
           <h4>Bottom Sheet Modals</h4>
           <p>Bottom Sheet Modals are good for displaying actions to the user on the bottom of a screen. They still act the same as regular modals.</p>
@@ -232,6 +274,28 @@
 
   &lt;!-- Modal Structure -->
   &lt;div id="modal1" class="modal bottom-sheet">
+    &lt;div class="modal-content">
+      &lt;h4>Modal Header&lt;/h4>
+      &lt;p>A bunch of text&lt;/p>
+    &lt;/div>
+    &lt;div class="modal-footer">
+      &lt;a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree&lt;/a>
+    &lt;/div>
+  &lt;/div>
+          </code></pre>
+        </div>
+
+        <a class="waves-effect waves-light btn" href="#modal4">Modal Top Sheet Style</a>
+
+        <div id="bottom-sheet" class="scrollspy section">
+          <h4>Top Sheet Modals</h4>
+          <p>Top Sheet Modals are good for displaying actions to the user on the top of a screen. They still act the same as regular modals.</p>
+          <pre><code class="language-markup">
+  &lt;!-- Modal Trigger -->
+  &lt;a class="waves-effect waves-light btn" href="#modal1">Modal&lt;/a>
+
+  &lt;!-- Modal Structure -->
+  &lt;div id="modal1" class="modal top-sheet">
     &lt;div class="modal-content">
       &lt;h4>Modal Header&lt;/h4>
       &lt;p>A bunch of text&lt;/p>
