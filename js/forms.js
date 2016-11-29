@@ -420,12 +420,15 @@
           }
           return true;
         }
-
+        
+        var copyClasses = '';
+        if(!!classes) copyClasses = classes+' ';
+        
         // Check for multiple type.
         if (type === 'multiple') {
-          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+          options.append($('<li class="' + disabledClass + copyClasses + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
         } else {
-          options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + option.html() + '</span></li>'));
+          options.append($('<li class="' + disabledClass + optgroupClass + copyClasses + '"><span>' + option.html() + '</span></li>'));
         }
       };
 
