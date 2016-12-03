@@ -6,7 +6,9 @@
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false,
-        draggable: true
+        draggable: true,
+        expandToWidth: null,
+        expandOnHover: true
       };
       options = $.extend(defaults, options);
 
@@ -17,6 +19,18 @@
         // Set to width
         if (options.menuWidth != 300) {
           menu_id.css('width', options.menuWidth);
+        }
+
+        if (options.expandToWidth != null) {
+          menu_id.attr('expand-value', options.expandToWidth);
+          menu_id.attr('collapse-value', options.menuWidth);
+          if(options.expandOnHover) {
+            menu_id.on('mouseenter mouseover', function() {
+              menu_id.css('width', options.expandToWidth);
+            }).on('mouseleave', function(){
+              menu_id.css('width', options.menuWidth);
+            });
+          }
         }
 
         // Add Touch Area
@@ -337,8 +351,6 @@
           return false;
         });
       });
-
-
     },
     destroy: function () {
       var $overlay = $('#sidenav-overlay');
@@ -353,6 +365,17 @@
     },
     hide : function() {
       $('#sidenav-overlay').trigger('click');
+    },
+    toggleExpansion : function() {
+      var menu_id = $("#"+ $(this).attr('data-activates'));
+      var expand_val = menu_id.attr('expand-value');
+      var collapse_val = menu_id.attr('collapse-value');
+      if(menu_id.width()<expand_val) {
+        menu_id.css('width', expand_val);
+      }
+      else {
+        menu_id.css('width', collapse_val);
+      }
     }
   };
 

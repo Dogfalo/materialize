@@ -16,6 +16,9 @@
   backface-visibility: hidden;
   transform: translateX(-105%);
 
+  -webkit-transition: width .2s;
+          transition: width .2s;
+
   @extend .z-depth-1;
 
   // Right Align

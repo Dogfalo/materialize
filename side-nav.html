@@ -118,7 +118,7 @@
         <h4>Introduction</h4>
         <p class="caption">This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
 
-        <a href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>
+        <a id="sidenav-demo" href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>
 
         <ul id="slide-out" class="side-nav">
           <li><div class="userView">
@@ -268,7 +268,38 @@
         padding-left: 0;
       }
     }
+          </code></pre><br>
+
+          <h4>Expandable Icon Side Nav</h4>
+          <a id="expandable-sidenav-demo" href="#" data-activates="slide-out-expandable"class="btn button-collapse">Icon Side Nav Demo</a>
+          <p>To use a sideNav that doesn't close all the way and peeks out with icons showing when in the closed state, there is no need to modify the HTML structure. Simply change some of the options and add expandToWidth as well as expandOnHover. Below is a demo and a code snippet for the default options when creating an expandable sideNav. </p>
+
+          <pre><code class="language-javascript">
+    $('.button-collapse').sideNav({
+        menuWidth: 300,
+        edge: 'left',
+        closeOnClick: false,
+        draggable: true,
+        expandToWidth: null, // Change to a value greater than menuWidth
+        expandOnHover: true // By default hovering will expand the menu
+      }
+    );
           </code></pre>
+
+          <p> In order to toggle expansion and collapse via code (for example, for a button click) use the following: </p>
+          <pre><code class="language-javascript">
+    $(’.button-collapse#expandable-sidenav-demo’).sideNav(‘toggleExpansion’);
+          </code></pre>
+
+
+          <ul id="slide-out-expandable" class="side-nav">
+            <li><a class="waves-effect" href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">polymer</i>Second Link With Icon</a></li>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Third Link With Icon</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">grade</i>Last Link With Icon</a></li>
+          </ul>
+
         </div>
       </div>
 
@@ -342,6 +373,23 @@
     <script src="jade/search.js"></script>
     <script src="bin/materialize.js"></script>
     <script src="js/init.js"></script>
+
+    <!-- Hide Side Nav for Expandable Demo -->
+    <script type="text/javascript">
+        $('#expandable-sidenav-demo').on('click', function() {
+        $('#nav-mobile').fadeOut(150);
+        var myInterval = setInterval(function(){
+          setTimeout(function(){
+            // console.log($('#slide-out-expandable').css('transform'));
+            if($('#slide-out-expandable').css('transform') != "matrix(1, 0, 0, 1, 0, 0)") {
+              $('#nav-mobile').fadeIn(250);
+              clearInterval(myInterval);
+            }
+          }, 250);
+        },250);
+      });
+    </script>
+
     <!-- Twitter Button -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
