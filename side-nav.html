@@ -270,10 +270,27 @@
     }
           </code></pre><br>
 
-          <h4>Expandable Side Nav</h4>
-          <p>TODO: explain here</p>
+          <h4>Expandable Icon Side Nav</h4>
+          <a id="expandable-sidenav-demo" href="#" data-activates="slide-out-expandable"class="btn button-collapse">Icon Side Nav Demo</a>
+          <p>To use a sideNav that doesn't close all the way and peeks out with icons showing when in the closed state, there is no need to modify the HTML structure. Simply change some of the options and add expandToWidth as well as expandOnHover. Below is a demo and a code snippet for the default options when creating an expandable sideNav. </p>
 
-          <a id="expandable-sidenav-demo" href="#" data-activates="slide-out-expandable"class="btn button-collapse">Expandable Side nav demo</a>
+          <pre><code class="language-javascript">
+    $('.button-collapse').sideNav({
+        menuWidth: 300,
+        edge: 'left',
+        closeOnClick: false,
+        draggable: true,
+        expandToWidth: null, // Change to a value greater than menuWidth
+        expandOnHover: true // By default hovering will expand the menu
+      }
+    );
+          </code></pre>
+
+          <p> In order to toggle expansion and collapse via code (for example, for a button click) use the following: </p>
+          <pre><code class="language-javascript">
+    $(’.button-collapse#expandable-sidenav-demo’).sideNav(‘toggleExpansion’);
+          </code></pre>
+
 
           <ul id="slide-out-expandable" class="side-nav">
             <li><a class="waves-effect" href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
