@@ -6,7 +6,8 @@
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false,
-        draggable: true
+        draggable: true,
+        expandToOnHover: null,
       };
       options = $.extend(defaults, options);
 
@@ -17,6 +18,14 @@
         // Set to width
         if (options.menuWidth != 300) {
           menu_id.css('width', options.menuWidth);
+        }
+
+        if (options.expandToOnHover != null) {
+          menu_id.on('mouseenter mouseover', function() {
+            menu_id.css('width', options.expandToOnHover);
+          }).on('mouseleave', function(){
+            menu_id.css('width', options.menuWidth);
+          });
         }
 
         // Add Touch Area

@@ -162,7 +162,8 @@
     $('.parallax').parallax();
     $('.modal').modal();
     $('.scrollspy').scrollSpy();
-    $('.button-collapse').sideNav({'edge': 'left'});
+    $('.button-collapse#sidenav_demo').sideNav({'edge': 'left'});
+    $('.button-collapse#expandable_sidenav_demo').sideNav({'edge': 'left', 'menuWidth': 88, 'expandToOnHover': 300});
     $('.datepicker').pickadate({selectYears: 20});
     $('select').not('.disabled').material_select();
     $('input.autocomplete').autocomplete({
