@@ -4639,14 +4639,14 @@ small {
   padding: 16px 24px;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 24px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
 }
 
@@ -4790,7 +4790,6 @@ small {
 }
 
 .tabs.tabs-fixed-width .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -4844,7 +4843,6 @@ small {
     display: flex;
   }
   .tabs .tab {
-    -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
@@ -6933,6 +6931,7 @@ input[type=range]:focus::-ms-fill-upper {
           backface-visibility: hidden;
   -webkit-transform: translateX(-105%);
           transform: translateX(-105%);
+  transition: width .2s;
 }
 
 .side-nav.right-aligned {
