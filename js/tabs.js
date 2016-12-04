@@ -83,6 +83,7 @@
 
       // Bind the click event handler
       $this.on('click', 'a', function(e) {
+        console.log("hello johann");
         if ($(this).parent().hasClass('disabled')) {
           e.preventDefault();
           return;
@@ -97,10 +98,8 @@
         $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
 
         // Make the old tab inactive.
-        $active.removeClass('active');
-        if ($content !== undefined) {
-          $content.hide();
-        }
+        var $oldTab = $active;
+        var $oldContent = $content
 
         // Update the variables with the new link and content
         $active = $(this);
@@ -123,6 +122,11 @@
           if (typeof(options.onShow) === "function") {
             options.onShow.call(this, $content);
           }
+        }
+
+        $oldTab.removeClass('active');
+        if ($oldContent !== undefined) {
+          $oldContent.hide();
         }
 
         // Update indicator
