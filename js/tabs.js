@@ -97,7 +97,7 @@
         $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
 
         // Make the old tab inactive.
-        var $oldTab = $active;
+        $active.removeClass('active');
         var $oldContent = $content
 
         // Update the variables with the new link and content
@@ -123,7 +123,7 @@
           }
         }
 
-        $oldTab.removeClass('active');
+
         if ($oldContent !== undefined) {
           $oldContent.hide();
         }
