@@ -494,7 +494,7 @@ td, th{
 
   .collection-item {
     background-color: $collection-bg-color;
-    line-height: 1.5rem;
+    line-height: $collection-line-height;
     padding: 10px 20px;
     margin: 0;
     border-bottom: 1px solid $collection-border-color;
@@ -587,63 +587,6 @@ td, th{
 .collapsible .collection {
   margin: 0;
   border: none;
-}
-
-
-
-// Badges
-span.badge {
-  min-width: 3rem;
-  padding: 0 6px;
-  margin-left: 14px;
-  text-align: center;
-  font-size: 1rem;
-  line-height: inherit;
-  color: color('grey', 'darken-1');
-  float: right;
-  box-sizing: border-box;
-
-  &.new {
-    font-weight: 300;
-    font-size: 0.8rem;
-    color: #fff;
-    background-color: $badge-bg-color;
-    border-radius: 2px;
-  }
-  &.new:after {
-    content: " new";
-  }
-
-  &[data-badge-caption]::after {
-    content: " " attr(data-badge-caption);
-  }
-}
-nav ul a span.badge {
-  display: inline-block;
-  float: none;
-  margin-left: 4px;
-  line-height: 22px;
-  height: 22px;
-}
-.side-nav span.badge.new,
-.collapsible span.badge.new {
-  &::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    right: 0;
-    bottom: 10px;
-    left: 0;
-    background-color: $badge-bg-color;
-    border-radius: 2px;
-    z-index: -1;
-  }
-
-  position: relative;
-  background-color: transparent;
-}
-.collapsible span.badge.new {
-  z-index: 1;
 }
 
 

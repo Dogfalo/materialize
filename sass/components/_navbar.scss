@@ -18,7 +18,7 @@ nav {
   background-color: $primary-color;
   width: 100%;
   height: $navbar-height-mobile;
-  line-height: $navbar-height-mobile;
+  line-height: $navbar-line-height-mobile;
 
   a { color: $navbar-font-color; }
 
@@ -28,7 +28,7 @@ nav {
     display: block;
     font-size: 24px;
     height: $navbar-height-mobile;
-    line-height: $navbar-height-mobile;
+    line-height: $navbar-line-height-mobile;
   }
 
   .nav-wrapper {
@@ -51,7 +51,7 @@ nav {
 
     i {
       height: $navbar-height-mobile;
-      line-height: $navbar-height-mobile;
+      line-height: $navbar-line-height-mobile;
     }
   }
 
@@ -196,7 +196,7 @@ nav {
   }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: $navbar-height;
-    line-height: $navbar-height;
+    line-height: $navbar-line-height;
   }
   .navbar-fixed {
     height: $navbar-height;

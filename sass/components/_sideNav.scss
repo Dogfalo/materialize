@@ -33,7 +33,7 @@
 
   li {
     float: none;
-    line-height: $sidenav-item-height;
+    line-height: $sidenav-line-height;
 
     &.active { background-color: rgba(0,0,0,.05); }
   }
@@ -44,7 +44,7 @@
     font-size: $sidenav-font-size;
     font-weight: 500;
     height: $sidenav-item-height;
-    line-height: $sidenav-item-height;
+    line-height: $sidenav-line-height;
     padding: 0 ($sidenav-padding * 2);
 
     &:hover { background-color: rgba(0,0,0,.05);}
@@ -68,7 +68,7 @@
   li > a > i.material-icons {
     float: left;
     height: $sidenav-item-height;
-    line-height: $sidenav-item-height;
+    line-height: $sidenav-line-height;
     margin: 0 ($sidenav-padding * 2) 0 0;
     width: $sidenav-item-height / 2;
     color: rgba(0,0,0,.54);
@@ -88,7 +88,7 @@
     color: rgba(0,0,0,.54);
     font-size: $sidenav-font-size;
     font-weight: 500;
-    line-height: $sidenav-item-height;
+    line-height: $sidenav-line-height;
   }
 
   .userView {
@@ -124,7 +124,7 @@
     .name,
     .email {
       font-size: $sidenav-font-size;
-      line-height: 24px;
+      line-height: $sidenav-line-height / 2;
     }
 
     .name {
