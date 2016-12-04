@@ -83,7 +83,6 @@
 
       // Bind the click event handler
       $this.on('click', 'a', function(e) {
-        console.log("hello johann");
         if ($(this).parent().hasClass('disabled')) {
           e.preventDefault();
           return;
