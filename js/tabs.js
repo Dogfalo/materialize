@@ -99,10 +99,7 @@
 
         // Make the old tab inactive.
         $active.removeClass('active');
-        if ($content !== undefined) {
-          $content.hide();
-          $content.removeClass('active');
-        }
+        var $oldContent = $content
 
         // Update the variables with the new link and content
         $active = $(this);
@@ -128,8 +125,13 @@
           }
         }
 
-        // Update indicator
+        if ($oldContent !== undefined) {
+          $oldContent.hide();
+          $oldContent.removeClass('active');
+        }
 
+
+        // Update indicator
         if (($index - $prev_index) >= 0) {
           $indicator.velocity({"right": calcRightPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
           $indicator.velocity({"left": calcLeftPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
