@@ -50,6 +50,7 @@
 
       if ($active[0] !== undefined) {
         $content = $($active[0].hash);
+        $content.addClass('active');
       }
 
       // append indicator then set indicator width to tab width
@@ -100,6 +101,7 @@
         $active.removeClass('active');
         if ($content !== undefined) {
           $content.hide();
+          $content.removeClass('active');
         }
 
         // Update the variables with the new link and content
@@ -120,6 +122,7 @@
 
         if ($content !== undefined) {
           $content.show();
+          $content.addClass('active');
           if (typeof(options.onShow) === "function") {
             options.onShow.call(this, $content);
           }
