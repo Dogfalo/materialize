@@ -133,6 +133,11 @@ nav {
         margin-top: -2px;
         margin-left: 15px;
         margin-right: 15px;
+
+        & > .material-icons {
+          height: inherit;
+          line-height: inherit;
+        }
       }
 
       &:hover {
