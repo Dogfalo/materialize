@@ -223,8 +223,8 @@
 
     if (newY < 0) {
       newY = 4;
-    } else if (newY + height > window.innerHeight + $(window).scrollTop) {
-      newY -= newY + height - window.innerHeight;
+    } else if (newY + height > window.innerHeight + $(window).scrollTop()) {
+      newY -= newY + height - window.innerHeight - $(window).scrollTop();
     }
 
     return {x: newX, y: newY};
