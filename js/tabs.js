@@ -101,6 +101,9 @@
         $active.removeClass('active');
         var $oldContent = $content
 
+        //Trigger a hookable event on hide
+        $.trigger('materialize-tabHide', $active);
+
         // Update the variables with the new link and content
         $active = $(this);
         $content = $(Materialize.escapeHash(this.hash));
@@ -130,6 +133,9 @@
           $oldContent.removeClass('active');
         }
 
+
+        //Trigger a hookable event on show
+        $.trigger('materialize-tabShow', $active);
 
         // Update indicator
         if (($index - $prev_index) >= 0) {
