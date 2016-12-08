@@ -217,8 +217,8 @@
 
     if (newX < 0) {
       newX = 4;
-    } else if (newX + width > window.innerWidth) {
-      newX -= newX + width - window.innerWidth;
+    } else if (newX + width > window.innerWidth + $(window).scrollLeft()) {
+      newX -= newX + width - window.innerWidth - $(window).scrollLeft();
     }
 
     if (newY < 0) {
