@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Parallax - Materialize</title>
+    <title>Pushpin Demo - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -19,58 +19,69 @@
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+      html, body, .block {
+        height: 100%;
+      }
+      nav ul li a:hover, nav ul li a.active {
+        background-color: rgba(0,0,0,.1);
+      }
+      footer {
+        padding-left: 0;
+      }
+    </style>
   </head>
-  <body class="parallax-demo"><header>
-  <nav>
-    <div class="container">
-      <div class="nav-wrapper">
-        <a href="index.html" class="brand-logo">Materialize</a>
-        <ul class="right side-nav" id="nav-mobile">
-          <li class="hide-on-small-only"><a href="parallax.html"><i class="mdi-navigation-arrow-back"></i></a></li>
+  <body><div id="blue" class="block blue">
+  <nav class="pushpin-demo-nav" data-target="blue">
+    <div class="nav-wrapper light-blue">
+      <div class="container">
+        <a href="#" class="brand-logo">Blue</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Blue Link 1</a></li>
+          <li><a href="#!">Blue Link 2</a></li>
+          <li><a href="#!">Blue Link 3</a></li>
         </ul>
-        <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="mdi-navigation-menu"></i></a>
       </div>
     </div>
   </nav>
-</header>
+</div>
 
-<main>
-<!--  Parallax Section  -->
-  <div class="parallax-container">
-    <div class="parallax"><img src="images/parallax1.jpg"></div>
-  </div>
-  <div class="section white">
-    <div class="row container">
-      <h2 class="header">Parallax</h2>
-      <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+<div id="red" class="block red lighten-1">
+  <nav class="pushpin-demo-nav" data-target="red">
+    <div class="nav-wrapper red">
+      <div class="container">
+        <a href="#" class="brand-logo">Red</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Red Link 1</a></li>
+          <li><a href="#!">Red Link 2</a></li>
+          <li><a href="#!">Red Link 3</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="row container">
-      <h4 class="light">Parallax Demo HTML</h4>
-      <pre><code class="language-markup col s12">
-  &lt;div class="parallax-container">
-    &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
-  &lt;/div>
-  &lt;div class="section white">
-    &lt;div class="row container">
-      &lt;h2 class="header">Parallax&lt;/h2>
-      &lt;p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.&lt;/p>
-    &lt;/div>
-  &lt;/div>
-  &lt;div class="parallax-container">
-    &lt;div class="parallax">&lt;img src="images/parallax2.jpg">&lt;/div>
-  &lt;/div>
-      </code></pre>
-    </div>
-  </div>
-  <div class="parallax-container">
-    <div class="parallax"><img src="images/parallax2.jpg"></div>
-  </div>
+  </nav>
+</div>
 
-  <div class="buysellads buysellads-demo hide-on-small-only">
-    <a href="#!" class="close"><i class="material-icons">close</i></a>
-    <!-- CarbonAds Zone Code -->
-    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
-  </div>    <footer class="page-footer">
+<div id="green" class="block green lighten-1">
+  <nav class="pushpin-demo-nav" data-target="green">
+    <div class="nav-wrapper green">
+      <div class="container">
+        <a href="#" class="brand-logo">Green</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Green Link 1</a></li>
+          <li><a href="#!">Green Link 2</a></li>
+          <li><a href="#!">Green Link 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="buysellads buysellads-demo hide-on-small-only">
+  <a href="#!" class="close"><i class="material-icons">close</i></a>
+  <!-- CarbonAds Zone Code -->
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+</div>
+    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">

@@ -662,8 +662,81 @@ pre[class*="language-"] {
 }
 
 
+.buysellads-homepage #carbonads {
+  display: block;
+  overflow: hidden;
+  margin: 4em auto 0;
+  padding: 1em;
+  max-width: 360px;
+  border-radius: 2px;
+  background-color: hsla(0, 0%, 100%, .13);
+
+
+  span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+
+  .carbon-text {
+    max-width: calc(100% - 135px - 1em);
+    width: auto;
+  }
+
+  .carbon-poweredby {
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: -4px;
+  }
+}
+
+
 // BuySellAds Styling
 .buysellads {
+  &.buysellads-demo {
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    padding: 10px;
+    background-color: rgba(255,255,255,.9);
+    z-index: 1000;
+
+    #carbonads a.carbon-img {
+      margin-right: 0;
+    }
+
+    #carbonads a.carbon-text {
+      top: 0;
+    }
+
+    a.close {
+      &:hover {
+        background-color: #ddd;
+      }
+      .material-icons {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      text-align: center;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      z-index: 1;
+      transition: background-color .2s;
+    }
+  }
+
   -webkit-font-smoothing: antialiased;
   position: relative;
 

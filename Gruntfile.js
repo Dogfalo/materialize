@@ -376,8 +376,9 @@ module.exports = function(grunt) {
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
           "pagination.html": "jade/pagination.jade",
           "breadcrumbs.html": "jade/breadcrumbs.jade",
-          "carousel.html": "jade/carousel.jade"
-
+          "carousel.html": "jade/carousel.jade",
+          "pushpin-demo.html": "jade/pushpin-demo.jade",
+          "404.html": "jade/404.jade",
 
         }
       }

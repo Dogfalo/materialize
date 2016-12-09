@@ -78,6 +78,12 @@
     checkForChanges();
 
 
+    // BuySellAds Demos close button.
+    $('.buysellads.buysellads-demo .close').on('click', function() {
+      $(this).parent().remove();
+    });
+
+
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
@@ -136,6 +142,18 @@
     if (indeterminateCheckbox !== null)
       indeterminateCheckbox.indeterminate = true;
 
+
+    // Pushpin Demo Init
+    if ($('.pushpin-demo-nav').length) {
+      $('.pushpin-demo-nav').each(function() {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: $target.offset().top + $target.outerHeight() - $this.height()
+        });
+      });
+    }
 
     // Plugin initialization
     $('.carousel.carousel-slider').carousel({full_width: true});
