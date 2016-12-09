@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.97.8 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -953,6 +953,7 @@ if (jQuery) {
       }); // done return
     },
     open : function() {
+      methods.init.apply( this, arguments );
       $(this).trigger('openModal');
     },
     close : function() {
@@ -1048,7 +1049,11 @@ if (jQuery) {
         }
 
         // Set css on origin
-        origin.css({position: 'absolute', 'z-index': 1000})
+        origin.css({
+          position: 'absolute',
+          'z-index': 1000,
+          'will-change': 'left, top, width, height'
+        })
         .data('width', originalWidth)
         .data('height', originalHeight);
 
@@ -1216,7 +1221,8 @@ if (jQuery) {
                 width: '',
                 'max-width': '',
                 position: '',
-                'z-index': ''
+                'z-index': '',
+                'will-change': ''
               });
 
               // Remove class
@@ -7396,7 +7402,9 @@ Picker.extend( 'pickadate', DatePicker )
             }
 
             // Handle clicks on indicators.
-            $indicator.click(function () {
+            $indicator.click(function (e) {
+              e.stopPropagation();
+
               var index = $(this).index();
               cycleTo(index);
             });
@@ -7721,7 +7729,7 @@ Picker.extend( 'pickadate', DatePicker )
           if (n === undefined) {
             n = 1;
           }
-          target = offset + dim * n;
+          target = (dim * Math.round(offset / dim)) + (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
             timestamp = Date.now();
@@ -7733,7 +7741,7 @@ Picker.extend( 'pickadate', DatePicker )
           if (n === undefined) {
             n = 1;
           }
-          target = offset - dim * n;
+          target = (dim * Math.round(offset / dim)) - (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
             timestamp = Date.now();
