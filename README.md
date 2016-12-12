@@ -22,7 +22,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - FAB to toolbar component added
   - Fixed dropdown options bug
 - v0.97.7 (July 23rd)
-  - Basic horizontal cards
+  - Basic vertical cards
   - Carousel bug fixes and new features
   - Updated sidenav styles and new component
   - Meteor package now supports Sass
