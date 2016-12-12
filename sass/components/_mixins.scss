@@ -3,3 +3,17 @@
 //     -moz-box-shadow: $args1, $args2;
 //     box-shadow: $args1, $args2;
 // }
+
+
+/// Given a font size in pixels, reproduces that font size in rems.
+/// @access public
+/// @param {Length} $size - Font size
+/// @example scss - Usage
+///   .foo {
+///     @include font-size(16px);
+///   }
+/// @example css - Result
+///   .foo {
+///     font-size: 16px;
+///     font-size: 1rem;
+///   }
