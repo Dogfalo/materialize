@@ -560,7 +560,9 @@
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
           option.addClass('selected');
-          options.scrollTo(option);
+          if (!multiple) {
+            options.scrollTo(option);
+          }
         }
       };
 
