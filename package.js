@@ -51,6 +51,7 @@ Package.onUse(function (api) {
     'sass/components/forms/_range.scss',
     'sass/components/forms/_select.scss',
     'sass/components/forms/_switches.scss',
+    'sass/components/_badges.scss',
     'sass/components/_buttons.scss',
     'sass/components/_cards.scss',
     'sass/components/_carousel.scss',
