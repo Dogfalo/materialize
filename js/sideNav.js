@@ -215,7 +215,10 @@
           }).bind('panend', function(e) {
 
             if (e.gesture.pointerType == "touch") {
-              var $overlay = $('<div id="sidenav-overlay"></div>');
+              var $overlay = $('#sidenav-overlay');
+              if ($overlay.length === 0) {
+                $overlay = $('<div id="sidenav-overlay"></div>');
+              }
               var velocityX = e.gesture.velocityX;
               var x = e.gesture.center.x;
               var leftPos = x - options.menuWidth;
