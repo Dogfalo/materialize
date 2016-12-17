@@ -820,10 +820,12 @@ body.parallax-demo footer {
 // Waves page styling
 .waves-color-demo {
   .collection-item {
-    height: 57px;
-    line-height: 57px;
+    height: 37px;
+    line-height: 37px;
+    box-sizing: content-box;
+
     code {
-     line-height: 57px;
+      line-height: 37px;
     }
   }
   .btn {
