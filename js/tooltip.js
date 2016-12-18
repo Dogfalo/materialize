@@ -109,11 +109,9 @@
               tooltipVerticalMovement = '-10px';
               backdrop.css({
                 bottom: 0,
-                left: 0,
+                left: tooltipWidth/2 - 7,
                 borderRadius: '14px 14px 0 0',
-                transformOrigin: '50% 100%',
-                marginTop: tooltipHeight,
-                marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
+                transformOrigin: '50% 100%'
               });
             }
             // Left Position
@@ -124,14 +122,10 @@
 
               tooltipHorizontalMovement = '-10px';
               backdrop.css({
-                top: '-7px',
+                top: tooltipHeight/2 - 3.5
                 right: 0,
-                width: '14px',
-                height: '14px',
                 borderRadius: '14px 0 0 14px',
-                transformOrigin: '95% 50%',
-                marginTop: tooltipHeight/2,
-                marginLeft: tooltipWidth
+                transformOrigin: '100% 50%',
               });
             }
             // Right Position
@@ -142,14 +136,10 @@
 
               tooltipHorizontalMovement = '+10px';
               backdrop.css({
-                top: '-7px',
+                top: tooltipHeight/2 - 3.5
                 left: 0,
-                width: '14px',
-                height: '14px',
                 borderRadius: '0 14px 14px 0',
-                transformOrigin: '5% 50%',
-                marginTop: tooltipHeight/2,
-                marginLeft: '0px'
+                transformOrigin: '0 50%',
               });
             }
             else {
@@ -160,8 +150,9 @@
               tooltipVerticalMovement = '+10px';
               backdrop.css({
                 top: 0,
-                left: 0,
-                marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
+                left: tooltipWidth/2 - 7,
+                borderRadius: '0 0 14px 14px',
+                transformOrigin: '50% 0'
               });
             }
 
@@ -172,8 +163,8 @@
             });
 
             // Calculate Scale to fill
-            scaleXFactor = Math.SQRT2 * tooltipWidth / parseInt(backdrop.css('width'));
-            scaleYFactor = Math.SQRT2 * tooltipHeight / parseInt(backdrop.css('height'));
+            scaleXFactor = Math.SQRT2 * tooltipWidth / 14;
+            scaleYFactor = Math.SQRT2 * tooltipHeight / 7;
 
             tooltipEl.velocity({ marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement}, { duration: 350, queue: false })
               .velocity({opacity: 1}, {duration: 300, delay: 50, queue: false});
