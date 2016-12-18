@@ -1,6 +1,6 @@
 (function ($) {
 
-    $.fn.parallax = function () {
+    $.fn.parallax = function (updateCallback) {
       var window_width = $(window).width();
       // Parallax Scripts
       return this.each(function(i) {
@@ -25,7 +25,10 @@
           var windowBottom = scrollTop + windowHeight;
           var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
           var parallax = Math.round((parallax_dist * percentScrolled));
-
+          
+          if(typeof updateCallback == 'function')
+            updateCallback(scrollTop, percentScrolled);
+            
           if (initial) {
             $img.css('display', 'block');
           }
