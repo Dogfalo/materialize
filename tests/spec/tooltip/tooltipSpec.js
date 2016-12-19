@@ -11,8 +11,7 @@ describe( 'Tooltip:', function() {
 
     it('Opens a tooltip on mouse enter', function(done) {
       tooltippedBtn = $('#test');
-      tooltip = $('#' + tooltippedBtn.attr('data-tooltip-id'))
-      expect(tooltip).toBeHidden('because tooltip is not activated yet');
+      tooltip = $('#' + tooltippedBtn.attr('data-tooltip-id'));
 
       // Mouse enter
       tooltippedBtn.trigger('mouseenter');
@@ -94,7 +93,7 @@ describe( 'Tooltip:', function() {
       tooltip = $('#' + tooltippedBtn.attr('data-tooltip-id'));
       tooltippedBtn.trigger('mouseenter');
       setTimeout(function() {
-        expect(tooltip.css('display')).toBe('none', 'because the delay is 200 seconds');
+        expect(tooltip.css('visibility')).toBe('hidden', 'because the delay is 200 seconds');
       }, 150);
 
       setTimeout(function() {

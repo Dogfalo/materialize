@@ -15,6 +15,7 @@
   left: 0;
   top: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .backdrop {
@@ -26,4 +27,5 @@
   background-color: #323232;
   z-index: -1;
   transform-origin: 50% 0%;
+  visibility: hidden;
 }

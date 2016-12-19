@@ -102,8 +102,6 @@
             var scaleFactor = 0;
             var targetTop, targetLeft, newCoordinates;
 
-            console.log(tooltipWidth, backdrop.width(), backdropOffsetWidth);
-
             if (tooltipPosition === "top") {
               // Top Position
               targetTop = origin.offset().top - tooltipHeight - margin;
@@ -181,8 +179,6 @@
 
             tooltipEl.velocity({ translateY: tooltipVerticalMovement, translateX: tooltipHorizontalMovement}, { duration: 350, queue: false })
               .velocity({opacity: 1}, {duration: 300, delay: 50, queue: false});
-
-            console.log(scaleFactor);
             backdrop.css({ visibility: 'visible' })
               .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
               .velocity({scaleX: scaleFactor, scaleY: scaleFactor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});

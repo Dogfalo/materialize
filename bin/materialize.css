@@ -4864,6 +4864,7 @@ small {
   left: 0;
   top: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .backdrop {
@@ -4876,6 +4877,7 @@ small {
   z-index: -1;
   -webkit-transform-origin: 50% 0%;
           transform-origin: 50% 0%;
+  visibility: hidden;
 }
 
 .btn, .btn-large,
