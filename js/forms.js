@@ -350,6 +350,7 @@
           // Set input value
           $autocomplete.on('click', 'li', function () {
             $input.val($(this).text().trim());
+            $input.trigger('change');
             $autocomplete.empty();
           });
         }
@@ -413,9 +414,9 @@
 
           // Check for multiple type.
           if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
           } else {
-            options.append($('<li class="' + disabledClass + optgroupClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
+            options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
           }
           return true;
         }
@@ -513,10 +514,14 @@
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
             var label = $(this).val();
+            if (multiple && label.indexOf(',') >= 0) {
+              label = label.split(',')[0];
+            }
+
             var selectedOption = options.find('li').filter(function() {
               return $(this).text().toLowerCase() === label.toLowerCase();
             })[0];
-            activateOption(options, selectedOption);
+            activateOption(options, selectedOption, true);
           }
         },
         'click': function (e){
@@ -553,13 +558,20 @@
         });
       }
 
-      // Make option as selected and scroll to selected position
-      var activateOption = function(collection, newOption) {
+      /**
+       * Make option as selected and scroll to selected position
+       * @param {jQuery} collection  Select options jQuery element
+       * @param {Element} newOption  element of the new option
+       * @param {Boolean} firstActivation  If on first activation of select
+       */
+      var activateOption = function(collection, newOption, firstActivation) {
         if (newOption) {
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
           option.addClass('selected');
-          options.scrollTo(option);
+          if (!multiple || !!firstActivation) {
+            options.scrollTo(option);
+          }
         }
       };
 

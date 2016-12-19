@@ -78,6 +78,12 @@
     checkForChanges();
 
 
+    // BuySellAds Demos close button.
+    $('.buysellads.buysellads-demo .close').on('click', function() {
+      $(this).parent().remove();
+    });
+
+
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
@@ -137,12 +143,24 @@
       indeterminateCheckbox.indeterminate = true;
 
 
+    // Pushpin Demo Init
+    if ($('.pushpin-demo-nav').length) {
+      $('.pushpin-demo-nav').each(function() {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: $target.offset().top + $target.outerHeight() - $this.height()
+        });
+      });
+    }
+
     // Plugin initialization
-    $('.carousel.carousel-slider').carousel({full_width: true});
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
     $('.slider').slider({full_width: true});
     $('.parallax').parallax();
-    $('.modal-trigger').leanModal();
+    $('.modal').modal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
@@ -150,6 +168,8 @@
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
     });
+
+    $('.chips').material_chip();
 
     $('.chips-initial').material_chip({
       readOnly: true,
@@ -167,7 +187,6 @@
       secondaryPlaceholder: '+Tag',
     });
 
-    $('.chips').material_chip();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

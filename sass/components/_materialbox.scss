@@ -3,12 +3,12 @@
   cursor: zoom-in;
   position: relative;
   transition: opacity .4s;
+  -webkit-backface-visibility: hidden;
 
   &:hover {
     &:not(.active) {
       opacity: .8;
     }
-    will-change: left, top, width, height;
   }
 }
 

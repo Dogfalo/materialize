@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Documentation - Materialize</title>
+    <!-- CSS  -->
+    <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <style>
+        body, html,
+        .section {
+            height: 100%;
+        }
+        .table-of-contents li a {
+            color: #fff;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div id="blue" class="section scrollspy blue"></div>
+    <div id="green" class="section scrollspy green"></div>
+    <div id="yellow" class="section scrollspy yellow"></div>
+    <div id="red" class="section scrollSpy red"></div>
+
+
+    <div class="stats" style="position: fixed; top: 50%; left: 50%; width: 100px; margin-left: -50px;">
+      <strong>scrollTop:&nbsp;</strong><span id="scrollTop">0</span>
+    </div>
+
+    <div class="wrapper" style="position: fixed; top: 0; right: 0;">
+      <ul class="section table-of-contents">
+        <li><a href="#blue">Blue</a></li>
+        <li><a href="#green">Green</a></li>
+        <li><a href="#yellow">Yellow</a></li>
+        <li><a href="#red">Red</a></li>
+      </ul>
+      <a id="halfHeights" href="#!" class="btn">Half Heights of Sections</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../../../bin/materialize.js"></script>
+
+    <script type="text/javascript">
+      $( document ).ready(function() {
+
+        $('.scrollspy').scrollSpy({'scrollOffset': 0});
+
+        $(window).on('scroll', function() {
+          $('#scrollTop').text($(window).scrollTop());
+        });
+
+        $('#halfHeights').on('click', function() {
+          $('.section').css('height', '50%');
+        });
+      });
+
+    </script>
+  </body>
+</html>

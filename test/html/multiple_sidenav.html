@@ -16,6 +16,8 @@
     <meta name="theme-color" content="#EE6E73">
 
     <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!--  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
   <!--  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>-->
     <link href="../../../css/prism.css" rel="stylesheet" />
@@ -32,7 +34,7 @@
         <li><a href="#!">Left First Sidebar Link</a></li>
         <li><a href="#!">Left Second Sidebar Link</a></li>
       </ul>
-      <a href="#" data-activates="slide-out" class="button-collapse 1"><i class="mdi-navigation-menu"></i></a>
+      <a href="#" data-activates="slide-out" class="button-collapse 1"><i class="material-icons">menu</i></a>
 
       <ul class="right hide-on-med-and-down">
         <li><a href="#!">Right First Sidebar Link</a></li>
@@ -42,7 +44,7 @@
         <li><a href="#!">Right First Sidebar Link</a></li>
         <li><a href="#!">Right Second Sidebar Link</a></li>
       </ul>
-      <a href="#" data-activates="slide-out2" class="button-collapse 2 right"><i class="mdi-navigation-menu"></i></a>
+      <a href="#" data-activates="slide-out2" class="button-collapse 2 right"><i class="material-icons">menu</i></a>
     </nav>
 
 
@@ -52,7 +54,7 @@
     <script type="text/javascript">
     $( document ).ready(function() {
       $(".button-collapse.1").sideNav();
-      $(".button-collapse.2").sideNav({edge: 'right'});
+      $(".button-collapse.2").sideNav({edge: 'right', draggable: false});
     });
     </script>
   </body>

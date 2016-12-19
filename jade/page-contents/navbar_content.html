@@ -109,18 +109,85 @@
         </nav><br>
 
         <pre><code class="language-markup">
-  &lt;div class="navbar-fixed">
-    &lt;nav>
-      &lt;div class="nav-wrapper">
-        &lt;a href="#!" class="brand-logo">Logo&lt;/a>
-        &lt;ul class="right hide-on-med-and-down">
-          &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="badges.html">Components&lt;/a>&lt;/li>
-          &lt;li class="active">&lt;a href="collapsible.html">JavaScript&lt;/a>&lt;/li>
-        &lt;/ul>
-      &lt;/div>
-    &lt;/nav>
-  &lt;/div>
+  &lt;nav>
+    &lt;div class="nav-wrapper">
+      &lt;a href="#!" class="brand-logo center">Logo&lt;/a>
+      &lt;ul class="left hide-on-med-and-down">
+        &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="badges.html">Components&lt;/a>&lt;/li>
+        &lt;li class="active">&lt;a href="collapsible.html">JavaScript&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/nav>
+        </code></pre>
+      </div>
+
+      <div id="navbar-tabs" class="section scrollspy">
+
+        <h2 class="header">Extended Navbar with Tabs</h2>
+        <p>
+          To add extended components to the navbar, add the class <code class="language-markup">extended-nav</code> to the outer <span class="language-markup">nav</span> tag. This will allow your navbar height to be variable. Then you can just include a tabs component inside the <span class="language-markup">nav-wrapper</span>.
+        </p>
+
+        <nav class="nav-extended">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="sass.html">Sass</a></li>
+              <li><a href="badges.html">Components</a></li>
+              <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="sass.html">Sass</a></li>
+              <li><a href="badges.html">Components</a></li>
+              <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+          </div>
+          <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+              <li class="tab"><a href="#test1">Test 1</a></li>
+              <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+              <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+              <li class="tab"><a href="#test4">Test 4</a></li>
+            </ul>
+          </div>
+        </nav>
+        <br>
+        <div id="test1" class="col s12">Test 1</div>
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
+        <br>
+        <pre><code class="language-markup">
+  &lt;nav class="nav-extended">
+    &lt;div class="nav-wrapper">
+      &lt;a href="#" class="brand-logo">Logo&lt;/a>
+      &lt;a href="#" data-activates="mobile-demo" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+      &lt;ul id="nav-mobile" class="right hide-on-med-and-down">
+        &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="badges.html">Components&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="collapsible.html">JavaScript&lt;/a>&lt;/li>
+      &lt;/ul>
+      &lt;ul class="side-nav" id="mobile-demo">
+        &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="badges.html">Components&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="collapsible.html">JavaScript&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+    &lt;div class="nav-content">
+      &lt;ul class="tabs tabs-transparent">
+        &lt;li class="tab">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+        &lt;li class="tab">&lt;a class="active" href="#test2">Test 2&lt;/a>&lt;/li>
+        &lt;li class="tab disabled">&lt;a href="#test3">Disabled Tab&lt;/a>&lt;/li>
+        &lt;li class="tab">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/nav>
+  &lt;div id="test1" class="col s12">Test 1&lt;/div>
+  &lt;div id="test2" class="col s12">Test 2&lt;/div>
+  &lt;div id="test3" class="col s12">Test 3&lt;/div>
+  &lt;div id="test4" class="col s12">Test 4&lt;/div>
         </code></pre>
       </div>
 
@@ -270,9 +337,9 @@ $(".dropdown-button").dropdown();
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-              <li><a>A link</a></li>
-              <li><a class="waves-effect waves-light btn">A button</a></li>
-              <li><a class="waves-effect waves-light btn-large">A large button</a></li>
+              <li><a class="waves-effect waves-light btn">Button</a></li>
+              <li><a class="waves-effect waves-light btn">Button <i class="material-icons right">cloud</i></a></li>
+              <li><a class="waves-effect waves-light btn-large">Large Button</a></li>
             </ul>
           </div>
         </nav>
@@ -285,10 +352,49 @@ $(".dropdown-button").dropdown();
     &lt;div class="nav-wrapper">
       &lt;a href="#!" class="brand-logo">Logo&lt;/a>
       &lt;ul class="right hide-on-med-and-down">
-        &lt;li>&lt;a href="#">A link&lt;/a>&lt;/li>
-        &lt;li>&lt;a class="waves-effect waves-light btn">A button&lt;/a>&lt;/li>
-        &lt;li>&lt;a class="waves-effect waves-light btn-large">A large button&lt;/a>&lt;/li>
+        &lt;li>&lt;a class="waves-effect waves-light btn">Button&lt;/a>&lt;/li>
+        &lt;li>&lt;a class="waves-effect waves-light btn">Button &lt;i class="material-icons right">cloud&lt;/i>&lt;/a>&lt;/li>
+        &lt;li>&lt;a class="waves-effect waves-light btn-large">Large Button&lt;/a>&lt;/li>
       &lt;/ul>
+    &lt;/div>
+  &lt;/nav></code></pre>
+        <br>
+
+        <h5>Halfway FAB in Extended Navbar</h5>
+        <p>Add a halfway FAB to your extended navbar.</p>
+
+        <nav class="nav-extended">
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
+              <li><a>A link</a></li>
+              <li><a>A second link</a></li>
+              <li><a>A third link</a></li>
+            </ul>
+          </div>
+          <div class="nav-content">
+            <span class="nav-title">Title</span>
+            <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal">
+              <i class="material-icons">add</i>
+            </a>
+          </div>
+        </nav>
+<br><br>
+<pre><code class="language-markup">
+  &lt;nav class="nav-extended">
+    &lt;div class="nav-wrapper">
+      &lt;a href="#!" class="brand-logo">Logo&lt;/a>
+      &lt;ul class="right hide-on-med-and-down">
+        &lt;li>&lt;a>A link&lt;/a>&lt;/li>
+        &lt;li>&lt;a>A second link&lt;/a>&lt;/li>
+        &lt;li>&lt;a>A third link&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+    &lt;div class="nav-content">
+      &lt;span class="nav-title">Title&lt;/span>
+      &lt;a class="btn-floating btn-large halfway-fab waves-effect waves-light teal">
+        &lt;i class="material-icons">add&lt;/i>
+      &lt;/a>
     &lt;/div>
   &lt;/nav></code></pre>
         <br>
@@ -302,7 +408,7 @@ $(".dropdown-button").dropdown();
             <form>
               <div class="input-field">
                 <input id="search-example" type="search" required>
-                <label for="search"><i class="material-icons">search</i></label>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
             </form>
@@ -318,7 +424,7 @@ $(".dropdown-button").dropdown();
       &lt;form>
         &lt;div class="input-field">
           &lt;input id="search" type="search" required>
-          &lt;label for="search">&lt;i class="material-icons">search&lt;/i>&lt;/label>
+          &lt;label class="label-icon" for="search">&lt;i class="material-icons">search&lt;/i>&lt;/label>
           &lt;i class="material-icons">close&lt;/i>
         &lt;/div>
       &lt;/form>
@@ -398,6 +504,7 @@ $(".dropdown-button").dropdown();
             <li><a href="#left">Left Aligned</a></li>
             <li><a href="#center">Center Logo</a></li>
             <li><a href="#active-label">Active Items</a></li>
+            <li><a href="#navbar-tabs">Navbar with Tabs</a></li>
             <li><a href="#navbar-fixed">Fixed Navbar</a></li>
             <li><a href="#navbar-dropdown">Dropdown Menu</a></li>
             <li><a href="#icons">Icon Links</a></li>

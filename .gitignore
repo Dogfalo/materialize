@@ -15,3 +15,4 @@ bower_components
 **/#*#
 **/.#*
 .grunt/
+.versions

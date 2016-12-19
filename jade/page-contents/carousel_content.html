@@ -48,8 +48,8 @@
 
           <tbody>
             <tr>
-              <td>time_constant</td>
-              <td>Transition time. (Default: 200)</td>
+              <td>duration</td>
+              <td>Transition duration in milliseconds. (Default: 200)</td>
             </tr>
             <tr>
               <td>dist</td>
@@ -64,7 +64,7 @@
               <td>Set the padding between non center items. (Default: 0)</td>
             </tr>
             <tr>
-              <td>full_width</td>
+              <td>fullWidth</td>
               <td>Make the carousel a full width slider like the second example. (Default: false)</td>
             </tr>
             <tr>
@@ -72,7 +72,7 @@
               <td>Set to true to show indicators. (Default: false)</td>
             </tr>
             <tr>
-              <td>no_wrap</td>
+              <td>noWrap</td>
               <td>Don't wrap around and cycle through items. (Default: false)</td>
             </tr>
           </tbody>
@@ -114,13 +114,18 @@ $('.carousel').carousel('set', 4);
     &lt;a class="carousel-item" href="#four!">&lt;img src="http://lorempixel.com/800/400/food/4">&lt;/a>
   &lt;/div>
         </code></pre>
+
+        <pre><code class="language-javascript">
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+        </code></pre>
       </div>
 
       <!-- Special Options Section  -->
       <div id="special" class="scrollspy section">
         <h4>Special Options</h4>
         <p class="caption">The carousel doesn't only support images but also allows you to make content carousels. You can add fixed items to your carousel by adding a div with the class <code class="language-markup">carousel-fixed-item</code> and adding your fixed content in there.</p>
-        <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p><br>
+        <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
+        <br>
 
         <div class="carousel carousel-slider center" data-indicators="true">
           <div class="carousel-fixed-item center">
@@ -165,6 +170,9 @@ $('.carousel').carousel('set', 4);
       &lt;p class="white-text">This is your fourth panel&lt;/p>
     &lt;/div>
   &lt;/div>
+        </code></pre>
+        <pre><code class="language-javascript">
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
         </code></pre>
       </div>
 

@@ -51,7 +51,7 @@
 
 
   var openFABMenu = function (btn) {
-    $this = btn;
+    var $this = btn;
     if ($this.hasClass('active') === false) {
 
       // Get direction option
@@ -80,7 +80,7 @@
   };
 
   var closeFABMenu = function (btn) {
-    $this = btn;
+    var $this = btn;
     // Get direction option
     var horizontal = $this.hasClass('horizontal');
     var offsetY, offsetX;

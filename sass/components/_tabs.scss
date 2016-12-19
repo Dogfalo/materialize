@@ -1,48 +1,73 @@
 .tabs {
-  display: flex;
+  &.tabs-transparent {
+    background-color: transparent;
+
+    .tab a,
+    .tab.disabled a,
+    .tab.disabled a:hover {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .tab a:hover,
+    .tab a.active {
+      color: #fff;
+    }
+
+    .indicator {
+      background-color: #fff;
+    }
+  }
+
+  &.tabs-fixed-width {
+    display: flex;
+
+    .tab {
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+    }
+  }
+
   position: relative;
   overflow-x: auto;
   overflow-y: hidden;
   height: 48px;
+  width: 100%;
   background-color: $tabs-bg-color;
   margin: 0 auto;
-  width: 100%;
   white-space: nowrap;
 
   .tab {
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    display: block;
-    float: left;
+    display: inline-block;
     text-align: center;
     line-height: 48px;
     height: 48px;
     padding: 0;
     margin: 0;
     text-transform: uppercase;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    letter-spacing: .8px;
-    width: 15%;
-    min-width: 80px;
 
     a {
-      color: $tabs-text-color;
+      &:hover,
+      &.active {
+        background-color: transparent;
+        color: $tabs-text-color;
+      }
+
+      color: rgba($tabs-text-color, .7);
       display: block;
       width: 100%;
       height: 100%;
+      padding: 0 24px;
+      font-size: 14px;
       text-overflow: ellipsis;
       overflow: hidden;
       transition: color .28s ease;
-      &:hover {
-        color: lighten($tabs-text-color, 20%);
-      }
     }
 
-    &.disabled a {
-      color: lighten($tabs-text-color, 20%);
+    &.disabled a,
+    &.disabled a:hover {
+      color: rgba($tabs-text-color, .7);
       cursor: default;
     }
   }
@@ -52,5 +77,23 @@
     height: 2px;
     background-color: $tabs-underline-color;
     will-change: left, right;
+  }
+}
+
+// Fixed sideNav hide on smaller
+@media #{$medium-and-down} {
+  .tabs {
+    display: flex;
+
+    .tab {
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+
+      a {
+        padding: 0 12px;
+      }
+    }
   }
 }

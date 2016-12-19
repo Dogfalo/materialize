@@ -1,0 +1,21 @@
+- var page = "Pushpin Demo"
+- var isDemo = true
+
+doctype html
+html(lang="en")
+  head
+    include _head.jade
+    style.
+      html, body, .block {
+        height: 100%;
+      }
+      nav ul li a:hover, nav ul li a.active {
+        background-color: rgba(0,0,0,.1);
+      }
+      footer {
+        padding-left: 0;
+      }
+  body
+    include page-contents/pushpin_demo_content.html
+    include _footer.html
+    include _scripts.html
