@@ -86,18 +86,18 @@
             started = true;
             tooltipEl.velocity('stop');
             backdrop.velocity('stop');
-            tooltipEl.css({ display: 'block', left: '0px', top: '0px' });
+            tooltipEl.css({ visibility: 'visible', left: '0px', top: '0px' });
 
             // Tooltip positioning
             var originWidth = origin.outerWidth();
             var originHeight = origin.outerHeight();
-
             var tooltipHeight = tooltipEl.outerHeight();
             var tooltipWidth = tooltipEl.outerWidth();
             var tooltipVerticalMovement = '0px';
             var tooltipHorizontalMovement = '0px';
             var scaleXFactor = 8;
             var scaleYFactor = 8;
+            var scaleFactor = 0;
             var targetTop, targetLeft, newCoordinates;
 
             if (tooltipPosition === "top") {
@@ -105,7 +105,6 @@
               targetTop = origin.offset().top - tooltipHeight - margin;
               targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
               newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
-
               tooltipVerticalMovement = '-10px';
               backdrop.css({
                 bottom: 0,
@@ -174,12 +173,14 @@
             // Calculate Scale to fill
             scaleXFactor = Math.SQRT2 * tooltipWidth / parseInt(backdrop.css('width'));
             scaleYFactor = Math.SQRT2 * tooltipHeight / parseInt(backdrop.css('height'));
+            scaleFactor = Math.max(scaleXFactor, scaleYFactor);
 
-            tooltipEl.velocity({ marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement}, { duration: 350, queue: false })
+            tooltipEl.velocity({ translateY: tooltipVerticalMovement, translateX: tooltipHorizontalMovement}, { duration: 350, queue: false })
               .velocity({opacity: 1}, {duration: 300, delay: 50, queue: false});
-            backdrop.css({ display: 'block' })
+
+            backdrop.css({ visibility: 'visible' })
               .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
-              .velocity({scaleX: scaleXFactor, scaleY: scaleYFactor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
+              .velocity({scaleX: scaleFactor, scaleY: scaleFactor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
           };
 
           timeoutRef = setTimeout(showTooltip, tooltipDelay); // End Interval
@@ -195,13 +196,13 @@
           setTimeout(function() {
             if (started !== true) {
               tooltipEl.velocity({
-                opacity: 0, marginTop: 0, marginLeft: 0}, { duration: 225, queue: false});
+                opacity: 0, translateY: 0, translateX: 0}, { duration: 225, queue: false});
               backdrop.velocity({opacity: 0, scaleX: 1, scaleY: 1}, {
                 duration:225,
                 queue: false,
                 complete: function(){
-                  backdrop.css('display', 'none');
-                  tooltipEl.css('display', 'none');
+                  backdrop.css({ visibility: 'hidden' });
+                  tooltipEl.css({ visibility: 'hidden' });
                   started = false;}
               });
             }
