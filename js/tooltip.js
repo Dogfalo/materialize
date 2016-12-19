@@ -95,10 +95,14 @@
             var tooltipWidth = tooltipEl.outerWidth();
             var tooltipVerticalMovement = '0px';
             var tooltipHorizontalMovement = '0px';
+            var backdropOffsetWidth = backdrop[0].offsetWidth;
+            var backdropOffsetHeight = backdrop[0].offsetHeight;
             var scaleXFactor = 8;
             var scaleYFactor = 8;
             var scaleFactor = 0;
             var targetTop, targetLeft, newCoordinates;
+
+            console.log(tooltipWidth, backdrop.width(), backdropOffsetWidth);
 
             if (tooltipPosition === "top") {
               // Top Position
@@ -112,7 +116,7 @@
                 borderRadius: '14px 14px 0 0',
                 transformOrigin: '50% 100%',
                 marginTop: tooltipHeight,
-                marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
+                marginLeft: (tooltipWidth/2) - (backdropOffsetWidth/2)
               });
             }
             // Left Position
@@ -160,7 +164,7 @@
               backdrop.css({
                 top: 0,
                 left: 0,
-                marginLeft: (tooltipWidth/2) - (backdrop.width()/2)
+                marginLeft: (tooltipWidth/2) - (backdropOffsetWidth/2)
               });
             }
 
@@ -171,13 +175,14 @@
             });
 
             // Calculate Scale to fill
-            scaleXFactor = Math.SQRT2 * tooltipWidth / parseInt(backdrop.css('width'));
-            scaleYFactor = Math.SQRT2 * tooltipHeight / parseInt(backdrop.css('height'));
+            scaleXFactor = Math.SQRT2 * tooltipWidth / parseInt(backdropOffsetWidth);
+            scaleYFactor = Math.SQRT2 * tooltipHeight / parseInt(backdropOffsetHeight);
             scaleFactor = Math.max(scaleXFactor, scaleYFactor);
 
             tooltipEl.velocity({ translateY: tooltipVerticalMovement, translateX: tooltipHorizontalMovement}, { duration: 350, queue: false })
               .velocity({opacity: 1}, {duration: 300, delay: 50, queue: false});
 
+            console.log(scaleFactor);
             backdrop.css({ visibility: 'visible' })
               .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
               .velocity({scaleX: scaleFactor, scaleY: scaleFactor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
