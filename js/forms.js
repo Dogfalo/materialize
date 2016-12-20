@@ -5,11 +5,13 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label').addClass('active');
-        }
-        else {
-          $(this).siblings('label').removeClass('active');
+        var $this = $(this);
+        if ($(element).val().length > 0 || element.autofocus || $this.attr('placeholder') !== undefined) {
+          $this.siblings('label').addClass('active');
+        } else if ($(element)[0].validity) {
+          $this.siblings('label').toggleClass('active', $(element)[0].validity.badInput === true);
+        } else {
+          $this.siblings('label').removeClass('active');
         }
       });
     };
