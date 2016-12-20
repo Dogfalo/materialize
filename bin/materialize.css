@@ -7776,7 +7776,7 @@ input[type=range]:focus::-ms-fill-upper {
 .carousel .carousel-item {
   display: none;
   width: 200px;
-  height: 400px;
+  height: 200px;
   position: absolute;
   top: 0;
   left: 0;

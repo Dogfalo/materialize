@@ -16,7 +16,7 @@
 
       return this.each(function() {
 
-        var images, item_width, offset, center, pressed, dim, count,
+        var images, item_width, item_height, offset, center, pressed, dim, count,
             reference, referenceY, amplitude, target, velocity,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
@@ -59,6 +59,7 @@
         offset = target = 0;
         images = [];
         item_width = view.find('.carousel-item').first().innerWidth();
+        item_height = view.find('.carousel-item').first().innerHeight();
         dim = item_width * 2 + options.padding;
 
         view.find('.carousel-item').each(function (i) {
@@ -137,7 +138,7 @@
 
           if (!options.fullWidth) {
             alignment = 'translateX(' + (view[0].clientWidth - item_width) / 2 + 'px) ';
-            alignment += 'translateY(' + (view[0].clientHeight - item_width) / 2 + 'px)';
+            alignment += 'translateY(' + (view[0].clientHeight - item_height) / 2 + 'px)';
           } else {
             alignment = 'translateX(0)';
           }
@@ -392,6 +393,7 @@
         $(window).on('resize.carousel', function() {
           if (options.fullWidth) {
             item_width = view.find('.carousel-item').first().innerWidth();
+            item_height = view.find('.carousel-item').first().innerHeight();
             dim = item_width * 2 + options.padding;
             offset = center * 2 * item_width;
             target = offset;
