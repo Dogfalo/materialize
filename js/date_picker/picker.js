@@ -299,7 +299,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                             // On “enter”, if the highlighted item isn’t disabled, set the value and close.
                             else if ( !P.$root.find( '.' + CLASSES.highlighted ).hasClass( CLASSES.disabled ) ) {
-                                P.set( 'select', P.component.item.highlight ).close()
+                                P.set( 'select', P.component.item.highlight )
                                 if ( SETTINGS.closeOnSelect ) {
                                     P.close( true )
                                 }
