@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     //  Jasmine
     jasmine: {
       components: {
-	src: [
+        src: [
           'bin/materialize.js'
         ],
         options: {
