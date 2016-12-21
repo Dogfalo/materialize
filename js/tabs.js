@@ -125,7 +125,8 @@
           }
         }
 
-        if ($oldContent !== undefined) {
+        if ($oldContent !== undefined &&
+            !$oldContent.is($content)) {
           $oldContent.hide();
           $oldContent.removeClass('active');
         }
