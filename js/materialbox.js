@@ -92,10 +92,21 @@
             if (doneAnimating === true)
             returnToOriginal();
           });
-          // Animate Overlay
-          // Put before in origin image to preserve z-index layering.
-          origin.before(overlay);
-          overlay.velocity({opacity: 1},
+
+        // Put before in origin image to preserve z-index layering.
+        origin.before(overlay);
+
+        // Set dimensions if needed
+        var overlayOffset = overlay[0].getBoundingClientRect();
+        overlay.css({
+          width: windowWidth,
+          height: windowHeight,
+          left: -1 * overlayOffset.left,
+          top: -1 * overlayOffset.top
+        })
+
+        // Animate Overlay
+        overlay.velocity({opacity: 1},
                            {duration: inDuration, queue: false, easing: 'easeOutQuad'} );
 
         // Add and animate caption if it exists
