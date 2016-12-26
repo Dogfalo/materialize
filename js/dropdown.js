@@ -174,6 +174,14 @@
             }
           })
           .animate( {opacity: 1}, {queue: false, duration: curr_options.inDuration, easing: 'easeOutSine'});
+
+        // Add click close handler to document
+        $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
+          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
+            hideDropdown();
+            $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+          }
+        });
       }
 
       function hideDropdown() {
@@ -182,6 +190,7 @@
         activates.fadeOut(curr_options.outDuration);
         activates.removeClass('active');
         origin.removeClass('active');
+        $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
         setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
       }
 
@@ -234,15 +243,6 @@
             else if (origin.hasClass('active')) {
               hideDropdown();
               $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
-            }
-            // If menu open, add click close handler to document
-            if (activates.hasClass('active')) {
-              $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
-                if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
-                  hideDropdown();
-                  $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
-                }
-              });
             }
           }
         });
