@@ -23,10 +23,13 @@
         // Add Touch Area
         var $dragTarget = $('.drag-target[data-sidenav="' + menuId + '"]');
         if (options.draggable) {
-          if (!$dragTarget.length) {
-            $dragTarget = $('<div class="drag-target"></div>').attr('data-sidenav', menuId);
-            $('body').append($dragTarget);
+          // Regenerate dragTarget
+          if ($dragTarget.length) {
+            $dragTarget.remove();
           }
+
+          $dragTarget = $('<div class="drag-target"></div>').attr('data-sidenav', menuId);
+          $('body').append($dragTarget);
         } else {
           $dragTarget = $();
         }

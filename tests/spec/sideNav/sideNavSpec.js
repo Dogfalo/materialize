@@ -18,7 +18,11 @@ describe("SideNav Plugin", function () {
       $(".button-collapse").sideNav();
 
       var dragTarget = $('.drag-target[data-sidenav="' + normalActivator.attr('data-activates') + '"]');
+      var dragTargetEvents = $._data(dragTarget[0], 'events');
       expect(dragTarget.length).toEqual(1, 'Should generate only one dragTarget.');
+      expect(dragTargetEvents.click.length).toEqual(1, 'Should only bind 1 click handler on activator');
+      expect(dragTargetEvents.pan.length).toEqual(1, 'Should only bind 1 pan handler on activator');
+      expect(dragTargetEvents.panend.length).toEqual(1, 'Should only bind 1 panend handler on activator');
 
       var normalActivatorEvents = $._data(normalActivator[0], 'events');
       expect(normalActivatorEvents.click.length).toEqual(1, 'Should only bind 1 click handler on activator');
