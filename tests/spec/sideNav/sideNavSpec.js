@@ -12,6 +12,15 @@ describe("SideNav Plugin", function () {
       normalSideNav = $('.side-nav');
     });
 
+    it("should not break from multiple initializations", function() {
+      $(".button-collapse").sideNav();
+      $(".button-collapse").sideNav();
+      $(".button-collapse").sideNav();
+
+      var dragTarget = $('.drag-target[data-sidenav="' + normalActivator.attr('data-activates') + '"]');
+      expect(dragTarget.length).toEqual(1, 'Should generate only one dragTarget.');
+    });
+
     it("should open sideNav from left", function (done) {
       var sideNavRect = normalSideNav[0].getBoundingClientRect();
       var overlay = $('#sidenav-overlay');
