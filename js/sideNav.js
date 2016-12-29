@@ -290,7 +290,7 @@
           });
         }
 
-        $this.click(function() {
+        $this.off('click.sidenav').on('click.sidenav', function() {
           if (menuOut === true) {
             menuOut = false;
             panning = false;

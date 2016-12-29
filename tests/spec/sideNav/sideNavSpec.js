@@ -19,11 +19,14 @@ describe("SideNav Plugin", function () {
 
       var dragTarget = $('.drag-target[data-sidenav="' + normalActivator.attr('data-activates') + '"]');
       expect(dragTarget.length).toEqual(1, 'Should generate only one dragTarget.');
+
+      var normalActivatorEvents = $._data(normalActivator[0], 'events');
+      expect(normalActivatorEvents.click.length).toEqual(1, 'Should only bind 1 click handler on activator');
     });
 
     it("should open sideNav from left", function (done) {
       var sideNavRect = normalSideNav[0].getBoundingClientRect();
-      var overlay = $('#sidenav-overlay');
+      var overlay = $('[id="sidenav-overlay"]');
       var dragTarget = $('.drag-target[data-sidenav="' + normalActivator.attr('data-activates') + '"]');
 
       expect(dragTarget.length).toEqual(1, 'Should generate only one dragTarget.');
@@ -34,14 +37,14 @@ describe("SideNav Plugin", function () {
 
       setTimeout(function() {
         sideNavRect = normalSideNav[0].getBoundingClientRect();
-        overlay = $('#sidenav-overlay');
+        overlay = $('[id="sidenav-overlay"]');
         expect(overlay.length).toEqual(1, 'Should generate only one overlay.');
         expect(sideNavRect.left).toEqual(0, 'Should be shown after sideNav is closed.');
 
         overlay.click();
 
         setTimeout(function() {
-          overlay = $('#sidenav-overlay');
+          overlay = $('[id="sidenav-overlay"]');
           expect(overlay.length).toEqual(0, 'Overlay should be removed after sideNav is closed.');
 
           done();
