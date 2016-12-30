@@ -19,6 +19,7 @@
 - Make your changes
 - Submit a pull request with full remarks documenting your changes
 - Pull request MAY then be accepted by project creators
+- Make sure you are altering the correct source files (Never alter compiled / dist files)
 
 ## Jasmine Testing Guide
 **References:**

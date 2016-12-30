@@ -39,15 +39,15 @@
 
           <tbody>
             <tr>
-              <td>induration</td>
+              <td>inDuration</td>
               <td>The duration of the transition enter in milliseconds. Default: 300</td>
             </tr>
             <tr>
-              <td>outduration</td>
+              <td>outDuration</td>
               <td>The duration of the transition out in milliseconds. Default: 225</td>
             </tr>
             <tr>
-              <td>constrainwidth</td>
+              <td>constrainWidth</td>
               <td>If true, constrainWidth to the size of the dropdown activator. Default: true</td>
             </tr>
             <tr>
@@ -59,7 +59,7 @@
               <td>This defines the spacing from the aligned edge. Default: 0</td>
             </tr>
             <tr>
-              <td>beloworigin</td>
+              <td>belowOrigin</td>
               <td>If true, the dropdown will show below the activator. Default: false</td>
             </tr>
             <tr>
@@ -67,7 +67,7 @@
               <td>Defines the edge the menu is aligned to. Default: 'left'</td>
             </tr>
             <tr>
-              <td>stoppropagation</td>
+              <td>stopPropagation</td>
               <td>If true, stops the event propagating from the dropdown origin click handler. Default: false</td>
             </tr>
           </tbody>
@@ -87,11 +87,12 @@
   $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,
-      constrain_width: false, // Does not change width of dropdown to that of the activator
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
       hover: true, // Activate on hover
       gutter: 0, // Spacing from edge
       belowOrigin: false, // Displays dropdown below the button
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
     }
   );
         </code></pre>

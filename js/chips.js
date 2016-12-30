@@ -44,10 +44,6 @@
         var $chips = $(this);
         var chipId = Materialize.guid();
 
-        if ($chips.attr('data-initialized')) {
-          // Prevent double initialization.
-          return;
-        }
         if (!curr_options.data || !(curr_options.data instanceof Array)) {
           curr_options.data = [];
         }
@@ -67,16 +63,24 @@
     this.handleEvents = function(){
       var SELS = self.SELS;
 
-      self.$document.on('click', SELS.CHIPS, function(e){
+      self.$document.off('click.chips-focus', SELS.CHIPS).on('click.chips-focus', SELS.CHIPS, function(e){
         $(e.target).find(SELS.INPUT).focus();
       });
 
-      self.$document.on('click', SELS.CHIP, function(e){
-        $(SELS.CHIP).removeClass('selected');
-        $(this).toggleClass('selected');
+      self.$document.off('click.chips-select', SELS.CHIP).on('click.chips-select', SELS.CHIP, function(e){
+        var $chip = $(e.target);
+        if ($chip.length) {
+          var wasSelected = $chip.hasClass('selected');
+          var $chips = $chip.closest(SELS.CHIPS);
+          $(SELS.CHIP).removeClass('selected');
+
+          if (!wasSelected) {
+            self.selectChip($chip.index(), $chips);
+          }
+        }
       });
 
-      self.$document.on('keydown', function(e){
+      self.$document.off('keydown.chips').on('keydown.chips', function(e){
         if ($(e.target).is('input, textarea')) {
           return;
         }
@@ -132,14 +136,14 @@
         }
       });
 
-      self.$document.on('focusin', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.off('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
         var $currChips = $(e.target).closest(SELS.CHIPS);
         $currChips.addClass('focus');
         $currChips.siblings('label, .prefix').addClass('active');
         $(SELS.CHIP).removeClass('selected');
       });
 
-      self.$document.on('focusout', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.off('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
         var $currChips = $(e.target).closest(SELS.CHIPS);
         $currChips.removeClass('focus');
 
@@ -150,7 +154,7 @@
         $currChips.siblings('.prefix').removeClass('active');
       });
 
-      self.$document.on('keydown', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.off('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT).on('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
         var chipsLength = $chips.children(SELS.CHIP).length;
@@ -171,7 +175,8 @@
         }
       });
 
-      self.$document.on('click', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
+      // Click on delete icon in chip.
+      self.$document.off('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE).on('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
         var $chip = $target.closest(SELS.CHIP);

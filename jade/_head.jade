@@ -28,12 +28,13 @@ link(href='css/ghpages-materialize.css', type='text/css', rel='stylesheet', medi
 link(href='http://fonts.googleapis.com/css?family=Inconsolata', rel='stylesheet', type='text/css')
 link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
 
-script.
-  window.liveSettings = {
-    api_key: "a0b49b34b93844c38eaee15690d86413",
-    picker: "bottom-right",
-    detectlang: true,
-    dynamic: true,
-    autocollect: true
-  };
-script(src='//cdn.transifex.com/live.js')
+if !isDemo
+  script.
+    window.liveSettings = {
+      api_key: "a0b49b34b93844c38eaee15690d86413",
+      picker: "bottom-right",
+      detectlang: true,
+      dynamic: true,
+      autocollect: true
+    };
+  script(src='//cdn.transifex.com/live.js')

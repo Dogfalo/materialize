@@ -25,9 +25,15 @@
 
 
 <body>
-    <div class="container">
-        <form>
             <br>
+    <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <a id="newData" class="waves-effect waves-light btn">Add new tag data</a>
+            <a id="getData" class="waves-effect waves-light btn">Get current tag data</a>
+          </div>
+        </div>
+        <form>
             <div class="row">
                 <div class="col s6 offset-s6"><b class="white-text">Default:</b></div>
             </div>
@@ -91,6 +97,24 @@
         placeholder: 'Enter a tag',
         secondaryPlaceholder: '+Tag',
       })
+
+      $('#newData').click(function () {
+        $('.chips.chips-data').material_chip({
+          data: [{
+            tag: 'New Data 1',
+          }, {
+            tag: 'New Data 2',
+          }, {
+            tag: 'New Data 3',
+          }],
+          placeholder: 'Enter a tag',
+          secondaryPlaceholder: '+Tag',
+        })
+      });
+
+      $('#getData').click(function () {
+        console.log($('.chips.chips-data').material_chip('data'));
+      });
     });
     </script>
 

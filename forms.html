@@ -397,7 +397,7 @@
       </div>
       <div id="select" class="section scrollspy">
         <h2 class="header">Select</h2>
-        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields.</p>
+        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields. Remember that this is a jQuery plugin so make sure you <a href="#select-initialization">initialize</a> this in your document ready. </p>
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -586,6 +586,7 @@
             </code></pre>
           </div>
           <div class="col s12">
+            <a name="select-initialization"></a>
             <h4>Initialization</h4>
             <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
             <pre><code class="language-javascript col s12">
@@ -641,9 +642,9 @@
       &lt;input class="with-gap" name="group1" type="radio" id="test3"  />
       &lt;label for="test3">Green&lt;/label>
     &lt;/p>
-      &lt;p>
-        &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
-        &lt;label for="test4">Brown&lt;/label>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
+      &lt;label for="test4">Brown&lt;/label>
     &lt;/p>
   &lt;/form>
         </code></pre>
@@ -716,9 +717,9 @@
       &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
       &lt;label for="test7">Green&lt;/label>
     &lt;/p>
-      &lt;p>
-        &lt;input type="checkbox" id="test8" disabled="disabled" />
-        &lt;label for="test8">Brown&lt;/label>
+    &lt;p>
+      &lt;input type="checkbox" id="test8" disabled="disabled" />
+      &lt;label for="test8">Brown&lt;/label>
     &lt;/p>
   &lt;/form>
         </code></pre>

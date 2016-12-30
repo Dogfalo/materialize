@@ -2134,84 +2134,6 @@
   color: transparent !important;
 }
 
-/* ==========================================================================
-   Materialize variables
-   ========================================================================== */
-/**
- * Table of Contents:
- *
- *  1. Colors
- *  2. Badges
- *  3. Buttons
- *  4. Cards
- *  5. Collapsible
- *  6. Chips
- *  7. Date Picker
- *  8. Dropdown
- *  10. Forms
- *  11. Global
- *  12. Grid
- *  13. Navigation Bar
- *  14. Side Navigation
- *  15. Photo Slider
- *  16. Spinners | Loaders
- *  17. Tabs
- *  18. Tables
- *  19. Toasts
- *  20. Typography
- *  21. Footer
- *  22. Flow Text
- *  23. Collections
- *  24. Progress Bar
- */
-/* 1. Colors
-   ========================================================================== */
-/* 2. Badges
-   ========================================================================== */
-/* 3. Buttons
-   ========================================================================== */
-/* 4. Cards
-   ========================================================================== */
-/* 5. Collapsible
-   ========================================================================== */
-/* 6. Chips
-   ========================================================================== */
-/* 7. Date Picker
-   ========================================================================== */
-/* 8. Dropdown
-   ========================================================================== */
-/* 9. Fonts
-   ========================================================================== */
-/* 10. Forms
-   ========================================================================== */
-/* 11. Global
-   ========================================================================== */
-/* 12. Grid
-   ========================================================================== */
-/* 13. Navigation Bar
-   ========================================================================== */
-/* 14. Side Navigation
-   ========================================================================== */
-/* 15. Photo Slider
-   ========================================================================== */
-/* 16. Spinners | Loaders
-   ========================================================================== */
-/* 17. Tabs
-   ========================================================================== */
-/* 18. Tables
-   ========================================================================== */
-/* 19. Toasts
-   ========================================================================== */
-/* 20. Typography
-   ========================================================================== */
-/* 21. Footer
-   ========================================================================== */
-/* 22. Flow Text
-   ========================================================================== */
-/* 23. Collections
-   ========================================================================== */
-/* 24. Progress Bar
-   ========================================================================== */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -2616,7 +2538,7 @@ html {
 }
 
 ul:not(.browser-default) {
-  padding: 0;
+  padding-left: 0;
   list-style-type: none;
 }
 
@@ -2939,7 +2861,6 @@ ul.staggered-list li {
 }
 
 footer.page-footer {
-  margin-top: 20px;
   padding-top: 20px;
   background-color: #ee6e73;
 }
@@ -3174,65 +3095,6 @@ td, th {
   border: none;
 }
 
-span.badge {
-  min-width: 3rem;
-  padding: 0 6px;
-  margin-left: 14px;
-  text-align: center;
-  font-size: 1rem;
-  line-height: inherit;
-  color: #757575;
-  float: right;
-  box-sizing: border-box;
-}
-
-span.badge.new {
-  font-weight: 300;
-  font-size: 0.8rem;
-  color: #fff;
-  background-color: #26a69a;
-  border-radius: 2px;
-}
-
-span.badge.new:after {
-  content: " new";
-}
-
-span.badge[data-badge-caption]::after {
-  content: " " attr(data-badge-caption);
-}
-
-nav ul a span.badge {
-  display: inline-block;
-  float: none;
-  margin-left: 4px;
-  line-height: 22px;
-  height: 22px;
-}
-
-.side-nav span.badge.new,
-.collapsible span.badge.new {
-  position: relative;
-  background-color: transparent;
-}
-
-.side-nav span.badge.new::before,
-.collapsible span.badge.new::before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  right: 0;
-  bottom: 10px;
-  left: 0;
-  background-color: #26a69a;
-  border-radius: 2px;
-  z-index: -1;
-}
-
-.collapsible span.badge.new {
-  z-index: 1;
-}
-
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -3413,6 +3275,55 @@ input[type=range] + .thumb {
 
 .no-padding {
   padding: 0 !important;
+}
+
+span.badge {
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 22px;
+  height: 22px;
+  color: #757575;
+  float: right;
+  box-sizing: border-box;
+}
+
+span.badge.new {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #26a69a;
+  border-radius: 2px;
+}
+
+span.badge.new:after {
+  content: " new";
+}
+
+span.badge[data-badge-caption]::after {
+  content: " " attr(data-badge-caption);
+}
+
+nav ul a span.badge {
+  display: inline-block;
+  float: none;
+  margin-left: 4px;
+  line-height: 22px;
+  height: 22px;
+}
+
+.collection-item span.badge {
+  margin-top: calc(0.75rem - 11px);
+}
+
+.collapsible span.badge {
+  margin-top: calc(1.5rem - 11px);
+}
+
+.side-nav span.badge {
+  margin-top: calc(24px - 11px);
 }
 
 /* This is needed for some mobile phones to display the Google Icon font properly */
@@ -4093,7 +4004,13 @@ nav.nav-extended {
 }
 
 nav.nav-extended .nav-wrapper {
+  min-height: 56px;
   height: auto;
+}
+
+nav.nav-extended .nav-content {
+  position: relative;
+  line-height: normal;
 }
 
 nav a {
@@ -4180,6 +4097,12 @@ nav .brand-logo i.material-icons {
   margin-right: 15px;
 }
 
+nav .nav-title {
+  display: inline-block;
+  font-size: 32px;
+  padding: 28px 0;
+}
+
 nav ul {
   margin: 0;
 }
@@ -4207,6 +4130,11 @@ nav ul a.btn, nav ul a.btn-large, nav ul a.btn-large, nav ul a.btn-flat, nav ul 
   margin-top: -2px;
   margin-left: 15px;
   margin-right: 15px;
+}
+
+nav ul a.btn > .material-icons, nav ul a.btn-large > .material-icons, nav ul a.btn-large > .material-icons, nav ul a.btn-flat > .material-icons, nav ul a.btn-floating > .material-icons {
+  height: inherit;
+  line-height: inherit;
 }
 
 nav ul a:hover {
@@ -4252,11 +4180,6 @@ nav .input-field label.active i {
   color: #fff;
 }
 
-nav .input-field label.active {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
 .navbar-fixed {
   position: relative;
   height: 56px;
@@ -4268,6 +4191,9 @@ nav .input-field label.active {
 }
 
 @media only screen and (min-width: 601px) {
+  nav.nav-extended .nav-wrapper {
+    min-height: 64px;
+  }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
@@ -4544,7 +4470,7 @@ small {
 
 .card-panel {
   transition: box-shadow .25s;
-  padding: 20px;
+  padding: 24px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #fff;
@@ -4678,11 +4604,11 @@ small {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 20px;
+  padding: 24px;
 }
 
 .card .card-content {
-  padding: 20px;
+  padding: 24px;
   border-radius: 0 0 2px 2px;
 }
 
@@ -4692,29 +4618,35 @@ small {
 }
 
 .card .card-content .card-title {
-  line-height: 48px;
+  display: block;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+.card .card-content .card-title i {
+  line-height: 32px;
 }
 
 .card .card-action {
   position: relative;
   background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
-  padding: 20px;
+  padding: 16px 24px;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
-  margin-right: 20px;
+  margin-right: 24px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
 }
 
 .card .card-reveal {
-  padding: 20px;
+  padding: 24px;
   position: absolute;
   background-color: #fff;
   width: 100%;
@@ -4853,7 +4785,6 @@ small {
 }
 
 .tabs.tabs-fixed-width .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -4907,7 +4838,6 @@ small {
     display: flex;
   }
   .tabs .tab {
-    -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
@@ -4927,7 +4857,6 @@ small {
   min-height: 36px;
   line-height: 120%;
   opacity: 0;
-  display: none;
   position: absolute;
   text-align: center;
   max-width: calc(100% - 4px);
@@ -4935,12 +4864,12 @@ small {
   left: 0;
   top: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .backdrop {
   position: absolute;
   opacity: 0;
-  display: none;
   height: 7px;
   width: 14px;
   border-radius: 0 0 50% 50%;
@@ -4948,8 +4877,7 @@ small {
   z-index: -1;
   -webkit-transform-origin: 50% 0%;
           transform-origin: 50% 0%;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  visibility: hidden;
 }
 
 .btn, .btn-large,
@@ -4959,7 +4887,6 @@ small {
   display: inline-block;
   height: 36px;
   line-height: 36px;
-  outline: 0;
   padding: 0 2rem;
   text-transform: uppercase;
   vertical-align: middle;
@@ -5005,12 +4932,24 @@ small {
   color: #9F9F9F !important;
 }
 
+.btn, .btn-large,
+.btn-floating,
+.btn-large,
+.btn-flat {
+  outline: 0;
+}
+
 .btn i, .btn-large i,
 .btn-floating i,
 .btn-large i,
 .btn-flat i {
   font-size: 1.3rem;
   line-height: inherit;
+}
+
+.btn:focus, .btn-large:focus,
+.btn-floating:focus {
+  background-color: #1d7d74;
 }
 
 .btn, .btn-large {
@@ -5033,24 +4972,15 @@ small {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  width: 37px;
-  height: 37px;
-  line-height: 37px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   padding: 0;
   background-color: #26a69a;
   border-radius: 50%;
   transition: .3s;
   cursor: pointer;
   vertical-align: middle;
-}
-
-.btn-floating i {
-  width: inherit;
-  display: inline-block;
-  text-align: center;
-  color: #fff;
-  font-size: 1.6rem;
-  line-height: 37px;
 }
 
 .btn-floating:hover {
@@ -5062,12 +4992,34 @@ small {
 }
 
 .btn-floating.btn-large {
-  width: 55.5px;
-  height: 55.5px;
+  width: 56px;
+  height: 56px;
 }
 
 .btn-floating.btn-large i {
-  line-height: 55.5px;
+  line-height: 56px;
+}
+
+.btn-floating.halfway-fab {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+.btn-floating.halfway-fab.left {
+  right: auto;
+  left: 24px;
+}
+
+.btn-floating i {
+  width: inherit;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 40px;
 }
 
 button.btn-floating {
@@ -5108,6 +5060,50 @@ button.btn-floating {
   margin: 15px 15px 0 0;
 }
 
+.fixed-action-btn.toolbar {
+  padding: 0;
+  height: 56px;
+}
+
+.fixed-action-btn.toolbar.active > a i {
+  opacity: 0;
+}
+
+.fixed-action-btn.toolbar ul {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  bottom: 0;
+}
+
+.fixed-action-btn.toolbar ul li {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: inline-block;
+  margin: 0;
+  height: 100%;
+  transition: none;
+}
+
+.fixed-action-btn.toolbar ul li a {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-shadow: none;
+  color: #fff;
+  line-height: 56px;
+  z-index: 1;
+}
+
+.fixed-action-btn.toolbar ul li a i {
+  line-height: inherit;
+}
+
 .fixed-action-btn ul {
   left: 0;
   right: 0;
@@ -5126,6 +5122,19 @@ button.btn-floating {
   opacity: 0;
 }
 
+.fixed-action-btn .fab-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 40px;
+  height: 40px;
+  background-color: #26a69a;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
@@ -5138,9 +5147,13 @@ button.btn-floating {
   background-color: transparent;
 }
 
-.btn-flat:hover {
+.btn-flat:focus, .btn-flat:hover {
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: none;
+}
+
+.btn-flat:active {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .btn-flat.disabled {
@@ -5238,14 +5251,13 @@ button.btn-floating {
   display: inline-block;
   overflow: hidden;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
   z-index: 1;
-  will-change: opacity, transform;
-  transition: all .3s ease-out;
+  transition: .3s ease-out;
 }
 
 .waves-effect .waves-ripple {
@@ -5622,10 +5634,7 @@ button.btn-floating {
   cursor: zoom-in;
   position: relative;
   transition: opacity .4s;
-}
-
-.materialboxed:hover {
-  will-change: left, top, width, height;
+  -webkit-backface-visibility: hidden;
 }
 
 .materialboxed:hover:not(.active) {
@@ -5640,9 +5649,9 @@ button.btn-floating {
 #materialbox-overlay {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   background-color: #292929;
   z-index: 1000;
   will-change: opacity;
@@ -6010,7 +6019,7 @@ textarea.materialize-textarea + label:after {
   transition: .2s ease-out;
 }
 
-.input-field label.active {
+.input-field label:not(.label-icon).active {
   font-size: 0.8rem;
   -webkit-transform: translateY(-140%);
           transform: translateY(-140%);
@@ -6190,7 +6199,6 @@ textarea.materialize-textarea {
 }
 
 [type="radio"]:not(:checked) + label:after {
-  z-index: -1;
   -webkit-transform: scale(0);
           transform: scale(0);
 }
@@ -6209,7 +6217,6 @@ textarea.materialize-textarea {
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:after {
   background-color: #26a69a;
-  z-index: 0;
 }
 
 [type="radio"]:checked + label:after {
@@ -7003,22 +7010,22 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .side-nav .userView {
-  overflow: hidden;
   position: relative;
   padding: 32px 32px 0;
   margin-bottom: 8px;
 }
 
-.side-nav .userView a {
+.side-nav .userView > a {
   height: auto;
   padding: 0;
 }
 
-.side-nav .userView a:hover {
+.side-nav .userView > a:hover {
   background-color: transparent;
 }
 
 .side-nav .userView .background {
+  overflow: hidden;
   position: absolute;
   top: 0;
   right: 0;
@@ -7060,12 +7067,6 @@ input[type=range]:focus::-ms-fill-upper {
   z-index: 998;
 }
 
-.side-nav.fixed a {
-  display: block;
-  padding: 0 16px;
-  color: rgba(0, 0, 0, 0.87);
-}
-
 .side-nav.fixed {
   left: 0;
   -webkit-transform: translateX(0);
@@ -7095,13 +7096,13 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 
-.side-nav .collapsible-body li.active,
-.side-nav.fixed .collapsible-body li.active {
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
   background-color: #ee6e73;
 }
 
-.side-nav .collapsible-body li.active a,
-.side-nav.fixed .collapsible-body li.active a {
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active a,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active a {
   color: #fff;
 }
 
@@ -7774,7 +7775,7 @@ input[type=range]:focus::-ms-fill-upper {
 .carousel .carousel-item {
   display: none;
   width: 200px;
-  height: 400px;
+  height: 200px;
   position: absolute;
   top: 0;
   left: 0;

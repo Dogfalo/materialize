@@ -135,7 +135,6 @@
       left: 0;
       padding: $card-padding;
     }
-
   }
 
   .card-content {
@@ -147,7 +146,13 @@
       color: inherit;
     }
     .card-title {
-      line-height: 48px;
+      display: block;
+      line-height: 32px;
+      margin-bottom: 8px;
+
+      i {
+        line-height: 32px;
+      }
     }
   }
 
@@ -155,7 +160,7 @@
     position: relative;
     background-color: inherit;
     border-top: 1px solid rgba(160,160,160,.2);
-    padding: $card-padding;
+    padding: 16px $card-padding;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: $card-link-color;

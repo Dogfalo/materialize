@@ -50,6 +50,7 @@
 
       if ($active[0] !== undefined) {
         $content = $($active[0].hash);
+        $content.addClass('active');
       }
 
       // append indicator then set indicator width to tab width
@@ -77,7 +78,7 @@
 
       // Hide the remaining content
       $links.not($active).each(function () {
-        $(this.hash).hide();
+        $(Materialize.escapeHash(this.hash)).hide();
       });
 
 
@@ -98,13 +99,11 @@
 
         // Make the old tab inactive.
         $active.removeClass('active');
-        if ($content !== undefined) {
-          $content.hide();
-        }
+        var $oldContent = $content
 
         // Update the variables with the new link and content
         $active = $(this);
-        $content = $(this.hash);
+        $content = $(Materialize.escapeHash(this.hash));
         $links = $this.find('li.tab a');
         var activeRect = $active.position();
 
@@ -120,13 +119,20 @@
 
         if ($content !== undefined) {
           $content.show();
+          $content.addClass('active');
           if (typeof(options.onShow) === "function") {
             options.onShow.call(this, $content);
           }
         }
 
-        // Update indicator
+        if ($oldContent !== undefined &&
+            !$oldContent.is($content)) {
+          $oldContent.hide();
+          $oldContent.removeClass('active');
+        }
 
+
+        // Update indicator
         if (($index - $prev_index) >= 0) {
           $indicator.velocity({"right": calcRightPos($active) }, { duration: 300, queue: false, easing: 'easeOutQuad'});
           $indicator.velocity({"left": calcLeftPos($active) }, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
