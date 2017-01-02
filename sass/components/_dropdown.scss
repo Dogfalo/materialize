@@ -42,6 +42,18 @@
       padding: (($dropdown-item-height - 22) / 2) 16px;
     }
 
+    &.static-text, &.static-text {
+      cursor: default;
+      color: $off-black;
+      display: block;
+      line-height: 22px;
+      padding: (($dropdown-item-height - 22) / 2) 16px;
+    }
+
+    &.static-text:hover, &.static-text.active, &.static-text.selected {
+      background-color: transparent;
+    }
+
     & > span > label {
       top: 1px;
       left: 0;
