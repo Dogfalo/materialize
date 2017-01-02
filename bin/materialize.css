@@ -5220,7 +5220,7 @@ button.btn-floating {
   padding: 14px 16px;
 }
 
-.dropdown-content li.static-text, .dropdown-content li.static-text {
+.dropdown-content li.static-text {
   cursor: default;
   color: rgba(0, 0, 0, 0.87);
   display: block;
