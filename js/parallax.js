@@ -1,6 +1,14 @@
 (function ($) {
 
-  $.fn.parallax = function () {
+  $.fn.parallax = function (speed) {
+    var parallaxSpeed = function (speed) {
+      if(isNaN(speed)){
+	      return 1;
+      }else{
+	      return (speed / 100);
+      }
+    };
+    
     var window_width = $(window).width();
     // Parallax Scripts
     return this.each(function(i) {
@@ -24,7 +32,7 @@
         var windowHeight = window.innerHeight;
         var windowBottom = scrollTop + windowHeight;
         var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
-        var parallax = Math.round((parallax_dist * percentScrolled));
+        var parallax = Math.round((parallax_dist * percentScrolled)* parallaxSpeed);
 
         if (initial) {
           $img.css('display', 'block');
