@@ -2,7 +2,7 @@
 
   // Add posibility to scroll to selected option
   // usefull for select for example
-  $.fn.scrollTo = function(elem) {
+  $.fn.scrollTo = function (elem) {
     $(this).scrollTop($(this).scrollTop() - $(this).offset().top + $(elem).offset().top);
     return this;
   };
@@ -21,7 +21,7 @@
 
     // Open dropdown.
     if (options === "open") {
-      this.each(function() {
+      this.each(function () {
         $(this).trigger('open');
       });
       return false;
@@ -29,19 +29,19 @@
 
     // Close dropdown.
     if (options === "close") {
-      this.each(function() {
+      this.each(function () {
         $(this).trigger('close');
       });
       return false;
     }
 
-    this.each(function(){
+    this.each(function () {
       var origin = $(this);
       var curr_options = $.extend({}, defaults, options);
       var isFocused = false;
 
       // Dropdown menu
-      var activates = $("#"+ origin.attr('data-activates'));
+      var activates = $("#" + origin.attr('data-activates'));
 
       function updateOptions() {
         if (origin.data('induration') !== undefined)
@@ -152,7 +152,7 @@
         else if (currAlignment === 'right') {
           var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
           gutterSpacing = -curr_options.gutter;
-          leftPosition =  offsetRight + gutterSpacing;
+          leftPosition = offsetRight + gutterSpacing;
         }
 
         // Position dropdown
@@ -169,17 +169,17 @@
             queue: false,
             duration: curr_options.inDuration,
             easing: 'easeOutCubic',
-            complete: function() {
+            complete: function () {
               $(this).css('height', '');
             }
           })
-          .animate( {opacity: 1}, {queue: false, duration: curr_options.inDuration, easing: 'easeOutSine'});
+          .animate({ opacity: 1 }, { queue: false, duration: curr_options.inDuration, easing: 'easeOutSine' });
 
         // Add click close handler to document
-        $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
-          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
+        $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
+          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) && !$(e.target).hasClass('static-text')) {
             hideDropdown();
-            $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+            $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
           }
         });
       }
@@ -190,8 +190,8 @@
         activates.fadeOut(curr_options.outDuration);
         activates.removeClass('active');
         origin.removeClass('active');
-        $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
-        setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
+        $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
+        setTimeout(function () { activates.css('max-height', ''); }, curr_options.outDuration);
       }
 
       // Hover
@@ -199,25 +199,25 @@
         var open = false;
         origin.unbind('click.' + origin.attr('id'));
         // Hover handler to show dropdown
-        origin.on('mouseenter', function(e){ // Mouse over
+        origin.on('mouseenter', function (e) { // Mouse over
           if (open === false) {
             placeDropdown();
             open = true;
           }
         });
-        origin.on('mouseleave', function(e){
+        origin.on('mouseleave', function (e) {
           // If hover on origin then to something other than dropdown content, then close
           var toEl = e.toElement || e.relatedTarget; // added browser compatibility for target element
-          if(!$(toEl).closest('.dropdown-content').is(activates)) {
+          if (!$(toEl).closest('.dropdown-content').is(activates)) {
             activates.stop(true, true);
             hideDropdown();
             open = false;
           }
         });
 
-        activates.on('mouseleave', function(e){ // Mouse out
+        activates.on('mouseleave', function (e) { // Mouse out
           var toEl = e.toElement || e.relatedTarget;
-          if(!$(toEl).closest('.dropdown-button').is(origin)) {
+          if (!$(toEl).closest('.dropdown-button').is(origin)) {
             activates.stop(true, true);
             hideDropdown();
             open = false;
@@ -228,11 +228,11 @@
       } else {
         // Click handler to show dropdown
         origin.unbind('click.' + origin.attr('id'));
-        origin.bind('click.'+origin.attr('id'), function(e){
+        origin.bind('click.' + origin.attr('id'), function (e) {
           if (!isFocused) {
-            if ( origin[0] == e.currentTarget &&
-                 !origin.hasClass('active') &&
-                 ($(e.target).closest('.dropdown-content').length === 0)) {
+            if (origin[0] == e.currentTarget &&
+              !origin.hasClass('active') &&
+              ($(e.target).closest('.dropdown-content').length === 0)) {
               e.preventDefault(); // Prevents button click from moving window
               if (curr_options.stopPropagation) {
                 e.stopPropagation();
@@ -242,7 +242,7 @@
             // If origin is clicked and menu is open, close menu
             else if (origin.hasClass('active')) {
               hideDropdown();
-              $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+              $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
             }
           }
         });
@@ -250,7 +250,7 @@
       } // End else
 
       // Listen to open and close event - useful for select component
-      origin.on('open', function(e, eventType) {
+      origin.on('open', function (e, eventType) {
         placeDropdown(eventType);
       });
       origin.on('close', hideDropdown);
@@ -259,7 +259,7 @@
     });
   }; // End dropdown plugin
 
-  $(document).ready(function(){
+  $(document).ready(function () {
     $('.dropdown-button').dropdown();
   });
-}( jQuery ));
+} (jQuery));
