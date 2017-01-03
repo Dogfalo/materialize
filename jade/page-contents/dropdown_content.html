@@ -4,14 +4,16 @@
 
       <div id="introduction" class="scrollspy section">
         <h4>Introduction</h4>
-        <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. </p>
+        <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute
+          matches the id in the <code class="language-markup">&lt;ul></code> tag. </p>
         <p>You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. </p>
         <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="#!">one</a></li>
           <li><a href="#!">two</a></li>
-          <li class="divider"></li>
           <li><a href="#!">three</a></li>
+          <li class="divider"></li>
+          <li class="static-text">four</li>
         </ul>
         <pre><code class="language-markup">
   &lt;!-- Dropdown Trigger -->
@@ -21,8 +23,9 @@
   &lt;ul id='dropdown1' class='dropdown-content'>
     &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
-    &lt;li class="divider">&lt;/li>
     &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+    &lt;li class="divider">&lt;/li>
+    &lt;li class="static-text">four&lt;/li>
   &lt;/ul>
         </code></pre>
       </div>
@@ -32,8 +35,8 @@
         <table class="striped">
           <thead>
             <tr>
-                <th>Option Name</th>
-                <th>Description</th>
+              <th>Option Name</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -72,7 +75,8 @@
             </tr>
           </tbody>
         </table>
-        <p>To use these inline you have to add them as data attributes. If you want more dynamic control, you can define them using the jQuery plugin below. </p>
+        <p>To use these inline you have to add them as data attributes. If you want more dynamic control, you can define them
+          using the jQuery plugin below. </p>
         <pre><code class="language-markup">
   &lt;a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
         </code></pre>
@@ -98,7 +102,7 @@
         </code></pre>
 
         <p>
-        You can also open dropdowns programatically, the below code will make your modal open on document ready:
+          You can also open dropdowns programatically, the below code will make your modal open on document ready:
         </p>
 
         <pre><code class="language-javascript">
@@ -106,7 +110,7 @@
         </code></pre>
 
         <p>
-        You can also close dropdowns programatically:
+          You can also close dropdowns programatically:
         </p>
 
         <pre><code class="language-javascript">
@@ -115,24 +119,25 @@
       </div>
 
 
-</div>
+    </div>
 
     <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
-          <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#initialization">Initialization</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<ul class="section table-of-contents">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#options">Options</a></li>
+  <li><a href="#initialization">Initialization</a></li>
+</ul>
+</div>
+</div>
+</div>
 
-  </div>
+</div>
 </div>

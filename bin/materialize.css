@@ -5220,6 +5220,18 @@ button.btn-floating {
   padding: 14px 16px;
 }
 
+.dropdown-content li.static-text {
+  cursor: default;
+  color: rgba(0, 0, 0, 0.87);
+  display: block;
+  line-height: 22px;
+  padding: 14px 16px;
+}
+
+.dropdown-content li.static-text:hover, .dropdown-content li.static-text.active, .dropdown-content li.static-text.selected {
+  background-color: transparent;
+}
+
 .dropdown-content li > span > label {
   top: 1px;
   left: 0;
