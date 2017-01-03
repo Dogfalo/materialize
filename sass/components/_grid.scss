@@ -46,6 +46,11 @@
     clear: both;
   }
 
+  // Remove's the bottom margin if the row is the last row
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   .col {
     float: left;
     box-sizing: border-box;
