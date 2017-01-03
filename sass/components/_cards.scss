@@ -98,6 +98,45 @@
     }
   }
 
+  // Responsive Horizontal Cards
+  @media #{$medium-and-up} {
+    &.responsive-horizontal {
+      &.small, &.medium, &.large {
+        .card-image {
+          height: 100%;
+          max-height: none;
+          overflow: visible;
+
+          img {
+            height: 100%;
+          }
+        }
+      }
+
+      display: flex;
+
+      .card-image {
+        max-width: 50%;
+        img {
+          border-radius: 2px 0 0 2px;
+          max-width: 100%;
+          width: auto;
+        }
+      }
+
+      .card-stacked {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+
+        .card-content {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+  
   // Sticky Action Section
   &.sticky-action {
     .card-action {
