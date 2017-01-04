@@ -4468,6 +4468,25 @@ small {
   }
 }
 
+.scale-transition {
+  transition: -webkit-transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
+  transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
+  transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63), -webkit-transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
+}
+
+.scale-transition.scale-out {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  transition: -webkit-transform .2s !important;
+  transition: transform .2s !important;
+  transition: transform .2s, -webkit-transform .2s !important;
+}
+
+.scale-transition.scale-in {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
 .card-panel {
   transition: box-shadow .25s;
   padding: 24px;

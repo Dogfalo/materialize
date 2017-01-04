@@ -155,6 +155,14 @@
       });
     }
 
+    // CSS Transitions Demo Init
+    if ($('#scale-demo').length &&
+        $('#scale-demo-trigger').length) {
+      $('#scale-demo-trigger').click(function() {
+        $('#scale-demo').toggleClass('scale-out');
+      });
+    }
+
     // Plugin initialization
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
