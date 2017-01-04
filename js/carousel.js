@@ -228,8 +228,8 @@
           // onCycleTo callback
           if (lastCenter !== center &&
               typeof(options.onCycleTo) === "function") {
-            var $curr_item = view.find('.carousel-item').eq(center);
-            options.onCycleTo.call(this, $curr_item);
+            var $curr_item = view.find('.carousel-item').eq(wrap(center));
+            options.onCycleTo.call(this, $curr_item, dragged);
           }
         }
 
