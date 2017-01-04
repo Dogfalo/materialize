@@ -693,11 +693,13 @@ td, th{
 }
 
 // Text Align
-.left-align {
-  text-align: left;
-}
-.right-align {
-  text-align: right
+@media #{$small-and-down} {
+  .left-align {
+    text-align: left;
+  }
+  .right-align {
+    text-align: right
+  }
 }
 .center, .center-align {
   text-align: center;
