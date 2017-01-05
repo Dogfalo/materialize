@@ -119,8 +119,8 @@
         $tabs_wrapper = $tabs_content.wrapAll('<div class="tabs-content carousel"></div>');
         $tabs_content.css('display', '');
         $('.tabs-content.carousel').carousel({
-          full_width: true,
-          no_wrap: true,
+          fullWidth: true,
+          noWrap: true,
           onCycleTo: function(item) {
             if (!clicked) {
               console.log(item, $tabs_wrapper);
