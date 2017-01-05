@@ -163,6 +163,14 @@
       });
     }
 
+    // Swipeable Tabs Demo Init
+    if ($('#tabs-swipe-demo').length) {
+      $('#tabs-swipe-demo').tabs({
+        'swipeable': true,
+        'responsiveThreshold': Infinity
+      });
+    }
+
     // Plugin initialization
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
