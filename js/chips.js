@@ -68,8 +68,16 @@
       });
 
       self.$document.off('click.chips-select', SELS.CHIP).on('click.chips-select', SELS.CHIP, function(e){
-        $(SELS.CHIP).removeClass('selected');
-        $(this).toggleClass('selected');
+        var $chip = $(e.target);
+        if ($chip.length) {
+          var wasSelected = $chip.hasClass('selected');
+          var $chips = $chip.closest(SELS.CHIPS);
+          $(SELS.CHIP).removeClass('selected');
+
+          if (!wasSelected) {
+            self.selectChip($chip.index(), $chips);
+          }
+        }
       });
 
       self.$document.off('keydown.chips').on('keydown.chips', function(e){

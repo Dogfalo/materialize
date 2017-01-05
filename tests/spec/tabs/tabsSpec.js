@@ -55,8 +55,23 @@ describe("Tabs Plugin", function () {
           done();
         }, 400);
       }, 400);
-
     });
+
+    it("shouldn't hide active tab if clicked while active", function (done) {
+      var activeTab = normalTabs.find('.active');
+      var activeTabHash = activeTab.attr('href');
+      var indicator = normalTabs.find('.indicator');
+
+      expect(indicator).toExist('Indicator should be generated');
+
+      activeTab.click();
+
+      setTimeout(function() {
+        expect($(activeTabHash)).toBeVisible('Clicking active tab while active should not hide it.');
+        done();
+      }, 400);
+    });
+
 
     it("should horizontally scroll when too many tabs", function () {
       var tabsScrollWidth = 0;

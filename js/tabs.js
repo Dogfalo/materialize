@@ -80,6 +80,7 @@
 
       if ($active[0] !== undefined) {
         $content = $($active[0].hash);
+        $content.addClass('active');
       }
 
       // append indicator then set indicator width to tab width
@@ -157,9 +158,7 @@
 
         // Make the old tab inactive.
         $active.removeClass('active');
-        if ($content !== undefined) {
-          $content.hide();
-        }
+        var $oldContent = $content
 
         // Update the variables with the new link and content
         $active = $(this);
@@ -177,6 +176,7 @@
         // Change url to current tab
         // window.location.hash = $active.attr('href');
 
+        // Swap content
         if (options.swipeable) {
           if ($tabs_content.length) {
             $tabs_content.carousel('set', index);
@@ -184,9 +184,16 @@
         } else {
           if ($content !== undefined) {
             $content.show();
+            $content.addClass('active');
             if (typeof(options.onShow) === "function") {
               options.onShow.call(this, $content);
             }
+          }
+
+          if ($oldContent !== undefined &&
+              !$oldContent.is($content)) {
+            $oldContent.hide();
+            $oldContent.removeClass('active');
           }
         }
 

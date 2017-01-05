@@ -61,6 +61,7 @@
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
+                  <li><a href="css-transitions.html">Transitions</a></li>
                   <li><a href="typography.html">Typography</a></li>
                 </ul>
               </div>
@@ -217,11 +218,10 @@
         <p>You can customize the behavior of each collapsible using these options. For example, you can call a custom function to run when a collapsbile is opened or closed. The function passes the <span class="language-markup">li</span> element that was opened or closed as an argument.</p>
         <pre><code class="language-javascript">
   $('.collapsible').collapsible({
-      accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-      onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
-      onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
-    }
-  );
+    accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
+    onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
+  });
         </code></pre>
         <br><br>
 

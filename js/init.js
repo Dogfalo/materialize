@@ -78,6 +78,12 @@
     checkForChanges();
 
 
+    // BuySellAds Demos close button.
+    $('.buysellads.buysellads-demo .close').on('click', function() {
+      $(this).parent().remove();
+    });
+
+
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
@@ -137,8 +143,28 @@
       indeterminateCheckbox.indeterminate = true;
 
 
+    // Pushpin Demo Init
+    if ($('.pushpin-demo-nav').length) {
+      $('.pushpin-demo-nav').each(function() {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: $target.offset().top + $target.outerHeight() - $this.height()
+        });
+      });
+    }
+
+    // CSS Transitions Demo Init
+    if ($('#scale-demo').length &&
+        $('#scale-demo-trigger').length) {
+      $('#scale-demo-trigger').click(function() {
+        $('#scale-demo').toggleClass('scale-out');
+      });
+    }
+
     // Plugin initialization
-    $('.carousel.carousel-slider').carousel({full_width: true});
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
     $('.slider').slider({full_width: true});
     $('.parallax').parallax();

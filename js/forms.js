@@ -5,11 +5,13 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label').addClass('active');
-        }
-        else {
-          $(this).siblings('label').removeClass('active');
+        var $this = $(this);
+        if ($(element).val().length > 0 || element.autofocus || $this.attr('placeholder') !== undefined) {
+          $this.siblings('label').addClass('active');
+        } else if ($(element)[0].validity) {
+          $this.siblings('label').toggleClass('active', $(element)[0].validity.badInput === true);
+        } else {
+          $this.siblings('label').removeClass('active');
         }
       });
     };
@@ -514,10 +516,14 @@
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
             var label = $(this).val();
+            if (multiple && label.indexOf(',') >= 0) {
+              label = label.split(',')[0];
+            }
+
             var selectedOption = options.find('li').filter(function() {
               return $(this).text().toLowerCase() === label.toLowerCase();
             })[0];
-            activateOption(options, selectedOption);
+            activateOption(options, selectedOption, true);
           }
         },
         'click': function (e){
@@ -554,13 +560,20 @@
         });
       }
 
-      // Make option as selected and scroll to selected position
-      var activateOption = function(collection, newOption) {
+      /**
+       * Make option as selected and scroll to selected position
+       * @param {jQuery} collection  Select options jQuery element
+       * @param {Element} newOption  element of the new option
+       * @param {Boolean} firstActivation  If on first activation of select
+       */
+      var activateOption = function(collection, newOption, firstActivation) {
         if (newOption) {
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
           option.addClass('selected');
-          options.scrollTo(option);
+          if (!multiple || !!firstActivation) {
+            options.scrollTo(option);
+          }
         }
       };
 
