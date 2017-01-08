@@ -4,7 +4,10 @@
     var defaults = {
       top: 0,
       bottom: Infinity,
-      offset: 0
+      offset: 0,
+      onPinned: null,
+      onPinTop: null,
+      onPinBottom: null
     };
 
     // Remove pushpin event and classes
@@ -40,6 +43,9 @@
             removePinClasses($(this));
             $(this).css('top', options.offset);
             $(this).addClass('pinned');
+            if (typeof(options.onPinned) === "function") {
+              options.onPinned.call(this, $(this));
+            }
           }
 
           // Add pin-top (when scrolled position is above top)
@@ -47,6 +53,9 @@
             removePinClasses($(this));
             $(this).css('top', 0);
             $(this).addClass('pin-top');
+            if (typeof(options.onPinTop) === "function") {
+              options.onPinTop.call(this, $(this));
+            }
           }
 
           // Add pin-bottom (when scrolled position is below bottom)
@@ -54,6 +63,9 @@
             removePinClasses($(this));
             $(this).addClass('pin-bottom');
             $(this).css('top', options.bottom - $original_offset);
+            if (typeof(options.onPinBottom) === "function") {
+              options.onPinBottom.call(this, $(this));
+            }
           }
         });
       }
