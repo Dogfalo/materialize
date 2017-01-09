@@ -5,7 +5,7 @@
       var defaults = {
         onShow: null,
         swipeable: false,
-        responsiveThreshold: 992, // breakpoint for swipeable
+        responsiveThreshold: Infinity, // breakpoint for swipeable
       };
       options = $.extend(defaults, options);
 
@@ -123,11 +123,9 @@
           noWrap: true,
           onCycleTo: function(item) {
             if (!clicked) {
-              console.log(item, $tabs_wrapper);
               var prev_index = index;
               index = $tabs_wrapper.index(item);
               $active = $links.eq(index);
-              console.log(prev_index, index);
               animateIndicator(prev_index);
             }
           },

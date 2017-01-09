@@ -165,10 +165,7 @@
 
     // Swipeable Tabs Demo Init
     if ($('#tabs-swipe-demo').length) {
-      $('#tabs-swipe-demo').tabs({
-        'swipeable': true,
-        'responsiveThreshold': Infinity
-      });
+      $('#tabs-swipe-demo').tabs({ 'swipeable': true });
     }
 
     // Plugin initialization
