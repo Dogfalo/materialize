@@ -283,7 +283,8 @@
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
-        data: {}
+        data: {},
+        append_image: true
       };
 
       options = $.extend(defaults, options);
@@ -336,7 +337,7 @@
                     key.toLowerCase().indexOf(val) !== -1 &&
                     key.toLowerCase() !== val) {
                   var autocompleteOption = $('<li></li>');
-                  if(!!data[key]) {
+                  if(!!data[key] && options.append_image) {
                     autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
                   } else {
                     autocompleteOption.append('<span>'+ key +'</span>');
