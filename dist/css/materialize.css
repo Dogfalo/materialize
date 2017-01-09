@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.97.8 (http://materializecss.com)
+ * Materialize v0.97.9 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -2866,7 +2866,6 @@ ul.staggered-list li {
 }
 
 footer.page-footer {
-  margin-top: 20px;
   padding-top: 20px;
   background-color: #ee6e73;
 }
@@ -4020,7 +4019,13 @@ nav.nav-extended {
 }
 
 nav.nav-extended .nav-wrapper {
+  min-height: 56px;
   height: auto;
+}
+
+nav.nav-extended .nav-content {
+  position: relative;
+  line-height: normal;
 }
 
 nav a {
@@ -4107,6 +4112,12 @@ nav .brand-logo i.material-icons {
   margin-right: 15px;
 }
 
+nav .nav-title {
+  display: inline-block;
+  font-size: 32px;
+  padding: 28px 0;
+}
+
 nav ul {
   margin: 0;
 }
@@ -4179,11 +4190,6 @@ nav .input-field label.active i {
   color: #fff;
 }
 
-nav .input-field label.active {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
 .navbar-fixed {
   position: relative;
   height: 56px;
@@ -4195,6 +4201,9 @@ nav .input-field label.active {
 }
 
 @media only screen and (min-width: 601px) {
+  nav.nav-extended .nav-wrapper {
+    min-height: 64px;
+  }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
@@ -4471,7 +4480,7 @@ small {
 
 .card-panel {
   transition: box-shadow .25s;
-  padding: 20px;
+  padding: 24px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #fff;
@@ -4605,11 +4614,11 @@ small {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 20px;
+  padding: 24px;
 }
 
 .card .card-content {
-  padding: 20px;
+  padding: 24px;
   border-radius: 0 0 2px 2px;
 }
 
@@ -4619,29 +4628,35 @@ small {
 }
 
 .card .card-content .card-title {
-  line-height: 48px;
+  display: block;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+.card .card-content .card-title i {
+  line-height: 32px;
 }
 
 .card .card-action {
   position: relative;
   background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
-  padding: 20px;
+  padding: 16px 24px;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
-  margin-right: 20px;
+  margin-right: 24px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
 }
 
 .card .card-reveal {
-  padding: 20px;
+  padding: 24px;
   position: absolute;
   background-color: #fff;
   width: 100%;
@@ -4780,7 +4795,6 @@ small {
 }
 
 .tabs.tabs-fixed-width .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -4834,7 +4848,6 @@ small {
     display: flex;
   }
   .tabs .tab {
-    -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
@@ -4982,15 +4995,6 @@ small {
   vertical-align: middle;
 }
 
-.btn-floating i {
-  width: inherit;
-  display: inline-block;
-  text-align: center;
-  color: #fff;
-  font-size: 1.6rem;
-  line-height: 40px;
-}
-
 .btn-floating:hover {
   background-color: #26a69a;
 }
@@ -5006,6 +5010,28 @@ small {
 
 .btn-floating.btn-large i {
   line-height: 56px;
+}
+
+.btn-floating.halfway-fab {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+.btn-floating.halfway-fab.left {
+  right: auto;
+  left: 24px;
+}
+
+.btn-floating i {
+  width: inherit;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 40px;
 }
 
 button.btn-floating {
@@ -5621,10 +5647,7 @@ button.btn-floating {
   cursor: zoom-in;
   position: relative;
   transition: opacity .4s;
-}
-
-.materialboxed:hover {
-  will-change: left, top, width, height;
+  -webkit-backface-visibility: hidden;
 }
 
 .materialboxed:hover:not(.active) {
@@ -6009,7 +6032,7 @@ textarea.materialize-textarea + label:after {
   transition: .2s ease-out;
 }
 
-.input-field label.active {
+.input-field label:not(.label-icon).active {
   font-size: 0.8rem;
   -webkit-transform: translateY(-140%);
           transform: translateY(-140%);
