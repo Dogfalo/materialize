@@ -283,7 +283,8 @@
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
-        data: {}
+        data: {},
+        data_attr : ''
       };
 
       options = $.extend(defaults, options);
@@ -351,7 +352,14 @@
 
           // Set input value
           $autocomplete.on('click', 'li', function () {
-            $input.val($(this).text().trim());
+            var val = $(this).text().trim();
+            $input.val(value);
+
+            // set data attribute value
+            if(options.data_attr){
+                $input.attr(options.data_attr, data[value]);
+            }
+
             $input.trigger('change');
             $autocomplete.empty();
           });
