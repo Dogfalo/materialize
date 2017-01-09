@@ -335,13 +335,20 @@
                 if (data.hasOwnProperty(key) &&
                     key.toLowerCase().indexOf(val) !== -1 &&
                     key.toLowerCase() !== val) {
+                  var id;
+                  var url;
                   var autocompleteOption = $('<li></li>');
                   if(!!data[key]) {
+                    url = typeof data[key] === 'string' ? data[key] : data[key].url;
+                    id = data[key].id;
+                  }
+                  if(!!url) {
                     autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
                   } else {
                     autocompleteOption.append('<span>'+ key +'</span>');
                   }
                   $autocomplete.append(autocompleteOption);
+                  autocompleteOption.data('id', id);
 
                   highlight(val, autocompleteOption);
                 }
@@ -352,7 +359,7 @@
           // Set input value
           $autocomplete.on('click', 'li', function () {
             $input.val($(this).text().trim());
-            $input.trigger('change');
+            $input.trigger('change', { option: $(this) });
             $autocomplete.empty();
           });
         }
