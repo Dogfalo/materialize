@@ -16,14 +16,42 @@
       var outDuration = 200;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
+      placeholder.css("display","table"); // for the progress bar to be same width of img
+      var progressWrapper = $("<div style='position: relative;bottom: 12px;'></div>");
+      var progress = $('<div></div>').addClass('progress');
+      var indeterminateProgress = $('<div></div>').addClass('indeterminate');
+      progress.append(indeterminateProgress);
+      progressWrapper.append(progress);
+
       var originalWidth = 0;
       var originalHeight = 0;
       var ancestorsChanged;
       var ancestor;
       origin.wrap(placeholder);
 
+      var imageChanged = false;
+      // thumbnail data for switching back from original in returnToOriginal
+      var originalSrc = origin.attr("src");
+      var originalSrcWidth = origin.css("width");
+      var originalSrcHeight = origin.css("height");
+
+
 
       origin.on('click', function(){
+        if (!imageChanged && origin.data('external')){
+          // if thumbnail has original version of image
+          progressWrapper.insertAfter(origin); // show progress while new src loads
+          origin.load(function(){ // will enlarge image once new src is loaded
+            enlargeImage(); // enlarge loaded src as normal
+            progressWrapper.remove();
+          }).attr("src",origin.data("external")); // switch src of thumbnail with original
+          imageChanged = true; // now the image is switched
+        }else
+          enlargeImage(); // works like before
+      }); // End origin on click
+
+
+      function enlargeImage(){
         var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
@@ -110,7 +138,7 @@
                            {duration: inDuration, queue: false, easing: 'easeOutQuad'} );
 
         // Add and animate caption if it exists
-        if (origin.data('caption') !== "") {
+        if (origin.data('caption')) {
           var $photo_caption = $('<div class="materialbox-caption"></div>');
           $photo_caption.text(origin.data('caption'));
           $('body').append($photo_caption);
@@ -177,7 +205,7 @@
             ); // End Velocity
         }
 
-      }); // End origin on click
+      } // End origin on click image enlargment
 
 
       // Return on scroll
@@ -227,50 +255,52 @@
         // Resize Image
         origin.velocity(
           {
-            width: originalWidth,
-            height: originalHeight,
+            width: originalSrcWidth, // go back to the thumbnail size
+            height: originalSrcHeight,
             left: 0,
             top: 0
           },
           {
             duration: outDuration,
-            queue: false, easing: 'easeOutQuad'
-          }
-        );
+            queue: false, easing: 'easeOutQuad',
+            complete: function(){
+              placeholder.css({
+                height: '',
+                width: '',
+                position: '',
+                top: '',
+                left: ''
+              });
+
+              origin.css({
+                height: '',
+                top: '',
+                left: '',
+                width: '',
+                'max-width': '',
+                position: '',
+                'z-index': ''
+              });
+              // Remove class
+              origin.removeClass('active');
+              doneAnimating = true;
+
+              origin.unbind("load"); // remove loader of original
+              origin.attr("src", originalSrc); // switch back to thumbnail
+              imageChanged = false; // thumbnail is there
+
+              // Remove overflow overrides on ancestors
+              if (ancestorsChanged)
+                ancestorsChanged.css('overflow', '');
+            }
+          });
 
         // Remove Caption + reset css settings on image
         $('.materialbox-caption').velocity({opacity: 0}, {
           duration: outDuration, // Delay prevents animation overlapping
           queue: false, easing: 'easeOutQuad',
           complete: function(){
-            placeholder.css({
-              height: '',
-              width: '',
-              position: '',
-              top: '',
-              left: ''
-            });
-
-            origin.css({
-              height: '',
-              top: '',
-              left: '',
-              width: '',
-              'max-width': '',
-              position: '',
-              'z-index': '',
-              'will-change': ''
-            });
-
-            // Remove class
-            origin.removeClass('active');
-            doneAnimating = true;
             $(this).remove();
-
-            // Remove overflow overrides on ancestors
-            if (ancestorsChanged) {
-              ancestorsChanged.css('overflow', '');
-            }
           }
         });
 
