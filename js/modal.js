@@ -10,13 +10,13 @@
     init : function(options) {
       var defaults = {
         opacity: 0.5,
-        in_duration: 350,
-        out_duration: 250,
+        inDuration: 350,
+        outDuration: 250,
         ready: undefined,
         complete: undefined,
         dismissible: true,
-        starting_top: '4%',
-        ending_top: '10%'
+        startingTop: '4%',
+        endingTop: '10%'
       };
 
       // Override defaults
@@ -40,12 +40,12 @@
           $modal.find('.modal-close').off('click.close');
           $(document).off('keyup.modal' + overlayID);
 
-          $overlay.velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
+          $overlay.velocity( { opacity: 0}, {duration: options.outDuration, queue: false, ease: "easeOutQuart"});
 
 
           // Define Bottom Sheet animation
           var exitVelocityOptions = {
-            duration: options.out_duration,
+            duration: options.outDuration,
             queue: false,
             ease: "easeOutCubic",
             // Handle modal ready callback
@@ -65,7 +65,7 @@
           }
           else {
             $modal.velocity(
-              { top: options.starting_top, opacity: 0, scaleX: 0.7},
+              { top: options.startingTop, opacity: 0, scaleX: 0.7},
               exitVelocityOptions
             );
           }
@@ -115,12 +115,12 @@
             opacity: 0
           });
 
-          $overlay.velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
+          $overlay.velocity({opacity: options.opacity}, {duration: options.inDuration, queue: false, ease: "easeOutCubic"});
           $modal.data('associated-overlay', $overlay[0]);
 
           // Define Bottom Sheet animation
           var enterVelocityOptions = {
-            duration: options.in_duration,
+            duration: options.inDuration,
             queue: false,
             ease: "easeOutCubic",
             // Handle modal ready callback
@@ -135,8 +135,8 @@
           }
           else {
             $.Velocity.hook($modal, "scaleX", 0.7);
-            $modal.css({ top: options.starting_top });
-            $modal.velocity({top: options.ending_top, opacity: 1, scaleX: '1'}, enterVelocityOptions);
+            $modal.css({ top: options.startingTop });
+            $modal.velocity({top: options.endingTop, opacity: 1, scaleX: '1'}, enterVelocityOptions);
           }
 
         };
@@ -148,7 +148,7 @@
 
         // Close Handlers
         $(document).on('click.modalTrigger', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
-          options.starting_top = ($(this).offset().top - $(window).scrollTop()) /1.15;
+          options.startingTop = ($(this).offset().top - $(window).scrollTop()) /1.15;
           openModal($(this));
           e.preventDefault();
         }); // done set on click

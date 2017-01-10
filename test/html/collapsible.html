@@ -140,6 +140,20 @@
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
     </ul>
+    <br>
+    <h2>Collapsible Callbacks</h2>
+    <ul id="callbacks" class="collapsible" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header"><i class="mdi-maps-place"></i>onOpen</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="mdi-social-whatshot"></i>onClose</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+    </ul>
+
+
 
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -152,6 +166,13 @@
        });
 
       $('select').material_select();
+
+      $('#callbacks').collapsible({
+        accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
+        onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
+      });
+
 
       $('#add-li').click(function() {
         $('#first').append('<li><div class="collapsible-header"><i class="mdi-social-whatshot"></i>Third</div><div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div></li>');

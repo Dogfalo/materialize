@@ -1,37 +1,37 @@
-/* ==========================================================================
-   Materialize variables
-   ========================================================================== */
-/**
- * Table of Contents:
- *
- *  1. Colors
- *  2. Badges
- *  3. Buttons
- *  4. Cards
- *  5. Collapsible
- *  6. Chips
- *  7. Date Picker
- *  8. Dropdown
- *  10. Forms
- *  11. Global
- *  12. Grid
- *  13. Navigation Bar
- *  14. Side Navigation
- *  15. Photo Slider
- *  16. Spinners | Loaders
- *  17. Tabs
- *  18. Tables
- *  19. Toasts
- *  20. Typography
- *  21. Footer
- *  22. Flow Text
- *  23. Collections
- *  24. Progress Bar
- */
+// ==========================================================================
+// Materialize variables
+// ==========================================================================
+//
+// Table of Contents:
+//
+//  1. Colors
+//  2. Badges
+//  3. Buttons
+//  4. Cards
+//  5. Collapsible
+//  6. Chips
+//  7. Date Picker
+//  8. Dropdown
+//  10. Forms
+//  11. Global
+//  12. Grid
+//  13. Navigation Bar
+//  14. Side Navigation
+//  15. Photo Slider
+//  16. Spinners | Loaders
+//  17. Tabs
+//  18. Tables
+//  19. Toasts
+//  20. Typography
+//  21. Footer
+//  22. Flow Text
+//  23. Collections
+//  24. Progress Bar
 
 
-/* 1. Colors
-   ========================================================================== */
+
+// 1. Colors
+// ==========================================================================
 
 $primary-color: color("materialize-red", "lighten-2") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
@@ -43,14 +43,15 @@ $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 
 
-/* 2. Badges
-   ========================================================================== */
+// 2. Badges
+// ==========================================================================
 
 $badge-bg-color: $secondary-color !default;
+$badge-height: 22px !default;
 
 
-/* 3. Buttons
-   ========================================================================== */
+// 3. Buttons
+// ==========================================================================
 
 // Shared styles
 $button-border: none !default;
@@ -81,30 +82,31 @@ $button-flat-disabled-color: lighten(#999, 10%) !default;
 $button-floating-background: $secondary-color !default;
 $button-floating-background-hover: $button-floating-background !default;
 $button-floating-color: #fff !default;
-$button-floating-size: 37px !default;
-$button-floating-large-size: $button-floating-size * 1.5 !default;
+$button-floating-size: 40px !default;
+$button-floating-large-size: 56px !default;
 $button-floating-radius: 50% !default;
 
 
-/* 4. Cards
-   ========================================================================== */
+// 4. Cards
+// ==========================================================================
 
-$card-padding: 20px !default;
+$card-padding: 24px !default;
 $card-bg-color: #fff !default;
 $card-link-color: color("orange", "accent-2") !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
 
-/* 5. Collapsible
-   ========================================================================== */
+// 5. Collapsible
+// ==========================================================================
 
 $collapsible-height: 3rem !default;
+$collapsible-line-height: $collapsible-height !default;
 $collapsible-header-color: #fff !default;
 $collapsible-border-color: #ddd !default;
 
 
-/* 6. Chips
-   ========================================================================== */
+// 6. Chips
+// ==========================================================================
 
 $chip-bg-color: #e4e4e4 !default;
 $chip-border-color: #9e9e9e !default;
@@ -112,8 +114,8 @@ $chip-selected-color: #26a69a !default;
 $chip-margin: 5px !default;
 
 
-/* 7. Date Picker
-   ========================================================================== */
+// 7. Date Picker
+// ==========================================================================
 
 $datepicker-weekday-bg: darken($secondary-color, 7%) !default;
 $datepicker-date-bg: $secondary-color !default;
@@ -123,8 +125,8 @@ $datepicker-selected: $secondary-color !default;
 $datepicker-selected-outfocus: desaturate(lighten($secondary-color, 35%), 15%) !default;
 
 
-/* 8. Dropdown
-   ========================================================================== */
+// 8. Dropdown
+// ==========================================================================
 
 $dropdown-bg-color: #fff !default;
 $dropdown-hover-bg-color: #eee !default;
@@ -132,14 +134,14 @@ $dropdown-color: $secondary-color !default;
 $dropdown-item-height: 50px !default;
 
 
-/* 9. Fonts
-   ========================================================================== */
+// 9. Fonts
+// ==========================================================================
 
 $roboto-font-path: "../fonts/roboto/" !default;
 
 
-/* 10. Forms
-   ========================================================================== */
+// 10. Forms
+// ==========================================================================
 
 // Text Inputs + Textarea
 $input-height: 3rem !default;
@@ -186,8 +188,8 @@ $switch-unchecked-lever-bg: #818181 !default;
 $switch-radius: 15px !default;
 
 
-/* 11. Global
-   ========================================================================== */
+// 11. Global
+// ==========================================================================
 
 // Media Query Ranges
 $small-screen-up: 601px !default;
@@ -204,8 +206,8 @@ $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
 
-/* 12. Grid
-   ========================================================================== */
+// 12. Grid
+// ==========================================================================
 
 $num-cols: 12 !default;
 $gutter-width: 1.5rem !default;
@@ -213,64 +215,67 @@ $element-top-margin: $gutter-width/3 !default;
 $element-bottom-margin: ($gutter-width*2)/3 !default;
 
 
-/* 13. Navigation Bar
-   ========================================================================== */
+// 13. Navigation Bar
+// ==========================================================================
 
 $navbar-height: 64px !default;
+$navbar-line-height: $navbar-height !default;
 $navbar-height-mobile: 56px !default;
+$navbar-line-height-mobile: $navbar-height-mobile !default;
 $navbar-font-size: 1rem !default;
 $navbar-font-color: #fff !default;
 $navbar-brand-font-size: 2.1rem !default;
 
-/* 14. Side Navigation
-   ========================================================================== */
+// 14. Side Navigation
+// ==========================================================================
 
 $sidenav-font-size: 14px !default;
 $sidenav-font-color: rgba(0,0,0,.87) !default;
 $sidenav-bg-color: #fff !default;
 $sidenav-padding: 16px !default;
 $sidenav-item-height: 48px !default;
+$sidenav-line-height: $sidenav-item-height !default;
 
 
-/* 15. Photo Slider
-   ========================================================================== */
+// 15. Photo Slider
+// ==========================================================================
 
 $slider-bg-color: color('grey', 'base') !default;
 $slider-bg-color-light: color('grey', 'lighten-2') !default;
 $slider-indicator-color: color('green', 'base') !default;
 
 
-/* 16. Spinners | Loaders
-   ========================================================================== */
+// 16. Spinners | Loaders
+// ==========================================================================
 
 $spinner-default-color: $secondary-color !default;
 
 
-/* 17. Tabs
-   ========================================================================== */
+// 17. Tabs
+// ==========================================================================
 
 $tabs-underline-color: $primary-color-light !default;
 $tabs-text-color: $primary-color !default;
 $tabs-bg-color: #fff !default;
 
 
-/* 18. Tables
-   ========================================================================== */
+// 18. Tables
+// ==========================================================================
 
 $table-border-color: #d0d0d0 !default;
 $table-striped-color: #f2f2f2 !default;
 
 
-/* 19. Toasts
-   ========================================================================== */
+// 19. Toasts
+// ==========================================================================
 
 $toast-height: 48px !default;
 $toast-color: #323232 !default;
 $toast-text-color: #fff !default;
 
 
-/* 20. Typography
-   ========================================================================== */
+// 20. Typography
+// ==========================================================================
 
 $off-black: rgba(0, 0, 0, 0.87) !default;
 // Header Styles
@@ -282,22 +287,22 @@ $h5-fontsize: 1.64rem !default;
 $h6-fontsize: 1rem !default;
 
 
-/* 21. Footer
-   ========================================================================== */
+// 21. Footer
+// ==========================================================================
 
 $footer-bg-color: $primary-color !default;
 
 
-/* 22. Flow Text
-   ========================================================================== */
+// 22. Flow Text
+// ==========================================================================
 
 $range : $large-screen - $small-screen !default;
 $intervals: 20 !default;
 $interval-size: $range / $intervals !default;
 
 
-/* 23. Collections
-   ========================================================================== */
+// 23. Collections
+// ==========================================================================
 
 $collection-border-color: #e0e0e0 !default;
 $collection-bg-color: #fff !default;
@@ -305,9 +310,10 @@ $collection-active-bg-color: $secondary-color !default;
 $collection-active-color: lighten($secondary-color, 55%) !default;
 $collection-hover-bg-color: #ddd !default;
 $collection-link-color: $secondary-color !default;
+$collection-line-height: 1.5rem !default;
 
 
-/* 24. Progress Bar
-   ========================================================================== */
+// 24. Progress Bar
+// ==========================================================================
 
 $progress-bar-color: $secondary-color !default;
