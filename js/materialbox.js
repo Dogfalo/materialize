@@ -56,8 +56,15 @@
             progressWrapper.remove();
           }).attr("src",origin.data("external")); // switch src of thumbnail with original
           imageChanged = true; // now the image is switched
-        }else
+        }else{
+          originalWidth = origin.width(); // remember fullsize file size
+          originalHeight = origin.height();
+          placeholder.css({
+            width: placeholder[0].getBoundingClientRect().width,
+            height: placeholder[0].getBoundingClientRect().height,
+          })
           enlargeImage(); // works like before
+        }
       }); // End origin on click
 
 
@@ -85,8 +92,6 @@
 
         // Set positioning for placeholder
         placeholder.css({
-          width: originalSrcWidth,
-          height: originalSrcHeight,
           position: 'relative',
           top: 0,
           left: 0
