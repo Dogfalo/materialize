@@ -16,9 +16,9 @@
       var outDuration = 200;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
-      placeholder.css("display","table"); // for the progress bar to be same width of img
-      var progressWrapper = $("<div style='position: relative;bottom: 12px;'></div>");
-      var progress = $('<div></div>').addClass('progress');
+      placeholder.css({ display:" table", position: "relative", width: origin.css("width"), height: origin.css("height") }); // for the progress bar to be same width of img
+      var progressWrapper = $("<div style='position: absolute;bottom: 6px; width:100%'></div>");
+      var progress = $('<div style="margin:0;"></div>').addClass('progress');
       var indeterminateProgress = $('<div></div>').addClass('indeterminate');
       progress.append(indeterminateProgress);
       progressWrapper.append(progress);
@@ -42,6 +42,16 @@
           // if thumbnail has original version of image
           progressWrapper.insertAfter(origin); // show progress while new src loads
           origin.load(function(){ // will enlarge image once new src is loaded
+            originalWidth = origin.width(); // remember fullsize file size
+            originalHeight = origin.height();
+            placeholder.css({
+              width: originalSrcWidth,
+              height: originalSrcHeight
+            })
+            origin.css({ // resize new image to thumnail for smoother animation
+              width: originalSrcWidth,
+              height: originalSrcHeight
+            });
             enlargeImage(); // enlarge loaded src as normal
             progressWrapper.remove();
           }).attr("src",origin.data("external")); // switch src of thumbnail with original
@@ -55,8 +65,6 @@
         var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
-        var originalWidth = origin.width();
-        var originalHeight = origin.height();
 
 
         // If already modal, return to original
@@ -77,8 +85,8 @@
 
         // Set positioning for placeholder
         placeholder.css({
-          width: placeholder[0].getBoundingClientRect().width,
-          height: placeholder[0].getBoundingClientRect().height,
+          width: originalSrcWidth,
+          height: originalSrcHeight,
           position: 'relative',
           top: 0,
           left: 0
@@ -267,7 +275,6 @@
               placeholder.css({
                 height: '',
                 width: '',
-                position: '',
                 top: '',
                 left: ''
               });
