@@ -25,18 +25,18 @@ h5 > span {
 }
 
 nav {
-  // background-color: color("materialize-red", "lighten-2");
+  // background-color: color(materialize-red, lighten-2);
 
   a {
     -webkit-font-smoothing: antialiased;
   }
   ul li a:hover, ul li.active {
-    background-color: color("materialize-red", "lighten-1");
+    background-color: color(materialize-red, lighten-1);
   }
 }
 
 .header {
-  color: color("materialize-red", "lighten-2");
+  color: color(materialize-red, lighten-2);
   font-weight: 300;
 }
 
@@ -219,7 +219,7 @@ a.button-collapse.top-nav {
 }
 
 #index-banner {
-  background-color: color("materialize-red", "lighten-2");
+  background-color: color(materialize-red, lighten-2);
   .container {
     position: relative;
   }
@@ -280,7 +280,7 @@ a.button-collapse.top-nav {
 }
 
 #download-button {
-  background-color: color("materialize-red", "lighten-3");
+  background-color: color(materialize-red, lighten-3);
   width: 260px;
   height: 70px;
   line-height: 70px;
@@ -288,7 +288,7 @@ a.button-collapse.top-nav {
   font-weight: 400;
 
   &:hover {
-    background-color: lighten(color("materialize-red", "base"), 30%);
+    background-color: lighten(color(materialize-red, base), 30%);
   }
 }
 
@@ -297,7 +297,7 @@ a.button-collapse.top-nav {
 
   i {
     margin: 40px 0;
-    color: color("materialize-red", "lighten-2");
+    color: color(materialize-red, lighten-2);
     font-size: 7rem;
     display: block;
   }
@@ -315,14 +315,14 @@ a.button-collapse.top-nav {
   background-color: #FFF;
   position: relative;
   a {
-      color: color("materialize-red", "lighten-2");
+      color: color(materialize-red, lighten-2);
     }
   li {
     &:hover {
-      background-color: color("materialize-red", "lighten-5");
+      background-color: color(materialize-red, lighten-5);
     }
     &.active {
-      background-color: color("materialize-red", "lighten-5");
+      background-color: color(materialize-red, lighten-5);
     }
   }
   .container {
@@ -358,15 +358,15 @@ a.button-collapse.top-nav {
 *******************/
 
 #site-layout-example-left {
-  background-color: color("blue-grey", "lighten-2");
+  background-color: color(blue-grey, lighten-2);
   height: 300px;
 }
 #site-layout-example-right {
-  background-color: color("teal", "lighten-1");
+  background-color: color(teal, lighten-1);
   height: 300px;
 }
 #site-layout-example-top {
-  background-color: color("red", "lighten-2");
+  background-color: color(red, lighten-2);
   height: 42px;
 }
 
@@ -531,7 +531,7 @@ $height: auto;
 
 // Shadow demo styling
 .shadow-demo {
-  background-color: color("teal", "lighten-1");
+  background-color: color(teal, lighten-1);
   width: 100px;
   height: 100px;
   margin: 20px auto;
@@ -627,13 +627,13 @@ pre[class*="language-"] {
     vertical-align: top;
     display: inline-block;
     font-size: 13px;
-    color: color("red", "lighten-2");
+    color: color(red, lighten-2);
   }
   a.carbon-poweredby {
     position: relative;
     left: 28px;
     font-size: 11px;
-    color: color("red", "lighten-3");
+    color: color(red, lighten-3);
   }
 }
 .buysellads #carbonads {
@@ -750,8 +750,8 @@ pre[class*="language-"] {
       left: 0;
       bottom: -15px;
     }
-    .bsa_it_ad .bsa_it_t { color: color("red", "lighten-2"); }
-    .bsa_it_ad .bsa_it_d { color: color("red", "lighten-3"); }
+    .bsa_it_ad .bsa_it_t { color: color(red, lighten-2); }
+    .bsa_it_ad .bsa_it_d { color: color(red, lighten-3); }
   }
 
   .bsa_it_ad a {
@@ -778,7 +778,7 @@ pre[class*="language-"] {
     background-color: transparent;
 
     .bsa_it_t { color: #fff; }
-    .bsa_it_d { color: color("red", "lighten-4"); }
+    .bsa_it_d { color: color(red, lighten-4); }
   }
 
   .bsa_it_p {
@@ -786,7 +786,7 @@ pre[class*="language-"] {
     left: 40px;
     bottom: -5px;
 
-    a { color: color("red", "lighten-4"); }
+    a { color: color(red, lighten-4); }
   }
 }
 
@@ -830,7 +830,7 @@ body.parallax-demo footer {
   }
   .btn {
     &:not(.waves-light) {
-    background-color: color("shades", "white");
+    background-color: color(shades, white);
     color: #212121;
     }
   }
@@ -886,14 +886,14 @@ body.parallax-demo footer {
       color: $off-black;
       &:hover{
       color: inherit;
-      background-color: color("materialize-red", "lighten-5");
+      background-color: color(materialize-red, lighten-5);
       }
     }
 
   }
 
   .txlive-langselector-toggle {
-    border-bottom: 2px solid color("materialize-red", "lighten-2");
+    border-bottom: 2px solid color(materialize-red, lighten-2);
   }
 
   .txlive-langselector-current {
