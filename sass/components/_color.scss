@@ -378,4 +378,6 @@ $colors: (
   } @else {
     @return map-get($colors, $color);
   }
+  @warn "Unknown `#{name}` in $colors.";
+  @return null;
 }
