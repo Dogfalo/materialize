@@ -43,9 +43,8 @@ describe("Autocomplete Plugin", function () {
 
     it("should limit results if option is set", function (done) {
       var $limited = $('#limited-autocomplete');
-      var $autocompleteEl = $limited.parent().find('.autocomplete-content');
       var data = {};
-      for (var i = 1000; i >= 0; i--) {
+      for (var i = 100; i >= 0; i--) {
         var randString = 'a' + Math.random().toString(36).substring(20);
         data[randString] = null;
       }
@@ -59,10 +58,11 @@ describe("Autocomplete Plugin", function () {
       $limited.val('a');
       $limited.trigger('keyup');
 
+      var $autocompleteEl = $limited.parent().find('.autocomplete-content');
       setTimeout(function() {
-        expect($autocompleteEl.children().length).toEqual(20, 'Results should be at max the set limit');
+        expect($autocompleteEl.children().length).toBeLessThan(21, 'Results should be at max the set limit');
         done();
-      }, 100);
+      }, 200);
 
     });
   });
