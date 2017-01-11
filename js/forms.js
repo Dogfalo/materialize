@@ -283,7 +283,8 @@
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
-        data: {}
+        data: {},
+        limit: Infinity
       };
 
       options = $.extend(defaults, options);
@@ -291,19 +292,31 @@
       return this.each(function() {
         var $input = $(this);
         var data = options.data,
+            count = 0,
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
         // Check if data isn't empty
         if (!$.isEmptyObject(data)) {
-          // Create autocomplete element
           var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
+          var $oldAutocomplete;
 
-          // Append autocomplete element
+          // Append autocomplete element.
+          // Prevent double structure init.
           if ($inputDiv.length) {
-            $inputDiv.append($autocomplete); // Set ul in body
+            $oldAutocomplete = $inputDiv.children('.autocomplete-content.dropdown-content').first();
+            if (!$oldAutocomplete.length) {
+              $inputDiv.append($autocomplete); // Set ul in body
+            }
           } else {
-            $input.after($autocomplete);
+            $oldAutocomplete = $input.next('.autocomplete-content.dropdown-content');
+            if (!$oldAutocomplete.length) {
+              $input.after($autocomplete);
+            }
           }
+          if ($oldAutocomplete.length) {
+            $autocomplete = $oldAutocomplete;
+          }
+
 
           var highlight = function(string, $el) {
             var img = $el.find('img');
@@ -319,8 +332,11 @@
           };
 
           // Perform search
-          $input.on('keyup', function (e) {
-            // Capture Enter
+          $input.off('keyup.autocomplete').on('keyup.autocomplete', function (e) {
+            // Reset count.
+            count = 0;
+
+            // Capture enter.
             if (e.which === 13) {
               $autocomplete.find('li').first().click();
               return;
@@ -335,15 +351,21 @@
                 if (data.hasOwnProperty(key) &&
                     key.toLowerCase().indexOf(val) !== -1 &&
                     key.toLowerCase() !== val) {
+                  // Break if past limit
+                  if (count >= options.limit) {
+                    break;
+                  }
+
                   var autocompleteOption = $('<li></li>');
-                  if(!!data[key]) {
+                  if (!!data[key]) {
                     autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
                   } else {
                     autocompleteOption.append('<span>'+ key +'</span>');
                   }
-                  $autocomplete.append(autocompleteOption);
 
+                  $autocomplete.append(autocompleteOption);
                   highlight(val, autocompleteOption);
+                  count++;
                 }
               }
             }
