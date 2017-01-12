@@ -182,8 +182,8 @@
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
     });
 
+    // Chips
     $('.chips').material_chip();
-
     $('.chips-initial').material_chip({
       readOnly: true,
       data: [{
@@ -194,10 +194,16 @@
         tag: 'Google',
       }]
     });
-
     $('.chips-placeholder').material_chip({
       placeholder: 'Enter a tag',
       secondaryPlaceholder: '+Tag',
+    });
+    $('.chips-autocomplete').material_chip({
+      autocompleteData: {
+        'Apple': null,
+        'Microsoft': null,
+        'Google': null
+      }
     });
 
 

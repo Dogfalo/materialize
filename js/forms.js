@@ -284,7 +284,8 @@
       // Defaults
       var defaults = {
         data: {},
-        limit: Infinity
+        limit: Infinity,
+        onAutocomplete: null
       };
 
       options = $.extend(defaults, options);
@@ -373,9 +374,15 @@
 
           // Set input value
           $autocomplete.on('click', 'li', function () {
-            $input.val($(this).text().trim());
+            var text = $(this).text().trim();
+            $input.val(text);
             $input.trigger('change');
             $autocomplete.empty();
+
+            // Handle onAutocomplete callback.
+            if (typeof(options.onAutocomplete) === "function") {
+              options.onAutocomplete.call(this, text);
+            }
           });
         }
       });

@@ -1,9 +1,10 @@
 (function ($) {
-  var chipsHandleEvents = false;
   var materialChipsDefaults = {
     data: [],
     placeholder: '',
     secondaryPlaceholder: '',
+    autocompleteData: {},
+    autocompleteLimit: Infinity,
   };
 
   $(document).ready(function() {
@@ -34,7 +35,7 @@
     }
 
     var curr_options = $.extend({}, materialChipsDefaults, options);
-
+    self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteData);
 
     // Initialize
     this.init = function() {
@@ -43,6 +44,7 @@
       self.$el.each(function(){
         var $chips = $(this);
         var chipId = Materialize.guid();
+        self.chipId = chipId;
 
         if (!curr_options.data || !(curr_options.data instanceof Array)) {
           curr_options.data = [];
@@ -60,7 +62,7 @@
       });
     };
 
-    this.handleEvents = function(){
+    this.handleEvents = function() {
       var SELS = self.SELS;
 
       self.$document.off('click.chips-focus', SELS.CHIPS).on('click.chips-focus', SELS.CHIPS, function(e){
@@ -161,6 +163,13 @@
 
         // enter
         if (13 === e.which) {
+          // Override enter if autocompleting.
+          if (self.hasAutocomplete &&
+              $chips.find('.autocomplete-content.dropdown-content').length &&
+              $chips.find('.autocomplete-content.dropdown-content').children().length) {
+            return;
+          }
+
           e.preventDefault();
           self.addChip({tag: $target.val()}, $chips);
           $target.val('');
@@ -203,6 +212,20 @@
         if ($chips.data('chips').length) {
           label.addClass('active');
         }
+      }
+
+      // Setup autocomplete if needed.
+      var input = $('#' + chipId);
+      if (self.hasAutocomplete) {
+        input.autocomplete({
+          data: curr_options.autocompleteData,
+          limit: curr_options.autocompleteLimit,
+          onAutocomplete: function(val) {
+            self.addChip({tag: val}, $chips);
+            input.val('');
+            input.focus();
+          },
+        })
       }
     };
 
@@ -289,9 +312,6 @@
     // init
     this.init();
 
-    if (!chipsHandleEvents) {
-      this.handleEvents();
-      chipsHandleEvents = true;
-    }
+    this.handleEvents();
   };
 }( jQuery ));
