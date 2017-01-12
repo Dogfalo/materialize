@@ -294,6 +294,8 @@
         var $input = $(this);
         var data = options.data,
             count = 0,
+            activeIndex = 0,
+            oldVal,
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
         // Check if data isn't empty
@@ -318,7 +320,7 @@
             $autocomplete = $oldAutocomplete;
           }
 
-
+          // Highlight partial match.
           var highlight = function(string, $el) {
             var img = $el.find('img');
             var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
@@ -332,43 +334,94 @@
             }
           };
 
+          // Reset current element position
+          var resetCurrentElement = function() {
+            activeIndex = 0;
+            $autocomplete.find('.active').removeClass('active');
+          }
+
           // Perform search
           $input.off('keyup.autocomplete').on('keyup.autocomplete', function (e) {
             // Reset count.
             count = 0;
 
-            // Capture enter.
-            if (e.which === 13) {
-              $autocomplete.find('li').first().click();
+            // Don't capture enter or arrow key usage.
+            if (e.which === 13 ||
+                e.which === 38 ||
+                e.which === 40) {
               return;
             }
 
             var val = $input.val().toLowerCase();
-            $autocomplete.empty();
 
             // Check if the input isn't empty
-            if (val !== '') {
-              for(var key in data) {
-                if (data.hasOwnProperty(key) &&
-                    key.toLowerCase().indexOf(val) !== -1 &&
-                    key.toLowerCase() !== val) {
-                  // Break if past limit
-                  if (count >= options.limit) {
-                    break;
-                  }
+            if (oldVal !== val) {
+              $autocomplete.empty();
+              resetCurrentElement();
 
-                  var autocompleteOption = $('<li></li>');
-                  if (!!data[key]) {
-                    autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
-                  } else {
-                    autocompleteOption.append('<span>'+ key +'</span>');
-                  }
+              if (val !== '') {
+                for(var key in data) {
+                  if (data.hasOwnProperty(key) &&
+                      key.toLowerCase().indexOf(val) !== -1 &&
+                      key.toLowerCase() !== val) {
+                    // Break if past limit
+                    if (count >= options.limit) {
+                      break;
+                    }
 
-                  $autocomplete.append(autocompleteOption);
-                  highlight(val, autocompleteOption);
-                  count++;
+                    var autocompleteOption = $('<li></li>');
+                    if (!!data[key]) {
+                      autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+                    } else {
+                      autocompleteOption.append('<span>'+ key +'</span>');
+                    }
+
+                    $autocomplete.append(autocompleteOption);
+                    highlight(val, autocompleteOption);
+                    count++;
+                  }
                 }
               }
+            }
+
+            // Update oldVal
+            oldVal = val;
+          });
+
+          $input.off('keydown.autocomplete').on('keydown.autocomplete', function (e) {
+            // Arrow keys and enter key usage
+            var keyCode = e.which,
+                liElement,
+                numItems = $autocomplete.children('li').length,
+                $active = $autocomplete.children('.active').first();
+
+            // select element on Enter
+            if (keyCode === 13) {
+              liElement = $autocomplete.children('li').eq(activeIndex);
+              if (liElement.length) {
+                liElement.click();
+                e.preventDefault();
+              }
+              return;
+            }
+
+            // Capture up and down key
+            if ( keyCode === 38 || keyCode === 40 ) {
+              e.preventDefault();
+
+              if (keyCode === 38 &&
+                  activeIndex > 0) {
+                activeIndex--;
+              }
+
+              if (keyCode === 40 &&
+                  activeIndex < (numItems - 1) &&
+                  $active.length) {
+                activeIndex++;
+              }
+
+              $active.removeClass('active');
+              $autocomplete.children('li').eq(activeIndex).addClass('active');
             }
           });
 
@@ -378,6 +431,7 @@
             $input.val(text);
             $input.trigger('change');
             $autocomplete.empty();
+            resetCurrentElement();
 
             // Handle onAutocomplete callback.
             if (typeof(options.onAutocomplete) === "function") {
