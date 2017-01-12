@@ -373,11 +373,13 @@ $colors: (
 // to avoid to repeating map-get($colors, ...)
 
 @function color($color, $variant:null) {
-  @if ($variant != null) {
-    @return map-get(map-get($colors, $color), $variant);
-  } @else {
-    @return map-get($colors, $color);
+  @if map-has-key($colors, $color) {
+    @if ($variant != null) {
+      @return map-get(map-get($colors, $color), $variant);
+    } @else {
+      @return map-get($colors, $color);
+    }
   }
-  @warn "Unknown `#{name}` in $colors.";
+  @warn "Unknown `#{$color}` in $colors.";
   @return null;
 }
