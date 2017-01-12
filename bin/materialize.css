@@ -5417,10 +5417,10 @@ button.btn-floating {
   padding: 4px 6px;
   height: 56px;
   width: 100%;
+  text-align: right;
 }
 
 .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
-  float: right;
   margin: 6px 0;
 }
 
