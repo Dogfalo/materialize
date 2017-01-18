@@ -195,6 +195,15 @@ nav {
     position: fixed;
   }
 }
+.navbar-extended-fixed {
+  position: relative;
+  height: $navbar-height-mobile + $tabs-height;
+  z-index: 997;
+
+  nav {
+    position: fixed;
+  }
+}
 @media #{$medium-and-up} {
   nav.nav-extended .nav-wrapper {
     min-height: $navbar-height;
@@ -205,5 +214,8 @@ nav {
   }
   .navbar-fixed {
     height: $navbar-height;
+  }
+  .navbar-extended-fixed{
+    height: $navbar-height + $tabs-height;
   }
 }
