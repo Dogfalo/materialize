@@ -70,8 +70,9 @@
     });
 
     window.validate_field = function(object) {
-      var hasLength = object.attr('length') !== undefined;
-      var lenAttr = parseInt(object.attr('length'));
+      var maxLength = object.attr('length') || object.attr('maxlength');
+      var hasMaxLength = maxLength !== undefined;
+      var maxLenAttr = parseInt(maxLength);
       var len = object.val().length;
 
       if (object.val().length === 0 && object[0].validity.badInput === false) {
@@ -83,7 +84,7 @@
       else {
         if (object.hasClass('validate')) {
           // Check for character counter attributes
-          if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
+          if ((object.is(':valid') && hasMaxLength && (len <= maxLenAttr)) || (object.is(':valid') && !hasMaxLength)) {
             object.removeClass('invalid');
             object.addClass('valid');
           }

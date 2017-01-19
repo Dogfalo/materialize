@@ -10,7 +10,7 @@
         return;
       }
 
-      var itHasLengthAttribute = $input.attr('length') !== undefined;
+      var itHasLengthAttribute = ($input.attr('length') || $input.attr('maxlength')) !== undefined;
 
       if(itHasLengthAttribute){
         $input.on('input', updateCounter);
@@ -24,8 +24,8 @@
   };
 
   function updateCounter(){
-    var maxLength     = +$(this).attr('length'),
-    actualLength      = +$(this).val().length,
+    var maxLength     = $(this).attr('length') || $(this).attr('maxlength'),
+    actualLength      = $(this).val().length,
     isValidLength     = actualLength <= maxLength;
 
     $(this).parent().find('span[class="character-counter"]')
