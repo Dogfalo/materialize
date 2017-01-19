@@ -19,11 +19,10 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     container.appendChild(newToast);
   }
 
-  newToast.style.top = '35px';
   newToast.style.opacity = 0;
 
   // Animate toast in
-  Vel(newToast, { "top" : "0px", opacity: 1 }, {duration: 300,
+  Vel(newToast, {translateY: '-35px',  opacity: 1 }, {duration: 300,
     easing: 'easeOutCubic',
     queue: false});
 
