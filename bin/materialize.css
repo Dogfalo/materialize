@@ -4117,6 +4117,16 @@ nav ul li.active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+nav ul li .select-wrapper input.select-dropdown {
+  margin: 9px 0 20px 0;
+}
+
+nav ul li .dropdown-content li > a,
+nav ul li .dropdown-content li > span {
+  line-height: 38px;
+  height: 66px;
+}
+
 nav ul a {
   transition: background-color .3s;
   font-size: 1rem;
