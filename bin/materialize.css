@@ -5498,10 +5498,6 @@ button.btn-floating {
   display: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-}
-
-.collapsible-body p {
-  margin: 0;
   padding: 2rem;
 }
 
