@@ -182,8 +182,7 @@
             var velocityX = e.gesture.velocityX;
 
             $curr_slide = $slider.find('.active');
-            $curr_slide.velocity({ translateX: x
-                }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            $curr_slide.velocity({duration: 50, queue: false, easing: 'easeOutQuad'});
 
             // Swipe Left
             if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.65)) {
