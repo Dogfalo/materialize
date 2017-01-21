@@ -177,7 +177,8 @@
         }
 
         // delete or left
-         if ((8 === e.keyCode || 37 === e.keyCode) && '' === $target.val() && chipsLength) {
+        if ((8 === e.keyCode || 37 === e.keyCode) && '' === $target.val() && chipsLength) {
+          e.preventDefault();
           self.selectChip(chipsLength - 1, $chips);
           $target.blur();
           return;

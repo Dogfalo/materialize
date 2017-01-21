@@ -2867,8 +2867,14 @@ footer.page-footer {
 
 footer.page-footer .footer-copyright {
   overflow: hidden;
-  height: 50px;
-  line-height: 50px;
+  min-height: 50px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0px;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(51, 51, 51, 0.08);
 }
@@ -4713,7 +4719,7 @@ small {
 
 .toast {
   border-radius: 2px;
-  top: 0;
+  top: 35px;
   width: auto;
   clear: both;
   margin-top: 10px;
@@ -5498,10 +5504,6 @@ button.btn-floating {
   display: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-}
-
-.collapsible-body p {
-  margin: 0;
   padding: 2rem;
 }
 

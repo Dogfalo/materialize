@@ -70,8 +70,8 @@
     });
 
     window.validate_field = function(object) {
-      var hasLength = object.attr('length') !== undefined;
-      var lenAttr = parseInt(object.attr('length'));
+      var hasLength = object.attr('data-length') !== undefined;
+      var lenAttr = parseInt(object.attr('data-length'));
       var len = object.val().length;
 
       if (object.val().length === 0 && object[0].validity.badInput === false) {
