@@ -4629,6 +4629,7 @@ small {
   position: absolute;
   bottom: 0;
   left: 0;
+  max-width: 100%;
   padding: 24px;
 }
 
