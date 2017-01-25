@@ -171,7 +171,7 @@
     // Plugin initialization
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
-    $('.slider').slider({full_width: true});
+    $('.slider').slider();
     $('.parallax').parallax();
     $('.modal').modal();
     $('.scrollspy').scrollSpy();
