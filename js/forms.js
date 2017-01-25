@@ -5,11 +5,13 @@
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || element.autofocus ||$(this).attr('placeholder') !== undefined || $(element)[0].validity.badInput === true) {
-          $(this).siblings('label').addClass('active');
-        }
-        else {
-          $(this).siblings('label').removeClass('active');
+        var $this = $(this);
+        if ($(element).val().length > 0 || element.autofocus || $this.attr('placeholder') !== undefined) {
+          $this.siblings('label').addClass('active');
+        } else if ($(element)[0].validity) {
+          $this.siblings('label').toggleClass('active', $(element)[0].validity.badInput === true);
+        } else {
+          $this.siblings('label').removeClass('active');
         }
       });
     };
@@ -68,8 +70,8 @@
     });
 
     window.validate_field = function(object) {
-      var hasLength = object.attr('length') !== undefined;
-      var lenAttr = parseInt(object.attr('length'));
+      var hasLength = object.attr('data-length') !== undefined;
+      var lenAttr = parseInt(object.attr('data-length'));
       var len = object.val().length;
 
       if (object.val().length === 0 && object[0].validity.badInput === false) {
@@ -281,7 +283,9 @@
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
-        data: {}
+        data: {},
+        limit: Infinity,
+        onAutocomplete: null
       };
 
       options = $.extend(defaults, options);
@@ -289,20 +293,34 @@
       return this.each(function() {
         var $input = $(this);
         var data = options.data,
+            count = 0,
+            activeIndex = 0,
+            oldVal,
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
         // Check if data isn't empty
         if (!$.isEmptyObject(data)) {
-          // Create autocomplete element
           var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
+          var $oldAutocomplete;
 
-          // Append autocomplete element
+          // Append autocomplete element.
+          // Prevent double structure init.
           if ($inputDiv.length) {
-            $inputDiv.append($autocomplete); // Set ul in body
+            $oldAutocomplete = $inputDiv.children('.autocomplete-content.dropdown-content').first();
+            if (!$oldAutocomplete.length) {
+              $inputDiv.append($autocomplete); // Set ul in body
+            }
           } else {
-            $input.after($autocomplete);
+            $oldAutocomplete = $input.next('.autocomplete-content.dropdown-content');
+            if (!$oldAutocomplete.length) {
+              $input.after($autocomplete);
+            }
+          }
+          if ($oldAutocomplete.length) {
+            $autocomplete = $oldAutocomplete;
           }
 
+          // Highlight partial match.
           var highlight = function(string, $el) {
             var img = $el.find('img');
             var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
@@ -316,42 +334,109 @@
             }
           };
 
+          // Reset current element position
+          var resetCurrentElement = function() {
+            activeIndex = 0;
+            $autocomplete.find('.active').removeClass('active');
+          }
+
           // Perform search
-          $input.on('keyup', function (e) {
-            // Capture Enter
-            if (e.which === 13) {
-              $autocomplete.find('li').first().click();
+          $input.off('keyup.autocomplete').on('keyup.autocomplete', function (e) {
+            // Reset count.
+            count = 0;
+
+            // Don't capture enter or arrow key usage.
+            if (e.which === 13 ||
+                e.which === 38 ||
+                e.which === 40) {
               return;
             }
 
             var val = $input.val().toLowerCase();
-            $autocomplete.empty();
 
             // Check if the input isn't empty
-            if (val !== '') {
-              for(var key in data) {
-                if (data.hasOwnProperty(key) &&
-                    key.toLowerCase().indexOf(val) !== -1 &&
-                    key.toLowerCase() !== val) {
-                  var autocompleteOption = $('<li></li>');
-                  if(!!data[key]) {
-                    autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
-                  } else {
-                    autocompleteOption.append('<span>'+ key +'</span>');
-                  }
-                  $autocomplete.append(autocompleteOption);
+            if (oldVal !== val) {
+              $autocomplete.empty();
+              resetCurrentElement();
 
-                  highlight(val, autocompleteOption);
+              if (val !== '') {
+                for(var key in data) {
+                  if (data.hasOwnProperty(key) &&
+                      key.toLowerCase().indexOf(val) !== -1 &&
+                      key.toLowerCase() !== val) {
+                    // Break if past limit
+                    if (count >= options.limit) {
+                      break;
+                    }
+
+                    var autocompleteOption = $('<li></li>');
+                    if (!!data[key]) {
+                      autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+                    } else {
+                      autocompleteOption.append('<span>'+ key +'</span>');
+                    }
+
+                    $autocomplete.append(autocompleteOption);
+                    highlight(val, autocompleteOption);
+                    count++;
+                  }
                 }
               }
+            }
+
+            // Update oldVal
+            oldVal = val;
+          });
+
+          $input.off('keydown.autocomplete').on('keydown.autocomplete', function (e) {
+            // Arrow keys and enter key usage
+            var keyCode = e.which,
+                liElement,
+                numItems = $autocomplete.children('li').length,
+                $active = $autocomplete.children('.active').first();
+
+            // select element on Enter
+            if (keyCode === 13) {
+              liElement = $autocomplete.children('li').eq(activeIndex);
+              if (liElement.length) {
+                liElement.click();
+                e.preventDefault();
+              }
+              return;
+            }
+
+            // Capture up and down key
+            if ( keyCode === 38 || keyCode === 40 ) {
+              e.preventDefault();
+
+              if (keyCode === 38 &&
+                  activeIndex > 0) {
+                activeIndex--;
+              }
+
+              if (keyCode === 40 &&
+                  activeIndex < (numItems - 1) &&
+                  $active.length) {
+                activeIndex++;
+              }
+
+              $active.removeClass('active');
+              $autocomplete.children('li').eq(activeIndex).addClass('active');
             }
           });
 
           // Set input value
           $autocomplete.on('click', 'li', function () {
-            $input.val($(this).text().trim());
+            var text = $(this).text().trim();
+            $input.val(text);
             $input.trigger('change');
             $autocomplete.empty();
+            resetCurrentElement();
+
+            // Handle onAutocomplete callback.
+            if (typeof(options.onAutocomplete) === "function") {
+              options.onAutocomplete.call(this, text);
+            }
           });
         }
       });
@@ -514,10 +599,14 @@
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
             var label = $(this).val();
+            if (multiple && label.indexOf(',') >= 0) {
+              label = label.split(',')[0];
+            }
+
             var selectedOption = options.find('li').filter(function() {
               return $(this).text().toLowerCase() === label.toLowerCase();
             })[0];
-            activateOption(options, selectedOption);
+            activateOption(options, selectedOption, true);
           }
         },
         'click': function (e){
@@ -554,13 +643,20 @@
         });
       }
 
-      // Make option as selected and scroll to selected position
-      var activateOption = function(collection, newOption) {
+      /**
+       * Make option as selected and scroll to selected position
+       * @param {jQuery} collection  Select options jQuery element
+       * @param {Element} newOption  element of the new option
+       * @param {Boolean} firstActivation  If on first activation of select
+       */
+      var activateOption = function(collection, newOption, firstActivation) {
         if (newOption) {
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
           option.addClass('selected');
-          options.scrollTo(option);
+          if (!multiple || !!firstActivation) {
+            options.scrollTo(option);
+          }
         }
       };
 

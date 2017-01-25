@@ -61,6 +61,7 @@
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
+                  <li><a href="css-transitions.html">Transitions</a></li>
                   <li><a href="typography.html">Typography</a></li>
                 </ul>
               </div>
@@ -145,66 +146,67 @@
 
           <tbody>
             <tr>
-              <td>Selector</td>
+              <td>selector</td>
               <td>The selector for the element that is being tracked.</td>
             </tr>
             <tr>
-              <td>Offset</td>
+              <td>offset</td>
               <td>If this is 0, the callback will be fired when the selector element is at the very bottom of the user's window.</td>
             </tr>
             <tr>
-              <td>Callback</td>
+              <td>callback</td>
               <td>Execute a callback function when the user scrolls to the threshold. It will only be called once. <br /> The callback provides a parameter which refers to the current element selected.</td>
             </tr>
           </tbody>
         </table>
+
+        <!-- Demo -->
+        <h2 class="header">ScrollFire Demo</h2>
+        <p>Scroll through slowly to get sense of what ScrollFire can do for you. This is the ScrollFire code that we have used on this page.</p>
+        <pre>
+    <code class="language-javascript">
+    var options = [</code>
+      <code id="call-1" class="language-javascript">{selector: '#staggered-test', offset: 50, callback: function(el) {
+        Materialize.toast("This is our ScrollFire Demo!", 1500 );
+      } },</code>
+      <code id="call-2" class="language-javascript">{selector: '#staggered-test', offset: 205, callback: function(el) {
+        Materialize.toast("Please continue scrolling!", 1500 );
+      } },</code>
+      <code id="call-3" class="language-javascript">{selector: '#staggered-test', offset: 400, callback: function(el) {
+        Materialize.showStaggeredList($(el));
+      } },</code>
+      <code id="call-4" class="language-javascript">{selector: '#image-test', offset: 500, callback: function(el) {
+        Materialize.fadeInImage($(el));
+      } }</code>
+    ];
+    Materialize.scrollFire(options);
+        </code></pre>
+        <ul id="staggered-test">
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+          <li>
+            <h4><a href="#">List Item</a></h4>
+            <p>This is a description</p>
+          </li>
+        </ul>
+
+        <img id="image-test" class="responsive-img" src="https://unsplash.imgix.net/reserve/nE6neNVdRPSIasnmePZe_IMG_1950.jpg?dpr=1.25&fit=crop&fm=jpg&h=700&q=75&w=1050">
       </div>
 
-      <!-- Demo -->
-      <h2 class="header">ScrollFire Demo</h2>
-      <p>Scroll through slowly to get sense of what ScrollFire can do for you. This is the ScrollFire code that we have used on this page.</p>
-      <pre>
-  <code class="language-javascript">
-  var options = [</code>
-    <code id="call-1" class="language-javascript">{selector: '#staggered-test', offset: 50, callback: function(el) {
-      Materialize.toast("This is our ScrollFire Demo!", 1500 );
-    } },</code>
-    <code id="call-2" class="language-javascript">{selector: '#staggered-test', offset: 205, callback: function(el) {
-      Materialize.toast("Please continue scrolling!", 1500 );
-    } },</code>
-    <code id="call-3" class="language-javascript">{selector: '#staggered-test', offset: 400, callback: function(el) {
-      Materialize.showStaggeredList($(el));
-    } },</code>
-    <code id="call-4" class="language-javascript">{selector: '#image-test', offset: 500, callback: function(el) {
-      Materialize.fadeInImage($(el));
-    } }</code>
-  ];
-  Materialize.scrollFire(options);
-      </code></pre>
-      <ul id="staggered-test">
-        <li>
-          <h4><a href="#">List Item</a></h4>
-          <p>This is a description</p>
-        </li>
-        <li>
-          <h4><a href="#">List Item</a></h4>
-          <p>This is a description</p>
-        </li>
-        <li>
-          <h4><a href="#">List Item</a></h4>
-          <p>This is a description</p>
-        </li>
-        <li>
-          <h4><a href="#">List Item</a></h4>
-          <p>This is a description</p>
-        </li>
-        <li>
-          <h4><a href="#">List Item</a></h4>
-          <p>This is a description</p>
-        </li>
-      </ul>
-
-      <img id="image-test" class="responsive-img" src="https://unsplash.imgix.net/reserve/nE6neNVdRPSIasnmePZe_IMG_1950.jpg?dpr=1.25&fit=crop&fm=jpg&h=700&q=75&w=1050">
 
 
     </div>
@@ -265,7 +267,7 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-        © 2014-2016 Materialize, All rights reserved.
+        © 2014-2017 Materialize, All rights reserved.
         <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>

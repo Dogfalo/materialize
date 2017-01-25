@@ -3,7 +3,13 @@ nav {
     height: auto;
 
     .nav-wrapper {
+      min-height: $navbar-height-mobile;
       height: auto;
+    }
+
+    .nav-content {
+      position: relative;
+      line-height: normal;
     }
   }
 
@@ -12,7 +18,7 @@ nav {
   background-color: $primary-color;
   width: 100%;
   height: $navbar-height-mobile;
-  line-height: $navbar-height-mobile;
+  line-height: $navbar-line-height-mobile;
 
   a { color: $navbar-font-color; }
 
@@ -22,7 +28,7 @@ nav {
     display: block;
     font-size: 24px;
     height: $navbar-height-mobile;
-    line-height: $navbar-height-mobile;
+    line-height: $navbar-line-height-mobile;
   }
 
   .nav-wrapper {
@@ -45,7 +51,7 @@ nav {
 
     i {
       height: $navbar-height-mobile;
-      line-height: $navbar-height-mobile;
+      line-height: $navbar-line-height-mobile;
     }
   }
 
@@ -94,6 +100,14 @@ nav {
   }
 
 
+  // Title
+  .nav-title {
+    display: inline-block;
+    font-size: 32px;
+    padding: 28px 0;
+  }
+
+
   // Navbar Links
   ul {
     margin: 0;
@@ -119,6 +133,11 @@ nav {
         margin-top: -2px;
         margin-left: 15px;
         margin-right: 15px;
+
+        & > .material-icons {
+          height: inherit;
+          line-height: inherit;
+        }
       }
 
       &:hover {
@@ -162,9 +181,6 @@ nav {
         transition: color .3s;
       }
       &.active i { color: $navbar-font-color; }
-      &.active {
-        transform: translateY(0);
-      }
     }
   }
 }
@@ -180,9 +196,12 @@ nav {
   }
 }
 @media #{$medium-and-up} {
+  nav.nav-extended .nav-wrapper {
+    min-height: $navbar-height;
+  }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: $navbar-height;
-    line-height: $navbar-height;
+    line-height: $navbar-line-height;
   }
   .navbar-fixed {
     height: $navbar-height;

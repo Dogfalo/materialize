@@ -158,11 +158,11 @@ textarea.materialize-textarea {
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
-  }
 
-  label.active {
-    font-size: $label-font-size;
-    transform: translateY(-140%);
+    &:not(.label-icon).active {
+      font-size: $label-font-size;
+      transform: translateY(-140%);
+    }
   }
 
   // Prefix Icons

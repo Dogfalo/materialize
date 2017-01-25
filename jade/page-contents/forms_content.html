@@ -530,9 +530,9 @@
       &lt;input class="with-gap" name="group1" type="radio" id="test3"  />
       &lt;label for="test3">Green&lt;/label>
     &lt;/p>
-      &lt;p>
-        &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
-        &lt;label for="test4">Brown&lt;/label>
+    &lt;p>
+      &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
+      &lt;label for="test4">Brown&lt;/label>
     &lt;/p>
   &lt;/form>
         </code></pre>
@@ -605,9 +605,9 @@
       &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
       &lt;label for="test7">Green&lt;/label>
     &lt;/p>
-      &lt;p>
-        &lt;input type="checkbox" id="test8" disabled="disabled" />
-        &lt;label for="test8">Brown&lt;/label>
+    &lt;p>
+      &lt;input type="checkbox" id="test8" disabled="disabled" />
+      &lt;label for="test8">Brown&lt;/label>
     &lt;/p>
   &lt;/form>
         </code></pre>
@@ -782,14 +782,14 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <input id="input_text" type="text" length="10">
+                <input id="input_text" type="text" data-length="10">
                 <label for="input_text">Input text</label>
               </div>
             </div>
             <br/>
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+                <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
                 <label for="textarea1">Textarea</label>
               </div>
             </div>
@@ -800,13 +800,13 @@
       &lt;form class="col s12">
         &lt;div class="row">
           &lt;div class="input-field col s6">
-            &lt;input id="input_text" type="text" length="10">
+            &lt;input id="input_text" type="text" data-length="10">
             &lt;label for="input_text">Input text&lt;/label>
           &lt;/div>
         &lt;/div>
         &lt;div class="row">
           &lt;div class="input-field col s12">
-            &lt;textarea id="textarea1" class="materialize-textarea" length="120">&lt;/textarea>
+            &lt;textarea id="textarea1" class="materialize-textarea" data-length="120">&lt;/textarea>
             &lt;label for="textarea1">Textarea&lt;/label>
           &lt;/div>
         &lt;/div>
@@ -863,7 +863,8 @@
       "Apple": null,
       "Microsoft": null,
       "Google": 'http://placehold.it/250x250'
-    }
+    },
+    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
   });
         </code></pre>
       </div>

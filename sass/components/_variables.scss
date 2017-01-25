@@ -47,6 +47,7 @@ $link-color: color("light-blue", "darken-1") !default;
 // ==========================================================================
 
 $badge-bg-color: $secondary-color !default;
+$badge-height: 22px !default;
 
 
 // 3. Buttons
@@ -89,7 +90,7 @@ $button-floating-radius: 50% !default;
 // 4. Cards
 // ==========================================================================
 
-$card-padding: 20px !default;
+$card-padding: 24px !default;
 $card-bg-color: #fff !default;
 $card-link-color: color("orange", "accent-2") !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
@@ -99,6 +100,7 @@ $card-link-color-light: lighten($card-link-color, 20%) !default;
 // ==========================================================================
 
 $collapsible-height: 3rem !default;
+$collapsible-line-height: $collapsible-height !default;
 $collapsible-header-color: #fff !default;
 $collapsible-border-color: #ddd !default;
 
@@ -217,7 +219,9 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 // ==========================================================================
 
 $navbar-height: 64px !default;
+$navbar-line-height: $navbar-height !default;
 $navbar-height-mobile: 56px !default;
+$navbar-line-height-mobile: $navbar-height-mobile !default;
 $navbar-font-size: 1rem !default;
 $navbar-font-color: #fff !default;
 $navbar-brand-font-size: 2.1rem !default;
@@ -230,6 +234,7 @@ $sidenav-font-color: rgba(0,0,0,.87) !default;
 $sidenav-bg-color: #fff !default;
 $sidenav-padding: 16px !default;
 $sidenav-item-height: 48px !default;
+$sidenav-line-height: $sidenav-item-height !default;
 
 
 // 15. Photo Slider
@@ -305,6 +310,7 @@ $collection-active-bg-color: $secondary-color !default;
 $collection-active-color: lighten($secondary-color, 55%) !default;
 $collection-hover-bg-color: #ddd !default;
 $collection-link-color: $secondary-color !default;
+$collection-line-height: 1.5rem !default;
 
 
 // 24. Progress Bar

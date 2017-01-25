@@ -75,7 +75,11 @@
         }
 
         // Set css on origin
-        origin.css({position: 'absolute', 'z-index': 1000})
+        origin.css({
+          position: 'absolute',
+          'z-index': 1000,
+          'will-change': 'left, top, width, height'
+        })
         .data('width', originalWidth)
         .data('height', originalHeight);
 
@@ -88,10 +92,21 @@
             if (doneAnimating === true)
             returnToOriginal();
           });
-          // Animate Overlay
-          // Put before in origin image to preserve z-index layering.
-          origin.before(overlay);
-          overlay.velocity({opacity: 1},
+
+        // Put before in origin image to preserve z-index layering.
+        origin.before(overlay);
+
+        // Set dimensions if needed
+        var overlayOffset = overlay[0].getBoundingClientRect();
+        overlay.css({
+          width: windowWidth,
+          height: windowHeight,
+          left: -1 * overlayOffset.left,
+          top: -1 * overlayOffset.top
+        })
+
+        // Animate Overlay
+        overlay.velocity({opacity: 1},
                            {duration: inDuration, queue: false, easing: 'easeOutQuad'} );
 
         // Add and animate caption if it exists
@@ -162,7 +177,7 @@
             ); // End Velocity
         }
 
-    }); // End origin on click
+      }); // End origin on click
 
 
       // Return on scroll
@@ -186,84 +201,85 @@
       // This function returns the modaled image to the original spot
       function returnToOriginal() {
 
-          doneAnimating = false;
+        doneAnimating = false;
 
-          var placeholder = origin.parent('.material-placeholder');
-          var windowWidth = window.innerWidth;
-          var windowHeight = window.innerHeight;
-          var originalWidth = origin.data('width');
-          var originalHeight = origin.data('height');
+        var placeholder = origin.parent('.material-placeholder');
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var originalWidth = origin.data('width');
+        var originalHeight = origin.data('height');
 
-          origin.velocity("stop", true);
-          $('#materialbox-overlay').velocity("stop", true);
-          $('.materialbox-caption').velocity("stop", true);
+        origin.velocity("stop", true);
+        $('#materialbox-overlay').velocity("stop", true);
+        $('.materialbox-caption').velocity("stop", true);
 
 
-          $('#materialbox-overlay').velocity({opacity: 0}, {
-            duration: outDuration, // Delay prevents animation overlapping
-            queue: false, easing: 'easeOutQuad',
-            complete: function(){
-              // Remove Overlay
-              overlayActive = false;
-              $(this).remove();
-            }
-          });
-
-          // Resize Image
-          origin.velocity(
-            {
-              width: originalWidth,
-              height: originalHeight,
-              left: 0,
-              top: 0
-            },
-            {
-              duration: outDuration,
-              queue: false, easing: 'easeOutQuad'
-            }
-          );
-
-          // Remove Caption + reset css settings on image
-          $('.materialbox-caption').velocity({opacity: 0}, {
-            duration: outDuration, // Delay prevents animation overlapping
-            queue: false, easing: 'easeOutQuad',
-            complete: function(){
-              placeholder.css({
-                height: '',
-                width: '',
-                position: '',
-                top: '',
-                left: ''
-              });
-
-              origin.css({
-                height: '',
-                top: '',
-                left: '',
-                width: '',
-                'max-width': '',
-                position: '',
-                'z-index': ''
-              });
-
-              // Remove class
-              origin.removeClass('active');
-              doneAnimating = true;
-              $(this).remove();
-
-              // Remove overflow overrides on ancestors
-              if (ancestorsChanged) {
-                ancestorsChanged.css('overflow', '');
-              }
-            }
-          });
-
-        }
+        $('#materialbox-overlay').velocity({opacity: 0}, {
+          duration: outDuration, // Delay prevents animation overlapping
+          queue: false, easing: 'easeOutQuad',
+          complete: function(){
+            // Remove Overlay
+            overlayActive = false;
+            $(this).remove();
+          }
         });
-};
 
-$(document).ready(function(){
-  $('.materialboxed').materialbox();
-});
+        // Resize Image
+        origin.velocity(
+          {
+            width: originalWidth,
+            height: originalHeight,
+            left: 0,
+            top: 0
+          },
+          {
+            duration: outDuration,
+            queue: false, easing: 'easeOutQuad'
+          }
+        );
+
+        // Remove Caption + reset css settings on image
+        $('.materialbox-caption').velocity({opacity: 0}, {
+          duration: outDuration, // Delay prevents animation overlapping
+          queue: false, easing: 'easeOutQuad',
+          complete: function(){
+            placeholder.css({
+              height: '',
+              width: '',
+              position: '',
+              top: '',
+              left: ''
+            });
+
+            origin.css({
+              height: '',
+              top: '',
+              left: '',
+              width: '',
+              'max-width': '',
+              position: '',
+              'z-index': '',
+              'will-change': ''
+            });
+
+            // Remove class
+            origin.removeClass('active');
+            doneAnimating = true;
+            $(this).remove();
+
+            // Remove overflow overrides on ancestors
+            if (ancestorsChanged) {
+              ancestorsChanged.css('overflow', '');
+            }
+          }
+        });
+
+      }
+    });
+  };
+
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
 
 }( jQuery ));

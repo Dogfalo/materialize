@@ -1,9 +1,10 @@
 (function ($) {
-  var chipsHandleEvents = false;
   var materialChipsDefaults = {
     data: [],
     placeholder: '',
     secondaryPlaceholder: '',
+    autocompleteData: {},
+    autocompleteLimit: Infinity,
   };
 
   $(document).ready(function() {
@@ -34,7 +35,7 @@
     }
 
     var curr_options = $.extend({}, materialChipsDefaults, options);
-
+    self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteData);
 
     // Initialize
     this.init = function() {
@@ -43,6 +44,7 @@
       self.$el.each(function(){
         var $chips = $(this);
         var chipId = Materialize.guid();
+        self.chipId = chipId;
 
         if (!curr_options.data || !(curr_options.data instanceof Array)) {
           curr_options.data = [];
@@ -60,7 +62,7 @@
       });
     };
 
-    this.handleEvents = function(){
+    this.handleEvents = function() {
       var SELS = self.SELS;
 
       self.$document.off('click.chips-focus', SELS.CHIPS).on('click.chips-focus', SELS.CHIPS, function(e){
@@ -68,8 +70,16 @@
       });
 
       self.$document.off('click.chips-select', SELS.CHIP).on('click.chips-select', SELS.CHIP, function(e){
-        $(SELS.CHIP).removeClass('selected');
-        $(this).toggleClass('selected');
+        var $chip = $(e.target);
+        if ($chip.length) {
+          var wasSelected = $chip.hasClass('selected');
+          var $chips = $chip.closest(SELS.CHIPS);
+          $(SELS.CHIP).removeClass('selected');
+
+          if (!wasSelected) {
+            self.selectChip($chip.index(), $chips);
+          }
+        }
       });
 
       self.$document.off('keydown.chips').on('keydown.chips', function(e){
@@ -153,6 +163,13 @@
 
         // enter
         if (13 === e.which) {
+          // Override enter if autocompleting.
+          if (self.hasAutocomplete &&
+              $chips.find('.autocomplete-content.dropdown-content').length &&
+              $chips.find('.autocomplete-content.dropdown-content').children().length) {
+            return;
+          }
+
           e.preventDefault();
           self.addChip({tag: $target.val()}, $chips);
           $target.val('');
@@ -160,7 +177,8 @@
         }
 
         // delete or left
-         if ((8 === e.keyCode || 37 === e.keyCode) && '' === $target.val() && chipsLength) {
+        if ((8 === e.keyCode || 37 === e.keyCode) && '' === $target.val() && chipsLength) {
+          e.preventDefault();
           self.selectChip(chipsLength - 1, $chips);
           $target.blur();
           return;
@@ -195,6 +213,20 @@
         if ($chips.data('chips').length) {
           label.addClass('active');
         }
+      }
+
+      // Setup autocomplete if needed.
+      var input = $('#' + chipId);
+      if (self.hasAutocomplete) {
+        input.autocomplete({
+          data: curr_options.autocompleteData,
+          limit: curr_options.autocompleteLimit,
+          onAutocomplete: function(val) {
+            self.addChip({tag: val}, $chips);
+            input.val('');
+            input.focus();
+          },
+        })
       }
     };
 
@@ -281,9 +313,6 @@
     // init
     this.init();
 
-    if (!chipsHandleEvents) {
-      this.handleEvents();
-      chipsHandleEvents = true;
-    }
+    this.handleEvents();
   };
 }( jQuery ));
