@@ -159,6 +159,12 @@
           // Don't show wrapped items.
           if (!options.noWrap || (center >= 0 && center < count)) {
             el = images[wrap(center)];
+
+            // Add active class to center item.
+            if (!$(el).hasClass('active')) {
+              view.find('.carousel-item').removeClass('active');
+              $(el).addClass('active');
+            }
             el.style[xform] = alignment +
               ' translateX(' + (-delta / 2) + 'px)' +
               ' translateX(' + (dir * options.shift * tween * i) + 'px)' +
