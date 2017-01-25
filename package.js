@@ -76,6 +76,7 @@ Package.onUse(function (api) {
     'sass/components/_tabs.scss',
     'sass/components/_toast.scss',
     'sass/components/_tooltip.scss',
+    'sass/components/_transitions.scss',
     'sass/components/_typography.scss',
     'sass/components/_variables.scss',
     'sass/components/_waves.scss',
