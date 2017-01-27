@@ -7129,6 +7129,10 @@ input[type=range]:focus::-ms-fill-upper {
   color: #fff;
 }
 
+.side-nav .collapsible-body {
+  padding: 0;
+}
+
 #sidenav-overlay {
   position: fixed;
   top: 0;
