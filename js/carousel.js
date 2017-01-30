@@ -311,6 +311,7 @@
         }
 
         function tap(e) {
+          e.preventDefault();
           pressed = true;
           dragged = false;
           vertical_dragged = false;
@@ -322,7 +323,6 @@
           timestamp = Date.now();
           clearInterval(ticker);
           ticker = setInterval(track, 100);
-
         }
 
         function drag(e) {
