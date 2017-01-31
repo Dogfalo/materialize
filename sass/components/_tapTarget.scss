@@ -1,0 +1,44 @@
+.tap-target {
+  opacity: 0.96;
+  position: fixed;
+  font-size: 1rem;
+  visibility: hidden;
+  border-radius: 50%;
+  background-color: #26a69a;
+  z-index: 10000;
+  box-shadow: 0 20px 20px 0 rgba(0,0,0,0.14), 0 10px 50px 0 rgba(0,0,0,0.12), 0 30px 10px -20px rgba(0,0,0,0.2);
+  width: 800px;
+  height: 800px;
+}
+
+@media only screen and (max-width: 600px) {
+  .tap-target {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+.tap-target.open {
+  visibility: visible;
+}
+ 
+.tap-target-content {
+  position: relative;
+  display: table-cell;
+}
+
+.tap-target-wave {
+  z-index: 10001;    
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.tap-target-origin {
+  z-index: 10002;
+  position: absolute !important;
+}
+
+.tap-target-origin:not(.btn), .tap-target-origin:not(.btn):hover {
+  background: none;
+}
