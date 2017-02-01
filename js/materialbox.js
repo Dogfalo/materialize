@@ -20,6 +20,7 @@
       var originalHeight = 0;
       var ancestorsChanged;
       var ancestor;
+      var originInlineStyles = origin.attr('style');
       origin.wrap(placeholder);
 
 
@@ -251,16 +252,8 @@
               left: ''
             });
 
-            origin.css({
-              height: '',
-              top: '',
-              left: '',
-              width: '',
-              'max-width': '',
-              position: '',
-              'z-index': '',
-              'will-change': ''
-            });
+            origin.removeAttr('style');
+            origin.attr('style', originInlineStyles);
 
             // Remove class
             origin.removeClass('active');
