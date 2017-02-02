@@ -2860,12 +2860,12 @@ ul.staggered-list li {
   }
 }
 
-footer.page-footer {
+.page-footer {
   padding-top: 20px;
   background-color: #ee6e73;
 }
 
-footer.page-footer .footer-copyright {
+.page-footer .footer-copyright {
   overflow: hidden;
   min-height: 50px;
   display: -webkit-flex;
@@ -4330,7 +4330,7 @@ small {
   font-size: 75%;
 }
 
-.light, footer.page-footer .footer-copyright {
+.light, .page-footer .footer-copyright {
   font-weight: 300;
 }
 
