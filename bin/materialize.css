@@ -7865,6 +7865,15 @@ input[type=range]:focus::-ms-fill-upper {
           transform: scale(1);
 }
 
+.tap-target-wrapper.open .tap-target-wave::after {
+  visibility: visible;
+  -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+          animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+}
+
 .tap-target {
   position: absolute;
   font-size: 1rem;
@@ -7899,7 +7908,7 @@ input[type=range]:focus::-ms-fill-upper {
   z-index: 10001;
 }
 
-.tap-target-wave::before {
+.tap-target-wave::before, .tap-target-wave::after {
   content: '';
   display: block;
   position: absolute;
@@ -7907,11 +7916,22 @@ input[type=range]:focus::-ms-fill-upper {
   height: 100%;
   border-radius: 50%;
   background-color: #ffffff;
+}
+
+.tap-target-wave::before {
   -webkit-transform: scale(0);
           transform: scale(0);
   transition: -webkit-transform .3s;
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;
+}
+
+.tap-target-wave::after {
+  visibility: hidden;
+  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s;
+  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  z-index: -1;
 }
 
 .tap-target-origin {

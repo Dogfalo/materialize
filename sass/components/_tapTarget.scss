@@ -22,6 +22,14 @@
   .tap-target-wave::before {
     transform: scale(1);
   }
+  .tap-target-wave::after {
+    visibility: visible;
+    animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    transition:
+      opacity .3s,
+      transform .3s,
+      visibility 0s 1s;
+  }
 }
 
 
@@ -55,7 +63,8 @@
 }
 
 .tap-target-wave {
-  &::before {
+  &::before,
+  &::after {
     content: '';
     display: block;
     position: absolute;
@@ -63,9 +72,20 @@
     height: 100%;
     border-radius: 50%;
     background-color: #ffffff;
+  }
+  &::before {
     transform: scale(0);
     transition: transform .3s;
   }
+  &::after {
+    visibility: hidden;
+    transition:
+      opacity .3s,
+      transform .3s,
+      visibility 0s;
+    z-index: -1;
+  }
+
   position: absolute;
   border-radius: 50%;
   z-index: 10001;
