@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Dialogs - Materialize</title>
+    <title>Pulse - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -34,7 +34,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Dialogs</a></div>
+          <div class="nav-wrapper"><a class="page-title">Pulse</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
@@ -51,14 +51,14 @@
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
+            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
                   <li><a href="grid.html">Grid</a></li>
                   <li><a href="helpers.html">Helpers</a></li>
                   <li><a href="media-css.html">Media</a></li>
-                  <li><a href="pulse.html">Pulse</a></li>
+                  <li class="active"><a href="pulse.html">Pulse</a></li>
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
@@ -85,12 +85,12 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
-                  <li class="active"><a href="dialogs.html">Dialogs</a></li>
+                  <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
                   <li><a href="feature-discovery.html">FeatureDiscovery</a></li>
                   <li><a href="media.html">Media</a></li>
@@ -112,138 +112,44 @@
         <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
       </ul>
     </header>
-    <main><div class="container">
+    <main><div class="container bsa">
   <div class="row">
     <div class="col s12 m9 l10">
 
-      <div id="toast" class="section scrollspy">
-        <p class="caption">Dialogs are content that are not originally visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user.</p>
-        <h2 class="header">Toasts</h2>
-        <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
-        <a class="waves-effect waves-light btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
-        <p>To do this, call the Materialize.toast() function programatically in JavaScript.</p>
-        <pre><code class="language-javascript">
-  // Materialize.toast(message, displayLength, className, completeCallback);
-  Materialize.toast('I am a toast!', 4000) // 4000 is the duration of the toast
-        </code></pre>
-        <p>One way to add this into your application is to add this as an onclick event to a button</p>
-        <pre><code class="language-markup">
-  &lt;a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!&lt;/a>
-        </code></pre>
+      <div id="pulse" class="section scrollspy">
+        <p class="caption">Draw attention to your buttons with this subtle but captivating effect. Just add the class <code class="language-markup">pulse</code> to your button.</p>
 
-        <h4>Custom HTML</h4>
-        <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
-        <a class="waves-effect waves-light btn" onclick="displayCustomHTMLToast()">Toast with Action</a>
-        <pre><code class="language-javascript">
-  var $toastContent = $('&lt;span>I am toast content&lt;/span>');
-  Materialize.toast($toastContent, 5000);
-        </code></pre>
-
-        <h4>Callback</h4>
-        <p>You can have the toast callback a function when it has been dismissed</p>
-        <a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
-        <pre><code class="language-markup">
-  &lt;a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
-        </code></pre>
-
-        <h4>Styling Toasts</h4>
-        <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
-
-        <a class="waves-effect waves-light btn" onclick="Materialize.toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
-
-        <pre><code class="language-javascript">
-  Materialize.toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
-        </code></pre>
-      </div>
-
-
-
-      <!-- Tooltip Section -->
-      <div id="tooltip" class="scrollspy section">
-        <h2 class="header">Tooltips</h2>
-
-        <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
-        <div class="row">
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-html="true" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"> Bottom</a>
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="top" data-delay="50" data-tooltip="I am tooltip"> Top</a>
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="left" data-delay="50" data-tooltip="I am tooltip"> Left</a>
-          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="50" data-tooltip="I am tooltip"> Right</a>
+        <div style="display: flex; justify-content: space-around;">
+          <a class="btn btn-floating pulse"><i class="material-icons">menu</i></a>
+          <a class="btn btn-floating btn-large pulse"><i class="material-icons">cloud</i></a>
+          <a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a>
         </div>
 
-
-        <p>Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position.</p>
+        <h4>Pulse HTML Structure</h4>
         <pre><code class="language-markup">
-  &lt;!-- data-position can be : bottom, top, left, or right -->
-  &lt;!-- data-delay controls delay before tooltip shows (in milliseconds)-->
-  &lt;a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">Hover me!&lt;/a>
-        </code></pre>
-        <br>
-        <h4>Initialization</h4>
-        <p>Tooltips are initialized automatically, but if you have dynamically added tooltips, you will need to initialize them.</p>
-        <pre><code class="language-javascript">
-  $(document).ready(function(){
-    $('.tooltipped').tooltip({delay: 50});
-  });
-        </code></pre><br>
+&lt;a class="btn btn-floating pulse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+&lt;a class="btn btn-floating btn-large pulse">&lt;i class="material-icons">cloud&lt;/i>&lt;/a>
+&lt;a class="btn btn-floating btn-large cyan pulse">&lt;i class="material-icons">edit&lt;/i>&lt;/a>
+</code></pre>
+      </div>
+    </div>
 
-        <h4>jQuery Plugin Options</h4>
-        <table class="highlight">
-          <thead>
-            <tr>
-                <th>Option Name</th>
-                <th>Description</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>delay</td>
-              <td>Delay time before tooltip appears. (Default: 350)</td>
-            </tr>
-            <tr>
-              <td>tooltip</td>
-              <td>Tooltip text. Can use custom HTML if you set the html option.</td>
-            </tr>
-            <tr>
-              <td>position</td>
-              <td>Set the direction of the tooltip. 'top', 'right', 'bottom', 'left'. (Default: 'bottom')</td>
-            </tr>
-            <tr>
-              <td>html</td>
-              <td>Allow custom html inside the tooltip. (Default: false)</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <br />
-        <h4>Removal</h4>
-        <p>To remove the tooltip from the button, pass in <code class="language-javascript">'remove'</code> as the option to the tooltip function</p>
-        <pre><code class="language-javascript">
-  // This will remove the tooltip functionality for the buttons on this page
-  $('.tooltipped').tooltip('remove');
-        </code></pre>
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 l2">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#pulse">Pulse</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
   </div>
-
-
-  <!-- Table of Contents -->
-  <div class="col hide-on-small-only m3 l2">
-    <div class="toc-wrapper">
-      <div class="buysellads hide-on-small-only">
-        <!-- CarbonAds Zone Code -->
-        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
-      </div>
-      <div style="height: 1px;">
-        <ul class="section table-of-contents">
-          <li><a href="#toast">Toasts</a></li>
-          <li><a href="#tooltip">Tooltips</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-</div>
 </div>
 
     </main>    <footer class="page-footer">
@@ -313,10 +219,4 @@
     </script>
 
   </body>
-  <script type="text/javascript">
-    var displayCustomHTMLToast = function () {
-      var $toastContent = $('<span>I am toast content</span>');
-      Materialize.toast($toastContent, 5000);
-    }
-  </script>
 </html>

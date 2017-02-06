@@ -24,7 +24,7 @@ header
     li.no-padding
       ul.collapsible.collapsible-accordion
         li.bold
-          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Table" || page == "CSS Transitions" || page == "Helpers" ? "active" : "")+" waves-effect waves-teal")
+          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Pulse" || page == "Table" || page == "CSS Transitions" || page == "Helpers" ? "active" : "")+" waves-effect waves-teal")
             | CSS
           .collapsible-body
             ul
@@ -36,6 +36,8 @@ header
                 a(href='helpers.html') Helpers
               li(class=(page == "Media CSS" ? "active" : ""))
                 a(href='media-css.html') Media
+              li(class=(page == "Pulse" ? "active" : ""))
+                a(href='pulse.html') Pulse
               li(class=(page == "Sass" ? "active" : ""))
                 a(href='sass.html') Sass
               li(class=(page == "Shadow" ? "active" : ""))

@@ -381,6 +381,7 @@ module.exports = function(grunt) {
           "breadcrumbs.html": "jade/breadcrumbs.jade",
           "carousel.html": "jade/carousel.jade",
           "feature-discovery.html": "jade/feature-discovery.jade",
+          "pulse.html": "jade/pulse.jade",
           "pushpin-demo.html": "jade/pushpin-demo.jade",
           "css-transitions.html": "jade/css-transitions.jade",
           "404.html": "jade/404.jade",
