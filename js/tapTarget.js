@@ -1,81 +1,88 @@
 (function ($) {
 
-  var methods = { 
+  var methods = {
   init: function (options) {
     return this.each(function() {
     var origin = $('#'+$(this).attr('data-activates'));
     var originIcon = origin.find('i');
     var screen = $('body');
-    
+
     // Creating tap target
     var tapTargetEl = $(this);
-    var tapTargetWaveEl = tapTargetEl.find('.tap-target-wave');
-    var tapTargetOriginEl = tapTargetEl.find('.tap-target-origin');
+    var tapTargetWrapper = tapTargetEl.parent('.tap-target-wrapper');
+    var tapTargetWave = tapTargetWrapper.find('.tap-target-wave');
+    var tapTargetOriginEl = tapTargetWrapper.find('.tap-target-origin');
     var tapTargetOriginIconEl = tapTargetOriginEl.find('i');
     var tapTargetContentEl = tapTargetEl.find('.tap-target-content');
-    var firstTime = !tapTargetOriginEl.length;
-    
-    // Creating content
-    if (!tapTargetContentEl.length) {
-      tapTargetWaveEl = $('<div class="tap-target-content"></div>');
-    }
-    
-    // Creating wave
-    if (!tapTargetWaveEl.length) {
-      tapTargetWaveEl = $('<div class="tap-target-wave"></div>');
-    }
-    
-    // Creating origin
-    if (!tapTargetOriginEl.length) {
-      tapTargetOriginEl = origin.clone(true, true);
-      tapTargetOriginIconEl = tapTargetOriginEl.find('i');
-      tapTargetOriginEl.addClass('tap-target-origin');
-      tapTargetOriginEl.removeAttr('id');
+
+    // Creating wrapper
+    if (!tapTargetWrapper.length) {
+      tapTargetWrapper = tapTargetEl.wrap($('<div class="tap-target-wrapper"></div>')).parent();
     }
 
-    // Appending all to document
-    if (firstTime)
-      tapTargetEl.append(tapTargetOriginEl).append(tapTargetWaveEl);
+    // Creating content
+    if (!tapTargetContentEl.length) {
+      tapTargetContentEl = $('<div class="tap-target-content"></div>');
+      tapTargetEl.append(tapTargetContentEl);
+    }
+
+    // Creating foreground wave
+    if (!tapTargetWave.length) {
+      console.log("APPEND WAVE", tapTargetWave);
+      tapTargetWave = $('<div class="tap-target-wave"></div>');
+
+      // Creating origin
+      if (!tapTargetOriginEl.length) {
+        tapTargetOriginEl = origin.clone(true, true);
+        tapTargetOriginIconEl = tapTargetOriginEl.find('i');
+        tapTargetOriginEl.addClass('tap-target-origin');
+        tapTargetOriginEl.removeAttr('id');
+        tapTargetWave.append(tapTargetOriginEl);
+      }
+
+      tapTargetWrapper.append(tapTargetWave);
+    }
 
     // Open
     var openTapTarget = function() {
-      var showTapTarget = function() {
-      if (tapTargetEl.is('.open'))
+      console.log("OPEN");
+      if (tapTargetWrapper.is('.open'))
         return;
-      
+
       // Adding open class
-      tapTargetEl.addClass('open');
-      
+      tapTargetWrapper.addClass('open');
+
       // Animating
       tapTargetEl.velocity('stop');
-      tapTargetEl.velocity({scale: [1, 0]}, { duration: 350, queue: false });
-      
-      tapTargetWaveEl.velocity('stop');
-      tapTargetWaveEl.velocity({ scale: [1, 0.8] }, { duration: 350, loop: true });
-      };
+      // tapTargetEl.velocity({scale: [1, 0]}, { duration: duration, queue: false });
+
+      // tapTargetWaveEl.velocity({ scale: [1, 0.8] }, { duration: duration, loop: true });
 
       setTimeout(function() {
-        showTapTarget();
-      }, 350);
+        tapTargetOriginEl.off('click.tapTarget').on('click.tapTarget', function(e) {
+          closeTapTarget();
+          tapTargetOriginEl.off('click.tapTarget');
+        });
+
+        $(document).off('click.tapTarget').on('click.tapTarget', function(e) {
+          closeTapTarget();
+          $(document).off('click.tapTarget');
+        });
+      }, 0);
     };
-    
+
     // Close
     var closeTapTarget = function(){
-      if (!tapTargetEl.is('.open'))
+      console.log("CLOSE");
+      if (!tapTargetWrapper.is('.open'))
       return;
-      
-      // Animating
-      setTimeout(function() {
-        tapTargetEl.velocity({ scale: 0 }, { duration: 225, queue: false, complete: function() {
-        // Removing open class
-        tapTargetEl.removeClass('open');
-        
-        // Stopping wave
-        tapTargetWaveEl.velocity('stop');
-        }});
-      }, 225);
+
+      tapTargetWrapper.removeClass('open');
+
+      tapTargetOriginEl.off('click.tapTarget')
+      $(document).off('click.tapTarget');
     };
-    
+
     // Pre calculate
     var calculateTapTarget = function() {
       // Element or parent is fixed position?
@@ -94,7 +101,7 @@
       var originHeight = origin.outerHeight();
       var originTop = isFixed ? origin.offset().top - $(document).scrollTop() : origin.offset().top;
       var originLeft = origin.offset().left;
-      
+
       // Calculating screen
       var screenWidth = $(window).prop('innerWidth');
       var screenHeight = $(window).prop('innerHeight');
@@ -106,14 +113,14 @@
       var isBottom = originTop > centerY;
       var isCenterX = originLeft >= screenWidth*0.25 && originLeft <= screenWidth*0.75;
       var isCenterY = originTop >= screenHeight*0.25 && originTop <= screenHeight*0.75;
-      
+
       // Calculating tap target
       var tapTargetWidth = tapTargetEl.outerWidth();
       var tapTargetHeight = tapTargetEl.outerHeight();
       var tapTargetTop = originTop + originHeight/2 - tapTargetHeight/2;
       var tapTargetLeft = originLeft + originWidth/2 - tapTargetWidth/2;
       var tapTargetPosition = isFixed ? 'fixed' : 'absolute';
-      
+
       // Calculating content
       var tapTargetTextWidth = isCenterX ? tapTargetWidth : tapTargetWidth/2 + originWidth;
       var tapTargetTextHeight = tapTargetHeight/2;
@@ -123,27 +130,27 @@
       var tapTargetTextRight = 0;
       var tapTargetTextPadding = originWidth;
       var tapTargetTextAlign = isBottom ? 'bottom' : 'top';
-      
+
       // Calculating wave
       var tapTargetWaveWidth = originWidth > originHeight ? originWidth*2 : originWidth*2;
       var tapTargetWaveHeight = tapTargetWaveWidth;
       var tapTargetWaveTop = tapTargetHeight/2 - tapTargetWaveHeight/2;
       var tapTargetWaveLeft = tapTargetWidth/2 - tapTargetWaveWidth/2;
-  
+
       // Calculationg origin
       var tapTargetOriginWidth = tapTargetOriginEl.outerWidth();
       var tapTargetOriginHeight = tapTargetOriginEl.outerHeight();
       var tapTargetOriginTop = tapTargetHeight/2 - tapTargetOriginHeight/2;
       var tapTargetOriginLeft = tapTargetWidth/2 - tapTargetOriginWidth/2;
-      var tapTargetOriginIconElColor = !origin.is('.btn') && originIcon.css('color') == tapTargetWaveEl.css('backgroundColor') ? tapTargetEl.css('backgroundColor') : '';
-  
+      var tapTargetOriginIconElColor = !origin.is('.btn') && originIcon.css('color') == tapTargetWave.css('backgroundColor') ? tapTargetEl.css('backgroundColor') : '';
+
       // Setting tap target
-      tapTargetEl.css({
+      tapTargetWrapper.css({
       top: tapTargetTop,
       left: tapTargetLeft,
       position: tapTargetPosition
-      });    
-  
+      });
+
       // Setting content
       tapTargetContentEl.css({
       width: tapTargetTextWidth,
@@ -157,42 +164,33 @@
       });
 
       // Setting wave
-      tapTargetWaveEl.css({
+      tapTargetWave.css({
       top: tapTargetWaveTop,
       left: tapTargetWaveLeft,
       width: tapTargetWaveWidth,
       height: tapTargetWaveHeight
       });
-  
+
       // Setting origin
-      tapTargetOriginEl.css({
-      top: tapTargetOriginTop,
-      left: tapTargetOriginLeft
-      });
-      tapTargetOriginIconEl.css('color', tapTargetOriginIconElColor);  
+      // tapTargetOriginEl.css({
+      // top: tapTargetOriginTop,
+      // left: tapTargetOriginLeft
+      // });
+      tapTargetOriginIconEl.css('color', tapTargetOriginIconElColor);
     }
 
-    // Applying binds
-    if (firstTime) {
-      tapTargetOriginEl.on('click.tapTarget', function() {
-        closeTapTarget();
-      });
-      
-      $(document).on('click.tapTarget', function() {
-        closeTapTarget();
-      });   
-
-      $(window).on('resize.tapTarget', function() {
-        if (tapTargetEl.is('.open'))
-            calculateTapTarget();
-      }); 
-    }
+    // Resize
+    $(window).off('resize.tapTarget').on('resize.tapTarget', function() {
+      if (tapTargetEl.is('.open')) {
+        calculateTapTarget();
+      }
+    });
 
     if (options == 'open') {
       calculateTapTarget();
       openTapTarget();
     }
-    
+
     if (options == 'close')
       closeTapTarget();
     });

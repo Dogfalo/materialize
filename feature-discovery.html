@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Documentation - Materialize</title>
+    <title>FeatureDiscovery - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -32,7 +32,12 @@
   </head>
   <body>
     <header>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a></div>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper"><a class="page-title">FeatureDiscovery</a></div>
+        </div>
+      </nav>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
@@ -79,14 +84,14 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">JavaScript</a>
+            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
-                  <li><a href="feature-discovery.html">FeatureDiscovery</a></li>
+                  <li class="active"><a href="feature-discovery.html">FeatureDiscovery</a></li>
                   <li><a href="media.html">Media</a></li>
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
@@ -106,28 +111,22 @@
         <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
       </ul>
     </header>
-    <main><nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Feature Discovery</a></div>
-        </div>
-      </nav>
-
-<div class="container bsa">
+    <main><div class="container bsa">
   <div class="row">
     <div class="col s12 m9 l10">
 
       <div id="introduction" class="section scrollspy">
-        <p>Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
-        
+        <p class="caption">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
+
         <h2 class="header">Tap Target</h2>
-        <p>Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments. When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
+        <p class="caption">Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments. When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
 
         <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('close')">Close tap target</a>
-        
+
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
           <a id="menu" class="btn btn-floating btn-large cyan"><i class="material-icons">menu</i></a>
         </div>
-        
+
         <div class="tap-target cyan" data-activates="menu">
           <div class="tap-target-content white-text">
             <h5>I am here</h5>
@@ -158,7 +157,7 @@
 
         <div id="methods" class="scrollspy section">
           <h4>jQuery Plugin Methods</h4>
-          <p>To open/close a tap target:</p>
+          <p class="caption">To open/close a tap target:</p>
           <pre><code class="language-javascript">
   $('.tapTarget').tapTarget('open');
   $('.tapTarget').tapTarget('close');
