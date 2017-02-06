@@ -61,6 +61,7 @@
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
+                  <li><a href="css-transitions.html">Transitions</a></li>
                   <li><a href="typography.html">Typography</a></li>
                 </ul>
               </div>
@@ -116,7 +117,7 @@
       <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
         <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal-close</code> to your button.</p>
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn modal-trigger" href="#modal2">Modal With Fixed Footer</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn modal-trigger" href="#modal3">Modal Bottom Sheet Style</a>
+        <a class="waves-effect waves-light btn" href="#modal1">Modal</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" href="#modal2">Modal With Fixed Footer</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" href="#modal3">Modal Bottom Sheet Style</a>
         <div id="modal1" class="modal">
           <div class="modal-content">
             <h4>Modal Header</h4>
@@ -187,7 +188,7 @@
           <h4>Modals HTML Structure</h4>
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
-  &lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
+  &lt;a class="waves-effect waves-light btn" href="#modal1">Modal&lt;/a>
 
   &lt;!-- Modal Structure -->
   &lt;div id="modal1" class="modal">
@@ -228,7 +229,7 @@
           <p>Bottom Sheet Modals are good for displaying actions to the user on the bottom of a screen. They still act the same as regular modals.</p>
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
-  &lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
+  &lt;a class="waves-effect waves-light btn" href="#modal1">Modal&lt;/a>
 
   &lt;!-- Modal Structure -->
   &lt;div id="modal1" class="modal bottom-sheet">
@@ -249,7 +250,7 @@
 
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
-  &lt;button data-target="modal1" class="btn modal-trigger">Modal&lt;/button>
+  &lt;button data-target="modal1" class="btn">Modal&lt;/button>
           </code></pre>
         </div>
 
@@ -261,16 +262,16 @@
           <pre><code class="language-javascript">
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
+    $('.modal').modal();
   });
           </code></pre>
           <p>You can also open modals programatically, the below code will make your modal open on document ready:</p>
           <pre><code class="language-javascript">
-  $('#modal1').openModal();
+  $('#modal1').modal('open');
           </code></pre>
           <p>You can also close them programatically:</p>
           <pre><code class="language-javascript">
-  $('#modal1').closeModal();
+  $('#modal1').modal('close');
         </code></pre>
       </div>
 
@@ -280,14 +281,17 @@
         <h4>Options</h4>
         <p>You can customize the behavior of each modal using these options. For example, you can call a custom function to run when a modal is dismissed. To do this, just place your function in the intialization code as shown below.</p>
         <pre><code class="language-javascript">
-  $('.modal-trigger').leanModal({
+  $('.modal').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
-      in_duration: 300, // Transition in duration
-      out_duration: 200, // Transition out duration
-      starting_top: '4%', // Starting top style attribute
-      ending_top: '10%', // Ending top style attribute
-      ready: function() { alert('Ready'); }, // Callback for Modal open
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        alert("Ready");
+        console.log(modal, trigger);
+      },
       complete: function() { alert('Closed'); } // Callback for Modal close
     }
   );
@@ -352,7 +356,7 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-        © 2014-2016 Materialize, All rights reserved.
+        © 2014-2017 Materialize, All rights reserved.
         <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>

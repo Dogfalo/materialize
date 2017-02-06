@@ -80,6 +80,7 @@
     .card-image {
       max-width: 50%;
       img {
+        border-radius: 2px 0 0 2px;
         max-width: 100%;
         width: auto;
       }
@@ -132,9 +133,9 @@
       position: absolute;
       bottom: 0;
       left: 0;
+      max-width: 100%;
       padding: $card-padding;
     }
-
   }
 
   .card-content {
@@ -146,7 +147,13 @@
       color: inherit;
     }
     .card-title {
-      line-height: 48px;
+      display: block;
+      line-height: 32px;
+      margin-bottom: 8px;
+
+      i {
+        line-height: 32px;
+      }
     }
   }
 
@@ -154,7 +161,7 @@
     position: relative;
     background-color: inherit;
     border-top: 1px solid rgba(160,160,160,.2);
-    padding: $card-padding;
+    padding: 16px $card-padding;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
       color: $card-link-color;
@@ -172,6 +179,7 @@
     background-color: $card-bg-color;
     width: 100%;
     overflow-y: auto;
+    left: 0;
     top: 100%;
     height: 100%;
     z-index: 3;

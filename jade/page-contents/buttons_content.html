@@ -27,7 +27,7 @@
         <h4 class="light">Fixed Action Button</h4>
         <p>If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in the bottom righthand corner of the page.</p>
         <pre><code class="language-markup col s12">
-  &lt;div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  &lt;div class="fixed-action-btn">
     &lt;a class="btn-floating btn-large red">
       &lt;i class="large material-icons">mode_edit&lt;/i>
     &lt;/a>
@@ -40,18 +40,17 @@
   &lt;/div>
         </code></pre>
 
-        <p>You can also open the Fixed Action Button Menu programatically, the below code will make your FAB Menu open:</p>
+        <p>You can also open and close the Fixed Action Button Menu programatically.</p>
           <pre><code class="language-javascript">
   $('.fixed-action-btn').openFAB();
-          </code></pre>
-          <p>You can also close them programatically:</p>
-          <pre><code class="language-javascript">
   $('.fixed-action-btn').closeFAB();
+  $('.fixed-action-btn.toolbar').openToolbar();
+  $('.fixed-action-btn.toolbar').closeToolbar();
         </code></pre>
         <br>
         <h4 class="light">Horizontal FAB</h4>
         <p>Creating a horizontal FAB is easy! Just add the class <code class="language-markup">horizontal</code> to the FAB.</p>
-        <div style="position: relative;">
+        <div style="position: relative; height: 70px;">
           <div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 24px;">
             <a class="btn-floating btn-large red">
               <i class="large material-icons">mode_edit</i>
@@ -65,7 +64,7 @@
           </div>
         </div>
         <pre><code class="language-markup col s12">
-  &lt;div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+  &lt;div class="fixed-action-btn horizontal">
     &lt;a class="btn-floating btn-large red">
       &lt;i class="large material-icons">mode_edit&lt;/i>
     &lt;/a>
@@ -107,7 +106,7 @@
           </div>
         </div>
         <pre><code class="language-markup col s12">
-  &lt;div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+  &lt;div class="fixed-action-btn horizontal click-to-toggle">
     &lt;a class="btn-floating btn-large red">
       &lt;i class="material-icons">menu&lt;/i>
     &lt;/a>
@@ -116,6 +115,23 @@
       &lt;li>&lt;a class="btn-floating yellow darken-1">&lt;i class="material-icons">format_quote&lt;/i>&lt;/a>&lt;/li>
       &lt;li>&lt;a class="btn-floating green">&lt;i class="material-icons">publish&lt;/i>&lt;/a>&lt;/li>
       &lt;li>&lt;a class="btn-floating blue">&lt;i class="material-icons">attach_file&lt;/i>&lt;/a>&lt;/li>
+    &lt;/ul>
+  &lt;/div>
+        </code></pre>
+
+        <h4 class="light">FAB to Toolbar</h4>
+        <p>Instead of displaying individual button options, you can transition your FAB into a toolbar on click. Just add the <code class="language-markup">toolbar</code> class to the FAB.</p>
+        <iframe src="fab-toolbar-demo.html" frameborder="0" width="100%" height="100px"></iframe>
+        <pre><code class="language-markup col s12">
+  &lt;div class="fixed-action-btn toolbar">
+    &lt;a class="btn-floating btn-large red">
+      &lt;i class="large material-icons">mode_edit&lt;/i>
+    &lt;/a>
+    &lt;ul>
+      &lt;li class="waves-effect waves-light">&lt;a href="#!">&lt;i class="material-icons">insert_chart&lt;/i>&lt;/a>&lt;/li>
+      &lt;li class="waves-effect waves-light">&lt;a href="#!">&lt;i class="material-icons">format_quote&lt;/i>&lt;/a>&lt;/li>
+      &lt;li class="waves-effect waves-light">&lt;a href="#!">&lt;i class="material-icons">publish&lt;/i>&lt;/a>&lt;/li>
+      &lt;li class="waves-effect waves-light">&lt;a href="#!">&lt;i class="material-icons">attach_file&lt;/i>&lt;/a>&lt;/li>
     &lt;/ul>
   &lt;/div>
         </code></pre>

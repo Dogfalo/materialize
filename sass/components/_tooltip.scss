@@ -8,7 +8,6 @@
   min-height: 36px;
   line-height: 120%;
   opacity: 0;
-  display: none;
   position: absolute;
   text-align: center;
   max-width: calc(100% - 4px);
@@ -16,17 +15,17 @@
   left: 0;
   top: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .backdrop {
   position: absolute;
   opacity: 0;
-  display: none;
   height: 7px;
   width: 14px;
   border-radius: 0 0 50% 50%;
   background-color: #323232;
   z-index: -1;
   transform-origin: 50% 0%;
-  transform: translate3d(0,0,0);
+  visibility: hidden;
 }

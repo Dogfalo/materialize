@@ -61,6 +61,7 @@
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
+                  <li><a href="css-transitions.html">Transitions</a></li>
                   <li><a href="typography.html">Typography</a></li>
                 </ul>
               </div>
@@ -114,14 +115,43 @@
 
     <div class="col s12 m9 l10">
 
-      <div id="initialization" class="section scrollspy">
+      <div id="introduction" class="section scrollspy">
         <h4>Introduction</h4>
         <p class="caption">Pushpin is our fixed positioning plugin. Use this to pin elements to your page during specific scroll ranges. You can check out our live example: the fixed table of contents on the right. </p>
 
+        <a href="pushpin-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
+
+        <br><br>
+        <h5>Demo Code</h5>
+        <pre><code class="language-javascript">
+  $('.pushpin-demo-nav').each(function() {
+    var $this = $(this);
+    var $target = $('#' + $(this).attr('data-target'));
+    $this.pushpin({
+      top: $target.offset().top,
+      bottom: $target.offset().top + $target.outerHeight() - $this.height()
+    });
+  });
+        </code></pre>
+        <pre><code class="language-css">
+  // Only necessary for window height sized blocks.
+  html, body, .block {
+    height: 100%;
+  }
+        </code></pre>
+
+      </div>
+
+      <div id="initialization" class="section scrollspy">
         <h4>jQuery Plugin Initialization</h4>
+        <p>Here is a sample initialization of pushpin. Take a look at what the options are and customize them to your needs.</p>
         <pre><code class="language-javascript col s12">
   $(document).ready(function(){
-    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
+    $('.target').pushpin({
+      top: 0,
+      bottom: 1000,
+      offset: 0
+    });
   });
         </code></pre>
       </div>
@@ -160,15 +190,15 @@
 
           <tbody>
             <tr>
-              <td>Top</td>
+              <td>top</td>
               <td>The distance in pixels from the top of the page where the element becomes fixed. (Default: 0)</td>
             </tr>
             <tr>
-              <td>Bottom</td>
+              <td>bottom</td>
               <td>The distance in pixels from the top of the page where the elements stops being fixed. (Default: Infinity)</td>
             </tr>
             <tr>
-              <td>Offset</td>
+              <td>offset</td>
               <td>The offset from the top the element will be fixed at. (Default: 0)</td>
             </tr>
           </tbody>
@@ -195,6 +225,7 @@
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
+            <li><a href="#introduction">Introduction</a></li>
             <li><a href="#initialization">Initialization</a></li>
             <li><a href="#classes">CSS classes</a></li>
             <li><a href="#options">Options</a></li>
@@ -238,7 +269,7 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-        © 2014-2016 Materialize, All rights reserved.
+        © 2014-2017 Materialize, All rights reserved.
         <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>

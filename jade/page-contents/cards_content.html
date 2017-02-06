@@ -96,6 +96,70 @@
         </div>
       </div>
 
+      <div id="fab" class="section scrollspy">
+        <div class="row">
+          <!-- Image Card -->
+          <div class="col s12 m7">
+            <h2 class="header">FABs in Cards</h2>
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg">
+                <span class="card-title">Card Title</span>
+                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m5">
+            <br><br><br><br>
+            <p class="caption">
+             Here is an image card with a Floating Action Button.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg">
+                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <span class="card-title">Card Title</span>
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m5">
+            <p class="caption">
+             Here is an image card with a large Floating Action Button.
+            </p>
+          </div>
+          <div class="col s12">
+            <br>
+            <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12 m6">
+      &lt;div class="card">
+        &lt;div class="card-image">
+          &lt;img src="images/sample-1.jpg">
+          &lt;span class="card-title">Card Title&lt;/span>
+          &lt;a class="btn-floating halfway-fab waves-effect waves-light red">&lt;i class="material-icons">add&lt;/i>&lt;/a>
+        &lt;/div>
+        &lt;div class="card-content">
+          &lt;p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.&lt;/p>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+            </code></pre>
+            <br>
+          </div>
+        </div>
+      </div>
+
       <div id="horizontal" class="section scrollspy">
         <div class="row">
           <!-- Horizontal Card -->
@@ -103,7 +167,7 @@
             <h2 class="header">Horizontal Card</h2>
             <div class="card horizontal">
               <div class="card-image">
-                <img src="http://lorempixel.com/100/190/nature/10">
+                <img src="http://lorempixel.com/100/190/nature/6">
               </div>
               <div class="card-stacked">
                 <div class="card-content">
@@ -128,7 +192,7 @@
     &lt;h2 class="header">Horizontal Card&lt;/h2>
     &lt;div class="card horizontal">
       &lt;div class="card-image">
-        &lt;img src="http://lorempixel.com/100/190/nature/10">
+        &lt;img src="http://lorempixel.com/100/190/nature/6">
       &lt;/div>
       &lt;div class="card-stacked">
         &lt;div class="card-content">
@@ -260,6 +324,93 @@
     &lt;div class="card-reveal">...&lt;/div>
   &lt;/div>
             </code></pre>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="tabs" class="section scrollspy">
+        <div class="row">
+          <!-- Small Card -->
+          <div class="col s12">
+            <h2 class="header">Tabs in Cards</h2>
+            <p class="caption">
+             You can add tabs to your cards by adding a dividing <code class="language-markup">cards-tabs</code> div inbetween your header content and your tab content.
+            </p>
+            <pre><code class="language-markup">
+  &lt;div class="card">
+    &lt;div class="card-content">
+      &lt;p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.&lt;/p>
+    &lt;/div>
+    &lt;div class="card-tabs">
+      &lt;ul class="tabs tabs-fixed-width">
+        &lt;li class="tab">&lt;a href="#test4">Test 1&lt;/a>&lt;/li>
+        &lt;li class="tab">&lt;a class="active" href="#test5">Test 2&lt;/a>&lt;/li>
+        &lt;li class="tab">&lt;a href="#test6">Test 3&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+    &lt;div class="card-content grey lighten-4">
+      &lt;div id="test4">Test 1&lt;/div>
+      &lt;div id="test5">Test 2&lt;/div>
+      &lt;div id="test6">Test 3&lt;/div>
+    &lt;/div>
+  &lt;/div></code></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6">
+            <h4 class="light">White</h4>
+            <div class="card">
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                  <li class="tab"><a href="#test4">Test 1</a></li>
+                  <li class="tab"><a class="active" href="#test5">Test 2</a></li>
+                  <li class="tab"><a href="#test6">Test 3</a></li>
+                </ul>
+              </div>
+              <div class="card-content grey lighten-4">
+                <div id="test4">Test 1</div>
+                <div id="test5">Test 2</div>
+                <div id="test6">Test 3</div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <br><br>
+            <p class="caption">
+              Basic white background card with tabs.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6">
+            <h4 class="light">Colored</h4>
+            <div class="card blue">
+              <div class="card-content white-text">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width tabs-transparent">
+                  <li class="tab"><a href="#test1">Test 1</a></li>
+                  <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+                  <li class="tab"><a href="#test3">Test 3</a></li>
+                </ul>
+              </div>
+              <div class="card-content blue lighten-5">
+                <div id="test1">Test 1</div>
+                <div id="test2">Test 2</div>
+                <div id="test3">Test 3</div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <br><br>
+            <p class="caption">
+             Colored or dark background card with tabs.
+            </p>
           </div>
         </div>
       </div>
@@ -399,8 +550,10 @@
           <ul class="section table-of-contents">
             <li><a href="#basic">Basic Card</a></li>
             <li><a href="#image">Image Card</a></li>
+            <li><a href="#fab">FABs in Cards</a></li>
             <li><a href="#horizontal">Horizontal Card</a></li>
             <li><a href="#reveal">Card Reveal</a></li>
+            <li><a href="#tabs">Tabs in Cards</a></li>
             <li><a href="#sizes">Card Sizes</a></li>
             <li><a href="#panel">Card Panel</a></li>
           </ul>

@@ -11,7 +11,7 @@
     var defaults = {
       inDuration: 300,
       outDuration: 225,
-      constrain_width: true, // Constrains width of dropdown to the activator
+      constrainWidth: true, // Constrains width of dropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false,
@@ -49,7 +49,7 @@
         if (origin.data('outduration') !== undefined)
           curr_options.outDuration = origin.data('outduration');
         if (origin.data('constrainwidth') !== undefined)
-          curr_options.constrain_width = origin.data('constrainwidth');
+          curr_options.constrainWidth = origin.data('constrainwidth');
         if (origin.data('hover') !== undefined)
           curr_options.hover = origin.data('hover');
         if (origin.data('gutter') !== undefined)
@@ -85,7 +85,7 @@
         origin.addClass('active');
 
         // Constrain width
-        if (curr_options.constrain_width === true) {
+        if (curr_options.constrainWidth === true) {
           activates.css('width', origin.outerWidth());
 
         } else {
@@ -174,6 +174,14 @@
             }
           })
           .animate( {opacity: 1}, {queue: false, duration: curr_options.inDuration, easing: 'easeOutSine'});
+
+        // Add click close handler to document
+        $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
+          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
+            hideDropdown();
+            $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+          }
+        });
       }
 
       function hideDropdown() {
@@ -182,6 +190,7 @@
         activates.fadeOut(curr_options.outDuration);
         activates.removeClass('active');
         origin.removeClass('active');
+        $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
         setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
       }
 
@@ -234,15 +243,6 @@
             else if (origin.hasClass('active')) {
               hideDropdown();
               $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
-            }
-            // If menu open, add click close handler to document
-            if (activates.hasClass('active')) {
-              $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
-                if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
-                  hideDropdown();
-                  $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
-                }
-              });
             }
           }
         });

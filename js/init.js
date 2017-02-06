@@ -78,6 +78,12 @@
     checkForChanges();
 
 
+    // BuySellAds Demos close button.
+    $('.buysellads.buysellads-demo .close').on('click', function() {
+      $(this).parent().remove();
+    });
+
+
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
@@ -137,12 +143,37 @@
       indeterminateCheckbox.indeterminate = true;
 
 
+    // Pushpin Demo Init
+    if ($('.pushpin-demo-nav').length) {
+      $('.pushpin-demo-nav').each(function() {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: $target.offset().top + $target.outerHeight() - $this.height()
+        });
+      });
+    }
+
+    // CSS Transitions Demo Init
+    if ($('#scale-demo').length &&
+        $('#scale-demo-trigger').length) {
+      $('#scale-demo-trigger').click(function() {
+        $('#scale-demo').toggleClass('scale-out');
+      });
+    }
+
+    // Swipeable Tabs Demo Init
+    if ($('#tabs-swipe-demo').length) {
+      $('#tabs-swipe-demo').tabs({ 'swipeable': true });
+    }
+
     // Plugin initialization
-    $('.carousel.carousel-slider').carousel({full_width: true});
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
-    $('.slider').slider({full_width: true});
+    $('.slider').slider();
     $('.parallax').parallax();
-    $('.modal-trigger').leanModal();
+    $('.modal').modal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
@@ -151,6 +182,8 @@
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
     });
 
+    // Chips
+    $('.chips').material_chip();
     $('.chips-initial').material_chip({
       readOnly: true,
       data: [{
@@ -161,13 +194,18 @@
         tag: 'Google',
       }]
     });
-
     $('.chips-placeholder').material_chip({
       placeholder: 'Enter a tag',
       secondaryPlaceholder: '+Tag',
     });
+    $('.chips-autocomplete').material_chip({
+      autocompleteData: {
+        'Apple': null,
+        'Microsoft': null,
+        'Google': null
+      }
+    });
 
-    $('.chips').material_chip();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

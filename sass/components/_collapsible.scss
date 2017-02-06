@@ -10,7 +10,7 @@
   display: block;
   cursor: pointer;
   min-height: $collapsible-height;
-  line-height: $collapsible-height;
+  line-height: $collapsible-line-height;
   padding: 0 1rem;
   background-color: $collapsible-header-color;
   border-bottom: 1px solid $collapsible-border-color;
@@ -18,7 +18,7 @@
   i {
     width: 2rem;
     font-size: 1.6rem;
-    line-height: $collapsible-height;
+    line-height: $collapsible-line-height;
     display: block;
     float: left;
     text-align: center;
@@ -30,11 +30,7 @@
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
   box-sizing: border-box;
-
-  p {
-    margin: 0;
-    padding: 2rem;
-  }
+  padding: 2rem;
 }
 
 // sideNav collapsible styling

@@ -1,3 +1,13 @@
+## v0.97.5 (December 21st, 2015)
+- Fixed Meteor package crash
+
+## v0.97.4 (Dec 20, 2015)
+- Added Jasmine testing with Travis CI
+- Select bugfixes
+- Grid Offset bugfix
+- Dropdown overflow bugfix
+- Range slider error bugfix
+
 ## v0.97.3 (Nov 15, 2015)
 - Meteor font issues fixed
 - Select rendering issue fixed

@@ -48,10 +48,15 @@
         <h4>Javascript Plugin Usage</h4>
         <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by using your delete button.</p>
         <div class="chips"></div>
+        <br>
         <p class="caption">Set initial tags.</p>
         <div class="chips chips-initial"></div>
+        <br>
         <p class="caption">Use placeholders and override hint texts.</p>
         <div class="chips chips-placeholder"></div>
+        <br>
+        <p class="caption">Use autocomplete with chips.</p>
+        <div class="chips chips-autocomplete"></div>
       </div>
 
       <div id="properties" class="section scrollspy">
@@ -60,6 +65,7 @@
   &lt;div class="chips">&lt;/div>
   &lt;div class="chips chips-initial">&lt;/div>
   &lt;div class="chips chips-placeholder">&lt;/div>
+  &lt;div class="chips chips-autocomplete">&lt;/div>
         </code></pre>
         <h4>jQuery Initialization</h4>
         <pre><code class="language-javascript">
@@ -76,6 +82,13 @@
   $('.chips-placeholder').material_chip({
     placeholder: 'Enter a tag',
     secondaryPlaceholder: '+Tag',
+  });
+  $('.chips-autocomplete').material_chip({
+    autocompleteData: {
+      'Apple': null,
+      'Microsoft': null,
+      'Google': null
+    }
   });
         </code></pre>
         <p class="caption">Chip data object</p>
@@ -112,6 +125,16 @@
               <td>secondaryPlaceholder</td>
               <td>string</td>
               <td>Set second placeholder when adding additional tags.</td>
+            </tr>
+            <tr>
+              <td>autocompleteData</td>
+              <td>Object</td>
+              <td>Set autocomplete data.</td>
+            </tr>
+            <tr>
+              <td>autocompleteLimit</td>
+              <td>Integer</td>
+              <td>Set autocomplete limit.</td>
             </tr>
             <tr>
           </tbody>

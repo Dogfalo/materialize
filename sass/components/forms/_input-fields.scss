@@ -123,6 +123,18 @@ textarea.materialize-textarea {
 
 // Styling for input field wrapper
 .input-field {
+  // Inline styles
+  &.inline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+
+    input,
+    .select-dropdown {
+      margin-bottom: 1rem;
+    }
+  }
+
   // Gutter spacing
   &.col {
     label {
@@ -142,14 +154,15 @@ textarea.materialize-textarea {
     color: $input-border-color;
     position: absolute;
     top: 0.8rem;
+    left: 0;
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
-  }
 
-  label.active {
-    font-size: $label-font-size;
-    transform: translateY(-140%);
+    &:not(.label-icon).active {
+      font-size: $label-font-size;
+      transform: translateY(-140%);
+    }
   }
 
   // Prefix Icons
