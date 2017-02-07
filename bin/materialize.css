@@ -6002,7 +6002,9 @@ textarea.materialize-textarea + label:after {
   display: block;
   content: "";
   position: absolute;
-  top: 60px;
+  bottom: 0;
+  -webkit-transform: translateY(75%);
+          transform: translateY(75%);
   opacity: 0;
   transition: .2s opacity ease-out, .2s color ease-out;
 }
@@ -6037,6 +6039,7 @@ textarea.materialize-textarea + label:after {
   position: absolute;
   top: 0.8rem;
   left: 0;
+  height: 100%;
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
@@ -6044,8 +6047,8 @@ textarea.materialize-textarea + label:after {
 
 .input-field label:not(.label-icon).active {
   font-size: 0.8rem;
-  -webkit-transform: translateY(-140%);
-          transform: translateY(-140%);
+  -webkit-transform: translateY(-22px);
+          transform: translateY(-22px);
 }
 
 .input-field .prefix {
