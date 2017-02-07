@@ -13,7 +13,7 @@
 
   .tap-target {
     transform: scale(1);
-    opacity: 1;
+    opacity: .95;
     transition:
       transform .3s cubic-bezier(.42,0,.58,1),
       opacity .3s cubic-bezier(.42,0,.58,1);
