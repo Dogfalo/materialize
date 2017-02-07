@@ -57,6 +57,9 @@
         <br>
         <p class="caption">Use autocomplete with chips.</p>
         <div class="chips chips-autocomplete"></div>
+        <br>
+        <p class="caption">Set reversed order.</p>
+        <div class="chips chips-reverse"></div>
       </div>
 
       <div id="properties" class="section scrollspy">
@@ -66,6 +69,7 @@
   &lt;div class="chips chips-initial">&lt;/div>
   &lt;div class="chips chips-placeholder">&lt;/div>
   &lt;div class="chips chips-autocomplete">&lt;/div>
+  &lt;div class="chips chips-reverse">&lt;/div>
         </code></pre>
         <h4>jQuery Initialization</h4>
         <pre><code class="language-javascript">
@@ -89,6 +93,16 @@
       'Microsoft': null,
       'Google': null
     }
+  });
+  $('.chips-reverse').material_chip({
+    reversed: true,
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
   });
         </code></pre>
         <p class="caption">Chip data object</p>
@@ -135,6 +149,11 @@
               <td>autocompleteLimit</td>
               <td>Integer</td>
               <td>Set autocomplete limit.</td>
+            </tr>
+            <tr>
+              <td>reversed</td>
+              <td>boolean</td>
+              <td>Set reversed order, input followed by reversed chips.</td>
             </tr>
             <tr>
           </tbody>
