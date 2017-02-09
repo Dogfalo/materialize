@@ -88,6 +88,10 @@
         $this.append('<div class="indicator"></div>');
       }
       $indicator = $this.find('.indicator');
+
+      // we make sure that the indicator is at the end of the tabs
+      $this.append($indicator);
+
       if ($this.is(":visible")) {
         // $indicator.css({"right": $tabs_width - ((index + 1) * $tab_width)});
         // $indicator.css({"left": index * $tab_width});

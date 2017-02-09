@@ -180,10 +180,13 @@
             var direction = e.gesture.direction;
             var x = e.gesture.deltaX;
             var velocityX = e.gesture.velocityX;
+            var velocityY = e.gesture.velocityY;
 
             $curr_slide = $slider.find('.active');
-            $curr_slide.velocity({ translateX: x
-                }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            if (Math.abs(velocityX) > Math.abs(velocityY)) {
+              $curr_slide.velocity({ translateX: x
+                  }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            }
 
             // Swipe Left
             if (direction === 4 && (x > ($this.innerWidth() / 2) || velocityX < -0.65)) {

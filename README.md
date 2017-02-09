@@ -5,7 +5,7 @@
 
 [Materialize](http://materializecss.com/), a CSS Framework based on material design
 
-### Current Version : v0.97.8
+### Current Version : v0.98.0
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -14,6 +14,19 @@
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
+Bolded styling surrounded by emojis indicates a breaking change.
+
+- v0.98.0 (January 25th)
+  - :no_good: **Standardized plugin option naming to camelcase (please check your plugin calls to make sure all the options are camelcase)** :no_good:
+  - Added FABs in image cards
+  - Added swipeable tabs
+  - Fixed carousel misalignment when switching quickly
+  - Fixed carousel resize bug where slide widths wouldn't change when changing window size
+  - Improved tabs compatibility with cards
+  - Fixed bug where using backspace to delete chips would navigate back in certain browsers
+  - Added autocomplete integration with chips
+  - Upgraded noUiSlider to version 9 with support for vertical sliders
+
 - v0.97.8 (October 30th, 2016)
   - **Refactored Modal plugin**
   - Tabs now supported in navbar
@@ -37,8 +50,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Sidenav and Modals no longer cause flicker with scrollbar
   - Materialbox overflow and z-index issues fixed
   - Added new option for Card actions within a Card reveal
-- v0.97.5 (December 21st, 2015)
-  - Fixed Meteor package crash
+
 
 
 
