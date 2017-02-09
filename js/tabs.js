@@ -19,10 +19,12 @@
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
           $tabs_content = $(),
+          $tab_carousel = $(),
           $tabs_wrapper,
           $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
           $indicator,
-          index = prev_index = 0,
+          index = 0,
+          prev_index = 0,
           clicked = false,
           clickedTimeout,
           transition = 300;
@@ -122,13 +124,21 @@
         });
         $tabs_wrapper = $tabs_content.wrapAll('<div class="tabs-content carousel"></div>');
         $tabs_content.css('display', '');
-        $('.tabs-content.carousel').carousel({
+        $tab_carousel = $('.tabs-content.carousel');
+        $tab_carousel.carousel({
           fullWidth: true,
           noWrap: true,
           onCycleTo: function(item) {
+            var new_index = $tabs_wrapper.index(item);
+            // when new_index is disabled
+            if ($this.find('li').eq(new_index).hasClass('disabled')) {
+              $tab_carousel.carousel('set', index);
+              return;
+            }
+
             if (!clicked) {
               var prev_index = index;
-              index = $tabs_wrapper.index(item);
+              index = new_index;
               $active = $links.eq(index);
               animateIndicator(prev_index);
             }
