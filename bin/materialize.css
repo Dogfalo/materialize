@@ -5638,6 +5638,10 @@ button.btn-floating {
   box-shadow: none !important;
 }
 
+.chips .autocomplete-content {
+  margin-top: 0;
+}
+
 .prefix ~ .chips {
   margin-left: 3rem;
   width: 92%;
