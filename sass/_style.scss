@@ -571,6 +571,10 @@ code, pre {
   font-size: 1rem;
   line-height: 1.1rem !important;
 }
+:not(pre) > code[class*="language-"] {
+  padding: .1em .25em;
+  border: solid 1px rgba(51,51,51,0.12);
+}
 pre[class*="language-"] {
   &:before {
     position: absolute;
