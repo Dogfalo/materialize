@@ -609,7 +609,8 @@
 
       <div id="radio" class="section scrollspy">
         <h2 class="header">Radio Buttons</h2>
-        <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
+        <p>Radio Buttons are used when the user must make only one selection out of a group of items. The <code class="language-markup">for</code> attribute is necessary to bind our custom radio button with the input. Add the input's <code class="language-markup">id</code> as the value of the <code class="language-markup">for</code> attribute of the label.</p>
+        <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
         <form action="#">
           <p>
             <input name="group1" type="radio" id="test1" checked />
@@ -628,7 +629,7 @@
               <label for="test4">Brown</label>
           </p>
         </form>
-        <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
+        <br>
         <pre><code class="language-markup">
   &lt;form action="#">
     &lt;p>
