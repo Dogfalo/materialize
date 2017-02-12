@@ -1,7 +1,5 @@
 (function($) {
 
-  var scrollFireEventsHandled = false;
-
   // Input: Array of JSON objects {selector, offset, callback}
   Materialize.scrollFire = function(options) {
     var onScroll = function() {
@@ -11,8 +9,8 @@
         // Get options from each line
         var value = options[i];
         var selector = value.selector,
-            offset = value.offset,
-            callback = value.callback;
+          offset = value.offset,
+          callback = value.callback;
 
         var currentElement = document.querySelector(selector);
         if ( currentElement !== null) {
@@ -38,11 +36,8 @@
       onScroll();
     }, options.throttle || 100);
 
-    if (!scrollFireEventsHandled) {
-      window.addEventListener("scroll", throttledScroll);
-      window.addEventListener("resize", throttledScroll);
-      scrollFireEventsHandled = true;
-    }
+    window.addEventListener("scroll", throttledScroll);
+    window.addEventListener("resize", throttledScroll);
 
     // perform a scan once, after current execution context, and after dom is ready
     setTimeout(throttledScroll, 0);
