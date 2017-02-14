@@ -6158,7 +6158,7 @@ textarea.materialize-textarea {
 
 /* Autocomplete */
 .autocomplete-content {
-  margin-top: -15px;
+  margin-top: -20px;
   display: block;
   opacity: 1;
   position: static;

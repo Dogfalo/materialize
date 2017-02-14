@@ -271,7 +271,7 @@ textarea {
 
 /* Autocomplete */
 .autocomplete-content {
-  margin-top: -15px;
+  margin-top: -1 * $input-margin-bottom;
   display: block;
   opacity: 1;
   position: static;

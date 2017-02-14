@@ -294,7 +294,7 @@
         var $input = $(this);
         var data = options.data,
             count = 0,
-            activeIndex = 0,
+            activeIndex = -1,
             oldVal,
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
@@ -336,7 +336,7 @@
 
           // Reset current element position
           var resetCurrentElement = function() {
-            activeIndex = 0;
+            activeIndex = -1;
             $autocomplete.find('.active').removeClass('active');
           }
 
@@ -396,7 +396,7 @@
                 $active = $autocomplete.children('.active').first();
 
             // select element on Enter
-            if (keyCode === 13) {
+            if (keyCode === 13 && activeIndex >= 0) {
               liElement = $autocomplete.children('li').eq(activeIndex);
               if (liElement.length) {
                 liElement.click();
@@ -415,13 +415,15 @@
               }
 
               if (keyCode === 40 &&
-                  activeIndex < (numItems - 1) &&
-                  $active.length) {
+                  activeIndex < (numItems - 1)) {
                 activeIndex++;
               }
+              console.log(activeIndex);
 
               $active.removeClass('active');
-              $autocomplete.children('li').eq(activeIndex).addClass('active');
+              if (activeIndex >= 0) {
+                $autocomplete.children('li').eq(activeIndex).addClass('active');
+              }
             }
           });
 
