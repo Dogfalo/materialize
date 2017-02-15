@@ -160,6 +160,7 @@ textarea.materialize-textarea {
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
+    pointer-events: none;
 
     &:not(.label-icon).active {
       font-size: $label-font-size;
