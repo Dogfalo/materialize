@@ -6646,6 +6646,7 @@ select {
   position: absolute;
   top: -14px;
   font-size: 0.8rem;
+  height: auto;
 }
 
 select:disabled {
