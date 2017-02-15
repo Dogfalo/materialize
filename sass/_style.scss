@@ -912,7 +912,6 @@ body.parallax-demo footer {
 
 
 // Thanks for Downloading
-
 #download-thanks {
   display: none;
 }
@@ -977,6 +976,23 @@ body.parallax-demo footer {
 
       font-size: 12px;
       white-space: nowrap;
+    }
+  }
+}
+
+
+// Themes
+body.themes {
+  .themes-section {
+    padding: 60px 0 40px 0;
+    @extend .valign-wrapper;
+
+    .theme-preview {
+      width: 100%;
+    }
+
+    h4 {
+      margin-top: 0;
     }
   }
 }
