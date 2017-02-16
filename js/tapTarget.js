@@ -90,11 +90,13 @@
       var originWidth = origin.outerWidth();
       var originHeight = origin.outerHeight();
       var originTop = isFixed ? origin.offset().top - $(document).scrollTop() : origin.offset().top;
-      var originLeft = origin.offset().left;
+      var originLeft = isFixed ? origin.offset().left - $(document).scrollLeft() : origin.offset().left;
 
       // Calculating screen
-      var windowWidth = window.innerWidth;
-      var windowHeight = window.innerHeight;
+      var scrollY = document.body.clientHeight > window.innerHeight && $('body').css('overflow-y') != 'hidden' ? 17 : 0;
+      var scrollX = document.body.clientWidth > window.innerWidth && $('body').css('overflow-x') != 'hidden' ? 17 : 0;
+      var windowWidth = window.innerWidth - scrollY;
+      var windowHeight = window.innerHeight - scrollX;
       var centerX = windowWidth / 2;
       var centerY = windowHeight / 2;
       var isLeft = originLeft <= centerX;
