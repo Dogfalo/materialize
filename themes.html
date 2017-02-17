@@ -58,7 +58,6 @@
                   <li><a href="grid.html">Grid</a></li>
                   <li><a href="helpers.html">Helpers</a></li>
                   <li><a href="media-css.html">Media</a></li>
-                  <li><a href="pulse.html">Pulse</a></li>
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
@@ -92,7 +91,6 @@
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
-                  <li><a href="feature-discovery.html">FeatureDiscovery</a></li>
                   <li><a href="media.html">Media</a></li>
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
@@ -122,18 +120,154 @@
     </div>
     <div class="col s12 m4 offset-m1">
       <h4>Gallery</h4>
-      <p class="caption">The page you were looking for does not exist. If you think this is a mistake and one of our pages has gone missing, throw us an <a href="mailto:materializeframework@gmail.com?Subject=404%20Page">email</a> or send us a <a href="https://twitter.com/MaterializeCSS">tweet</a>. Click below to learn more about our CSS framework.</p>
-      <a href="about.html" class="btn-large">Learn More</a>
+      <p class="caption" style="margin-bottom: 0;">This theme is perfect for Portfolio, Blogs, and Stores with its Google Play Store inspired content transition. This theme is in active development and will have more features and styles added to it in the future.</p>
+      <div id='product-component-f979385da90'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'materialize-themes.myshopify.com',
+      apiKey: '2d9a0b3001fe4fcbe3ba50c42a7df88e',
+      appId: '6',
+    });
+
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: [8831109057],
+        node: document.getElementById('product-component-f979385da90'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "buttonDestination": "checkout",
+    "variantId": "all",
+    "width": "240px",
+    "contents": {
+      "img": false,
+      "title": false,
+      "variantTitle": false,
+      "price": false,
+      "description": false,
+      "buttonWithQuantity": false,
+      "quantity": false
+    },
+    "text": {
+      "button": "BUY 19$"
+    },
+    "styles": {
+      "product": {
+        "text-align": "left",
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0",
+          "margin-bottom": "50px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      },
+      "title": {
+        "font-size": "26px"
+      },
+      "price": {
+        "font-size": "18px"
+      },
+      "compareAt": {
+        "font-size": "15px"
+      }
+    }
+  },
+  "cart": {
+    "contents": {
+      "button": true
+    },
+    "styles": {
+      "button": {
+        "border-radius": "2px"
+      },
+      "footer": {
+        "background-color": "#ffffff"
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "variantTitle": false,
+      "buttonWithQuantity": true,
+      "button": false,
+      "quantity": false
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      }
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  }
+}
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
+    <a class="shopify-btn" target="_blank" href="https://themes.materializecss.com/pages/demo">DEMO</a>
     </div>
 
   </div>
 </div> <!-- End Container -->
+
+<div class="themes-banner">
+  <div class="container">
+    <p>All themes come with active support. Send your questions and concerns to <a href="mailto:materializethemes@gmail.com?Subject=Theme%20support" target="_top">MaterializeThemes</a></p>
+    <p>All themes are under the Personal Use License meaning you can use and modify these themes for personal and client projects. You cannot redistribute or resell these themes in any way.</p>
+  </div>
+</div>
     </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l4 s12">
             <h5 class="white-text">Help Materialize Grow</h5>
-            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+            <p class="grey-text text-lighten-4">We hope you have enjoyed using Materialize! If you feel Materialize has helped you out and want to support the team, send us over a donation! Any amount would help support and continue development on this project and is greatly appreciated.</p>
             <form id="paypal-donate" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
