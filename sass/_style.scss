@@ -997,3 +997,39 @@ body.themes {
     }
   }
 }
+.shopify-buy-frame,
+.shopify-btn {
+  float: left;
+}
+.shopify-buy-frame {
+  width: 105px;
+}
+.shopify-btn {
+  &:hover {
+    background-color: #5f9d3e;
+  }
+  background-color: #78B657;
+  font-size: 15px;
+  font-family: 'Helvetica Neue';
+  letter-spacing: .3px;
+  border-radius: 2px;
+  color: #fff;
+  padding: 10px 20px;
+  transition: background .2s;
+  margin: 20px 0 0 5px;
+  -webkit-font-smoothing: antialiased;
+}
+.themes-banner {
+  text-align: center;
+  background-color: #5f5f5f;
+  padding: 30px 0;
+
+  p {
+    font-size: 18px;
+    color: #fff;
+  }
+
+  a {
+    color: #baef74;
+  }
+}
