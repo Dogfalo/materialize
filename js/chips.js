@@ -196,12 +196,11 @@
     };
 
     this.chips = function($chips, chipId) {
-      var html = '';
+      $chips.empty();
       $chips.data('chips').forEach(function(elem){
-        html += self.renderChip(elem);
+        $chips.append(self.renderChip(elem));
       });
-      html += '<input id="' + chipId +'" class="input" placeholder="">';
-      $chips.html(html);
+      $chips.append($('<input id="' + chipId +'" class="input" placeholder="">'));
       self.setPlaceholder($chips);
 
       // Set for attribute for label
@@ -226,16 +225,18 @@
       }
     };
 
+    /**
+     * Render chip jQuery element.
+     * @param {Object} elem
+     * @return {jQuery}
+     */
     this.renderChip = function(elem) {
       if (!elem.tag) return;
 
-      var html = '<div class="chip">' + elem.tag;
-      if (elem.image) {
-        html += ' <img src="' + elem.image + '"> ';
-      }
-      html += '<i class="material-icons close">close</i>';
-      html += '</div>';
-      return html;
+      var $renderedChip = $('<div class="chip"></div>');
+      $renderedChip.text(elem.tag);
+      $renderedChip.append($('<i class="material-icons close">close</i>'));
+      return $renderedChip;
     };
 
     this.setPlaceholder = function($chips) {
@@ -263,7 +264,7 @@
       if (!self.isValid($chips, elem)) {
         return;
       }
-      var chipHtml = self.renderChip(elem);
+      var $renderedChip = self.renderChip(elem);
       var newData = [];
       var oldData = $chips.data('chips');
       for (var i = 0; i < oldData.length; i++) {
@@ -272,7 +273,7 @@
       newData.push(elem);
 
       $chips.data('chips', newData);
-      $(chipHtml).insertBefore($chips.find('input'));
+      $renderedChip.insertBefore($chips.find('input'));
       $chips.trigger('chip.add', elem);
       self.setPlaceholder($chips);
     };
