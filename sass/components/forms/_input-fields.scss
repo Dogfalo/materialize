@@ -115,8 +115,7 @@ textarea.materialize-textarea {
     display: block;
     content: "";
     position: absolute;
-    bottom: 0;
-    transform: translateY(75%);
+    top: 60px;
     opacity: 0;
     transition: .2s opacity ease-out, .2s color ease-out;
   }
@@ -156,14 +155,13 @@ textarea.materialize-textarea {
     position: absolute;
     top: 0.8rem;
     left: 0;
-    height: 100%;
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
 
     &:not(.label-icon).active {
       font-size: $label-font-size;
-      transform: translateY(-22px);
+      transform: translateY(-140%);
     }
   }
 
