@@ -199,11 +199,13 @@
       secondaryPlaceholder: '+Tag',
     });
     $('.chips-autocomplete').material_chip({
-      autocompleteData: {
-        'Apple': null,
-        'Microsoft': null,
-        'Google': null
-      }
+      autocompleteOptions: {
+        data: {
+          'Apple': null,
+          'Microsoft': null,
+          'Google': null
+        }
+      },
     });
 
 

@@ -438,7 +438,7 @@
           });
 
           // Set input value
-          $autocomplete.on('click', 'li', function () {
+          $autocomplete.on('mousedown touchstart', 'li', function () {
             var text = $(this).text().trim();
             $input.val(text);
             $input.trigger('change');

@@ -3,8 +3,7 @@
     data: [],
     placeholder: '',
     secondaryPlaceholder: '',
-    autocompleteData: {},
-    autocompleteLimit: Infinity,
+    autocompleteOptions: {},
   };
 
   $(document).ready(function() {
@@ -35,7 +34,7 @@
     }
 
     var curr_options = $.extend({}, materialChipsDefaults, options);
-    self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteData);
+    self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteOptions.data);
 
     // Initialize
     this.init = function() {
@@ -218,15 +217,12 @@
       // Setup autocomplete if needed.
       var input = $('#' + chipId);
       if (self.hasAutocomplete) {
-        input.autocomplete({
-          data: curr_options.autocompleteData,
-          limit: curr_options.autocompleteLimit,
-          onAutocomplete: function(val) {
-            self.addChip({tag: val}, $chips);
-            input.val('');
-            input.focus();
-          },
-        })
+        curr_options.autocompleteOptions.onAutocomplete = function(val) {
+          self.addChip({tag: val}, $chips);
+          input.val('');
+          input.focus();
+        }
+        input.autocomplete(curr_options.autocompleteOptions);
       }
     };
 
