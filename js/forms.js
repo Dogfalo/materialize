@@ -285,7 +285,8 @@
       var defaults = {
         data: {},
         limit: Infinity,
-        onAutocomplete: null
+        onAutocomplete: null,
+        minLength: 1
       };
 
       options = $.extend(defaults, options);
@@ -340,10 +341,22 @@
             $autocomplete.find('.active').removeClass('active');
           }
 
+          // Remove autocomplete elements
+          var removeAutocomplete = function() {
+            $autocomplete.empty();
+            resetCurrentElement();
+            oldVal = undefined;
+          };
+
+          $input.off('blur.autocomplete').on('blur.autocomplete', function() {
+            removeAutocomplete();
+          });
+
           // Perform search
-          $input.off('keyup.autocomplete').on('keyup.autocomplete', function (e) {
+          $input.off('keyup.autocomplete, focus.autocomplete').on('keyup.autocomplete, focus.autocomplete', function (e) {
             // Reset count.
             count = 0;
+            var val = $input.val().toLowerCase();
 
             // Don't capture enter or arrow key usage.
             if (e.which === 13 ||
@@ -352,14 +365,12 @@
               return;
             }
 
-            var val = $input.val().toLowerCase();
 
             // Check if the input isn't empty
             if (oldVal !== val) {
-              $autocomplete.empty();
-              resetCurrentElement();
+              removeAutocomplete();
 
-              if (val !== '') {
+              if (val.length >= options.minLength) {
                 for(var key in data) {
                   if (data.hasOwnProperty(key) &&
                       key.toLowerCase().indexOf(val) !== -1 &&
@@ -418,7 +429,6 @@
                   activeIndex < (numItems - 1)) {
                 activeIndex++;
               }
-              console.log(activeIndex);
 
               $active.removeClass('active');
               if (activeIndex >= 0) {
@@ -432,8 +442,7 @@
             var text = $(this).text().trim();
             $input.val(text);
             $input.trigger('change');
-            $autocomplete.empty();
-            resetCurrentElement();
+            removeAutocomplete();
 
             // Handle onAutocomplete callback.
             if (typeof(options.onAutocomplete) === "function") {
