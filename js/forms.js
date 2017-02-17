@@ -353,7 +353,7 @@
           });
 
           // Perform search
-          $input.off('keyup.autocomplete, focus.autocomplete').on('keyup.autocomplete, focus.autocomplete', function (e) {
+          $input.off('keyup.autocomplete focus.autocomplete').on('keyup.autocomplete focus.autocomplete', function (e) {
             // Reset count.
             count = 0;
             var val = $input.val().toLowerCase();
@@ -410,7 +410,7 @@
             if (keyCode === 13 && activeIndex >= 0) {
               liElement = $autocomplete.children('li').eq(activeIndex);
               if (liElement.length) {
-                liElement.click();
+                liElement.trigger('mousedown.autocomplete');
                 e.preventDefault();
               }
               return;
@@ -438,7 +438,7 @@
           });
 
           // Set input value
-          $autocomplete.on('mousedown touchstart', 'li', function () {
+          $autocomplete.on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
             var text = $(this).text().trim();
             $input.val(text);
             $input.trigger('change');
