@@ -5255,6 +5255,9 @@ button.btn-floating {
 .dropdown-content li > a > i {
   height: inherit;
   line-height: inherit;
+  float: left;
+  margin: 0 24px 0 0;
+  width: 24px;
 }
 
 .input-field.col .dropdown-content [type="checkbox"] + label {

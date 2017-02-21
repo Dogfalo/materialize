@@ -119,15 +119,17 @@
 
       <div id="introduction" class="scrollspy section">
         <h4>Introduction</h4>
-        <p>Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. </p>
-        <p>You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. </p>
+        <p class="caption">Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. You can also add icons. Just add the icon inside the <code class="language-markup">anchor</code> tag.</p>
         <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="#!">one</a></li>
           <li><a href="#!">two</a></li>
           <li class="divider"></li>
           <li><a href="#!">three</a></li>
+          <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
         </ul>
+        <br><br>
         <pre><code class="language-markup">
   &lt;!-- Dropdown Trigger -->
   &lt;a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
@@ -138,30 +140,8 @@
     &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
     &lt;li class="divider">&lt;/li>
     &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
-  &lt;/ul>
-        </code></pre>
-      </div>
-
-      <div id="icons" class="scrollspy section">
-        <h4>Dropdown icon</h4>
-        <p>You can also add icons into dropdowns. </p>
-        <a class='dropdown-button btn' href='#' data-activates='dropdown2'>Drop Me!</a>
-        <ul id='dropdown2' class='dropdown-content'>
-          <li><a href="#!"><i class="material-icons">search</i>one</a></li>
-          <li><a href="#!"><i class="material-icons">view_module</i>two</a></li>
-          <li class="divider"></li>
-          <li><a href="#!"><i class="material-icons">refresh</i>three</a></li>
-        </ul>
-        <pre><code class="language-markup">
-  &lt;!-- Dropdown Trigger -->
-  &lt;a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
-
-  &lt;!-- Dropdown Structure -->
-  &lt;ul id='dropdown1' class='dropdown-content'>
-    &lt;li>&lt;a href="#!">&lt;i class="material-icons">search&lt;/i>one&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#!">&lt;i class="material-icons">view_module&lt;/i>two&lt;/a>&lt;/li>
-    &lt;li class="divider">&lt;/li>
-    &lt;li>&lt;a href="#!">&lt;i class="material-icons">refresh&lt;/i>three&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">&lt;i class="material-icons">view_module&lt;/i>four&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">&lt;i class="material-icons">cloud&lt;/i>five&lt;/a>&lt;/li>
   &lt;/ul>
         </code></pre>
       </div>
@@ -267,7 +247,6 @@
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#icons">Icons</a></li>
             <li><a href="#options">Options</a></li>
             <li><a href="#initialization">Initialization</a></li>
           </ul>
