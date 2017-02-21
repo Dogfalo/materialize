@@ -11,6 +11,7 @@
     "url": "git://github.com/Dogfalo/materialize.git"
   },
   "dependencies": {
+    "grunt-cli": "^1.2.0",
     "hammerjs": "^2.0.4",
     "jquery": "^2.1.4",
     "node-archiver": "^0.3.0"

@@ -35,6 +35,38 @@ a {
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
 }
+// Helper classes for Colors
+.primary-color {
+  background-color: $primary-color;
+}
+
+.primary-color-light {
+  background-color: $primary-color-light;
+}
+
+.primary-color-dark {
+  background-color: $primary-color-dark;
+}
+
+.accent-color {
+  background-color: $accent-color;
+}
+
+.primary-color-text {
+  color: $primary-color;
+}
+
+.primary-color-light-text {
+  color: $primary-color-light;
+}
+
+.primary-color-dark-text {
+  color: $primary-color-dark;
+}
+
+.accent-color-text {
+  color: $accent-color;
+}
 
 
 // Positioning
@@ -584,7 +616,7 @@ td, th{
 // Made less specific to allow easier overriding
 .secondary-content {
   float: right;
-  color: $secondary-color;
+  color: $accent-color;
 }
 .collapsible .collection {
   margin: 0;
