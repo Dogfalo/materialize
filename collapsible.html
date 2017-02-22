@@ -226,11 +226,24 @@
     onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
   });
         </code></pre>
+      </div>
+
+      <div id="methods" class="scrollspy section">
+        <h4>Methods</h4>
+        <span>You can programmatically open and close collapsibles through these methods. The second parameter is the 0-based index of the collapsible you want to open.</span>
+        <pre><code class="language-javascript">
+  // Open
+  $('.collapsible').collapsible('open', 0);
+
+  // Close
+  $('.collapsible').collapsible('close', 0);
+        </code></pre>
         <br><br>
 
         <h4>Collapsible Types</h4>
         <span>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type</span>
       </div>
+
       <div id="accordion" class="section scrollspy">
         <div class="row">
           <div class="col s12 m3"><h5 class="light">Accordion</h5></div>
@@ -302,6 +315,7 @@
             <li><a href="#structure">Structure</a></li>
             <li><a href="#intialization">Initialization</a></li>
             <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
             <li><a href="#accordion">Accordion</a></li>
             <li><a href="#expandable">Expandable</a></li>
           </ul>
