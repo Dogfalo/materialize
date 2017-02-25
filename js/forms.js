@@ -193,11 +193,23 @@
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
+      var max = $(this).attr('max');
+      var width = $(this).width() - 15;
+      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
+      var offsetLeft = $(this).val() * (width / max);
+
+      if (!thumb.hasClass('active')) {
+        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+      }
+      thumb.addClass('active').css('left', offsetLeft);
     });
 
-    $(document).on('input mousedown touchstart', range_type, function(e) {
+    $(document).on('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
-      var width = $(this).outerWidth();
+      var max = $(this).attr('max');
+      var width = $(this).width() - 15;
+      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
+      var offsetLeft = $(this).val() * (width / max);
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -212,26 +224,12 @@
       $(this).addClass('active');
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
+        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
       }
 
       if (e.type !== 'input') {
-        if(e.pageX === undefined || e.pageX === null){//mobile
-           left = e.originalEvent.touches[0].pageX - $(this).offset().left;
-        }
-        else{ // desktop
-           left = e.pageX - $(this).offset().left;
-        }
-        if (left < 0) {
-          left = 0;
-        }
-        else if (left > width) {
-          left = width;
-        }
-        thumb.addClass('active').css('left', left);
+        thumb.addClass('active').css('left', offsetLeft);
       }
-
-      thumb.find('.value').html($(this).val());
     });
 
     $(document).on('mouseup touchend', range_wrapper, function() {
@@ -239,28 +237,20 @@
       $(this).removeClass('active');
     });
 
-    $(document).on('mousemove touchmove', range_wrapper, function(e) {
+    $(document).on('input mousemove touchmove', range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
       var left;
+      var input = $(this).find(range_type);
+      var max = input.attr('max');
+      var width = input.width() - 15;
+      var paddingSide = ($(this).outerWidth() - width) || 0;
+      var offsetLeft = input.val() * (width / max);
+
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: '30px', width: '30px', top: '-20px', marginLeft: '-15px'}, { duration: 300, easing: 'easeOutExpo' });
+          thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
         }
-        if (e.pageX === undefined || e.pageX === null) { //mobile
-          left = e.originalEvent.touches[0].pageX - $(this).offset().left;
-        }
-        else{ // desktop
-          left = e.pageX - $(this).offset().left;
-        }
-        var width = $(this).outerWidth();
-
-        if (left < 0) {
-          left = 0;
-        }
-        else if (left > width) {
-          left = width;
-        }
-        thumb.addClass('active').css('left', left);
+        thumb.addClass('active').css('left', offsetLeft);
         thumb.find('.value').html(thumb.siblings(range_type).val());
       }
     });
@@ -271,7 +261,7 @@
         var thumb = $(this).children('.thumb');
 
         if (thumb.hasClass('active')) {
-          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '-6px'}, { duration: 100 });
+          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '15px'}, { duration: 100 });
         }
         thumb.removeClass('active');
       }
