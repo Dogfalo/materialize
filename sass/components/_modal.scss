@@ -1,90 +1,90 @@
-.modal {
-  @extend .z-depth-4;
-
-  display: none;
-  position: fixed;
-  left: 0;
-  right: 0;
-  background-color: #fafafa;
-  padding: 0;
-  max-height: 70%;
-  width: 55%;
-  margin: auto;
-  overflow-y: auto;
-
-  border-radius: 2px;
-  will-change: top, opacity;
-
-  @media #{$medium-and-down} {
-   width: 80%;
-  }
-
-  h1,h2,h3,h4 {
-    margin-top: 0;
-  }
-
-  .modal-content {
-    padding: 24px;
-  }
-  .modal-close {
-    cursor: pointer;
-  }
-
-  .modal-footer {
-    border-radius: 0 0 2px 2px;
-    background-color: #fafafa;
-    padding: 4px 6px;
-    height: 56px;
+body.materialize-modal-opened {
     width: 100%;
-
-    .btn, .btn-flat {
-      float: right;
-      margin: 6px 0;
-    }
-  }
+    position: fixed;
 }
-.modal-overlay {
-  position: fixed;
-  z-index: 999;
-  top: -100px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 125%;
-  width: 100%;
-  background: #000;
-  display: none;
 
-  will-change: opacity;
+.modal {
+    @extend .z-depth-4;
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    width: 55%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+    will-change: top, opacity;
+    @media #{$medium-and-down} {
+        width: 80%;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin-top: 0;
+    }
+    .modal-content {
+        padding: 24px;
+    }
+    .modal-close {
+        cursor: pointer;
+    }
+    .modal-footer {
+        border-radius: 0 0 23px 2px;
+        background-color: #fafafa;
+        padding: 4px 6px;
+        height: 56px;
+        width: 100%;
+        .btn,
+        .btn-flat {
+            float: right;
+            margin: 6px 0;
+        }
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    z-index: 999;
+    top: -100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 125%;
+    width: 100%;
+    background: #000;
+    display: none;
+    will-change: opacity;
 }
 
 // Modal with fixed action footer
 .modal.modal-fixed-footer {
-  padding: 0;
-  height: 70%;
-
-  .modal-content {
-    position: absolute;
-    height: calc(100% - 56px);
-    max-height: 100%;
-    width: 100%;
-    overflow-y: auto;
-  }
-
-  .modal-footer {
-    border-top: 1px solid rgba(0,0,0,.1);
-    position: absolute;
-    bottom: 0;
-  }
+    padding: 0;
+    height: 70%;
+    .modal-content {
+        position: absolute;
+        height: calc(100% - 56px);
+        max-height: 100%;
+        width: 100%;
+        overflow-y: auto;
+    }
+    .modal-footer {
+        border-top: 1px solid rgba(0, 0, 0, .1);
+        position: absolute;
+        bottom: 0;
+    }
 }
 
 // Modal Bottom Sheet Style
 .modal.bottom-sheet {
-  top: auto;
-  bottom: -100%;
-  margin: 0;
-  width: 100%;
-  max-height: 45%;
-  border-radius: 0;
-  will-change: bottom, opacity;
+    top: auto;
+    bottom: -100%;
+    margin: 0;
+    width: 100%;
+    max-height: 45%;
+    border-radius: 0;
+    will-change: bottom, opacity;
 }
