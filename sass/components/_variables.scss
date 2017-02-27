@@ -193,18 +193,31 @@ $switch-radius: 15px !default;
 // ==========================================================================
 
 // Media Query Ranges
-$small-screen-up: 601px !default;
-$medium-screen-up: 993px !default;
-$large-screen-up: 1201px !default;
+
+// Extra-small here
 $small-screen: 600px !default;
+
+$small-screen-up: 601px !default;
+// Small here
 $medium-screen: 992px !default;
+
+$medium-screen-up: 993px !default;
+// Medium here
 $large-screen: 1200px !default;
 
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
-$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$large-screen-up: 1201px !default;
+// Large here
+
+
+// Extra-small here
 $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$small-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+$medium-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+
+$large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
 
 
 // 12. Grid
