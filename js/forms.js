@@ -363,8 +363,7 @@
               if (val.length >= options.minLength) {
                 for(var key in data) {
                   if (data.hasOwnProperty(key) &&
-                      key.toLowerCase().indexOf(val) !== -1 &&
-                      key.toLowerCase() !== val) {
+                      key.toLowerCase().indexOf(val) !== -1) {
                     // Break if past limit
                     if (count >= options.limit) {
                       break;
