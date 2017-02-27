@@ -6977,7 +6977,7 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.side-nav a {
+.side-nav li > a {
   color: rgba(0, 0, 0, 0.87);
   display: block;
   font-size: 14px;
@@ -6987,32 +6987,32 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 0 32px;
 }
 
-.side-nav a:hover {
+.side-nav li > a:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-flat, .side-nav a.btn-floating {
+.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav li > a.btn-large, .side-nav li > a.btn-flat, .side-nav li > a.btn-floating {
   margin: 10px 15px;
 }
 
-.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-floating {
+.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav li > a.btn-large, .side-nav li > a.btn-floating {
   color: #fff;
 }
 
-.side-nav a.btn-flat {
+.side-nav li > a.btn-flat {
   color: #343434;
 }
 
-.side-nav a.btn:hover, .side-nav a.btn-large:hover, .side-nav a.btn-large:hover {
+.side-nav li > a.btn:hover, .side-nav li > a.btn-large:hover, .side-nav li > a.btn-large:hover {
   background-color: #2bbbad;
 }
 
-.side-nav a.btn-floating:hover {
+.side-nav li > a.btn-floating:hover {
   background-color: #26a69a;
 }
 
 .side-nav li > a > i,
-.side-nav li > a > [class^="mdi-"], .side-nav li > a > [class*="mdi-"],
+.side-nav li > a > [class^="mdi-"], .side-nav li > a li > a > [class*="mdi-"],
 .side-nav li > a > i.material-icons {
   float: left;
   height: 48px;
