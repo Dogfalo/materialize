@@ -100,7 +100,7 @@
           $indicator.css({"left": calcLeftPos($active) });
         }, 0);
       }
-      $(window).resize(function () {
+      $(window).off('resize.tabs').on('resize.tabs', function () {
         $tabs_width = $this.width();
         $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
         if (index < 0) {
@@ -143,7 +143,7 @@
 
 
       // Bind the click event handler
-      $this.on('click', 'a', function(e) {
+      $this.off('click.tabs').on('click.tabs', 'a', function(e) {
         if ($(this).parent().hasClass('disabled')) {
           e.preventDefault();
           return;

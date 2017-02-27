@@ -405,7 +405,7 @@
         });
 
 
-        $(window).on('resize.carousel', function() {
+        $(window).off('resize.carousel').on('resize.carousel', function() {
           if (options.fullWidth) {
             item_width = view.find('.carousel-item').first().innerWidth();
             item_height = view.find('.carousel-item').first().innerHeight();
