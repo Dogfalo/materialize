@@ -5255,6 +5255,9 @@ button.btn-floating {
 .dropdown-content li > a > i {
   height: inherit;
   line-height: inherit;
+  float: left;
+  margin: 0 24px 0 0;
+  width: 24px;
 }
 
 .input-field.col .dropdown-content [type="checkbox"] + label {
@@ -5636,6 +5639,10 @@ button.btn-floating {
 .chips .input:focus {
   border: 0 !important;
   box-shadow: none !important;
+}
+
+.chips .autocomplete-content {
+  margin-top: 0;
 }
 
 .prefix ~ .chips {
@@ -6151,7 +6158,7 @@ textarea.materialize-textarea {
 
 /* Autocomplete */
 .autocomplete-content {
-  margin-top: -15px;
+  margin-top: -20px;
   display: block;
   opacity: 1;
   position: static;
@@ -7835,6 +7842,172 @@ input[type=range]:focus::-ms-fill-upper {
 
 .carousel .indicators .indicator-item.active {
   background-color: #fff;
+}
+
+.tap-target-wrapper {
+  width: 800px;
+  height: 800px;
+  position: fixed;
+  z-index: 1000;
+  visibility: hidden;
+  transition: visibility 0s .3s;
+}
+
+.tap-target-wrapper.open {
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+.tap-target-wrapper.open .tap-target {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: .95;
+  transition: opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+  transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+  transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.tap-target-wrapper.open .tap-target-wave::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.tap-target-wrapper.open .tap-target-wave::after {
+  visibility: visible;
+  -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+          animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+}
+
+.tap-target {
+  position: absolute;
+  font-size: 1rem;
+  border-radius: 50%;
+  background-color: #ee6e73;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  transition: opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+  transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+  transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@media only screen and (max-width: 600px) {
+  .tap-target {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+.tap-target-content {
+  position: relative;
+  display: table-cell;
+}
+
+.tap-target-wave {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 10001;
+}
+
+.tap-target-wave::before, .tap-target-wave::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.tap-target-wave::before {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.tap-target-wave::after {
+  visibility: hidden;
+  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s;
+  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  z-index: -1;
+}
+
+.tap-target-origin {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 10002;
+  position: absolute !important;
+}
+
+.tap-target-origin:not(.btn):not(.btn-large), .tap-target-origin:not(.btn):not(.btn-large):hover {
+  background: none;
+}
+
+.pulse {
+  overflow: initial;
+}
+
+.pulse::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  border-radius: inherit;
+  transition: opacity .3s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s;
+  transition: opacity .3s, transform .3s, -webkit-transform .3s;
+  -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+          animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  z-index: -1;
+}
+
+@-webkit-keyframes pulse-animation {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+}
+
+@keyframes pulse-animation {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
 }
 
 /* ==========================================================================

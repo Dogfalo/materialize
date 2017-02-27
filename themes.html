@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Collections - Materialize</title>
+    <title>Themes - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -30,11 +30,11 @@
     </script>
     <script src="//cdn.transifex.com/live.js"></script>
   </head>
-  <body>
+  <body class="themes">
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Collections</a></div>
+          <div class="nav-wrapper"><a class="page-title">Themes</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
@@ -67,7 +67,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">Components</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
@@ -75,7 +75,7 @@
                   <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
-                  <li class="active"><a href="collections.html">Collections</a></li>
+                  <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
                   <li><a href="icons.html">Icons</a></li>
@@ -110,242 +110,160 @@
         </li>
         <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
         <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
-        <li class="bold"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
+        <li class="bold active"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
       </ul>
     </header>
     <main><div class="container">
-  <div class="row">
+  <!--  Outer row  -->
+  <div class="row themes-section">
 
-    <div class="col s12 m9 l10">
-
-      <!--  Collections Section  -->
-      <div id="basic" class="section scrollspy">
-
-        <div class="row">
-          <div class="col s12">
-            <p class="caption">Collections allow you to group list objects together.</p>
-            <h2 class="header">Basic</h2>
-            <ul class="collection">
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-            </ul>
-            <pre><code class="language-markup">
-    &lt;ul class="collection">
-      &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;li class="collection-item">Alvin&lt;/li>
-    &lt;/ul>
-            </code></pre>
-            <br>
-          </div>
-        </div>
-      </div>
-
-      <div id="links" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Links</h2>
-            <div class="collection">
-              <a href="#!" class="collection-item">Alvin</a>
-              <a href="#!" class="collection-item active">Alvin</a>
-              <a href="#!" class="collection-item">Alvin</a>
-              <a href="#!" class="collection-item">Alvin</a>
-            </div>
-            <pre><code class="language-markup">
-      &lt;div class="collection">
-        &lt;a href="#!" class="collection-item">Alvin&lt;/a>
-        &lt;a href="#!" class="collection-item active">Alvin&lt;/a>
-        &lt;a href="#!" class="collection-item">Alvin&lt;/a>
-        &lt;a href="#!" class="collection-item">Alvin&lt;/a>
-      &lt;/div>
-            </code></pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="headers" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Headers</h2>
-            <ul class="collection with-header">
-              <li class="collection-header"><h4>First Names</h4></li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-            </ul>
-            <pre><code class="language-markup">
-      &lt;ul class="collection with-header">
-        &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;/ul>
-            </code></pre>
-          </div>
-        </div>
-      </div>
-
-
-      <div id="secondary" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Secondary content</h2>
-            <ul class="collection with-header">
-              <li class="collection-header"><h4>First Names</h4></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-            </ul>
-            <pre><code class="language-markup">
-      &lt;ul class="collection with-header">
-        &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-      &lt;/ul>
-            </code></pre>
-          </div>
-
-        </div>
-      </div>
-
-      <div id="circle" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Avatar Content</h2>
-            <ul class="collection">
-              <li class="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" class="circle">
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle">folder</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle green">insert_chart</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle red">play_arrow</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-            </ul>
-            <pre><code class="language-markup">
-  &lt;ul class="collection">
-    &lt;li class="collection-item avatar">
-      &lt;img src="images/yuna.jpg" alt="" class="circle">
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-    &lt;li class="collection-item avatar">
-      &lt;i class="material-icons circle">folder&lt;/i>
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-    &lt;li class="collection-item avatar">
-      &lt;i class="material-icons circle green">insert_chart&lt;/i>
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-    &lt;li class="collection-item avatar">
-      &lt;i class="material-icons circle red">play_arrow&lt;/i>
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-  &lt;/ul>
-            </code></pre>
-          </div>
-
-        </div>
-      </div>
-
-      <div id="dismiss" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Dismissable Content</h2>
-            <p>You can just add the class <code class="language-markup">dismissable</code> to enable each collection item to be swiped away. This is only for touch enabled devices.</p>
-            <ul class="collection">
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-            </ul>
-            <pre><code class="language-markup">
-      &lt;ul class="collection">
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-      &lt;/ul>
-            </code></pre>
-          </div>
-
-        </div>
-      </div>
-      <!-- End collections -->
-
-
+    <div class="col s12 m7">
+      <img class="theme-preview" src="https://s23.postimg.org/9g7ajckrf/thunder.png" alt="">
     </div>
+    <div class="col s12 m4 offset-m1">
+      <h4>Gallery</h4>
+      <p class="caption" style="margin-bottom: 0;">This theme is perfect for Portfolio, Blogs, and Stores with its Google Play Store inspired content transition. This theme is in active development and will have more features and styles added to it in the future.</p>
+      <div id='product-component-f979385da90'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
 
-    <div class="col hide-on-small-only m3 l2">
-      <div class="toc-wrapper">
-        <div class="buysellads hide-on-small-only">
-          <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
-        </div>
-        <div style="height: 1px;">
-          <ul class="section table-of-contents">
-            <li><a href="#basic">Basic</a></li>
-            <li><a href="#links">Links</a></li>
-            <li><a href="#headers">Headers</a></li>
-            <li><a href="#secondary">Secondary Content</a></li>
-            <li><a href="#circle">Avatar Content</a></li>
-            <li><a href="#dismiss">Dismissable Content</a></li>
-          </ul>
-        </div>
-      </div>
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'materialize-themes.myshopify.com',
+      apiKey: '2d9a0b3001fe4fcbe3ba50c42a7df88e',
+      appId: '6',
+    });
+
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: [8831109057],
+        node: document.getElementById('product-component-f979385da90'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "buttonDestination": "checkout",
+    "variantId": "all",
+    "width": "240px",
+    "contents": {
+      "img": false,
+      "title": false,
+      "variantTitle": false,
+      "price": false,
+      "description": false,
+      "buttonWithQuantity": false,
+      "quantity": false
+    },
+    "text": {
+      "button": "BUY 19$"
+    },
+    "styles": {
+      "product": {
+        "text-align": "left",
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0",
+          "margin-bottom": "50px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      },
+      "title": {
+        "font-size": "26px"
+      },
+      "price": {
+        "font-size": "18px"
+      },
+      "compareAt": {
+        "font-size": "15px"
+      }
+    }
+  },
+  "cart": {
+    "contents": {
+      "button": true
+    },
+    "styles": {
+      "button": {
+        "border-radius": "2px"
+      },
+      "footer": {
+        "background-color": "#ffffff"
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "variantTitle": false,
+      "buttonWithQuantity": true,
+      "button": false,
+      "quantity": false
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      }
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  }
+}
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
+    <a class="shopify-btn" target="_blank" href="https://themes.materializecss.com/pages/demo">DEMO</a>
     </div>
 
   </div>
+</div> <!-- End Container -->
+
+<div class="themes-banner">
+  <div class="container">
+    <p>All themes come with active support. Send your questions and concerns to <a href="mailto:materializethemes@gmail.com?Subject=Theme%20support" target="_top">MaterializeThemes</a></p>
+    <p>All themes are under the Personal Use License meaning you can use and modify these themes for personal and client projects. You cannot redistribute or resell these themes in any way.</p>
+  </div>
 </div>
-
-
     </main>    <footer class="page-footer">
       <div class="container">
         <div class="row">

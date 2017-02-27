@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Collections - Materialize</title>
+    <title>Pulse - Materialize</title>
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -34,7 +34,7 @@
     <header>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Collections</a></div>
+          <div class="nav-wrapper"><a class="page-title">Pulse</a></div>
         </div>
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
@@ -51,14 +51,14 @@
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
+            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
                   <li><a href="grid.html">Grid</a></li>
                   <li><a href="helpers.html">Helpers</a></li>
                   <li><a href="media-css.html">Media</a></li>
-                  <li><a href="pulse.html">Pulse</a></li>
+                  <li class="active"><a href="pulse.html">Pulse</a></li>
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
@@ -67,7 +67,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">Components</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
@@ -75,7 +75,7 @@
                   <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
                   <li><a href="chips.html">Chips</a></li>
-                  <li class="active"><a href="collections.html">Collections</a></li>
+                  <li><a href="collections.html">Collections</a></li>
                   <li><a href="footer.html">Footer</a></li>
                   <li><a href="forms.html">Forms</a></li>
                   <li><a href="icons.html">Icons</a></li>
@@ -113,216 +113,29 @@
         <li class="bold"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
       </ul>
     </header>
-    <main><div class="container">
+    <main><div class="container bsa">
   <div class="row">
-
     <div class="col s12 m9 l10">
 
-      <!--  Collections Section  -->
-      <div id="basic" class="section scrollspy">
+      <div id="pulse" class="section scrollspy">
+        <p class="caption">Draw attention to your buttons with this subtle but captivating effect. Just add the class <code class="language-markup">pulse</code> to your button.</p>
 
-        <div class="row">
-          <div class="col s12">
-            <p class="caption">Collections allow you to group list objects together.</p>
-            <h2 class="header">Basic</h2>
-            <ul class="collection">
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-            </ul>
-            <pre><code class="language-markup">
-    &lt;ul class="collection">
-      &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;li class="collection-item">Alvin&lt;/li>
-    &lt;/ul>
-            </code></pre>
-            <br>
-          </div>
+        <div style="display: flex; justify-content: space-around;">
+          <a class="btn btn-floating pulse"><i class="material-icons">menu</i></a>
+          <a class="btn btn-floating btn-large pulse"><i class="material-icons">cloud</i></a>
+          <a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a>
         </div>
+
+        <h4>Pulse HTML Structure</h4>
+        <pre><code class="language-markup">
+&lt;a class="btn btn-floating pulse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+&lt;a class="btn btn-floating btn-large pulse">&lt;i class="material-icons">cloud&lt;/i>&lt;/a>
+&lt;a class="btn btn-floating btn-large cyan pulse">&lt;i class="material-icons">edit&lt;/i>&lt;/a>
+</code></pre>
       </div>
-
-      <div id="links" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Links</h2>
-            <div class="collection">
-              <a href="#!" class="collection-item">Alvin</a>
-              <a href="#!" class="collection-item active">Alvin</a>
-              <a href="#!" class="collection-item">Alvin</a>
-              <a href="#!" class="collection-item">Alvin</a>
-            </div>
-            <pre><code class="language-markup">
-      &lt;div class="collection">
-        &lt;a href="#!" class="collection-item">Alvin&lt;/a>
-        &lt;a href="#!" class="collection-item active">Alvin&lt;/a>
-        &lt;a href="#!" class="collection-item">Alvin&lt;/a>
-        &lt;a href="#!" class="collection-item">Alvin&lt;/a>
-      &lt;/div>
-            </code></pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="headers" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Headers</h2>
-            <ul class="collection with-header">
-              <li class="collection-header"><h4>First Names</h4></li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-              <li class="collection-item">Alvin</li>
-            </ul>
-            <pre><code class="language-markup">
-      &lt;ul class="collection with-header">
-        &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-        &lt;li class="collection-item">Alvin&lt;/li>
-      &lt;/ul>
-            </code></pre>
-          </div>
-        </div>
-      </div>
-
-
-      <div id="secondary" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Secondary content</h2>
-            <ul class="collection with-header">
-              <li class="collection-header"><h4>First Names</h4></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-            </ul>
-            <pre><code class="language-markup">
-      &lt;ul class="collection with-header">
-        &lt;li class="collection-header">&lt;h4>First Names&lt;/h4>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-      &lt;/ul>
-            </code></pre>
-          </div>
-
-        </div>
-      </div>
-
-      <div id="circle" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Avatar Content</h2>
-            <ul class="collection">
-              <li class="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" class="circle">
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle">folder</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle green">insert_chart</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle red">play_arrow</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                   Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-            </ul>
-            <pre><code class="language-markup">
-  &lt;ul class="collection">
-    &lt;li class="collection-item avatar">
-      &lt;img src="images/yuna.jpg" alt="" class="circle">
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-    &lt;li class="collection-item avatar">
-      &lt;i class="material-icons circle">folder&lt;/i>
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-    &lt;li class="collection-item avatar">
-      &lt;i class="material-icons circle green">insert_chart&lt;/i>
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-    &lt;li class="collection-item avatar">
-      &lt;i class="material-icons circle red">play_arrow&lt;/i>
-      &lt;span class="title">Title&lt;/span>
-      &lt;p>First Line &lt;br>
-         Second Line
-      &lt;/p>
-      &lt;a href="#!" class="secondary-content">&lt;i class="material-icons">grade&lt;/i>&lt;/a>
-    &lt;/li>
-  &lt;/ul>
-            </code></pre>
-          </div>
-
-        </div>
-      </div>
-
-      <div id="dismiss" class="section scrollspy">
-        <div class="row">
-          <div class="col s12">
-            <h2 class="header">Dismissable Content</h2>
-            <p>You can just add the class <code class="language-markup">dismissable</code> to enable each collection item to be swiped away. This is only for touch enabled devices.</p>
-            <ul class="collection">
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-              <li class="collection-item dismissable">Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></li>
-            </ul>
-            <pre><code class="language-markup">
-      &lt;ul class="collection">
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-        &lt;li class="collection-item dismissable">&lt;div>Alvin&lt;a href="#!" class="secondary-content">&lt;i class="material-icons">send&lt;/i>&lt;/a>&lt;/div>&lt;/li>
-      &lt;/ul>
-            </code></pre>
-          </div>
-
-        </div>
-      </div>
-      <!-- End collections -->
-
-
     </div>
 
+    <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
@@ -331,12 +144,7 @@
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#basic">Basic</a></li>
-            <li><a href="#links">Links</a></li>
-            <li><a href="#headers">Headers</a></li>
-            <li><a href="#secondary">Secondary Content</a></li>
-            <li><a href="#circle">Avatar Content</a></li>
-            <li><a href="#dismiss">Dismissable Content</a></li>
+            <li><a href="#pulse">Pulse</a></li>
           </ul>
         </div>
       </div>
@@ -344,7 +152,6 @@
 
   </div>
 </div>
-
 
     </main>    <footer class="page-footer">
       <div class="container">

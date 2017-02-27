@@ -59,6 +59,7 @@
                   <li><a href="grid.html">Grid</a></li>
                   <li><a href="helpers.html">Helpers</a></li>
                   <li><a href="media-css.html">Media</a></li>
+                  <li><a href="pulse.html">Pulse</a></li>
                   <li><a href="sass.html">Sass</a></li>
                   <li><a href="shadow.html">Shadow</a></li>
                   <li><a href="table.html">Table</a></li>
@@ -92,6 +93,7 @@
                   <li><a href="collapsible.html">Collapsible</a></li>
                   <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
+                  <li><a href="feature-discovery.html">FeatureDiscovery</a></li>
                   <li><a href="media.html">Media</a></li>
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
@@ -109,6 +111,7 @@
         </li>
         <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
         <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
+        <li class="bold"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
       </ul>
     </header>
     <main><div class="container">
@@ -609,7 +612,8 @@
 
       <div id="radio" class="section scrollspy">
         <h2 class="header">Radio Buttons</h2>
-        <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
+        <p>Radio Buttons are used when the user must make only one selection out of a group of items. The <code class="language-markup">for</code> attribute is necessary to bind our custom radio button with the input. Add the input's <code class="language-markup">id</code> as the value of the <code class="language-markup">for</code> attribute of the label.</p>
+        <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
         <form action="#">
           <p>
             <input name="group1" type="radio" id="test1" checked />
@@ -628,7 +632,7 @@
               <label for="test4">Brown</label>
           </p>
         </form>
-        <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
+        <br>
         <pre><code class="language-markup">
   &lt;form action="#">
     &lt;p>
@@ -978,6 +982,10 @@
       "Google": 'http://placehold.it/250x250'
     },
     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+    onAutocomplete: function(val) {
+      // Callback function when value is autcompleted.
+    },
+    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
   });
         </code></pre>
       </div>
