@@ -36,6 +36,7 @@
             overflow: '',
             width: ''
           });
+          $("body").removeClass("materialize-modal-opened");
 
           $modal.find('.modal-close').off('click.close');
           $(document).off('keyup.modal' + overlayID);
@@ -91,6 +92,7 @@
           $modal.addClass('open');
 
           $("body").append($overlay);
+          $("body").addClass("materialize-modal-opened");
 
           if (options.dismissible) {
             $overlay.click(function() {
