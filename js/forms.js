@@ -546,7 +546,7 @@
 
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
+              selected = toggleEntryFromArray(valuesSelected, i, $select);
               $newSelect.trigger('focus');
             } else {
               options.find('li').removeClass('active');
@@ -750,7 +750,7 @@
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
+      select.siblings('ul.dropdown-content').find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);
