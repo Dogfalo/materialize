@@ -14,9 +14,11 @@
         onCycleTo: null // Callback for when a new slide is cycled to.
       };
       options = $.extend(defaults, options);
+      var namespace = Materialize.objectSelectorString($(this));
 
-      return this.each(function() {
+      return this.each(function(i) {
 
+        var uniqueNamespace = namespace+i;
         var images, item_width, item_height, offset, center, pressed, dim, count,
             reference, referenceY, amplitude, target, velocity,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
@@ -405,7 +407,7 @@
         });
 
 
-        $(window).off('resize.carousel').on('resize.carousel', function() {
+        $(window).off('resize.'+uniqueNamespace).on('resize.'+uniqueNamespace, function() {
           if (options.fullWidth) {
             item_width = view.find('.carousel-item').first().innerWidth();
             item_height = view.find('.carousel-item').first().innerHeight();
