@@ -33,6 +33,7 @@
         tapTargetOriginEl = origin.clone(true, true);
         tapTargetOriginEl.addClass('tap-target-origin');
         tapTargetOriginEl.removeAttr('id');
+        tapTargetOriginEl.removeAttr('style');
         tapTargetWave.append(tapTargetOriginEl);
       }
 
@@ -90,11 +91,11 @@
       var originWidth = origin.outerWidth();
       var originHeight = origin.outerHeight();
       var originTop = isFixed ? origin.offset().top - $(document).scrollTop() : origin.offset().top;
-      var originLeft = origin.offset().left;
+      var originLeft = isFixed ? origin.offset().left - $(document).scrollLeft() : origin.offset().left;
 
       // Calculating screen
-      var windowWidth = window.innerWidth;
-      var windowHeight = window.innerHeight;
+      var windowWidth = $(window).width();
+      var windowHeight = $(window).height();
       var centerX = windowWidth / 2;
       var centerY = windowHeight / 2;
       var isLeft = originLeft <= centerX;
