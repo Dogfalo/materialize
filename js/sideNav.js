@@ -6,7 +6,9 @@
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false,
-        draggable: true
+        draggable: true,
+        onOpen: undefined,
+        onClose: undefined
       };
       options = $.extend(defaults, options);
 
@@ -96,6 +98,9 @@
           $('#sidenav-overlay').velocity({opacity: 0}, {duration: 200,
               queue: false, easing: 'easeOutQuad',
             complete: function() {
+              if (typeof(options.onClose) === "function") {
+                options.onClose.call(this, menu);
+              }
               $(this).remove();
             } });
           if (options.edge === 'left') {
@@ -313,11 +318,23 @@
 
             if (options.edge === 'left') {
               $dragTarget.css({width: '50%', right: 0, left: ''});
-              menu.velocity({'translateX': [0, -1 * options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+              menu.velocity({'translateX': [0, -1 * options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                complete: function() {
+                  if (typeof(options.onOpen) === "function") {
+                    options.onOpen.call(this, menu);
+                  }
+                }
+              });
             }
             else {
               $dragTarget.css({width: '50%', right: '', left: 0});
-              menu.velocity({'translateX': [0, options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
+              menu.velocity({'translateX': [0, options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                complete: function() {
+                  if (typeof(options.onOpen) === "function") {
+                    options.onOpen.call(this, menu);
+                  }
+                }
+              });
             }
 
             $overlay.css('opacity', 0)
