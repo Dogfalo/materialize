@@ -92,7 +92,7 @@
 
           /*$("body").append($overlay);*/
 	  // append the modal-overlay to parent
-	  $(this).parent().append($overlay);
+	  $modal.parent().append($overlay);
 
           if (options.dismissible) {
             $overlay.click(function() {
