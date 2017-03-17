@@ -5133,6 +5133,10 @@ small {
   height: 56px;
 }
 
+.btn-floating.btn-large.halfway-fab {
+  bottom: -28px;
+}
+
 .btn-floating.btn-large i {
   line-height: 56px;
 }
@@ -5140,9 +5144,7 @@ small {
 .btn-floating.halfway-fab {
   position: absolute;
   right: 24px;
-  bottom: 0;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
+  bottom: -20px;
 }
 
 .btn-floating.halfway-fab.left {
