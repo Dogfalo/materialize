@@ -205,10 +205,8 @@
         // Update indicator
         animateIndicator(prev_index);
 
-        // Prevent the anchor's default click action if there is no target attribute set
-        if (!(this).attr('target')) {
-          e.preventDefault();
-        }
+        // Prevent the anchor's default click action
+        e.preventDefault();
       });
     });
 
