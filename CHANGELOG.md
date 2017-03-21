@@ -1,3 +1,13 @@
+## v0.97.6 (April 1st, 2016)
+- **Removed deprecated material icons from project**
+- **Changed /font directory to /fonts**
+- Datepicker and ScrollSpy now compatible with jQuery 2.2.x
+- Responsive tables now work with empty cells
+- Added focus states to checkboxes, switches, and radio buttons
+- Sidenav and Modals no longer cause flicker with scrollbar
+- Materialbox overflow and z-index issues fixed
+- Added new option for Card actions within a Card reveal
+
 ## v0.97.5 (December 21st, 2015)
 - Fixed Meteor package crash
 

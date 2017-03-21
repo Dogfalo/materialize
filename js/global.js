@@ -51,7 +51,20 @@
 }(window));
 
 
-// Unique ID
+/**
+ * Generate approximated selector string for a jQuery object
+ * @param {jQuery} obj  jQuery object to be parsed
+ * @returns {string}
+ */
+Materialize.objectSelectorString = function(obj) {
+  var tagStr = obj.prop('tagName') || '';
+  var idStr = obj.attr('id') || '';
+  var classStr = obj.attr('class') || '';
+  return (tagStr + idStr + classStr).replace(/\s/g,'');
+};
+
+
+// Unique Random ID
 Materialize.guid = (function() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)

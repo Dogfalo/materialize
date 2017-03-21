@@ -180,7 +180,7 @@
     $('.datepicker').pickadate({selectYears: 20});
     $('select').not('.disabled').material_select();
     $('input.autocomplete').autocomplete({
-      data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
+      data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
     });
 
     // Chips
@@ -200,11 +200,13 @@
       secondaryPlaceholder: '+Tag',
     });
     $('.chips-autocomplete').material_chip({
-      autocompleteData: {
-        'Apple': null,
-        'Microsoft': null,
-        'Google': null
-      }
+      autocompleteOptions: {
+        data: {
+          'Apple': null,
+          'Microsoft': null,
+          'Google': null
+        }
+      },
     });
 
 

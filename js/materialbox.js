@@ -20,6 +20,7 @@
       var originalHeight = 0;
       var ancestorsChanged;
       var ancestor;
+      var originInlineStyles = origin.attr('style');
       origin.wrap(placeholder);
 
 
@@ -234,7 +235,28 @@
           },
           {
             duration: outDuration,
-            queue: false, easing: 'easeOutQuad'
+            queue: false, easing: 'easeOutQuad',
+            complete: function() {
+              placeholder.css({
+                height: '',
+                width: '',
+                position: '',
+                top: '',
+                left: ''
+              });
+
+              origin.removeAttr('style');
+              origin.attr('style', originInlineStyles);
+
+              // Remove class
+              origin.removeClass('active');
+              doneAnimating = true;
+
+              // Remove overflow overrides on ancestors
+              if (ancestorsChanged) {
+                ancestorsChanged.css('overflow', '');
+              }
+            }
           }
         );
 
@@ -243,34 +265,7 @@
           duration: outDuration, // Delay prevents animation overlapping
           queue: false, easing: 'easeOutQuad',
           complete: function(){
-            placeholder.css({
-              height: '',
-              width: '',
-              position: '',
-              top: '',
-              left: ''
-            });
-
-            origin.css({
-              height: '',
-              top: '',
-              left: '',
-              width: '',
-              'max-width': '',
-              position: '',
-              'z-index': '',
-              'will-change': ''
-            });
-
-            // Remove class
-            origin.removeClass('active');
-            doneAnimating = true;
             $(this).remove();
-
-            // Remove overflow overrides on ancestors
-            if (ancestorsChanged) {
-              ancestorsChanged.css('overflow', '');
-            }
           }
         });
 

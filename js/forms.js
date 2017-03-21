@@ -193,11 +193,23 @@
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
+      var max = $(this).attr('max');
+      var width = $(this).width() - 15;
+      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
+      var offsetLeft = $(this).val() * (width / max);
+
+      if (!thumb.hasClass('active')) {
+        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+      }
+      thumb.addClass('active').css('left', offsetLeft);
     });
 
-    $(document).on('input mousedown touchstart', range_type, function(e) {
+    $(document).on('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
-      var width = $(this).outerWidth();
+      var max = $(this).attr('max');
+      var width = $(this).width() - 15;
+      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
+      var offsetLeft = $(this).val() * (width / max);
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -212,26 +224,12 @@
       $(this).addClass('active');
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
+        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
       }
 
       if (e.type !== 'input') {
-        if(e.pageX === undefined || e.pageX === null){//mobile
-           left = e.originalEvent.touches[0].pageX - $(this).offset().left;
-        }
-        else{ // desktop
-           left = e.pageX - $(this).offset().left;
-        }
-        if (left < 0) {
-          left = 0;
-        }
-        else if (left > width) {
-          left = width;
-        }
-        thumb.addClass('active').css('left', left);
+        thumb.addClass('active').css('left', offsetLeft);
       }
-
-      thumb.find('.value').html($(this).val());
     });
 
     $(document).on('mouseup touchend', range_wrapper, function() {
@@ -239,28 +237,20 @@
       $(this).removeClass('active');
     });
 
-    $(document).on('mousemove touchmove', range_wrapper, function(e) {
+    $(document).on('input mousemove touchmove', range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
       var left;
+      var input = $(this).find(range_type);
+      var max = input.attr('max');
+      var width = input.width() - 15;
+      var paddingSide = ($(this).outerWidth() - width) || 0;
+      var offsetLeft = input.val() * (width / max);
+
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: '30px', width: '30px', top: '-20px', marginLeft: '-15px'}, { duration: 300, easing: 'easeOutExpo' });
+          thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
         }
-        if (e.pageX === undefined || e.pageX === null) { //mobile
-          left = e.originalEvent.touches[0].pageX - $(this).offset().left;
-        }
-        else{ // desktop
-          left = e.pageX - $(this).offset().left;
-        }
-        var width = $(this).outerWidth();
-
-        if (left < 0) {
-          left = 0;
-        }
-        else if (left > width) {
-          left = width;
-        }
-        thumb.addClass('active').css('left', left);
+        thumb.addClass('active').css('left', offsetLeft);
         thumb.find('.value').html(thumb.siblings(range_type).val());
       }
     });
@@ -271,7 +261,7 @@
         var thumb = $(this).children('.thumb');
 
         if (thumb.hasClass('active')) {
-          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '-6px'}, { duration: 100 });
+          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '15px'}, { duration: 100 });
         }
         thumb.removeClass('active');
       }
@@ -285,7 +275,8 @@
       var defaults = {
         data: {},
         limit: Infinity,
-        onAutocomplete: null
+        onAutocomplete: null,
+        minLength: 1
       };
 
       options = $.extend(defaults, options);
@@ -294,7 +285,7 @@
         var $input = $(this);
         var data = options.data,
             count = 0,
-            activeIndex = 0,
+            activeIndex = -1,
             oldVal,
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
@@ -336,14 +327,26 @@
 
           // Reset current element position
           var resetCurrentElement = function() {
-            activeIndex = 0;
+            activeIndex = -1;
             $autocomplete.find('.active').removeClass('active');
           }
 
+          // Remove autocomplete elements
+          var removeAutocomplete = function() {
+            $autocomplete.empty();
+            resetCurrentElement();
+            oldVal = undefined;
+          };
+
+          $input.off('blur.autocomplete').on('blur.autocomplete', function() {
+            removeAutocomplete();
+          });
+
           // Perform search
-          $input.off('keyup.autocomplete').on('keyup.autocomplete', function (e) {
+          $input.off('keyup.autocomplete focus.autocomplete').on('keyup.autocomplete focus.autocomplete', function (e) {
             // Reset count.
             count = 0;
+            var val = $input.val().toLowerCase();
 
             // Don't capture enter or arrow key usage.
             if (e.which === 13 ||
@@ -352,14 +355,12 @@
               return;
             }
 
-            var val = $input.val().toLowerCase();
 
             // Check if the input isn't empty
             if (oldVal !== val) {
-              $autocomplete.empty();
-              resetCurrentElement();
+              removeAutocomplete();
 
-              if (val !== '') {
+              if (val.length >= options.minLength) {
                 for(var key in data) {
                   if (data.hasOwnProperty(key) &&
                       key.toLowerCase().indexOf(val) !== -1 &&
@@ -396,10 +397,10 @@
                 $active = $autocomplete.children('.active').first();
 
             // select element on Enter
-            if (keyCode === 13) {
+            if (keyCode === 13 && activeIndex >= 0) {
               liElement = $autocomplete.children('li').eq(activeIndex);
               if (liElement.length) {
-                liElement.click();
+                liElement.trigger('mousedown.autocomplete');
                 e.preventDefault();
               }
               return;
@@ -415,23 +416,23 @@
               }
 
               if (keyCode === 40 &&
-                  activeIndex < (numItems - 1) &&
-                  $active.length) {
+                  activeIndex < (numItems - 1)) {
                 activeIndex++;
               }
 
               $active.removeClass('active');
-              $autocomplete.children('li').eq(activeIndex).addClass('active');
+              if (activeIndex >= 0) {
+                $autocomplete.children('li').eq(activeIndex).addClass('active');
+              }
             }
           });
 
           // Set input value
-          $autocomplete.on('click', 'li', function () {
+          $autocomplete.on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
             var text = $(this).text().trim();
             $input.val(text);
             $input.trigger('change');
-            $autocomplete.empty();
-            resetCurrentElement();
+            removeAutocomplete();
 
             // Handle onAutocomplete callback.
             if (typeof(options.onAutocomplete) === "function") {
@@ -489,6 +490,7 @@
         // Add disabled attr if disabled
         var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
         var optgroupClass = (type === 'optgroup-option') ? 'optgroup-option ' : '';
+        var multipleCheckbox = multiple ? '<input type="checkbox"' + disabledClass + '/><label></label>' : '';
 
         // add icons
         var icon_url = option.data('icon');
@@ -498,20 +500,12 @@
           if (!!classes) classString = ' class="' + classes + '"';
 
           // Check for multiple type.
-          if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
-          } else {
-            options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
-          }
+          options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + multipleCheckbox + option.html() + '</span></li>'));
           return true;
         }
 
         // Check for multiple type.
-        if (type === 'multiple') {
-          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
-        } else {
-          options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + option.html() + '</span></li>'));
-        }
+        options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + multipleCheckbox + option.html() + '</span></li>'));
       };
 
       /* Create dropdown structure. */
@@ -545,7 +539,7 @@
 
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
+              selected = toggleEntryFromArray(valuesSelected, i, $select);
               $newSelect.trigger('focus');
             } else {
               options.find('li').removeClass('active');
@@ -749,7 +743,7 @@
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
+      select.siblings('ul.dropdown-content').find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);

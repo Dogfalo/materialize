@@ -152,7 +152,8 @@ $input-error-color: $error-color !default;
 $input-success-color: $success-color !default;
 $input-focus-color: $secondary-color !default;
 $input-font-size: 1rem !default;
-$input-margin: 0 0 20px 0 !default;
+$input-margin-bottom: 20px;
+$input-margin: 0 0 $input-margin-bottom 0 !default;
 $input-padding: 0 !default;
 $input-transition: all .3s !default;
 $label-font-size: .8rem !default;
@@ -201,6 +202,7 @@ $large-screen: 1200px !default;
 
 $medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
 $large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
 $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
