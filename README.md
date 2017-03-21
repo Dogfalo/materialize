@@ -5,7 +5,7 @@
 
 [Materialize](http://materializecss.com/), a CSS Framework based on material design
 
-### Current Version : v0.98.0
+### Current Version : v0.98.1
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -15,6 +15,16 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
 Bolded styling surrounded by emojis indicates a breaking change.
+
+- v0.98.1 (March 21st)
+  - Fixed various select bugs on mobile devices
+  - Fixed small sideNav overlay bugs
+  - Fixed carousel resizing bug
+  - Fixed materialbox callback bug
+  - Range slider supports keyboard navigation
+  - Added XL breakpoint
+  - Added Pulse CSS effect
+  - Added Feature Discovery component
 
 - v0.98.0 (January 25th)
   - :no_good: **Standardized plugin option naming to camelcase (please check your plugin calls to make sure all the options are camelcase)** :no_good:
@@ -41,15 +51,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - Meteor package now supports Sass
   - Autocomplete form component
   - Chips jQuery plugin
-- v0.97.6 (April 1st, 2016)
-  - **Removed deprecated material icons from project**
-  - **Changed /font directory to /fonts**
-  - Datepicker and ScrollSpy now compatible with jQuery 2.2.x
-  - Responsive tables now work with empty cells
-  - Added focus states to checkboxes, switches, and radio buttons
-  - Sidenav and Modals no longer cause flicker with scrollbar
-  - Materialbox overflow and z-index issues fixed
-  - Added new option for Card actions within a Card reveal
+
 
 
 
