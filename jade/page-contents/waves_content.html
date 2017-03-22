@@ -61,6 +61,25 @@
     }
           </code></pre>
         </div>
+
+        <div class="col s12 l6">
+          <h5 class="light">Custom Selectors</h5>
+          <p>Not a pleasure to iterate through your markup when element that you attached the Wave to needs to be change or removed. To keep your markup clean and keep presentational layer in the stylesheets, you can now edit <code class="language-markup">waves.js</code>(Effect prototype) and change <span class="language-js">attachTo</span> variable to simply include classes of the elements you need to be using Wave. It expects an array of classnames.</p>
+
+          <pre class="language-markup">
+            <code class="language-markup">
+              &lt;div class="wave-custom-el-demo">Im an element&lt;/div>
+              &lt;div class="wave-foo-array">Another Class&lt;/div>
+              &lt;div class="wave-foo-more">Just add me&lt;/div>
+            </code>
+          </pre>
+
+          <div class="collection waves-custom-selectors">
+            <div class="collection-item wave-custom-el-demo">Im an element</div>
+            <div class="collection-item wave-foo-array">Another Class</div>
+            <div class="collection-item wave-foo-more">Just add me</div>
+          </div>
+        </div>
       </div>
     </div>
 

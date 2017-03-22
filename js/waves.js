@@ -55,6 +55,7 @@
 
         // Effect delay
         duration: 750,
+        attachTo: ['wave-custom-el-demo', 'wave-foo-array', 'wave-foo-more'],
 
         show: function(e, element) {
 
@@ -265,7 +266,15 @@
             } else if (target.classList.contains('waves-effect')) {
                 element = target;
                 break;
+            } else if (Effect.attachTo.length) {
+                for (var i = 0; i < Effect.attachTo.length; i++) {
+                    if (target.classList.contains(Effect.attachTo[i])) {
+                        element = target;
+                        break;
+                    }
+                }
             }
+
             target = target.parentElement;
         }
 

@@ -840,6 +840,29 @@ body.parallax-demo footer {
   }
 }
 
+.wave-custom-el-demo {
+  @extend .waves-effect;
+  @extend %waves-green;
+}
+
+.wave-foo-array {
+  @extend .waves-effect;
+  @extend %waves-orange;
+}
+
+.wave-foo-more {
+  @extend .waves-effect;
+  @extend %waves-purple;
+}
+
+.waves-custom-selectors {
+  margin-top: 10px;
+  > * {
+    height: 35px;
+    width: 100%;
+  }
+}
+
 // Card Page styling
 .card-panel span, .card-content p{
   -webkit-font-smoothing: antialiased;
