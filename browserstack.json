@@ -1,0 +1,28 @@
+{
+    "username": "BROWSERSTACK_USERNAME",
+    "key": "BROWSERSTACK_KEY",
+    "test_framework": "jasmine2",
+    "test_path": [
+	"_SpecRunner.html"
+	],
+    "browsers": [
+        {
+            "browser": "chrome",
+            "browser_version": "latest",
+            "os": "OS X",
+            "os_version": "Mountain Lion"
+        },
+        {
+            "browser": "firefox",
+            "browser_version": "latest",
+            "os": "Windows",
+            "os_version": "7"
+        },
+        {
+            "browser": "chrome",
+            "browser_version": "latest",
+            "os": "Windows",
+            "os_version": "7"
+        }
+    ]
+}
