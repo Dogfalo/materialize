@@ -43,7 +43,6 @@ describe( "Collapsible Plugin", function () {
         var header = $(this).prev('.collapsible-header');
 
         if (i === 1) {
-          console.log(header);
           expect(header).toHaveClass('active', 'because collapsible header should have active class to be preselected.');
           expect($(this)).toBeVisible('because collapsible bodies should be visible if preselected.');
         } else {
