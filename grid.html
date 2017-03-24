@@ -570,6 +570,95 @@
             </code></pre>
           </div>
         </div>
+
+
+        <div id="playground" class="section scrollspy">
+          <h2 class="header">Try It</h2>
+          
+          <p>Modify the classes below to test colors.</p>
+
+          <div id="playground-wrapper" class="card-panel row center">
+          </div>
+          <br>
+          <div id="playground-input-wrapper">
+          </div>
+          <div id="add-btn" class="btn">Add</div>
+          <div id="rm-btn" class="btn red">Remove</div>
+          
+          <script>
+          var playgroundInputs = document.getElementsByClassName("playground-div-class-input");
+          var playgroundInputWrapper = document.getElementById("playground-input-wrapper");
+          var playgroundElements = document.getElementsByClassName("playground-child");
+          var playgroundWrapper = document.getElementById("playground-wrapper");
+          var addButton = document.getElementById("add-btn");
+          var rmButton = document.getElementById("rm-btn");
+
+          function randomPlaygroundColor() {
+            var colors = ["red", "pink", "purple", "indigo", "blue", "cyan", "teal", "green", "yellow", "orange"];
+            return colors[Math.floor(Math.random()*colors.length)];
+          };
+
+          addButton.addEventListener("click", addPlaygroundElement);
+
+          function addPlaygroundElement(global) {
+            playgroundInputs = document.getElementsByClassName("playground-div-class-input");
+            playgroundElements = document.getElementsByClassName("playground-child");
+
+            var num=playgroundElements.length+1;
+            // build element
+            var span = document.createElement("span");
+            span.className = "flow-text white-text";
+            span.innerHTML = num;
+            var element = document.createElement("div");
+            element.id = "playground-child-"+num;
+            color = randomPlaygroundColor();
+            element.className = "playground-child col s1 "+color;
+            element.setAttribute("data-initial-class", "playground-child "+color+" ");
+            element.appendChild(span);
+            playgroundWrapper.appendChild(element);
+
+            // build input
+            var input = document.createElement("input");
+            input.id = "playground-div-class-input-"+num;
+            input.className = "active playground-div-class-input";
+            input.setAttribute("type", "text");
+            input.setAttribute("oninput", "updatePlayground();");
+            input.value = "col s1";
+            var label = document.createElement("label");
+            label.setAttribute("for", input.id);
+            label.innerHTML = "Class (section "+num+")";
+            var inputField = document.createElement("div");
+            inputField.className = "input-field";
+            inputField.id = "input-playground-"+num;
+            inputField.appendChild(input);
+            inputField.appendChild(label);
+            playgroundInputWrapper.appendChild(inputField);
+            Materialize.updateTextFields();
+
+            // reinitialize arrays
+            playgroundInputs = document.getElementsByClassName("playground-div-class-input");
+            playgroundElements = document.getElementsByClassName("playground-child");
+          };
+
+          rmButton.addEventListener("click", rmPlaygroundElement);
+
+          function rmPlaygroundElement(global) {
+            playgroundElements[playgroundElements.length-1].parentElement.removeChild(playgroundElements[playgroundElements.length-1]);
+            playgroundInputs[playgroundInputs.length-1].parentElement.parentElement.removeChild(playgroundInputs[playgroundInputs.length-1].parentElement);
+
+            playgroundInputs = document.getElementsByClassName("playground-div-class-input");
+            playgroundElements = document.getElementsByClassName("playground-child");
+          }
+
+          function updatePlayground() {
+            for (var i = 0; i < playgroundElements.length; i++) {
+              playgroundElements[i].className = playgroundElements[i].getAttribute("data-initial-class") + playgroundInputs[i].value;
+            }
+          }
+
+          addPlaygroundElement(); // create first one
+          </script>
+        </div>
       </div>
 
 
@@ -589,6 +678,7 @@
             <li><a href="#grid-push">Push and Pull</a></li>
             <li><a href="#grid-layouts">Creating Layouts</a></li>
             <li><a href="#grid-responsive">Responsive Layouts</a></li>
+            <li><a href="#playground">Try It</a></li>
           </ul>
         </div>
       </div>
