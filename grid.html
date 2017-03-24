@@ -219,13 +219,17 @@
           <h4>Columns live inside Rows</h4>
           <p>Remember when you are creating your layout that all columns must be contained inside a row and that you must add the <code class="language-markup">col</code> class to your inner divs to make them into columns</p>
           <div class="row">
-            <div class="col s12 grid-example"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
-            <div class="col s6 grid-example"><span class="flow-text">6-columns (one-half)</span></div>
-            <div class="col s6 grid-example"><span class="flow-text">6-columns (one-half)</span></div>
+            <div data-initial-class="grid-example col " class="col s12 grid-example"><span class="flow-text">This div is 12-columns wide on all screen sizes (<span class="editable-grid-example">col s12</span>)</span></div>
+          </div>
+          <div class="row">
+            <div data-initial-class="grid-example col " class="col s6 grid-example"><span class="flow-text">6-columns (one-half) (<span class="editable-grid-example">col s6</span>)</span></div>
+            <div data-initial-class="grid-example col " class="col s6 grid-example"><span class="flow-text">6-columns (one-half) (<span class="editable-grid-example">col s6</span>)</span></div>
           </div>
           <pre><code class="language-markup">
     &lt;div class="row">
       &lt;div class="col s12">This div is 12-columns wide&lt;/div>
+    &lt;/div>
+    &lt;div class="row">
       &lt;div class="col s6">This div is 6-columns wide&lt;/div>
       &lt;div class="col s6">This div is 6-columns wide&lt;/div>
     &lt;/div>
@@ -238,13 +242,18 @@
         <div id="grid-offsets" class="section scrollspy">
           <h2 class="header">Offsets</h2>
           <p>To offset, simply add <code class="language-markup">offset-s2</code> to the class where <code class="language-markup">s</code> signifies the screen class-prefix (s = small, m = medium, l = large) and the number after is the number of columns you want to offset by.</p>
+          <p>You can edit the values for each column in order to get a feel for them by clicking the class name (ex. <code class="language-markup">col s12</code>)</p>
           <div class="row">
-            <div class="col s12 grid-example"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
-            <div class="col s6 offset-s6 grid-example"><span class="flow-text">6-columns (offset-by-6)</span></div>
+            <div data-initial-class="grid-example col " class="col s12 grid-example"><span class="flow-text">This div is 12-columns wide on all screen sizes (<span class="editable-grid-example">col s12</span>)</span></div>
+          </div>
+          <div class="row">
+            <div data-initial-class="grid-example col " class="col s6 offset-s6 grid-example"><span class="flow-text">6-columns (offset-by-6) (<span class="editable-grid-example">col s6 offset-s6</span>)</div>
           </div>
           <pre><code class="language-markup">
     &lt;div class="row">
       &lt;div class="col s12">&lt;span class="flow-text">This div is 12-columns wide on all screen sizes&lt;/span>&lt;/div>
+    &lt;/div>
+    &lt;div class="row">
       &lt;div class="col s6 offset-s6">&lt;span class="flow-text">6-columns (offset-by-6)&lt;/span>&lt;/div>
     &lt;/div>
           </code></pre>
@@ -257,8 +266,8 @@
           <h2 class="header">Push and Pull</h2>
           <p>You can easily change the order of your columns with push and pull. Simply add <code class="language-markup">push-s2</code> or <code class="language-markup">pull-s2</code> to the class where <code class="language-markup">s</code> signifies the screen class-prefix (s = small, m = medium, l = large) and the number after is the number of columns you want to push or pull by.</p>
           <div class="row">
-            <div class="col s7 push-s5 grid-example"><span style="font-size: 14px;">This div is 7-columns wide on pushed to the right by 5-columns.</span></div>
-            <div class="col s5 pull-s7 grid-example"><span style="font-size: 14px;">5-columns wide pulled to the left by 7-columns.</span></div>
+            <div data-initial-class="grid-example col " class="col s7 push-s5 grid-example"><span style="font-size: 14px;">This div is 7-columns wide on pushed to the right by 5-columns. (<span class="editable-grid-example">col s7 push-s5</span>)</span></div>
+            <div data-initial-class="grid-example col " class="col s5 pull-s7 grid-example"><span style="font-size: 14px;">5-columns wide pulled to the left by 7-columns. (<span class="editable-grid-example">col s5 pull-s7</span>)</span></div>
           </div>
           <pre><code class="language-markup">
     &lt;div class="row">
@@ -544,14 +553,18 @@
 
           <h4>More Responsive Grid Examples</h4>
           <div class="row">
-            <div class="col grid-example s12 blue lighten-1"><span class="flow-text">s12</span></div>
-            <div class="col grid-example s12 m4 l2 teal lighten-1"><span class="flow-text">s12 m4 l2</span></div>
-            <div class="col grid-example s12 m4 l8 teal lighten-1"><span class="flow-text">s12 m4 l8</span></div>
-            <div class="col grid-example s12 m4 l2 teal lighten-1"><span class="flow-text">s12 m4 l2</span></div>
-            <div class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text">s12 m6 l3</span></div>
-            <div class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text">s12 m6 l3</span></div>
-            <div class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text">s12 m6 l3</span></div>
-            <div class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text">s12 m6 l3</span></div>
+            <div data-initial-class="grid-example blue lighten-1 col " class="col grid-example s12 blue lighten-1"><span class="editable-grid-example flow-text">s12</span></div>
+          </div>
+          <div class="row">
+            <div data-initial-class="grid-example teal lighten-1 col " class="col grid-example s12 m4 l2 teal lighten-1"><span class="flow-text editable-grid-example">s12 m4 l2</span></div>
+            <div data-initial-class="grid-example teal lighten-1 col " class="col grid-example s12 m4 l8 teal lighten-1"><span class="flow-text editable-grid-example">s12 m4 l8</span></div>
+            <div data-initial-class="grid-example teal lighten-1 col " class="col grid-example s12 m4 l2 teal lighten-1"><span class="flow-text editable-grid-example">s12 m4 l2</span></div>
+          </div>
+          <div class="row">
+            <div data-initial-class="grid-example purple lighten-3 col " class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text editable-grid-example">s12 m6 l3</span></div>
+            <div data-initial-class="grid-example purple lighten-3 col " class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text editable-grid-example">s12 m6 l3</span></div>
+            <div data-initial-class="grid-example purple lighten-3 col " class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text editable-grid-example">s12 m6 l3</span></div>
+            <div data-initial-class="grid-example purple lighten-3 col " class="col grid-example s12 m6 l3 purple lighten-3"><span class="flow-text editable-grid-example">s12 m6 l3</span></div>
           </div>
           <div class="row">
             <pre><code class="language-markup col s12">
@@ -573,7 +586,7 @@
 
 
         <div id="playground" class="section scrollspy">
-          <h2 class="header">Try It</h2>
+          <h2 class="header">Playground</h2>
           
           <p>Modify the classes below to test colors.</p>
 
@@ -585,11 +598,7 @@
           <div id="add-btn" class="btn">Add</div>
           <div id="rm-btn" class="btn red">Remove</div>
           
-          <script>
-          var playgroundInputs = document.getElementsByClassName("playground-div-class-input");
-          var playgroundInputWrapper = document.getElementById("playground-input-wrapper");
-          var playgroundElements = document.getElementsByClassName("playground-child");
-          var playgroundWrapper = document.getElementById("playground-wrapper");
+          <script defer>
           var addButton = document.getElementById("add-btn");
           var rmButton = document.getElementById("rm-btn");
 
@@ -601,53 +610,28 @@
           addButton.addEventListener("click", addPlaygroundElement);
 
           function addPlaygroundElement(global) {
-            playgroundInputs = document.getElementsByClassName("playground-div-class-input");
+            playgroundWrapper = document.getElementById("playground-wrapper");
             playgroundElements = document.getElementsByClassName("playground-child");
 
-            var num=playgroundElements.length+1;
             // build element
             var span = document.createElement("span");
             span.className = "flow-text white-text";
-            span.innerHTML = num;
+            span.innerHTML = "col s6 m4 l1";
+            span.contentEditable = true;
+            span.addEventListener("input", updatePremadeExample);
             var element = document.createElement("div");
-            element.id = "playground-child-"+num;
             color = randomPlaygroundColor();
-            element.className = "playground-child col s1 "+color;
-            element.setAttribute("data-initial-class", "playground-child "+color+" ");
+            element.className = "playground-child col s6 m4 l1 "+color;
+            element.setAttribute("data-initial-class", "playground-child "+color+" col ");
             element.appendChild(span);
             playgroundWrapper.appendChild(element);
-
-            // build input
-            var input = document.createElement("input");
-            input.id = "playground-div-class-input-"+num;
-            input.className = "active playground-div-class-input";
-            input.setAttribute("type", "text");
-            input.setAttribute("oninput", "updatePlayground();");
-            input.value = "col s1";
-            var label = document.createElement("label");
-            label.setAttribute("for", input.id);
-            label.innerHTML = "Class (section "+num+")";
-            var inputField = document.createElement("div");
-            inputField.className = "input-field";
-            inputField.id = "input-playground-"+num;
-            inputField.appendChild(input);
-            inputField.appendChild(label);
-            playgroundInputWrapper.appendChild(inputField);
-            Materialize.updateTextFields();
-
-            // reinitialize arrays
-            playgroundInputs = document.getElementsByClassName("playground-div-class-input");
-            playgroundElements = document.getElementsByClassName("playground-child");
           };
 
           rmButton.addEventListener("click", rmPlaygroundElement);
 
           function rmPlaygroundElement(global) {
-            playgroundElements[playgroundElements.length-1].parentElement.removeChild(playgroundElements[playgroundElements.length-1]);
-            playgroundInputs[playgroundInputs.length-1].parentElement.parentElement.removeChild(playgroundInputs[playgroundInputs.length-1].parentElement);
-
-            playgroundInputs = document.getElementsByClassName("playground-div-class-input");
             playgroundElements = document.getElementsByClassName("playground-child");
+            playgroundElements[playgroundElements.length-1].parentElement.removeChild(playgroundElements[playgroundElements.length-1]);
           }
 
           function updatePlayground() {
@@ -657,6 +641,23 @@
           }
 
           addPlaygroundElement(); // create first one
+
+          var editable = document.getElementsByClassName("editable-grid-example");
+          for (var i = 0; i < editable.length; i++) {
+            editable[i].contentEditable = true;
+            editable[i].addEventListener("input", updatePremadeExample);
+          }
+
+          function updatePremadeExample(event) {
+            newClasses = event.target.innerHTML;
+            newClasses = newClasses.replace("col", "");
+            newClasses = newClasses.replace("&nbsp;", " "); // strange bug
+            parent = event.target.parentElement;
+            while (parent.tagName != "DIV") { // for nested spans
+              parent = parent.parentElement;
+            }
+            parent.className = parent.getAttribute("data-initial-class") + newClasses;
+          }
           </script>
         </div>
       </div>
@@ -678,7 +679,7 @@
             <li><a href="#grid-push">Push and Pull</a></li>
             <li><a href="#grid-layouts">Creating Layouts</a></li>
             <li><a href="#grid-responsive">Responsive Layouts</a></li>
-            <li><a href="#playground">Try It</a></li>
+            <li><a href="#playground">Playground</a></li>
           </ul>
         </div>
       </div>
