@@ -1,0 +1,83 @@
+/* Checkboxes
+   ========================================================================== */
+
+.rtl {
+	/* CUSTOM CSS CHECKBOXES */
+	form p {
+		text-align: right;
+	}
+
+	// Checkbox Styles
+	[type="checkbox"] {
+		// Text Label Style
+		+ label {
+			padding-left: initial;
+			padding-right: 35px;
+		}
+
+		/* checkbox aspect */
+		 &:not(.filled-in) + label:after,
+		+ label:before {
+			left: initial;
+			right: 0;
+		}
+	}
+
+	[type="checkbox"]:checked {
+		+ label:before {
+			left: initial;
+			right: -5px;
+			border-left: $radio-border;
+			border-right: 2px solid transparent;
+			transform: rotate(40deg);
+		}
+
+		&:disabled + label:before {
+			border-left: 2px solid $input-disabled-color;
+		}
+	}
+	/* Indeterminate checkbox */
+	[type="checkbox"]:indeterminate {
+		+label:before {
+			left: initial;
+			right: -12px;
+			border-left: $radio-border;
+			border-right: none;
+			transform: rotate(90deg);
+		}
+		// Disabled indeterminate
+		&:disabled + label:before {
+			border-left: 2px solid $input-disabled-color;
+		}
+	}
+	// Filled in Style
+	[type="checkbox"].filled-in {
+		// General
+		+ label:after,
+		+ label:before {
+			left: initial;
+			right: 0;
+		}
+		// Unchecked style
+		&:not(:checked) + label:before {
+			left: initial;
+			right: 6px;
+			-webkit-transform: rotateZ(37deg);
+			transform: rotateZ(37deg);
+			-webkit-transform-origin: 20% 40%;
+			transform-origin: 100% 100%;
+		}
+
+		// Checked style
+		&:checked {
+			+ label:before {
+				left: initial;
+				right: 1px;
+				border-left: 2px solid $input-background;
+				border-right: 2px solid transparent;
+				-webkit-transform: rotateZ(37deg);
+				transform: rotateZ(37deg);
+			}
+		}
+	}
+}

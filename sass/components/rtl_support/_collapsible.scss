@@ -1,0 +1,20 @@
+// RTL Collapsible
+.rtl {
+	.collapsible-header {
+		i {
+			float: right;
+			margin-left: 1rem;
+			margin-right: initial;
+		}
+	}
+
+	// sideNav collapsible styling
+	.side-nav,
+	.side-nav.fixed {
+		.collapsible-body {
+			li a {
+				padding: 0 (15px + $sidenav-padding) 0 (7.5px + $sidenav-padding);
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+// RTL SideNav
+.side-nav.rtl, .rtl .side-nav {
+	li > a > [class*="mdi-"],
+	li > a > [class^="mdi-"],
+	li > a > i,
+	li > a > i.material-icons {
+		float: right;
+		margin: 0 0 0 ($sidenav-padding * 2);
+	}
+}

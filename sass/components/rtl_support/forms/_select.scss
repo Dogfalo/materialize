@@ -1,0 +1,33 @@
+/* Select Field
+   ========================================================================== */
+.rtl {
+	.select-wrapper {
+		span.caret {
+			right: initial;
+			left: 0;
+		}
+	}
+	// Prefix Icons
+	.prefix ~ .select-wrapper {
+		margin-left: initial;
+		margin-right: 3rem;
+	}
+
+	.prefix ~ label {
+		margin-left: initial;
+		margin-right: 3rem;
+	}
+	// Icons
+	.select-dropdown li {
+		img {
+			float: left;
+		}
+	}
+	// Optgroup styles
+	.select-dropdown li.optgroup {
+		& ~ li.optgroup-option {
+			padding-left: initial;
+			padding-right: 1rem;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+// RTL Table of Contents
+.table-of-contents.rtl, .rtl .table-of-contents {
+	a {
+		padding-left: initial;
+		padding-right: 20px;
+
+		&:hover {
+			padding-left: initial;
+			padding-right: 19px;
+			border-left: initial;
+			border-right: 1px solid $primary-color;
+		}
+
+		&.active {
+			padding-left: initial;
+			padding-right: 18px;
+			border-left: initial;
+			border-right: 2px solid $primary-color;
+		}
+	}
+}

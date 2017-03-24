@@ -1,0 +1,57 @@
+/* Text Inputs + Textarea
+   ========================================================================== */
+
+.rtl {
+	/* Text inputs */
+	// Styling for input field wrapper
+	.input-field {
+		// Inline styles
+		&.inline {
+			margin-left: initial;
+			margin-right: 5px;
+		}
+		// Gutter spacing
+		&.col {
+			label {
+				left: initial;
+				right: $gutter-width / 2;
+			}
+		}
+
+		label {
+			left: initial;
+			right: 0;
+		}
+		// Prefix Icons
+		.prefix ~ .autocomplete-content,
+		.prefix ~ .validate ~ label,
+		.prefix ~ input,
+		.prefix ~ label,
+		.prefix ~ textarea {
+			margin-left: initial;
+			margin-right: 3rem;
+			text-align: right;
+		}
+
+		.prefix ~ label {
+			margin-left: initial;
+			margin-right: 3rem;
+		}
+	}
+	/* Search Field */
+	.input-field input[type=search] {
+		padding-left: initial;
+		padding-right: 4rem;
+
+		& + label {
+			left: initial;
+			right: 1rem;
+		}
+
+		& ~ .material-icons,
+		& ~ .mdi-navigation-close {
+			right: initial;
+			left: 1rem;
+		}
+	}
+}

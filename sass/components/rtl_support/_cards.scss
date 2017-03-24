@@ -1,0 +1,30 @@
+// RTL Cards
+.card.rtl, .rtl .card {
+	// Horizontal Cards
+	&.horizontal {
+		.card-image {
+			img {
+				border-radius: 0 2px 2px 0;
+			}
+		}
+	}
+
+	.card-image {
+		.card-title {
+			left: initial;
+			right: 0;
+		}
+	}
+
+	.card-action {
+		a:not(.btn):not(.btn-large):not(.btn-floating) {
+			margin-left: $card-padding;
+			margin-right: initial;
+		}
+	}
+
+	.card-reveal {
+		left: initial;
+		right: 0;
+	}
+}

@@ -1,0 +1,30 @@
+// RTL Navbar
+nav.rtl, .rtl nav {
+    // Collapse button
+    .button-collapse {
+        float: right;
+    }
+    // Logo
+    .brand-logo {
+        [class*="mdi-"],
+        [class^="mdi-"],
+        i,
+        i.material-icons {
+            float: right;
+            margin-left: 15px;
+            margin-right: initial;
+        }
+    }
+    // Navbar Search Form
+    .input-field {
+        input {
+            padding-left: initial;
+            padding-right: 2rem;
+        }
+
+        label {
+            left: initial;
+            right: 0;
+        }
+    }
+}

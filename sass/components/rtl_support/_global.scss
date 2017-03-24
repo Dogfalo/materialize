@@ -1,0 +1,119 @@
+//Default styles
+.rtl {
+	ul {
+		&:not(.browser-default) {
+			padding-left: initial;
+			padding-right: 0;
+		}
+	}
+}
+
+//  Blockquote
+.rtl {
+	blockquote {
+		padding-left: initial;
+		padding-right: 1.5rem;
+		border-left: initial;
+		border-right: 5px solid $primary-color;
+	}
+}
+
+// Breadcrumbs
+.breadcrumb.rtl, .rtl .breadcrumb {
+	[class*="mdi-"],
+	[class^="mdi-"],
+	i,
+	i.material-icons {
+		float: right;
+	}
+
+	&:before {
+		content: '\E408';
+		margin: 0 8px 0 10px;
+	}
+}
+
+// Tables
+.rtl {
+	td,
+	th {
+		text-align: right;
+	}
+}
+// Responsive Table
+@media #{$medium-and-down} {
+	table.rtl.responsive-table, .rtl table.responsive-table {
+		th {
+			text-align: right;
+		}
+
+		thead {
+			tr {
+				padding: 0 0 0 10px;
+			}
+		}
+
+		th {
+			text-align: left;
+		}
+
+		td {
+			text-align: right;
+		}
+
+		/* sort out borders */
+		thead {
+			border-left: 1px solid $table-border-color;
+			border-right: initial;
+		}
+
+		&.bordered {
+			th {
+				border-left: initial;
+				border-right: 0;
+			}
+
+			tbody tr {
+				border-left: 1px solid $table-border-color;
+				border-right: initial;
+			}
+		}
+	}
+}
+
+// Collections
+.collection.rtl, .rtl .collection {
+	.collection-item {
+		// Avatar Collection
+		&.avatar {
+			padding-left: initial;
+			padding-right: 72px;
+
+			.circle {
+				left: initial;
+				right: 15px;
+			}
+
+			.secondary-content {
+				left: 16px;
+				right: initial;
+			}
+		}
+	}
+	&.with-header {
+		.collection-item {
+			padding-left: initial;
+			padding-right: 30px;
+		}
+
+		.collection-item.avatar {
+			padding-left: initial;
+			padding-right: 72px;
+		}
+	}
+}
+
+// Made less specific to allow easier overriding
+.secondary-content.rtl, .rtl .secondary-content {
+	float: left;
+}

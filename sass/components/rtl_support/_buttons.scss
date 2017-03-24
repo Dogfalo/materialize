@@ -1,0 +1,40 @@
+// RTL Buttons
+.rtl {
+	// Floating button
+	.btn-floating {
+		&.halfway-fab {
+			&.left {
+				left: auto;
+				right: 24px;
+			}
+			left: 24px;
+			right: initial;
+		}
+	}
+	// Fixed Action Button
+	.fixed-action-btn {
+
+		&.horizontal {
+			padding: 0 15px 0 0;
+
+			ul {
+				text-align: left;
+				right: auto;
+				left: 64px;
+				transform: translateY(50%);
+				/*width 100% only goes to width of button container */
+				li {
+					margin: 15px 0 0 15px;
+				}
+			}
+		}
+
+		left: 23px;
+		right: initial;
+
+		.fab-backdrop {
+			left: initial;
+			right: 0;
+		}
+	}
+}

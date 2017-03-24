@@ -1,0 +1,9 @@
+// RTL Modal
+.modal.rtl {
+	.modal-footer {
+		.btn,
+		.btn-flat {
+			float: left;
+		}
+	}
+}
