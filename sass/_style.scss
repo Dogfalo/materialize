@@ -582,7 +582,7 @@ pre[class*="language-"] {
     background: hsl(30, 10%, 90%);
     top: 0;
     left: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: $font-family, sans-serif;
     -webkit-font-smoothing: antialiased;
     color: #555;
     content:attr(class);
