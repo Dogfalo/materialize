@@ -407,7 +407,7 @@
         });
 
 
-        $(window).off('resize.'+uniqueNamespace).on('resize.'+uniqueNamespace, function() {
+        $(window).off('resize.carousel-'+uniqueNamespace).on('resize.carousel-'+uniqueNamespace, function() {
           if (options.fullWidth) {
             item_width = view.find('.carousel-item').first().innerWidth();
             item_height = view.find('.carousel-item').first().innerHeight();
