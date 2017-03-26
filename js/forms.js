@@ -189,17 +189,22 @@
       $(this).after(thumb);
     });
 
+    var showRangeBubble = function(thumb) {
+      var paddingLeft = parseInt(thumb.parent().css('padding-left'));
+      var marginLeft = (-7 + paddingLeft) + 'px';
+      thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: marginLeft}, { duration: 300, easing: 'easeOutExpo' });
+    };
+
     var range_wrapper = '.range-field';
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
       var max = $(this).attr('max');
       var width = $(this).width() - 15;
-      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
       var offsetLeft = $(this).val() * (width / max);
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+        showRangeBubble(thumb);
       }
       thumb.addClass('active').css('left', offsetLeft);
     });
@@ -208,7 +213,6 @@
       var thumb = $(this).siblings('.thumb');
       var max = $(this).attr('max');
       var width = $(this).width() - 15;
-      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
       var offsetLeft = $(this).val() * (width / max);
 
       // If thumb indicator does not exist yet, create it
@@ -224,7 +228,7 @@
       $(this).addClass('active');
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+        showRangeBubble(thumb);
       }
 
       if (e.type !== 'input') {
@@ -243,12 +247,11 @@
       var input = $(this).find(range_type);
       var max = input.attr('max');
       var width = input.width() - 15;
-      var paddingSide = ($(this).outerWidth() - width) || 0;
       var offsetLeft = input.val() * (width / max);
 
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+          showRangeBubble(thumb);
         }
         thumb.addClass('active').css('left', offsetLeft);
         thumb.find('.value').html(thumb.siblings(range_type).val());
@@ -259,9 +262,11 @@
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
+        var paddingLeft = parseInt($(this).css('padding-left'));
+        var marginLeft = (7 + paddingLeft) + 'px';
 
         if (thumb.hasClass('active')) {
-          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '15px'}, { duration: 100 });
+          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: marginLeft}, { duration: 100 });
         }
         thumb.removeClass('active');
       }

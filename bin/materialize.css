@@ -6894,7 +6894,7 @@ input[type=range] + .thumb {
   border-radius: 50%;
   background-color: #26a69a;
   top: 10px;
-  margin-left: -6px;
+  margin-left: 7px;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
   -webkit-transform: rotate(-45deg);
