@@ -59,14 +59,26 @@
 // Switch active style
 input[type=checkbox]:checked:not(:disabled) ~ .lever:active::after,
 input[type=checkbox]:checked:not(:disabled).tabbed:focus ~ .lever::after {
-  box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px transparentize($switch-bg-color, .9);
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
 }
 
 input[type=checkbox]:not(:disabled) ~ .lever:active:after,
 input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
-  box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px rgba(0, 0, 0, .08);
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,.4);
 }
 
+@media #{$medium-and-down} {
+  // Only tablets/phones (probably med/small screens) need the radial reaction (according to material guidelines)
+  input[type=checkbox]:checked:not(:disabled) ~ .lever:active::after,
+  input[type=checkbox]:checked:not(:disabled).tabbed:focus ~ .lever::after {
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px transparentize($switch-bg-color, .9);
+  }
+
+  input[type=checkbox]:not(:disabled) ~ .lever:active:after,
+  input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.4), 0 0 0 15px rgba(0, 0, 0, .08);
+  } 
+}
 // Disabled Styles
 .switch input[type=checkbox][disabled] + .lever {
   cursor: default;
