@@ -82,4 +82,10 @@
       border-radius: 50%;
     }
   }
+
+  // Materialbox compatibility
+  &.scrolling .carousel-item .materialboxed,
+  .carousel-item:not(.active) .materialboxed {
+    pointer-events: none;
+  }
 }

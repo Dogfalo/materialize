@@ -7957,6 +7957,11 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: #fff;
 }
 
+.carousel.scrolling .carousel-item .materialboxed,
+.carousel .carousel-item:not(.active) .materialboxed {
+  pointer-events: none;
+}
+
 .tap-target-wrapper {
   width: 800px;
   height: 800px;

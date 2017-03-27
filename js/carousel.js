@@ -20,9 +20,10 @@
 
         var uniqueNamespace = namespace+i;
         var images, item_width, item_height, offset, center, pressed, dim, count,
-            reference, referenceY, amplitude, target, velocity,
+            reference, referenceY, amplitude, target, velocity, scrolling,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
+        var scrollingTimeout = null;
 
 
         // Initialize
@@ -130,6 +131,20 @@
         }
 
         function scroll(x) {
+          // Track scrolling state
+          scrolling = true;
+          if (!view.hasClass('scrolling')) {
+            view.addClass('scrolling');
+          }
+          if (scrollingTimeout != null) {
+            window.clearTimeout(scrollingTimeout);
+          }
+          scrollingTimeout = window.setTimeout(function() {
+            scrolling = false;
+            view.removeClass('scrolling');
+          }, options.duration);
+
+          // Start actual scroll
           var i, half, delta, dir, tween, el, alignment, xTranslation;
           var lastCenter = center;
 
