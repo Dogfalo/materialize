@@ -464,8 +464,8 @@
       }
 
       var multiple = $select.attr('multiple') ? true : false,
-          lastID = $select.data('select-id'),
-          separator = $select.data('separator') || DEFAULT_SEPARATOR; // Tear down structure if Select needs to be rebuilt
+          lastID = $select.data('select-id'), // Tear down structure if Select needs to be rebuilt
+          separator = $select.data('separator') || DEFAULT_SEPARATOR;
 
       if (lastID) {
         $select.parent().find('span.caret').remove();
