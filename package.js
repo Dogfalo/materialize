@@ -16,19 +16,14 @@ Package.onUse(function (api) {
   api.imply('jquery', 'client');
 
   var assets = [
-    'fonts/roboto/Roboto-Bold.ttf',
     'fonts/roboto/Roboto-Bold.woff',
     'fonts/roboto/Roboto-Bold.woff2',
-    'fonts/roboto/Roboto-Light.ttf',
     'fonts/roboto/Roboto-Light.woff',
     'fonts/roboto/Roboto-Light.woff2',
-    'fonts/roboto/Roboto-Medium.ttf',
     'fonts/roboto/Roboto-Medium.woff',
     'fonts/roboto/Roboto-Medium.woff2',
-    'fonts/roboto/Roboto-Regular.ttf',
     'fonts/roboto/Roboto-Regular.woff',
     'fonts/roboto/Roboto-Regular.woff2',
-    'fonts/roboto/Roboto-Thin.ttf',
     'fonts/roboto/Roboto-Thin.woff',
     'fonts/roboto/Roboto-Thin.woff2',
   ];
