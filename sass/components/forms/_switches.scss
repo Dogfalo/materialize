@@ -3,6 +3,8 @@
 
 .switch,
 .switch * {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
