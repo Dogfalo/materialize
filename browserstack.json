@@ -10,7 +10,7 @@
             "browser": "chrome",
             "browser_version": "latest",
             "os": "OS X",
-            "os_version": "Mountain Lion"
+            "os_version": "Sierra"
         },
         {
             "browser": "firefox",
@@ -19,10 +19,16 @@
             "os_version": "7"
         },
         {
-            "browser": "chrome",
+            "browser": "ie",
             "browser_version": "latest",
             "os": "Windows",
-            "os_version": "7"
+            "os_version": "10"
+        },
+        {
+            "browser": "safari",
+            "browser_version": "latest",
+            "os": "OS X",
+            "os_version": "Yosemite"
         }
     ]
 }
