@@ -229,10 +229,7 @@
  * The footer containing the "today", "clear", and "close" buttons.
  */
 .picker__footer {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  text-align: right;
 }
 .picker__button--today,
 .picker__button--clear,
@@ -312,11 +309,23 @@
 }
 
 .picker__date-display {
-  text-align: center;
+  text-align: left;
   background-color: $datepicker-date-bg;
   color: #fff;
-  padding-bottom: 15px;
+  padding: 15px 1rem;
   font-weight: 300;
+}
+
+@media only screen and (min-width: 601px) {
+	.picker__date-display {
+		flex:1;
+	}
+	.picker__weekday-display {
+		display:block;
+	}
+	.picker__container__wrapper {
+		flex:2
+	}
 }
 
 .picker__nav--prev:hover,
@@ -327,25 +336,24 @@
 }
 
 .picker__weekday-display {
-  background-color: $datepicker-weekday-bg;
-  padding: 10px;
-  font-weight: 200;
-  letter-spacing: .5;
-  font-size: 1rem;
-  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 2rem;
+ margin-right:5px;
 }
 
 .picker__month-display {
   text-transform: uppercase;
   font-size: 2rem;
+  font-weight:bold;
 }
 .picker__day-display {
 
-  font-size: 4.5rem;
-  font-weight: 400;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right:5px;
 }
 .picker__year-display {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: $datepicker-year;
 }
 
@@ -369,7 +377,7 @@
 .picker__day--infocus {
   color: #595959;
   letter-spacing: -.3;
-  padding: .75rem 0;
+  padding: 1.1rem 0;
   font-weight: 400;
   border: 1px solid transparent;
 }
@@ -408,10 +416,14 @@
 }
 
 // Materialize modified
-.picker__close, .picker__today {
+.picker__close, .picker__today, .picker__clear {
   font-size: 1.1rem;
   padding: 0 1rem;
   color: $datepicker-selected;
+}
+.picker__clear {
+	color:#f44336;
+	float:left;
 }
 
 //month nav buttons
