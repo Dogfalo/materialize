@@ -33,7 +33,7 @@
         // Don't double initialize.
         if (view.hasClass('initialized')) {
           // Redraw carousel.
-          $(this).trigger('carouselNext', [0.000001]);
+          view.trigger('carouselNext', [0.000001]);
           return true;
         }
 
