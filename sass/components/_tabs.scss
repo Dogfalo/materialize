@@ -20,6 +20,7 @@
 
   &.tabs-fixed-width {
     display: flex;
+    overflow-x: hidden;
 
     .tab {
       -webkit-box-flex: 1;
