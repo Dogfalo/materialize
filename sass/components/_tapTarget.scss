@@ -32,7 +32,6 @@
   }
 }
 
-
 .tap-target {
   position: absolute;
   font-size: 1rem;
@@ -49,13 +48,11 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .tap-target {
+  .tap-target, .tap-target-wrapper {
     width: 600px;
     height: 600px;
   }
 }
-
-
 
 .tap-target-content {
   position: relative;
