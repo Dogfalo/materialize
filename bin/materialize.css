@@ -4346,7 +4346,7 @@ nav .input-field label.active i {
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Bold), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
+  src: local(Roboto Bold) url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
   font-weight: 700;
 }
 
@@ -8010,13 +8010,6 @@ input[type=range]:focus::-ms-fill-upper {
   transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
-@media only screen and (max-width: 600px) {
-  .tap-target {
-    width: 600px;
-    height: 600px;
-  }
-}
-
 .tap-target-content {
   position: relative;
   display: table-cell;
@@ -8065,6 +8058,13 @@ input[type=range]:focus::-ms-fill-upper {
 
 .tap-target-origin:not(.btn):not(.btn-large), .tap-target-origin:not(.btn):not(.btn-large):hover {
   background: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .tap-target, .tap-target-wrapper {
+    width: 600px;
+    height: 600px;
+  }
 }
 
 .pulse {
