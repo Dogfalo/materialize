@@ -1520,8 +1520,13 @@ if (jQuery) {
             if (!clicked) {
               var prev_index = index;
               index = $tabs_wrapper.index(item);
+			  
+              $active.removeClass('active');
+			  
               $active = $links.eq(index);
               animateIndicator(prev_index);
+			  
+              $active.addClass('active');
             }
           },
         });
