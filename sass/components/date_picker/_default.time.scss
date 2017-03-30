@@ -141,6 +141,8 @@
 .clockpicker-span-am-pm {
   font-size: 1.5rem;
   float:right;
+  text-align:right;
+  padding-left:0.5rem;
 }
 @media only screen and (min-width: 601px) {
 	.clockpicker-display {
@@ -150,6 +152,8 @@
 	.clockpicker-span-am-pm {
 	  font-size: 1.5rem;
 	  float:none;
+	  text-align:center;
+	  padding-left:0rem;
 	}
 	.clockpicker-display > div {
 		display:block;

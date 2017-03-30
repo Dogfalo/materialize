@@ -342,7 +342,7 @@
 }
 
 .picker__month-display {
-  text-transform: uppercase;
+  //text-transform: uppercase;
   font-size: 2rem;
   font-weight:bold;
 }
@@ -377,10 +377,16 @@
 .picker__day--infocus {
   color: #595959;
   letter-spacing: -.3;
-  padding: 1.1rem 0;
+  padding: 0.75rem 0;
   font-weight: 400;
   border: 1px solid transparent;
 }
+@media only screen and (min-width: 601px) {
+	.picker__day--infocus {
+		padding: 1.1rem 0;
+	}
+}
+
 
 //Today style
 .picker__day.picker__day--today {
