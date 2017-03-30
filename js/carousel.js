@@ -155,6 +155,15 @@
           tween = -dir * delta * 2 / dim;
           half = count >> 1;
 
+          // get width and height of invisible views, see http://stackoverflow.com/a/11314898/753676
+          var viewClone = view.clone();
+          viewClone.css("visibility","hidden");
+          viewClone.css("display","block");
+          $('body').append(viewClone);
+          var viewWidth = viewClone[0].clientWidth;
+          var viewHeight = viewClone[0].clientHeight;
+          viewClone.remove();
+
           if (!options.fullWidth) {
             alignment = 'translateX(' + (view[0].clientWidth - item_width) / 2 + 'px) ';
             alignment += 'translateY(' + (view[0].clientHeight - item_height) / 2 + 'px)';
