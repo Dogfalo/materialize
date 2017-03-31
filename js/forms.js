@@ -195,33 +195,29 @@
       thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: marginLeft}, { duration: 300, easing: 'easeOutExpo' });
     };
 
+    var calcRangeOffset = function(range) {
+      var width = range.width() - 15;
+      var max = parseFloat(range.attr('max'));
+      var min = parseFloat(range.attr('min'));
+      var percent = (parseFloat(range.val()) - min) / (max - min);
+      return percent * width;
+    }
+
     var range_wrapper = '.range-field';
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
-      var width = $(this).width() - 15;
-      var max = parseFloat($(this).attr('max'));
-      var min = parseFloat($(this).attr('min'));
-      var values = max - min;
-      var percent = (parseFloat($(this).val()) - min) / values;
-      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
-      var offsetLeft = percent * width;
 
       if (!thumb.hasClass('active')) {
         showRangeBubble(thumb);
       }
+
+      var offsetLeft = calcRangeOffset($(this));
       thumb.addClass('active').css('left', offsetLeft);
     });
 
     $(document).on('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
-      var width = $(this).width() - 15;
-      var max = parseFloat($(this).attr('max'));
-      var min = parseFloat($(this).attr('min'));
-      var values = max - min;
-      var percent = (parseFloat($(this).val()) - min) / values;
-      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
-      var offsetLeft = percent * width;
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -240,6 +236,7 @@
       }
 
       if (e.type !== 'input') {
+        var offsetLeft = calcRangeOffset($(this));
         thumb.addClass('active').css('left', offsetLeft);
       }
     });
@@ -253,18 +250,13 @@
       var thumb = $(this).children('.thumb');
       var left;
       var input = $(this).find(range_type);
-      var width = input.width() - 15;
-      var max = parseFloat(input.attr('max'));
-      var min = parseFloat(input.attr('min'));
-      var values = max - min;
-      var percent = (parseFloat(input.val()) - min) / values;
-      var paddingSide = ($(this).outerWidth() - width) || 0;
-      var offsetLeft = percent * width;
 
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
           showRangeBubble(thumb);
         }
+
+        var offsetLeft = calcRangeOffset(input);
         thumb.addClass('active').css('left', offsetLeft);
         thumb.find('.value').html(thumb.siblings(range_type).val());
       }
