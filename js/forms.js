@@ -199,9 +199,13 @@
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
-      var max = $(this).attr('max');
       var width = $(this).width() - 15;
-      var offsetLeft = $(this).val() * (width / max);
+      var max = parseFloat($(this).attr('max'));
+      var min = parseFloat($(this).attr('min'));
+      var values = max - min;
+      var percent = (parseFloat($(this).val()) - min) / values;
+      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
+      var offsetLeft = percent * width;
 
       if (!thumb.hasClass('active')) {
         showRangeBubble(thumb);
@@ -211,9 +215,13 @@
 
     $(document).on('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
-      var max = $(this).attr('max');
       var width = $(this).width() - 15;
-      var offsetLeft = $(this).val() * (width / max);
+      var max = parseFloat($(this).attr('max'));
+      var min = parseFloat($(this).attr('min'));
+      var values = max - min;
+      var percent = (parseFloat($(this).val()) - min) / values;
+      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
+      var offsetLeft = percent * width;
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -245,9 +253,13 @@
       var thumb = $(this).children('.thumb');
       var left;
       var input = $(this).find(range_type);
-      var max = input.attr('max');
       var width = input.width() - 15;
-      var offsetLeft = input.val() * (width / max);
+      var max = parseFloat(input.attr('max'));
+      var min = parseFloat(input.attr('min'));
+      var values = max - min;
+      var percent = (parseFloat(input.val()) - min) / values;
+      var paddingSide = ($(this).outerWidth() - width) || 0;
+      var offsetLeft = percent * width;
 
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
