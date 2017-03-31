@@ -26,14 +26,7 @@
 	[type="checkbox"]:checked {
 		+ label:before {
 			left: initial;
-			right: -5px;
-			border-left: $radio-border;
-			border-right: 2px solid transparent;
-			transform: rotate(40deg);
-		}
-
-		&:disabled + label:before {
-			border-left: 2px solid $input-disabled-color;
+			right: 5px;
 		}
 	}
 	/* Indeterminate checkbox */
@@ -41,9 +34,6 @@
 		+label:before {
 			left: initial;
 			right: -12px;
-			border-left: $radio-border;
-			border-right: none;
-			transform: rotate(90deg);
 		}
 		// Disabled indeterminate
 		&:disabled + label:before {
@@ -62,10 +52,6 @@
 		&:not(:checked) + label:before {
 			left: initial;
 			right: 6px;
-			-webkit-transform: rotateZ(37deg);
-			transform: rotateZ(37deg);
-			-webkit-transform-origin: 20% 40%;
-			transform-origin: 100% 100%;
 		}
 
 		// Checked style
@@ -73,10 +59,6 @@
 			+ label:before {
 				left: initial;
 				right: 1px;
-				border-left: 2px solid $input-background;
-				border-right: 2px solid transparent;
-				-webkit-transform: rotateZ(37deg);
-				transform: rotateZ(37deg);
 			}
 		}
 	}
