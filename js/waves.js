@@ -288,7 +288,7 @@
 
             element.addEventListener('mouseup', Effect.hide, false);
             element.addEventListener('mouseleave', Effect.hide, false);
-          element.addEventListener('dragend', Effect.hide, false);
+            element.addEventListener('dragend', Effect.hide, false);
         }
     }
 
