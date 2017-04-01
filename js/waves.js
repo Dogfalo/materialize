@@ -1,5 +1,5 @@
 /*!
- * Waves v0.6.4
+ * Waves v0.6.5
  * http://fian.my.id/Waves
  *
  * Copyright 2014 Alfiana E. Sibuea and other contributors
@@ -279,6 +279,10 @@
         var element = getWavesEffectElement(e);
 
         if (element !== null) {
+            var wavesElement = element.querySelector('div.waves-ripple');
+            if(wavesElement !== null){
+                wavesElement.parentNode.removeChild(wavesElement);
+            }
             Effect.show(e, element);
 
             if ('ontouchstart' in window) {
