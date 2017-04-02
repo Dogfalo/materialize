@@ -289,17 +289,17 @@ ul.staggered-list li {
     display: none !important;
   }
 }
-.hide-on-medium-and-down {
+.hide-on-medium-and-down, .hide-on-medium-and-down {
   @media #{$medium-and-down} {
     display: none !important;
   }
 }
-.hide-on-medium-and-up {
+.hide-on-medium-and-up, .hide-on-medium-and-up {
   @media #{$medium-and-up} {
     display: none !important;
   }
 }
-.hide-on-medium-only {
+.hide-on-medium-only, .hide-on-medium-only {
   @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
     display: none !important;
   }
