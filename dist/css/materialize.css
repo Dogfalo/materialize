@@ -2806,19 +2806,19 @@ ul.staggered-list li {
 }
 
 @media only screen and (max-width: 992px) {
-  .hide-on-medium-and-down {
+  .hide-on-med-and-down {
     display: none !important;
   }
 }
 
 @media only screen and (min-width: 601px) {
-  .hide-on-medium-and-up {
+  .hide-on-med-and-up {
     display: none !important;
   }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 992px) {
-  .hide-on-medium-only {
+  .hide-on-med-only {
     display: none !important;
   }
 }
