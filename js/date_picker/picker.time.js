@@ -142,32 +142,10 @@
 
 		// Setup for for 12 hour clock if option is selected
 		if (options.twelvehour) {
-			var  amPmButtonsTemplate = [
-				'<div class="clockpicker-am-pm-block">',
-					'<button type="button" class="btn-floating btn-flat clockpicker-button clockpicker-am-button">',
-						'AM',
-					'</button>',
-					'<button type="button" class="btn-floating btn-flat clockpicker-button clockpicker-pm-button">',
-						'PM',
-					'</button>',
-				'</div>'
-			].join('');
-
-			var amPmButtons = $(amPmButtonsTemplate);
-
 			if(!options.ampmclickable) {
-				$('<button type="button" class="btn-floating btn-flat clockpicker-button am-button" tabindex="1">' + "AM" + '</button>').on("click", function() {
-					self.amOrPm = "AM";
-					self.amPmBlock.children('.pm-button').removeClass('active');
-					self.amPmBlock.children('.am-button').addClass('active');
-					self.spanAmPm.empty().append('AM');
-				}).appendTo(this.amPmBlock);
-				$('<button type="button" class="btn-floating btn-flat clockpicker-button pm-button" tabindex="2">' + "PM" + '</button>').on("click", function() {
-					self.amOrPm = 'PM';
-					self.amPmBlock.children('.am-button').removeClass('active');
-					self.amPmBlock.children('.pm-button').addClass('active');
-					self.spanAmPm.empty().append('PM');
-				}).appendTo(this.amPmBlock);
+				this.spanAmPm.empty();
+				$('<div id="click-am">AM</div>').appendTo(this.spanAmPm);
+				$('<div id="click-pm">PM</div>').appendTo(this.spanAmPm);
 			}
 			else {
 				this.spanAmPm.empty();
@@ -188,7 +166,7 @@
 		$('<button type="button" class="btn-flat picker__clear" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.cleartext + '</button>').click($.proxy(this.clear, this)).appendTo(this.footer);
 		$('<button type="button" class="btn-flat picker__close" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.canceltext + '</button>').click($.proxy(this.hide, this)).appendTo(this.footer);
 		$('<button type="button" class="btn-flat picker__close" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.donetext + '</button>').click($.proxy(this.done, this)).appendTo(this.footer);
-		
+
 		this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
 		this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
 
@@ -416,32 +394,14 @@
 		this.popover.addClass('picker--opened');
 		this.input.addClass('picker__input picker__input--active');
 		$(document.body).css('overflow', 'hidden');
-		if (!this.isAppended) {
-			// Append popover to body
-			this.popover.insertAfter(this.input);
-			if(this.options.twelvehour) {
-				this.amOrPm = 'PM';
-				if(!this.options.ampmclickable) {
-					this.amPmBlock.children('.am-button').removeClass('active');
-					this.amPmBlock.children('.pm-button').addClass('active');
-					this.spanAmPm.empty().append('PM');
-				}
-				else {
-					this.spanAmPm.children('#click-pm').addClass("text-primary");
-					this.spanAmPm.children('#click-am').removeClass("text-primary");
-				}
-			}
-			// Reset position when resize
-			$win.on('resize.clockpicker' + this.id, function() {
-				if (self.isShown) {
-					self.locate();
-				}
-			});
-			this.isAppended = true;
-		}
 		// Get the time
 		var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
 		if(this.options.twelvehour && !(typeof value[1] === 'undefined')) {
+			if(value[1].indexOf("AM") > 0){
+				this.amOrPm = 'AM';
+			} else {
+				this.amOrPm = 'PM';
+			}
 			value[1] = value[1].replace("AM", "").replace("PM", "");
 		}
 		if (value[0] === 'now') {
@@ -455,6 +415,26 @@
 		this.minutes = + value[1] || 0;
 		this.spanHours.html(leadingZero(this.hours));
 		this.spanMinutes.html(leadingZero(this.minutes));
+		if (!this.isAppended) {
+			// Append popover to body
+			this.popover.insertAfter(this.input);
+			if(this.options.twelvehour) {
+				if (this.amOrPm === 'PM'){
+					this.spanAmPm.children('#click-pm').addClass("text-primary");
+					this.spanAmPm.children('#click-am').removeClass("text-primary");
+				} else {
+					this.spanAmPm.children('#click-am').addClass("text-primary");
+					this.spanAmPm.children('#click-pm').removeClass("text-primary");
+				}
+			}
+			// Reset position when resize
+			$win.on('resize.clockpicker' + this.id, function() {
+				if (self.isShown) {
+					self.locate();
+				}
+			});
+			this.isAppended = true;
+		}
 		// Toggle to hours view
 		this.toggleView('hours');
 		// Set position
