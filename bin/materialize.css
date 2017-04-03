@@ -4346,7 +4346,7 @@ nav .input-field label.active i {
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Bold) url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
+  src: local(Roboto Bold), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
   font-weight: 700;
 }
 
@@ -6883,12 +6883,13 @@ input[type=range]:focus {
 
 input[type=range] + .thumb {
   position: absolute;
+  top: 10px;
+  left: 0;
   border: none;
   height: 0;
   width: 0;
   border-radius: 50%;
   background-color: #26a69a;
-  top: 10px;
   margin-left: 7px;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
@@ -8069,6 +8070,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .pulse {
   overflow: initial;
+  position: relative;
 }
 
 .pulse::before {
@@ -8077,6 +8079,8 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   background-color: inherit;
   border-radius: inherit;
   transition: opacity .3s, -webkit-transform .3s;

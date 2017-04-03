@@ -195,25 +195,29 @@
       thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: marginLeft}, { duration: 300, easing: 'easeOutExpo' });
     };
 
+    var calcRangeOffset = function(range) {
+      var width = range.width() - 15;
+      var max = parseFloat(range.attr('max'));
+      var min = parseFloat(range.attr('min'));
+      var percent = (parseFloat(range.val()) - min) / (max - min);
+      return percent * width;
+    }
+
     var range_wrapper = '.range-field';
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
-      var max = $(this).attr('max');
-      var width = $(this).width() - 15;
-      var offsetLeft = $(this).val() * (width / max);
 
       if (!thumb.hasClass('active')) {
         showRangeBubble(thumb);
       }
+
+      var offsetLeft = calcRangeOffset($(this));
       thumb.addClass('active').css('left', offsetLeft);
     });
 
     $(document).on('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
-      var max = $(this).attr('max');
-      var width = $(this).width() - 15;
-      var offsetLeft = $(this).val() * (width / max);
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -232,6 +236,7 @@
       }
 
       if (e.type !== 'input') {
+        var offsetLeft = calcRangeOffset($(this));
         thumb.addClass('active').css('left', offsetLeft);
       }
     });
@@ -245,14 +250,13 @@
       var thumb = $(this).children('.thumb');
       var left;
       var input = $(this).find(range_type);
-      var max = input.attr('max');
-      var width = input.width() - 15;
-      var offsetLeft = input.val() * (width / max);
 
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
           showRangeBubble(thumb);
         }
+
+        var offsetLeft = calcRangeOffset(input);
         thumb.addClass('active').css('left', offsetLeft);
         thumb.find('.value').html(thumb.siblings(range_type).val());
       }

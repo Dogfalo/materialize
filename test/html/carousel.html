@@ -34,6 +34,28 @@
       </li>
     </ul>
 
+    <h3>Full Width Carousels in tabs</h3>
+    <ul class="tabs">
+      <li class="tab col s6"><a href="#test1">Test 1</a></li>
+      <li class="tab col s6"><a href="#test2">Test 2</a></li>
+    </ul>
+    <div id="test1" class="col s12">
+      <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
+        <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
+        <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
+        <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
+      </div>
+    </div>
+    <div id="test2" class="col s12">
+      <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
+        <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
+        <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
+        <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
+      </div>
+    </div>
+
 
 
 
@@ -55,6 +77,14 @@
           console.log("CLOSE", el);
         }
       });
+
+      $('ul.tabs').tabs({
+        onShow: function(tab) {
+          $('.carousel.carousel-slider').carousel({fullWidth : true});
+        }
+      });
+
+      $('.carousel.carousel-slider').carousel({fullWidth : true});
       $('.carousel').carousel();
 
     });
