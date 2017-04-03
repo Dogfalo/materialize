@@ -6,6 +6,7 @@ nav.rtl, .rtl nav {
     }
     // Logo
     .brand-logo {
+
         [class*="mdi-"],
         [class^="mdi-"],
         i,
@@ -15,8 +16,16 @@ nav.rtl, .rtl nav {
             margin-right: initial;
         }
     }
+    // Navbar Links
+    ul {
+
+        li {
+            float: right;
+        }
+    }
     // Navbar Search Form
     .input-field {
+
         input {
             padding-left: initial;
             padding-right: 2rem;
