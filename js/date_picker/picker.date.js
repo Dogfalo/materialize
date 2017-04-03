@@ -1318,15 +1318,15 @@ return _.node(
 	    // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
 	    _.node(
 		'div',
-		_.node( 'button', settings.today, "btn-flat picker__today",
+		_.node( 'button', settings.today, "btn-flat picker__today waves-effect",
 		    'type=button data-pick=' + nowObject.pick +
 		    ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
 		    _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-		_.node( 'button', settings.clear, "btn-flat picker__clear",
+		_.node( 'button', settings.clear, "btn-flat picker__clear waves-effect",
 		    'type=button data-clear=1' +
 		    ( isOpen ? '' : ' disabled' ) + ' ' +
 		    _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-		_.node('button', settings.close, "btn-flat picker__close",
+		_.node('button', settings.close, "btn-flat picker__close waves-effect",
 		    'type=button data-close=true ' +
 		    ( isOpen ? '' : ' disabled' ) + ' ' +
 		    _.ariaAttr({ controls: calendar.$node[0].id }) ),
@@ -1365,7 +1365,7 @@ DatePicker.defaults = (function( prefix ) {
         // Today and clear
         today: 'Today',
         clear: 'Clear',
-        close: 'Close',
+        close: 'Ok',
 
         // The format to show on the `input` element
         format: 'd mmmm, yyyy',
