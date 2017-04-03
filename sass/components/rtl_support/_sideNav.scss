@@ -1,5 +1,8 @@
 // RTL SideNav
 .side-nav.rtl, .rtl .side-nav {
+	li {
+		float: none;
+	}
 	li > a > [class*="mdi-"],
 	li > a > [class^="mdi-"],
 	li > a > i,
