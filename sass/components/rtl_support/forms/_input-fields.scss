@@ -23,6 +23,10 @@
 			right: 0;
 		}
 		// Prefix Icons
+		.prefix {
+			text-align: right;
+		}
+
 		.prefix ~ .autocomplete-content,
 		.prefix ~ .validate ~ label,
 		.prefix ~ input,
@@ -30,7 +34,6 @@
 		.prefix ~ textarea {
 			margin-left: initial;
 			margin-right: 3rem;
-			text-align: right;
 		}
 
 		.prefix ~ label {
