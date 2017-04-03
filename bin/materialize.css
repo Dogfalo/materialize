@@ -2561,10 +2561,6 @@ a {
           align-items: center;
 }
 
-.valign-wrapper .valign {
-  display: block;
-}
-
 .clearfix {
   clear: both;
 }
@@ -5690,7 +5686,7 @@ button.btn-floating {
   margin-right: 5px;
 }
 
-.chip img {
+.chip > img {
   float: left;
   margin: 0 8px 0 -12px;
   height: 32px;
@@ -6155,6 +6151,7 @@ textarea.materialize-textarea + label:after {
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
+  text-align: initial;
 }
 
 .input-field label:not(.label-icon).active {
@@ -7288,8 +7285,8 @@ input[type=range]:focus::-ms-fill-upper {
 .preloader-wrapper {
   display: inline-block;
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
 }
 
 .preloader-wrapper.small {
@@ -7924,7 +7921,7 @@ input[type=range]:focus::-ms-fill-upper {
   left: 0;
 }
 
-.carousel .carousel-item img {
+.carousel .carousel-item > img {
   width: 100%;
 }
 
