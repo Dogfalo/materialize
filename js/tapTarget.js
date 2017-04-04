@@ -59,6 +59,10 @@
           closeTapTarget();
           $(document).off('click.tapTarget');
         });
+        
+        $(window).off('resize.tapTarget').on('resize.tapTarget', function(e) {
+          calculateTapTarget();
+        });
       }, 0);
     };
 
@@ -71,6 +75,7 @@
       tapTargetWrapper.removeClass('open');
       tapTargetOriginEl.off('click.tapTarget')
       $(document).off('click.tapTarget');
+      $(window).off('resize.tapTarget');
     };
 
     // Pre calculate
