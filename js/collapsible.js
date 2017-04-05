@@ -3,7 +3,9 @@
     var defaults = {
       accordion: undefined,
       onOpen: undefined,
-      onClose: undefined
+      onOpened: undefined,
+      onClose: undefined,
+      onClosed: undefined
     };
 
     var methodName = options;
@@ -32,10 +34,16 @@
           object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+        }});
         }
         else{
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+        }});
         }
 
         $panel_headers.not(object).removeClass('active').parent().removeClass('active');
@@ -66,10 +74,16 @@
           object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+          }});
         }
         else {
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+          }});
         }
       }
 
@@ -89,14 +103,20 @@
       }
 
       // Handle callbacks
-      function execCallbacks(object) {
+      function execCallbacks(object, endEvents) {
         if (object.hasClass('active')) {
-          if (typeof(options.onOpen) === "function") {
-            options.onOpen.call(this, object.parent());
+          if (typeof(options.onOpen) === "function" && !endEvents) {
+            options.onOpen.call(this, object.parent());            
+          }
+          if (typeof(options.onOpened) === "function" && endEvents) {
+            options.onOpened.call(this, object.parent());
           }
         } else {
-          if (typeof(options.onClose) === "function") {
+          if (typeof(options.onClose) === "function" && !endEvents) {
             options.onClose.call(this, object.parent());
+          }
+          if (typeof(options.onClosed) === "function" && endEvents) {
+            options.onClosed.call(this, object.parent());
           }
         }
       }
