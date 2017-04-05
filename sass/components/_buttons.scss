@@ -43,11 +43,11 @@
 .btn-floating,
 .btn-large,
 .btn-flat {
-
+  font-size: $button-font-size;
   outline: 0;
 
   i {
-    font-size: $button-font-size;
+    font-size: $button-icon-font-size;
     line-height: inherit;
   }
 }
