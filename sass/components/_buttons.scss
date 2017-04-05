@@ -116,6 +116,10 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   width: $button-floating-size;
   height: $button-floating-size;
   line-height: $button-floating-size;
