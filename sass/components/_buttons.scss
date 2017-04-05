@@ -116,6 +116,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
