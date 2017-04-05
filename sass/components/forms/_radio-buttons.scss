@@ -20,7 +20,9 @@
   font-size: 1rem;
   transition: .28s ease;
 
-  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
