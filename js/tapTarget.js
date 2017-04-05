@@ -59,10 +59,11 @@
           closeTapTarget();
           $(document).off('click.tapTarget');
         });
-        
-        $(window).off('resize.tapTarget').on('resize.tapTarget', function(e) {
+
+        var throttledCalc = Materialize.throttle(function() {
           calculateTapTarget();
-        });
+        }, 200);
+        $(window).off('resize.tapTarget').on('resize.tapTarget', throttledCalc);
       }, 0);
     };
 
