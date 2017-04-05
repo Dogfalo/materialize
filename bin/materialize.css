@@ -5136,6 +5136,7 @@ small {
 .btn-floating,
 .btn-large,
 .btn-flat {
+  font-size: 1rem;
   outline: 0;
 }
 
