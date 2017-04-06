@@ -16,6 +16,11 @@ nav.rtl, .rtl nav {
             margin-right: initial;
         }
 
+		@media #{$medium-and-down} {
+			right: 50%;
+			transform: translateX(50%);
+		}
+
         &.left {
             left: 0.5rem;
             right: auto;
