@@ -8,11 +8,11 @@
       $this.addClass('parallax');
 
       var viewClone = $this.clone();
-          viewClone.css("visibility","hidden");
-          viewClone.css("display","block");
-          $('body').append(viewClone);
-          var view_height = viewClone[0].clientHeight;
-          viewClone.remove();
+      viewClone.css("visibility","hidden");
+      viewClone.css("display","block");
+      $('body').append(viewClone);
+      var view_height = viewClone[0].clientHeight;
+      viewClone.remove();
 
       function updateParallax(initial) {
         var container_height;
