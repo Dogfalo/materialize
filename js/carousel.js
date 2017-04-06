@@ -160,13 +160,13 @@
           viewClone.css("visibility","hidden");
           viewClone.css("display","block");
           $('body').append(viewClone);
-          var viewWidth = viewClone[0].clientWidth;
-          var viewHeight = viewClone[0].clientHeight;
+          var view_width = viewClone[0].clientWidth;
+          var view_height = viewClone[0].clientHeight;
           viewClone.remove();
 
           if (!options.fullWidth) {
-            alignment = 'translateX(' + (view[0].clientWidth - item_width) / 2 + 'px) ';
-            alignment += 'translateY(' + (view[0].clientHeight - item_height) / 2 + 'px)';
+            alignment = 'translateX(' + (view_width - item_width) / 2 + 'px) ';
+            alignment += 'translateY(' + (view_height - item_height) / 2 + 'px)';
           } else {
             alignment = 'translateX(0)';
           }
