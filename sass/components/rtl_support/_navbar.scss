@@ -15,6 +15,11 @@ nav.rtl, .rtl nav {
             margin-left: 15px;
             margin-right: initial;
         }
+
+        &.left {
+            left: 0.5rem;
+            right: auto;
+        }
     }
     // Navbar Links
     ul {
