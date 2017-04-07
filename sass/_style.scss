@@ -343,7 +343,7 @@ a.button-collapse.top-nav {
   padding: 0;
 
   span {
-    font-weight: 200;
+    font-weight: 100;
     line-height: 50px;
   }
 }
@@ -942,7 +942,10 @@ body.parallax-demo footer {
     transition: margin .25s ease;
 
     input#search {
-      &:focus { outline: none; }
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
 
       display: block;
       font-size: 16px;
@@ -977,6 +980,7 @@ body.parallax-demo footer {
 
       font-size: 12px;
       white-space: nowrap;
+      display: block;
     }
   }
 }

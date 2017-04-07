@@ -235,7 +235,28 @@
           },
           {
             duration: outDuration,
-            queue: false, easing: 'easeOutQuad'
+            queue: false, easing: 'easeOutQuad',
+            complete: function() {
+              placeholder.css({
+                height: '',
+                width: '',
+                position: '',
+                top: '',
+                left: ''
+              });
+
+              origin.removeAttr('style');
+              origin.attr('style', originInlineStyles);
+
+              // Remove class
+              origin.removeClass('active');
+              doneAnimating = true;
+
+              // Remove overflow overrides on ancestors
+              if (ancestorsChanged) {
+                ancestorsChanged.css('overflow', '');
+              }
+            }
           }
         );
 
@@ -244,26 +265,7 @@
           duration: outDuration, // Delay prevents animation overlapping
           queue: false, easing: 'easeOutQuad',
           complete: function(){
-            placeholder.css({
-              height: '',
-              width: '',
-              position: '',
-              top: '',
-              left: ''
-            });
-
-            origin.removeAttr('style');
-            origin.attr('style', originInlineStyles);
-
-            // Remove class
-            origin.removeClass('active');
-            doneAnimating = true;
             $(this).remove();
-
-            // Remove overflow overrides on ancestors
-            if (ancestorsChanged) {
-              ancestorsChanged.css('overflow', '');
-            }
           }
         });
 

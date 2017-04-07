@@ -5,6 +5,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     background-color: inherit;
     border-radius: inherit;
     transition: opacity .3s, transform .3s;
@@ -13,6 +15,7 @@
   }
 
   overflow: initial;
+  position: relative;
 }
 
 @keyframes pulse-animation {
