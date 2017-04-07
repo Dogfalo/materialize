@@ -5,7 +5,9 @@
  * The picker box.
  */
 .picker__box {
-  padding: 0 1em;
+  padding: 0;
+  border-radius: 2px;
+  overflow: hidden;
 }
 /**
  * The header containing the month and year stuff.
@@ -303,10 +305,10 @@
 /* ==========================================================================
    CUSTOM MATERIALIZE STYLES
    ========================================================================== */
-.picker__box {
+/*.picker__box {
   border-radius: 2px;
   overflow: hidden;
-}
+}*/
 
 .picker__date-display {
   text-align: left;
@@ -353,13 +355,14 @@
   margin-right:5px;
 }
 .picker__year-display {
-  font-size: 1.4rem;
+  font-size: 1rem;
+  font-weight:bold;
   color: $datepicker-year;
 }
 
-.picker__box {
+/*.picker__box {
   padding: 0;
-}
+}*/
 .picker__calendar-container {
   padding: 0 1rem;
 

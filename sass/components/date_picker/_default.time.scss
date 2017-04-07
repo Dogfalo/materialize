@@ -130,33 +130,29 @@
    .clockpicker-display {
 	font-size:3rem;
 	font-weight:bold;
-	text-align:right;
+	text-align:center;
 	color: rgba(255, 255, 255, 0.6);
 	clear:both;
-}
-.clockpicker-display > div {
-	display:inline;
+	position:relative;
 }
 
 .clockpicker-span-am-pm {
-  font-size: 1.5rem;
-  float:right;
-  text-align:right;
-  padding-left:0.5rem;
+  font-size: 1.2rem;
+  position:absolute;
+  right:1rem;
+  bottom:0.3rem;
+  line-height:1.5rem;
 }
 @media only screen and (min-width: 601px) {
 	.clockpicker-display {
-		text-align:center;
-		display:block;
+		top:32%;
 	}
 	.clockpicker-span-am-pm {
-	  font-size: 1.5rem;
-	  float:none;
+	  position:relative;
+	  right:auto;
+	  bottom:auto;
 	  text-align:center;
-	  padding-left:0rem;
-	}
-	.clockpicker-display > div {
-		display:block;
+	  margin-top:1.2rem;
 	}
 }
 
@@ -269,19 +265,4 @@
 	stroke-linecap: round;
 	/*shape-rendering: crispEdges;*/
 }
-.clockpicker-am-pm-block{
-  margin-top: -10px;
-  width: 100%;
-  height: 50px;
-}
-.clockpicker-button.am-button {
-  height: 45px;
-  width: 45px;
-	float: left;
-}
-.clockpicker-button.pm-button {
-  height: 45px;
-  width: 45px;
-	float: right;
-}
-   
+
