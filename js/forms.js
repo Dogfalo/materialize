@@ -153,9 +153,9 @@
        * Resize if the new height is greater than the
        * original height of the textarea
        */
-      if($textarea.data("original-height") <= hiddenDiv.height()){
+      if ($textarea.data("original-height") <= hiddenDiv.height()) {
         $textarea.css('height', hiddenDiv.height());
-      }else if($textarea.val().length < $textarea.data("previous-length")){
+      } else if ($textarea.val().length < $textarea.data("previous-length")) {
         /**
          * In case the new height is less than original height, it
          * means the textarea has less text than before
