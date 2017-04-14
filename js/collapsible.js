@@ -123,11 +123,20 @@
         return object.closest('li > .collapsible-header');
       }
 
+
+      // Turn off any existing event handlers
+      function removeEventHandlers() {
+        $this.off('click.collapse', '> li > .collapsible-header');
+      }
+
       /*****  End Helper Functions  *****/
 
 
       // Methods
-      if (methodParam >= 0 &&
+      if (methodName === 'destroy') {
+        removeEventHandlers();
+        return;
+      } else if (methodParam >= 0 &&
           methodParam < $panel_headers.length) {
         var $curr_header = $panel_headers.eq(methodParam);
         if ($curr_header.length &&
@@ -140,9 +149,7 @@
       }
 
 
-      // Turn off any existing event handlers
-      $this.off('click.collapse', '> li > .collapsible-header');
-      $panel_headers.off('click.collapse');
+      removeEventHandlers();
 
 
       // Add click handler to only direct collapsible header children
