@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.98.1 (http://materializecss.com)
+ * Materialize v0.98.2 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -2566,10 +2566,6 @@ a {
           align-items: center;
 }
 
-.valign-wrapper .valign {
-  display: block;
-}
-
 .clearfix {
   clear: both;
 }
@@ -3408,124 +3404,88 @@ nav ul a span.badge {
   position: relative;
 }
 
-.row .col.s1, .row .col.m1, .row .col.l1, .row .col.xl1 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s2, .row .col.m2, .row .col.l2, .row .col.xl2 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s3, .row .col.m3, .row .col.l3, .row .col.xl3 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s4, .row .col.m4, .row .col.l4, .row .col.xl4 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s5, .row .col.m5, .row .col.l5, .row .col.xl5 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s6, .row .col.m6, .row .col.l6, .row .col.xl6 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s7, .row .col.m7, .row .col.l7, .row .col.xl7 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s8, .row .col.m8, .row .col.l8, .row .col.xl8 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s9, .row .col.m9, .row .col.l9, .row .col.xl9 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s10, .row .col.m10, .row .col.l10, .row .col.xl10 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s11, .row .col.m11, .row .col.l11, .row .col.xl11 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s12, .row .col.m12, .row .col.l12, .row .col.xl12 {
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
 .row .col.s1 {
   width: 8.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s2 {
   width: 16.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s3 {
   width: 25%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s4 {
   width: 33.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s5 {
   width: 41.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s6 {
   width: 50%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s7 {
   width: 58.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s8 {
   width: 66.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s9 {
   width: 75%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s10 {
   width: 83.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s11 {
   width: 91.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.s12 {
   width: 100%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
 }
 
 .row .col.offset-s1 {
@@ -3675,39 +3635,75 @@ nav ul a span.badge {
 @media only screen and (min-width: 601px) {
   .row .col.m1 {
     width: 8.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m2 {
     width: 16.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m3 {
     width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m4 {
     width: 33.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m5 {
     width: 41.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m6 {
     width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m7 {
     width: 58.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m8 {
     width: 66.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m9 {
     width: 75%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m10 {
     width: 83.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m11 {
     width: 91.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.m12 {
     width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.offset-m1 {
     margin-left: 8.3333333333%;
@@ -3822,39 +3818,75 @@ nav ul a span.badge {
 @media only screen and (min-width: 993px) {
   .row .col.l1 {
     width: 8.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l2 {
     width: 16.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l3 {
     width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l4 {
     width: 33.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l5 {
     width: 41.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l6 {
     width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l7 {
     width: 58.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l8 {
     width: 66.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l9 {
     width: 75%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l10 {
     width: 83.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l11 {
     width: 91.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.l12 {
     width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.offset-l1 {
     margin-left: 8.3333333333%;
@@ -3969,39 +4001,75 @@ nav ul a span.badge {
 @media only screen and (min-width: 1201px) {
   .row .col.xl1 {
     width: 8.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl2 {
     width: 16.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl3 {
     width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl4 {
     width: 33.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl5 {
     width: 41.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl6 {
     width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl7 {
     width: 58.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl8 {
     width: 66.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl9 {
     width: 75%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl10 {
     width: 83.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl11 {
     width: 91.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.xl12 {
     width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
   }
   .row .col.offset-xl1 {
     margin-left: 8.3333333333%;
@@ -4327,36 +4395,31 @@ nav .input-field label.active i {
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.eot");
-  src: url("../fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../fonts/roboto/Roboto-Thin.woff") format("woff"), url("../fonts/roboto/Roboto-Thin.ttf") format("truetype");
-  font-weight: 200;
+  src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../fonts/roboto/Roboto-Thin.woff") format("woff");
+  font-weight: 100;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Light), url("../fonts/roboto/Roboto-Light.eot");
-  src: url("../fonts/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../fonts/roboto/Roboto-Light.woff") format("woff"), url("../fonts/roboto/Roboto-Light.ttf") format("truetype");
+  src: local(Roboto Light), url("../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../fonts/roboto/Roboto-Light.woff") format("woff");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Regular), url("../fonts/roboto/Roboto-Regular.eot");
-  src: url("../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../fonts/roboto/Roboto-Regular.woff") format("woff"), url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  src: local(Roboto Regular), url("../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../fonts/roboto/Roboto-Regular.woff") format("woff");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/roboto/Roboto-Medium.eot");
-  src: url("../fonts/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff"), url("../fonts/roboto/Roboto-Medium.ttf") format("truetype");
+  src: local(Roboto Medium), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/roboto/Roboto-Bold.eot");
-  src: url("../fonts/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff"), url("../fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  src: local(Roboto Bold), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
   font-weight: 700;
 }
 
@@ -4776,6 +4839,10 @@ small {
   padding: 16px 24px;
 }
 
+.card .card-action:last-child {
+  border-radius: 0 0 2px 2px;
+}
+
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 24px;
@@ -5078,6 +5145,7 @@ small {
 .btn-floating,
 .btn-large,
 .btn-flat {
+  font-size: 1rem;
   outline: 0;
 }
 
@@ -5700,7 +5768,7 @@ button.btn-floating {
   margin-right: 5px;
 }
 
-.chip img {
+.chip > img {
   float: left;
   margin: 0 8px 0 -12px;
   height: 32px;
@@ -6165,6 +6233,7 @@ textarea.materialize-textarea + label:after {
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
+  text-align: initial;
 }
 
 .input-field label:not(.label-icon).active {
@@ -6272,6 +6341,8 @@ textarea.materialize-textarea {
   /* future version of deprecated 'word-wrap' */
   padding-top: 1.2rem;
   /* prevents text jump on Enter keypress */
+  position: absolute;
+  top: 0;
 }
 
 /* Autocomplete */
@@ -6893,13 +6964,14 @@ input[type=range]:focus {
 
 input[type=range] + .thumb {
   position: absolute;
+  top: 10px;
+  left: 0;
   border: none;
   height: 0;
   width: 0;
   border-radius: 50%;
   background-color: #26a69a;
-  top: 10px;
-  margin-left: -6px;
+  margin-left: 7px;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
   -webkit-transform: rotate(-45deg);
@@ -7297,8 +7369,8 @@ input[type=range]:focus::-ms-fill-upper {
 .preloader-wrapper {
   display: inline-block;
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
 }
 
 .preloader-wrapper.small {
@@ -7933,7 +8005,7 @@ input[type=range]:focus::-ms-fill-upper {
   left: 0;
 }
 
-.carousel .carousel-item img {
+.carousel .carousel-item > img {
   width: 100%;
 }
 
@@ -7960,6 +8032,11 @@ input[type=range]:focus::-ms-fill-upper {
 
 .carousel .indicators .indicator-item.active {
   background-color: #fff;
+}
+
+.carousel.scrolling .carousel-item .materialboxed,
+.carousel .carousel-item:not(.active) .materialboxed {
+  pointer-events: none;
 }
 
 .tap-target-wrapper {
@@ -8015,13 +8092,6 @@ input[type=range]:focus::-ms-fill-upper {
   transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
-@media only screen and (max-width: 600px) {
-  .tap-target {
-    width: 600px;
-    height: 600px;
-  }
-}
-
 .tap-target-content {
   position: relative;
   display: table-cell;
@@ -8072,8 +8142,16 @@ input[type=range]:focus::-ms-fill-upper {
   background: none;
 }
 
+@media only screen and (max-width: 600px) {
+  .tap-target, .tap-target-wrapper {
+    width: 600px;
+    height: 600px;
+  }
+}
+
 .pulse {
   overflow: initial;
+  position: relative;
 }
 
 .pulse::before {
@@ -8082,6 +8160,8 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   background-color: inherit;
   border-radius: inherit;
   transition: opacity .3s, -webkit-transform .3s;
