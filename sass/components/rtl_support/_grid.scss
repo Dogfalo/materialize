@@ -1,118 +1,92 @@
 // RTL Grid
-.row.rtl, .rtl .row {
+// Mixins to eliminate code repitition
+@mixin reset-offset {
+	margin-right: auto;
+}
+@mixin grid-classes($size, $i, $perc) {
+	&.offset-#{$size}#{$i} {
+		margin-right: $perc;
+	}
+
+	&.pull-#{$size}#{$i} {
+		left: $perc;
+	}
+
+	&.push-#{$size}#{$i} {
+		right: $perc;
+	}
+}
+
+.row.rtl,
+.rtl .row {
+
 	.col {
 		float: right;
+
 		$i: 1;
 		@while $i <= $num-cols {
-			$perc: unquote((100 / ($num-cols / $i)) + "%");
 
 			&.s#{$i} {
-				margin-right: auto;
+				@include reset-offset;
 			}
 			$i: $i + 1;
 		}
 		$i: 1;
 		@while $i <= $num-cols {
 			$perc: unquote((100 / ($num-cols / $i)) + "%");
-
-			&.offset-s#{$i} {
-				margin-right: $perc;
-			}
-
-			&.pull-s#{$i} {
-				left: $perc;
-			}
-
-			&.push-s#{$i} {
-				right: $perc;
-			}
+			@include grid-classes("s", $i, $perc);
 			$i: $i + 1;
 		}
 		@media #{$medium-and-up} {
 			$i: 1;
 			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
 
 				&.m#{$i} {
-					margin-right: auto;
+					@include reset-offset;
 				}
 				$i: $i + 1;
 			}
 			$i: 1;
 			@while $i <= $num-cols {
 				$perc: unquote((100 / ($num-cols / $i)) + "%");
-
-				&.offset-m#{$i} {
-					margin-right: $perc;
-				}
-
-				&.pull-m#{$i} {
-					left: $perc;
-				}
-
-				&.push-m#{$i} {
-					right: $perc;
-				}
+				@include grid-classes("m", $i, $perc);
 				$i: $i + 1;
 			}
 		}
 		@media #{$large-and-up} {
 			$i: 1;
 			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
 
 				&.l#{$i} {
-					margin-right: auto;
+					@include reset-offset;
 				}
 				$i: $i + 1;
 			}
 			$i: 1;
 			@while $i <= $num-cols {
 				$perc: unquote((100 / ($num-cols / $i)) + "%");
-
-				&.offset-l#{$i} {
-					margin-right: $perc;
-				}
-
-				&.pull-l#{$i} {
-					left: $perc;
-				}
-
-				&.push-l#{$i} {
-					right: $perc;
-				}
+				@include grid-classes("l", $i, $perc);
 				$i: $i + 1;
 			}
 		}
 		@media #{$extra-large-and-up} {
 			$i: 1;
 			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
 
 				&.xl#{$i} {
-					margin-right: auto;
+					@include reset-offset;
 				}
 				$i: $i + 1;
 			}
 			$i: 1;
 			@while $i <= $num-cols {
 				$perc: unquote((100 / ($num-cols / $i)) + "%");
-
-				&.offset-xl#{$i} {
-					margin-right: $perc;
-				}
-
-				&.pull-xl#{$i} {
-					left: $perc;
-				}
-
-				&.push-xl#{$i} {
-					right: $perc;
-				}
+				@include grid-classes("xl", $i, $perc);
 				$i: $i + 1;
 			}
 		}
 	}
+
 	&.reverse > {
 		.col {
 			float: left;
