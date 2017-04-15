@@ -5,7 +5,7 @@
 
 [Materialize](http://materializecss.com/), a CSS Framework based on material design
 
-### Current Version : v0.98.1
+### Current Version : v0.98.2
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -15,6 +15,14 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
 Bolded styling surrounded by emojis indicates a breaking change.
+
+- v0.98.2 (April 14th)
+  - Fixed collapsible preselect bug
+  - Fixed dropdown event bubbling bug
+  - Fixed range position inaccuracies
+  - Fixed feature discovery mobile styles
+  - Fixed carousel reinitialize bugs
+  - Fixed grid offset bug
 
 - v0.98.1 (March 21st)
   - Fixed various select bugs on mobile devices
