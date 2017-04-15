@@ -80,7 +80,12 @@
         // if closeOnClick, then add close event for all a tags in side sideNav
         if (options.closeOnClick === true) {
           menu.on("click.itemclick", "a:not(.collapsible-header)", function(){
-            removeMenu();
+            // only close on click if this isn't a fixed sidebar in a large browser window
+            if (menu.hasClass('fixed')) {
+              if (window.innerWidth <= 992) {
+                removeMenu();
+              }
+            }
           });
         }
 
