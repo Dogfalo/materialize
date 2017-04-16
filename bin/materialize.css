@@ -2678,6 +2678,7 @@ video.responsive-video {
 .pagination li.disabled a {
   cursor: default;
   color: #999;
+  pointer-events: none !important;
 }
 
 .pagination li i {
@@ -8944,4 +8945,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .picker--time .picker__box {
     margin-bottom: 5em;
   }
+}
+/* ADDED CLASS FOR TEXT-ALIGN JUSTIFY PROPERTY */
+.text-justify {
+  text-align:justify;
 }
