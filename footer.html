@@ -190,15 +190,19 @@
       </div>
 
       <pre><code class="language-css">
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
+      /*New Sticky footer visible in all the browsers*/
+      footer {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 250px;
+          width: 100%;
+      }
+      
+      html{
+        position: relative;
+          min-height: 100%;
+      }
       </code></pre>
 
     </div>
