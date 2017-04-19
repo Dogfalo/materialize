@@ -23,7 +23,12 @@
           container_height = (view_height > 0) ? view_height : 500;
         }
         var $img = $this.children("img").first();
-        var img_height = $img.height();
+        var imgClone = $img.clone();
+        imgClone.css("visibility","hidden");
+        imgClone.css("display","block");
+        $('body').append(imgClone);
+        var img_height = imgClone[0].clientHeight;
+        imgClone.remove();
         var parallax_dist = img_height - container_height;
         var bottom = $this.offset().top + container_height;
         var top = $this.offset().top;
