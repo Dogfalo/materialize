@@ -1,17 +1,16 @@
 @charset "UTF-8";
 
-// Mixins
-// @import "components/prefixer";
-@import "components/mixins";
-@import "components/color";
-
-// Variables;
+// 1. Variables
 @import "components/variables";
 
-// Reset
+// 2. Reset
 @import "components/normalize";
 
-// components
+// 3. Mixins
+// @import "components/prefixer";
+@import "components/mixins";
+
+// 4. Components
 @import "components/global";
 @import "components/badges";
 @import "components/icons-material-design";
