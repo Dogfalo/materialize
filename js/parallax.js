@@ -7,14 +7,14 @@
       var $this = $(this);
       $this.addClass('parallax');
 
-      var viewClone = $this.clone();
-      viewClone.css("visibility","hidden");
-      viewClone.css("display","block");
-      $('body').append(viewClone);
-      var view_height = viewClone[0].clientHeight;
-      viewClone.remove();
-
       function updateParallax(initial) {
+        var viewClone = $this.clone();
+        viewClone.css("visibility","hidden");
+        viewClone.css("display","block");
+        $('body').append(viewClone);
+        var view_height = viewClone[0].clientHeight;
+        viewClone.remove();
+        
         var container_height;
         if (window_width < 601) {
           container_height = (view_height > 0) ? view_height : $this.children("img").height();
