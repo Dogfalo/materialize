@@ -4339,6 +4339,10 @@ nav .input-field {
   height: 100%;
 }
 
+div .input-field {
+  height: 100%;
+}
+
 nav .input-field input {
   height: 100%;
   font-size: 1.2rem;
@@ -6287,6 +6291,7 @@ textarea.materialize-textarea + label:after {
 .input-field input[type=search]:focus {
   background-color: #fff;
   border: 0;
+  height:auto;
   box-shadow: none;
   color: #444;
 }
