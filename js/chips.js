@@ -72,10 +72,10 @@
         var $chip = $(e.target);
         if ($chip.length) {
           var wasSelected = $chip.hasClass('selected');
-          var $chips = $chip.closest(SELS.CHIPS);
+          var $chips = self.$el;
           $(SELS.CHIP).removeClass('selected');
 
-          if (!wasSelected) {
+          if (!wasSelected && $chips.length) {
             self.selectChip($chip.index(), $chips);
           }
         }
