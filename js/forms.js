@@ -553,7 +553,7 @@
             }
 
             activateOption(options, $(this));
-            $select.prop('selectedIndex', i);
+            $select.val($select.find('option').eq(i).val());
             // Trigger onchange() event
             $select.trigger('change');
             if (typeof callback !== 'undefined') callback();
