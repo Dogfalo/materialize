@@ -275,7 +275,7 @@
     /**************************
      * Auto complete plugin  *
      *************************/
-    $.fn.autocomplete = function (options) {
+    $.fn.materialize_autocomplete = function (options) {
       // Defaults
       var defaults = {
         data: {},
