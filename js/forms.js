@@ -491,9 +491,11 @@
 
         $select.unwrap();
         $('ul#select-options-'+lastID).remove();
+
+        $(window).off('click.select-' + lastID);
       }
 
-      // If destroying the select, remove the selelct-id and reset it to it's uninitialized state.
+      // If destroying the select, remove the select-id and reset it to it's uninitialized state.
       if(callback === 'destroy') {
         $select.data('select-id', null).removeClass('initialized');
         return;
@@ -647,10 +649,8 @@
         optionsHover = false;
       });
 
-      $(window).on({
-        'click': function () {
-          multiple && (optionsHover || $newSelect.trigger('close'));
-        }
+      $(window).on('click.select-' + uniqueID, function() {
+        multiple && (optionsHover || $newSelect.trigger('close'));
       });
 
       // Add initial multiple selections.
