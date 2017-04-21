@@ -1359,7 +1359,8 @@ DatePicker.defaults = (function( prefix ) {
 
         // Materialize modified
         weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
-
+        closeOnSelect: false,
+      
         // Today and clear
         today: 'Today',
         clear: 'Clear',
@@ -1367,7 +1368,8 @@ DatePicker.defaults = (function( prefix ) {
 
         // The format to show on the `input` element
         format: 'd mmmm, yyyy',
-
+        
+      
         // Classes
         klass: {
 
