@@ -429,7 +429,9 @@ module.exports = function(grunt) {
         limit: 10,
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'server']
+        tasks: ["jade_compile", "sass_compile", "js_compile",
+                "watch:jade", "watch:js", "watch:sass",
+                "notify:watching", 'server']
       },
     },
 
