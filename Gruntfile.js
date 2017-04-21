@@ -608,5 +608,5 @@ module.exports = function(grunt) {
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);
-  grunt.registerTask('travis', ['jasmine']);
+  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
 };
