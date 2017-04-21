@@ -33,6 +33,27 @@
         </div>
       </div>
 
+      <div id="playground" class="section scrollspy">
+        <h2 class="header">Try It</h2>
+        
+        <p>Modify the classes below to test colors.</p>
+
+        <div id="playground-element" class="card-panel indigo darken-1 white-text" data-initial-class="card-panel ">Sample text</div>
+        <br>
+        <div class="input-field">
+            <input value="indigo darken-1 white-text" id="playground-div-class-input" class="active" type="text">
+            <label for="playground-div-class-input">Class</label>
+        </div>
+        <script>
+        var playgroundInput = document.getElementById("playground-div-class-input");
+        var playgroundElement = document.getElementById("playground-element");
+
+        playgroundInput.addEventListener("input", function() {
+            playgroundElement.className = playgroundElement.getAttribute("data-initial-class") + playgroundInput.value;
+        });
+        </script>
+      </div>
+
       <div id="sass" class="section scrollspy">
         <h2 class="header">Sass</h2>
         <p>
@@ -370,6 +391,7 @@
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#color-usage">Usage</a></li>
+            <li><a href="#playground">Try It</a></li>
             <li><a href="#sass">Sass</a></li>
             <li><a href="#palette">Color Palette</a></li>
           </ul>
