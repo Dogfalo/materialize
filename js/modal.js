@@ -63,6 +63,9 @@
           if ($modal.hasClass('bottom-sheet')) {
             $modal.velocity({bottom: "-100%", opacity: 0}, exitVelocityOptions);
           }
+          else if ($modal.hasClass('top-sheet')) {
+            $modal.velocity({top: "-100%", opacity: 0}, exitVelocityOptions);
+          }
           else {
             $modal.velocity(
               { top: options.startingTop, opacity: 0, scaleX: 0.7},
@@ -132,6 +135,9 @@
           };
           if ($modal.hasClass('bottom-sheet')) {
             $modal.velocity({bottom: "0", opacity: 1}, enterVelocityOptions);
+          }
+          else if ($modal.hasClass('top-sheet')) {
+            $modal.velocity({top: "0", opacity: 1}, enterVelocityOptions);
           }
           else {
             $.Velocity.hook($modal, "scaleX", 0.7);

@@ -88,3 +88,14 @@
   border-radius: 0;
   will-change: bottom, opacity;
 }
+
+// Modal Top Sheet Style
+.modal.top-sheet {
+  top: -100%;
+  bottom: auto;
+  margin: 0;
+  width: 100%;
+  max-height: 45%;
+  border-radius: 0;
+  will-change: top, opacity;
+}
