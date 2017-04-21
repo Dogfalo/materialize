@@ -208,8 +208,11 @@
         // Update indicator
         animateIndicator(prev_index);
 
-        // Prevent the anchor's default click action
-        e.preventDefault();
+        // Prevent the anchor's default click action -- unless this tab
+        // opens an external link!
+        if ( !$(this).attr("target") ) {
+          e.preventDefault();
+        }
       });
     });
 
