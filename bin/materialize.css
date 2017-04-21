@@ -4867,6 +4867,17 @@ small {
   display: block;
 }
 
+.card-menu{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border-radius: 50%;
+}
+
+.card-menu:hover{
+    background-color: rgba(158,158,158,.2);
+}
+
 #toast-container {
   display: block;
   position: fixed;
