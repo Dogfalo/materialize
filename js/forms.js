@@ -593,12 +593,21 @@
 
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
-
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
+      var newSelectId = Materialize.guid();
+      var $newSelect = $('<input id="new-select-' + newSelectId + '" type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
       $newSelect.after(options);
+      // Replicate label if id exists with guid to match
+      if (typeof $select.attr('id') !== typeof undefined && $select.attr('id') !== false && $('label[for=' + $select.attr('id') + ']').length) {
+        // keep but hide previous label to have screen readers be consistent yet ignore
+        var newLabel = $('label[for=' + $select.attr('id') + ']').clone();
+        $('label[for=' + $select.attr('id') + ']').addClass('initialized').css('display', 'none');
+        // change for association to new select guid
+        newLabel.attr('for', 'new-select-' + newSelectId);
+        $newSelect.before(newLabel);
+      }
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
         $newSelect.dropdown({'hover': false});
