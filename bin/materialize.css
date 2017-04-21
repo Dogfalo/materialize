@@ -4331,16 +4331,16 @@ nav ul.left {
 }
 
 nav form {
-  height: 100%;
+  height: inherit;
 }
 
 nav .input-field {
   margin: 0;
-  height: 100%;
+  height: inherit;
 }
 
 nav .input-field input {
-  height: 100%;
+  height: inherit;
   font-size: 1.2rem;
   border: none;
   padding-left: 2rem;
