@@ -14,54 +14,7 @@
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
 ## Changelog
-Bolded styling surrounded by emojis indicates a breaking change.
-
-- v0.98.2 (April 14th)
-  - Fixed collapsible preselect bug
-  - Fixed dropdown event bubbling bug
-  - Fixed range position inaccuracies
-  - Fixed feature discovery mobile styles
-  - Fixed carousel reinitialize bugs
-  - Fixed grid offset bug
-
-- v0.98.1 (March 21st)
-  - Fixed various select bugs on mobile devices
-  - Fixed small sideNav overlay bugs
-  - Fixed carousel resizing bug
-  - Fixed materialbox callback bug
-  - Range slider supports keyboard navigation
-  - Added XL breakpoint
-  - Added Pulse CSS effect
-  - Added Feature Discovery component
-
-- v0.98.0 (January 25th)
-  - :no_good: **Standardized plugin option naming to camelcase (please check your plugin calls to make sure all the options are camelcase)** :no_good:
-  - Added FABs in image cards
-  - Added swipeable tabs
-  - Fixed carousel misalignment when switching quickly
-  - Fixed carousel resize bug where slide widths wouldn't change when changing window size
-  - Improved tabs compatibility with cards
-  - Fixed bug where using backspace to delete chips would navigate back in certain browsers
-  - Added autocomplete integration with chips
-  - Upgraded noUiSlider to version 9 with support for vertical sliders
-
-- v0.97.8 (October 30th, 2016)
-  - **Refactored Modal plugin**
-  - Tabs now supported in navbar
-  - Chips data can now be reinitiailized
-  - Minor side nav fixes
-  - FAB to toolbar component added
-  - Fixed dropdown options bug
-- v0.97.7 (July 23rd, 2016)
-  - Basic horizontal cards
-  - Carousel bug fixes and new features
-  - Updated sidenav styles and new component
-  - Meteor package now supports Sass
-  - Autocomplete form component
-  - Chips jQuery plugin
-
-
-
+For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md)
 
 ## Testing
 We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
