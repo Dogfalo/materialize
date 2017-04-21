@@ -220,7 +220,7 @@
           self.addChip({tag: val}, $chips);
           input.val('');
           input.focus();
-        }
+        };
         input.autocomplete(curr_options.autocompleteOptions);
       }
     };
