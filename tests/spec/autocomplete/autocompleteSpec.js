@@ -1,7 +1,7 @@
 describe("Autocomplete Plugin", function () {
   beforeEach(function() {
     loadFixtures('autocomplete/autocompleteFixture.html');
-    $('input.autocomplete').autocomplete({
+    $('input.autocomplete').material_autocomplete({
       data: {
         "Apple": null,
         "Microsoft": null,
@@ -20,10 +20,10 @@ describe("Autocomplete Plugin", function () {
     it("should work with multiple initializations", function () {
       var $normal = $('#normal-autocomplete');
       var $parent = $normal.parent();
-      $normal.autocomplete({ data: {"hi": null} });
-      $normal.autocomplete({ data: {"hi": null} });
-      $normal.autocomplete({ data: {"hi": null} });
-      $normal.autocomplete({
+      $normal.material_autocomplete({ data: {"hi": null} });
+      $normal.material_autocomplete({ data: {"hi": null} });
+      $normal.material_autocomplete({ data: {"hi": null} });
+      $normal.material_autocomplete({
         data: {
           "Apple": null,
           "Microsoft": null,
@@ -49,7 +49,7 @@ describe("Autocomplete Plugin", function () {
         data[randString] = null;
       }
 
-      $limited.autocomplete({
+      $limited.material_autocomplete({
         data: data,
         limit: 20
       });
