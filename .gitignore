@@ -19,6 +19,7 @@ bower_components
 # Ignore .html files in root except SpecRunner
 *.html
 !_SpecRunner.html
+!fab-toolbar-demo.html
 
 # Ignore compiled files
 css/ghpages-materialize.css
