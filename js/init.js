@@ -178,7 +178,7 @@
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
     $('select').not('.disabled').material_select();
-    $('input.autocomplete').autocomplete({
+    $('input.autocomplete').material_autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
     });
 
