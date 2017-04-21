@@ -1,9 +1,19 @@
 // Required for Meteor package, the use of window prevents export by Meteor
 (function(window){
-  if(window.Package){
-    Materialize = {};
+  var defaultOptions = {
+    options: {
+      rangeSelector: 'input[type=range]'
+    }
+  };
+  
+  if (typeof Materialize === 'object') {
+    $.extend(true, defaultOptions, Materialize);
+  }
+  
+  if (window.Package) {
+    Materialize = defaultOptions;
   } else {
-    window.Materialize = {};
+    window.Materialize = defaultOptions;
   }
 })(window);
 

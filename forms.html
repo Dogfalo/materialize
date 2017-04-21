@@ -870,6 +870,39 @@
     &lt;/p>
   &lt;/form>
         </code></pre>
+
+        <h4>Specify Range</h4>
+        <p>Only apply range slider to the specify selector</p>
+        <form action="#">
+          <p class="range-field">
+            <input type="range" class="no-slider" name="points" min="0" max="100">
+          </p>
+          <p>Range slider only apply to the below range</p>
+          <p class="range-field">
+            <input type="range" name="points" min="0" max="100">
+          </p>
+        </form>
+        <pre><code class="language-markup">
+&lt;script>
+  // Insert this before materialize.js
+  Materialize = {
+      options: {
+          rangeSelector: 'input[type=range]:not(.no-slider)'
+      }
+  };
+&lt;/script>
+&lt;script src="materialize.js">&lt;/script>
+
+&lt;form action="#">
+  &lt;p class="range-field">
+    &lt;input type="range" class="no-slider" name="points" min="0" max="100">
+  &lt;/p>
+  &lt;p>Range slider only apply to the below range&lt;/p>
+  &lt;p class="range-field">
+    &lt;input type="range" name="points" min="0" max="100">
+  &lt;/p>
+&lt;/form>
+        </code></pre>
       </div>
 
       <div id="date-picker" class="section scrollspy">
@@ -1059,6 +1092,13 @@
     </footer>
 
     <!--  Scripts-->
+    <script>
+        Materialize = {
+            options: {
+                rangeSelector: 'input[type=range]:not(.no-slider)'
+            }
+        };
+    </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script>

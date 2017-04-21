@@ -197,7 +197,7 @@
     *  Range Input  *
     ****************/
 
-    var range_type = 'input[type=range]';
+    var range_type = Materialize.options.rangeSelector;
     var range_mousedown = false;
     var left;
 
