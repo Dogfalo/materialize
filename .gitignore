@@ -13,6 +13,6 @@ bin/jquery-2.1.1.min.js
 bower_components
 .projectile
 **/#*#
-**/.#*
 .grunt/
+**/.#*
 .versions
