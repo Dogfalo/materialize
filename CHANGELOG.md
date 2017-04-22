@@ -9,6 +9,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Fixed feature discovery mobile styles
 - Fixed carousel reinitialize bugs
 - Fixed grid offset bug
+- **Autocomplete: renamed and moved options to `autocompleteOptions`**
 
 
 ## v0.98.1 (March 21st)
