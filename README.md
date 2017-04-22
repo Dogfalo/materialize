@@ -13,6 +13,19 @@
 ## Supported Browsers:
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
+## Quickstart:
+Read the [Getting started page](http://materializecss.com/getting-started.html) for more information about the framework, templates and how to use materialize can be found on the [materializecss website](http://materializecss.com)
+
+- [Download the latest release](https://github.com/Dogfalo/materialize/releases/latest) directly from GitHub
+- Clone the repo: `git clone https://github.com/Dogfalo/materialize.git`
+- Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](http://materializecss.com/getting-started.html)
+- Install with [npm](https://www.npmjs.com): `npm install materialize-css`
+- Install with [Bower](https://bower.io): `bower install materialize`
+
+## Compiling Files
+- `npm install`
+- `grunt monitor`, this will compile .scss, .js., .jade files.
+
 ## Changelog
 For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md)
 
