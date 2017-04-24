@@ -152,7 +152,7 @@
 
           $dragTarget.hammer({
             prevent_default: false
-          }).bind('pan', function(e) {
+          }).on('pan', function(e) {
 
             if (e.gesture.pointerType == "touch") {
 
@@ -220,7 +220,7 @@
               }
             }
 
-          }).bind('panend', function(e) {
+          }).on('panend', function(e) {
 
             if (e.gesture.pointerType == "touch") {
               var $overlay = $('#sidenav-overlay');
