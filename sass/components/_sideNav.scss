@@ -38,7 +38,7 @@
     &.active { background-color: rgba(0,0,0,.05); }
   }
 
-  a {
+  li > a {
     color: $sidenav-font-color;
     display: block;
     font-size: $sidenav-font-size;
@@ -61,18 +61,19 @@
     &.btn:hover,
     &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
     &.btn-floating:hover { background-color: $button-raised-background; }
+
+    & > i,
+    & > [class^="mdi-"], li > a > [class*="mdi-"],
+    & > i.material-icons {
+      float: left;
+      height: $sidenav-item-height;
+      line-height: $sidenav-line-height;
+      margin: 0 ($sidenav-padding * 2) 0 0;
+      width: $sidenav-item-height / 2;
+      color: rgba(0,0,0,.54);
+    }
   }
 
-  li > a > i,
-  li > a > [class^="mdi-"], li > a > [class*="mdi-"],
-  li > a > i.material-icons {
-    float: left;
-    height: $sidenav-item-height;
-    line-height: $sidenav-line-height;
-    margin: 0 ($sidenav-padding * 2) 0 0;
-    width: $sidenav-item-height / 2;
-    color: rgba(0,0,0,.54);
-  }
 
   .divider {
     margin: ($sidenav-padding / 2) 0 0 0;

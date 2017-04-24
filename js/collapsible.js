@@ -1,11 +1,12 @@
 (function ($) {
-  $.fn.collapsible = function(options) {
+  $.fn.collapsible = function(options, methodParam) {
     var defaults = {
       accordion: undefined,
       onOpen: undefined,
       onClose: undefined
     };
 
+    var methodName = options;
     options = $.extend(defaults, options);
 
 
@@ -16,11 +17,6 @@
       var $panel_headers = $(this).find('> li > .collapsible-header');
 
       var collapsible_type = $this.data("collapsible");
-
-      // Turn off any existing event handlers
-      $this.off('click.collapse', '> li > .collapsible-header');
-      $panel_headers.off('click.collapse');
-
 
       /****************
       Helper Functions
@@ -78,7 +74,11 @@
       }
 
       // Open collapsible. object: .collapsible-header
-      function collapsibleOpen(object) {
+      function collapsibleOpen(object, noToggle) {
+        if (!noToggle) {
+          object.toggleClass('active');
+        }
+
         if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
           accordionOpen(object);
         } else { // Handle Expandables
@@ -123,8 +123,33 @@
         return object.closest('li > .collapsible-header');
       }
 
+
+      // Turn off any existing event handlers
+      function removeEventHandlers() {
+        $this.off('click.collapse', '> li > .collapsible-header');
+      }
+
       /*****  End Helper Functions  *****/
 
+
+      // Methods
+      if (methodName === 'destroy') {
+        removeEventHandlers();
+        return;
+      } else if (methodParam >= 0 &&
+          methodParam < $panel_headers.length) {
+        var $curr_header = $panel_headers.eq(methodParam);
+        if ($curr_header.length &&
+            (methodName === 'open' ||
+            (methodName === 'close' &&
+            $curr_header.hasClass('active')))) {
+          collapsibleOpen($curr_header);
+        }
+        return;
+      }
+
+
+      removeEventHandlers();
 
 
       // Add click handler to only direct collapsible header children
@@ -135,19 +160,17 @@
           element = getPanelHeader(element);
         }
 
-        element.toggleClass('active');
-
         collapsibleOpen(element);
       });
 
 
       // Open first active
       if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
-        collapsibleOpen($panel_headers.filter('.active').first());
+        collapsibleOpen($panel_headers.filter('.active').first(), true);
 
       } else { // Handle Expandables
         $panel_headers.filter('.active').each(function() {
-          collapsibleOpen($(this));
+          collapsibleOpen($(this), true);
         });
       }
 

@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.98.0 (http://materializecss.com)
+ * Materialize v0.98.2 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -316,7 +316,20 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 }(window));
 
 
-// Unique ID
+/**
+ * Generate approximated selector string for a jQuery object
+ * @param {jQuery} obj  jQuery object to be parsed
+ * @returns {string}
+ */
+Materialize.objectSelectorString = function(obj) {
+  var tagStr = obj.prop('tagName') || '';
+  var idStr = obj.attr('id') || '';
+  var classStr = obj.attr('class') || '';
+  return (tagStr + idStr + classStr).replace(/\s/g,'');
+};
+
+
+// Unique Random ID
 Materialize.guid = (function() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -417,13 +430,14 @@ if (jQuery) {
   Vel = Velocity;
 }
 ;(function ($) {
-  $.fn.collapsible = function(options) {
+  $.fn.collapsible = function(options, methodParam) {
     var defaults = {
       accordion: undefined,
       onOpen: undefined,
       onClose: undefined
     };
 
+    var methodName = options;
     options = $.extend(defaults, options);
 
 
@@ -434,11 +448,6 @@ if (jQuery) {
       var $panel_headers = $(this).find('> li > .collapsible-header');
 
       var collapsible_type = $this.data("collapsible");
-
-      // Turn off any existing event handlers
-      $this.off('click.collapse', '> li > .collapsible-header');
-      $panel_headers.off('click.collapse');
-
 
       /****************
       Helper Functions
@@ -496,7 +505,11 @@ if (jQuery) {
       }
 
       // Open collapsible. object: .collapsible-header
-      function collapsibleOpen(object) {
+      function collapsibleOpen(object, noToggle) {
+        if (!noToggle) {
+          object.toggleClass('active');
+        }
+
         if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
           accordionOpen(object);
         } else { // Handle Expandables
@@ -541,8 +554,33 @@ if (jQuery) {
         return object.closest('li > .collapsible-header');
       }
 
+
+      // Turn off any existing event handlers
+      function removeEventHandlers() {
+        $this.off('click.collapse', '> li > .collapsible-header');
+      }
+
       /*****  End Helper Functions  *****/
 
+
+      // Methods
+      if (methodName === 'destroy') {
+        removeEventHandlers();
+        return;
+      } else if (methodParam >= 0 &&
+          methodParam < $panel_headers.length) {
+        var $curr_header = $panel_headers.eq(methodParam);
+        if ($curr_header.length &&
+            (methodName === 'open' ||
+            (methodName === 'close' &&
+            $curr_header.hasClass('active')))) {
+          collapsibleOpen($curr_header);
+        }
+        return;
+      }
+
+
+      removeEventHandlers();
 
 
       // Add click handler to only direct collapsible header children
@@ -553,19 +591,17 @@ if (jQuery) {
           element = getPanelHeader(element);
         }
 
-        element.toggleClass('active');
-
         collapsibleOpen(element);
       });
 
 
       // Open first active
       if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
-        collapsibleOpen($panel_headers.filter('.active').first());
+        collapsibleOpen($panel_headers.filter('.active').first(), true);
 
       } else { // Handle Expandables
         $panel_headers.filter('.active').each(function() {
-          collapsibleOpen($(this));
+          collapsibleOpen($(this), true);
         });
       }
 
@@ -753,12 +789,12 @@ if (jQuery) {
           .animate( {opacity: 1}, {queue: false, duration: curr_options.inDuration, easing: 'easeOutSine'});
 
         // Add click close handler to document
-        $(document).bind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e) {
-          if (!activates.is(e.target) && !origin.is(e.target) && (!origin.find(e.target).length) ) {
+        setTimeout(function() {
+          $(document).bind('click.'+ activates.attr('id'), function (e) {
             hideDropdown();
-            $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
-          }
-        });
+            $(document).unbind('click.'+ activates.attr('id'));
+          });
+        }, 0);
       }
 
       function hideDropdown() {
@@ -767,7 +803,7 @@ if (jQuery) {
         activates.fadeOut(curr_options.outDuration);
         activates.removeClass('active');
         origin.removeClass('active');
-        $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+        $(document).unbind('click.'+ activates.attr('id'));
         setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
       }
 
@@ -819,7 +855,7 @@ if (jQuery) {
             // If origin is clicked and menu is open, close menu
             else if (origin.hasClass('active')) {
               hideDropdown();
-              $(document).unbind('click.'+ activates.attr('id') + ' touchstart.' + activates.attr('id'));
+              $(document).unbind('click.'+ activates.attr('id'));
             }
           }
         });
@@ -1046,6 +1082,7 @@ if (jQuery) {
       var originalHeight = 0;
       var ancestorsChanged;
       var ancestor;
+      var originInlineStyles = origin.attr('style');
       origin.wrap(placeholder);
 
 
@@ -1260,7 +1297,28 @@ if (jQuery) {
           },
           {
             duration: outDuration,
-            queue: false, easing: 'easeOutQuad'
+            queue: false, easing: 'easeOutQuad',
+            complete: function() {
+              placeholder.css({
+                height: '',
+                width: '',
+                position: '',
+                top: '',
+                left: ''
+              });
+
+              origin.removeAttr('style');
+              origin.attr('style', originInlineStyles);
+
+              // Remove class
+              origin.removeClass('active');
+              doneAnimating = true;
+
+              // Remove overflow overrides on ancestors
+              if (ancestorsChanged) {
+                ancestorsChanged.css('overflow', '');
+              }
+            }
           }
         );
 
@@ -1269,34 +1327,7 @@ if (jQuery) {
           duration: outDuration, // Delay prevents animation overlapping
           queue: false, easing: 'easeOutQuad',
           complete: function(){
-            placeholder.css({
-              height: '',
-              width: '',
-              position: '',
-              top: '',
-              left: ''
-            });
-
-            origin.css({
-              height: '',
-              top: '',
-              left: '',
-              width: '',
-              'max-width': '',
-              position: '',
-              'z-index': '',
-              'will-change': ''
-            });
-
-            // Remove class
-            origin.removeClass('active');
-            doneAnimating = true;
             $(this).remove();
-
-            // Remove overflow overrides on ancestors
-            if (ancestorsChanged) {
-              ancestorsChanged.css('overflow', '');
-            }
           }
         });
 
@@ -1377,8 +1408,11 @@ if (jQuery) {
         responsiveThreshold: Infinity, // breakpoint for swipeable
       };
       options = $.extend(defaults, options);
+      var namespace = Materialize.objectSelectorString($(this));
 
-      return this.each(function() {
+      return this.each(function(i) {
+
+      var uniqueNamespace = namespace+i;
 
       // For each set of tabs, we want to keep track of
       // which tab is active and its associated content
@@ -1400,13 +1434,13 @@ if (jQuery) {
       // Finds right attribute for indicator based on active tab.
       // el: jQuery Object
       var calcRightPos = function(el) {
-        return $tabs_width - el.position().left - el.outerWidth() - $this.scrollLeft();
+        return Math.ceil($tabs_width - el.position().left - el.outerWidth() - $this.scrollLeft());
       };
 
       // Finds left attribute for indicator based on active tab.
       // el: jQuery Object
       var calcLeftPos = function(el) {
-        return el.position().left + $this.scrollLeft();
+        return Math.floor(el.position().left + $this.scrollLeft());
       };
 
       // Animates Indicator to active tab.
@@ -1469,7 +1503,7 @@ if (jQuery) {
           $indicator.css({"left": calcLeftPos($active) });
         }, 0);
       }
-      $(window).resize(function () {
+      $(window).off('resize.tabs-'+uniqueNamespace).on('resize.tabs-'+uniqueNamespace, function () {
         $tabs_width = $this.width();
         $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
         if (index < 0) {
@@ -1512,7 +1546,7 @@ if (jQuery) {
 
 
       // Bind the click event handler
-      $this.on('click', 'a', function(e) {
+      $this.off('click.tabs').on('click.tabs', 'a', function(e) {
         if ($(this).parent().hasClass('disabled')) {
           e.preventDefault();
           return;
@@ -2535,7 +2569,7 @@ if (jQuery) {
           }).bind('panend', function(e) {
 
             if (e.gesture.pointerType == "touch") {
-              var $overlay = $('<div id="sidenav-overlay"></div>');
+              var $overlay = $('#sidenav-overlay');
               var velocityX = e.gesture.velocityX;
               var x = e.gesture.center.x;
               var leftPos = x - options.menuWidth;
@@ -3072,14 +3106,31 @@ if (jQuery) {
         hiddenDiv.css('width', $(window).width()/2);
       }
 
-      $textarea.css('height', hiddenDiv.height());
+      /**
+       * Resize if the new height is greater than the
+       * original height of the textarea
+       */
+      if ($textarea.data("original-height") <= hiddenDiv.height()) {
+        $textarea.css('height', hiddenDiv.height());
+      } else if ($textarea.val().length < $textarea.data("previous-length")) {
+        /**
+         * In case the new height is less than original height, it
+         * means the textarea has less text than before
+         * So we set the height to the original one
+         */
+        $textarea.css('height', $textarea.data("original-height"));
+      }
+      $textarea.data("previous-length", $textarea.val().length);
     }
 
     $(text_area_selector).each(function () {
       var $textarea = $(this);
-      if ($textarea.val().length) {
-        textareaAutoResize($textarea);
-      }
+      /**
+       * Instead of resizing textarea on document load,
+       * store the original height and the original length
+       */
+      $textarea.data("original-height", $textarea.height());
+      $textarea.data("previous-length", $textarea.val().length);
     });
 
     $('body').on('keyup keydown autoresize', text_area_selector, function () {
@@ -3112,15 +3163,35 @@ if (jQuery) {
       $(this).after(thumb);
     });
 
+    var showRangeBubble = function(thumb) {
+      var paddingLeft = parseInt(thumb.parent().css('padding-left'));
+      var marginLeft = (-7 + paddingLeft) + 'px';
+      thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: marginLeft}, { duration: 300, easing: 'easeOutExpo' });
+    };
+
+    var calcRangeOffset = function(range) {
+      var width = range.width() - 15;
+      var max = parseFloat(range.attr('max'));
+      var min = parseFloat(range.attr('min'));
+      var percent = (parseFloat(range.val()) - min) / (max - min);
+      return percent * width;
+    }
+
     var range_wrapper = '.range-field';
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
+
+      if (!thumb.hasClass('active')) {
+        showRangeBubble(thumb);
+      }
+
+      var offsetLeft = calcRangeOffset($(this));
+      thumb.addClass('active').css('left', offsetLeft);
     });
 
-    $(document).on('input mousedown touchstart', range_type, function(e) {
+    $(document).on('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
-      var width = $(this).outerWidth();
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -3135,26 +3206,13 @@ if (jQuery) {
       $(this).addClass('active');
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-20px", marginLeft: "-15px"}, { duration: 300, easing: 'easeOutExpo' });
+        showRangeBubble(thumb);
       }
 
       if (e.type !== 'input') {
-        if(e.pageX === undefined || e.pageX === null){//mobile
-           left = e.originalEvent.touches[0].pageX - $(this).offset().left;
-        }
-        else{ // desktop
-           left = e.pageX - $(this).offset().left;
-        }
-        if (left < 0) {
-          left = 0;
-        }
-        else if (left > width) {
-          left = width;
-        }
-        thumb.addClass('active').css('left', left);
+        var offsetLeft = calcRangeOffset($(this));
+        thumb.addClass('active').css('left', offsetLeft);
       }
-
-      thumb.find('.value').html($(this).val());
     });
 
     $(document).on('mouseup touchend', range_wrapper, function() {
@@ -3162,28 +3220,18 @@ if (jQuery) {
       $(this).removeClass('active');
     });
 
-    $(document).on('mousemove touchmove', range_wrapper, function(e) {
+    $(document).on('input mousemove touchmove', range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
       var left;
+      var input = $(this).find(range_type);
+
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: '30px', width: '30px', top: '-20px', marginLeft: '-15px'}, { duration: 300, easing: 'easeOutExpo' });
+          showRangeBubble(thumb);
         }
-        if (e.pageX === undefined || e.pageX === null) { //mobile
-          left = e.originalEvent.touches[0].pageX - $(this).offset().left;
-        }
-        else{ // desktop
-          left = e.pageX - $(this).offset().left;
-        }
-        var width = $(this).outerWidth();
 
-        if (left < 0) {
-          left = 0;
-        }
-        else if (left > width) {
-          left = width;
-        }
-        thumb.addClass('active').css('left', left);
+        var offsetLeft = calcRangeOffset(input);
+        thumb.addClass('active').css('left', offsetLeft);
         thumb.find('.value').html(thumb.siblings(range_type).val());
       }
     });
@@ -3192,9 +3240,11 @@ if (jQuery) {
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
+        var paddingLeft = parseInt($(this).css('padding-left'));
+        var marginLeft = (7 + paddingLeft) + 'px';
 
         if (thumb.hasClass('active')) {
-          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '-6px'}, { duration: 100 });
+          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: marginLeft}, { duration: 100 });
         }
         thumb.removeClass('active');
       }
@@ -3208,7 +3258,8 @@ if (jQuery) {
       var defaults = {
         data: {},
         limit: Infinity,
-        onAutocomplete: null
+        onAutocomplete: null,
+        minLength: 1
       };
 
       options = $.extend(defaults, options);
@@ -3217,7 +3268,7 @@ if (jQuery) {
         var $input = $(this);
         var data = options.data,
             count = 0,
-            activeIndex = 0,
+            activeIndex = -1,
             oldVal,
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
@@ -3259,14 +3310,26 @@ if (jQuery) {
 
           // Reset current element position
           var resetCurrentElement = function() {
-            activeIndex = 0;
+            activeIndex = -1;
             $autocomplete.find('.active').removeClass('active');
           }
 
+          // Remove autocomplete elements
+          var removeAutocomplete = function() {
+            $autocomplete.empty();
+            resetCurrentElement();
+            oldVal = undefined;
+          };
+
+          $input.off('blur.autocomplete').on('blur.autocomplete', function() {
+            removeAutocomplete();
+          });
+
           // Perform search
-          $input.off('keyup.autocomplete').on('keyup.autocomplete', function (e) {
+          $input.off('keyup.autocomplete focus.autocomplete').on('keyup.autocomplete focus.autocomplete', function (e) {
             // Reset count.
             count = 0;
+            var val = $input.val().toLowerCase();
 
             // Don't capture enter or arrow key usage.
             if (e.which === 13 ||
@@ -3275,14 +3338,12 @@ if (jQuery) {
               return;
             }
 
-            var val = $input.val().toLowerCase();
 
             // Check if the input isn't empty
             if (oldVal !== val) {
-              $autocomplete.empty();
-              resetCurrentElement();
+              removeAutocomplete();
 
-              if (val !== '') {
+              if (val.length >= options.minLength) {
                 for(var key in data) {
                   if (data.hasOwnProperty(key) &&
                       key.toLowerCase().indexOf(val) !== -1 &&
@@ -3319,10 +3380,10 @@ if (jQuery) {
                 $active = $autocomplete.children('.active').first();
 
             // select element on Enter
-            if (keyCode === 13) {
+            if (keyCode === 13 && activeIndex >= 0) {
               liElement = $autocomplete.children('li').eq(activeIndex);
               if (liElement.length) {
-                liElement.click();
+                liElement.trigger('mousedown.autocomplete');
                 e.preventDefault();
               }
               return;
@@ -3338,23 +3399,23 @@ if (jQuery) {
               }
 
               if (keyCode === 40 &&
-                  activeIndex < (numItems - 1) &&
-                  $active.length) {
+                  activeIndex < (numItems - 1)) {
                 activeIndex++;
               }
 
               $active.removeClass('active');
-              $autocomplete.children('li').eq(activeIndex).addClass('active');
+              if (activeIndex >= 0) {
+                $autocomplete.children('li').eq(activeIndex).addClass('active');
+              }
             }
           });
 
           // Set input value
-          $autocomplete.on('click', 'li', function () {
+          $autocomplete.on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
             var text = $(this).text().trim();
             $input.val(text);
             $input.trigger('change');
-            $autocomplete.empty();
-            resetCurrentElement();
+            removeAutocomplete();
 
             // Handle onAutocomplete callback.
             if (typeof(options.onAutocomplete) === "function") {
@@ -3412,6 +3473,7 @@ if (jQuery) {
         // Add disabled attr if disabled
         var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
         var optgroupClass = (type === 'optgroup-option') ? 'optgroup-option ' : '';
+        var multipleCheckbox = multiple ? '<input type="checkbox"' + disabledClass + '/><label></label>' : '';
 
         // add icons
         var icon_url = option.data('icon');
@@ -3421,20 +3483,12 @@ if (jQuery) {
           if (!!classes) classString = ' class="' + classes + '"';
 
           // Check for multiple type.
-          if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
-          } else {
-            options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
-          }
+          options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + multipleCheckbox + option.html() + '</span></li>'));
           return true;
         }
 
         // Check for multiple type.
-        if (type === 'multiple') {
-          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
-        } else {
-          options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + option.html() + '</span></li>'));
-        }
+        options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + multipleCheckbox + option.html() + '</span></li>'));
       };
 
       /* Create dropdown structure. */
@@ -3468,7 +3522,7 @@ if (jQuery) {
 
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
+              selected = toggleEntryFromArray(valuesSelected, i, $select);
               $newSelect.trigger('focus');
             } else {
               options.find('li').removeClass('active');
@@ -3504,7 +3558,7 @@ if (jQuery) {
       $newSelect.after(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
-        $newSelect.dropdown({'hover': false, 'closeOnClick': false});
+        $newSelect.dropdown({'hover': false});
       }
 
       // Copy tabindex
@@ -3672,7 +3726,7 @@ if (jQuery) {
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
+      select.siblings('ul.dropdown-content').find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);
@@ -4053,8 +4107,7 @@ if (jQuery) {
     data: [],
     placeholder: '',
     secondaryPlaceholder: '',
-    autocompleteData: {},
-    autocompleteLimit: Infinity,
+    autocompleteOptions: {},
   };
 
   $(document).ready(function() {
@@ -4085,7 +4138,7 @@ if (jQuery) {
     }
 
     var curr_options = $.extend({}, materialChipsDefaults, options);
-    self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteData);
+    self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteOptions.data);
 
     // Initialize
     this.init = function() {
@@ -4247,12 +4300,11 @@ if (jQuery) {
     };
 
     this.chips = function($chips, chipId) {
-      var html = '';
+      $chips.empty();
       $chips.data('chips').forEach(function(elem){
-        html += self.renderChip(elem);
+        $chips.append(self.renderChip(elem));
       });
-      html += '<input id="' + chipId +'" class="input" placeholder="">';
-      $chips.html(html);
+      $chips.append($('<input id="' + chipId +'" class="input" placeholder="">'));
       self.setPlaceholder($chips);
 
       // Set for attribute for label
@@ -4268,28 +4320,27 @@ if (jQuery) {
       // Setup autocomplete if needed.
       var input = $('#' + chipId);
       if (self.hasAutocomplete) {
-        input.autocomplete({
-          data: curr_options.autocompleteData,
-          limit: curr_options.autocompleteLimit,
-          onAutocomplete: function(val) {
-            self.addChip({tag: val}, $chips);
-            input.val('');
-            input.focus();
-          },
-        })
+        curr_options.autocompleteOptions.onAutocomplete = function(val) {
+          self.addChip({tag: val}, $chips);
+          input.val('');
+          input.focus();
+        }
+        input.autocomplete(curr_options.autocompleteOptions);
       }
     };
 
+    /**
+     * Render chip jQuery element.
+     * @param {Object} elem
+     * @return {jQuery}
+     */
     this.renderChip = function(elem) {
       if (!elem.tag) return;
 
-      var html = '<div class="chip">' + elem.tag;
-      if (elem.image) {
-        html += ' <img src="' + elem.image + '"> ';
-      }
-      html += '<i class="material-icons close">close</i>';
-      html += '</div>';
-      return html;
+      var $renderedChip = $('<div class="chip"></div>');
+      $renderedChip.text(elem.tag);
+      $renderedChip.append($('<i class="material-icons close">close</i>'));
+      return $renderedChip;
     };
 
     this.setPlaceholder = function($chips) {
@@ -4317,7 +4368,7 @@ if (jQuery) {
       if (!self.isValid($chips, elem)) {
         return;
       }
-      var chipHtml = self.renderChip(elem);
+      var $renderedChip = self.renderChip(elem);
       var newData = [];
       var oldData = $chips.data('chips');
       for (var i = 0; i < oldData.length; i++) {
@@ -4326,7 +4377,7 @@ if (jQuery) {
       newData.push(elem);
 
       $chips.data('chips', newData);
-      $(chipHtml).insertBefore($chips.find('input'));
+      $renderedChip.insertBefore($chips.find('input'));
       $chips.trigger('chip.add', elem);
       self.setPlaceholder($chips);
     };
@@ -7564,44 +7615,59 @@ Picker.extend( 'pickadate', DatePicker )
         onCycleTo: null // Callback for when a new slide is cycled to.
       };
       options = $.extend(defaults, options);
+      var namespace = Materialize.objectSelectorString($(this));
 
-      return this.each(function() {
+      return this.each(function(i) {
 
+        var uniqueNamespace = namespace+i;
         var images, item_width, item_height, offset, center, pressed, dim, count,
-            reference, referenceY, amplitude, target, velocity,
+            reference, referenceY, amplitude, target, velocity, scrolling,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
+        var scrollingTimeout = null;
 
 
         // Initialize
         var view = $(this);
         var showIndicators = view.attr('data-indicators') || options.indicators;
 
-        // Don't double initialize.
-        if (view.hasClass('initialized')) {
-          // Redraw carousel.
-          $(this).trigger('carouselNext', [0.000001]);
-          return true;
-        }
-
 
         // Options
-        if (options.fullWidth) {
-          options.dist = 0;
+        var setCarouselHeight = function() {
           var firstImage = view.find('.carousel-item img').first();
           if (firstImage.length) {
-            imageHeight = firstImage.on('load', function(){
-              view.css('height', $(this).height());
-            });
+            if (firstImage.prop('complete')) {
+              view.css('height', firstImage.height());
+            } else {
+              firstImage.on('load', function(){
+                view.css('height', $(this).height());
+              });
+            }
           } else {
-            imageHeight = view.find('.carousel-item').first().height();
+            var imageHeight = view.find('.carousel-item').first().height();
             view.css('height', imageHeight);
           }
+        };
+
+        if (options.fullWidth) {
+          options.dist = 0;
+          setCarouselHeight();
 
           // Offset fixed items when indicators.
           if (showIndicators) {
             view.find('.carousel-fixed-item').addClass('with-indicators');
           }
+        }
+
+
+        // Don't double initialize.
+        if (view.hasClass('initialized')) {
+          // Recalculate variables
+          $(window).trigger('resize');
+
+          // Redraw carousel.
+          $(this).trigger('carouselNext', [0.000001]);
+          return true;
         }
 
 
@@ -7678,6 +7744,20 @@ Picker.extend( 'pickadate', DatePicker )
         }
 
         function scroll(x) {
+          // Track scrolling state
+          scrolling = true;
+          if (!view.hasClass('scrolling')) {
+            view.addClass('scrolling');
+          }
+          if (scrollingTimeout != null) {
+            window.clearTimeout(scrollingTimeout);
+          }
+          scrollingTimeout = window.setTimeout(function() {
+            scrolling = false;
+            view.removeClass('scrolling');
+          }, options.duration);
+
+          // Start actual scroll
           var i, half, delta, dir, tween, el, alignment, xTranslation;
           var lastCenter = center;
 
@@ -7861,6 +7941,7 @@ Picker.extend( 'pickadate', DatePicker )
         }
 
         function tap(e) {
+          e.preventDefault();
           pressed = true;
           dragged = false;
           vertical_dragged = false;
@@ -7872,7 +7953,6 @@ Picker.extend( 'pickadate', DatePicker )
           timestamp = Date.now();
           clearInterval(ticker);
           ticker = setInterval(track, 100);
-
         }
 
         function drag(e) {
@@ -7955,7 +8035,7 @@ Picker.extend( 'pickadate', DatePicker )
         });
 
 
-        $(window).on('resize.carousel', function() {
+        $(window).off('resize.carousel-'+uniqueNamespace).on('resize.carousel-'+uniqueNamespace, function() {
           if (options.fullWidth) {
             item_width = view.find('.carousel-item').first().innerWidth();
             item_height = view.find('.carousel-item').first().innerHeight();
@@ -8028,4 +8108,190 @@ Picker.extend( 'pickadate', DatePicker )
         $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.carousel' );
       }
     }; // Plugin end
+}( jQuery ));;(function ($) {
+
+  var methods = {
+  init: function (options) {
+    return this.each(function() {
+    var origin = $('#'+$(this).attr('data-activates'));
+    var screen = $('body');
+
+    // Creating tap target
+    var tapTargetEl = $(this);
+    var tapTargetWrapper = tapTargetEl.parent('.tap-target-wrapper');
+    var tapTargetWave = tapTargetWrapper.find('.tap-target-wave');
+    var tapTargetOriginEl = tapTargetWrapper.find('.tap-target-origin');
+    var tapTargetContentEl = tapTargetEl.find('.tap-target-content');
+
+    // Creating wrapper
+    if (!tapTargetWrapper.length) {
+      tapTargetWrapper = tapTargetEl.wrap($('<div class="tap-target-wrapper"></div>')).parent();
+    }
+
+    // Creating content
+    if (!tapTargetContentEl.length) {
+      tapTargetContentEl = $('<div class="tap-target-content"></div>');
+      tapTargetEl.append(tapTargetContentEl);
+    }
+
+    // Creating foreground wave
+    if (!tapTargetWave.length) {
+      tapTargetWave = $('<div class="tap-target-wave"></div>');
+
+      // Creating origin
+      if (!tapTargetOriginEl.length) {
+        tapTargetOriginEl = origin.clone(true, true);
+        tapTargetOriginEl.addClass('tap-target-origin');
+        tapTargetOriginEl.removeAttr('id');
+        tapTargetOriginEl.removeAttr('style');
+        tapTargetWave.append(tapTargetOriginEl);
+      }
+
+      tapTargetWrapper.append(tapTargetWave);
+    }
+
+    // Open
+    var openTapTarget = function() {
+      if (tapTargetWrapper.is('.open')) {
+        return;
+      }
+
+      // Adding open class
+      tapTargetWrapper.addClass('open');
+
+      setTimeout(function() {
+        tapTargetOriginEl.off('click.tapTarget').on('click.tapTarget', function(e) {
+          closeTapTarget();
+          tapTargetOriginEl.off('click.tapTarget');
+        });
+
+        $(document).off('click.tapTarget').on('click.tapTarget', function(e) {
+          closeTapTarget();
+          $(document).off('click.tapTarget');
+        });
+
+        var throttledCalc = Materialize.throttle(function() {
+          calculateTapTarget();
+        }, 200);
+        $(window).off('resize.tapTarget').on('resize.tapTarget', throttledCalc);
+      }, 0);
+    };
+
+    // Close
+    var closeTapTarget = function(){
+      if (!tapTargetWrapper.is('.open')) {
+        return;
+      }
+
+      tapTargetWrapper.removeClass('open');
+      tapTargetOriginEl.off('click.tapTarget')
+      $(document).off('click.tapTarget');
+      $(window).off('resize.tapTarget');
+    };
+
+    // Pre calculate
+    var calculateTapTarget = function() {
+      // Element or parent is fixed position?
+      var isFixed = origin.css('position') === 'fixed';
+      if (!isFixed) {
+        var parents = origin.parents();
+        for(var i = 0; i < parents.length; i++) {
+          isFixed = $(parents[i]).css('position') == 'fixed';
+          if (isFixed) {
+            break;
+          }
+        }
+      }
+
+      // Calculating origin
+      var originWidth = origin.outerWidth();
+      var originHeight = origin.outerHeight();
+      var originTop = isFixed ? origin.offset().top - $(document).scrollTop() : origin.offset().top;
+      var originLeft = isFixed ? origin.offset().left - $(document).scrollLeft() : origin.offset().left;
+
+      // Calculating screen
+      var windowWidth = $(window).width();
+      var windowHeight = $(window).height();
+      var centerX = windowWidth / 2;
+      var centerY = windowHeight / 2;
+      var isLeft = originLeft <= centerX;
+      var isRight = originLeft > centerX;
+      var isTop = originTop <= centerY;
+      var isBottom = originTop > centerY;
+      var isCenterX = originLeft >= windowWidth*0.25 && originLeft <= windowWidth*0.75;
+      var isCenterY = originTop >= windowHeight*0.25 && originTop <= windowHeight*0.75;
+
+      // Calculating tap target
+      var tapTargetWidth = tapTargetEl.outerWidth();
+      var tapTargetHeight = tapTargetEl.outerHeight();
+      var tapTargetTop = originTop + originHeight/2 - tapTargetHeight/2;
+      var tapTargetLeft = originLeft + originWidth/2 - tapTargetWidth/2;
+      var tapTargetPosition = isFixed ? 'fixed' : 'absolute';
+
+      // Calculating content
+      var tapTargetTextWidth = isCenterX ? tapTargetWidth : tapTargetWidth/2 + originWidth;
+      var tapTargetTextHeight = tapTargetHeight/2;
+      var tapTargetTextTop = isTop ? tapTargetHeight/2 : 0;
+      var tapTargetTextBottom = 0;
+      var tapTargetTextLeft = isLeft && !isCenterX ? tapTargetWidth/2 - originWidth : 0;
+      var tapTargetTextRight = 0;
+      var tapTargetTextPadding = originWidth;
+      var tapTargetTextAlign = isBottom ? 'bottom' : 'top';
+
+      // Calculating wave
+      var tapTargetWaveWidth = originWidth > originHeight ? originWidth*2 : originWidth*2;
+      var tapTargetWaveHeight = tapTargetWaveWidth;
+      var tapTargetWaveTop = tapTargetHeight/2 - tapTargetWaveHeight/2;
+      var tapTargetWaveLeft = tapTargetWidth/2 - tapTargetWaveWidth/2;
+
+      // Setting tap target
+      var tapTargetWrapperCssObj = {};
+      tapTargetWrapperCssObj.top = isTop ? tapTargetTop : '';
+      tapTargetWrapperCssObj.right = isRight ? windowWidth - tapTargetLeft - tapTargetWidth : '';
+      tapTargetWrapperCssObj.bottom = isBottom ? windowHeight - tapTargetTop - tapTargetHeight : '';
+      tapTargetWrapperCssObj.left = isLeft ? tapTargetLeft : '';
+      tapTargetWrapperCssObj.position = tapTargetPosition;
+      tapTargetWrapper.css(tapTargetWrapperCssObj);
+
+      // Setting content
+      tapTargetContentEl.css({
+        width: tapTargetTextWidth,
+        height: tapTargetTextHeight,
+        top: tapTargetTextTop,
+        right: tapTargetTextRight,
+        bottom: tapTargetTextBottom,
+        left: tapTargetTextLeft,
+        padding: tapTargetTextPadding,
+        verticalAlign: tapTargetTextAlign
+      });
+
+      // Setting wave
+      tapTargetWave.css({
+        top: tapTargetWaveTop,
+        left: tapTargetWaveLeft,
+        width: tapTargetWaveWidth,
+        height: tapTargetWaveHeight
+      });
+    }
+
+    if (options == 'open') {
+      calculateTapTarget();
+      openTapTarget();
+    }
+
+    if (options == 'close')
+      closeTapTarget();
+    });
+  },
+  open: function() {},
+  close: function() {}
+  };
+
+  $.fn.tapTarget = function(methodOrOptions) {
+  if (methods[methodOrOptions] || typeof methodOrOptions === 'object')
+    return methods.init.apply( this, arguments );
+
+  $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tap-target' );
+  };
+
 }( jQuery ));

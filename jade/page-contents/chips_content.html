@@ -34,7 +34,7 @@
       <div id="tag" class="section scrollspy">
         <h4>Tags</h4>
          <p class="caption">
-          To create a tag chip just add an close icon inside with the class <code class="language-markup">close</code>.
+          To create a tag chip just add a close icon inside with the class <code class="language-markup">close</code>.
         </p>
         <pre><code class="language-markup">
   &lt;div class="chip">
@@ -84,10 +84,14 @@
     secondaryPlaceholder: '+Tag',
   });
   $('.chips-autocomplete').material_chip({
-    autocompleteData: {
-      'Apple': null,
-      'Microsoft': null,
-      'Google': null
+    autocompleteOptions: {
+      data: {
+        'Apple': null,
+        'Microsoft': null,
+        'Google': null
+      },
+      limit: Infinity,
+      minLength: 1
     }
   });
         </code></pre>

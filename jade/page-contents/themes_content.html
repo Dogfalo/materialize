@@ -1,0 +1,151 @@
+<div class="container">
+  <!--  Outer row  -->
+  <div class="row themes-section">
+
+    <div class="col s12 m7">
+      <img class="theme-preview" src="https://s23.postimg.org/9g7ajckrf/thunder.png" alt="">
+    </div>
+    <div class="col s12 m4 offset-m1">
+      <h4>Gallery</h4>
+      <p class="caption" style="margin-bottom: 0;">This theme is perfect for Portfolio, Blogs, and Stores with its Google Play Store inspired content transition. This theme is in active development and will have more features and styles added to it in the future.</p>
+      <div id='product-component-f979385da90'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'materialize-themes.myshopify.com',
+      apiKey: '2d9a0b3001fe4fcbe3ba50c42a7df88e',
+      appId: '6',
+    });
+
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: [8831109057],
+        node: document.getElementById('product-component-f979385da90'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "buttonDestination": "checkout",
+    "variantId": "all",
+    "width": "240px",
+    "contents": {
+      "img": false,
+      "title": false,
+      "variantTitle": false,
+      "price": false,
+      "description": false,
+      "buttonWithQuantity": false,
+      "quantity": false
+    },
+    "text": {
+      "button": "BUY $19"
+    },
+    "styles": {
+      "product": {
+        "text-align": "left",
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0",
+          "margin-bottom": "50px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      },
+      "title": {
+        "font-size": "26px"
+      },
+      "price": {
+        "font-size": "18px"
+      },
+      "compareAt": {
+        "font-size": "15px"
+      }
+    }
+  },
+  "cart": {
+    "contents": {
+      "button": true
+    },
+    "styles": {
+      "button": {
+        "border-radius": "2px"
+      },
+      "footer": {
+        "background-color": "#ffffff"
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "variantTitle": false,
+      "buttonWithQuantity": true,
+      "button": false,
+      "quantity": false
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      }
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  }
+}
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
+    <a class="shopify-btn" target="_blank" href="https://themes.materializecss.com/pages/demo">DEMO</a>
+    </div>
+
+  </div>
+</div> <!-- End Container -->
+
+<div class="themes-banner">
+  <div class="container">
+    <p>All themes come with active support. Send your questions and concerns to <a href="mailto:materializethemes@gmail.com?Subject=Theme%20support" target="_top">MaterializeThemes</a></p>
+    <p>All themes are under the Personal Use License meaning you can use and modify these themes for personal and client projects. You cannot redistribute or resell these themes in any way.</p>
+  </div>
+</div>

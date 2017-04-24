@@ -80,7 +80,9 @@
         // if closeOnClick, then add close event for all a tags in side sideNav
         if (options.closeOnClick === true) {
           menu.on("click.itemclick", "a:not(.collapsible-header)", function(){
-            removeMenu();
+            if (!(window.innerWidth > 992 && menu.hasClass('fixed'))){
+              removeMenu();
+            }
           });
         }
 
@@ -221,7 +223,7 @@
           }).bind('panend', function(e) {
 
             if (e.gesture.pointerType == "touch") {
-              var $overlay = $('<div id="sidenav-overlay"></div>');
+              var $overlay = $('#sidenav-overlay');
               var velocityX = e.gesture.velocityX;
               var x = e.gesture.center.x;
               var leftPos = x - options.menuWidth;
