@@ -139,10 +139,10 @@
       } else if (methodParam >= 0 &&
           methodParam < $panel_headers.length) {
         var $curr_header = $panel_headers.eq(methodParam);
-        if ($curr_header.length &&
-            (methodName === 'open' ||
-            (methodName === 'close' &&
-            $curr_header.hasClass('active')))) {
+        var isTogglable = $curr_header.length &&
+          ((methodName === 'open' && !$curr_header.hasClass('active')) ||
+            (methodName === 'close' && $curr_header.hasClass('active')));
+        if (isTogglable) {
           collapsibleOpen($curr_header);
         }
         return;
