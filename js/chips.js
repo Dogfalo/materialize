@@ -235,6 +235,9 @@
 
       var $renderedChip = $('<div class="chip"></div>');
       $renderedChip.text(elem.tag);
+      if (elem.image) {
+        $renderedChip.prepend($('<img />').attr('src', elem.image))
+      }
       $renderedChip.append($('<i class="material-icons close">close</i>'));
       return $renderedChip;
     };
