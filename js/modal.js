@@ -164,6 +164,7 @@
       }); // done return
     },
     open : function() {
+      methods.init.apply( this, arguments );
       $(this).trigger('openModal');
     },
     close : function() {
