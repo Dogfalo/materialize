@@ -243,7 +243,7 @@
       if (($chips.data('chips') !== undefined && $chips.data('chips').length && curr_options.placeholder) {
         $chips.find('input').prop('placeholder', curr_options.placeholder);
 
-      } else if (($chips.data('chips').length === undefined || !$chips.data('chips').length) && curr_options.secondaryPlaceholder) {
+      } else if (($chips.data('chips') === undefined || !$chips.data('chips').length) && curr_options.secondaryPlaceholder) {
         $chips.find('input').prop('placeholder', curr_options.secondaryPlaceholder);
       }
     };
