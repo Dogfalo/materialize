@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.4",
-    "jquery": "^2.1.4",
+    "jquery": "^3.2.1",
     "node-archiver": "^0.3.0"
   },
   "engine": "node >= 0.10",
@@ -39,7 +39,6 @@
     "grunt-text-replace": "^0.4.0",
     "jasmine": "^2.3.2",
     "jasmine-jquery": "^2.1.1",
-    "jquery": "^2.1.4",
     "node-sass": "^3.4.2",
     "phantomjs": "^2.1.1"
   },
