@@ -74,13 +74,14 @@ describe("Tabs Plugin", function () {
 
 
     it("should horizontally scroll when too many tabs", function () {
-      var tabsScrollWidth = 0;
-      normalTabs.parent().css('width', '400px');
-      normalTabs.find('.tab').each(function() {
-        tabsScrollWidth += $(this).width();
-      });
+        var tabsScrollWidth = 0;
+        normalTabs.parent().css('width', '400px');
+        normalTabs.find('.tab').each(function() {
+            tabsScrollWidth += $(this).width();
+        });
+        normalTabs.parent().css('width', '370px');
 
-      expect(tabsScrollWidth).toBeGreaterThan(normalTabs.width(), 'Scroll width should exceed tabs width');
+        expect(tabsScrollWidth).toBeGreaterThan(normalTabs.width(), 'Scroll width should exceed tabs width');
     });
 
   });
