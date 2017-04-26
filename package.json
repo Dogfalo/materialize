@@ -28,7 +28,7 @@
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-jade": "^0.15.0",
-    "grunt-contrib-jasmine": "^0.9.2",
+    "grunt-contrib-jasmine": "^1.1.0",
     "grunt-contrib-uglify": "^0.11.0",
     "grunt-contrib-watch": "^0.6.0",
     "grunt-notify": "^0.4.1",
@@ -41,7 +41,7 @@
     "jasmine-jquery": "^2.1.1",
     "jquery": "^2.1.4",
     "node-sass": "^3.4.2",
-    "phantomjs": "^1.9.18"
+    "phantomjs": "^2.1.1"
   },
   "scripts": {
     "test": "grunt travis --verbose"
