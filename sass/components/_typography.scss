@@ -5,6 +5,7 @@ a {
 
 html{
   line-height: 1.5;
+  word-wrap: break-word;
 
   @media only screen and (min-width: 0) {
     font-size: 14px;
