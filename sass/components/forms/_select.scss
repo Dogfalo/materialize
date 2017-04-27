@@ -34,6 +34,14 @@ select {
     margin: $input-margin;
     padding: 0;
     display: block;
+    
+    &.valid {
+      border-bottom: 1px solid $input-success-color;
+    }
+    
+    &.invalid {
+      border-bottom: $input-invalid-border;
+    }
   }
 
   span.caret {
