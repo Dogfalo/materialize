@@ -153,7 +153,7 @@
        * Resize if the new height is greater than the
        * original height of the textarea
        */
-      if ($textarea.data("original-height") <= hiddenDiv.height()) {
+      if ($textarea.data("original-height") === undefined || $textarea.data("original-height") <= hiddenDiv.height()) {
         $textarea.css('height', hiddenDiv.height());
       } else if ($textarea.val().length < $textarea.data("previous-length")) {
         /**
