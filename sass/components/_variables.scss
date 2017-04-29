@@ -58,7 +58,7 @@ $button-border: none !default;
 $button-background-focus: lighten($secondary-color, 4%) !default;
 $button-font-size: 1rem !default;
 $button-icon-font-size: 1.3rem !default;
-$button-height: 36px !default;
+$button-height: 2.25rem !default;
 $button-padding: 0 2rem !default;
 $button-radius: 2px !default;
 
@@ -83,8 +83,8 @@ $button-flat-disabled-color: lighten(#999, 10%) !default;
 $button-floating-background: $secondary-color !default;
 $button-floating-background-hover: $button-floating-background !default;
 $button-floating-color: #fff !default;
-$button-floating-size: 40px !default;
-$button-floating-large-size: 56px !default;
+$button-floating-size: 2.5rem !default;
+$button-floating-large-size: 3.5rem !default;
 $button-floating-radius: 50% !default;
 
 
