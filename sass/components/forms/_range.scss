@@ -27,13 +27,14 @@ input[type=range] {
 
 input[type=range] + .thumb {
   position: absolute;
+  top: 10px;
+  left: 0;
   border: none;
   height: 0;
   width: 0;
   border-radius: 50%;
   background-color: $radio-fill-color;
-  top: 10px;
-  margin-left: -6px;
+  margin-left: 7px;
 
   transform-origin: 50% 50%;
   transform: rotate(-45deg);

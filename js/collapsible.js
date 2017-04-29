@@ -74,8 +74,10 @@
       }
 
       // Open collapsible. object: .collapsible-header
-      function collapsibleOpen(object) {
-        object.toggleClass('active');
+      function collapsibleOpen(object, noToggle) {
+        if (!noToggle) {
+          object.toggleClass('active');
+        }
 
         if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
           accordionOpen(object);
@@ -121,11 +123,20 @@
         return object.closest('li > .collapsible-header');
       }
 
+
+      // Turn off any existing event handlers
+      function removeEventHandlers() {
+        $this.off('click.collapse', '> li > .collapsible-header');
+      }
+
       /*****  End Helper Functions  *****/
 
 
       // Methods
-      if (methodParam >= 0 &&
+      if (methodName === 'destroy') {
+        removeEventHandlers();
+        return;
+      } else if (methodParam >= 0 &&
           methodParam < $panel_headers.length) {
         var $curr_header = $panel_headers.eq(methodParam);
         if ($curr_header.length &&
@@ -138,9 +149,7 @@
       }
 
 
-      // Turn off any existing event handlers
-      $this.off('click.collapse', '> li > .collapsible-header');
-      $panel_headers.off('click.collapse');
+      removeEventHandlers();
 
 
       // Add click handler to only direct collapsible header children
@@ -157,11 +166,11 @@
 
       // Open first active
       if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
-        collapsibleOpen($panel_headers.filter('.active').first());
+        collapsibleOpen($panel_headers.filter('.active').first(), true);
 
       } else { // Handle Expandables
         $panel_headers.filter('.active').each(function() {
-          collapsibleOpen($(this));
+          collapsibleOpen($(this), true);
         });
       }
 

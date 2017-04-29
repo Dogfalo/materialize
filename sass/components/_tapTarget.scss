@@ -32,7 +32,6 @@
   }
 }
 
-
 .tap-target {
   position: absolute;
   font-size: 1rem;
@@ -47,15 +46,6 @@
     transform .3s cubic-bezier(.42,0,.58,1),
     opacity .3s cubic-bezier(.42,0,.58,1);
 }
-
-@media only screen and (max-width: 600px) {
-  .tap-target {
-    width: 600px;
-    height: 600px;
-  }
-}
-
-
 
 .tap-target-content {
   position: relative;
@@ -92,6 +82,11 @@
 }
 
 .tap-target-origin {
+  &:not(.btn),
+  &:not(.btn):hover {
+    background: none;
+  }
+
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -100,6 +95,9 @@
   position: absolute !important;
 }
 
-.tap-target-origin:not(.btn), .tap-target-origin:not(.btn):hover {
-  background: none;
+@media only screen and (max-width: 600px) {
+  .tap-target, .tap-target-wrapper {
+    width: 600px;
+    height: 600px;
+  }
 }

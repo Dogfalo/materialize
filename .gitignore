@@ -2,7 +2,6 @@
 prepros.cfg
 Thumbs.db
 js/materialize.js
-test2.html
 test.html
 test2.html
 node_modules/
@@ -16,3 +15,13 @@ bower_components
 **/.#*
 .grunt/
 .versions
+
+# Ignore .html files in root except SpecRunner
+*.html
+!_SpecRunner.html
+!fab-toolbar-demo.html
+
+# Ignore compiled files
+css/ghpages-materialize.css
+bin/materialize.js
+bin/materialize.css

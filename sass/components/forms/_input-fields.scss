@@ -158,6 +158,7 @@ textarea.materialize-textarea {
     font-size: 1rem;
     cursor: text;
     transition: .2s ease-out;
+    text-align: initial;
 
     &:not(.label-icon).active {
       font-size: $label-font-size;
@@ -264,6 +265,10 @@ textarea {
   word-wrap: break-word;
   overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
   padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+
+  // Reduces repaints
+  position: absolute;
+  top: 0;
 }
 
 

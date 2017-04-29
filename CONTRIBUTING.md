@@ -73,7 +73,7 @@ Try and keep your commit history clean and concise. Once you submit your pull re
 
 1. To only run a specific spec at a time, to avoid wasting your time running all our other tests, you can set the flag `--filter`. For example:
     ```
-    `grunt travis --filter=tabs`
+    grunt travis --filter=tabs
     ```
 
     This would only run specs with tabs in its name. 

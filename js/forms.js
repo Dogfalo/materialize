@@ -149,14 +149,31 @@
         hiddenDiv.css('width', $(window).width()/2);
       }
 
-      $textarea.css('height', hiddenDiv.height());
+      /**
+       * Resize if the new height is greater than the
+       * original height of the textarea
+       */
+      if ($textarea.data("original-height") <= hiddenDiv.height()) {
+        $textarea.css('height', hiddenDiv.height());
+      } else if ($textarea.val().length < $textarea.data("previous-length")) {
+        /**
+         * In case the new height is less than original height, it
+         * means the textarea has less text than before
+         * So we set the height to the original one
+         */
+        $textarea.css('height', $textarea.data("original-height"));
+      }
+      $textarea.data("previous-length", $textarea.val().length);
     }
 
     $(text_area_selector).each(function () {
       var $textarea = $(this);
-      if ($textarea.val().length) {
-        textareaAutoResize($textarea);
-      }
+      /**
+       * Instead of resizing textarea on document load,
+       * store the original height and the original length
+       */
+      $textarea.data("original-height", $textarea.height());
+      $textarea.data("previous-length", $textarea.val().length);
     });
 
     $('body').on('keyup keydown autoresize', text_area_selector, function () {
@@ -189,27 +206,35 @@
       $(this).after(thumb);
     });
 
+    var showRangeBubble = function(thumb) {
+      var paddingLeft = parseInt(thumb.parent().css('padding-left'));
+      var marginLeft = (-7 + paddingLeft) + 'px';
+      thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: marginLeft}, { duration: 300, easing: 'easeOutExpo' });
+    };
+
+    var calcRangeOffset = function(range) {
+      var width = range.width() - 15;
+      var max = parseFloat(range.attr('max'));
+      var min = parseFloat(range.attr('min'));
+      var percent = (parseFloat(range.val()) - min) / (max - min);
+      return percent * width;
+    }
+
     var range_wrapper = '.range-field';
     $(document).on('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
-      var max = $(this).attr('max');
-      var width = $(this).width() - 15;
-      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
-      var offsetLeft = $(this).val() * (width / max);
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+        showRangeBubble(thumb);
       }
+
+      var offsetLeft = calcRangeOffset($(this));
       thumb.addClass('active').css('left', offsetLeft);
     });
 
     $(document).on('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
-      var max = $(this).attr('max');
-      var width = $(this).width() - 15;
-      var paddingSide = ($(this).parent('.range-field').outerWidth() - width) || 0;
-      var offsetLeft = $(this).val() * (width / max);
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -224,10 +249,11 @@
       $(this).addClass('active');
 
       if (!thumb.hasClass('active')) {
-        thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+        showRangeBubble(thumb);
       }
 
       if (e.type !== 'input') {
+        var offsetLeft = calcRangeOffset($(this));
         thumb.addClass('active').css('left', offsetLeft);
       }
     });
@@ -241,15 +267,13 @@
       var thumb = $(this).children('.thumb');
       var left;
       var input = $(this).find(range_type);
-      var max = input.attr('max');
-      var width = input.width() - 15;
-      var paddingSide = ($(this).outerWidth() - width) || 0;
-      var offsetLeft = input.val() * (width / max);
 
       if (range_mousedown) {
         if (!thumb.hasClass('active')) {
-          thumb.velocity({ height: "30px", width: "30px", top: "-30px", marginLeft: "5px"}, { duration: 300, easing: 'easeOutExpo' });
+          showRangeBubble(thumb);
         }
+
+        var offsetLeft = calcRangeOffset(input);
         thumb.addClass('active').css('left', offsetLeft);
         thumb.find('.value').html(thumb.siblings(range_type).val());
       }
@@ -259,9 +283,11 @@
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
+        var paddingLeft = parseInt($(this).css('padding-left'));
+        var marginLeft = (7 + paddingLeft) + 'px';
 
         if (thumb.hasClass('active')) {
-          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: '15px'}, { duration: 100 });
+          thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: marginLeft}, { duration: 100 });
         }
         thumb.removeClass('active');
       }
@@ -490,6 +516,7 @@
         // Add disabled attr if disabled
         var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
         var optgroupClass = (type === 'optgroup-option') ? 'optgroup-option ' : '';
+        var multipleCheckbox = multiple ? '<input type="checkbox"' + disabledClass + '/><label></label>' : '';
 
         // add icons
         var icon_url = option.data('icon');
@@ -499,20 +526,12 @@
           if (!!classes) classString = ' class="' + classes + '"';
 
           // Check for multiple type.
-          if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
-          } else {
-            options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
-          }
+          options.append($('<li class="' + disabledClass + optgroupClass + '"><img alt="" src="' + icon_url + '"' + classString + '><span>' + multipleCheckbox + option.html() + '</span></li>'));
           return true;
         }
 
         // Check for multiple type.
-        if (type === 'multiple') {
-          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
-        } else {
-          options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + option.html() + '</span></li>'));
-        }
+        options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + multipleCheckbox + option.html() + '</span></li>'));
       };
 
       /* Create dropdown structure. */
@@ -546,7 +565,7 @@
 
             if (multiple) {
               $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
-              selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
+              selected = toggleEntryFromArray(valuesSelected, i, $select);
               $newSelect.trigger('focus');
             } else {
               options.find('li').removeClass('active');
@@ -582,7 +601,7 @@
       $newSelect.after(options);
       // Check if section element is disabled
       if (!$select.is(':disabled')) {
-        $newSelect.dropdown({'hover': false, 'closeOnClick': false});
+        $newSelect.dropdown({'hover': false});
       }
 
       // Copy tabindex
@@ -750,7 +769,7 @@
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
+      select.siblings('ul.dropdown-content').find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);

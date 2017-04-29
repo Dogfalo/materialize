@@ -429,7 +429,9 @@ module.exports = function(grunt) {
         limit: 10,
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'server']
+        tasks: ["jade_compile", "sass_compile", "js_compile",
+                "watch:jade", "watch:js", "watch:sass",
+                "notify:watching", 'server']
       },
     },
 
@@ -606,5 +608,5 @@ module.exports = function(grunt) {
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);
-  grunt.registerTask('travis', ['jasmine']);
+  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
 };

@@ -156,7 +156,7 @@
 
   <!-- select with optgroups -->
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s4">
       <select>
         <optgroup label="team 1">
           <option value="1">Option 1</option>
@@ -174,8 +174,29 @@
       <label>Materialize Select optgroups</label>
     </div>
 
+    <!-- select multiple with optgroups -->
+    <div class="input-field col s4">
+      <select multiple>
+        <optgroup label="Cars &amp; Trucks">
+          <option value="6">Lamborgini</option>
+          <option value="7">Ferrari</option>
+        </optgroup>
+
+        <optgroup label="Electronics">
+          <option value="5">Computers</option>
+          <option value="8">DVD</option>
+        </optgroup>
+
+        <optgroup label="Toys">
+          <option value="9">Wooden Toys</option>
+          <option value="10">Plush Toys</option>
+        </optgroup>
+      </select>
+      <label>Materialize Multiple Select with optgroups</label>
+    </div>
+
     <!-- select with optgroups -->
-    <div class="input-field col s6">
+    <div class="input-field col s4">
       <select>
         <optgroup label="team 1">
           <option value="1">Option 1</option>
@@ -271,12 +292,28 @@
     </div>
   </div>
 
+  <h2>Range</h2>
+  <div class="row">
+    <div class="col s12">
+      <form action="#" class="row">
+        <p class="range-field col s6">
+          <input type="range" id="test5" min="0" max="100" />
+        </p>
+      </form>
 
-  <form action="#" class="row">
-    <p class="range-field col s6">
-      <input type="range" id="test5" min="0" max="100" />
-    </p>
-  </form>
+      <form action="#">
+        <p class="range-field">
+          <input type="range" id="test5" min="0" max="100" />
+        </p>
+      </form>
+
+      <form action="#">
+        <p class="range-field">
+          <input type="range" id="test5" min="-50" max="150" />
+        </p>
+      </form>
+    </div>
+  </div>
 
 
 <!--  Scripts-->
