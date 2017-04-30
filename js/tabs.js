@@ -8,8 +8,11 @@
         responsiveThreshold: Infinity, // breakpoint for swipeable
       };
       options = $.extend(defaults, options);
+      var namespace = Materialize.objectSelectorString($(this));
 
-      return this.each(function() {
+      return this.each(function(i) {
+
+      var uniqueNamespace = namespace+i;
 
       // For each set of tabs, we want to keep track of
       // which tab is active and its associated content
@@ -31,13 +34,13 @@
       // Finds right attribute for indicator based on active tab.
       // el: jQuery Object
       var calcRightPos = function(el) {
-        return $tabs_width - el.position().left - el.outerWidth() - $this.scrollLeft();
+        return Math.ceil($tabs_width - el.position().left - el.outerWidth() - $this.scrollLeft());
       };
 
       // Finds left attribute for indicator based on active tab.
       // el: jQuery Object
       var calcLeftPos = function(el) {
-        return el.position().left + $this.scrollLeft();
+        return Math.floor(el.position().left + $this.scrollLeft());
       };
 
       // Animates Indicator to active tab.
@@ -100,7 +103,7 @@
           $indicator.css({"left": calcLeftPos($active) });
         }, 0);
       }
-      $(window).off('resize.tabs').on('resize.tabs', function () {
+      $(window).off('resize.tabs-'+uniqueNamespace).on('resize.tabs-'+uniqueNamespace, function () {
         $tabs_width = $this.width();
         $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
         if (index < 0) {

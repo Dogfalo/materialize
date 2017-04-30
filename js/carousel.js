@@ -20,40 +20,53 @@
 
         var uniqueNamespace = namespace+i;
         var images, item_width, item_height, offset, center, pressed, dim, count,
-            reference, referenceY, amplitude, target, velocity,
+            reference, referenceY, amplitude, target, velocity, scrolling,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
+        var scrollingTimeout = null;
 
 
         // Initialize
         var view = $(this);
         var showIndicators = view.attr('data-indicators') || options.indicators;
 
-        // Don't double initialize.
-        if (view.hasClass('initialized')) {
-          // Redraw carousel.
-          $(this).trigger('carouselNext', [0.000001]);
-          return true;
-        }
-
 
         // Options
-        if (options.fullWidth) {
-          options.dist = 0;
+        var setCarouselHeight = function() {
           var firstImage = view.find('.carousel-item img').first();
           if (firstImage.length) {
-            imageHeight = firstImage.on('load', function(){
-              view.css('height', $(this).height());
-            });
+            if (firstImage.prop('complete')) {
+              view.css('height', firstImage.height());
+            } else {
+              firstImage.on('load', function(){
+                view.css('height', $(this).height());
+              });
+            }
           } else {
-            imageHeight = view.find('.carousel-item').first().height();
+            var imageHeight = view.find('.carousel-item').first().height();
             view.css('height', imageHeight);
           }
+        };
+
+        if (options.fullWidth) {
+          options.dist = 0;
+          setCarouselHeight();
 
           // Offset fixed items when indicators.
           if (showIndicators) {
             view.find('.carousel-fixed-item').addClass('with-indicators');
           }
+        }
+
+
+        // Don't double initialize.
+        if (view.hasClass('initialized')) {
+          // Recalculate variables
+          $(window).trigger('resize');
+
+          // Redraw carousel.
+          $(this).trigger('carouselNext', [0.000001]);
+          return true;
         }
 
 
@@ -130,6 +143,20 @@
         }
 
         function scroll(x) {
+          // Track scrolling state
+          scrolling = true;
+          if (!view.hasClass('scrolling')) {
+            view.addClass('scrolling');
+          }
+          if (scrollingTimeout != null) {
+            window.clearTimeout(scrollingTimeout);
+          }
+          scrollingTimeout = window.setTimeout(function() {
+            scrolling = false;
+            view.removeClass('scrolling');
+          }, options.duration);
+
+          // Start actual scroll
           var i, half, delta, dir, tween, el, alignment, xTranslation;
           var lastCenter = center;
 
@@ -407,7 +434,7 @@
         });
 
 
-        $(window).off('resize.'+uniqueNamespace).on('resize.'+uniqueNamespace, function() {
+        $(window).off('resize.carousel-'+uniqueNamespace).on('resize.carousel-'+uniqueNamespace, function() {
           if (options.fullWidth) {
             item_width = view.find('.carousel-item').first().innerWidth();
             item_height = view.find('.carousel-item').first().innerHeight();

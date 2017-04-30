@@ -52,7 +52,7 @@
     top: 0;
     left: 0;
 
-    img {
+    & > img {
       width: 100%;
     }
   }
@@ -81,5 +81,11 @@
       transition: background-color .3s;
       border-radius: 50%;
     }
+  }
+
+  // Materialbox compatibility
+  &.scrolling .carousel-item .materialboxed,
+  .carousel-item:not(.active) .materialboxed {
+    pointer-events: none;
   }
 }

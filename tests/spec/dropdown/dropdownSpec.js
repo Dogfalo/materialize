@@ -47,5 +47,24 @@ describe("Dropdown Plugin", function () {
         }, 400);
       }, 400);
     });
+
+    it("should bubble events correctly", function (done) {
+      var dropdown2 = $('#dropdown2');
+      normalDropdown = $('#dropdownBubble');
+
+      expect(dropdown2).toBeHidden('Should be hidden before dropdown is opened.');
+
+      normalDropdown.find('i').click();
+
+      setTimeout(function() {
+        expect(dropdown2).toBeVisible('Should be shown after dropdown is opened.');
+        $(document).click();
+
+        setTimeout(function() {
+          expect(dropdown2).toBeHidden('Should be hidden after dropdown is closed.');
+          done();
+        }, 400);
+      }, 400);
+    });
   });
 });
