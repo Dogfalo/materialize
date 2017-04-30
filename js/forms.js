@@ -558,10 +558,23 @@
             // Trigger onchange() event
             $select.trigger('change');
             if (typeof callback !== 'undefined') callback();
+            
+            blur();
           }
 
           e.stopPropagation();
         });
+      });
+      
+      options.find('li.search').each(function (i) {
+          $(this).click(function (e) {
+              if ($(this).hasClass('search')) {
+                  options.find('li').removeClass('active').removeClass('selected');
+                  $(this).toggleClass('active').addClass('selected');
+              }
+
+              e.stopPropagation();
+          });
       });
       
       options.find('.search-input').each(function (i) {
@@ -634,13 +647,6 @@
         'click': function (e){
           e.stopPropagation();
         }
-      });
-
-      $newSelect.on('blur', function() {
-        if (!multiple) {
-          $(this).trigger('close');
-        }
-        options.find('li.selected').removeClass('selected');
       });
 
       options.hover(function() {
@@ -794,6 +800,13 @@
       }
 
       select.siblings('input.select-dropdown').val(value);
+    }
+    
+    function blur() {
+        if (!multiple) {
+            $newSelect.trigger('close')
+        }
+        options.find('li.selected').removeClass('selected');
     }
   };
 
