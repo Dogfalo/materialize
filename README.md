@@ -60,6 +60,9 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - Autocomplete form component
   - Chips jQuery plugin
 
+## Additional Resources
+A quick way to setup Materialize in your next Flask project
+[Flask-Material](https://github.com/HellerCommaA/flask-material)
 
 
 
