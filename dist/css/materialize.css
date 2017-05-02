@@ -6195,7 +6195,7 @@ textarea.materialize-textarea + label:after {
   display: block;
   content: "";
   position: absolute;
-  top: 60px;
+  top: 5em;
   opacity: 0;
   transition: .2s opacity ease-out, .2s color ease-out;
 }
