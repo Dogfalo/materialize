@@ -41,9 +41,11 @@
     "jasmine-jquery": "^2.1.1",
     "jquery": "^2.1.4",
     "node-sass": "^3.4.2",
-    "phantomjs": "^1.9.18"
+    "phantomjs": "^1.9.18",
+    "browserstack-runner": "^0.5.0"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt travis --verbose",
+    "test-bstack": "browserstack-runner"
   }
 }

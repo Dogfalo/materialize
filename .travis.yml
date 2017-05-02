@@ -5,3 +5,6 @@ before_install:
   - npm install -g grunt-cli
 git:
   depth: 10
+script:
+  - npm test
+  - npm run test-bstack
