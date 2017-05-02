@@ -83,6 +83,7 @@ form p:last-child {
     border-left: 2px solid transparent;
     border-right: $radio-border;
     border-bottom: $radio-border;
+    -webkit-transform: rotate(40deg);
     transform: rotate(40deg);
     backface-visibility: hidden;
     transform-origin: 100% 100%;
