@@ -9,11 +9,7 @@ module.exports = function(grunt) {
 
   // configure the tasks
   grunt.initConfig({
-//  Copy
-    copy: {
-      dist: { cwd: 'font', src: [ '**' ], dest: 'dist/font', expand: true },
-    },
-
+    
 //  Sass
     sass: {                              // Task
       expanded: {                            // Target
