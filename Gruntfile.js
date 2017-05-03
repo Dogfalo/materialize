@@ -1,5 +1,12 @@
 module.exports = function(grunt) {
 
+  var configs = require('load-grunt-config')(grunt, {
+    configPath: __dirname + '/grunt-tasks',
+    data: {
+      pkg: grunt.file.readJSON("package.json")
+    }
+  });
+
   // configure the tasks
   grunt.initConfig({
 //  Copy
