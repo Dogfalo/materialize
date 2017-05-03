@@ -9,17 +9,6 @@ module.exports = function(grunt) {
 
   // configure the tasks
   grunt.initConfig({
-//  Concurrent
-    concurrent: {
-      options: {
-        logConcurrentOutput: true
-      },
-      monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'connect:server', 'notify:server']
-      },
-    },
-
-
 //  Notifications
     notify: {
       watching: {
