@@ -9,13 +9,6 @@ module.exports = function(grunt) {
 
   // configure the tasks
   grunt.initConfig({
-//  Clean
-   clean: {
-     temp: {
-       src: [ 'temp/' ]
-     },
-   },
-
 //  Jade
     jade: {
       compile: {
