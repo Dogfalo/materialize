@@ -1,9 +1,10 @@
 
 
 .card-panel {
+  transition: box-shadow .25s;
   padding: $card-padding;
   margin: $element-top-margin 0 $element-bottom-margin 0;
-  @include border-radius(2px);
+  border-radius: 2px;
   @extend .z-depth-1;
   background-color: $card-bg-color;
 }
@@ -12,13 +13,12 @@
   position: relative;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
-  @include box-sizing(border-box);
-  @include border-radius(2px);
+  transition: box-shadow .25s;
+  border-radius: 2px;
   @extend .z-depth-1;
 
 
   .card-title {
-    color: #fff;
     font-size: 24px;
     font-weight: 300;
     &.activator {
@@ -26,23 +26,19 @@
     }
   }
 
-  a {
-    color: color("orange", "accent-2");
-    margin-right: $card-padding;
-    @include transition(color .3s ease);
-    text-transform: uppercase;
-
-    &:hover { color: lighten(color("orange", "accent-2"), 20%); }
-  }
-
   // Card Sizes
   &.small, &.medium, &.large {
     position: relative;
 
     .card-image {
+      max-height: 60%;
       overflow: hidden;
     }
+    .card-image + .card-content {
+      max-height: 40%;
+    }
     .card-content {
+      max-height: 100%;
       overflow: hidden;
     }
     .card-action {
@@ -55,37 +51,66 @@
 
   &.small {
     height: 300px;
-
-    .card-image {
-      height: 150px;
-    }
-    .card-content {
-      height: 150px;
-    }
-
   }
 
   &.medium {
     height: 400px;
-
-    .card-image {
-      height: 250px;
-    }
-    .card-content {
-      height: 150px;
-    }
   }
 
   &.large {
     height: 500px;
+  }
+
+  // Horizontal Cards
+  &.horizontal {
+    &.small, &.medium, &.large {
+      .card-image {
+        height: 100%;
+        max-height: none;
+        overflow: visible;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    display: flex;
 
     .card-image {
-      height: 330px;
+      max-width: 50%;
+      img {
+        border-radius: 2px 0 0 2px;
+        max-width: 100%;
+        width: auto;
+      }
     }
-    .card-content {
-      height: 170px;
+
+    .card-stacked {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      position: relative;
+
+      .card-content {
+        flex-grow: 1;
+      }
     }
   }
+
+  // Sticky Action Section
+  &.sticky-action {
+    .card-action {
+      z-index: 2;
+    }
+
+    .card-reveal {
+      z-index: 1;
+      padding-bottom: 64px;
+    }
+  }
+
+
 
 
   .card-image {
@@ -93,7 +118,8 @@
 
     // Image background for content
     img {
-      @include border-radius(2px 2px 0 0);
+      display: block;
+      border-radius: 2px 2px 0 0;
       position: relative;
       left: 0;
       right: 0;
@@ -103,48 +129,68 @@
     }
 
     .card-title {
+      color: $card-bg-color;
       position: absolute;
       bottom: 0;
       left: 0;
+      max-width: 100%;
       padding: $card-padding;
     }
-
   }
 
   .card-content {
     padding: $card-padding;
-    @include border-radius(0 0 2px 2px);
-    @include box-sizing(border-box);
+    border-radius: 0 0 2px 2px;
 
     p {
       margin: 0;
       color: inherit;
     }
     .card-title {
-      line-height: 48px;
+      display: block;
+      line-height: 32px;
+      margin-bottom: 8px;
+
+      i {
+        line-height: 32px;
+      }
     }
   }
 
   .card-action {
+    &:last-child {
+      border-radius: 0 0 2px 2px;
+    }
+    position: relative;
+    background-color: inherit;
     border-top: 1px solid rgba(160,160,160,.2);
-    padding: $card-padding;
+    padding: 16px $card-padding;
+
+    a:not(.btn):not(.btn-large):not(.btn-floating) {
+      color: $card-link-color;
+      margin-right: $card-padding;
+      transition: color .3s ease;
+      text-transform: uppercase;
+
+      &:hover { color: $card-link-color-light; }
+    }
   }
 
   .card-reveal {
     padding: $card-padding;
     position: absolute;
-    background-color: #FFF;
+    background-color: $card-bg-color;
     width: 100%;
     overflow-y: auto;
+    left: 0;
     top: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 3;
+    display: none;
 
     .card-title {
       cursor: pointer;
       display: block;
     }
-
-    @include box-sizing(border-box);
   }
 }

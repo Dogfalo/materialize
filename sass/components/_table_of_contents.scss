@@ -1,7 +1,7 @@
 /***************
     Nav List
 ***************/
-ul.table-of-contents {
+.table-of-contents {
   &.fixed {
       position: fixed;
     }
@@ -22,12 +22,12 @@ ul.table-of-contents {
     &:hover {
       color: lighten(#757575, 20%);
       padding-left: 19px;
-      border-left: 1px solid lighten(color("materialize-red", "base"),10%);
+      border-left: 1px solid $primary-color;
     }
     &.active {
       font-weight: 500;
       padding-left: 18px;
-      border-left: 2px solid lighten(color("materialize-red", "base"),10%);
+      border-left: 2px solid $primary-color;
     }
   }
 }

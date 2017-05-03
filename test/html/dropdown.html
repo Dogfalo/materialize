@@ -1,0 +1,603 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <title>Materialize - Documentation</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+
+  <!-- Android 5 Chrome Color -->
+  <meta name="theme-color" content="#EE6E73">
+
+  <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
+<!--  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>-->
+  <link href="../../../css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+
+
+
+
+<nav style="position: fixed; bottom:0; z-index: 100;">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right">
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="17" data-hover="true" id="button1">
+                    Hover (upwards)<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-hover="true" data-activates="18" id="button11">
+                    Relative Hover (upwards)<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-beloworigin="true" data-hover="true" data-activates="19" id="button2">
+                    Relative Under Origin (upwards)<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button" href="#!"  data-hover="true" data-beloworigin="true" data-activates="20" id="button3">
+                    Long Under Origin (upwards)<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav style="position: fixed; top:0; z-index: 100;">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right">
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="1" data-hover="true" id="button1">
+                    Hover<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-hover="true" data-activates="11" id="button11">
+                    Relative Hover<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-beloworigin="true" data-hover="true" data-activates="2" id="button2">
+                    Relative Under Origin<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button" href="#!"  data-hover="true" data-beloworigin="true" data-activates="3" id="button3">
+                    Long Under Origin<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav style="margin-top: 100px;">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right">
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="4" data-hover="true" id="button4">
+                    Hover<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-activates="5" id="button5">
+                    Relative<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button waves-effect" href="#!" data-activates="6" id="button6">
+                    Overflow Hidden With Waves<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav style="margin-top: 50px;">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right">
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="7" data-constrainwidth="false" id="button4">
+                    No constrainWidth<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="8" data-gutter="100" id="button4">
+                    Gutter 100<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-activates="9" data-beloworigin="true" id="button5">
+                    Below Origin<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="10" data-constrainwidth="false" id="button6">
+                    Right edge detection<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav style="margin-top: 50px;">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left">
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="14" data-constrainwidth="false" data-alignment="right" id="button6">
+                    Left edge detection<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="15" data-gutter="100" id="button4">
+                    Gutter 100<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a style="position: relative;" class="dropdown-button" href="#!" data-activates="16" data-beloworigin="true" id="button5">
+                    Below Origin<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="22" data-beloworigin="true" id="button5">
+                    Long List Overflow<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+              <button onClick="alert('Stop Propagation failed');" style="background: transparent; border: 0;">
+                <a  class="dropdown-button" href="#!" data-activates="23" data-stoppropagation="true">
+                  Stop Propagation<i class="material-icons right">arrow_drop_down</i>
+                </a>
+              </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br>
+
+
+
+
+
+
+
+
+
+<!-- Dropdown Structure -->
+<ul id="1" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/things">Index</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/place/logs">Logs</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/place/create">Create Thing</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a>
+    </li>
+</ul>
+<ul id="2" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/admin/users">Users</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/user/create">Create User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations/new">Invite User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations">Invitations</a>
+    </li>
+</ul>
+<ul id="3" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+</ul>
+
+
+
+<!-- end dropdown structure -->
+
+
+<!-- Dropdown Structure -->
+<ul id="4" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/things">Index</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/place/logs">Logs</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/place/create">Create Thing</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a>
+    </li>
+</ul>
+<ul id="5" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/admin/users">Users</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/user/create">Create User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations/new">Invite User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations">Invitations</a>
+    </li>
+</ul>
+<ul id="6" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/auth/change-password">My profile</a>
+    </li>
+</ul>
+
+
+<!-- Options testing -->
+<ul id="7" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Is Very Long</a></li>
+</ul>
+<ul id="8" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/things">Index</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/place/logs">Logs</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/place/create">Create Thing</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a>
+    </li>
+</ul>
+<ul id="9" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/admin/users">Users</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/user/create">Create User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations/new">Invite User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations">Invitations</a>
+    </li>
+</ul>
+<ul id="10" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/admin/users">Users</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/user/create">Create User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations/new">Invite User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a>
+    </li>
+</ul>
+<ul id="11" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/admin/users">Users</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/user/create">Create User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations/new">Invite User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a>
+    </li>
+</ul>
+<ul id="14" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="15" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="16" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+
+<ul id="17" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="18" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="19" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="20" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+<ul id="23" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+
+
+<br>
+
+Align left:
+<a class="btn-floating btn-large waves-effect waves-light red dropdown-button" data-activates="12" data-constrainwidth="false" data-alignment="left">+</a>
+<ul id="12" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/admin/users">Users</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/user/create">Create User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations/new">Invite User</a>
+    </li>
+</ul>
+
+<br><br>
+
+Align right: --------------------------------
+<a class="btn-floating btn-large waves-effect waves-light red dropdown-button" data-activates="13" data-constrainwidth="false" data-alignment="right">+</a>
+<ul id="13" class="dropdown-content">
+    <li>
+        <a href="http://myapp.dev/admin/users">Users</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/user/create">Create User</a>
+    </li>
+    <li>
+        <a href="http://myapp.dev/admin/invitations/new">Invite User</a>
+    </li>
+</ul>
+
+
+
+<br>
+<div class="row" style="padding-left: 300px;">
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Logo</a>
+        <ul class="right">
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown with padding on ancestor</a></li>
+        </ul>
+      </div>
+    </nav>
+
+</div>
+
+<div class="center" style="width: 400px; height: 400px; overflow:scroll; background: grey; position: absolute;">
+    <h2 style="width: 600px;">Scrolling in absolute container</h2>
+    <a class="btn-floating btn-large waves-effect waves-light red dropdown-button" data-activates="21" data-constrainwidth="false" data-alignment="right">+</a>
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+    <br>s
+</div>
+
+<ul id="21" class="dropdown-content">
+  <li><a href="http://myapp.dev/things">Index</a></li>
+  <li><a href="http://myapp.dev/place/logs">Logs</a></li>
+  <li><a href="http://myapp.dev/place/create">Create Thing</a></li>
+  <li><a href="http://myapp.dev/things/manage">Very Long Menu Item That Should Overflow</a></li>
+</ul>
+
+<ul id="22" class="dropdown-content">
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">6</a></li>
+  <li><a href="#">7</a></li>
+  <li><a href="#">8</a></li>
+  <li><a href="#">9</a></li>
+  <li><a href="#">10</a></li>
+  <li><a href="#">11</a></li>
+  <li><a href="#">12</a></li>
+  <li><a href="#">13</a></li>
+  <li><a href="#">14</a></li>
+  <li><a href="#">15</a></li>
+  <li><a href="#">16</a></li>
+  <li><a href="#">17</a></li>
+  <li><a href="#">18</a></li>
+  <li><a href="#19">19</a></li>
+  <li><a href="#20">20</a></li>
+</ul>
+
+
+
+
+
+
+
+
+<p>asdf</p>
+<p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p><p>asdf</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../../../bin/materialize.js"></script>
+<!--     <script src="js/velocity.min.js"></script>-->
+<!--  <script src="js/leanModal.js"></script>-->
+
+  <script>
+   $(document).ready(function(){
+
+  });
+  </script>
+
+</body>
+</html>

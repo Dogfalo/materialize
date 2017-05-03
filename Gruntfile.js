@@ -10,15 +10,18 @@ module.exports = function(grunt) {
   // configure the tasks
   grunt.initConfig(configs);
 
-
   // define the tasks
   grunt.registerTask(
     'release',[
+      'lint',
       'copy',
       'sass:expanded',
       'sass:min',
+      'postcss:expended',
+      'postcss:min',
       'concat:dist',
       'uglify:dist',
+      'uglify:extras',
       'usebanner:release',
       'compress:main',
       'compress:src',
@@ -33,8 +36,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
-  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
-  grunt.registerTask('start_server', ['connect:server', 'notify:server']);
-
-  grunt.registerTask("monitor", ["concurrent:monitor"]);
+  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
+  grunt.registerTask('server', ['browserSync', 'notify:server']);
+  grunt.registerTask('lint', ['removelogging:source']);
+  grunt.registerTask('monitor', ["concurrent:monitor"]);
+  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
 };

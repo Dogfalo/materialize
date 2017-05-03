@@ -1,106 +1,212 @@
 (function ($) {
 
   var methods = {
-    init : function() {
-      return this.each(function() {
+    init : function(options) {
+      var defaults = {
+        onShow: null,
+        swipeable: false,
+        responsiveThreshold: Infinity, // breakpoint for swipeable
+      };
+      options = $.extend(defaults, options);
+      var namespace = Materialize.objectSelectorString($(this));
+
+      return this.each(function(i) {
+
+      var uniqueNamespace = namespace+i;
 
       // For each set of tabs, we want to keep track of
       // which tab is active and its associated content
       var $this = $(this),
           window_width = $(window).width();
 
-      $this.width('100%');
-      // Set Tab Width for each tab
-      var $num_tabs = $(this).children('li').length;
-      $this.children('li').each(function() {
-        $(this).width((100/$num_tabs)+'%');
-      });
       var $active, $content, $links = $this.find('li.tab a'),
           $tabs_width = $this.width(),
-          $tab_width = $this.find('li').first().outerWidth(),
-          $index = 0;
+          $tabs_content = $(),
+          $tabs_wrapper,
+          $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
+          $indicator,
+          index = prev_index = 0,
+          clicked = false,
+          clickedTimeout,
+          transition = 300;
+
+
+      // Finds right attribute for indicator based on active tab.
+      // el: jQuery Object
+      var calcRightPos = function(el) {
+        return Math.ceil($tabs_width - el.position().left - el.outerWidth() - $this.scrollLeft());
+      };
+
+      // Finds left attribute for indicator based on active tab.
+      // el: jQuery Object
+      var calcLeftPos = function(el) {
+        return Math.floor(el.position().left + $this.scrollLeft());
+      };
+
+      // Animates Indicator to active tab.
+      // prev_index: Number
+      var animateIndicator = function(prev_index) {
+        if ((index - prev_index) >= 0) {
+          $indicator.velocity({"right": calcRightPos($active) }, { duration: transition, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"left": calcLeftPos($active) }, {duration: transition, queue: false, easing: 'easeOutQuad', delay: 90});
+
+        } else {
+          $indicator.velocity({"left": calcLeftPos($active) }, { duration: transition, queue: false, easing: 'easeOutQuad'});
+          $indicator.velocity({"right": calcRightPos($active) }, {duration: transition, queue: false, easing: 'easeOutQuad', delay: 90});
+        }
+      };
+
+      // Change swipeable according to responsive threshold
+      if (options.swipeable) {
+        if (window_width > options.responsiveThreshold) {
+          options.swipeable = false;
+        }
+      }
+
 
       // If the location.hash matches one of the links, use that as the active tab.
-      // console.log($(".tabs .tab a[href='#tab3']"));
       $active = $($links.filter('[href="'+location.hash+'"]'));
 
       // If no match is found, use the first link or any with class 'active' as the initial active tab.
       if ($active.length === 0) {
-          $active = $(this).find('li.tab a.active').first();
+        $active = $(this).find('li.tab a.active').first();
       }
       if ($active.length === 0) {
         $active = $(this).find('li.tab a').first();
       }
 
       $active.addClass('active');
-      $index = $links.index($active);
-      if ($index < 0) {
-        $index = 0;
+      index = $links.index($active);
+      if (index < 0) {
+        index = 0;
       }
 
-      $content = $($active[0].hash);
+      if ($active[0] !== undefined) {
+        $content = $($active[0].hash);
+        $content.addClass('active');
+      }
 
       // append indicator then set indicator width to tab width
-      $this.append('<div class="indicator"></div>');
-      var $indicator = $this.find('.indicator');
-      if ($this.is(":visible")) {
-        $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-        $indicator.css({"left": $index * $tab_width});
+      if (!$this.find('.indicator').length) {
+        $this.append('<div class="indicator"></div>');
       }
-      $(window).resize(function () {
+      $indicator = $this.find('.indicator');
+
+      // we make sure that the indicator is at the end of the tabs
+      $this.append($indicator);
+
+      if ($this.is(":visible")) {
+        // $indicator.css({"right": $tabs_width - ((index + 1) * $tab_width)});
+        // $indicator.css({"left": index * $tab_width});
+        setTimeout(function() {
+          $indicator.css({"right": calcRightPos($active) });
+          $indicator.css({"left": calcLeftPos($active) });
+        }, 0);
+      }
+      $(window).off('resize.tabs-'+uniqueNamespace).on('resize.tabs-'+uniqueNamespace, function () {
         $tabs_width = $this.width();
-        $tab_width = $this.find('li').first().outerWidth();
-        if ($index < 0) {
-          $index = 0;
+        $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
+        if (index < 0) {
+          index = 0;
         }
         if ($tab_width !== 0 && $tabs_width !== 0) {
-          $indicator.css({"right": $tabs_width - (($index + 1) * $tab_width)});
-          $indicator.css({"left": $index * $tab_width});
+          $indicator.css({"right": calcRightPos($active) });
+          $indicator.css({"left": calcLeftPos($active) });
         }
       });
 
-      // Hide the remaining content
-      $links.not($active).each(function () {
-        $(this.hash).hide();
-      });
+      // Initialize Tabs Content.
+      if (options.swipeable) {
+        // TODO: Duplicate calls with swipeable? handle multiple div wrapping.
+        $links.each(function () {
+          var $curr_content = $(Materialize.escapeHash(this.hash));
+          $curr_content.addClass('carousel-item');
+          $tabs_content = $tabs_content.add($curr_content);
+        });
+        $tabs_wrapper = $tabs_content.wrapAll('<div class="tabs-content carousel"></div>');
+        $tabs_content.css('display', '');
+        $('.tabs-content.carousel').carousel({
+          fullWidth: true,
+          noWrap: true,
+          onCycleTo: function(item) {
+            if (!clicked) {
+              var prev_index = index;
+              index = $tabs_wrapper.index(item);
+              $active = $links.eq(index);
+              animateIndicator(prev_index);
+            }
+          },
+        });
+      } else {
+        // Hide the remaining content
+        $links.not($active).each(function () {
+          $(Materialize.escapeHash(this.hash)).hide();
+        });
+      }
 
 
       // Bind the click event handler
-      $this.on('click', 'a', function(e){
+      $this.off('click.tabs').on('click.tabs', 'a', function(e) {
+        if ($(this).parent().hasClass('disabled')) {
+          e.preventDefault();
+          return;
+        }
+
+        // Act as regular link if target attribute is specified.
+        if (!!$(this).attr("target")) {
+          return;
+        }
+
+        clicked = true;
         $tabs_width = $this.width();
-        $tab_width = $this.find('li').first().outerWidth();
+        $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length;
 
         // Make the old tab inactive.
         $active.removeClass('active');
-        $content.hide();
+        var $oldContent = $content
 
         // Update the variables with the new link and content
         $active = $(this);
-        $content = $(this.hash);
+        $content = $(Materialize.escapeHash(this.hash));
         $links = $this.find('li.tab a');
+        var activeRect = $active.position();
 
         // Make the tab active.
         $active.addClass('active');
-        var $prev_index = $index;
-        $index = $links.index($(this));
-        if ($index < 0) {
-          $index = 0;
+        prev_index = index;
+        index = $links.index($(this));
+        if (index < 0) {
+          index = 0;
         }
         // Change url to current tab
-  //      window.location.hash = $active.attr('href');
+        // window.location.hash = $active.attr('href');
 
-        $content.show();
+        // Swap content
+        if (options.swipeable) {
+          if ($tabs_content.length) {
+            $tabs_content.carousel('set', index);
+          }
+        } else {
+          if ($content !== undefined) {
+            $content.show();
+            $content.addClass('active');
+            if (typeof(options.onShow) === "function") {
+              options.onShow.call(this, $content);
+            }
+          }
+
+          if ($oldContent !== undefined &&
+              !$oldContent.is($content)) {
+            $oldContent.hide();
+            $oldContent.removeClass('active');
+          }
+        }
+
+        // Reset clicked state
+        clickedTimeout = setTimeout(function(){ clicked = false; }, transition);
 
         // Update indicator
-        if (($index - $prev_index) >= 0) {
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"left": $index * $tab_width}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
-
-        }
-        else {
-          $indicator.velocity({"left": $index * $tab_width}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-          $indicator.velocity({"right": $tabs_width - (($index + 1) * $tab_width)}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
-        }
+        animateIndicator(prev_index);
 
         // Prevent the anchor's default click action
         e.preventDefault();
@@ -120,7 +226,7 @@
       // Default to "init"
       return methods.init.apply( this, arguments );
     } else {
-      $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tooltip' );
+      $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.tabs' );
     }
   };
 

@@ -1,10 +1,11 @@
 ![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
 ===========
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-Materialize, a CSS Framework based on material design
+[![Travis CI](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize) [![devDependency Status](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Current Version : v0.95.2
+[Materialize](http://materializecss.com/), a CSS Framework based on material design
+
+### Current Version : v0.98.2
 
 ## Sass Requirements:
 - Ruby Sass 3.3+, LibSass 0.6+
@@ -12,60 +13,61 @@ Materialize, a CSS Framework based on material design
 ## Supported Browsers:
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
-## Contributing
-- Issues
-  - If you have an issue please make sure you document the problems in depth. One line issues with no explanations will be closed.
-- Feature Requests
-  - We like feature requests but make sure that it can be seen within the goals of the project and not just something you need individually. Also you should try and give as much examples and details about the new feature as possible.
-
 ## Changelog
+Bolded styling surrounded by emojis indicates a breaking change.
 
-- v0.95.2 (Feb 10, 2015)
-  - Switches added
-  - Transition animation functions added
-  - ScrollFire Plugin added (fires functions dependent on scroll position)
-  - Responsive Video tag added
-  - Custom File Input Button added
-  - Modals has a fixed footer option
-  - SideNav implementation changed (needs 2 UL menus)
-  - Slider Responsive Fixes
+- v0.98.2 (April 14th)
+  - Fixed collapsible preselect bug
+  - Fixed dropdown event bubbling bug
+  - Fixed range position inaccuracies
+  - Fixed feature discovery mobile styles
+  - Fixed carousel reinitialize bugs
+  - Fixed grid offset bug
 
-- v0.95.1 (Jan 26, 2015)
-  - Sidenav Fixes
-  - Dropdown alignment/gutter options added
-  - Parallax fixes
-  - JavaScript Initialization no longer needed for many components
-  - HTML options through data-attributes
-  - Site colors can be defined through Primary and Secondary color in Sass
-  - Tables no longer resonsive by default
+- v0.98.1 (March 21st)
+  - Fixed various select bugs on mobile devices
+  - Fixed small sideNav overlay bugs
+  - Fixed carousel resizing bug
+  - Fixed materialbox callback bug
+  - Range slider supports keyboard navigation
+  - Added XL breakpoint
+  - Added Pulse CSS effect
+  - Added Feature Discovery component
 
-- v0.95.0 (Jan 17, 2015)
-  - Drag Out Menu fixed with Touch Interactions
-  - Toasts minor bugfix
-  - OL element has default styling
-  - Fullscreen Slider added
-  - Footer requires page-footer class
-  - Progress Bars added
-  - Form autofill support added
-  - Responsive Tables support added
-  - Scrollspy Plugin released
-  - Waves events are now delegated / behavior enhanced
+- v0.98.0 (January 25th)
+  - :no_good: **Standardized plugin option naming to camelcase (please check your plugin calls to make sure all the options are camelcase)** :no_good:
+  - Added FABs in image cards
+  - Added swipeable tabs
+  - Fixed carousel misalignment when switching quickly
+  - Fixed carousel resize bug where slide widths wouldn't change when changing window size
+  - Improved tabs compatibility with cards
+  - Fixed bug where using backspace to delete chips would navigate back in certain browsers
+  - Added autocomplete integration with chips
+  - Upgraded noUiSlider to version 9 with support for vertical sliders
 
-- v0.94.2 (Jan 07, 2015)
-  - Sidebar dissmiss issues fixed
-  - Date picker improvements
-  - Waves fixed for Windows touchscreen devices
-  - Fixed position dropdown problems fixed
-  - Text area supports icon prefix
-  - Navbar supports fixed position
+- v0.97.8 (October 30th, 2016)
+  - **Refactored Modal plugin**
+  - Tabs now supported in navbar
+  - Chips data can now be reinitiailized
+  - Minor side nav fixes
+  - FAB to toolbar component added
+  - Fixed dropdown options bug
+- v0.97.7 (July 23rd, 2016)
+  - Basic horizontal cards
+  - Carousel bug fixes and new features
+  - Updated sidenav styles and new component
+  - Meteor package now supports Sass
+  - Autocomplete form component
+  - Chips jQuery plugin
 
-- v0.94.1 (Jan 05, 2015)
-  - Standardized components top and bottom margin
-  - Fixed Sidebar added
-  - Dropdown has cleaner animation
-  - Tabs/Collapsibles supports active class
-  - Materialbox bug fixes
-  - Collapsible bug fixes
-  - Sidebar bug fixes
-  - Checkbox cross-browser fixes
-  - Modal supports ESC closing
+
+
+
+## Testing
+We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
+
+## Contributing
+[Please read CONTRIBUTING.md for more information](CONTRIBUTING.md)
+
+## Translation
+If you want to help us translate the documentation into other languages, please send us an email at materializeframework@gmail.com telling us which language team you want to join. We use [Transifex](https://www.transifex.com) as our localization platform and we will send you an invite there.

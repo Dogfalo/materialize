@@ -1,0 +1,110 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <title>Materialize - Documentation</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+
+  <!-- Android 5 Chrome Color -->
+  <meta name="theme-color" content="#EE6E73">
+
+  <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
+<!--  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>-->
+  <link href="../../../css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+  <h3>Variable Width</h3>
+  <div class="row">
+    <div class="col s12 no-padding">
+      <ul class="tabs">
+        <li class="tab"><a href="#test1">Test 1</a></li>
+        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+        <li class="tab"><a href="#test3">Test 4</a></li>
+        <li class="tab"><a href="#test4">Test 5</a></li>
+        <li class="tab"><a target="_self" href="http://materializecss.com">Link in same window</a></li>
+        <li class="tab"><a target="_blank" href="http://materializecss.com">Link in new window</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div id="test1" class="col s12">Test 1</div>
+  <div id="test2" class="col s12">Test 2</div>
+  <div id="test3" class="col s12">Test 3</div>
+  <div id="test4" class="col s12">Test 4</div>
+
+
+  <h3>Fixed Width</h3>
+  <div class="row">
+    <div class="col s12 no-padding">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a href="#test5">Test 1</a></li>
+        <li class="tab"><a class="active" href="#test6">Test 2</a></li>
+        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+        <li class="tab"><a href="#test7">Test 4</a></li>
+        <li class="tab"><a href="#test8">Test 5</a></li>
+        <li class="tab"><a target="_self" href="http://materializecss.com">Link in same window</a></li>
+        <li class="tab"><a target="_blank" href="http://materializecss.com">Link in new window</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div id="test5" class="col s12">Test 1</div>
+  <div id="test6" class="col s12">Test 2</div>
+  <div id="test7" class="col s12">Test 3</div>
+  <div id="test8" class="col s12">Test 4</div>
+
+  <h3>Navbar in nav-extended</h3>
+  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="#test9">Test 1</a></li>
+        <li class="tab"><a class="active" href="#test10">Test 2</a></li>
+        <li class="tab disabled"><a href="#test11">Disabled Tab</a></li>
+        <li class="tab"><a href="#test12">Test 4</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="test9" class="col s12">Test 1</div>
+  <div id="test10" class="col s12">Test 2</div>
+  <div id="test11" class="col s12">Test 3</div>
+  <div id="test12" class="col s12">Test 4</div>
+
+<!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../../../bin/materialize.js"></script>
+<!--     <script src="js/velocity.min.js"></script>-->
+<!--  <script src="js/leanModal.js"></script>-->
+    <script type="text/javascript">
+    $( document ).ready(function() {
+      $('.button-collapse').sideNav();
+    });
+    </script>
+
+</body>
+</html>

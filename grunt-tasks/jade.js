@@ -43,11 +43,20 @@ module.exports = function (grunt) {
                 "waves.html": "jade/waves.jade",
                 "media.html": "jade/media.jade",
                 "collapsible.html": "jade/collapsible.jade",
+                "chips.html": "jade/chips.jade",
                 "scrollfire.html": "jade/scrollFire.jade",
                 "scrollspy.html": "jade/scrollspy.jade",
                 "transitions.html": "jade/transitions.jade",
                 "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
-
+                "pagination.html": "jade/pagination.jade",
+                "breadcrumbs.html": "jade/breadcrumbs.jade",
+                "carousel.html": "jade/carousel.jade",
+                "feature-discovery.html": "jade/feature-discovery.jade",
+                "pulse.html": "jade/pulse.jade",
+                "pushpin-demo.html": "jade/pushpin-demo.jade",
+                "css-transitions.html": "jade/css-transitions.jade",
+                "themes.html": "jade/themes.jade",
+                "404.html": "jade/404.jade",
 
             }
         }

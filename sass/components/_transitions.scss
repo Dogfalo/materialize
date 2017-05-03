@@ -1,0 +1,13 @@
+// Scale transition
+.scale-transition {
+  &.scale-out {
+    transform: scale(0);
+    transition: transform .2s !important;
+  }
+
+  &.scale-in {
+    transform: scale(1);
+  }
+
+  transition: transform .3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
+}

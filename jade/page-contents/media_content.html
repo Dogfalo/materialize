@@ -24,9 +24,9 @@
 
         <h4>Captions</h4>
         <p>It is very easy to add a short caption to your photo. Just add the caption as a <code class="language-markup">data-caption</code> attribute.</p>
-        <img class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
+        <img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250" src="http://lorempixel.com/800/400/nature/4">
           <pre><code class="language-markup">
-  &lt;img class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
+  &lt;img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250" src="http://lorempixel.com/800/400/nature/4">
           </code></pre>
       </div>
 
@@ -116,13 +116,13 @@
       <h4>jQuery Initialization</h4>
        <pre><code class="language-javascript">
     $(document).ready(function(){
-      $('.slider').slider({full_width: true});
+      $('.slider').slider();
     });
         </code></pre>
         <br>
 
         <h4>jQuery Plugin Options</h4>
-        <table class="hoverable">
+        <table class="highlight">
           <thead>
             <tr>
                 <th>Option Name</th>
@@ -132,23 +132,37 @@
 
           <tbody>
             <tr>
-              <td>Indicators</td>
+              <td>indicators</td>
               <td>Set to false to hide slide indicators. (Default: True)</td>
             </tr>
             <tr>
-              <td>Height</td>
+              <td>height</td>
               <td>Set height of slider. (Default: 400)</td>
             </tr>
             <tr>
-              <td>Transition</td>
+              <td>transition</td>
               <td>Set the duration of the transition animation in ms. (Default: 500)</td>
             </tr>
             <tr>
-              <td>Interval</td>
+              <td>interval</td>
               <td>Set the duration between transitions in ms. (Default: 6000)</td>
             </tr>
           </tbody>
         </table>
+        <br>
+
+      <h4>jQuery Plugin Methods</h4>
+      <p>We have methods to pause, start, move to next and move to previous slide.</p>
+      <pre><code class="language-javascript col s12">
+// Pause slider
+$('.slider').slider('pause');
+// Start slider
+$('.slider').slider('start');
+// Next slide
+$('.slider').slider('next');
+// Previous slide
+$('.slider').slider('prev');
+      </code></pre>
       </div>
 
     </div>
@@ -172,4 +186,3 @@
 
   </div>
 </div>
-

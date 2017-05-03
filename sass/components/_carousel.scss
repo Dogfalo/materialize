@@ -1,0 +1,91 @@
+.carousel {
+  &.carousel-slider {
+    top: 0;
+    left: 0;
+    height: 0;
+
+    .carousel-fixed-item {
+      &.with-indicators {
+        bottom: 68px;
+      }
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+      z-index: 1;
+    }
+
+    .carousel-item {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  perspective: 500px;
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+
+  .carousel-item {
+    display: none;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  .indicators {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+
+    .indicator-item {
+      &.active {
+        background-color: #fff;
+      }
+
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      height: 8px;
+      width: 8px;
+      margin: 24px 4px;
+      background-color: rgba(255,255,255,.5);
+
+      transition: background-color .3s;
+      border-radius: 50%;
+    }
+  }
+
+  // Materialbox compatibility
+  &.scrolling .carousel-item .materialboxed,
+  .carousel-item:not(.active) .materialboxed {
+    pointer-events: none;
+  }
+}

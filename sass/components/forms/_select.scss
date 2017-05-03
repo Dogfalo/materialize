@@ -1,0 +1,121 @@
+/* Select Field
+   ========================================================================== */
+
+select { display: none; }
+select.browser-default { display: block; }
+
+select {
+  background-color: $select-background;
+  width: 100%;
+  padding: $select-padding;
+  border: $select-border;
+  border-radius: $select-radius;
+  height: $input-height;
+}
+
+.select-label {
+  position: absolute;
+}
+
+.select-wrapper {
+  position: relative;
+
+  input.select-dropdown {
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-bottom: $input-border;
+    outline: none;
+    height: $input-height;
+    line-height: $input-height;
+    width: 100%;
+    font-size: $input-font-size;
+    margin: $input-margin;
+    padding: 0;
+    display: block;
+  }
+
+  span.caret {
+    color: initial;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 10px;
+    margin: auto 0;
+    font-size: 10px;
+    line-height: 10px;
+
+    &.disabled {
+      color: $input-disabled-color;
+    }
+  }
+
+  & + label {
+    position: absolute;
+    top: -14px;
+    font-size: $label-font-size;
+  }
+}
+
+// Disabled styles
+select:disabled {
+  color: rgba(0,0,0,.3);
+}
+
+.select-wrapper input.select-dropdown:disabled {
+  color: rgba(0,0,0,.3);
+  cursor: default;
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -ms-user-select: none; /* IE10+ */
+  border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.select-wrapper i {
+  color: $select-disabled-color;
+}
+
+.select-dropdown li.disabled,
+.select-dropdown li.disabled > span,
+.select-dropdown li.optgroup {
+  color: $select-disabled-color;
+  background-color: transparent;
+}
+
+// Prefix Icons
+.prefix ~ .select-wrapper {
+  margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.prefix ~ label { margin-left: 3rem; }
+
+// Icons
+.select-dropdown li {
+  img {
+    height: $dropdown-item-height - 10;
+    width: $dropdown-item-height - 10;
+    margin: 5px 15px;
+    float: right;
+  }
+}
+
+// Optgroup styles
+.select-dropdown li.optgroup {
+  border-top: 1px solid $dropdown-hover-bg-color;
+
+  &.selected > span {
+    color: rgba(0, 0, 0, .7);
+  }
+
+  & > span {
+    color: rgba(0, 0, 0, .4);
+  }
+
+  & ~ li.optgroup-option {
+    padding-left: 1rem;
+  }
+}

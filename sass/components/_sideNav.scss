@@ -1,37 +1,142 @@
-ul.side-nav {
+.side-nav {
   position: fixed;
-  width: 240px;
-  left: -105%;
+  width: 300px;
+  left: 0;
   top: 0;
   margin: 0;
+  transform: translateX(-100%);
   height: 100%;
   height: calc(100% + 60px);
+  height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
-  background-color: #FFF;
+  background-color: $sidenav-bg-color;
   z-index: 999;
+  overflow-y: auto;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateX(-105%);
 
   @extend .z-depth-1;
-  will-change: left;
 
   // Right Align
   &.right-aligned {
-    will-change: right;
-    right: -105%;
+    right: 0;
+    transform: translateX(105%);
     left: auto;
+    transform: translateX(100%);
   }
 
-  .collapsible{
+  .collapsible {
     margin: 0;
   }
 
 
   li {
     float: none;
-    padding: 0 15px;
-    &:hover, &.active { background-color: #ddd; }
+    line-height: $sidenav-line-height;
+
+    &.active { background-color: rgba(0,0,0,.05); }
   }
-  a {
-    color: #444;
+
+  li > a {
+    color: $sidenav-font-color;
+    display: block;
+    font-size: $sidenav-font-size;
+    font-weight: 500;
+    height: $sidenav-item-height;
+    line-height: $sidenav-line-height;
+    padding: 0 ($sidenav-padding * 2);
+
+    &:hover { background-color: rgba(0,0,0,.05);}
+
+    &.btn, &.btn-large, &.btn-flat, &.btn-floating {
+      margin: 10px 15px;
+    }
+
+    &.btn,
+    &.btn-large,
+    &.btn-floating { color: $button-raised-color; }
+    &.btn-flat { color: $button-flat-color; }
+
+    &.btn:hover,
+    &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
+    &.btn-floating:hover { background-color: $button-raised-background; }
+
+    & > i,
+    & > [class^="mdi-"], li > a > [class*="mdi-"],
+    & > i.material-icons {
+      float: left;
+      height: $sidenav-item-height;
+      line-height: $sidenav-line-height;
+      margin: 0 ($sidenav-padding * 2) 0 0;
+      width: $sidenav-item-height / 2;
+      color: rgba(0,0,0,.54);
+    }
+  }
+
+
+  .divider {
+    margin: ($sidenav-padding / 2) 0 0 0;
+  }
+
+  .subheader {
+    &:hover {
+      background-color: transparent;
+    }
+
+    cursor: initial;
+    pointer-events: none;
+    color: rgba(0,0,0,.54);
+    font-size: $sidenav-font-size;
+    font-weight: 500;
+    line-height: $sidenav-line-height;
+  }
+
+  .userView {
+    position: relative;
+    padding: ($sidenav-padding * 2) ($sidenav-padding * 2) 0;
+    margin-bottom: $sidenav-padding / 2;
+
+    & > a {
+      &:hover { background-color: transparent; }
+      height: auto;
+      padding: 0;
+    }
+
+    .background {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .circle, .name, .email {
+      display: block;
+    }
+
+    .circle {
+      height: 64px;
+      width: 64px;
+    }
+
+    .name,
+    .email {
+      font-size: $sidenav-font-size;
+      line-height: $sidenav-line-height / 2;
+    }
+
+    .name {
+      margin-top: 16px;
+      font-weight: 500;
+    }
+
+    .email {
+      padding-bottom: 16px;
+      font-weight: 400;
+    }
   }
 }
 
@@ -46,19 +151,10 @@ ul.side-nav {
 }
 
 
-// Hidden side-nav for all sizes
-ul.side-nav.fixed {
-  a {
-    display: block;
-    padding: 0 15px;
-    color: #444;
-  }
-}
-
-
 // Fixed side-nav shown
-ul.side-nav.fixed {
+.side-nav.fixed {
   left: 0;
+  transform: translateX(0);
   position: fixed;
 
   // Right Align
@@ -70,31 +166,43 @@ ul.side-nav.fixed {
 
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
-  ul.side-nav.fixed {
-    left: -105%;
+  .side-nav {
+    &.fixed {
+      transform: translateX(-105%);
 
-    &.right-aligned {
-      right: -105%;
-      left: auto;
+      &.right-aligned {
+        transform: translateX(105%);
+      }
+    }
+
+    a {
+      padding: 0 $sidenav-padding;
+    }
+
+    .userView {
+      padding: $sidenav-padding $sidenav-padding 0;
     }
   }
 }
 
 
-ul.side-nav .collapsible-body li.active,
-ul.side-nav.fixed .collapsible-body li.active {
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
   background-color: $primary-color;
   a {
-    color: #fff;
+    color: $sidenav-bg-color;
   }
+}
+.side-nav .collapsible-body {
+  padding: 0;
 }
 
 
 #sidenav-overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
 
   height: 120vh;
   background-color: rgba(0,0,0,.5);

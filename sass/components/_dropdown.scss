@@ -1,31 +1,68 @@
 .dropdown-content {
-  display:none;
   @extend .z-depth-1;
-  position: absolute;
-  background-color: #FFFFFF;
-  margin: 0px;
+  background-color: $dropdown-bg-color;
+  margin: 0;
+  display: none;
   min-width: 100px;
-  z-index: 1000;
-  max-height: 70%;
+  max-height: 650px;
+  overflow-y: auto;
   opacity: 0;
-  overflow-y: hidden;
-
+  position: absolute;
+  z-index: 999;
   will-change: width, height;
 
   li {
-    cursor: pointer;
-    font-size: 1.2rem;
+    clear: both;
     color: $off-black;
+    cursor: pointer;
+    min-height: $dropdown-item-height;
     line-height: 1.5rem;
+    width: 100%;
+    text-align: left;
+    text-transform: none;
 
-    &:hover, &.active {
-      background-color: rgba(0,0,0, .06);
+    &:hover, &.active, &.selected {
+      background-color: $dropdown-hover-bg-color;
+    }
+
+    &.active.selected {
+      background-color: darken($dropdown-hover-bg-color, 5%);
+    }
+
+    &.divider {
+      min-height: 0;
+      height: 1px;
     }
 
     & > a, & > span {
-      display: block;
-      padding: 1rem 1rem;
+      font-size: 16px;
       color: $dropdown-color;
+      display: block;
+      line-height: 22px;
+      padding: (($dropdown-item-height - 22) / 2) 16px;
+    }
+
+    & > span > label {
+      top: 1px;
+      left: 0;
+      height: 18px;
+    }
+
+    // Icon alignment override
+    & > a > i {
+      height: inherit;
+      line-height: inherit;
+      float: left;
+      margin: 0 24px 0 0;
+      width: 24px;
     }
   }
 }
+
+// Input field specificity bugfix
+.input-field.col .dropdown-content [type="checkbox"] + label {
+  top: 1px;
+  left: 0;
+  height: 18px;
+}
+

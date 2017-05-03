@@ -1,6 +1,6 @@
 .slider {
   position: relative;
-  height: 440px;
+  height: 400px;
   width: 100%;
 
   // Fullscreen slider
@@ -23,13 +23,13 @@
     }
   }
 
-  ul.slides {
-    background-color: color('grey', 'base');
+  .slides {
+    background-color: $slider-bg-color;
     margin: 0;
     height: 400px;
 
     li {
-      @include opacity(0);
+      opacity: 0;
       position: absolute;
       top: 0;
       left: 0;
@@ -51,9 +51,9 @@
         top: 15%;
         left: 15%;
         width: 70%;
-        @include opacity(0);
+        opacity: 0;
 
-        p { color: color('grey', 'lighten-2'); }
+        p { color: $slider-bg-color-light; }
       }
 
       &.active {
@@ -63,7 +63,7 @@
   }
 
 
-  ul.indicators {
+  .indicators {
     position: absolute;
     text-align: center;
     left: 0;
@@ -71,20 +71,20 @@
     bottom: 0;
     margin: 0;
 
-    li.indicator-item {
+    .indicator-item {
       display: inline-block;
       position: relative;
       cursor: pointer;
       height: 16px;
       width: 16px;
       margin: 0 12px;
-      background-color: color('grey', 'lighten-2');
+      background-color: $slider-bg-color-light;
 
-      @include transition(background-color .3s);
-      @include border-radius(50%);
+      transition: background-color .3s;
+      border-radius: 50%;
 
       &.active {
-        background-color: color('green', 'base');
+        background-color: $slider-indicator-color;
       }
     }
   }

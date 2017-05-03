@@ -1,0 +1,46 @@
+// Badges
+span.badge {
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: $badge-height;
+  height: $badge-height;
+  color: color('grey', 'darken-1');
+  float: right;
+  box-sizing: border-box;
+
+  &.new {
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: $badge-bg-color;
+    border-radius: 2px;
+  }
+  &.new:after {
+    content: " new";
+  }
+
+  &[data-badge-caption]::after {
+    content: " " attr(data-badge-caption);
+  }
+}
+nav ul a span.badge {
+  display: inline-block;
+  float: none;
+  margin-left: 4px;
+  line-height: $badge-height;
+  height: $badge-height;
+}
+
+// Line height centering
+.collection-item span.badge {
+  margin-top: calc(#{$collection-line-height / 2} - #{$badge-height / 2});
+}
+.collapsible span.badge {
+  margin-top: calc(#{$collapsible-line-height / 2} - #{$badge-height / 2});
+}
+.side-nav span.badge {
+  margin-top: calc(#{$sidenav-line-height / 2} - #{$badge-height / 2});
+}

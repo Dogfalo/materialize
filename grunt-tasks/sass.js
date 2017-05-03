@@ -25,7 +25,7 @@ module.exports = function (grunt) {
         // Compile ghpages css
         gh: {
             options: {
-                style: 'compressed',
+                outputStyle: 'compressed',
                 sourcemap: false
             },
             files: {
@@ -33,10 +33,10 @@ module.exports = function (grunt) {
             }
         },
 
-        // Compile ghpages css
+        // Compile bin css
         bin: {
             options: {
-                style: 'expanded',
+                outputStyle: 'expanded',
                 sourcemap: false
             },
             files: {

@@ -1,4 +1,5 @@
 'use strict';
+//TEXT replace
 
 module.exports = function (grunt) {
     return {
@@ -25,5 +26,5 @@ module.exports = function (grunt) {
                 to: 'Current Version : v' + grunt.option("newver")
             }]
         },
-    }
+    }Î
 };

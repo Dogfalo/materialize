@@ -4,11 +4,11 @@
 
     return this.each(function() {
 
-      if ($(this).hasClass('intialized')) {
+      if ($(this).hasClass('initialized')) {
         return;
       }
 
-      $(this).addClass('intialized');
+      $(this).addClass('initialized');
 
       var overlayActive = false;
       var doneAnimating = true;
@@ -18,18 +18,23 @@
       var placeholder = $('<div></div>').addClass('material-placeholder');
       var originalWidth = 0;
       var originalHeight = 0;
-
+      var ancestorsChanged;
+      var ancestor;
+      var originInlineStyles = origin.attr('style');
       origin.wrap(placeholder);
-      origin.on('click', function(){
 
+
+      origin.on('click', function(){
         var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
         var originalWidth = origin.width();
         var originalHeight = origin.height();
 
+
         // If already modal, return to original
         if (doneAnimating === false) {
+          returnToOriginal();
           return false;
         }
         else if (overlayActive && doneAnimating===true) {
@@ -37,23 +42,45 @@
           return false;
         }
 
+
         // Set states
         doneAnimating = false;
         origin.addClass('active');
         overlayActive = true;
 
         // Set positioning for placeholder
-
         placeholder.css({
           width: placeholder[0].getBoundingClientRect().width,
           height: placeholder[0].getBoundingClientRect().height,
           position: 'relative',
           top: 0,
           left: 0
-        })
+        });
+
+        // Find ancestor with overflow: hidden; and remove it
+        ancestorsChanged = undefined;
+        ancestor = placeholder[0].parentNode;
+        var count = 0;
+        while (ancestor !== null && !$(ancestor).is(document)) {
+          var curr = $(ancestor);
+          if (curr.css('overflow') !== 'visible') {
+            curr.css('overflow', 'visible');
+            if (ancestorsChanged === undefined) {
+              ancestorsChanged = curr;
+            }
+            else {
+              ancestorsChanged = ancestorsChanged.add(curr);
+            }
+          }
+          ancestor = ancestor.parentNode;
+        }
 
         // Set css on origin
-        origin.css({position: 'absolute', 'z-index': 1000})
+        origin.css({
+          position: 'absolute',
+          'z-index': 1000,
+          'will-change': 'left, top, width, height'
+        })
         .data('width', originalWidth)
         .data('height', originalHeight);
 
@@ -66,11 +93,22 @@
             if (doneAnimating === true)
             returnToOriginal();
           });
-          // Animate Overlay
-          $('body').append(overlay);
-          overlay.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
-            );
 
+        // Put before in origin image to preserve z-index layering.
+        origin.before(overlay);
+
+        // Set dimensions if needed
+        var overlayOffset = overlay[0].getBoundingClientRect();
+        overlay.css({
+          width: windowWidth,
+          height: windowHeight,
+          left: -1 * overlayOffset.left,
+          top: -1 * overlayOffset.top
+        })
+
+        // Animate Overlay
+        overlay.velocity({opacity: 1},
+                           {duration: inDuration, queue: false, easing: 'easeOutQuad'} );
 
         // Add and animate caption if it exists
         if (origin.data('caption') !== "") {
@@ -78,10 +116,8 @@
           $photo_caption.text(origin.data('caption'));
           $('body').append($photo_caption);
           $photo_caption.css({ "display": "inline" });
-          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'})
+          $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'});
         }
-
-
 
         // Resize Image
         var ratio = 0;
@@ -142,12 +178,12 @@
             ); // End Velocity
         }
 
-    }); // End origin on click
+      }); // End origin on click
 
 
       // Return on scroll
       $(window).scroll(function() {
-        if (overlayActive ) {
+        if (overlayActive) {
           returnToOriginal();
         }
       });
@@ -166,40 +202,41 @@
       // This function returns the modaled image to the original spot
       function returnToOriginal() {
 
-          doneAnimating = false;
+        doneAnimating = false;
 
-          var placeholder = origin.parent('.material-placeholder');
-          var windowWidth = window.innerWidth;
-          var windowHeight = window.innerHeight;
-          var originalWidth = origin.data('width');
-          var originalHeight = origin.data('height');
+        var placeholder = origin.parent('.material-placeholder');
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var originalWidth = origin.data('width');
+        var originalHeight = origin.data('height');
+
+        origin.velocity("stop", true);
+        $('#materialbox-overlay').velocity("stop", true);
+        $('.materialbox-caption').velocity("stop", true);
 
 
-          $('#materialbox-overlay').fadeOut(outDuration, function(){
+        $('#materialbox-overlay').velocity({opacity: 0}, {
+          duration: outDuration, // Delay prevents animation overlapping
+          queue: false, easing: 'easeOutQuad',
+          complete: function(){
             // Remove Overlay
             overlayActive = false;
             $(this).remove();
-          });
+          }
+        });
 
-          // Resize Image
-          origin.velocity(
-            {
-              width: originalWidth,
-              height: originalHeight,
-              left: 0,
-              top: 0
-            },
-            {
-              duration: outDuration,
-              queue: false, easing: 'easeOutQuad'
-            }
-          );
-
-          // Remove Caption + reset css settings on image
-          $('.materialbox-caption').velocity({opacity: 0}, {
-            duration: outDuration + 200, // Delay prevents animation overlapping
+        // Resize Image
+        origin.velocity(
+          {
+            width: originalWidth,
+            height: originalHeight,
+            left: 0,
+            top: 0
+          },
+          {
+            duration: outDuration,
             queue: false, easing: 'easeOutQuad',
-            complete: function(){
+            complete: function() {
               placeholder.css({
                 height: '',
                 width: '',
@@ -208,30 +245,36 @@
                 left: ''
               });
 
-              origin.css({
-                height: '',
-                position: '',
-                top: '',
-                left: '',
-                width: '',
-                'max-width': '',
-                position: '',
-                'z-index': ''
-              });
+              origin.removeAttr('style');
+              origin.attr('style', originInlineStyles);
 
               // Remove class
               origin.removeClass('active');
               doneAnimating = true;
-              $(this).remove();
+
+              // Remove overflow overrides on ancestors
+              if (ancestorsChanged) {
+                ancestorsChanged.css('overflow', '');
+              }
             }
-          });
+          }
+        );
 
-        }
+        // Remove Caption + reset css settings on image
+        $('.materialbox-caption').velocity({opacity: 0}, {
+          duration: outDuration, // Delay prevents animation overlapping
+          queue: false, easing: 'easeOutQuad',
+          complete: function(){
+            $(this).remove();
+          }
         });
-};
 
-$(document).ready(function(){
-  $('.materialboxed').materialbox();
-});
+      }
+    });
+  };
+
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
 
 }( jQuery ));

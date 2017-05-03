@@ -4,17 +4,14 @@
   border-left: 1px solid $collapsible-border-color;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   @extend .z-depth-1;
-
-  li {
-    @include transition(.3s);
-  }
 }
 
 .collapsible-header {
   display: block;
   cursor: pointer;
-  height: $collapsible-height;
-  line-height: $collapsible-height;
+  -webkit-tap-highlight-color: transparent;
+  min-height: $collapsible-height;
+  line-height: $collapsible-line-height;
   padding: 0 1rem;
   background-color: $collapsible-header-color;
   border-bottom: 1px solid $collapsible-border-color;
@@ -22,7 +19,7 @@
   i {
     width: 2rem;
     font-size: 1.6rem;
-    line-height: $collapsible-height;
+    line-height: $collapsible-line-height;
     display: block;
     float: left;
     text-align: center;
@@ -31,27 +28,19 @@
 }
 
 .collapsible-body {
-  overflow: hidden;
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
-  @include box-sizing(border-box);
-
-  p {
-    margin: 0;
-    padding: 2rem;
-  }
-}
-
-li.active .collapsible-body {
-
+  box-sizing: border-box;
+  padding: 2rem;
 }
 
 // sideNav collapsible styling
-ul.side-nav {
+.side-nav,
+.side-nav.fixed {
 
-  ul.collapsible {
+  .collapsible {
     border: none;
-    @include box-shadow(none);
+    box-shadow: none;
 
     li { padding: 0; }
   }
@@ -61,18 +50,38 @@ ul.side-nav {
     border: none;
     line-height: inherit;
     height: inherit;
-    margin: 0 1rem;
+    padding: 0 $sidenav-padding;
 
+    &:hover { background-color: rgba(0,0,0,.05); }
     i { line-height: inherit; }
   }
 
   .collapsible-body {
     border: 0;
-    background-color: #FFF;
+    background-color: $collapsible-header-color;
 
-    li a { margin: 0 1rem 0 2rem; }
+    li a {
+      padding: 0 (7.5px + $sidenav-padding)
+               0 (15px + $sidenav-padding);
+    }
   }
 
 }
 
-li.no-padding { padding: 0 !important; }
+// Popout Collapsible
+
+.collapsible.popout {
+  border: none;
+  box-shadow: none;
+  > li {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    // transform: scaleX(.92);
+    margin: 0 24px;
+    transition: margin .35s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  }
+  > li.active {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    margin: 16px 0;
+    // transform: scaleX(1);
+  }
+}

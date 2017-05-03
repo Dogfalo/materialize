@@ -1,10 +1,14 @@
 'use strict';
+//UGLIFY
 
 module.exports = function (grunt) {
     return {
         options: {
-            // the banner is inserted at the top of the output
-            // banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+            // Use these options when debugging
+            // mangle: false,
+            // compress: false,
+            // beautify: true
+
         },
         dist: {
             files: {
@@ -14,6 +18,11 @@ module.exports = function (grunt) {
         bin: {
             files: {
                 'bin/materialize.js': ['temp/js/materialize.js']
+            }
+        },
+        extras: {
+            files: {
+                'extras/noUiSlider/nouislider.min.js': ['extras/noUiSlider/nouislider.js']
             }
         }
     }

@@ -1,5 +1,4 @@
 .container {
-  padding: 0 $gutter-width;
   margin: 0 auto;
   max-width: 1280px;
   width: 90%;
@@ -20,8 +19,8 @@
 }
 
 .section {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   &.no-pad {
     padding: 0;
@@ -31,6 +30,25 @@
   }
   &.no-pad-top {
     padding-top: 0;
+  }
+}
+
+
+// Mixins to eliminate code repitition
+@mixin reset-offset {
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+@mixin grid-classes($size, $i, $perc) {
+  &.offset-#{$size}#{$i} {
+    margin-left: $perc;
+  }
+  &.pull-#{$size}#{$i} {
+    right: $perc;
+  }
+  &.push-#{$size}#{$i} {
+    left: $perc;
   }
 }
 
@@ -48,49 +66,51 @@
   }
 
   .col {
-    @include transition(all .3s);
     float: left;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     padding: 0 $gutter-width / 2;
+    min-height: 1px;
+
+    &[class*="push-"],
+    &[class*="pull-"] {
+      position: relative;
+    }
 
     $i: 1;
     @while $i <= $num-cols {
       $perc: unquote((100 / ($num-cols / $i)) + "%");
-      &.s#{$i} { 
-        width: $perc; 
-        margin-left: 0;
+      &.s#{$i} {
+        width: $perc;
+        @include reset-offset;
       }
       $i: $i + 1;
-    } 
+    }
+
     $i: 1;
     @while $i <= $num-cols {
       $perc: unquote((100 / ($num-cols / $i)) + "%");
-      &.offset-s#{$i} { 
-        margin-left: $perc; 
-      }
+      @include grid-classes("s", $i, $perc);
       $i: $i + 1;
-    } 
+    }
 
     @media #{$medium-and-up} {
 
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
-        &.m#{$i} { 
-          width: $perc; 
-          margin-left: 0;
+        &.m#{$i} {
+          width: $perc;
+          @include reset-offset;
         }
-        $i: $i + 1;
-      } 
+        $i: $i + 1
+      }
+
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
-        &.offset-m#{$i} { 
-          margin-left: $perc;
-        }
+        @include grid-classes("m", $i, $perc);
         $i: $i + 1;
-      } 
-
+      }
     }
 
     @media #{$large-and-up} {
@@ -98,22 +118,39 @@
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
-        &.l#{$i} { 
-          width: $perc; 
-          margin-left: 0;
+        &.l#{$i} {
+          width: $perc;
+          @include reset-offset;
         }
         $i: $i + 1;
-      } 
+      }
+
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
-        &.offset-l#{$i} { 
-          margin-left: $perc;
-        }
+        @include grid-classes("l", $i, $perc);
         $i: $i + 1;
-      } 
-
+      }
     }
 
+    @media #{$extra-large-and-up} {
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.xl#{$i} {
+          width: $perc;
+          @include reset-offset;
+        }
+        $i: $i + 1;
+      }
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        @include grid-classes("xl", $i, $perc);
+        $i: $i + 1;
+      }
+    }
   }
 }

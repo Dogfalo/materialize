@@ -1,0 +1,291 @@
+/* Text Inputs + Textarea
+   ========================================================================== */
+
+/* Style Placeholders */
+
+::-webkit-input-placeholder {
+  color: $placeholder-text-color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: $placeholder-text-color;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: $placeholder-text-color;
+}
+
+:-ms-input-placeholder {
+  color: $placeholder-text-color;
+}
+
+/* Text inputs */
+
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea.materialize-textarea {
+
+  // General Styles
+  background-color: transparent;
+  border: none;
+  border-bottom: $input-border;
+  border-radius: 0;
+  outline: none;
+  height: $input-height;
+  width: 100%;
+  font-size: $input-font-size;
+  margin: $input-margin;
+  padding: $input-padding;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: $input-transition;
+
+  // Disabled input style
+  &:disabled,
+  &[readonly="readonly"] {
+    color: $input-disabled-color;
+    border-bottom: $input-disabled-border;
+  }
+
+  // Disabled label style
+  &:disabled+label,
+  &[readonly="readonly"]+label {
+    color: $input-disabled-color;
+  }
+
+  // Focused input style
+  &:focus:not([readonly]) {
+    border-bottom: 1px solid $input-focus-color;
+    box-shadow: 0 1px 0 0 $input-focus-color;
+  }
+
+  // Focused label style
+  &:focus:not([readonly])+label {
+    color: $input-focus-color;
+  }
+
+  // Valid Input Style
+  &.valid,
+  &:focus.valid {
+    border-bottom: 1px solid $input-success-color;
+    box-shadow: 0 1px 0 0 $input-success-color;
+  }
+
+  // Custom Success Message
+  &.valid + label:after,
+  &:focus.valid + label:after {
+    content: attr(data-success);
+    color: $input-success-color;
+    opacity: 1;
+  }
+
+  // Invalid Input Style
+  &.invalid,
+  &:focus.invalid {
+    border-bottom: $input-invalid-border;
+    box-shadow: 0 1px 0 0 $input-error-color;
+  }
+
+  // Custom Error message
+  &.invalid + label:after,
+  &:focus.invalid + label:after {
+    content: attr(data-error);
+    color: $input-error-color;
+    opacity: 1;
+  }
+
+  // Full width label when using validate for error messages
+  &.validate + label {
+    width: 100%;
+    pointer-events: none;
+  }
+
+  // Form Message Shared Styles
+  & + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 60px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
+  }
+}
+
+// Styling for input field wrapper
+.input-field {
+  // Inline styles
+  &.inline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+
+    input,
+    .select-dropdown {
+      margin-bottom: 1rem;
+    }
+  }
+
+  // Gutter spacing
+  &.col {
+    label {
+      left: $gutter-width / 2;
+    }
+
+    .prefix ~ label,
+    .prefix ~ .validate ~ label {
+      width: calc(100% - 3rem - #{$gutter-width});
+    }
+  }
+
+  position: relative;
+  margin-top: 1rem;
+
+  label {
+    color: $input-border-color;
+    position: absolute;
+    top: 0.8rem;
+    left: 0;
+    font-size: 1rem;
+    cursor: text;
+    transition: .2s ease-out;
+    text-align: initial;
+
+    &:not(.label-icon).active {
+      font-size: $label-font-size;
+      transform: translateY(-140%);
+    }
+  }
+
+  // Prefix Icons
+  .prefix {
+    position: absolute;
+    width: $input-height;
+    font-size: 2rem;
+    transition: color .2s;
+
+    &.active { color: $input-focus-color; }
+  }
+
+  .prefix ~ input,
+  .prefix ~ textarea,
+  .prefix ~ label,
+  .prefix ~ .validate ~ label,
+  .prefix ~ .autocomplete-content {
+    margin-left: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem);
+  }
+
+  .prefix ~ label { margin-left: 3rem; }
+
+  @media #{$medium-and-down} {
+    .prefix ~ input {
+      width: 86%;
+      width: calc(100% - 3rem);
+    }
+  }
+
+  @media #{$small-and-down} {
+    .prefix ~ input {
+      width: 80%;
+      width: calc(100% - 3rem);
+    }
+  }
+}
+
+
+/* Search Field */
+
+.input-field input[type=search] {
+  display: block;
+  line-height: inherit;
+  padding-left: 4rem;
+  width: calc(100% - 4rem);
+
+  &:focus {
+    background-color: $input-background;
+    border: 0;
+    box-shadow: none;
+    color: #444;
+
+    & + label i,
+    & ~ .mdi-navigation-close,
+    & ~ .material-icons {
+      color: #444;
+    }
+  }
+
+  & + label {
+    left: 1rem;
+  }
+
+  & ~ .mdi-navigation-close,
+  & ~ .material-icons {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    color: transparent;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: .3s color;
+  }
+}
+
+
+/* Textarea */
+
+// Default textarea
+textarea {
+  width: 100%;
+  height: $input-height;
+  background-color: transparent;
+
+  &.materialize-textarea {
+    overflow-y: hidden; /* prevents scroll bar flash */
+    padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
+    resize: none;
+    min-height: $input-height;
+  }
+}
+
+// For textarea autoresize
+.hiddendiv {
+  display: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
+  padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+
+  // Reduces repaints
+  position: absolute;
+  top: 0;
+}
+
+
+/* Autocomplete */
+.autocomplete-content {
+  margin-top: -1 * $input-margin-bottom;
+  display: block;
+  opacity: 1;
+  position: static;
+
+  li {
+    .highlight { color: #444; }
+
+    img {
+      height: $dropdown-item-height - 10;
+      width: $dropdown-item-height - 10;
+      margin: 5px 15px;
+    }
+  }
+}

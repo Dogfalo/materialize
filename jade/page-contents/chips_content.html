@@ -1,0 +1,243 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m9 l10">
+
+      <div id="introduction" class="section scrollspy">
+        <h4>Introduction</h4>
+        <p class="caption">
+          Chips can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.
+        </p>
+        <div class="chip">
+          <img src="images/yuna.jpg" alt="Contact Person">
+          Jane Doe
+        </div>
+        <div class="chip">
+          Tag
+          <i class="close material-icons">close</i>
+        </div>
+      </div>
+
+      <div id="contact" class="section scrollspy">
+        <h4>Contacts</h4>
+         <p class="caption">
+          To create a contact chip just add an img inside.
+        </p>
+        <pre><code class="language-markup">
+  &lt;div class="chip">
+    &lt;img src="images/yuna.jpg" alt="Contact Person">
+    Jane Doe
+  &lt;/div>
+        </code></pre>
+      </div>
+
+      <div id="tag" class="section scrollspy">
+        <h4>Tags</h4>
+         <p class="caption">
+          To create a tag chip just add a close icon inside with the class <code class="language-markup">close</code>.
+        </p>
+        <pre><code class="language-markup">
+  &lt;div class="chip">
+    Tag
+    &lt;i class="close material-icons">close&lt;/i>
+  &lt;/div>
+        </code></pre>
+      </div>
+
+      <div id="basic" class="section scrollspy">
+        <h4>Javascript Plugin Usage</h4>
+        <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by using your delete button.</p>
+        <div class="chips"></div>
+        <br>
+        <p class="caption">Set initial tags.</p>
+        <div class="chips chips-initial"></div>
+        <br>
+        <p class="caption">Use placeholders and override hint texts.</p>
+        <div class="chips chips-placeholder"></div>
+        <br>
+        <p class="caption">Use autocomplete with chips.</p>
+        <div class="chips chips-autocomplete"></div>
+      </div>
+
+      <div id="properties" class="section scrollspy">
+        <h4>Markup</h4>
+        <pre><code class="language-markup">
+  &lt;div class="chips">&lt;/div>
+  &lt;div class="chips chips-initial">&lt;/div>
+  &lt;div class="chips chips-placeholder">&lt;/div>
+  &lt;div class="chips chips-autocomplete">&lt;/div>
+        </code></pre>
+        <h4>jQuery Initialization</h4>
+        <pre><code class="language-javascript">
+  $('.chips').material_chip();
+  $('.chips-initial').material_chip({
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
+  });
+  $('.chips-placeholder').material_chip({
+    placeholder: 'Enter a tag',
+    secondaryPlaceholder: '+Tag',
+  });
+  $('.chips-autocomplete').material_chip({
+    autocompleteOptions: {
+      data: {
+        'Apple': null,
+        'Microsoft': null,
+        'Google': null
+      },
+      limit: Infinity,
+      minLength: 1
+    }
+  });
+        </code></pre>
+        <p class="caption">Chip data object</p>
+        <pre><code class="language-javascript">
+  var chip = {
+    tag: 'chip content',
+    image: '', //optional
+    id: 1, //optional
+  };
+        </code></pre>
+
+        <br>
+        <h4>jQuery Plugin Options</h4>
+        <table class="table highlight">
+          <thead>
+            <tr>
+              <th>Option Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>data</td>
+              <td>array</td>
+              <td>Set the chip data (look at the Chip data object)</td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td>Set first placeholder when there are no tags.</td>
+            </tr>
+            <tr>
+              <td>secondaryPlaceholder</td>
+              <td>string</td>
+              <td>Set second placeholder when adding additional tags.</td>
+            </tr>
+            <tr>
+              <td>autocompleteData</td>
+              <td>Object</td>
+              <td>Set autocomplete data.</td>
+            </tr>
+            <tr>
+              <td>autocompleteLimit</td>
+              <td>Integer</td>
+              <td>Set autocomplete limit.</td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="events" class="section scrollspy">
+        <h4>Events</h4>
+        <p class="caption">Material chips exposes a few events for hooking
+          into chips functionality.
+        </p>
+        <table class="table highlight">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>chips.add</td>
+              <td>this method is triggered when a chip is <strong>added</strong>.</td>
+            </tr>
+            <tr>
+              <td>chips.delete</td>
+              <td>this method is triggered when a chip is <strong>deleted</strong>.</td>
+            </tr>
+            <tr>
+              <td>chips.select</td>
+              <td>this method is triggered when a chip is <strong>selected</strong>.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br><br>
+
+        <pre><code class="language-javascript">
+  $('.chips').on('chip.add', function(e, chip){
+    // you have the added chip here
+  });
+
+  $('.chips').on('chip.delete', function(e, chip){
+    // you have the deleted chip here
+  });
+
+  $('.chips').on('chip.select', function(e, chip){
+    // you have the selected chip here
+  });
+        </code></pre>
+
+      </div>
+      <div id="methods" class="section scrollspy">
+        <h4>Methods</h4>
+        <p class="caption">
+          Use these methods to access the chip data.
+        </p>
+        <table class="table highlight">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>data</td>
+              <td>It returns the stored data.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br><br>
+
+        <pre><code class="language-javascript">
+  $('.chips-initial').material_chip('data');
+        </code></pre>
+
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 l2">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#contact">Contacts</a></li>
+            <li><a href="#tag">Tags</a></li>
+            <li><a href="#basic">Plugin</a></li>
+            <li><a href="#properties">Options</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#methods">Methods</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

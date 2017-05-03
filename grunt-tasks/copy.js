@@ -3,9 +3,9 @@
 module.exports = function (grunt) {
 	return {
 		dist: {
-			cwd: 'font',
+			cwd: 'fonts',
 			src: ['**'],
-			dest: 'dist/font',
+			dest: 'dist/fonts',
 			expand: true
 		},
 	};

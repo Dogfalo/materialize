@@ -1,6 +1,11 @@
-.html text
-.css text
-.js text
-.xml text
-.svg text
-.scss text
+* text=auto
+**/*.html linguist-documentation
+js/velocity.min.js linguist-vendored
+js/hammer.min.js linguist-vendored
+js/jquery.easing.1.3.js linguist-vendored
+js/jquery.timeago.min.js linguist-vendored
+
+
+css/ghpages-materialize.css merge=ours
+.gitignore merge=ours
+.gitattributes merge=ours

@@ -1,12 +1,16 @@
 'use strict';
+//  Concurrent
 
 module.exports = function (grunt) {
     return {
         options: {
-            logConcurrentOutput: true
+            logConcurrentOutput: true,
+            limit: 10,
         },
         monitor: {
-            tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'connect:server', 'notify:server']
+            tasks: ["jade_compile", "sass_compile", "js_compile",
+                "watch:jade", "watch:js", "watch:sass",
+                "notify:watching", 'server']
         },
     }
 };
