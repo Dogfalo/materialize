@@ -9,18 +9,6 @@ module.exports = function(grunt) {
 
   // configure the tasks
   grunt.initConfig({
-//  Server
-    connect: {
-      server: {
-        options: {
-          port: 8000,
-          useAvailablePort: true,
-          hostname: '*',
-          keepalive: true
-        }
-      }
-    },
-
     // Text Replace
     replace: {
       version: { // Does not edit README.md
