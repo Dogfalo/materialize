@@ -8,26 +8,8 @@ module.exports = function(grunt) {
   });
 
   // configure the tasks
-  grunt.initConfig({
-     
-  });
+  grunt.initConfig(configs);
 
-  // load the tasks
-//  grunt.loadNpmTasks('grunt-gitinfo');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-compress');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-concurrent');
-  grunt.loadNpmTasks('grunt-notify');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-text-replace');
-  grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-rename');
 
   // define the tasks
   grunt.registerTask(
