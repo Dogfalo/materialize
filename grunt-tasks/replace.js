@@ -26,5 +26,5 @@ module.exports = function (grunt) {
                 to: 'Current Version : v' + grunt.option("newver")
             }]
         },
-    }Î
+    }
 };
