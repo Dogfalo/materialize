@@ -21,7 +21,7 @@
         var uniqueNamespace = namespace+i;
         var images, item_width, item_height, offset, center, pressed, dim, count,
             reference, referenceY, amplitude, target, velocity, scrolling,
-            xform, frame, timestamp, ticker, dragged, vertical_dragged;
+            xform, frame, timestamp, ticker, dragged, vertical_dragged, active_item;
         var $indicators = $('<ul class="indicators"></ul>');
         var scrollingTimeout = null;
 
@@ -59,14 +59,15 @@
         }
 
 
-        // Don't double initialize.
+        // Tear down before reinitialization
         if (view.hasClass('initialized')) {
-          // Recalculate variables
-          $(window).trigger('resize');
-
-          // Redraw carousel.
-          $(this).trigger('carouselNext', [0.000001]);
-          return true;
+          view.removeClass('initialized');
+          // Remove indicators
+          view.children('.indicators').remove();
+          view.find('.carousel-fixed-item').removeClass('with-indicators');
+          // Remove events
+          view.off('touchstart touchmove touchend mousedown mousemove mouseup mouseleave click');
+          view.off('carouselNext carouselPrev carouselSet');
         }
 
 
@@ -78,6 +79,15 @@
         item_height = view.find('.carousel-item').first().innerHeight();
         dim = item_width * 2 + options.padding;
 
+        // Find currently active item
+        active_item = 0;
+        view.find('.carousel-item').each(function (i) {
+            if ($(this).is('.active')) {
+                active_item = i;
+                return false;
+            }
+        });
+        
         view.find('.carousel-item').each(function (i) {
           images.push($(this)[0]);
           if (showIndicators) {
@@ -447,7 +457,9 @@
         });
 
         setupEvents();
-        scroll(offset);
+        
+        // Jump to active item
+        scroll(active_item * dim);
 
         $(this).on('carouselNext', function(e, n) {
           if (n === undefined) {
