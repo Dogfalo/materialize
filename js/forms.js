@@ -93,11 +93,11 @@
             object.addClass('valid');
           }
           else {
-            object.removeClass('valid');
-            object.addClass('invalid');
             if (!object.hasClass('invalid')) {
               object.trigger($.Event('materialize:invalid', {}));
             }
+            object.removeClass('valid');
+            object.addClass('invalid');
           }
         }
       }
