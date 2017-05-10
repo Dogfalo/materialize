@@ -4,7 +4,9 @@
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
   "version": "0.98.2",
-  "main": "bin/materialize.js",
+  "main": "dist/js/materialize",
+  "style": "dist/css/materialize.css",
+  "sass": "scss/materialize.scss",
   "license": "MIT",
   "repository": {
     "type": "git",
