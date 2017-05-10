@@ -76,6 +76,10 @@
 
       if (object.val().length === 0 && object[0].validity.badInput === false) {
         if (object.hasClass('validate')) {
+          if (object.hasClass('valid') || object.hasClass('invalid')) {
+            var evt = $.Event('materialize:reset-input', {});
+            object.trigger(evt);
+          }
           object.removeClass('valid');
           object.removeClass('invalid');
         }
@@ -85,14 +89,16 @@
           // Check for character counter attributes
           if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
             if (!object.hasClass('valid')) {
-              object.trigger($.Event('materialize:valid', {}));
+              var evt = $.Event('materialize:valid-input', {});
+              object.trigger(evt);
             }
             object.removeClass('invalid');
             object.addClass('valid');
           }
           else {
             if (!object.hasClass('invalid')) {
-              object.trigger($.Event('materialize:invalid', {}));
+              var evt = $.Event('materialize:invalid-input', {});
+              object.trigger(evt);
             }
             object.removeClass('valid');
             object.addClass('invalid');
