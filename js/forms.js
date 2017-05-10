@@ -78,6 +78,8 @@
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
+          var evt = $.Event('materialize:invalid', {});
+          object.trigger(evt);
         }
       }
       else {
@@ -86,10 +88,14 @@
           if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
             object.removeClass('invalid');
             object.addClass('valid');
+            var evt = $.Event('materialize:valid', {});
+            object.trigger(evt);
           }
           else {
             object.removeClass('valid');
             object.addClass('invalid');
+            var evt = $.Event('materialize:invalid', {});
+            object.trigger(evt);
           }
         }
       }
