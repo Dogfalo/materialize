@@ -78,8 +78,6 @@
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
-          var evt = $.Event('materialize:invalid', {});
-          object.trigger(evt);
         }
       }
       else {
