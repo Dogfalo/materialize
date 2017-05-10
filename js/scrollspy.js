@@ -179,6 +179,10 @@
 				visible.push($(this));
 			}
 
+			// Remove other 'active's before adding
+			$('.scrollspy').each(function() {
+				$('a[href="#' + $(this).attr('id') + '"]').removeClass('active');
+			});
 
 			$('a[href="#' + visible[0].attr('id') + '"]').addClass('active');
 		});
@@ -188,7 +192,9 @@
 	    });
 
 			if (visible[0]) {
-				$('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
+				// Keep 'active' class until next scrollSpy:enter
+				// $('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
+
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
