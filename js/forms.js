@@ -86,16 +86,18 @@
         if (object.hasClass('validate')) {
           // Check for character counter attributes
           if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
+            if (!object.hasClass('valid')) {
+              object.trigger($.Event('materialize:valid', {}));
+            }
             object.removeClass('invalid');
             object.addClass('valid');
-            var evt = $.Event('materialize:valid', {});
-            object.trigger(evt);
           }
           else {
             object.removeClass('valid');
             object.addClass('invalid');
-            var evt = $.Event('materialize:invalid', {});
-            object.trigger(evt);
+            if (!object.hasClass('invalid')) {
+              object.trigger($.Event('materialize:invalid', {}));
+            }
           }
         }
       }
