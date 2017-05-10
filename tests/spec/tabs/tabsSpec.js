@@ -77,7 +77,9 @@ describe("Tabs Plugin", function () {
       var tabsScrollWidth = 0;
       normalTabs.parent().css('width', '400px');
       normalTabs.find('.tab').each(function() {
-        tabsScrollWidth += $(this).width();
+        setTimeout(function() {
+          tabsScrollWidth += $(this).width();
+        }, 0);
       });
       setTimeout(function() {
         expect(tabsScrollWidth).toBeGreaterThan(normalTabs.width(), 'Scroll width should exceed tabs width');
