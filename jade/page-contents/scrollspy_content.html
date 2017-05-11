@@ -53,7 +53,7 @@
         <table class="highlight">
           <thead>
             <tr>
-                <th>Option Name</th>
+                <th style="min-width: 150px;">Option Name</th>
                 <th>Description</th>
             </tr>
           </thead>
@@ -70,14 +70,13 @@
             <tr>
               <td>getActiveElement</td>
               <td>
-                Function that returns an element / jquery selector to add <code>activeClass<code> to.
-                It is called with the section id.
+                Function that returns a selector to add <code class="language-markup inline">activeClass</code> to. The parameter is the section id.
 
-                Default: <code class="language-javascript">
+                Default: <pre><code class="language-javascript">
   function(id) {
     return 'a[href=#' + id + ']';
   }
-                </code>
+                </code></pre>
               </td>
             </tr>
           </tbody>
