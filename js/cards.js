@@ -3,6 +3,12 @@
 
     $(document).on('click.card', '.card', function (e) {
       if ($(this).find('> .card-reveal').length) {
+        if($(e.target).closest('.card').data('initialOverflow') === undefined){
+          $(e.target).closest('.card').data(
+            'initialOverflow', 
+            $(e.target).closest('.card').css('overflow') === undefined ? '' :$(e.target).closest('.card').css('overflow')
+          );
+        }
         if ($(e.target).is($('.card-reveal .card-title')) || $(e.target).is($('.card-reveal .card-title i'))) {
           // Make Reveal animate down and display none
           $(this).find('.card-reveal').velocity(
@@ -10,7 +16,10 @@
               duration: 225,
               queue: false,
               easing: 'easeInOutQuad',
-              complete: function() { $(this).css({ display: 'none'}); }
+              complete: function() {
+                $(this).css({ display: 'none'});
+                $(e.target).closest('.card').css('overflow', $(e.target).closest('.card').data('initialOverflow'));
+              }
             }
           );
         }
