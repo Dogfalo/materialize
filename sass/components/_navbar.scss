@@ -12,12 +12,13 @@ nav {
       line-height: normal;
     }
   }
+  
+  &.transparent, &.flat {
+    @extend .z-depth-0;
+  }
 
   color: $navbar-font-color;
   @extend .z-depth-1;
-  &.flat {
-    @extend .z-depth-0;
-  }
   background-color: $primary-color;
   width: 100%;
   height: $navbar-height-mobile;
