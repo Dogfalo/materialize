@@ -262,7 +262,7 @@
             if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
                 element = target;
                 break;
-            } else if (target.classList.contains('waves-effect')) {
+            } else if (target.className.indexOf('waves-effect') !== -1) {
                 element = target;
                 break;
             }
