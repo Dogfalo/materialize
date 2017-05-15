@@ -6,7 +6,8 @@
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false,
-        draggable: true
+        draggable: true,
+        hideScrollBar: true
       };
       options = $.extend(defaults, options);
 
@@ -165,7 +166,9 @@
               var $body = $('body');
               var $overlay = $('#sidenav-overlay');
               var oldWidth = $body.innerWidth();
-              $body.css('overflow', 'hidden');
+              if (options.hideScrollBar) {
+                  $body.css('overflow', 'hidden');
+              }
               $body.width(oldWidth);
 
               // If overlay does not exist, create one and if it is clicked, close menu
@@ -302,12 +305,14 @@
             removeMenu();
           }
           else {
-
+              
             // Disable Scrolling
             var $body = $('body');
             var $overlay = $('<div id="sidenav-overlay"></div>');
             var oldWidth = $body.innerWidth();
-            $body.css('overflow', 'hidden');
+            if (options.hideScrollBar) {
+                $body.css('overflow', 'hidden');
+            }
             $body.width(oldWidth);
 
             // Push current drag target on top of DOM tree
