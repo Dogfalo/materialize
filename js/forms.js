@@ -709,23 +709,8 @@
 
             e.preventDefault();
 
-            // CASE WHEN USER TYPE LETTERS
-            var letter = String.fromCharCode(e.which).toLowerCase(),
-                nonLetters = [9,13,27,38,40];
-            if (letter && (nonLetters.indexOf(e.which) === -1)) {
-              filterQuery.push(letter);
-
-              var string = filterQuery.join(''),
-                  newOption = options.find('li').filter(function() {
-                    return $(this).text().toLowerCase().indexOf(string) === 0;
-                  })[0];
-
-              if (newOption) {
-                activateOption(options, newOption);
-              }
-            }
-
             // ENTER - select option and close when select options are opened
+
             if (e.which == 13) {
               var activeOption = options.find('li.selected:not(.disabled)')[0];
               if(activeOption){
@@ -757,12 +742,30 @@
               if(newOption)
                 activateOption(options, newOption);
             }
+          },
+          onKeyPress = function(e){
+            // CASE WHEN USER TYPE LETTERS
+            var letter = String.fromCharCode(e.keyCode).toLowerCase(),
+                nonLetters = [9,13,27,38,40];
+            if (letter && (nonLetters.indexOf(e.keyCode) === -1)) {
+              filterQuery.push(letter);
+
+              var string = filterQuery.join(''),
+                  newOption = options.find('li').filter(function() {
+                    return $(this).text().toLowerCase().indexOf(string) === 0;
+                  })[0];
+
+              if (newOption) {
+                activateOption(options, newOption);
+              }
+            }
 
             // Automaticaly clean filter query so user can search again by starting letters
             setTimeout(function(){ filterQuery = []; }, 1000);
           };
 
       $newSelect.on('keydown', onKeyDown);
+      $newSelect.on('keypress', onKeyPress);
     });
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
