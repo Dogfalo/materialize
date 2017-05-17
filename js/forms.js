@@ -543,6 +543,9 @@
       /* Create dropdown structure. */
       if (selectChildren.length) {
         selectChildren.each(function() {
+          if(this.style.display == 'none'){
+              return;
+          }
           if ($(this).is('option')) {
             // Direct descendant option.
             if (multiple) {
