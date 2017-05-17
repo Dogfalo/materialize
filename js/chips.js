@@ -149,7 +149,7 @@
         $currChips.removeClass('focus');
 
         // Remove active if empty
-        if (!$currChips.data('chips').length) {
+        if ($currChips.data('chips') === undefined || !$currChips.data('chips').length) {
           $currChips.siblings('label').removeClass('active');
         }
         $currChips.siblings('.prefix').removeClass('active');
@@ -208,7 +208,7 @@
       if (label.length) {
         label.attr('for', chipId);
 
-        if ($chips.data('chips').length) {
+        if ($chips.data('chips')!== undefined && $chips.data('chips').length) {
           label.addClass('active');
         }
       }
@@ -243,10 +243,10 @@
     };
 
     this.setPlaceholder = function($chips) {
-      if ($chips.data('chips').length && curr_options.placeholder) {
+      if ($chips.data('chips') !== undefined && $chips.data('chips').length && curr_options.placeholder) {
         $chips.find('input').prop('placeholder', curr_options.placeholder);
 
-      } else if (!$chips.data('chips').length && curr_options.secondaryPlaceholder) {
+      } else if (($chips.data('chips') === undefined || !$chips.data('chips').length) && curr_options.secondaryPlaceholder) {
         $chips.find('input').prop('placeholder', curr_options.secondaryPlaceholder);
       }
     };
