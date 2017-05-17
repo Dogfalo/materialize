@@ -340,7 +340,9 @@
         }
 
         function tap(e) {
-          e.preventDefault();
+          if (e.type === 'mousedown') {
+            e.preventDefault();
+          }
           pressed = true;
           dragged = false;
           vertical_dragged = false;
