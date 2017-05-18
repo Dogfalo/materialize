@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bottom navigation</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  </head>
+  <body>
+      
+    <h1 class="app-bar-title">Simple Bottom navigation</h1>
+    <div class="bottom_navigation top" style="margin-top:100px;">
+      <div class="item">
+        <icon>
+          <i class="material-icons">access_time</i>
+        </icon>
+        <text>
+          Recents
+        </text>
+      </div>
+      <div class="item active">
+        <icon>
+          <i class="material-icons">favorite</i>
+        </icon>
+        <text>
+          Favorites
+        </text>
+      </div>
+      <div class="item">
+        <icon>
+          <i class="material-icons">music_note</i>
+        </icon>
+        <text>
+          Music
+        </text>
+      </div>
+      <div class="item">
+        <icon>
+          <i class="material-icons">location_searching</i>
+        </icon>
+        <text>
+          Nearby
+        </text>
+      </div>
+    </div>
+      
+      <h1 class="app-bar-title" style="margin-top:300px;">Hover Bottom navigation</h1>
+    <div class="bottom_navigation top hover" style="margin-top:420px;">
+      <div class="item">
+        <icon>
+          <i class="material-icons">access_time</i>
+        </icon>
+        <text>
+          Recents
+        </text>
+      </div>
+      <div class="item active">
+        <icon>
+          <i class="material-icons">favorite</i>
+        </icon>
+        <text>
+          Favorites
+        </text>
+      </div>
+      <div class="item">
+        <icon>
+          <i class="material-icons">music_note</i>
+        </icon>
+        <text>
+          Music
+        </text>
+      </div>
+      <div class="item">
+        <icon>
+          <i class="material-icons">location_searching</i>
+        </icon>
+        <text>
+          Nearby
+        </text>
+      </div>
+    </div>
+      
+      <div class="bottom_navigation">
+      <div class="item">
+        <icon>
+          <i class="material-icons">access_time</i>
+        </icon>
+        <text>
+          Recents
+        </text>
+      </div>
+      <div class="item active">
+        <icon>
+          <i class="material-icons">favorite</i>
+        </icon>
+        <text>
+          Favorites
+        </text>
+      </div>
+      <div class="item">
+        <icon>
+          <i class="material-icons">music_note</i>
+        </icon>
+        <text>
+          Music
+        </text>
+      </div>
+      <div class="item">
+        <icon>
+          <i class="material-icons">location_searching</i>
+        </icon>
+        <text>
+          Nearby
+        </text>
+      </div>
+    </div>
+  </body>
+    
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+  @font-face {
+      font-family: 'Material Icons';
+      font-style: normal;
+      font-weight: 400;
+      src: url("../icons/MaterialIcons-Regular.eot") /* For IE6-8 */;
+      src: local('Material Icons'), local('MaterialIcons-Regular'), url("../icons/MaterialIcons-Regular.woff2") format('woff2'), url("../icons/MaterialIcons-Regular.woff") format('woff'), url("../icons/MaterialIcons-Regular.ttf") format('truetype');
+    }
+    .material-icons {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    /* Support for all WebKit browsers. */
+      -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+      text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+      -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+      font-feature-settings: 'liga';
+    }
+    .app-bar-title {
+      font: 40px 'Roboto Medium', sans-serif;
+    }
+    
+    div.bottom_navigation.top {
+        top: 0px;    
+    }
+    
+    div.bottom_navigation {
+    -webkit-box-shadow: 0px -2px 11px 0px rgba(145,145,145,0.65);
+    -moz-box-shadow: 0px -2px 11px 0px rgba(145,145,145,0.65);
+    box-shadow: 0px -2px 11px 0px rgba(145,145,145,0.65);
+    border-top: 1px solid #bdbdbd;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background-color: #fff;
+    display: table;
+    }
+    div.bottom_navigation div.item {
+    cursor: pointer;
+    color: #757575;
+    padding: 10px;
+    display: table-cell;
+    height: 100%;
+    text-align: center;
+    }
+    div.bottom_navigation div.item:hover {
+        background: rgba(90,90,90,0.1);
+    }
+    div.bottom_navigation.hover div.item:hover {
+        color: #e91e63;
+    }
+    div.bottom_navigation.hover div.item:hover icon{
+        color: #e91e63;
+    }
+    div.bottom_navigation div.item icon {
+    display: block;
+    }
+    div.bottom_navigation div.item icon i {
+    font-size: 28px;
+    }
+    div.bottom_navigation div.item text {
+    display: block;
+    font: 18px 'Roboto Regular', sans-serif;
+    }
+    div.bottom_navigation div.item.active {
+    color: #e91e63;
+    }
+    div.bottom_navigation div.item.active icon {
+    display: block;
+    }
+    div.bottom_navigation div.item.active icon i {
+    font-size: 30px;
+    }
+    div.bottom_navigation div.item.active text {
+    font-size: 20px;
+    }
+</style>
+</html>
