@@ -5365,7 +5365,7 @@ button.btn-floating {
 
 .btn-flat.disabled {
   background-color: transparent !important;
-  color: #b3b3b3 !important;
+  color: #b3b2b2 !important;
   cursor: default;
 }
 
