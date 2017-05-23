@@ -8950,3 +8950,62 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+
+/* ==========================================================================
+   CURSOR STYLES
+   ========================================================================== */
+.cursor-default{
+  cursor:default;
+}
+
+.cursor-pointing{
+  cursor: pointer;
+}
+
+.cursor-waiting{
+  cursor:wait
+}
+
+.cursor-loading{
+  cursor:progress;
+}
+
+.cursor-moving{
+  cursor:move;
+}
+
+.cursor-h-resizing{
+  cursor:e-resize;
+}
+
+.cursor-v-resizing{
+  cursor:s-resize;
+}
+
+.cursor-typing{
+  cursor:text;
+}
+
+.cursor-zoom-in{
+  cursor:zoom-in;
+}
+
+.cursor-zoom-out{
+  cursor:zoom-out;
+}
+
+.cursor-cell{
+  cursor:cell;
+}
+
+.cursor-col-resizing{
+  cursor:col-resize;
+}
+
+.cursor-none{
+  cursor:none;
+}
+
+.cursor-deny{
+  cursor:no-drop;
+}
