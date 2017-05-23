@@ -127,32 +127,33 @@
 /* ==========================================================================
    $DEFAULT-TIME-PICKER
    ========================================================================== */
-   .clockpicker-display {
-	font-size:3rem;
-	font-weight:bold;
-	text-align:center;
+.clockpicker-display {
+	font-size: 3rem;
+	font-weight: bold;
+	text-align: center;
 	color: rgba(255, 255, 255, 0.6);
-	clear:both;
-	position:relative;
+  font-weight: 400;
+	clear: both;
+	position: relative;
 }
 
 .clockpicker-span-am-pm {
   font-size: 1.2rem;
-  position:absolute;
-  right:1rem;
-  bottom:0.3rem;
-  line-height:1.5rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 0.3rem;
+  line-height: 1.5rem;
 }
 @media only screen and (min-width: 601px) {
 	.clockpicker-display {
-		top:32%;
+		top: 32%;
 	}
 	.clockpicker-span-am-pm {
-	  position:relative;
-	  right:auto;
-	  bottom:auto;
-	  text-align:center;
-	  margin-top:1.2rem;
+	  position: relative;
+	  right: auto;
+	  bottom: auto;
+	  text-align: center;
+	  margin-top: 1.2rem;
 	}
 }
 
@@ -160,6 +161,13 @@
 .text-primary{
 	color: rgba(255, 255, 255, 1)
 }
+.clockpicker-span-hours {
+  margin-right: 3px;
+}
+.clockpicker-span-minutes {
+  margin-left: 3px;
+}
+
 .clockpicker-span-hours,
 .clockpicker-span-minutes,
 .clockpicker-span-am-pm div {
@@ -246,23 +254,18 @@
 }
 .clockpicker-canvas-bearing {
 	stroke: none;
-	fill: rgba(0, 77, 64, 0.75);
-}
-.clockpicker-canvas-fg {
-	stroke: none;
-  fill: rgba(0, 77, 64, 0.25);
+	fill: $secondary-color;
 }
 .clockpicker-canvas-bg {
 	stroke: none;
-	fill: rgba(0, 150, 136, 0.25);
+	fill: $secondary-color;
 }
 .clockpicker-canvas-bg-trans {
-	fill: rgba(0, 150, 136, 0.25);
+	fill: $secondary-color;
 }
 .clockpicker-canvas line {
-	stroke: rgba(0, 150, 136, 0.25);
-	stroke-width: 1;
+	stroke: $secondary-color;
+	stroke-width: 3;
 	stroke-linecap: round;
 	/*shape-rendering: crispEdges;*/
 }
-

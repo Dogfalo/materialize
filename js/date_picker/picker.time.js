@@ -116,8 +116,7 @@
 				isInput = element.prop('tagName') === 'INPUT',
 				input = isInput ? element : element.find('input'),
 				label = $("label[for=" + input.attr("id") + "]"),
-				self = this,
-				timer;
+				self = this;
 
 		this.id = uniqueId('cp');
 		this.element = element;
@@ -249,11 +248,6 @@
 				self.popover.addClass('clockpicker-moving');
 			}, 200);
 
-			// Place the canvas to top
-			if (svgSupported){
-				plate.append(self.canvas);
-      }
-
 			// Clock
 			self.setHand(dx, dy, !space, true);
 
@@ -314,26 +308,21 @@
 			bearing.setAttribute('class', 'clockpicker-canvas-bearing');
 			bearing.setAttribute('cx', 0);
 			bearing.setAttribute('cy', 0);
-			bearing.setAttribute('r', 2);
+			bearing.setAttribute('r', 4);
 			var hand = createSvgElement('line');
 			hand.setAttribute('x1', 0);
 			hand.setAttribute('y1', 0);
 			var bg = createSvgElement('circle');
 			bg.setAttribute('class', 'clockpicker-canvas-bg');
 			bg.setAttribute('r', tickRadius);
-			var fg = createSvgElement('circle');
-			fg.setAttribute('class', 'clockpicker-canvas-fg');
-			fg.setAttribute('r', 5);
 			g.appendChild(hand);
 			g.appendChild(bg);
-			g.appendChild(fg);
 			g.appendChild(bearing);
 			svg.appendChild(g);
 			canvas.append(svg);
 
 			this.hand = hand;
 			this.bg = bg;
-			this.fg = fg;
 			this.bearing = bearing;
 			this.g = g;
 			this.canvas = canvas;
@@ -414,7 +403,7 @@
 		}
 		this.hours = + value[0] || 0;
 		this.minutes = + value[1] || 0;
-		this.spanHours.html(leadingZero(this.hours));
+		this.spanHours.html(this.hours);
 		this.spanMinutes.html(leadingZero(this.minutes));
 		if (!this.isAppended) {
 			// Append popover to body
@@ -576,15 +565,6 @@
 					value = 0;
 			}
 		}
-		if (isHours) {
-			this.fg.setAttribute('class', 'clockpicker-canvas-fg');
-    } else {
-			if (value % 5 == 0) {
-				this.fg.setAttribute('class', 'clockpicker-canvas-fg');
-      } else {
-				this.fg.setAttribute('class', 'clockpicker-canvas-fg active');
-      }
-		}
 
 		// Once hours or minutes changed, vibrate the device
 		if (this[this.currentView] !== value) {
@@ -600,7 +580,11 @@
     }
 
 		this[this.currentView] = value;
-		this[isHours ? 'spanHours' : 'spanMinutes'].html(leadingZero(value));
+    if (isHours) {
+      this['spanHours'].html(value);
+    } else {
+      this['spanMinutes'].html(leadingZero(value));
+    }
 
 		// If svg is not supported, just add an active class to the tick
 		if (!svgSupported) {
@@ -609,18 +593,6 @@
 				tick.toggleClass('active', value === + tick.html());
 			});
 			return;
-		}
-
-		// Place clock hand at the top when dragging
-		if (dragging || (! isHours && value % 5)) {
-			this.g.insertBefore(this.hand, this.bearing);
-			this.g.insertBefore(this.bg, this.fg);
-			this.bg.setAttribute('class', 'clockpicker-canvas-bg clockpicker-canvas-bg-trans');
-		} else {
-			// Or place it at the bottom
-			this.g.insertBefore(this.hand, this.bg);
-			this.g.insertBefore(this.fg, this.bg);
-			this.bg.setAttribute('class', 'clockpicker-canvas-bg');
 		}
 
 		// Set clock hand and others' position
@@ -632,8 +604,6 @@
 		this.hand.setAttribute('y2', cy1);
 		this.bg.setAttribute('cx', cx2);
 		this.bg.setAttribute('cy', cy2);
-		this.fg.setAttribute('cx', cx2);
-		this.fg.setAttribute('cy', cy2);
 	};
 
 	// Hours and minutes are selected
