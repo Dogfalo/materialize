@@ -280,7 +280,20 @@
         <div class="col s12">
           <h2 class="header">Third-party Options</h2>
           <p class="caption">There are a few community-made options for you to easily include Materialize in your project. Keep in mind these are untested and may be out-of-date.</p>
-          <p class="promo-caption">Ruby Gem</p>
+          <p class="promo-caption">Flask-Materialize</p>
+	  <p>See <a href="https://github.com/HellerCommaA/flask-materialize">https://github.com/HellerCommaA/flask-materialize</a> for documentation and latest release.</p>
+	  <pre><code class="language-bash">
+virtualenv .
+pip install flask-material
+	  </code></pre>
+	  <pre><code class="language-bash">
+from flask_material import Material
+# [...Init your app, etc...]
+Material(app)
+# Be sure your application page
+# uses: {% extends "material/base.html" %}
+	  </code></pre>
+	  <p class="promo-caption">Ruby Gem</p>
           <p>See <a href="https://github.com/mkhairi/materialize-sass">here</a> for documentation on this gem.</p>
           <pre><code class="language-bash">
   gem 'materialize-sass'
