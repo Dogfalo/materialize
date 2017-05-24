@@ -9,7 +9,6 @@ module.exports = function(grunt) {
 
   // configure the tasks
   grunt.initConfig(configs);
-
   // define the tasks
   grunt.registerTask(
     'release',[

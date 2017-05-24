@@ -16,9 +16,8 @@ bower_components
 .grunt/
 .versions
 
-# Ignore .html files in root except SpecRunner
+# Ignore .html files in root
 *.html
-!_SpecRunner.html
 !fab-toolbar-demo.html
 
 # Ignore compiled files
