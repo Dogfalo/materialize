@@ -367,6 +367,45 @@
           $input.off('blur.autocomplete').on('blur.autocomplete', function() {
             removeAutocomplete();
           });
+          
+          $input.off('updateData.autocomplete').on('updateData.autocomplete', function (e) {
+            // Reset count.
+            count = 0;
+            var val = $input.val().toLowerCase();
+
+
+            // Check if the input isn't empty
+            if (oldVal !== val) {
+              removeAutocomplete();
+
+              if (val.length >= options.minLength) {
+                for(var key in data) {
+                  if (data.hasOwnProperty(key) &&
+                      key.toLowerCase().indexOf(val) !== -1 &&
+                      key.toLowerCase() !== val) {
+                    // Break if past limit
+                    if (count >= options.limit) {
+                      break;
+                    }
+
+                    var autocompleteOption = $('<li></li>');
+                    if (!!data[key]) {
+                      autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+                    } else {
+                      autocompleteOption.append('<span>'+ key +'</span>');
+                    }
+
+                    $autocomplete.append(autocompleteOption);
+                    highlight(val, autocompleteOption);
+                    count++;
+                  }
+                }
+              }
+            }
+
+            // Update oldVal
+            oldVal = val;
+          });
 
           // Perform search
           $input.off('keyup.autocomplete focus.autocomplete').on('keyup.autocomplete focus.autocomplete', function (e) {
