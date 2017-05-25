@@ -861,21 +861,30 @@
         <pre><code class="language-javascript">
   $('input.autocomplete').autocomplete({
     data: {
-      "Apple": null,
-      "Microsoft": null,
-      "Google": 'http://placehold.it/250x250'
-    },
+      "Apple": {
+        id: 1,
+        image: null,
+        text: 'Apple Inc',
+      },
+      "Microsoft": {
+        id: 2,
+        image: null,
+        text: 'Microsoft Inc',
+      },
+      "Google": {
+        id: 3,
+        image: http://placehold.it/250x250,
+        text: 'Google Inc',
+      },
     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-    onAutocomplete: function(val) {
+    onAutocomplete: function(data) {
       // Callback function when value is autcompleted.
     },
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+    scrollLength: 0, // The maximum number of elements to display before the scroll. Default: disable scroll.
   });
         </code></pre>
       </div>
-
-
-
     </div>
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">

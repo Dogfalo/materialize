@@ -308,7 +308,8 @@
         data: {},
         limit: Infinity,
         onAutocomplete: null,
-        minLength: 1
+        minLength: 1,
+        scrollLength: 0,
       };
 
       options = $.extend(defaults, options);
@@ -325,6 +326,11 @@
         if (!$.isEmptyObject(data)) {
           var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
           var $oldAutocomplete;
+
+          // Set scroll length list
+          if (options.scrollLength > 0) {
+              $autocomplete.css("max-height", options.scrollLength*50 + "px");
+          }
 
           // Append autocomplete element.
           // Prevent double structure init.
@@ -387,7 +393,6 @@
               return;
             }
 
-
             // Check if the input isn't empty
             if (oldVal !== val) {
               removeAutocomplete();
@@ -403,8 +408,13 @@
                     }
 
                     var autocompleteOption = $('<li></li>');
-                    if (!!data[key]) {
-                      autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+
+                    // Set data list
+                    autocompleteOption.attr("data-val", JSON.stringify(data[key]));
+
+                    // Set image list
+                    if (!!data[key].image) {
+                      autocompleteOption.append('<img src="'+ data[key].image +'" class="right circle"><span>'+ key +'</span>');
                     } else {
                       autocompleteOption.append('<span>'+ key +'</span>');
                     }
@@ -462,13 +472,15 @@
           // Set input value
           $autocomplete.on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
             var text = $(this).text().trim();
+            var data = JSON.parse($(this).attr('data-val')); //jonathan
+
             $input.val(text);
             $input.trigger('change');
             removeAutocomplete();
 
             // Handle onAutocomplete callback.
             if (typeof(options.onAutocomplete) === "function") {
-              options.onAutocomplete.call(this, text);
+              options.onAutocomplete.call(this, data);
             }
           });
         }
