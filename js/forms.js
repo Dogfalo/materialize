@@ -375,10 +375,10 @@
 
 
             // Check if the input isn't empty
-            if (oldVal !== val) {
+            // if (oldVal !== val) {
               removeAutocomplete();
 
-              if (val.length >= options.minLength) {
+              // if (val.length >= options.minLength) {
                 for(var key in data) {
                   if (data.hasOwnProperty(key) &&
                       key.toLowerCase().indexOf(val) !== -1 &&
@@ -400,11 +400,11 @@
                     count++;
                   }
                 }
-              }
-            }
+              // }
+            // }
 
             // Update oldVal
-            oldVal = val;
+            // oldVal = val;
           });
 
           // Perform search
