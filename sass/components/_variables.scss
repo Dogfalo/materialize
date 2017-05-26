@@ -27,6 +27,7 @@
 //  22. Flow Text
 //  23. Collections
 //  24. Progress Bar
+//  25. Lists
 
 
 
@@ -320,3 +321,10 @@ $collection-line-height: 1.5rem !default;
 // ==========================================================================
 
 $progress-bar-color: $secondary-color !default;
+
+// 24. Lists
+// ==========================================================================
+$items-background-color: #fff !default;
+$main-text-color: #000 !default;
+$secondary-text-color: lighten($main-text-color, 40%) !default;
+$tertiary-text-color: lighten($main-text-color, 10%) !default;

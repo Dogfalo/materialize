@@ -128,6 +128,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/lists.html',
+      title: 'lists',
+      body: 'Lists are a great way to show a number of items and are often used for messages, settings and contacts.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/media-css.html',
       title: 'Media CSS',
       body: 'Media CSS classes'

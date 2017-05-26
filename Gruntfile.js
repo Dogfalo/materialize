@@ -358,6 +358,7 @@ module.exports = function(grunt) {
           "forms.html": "jade/forms.jade",
           "buttons.html": "jade/buttons.jade",
           "navbar.html": "jade/navbar.jade",
+          "lists.html": "jade/lists.jade",
           "cards.html": "jade/cards.jade",
           "preloader.html": "jade/preloader.jade",
           "collections.html": "jade/collections.jade",
