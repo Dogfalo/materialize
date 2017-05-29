@@ -1,4 +1,8 @@
 ## Contributing
+- Editing files
+  - **Do not edit compiled files!** If you wish to modify the css edit the `.scss` files.
+  - Don't try to contribute to files in the /dist/ folder or the /bin/ folder.
+  - To edit the materialize framework edit /sass/ and /js/.
 - Compiling Files
   - `npm install`
   - `grunt monitor`, this will compile .scss, .js., .jade files
