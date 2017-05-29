@@ -5,6 +5,8 @@
   "url": "http://materializecss.com/",
   "version": "0.98.2",
   "main": "bin/materialize.js",
+  "style": "bin/materialize.css",
+  "sass": "sass/materialize.scss",
   "license": "MIT",
   "repository": {
     "type": "git",
