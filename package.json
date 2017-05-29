@@ -5,6 +5,7 @@
   "url": "http://materializecss.com/",
   "version": "0.98.2",
   "main": "bin/materialize.js",
+  "style": "dist/css/materialize.css",
   "license": "MIT",
   "repository": {
     "type": "git",
