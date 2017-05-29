@@ -35,6 +35,12 @@ nav {
     position: relative;
     height: 100%;
   }
+    form {
+      height: 100%;
+    }
+      .input-field {
+        height: 100%;
+      }
 
   @media #{$large-and-up} {
     a.button-collapse { display: none; }
