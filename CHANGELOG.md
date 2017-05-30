@@ -3,13 +3,13 @@ Changelog
 Bolded styling surrounded by emojis indicates a breaking change.
 
 ## v0.98.2 (April 14th)
+- :no_good: **Autocomplete: renamed and moved options to `autocompleteOptions`** :no_good:
 - Fixed collapsible preselect bug
 - Fixed dropdown event bubbling bug
 - Fixed range position inaccuracies
 - Fixed feature discovery mobile styles
 - Fixed carousel reinitialize bugs
 - Fixed grid offset bug
-- **Autocomplete: renamed and moved options to `autocompleteOptions`**
 
 
 ## v0.98.1 (March 21st)
