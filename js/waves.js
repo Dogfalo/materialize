@@ -273,12 +273,20 @@
     }
 
     /**
+     * Test if wave effect is applicable on given element
+     */
+    function canWave(element) {
+        return element !== null && 
+            !(element.tagName === 'BUTTON' && element.hasAttribute('disabled'));
+    }
+    
+    /**
      * Bubble the click and show effect if .waves-effect elem was found
      */
     function showEffect(e) {
         var element = getWavesEffectElement(e);
 
-        if (element !== null) {
+        if (canWave(element)) {
             Effect.show(e, element);
 
             if ('ontouchstart' in window) {
