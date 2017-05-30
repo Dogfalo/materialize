@@ -6,7 +6,9 @@
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false,
-        draggable: true
+        draggable: true,
+		onOpen: null,
+		onClose: null
       };
       options = $.extend(defaults, options);
 
@@ -135,7 +137,10 @@
                 }
               });
           }
-        };
+		  if(typeof(options.onClose) === 'function'){
+			options.onClose();
+		  }
+        }
 
 
 
@@ -332,15 +337,18 @@
                   $(this).remove();
                 } });
 
-            });
-            $('body').append($overlay);
-            $overlay.velocity({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
-              complete: function () {
-                menuOut = true;
-                panning = false;
-              }
-            });
-          }
+              });
+              $('body').append($overlay);
+              $overlay.velocity({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                complete: function () {
+                  menuOut = true;
+                  panning = false;
+                }
+              });
+			  if(typeof(options.onOpen) === 'function'){
+				options.onOpen();
+			  }
+            }
 
           return false;
         });
