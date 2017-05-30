@@ -7,8 +7,8 @@
         edge: 'left',
         closeOnClick: false,
         draggable: true,
-		onOpen: null,
-		onClose: null
+        onOpen: null,
+        onClose: null
       };
       options = $.extend(defaults, options);
 
@@ -137,9 +137,11 @@
                 }
               });
           }
-		  if(typeof(options.onClose) === 'function'){
-			options.onClose();
-		  }
+
+          // Callback
+          if (typeof(options.onClose) === 'function') {
+            options.onClose.call(this, menu);
+          }
         }
 
 
@@ -345,10 +347,12 @@
                   panning = false;
                 }
               });
-			  if(typeof(options.onOpen) === 'function'){
-				options.onOpen();
-			  }
+
+            // Callback
+            if (typeof(options.onOpen) === 'function') {
+              options.onOpen.call(this, menu);
             }
+          }
 
           return false;
         });
