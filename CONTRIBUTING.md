@@ -1,17 +1,9 @@
 Contributing
 ------------
 ### Table of contents:
-  - Contribution 101
-  - Issues
-  - Pull Requests
-  - Jasmine Testing Guide
-
-## Contribution 101 (Pull requests)
-  - Fork this repo to your own git
-  - Make your changes
-  - Submit a pull request with full remarks documenting your changes
-  - Pull request MAY then be accepted by project creators
-  - Make sure you are altering the correct source files (Never alter compiled / dist files)
+  - [Issues](#issues)
+  - [Pull Requests](#pull-requests)
+  - [Jasmine Testing Guide](#jasmine-testing-guide)
 
 ## Issues:
   - If you have an issue please make sure you document the problems in depth.
@@ -23,6 +15,13 @@ Contributing
   - Use this [Codepen](http://codepen.io/Dogfalo/pen/xbzPQV) to illustrate your problem.
 
 ## Pull requests:
+
+### Basics
+  - Fork this repo to your own git
+  - Make your changes
+  - Submit a pull request with full remarks documenting your changes
+  - Pull request MAY then be accepted by project creators
+  - Make sure you are altering the correct source files (Never alter compiled / dist files)
 
 ### Feature Requests
   - We like feature requests but make sure that it can be seen within the goals of the project and not just something you need individually. Also you should try and give as much examples and details about the new feature as possible. If you are requesting a component from the [Material design guidelines](https://material.io/guidelines/), make sure to include a link to the component
