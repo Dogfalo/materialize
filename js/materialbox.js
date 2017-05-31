@@ -24,7 +24,8 @@
       origin.wrap(placeholder);
 
 
-      origin.on('click', function(){
+      // Start click handler
+      origin.on('click', function() {
         var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
@@ -178,25 +179,29 @@
             ); // End Velocity
         }
 
-      }); // End origin on click
-
-
-      // Return on scroll
-      $(window).scroll(function() {
-        if (overlayActive) {
-          returnToOriginal();
-        }
-      });
-
-      // Return on ESC
-      $(document).keyup(function(e) {
-
-        if (e.keyCode === 27 && doneAnimating === true) {   // ESC key
+        // Handle Exit triggers
+        $(window).on('scroll.materialbox', function() {
           if (overlayActive) {
             returnToOriginal();
           }
-        }
-      });
+        });
+
+        $(window).on('resize.materialbox', function() {
+          if (overlayActive) {
+            returnToOriginal();
+          }
+        });
+
+        $(document).on('keyup.materialbox', function(e) {
+          // ESC key
+          if (e.keyCode === 27 &&
+              doneAnimating === true &&
+              overlayActive) {
+            returnToOriginal();
+          }
+        });
+
+      }); // End click handler
 
 
       // This function returns the modaled image to the original spot
@@ -214,6 +219,10 @@
         $('#materialbox-overlay').velocity("stop", true);
         $('.materialbox-caption').velocity("stop", true);
 
+        // disable exit handlers
+        $(window).off('scroll.materialbox');
+        $(document).off('keyup.materialbox');
+        $(window).off('resize.materialbox');
 
         $('#materialbox-overlay').velocity({opacity: 0}, {
           duration: outDuration, // Delay prevents animation overlapping

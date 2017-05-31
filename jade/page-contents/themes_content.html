@@ -1,5 +1,149 @@
 <div class="container">
-  <!--  Outer row  -->
+  <div class="row themes-section">
+
+    <div class="col s12 m4">
+      <h4>Startup<span class="new badge tooltipped" data-badge-caption="Early Bird Sale" data-position="bottom" data-delay="0" data-tooltip="For a limited time, this theme is 25% off"></span></h4>
+      <p class="caption" style="margin-bottom: 0;">Startup is a perfect theme for showcasing your new app, company or project. With the help of GSAP and ScrollMagic, create unique scrolling experiences that will keep users engaged.</p>
+      <div id='product-component-7b7b0511630'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'materialize-themes.myshopify.com',
+      apiKey: '2d9a0b3001fe4fcbe3ba50c42a7df88e',
+      appId: '6',
+    });
+
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: [9462627457],
+        node: document.getElementById('product-component-7b7b0511630'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "buttonDestination": "checkout",
+    "variantId": "all",
+    "width": "240px",
+    "contents": {
+      "img": false,
+      "imgWithCarousel": false,
+      "title": false,
+      "variantTitle": false,
+      "price": false,
+      "description": false,
+      "buttonWithQuantity": false,
+      "quantity": false
+    },
+    "text": {
+      "button": "BUY 29$"
+    },
+    "styles": {
+      "product": {
+        "text-align": "left",
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0",
+          "margin-bottom": "50px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      },
+      "title": {
+        "font-size": "26px"
+      },
+      "price": {
+        "font-size": "18px"
+      },
+      "compareAt": {
+        "font-size": "15px"
+      }
+    }
+  },
+  "cart": {
+    "contents": {
+      "button": true
+    },
+    "styles": {
+      "button": {
+        "border-radius": "2px"
+      },
+      "footer": {
+        "background-color": "#ffffff"
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "variantTitle": false,
+      "buttonWithQuantity": true,
+      "button": false,
+      "quantity": false
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      }
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  }
+}
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
+    <a class="shopify-btn" target="_blank" href="https://themes.materializecss.com/pages/startup-horizontal-half.html">DEMO</a>
+    </div>
+    <div class="col s12 m7 offset-m1">
+      <img class="theme-preview" src="https://s14.postimg.org/sai9xfjrl/materialize.png" alt="">
+    </div>
+
+  </div>
+
   <div class="row themes-section">
 
     <div class="col s12 m7">

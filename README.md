@@ -1,7 +1,7 @@
-![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
+![Materialize logo](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
 ===========
 
-[![Travis CI](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize) [![devDependency Status](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Travis CI badge](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize) [![devDependency Status badge](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies) [![Gitter badge](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Materialize](http://materializecss.com/), a CSS Framework based on material design
 
@@ -13,55 +13,21 @@
 ## Supported Browsers:
 Chrome 35+, Firefox 31+, Safari 7+, IE 10+
 
+## Quickstart:
+Read the [Getting started page](http://materializecss.com/getting-started.html) for more information about the framework, templates and how to use materialize can be found on the [materializecss website](http://materializecss.com)
+
+- [Download the latest release](https://github.com/Dogfalo/materialize/releases/latest) directly from GitHub
+- Clone the repo: `git clone https://github.com/Dogfalo/materialize.git`
+- Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](http://materializecss.com/getting-started.html)
+- Install with [npm](https://www.npmjs.com): `npm install materialize-css`
+- Install with [Bower](https://bower.io): `bower install materialize`
+
+## Compiling Files
+- `npm install`
+- `grunt monitor`, this will compile .scss, .js., .jade files.
+
 ## Changelog
-Bolded styling surrounded by emojis indicates a breaking change.
-
-- v0.98.2 (April 14th)
-  - Fixed collapsible preselect bug
-  - Fixed dropdown event bubbling bug
-  - Fixed range position inaccuracies
-  - Fixed feature discovery mobile styles
-  - Fixed carousel reinitialize bugs
-  - Fixed grid offset bug
-
-- v0.98.1 (March 21st)
-  - Fixed various select bugs on mobile devices
-  - Fixed small sideNav overlay bugs
-  - Fixed carousel resizing bug
-  - Fixed materialbox callback bug
-  - Range slider supports keyboard navigation
-  - Added XL breakpoint
-  - Added Pulse CSS effect
-  - Added Feature Discovery component
-
-- v0.98.0 (January 25th)
-  - :no_good: **Standardized plugin option naming to camelcase (please check your plugin calls to make sure all the options are camelcase)** :no_good:
-  - Added FABs in image cards
-  - Added swipeable tabs
-  - Fixed carousel misalignment when switching quickly
-  - Fixed carousel resize bug where slide widths wouldn't change when changing window size
-  - Improved tabs compatibility with cards
-  - Fixed bug where using backspace to delete chips would navigate back in certain browsers
-  - Added autocomplete integration with chips
-  - Upgraded noUiSlider to version 9 with support for vertical sliders
-
-- v0.97.8 (October 30th, 2016)
-  - **Refactored Modal plugin**
-  - Tabs now supported in navbar
-  - Chips data can now be reinitiailized
-  - Minor side nav fixes
-  - FAB to toolbar component added
-  - Fixed dropdown options bug
-- v0.97.7 (July 23rd, 2016)
-  - Basic horizontal cards
-  - Carousel bug fixes and new features
-  - Updated sidenav styles and new component
-  - Meteor package now supports Sass
-  - Autocomplete form component
-  - Chips jQuery plugin
-
-
-
+For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md)
 
 ## Testing
 We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](https://docs.google.com/document/d/1dVM6qGt_b_y9RRhr9X7oZfFydaJIEqB9CT7yekv-4XE/edit?usp=sharing)
