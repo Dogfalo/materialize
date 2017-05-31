@@ -312,7 +312,6 @@
             removeMenu();
           }
           else {
-              
             // Disable Scrolling
             var $body = $('body');
             var $overlay = $('<div id="sidenav-overlay"></div>');
