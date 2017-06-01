@@ -168,6 +168,11 @@
               var y = e.gesture.center.y;
               var velocityX = e.gesture.velocityX;
 
+              // Vertical scroll bugfix
+              if (x === 0 && y === 0) {
+                return;
+              }
+
               // Disable Scrolling
               var $body = $('body');
               var $overlay = $('#sidenav-overlay');
