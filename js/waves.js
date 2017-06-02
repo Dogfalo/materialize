@@ -260,6 +260,9 @@
 
         while (target.parentElement !== null) {
             if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
+                if (target.attributes.hasOwnProperty('disabled') || target.className.indexOf('disabled') !== -1 ) {
+                    return null;
+                }
                 element = target;
                 break;
             } else if (target.className.indexOf('waves-effect') !== -1) {
