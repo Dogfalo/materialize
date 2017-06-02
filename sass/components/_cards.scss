@@ -11,6 +11,7 @@
 
 .card {
   position: relative;
+  overflow: hidden;
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
   transition: box-shadow .25s;
