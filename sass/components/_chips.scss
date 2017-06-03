@@ -79,7 +79,6 @@
 // Form prefix
 .prefix ~ .chips {
   margin-left: 3rem;
-  width: 92%;
   width: calc(100% - 3rem);
 }
 .chips:empty ~ label  {
