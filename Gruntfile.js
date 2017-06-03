@@ -88,7 +88,7 @@ module.exports = function(grunt) {
           })
         ]
       },
-      expended: {
+      expanded: {
         src: 'dist/css/materialize.css'
       },
       min: {
@@ -585,7 +585,7 @@ module.exports = function(grunt) {
       'copy',
       'sass:expanded',
       'sass:min',
-      'postcss:expended',
+      'postcss:expanded',
       'postcss:min',
       'concat:dist',
       'uglify:dist',
