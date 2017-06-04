@@ -19,7 +19,7 @@
     "hammerjs": "^2.0.8",
     "jquery": "^2.1.4"
   },
-  "engine": "node >= 6.10.0",
+  "engine": "node >= 6",
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "grunt": "^1.0.1",
