@@ -176,7 +176,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 if ( !STATE.start ) return P
 
                 // Then close the picker.
-                P.close()
+                P.close(false, true)
 
                 // Remove the hidden field.
                 if ( P._hidden ) {
@@ -321,7 +321,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             /**
              * Close the picker
              */
-            close: function( giveFocus ) {
+            close: function( giveFocus, isStopping ) {
 
                 // If we need to give focus, do it before changing states.
                 if ( giveFocus ) {
@@ -346,6 +346,9 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     // Remove the “opened” and “focused” class from the picker root.
                     P.$root.removeClass( CLASSES.opened + ' ' + CLASSES.focused )
                     aria( P.$root[0], 'hidden', true )
+                    if (isStopping) {
+                      P.$root = null;
+                    }
 
                 }, 0 )
 
