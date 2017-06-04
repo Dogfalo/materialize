@@ -4,8 +4,8 @@
   "author": "Alvin Wang, Alan Chang",
   "url": "http://materializecss.com/",
   "version": "0.98.2",
-  "main": "bin/materialize.js",
-  "style": "bin/materialize.css",
+  "main": "dist/js/materialize.js",
+  "style": "dist/css/materialize.css",
   "sass": "sass/materialize.scss",
   "license": "MIT",
   "repository": {
@@ -47,4 +47,12 @@
   "scripts": {
     "test": "grunt travis --verbose"
   }
+  "files": [
+    "dist",
+    "extras",
+    "js/**/*.js",
+    "sass/**/*.scss",
+    "Gruntfile.js",
+    "LICENSE"
+  ]
 }
