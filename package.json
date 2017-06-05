@@ -2,7 +2,7 @@
   "name": "materialize-css",
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
-  "url": "http://materializecss.com/",
+  "homepage": "http://materializecss.com/",
   "version": "0.98.2",
   "main": "dist/js/materialize.js",
   "style": "dist/css/materialize.css",
