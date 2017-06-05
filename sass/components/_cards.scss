@@ -107,9 +107,7 @@
           max-height: none;
           overflow: visible;
 
-          img {
-            height: 100%;
-          }
+          img { max-height: 100%; width: auto; }
         }
       }
 
