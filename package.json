@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git://github.com/Dogfalo/materialize.git"
   },
+  "bugs": {
+    "url": "https://github.com/Dogfalo/materialize/issues"
+  },
   "scripts": {
     "test": "grunt travis --verbose"
   },
