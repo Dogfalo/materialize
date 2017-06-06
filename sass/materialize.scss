@@ -2,15 +2,16 @@
 
 // Mixins
 @import "components/mixins";
-@import "components/color";
 
 // Variables;
+@import "components/palette";
 @import "components/variables";
 
 // Reset
 @import "components/normalize";
 
 // components
+@import "components/color";
 @import "components/global";
 @import "components/badges";
 @import "components/icons-material-design";
