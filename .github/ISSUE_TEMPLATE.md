@@ -1,5 +1,5 @@
 # Warning
-First of all make sure that you have read our [contribution guidelines](https://github.com/Dogfalo/materialize/blob/master/CONTRIBUTING.md). Any issues that are violating the contributing guidelines, will be closed!
+First of all make sure that you have read our [contribution guidelines](https://github.com/Dogfalo/materialize/blob/master/.github/CONTRIBUTING.md). Any issues that are violating the contributing guidelines, will be closed!
 
 ## Issue template:
 ### Description
