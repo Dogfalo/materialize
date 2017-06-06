@@ -160,7 +160,7 @@ button.btn-floating {
       transform: translateY(-50%);
       height: 100%;
       left: auto;
-      width: 500px; /*width 100% only goes to width of button container */
+//      width: 500px; /*width 100% only goes to width of button container */ /* If you do not specify a width, it will be dynamic */
 
       li {
         display: inline-block;
