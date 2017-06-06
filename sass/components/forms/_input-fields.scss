@@ -108,6 +108,7 @@ textarea.materialize-textarea {
   &.validate + label {
     width: 100%;
     pointer-events: none;
+    text-align: initial;
   }
 
   // Form Message Shared Styles
