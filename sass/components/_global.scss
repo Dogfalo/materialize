@@ -100,33 +100,6 @@ blockquote {
   border-left: 5px solid $primary-color;
 }
 
-// Icon Styles
-
-i {
-  line-height: inherit;
-
-  &.left {
-    float: left;
-    margin-right: 15px;
-  }
-  &.right {
-    float: right;
-    margin-left: 15px;
-  }
-  &.tiny {
-    font-size: 1rem;
-  }
-  &.small {
-    font-size: 2rem;
-  }
-  &.medium {
-    font-size: 4rem;
-  }
-  &.large {
-    font-size: 6rem;
-  }
-}
-
 // Images
 img.responsive-img,
 video.responsive-video {
@@ -202,6 +175,31 @@ video.responsive-video {
     display: inline-block;
     float: left;
     font-size: 24px;
+    
+    // Icon Styles
+
+    line-height: inherit;
+  
+    &.left {
+      float: left;
+      margin-right: 15px;
+    }
+    &.right {
+      float: right;
+      margin-left: 15px;
+    }
+    &.tiny {
+      font-size: 1rem;
+    }
+    &.small {
+      font-size: 2rem;
+    }
+    &.medium {
+      font-size: 4rem;
+    }
+    &.large {
+      font-size: 6rem;
+    }
   }
 
   &:before {
