@@ -681,7 +681,7 @@
           var option = $(newOption);
           option.addClass('selected');
           if (!multiple || !!firstActivation) {
-            options.scrollTo(option);
+            collection.scrollTo(option);
           }
         }
       };
