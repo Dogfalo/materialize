@@ -1,11 +1,11 @@
 // Check for jQuery.
 if (typeof(jQuery) === 'undefined') {
-  var jQuery;
+  //var jQuery;
   // Check if require is a defined function.
   if (typeof(require) === 'function') {
-    jQuery = $ = require('jquery');
+    window.jQuery = window.$ = require('jquery');
   // Else use the dollar sign alias.
   } else {
-    jQuery = $;
+    window.jQuery = $;
   }
 }
