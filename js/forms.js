@@ -494,6 +494,7 @@
       if (lastID) {
         $select.parent().find('span.caret').remove();
         $select.parent().find('input').remove();
+        $select.parent().find('.caret').remove();
 
         $select.unwrap();
         $('ul#select-options-'+lastID).remove();
