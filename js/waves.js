@@ -72,15 +72,22 @@
 
             // Get click coordinate and element witdh
             var pos         = offset(el);
-            var relativeY   = (e.pageY - pos.top);
-            var relativeX   = (e.pageX - pos.left);
-            var scale       = 'scale('+((el.clientWidth / 100) * 10)+')';
-
+            var relativeY = 0;
+            var relativeX = 0;
             // Support for touch devices
-            if ('touches' in e) {
-              relativeY   = (e.touches[0].pageY - pos.top);
-              relativeX   = (e.touches[0].pageX - pos.left);
+            if('touches' in e && e.touches.length) {
+                relativeY   = (e.touches[0].pageY - pos.top);
+                relativeX   = (e.touches[0].pageX - pos.left);
             }
+            //Normal case
+            else {
+                relativeY   = (e.pageY - pos.top);
+                relativeX   = (e.pageX - pos.left);
+            }
+            // Support for synthetic events
+            relativeX = relativeX >= 0 ? relativeX : 0;
+            relativeY = relativeY >= 0 ? relativeY : 0;
+            var scale       = 'scale('+((el.clientWidth / 100) * 10)+')';
 
             // Attach data to element
             ripple.setAttribute('data-hold', Date.now());
@@ -282,12 +289,11 @@
             Effect.show(e, element);
 
             if ('ontouchstart' in window) {
-                element.addEventListener('touchend', Effect.hide, false);
-                element.addEventListener('touchcancel', Effect.hide, false);
+                $(element).on('touchend', Effect.hide);
+                $(element).on('touchcancel', Effect.hide);
             }
-
-            element.addEventListener('mouseup', Effect.hide, false);
-            element.addEventListener('mouseleave', Effect.hide, false);
+            $(element).on('mouseup', Effect.hide);
+            $(element).on('mouseleave', Effect.hide);
         }
     }
 
@@ -302,10 +308,9 @@
         Effect.wrapInput($$('.waves-effect'));
 
         if ('ontouchstart' in window) {
-            document.body.addEventListener('touchstart', showEffect, false);
+            $(document.body).on('touchstart', showEffect);
         }
-
-        document.body.addEventListener('mousedown', showEffect, false);
+        $(document.body).on('mousedown', showEffect);
     };
 
     /**
@@ -323,10 +328,10 @@
         }
 
         if ('ontouchstart' in window) {
-            element.addEventListener('touchstart', showEffect, false);
+            $(element).on('touchstart', showEffect);
         }
 
-        element.addEventListener('mousedown', showEffect, false);
+        $(element).on('mousedown', showEffect);
     };
 
     window.Waves = Waves;
