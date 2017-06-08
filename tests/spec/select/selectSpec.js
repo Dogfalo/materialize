@@ -196,4 +196,42 @@ describe("Select Plugin", function () {
     });
 
   });
+
+  describe("Separator Select", function () {
+    var browserSelect, multipleInput, multipleDropdown;
+
+    beforeEach(function() {
+      browserSelect = $('select.separator');
+    });
+
+    it("should open dropdown, select multiple options and save them in the input, divided by the given separator", function(done) {
+      multipleInput = browserSelect.parent().find('input.select-dropdown');
+      multipleDropdown = browserSelect.parent().find('ul.select-dropdown');
+
+      multipleInput.click();
+
+      setTimeout(function() {
+        expect(multipleDropdown).toBeVisible('Should be visible after opening.');
+        var options = multipleDropdown.find('li:not(.disabled)');
+        options.first().click();
+        $('body').click();
+
+        setTimeout(function() {
+          expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');
+          expect(browserSelect.val()).toEqual(['1', '2', '3'], 'Actual select should have correct selected values.');
+          expect(multipleInput.val()).toEqual(options[1].innerText + ' + ' + options[2].innerText + ' + ' + options[0].innerText, 'Value should equal chosen multiple options, divided by the given separator.');
+          done();
+        }, 400);
+      }, 400);
+    });
+
+    it("should have multiple pre-selected values and keep them in the input, divided by the given separator", function () {
+      multipleInput = browserSelect.parent().find('input.select-dropdown');
+      multipleDropdown = browserSelect.parent().find('ul.select-dropdown');
+
+      var secondOption = browserSelect.find('option[selected]').eq(0);
+      var thirdOption = browserSelect.find('option[selected]').eq(1);
+      expect(multipleInput.val()).toEqual(secondOption.text() + ' + ' + thirdOption.text(), 'Value should be equal to preselected options, divided by the given separator.');
+    });
+  });
 });

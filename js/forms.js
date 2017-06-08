@@ -481,6 +481,8 @@
    *  Select Plugin  *
    ******************/
   $.fn.material_select = function (callback) {
+    DEFAULT_SEPARATOR = ', ';
+
     $(this).each(function(){
       var $select = $(this);
 
@@ -489,7 +491,8 @@
       }
 
       var multiple = $select.attr('multiple') ? true : false,
-          lastID = $select.data('select-id'); // Tear down structure if Select needs to be rebuilt
+          lastID = $select.data('select-id'), // Tear down structure if Select needs to be rebuilt
+          separator = $select.data('separator') || DEFAULT_SEPARATOR;
 
       if (lastID) {
         $select.parent().find('span.caret').remove();
@@ -625,8 +628,8 @@
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
             var label = $(this).val();
-            if (multiple && label.indexOf(',') >= 0) {
-              label = label.split(',')[0];
+            if (multiple && label.indexOf(separator) >= 0) {
+              label = label.split(separator)[0];
             }
 
             var selectedOption = options.find('li').filter(function() {
@@ -786,11 +789,12 @@
 
     function setValueToInput(entriesArray, select) {
       var value = '';
+      var separator = select.data('separator') || DEFAULT_SEPARATOR;
 
       for (var i = 0, count = entriesArray.length; i < count; i++) {
         var text = select.find('option').eq(entriesArray[i]).text();
 
-        i === 0 ? value += text : value += ', ' + text;
+        i === 0 ? value += text : value += separator + text;
       }
 
       if (value === '') {
