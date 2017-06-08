@@ -35,6 +35,9 @@ select {
     padding: 0;
     display: block;
   }
+  input.select-dropdown.active {
+    visibility: hidden;
+  }
 
   span.caret {
     color: initial;
