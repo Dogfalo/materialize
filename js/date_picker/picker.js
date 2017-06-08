@@ -333,6 +333,10 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                         P.$root.on( 'focus.toOpen', handleFocusToOpenEvent )
                     }, 0 )
                 }
+                else
+                {
+                    $(window).scrollTop(0);
+                }
 
                 // Remove the “active” class.
                 $ELEMENT.removeClass( CLASSES.active )
