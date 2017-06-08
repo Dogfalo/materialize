@@ -279,6 +279,10 @@
         var element = getWavesEffectElement(e);
 
         if (element !== null) {
+            var wavesElement = element.querySelector('div.waves-ripple');
+            if(wavesElement !== null){
+                wavesElement.parentNode.removeChild(wavesElement);
+            }
             Effect.show(e, element);
 
             if ('ontouchstart' in window) {
