@@ -489,6 +489,7 @@
       }
 
       var multiple = $select.attr('multiple') ? true : false,
+          searchable = $select.data('search') ? true : false,
           lastID = $select.data('select-id'); // Tear down structure if Select needs to be rebuilt
 
       if (lastID) {
@@ -516,6 +517,11 @@
 
       var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
+      // Check if search is enabled for this select
+      if (searchable) {
+        options.append('<li class="search" style="padding: 0 10px;"><input class="search-input" type="text" /></li>');
+      }
+      
       // Function that renders and appends the option taking into
       // account type and possible image icon.
       var appendOptionWithIcon = function(select, option, type) {
@@ -563,10 +569,10 @@
         });
       }
 
-      options.find('li:not(.optgroup)').each(function (i) {
+      options.find('li:not(.optgroup):not(.search)').each(function (i) {
         $(this).click(function (e) {
           // Check if option element is disabled
-          if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup')) {
+          if (!$(this).hasClass('disabled') && !$(this).hasClass('optgroup') && !$(this).hasClass('search')) {
             var selected = true;
 
             if (multiple) {
@@ -588,6 +594,24 @@
 
           e.stopPropagation();
         });
+      });
+      
+      options.find('.search-input').each(function (i) {
+        $(this).keyup(function (e) {
+          // get trimmed value in lower case
+          var value = $(this).val().trim().toLowerCase();
+
+          // get the items of the select
+          var items = $(this).parent().parent().find("li:not(.disabled):not(.search)");
+
+          // show all items
+          items.show();
+
+          // hide items that contain the searched text
+          items.find("span").filter(function (i, e) {
+              return !~$(e).text().trim().toLowerCase().indexOf(value);
+          }).closest("li").hide();
+        })
       });
 
       // Wrap Elements
@@ -619,6 +643,10 @@
 
       $newSelect.on({
         'focus': function (){
+          if (searchable) {
+            options.find('.search-input').val('').trigger('keyup');
+          }
+          
           if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
             $('input.select-dropdown').trigger('close');
           }
@@ -775,7 +803,7 @@
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
+      select.siblings('ul.dropdown-content').find('li:not(.optgroup):not(.search)').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);
