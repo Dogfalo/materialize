@@ -1,3 +1,7 @@
+body.materialize-modal-opened {
+  width: 100%;
+  position: fixed;
+}
 .modal {
   @extend .z-depth-4;
 
