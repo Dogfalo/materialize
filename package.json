@@ -2,22 +2,27 @@
   "name": "materialize-css",
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
-  "url": "http://materializecss.com/",
+  "homepage": "http://materializecss.com/",
   "version": "0.98.2",
-  "main": "bin/materialize.js",
-  "style": "bin/materialize.css",
+  "main": "dist/js/materialize.js",
+  "style": "dist/css/materialize.css",
   "sass": "sass/materialize.scss",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/Dogfalo/materialize.git"
   },
+  "bugs": {
+    "url": "https://github.com/Dogfalo/materialize/issues"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "jquery": "^2.1.4",
-    "node-archiver": "^0.3.0"
+    "jquery": "^2.1.4"
   },
-  "engine": "node >= 6.10.0",
+  "engine": "node >= 6",
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "grunt": "^1.0.1",
@@ -40,11 +45,16 @@
     "grunt-text-replace": "^0.4.0",
     "jasmine": "^2.6.0",
     "jasmine-jquery": "^2.1.1",
-    "jquery": "^2.1.4",
+    "node-archiver": "^0.3.0",
     "node-sass": "^4.5.2",
     "phantomjs-prebuilt": "^2.1.14"
   },
-  "scripts": {
-    "test": "grunt travis --verbose"
-  }
+  "files": [
+    "dist",
+    "extras",
+    "js/**/*.js",
+    "sass/**/*.scss",
+    "Gruntfile.js",
+    "LICENSE"
+  ]
 }
