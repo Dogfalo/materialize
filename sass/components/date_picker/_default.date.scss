@@ -1,16 +1,16 @@
 /* ==========================================================================
-   $BASE-DATE-PICKER
+   $BASE-DATE-picker-material
    ========================================================================== */
 /**
- * The picker box.
+ * The picker-material box.
  */
-.picker__box {
+.picker-material__box {
   padding: 0 1em;
 }
 /**
  * The header containing the month and year stuff.
  */
-.picker__header {
+.picker-material__header {
   text-align: center;
   position: relative;
   margin-top: .75em;
@@ -18,8 +18,8 @@
 /**
  * The month and year labels.
  */
-.picker__month,
-.picker__year {
+.picker-material__month,
+.picker-material__year {
 //  font-weight: 500;
   display: inline-block;
   margin-left: .25em;
@@ -28,8 +28,8 @@
 /**
  * The month and year selectors.
  */
-.picker__select--month,
-.picker__select--year {
+.picker-material__select--month,
+.picker-material__select--year {
 
   height: 2em;
   padding: 0;
@@ -38,25 +38,25 @@
 }
 
 // Modified
-.picker__select--month.browser-default {
+.picker-material__select--month.browser-default {
   display: inline;
   background-color: #FFFFFF;
   width: 40%;
 }
-.picker__select--year.browser-default {
+.picker-material__select--year.browser-default {
   display: inline;
   background-color: #FFFFFF;
   width: 26%;
 }
-.picker__select--month:focus,
-.picker__select--year:focus {
-  border-color: $datepicker-focus;
+.picker-material__select--month:focus,
+.picker-material__select--year:focus {
+  border-color: $datepicker-material-focus;
 }
 /**
  * The month navigation buttons.
  */
-.picker__nav--prev,
-.picker__nav--next {
+.picker-material__nav--prev,
+.picker-material__nav--next {
   position: absolute;
   padding: .5em 1.25em;
   width: 1em;
@@ -65,34 +65,34 @@
   top: -0.25em;
 }
 //@media (min-width: 24.5em) {
-//  .picker__nav--prev,
-//  .picker__nav--next {
+//  .picker-material__nav--prev,
+//  .picker-material__nav--next {
 //    top: -0.33em;
 //  }
 //}
-.picker__nav--prev {
+.picker-material__nav--prev {
   left: -1em;
   padding-right: 1.25em;
 }
 //@media (min-width: 24.5em) {
-//  .picker__nav--prev {
+//  .picker-material__nav--prev {
 //    padding-right: 1.5em;
 //  }
 //}
-.picker__nav--next {
+.picker-material__nav--next {
   right: -1em;
   padding-left: 1.25em;
 }
 //@media (min-width: 24.5em) {
-//  .picker__nav--next {
+//  .picker-material__nav--next {
 //    padding-left: 1.5em;
 //  }
 //}
 
-.picker__nav--disabled,
-.picker__nav--disabled:hover,
-.picker__nav--disabled:before,
-.picker__nav--disabled:before:hover {
+.picker-material__nav--disabled,
+.picker-material__nav--disabled:hover,
+.picker-material__nav--disabled:before,
+.picker-material__nav--disabled:before:hover {
   cursor: default;
   background: none;
   border-right-color: #f5f5f5;
@@ -101,7 +101,7 @@
 /**
  * The calendar table of dates
  */
-.picker__table {
+.picker-material__table {
   text-align: center;
   border-collapse: collapse;
   border-spacing: 0;
@@ -114,7 +114,7 @@
 
 
 
-.picker__table th, .picker__table td {
+.picker-material__table th, .picker-material__table td {
   text-align: center;
 }
 
@@ -123,14 +123,14 @@
 
 
 
-.picker__table td {
+.picker-material__table td {
   margin: 0;
   padding: 0;
 }
 /**
  * The weekday labels
  */
-.picker__weekday {
+.picker-material__weekday {
   width: 14.285714286%;
   font-size: .75em;
   padding-bottom: .25em;
@@ -139,7 +139,7 @@
   /* Increase the spacing a tad */
 }
 @media (min-height: 33.875em) {
-  .picker__weekday {
+  .picker-material__weekday {
     padding-bottom: .5em;
   }
 }
@@ -147,7 +147,7 @@
  * The days on the calendar
  */
 
-.picker__day--today {
+.picker-material__day--today {
   position: relative;
   color: #595959;
   letter-spacing: -.3;
@@ -157,7 +157,7 @@
 
 }
 
-//.picker__day--today:before {
+//.picker-material__day--today:before {
 //  content: " ";
 //  position: absolute;
 //  top: 2px;
@@ -167,24 +167,24 @@
 //  border-top: 0.5em solid #0059bc;
 //  border-left: .5em solid transparent;
 //}
-.picker__day--disabled:before {
+.picker-material__day--disabled:before {
   border-top-color: #aaaaaa;
 }
 
 
-.picker__day--infocus:hover{
+.picker-material__day--infocus:hover{
   cursor: pointer;
   color: #000;
   font-weight: 500;
 }
 
-.picker__day--outfocus {
+.picker-material__day--outfocus {
   display: none;
   padding: .75rem 0;
   color: #fff;
 
 }
-.picker__day--outfocus:hover {
+.picker-material__day--outfocus:hover {
   cursor: pointer;
   color: #dddddd;
 //  background: #b1dcfb;
@@ -192,19 +192,19 @@
 }
 
 
-.picker__day--highlighted {
+.picker-material__day--highlighted {
 //  border-color: #0089ec;
 }
-.picker__day--highlighted:hover,
-.picker--focused .picker__day--highlighted {
+.picker-material__day--highlighted:hover,
+.picker-material--focused .picker-material__day--highlighted {
   cursor: pointer;
 //  color: #000000;
 //  background: #b1dcfb;
 //  font-weight: 500;
 }
-.picker__day--selected,
-.picker__day--selected:hover,
-.picker--focused .picker__day--selected {
+.picker-material__day--selected,
+.picker-material__day--selected:hover,
+.picker-material--focused .picker-material__day--selected {
 
 
 //  Circle background
@@ -213,30 +213,30 @@
   background: #0089ec;
   color: #ffffff;
 }
-.picker__day--disabled,
-.picker__day--disabled:hover,
-.picker--focused .picker__day--disabled {
+.picker-material__day--disabled,
+.picker-material__day--disabled:hover,
+.picker-material--focused .picker-material__day--disabled {
   background: #f5f5f5;
   border-color: #f5f5f5;
   color: #dddddd;
   cursor: default;
 }
-.picker__day--highlighted.picker__day--disabled,
-.picker__day--highlighted.picker__day--disabled:hover {
+.picker-material__day--highlighted.picker-material__day--disabled,
+.picker-material__day--highlighted.picker-material__day--disabled:hover {
   background: #bbbbbb;
 }
 /**
  * The footer containing the "today", "clear", and "close" buttons.
  */
-.picker__footer {
+.picker-material__footer {
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.picker__button--today,
-.picker__button--clear,
-.picker__button--close {
+.picker-material__button--today,
+.picker-material__button--clear,
+.picker-material__button--close {
   border: 1px solid #ffffff;
   background: #ffffff;
   font-size: .8em;
@@ -246,45 +246,45 @@
   display: inline-block;
   vertical-align: bottom;
 }
-.picker__button--today:hover,
-.picker__button--clear:hover,
-.picker__button--close:hover {
+.picker-material__button--today:hover,
+.picker-material__button--clear:hover,
+.picker-material__button--close:hover {
   cursor: pointer;
   color: #000000;
   background: #b1dcfb;
   border-bottom-color: #b1dcfb;
 }
-.picker__button--today:focus,
-.picker__button--clear:focus,
-.picker__button--close:focus {
+.picker-material__button--today:focus,
+.picker-material__button--clear:focus,
+.picker-material__button--close:focus {
   background: #b1dcfb;
-  border-color: $datepicker-focus;
+  border-color: $datepicker-material-focus;
   outline: none;
 }
-.picker__button--today:before,
-.picker__button--clear:before,
-.picker__button--close:before {
+.picker-material__button--today:before,
+.picker-material__button--clear:before,
+.picker-material__button--close:before {
   position: relative;
   display: inline-block;
   height: 0;
 }
-.picker__button--today:before,
-.picker__button--clear:before {
+.picker-material__button--today:before,
+.picker-material__button--clear:before {
   content: " ";
   margin-right: .45em;
 }
-.picker__button--today:before {
+.picker-material__button--today:before {
   top: -0.05em;
   width: 0;
   border-top: 0.66em solid #0059bc;
   border-left: .66em solid transparent;
 }
-.picker__button--clear:before {
+.picker-material__button--clear:before {
   top: -0.25em;
   width: .66em;
   border-top: 3px solid #ee2200;
 }
-.picker__button--close:before {
+.picker-material__button--close:before {
   content: "\D7";
   top: -0.1em;
   vertical-align: top;
@@ -292,42 +292,42 @@
   margin-right: .35em;
   color: #777777;
 }
-.picker__button--today[disabled],
-.picker__button--today[disabled]:hover {
+.picker-material__button--today[disabled],
+.picker-material__button--today[disabled]:hover {
   background: #f5f5f5;
   border-color: #f5f5f5;
   color: #dddddd;
   cursor: default;
 }
-.picker__button--today[disabled]:before {
+.picker-material__button--today[disabled]:before {
   border-top-color: #aaaaaa;
 }
 
 /* ==========================================================================
    CUSTOM MATERIALIZE STYLES
    ========================================================================== */
-.picker__box {
+.picker-material__box {
   border-radius: 2px;
   overflow: hidden;
 }
 
-.picker__date-display {
+.picker-material__date-display {
   text-align: center;
-  background-color: $datepicker-date-bg;
+  background-color: $datepicker-material-date-bg;
   color: #fff;
   padding-bottom: 15px;
   font-weight: 300;
 }
 
-.picker__nav--prev:hover,
-.picker__nav--next:hover {
+.picker-material__nav--prev:hover,
+.picker-material__nav--next:hover {
   cursor: pointer;
   color: #000000;
-  background: $datepicker-selected-outfocus;
+  background: $datepicker-material-selected-outfocus;
 }
 
-.picker__weekday-display {
-  background-color: $datepicker-weekday-bg;
+.picker-material__weekday-display {
+  background-color: $datepicker-material-weekday-bg;
   padding: 10px;
   font-weight: 200;
   letter-spacing: .5;
@@ -335,24 +335,24 @@
   margin-bottom: 15px;
 }
 
-.picker__month-display {
+.picker-material__month-display {
   text-transform: uppercase;
   font-size: 2rem;
 }
-.picker__day-display {
+.picker-material__day-display {
 
   font-size: 4.5rem;
   font-weight: 400;
 }
-.picker__year-display {
+.picker-material__year-display {
   font-size: 1.8rem;
-  color: $datepicker-year;
+  color: $datepicker-material-year;
 }
 
-.picker__box {
+.picker-material__box {
   padding: 0;
 }
-.picker__calendar-container {
+.picker-material__calendar-container {
   padding: 0 1rem;
 
   thead {
@@ -361,12 +361,12 @@
 }
 
 // Calendar
-.picker__table {
+.picker-material__table {
   margin-top: 0;
   margin-bottom: .5em;
 }
 
-.picker__day--infocus {
+.picker-material__day--infocus {
   color: #595959;
   letter-spacing: -.3;
   padding: .75rem 0;
@@ -375,48 +375,48 @@
 }
 
 //Today style
-.picker__day.picker__day--today {
-  color: $datepicker-selected;
+.picker-material__day.picker-material__day--today {
+  color: $datepicker-material-selected;
 }
 
-.picker__day.picker__day--today.picker__day--selected {
+.picker-material__day.picker-material__day--today.picker-material__day--selected {
   color: #fff;
 }
 
 // Table Header
-.picker__weekday {
+.picker-material__weekday {
   font-size: .9rem;
 }
 
 
-.picker__day--selected,
-.picker__day--selected:hover,
-.picker--focused .picker__day--selected {
+.picker-material__day--selected,
+.picker-material__day--selected:hover,
+.picker-material--focused .picker-material__day--selected {
   // Circle background
   border-radius: 50%;
   transform: scale(.9);
-  background-color: $datepicker-selected;
-  &.picker__day--outfocus {
-    background-color: $datepicker-selected-outfocus;
+  background-color: $datepicker-material-selected;
+  &.picker-material__day--outfocus {
+    background-color: $datepicker-material-selected-outfocus;
   }
   color: #ffffff;
 }
 
-.picker__footer {
+.picker-material__footer {
   text-align: right;
   padding: 5px 10px;
 }
 
 // Materialize modified
-.picker__close, .picker__today {
+.picker-material__close, .picker-material__today {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: $datepicker-selected;
+  color: $datepicker-material-selected;
 }
 
 //month nav buttons
-.picker__nav--prev:before,
-.picker__nav--next:before {
+.picker-material__nav--prev:before,
+.picker-material__nav--next:before {
   content: " ";
   border-top: .5em solid transparent;
   border-bottom: .5em solid transparent;
@@ -426,10 +426,10 @@
   display: block;
   margin: 0 auto;
 }
-.picker__nav--next:before {
+.picker-material__nav--next:before {
   border-right: 0;
   border-left: 0.75em solid #676767;
 }
-button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
-  background-color: $datepicker-selected-outfocus;
+button.picker-material__today:focus, button.picker-material__clear:focus, button.picker-material__close:focus {
+  background-color: $datepicker-material-selected-outfocus;
 }

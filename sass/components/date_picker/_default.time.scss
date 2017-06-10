@@ -1,10 +1,10 @@
 /* ==========================================================================
-   $BASE-TIME-PICKER
+   $BASE-TIME-picker-material
    ========================================================================== */
 /**
  * The list of times.
  */
-.picker__list {
+.picker-material__list {
   list-style: none;
   padding: 0.75em 0 4.2em;
   margin: 0;
@@ -12,7 +12,7 @@
 /**
  * The times on the clock.
  */
-.picker__list-item {
+.picker-material__list-item {
   border-bottom: 1px solid #dddddd;
   border-top: 1px solid #dddddd;
   margin-bottom: -1px;
@@ -21,12 +21,12 @@
   padding: .75em 1.25em;
 }
 @media (min-height: 46.75em) {
-  .picker__list-item {
+  .picker-material__list-item {
     padding: .5em 1em;
   }
 }
 /* Hovered time */
-.picker__list-item:hover {
+.picker-material__list-item:hover {
   cursor: pointer;
   color: #000000;
   background: #b1dcfb;
@@ -34,28 +34,28 @@
   z-index: 10;
 }
 /* Highlighted and hovered/focused time */
-.picker__list-item--highlighted {
+.picker-material__list-item--highlighted {
   border-color: #0089ec;
   z-index: 10;
 }
-.picker__list-item--highlighted:hover,
-.picker--focused .picker__list-item--highlighted {
+.picker-material__list-item--highlighted:hover,
+.picker-material--focused .picker-material__list-item--highlighted {
   cursor: pointer;
   color: #000000;
   background: #b1dcfb;
 }
 /* Selected and hovered/focused time */
-.picker__list-item--selected,
-.picker__list-item--selected:hover,
-.picker--focused .picker__list-item--selected {
+.picker-material__list-item--selected,
+.picker-material__list-item--selected:hover,
+.picker-material--focused .picker-material__list-item--selected {
   background: #0089ec;
   color: #ffffff;
   z-index: 10;
 }
 /* Disabled time */
-.picker__list-item--disabled,
-.picker__list-item--disabled:hover,
-.picker--focused .picker__list-item--disabled {
+.picker-material__list-item--disabled,
+.picker-material__list-item--disabled:hover,
+.picker-material--focused .picker-material__list-item--disabled {
   background: #f5f5f5;
   border-color: #f5f5f5;
   color: #dddddd;
@@ -66,7 +66,7 @@
 /**
  * The clear button
  */
-.picker--time .picker__button--clear {
+.picker-material--time .picker-material__button--clear {
   display: block;
   width: 80%;
   margin: 1em auto 0;
@@ -79,8 +79,8 @@
   text-transform: uppercase;
   color: #666;
 }
-.picker--time .picker__button--clear:hover,
-.picker--time .picker__button--clear:focus {
+.picker-material--time .picker-material__button--clear:hover,
+.picker-material--time .picker-material__button--clear:focus {
   color: #000000;
   background: #b1dcfb;
   background: #ee2200;
@@ -89,37 +89,37 @@
   color: #ffffff;
   outline: none;
 }
-.picker--time .picker__button--clear:before {
+.picker-material--time .picker-material__button--clear:before {
   top: -0.25em;
   color: #666;
   font-size: 1.25em;
   font-weight: bold;
 }
-.picker--time .picker__button--clear:hover:before,
-.picker--time .picker__button--clear:focus:before {
+.picker-material--time .picker-material__button--clear:hover:before,
+.picker-material--time .picker-material__button--clear:focus:before {
   color: #ffffff;
 }
 
 /* ==========================================================================
-   $DEFAULT-TIME-PICKER
+   $DEFAULT-TIME-picker-material
    ========================================================================== */
 /**
- * The frame the bounds the time picker.
+ * The frame the bounds the time picker-material.
  */
-.picker--time .picker__frame {
+.picker-material--time .picker-material__frame {
   min-width: 256px;
   max-width: 320px;
 }
 /**
- * The picker box.
+ * The picker-material box.
  */
-.picker--time .picker__box {
+.picker-material--time .picker-material__box {
   font-size: 1em;
   background: #f2f2f2;
   padding: 0;
 }
 @media (min-height: 40.125em) {
-  .picker--time .picker__box {
+  .picker-material--time .picker-material__box {
     margin-bottom: 5em;
   }
 }
