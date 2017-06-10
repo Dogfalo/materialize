@@ -2,8 +2,10 @@
 ===========
 
 [![Travis CI badge](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize)
+[![npm version badge](https://badge.fury.io/js/materialize-css.svg)](https://badge.fury.io/js/materialize-css)
 [![dependencies Status badge](https://david-dm.org/Dogfalo/materialize/status.svg)](https://david-dm.org/Dogfalo/materialize)
-[![devDependency Status badge](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies) [![Gitter badge](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![devDependency Status badge](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies)
+[![Gitter badge](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Materialize](http://materializecss.com/), a CSS Framework based on material design
 
