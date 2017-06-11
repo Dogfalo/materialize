@@ -82,6 +82,9 @@
       });
 
       self.$document.off('keydown.chips').on('keydown.chips', function(e){
+        if (e.which === 8 || e.which === 46) {
+          e.preventDefault();
+        }
         if ($(e.target).is('input, textarea')) {
           return;
         }
@@ -97,8 +100,6 @@
         }
 
         if (e.which === 8 || e.which === 46) {
-          e.preventDefault();
-
           index = $chip.index();
           self.deleteChip(index, $chips);
 
