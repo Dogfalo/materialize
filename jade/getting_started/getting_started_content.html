@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col s12 m9">
         <h1 class="header center-on-small-only">Getting Started</h1>
-        <h4 class ="light red-text text-lighten-4 center-on-small-only">Learn how to easily start using Materialize in your website.</h4>
+        <h4 class="light red-text text-lighten-4 center-on-small-only">Learn how to easily start using Materialize in your website.</h4>
       </div>
       <div class="col s12 m3">
         <!-- BuySellAds Zone Code -->
@@ -42,7 +42,7 @@
           <p>You can find all the versions of the CDN at <a href="https://cdnjs.com/libraries/materialize">cdnjs</a>.</p>
           <pre><code class="language-markup">
   &lt;!-- Compiled and minified CSS -->
-  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" rel="stylesheet">
 
   &lt;!-- Compiled and minified JavaScript -->
   &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js">&lt;/script>
@@ -98,7 +98,7 @@
       <div id="setup" class="row scrollspy">
         <div class="col s12">
           <h2 class="header">Setup</h2>
-          <h4 >Project Structure</h4>
+          <h4>Project Structure</h4>
           <p>After downloading, extract the files into the directory where your website is located. Your directory will look something like this.</p>
           <p>You'll notice that there are two sets of the files. The <code class="language-markup">min</code> means that the file is "compressed" to reduce load times. These minified files are usually used in production while it is better to use the unminified files during development.</p>
 
@@ -106,9 +106,6 @@
   MyWebsite/
   |--css/
   |  |--materialize.css
-  |
-  |--fonts/
-  |  |--roboto/
   |
   |--js/
   |  |--materialize.js
@@ -124,10 +121,14 @@
   &lt;!DOCTYPE html>
   &lt;html>
     &lt;head>
+      &lt;!--Import Roboto Font-->
+      &lt;link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" type="text/css">
+
       &lt;!--Import Google Icon Font-->
-      &lt;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      &lt;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
       &lt;!--Import materialize.css-->
-      &lt;link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      &lt;link href="css/materialize.min.css" rel="stylesheet" type="text/css" media="screen,projection"/>
 
       &lt;!--Let browser know website is optimized for mobile-->
       &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -201,9 +202,6 @@
   MyWebsite/
   |--css/
   |  |--materialize.css &lt;-- compiled from scss/materialize.scss
-  |
-  |--fonts/
-  |  |--roboto/
   |
   |--js/
   |  |--materialize.js
