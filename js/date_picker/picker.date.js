@@ -24,7 +24,7 @@
  */
 var DAYS_IN_WEEK = 7,
     WEEKS_IN_CALENDAR = 6,
-    _ = Picker._
+    _ = Picker._;
 
 
 
@@ -1182,12 +1182,13 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 display_day = selectedObject.day;
             else
                 display_day = nowObject.day;
-            var weekday = settings.weekdaysFull[ display_day ];
+            var weekday = settings.weekdaysShort[ display_day ];
             return weekday
         }
 
 
-    // Create and return the entire calendar.
+  // Create and return the entire calendar.
+
 return _.node(
         // Date presentation View
         'div',
@@ -1199,20 +1200,20 @@ return _.node(
             )+
             _.node(
                 'span',
-                createWeekdayLabel(),
+                createWeekdayLabel() + ', ',
                 "picker__weekday-display"
-            )+
-            _.node(
-                // Div for Day
-                'span',
-                createDayLabel() ,
-                settings.klass.day_display
             )+
             _.node(
                 // Div for short Month
                 'span',
-                createMonthLabel("short_months"),
+                createMonthLabel("short_months") + ' ',
                 settings.klass.month_display
+            )+
+            _.node(
+              // Div for Day
+              'span',
+              createDayLabel() ,
+              settings.klass.day_display
             ),
         settings.klass.date_display
     )+
@@ -1428,5 +1429,3 @@ Picker.extend( 'pickadate', DatePicker )
 
 
 }));
-
-

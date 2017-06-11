@@ -59,7 +59,7 @@
 
 	// Clock size
 	var dialRadius = 135,
-			outerRadius = 110,
+			outerRadius = 105,
 			// innerRadius = 80 on 12 hour clock
 			innerRadius = 80,
 			tickRadius = 20,
