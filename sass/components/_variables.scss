@@ -12,22 +12,21 @@
 //  6. Chips
 //  7. Date + Time Picker
 //  8. Dropdown
-//  9. Fonts
-//  10. Forms
-//  11. Global
-//  12. Grid
-//  13. Navigation Bar
-//  14. Side Navigation
-//  15. Photo Slider
-//  16. Spinners | Loaders
-//  17. Tabs
-//  18. Tables
-//  19. Toasts
-//  20. Typography
-//  21. Footer
-//  22. Flow Text
-//  23. Collections
-//  24. Progress Bar
+//  9. Forms
+//  10. Global
+//  11. Grid
+//  12. Navigation Bar
+//  13. Side Navigation
+//  14. Photo Slider
+//  15. Spinners | Loaders
+//  16. Tabs
+//  17. Tables
+//  18. Toasts
+//  19. Typography
+//  20. Footer
+//  21. Flow Text
+//  22. Collections
+//  23. Progress Bar
 
 
 
@@ -141,13 +140,7 @@ $dropdown-color: $secondary-color !default;
 $dropdown-item-height: 50px !default;
 
 
-// 9. Fonts
-// ==========================================================================
-
-$roboto-font-path: "../fonts/roboto/" !default;
-
-
-// 10. Forms
+// 9. Forms
 // ==========================================================================
 
 // Text Inputs + Textarea
@@ -196,7 +189,7 @@ $switch-unchecked-lever-bg: #818181 !default;
 $switch-radius: 15px !default;
 
 
-// 11. Global
+// 10. Global
 // ==========================================================================
 
 // Media Query Ranges
@@ -215,7 +208,7 @@ $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
 
-// 12. Grid
+// 11. Grid
 // ==========================================================================
 
 $num-cols: 12 !default;
@@ -224,7 +217,7 @@ $element-top-margin: $gutter-width/3 !default;
 $element-bottom-margin: ($gutter-width*2)/3 !default;
 
 
-// 13. Navigation Bar
+// 12. Navigation Bar
 // ==========================================================================
 
 $navbar-height: 64px !default;
@@ -235,7 +228,7 @@ $navbar-font-size: 1rem !default;
 $navbar-font-color: #fff !default;
 $navbar-brand-font-size: 2.1rem !default;
 
-// 14. Side Navigation
+// 13. Side Navigation
 // ==========================================================================
 
 $sidenav-font-size: 14px !default;
@@ -246,7 +239,7 @@ $sidenav-item-height: 48px !default;
 $sidenav-line-height: $sidenav-item-height !default;
 
 
-// 15. Photo Slider
+// 14. Photo Slider
 // ==========================================================================
 
 $slider-bg-color: color('grey', 'base') !default;
@@ -254,13 +247,13 @@ $slider-bg-color-light: color('grey', 'lighten-2') !default;
 $slider-indicator-color: color('green', 'base') !default;
 
 
-// 16. Spinners | Loaders
+// 15. Spinners | Loaders
 // ==========================================================================
 
 $spinner-default-color: $secondary-color !default;
 
 
-// 17. Tabs
+// 16. Tabs
 // ==========================================================================
 
 $tabs-underline-color: $primary-color-light !default;
@@ -268,14 +261,14 @@ $tabs-text-color: $primary-color !default;
 $tabs-bg-color: #fff !default;
 
 
-// 18. Tables
+// 17. Tables
 // ==========================================================================
 
 $table-border-color: #d0d0d0 !default;
 $table-striped-color: #f2f2f2 !default;
 
 
-// 19. Toasts
+// 18. Toasts
 // ==========================================================================
 
 $toast-height: 48px !default;
@@ -283,7 +276,7 @@ $toast-color: #323232 !default;
 $toast-text-color: #fff !default;
 
 
-// 20. Typography
+// 19. Typography
 // ==========================================================================
 
 $off-black: rgba(0, 0, 0, 0.87) !default;
@@ -296,13 +289,13 @@ $h5-fontsize: 1.64rem !default;
 $h6-fontsize: 1rem !default;
 
 
-// 21. Footer
+// 20. Footer
 // ==========================================================================
 
 $footer-bg-color: $primary-color !default;
 
 
-// 22. Flow Text
+// 21. Flow Text
 // ==========================================================================
 
 $range : $large-screen - $small-screen !default;
@@ -310,7 +303,7 @@ $intervals: 20 !default;
 $interval-size: $range / $intervals !default;
 
 
-// 23. Collections
+// 22. Collections
 // ==========================================================================
 
 $collection-border-color: #e0e0e0 !default;
@@ -322,7 +315,7 @@ $collection-link-color: $secondary-color !default;
 $collection-line-height: 1.5rem !default;
 
 
-// 24. Progress Bar
+// 23. Progress Bar
 // ==========================================================================
 
 $progress-bar-color: $secondary-color !default;

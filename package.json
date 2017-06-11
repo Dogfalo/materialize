@@ -32,7 +32,6 @@
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-compress": "^1.4.1",
     "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jasmine": "^1.1.0",
     "grunt-contrib-uglify": "^2.3.0",
