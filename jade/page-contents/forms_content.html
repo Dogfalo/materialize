@@ -774,7 +774,30 @@
   });
         </code></pre>
       </div>
+      
+    <div id="time-picker" class="section scrollspy">
+        <h2 class="header">Time Picker</h2>
+        <label for="lunchtime">Lunchtime</label>
+        <input id="lunchtime" type="text" class="timepicker">
+        <pre><code class="language-markup">
+  &lt;input type="date" class="timepicker">
+        </code></pre>
 
+        <h4>Initialization</h4>
+        <pre><code class="language-javascript">
+  $('.timepicker').pickatime({
+    default: 'now', // Set default time
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    cleartext: 'Clear', // text for clear-button
+    canceltext: 'Cancel', // Text for cancel-button
+    autoclose: false, // automatic close timepicker
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker  
+  });
+        </code></pre>
+      </div>
 
       <div id="character-counter" class="section scrollspy">
         <h2 class="header">Character Counter</h2>
@@ -894,6 +917,7 @@
             <li><a href="#file">File Input Button</a></li>
             <li><a href="#range">Range</a></li>
             <li><a href="#date-picker">Date Picker</a></li>
+            <li><a href="#time-picker">Time Picker</a></li>
             <li><a href="#character-counter">Character Counter</a></li>
             <li><a href="#autocomplete">Autocomplete</a></li>
           </ul>
