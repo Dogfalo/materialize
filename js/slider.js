@@ -171,7 +171,7 @@
 
         $this.hammer({
             prevent_default: false
-        }).bind('pan', function(e) {
+        }).on('pan', function(e) {
           if (e.gesture.pointerType === "touch") {
 
             // reset interval
@@ -219,7 +219,7 @@
 
           }
 
-        }).bind('panend', function(e) {
+        }).on('panend', function(e) {
           if (e.gesture.pointerType === "touch") {
 
             $curr_slide = $slider.find('.active');

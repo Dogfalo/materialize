@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "jquery": "^2.1.4"
+    "jquery": "^3.2.1",
   },
   "engine": "node >= 6",
   "devDependencies": {
