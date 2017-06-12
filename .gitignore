@@ -17,7 +17,8 @@ bower_components
 .versions
 
 # Ignore .html files in root
-*.html
+!templates/*.html
+/*.html
 !fab-toolbar-demo.html
 
 # Ignore compiled files
