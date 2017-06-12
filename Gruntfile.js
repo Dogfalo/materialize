@@ -241,7 +241,7 @@ module.exports = function(grunt) {
         },
         files:[
           { expand: true, cwd: 'dist/', src: ['**/*'], dest: 'materialize/'},
-          {expand: true, cwd: 'extras/', src: ['**/*'], dest: 'materialize-src/extras/'},
+          { expand: true, cwd: 'extras/', src: ['**/*'], dest: 'materialize-src/extras/'},
           { expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize/'},
         ]
       },
@@ -252,10 +252,10 @@ module.exports = function(grunt) {
           level: 6
         },
         files:[
-          {expand: true, cwd: 'fonts/', src: ['**/*'], dest: 'materialize-src/fonts/'},
-          {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
-          {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
-          {expand: true, cwd: 'js/', src: [
+          { expand: true, cwd: 'fonts/', src: ['**/*'], dest: 'materialize-src/fonts/'},
+          { expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
+          { expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
+          { expand: true, cwd: 'js/', src: [
             "initial.js",
             "jquery.easing.1.3.js",
             "animation.js",
@@ -289,9 +289,9 @@ module.exports = function(grunt) {
             "carousel.js",
             "tapTarget.js",
           ], dest: 'materialize-src/js/'},
-          {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
-          {expand: true, cwd: 'extras/', src: ['**/*'], dest: 'materialize-src/extras/'},
-          {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
+          { expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
+          { expand: true, cwd: 'extras/', src: ['**/*'], dest: 'materialize-src/extras/'},
+          { expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
 
         ]
       },
