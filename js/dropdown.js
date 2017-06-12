@@ -177,9 +177,9 @@
 
         // Add click close handler to document
         setTimeout(function() {
-          $(document).bind('click.'+ activates.attr('id'), function (e) {
+          $(document).on('click.'+ activates.attr('id'), function (e) {
             hideDropdown();
-            $(document).unbind('click.'+ activates.attr('id'));
+            $(document).off('click.'+ activates.attr('id'));
           });
         }, 0);
       }
@@ -190,14 +190,14 @@
         activates.fadeOut(curr_options.outDuration);
         activates.removeClass('active');
         origin.removeClass('active');
-        $(document).unbind('click.'+ activates.attr('id'));
+        $(document).off('click.'+ activates.attr('id'));
         setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
       }
 
       // Hover
       if (curr_options.hover) {
         var open = false;
-        origin.unbind('click.' + origin.attr('id'));
+        origin.off('click.' + origin.attr('id'));
         // Hover handler to show dropdown
         origin.on('mouseenter', function(e){ // Mouse over
           if (open === false) {
@@ -227,8 +227,8 @@
         // Click
       } else {
         // Click handler to show dropdown
-        origin.unbind('click.' + origin.attr('id'));
-        origin.bind('click.'+origin.attr('id'), function(e){
+        origin.off('click.' + origin.attr('id'));
+        origin.on('click.'+origin.attr('id'), function(e){
           if (!isFocused) {
             if ( origin[0] == e.currentTarget &&
                  !origin.hasClass('active') &&
@@ -242,7 +242,7 @@
             // If origin is clicked and menu is open, close menu
             else if (origin.hasClass('active')) {
               hideDropdown();
-              $(document).unbind('click.'+ activates.attr('id'));
+              $(document).off('click.'+ activates.attr('id'));
             }
           }
         });

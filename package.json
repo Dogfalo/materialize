@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "jquery": "^2.1.4",
+    "jquery": "^3.2.1",
     "node-archiver": "^0.3.0"
   },
   "engine": "node >= 6.10.0",
@@ -40,7 +40,6 @@
     "grunt-text-replace": "^0.4.0",
     "jasmine": "^2.6.0",
     "jasmine-jquery": "^2.1.1",
-    "jquery": "^2.1.4",
     "node-sass": "^4.5.2",
     "phantomjs-prebuilt": "^2.1.14"
   },

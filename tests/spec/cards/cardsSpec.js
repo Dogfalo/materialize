@@ -18,18 +18,20 @@ describe( "Cards", function () {
 
       expect(revealDiv).toBeHidden('reveal div should be hidden initially');
 
-      activator.click();
-
       setTimeout(function() {
-        expect(revealDiv).toBeVisible('reveal did not appear after activator was clicked.');
-
-        // Check revealDiv covers reveal card.
-        expect(revealDiv.outerWidth()).toEqual(revealCard.outerWidth(), 'activator was not as wide as reveal card.');
-        expect(revealDiv.outerHeight()).toEqual(revealCard.outerHeight(), 'activator was not as high as reveal card.');
-        expect(revealDiv.offset().top).toEqual(revealCard.offset().top, 'activator was not as in the same y as reveal card.');
-        expect(revealDiv.offset().left).toEqual(revealCard.offset().left, 'activator was not as in the same x as reveal card.');
-
-        done();
+        activator.click();
+        
+        setTimeout(function() {
+          expect(revealDiv).toBeVisible('reveal did not appear after activator was clicked.');
+        
+          // Check revealDiv covers reveal card.
+          expect(revealDiv.outerWidth()).toEqual(revealCard.outerWidth(), 'activator was not as wide as reveal card.');
+          expect(revealDiv.outerHeight()).toEqual(revealCard.outerHeight(), 'activator was not as high as reveal card.');
+          expect(revealDiv.offset().top).toEqual(revealCard.offset().top, 'activator was not as in the same y as reveal card.');
+          expect(revealDiv.offset().left).toEqual(revealCard.offset().left, 'activator was not as in the same x as reveal card.');
+        
+          done();
+        }, 400);
       }, 400);
 
     });
