@@ -1,0 +1,32 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav, main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  nav, main, footer {
+    padding-left: 0;
+  }
+}
+
+h1 {
+  margin: 20px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EEE;
+}
+
+.placeholder img {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.placeholder h4 {
+  margin-top: 0;
+}
