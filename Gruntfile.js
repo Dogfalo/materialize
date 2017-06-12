@@ -241,6 +241,7 @@ module.exports = function(grunt) {
         },
         files:[
           { expand: true, cwd: 'dist/', src: ['**/*'], dest: 'materialize/'},
+          {expand: true, cwd: 'extras/', src: ['**/*'], dest: 'materialize-src/extras/'},
           { expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize/'},
         ]
       },
@@ -289,6 +290,7 @@ module.exports = function(grunt) {
             "tapTarget.js",
           ], dest: 'materialize-src/js/'},
           {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
+          {expand: true, cwd: 'extras/', src: ['**/*'], dest: 'materialize-src/extras/'},
           {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
 
         ]
