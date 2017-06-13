@@ -5,7 +5,8 @@
     .tab a,
     .tab.disabled a,
     .tab.disabled a:hover {
-      color: rgba(255,255,255,0.7);
+      color: #9F9F9F;
+      cursor: not-allowed;
     }
 
     .tab a:hover,
@@ -67,8 +68,8 @@
 
     &.disabled a,
     &.disabled a:hover {
-      color: rgba($tabs-text-color, .7);
-      cursor: default;
+      color: #9F9F9F;
+      cursor: not-allowed;
     }
   }
   .indicator {

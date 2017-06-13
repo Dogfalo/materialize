@@ -55,12 +55,18 @@ textarea.materialize-textarea {
   &[readonly="readonly"] {
     color: $input-disabled-color;
     border-bottom: $input-disabled-border;
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 
   // Disabled label style
   &:disabled+label,
   &[readonly="readonly"]+label {
     color: $input-disabled-color;
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 
   // Focused input style
