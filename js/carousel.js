@@ -314,6 +314,16 @@
           } else if (!options.fullWidth) {
             var clickedIndex = $(e.target).closest('.carousel-item').index();
             var diff = (center % count) - clickedIndex;
+            
+            // Account for wraparound.
+            if (!options.noWrap) {
+              if (diff < 0) {
+                if (Math.abs(diff + count) < Math.abs(diff)) { diff += count; }
+
+              } else if (diff > 0) {
+                if (Math.abs(diff - count) < diff) { diff -= count; }
+              }
+            }
 
             // Disable clicks if carousel was shifted by click
             if (diff !== 0) {
