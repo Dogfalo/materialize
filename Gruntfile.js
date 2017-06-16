@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       'copy',
       'sass:expanded',
       'sass:min',
-      'postcss:expended',
+      'postcss:expanded',
       'postcss:min',
       'concat:dist',
       'uglify:dist',

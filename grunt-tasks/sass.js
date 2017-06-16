@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = function (grunt) {
-    return {                              // Task
-        expanded: {                            // Target
-            options: {                       // Target options
+    var sass = {                              
+        expanded: {                           
+            options: {                       
                 outputStyle: 'expanded',
                 sourcemap: false,
             },
@@ -43,5 +43,7 @@ module.exports = function (grunt) {
                 'bin/materialize.css': 'sass/materialize.scss',
             }
         }
-    }
+    };
+
+    return sass;
 };

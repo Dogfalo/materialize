@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (grunt) {
-    return {
+    var jasmine = {
         components: {
             src: [
                 'bin/materialize.js'
@@ -18,5 +18,6 @@ module.exports = function (grunt) {
                 //helpers: 'test/spec/*.js'
             }
         }
-    }
+    };
+    return jasmine;
 };

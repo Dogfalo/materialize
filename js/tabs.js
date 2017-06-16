@@ -134,6 +134,9 @@
               index = $tabs_wrapper.index(item);
               $active = $links.eq(index);
               animateIndicator(prev_index);
+              if (typeof(options.onShow) === "function") {
+                options.onShow.call($this[0], $content);
+              }
             }
           },
         });
@@ -184,7 +187,11 @@
         // Swap content
         if (options.swipeable) {
           if ($tabs_content.length) {
-            $tabs_content.carousel('set', index);
+            $tabs_content.carousel('set', index, function() {
+              if (typeof(options.onShow) === "function") {
+                options.onShow.call($this[0], $content);
+              }
+            });
           }
         } else {
           if ($content !== undefined) {

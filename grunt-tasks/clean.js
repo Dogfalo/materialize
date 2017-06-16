@@ -1,10 +1,10 @@
 'use strict';
-//CLEAN
-
+//CONCAT
 module.exports = function (grunt) {
-  return {
+  var clean = {
     temp: {
       src: ['temp/']
     },
-  }
+  };
+  return clean;
 };

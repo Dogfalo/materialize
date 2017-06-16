@@ -1,7 +1,7 @@
 'use strict';
 // PostCss Autoprefixer
 module.exports = function (grunt) {
-    return {
+    var postcss = {
         options: {
             processors: [
                 require('autoprefixer')({
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                 })
             ]
         },
-        expended: {
+        expanded: {
             src: 'dist/css/materialize.css'
         },
         min: {
@@ -26,5 +26,7 @@ module.exports = function (grunt) {
         bin: {
             src: 'bin/materialize.css'
         }
-    }
+    };
+    
+    return postcss;
 };

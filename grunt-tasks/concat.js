@@ -1,7 +1,7 @@
 'use strict';
 //CONCAT
 module.exports = function (grunt) {
-  return {
+  var concat = {
     options: {
       separator: ';'
     },
@@ -9,7 +9,7 @@ module.exports = function (grunt) {
       // the files to concatenate
       src: [
         "js/initial.js",
-        "js/jquery.easing.1.3.js",
+        "js/jquery.easing.1.4.js",
         "js/animation.js",
         "js/velocity.min.js",
         "js/hammer.min.js",
@@ -36,6 +36,7 @@ module.exports = function (grunt) {
         "js/scrollFire.js",
         "js/date_picker/picker.js",
         "js/date_picker/picker.date.js",
+        "js/date_picker/picker.time.js",
         "js/character_counter.js",
         "js/carousel.js",
         "js/tapTarget.js",
@@ -47,7 +48,7 @@ module.exports = function (grunt) {
       // the files to concatenate
       src: [
         "js/initial.js",
-        "js/jquery.easing.1.3.js",
+        "js/jquery.easing.1.4.js",
         "js/animation.js",
         "js/velocity.min.js",
         "js/hammer.min.js",
@@ -74,6 +75,7 @@ module.exports = function (grunt) {
         "js/scrollFire.js",
         "js/date_picker/picker.js",
         "js/date_picker/picker.date.js",
+        "js/date_picker/picker.time.js",
         "js/character_counter.js",
         "js/carousel.js",
         "js/tapTarget.js",
@@ -81,5 +83,6 @@ module.exports = function (grunt) {
       // the location of the resulting JS file
       dest: 'temp/js/materialize.js'
     },
-  }
+  };
+  return concat;
 };

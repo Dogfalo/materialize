@@ -2,13 +2,12 @@
 //UGLIFY
 
 module.exports = function (grunt) {
-    return {
+    var uglify = {
         options: {
             // Use these options when debugging
             // mangle: false,
             // compress: false,
             // beautify: true
-
         },
         dist: {
             files: {
@@ -25,5 +24,6 @@ module.exports = function (grunt) {
                 'extras/noUiSlider/nouislider.min.js': ['extras/noUiSlider/nouislider.js']
             }
         }
-    }
+    };
+    return uglify;
 };

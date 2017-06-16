@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (grunt) {
-	return {
+	var copy = {
 		dist: {
 			cwd: 'fonts',
 			src: ['**'],
@@ -9,4 +9,5 @@ module.exports = function (grunt) {
 			expand: true
 		},
 	};
+	return copy;
 };
