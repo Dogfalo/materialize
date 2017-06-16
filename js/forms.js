@@ -1,6 +1,4 @@
 (function ($) {
-  $(document).ready(function() {
-
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
@@ -469,7 +467,6 @@
       });
     };
 
-  }); // End of $(document).ready
 
   /*******************
    *  Select Plugin  *
