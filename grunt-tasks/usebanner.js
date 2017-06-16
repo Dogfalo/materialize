@@ -13,6 +13,6 @@ module.exports = function (grunt) {
         src: ['dist/css/*.css', 'dist/js/*.js']
       }
     }
-  },
+  };
   return usebanner
 };
