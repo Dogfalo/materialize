@@ -150,6 +150,14 @@
           leftPosition = origin.position().left + gutterSpacing;
         }
         else if (currAlignment === 'right') {
+          // Material icons fix
+          activates
+            .stop(true, true)
+            .css({
+              opacity: 0,
+              left: 0
+            })
+
           var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
           gutterSpacing = -curr_options.gutter;
           leftPosition =  offsetRight + gutterSpacing;
@@ -162,9 +170,8 @@
           left: leftPosition + scrollXOffset
         });
 
-
         // Show dropdown
-        activates.stop(true, true).css('opacity', 0)
+        activates
           .slideDown({
             queue: false,
             duration: curr_options.inDuration,
