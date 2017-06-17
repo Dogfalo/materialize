@@ -4,15 +4,17 @@
     var defaults = {
       top: 0,
       bottom: Infinity,
-      offset: 0
+      offset: 0,
+      target: $(window)
     };
 
     // Remove pushpin event and classes
     if (options === "remove") {
       this.each(function () {
         if (id = $(this).data('pushpin-id')) {
-          $(window).off('scroll.' + id);
-          $(this).removeData('pushpin-id').removeClass('pin-top pinned pin-bottom').removeAttr('style');
+          var target = $(this).data('pushpin-target');
+          $(target).off('scroll.' + id);
+          $(this).removeData('pushpin-id pushpin-target').removeClass('pin-top pinned pin-bottom').removeAttr('style');
         }
       });
       return false;
@@ -59,9 +61,11 @@
       }
 
       $(this).data('pushpin-id', $uniqueId);
-      updateElements($this, $(window).scrollTop());
-      $(window).on('scroll.' + $uniqueId, function () {
-        var $scrolled = $(window).scrollTop() + options.offset;
+      $(this).data('pushpin-target', options.target);
+      updateElements($this, options.target.scrollTop());
+      options.target.on('scroll.' + $uniqueId, function () {
+
+        var $scrolled = options.target.scrollTop() + options.offset;
         updateElements($this, $scrolled);
       });
 
