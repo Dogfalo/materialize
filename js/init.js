@@ -134,7 +134,7 @@
       }
     }
     if (is_touch_device()) {
-      $('#nav-mobile').css({ overflow: 'auto'});
+      $('#nav-mobile').css({ "overflow-y": 'auto'});
     }
 
     // Set checkbox on forms.html to indeterminate
