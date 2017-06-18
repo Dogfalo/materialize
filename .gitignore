@@ -23,5 +23,4 @@ _SpecRunner.html
 
 # Ignore compiled files
 css/ghpages-materialize.css
-bin/materialize.js
-bin/materialize.css
+bin/
