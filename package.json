@@ -20,11 +20,11 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "jquery": "^2.1.4"
+    "jquery": "^3.2.1"
   },
   "engine": "node >= 6",
   "devDependencies": {
-    "autoprefixer": "^6.7.7",
+    "autoprefixer": "^7.1.1",
     "grunt": "^1.0.1",
     "grunt-banner": "^0.6.0",
     "grunt-browser-sync": "^2.2.0",
@@ -34,7 +34,7 @@
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jasmine": "^1.1.0",
-    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-uglify": "^3.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-notify": "^0.4.5",
     "grunt-postcss": "^0.8.0",

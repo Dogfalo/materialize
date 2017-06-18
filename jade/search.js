@@ -291,7 +291,7 @@
       }
     });
 
-    $('input#search').bind('keyup', debounce(function (e) {
+    $('input#search').on('keyup', debounce(function (e) {
       if ($(this).val() < 2) {
         renderResults([]);
         return;
@@ -308,7 +308,7 @@
     }));
 
 
-    $('input#search').bind('keydown', debounce(function (e) {
+    $('input#search').on('keydown', debounce(function (e) {
       // Escape.
       if (e.keyCode === 27) {
         $(this).val('');
