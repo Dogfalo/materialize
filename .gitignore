@@ -20,8 +20,6 @@ _SpecRunner.html
 # Ignore .html files in root
 /*.html
 !fab-toolbar-demo.html
-!templates/*.html
-
 
 # Ignore compiled files
 css/ghpages-materialize.css
