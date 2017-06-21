@@ -214,6 +214,9 @@ $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
+$portrait: "only screen and (orientation : portrait)" !default;
+$landscape: "only screen and (orientation : landscape)" !default;
+
 
 // 12. Grid
 // ==========================================================================
