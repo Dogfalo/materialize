@@ -171,6 +171,7 @@
       margin-right: $card-padding;
       transition: color .3s ease;
       text-transform: uppercase;
+      cursor: pointer;
 
       &:hover { color: $card-link-color-light; }
     }
