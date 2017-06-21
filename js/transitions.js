@@ -38,25 +38,31 @@
   };
 
   // Horizontal staggered list
-  Materialize.showStaggeredList = function(selectorOrEl) {
+  Materialize.showStaggeredList = function (selectorOrEl, options) {
+    options = options || {};
+    var delay = options.delay || 120;
+    var time = options.time || 0;
+    var translateX = options.translateX || '-100px';
+    var children = options.children || 'li';
+
     var element;
-    if (typeof(selectorOrEl) === 'string') {
+    if (typeof selectorOrEl === 'string') {
       element = $(selectorOrEl);
-    } else if (typeof(selectorOrEl) === 'object') {
+    } else if (typeof selectorOrEl === 'object') {
       element = selectorOrEl;
     } else {
       return;
     }
-    var time = 0;
-    element.find('li').velocity(
-        { translateX: "-100px"},
-        { duration: 0 });
 
-    element.find('li').each(function() {
+    element.find(children).velocity(
+      { translateX: translateX },
+      { duration: 0 });
+
+    element.find(children).each(function callback() {
       $(this).velocity(
-        { opacity: "1", translateX: "0"},
+        { opacity: "1", translateX: "0" },
         { duration: 800, delay: time, easing: [60, 10] });
-      time += 120;
+      time += delay;
     });
   };
 
