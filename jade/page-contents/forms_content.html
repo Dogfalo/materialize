@@ -388,7 +388,7 @@
   &lt;/div>
 
   &lt;div class="input-field col s12">
-    &lt;select multiple>
+    &lt;select>
       &lt;optgroup label="team 1">
         &lt;option value="1">Option 1&lt;/option>
         &lt;option value="2">Option 2&lt;/option>
@@ -723,7 +723,7 @@
         <h2 class="header">Range</h2>
         <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100. We have two different types of sliders. nouiSlider is a 3rd party plugin which we've modified. To use the noUiSlider, you will have to manually link the <code class="language-markup">nouislider.css</code> and <code class="language-markup">nouislider.js</code> files located in the extras folder.</p>
         <h4>noUiSlider</h4>
-        <p>See noUiSlider's official documentation <a href="http://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
+        <p>See noUiSlider's official documentation <a href="https://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
         <div id="range-input"></div>
         <p>&nbsp;</p>
         <pre><code class="language-javascript">
@@ -774,7 +774,30 @@
   });
         </code></pre>
       </div>
+      
+    <div id="time-picker" class="section scrollspy">
+        <h2 class="header">Time Picker</h2>
+        <label for="lunchtime">Lunchtime</label>
+        <input id="lunchtime" type="text" class="timepicker">
+        <pre><code class="language-markup">
+  &lt;input type="date" class="timepicker">
+        </code></pre>
 
+        <h4>Initialization</h4>
+        <pre><code class="language-javascript">
+  $('.timepicker').pickatime({
+    default: 'now', // Set default time
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    cleartext: 'Clear', // text for clear-button
+    canceltext: 'Cancel', // Text for cancel-button
+    autoclose: false, // automatic close timepicker
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker  
+  });
+        </code></pre>
+      </div>
 
       <div id="character-counter" class="section scrollspy">
         <h2 class="header">Character Counter</h2>
@@ -863,7 +886,7 @@
     data: {
       "Apple": null,
       "Microsoft": null,
-      "Google": 'http://placehold.it/250x250'
+      "Google": 'https://placehold.it/250x250'
     },
     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
     onAutocomplete: function(val) {
@@ -894,6 +917,7 @@
             <li><a href="#file">File Input Button</a></li>
             <li><a href="#range">Range</a></li>
             <li><a href="#date-picker">Date Picker</a></li>
+            <li><a href="#time-picker">Time Picker</a></li>
             <li><a href="#character-counter">Character Counter</a></li>
             <li><a href="#autocomplete">Autocomplete</a></li>
           </ul>

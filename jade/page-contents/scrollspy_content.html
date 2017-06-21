@@ -53,7 +53,7 @@
         <table class="highlight">
           <thead>
             <tr>
-                <th>Option Name</th>
+                <th style="min-width: 150px;">Option Name</th>
                 <th>Description</th>
             </tr>
           </thead>
@@ -62,6 +62,22 @@
             <tr>
               <td>scrollOffset</td>
               <td>Offset for centering element when scrolled to. Default: 200</td>
+            </tr>
+            <tr>
+              <td>activeClass</td>
+              <td>Class name to be added to the active link. Default: active</td>
+            </tr>
+            <tr>
+              <td>getActiveElement</td>
+              <td>
+                Function that returns a selector to add <code class="language-markup inline">activeClass</code> to. The parameter is the section id.
+
+                Default: <pre><code class="language-javascript">
+  function(id) {
+    return 'a[href="#' + id + '"]';
+  }
+                </code></pre>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -89,4 +105,3 @@
 
   </div>
 </div>
-

@@ -17,8 +17,8 @@
     <!-- CSS-->
     <link href="css/prism.css" rel="stylesheet">
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -39,7 +39,7 @@
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">
-        <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
+        <li class="logo"><a id="logo-container" href="/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
         <li class="search">
           <div class="search-wrapper card">
@@ -108,7 +108,7 @@
             </li>
           </ul>
         </li>
-        <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
+        <li class="bold"><a href="mobile.html" class="waves-effect waves-teal">Mobile</a></li>
         <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
         <li class="bold"><a href="themes.html" class="waves-effect waves-teal">Themes<span class="new badge"></span></a></li>
       </ul>
@@ -125,7 +125,7 @@
         <a href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>
 
         <ul id="slide-out" class="side-nav">
-          <li><div class="userView">
+          <li><div class="user-view">
             <div class="background">
               <img src="images/office.jpg">
             </div>
@@ -143,7 +143,7 @@
         <h4>HTML Structure</h4>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;div class="userView">
+    &lt;li>&lt;div class="user-view">
       &lt;div class="background">
         &lt;img src="images/office.jpg">
       &lt;/div>
@@ -180,7 +180,9 @@
       menuWidth: 300, // Default is 300
       edge: 'right', // Choose the horizontal origin
       closeOnClick: true, // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
-      draggable: true // Choose whether you can drag to open on touch screens
+      draggable: true, // Choose whether you can drag to open on touch screens,
+      onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is opened
+      onClose: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is closed
     }
   );
         </code></pre>
@@ -337,8 +339,8 @@
     </footer>
 
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>if (!window.jQuery) { document.write('<script src="bin/jquery-3.2.1.min.js"><\/script>'); }
     </script>
     <script src="js/jquery.timeago.min.js"></script>
     <script src="js/prism.js"></script>
