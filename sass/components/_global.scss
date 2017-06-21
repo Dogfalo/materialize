@@ -304,6 +304,16 @@ ul.staggered-list li {
     display: none !important;
   }
 }
+.hide-on-portrait {
+  @media #{$portrait} {
+    display: none !important;
+  }
+}
+.hide-on-landscape {
+  @media #{$landscape} {
+    display: none !important;
+  }
+}
 .show-on-large {
   @media #{$large-and-up} {
     display: block !important;
@@ -326,6 +336,16 @@ ul.staggered-list li {
 }
 .show-on-medium-and-down {
   @media #{$medium-and-down} {
+    display: block !important;
+  }
+}
+.show-on-portrait {
+  @media #{$portrait} {
+    display: block !important;
+  }
+}
+.show-on-landscape {
+  @media #{$landscape} {
     display: block !important;
   }
 }

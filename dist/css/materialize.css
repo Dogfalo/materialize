@@ -2161,6 +2161,14 @@ ul.staggered-list li {
   .hide-on-large-only {
     display: none !important; } }
 
+@media only screen and (orientation: portrait) {
+  .hide-on-portrait {
+    display: none !important; } }
+
+@media only screen and (orientation: landscape) {
+  .hide-on-landscape {
+    display: none !important; } }
+
 @media only screen and (min-width: 993px) {
   .show-on-large {
     display: block !important; } }
@@ -2179,6 +2187,14 @@ ul.staggered-list li {
 
 @media only screen and (max-width: 992px) {
   .show-on-medium-and-down {
+    display: block !important; } }
+
+@media only screen and (orientation: portrait) {
+  .show-on-portrait {
+    display: block !important; } }
+
+@media only screen and (orientation: landscape) {
+  .show-on-landscape {
     display: block !important; } }
 
 @media only screen and (max-width: 600px) {
