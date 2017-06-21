@@ -188,11 +188,12 @@ nav {
 // Fixed Navbar
 .navbar-fixed {
   position: relative;
-  height: $navbar-height-mobile;
-  z-index: 997;
+  top: $navbar-height-mobile;
 
   nav {
     position: fixed;
+    z-index: 997;
+    top: 0px;
   }
 }
 @media #{$medium-and-up} {
