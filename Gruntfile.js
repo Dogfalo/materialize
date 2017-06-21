@@ -5,8 +5,6 @@ module.exports = function(grunt) {
     //  Copy
     copy: {
       dist: { cwd: 'fonts', src: [ '**' ], dest: 'dist/fonts', expand: true },
-      picker: { cwd: 'js/date_picker', src: [ '**' ], dest: 'dist/js', expand: true },
-      pickerbin: { cwd: 'js/date_picker', src: [ '**' ], dest: 'bin', expand: true }
     },
 
     //  Jasmine
