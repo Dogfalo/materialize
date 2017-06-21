@@ -373,6 +373,12 @@ $colors: (
       .#{$color_name}-text {
         color: $color_value !important;
       }
+      .#{$color_name}-btn {
+        background-color: $color_value !important;
+        &:hover {
+          background-color: lighten($color_value, 5%)!important;
+        }
+      }
     }
     @else if $color_name != "shades" {
       .#{$color_name}.#{$color_type} {
@@ -380,6 +386,12 @@ $colors: (
       }
       .#{$color_name}-text.text-#{$color_type} {
         color: $color_value !important;
+      }
+      .#{$color_name}-btn.btn-#{$color_type} {
+        background-color: $color_value !important;
+        &:hover {
+          background-color: lighten($color_value, 5%)!important;
+        }
       }
     }
   }
@@ -392,6 +404,12 @@ $colors: (
   }
   .#{$color}-text {
     color: $color_value !important;
+  }
+  .#{$color}-btn {
+      background-color: $color_value !important;
+      &:hover {
+          background-color: lighten($color_value, 5%)!important;
+      }
   }
 }
 
