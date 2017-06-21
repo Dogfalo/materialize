@@ -214,6 +214,9 @@ $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
+$portrait: "only screen and (orientation : portrait)" !default;
+$landscape: "only screen and (orientation : landscape)" !default;
+
 
 // 12. Grid
 // ==========================================================================
@@ -299,10 +302,7 @@ $h6-fontsize: 1rem !default;
 // 21. Footer
 // ==========================================================================
 
-$footer-font-color: #fff !default;
 $footer-bg-color: $primary-color !default;
-$footer-copyright-font-color: rgba(255,255,255,.8) !default;
-$footer-copyright-bg-color: rgba(51,51,51,.08) !default;
 
 
 // 22. Flow Text
