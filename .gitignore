@@ -37,6 +37,9 @@ _SpecRunner.html
 /*.html
 !fab-toolbar-demo.html
 
+# Ignore template zips
+templates/*.zip
+
 # Ignore compiled files
 css/ghpages-materialize.css
 bin/
