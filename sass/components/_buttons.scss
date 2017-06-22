@@ -26,15 +26,16 @@
 .btn-floating[disabled],
 .btn-large[disabled],
 .btn-flat[disabled] {
-  pointer-events: none;
-  background-color: $button-disabled-background !important;
+  background-color: $button-disabled-background;
   box-shadow: none;
-  color: $button-disabled-color !important;
+  color: $button-disabled-color;
   cursor: default;
 
-  &:hover {
-    background-color: $button-disabled-background !important;
-    color: $button-disabled-color !important;
+  &:hover,
+  &:focus {
+    background-color: $button-disabled-background;
+    color: $button-disabled-color;
+    cursor: not-allowed;
   }
 }
 
@@ -261,6 +262,7 @@ button.btn-floating {
   &:focus,
   &:hover {
     box-shadow: none;
+    background-color: transparent;
   }
 
   &:focus {
@@ -270,7 +272,7 @@ button.btn-floating {
   &.disabled {
     background-color: transparent !important;
     color: $button-flat-disabled-color !important;
-    cursor: default;
+    cursor: not-allowed;
   }
 }
 
