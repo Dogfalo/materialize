@@ -2,6 +2,15 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
+## v0.99.0
+- Added support for jQuery 3
+- Fixed dynamic textarea resize bug
+- Added support for custom active elements in scrollspy
+- Added Time Picker
+- Updated styling for Date Picker
+- Added callbacks to side nav
+- Updated styling for switches
+
 ## v0.98.2 (April 14th)
 - :no_good: **Autocomplete: renamed and moved options to `autocompleteOptions`** :no_good:
 - Fixed collapsible preselect bug

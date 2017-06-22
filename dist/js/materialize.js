@@ -1,6 +1,6 @@
 /*!
- * Materialize v0.98.2 (http://materializecss.com)
- * Copyright 2014-2015 Materialize
+ * Materialize v0.99.0 (http://materializecss.com)
+ * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 // Check for jQuery.
@@ -15,210 +15,171 @@ if (typeof(jQuery) === 'undefined') {
   }
 }
 ;/*
- * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
- *
- * Uses the built in easing capabilities added In jQuery 1.1
- * to offer multiple easing options
- *
- * TERMS OF USE - jQuery Easing
- *
+ * jQuery Easing v1.4.0 - http://gsgd.co.uk/sandbox/jquery/easing/
  * Open source under the BSD License.
- *
  * Copyright © 2008 George McGinley Smith
  * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice, this list of
- * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list
- * of conditions and the following disclaimer in the documentation and/or other materials
- * provided with the distribution.
- *
- * Neither the name of the author nor the names of contributors may be used to endorse
- * or promote products derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
- * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * https://raw.github.com/gdsmith/jquery-easing/master/LICENSE
 */
 
-// t: current time, b: begInnIng value, c: change In value, d: duration
-jQuery.easing['jswing'] = jQuery.easing['swing'];
+(function (factory) {
+	if (typeof define === "function" && define.amd) {
+		define(['jquery'], function ($) {
+			return factory($);
+		});
+	} else if (typeof module === "object" && typeof module.exports === "object") {
+		exports = factory(require('jquery'));
+	} else {
+		factory(jQuery);
+	}
+})(function($){
 
-jQuery.extend( jQuery.easing,
+// Preserve the original jQuery "swing" easing as "jswing"
+$.easing['jswing'] = $.easing['swing'];
+
+var pow = Math.pow,
+	sqrt = Math.sqrt,
+	sin = Math.sin,
+	cos = Math.cos,
+	PI = Math.PI,
+	c1 = 1.70158,
+	c2 = c1 * 1.525,
+	c3 = c1 + 1,
+	c4 = ( 2 * PI ) / 3,
+	c5 = ( 2 * PI ) / 4.5;
+
+// x is the fraction of animation progress, in the range 0..1
+function bounceOut(x) {
+	var n1 = 7.5625,
+		d1 = 2.75;
+	if ( x < 1/d1 ) {
+		return n1*x*x;
+	} else if ( x < 2/d1 ) {
+		return n1*(x-=(1.5/d1))*x + .75;
+	} else if ( x < 2.5/d1 ) {
+		return n1*(x-=(2.25/d1))*x + .9375;
+	} else {
+		return n1*(x-=(2.625/d1))*x + .984375;
+	}
+}
+
+$.extend( $.easing,
 {
 	def: 'easeOutQuad',
-	swing: function (x, t, b, c, d) {
-		//alert(jQuery.easing.default);
-		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+	swing: function (x) {
+		return $.easing[$.easing.def](x);
 	},
-	easeInQuad: function (x, t, b, c, d) {
-		return c*(t/=d)*t + b;
+	easeInQuad: function (x) {
+		return x * x;
 	},
-	easeOutQuad: function (x, t, b, c, d) {
-		return -c *(t/=d)*(t-2) + b;
+	easeOutQuad: function (x) {
+		return 1 - ( 1 - x ) * ( 1 - x );
 	},
-	easeInOutQuad: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t + b;
-		return -c/2 * ((--t)*(t-2) - 1) + b;
+	easeInOutQuad: function (x) {
+		return x < 0.5 ?
+			2 * x * x :
+			1 - pow( -2 * x + 2, 2 ) / 2;
 	},
-	easeInCubic: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t + b;
+	easeInCubic: function (x) {
+		return x * x * x;
 	},
-	easeOutCubic: function (x, t, b, c, d) {
-		return c*((t=t/d-1)*t*t + 1) + b;
+	easeOutCubic: function (x) {
+		return 1 - pow( 1 - x, 3 );
 	},
-	easeInOutCubic: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t + b;
-		return c/2*((t-=2)*t*t + 2) + b;
+	easeInOutCubic: function (x) {
+		return x < 0.5 ?
+			4 * x * x * x :
+			1 - pow( -2 * x + 2, 3 ) / 2;
 	},
-	easeInQuart: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t + b;
+	easeInQuart: function (x) {
+		return x * x * x * x;
 	},
-	easeOutQuart: function (x, t, b, c, d) {
-		return -c * ((t=t/d-1)*t*t*t - 1) + b;
+	easeOutQuart: function (x) {
+		return 1 - pow( 1 - x, 4 );
 	},
-	easeInOutQuart: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-		return -c/2 * ((t-=2)*t*t*t - 2) + b;
+	easeInOutQuart: function (x) {
+		return x < 0.5 ?
+			8 * x * x * x * x :
+			1 - pow( -2 * x + 2, 4 ) / 2;
 	},
-	easeInQuint: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t*t + b;
+	easeInQuint: function (x) {
+		return x * x * x * x * x;
 	},
-	easeOutQuint: function (x, t, b, c, d) {
-		return c*((t=t/d-1)*t*t*t*t + 1) + b;
+	easeOutQuint: function (x) {
+		return 1 - pow( 1 - x, 5 );
 	},
-	easeInOutQuint: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-		return c/2*((t-=2)*t*t*t*t + 2) + b;
+	easeInOutQuint: function (x) {
+		return x < 0.5 ?
+			16 * x * x * x * x * x :
+			1 - pow( -2 * x + 2, 5 ) / 2;
 	},
-	easeInSine: function (x, t, b, c, d) {
-		return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+	easeInSine: function (x) {
+		return 1 - cos( x * PI/2 );
 	},
-	easeOutSine: function (x, t, b, c, d) {
-		return c * Math.sin(t/d * (Math.PI/2)) + b;
+	easeOutSine: function (x) {
+		return sin( x * PI/2 );
 	},
-	easeInOutSine: function (x, t, b, c, d) {
-		return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+	easeInOutSine: function (x) {
+		return -( cos( PI * x ) - 1 ) / 2;
 	},
-	easeInExpo: function (x, t, b, c, d) {
-		return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+	easeInExpo: function (x) {
+		return x === 0 ? 0 : pow( 2, 10 * x - 10 );
 	},
-	easeOutExpo: function (x, t, b, c, d) {
-		return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+	easeOutExpo: function (x) {
+		return x === 1 ? 1 : 1 - pow( 2, -10 * x );
 	},
-	easeInOutExpo: function (x, t, b, c, d) {
-		if (t==0) return b;
-		if (t==d) return b+c;
-		if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-		return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+	easeInOutExpo: function (x) {
+		return x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ?
+			pow( 2, 20 * x - 10 ) / 2 :
+			( 2 - pow( 2, -20 * x + 10 ) ) / 2;
 	},
-	easeInCirc: function (x, t, b, c, d) {
-		return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+	easeInCirc: function (x) {
+		return 1 - sqrt( 1 - pow( x, 2 ) );
 	},
-	easeOutCirc: function (x, t, b, c, d) {
-		return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+	easeOutCirc: function (x) {
+		return sqrt( 1 - pow( x - 1, 2 ) );
 	},
-	easeInOutCirc: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
-		return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+	easeInOutCirc: function (x) {
+		return x < 0.5 ?
+			( 1 - sqrt( 1 - pow( 2 * x, 2 ) ) ) / 2 :
+			( sqrt( 1 - pow( -2 * x + 2, 2 ) ) + 1 ) / 2;
 	},
-	easeInElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+	easeInElastic: function (x) {
+		return x === 0 ? 0 : x === 1 ? 1 :
+			-pow( 2, 10 * x - 10 ) * sin( ( x * 10 - 10.75 ) * c4 );
 	},
-	easeOutElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+	easeOutElastic: function (x) {
+		return x === 0 ? 0 : x === 1 ? 1 :
+			pow( 2, -10 * x ) * sin( ( x * 10 - 0.75 ) * c4 ) + 1;
 	},
-	easeInOutElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
-		return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+	easeInOutElastic: function (x) {
+		return x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ?
+			-( pow( 2, 20 * x - 10 ) * sin( ( 20 * x - 11.125 ) * c5 )) / 2 :
+			pow( 2, -20 * x + 10 ) * sin( ( 20 * x - 11.125 ) * c5 ) / 2 + 1;
 	},
-	easeInBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		return c*(t/=d)*t*((s+1)*t - s) + b;
+	easeInBack: function (x) {
+		return c3 * x * x * x - c1 * x * x;
 	},
-	easeOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+	easeOutBack: function (x) {
+		return 1 + c3 * pow( x - 1, 3 ) + c1 * pow( x - 1, 2 );
 	},
-	easeInOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
-		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+	easeInOutBack: function (x) {
+		return x < 0.5 ?
+			( pow( 2 * x, 2 ) * ( ( c2 + 1 ) * 2 * x - c2 ) ) / 2 :
+			( pow( 2 * x - 2, 2 ) *( ( c2 + 1 ) * ( x * 2 - 2 ) + c2 ) + 2 ) / 2;
 	},
-	easeInBounce: function (x, t, b, c, d) {
-		return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+	easeInBounce: function (x) {
+		return 1 - bounceOut( 1 - x );
 	},
-	easeOutBounce: function (x, t, b, c, d) {
-		if ((t/=d) < (1/2.75)) {
-			return c*(7.5625*t*t) + b;
-		} else if (t < (2/2.75)) {
-			return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-		} else if (t < (2.5/2.75)) {
-			return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-		} else {
-			return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
-		}
-	},
-	easeInOutBounce: function (x, t, b, c, d) {
-		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
-		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+	easeOutBounce: bounceOut,
+	easeInOutBounce: function (x) {
+		return x < 0.5 ?
+			( 1 - bounceOut( 1 - 2 * x ) ) / 2 :
+			( 1 + bounceOut( 2 * x - 1 ) ) / 2;
 	}
 });
 
-/*
- *
- * TERMS OF USE - EASING EQUATIONS
- *
- * Open source under the BSD License.
- *
- * Copyright © 2001 Robert Penner
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice, this list of
- * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list
- * of conditions and the following disclaimer in the documentation and/or other materials
- * provided with the distribution.
- *
- * Neither the name of the author nor the names of contributors may be used to endorse
- * or promote products derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
- * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- */;// Custom Easing
+});;// Custom Easing
 jQuery.extend( jQuery.easing,
 {
   easeInOutMaterial: function (x, t, b, c, d) {
@@ -763,6 +724,14 @@ if (jQuery) {
           leftPosition = origin.position().left + gutterSpacing;
         }
         else if (currAlignment === 'right') {
+          // Material icons fix
+          activates
+            .stop(true, true)
+            .css({
+              opacity: 0,
+              left: 0
+            })
+
           var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
           gutterSpacing = -curr_options.gutter;
           leftPosition =  offsetRight + gutterSpacing;
@@ -775,9 +744,8 @@ if (jQuery) {
           left: leftPosition + scrollXOffset
         });
 
-
         // Show dropdown
-        activates.stop(true, true).css('opacity', 0)
+        activates
           .slideDown({
             queue: false,
             duration: curr_options.inDuration,
@@ -790,9 +758,9 @@ if (jQuery) {
 
         // Add click close handler to document
         setTimeout(function() {
-          $(document).bind('click.'+ activates.attr('id'), function (e) {
+          $(document).on('click.'+ activates.attr('id'), function (e) {
             hideDropdown();
-            $(document).unbind('click.'+ activates.attr('id'));
+            $(document).off('click.'+ activates.attr('id'));
           });
         }, 0);
       }
@@ -803,14 +771,14 @@ if (jQuery) {
         activates.fadeOut(curr_options.outDuration);
         activates.removeClass('active');
         origin.removeClass('active');
-        $(document).unbind('click.'+ activates.attr('id'));
+        $(document).off('click.'+ activates.attr('id'));
         setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
       }
 
       // Hover
       if (curr_options.hover) {
         var open = false;
-        origin.unbind('click.' + origin.attr('id'));
+        origin.off('click.' + origin.attr('id'));
         // Hover handler to show dropdown
         origin.on('mouseenter', function(e){ // Mouse over
           if (open === false) {
@@ -840,8 +808,8 @@ if (jQuery) {
         // Click
       } else {
         // Click handler to show dropdown
-        origin.unbind('click.' + origin.attr('id'));
-        origin.bind('click.'+origin.attr('id'), function(e){
+        origin.off('click.' + origin.attr('id'));
+        origin.on('click.'+origin.attr('id'), function(e){
           if (!isFocused) {
             if ( origin[0] == e.currentTarget &&
                  !origin.hasClass('active') &&
@@ -855,7 +823,7 @@ if (jQuery) {
             // If origin is clicked and menu is open, close menu
             else if (origin.hasClass('active')) {
               hideDropdown();
-              $(document).unbind('click.'+ activates.attr('id'));
+              $(document).off('click.'+ activates.attr('id'));
             }
           }
         });
@@ -961,7 +929,7 @@ if (jQuery) {
 
           var overlayID = _generateID();
           var $overlay = $('<div class="modal-overlay"></div>');
-          lStack = (++_stack);
+          var lStack = (++_stack);
 
           // Store a reference of the overlay
           $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
@@ -1042,6 +1010,7 @@ if (jQuery) {
       }); // done return
     },
     open : function() {
+      methods.init.apply( this, arguments );
       $(this).trigger('openModal');
     },
     close : function() {
@@ -1086,7 +1055,8 @@ if (jQuery) {
       origin.wrap(placeholder);
 
 
-      origin.on('click', function(){
+      // Start click handler
+      origin.on('click', function() {
         var placeholder = origin.parent('.material-placeholder');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
@@ -1240,25 +1210,29 @@ if (jQuery) {
             ); // End Velocity
         }
 
-      }); // End origin on click
-
-
-      // Return on scroll
-      $(window).scroll(function() {
-        if (overlayActive) {
-          returnToOriginal();
-        }
-      });
-
-      // Return on ESC
-      $(document).keyup(function(e) {
-
-        if (e.keyCode === 27 && doneAnimating === true) {   // ESC key
+        // Handle Exit triggers
+        $(window).on('scroll.materialbox', function() {
           if (overlayActive) {
             returnToOriginal();
           }
-        }
-      });
+        });
+
+        $(window).on('resize.materialbox', function() {
+          if (overlayActive) {
+            returnToOriginal();
+          }
+        });
+
+        $(document).on('keyup.materialbox', function(e) {
+          // ESC key
+          if (e.keyCode === 27 &&
+              doneAnimating === true &&
+              overlayActive) {
+            returnToOriginal();
+          }
+        });
+
+      }); // End click handler
 
 
       // This function returns the modaled image to the original spot
@@ -1276,6 +1250,10 @@ if (jQuery) {
         $('#materialbox-overlay').velocity("stop", true);
         $('.materialbox-caption').velocity("stop", true);
 
+        // disable exit handlers
+        $(window).off('scroll.materialbox');
+        $(document).off('keyup.materialbox');
+        $(window).off('resize.materialbox');
 
         $('#materialbox-overlay').velocity({opacity: 0}, {
           duration: outDuration, // Delay prevents animation overlapping
@@ -1488,7 +1466,7 @@ if (jQuery) {
 
       // append indicator then set indicator width to tab width
       if (!$this.find('.indicator').length) {
-        $this.append('<div class="indicator"></div>');
+        $this.append('<li class="indicator"></li>');
       }
       $indicator = $this.find('.indicator');
 
@@ -1534,6 +1512,9 @@ if (jQuery) {
               index = $tabs_wrapper.index(item);
               $active = $links.eq(index);
               animateIndicator(prev_index);
+              if (typeof(options.onShow) === "function") {
+                options.onShow.call($this[0], $content);
+              }
             }
           },
         });
@@ -1584,7 +1565,11 @@ if (jQuery) {
         // Swap content
         if (options.swipeable) {
           if ($tabs_content.length) {
-            $tabs_content.carousel('set', index);
+            $tabs_content.carousel('set', index, function() {
+              if (typeof(options.onShow) === "function") {
+                options.onShow.call($this[0], $content);
+              }
+            });
           }
         } else {
           if ($content !== undefined) {
@@ -2136,7 +2121,7 @@ if (jQuery) {
             if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
                 element = target;
                 break;
-            } else if (target.classList.contains('waves-effect')) {
+            } else if (target.className.indexOf('waves-effect') !== -1) {
                 element = target;
                 break;
             }
@@ -2354,7 +2339,9 @@ if (jQuery) {
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false,
-        draggable: true
+        draggable: true,
+        onOpen: null,
+        onClose: null
       };
       options = $.extend(defaults, options);
 
@@ -2428,7 +2415,9 @@ if (jQuery) {
         // if closeOnClick, then add close event for all a tags in side sideNav
         if (options.closeOnClick === true) {
           menu.on("click.itemclick", "a:not(.collapsible-header)", function(){
-            removeMenu();
+            if (!(window.innerWidth > 992 && menu.hasClass('fixed'))){
+              removeMenu();
+            }
           });
         }
 
@@ -2481,7 +2470,12 @@ if (jQuery) {
                 }
               });
           }
-        };
+
+          // Callback
+          if (typeof(options.onClose) === 'function') {
+            options.onClose.call(this, menu);
+          }
+        }
 
 
 
@@ -2498,7 +2492,7 @@ if (jQuery) {
 
           $dragTarget.hammer({
             prevent_default: false
-          }).bind('pan', function(e) {
+          }).on('pan', function(e) {
 
             if (e.gesture.pointerType == "touch") {
 
@@ -2506,6 +2500,11 @@ if (jQuery) {
               var x = e.gesture.center.x;
               var y = e.gesture.center.y;
               var velocityX = e.gesture.velocityX;
+
+              // Vertical scroll bugfix
+              if (x === 0 && y === 0) {
+                return;
+              }
 
               // Disable Scrolling
               var $body = $('body');
@@ -2520,6 +2519,12 @@ if (jQuery) {
                 $overlay.css('opacity', 0).click( function(){
                   removeMenu();
                 });
+                
+                // Run 'onOpen' when sidenav is opened via touch/swipe if applicable
+                if (typeof(options.onOpen) === 'function') {
+                  options.onOpen.call(this, menu);
+                }
+                
                 $('body').append($overlay);
               }
 
@@ -2566,7 +2571,7 @@ if (jQuery) {
               }
             }
 
-          }).bind('panend', function(e) {
+          }).on('panend', function(e) {
 
             if (e.gesture.pointerType == "touch") {
               var $overlay = $('#sidenav-overlay');
@@ -2604,6 +2609,11 @@ if (jQuery) {
                   menu.velocity({'translateX': [-1 * options.menuWidth - 10, leftPos]}, {duration: 200, queue: false, easing: 'easeOutQuad'});
                   $overlay.velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
                     complete: function () {
+                      // Run 'onClose' when sidenav is closed via touch/swipe if applicable
+                      if (typeof(options.onClose) === 'function') {
+                        options.onClose.call(this, menu);
+                      }
+                      
                       $(this).remove();
                     }});
                   $dragTarget.css({width: '10px', right: '', left: 0});
@@ -2678,14 +2688,19 @@ if (jQuery) {
                   $(this).remove();
                 } });
 
-            });
-            $('body').append($overlay);
-            $overlay.velocity({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
-              complete: function () {
-                menuOut = true;
-                panning = false;
-              }
-            });
+              });
+              $('body').append($overlay);
+              $overlay.velocity({opacity: 1}, {duration: 300, queue: false, easing: 'easeOutQuad',
+                complete: function () {
+                  menuOut = true;
+                  panning = false;
+                }
+              });
+
+            // Callback
+            if (typeof(options.onOpen) === 'function') {
+              options.onOpen.call(this, menu);
+            }
           }
 
           return false;
@@ -2839,12 +2854,17 @@ if (jQuery) {
         offsetRight : number -> offset from right. Default: 0
         offsetBottom : number -> offset from bottom. Default: 0
         offsetLeft : number -> offset from left. Default: 0
+				activeClass : string -> Class name to be added to the active link. Default: active
 	 * @returns {jQuery}
 	 */
 	$.scrollSpy = function(selector, options) {
 	  var defaults = {
 			throttle: 100,
-			scrollOffset: 200 // offset - 200 allows elements near bottom of page to scroll
+			scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
+			activeClass: 'active',
+			getActiveElement: function(id) {
+				return 'a[href="#' + id + '"]';
+			}
     };
     options = $.extend(defaults, options);
 
@@ -2891,7 +2911,7 @@ if (jQuery) {
 			var $this = $(this);
 
 			if (visible[0]) {
-				$('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
+				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
 				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
 					visible.unshift($(this));
 				}
@@ -2904,7 +2924,7 @@ if (jQuery) {
 			}
 
 
-			$('a[href="#' + visible[0].attr('id') + '"]').addClass('active');
+			$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
 		});
 		selector.on('scrollSpy:exit', function() {
 			visible = $.grep(visible, function(value) {
@@ -2912,13 +2932,13 @@ if (jQuery) {
 	    });
 
 			if (visible[0]) {
-				$('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
+				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
 	      if (visible[0]) { // Check if empty
-					$('a[href="#' + visible[0].attr('id') + '"]').addClass('active');
+					$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
 	      }
 			}
 		});
@@ -2963,7 +2983,7 @@ if (jQuery) {
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
       $(input_selector).each(function(index, element) {
         var $this = $(this);
-        if ($(element).val().length > 0 || element.autofocus || $this.attr('placeholder') !== undefined) {
+        if ($(element).val().length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== undefined) {
           $this.siblings('label').addClass('active');
         } else if ($(element)[0].validity) {
           $this.siblings('label').toggleClass('active', $(element)[0].validity.badInput === true);
@@ -3086,9 +3106,14 @@ if (jQuery) {
       if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
       if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
 
-      if ($textarea.attr('wrap') === "off") {
-        hiddenDiv.css('overflow-wrap', "normal")
-                 .css('white-space', "pre");
+      // Set original-height, if none
+      if (!$textarea.data('original-height')) {
+        $textarea.data('original-height', $textarea.height());
+      }
+
+      if ($textarea.attr('wrap') === 'off') {
+        hiddenDiv.css('overflow-wrap', 'normal')
+                 .css('white-space', 'pre');
       }
 
       hiddenDiv.text($textarea.val() + '\n');
@@ -3106,21 +3131,22 @@ if (jQuery) {
         hiddenDiv.css('width', $(window).width()/2);
       }
 
+
       /**
        * Resize if the new height is greater than the
        * original height of the textarea
        */
-      if ($textarea.data("original-height") <= hiddenDiv.height()) {
+      if ($textarea.data('original-height') <= hiddenDiv.height()) {
         $textarea.css('height', hiddenDiv.height());
-      } else if ($textarea.val().length < $textarea.data("previous-length")) {
+      } else if ($textarea.val().length < $textarea.data('previous-length')) {
         /**
          * In case the new height is less than original height, it
          * means the textarea has less text than before
          * So we set the height to the original one
          */
-        $textarea.css('height', $textarea.data("original-height"));
+        $textarea.css('height', $textarea.data('original-height'));
       }
-      $textarea.data("previous-length", $textarea.val().length);
+      $textarea.data('previous-length', $textarea.val().length);
     }
 
     $(text_area_selector).each(function () {
@@ -3129,8 +3155,8 @@ if (jQuery) {
        * Instead of resizing textarea on document load,
        * store the original height and the original length
        */
-      $textarea.data("original-height", $textarea.height());
-      $textarea.data("previous-length", $textarea.val().length);
+      $textarea.data('original-height', $textarea.height());
+      $textarea.data('previous-length', $textarea.val().length);
     });
 
     $('body').on('keyup keydown autoresize', text_area_selector, function () {
@@ -3851,7 +3877,7 @@ if (jQuery) {
         $slides.find('img').each(function () {
           var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
           if ($(this).attr('src') !== placeholderBase64) {
-            $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+            $(this).css('background-image', 'url("' + $(this).attr('src') + '")' );
             $(this).attr('src', placeholderBase64);
           }
         });
@@ -3926,7 +3952,7 @@ if (jQuery) {
 
         $this.hammer({
             prevent_default: false
-        }).bind('pan', function(e) {
+        }).on('pan', function(e) {
           if (e.gesture.pointerType === "touch") {
 
             // reset interval
@@ -3974,7 +4000,7 @@ if (jQuery) {
 
           }
 
-        }).bind('panend', function(e) {
+        }).on('panend', function(e) {
           if (e.gesture.pointerType === "touch") {
 
             $curr_slide = $slider.find('.active');
@@ -4082,6 +4108,13 @@ if (jQuery) {
 
     $(document).on('click.card', '.card', function (e) {
       if ($(this).find('> .card-reveal').length) {
+        var $card = $(e.target).closest('.card');
+        if ($card.data('initialOverflow') === undefined) {
+          $card.data(
+            'initialOverflow',
+            $card.css('overflow') === undefined ? '' : $card.css('overflow')
+          );
+        }
         if ($(e.target).is($('.card-reveal .card-title')) || $(e.target).is($('.card-reveal .card-title i'))) {
           // Make Reveal animate down and display none
           $(this).find('.card-reveal').velocity(
@@ -4089,20 +4122,24 @@ if (jQuery) {
               duration: 225,
               queue: false,
               easing: 'easeInOutQuad',
-              complete: function() { $(this).css({ display: 'none'}); }
+              complete: function() {
+                $(this).css({ display: 'none'});
+                $card.css('overflow', $card.data('initialOverflow'));
+              }
             }
           );
         }
         else if ($(e.target).is($('.card .activator')) ||
                  $(e.target).is($('.card .activator i')) ) {
-          $(e.target).closest('.card').css('overflow', 'hidden');
+          $card.css('overflow', 'hidden');
           $(this).find('.card-reveal').css({ display: 'block'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});
         }
       }
     });
 
   });
-}( jQuery ));;(function ($) {
+}( jQuery ));
+;(function ($) {
   var materialChipsDefaults = {
     data: [],
     placeholder: '',
@@ -4253,7 +4290,7 @@ if (jQuery) {
         $currChips.removeClass('focus');
 
         // Remove active if empty
-        if (!$currChips.data('chips').length) {
+        if ($currChips.data('chips') === undefined || !$currChips.data('chips').length) {
           $currChips.siblings('label').removeClass('active');
         }
         $currChips.siblings('.prefix').removeClass('active');
@@ -4312,7 +4349,7 @@ if (jQuery) {
       if (label.length) {
         label.attr('for', chipId);
 
-        if ($chips.data('chips').length) {
+        if ($chips.data('chips')!== undefined && $chips.data('chips').length) {
           label.addClass('active');
         }
       }
@@ -4339,15 +4376,18 @@ if (jQuery) {
 
       var $renderedChip = $('<div class="chip"></div>');
       $renderedChip.text(elem.tag);
+      if (elem.image) {
+        $renderedChip.prepend($('<img />').attr('src', elem.image))
+      }
       $renderedChip.append($('<i class="material-icons close">close</i>'));
       return $renderedChip;
     };
 
     this.setPlaceholder = function($chips) {
-      if ($chips.data('chips').length && curr_options.placeholder) {
+      if ($chips.data('chips') !== undefined && $chips.data('chips').length && curr_options.placeholder) {
         $chips.find('input').prop('placeholder', curr_options.placeholder);
 
-      } else if (!$chips.data('chips').length && curr_options.secondaryPlaceholder) {
+      } else if (($chips.data('chips') === undefined || !$chips.data('chips').length) && curr_options.secondaryPlaceholder) {
         $chips.find('input').prop('placeholder', curr_options.secondaryPlaceholder);
       }
     };
@@ -4842,7 +4882,7 @@ if (jQuery) {
     $('.dismissable').each(function() {
       $(this).hammer({
         prevent_default: false
-      }).bind('pan', function(e) {
+      }).on('pan', function(e) {
         if (e.gesture.pointerType === "touch") {
           var $this = $(this);
           var direction = e.gesture.direction;
@@ -4862,7 +4902,7 @@ if (jQuery) {
             swipeRight = true;
           }
         }
-      }).bind('panend', function(e) {
+      }).on('panend', function(e) {
         // Reset if collection is moved back into original position
         if (Math.abs(e.gesture.deltaX) < ($(this).innerWidth() / 2)) {
           swipeRight = false;
@@ -6096,7 +6136,6 @@ return PickerConstructor
 
 }));
 
-
 ;/*!
  * Date picker for pickadate.js v3.5.0
  * http://amsul.github.io/pickadate.js/date.htm
@@ -6123,7 +6162,7 @@ return PickerConstructor
  */
 var DAYS_IN_WEEK = 7,
     WEEKS_IN_CALENDAR = 6,
-    _ = Picker._
+    _ = Picker._;
 
 
 
@@ -7188,8 +7227,8 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // Materialize modified
             if (override == "short_months")
                 if (selectedObject != null)
-                return _.node( 'div', monthsCollection[ selectedObject.month ] );
-                else return _.node( 'div', monthsCollection[ viewsetObject.month ] );
+                return monthsCollection[ selectedObject.month ];
+                else return monthsCollection[ viewsetObject.month ];
 
             // If there's a need for a month selector
             return _.node( 'div', monthsCollection[ viewsetObject.month ], settings.klass.month )
@@ -7271,8 +7310,8 @@ DatePicker.prototype.nodes = function( isOpen ) {
         // Materialize modified
         createDayLabel = function() {
                 if (selectedObject != null)
-                    return _.node( 'div', selectedObject.date)
-                else return _.node( 'div', nowObject.date)
+                    return selectedObject.date
+                else return nowObject.date
             }
         createWeekdayLabel = function() {
             var display_day;
@@ -7281,155 +7320,158 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 display_day = selectedObject.day;
             else
                 display_day = nowObject.day;
-            var weekday = settings.weekdaysFull[ display_day ]
+            var weekday = settings.weekdaysShort[ display_day ];
             return weekday
         }
 
 
-    // Create and return the entire calendar.
+  // Create and return the entire calendar.
+
 return _.node(
         // Date presentation View
         'div',
-            _.node(
-                'div',
-                createWeekdayLabel(),
-                "picker__weekday-display"
-            )+
-            _.node(
-                // Div for short Month
-                'div',
-                createMonthLabel("short_months"),
-                settings.klass.month_display
-            )+
-            _.node(
-                // Div for Day
-                'div',
-                createDayLabel() ,
-                settings.klass.day_display
-            )+
             _.node(
                 // Div for Year
                 'div',
                 createYearLabel("raw") ,
                 settings.klass.year_display
+            )+
+            _.node(
+                'span',
+                createWeekdayLabel() + ', ',
+                "picker__weekday-display"
+            )+
+            _.node(
+                // Div for short Month
+                'span',
+                createMonthLabel("short_months") + ' ',
+                settings.klass.month_display
+            )+
+            _.node(
+              // Div for Day
+              'span',
+              createDayLabel() ,
+              settings.klass.day_display
             ),
         settings.klass.date_display
     )+
     // Calendar container
     _.node('div',
-        _.node('div',
-        ( settings.selectYears ?  createMonthLabel() + createYearLabel() : createMonthLabel() + createYearLabel() ) +
-        createMonthNav() + createMonthNav( 1 ),
-        settings.klass.header
-    ) + _.node(
-        'table',
-        tableHead +
-        _.node(
-            'tbody',
-            _.group({
-                min: 0,
-                max: WEEKS_IN_CALENDAR - 1,
-                i: 1,
-                node: 'tr',
-                item: function( rowCounter ) {
+	    _.node('div',
+		_.node('div',
+		( settings.selectYears ?  createMonthLabel() + createYearLabel() : createMonthLabel() + createYearLabel() ) +
+		createMonthNav() + createMonthNav( 1 ),
+		settings.klass.header
+	    ) + _.node(
+		'table',
+		tableHead +
+		_.node(
+		    'tbody',
+		    _.group({
+		        min: 0,
+		        max: WEEKS_IN_CALENDAR - 1,
+		        i: 1,
+		        node: 'tr',
+		        item: function( rowCounter ) {
 
-                    // If Monday is the first day and the month starts on Sunday, shift the date back a week.
-                    var shiftDateBy = settings.firstDay && calendar.create([ viewsetObject.year, viewsetObject.month, 1 ]).day === 0 ? -7 : 0
+		            // If Monday is the first day and the month starts on Sunday, shift the date back a week.
+		            var shiftDateBy = settings.firstDay && calendar.create([ viewsetObject.year, viewsetObject.month, 1 ]).day === 0 ? -7 : 0
 
-                    return [
-                        _.group({
-                            min: DAYS_IN_WEEK * rowCounter - viewsetObject.day + shiftDateBy + 1, // Add 1 for weekday 0index
-                            max: function() {
-                                return this.min + DAYS_IN_WEEK - 1
-                            },
-                            i: 1,
-                            node: 'td',
-                            item: function( targetDate ) {
+		            return [
+		                _.group({
+		                    min: DAYS_IN_WEEK * rowCounter - viewsetObject.day + shiftDateBy + 1, // Add 1 for weekday 0index
+		                    max: function() {
+		                        return this.min + DAYS_IN_WEEK - 1
+		                    },
+		                    i: 1,
+		                    node: 'td',
+		                    item: function( targetDate ) {
 
-                                // Convert the time date from a relative date to a target date.
-                                targetDate = calendar.create([ viewsetObject.year, viewsetObject.month, targetDate + ( settings.firstDay ? 1 : 0 ) ])
+		                        // Convert the time date from a relative date to a target date.
+		                        targetDate = calendar.create([ viewsetObject.year, viewsetObject.month, targetDate + ( settings.firstDay ? 1 : 0 ) ])
 
-                                var isSelected = selectedObject && selectedObject.pick == targetDate.pick,
-                                    isHighlighted = highlightedObject && highlightedObject.pick == targetDate.pick,
-                                    isDisabled = disabledCollection && calendar.disabled( targetDate ) || targetDate.pick < minLimitObject.pick || targetDate.pick > maxLimitObject.pick,
-                                    formattedDate = _.trigger( calendar.formats.toString, calendar, [ settings.format, targetDate ] )
+		                        var isSelected = selectedObject && selectedObject.pick == targetDate.pick,
+		                            isHighlighted = highlightedObject && highlightedObject.pick == targetDate.pick,
+		                            isDisabled = disabledCollection && calendar.disabled( targetDate ) || targetDate.pick < minLimitObject.pick || targetDate.pick > maxLimitObject.pick,
+		                            formattedDate = _.trigger( calendar.formats.toString, calendar, [ settings.format, targetDate ] )
 
-                                return [
-                                    _.node(
-                                        'div',
-                                        targetDate.date,
-                                        (function( klasses ) {
+		                        return [
+		                            _.node(
+		                                'div',
+		                                targetDate.date,
+		                                (function( klasses ) {
 
-                                            // Add the `infocus` or `outfocus` classes based on month in view.
-                                            klasses.push( viewsetObject.month == targetDate.month ? settings.klass.infocus : settings.klass.outfocus )
+		                                    // Add the `infocus` or `outfocus` classes based on month in view.
+		                                    klasses.push( viewsetObject.month == targetDate.month ? settings.klass.infocus : settings.klass.outfocus )
 
-                                            // Add the `today` class if needed.
-                                            if ( nowObject.pick == targetDate.pick ) {
-                                                klasses.push( settings.klass.now )
-                                            }
+		                                    // Add the `today` class if needed.
+		                                    if ( nowObject.pick == targetDate.pick ) {
+		                                        klasses.push( settings.klass.now )
+		                                    }
 
-                                            // Add the `selected` class if something's selected and the time matches.
-                                            if ( isSelected ) {
-                                                klasses.push( settings.klass.selected )
-                                            }
+		                                    // Add the `selected` class if something's selected and the time matches.
+		                                    if ( isSelected ) {
+		                                        klasses.push( settings.klass.selected )
+		                                    }
 
-                                            // Add the `highlighted` class if something's highlighted and the time matches.
-                                            if ( isHighlighted ) {
-                                                klasses.push( settings.klass.highlighted )
-                                            }
+		                                    // Add the `highlighted` class if something's highlighted and the time matches.
+		                                    if ( isHighlighted ) {
+		                                        klasses.push( settings.klass.highlighted )
+		                                    }
 
-                                            // Add the `disabled` class if something's disabled and the object matches.
-                                            if ( isDisabled ) {
-                                                klasses.push( settings.klass.disabled )
-                                            }
+		                                    // Add the `disabled` class if something's disabled and the object matches.
+		                                    if ( isDisabled ) {
+		                                        klasses.push( settings.klass.disabled )
+		                                    }
 
-                                            return klasses.join( ' ' )
-                                        })([ settings.klass.day ]),
-                                        'data-pick=' + targetDate.pick + ' ' + _.ariaAttr({
-                                            role: 'gridcell',
-                                            label: formattedDate,
-                                            selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
-                                            activedescendant: isHighlighted ? true : null,
-                                            disabled: isDisabled ? true : null
-                                        })
-                                    ),
-                                    '',
-                                    _.ariaAttr({ role: 'presentation' })
-                                ] //endreturn
-                            }
-                        })
-                    ] //endreturn
-                }
-            })
-        ),
-        settings.klass.table,
-        'id="' + calendar.$node[0].id + '_table' + '" ' + _.ariaAttr({
-            role: 'grid',
-            controls: calendar.$node[0].id,
-            readonly: true
-        })
-    )
-    , settings.klass.calendar_container) // end calendar
+		                                    return klasses.join( ' ' )
+		                                })([ settings.klass.day ]),
+		                                'data-pick=' + targetDate.pick + ' ' + _.ariaAttr({
+		                                    role: 'gridcell',
+		                                    label: formattedDate,
+		                                    selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
+		                                    activedescendant: isHighlighted ? true : null,
+		                                    disabled: isDisabled ? true : null
+		                                })
+		                            ),
+		                            '',
+		                            _.ariaAttr({ role: 'presentation' })
+		                        ] //endreturn
+		                    }
+		                })
+		            ] //endreturn
+		        }
+		    })
+		),
+		settings.klass.table,
+		'id="' + calendar.$node[0].id + '_table' + '" ' + _.ariaAttr({
+		    role: 'grid',
+		    controls: calendar.$node[0].id,
+		    readonly: true
+		})
+	    )
+	    , settings.klass.calendar_container) // end calendar
 
-     +
+	     +
 
-    // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
-    _.node(
-        'div',
-        _.node( 'button', settings.today, "btn-flat picker__today",
-            'type=button data-pick=' + nowObject.pick +
-            ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
-            _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node( 'button', settings.clear, "btn-flat picker__clear",
-            'type=button data-clear=1' +
-            ( isOpen ? '' : ' disabled' ) + ' ' +
-            _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node('button', settings.close, "btn-flat picker__close",
-            'type=button data-close=true ' +
-            ( isOpen ? '' : ' disabled' ) + ' ' +
-            _.ariaAttr({ controls: calendar.$node[0].id }) ),
-        settings.klass.footer
-    ) //endreturn
+	    // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
+	    _.node(
+		'div',
+		_.node( 'button', settings.today, "btn-flat picker__today waves-effect",
+		    'type=button data-pick=' + nowObject.pick +
+		    ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
+		    _.ariaAttr({ controls: calendar.$node[0].id }) ) +
+		_.node( 'button', settings.clear, "btn-flat picker__clear waves-effect",
+		    'type=button data-clear=1' +
+		    ( isOpen ? '' : ' disabled' ) + ' ' +
+		    _.ariaAttr({ controls: calendar.$node[0].id }) ) +
+		_.node('button', settings.close, "btn-flat picker__close waves-effect",
+		    'type=button data-close=true ' +
+		    ( isOpen ? '' : ' disabled' ) + ' ' +
+		    _.ariaAttr({ controls: calendar.$node[0].id }) ),
+		settings.klass.footer
+	    ), 'picker__container__wrapper'
+	) //endreturn
 } //DatePicker.prototype.nodes
 
 
@@ -7462,7 +7504,7 @@ DatePicker.defaults = (function( prefix ) {
         // Today and clear
         today: 'Today',
         clear: 'Clear',
-        close: 'Close',
+        close: 'Ok',
 
         // The format to show on the `input` element
         format: 'd mmmm, yyyy',
@@ -7525,8 +7567,692 @@ Picker.extend( 'pickadate', DatePicker )
 
 
 }));
+;/*!
+ * ClockPicker v0.0.7 (http://weareoutman.github.io/clockpicker/)
+ * Copyright 2014 Wang Shenwei.
+ * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
+ *
+ * Further modified
+ * Copyright 2015 Ching Yaw Hao.
+ */
 
+;(function(){
+	var $ = window.jQuery,
+			$win = $(window),
+			$doc = $(document);
 
+	// Can I use inline svg ?
+	var svgNS = 'http://www.w3.org/2000/svg',
+		  svgSupported = 'SVGAngle' in window && (function() {
+			  var supported,
+				el = document.createElement('div');
+				el.innerHTML = '<svg/>';
+				supported = (el.firstChild && el.firstChild.namespaceURI) == svgNS;
+				el.innerHTML = '';
+				return supported;
+			})();
+
+	// Can I use transition ?
+	var transitionSupported = (function() {
+		var style = document.createElement('div').style;
+		return 'transition' in style ||
+					 'WebkitTransition' in style ||
+				   'MozTransition' in style ||
+					 'msTransition' in style ||
+					 'OTransition' in style;
+	})();
+
+	// Listen touch events in touch screen device, instead of mouse events in desktop.
+	var touchSupported = 'ontouchstart' in window,
+			mousedownEvent = 'mousedown' + ( touchSupported ? ' touchstart' : ''),
+			mousemoveEvent = 'mousemove.clockpicker' + ( touchSupported ? ' touchmove.clockpicker' : ''),
+			mouseupEvent = 'mouseup.clockpicker' + ( touchSupported ? ' touchend.clockpicker' : '');
+
+	// Vibrate the device if supported
+	var vibrate = navigator.vibrate ? 'vibrate' : navigator.webkitVibrate ? 'webkitVibrate' : null;
+
+	function createSvgElement(name) {
+		return document.createElementNS(svgNS, name);
+	}
+
+	function leadingZero(num) {
+		return (num < 10 ? '0' : '') + num;
+	}
+
+	// Get a unique id
+	var idCounter = 0;
+	function uniqueId(prefix) {
+		var id = ++idCounter + '';
+		return prefix ? prefix + id : id;
+	}
+
+	// Clock size
+	var dialRadius = 135,
+			outerRadius = 105,
+			// innerRadius = 80 on 12 hour clock
+			innerRadius = 80,
+			tickRadius = 20,
+			diameter = dialRadius * 2,
+			duration = transitionSupported ? 350 : 1;
+
+	// Popover template
+	var tpl = [
+		'<div class="clockpicker picker">',
+			'<div class="picker__holder">',
+				'<div class="picker__frame">',
+					'<div class="picker__wrap">',
+						'<div class="picker__box">',
+							'<div class="picker__date-display">',
+								'<div class="clockpicker-display">',
+									'<div class="clockpicker-display-column">',
+										'<span class="clockpicker-span-hours text-primary"></span>',
+										':',
+										'<span class="clockpicker-span-minutes"></span>',
+									'</div>',
+									'<div class="clockpicker-display-column clockpicker-display-am-pm">',
+										'<div class="clockpicker-span-am-pm"></div>',
+									'</div>',
+								'</div>',
+							'</div>',
+							'<div class="picker__container__wrapper">',
+								'<div class="picker__calendar-container">',
+									'<div class="clockpicker-plate">',
+										'<div class="clockpicker-canvas"></div>',
+										'<div class="clockpicker-dial clockpicker-hours"></div>',
+										'<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>',
+									'</div>',
+									'<div class="clockpicker-am-pm-block">',
+									'</div>',
+								'</div>',
+								'<div class="picker__footer">',
+								'</div>',
+							'</div>',
+						'</div>',
+					'</div>',
+				'</div>',
+			'</div>',
+		'</div>'
+	].join('');
+
+	// ClockPicker
+	function ClockPicker(element, options) {
+		var popover = $(tpl),
+				plate = popover.find('.clockpicker-plate'),
+				holder = popover.find('.picker__holder'),
+				hoursView = popover.find('.clockpicker-hours'),
+				minutesView = popover.find('.clockpicker-minutes'),
+				amPmBlock = popover.find('.clockpicker-am-pm-block'),
+				isInput = element.prop('tagName') === 'INPUT',
+				input = isInput ? element : element.find('input'),
+				label = $("label[for=" + input.attr("id") + "]"),
+				self = this;
+
+		this.id = uniqueId('cp');
+		this.element = element;
+		this.holder = holder;
+		this.options = options;
+		this.isAppended = false;
+		this.isShown = false;
+		this.currentView = 'hours';
+		this.isInput = isInput;
+		this.input = input;
+		this.label = label;
+		this.popover = popover;
+		this.plate = plate;
+		this.hoursView = hoursView;
+		this.minutesView = minutesView;
+		this.amPmBlock = amPmBlock;
+		this.spanHours = popover.find('.clockpicker-span-hours');
+		this.spanMinutes = popover.find('.clockpicker-span-minutes');
+		this.spanAmPm = popover.find('.clockpicker-span-am-pm');
+		this.footer = popover.find('.picker__footer');
+		this.amOrPm = "PM";
+
+		// Setup for for 12 hour clock if option is selected
+		if (options.twelvehour) {
+			if (!options.ampmclickable) {
+				this.spanAmPm.empty();
+				$('<div id="click-am">AM</div>').appendTo(this.spanAmPm);
+				$('<div id="click-pm">PM</div>').appendTo(this.spanAmPm);
+			}
+			else {
+				this.spanAmPm.empty();
+				$('<div id="click-am">AM</div>').on("click", function() {
+					self.spanAmPm.children('#click-am').addClass("text-primary");
+					self.spanAmPm.children('#click-pm').removeClass("text-primary");
+					self.amOrPm = "AM";
+				}).appendTo(this.spanAmPm);
+				$('<div id="click-pm">PM</div>').on("click", function() {
+					self.spanAmPm.children('#click-pm').addClass("text-primary");
+					self.spanAmPm.children('#click-am').removeClass("text-primary");
+					self.amOrPm = 'PM';
+				}).appendTo(this.spanAmPm);
+			}
+		}
+
+		// Add buttons to footer
+		$('<button type="button" class="btn-flat picker__clear" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.cleartext + '</button>').click($.proxy(this.clear, this)).appendTo(this.footer);
+		$('<button type="button" class="btn-flat picker__close" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.canceltext + '</button>').click($.proxy(this.hide, this)).appendTo(this.footer);
+		$('<button type="button" class="btn-flat picker__close" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.donetext + '</button>').click($.proxy(this.done, this)).appendTo(this.footer);
+
+		this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
+		this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
+
+		// Show or toggle
+		input.on('focus.clockpicker click.clockpicker', $.proxy(this.show, this));
+
+		// Build ticks
+		var tickTpl = $('<div class="clockpicker-tick"></div>'),
+				i, tick, radian, radius;
+
+		// Hours view
+		if (options.twelvehour) {
+			for (i = 1; i < 13; i += 1) {
+				tick = tickTpl.clone();
+				radian = i / 6 * Math.PI;
+				radius = outerRadius;
+				tick.css({
+					left: dialRadius + Math.sin(radian) * radius - tickRadius,
+					top: dialRadius - Math.cos(radian) * radius - tickRadius
+				});
+				tick.html(i === 0 ? '00' : i);
+				hoursView.append(tick);
+				tick.on(mousedownEvent, mousedown);
+			}
+		} else {
+			for (i = 0; i < 24; i += 1) {
+				tick = tickTpl.clone();
+				radian = i / 6 * Math.PI;
+				var inner = i > 0 && i < 13;
+				radius = inner ? innerRadius : outerRadius;
+				tick.css({
+					left: dialRadius + Math.sin(radian) * radius - tickRadius,
+					top: dialRadius - Math.cos(radian) * radius - tickRadius
+				});
+				tick.html(i === 0 ? '00' : i);
+				hoursView.append(tick);
+				tick.on(mousedownEvent, mousedown);
+			}
+		}
+
+		// Minutes view
+		for (i = 0; i < 60; i += 5) {
+			tick = tickTpl.clone();
+			radian = i / 30 * Math.PI;
+			tick.css({
+				left: dialRadius + Math.sin(radian) * outerRadius - tickRadius,
+				top: dialRadius - Math.cos(radian) * outerRadius - tickRadius
+			});
+			tick.html(leadingZero(i));
+			minutesView.append(tick);
+			tick.on(mousedownEvent, mousedown);
+		}
+
+		// Clicking on minutes view space
+		plate.on(mousedownEvent, function(e) {
+			if ($(e.target).closest('.clockpicker-tick').length === 0) {
+				mousedown(e, true);
+      }
+		});
+
+		// Mousedown or touchstart
+		function mousedown(e, space) {
+			var offset = plate.offset(),
+					isTouch = /^touch/.test(e.type),
+					x0 = offset.left + dialRadius,
+					y0 = offset.top + dialRadius,
+					dx = (isTouch ? e.originalEvent.touches[0] : e).pageX - x0,
+					dy = (isTouch ? e.originalEvent.touches[0] : e).pageY - y0,
+					z = Math.sqrt(dx * dx + dy * dy),
+					moved = false;
+
+			// When clicking on minutes view space, check the mouse position
+			if (space && (z < outerRadius - tickRadius || z > outerRadius + tickRadius)) {
+				return;
+      }
+			e.preventDefault();
+
+			// Set cursor style of body after 200ms
+			var movingTimer = setTimeout(function(){
+				self.popover.addClass('clockpicker-moving');
+			}, 200);
+
+			// Clock
+			self.setHand(dx, dy, !space, true);
+
+			// Mousemove on document
+			$doc.off(mousemoveEvent).on(mousemoveEvent, function(e){
+				e.preventDefault();
+				var isTouch = /^touch/.test(e.type),
+						x = (isTouch ? e.originalEvent.touches[0] : e).pageX - x0,
+						y = (isTouch ? e.originalEvent.touches[0] : e).pageY - y0;
+				if (! moved && x === dx && y === dy) {
+					// Clicking in chrome on windows will trigger a mousemove event
+					return;
+        }
+				moved = true;
+				self.setHand(x, y, false, true);
+			});
+
+			// Mouseup on document
+			$doc.off(mouseupEvent).on(mouseupEvent, function(e) {
+				$doc.off(mouseupEvent);
+				e.preventDefault();
+				var isTouch = /^touch/.test(e.type),
+						x = (isTouch ? e.originalEvent.changedTouches[0] : e).pageX - x0,
+						y = (isTouch ? e.originalEvent.changedTouches[0] : e).pageY - y0;
+				if ((space || moved) && x === dx && y === dy) {
+					self.setHand(x, y);
+        }
+
+				if (self.currentView === 'hours') {
+					self.toggleView('minutes', duration / 2);
+        } else if (options.autoclose) {
+					self.minutesView.addClass('clockpicker-dial-out');
+					setTimeout(function(){
+						self.done();
+					}, duration / 2);
+        }
+				plate.prepend(canvas);
+
+				// Reset cursor style of body
+				clearTimeout(movingTimer);
+				self.popover.removeClass('clockpicker-moving');
+
+				// Unbind mousemove event
+				$doc.off(mousemoveEvent);
+			});
+		}
+
+		if (svgSupported) {
+			// Draw clock hands and others
+			var canvas = popover.find('.clockpicker-canvas'),
+					svg = createSvgElement('svg');
+			svg.setAttribute('class', 'clockpicker-svg');
+			svg.setAttribute('width', diameter);
+			svg.setAttribute('height', diameter);
+			var g = createSvgElement('g');
+			g.setAttribute('transform', 'translate(' + dialRadius + ',' + dialRadius + ')');
+			var bearing = createSvgElement('circle');
+			bearing.setAttribute('class', 'clockpicker-canvas-bearing');
+			bearing.setAttribute('cx', 0);
+			bearing.setAttribute('cy', 0);
+			bearing.setAttribute('r', 4);
+			var hand = createSvgElement('line');
+			hand.setAttribute('x1', 0);
+			hand.setAttribute('y1', 0);
+			var bg = createSvgElement('circle');
+			bg.setAttribute('class', 'clockpicker-canvas-bg');
+			bg.setAttribute('r', tickRadius);
+			g.appendChild(hand);
+			g.appendChild(bg);
+			g.appendChild(bearing);
+			svg.appendChild(g);
+			canvas.append(svg);
+
+			this.hand = hand;
+			this.bg = bg;
+			this.bearing = bearing;
+			this.g = g;
+			this.canvas = canvas;
+		}
+
+		raiseCallback(this.options.init);
+	}
+
+	function raiseCallback(callbackFunction) {
+		if (callbackFunction && typeof callbackFunction === "function")
+			callbackFunction();
+	}
+
+	// Default options
+	ClockPicker.DEFAULTS = {
+		'default': '',         // default time, 'now' or '13:14' e.g.
+		fromnow: 0,            // set default time to * milliseconds from now (using with default = 'now')
+		donetext: 'Ok',      // done button text
+		cleartext: 'Clear',
+		canceltext: 'Cancel',
+		autoclose: false,      // auto close when minute is selected
+		ampmclickable: true,  // set am/pm button on itself
+		darktheme: false,			 // set to dark theme
+		twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
+		vibrate: true          // vibrate the device when dragging clock hand
+	};
+
+	// Show or hide popover
+	ClockPicker.prototype.toggle = function() {
+		this[this.isShown ? 'hide' : 'show']();
+	};
+
+	// Set popover position
+	ClockPicker.prototype.locate = function() {
+		var element = this.element,
+				popover = this.popover,
+				offset = element.offset(),
+				width = element.outerWidth(),
+				height = element.outerHeight(),
+				align = this.options.align,
+				self = this;
+
+		popover.show();
+	};
+
+	// Show popover
+	ClockPicker.prototype.show = function(e){
+		// Not show again
+		if (this.isShown) {
+			return;
+		}
+		raiseCallback(this.options.beforeShow);
+		$(':input').each(function() {
+			$(this).attr('tabindex', -1);
+		})
+		var self = this;
+		// Initialize
+		this.input.blur();
+		this.popover.addClass('picker--opened');
+		this.input.addClass('picker__input picker__input--active');
+		$(document.body).css('overflow', 'hidden');
+		// Get the time
+		var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
+		if (this.options.twelvehour && !(typeof value[1] === 'undefined')) {
+			if (value[1].indexOf("AM") > 0){
+				this.amOrPm = 'AM';
+			} else {
+				this.amOrPm = 'PM';
+			}
+			value[1] = value[1].replace("AM", "").replace("PM", "");
+		}
+		if (value[0] === 'now') {
+			var now = new Date(+ new Date() + this.options.fromnow);
+			value = [
+				now.getHours(),
+				now.getMinutes()
+			];
+		}
+		this.hours = + value[0] || 0;
+		this.minutes = + value[1] || 0;
+		this.spanHours.html(this.hours);
+		this.spanMinutes.html(leadingZero(this.minutes));
+		if (!this.isAppended) {
+			// Append popover to body
+			this.popover.insertAfter(this.input);
+			if (this.options.twelvehour) {
+				if (this.amOrPm === 'PM'){
+					this.spanAmPm.children('#click-pm').addClass("text-primary");
+					this.spanAmPm.children('#click-am').removeClass("text-primary");
+				} else {
+					this.spanAmPm.children('#click-am').addClass("text-primary");
+					this.spanAmPm.children('#click-pm').removeClass("text-primary");
+				}
+			}
+			// Reset position when resize
+			$win.on('resize.clockpicker' + this.id, function() {
+				if (self.isShown) {
+					self.locate();
+				}
+			});
+			this.isAppended = true;
+		}
+		// Toggle to hours view
+		this.toggleView('hours');
+		// Set position
+		this.locate();
+		this.isShown = true;
+		// Hide when clicking or tabbing on any element except the clock and input
+		$doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function(e) {
+			var target = $(e.target);
+			if (target.closest(self.popover.find('.picker__wrap')).length === 0 && target.closest(self.input).length === 0) {
+				self.hide();
+      }
+		});
+		// Hide when ESC is pressed
+		$doc.on('keyup.clockpicker.' + this.id, function(e){
+			if (e.keyCode === 27) {
+				self.hide();
+      }
+		});
+		raiseCallback(this.options.afterShow);
+	};
+	// Hide popover
+	ClockPicker.prototype.hide = function() {
+		raiseCallback(this.options.beforeHide);
+		this.input.removeClass('picker__input picker__input--active');
+		this.popover.removeClass('picker--opened');
+		$(document.body).css('overflow', 'visible');
+		this.isShown = false;
+		$(':input').each(function(index) {
+			$(this).attr('tabindex', index + 1);
+		});
+		// Unbinding events on document
+		$doc.off('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id);
+		$doc.off('keyup.clockpicker.' + this.id);
+		this.popover.hide();
+		raiseCallback(this.options.afterHide);
+	};
+	// Toggle to hours or minutes view
+	ClockPicker.prototype.toggleView = function(view, delay) {
+		var raiseAfterHourSelect = false;
+		if (view === 'minutes' && $(this.hoursView).css("visibility") === "visible") {
+			raiseCallback(this.options.beforeHourSelect);
+			raiseAfterHourSelect = true;
+		}
+		var isHours = view === 'hours',
+				nextView = isHours ? this.hoursView : this.minutesView,
+				hideView = isHours ? this.minutesView : this.hoursView;
+		this.currentView = view;
+
+		this.spanHours.toggleClass('text-primary', isHours);
+		this.spanMinutes.toggleClass('text-primary', ! isHours);
+
+		// Let's make transitions
+		hideView.addClass('clockpicker-dial-out');
+		nextView.css('visibility', 'visible').removeClass('clockpicker-dial-out');
+
+		// Reset clock hand
+		this.resetClock(delay);
+
+		// After transitions ended
+		clearTimeout(this.toggleViewTimer);
+		this.toggleViewTimer = setTimeout(function() {
+			hideView.css('visibility', 'hidden');
+		}, duration);
+
+		if (raiseAfterHourSelect) {
+			raiseCallback(this.options.afterHourSelect);
+    }
+	};
+
+	// Reset clock hand
+	ClockPicker.prototype.resetClock = function(delay) {
+		var view = this.currentView,
+				value = this[view],
+				isHours = view === 'hours',
+				unit = Math.PI / (isHours ? 6 : 30),
+				radian = value * unit,
+				radius = isHours && value > 0 && value < 13 ? innerRadius : outerRadius,
+				x = Math.sin(radian) * radius,
+				y = - Math.cos(radian) * radius,
+				self = this;
+
+		if (svgSupported && delay) {
+			self.canvas.addClass('clockpicker-canvas-out');
+			setTimeout(function(){
+				self.canvas.removeClass('clockpicker-canvas-out');
+				self.setHand(x, y);
+			}, delay);
+		} else
+			this.setHand(x, y);
+	};
+
+	// Set clock hand to (x, y)
+	ClockPicker.prototype.setHand = function(x, y, roundBy5, dragging) {
+		var radian = Math.atan2(x, - y),
+				isHours = this.currentView === 'hours',
+				unit = Math.PI / (isHours || roundBy5? 6 : 30),
+				z = Math.sqrt(x * x + y * y),
+				options = this.options,
+				inner = isHours && z < (outerRadius + innerRadius) / 2,
+				radius = inner ? innerRadius : outerRadius,
+				value;
+
+		if (options.twelvehour) {
+			radius = outerRadius;
+    }
+
+		// Radian should in range [0, 2PI]
+		if (radian < 0) {
+			radian = Math.PI * 2 + radian;
+    }
+
+		// Get the round value
+		value = Math.round(radian / unit);
+
+		// Get the round radian
+		radian = value * unit;
+
+		// Correct the hours or minutes
+		if (options.twelvehour) {
+			if (isHours) {
+				if (value === 0)
+					value = 12;
+			} else {
+				if (roundBy5)
+					value *= 5;
+				if (value === 60)
+					value = 0;
+			}
+		} else {
+			if (isHours) {
+				if (value === 12)
+					value = 0;
+				value = inner ? (value === 0 ? 12 : value) : value === 0 ? 0 : value + 12;
+			} else {
+				if (roundBy5)
+					value *= 5;
+				if (value === 60)
+					value = 0;
+			}
+		}
+
+		// Once hours or minutes changed, vibrate the device
+		if (this[this.currentView] !== value) {
+			if (vibrate && this.options.vibrate) {
+				// Do not vibrate too frequently
+				if (!this.vibrateTimer) {
+					navigator[vibrate](10);
+					this.vibrateTimer = setTimeout($.proxy(function(){
+						this.vibrateTimer = null;
+					}, this), 100);
+				}
+      }
+    }
+
+		this[this.currentView] = value;
+    if (isHours) {
+      this['spanHours'].html(value);
+    } else {
+      this['spanMinutes'].html(leadingZero(value));
+    }
+
+		// If svg is not supported, just add an active class to the tick
+		if (!svgSupported) {
+			this[isHours ? 'hoursView' : 'minutesView'].find('.clockpicker-tick').each(function(){
+				var tick = $(this);
+				tick.toggleClass('active', value === + tick.html());
+			});
+			return;
+		}
+
+		// Set clock hand and others' position
+		var cx1 = Math.sin(radian) * (radius - tickRadius),
+			  cy1 = - Math.cos(radian) * (radius - tickRadius),
+		    cx2 = Math.sin(radian) * radius,
+			  cy2 = - Math.cos(radian) * radius;
+		this.hand.setAttribute('x2', cx1);
+		this.hand.setAttribute('y2', cy1);
+		this.bg.setAttribute('cx', cx2);
+		this.bg.setAttribute('cy', cy2);
+	};
+
+	// Hours and minutes are selected
+	ClockPicker.prototype.done = function() {
+		raiseCallback(this.options.beforeDone);
+		this.hide();
+		this.label.addClass('active');
+
+		var last = this.input.prop('value'),
+				value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
+		if (this.options.twelvehour) {
+			value = value + this.amOrPm;
+    }
+
+		this.input.prop('value', value);
+		if (value !== last) {
+			this.input.triggerHandler('change');
+			if (!this.isInput) {
+				this.element.trigger('change');
+      }
+		}
+
+		if (this.options.autoclose)
+			this.input.trigger('blur');
+
+		raiseCallback(this.options.afterDone);
+	};
+
+	// Clear input field
+	ClockPicker.prototype.clear = function() {
+		this.hide();
+		this.label.removeClass('active');
+
+		var last = this.input.prop('value'),
+			  value = '';
+
+		this.input.prop('value', value);
+		if (value !== last) {
+			this.input.triggerHandler('change');
+			if (! this.isInput) {
+				this.element.trigger('change');
+			}
+		}
+
+		if (this.options.autoclose) {
+			this.input.trigger('blur');
+		}
+	};
+
+	// Remove clockpicker from input
+	ClockPicker.prototype.remove = function() {
+		this.element.removeData('clockpicker');
+		this.input.off('focus.clockpicker click.clockpicker');
+		if (this.isShown) {
+			this.hide();
+    }
+		if (this.isAppended) {
+			$win.off('resize.clockpicker' + this.id);
+			this.popover.remove();
+		}
+	};
+
+	// Extends $.fn.clockpicker
+	$.fn.pickatime = function(option){
+		var args = Array.prototype.slice.call(arguments, 1);
+		return this.each(function(){
+			var $this = $(this),
+					data = $this.data('clockpicker');
+			if (!data) {
+				var options = $.extend({}, ClockPicker.DEFAULTS, $this.data(), typeof option == 'object' && option);
+				$this.data('clockpicker', new ClockPicker($this, options));
+			} else {
+				// Manual operatsions. show, hide, remove, e.g.
+				if (typeof data[option] === 'function') {
+					data[option].apply(data, args);
+        }
+			}
+		});
+	};
+}());
 ;(function ($) {
 
   $.fn.characterCounter = function(){
@@ -7625,6 +8351,7 @@ Picker.extend( 'pickadate', DatePicker )
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
         var scrollingTimeout = null;
+        var oneTimeCallback = null;
 
 
         // Initialize
@@ -7868,6 +8595,12 @@ Picker.extend( 'pickadate', DatePicker )
             var $curr_item = view.find('.carousel-item').eq(wrap(center));
             options.onCycleTo.call(this, $curr_item, dragged);
           }
+
+          // One time callback
+          if (typeof(oneTimeCallback) === "function") {
+            oneTimeCallback.call(this, $curr_item, dragged);
+            oneTimeCallback = null;
+          }
         }
 
         function track() {
@@ -7907,7 +8640,7 @@ Picker.extend( 'pickadate', DatePicker )
 
           } else if (!options.fullWidth) {
             var clickedIndex = $(e.target).closest('.carousel-item').index();
-            var diff = (center % count) - clickedIndex;
+            var diff = wrap(center) - clickedIndex;
 
             // Disable clicks if carousel was shifted by click
             if (diff !== 0) {
@@ -7941,7 +8674,9 @@ Picker.extend( 'pickadate', DatePicker )
         }
 
         function tap(e) {
-          e.preventDefault();
+          if (e.type === 'mousedown') {
+            e.preventDefault();
+          }
           pressed = true;
           dragged = false;
           vertical_dragged = false;
@@ -8050,10 +8785,14 @@ Picker.extend( 'pickadate', DatePicker )
         setupEvents();
         scroll(offset);
 
-        $(this).on('carouselNext', function(e, n) {
+        $(this).on('carouselNext', function(e, n, callback) {
           if (n === undefined) {
             n = 1;
           }
+          if (typeof(callback) === "function") {
+            oneTimeCallback = callback;
+          }
+
           target = (dim * Math.round(offset / dim)) + (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
@@ -8062,10 +8801,14 @@ Picker.extend( 'pickadate', DatePicker )
           }
         });
 
-        $(this).on('carouselPrev', function(e, n) {
+        $(this).on('carouselPrev', function(e, n, callback) {
           if (n === undefined) {
             n = 1;
           }
+          if (typeof(callback) === "function") {
+            oneTimeCallback = callback;
+          }
+
           target = (dim * Math.round(offset / dim)) - (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
@@ -8074,10 +8817,14 @@ Picker.extend( 'pickadate', DatePicker )
           }
         });
 
-        $(this).on('carouselSet', function(e, n) {
+        $(this).on('carouselSet', function(e, n, callback) {
           if (n === undefined) {
             n = 0;
           }
+          if (typeof(callback) === "function") {
+            oneTimeCallback = callback;
+          }
+
           cycleTo(n);
         });
 
@@ -8086,14 +8833,14 @@ Picker.extend( 'pickadate', DatePicker )
 
 
     },
-    next : function(n) {
-      $(this).trigger('carouselNext', [n]);
+    next : function(n, callback) {
+      $(this).trigger('carouselNext', [n, callback]);
     },
-    prev : function(n) {
-      $(this).trigger('carouselPrev', [n]);
+    prev : function(n, callback) {
+      $(this).trigger('carouselPrev', [n, callback]);
     },
-    set : function(n) {
-      $(this).trigger('carouselSet', [n]);
+    set : function(n, callback) {
+      $(this).trigger('carouselSet', [n, callback]);
     }
   };
 
@@ -8108,7 +8855,8 @@ Picker.extend( 'pickadate', DatePicker )
         $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.carousel' );
       }
     }; // Plugin end
-}( jQuery ));;(function ($) {
+}( jQuery ));
+;(function ($) {
 
   var methods = {
   init: function (options) {
