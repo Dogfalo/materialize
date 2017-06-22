@@ -62,7 +62,6 @@ Package.onUse(function (api) {
     'sass/components/_modal.scss',
     'sass/components/_navbar.scss',
     'sass/components/_normalize.scss',
-    'sass/components/_prefixer.scss',
     'sass/components/_preloader.scss',
     'sass/components/_pulse.scss',
     'sass/components/_roboto.scss',
