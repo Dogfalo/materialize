@@ -1,5 +1,5 @@
 {
-  "name": "materialize-css",
+  "name": "materialize",
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "homepage": "http://materializecss.com/",
@@ -16,7 +16,8 @@
     "url": "https://github.com/Dogfalo/materialize/issues"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt travis --verbose",
+    "build": "grunt release"
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
