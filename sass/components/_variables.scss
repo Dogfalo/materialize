@@ -10,8 +10,9 @@
 //  4. Cards
 //  5. Collapsible
 //  6. Chips
-//  7. Date Picker
+//  7. Date + Time Picker
 //  8. Dropdown
+//  9. Fonts
 //  10. Forms
 //  11. Global
 //  12. Grid
@@ -115,15 +116,20 @@ $chip-selected-color: #26a69a !default;
 $chip-margin: 5px !default;
 
 
-// 7. Date Picker
+// 7. Date + Time Picker
 // ==========================================================================
 
+$datepicker-display-font-size: 2.8rem;
+$datepicker-weekday-color: rgba(0, 0, 0, .87) !default;
 $datepicker-weekday-bg: darken($secondary-color, 7%) !default;
 $datepicker-date-bg: $secondary-color !default;
-$datepicker-year: rgba(255, 255, 255, .4) !default;
+$datepicker-year: rgba(255, 255, 255, .7) !default;
 $datepicker-focus: rgba(0,0,0, .05) !default;
 $datepicker-selected: $secondary-color !default;
 $datepicker-selected-outfocus: desaturate(lighten($secondary-color, 35%), 15%) !default;
+
+$timepicker-clock-color: rgba(0, 0, 0, .87) !default;
+$timepicker-clock-plate-bg: #eee;
 
 
 // 8. Dropdown
@@ -186,7 +192,7 @@ $select-disabled-color: rgba(0,0,0,.3) !default;
 $switch-bg-color: $secondary-color !default;
 $switch-checked-lever-bg: desaturate(lighten($secondary-color, 25%), 25%) !default;
 $switch-unchecked-bg: #F1F1F1 !default;
-$switch-unchecked-lever-bg: #818181 !default;
+$switch-unchecked-lever-bg: rgba(0,0,0,.38) !default;
 $switch-radius: 15px !default;
 
 
@@ -293,7 +299,10 @@ $h6-fontsize: 1rem !default;
 // 21. Footer
 // ==========================================================================
 
+$footer-font-color: #fff !default;
 $footer-bg-color: $primary-color !default;
+$footer-copyright-font-color: rgba(255,255,255,.8) !default;
+$footer-copyright-bg-color: rgba(51,51,51,.08) !default;
 
 
 // 22. Flow Text

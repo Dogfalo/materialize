@@ -1,8 +1,0 @@
-images/
-.sass-cache/
-.grunt/
-.DS_Store
-prepros.cfg
-Thumbs.db
-.projectile
-**/*.log

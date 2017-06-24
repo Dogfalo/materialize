@@ -115,12 +115,17 @@
         offsetRight : number -> offset from right. Default: 0
         offsetBottom : number -> offset from bottom. Default: 0
         offsetLeft : number -> offset from left. Default: 0
+				activeClass : string -> Class name to be added to the active link. Default: active
 	 * @returns {jQuery}
 	 */
 	$.scrollSpy = function(selector, options) {
 	  var defaults = {
 			throttle: 100,
-			scrollOffset: 200 // offset - 200 allows elements near bottom of page to scroll
+			scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
+			activeClass: 'active',
+			getActiveElement: function(id) {
+				return 'a[href="#' + id + '"]';
+			}
     };
     options = $.extend(defaults, options);
 
@@ -167,7 +172,7 @@
 			var $this = $(this);
 
 			if (visible[0]) {
-				$('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
+				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
 				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
 					visible.unshift($(this));
 				}
@@ -180,7 +185,7 @@
 			}
 
 
-			$('a[href="#' + visible[0].attr('id') + '"]').addClass('active');
+			$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
 		});
 		selector.on('scrollSpy:exit', function() {
 			visible = $.grep(visible, function(value) {
@@ -188,13 +193,13 @@
 	    });
 
 			if (visible[0]) {
-				$('a[href="#' + visible[0].attr('id') + '"]').removeClass('active');
+				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
 				var $this = $(this);
 				visible = $.grep(visible, function(value) {
 	        return value.attr('id') != $this.attr('id');
 	      });
 	      if (visible[0]) { // Check if empty
-					$('a[href="#' + visible[0].attr('id') + '"]').addClass('active');
+					$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
 	      }
 			}
 		});

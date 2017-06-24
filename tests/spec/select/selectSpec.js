@@ -102,7 +102,7 @@ describe("Select Plugin", function () {
 
         setTimeout(function() {
           expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');
-          expect(browserSelect.val()).toEqual(null, 'Actual select element should be empty because none chosen.');
+          expect(browserSelect.val()).toEqual([], 'Actual select element should be empty because none chosen.');
           expect(multipleInput.val()).toEqual(disabledOption[0].innerText, 'Value should equal default because none chosen.');
           done();
         }, 400);
