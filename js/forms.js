@@ -74,7 +74,7 @@
       var lenAttr = parseInt(object.attr('data-length'));
       var len = object.val().length;
 
-      if (object.val().length === 0 && object[0].validity.badInput === false) {
+      if (object.val().length === 0 && object[0].validity.badInput === false && !object.is(':required')) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
