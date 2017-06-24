@@ -34,6 +34,11 @@ select {
     margin: $input-margin;
     padding: 0;
     display: block;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none; 
+    user-select:none;
   }
 
   span.caret {
