@@ -158,6 +158,9 @@
   }
 
   .card-action {
+    &:last-child {
+      border-radius: 0 0 2px 2px;
+    }
     position: relative;
     background-color: inherit;
     border-top: 1px solid rgba(160,160,160,.2);

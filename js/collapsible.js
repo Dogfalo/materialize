@@ -106,7 +106,7 @@
       function execCallbacks(object, endEvents) {
         if (object.hasClass('active')) {
           if (typeof(options.onOpen) === "function" && !endEvents) {
-            options.onOpen.call(this, object.parent());            
+            options.onOpen.call(this, object.parent());
           }
           if (typeof(options.onOpened) === "function" && endEvents) {
             options.onOpened.call(this, object.parent());
@@ -143,30 +143,36 @@
         return object.closest('li > .collapsible-header');
       }
 
+
+      // Turn off any existing event handlers
+      function removeEventHandlers() {
+        $this.off('click.collapse', '> li > .collapsible-header');
+      }
+
       /*****  End Helper Functions  *****/
 
       // Methods
-      if(methodName === 'open' || methodName === 'close') {
-        var headers = $();
+      if (methodName === 'destroy') {
+        removeEventHandlers();
+        return;
+      } else {
+        var headers;
 
-        if(methodParam === "all" && collapsible_type !== "accordion") headers = $panel_headers; // select all headers 
+        if(methodParam === "all" && collapsible_type !== "accordion") headers = $panel_headers; // select all headers
         else if(methodParam >= 0 && methodParam < $panel_headers.length) headers = $panel_headers.eq(methodParam); // select user selected header
 
         headers.each(function() {
-          var $curr_header = $(this);
           if ($curr_header.length &&
-              (methodName === 'open' && !$curr_header.hasClass('active') ||
-              (methodName === 'close' && $curr_header.hasClass('active'))))
+              (methodName === 'open' ||
+              (methodName === 'close' &&
+              $curr_header.hasClass('active')))) {
             collapsibleOpen($curr_header);
+          }
         });
-
         return;
       }
 
-      // Turn off any existing event handlers
-      $this.off('click.collapse', '> li > .collapsible-header');
-      $panel_headers.off('click.collapse');
-
+      removeEventHandlers();
 
       // Add click handler to only direct collapsible header children
       $this.on('click.collapse', '> li > .collapsible-header', function(e) {

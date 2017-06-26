@@ -5,7 +5,9 @@
  * The picker box.
  */
 .picker__box {
-  padding: 0 1em;
+  padding: 0;
+  border-radius: 2px;
+  overflow: hidden;
 }
 /**
  * The header containing the month and year stuff.
@@ -229,10 +231,7 @@
  * The footer containing the "today", "clear", and "close" buttons.
  */
 .picker__footer {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  text-align: right;
 }
 .picker__button--today,
 .picker__button--clear,
@@ -306,17 +305,29 @@
 /* ==========================================================================
    CUSTOM MATERIALIZE STYLES
    ========================================================================== */
-.picker__box {
+/*.picker__box {
   border-radius: 2px;
   overflow: hidden;
-}
+}*/
 
 .picker__date-display {
-  text-align: center;
+  text-align: left;
   background-color: $datepicker-date-bg;
   color: #fff;
-  padding-bottom: 15px;
+  padding: 18px;
   font-weight: 300;
+}
+
+@media only screen and (min-width: 601px) {
+	.picker__date-display {
+		flex:1;
+	}
+	.picker__weekday-display {
+		display:block;
+	}
+	.picker__container__wrapper {
+		flex:2
+	}
 }
 
 .picker__nav--prev:hover,
@@ -327,31 +338,31 @@
 }
 
 .picker__weekday-display {
-  background-color: $datepicker-weekday-bg;
-  padding: 10px;
-  font-weight: 200;
-  letter-spacing: .5;
-  font-size: 1rem;
-  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: $datepicker-display-font-size;
+  margin-right: 5px;
+  margin-top: 4px;
 }
 
 .picker__month-display {
-  text-transform: uppercase;
-  font-size: 2rem;
+  //text-transform: uppercase;
+  font-size: $datepicker-display-font-size;
+  font-weight: 500;
 }
 .picker__day-display {
-
-  font-size: 4.5rem;
-  font-weight: 400;
+  font-size: $datepicker-display-font-size;
+  font-weight: 500;
+  margin-right: 5px;
 }
 .picker__year-display {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   color: $datepicker-year;
 }
 
-.picker__box {
+/*.picker__box {
   padding: 0;
-}
+}*/
 .picker__calendar-container {
   padding: 0 1rem;
 
@@ -367,12 +378,18 @@
 }
 
 .picker__day--infocus {
-  color: #595959;
-  letter-spacing: -.3;
-  padding: .75rem 0;
+  color: $datepicker-weekday-color;
+  letter-spacing: -.3px;
+  padding: 0.75rem 0;
   font-weight: 400;
   border: 1px solid transparent;
 }
+@media only screen and (min-width: 601px) {
+	.picker__day--infocus {
+		padding: 1.1rem 0;
+	}
+}
+
 
 //Today style
 .picker__day.picker__day--today {
@@ -408,10 +425,14 @@
 }
 
 // Materialize modified
-.picker__close, .picker__today {
+.picker__close, .picker__today, .picker__clear {
   font-size: 1.1rem;
   padding: 0 1rem;
   color: $datepicker-selected;
+}
+.picker__clear {
+	color:#f44336;
+	float:left;
 }
 
 //month nav buttons

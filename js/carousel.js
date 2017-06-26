@@ -24,6 +24,7 @@
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
         var $indicators = $('<ul class="indicators"></ul>');
         var scrollingTimeout = null;
+        var oneTimeCallback = null;
 
 
         // Initialize
@@ -267,6 +268,12 @@
             var $curr_item = view.find('.carousel-item').eq(wrap(center));
             options.onCycleTo.call(this, $curr_item, dragged);
           }
+
+          // One time callback
+          if (typeof(oneTimeCallback) === "function") {
+            oneTimeCallback.call(this, $curr_item, dragged);
+            oneTimeCallback = null;
+          }
         }
 
         function track() {
@@ -306,7 +313,7 @@
 
           } else if (!options.fullWidth) {
             var clickedIndex = $(e.target).closest('.carousel-item').index();
-            var diff = (center % count) - clickedIndex;
+            var diff = wrap(center) - clickedIndex;
 
             // Disable clicks if carousel was shifted by click
             if (diff !== 0) {
@@ -340,7 +347,9 @@
         }
 
         function tap(e) {
-          e.preventDefault();
+          if (e.type === 'mousedown') {
+            e.preventDefault();
+          }
           pressed = true;
           dragged = false;
           vertical_dragged = false;
@@ -449,10 +458,14 @@
         setupEvents();
         scroll(offset);
 
-        $(this).on('carouselNext', function(e, n) {
+        $(this).on('carouselNext', function(e, n, callback) {
           if (n === undefined) {
             n = 1;
           }
+          if (typeof(callback) === "function") {
+            oneTimeCallback = callback;
+          }
+
           target = (dim * Math.round(offset / dim)) + (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
@@ -461,10 +474,14 @@
           }
         });
 
-        $(this).on('carouselPrev', function(e, n) {
+        $(this).on('carouselPrev', function(e, n, callback) {
           if (n === undefined) {
             n = 1;
           }
+          if (typeof(callback) === "function") {
+            oneTimeCallback = callback;
+          }
+
           target = (dim * Math.round(offset / dim)) - (dim * n);
           if (offset !== target) {
             amplitude = target - offset;
@@ -473,10 +490,14 @@
           }
         });
 
-        $(this).on('carouselSet', function(e, n) {
+        $(this).on('carouselSet', function(e, n, callback) {
           if (n === undefined) {
             n = 0;
           }
+          if (typeof(callback) === "function") {
+            oneTimeCallback = callback;
+          }
+
           cycleTo(n);
         });
 
@@ -485,14 +506,14 @@
 
 
     },
-    next : function(n) {
-      $(this).trigger('carouselNext', [n]);
+    next : function(n, callback) {
+      $(this).trigger('carouselNext', [n, callback]);
     },
-    prev : function(n) {
-      $(this).trigger('carouselPrev', [n]);
+    prev : function(n, callback) {
+      $(this).trigger('carouselPrev', [n, callback]);
     },
-    set : function(n) {
-      $(this).trigger('carouselSet', [n]);
+    set : function(n, callback) {
+      $(this).trigger('carouselSet', [n, callback]);
     }
   };
 
