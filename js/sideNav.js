@@ -115,6 +115,10 @@
                     // Restore Fixed sidenav
                     menu.removeAttr('style');
                     menu.css('width', options.menuWidth);
+                    // Callback
+                    if (typeof(options.onClose) === 'function') {
+                      options.onClose.call(this, menu);
+                    }
                   }
                 }
 
@@ -133,6 +137,10 @@
                     // Restore Fixed sidenav
                     menu.removeAttr('style');
                     menu.css('width', options.menuWidth);
+                    // Callback
+                    if (typeof(options.onClose) === 'function') {
+                      options.onClose.call(this, menu);
+                    }
                   }
                 }
               });
