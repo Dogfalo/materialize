@@ -145,20 +145,23 @@
 
       /*****  End Helper Functions  *****/
 
-
       // Methods
-      if (methodParam >= 0 &&
-          methodParam < $panel_headers.length) {
-        var $curr_header = $panel_headers.eq(methodParam);
-        if ($curr_header.length &&
-            (methodName === 'open' ||
-            (methodName === 'close' &&
-            $curr_header.hasClass('active')))) {
-          collapsibleOpen($curr_header);
-        }
+      if(methodName === 'open' || methodName === 'close') {
+        var headers = $();
+
+        if(methodParam === "all" && collapsible_type !== "accordion") headers = $panel_headers; // select all headers 
+        else if(methodParam >= 0 && methodParam < $panel_headers.length) headers = $panel_headers.eq(methodParam); // select user selected header
+
+        headers.each(function() {
+          var $curr_header = $(this);
+          if ($curr_header.length &&
+              (methodName === 'open' && !$curr_header.hasClass('active') ||
+              (methodName === 'close' && $curr_header.hasClass('active'))))
+            collapsibleOpen($curr_header);
+        });
+
         return;
       }
-
 
       // Turn off any existing event handlers
       $this.off('click.collapse', '> li > .collapsible-header');
@@ -180,7 +183,6 @@
       // Open first active
       if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
         collapsibleOpen($panel_headers.filter('.active').first(), true);
-
       } else { // Handle Expandables
         $panel_headers.filter('.active').each(function() {
           collapsibleOpen($(this), true);
