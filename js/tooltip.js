@@ -15,6 +15,7 @@
       if (options === "remove") {
         this.each(function() {
           $('#' + $(this).attr('data-tooltip-id')).remove();
+          $(this).attr('data-tooltip-id').remove();
           $(this).off('mouseenter.tooltip mouseleave.tooltip');
         });
         return false;
