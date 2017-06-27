@@ -308,6 +308,11 @@
                   menu.velocity({'translateX': [options.menuWidth + 10, rightPos]}, {duration: 200, queue: false, easing: 'easeOutQuad'});
                   $overlay.velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
                     complete: function () {
+                      // Run 'onClose' when sidenav is closed via touch/swipe if applicable
+                      if (typeof(options.onClose) === 'function') {
+                        options.onClose.call(this, menu);
+                      }
+                      
                       $(this).remove();
                     }});
                   $dragTarget.css({width: '10px', right: 0, left: ''});
@@ -354,6 +359,10 @@
                 complete: function() {
                   $(this).remove();
                 } });
+                // Run 'onOpen' when sidenav is opened via touch/swipe if applicable
+                if (typeof(options.onOpen) === 'function') {
+                  options.onOpen.call(this, menu);
+                }
 
               });
               $('body').append($overlay);
