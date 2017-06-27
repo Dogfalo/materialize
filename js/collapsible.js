@@ -3,7 +3,9 @@
     var defaults = {
       accordion: undefined,
       onOpen: undefined,
-      onClose: undefined
+      onOpened: undefined,
+      onClose: undefined,
+      onClosed: undefined
     };
 
     var methodName = options;
@@ -32,10 +34,16 @@
           object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+        }});
         }
         else{
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+        }});
         }
 
         $panel_headers.not(object).removeClass('active').parent().removeClass('active');
@@ -66,10 +74,16 @@
           object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+          }});
         }
         else {
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {
+            $(this).css('height', '');
+            execCallbacks($(this).siblings('.collapsible-header'), true);
+          }});
         }
       }
 
@@ -89,14 +103,20 @@
       }
 
       // Handle callbacks
-      function execCallbacks(object) {
+      function execCallbacks(object, endEvents) {
         if (object.hasClass('active')) {
-          if (typeof(options.onOpen) === "function") {
+          if (typeof(options.onOpen) === "function" && !endEvents) {
             options.onOpen.call(this, object.parent());
           }
+          if (typeof(options.onOpened) === "function" && endEvents) {
+            options.onOpened.call(this, object.parent());
+          }
         } else {
-          if (typeof(options.onClose) === "function") {
+          if (typeof(options.onClose) === "function" && !endEvents) {
             options.onClose.call(this, object.parent());
+          }
+          if (typeof(options.onClosed) === "function" && endEvents) {
+            options.onClosed.call(this, object.parent());
           }
         }
       }
@@ -131,26 +151,28 @@
 
       /*****  End Helper Functions  *****/
 
-
       // Methods
       if (methodName === 'destroy') {
         removeEventHandlers();
         return;
-      } else if (methodParam >= 0 &&
-          methodParam < $panel_headers.length) {
-        var $curr_header = $panel_headers.eq(methodParam);
-        if ($curr_header.length &&
-            (methodName === 'open' ||
-            (methodName === 'close' &&
-            $curr_header.hasClass('active')))) {
-          collapsibleOpen($curr_header);
-        }
+      } else {
+        var headers;
+
+        if(methodParam === "all" && collapsible_type !== "accordion") headers = $panel_headers; // select all headers
+        else if(methodParam >= 0 && methodParam < $panel_headers.length) headers = $panel_headers.eq(methodParam); // select user selected header
+
+        headers.each(function() {
+          if ($curr_header.length &&
+              (methodName === 'open' ||
+              (methodName === 'close' &&
+              $curr_header.hasClass('active')))) {
+            collapsibleOpen($curr_header);
+          }
+        });
         return;
       }
 
-
       removeEventHandlers();
-
 
       // Add click handler to only direct collapsible header children
       $this.on('click.collapse', '> li > .collapsible-header', function(e) {
@@ -167,7 +189,6 @@
       // Open first active
       if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
         collapsibleOpen($panel_headers.filter('.active').first(), true);
-
       } else { // Handle Expandables
         $panel_headers.filter('.active').each(function() {
           collapsibleOpen($(this), true);
