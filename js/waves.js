@@ -363,8 +363,11 @@
         var element = null;
         var target = e.target || e.srcElement;
 
-        while (target.parentElement) {
-            if ( (!(target instanceof SVGElement)) && target.classList.contains('waves-effect')) {
+        while (target.parentElement !== null) {
+            if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
+                element = target;
+                break;
+            } else if (target.className.indexOf('waves-effect') !== -1) {
                 element = target;
                 break;
             }
@@ -394,55 +397,9 @@
                 return;
             }
 
-            TouchHandler.registerEvent(e);
-
-            if (e.type === 'touchstart' && Effect.delay) {
-
-                var hidden = false;
-
-                var timer = setTimeout(function () {
-                    timer = null;
-                    Effect.show(e, element);
-                }, Effect.delay);
-
-                var hideEffect = function(hideEvent) {
-
-                    // if touch hasn't moved, and effect not yet started: start effect now
-                    if (timer) {
-                        clearTimeout(timer);
-                        timer = null;
-                        Effect.show(e, element);
-                    }
-                    if (!hidden) {
-                        hidden = true;
-                        Effect.hide(hideEvent, element);
-                    }
-                };
-
-                var touchMove = function(moveEvent) {
-                    if (timer) {
-                        clearTimeout(timer);
-                        timer = null;
-                    }
-                    hideEffect(moveEvent);
-                };
-
-                element.addEventListener('touchmove', touchMove, false);
-                element.addEventListener('touchend', hideEffect, false);
-                element.addEventListener('touchcancel', hideEffect, false);
-
-            } else {
-
-                Effect.show(e, element);
-
-                if (isTouchAvailable) {
-                    element.addEventListener('touchend', Effect.hide, false);
-                    element.addEventListener('touchcancel', Effect.hide, false);
-                }
-
-                element.addEventListener('mouseup', Effect.hide, false);
-                element.addEventListener('mouseleave', Effect.hide, false);
-            }
+            element.addEventListener('mouseup', Effect.hide, false);
+            element.addEventListener('mouseleave', Effect.hide, false);
+            element.addEventListener('dragend', Effect.hide, false);
         }
     }
 

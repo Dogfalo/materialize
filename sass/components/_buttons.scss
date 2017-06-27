@@ -183,6 +183,7 @@ button.btn-floating {
       display: flex;
       top: 0;
       bottom: 0;
+      z-index: 1;
 
       li {
         flex: 1;
@@ -258,18 +259,12 @@ button.btn-floating {
   transition: background-color .2s;
 
   &:focus,
-  &:active {
-    background-color: transparent;
-  }
-
-  &:focus,
   &:hover {
-    background-color: rgba(0,0,0,.1);
     box-shadow: none;
   }
 
-  &:active {
-    background-color: rgba(0,0,0,.2);
+  &:focus {
+    background-color: rgba(0,0,0,.1);
   }
 
   &.disabled {

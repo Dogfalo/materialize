@@ -1,3 +1,7 @@
+# Warning
+First of all make sure that you have read our [contribution guidelines](https://github.com/Dogfalo/materialize/blob/master/CONTRIBUTING.md). Any issues that are violating the contributing guidelines, will be closed!
+
+## Issue template:
 ### Description
 Add a detailed description of your issue.
 

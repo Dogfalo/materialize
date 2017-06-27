@@ -9,7 +9,7 @@ header
       i.material-icons menu
   ul#nav-mobile.side-nav.fixed
     li(class="logo")
-      a#logo-container.brand-logo(href='http://materializecss.com/')
+      a#logo-container.brand-logo(href='/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
     li(class="search")
       div.search-wrapper.card
@@ -114,8 +114,9 @@ header
                 a(href='waves.html') Waves
 
     li.bold(class=(page == "Mobile" ? "active" : ""))
-      a.waves-effect.waves-teal(href='http://materializecss.com/mobile.html') Mobile
+      a.waves-effect.waves-teal(href='mobile.html') Mobile
     li.bold(class=(page == "Showcase" ? "active" : ""))
       a.waves-effect.waves-teal(href='showcase.html') Showcase
     li.bold(class=(page == "Themes" ? "active" : ""))
       a.waves-effect.waves-teal(href='themes.html') Themes
+        span.new.badge

@@ -105,6 +105,10 @@ ul.side-nav.fixed {
       line-height: 44px;
       height: 44px;
       padding: 0 30px;
+
+      .new.badge {
+        margin-top: calc(22px - 11px);
+      }
     }
   }
 
@@ -953,6 +957,7 @@ body.parallax-demo footer {
       width: 100%;
       height: 45px;
       margin: 0;
+      box-sizing: border-box;
       padding: 0 45px 0 15px;
       border: 0;
     }
@@ -999,6 +1004,13 @@ body.themes {
     h4 {
       margin-top: 0;
     }
+
+    .badge.new {
+      font-weight: 400;
+      float: none;
+      display: inline-block;
+      transform: translateY(-6px);
+    }
   }
 }
 .shopify-buy-frame,
@@ -1006,7 +1018,7 @@ body.themes {
   float: left;
 }
 .shopify-buy-frame {
-  width: 105px;
+  width: 106px;
 }
 .shopify-btn {
   &:hover {

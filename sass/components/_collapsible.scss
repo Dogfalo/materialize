@@ -9,6 +9,7 @@
 .collapsible-header {
   display: block;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   min-height: $collapsible-height;
   line-height: $collapsible-line-height;
   padding: 0 1rem;

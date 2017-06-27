@@ -89,7 +89,7 @@
 
       // append indicator then set indicator width to tab width
       if (!$this.find('.indicator').length) {
-        $this.append('<div class="indicator"></div>');
+        $this.append('<li class="indicator"></li>');
       }
       $indicator = $this.find('.indicator');
 
@@ -135,6 +135,9 @@
               index = $tabs_wrapper.index(item);
               $active = $links.eq(index);
               animateIndicator(prev_index);
+              if (typeof(options.onShow) === "function") {
+                options.onShow.call($this[0], $content);
+              }
             }
           },
         });
@@ -185,7 +188,11 @@
         // Swap content
         if (options.swipeable) {
           if ($tabs_content.length) {
-            $tabs_content.carousel('set', index);
+            $tabs_content.carousel('set', index, function() {
+              if (typeof(options.onShow) === "function") {
+                options.onShow.call($this[0], $content);
+              }
+            });
           }
         } else if (options.activateContent) {
           if ($content !== undefined) {

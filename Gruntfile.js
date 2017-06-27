@@ -88,7 +88,7 @@ module.exports = function(grunt) {
           })
         ]
       },
-      expended: {
+      expanded: {
         src: 'dist/css/materialize.css'
       },
       min: {
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
         // the files to concatenate
         src: [
           "js/initial.js",
-          "js/jquery.easing.1.3.js",
+          "js/jquery.easing.1.4.js",
           "js/animation.js",
           "js/velocity.min.js",
           "js/hammer.min.js",
@@ -165,7 +165,7 @@ module.exports = function(grunt) {
         // the files to concatenate
         src: [
           "js/initial.js",
-          "js/jquery.easing.1.3.js",
+          "js/jquery.easing.1.4.js",
           "js/animation.js",
           "js/velocity.min.js",
           "js/hammer.min.js",
@@ -250,7 +250,7 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
             "initial.js",
-            "jquery.easing.1.3.js",
+            "jquery.easing.1.4.js",
             "animation.js",
             "velocity.min.js",
             "hammer.min.js",
@@ -423,7 +423,9 @@ module.exports = function(grunt) {
         limit: 10,
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'server']
+        tasks: ["jade_compile", "sass_compile", "js_compile",
+                "watch:jade", "watch:js", "watch:sass",
+                "notify:watching", 'server']
       },
     },
 
@@ -513,7 +515,7 @@ module.exports = function(grunt) {
       release: {
         options: {
           position: 'top',
-          banner: "/*!\n * Materialize v"+ grunt.option( "newver" ) +" (http://materializecss.com)\n * Copyright 2014-2015 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */",
+          banner: "/*!\n * Materialize v"+ grunt.option( "newver" ) +" (http://materializecss.com)\n * Copyright 2014-2017 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */",
           linebreak: true
         },
         files: {
@@ -565,7 +567,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-rename');
+  grunt.loadNpmTasks('grunt-rename-util');
   grunt.loadNpmTasks('grunt-remove-logging');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
@@ -577,7 +579,7 @@ module.exports = function(grunt) {
       'copy',
       'sass:expanded',
       'sass:min',
-      'postcss:expended',
+      'postcss:expanded',
       'postcss:min',
       'concat:dist',
       'uglify:dist',
@@ -600,5 +602,5 @@ module.exports = function(grunt) {
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);
-  grunt.registerTask('travis', ['jasmine']);
+  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
 };

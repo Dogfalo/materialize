@@ -22,17 +22,17 @@
 /* Text inputs */
 
 input:not([type]),
-input[type=text],
-input[type=password],
-input[type=email],
-input[type=url],
-input[type=time],
-input[type=date],
-input[type=datetime],
-input[type=datetime-local],
-input[type=tel],
-input[type=number],
-input[type=search],
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
 
   // General Styles
@@ -116,6 +116,7 @@ textarea.materialize-textarea {
     content: "";
     position: absolute;
     top: 60px;
+    left: 0;
     opacity: 0;
     transition: .2s opacity ease-out, .2s color ease-out;
   }
@@ -208,6 +209,7 @@ textarea.materialize-textarea {
 
 .input-field input[type=search] {
   display: block;
+  height: inherit;
   line-height: inherit;
   padding-left: 4rem;
   width: calc(100% - 4rem);
