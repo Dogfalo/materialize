@@ -207,15 +207,15 @@ textarea.materialize-textarea {
 
 /* Search Field */
 
-.nav-wrapper .input-field input[type=search] {
-  height: inherit;
-  padding-left: 4rem;
-  width: calc(100% - 4rem);
-}
-
 .input-field input[type=search] {
   display: block;  
   line-height: inherit;
+
+  .nav-wrapper  & {
+    height: inherit;
+    padding-left: 4rem;
+    width: calc(100% - 4rem);
+  }
 
   &:focus {
     background-color: $input-background;
