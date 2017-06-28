@@ -3,4 +3,6 @@ import Hammer from 'hammerjs';
 
 import formsUI from './ui/forms';
 
-formsUI(jQuery);
+export const initializeUI = () => {
+  formsUI(jQuery);  
+}

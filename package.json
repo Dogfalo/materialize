@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "brunch watch --server",
-    "build": "brunch build --production && npm run build:babel && npm run build:vendor",
+    "build": "mkdir -p lib && npm run build:components && npm run build:ui",
     "build:components": "babel app/js/all.js > lib/all.js && babel app/js/components -d lib/components",
     "build:ui": "babel app/js/ui.js > lib/ui.js && babel app/js/ui -d lib/ui"
   },
