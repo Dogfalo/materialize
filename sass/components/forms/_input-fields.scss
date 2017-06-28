@@ -215,6 +215,8 @@ textarea.materialize-textarea {
     height: inherit;
     padding-left: 4rem;
     width: calc(100% - 4rem);
+    border: 0;
+    box-shadow: none;
   }
 
   &:focus {
