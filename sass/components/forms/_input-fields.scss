@@ -210,8 +210,8 @@ textarea.materialize-textarea {
 .input-field input[type=search] {
   display: block;  
   line-height: inherit;
-
-  .nav-wrapper  & {
+  
+  .nav-wrapper & {
     height: inherit;
     padding-left: 4rem;
     width: calc(100% - 4rem);
