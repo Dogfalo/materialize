@@ -66,7 +66,7 @@
           $(window).trigger('resize');
 
           // Redraw carousel.
-          $(this).trigger('carouselNext', [0.000001]);
+          view.trigger('carouselNext', [0.000001]);
           return true;
         }
 
