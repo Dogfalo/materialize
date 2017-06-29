@@ -195,11 +195,11 @@
 
         <h2 class="header">Fixed Navbar</h2>
         <p>
-          To make the navbar fixed, you have to add an outer wrapping div with the class <code class="language-markup">navbar-fixed</code>. This will offset your other content while making your nav fixed. You can adjust the height of this outer div to change how much offset is on your content.
+          To make the navbar fixed, add the class <code class="language-markup">navbar-fixed</code> to the body. This will offset your other content while making your nav fixed. You can adjust the offset on your content using the <code class="language-markup">top</code> property of <code class="language-markup">.navbar-fixed</code>.
         </p>
 
         <pre><code class="language-markup">
-  &lt;div class="navbar-fixed">
+  &lt;body class="navbar-fixed">
     &lt;nav>
       &lt;div class="nav-wrapper">
         &lt;a href="#!" class="brand-logo">Logo&lt;/a>
@@ -209,7 +209,7 @@
         &lt;/ul>
       &lt;/div>
     &lt;/nav>
-  &lt;/div>
+  &lt;/body>
         </code></pre>
       </div>
 
