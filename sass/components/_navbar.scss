@@ -194,6 +194,7 @@ nav {
     position: fixed;
     z-index: 997;
     top: 0px;
+    height: $navbar-height-mobile
   }
 }
 @media #{$medium-and-up} {
@@ -205,6 +206,9 @@ nav {
     line-height: $navbar-line-height;
   }
   .navbar-fixed {
-    height: $navbar-height;
+    top: $navbar-height;
   }
+  .navbar-fixed nav {
+      height: $navbar-height;
+    }
 }
