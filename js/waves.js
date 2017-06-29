@@ -367,7 +367,11 @@
             if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
                 element = target;
                 break;
-            } else if (target.className.indexOf('waves-effect') !== -1) {
+            } else if (target instanceof SVGElement &&
+                target.className &&
+                target.className.baseVal &&
+                target.className.baseVal.indexOf('waves-effect') !== -1)
+            {
                 element = target;
                 break;
             }
