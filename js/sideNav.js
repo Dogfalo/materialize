@@ -115,6 +115,10 @@
                     // Restore Fixed sidenav
                     menu.removeAttr('style');
                     menu.css('width', options.menuWidth);
+                    // Callback
+                    if (typeof(options.onClose) === 'function') {
+                      options.onClose.call(this, menu);
+                    }
                   }
                 }
 
@@ -133,6 +137,10 @@
                     // Restore Fixed sidenav
                     menu.removeAttr('style');
                     menu.css('width', options.menuWidth);
+                    // Callback
+                    if (typeof(options.onClose) === 'function') {
+                      options.onClose.call(this, menu);
+                    }
                   }
                 }
               });
@@ -309,6 +317,10 @@
                   $overlay.velocity({opacity: 0 }, {duration: 200, queue: false, easing: 'easeOutQuad',
                     complete: function () {
                       $(this).remove();
+                      // Run 'onClose' when sidenav is closed via touch/swipe if applicable
+                      if (typeof(options.onClose) === 'function') {
+                          options.onClose.call(this, menu);
+                      }
                     }});
                   $dragTarget.css({width: '10px', right: 0, left: ''});
                 }
