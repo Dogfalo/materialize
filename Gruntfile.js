@@ -58,7 +58,7 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss',
+          'docs/assets/css/ghpages-materialize.css': 'docs/assets/scss/ghpages-materialize.scss',
         }
       },
 
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
         src: 'dist/css/materialize.min.css'
       },
       gh: {
-        src: 'css/ghpages-materialize.css'
+        src: 'docs/assets/css/ghpages-materialize.css'
       },
       bin: {
         src: 'bin/materialize.css'
@@ -342,53 +342,53 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          "index.html": "jade/index.jade",
-          "icons.html": "jade/icons.jade",
-          "about.html": "jade/about.jade",
-          "sass.html": "jade/sass.jade",
-          "getting-started.html": "jade/getting-started.jade",
-          "mobile.html": "jade/mobile.jade",
-          "showcase.html": "jade/showcase.jade",
-          "parallax.html": "jade/parallax.jade",
-          "parallax-demo.html": "jade/parallax-demo.jade",
-          "typography.html": "jade/typography.jade",
-          "color.html": "jade/color.jade",
-          "shadow.html": "jade/shadow.jade",
-          "grid.html": "jade/grid.jade",
-          "media-css.html": "jade/media-css.jade",
-          "table.html": "jade/table.jade",
-          "helpers.html": "jade/helpers.jade",
-          "forms.html": "jade/forms.jade",
-          "buttons.html": "jade/buttons.jade",
-          "navbar.html": "jade/navbar.jade",
-          "cards.html": "jade/cards.jade",
-          "preloader.html": "jade/preloader.jade",
-          "collections.html": "jade/collections.jade",
-          "badges.html": "jade/badges.jade",
-          "footer.html": "jade/footer.jade",
-          "dialogs.html": "jade/dialogs.jade",
-          "modals.html": "jade/modals.jade",
-          "dropdown.html": "jade/dropdown.jade",
-          "tabs.html": "jade/tabs.jade",
-          "side-nav.html": "jade/sideNav.jade",
-          "pushpin.html": "jade/pushpin.jade",
-          "waves.html": "jade/waves.jade",
-          "media.html": "jade/media.jade",
-          "collapsible.html": "jade/collapsible.jade",
-          "chips.html": "jade/chips.jade",
-          "scrollfire.html": "jade/scrollFire.jade",
-          "scrollspy.html": "jade/scrollspy.jade",
-          "transitions.html": "jade/transitions.jade",
-          "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
-          "pagination.html": "jade/pagination.jade",
-          "breadcrumbs.html": "jade/breadcrumbs.jade",
-          "carousel.html": "jade/carousel.jade",
-          "feature-discovery.html": "jade/feature-discovery.jade",
-          "pulse.html": "jade/pulse.jade",
-          "pushpin-demo.html": "jade/pushpin-demo.jade",
-          "css-transitions.html": "jade/css-transitions.jade",
-          "themes.html": "jade/themes.jade",
-          "404.html": "jade/404.jade",
+          "index.html": "docs/index.jade",
+          "icons.html": "docs/icons.jade",
+          "about.html": "docs/about.jade",
+          "sass.html": "docs/sass.jade",
+          "getting-started.html": "docs/getting-started.jade",
+          "mobile.html": "docs/mobile.jade",
+          "showcase.html": "docs/showcase.jade",
+          "parallax.html": "docs/parallax.jade",
+          "parallax-demo.html": "docs/parallax-demo.jade",
+          "typography.html": "docs/typography.jade",
+          "color.html": "docs/color.jade",
+          "shadow.html": "docs/shadow.jade",
+          "grid.html": "docs/grid.jade",
+          "media-css.html": "docs/media-css.jade",
+          "table.html": "docs/table.jade",
+          "helpers.html": "docs/helpers.jade",
+          "forms.html": "docs/forms.jade",
+          "buttons.html": "docs/buttons.jade",
+          "navbar.html": "docs/navbar.jade",
+          "cards.html": "docs/cards.jade",
+          "preloader.html": "docs/preloader.jade",
+          "collections.html": "docs/collections.jade",
+          "badges.html": "docs/badges.jade",
+          "footer.html": "docs/footer.jade",
+          "dialogs.html": "docs/dialogs.jade",
+          "modals.html": "docs/modals.jade",
+          "dropdown.html": "docs/dropdown.jade",
+          "tabs.html": "docs/tabs.jade",
+          "side-nav.html": "docs/sideNav.jade",
+          "pushpin.html": "docs/pushpin.jade",
+          "waves.html": "docs/waves.jade",
+          "media.html": "docs/media.jade",
+          "collapsible.html": "docs/collapsible.jade",
+          "chips.html": "docs/chips.jade",
+          "scrollfire.html": "docs/scrollFire.jade",
+          "scrollspy.html": "docs/scrollspy.jade",
+          "transitions.html": "docs/transitions.jade",
+          "fullscreen-slider-demo.html": "docs/fullscreen-slider-demo.jade",
+          "pagination.html": "docs/pagination.jade",
+          "breadcrumbs.html": "docs/breadcrumbs.jade",
+          "carousel.html": "docs/carousel.jade",
+          "feature-discovery.html": "docs/feature-discovery.jade",
+          "pulse.html": "docs/pulse.jade",
+          "pushpin-demo.html": "docs/pushpin-demo.jade",
+          "css-transitions.html": "docs/css-transitions.jade",
+          "themes.html": "docs/themes.jade",
+          "404.html": "docs/404.jade",
 
         }
       }
@@ -397,7 +397,7 @@ module.exports = function(grunt) {
     //  Watch Files
     watch: {
       jade: {
-        files: ['jade/**/*'],
+        files: ['docs/**/*'],
         tasks: ['jade_compile'],
         options: {
           interrupt: false,
@@ -406,7 +406,7 @@ module.exports = function(grunt) {
       },
 
       js: {
-        files: [ "js/**/*", "!js/init.js"],
+        files: [ "js/**/*" ],
         tasks: ['js_compile'],
         options: {
           interrupt: false,
@@ -417,6 +417,15 @@ module.exports = function(grunt) {
       sass: {
         files: ['sass/**/*'],
         tasks: ['sass_compile'],
+        options: {
+          interrupt: false,
+          spawn: false,
+        },
+      },
+
+      gh: {
+        files: ['docs/assets/scss/**/*'],
+        tasks: ['gh_compile'],
         options: {
           interrupt: false,
           spawn: false,
@@ -433,8 +442,9 @@ module.exports = function(grunt) {
       },
       monitor: {
         tasks: ["jade_compile", "sass_compile", "js_compile",
-                "watch:jade", "watch:js", "watch:sass",
-                "notify:watching", 'server']
+                "gh_compile", "watch:gh", "watch:jade",
+                "watch:js", "watch:sass", "notify:watching",
+                "server"]
       },
     },
 
@@ -455,6 +465,16 @@ module.exports = function(grunt) {
         options: {
           enabled: true,
           message: 'Sass Compiled!',
+          title: "Materialize",
+          success: true,
+          duration: 1
+        }
+      },
+
+      gh_compile: {
+        options: {
+          enabled: true,
+          message: 'Docs Sass Compiled!',
           title: "Materialize",
           success: true,
           duration: 1
@@ -499,7 +519,7 @@ module.exports = function(grunt) {
           'bower.json',
           'package.json',
           'package.js',
-          'jade/**/*.html'
+          'docs/**/*.html'
         ],
         overwrite: true,
         replacements: [{
@@ -607,7 +627,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
-  grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
+  grunt.registerTask('sass_compile', ['sass:bin', 'postcss:bin', 'notify:sass_compile']);
+  grunt.registerTask('gh_compile', ['sass:gh', 'postcss:gh', 'notify:gh_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);
