@@ -1,4 +1,4 @@
-![Materialize logo](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
+![Materialize logo](https://raw.github.com/dogfalo/materialize/master/docs/assets/brand/materialize.gif)
 ===========
 
 [![Travis CI badge](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize)
