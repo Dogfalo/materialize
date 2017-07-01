@@ -183,6 +183,7 @@ button.btn-floating {
       display: flex;
       top: 0;
       bottom: 0;
+      z-index: 1;
 
       li {
         flex: 1;

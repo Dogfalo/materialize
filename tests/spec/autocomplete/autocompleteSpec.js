@@ -1,13 +1,16 @@
 describe("Autocomplete Plugin", function () {
-  beforeEach(function() {
+  beforeEach(function(done) {
     loadFixtures('autocomplete/autocompleteFixture.html');
-    $('input.autocomplete').autocomplete({
-      data: {
-        "Apple": null,
-        "Microsoft": null,
-        "Google": 'http://placehold.it/250x250'
-      }
-    });
+    setTimeout(function() {
+      $('input.autocomplete').autocomplete({
+        data: {
+          "Apple": null,
+          "Microsoft": null,
+          "Google": 'http://placehold.it/250x250'
+        }
+      });
+      done();
+    }, 400);
   });
 
   describe("Autocomplete", function () {
@@ -17,28 +20,28 @@ describe("Autocomplete Plugin", function () {
     //   browserSelect = $('select.normal');
     // });
 
-    it("should work with multiple initializations", function () {
+    it("should work with multiple initializations", function (done) {
       var $normal = $('#normal-autocomplete');
       var $parent = $normal.parent();
-      $normal.autocomplete({ data: {"hi": null} });
-      $normal.autocomplete({ data: {"hi": null} });
-      $normal.autocomplete({ data: {"hi": null} });
-      $normal.autocomplete({
-        data: {
-          "Apple": null,
-          "Microsoft": null,
-          "Google": 'http://placehold.it/250x250'
-        }
-      });
-
-      var $autocompleteEl = $parent.find('.autocomplete-content');
-      var autocompleteEvents = $._data($normal[0], 'events');
-
-      expect($autocompleteEl.length).toEqual(1, 'Should dynamically generate autocomplete structure.');
-      expect(autocompleteEvents.keyup.length).toEqual(1, 'Should only bind 1 keyup handler on input');
-      // setTimeout(function() {
-      //   done();
-      // }, 400);
+      setTimeout(function() {
+        $normal.autocomplete({ data: {"hi": null} });
+        $normal.autocomplete({ data: {"hi": null} });
+        $normal.autocomplete({ data: {"hi": null} });
+        $normal.autocomplete({
+          data: {
+            "Apple": null,
+            "Microsoft": null,
+            "Google": 'http://placehold.it/250x250'
+          }
+        });
+        
+        var $autocompleteEl = $parent.find('.autocomplete-content');
+        var autocompleteEvents = $._data($normal[0], 'events');
+        
+        expect($autocompleteEl.length).toEqual(1, 'Should dynamically generate autocomplete structure.');
+        expect(autocompleteEvents.keyup.length).toEqual(1, 'Should only bind 1 keyup handler on input');
+        done();
+      }, 400);
     });
 
     it("should limit results if option is set", function (done) {

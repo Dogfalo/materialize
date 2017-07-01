@@ -10,7 +10,7 @@
         <a href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>
 
         <ul id="slide-out" class="side-nav">
-          <li><div class="userView">
+          <li><div class="user-view">
             <div class="background">
               <img src="images/office.jpg">
             </div>
@@ -28,7 +28,7 @@
         <h4>HTML Structure</h4>
         <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="side-nav">
-    &lt;li>&lt;div class="userView">
+    &lt;li>&lt;div class="user-view">
       &lt;div class="background">
         &lt;img src="images/office.jpg">
       &lt;/div>
@@ -65,7 +65,9 @@
       menuWidth: 300, // Default is 300
       edge: 'right', // Choose the horizontal origin
       closeOnClick: true, // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
-      draggable: true // Choose whether you can drag to open on touch screens
+      draggable: true, // Choose whether you can drag to open on touch screens,
+      onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is opened
+      onClose: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is closed
     }
   );
         </code></pre>

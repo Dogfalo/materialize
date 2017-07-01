@@ -96,7 +96,7 @@
         $slides.find('img').each(function () {
           var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
           if ($(this).attr('src') !== placeholderBase64) {
-            $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+            $(this).css('background-image', 'url("' + $(this).attr('src') + '")' );
             $(this).attr('src', placeholderBase64);
           }
         });
@@ -171,7 +171,7 @@
 
         $this.hammer({
             prevent_default: false
-        }).bind('pan', function(e) {
+        }).on('pan', function(e) {
           if (e.gesture.pointerType === "touch") {
 
             // reset interval
@@ -219,7 +219,7 @@
 
           }
 
-        }).bind('panend', function(e) {
+        }).on('panend', function(e) {
           if (e.gesture.pointerType === "touch") {
 
             $curr_slide = $slider.find('.active');

@@ -86,7 +86,7 @@
     $('.dismissable').each(function() {
       $(this).hammer({
         prevent_default: false
-      }).bind('pan', function(e) {
+      }).on('pan', function(e) {
         if (e.gesture.pointerType === "touch") {
           var $this = $(this);
           var direction = e.gesture.direction;
@@ -106,7 +106,7 @@
             swipeRight = true;
           }
         }
-      }).bind('panend', function(e) {
+      }).on('panend', function(e) {
         // Reset if collection is moved back into original position
         if (Math.abs(e.gesture.deltaX) < ($(this).innerWidth() / 2)) {
           swipeRight = false;
