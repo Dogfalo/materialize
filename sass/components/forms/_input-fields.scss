@@ -253,6 +253,17 @@ textarea {
   background-color: transparent;
 
   &.materialize-textarea {
+    // Fixes validation messages for dynamic textareas
+    &.validate + label {
+      &::after {
+        top: calc(100% - 12px);
+      }
+      &:not(.label-icon).active {
+        transform: translateY(-25px);
+      }
+      height: 100%;
+    }
+
     overflow-y: hidden; /* prevents scroll bar flash */
     padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
     resize: none;
