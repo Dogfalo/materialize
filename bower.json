@@ -28,25 +28,21 @@
     "fonts/roboto/Roboto-Thin.woff2"
   ],
   "ignore": [
-    "jade/",
-    ".gitignore",
+    "docs/",
+    "templates/",
+    "test/",
+    "tests/",
+    "bin/",
+    "/*.html",
     "CNAME",
-    "css/",
+    "CONTRIBUTING.md",
+    ".gitignore",
+    ".gitattributes",
+    ".travis.yml",
+    ".editorconfig",
     "bower.json",
-    "README.md",
-    "images/",
-    "js/jquery.timeago.js",
-    "js/init.js",
-    "js/prism.js",
-    "res/",
-    "sass/style.scss",
-    "sass/ghpages-materialize.scss",
-    "**/*.html",
-    "**/*.zip",
-    "**/*.txt",
-    "sitemap.xml",
-    "package.json",
-    "Gruntfile.js"
+    "robots.txt",
+    "sitemap.xml"
   ],
   "dependencies": {
     "jquery": ">=3.2.1"
