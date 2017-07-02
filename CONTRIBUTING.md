@@ -27,7 +27,7 @@ Contributing
   - We like feature requests but make sure that it can be seen within the goals of the project and not just something you need individually. Also you should try and give as much examples and details about the new feature as possible. If you are requesting a component from the [Material design guidelines](https://material.io/guidelines/), make sure to include a link to the component
 
 ### Documentation
-  - If you notice an error in the documentation, please edit the corresponding .html page under jade/page-contents/.
+  - If you notice an error in the documentation, please edit the corresponding .html page under docs/page-contents/.
 
 ### Submitting Your Pull Request
   - Try and keep your commit history clean and concise. Once you submit your pull request, [Travis CI](https://travis-ci.org/Dogfalo/materialize) will automatically run your tests and will show a checkmark to show that all the tests have passed. Once this is done, we’ll review your tests and code and make comments if there are issues or things we think could be improved. Then once everything looks good we’ll merge the code in!

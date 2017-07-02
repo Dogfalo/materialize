@@ -28,7 +28,7 @@ Read the [Getting started page](http://materializecss.com/getting-started.html) 
 
 ## Compiling Files
 - `npm install`
-- `grunt monitor`, this will compile .scss, .js., .jade files.
+- `grunt monitor`, this will compile .scss, .js., .pug files.
 
 ## Changelog
 For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md)

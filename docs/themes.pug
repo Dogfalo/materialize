@@ -1,0 +1,13 @@
+- var no_nav = false
+- var page = "Themes"
+
+doctype html
+html(lang="en")
+  head
+    include _head.pug
+  body.themes
+    include _navbar.pug
+    main
+      include page-contents/themes_content.html
+    include _footer.html
+    include _scripts.html
