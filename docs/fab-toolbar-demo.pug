@@ -1,0 +1,14 @@
+- var page = "Floating Action Button"
+- var isDemo = true
+
+doctype html
+html(lang="en")
+  head
+    include _head.pug
+  body
+    include page-contents/fab_toolbar_demo_content.html
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script.
+      window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js"><\/script>')
+    script(src='bin/materialize.js')
+    script(src='docs/assets/js/init.js')

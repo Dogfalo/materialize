@@ -360,6 +360,7 @@ module.exports = function(grunt) {
           "helpers.html": "docs/helpers.pug",
           "forms.html": "docs/forms.pug",
           "buttons.html": "docs/buttons.pug",
+          "fab-toolbar-demo.html": "docs/fab-toolbar-demo.pug",
           "navbar.html": "docs/navbar.pug",
           "cards.html": "docs/cards.pug",
           "preloader.html": "docs/preloader.pug",
