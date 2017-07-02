@@ -1,7 +1,9 @@
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script>if (!window.jQuery) { document.write('<script src="bin/jquery-3.2.1.min.js"><\/script>'); }
+    <!-- Use npm jQuery fallback, if jQuery is not defined -->
+    <script>
+      if (!window.jQuery) { document.write('<script src="node_modules/jquery/dist/jquery.min.js"><\/script>'); }
     </script>
     <script src="docs/assets/js/jquery.timeago.min.js"></script>
     <script src="docs/assets/js/prism.js"></script>
