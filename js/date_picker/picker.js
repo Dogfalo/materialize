@@ -117,7 +117,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                 // Insert the root as specified in the settings.
                 if ( SETTINGS.container ) $( SETTINGS.container ).append( P.$root )
-                else $ELEMENT.after( P.$root )
+                else $ELEMENT.before( P.$root )
 
 
                 // Bind the default component and settings events.
@@ -780,7 +780,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
         // Insert the hidden input as specified in the settings.
         if ( SETTINGS.container ) $( SETTINGS.container ).append( P._hidden )
-        else $ELEMENT.after( P._hidden )
+        else $ELEMENT.before( P._hidden )
     }
 
 
@@ -1119,4 +1119,3 @@ return PickerConstructor
 
 
 }));
-
