@@ -14,8 +14,8 @@
     "design"
   ],
   "main": [
-    "bin/materialize.css",
-    "bin/materialize.js",
+    "dist/js/materialize.js",
+    "dist/css/materialize.css",
     "fonts/roboto/Roboto-Bold.woff",
     "fonts/roboto/Roboto-Bold.woff2",
     "fonts/roboto/Roboto-Light.woff",
