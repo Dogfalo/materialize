@@ -347,7 +347,8 @@
         }
 
         function tap(e) {
-          if (e.type === 'mousedown') {
+          // Fixes firefox draggable image bug
+          if (e.type === 'mousedown' && $(e.target).is('img')) {
             e.preventDefault();
           }
           pressed = true;

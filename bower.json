@@ -14,18 +14,18 @@
     "design"
   ],
   "main": [
-    "bin/materialize.css",
-    "bin/materialize.js",
-    "fonts/roboto/Roboto-Bold.woff",
-    "fonts/roboto/Roboto-Bold.woff2",
-    "fonts/roboto/Roboto-Light.woff",
-    "fonts/roboto/Roboto-Light.woff2",
-    "fonts/roboto/Roboto-Medium.woff",
-    "fonts/roboto/Roboto-Medium.woff2",
-    "fonts/roboto/Roboto-Regular.woff",
-    "fonts/roboto/Roboto-Regular.woff2",
-    "fonts/roboto/Roboto-Thin.woff",
-    "fonts/roboto/Roboto-Thin.woff2"
+    "dist/js/materialize.js",
+    "dist/css/materialize.css",
+    "dist/fonts/roboto/Roboto-Bold.woff",
+    "dist/fonts/roboto/Roboto-Bold.woff2",
+    "dist/fonts/roboto/Roboto-Light.woff",
+    "dist/fonts/roboto/Roboto-Light.woff2",
+    "dist/fonts/roboto/Roboto-Medium.woff",
+    "dist/fonts/roboto/Roboto-Medium.woff2",
+    "dist/fonts/roboto/Roboto-Regular.woff",
+    "dist/fonts/roboto/Roboto-Regular.woff2",
+    "dist/fonts/roboto/Roboto-Thin.woff",
+    "dist/fonts/roboto/Roboto-Thin.woff2"
   ],
   "ignore": [
     "docs/",
@@ -45,7 +45,7 @@
     "sitemap.xml"
   ],
   "dependencies": {
-    "jquery": ">=3.2.1"
+    "jquery": "^3.0.0 || ^2.1.4"
   },
   "devDependencies": {
   }
