@@ -627,6 +627,10 @@ module.exports = function(grunt) {
   );
 
   grunt.registerTask('pug_compile', ['pug', 'notify:pug_compile']);
+  grunt.registerTask('jade_compile', 'The jade_compile task is deprecated, since we are using pug now.', function() {
+    grunt.log.subhead(['Please note that jade_compile is deprecated. Use pug_compile instead.']);
+    grunt.task.run('pug_compile');
+  });
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:bin', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('gh_compile', ['sass:gh', 'postcss:gh', 'notify:gh_compile']);
