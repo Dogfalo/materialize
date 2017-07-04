@@ -66,7 +66,7 @@
           $(window).trigger('resize');
 
           // Redraw carousel.
-          $(this).trigger('carouselNext', [0.000001]);
+          view.trigger('carouselNext', [0.000001]);
           return true;
         }
 
@@ -347,7 +347,8 @@
         }
 
         function tap(e) {
-          if (e.type === 'mousedown') {
+          // Fixes firefox draggable image bug
+          if (e.type === 'mousedown' && $(e.target).is('img')) {
             e.preventDefault();
           }
           pressed = true;

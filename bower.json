@@ -40,7 +40,7 @@
     "Gruntfile.js"
   ],
   "dependencies": {
-    "jquery": ">=3.2.1"
+    "jquery": "^3.0.0 || ^2.1.4"
   },
   "devDependencies": {
   }
