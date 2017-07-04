@@ -1,13 +1,35 @@
-![Materialize logo](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
-===========
+<p align="center">
+  <a href="http://materializecss.com/">
+    <img src="http://materializecss.com/res/materialize.svg" width="150">
+  </a>
 
-[![Travis CI badge](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize)
-[![npm version badge](https://badge.fury.io/js/materialize-css.svg)](https://badge.fury.io/js/materialize-css)
-[![dependencies Status badge](https://david-dm.org/Dogfalo/materialize/status.svg)](https://david-dm.org/Dogfalo/materialize)
-[![devDependency Status badge](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies)
-[![Gitter badge](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+  <h3 align="center">MaterializeCSS</h3>
 
-[Materialize](http://materializecss.com/), a CSS Framework based on material design
+  <p align="center">
+    Materialize, a CSS Framework based on material design.
+    <br>
+    <a href="http://materializecss.com/"><strong>-- Browse the docs --</strong></a>
+    <br>
+    <br>
+    <a href="https://travis-ci.org/Dogfalo/materialize">
+      <img src="https://travis-ci.org/Dogfalo/materialize.svg?branch=master" alt="Travis CI badge">
+    </a>
+    <a href="https://badge.fury.io/js/materialize-css">
+      <img src="https://badge.fury.io/js/materialize-css.svg" alt="npm version badge">
+    </a>
+    <a href="https://cdnjs.com/libraries/materialize">
+      <img src="https://img.shields.io/cdnjs/v/materialize.svg" alt="CDNJS version badge">
+    </a>
+    <a href="https://david-dm.org/Dogfalo/materialize">
+      <img src="https://david-dm.org/Dogfalo/materialize/status.svg" alt="dependencies Status badge">
+      </a>
+    <a href="https://david-dm.org/Dogfalo/materialize#info=devDependencies">
+      <img src="https://david-dm.org/Dogfalo/materialize/dev-status.svg" alt="devDependency Status badge">
+    </a>
+    <a href="https://gitter.im/Dogfalo/materialize">
+      <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter badge">
+    </a>
+</p>
 
 ### Current Version : v0.99.0
 
