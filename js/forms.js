@@ -471,6 +471,10 @@
               options.onAutocomplete.call(this, text);
             }
           });
+
+        // Empty data
+        } else {
+          $input.off('keyup.autocomplete focus.autocomplete');
         }
       });
     };
