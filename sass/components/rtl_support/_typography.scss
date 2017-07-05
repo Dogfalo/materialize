@@ -1,0 +1,28 @@
+// RTL Typography (Smaller Text)
+html {
+    line-height: 1.5;
+    @media only screen and (min-width: 0) {
+        font-size: 12.5px;
+    }
+    @media only screen and (min-width: $medium-screen) {
+        font-size: 13px;
+    }
+    @media only screen and (min-width: $large-screen) {
+        font-size: 14.5px;
+    }
+}
+
+.flow-text {
+    font-weight: 300;
+    $i: 0;
+    @while $i <= $intervals {
+         @media only screen and (min-width : 360 + ($i * $interval-size)){
+            font-size: 1.1rem * (1 + (.02 * $i));
+        }
+        $i: $i + 1;
+    }
+    // Handle below 360px screen
+    @media only screen and (max-width: 360px) {
+        font-size: 1.1rem;
+    }
+}

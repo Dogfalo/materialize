@@ -1,0 +1,22 @@
+// RTL Dropdown
+.rtl {
+	.dropdown-content {
+		li {
+			text-align: right;
+
+			& > span > label {
+				right: 0;
+			}
+			// Icon alignment override
+			& > a > i {
+				float: right;
+				margin: 0 0 0 24px;
+			}
+		}
+	}
+
+	// Input field specificity bugfix
+	.input-field.col .dropdown-content [type="checkbox"] + label {
+		right: 0;
+	}
+}

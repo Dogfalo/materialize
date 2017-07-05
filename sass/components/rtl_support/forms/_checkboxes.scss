@@ -1,0 +1,65 @@
+/* Checkboxes
+   ========================================================================== */
+
+.rtl {
+	/* CUSTOM CSS CHECKBOXES */
+	form p {
+		text-align: right;
+	}
+
+	// Checkbox Styles
+	[type="checkbox"] {
+		// Text Label Style
+		+ label {
+			padding-left: initial;
+			padding-right: 35px;
+		}
+
+		/* checkbox aspect */
+		 &:not(.filled-in) + label:after,
+		+ label:before {
+			left: initial;
+			right: 0;
+		}
+	}
+
+	[type="checkbox"]:checked {
+		+ label:before {
+			left: initial;
+			right: 5px;
+		}
+	}
+	/* Indeterminate checkbox */
+	[type="checkbox"]:indeterminate {
+		+label:before {
+			left: initial;
+			right: -12px;
+		}
+		// Disabled indeterminate
+		&:disabled + label:before {
+			border-left: 2px solid $input-disabled-color;
+		}
+	}
+	// Filled in Style
+	[type="checkbox"].filled-in {
+		// General
+		+ label:after,
+		+ label:before {
+			left: initial;
+			right: 0;
+		}
+		// Unchecked style
+		&:not(:checked) + label:before {
+			left: initial;
+			right: 6px;
+		}
+
+		// Checked style
+		&:checked {
+			+ label:before {
+				left: initial;
+				right: 1px;
+			}
+		}
+	}
+}

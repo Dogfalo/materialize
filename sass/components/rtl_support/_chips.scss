@@ -1,0 +1,25 @@
+// RTL Chips
+.rtl {
+	.chip {
+		margin-left: $chip-margin;
+		margin-right: initial;
+
+		img {
+			float: right;
+			margin: 0 -12px 0 8px;
+		}
+
+		.close,
+		.icon {
+			float: left;
+			padding-left: initial;
+			padding-right: 8px;
+		}
+	}
+
+	// Form prefix
+	.prefix ~ .chips {
+		margin-left: initial;
+		margin-right: 3rem;
+	}
+}

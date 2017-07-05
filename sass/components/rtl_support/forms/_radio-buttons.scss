@@ -1,0 +1,18 @@
+/* Radio Buttons
+   ========================================================================== */
+
+.rtl {
+	[type="radio"]:checked + label,
+	[type="radio"]:not(:checked) + label {
+		padding-left: initial;
+		padding-right: 35px;
+		margin-right: initial;
+		margin-left: 15px;
+	}
+
+	[type="radio"] + label:after,
+	[type="radio"] + label:before {
+		left: initial;
+		right: 0;
+	}
+}
