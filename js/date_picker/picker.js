@@ -727,7 +727,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 // If a “clear” button is pressed, empty the values and close with focus.
                 else if ( targetData.clear ) {
                     P.clear()
-                    if ( SETTINGS.closeOnClear ) {
+                    if ( SETTINGS.closeOnSelect ) {
                         P.close( true )
                     }
                 }
