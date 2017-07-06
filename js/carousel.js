@@ -28,7 +28,9 @@
 
         // Initialize
         var view = $(this);
-        var showIndicators = view.attr('data-indicators') || options.indicators;
+        var hasMultipleSlides = view.find('.carousel-item').length > 1;
+        var showIndicators = (view.attr('data-indicators') || options.indicators) && hasMultipleSlides;
+        var noWrap = (view.attr('data-no-wrap') || options.noWrap) || !hasMultipleSlides;
         var uniqueNamespace = view.attr('data-namespace') || namespace+i;
         view.attr('data-namespace', uniqueNamespace);
 
@@ -188,7 +190,7 @@
 
           // center
           // Don't show wrapped items.
-          if (!options.noWrap || (center >= 0 && center < count)) {
+          if (!noWrap || (center >= 0 && center < count)) {
             el = images[wrap(center)];
 
             // Add active class to center item.
@@ -217,7 +219,7 @@
               tweenedOpacity = 1 - 0.2 * (i * 2 + tween * dir);
             }
             // Don't show wrapped items.
-            if (!options.noWrap || center + i < count) {
+            if (!noWrap || center + i < count) {
               el = images[wrap(center + i)];
               el.style[xform] = alignment +
                 ' translateX(' + (options.shift + (dim * i - delta) / 2) + 'px)' +
@@ -237,7 +239,7 @@
               tweenedOpacity = 1 - 0.2 * (i * 2 - tween * dir);
             }
             // Don't show wrapped items.
-            if (!options.noWrap || center - i >= 0) {
+            if (!noWrap || center - i >= 0) {
               el = images[wrap(center - i)];
               el.style[xform] = alignment +
                 ' translateX(' + (-options.shift + (-dim * i - delta) / 2) + 'px)' +
@@ -250,7 +252,7 @@
 
           // center
           // Don't show wrapped items.
-          if (!options.noWrap || (center >= 0 && center < count)) {
+          if (!noWrap || (center >= 0 && center < count)) {
             el = images[wrap(center)];
             el.style[xform] = alignment +
               ' translateX(' + (-delta / 2) + 'px)' +
@@ -329,7 +331,7 @@
           var diff = (center % count) - n;
 
           // Account for wraparound.
-          if (!options.noWrap) {
+          if (!noWrap) {
             if (diff < 0) {
               if (Math.abs(diff + count) < Math.abs(diff)) { diff += count; }
 
@@ -416,7 +418,7 @@
           target = Math.round(target / dim) * dim;
 
           // No wrap of items.
-          if (options.noWrap) {
+          if (noWrap) {
             if (target >= dim * (count - 1)) {
               target = dim * (count - 1);
             } else if (target < 0) {
