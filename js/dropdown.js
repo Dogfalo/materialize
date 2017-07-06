@@ -207,7 +207,7 @@
         origin.off('click.' + origin.attr('id'));
         // Hover handler to show dropdown
         origin.on('mouseenter', function(e){ // Mouse over
-          if (open === false) {
+          if (!origin.attr('disabled') && open === false) {
             placeDropdown();
             open = true;
           }
@@ -238,7 +238,7 @@
         origin.on('click.'+origin.attr('id'), function(e){
           if (!isFocused) {
             if ( origin[0] == e.currentTarget &&
-                 !origin.hasClass('active') &&
+                 !origin.hasClass('active') && !origin.attr('disabled') &&
                  ($(e.target).closest('.dropdown-content').length === 0)) {
               e.preventDefault(); // Prevents button click from moving window
               if (curr_options.stopPropagation) {
