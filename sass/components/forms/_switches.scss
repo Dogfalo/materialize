@@ -3,10 +3,8 @@
 
 .switch,
 .switch * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .switch label {
