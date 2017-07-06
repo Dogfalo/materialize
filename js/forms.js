@@ -460,7 +460,7 @@
           });
 
           // Set input value
-          $autocomplete.on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
+          $autocomplete.off('mousedown.autocomplete touchstart.autocomplete').on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
             var text = $(this).text().trim();
             $input.val(text);
             $input.trigger('change');
@@ -471,6 +471,10 @@
               options.onAutocomplete.call(this, text);
             }
           });
+
+        // Empty data
+        } else {
+          $input.off('keyup.autocomplete focus.autocomplete');
         }
       });
     };

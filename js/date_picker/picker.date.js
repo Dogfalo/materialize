@@ -1368,6 +1368,9 @@ DatePicker.defaults = (function( prefix ) {
         clear: 'Clear',
         close: 'Ok',
 
+        // Picker close behavior (Prevent a change in behaviour for backwards compatibility)
+        closeOnSelect: false,
+
         // The format to show on the `input` element
         format: 'd mmmm, yyyy',
 

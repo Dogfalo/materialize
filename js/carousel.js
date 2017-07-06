@@ -18,7 +18,6 @@
 
       return this.each(function(i) {
 
-        var uniqueNamespace = namespace+i;
         var images, item_width, item_height, offset, center, pressed, dim, count,
             reference, referenceY, amplitude, target, velocity, scrolling,
             xform, frame, timestamp, ticker, dragged, vertical_dragged;
@@ -30,6 +29,8 @@
         // Initialize
         var view = $(this);
         var showIndicators = view.attr('data-indicators') || options.indicators;
+        var uniqueNamespace = view.attr('data-namespace') || namespace+i;
+        view.attr('data-namespace', uniqueNamespace);
 
 
         // Options
@@ -108,15 +109,15 @@
 
         function setupEvents() {
           if (typeof window.ontouchstart !== 'undefined') {
-            view[0].addEventListener('touchstart', tap);
-            view[0].addEventListener('touchmove', drag);
-            view[0].addEventListener('touchend', release);
+            view.on('touchstart.carousel', tap);
+            view.on('touchmove.carousel', drag);
+            view.on('touchend.carousel', release);
           }
-          view[0].addEventListener('mousedown', tap);
-          view[0].addEventListener('mousemove', drag);
-          view[0].addEventListener('mouseup', release);
-          view[0].addEventListener('mouseleave', release);
-          view[0].addEventListener('click', click);
+          view.on('mousedown.carousel', tap);
+          view.on('mousemove.carousel', drag);
+          view.on('mouseup.carousel', release);
+          view.on('mouseleave.carousel', release);
+          view.on('click.carousel', click);
         }
 
         function xpos(e) {
@@ -515,6 +516,20 @@
     },
     set : function(n, callback) {
       $(this).trigger('carouselSet', [n, callback]);
+    },
+    destroy : function() {
+      var uniqueNamespace = $(this).attr('data-namespace');
+      $(this).removeAttr('data-namespace');
+      $(this).removeClass('initialized');
+      $(this).find('.indicators').remove();
+
+      // Remove event handlers
+      $(this).off('carouselNext carouselPrev carouselSet');
+      $(window).off('resize.carousel-'+uniqueNamespace);
+      if (typeof window.ontouchstart !== 'undefined') {
+        $(this).off('touchstart.carousel touchmove.carousel touchend.carousel');
+      }
+      $(this).off('mousedown.carousel mousemove.carousel mouseup.carousel mouseleave.carousel click.carousel');
     }
   };
 
