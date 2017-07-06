@@ -34,8 +34,8 @@
 
 
         // Options
-        var setCarouselHeight = function() {
-          var firstImage = view.find('.carousel-item img').first();
+        var setCarouselHeight = function(imageOnly) {
+          var firstImage = view.find('.carousel-item.active img').first();
           if (firstImage.length) {
             if (firstImage.prop('complete')) {
               view.css('height', firstImage.height());
@@ -44,8 +44,8 @@
                 view.css('height', $(this).height());
               });
             }
-          } else {
-            var imageHeight = view.find('.carousel-item').first().height();
+          } else if (!imageOnly) {
+            var imageHeight = view.find('.carousel-item.active').first().height();
             view.css('height', imageHeight);
           }
         };
@@ -445,17 +445,21 @@
         });
 
 
-        $(window).off('resize.carousel-'+uniqueNamespace).on('resize.carousel-'+uniqueNamespace, function() {
+        var throttledResize = Materialize.throttle(function() {
           if (options.fullWidth) {
             item_width = view.find('.carousel-item').first().innerWidth();
-            item_height = view.find('.carousel-item').first().innerHeight();
+            var imageHeight = view.find('.carousel-item.active').height();
             dim = item_width * 2 + options.padding;
             offset = center * 2 * item_width;
             target = offset;
+            setCarouselHeight(true);
           } else {
             scroll();
           }
-        });
+        }, 200);
+        $(window)
+          .off('resize.carousel-'+uniqueNamespace)
+          .on('resize.carousel-'+uniqueNamespace, throttledResize);
 
         setupEvents();
         scroll(offset);
