@@ -289,3 +289,59 @@ button.btn-floating {
 .btn-block {
   display: block;
 }
+
+// loading btn
+// @TODO colors ?
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.btn-loading {
+  color: transparent !important;
+  pointer-events: none;
+  &:after {
+    animation: spinAround 500ms infinite linear;
+    border: 2px solid #FFFFFF;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    left: calc(50% - (1rem / 2));
+    top: calc(50% - (1rem / 2));
+  }
+}
+
+// @TODO transition animation on icons ?
+.btn-loading-icons {
+  pointer-events: none;
+  & .material-icons {
+    color: transparent !important;
+  }
+  & .material-icons:after {
+    animation: spinAround 500ms infinite linear;
+    border: 2px solid #FFFFFF;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: calc(50% - (1rem / 2));
+  }
+  & .material-icons.left:after {
+    left: 2rem;
+  }
+  & .material-icons.right:after {
+    right: 2rem;
+  }
+}

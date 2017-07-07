@@ -167,6 +167,32 @@
 &lt;a class="waves-effect waves-light btn-large">&lt;i class="material-icons right">cloud&lt;/i>button&lt;/a>
         </code></pre>
       </div>
+      <div id="loading" class="section scrollspy">
+        <h2 class="header">Loading button</h2>
+        <p>
+          You can display a loading animation on button. While the animation is displayed, your button became unclikable.
+        </p>
+        <h4 class="light">Whole button</h4>
+        <p>
+          Just add <code class=" language-markup">.btn-loading</code> class to your <code class=" language-markup">.btn</code> element. If your button contain <code class=" language-markup">.material-icons</code> element, they will be hidden.
+        </p>
+        <a class="waves-effect waves-light btn btn-loading black-loading">Button</a>
+        <a class="waves-effect waves-light btn btn-loading black-loading"><i class="material-icons right">cloud</i>Button</a>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn btn-loading black-loading">Button&lt;/a>
+&lt;a class="waves-effect waves-light btn btn-loading black-loading">&lt;i class="material-icons right">cloud&lt;/i>Button&lt;/a>
+        </code></pre>
+        <h4 class="light">Instead of icon</h4>
+        <p>
+          If you want to display the animation instead of <code class=" language-markup">.material-icons</code> element, add <code class=" language-markup">.btn-loading-icons</code> class to your <code class=" language-markup">.btn</code> element.
+        </p>
+        <a class="waves-effect waves-light btn btn-loading-icons"><i class="material-icons right">cloud</i>Button</a>
+        <a class="waves-effect waves-light btn btn-loading-icons"><i class="material-icons left">cloud</i>Button</a>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn btn-loading-icons">&lt;i class="material-icons right">cloud&lt;/i>Button&lt;/a>
+&lt;a class="waves-effect waves-light btn btn-loading-icons">&lt;i class="material-icons left">cloud&lt;/i>Button&lt;/a>
+        </code></pre>
+      </div>
       <div id="disabled" class="section scrollspy">
         <h2 class="header">Disabled</h2>
         <p>This style can be applied to all button types</p>
@@ -197,6 +223,7 @@
             <li><a href="#flat">Flat</a></li>
             <li><a href="#submit">Submit</a></li>
             <li><a href="#large">Large</a></li>
+            <li><a href="#loading">Loading</a></li>
             <li><a href="#disabled">Disabled</a></li>
           </ul>
         </div>
