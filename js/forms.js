@@ -182,7 +182,7 @@
       $textarea.data('previous-length', $textarea.val().length);
     });
 
-    $('body').on('keyup keydown autoresize', text_area_selector, function () {
+    $('body').on('input propertychange autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
