@@ -395,8 +395,7 @@
               if (val.length >= options.minLength) {
                 for(var key in data) {
                   if (data.hasOwnProperty(key) &&
-                      key.toLowerCase().indexOf(val) !== -1 &&
-                      key.toLowerCase() !== val) {
+                      key.toLowerCase().indexOf(val) !== -1) {
                     // Break if past limit
                     if (count >= options.limit) {
                       break;
@@ -460,7 +459,7 @@
           });
 
           // Set input value
-          $autocomplete.on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
+          $autocomplete.off('mousedown.autocomplete touchstart.autocomplete').on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
             var text = $(this).text().trim();
             $input.val(text);
             $input.trigger('change');
@@ -471,6 +470,10 @@
               options.onAutocomplete.call(this, text);
             }
           });
+
+        // Empty data
+        } else {
+          $input.off('keyup.autocomplete focus.autocomplete');
         }
       });
     };
