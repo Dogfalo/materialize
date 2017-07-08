@@ -291,19 +291,54 @@ button.btn-floating {
 }
 
 // loading btn
-@keyframes spinAround {
-  from {
+@keyframes btnLoadingSpin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(359deg);
   }
 }
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-loading,
+.btn-loading-icons {
+  @extend .btn;
+  &.is-loading {
+    pointer-events: none;
+    &.is-clickable {
+      pointer-events: auto !important;
+    }
+  }
+}
+
 .btn-loading {
-  color: transparent !important;
-  pointer-events: none;
+  transition: color 500ms ease;
+
+  &.is-loading {
+    color: transparent !important;
+  }
+  &.is-loading:after {
+    animation: fadeIn 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+  }
   &:after {
-    animation: spinAround 500ms infinite linear;
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
     border: 2px solid #FFFFFF;
     border-radius: 290486px;
     border-right-color: transparent;
@@ -316,58 +351,46 @@ button.btn-floating {
     left: calc(50% - (1rem / 2));
     top: calc(50% - (1rem / 2));
   }
+
   // Color Classes
   @each $color_name, $color in $colors {
     @each $color_type, $color_value in $color {
       @if $color_type == "base" {
         &.#{$color_name}-text:after {
-          animation: spinAround 500ms infinite linear;
           border: 2px solid $color_value;
           border-radius: 290486px;
           border-right-color: transparent;
           border-top-color: transparent;
-          content: "";
-          display: inline-block;
-          height: 1rem;
-          width: 1rem;
-          position: absolute;
-          left: calc(50% - (1rem / 2));
-          top: calc(50% - (1rem / 2));
         }
       }
       @else if $color_name != "shades" {
         // because .text-* classes already use !important and make text appear if not present
-        &.#{$color_name}-text.text-#{$color_type} {
-          color: transparent !important;
-        }
+        // &.#{$color_name}-text.text-#{$color_type} {
+        //   color: transparent !important;
+        // }
         &.#{$color_name}-text.text-#{$color_type}:after {
-          animation: spinAround 500ms infinite linear;
-          border: 2px solid $color_value;
+          border: 2px solid $color_value !important;
           border-radius: 290486px;
           border-right-color: transparent;
           border-top-color: transparent;
-          content: "";
-          display: inline-block;
-          height: 1rem;
-          width: 1rem;
-          position: absolute;
-          left: calc(50% - (1rem / 2));
-          top: calc(50% - (1rem / 2));
         }
       }
     }
   }
 }
-
-// @TODO transition animation on icons ?
-.btn-loading-icons {
-  pointer-events: none;
-  & .material-icons {
-    color: transparent !important;
-  }
-  & .material-icons:after {
-    animation: spinAround 500ms infinite linear;
-    border: 2px solid #FFFFFF;
+// Large loading button
+.btn-loading-large {
+  @extend .btn-large;
+  @extend .btn-loading;
+}
+// Flat loading button
+.btn-loading-flat {
+  @extend .btn-flat;
+  @extend .btn-loading;
+  &:after {
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    border: 2px solid #000000;
     border-radius: 290486px;
     border-right-color: transparent;
     border-top-color: transparent;
@@ -376,51 +399,87 @@ button.btn-floating {
     height: 1rem;
     width: 1rem;
     position: absolute;
+    left: calc(50% - (1rem / 2));
+    top: calc(50% - (1rem / 2));
+  }
+}
+
+.btn-loading-icons {
+  i.material-icons {
+    transition:color 500ms ease;
+  }
+
+  &.is-loading i.material-icons {
+    color: transparent !important;
+  }
+  &.is-loading i.material-icons:after {
+    animation: fadeIn 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+  }
+  i.material-icons:after {
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    border: 2px solid #FFFFFF;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    // center on icon
+    margin-left:.2rem;
     top: calc(50% - (1rem / 2));
   }
   // Color Classes
   @each $color_name, $color in $colors {
     @each $color_type, $color_value in $color {
       @if $color_type == "base" {
-        &.#{$color_name}-text  .material-icons:after {
-          animation: spinAround 500ms infinite linear;
+        &.#{$color_name}-text i.material-icons:after {
           border: 2px solid $color_value;
           border-radius: 290486px;
           border-right-color: transparent;
           border-top-color: transparent;
-          content: "";
-          display: inline-block;
-          height: 1rem;
-          width: 1rem;
-          position: absolute;
-          top: calc(50% - (1rem / 2));
         }
       }
       @else if $color_name != "shades" {
         // because .text-* classes already use !important and make text appear if not present
-        &.#{$color_name}-text.text-#{$color_type}  .material-icons {
-          color: transparent !important;
-        }
-        &.#{$color_name}-text.text-#{$color_type}  .material-icons:after {
-          animation: spinAround 500ms infinite linear;
-          border: 2px solid $color_value;
+        // &.#{$color_name}-text.text-#{$color_type} i.material-icons {
+        //   color: transparent !important;
+        // }
+        &.#{$color_name}-text.text-#{$color_type} i.material-icons:after {
+          border: 2px solid $color_value !important;
           border-radius: 290486px;
           border-right-color: transparent;
           border-top-color: transparent;
-          content: "";
-          display: inline-block;
-          height: 1rem;
-          width: 1rem;
-          position: absolute;
-          top: calc(50% - (1rem / 2));
         }
       }
     }
   }
-  & .material-icons.left:after {
-    left: 2rem !important;
-  }
-  & .material-icons.right:after {
-    right: 2rem !important;
+}
+// Large loading button
+.btn-loading-large-icons {
+  @extend .btn-large;
+  @extend .btn-loading-icons;
+}
+// Flat loading button
+.btn-loading-flat-icons {
+  @extend .btn-flat;
+  @extend .btn-loading-icons;
+  & i.material-icons:after {
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    border: 2px solid #000000;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    // center on icon
+    margin-left:.2rem;
+    top: calc(50% - (1rem / 2));
   }
 }
