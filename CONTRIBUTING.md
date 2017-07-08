@@ -48,6 +48,8 @@ The [issue tracker](https://github.com/Dogfalo/materialize/issues) is the prefer
 
 * Please **close your own issue** once it is resolved.
 
+* Every participant is **expected to follow** the project's [Code of Conduct](CODE_OF_CONDUCT.md) so please be courteous and respectful.
+
 ### Issues and labels
 
 Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:
