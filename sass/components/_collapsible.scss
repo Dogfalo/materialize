@@ -16,7 +16,7 @@
   background-color: $collapsible-header-color;
   border-bottom: 1px solid $collapsible-border-color;
 
-  i {
+  .material-icons  {
     width: 2rem;
     font-size: 1.6rem;
     line-height: $collapsible-line-height;
@@ -53,7 +53,7 @@
     padding: 0 $sidenav-padding;
 
     &:hover { background-color: rgba(0,0,0,.05); }
-    i { line-height: inherit; }
+    .material-icons  { line-height: inherit; }
   }
 
   .collapsible-body {

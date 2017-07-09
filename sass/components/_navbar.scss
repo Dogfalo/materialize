@@ -22,9 +22,7 @@ nav {
 
   a { color: $navbar-font-color; }
 
-  i,
-  [class^="mdi-"], [class*="mdi-"],
-  i.material-icons {
+  .material-icons {
     display: block;
     font-size: 24px;
     height: $navbar-height-mobile;
@@ -49,7 +47,7 @@ nav {
     height: $navbar-height-mobile;
     margin: 0 18px;
 
-    i {
+    .material-icons {
       height: $navbar-height-mobile;
       line-height: $navbar-line-height-mobile;
     }
@@ -91,9 +89,7 @@ nav {
       padding: 0;
     }
 
-    i,
-    [class^="mdi-"], [class*="mdi-"],
-    i.material-icons {
+    .material-icons {
       float: left;
       margin-right: 15px;
     }
@@ -176,11 +172,11 @@ nav {
       top: 0;
       left: 0;
 
-      i {
+      .material-icons {
         color: rgba(255,255,255,.7);
         transition: color .3s;
       }
-      &.active i { color: $navbar-font-color; }
+      &.active .material-icons { color: $navbar-font-color; }
     }
   }
 }
@@ -199,7 +195,7 @@ nav {
   nav.nav-extended .nav-wrapper {
     min-height: $navbar-height;
   }
-  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+  nav, nav .nav-wrapper .material-icons, nav a.button-collapse, nav a.button-collapse .material-icons {
     height: $navbar-height;
     line-height: $navbar-line-height;
   }

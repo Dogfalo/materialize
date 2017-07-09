@@ -46,7 +46,7 @@
   font-size: $button-font-size;
   outline: 0;
 
-  i {
+  .material-icons  {
     font-size: $button-icon-font-size;
     line-height: inherit;
   }
@@ -95,7 +95,7 @@
 
     width: $button-floating-large-size;
     height: $button-floating-large-size;
-    i {
+    .material-icons  {
       line-height: $button-floating-large-size;
     }
   }
@@ -127,7 +127,7 @@
   cursor: pointer;
   vertical-align: middle;
 
-  i {
+  .material-icons  {
     width: inherit;
     display: inline-block;
     text-align: center;
@@ -171,7 +171,7 @@ button.btn-floating {
 
   &.toolbar {
     &.active {
-      & > a i {
+      & > a .material-icons  {
         opacity: 0;
       }
     }
@@ -204,7 +204,7 @@ button.btn-floating {
           line-height: $button-floating-large-size;
           z-index: 1;
 
-          i {
+          .material-icons  {
             line-height: inherit;
           }
         }
@@ -280,7 +280,7 @@ button.btn-floating {
   height: $button-large-height;
   line-height: $button-large-height;
 
-  i {
+  .material-icons  {
     font-size: $button-large-icon-font-size;
   }
 }
