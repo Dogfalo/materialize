@@ -62,9 +62,7 @@
     &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
     &.btn-floating:hover { background-color: $button-raised-background; }
 
-    & > i,
-    & > [class^="mdi-"], li > a > [class*="mdi-"],
-    & > i.material-icons {
+    & > .material-icons {
       float: left;
       height: $sidenav-item-height;
       line-height: $sidenav-line-height;

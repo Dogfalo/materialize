@@ -49,7 +49,7 @@
     }
 
     // Icon alignment override
-    & > a > i {
+    & > a > .material-icons  {
       height: inherit;
       line-height: inherit;
       float: left;

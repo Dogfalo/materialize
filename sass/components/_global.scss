@@ -100,7 +100,7 @@ blockquote {
 
 // Icon Styles
 
-i {
+.material-icons {
   line-height: inherit;
 
   &.left {
@@ -161,7 +161,7 @@ video.responsive-video {
       color: #999;
     }
 
-    i {
+    .material-icons {
       font-size: 2rem;
     }
   }
@@ -194,9 +194,7 @@ video.responsive-video {
   font-size: 18px;
   color: rgba(255,255,255, .7);
 
-  i,
-  [class^="mdi-"], [class*="mdi-"],
-  i.material-icons {
+  .material-icons {
     display: inline-block;
     float: left;
     font-size: 24px;
@@ -508,13 +506,14 @@ td, th{
         left: 15px;
         display: inline-block;
         vertical-align: middle;
-      }
-      i.circle {
-        font-size: 18px;
-        line-height: 42px;
-        color: #fff;
-        background-color: #999;
-        text-align: center;
+
+        &.material-icons{
+          font-size: 18px;
+          line-height: 42px;
+          color: #fff;
+          background-color: #999;
+          text-align: center;
+        }
       }
 
 
