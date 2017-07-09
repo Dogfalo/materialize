@@ -34,10 +34,6 @@ select {
     margin: $input-margin;
     padding: 0;
     display: block;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    -o-user-select:none; 
     user-select:none;
   }
 
@@ -72,9 +68,7 @@ select:disabled {
 .select-wrapper input.select-dropdown:disabled {
   color: rgba(0,0,0,.3);
   cursor: default;
-  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-  -moz-user-select: none; /* mozilla browsers */
-  -ms-user-select: none; /* IE10+ */
+  user-select: none;
   border-bottom: 1px solid rgba(0,0,0,.3);
 }
 

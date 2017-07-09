@@ -3,19 +3,7 @@
 
 /* Style Placeholders */
 
-::-webkit-input-placeholder {
-  color: $placeholder-text-color;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-  color: $placeholder-text-color;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-  color: $placeholder-text-color;
-}
-
-:-ms-input-placeholder {
+::placeholder {
   color: $placeholder-text-color;
 }
 
@@ -208,9 +196,9 @@ textarea.materialize-textarea {
 /* Search Field */
 
 .input-field input[type=search] {
-  display: block;  
+  display: block;
   line-height: inherit;
-  
+
   .nav-wrapper & {
     height: inherit;
     padding-left: 4rem;
