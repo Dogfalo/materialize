@@ -47,10 +47,6 @@ select {
     margin: auto 0;
     font-size: 10px;
     line-height: 10px;
-
-    &.disabled {
-      color: $input-disabled-color;
-    }
   }
 
   & + label {
@@ -62,14 +58,20 @@ select {
 
 // Disabled styles
 select:disabled {
-  color: rgba(0,0,0,.3);
+  color: $input-disabled-color;
+}
+
+.select-wrapper.disabled {
+  span.caret,
+  & + label {
+    color: $input-disabled-color;
+  }
 }
 
 .select-wrapper input.select-dropdown:disabled {
-  color: rgba(0,0,0,.3);
+  color: $input-disabled-color;
   cursor: default;
   user-select: none;
-  border-bottom: 1px solid rgba(0,0,0,.3);
 }
 
 .select-wrapper i {

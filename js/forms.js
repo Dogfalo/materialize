@@ -512,6 +512,8 @@
       $select.attr('data-select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
+      if ($select.is(':disabled'))
+        wrapper.addClass('disabled');
       var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
           selectChildren = $select.children('option, optgroup'),
           valuesSelected = [],
@@ -597,8 +599,6 @@
       $select.wrap(wrapper);
       // Add Select Display Element
       var dropdownIcon = $('<span class="caret">&#9660;</span>');
-      if ($select.is(':disabled'))
-        dropdownIcon.addClass('disabled');
 
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
