@@ -733,7 +733,7 @@
         <div id="range-input"></div>
         <p>&nbsp;</p>
         <pre><code class="language-markup">
-  &lt;div id="test-slider">&lt;/div>        
+  &lt;div id="test-slider">&lt;/div>
         </code></pre>
         <pre><code class="language-javascript">
   var slider = document.getElementById('test-slider');
@@ -741,6 +741,7 @@
    start: [20, 80],
    connect: true,
    step: 1,
+   orientation: 'horizontal', // 'horizontal' or 'vertical'
    range: {
      'min': 0,
      'max': 100
