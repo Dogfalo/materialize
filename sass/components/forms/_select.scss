@@ -85,6 +85,22 @@ select:disabled {
   background-color: transparent;
 }
 
+.select-dropdown.dropdown-content {
+  li {
+    &.active {
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: $select-option-hover;
+    }
+
+    &.selected {
+      background-color: $select-option-focus;
+    }
+  }
+}
+
 // Prefix Icons
 .prefix ~ .select-wrapper {
   margin-left: 3rem;

@@ -505,6 +505,7 @@
       // If destroying the select, remove the selelct-id and reset it to it's uninitialized state.
       if(callback === 'destroy') {
         $select.removeAttr('data-select-id').removeClass('initialized');
+        $(window).off('click.select');
         return;
       }
 
@@ -624,6 +625,7 @@
         'focus': function (){
           if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
             $('input.select-dropdown').trigger('close');
+            $(window).off('click.select');
           }
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
@@ -636,6 +638,11 @@
               return $(this).text().toLowerCase() === label.toLowerCase();
             })[0];
             activateOption(options, selectedOption, true);
+
+            $(window).off('click.select').on('click.select', function () {
+              multiple && (optionsHover || $newSelect.trigger('close'));
+              $(window).off('click.select');
+            });
           }
         },
         'click': function (e){
@@ -646,6 +653,7 @@
       $newSelect.on('blur', function() {
         if (!multiple) {
           $(this).trigger('close');
+          $(window).off('click.select');
         }
         options.find('li.selected').removeClass('selected');
       });
@@ -654,12 +662,6 @@
         optionsHover = true;
       }, function () {
         optionsHover = false;
-      });
-
-      $(window).on({
-        'click': function () {
-          multiple && (optionsHover || $newSelect.trigger('close'));
-        }
       });
 
       // Add initial multiple selections.

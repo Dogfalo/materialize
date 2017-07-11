@@ -184,6 +184,8 @@ $track-height: 3px !default;
 $select-border: 1px solid #f2f2f2 !default;
 $select-background: rgba(255, 255, 255, 0.90) !default;
 $select-focus: 1px solid lighten($secondary-color, 47%) !default;
+$select-option-hover: rgba(0,0,0,.06) !default;
+$select-option-focus: rgba(0,0,0,.03) !default;
 $select-padding: 5px !default;
 $select-radius: 2px !default;
 $select-disabled-color: rgba(0,0,0,.3) !default;
