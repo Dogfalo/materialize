@@ -89,7 +89,6 @@ textarea.materialize-textarea {
   // Full width label when using validate for error messages
   &.validate + label {
     width: 100%;
-    pointer-events: none;
   }
 
   // Form Message Shared Styles
@@ -112,17 +111,19 @@ textarea.materialize-textarea {
   content: attr(data-success);
   color: $input-success-color;
   opacity: 1;
+  transform: translateY(9px);
 }
 %custom-error-message {
   content: attr(data-error);
   color: $input-error-color;
   opacity: 1;
+  transform: translateY(9px);
 }
 %input-after-style {
   display: block;
   content: "";
   position: absolute;
-  top: 60px;
+  top: 100%;
   left: 0;
   opacity: 0;
   transition: .2s opacity ease-out, .2s color ease-out;
@@ -161,16 +162,19 @@ textarea.materialize-textarea {
   label {
     color: $input-border-color;
     position: absolute;
-    top: 0.8rem;
+    top: 0;
     left: 0;
+    height: 100%;
     font-size: 1rem;
     cursor: text;
-    transition: .2s ease-out;
+    transition: transform .2s ease-out;
+    transform-origin: 0% 100%;
     text-align: initial;
+    transform: translateY(12px);
+    pointer-events: none;
 
     &:not(.label-icon).active {
-      font-size: $label-font-size;
-      transform: translateY(-140%);
+      transform: translateY(-26px) scale(.8);
     }
   }
 
