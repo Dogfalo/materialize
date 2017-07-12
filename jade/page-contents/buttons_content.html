@@ -173,14 +173,14 @@
           You can display a loading animation on button. While the animation is displayed, your button will be un-clickable except if you add <code class=" language-markup">.is-clickable</code>.
         </p>
         <h4 class="light">Whole button</h4>
-        <a class="waves-effect waves-light btn-loading">Normal</a>
-        <a class="waves-effect waves-light btn-loading is-clickable">Clickable</a>
-        <a class="waves-effect waves-light btn-loading"><i class="material-icons right">save</i>W. icon</a>
-        <a class="waves-effect waves-light btn-loading-flat">Flat</a>
-        <a class="waves-effect waves-light btn-loading-large">Large</a>
+        <a group="whole" class="waves-effect waves-light btn-loading">Normal</a>
+        <a group="whole" class="waves-effect waves-light btn-loading is-clickable">Clickable</a>
+        <a group="whole" class="waves-effect waves-light btn-loading"><i class="material-icons right">save</i>W. icon</a>
+        <a group="whole" class="waves-effect waves-light btn-loading-flat">Flat</a>
+        <a group="whole" class="waves-effect waves-light btn-loading-large">Large</a>
         <script>
           window.addEventListener("load", function(event) {
-            $('.btn-loading, .btn-loading-flat, .btn-loading-large').on('click', function(){
+            $('.btn-loading[group=whole], .btn-loading-flat[group=whole], .btn-loading-large[group=whole]').on('click', function(){
               $(this).toggleClass('is-loading');
             });
           });
@@ -198,13 +198,14 @@
 &lt;/script>
         </code></pre>
         <h4 class="light">Instead of icon</h4>
-        <a class="waves-effect waves-light btn-loading-icons"><i class="material-icons left">save</i>Normal</a>
-        <a class="waves-effect waves-light btn-loading-icons is-clickable"><i class="material-icons left">save</i>Clickable</a>
-        <a class="waves-effect waves-light btn-loading-flat-icons"><i class="material-icons right">save</i>Flat</a>
-        <a class="waves-effect waves-light btn-loading-large-icons"><i class="material-icons right">save</i>Large</a>
+        <a group="icon" class="waves-effect waves-light btn-loading-icons"><i class="material-icons left">save</i>Normal</a>
+        <a group="icon" class="waves-effect waves-light btn-loading-icons is-clickable"><i class="material-icons left">save</i>Clickable</a>
+        <a group="icon" class="waves-effect waves-light btn-loading-flat-icons"><i class="material-icons right">save</i>Flat</a>
+        <a group="icon" class="waves-effect waves-light btn-loading-large-icons"><i class="material-icons right">save</i>Large</a>
         <script>
           window.addEventListener("load", function(event) {
-            $('.btn-loading-icons, .btn-loading-flat-icons, .btn-loading-large-icons').on('click', function(){
+            // using attr group to avoid conflict
+            $('.btn-loading-icons[group=icon], .btn-loading-flat-icons[group=icon], .btn-loading-large-icons[group=icon]').on('click', function(){
               $(this).toggleClass('is-loading');
             });
           });
@@ -217,6 +218,32 @@
 &lt;script>
   $('.btn-loading-icons, .btn-loading-flat-icons, .btn-loading-large-icons').on('click', function(){
     $(this).toggleClass('is-loading');
+  });
+&lt;/script>
+        </code></pre>
+        <h4 class="light">With overlay</h4>
+        <p>
+          You can also add an overlay by adding <code class=" language-markup">.with-overlay</code>.<br>
+          If you add <code class=" language-markup">.with-overlay</code> buttons dynamically you'll need to initialize it with <code class=" language-markup">$('.btn-loading.with-overlay').overlayLoadingBtn()</code>.
+        </p>
+        <a group="overlay" class="waves-effect waves-light btn-loading with-overlay is-clickable">Clickable</a>
+        <a group="overlay" class="waves-effect waves-light btn-loading-icons with-overlay is-clickable"><i class="material-icons left">cloud</i>Clickable</a>
+        <script>
+          window.addEventListener("load", function(event) {
+            // using attr group to avoid conflict
+            $('.btn-loading[group=overlay].with-overlay, .btn-loading-icons[group=overlay].with-overlay').on('click', function(){
+              $(this).toggleClass('is-loading');
+            });
+          });
+        </script>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn-loading with-overlay is-clickable">Clickable&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading-icons with-overlay is-clickable">&lt;i class="material-icons left">cloud&lt;/i>Clickable&lt;/a>
+&lt;script>
+  window.addEventListener("load", function(event) {
+    $('.btn-loading.with-overlay, .btn-loading-icons.with-overlay').on('click', function(){
+      $(this).toggleClass('is-loading');
+    });
   });
 &lt;/script>
         </code></pre>
