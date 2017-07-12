@@ -460,15 +460,15 @@
           </form>
           <div class="col s12">
             <pre><code class="language-markup">
-  &alt;div class="input-field">
-    &lt;label>Materialize Disabled&lt;/label>
+  &lt;div class="input-field">
     &lt;select disabled>
       &lt;option value="" disabled selected>Choose your option&lt;/option>
       &lt;option value="1">Option 1&lt;/option>
       &lt;option value="2">Option 2&lt;/option>
       &lt;option value="3">Option 3&lt;/option>
     &lt;/select>
-  &alt;/div>
+    &lt;label>Materialize Disabled&lt;/label>
+  &lt;/div>
 
   &lt;label>Browser Disabled&lt;/label>
   &lt;select class="browser-default" disabled>
@@ -732,12 +732,16 @@
         <p>See noUiSlider's official documentation <a href="https://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
         <div id="range-input"></div>
         <p>&nbsp;</p>
+        <pre><code class="language-markup">
+  &lt;div id="test-slider">&lt;/div>
+        </code></pre>
         <pre><code class="language-javascript">
-  var slider = document.getElementById('test5');
+  var slider = document.getElementById('test-slider');
   noUiSlider.create(slider, {
    start: [20, 80],
    connect: true,
    step: 1,
+   orientation: 'horizontal', // 'horizontal' or 'vertical'
    range: {
      'min': 0,
      'max': 100

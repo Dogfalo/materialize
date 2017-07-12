@@ -74,7 +74,7 @@
       var lenAttr = parseInt(object.attr('data-length'));
       var len = object.val().length;
 
-      if (object.val().length === 0 && object[0].validity.badInput === false) {
+      if (object.val().length === 0 && object[0].validity.badInput === false && !object.is(':required')) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
@@ -492,7 +492,7 @@
       }
 
       var multiple = $select.attr('multiple') ? true : false,
-          lastID = $select.data('select-id'); // Tear down structure if Select needs to be rebuilt
+          lastID = $select.attr('data-select-id'); // Tear down structure if Select needs to be rebuilt
 
       if (lastID) {
         $select.parent().find('span.caret').remove();
@@ -504,14 +504,17 @@
 
       // If destroying the select, remove the selelct-id and reset it to it's uninitialized state.
       if(callback === 'destroy') {
-        $select.data('select-id', null).removeClass('initialized');
+        $select.removeAttr('data-select-id').removeClass('initialized');
+        $(window).off('click.select');
         return;
       }
 
       var uniqueID = Materialize.guid();
-      $select.data('select-id', uniqueID);
+      $select.attr('data-select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
+      if ($select.is(':disabled'))
+        wrapper.addClass('disabled');
       var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
           selectChildren = $select.children('option, optgroup'),
           valuesSelected = [],
@@ -597,8 +600,6 @@
       $select.wrap(wrapper);
       // Add Select Display Element
       var dropdownIcon = $('<span class="caret">&#9660;</span>');
-      if ($select.is(':disabled'))
-        dropdownIcon.addClass('disabled');
 
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
@@ -624,6 +625,7 @@
         'focus': function (){
           if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
             $('input.select-dropdown').trigger('close');
+            $(window).off('click.select');
           }
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
@@ -636,6 +638,11 @@
               return $(this).text().toLowerCase() === label.toLowerCase();
             })[0];
             activateOption(options, selectedOption, true);
+
+            $(window).off('click.select').on('click.select', function () {
+              multiple && (optionsHover || $newSelect.trigger('close'));
+              $(window).off('click.select');
+            });
           }
         },
         'click': function (e){
@@ -646,6 +653,7 @@
       $newSelect.on('blur', function() {
         if (!multiple) {
           $(this).trigger('close');
+          $(window).off('click.select');
         }
         options.find('li.selected').removeClass('selected');
       });
@@ -654,12 +662,6 @@
         optionsHover = true;
       }, function () {
         optionsHover = false;
-      });
-
-      $(window).on({
-        'click': function () {
-          multiple && (optionsHover || $newSelect.trigger('close'));
-        }
       });
 
       // Add initial multiple selections.
