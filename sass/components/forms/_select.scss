@@ -35,6 +35,14 @@ select {
     padding: 0;
     display: block;
     user-select:none;
+
+    &.valid {
+      border-bottom: 1px solid $input-success-color;
+    }
+
+    &.invalid {
+      border-bottom: $input-invalid-border;
+    }
   }
 
   span.caret {
