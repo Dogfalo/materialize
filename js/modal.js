@@ -1,187 +1,259 @@
 (function($) {
-  var _stack = 0,
-  _lastID = 0,
-  _generateID = function() {
-    _lastID++;
-    return 'materialize-modal-overlay-' + _lastID;
+  'use strict';
+
+  let _defaults = {
+    opacity: 0.5,
+    inDuration: 350,
+    outDuration: 250,
+    ready: undefined,
+    complete: undefined,
+    dismissible: true,
+    startingTop: '4%',
+    endingTop: '10%'
   };
 
-  var methods = {
-    init : function(options) {
-      var defaults = {
-        opacity: 0.5,
-        inDuration: 350,
-        outDuration: 250,
-        ready: undefined,
-        complete: undefined,
-        dismissible: true,
-        startingTop: '4%',
-        endingTop: '10%'
-      };
+  class Modal {
+    constructor($el, options) {
+      console.log('constructor: ', this, $el);
+      this.$el = $el;
+      this.options = $.extend({}, Modal.defaults, options);
+      this.$el[0].M_Modal = this;
+      this.id = $el.attr('id');
+      this.$overlay = $('<div class="modal-overlay"></div>');
+      this.isOpen = false;
+      Modal._count++;
+      this.$overlay[0].style.zIndex = 1000 + Modal._count * 2;
+      this.$el[0].style.zIndex = 1000 + Modal._count * 2 + 1;
+      this.setupEventHandlers();
+    }
 
-      // Override defaults
-      options = $.extend(defaults, options);
+    static get defaults() {
+      return _defaults;
+    }
 
-      return this.each(function() {
-        var $modal = $(this);
-        var modal_id = $(this).attr("id") || '#' + $(this).data('target');
+    static init($els, options) {
+      let arr = [];
+      $els.each(function() {
+        arr.push(new Modal($(this), options));
+      });
+      return arr;
+    }
 
-        var closeModal = function() {
-          var overlayID = $modal.data('overlay-id');
-          var $overlay = $('#' + overlayID);
-          $modal.removeClass('open');
+    /**
+     * Setup Event Handlers
+     */
+    setupEventHandlers() {
+      this.handleOverlayClickBound = this.handleOverlayClick.bind(this);
+      this.handleModalCloseClickBound = this.handleModalCloseClick.bind(this);
 
-          // Enable scrolling
-          $('body').css({
-            overflow: '',
-            width: ''
-          });
+      document.addEventListener('click', this.handleTriggerClick);
+      this.$overlay[0].addEventListener('click', this.handleOverlayClickBound);
+      this.$el[0].addEventListener('click', this.handleModalCloseClickBound);
+    }
 
-          $modal.find('.modal-close').off('click.close');
-          $(document).off('keyup.modal' + overlayID);
+    /**
+     * Remove Event Handlers
+     */
+    removeEventHandlers() {
+      document.removeEventListener('click', this.handleTriggerClick);
+      this.$overlay[0].removeEventListener('click', this.handleOverlayClickBound);
+      this.$el[0].removeEventListener('click', this.handleModalCloseClickBound);
+    }
 
-          $overlay.velocity( { opacity: 0}, {duration: options.outDuration, queue: false, ease: "easeOutQuart"});
-
-
-          // Define Bottom Sheet animation
-          var exitVelocityOptions = {
-            duration: options.outDuration,
-            queue: false,
-            ease: "easeOutCubic",
-            // Handle modal ready callback
-            complete: function() {
-              $(this).css({display:"none"});
-
-              // Call complete callback
-              if (typeof(options.complete) === "function") {
-                options.complete.call(this, $modal);
-              }
-              $overlay.remove();
-              _stack--;
-            }
-          };
-          if ($modal.hasClass('bottom-sheet')) {
-            $modal.velocity({bottom: "-100%", opacity: 0}, exitVelocityOptions);
-          }
-          else {
-            $modal.velocity(
-              { top: options.startingTop, opacity: 0, scaleX: 0.7},
-              exitVelocityOptions
-            );
-          }
-        };
-
-        var openModal = function($trigger) {
-          var $body = $('body');
-          var oldWidth = $body.innerWidth();
-          $body.css('overflow', 'hidden');
-          $body.width(oldWidth);
-
-          if ($modal.hasClass('open')) {
-            return;
-          }
-
-          var overlayID = _generateID();
-          var $overlay = $('<div class="modal-overlay"></div>');
-          var lStack = (++_stack);
-
-          // Store a reference of the overlay
-          $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
-          $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
-          $modal.addClass('open');
-
-          $("body").append($overlay);
-
-          if (options.dismissible) {
-            $overlay.click(function() {
-              closeModal();
-            });
-            // Return on ESC
-            $(document).on('keyup.modal' + overlayID, function(e) {
-              if (e.keyCode === 27) {   // ESC key
-                closeModal();
-              }
-            });
-          }
-
-          $modal.find(".modal-close").on('click.close', function(e) {
-            closeModal();
-          });
-
-          $overlay.css({ display : "block", opacity : 0 });
-
-          $modal.css({
-            display : "block",
-            opacity: 0
-          });
-
-          $overlay.velocity({opacity: options.opacity}, {duration: options.inDuration, queue: false, ease: "easeOutCubic"});
-          $modal.data('associated-overlay', $overlay[0]);
-
-          // Define Bottom Sheet animation
-          var enterVelocityOptions = {
-            duration: options.inDuration,
-            queue: false,
-            ease: "easeOutCubic",
-            // Handle modal ready callback
-            complete: function() {
-              if (typeof(options.ready) === "function") {
-                options.ready.call(this, $modal, $trigger);
-              }
-            }
-          };
-          if ($modal.hasClass('bottom-sheet')) {
-            $modal.velocity({bottom: "0", opacity: 1}, enterVelocityOptions);
-          }
-          else {
-            $.Velocity.hook($modal, "scaleX", 0.7);
-            $modal.css({ top: options.startingTop });
-            $modal.velocity({top: options.endingTop, opacity: 1, scaleX: '1'}, enterVelocityOptions);
-          }
-
-        };
-
-        // Reset handlers
-        $(document).off('click.modalTrigger', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]');
-        $(this).off('openModal');
-        $(this).off('closeModal');
-
-        // Close Handlers
-        $(document).on('click.modalTrigger', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
-          options.startingTop = ($(this).offset().top - $(window).scrollTop()) /1.15;
-          openModal($(this));
-          e.preventDefault();
-        }); // done set on click
-
-        $(this).on('openModal', function() {
-          var modal_id = $(this).attr("href") || '#' + $(this).data('target');
-          openModal();
-        });
-
-        $(this).on('closeModal', function() {
-          closeModal();
-        });
-      }); // done return
-    },
-    open : function() {
-      if (arguments.length) {
-        methods.init.apply( this, arguments );
+    /**
+     * Handle Trigger Click
+     * @param {Event} e
+     */
+    handleTriggerClick(e) {
+      if (e.target && $(e.target).closest('.modal-trigger').length) {
+        let modalId = e.target.getAttribute('href');
+        if (modalId) {
+          modalId = modalId.slice(1);
+        } else {
+          modalId = e.target.getAttribute('data-target');
+        }
+        document.getElementById(modalId).M_Modal.open();
+        e.preventDefault();
       }
-      $(this).trigger('openModal');
-    },
-    close : function() {
-      $(this).trigger('closeModal');
+    }
+
+    /**
+     * Handle Overlay Click
+     */
+    handleOverlayClick() {
+      if (this.options.dismissible) {
+        this.close();
+      }
+    }
+
+    /**
+     * Handle Modal Close Click
+     * @param {Event} e
+     */
+    handleModalCloseClick(e) {
+      if (e.target && e.target.classList.contains('modal-close')) {
+        this.close();
+      }
+    }
+
+    /**
+     * Handle Keydown
+     * @param {Event} e
+     */
+    handleKeydown(e) {
+      // ESC key
+      if (e.keyCode === 27 && this.options.dismissible) {
+        this.close();
+      }
+    }
+
+    /**
+     * Get Instance
+     */
+    getInstance() {
+      return this;
+    }
+
+    /**
+     * Open Modal
+     * @param {jQuery} [$trigger]
+     */
+    open($trigger) {
+      if (this.isOpen) {
+        return;
+      }
+
+      this.isOpen = true;
+      let body = document.body;
+      body.style.overflow = 'hidden';
+      this.$el[0].classList.add('open');
+      body.appendChild(this.$overlay[0]);
+
+      if (this.options.dismissible) {
+        this.handleKeydownBound = this.handleKeydown.bind(this);
+        document.addEventListener('keydown', this.handleKeydownBound);
+      }
+
+      // Set initial styles
+      $.extend(this.$el[0].style, {
+        display: 'block',
+        opacity: 0
+      });
+      $.extend(this.$overlay[0].style, {
+        display: 'block',
+        opacity: 0
+      });
+
+      // Animate overlay
+      Vel(
+        this.$overlay[0],
+        {opacity: this.options.opacity},
+        {duration: options.inDuration, queue: false, ease: "easeOutCubic"});
+
+
+      // Animate modal
+      let enterVelocityOptions = {
+        duration: this.options.inDuration,
+        queue: false,
+        ease: "easeOutCubic",
+        // Handle modal ready callback
+        complete: () => {
+          if (typeof(this.options.ready) === "function") {
+            this.options.ready.call(this, this.$el, $trigger);
+          }
+        }
+      }
+
+      // Bottom sheet animation
+      if (this.$el[0].classList.contains('bottom-sheet')) {
+        Vel(
+          this.$el[0],
+          {bottom: "0", opacity: 1},
+          enterVelocityOptions);
+
+      } else {
+        Vel.hook(this.$el[0], "scaleX", 0.7);
+        this.$el[0].style.top = this.options.startingTop;
+        Vel(
+          this.$el[0],
+          {top: this.options.endingTop, opacity: 1, scaleX: '1'},
+          enterVelocityOptions);
+      }
+    }
+
+    /**
+     * Close Modal
+     */
+    close() {
+      if (!this.isOpen) {
+        return;
+      }
+
+      this.isOpen = false;
+      this.$el[0].classList.remove('open');
+      document.body.style.overflow = null;
+
+      if (this.options.dismissible) {
+        document.removeEventListener('keydown', this.handleKeydownBound);
+      }
+
+      // Animate overlay
+      Vel(
+        this.$overlay[0],
+        { opacity: 0},
+        {duration: this.options.outDuration, queue: false, ease: "easeOutQuart"});
+
+      // Animate modal
+      var exitVelocityOptions = {
+        duration: this.options.outDuration,
+        queue: false,
+        ease: "easeOutCubic",
+        // Handle modal ready callback
+        complete: () => {
+          this.$el[0].style.display = 'none';
+
+          // Call complete callback
+          if (typeof(this.options.complete) === "function") {
+            this.options.complete.call(this, this.$el);
+          }
+          this.$overlay[0].remove();
+        }
+      };
+      // Bottom sheet animation
+      if (this.$el[0].classList.contains('bottom-sheet')) {
+        Vel(
+          this.$el[0],
+          {bottom: '-100%', opacity: 0},
+          exitVelocityOptions);
+
+      } else {
+        Vel(
+          this.$el[0],
+          {top: this.options.startingTop, opacity: 0, scaleX: 0.7},
+          exitVelocityOptions);
+      }
     }
   };
+
+  // Static variables
+  Modal._count = 0;
+
+  window.Materialize.Modal = Modal;
 
   $.fn.modal = function(methodOrOptions) {
-    if ( methods[methodOrOptions] ) {
-      return methods[ methodOrOptions ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+
+    if ( Modal.prototype[methodOrOptions] ) {
+      return this.each(function() {
+        this[0].M_Modal[methodOrOptions]();
+      });
+
     } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
       // Default to "init"
-      return methods.init.apply( this, arguments );
+      return Modal.init(this, arguments[0]);
+
     } else {
-      $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.modal' );
+      $.error(`Method ${methodOrOptions} does not exist on jQuery.sideNav`);
     }
   };
+
 })(jQuery);
