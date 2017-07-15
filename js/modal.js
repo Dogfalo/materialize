@@ -19,6 +19,7 @@
       this.options = $.extend({}, Modal.defaults, options);
       this.$el[0].M_Modal = this;
       this.id = $el.attr('id');
+      this.openingTrigger = undefined;
       this.$overlay = $('<div class="modal-overlay"></div>');
       this.isOpen = false;
       Modal._count++;
@@ -72,14 +73,15 @@
      * @param {Event} e
      */
     handleTriggerClick(e) {
-      if (e.target && $(e.target).closest('.modal-trigger').length) {
+      let $trigger =  $(e.target).closest('.modal-trigger');
+      if (e.target && $trigger.length) {
         let modalId = e.target.getAttribute('href');
         if (modalId) {
           modalId = modalId.slice(1);
         } else {
           modalId = e.target.getAttribute('data-target');
         }
-        document.getElementById(modalId).M_Modal.open();
+        document.getElementById(modalId).M_Modal.open($trigger);
         e.preventDefault();
       }
     }
@@ -132,7 +134,7 @@
       Vel(
         this.$overlay[0],
         {opacity: this.options.opacity},
-        {duration: options.inDuration, queue: false, ease: "easeOutCubic"}
+        {duration: options.inDuration, queue: false, ease: 'easeOutCubic'}
       );
 
 
@@ -140,11 +142,11 @@
       let enterVelocityOptions = {
         duration: this.options.inDuration,
         queue: false,
-        ease: "easeOutCubic",
+        ease: 'easeOutCubic',
         // Handle modal ready callback
         complete: () => {
-          if (typeof(this.options.ready) === "function") {
-            this.options.ready.call(this, this.$el, $trigger);
+          if (typeof(this.options.ready) === 'function') {
+            this.options.ready.call(this, this.$el, this.openingTrigger);
           }
         }
       };
@@ -153,16 +155,16 @@
       if (this.$el[0].classList.contains('bottom-sheet')) {
         Vel(
           this.$el[0],
-          {bottom: "0", opacity: 1},
+          {bottom: 0, opacity: 1},
           enterVelocityOptions);
 
       // Normal modal animation
       } else {
-        Vel.hook(this.$el[0], "scaleX", 0.7);
+        Vel.hook(this.$el[0], 'scaleX', 0.7);
         this.$el[0].style.top = this.options.startingTop;
         Vel(
           this.$el[0],
-          {top: this.options.endingTop, opacity: 1, scaleX: '1'},
+          {top: this.options.endingTop, opacity: 1, scaleX: 1},
           enterVelocityOptions
         );
       }
@@ -176,19 +178,19 @@
       Vel(
         this.$overlay[0],
         { opacity: 0},
-        {duration: this.options.outDuration, queue: false, ease: "easeOutQuart"}
+        {duration: this.options.outDuration, queue: false, ease: 'easeOutQuart'}
       );
 
       // Define modal animation options
       var exitVelocityOptions = {
         duration: this.options.outDuration,
         queue: false,
-        ease: "easeOutCubic",
+        ease: 'easeOutCubic',
         // Handle modal ready callback
         complete: () => {
           this.$el[0].style.display = 'none';
           // Call complete callback
-          if (typeof(this.options.complete) === "function") {
+          if (typeof(this.options.complete) === 'function') {
             this.options.complete.call(this, this.$el);
           }
           this.$overlay[0].remove();
@@ -227,6 +229,10 @@
       body.style.overflow = 'hidden';
       this.$el[0].classList.add('open');
       body.appendChild(this.$overlay[0]);
+
+      // Set opening trigger, undefined indicates modal was opened by javascript
+      this.openingTrigger = !!$trigger ? $trigger : undefined;
+
 
       if (this.options.dismissible) {
         this.handleKeydownBound = this.handleKeydown.bind(this);
@@ -270,7 +276,6 @@
 
     // Initialize plugin if options or no argument is passed in
     } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      // Default to "init"
       return Modal.init(this, arguments[0]);
 
     // Return error if an unrecognized  method name is passed in
