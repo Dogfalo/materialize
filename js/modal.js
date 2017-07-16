@@ -3,7 +3,7 @@
 
   let _defaults = {
     opacity: 0.5,
-    inDuration: 350,
+    inDuration: 250,
     outDuration: 250,
     ready: undefined,
     complete: undefined,
@@ -12,16 +12,52 @@
     endingTop: '10%'
   };
 
+
+  /**
+   * @class
+   *
+   */
   class Modal {
+    /**
+     * Construct Modal instance and set up overlay
+     * @constructor
+     * @param {jQuery} $el
+     * @param {Object} options
+     */
     constructor($el, options) {
       console.log('constructor: ', this, $el);
+
+      /**
+       * The jQuery element
+       * @type {jQuery}
+       */
       this.$el = $el;
+
+      /**
+       * Options for the modal
+       * @member Modal#options
+       * @prop {Number} [opacity=0.5] - Opacity of the modal overlay
+       * @prop {Number} [inDuration=250] - Length in ms of enter transition
+       * @prop {Number} [outDuration=250] - Length in ms of exit transition
+       * @prop {Function} ready - Callback function called when modal is finished entering
+       * @prop {Function} complete - Callback function called when modal is finished exiting
+       * @prop {Boolean} [dismissible=true] - Allow modal to be dismissed by keyboard or overlay click
+       * @prop {String} [startingTop='4%'] - startingTop
+       * @prop {String} [endingTop='10%'] - endingTop
+       */
       this.options = $.extend({}, Modal.defaults, options);
+
+      /**
+       * Describes open/close state of modal
+       * @type {Boolean}
+       */
+      this.isOpen = false;
+
       this.$el[0].M_Modal = this;
       this.id = $el.attr('id');
       this.openingTrigger = undefined;
       this.$overlay = $('<div class="modal-overlay"></div>');
-      this.isOpen = false;
+
       Modal._count++;
       this.$overlay[0].style.zIndex = 1000 + Modal._count * 2;
       this.$el[0].style.zIndex = 1000 + Modal._count * 2 + 1;
@@ -262,7 +298,10 @@
     }
   }
 
-  // Static variables
+  /**
+   * @static
+   * @memberof Modal
+   */
   Modal._count = 0;
 
   window.Materialize.Modal = Modal;
