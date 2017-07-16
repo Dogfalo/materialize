@@ -500,7 +500,9 @@ td, th{
       padding-left: 72px;
       position: relative;
 
-      .circle {
+      // Don't style circles inside preloader classes.
+      &:not(.circle-clipper) > .circle,
+      :not(.circle-clipper) > .circle {
         position: absolute;
         width: 42px;
         height: 42px;
