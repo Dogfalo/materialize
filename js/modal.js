@@ -58,9 +58,10 @@
       this.openingTrigger = undefined;
       this.$overlay = $('<div class="modal-overlay"></div>');
 
+      Modal._increment++;
       Modal._count++;
-      this.$overlay[0].style.zIndex = 1000 + Modal._count * 2;
-      this.$el[0].style.zIndex = 1000 + Modal._count * 2 + 1;
+      this.$overlay[0].style.zIndex = 1000 + Modal._increment * 2;
+      this.$el[0].style.zIndex = 1000 + Modal._increment * 2 + 1;
       this.setupEventHandlers();
     }
 
@@ -84,13 +85,28 @@
     }
 
     /**
+     * Teardown component
+     */
+    destroy() {
+      this.removeEventHandlers();
+      this.$el[0].removeAttribute('style')
+      if (!!this.$overlay[0].parentNode) {
+        this.$overlay[0].parentNode.removeChild(this.$overlay[0]);
+      }
+      this.$el[0].M_Modal = undefined;
+      Modal._count--;
+    }
+
+    /**
      * Setup Event Handlers
      */
     setupEventHandlers() {
       this.handleOverlayClickBound = this.handleOverlayClick.bind(this);
       this.handleModalCloseClickBound = this.handleModalCloseClick.bind(this);
 
-      document.addEventListener('click', this.handleTriggerClick);
+      if (Modal._count === 1) {
+        document.addEventListener('click', this.handleTriggerClick);
+      }
       this.$overlay[0].addEventListener('click', this.handleOverlayClickBound);
       this.$el[0].addEventListener('click', this.handleModalCloseClickBound);
     }
@@ -99,7 +115,9 @@
      * Remove Event Handlers
      */
     removeEventHandlers() {
-      document.removeEventListener('click', this.handleTriggerClick);
+      if (Modal._count === 0) {
+        document.removeEventListener('click', this.handleTriggerClick);
+      }
       this.$overlay[0].removeEventListener('click', this.handleOverlayClickBound);
       this.$el[0].removeEventListener('click', this.handleModalCloseClickBound);
     }
@@ -117,7 +135,10 @@
         } else {
           modalId = e.target.getAttribute('data-target');
         }
-        document.getElementById(modalId).M_Modal.open($trigger);
+        let modalInstance = document.getElementById(modalId).M_Modal;
+        if (modalInstance) {
+          modalInstance.open($trigger);
+        }
         e.preventDefault();
       }
     }
@@ -297,6 +318,12 @@
       this.animateOut();
     }
   }
+
+  /**
+   * @static
+   * @memberof Modal
+   */
+  Modal._increment = 0;
 
   /**
    * @static
