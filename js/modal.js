@@ -27,6 +27,11 @@
     constructor($el, options) {
       console.log('constructor: ', this, $el);
 
+      // If exists, destroy and reinitialize
+      if (!!$el[0].M_Modal) {
+        $el[0].M_Modal.destroy();
+      }
+
       /**
        * The jQuery element
        * @type {jQuery}
@@ -191,7 +196,7 @@
       Vel(
         this.$overlay[0],
         {opacity: this.options.opacity},
-        {duration: options.inDuration, queue: false, ease: 'easeOutCubic'}
+        {duration: this.options.inDuration, queue: false, ease: 'easeOutCubic'}
       );
 
 
