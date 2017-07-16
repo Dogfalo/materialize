@@ -15,17 +15,7 @@
   ],
   "main": [
     "dist/js/materialize.js",
-    "dist/css/materialize.css",
-    "dist/fonts/roboto/Roboto-Bold.woff",
-    "dist/fonts/roboto/Roboto-Bold.woff2",
-    "dist/fonts/roboto/Roboto-Light.woff",
-    "dist/fonts/roboto/Roboto-Light.woff2",
-    "dist/fonts/roboto/Roboto-Medium.woff",
-    "dist/fonts/roboto/Roboto-Medium.woff2",
-    "dist/fonts/roboto/Roboto-Regular.woff",
-    "dist/fonts/roboto/Roboto-Regular.woff2",
-    "dist/fonts/roboto/Roboto-Thin.woff",
-    "dist/fonts/roboto/Roboto-Thin.woff2"
+    "dist/css/materialize.css"
   ],
   "ignore": [
     "jade/",
