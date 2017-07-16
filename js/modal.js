@@ -302,6 +302,8 @@
       }
 
       this.animateIn();
+
+      return this;
     }
 
     /**
@@ -321,6 +323,8 @@
       }
 
       this.animateOut();
+
+      return this;
     }
   }
 
@@ -341,13 +345,21 @@
   $.fn.modal = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
     if (Modal.prototype[methodOrOptions]) {
-      return this.each(function() {
-        this[0].M_Modal[methodOrOptions]();
-      });
+      // Getter methods
+      if (methodOrOptions.slice(0,3) === 'get') {
+        return this.first()[0].M_Modal[methodOrOptions]();
+
+      // Void methods
+      } else {
+        return this.each(function() {
+          this.M_Modal[methodOrOptions]();
+        });
+      }
 
     // Initialize plugin if options or no argument is passed in
     } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      return Modal.init(this, arguments[0]);
+      Modal.init(this, arguments[0]);
+      return this;
 
     // Return error if an unrecognized  method name is passed in
     } else {
