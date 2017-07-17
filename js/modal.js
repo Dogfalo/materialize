@@ -277,44 +277,6 @@
       }
     }
 
-    _preventDefault(e) {
-      e.preventDefault();
-    }
-
-    _preventWheelDefault(e) {
-      let modalEl = this;
-      let scrolledToBottom = modalEl.offsetHeight + modalEl.scrollTop >= modalEl.scrollHeight;
-      let scrolledToTop = modalEl.scrollTop === 0;
-      if ((scrolledToTop && e.deltaY < 0) || (scrolledToBottom && e.deltaY > 0)) {
-        e.preventDefault();
-      }
-    }
-
-    preventBodyScrolling() {
-      let modalEl = this.$el[0];
-      // modalEl.setAttribute('tabindex', 0);
-      // this.$el[0].focus();
-
-      this.$overlay[0].addEventListener('wheel', this._preventDefault);
-      this.$overlay[0].addEventListener('touchmove', this._preventDefault);
-      modalEl.addEventListener('wheel', this._preventWheelDefault);
-
-      // modalEl.addEventListener("keydown", function(e) {
-      //   let scrolledToBottom = modalEl.offsetHeight + modalEl.scrollTop >= modalEl.scrollHeight;
-      //   let scrolledToTop = modalEl.scrollTop === 0;
-      //   if (e.target === modalEl && [37, 39].indexOf(e.keyCode) > -1 ||
-      //       (e.keyCode === 38 && scrolledToTop) ||
-      //       ([32, 40].indexOf(e.keyCode) > -1 && scrolledToBottom)) {
-      //     e.preventDefault();
-      //   }
-      // });
-    }
-
-    enableBodyScrolling() {
-      this.$overlay[0].removeEventListener('wheel', this._preventDefault);
-      this.$overlay[0].removeEventListener('touchmove', this._preventDefault);
-      this.$el[0].removeEventListener('wheel', this._preventWheelDefault);
-    }
 
     /**
      * Open Modal
@@ -327,6 +289,7 @@
 
       this.isOpen = true;
       let body = document.body;
+      body.style.overflow = 'hidden';
       this.$el[0].classList.add('open');
       body.appendChild(this.$overlay[0]);
 
@@ -340,7 +303,6 @@
       }
 
       this.animateIn();
-      this.preventBodyScrolling();
 
       return this;
     }
@@ -362,7 +324,6 @@
       }
 
       this.animateOut();
-      this.enableBodyScrolling();
 
       return this;
     }
