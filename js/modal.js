@@ -13,6 +13,7 @@
         inDuration: 350,
         outDuration: 250,
         ready: undefined,
+        beforeComplete: undefined,
         complete: undefined,
         dismissible: true,
         startingTop: '4%',
@@ -27,6 +28,9 @@
         var modal_id = $(this).attr("id") || '#' + $(this).data('target');
 
         var closeModal = function() {
+		if (typeof(options.beforeComplete) === "function") {
+              options.beforeComplete.call(this, $modal);
+          }
           var overlayID = $modal.data('overlay-id');
           var $overlay = $('#' + overlayID);
           $modal.removeClass('open');
