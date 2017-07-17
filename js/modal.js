@@ -25,7 +25,6 @@
      * @param {Object} options
      */
     constructor($el, options) {
-      console.log('constructor: ', this, $el);
 
       // If exists, destroy and reinitialize
       if (!!$el[0].M_Modal) {
