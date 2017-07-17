@@ -1,0 +1,166 @@
+/**
+ * ============
+ *     List
+ * ============
+ * General Styles
+ */
+
+.list.one-line li {min-height: 48px;}
+.list.two-lines li {min-height: 72px;}
+.list.three-lines li {min-height: 88px;}
+
+/**
+ * Typography
+ */
+.list {
+  .primary {
+    font-size: 16px;
+    color: $main-text-color;
+  }
+
+  .secondary {
+    font-size: 13px;
+    color: $secondary-text-color;
+  }
+
+  .tertiary {
+    font-size: 11px;
+    color: $tertiary-text-color;
+  }
+}
+
+/**
+ * Positioning
+ */
+
+// Model List
+%model-list {
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+  }
+
+  .right {
+    right: 16px;
+  }
+
+  .left {
+    left: 16px;
+  }
+
+  .right,
+  .left {
+    position: absolute;
+    i {margin-top: 2px;} // Slight adjustment to make icons be centered.
+  }
+}
+
+// One Line List
+.list.one-line {
+  @extend %model-list;
+
+  &.with-left li,
+  &.with-both li {
+    .primary,
+    .secondary {
+      position: absolute;
+      left: 72px;
+    }
+  }
+}
+
+// Two Line List
+.list.two-lines {
+  @extend %model-list;
+
+  &.with-right li,
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 16px;
+  }
+
+  &.with-left li,
+  &.with-both li {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 72px;
+  }
+}
+
+// Three Line list
+.list.three-lines {
+  @extend %model-list;
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 16px;
+  }
+
+  &.with-left li,
+  &.with-both li {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 72px;
+  }
+
+  .right.align-top {
+    top: 8px;
+  }
+}
+
+/**
+ * Images
+ */
+.list {
+
+  &.one-line img {
+    height: 36px;
+    width: 36px;
+  }
+
+  &.two-lines img {
+    height: 46px;
+    width: 46px;
+  }
+
+  &.three-lines img {
+    height: 48px;
+    width: 48px;
+  }
+
+  img {
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+}
+
+/**
+ * Forms
+ */
+.list {
+  li label {
+    margin-top: 6px;
+  }
+
+  li {
+    .switch {
+      margin-top: -5px;
+    }
+
+    .left .switch {
+      margin-left: -16px;
+    }
+
+    .right .switch {
+      margin-right: -16px;
+    }
+  }
+}
