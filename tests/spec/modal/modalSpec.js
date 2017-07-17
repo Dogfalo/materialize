@@ -16,12 +16,7 @@ describe( 'Modal:', function() {
     it('Should open and close correctly', function(done) {
       modal1.modal();
 
-      var evt = new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true,
-        view: window
-      });
-      trigger1[0].dispatchEvent(evt);
+      click(trigger1[0]);
 
       setTimeout(function() {
         // Check overlay is attached
@@ -29,7 +24,7 @@ describe( 'Modal:', function() {
         var overlayInDOM = $.contains(document, overlay[0]);
         expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
-        overlay[0].dispatchEvent(evt);
+        click(overlay[0]);
         setTimeout(function() {
           var overlayInDOM = $.contains(document, overlay[0]);
           expect(overlayInDOM).toEqual(false, 'Overlay should be removed on close');
