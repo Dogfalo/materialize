@@ -32,7 +32,7 @@
           $modal.removeClass('open');
 
           // Enable scrolling
-          $('body').css({
+          $('body, html').css({
             overflow: '',
             width: ''
           });
@@ -72,10 +72,10 @@
         };
 
         var openModal = function($trigger) {
-          var $body = $('body');
+          var $body = $('body'),
+              $html = $('html');
           var oldWidth = $body.innerWidth();
-          $body.css('overflow', 'hidden');
-          $body.width(oldWidth);
+          $body.width(oldWidth).add($html).css('overflow', 'hidden');
 
           if ($modal.hasClass('open')) {
             return;
@@ -90,7 +90,7 @@
           $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
           $modal.addClass('open');
 
-          $("body").append($overlay);
+          $body.append($overlay);
 
           if (options.dismissible) {
             $overlay.click(function() {
