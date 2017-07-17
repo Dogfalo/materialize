@@ -90,7 +90,8 @@
           $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
           $modal.addClass('open');
 
-          $("body").append($overlay);
+          /*$("body").append($overlay);*/
+	  $modal.parent().append($overlay);
 
           if (options.dismissible) {
             $overlay.click(function() {
