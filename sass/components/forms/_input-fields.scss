@@ -174,7 +174,8 @@ textarea.materialize-textarea {
     pointer-events: none;
 
     &:not(.label-icon).active {
-      transform: translateY(-26px) scale(.8);
+      transform: translateY(-14px) scale(.8);
+      transform-origin: 0 0;
     }
   }
 
