@@ -347,8 +347,7 @@
 		ampmclickable: true,  // set am/pm button on itself
 		darktheme: false,			 // set to dark theme
 		twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
-		vibrate: true,          // vibrate the device when dragging clock hand
-    container: 'body'   //container
+		vibrate: true          // vibrate the device when dragging clock hand
 	};
 
 	// Show or hide popover
@@ -410,8 +409,12 @@
 		this.spanHours.html(this.hours);
 		this.spanMinutes.html(leadingZero(this.minutes));
 		if (!this.isAppended) {
-			// Append popover to body
-			this.popover.insertAfter(this.options.container);
+			// Append popover to input by default
+      if(this.options.hasOwnProperty('container'))
+        this.popover.appendTo(this.options.container);
+      else
+        this.popover.insertAfter(this.input);
+
 			if (this.options.twelvehour) {
 				if (this.amOrPm === 'PM'){
 					this.spanAmPm.children('#click-pm').addClass("text-primary");
