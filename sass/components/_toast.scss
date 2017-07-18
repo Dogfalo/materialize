@@ -57,11 +57,4 @@
     width:100%;
     border-radius: 0;
   }
-  @media #{$medium-only} {
-    float: left;
-  }
-  @media #{$large-and-up} {
-    float: right;
-  }
-
 }

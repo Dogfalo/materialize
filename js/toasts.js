@@ -26,12 +26,12 @@
       this.panning = false;
       this.timeRemaining = this.options.displayLength;
 
-      if (Toast._count === 0) {
+      if (Toast._toasts.length === 0) {
         Toast._createContainer();
       }
 
       // Create new toast
-      Toast._count++;
+      Toast._toasts.push(this);
       let toastElement = this.createToast();
       toastElement.M_Toast = this;
       this.el = toastElement;
@@ -122,6 +122,10 @@
       }
     }
 
+    /**
+     * Get x position of mouse or touch event
+     * @param {Event} e
+     */
     static _xPos(e) {
       if (e.targetTouches && (e.targetTouches.length >= 1)) {
         return e.targetTouches[0].clientX;
@@ -130,14 +134,24 @@
       return e.clientX;
     }
 
+    /**
+     * Remove all toasts
+     */
+    static removeAll() {
+      for(let toastIndex in Toast._toasts) {
+        Toast._toasts[toastIndex].remove();
+      }
+    }
+
     createToast() {
       let toast = document.createElement('div');
       toast.classList.add('toast');
 
       // Add custom classes onto toast
       if (this.options.className) {
-        var classes = this.options.className.split(' ');
-        for (var i = 0, count = classes.length; i < count; i++) {
+        let classes = this.options.className.split(' ');
+        let i, count;
+        for (i = 0, count = classes.length; i < count; i++) {
           toast.classList.add(classes[i]);
         }
       }
@@ -195,7 +209,7 @@
       let activationDistance =
           this.el.offsetWidth * this.options.activationPercent;
 
-      if(toast.wasSwiped) {
+      if(this.wasSwiped) {
         this.el.style.transition = 'transform .05s, opacity .05s';
         this.el.style.transform = `translateX(${activationDistance}px)`;
         this.el.style.opacity = 0;
@@ -215,8 +229,8 @@
             }
             // Remove toast from DOM
             this.el.parentNode.removeChild(this.el);
-            Toast._count--;
-            if (Toast._count === 0) {
+            Toast._toasts.splice(Toast._toasts.indexOf(this), 1);
+            if (Toast._toasts.length === 0) {
               Toast._removeContainer();
             }
           }
@@ -229,7 +243,7 @@
    * @static
    * @memberof Toast
    */
-  Toast._count = 0;
+  Toast._toasts = [];
 
   /**
    * @static

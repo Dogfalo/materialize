@@ -40,6 +40,22 @@
         <pre><code class="language-javascript">
   Materialize.toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
         </code></pre>
+
+        <h4>Dismiss a Toast Programatically</h4>
+        <p>To remove a specific toast using JavaScript, access the <code class="language-javascript">M_Toast</code> toast HTML element and call the remove function</p>
+
+        <pre><code class="language-javascript">
+  // Get toast DOM Element, get instance, then call remove function
+  var toastElement = $('.toast').first()[0];
+  var toastInstance = toastElement.M_Toast;
+  toastInstance.remove();
+        </code></pre>
+
+        <h4>Dismiss all Toasts</h4>
+        <pre><code class="language-javascript">
+  Materialize.Toast.removeAll();
+        </code></pre>
+
       </div>
 
 
