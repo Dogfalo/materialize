@@ -1,6 +1,14 @@
 (function() {
   'use strict';
-  // Materialize.toast = function (message, displayLength, className, completeCallback) {
+
+  let _defaults = {
+    displayLength: Infinity,
+    inDuration: 300,
+    outDuration: 375,
+    className: undefined,
+    completeCallback: undefined,
+    activationPercent: 0.8
+  };
 
   class Toast {
     constructor(message, displayLength, className, completeCallback) {
@@ -8,15 +16,15 @@
         return;
       }
 
-      this.message = message;
       this.options = {
         displayLength: displayLength,
-        inDuration: 300,
-        outDuration: 375,
         className: className,
-        completeCallback: completeCallback,
-        activationPercent: 0.8
+        completeCallback: completeCallback
       };
+      this.options = $.extend({}, Toast.defaults, this.options);
+
+      this.message = message;
+      this.timeRemaining = this.options.displayLength;
 
       if (Toast._count === 0) {
         Toast.createContainer();
@@ -26,7 +34,11 @@
       let toastElement = this.createToast();
       toastElement.M_Toast = this;
       this.el = toastElement;
+      this.setTimer();
+    }
 
+    static get defaults() {
+      return _defaults;
     }
 
     static createContainer() {
@@ -132,19 +144,53 @@
       return toast;
     }
 
+    setTimer() {
+      if (this.timeRemaining !== Infinity)  {
+        this.counterInterval = setInterval(() => {
+          // If toast is not being dragged, decrease its time remaining
+          if (!this.el.classList.contains('panning')) {
+            this.timeRemaining -= 20;
+          }
+
+          if (this.timeRemaining <= 0) {
+            // Animate toast out
+            this.remove();
+
+          }
+        }, 20);
+      }
+    }
+
     remove() {
       let activationDistance =
           this.el.offsetWidth * this.options.activationPercent;
 
+
+
+      window.clearInterval(this.counterInterval);
       this.el.style.transition = 'transform .05s, opacity .05s';
       this.el.style.transform = `translateX(${activationDistance}px)`;
       this.el.style.opacity = 0;
-      this.el.parentNode.removeChild(this.el);
 
-      Toast._count--;
-      if (Toast._count === 0) {
-        Toast._container.parentNode.removeChild(Toast._container);
-      }
+      Vel(this.el, {opacity: 0, marginTop: '-40px'},
+          {duration:9000,
+            easing: 'easeOutExpo',
+            queue: false,
+            complete: () => {
+              console.log(this);
+              // Call the optional callback
+              if(typeof(this.options.completeCallback) === 'function')
+                this.options.completeCallback();
+              // Remove toast after it times out
+              this.el.parentNode.removeChild(this.el);
+              Toast._count--;
+              if (Toast._count === 0) {
+                Toast._container.parentNode.removeChild(Toast._container);
+              }
+            }
+          });
+
+
     }
   }
 
