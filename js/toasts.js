@@ -24,16 +24,19 @@
       this.options = $.extend({}, Toast.defaults, this.options);
 
       this.message = message;
+      this.panning = false;
       this.timeRemaining = this.options.displayLength;
 
       if (Toast._count === 0) {
         Toast.createContainer();
       }
 
+      // Create new toast
       Toast._count++;
       let toastElement = this.createToast();
       toastElement.M_Toast = this;
       this.el = toastElement;
+      this._animateIn();
       this.setTimer();
     }
 
@@ -50,6 +53,10 @@
       container.addEventListener('touchmove', Toast._onDragMove);
       container.addEventListener('touchend', Toast._onDragEnd);
 
+      container.addEventListener('mousedown', Toast._onDragStart);
+      container.addEventListener('mousemove', Toast._onDragMove);
+      container.addEventListener('mouseup', Toast._onDragEnd);
+
       document.body.appendChild(container);
       Toast._container = container;
     }
@@ -57,6 +64,7 @@
     static _onDragStart(e) {
       if (e.target && e.target.classList.contains('toast')) {
         let toast = e.target.M_Toast;
+        toast.panning = true;
         e.target.style.transition = null;
         toast.startingXPos = Toast._xPos(e);
         toast.time = Date.now();
@@ -65,7 +73,7 @@
     }
 
     static _onDragMove(e) {
-      if (e.target && e.target.classList.contains('toast')) {
+      if (e.target && e.target.classList.contains('toast') && e.target.M_Toast.panning) {
         let toast = e.target.M_Toast;
         toast.deltaX = Math.abs(toast.xPos - Toast._xPos(e));
         toast.xPos = Toast._xPos(e);
@@ -83,12 +91,14 @@
     static _onDragEnd(e) {
       if (e.target && e.target.classList.contains('toast')) {
         let toast = e.target.M_Toast;
+        toast.panning = false;
         let totalDeltaX = toast.xPos - toast.startingXPos;
         let activationDistance =
             e.target.offsetWidth * toast.options.activationPercent;
         let shouldBeDismissed = Math.abs(totalDeltaX) > activationDistance ||
             toast.velocityX > 1;
         if (shouldBeDismissed) {
+          toast.wasSwiped = true;
           toast.remove();
 
         } else {
@@ -111,7 +121,6 @@
       let toast = document.createElement('div');
       toast.classList.add('toast');
 
-
       // Add custom classes onto toast
       if (this.options.className) {
         var classes = className.split(' ');
@@ -121,11 +130,11 @@
       }
 
       // Set content
-      if ( typeof HTMLElement === "object" ?
+      if ( typeof HTMLElement === 'object' ?
            this.message instanceof HTMLElement :
-           this.message && typeof this.message === "object" &&
+           this.message && typeof this.message === 'object' &&
            this.message !== null && this.message.nodeType === 1 &&
-           typeof this.message.nodeName==="string"
+           typeof this.message.nodeName==='string'
          ) {
         toast.appendChild(this.message);
 
@@ -140,57 +149,66 @@
 
       // Append toast
       Toast._container.appendChild(toast);
-
       return toast;
+    }
+
+    _animateIn() {
+      // Animate toast in
+      Vel(this.el, {top: '-35px',  opacity: 1 }, {
+        duration: 300,
+        easing: 'easeOutCubic',
+        queue: false
+      });
     }
 
     setTimer() {
       if (this.timeRemaining !== Infinity)  {
         this.counterInterval = setInterval(() => {
           // If toast is not being dragged, decrease its time remaining
-          if (!this.el.classList.contains('panning')) {
+          if (!this.panning) {
             this.timeRemaining -= 20;
           }
 
+          // Animate toast out
           if (this.timeRemaining <= 0) {
-            // Animate toast out
             this.remove();
-
           }
         }, 20);
       }
     }
 
     remove() {
+      window.clearInterval(this.counterInterval);
       let activationDistance =
           this.el.offsetWidth * this.options.activationPercent;
 
+      if(toast.wasSwiped) {
+        this.el.style.transition = 'transform .05s, opacity .05s';
+        this.el.style.transform = `translateX(${activationDistance}px)`;
+        this.el.style.opacity = 0;
+      }
 
-
-      window.clearInterval(this.counterInterval);
-      this.el.style.transition = 'transform .05s, opacity .05s';
-      this.el.style.transform = `translateX(${activationDistance}px)`;
-      this.el.style.opacity = 0;
-
-      Vel(this.el, {opacity: 0, marginTop: '-40px'},
-          {duration:9000,
-            easing: 'easeOutExpo',
-            queue: false,
-            complete: () => {
-              console.log(this);
-              // Call the optional callback
-              if(typeof(this.options.completeCallback) === 'function')
-                this.options.completeCallback();
-              // Remove toast after it times out
-              this.el.parentNode.removeChild(this.el);
-              Toast._count--;
-              if (Toast._count === 0) {
-                Toast._container.parentNode.removeChild(Toast._container);
-              }
+      Vel(
+        this.el,
+        {opacity: 0, marginTop: '-40px'},
+        {
+          duration: this.options.outDuration,
+          easing: 'easeOutExpo',
+          queue: false,
+          complete: () => {
+            // Call the optional callback
+            if(typeof(this.options.completeCallback) === 'function') {
+              this.options.completeCallback();
             }
-          });
-
-
+            // Remove toast from DOM
+            this.el.parentNode.removeChild(this.el);
+            Toast._count--;
+            if (Toast._count === 0) {
+              Toast._container.parentNode.removeChild(Toast._container);
+            }
+          }
+        }
+      );
     }
   }
 
@@ -199,7 +217,6 @@
    * @memberof Toast
    */
   Toast._count = 0;
-
 
   /**
    * @static
