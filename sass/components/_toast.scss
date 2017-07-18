@@ -42,8 +42,10 @@
   align-items: center;
   justify-content: space-between;
 
-  .btn, .btn-flat {
-    margin: 0;
+  .toast-action {
+    color: $toast-action-color;
+    font-weight: 500;
+    margin-right: -25px;
     margin-left: 3rem;
   }
 
