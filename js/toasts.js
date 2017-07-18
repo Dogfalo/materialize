@@ -74,6 +74,7 @@
         let $toast = $(e.target).closest('.toast');
         let toast = $toast[0].M_Toast;
         toast.panning = true;
+        toast.el.classList.add('panning');
         Toast._draggedToast = toast;
         $toast[0].style.transition = null;
         toast.startingXPos = Toast._xPos(e);
@@ -103,6 +104,7 @@
       if (!!Toast._draggedToast) {
         let toast = Toast._draggedToast;
         toast.panning = false;
+        toast.el.classList.remove('panning');
 
         let totalDeltaX = toast.xPos - toast.startingXPos;
         let activationDistance =

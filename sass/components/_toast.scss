@@ -24,7 +24,6 @@
   border-radius: 2px;
   top: 35px;
   width: auto;
-  clear: both;
   margin-top: 10px;
   position: relative;
   max-width:100%;
@@ -37,10 +36,10 @@
   font-size: 1.1rem;
   font-weight: 300;
   color: $toast-text-color;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: default;
 
   .toast-action {
     color: $toast-action-color;
@@ -54,7 +53,7 @@
   }
 
   @media #{$small-and-down} {
-    width:100%;
+    width: 100%;
     border-radius: 0;
   }
 }
