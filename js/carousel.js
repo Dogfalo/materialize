@@ -37,18 +37,30 @@
 
         // Options
         var setCarouselHeight = function(imageOnly) {
-          var firstImage = view.find('.carousel-item.active img').first();
+          var firstSlide = view.find('.carousel-item.active').length ? view.find('.carousel-item.active').first() : view.find('.carousel-item').first();
+          var firstImage = firstSlide.find('img').first();
           if (firstImage.length) {
-            if (firstImage.prop('complete')) {
-              view.css('height', firstImage.height());
+            if (firstImage[0].complete) {
+              // If image won't trigger the load event
+              var imageHeight = firstImage.height();
+              if (imageHeight > 0) {
+                view.css('height', firstImage.height());
+              } else {
+                // If image still has no height, use the natural dimensions to calculate
+                var naturalWidth = firstImage[0].naturalWidth;
+                var naturalHeight = firstImage[0].naturalHeight;
+                var adjustedHeight = (view.width() / naturalWidth) * naturalHeight;
+                view.css('height', adjustedHeight);
+              }
             } else {
+              // Get height when image is loaded normally
               firstImage.on('load', function(){
                 view.css('height', $(this).height());
               });
             }
           } else if (!imageOnly) {
-            var imageHeight = view.find('.carousel-item.active').first().height();
-            view.css('height', imageHeight);
+            var slideHeight = firstSlide.height();
+            view.css('height', slideHeight);
           }
         };
 
