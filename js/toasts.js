@@ -16,14 +16,29 @@
         return;
       }
 
+
+      /**
+       * Options for the toast
+       * @member Toast#options
+       */
       this.options = {
         displayLength: displayLength,
         className: className,
         completeCallback: completeCallback
       };
+
       this.options = $.extend({}, Toast.defaults, this.options);
       this.message = message;
+
+      /**
+       * Describes current pan state toast
+       * @type {Boolean}
+       */
       this.panning = false;
+
+      /**
+       * Time remaining until toast is removed
+       */
       this.timeRemaining = this.options.displayLength;
 
       if (Toast._toasts.length === 0) {
@@ -43,6 +58,9 @@
       return _defaults;
     }
 
+    /**
+     * Append toast container and add event handlers
+     */
     static _createContainer() {
       let container = document.createElement('div');
       container.setAttribute('id', 'toast-container');
@@ -60,6 +78,9 @@
       Toast._container = container;
     }
 
+    /**
+     * Remove toast container and event handlers
+     */
     static _removeContainer() {
       // Add event handler
       document.removeEventListener('mousemove', Toast._onDragMove);
@@ -69,20 +90,28 @@
       Toast._container = null;
     }
 
+    /**
+     * Begin drag handler
+     * @param {Event} e
+     */
     static _onDragStart(e) {
       if (e.target && $(e.target).closest('.toast').length) {
         let $toast = $(e.target).closest('.toast');
         let toast = $toast[0].M_Toast;
         toast.panning = true;
-        toast.el.classList.add('panning');
         Toast._draggedToast = toast;
-        $toast[0].style.transition = null;
+        toast.el.classList.add('panning');
+        toast.el.style.transition = null;
         toast.startingXPos = Toast._xPos(e);
         toast.time = Date.now();
         toast.xPos = Toast._xPos(e);
       }
     }
 
+    /**
+     * Drag move handler
+     * @param {Event} e
+     */
     static _onDragMove(e) {
       if (!!Toast._draggedToast) {
         e.preventDefault();
@@ -100,6 +129,10 @@
       }
     }
 
+    /**
+     * End drag handler
+     * @param {Event} e
+     */
     static _onDragEnd(e) {
       if (!!Toast._draggedToast) {
         let toast = Toast._draggedToast;
@@ -111,10 +144,13 @@
             toast.el.offsetWidth * toast.options.activationPercent;
         let shouldBeDismissed = Math.abs(totalDeltaX) > activationDistance ||
             toast.velocityX > 1;
+
+        // Remove toast
         if (shouldBeDismissed) {
           toast.wasSwiped = true;
           toast.remove();
 
+        // Animate toast back to original position
         } else {
           toast.el.style.transition = 'transform .2s, opacity .2s';
           toast.el.style.transform = null;
@@ -145,6 +181,10 @@
       }
     }
 
+
+    /**
+     * Create toast and append it to toast container
+     */
     createToast() {
       let toast = document.createElement('div');
       toast.classList.add('toast');
@@ -181,6 +221,9 @@
       return toast;
     }
 
+    /**
+     * Animate in toast
+     */
     _animateIn() {
       // Animate toast in
       Vel(this.el, {top: 0,  opacity: 1 }, {
@@ -190,6 +233,11 @@
       });
     }
 
+
+    /**
+     * Create setInterval which automatically removes toast when timeRemaining >= 0
+     * has been reached
+     */
     setTimer() {
       if (this.timeRemaining !== Infinity)  {
         this.counterInterval = setInterval(() => {
@@ -206,6 +254,10 @@
       }
     }
 
+
+    /**
+     * Dismiss toast with animation
+     */
     remove() {
       window.clearInterval(this.counterInterval);
       let activationDistance =
@@ -244,6 +296,7 @@
   /**
    * @static
    * @memberof Toast
+   * @type {Array.<Toast>}
    */
   Toast._toasts = [];
 
@@ -256,6 +309,7 @@
   /**
    * @static
    * @memberof Toast
+   * @type {Toast}
    */
   Toast._draggedToast = null;
 
@@ -263,5 +317,4 @@
   window.Materialize.toast = function(message, displayLength, className, completeCallback) {
     return new Toast(message, displayLength, className, completeCallback);
   }
-// };
 })();
