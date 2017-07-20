@@ -23,6 +23,7 @@
 
     &:hover, &.active, &.selected {
       background-color: $dropdown-hover-bg-color;
+      -webkit-tap-highlight-color: transparent;
     }
 
     &.active.selected {
