@@ -124,10 +124,12 @@
       var fontFamily = $textarea.css('font-family');
       var fontSize = $textarea.css('font-size');
       var lineHeight = $textarea.css('line-height');
+      var padding = $textarea.css('padding');
 
       if (fontSize) { hiddenDiv.css('font-size', fontSize); }
       if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
       if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
+      if (padding) { hiddenDiv.css('padding', padding); }
 
       // Set original-height, if none
       if (!$textarea.data('original-height')) {

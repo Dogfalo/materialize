@@ -15,8 +15,8 @@ form p:last-child {
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
   opacity: 0;
+  pointer-events: none;
 }
 
 // Checkbox Styles
