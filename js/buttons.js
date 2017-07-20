@@ -32,6 +32,11 @@
       FABtoToolbar($menu);
     });
 
+    // enable btn-loading overlays
+    $('.btn-loading-icons.with-overlay,.btn-loading.with-overlay').each(function(index, el) {
+      var btn = $(this);
+      initOverlayBtn(btn);
+    });
   });
 
   $.fn.extend({
@@ -46,6 +51,9 @@
     },
     closeToolbar: function() {
       toolbarToFAB($(this));
+    },
+    overlayLoadingBtn: function() {
+      initOverlayBtn($(this));
     }
   });
 
@@ -263,5 +271,83 @@
     }, 200);
   };
 
+  var initOverlayBtn = function(btn) {
+    // building overlay
+    var overlay = $('<div class="btn-loading-overlay"></div>');
+    $('body').append(overlay);
+
+    // saving btn z-index if needed (== if user edited it)
+    var defaultZIndex = '';
+
+    // listening for .is-loading class
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === "class") {
+          // is-loading
+          if (btn.hasClass('is-loading')) {
+            btn.addClass('is-loading');
+            defaultZIndex = (btn.css('z-index') ? btn.css('z-index') : '');
+            btn.css('z-index', 1001);
+            // initial overlay position
+            overlay.css({
+              'display': 'block',
+              'border-radius': '5px',
+              'width': parseInt(btn.innerWidth())+'px',
+              'height': parseInt(btn.innerHeight())+'px',
+              'top': (btn.offset().top - $(window).scrollTop()) + 'px',
+              'left': btn.offset().left + 'px'
+            });
+            // when overlay initial position is set, show it.
+            // timer is here too avoid css reflow
+            setTimeout(function(){
+              // deleting custom css
+              overlay.css({
+                'border-radius': '',
+                'width': '',
+                'height': '',
+                'top': '',
+                'left': ''
+              }).addClass('fullScreen');
+            }, 100);
+          // !is-loading
+          } else if (!btn.hasClass('is-loading')) {
+            // make overlay return to btn
+            overlay.css({
+              'border-radius': '5px',
+              'width': parseInt(btn.innerWidth())+'px',
+              'height': parseInt(btn.innerHeight())+'px',
+              'top': parseInt(btn.offset().top - $(window).scrollTop()) + 'px',
+              'left': parseInt(btn.offset().left) + 'px'
+            }).removeClass('fullScreen');
+            // once animation is done, reset btn z-index
+            setTimeout(function(){
+              overlay.css('display', 'none');
+              btn.css('z-index', defaultZIndex);
+            }, 700);
+          }
+        }
+      });
+    });
+
+    observer.observe(btn[0],  {
+      attributes: true
+    });
+
+    // if user delete btn with $(btn).remove();
+    btn.on('destroyed', function(){
+      overlay.remove();
+      observer.disconnect();
+      console.info('overlay removed');
+    });
+  };
+
+  // call $(el).on('destroyed') when $(el).remove() is used
+  $.event.special.destroyed = {
+    remove: function(o) {
+      if (o.handler && o.type !== 'destroyed') {
+        o.handler()
+      }
+    }
+  }
 
 }( jQuery ));

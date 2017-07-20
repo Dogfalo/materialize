@@ -289,3 +289,206 @@ button.btn-floating {
 .btn-block {
   display: block;
 }
+
+// loading btn
+@keyframes btnLoading_spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+@keyframes btnLoading_fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes btnLoading_fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-loading,
+.btn-loading-icons {
+  @extend .btn;
+  &.is-loading {
+    pointer-events: none;
+    &.is-clickable {
+      pointer-events: auto !important;
+    }
+  }
+}
+
+.btn-loading {
+  transition: color 500ms ease;
+
+  &.is-loading {
+    color: transparent !important;
+  }
+  &.is-loading:after {
+    animation: btnLoading_fadeIn 500ms ease forwards, btnLoading_spin 500ms infinite linear;
+  }
+  &:after {
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
+    border: 2px solid #FFFFFF;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    left: calc(50% - (1rem / 2));
+    top: calc(50% - (1rem / 2));
+  }
+
+  // Color Classes
+  @each $color_name, $color in $colors {
+    @each $color_type, $color_value in $color {
+      @if $color_type == "base" {
+        &.#{$color_name}-text:after {
+          border: 2px solid $color_value;
+          border-radius: 290486px;
+          border-right-color: transparent;
+          border-top-color: transparent;
+        }
+      }
+      @else if $color_name != "shades" {
+        &.#{$color_name}-text.text-#{$color_type}:after {
+          border: 2px solid $color_value;
+          border-radius: 290486px;
+          border-right-color: transparent;
+          border-top-color: transparent;
+        }
+      }
+    }
+  }
+}
+// Large loading button
+.btn-loading-large {
+  @extend .btn-large;
+  @extend .btn-loading;
+}
+// Flat loading button
+.btn-loading-flat {
+  @extend .btn-flat;
+  @extend .btn-loading;
+  &:after {
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
+    border: 2px solid #000000;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    left: calc(50% - (1rem / 2));
+    top: calc(50% - (1rem / 2));
+  }
+}
+
+.btn-loading-icons {
+  i.material-icons {
+    transition:color 500ms ease;
+  }
+
+  &.is-loading i.material-icons {
+    color: transparent !important;
+  }
+  &.is-loading i.material-icons:after {
+    animation: btnLoading_fadeIn 500ms ease forwards, btnLoading_spin 500ms infinite linear;
+  }
+  i.material-icons:after {
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
+    border: 2px solid #FFFFFF;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    // center on icon
+    margin-left:.2rem;
+    top: calc(50% - (1rem / 2));
+  }
+  // Color Classes
+  @each $color_name, $color in $colors {
+    @each $color_type, $color_value in $color {
+      @if $color_type == "base" {
+        &.#{$color_name}-text i.material-icons:after {
+          border: 2px solid $color_value;
+          border-radius: 290486px;
+          border-right-color: transparent;
+          border-top-color: transparent;
+        }
+      }
+      @else if $color_name != "shades" {
+        &.#{$color_name}-text.text-#{$color_type} i.material-icons:after {
+          border: 2px solid $color_value;
+          border-radius: 290486px;
+          border-right-color: transparent;
+          border-top-color: transparent;
+        }
+      }
+    }
+  }
+}
+// Large loading button
+.btn-loading-large-icons {
+  @extend .btn-large;
+  @extend .btn-loading-icons;
+}
+// Flat loading button
+.btn-loading-flat-icons {
+  @extend .btn-flat;
+  @extend .btn-loading-icons;
+  & i.material-icons:after {
+    // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
+    border: 2px solid #000000;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    // center on icon
+    margin-left:.2rem;
+    top: calc(50% - (1rem / 2));
+  }
+}
+
+.btn-loading-overlay {
+  display: none;
+  z-index: 1000;
+  width: 0px;
+  height: 0px;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all ease 700ms;
+  &.fullScreen {
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+  }
+}

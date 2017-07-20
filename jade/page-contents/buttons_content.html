@@ -167,16 +167,100 @@
 &lt;a class="waves-effect waves-light btn-large">&lt;i class="material-icons right">cloud&lt;/i>button&lt;/a>
         </code></pre>
       </div>
+      <div id="loading" class="section scrollspy">
+        <h2 class="header">Loading button</h2>
+        <p>
+          You can display a loading animation on button. While the animation is displayed, your button will be un-clickable except if you add <code class=" language-markup">.is-clickable</code>.
+        </p>
+        <h4 class="light">Whole button</h4>
+        <a group="whole" class="waves-effect waves-light btn-loading">Normal</a>
+        <a group="whole" class="waves-effect waves-light btn-loading is-clickable">Clickable</a>
+        <a group="whole" class="waves-effect waves-light btn-loading"><i class="material-icons right">save</i>W. icon</a>
+        <a group="whole" class="waves-effect waves-light btn-loading-flat">Flat</a>
+        <a group="whole" class="waves-effect waves-light btn-loading-large">Large</a>
+        <script>
+          window.addEventListener("load", function(event) {
+            // using attr group to avoid conflict
+            $('.btn-loading[group=whole], .btn-loading-flat[group=whole], .btn-loading-large[group=whole]').on('click', function(){
+              $(this).toggleClass('is-loading');
+            });
+          });
+        </script>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn-loading">Normal&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading is-clickable">Clickable&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading">&lt;i class="material-icons right">save&lt;/i>W. icon&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading-flat">Flat&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading-large">Large&lt;/a>
+&lt;script>
+  $('.btn-loading, .btn-loading-flat, .btn-loading-large').on('click', function(){
+    $(this).toggleClass('is-loading');
+  });
+&lt;/script>
+        </code></pre>
+        <h4 class="light">Instead of icon</h4>
+        <a group="icon" class="waves-effect waves-light btn-loading-icons"><i class="material-icons left">save</i>Normal</a>
+        <a group="icon" class="waves-effect waves-light btn-loading-icons is-clickable"><i class="material-icons left">save</i>Clickable</a>
+        <a group="icon" class="waves-effect waves-light btn-loading-flat-icons"><i class="material-icons right">save</i>Flat</a>
+        <a group="icon" class="waves-effect waves-light btn-loading-large-icons"><i class="material-icons right">save</i>Large</a>
+        <script>
+          window.addEventListener("load", function(event) {
+            // using attr group to avoid conflict
+            $('.btn-loading-icons[group=icon], .btn-loading-flat-icons[group=icon], .btn-loading-large-icons[group=icon]').on('click', function(){
+              $(this).toggleClass('is-loading');
+            });
+          });
+        </script>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn-loading-icons">&lt;i class="material-icons left">save&lt;/i>Normal&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading-icons is-clickable">&lt;i class="material-icons left">save&lt;/i>Clickable&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading-flat-icons">&lt;i class="material-icons right">save&lt;/i>Flat&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading-large-icons">&lt;i class="material-icons right">save&lt;/i>Large&lt;/a>
+&lt;script>
+  $('.btn-loading-icons, .btn-loading-flat-icons, .btn-loading-large-icons').on('click', function(){
+    $(this).toggleClass('is-loading');
+  });
+&lt;/script>
+        </code></pre>
+        <h4 class="light">With overlay</h4>
+        <p>
+          You can also add an overlay by adding <code class=" language-markup">.with-overlay</code>.<br>
+          If you add <code class=" language-markup">.with-overlay</code> buttons dynamically you'll need to initialize it with <code class=" language-markup">$('.btn-loading.with-overlay').overlayLoadingBtn()</code>.
+        </p>
+        <a group="overlay" class="waves-effect waves-light btn-loading with-overlay is-clickable">Clickable</a>
+        <a group="overlay" class="waves-effect waves-light btn-loading-icons with-overlay is-clickable"><i class="material-icons left">cloud</i>Clickable</a>
+        <script>
+          window.addEventListener("load", function(event) {
+            // using attr group to avoid conflict
+            $('.btn-loading[group=overlay].with-overlay, .btn-loading-icons[group=overlay].with-overlay').on('click', function(){
+              $(this).toggleClass('is-loading');
+            });
+          });
+        </script>
+        <pre><code class="language-markup col s12">
+&lt;a class="waves-effect waves-light btn-loading with-overlay is-clickable">Clickable&lt;/a>
+&lt;a class="waves-effect waves-light btn-loading-icons with-overlay is-clickable">&lt;i class="material-icons left">cloud&lt;/i>Clickable&lt;/a>
+&lt;script>
+  window.addEventListener("load", function(event) {
+    $('.btn-loading.with-overlay, .btn-loading-icons.with-overlay').on('click', function(){
+      $(this).toggleClass('is-loading');
+    });
+  });
+&lt;/script>
+        </code></pre>
+      </div>
       <div id="disabled" class="section scrollspy">
         <h2 class="header">Disabled</h2>
         <p>This style can be applied to all button types</p>
         <a class="btn-large disabled">Button</a>
         <a class="btn disabled">Button</a>
+        <a class="btn-loading disabled">Button</a>
         <a class="btn-flat disabled">Button</a>
         <a class="btn-floating disabled"><i class="material-icons">add</i></a>
         <pre><code class="language-markup col s12">
 &lt;a class="btn-large disabled">Button&lt;/a>
 &lt;a class="btn disabled">Button&lt;/a>
+&lt;a class="btn-loading disabled">Button&lt;/a>
 &lt;a class="btn-flat disabled">Button&lt;/a>
 &lt;a class="btn-floating disabled">&lt;i class="material-icons">add&lt;/i>&lt;/a>
         </code></pre>
@@ -197,6 +281,7 @@
             <li><a href="#flat">Flat</a></li>
             <li><a href="#submit">Submit</a></li>
             <li><a href="#large">Large</a></li>
+            <li><a href="#loading">Loading</a></li>
             <li><a href="#disabled">Disabled</a></li>
           </ul>
         </div>
