@@ -41,14 +41,14 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Quickstart:
-Read the [Getting started page](http://materializecss.com/getting-started.html) for more information about the framework. Templates and how to use materialize can be found on the [materializecss website](http://materializecss.com).
+Read the [getting started guide](http://materializecss.com/getting-started.html) for more information on how to use materialize.
 
 - [Download the latest release](https://github.com/Dogfalo/materialize/releases/latest) of materialize directly from GitHub.
-- Clone the repo: `git clone https://github.com/Dogfalo/materialize.git`.
+- Clone the repo: `git clone https://github.com/Dogfalo/materialize.git`
 - Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](http://materializecss.com/getting-started.html).
-- Install with [npm](https://www.npmjs.com): `npm install materialize-css`.
-- Install with [Bower](https://bower.io): `bower install materialize`.
-- Install with [Atmosphere](https://atmospherejs.com): `meteor add materialize:materialize`.
+- Install with [npm](https://www.npmjs.com): `npm install materialize-css`
+- Install with [Bower](https://bower.io): `bower install materialize`
+- Install with [Atmosphere](https://atmospherejs.com): `meteor add materialize:materialize`
 
 ## Documentation
 The documentation can be found at <http://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
@@ -84,7 +84,7 @@ For changelogs, check out [the Releases section of materialize](https://github.c
 We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](CONTRIBUTING.md#jasmine-testing-guide).
 
 ## Contributing
-Check out the [CONTRIBUTING document](CONTRIBUTING.md) in the root of the repository to learn how you can contribute. You can also browse the [Help Wanted](https://github.com/Dogfalo/materialize/labels/help-wanted) tag in our issue tracker to find things to do.
+Check out the [CONTRIBUTING document](CONTRIBUTING.md) in the root of the repository to learn how you can contribute. You can also browse the [help-wanted](https://github.com/Dogfalo/materialize/labels/help-wanted) tag in our issue tracker to find things to do.
 
 ## Copyright and license
 Code copyright 2017 Materialize. Code released under the MIT license.
