@@ -552,14 +552,18 @@
           </div>
           <form class="col s12 m6">
             <div class="row">
-              <div class="col s12">
-                <label>Materialize Disabled</label>
+              <div class="col s12 input-field">
                 <select disabled>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
                   <option value="2">Option 2</option>
                   <option value="3">Option 3</option>
                 </select>
+                <label>Materialize Disabled</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
                 <label>Browser Disabled</label>
                 <select class="browser-default" disabled>
                   <option value="" disabled selected>Choose your option</option>
@@ -572,13 +576,15 @@
           </form>
           <div class="col s12">
             <pre><code class="language-markup">
-  &lt;label>Materialize Disabled&lt;/label>
-  &lt;select disabled>
-    &lt;option value="" disabled selected>Choose your option&lt;/option>
-    &lt;option value="1">Option 1&lt;/option>
-    &lt;option value="2">Option 2&lt;/option>
-    &lt;option value="3">Option 3&lt;/option>
-  &lt;/select>
+  &lt;div class="input-field">
+    &lt;select disabled>
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="1">Option 1&lt;/option>
+      &lt;option value="2">Option 2&lt;/option>
+      &lt;option value="3">Option 3&lt;/option>
+    &lt;/select>
+    &lt;label>Materialize Disabled&lt;/label>
+  &lt;/div>
 
   &lt;label>Browser Disabled&lt;/label>
   &lt;select class="browser-default" disabled>
@@ -842,12 +848,16 @@
         <p>See noUiSlider's official documentation <a href="https://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
         <div id="range-input"></div>
         <p>&nbsp;</p>
+        <pre><code class="language-markup">
+  &lt;div id="test-slider">&lt;/div>
+        </code></pre>
         <pre><code class="language-javascript">
-  var slider = document.getElementById('test5');
+  var slider = document.getElementById('test-slider');
   noUiSlider.create(slider, {
    start: [20, 80],
    connect: true,
    step: 1,
+   orientation: 'horizontal', // 'horizontal' or 'vertical'
    range: {
      'min': 0,
      'max': 100
@@ -886,23 +896,27 @@
         <pre><code class="language-javascript">
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
   });
         </code></pre>
       </div>
-      
+
     <div id="time-picker" class="section scrollspy">
         <h2 class="header">Time Picker</h2>
         <label for="lunchtime">Lunchtime</label>
         <input id="lunchtime" type="text" class="timepicker">
         <pre><code class="language-markup">
-  &lt;input type="date" class="timepicker">
+  &lt;input type="text" class="timepicker">
         </code></pre>
 
         <h4>Initialization</h4>
         <pre><code class="language-javascript">
   $('.timepicker').pickatime({
-    default: 'now', // Set default time
+    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
     fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
     twelvehour: false, // Use AM/PM or 24-hour format
     donetext: 'OK', // text for done-button
@@ -910,7 +924,7 @@
     canceltext: 'Cancel', // Text for cancel-button
     autoclose: false, // automatic close timepicker
     ampmclickable: true, // make AM PM clickable
-    aftershow: function(){} //Function for after opening timepicker  
+    aftershow: function(){} //Function for after opening timepicker
   });
         </code></pre>
       </div>
@@ -1117,6 +1131,7 @@
        start: [20, 80],
        connect: true,
        step: 1,
+       orientation: 'horizontal',
        range: {
          'min': 0,
          'max': 100
