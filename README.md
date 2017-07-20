@@ -51,7 +51,7 @@ Read the [Getting started page](http://materializecss.com/getting-started.html) 
 - Install with [Atmosphere](https://atmospherejs.com): `meteor add materialize:materialize`.
 
 ## Documentation
-The documentation can be found at <https://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
+The documentation can be found at <http://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
 
 ### Running documentation locally
 Run these commands to set up the documentation:

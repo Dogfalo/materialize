@@ -132,7 +132,9 @@
             if (!clicked) {
               var prev_index = index;
               index = $tabs_wrapper.index(item);
+              $active.removeClass('active');
               $active = $links.eq(index);
+              $active.addClass('active');
               animateIndicator(prev_index);
               if (typeof(options.onShow) === "function") {
                 options.onShow.call($this[0], $content);

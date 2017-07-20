@@ -18,6 +18,36 @@ select {
 }
 
 .select-wrapper {
+  &.valid {
+    & > input.select-dropdown {
+      @extend %valid-input-style;
+    }
+
+    & + label:after {
+      @extend %custom-success-message;
+    }
+  }
+
+  &.invalid {
+    & > input.select-dropdown {
+      @extend %invalid-input-style;
+    }
+
+    & + label:after {
+      @extend %custom-error-message;
+    }
+  }
+
+  &.valid + label,
+  &.invalid + label {
+    width: 100%;
+    pointer-events: none;
+  }
+
+  & + label:after {
+    @extend %input-after-style;
+  }
+
   position: relative;
 
   input.select-dropdown {
@@ -51,7 +81,7 @@ select {
 
   & + label {
     position: absolute;
-    top: -14px;
+    top: -26px;
     font-size: $label-font-size;
   }
 }

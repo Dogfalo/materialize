@@ -102,6 +102,28 @@ module.exports = function(grunt) {
       }
     },
 
+    babel: {
+		  options: {
+			  sourceMap: false,
+			  plugins: [
+          'transform-es2015-arrow-functions',
+          'transform-es2015-block-scoping',
+          'transform-es2015-classes',
+          'transform-es2015-template-literals',
+        ]
+		  },
+		  bin: {
+			  files: {
+				  'bin/materialize.js': 'temp/js/materialize_concat.js'
+			  }
+		  },
+      dist: {
+        files: {
+          'dist/js/materialize.js': 'temp/js/materialize.js'
+        }
+      }
+	  },
+
     // Browser Sync integration
     browserSync: {
       bsFiles: ["bin/*.js", "bin/*.css", "!**/node_modules/**/*"],
@@ -162,7 +184,7 @@ module.exports = function(grunt) {
           "js/tapTarget.js",
         ],
         // the location of the resulting JS file
-        dest: 'dist/js/materialize.js'
+        dest: 'temp/js/materialize.js'
       },
       temp: {
         // the files to concatenate
@@ -201,7 +223,7 @@ module.exports = function(grunt) {
           "js/tapTarget.js",
         ],
         // the location of the resulting JS file
-        dest: 'temp/js/materialize.js'
+        dest: 'temp/js/materialize_concat.js'
       },
     },
 
@@ -581,6 +603,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-babel');
+
+
   // define the tasks
   grunt.registerTask(
     'release',[
@@ -591,6 +616,7 @@ module.exports = function(grunt) {
       'postcss:expanded',
       'postcss:min',
       'concat:dist',
+      'babel:dist',
       'uglify:dist',
       'uglify:extras',
       'usebanner:release',
@@ -601,12 +627,13 @@ module.exports = function(grunt) {
       'replace:version',
       'replace:readme',
       'rename:rename_src',
-      'rename:rename_compiled'
+      'rename:rename_compiled',
+      'clean:temp'
     ]
   );
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
+  grunt.registerTask('js_compile', ['concat:temp', 'babel:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);

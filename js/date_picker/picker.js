@@ -7,16 +7,7 @@
 
 (function ( factory ) {
 
-    // AMD.
-    if ( typeof define == 'function' && define.amd )
-        define( 'picker', ['jquery'], factory )
-
-    // Node.js/browserify.
-    else if ( typeof exports == 'object' )
-        module.exports = factory( require('jquery') )
-
-    // Browser globals.
-    else this.Picker = factory( jQuery )
+    Materialize.Picker = factory( jQuery )
 
 }(function( $ ) {
 

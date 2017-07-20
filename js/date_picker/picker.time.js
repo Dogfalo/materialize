@@ -7,7 +7,7 @@
  * Copyright 2015 Ching Yaw Hao.
  */
 
-;(function(){
+(function(){
 	var $ = window.jQuery,
 			$win = $(window),
 			$doc = $(document);
