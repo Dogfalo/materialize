@@ -291,7 +291,7 @@ button.btn-floating {
 }
 
 // loading btn
-@keyframes btnLoadingSpin {
+@keyframes btnLoading_spin {
   0% {
     transform: rotate(0deg);
   }
@@ -299,7 +299,7 @@ button.btn-floating {
     transform: rotate(359deg);
   }
 }
-@keyframes fadeOut {
+@keyframes btnLoading_fadeOut {
   0% {
     opacity: 1;
   }
@@ -307,7 +307,7 @@ button.btn-floating {
     opacity: 0;
   }
 }
-@keyframes fadeIn {
+@keyframes btnLoading_fadeIn {
   0% {
     opacity: 0;
   }
@@ -334,11 +334,11 @@ button.btn-floating {
     color: transparent !important;
   }
   &.is-loading:after {
-    animation: fadeIn 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    animation: btnLoading_fadeIn 500ms ease forwards, btnLoading_spin 500ms infinite linear;
   }
   &:after {
     // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
-    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
     border: 2px solid #FFFFFF;
     border-radius: 290486px;
     border-right-color: transparent;
@@ -364,12 +364,8 @@ button.btn-floating {
         }
       }
       @else if $color_name != "shades" {
-        // because .text-* classes already use !important and make text appear if not present
-        // &.#{$color_name}-text.text-#{$color_type} {
-        //   color: transparent !important;
-        // }
         &.#{$color_name}-text.text-#{$color_type}:after {
-          border: 2px solid $color_value !important;
+          border: 2px solid $color_value;
           border-radius: 290486px;
           border-right-color: transparent;
           border-top-color: transparent;
@@ -389,7 +385,7 @@ button.btn-floating {
   @extend .btn-loading;
   &:after {
     // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
-    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
     border: 2px solid #000000;
     border-radius: 290486px;
     border-right-color: transparent;
@@ -413,11 +409,11 @@ button.btn-floating {
     color: transparent !important;
   }
   &.is-loading i.material-icons:after {
-    animation: fadeIn 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    animation: btnLoading_fadeIn 500ms ease forwards, btnLoading_spin 500ms infinite linear;
   }
   i.material-icons:after {
     // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
-    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
     border: 2px solid #FFFFFF;
     border-radius: 290486px;
     border-right-color: transparent;
@@ -443,12 +439,8 @@ button.btn-floating {
         }
       }
       @else if $color_name != "shades" {
-        // because .text-* classes already use !important and make text appear if not present
-        // &.#{$color_name}-text.text-#{$color_type} i.material-icons {
-        //   color: transparent !important;
-        // }
         &.#{$color_name}-text.text-#{$color_type} i.material-icons:after {
-          border: 2px solid $color_value !important;
+          border: 2px solid $color_value;
           border-radius: 290486px;
           border-right-color: transparent;
           border-top-color: transparent;
@@ -468,7 +460,7 @@ button.btn-floating {
   @extend .btn-loading-icons;
   & i.material-icons:after {
     // even when hidden, spin animation is needed : when deleting .is-loading class, spin shouldn't stop while fadingOut
-    animation: fadeOut 500ms ease forwards, btnLoadingSpin 500ms infinite linear;
+    animation: btnLoading_fadeOut 500ms ease forwards, btnLoading_spin 500ms infinite linear;
     border: 2px solid #000000;
     border-radius: 290486px;
     border-right-color: transparent;
@@ -481,5 +473,22 @@ button.btn-floating {
     // center on icon
     margin-left:.2rem;
     top: calc(50% - (1rem / 2));
+  }
+}
+
+.btn-loading-overlay {
+  display: none;
+  z-index: 1000;
+  width: 0px;
+  height: 0px;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all ease 700ms;
+  &.fullScreen {
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
   }
 }

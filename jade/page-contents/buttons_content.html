@@ -180,6 +180,7 @@
         <a group="whole" class="waves-effect waves-light btn-loading-large">Large</a>
         <script>
           window.addEventListener("load", function(event) {
+            // using attr group to avoid conflict
             $('.btn-loading[group=whole], .btn-loading-flat[group=whole], .btn-loading-large[group=whole]').on('click', function(){
               $(this).toggleClass('is-loading');
             });

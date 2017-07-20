@@ -272,20 +272,11 @@
   };
 
   var initOverlayBtn = function(btn) {
-    // buildiing overlay
-    var overlay = $('<div class="button-overlay"></div>');
-    overlay.css({
-      'display': 'none',
-      'z-index': 1000,
-      'width': '0px',
-      'height': '0px',
-      'position': 'fixed',
-      'background-color': 'rgba(0, 0, 0, 0.5)',
-      'transition': 'all ease 700ms'
-    });
+    // building overlay
+    var overlay = $('<div class="btn-loading-overlay"></div>');
     $('body').append(overlay);
 
-    // keeping user z-index if set
+    // saving btn z-index if needed (== if user edited it)
     var defaultZIndex = '';
 
     // listening for .is-loading class
@@ -294,7 +285,6 @@
         if (mutation.attributeName === "class") {
           // is-loading
           if (btn.hasClass('is-loading')) {
-            console.info('loading activated');
             btn.addClass('is-loading');
             defaultZIndex = (btn.css('z-index') ? btn.css('z-index') : '');
             btn.css('z-index', 1001);
@@ -307,28 +297,28 @@
               'top': (btn.offset().top - $(window).scrollTop()) + 'px',
               'left': btn.offset().left + 'px'
             });
-            // when overlay initial position is set, show it
+            // when overlay initial position is set, show it.
             // timer is here too avoid css reflow
             setTimeout(function(){
+              // deleting custom css
               overlay.css({
-                'border-radius': '0px',
-                'width': '100%',
-                'height': '100%',
-                'top': '0px',
-                'left': '0px'
-              });
+                'border-radius': '',
+                'width': '',
+                'height': '',
+                'top': '',
+                'left': ''
+              }).addClass('fullScreen');
             }, 100);
           // !is-loading
           } else if (!btn.hasClass('is-loading')) {
-            console.info('loading de-activated');
-            // make overlay return too btn
+            // make overlay return to btn
             overlay.css({
               'border-radius': '5px',
               'width': parseInt(btn.innerWidth())+'px',
               'height': parseInt(btn.innerHeight())+'px',
               'top': parseInt(btn.offset().top - $(window).scrollTop()) + 'px',
               'left': parseInt(btn.offset().left) + 'px'
-            });
+            }).removeClass('fullScreen');
             // once animation is done, reset btn z-index
             setTimeout(function(){
               overlay.css('display', 'none');
