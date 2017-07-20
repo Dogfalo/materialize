@@ -11,7 +11,7 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
 
-  api.use('fourseven:scss');
+  api.use('fourseven:scss@4.5.4');
   api.use('jquery', 'client');
   api.imply('jquery', 'client');
 
