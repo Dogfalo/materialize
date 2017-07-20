@@ -22,6 +22,12 @@
     text-align: center;
     margin-right: 1rem;
   }
+  
+  i.right {
+    flex: 0 1 auto;
+    clear:right;
+    margin-left: auto;
+  }
 }
 
 .collapsible-body {
