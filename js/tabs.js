@@ -33,8 +33,8 @@
 
       // Finds right attribute for indicator based on active tab.
       // el: jQuery Object
-      var calcRightPos = function(el) {
-        return Math.ceil($tabs_width - el.position().left - el.outerWidth() - $this.scrollLeft());
+        var calcRightPos = function(el) {
+          return Math.ceil($tabs_width - el.position().left - el[0].getBoundingClientRect().width - $this.scrollLeft());
       };
 
       // Finds left attribute for indicator based on active tab.
@@ -132,7 +132,9 @@
             if (!clicked) {
               var prev_index = index;
               index = $tabs_wrapper.index(item);
+              $active.removeClass('active');
               $active = $links.eq(index);
+              $active.addClass('active');
               animateIndicator(prev_index);
               if (typeof(options.onShow) === "function") {
                 options.onShow.call($this[0], $content);

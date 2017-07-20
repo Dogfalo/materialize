@@ -18,6 +18,36 @@ select {
 }
 
 .select-wrapper {
+  &.valid {
+    & > input.select-dropdown {
+      @extend %valid-input-style;
+    }
+
+    & + label:after {
+      @extend %custom-success-message;
+    }
+  }
+
+  &.invalid {
+    & > input.select-dropdown {
+      @extend %invalid-input-style;
+    }
+
+    & + label:after {
+      @extend %custom-error-message;
+    }
+  }
+
+  &.valid + label,
+  &.invalid + label {
+    width: 100%;
+    pointer-events: none;
+  }
+
+  & + label:after {
+    @extend %input-after-style;
+  }
+
   position: relative;
 
   input.select-dropdown {
@@ -34,6 +64,7 @@ select {
     margin: $input-margin;
     padding: 0;
     display: block;
+    user-select:none;
   }
 
   span.caret {
@@ -46,31 +77,31 @@ select {
     margin: auto 0;
     font-size: 10px;
     line-height: 10px;
-
-    &.disabled {
-      color: $input-disabled-color;
-    }
   }
 
   & + label {
     position: absolute;
-    top: -14px;
+    top: -26px;
     font-size: $label-font-size;
   }
 }
 
 // Disabled styles
 select:disabled {
-  color: rgba(0,0,0,.3);
+  color: $input-disabled-color;
+}
+
+.select-wrapper.disabled {
+  span.caret,
+  & + label {
+    color: $input-disabled-color;
+  }
 }
 
 .select-wrapper input.select-dropdown:disabled {
-  color: rgba(0,0,0,.3);
+  color: $input-disabled-color;
   cursor: default;
-  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-  -moz-user-select: none; /* mozilla browsers */
-  -ms-user-select: none; /* IE10+ */
-  border-bottom: 1px solid rgba(0,0,0,.3);
+  user-select: none;
 }
 
 .select-wrapper i {
@@ -82,6 +113,22 @@ select:disabled {
 .select-dropdown li.optgroup {
   color: $select-disabled-color;
   background-color: transparent;
+}
+
+.select-dropdown.dropdown-content {
+  li {
+    &.active {
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: $select-option-hover;
+    }
+
+    &.selected {
+      background-color: $select-option-focus;
+    }
+  }
 }
 
 // Prefix Icons

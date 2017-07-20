@@ -3,19 +3,7 @@
 
 /* Style Placeholders */
 
-::-webkit-input-placeholder {
-  color: $placeholder-text-color;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-  color: $placeholder-text-color;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-  color: $placeholder-text-color;
-}
-
-:-ms-input-placeholder {
+::placeholder {
   color: $placeholder-text-color;
 }
 
@@ -77,50 +65,70 @@ textarea.materialize-textarea {
   // Valid Input Style
   &.valid,
   &:focus.valid {
-    border-bottom: 1px solid $input-success-color;
-    box-shadow: 0 1px 0 0 $input-success-color;
+    @extend %valid-input-style;
   }
 
   // Custom Success Message
   &.valid + label:after,
   &:focus.valid + label:after {
-    content: attr(data-success);
-    color: $input-success-color;
-    opacity: 1;
+    @extend %custom-success-message;
   }
 
   // Invalid Input Style
   &.invalid,
   &:focus.invalid {
-    border-bottom: $input-invalid-border;
-    box-shadow: 0 1px 0 0 $input-error-color;
+    @extend %invalid-input-style;
   }
 
   // Custom Error message
   &.invalid + label:after,
   &:focus.invalid + label:after {
-    content: attr(data-error);
-    color: $input-error-color;
-    opacity: 1;
+    @extend %custom-error-message;
   }
 
   // Full width label when using validate for error messages
   &.validate + label {
     width: 100%;
-    pointer-events: none;
   }
 
   // Form Message Shared Styles
   & + label:after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 60px;
-    left: 0;
-    opacity: 0;
-    transition: .2s opacity ease-out, .2s color ease-out;
+    @extend %input-after-style;
   }
 }
+
+
+/* Validation Sass Placeholders */
+%valid-input-style {
+  border-bottom: 1px solid $input-success-color;
+  box-shadow: 0 1px 0 0 $input-success-color;
+}
+%invalid-input-style {
+  border-bottom: $input-invalid-border;
+  box-shadow: 0 1px 0 0 $input-error-color;
+}
+%custom-success-message {
+  content: attr(data-success);
+  color: $input-success-color;
+  opacity: 1;
+  transform: translateY(9px);
+}
+%custom-error-message {
+  content: attr(data-error);
+  color: $input-error-color;
+  opacity: 1;
+  transform: translateY(9px);
+}
+%input-after-style {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 0;
+  transition: .2s opacity ease-out, .2s color ease-out;
+}
+
 
 // Styling for input field wrapper
 .input-field {
@@ -154,16 +162,20 @@ textarea.materialize-textarea {
   label {
     color: $input-border-color;
     position: absolute;
-    top: 0.8rem;
+    top: 0;
     left: 0;
+    height: 100%;
     font-size: 1rem;
     cursor: text;
-    transition: .2s ease-out;
+    transition: transform .2s ease-out;
+    transform-origin: 0% 100%;
     text-align: initial;
+    transform: translateY(12px);
+    pointer-events: none;
 
     &:not(.label-icon).active {
-      font-size: $label-font-size;
-      transform: translateY(-140%);
+      transform: translateY(-14px) scale(.8);
+      transform-origin: 0 0;
     }
   }
 
@@ -210,8 +222,14 @@ textarea.materialize-textarea {
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
-  padding-left: 4rem;
-  width: calc(100% - 4rem);
+
+  .nav-wrapper & {
+    height: inherit;
+    padding-left: 4rem;
+    width: calc(100% - 4rem);
+    border: 0;
+    box-shadow: none;
+  }
 
   &:focus {
     background-color: $input-background;
@@ -252,6 +270,17 @@ textarea {
   background-color: transparent;
 
   &.materialize-textarea {
+    // Fixes validation messages for dynamic textareas
+    &.validate + label {
+      &::after {
+        top: calc(100% - 12px);
+      }
+      &:not(.label-icon).active {
+        transform: translateY(-25px);
+      }
+      height: 100%;
+    }
+
     overflow-y: hidden; /* prevents scroll bar flash */
     padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
     resize: none;
@@ -276,6 +305,7 @@ textarea {
 /* Autocomplete */
 .autocomplete-content {
   margin-top: -1 * $input-margin-bottom;
+  margin-bottom: $input-margin-bottom;
   display: block;
   opacity: 1;
   position: static;

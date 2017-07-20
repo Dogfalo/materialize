@@ -4,17 +4,7 @@
  */
 
 (function ( factory ) {
-
-    // AMD.
-    if ( typeof define == 'function' && define.amd )
-        define( ['picker', 'jquery'], factory )
-
-    // Node.js/browserify.
-    else if ( typeof exports == 'object' )
-        module.exports = factory( require('./picker.js'), require('jquery') )
-
-    // Browser globals.
-    else factory( Picker, jQuery )
+  factory( Materialize.Picker, jQuery )
 
 }(function( Picker, $ ) {
 
@@ -1294,7 +1284,7 @@ return _.node(
 		                                    selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
 		                                    activedescendant: isHighlighted ? true : null,
 		                                    disabled: isDisabled ? true : null
-		                                })
+		                                }) + ' ' + (isDisabled ? '' : 'tabindex="0"')
 		                            ),
 		                            '',
 		                            _.ariaAttr({ role: 'presentation' })
@@ -1367,6 +1357,9 @@ DatePicker.defaults = (function( prefix ) {
         today: 'Today',
         clear: 'Clear',
         close: 'Ok',
+
+        // Picker close behavior (Prevent a change in behaviour for backwards compatibility)
+        closeOnSelect: false,
 
         // The format to show on the `input` element
         format: 'd mmmm, yyyy',

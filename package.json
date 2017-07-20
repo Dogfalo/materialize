@@ -3,7 +3,7 @@
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "homepage": "http://materializecss.com/",
-  "version": "0.99.0",
+  "version": "0.100.0",
   "main": "dist/js/materialize.js",
   "style": "dist/css/materialize.css",
   "sass": "sass/materialize.scss",
@@ -20,12 +20,14 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "jquery": "^3.2.1"
+    "jquery": "^3.0.0 || ^2.1.4"
   },
   "engine": "node >= 6",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
     "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
     "grunt-banner": "^0.6.0",
     "grunt-browser-sync": "^2.2.0",
     "grunt-concurrent": "^2.3.1",

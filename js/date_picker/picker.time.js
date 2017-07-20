@@ -7,7 +7,7 @@
  * Copyright 2015 Ching Yaw Hao.
  */
 
-;(function(){
+(function(){
 	var $ = window.jQuery,
 			$win = $(window),
 			$doc = $(document);
@@ -400,6 +400,9 @@
 				now.getHours(),
 				now.getMinutes()
 			];
+      if (this.options.twelvehour) {
+        this.amOrPm = value[0] >= 12 && value[0] < 24 ? 'PM' : 'AM';
+      }
 		}
 		this.hours = + value[0] || 0;
 		this.minutes = + value[1] || 0;
