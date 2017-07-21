@@ -5,8 +5,8 @@
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
-  left: -9999px;
   opacity: 0;
+  pointer-events: none;
 }
 
 [type="radio"]:not(:checked) + label,
@@ -19,8 +19,6 @@
   line-height: 25px;
   font-size: 1rem;
   transition: .28s ease;
-
-  -khtml-user-select: none; /* webkit (konqueror) browsers */
   user-select: none;
 }
 
