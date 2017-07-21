@@ -282,13 +282,37 @@
         });
 
         $this.on('sliderNext', function() {
+          //Reset Interval when manually sliding with .slider('next')
+          clearInterval($interval);
           $active_index = $slider.find('.active').index();
           moveToSlide($active_index + 1);
+          $interval = setInterval(
+            function(){
+              $active_index = $slider.find('.active').index();
+              if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
+              else $active_index += 1;
+
+              moveToSlide($active_index);
+
+            }, options.transition + options.interval
+          );
         });
 
         $this.on('sliderPrev', function() {
+          //Reset Interval when manually sliding with .slider('prev')
+          clearInterval($interval);
           $active_index = $slider.find('.active').index();
           moveToSlide($active_index - 1);
+          $interval = setInterval(
+            function(){
+              $active_index = $slider.find('.active').index();
+              if ($slides.length == $active_index + 1) $active_index = 0; // loop to start
+              else $active_index += 1;
+
+              moveToSlide($active_index);
+
+            }, options.transition + options.interval
+          );
         });
 
       });
