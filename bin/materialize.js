@@ -1657,7 +1657,6 @@ if (jQuery) {
         origin.addClass('active');
 
         var originWidth = origin[0].getBoundingClientRect().width;
-        var activatesWidth = activates[0].getBoundingClientRect().width;
 
         // Constrain width
         if (curr_options.constrainWidth === true) {
@@ -1727,7 +1726,7 @@ if (jQuery) {
             left: 0
           });
 
-          var offsetRight = origin.position().left + originWidth - activatesWidth;
+          var offsetRight = origin.position().left + originWidth - activates.width();
           gutterSpacing = -curr_options.gutter;
           leftPosition = offsetRight + gutterSpacing;
         }
@@ -1976,11 +1975,11 @@ if (jQuery) {
       value: function handleTriggerClick(e) {
         var $trigger = $(e.target).closest('.modal-trigger');
         if (e.target && $trigger.length) {
-          var modalId = e.target.getAttribute('href');
+          var modalId = $trigger[0].getAttribute('href');
           if (modalId) {
             modalId = modalId.slice(1);
           } else {
-            modalId = e.target.getAttribute('data-target');
+            modalId = $trigger[0].getAttribute('data-target');
           }
           var modalInstance = document.getElementById(modalId).M_Modal;
           if (modalInstance) {
@@ -2010,7 +2009,8 @@ if (jQuery) {
     }, {
       key: 'handleModalCloseClick',
       value: function handleModalCloseClick(e) {
-        if (e.target && e.target.classList.contains('modal-close')) {
+        var $closeTrigger = $(e.target).closest('.modal-close');
+        if (e.target && $closeTrigger.length) {
           this.close();
         }
       }
@@ -3348,7 +3348,7 @@ if (jQuery) {
     Waves.displayEffect();
   }, false);
 })(window);
-;(function () {
+;(function ($) {
   'use strict';
 
   var _defaults = {
@@ -3697,7 +3697,7 @@ if (jQuery) {
   window.Materialize.toast = function (message, displayLength, className, completeCallback) {
     return new Toast(message, displayLength, className, completeCallback);
   };
-})();
+})(jQuery);
 ;(function ($) {
 
   var methods = {

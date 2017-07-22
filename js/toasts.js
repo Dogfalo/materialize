@@ -1,4 +1,4 @@
-(function() {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -317,4 +317,4 @@
   window.Materialize.toast = function(message, displayLength, className, completeCallback) {
     return new Toast(message, displayLength, className, completeCallback);
   }
-})();
+})(jQuery);

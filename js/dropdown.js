@@ -85,7 +85,6 @@
         origin.addClass('active');
 
         var originWidth = origin[0].getBoundingClientRect().width;
-        var activatesWidth = activates[0].getBoundingClientRect().width;
 
         // Constrain width
         if (curr_options.constrainWidth === true) {
@@ -161,7 +160,7 @@
               left: 0
             })
 
-          var offsetRight = origin.position().left + originWidth - activatesWidth;
+          var offsetRight = origin.position().left + originWidth - activates.width();
           gutterSpacing = -curr_options.gutter;
           leftPosition =  offsetRight + gutterSpacing;
         }
