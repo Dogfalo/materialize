@@ -172,6 +172,9 @@
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
     $('.collapsible').collapsible();
+    $('.collapsible.expandable').collapsible({
+      accordion: false
+    });
     $('.slider').slider();
     $('.parallax').parallax();
     $('.modal').modal();

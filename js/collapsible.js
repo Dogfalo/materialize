@@ -131,7 +131,7 @@
         Vel(
           $body[0],
           'slideDown',
-          {duration: 350, easing: 'easeOutQuart', queue: false,
+          {duration: 350, easing: 'easeInOutQuart', queue: false,
           complete: () => {
             $body[0].style.height = null;
             $body[0].style.overflow = null;
