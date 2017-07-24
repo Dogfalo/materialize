@@ -60,7 +60,7 @@
 	var dialRadius = 135,
 			outerRadius = 105,
 			// innerRadius = 80 on 12 hour clock
-			innerRadius = 80,
+			innerRadius = 70,
 			tickRadius = 20,
 			diameter = dialRadius * 2,
 			duration = transitionSupported ? 350 : 1;
@@ -408,11 +408,14 @@
 		this.spanHours.html(this.hours);
 		this.spanMinutes.html(leadingZero(this.minutes));
 		if (!this.isAppended) {
+
 			// Append popover to input by default
-      if(this.options.hasOwnProperty('container'))
-        this.popover.appendTo(this.options.container);
-      else
+      var containerEl = document.querySelector(this.options.container);
+      if (this.options.container && containerEl) {
+        containerEl.appendChild(this.popover[0]);
+      } else {
         this.popover.insertAfter(this.input);
+      }
 
 			if (this.options.twelvehour) {
 				if (this.amOrPm === 'PM'){
