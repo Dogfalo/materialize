@@ -53,6 +53,48 @@ describe( "Collapsible Plugin", function () {
         }
       });
     });
+
+    it("should open and close programmatically with callbacks", function(done) {
+      var openCallback = false;
+      var closeCallback = false;
+      expandable.collapsible({
+        accordion: false,
+        onOpen: function() {
+          openCallback = true;
+        },
+        onClose: function() {
+          closeCallback = true;
+        }
+      })
+      var bodies = expandable.find('.collapsible-body');
+
+      expect(openCallback).toEqual(false, 'because open callback not yet fired');
+      expect(closeCallback).toEqual(false, 'because close callback not yet fired');
+
+      bodies.each(function(i) {
+        expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
+        expandable.collapsible('open', i);
+      });
+      expect(openCallback).toEqual(true, 'because open callback fired');
+
+
+      setTimeout(function() {
+        bodies.each(function(i) {
+          expect($(this)).toBeVisible('because collapsible bodies should be visible after being opened.');
+          expandable.collapsible('close', i);
+        });
+        expect(closeCallback).toEqual(true, 'because close callback fired');
+
+
+        setTimeout(function() {
+          bodies.each(function(i) {
+            expect($(this)).toBeHidden('because collapsible bodies should be hidden after close.');
+          });
+
+          done();
+        }, 400);
+      }, 400);
+    });
   });
 
   describe( "accordion", function () {
