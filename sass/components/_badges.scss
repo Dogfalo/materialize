@@ -32,6 +32,7 @@ nav ul a span.badge {
   margin-left: 4px;
   line-height: $badge-height;
   height: $badge-height;
+  -webkit-font-smoothing: auto;
 }
 
 // Line height centering
@@ -39,7 +40,7 @@ nav ul a span.badge {
   margin-top: calc(#{$collection-line-height / 2} - #{$badge-height / 2});
 }
 .collapsible span.badge {
-  margin-top: calc(#{$collapsible-line-height / 2} - #{$badge-height / 2});
+  margin-left: auto;
 }
 .side-nav span.badge {
   margin-top: calc(#{$sidenav-line-height / 2} - #{$badge-height / 2});
