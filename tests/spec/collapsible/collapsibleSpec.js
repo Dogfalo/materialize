@@ -9,6 +9,8 @@ describe( "Collapsible Plugin", function () {
     accordion = $('.accordion');
     popout = $('.popout');
     collapsible.collapsible();
+    expandable.collapsible({accordion: false});
+    expandablePreselect.collapsible({accordion: false});
   });
 
   describe( "collapsible", function () {
@@ -41,9 +43,10 @@ describe( "Collapsible Plugin", function () {
 
       bodies.each(function(i) {
         var header = $(this).prev('.collapsible-header');
+        var headerLi = header.parent('li');
 
         if (i === 1) {
-          expect(header).toHaveClass('active', 'because collapsible header should have active class to be preselected.');
+          expect(headerLi).toHaveClass('active', 'because collapsible header should have active class to be preselected.');
           expect($(this)).toBeVisible('because collapsible bodies should be visible if preselected.');
         } else {
           expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
