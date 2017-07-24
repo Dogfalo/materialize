@@ -7,9 +7,8 @@
  * Copyright 2015 Ching Yaw Hao.
  */
 
-(function(){
-	var $ = window.jQuery,
-			$win = $(window),
+(function($){
+	var $win = $(window),
 			$doc = $(document);
 
 	// Can I use inline svg ?
@@ -686,4 +685,4 @@
 			}
 		});
 	};
-}());
+})(jQuery);

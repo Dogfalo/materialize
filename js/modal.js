@@ -1,4 +1,4 @@
-(function($) {
+(function($, Vel) {
   'use strict';
 
   let _defaults = {
@@ -368,4 +368,4 @@
     }
   };
 
-})(jQuery);
+})(jQuery, Materialize.Vel);
