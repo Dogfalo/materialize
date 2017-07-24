@@ -408,8 +408,12 @@
 		this.spanHours.html(this.hours);
 		this.spanMinutes.html(leadingZero(this.minutes));
 		if (!this.isAppended) {
-			// Append popover to body
-			this.popover.insertAfter(this.input);
+			// Append popover to input by default
+      if(this.options.hasOwnProperty('container'))
+        this.popover.appendTo(this.options.container);
+      else
+        this.popover.insertAfter(this.input);
+
 			if (this.options.twelvehour) {
 				if (this.amOrPm === 'PM'){
 					this.spanAmPm.children('#click-pm').addClass("text-primary");
