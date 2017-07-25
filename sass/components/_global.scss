@@ -22,7 +22,7 @@ ul {
     padding-left: 0;
     list-style-type: none;
 
-    li {
+    & > li {
       list-style-type: none;
     }
   }
@@ -75,12 +75,10 @@ a {
 
 .hoverable {
   transition: box-shadow .25s;
-  box-shadow: 0;
-}
 
-.hoverable:hover {
-  transition: box-shadow .25s;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  &:hover {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 }
 
 // Dividers
@@ -247,8 +245,7 @@ video.responsive-video {
       bottom: 0;
       min-width: 100%;
       min-height: 100%;
-      -webkit-transform: translate3d(0,0,0);
-              transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
       transform: translateX(-50%);
     }
   }
@@ -503,7 +500,9 @@ td, th{
       padding-left: 72px;
       position: relative;
 
-      .circle {
+      // Don't style circles inside preloader classes.
+      &:not(.circle-clipper) > .circle,
+      :not(.circle-clipper) > .circle {
         position: absolute;
         width: 42px;
         height: 42px;
@@ -710,11 +709,6 @@ td, th{
 
 // No Text Select
 .no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 

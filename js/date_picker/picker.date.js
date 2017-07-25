@@ -4,17 +4,7 @@
  */
 
 (function ( factory ) {
-
-    // AMD.
-    if ( typeof define == 'function' && define.amd )
-        define( ['picker', 'jquery'], factory )
-
-    // Node.js/browserify.
-    else if ( typeof exports == 'object' )
-        module.exports = factory( require('./picker.js'), require('jquery') )
-
-    // Browser globals.
-    else factory( Picker, jQuery )
+  factory( Materialize.Picker, jQuery )
 
 }(function( Picker, $ ) {
 
@@ -1107,6 +1097,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // divide in half to get half before and half after focused year.
             numberYears = settings.selectYears === true ? 5 : ~~( settings.selectYears / 2 )
 
+
             // If there are years to select, add a dropdown menu.
             if ( numberYears ) {
 
@@ -1160,9 +1151,13 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 }
             }
 
-            // Materialize modified
-            if (override == "raw")
-                return _.node( 'div', focusedYear )
+
+          // Materialize modified
+          if (override === 'raw' && selectedObject != null) {
+            return _.node( 'div', selectedObject.year )
+          }
+
+
 
             // Otherwise just return the year focused
             return _.node( 'div', focusedYear, settings.klass.year )
@@ -1294,7 +1289,7 @@ return _.node(
 		                                    selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
 		                                    activedescendant: isHighlighted ? true : null,
 		                                    disabled: isDisabled ? true : null
-		                                })
+		                                }) + ' ' + (isDisabled ? '' : 'tabindex="0"')
 		                            ),
 		                            '',
 		                            _.ariaAttr({ role: 'presentation' })
@@ -1367,6 +1362,9 @@ DatePicker.defaults = (function( prefix ) {
         today: 'Today',
         clear: 'Clear',
         close: 'Ok',
+
+        // Picker close behavior (Prevent a change in behaviour for backwards compatibility)
+        closeOnSelect: false,
 
         // The format to show on the `input` element
         format: 'd mmmm, yyyy',

@@ -15,8 +15,8 @@ form p:last-child {
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
   opacity: 0;
+  pointer-events: none;
 }
 
 // Checkbox Styles
@@ -30,11 +30,7 @@ form p:last-child {
     height: 25px;
     line-height: 25px;
     font-size: 1rem;
-
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
+    user-select: none;
   }
 
   /* checkbox aspect */
@@ -141,10 +137,7 @@ form p:last-child {
     border: 3px solid transparent;
     left: 6px;
     top: 10px;
-
-    -webkit-transform: rotateZ(37deg);
     transform: rotateZ(37deg);
-    -webkit-transform-origin: 20% 40%;
     transform-origin: 100% 100%;
   }
 
@@ -168,10 +161,7 @@ form p:last-child {
       border-left: 2px solid transparent;
       border-right: 2px solid $input-background;
       border-bottom: 2px solid $input-background;
-      -webkit-transform: rotateZ(37deg);
       transform: rotateZ(37deg);
-
-      -webkit-transform-origin: 100% 100%;
       transform-origin: 100% 100%;
     }
 
