@@ -113,6 +113,10 @@ module.exports = function(grunt) {
         ]
 		  },
 		  bin: {
+        options: {
+          sourceMap: true,
+          inputSourceMap: grunt.file.readJSON('temp/js/materialize_concat.js.map')
+        },
 			  files: {
 				  'bin/materialize.js': 'temp/js/materialize_concat.js'
 			  }
@@ -126,7 +130,7 @@ module.exports = function(grunt) {
 
     // Browser Sync integration
     browserSync: {
-      bsFiles: ["bin/*.js", "bin/*.css", "!**/node_modules/**/*"],
+      bsFiles: ["bin/*", "!**/node_modules/**/*"],
       options: {
         server: {
           baseDir: "./" // make server from root dir
@@ -188,6 +192,10 @@ module.exports = function(grunt) {
       },
       temp: {
         // the files to concatenate
+        options: {
+          sourceMap: true,
+          sourceMapStyle: 'link'
+        },
         src: [
           "js/initial.js",
           "js/jquery.easing.1.4.js",
