@@ -2,12 +2,13 @@
   'use strict';
 
   let _defaults = {
-    delay: 1000,
-    position: 'bottom',
+    exitDelay: 200,
+    enterDelay: 0,
     html: null,
     margin: 5,
     inDuration: 300,
-    outDuration: 300,
+    outDuration: 250,
+    position: 'bottom',
     transitionMovement: 10
   };
 
@@ -35,14 +36,11 @@
        * @type {jQuery}
        */
       this.$el = $el;
-
       this.isOpen = false;
-
+      this.isHovered = false;
       this.options = $.extend({}, Tooltip.defaults, options);
       this.options = $.extend({}, this.options, this._getAttributeOptions());
-
       this.$el[0].M_Tooltip = this;
-
       this._appendTooltipEl();
       this._setupEventHandlers();
 
@@ -93,7 +91,7 @@
       }
 
       this.isOpen = true;
-      this._animateIn();
+      this._setEnterDelayTimeout();
     }
 
     close() {
@@ -102,22 +100,37 @@
       }
 
       this.isOpen = false;
-      this._setDelayTimeout();
+      this._setExitDelayTimeout();
     }
 
     /**
-      * Create timeout which delays when the toast closes
+      * Create timeout which delays when the tooltip closes
       */
-    _setDelayTimeout() {
-      clearTimeout(this._delayTimeout);
+    _setExitDelayTimeout() {
+      clearTimeout(this._exitDelayTimeout);
 
-      this._delayTimeout = setTimeout(() => {
-        if (this.isOpen) {
+      this._exitDelayTimeout = setTimeout(() => {
+        if (this.isHovered) {
           return;
         } else {
           this._animateOut();
         }
-      }, this.options.delay);
+      }, this.options.exitDelay);
+    }
+
+    /**
+     * Create timeout which delays when the toast closes
+     */
+    _setEnterDelayTimeout() {
+      clearTimeout(this._enterDelayTimeout);
+
+      this._enterDelayTimeout = setTimeout(() => {
+        if (!this.isHovered) {
+          return;
+        } else {
+          this._animateIn();
+        }
+      }, this.options.enterDelay);
     }
 
     _positionTooltip() {

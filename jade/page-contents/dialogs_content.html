@@ -99,21 +99,34 @@
 
           <tbody>
             <tr>
-              <td>delay</td>
-              <td>Delay time before tooltip appears. (Default: 350)</td>
+              <td>enterdelay</td>
+              <td>Delay time before tooltip appears. (Default: 0)</td>
             </tr>
             <tr>
-              <td>tooltip</td>
-              <td>Tooltip text. Can use custom HTML if you set the html option.</td>
+              <td>exitdelay</td>
+              <td>Delay time before tooltip disappears. (Default: 200)</td>
+            </tr>
+            <tr>
+              <td>html</td>
+              <td>Can take regular text or HTML strings. (Default: null)</td>
+            </tr>
+            <tr>
+              <td>margin</td>
+              <td>Set distance tooltip appears away from its activator excluding transitionMovement (Default: 5)</td>
+            </tr>
+            <tr>
+              <td>inDuration</td>
+              <td>Enter transition duration (Default: 300)</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Exit transition duration (Default: 250)</td>
             </tr>
             <tr>
               <td>position</td>
               <td>Set the direction of the tooltip. 'top', 'right', 'bottom', 'left'. (Default: 'bottom')</td>
             </tr>
-            <tr>
-              <td>html</td>
-              <td>Allow custom html inside the tooltip. (Default: false)</td>
-            </tr>
+
           </tbody>
         </table>
 
