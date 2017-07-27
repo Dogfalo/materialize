@@ -4,7 +4,9 @@
   let _defaults = {
     accordion: true,
     onOpen: undefined,
-    onClose: undefined
+    onClose: undefined,
+    inDuration: 300,
+    outDuration: 300
   };
 
 
@@ -131,7 +133,7 @@
         Vel(
           $body[0],
           'slideDown',
-          {duration: 350, easing: 'easeInOutQuart', queue: false,
+          {duration: this.options.inDuration, easing: 'easeInOutCubic', queue: false,
           complete: () => {
             $body[0].style.height = null;
             $body[0].style.overflow = null;
@@ -154,7 +156,7 @@
         Vel(
           $body[0],
           'slideUp',
-          {duration: 350, easing: 'easeOutQuart', queue: false,
+          {duration: this.options.outDuration, easing: 'easeInOutCubic', queue: false,
           complete: () => {
             $body[0].style.height = null;
             $body[0].style.overflow = null;
