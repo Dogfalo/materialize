@@ -85,6 +85,11 @@
       this.$el[0].addEventListener('mouseleave', this.handleMouseLeaveBound);
     }
 
+    _removeEventHandlers() {
+      this.$el[0].removeEventListener('mouseenter', this.handleMouseEnterBound);
+      this.$el[0].removeEventListener('mouseleave', this.handleMouseLeaveBound);
+    }
+
     open() {
       if (this.isOpen) {
         return;
@@ -239,16 +244,12 @@
      * Teardown component
      */
     destroy() {
-      // this.$el[0].M_Tooltip = undefined;
+      $(this.tooltipEl).remove();
+      this._removeEventHandlers();
+      this.$el[0].M_Tooltip = undefined;
     }
 
   }
-
-  /**
-   * @static
-   * @memberof Tooltip
-   */
-  Tooltip._count = 0;
 
   window.Materialize.Tooltip = Tooltip;
 

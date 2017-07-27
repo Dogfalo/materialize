@@ -116,15 +116,19 @@
             </tr>
             <tr>
               <td>inDuration</td>
-              <td>Enter transition duration (Default: 300)</td>
+              <td>Enter transition duration. (Default: 300)</td>
             </tr>
             <tr>
               <td>outDuration</td>
-              <td>Exit transition duration (Default: 250)</td>
+              <td>Exit transition duration. (Default: 250)</td>
             </tr>
             <tr>
               <td>position</td>
               <td>Set the direction of the tooltip. 'top', 'right', 'bottom', 'left'. (Default: 'bottom')</td>
+            </tr>
+            <tr>
+                <td>transitionMovement</td>
+                <td>Amount in px that the tooltip moves during its transition. (Default: 10)</td>
             </tr>
 
           </tbody>
@@ -132,10 +136,10 @@
 
         <br />
         <h4>Removal</h4>
-        <p>To remove the tooltip from the button, pass in <code class="language-javascript">'remove'</code> as the option to the tooltip function</p>
+        <p>To remove the tooltip from the button, pass in <code class="language-javascript">'destroy'</code> as the option to the tooltip function</p>
         <pre><code class="language-javascript">
   // This will remove the tooltip functionality for the buttons on this page
-  $('.tooltipped').tooltip('remove');
+  $('.tooltipped').tooltip('destroy');
         </code></pre>
     </div>
 
