@@ -310,7 +310,8 @@
         data: {},
         limit: Infinity,
         onAutocomplete: null,
-        minLength: 1
+        minLength: 1,
+        selectLastEnter: false
       };
 
       options = $.extend(defaults, options);
@@ -430,13 +431,18 @@
                 $active = $autocomplete.children('.active').first();
 
             // select element on Enter
-            if (keyCode === 13 && activeIndex >= 0) {
-              liElement = $autocomplete.children('li').eq(activeIndex);
-              if (liElement.length) {
-                liElement.trigger('mousedown.autocomplete');
-                e.preventDefault();
+            if (keyCode === 13) {
+              if(options.selectLastEnter && numItems == 1) {
+                activeIndex = 0;
               }
-              return;
+              if(activeIndex >= 0) {
+                liElement = $autocomplete.children('li').eq(activeIndex);
+                if (liElement.length) {
+                  liElement.trigger('mousedown.autocomplete');
+                  e.preventDefault();
+                }
+                return;
+              }
             }
 
             // Capture up and down key
