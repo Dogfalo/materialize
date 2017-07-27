@@ -58,6 +58,7 @@
       this.showIndicators = this.options.indicators && this.hasMultipleSlides;
       this.noWrap = this.options.noWrap || !this.hasMultipleSlides;
       this.pressed = false;
+      this.dragged = false;
       this.offset = this.target = 0;
       this.images = [];
       this.itemWidth = this.$el.find('.carousel-item').first().innerWidth();
@@ -78,6 +79,7 @@
       }
 
       // Iterate through slides
+      this.$indicators = $('<ul class="indicators"></ul>');
       this.$el.find('.carousel-item').each((i,el) => {
         this.images.push(el);
         if (this.showIndicators) {
@@ -88,12 +90,11 @@
             $indicator.addClass('active');
           }
 
-          $indicators.append($indicator);
+          this.$indicators.append($indicator);
         }
       });
       if (this.showIndicators) {
-        this.$indicators = $('<ul class="indicators"></ul>');
-        this.$el.append($indicators);
+        this.$el.append(this.$indicators);
       }
       this.count = this.images.length;
 
@@ -553,7 +554,7 @@
       if (lastCenter !== this.center &&
           typeof(this.options.onCycleTo) === "function") {
         var $currItem = this.$el.find('.carousel-item').eq(this._wrap(this.center));
-        options.onCycleTo.call(this, $currItem, this.dragged);
+        this.options.onCycleTo.call(this, $currItem, this.dragged);
       }
 
       // One time callback
@@ -583,11 +584,11 @@
       this.target = (this.dim * Math.round(this.offset / this.dim))
       // Next
       if (diff < 0) {
-        this.target += (this.dim * n);
+        this.target += (this.dim * Math.abs(diff));
 
       // Prev
       } else if (diff > 0) {
-        this.target -= (this.dim * n);
+        this.target -= (this.dim * diff);
       }
 
       // Set one time callback

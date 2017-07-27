@@ -169,8 +169,14 @@
     }
 
     // Plugin initialization
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel({
+      fullWidth: true,
+      indicators: true,
+      onCycleTo: function(item, dragged) {
+        console.log("CYCLE TO", item, dragged);
+      }
+    });
     $('.collapsible').collapsible();
     $('.collapsible.expandable').collapsible({
       accordion: false
