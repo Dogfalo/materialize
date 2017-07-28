@@ -242,12 +242,14 @@
 
       // Getter methods
       if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_Collapsible[methodOrOptions](params);
+        let instance = this.first()[0].M_Collapsible;
+        return instance[methodOrOptions].apply(instance, params);
 
       // Void methods
       } else {
         return this.each(function() {
-          this.M_Collapsible[methodOrOptions](params);
+          let instance = this.M_Collapsible;
+          instance[methodOrOptions].apply(instance, params);
         });
       }
 
