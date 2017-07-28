@@ -554,12 +554,12 @@
       if (lastCenter !== this.center &&
           typeof(this.options.onCycleTo) === "function") {
         var $currItem = this.$el.find('.carousel-item').eq(this._wrap(this.center));
-        this.options.onCycleTo.call(this, $currItem, this.dragged);
+        this.options.onCycleTo.call(this, $currItem[0], this.dragged);
       }
 
       // One time callback
       if (typeof(this.oneTimeCallback) === "function") {
-        this.oneTimeCallback.call(this, $currItem, this.dragged);
+        this.oneTimeCallback.call(this, $currItem[0], this.dragged);
         this.oneTimeCallback = null;
       }
     }

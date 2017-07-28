@@ -65,12 +65,14 @@
     <script type="text/javascript">
     $( document ).ready(function() {
 
+      var init = false;
       $('.collapsible').collapsible({
         onOpen: function(el) {
           console.log("OPEN", el);
-          var carousel = el.find('.carousel');
-          if (carousel.length) {
-            carousel.trigger('carouselNext', [0.000001]);
+          var carousel = $(el).find('.carousel');
+          if (carousel.length && !init) {
+            init = true;
+            carousel.carousel();
           }
         },
         onClose: function(el) {
@@ -84,8 +86,8 @@
         }
       });
 
-      $('.carousel.carousel-slider').carousel({fullWidth : true});
       $('.carousel').carousel();
+      $('.carousel.carousel-slider').carousel({fullWidth : true});
 
     });
 
