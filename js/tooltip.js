@@ -39,7 +39,6 @@
       this.isOpen = false;
       this.isHovered = false;
       this.options = $.extend({}, Tooltip.defaults, options);
-      this.options = $.extend({}, this.options, this._getAttributeOptions());
       this.$el[0].M_Tooltip = this;
       this._appendTooltipEl();
       this._setupEventHandlers();
@@ -74,8 +73,11 @@
       tooltipContentEl.classList.add('tooltip-content');
       tooltipContentEl.innerHTML = this.options.html;
       tooltipEl.appendChild(tooltipContentEl);
+      document.body.appendChild(tooltipEl);
+    }
 
-      document.body.append(tooltipEl);
+    _updateTooltipContent() {
+      this.tooltipEl.querySelector('.tooltip-content').innerHTML = this.options.html;
     }
 
     _setupEventHandlers() {
@@ -96,6 +98,10 @@
       }
 
       this.isOpen = true;
+
+      // Update tooltip content with HTML attribute options
+      this.options = $.extend({}, this.options, this._getAttributeOptions());
+      this._updateTooltipContent();
       this._setEnterDelayTimeout();
     }
 
@@ -145,6 +151,7 @@
           originWidth = origin.offsetWidth,
           tooltipHeight = tooltip.offsetHeight,
           tooltipWidth = tooltip.offsetWidth,
+          newCoordinates,
           margin = this.options.margin,
           targetTop,
           targetLeft;
@@ -176,10 +183,32 @@
         this.yMovement = this.options.transitionMovement;
       }
 
+      newCoordinates = this._repositionWithinScreen(
+        targetLeft, targetTop, tooltipWidth, tooltipHeight);
+
       $(tooltip).css({
-        top: targetTop,
-        left: targetLeft
+        top: newCoordinates.y,
+        left: newCoordinates.x
       });
+    }
+
+    _repositionWithinScreen(x, y, width, height) {
+      var newX = x - document.body.scrollLeft;
+      var newY = y - document.body.scrollTop;
+
+      if (newX - this.options.margin - this.options.transitionMovement < 0) {
+        newX = this.options.margin + this.options.transitionMovement;
+      } else if (newX + width > window.innerWidth) {
+        newX -= newX + width - window.innerWidth;
+      }
+
+      if (newY - this.options.margin - this.options.transitionMovement < 0) {
+        newY = this.options.margin + this.options.transitionMovement;
+      } else if (newY + height > window.innerHeight) {
+        newY -= newY + height - window.innerHeight;
+      }
+
+      return {x: newX + document.body.scrollLeft, y: newY + document.body.scrollTop};
     }
 
     _animateIn() {
