@@ -58,7 +58,6 @@ Package.onUse(function (api) {
     'sass/components/_grid.scss',
     'sass/components/_icons-material-design.scss',
     'sass/components/_materialbox.scss',
-    'sass/components/_mixins.scss',
     'sass/components/_modal.scss',
     'sass/components/_navbar.scss',
     'sass/components/_normalize.scss',
