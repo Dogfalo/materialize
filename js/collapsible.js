@@ -3,8 +3,10 @@
 
   let _defaults = {
     accordion: true,
-    onOpen: undefined,
-    onClose: undefined,
+    onOpenStart: undefined,
+    onOpenEnd: undefined,
+    onCloseStart: undefined,
+    onCloseEnd: undefined,
     inDuration: 300,
     outDuration: 300
   };
@@ -38,8 +40,10 @@
        * Options for the collapsible
        * @member Collapsible#options
        * @prop {Boolean} [accordion=false] - Type of the collapsible
-       * @prop {Function} onOpen - Callback function called when collapsible is opened
-       * @prop {Function} onClose - Callback function called when collapsible is closed
+       * @prop {Function} onOpenStart - Callback function called before collapsible is opened
+       * @prop {Function} onOpenEnd - Callback function called after collapsible is opened
+       * @prop {Function} onCloseStart - Callback function called before collapsible is closed
+       * @prop {Function} onCloseEnd - Callback function called after collapsible is closed
        */
       this.options = $.extend({}, Collapsible.defaults, options);
 
@@ -139,6 +143,11 @@
             $body[0].style.overflow = null;
             $body[0].style.padding = null;
             $body[0].style.margin = null;
+
+            // onOpenEnd callback
+            if (typeof(this.options.onOpenEnd) === 'function') {
+              this.options.onOpenEnd.call(this, $collapsibleLi[0]);
+            }
           }}
         );
       }
@@ -162,6 +171,11 @@
             $body[0].style.overflow = null;
             $body[0].style.padding = null;
             $body[0].style.margin = null;
+
+            // onCloseEnd callback
+            if (typeof(this.options.onCloseEnd) === 'function') {
+              this.options.onCloseEnd.call(this, $collapsibleLi[0]);
+            }
           }}
         );
       }
@@ -174,6 +188,12 @@
     open(index) {
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length && !$collapsibleLi[0].classList.contains('active')) {
+
+        // onOpenStart callback
+        if (typeof(this.options.onOpenStart) === 'function') {
+          this.options.onOpenStart.call(this, $collapsibleLi[0]);
+        }
+
         // Handle accordion behavior
         if (this.options.accordion) {
           let $collapsibleLis = this.$el.children('li');
@@ -184,14 +204,10 @@
           });
         }
 
+        // Animate in
         let $header = $collapsibleLi.find('> .collapsible-header');
         $collapsibleLi[0].classList.add('active');
         this._animateIn(index);
-
-        // onOpen callback
-        if (typeof(this.options.onOpen) === 'function') {
-          this.options.onOpen.call(this, $collapsibleLi[0]);
-        }
       }
     }
 
@@ -202,14 +218,16 @@
     close(index) {
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length && $collapsibleLi[0].classList.contains('active')) {
+
+        // onCloseStart callback
+        if (typeof(this.options.onCloseStart) === 'function') {
+          this.options.onCloseStart.call(this, $collapsibleLi[0]);
+        }
+
+        // Animate out
         let $header = $collapsibleLi.find('> .collapsible-header');
         $collapsibleLi[0].classList.remove('active');
         this._animateOut(index);
-
-        // onClose callback
-        if (typeof(this.options.onClose) === 'function') {
-          this.options.onClose.call(this, $collapsibleLi[0]);
-        }
       }
     }
 

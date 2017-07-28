@@ -107,8 +107,10 @@
         <pre><code class="language-javascript">
   $('.collapsible').collapsible({
     accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
-    onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
+    onOpenStart: function(el) { alert('Before Open'); }, // Callback that is called before Collapsible open
+    onOpenEnd: function(el) { alert('After Open'); }, // Callback that is called after Collapsible open
+    onCloseStart: function(el) { alert('Before Closed'); }, // Callback that is called before Collapsible close
+    onCloseEnd: function(el) { alert('After Closed'); } // Callback that is called after Collapsible close
   });
         </code></pre>
       </div>
