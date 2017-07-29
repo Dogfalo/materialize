@@ -98,7 +98,6 @@
       }
 
       this.isOpen = true;
-
       // Update tooltip content with HTML attribute options
       this.options = $.extend({}, this.options, this._getAttributeOptions());
       this._updateTooltipContent();
@@ -187,8 +186,8 @@
         targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
       $(tooltip).css({
-        top: newCoordinates.y,
-        left: newCoordinates.x
+        top: newCoordinates.y + 'px',
+        left: newCoordinates.x + 'px'
       });
     }
 
@@ -282,7 +281,7 @@
 
   window.Materialize.Tooltip = Tooltip;
 
-  $.fn.tooltip = function(methodOrOptions) {
+  jQuery.fn.tooltip = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
     if (Tooltip.prototype[methodOrOptions]) {
       // Getter methods
@@ -303,9 +302,9 @@
 
     // Return error if an unrecognized  method name is passed in
     } else {
-      $.error(`Method ${methodOrOptions} does not exist on jQuery.tooltip`);
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.tooltip`);
     }
   };
 
 
-})(jQuery, Materialize.Vel);
+})(cash, Materialize.Vel);

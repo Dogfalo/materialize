@@ -16,7 +16,6 @@
         return;
       }
 
-
       /**
        * Options for the toast
        * @member Toast#options
@@ -316,5 +315,5 @@
   window.Materialize.Toast = Toast;
   window.Materialize.toast = function(message, displayLength, className, completeCallback) {
     return new Toast(message, displayLength, className, completeCallback);
-  }
-})(jQuery, Materialize.Vel);
+  };
+})(cash, Materialize.Vel);
