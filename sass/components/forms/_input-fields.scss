@@ -238,10 +238,17 @@ textarea.materialize-textarea {
     height: inherit;
     padding-left: 4rem;
     width: calc(100% - 4rem);
-    border: 0;
-    box-shadow: none;
-  }
+    
+    &:focus {
+      border: 0;
+      box-shadow: none;
+    }
 
+    & + label {
+        transform: none;
+    }
+  }
+ 
   &:focus {
     background-color: $input-background;
     border: 0;
