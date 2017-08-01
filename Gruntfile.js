@@ -131,7 +131,7 @@ module.exports = function(grunt) {
 
     // Browser Sync integration
     browserSync: {
-      bsFiles: ["bin/*", "!**/node_modules/**/*"],
+      bsFiles: ["bin/*", "css/ghpages-materialize.css", "!**/node_modules/**/*"],
       options: {
         server: {
           baseDir: "./" // make server from root dir
