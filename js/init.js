@@ -183,6 +183,7 @@
     });
     $('.slider').slider();
     $('.parallax').parallax();
+    $('.materialboxed').materialbox();
     $('.modal').modal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
