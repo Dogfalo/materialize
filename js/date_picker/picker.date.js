@@ -1097,6 +1097,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // divide in half to get half before and half after focused year.
             numberYears = settings.selectYears === true ? 5 : ~~( settings.selectYears / 2 )
 
+
             // If there are years to select, add a dropdown menu.
             if ( numberYears ) {
 
@@ -1150,9 +1151,13 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 }
             }
 
-            // Materialize modified
-            if (override == "raw")
-                return _.node( 'div', focusedYear )
+
+          // Materialize modified
+          if (override === 'raw' && selectedObject != null) {
+            return _.node( 'div', selectedObject.year )
+          }
+
+
 
             // Otherwise just return the year focused
             return _.node( 'div', focusedYear, settings.klass.year )

@@ -109,7 +109,7 @@
       this.handleModalCloseClickBound = this.handleModalCloseClick.bind(this);
 
       if (Modal._count === 1) {
-        document.addEventListener('click', this.handleTriggerClick);
+        document.body.addEventListener('click', this.handleTriggerClick);
       }
       this.$overlay[0].addEventListener('click', this.handleOverlayClickBound);
       this.$el[0].addEventListener('click', this.handleModalCloseClickBound);
@@ -120,7 +120,7 @@
      */
     removeEventHandlers() {
       if (Modal._count === 0) {
-        document.removeEventListener('click', this.handleTriggerClick);
+        document.body.removeEventListener('click', this.handleTriggerClick);
       }
       this.$overlay[0].removeEventListener('click', this.handleOverlayClickBound);
       this.$el[0].removeEventListener('click', this.handleModalCloseClickBound);
@@ -255,7 +255,7 @@
           if (typeof(this.options.complete) === 'function') {
             this.options.complete.call(this, this.$el);
           }
-          this.$overlay[0].remove();
+          this.$overlay[0].parentNode.removeChild(this.$overlay[0]);
         }
       };
 
