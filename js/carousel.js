@@ -10,7 +10,7 @@
     indicators: false, // Toggle indicators
     noWrap: false, // Don't wrap around and cycle through items.
     onCycleTo: null // Callback for when a new slide is cycled to.
-  }
+  };
 
 
   /**
@@ -80,7 +80,7 @@
 
       // Iterate through slides
       this.$indicators = $('<ul class="indicators"></ul>');
-      this.$el.find('.carousel-item').each((i,el) => {
+      this.$el.find('.carousel-item').each((el, i) => {
         this.images.push(el);
         if (this.showIndicators) {
           let $indicator = $('<li class="indicator-item"></li>');
@@ -163,7 +163,7 @@
 
       if (this.showIndicators && this.$indicators) {
         this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
-        this.$indicators.find('.indicator-item').each((i, el) => {
+        this.$indicators.find('.indicator-item').each((el, i) => {
           el.addEventListener('click', this._handleIndicatorClickBound);
         });
       }
@@ -191,7 +191,7 @@
       this.$el[0].removeEventListener('click', this._handleCarouselClickBound);
 
       if (this.showIndicators && this.$indicators) {
-        this.$indicators.find('.indicator-item').each((i, el) => {
+        this.$indicators.find('.indicator-item').each((el, i) => {
           el.removeEventListener('click', this._handleIndicatorClickBound);
         });
       }
@@ -375,8 +375,8 @@
           }
         } else {
           // Get height when image is loaded normally
-          firstImage.one('load', (i, el) => {
-            this.$el.css('height', $(el).height());
+          firstImage.one('load', (el, i) => {
+            this.$el.css('height', el.offsetHeight);
           });
         }
       } else if (!imageOnly) {
@@ -517,7 +517,7 @@
         if (this.options.fullWidth) { tweenedOpacity = 1; }
         else { tweenedOpacity = 1 - 0.2 * tween; }
         el.style.opacity = tweenedOpacity;
-        el.style.display = 'block';
+        el.style.visibility = 'visible';
       }
 
       for (i = 1; i <= half; ++i) {
@@ -537,7 +537,7 @@
             ' translateZ(' + zTranslation + 'px)';
           el.style.zIndex = -i;
           el.style.opacity = tweenedOpacity;
-          el.style.display = 'block';
+          el.style.visibility = 'visible';
         }
 
 
@@ -557,7 +557,7 @@
             ' translateZ(' + zTranslation + 'px)';
           el.style.zIndex = -i;
           el.style.opacity = tweenedOpacity;
-          el.style.display = 'block';
+          el.style.visibility = 'visible';
         }
       }
 
@@ -573,7 +573,7 @@
         if (this.options.fullWidth) { tweenedOpacity = 1; }
         else { tweenedOpacity = 1 - 0.2 * tween; }
         el.style.opacity = tweenedOpacity;
-        el.style.display = 'block';
+        el.style.visibility = 'visible';
       }
 
       // onCycleTo callback
@@ -639,7 +639,6 @@
       if (n === undefined || isNaN(n)) {
         n = 1;
       }
-      console.log(this.center, n);
 
       let index = this.center + n;
       if (index > this.count || index < 0) {
@@ -649,7 +648,6 @@
           index = this._wrap(index);
         }
       }
-      console.log(this.center, index);
       this._cycleTo(index);
     }
 
@@ -697,7 +695,7 @@
 
   window.Materialize.Carousel = Carousel;
 
-  $.fn.carousel = function(methodOrOptions) {
+  jQuery.fn.carousel = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
     if (Carousel.prototype[methodOrOptions]) {
       let params = Array.prototype.slice.call( arguments, 1 );
@@ -722,7 +720,7 @@
 
     // Return error if an unrecognized  method name is passed in
     } else {
-      $.error(`Method ${methodOrOptions} does not exist on jQuery.collapsible`);
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.collapsible`);
     }
   };
-}( jQuery ));
+}( cash ));
