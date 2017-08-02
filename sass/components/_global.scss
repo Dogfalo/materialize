@@ -301,6 +301,8 @@ ul.staggered-list li {
     display: none !important;
   }
 }
+
+
 .show-on-large {
   @media #{$large-and-up} {
     display: block !important;
@@ -324,6 +326,114 @@ ul.staggered-list li {
 .show-on-medium-and-down {
   @media #{$medium-and-down} {
     display: block !important;
+  }
+}
+
+
+.show-on-large-inline-block {
+  @media #{$large-and-up} {
+    display: inline-block !important;
+  }
+}
+.show-on-medium-inline-block {
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+    display: inline-block !important;
+  }
+}
+.show-on-small-inline-block {
+  @media #{$small-and-down} {
+    display: inline-block !important;
+  }
+}
+.show-on-medium-and-up-inline-block {
+  @media #{$medium-and-up} {
+    display: inline-block !important;
+  }
+}
+.show-on-medium-and-down-inline-block {
+  @media #{$medium-and-down} {
+    display: inline-block !important;
+  }
+}
+
+
+.show-on-large-inline {
+  @media #{$large-and-up} {
+    display: inline !important;
+  }
+}
+.show-on-medium-inline {
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+    display: inline !important;
+  }
+}
+.show-on-small-inline {
+  @media #{$small-and-down} {
+    display: inline !important;
+  }
+}
+.show-on-medium-and-up-inline {
+  @media #{$medium-and-up} {
+    display: inline !important;
+  }
+}
+.show-on-medium-and-down-inline {
+  @media #{$medium-and-down} {
+    display: inline !important;
+  }
+}
+
+
+.show-on-large-flex {
+  @media #{$large-and-up} {
+    display: flex !important;
+  }
+}
+.show-on-medium-flex {
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+    display: flex !important;
+  }
+}
+.show-on-small-flex {
+  @media #{$small-and-down} {
+    display: flex !important;
+  }
+}
+.show-on-medium-and-up-flex {
+  @media #{$medium-and-up} {
+    display: flex !important;
+  }
+}
+.show-on-medium-and-down-flex {
+  @media #{$medium-and-down} {
+    display: flex !important;
+  }
+}
+
+
+.show-on-large-inline-flex {
+  @media #{$large-and-up} {
+    display: inline-flex !important;
+  }
+}
+.show-on-medium-inline-flex {
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+    display: inline-flex !important;
+  }
+}
+.show-on-small-inline-flex {
+  @media #{$small-and-down} {
+    display: inline-flex !important;
+  }
+}
+.show-on-medium-and-up-inline-flex {
+  @media #{$medium-and-up} {
+    display: inline-flex !important;
+  }
+}
+.show-on-medium-and-down-inline-flex {
+  @media #{$medium-and-down} {
+    display: inline-flex !important;
   }
 }
 
