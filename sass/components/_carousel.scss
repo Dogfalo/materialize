@@ -44,7 +44,7 @@
   transform-origin: 0% 50%;
 
   .carousel-item {
-    display: none;
+    visibility: hidden;
     width: $carousel-item-width;
     height: $carousel-item-height;
     position: absolute;

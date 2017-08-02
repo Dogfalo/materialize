@@ -1,4 +1,4 @@
-(function ($) {
+(function ($, Vel) {
   'use strict';
 
   let _defaults = {
@@ -51,7 +51,7 @@
       this._setupEventHandlers();
 
       // Open first active
-      let $activeBodies = this.$el.find('> li.active .collapsible-body');
+      let $activeBodies = this.$el.children('li.active').children('.collapsible-body');
       if (this.options.accordion) { // Handle Accordion
         $activeBodies.first().css('display', 'block');
 
@@ -132,7 +132,7 @@
     _animateIn(index) {
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length) {
-        let $body = $collapsibleLi.find('> .collapsible-body');
+        let $body = $collapsibleLi.children('.collapsible-body');
         Vel($body[0], 'stop');
         Vel(
           $body[0],
@@ -160,7 +160,7 @@
     _animateOut(index) {
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length) {
-        let $body = $collapsibleLi.find('> .collapsible-body');
+        let $body = $collapsibleLi.children('.collapsible-body');
         Vel($body[0], 'stop');
         Vel(
           $body[0],
@@ -197,15 +197,15 @@
         // Handle accordion behavior
         if (this.options.accordion) {
           let $collapsibleLis = this.$el.children('li');
-          let $activeLis = this.$el.find(' > li.active');
-          $activeLis.each((i, el) => {
+          let $activeLis = this.$el.children('li.active');
+          $activeLis.each((el) => {
             let index = $collapsibleLis.index($(el));
             this.close(index)
           });
         }
 
         // Animate in
-        let $header = $collapsibleLi.find('> .collapsible-header');
+        let $header = $collapsibleLi.children('.collapsible-header');
         $collapsibleLi[0].classList.add('active');
         this._animateIn(index);
       }
@@ -225,7 +225,7 @@
         }
 
         // Animate out
-        let $header = $collapsibleLi.find('> .collapsible-header');
+        let $header = $collapsibleLi.children('.collapsible-header');
         $collapsibleLi[0].classList.remove('active');
         this._animateOut(index);
       }
@@ -235,7 +235,7 @@
 
   window.Materialize.Collapsible = Collapsible;
 
-  $.fn.collapsible = function(methodOrOptions) {
+  jQuery.fn.collapsible = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
     if (Collapsible.prototype[methodOrOptions]) {
       let params = Array.prototype.slice.call( arguments, 1 );
@@ -260,8 +260,8 @@
 
     // Return error if an unrecognized  method name is passed in
     } else {
-      $.error(`Method ${methodOrOptions} does not exist on jQuery.collapsible`);
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.collapsible`);
     }
   };
 
-}( jQuery ));
+}( cash, Materialize.Vel ));
