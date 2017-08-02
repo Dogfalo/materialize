@@ -33,7 +33,7 @@ describe( "Collapsible Plugin", function () {
         bodies.each(function() {
           expect($(this)).toBeVisible('because collapsible bodies not visible after being opened.');
         });
-        done()
+        done();
       }, 400);
     });
 
@@ -59,13 +59,13 @@ describe( "Collapsible Plugin", function () {
       var closeCallback = false;
       expandable.collapsible({
         accordion: false,
-        onOpen: function() {
+        onOpenStart: function() {
           openCallback = true;
         },
-        onClose: function() {
+        onCloseStart: function() {
           closeCallback = true;
         }
-      })
+      });
       var bodies = expandable.find('.collapsible-body');
 
       expect(openCallback).toEqual(false, 'because open callback not yet fired');
