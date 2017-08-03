@@ -96,6 +96,12 @@
       this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound);
       this._handleDragTargetReleaseBound = this._handleDragTargetRelease.bind(this);
       this.dragTarget.addEventListener('touchend', this._handleDragTargetReleaseBound);
+      this._handleCloseDragBound = this._handleCloseDrag.bind(this);
+      this._overlay.addEventListener('touchmove', this._handleCloseDragBound);
+      this.el.addEventListener('touchmove', this._handleCloseDragBound);
+      this._handleCloseReleaseBound = this._handleCloseRelease.bind(this);
+      this._overlay.addEventListener('touchend', this._handleCloseReleaseBound);
+      this.el.addEventListener('touchend', this._handleCloseReleaseBound);
     }
 
     _removeEventHandlers() {
@@ -137,6 +143,8 @@
         this.time = Date.now();
         this.width = this.el.getBoundingClientRect().width;
         this._overlay.style.display = 'block';
+        Vel(this.el, 'stop');
+        Vel(this._overlay, 'stop');
       }
 
       this.deltaX = Math.abs(this.xPos - clientX);
@@ -173,13 +181,83 @@
      * @param {Event} e
      */
     _handleDragTargetRelease(e) {
-      if (this.percentOpen > .5) {
-        this.open();
-      } else {
-        this._animateOut();
-      }
+      console.log("DRAG TARGET RELEASE");
+      if (this.dragging) {
+        if (this.percentOpen > .5) {
+          this.open();
+        } else {
+          this._animateOut();
+        }
 
-      this.dragging = false;
+        this.dragging = false;
+      }
+    }
+
+    /**
+     * Handle Close Drag
+     * @param {Event} e
+     */
+    _handleCloseDrag(e) {
+      console.log("CLOSE DRAG");
+      if (this.isOpen) {
+        let clientX = e.targetTouches[0].clientX
+
+        // Drag Start
+        if (!this.dragging) {
+          this.dragging = true;
+          this.startingXpos = clientX;
+          this.xPos = this.startingXpos;
+          this.time = Date.now();
+          this.width = this.el.getBoundingClientRect().width;
+          this._overlay.style.display = 'block';
+          Vel(this.el, 'stop');
+          Vel(this._overlay, 'stop');
+        }
+
+        this.deltaX = Math.abs(this.xPos - clientX);
+        this.xPos = clientX;
+        this.velocityX = this.deltaX / (Date.now() - this.time);
+        this.time = Date.now();
+
+        let totalDeltaX = this.xPos - this.startingXpos;
+        let dragDirection = totalDeltaX > 0 ? 'right' : 'left';
+        console.log(totalDeltaX);
+        totalDeltaX = Math.min(this.width, Math.abs(totalDeltaX));
+
+        if (this.options.edge !== dragDirection) {
+          totalDeltaX = 0;
+        }
+        let transformX = -totalDeltaX;
+
+
+        if (this.options.edge === 'right') {
+          transformX = -transformX;
+        }
+
+
+        this.percentOpen = Math.min(1, 1 - totalDeltaX / this.width);
+
+
+        this.el.style.transform = `translateX(${transformX}px)`;
+        this._overlay.style.opacity = this.percentOpen;
+      }
+    }
+
+    /**
+     * Handle Close Release
+     * @param {Event} e
+     */
+    _handleCloseRelease(e) {
+      console.log("CLOSE RELEASE");
+      if (this.isOpen && this.dragging) {
+        if (this.percentOpen > .5) {
+          this._animateIn();
+        } else {
+          this.close();
+        }
+
+        this.dragging = false;
+      }
     }
 
     _setupClasses() {
@@ -217,12 +295,31 @@
       }
 
       this.isOpen = true;
-      this._preventBodyScrolling();
-      this._animateIn();
 
+      this._preventBodyScrolling();
+
+      if (!this.dragging || this.percentOpen != 1) {
+        this._animateIn();
+      }
+    }
+
+    close() {
+      if (this.isOpen === false) {
+        return;
+      }
+
+      this.isOpen = false;
+      this._enableBodyScrolling();
+
+      if (!this.dragging || this.percentOpen != 0) {
+        this._animateOut();
+      } else {
+        this._overlay.style.display = 'none';
+      }
     }
 
     _animateIn() {
+      console.log("ANIMATE IN");
       this._animateSideNavIn();
       this._animateOverlayIn();
     }
@@ -232,7 +329,9 @@
       if (this.dragging) {
         slideOutPercent = this.options.edge === 'left' ? slideOutPercent + this.percentOpen : slideOutPercent - this.percentOpen;
       }
+      console.log(slideOutPercent);
 
+      Vel(this.el, 'stop');
       Vel(this.el,
         {'translateX': [0, `${slideOutPercent * 100}%`]},
         {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad'});
@@ -246,25 +345,10 @@
         Vel.hook(this._overlay, 'display', 'block');
       }
 
+      Vel(this._overlay, 'stop');
       Vel(this._overlay,
           {opacity: [1, start]},
           {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad'});
-    }
-
-    _animateOverlayOut(opacity) {
-      Vel(this._overlay,
-          'fadeOut',
-          {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
-    }
-
-    close() {
-      if (this.isOpen === false) {
-        return;
-      }
-
-      this.isOpen = false;
-      this._enableBodyScrolling();
-      this._animateOut();
     }
 
     _animateOut() {
@@ -279,8 +363,18 @@
         slideOutPercent = this.options.edge === 'left' ? endPercent + this.percentOpen : endPercent - this.percentOpen;
       }
 
+      console.log(endPercent, slideOutPercent);
+
+      Vel(this.el, 'stop');
       Vel(this.el,
           {'translateX': [`${endPercent * 100}%`, `${slideOutPercent * 100}%`]},
+          {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
+    }
+
+    _animateOverlayOut(opacity) {
+      Vel(this._overlay, 'stop');
+      Vel(this._overlay,
+          'fadeOut',
           {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
     }
 
