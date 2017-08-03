@@ -145,20 +145,24 @@
       this.time = Date.now();
 
       let totalDeltaX = this.xPos - this.startingXpos;
+      let dragDirection = totalDeltaX > 0 ? 'right' : 'left';
+      totalDeltaX = Math.min(this.width, Math.abs(totalDeltaX));
+      if (this.options.edge === dragDirection) {
+        totalDeltaX = 0;
+      }
+      let transformX = totalDeltaX;
       let transformPrefix = 'translateX(-100%)';
+
+
       if (this.options.edge === 'right') {
-        // totalDeltaX = this.startingXpos - this.xPos;
+        // totalDeltaX = -totalDeltaX;
         transformPrefix = 'translateX(100%)';
+        transformX = -transformX;
       }
 
 
-      let transformX = Math.min(this.width, totalDeltaX);
-      this.percentOpen = Math.min(1, Math.abs(totalDeltaX / this.width));
+      this.percentOpen = Math.min(1, totalDeltaX / this.width);
 
-      if (totalDeltaX < 0) {
-        transformX = 0;
-        this.percentOpen = 0;
-      }
 
       this.el.style.transform = `${transformPrefix} translateX(${transformX}px)`;
       this._overlay.style.opacity = this.percentOpen;
