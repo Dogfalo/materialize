@@ -5,7 +5,7 @@
     edge: 'left',
     closeOnClick: false,
     draggable: true,
-    inDuration: 300,
+    inDuration: 1000,
     outDuration: 200,
     onOpen: null,
     onClose: null
@@ -40,11 +40,18 @@
        */
       this.isOpen = false;
 
+      /**
+       * Describes dragging state of SideNav
+       * @type {Boolean}
+       */
+      this.dragging = false;
+
       this.$el[0].M_SideNav = this;
 
       this._createOverlay();
       this._createDragTarget();
       this._setupEventHandlers();
+      this._setupClasses();
 
       SideNav._sideNavs.push(this);
     }
@@ -81,10 +88,14 @@
     }
 
     _setupEventHandlers() {
-
       if (SideNav._sideNavs.length === 0) {
         document.body.addEventListener('click', this._handleTriggerClick);
       }
+
+      this._handleDragTargetDragBound = this._handleDragTargetDrag.bind(this);
+      this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound);
+      this._handleDragTargetReleaseBound = this._handleDragTargetRelease.bind(this);
+      this.dragTarget.addEventListener('touchend', this._handleDragTargetReleaseBound);
     }
 
     _removeEventHandlers() {
@@ -100,12 +111,8 @@
     _handleTriggerClick(e) {
       let $trigger =  $(e.target).closest('.sidenav-trigger');
       if (e.target && $trigger.length) {
-        let sideNavId = $trigger[0].getAttribute('href');
-        if (sideNavId) {
-          sideNavId = sideNavId.slice(1);
-        } else {
-          sideNavId = $trigger[0].getAttribute('data-target');
-        }
+        let sideNavId = Materialize.getIdFromTrigger($trigger[0]);
+        console.log(sideNavId);
 
         let sideNavInstance = document.getElementById(sideNavId).M_SideNav;
         if (sideNavInstance) {
@@ -113,6 +120,62 @@
         }
         e.preventDefault();
       }
+    }
+
+    /**
+     * Handle Drag Target Drag
+     * @param {Event} e
+     */
+    _handleDragTargetDrag(e) {
+      let clientX = e.targetTouches[0].clientX
+
+      // Drag Start
+      if (!this.dragging) {
+        this.dragging = true;
+        this.startingXpos = clientX;
+        this.xPos = this.startingXpos;
+        this.time = Date.now();
+        this.width = this.el.getBoundingClientRect().width;
+        this._overlay.style.display = 'block';
+      }
+
+      this.deltaX = Math.abs(this.xPos - clientX);
+      this.xPos = clientX;
+      this.velocityX = this.deltaX / (Date.now() - this.time);
+      this.time = Date.now();
+
+      let totalDeltaX = this.xPos - this.startingXpos;
+      let transformPrefix = 'translateX(-100%)';
+      if (this.options.edge === 'right') {
+        // totalDeltaX = this.startingXpos - this.xPos;
+        transformPrefix = 'translateX(100%)';
+      }
+
+
+      let transformX = Math.min(this.width, totalDeltaX);
+      this.percentOpen = Math.min(1, Math.abs(totalDeltaX / this.width));
+
+      if (totalDeltaX < 0) {
+        transformX = 0;
+        this.percentOpen = 0;
+      }
+
+      this.el.style.transform = `${transformPrefix} translateX(${transformX}px)`;
+      this._overlay.style.opacity = this.percentOpen;
+    }
+
+    /**
+     * Handle Drag Target Release
+     * @param {Event} e
+     */
+    _handleDragTargetRelease(e) {
+      if (this.percentOpen > .5) {
+        this.open();
+      } else {
+        this._animateOut();
+      }
+
+      this.dragging = false;
     }
 
     _setupClasses() {
@@ -161,33 +224,33 @@
     }
 
     _animateSideNavIn() {
-      let slideOutPercent = `${this.options.edge === 'left' ? -100 : 100}%`;
+      let slideOutPercent = this.options.edge === 'left' ? -1 : 1;
+      if (this.dragging) {
+        slideOutPercent = this.options.edge === 'left' ? slideOutPercent + this.percentOpen : slideOutPercent - this.percentOpen;
+      }
 
       Vel(this.el,
-        {'translateX': [0, slideOutPercent]},
+        {'translateX': [0, `${slideOutPercent * 100}%`]},
         {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad'});
     }
 
     _animateOverlayIn(opacity) {
-      console.log(this._overlay);
+      let start = 0;
+      if (this.dragging) {
+        start = this.percentOpen;
+      } else {
+        Vel.hook(this._overlay, 'display', 'block');
+      }
+
       Vel(this._overlay,
-          'fadeIn',
-          {duration: this.options.inDuration});
-      // Vel(this.overlay,
-      //     {opacity: 1},
-      //     {duration: this.options.inDuration, easing: 'easeOutQuad', queue: false};
+          {opacity: [1, start]},
+          {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad'});
     }
 
     _animateOverlayOut(opacity) {
-      // Vel(this.overlay,
-      //     {opacity: 0},
-      //     {duration: this.options.inDuration, easing: 'easeOutQuad', queue: false,
-      //      complete: function() {
-
-      //      }};
       Vel(this._overlay,
           'fadeOut',
-          {duration: this.options.outDuration});
+          {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
     }
 
     close() {
@@ -206,10 +269,14 @@
     }
 
     _animateSideNavOut() {
-      let slideOutPercent = `${this.options.edge === 'left' ? -100 : 100}%`;
+      let endPercent = this.options.edge === 'left' ? -1 : 1;
+      let slideOutPercent = 0;
+      if (this.dragging) {
+        slideOutPercent = this.options.edge === 'left' ? endPercent + this.percentOpen : endPercent - this.percentOpen;
+      }
 
       Vel(this.el,
-          {'translateX': [slideOutPercent, 0]},
+          {'translateX': [`${endPercent * 100}%`, `${slideOutPercent * 100}%`]},
           {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
     }
 
