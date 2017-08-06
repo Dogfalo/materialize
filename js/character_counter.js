@@ -65,7 +65,7 @@
     }
   }
 
-  $(document).ready(function(){
+  $(function(){
     $('input, textarea').characterCounter();
   });
 

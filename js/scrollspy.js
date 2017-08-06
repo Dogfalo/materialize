@@ -151,7 +151,7 @@
 			onScroll(options.scrollOffset);
 		}, options.throttle || 100);
 		var readyScroll = function(){
-			$(document).ready(throttledScroll);
+			$(throttledScroll);
 		};
 
 		if (!isSpying) {

@@ -233,7 +233,7 @@
     return {x: newX, y: newY};
   };
 
-  $(document).ready(function(){
+  $(function(){
      $('.tooltipped').tooltip();
    });
 }( jQuery ));

@@ -1580,7 +1580,7 @@ if (jQuery) {
     });
   };
 
-  $(document).ready(function () {
+  $(function () {
     $('.collapsible').collapsible();
   });
 })(jQuery);;(function ($) {
@@ -1836,7 +1836,7 @@ if (jQuery) {
     });
   }; // End dropdown plugin
 
-  $(document).ready(function () {
+  $(function () {
     $('.dropdown-button').dropdown();
   });
 })(jQuery);
@@ -2492,7 +2492,7 @@ if (jQuery) {
     });
   };
 
-  $(document).ready(function () {
+  $(function () {
     $('.materialboxed').materialbox();
   });
 })(jQuery);
@@ -2789,7 +2789,7 @@ if (jQuery) {
     }
   };
 
-  $(document).ready(function () {
+  $(function () {
     $('ul.tabs').tabs();
   });
 })(jQuery);
@@ -3016,7 +3016,7 @@ if (jQuery) {
     return { x: newX, y: newY };
   };
 
-  $(document).ready(function () {
+  $(function () {
     $('.tooltipped').tooltip();
   });
 })(jQuery);
@@ -4245,7 +4245,7 @@ if (jQuery) {
       onScroll(options.scrollOffset);
     }, options.throttle || 100);
     var readyScroll = function () {
-      $(document).ready(throttledScroll);
+      $(throttledScroll);
     };
 
     if (!isSpying) {
@@ -4329,7 +4329,7 @@ if (jQuery) {
   };
 })(jQuery);
 ;(function ($) {
-  $(document).ready(function () {
+  $(function () {
 
     // Function to update labels of text fields
     Materialize.updateTextFields = function () {
@@ -4358,7 +4358,7 @@ if (jQuery) {
     });
 
     // Add active if input element has been pre-populated on document ready
-    $(document).ready(function () {
+    $(function () {
       Materialize.updateTextFields();
     });
 
@@ -4805,7 +4805,7 @@ if (jQuery) {
         }
       });
     };
-  }); // End of $(document).ready
+  }); // End of $
 
   /*******************
    *  Select Plugin  *
@@ -5430,7 +5430,7 @@ if (jQuery) {
   }; // Plugin end
 })(jQuery);
 ;(function ($) {
-  $(document).ready(function () {
+  $(function () {
 
     $(document).on('click.card', '.card', function (e) {
       if ($(this).find('> .card-reveal').length) {
@@ -5465,7 +5465,7 @@ if (jQuery) {
     autocompleteOptions: {}
   };
 
-  $(document).ready(function () {
+  $(function () {
     // Handle removal of static chips.
     $(document).on('click', '.chip .close', function (e) {
       var $chips = $(this).closest('.chips');
@@ -5840,7 +5840,7 @@ if (jQuery) {
     });
   };
 })(jQuery);;(function ($) {
-  $(document).ready(function () {
+  $(function () {
 
     // jQuery reverse
     $.fn.reverse = [].reverse;
@@ -6150,7 +6150,7 @@ if (jQuery) {
     });
   };
 
-  $(document).ready(function () {
+  $(function () {
     // Hardcoded .staggered-list scrollFire
     // var staggeredListOptions = [];
     // $('ul.staggered-list').each(function (i) {
@@ -9267,7 +9267,7 @@ if (jQuery) {
     }
   }
 
-  $(document).ready(function () {
+  $(function () {
     $('input, textarea').characterCounter();
   });
 })(jQuery);

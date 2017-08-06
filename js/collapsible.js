@@ -177,7 +177,7 @@
     });
   };
 
-  $(document).ready(function(){
+  $(function(){
     $('.collapsible').collapsible();
   });
 }( jQuery ));
