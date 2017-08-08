@@ -317,7 +317,7 @@
 
       this.isOpen = false;
       this.$el[0].classList.remove('open');
-      document.body.style.overflow = null;
+      document.body.style.overflow = '';
 
       if (this.options.dismissible) {
         document.removeEventListener('keydown', this.handleKeydownBound);
