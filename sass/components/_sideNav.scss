@@ -159,7 +159,7 @@
 
 
 // Fixed side-nav shown
-.side-nav.fixed {
+.side-nav.side-nav-fixed {
   // Right Align
   &.right-aligned {
     right: 0;
@@ -174,7 +174,7 @@
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
   .side-nav {
-    &.fixed {
+    &.side-nav-fixed {
       transform: translateX(-105%);
 
       &.right-aligned {
@@ -195,7 +195,7 @@
 
 
 .side-nav .collapsible-body > ul:not(.collapsible) > li.active,
-.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
+.side-nav.side-nav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
   background-color: $primary-color;
   a {
     color: $sidenav-bg-color;

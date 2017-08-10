@@ -8,7 +8,7 @@
     inDuration: 1000,
     outDuration: 200,
     onOpen: null,
-    onClose: null
+    onClose: null,
   };
 
 
@@ -41,17 +41,25 @@
       this.isOpen = false;
 
       /**
+       * Describes if SideNav is fixed
+       * @type {Boolean}
+       */
+      this.isFixed = this.el.classList.contains('side-nav-fixed');
+      console.log(this.isFixed);
+
+      /**
        * Describes dragging state of SideNav
        * @type {Boolean}
        */
       this.dragging = false;
 
-      this.$el[0].M_SideNav = this;
+      this.el.M_SideNav = this;
 
       this._createOverlay();
       this._createDragTarget();
       this._setupEventHandlers();
       this._setupClasses();
+      this._setupFixed();
 
       SideNav._sideNavs.push(this);
     }
@@ -102,11 +110,29 @@
       this._handleCloseReleaseBound = this._handleCloseRelease.bind(this);
       this._overlay.addEventListener('touchend', this._handleCloseReleaseBound);
       this.el.addEventListener('touchend', this._handleCloseReleaseBound);
+
+      // Add resize for side nav fixed
+      if (this.isFixed) {
+        this._handleWindowResizeBound = this._handleWindowResize.bind(this);
+        window.addEventListener('resize', this._handleWindowResizeBound);
+      }
     }
 
     _removeEventHandlers() {
       if (SideNav._sideNavs.length === 1) {
         document.body.removeEventListener('click', this._handleTriggerClick);
+      }
+
+      this.dragTarget.removeEventListener('touchmove', this._handleDragTargetDragBound);
+      this.dragTarget.removeEventListener('touchend', this._handleDragTargetReleaseBound);
+      this._overlay.removeEventListener('touchmove', this._handleCloseDragBound);
+      this.el.removeEventListener('touchmove', this._handleCloseDragBound);
+      this._overlay.removeEventListener('touchend', this._handleCloseReleaseBound);
+      this.el.removeEventListener('touchend', this._handleCloseReleaseBound);
+
+      // Remove resize for side nav fixed
+      if (this.isFixed) {
+        window.removeEventListener('resize', this._handleWindowResizeBound);
       }
     }
 
@@ -260,6 +286,19 @@
       }
     }
 
+    /**
+     * Handle Window Resize
+     * @param {Event} e
+     */
+    _handleWindowResize(e) {
+      if (window.innerWidth > 992) {
+        this.open();
+      }
+      else {
+        this.close();
+      }
+    }
+
     _setupClasses() {
       if (this.options.edge === 'right') {
         this.el.classList.add('right-aligned');
@@ -270,6 +309,12 @@
     _removeClasses() {
       this.el.classList.remove('right-aligned');
       this.dragTarget.classList.remove('right-aligned');
+    }
+
+    _setupFixed() {
+      if (this.isFixed && window.innerWidth > 992) {
+        this.open();
+      }
     }
 
     _createDragTarget() {
@@ -296,10 +341,20 @@
 
       this.isOpen = true;
 
-      this._preventBodyScrolling();
+      // Handle fixed sidenav
+      if (this.isFixed && window.innerWidth > 992) {
+        Vel(this.el, 'stop');
+        Vel(this.el, {translateX: 0}, {duration: 0, queue: false});
+        this._enableBodyScrolling();
+        this._overlay.style.display = 'none';
 
-      if (!this.dragging || this.percentOpen != 1) {
-        this._animateIn();
+      // Normal
+      } else {
+        this._preventBodyScrolling();
+
+        if (!this.dragging || this.percentOpen != 1) {
+          this._animateIn();
+        }
       }
     }
 
@@ -309,12 +364,22 @@
       }
 
       this.isOpen = false;
-      this._enableBodyScrolling();
 
-      if (!this.dragging || this.percentOpen != 0) {
-        this._animateOut();
+      // Handle fixed sidenav
+      if (this.isFixed && window.innerWidth > 992) {
+        let transformX = this.options.edge === 'left' ? '-105%' : '105%';
+        this.el.style.transform = `translateX(${transformX})`;
+
+      // Normal
       } else {
-        this._overlay.style.display = 'none';
+
+        this._enableBodyScrolling();
+
+        if (!this.dragging || this.percentOpen != 0) {
+          this._animateOut();
+        } else {
+          this._overlay.style.display = 'none';
+        }
       }
     }
 
@@ -337,7 +402,7 @@
         {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad'});
     }
 
-    _animateOverlayIn(opacity) {
+    _animateOverlayIn() {
       let start = 0;
       if (this.dragging) {
         start = this.percentOpen;
@@ -367,11 +432,11 @@
 
       Vel(this.el, 'stop');
       Vel(this.el,
-          {'translateX': [`${endPercent * 100}%`, `${slideOutPercent * 100}%`]},
+          {'translateX': [`${endPercent * 105}%`, `${slideOutPercent * 100}%`]},
           {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
     }
 
-    _animateOverlayOut(opacity) {
+    _animateOverlayOut() {
       Vel(this._overlay, 'stop');
       Vel(this._overlay,
           'fadeOut',
