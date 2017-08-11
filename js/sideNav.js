@@ -5,7 +5,7 @@
     edge: 'left',
     closeOnClick: false,
     draggable: true,
-    inDuration: 1000,
+    inDuration: 300,
     outDuration: 200,
     onOpen: null,
     onClose: null,
@@ -45,7 +45,6 @@
        * @type {Boolean}
        */
       this.isFixed = this.el.classList.contains('side-nav-fixed');
-      console.log(this.isFixed);
 
       /**
        * Describes dragging state of SideNav
@@ -81,7 +80,6 @@
       this._closeBound = this.close.bind(this);
       overlay.classList.add('sidenav-overlay');
 
-      console.log(this._closeBound);
       overlay.addEventListener('click', this._closeBound);
 
       document.body.appendChild(overlay);
@@ -144,7 +142,6 @@
       let $trigger =  $(e.target).closest('.sidenav-trigger');
       if (e.target && $trigger.length) {
         let sideNavId = Materialize.getIdFromTrigger($trigger[0]);
-        console.log(sideNavId);
 
         let sideNavInstance = document.getElementById(sideNavId).M_SideNav;
         if (sideNavInstance) {
@@ -207,7 +204,6 @@
      * @param {Event} e
      */
     _handleDragTargetRelease(e) {
-      console.log("DRAG TARGET RELEASE");
       if (this.dragging) {
         if (this.percentOpen > .5) {
           this.open();
@@ -224,7 +220,6 @@
      * @param {Event} e
      */
     _handleCloseDrag(e) {
-      console.log("CLOSE DRAG");
       if (this.isOpen) {
         let clientX = e.targetTouches[0].clientX
 
@@ -247,7 +242,6 @@
 
         let totalDeltaX = this.xPos - this.startingXpos;
         let dragDirection = totalDeltaX > 0 ? 'right' : 'left';
-        console.log(totalDeltaX);
         totalDeltaX = Math.min(this.width, Math.abs(totalDeltaX));
 
         if (this.options.edge !== dragDirection) {
@@ -274,7 +268,6 @@
      * @param {Event} e
      */
     _handleCloseRelease(e) {
-      console.log("CLOSE RELEASE");
       if (this.isOpen && this.dragging) {
         if (this.percentOpen > .5) {
           this._animateIn();
@@ -384,7 +377,6 @@
     }
 
     _animateIn() {
-      console.log("ANIMATE IN");
       this._animateSideNavIn();
       this._animateOverlayIn();
     }
@@ -394,7 +386,6 @@
       if (this.dragging) {
         slideOutPercent = this.options.edge === 'left' ? slideOutPercent + this.percentOpen : slideOutPercent - this.percentOpen;
       }
-      console.log(slideOutPercent);
 
       Vel(this.el, 'stop');
       Vel(this.el,
@@ -428,8 +419,6 @@
         slideOutPercent = this.options.edge === 'left' ? endPercent + this.percentOpen : endPercent - this.percentOpen;
       }
 
-      console.log(endPercent, slideOutPercent);
-
       Vel(this.el, 'stop');
       Vel(this.el,
           {'translateX': [`${endPercent * 105}%`, `${slideOutPercent * 100}%`]},
@@ -447,7 +436,10 @@
      * Teardown component
      */
     destroy() {
-
+      this._removeEventHandlers();
+      this._overlay.parentNode.removeChild(this._overlay);
+      this.dragTarget.parentNode.removeChild(this.dragTarget);
+      this.el.M_SideNav = undefined;
     }
 
   }
