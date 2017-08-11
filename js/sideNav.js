@@ -349,6 +349,11 @@
           this._animateIn();
         }
       }
+
+      // Callback
+      if (typeof(this.options.onOpen) === 'function') {
+        this.options.onOpen.call(this, this.el);
+      }
     }
 
     close() {
@@ -373,6 +378,11 @@
         } else {
           this._overlay.style.display = 'none';
         }
+      }
+
+      // Callback
+      if (typeof(this.options.onClose) === 'function') {
+        this.options.onClose.call(this, this.el);
       }
     }
 
