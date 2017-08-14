@@ -131,7 +131,7 @@ module.exports = function(grunt) {
 
     // Browser Sync integration
     browserSync: {
-      bsFiles: ["bin/*", "!**/node_modules/**/*"],
+      bsFiles: ["bin/*", "css/ghpages-materialize.css", "!**/node_modules/**/*"],
       options: {
         server: {
           baseDir: "./" // make server from root dir
@@ -156,6 +156,7 @@ module.exports = function(grunt) {
         // the files to concatenate
         src: [
           "js/initial.js",
+          "js/cash.js",
           "js/jquery.easing.1.4.js",
           "js/animation.js",
           "js/velocity.min.js",
@@ -199,6 +200,7 @@ module.exports = function(grunt) {
         },
         src: [
           "js/initial.js",
+          "js/cash.js",
           "js/jquery.easing.1.4.js",
           "js/animation.js",
           "js/velocity.min.js",

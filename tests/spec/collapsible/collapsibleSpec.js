@@ -9,6 +9,8 @@ describe( "Collapsible Plugin", function () {
     accordion = $('.accordion');
     popout = $('.popout');
     collapsible.collapsible();
+    expandable.collapsible({accordion: false});
+    expandablePreselect.collapsible({accordion: false});
   });
 
   describe( "collapsible", function () {
@@ -31,7 +33,7 @@ describe( "Collapsible Plugin", function () {
         bodies.each(function() {
           expect($(this)).toBeVisible('because collapsible bodies not visible after being opened.');
         });
-        done()
+        done();
       }, 400);
     });
 
@@ -41,14 +43,57 @@ describe( "Collapsible Plugin", function () {
 
       bodies.each(function(i) {
         var header = $(this).prev('.collapsible-header');
+        var headerLi = header.parent('li');
 
         if (i === 1) {
-          expect(header).toHaveClass('active', 'because collapsible header should have active class to be preselected.');
+          expect(headerLi).toHaveClass('active', 'because collapsible header should have active class to be preselected.');
           expect($(this)).toBeVisible('because collapsible bodies should be visible if preselected.');
         } else {
           expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
         }
       });
+    });
+
+    it("should open and close programmatically with callbacks", function(done) {
+      var openCallback = false;
+      var closeCallback = false;
+      expandable.collapsible({
+        accordion: false,
+        onOpenStart: function() {
+          openCallback = true;
+        },
+        onCloseStart: function() {
+          closeCallback = true;
+        }
+      });
+      var bodies = expandable.find('.collapsible-body');
+
+      expect(openCallback).toEqual(false, 'because open callback not yet fired');
+      expect(closeCallback).toEqual(false, 'because close callback not yet fired');
+
+      bodies.each(function(i) {
+        expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
+        expandable.collapsible('open', i);
+      });
+      expect(openCallback).toEqual(true, 'because open callback fired');
+
+
+      setTimeout(function() {
+        bodies.each(function(i) {
+          expect($(this)).toBeVisible('because collapsible bodies should be visible after being opened.');
+          expandable.collapsible('close', i);
+        });
+        expect(closeCallback).toEqual(true, 'because close callback fired');
+
+
+        setTimeout(function() {
+          bodies.each(function(i) {
+            expect($(this)).toBeHidden('because collapsible bodies should be hidden after close.');
+          });
+
+          done();
+        }, 400);
+      }, 400);
     });
   });
 

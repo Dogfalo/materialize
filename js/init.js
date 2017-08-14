@@ -169,15 +169,27 @@
     }
 
     // Plugin initialization
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel({
+      fullWidth: true,
+      indicators: true,
+      onCycleTo: function(item, dragged) {
+        console.log("CYCLE TO", item, dragged);
+      }
+    });
+    $('.collapsible').collapsible();
+    $('.collapsible.expandable').collapsible({
+      accordion: false
+    });
     $('.slider').slider();
     $('.parallax').parallax();
+    $('.materialboxed').materialbox();
     $('.modal').modal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
     $('.timepicker').pickatime();
+    $('.tooltipped').tooltip();
     $('select').not('.disabled').material_select();
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},

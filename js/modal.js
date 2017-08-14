@@ -93,7 +93,7 @@
      */
     destroy() {
       this.removeEventHandlers();
-      this.$el[0].removeAttribute('style')
+      this.$el[0].removeAttribute('style');
       if (!!this.$overlay[0].parentNode) {
         this.$overlay[0].parentNode.removeChild(this.$overlay[0]);
       }
@@ -317,7 +317,7 @@
 
       this.isOpen = false;
       this.$el[0].classList.remove('open');
-      document.body.style.overflow = null;
+      document.body.style.overflow = '';
 
       if (this.options.dismissible) {
         document.removeEventListener('keydown', this.handleKeydownBound);
@@ -343,7 +343,7 @@
 
   window.Materialize.Modal = Modal;
 
-  $.fn.modal = function(methodOrOptions) {
+  jQuery.fn.modal = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
     if (Modal.prototype[methodOrOptions]) {
       // Getter methods
@@ -364,8 +364,8 @@
 
     // Return error if an unrecognized  method name is passed in
     } else {
-      $.error(`Method ${methodOrOptions} does not exist on jQuery.modal`);
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.modal`);
     }
   };
 
-})(jQuery, Materialize.Vel);
+})(cash, Materialize.Vel);
