@@ -118,6 +118,11 @@ select:disabled {
   user-select: none;
 }
 
+.select-wrapper input.select-dropdown:focus {
+    text-indent: -9999999em;
+    transition: none;
+}
+
 .select-wrapper i {
   color: $select-disabled-color;
 }
