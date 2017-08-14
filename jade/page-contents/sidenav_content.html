@@ -50,7 +50,7 @@
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript col s12">
   // Initialize collapse button
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sidenav();
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
   //$('.collapsible').collapsible();
         </code></pre>
@@ -59,15 +59,15 @@
 
       <div id="options" class="scrollspy section">
         <h4>Options</h4>
-        <p>You can customize the sideNav by setting your own width and the alignment of the menu. </p>
+        <p>You can customize the sidenav by setting your own width and the alignment of the menu. </p>
         <pre><code class="language-javascript">
-  $('.button-collapse').sideNav({
+  $('.button-collapse').sidenav({
       menuWidth: 300, // Default is 300
       edge: 'right', // Choose the horizontal origin
       closeOnClick: true, // Closes sidenav on &lt;a> clicks, useful for Angular/Meteor
       draggable: true, // Choose whether you can drag to open on touch screens,
-      onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is opened
-      onClose: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is closed
+      onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sidenav is opened
+      onClose: function(el) { /* Do Stuff* / }, // A function to be called when sidenav is closed
     }
   );
         </code></pre>
@@ -77,12 +77,12 @@
         <h4>jQuery Plugin Methods</h4>
         <p>We have methods to show and hide your sidebar you can use to programmatically control your sidebar.</p>
         <pre><code class="language-javascript col s12">
-  // Show sideNav
-  $('.button-collapse').sideNav('show');
-  // Hide sideNav
-  $('.button-collapse').sideNav('hide');
-  // Destroy sideNav
-  $('.button-collapse').sideNav('destroy');
+  // Show sidenav
+  $('.button-collapse').sidenav('show');
+  // Hide sidenav
+  $('.button-collapse').sidenav('hide');
+  // Destroy sidenav
+  $('.button-collapse').sidenav('destroy');
         </code></pre>
       </div>
 
@@ -140,7 +140,7 @@
           </code></pre><br>
 
           <h4>Fixed HTML Structure</h4>
-          <p>Add the class <code class="language-markup">fixed</code> to have the sideNav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sideNav on the left is an example of this.</p>
+          <p>Add the class <code class="language-markup">fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sidenav on the left is an example of this.</p>
           <pre><code class="language-markup col s12">
     &lt;ul id="slide-out" class="sidenav fixed">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>

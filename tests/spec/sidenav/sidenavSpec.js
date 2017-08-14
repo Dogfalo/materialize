@@ -1,6 +1,6 @@
 describe("Sidenav Plugin", function () {
   beforeEach(function() {
-    loadFixtures('sideNav/sideNavFixture.html');
+    loadFixtures('sidenav/sidenavFixture.html');
   });
 
   describe("Sidenav", function () {

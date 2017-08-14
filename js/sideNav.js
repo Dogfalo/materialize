@@ -148,11 +148,11 @@
     _handleTriggerClick(e) {
       let $trigger =  $(e.target).closest('.sidenav-trigger');
       if (e.target && $trigger.length) {
-        let sideNavId = Materialize.getIdFromTrigger($trigger[0]);
+        let sidenavId = Materialize.getIdFromTrigger($trigger[0]);
 
-        let sideNavInstance = document.getElementById(sideNavId).M_Sidenav;
-        if (sideNavInstance) {
-          sideNavInstance.open($trigger);
+        let sidenavInstance = document.getElementById(sidenavId).M_Sidenav;
+        if (sidenavInstance) {
+          sidenavInstance.open($trigger);
         }
         e.preventDefault();
       }
@@ -529,7 +529,7 @@
 
       // Return error if an unrecognized  method name is passed in
     } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.sideNav`);
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.sidenav`);
     }
   };
 

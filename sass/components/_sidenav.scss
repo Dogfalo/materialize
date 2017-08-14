@@ -157,7 +157,7 @@
 }
 
 
-// Fixed sidenav shown
+// Fixed Sidenav shown
 .sidenav.sidenav-fixed {
   // Right Align
   &.right-aligned {
@@ -170,7 +170,7 @@
   position: fixed;
 }
 
-// Fixed sideNav hide on smaller
+// Fixed Sidenav hide on smaller
 @media #{$medium-and-down} {
   .sidenav {
     &.sidenav-fixed {
