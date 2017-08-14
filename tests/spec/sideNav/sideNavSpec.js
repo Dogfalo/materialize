@@ -1,7 +1,6 @@
 describe("SideNav Plugin", function () {
   beforeEach(function() {
     loadFixtures('sideNav/sideNavFixture.html');
-    $(".button-collapse").sideNav();
   });
 
   describe("SideNav", function () {
@@ -12,10 +11,20 @@ describe("SideNav Plugin", function () {
       normalSideNav = $('.side-nav');
     });
 
+    afterEach(function() {
+      if (Materialize.SideNav._sideNavs.length) {
+        $("#slide-out").sideNav('destroy');
+      }
+    });
+
     it("should not break from multiple initializations", function() {
+      expect(Materialize.SideNav._sideNavs.length).toEqual(0, 'no sidenavs initialized');
+
       $("#slide-out").sideNav();
       $("#slide-out").sideNav();
       $("#slide-out").sideNav();
+
+      expect(Materialize.SideNav._sideNavs.length).toEqual(1, 'only 1 sidenav initialized after multiple calls on the same element');
 
       var dragTarget = $($('#slide-out')[0].M_SideNav.dragTarget);
       expect(dragTarget.length).toEqual(1, 'Should generate only one dragTarget.');
@@ -87,6 +96,25 @@ describe("SideNav Plugin", function () {
           done();
         }, 400);
       }, 400);
+    });
+
+    it("should destroy correctly", function (done) {
+      expect(Materialize.SideNav._sideNavs.length).toEqual(0, 'no sidenavs initialized');
+      $("#slide-out").sideNav();
+      var overlay = $($('#slide-out')[0].M_SideNav._overlay);
+      var dragTarget = $($('#slide-out')[0].M_SideNav.dragTarget);
+      expect(Materialize.SideNav._sideNavs.length).toEqual(1, 'one sidenav initialized');
+      expect($.contains(document, overlay[0])).toEqual(true, 'overlay should be in DOM');
+      expect($.contains(document, dragTarget[0])).toEqual(true, 'dragTarget should be in DOM');
+      $("#slide-out").sideNav('destroy');
+
+
+      setTimeout(function() {
+        expect(Materialize.SideNav._sideNavs.length).toEqual(0, 'sidenav destroyed');
+        expect($.contains(document, overlay[0])).toEqual(false, 'overlay should be deleted');
+        expect($.contains(document, dragTarget[0])).toEqual(false, 'dragTarget should be deleted');
+        done();
+      }, 100);
     });
   });
 });

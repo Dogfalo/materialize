@@ -462,6 +462,11 @@
       this._overlay.parentNode.removeChild(this._overlay);
       this.dragTarget.parentNode.removeChild(this.dragTarget);
       this.el.M_SideNav = undefined;
+
+      let index = SideNav._sideNavs.indexOf(this);
+      if (index >= 0) {
+        SideNav._sideNavs.splice(index, 1);
+      }
     }
 
   }
