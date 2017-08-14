@@ -3,9 +3,8 @@
 
   let _defaults = {
     edge: 'left',
-    closeOnClick: false,
     draggable: true,
-    inDuration: 300,
+    inDuration: 250,
     outDuration: 200,
     onOpenStart: null,
     onOpenEnd: null,
@@ -28,11 +27,20 @@
 
       this.$el = $el;
       this.el = $el[0];
+      this.el.M_SideNav = this;
       this.id = $el.attr('id');
 
       /**
        * Options for the SideNav
        * @member SideNav#options
+       * @prop {String} [edge='left'] - Side of screen on which Sidenav appears
+       * @prop {Boolean} [draggable=true] - Allow swipe gestures to open/close Sidenav
+       * @prop {Number} [inDuration=300] - Length in ms of enter transition
+       * @prop {Number} [outDuration=200] - Length in ms of exit transition
+       * @prop {Function} onOpenStart - Function called when modal starts entering
+       * @prop {Function} onOpenEnd - Function called when modal finishes entering
+       * @prop {Function} onCloseStart - Function called when modal starts exiting
+       * @prop {Function} onCloseEnd - Function called when modal finishes exiting
        */
       this.options = $.extend({}, SideNav.defaults, options);
 
@@ -52,9 +60,7 @@
        * Describes dragging state of SideNav
        * @type {Boolean}
        */
-      this.dragging = false;
-
-      this.el.M_SideNav = this;
+      this.isDragged = false;
 
       this._createOverlay();
       this._createDragTarget();
@@ -153,67 +159,98 @@
       }
     }
 
+
     /**
-     * Handle Drag Target Drag
+     * Set variables needed at the beggining of drag
+     * and stop any current Velocity transition.
+     * @param {Event} e
+     */
+    _startDrag(e) {
+      let clientX = e.targetTouches[0].clientX;
+      this.isDragged = true;
+      this._startingXpos = clientX;
+      this._xPos = this._startingXpos;
+      this._time = Date.now();
+      this._width = this.el.getBoundingClientRect().width;
+      this._overlay.style.display = 'block';
+      Vel(this.el, 'stop');
+      Vel(this._overlay, 'stop');
+    }
+
+
+    /**
+     * Set variables needed at each drag move update tick
+     * @param {Event} e
+     */
+    _dragMoveUpdate(e) {
+      let clientX = e.targetTouches[0].clientX;
+      this.deltaX = Math.abs(this._xPos - clientX);
+      this._xPos = clientX;
+      this.velocityX = this.deltaX / (Date.now() - this._time);
+      this._time = Date.now();
+    }
+
+
+    /**
+     * Handles Dragging of Sidenav
      * @param {Event} e
      */
     _handleDragTargetDrag(e) {
-      let clientX = e.targetTouches[0].clientX
+      let clientX = e.targetTouches[0].clientX;
 
-      // Drag Start
-      if (!this.dragging) {
-        this.dragging = true;
-        this.startingXpos = clientX;
-        this.xPos = this.startingXpos;
-        this.time = Date.now();
-        this.width = this.el.getBoundingClientRect().width;
-        this._overlay.style.display = 'block';
-        Vel(this.el, 'stop');
-        Vel(this._overlay, 'stop');
+      // If not being dragged, set initial drag start variables
+      if (!this.isDragged) {
+        this._startDrag(e);
       }
 
-      this.deltaX = Math.abs(this.xPos - clientX);
-      this.xPos = clientX;
-      this.velocityX = this.deltaX / (Date.now() - this.time);
-      this.time = Date.now();
+      // Run touchmove updates
+      this._dragMoveUpdate(e);
 
-      let totalDeltaX = this.xPos - this.startingXpos;
+      // Calculate raw deltaX
+      let totalDeltaX = this._xPos - this._startingXpos;
+
+      // dragDirection is the attempted user drag direction
       let dragDirection = totalDeltaX > 0 ? 'right' : 'left';
-      totalDeltaX = Math.min(this.width, Math.abs(totalDeltaX));
+
+      // Don't allow totalDeltaX to exceed Sidenav width or be dragged in the opposite direction
+      totalDeltaX = Math.min(this._width, Math.abs(totalDeltaX));
       if (this.options.edge === dragDirection) {
         totalDeltaX = 0;
       }
+
+
+      /**
+       * transformX is the drag displacement
+       * transformPrefix is the initial transform placement
+       * Invert values if Sidenav is right edge
+       */
       let transformX = totalDeltaX;
       let transformPrefix = 'translateX(-100%)';
-
-
       if (this.options.edge === 'right') {
-        // totalDeltaX = -totalDeltaX;
         transformPrefix = 'translateX(100%)';
         transformX = -transformX;
       }
 
+      // Calculate open/close percentage of sidenav, with open = 1 and close = 0
+      this.percentOpen = Math.min(1, totalDeltaX / this._width);
 
-      this.percentOpen = Math.min(1, totalDeltaX / this.width);
-
-
+      // Set transform and opacity styles
       this.el.style.transform = `${transformPrefix} translateX(${transformX}px)`;
       this._overlay.style.opacity = this.percentOpen;
     }
 
     /**
      * Handle Drag Target Release
-     * @param {Event} e
      */
-    _handleDragTargetRelease(e) {
-      if (this.dragging) {
+    _handleDragTargetRelease() {
+      if (this.isDragged) {
         if (this.percentOpen > .5) {
           this.open();
         } else {
           this._animateOut();
         }
 
-        this.dragging = false;
+        this.isDragged = false;
       }
     }
 
@@ -223,43 +260,36 @@
      */
     _handleCloseDrag(e) {
       if (this.isOpen) {
-        let clientX = e.targetTouches[0].clientX
 
-        // Drag Start
-        if (!this.dragging) {
-          this.dragging = true;
-          this.startingXpos = clientX;
-          this.xPos = this.startingXpos;
-          this.time = Date.now();
-          this.width = this.el.getBoundingClientRect().width;
-          this._overlay.style.display = 'block';
-          Vel(this.el, 'stop');
-          Vel(this._overlay, 'stop');
+        // If not being dragged, set initial drag start variables
+        if (!this.isDragged) {
+          this._startDrag(e);
         }
 
-        this.deltaX = Math.abs(this.xPos - clientX);
-        this.xPos = clientX;
-        this.velocityX = this.deltaX / (Date.now() - this.time);
-        this.time = Date.now();
+        // Run touchmove updates
+        this._dragMoveUpdate(e);
 
-        let totalDeltaX = this.xPos - this.startingXpos;
+        // Calculate raw deltaX
+        let totalDeltaX = this._xPos - this._startingXpos;
+
+        // dragDirection is the attempted user drag direction
         let dragDirection = totalDeltaX > 0 ? 'right' : 'left';
-        totalDeltaX = Math.min(this.width, Math.abs(totalDeltaX));
 
+        // Don't allow totalDeltaX to exceed Sidenav width or be dragged in the opposite direction
+        totalDeltaX = Math.min(this._width, Math.abs(totalDeltaX));
         if (this.options.edge !== dragDirection) {
           totalDeltaX = 0;
         }
+
         let transformX = -totalDeltaX;
-
-
         if (this.options.edge === 'right') {
           transformX = -transformX;
         }
 
+        // Calculate open/close percentage of sidenav, with open = 1 and close = 0
+        this.percentOpen = Math.min(1, 1 - totalDeltaX / this._width);
 
-        this.percentOpen = Math.min(1, 1 - totalDeltaX / this.width);
-
-
+        // Set transform and opacity styles
         this.el.style.transform = `translateX(${transformX}px)`;
         this._overlay.style.opacity = this.percentOpen;
       }
@@ -270,14 +300,14 @@
      * @param {Event} e
      */
     _handleCloseRelease(e) {
-      if (this.isOpen && this.dragging) {
+      if (this.isOpen && this.isDragged) {
         if (this.percentOpen > .5) {
           this._animateIn();
         } else {
           this.close();
         }
 
-        this.dragging = false;
+        this.isDragged = false;
       }
     }
 
@@ -326,7 +356,7 @@
 
     _enableBodyScrolling() {
       let body = document.body;
-      body.style.overflow = null;
+      body.style.overflow = '';
     }
 
     open() {
@@ -336,23 +366,23 @@
 
       this.isOpen = true;
 
-      // Callback
+      // Run onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
         this.options.onOpenStart.call(this, this.el);
       }
 
-      // Handle fixed sidenav
+      // Handle fixed Sidenav
       if (this.isFixed && window.innerWidth > 992) {
         Vel(this.el, 'stop');
         Vel(this.el, {translateX: 0}, {duration: 0, queue: false});
         this._enableBodyScrolling();
         this._overlay.style.display = 'none';
 
-      // Normal
+      // Handle non-fixed Sidenav
       } else {
         this._preventBodyScrolling();
 
-        if (!this.dragging || this.percentOpen != 1) {
+        if (!this.isDragged || this.percentOpen != 1) {
           this._animateIn();
         }
       }
@@ -365,22 +395,21 @@
 
       this.isOpen = false;
 
-      // Callback
+      // Run onCloseStart callback
       if (typeof(this.options.onCloseStart) === 'function') {
         this.options.onCloseStart.call(this, this.el);
       }
 
-      // Handle fixed sidenav
+      // Handle fixed Sidenav
       if (this.isFixed && window.innerWidth > 992) {
         let transformX = this.options.edge === 'left' ? '-105%' : '105%';
         this.el.style.transform = `translateX(${transformX})`;
 
-      // Normal
+      // Handle non-fixed Sidenav
       } else {
-
         this._enableBodyScrolling();
 
-        if (!this.dragging || this.percentOpen != 0) {
+        if (!this.isDragged || this.percentOpen != 0) {
           this._animateOut();
         } else {
           this._overlay.style.display = 'none';
@@ -395,24 +424,24 @@
 
     _animateSideNavIn() {
       let slideOutPercent = this.options.edge === 'left' ? -1 : 1;
-      if (this.dragging) {
+      if (this.isDragged) {
         slideOutPercent = this.options.edge === 'left' ? slideOutPercent + this.percentOpen : slideOutPercent - this.percentOpen;
       }
 
       Vel(this.el, 'stop');
       Vel(this.el,
-        {'translateX': [0, `${slideOutPercent * 100}%`]},
-        {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad', complete: () => {
-          // Callback
-          if (typeof(this.options.onOpenEnd) === 'function') {
-            this.options.onOpenEnd.call(this, this.el);
-          }
-        }});
+          {'translateX': [0, `${slideOutPercent * 100}%`]},
+          {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad', complete: () => {
+            // Run onOpenEnd callback
+            if (typeof(this.options.onOpenEnd) === 'function') {
+              this.options.onOpenEnd.call(this, this.el);
+            }
+          }});
     }
 
     _animateOverlayIn() {
       let start = 0;
-      if (this.dragging) {
+      if (this.isDragged) {
         start = this.percentOpen;
       } else {
         Vel.hook(this._overlay, 'display', 'block');
@@ -432,7 +461,7 @@
     _animateSideNavOut() {
       let endPercent = this.options.edge === 'left' ? -1 : 1;
       let slideOutPercent = 0;
-      if (this.dragging) {
+      if (this.isDragged) {
         slideOutPercent = this.options.edge === 'left' ? endPercent + this.percentOpen : endPercent - this.percentOpen;
       }
 
@@ -440,7 +469,7 @@
       Vel(this.el,
           {'translateX': [`${endPercent * 105}%`, `${slideOutPercent * 100}%`]},
           {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad', complete: () => {
-            // Callback
+            // Run onOpenEnd callback
             if (typeof(this.options.onCloseEnd) === 'function') {
               this.options.onCloseEnd.call(this, this.el);
             }
