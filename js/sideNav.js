@@ -16,23 +16,22 @@
   /**
    * @class
    */
-  class SideNav {
+  class Sidenav {
 
     constructor ($el, options) {
-
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_SideNav) {
-        $el[0].M_SideNav.destroy();
+      if (!!$el[0].M_Sidenav) {
+        $el[0].M_Sidenav.destroy();
       }
 
       this.$el = $el;
       this.el = $el[0];
-      this.el.M_SideNav = this;
+      this.el.M_Sidenav = this;
       this.id = $el.attr('id');
 
       /**
-       * Options for the SideNav
-       * @member SideNav#options
+       * Options for the Sidenav
+       * @member Sidenav#options
        * @prop {String} [edge='left'] - Side of screen on which Sidenav appears
        * @prop {Boolean} [draggable=true] - Allow swipe gestures to open/close Sidenav
        * @prop {Number} [inDuration=300] - Length in ms of enter transition
@@ -42,22 +41,22 @@
        * @prop {Function} onCloseStart - Function called when modal starts exiting
        * @prop {Function} onCloseEnd - Function called when modal finishes exiting
        */
-      this.options = $.extend({}, SideNav.defaults, options);
+      this.options = $.extend({}, Sidenav.defaults, options);
 
       /**
-       * Describes open/close state of SideNav
+       * Describes open/close state of Sidenav
        * @type {Boolean}
        */
       this.isOpen = false;
 
       /**
-       * Describes if SideNav is fixed
+       * Describes if Sidenav is fixed
        * @type {Boolean}
        */
-      this.isFixed = this.el.classList.contains('side-nav-fixed');
+      this.isFixed = this.el.classList.contains('sidenav-fixed');
 
       /**
-       * Describes dragging state of SideNav
+       * Describes dragging state of Sidenav
        * @type {Boolean}
        */
       this.isDragged = false;
@@ -68,7 +67,7 @@
       this._setupClasses();
       this._setupFixed();
 
-      SideNav._sideNavs.push(this);
+      Sidenav._sidenavs.push(this);
     }
 
     static get defaults() {
@@ -78,7 +77,7 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new SideNav($(this), options));
+        arr.push(new Sidenav($(this), options));
       });
       return arr;
     }
@@ -102,7 +101,7 @@
     }
 
     _setupEventHandlers() {
-      if (SideNav._sideNavs.length === 0) {
+      if (Sidenav._sidenavs.length === 0) {
         document.body.addEventListener('click', this._handleTriggerClick);
       }
 
@@ -125,7 +124,7 @@
     }
 
     _removeEventHandlers() {
-      if (SideNav._sideNavs.length === 1) {
+      if (Sidenav._sidenavs.length === 1) {
         document.body.removeEventListener('click', this._handleTriggerClick);
       }
 
@@ -151,7 +150,7 @@
       if (e.target && $trigger.length) {
         let sideNavId = Materialize.getIdFromTrigger($trigger[0]);
 
-        let sideNavInstance = document.getElementById(sideNavId).M_SideNav;
+        let sideNavInstance = document.getElementById(sideNavId).M_Sidenav;
         if (sideNavInstance) {
           sideNavInstance.open($trigger);
         }
@@ -418,11 +417,11 @@
     }
 
     _animateIn() {
-      this._animateSideNavIn();
+      this._animateSidenavIn();
       this._animateOverlayIn();
     }
 
-    _animateSideNavIn() {
+    _animateSidenavIn() {
       let slideOutPercent = this.options.edge === 'left' ? -1 : 1;
       if (this.isDragged) {
         slideOutPercent = this.options.edge === 'left' ? slideOutPercent + this.percentOpen : slideOutPercent - this.percentOpen;
@@ -454,11 +453,11 @@
     }
 
     _animateOut() {
-      this._animateSideNavOut();
+      this._animateSidenavOut();
       this._animateOverlayOut();
     }
 
-    _animateSideNavOut() {
+    _animateSidenavOut() {
       let endPercent = this.options.edge === 'left' ? -1 : 1;
       let slideOutPercent = 0;
       if (this.isDragged) {
@@ -490,11 +489,11 @@
       this._removeEventHandlers();
       this._overlay.parentNode.removeChild(this._overlay);
       this.dragTarget.parentNode.removeChild(this.dragTarget);
-      this.el.M_SideNav = undefined;
+      this.el.M_Sidenav = undefined;
 
-      let index = SideNav._sideNavs.indexOf(this);
+      let index = Sidenav._sidenavs.indexOf(this);
       if (index >= 0) {
-        SideNav._sideNavs.splice(index, 1);
+        Sidenav._sidenavs.splice(index, 1);
       }
     }
 
@@ -502,30 +501,30 @@
 
   /**
    * @static
-   * @memberof SideNav
-   * @type {Array.<SideNav>}
+   * @memberof Sidenav
+   * @type {Array.<Sidenav>}
    */
-  SideNav._sideNavs = [];
+  Sidenav._sidenavs = [];
 
-  window.Materialize.SideNav = SideNav;
+  window.Materialize.Sidenav = Sidenav;
 
-  jQuery.fn.sideNav = function(methodOrOptions) {
+  jQuery.fn.sidenav = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
-    if (SideNav.prototype[methodOrOptions]) {
+    if (Sidenav.prototype[methodOrOptions]) {
       // Getter methods
       if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_SideNav[methodOrOptions]();
+        return this.first()[0].M_Sidenav[methodOrOptions]();
 
         // Void methods
       } else {
         return this.each(function() {
-          this.M_SideNav[methodOrOptions]();
+          this.M_Sidenav[methodOrOptions]();
         });
       }
 
       // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      SideNav.init(this, arguments[0]);
+    } else if ( typeof methodOrOptions === 'object' || !methodOrOptions ) {
+      Sidenav.init(this, arguments[0]);
       return this;
 
       // Return error if an unrecognized  method name is passed in

@@ -9,7 +9,7 @@
 
         <a href="#" data-target="slide-out" class="sidenav-trigger btn button-collapse">Side nav demo</a>
 
-        <ul id="slide-out" class="side-nav">
+        <ul id="slide-out" class="sidenav">
           <li><div class="user-view">
             <div class="background">
               <img src="images/office.jpg">
@@ -27,7 +27,7 @@
 
         <h4>HTML Structure</h4>
         <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav">
+  &lt;ul id="slide-out" class="sidenav">
     &lt;li>&lt;div class="user-view">
       &lt;div class="background">
         &lt;img src="images/office.jpg">
@@ -64,7 +64,7 @@
   $('.button-collapse').sideNav({
       menuWidth: 300, // Default is 300
       edge: 'right', // Choose the horizontal origin
-      closeOnClick: true, // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
+      closeOnClick: true, // Closes sidenav on &lt;a> clicks, useful for Angular/Meteor
       draggable: true, // Choose whether you can drag to open on touch screens,
       onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is opened
       onClose: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is closed
@@ -95,7 +95,7 @@
         <h4>Dropdown HTML Structure</h4>
           <p>Add collapsible menus to your sidebar.</p>
           <pre><code class="language-markup col s12">
-    &lt;ul id="slide-out" class="side-nav">
+    &lt;ul id="slide-out" class="sidenav">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
       &lt;li class="no-padding">
@@ -132,7 +132,7 @@
           <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.button-collapse</code>. </p>
 
           <pre><code class="language-markup col s12">
-    &lt;ul id="slide-out" class="side-nav">
+    &lt;ul id="slide-out" class="sidenav">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
@@ -142,7 +142,7 @@
           <h4>Fixed HTML Structure</h4>
           <p>Add the class <code class="language-markup">fixed</code> to have the sideNav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sideNav on the left is an example of this.</p>
           <pre><code class="language-markup col s12">
-    &lt;ul id="slide-out" class="side-nav fixed">
+    &lt;ul id="slide-out" class="sidenav fixed">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>

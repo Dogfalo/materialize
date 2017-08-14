@@ -1,53 +1,53 @@
-describe("SideNav Plugin", function () {
+describe("Sidenav Plugin", function () {
   beforeEach(function() {
     loadFixtures('sideNav/sideNavFixture.html');
   });
 
-  describe("SideNav", function () {
-    var normalActivator, normalSideNav;
+  describe("Sidenav", function () {
+    var normalActivator, normalSidenav;
 
     beforeEach(function() {
       normalActivator = $('.button-collapse');
-      normalSideNav = $('.side-nav');
+      normalSidenav = $('.sidenav');
     });
 
     afterEach(function() {
-      if (Materialize.SideNav._sideNavs.length) {
-        $("#slide-out").sideNav('destroy');
+      if (Materialize.Sidenav._sidenavs.length) {
+        $("#slide-out").sidenav('destroy');
       }
     });
 
     it("should not break from multiple initializations", function() {
-      expect(Materialize.SideNav._sideNavs.length).toEqual(0, 'no sidenavs initialized');
+      expect(Materialize.Sidenav._sidenavs.length).toEqual(0, 'no sidenavs initialized');
 
-      $("#slide-out").sideNav();
-      $("#slide-out").sideNav();
-      $("#slide-out").sideNav();
+      $("#slide-out").sidenav();
+      $("#slide-out").sidenav();
+      $("#slide-out").sidenav();
 
-      expect(Materialize.SideNav._sideNavs.length).toEqual(1, 'only 1 sidenav initialized after multiple calls on the same element');
+      expect(Materialize.Sidenav._sidenavs.length).toEqual(1, 'only 1 sidenav initialized after multiple calls on the same element');
 
-      var dragTarget = $($('#slide-out')[0].M_SideNav.dragTarget);
+      var dragTarget = $($('#slide-out')[0].M_Sidenav.dragTarget);
       expect(dragTarget.length).toEqual(1, 'Should generate only one dragTarget.');
 
-      var overlay = $($('#slide-out')[0].M_SideNav._overlay);
+      var overlay = $($('#slide-out')[0].M_Sidenav._overlay);
       expect(overlay.length).toEqual(1, 'Should generate only one overlay.');
     });
 
-    it("should open sideNav from left", function (done) {
-      $("#slide-out").sideNav();
-      var sideNavRect = normalSideNav[0].getBoundingClientRect();
-      var overlay = $($('#slide-out')[0].M_SideNav._overlay);
-      var dragTarget = $($('#slide-out')[0].M_SideNav.dragTarget);
+    it("should open sidenav from left", function (done) {
+      $("#slide-out").sidenav();
+      var sidenavRect = normalSidenav[0].getBoundingClientRect();
+      var overlay = $($('#slide-out')[0].M_Sidenav._overlay);
+      var dragTarget = $($('#slide-out')[0].M_Sidenav.dragTarget);
 
       expect(dragTarget.length).toEqual(1, 'Should generate only one dragTarget.');
       expect(overlay.length).toEqual(1, 'Should generate only one overlay.');
-      expect(sideNavRect.left).toEqual(-sideNavRect.width * 1.05, 'Should be hidden before sideNav is opened.');
+      expect(sidenavRect.left).toEqual(-sidenavRect.width * 1.05, 'Should be hidden before sidenav is opened.');
 
       click(normalActivator[0]);
 
       setTimeout(function() {
-        sideNavRect = normalSideNav[0].getBoundingClientRect();
-        expect(sideNavRect.left).toEqual(0, 'Should be shown after sideNav is closed.');
+        sidenavRect = normalSidenav[0].getBoundingClientRect();
+        expect(sidenavRect.left).toEqual(0, 'Should be shown after sidenav is closed.');
 
         click(overlay[0]);
 
@@ -61,7 +61,7 @@ describe("SideNav Plugin", function () {
       var closeStart = false;
       var closeEnd = false;
 
-      $("#slide-out").sideNav({
+      $("#slide-out").sidenav({
         onOpenStart: function() {
           openStart = true;
         },
@@ -75,7 +75,7 @@ describe("SideNav Plugin", function () {
           closeEnd = true;
         }
       });
-      var overlay = $($('#slide-out')[0].M_SideNav._overlay);
+      var overlay = $($('#slide-out')[0].M_Sidenav._overlay);
 
       click(normalActivator[0]);
 
@@ -99,18 +99,18 @@ describe("SideNav Plugin", function () {
     });
 
     it("should destroy correctly", function (done) {
-      expect(Materialize.SideNav._sideNavs.length).toEqual(0, 'no sidenavs initialized');
-      $("#slide-out").sideNav();
-      var overlay = $($('#slide-out')[0].M_SideNav._overlay);
-      var dragTarget = $($('#slide-out')[0].M_SideNav.dragTarget);
-      expect(Materialize.SideNav._sideNavs.length).toEqual(1, 'one sidenav initialized');
+      expect(Materialize.Sidenav._sidenavs.length).toEqual(0, 'no sidenavs initialized');
+      $("#slide-out").sidenav();
+      var overlay = $($('#slide-out')[0].M_Sidenav._overlay);
+      var dragTarget = $($('#slide-out')[0].M_Sidenav.dragTarget);
+      expect(Materialize.Sidenav._sidenavs.length).toEqual(1, 'one sidenav initialized');
       expect($.contains(document, overlay[0])).toEqual(true, 'overlay should be in DOM');
       expect($.contains(document, dragTarget[0])).toEqual(true, 'dragTarget should be in DOM');
-      $("#slide-out").sideNav('destroy');
+      $("#slide-out").sidenav('destroy');
 
 
       setTimeout(function() {
-        expect(Materialize.SideNav._sideNavs.length).toEqual(0, 'sidenav destroyed');
+        expect(Materialize.Sidenav._sidenavs.length).toEqual(0, 'sidenav destroyed');
         expect($.contains(document, overlay[0])).toEqual(false, 'overlay should be deleted');
         expect($.contains(document, dragTarget[0])).toEqual(false, 'dragTarget should be deleted');
         done();

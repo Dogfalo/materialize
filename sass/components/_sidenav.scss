@@ -1,4 +1,4 @@
-.side-nav {
+.sidenav {
   position: fixed;
   width: 300px;
   left: 0;
@@ -154,12 +154,11 @@
   position: fixed;
   top: 0;
   z-index: 998;
-  background-color: rebeccapurple;
 }
 
 
-// Fixed side-nav shown
-.side-nav.side-nav-fixed {
+// Fixed sidenav shown
+.sidenav.sidenav-fixed {
   // Right Align
   &.right-aligned {
     right: 0;
@@ -173,8 +172,8 @@
 
 // Fixed sideNav hide on smaller
 @media #{$medium-and-down} {
-  .side-nav {
-    &.side-nav-fixed {
+  .sidenav {
+    &.sidenav-fixed {
       transform: translateX(-105%);
 
       &.right-aligned {
@@ -194,14 +193,14 @@
 }
 
 
-.side-nav .collapsible-body > ul:not(.collapsible) > li.active,
-.side-nav.side-nav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
+.sidenav .collapsible-body > ul:not(.collapsible) > li.active,
+.sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
   background-color: $primary-color;
   a {
     color: $sidenav-bg-color;
   }
 }
-.side-nav .collapsible-body {
+.sidenav .collapsible-body {
   padding: 0;
 }
 

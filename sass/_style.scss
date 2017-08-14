@@ -80,7 +80,7 @@ footer.example {
 ********************/
 
 // custom styled sidebar
-ul.side-nav.side-nav-fixed li.logo {
+ul.sidenav.sidenav-fixed li.logo {
   text-align: center;
   margin-top: 32px;
   margin-bottom: 80px;
@@ -90,7 +90,7 @@ ul.side-nav.side-nav-fixed li.logo {
     background-color: transparent;
   }
 }
-ul.side-nav.side-nav-fixed {
+ul.sidenav.sidenav-fixed {
   overflow: hidden;
 
   li {
@@ -201,7 +201,7 @@ a.button-collapse.top-nav {
 }
 
 @media only screen and (max-width: 992px) {
-  #front-page-nav ul.side-nav {
+  #front-page-nav ul.sidenav {
     li {
       float: none;
       padding: 0 15px;

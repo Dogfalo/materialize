@@ -7,7 +7,7 @@ header
   .container
     a.button-collapse.top-nav.sidenav-trigger(href='#', data-target='nav-mobile', class=(no_nav == false ? "full hide-on-large-only" : "" + "waves-effect waves-light circle hide-on-large-only"))
       i.material-icons menu
-  ul#nav-mobile.side-nav.side-nav-fixed
+  ul#nav-mobile.sidenav.sidenav-fixed
     li(class="logo")
       a#logo-container.brand-logo(href='/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
@@ -105,7 +105,7 @@ header
               li(class=(page == "Scrollspy" ? "active" : ""))
                 a(href='scrollspy.html') Scrollspy
               li(class=(page == "SideNav" ? "active" : ""))
-                a(href='side-nav.html') SideNav
+                a(href='sidenav.html') SideNav
               li(class=(page == "Tabs" ? "active" : ""))
                 a(href='tabs.html') Tabs
               li(class=(page == "Transitions" ? "active" : ""))

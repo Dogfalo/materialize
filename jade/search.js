@@ -218,8 +218,8 @@
     });
 
     window.index.add({
-      href: 'http://materializecss.com/side-nav.html',
-      title: 'sideNav side Nav',
+      href: 'http://materializecss.com/sidenav.html',
+      title: 'sidenav side nav',
       body: 'This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component.'
     });
 
