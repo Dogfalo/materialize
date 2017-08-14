@@ -45,5 +45,48 @@ describe("SideNav Plugin", function () {
         done();
       }, 500);
     });
+
+    it("should have working callbacks", function (done) {
+      var openStart = false;
+      var openEnd = false;
+      var closeStart = false;
+      var closeEnd = false;
+
+      $("#slide-out").sideNav({
+        onOpenStart: function() {
+          openStart = true;
+        },
+        onOpenEnd: function() {
+          openEnd = true;
+        },
+        onCloseStart: function() {
+          closeStart = true;
+        },
+        onCloseEnd: function() {
+          closeEnd = true;
+        }
+      });
+      var overlay = $($('#slide-out')[0].M_SideNav._overlay);
+
+      click(normalActivator[0]);
+
+      expect(openStart).toEqual(true, 'Open start should fire immediately after open');
+      expect(openEnd).toEqual(false, 'Open end should not fire immediately after open');
+
+      setTimeout(function() {
+        expect(openEnd).toEqual(true, 'Open end should fire after open animation');
+
+        click(overlay[0]);
+
+        expect(closeStart).toEqual(true, 'Close start should fire immediately after close');
+        expect(closeEnd).toEqual(false, 'Close end should not fire immediately after close');
+
+        setTimeout(function() {
+          expect(closeEnd).toEqual(true, 'Close end should fire after close animation');
+
+          done();
+        }, 400);
+      }, 400);
+    });
   });
 });

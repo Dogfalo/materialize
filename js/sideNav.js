@@ -7,8 +7,10 @@
     draggable: true,
     inDuration: 300,
     outDuration: 200,
-    onOpen: null,
-    onClose: null,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
   };
 
 
@@ -334,6 +336,11 @@
 
       this.isOpen = true;
 
+      // Callback
+      if (typeof(this.options.onOpenStart) === 'function') {
+        this.options.onOpenStart.call(this, this.el);
+      }
+
       // Handle fixed sidenav
       if (this.isFixed && window.innerWidth > 992) {
         Vel(this.el, 'stop');
@@ -349,11 +356,6 @@
           this._animateIn();
         }
       }
-
-      // Callback
-      if (typeof(this.options.onOpen) === 'function') {
-        this.options.onOpen.call(this, this.el);
-      }
     }
 
     close() {
@@ -362,6 +364,11 @@
       }
 
       this.isOpen = false;
+
+      // Callback
+      if (typeof(this.options.onCloseStart) === 'function') {
+        this.options.onCloseStart.call(this, this.el);
+      }
 
       // Handle fixed sidenav
       if (this.isFixed && window.innerWidth > 992) {
@@ -379,11 +386,6 @@
           this._overlay.style.display = 'none';
         }
       }
-
-      // Callback
-      if (typeof(this.options.onClose) === 'function') {
-        this.options.onClose.call(this, this.el);
-      }
     }
 
     _animateIn() {
@@ -400,7 +402,12 @@
       Vel(this.el, 'stop');
       Vel(this.el,
         {'translateX': [0, `${slideOutPercent * 100}%`]},
-        {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad'});
+        {duration: this.options.inDuration, queue: false, easing: 'easeOutQuad', complete: () => {
+          // Callback
+          if (typeof(this.options.onOpenEnd) === 'function') {
+            this.options.onOpenEnd.call(this, this.el);
+          }
+        }});
     }
 
     _animateOverlayIn() {
@@ -432,7 +439,12 @@
       Vel(this.el, 'stop');
       Vel(this.el,
           {'translateX': [`${endPercent * 105}%`, `${slideOutPercent * 100}%`]},
-          {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
+          {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad', complete: () => {
+            // Callback
+            if (typeof(this.options.onCloseEnd) === 'function') {
+              this.options.onCloseEnd.call(this, this.el);
+            }
+          }});
     }
 
     _animateOverlayOut() {
