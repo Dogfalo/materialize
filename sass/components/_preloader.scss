@@ -1,12 +1,16 @@
 /*
   @license
-  Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+  Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
   This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
   The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
   The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
   Code distributed by Google as part of the polymer project is also
   subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
+
+/****************************/
+/* STYLES FOR THE PRELOADER */
+/****************************/
 
 /*
  * Constants:
@@ -95,13 +99,8 @@
  *
  * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn't
  * guarantee that the animation will start _exactly_ after that value. So we avoid using
- * animation-delay and instead set custom keyframes for each color (as redundant as it
+ * animation-delay and instead set custom keyframes for each color (as layer-2undant as it
  * seems).
- *
- * We write out each animation in full (instead of separating animation-name,
- * animation-duration, etc.) because under the polyfill, Safari does not recognize those
- * specific properties properly, treats them as -webkit-animation, and overrides the
- * other animation rules. See https://github.com/Polymer/platform/issues/53.
  */
  .active .spinner-layer,
  .active .spinner-layer.spinner-blue-only,
@@ -178,21 +177,34 @@
   100% { opacity: 0; }
 }
 
+.spinner-layer,
+.circle-clipper {
+  &::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    border-width: $spinner-stroke-width;
+    border-radius: 50%;
+
+    .active & {
+      /* duration: ARCTIME */
+      animation-duration: $spinner-arc-time;
+      animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+    }
+  }
+}
+
 /**
  * Patch the gap that appear between the two adjacent div.circle-clipper while the
- * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
+ * spinner is rotating (appears on Chrome 50, Safari 9.1.1, and Edge).
  */
-.gap-patch {
-  position: absolute;
-  top: 0;
+.spinner-layer::after {
   left: 45%;
   width: 10%;
-  height: 100%;
-  overflow: hidden;
-  
-  .circle {
-    width: 1000%;
-  }
+  border-top-style: solid;
 }
 
 .circle-clipper {
@@ -202,38 +214,32 @@
   height: 100%;
   overflow: hidden;
 
-  .circle {
-    position: absolute;
-    top: 0;
+  &::after {
     bottom: 0;
     width: 200%;
-    border-width: $spinner-stroke-width;
     border-style: solid;
     border-bottom-color: transparent;
-    border-radius: 50%;    
   }
 
-  &.left .circle {
+  &.left::after {
     left: 0;
     border-right-color: transparent;
     transform: rotate(129deg);
+
+    .active & {
+      animation-name: left-spin;
+    }
   }
-  
-  &.right .circle {
+
+  &.right::after {
     left: -100%;
     border-left-color: transparent;
     transform: rotate(-129deg);
+
+    .active & {
+      animation-name: right-spin;
+    }
   }
-}
-
-.active .circle-clipper.left .circle {
-  /* duration: ARCTIME */
-  animation: left-spin $spinner-arc-time cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
-}
-
-.active .circle-clipper.right .circle {
-  /* duration: ARCTIME */
-  animation: right-spin $spinner-arc-time cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
 }
 
 @keyframes left-spin {
