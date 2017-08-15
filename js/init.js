@@ -188,6 +188,7 @@
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
+    $('.tabs').tabs();
     $('.timepicker').pickatime();
     $('.tooltipped').tooltip();
     $('select').not('.disabled').material_select();
