@@ -1,0 +1,18 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2015
+  },
+
+  "rules": {
+    "semi": "error",
+    "use-isnan": "error",
+    "no-unsafe-negation": "error",
+    "no-cond-assign": "error",
+
+    "no-console": "warn",
+    "no-var": "warn",
+    "no-extra-semi": "warn",
+    "no-unused-vars": "warn",
+    "no-new-object": "warn"
+  }
+}

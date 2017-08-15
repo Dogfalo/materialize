@@ -244,7 +244,7 @@
       );
 
       // Define modal animation options
-      var exitVelocityOptions = {
+      let exitVelocityOptions = {
         duration: this.options.outDuration,
         queue: false,
         ease: 'easeOutCubic',
