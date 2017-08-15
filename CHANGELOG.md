@@ -187,7 +187,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Responsive Video tag added
 - Custom File Input Button added
 - Modals has a fixed footer option
-- SideNav implementation changed (needs 2 UL menus)
+- Sidenav implementation changed (needs 2 UL menus)
 - Slider Responsive Fixes
 
 
