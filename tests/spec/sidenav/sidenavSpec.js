@@ -7,7 +7,7 @@ describe("Sidenav Plugin", function () {
     var normalActivator, normalSidenav;
 
     beforeEach(function() {
-      normalActivator = $('.button-collapse');
+      normalActivator = $('.sidenav-trigger');
       normalSidenav = $('.sidenav');
     });
 

@@ -106,15 +106,19 @@
       }
 
       this._handleDragTargetDragBound = this._handleDragTargetDrag.bind(this);
-      this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound);
       this._handleDragTargetReleaseBound = this._handleDragTargetRelease.bind(this);
-      this.dragTarget.addEventListener('touchend', this._handleDragTargetReleaseBound);
       this._handleCloseDragBound = this._handleCloseDrag.bind(this);
-      this._overlay.addEventListener('touchmove', this._handleCloseDragBound);
-      this.el.addEventListener('touchmove', this._handleCloseDragBound);
       this._handleCloseReleaseBound = this._handleCloseRelease.bind(this);
+      this._handleCloseTriggerClickBound = this._handleCloseTriggerClick.bind(this);
+
+      this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound);
+      this.dragTarget.addEventListener('touchend', this._handleDragTargetReleaseBound);
+      this._overlay.addEventListener('touchmove', this._handleCloseDragBound);
       this._overlay.addEventListener('touchend', this._handleCloseReleaseBound);
+      this.el.addEventListener('touchmove', this._handleCloseDragBound);
       this.el.addEventListener('touchend', this._handleCloseReleaseBound);
+      this.el.addEventListener('click', this._handleCloseTriggerClickBound);
+
 
       // Add resize for side nav fixed
       if (this.isFixed) {
@@ -131,9 +135,10 @@
       this.dragTarget.removeEventListener('touchmove', this._handleDragTargetDragBound);
       this.dragTarget.removeEventListener('touchend', this._handleDragTargetReleaseBound);
       this._overlay.removeEventListener('touchmove', this._handleCloseDragBound);
-      this.el.removeEventListener('touchmove', this._handleCloseDragBound);
       this._overlay.removeEventListener('touchend', this._handleCloseReleaseBound);
+      this.el.removeEventListener('touchmove', this._handleCloseDragBound);
       this.el.removeEventListener('touchend', this._handleCloseReleaseBound);
+      this.el.removeEventListener('click', this._handleCloseTriggerClickBound);
 
       // Remove resize for side nav fixed
       if (this.isFixed) {
@@ -195,8 +200,6 @@
      * @param {Event} e
      */
     _handleDragTargetDrag(e) {
-      let clientX = e.targetTouches[0].clientX;
-
       // If not being dragged, set initial drag start variables
       if (!this.isDragged) {
         this._startDrag(e);
@@ -296,9 +299,8 @@
 
     /**
      * Handle Close Release
-     * @param {Event} e
      */
-    _handleCloseRelease(e) {
+    _handleCloseRelease() {
       if (this.isOpen && this.isDragged) {
         if (this.percentOpen > .5) {
           this._animateIn();
@@ -307,6 +309,17 @@
         }
 
         this.isDragged = false;
+      }
+    }
+
+
+    /**
+     * Handles closing of Sidenav when element with class .sidenav-close
+     */
+    _handleCloseTriggerClick(e) {
+      let $closeTrigger = $(e.target).closest('.sidenav-close');
+      if ($closeTrigger.length) {
+        this.close();
       }
     }
 

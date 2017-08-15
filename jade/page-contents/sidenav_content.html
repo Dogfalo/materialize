@@ -50,9 +50,9 @@
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript col s12">
   // Initialize collapse button
-  $(".button-collapse").sidenav();
+  $(".sidenav").sidenav();
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
+  // $('.collapsible').collapsible();
         </code></pre>
       </div>
 
@@ -61,10 +61,9 @@
         <h4>Options</h4>
         <p>You can customize the sidenav by setting your own width and the alignment of the menu. </p>
         <pre><code class="language-javascript">
-  $('.button-collapse').sidenav({
+  $('.side-nav').sidenav({
       menuWidth: 300, // Default is 300
       edge: 'right', // Choose the horizontal origin
-      closeOnClick: true, // Closes sidenav on &lt;a> clicks, useful for Angular/Meteor
       draggable: true, // Choose whether you can drag to open on touch screens,
       onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sidenav is opened
       onClose: function(el) { /* Do Stuff* / }, // A function to be called when sidenav is closed
@@ -77,12 +76,12 @@
         <h4>jQuery Plugin Methods</h4>
         <p>We have methods to show and hide your sidebar you can use to programmatically control your sidebar.</p>
         <pre><code class="language-javascript col s12">
-  // Show sidenav
-  $('.button-collapse').sidenav('show');
-  // Hide sidenav
-  $('.button-collapse').sidenav('hide');
+  // Open sidenav
+  $('.sidenav').sidenav('open');
+  // Close sidenav
+  $('.sidenav').sidenav('close');
   // Destroy sidenav
-  $('.button-collapse').sidenav('destroy');
+  $('.sidenav').sidenav('destroy');
         </code></pre>
       </div>
 
@@ -125,7 +124,7 @@
         &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
       &lt;/ul>
     &lt;/ul>
-    &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+    &lt;a href="#" data-activates="slide-out" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
           </code></pre><br>
 
           <h4>Fullscreen HTML Structure</h4>
@@ -136,7 +135,7 @@
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
-    &lt;a href="#" data-activates="slide-out" class="button-collapse show-on-large">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+    &lt;a href="#" data-activates="slide-out" class="sidenav-trigger button-collapse show-on-large">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
           </code></pre><br>
 
           <h4>Fixed HTML Structure</h4>
@@ -146,7 +145,7 @@
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
-    &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+    &lt;a href="#" data-activates="slide-out" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
           </code></pre>
           <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding on where the offset content will be, which in our case is in header, main and footer.</p>
           <pre><code class="language-css col s12">

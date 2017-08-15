@@ -25,7 +25,7 @@ if (typeof exports !== 'undefined' && !exports.nodeType) {
  * Licensed under the MIT license.
  */
 (function(window) {
-  var lastTime = 0,
+  let lastTime = 0,
     vendors = ['webkit', 'moz'],
     requestAnimationFrame = window.requestAnimationFrame,
     cancelAnimationFrame = window.cancelAnimationFrame,

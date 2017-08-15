@@ -157,8 +157,8 @@
      * @param {Event} e
      */
     handleModalCloseClick(e) {
-      let $closeTrigger =  $(e.target).closest('.modal-close');
-      if (e.target && $closeTrigger.length) {
+      let $closeTrigger = $(e.target).closest('.modal-close');
+      if ($closeTrigger.length) {
         this.close();
       }
     }
