@@ -95,7 +95,7 @@
       let percentScrolled = (windowBottom - top) / (containerHeight + windowHeight);
       let parallax = parallaxDist * percentScrolled;
 
-      if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {
+      if (bottom > scrollTop && top < scrollTop + windowHeight) {
         this.$img[0].style.transform = `translate3D(-50%, ${parallax}px, 0)`;
       }
     }
