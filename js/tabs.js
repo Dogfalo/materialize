@@ -124,6 +124,7 @@
      * @param {Event} e
      */
     _handleTabClick(e) {
+      let tab = $(e.target).closest('li.tab');
       let tabLink = $(e.target).closest('a');
 
       // Handle click on tab link only
@@ -131,7 +132,7 @@
         return;
       }
 
-      if (this.el.classList.contains('disabled')) {
+      if (tab.hasClass('disabled')) {
         e.preventDefault();
         return;
       }
@@ -211,6 +212,7 @@
         this.$activeTabLink = this.$el.children('li.tab').children('a').first();
       }
 
+      this.$tabLinks.removeClass('active');
       this.$activeTabLink[0].classList.add('active');
 
       this.index = Math.max(this.$tabLinks.index(this.$activeTabLink), 0);

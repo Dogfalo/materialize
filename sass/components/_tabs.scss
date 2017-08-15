@@ -64,7 +64,7 @@
 
     &.disabled a,
     &.disabled a:hover {
-      color: rgba($tabs-text-color, .7);
+      color: rgba($tabs-text-color, .4);
       cursor: default;
     }
   }

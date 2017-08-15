@@ -40,13 +40,14 @@ describe("Tabs Plugin", function () {
       expect(indicator).toExist('Indicator should be generated');
       // expect(Math.abs(indicator.offset().left - activeTab.offset().left)).toBeLessThan(1, 'Indicator should be at active tab by default.');
 
-      disabledTab.click();
+      click(disabledTab[0]);
 
       setTimeout(function() {
         expect($(activeTabHash)).toBeVisible('Clicking disabled should not change tabs.');
         expect($(disabledTabHash)).toBeHidden('Clicking disabled should not change tabs.');
 
-        firstTab.click();
+
+        click(firstTab[0]);
 
         setTimeout(function() {
           expect($(activeTabHash)).toBeHidden('Clicking tab should switch to that tab.');
