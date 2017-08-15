@@ -1,4 +1,4 @@
-.side-nav {
+.sidenav {
   position: fixed;
   width: 300px;
   left: 0;
@@ -144,6 +144,11 @@
 
 // Touch interaction
 .drag-target {
+  // Right Align
+  &.right-aligned {
+    right: 0;
+  }
+
   height: 100%;
   width: 10px;
   position: fixed;
@@ -152,23 +157,23 @@
 }
 
 
-// Fixed side-nav shown
-.side-nav.fixed {
-  left: 0;
-  transform: translateX(0);
-  position: fixed;
-
+// Fixed Sidenav shown
+.sidenav.sidenav-fixed {
   // Right Align
   &.right-aligned {
     right: 0;
     left: auto;
   }
+
+  left: 0;
+  transform: translateX(0);
+  position: fixed;
 }
 
-// Fixed sideNav hide on smaller
+// Fixed Sidenav hide on smaller
 @media #{$medium-and-down} {
-  .side-nav {
-    &.fixed {
+  .sidenav {
+    &.sidenav-fixed {
       transform: translateX(-105%);
 
       &.right-aligned {
@@ -188,27 +193,26 @@
 }
 
 
-.side-nav .collapsible-body > ul:not(.collapsible) > li.active,
-.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
+.sidenav .collapsible-body > ul:not(.collapsible) > li.active,
+.sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
   background-color: $primary-color;
   a {
     color: $sidenav-bg-color;
   }
 }
-.side-nav .collapsible-body {
+.sidenav .collapsible-body {
   padding: 0;
 }
 
 
-#sidenav-overlay {
+.sidenav-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-
+  opacity: 0;
   height: 120vh;
   background-color: rgba(0,0,0,.5);
   z-index: 997;
-
-  will-change: opacity;
+  display: none;
 }

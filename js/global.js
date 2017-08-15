@@ -106,6 +106,24 @@ Materialize.elementOrParentIsFixed = function(element) {
 
 
 /**
+ * Gets id of component from a trigger
+ * @param {Element} trigger  trigger element
+ * @returns {string}
+ */
+Materialize.getIdFromTrigger = function(trigger) {
+  let id = trigger.getAttribute('data-target');
+  if (!id) {
+    id = trigger.getAttribute('href');
+    if (id) {
+      id = id.slice(1);
+    } else {
+      id = "";
+    }
+  }
+  return id;
+}
+
+/**
  * Get time in ms
  * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
  * @type {function}
