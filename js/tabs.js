@@ -236,7 +236,7 @@
      * @param {jQuery} el
      */
     _calcRightPos(el) {
-      return Math.ceil(this.tabsWidth - el.position().left - el[0].getBoundingClientRect().width - this.el.scrollLeft);
+      return Math.ceil(this.tabsWidth - el.position().left - el[0].getBoundingClientRect().width);
     }
 
     /**
@@ -244,7 +244,7 @@
      * @param {jQuery} el
      */
     _calcLeftPos(el) {
-      return Math.floor(el.position().left + this.el.scrollLeft);
+      return Math.floor(el.position().left);
     }
 
     /**
