@@ -239,7 +239,7 @@ video.responsive-video {
     z-index: -1;
 
     img {
-      display: none;
+      opacity: 0;
       position: absolute;
       left: 50%;
       bottom: 0;
