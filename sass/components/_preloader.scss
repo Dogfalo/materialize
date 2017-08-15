@@ -99,7 +99,7 @@
  *
  * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn't
  * guarantee that the animation will start _exactly_ after that value. So we avoid using
- * animation-delay and instead set custom keyframes for each color (as layer-2undant as it
+ * animation-delay and instead set custom keyframes for each color (as redundant as it
  * seems).
  */
  .active .spinner-layer,
