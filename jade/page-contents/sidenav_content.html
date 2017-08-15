@@ -56,17 +56,32 @@
         </code></pre>
       </div>
 
+      <div id="close-trigger" class="section scrollspy">
+          <h4>Close Trigger</h4>
+          <p>Add the class <code class="language-markup">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is useful in Single Page Apps where the page does not refresh on link clicks.</p>
+          <pre><code class="language-markup col s12">
+  &lt;ul id="slide-out" class="sidenav">
+      &lt;li>&lt;a class="sidenav-close" href="#!">Clicking this will close Sidenav&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-target="slide-out" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+
+          </code></pre>
+      </div>
+
 
       <div id="options" class="scrollspy section">
         <h4>Options</h4>
         <p>You can customize the sidenav by setting your own width and the alignment of the menu. </p>
         <pre><code class="language-javascript">
   $('.side-nav').sidenav({
-      menuWidth: 300, // Default is 300
-      edge: 'right', // Choose the horizontal origin
-      draggable: true, // Choose whether you can drag to open on touch screens,
-      onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sidenav is opened
-      onClose: function(el) { /* Do Stuff* / }, // A function to be called when sidenav is closed
+    edge: 'left', // Side of screen on which Sidenav appears
+    draggable: true, // Allow swipe gestures to open/close Sidenav
+    inDuration: 250, // Length in ms of enter transition
+    outDuration: 200, // Length in ms of exit transition
+    onOpenStart: null, // Function called when sidenav starts entering
+    onOpenEnd: null, // Function called when sidenav finishes entering
+    onCloseStart: null, // Function called when sidenav starts exiting
+    onCloseEnd: null, // Function called when sidenav finishes exiting
     }
   );
         </code></pre>
@@ -173,6 +188,7 @@
           <ul class="section table-of-contents">
             <li><a href="#structure">Structure</a></li>
             <li><a href="#initialization">Intialization</a></li>
+            <li><a href="#close-trigger">Close Trigger</a></li>
             <li><a href="#options">Plugin Options</a></li>
             <li><a href="#method">Methods</a></li>
             <li><a href="#variations">Variations</a></li>

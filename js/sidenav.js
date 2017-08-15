@@ -34,12 +34,12 @@
        * @member Sidenav#options
        * @prop {String} [edge='left'] - Side of screen on which Sidenav appears
        * @prop {Boolean} [draggable=true] - Allow swipe gestures to open/close Sidenav
-       * @prop {Number} [inDuration=300] - Length in ms of enter transition
+       * @prop {Number} [inDuration=250] - Length in ms of enter transition
        * @prop {Number} [outDuration=200] - Length in ms of exit transition
-       * @prop {Function} onOpenStart - Function called when modal starts entering
-       * @prop {Function} onOpenEnd - Function called when modal finishes entering
-       * @prop {Function} onCloseStart - Function called when modal starts exiting
-       * @prop {Function} onCloseEnd - Function called when modal finishes exiting
+       * @prop {Function} onOpenStart - Function called when sidenav starts entering
+       * @prop {Function} onOpenEnd - Function called when sidenav finishes entering
+       * @prop {Function} onCloseStart - Function called when sidenav starts exiting
+       * @prop {Function} onCloseEnd - Function called when sidenav finishes exiting
        */
       this.options = $.extend({}, Sidenav.defaults, options);
 
@@ -325,9 +325,8 @@
 
     /**
      * Handle Window Resize
-     * @param {Event} e
      */
-    _handleWindowResize(e) {
+    _handleWindowResize() {
       if (window.innerWidth > 992) {
         this.open();
       }
