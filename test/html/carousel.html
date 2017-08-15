@@ -65,18 +65,11 @@
     <script type="text/javascript">
     $( document ).ready(function() {
 
-      var init = false;
       $('.collapsible').collapsible({
-        onOpen: function(el) {
+        onOpenEnd: function(el) {
           console.log("OPEN", el);
           var carousel = $(el).find('.carousel');
-          if (carousel.length && !init) {
-            init = true;
-            carousel.carousel();
-          }
-        },
-        onClose: function(el) {
-          console.log("CLOSE", el);
+          carousel.carousel();
         }
       });
 

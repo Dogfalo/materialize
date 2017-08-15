@@ -63,7 +63,7 @@
       this.images = [];
       this.itemWidth = this.$el.find('.carousel-item').first().innerWidth();
       this.itemHeight = this.$el.find('.carousel-item').first().innerHeight();
-      this.dim = this.itemWidth * 2 + this.options.padding;
+      this.dim = this.itemWidth * 2 + this.options.padding || 1; // Make sure dim is non zero for divisions.
       this._autoScrollBound = this._autoScroll.bind(this);
       this._trackBound = this._track.bind(this);
 
