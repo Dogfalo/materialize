@@ -3342,7 +3342,6 @@ nav ul a span.badge {
   margin-left: 4px;
   line-height: 22px;
   height: 22px;
-  -webkit-font-smoothing: auto;
 }
 
 .collection-item span.badge {
@@ -3350,7 +3349,7 @@ nav ul a span.badge {
 }
 
 .collapsible span.badge {
-  margin-left: auto;
+  margin-top: calc(1.5rem - 11px);
 }
 
 .side-nav span.badge {
@@ -7576,19 +7575,20 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /*
-  @license
-  Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-  This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-  The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-  The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-  Code distributed by Google as part of the polymer project is also
-  subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
-/****************************/
-/* STYLES FOR THE PRELOADER */
-/****************************/
+/**************************/
+/* STYLES FOR THE SPINNER */
+/**************************/
 /*
  * Constants:
+ *      STROKEWIDTH = 3px
  *      ARCSIZE     = 270 degrees (amount of circle the arc takes up)
  *      ARCTIME     = 1333ms (time it takes to expand and contract arc)
  *      ARCSTARTROT = 216 degrees (how much the start location of the arc
@@ -7596,6 +7596,7 @@ input[type=range]:focus::-ms-fill-upper {
  *                                5 pointed star shape (it's 360/5 * 3).
  *                                For a 7 pointed star, we might do
  *                                360/7 * 3 = 154.286)
+ *      CONTAINERWIDTH = 28px
  *      SHRINK_TIME = 400ms
  */
 .preloader-wrapper {
@@ -7603,10 +7604,6 @@ input[type=range]:focus::-ms-fill-upper {
   position: relative;
   width: 50px;
   height: 50px;
-  /* The spinner does not have any contents that would have to be
-   * flipped if the direction changes. Always use ltr so that the
-   * style works out correctly in both cases. */
-  direction: ltr;
 }
 
 .preloader-wrapper.small {
@@ -7622,19 +7619,12 @@ input[type=range]:focus::-ms-fill-upper {
 .preloader-wrapper.active {
   /* duration: 360 * ARCTIME / (ARCSTARTROT + (360-ARCSIZE)) */
   -webkit-animation: container-rotate 1568ms linear infinite;
-          animation: container-rotate 1568ms linear infinite;
-}
-
-.preloader-wrapper.cooldown {
-  /* duration: SHRINK_TIME */
-  -webkit-animation: container-rotate 1568ms linear infinite, fade-out 400ms cubic-bezier(0.4, 0, 0.2, 1);
-          animation: container-rotate 1568ms linear infinite, fade-out 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  animation: container-rotate 1568ms linear infinite;
 }
 
 @-webkit-keyframes container-rotate {
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
   }
 }
 
@@ -7645,51 +7635,32 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 
-@-webkit-keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 .spinner-layer {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0;
-  white-space: nowrap;
-  color: #26a69a;
+  border-color: #26a69a;
 }
 
 .spinner-blue,
 .spinner-blue-only {
-  color: #4285f4;
+  border-color: #4285f4;
 }
 
 .spinner-red,
 .spinner-red-only {
-  color: #db4437;
+  border-color: #db4437;
 }
 
 .spinner-yellow,
 .spinner-yellow-only {
-  color: #f4b400;
+  border-color: #f4b400;
 }
 
 .spinner-green,
 .spinner-green-only {
-  color: #0f9d58;
+  border-color: #0f9d58;
 }
 
 /**
@@ -7697,89 +7668,82 @@ input[type=range]:focus::-ms-fill-upper {
  *
  * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn't
  * guarantee that the animation will start _exactly_ after that value. So we avoid using
- * animation-delay and instead set custom keyframes for each color (as layer-2undant as it
+ * animation-delay and instead set custom keyframes for each color (as redundant as it
  * seems).
+ *
+ * We write out each animation in full (instead of separating animation-name,
+ * animation-duration, etc.) because under the polyfill, Safari does not recognize those
+ * specific properties properly, treats them as -webkit-animation, and overrides the
+ * other animation rules. See https://github.com/Polymer/platform/issues/53.
  */
+.active .spinner-layer.spinner-blue {
+  /* durations: 4 * ARCTIME */
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.active .spinner-layer.spinner-red {
+  /* durations: 4 * ARCTIME */
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.active .spinner-layer.spinner-yellow {
+  /* durations: 4 * ARCTIME */
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.active .spinner-layer.spinner-green {
+  /* durations: 4 * ARCTIME */
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
 .active .spinner-layer,
 .active .spinner-layer.spinner-blue-only,
 .active .spinner-layer.spinner-red-only,
 .active .spinner-layer.spinner-yellow-only,
 .active .spinner-layer.spinner-green-only {
-  -webkit-animation-name: fill-unfill-rotate;
-          animation-name: fill-unfill-rotate;
-  -webkit-animation-duration: 5332ms;
-          animation-duration: 5332ms;
   /* durations: 4 * ARCTIME */
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
   opacity: 1;
-}
-
-.active .spinner-layer.spinner-blue {
-  -webkit-animation-name: fill-unfill-rotate, blue-fade-in-out;
-          animation-name: fill-unfill-rotate, blue-fade-in-out;
-}
-
-.active .spinner-layer.spinner-red {
-  -webkit-animation-name: fill-unfill-rotate, red-fade-in-out;
-          animation-name: fill-unfill-rotate, red-fade-in-out;
-}
-
-.active .spinner-layer.spinner-yellow {
-  -webkit-animation-name: fill-unfill-rotate, yellow-fade-in-out;
-          animation-name: fill-unfill-rotate, yellow-fade-in-out;
-}
-
-.active .spinner-layer.spinner-green {
-  -webkit-animation-name: fill-unfill-rotate, green-fade-in-out;
-          animation-name: fill-unfill-rotate, green-fade-in-out;
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
 
 @-webkit-keyframes fill-unfill-rotate {
   12.5% {
     -webkit-transform: rotate(135deg);
-            transform: rotate(135deg);
   }
   /* 0.5 * ARCSIZE */
   25% {
     -webkit-transform: rotate(270deg);
-            transform: rotate(270deg);
   }
-  /* 1 * ARCSIZE */
+  /* 1   * ARCSIZE */
   37.5% {
     -webkit-transform: rotate(405deg);
-            transform: rotate(405deg);
   }
   /* 1.5 * ARCSIZE */
   50% {
     -webkit-transform: rotate(540deg);
-            transform: rotate(540deg);
   }
-  /* 2 * ARCSIZE */
+  /* 2   * ARCSIZE */
   62.5% {
     -webkit-transform: rotate(675deg);
-            transform: rotate(675deg);
   }
   /* 2.5 * ARCSIZE */
   75% {
     -webkit-transform: rotate(810deg);
-            transform: rotate(810deg);
   }
-  /* 3 * ARCSIZE */
+  /* 3   * ARCSIZE */
   87.5% {
     -webkit-transform: rotate(945deg);
-            transform: rotate(945deg);
   }
   /* 3.5 * ARCSIZE */
   to {
     -webkit-transform: rotate(1080deg);
-            transform: rotate(1080deg);
   }
-  /* 4 * ARCSIZE */
+  /* 4   * ARCSIZE */
 }
 
 @keyframes fill-unfill-rotate {
@@ -7792,7 +7756,7 @@ input[type=range]:focus::-ms-fill-upper {
     -webkit-transform: rotate(270deg);
             transform: rotate(270deg);
   }
-  /* 1 * ARCSIZE */
+  /* 1   * ARCSIZE */
   37.5% {
     -webkit-transform: rotate(405deg);
             transform: rotate(405deg);
@@ -7802,7 +7766,7 @@ input[type=range]:focus::-ms-fill-upper {
     -webkit-transform: rotate(540deg);
             transform: rotate(540deg);
   }
-  /* 2 * ARCSIZE */
+  /* 2   * ARCSIZE */
   62.5% {
     -webkit-transform: rotate(675deg);
             transform: rotate(675deg);
@@ -7812,7 +7776,7 @@ input[type=range]:focus::-ms-fill-upper {
     -webkit-transform: rotate(810deg);
             transform: rotate(810deg);
   }
-  /* 3 * ARCSIZE */
+  /* 3   * ARCSIZE */
   87.5% {
     -webkit-transform: rotate(945deg);
             transform: rotate(945deg);
@@ -7822,11 +7786,11 @@ input[type=range]:focus::-ms-fill-upper {
     -webkit-transform: rotate(1080deg);
             transform: rotate(1080deg);
   }
-  /* 4 * ARCSIZE */
+  /* 4   * ARCSIZE */
 }
 
 @-webkit-keyframes blue-fade-in-out {
-  0% {
+  from {
     opacity: 1;
   }
   25% {
@@ -7847,7 +7811,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 @keyframes blue-fade-in-out {
-  0% {
+  from {
     opacity: 1;
   }
   25% {
@@ -7868,7 +7832,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 @-webkit-keyframes red-fade-in-out {
-  0% {
+  from {
     opacity: 0;
   }
   15% {
@@ -7881,15 +7845,12 @@ input[type=range]:focus::-ms-fill-upper {
     opacity: 1;
   }
   51% {
-    opacity: 0;
-  }
-  100% {
     opacity: 0;
   }
 }
 
 @keyframes red-fade-in-out {
-  0% {
+  from {
     opacity: 0;
   }
   15% {
@@ -7904,13 +7865,10 @@ input[type=range]:focus::-ms-fill-upper {
   51% {
     opacity: 0;
   }
-  100% {
-    opacity: 0;
-  }
 }
 
 @-webkit-keyframes yellow-fade-in-out {
-  0% {
+  from {
     opacity: 0;
   }
   40% {
@@ -7923,15 +7881,12 @@ input[type=range]:focus::-ms-fill-upper {
     opacity: 1;
   }
   76% {
-    opacity: 0;
-  }
-  100% {
     opacity: 0;
   }
 }
 
 @keyframes yellow-fade-in-out {
-  0% {
+  from {
     opacity: 0;
   }
   40% {
@@ -7946,13 +7901,10 @@ input[type=range]:focus::-ms-fill-upper {
   76% {
     opacity: 0;
   }
-  100% {
-    opacity: 0;
-  }
 }
 
 @-webkit-keyframes green-fade-in-out {
-  0% {
+  from {
     opacity: 0;
   }
   65% {
@@ -7970,7 +7922,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 @keyframes green-fade-in-out {
-  0% {
+  from {
     opacity: 0;
   }
   65% {
@@ -7987,38 +7939,23 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 
-.spinner-layer::after,
-.circle-clipper::after {
-  content: "";
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  border-width: 3px;
-  border-radius: 50%;
-}
-
-.active .spinner-layer::after, .active
-.circle-clipper::after {
-  /* duration: ARCTIME */
-  -webkit-animation-duration: 1333ms;
-          animation-duration: 1333ms;
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-}
-
 /**
  * Patch the gap that appear between the two adjacent div.circle-clipper while the
- * spinner is rotating (appears on Chrome 50, Safari 9.1.1, and Edge).
+ * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
  */
-.spinner-layer::after {
+.gap-patch {
+  position: absolute;
+  top: 0;
   left: 45%;
   width: 10%;
-  border-top-style: solid;
+  height: 100%;
+  overflow: hidden;
+  border-color: inherit;
+}
+
+.gap-patch .circle {
+  width: 1000%;
+  left: -450%;
 }
 
 .circle-clipper {
@@ -8027,51 +7964,61 @@ input[type=range]:focus::-ms-fill-upper {
   width: 50%;
   height: 100%;
   overflow: hidden;
+  border-color: inherit;
 }
 
-.circle-clipper::after {
-  bottom: 0;
+.circle-clipper .circle {
   width: 200%;
+  height: 100%;
+  border-width: 3px;
+  /* STROKEWIDTH */
   border-style: solid;
-  border-bottom-color: transparent;
+  border-color: inherit;
+  border-bottom-color: transparent !important;
+  border-radius: 50%;
+  -webkit-animation: none;
+  animation: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.circle-clipper.left::after {
+.circle-clipper.left .circle {
   left: 0;
-  border-right-color: transparent;
+  border-right-color: transparent !important;
   -webkit-transform: rotate(129deg);
-          transform: rotate(129deg);
+  transform: rotate(129deg);
 }
 
-.active .circle-clipper.left::after {
-  -webkit-animation-name: left-spin;
-          animation-name: left-spin;
-}
-
-.circle-clipper.right::after {
+.circle-clipper.right .circle {
   left: -100%;
-  border-left-color: transparent;
+  border-left-color: transparent !important;
   -webkit-transform: rotate(-129deg);
-          transform: rotate(-129deg);
+  transform: rotate(-129deg);
 }
 
-.active .circle-clipper.right::after {
-  -webkit-animation-name: right-spin;
-          animation-name: right-spin;
+.active .circle-clipper.left .circle {
+  /* duration: ARCTIME */
+  -webkit-animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.active .circle-clipper.right .circle {
+  /* duration: ARCTIME */
+  -webkit-animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
 
 @-webkit-keyframes left-spin {
   from {
     -webkit-transform: rotate(130deg);
-            transform: rotate(130deg);
   }
   50% {
     -webkit-transform: rotate(-5deg);
-            transform: rotate(-5deg);
   }
   to {
     -webkit-transform: rotate(130deg);
-            transform: rotate(130deg);
   }
 }
 
@@ -8093,15 +8040,12 @@ input[type=range]:focus::-ms-fill-upper {
 @-webkit-keyframes right-spin {
   from {
     -webkit-transform: rotate(-130deg);
-            transform: rotate(-130deg);
   }
   50% {
     -webkit-transform: rotate(5deg);
-            transform: rotate(5deg);
   }
   to {
     -webkit-transform: rotate(-130deg);
-            transform: rotate(-130deg);
   }
 }
 
@@ -8117,6 +8061,30 @@ input[type=range]:focus::-ms-fill-upper {
   to {
     -webkit-transform: rotate(-130deg);
             transform: rotate(-130deg);
+  }
+}
+
+#spinnerContainer.cooldown {
+  /* duration: SHRINK_TIME */
+  -webkit-animation: container-rotate 1568ms linear infinite, fade-out 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  animation: container-rotate 1568ms linear infinite, fade-out 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
@@ -8340,10 +8308,10 @@ input[type=range]:focus::-ms-fill-upper {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8396,10 +8364,10 @@ input[type=range]:focus::-ms-fill-upper {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s;
+  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
   z-index: -1;
 }
 
