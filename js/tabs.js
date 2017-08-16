@@ -123,9 +123,9 @@
     _handleWindowResize() {
       this._setTabsAndTabWidth();
 
-      if (this.tabWidth !== 0 && tabsWidth !== 0) {
+      if (this.tabWidth !== 0 && this.tabsWidth !== 0) {
         this._indicator.style.left = this._calcLeftPos(this.$activeTabLink) + 'px';
-        this._indicator.style,right = this._calcRightPos(this.$activeTabLink) + 'px';
+        this._indicator.style.right = this._calcRightPos(this.$activeTabLink) + 'px';
       }
     }
 
@@ -299,7 +299,12 @@
     _setupNormalTabs() {
       // Hide Tabs Content
       this.$tabLinks.not(this.$activeTabLink).each((link) => {
-        $(Materialize.escapeHash(link.hash))[0].style.display = 'none';
+        if (!!link.hash) {
+          let $currContent = $(Materialize.escapeHash(link.hash));
+          if ($currContent.length) {
+            $currContent[0].style.display = 'none';
+          }
+        }
       });
     }
 
@@ -309,7 +314,12 @@
     _teardownNormalTabs() {
       // show Tabs Content
       this.$tabLinks.each((link) => {
-        $(Materialize.escapeHash(link.hash))[0].style.display = '';
+        if (!!link.hash) {
+          let $currContent = $(Materialize.escapeHash(link.hash));
+          if ($currContent.length) {
+            $currContent[0].style.display = '';
+          }
+        }
       });
     }
 
