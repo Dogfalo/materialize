@@ -21,21 +21,23 @@
     /**
      * Construct Carousel instance
      * @constructor
-     * @param {jQuery} $el
+     * @param {Element} el
      * @param {Object} options
      */
-    constructor($el, options) {
+    constructor(el, options) {
 
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_Carousel) {
-        $el[0].M_Carousel.destroy();
+      if (!!el.M_Carousel) {
+        el.M_Carousel.destroy();
       }
 
       /**
        * The jQuery element
        * @type {jQuery}
        */
-      this.$el = $el;
+      this.$el = $(el);
+
+      this.el = el;
 
       /**
        * Options for the carousel
@@ -51,7 +53,7 @@
        */
       this.options = $.extend({}, Carousel.defaults, options);
 
-      this.$el[0].M_Carousel = this;
+      this.el.M_Carousel = this;
 
       // Setup
       this.hasMultipleSlides = this.$el.find('.carousel-item').length > 1;
@@ -120,7 +122,7 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Carousel($(this), options));
+        arr.push(new Carousel(this, options));
       });
       return arr;
     }
@@ -137,7 +139,7 @@
      */
     destroy() {
       this._removeEventHandlers();
-      this.$el[0].M_Carousel = undefined;
+      this.el.M_Carousel = undefined;
     }
 
     /**
@@ -150,16 +152,16 @@
       this._handleCarouselClickBound = this._handleCarouselClick.bind(this);
 
       if (typeof window.ontouchstart !== 'undefined') {
-        this.$el[0].addEventListener('touchstart', this._handleCarouselTapBound);
-        this.$el[0].addEventListener('touchmove', this._handleCarouselDragBound);
-        this.$el[0].addEventListener('touchend', this._handleCarouselReleaseBound);
+        this.el.addEventListener('touchstart', this._handleCarouselTapBound);
+        this.el.addEventListener('touchmove', this._handleCarouselDragBound);
+        this.el.addEventListener('touchend', this._handleCarouselReleaseBound);
       }
 
-      this.$el[0].addEventListener('mousedown', this._handleCarouselTapBound);
-      this.$el[0].addEventListener('mousemove', this._handleCarouselDragBound);
-      this.$el[0].addEventListener('mouseup', this._handleCarouselReleaseBound);
-      this.$el[0].addEventListener('mouseleave', this._handleCarouselReleaseBound);
-      this.$el[0].addEventListener('click', this._handleCarouselClickBound);
+      this.el.addEventListener('mousedown', this._handleCarouselTapBound);
+      this.el.addEventListener('mousemove', this._handleCarouselDragBound);
+      this.el.addEventListener('mouseup', this._handleCarouselReleaseBound);
+      this.el.addEventListener('mouseleave', this._handleCarouselReleaseBound);
+      this.el.addEventListener('click', this._handleCarouselClickBound);
 
       if (this.showIndicators && this.$indicators) {
         this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
@@ -180,15 +182,15 @@
      */
     _removeEventHandlers() {
       if (typeof window.ontouchstart !== 'undefined') {
-        this.$el[0].removeEventListener('touchstart', this._handleCarouselTapBound);
-        this.$el[0].removeEventListener('touchmove', this._handleCarouselDragBound);
-        this.$el[0].removeEventListener('touchend', this._handleCarouselReleaseBound);
+        this.el.removeEventListener('touchstart', this._handleCarouselTapBound);
+        this.el.removeEventListener('touchmove', this._handleCarouselDragBound);
+        this.el.removeEventListener('touchend', this._handleCarouselReleaseBound);
       }
-      this.$el[0].removeEventListener('mousedown', this._handleCarouselTapBound);
-      this.$el[0].removeEventListener('mousemove', this._handleCarouselDragBound);
-      this.$el[0].removeEventListener('mouseup', this._handleCarouselReleaseBound);
-      this.$el[0].removeEventListener('mouseleave', this._handleCarouselReleaseBound);
-      this.$el[0].removeEventListener('click', this._handleCarouselClickBound);
+      this.el.removeEventListener('mousedown', this._handleCarouselTapBound);
+      this.el.removeEventListener('mousemove', this._handleCarouselDragBound);
+      this.el.removeEventListener('mouseup', this._handleCarouselReleaseBound);
+      this.el.removeEventListener('mouseleave', this._handleCarouselReleaseBound);
+      this.el.removeEventListener('click', this._handleCarouselClickBound);
 
       if (this.showIndicators && this.$indicators) {
         this.$indicators.find('.indicator-item').each((el, i) => {
@@ -462,7 +464,7 @@
     _scroll(x) {
       // Track scrolling state
       if (!this.$el.hasClass('scrolling')) {
-        this.$el[0].classList.add('scrolling');
+        this.el.classList.add('scrolling');
       }
       if (this.scrollingTimeout != null) {
         window.clearTimeout(this.scrollingTimeout);
@@ -483,8 +485,8 @@
       half = this.count >> 1;
 
       if (!this.options.fullWidth) {
-        alignment = 'translateX(' + (this.$el[0].clientWidth - this.itemWidth) / 2 + 'px) ';
-        alignment += 'translateY(' + (this.$el[0].clientHeight - this.itemHeight) / 2 + 'px)';
+        alignment = 'translateX(' + (this.el.clientWidth - this.itemWidth) / 2 + 'px) ';
+        alignment += 'translateY(' + (this.el.clientHeight - this.itemHeight) / 2 + 'px)';
       } else {
         alignment = 'translateX(0)';
       }
@@ -577,9 +579,9 @@
       }
 
       // onCycleTo callback
+      let $currItem = this.$el.find('.carousel-item').eq(this._wrap(this.center));
       if (lastCenter !== this.center &&
           typeof(this.options.onCycleTo) === "function") {
-        var $currItem = this.$el.find('.carousel-item').eq(this._wrap(this.center));
         this.options.onCycleTo.call(this, $currItem[0], this.dragged);
       }
 
@@ -593,6 +595,7 @@
     /**
      * Cycle to target
      * @param {Number} n
+     * @param {Function} callback
      */
     _cycleTo(n, callback) {
       let diff = (this.center % this.count) - n;
@@ -607,7 +610,7 @@
         }
       }
 
-      this.target = (this.dim * Math.round(this.offset / this.dim))
+      this.target = (this.dim * Math.round(this.offset / this.dim));
       // Next
       if (diff < 0) {
         this.target += (this.dim * Math.abs(diff));
@@ -675,8 +678,9 @@
     /**
      * Cycle to nth item
      * @param {Number} [n]
+     * @param {Function} callback
      */
-    set(n) {
+    set(n, callback) {
       if (n === undefined || isNaN(n)) {
         n = 0;
       }
@@ -689,7 +693,7 @@
         }
       }
 
-      this._cycleTo(n);
+      this._cycleTo(n, callback);
     }
   }
 

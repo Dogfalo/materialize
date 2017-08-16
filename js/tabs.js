@@ -16,22 +16,22 @@
     /**
      * Construct Tabs instance
      * @constructor
-     * @param {jQuery} $el
+     * @param {Element} el
      * @param {Object} options
      */
-    constructor($el, options) {
+    constructor(el, options) {
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_Tabs) {
-        $el[0].M_Tabs.destroy();
+      if (!!el.M_Tabs) {
+        el.M_Tabs.destroy();
       }
 
       /**
        * The jQuery element
        * @type {jQuery}
        */
-      this.$el = $el;
+      this.$el = $(el);
 
-      this.el = $el[0];
+      this.el = el;
 
       /**
        * Options for the carousel
@@ -52,10 +52,13 @@
       this._setupActiveTabLink();
       this._createIndicator();
 
-      // Initialize Tabs Content
-      this.$tabLinks.not(this.$activeTabLink).each((link) => {
-        $(Materialize.escapeHash(link.hash))[0].style.display = 'none';
-      });
+      if (this.options.swipeable) {
+        this._setupSwipeableTabs();
+
+      } else {
+        this._setupNormalTabs();
+      }
+
 
       this._setupEventHandlers();
     }
@@ -67,7 +70,7 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Tabs($(this), options));
+        arr.push(new Tabs(this, options));
       });
       return arr;
     }
@@ -85,6 +88,13 @@
     destroy() {
       this._removeEventHandlers();
       this._indicator.parentNode.removeChild(this._indicator);
+
+      if (this.options.swipeable) {
+        this._teardownSwipeableTabs();
+      } else {
+        this._teardownNormalTabs();
+      }
+
       this.$el[0].M_Tabs = undefined;
     }
 
@@ -159,17 +169,27 @@
       this.index = Math.max(this.$tabLinks.index(tabLink), 0);
 
       // Swap content
-      if (this.$content !== undefined) {
-        this.$content[0].style.display = 'block';
-        this.$content.addClass('active');
-        if (typeof(this.options.onShow) === 'function') {
-          this.options.onShow.call(this, this.$content);
+      if (this.options.swipeable) {
+        if (this._tabsCarousel) {
+          this._tabsCarousel.set(this.index, () => {
+            if (typeof(this.options.onShow) === "function") {
+              this.options.onShow.call(this, this.$content);
+            }
+          });
         }
+      } else {
+        if (this.$content !== undefined) {
+          this.$content[0].style.display = 'block';
+          this.$content.addClass('active');
+          if (typeof(this.options.onShow) === 'function') {
+            this.options.onShow.call(this, this.$content);
+          }
 
-        if ($oldContent !== undefined &&
-            !$oldContent.is(this.$content)) {
-          $oldContent[0].style.display = 'none';
-          $oldContent.removeClass('active');
+          if ($oldContent !== undefined &&
+              !$oldContent.is(this.$content)) {
+            $oldContent[0].style.display = 'none';
+            $oldContent.removeClass('active');
+          }
         }
       }
 
@@ -221,6 +241,76 @@
         this.$content = $(Materialize.escapeHash(this.$activeTabLink[0].hash));
         this.$content.addClass('active');
       }
+    }
+
+    /**
+     * Setup swipeable tabs
+     */
+    _setupSwipeableTabs() {
+      // Change swipeable according to responsive threshold
+      if (window.innerWidth > options.responsiveThreshold) {
+        this.options.swipeable = false;
+      }
+
+      let $tabsContent = $();
+      this.$tabLinks.each((link) => {
+        let $currContent = $(Materialize.escapeHash(link.hash));
+        $currContent.addClass('carousel-item');
+        $tabsContent = $tabsContent.add($currContent);
+      });
+
+      let $tabsWrapper = $('<div class="tabs-content carousel carousel-slider"></div>');
+      $tabsContent.first().before($tabsWrapper);
+      $tabsWrapper.append($tabsContent);
+      $tabsContent[0].style.display = '';
+
+      this._tabsCarousel = new Materialize.Carousel($tabsWrapper[0], {
+        fullWidth: true,
+        noWrap: true,
+        onCycleTo: (item) => {
+          let prevIndex = this.index;
+          this.index = $(item).index();
+          this.$activeTabLink.removeClass('active');
+          this.$activeTabLink = this.$tabLinks.eq(this.index);
+          this.$activeTabLink.addClass('active');
+          this._animateIndicator(prevIndex);
+          if (typeof(this.options.onShow) === "function") {
+            this.options.onShow.call(this, this.$content);
+          }
+        },
+      });
+    }
+
+    /**
+     * Teardown normal tabs.
+     */
+    _teardownSwipeableTabs() {
+      let $tabsWrapper = this._tabsCarousel.$el;
+      this._tabsCarousel.destroy();
+
+      // Unwrap
+      $tabsWrapper.after($tabsWrapper.children());
+      $tabsWrapper.remove();
+    }
+
+    /**
+     * Setup normal tabs.
+     */
+    _setupNormalTabs() {
+      // Hide Tabs Content
+      this.$tabLinks.not(this.$activeTabLink).each((link) => {
+        $(Materialize.escapeHash(link.hash))[0].style.display = 'none';
+      });
+    }
+
+    /**
+     * Teardown normal tabs.
+     */
+    _teardownNormalTabs() {
+      // show Tabs Content
+      this.$tabLinks.each((link) => {
+        $(Materialize.escapeHash(link.hash))[0].style.display = '';
+      });
     }
 
     /**

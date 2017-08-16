@@ -163,10 +163,6 @@
       });
     }
 
-    // Swipeable Tabs Demo Init
-    if ($('#tabs-swipe-demo').length) {
-      $('#tabs-swipe-demo').tabs({ 'swipeable': true });
-    }
 
     // Plugin initialization
     $('.carousel').carousel();
@@ -195,6 +191,11 @@
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
     });
+
+    // Swipeable Tabs Demo Init
+    if ($('#tabs-swipe-demo').length) {
+      $('#tabs-swipe-demo').tabs({ 'swipeable': true });
+    }
 
     // Chips
     $('.chips').material_chip();
