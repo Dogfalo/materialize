@@ -54,7 +54,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 
 ## v0.98.1 (March 21st)
 - Fixed various select bugs on mobile devices
-- Fixed small sideNav overlay bugs
+- Fixed small sidenav overlay bugs
 - Fixed carousel resizing bug
 - Fixed materialbox callback bug
 - Range slider supports keyboard navigation
@@ -187,7 +187,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Responsive Video tag added
 - Custom File Input Button added
 - Modals has a fixed footer option
-- SideNav implementation changed (needs 2 UL menus)
+- Sidenav implementation changed (needs 2 UL menus)
 - Slider Responsive Fixes
 
 

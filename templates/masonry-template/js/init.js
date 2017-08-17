@@ -1,7 +1,7 @@
 (function($){
   $(function(){
 
-    $('.button-collapse').sideNav();
+    $('.sidenav').sidenav();
 
 
     var $container = $('#masonry-grid');

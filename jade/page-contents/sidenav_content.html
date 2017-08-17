@@ -7,9 +7,9 @@
         <h4>Introduction</h4>
         <p class="caption">This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.</p>
 
-        <a href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>
+        <a href="#" data-target="slide-out" class="sidenav-trigger btn button-collapse">Side nav demo</a>
 
-        <ul id="slide-out" class="side-nav">
+        <ul id="slide-out" class="sidenav">
           <li><div class="user-view">
             <div class="background">
               <img src="images/office.jpg">
@@ -27,7 +27,7 @@
 
         <h4>HTML Structure</h4>
         <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="side-nav">
+  &lt;ul id="slide-out" class="sidenav">
     &lt;li>&lt;div class="user-view">
       &lt;div class="background">
         &lt;img src="images/office.jpg">
@@ -42,7 +42,7 @@
     &lt;li>&lt;a class="subheader">Subheader&lt;/a>&lt;/li>
     &lt;li>&lt;a class="waves-effect" href="#!">Third Link With Waves&lt;/a>&lt;/li>
   &lt;/ul>
-  &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+  &lt;a href="#" data-target="slide-out" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
         </code></pre>
       </div>
 
@@ -50,24 +50,38 @@
         <h4>jQuery Plugin Initialization</h4>
         <pre><code class="language-javascript col s12">
   // Initialize collapse button
-  $(".button-collapse").sideNav();
+  $(".sidenav").sidenav();
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
+  // $('.collapsible').collapsible();
         </code></pre>
+      </div>
+
+      <div id="close-trigger" class="section scrollspy">
+          <h4>Close Trigger</h4>
+          <p>Add the class <code class="language-markup">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is useful in Single Page Apps where the page does not refresh on link clicks.</p>
+          <pre><code class="language-markup col s12">
+  &lt;ul id="slide-out" class="sidenav">
+      &lt;li>&lt;a class="sidenav-close" href="#!">Clicking this will close Sidenav&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-target="slide-out" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+
+          </code></pre>
       </div>
 
 
       <div id="options" class="scrollspy section">
         <h4>Options</h4>
-        <p>You can customize the sideNav by setting your own width and the alignment of the menu. </p>
+        <p>You can customize the sidenav by setting your own width and the alignment of the menu. </p>
         <pre><code class="language-javascript">
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 300
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: true, // Closes side-nav on &lt;a> clicks, useful for Angular/Meteor
-      draggable: true, // Choose whether you can drag to open on touch screens,
-      onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is opened
-      onClose: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is closed
+  $('.side-nav').sidenav({
+    edge: 'left', // Side of screen on which Sidenav appears
+    draggable: true, // Allow swipe gestures to open/close Sidenav
+    inDuration: 250, // Length in ms of enter transition
+    outDuration: 200, // Length in ms of exit transition
+    onOpenStart: null, // Function called when sidenav starts entering
+    onOpenEnd: null, // Function called when sidenav finishes entering
+    onCloseStart: null, // Function called when sidenav starts exiting
+    onCloseEnd: null, // Function called when sidenav finishes exiting
     }
   );
         </code></pre>
@@ -77,12 +91,12 @@
         <h4>jQuery Plugin Methods</h4>
         <p>We have methods to show and hide your sidebar you can use to programmatically control your sidebar.</p>
         <pre><code class="language-javascript col s12">
-  // Show sideNav
-  $('.button-collapse').sideNav('show');
-  // Hide sideNav
-  $('.button-collapse').sideNav('hide');
-  // Destroy sideNav
-  $('.button-collapse').sideNav('destroy');
+  // Open sidenav
+  $('.sidenav').sidenav('open');
+  // Close sidenav
+  $('.sidenav').sidenav('close');
+  // Destroy sidenav
+  $('.sidenav').sidenav('destroy');
         </code></pre>
       </div>
 
@@ -95,7 +109,7 @@
         <h4>Dropdown HTML Structure</h4>
           <p>Add collapsible menus to your sidebar.</p>
           <pre><code class="language-markup col s12">
-    &lt;ul id="slide-out" class="side-nav">
+    &lt;ul id="slide-out" class="sidenav">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
       &lt;li class="no-padding">
@@ -125,28 +139,28 @@
         &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
       &lt;/ul>
     &lt;/ul>
-    &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+    &lt;a href="#" data-activates="slide-out" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
           </code></pre><br>
 
           <h4>Fullscreen HTML Structure</h4>
           <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.button-collapse</code>. </p>
 
           <pre><code class="language-markup col s12">
-    &lt;ul id="slide-out" class="side-nav">
+    &lt;ul id="slide-out" class="sidenav">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
-    &lt;a href="#" data-activates="slide-out" class="button-collapse show-on-large">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+    &lt;a href="#" data-activates="slide-out" class="sidenav-trigger button-collapse show-on-large">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
           </code></pre><br>
 
           <h4>Fixed HTML Structure</h4>
-          <p>Add the class <code class="language-markup">fixed</code> to have the sideNav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sideNav on the left is an example of this.</p>
+          <p>Add the class <code class="language-markup">fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sidenav on the left is an example of this.</p>
           <pre><code class="language-markup col s12">
-    &lt;ul id="slide-out" class="side-nav fixed">
+    &lt;ul id="slide-out" class="sidenav fixed">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
-    &lt;a href="#" data-activates="slide-out" class="button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+    &lt;a href="#" data-activates="slide-out" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
           </code></pre>
           <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding on where the offset content will be, which in our case is in header, main and footer.</p>
           <pre><code class="language-css col s12">
@@ -174,6 +188,7 @@
           <ul class="section table-of-contents">
             <li><a href="#structure">Structure</a></li>
             <li><a href="#initialization">Intialization</a></li>
+            <li><a href="#close-trigger">Close Trigger</a></li>
             <li><a href="#options">Plugin Options</a></li>
             <li><a href="#method">Methods</a></li>
             <li><a href="#variations">Variations</a></li>

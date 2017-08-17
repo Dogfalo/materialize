@@ -133,12 +133,8 @@
     handleTriggerClick(e) {
       let $trigger =  $(e.target).closest('.modal-trigger');
       if (e.target && $trigger.length) {
-        let modalId = $trigger[0].getAttribute('href');
-        if (modalId) {
-          modalId = modalId.slice(1);
-        } else {
-          modalId = $trigger[0].getAttribute('data-target');
-        }
+        let modalId = Materialize.getIdFromTrigger($trigger[0]);
+
         let modalInstance = document.getElementById(modalId).M_Modal;
         if (modalInstance) {
           modalInstance.open($trigger);
@@ -161,8 +157,8 @@
      * @param {Event} e
      */
     handleModalCloseClick(e) {
-      let $closeTrigger =  $(e.target).closest('.modal-close');
-      if (e.target && $closeTrigger.length) {
+      let $closeTrigger = $(e.target).closest('.modal-close');
+      if ($closeTrigger.length) {
         this.close();
       }
     }

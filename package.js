@@ -65,7 +65,7 @@ Package.onUse(function (api) {
     'sass/components/_preloader.scss',
     'sass/components/_pulse.scss',
     'sass/components/_roboto.scss',
-    'sass/components/_sideNav.scss',
+    'sass/components/_sidenav.scss',
     'sass/components/_slider.scss',
     'sass/components/_table_of_contents.scss',
     'sass/components/_tabs.scss',

@@ -5,9 +5,9 @@ header
         .nav-wrapper
           a.page-title #{page}
   .container
-    a.button-collapse.top-nav(href='#', data-activates='nav-mobile', class=(no_nav == false ? "full hide-on-large-only" : "" + "waves-effect waves-light circle hide-on-large-only"))
+    a.button-collapse.top-nav.sidenav-trigger(href='#', data-target='nav-mobile', class=(no_nav == false ? "full hide-on-large-only" : "" + "waves-effect waves-light circle hide-on-large-only"))
       i.material-icons menu
-  ul#nav-mobile.side-nav.fixed
+  ul#nav-mobile.sidenav.sidenav-fixed
     li(class="logo")
       a#logo-container.brand-logo(href='/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
@@ -77,7 +77,7 @@ header
                 a(href='pagination.html') Pagination
               li(class=(page == "Preloader" ? "active" : ""))
                 a(href='preloader.html') Preloader
-        li.bold(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "FeatureDiscovery" || page == "Tabs" || page == "ScrollFire" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Transitions" || page == "Parallax" || page == "Collapsible" ? "active" : "" || page == "Carousel" ? "active" : ""))
+        li.bold(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "FeatureDiscovery" || page == "Tabs" || page == "ScrollFire" || page == "Scrollspy" || page == "Sidenav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Transitions" || page == "Parallax" || page == "Collapsible" ? "active" : "" || page == "Carousel" ? "active" : ""))
           a.collapsible-header(class="waves-effect waves-teal")
             | JavaScript
           .collapsible-body
@@ -104,8 +104,8 @@ header
                 a(href='scrollfire.html') ScrollFire
               li(class=(page == "Scrollspy" ? "active" : ""))
                 a(href='scrollspy.html') Scrollspy
-              li(class=(page == "SideNav" ? "active" : ""))
-                a(href='side-nav.html') SideNav
+              li(class=(page == "Sidenav" ? "active" : ""))
+                a(href='sidenav.html') Sidenav
               li(class=(page == "Tabs" ? "active" : ""))
                 a(href='tabs.html') Tabs
               li(class=(page == "Transitions" ? "active" : ""))

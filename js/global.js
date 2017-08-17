@@ -25,7 +25,7 @@ if (typeof exports !== 'undefined' && !exports.nodeType) {
  * Licensed under the MIT license.
  */
 (function(window) {
-  var lastTime = 0,
+  let lastTime = 0,
     vendors = ['webkit', 'moz'],
     requestAnimationFrame = window.requestAnimationFrame,
     cancelAnimationFrame = window.cancelAnimationFrame,
@@ -166,6 +166,25 @@ Materialize.checkWithinContainer = function(container, bounding, offset) {
   }
 
   return edges;
+};
+
+
+/**
+ * Gets id of component from a trigger
+ * @param {Element} trigger  trigger element
+ * @returns {string}
+ */
+Materialize.getIdFromTrigger = function(trigger) {
+  let id = trigger.getAttribute('data-target');
+  if (!id) {
+    id = trigger.getAttribute('href');
+    if (id) {
+      id = id.slice(1);
+    } else {
+      id = "";
+    }
+  }
+  return id;
 };
 
 
