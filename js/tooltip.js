@@ -192,22 +192,34 @@
     }
 
     _repositionWithinScreen(x, y, width, height) {
-      var newX = x - document.body.scrollLeft;
-      var newY = y - document.body.scrollTop;
+      let scrollLeft = document.body.scrollLeft;
+      let scrollTop = document.body.scrollTop;
+      let newX = x - scrollLeft;
+      let newY = y - scrollTop;
 
-      if (newX - this.options.margin - this.options.transitionMovement < 0) {
-        newX = this.options.margin + this.options.transitionMovement;
-      } else if (newX + width > window.innerWidth) {
+      let bounding = {
+        left: x,
+        top: y,
+        width: width,
+        height: height
+      };
+
+      let offset = this.options.margin + this.options.transitionMovement;
+      let edges = Materialize.checkWithinContainer(document.body, bounding, offset);
+
+      if (edges.left) {
+        newX = offset;
+      } else if (edges.right) {
         newX -= newX + width - window.innerWidth;
       }
 
-      if (newY - this.options.margin - this.options.transitionMovement < 0) {
-        newY = this.options.margin + this.options.transitionMovement;
-      } else if (newY + height > window.innerHeight) {
+      if (edges.top) {
+        newY = offset;
+      } else if (edges.bottom) {
         newY -= newY + height - window.innerHeight;
       }
 
-      return {x: newX + document.body.scrollLeft, y: newY + document.body.scrollTop};
+      return {x: newX + scrollLeft, y: newY + scrollTop};
     }
 
     _animateIn() {
