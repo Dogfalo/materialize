@@ -8,7 +8,7 @@ describe( 'Modal:', function() {
     triggerIcon1 = $('.btn[data-target="modal1"] i');
     trigger2 = $('.btn[href="#modal2"]');
     trigger3 = $('.btn[href="#modal3"]');
-    trigger4 = $('.btn[href="#modal4"]');
+    trigger4 = $('.btn[data-target="modal4"]');
     modal1 = $('#modal1');
     modal2 = $('#modal2');
     modal3 = $('#modal3');
