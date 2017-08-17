@@ -140,6 +140,7 @@ describe( 'Modal:', function() {
       var overlayInDOM = $.contains(document, overlay[0]);
       expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
+      done();
     }, 500);
   });
 
