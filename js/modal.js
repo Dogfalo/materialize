@@ -133,11 +133,13 @@
     handleTriggerClick(e) {
       let $trigger =  $(e.target).closest('.modal-trigger');
       if (e.target && $trigger.length) {
-        let modalId = $trigger[0].getAttribute('href');
-        if (modalId) {
+        let modalId = $trigger[0].getAttribute('data-target');
+        if (!modalId) {
+          modalId = $trigger[0].getAttribute('href');
+          if (!modalId) {
+            return;
+          }
           modalId = modalId.slice(1);
-        } else {
-          modalId = $trigger[0].getAttribute('data-target');
         }
         let modalInstance = document.getElementById(modalId).M_Modal;
         if (modalInstance) {
