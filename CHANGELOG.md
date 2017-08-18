@@ -2,6 +2,12 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
+## v1.0.0 (TODO: DATE)
+- Tabs
+  - rewritten with classes
+  - added duration option
+  - now requires plugin initialization
+
 ## v0.100.1 (July 21st)
 - Fixed bug where modal triggers could not contain child elements
 - Fixed bug with right alignment option for dropdown
