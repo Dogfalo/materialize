@@ -9,6 +9,7 @@ describe("Tabs Plugin", function () {
 
     beforeEach(function() {
       normalTabs = $('.tabs.normal');
+      window.location.hash = "";
     });
 
     it("should open to active tab", function () {
@@ -65,7 +66,7 @@ describe("Tabs Plugin", function () {
 
       expect(indicator).toExist('Indicator should be generated');
 
-      activeTab.click();
+      click(activeTab[0]);
 
       setTimeout(function() {
         expect($(activeTabHash)).toBeVisible('Clicking active tab while active should not hide it.');
@@ -85,6 +86,32 @@ describe("Tabs Plugin", function () {
 
       setTimeout(function() {
         expect(tabsScrollWidth).toBeGreaterThan(normalTabs.width(), 'Scroll width should exceed tabs width');
+        done();
+      }, 400);
+    });
+
+    it("should programmatically switch tabs", function (done) {
+      var activeTab = normalTabs.find('.active');
+      var activeTabHash = activeTab.attr('href');
+      var firstTab = normalTabs.find('li a').first();
+      var firstTabHash = firstTab.attr('href');
+      var indicator = normalTabs.find('.indicator');
+
+      normalTabs.find('.tab a').each(function() {
+        var tabHash = $(this).attr('href');
+        if (tabHash === activeTabHash) {
+          expect($(tabHash)).toBeVisible('active tab content should be visible by default');
+        } else {
+          expect($(tabHash)).toBeHidden('Tab content should be hidden by default');
+        }
+      });
+
+      normalTabs.tabs('select', 'test1');
+
+      setTimeout(function() {
+        expect($(activeTabHash)).toBeHidden('Clicking tab should switch to that tab.');
+        expect($(firstTabHash)).toBeVisible('Clicking tab should switch to that tab.');
+        expect(indicator.offset().left).toEqual(firstTab.offset().left, 'Indicator should move to clicked tab.');
         done();
       }, 400);
     });
