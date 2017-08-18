@@ -7,3 +7,7 @@
 - Rename plugin call `.sideNav()` to `.sidenav()`
 - Sidenav option `closeOnClick` no longer exists
   - Instead apply the class `.sidenav-close` to any item in the Sidenav that you wish to trigger a close.
+
+## Tabs
+- Initialize plugin (no longer initializes by default)
+- Rename plugin method `select_tab` to `select`

@@ -7,6 +7,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - rewritten with classes
   - added duration option
   - now requires plugin initialization
+  - tabs 'select_tab' method renamed to 'select'
 
 ## v0.100.1 (July 21st)
 - Fixed bug where modal triggers could not contain child elements
