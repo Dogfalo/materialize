@@ -270,6 +270,13 @@ $slider-indicator-color: color('green', 'base') !default;
 
 $spinner-default-color: $secondary-color !default;
 
+$spinner-stroke-width: 3px !default;
+$spinner-arc-size: 270deg !default;  // amount of circle the arc takes up
+$spinner-arc-time: 1333ms !default; // time it takes to expand and contract arc
+$spinner-star-points: 5 !default; // points of star shape, e.g. 5, 7...
+$spinner-arc-start-rot: round(360deg / $spinner-star-points * 3); // how much the start location of the arc should rotate each time
+$spinner-shrink-time: 400ms;
+
 
 // 18. Tabs
 // ==========================================================================
