@@ -2,6 +2,12 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
+## v0.100.1 (July 21st)
+- Fixed bug where modal triggers could not contain child elements
+- Fixed bug with right alignment option for dropdown
+- Allow select native browser validation error messages
+- Added fix for validation messages being mispositioned when input is empty
+
 ## v0.100.0 (July 19th)
 - :sparkles: **Rewrote Modal Plugin** :sparkles:
   - Modal open no longer initializes plugin
