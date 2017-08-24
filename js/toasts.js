@@ -133,4 +133,6 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
     return toast;
   }
+
+  return newToast;
 };
