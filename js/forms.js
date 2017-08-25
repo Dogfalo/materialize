@@ -668,14 +668,14 @@
 
       // Add initial multiple selections.
       if (multiple) {
-        $select.find("option:selected:not(:disabled)").each(function () {
-          var index = $(this).index();
-
-          toggleEntryFromArray(valuesSelected, index, $select);
-          options.find("li").eq(index).find(":checkbox").prop("checked", true);
+          $select.find("option").each(function (index) {
+              if ($(this).is('option:selected:not(:disabled)')) {
+                  toggleEntryFromArray(valuesSelected, index, $select);
+                  options.find("li:not(.optgroup)").eq(index).find(":checkbox").prop("checked", true);
+              }
         });
       }
-
+      
       /**
        * Make option as selected and scroll to selected position
        * @param {jQuery} collection  Select options jQuery element
