@@ -312,8 +312,8 @@
    */
   Toast._draggedToast = null;
 
-  window.Materialize.Toast = Toast;
-  window.Materialize.toast = function(message, displayLength, className, completeCallback) {
+  Materialize.Toast = Toast;
+  Materialize.toast = function(message, displayLength, className, completeCallback) {
     return new Toast(message, displayLength, className, completeCallback);
   };
 })(cash, Materialize.Vel);

@@ -337,7 +337,7 @@
    */
   Modal._count = 0;
 
-  window.Materialize.Modal = Modal;
+  Materialize.Modal = Modal;
 
   jQuery.fn.modal = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
