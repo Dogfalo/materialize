@@ -10,12 +10,12 @@
       function updateParallax(initial) {
         var container_height;
         if (window_width < 601) {
-          container_height = ($this.height() > 0) ? $this.height() : $this.children("img").height();
+          container_height = ($this.height() > 0) ? $this.height() : $this.find("img").height();
         }
         else {
           container_height = ($this.height() > 0) ? $this.height() : 500;
         }
-        var $img = $this.children("img").first();
+        var $img = $this.find("img").first();
         var img_height = $img.height();
         var parallax_dist = img_height - container_height;
         var bottom = $this.offset().top + container_height;
@@ -36,7 +36,7 @@
       }
 
       // Wait for image load
-      $this.children("img").one("load", function() {
+      $this.find("img").one("load", function() {
         updateParallax(true);
       }).each(function() {
         if (this.complete) $(this).trigger("load");
