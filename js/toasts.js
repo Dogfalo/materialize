@@ -1,4 +1,4 @@
-(function($) {
+(function($, Vel) {
   'use strict';
 
   let _defaults = {
@@ -101,7 +101,7 @@
         toast.panning = true;
         Toast._draggedToast = toast;
         toast.el.classList.add('panning');
-        toast.el.style.transition = null;
+        toast.el.style.transition = '';
         toast.startingXPos = Toast._xPos(e);
         toast.time = Date.now();
         toast.xPos = Toast._xPos(e);
@@ -153,8 +153,8 @@
         // Animate toast back to original position
         } else {
           toast.el.style.transition = 'transform .2s, opacity .2s';
-          toast.el.style.transform = null;
-          toast.el.style.opacity = null;
+          toast.el.style.transform = '';
+          toast.el.style.opacity = '';
         }
         Toast._draggedToast = null;
       }
@@ -313,8 +313,8 @@
    */
   Toast._draggedToast = null;
 
-  window.Materialize.Toast = Toast;
-  window.Materialize.toast = function(message, displayLength, className, completeCallback) {
+  Materialize.Toast = Toast;
+  Materialize.toast = function(message, displayLength, className, completeCallback) {
     return new Toast(message, displayLength, className, completeCallback);
-  }
-})(jQuery);
+  };
+})(jQuery, Materialize.Vel);

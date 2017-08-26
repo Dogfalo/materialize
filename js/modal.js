@@ -1,4 +1,4 @@
-(function($) {
+(function($, Vel) {
   'use strict';
 
   let _defaults = {
@@ -109,7 +109,7 @@
       this.handleModalCloseClickBound = this.handleModalCloseClick.bind(this);
 
       if (Modal._count === 1) {
-        document.addEventListener('click', this.handleTriggerClick);
+        document.body.addEventListener('click', this.handleTriggerClick);
       }
       this.$overlay[0].addEventListener('click', this.handleOverlayClickBound);
       this.$el[0].addEventListener('click', this.handleModalCloseClickBound);
@@ -120,7 +120,7 @@
      */
     removeEventHandlers() {
       if (Modal._count === 0) {
-        document.removeEventListener('click', this.handleTriggerClick);
+        document.body.removeEventListener('click', this.handleTriggerClick);
       }
       this.$overlay[0].removeEventListener('click', this.handleOverlayClickBound);
       this.$el[0].removeEventListener('click', this.handleModalCloseClickBound);
@@ -255,7 +255,7 @@
           if (typeof(this.options.complete) === 'function') {
             this.options.complete.call(this, this.$el);
           }
-          this.$overlay[0].remove();
+          this.$overlay[0].parentNode.removeChild(this.$overlay[0]);
         }
       };
 
@@ -317,7 +317,7 @@
 
       this.isOpen = false;
       this.$el[0].classList.remove('open');
-      document.body.style.overflow = null;
+      document.body.style.overflow = '';
 
       if (this.options.dismissible) {
         document.removeEventListener('keydown', this.handleKeydownBound);
@@ -341,7 +341,7 @@
    */
   Modal._count = 0;
 
-  window.Materialize.Modal = Modal;
+  Materialize.Modal = Modal;
 
   $.fn.modal = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
@@ -368,4 +368,4 @@
     }
   };
 
-})(jQuery);
+})(jQuery, Materialize.Vel);

@@ -7,6 +7,12 @@
   }
 })(window);
 
+if (typeof exports !== 'undefined' && !exports.nodeType) {
+  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
+    exports = module.exports = Materialize;
+  }
+  exports.default = Materialize;
+}
 
 /*
  * raf.js
@@ -49,7 +55,6 @@
   window.requestAnimationFrame = requestAnimationFrame;
   window.cancelAnimationFrame = cancelAnimationFrame;
 }(window));
-
 
 /**
  * Generate approximated selector string for a jQuery object
@@ -163,4 +168,10 @@ if (jQuery) {
   Vel = $.Velocity;
 } else {
   Vel = Velocity;
+}
+
+if (Vel) {
+  Materialize.Vel = Vel;
+} else {
+  Materialize.Vel = Velocity;
 }

@@ -15,7 +15,7 @@ select {
 
 
 .input-field {
-  select {
+  & > select {
     display: block;
     position: absolute;
     width: 0;

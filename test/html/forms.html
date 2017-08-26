@@ -174,6 +174,25 @@
       <label>Materialize Select optgroups</label>
     </div>
 
+    <!-- select with optgroups -->
+    <div class="input-field col s4">
+      <select>
+        <optgroup label="team 1">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </optgroup>
+        <optgroup label="team 2">
+          <option value="3">Option 3</option>
+          <option value="4" selected>Option 4</option>
+        </optgroup>
+        <optgroup label="team 3">
+          <option value="5" disabled>Option 5</option>
+          <option value="6">Option 6</option>
+        </optgroup>
+      </select>
+      <label>Materialize Select optgroups with selected</label>
+    </div>
+
     <!-- select multiple with optgroups -->
     <div class="input-field col s4">
       <select multiple>
@@ -194,30 +213,32 @@
       </select>
       <label>Materialize Multiple Select with optgroups</label>
     </div>
-
-    <!-- select with optgroups -->
-    <div class="input-field col s4">
-      <select>
-        <optgroup label="team 1">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </optgroup>
-        <optgroup label="team 2">
-          <option value="3">Option 3</option>
-          <option value="4" selected>Option 4</option>
-        </optgroup>
-        <optgroup label="team 3">
-          <option value="5" disabled>Option 5</option>
-          <option value="6">Option 6</option>
-        </optgroup>
-      </select>
-      <label>Materialize Select optgroups with selected</label>
-    </div>
   </div>
 
-  <!-- select with overflow -->
   <div class="row">
-    <div class="input-field col s6">
+    <!-- select multiple with optgroups -->
+    <div class="input-field col s4">
+      <select multiple>
+        <optgroup label="Cars &amp; Trucks">
+          <option value="6">Lamborgini</option>
+          <option value="7" selected>Ferrari</option>
+        </optgroup>
+
+        <optgroup label="Electronics">
+          <option value="5">Computers</option>
+          <option value="8">DVD</option>
+        </optgroup>
+
+        <optgroup label="Toys">
+          <option value="9" selected>Wooden Toys</option>
+          <option value="10">Plush Toys</option>
+        </optgroup>
+      </select>
+      <label>Materialize Multiple Select optgroups with selected</label>
+    </div>
+
+    <!-- select with overflow -->
+    <div class="input-field col s4">
       <select>
         <option value="" disabled >Choose your option</option>
         <option value="1">1</option>
@@ -233,7 +254,7 @@
       <label>Materialize Select with overflow</label>
     </div>
 
-    <div class="input-field col s6">
+    <div class="input-field col s4">
       <select id="optgroups-select">
         <option>Option before optgroup</option>
         <optgroup label="Optgroup">
