@@ -9,7 +9,8 @@
   opacity: 0;
   position: absolute;
   z-index: 999;
-  will-change: width, height;
+  transform-origin: 0 0;
+
 
   li {
     clear: both;
