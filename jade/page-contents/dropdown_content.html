@@ -4,8 +4,8 @@
 
       <div id="introduction" class="scrollspy section">
         <h4>Introduction</h4>
-        <p class="caption">Add a dropdown list to any button. Make sure that the <code class="language-markup">data-activates</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. You can also add icons. Just add the icon inside the <code class="language-markup">anchor</code> tag.</p>
-        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+        <p class="caption">Add a dropdown list to any button. Make sure that the <code class="language-markup">data-target</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. You can also add icons. Just add the icon inside the <code class="language-markup">anchor</code> tag.</p>
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="#!">one</a></li>
           <li><a href="#!">two</a></li>
@@ -17,14 +17,13 @@
         <br><br>
         <pre><code class="language-markup">
   &lt;!-- Dropdown Trigger -->
-  &lt;a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
+  &lt;a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!&lt;/a>
 
   &lt;!-- Dropdown Structure -->
   &lt;ul id='dropdown1' class='dropdown-content'>
     &lt;li>&lt;a href="#!">one&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">two&lt;/a>&lt;/li>
-    &lt;li class="divider">&lt;/li>
-    &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
+    &lt;li class="divider">&lt;/li>    &lt;li>&lt;a href="#!">three&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">&lt;i class="material-icons">view_module&lt;/i>four&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#!">&lt;i class="material-icons">cloud&lt;/i>five&lt;/a>&lt;/li>
   &lt;/ul>
@@ -37,8 +36,8 @@
         <table class="striped">
           <thead>
             <tr>
-                <th>Option Name</th>
-                <th>Description</th>
+              <th>Option Name</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -79,7 +78,7 @@
         </table>
         <p>To use these inline you have to add them as data attributes. If you want more dynamic control, you can define them using the jQuery plugin below. </p>
         <pre><code class="language-markup">
-  &lt;a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!&lt;/a>
+  &lt;a class='dropdown-trigger btn' data-beloworigin="true" href='#' data-target='dropdown1'>Drop Me!&lt;/a>
         </code></pre>
       </div>
 
@@ -89,7 +88,7 @@
         <h4>jQuery Plugin Initialization</h4>
         <p>Initialization for dropdowns is only necessary if you create them dynamically.</p>
         <pre><code class="language-javascript">
-  $('.dropdown-button').dropdown({
+  $('.dropdown-trigger').dropdown({
       inDuration: 300,
       outDuration: 225,
       constrainWidth: false, // Does not change width of dropdown to that of the activator
@@ -107,7 +106,7 @@
         </p>
 
         <pre><code class="language-javascript">
-  $('.dropdown-button').dropdown('open');
+  $('.dropdown-trigger').dropdown('open');
         </code></pre>
 
         <p>
@@ -115,7 +114,7 @@
         </p>
 
         <pre><code class="language-javascript">
-  $('.dropdown-button').dropdown('close');
+  $('.dropdown-trigger').dropdown('close');
         </code></pre>
       </div>
 

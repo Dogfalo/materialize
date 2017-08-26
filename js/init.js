@@ -181,6 +181,8 @@
     $('.collapsible.expandable').collapsible({
       accordion: false
     });
+
+    $('.dropdown-trigger').dropdown();
     $('.slider').slider();
     $('.parallax').parallax();
     $('.materialboxed').materialbox();
