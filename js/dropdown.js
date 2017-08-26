@@ -5,7 +5,7 @@
     alignment: 'left',
     constrainWidth: true,
     coverTrigger: true,
-    inDuration: 200,
+    inDuration: 150,
     outDuration: 250,
     onOpenStart: null,
     onOpenEnd: null,
@@ -107,22 +107,18 @@
      * Animate in dropdown
      */
     _animateIn(positionInfo) {
-      console.log(positionInfo);
       this.dropdownEl.style.left = positionInfo.x + 'px';
       this.dropdownEl.style.top = positionInfo.y + 'px';
       this.dropdownEl.style.width = positionInfo.width + 'px';
-
-      console.log( '0 ' + positionInfo.direction === 'down' ? '0' : '100%');
       this.dropdownEl.style.transformOrigin = `0 ${positionInfo.direction === 'down' ? '0' : '100%'}`;
-
 
       Vel.hook(this.dropdownEl, 'visibility', 'visible');
       Vel(this.dropdownEl,
           {
-            opacity: [1, 'linear'],
-            scaleX: [1, .8],
-            scaleY: [1, .8]},
-          {duration: this.options.inDuration, queue: false, easing: 'easeOutCubic'});
+            opacity: [1, 'easeOutQuad'],
+            scaleX: [1, .3],
+            scaleY: [1, .3]},
+          {duration: this.options.inDuration, queue: false, easing: 'easeOutQuint'});
     }
 
     /**
@@ -171,9 +167,7 @@
 
       console.log(edges);
 
-
       return {x: idealXPos, y: idealYPos, direction: idealDirection, width: idealWidth};
-
     }
 
     /**
