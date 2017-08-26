@@ -1,0 +1,24 @@
+footer.page-footer
+  .container
+    .row
+      .col.l4.s12
+        h5.white-text Help Materialize Grow
+        p.grey-text.text-lighten-4
+          | We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+          include _donate.html
+      .col.l4.s12
+        h5.white-text Join the Discussion
+        p.grey-text.text-lighten-4
+          | We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.
+        a.btn.waves-effect.waves-light.red.lighten-3(target='_blank', href='https://gitter.im/Dogfalo/materialize') Chat
+      .col.l4.s12(style='overflow: hidden;')
+        h5.white-text Connect
+        iframe(src='https://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='170', height='30')
+        br
+        a.twitter-follow-button(href='https://twitter.com/MaterializeCSS', data-show-count='true', data-size='large', data-dnt='true') Follow @MaterializeCSS
+        br
+        .g-follow(data-annotation='bubble', data-height='24', data-href='https://plus.google.com/108619793845925798422', data-rel='publisher')
+  .footer-copyright
+    .container
+      | © 2014-#{new Date().getFullYear()} Materialize, All rights reserved.
+      a.grey-text.text-lighten-4.right(href='https://github.com/Dogfalo/materialize/blob/master/LICENSE') MIT License

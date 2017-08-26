@@ -1,0 +1,13 @@
+- var no_nav = false
+- var page = "Showcase"
+
+doctype html
+html(lang="en")
+  head
+    include _head.pug
+  body
+    include _navbar.pug
+    main
+      include showcase/showcase_content.html
+    include _footer.pug
+    include _scripts.html

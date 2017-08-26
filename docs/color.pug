@@ -1,0 +1,13 @@
+- var no_nav = false
+- var page = "Color"
+
+doctype html
+html(lang="en")
+  head
+    include _head.pug
+  body
+    include _navbar.pug
+    main
+      include page-contents/color_content.html
+    include _footer.pug
+    include _scripts.html
