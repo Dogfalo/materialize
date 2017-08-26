@@ -64,6 +64,33 @@ footer.example {
   padding-left: 0;
 }
 
+.fixed-announcement {
+  position: relative;
+  height: 48px;
+  width: 100%;
+  z-index: 1000;
+
+  .announcement {
+    &:hover {
+
+    }
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background-color: #5c5757;
+
+    .container {
+      color: #fff;
+      padding: 14px 0;
+      font-size: .9rem;
+
+      a {
+        color: #32b9fb;
+      }
+    }
+  }
+}
+
 @media #{$medium-and-down} {
   header, main, footer {
     padding-left: 0;
@@ -172,6 +199,7 @@ a.button-collapse.top-nav {
 }
 
 @media #{$small-and-down} {
+
   a.button-collapse.top-nav {
     left: 5%;
   }
