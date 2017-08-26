@@ -1,274 +1,188 @@
-(function ($) {
+(function($, Vel) {
+  'use strict';
 
-  // Add posibility to scroll to selected option
-  // usefull for select for example
-  $.fn.scrollTo = function(elem) {
-    $(this).scrollTop($(this).scrollTop() - $(this).offset().top + $(elem).offset().top);
-    return this;
+  let _defaults = {
+    alignment: 'left',
+    constrainWidth: true,
+    inDuration: 250,
+    outDuration: 250,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
   };
 
-  $.fn.dropdown = function (options) {
-    var defaults = {
-      inDuration: 300,
-      outDuration: 225,
-      constrainWidth: true, // Constrains width of dropdown to the activator
-      hover: false,
-      gutter: 0, // Spacing from edge
-      belowOrigin: false,
-      alignment: 'left',
-      stopPropagation: false
-    };
 
-    // Open dropdown.
-    if (options === "open") {
-      this.each(function() {
-        $(this).trigger('open');
-      });
-      return false;
+  /**
+   * @class
+   */
+  class Dropdown {
+    constructor(el, options) {
+
+      // If exists, destroy and reinitialize
+      if (!!el.M_Dropdown) {
+        el.M_Dropdown.destroy();
+      }
+
+      this.el = el;
+      this.el.M_Dropdown = this;
+      this.$el = $(el);
+      this.id = Materialize.getIdFromTrigger(el);
+      this.dropdownEl = document.getElementById(this.id);
+
+
+      /**
+       * Options for the dropdown
+       * @member Dropdown#options
+       * @prop {Function} onOpenStart - Function called when sidenav starts entering
+       * @prop {Function} onOpenEnd - Function called when sidenav finishes entering
+       * @prop {Function} onCloseStart - Function called when sidenav starts exiting
+       * @prop {Function} onCloseEnd - Function called when sidenav finishes exiting
+       */
+      this.options = $.extend({}, Dropdown.defaults, options);
+
+      /**
+       * Describes open/close state of dropdown
+       * @type {Boolean}
+       */
+      this.isOpen = false;
+
+
+      // Move dropdown-content after dropdown-trigger
+      this.$el.after(this.dropdownEl);
+
+
+      this._setupEventHandlers();
     }
 
-    // Close dropdown.
-    if (options === "close") {
-      this.each(function() {
-        $(this).trigger('close');
-      });
-      return false;
+    static get defaults() {
+      return _defaults;
     }
 
-    this.each(function(){
-      var origin = $(this);
-      var curr_options = $.extend({}, defaults, options);
-      var isFocused = false;
+    static init($els, options) {
+      let arr = [];
+      $els.each(function() {
+        arr.push(new Dropdown(this, options));
+      });
+      return arr;
+    }
 
-      // Dropdown menu
-      var activates = $("#"+ origin.attr('data-activates'));
+    /**
+     * Get Instance
+     */
+    getInstance() {
+      return this;
+    }
 
-      function updateOptions() {
-        if (origin.data('induration') !== undefined)
-          curr_options.inDuration = origin.data('induration');
-        if (origin.data('outduration') !== undefined)
-          curr_options.outDuration = origin.data('outduration');
-        if (origin.data('constrainwidth') !== undefined)
-          curr_options.constrainWidth = origin.data('constrainwidth');
-        if (origin.data('hover') !== undefined)
-          curr_options.hover = origin.data('hover');
-        if (origin.data('gutter') !== undefined)
-          curr_options.gutter = origin.data('gutter');
-        if (origin.data('beloworigin') !== undefined)
-          curr_options.belowOrigin = origin.data('beloworigin');
-        if (origin.data('alignment') !== undefined)
-          curr_options.alignment = origin.data('alignment');
-        if (origin.data('stoppropagation') !== undefined)
-          curr_options.stopPropagation = origin.data('stoppropagation');
+    /**
+     * Teardown component
+     */
+    destroy() {
+
+    }
+
+    /**
+     * Setup Event Handlers
+     */
+    _setupEventHandlers() {
+      this._handleClickBound = this._handleClick.bind(this);
+      this.el.addEventListener('click', this._handleClickBound);
+    }
+
+    /**
+     * Remove Event Handlers
+     */
+    removeEventHandlers() {
+      this.el.removeEventListener('click', this._handleClickBound);
+    }
+
+    _handleClick(e) {
+      e.preventDefault();
+      this.open();
+    }
+
+
+    /**
+     * Animate in dropdown
+     */
+    animateIn() {
+
+    }
+
+    /**
+     * Animate out dropdown
+     */
+    animateOut() {
+
+    }
+
+
+    /**
+     * Open Dropdown
+     */
+    open() {
+      if (this.isOpen) {
+        return;
       }
 
-      updateOptions();
+      this.isOpen = true;
 
-      // Attach dropdown to its activator
-      origin.after(activates);
+      this._getIdealDropdownPosition();
+    }
 
-      /*
-        Helper function to position and resize dropdown.
-        Used in hover and click handler.
-      */
-      function placeDropdown(eventType) {
-        // Check for simultaneous focus and click events.
-        if (eventType === 'focus') {
-          isFocused = true;
-        }
+    _getIdealDropdownPosition() {
+      let triggerWidth = this.el.getBoundingClientRect().width;
 
-        // Check html data attributes
-        updateOptions();
+      let idealWidth = this.options.constrainWidth ?
+          triggerWidth : this.dropdownEl.getBoundingClientRect().width;
+      let idealHeight = this.dropdownEl.offsetHeight;
+      let idealXPos = this.options.alignment === 'left' ?
+          this.el.offsetLeft : this.offsetLeft + (triggerWidth - idealWidth);
+      let idealYPos = this.options.coverTrigeer ?
+          this.el.offsetTop : this.el.offsetTop + this.el.offsetHeight;
 
-        // Set Dropdown state
-        activates.addClass('active');
-        origin.addClass('active');
+    }
 
-        var originWidth = origin[0].getBoundingClientRect().width;
-
-        // Constrain width
-        if (curr_options.constrainWidth === true) {
-          activates.css('width', originWidth);
-
-        } else {
-          activates.css('white-space', 'nowrap');
-        }
-
-        // Offscreen detection
-        var windowHeight = window.innerHeight;
-        var originHeight = origin.innerHeight();
-        var offsetLeft = origin.offset().left;
-        var offsetTop = origin.offset().top - $(window).scrollTop();
-        var currAlignment = curr_options.alignment;
-        var gutterSpacing = 0;
-        var leftPosition = 0;
-
-        // Below Origin
-        var verticalOffset = 0;
-        if (curr_options.belowOrigin === true) {
-          verticalOffset = originHeight;
-        }
-
-        // Check for scrolling positioned container.
-        var scrollYOffset = 0;
-        var scrollXOffset = 0;
-        var wrapper = origin.parent();
-        if (!wrapper.is('body')) {
-          if (wrapper[0].scrollHeight > wrapper[0].clientHeight) {
-            scrollYOffset = wrapper[0].scrollTop;
-          }
-          if (wrapper[0].scrollWidth > wrapper[0].clientWidth) {
-            scrollXOffset = wrapper[0].scrollLeft;
-          }
-        }
+    /**
+     * Close Dropdown
+     */
+    close() {
 
 
-        if (offsetLeft + activates.innerWidth() > $(window).width()) {
-          // Dropdown goes past screen on right, force right alignment
-          currAlignment = 'right';
+    }
+  }
 
-        } else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
-          // Dropdown goes past screen on left, force left alignment
-          currAlignment = 'left';
-        }
-        // Vertical bottom offscreen detection
-        if (offsetTop + activates.innerHeight() > windowHeight) {
-          // If going upwards still goes offscreen, just crop height of dropdown.
-          if (offsetTop + originHeight - activates.innerHeight() < 0) {
-            var adjustedHeight = windowHeight - offsetTop - verticalOffset;
-            activates.css('max-height', adjustedHeight);
-          } else {
-            // Flow upwards.
-            if (!verticalOffset) {
-              verticalOffset += originHeight;
-            }
-            verticalOffset -= activates.innerHeight();
-          }
-        }
+  /**
+   * @static
+   * @memberof Dropdown
+   */
+  Dropdown._dropdowns = [];
 
-        // Handle edge alignment
-        if (currAlignment === 'left') {
-          gutterSpacing = curr_options.gutter;
-          leftPosition = origin.position().left + gutterSpacing;
-        }
-        else if (currAlignment === 'right') {
-          // Material icons fix
-          activates
-            .stop(true, true)
-            .css({
-              opacity: 0,
-              left: 0
-            })
+  window.Materialize.Dropdown = Dropdown;
 
-          var offsetRight = origin.position().left + originWidth - activates.width();
-          gutterSpacing = -curr_options.gutter;
-          leftPosition =  offsetRight + gutterSpacing;
-        }
+  jQuery.fn.dropdown = function(methodOrOptions) {
+    // Call plugin method if valid method name is passed in
+    if (Dropdown.prototype[methodOrOptions]) {
+      // Getter methods
+      if (methodOrOptions.slice(0,3) === 'get') {
+        return this.first()[0].M_Dropdown[methodOrOptions]();
 
-        // Position dropdown
-        activates.css({
-          position: 'absolute',
-          top: origin.position().top + verticalOffset + scrollYOffset,
-          left: leftPosition + scrollXOffset
-        });
-
-        // Show dropdown
-        activates
-          .slideDown({
-            queue: false,
-            duration: curr_options.inDuration,
-            easing: 'easeOutCubic',
-            complete: function() {
-              $(this).css('height', '');
-            }
-          })
-          .animate( {opacity: 1}, {queue: false, duration: curr_options.inDuration, easing: 'easeOutSine'});
-
-        // Add click close handler to document
-        setTimeout(function() {
-          $(document).on('click.'+ activates.attr('id'), function (e) {
-            hideDropdown();
-            $(document).off('click.'+ activates.attr('id'));
-          });
-        }, 0);
-      }
-
-      function hideDropdown() {
-        // Check for simultaneous focus and click events.
-        isFocused = false;
-        activates.fadeOut(curr_options.outDuration);
-        activates.removeClass('active');
-        origin.removeClass('active');
-        $(document).off('click.'+ activates.attr('id'));
-        setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
-      }
-
-      // Hover
-      if (curr_options.hover) {
-        var open = false;
-        origin.off('click.' + origin.attr('id'));
-        // Hover handler to show dropdown
-        origin.on('mouseenter', function(e){ // Mouse over
-          if (open === false) {
-            placeDropdown();
-            open = true;
-          }
-        });
-        origin.on('mouseleave', function(e){
-          // If hover on origin then to something other than dropdown content, then close
-          var toEl = e.toElement || e.relatedTarget; // added browser compatibility for target element
-          if(!$(toEl).closest('.dropdown-content').is(activates)) {
-            activates.stop(true, true);
-            hideDropdown();
-            open = false;
-          }
-        });
-
-        activates.on('mouseleave', function(e){ // Mouse out
-          var toEl = e.toElement || e.relatedTarget;
-          if(!$(toEl).closest('.dropdown-button').is(origin)) {
-            activates.stop(true, true);
-            hideDropdown();
-            open = false;
-          }
-        });
-
-        // Click
+      // Void methods
       } else {
-        // Click handler to show dropdown
-        origin.off('click.' + origin.attr('id'));
-        origin.on('click.'+origin.attr('id'), function(e){
-          if (!isFocused) {
-            if ( origin[0] == e.currentTarget &&
-                 !origin.hasClass('active') &&
-                 ($(e.target).closest('.dropdown-content').length === 0)) {
-              e.preventDefault(); // Prevents button click from moving window
-              if (curr_options.stopPropagation) {
-                e.stopPropagation();
-              }
-              placeDropdown('click');
-            }
-            // If origin is clicked and menu is open, close menu
-            else if (origin.hasClass('active')) {
-              hideDropdown();
-              $(document).off('click.'+ activates.attr('id'));
-            }
-          }
+        return this.each(function() {
+          this.M_Dropdown[methodOrOptions]();
         });
+      }
 
-      } // End else
+    // Initialize plugin if options or no argument is passed in
+    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
+      Dropdown.init(this, arguments[0]);
+      return this;
 
-      // Listen to open and close event - useful for select component
-      origin.on('open', function(e, eventType) {
-        placeDropdown(eventType);
-      });
-      origin.on('close', hideDropdown);
+    // Return error if an unrecognized  method name is passed in
+    } else {
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.dropdown`);
+    }
+  };
 
-
-    });
-  }; // End dropdown plugin
-
-  $(document).ready(function(){
-    $('.dropdown-button').dropdown();
-  });
-}( jQuery ));
+})(cash, Materialize.Vel);
