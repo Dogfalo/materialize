@@ -64,30 +64,28 @@ nav {
     font-size: $navbar-brand-font-size;
     padding: 0;
 
+    left: 50%;
+    transform: translateX(-50%);
+
     &.center {
       left: 50%;
       transform: translateX(-50%);
     }
 
-    @media #{$medium-and-down} {
-      left: 50%;
-      transform: translateX(-50%);
-
-      &.left, &.right {
-        padding: 0;
-        transform: none;
-      }
-
-      &.left { left: 0.5rem; }
-      &.right {
-        right: 0.5rem;
-        left: auto;
-      }
+    &.left, &.right {
+      padding: 0;
+      transform: none;
     }
 
+    &.left { left: 0.5rem; }
     &.right {
       right: 0.5rem;
-      padding: 0;
+      left: auto;
+    }
+
+    @media #{$large-and-up} {
+      left: auto;
+      transform: translateX(0);
     }
 
     i,
@@ -98,6 +96,37 @@ nav {
     }
   }
 
+
+  &.collapse-small {
+    @media #{$medium-and-up} {
+      a.button-collapse { display: none; }
+
+      .brand-logo {
+        left: auto;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &.collapse-large {
+    @media #{$large-and-up} {
+      a.button-collapse { display: block; }
+
+      .brand-logo {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    @media #{$extra-large-and-up} {
+      a.button-collapse { display: none; }
+
+      .brand-logo {
+        left: auto;
+        transform: translateX(0);
+      }
+    }
+  }
 
   // Title
   .nav-title {

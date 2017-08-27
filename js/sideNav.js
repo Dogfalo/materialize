@@ -8,9 +8,15 @@
         closeOnClick: false,
         draggable: true,
         onOpen: null,
-        onClose: null
+        onClose: null,
+        break: 992,
       };
       options = $.extend(defaults, options);
+
+      if (typeof options.break !== 'number') {
+        var breaks = { small: 600, medium: 992, large: 1200 };
+        options.break = breaks[options.break] ? breaks[options.break] : breaks.medium;
+      }
 
       $(this).each(function(){
         var $this = $(this);
@@ -48,7 +54,7 @@
 
         // If fixed sidenav, bring menu out
         if (menu.hasClass('fixed')) {
-            if (window.innerWidth > 992) {
+            if (window.innerWidth > options.break) {
               menu.css('transform', 'translateX(0)');
             }
           }
@@ -56,8 +62,8 @@
         // Window resize to reset on large screens fixed
         if (menu.hasClass('fixed')) {
           $(window).resize( function() {
-            if (window.innerWidth > 992) {
-              // Close menu if window is resized bigger than 992 and user has fixed sidenav
+            if (window.innerWidth > options.break) {
+              // Close menu if window is resized bigger than options.break and user has fixed sidenav
               if ($('#sidenav-overlay').length !== 0 && menuOut) {
                 removeMenu(true);
               }
@@ -82,7 +88,7 @@
         // if closeOnClick, then add close event for all a tags in side sideNav
         if (options.closeOnClick === true) {
           menu.on("click.itemclick", "a:not(.collapsible-header)", function(){
-            if (!(window.innerWidth > 992 && menu.hasClass('fixed'))){
+            if (!(window.innerWidth > options.break && menu.hasClass('fixed'))){
               removeMenu();
             }
           });
