@@ -217,7 +217,7 @@
                 else if (x >= (window.innerWidth - options.menuWidth / 2)) {
                  menuOut = false;
                }
-                var rightPos = (x - options.menuWidth / 2);
+                var rightPos = options.menuWidth - (window.innerWidth - x);
                 if (rightPos < 0) {
                   rightPos = 0;
                 }
@@ -245,7 +245,7 @@
               var velocityX = e.gesture.velocityX;
               var x = e.gesture.center.x;
               var leftPos = x - options.menuWidth;
-              var rightPos = x - options.menuWidth / 2;
+              var rightPos = options.menuWidth - (window.innerWidth - x);
               if (leftPos > 0 ) {
                 leftPos = 0;
               }
@@ -254,9 +254,11 @@
               }
               panning = false;
 
+              //If the velocityX is greater than 0.5, it is swiping
+              var swipeVelocity = 0.5
               if (options.edge === 'left') {
-                // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
-                if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
+                // If velocityX >= 0.5 then the user is flinging the menu opened
+                if ((velocityX >= swipeVelocity) || (menuOut && velocityX < swipeVelocity && velocityX > 0-swipeVelocity)) {
                   // Return menu to open
                   if (leftPos !== 0) {
                     menu.velocity({'translateX': [0, leftPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
@@ -266,7 +268,7 @@
                   $dragTarget.css({width: '50%', right: 0, left: ''});
                   menuOut = true;
                 }
-                else if (!menuOut || velocityX > 0.3) {
+                else if ((velocityX < 0-swipeVelocity) || (!menuOut && velocityX < swipeVelocity && velocityX > 0-swipeVelocity)) {
                   // Enable Scrolling
                   $('body').css({
                     overflow: '',
@@ -284,10 +286,11 @@
                       $(this).remove();
                     }});
                   $dragTarget.css({width: '10px', right: '', left: 0});
+                  menuOut = false;
                 }
               }
               else {
-                if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
+                if ((velocityX <= 0-swipeVelocity) || (menuOut && velocityX < swipeVelocity && velocityX > 0-swipeVelocity)) {
                   // Return menu to open
                   if (rightPos !== 0) {
                     menu.velocity({'translateX': [0, rightPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
@@ -297,7 +300,7 @@
                   $dragTarget.css({width: '50%', right: '', left: 0});
                   menuOut = true;
                 }
-                else if (!menuOut || velocityX < -0.3) {
+                else if ((velocityX >= swipeVelocity) || (!menuOut && velocityX < swipeVelocity && velocityX > 0-swipeVelocity)) {
                   // Enable Scrolling
                   $('body').css({
                     overflow: '',
@@ -316,12 +319,57 @@
                       $(this).remove();
                     }});
                   $dragTarget.css({width: '10px', right: 0, left: ''});
+                  menuOut = false;
                 }
               }
 
             }
           });
+
+          //Record menu's last X coordinate
+          var menuXLast = null
+          //Make SideNav have slide function too
+          //Pass the touch event to the $dragTarget
+          menu.hammer({
+            prevent_default: false
+          }).on('pan', function(e) {
+            if (e.gesture.pointerType == "touch") {
+              if (menuXLast != null && e.gesture.center.x != 0 && !e.gesture.isFinal){
+                var sliderX;
+                if (options.edge === 'left'){
+                  sliderX = menu.position().left + options.menuWidth - (menuXLast - e.gesture.center.x);
+                }else {
+                  sliderX = menu.position().left + (e.gesture.center.x - menuXLast);
+                }
+                menuXLast = e.gesture.center.x;
+                e.gesture.center.x = sliderX;
+                $dragTarget.hammer({
+                  prevent_default: false
+                }).trigger(e)
+              }else{
+                menuXLast = e.gesture.center.x;
+              }
+
+              //Why e.gesture.isFinal? Because sometimes panend doesn't trigger
+              if (e.gesture.isFinal && menuXLast != null){
+                var sliderX;
+                if (options.edge === 'left'){
+                  sliderX = menu.position().left + options.menuWidth;
+                }else{
+                  sliderX = menu.position().left;
+                }
+                e.gesture.center.x = sliderX;
+                e.type = 'panend';
+                $dragTarget.hammer({
+                  prevent_default: false
+                }).trigger(e)
+                menuXLast = null;
+              }
+            }
+          });
         }
+
+
 
         $this.off('click.sidenav').on('click.sidenav', function() {
           if (menuOut === true) {
