@@ -71,9 +71,8 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         toast.classList.add(classes[i]);
       }
     }
-  // If type of parameter is HTML Element
-    if ( typeof HTMLElement === "object" ? html instanceof HTMLElement : html && typeof html === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName==="string"
-) {
+    // If type of parameter is HTML Element
+    if ( typeof HTMLElement === "object" ? html instanceof HTMLElement : html && typeof html === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName==="string") {
       toast.appendChild(html);
     }
     else if (html instanceof jQuery) {
@@ -131,7 +130,11 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
       }
     });
 
-    return toast;
+    var toastElement = document.createElement('div');
+    toastElement.classList.add('toast-element');
+    toastElement.appendChild(toast);
+
+    return toastElement;
   }
 
   return newToast;
