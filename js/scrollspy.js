@@ -124,7 +124,7 @@
 			scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
 			activeClass: 'active',
 			getActiveElement: function(id) {
-				return 'a[href=#' + id + ']';
+				return 'a[href="#' + id + '"]';
 			}
     };
     options = $.extend(defaults, options);

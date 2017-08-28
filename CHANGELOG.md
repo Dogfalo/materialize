@@ -2,7 +2,59 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
-## v0.98.2 (April 14th)
+## v0.100.2 (August 26, 2017)
+- Modal no longer errors on IE 11
+- Fixes for Webpack and CommonJS loading of Materialize
+- Select displays properly inside Datepicker
+- Fix year display bug in date picker where year would change even when no new date had been selecteed
+- Fix for badge alignment in collapsible
+- Fix bug with multiple select where it would show an incorrect selection initially
+
+
+## v0.100.1 (July 21, 2017)
+- Fixed bug where modal triggers could not contain child elements
+- Fixed bug with right alignment option for dropdown
+- Allow select native browser validation error messages
+- Added fix for validation messages being mispositioned when input is empty
+
+
+## v0.100.0 (July 19, 2017)
+- :sparkles: **Rewrote Modal Plugin** :sparkles:
+  - Modal open no longer initializes plugin
+  - Fixed bug where modal open did not use initialized options
+  - Modal-trigger class required for modal trigger elements
+- :sparkles: **Rewrote Toast Plugin** :sparkles:
+  - Added class method to dismiss all toasts
+  - Added instance method to remove specific toasts
+- Validation styling support added for many form components
+- Added ability to remove autocompelete data
+- Fixed waves persisting bug
+- Waves no longer throws error on svg elements
+- Fixed side nav callback bugs
+- Tab accessibility for date picker
+- Added container option for time picker
+- Fixed carousel image loading bug
+- Full width carousel now resizes height on resize
+- Added carousel destroy
+- Fixed multiple bugs with jQuery outerWidth on Linux
+- Fixed cursor blinking on select on iOS
+- Fixed search form styling in navbar
+- Fixed label animation on date picker
+- Added close on select option for date picker
+- Browser errors now show up on radio buttons and checkboxes
+
+
+## v0.99.0 (June 22, 2017)
+- Added support for jQuery 3
+- Fixed dynamic textarea resize bug
+- Added support for custom active elements in scrollspy
+- Added Time Picker
+- Updated styling for Date Picker
+- Added callbacks to side nav
+- Updated styling for switches
+
+
+## v0.98.2 (April 14, 2017)
 - :no_good: **Autocomplete: renamed and moved options to `autocompleteOptions`** :no_good:
 - Fixed collapsible preselect bug
 - Fixed dropdown event bubbling bug
@@ -12,7 +64,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Fixed grid offset bug
 
 
-## v0.98.1 (March 21st)
+## v0.98.1 (March 21, 2017)
 - Fixed various select bugs on mobile devices
 - Fixed small sideNav overlay bugs
 - Fixed carousel resizing bug
@@ -23,7 +75,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Added Feature Discovery component
 
 
-## v0.98.0 (January 25th)
+## v0.98.0 (January 25, 2017)
 - :no_good: **Standardized plugin option naming to camelcase (please check your plugin calls to make sure all the options are camelcase)** :no_good:
 - Added FABs in image cards
 - Added swipeable tabs

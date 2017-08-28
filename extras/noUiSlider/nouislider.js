@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.98.2 (http://materializecss.com)
+ * Materialize v0.100.2 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -825,6 +825,7 @@ typeof b&&isFinite(b)?b:!1}function x(b){var f,c,d,e={};for(f=0;f<h.length;f+=1)
                 base: 'base',
                 origin: 'origin',
                 handle: 'handle',
+                handleTouchArea: 'handle-touch-area',
                 handleLower: 'handle-lower',
                 handleUpper: 'handle-upper',
                 horizontal: 'horizontal',
@@ -911,6 +912,7 @@ typeof b&&isFinite(b)?b:!1}function x(b){var f,c,d,e={};for(f=0;f<h.length;f+=1)
 
             var origin = addNodeTo(base, options.cssClasses.origin);
             var handle = addNodeTo(origin, options.cssClasses.handle);
+            addNodeTo(handle, options.cssClasses.handleTouchArea);
 
             handle.setAttribute('data-handle', handleNumber);
 

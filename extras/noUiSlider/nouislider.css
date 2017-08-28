@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.98.2 (http://materializecss.com)
+ * Materialize v0.100.2 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -59,6 +59,13 @@
   cursor: inherit !important;
 }
 
+.noUi-handle-touch-area{
+    position: relative;
+    width: 44px;
+    height: 44px;
+    left: -15px;
+    top: -15px;
+}
 /* Painting and performance;
  * Browsers can paint handles in their own layer.
  */
