@@ -35,6 +35,7 @@
     "bower.json",
     "README.md",
     "images/",
+    "fonts/",
     "js/jquery.timeago.js",
     "js/init.js",
     "js/prism.js",
