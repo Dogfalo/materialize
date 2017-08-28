@@ -3,6 +3,10 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
   var container = document.getElementById('toast-container');
 
+  var toastElementClassname = 'toast-element';
+  var toastElement = document.createElement('div');
+  toastElement.classList.add(toastElementClassname);
+
   // Create toast container if it does not exist
   if (container === null) {
     // create notification container
@@ -16,13 +20,14 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
   // only append toast if message is not undefined
   if(message){
+    $('#' + container.id).find('.' + toastElementClassname).remove(); // remove previous toasts - Limit: 1
     container.appendChild(newToast);
   }
 
   newToast.style.opacity = 0;
 
   // Animate toast in
-  Vel(newToast, {translateY: '-35px',  opacity: 1 }, {duration: 300,
+  Vel(newToast, {translateY: '35px',  opacity: 1 }, {duration: 300,
     easing: 'easeOutCubic',
     queue: false});
 
@@ -130,8 +135,6 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
       }
     });
 
-    var toastElement = document.createElement('div');
-    toastElement.classList.add('toast-element');
     toastElement.appendChild(toast);
 
     return toastElement;
