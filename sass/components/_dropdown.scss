@@ -43,6 +43,8 @@
     }
 
     & > span > label {
+      transform: none;
+      transition: none;
       top: 1px;
       left: 0;
       height: 18px;
