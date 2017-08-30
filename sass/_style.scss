@@ -68,7 +68,8 @@ footer.example {
   position: relative;
   height: 48px;
   width: 100%;
-  z-index: 1000;
+  z-index: 999
+  ;
 
   .announcement {
     &:hover {
@@ -182,9 +183,9 @@ a.button-collapse.top-nav {
   height: 48px;
   width: 48px;
   left: 7.5%;
-  top: 0;
+  top: 55px;
   float: none;
-  margin-left: 1.5rem;
+  margin-left: -8px;
   color: #fff;
   font-size: 36px;
   z-index: 2;
