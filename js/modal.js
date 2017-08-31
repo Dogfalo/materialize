@@ -127,9 +127,8 @@
      */
     _handleTriggerClick(e) {
       let $trigger =  $(e.target).closest('.modal-trigger');
-      if (e.target && $trigger.length) {
+      if ($trigger.length) {
         let modalId = Materialize.getIdFromTrigger($trigger[0]);
-
         let modalInstance = document.getElementById(modalId).M_Modal;
         if (modalInstance) {
           modalInstance.open($trigger);
