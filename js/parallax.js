@@ -14,7 +14,7 @@
 
       this.el = el;
       this.$el = $(el);
-      this.$el[0].M_Parallax = this;
+      this.el.M_Parallax = this;
 
       this.options = $.extend({}, Parallax.defaults, options);
 
