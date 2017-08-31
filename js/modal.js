@@ -35,6 +35,8 @@
       this.$el = $(el);
       this.el.M_Modal = this;
 
+      this.el = $el[0];
+
       /**
        * Options for the modal
        * @member Modal#options
