@@ -41,7 +41,7 @@ if (typeof exports !== 'undefined' && !exports.nodeType) {
   // heavily inspired from @darius gist mod: https://gist.github.com/paulirish/1579671#comment-837945
   if (!requestAnimationFrame || !cancelAnimationFrame) {
     requestAnimationFrame = function(callback) {
-      var now = +Date.now(),
+      let now = +Date.now(),
         nextTime = Math.max(lastTime + 16, now);
       return setTimeout(function() {
         callback(lastTime = nextTime);
@@ -62,9 +62,9 @@ if (typeof exports !== 'undefined' && !exports.nodeType) {
  * @returns {string}
  */
 Materialize.objectSelectorString = function(obj) {
-  var tagStr = obj.prop('tagName') || '';
-  var idStr = obj.attr('id') || '';
-  var classStr = obj.attr('class') || '';
+  let tagStr = obj.prop('tagName') || '';
+  let idStr = obj.attr('id') || '';
+  let classStr = obj.attr('class') || '';
   return (tagStr + idStr + classStr).replace(/\s/g,'');
 };
 
@@ -92,16 +92,16 @@ Materialize.escapeHash = function(hash) {
 };
 
 Materialize.elementOrParentIsFixed = function(element) {
-    var $element = $(element);
-    var $checkElements = $element.add($element.parents());
-    var isFixed = false;
-    $checkElements.each(function(){
-        if ($(this).css("position") === "fixed") {
-            isFixed = true;
-            return false;
-        }
-    });
-    return isFixed;
+  let $element = $(element);
+  let $checkElements = $element.add($element.parents());
+  let isFixed = false;
+  $checkElements.each(function(){
+    if ($(this).css("position") === "fixed") {
+      isFixed = true;
+      return false;
+    }
+  });
+  return isFixed;
 };
 
 
@@ -194,7 +194,7 @@ Materialize.getIdFromTrigger = function(trigger) {
  * @type {function}
  * @return {number}
  */
-var getTime = (Date.now || function () {
+let getTime = (Date.now || function () {
   return new Date().getTime();
 });
 
@@ -212,20 +212,20 @@ var getTime = (Date.now || function () {
  * @returns {Function}
  */
 Materialize.throttle = function(func, wait, options) {
-  var context, args, result;
-  var timeout = null;
-  var previous = 0;
+  let context, args, result;
+  let timeout = null;
+  let previous = 0;
   options || (options = {});
-  var later = function () {
+  let later = function () {
     previous = options.leading === false ? 0 : getTime();
     timeout = null;
     result = func.apply(context, args);
     context = args = null;
   };
   return function () {
-    var now = getTime();
+    let now = getTime();
     if (!previous && options.leading === false) previous = now;
-    var remaining = wait - (now - previous);
+    let remaining = wait - (now - previous);
     context = this;
     args = arguments;
     if (remaining <= 0) {
@@ -244,7 +244,7 @@ Materialize.throttle = function(func, wait, options) {
 
 // Velocity has conflicts when loaded with jQuery, this will check for it
 // First, check if in noConflict mode
-var Vel;
+let Vel;
 if (jQuery) {
   Vel = jQuery.Velocity;
 } else if ($) {
