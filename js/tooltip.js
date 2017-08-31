@@ -21,28 +21,25 @@
     /**
      * Construct Tooltip instance
      * @constructor
-     * @param {jQuery} $el
+     * @param {Element} el
      * @param {Object} options
      */
-    constructor($el, options) {
+    constructor(el, options) {
 
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_Tooltip) {
-        $el[0].M_Tooltip.destroy();
+      if (!!el.M_Tooltip) {
+        el.M_Tooltip.destroy();
       }
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $el;
+      this.el = el;
+      this.$el = $(el);
+      this.el.M_Tooltip = this;
+      this.options = $.extend({}, Tooltip.defaults, options);
+
       this.isOpen = false;
       this.isHovered = false;
-      this.options = $.extend({}, Tooltip.defaults, options);
-      this.$el[0].M_Tooltip = this;
       this._appendTooltipEl();
       this._setupEventHandlers();
-
     }
 
     static get defaults() {
@@ -52,7 +49,7 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Tooltip($(this), options));
+        arr.push(new Tooltip(this, options));
       });
       return arr;
     }
@@ -62,6 +59,15 @@
      */
     getInstance() {
       return this;
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      $(this.tooltipEl).remove();
+      this._removeEventHandlers();
+      this.$el[0].M_Tooltip = undefined;
     }
 
     _appendTooltipEl() {
@@ -264,7 +270,6 @@
 
     _getAttributeOptions() {
       let attributeOptions = {};
-
       let tooltipTextOption = this.$el[0].getAttribute('data-tooltip');
       let positionOption = this.$el[0].getAttribute('data-position');
 
@@ -277,21 +282,9 @@
       }
       return attributeOptions;
     }
-
-
-
-    /**
-     * Teardown component
-     */
-    destroy() {
-      $(this.tooltipEl).remove();
-      this._removeEventHandlers();
-      this.$el[0].M_Tooltip = undefined;
-    }
-
   }
 
-  window.Materialize.Tooltip = Tooltip;
+  Materialize.Tooltip = Tooltip;
 
   jQuery.fn.tooltip = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
@@ -317,6 +310,5 @@
       jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.tooltip`);
     }
   };
-
 
 })(cash, Materialize.Vel);

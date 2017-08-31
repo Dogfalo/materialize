@@ -42,18 +42,18 @@
         </code></pre>
 
         <h4>Dismiss a Toast Programatically</h4>
-        <p>To remove a specific toast using JavaScript, access the <code class="language-javascript">M_Toast</code> toast HTML element and call the remove function</p>
+        <p>To remove a specific toast using JavaScript, access the <code class="language-javascript">M_Toast</code> toast HTML element and call the dismiss function</p>
 
         <pre><code class="language-javascript">
-  // Get toast DOM Element, get instance, then call remove function
+  // Get toast DOM Element, get instance, then call dismiss function
   var toastElement = $('.toast').first()[0];
   var toastInstance = toastElement.M_Toast;
-  toastInstance.remove();
+  toastInstance.dismiss();
         </code></pre>
 
         <h4>Dismiss all Toasts</h4>
         <pre><code class="language-javascript">
-  Materialize.Toast.removeAll();
+  Materialize.Toast.dismissAll();
         </code></pre>
 
       </div>

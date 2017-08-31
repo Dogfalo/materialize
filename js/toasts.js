@@ -46,11 +46,11 @@
 
       // Create new toast
       Toast._toasts.push(this);
-      let toastElement = this.createToast();
+      let toastElement = this._createToast();
       toastElement.M_Toast = this;
       this.el = toastElement;
       this._animateIn();
-      this.setTimer();
+      this._setTimer();
     }
 
     static get defaults() {
@@ -130,9 +130,8 @@
 
     /**
      * End drag handler
-     * @param {Event} e
      */
-    static _onDragEnd(e) {
+    static _onDragEnd() {
       if (!!Toast._draggedToast) {
         let toast = Toast._draggedToast;
         toast.panning = false;
@@ -147,7 +146,7 @@
         // Remove toast
         if (shouldBeDismissed) {
           toast.wasSwiped = true;
-          toast.remove();
+          toast.dismiss();
 
         // Animate toast back to original position
         } else {
@@ -174,9 +173,9 @@
     /**
      * Remove all toasts
      */
-    static removeAll() {
+    static dismissAll() {
       for(let toastIndex in Toast._toasts) {
-        Toast._toasts[toastIndex].remove();
+        Toast._toasts[toastIndex].dismiss();
       }
     }
 
@@ -184,7 +183,7 @@
     /**
      * Create toast and append it to toast container
      */
-    createToast() {
+    _createToast() {
       let toast = document.createElement('div');
       toast.classList.add('toast');
 
@@ -237,7 +236,7 @@
      * Create setInterval which automatically removes toast when timeRemaining >= 0
      * has been reached
      */
-    setTimer() {
+    _setTimer() {
       if (this.timeRemaining !== Infinity)  {
         this.counterInterval = setInterval(() => {
           // If toast is not being dragged, decrease its time remaining
@@ -247,7 +246,7 @@
 
           // Animate toast out
           if (this.timeRemaining <= 0) {
-            this.remove();
+            this.dismiss();
           }
         }, 20);
       }
@@ -257,7 +256,7 @@
     /**
      * Dismiss toast with animation
      */
-    remove() {
+    dismiss() {
       window.clearInterval(this.counterInterval);
       let activationDistance =
           this.el.offsetWidth * this.options.activationPercent;

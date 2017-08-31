@@ -16,23 +16,18 @@
     /**
      * Construct Pushpin instance
      * @constructor
-     * @param {jQuery} $el
+     * @param {Element} el
      * @param {Object} options
      */
-    constructor($el, options) {
+    constructor(el, options) {
 
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_Pushpin) {
-        $el[0].M_Pushpin.destroy();
+      if (!!el.M_Pushpin) {
+        el.M_Pushpin.destroy();
       }
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $el;
-
-      this.el = $el[0];
+      this.el = el
+      this.$el = $(el);
       this.el.M_Pushpin = this;
 
       /**
@@ -42,7 +37,7 @@
       this.options = $.extend({}, Pushpin.defaults, options);
 
       this.originalOffset = this.el.offsetTop;
-      Pushpin._instanceList.push(this);
+      Pushpin._pushpins.push(this);
       this._setupEventHandlers();
     }
 
@@ -53,16 +48,9 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Pushpin($(this), options));
+        arr.push(new Pushpin(this, options));
       });
       return arr;
-    }
-
-    static _updateElements() {
-      for (let elIndex in Pushpin._instanceList) {
-        let pInstance = Pushpin._instanceList[elIndex];
-        pInstance._updatePosition();
-      }
     }
 
     /**
@@ -70,6 +58,26 @@
      */
     getInstance() {
       return this;
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      this.el.style.top = null;
+      this._removePinClasses();
+      this._removeEventHandlers();
+
+      // Remove pushpin Inst
+      let index = Pushpin._pushpins.indexOf(this);
+      Pushpin._pushpins.splice(index, 1);
+    }
+
+    static _updateElements() {
+      for (let elIndex in Pushpin._pushpins) {
+        let pInstance = Pushpin._pushpins[elIndex];
+        pInstance._updatePosition();
+      }
     }
 
     _setupEventHandlers() {
@@ -109,31 +117,15 @@
     _removePinClasses() {
       this.el.classList.remove('pin-top', 'pinned', 'pin-bottom');
     }
-
-
-    /**
-     * Teardown component
-     */
-    destroy() {
-      this.el.style.top = null;
-      this._removePinClasses();
-
-      this._removeEventHandlers();
-
-      // Remove pushpin Inst
-      let index = Pushpin._instanceList.indexOf(this);
-      Pushpin._instanceList.splice(index, 1);
-
-    }
   }
 
   /**
    * @static
    * @memberof Pushpin
    */
-  Pushpin._instanceList = [];
+  Pushpin._pushpins = [];
 
-  window.Materialize.Pushpin = Pushpin;
+  Materialize.Pushpin = Pushpin;
 
   jQuery.fn.pushpin = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in

@@ -17,17 +17,22 @@
    * @class
    */
   class Sidenav {
-
-    constructor ($el, options) {
+    /**
+     * Construct Sidenav instance and set up overlay
+     * @constructor
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor (el, options) {
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_Sidenav) {
-        $el[0].M_Sidenav.destroy();
+      if (!!el.M_Sidenav) {
+        el.M_Sidenav.destroy();
       }
 
-      this.$el = $el;
-      this.el = $el[0];
+      this.el = el;
+      this.$el = $(el);
       this.el.M_Sidenav = this;
-      this.id = $el.attr('id');
+      this.id = this.$el.attr('id');
 
       /**
        * Options for the Sidenav
@@ -77,9 +82,31 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Sidenav($(this), options));
+        arr.push(new Sidenav(this, options));
       });
       return arr;
+    }
+
+    /**
+     * Get Instance
+     */
+    getInstance() {
+      return this;
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      this._removeEventHandlers();
+      this._overlay.parentNode.removeChild(this._overlay);
+      this.dragTarget.parentNode.removeChild(this.dragTarget);
+      this.el.M_Sidenav = undefined;
+
+      let index = Sidenav._sidenavs.indexOf(this);
+      if (index >= 0) {
+        Sidenav._sidenavs.splice(index, 1);
+      }
     }
 
     _createOverlay() {
@@ -91,13 +118,6 @@
 
       document.body.appendChild(overlay);
       this._overlay = overlay;
-    }
-
-    /**
-     * Get Instance
-     */
-    getInstance() {
-      return this;
     }
 
     _setupEventHandlers() {
@@ -493,22 +513,6 @@
           'fadeOut',
           {duration: this.options.outDuration, queue: false, easing: 'easeOutQuad'});
     }
-
-    /**
-     * Teardown component
-     */
-    destroy() {
-      this._removeEventHandlers();
-      this._overlay.parentNode.removeChild(this._overlay);
-      this.dragTarget.parentNode.removeChild(this.dragTarget);
-      this.el.M_Sidenav = undefined;
-
-      let index = Sidenav._sidenavs.indexOf(this);
-      if (index >= 0) {
-        Sidenav._sidenavs.splice(index, 1);
-      }
-    }
-
   }
 
   /**

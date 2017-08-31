@@ -20,21 +20,19 @@
     /**
      * Construct Collapsible instance
      * @constructor
-     * @param {jQuery} $el
+     * @param {Element} el
      * @param {Object} options
      */
-    constructor($el, options) {
+    constructor(el, options) {
 
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_Collapsible) {
-        $el[0].M_Collapsible.destroy();
+      if (!!el.M_Collapsible) {
+        el.M_Collapsible.destroy();
       }
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $el;
+      this.el = el;
+      this.$el = $(el);
+      this.el.M_Collapsible = this;
 
       /**
        * Options for the collapsible
@@ -47,7 +45,6 @@
        */
       this.options = $.extend({}, Collapsible.defaults, options);
 
-      this.$el[0].M_Collapsible = this;
       this._setupEventHandlers();
 
       // Open first active
@@ -67,7 +64,7 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Collapsible($(this), options));
+        arr.push(new Collapsible(this, options));
       });
       return arr;
     }
@@ -84,7 +81,7 @@
      */
     destroy() {
       this._removeEventHandlers();
-      this.$el[0].M_Collapsible = undefined;
+      this.el.M_Collapsible = undefined;
     }
 
     /**
@@ -92,14 +89,14 @@
      */
     _setupEventHandlers() {
       this._handleCollapsibleClickBound = this._handleCollapsibleClick.bind(this);
-      this.$el[0].addEventListener('click', this._handleCollapsibleClickBound);
+      this.el.addEventListener('click', this._handleCollapsibleClickBound);
     }
 
     /**
      * Remove Event Handlers
      */
     _removeEventHandlers() {
-      this.$el[0].removeEventListener('click', this._handleCollapsibleClickBound);
+      this.el.removeEventListener('click', this._handleCollapsibleClickBound);
     }
 
     /**
@@ -110,7 +107,7 @@
       let $header = $(e.target).closest('.collapsible-header');
       if (e.target && $header.length) {
         let $collapsible = $header.closest('.collapsible');
-        if ($collapsible[0] === this.$el[0]) {
+        if ($collapsible[0] === this.el) {
           let $collapsibleLi = $header.closest('li');
           let $collapsibleLis = $collapsible.children('li');
           let isActive = $collapsibleLi[0].classList.contains('active');
@@ -139,10 +136,10 @@
           'slideDown',
           {duration: this.options.inDuration, easing: 'easeInOutCubic', queue: false,
           complete: () => {
-            $body[0].style.height = null;
-            $body[0].style.overflow = null;
-            $body[0].style.padding = null;
-            $body[0].style.margin = null;
+            $body[0].style.height = '';
+            $body[0].style.overflow = '';
+            $body[0].style.padding = '';
+            $body[0].style.margin = '';
 
             // onOpenEnd callback
             if (typeof(this.options.onOpenEnd) === 'function') {
@@ -167,10 +164,10 @@
           'slideUp',
           {duration: this.options.outDuration, easing: 'easeInOutCubic', queue: false,
           complete: () => {
-            $body[0].style.height = null;
-            $body[0].style.overflow = null;
-            $body[0].style.padding = null;
-            $body[0].style.margin = null;
+            $body[0].style.height = '';
+            $body[0].style.overflow ='';
+            $body[0].style.padding = '';
+            $body[0].style.margin = '';
 
             // onCloseEnd callback
             if (typeof(this.options.onCloseEnd) === 'function') {
@@ -200,12 +197,11 @@
           let $activeLis = this.$el.children('li.active');
           $activeLis.each((el) => {
             let index = $collapsibleLis.index($(el));
-            this.close(index)
+            this.close(index);
           });
         }
 
         // Animate in
-        let $header = $collapsibleLi.children('.collapsible-header');
         $collapsibleLi[0].classList.add('active');
         this._animateIn(index);
       }
@@ -225,15 +221,13 @@
         }
 
         // Animate out
-        let $header = $collapsibleLi.children('.collapsible-header');
         $collapsibleLi[0].classList.remove('active');
         this._animateOut(index);
       }
     }
-
   }
 
-  window.Materialize.Collapsible = Collapsible;
+  Materialize.Collapsible = Collapsible;
 
   jQuery.fn.collapsible = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in

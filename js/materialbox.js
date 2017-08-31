@@ -14,21 +14,19 @@
     /**
      * Construct Materialbox instance
      * @constructor
-     * @param {jQuery} $el
+     * @param {Element} el
      * @param {Object} options
      */
-    constructor($el, options) {
+    constructor(el, options) {
 
       // If exists, destroy and reinitialize
-      if (!!$el[0].M_Materialbox) {
-        $el[0].M_Materialbox.destroy();
+      if (!!el.M_Materialbox) {
+        el.M_Materialbox.destroy();
       }
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $el;
+      this.el = el;
+      this.$el = $(el);
+      this.el.M_Materialbox = this;
 
       /**
        * Options for the modal
@@ -46,13 +44,13 @@
       this.originalWidth = 0;
       this.originalHeight = 0;
       this.originInlineStyles = this.$el.attr('style');
-      this.caption = this.$el[0].getAttribute('data-caption') || "";
+      this.caption = this.el.getAttribute('data-caption') || "";
 
       // Wrap
       this.$el.before(this.placeholder);
       this.placeholder.append(this.$el);
 
-      this._setupEventHandlers()
+      this._setupEventHandlers();
     }
 
     static get defaults() {
@@ -62,7 +60,7 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Materialbox($(this), options));
+        arr.push(new Materialbox(this, options));
       });
       return arr;
     }
@@ -79,7 +77,7 @@
      */
     destroy() {
       this._removeEventHandlers();
-      this.$el[0].M_Materialbox = undefined;
+      this.el.M_Materialbox = undefined;
     }
 
     /**
@@ -87,15 +85,14 @@
      */
     _setupEventHandlers() {
       this._handleMaterialboxClickBound = this._handleMaterialboxClick.bind(this);
-
-      this.$el[0].addEventListener('click', this._handleMaterialboxClickBound);
+      this.el.addEventListener('click', this._handleMaterialboxClickBound);
     }
 
     /**
      * Remove Event Handlers
      */
     removeEventHandlers() {
-      this.$el[0].removeEventListener('click', this._handleMaterialboxClickBound);
+      this.el.removeEventListener('click', this._handleMaterialboxClickBound);
     }
 
     /**
@@ -149,9 +146,8 @@
     _makeAncestorsOverflowVisible() {
       this.ancestorsChanged = $();
       let ancestor = this.placeholder[0].parentNode;
-      let count = 0;
       while (ancestor !== null && !$(ancestor).is(document)) {
-        var curr = $(ancestor);
+        let curr = $(ancestor);
         if (curr.css('overflow') !== 'visible') {
           curr.css('overflow', 'visible');
           if (this.ancestorsChanged === undefined) {
@@ -183,7 +179,8 @@
         width: this.newWidth,
         left: document.body.scrollLeft + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
         top: document.body.scrollTop + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2
-      }
+      };
+
       if (this.$el.hasClass('responsive-img')) {
         velocityProperties.maxWidth = [this.newWidth, this.newWidth];
         velocityProperties.width = [velocityProperties.width, this.originalWidth];
@@ -192,14 +189,10 @@
         velocityProperties.top = [velocityProperties.top, 0];
       }
 
-      Vel(
-        this.$el[0],
-        velocityProperties,
-        velocityOptions
-      );
+      Vel(this.el, velocityProperties, velocityOptions);
     }
 
-/**
+    /**
      * Animate image out
      */
     _animateImageOut() {
@@ -231,7 +224,7 @@
       };
 
       Vel(
-        this.$el[0],
+        this.el,
         {
           width: this.originalWidth,
           height: this.originalHeight,
@@ -248,7 +241,7 @@
     _updateVars() {
       this.windowWidth = window.innerWidth;
       this.windowHeight = window.innerHeight;
-      this.caption = this.$el[0].getAttribute('data-caption') || "";
+      this.caption = this.el.getAttribute('data-caption') || "";
     }
 
     /**
@@ -256,8 +249,8 @@
      */
     open() {
       this._updateVars();
-      this.originalWidth = this.$el[0].getBoundingClientRect().width;
-      this.originalHeight = this.$el[0].getBoundingClientRect().height;
+      this.originalWidth = this.el.getBoundingClientRect().width;
+      this.originalHeight = this.el.getBoundingClientRect().height;
 
       // Set states
       this.doneAnimating = false;
@@ -345,7 +338,6 @@
 
       this._animateImageIn();
 
-
       // Handle Exit triggers
       this._handleWindowScrollBound = this._handleWindowScroll.bind(this);
       this._handleWindowResizeBound = this._handleWindowResize.bind(this);
@@ -363,7 +355,7 @@
       this._updateVars();
       this.doneAnimating = false;
 
-      Vel(this.$el[0], 'stop');
+      Vel(this.el, 'stop');
       Vel(this.$overlay[0], 'stop');
       if (this.caption !== "") {
         Vel(this.$photoCaption[0], 'stop');
@@ -373,7 +365,6 @@
       window.removeEventListener('scroll', this._handleWindowScrollBound);
       window.removeEventListener('resize', this._handleWindowResizeBound);
       window.removeEventListener('keyup', this._handleWindowEscapeBound);
-
 
       Vel(
         this.$overlay[0],
@@ -405,7 +396,7 @@
    */
   Materialbox._count = 0;
 
-  window.Materialize.Materialbox = Materialbox;
+  Materialize.Materialbox = Materialbox;
 
   jQuery.fn.materialbox = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in

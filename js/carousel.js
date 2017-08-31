@@ -31,13 +31,10 @@
         el.M_Carousel.destroy();
       }
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $(el);
 
       this.el = el;
+      this.$el = $(el);
+      this.el.M_Carousel = this;
 
       /**
        * Options for the carousel
@@ -52,8 +49,6 @@
        * @prop {Function} onCycleTo
        */
       this.options = $.extend({}, Carousel.defaults, options);
-
-      this.el.M_Carousel = this;
 
       // Setup
       this.hasMultipleSlides = this.$el.find('.carousel-item').length > 1;
@@ -360,19 +355,19 @@
      * @param {Booleam} imageOnly - true for image slides
      */
     _setCarouselHeight(imageOnly) {
-      var firstSlide = this.$el.find('.carousel-item.active').length ? this.$el.find('.carousel-item.active').first() : this.$el.find('.carousel-item').first();
-      var firstImage = firstSlide.find('img').first();
+      let firstSlide = this.$el.find('.carousel-item.active').length ? this.$el.find('.carousel-item.active').first() : this.$el.find('.carousel-item').first();
+      let firstImage = firstSlide.find('img').first();
       if (firstImage.length) {
         if (firstImage[0].complete) {
           // If image won't trigger the load event
-          var imageHeight = firstImage.height();
+          let imageHeight = firstImage.height();
           if (imageHeight > 0) {
             this.$el.css('height', firstImage.height());
           } else {
             // If image still has no height, use the natural dimensions to calculate
-            var naturalWidth = firstImage[0].naturalWidth;
-            var naturalHeight = firstImage[0].naturalHeight;
-            var adjustedHeight = (this.$el.width() / naturalWidth) * naturalHeight;
+            let naturalWidth = firstImage[0].naturalWidth;
+            let naturalHeight = firstImage[0].naturalHeight;
+            let adjustedHeight = (this.$el.width() / naturalWidth) * naturalHeight;
             this.$el.css('height', adjustedHeight);
           }
         } else {
@@ -382,7 +377,7 @@
           });
         }
       } else if (!imageOnly) {
-        var slideHeight = firstSlide.height();
+        let slideHeight = firstSlide.height();
         this.$el.css('height', slideHeight);
       }
     }
@@ -474,7 +469,7 @@
       }, this.options.duration);
 
       // Start actual scroll
-      let i, half, delta, dir, tween, el, alignment, xTranslation, zTranslation, tweenedOpacity;
+      let i, half, delta, dir, tween, el, alignment, zTranslation, tweenedOpacity;
       let lastCenter = this.center;
 
       this.offset = (typeof x === 'number') ? x : this.offset;
@@ -697,7 +692,7 @@
     }
   }
 
-  window.Materialize.Carousel = Carousel;
+  Materialize.Carousel = Carousel;
 
   jQuery.fn.carousel = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
