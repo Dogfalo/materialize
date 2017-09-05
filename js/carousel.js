@@ -724,7 +724,7 @@
 
     // Return error if an unrecognized  method name is passed in
     } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.collapsible`);
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.carousel`);
     }
   };
 }( cash ));

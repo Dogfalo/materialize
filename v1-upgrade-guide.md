@@ -11,3 +11,6 @@
 ## Tabs
 - Initialize plugin (no longer initializes by default)
 - Rename plugin method `select_tab` to `select`
+
+## Chips
+- Removed event triggers, use callback options instead
