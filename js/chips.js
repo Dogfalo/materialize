@@ -6,7 +6,10 @@
     placeholder: '',
     secondaryPlaceholder: '',
     autocompleteOptions: {},
-    max: Infinity
+    max: Infinity,
+    onChipAdd: null,
+    onChipSelect: null,
+    onChipDelete: null
   };
 
 
@@ -97,10 +100,19 @@
     }
 
     /**
+     * Get Chips Data
+     */
+    getData() {
+      return this.chipsData;
+    }
+
+    /**
      * Teardown component
      */
     destroy() {
-
+      this._removeEventHandlers();
+      this.$chips.remove();
+      this.el.M_Chips = undefined;
     }
 
     /**
@@ -192,7 +204,6 @@
           if (selectIndex < 0) {
             return;
           }
-          // currChips.deselectChip(currChips._selectedChip.index());
           currChips.selectChip(selectIndex);
         }
 
@@ -200,7 +211,6 @@
       } else if (e.keyCode === 39) {
         if (currChips._selectedChip) {
           let selectIndex = currChips._selectedChip.index() + 1;
-          // currChips.deselectChip(currChips._selectedChip.index());
 
           if (selectIndex >= currChips.chipsData.length) {
             currChips.$input[0].focus();
@@ -354,6 +364,11 @@
       this.chipsData.push(chip);
       $(this.$input).before(renderedChip);
       this._setPlaceholder();
+
+      // fire chipAdd callback
+      if (typeof(this.options.onChipAdd) === 'function') {
+        this.options.onChipAdd.call(this, this.$el, renderedChip);
+      }
     }
 
     /**
@@ -369,6 +384,11 @@
       });
       this.chipsData.splice(chipIndex, 1);
       this._setPlaceholder();
+
+      // fire chipDelete callback
+      if (typeof(this.options.onChipDelete) === 'function') {
+        this.options.onChipDelete.call(this, this.$el, this.$chip);
+      }
     }
 
     /**
@@ -380,6 +400,11 @@
       console.log("FOCUS", $chip);
       this._selectedChip = $chip;
       $chip[0].focus();
+
+      // fire chipSelect callback
+      if (typeof(this.options.onChipSelect) === 'function') {
+        this.options.onChipSelect.call(this, this.$el, this.$chip);
+      }
     }
 
     /**
