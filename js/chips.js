@@ -37,14 +37,9 @@
         el.M_Chips.destroy();
       }
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $(el);
-
       this.el = el;
-
+      this.$el = $(el);
+      this.el.M_Chips = this;
 
       /**
        * Options for the modal
@@ -55,8 +50,6 @@
        * @prop {Object} autocompleteOptions
        */
       this.options = $.extend({}, Chips.defaults, options);
-
-      this.el.M_Chips = this;
 
       // this.$el.empty();
       this.$el.addClass('chips');

@@ -304,6 +304,7 @@
     /**************************
      * Auto complete plugin  *
      *************************/
+     /*
     $.fn.autocomplete = function (options) {
       // Defaults
       var defaults = {
@@ -478,7 +479,7 @@
           $input.off('keyup.autocomplete focus.autocomplete');
         }
       });
-    };
+    }; */
 
   }); // End of $(document).ready
 

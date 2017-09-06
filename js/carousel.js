@@ -697,7 +697,7 @@
     }
   }
 
-  window.Materialize.Carousel = Carousel;
+  Materialize.Carousel = Carousel;
 
   jQuery.fn.carousel = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
