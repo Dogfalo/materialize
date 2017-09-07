@@ -308,7 +308,7 @@ module.exports = function(grunt) {
             "toasts.js",
             "sidenav.js",
             "scrollspy.js",
-            "/autocomplete.js",
+            "autocomplete.js",
             "forms.js",
             "slider.js",
             "cards.js",

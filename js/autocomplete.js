@@ -46,12 +46,12 @@
       this.options = $.extend({}, Autocomplete.defaults, options);
 
       // Setup
+      this.isOpen = false;
       this.count = 0;
       this.activeIndex = -1;
       this.oldVal;
       this.$inputField = this.$el.closest('.input-field');
       this.$active = $();
-      console.log(this.$inputField);
       this._setupDropdown();
 
       this._setupEventHandlers();
@@ -81,6 +81,7 @@
      */
     destroy() {
       this._removeEventHandlers();
+      this._removeDropdown();
       this.el.M_Autocomplete = undefined;
     }
 
@@ -129,6 +130,13 @@
     }
 
     /**
+     * Remove dropdown
+     */
+    _removeDropdown() {
+      this.container.parentNode.removeChild(this.container);
+    }
+
+    /**
      * Handle Input Blur
      */
     _handleInputBlur() {
@@ -140,6 +148,12 @@
      * @param {Event} e
      */
     _handleInputKeyupAndFocus(e) {
+      console.log(e.type);
+      if (e.type === 'keyup') {
+        console.log("SET KEYDUP");
+        Autocomplete._keydown = false;
+      }
+
       this.count = 0;
       let val = this.el.value.toLowerCase();
 
@@ -155,26 +169,8 @@
         this._removeAutocomplete();
 
         if (val.length >= this.options.minLength) {
-          for (let key in this.options.data) {
-            if (this.options.data.hasOwnProperty(key) &&
-                key.toLowerCase().indexOf(val) !== -1) {
-              // Break if past limit
-              if (this.count >= this.options.limit) {
-                break;
-              }
-
-              let $autocompleteOption = $('<li></li>');
-              if (!!this.options.data[key]) {
-                $autocompleteOption.append('<img src="'+ this.options.data[key] +'" class="right circle"><span>'+ key +'</span>');
-              } else {
-                $autocompleteOption.append('<span>'+ key +'</span>');
-              }
-
-              $(this.container).append($autocompleteOption);
-              this._highlight(val, $autocompleteOption);
-              this.count++;
-            }
-          }
+          this.isOpen = true;
+          this._renderDropdown(this.options.data, val);
         }
       }
 
@@ -187,6 +183,9 @@
      * @param {Event} e
      */
     _handleInputKeydown(e) {
+      console.log("SET KEYDOWN");
+      Autocomplete._keydown = true;
+
       // Arrow keys and enter key usage
       let keyCode = e.keyCode,
           liElement,
@@ -265,6 +264,7 @@
       $(this.container).empty();
       this._resetCurrentElement();
       this.oldVal = null;
+      this.isOpen = false;
     }
 
     /**
@@ -279,10 +279,59 @@
 
       // Handle onAutocomplete callback.
       if (typeof(this.options.onAutocomplete) === 'function') {
-        this.options.onAutocomplete.call(this, this.$el, text);
+        this.options.onAutocomplete.call(this, text);
+      }
+    }
+
+    /**
+     * Render dropdown content
+     * @param {Object} data  data set
+     * @param {String} val  current input value
+     */
+    _renderDropdown(data, val) {
+      this._removeAutocomplete();
+
+      for (let key in data) {
+        if (data.hasOwnProperty(key) &&
+            key.toLowerCase().indexOf(val) !== -1) {
+          // Break if past limit
+          if (this.count >= this.options.limit) {
+            break;
+          }
+
+          let $autocompleteOption = $('<li></li>');
+          if (!!data[key]) {
+            $autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
+          } else {
+            $autocompleteOption.append('<span>'+ key +'</span>');
+          }
+
+          $(this.container).append($autocompleteOption);
+          this._highlight(val, $autocompleteOption);
+          this.count++;
+        }
+      }
+    }
+
+    /**
+     * Update Data
+     * @param {Object} data
+     */
+    updateData(data) {
+      let val = this.el.value.toLowerCase();
+      this.options.data = data;
+
+      if (this.isOpen) {
+        this._renderDropdown(data, val);
       }
     }
   }
+
+  /**
+   * @static
+   * @memberof Autocomplete
+   */
+  Autocomplete._keydown = false;
 
   Materialize.Autocomplete = Autocomplete;
 

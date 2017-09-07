@@ -51,12 +51,12 @@
        */
       this.options = $.extend({}, Chips.defaults, options);
 
-      // this.$el.empty();
-      this.$el.addClass('chips');
+      this.$el.addClass('chips input-field');
       this.chipsData = [];
       this.$chips = $();
       this.$input = this.$el.find('input');
       this.$input.addClass('input');
+      this.hasAutocomplete = Object.keys(this.options.autocompleteOptions).length > 0;
 
       // Set input id
       if (!this.$input.attr('id')) {
@@ -69,6 +69,12 @@
         this._renderChips(this.chipsData);
       }
 
+      console.log(this.hasAutocomplete);
+      if (this.hasAutocomplete) {
+        this._setupAutocomplete();
+      }
+
+      this._setPlaceholder();
       // this._createLabel();
       this._setupEventHandlers();
     }
@@ -114,11 +120,15 @@
     _setupEventHandlers() {
       this._handleChipClickBound = this._handleChipClick.bind(this);
       this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
+      this._handleInputFocusBound = this._handleInputFocus.bind(this);
+      this._handleInputBlurBound = this._handleInputBlur.bind(this);
 
       this.el.addEventListener('click', this._handleChipClickBound);
       document.addEventListener('keydown', Chips._handleChipsKeydown);
       document.addEventListener('keyup', Chips._handleChipsKeyup);
       this.el.addEventListener('blur', Chips._handleChipsBlur, true);
+      this.$input[0].addEventListener('focus', this._handleInputFocusBound);
+      this.$input[0].addEventListener('blur', this._handleInputBlurBound);
       this.$input[0].addEventListener('keydown', this._handleInputKeydownBound);
     }
 
@@ -130,6 +140,8 @@
       document.removeEventListener('keydown', Chips._handleChipsKeydown);
       document.removeEventListener('keyup', Chips._handleChipsKeyup);
       this.el.removeEventListener('blur', Chips._handleChipsBlur, true);
+      this.$input[0].removeEventListener('focus', this._handleInputFocusBound);
+      this.$input[0].removeEventListener('blur', this._handleInputBlurBound);
       this.$input[0].removeEventListener('keydown', this._handleInputKeydownBound);
     }
 
@@ -153,6 +165,10 @@
           // select chip
           this.selectChip(index);
         }
+
+      // Default handle click to focus on input
+      } else {
+        this.$input[0].focus();
       }
     }
 
@@ -237,6 +253,20 @@
     }
 
     /**
+     * Handle Input Focus
+     */
+    _handleInputFocus() {
+      this.$el.addClass('focus');
+    }
+
+    /**
+     * Handle Input Blur
+     */
+    _handleInputBlur() {
+      this.$el.removeClass('focus');
+    }
+
+    /**
      * Handle Input Keydown
      * @param {Event} e
      */
@@ -246,6 +276,14 @@
       console.log(e.keyCode, e.which, this.$input[0].value, this.chipsData);
       // enter
       if (e.keyCode === 13) {
+        // Override enter if autocompleting.
+        console.log(this.hasAutocomplete, this.autocomplete, Materialize.Autocomplete._keydown);
+        if (this.hasAutocomplete &&
+            this.autocomplete &&
+            this.autocomplete.isOpen) {
+          return;
+        }
+
         e.preventDefault();
         this.addChip({tag: this.$input[0].value});
         this.$input[0].value = '';
@@ -300,6 +338,20 @@
 
       // move input to end
       this.$el.append(this.$input);
+    }
+
+    /**
+     * Setup Autocomplete
+     */
+    _setupAutocomplete() {
+      this.options.autocompleteOptions.onAutocomplete = (val) => {
+        this.addChip({tag: val});
+        this.$input[0].value = '';
+        this.$input[0].focus();
+      };
+
+      this.autocomplete = Materialize.Autocomplete.init(this.$input, this.options.autocompleteOptions)[0];
+      console.log(this.autocomplete);
     }
 
     /**
@@ -765,7 +817,7 @@
     // Handle removal of static chips.
     $(document).on('click', '.chip .close', function() {
       let $chips = $(this).closest('.chips');
-      if (!$chips.length || $chips[0].M_Chips) {
+      if ($chips.length && $chips[0].M_Chips) {
         return;
       }
       $(this).closest('.chip').remove();
