@@ -16,7 +16,7 @@ beforeEach(function() {
     elem.dispatchEvent(evt);
   };
 
-  window.mouseenter = function(el){
+  window.mouseenter = function(el) {
     var ev = document.createEvent("MouseEvent");
     ev.initMouseEvent(
       "mouseenter",
@@ -28,4 +28,14 @@ beforeEach(function() {
     );
     el.dispatchEvent(ev);
   };
+
+  window.keydown = function(el, keycode) {
+    var ev = document.createEvent("Events");
+    ev.initEvent("keydown", true, true);
+
+    ev.keyCode = keycode;
+    ev.which = keycode;
+
+    el.dispatchEvent(ev);
+  }
 });

@@ -909,7 +909,22 @@
       // Callback function when value is autcompleted.
     },
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+    sortFunction: function(a, b, inputString) { // Sort function for sorting autocomplete results
+      // Default sorting function
+      return a.indexOf(inputString) - b.indexOf(inputString);
+    }
   });
+        </code></pre>
+
+        <h4>Methods</h4>
+        <p>There are methods to help you interact with the autocomplete dynamically.</p>
+
+        <pre><code class="language-javascript">
+  // Select autocomplete option by passing in the option list item element
+  $('input.autocomplete').autocomplete('selectOption', el);
+
+  // Update the autocomplete data and rerender the options if needed
+  $('input.autocomplete').autocomplete('updateData', data);
         </code></pre>
       </div>
 

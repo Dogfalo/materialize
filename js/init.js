@@ -198,8 +198,8 @@
     }
 
     // Chips
-    $('.chips').material_chip();
-    $('.chips-initial').material_chip({
+    $('.chips').chips();
+    $('.chips-initial').chips({
       readOnly: true,
       data: [{
         tag: 'Apple',
@@ -209,11 +209,11 @@
         tag: 'Google',
       }]
     });
-    $('.chips-placeholder').material_chip({
+    $('.chips-placeholder').chips({
       placeholder: 'Enter a tag',
       secondaryPlaceholder: '+Tag',
     });
-    $('.chips-autocomplete').material_chip({
+    $('.chips-autocomplete').chips({
       autocompleteOptions: {
         data: {
           'Apple': null,

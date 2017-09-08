@@ -47,16 +47,16 @@
       <div id="basic" class="section scrollspy">
         <h4>Javascript Plugin Usage</h4>
         <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by using your delete button.</p>
-        <div class="chips"></div>
+        <div class="chips"><input></div>
         <br>
         <p class="caption">Set initial tags.</p>
-        <div class="chips chips-initial"></div>
+        <div class="chips chips-initial"><input></div>
         <br>
         <p class="caption">Use placeholders and override hint texts.</p>
-        <div class="chips chips-placeholder"></div>
+        <div class="chips chips-placeholder"><input></div>
         <br>
         <p class="caption">Use autocomplete with chips.</p>
-        <div class="chips chips-autocomplete"></div>
+        <div class="chips chips-autocomplete"><input></div>
       </div>
 
       <div id="properties" class="section scrollspy">
@@ -131,89 +131,50 @@
               <td>Set second placeholder when adding additional tags.</td>
             </tr>
             <tr>
-              <td>autocompleteData</td>
+              <td>autocompleteOptions</td>
               <td>Object</td>
-              <td>Set autocomplete data.</td>
+              <td>Set autocomplete options.</td>
             </tr>
             <tr>
-              <td>autocompleteLimit</td>
+              <td>limit</td>
               <td>Integer</td>
-              <td>Set autocomplete limit.</td>
+              <td>Set chips limit.</td>
+            </tr>
+            <tr>
+              <td>onChipAdd</td>
+              <td>Function</td>
+              <td>Callback for chip add.</td>
+            </tr>
+            <tr>
+              <td>onChipSelect</td>
+              <td>Function</td>
+              <td>Callback for chip select.</td>
+            </tr>
+            <tr>
+              <td>onChipDelete</td>
+              <td>Function</td>
+              <td>Callback for chip delete.</td>
             </tr>
             <tr>
           </tbody>
         </table>
       </div>
 
-      <div id="events" class="section scrollspy">
-        <h4>Events</h4>
-        <p class="caption">Material chips exposes a few events for hooking
-          into chips functionality.
-        </p>
-        <table class="table highlight">
-          <thead>
-            <tr>
-              <th>Event</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>chip.add</td>
-              <td>this method is triggered when a chip is <strong>added</strong>.</td>
-            </tr>
-            <tr>
-              <td>chip.delete</td>
-              <td>this method is triggered when a chip is <strong>deleted</strong>.</td>
-            </tr>
-            <tr>
-              <td>chip.select</td>
-              <td>this method is triggered when a chip is <strong>selected</strong>.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <br><br>
-
-        <pre><code class="language-javascript">
-  $('.chips').on('chip.add', function(e, chip){
-    // you have the added chip here
-  });
-
-  $('.chips').on('chip.delete', function(e, chip){
-    // you have the deleted chip here
-  });
-
-  $('.chips').on('chip.select', function(e, chip){
-    // you have the selected chip here
-  });
-        </code></pre>
-
-      </div>
       <div id="methods" class="section scrollspy">
         <h4>Methods</h4>
         <p class="caption">
-          Use these methods to access the chip data.
+          Use these methods to interact with chips.
         </p>
-        <table class="table highlight">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>data</td>
-              <td>It returns the stored data.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <br><br>
 
         <pre><code class="language-javascript">
-  $('.chips-initial').material_chip('data');
+  // Add Chip
+  $('.chips-initial').chips('addChip', data);
+
+  // Select Chip
+  $('.chips-initial').chips('selectChip', chipIndex);
+
+  // Delete Chip
+  $('.chips-initial').chips('deleteChip', chipIndex);
         </code></pre>
 
       </div>

@@ -2,15 +2,15 @@ describe("Chips Plugin", function () {
 
   beforeEach(function() {
     loadFixtures('chips/chipsFixture.html');
-    $('.chips').material_chip();
-    $('.chips-initial').material_chip({
+    $('.chips').chips();
+    $('.chips-initial').chips({
       data: [{ tag: 'Apple' }, { tag: 'Microsoft' }, { tag: 'Google' }],
     });
-    $('.chips-placeholder').material_chip({
+    $('.chips-placeholder').chips({
       placeholder: 'Enter a tag',
       secondaryPlaceholder: '+Tag',
     });
-    $('.chips-autocomplete').material_chip({
+    $('.chips-autocomplete').chips({
       autocompleteData: {
         'Apple': null,
         'Microsoft': null,
@@ -27,10 +27,10 @@ describe("Chips Plugin", function () {
 
     it("should work with multiple initializations", function () {
       $chips = $('.chips').first();
-      $chips.material_chip();
-      $chips.material_chip();
-      $chips.material_chip();
-      $chips.material_chip();
+      $chips.chips();
+      $chips.chips();
+      $chips.chips();
+      $chips.chips();
 
       $input = $chips.find('input');
 
@@ -43,9 +43,7 @@ describe("Chips Plugin", function () {
 
       $input.val('one');
 
-      var e = $.Event('keydown');
-      e.which = 13;
-      $input.trigger(e);
+      keydown($input[0], 13);
 
       setTimeout(function() {
         var numChips = $chips.find('.chip').length;
@@ -78,6 +76,52 @@ describe("Chips Plugin", function () {
         done();
       }, 400);
 
+    });
+
+    it("should have working callbacks", function(done) {
+      $chips = $('.chips').first();
+      $input = $chips.find('input');
+
+      $input.val('one');
+
+      let chipAdd = false;
+      let chipSelect = false;
+      let chipDelete = false;
+      $chips.chips({
+        onChipAdd: function() {
+          chipAdd = true;
+        },
+        onChipSelect: function() {
+          chipSelect = true;
+        },
+        onChipDelete: function() {
+          chipDelete = true;
+        }
+      });
+
+      expect(chipAdd).toEqual(false, 'callback not yet fired');
+      expect(chipSelect).toEqual(false, 'callback not yet fired');
+      expect(chipDelete).toEqual(false, 'callback not yet fired');
+
+      keydown($input[0], 13);
+
+      setTimeout(function() {
+        expect(chipAdd).toEqual(true, 'add callback fired');
+
+        click($chips.find('.chip')[0]);
+
+        setTimeout(function() {
+          expect(chipSelect).toEqual(true, 'select callback fired');
+
+          click($chips.find('.close')[0]);
+
+          setTimeout(function() {
+            expect(chipDelete).toEqual(true, 'delete callback fired');
+
+            done();
+          }, 100);
+        }, 100);
+      }, 100);
     });
   });
 

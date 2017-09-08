@@ -9,6 +9,16 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - now requires plugin initialization
   - tabs 'select_tab' method renamed to 'select'
 
+- Chips
+  - rewritten with classes
+  - changed events to callbacks
+  - Added limit chips option
+
+- Autocomplete
+  - rewritten with classes
+  - Added updateData method
+  - Added sortFunction option
+
 ## v0.100.1 (July 21st)
 - Fixed bug where modal triggers could not contain child elements
 - Fixed bug with right alignment option for dropdown
