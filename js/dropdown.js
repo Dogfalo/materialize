@@ -5,6 +5,7 @@
     alignment: 'left',
     constrainWidth: true,
     coverTrigger: true,
+    closeOnClick: true,
     inDuration: 150,
     outDuration: 250,
     onOpenStart: null,
@@ -48,7 +49,6 @@
        */
       this.isOpen = false;
 
-
       // Move dropdown-content after dropdown-trigger
       this.$el.after(this.dropdownEl);
 
@@ -87,6 +87,8 @@
      */
     _setupEventHandlers() {
       this._handleClickBound = this._handleClick.bind(this);
+      this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
+
       this.el.addEventListener('click', this._handleClickBound);
     }
 
@@ -100,6 +102,42 @@
     _handleClick(e) {
       e.preventDefault();
       this.open();
+    }
+
+    _handleDocumentClick(e) {
+      if (this.options.closeOnClick) {
+        this.close();
+      } else if ($(e.target).closest('.dropdown-trigger').length) {
+        e.stopPropagation();
+        this.close();
+      } else if (!$(e.target).closest('.dropdown-content').length) {
+        this.close();
+      }
+    }
+
+    _getDropdownPosition() {
+      let triggerWidth = this.el.getBoundingClientRect().width;
+      let idealWidth = this.options.constrainWidth ?
+          triggerWidth : this.dropdownEl.getBoundingClientRect().width;
+      let idealHeight = this.dropdownEl.offsetHeight;
+      let idealXPos = this.options.alignment === 'left' ?
+          this.el.offsetLeft : this.offsetLeft + (triggerWidth - idealWidth);
+      let idealYPos = this.options.coverTrigger ?
+          this.el.offsetTop : this.el.offsetTop + this.el.offsetHeight;
+      let idealDirection = 'down';
+      let dropdownBounds = {left: idealXPos, top: idealYPos, width: idealWidth, height: idealHeight};
+
+      // Countainer here will be closest ancestor with overflow: hidden
+      let edges = Materialize.checkWithinContainer(document.body, dropdownBounds, 0);
+
+      if (edges.bottom) {
+        idealDirection = 'up';
+        idealYPos = this.el.offsetTop - this.dropdownEl.offsetHeight +
+          (this.options.coverTrigger ? this.el.offsetHeight : 0);
+      }
+
+      console.log(edges);
+      return {x: idealXPos, y: idealYPos, direction: idealDirection, width: idealWidth};
     }
 
 
@@ -125,7 +163,12 @@
      * Animate out dropdown
      */
     _animateOut() {
-
+      Vel(this.dropdownEl,
+          {
+            opacity: [0, 'easeOutQuint'],
+            scaleX: [.3, 1],
+            scaleY: [.3, 1]},
+          {duration: this.options.outDuration, queue: false, easing: 'easeOutQuint'});
     }
 
 
@@ -140,42 +183,22 @@
       this.isOpen = true;
       let positionInfo = this._getDropdownPosition();
       this._animateIn(positionInfo);
-    }
 
-    _getDropdownPosition() {
-      let triggerWidth = this.el.getBoundingClientRect().width;
-
-      let idealWidth = this.options.constrainWidth ?
-          triggerWidth : this.dropdownEl.getBoundingClientRect().width;
-      let idealHeight = this.dropdownEl.offsetHeight;
-      let idealXPos = this.options.alignment === 'left' ?
-          this.el.offsetLeft : this.offsetLeft + (triggerWidth - idealWidth);
-      let idealYPos = this.options.coverTrigger ?
-          this.el.offsetTop : this.el.offsetTop + this.el.offsetHeight;
-      let idealDirection = 'down';
-
-      let dropdownBounds = {left: idealXPos, top: idealYPos, width: idealWidth, height: idealHeight};
-
-      // Countainer here will be closest ancestor with overflow: hidden
-      let edges = Materialize.checkWithinContainer(document.body, dropdownBounds, 0);
-
-      if (edges.bottom) {
-        idealDirection = 'up';
-        idealYPos = this.el.offsetTop - this.dropdownEl.offsetHeight +
-          (this.options.coverTrigger ? this.el.offsetHeight : 0);
-      }
-
-      console.log(edges);
-
-      return {x: idealXPos, y: idealYPos, direction: idealDirection, width: idealWidth};
+      // Use capture phase event handler to prevent click
+      document.body.addEventListener('click', this._handleDocumentClickBound, true);
     }
 
     /**
      * Close Dropdown
      */
     close() {
+      if (!this.isOpen) {
+        return;
+      }
 
-
+      this.isOpen = false;
+      this._animateOut();
+      document.body.removeEventListener('click', this._handleDocumentClickBound, true);
     }
   }
 
