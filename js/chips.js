@@ -6,7 +6,7 @@
     placeholder: '',
     secondaryPlaceholder: '',
     autocompleteOptions: {},
-    max: Infinity,
+    limit: Infinity,
     onChipAdd: null,
     onChipSelect: null,
     onChipDelete: null
@@ -394,7 +394,7 @@
      */
     addChip(chip) {
       if (!this._isValid(chip) ||
-          this.chipsData.length >= this.options.max) {
+          this.chipsData.length >= this.options.limit) {
         return;
       }
 

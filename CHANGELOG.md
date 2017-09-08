@@ -12,11 +12,12 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Chips
   - rewritten with classes
   - changed events to callbacks
-  - Added max chips option
+  - Added limit chips option
 
 - Autocomplete
   - rewritten with classes
   - Added updateData method
+  - Added sortFunction option
 
 ## v0.100.1 (July 21st)
 - Fixed bug where modal triggers could not contain child elements
