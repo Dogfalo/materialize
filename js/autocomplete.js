@@ -5,7 +5,10 @@
     data: {}, // Autocomplete data set
     limit: Infinity, // Limit of results the autocomplete shows
     onAutocomplete: null, // Callback for when autocompleted
-    minLength: 1 // Min characters before autocomplete starts
+    minLength: 1, // Min characters before autocomplete starts
+    sortFunction: function(a, b, inputString) { // Sort function for sorting autocomplete results
+      return a.indexOf(inputString) - b.indexOf(inputString);
+    }
   };
 
 
@@ -148,9 +151,7 @@
      * @param {Event} e
      */
     _handleInputKeyupAndFocus(e) {
-      console.log(e.type);
       if (e.type === 'keyup') {
-        console.log("SET KEYDUP");
         Autocomplete._keydown = false;
       }
 
@@ -183,7 +184,6 @@
      * @param {Event} e
      */
     _handleInputKeydown(e) {
-      console.log("SET KEYDOWN");
       Autocomplete._keydown = true;
 
       // Arrow keys and enter key usage
@@ -194,7 +194,6 @@
       // select element on Enter
       if (keyCode === 13 && this.activeIndex >= 0) {
         liElement = $(this.container).children('li').eq(this.activeIndex);
-        console.log(this.activeIndex, liElement);
         if (liElement.length) {
           this.selectOption(liElement);
           e.preventDefault();
@@ -269,7 +268,7 @@
 
     /**
      * Select autocomplete option
-     * @param {Elemenet} el  Autocomplete option list item element
+     * @param {Element} el  Autocomplete option list item element
      */
     selectOption(el) {
       let text = el.text().trim();
@@ -291,6 +290,9 @@
     _renderDropdown(data, val) {
       this._removeAutocomplete();
 
+      let matchingData = [];
+
+      // Gather all matching data
       for (let key in data) {
         if (data.hasOwnProperty(key) &&
             key.toLowerCase().indexOf(val) !== -1) {
@@ -299,17 +301,34 @@
             break;
           }
 
-          let $autocompleteOption = $('<li></li>');
-          if (!!data[key]) {
-            $autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
-          } else {
-            $autocompleteOption.append('<span>'+ key +'</span>');
-          }
+          let entry = {
+            data: data[key],
+            key: key
+          };
+          matchingData.push(entry);
 
-          $(this.container).append($autocompleteOption);
-          this._highlight(val, $autocompleteOption);
           this.count++;
         }
+      }
+
+      // Sort
+      let sortFunctionBound = (a,b) => {
+        return this.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
+      };
+      matchingData.sort(sortFunctionBound);
+
+      // Render
+      for (let i = 0; i < matchingData.length; i++) {
+        let entry = matchingData[i];
+        let $autocompleteOption = $('<li></li>');
+        if (!!entry.data) {
+          $autocompleteOption.append('<img src="'+ entry.data +'" class="right circle"><span>'+ entry.key +'</span>');
+        } else {
+          $autocompleteOption.append('<span>'+ entry.key +'</span>');
+        }
+
+        $(this.container).append($autocompleteOption);
+        this._highlight(val, $autocompleteOption);
       }
     }
 
