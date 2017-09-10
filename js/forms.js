@@ -475,6 +475,7 @@
                 if( data[key].value ) {
                   buildAutocompleteOption(val, data[key].value, data[key].img, other);
                 }
+                count++;
               }
             });
 
