@@ -310,10 +310,28 @@
         data: {},
         limit: Infinity,
         onAutocomplete: null,
-        minLength: 1
+        minLength: 1,
+        url: null,
+        debounceTime: 500
       };
 
       options = $.extend(defaults, options);
+
+      // Debounce function
+      function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+          var context = this, args = arguments;
+          var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+          };
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+        };
+      };
 
       return this.each(function() {
         var $input = $(this);
@@ -321,65 +339,151 @@
             count = 0,
             activeIndex = -1,
             oldVal,
+            remote,
+            xhr,
             $inputDiv = $input.closest('.input-field'); // Div to append on
 
-        // Check if data isn't empty
-        if (!$.isEmptyObject(data)) {
-          var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
-          var $oldAutocomplete;
+        // Determine if it's a remote autocomplete or not
+        if( options.url ) remote = true;
 
-          // Append autocomplete element.
-          // Prevent double structure init.
-          if ($inputDiv.length) {
-            $oldAutocomplete = $inputDiv.children('.autocomplete-content.dropdown-content').first();
-            if (!$oldAutocomplete.length) {
-              $inputDiv.append($autocomplete); // Set ul in body
-            }
+        // If it's not a remote autocomplete and we dont have data, just turn off event and exit
+        if( ! remote )
+        {
+          if( $.isEmptyObject(data) )
+          {
+            $input.off('keyup.autocomplete focus.autocomplete');
+            return;
+          }
+        }
+
+        var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
+        var $oldAutocomplete;
+
+        // Append autocomplete element.
+        // Prevent double structure init.
+        if ($inputDiv.length) {
+          $oldAutocomplete = $inputDiv.children('.autocomplete-content.dropdown-content').first();
+          if (!$oldAutocomplete.length) {
+            $inputDiv.append($autocomplete); // Set ul in body
+          }
+        } else {
+          $oldAutocomplete = $input.next('.autocomplete-content.dropdown-content');
+          if (!$oldAutocomplete.length) {
+            $input.after($autocomplete);
+          }
+        }
+        if ($oldAutocomplete.length) {
+          $autocomplete = $oldAutocomplete;
+        }
+
+        // Highlight partial match.
+        var highlight = function(string, $el, other) {
+          var img = $el.find('img');
+          var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
+              matchEnd = matchStart + string.length - 1,
+              beforeMatch = $el.text().slice(0, matchStart),
+              matchText = $el.text().slice(matchStart, matchEnd + 1),
+              afterMatch = $el.text().slice(matchEnd + 1);
+          $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
+          if (img.length) {
+            $el.prepend(img);
+          }
+          // Other, in case of remote, can be any other property to set as $.data properties
+          if( other ) {
+            $el.data(other);
+          }
+        };
+
+        // Reset current element position
+        var resetCurrentElement = function() {
+          activeIndex = -1;
+          $autocomplete.find('.active').removeClass('active');
+        }
+
+        // Remove autocomplete elements
+        var removeAutocomplete = function() {
+          $autocomplete.empty();
+          resetCurrentElement();
+          oldVal = undefined;
+        };
+
+        // Build autocompleteOption
+        var buildAutocompleteOption = function(val, string, img, other) {
+          var autocompleteOption = $('<li></li>');
+
+          if (!!img) {
+            autocompleteOption.append('<img src="'+ img +'" class="right circle"><span>'+ string +'</span>');
           } else {
-            $oldAutocomplete = $input.next('.autocomplete-content.dropdown-content');
-            if (!$oldAutocomplete.length) {
-              $input.after($autocomplete);
+            autocompleteOption.append('<span>'+ string +'</span>');
+          }
+
+          $autocomplete.append(autocompleteOption);
+          highlight(val, autocompleteOption, other);
+        }
+
+        // Perform classic search
+        var performSearch = function(val) {
+          var count = 0;
+
+          for(var key in data) {
+            if (data.hasOwnProperty(key) &&
+                key.toLowerCase().indexOf(val) !== -1) {
+              // Break if past limit
+              if (count >= options.limit) {
+                break;
+              }
+              
+              buildAutocompleteOption(val, key, data[key]);          
+              count++;
             }
           }
-          if ($oldAutocomplete.length) {
-            $autocomplete = $oldAutocomplete;
-          }
+        }
 
-          // Highlight partial match.
-          var highlight = function(string, $el) {
-            var img = $el.find('img');
-            var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
-                matchEnd = matchStart + string.length - 1,
-                beforeMatch = $el.text().slice(0, matchStart),
-                matchText = $el.text().slice(matchStart, matchEnd + 1),
-                afterMatch = $el.text().slice(matchEnd + 1);
-            $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
-            if (img.length) {
-              $el.prepend(img);
-            }
-          };
+        // Debounced, remote search
+        var performRemoteSearch = debounce(function() {
+          var val = $input.val().toLowerCase();
+          
+          // If we already have an xhr running, stop it
+          if(xhr) xhr.abort();
 
-          // Reset current element position
-          var resetCurrentElement = function() {
-            activeIndex = -1;
-            $autocomplete.find('.active').removeClass('active');
-          }
+          xhr = $
+            .ajax({
+              type: 'GET',
+              url: options.url,
+              data: { val: val }
+            })
+            .always(function() { xhr = null })
+            .fail(function(a,b,c) { console.log(a,b,c) })
+            .done(function(data) {
+              var count = 0
+                , other = Object.create(null);
 
-          // Remove autocomplete elements
-          var removeAutocomplete = function() {
-            $autocomplete.empty();
-            resetCurrentElement();
-            oldVal = undefined;
-          };
+              if( ! data ) return;
+              
+              for(var key in data) { 
+                // Find any other property than value and img, and pass it in 'other' arg
+                for(var p in data[key]) {
+                  if( ['value', 'img'].indexOf(p) == -1 ) {
+                    other[p] = data[key][p];
+                  }  
+                }
+                
+                if( data[key].value ) {
+                  buildAutocompleteOption(val, data[key].value, data[key].img, other);
+                }
+              }
+            });
 
-          $input.off('blur.autocomplete').on('blur.autocomplete', function() {
-            removeAutocomplete();
-          });
+        }, options.debounceTime);
 
-          // Perform search
-          $input.off('keyup.autocomplete focus.autocomplete').on('keyup.autocomplete focus.autocomplete', function (e) {
-            // Reset count.
-            count = 0;
+        $input.off('blur.autocomplete').on('blur.autocomplete', function() {
+          removeAutocomplete();
+        });
+
+        // Perform search
+        $input
+          .off('keyup.autocomplete focus.autocomplete')
+          .on('keyup.autocomplete focus.autocomplete', function (e) {
             var val = $input.val().toLowerCase();
 
             // Don't capture enter or arrow key usage.
@@ -389,31 +493,19 @@
               return;
             }
 
-
             // Check if the input isn't empty
             if (oldVal !== val) {
               removeAutocomplete();
 
-              if (val.length >= options.minLength) {
-                for(var key in data) {
-                  if (data.hasOwnProperty(key) &&
-                      key.toLowerCase().indexOf(val) !== -1) {
-                    // Break if past limit
-                    if (count >= options.limit) {
-                      break;
-                    }
-
-                    var autocompleteOption = $('<li></li>');
-                    if (!!data[key]) {
-                      autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
-                    } else {
-                      autocompleteOption.append('<span>'+ key +'</span>');
-                    }
-
-                    $autocomplete.append(autocompleteOption);
-                    highlight(val, autocompleteOption);
-                    count++;
-                  }
+              if (val.length >= options.minLength) { 
+                // If it's a remote autocomplete
+                if(remote) {
+                  // Wait the user to be done typing before starting remote call
+                  performRemoteSearch();
+                }
+                // Else perform class search
+                else {
+                  performSearch(val);
                 }
               }
             }
@@ -422,7 +514,9 @@
             oldVal = val;
           });
 
-          $input.off('keydown.autocomplete').on('keydown.autocomplete', function (e) {
+        $input
+          .off('keydown.autocomplete')
+          .on('keydown.autocomplete', function (e) {
             // Arrow keys and enter key usage
             var keyCode = e.which,
                 liElement,
@@ -460,23 +554,23 @@
             }
           });
 
-          // Set input value
-          $autocomplete.off('mousedown.autocomplete touchstart.autocomplete').on('mousedown.autocomplete touchstart.autocomplete', 'li', function () {
-            var text = $(this).text().trim();
+        // Set input value
+        $autocomplete
+          .off('mousedown.autocomplete touchstart.autocomplete')
+          .on('mousedown.autocomplete touchstart.autocomplete', 'li', function () { 
+            var data = $(this).data()
+              , text = $(this).text().trim();
+
             $input.val(text);
             $input.trigger('change');
             removeAutocomplete();
 
             // Handle onAutocomplete callback.
             if (typeof(options.onAutocomplete) === "function") {
-              options.onAutocomplete.call(this, text);
+              options.onAutocomplete.call(this, text, data);
             }
           });
 
-        // Empty data
-        } else {
-          $input.off('keyup.autocomplete focus.autocomplete');
-        }
       });
     };
 
