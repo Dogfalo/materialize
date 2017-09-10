@@ -460,14 +460,18 @@
 
               if( ! data ) return;
               
-              for(var key in data) { 
+              for(var key in data) {
+                // Break if past limit
+                if (count >= options.limit) {
+                  break;
+                } 
                 // Find any other property than value and img, and pass it in 'other' arg
                 for(var p in data[key]) {
                   if( ['value', 'img'].indexOf(p) == -1 ) {
                     other[p] = data[key][p];
                   }  
                 }
-                
+                // Build option
                 if( data[key].value ) {
                   buildAutocompleteOption(val, data[key].value, data[key].img, other);
                 }
