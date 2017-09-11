@@ -310,7 +310,7 @@
           if (amplitude) {
             elapsed = Date.now() - timestamp;
             delta = amplitude * Math.exp(-elapsed / options.duration);
-            if (delta > 2 || delta < -2) {
+            if (delta > 10 || delta < -10) {
                 scroll(target - delta);
                 requestAnimationFrame(autoScroll);
             } else {
@@ -403,6 +403,8 @@
             } else {
               // Vertical scrolling.
               vertical_dragged = true;
+              window.scrollTo(document.body.scrollLeft, document.body.scrollTop +
+                              (referenceY - y) / 10);
             }
           }
 
