@@ -7,9 +7,8 @@
  * Copyright 2015 Ching Yaw Hao.
  */
 
-(function(){
-	var $ = window.jQuery,
-			$win = $(window),
+(function($){
+	var $win = $(window),
 			$doc = $(document);
 
 	// Can I use inline svg ?
@@ -61,7 +60,7 @@
 	var dialRadius = 135,
 			outerRadius = 105,
 			// innerRadius = 80 on 12 hour clock
-			innerRadius = 80,
+			innerRadius = 70,
 			tickRadius = 20,
 			diameter = dialRadius * 2,
 			duration = transitionSupported ? 350 : 1;
@@ -409,8 +408,15 @@
 		this.spanHours.html(this.hours);
 		this.spanMinutes.html(leadingZero(this.minutes));
 		if (!this.isAppended) {
-			// Append popover to body
-			this.popover.insertAfter(this.input);
+
+			// Append popover to input by default
+      var containerEl = document.querySelector(this.options.container);
+      if (this.options.container && containerEl) {
+        containerEl.appendChild(this.popover[0]);
+      } else {
+        this.popover.insertAfter(this.input);
+      }
+
 			if (this.options.twelvehour) {
 				if (this.amOrPm === 'PM'){
 					this.spanAmPm.children('#click-pm').addClass("text-primary");
@@ -686,4 +692,4 @@
 			}
 		});
 	};
-}());
+})(jQuery);

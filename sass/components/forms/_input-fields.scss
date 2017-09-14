@@ -95,6 +95,17 @@ textarea.materialize-textarea {
   & + label:after {
     @extend %input-after-style;
   }
+
+  // TODO: Remove once input fields are reworked to support validation messages better
+  &.invalid + label:after,
+  &.valid + label:after{
+    display: none;
+  }
+
+  &.invalid + label.active:after,
+  &.valid + label.active:after{
+    display: block;
+  }
 }
 
 

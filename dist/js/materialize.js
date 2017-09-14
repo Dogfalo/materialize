@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.100.0 (http://materializecss.com)
+ * Materialize v0.100.2 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -9,7 +9,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 // Check for jQuery.
 if (typeof jQuery === 'undefined') {
-  var jQuery;
   // Check if require is a defined function.
   if (typeof require === 'function') {
     jQuery = $ = require('jquery');
@@ -1258,6 +1257,13 @@ jQuery.Velocity ? console.log("Velocity is already loaded. You may be needlessly
   }
 })(window);
 
+if (typeof exports !== 'undefined' && !exports.nodeType) {
+  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
+    exports = module.exports = Materialize;
+  }
+  exports.default = Materialize;
+}
+
 /*
  * raf.js
  * https://github.com/ngryman/raf.js
@@ -1405,6 +1411,12 @@ if (jQuery) {
   Vel = $.Velocity;
 } else {
   Vel = Velocity;
+}
+
+if (Vel) {
+  Materialize.Vel = Vel;
+} else {
+  Materialize.Vel = Velocity;
 }
 ;(function ($) {
   $.fn.collapsible = function (options, methodParam) {
@@ -1662,7 +1674,6 @@ if (jQuery) {
         origin.addClass('active');
 
         var originWidth = origin[0].getBoundingClientRect().width;
-        var activatesWidth = activates[0].getBoundingClientRect().width;
 
         // Constrain width
         if (curr_options.constrainWidth === true) {
@@ -1732,7 +1743,7 @@ if (jQuery) {
             left: 0
           });
 
-          var offsetRight = origin.position().left + originWidth - activatesWidth;
+          var offsetRight = origin.position().left + originWidth - activates.width();
           gutterSpacing = -curr_options.gutter;
           leftPosition = offsetRight + gutterSpacing;
         }
@@ -1841,7 +1852,7 @@ if (jQuery) {
     $('.dropdown-button').dropdown();
   });
 })(jQuery);
-;(function ($) {
+;(function ($, Vel) {
   'use strict';
 
   var _defaults = {
@@ -1951,7 +1962,7 @@ if (jQuery) {
         this.handleModalCloseClickBound = this.handleModalCloseClick.bind(this);
 
         if (Modal._count === 1) {
-          document.addEventListener('click', this.handleTriggerClick);
+          document.body.addEventListener('click', this.handleTriggerClick);
         }
         this.$overlay[0].addEventListener('click', this.handleOverlayClickBound);
         this.$el[0].addEventListener('click', this.handleModalCloseClickBound);
@@ -1965,7 +1976,7 @@ if (jQuery) {
       key: 'removeEventHandlers',
       value: function removeEventHandlers() {
         if (Modal._count === 0) {
-          document.removeEventListener('click', this.handleTriggerClick);
+          document.body.removeEventListener('click', this.handleTriggerClick);
         }
         this.$overlay[0].removeEventListener('click', this.handleOverlayClickBound);
         this.$el[0].removeEventListener('click', this.handleModalCloseClickBound);
@@ -1981,11 +1992,11 @@ if (jQuery) {
       value: function handleTriggerClick(e) {
         var $trigger = $(e.target).closest('.modal-trigger');
         if (e.target && $trigger.length) {
-          var modalId = e.target.getAttribute('href');
+          var modalId = $trigger[0].getAttribute('href');
           if (modalId) {
             modalId = modalId.slice(1);
           } else {
-            modalId = e.target.getAttribute('data-target');
+            modalId = $trigger[0].getAttribute('data-target');
           }
           var modalInstance = document.getElementById(modalId).M_Modal;
           if (modalInstance) {
@@ -2015,7 +2026,8 @@ if (jQuery) {
     }, {
       key: 'handleModalCloseClick',
       value: function handleModalCloseClick(e) {
-        if (e.target && e.target.classList.contains('modal-close')) {
+        var $closeTrigger = $(e.target).closest('.modal-close');
+        if (e.target && $closeTrigger.length) {
           this.close();
         }
       }
@@ -2105,7 +2117,7 @@ if (jQuery) {
             if (typeof _this2.options.complete === 'function') {
               _this2.options.complete.call(_this2, _this2.$el);
             }
-            _this2.$overlay[0].remove();
+            _this2.$overlay[0].parentNode.removeChild(_this2.$overlay[0]);
           }
         };
 
@@ -2163,7 +2175,7 @@ if (jQuery) {
 
         this.isOpen = false;
         this.$el[0].classList.remove('open');
-        document.body.style.overflow = null;
+        document.body.style.overflow = '';
 
         if (this.options.dismissible) {
           document.removeEventListener('keydown', this.handleKeydownBound);
@@ -2206,7 +2218,7 @@ if (jQuery) {
    */
   Modal._count = 0;
 
-  window.Materialize.Modal = Modal;
+  Materialize.Modal = Modal;
 
   $.fn.modal = function (methodOrOptions) {
     // Call plugin method if valid method name is passed in
@@ -2232,7 +2244,7 @@ if (jQuery) {
       $.error('Method ' + methodOrOptions + ' does not exist on jQuery.modal');
     }
   };
-})(jQuery);
+})(jQuery, Materialize.Vel);
 ;(function ($) {
 
   $.fn.materialbox = function () {
@@ -2579,7 +2591,8 @@ if (jQuery) {
             $tabs_wrapper,
             $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
             $indicator,
-            index = prev_index = 0,
+            index = 0,
+            prev_index = 0,
             clicked = false,
             clickedTimeout,
             transition = 300;
@@ -3353,7 +3366,7 @@ if (jQuery) {
     Waves.displayEffect();
   }, false);
 })(window);
-;(function () {
+;(function ($, Vel) {
   'use strict';
 
   var _defaults = {
@@ -3578,7 +3591,7 @@ if (jQuery) {
           toast.panning = true;
           Toast._draggedToast = toast;
           toast.el.classList.add('panning');
-          toast.el.style.transition = null;
+          toast.el.style.transition = '';
           toast.startingXPos = Toast._xPos(e);
           toast.time = Date.now();
           toast.xPos = Toast._xPos(e);
@@ -3633,8 +3646,8 @@ if (jQuery) {
             // Animate toast back to original position
           } else {
             toast.el.style.transition = 'transform .2s, opacity .2s';
-            toast.el.style.transform = null;
-            toast.el.style.opacity = null;
+            toast.el.style.transform = '';
+            toast.el.style.opacity = '';
           }
           Toast._draggedToast = null;
         }
@@ -3698,11 +3711,11 @@ if (jQuery) {
    */
   Toast._draggedToast = null;
 
-  window.Materialize.Toast = Toast;
-  window.Materialize.toast = function (message, displayLength, className, completeCallback) {
+  Materialize.Toast = Toast;
+  Materialize.toast = function (message, displayLength, className, completeCallback) {
     return new Toast(message, displayLength, className, completeCallback);
   };
-})();
+})(jQuery, Materialize.Vel);
 ;(function ($) {
 
   var methods = {
@@ -4994,10 +5007,10 @@ if (jQuery) {
       // Add initial multiple selections.
       if (multiple) {
         $select.find("option:selected:not(:disabled)").each(function () {
-          var index = $(this).index();
+          var index = this.index;
 
           toggleEntryFromArray(valuesSelected, index, $select);
-          options.find("li").eq(index).find(":checkbox").prop("checked", true);
+          options.find("li:not(.optgroup)").eq(index).find(":checkbox").prop("checked", true);
         });
       }
 
@@ -6956,7 +6969,7 @@ if (jQuery) {
         // * For IE, non-focusable elements can be active elements as well
         //   (http://stackoverflow.com/a/2684561).
         activeElement = getActiveElement();
-        activeElement = activeElement && (activeElement.type || activeElement.href);
+        activeElement = activeElement && (activeElement.type || activeElement.href) && activeElement;
 
         // If it’s disabled or nothing inside is actively focused, re-focus the element.
         if (targetDisabled || activeElement && !$.contains(P.$root[0], activeElement)) {
@@ -8375,7 +8388,9 @@ if (jQuery) {
       }
 
       // Materialize modified
-      if (override == "raw") return _.node('div', focusedYear);
+      if (override === 'raw' && selectedObject != null) {
+        return _.node('div', selectedObject.year);
+      }
 
       // Otherwise just return the year focused
       return _.node('div', focusedYear, settings.klass.year);
@@ -8576,9 +8591,8 @@ if (jQuery) {
   * Copyright 2015 Ching Yaw Hao.
   */
 
-(function () {
-  var $ = window.jQuery,
-      $win = $(window),
+(function ($) {
+  var $win = $(window),
       $doc = $(document);
 
   // Can I use inline svg ?
@@ -8627,7 +8641,7 @@ if (jQuery) {
       outerRadius = 105,
 
   // innerRadius = 80 on 12 hour clock
-  innerRadius = 80,
+  innerRadius = 70,
       tickRadius = 20,
       diameter = dialRadius * 2,
       duration = transitionSupported ? 350 : 1;
@@ -8937,8 +8951,15 @@ if (jQuery) {
     this.spanHours.html(this.hours);
     this.spanMinutes.html(leadingZero(this.minutes));
     if (!this.isAppended) {
-      // Append popover to body
-      this.popover.insertAfter(this.input);
+
+      // Append popover to input by default
+      var containerEl = document.querySelector(this.options.container);
+      if (this.options.container && containerEl) {
+        containerEl.appendChild(this.popover[0]);
+      } else {
+        this.popover.insertAfter(this.input);
+      }
+
       if (this.options.twelvehour) {
         if (this.amOrPm === 'PM') {
           this.spanAmPm.children('#click-pm').addClass("text-primary");
@@ -9206,7 +9227,7 @@ if (jQuery) {
       }
     });
   };
-})();
+})(jQuery);
 ;(function ($) {
 
   $.fn.characterCounter = function () {
