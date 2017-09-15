@@ -91,6 +91,28 @@ describe("Input Fields Plugin", function() {
       );
     });
 
+    it("should have label not active when input became empty", function(done) {
+      testEachInput(
+        0,
+        function(inputBrowser, next) {
+          inputBrowser.input.focus();
+          inputBrowser.input.val(inputBrowser.goodValue);
+          setTimeout(function() {
+            inputBrowser.input.val(inputBrowser.badValue);
+            inputBrowser.input.blur();
+            setTimeout(function() {
+              next();
+            }, 100);
+          }, 100);
+        },
+        function(inputBrowser, next) {
+          expect(inputBrowser.label.hasClass("active")).toBe(false);
+          next();
+        },
+        done
+      );
+    });
+
     it("should have label not active when input is reset", function(done) {
       testEachInput(
         0,
@@ -118,7 +140,7 @@ describe("Input Fields Plugin", function() {
       Object.keys(inputsBrowser).forEach(function(inputType){
         inputsBrowser[inputType].input.prop("placeholder", inputsBrowser[inputType].goodValue);
       });
-      
+
       setTimeout(function(){
         Materialize.updateTextFields();
         done();
