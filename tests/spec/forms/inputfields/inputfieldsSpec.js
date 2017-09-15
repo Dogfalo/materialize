@@ -91,7 +91,7 @@ describe("Input Fields Plugin", function() {
       );
     });
 
-    it("should have label not active when input became empty", function(done) {
+    it("should have label not active when input is reset (by user)", function(done) {
       testEachInput(
         0,
         function(inputBrowser, next) {
@@ -113,7 +113,7 @@ describe("Input Fields Plugin", function() {
       );
     });
 
-    it("should have label not active when input is reset", function(done) {
+    it("should have label not active when input is reset (by button)", function(done) {
       testEachInput(
         0,
         function(inputBrowser, next) {
