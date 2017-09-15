@@ -100,7 +100,7 @@ describe("Input Fields Plugin", function() {
           inputBrowser.input.blur();
 
           setTimeout(function() {
-            $("input[type=reset").click();
+            $("input[type=reset]").click();
             next();
           }, 200);
         },
