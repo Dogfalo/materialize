@@ -98,7 +98,7 @@ describe("Input Fields Plugin", function() {
           inputBrowser.input.focus();
           inputBrowser.input.val(inputBrowser.goodValue);
           setTimeout(function() {
-            inputBrowser.input.val(inputBrowser.badValue);
+            inputBrowser.input.val("");
             inputBrowser.input.blur();
             setTimeout(function() {
               next();
