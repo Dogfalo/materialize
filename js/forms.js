@@ -37,11 +37,7 @@
       var formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
-        formReset.find(input_selector).each(function () {
-          if ($(this).attr('value') === '') {
-            $(this).siblings('label').removeClass('active');
-          }
-        });
+        Materialize.updateTextFields();
 
         // Reset select
         formReset.find('select.initialized').each(function () {
