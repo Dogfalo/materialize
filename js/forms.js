@@ -37,7 +37,11 @@
       var formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
-        Materialize.updateTextFields();
+        // check & update label at the end of the event loop
+        // chrome 61 is triggering event before emptying inputs
+        setTimeout(function(){
+          Materialize.updateTextFields();
+        }, 0);
 
         // Reset select
         formReset.find('select.initialized').each(function () {
