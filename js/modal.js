@@ -317,7 +317,7 @@
 
       this.isOpen = false;
       this.$el[0].classList.remove('open');
-      document.body.style.overflow = null;
+      document.body.style.overflow = '';
 
       if (this.options.dismissible) {
         document.removeEventListener('keydown', this.handleKeydownBound);
@@ -341,7 +341,7 @@
    */
   Modal._count = 0;
 
-  window.Materialize.Modal = Modal;
+  Materialize.Modal = Modal;
 
   $.fn.modal = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
