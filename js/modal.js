@@ -198,7 +198,7 @@
         // Handle modal ready callback
         complete: () => {
           if (typeof(this.options.ready) === 'function') {
-            this.options.ready.call(this, this.$el, this._openingTrigger);
+            this.options.ready.call(this, this.el, this._openingTrigger);
           }
         }
       };

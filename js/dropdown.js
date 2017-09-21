@@ -181,6 +181,12 @@
       }
 
       this.isOpen = true;
+
+      // Callback
+      if (typeof(this.options.onOpenStart) === 'function') {
+        this.options.onOpenStart.call(this, this.el);
+      }
+
       let positionInfo = this._getDropdownPosition();
       this._animateIn(positionInfo);
 
