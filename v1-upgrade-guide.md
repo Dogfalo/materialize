@@ -22,3 +22,4 @@
 - Call plugin on `.dropdown-content` instead of `.dropdown-button`
 - Rename classes `.dropdown-button` to `.dropdown-trigger``
 - Rename option `belowOrigin` to `coverTrigger`
+- Removed stopPropagation option

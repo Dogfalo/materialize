@@ -10,6 +10,8 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - Renamed option `belowOrigin` to `coverTrigger`
   - Added callbacks onOpenStart, onOpenEnd, onCloseStart, onCloseEnd
   - Removed HTML attribute options
+  - Removed stopPropagation option
+  - Reworked animation
 
 - Tabs
   - rewritten with classes

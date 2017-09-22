@@ -148,14 +148,15 @@
     }
 
     _getDropdownPosition() {
-      let triggerWidth = this.el.getBoundingClientRect().width;
-      let idealWidth = this.options.constrainWidth ?
-          triggerWidth : this.dropdownEl.getBoundingClientRect().width;
-      let idealHeight = this.dropdownEl.offsetHeight;
+      let triggerBoundingRect = this.el.getBoundingClientRect();
+      let dropdownBoundingRect = this.dropdownEl.getBoundingClientRect();
+
+      let idealWidth = this.options.constrainWidth ? triggerBoundingRect.width : dropdownBoundingRect.width;
+      let idealHeight = dropdownBoundingRect.height;
       let idealXPos = this.options.alignment === 'left' ?
-          this.el.offsetLeft : this.offsetLeft + (triggerWidth - idealWidth);
+          triggerBoundingRect.left : triggerBoundingRect.left + (triggerBoundingRect - idealWidth);
       let idealYPos = this.options.coverTrigger ?
-          this.el.offsetTop : this.el.offsetTop + this.el.offsetHeight;
+          triggerBoundingRect.top : triggerBoundingRect.top + triggerBoundingRect.height;
       let idealDirection = 'down';
       let dropdownBounds = {left: idealXPos, top: idealYPos, width: idealWidth, height: idealHeight};
 
@@ -214,6 +215,8 @@
             queue: false,
             easing: 'easeOutQuint',
             complete: () => {
+              Vel.hook(this.dropdownEl, 'visibility', 'hidden');
+
               // onCloseEnd callback
               if (typeof(this.options.onCloseEnd) === 'function') {
                 this.options.onCloseEnd.call(this, this.el);
