@@ -12,7 +12,7 @@
     onOpenStart: null,
     onOpenEnd: null,
     onCloseStart: null,
-    onCloseEnd: null,
+    onCloseEnd: null
   };
 
 

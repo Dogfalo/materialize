@@ -3,6 +3,14 @@ Changelog
 Bolded styling surrounded by emojis indicates a breaking change.
 
 ## v1.0.0 (TODO: DATE)
+- Dropdown
+  - rewritten with classes
+  - Plugin is initialized on `.dropdown-content` instead of `.dropdown-button`
+  - Renamed classes `.dropdown-button` to `.dropdown-trigger``
+  - Renamed option `belowOrigin` to `coverTrigger`
+  - Added callbacks onOpenStart, onOpenEnd, onCloseStart, onCloseEnd
+  - Removed HTML attribute options
+
 - Tabs
   - rewritten with classes
   - added duration option
