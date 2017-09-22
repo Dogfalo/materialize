@@ -81,16 +81,17 @@ select {
     user-select:none;
   }
 
-  span.caret {
+  .caret {
     color: initial;
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
-    height: 10px;
+    height: 24px;
     margin: auto 0;
-    font-size: 10px;
-    line-height: 10px;
+    font-size: 24px;
+    line-height: 24px;
+    z-index: -1;
   }
 
   & + label {

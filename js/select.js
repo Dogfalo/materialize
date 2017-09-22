@@ -224,6 +224,10 @@
 
       this.$el.before(this.input);
 
+      // Add caret
+      let dropdownIcon = $('<i class="caret material-icons">arrow_drop_down</i>');
+      this.$el.before(dropdownIcon[0]);
+
       // Initialize dropdown
       if (!this.el.disabled) {
         let dropdownOptions = {};
