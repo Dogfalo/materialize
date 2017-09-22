@@ -34,10 +34,10 @@
       this.options = $.extend({}, Select.defaults, options);
 
       this.isMultiple = this.$el.prop('multiple');
-      console.log("MULT", this.isMultiple);
 
       // Setup
       this.valuesSelected = [];
+      this.$selectedOptions = $();
       this._setupDropdown();
 
       this._setupEventHandlers();
@@ -50,7 +50,6 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        console.log($(this));
         arr.push(new Select(this, options));
       });
       return arr;
@@ -77,10 +76,12 @@
      */
     _setupEventHandlers() {
       this._handleOptionClickBound = this._handleOptionClick.bind(this);
+      this._handleInputClickBound = this._handleInputClick.bind(this);
 
       $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
         el.addEventListener('click', this._handleOptionClickBound);
       });
+      this.input.addEventListener('click', this._handleInputClickBound);
       // this._handleInputBlurBound = this._handleInputBlur.bind(this);
       // this._handleInputKeyupAndFocusBound = this._handleInputKeyupAndFocus.bind(this);
       // this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
@@ -126,7 +127,6 @@
           let checkbox = $(option).find('input[type="checkbox"]');
           checkbox.prop('checked', !checkbox.prop('checked'));
           selected = this._toggleEntryFromArray(this.valuesSelected, optionIndex);
-          $(this.input).trigger('focus');
 
         } else {
           $(this.dropdownOptions).find('li').removeClass('active');
@@ -148,7 +148,11 @@
      */
     _handleInputClick(e) {
       if (this.dropdown && this.dropdown.isOpen) {
-        this._activateOption($(this.dropdownOptions), this.selectedOption, true);
+        if (this.isMultiple) {
+
+        } else {
+          this._activateOption($(this.dropdownOptions), this.$selectedOptions[0], true);
+        }
       }
     }
 
@@ -176,20 +180,28 @@
         this.$selectOptions.each((el) => {
           if ($(el).is('option')) {
             // Direct descendant option.
+            let optionEl;
             if (this.isMultiple) {
-              this._appendOptionWithIcon(this.$el, el, 'multiple');
+              optionEl = this._appendOptionWithIcon(this.$el, el, 'multiple');
 
             } else {
-              this._appendOptionWithIcon(this.$el, el);
+              optionEl = this._appendOptionWithIcon(this.$el, el);
             }
+
+            if ($(el).prop('selected')) {
+              this.$selectedOptions.add(optionEl);
+            }
+
           } else if ($(el).is('optgroup')) {
-            console.log("OPTGROUP");
             // Optgroup.
             let selectOptions = $(el).children('option');
             this.dropdownOptions.append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
 
             selectOptions.each((el) => {
-              this._appendOptionWithIcon(this.$el, el, 'optgroup-option');
+              let optionEl = this._appendOptionWithIcon(this.$el, el, 'optgroup-option');
+              if ($(el).prop('selected')) {
+                this.$selectedOptions.add(optionEl);
+              }
             });
           }
         });
@@ -214,7 +226,22 @@
 
       // Initialize dropdown
       if (!this.el.disabled) {
-        this.dropdown = new Materialize.Dropdown(this.input);
+        let dropdownOptions = {};
+        if (this.isMultiple) {
+          dropdownOptions.closeOnClick = false;
+        }
+        this.dropdown = new Materialize.Dropdown(this.input, dropdownOptions);
+      }
+
+      // Add initial multiple selections
+      if (this.isMultiple) {
+        this.$selectedOptions.not(":disabled").each((el) => {
+          let $onlyOptions = $(this.dropdownOptions).find('li:not(.optgroup)');
+          let index = $onlyOptions.index(el);
+
+          this._toggleEntryFromArray(this.valuesSelected, index);
+          $onlyOptions.eq(index).find('input[type="checkbox"]').prop("checked", true);
+        });
       }
     }
 
@@ -223,6 +250,7 @@
      * @param {Element} select  select element
      * @param {Element} option  option element from select
      * @param {String} type
+     * @return {Element}  option element added
      */
     _appendOptionWithIcon(select, option, type) {
       // Add disabled attr if disabled
@@ -245,6 +273,7 @@
 
       // Check for multiple type.
       this.dropdownOptions.append(liEl[0]);
+      return liEl[0];
     }
 
     /**
@@ -317,8 +346,9 @@
         return $(el).prop('selected');
       });
 
+
       if (selectedOption.length) {
-        return selectedOption.first();
+        return selectedOption;
       } else {
         return options.first();
       }
