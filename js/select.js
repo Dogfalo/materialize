@@ -82,35 +82,16 @@
         el.addEventListener('click', this._handleOptionClickBound);
       });
       this.input.addEventListener('click', this._handleInputClickBound);
-      // this._handleInputBlurBound = this._handleInputBlur.bind(this);
-      // this._handleInputKeyupAndFocusBound = this._handleInputKeyupAndFocus.bind(this);
-      // this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
-      // this._handleContainerMousedownAndTouchstartBound = this._handleContainerMousedownAndTouchstart.bind(this);
-
-      // this.el.addEventListener('blur', this._handleInputBlurBound);
-      // this.el.addEventListener('keyup', this._handleInputKeyupAndFocusBound);
-      // this.el.addEventListener('focus', this._handleInputKeyupAndFocusBound);
-      // this.el.addEventListener('keydown', this._handleInputKeydownBound);
-      // this.container.addEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
-
-      // if (typeof window.ontouchstart !== 'undefined') {
-      //   this.container.addEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
-      // }
     }
 
     /**
      * Remove Event Handlers
      */
     _removeEventHandlers() {
-      // this.el.removeEventListener('blur', this._handleInputBlurBound);
-      // this.el.removeEventListener('keyup', this._handleInputKeyupAndFocusBound);
-      // this.el.removeEventListener('focus', this._handleInputKeyupAndFocusBound);
-      // this.el.removeEventListener('keydown', this._handleInputKeydownBound);
-      // this.container.removeEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
-
-      // if (typeof window.ontouchstart !== 'undefined') {
-      //   this.container.removeEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
-      // }
+      $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
+        el.removeEventListener('click', this._handleOptionClickBound);
+      });
+      this.input.removeEventListener('click', this._handleInputClickBound);
     }
 
     /**
@@ -250,6 +231,17 @@
     }
 
     /**
+     * Remove dropdown
+     */
+    _removeDropdown() {
+      $(this.wrapper).find('.caret').remove();
+      $(this.input).remove();
+      $(this.dropdownOptions).remove();
+      $(this.wrapper).before(this.$el);
+      $(this.wrapper).remove();
+    }
+
+    /**
      * Setup dropdown
      * @param {Element} select  select element
      * @param {Element} option  option element from select
@@ -336,7 +328,6 @@
         collection.find('li.selected').removeClass('selected');
         let option = $(newOption);
         option.addClass('selected');
-        this.selectedOption = option;
       }
     }
 

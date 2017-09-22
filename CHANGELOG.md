@@ -11,6 +11,10 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - Added callbacks onOpenStart, onOpenEnd, onCloseStart, onCloseEnd
   - Removed HTML attribute options
 
+- Select
+  - rewritten with classes
+  - Plugin renamed from 'material_select' to 'select'
+
 - Tabs
   - rewritten with classes
   - added duration option
