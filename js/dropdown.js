@@ -6,6 +6,7 @@
     constrainWidth: true,
     coverTrigger: true,
     closeOnClick: true,
+    hover: false,
     inDuration: 150,
     outDuration: 250,
     onOpenStart: null,
@@ -27,8 +28,9 @@
       }
 
       this.el = el;
-      this.el.M_Dropdown = this;
       this.$el = $(el);
+      this.el.M_Dropdown = this;
+
       this.id = Materialize.getIdFromTrigger(el);
       this.dropdownEl = document.getElementById(this.id);
 
@@ -51,7 +53,6 @@
 
       // Move dropdown-content after dropdown-trigger
       this.$el.after(this.dropdownEl);
-
 
       this._setupEventHandlers();
     }
@@ -86,10 +87,23 @@
      * Setup Event Handlers
      */
     _setupEventHandlers() {
-      this._handleClickBound = this._handleClick.bind(this);
-      this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
+      if (Dropdown._dropdowns.length === 0) {
+        this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
+      }
 
-      this.el.addEventListener('click', this._handleClickBound);
+      // Hover event handlers
+      if (this.options.hover) {
+        this._handleMouseEnterBound = this._handleMouseEnter.bind(this);
+        this.el.addEventListener('mouseenter', this._handleMouseEnterBound);
+        this._handleMouseLeaveBound = this._handleMouseLeave.bind(this);
+        this.el.addEventListener('mouseleave', this._handleMouseLeaveBound);
+        this.dropdownEl.addEventListener('mouseleave', this._handleMouseLeaveBound);
+
+      // Click event handlers
+      } else {
+        this._handleClickBound = this._handleClick.bind(this);
+        this.el.addEventListener('click', this._handleClickBound);
+      }
     }
 
     /**
@@ -97,11 +111,29 @@
      */
     removeEventHandlers() {
       this.el.removeEventListener('click', this._handleClickBound);
+      this.el.removeEventHandlers('mouseenter', this._handleMouseEnterBound);
+      this.el.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
+      this.dropdownEl.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
     }
 
     _handleClick(e) {
       e.preventDefault();
       this.open();
+    }
+
+    _handleMouseEnter(e) {
+      this.open();
+    }
+
+    _handleMouseLeave(e) {
+
+      let toEl = e.toElement || e.relatedTarget;
+      let leaveToDropdownContent = !!$(toEl).closest('.dropdown-content').length;
+      let leaveToDropdownTrigger = !!$(toEl).closest('.dropdown-trigger').length;
+
+      if (!leaveToDropdownTrigger && !leaveToDropdownContent) {
+        this.close();
+      }
     }
 
     _handleDocumentClick(e) {
@@ -136,7 +168,6 @@
           (this.options.coverTrigger ? this.el.offsetHeight : 0);
       }
 
-      console.log(edges);
       return {x: idealXPos, y: idealYPos, direction: idealDirection, width: idealWidth};
     }
 
@@ -156,7 +187,17 @@
             opacity: [1, 'easeOutQuad'],
             scaleX: [1, .3],
             scaleY: [1, .3]},
-          {duration: this.options.inDuration, queue: false, easing: 'easeOutQuint'});
+          {
+            duration: this.options.inDuration,
+            queue: false,
+            easing: 'easeOutQuint',
+            complete: () => {
+              // onOpenEnd callback
+              if (typeof(this.options.onOpenEnd) === 'function') {
+                this.options.onOpenEnd.call(this, this.el);
+              }
+            }
+          });
     }
 
     /**
@@ -168,7 +209,17 @@
             opacity: [0, 'easeOutQuint'],
             scaleX: [.3, 1],
             scaleY: [.3, 1]},
-          {duration: this.options.outDuration, queue: false, easing: 'easeOutQuint'});
+          {
+            duration: this.options.outDuration,
+            queue: false,
+            easing: 'easeOutQuint',
+            complete: () => {
+              // onCloseEnd callback
+              if (typeof(this.options.onCloseEnd) === 'function') {
+                this.options.onCloseEnd.call(this, this.el);
+              }
+            }
+          });
     }
 
 
@@ -182,7 +233,7 @@
 
       this.isOpen = true;
 
-      // Callback
+      // onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
         this.options.onOpenStart.call(this, this.el);
       }
@@ -203,6 +254,12 @@
       }
 
       this.isOpen = false;
+
+      // onCloseStart callback
+      if (typeof(this.options.onCloseStart) === 'function') {
+        this.options.onCloseStart.call(this, this.el);
+      }
+
       this._animateOut();
       document.body.removeEventListener('click', this._handleDocumentClickBound, true);
     }
