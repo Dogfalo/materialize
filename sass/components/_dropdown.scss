@@ -2,14 +2,15 @@
   @extend .z-depth-1;
   background-color: $dropdown-bg-color;
   margin: 0;
-  display: none;
+  visibility: hidden;
   min-width: 100px;
   max-height: 650px;
   overflow-y: auto;
   opacity: 0;
   position: absolute;
   z-index: 999;
-  will-change: width, height;
+  transform-origin: 0 0;
+
 
   li {
     clear: both;
@@ -65,4 +66,3 @@
   left: 0;
   height: 18px;
 }
-
