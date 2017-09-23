@@ -38,6 +38,8 @@
       // Setup
       this.valuesSelected = [];
       this.$selectedOptions = $();
+      this.filterQuery = [];
+      this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
       this._setupDropdown();
 
       this._setupEventHandlers();
@@ -77,11 +79,15 @@
     _setupEventHandlers() {
       this._handleOptionClickBound = this._handleOptionClick.bind(this);
       this._handleInputClickBound = this._handleInputClick.bind(this);
+      this._handleInputFocusBound = this._handleInputFocus.bind(this);
+      this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
 
       $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
         el.addEventListener('click', this._handleOptionClickBound);
       });
       this.input.addEventListener('click', this._handleInputClickBound);
+      this.input.addEventListener('focus', this._handleInputFocusBound);
+      this.input.addEventListener('keydown', this._handleInputKeydownBound);
     }
 
     /**
@@ -92,6 +98,8 @@
         el.removeEventListener('click', this._handleOptionClickBound);
       });
       this.input.removeEventListener('click', this._handleInputClickBound);
+      this.input.removeEventListener('focus', this._handleInputFocusBound);
+      this.input.removeEventListener('keydown', this._handleInputKeydownBound);
     }
 
     /**
@@ -125,9 +133,8 @@
 
     /**
      * Handle Input Click
-     * @param {Event} e
      */
-    _handleInputClick(e) {
+    _handleInputClick() {
       if (this.dropdown && this.dropdown.isOpen) {
         if (this.isMultiple) {
 
@@ -135,6 +142,80 @@
           this._activateOption($(this.dropdownOptions), this.$selectedOptions[0], true);
         }
       }
+    }
+
+    /**
+     * Handle Input Keydown
+     */
+    _handleInputFocus() {
+      $(this.input).trigger('click');
+    }
+
+    /**
+     * Handle Input Keydown
+     * @param {Event} e
+     */
+    _handleInputKeydown(e) {
+      console.log("KEYDOWN", e);
+      // TAB - switch to another input
+      if (e.which === 9) {
+        this.dropdown.close();
+        return;
+      }
+
+      // ARROW DOWN WHEN SELECT IS CLOSED - open select options
+      if (e.which === 40 && !this.dropdown.isOpen) {
+        e.preventDefault();
+        $(this.input).trigger('click');
+        return;
+      }
+
+      // ENTER WHEN SELECT IS CLOSED - submit form
+      if (e.which === 13 && !this.dropdown.isOpen) {
+        return;
+      }
+
+      e.preventDefault();
+
+      // CASE WHEN USER TYPE LETTERS
+      let letter = String.fromCharCode(e.which).toLowerCase(),
+          nonLetters = [9,13,27,38,40];
+      if (letter && (nonLetters.indexOf(e.which) === -1)) {
+        this.filterQuery.push(letter);
+
+        let string = this.filterQuery.join(''),
+            newOption = $(this.dropdownOptions).find('li').filter((el) => {
+              return $(el).text().toLowerCase().indexOf(string) === 0;
+            })[0];
+
+        if (newOption) {
+          this._activateOption($(this.dropdownOptions), newOption);
+        }
+      }
+
+      // ENTER - select option and close when select options are opened
+      if (e.which === 13) {
+        let activeOption = $(this.dropdownOptions).find('li.selected:not(.disabled)')[0];
+        if (activeOption) {
+          $(activeOption).trigger('click');
+        }
+      }
+
+      // ESC - close options
+      if (e.which === 27) {
+        this.dropdown.close();
+      }
+
+      // reset filter query
+      this.filterTimeout = setTimeout(this._resetFilterQueryBound, 1000);
+    }
+
+
+    /**
+     * Setup dropdown
+     */
+    _resetFilterQuery() {
+      this.filterQuery = [];
     }
 
     /**
