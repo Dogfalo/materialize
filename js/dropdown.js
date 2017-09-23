@@ -34,6 +34,7 @@
 
       this.id = Materialize.getIdFromTrigger(el);
       this.dropdownEl = document.getElementById(this.id);
+      this.$dropdownEl = $(this.dropdownEl);
 
 
       /**
@@ -81,6 +82,7 @@
      * Teardown component
      */
     destroy() {
+      this._resetDropdownStyles();
       this._removeEventHandlers();
       Dropdown._dropdowns.splice(Dropdown._dropdowns.indexOf(this), 1);
     }
@@ -120,6 +122,7 @@
     }
 
     _handleClick(e) {
+      console.log(e);
       e.preventDefault();
       this.open();
     }
@@ -141,13 +144,30 @@
 
     _handleDocumentClick(e) {
       if (this.options.closeOnClick) {
-        this.close();
+        setTimeout(() => {
+          this.close();
+        }, 0);
       } else if ($(e.target).closest('.dropdown-trigger').length) {
-        e.stopPropagation();
-        this.close();
+        setTimeout(() => {
+          this.close();
+        }, 0);
       } else if (!$(e.target).closest('.dropdown-content').length) {
-        this.close();
+        setTimeout(() => {
+          this.close();
+        }, 0);
       }
+    }
+
+    _resetDropdownStyles() {
+      this.$dropdownEl.css({
+        visibility: '',
+        width: '',
+        height: '',
+        top: '',
+        'transform-origin': '',
+        transform: '',
+        opacity: ''
+      });
     }
 
     _getDropdownPosition() {
@@ -218,7 +238,7 @@
             queue: false,
             easing: 'easeOutQuint',
             complete: () => {
-              Vel.hook(this.dropdownEl, 'visibility', 'hidden');
+              this._resetDropdownStyles();
 
               // onCloseEnd callback
               if (typeof(this.options.onCloseEnd) === 'function') {
@@ -236,7 +256,6 @@
       if (this.isOpen) {
         return;
       }
-
       this.isOpen = true;
 
       // onOpenStart callback
@@ -258,7 +277,6 @@
       if (!this.isOpen) {
         return;
       }
-
       this.isOpen = false;
 
       // onCloseStart callback
