@@ -30,6 +30,7 @@
       this.el = el;
       this.$el = $(el);
       this.el.M_Dropdown = this;
+      Dropdown._dropdowns.push(this);
 
       this.id = Materialize.getIdFromTrigger(el);
       this.dropdownEl = document.getElementById(this.id);
@@ -80,16 +81,15 @@
      * Teardown component
      */
     destroy() {
-
+      this._removeEventHandlers();
+      Dropdown._dropdowns.splice(Dropdown._dropdowns.indexOf(this), 1);
     }
 
     /**
      * Setup Event Handlers
      */
     _setupEventHandlers() {
-      if (Dropdown._dropdowns.length === 0) {
-        this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
-      }
+      this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
 
       // Hover event handlers
       if (this.options.hover) {
@@ -109,11 +109,14 @@
     /**
      * Remove Event Handlers
      */
-    removeEventHandlers() {
-      this.el.removeEventListener('click', this._handleClickBound);
-      this.el.removeEventHandlers('mouseenter', this._handleMouseEnterBound);
-      this.el.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
-      this.dropdownEl.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
+    _removeEventHandlers() {
+      if (this.options.hover) {
+        this.el.removeEventHandlers('mouseenter', this._handleMouseEnterBound);
+        this.el.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
+        this.dropdownEl.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
+      } else {
+        this.el.removeEventListener('click', this._handleClickBound);
+      }
     }
 
     _handleClick(e) {
