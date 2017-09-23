@@ -155,13 +155,20 @@ Materialize.checkWithinContainer = function(container, bounding, offset) {
     edges.right = true;
   }
 
+  // console.log(scrolledY < containerRect.top + offset,
+              // scrolledY < offset);
+  // console.log(scrolledY, containerRect.top, offset);
   if (scrolledY < containerRect.top + offset ||
       scrolledY < offset) {
     edges.top = true;
   }
 
-  if (scrolledY + bounding.height > containerRect.bottom - offset ||
-      scrolledY + bounding.height > window.innerHeight - offset) {
+  // console.log(scrolledY + bounding.height > containerRect.height - offset,
+              // scrolledY + bounding.height > window.innerHeight - offset);
+
+  // console.log(scrolledY, bounding.top, bounding.height, containerRect.height, window.innerHeight);
+  if (scrolledY + bounding.height > containerRect.height - offset ||
+      scrolledY + bounding.top + bounding.height > window.innerHeight - offset) {
     edges.bottom = true;
   }
 
@@ -203,53 +210,6 @@ Materialize.getIdFromTrigger = function(trigger) {
  * @property {Number} width
  * @property {Number} height
  */
-
-/**
- * Escapes hash from special characters
- * @param {Element} container  Container element that acts as the boundary
- * @param {Bounding} bounding  element bounding that is being checked
- * @param {Number} offset  offset from edge that counts as exceeding
- * @returns {Edges}
- */
-Materialize.checkWithinContainer = function(container, bounding, offset) {
-  let edges = {
-    top: false,
-    right: false,
-    bottom: false,
-    left: false
-  };
-
-  let containerRect = container.getBoundingClientRect();
-
-  let scrollLeft = container.scrollLeft;
-  let scrollTop = container.scrollTop;
-
-  let scrolledX = bounding.left - scrollLeft;
-  let scrolledY = bounding.top - scrollTop;
-
-  // Check for container and viewport for each edge
-  if (scrolledX < containerRect.left + offset ||
-      scrolledX < offset) {
-    edges.left = true;
-  }
-
-  if (scrolledX + bounding.width > containerRect.right - offset ||
-      scrolledX + bounding.width > window.innerWidth - offset) {
-    edges.right = true;
-  }
-
-  if (scrolledY < containerRect.top + offset ||
-      scrolledY < offset) {
-    edges.top = true;
-  }
-
-  if (scrolledY + bounding.height > containerRect.bottom - offset ||
-      scrolledY + bounding.height > window.innerHeight - offset) {
-    edges.bottom = true;
-  }
-
-  return edges;
-};
 
 
 /**

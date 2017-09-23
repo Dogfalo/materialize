@@ -168,7 +168,7 @@
       this.$dropdownEl.css({
         visibility: '',
         width: '',
-        height: '',
+        left: '',
         top: '',
         'transform-origin': '',
         transform: '',
@@ -177,28 +177,37 @@
     }
 
     _getDropdownPosition() {
-      let triggerBoundingRect = this.el.getBoundingClientRect();
-      let dropdownBoundingRect = this.dropdownEl.getBoundingClientRect();
+      let triggerBRect = this.el.getBoundingClientRect();
+      let dropdownBRect = this.dropdownEl.getBoundingClientRect();
+      let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
 
-      let idealWidth = this.options.constrainWidth ? triggerBoundingRect.width : dropdownBoundingRect.width;
-      let idealHeight = dropdownBoundingRect.height;
+      let idealHeight = dropdownBRect.height;
+      let idealWidth = dropdownBRect.width;
       let idealXPos = this.options.alignment === 'left' ?
-          triggerBoundingRect.left : triggerBoundingRect.left + (triggerBoundingRect - idealWidth);
+          triggerBRect.left - offsetParentBRect.left :
+          triggerBRect.left - offsetParentBRect.left + (triggerBRect - idealWidth);
       let idealYPos = this.options.coverTrigger ?
-          triggerBoundingRect.top : triggerBoundingRect.top + triggerBoundingRect.height;
-      let idealDirection = 'down';
-      let dropdownBounds = {left: idealXPos, top: idealYPos, width: idealWidth, height: idealHeight};
+          triggerBRect.top - offsetParentBRect.top :
+          triggerBRect.top - offsetParentBRect.top + triggerBRect.height;
 
+      let dropdownBounds = {
+        left: idealXPos,
+        top: dropdownBR,
+        height: idealHeight,
+        width: idealWidth
+      };
+
+      let idealDirection = 'down';
       // Countainer here will be closest ancestor with overflow: hidden
       let edges = Materialize.checkWithinContainer(document.body, dropdownBounds, 0);
 
       if (edges.bottom) {
         idealDirection = 'up';
-        idealYPos = this.el.offsetTop - this.dropdownEl.offsetHeight +
-          (this.options.coverTrigger ? this.el.offsetHeight : 0);
+        idealYPos = idealYPos - dropdownBRect.height -
+          (this.options.coverTrigger ? 0 : triggerBRect.height);
       }
 
-      return {x: idealXPos, y: idealYPos, direction: idealDirection, width: idealWidth};
+      return {x: idealXPos, y: idealYPos, direction: idealDirection};
     }
 
 
@@ -209,7 +218,6 @@
       // Place dropdown
       this.dropdownEl.style.left = positionInfo.x + 'px';
       this.dropdownEl.style.top = positionInfo.y + 'px';
-      this.dropdownEl.style.width = positionInfo.width + 'px';
       this.dropdownEl.style.transformOrigin = `0 ${positionInfo.direction === 'down' ? '0' : '100%'}`;
 
       Vel.hook(this.dropdownEl, 'visibility', 'visible');
@@ -265,14 +273,19 @@
       }
       this.isOpen = true;
 
-      // Stop any previous animation
-      Vel(this.dropdownEl, 'stop');
-      this._resetDropdownStyles();
-
       // onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
         this.options.onOpenStart.call(this, this.el);
       }
+
+      // Stop any previous animation
+      Vel(this.dropdownEl, 'stop');
+      this._resetDropdownStyles();
+
+      // Set width before calculating positionInfo
+      let idealWidth = this.options.constrainWidth ?
+          this.el.getBoundingClientRect().width : this.dropdownEl.getBoundingClientRect().width;
+      this.dropdownEl.style.width = idealWidth + 'px';
 
       let positionInfo = this._getDropdownPosition();
       this._animateIn(positionInfo);
