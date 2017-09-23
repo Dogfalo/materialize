@@ -166,7 +166,7 @@
 
     _resetDropdownStyles() {
       this.$dropdownEl.css({
-        visibility: '',
+        display: '',
         width: '',
         left: '',
         top: '',
@@ -184,22 +184,23 @@
       let idealHeight = dropdownBRect.height;
       let idealWidth = dropdownBRect.width;
       let idealXPos = this.options.alignment === 'left' ?
-          triggerBRect.left - offsetParentBRect.left :
-          triggerBRect.left - offsetParentBRect.left + (triggerBRect - idealWidth);
+          triggerBRect.left :
+          triggerBRect.left + (triggerBRect - idealWidth);
       let idealYPos = this.options.coverTrigger ?
-          triggerBRect.top - offsetParentBRect.top :
-          triggerBRect.top - offsetParentBRect.top + triggerBRect.height;
+          triggerBRect.top :
+          triggerBRect.top + triggerBRect.height;
 
       let dropdownBounds = {
         left: idealXPos,
-        top: dropdownBR,
+        top: idealYPos,
         height: idealHeight,
         width: idealWidth
       };
 
       let idealDirection = 'down';
       // Countainer here will be closest ancestor with overflow: hidden
-      let edges = Materialize.checkWithinContainer(document.body, dropdownBounds, 0);
+      let closestOverflowParent = Materialize.getOverflowParent(this.el);
+      let edges = Materialize.checkWithinContainer(closestOverflowParent, dropdownBounds, 0);
 
       if (edges.bottom) {
         idealDirection = 'up';
@@ -207,7 +208,7 @@
           (this.options.coverTrigger ? 0 : triggerBRect.height);
       }
 
-      return {x: idealXPos, y: idealYPos, direction: idealDirection};
+      return {x: idealXPos - offsetParentBRect.left, y: idealYPos - offsetParentBRect.top, direction: idealDirection};
     }
 
 
@@ -220,7 +221,6 @@
       this.dropdownEl.style.top = positionInfo.y + 'px';
       this.dropdownEl.style.transformOrigin = `0 ${positionInfo.direction === 'down' ? '0' : '100%'}`;
 
-      Vel.hook(this.dropdownEl, 'visibility', 'visible');
       Vel(this.dropdownEl,
           {
             opacity: [1, 'easeOutQuad'],
@@ -281,6 +281,7 @@
       // Stop any previous animation
       Vel(this.dropdownEl, 'stop');
       this._resetDropdownStyles();
+      Vel.hook(this.dropdownEl, 'display', 'block');
 
       // Set width before calculating positionInfo
       let idealWidth = this.options.constrainWidth ?

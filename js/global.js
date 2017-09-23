@@ -155,18 +155,11 @@ Materialize.checkWithinContainer = function(container, bounding, offset) {
     edges.right = true;
   }
 
-  // console.log(scrolledY < containerRect.top + offset,
-              // scrolledY < offset);
-  // console.log(scrolledY, containerRect.top, offset);
   if (scrolledY < containerRect.top + offset ||
       scrolledY < offset) {
     edges.top = true;
   }
 
-  // console.log(scrolledY + bounding.height > containerRect.height - offset,
-              // scrolledY + bounding.height > window.innerHeight - offset);
-
-  // console.log(scrolledY, bounding.top, bounding.height, containerRect.height, window.innerHeight);
   if (scrolledY + bounding.height > containerRect.height - offset ||
       scrolledY + bounding.top + bounding.height > window.innerHeight - offset) {
     edges.bottom = true;
@@ -176,9 +169,22 @@ Materialize.checkWithinContainer = function(container, bounding, offset) {
 };
 
 
+Materialize.getOverflowParent = function(element) {
+  if (element == null) {
+    return null;
+  }
+
+  if (element === document.body || getComputedStyle(element).overflow !== 'visible') {
+    return element;
+  } else {
+    return Materialize.getOverflowParent(element.parentElement);
+  }
+};
+
+
 /**
  * Gets id of component from a trigger
- * @param {Element} trigger  trigger element
+ * @param {Element} trigger  trigger
  * @returns {string}
  */
 Materialize.getIdFromTrigger = function(trigger) {

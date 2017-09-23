@@ -2,7 +2,7 @@
   @extend .z-depth-1;
   background-color: $dropdown-bg-color;
   margin: 0;
-  visibility: hidden;
+  display: none;
   min-width: 100px;
   max-height: 650px;
   overflow-y: auto;
