@@ -188,7 +188,7 @@
     $('.tabs').tabs();
     $('.timepicker').pickatime();
     $('.tooltipped').tooltip();
-    $('select').not('.disabled').material_select();
+    $('select').not('.disabled').select();
     $('.sidenav').sidenav();
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},

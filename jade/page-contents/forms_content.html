@@ -485,7 +485,7 @@
             <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
             <pre><code class="language-javascript col s12">
   $(document).ready(function() {
-    $('select').material_select();
+    $('select').select();
   });
             </code></pre>
           </div>
@@ -493,7 +493,7 @@
             <h4>Updating/Destroying Select</h4>
             <p>If you want to update the items inside the select, just rerun the initialization code from above after editing the original select. Or you can destroy the material select with this function below, and create a new select altogether</p>
             <pre><code class="language-javascript">
-  $('select').material_select('destroy');
+  $('select').select('destroy');
             </code></pre>
           </div>
         </div>
