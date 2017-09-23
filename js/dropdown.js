@@ -85,6 +85,7 @@
       this._resetDropdownStyles();
       this._removeEventHandlers();
       Dropdown._dropdowns.splice(Dropdown._dropdowns.indexOf(this), 1);
+      this.el.M_Dropdown = undefined;
     }
 
     /**
@@ -122,7 +123,6 @@
     }
 
     _handleClick(e) {
-      console.log(e);
       e.preventDefault();
       this.open();
     }
@@ -132,12 +132,18 @@
     }
 
     _handleMouseLeave(e) {
-
       let toEl = e.toElement || e.relatedTarget;
       let leaveToDropdownContent = !!$(toEl).closest('.dropdown-content').length;
-      let leaveToDropdownTrigger = !!$(toEl).closest('.dropdown-trigger').length;
+      let leaveToActiveDropdownTrigger = false;
 
-      if (!leaveToDropdownTrigger && !leaveToDropdownContent) {
+      let $closestTrigger = $(toEl).closest('.dropdown-trigger');
+      if ($closestTrigger.length && !!$closestTrigger[0].M_Dropdown &&
+          $closestTrigger[0].M_Dropdown.isOpen) {
+        leaveToActiveDropdownTrigger = true;
+      }
+
+      // Close hover dropdown if mouse did not leave to either active dropdown-trigger or dropdown-content
+      if (!leaveToActiveDropdownTrigger && !leaveToDropdownContent) {
         this.close();
       }
     }
@@ -200,6 +206,7 @@
      * Animate in dropdown
      */
     _animateIn(positionInfo) {
+      // Place dropdown
       this.dropdownEl.style.left = positionInfo.x + 'px';
       this.dropdownEl.style.top = positionInfo.y + 'px';
       this.dropdownEl.style.width = positionInfo.width + 'px';
@@ -257,6 +264,10 @@
         return;
       }
       this.isOpen = true;
+
+      // Stop any previous animation
+      Vel(this.dropdownEl, 'stop');
+      this._resetDropdownStyles();
 
       // onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
