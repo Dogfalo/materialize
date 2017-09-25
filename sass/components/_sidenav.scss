@@ -92,8 +92,7 @@
     line-height: $sidenav-line-height;
   }
 
-  .user-view,
-  .userView {
+  .user-view {
     position: relative;
     padding: ($sidenav-padding * 2) ($sidenav-padding * 2) 0;
     margin-bottom: $sidenav-padding / 2;
@@ -185,8 +184,7 @@
       padding: 0 $sidenav-padding;
     }
 
-    .user-view,
-    .userView {
+    .user-view {
       padding: $sidenav-padding $sidenav-padding 0;
     }
   }
