@@ -143,7 +143,12 @@
     border-radius: 0 0 2px 2px;
 
     p {
-      margin: 0;
+      &:first-child: {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
       color: inherit;
     }
     .card-title {
