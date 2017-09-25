@@ -4,6 +4,7 @@
 - Call plugin on `.sidenav` instead of `.button-collapse`
 - Add `.sidenav-trigger` class to sidenav open trigger
 - Rename classes `.side-nav` to `.sidenav`
+- Remove deprecated class `.userView`
 - Rename plugin call `.sideNav()` to `.sidenav()`
 - Sidenav option `closeOnClick` no longer exists
   - Instead apply the class `.sidenav-close` to any item in the Sidenav that you wish to trigger a close.
