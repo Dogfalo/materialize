@@ -18,7 +18,7 @@
 
       this.options = $.extend({}, Parallax.defaults, options);
 
-      this.$img = this.$el.children('img').first();
+      this.$img = this.$el.find('img').first();
       this._updateParallax();
       this._setupEventHandlers();
       this._setupStyles();
