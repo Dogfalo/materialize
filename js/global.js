@@ -209,6 +209,14 @@ Materialize.getDocumentScrollTop = function() {
   return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 };
 
+/**
+ * Multi browser support for document scroll left
+ * @returns {Number}
+ */
+Materialize.getDocumentScrollLeft = function() {
+  return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+};
+
 
 /**
  * @typedef {Object} Edges

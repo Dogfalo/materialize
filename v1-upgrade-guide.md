@@ -28,3 +28,8 @@
 
 ## Select
 - Rename plugin call `.material_select()` to `.select()`
+
+
+## Feature Discovery
+- Rename plugin call `.tapTarget()` to `.featureDiscovery()`
+- Change attribute `data-activates` to `data-target`

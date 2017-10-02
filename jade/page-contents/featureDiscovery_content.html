@@ -8,13 +8,13 @@
         <h2 class="header">Tap Target</h2>
         <p class="caption">Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments. When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
 
-        <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('close')">Close tap target</a>
+        <a class="waves-effect waves-light btn" onclick="$('.tap-target').featureDiscovery('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').featureDiscovery('close')">Close tap target</a>
 
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
           <a id="menu" class="btn btn-floating btn-large cyan"><i class="material-icons">menu</i></a>
         </div>
 
-        <div class="tap-target cyan" data-activates="menu">
+        <div class="tap-target cyan" data-target="menu">
           <div class="tap-target-content white-text">
             <h5>I am here</h5>
             <p class="white-text">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
@@ -31,7 +31,7 @@
   &lt;a id="menu" class="waves-effect waves-light btn btn-floating" >&lt;i class="material-icons">menu&lt;/i>&lt;/a>
 
   &lt;!-- Tap Target Structure -->
-  &lt;div class="tap-target" data-activates="menu">
+  &lt;div class="tap-target" data-target="menu">
     &lt;div class="tap-target-content">
       &lt;h5>Title&lt;/h5>
       &lt;p>A bunch of text&lt;/p>
@@ -46,8 +46,8 @@
           <h4>jQuery Plugin Methods</h4>
           <p class="caption">To open/close a tap target:</p>
           <pre><code class="language-javascript">
-  $('.tap-target').tapTarget('open');
-  $('.tap-target').tapTarget('close');
+  $('.tap-target').featureDiscovery('open');
+  $('.tap-target').featureDiscovery('close');
         </code></pre>
       </div>
 
