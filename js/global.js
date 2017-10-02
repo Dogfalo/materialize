@@ -128,15 +128,17 @@ Materialize.elementOrParentIsFixed = function(element) {
  * @param {Number} offset  offset from edge that counts as exceeding
  * @returns {Edges}
  */
-Materialize.checkWithinContainer = function(container, bounding, offset) {
-  let edges = {
-    top: false,
-    right: false,
-    bottom: false,
-    left: false
+Materialize.checkWithinContainer = function(el, container, bounding, offset) {
+  let canAlign = {
+    top: true,
+    right: true,
+    bottom: true,
+    left: true
   };
 
+  let containerAllowsOverflow = getComputedStyle(container).overflow === 'visible';
   let containerRect = container.getBoundingClientRect();
+  let elOffsetParentRect = el.getBoundingClientRect();
 
   let scrollLeft = container.scrollLeft;
   let scrollTop = container.scrollTop;
@@ -144,31 +146,36 @@ Materialize.checkWithinContainer = function(container, bounding, offset) {
   let scrolledX = bounding.left - scrollLeft;
   let scrolledY = bounding.top - scrollTop;
 
-  // Check for container and viewport for each edge
-  if (scrolledX < containerRect.left + offset ||
-      scrolledX < offset) {
-    edges.left = true;
+  // Check for container and viewport for left
+
+  if ((!containerAllowsOverflow && scrolledX + bounding.width > container.offsetWidth) ||
+      elOffsetParentRect.left + bounding.width > window.innerWidth) {
+    canAlign.left = false;
   }
 
-  if (scrolledX + bounding.width > containerRect.right - offset ||
-      scrolledX + bounding.width > window.innerWidth - offset) {
-    edges.right = true;
+  // Check for container and viewport for Right
+  if ((!containerAllowsOverflow && scrolledX - bounding.width < 0) ||
+      elOffsetParentRect.left + scrolledX - bounding.width < 0) {
+    canAlign.right = false;
   }
 
-  if (scrolledY < containerRect.top + offset ||
-      scrolledY < offset) {
-    edges.top = true;
+  // Check for container and viewport for Top
+  console.log(scrolledY,el, elOffsetParentRect.top);
+  // console.log((!containerAllowsOverflow && scrolledY + bounding.height > containerRect.height + offset),
+              // elOffsetParentRect.top + scrolledY + bounding.height > window.innerHeight);
+  if ((!containerAllowsOverflow && scrolledY + bounding.height > containerRect.height + offset) ||
+      elOffsetParentRect.top + scrolledY + bounding.height > window.innerHeight) {
+    canAlign.top = false;
   }
 
-  // console.log(scrolledY + bounding.height > containerRect.height - offset ,
-  //             scrolledY + bounding.top + bounding.height > window.innerHeight - offset);
-  // console.log(scrolledY, bounding.top, bounding.height, window.innerHeight);
-  if (scrolledY + bounding.height > containerRect.height - offset ||
-      scrolledY + bounding.height > window.innerHeight - offset) {
-    edges.bottom = true;
+  // Check for container and viewport for Bottom
+
+  if ((!containerAllowsOverflow && scrolledY - bounding.height - offset < 0) ||
+     elOffsetParentRect.top + scrolledY - bounding.height - offset < 0) {
+    canAlign.bottom = false;
   }
 
-  return edges;
+  return canAlign;
 };
 
 

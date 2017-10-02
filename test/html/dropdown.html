@@ -109,7 +109,7 @@
     <div class="nav-wrapper">
         <ul id="nav-mobile" class="right">
             <li>
-                <a class="dropdown-trigger" href="#!" data-target="7" data-constrainwidth="false" id="button4">
+                <a id="test-7" class="dropdown-trigger" href="#!" data-target="7">
                     No constrainWidth<i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
@@ -124,7 +124,7 @@
                 </a>
             </li>
             <li>
-                <a class="dropdown-trigger" href="#!" data-target="10" data-constrainwidth="false" id="button6">
+                <a id="test-10" class="dropdown-trigger" href="#!" data-target="10">
                     Right edge detection<i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
@@ -498,9 +498,9 @@ Align right: --------------------------------
 
 </div>
 
-<div class="center" style="width: 400px; height: 400px; overflow:scroll; background: grey; position: absolute;">
-    <h2 style="width: 600px;">Scrolling in absolute container</h2>
-    <a id="test-21" class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="21">+</a>
+<div class="center" style="left: 50px; width: 400px; height: 400px; overflow:scroll; background: grey; position: absolute;">
+    <h2 style="width: 700px; height: 200px">Scrolling in absolute container</h2>
+    <a id="test-21" style="left: 200px;" class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="21">+</a>
     <br>s
     <br>s
     <br>s
@@ -595,6 +595,7 @@ Align right: --------------------------------
        $('#test-16, #test-22').dropdown({coverTrigger: false});
        $('#test-12').dropdown({constrainWidth: false, alignment: 'left'});
        $('#test-13, #test-21').dropdown({constrainWidth: false, alignment: 'right'});
+       $('#test-7, #test-10').dropdown({constrainWidth: false});
    });
   </script>
 

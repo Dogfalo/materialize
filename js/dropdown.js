@@ -185,12 +185,8 @@
 
       let idealHeight = dropdownOffset.height;
       let idealWidth = dropdownOffset.width;
-      let idealXPos = this.options.alignment === 'left' ?
-          triggerOffset.left :
-          triggerOffset.left + (triggerOffset.width - idealWidth);
-      let idealYPos = this.options.coverTrigger ?
-          triggerOffset.top :
-          triggerOffset.top + triggerOffset.height;
+      let idealXPos =  triggerOffset.left;
+      let idealYPos = triggerOffset.top;
 
       let dropdownBounds = {
         left: idealXPos,
@@ -202,7 +198,8 @@
       let idealDirection = 'down';
       // Countainer here will be closest ancestor with overflow: hidden
       let closestOverflowParent = this.dropdownEl.offsetParent;
-      let edges = Materialize.checkWithinContainer(closestOverflowParent, dropdownBounds, 0);
+      console.log('overflowparent',closestOverflowParent);
+      let edges = Materialize.checkWithinContainer(this.dropdownEl, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : this.el.offsetHeight);
 
       if (edges.bottom) {
         idealDirection = 'up';
