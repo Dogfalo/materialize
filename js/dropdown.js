@@ -199,7 +199,7 @@
       // Countainer here will be closest ancestor with overflow: hidden
       let closestOverflowParent = this.dropdownEl.offsetParent;
       console.log('overflowparent',closestOverflowParent);
-      let edges = Materialize.checkWithinContainer(this.dropdownEl, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : this.el.offsetHeight);
+      let edges = Materialize.checkWithinContainer(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : this.el.offsetHeight);
 
       if (edges.bottom) {
         idealDirection = 'up';

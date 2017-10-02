@@ -138,7 +138,7 @@ Materialize.checkWithinContainer = function(el, container, bounding, offset) {
 
   let containerAllowsOverflow = getComputedStyle(container).overflow === 'visible';
   let containerRect = container.getBoundingClientRect();
-  let elOffsetParentRect = el.getBoundingClientRect();
+  let elOffsetRect = el.getBoundingClientRect();
 
   let scrollLeft = container.scrollLeft;
   let scrollTop = container.scrollTop;
@@ -149,29 +149,26 @@ Materialize.checkWithinContainer = function(el, container, bounding, offset) {
   // Check for container and viewport for left
 
   if ((!containerAllowsOverflow && scrolledX + bounding.width > container.offsetWidth) ||
-      elOffsetParentRect.left + bounding.width > window.innerWidth) {
+      elOffsetRect.left + bounding.width > window.innerWidth) {
     canAlign.left = false;
   }
 
   // Check for container and viewport for Right
   if ((!containerAllowsOverflow && scrolledX - bounding.width < 0) ||
-      elOffsetParentRect.left + scrolledX - bounding.width < 0) {
+      elOffsetRect.left - bounding.width < 0) {
     canAlign.right = false;
   }
 
   // Check for container and viewport for Top
-  console.log(scrolledY,el, elOffsetParentRect.top);
-  // console.log((!containerAllowsOverflow && scrolledY + bounding.height > containerRect.height + offset),
-              // elOffsetParentRect.top + scrolledY + bounding.height > window.innerHeight);
   if ((!containerAllowsOverflow && scrolledY + bounding.height > containerRect.height + offset) ||
-      elOffsetParentRect.top + scrolledY + bounding.height > window.innerHeight) {
+      elOffsetRect.top + bounding.height > window.innerHeight) {
     canAlign.top = false;
   }
 
   // Check for container and viewport for Bottom
 
   if ((!containerAllowsOverflow && scrolledY - bounding.height - offset < 0) ||
-     elOffsetParentRect.top + scrolledY - bounding.height - offset < 0) {
+     elOffsetRect.top - bounding.height - offset < 0) {
     canAlign.bottom = false;
   }
 
