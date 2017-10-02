@@ -177,8 +177,8 @@
       let velocityProperties = {
         height: this.newHeight,
         width: this.newWidth,
-        left: document.body.scrollLeft + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
-        top: document.body.scrollTop + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2
+        left: Materialize.getDocumentScrollLeft() + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
+        top: Materialize.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2
       };
 
       if (this.$el.hasClass('responsive-img')) {
