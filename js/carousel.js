@@ -362,23 +362,23 @@
           // If image won't trigger the load event
           let imageHeight = firstImage.height();
           if (imageHeight > 0) {
-            this.$el.css('height', firstImage.height());
+            this.$el.css('height', imageHeight + 'px');
           } else {
             // If image still has no height, use the natural dimensions to calculate
             let naturalWidth = firstImage[0].naturalWidth;
             let naturalHeight = firstImage[0].naturalHeight;
             let adjustedHeight = (this.$el.width() / naturalWidth) * naturalHeight;
-            this.$el.css('height', adjustedHeight);
+            this.$el.css('height', adjustedHeight + 'px');
           }
         } else {
           // Get height when image is loaded normally
           firstImage.one('load', (el, i) => {
-            this.$el.css('height', el.offsetHeight);
+            this.$el.css('height', el.offsetHeight + 'px');
           });
         }
       } else if (!imageOnly) {
         let slideHeight = firstSlide.height();
-        this.$el.css('height', slideHeight);
+        this.$el.css('height', slideHeight + 'px');
       }
     }
 
