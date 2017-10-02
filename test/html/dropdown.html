@@ -141,26 +141,19 @@
                 </a>
             </li>
             <li>
-                <a class="dropdown-trigger" href="#!" data-target="15" data-gutter="100" id="button4">
+                <a id="test-15" class="dropdown-trigger" href="#!" data-target="15" data-gutter="100">
                     Gutter 100<i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
             <li>
-                <a style="position: relative;" class="dropdown-trigger" href="#!" data-target="16" data-beloworigin="true" id="button5">
+                <a id="test-16" style="position: relative;" class="dropdown-trigger" href="#!" data-target="16">
                     Below Origin<i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
             <li>
-                <a class="dropdown-trigger" href="#!" data-target="22" data-beloworigin="true" id="button5">
+                <a id="test-22" class="dropdown-trigger" href="#!" data-target="22">
                     Long List Overflow<i class="material-icons right">arrow_drop_down</i>
                 </a>
-            </li>
-            <li>
-              <button onClick="alert('Stop Propagation failed');" style="background: transparent; border: 0;">
-                <a  class="dropdown-trigger" href="#!" data-target="23" data-stoppropagation="true">
-                  Stop Propagation<i class="material-icons right">arrow_drop_down</i>
-                </a>
-              </button>
             </li>
         </ul>
     </div>
@@ -452,7 +445,7 @@
 <br>
 
 Align left:
-<a class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="12" data-constrainwidth="false" data-alignment="left">+</a>
+<a id="test-12" class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="12">+</a>
 <ul id="12" class="dropdown-content">
     <li>
         <a href="#!">Users</a>
@@ -468,7 +461,7 @@ Align left:
 <br><br>
 
 Align right: --------------------------------
-<a class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="13" data-constrainwidth="false" data-alignment="right">+</a>
+<a id="test-13" class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="13">+</a>
 <ul id="13" class="dropdown-content">
     <li>
         <a href="#!">Users</a>
@@ -487,7 +480,7 @@ Align right: --------------------------------
 <div class="row" style="padding-left: 300px;">
 
     <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
+    <ul id="24" class="dropdown-content">
       <li><a href="#!">one</a></li>
       <li><a href="#!">two</a></li>
       <li class="divider"></li>
@@ -498,7 +491,7 @@ Align right: --------------------------------
         <a href="#!" class="brand-logo">Logo</a>
         <ul class="right">
           <!-- Dropdown Trigger -->
-          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown with padding on ancestor</a></li>
+          <li><a id="test-24" class="dropdown-trigger" href="#!" data-target="24">Dropdown with padding on ancestor</a></li>
         </ul>
       </div>
     </nav>
@@ -507,7 +500,7 @@ Align right: --------------------------------
 
 <div class="center" style="width: 400px; height: 400px; overflow:scroll; background: grey; position: absolute;">
     <h2 style="width: 600px;">Scrolling in absolute container</h2>
-    <a class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="21" data-constrainwidth="false" data-alignment="right">+</a>
+    <a id="test-21" class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="21">+</a>
     <br>s
     <br>s
     <br>s
@@ -598,7 +591,11 @@ Align right: --------------------------------
        $('#test-1, #test-11, #test-17, #test-18').dropdown({hover: true});
        $('#test-2, #test-3, #test-19, #test-20').dropdown({coverTrigger: false, hover: true});
        $('#test-14').dropdown({alignment: 'right', constrainWidth: false});
-  });
+       $('#test-15, #test-24').dropdown();
+       $('#test-16, #test-22').dropdown({coverTrigger: false});
+       $('#test-12').dropdown({constrainWidth: false, alignment: 'left'});
+       $('#test-13, #test-21').dropdown({constrainWidth: false, alignment: 'right'});
+   });
   </script>
 
 </body>

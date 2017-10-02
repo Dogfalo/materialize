@@ -149,15 +149,16 @@
     }
 
     _handleDocumentClick(e) {
-      if (this.options.closeOnClick) {
+      let $target = $(e.target);
+      if (this.options.closeOnClick && $target.closest('.dropdown-content').length) {
         setTimeout(() => {
           this.close();
         }, 0);
-      } else if ($(e.target).closest('.dropdown-trigger').length) {
+      } else if ($target.closest('.dropdown-trigger').length) {
         setTimeout(() => {
           this.close();
         }, 0);
-      } else if (!$(e.target).closest('.dropdown-content').length) {
+      } else if (!$target.closest('.dropdown-content').length) {
         setTimeout(() => {
           this.close();
         }, 0);
@@ -177,18 +178,19 @@
     }
 
     _getDropdownPosition() {
-      let triggerBRect = this.el.getBoundingClientRect();
-      let dropdownBRect = this.dropdownEl.getBoundingClientRect();
       let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
+      let triggerOffset = {left: this.el.offsetLeft, top: this.el.offsetTop, width: this.el.offsetWidth, height: this.el.offsetHeight};
+      let dropdownOffset = {left: this.dropdownEl.offsetLeft, top: this.dropdownEl.offsetTop, width: this.dropdownEl.offsetWidth, height: this.dropdownEl.offsetHeight};
 
-      let idealHeight = dropdownBRect.height;
-      let idealWidth = dropdownBRect.width;
+
+      let idealHeight = dropdownOffset.height;
+      let idealWidth = dropdownOffset.width;
       let idealXPos = this.options.alignment === 'left' ?
-          triggerBRect.left :
-          triggerBRect.left + (triggerBRect - idealWidth);
+          triggerOffset.left :
+          triggerOffset.left + (triggerOffset.width - idealWidth);
       let idealYPos = this.options.coverTrigger ?
-          triggerBRect.top :
-          triggerBRect.top + triggerBRect.height;
+          triggerOffset.top :
+          triggerOffset.top + triggerOffset.height;
 
       let dropdownBounds = {
         left: idealXPos,
@@ -199,16 +201,17 @@
 
       let idealDirection = 'down';
       // Countainer here will be closest ancestor with overflow: hidden
-      let closestOverflowParent = Materialize.getOverflowParent(this.el);
+      let closestOverflowParent = this.dropdownEl.offsetParent;
       let edges = Materialize.checkWithinContainer(closestOverflowParent, dropdownBounds, 0);
 
       if (edges.bottom) {
         idealDirection = 'up';
-        idealYPos = idealYPos - dropdownBRect.height -
-          (this.options.coverTrigger ? 0 : triggerBRect.height);
+        idealYPos = idealYPos - dropdownOffset.height -
+          (this.options.coverTrigger ? 0 : triggerOffset.height);
       }
+      console.log(edges);
 
-      return {x: idealXPos - offsetParentBRect.left, y: idealYPos - offsetParentBRect.top, direction: idealDirection};
+      return {x: idealXPos, y: idealYPos, direction: idealDirection};
     }
 
 

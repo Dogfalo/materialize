@@ -160,8 +160,11 @@ Materialize.checkWithinContainer = function(container, bounding, offset) {
     edges.top = true;
   }
 
+  // console.log(scrolledY + bounding.height > containerRect.height - offset ,
+  //             scrolledY + bounding.top + bounding.height > window.innerHeight - offset);
+  // console.log(scrolledY, bounding.top, bounding.height, window.innerHeight);
   if (scrolledY + bounding.height > containerRect.height - offset ||
-      scrolledY + bounding.top + bounding.height > window.innerHeight - offset) {
+      scrolledY + bounding.height > window.innerHeight - offset) {
     edges.bottom = true;
   }
 

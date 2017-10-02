@@ -79,14 +79,12 @@
     _setupEventHandlers() {
       this._handleOptionClickBound = this._handleOptionClick.bind(this);
       this._handleInputClickBound = this._handleInputClick.bind(this);
-      this._handleInputFocusBound = this._handleInputFocus.bind(this);
       this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
 
       $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
         el.addEventListener('click', this._handleOptionClickBound);
       });
       this.input.addEventListener('click', this._handleInputClickBound);
-      this.input.addEventListener('focus', this._handleInputFocusBound);
       this.input.addEventListener('keydown', this._handleInputKeydownBound);
     }
 
@@ -146,13 +144,6 @@
 
     /**
      * Handle Input Keydown
-     */
-    _handleInputFocus() {
-      $(this.input).trigger('click');
-    }
-
-    /**
-     * Handle Input Keydown
      * @param {Event} e
      */
     _handleInputKeydown(e) {
@@ -170,8 +161,9 @@
         return;
       }
 
-      // ENTER WHEN SELECT IS CLOSED - submit form
+      // ENTER WHEN SELECT IS CLOSED - open select
       if (e.which === 13 && !this.dropdown.isOpen) {
+        this.dropdown.open();
         return;
       }
 
