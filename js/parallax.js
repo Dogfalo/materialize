@@ -87,7 +87,7 @@
       let parallaxDist = imgHeight - containerHeight;
       let bottom = this.$el.offset().top + containerHeight;
       let top = this.$el.offset().top;
-      let scrollTop = document.body.scrollTop;
+      let scrollTop = Materialize.getDocumentScrollTop();
       let windowHeight = window.innerHeight;
       let windowBottom = scrollTop + windowHeight;
       let percentScrolled = (windowBottom - top) / (containerHeight + windowHeight);

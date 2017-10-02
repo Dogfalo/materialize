@@ -202,6 +202,15 @@ Materialize.getIdFromTrigger = function(trigger) {
 
 
 /**
+ * Multi browser support for document scroll top
+ * @returns {Number}
+ */
+Materialize.getDocumentScrollTop = function() {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+};
+
+
+/**
  * @typedef {Object} Edges
  * @property {Boolean} top  If the top edge was exceeded
  * @property {Boolean} right  If the right edge was exceeded
