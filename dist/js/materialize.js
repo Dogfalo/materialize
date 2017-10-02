@@ -6270,10 +6270,11 @@ if (Vel) {
 })(jQuery);
 ;(function ($) {
 
-  var scrollFireEventsHandled = false;
-
   // Input: Array of JSON objects {selector, offset, callback}
   Materialize.scrollFire = function (options) {
+
+    var scrollFireEventsHandled = false;
+
     var onScroll = function () {
       var windowScroll = window.pageYOffset + window.innerHeight;
 
