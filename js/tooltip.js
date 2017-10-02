@@ -190,7 +190,6 @@
 
       newCoordinates = this._repositionWithinScreen(
         targetLeft, targetTop, tooltipWidth, tooltipHeight);
-
       $(tooltip).css({
         top: newCoordinates.y + 'px',
         left: newCoordinates.x + 'px'
@@ -198,8 +197,8 @@
     }
 
     _repositionWithinScreen(x, y, width, height) {
-      let scrollLeft = document.body.scrollLeft;
-      let scrollTop = document.body.scrollTop;
+      let scrollLeft = Materialize.getDocumentScrollLeft();
+      let scrollTop = Materialize.getDocumentScrollTop();
       let newX = x - scrollLeft;
       let newY = y - scrollTop;
 
