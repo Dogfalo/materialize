@@ -1022,6 +1022,10 @@ body.parallax-demo footer {
 // Themes
 body.themes {
   .themes-section {
+    &.right-aligned {
+      flex-direction: row-reverse;
+    }
+
     padding: 60px 0 40px 0;
     @extend .valign-wrapper;
 
@@ -1046,7 +1050,7 @@ body.themes {
   float: left;
 }
 .shopify-buy-frame {
-  width: 106px;
+  width: 107px;
 }
 .shopify-btn {
   &:hover {
@@ -1075,5 +1079,21 @@ body.themes {
 
   a {
     color: #baef74;
+  }
+}
+
+@media #{$small-and-down} {
+  body.themes {
+    .themes-section {
+      &.right-aligned {
+        flex-direction: column-reverse;
+      }
+
+      flex-direction: column-reverse;
+
+      .theme-preview {
+        margin-bottom: 40px;
+      }
+    }
   }
 }
