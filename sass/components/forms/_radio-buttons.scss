@@ -20,6 +20,7 @@
   font-size: 1rem;
   transition: .28s ease;
   user-select: none;
+  pointer-events: auto;
 }
 
 [type="radio"] + label:before,

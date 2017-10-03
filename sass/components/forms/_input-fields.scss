@@ -213,6 +213,8 @@ textarea.materialize-textarea {
   .prefix ~ label { margin-left: 3rem; }
 
   @media #{$medium-and-down} {
+    height: 4.5rem;
+
     .prefix ~ input {
       width: 86%;
       width: calc(100% - 3rem);
