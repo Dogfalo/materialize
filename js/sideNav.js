@@ -22,6 +22,9 @@
           menu.css('width', options.menuWidth);
         }
 
+        // Clear old Touch Area
+        $('div.drag-target').remove();
+
         // Add Touch Area
         var $dragTarget = $('.drag-target[data-sidenav="' + menuId + '"]');
         if (options.draggable) {
