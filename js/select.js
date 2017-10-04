@@ -327,10 +327,10 @@
       // Add disabled attr if disabled
       let disabledClass = (option.disabled) ? 'disabled ' : '';
       let optgroupClass = (type === 'optgroup-option') ? 'optgroup-option ' : '';
-      let multipleCheckbox = this.isMultiple ? '<input type="checkbox"' + disabledClass + '/><label></label>' : '';
+      let multipleCheckbox = this.isMultiple ? `<label><input type="checkbox"${disabledClass}"/><span>${option.innerHTML}</span></label>` : option.innerHTML;
       let liEl = $('<li></li>');
       let spanEl = $('<span></span>');
-      spanEl.html(multipleCheckbox + option.innerHTML);
+      spanEl.html(multipleCheckbox);
       liEl.addClass(`${disabledClass} ${optgroupClass}`);
       liEl.append(spanEl);
 
