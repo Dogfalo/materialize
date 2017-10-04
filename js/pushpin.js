@@ -26,7 +26,7 @@
         el.M_Pushpin.destroy();
       }
 
-      this.el = el
+      this.el = el;
       this.$el = $(el);
       this.el.M_Pushpin = this;
 
@@ -39,6 +39,7 @@
       this.originalOffset = this.el.offsetTop;
       Pushpin._pushpins.push(this);
       this._setupEventHandlers();
+      this._updatePosition();
     }
 
     static get defaults() {
@@ -89,7 +90,7 @@
     }
 
     _updatePosition() {
-      let scrolled = document.body.scrollTop + this.options.offset;
+      let scrolled = Materialize.getDocumentScrollTop() + this.options.offset;
 
       if (this.options.top <= scrolled && this.options.bottom >= scrolled &&
           !this.el.classList.contains('pinned')) {
