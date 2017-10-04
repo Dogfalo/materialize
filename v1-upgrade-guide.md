@@ -38,3 +38,7 @@
 ## Forms
 - Added new Helper Text element that should be placed after the `label`
 - Moved validation messages `data-error` and `data-success` to Helper Text
+
+
+## Collections
+- Removed dismissible collections
