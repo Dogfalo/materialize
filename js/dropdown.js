@@ -169,6 +169,7 @@
       this.$dropdownEl.css({
         display: '',
         width: '',
+        height: '',
         left: '',
         top: '',
         'transform-origin': '',
@@ -181,10 +182,11 @@
       let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
       let triggerOffset = {left: this.el.offsetLeft, top: this.el.offsetTop, width: this.el.offsetWidth, height: this.el.offsetHeight};
       let dropdownOffset = {left: this.dropdownEl.offsetLeft, top: this.dropdownEl.offsetTop, width: this.dropdownEl.offsetWidth, height: this.dropdownEl.offsetHeight};
+      let triggerBRect = this.el.getBoundingClientRect();
+      let dropdownBRect = this.dropdownEl.getBoundingClientRect();
 
-
-      let idealHeight = dropdownOffset.height;
-      let idealWidth = dropdownOffset.width;
+      let idealHeight = dropdownBRect.height;
+      let idealWidth = dropdownBRect.width;
       let idealXPos =  triggerOffset.left;
       let idealYPos = triggerOffset.top;
 
@@ -195,20 +197,60 @@
         width: idealWidth
       };
 
-      let idealDirection = 'down';
+
       // Countainer here will be closest ancestor with overflow: hidden
       let closestOverflowParent = this.dropdownEl.offsetParent;
-      console.log('overflowparent',closestOverflowParent);
-      let edges = Materialize.checkWithinContainer(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : this.el.offsetHeight);
+      let alignments = Materialize.checkWithinContainer(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : triggerBRect.height);
 
-      if (edges.bottom) {
-        idealDirection = 'up';
-        idealYPos = idealYPos - dropdownOffset.height -
-          (this.options.coverTrigger ? 0 : triggerOffset.height);
+      let verticalAlignment = 'top';
+      let horizontalAlignment = this.options.alignment;
+      idealYPos += (this.options.coverTrigger ? 0 : triggerBRect.height);
+      if (!alignments.top) {
+        if (alignments.bottom) {
+          verticalAlignment = 'bottom';
+        } else {
+          // Determine which side has most space and cutoff at correct height
+          if (alignments.spaceOnTop > alignments.spaceOnBottom) {
+            verticalAlignment = 'bottom';
+            idealHeight += alignments.spaceOnTop;
+            idealYPos -= alignments.spaceOnTop;
+          } else {
+            idealHeight += alignments.spaceOnBottom;
+          }
+        }
       }
-      console.log(edges);
 
-      return {x: idealXPos, y: idealYPos, direction: idealDirection};
+      // If preferred horizontal alignment is possible
+      if (!alignments[horizontalAlignment]) {
+        let oppositeAlignment = horizontalAlignment === 'left' ? 'right' : 'left';
+        if (alignments[oppositeAlignment]) {
+          horizontalAlignment = oppositeAlignment;
+        } else {
+          // Determine which side has most space and cutoff at correct height
+          if (alignments.spaceOnLeft > alignments.spaceOnRight) {
+            horizontalAlignment = 'right';
+            idealWidth += alignments.spaceOnLeft;
+            idealXPos -= alignments.spaceOnLeft;
+          } else {
+            horizontalAlignment = 'left';
+            idealWidth += alignments.spaceOnRight;
+          }
+        }
+      }
+
+      if (verticalAlignment === 'bottom') {
+        idealYPos = idealYPos - dropdownBRect.height +
+          (this.options.coverTrigger ? triggerBRect.height : 0);
+      }
+      if (horizontalAlignment === 'right') {
+        idealXPos = idealXPos - dropdownBRect.width + triggerBRect.width;
+      }
+      return {x: idealXPos,
+              y: idealYPos,
+              verticalAlignment: verticalAlignment,
+              horizontalAlignment: horizontalAlignment,
+              height: idealHeight,
+              width: idealWidth};
     }
 
 
@@ -219,7 +261,10 @@
       // Place dropdown
       this.dropdownEl.style.left = positionInfo.x + 'px';
       this.dropdownEl.style.top = positionInfo.y + 'px';
-      this.dropdownEl.style.transformOrigin = `0 ${positionInfo.direction === 'down' ? '0' : '100%'}`;
+      this.dropdownEl.style.height = positionInfo.height + 'px';
+      this.dropdownEl.style.width = positionInfo.width + 'px';
+      this.dropdownEl.style.transformOrigin =
+        `${positionInfo.horizontalAlignment === 'left' ? '0' : '100%'} ${positionInfo.verticalAlignment === 'top' ? '0' : '100%'}`;
 
       Vel(this.dropdownEl,
           {
