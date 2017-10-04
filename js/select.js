@@ -219,7 +219,7 @@
       this.wrapper = document.createElement('div');
       this.wrapper.classList.add('select-wrapper');
       this.$el.before($(this.wrapper));
-      this.wrapper.append(this.el);
+      this.wrapper.appendChild(this.el);
 
       if (this.el.disabled) {
         this.wrapper.classList.add('disabled');
@@ -251,7 +251,7 @@
           } else if ($(el).is('optgroup')) {
             // Optgroup.
             let selectOptions = $(el).children('option');
-            this.dropdownOptions.append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
+            $(this.dropdownOptions).append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
 
             selectOptions.each((el) => {
               let optionEl = this._appendOptionWithIcon(this.$el, el, 'optgroup-option');
@@ -343,7 +343,7 @@
       }
 
       // Check for multiple type.
-      this.dropdownOptions.append(liEl[0]);
+      $(this.dropdownOptions).append(liEl[0]);
       return liEl[0];
     }
 
