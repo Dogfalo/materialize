@@ -200,7 +200,7 @@
 
       // Countainer here will be closest ancestor with overflow: hidden
       let closestOverflowParent = this.dropdownEl.offsetParent;
-      let alignments = Materialize.checkWithinContainer(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : triggerBRect.height);
+      let alignments = Materialize.checkPossibleAlignments(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : triggerBRect.height);
 
       let verticalAlignment = 'top';
       let horizontalAlignment = this.options.alignment;

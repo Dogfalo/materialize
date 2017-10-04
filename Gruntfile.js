@@ -254,7 +254,7 @@ module.exports = function(grunt) {
       },
       bin: {
         files: {
-          'bin/materialize.js': ['temp/js/materialize.js']
+          'bin/materialize.min.js': ['bin/materialize.js']
         }
       },
       extras: {
