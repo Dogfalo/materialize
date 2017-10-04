@@ -511,40 +511,56 @@
         <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
         <form action="#">
           <p>
-            <input name="group1" type="radio" id="test1" checked />
-            <label for="test1">Red</label>
+            <label>
+              <input name="group1" type="radio" checked />
+              <span>Red</span>
+            </label>
           </p>
           <p>
-            <input name="group1" type="radio" id="test2" />
-            <label for="test2">Yellow</label>
+            <label>
+              <input name="group1" type="radio" />
+              <span>Yellow</span>
+            </label>
           </p>
           <p>
-            <input class="with-gap" name="group1" type="radio" id="test3"  />
-            <label for="test3">Green</label>
+            <label>
+              <input class="with-gap" name="group1" type="radio"  />
+              <span>Green</span>
+            </label>
           </p>
-            <p>
-              <input name="group1" type="radio" id="test4" disabled="disabled" />
-              <label for="test4">Brown</label>
+          <p>
+            <label>
+              <input name="group1" type="radio" disabled="disabled" />
+              <span>Brown</span>
+            </label>
           </p>
         </form>
         <br>
         <pre><code class="language-markup">
   &lt;form action="#">
     &lt;p>
-      &lt;input name="group1" type="radio" id="test1" />
-      &lt;label for="test1">Red&lt;/label>
+      &lt;label>
+        &lt;input name="group1" type="radio" checked />
+        &lt;span>Red&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input name="group1" type="radio" id="test2" />
-      &lt;label for="test2">Yellow&lt;/label>
+      &lt;label>
+        &lt;input name="group1" type="radio" />
+        &lt;span>Yellow&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input class="with-gap" name="group1" type="radio" id="test3"  />
-      &lt;label for="test3">Green&lt;/label>
+      &lt;label>
+        &lt;input class="with-gap" name="group1" type="radio"  />
+        &lt;span>Green&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input name="group1" type="radio" id="test4" disabled="disabled" />
-      &lt;label for="test4">Brown&lt;/label>
+      &lt;label>
+        &lt;input name="group1" type="radio" disabled="disabled" />
+        &lt;span>Brown&lt;/span>
+      &lt;/label>
     &lt;/p>
   &lt;/form>
         </code></pre>
@@ -552,13 +568,17 @@
         <p>To create a radio button with a gap, add <code class="language-markup">class="with-gap"</code> to your input. See the example below.</p>
 
         <p>
-          <input class="with-gap" name="group3" type="radio" id="test5" checked />
-          <label for="test5">Red</label>
+          <label>
+            <input class="with-gap" name="group3" type="radio" checked />
+            <span>Red</span>
+          </label>
         </p>
         <pre><code class="language-markup">
   &lt;p>
-    &lt;input class="with-gap" name="group3" type="radio" id="test5" checked />
-    &lt;label for="test5">Red&lt;/label>
+    &lt;label>
+      &lt;input class="with-gap" name="group3" type="radio" checked />
+      &lt;span>Red&lt;/span>
+    &lt;/label>
   &lt;/p>
         </code></pre>
 
@@ -571,55 +591,79 @@
         <p>Use checkboxes when looking for yes or no answers. The <code class="language-markup">for</code> attribute is necessary to bind our custom checkbox with the input. Add the input's <code class="language-markup">id</code> as the value of the <code class="language-markup">for</code> attribute of the label. </p>
         <form action="#">
           <p>
-            <input type="checkbox" id="test9" />
-            <label for="test9">Red</label>
+            <label>
+              <input type="checkbox" />
+              <span>Red</span>
+            </label>
           </p>
           <p>
-            <input type="checkbox" id="test6" checked="checked" />
-            <label for="test6">Yellow</label>
+            <label>
+              <input type="checkbox" checked="checked" />
+              <span>Yellow</span>
+            </label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-            <label for="filled-in-box">Filled in</label>
+            <label>
+              <input type="checkbox" class="filled-in" checked="checked" />
+              <span>Filled in</span>
+            </label>
           </p>
           <p>
-            <input type="checkbox" id="indeterminate-checkbox" />
-            <label for="indeterminate-checkbox">Indeterminate Style</label>
+            <label>
+              <input id="indeterminate-checkbox" type="checkbox" />
+              <span>Indeterminate Style</span>
+            </label>
           </p>
           <p>
-            <input type="checkbox" id="test7" checked="checked" disabled="disabled" />
-            <label for="test7">Green</label>
+            <label>
+              <input type="checkbox" checked="checked" disabled="disabled" />
+              <span>Green</span>
+            </label>
           </p>
           <p>
-            <input type="checkbox" id="test8" disabled="disabled" />
-            <label for="test8">Brown</label>
+            <label>
+              <input type="checkbox" disabled="disabled" />
+              <span>Brown</span>
+            </label>
           </p>
         </form>
         <pre><code class="language-markup">
   &lt;form action="#">
     &lt;p>
-      &lt;input type="checkbox" id="test5" />
-      &lt;label for="test5">Red&lt;/label>
+      &lt;label>
+        &lt;input type="checkbox" />
+        &lt;span>Red&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input type="checkbox" id="test6" checked="checked" />
-      &lt;label for="test6">Yellow&lt;/label>
+      &lt;label>
+        &lt;input type="checkbox" checked="checked" />
+        &lt;span>Yellow&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-      &lt;label for="filled-in-box">Filled in&lt;/label>
+      &lt;label>
+        &lt;input type="checkbox" class="filled-in" checked="checked" />
+        &lt;span>Filled in&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input type="checkbox" id="indeterminate-checkbox" />
-      &lt;label for="indeterminate-checkbox">Indeterminate Style&lt;/label>
+      &lt;label>
+        &lt;input id="indeterminate-checkbox" type="checkbox" />
+        &lt;span>Indeterminate Style&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input type="checkbox" id="test7" checked="checked" disabled="disabled" />
-      &lt;label for="test7">Green&lt;/label>
+      &lt;label>
+        &lt;input type="checkbox" checked="checked" disabled="disabled" />
+        &lt;span>Green&lt;/span>
+      &lt;/label>
     &lt;/p>
     &lt;p>
-      &lt;input type="checkbox" id="test8" disabled="disabled" />
-      &lt;label for="test8">Brown&lt;/label>
+      &lt;label>
+        &lt;input type="checkbox" disabled="disabled" />
+        &lt;span>Brown&lt;/span>
+      &lt;/label>
     &lt;/p>
   &lt;/form>
         </code></pre>
