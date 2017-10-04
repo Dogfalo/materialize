@@ -6,7 +6,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Dropdown
   - rewritten with classes
   - Plugin is initialized on `.dropdown-content` instead of `.dropdown-button`
-  - Renamed classes `.dropdown-button` to `.dropdown-trigger``
+  - Renamed classes `.dropdown-button` to `.dropdown-trigger`
   - Renamed option `belowOrigin` to `coverTrigger`
   - Added callbacks onOpenStart, onOpenEnd, onCloseStart, onCloseEnd
   - Removed HTML attribute options
@@ -32,6 +32,14 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - rewritten with classes
   - Added updateData method
   - Added sortFunction option
+
+- Feature Discovery
+  - rewritten with classes
+  - Plugin renamed from 'tapTarget' to 'featureDiscovery'
+
+- Forms
+  - Added new helper text element
+  - Moved validation messages 'data-error' and 'data-success' to Helper Text
 
 ## v0.100.1 (July 21st)
 - Fixed bug where modal triggers could not contain child elements

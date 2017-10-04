@@ -32,4 +32,9 @@
 
 ## Feature Discovery
 - Rename plugin call `.tapTarget()` to `.featureDiscovery()`
-- Change attribute `data-activates` to `data-target`
+- Change attribute `data-activates` to `data-target
+
+
+## Forms
+- Added new Helper Text element that should be placed after the `label`
+- Moved validation messages `data-error` and `data-success` to Helper Text
