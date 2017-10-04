@@ -32,12 +32,17 @@ select {
 }
 
 .select-wrapper {
+  &.valid .helper-text[data-success],
+  &.invalid ~ .helper-text[data-error] {
+    @extend %hidden-text;
+  }
+
   &.valid {
     & > input.select-dropdown {
       @extend %valid-input-style;
     }
 
-    & + label:after {
+    & ~ .helper-text:after {
       @extend %custom-success-message;
     }
   }
@@ -47,7 +52,7 @@ select {
       @extend %invalid-input-style;
     }
 
-    & + label:after {
+    & ~ .helper-text:after {
       @extend %custom-error-message;
     }
   }

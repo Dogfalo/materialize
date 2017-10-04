@@ -62,6 +62,14 @@ textarea.materialize-textarea {
     color: $input-focus-color;
   }
 
+  // Hide helper text on data message
+  &.valid ~ .helper-text[data-success],
+  &:focus.valid ~ .helper-text[data-success],
+  &.invalid ~ .helper-text[data-error],
+  &:focus.invalid ~ .helper-text[data-error] {
+    @extend %hidden-text;
+  }
+
   // Valid Input Style
   &.valid,
   &:focus.valid {
@@ -69,8 +77,9 @@ textarea.materialize-textarea {
   }
 
   // Custom Success Message
-  &.valid + label:after,
-  &:focus.valid + label:after {
+  &.valid ~ .helper-text:after,
+  &:focus.valid ~ .helper-text:after,
+  &:focus.valid ~ label {
     @extend %custom-success-message;
   }
 
@@ -81,8 +90,9 @@ textarea.materialize-textarea {
   }
 
   // Custom Error message
-  &.invalid + label:after,
-  &:focus.invalid + label:after {
+  &.invalid ~ .helper-text:after,
+  &:focus.invalid ~ .helper-text:after,
+  &:focus.invalid ~ label {
     @extend %custom-error-message;
   }
 
@@ -94,17 +104,6 @@ textarea.materialize-textarea {
   // Form Message Shared Styles
   & + label:after {
     @extend %input-after-style;
-  }
-
-  // TODO: Remove once input fields are reworked to support validation messages better
-  &.invalid + label:after,
-  &.valid + label:after{
-    display: none;
-  }
-
-  &.invalid + label.active:after,
-  &.valid + label.active:after{
-    display: block;
   }
 }
 
@@ -118,17 +117,18 @@ textarea.materialize-textarea {
   border-bottom: $input-invalid-border;
   box-shadow: 0 1px 0 0 $input-error-color;
 }
+%hidden-text {
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+}
 %custom-success-message {
   content: attr(data-success);
   color: $input-success-color;
-  opacity: 1;
-  transform: translateY(9px);
 }
 %custom-error-message {
   content: attr(data-error);
   color: $input-error-color;
-  opacity: 1;
-  transform: translateY(9px);
 }
 %input-after-style {
   display: block;
@@ -169,25 +169,39 @@ textarea.materialize-textarea {
 
   position: relative;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 
   label {
     color: $input-border-color;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     font-size: 1rem;
     cursor: text;
-    transition: transform .2s ease-out;
+    transition: transform .2s ease-out, color .2s ease-out;
     transform-origin: 0% 100%;
     text-align: initial;
     transform: translateY(12px);
-    pointer-events: none;
 
     &:not(.label-icon).active {
       transform: translateY(-14px) scale(.8);
       transform-origin: 0 0;
     }
+  }
+
+  .helper-text {
+    &::after {
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    position: relative;
+    min-height: 18px;
+    display: block;
+    font-size: 12px;
+    color: rgba(0,0,0,.54);
   }
 
   // Prefix Icons
@@ -281,17 +295,6 @@ textarea {
   background-color: transparent;
 
   &.materialize-textarea {
-    // Fixes validation messages for dynamic textareas
-    &.validate + label {
-      &::after {
-        top: calc(100% - 12px);
-      }
-      &:not(.label-icon).active {
-        transform: translateY(-25px);
-      }
-      height: 100%;
-    }
-
     overflow-y: hidden; /* prevents scroll bar flash */
     padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
     resize: none;

@@ -52,7 +52,9 @@
     static init($els, options) {
       let arr = [];
       $els.each(function() {
-        arr.push(new Select(this, options));
+        if (!$(this).hasClass('browser-default')) {
+          arr.push(new Select(this, options));
+        }
       });
       return arr;
     }
