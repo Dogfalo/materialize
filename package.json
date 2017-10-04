@@ -19,7 +19,6 @@
     "test": "grunt travis --verbose"
   },
   "dependencies": {
-    "hammerjs": "^2.0.8",
     "jquery": "^3.0.0 || ^2.1.4"
   },
   "engine": "node >= 6",
