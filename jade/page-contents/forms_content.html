@@ -768,7 +768,7 @@
 
       <div id="date-picker" class="section scrollspy">
         <h2 class="header">Date Picker</h2>
-        <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
+        <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below!</p>
         <label for="birthdate">Birthdate</label>
         <input id="birthdate" type="text" class="datepicker">
         <pre><code class="language-markup">
@@ -792,6 +792,7 @@
 
     <div id="time-picker" class="section scrollspy">
         <h2 class="header">Time Picker</h2>
+        <p>We also use a modified version of ClockPicker to create a materialize time picker.</p>
         <label for="lunchtime">Lunchtime</label>
         <input id="lunchtime" type="text" class="timepicker">
         <pre><code class="language-markup">
@@ -799,6 +800,7 @@
         </code></pre>
 
         <h4>Initialization</h4>
+        <p>At this time, not all ClockPicker options are working with our implementation</p>
         <pre><code class="language-javascript">
   $('.timepicker').pickatime({
     default: 'now', // Set default time: 'now', '1:30AM', '16:30'
