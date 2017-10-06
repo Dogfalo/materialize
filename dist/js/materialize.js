@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.100.2 (http://materializecss.com)
+ * Materialize v0.100.3 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -6270,10 +6270,11 @@ if (Vel) {
 })(jQuery);
 ;(function ($) {
 
-  var scrollFireEventsHandled = false;
-
   // Input: Array of JSON objects {selector, offset, callback}
   Materialize.scrollFire = function (options) {
+
+    var scrollFireEventsHandled = false;
+
     var onScroll = function () {
       var windowScroll = window.pageYOffset + window.innerHeight;
 
