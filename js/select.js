@@ -79,6 +79,7 @@
      * Setup Event Handlers
      */
     _setupEventHandlers() {
+      this._handleSelectChangeBound = this._handleSelectChange.bind(this);
       this._handleOptionClickBound = this._handleOptionClick.bind(this);
       this._handleInputClickBound = this._handleInputClick.bind(this);
       this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
@@ -86,6 +87,7 @@
       $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
         el.addEventListener('click', this._handleOptionClickBound);
       });
+      this.el.addEventListener('change', this._handleSelectChangeBound);
       this.input.addEventListener('click', this._handleInputClickBound);
       this.input.addEventListener('keydown', this._handleInputKeydownBound);
     }
@@ -97,9 +99,18 @@
       $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
         el.removeEventListener('click', this._handleOptionClickBound);
       });
+      this.el.removeEventListener('change', this._handleSelectChangeBound);
       this.input.removeEventListener('click', this._handleInputClickBound);
       this.input.removeEventListener('focus', this._handleInputFocusBound);
       this.input.removeEventListener('keydown', this._handleInputKeydownBound);
+    }
+
+    /**
+     * Handle Select Change
+     * @param {Event} e
+     */
+    _handleSelectChange(e) {
+      this._setValueToInput();
     }
 
     /**
@@ -107,6 +118,7 @@
      * @param {Event} e
      */
     _handleOptionClick(e) {
+      e.preventDefault();
       let option = $(e.target).closest('li')[0];
       let optionIndex = $(this.dropdownOptions).find('li:not(.optgroup)').index(option);
       if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup')) {
@@ -115,7 +127,7 @@
         if (this.isMultiple) {
           let checkbox = $(option).find('input[type="checkbox"]');
           checkbox.prop('checked', !checkbox.prop('checked'));
-          selected = this._toggleEntryFromArray(this.valuesSelected, optionIndex);
+          selected = this._toggleEntryFromArray(optionIndex);
 
         } else {
           $(this.dropdownOptions).find('li').removeClass('active');
@@ -136,11 +148,8 @@
      */
     _handleInputClick() {
       if (this.dropdown && this.dropdown.isOpen) {
-        if (this.isMultiple) {
-
-        } else {
-          this._activateOption($(this.dropdownOptions), this.$selectedOptions[0], true);
-        }
+        this._setValueToInput();
+        this._setSelectedStates();
       }
     }
 
@@ -149,7 +158,6 @@
      * @param {Event} e
      */
     _handleInputKeydown(e) {
-      console.log("KEYDOWN", e);
       // TAB - switch to another input
       if (e.which === 9) {
         this.dropdown.close();
@@ -266,19 +274,17 @@
       this.$el.after(this.dropdownOptions);
 
       // Add input dropdown
-      let label = this._findSelectedOption().html() || '';
-      let sanitizedLabelHtml = label.replace(/"/g, '&quot;'); // escape double quotes
       this.input = document.createElement('input');
       $(this.input).addClass('select-dropdown dropdown-trigger');
       this.input.setAttribute('type', 'text');
       this.input.setAttribute('readonly', 'true');
       this.input.setAttribute('data-target', this.dropdownOptions.id);
-      this.input.setAttribute('value', sanitizedLabelHtml);
       if (this.el.disabled) {
         $(this.input).prop('disabled', 'true');
       }
 
       this.$el.before(this.input);
+      this._setValueToInput();
 
       // Add caret
       let dropdownIcon = $('<i class="caret material-icons">arrow_drop_down</i>');
@@ -293,16 +299,8 @@
         this.dropdown = new Materialize.Dropdown(this.input, dropdownOptions);
       }
 
-      // Add initial multiple selections
-      if (this.isMultiple) {
-        this.$selectedOptions.not(":disabled").each((el) => {
-          let $onlyOptions = $(this.dropdownOptions).find('li:not(.optgroup)');
-          let index = $onlyOptions.index(el);
-
-          this._toggleEntryFromArray(this.valuesSelected, index);
-          $onlyOptions.eq(index).find('input[type="checkbox"]').prop("checked", true);
-        });
-      }
+      // Add initial selections
+      this._setSelectedStates();
     }
 
     /**
@@ -349,78 +347,83 @@
 
     /**
      * Toggle entry from option
-     * @param {Array} entriesArray
      * @param {Number} entryIndex
      * @return {Boolean}  if entry was added or removed
      */
-    _toggleEntryFromArray(entriesArray, entryIndex) {
-      let index = entriesArray.indexOf(entryIndex),
+    _toggleEntryFromArray(entryIndex) {
+      let index = this.valuesSelected.indexOf(entryIndex),
           notAdded = index === -1;
 
       if (notAdded) {
-        entriesArray.push(entryIndex);
+        this.valuesSelected.push(entryIndex);
       } else {
-        entriesArray.splice(index, 1);
+        this.valuesSelected.splice(index, 1);
       }
 
       $(this.dropdownOptions).find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       this.$el.find('option').eq(entryIndex).prop('selected', notAdded);
-      this._setValueToInput(entriesArray);
 
       return notAdded;
     }
 
     /**
      * Set value to input
-     * @param {Array} entriesArray
      */
-    _setValueToInput(entriesArray) {
+    _setValueToInput() {
       let value = '';
+      let options = this.$el.find('option');
 
-      for (let i = 0; i < entriesArray.length; i++) {
-        let text = this.$el.find('option').eq(entriesArray[i]).text();
-
-        i === 0 ? value += text : value += ', ' + text;
-      }
+      options.each((el, i) => {
+        if ($(el).prop('selected')) {
+          let text = $(el).text();
+          value === '' ? value += text : value += ', ' + text;
+        }
+      });
 
       if (value === '') {
-        value = this.$el.find('option:disabled').eq(0).text();
+        let firstDisabled = this.$el.find('option:disabled').eq(0);
+        if (firstDisabled.length) {
+          value = firstDisabled.text();
+        }
       }
 
       this.input.value = value;
     }
 
     /**
-     * Make option as selected and scroll to selected position
-     * @param {jQuery} collection  Select options jQuery element
-     * @param {Element} newOption  element of the new option
-     * @param {Boolean} firstActivation  If on first activation of select
+     * Set selected state of dropdown too match actual select element
      */
-    _activateOption(collection, newOption, firstActivation) {
-      if (newOption) {
-        collection.find('li.selected').removeClass('selected');
-        let option = $(newOption);
-        option.addClass('selected');
-      }
+    _setSelectedStates() {
+      let $onlyOptions = $(this.dropdownOptions).find('li:not(.optgroup):not(.disabled)');
+      this.$el.find('option').not(':disabled').each((el, i) => {
+        let option = $onlyOptions.eq(i);
+
+        if ($(el).prop('selected')) {
+          option.find('input[type="checkbox"]').prop("checked", true);
+          this._activateOption($(this.dropdownOptions), option);
+
+        } else {
+          option.find('input[type="checkbox"]').prop("checked", false);
+          option.removeClass('selected');
+        }
+      });
     }
 
     /**
-     * Find selected option
-     * @return {Element}  selected option or first option
+     * Make option as selected and scroll to selected position
+     * @param {jQuery} collection  Select options jQuery element
+     * @param {Element} newOption  element of the new option
      */
-    _findSelectedOption() {
-      let options = this.$el.find('option');
-      let selectedOption = options.filter(function(el) {
-        return $(el).prop('selected');
-      });
+    _activateOption(collection, newOption) {
+      if (newOption) {
+        if (!this.isMultiple) {
+          collection.find('li.selected').removeClass('selected');
+        }
 
-
-      if (selectedOption.length) {
-        return selectedOption;
-      } else {
-        return options.first();
+        let option = $(newOption);
+        option.addClass('selected');
       }
     }
   }
