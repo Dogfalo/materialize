@@ -22,7 +22,7 @@ form p:last-child {
 // Checkbox Styles
 [type="checkbox"] {
   // Text Label Style
-  + span {
+  + span:not(.lever) {
     position: relative;
     padding-left: 35px;
     cursor: pointer;
@@ -34,8 +34,8 @@ form p:last-child {
   }
 
   /* checkbox aspect */
-  + span:before,
-  &:not(.filled-in) + span:after {
+  + span:not(.lever):before,
+  &:not(.filled-in) + span:not(.lever):after {
     content: '';
     position: absolute;
     top: 0;
@@ -49,18 +49,18 @@ form p:last-child {
     transition: .2s;
   }
 
-  &:not(.filled-in) + span:after {
+  &:not(.filled-in) + span:not(.lever):after {
     border: 0;
     transform: scale(0);
   }
 
-  &:not(:checked):disabled + span:before {
+  &:not(:checked):disabled + span:not(.lever):before {
     border: none;
     background-color: $input-disabled-color;
   }
 
   // Focused styles
-  &.tabbed:focus + span:after {
+  &.tabbed:focus + span:not(.lever):after {
     transform: scale(1);
     border: 0;
     border-radius: 50%;
@@ -70,7 +70,7 @@ form p:last-child {
 }
 
 [type="checkbox"]:checked {
-  + span:before {
+  + span:not(.lever):before {
     top: -4px;
     left: -5px;
     width: 12px;
@@ -92,7 +92,7 @@ form p:last-child {
 
 /* Indeterminate checkbox */
 [type="checkbox"]:indeterminate {
-  + span:before {
+  + span:not(.lever):before {
     top: -11px;
     left: -12px;
     width: 10px;
@@ -107,7 +107,7 @@ form p:last-child {
   }
 
   // Disabled indeterminate
-  &:disabled + span:before {
+  &:disabled + span:not(.lever):before {
     border-right: 2px solid $input-disabled-color;
     background-color: transparent;
   }
@@ -116,12 +116,12 @@ form p:last-child {
 // Filled in Style
 [type="checkbox"].filled-in {
   // General
-  + span:after {
+  + span:not(.lever):after {
     border-radius: 2px;
   }
 
-  + span:before,
-  + span:after {
+  + span:not(.lever):before,
+  + span:not(.lever):after {
     content: '';
     left: 0;
     position: absolute;
@@ -131,7 +131,7 @@ form p:last-child {
   }
 
   // Unchecked style
-  &:not(:checked) + span:before {
+  &:not(:checked) + span:not(.lever):before {
     width: 0;
     height: 0;
     border: 3px solid transparent;
@@ -141,7 +141,7 @@ form p:last-child {
     transform-origin: 100% 100%;
   }
 
-  &:not(:checked) + span:after {
+  &:not(:checked) + span:not(.lever):after {
     height: 20px;
     width: 20px;
     background-color: transparent;
@@ -152,7 +152,7 @@ form p:last-child {
 
   // Checked style
   &:checked {
-    + span:before {
+    + span:not(.lever):before {
       top: 0;
       left: 1px;
       width: 8px;
@@ -165,7 +165,7 @@ form p:last-child {
       transform-origin: 100% 100%;
     }
 
-    + span:after {
+    + span:not(.lever):after {
       top: 0;
       width: 20px;
       height: 20px;
@@ -176,34 +176,34 @@ form p:last-child {
   }
 
   // Focused styles
-  &.tabbed:focus + span:after {
+  &.tabbed:focus + span:not(.lever):after {
     border-radius: 2px;
     border-color: $radio-empty-color;
     background-color: rgba(0,0,0,.1);
   }
 
-  &.tabbed:checked:focus + span:after {
+  &.tabbed:checked:focus + span:not(.lever):after {
     border-radius: 2px;
     background-color: $secondary-color;
     border-color: $secondary-color;
   }
 
   // Disabled style
-  &:disabled:not(:checked) + span:before {
+  &:disabled:not(:checked) + span:not(.lever):before {
     background-color: transparent;
     border: 2px solid transparent;
   }
 
-  &:disabled:not(:checked) + span:after {
+  &:disabled:not(:checked) + span:not(.lever):after {
     border-color: transparent;
     background-color: $input-disabled-solid-color;
   }
 
-  &:disabled:checked + span:before {
+  &:disabled:checked + span:not(.lever):before {
     background-color: transparent;
   }
 
-  &:disabled:checked + span:after {
+  &:disabled:checked + span:not(.lever):after {
     background-color: $input-disabled-solid-color;
     border-color: $input-disabled-solid-color;
   }

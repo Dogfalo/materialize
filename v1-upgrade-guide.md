@@ -38,7 +38,7 @@
 ## Forms
 - Added new Helper Text element that should be placed after the `label`
 - Moved validation messages `data-error` and `data-success` to Helper Text
-
+- Changed Checkboxes and Radio buttons to have similar label wrapping as switches
 
 ## Collections
 - Removed dismissible collections

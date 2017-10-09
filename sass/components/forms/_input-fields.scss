@@ -78,9 +78,11 @@ textarea.materialize-textarea {
 
   // Custom Success Message
   &.valid ~ .helper-text:after,
-  &:focus.valid ~ .helper-text:after,
-  &:focus.valid ~ label {
+  &:focus.valid ~ .helper-text:after {
     @extend %custom-success-message;
+  }
+  &:focus.valid ~ label {
+    color: $input-success-color;
   }
 
   // Invalid Input Style
@@ -91,9 +93,11 @@ textarea.materialize-textarea {
 
   // Custom Error message
   &.invalid ~ .helper-text:after,
-  &:focus.invalid ~ .helper-text:after,
-  &:focus.invalid ~ label {
+  &:focus.invalid ~ .helper-text:after {
     @extend %custom-error-message;
+  }
+  &:focus.invalid ~ label {
+    color: $input-error-color;
   }
 
   // Full width label when using validate for error messages
