@@ -637,8 +637,16 @@
         }
       });
 
-      $newSelect.on('blur', function() {
-        if (!multiple) {
+      $newSelect.on('blur', function (e) {
+        var that = this;
+
+        $(this).find(' ~ .dropdown-content span').off('click.dropdown-item');
+        $(this).find(' ~ .dropdown-content span').on('click.dropdown-item', function () {
+          $(that).trigger('close');
+        });
+
+        var container = $(this).find(' ~ .dropdown-content');
+        if (!multiple && !container.is(e.target)) {
           $(this).trigger('close');
         }
         options.find('li.selected').removeClass('selected');
