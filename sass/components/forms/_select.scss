@@ -70,6 +70,9 @@ select {
   position: relative;
 
   input.select-dropdown {
+    &:focus {
+      border-bottom: 1px solid $input-focus-color;
+    }
     position: relative;
     cursor: pointer;
     background-color: transparent;
@@ -137,15 +140,15 @@ select:disabled {
 
 .select-dropdown.dropdown-content {
   li {
-    &.active {
-      background-color: transparent;
-    }
-
     &:hover {
       background-color: $select-option-hover;
     }
 
     &.selected {
+      background-color: $select-option-selected;
+    }
+
+    &:focus {
       background-color: $select-option-focus;
     }
   }

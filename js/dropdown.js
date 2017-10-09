@@ -53,9 +53,17 @@
        */
       this.isOpen = false;
 
+      this.focusedIndex = null;
+      this.filterQuery = [];
+
       // Move dropdown-content after dropdown-trigger
       this.$el.after(this.dropdownEl);
 
+      this._makeDropdownFocusable();
+      this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
+      this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
+      this._handleDropdownKeydownBound = this._handleDropdownKeydown.bind(this);
+      this._handleTriggerKeydownBound = this._handleTriggerKeydown.bind(this);
       this._setupEventHandlers();
     }
 
@@ -92,7 +100,8 @@
      * Setup Event Handlers
      */
     _setupEventHandlers() {
-      this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
+      // Trigger keydown handler
+      this.el.addEventListener('keydown', this._handleTriggerKeydownBound);
 
       // Hover event handlers
       if (this.options.hover) {
@@ -113,6 +122,9 @@
      * Remove Event Handlers
      */
     _removeEventHandlers() {
+      // Trigger keydown handler
+      this.el.removeEventListener('keydown', this._handleTriggerKeydownBound);
+
       if (this.options.hover) {
         this.el.removeEventHandlers('mouseenter', this._handleMouseEnterBound);
         this.el.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
@@ -122,12 +134,24 @@
       }
     }
 
+    _setupTemporaryEventHandlers() {
+      // Use capture phase event handler to prevent click
+      document.body.addEventListener('click', this._handleDocumentClickBound, true);
+      this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydownBound);
+    }
+
+    _removeTemporaryEventHandlers() {
+      // Use capture phase event handler to prevent click
+      document.body.removeEventListener('click', this._handleDocumentClickBound, true);
+      this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydownBound);
+    }
+
     _handleClick(e) {
       e.preventDefault();
       this.open();
     }
 
-    _handleMouseEnter(e) {
+    _handleMouseEnter() {
       this.open();
     }
 
@@ -165,6 +189,77 @@
       }
     }
 
+    _handleTriggerKeydown(e) {
+      console.log(e);
+      // ARROW DOWN OR ENTER WHEN SELECT IS CLOSED - open Dropdown
+      if ((e.which === Materialize.keys.ARROW_DOWN ||
+           e.which === Materialize.keys.ENTER) && !this.isOpen) {
+        console.log('TODO: move to this.el handler');
+        e.preventDefault();
+        this.open();
+      }
+    }
+
+    /**
+     * Handle Dropdown Keydown
+     * @param {Event} e
+     */
+    _handleDropdownKeydown(e) {
+      if (e.which === Materialize.keys.TAB) {
+        e.preventDefault();
+        this.close();
+
+        // Navigate down dropdown list
+      } else if ((e.which === Materialize.keys.ARROW_DOWN ||
+                  e.which === Materialize.keys.ARROW_UP) && this.isOpen) {
+        e.preventDefault();
+        let direction = e.which === Materialize.keys.ARROW_DOWN ? 1 : -1;
+        this.focusedIndex =
+          Math.max(Math.min(this.focusedIndex + direction, this.dropdownEl.children.length - 1), 0);
+        this._focusFocusedItem();
+
+        // ENTER selects choice on focused item
+      } else if (e.which === Materialize.keys.ENTER && this.isOpen) {
+        // Search for <a> and <button>
+        let focusedElement = this.dropdownEl.children[this.focusedIndex];
+        let $activatableElement = $(focusedElement).find('a, button').first();
+
+        // Click a or button tag if exists, otherwise click li tag
+        !!$activatableElement.length ? $activatableElement[0].click() : focusedElement.click();
+
+        // Close dropdown on ESC
+      } else if (e.which === Materialize.keys.ESC && this.isOpen) {
+        e.preventDefault();
+        this.close();
+      }
+
+      // CASE WHEN USER TYPE LETTERS
+      let letter = String.fromCharCode(e.which).toLowerCase(),
+          nonLetters = [9,13,27,38,40];
+      if (letter && (nonLetters.indexOf(e.which) === -1)) {
+        this.filterQuery.push(letter);
+
+        let string = this.filterQuery.join(''),
+            newOptionEl = $(this.dropdownEl).find('li').filter((el) => {
+              return $(el).text().toLowerCase().indexOf(string) === 0;
+            })[0];
+
+        if (newOptionEl) {
+          this.focusedIndex = $(newOptionEl).index();
+          this._focusFocusedItem();
+        }
+      }
+
+      this.filterTimeout = setTimeout(this._resetFilterQueryBound, 1000);
+    }
+
+    /**
+     * Setup dropdown
+     */
+    _resetFilterQuery() {
+      this.filterQuery = [];
+    }
+
     _resetDropdownStyles() {
       this.$dropdownEl.css({
         display: '',
@@ -176,6 +271,18 @@
         transform: '',
         opacity: ''
       });
+    }
+
+    _makeDropdownFocusable() {
+      if (this.dropdownEl.tabIndex === -1) {
+        this.dropdownEl.tabIndex = 0;
+      }
+
+      $(this.dropdownEl).children().attr('tabindex', 0);
+    }
+
+    _focusFocusedItem() {
+      this.dropdownEl.children[this.focusedIndex].focus();
     }
 
     _getDropdownPosition() {
@@ -276,6 +383,8 @@
             queue: false,
             easing: 'easeOutQuint',
             complete: () => {
+              this._focusFocusedItem();
+
               // onOpenEnd callback
               if (typeof(this.options.onOpenEnd) === 'function') {
                 this.options.onOpenEnd.call(this, this.el);
@@ -318,6 +427,11 @@
       }
       this.isOpen = true;
 
+      // Highlight focused item
+      if (this.focusedIndex === null) {
+        this.focusedIndex = 0;
+      }
+
       // onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
         this.options.onOpenStart.call(this, this.el);
@@ -335,9 +449,7 @@
 
       let positionInfo = this._getDropdownPosition();
       this._animateIn(positionInfo);
-
-      // Use capture phase event handler to prevent click
-      document.body.addEventListener('click', this._handleDocumentClickBound, true);
+      this._setupTemporaryEventHandlers();
     }
 
     /**
@@ -355,7 +467,8 @@
       }
 
       this._animateOut();
-      document.body.removeEventListener('click', this._handleDocumentClickBound, true);
+      this._removeTemporaryEventHandlers();
+      this.el.focus();
     }
   }
 

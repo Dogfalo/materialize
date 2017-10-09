@@ -12,21 +12,17 @@
 
 
   li {
-    clear: both;
-    color: $off-black;
-    cursor: pointer;
-    min-height: $dropdown-item-height;
-    line-height: 1.5rem;
-    width: 100%;
-    text-align: left;
-    text-transform: none;
+    /* &:hover, &.active, &.selected { */
+      /* background-color: $dropdown-hover-bg-color; */
+    /* } */
 
-    &:hover, &.active, &.selected {
-      background-color: $dropdown-hover-bg-color;
+    &:focus {
+      outline: none;
+      background-color: darken($dropdown-hover-bg-color, 8%);
     }
 
-    &.active.selected {
-      background-color: darken($dropdown-hover-bg-color, 5%);
+    &.selected {
+      background-color: darken($dropdown-hover-bg-color, 4%);
     }
 
     &.divider {
@@ -56,6 +52,16 @@
       margin: 0 24px 0 0;
       width: 24px;
     }
+
+
+    clear: both;
+    color: $off-black;
+    cursor: pointer;
+    min-height: $dropdown-item-height;
+    line-height: 1.5rem;
+    width: 100%;
+    text-align: left;
+    text-transform: none;
   }
 }
 
