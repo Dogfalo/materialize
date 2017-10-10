@@ -190,11 +190,9 @@
     }
 
     _handleTriggerKeydown(e) {
-      console.log(e);
       // ARROW DOWN OR ENTER WHEN SELECT IS CLOSED - open Dropdown
       if ((e.which === Materialize.keys.ARROW_DOWN ||
            e.which === Materialize.keys.ENTER) && !this.isOpen) {
-        console.log('TODO: move to this.el handler');
         e.preventDefault();
         this.open();
       }

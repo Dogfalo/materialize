@@ -152,6 +152,7 @@
      * Setup dropdown
      */
     _setupDropdown() {
+      console.log('hi');
       this.wrapper = document.createElement('div');
       this.wrapper.classList.add('select-wrapper');
       this.$el.before($(this.wrapper));
@@ -207,6 +208,7 @@
       this.input.setAttribute('type', 'text');
       this.input.setAttribute('readonly', 'true');
       this.input.setAttribute('data-target', this.dropdownOptions.id);
+      console.log('id  ', this.dropdownOptions.id);
       if (this.el.disabled) {
         $(this.input).prop('disabled', 'true');
       }
