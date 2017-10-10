@@ -20,12 +20,12 @@ describe("Select Plugin", function () {
       expect(normalInput).toBeVisible('Should be visible before dropdown is opened.');
       expect(normalDropdown).toBeHidden('Should be hidden before dropdown is opened.');
 
-      normalInput.click();
+      click(normalInput[0]);
 
       setTimeout(function() {
         expect(normalDropdown).toBeVisible('Should be visible after opening.');
         var firstOption = normalDropdown.find('li:not(.disabled)').first();
-        firstOption.click();
+        click(firstOption[0]);
         normalInput.blur();
 
         setTimeout(function() {
@@ -61,20 +61,20 @@ describe("Select Plugin", function () {
       expect(multipleInput).toBeVisible('Should be visible before dropdown is opened.');
       expect(multipleDropdown).toBeHidden('Should be hidden before dropdown is opened.');
 
-      multipleInput.click();
+      click(multipleInput[0]);
 
       setTimeout(function() {
         expect(multipleDropdown).toBeVisible('Should be visible after opening.');
         var firstOption = multipleDropdown.find('li:not(.disabled)').first();
         var secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
         var thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
-        firstOption.click();
-        $('body').click();
+        click(firstOption[0]);
+        click(document.body);
 
         setTimeout(function() {
           expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');
           expect(browserSelect.val()).toEqual(['1', '2', '3'], 'Actual select should have correct selected values.');
-          expect(multipleInput.val()).toEqual(secondOption.text() + ', ' + thirdOption.text() + ', ' + firstOption.text(), 'Value should equal chosen multiple options.');
+          expect(multipleInput.val()).toEqual(firstOption.text() + ', ' + secondOption.text() + ', ' + thirdOption.text(), 'Value should equal chosen multiple options.');
           done();
         }, 400);
       }, 400);
@@ -89,16 +89,18 @@ describe("Select Plugin", function () {
       expect(multipleInput).toBeVisible('Should be hidden before dropdown is opened.');
       expect(multipleDropdown).toBeHidden('Should be hidden before dropdown is opened.');
 
-      multipleInput.click();
+      click(multipleInput[0]);
 
       setTimeout(function() {
         expect(multipleDropdown).toBeVisible('Should be visible after opening.');
         var disabledOption = multipleDropdown.find('li.disabled');
         var secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
         var thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
-        secondOption.click();
-        thirdOption.click();
-        $('body').click();
+
+        click(secondOption[0]);
+        click(thirdOption[0]);
+        click(document.body);
+
 
         setTimeout(function() {
           expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');

@@ -326,13 +326,15 @@
      * Set selected state of dropdown too match actual select element
      */
     _setSelectedStates() {
-      let $onlyOptions = $(this.dropdownOptions).find('li:not(.optgroup):not(.disabled)');
-      this.$el.find('option').not(':disabled').each((el, i) => {
+      this.valuesSelected = [];
+      let $onlyOptions = $(this.dropdownOptions).find('li:not(.optgroup)');
+      this.$el.find('option').each((el, i) => {
         let option = $onlyOptions.eq(i);
 
         if ($(el).prop('selected')) {
           option.find('input[type="checkbox"]').prop("checked", true);
           this._activateOption($(this.dropdownOptions), option);
+          this.valuesSelected.push(i);
 
         } else {
           option.find('input[type="checkbox"]').prop("checked", false);
