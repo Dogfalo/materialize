@@ -77,9 +77,11 @@
      */
     destroy() {
       ScrollSpy._elements.splice(ScrollSpy._elements.indexOf(this), 1);
+      ScrollSpy._elementsInView.splice(ScrollSpy._elementsInView.indexOf(this), 1);
+      ScrollSpy._visibleElements.splice(ScrollSpy._visibleElements.indexOf(this.$el), 1);
       ScrollSpy._count--;
       this._removeEventHandlers();
-      this._removeDropdown();
+      $(this.options.getActiveElement(this.$el.attr('id'))).removeClass(this.options.activeClass);
       this.el.M_ScrollSpy = undefined;
     }
 
