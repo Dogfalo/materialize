@@ -390,12 +390,6 @@
     }
   }
 
-  /**
-   * @static
-   * @memberof Materialbox
-   */
-  Materialbox._count = 0;
-
   Materialize.Materialbox = Materialbox;
 
   jQuery.fn.materialbox = function(methodOrOptions) {
