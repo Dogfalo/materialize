@@ -12,17 +12,13 @@
 
 
   li {
-    /* &:hover, &.active, &.selected { */
-      /* background-color: $dropdown-hover-bg-color; */
-    /* } */
+    &:hover, &.active {
+      background-color: $dropdown-hover-bg-color;
+    }
 
     &:focus {
       outline: none;
       background-color: darken($dropdown-hover-bg-color, 8%);
-    }
-
-    &.selected {
-      background-color: darken($dropdown-hover-bg-color, 4%);
     }
 
     &.divider {
