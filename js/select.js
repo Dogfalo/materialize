@@ -80,14 +80,12 @@
       this._handleSelectChangeBound = this._handleSelectChange.bind(this);
       this._handleOptionClickBound = this._handleOptionClick.bind(this);
       this._handleInputClickBound = this._handleInputClick.bind(this);
-      // this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
 
       $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
         el.addEventListener('click', this._handleOptionClickBound);
       });
       this.el.addEventListener('change', this._handleSelectChangeBound);
       this.input.addEventListener('click', this._handleInputClickBound);
-      // this.input.addEventListener('keydown', this._handleInputKeydownBound);
     }
 
     /**
@@ -100,7 +98,6 @@
       this.el.removeEventListener('change', this._handleSelectChangeBound);
       this.input.removeEventListener('click', this._handleInputClickBound);
       this.input.removeEventListener('focus', this._handleInputFocusBound);
-      // this.input.removeEventListener('keydown', this._handleInputKeydownBound);
     }
 
     /**
@@ -150,35 +147,6 @@
         this._setSelectedStates();
       }
     }
-
-    /**
-     * Handle Input Keydown
-     * @param {Event} e
-     */
-    _handleInputKeydown(e) {
-      e.preventDefault();
-
-
-
-      // ENTER - select option and close when select options are opened
-      // if (e.which === 13) {
-        // let activeOption = $(this.dropdownOptions).find('li.selected:not(.disabled)')[0];
-        // if (activeOption) {
-          // $(activeOption).trigger('click');
-        // }
-      // }
-
-      // ESC - close options
-      // if (e.which === 27) {
-        // this.dropdown.close();
-      // }
-
-      // reset filter query
-
-    }
-
-
-
 
     /**
      * Setup dropdown
@@ -387,12 +355,6 @@
       }
     }
   }
-
-  /**
-   * @static
-   * @memberof Select
-   */
-  Select._keydown = false;
 
   Materialize.Select = Select;
 
