@@ -157,7 +157,6 @@ module.exports = function(grunt) {
         src: [
           "js/initial.js",
           "js/cash.js",
-          "js/jquery.easing.1.4.js",
           "js/animation.js",
           "js/velocity.min.js",
           "js/global.js",
@@ -201,7 +200,6 @@ module.exports = function(grunt) {
         src: [
           "js/initial.js",
           "js/cash.js",
-          "js/jquery.easing.1.4.js",
           "js/animation.js",
           "js/velocity.min.js",
           "js/global.js",
@@ -289,7 +287,6 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
             "initial.js",
-            "jquery.easing.1.4.js",
             "animation.js",
             "velocity.min.js",
             "global.js",
