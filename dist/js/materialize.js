@@ -9676,22 +9676,22 @@ if (Vel) {
                 scroll(offset + delta);
               }
             } else if (dragged) {
-              // If dragging don't allow vertical scroll.
-              e.preventDefault();
-              e.stopPropagation();
-              return false;
+              // // If dragging don't allow vertical scroll.
+              // e.preventDefault();
+              // e.stopPropagation();
+              // return false;
             } else {
               // Vertical scrolling.
               vertical_dragged = true;
             }
           }
 
-          if (dragged) {
-            // If dragging don't allow vertical scroll.
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-          }
+          // if (dragged) {
+          //   // If dragging don't allow vertical scroll.
+          //   e.preventDefault();
+          //   e.stopPropagation();
+          //   return false;
+          // }
         }
 
         function release(e) {
@@ -9721,11 +9721,11 @@ if (Vel) {
           timestamp = Date.now();
           requestAnimationFrame(autoScroll);
 
-          if (dragged) {
-            e.preventDefault();
-            e.stopPropagation();
-          }
-          return false;
+          // if (dragged) {
+          //   e.preventDefault();
+          //   e.stopPropagation();
+          // }
+          return;
         }
 
         xform = 'transform';
