@@ -9676,7 +9676,11 @@ if (Vel) {
                 scroll(offset + delta);
               }
             } else if (dragged) {
+<<<<<<< HEAD
               // // If dragging don't allow vertical scroll.
+=======
+              // If dragging don't allow vertical scroll.
+>>>>>>> Fixed a bug wherein the links inside the mobile carousel would not work
               // e.preventDefault();
               // e.stopPropagation();
               // return false;
