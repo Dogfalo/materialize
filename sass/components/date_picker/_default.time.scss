@@ -1,4 +1,20 @@
+.timepicker-container.modal-content {
+  display: flex;
+  padding: 0;
+}
 
+.timepicker-time-container {
+  flex: 2;
+}
+
+.timepicker-time-display {
+  flex: 1;
+  text-align: left;
+  background-color: #26a69a;
+  color: #fff;
+  padding: 18px;
+  font-weight: 300;
+}
 
 /* ==========================================================================
    $BASE-TIME-PICKER

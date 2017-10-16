@@ -44,7 +44,7 @@
       this._setupEventHandlers();
       this._setupVariables();
       this._clockSetup();
-      // this._pickerSetup();
+      this._pickerSetup();
     }
 
     static get defaults() {
@@ -144,6 +144,19 @@
 		  this.amOrPm = 'PM';
     }
 
+    _pickerSetup() {
+      $('<button type="button" class="btn-flat picker__clear" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>').appendTo(this.footer);
+      // .click($.proxy(this.clear, this)).appendTo(this.footer);
+		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>').appendTo(this.footer);
+      // .click($.proxy(this.hide, this)).appendTo(this.footer);
+		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>').appendTo(this.footer);
+      // .click($.proxy(this.done, this)).appendTo(this.footer);
+
+		  $(this.spanHours).on('click', this.showView.bind(this, 'hours'));
+		  $(this.spanMinutes).on('click', this.showView.bind(this, 'minutes'));
+    }
+
+
     _clockSetup() {
       if (this.options.twelvehour) {
         this.$amBtn = $('<div class="am-btn">AM</div>');
@@ -206,7 +219,7 @@
 					  top: this.options.dialRadius - Math.cos(radian) * radius - this.options.tickRadius + 'px'
 				  });
 				  tick.html(i === 0 ? '00' : i);
-				  $(this.hoursView).append(tick[0]);
+				  this.hoursView.appendChild(tick[0]);
 				  // tick.on(mousedownEvent, mousedown);
 			  }
 		  } else {
@@ -220,7 +233,7 @@
 					  top: this.options.dialRadius - Math.cos(radian) * radius - this.options.tickRadius + 'px'
 				  });
 				  tick.html(i === 0 ? '00' : i);
-				  this.hoursView.append(tick[0]);
+				  this.hoursView.appendChild(tick[0]);
 				  // tick.on(mousedownEvent, mousedown);
 			  }
 		  }
@@ -237,7 +250,7 @@
 				  top: this.options.dialRadius - Math.cos(radian) * this.options.outerRadius - this.options.tickRadius + 'px'
 			  });
 			  tick.html(Timepicker._addLeadingZero(i));
-			  $(this.minutesView).append(tick[0]);
+			  this.minutesView.appendChild(tick[0]);
 			  // tick.on(mousedownEvent, mousedown);
 		  }
 
@@ -251,7 +264,7 @@
 
     _handleAmPmClick(e) {
       let $btnClicked = $(e.target);
-      this.amOrPm = $btnClicked.hasClass('.am-btn') ? 'AM' : 'PM';
+      this.amOrPm = $btnClicked.hasClass('am-btn') ? 'AM' : 'PM';
       this._updateAmPmView();
     }
 
@@ -292,7 +305,7 @@
     showView(view, delay) {
       var raiseAfterHourSelect = false;
 		  if (view === 'minutes' && $(this.hoursView).css("visibility") === "visible") {
-			  raiseCallback(this.options.beforeHourSelect);
+			  // raiseCallback(this.options.beforeHourSelect);
 			  raiseAfterHourSelect = true;
 		  }
 		  var isHours = view === 'hours',
@@ -331,9 +344,9 @@
 				  self = this;
 
 		  if (delay) {
-			  self.canvas.addClass('clockpicker-canvas-out');
+			  $(this.canvas).addClass('clockpicker-canvas-out');
 			  setTimeout(function(){
-				  self.canvas.removeClass('clockpicker-canvas-out');
+				  $(self.canvas).removeClass('clockpicker-canvas-out');
 				  self.setHand(x, y);
 			  }, delay);
 		  } else {
@@ -440,20 +453,11 @@
       this.modal.close();
     }
 
-    _pickerSetup() {
-      // $('<button type="button" class="btn-flat picker__clear" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>').click($.proxy(this.clear, this)).appendTo(this.footer);
-		  // $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>').click($.proxy(this.hide, this)).appendTo(this.footer);
-		  // $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>').click($.proxy(this.done, this)).appendTo(this.footer);
-
-		  // this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
-		  // this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
-    }
-
   }
 
   Timepicker._template = [
 		'<div class= "modal">',
-			'<div class="modal-content">',
+			'<div class="modal-content timepicker-container">',
 				'<div class="timepicker-time-display">',
 					'<div class="clockpicker-display">',
 						'<div class="clockpicker-display-column">',
