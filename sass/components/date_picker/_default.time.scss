@@ -1,3 +1,5 @@
+
+
 /* ==========================================================================
    $BASE-TIME-PICKER
    ========================================================================== */
@@ -200,7 +202,7 @@
 .clockpicker-minutes {
 	visibility: hidden;
 }
-.clockpicker-tick {
+.timepicker-tick {
 	border-radius: 50%;
 	color: $timepicker-clock-color;
 	line-height: 40px;
@@ -210,8 +212,8 @@
 	position: absolute;
 	cursor: pointer;
 }
-.clockpicker-tick.active,
-.clockpicker-tick:hover {
+.timepicker-tick.active,
+.timepicker-tick:hover {
 	background-color: transparentize($secondary-color, .75);
 }
 .clockpicker-dial {
