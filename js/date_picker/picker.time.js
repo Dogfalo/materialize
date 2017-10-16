@@ -116,7 +116,11 @@
     }
 
     _setupModal() {
-      this.modal = new Materialize.Modal(this.modalEl);
+      this.modal = new Materialize.Modal(this.modalEl, {
+        complete: () => {
+          this.isOpen = false;
+        }
+      });
     }
 
     _setupVariables() {
