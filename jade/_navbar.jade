@@ -3,7 +3,9 @@ header
     nav.top-nav
       .container
         .nav-wrapper
-          a.page-title #{page}
+          .row
+            .col.s12.m10.offset-m1
+              h1.header #{page}
   .container
     a.button-collapse.top-nav.sidenav-trigger(href='#', data-target='nav-mobile', class=(no_nav == false ? "full hide-on-large-only" : "" + "waves-effect waves-light circle hide-on-large-only"))
       i.material-icons menu
@@ -12,8 +14,8 @@ header
       a#logo-container.brand-logo(href='/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
     li(class="search")
-      div.search-wrapper.card
-        input(id="search")
+      div.search-wrapper
+        input(id="search", placeholder="Search")
         i.material-icons search
         div.search-results
     li.bold(class=(page == "About" ? "active" : ""))
