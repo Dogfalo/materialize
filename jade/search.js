@@ -194,12 +194,6 @@
     });
 
     window.index.add({
-      href: 'http://materializecss.com/scrollfire.html',
-      title: 'scrollFire',
-      body: 'ScrollFire is a jQuery Plugin that executes callback functions depending on how far into the page you"ve scrolled.'
-    });
-
-    window.index.add({
       href: 'http://materializecss.com/scrollspy.html',
       title: 'scrollspy',
       body: 'Scrollspy is a jQuery plugin that tracks certain elements and which element the users screen is currently centered on.'
