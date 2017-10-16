@@ -40,5 +40,14 @@
 - Moved validation messages `data-error` and `data-success` to Helper Text
 - Changed Checkboxes and Radio buttons to have similar label wrapping as switches
 
+
 ## Collections
 - Removed dismissible collections
+
+
+## ScrollFire
+- Removed due to simplicity and overlap. There are much better scrolling libraries that people should use
+
+
+## Transitions
+- JavaScript transitions removed

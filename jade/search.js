@@ -236,12 +236,6 @@
     });
 
     window.index.add({
-      href: 'http://materializecss.com/transitions.html',
-      title: 'transitions animation',
-      body: 'Weve made some custom animation functions that will transition your content.'
-    });
-
-    window.index.add({
       href: 'http://materializecss.com/typography.html',
       title: 'Typography',
       body: 'font, headers, blockquotes, flow text.'
