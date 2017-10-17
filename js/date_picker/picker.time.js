@@ -108,12 +108,12 @@
     _setupEventHandlers() {
       this._handleInputClickBound = this._handleInputClick.bind(this);
       // this._handleInputFocusBound = this._handleInputFocus.bind(this);
-      this.el.addEventListener('click', this._handleInputClickBound);
-      // this.el.addEventListener('focus', this._handleInputFocusBound);
       this._handleClockClickStartBound = this._handleClockClickStart.bind(this);
       this._handleDocumentClickMoveBound = this._handleDocumentClickMove.bind(this);
       this._handleDocumentClickEndBound = this._handleDocumentClickEnd.bind(this);
 
+      this.el.addEventListener('click', this._handleInputClickBound);
+      // this.el.addEventListener('focus', this._handleInputFocusBound);
       this.plate.addEventListener('mousedown', this._handleClockClickStartBound);
       this.plate.addEventListener('touchstart', this._handleClockClickStartBound);
 
@@ -128,7 +128,7 @@
     _handleClockClickStart(e, space) {
       let clockPlateBR = this.plate.getBoundingClientRect();
 	    let offset = {x: clockPlateBR.left, y: clockPlateBR.top};
-      this.space = space;
+      // this.space = space;
 
       this.x0 = offset.x + this.options.dialRadius;
 			this.y0 = offset.y + this.options.dialRadius;
@@ -177,30 +177,25 @@
     }
 
     _handleDocumentClickEnd(e) {
-      console.log(e);
       document.removeEventListener('mouseup', this._handleDocumentClickEndBound);
       document.removeEventListener('touchend', this._handleDocumentClickEndBound);
 			e.preventDefault();
 			let clickPos = Timepicker._Pos(e);
 			let x = clickPos.x - this.x0;
 			let y = clickPos.y - this.y0;
-			if ((this.space || this.moved) && x === this.dx && y === this.dy) {
+			if ((this.moved) && x === this.dx && y === this.dy) {
 				this.setHand(x, y);
       }
 
 			if (this.currentView === 'hours') {
 				this.showView('minutes', this.options.duration / 2);
+
       } else if (this.options.autoclose) {
 				this.minutesView.addClass('clockpicker-dial-out');
 				setTimeout(function(){
 					this.done();
 				}, this.options.duration / 2);
       }
-			// this.plate.prepend(canvas);
-
-			// Reset cursor style of body
-			// clearTimeout(movingTimer);
-			// self.popover.removeClass('clockpicker-moving');
 
 			// Unbind mousemove event
 			document.removeEventListener('mousemove', this._handleDocumentClickMoveBound);
@@ -208,7 +203,7 @@
     }
 
     // _handleInputFocus() {
-    //   this.modal.open()
+      // this.modal.open();
     // }
 
     _insertHTMLIntoDOM() {
@@ -222,7 +217,7 @@
         this.$modalEl.appendTo(containerEl);
 
       } else {
-        this.$modalEl.insertAfter(this.el);
+        this.$modalEl.insertBefore(this.el);
       }
     }
 
@@ -236,8 +231,6 @@
 
     _setupVariables() {
 		  this.currentView = 'hours';
-		  // this.isInput = isInput;
-		  // this.label = label;
       this.vibrate = navigator.vibrate ? 'vibrate' : navigator.webkitVibrate ? 'webkitVibrate' : null;
 
       this._canvas = this.modalEl.querySelector('.clockpicker-canvas');
@@ -245,7 +238,6 @@
 
 		  this.hoursView = this.modalEl.querySelector('.clockpicker-hours');
 		  this.minutesView = this.modalEl.querySelector('.clockpicker-minutes');
-		  // this.amPmBlock = amPmBlock;
 		  this.spanHours = this.modalEl.querySelector('.clockpicker-span-hours');
 		  this.spanMinutes = this.modalEl.querySelector('.clockpicker-span-minutes');
 		  this.spanAmPm = this.modalEl.querySelector('.clockpicker-span-am-pm');
@@ -254,27 +246,26 @@
     }
 
     _pickerSetup() {
-      $('<button type="button" class="btn-flat picker__clear" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>').appendTo(this.footer);
-      // .click($.proxy(this.clear, this)).appendTo(this.footer);
-		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>').appendTo(this.footer);
-      // .click($.proxy(this.hide, this)).appendTo(this.footer);
-		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>').appendTo(this.footer);
-      // .click($.proxy(this.done, this)).appendTo(this.footer);
+      $('<button type="button" class="btn-flat picker__clear" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
+        .appendTo(this.footer).on('click', this.clear.bind(this));
+		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
+        .appendTo(this.footer).on('click', this.close.bind(this));
+		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
+        .appendTo(this.footer).on('click', this.done.bind(this));
     }
 
 
     _clockSetup() {
       if (this.options.twelvehour) {
         this.$amBtn = $('<div class="am-btn">AM</div>');
-				this.$amBtn.on('click', this._handleAmPmClick.bind(this)).appendTo(this.spanAmPm);
         this.$pmBtn = $('<div class="pm-btn">PM</div>');
+        this.$amBtn.on('click', this._handleAmPmClick.bind(this)).appendTo(this.spanAmPm);
 				this.$pmBtn.on('click', this._handleAmPmClick.bind(this)).appendTo(this.spanAmPm);
 		  }
 
       this._buildHoursView();
       this._buildMinutesView();
       this._buildSVGClock();
-
     }
 
     _buildSVGClock() {
@@ -559,6 +550,34 @@
       this.modal.close();
     }
 
+    /**
+     * Finish timepicker selection.
+     */
+    done(e, clearValue) {
+      // Set input value
+		  let last = this.el.value;
+		  let value = clearValue ? '' : Timepicker._addLeadingZero(this.hours) + ':' +
+          Timepicker._addLeadingZero(this.minutes);
+		  if (!clearValue && this.options.twelvehour) {
+			  value = `${value} ${this.amOrPm}`;
+      }
+		  this.el.value = value;
+
+      // Trigger change event
+		  if (value !== last) {
+			  this.$el.trigger('change');
+		  }
+
+      this.close();
+      this.el.focus();
+
+		  if (this.options.autoclose)
+			  this.input.trigger('blur');
+    }
+
+    clear() {
+      this.done(null, true);
+    }
   }
 
   Timepicker._template = [
