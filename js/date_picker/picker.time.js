@@ -14,7 +14,6 @@
 		cleartext: 'Clear',
 		canceltext: 'Cancel',
 		autoclose: false,      // auto close when minute is selected
-		darktheme: false,			 // set to dark theme
 		twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
 		vibrate: true          // vibrate the device when dragging clock hand
   };
@@ -41,8 +40,9 @@
 
       this._insertHTMLIntoDOM();
       this._setupModal();
-      this._setupEventHandlers();
       this._setupVariables();
+      this._setupEventHandlers();
+
       this._clockSetup();
       this._pickerSetup();
     }
@@ -68,6 +68,26 @@
       return document.createElementNS(svgNS, name);
     }
 
+
+    /**
+     * @typedef {Object} Point
+     * @property {number} x The X Coordinate
+     * @property {number} y The Y Coordinate
+     */
+
+    /**
+     * Get x position of mouse or touch event
+     * @param {Event} e
+     * @return {Point} x and y location
+     */
+    static _Pos(e) {
+      if (e.targetTouches && (e.targetTouches.length >= 1)) {
+        return {x: e.targetTouches[0].clientX, y: e.targetTouches[0].clientY};
+      }
+      // mouse event
+      return {x: e.clientX, y: e.clientY};
+    }
+
     /**
      * Get Instance
      */
@@ -90,10 +110,101 @@
       // this._handleInputFocusBound = this._handleInputFocus.bind(this);
       this.el.addEventListener('click', this._handleInputClickBound);
       // this.el.addEventListener('focus', this._handleInputFocusBound);
+      this._handleClockClickStartBound = this._handleClockClickStart.bind(this);
+      this._handleDocumentClickMoveBound = this._handleDocumentClickMove.bind(this);
+      this._handleDocumentClickEndBound = this._handleDocumentClickEnd.bind(this);
+
+      this.plate.addEventListener('mousedown', this._handleClockClickStartBound);
+      this.plate.addEventListener('touchstart', this._handleClockClickStartBound);
+
+      $(this.spanHours).on('click', this.showView.bind(this, 'hours'));
+		  $(this.spanMinutes).on('click', this.showView.bind(this, 'minutes'));
     }
 
     _handleInputClick() {
       this.open();
+    }
+
+    _handleClockClickStart(e, space) {
+      let clockPlateBR = this.plate.getBoundingClientRect();
+	    let offset = {x: clockPlateBR.left, y: clockPlateBR.top};
+      this.space = space;
+
+      this.x0 = offset.x + this.options.dialRadius;
+			this.y0 = offset.y + this.options.dialRadius;
+      this.moved = false;
+      let clickPos = Timepicker._Pos(e);
+			this.dx = clickPos.x - this.x0;
+      this.dy = clickPos.y - this.y0;
+		  let z = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
+
+
+			// When clicking on minutes view space, check the mouse position
+			// if (space && (z < outerRadius - tickRadius || z > outerRadius + tickRadius)) {
+				// return;
+      // }
+			e.preventDefault();
+
+			// Set cursor style of body after 200ms
+			// let movingTimer = setTimeout(function(){
+				// self.popover.addClass('clockpicker-moving');
+			// }, 200);
+
+			// Clock
+			// this.setHand(dx, dy, !space, true);
+      this.setHand(this.dx, this.dy, false);
+
+			// Mousemove on document
+      document.addEventListener('mousemove', this._handleDocumentClickMoveBound);
+      document.addEventListener('touchmove', this._handleDocumentClickMoveBound);
+
+			// Mouseup on document
+      document.addEventListener('mouseup', this._handleDocumentClickEndBound);
+      document.addEventListener('touchend', this._handleDocumentClickEndBound);
+    }
+
+    _handleDocumentClickMove(e) {
+      e.preventDefault();
+			let clickPos = Timepicker._Pos(e);
+			let x = clickPos.x - this.x0;
+			let y = clickPos.y - this.y0;
+			if (!this.moved && x === this.dx && y === this.dy) {
+				// Clicking in chrome on windows will trigger a mousemove event
+				return;
+      }
+			this.moved = true;
+			this.setHand(x, y, false, true);
+    }
+
+    _handleDocumentClickEnd(e) {
+      console.log(e);
+      document.removeEventListener('mouseup', this._handleDocumentClickEndBound);
+      document.removeEventListener('touchend', this._handleDocumentClickEndBound);
+			e.preventDefault();
+			let clickPos = Timepicker._Pos(e);
+			let x = clickPos.x - this.x0;
+			let y = clickPos.y - this.y0;
+			if ((this.space || this.moved) && x === this.dx && y === this.dy) {
+				this.setHand(x, y);
+      }
+
+			if (this.currentView === 'hours') {
+				this.showView('minutes', this.options.duration / 2);
+      } else if (this.options.autoclose) {
+				this.minutesView.addClass('clockpicker-dial-out');
+				setTimeout(function(){
+					this.done();
+				}, this.options.duration / 2);
+      }
+			// this.plate.prepend(canvas);
+
+			// Reset cursor style of body
+			// clearTimeout(movingTimer);
+			// self.popover.removeClass('clockpicker-moving');
+
+			// Unbind mousemove event
+			document.removeEventListener('mousemove', this._handleDocumentClickMoveBound);
+      document.removeEventListener('touchmove', this._handleDocumentClickMoveBound);
     }
 
     // _handleInputFocus() {
@@ -106,7 +217,7 @@
       this.modalEl.id = 'modal-' + this.id;
 
       // Append popover to input by default
-      var containerEl = document.querySelector(this.options.container);
+      let containerEl = document.querySelector(this.options.container);
       if (this.options.container && !!containerEl) {
         this.$modalEl.appendTo(containerEl);
 
@@ -124,19 +235,13 @@
     }
 
     _setupVariables() {
-
-		  // this.element = element;
-		  // this.holder = holder;
-		  // this.options = options;
-		  // this.isAppended = false;
-		  // this.isShown = false;
 		  this.currentView = 'hours';
 		  // this.isInput = isInput;
 		  // this.label = label;
       this.vibrate = navigator.vibrate ? 'vibrate' : navigator.webkitVibrate ? 'webkitVibrate' : null;
 
       this._canvas = this.modalEl.querySelector('.clockpicker-canvas');
-		  // this.plate = plate;
+		  this.plate = this.modalEl.querySelector('.clockpicker-plate');
 
 		  this.hoursView = this.modalEl.querySelector('.clockpicker-hours');
 		  this.minutesView = this.modalEl.querySelector('.clockpicker-minutes');
@@ -155,9 +260,6 @@
       // .click($.proxy(this.hide, this)).appendTo(this.footer);
 		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>').appendTo(this.footer);
       // .click($.proxy(this.done, this)).appendTo(this.footer);
-
-		  $(this.spanHours).on('click', this.showView.bind(this, 'hours'));
-		  $(this.spanMinutes).on('click', this.showView.bind(this, 'minutes'));
     }
 
 
@@ -230,7 +332,7 @@
 			  for (let i = 0; i < 24; i += 1) {
 				  let tick = $tick.clone();
 				  let radian = i / 6 * Math.PI;
-				  var inner = i > 0 && i < 13;
+				  let inner = i > 0 && i < 13;
 				  let radius = inner ? this.options.innerRadius : this.options.outerRadius;
 				  tick.css({
 					  left: this.options.dialRadius + Math.sin(radian) * radius - this.options.tickRadius + 'px',
@@ -307,12 +409,12 @@
     }
 
     showView(view, delay) {
-      var raiseAfterHourSelect = false;
+      let raiseAfterHourSelect = false;
 		  if (view === 'minutes' && $(this.hoursView).css("visibility") === "visible") {
 			  // raiseCallback(this.options.beforeHourSelect);
 			  raiseAfterHourSelect = true;
 		  }
-		  var isHours = view === 'hours',
+		  let isHours = view === 'hours',
 				  nextView = isHours ? this.hoursView : this.minutesView,
 				  hideView = isHours ? this.minutesView : this.hoursView;
 		  this.currentView = view;
@@ -320,7 +422,7 @@
 		  $(this.spanHours).toggleClass('text-primary', isHours);
 		  $(this.spanMinutes).toggleClass('text-primary', !isHours);
 
-		  // Let's make transitions
+		  // Transition view
 		  hideView.classList.add('clockpicker-dial-out');
 		  $(nextView).css('visibility', 'visible')
           .removeClass('clockpicker-dial-out');
@@ -358,7 +460,7 @@
         }
     }
 
-    setHand(x, y, roundBy5, dragging) {
+    setHand(x, y, roundBy5) {
 		let radian = Math.atan2(x, - y),
 				isHours = this.currentView === 'hours',
 				unit = Math.PI / (isHours || roundBy5? 6 : 30),
@@ -426,7 +528,7 @@
     }
 
 		// Set clock hand and others' position
-		var cx1 = Math.sin(radian) * (radius - this.options.tickRadius),
+		let cx1 = Math.sin(radian) * (radius - this.options.tickRadius),
 			  cy1 = - Math.cos(radian) * (radius - this.options.tickRadius),
 		    cx2 = Math.sin(radian) * radius,
 			  cy2 = - Math.cos(radian) * radius;
