@@ -452,81 +452,84 @@
     }
 
     setHand(x, y, roundBy5) {
-		let radian = Math.atan2(x, - y),
-				isHours = this.currentView === 'hours',
-				unit = Math.PI / (isHours || roundBy5? 6 : 30),
-				z = Math.sqrt(x * x + y * y),
-				inner = isHours && z < (this.options.outerRadius + this.options.innerRadius) / 2,
-				radius = inner ? this.options.innerRadius : this.options.outerRadius;
+		  let radian = Math.atan2(x, - y),
+			isHours = this.currentView === 'hours',
+			unit = Math.PI / (isHours || roundBy5? 6 : 30),
+			z = Math.sqrt(x * x + y * y),
+			inner = isHours && z < (this.options.outerRadius + this.options.innerRadius) / 2,
+			radius = inner ? this.options.innerRadius : this.options.outerRadius;
 
-		if (this.options.twelvehour) {
-			radius = this.options.outerRadius;
-    }
-
-		// Radian should in range [0, 2PI]
-		if (radian < 0) {
-			radian = Math.PI * 2 + radian;
-    }
-
-		// Get the round value
-		let value = Math.round(radian / unit);
-
-		// Get the round radian
-		radian = value * unit;
-
-		// Correct the hours or minutes
-		if (this.options.twelvehour) {
-			if (isHours) {
-				if (value === 0)
-					value = 12;
-			} else {
-				if (roundBy5)
-					value *= 5;
-				if (value === 60)
-					value = 0;
-			}
-		} else {
-			if (isHours) {
-				if (value === 12)
-					value = 0;
-				value = inner ? (value === 0 ? 12 : value) : value === 0 ? 0 : value + 12;
-			} else {
-				if (roundBy5)
-					value *= 5;
-				if (value === 60)
-					value = 0;
-			}
-		}
-
-		// Once hours or minutes changed, vibrate the device
-		if (this[this.currentView] !== value) {
-			if (this.vibrate && this.options.vibrate) {
-				// Do not vibrate too frequently
-				if (!this.vibrateTimer) {
-					navigator[this.vibrate](10);
-					this.vibrateTimer = setTimeout(() => {
-						this.vibrateTimer = null;
-					}, 100);
-				}
+		  if (this.options.twelvehour) {
+			  radius = this.options.outerRadius;
       }
-    }
 
-		this[this.currentView] = value;
-    if (isHours) {
-      this['spanHours'].innerHTML = value;
-    } else {
-      this['spanMinutes'].innerHTML = Timepicker._addLeadingZero(value);
-    }
+		  // Radian should in range [0, 2PI]
+		  if (radian < 0) {
+			  radian = Math.PI * 2 + radian;
+      }
 
-		// Set clock hand and others' position
-		let cx1 = Math.sin(radian) * (radius - this.options.tickRadius),
-			  cy1 = - Math.cos(radian) * (radius - this.options.tickRadius),
-		    cx2 = Math.sin(radian) * radius,
-			  cy2 = - Math.cos(radian) * radius;
-		this.hand.setAttribute('x2', cx1);
-		this.hand.setAttribute('y2', cy1);
-		this.bg.setAttribute('cx', cx2);
-		this.bg.setAttribute('cy', cy2);
+		  // Get the round value
+		  let value = Math.round(radian / unit);
+
+		  // Get the round radian
+		  radian = value * unit;
+
+		  // Correct the hours or minutes
+		  if (this.options.twelvehour) {
+			  if (isHours) {
+				  if (value === 0)
+					  value = 12;
+			  } else {
+				  if (roundBy5)
+					  value *= 5;
+				  if (value === 60)
+					  value = 0;
+			  }
+		  } else {
+			  if (isHours) {
+				  if (value === 12) {
+					  value = 0;
+          }
+				  value = inner ? (value === 0 ? 12 : value) : value === 0 ? 0 : value + 12;
+			  } else {
+				  if (roundBy5) {
+					  value *= 5;
+          }
+				  if (value === 60) {
+					  value = 0;
+          }
+			  }
+		  }
+
+		  // Once hours or minutes changed, vibrate the device
+		  if (this[this.currentView] !== value) {
+			  if (this.vibrate && this.options.vibrate) {
+				  // Do not vibrate too frequently
+				  if (!this.vibrateTimer) {
+					  navigator[this.vibrate](10);
+					  this.vibrateTimer = setTimeout(() => {
+						  this.vibrateTimer = null;
+					  }, 100);
+				  }
+        }
+      }
+
+		  this[this.currentView] = value;
+      if (isHours) {
+        this['spanHours'].innerHTML = value;
+      } else {
+        this['spanMinutes'].innerHTML = Timepicker._addLeadingZero(value);
+      }
+
+		  // Set clock hand and others' position
+		  let cx1 = Math.sin(radian) * (radius - this.options.tickRadius),
+			    cy1 = - Math.cos(radian) * (radius - this.options.tickRadius),
+		      cx2 = Math.sin(radian) * radius,
+			    cy2 = - Math.cos(radian) * radius;
+		  this.hand.setAttribute('x2', cx1);
+		  this.hand.setAttribute('y2', cy1);
+		  this.bg.setAttribute('cx', cx2);
+		  this.bg.setAttribute('cy', cy2);
     }
 
     open() {
