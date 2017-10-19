@@ -2,12 +2,12 @@
   // Function to update labels of text fields
   Materialize.updateTextFields = function() {
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-    $(input_selector).each(function(index, element) {
+    $(input_selector).each(function(element, index) {
       var $this = $(this);
-      if ($(element).val().length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== undefined) {
+      if (element.value.length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== null) {
         $this.siblings('label').addClass('active');
-      } else if ($(element)[0].validity) {
-        $this.siblings('label').toggleClass('active', $(element)[0].validity.badInput === true);
+      } else if (element.validity) {
+        $this.siblings('label').toggleClass('active', element.validity.badInput === true);
       } else {
         $this.siblings('label').removeClass('active');
       }
@@ -21,7 +21,7 @@
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
-      if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
+      if(this.value.length !== 0 || $(this).attr('placeholder') !== null) {
         $(this).siblings('label').addClass('active');
       }
       validate_field($(this));
@@ -37,44 +37,59 @@
       var formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
-        formReset.find(input_selector).each(function () {
-          if ($(this).attr('value') === '') {
+        formReset.find(input_selector).each(function (e) {
+          if (this.value.length) {
             $(this).siblings('label').removeClass('active');
           }
         });
 
-        // Reset select
-        formReset.find('select.initialized').each(function () {
-          var reset_text = formReset.find('option[selected]').text();
-          formReset.siblings('input.select-dropdown').val(reset_text);
-        });
+        // Reset select (after native reset)
+        setTimeout(function() {
+          formReset.find('select').each(function () {
+            // check if initialized
+            if (this.M_Select) {
+              var reset_text = $(this).find('option[selected]').text();
+              $(this).siblings('input.select-dropdown')[0].value = reset_text;
+            }
+          });
+        }, 0);
       }
     });
 
-    // Add active when element has focus
-    $(document).on('focus', input_selector, function () {
-      $(this).siblings('label, .prefix').addClass('active');
-    });
-
-    $(document).on('blur', input_selector, function () {
-      var $inputElement = $(this);
-      var selector = ".prefix";
-
-      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
-        selector += ", label";
+    /**
+     * Add active when element has focus
+     * @param {Event} e
+     */
+    document.addEventListener('focus', function(e) {
+      if ($(e.target).is(input_selector)) {
+        $(e.target).siblings('label, .prefix').addClass('active');
       }
+    }, true);
 
-      $inputElement.siblings(selector).removeClass('active');
+    /**
+     * Remove active when element is blurred
+     * @param {Event} e
+     */
+    document.addEventListener('blur', function(e) {
+      let $inputElement = $(e.target);
+      if ($inputElement.is(input_selector)) {
+        let selector = ".prefix";
 
-      validate_field($inputElement);
-    });
+        if ($inputElement[0].value.length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === null) {
+          selector += ", label";
+        }
+        $inputElement.siblings(selector).removeClass('active');
+        validate_field($inputElement);
+      }
+    }, true);
+
 
     window.validate_field = function(object) {
-      var hasLength = object.attr('data-length') !== undefined;
+      var hasLength = object.attr('data-length') !== null;
       var lenAttr = parseInt(object.attr('data-length'));
-      var len = object.val().length;
+      var len = object[0].value.length;
 
-      if (object.val().length === 0 && object[0].validity.badInput === false && !object.is(':required')) {
+      if (len === 0 && object[0].validity.badInput === false && !object.is(':required')) {
         if (object.hasClass('validate')) {
           object.removeClass('valid');
           object.removeClass('invalid');
@@ -97,7 +112,7 @@
 
     // Radio and Checkbox focus class
     var radio_checkbox = 'input[type=radio], input[type=checkbox]';
-    $(document).on('keyup.radio', radio_checkbox, function(e) {
+    $(document).on('keyup', radio_checkbox, function(e) {
       // TAB, check if tabbing to radio or checkbox.
       if (e.which === 9) {
         $(this).addClass('tabbed');
@@ -141,7 +156,7 @@
                  .css('white-space', 'pre');
       }
 
-      hiddenDiv.text($textarea.val() + '\n');
+      hiddenDiv.text($textarea[0].value + '\n');
       var content = hiddenDiv.html().replace(/\n/g, '<br>');
       hiddenDiv.html(content);
 
@@ -163,7 +178,7 @@
        */
       if ($textarea.data('original-height') <= hiddenDiv.height()) {
         $textarea.css('height', hiddenDiv.height());
-      } else if ($textarea.val().length < $textarea.data('previous-length')) {
+      } else if ($textarea[0].value.length < $textarea.data('previous-length')) {
         /**
          * In case the new height is less than original height, it
          * means the textarea has less text than before
@@ -171,7 +186,7 @@
          */
         $textarea.css('height', $textarea.data('original-height'));
       }
-      $textarea.data('previous-length', $textarea.val().length);
+      $textarea.data('previous-length', $textarea[0].value.length);
     }
 
     $(text_area_selector).each(function () {
@@ -181,7 +196,7 @@
        * store the original height and the original length
        */
       $textarea.data('original-height', $textarea.height());
-      $textarea.data('previous-length', $textarea.val().length);
+      $textarea.data('previous-length', this.value.length);
     });
 
     $('body').on('keyup keydown autoresize', text_area_selector, function () {
@@ -197,9 +212,9 @@
       for (var i = 0; i < files.length; i++) {
         file_names.push(files[i].name);
       }
-      path_input.val(file_names.join(", "));
+      path_input[0].value = file_names.join(", ");
       path_input.trigger('change');
     });
 
   }); // End of $(document).ready
-}( jQuery ));
+}( cash ));

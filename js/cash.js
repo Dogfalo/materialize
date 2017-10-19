@@ -939,8 +939,8 @@
       return cash(this[0].previousElementSibling);
     },
 
-    siblings: function () {
-      var collection = this.parent().children(), el = this[0];
+    siblings: function (selector) {
+      var collection = this.parent().children(selector), el = this[0];
 
       return collection.filter(function (i) {
         return i !== el;
