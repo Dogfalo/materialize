@@ -106,14 +106,14 @@
      * Setup Event Handlers
      */
     _setupEventHandlers() {
+      this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
       this._handleInputClickBound = this._handleInputClick.bind(this);
-      // this._handleInputFocusBound = this._handleInputFocus.bind(this);
       this._handleClockClickStartBound = this._handleClockClickStart.bind(this);
       this._handleDocumentClickMoveBound = this._handleDocumentClickMove.bind(this);
       this._handleDocumentClickEndBound = this._handleDocumentClickEnd.bind(this);
 
       this.el.addEventListener('click', this._handleInputClickBound);
-      // this.el.addEventListener('focus', this._handleInputFocusBound);
+      this.el.addEventListener('keydown', this._handleInputKeydownBound);
       this.plate.addEventListener('mousedown', this._handleClockClickStartBound);
       this.plate.addEventListener('touchstart', this._handleClockClickStartBound);
 
@@ -123,6 +123,13 @@
 
     _handleInputClick() {
       this.open();
+    }
+
+    _handleInputKeydown(e) {
+      e.preventDefault();
+      if (e.which === Materialize.keys.ENTER) {
+        this.open();
+      }
     }
 
     _handleClockClickStart(e, space) {
@@ -246,11 +253,11 @@
     }
 
     _pickerSetup() {
-      $('<button type="button" class="btn-flat picker__clear" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
+      $('<button type="button" class="btn-flat picker__clear waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
         .appendTo(this.footer).on('click', this.clear.bind(this));
-		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
+		  $('<button type="button" class="btn-flat picker__close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
         .appendTo(this.footer).on('click', this.close.bind(this));
-		  $('<button type="button" class="btn-flat picker__close" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
+		  $('<button type="button" class="btn-flat picker__close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
         .appendTo(this.footer).on('click', this.done.bind(this));
     }
 
@@ -584,7 +591,7 @@
   }
 
   Timepicker._template = [
-		'<div class= "modal">',
+		'<div class= "modal timepicker-modal">',
 			'<div class="modal-content timepicker-container">',
 				'<div class="timepicker-time-display">',
 					'<div class="clockpicker-display">',
@@ -599,15 +606,11 @@
 					'</div>',
 				'</div>',
 				'<div class="timepicker-time-container">',
-					'<div class="picker__clock-container">',
-						'<div class="clockpicker-plate">',
-							'<div class="clockpicker-canvas"></div>',
-							'<div class="clockpicker-dial clockpicker-hours"></div>',
-							'<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>',
-						'</div>',
-						'<div class="clockpicker-am-pm-block">',
-						'</div>',
-					'</div>',
+					'<div class="clockpicker-plate">',
+						'<div class="clockpicker-canvas"></div>',
+						'<div class="clockpicker-dial clockpicker-hours"></div>',
+						'<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>',
+				  '</div>',
 					'<div class="picker__footer">',
 					'</div>',
 				'</div>',
