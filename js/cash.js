@@ -786,7 +786,9 @@
 
     remove: function () {
       return this.each(function (v) {
-        return v.parentNode.removeChild(v);
+        if (!!v.parentNode) {
+          return v.parentNode.removeChild(v);
+        }
       });
     },
 

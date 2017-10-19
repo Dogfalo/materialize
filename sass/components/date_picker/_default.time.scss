@@ -9,24 +9,20 @@
   padding: 0;
 }
 
-.timepicker-time-container {
-  flex: 2.5;
-}
-
 .text-primary {
 	color: rgba(255, 255, 255, 1);
 }
 
 
 /* Clock Digital Display */
-.timepicker-time-display {
+.timepicker-digital-display {
   flex: 1;
   background-color: $secondary-color;
   padding: 10px;
   font-weight: 300;
 }
 
-.clockpicker-display {
+.timepicker-text-container {
 	font-size: 4rem;
 	font-weight: bold;
 	text-align: center;
@@ -36,21 +32,21 @@
   user-select: none;
 }
 
-.clockpicker-span-hours,
-.clockpicker-span-minutes,
-.clockpicker-span-am-pm div {
+.timepicker-span-hours,
+.timepicker-span-minutes,
+.timepicker-span-am-pm div {
 	cursor: pointer;
 }
 
-.clockpicker-span-hours {
+.timepicker-span-hours {
   margin-right: 3px;
 }
 
-.clockpicker-span-minutes {
+.timepicker-span-minutes {
   margin-left: 3px;
 }
 
-.clockpicker-span-am-pm {
+.timepicker-display-am-pm {
   font-size: 1.3rem;
   position: absolute;
   right: 1rem;
@@ -60,7 +56,11 @@
 
 
 /* Analog Clock Display */
-.clockpicker-plate {
+.timepicker-analog-display {
+  flex: 2.5;
+}
+
+.timepicker-plate {
 	background-color: $timepicker-clock-plate-bg;
 	border-radius: 50%;
 	width: 270px;
@@ -73,15 +73,15 @@
 	user-select: none;
 }
 
-.clockpicker-canvas,
-.clockpicker-dial {
+.timepicker-canvas,
+.timepicker-dial {
 	position: absolute;
 	left: 0;
   right: 0;
   top: 0;
   bottom: 0;
 }
-.clockpicker-minutes {
+.timepicker-minutes {
 	visibility: hidden;
 }
 
@@ -101,41 +101,56 @@
 .timepicker-tick:hover {
 	background-color: transparentize($secondary-color, .75);
 }
-.clockpicker-dial {
+.timepicker-dial {
 	transition: transform 350ms, opacity 350ms;
 }
-.clockpicker-dial-out {
+.timepicker-dial-out {
+  &.timepicker-hours {
+	  transform: scale(1.1, 1.1);
+  }
+
+  &.timepicker-minutes {
+	  transform: scale(.8, .8);
+  }
+
 	opacity: 0;
 }
-.clockpicker-hours.clockpicker-dial-out {
-	transform: scale(1.1, 1.1);
-}
-.clockpicker-minutes.clockpicker-dial-out {
-	transform: scale(.8, .8);
-}
-.clockpicker-canvas {
+.timepicker-canvas {
 	transition: opacity 175ms;
+
+  line {
+	  stroke: $secondary-color;
+	  stroke-width: 4;
+	  stroke-linecap: round;
+  }
 }
-.clockpicker-canvas-out {
+.timepicker-canvas-out {
 	opacity: 0.25;
 }
-.clockpicker-canvas-bearing {
+.timepicker-canvas-bearing {
 	stroke: none;
 	fill: $secondary-color;
 }
-.clockpicker-canvas-bg {
+.timepicker-canvas-bg {
 	stroke: none;
 	fill: $secondary-color;
-}
-.clockpicker-canvas-bg-trans {
-	fill: $secondary-color;
-}
-.clockpicker-canvas line {
-	stroke: $secondary-color;
-	stroke-width: 4;
-	stroke-linecap: round;
 }
 
+
+/* Footer */
+.timepicker-clear {
+  float: left;
+  color: $error-color;
+}
+
+.timepicker-close {
+  color: $secondary-color;
+}
+
+.timepicker-clear,
+.timepicker-close {
+  padding: 0 20px;
+}
 
 /* Media Queries */
 @media #{$medium-and-up} {
@@ -147,10 +162,11 @@
     flex-direction: row;
   }
 
-  .clockpicker-display {
+  .timepicker-text-container {
 		top: 32%;
 	}
-	.clockpicker-span-am-pm {
+
+	.timepicker-display-am-pm {
 	  position: relative;
 	  right: auto;
 	  bottom: auto;
