@@ -816,8 +816,10 @@
       <div id="date-picker" class="section scrollspy">
         <h3 class="header">Date Picker</h3>
         <p>We use a modified version of pickadate.js to create a materialized date picker. Test it out below! </p>
-        <label for="birthdate">Birthdate</label>
-        <input id="birthdate" type="text" class="datepicker">
+        <div class="input-field">
+          <input id="birthdate" type="text" class="datepicker">
+          <label for="birthdate">Birthdate</label>
+        </div>
         <pre><code class="language-markup">
   &lt;input type="text" class="datepicker">
         </code></pre>
@@ -839,15 +841,17 @@
 
     <div id="time-picker" class="section scrollspy">
         <h3 class="header">Time Picker</h3>
-        <label for="lunchtime">Lunchtime</label>
-        <input id="lunchtime" type="text" class="timepicker">
+        <div class="input-field">
+          <input id="lunchtime" type="text" class="timepicker">
+          <label for="lunchtime">Lunchtime</label>
+        </div>
         <pre><code class="language-markup">
   &lt;input type="text" class="timepicker">
         </code></pre>
 
         <h4>Initialization</h4>
         <pre><code class="language-javascript">
-  $('.timepicker').pickatime({
+  $('.timepicker').timepicker({
     default: 'now', // Set default time: 'now', '1:30AM', '16:30'
     fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
     twelvehour: false, // Use AM/PM or 24-hour format
@@ -856,7 +860,6 @@
     canceltext: 'Cancel', // Text for cancel-button,
     container: undefined, // ex. 'body' will append picker to body
     autoclose: false, // automatic close timepicker
-    ampmclickable: true, // make AM PM clickable
     aftershow: function(){} //Function for after opening timepicker
   });
         </code></pre>

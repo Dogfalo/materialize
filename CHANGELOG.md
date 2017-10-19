@@ -41,6 +41,14 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - Added new helper text element
   - Moved validation messages 'data-error' and 'data-success' to Helper Text
 
+- Pickatime
+  - Renamed to Timepicker
+  - Now opens on enter or click instead of focus
+  - Added open animation
+  - Reworked and simplified Timepicker HTML structure
+  - Renamed internal classes to reflect Timpicker namechange and structure rework
+
+
 ## v0.100.1 (July 21st)
 - Fixed bug where modal triggers could not contain child elements
 - Fixed bug with right alignment option for dropdown

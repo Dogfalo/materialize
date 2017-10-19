@@ -186,7 +186,7 @@
     $('.scrollspy').scrollSpy();
     $('.datepicker').pickadate({selectYears: 20});
     $('.tabs').tabs();
-    $('.timepicker').pickatime();
+    $('.timepicker').timepicker();
     $('.tooltipped').tooltip();
     $('select').not('.disabled').select();
     $('.sidenav').sidenav();

@@ -212,11 +212,12 @@
 
       // Normal modal animation
       } else {
-        Vel.hook(this.el, 'scaleX', 0.7);
+        Vel.hook(this.el, 'scaleX', 0.8);
+        Vel.hook(this.el, 'scaleY', 0.8);
         this.el.style.top = this.options.startingTop;
         Vel(
           this.el,
-          {top: this.options.endingTop, opacity: 1, scaleX: 1},
+          {top: this.options.endingTop, opacity: 1, scaleX: 1, scaleY: 1},
           enterVelocityOptions
         );
       }
@@ -245,7 +246,7 @@
           if (typeof(this.options.complete) === 'function') {
             this.options.complete.call(this, this.$el);
           }
-          this.$overlay[0].parentNode.removeChild(this.$overlay[0]);
+          this.$overlay.remove();
         }
       };
 
@@ -261,7 +262,7 @@
       } else {
         Vel(
           this.el,
-          {top: this.options.startingTop, opacity: 0, scaleX: 0.7},
+          {top: this.options.startingTop, opacity: 0, scaleX: 0.8, scaleY: 0.8},
           exitVelocityOptions
         );
       }

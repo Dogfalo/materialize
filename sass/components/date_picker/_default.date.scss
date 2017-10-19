@@ -245,21 +245,21 @@
   display: inline-block;
   vertical-align: bottom;
 }
-.picker__button--today:hover,
-.picker__button--clear:hover,
-.picker__button--close:hover {
-  cursor: pointer;
-  color: #000000;
-  background: #b1dcfb;
-  border-bottom-color: #b1dcfb;
-}
-.picker__button--today:focus,
-.picker__button--clear:focus,
-.picker__button--close:focus {
-  background: #b1dcfb;
-  border-color: $datepicker-focus;
-  outline: none;
-}
+/* .picker__button--today:hover, */
+/* .picker__button--clear:hover, */
+/* .picker__button--close:hover { */
+/*   cursor: pointer; */
+/*   color: #000000; */
+/*   background: #b1dcfb; */
+/*   border-bottom-color: #b1dcfb; */
+/* } */
+/* .picker__button--today:focus, */
+/* .picker__button--clear:focus, */
+/* .picker__button--close:focus { */
+/*   background: #b1dcfb; */
+/*   border-color: $datepicker-focus; */
+/*   outline: none; */
+/* } */
 .picker__button--today:before,
 .picker__button--clear:before,
 .picker__button--close:before {
@@ -450,7 +450,4 @@
 .picker__nav--next:before {
   border-right: 0;
   border-left: 0.75em solid #676767;
-}
-button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
-  background-color: $datepicker-selected-outfocus;
 }
