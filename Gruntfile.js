@@ -185,6 +185,7 @@ module.exports = function(grunt) {
           "js/carousel.js",
           "js/tapTarget.js",
           "js/select.js",
+          "js/range.js",
         ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
@@ -226,6 +227,7 @@ module.exports = function(grunt) {
           "js/carousel.js",
           "js/tapTarget.js",
           "js/select.js",
+          "js/range.js",
         ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize_concat.js'
@@ -311,6 +313,7 @@ module.exports = function(grunt) {
             "carousel.js",
             "tapTarget.js",
             "select.js",
+            "range.js",
           ], dest: 'materialize-src/js/'},
           {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
           {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}

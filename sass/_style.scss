@@ -183,6 +183,10 @@ a.button-collapse.top-nav {
   a.button-collapse.top-nav {
     left: 5%;
   }
+
+  ul.sidenav.sidenav-fixed {
+    border: 0;
+  }
 }
 
 @media #{$medium-and-down} {
