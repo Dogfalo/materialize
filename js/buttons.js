@@ -1,21 +1,24 @@
-(function ($) {
+(function ($, Vel) {
   $(document).ready(function() {
 
     // jQuery reverse
     $.fn.reverse = [].reverse;
 
     // Hover behaviour: make sure this doesn't work on .click-to-toggle FABs!
-    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
-      var $this = $(this);
-      openFABMenu($this);
-    });
-    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
-      var $this = $(this);
-      closeFABMenu($this);
-    });
+    document.addEventListener('mouseenter', function(e) {
+      if ($(e.target).is('.fixed-action-btn:not(.click-to-toggle):not(.toolbar)')) {
+        openFABMenu($(e.target));
+      }
+    }, true);
+
+    document.addEventListener('mouseleave', function(e) {
+      if ($(e.target).is('.fixed-action-btn:not(.click-to-toggle):not(.toolbar)')) {
+        closeFABMenu($(e.target));
+      }
+    }, true);
 
     // Toggle-on-click behaviour.
-    $(document).on('click.fabClickToggle', '.fixed-action-btn.click-to-toggle > a', function(e) {
+    $(document).on('click', '.fixed-action-btn.click-to-toggle > a', function(e) {
       var $this = $(this);
       var $menu = $this.parent();
       if ($menu.hasClass('active')) {
@@ -26,7 +29,7 @@
     });
 
     // Toolbar transition behaviour.
-    $(document).on('click.fabToolbar', '.fixed-action-btn.toolbar > a', function(e) {
+    $(document).on('click', '.fixed-action-btn.toolbar > a', function(e) {
       var $this = $(this);
       var $menu = $this.parent();
       FABtoToolbar($menu);
@@ -34,7 +37,7 @@
 
   });
 
-  $.fn.extend({
+  jQuery.fn.extend({
     openFAB: function() {
       openFABMenu($(this));
     },
@@ -56,7 +59,7 @@
 
       // Get direction option
       var horizontal = $this.hasClass('horizontal');
-      var offsetY, offsetX;
+      var offsetY = 0, offsetX = 0;
 
       if (horizontal === true) {
         offsetX = 40;
@@ -65,15 +68,19 @@
       }
 
       $this.addClass('active');
-      $this.find('ul .btn-floating').velocity(
-        { scaleY: ".4", scaleX: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
-        { duration: 0 });
+      let floatingBtns = $this.find('ul .btn-floating');
+      Vel.hook(floatingBtns, 'scaleX', 0.4);
+      Vel.hook(floatingBtns, 'scaleY', 0.4);
+      Vel.hook(floatingBtns, 'translateY', offsetY + 'px');
+      Vel.hook(floatingBtns, 'translateX', offsetX + 'px');
 
       var time = 0;
-      $this.find('ul .btn-floating').reverse().each( function () {
-        $(this).velocity(
-          { opacity: "1", scaleX: "1", scaleY: "1", translateY: "0", translateX: '0'},
-          { duration: 80, delay: time });
+      floatingBtns.reverse().each( function () {
+        Vel(
+          this,
+          { opacity: "1", scaleX: 1, scaleY: 1, translateY: 0, translateX: 0},
+          { duration: 80, delay: time }
+        );
         time += 40;
       });
     }
@@ -92,10 +99,11 @@
     }
 
     $this.removeClass('active');
-    var time = 0;
-    $this.find('ul .btn-floating').velocity("stop", true);
-    $this.find('ul .btn-floating').velocity(
-      { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
+    let floatingBtns = $this.find('ul .btn-floating');
+    Vel(floatingBtns, 'stop');
+    Vel(
+      floatingBtns,
+      { opacity: "0", scaleX: .4, scaleY: .4, translateY: offsetY, translateX: offsetX},
       { duration: 80 }
     );
   };
@@ -114,15 +122,15 @@
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
     var btnRect = btn[0].getBoundingClientRect();
-    var anchor = btn.find('> a').first();
-    var menu = btn.find('> ul').first();
+    var anchor = btn.children('a').first();
+    var menu = btn.children('ul').first();
     var backdrop = $('<div class="fab-backdrop"></div>');
     var fabColor = anchor.css('background-color');
     anchor.append(backdrop);
 
     offsetX = btnRect.left - (windowWidth / 2) + (btnRect.width / 2);
     offsetY = windowHeight - btnRect.bottom;
-    scaleFactor = windowWidth / backdrop.width();
+    scaleFactor = windowWidth / backdrop[0].clientWidth;
     btn.attr('data-origin-bottom', btnRect.bottom);
     btn.attr('data-origin-left', btnRect.left);
     btn.attr('data-origin-width', btnRect.width);
@@ -167,7 +175,7 @@
           transform: 'scale(' + scaleFactor + ')',
           transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
         });
-        menu.find('> li > a').css({
+        menu.children('li').children('a').css({
           opacity: 1
         });
 
@@ -204,8 +212,8 @@
     var btnWidth = btn.attr('data-origin-width');
     var btnBottom = btn.attr('data-origin-bottom');
     var btnLeft = btn.attr('data-origin-left');
-    var anchor = btn.find('> .btn-floating').first();
-    var menu = btn.find('> ul').first();
+    var anchor = btn.children('.btn-floating').first();
+    var menu = btn.children('ul').first();
     var backdrop = btn.find('.fab-backdrop');
     var fabColor = anchor.css('background-color');
 
@@ -228,7 +236,7 @@
       transform: 'scale(0)',
       'background-color': fabColor
     });
-    menu.find('> li > a').css({
+    menu.children('li').children('a').css({
       opacity: ''
     });
 
@@ -264,4 +272,4 @@
   };
 
 
-}( jQuery ));
+}( cash, Materialize.Vel ));
