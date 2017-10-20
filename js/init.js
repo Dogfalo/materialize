@@ -184,7 +184,7 @@
     $('.materialboxed').materialbox();
     $('.modal').modal();
     $('.scrollspy').scrollSpy();
-    $('.datepicker').pickadate({selectYears: 20});
+    $('.datepicker').datepicker();
     $('.tabs').tabs();
     $('.timepicker').timepicker();
     $('.tooltipped').tooltip();
