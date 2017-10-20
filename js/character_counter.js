@@ -1,6 +1,6 @@
 (function ($) {
 
-  $.fn.characterCounter = function(){
+  jQuery.fn.characterCounter = function(){
     return this.each(function(){
       var $input = $(this);
       var $counterElement = $input.parent().find('span[class="character-counter"]');
@@ -10,7 +10,7 @@
         return;
       }
 
-      var itHasLengthAttribute = $input.attr('data-length') !== undefined;
+      var itHasLengthAttribute = $input.attr('data-length') !== null;
 
       if(itHasLengthAttribute){
         $input.on('input', updateCounter);
@@ -25,7 +25,7 @@
 
   function updateCounter(){
     var maxLength     = +$(this).attr('data-length'),
-    actualLength      = +$(this).val().length,
+    actualLength      = this.value.length,
     isValidLength     = actualLength <= maxLength;
 
     $(this).parent().find('span[class="character-counter"]')
@@ -66,7 +66,7 @@
   }
 
   $(document).ready(function(){
-    $('input, textarea').characterCounter();
+    jQuery('input, textarea').characterCounter();
   });
 
-}( jQuery ));
+}( cash ));

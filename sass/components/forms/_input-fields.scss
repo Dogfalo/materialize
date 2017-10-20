@@ -308,7 +308,7 @@ textarea {
 
 // For textarea autoresize
 .hiddendiv {
-  display: none;
+  visibility: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
@@ -317,6 +317,7 @@ textarea {
   // Reduces repaints
   position: absolute;
   top: 0;
+  z-index: -1;
 }
 
 

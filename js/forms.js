@@ -164,11 +164,11 @@
       // When textarea is hidden, width goes crazy.
       // Approximate with half of window size
 
-      if ($textarea.is(':visible')) {
-        hiddenDiv.css('width', $textarea.width());
+      if ($textarea.css('display') !== 'hidden') {
+        hiddenDiv.css('width', $textarea.width() + 'px');
       }
       else {
-        hiddenDiv.css('width', $(window).width()/2);
+        hiddenDiv.css('width', ($(window).width()/2) + 'px');
       }
 
 
@@ -176,15 +176,15 @@
        * Resize if the new height is greater than the
        * original height of the textarea
        */
-      if ($textarea.data('original-height') <= hiddenDiv.height()) {
-        $textarea.css('height', hiddenDiv.height());
+      if ($textarea.data('original-height') <= hiddenDiv.innerHeight()) {
+        $textarea.css('height', hiddenDiv.innerHeight() + 'px');
       } else if ($textarea[0].value.length < $textarea.data('previous-length')) {
         /**
          * In case the new height is less than original height, it
          * means the textarea has less text than before
          * So we set the height to the original one
          */
-        $textarea.css('height', $textarea.data('original-height'));
+        $textarea.css('height', $textarea.data('original-height') + 'px');
       }
       $textarea.data('previous-length', $textarea[0].value.length);
     }
@@ -199,7 +199,13 @@
       $textarea.data('previous-length', this.value.length);
     });
 
-    $('body').on('keyup keydown autoresize', text_area_selector, function () {
+    $(document).on('keyup', text_area_selector, function () {
+      textareaAutoResize($(this));
+    });
+    $(document).on('keydown', text_area_selector, function () {
+      textareaAutoResize($(this));
+    });
+    $(document).on('autoresize', text_area_selector, function () {
       textareaAutoResize($(this));
     });
 
