@@ -83,7 +83,7 @@
       }
 
       if ($active[0] !== undefined) {
-        $content = $($active[0].hash);
+        $content = $(Materialize.escapeHash($active[0].hash));
         $content.addClass('active');
       }
 
