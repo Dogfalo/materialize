@@ -121,7 +121,7 @@ M.guid = (function() {
  * @returns {string}
  */
 M.escapeHash = function(hash) {
-  return hash.replace( /(:|\.|\[|\]|,|=)/g, "\\$1" );
+  return hash.replace( /(:|\.|\[|\]|,|=|\/)/g, "\\$1" );
 };
 
 M.elementOrParentIsFixed = function(element) {
