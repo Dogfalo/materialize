@@ -586,13 +586,21 @@
 
     ready: onReady,
 
+    /**
+     * Modified
+     * Triggers browser event
+     * @param String eventName
+     * @param Object data - Add properties to event object
+     */
     trigger: function (eventName, data) {
-      var evt = doc.createEvent("HTMLEvents");
-      evt.data = data;
-      evt.initEvent(eventName, true, false);
-      return this.each(function (v) {
-        return v.dispatchEvent(evt);
-      });
+      if (document.createEvent) {
+        let evt = document.createEvent('HTMLEvents');
+        evt.initEvent(eventName, true, false);
+        evt = this.extend(evt, data);
+        return this.each(function (v) {
+          return v.dispatchEvent(evt);
+        });
+      }
     }
 
   });

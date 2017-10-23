@@ -494,7 +494,7 @@
 
   $(document).ready(function() {
     // Handle removal of static chips.
-    $(document).on('click', '.chip .close', function() {
+    $(document.body).on('click', '.chip .close', function() {
       let $chips = $(this).closest('.chips');
       if ($chips.length && $chips[0].M_Chips) {
         return;

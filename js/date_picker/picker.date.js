@@ -166,7 +166,7 @@
       //   }
       // }
 
-      var defDate = this.options.defaultDate;
+      let defDate = this.options.defaultDate;
 
       if (Datepicker._isDate(defDate)) {
         if (this.options.setDefaultDate) {
@@ -233,6 +233,11 @@
       return a.getTime() === b.getTime();
     }
 
+    static _setToStartOfDay(date)
+    {
+      if (Datepicker._isDate(date)) date.setHours(0,0,0,0);
+    }
+
     /**
      * Get Instance
      */
@@ -269,15 +274,22 @@
       });
     }
 
+    toString(format) {
+      format = format || this.options.format;
+      if (!Datepicker._isDate(this._d)) {
+        return '';
+      }
+      if (this.options.toString) {
+        return this.options.toString(this._d, format);
+      }
+      return this._d.toDateString();
+    }
+
     setDate(date, preventOnSelect) {
       if (!date) {
         this._d = null;
-
-        if (this.options.field) {
-          this.options.field.value = '';
-          fireEvent(this.options.field, 'change', { firedBy: this });
-        }
-
+        this.el.value = '';
+        this.$el.trigger('change', {firedBy: this});
         return this.draw();
       }
       if (typeof date === 'string') {
@@ -287,7 +299,8 @@
         return;
       }
 
-      var min = this.options.minDate,
+      // Set Date
+      let min = this.options.minDate,
           max = this.options.maxDate;
 
       if (Datepicker._isDate(min) && date < min) {
@@ -297,13 +310,13 @@
       }
 
       this._d = new Date(date.getTime());
-      setToStartOfDay(this._d);
+
+      Datepicker._setToStartOfDay(this._d);
       this.gotoDate(this._d);
 
-      if (this.options.field) {
-        this.options.field.value = this.toString();
-        fireEvent(this.options.field, 'change', { firedBy: this });
-      }
+      this.el.value = this.toString();
+      this.$el.trigger('change', {firedBy: this});
+
       if (!preventOnSelect && typeof this.options.onSelect === 'function') {
         this.options.onSelect.call(this, this.getDate());
       }
@@ -313,14 +326,14 @@
      * change view to a specific date
      */
     gotoDate(date) {
-      var newCalendar = true;
+      let newCalendar = true;
 
       if (!Datepicker._isDate(date)) {
         return;
       }
 
       if (this.calendars) {
-        var firstVisibleDate = new Date(this.calendars[0].year, this.calendars[0].month, 1),
+        let firstVisibleDate = new Date(this.calendars[0].year, this.calendars[0].month, 1),
             lastVisibleDate = new Date(this.calendars[this.calendars.length-1].year, this.calendars[this.calendars.length-1].month, 1),
             visibleDate = date.getTime();
         // get the end of the month
@@ -344,7 +357,7 @@
 
     adjustCalendars() {
       this.calendars[0] = this.adjustCalendar(this.calendars[0]);
-      for (var c = 1; c < this.options.numberOfMonths; c++) {
+      for (let c = 1; c < this.options.numberOfMonths; c++) {
         this.calendars[c] = this.adjustCalendar({
           month: this.calendars[0].month + c,
           year: this.calendars[0].year
@@ -379,21 +392,20 @@
           before += 7;
         }
       }
-      var previousMonth = month === 0 ? 11 : month - 1,
+      let previousMonth = month === 0 ? 11 : month - 1,
           nextMonth = month === 11 ? 0 : month + 1,
           yearOfPreviousMonth = month === 0 ? year - 1 : year,
           yearOfNextMonth = month === 11 ? year + 1 : year,
           daysInPreviousMonth = Datepicker._getDaysInMonth(yearOfPreviousMonth, previousMonth);
-      var cells = days + before,
+      let cells = days + before,
           after = cells;
       while(after > 7) {
         after -= 7;
       }
       cells += 7 - after;
-      var isWeekSelected = false;
-      for (var i = 0, r = 0; i < cells; i++)
-      {
-        var day = new Date(year, month, 1 + (i - before)),
+      let isWeekSelected = false;
+      for (let i = 0, r = 0; i < cells; i++) {
+        let day = new Date(year, month, 1 + (i - before)),
             isSelected = Datepicker._isDate(this._d) ? Datepicker._compareDates(day, this._d) : false,
             isToday = Datepicker._compareDates(day, now),
             hasEvent = opts.events.indexOf(day.toDateString()) !== -1 ? true : false,
@@ -421,7 +433,7 @@
           }
         }
 
-        var dayConfig = {
+        let dayConfig = {
           day: dayNumber,
           month: monthNumber,
           year: yearNumber,
@@ -456,8 +468,8 @@
     }
 
     renderDay(opts) {
-      var arr = [];
-      var ariaSelected = 'false';
+      let arr = [];
+      let ariaSelected = 'false';
       if (opts.isEmpty) {
         if (opts.showDaysInNextAndPreviousMonths) {
           arr.push('is-outside-current-month');
@@ -511,7 +523,7 @@
     }
 
     renderHead(opts) {
-      var i, arr = [];
+      let i, arr = [];
       if (opts.showWeekNumber) {
         arr.push('<th></th>');
       }
@@ -529,7 +541,7 @@
 
 
     renderTitle(instance, c, year, month, refYear, randId) {
-      var i, j, arr,
+      let i, j, arr,
           opts = this.options,
           isMinYear = year === opts.minYear,
           isMaxYear = year === opts.maxYear,
@@ -595,7 +607,7 @@
       if (!this.isOpen && !force) {
         return;
       }
-      var opts = this.options,
+      let opts = this.options,
           minYear = opts.minYear,
           maxYear = opts.maxYear,
           minMonth = opts.minMonth,
@@ -618,7 +630,7 @@
 
       randId = 'pika-title-' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 2);
 
-      for (var c = 0; c < opts.numberOfMonths; c++) {
+      for (let c = 0; c < opts.numberOfMonths; c++) {
         html += '<div class="pika-lendar">' +
           this.renderTitle(this,
                       c,
@@ -631,13 +643,13 @@
 
       this.calendarEl.innerHTML = html;
 
-      if (opts.bound) {
-        if(opts.field.type !== 'hidden') {
-          sto(function() {
-            opts.trigger.focus();
-          }, 1);
-        }
-      }
+      // if (opts.bound) {
+      //   if(opts.field.type !== 'hidden') {
+      //     sto(function() {
+      //       opts.trigger.focus();
+      //     }, 1);
+      //   }
+      // }
 
       if (typeof this.options.onDraw === 'function') {
         this.options.onDraw(this);
@@ -656,9 +668,13 @@
     _setupEventHandlers() {
       this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
       this._handleInputClickBound = this._handleInputClick.bind(this);
+      this._handleInputChangeBound= this._handleInputChange.bind(this);
+      this._handleCalendarClickBound = this._handleCalendarClick.bind(this);
 
       this.el.addEventListener('click', this._handleInputClickBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
+      this.el.addEventListener('change', this._handleInputChangeBound);
+      this.calendarEl.addEventListener('click', this._handleCalendarClickBound);
       // addEvent(self.el, 'mousedown', self._onMouseDown, true);
       // addEvent(self.el, 'touchend', self._onMouseDown, true);
       // addEvent(self.el, 'change', self._onChange);
@@ -689,68 +705,63 @@
       }
     }
 
-
-
-
-
-
-
-    _onMouseDown(e) {
-      if (!self._v) {
-        return;
-      }
-      e = e || window.event;
-      var target = e.target || e.srcElement;
-      if (!target) {
+    _handleCalendarClick(e) {
+      console.log(e);
+      if (!this.isOpen) {
         return;
       }
 
-      if (!hasClass(target, 'is-disabled')) {
-        if (hasClass(target, 'pika-button') && !hasClass(target, 'is-empty') && !hasClass(target.parentNode, 'is-disabled')) {
-          self.setDate(new Date(target.getAttribute('data-pika-year'), target.getAttribute('data-pika-month'), target.getAttribute('data-pika-day')));
-          if (opts.bound) {
-            sto(function() {
-              self.hide();
-              if (opts.blurFieldOnSelect && opts.field) {
-                opts.field.blur();
-              }
-            }, 100);
-          }
+      let $target = $(e.target);
+
+      if (!$target.hasClass('is-disabled')) {
+        if ($target.hasClass('pika-button') &&
+            !$target.hasClass('is-empty') &&
+            !$target.parent().hasClass('is-disabled')) {
+          this.setDate(new Date(e.target.getAttribute('data-pika-year'),
+                                e.target.getAttribute('data-pika-month'),
+                                e.target.getAttribute('data-pika-day')));
+          // if (opts.bound) {
+          //   sto(function() {
+          //     this.hide();
+          //     if (opts.blurFieldOnSelect && opts.field) {
+          //       opts.field.blur();
+          //     }
+          //   }, 100);
+          // }
         }
-        else if (hasClass(target, 'pika-prev')) {
-          self.prevMonth();
+        else if ($target.hasClass('pika-prev')) {
+          this.prevMonth();
         }
-        else if (hasClass(target, 'pika-next')) {
-          self.nextMonth();
+        else if ($target.hasClass('pika-next')) {
+          this.nextMonth();
         }
       }
-      if (!hasClass(target, 'pika-select')) {
+      if (!$target.hasClass('pika-select')) {
         // if this is touch event prevent mouse events emulation
-        if (e.preventDefault) {
-          e.preventDefault();
-        } else {
-          e.returnValue = false;
-          return false;
-        }
+        // if (e.preventDefault) {
+        //   e.preventDefault();
+        // } else {
+        //   e.returnValue = false;
+        //   return false;
+        // }
       } else {
-        self._c = true;
+        this._c = true;
       }
     }
 
-    _onChange(e)
-    {
-      e = e || window.event;
-      var target = e.target || e.srcElement;
-      if (!target) {
-        return;
-      }
-      if (hasClass(target, 'pika-select-month')) {
-        self.gotoMonth(target.value);
-      }
-      else if (hasClass(target, 'pika-select-year')) {
-        self.gotoYear(target.value);
-      }
-    }
+    // _onChange(e) {
+    //   e = e || window.event;
+    //   let target = e.target || e.srcElement;
+    //   if (!target) {
+    //     return;
+    //   }
+    //   if (hasClass(target, 'pika-select-month')) {
+    //     self.gotoMonth(target.value);
+    //   }
+    //   else if (hasClass(target, 'pika-select-year')) {
+    //     self.gotoYear(target.value);
+    //   }
+    // }
 
     _onKeyChange(e) {
       e = e || window.event;
@@ -781,27 +792,25 @@
       }
     }
 
-    _onInputChange(e) {
-      var date;
+    _handleInputChange(e) {
+      let date;
 
-      if (e.firedBy === self) {
+      // Prevent change event from being fired when triggered by the plugin
+      if (e.firedBy === this) {
         return;
       }
-      if (opts.parse) {
-        date = opts.parse(opts.field.value, opts.format);
-      } else if (hasMoment) {
-        date = moment(opts.field.value, opts.format, opts.formatStrict);
-        date = (date && date.isValid()) ? date.toDate() : null;
+      if (this.options.parse) {
+        date = this.options.parse(this.el.value, this.options.format);
+      } else {
+        date = new Date(Date.parse(this.el.value));
       }
-      else {
-        date = new Date(Date.parse(opts.field.value));
-      }
+
       if (Datepicker._isDate(date)) {
-        self.setDate(date);
+        this.setDate(date);
       }
-      if (!self._v) {
-        self.show();
-      }
+      // if (!self._v) {
+      //   self.show();
+      // }
     }
 
     _onInputFocus() {
@@ -812,48 +821,48 @@
       self.show();
     }
 
-    _onInputBlur() {
-      // IE allows pika div to gain focus; catch blur the input field
-      var pEl = document.activeElement;
-      do {
-        if (hasClass(pEl, 'pika-single')) {
-          return;
-        }
-      }
-      while ((pEl = pEl.parentNode));
+    // _onInputBlur() {
+    //   // IE allows pika div to gain focus; catch blur the input field
+    //   let pEl = document.activeElement;
+    //   do {
+    //     if (hasClass(pEl, 'pika-single')) {
+    //       return;
+    //     }
+    //   }
+    //   while ((pEl = pEl.parentNode));
 
-      if (!self._c) {
-        self._b = sto(function() {
-          self.hide();
-        }, 50);
-      }
-      self._c = false;
-    }
+    //   if (!self._c) {
+    //     self._b = sto(function() {
+    //       self.hide();
+    //     }, 50);
+    //   }
+    //   self._c = false;
+    // }
 
 
-    _onClick(e) {
-      e = e || window.event;
-      var target = e.target || e.srcElement,
-          pEl = target;
-      if (!target) {
-        return;
-      }
-      if (!hasEventListeners && hasClass(target, 'pika-select')) {
-        if (!target.onchange) {
-          target.setAttribute('onchange', 'return;');
-          addEvent(target, 'change', self._onChange);
-        }
-      }
-      do {
-        if (hasClass(pEl, 'pika-single') || pEl === opts.trigger) {
-          return;
-        }
-      }
-      while ((pEl = pEl.parentNode));
-      if (self._v && target !== opts.trigger && pEl !== opts.trigger) {
-        self.hide();
-      }
-    }
+    // _onClick(e) {
+    //   e = e || window.event;
+    //   let target = e.target || e.srcElement,
+    //       pEl = target;
+    //   if (!target) {
+    //     return;
+    //   }
+    //   if (!hasEventListeners && hasClass(target, 'pika-select')) {
+    //     if (!target.onchange) {
+    //       target.setAttribute('onchange', 'return;');
+    //       addEvent(target, 'change', self._onChange);
+    //     }
+    //   }
+    //   do {
+    //     if (hasClass(pEl, 'pika-single') || pEl === opts.trigger) {
+    //       return;
+    //     }
+    //   }
+    //   while ((pEl = pEl.parentNode));
+    //   if (self._v && target !== opts.trigger && pEl !== opts.trigger) {
+    //     self.hide();
+    //   }
+    // }
 
 
     renderDayName(opts, day, abbr) {
@@ -874,8 +883,12 @@
       }
 
       this.isOpen = true;
+      if (typeof this.options.onOpen === 'function') {
+        this.options.onOpen.call(this);
+      }
       this.draw();
       this.modal.open();
+
 
 
       return this;
@@ -890,6 +903,9 @@
       }
 
       this.isOpen = false;
+      if (v !== undefined && typeof this.options.onClose === 'function') {
+        this.options.onClose.call(this);
+      }
       this.modal.close();
 
       return this;
