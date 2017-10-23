@@ -2,11 +2,6 @@
   'use strict';
 
   let _defaults = {
-    // bind the picker to a form field
-    field: null,
-
-    // automatically show/hide the picker on `field` focus (default `true` if `field` is set)
-    bound: undefined,
 
     // data-attribute on the input field with an aria assistance tekst (only applied when `bound` is set)
     ariaLabel: 'Use the arrow keys to pick a date',
@@ -92,11 +87,14 @@
 
     // internationalization
     i18n: {
+      clear: 'Clear',
+      cancel: 'Cancel',
+      done: 'Done',
       previousMonth : 'Previous Month',
       nextMonth     : 'Next Month',
       months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
       weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-      weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+      weekdaysShort : ['S','M','T','W','T','F','S']
     },
 
     // Theme Classname
@@ -139,11 +137,10 @@
 
       this.id = Materialize.guid();
 
-
-      // -----------------
+      this._setupVariables();
       this._insertHTMLIntoDOM();
       this._setupModal();
-      this._setupVariables();
+
       this._setupEventHandlers();
 
       // if (opts.field) {
@@ -156,15 +153,13 @@
       //   }
 
 
-      //   if (!opts.defaultDate) {
-      //     if (hasMoment && opts.field.value) {
-      //       opts.defaultDate = moment(opts.field.value, opts.format).toDate();
-      //     } else {
-      //       opts.defaultDate = new Date(Date.parse(opts.field.value));
-      //     }
-      //     opts.setDefaultDate = true;
-      //   }
+
       // }
+
+      if (!this.options.defaultDate) {
+        this.options.defaultDate = new Date(Date.parse(this.el.value));
+        this.options.setDefaultDate = true;
+      }
 
       let defDate = this.options.defaultDate;
 
@@ -177,18 +172,6 @@
       } else {
         this.gotoDate(new Date());
       }
-
-      // if (opts.bound) {
-      //   this.hide();
-      //   self.el.className += ' is-bound';
-      //   addEvent(opts.trigger, 'click', self._onInputClick);
-      //   addEvent(opts.trigger, 'focus', self._onInputFocus);
-      //   addEvent(opts.trigger, 'blur', self._onInputBlur);
-      // } else {
-      //   this.show();
-      // }
-
-      // -----------------
 
 
       /**
@@ -253,9 +236,11 @@
     }
 
     _insertHTMLIntoDOM() {
-      this.$modalEl = $(Datepicker._template);
-      this.modalEl = this.$modalEl[0];
-      this.modalEl.id = 'modal-' + this.id;
+
+
+      this.clearBtn.innerHTML = this.options.i18n.clear;
+      this.cancelBtn.innerHTML = this.options.i18n.cancel;
+      this.doneBtn.innerHTML = this.options.i18n.done;
 
       if (this.options.container && !!containerEl) {
         this.$modalEl.appendTo(containerEl);
@@ -267,6 +252,7 @@
 
 
     _setupModal() {
+      this.modalEl.id = 'modal-' + this.id;
       this.modal = new Materialize.Modal(this.modalEl, {
         complete: () => {
           this.isOpen = false;
@@ -276,20 +262,19 @@
 
     toString(format) {
       format = format || this.options.format;
-      if (!Datepicker._isDate(this._d)) {
+      if (!Datepicker._isDate(this.date)) {
         return '';
       }
       if (this.options.toString) {
-        return this.options.toString(this._d, format);
+        return this.options.toString(this.date, format);
       }
-      return this._d.toDateString();
+      return this.date.toDateString();
     }
 
     setDate(date, preventOnSelect) {
       if (!date) {
-        this._d = null;
-        this.el.value = '';
-        this.$el.trigger('change', {firedBy: this});
+        this.date = null;
+        this._renderDateDisplay();
         return this.draw();
       }
       if (typeof date === 'string') {
@@ -299,7 +284,6 @@
         return;
       }
 
-      // Set Date
       let min = this.options.minDate,
           max = this.options.maxDate;
 
@@ -309,17 +293,25 @@
         date = max;
       }
 
-      this._d = new Date(date.getTime());
+      this.date = new Date(date.getTime());
 
-      Datepicker._setToStartOfDay(this._d);
-      this.gotoDate(this._d);
+      this._renderDateDisplay();
 
-      this.el.value = this.toString();
-      this.$el.trigger('change', {firedBy: this});
+      Datepicker._setToStartOfDay(this.date);
+      this.gotoDate(this.date);
 
       if (!preventOnSelect && typeof this.options.onSelect === 'function') {
         this.options.onSelect.call(this, this.getDate());
       }
+    }
+
+    setInputValue() {
+      this.el.value = this.toString();
+      this.$el.trigger('change', {firedBy: this});
+    }
+
+    _renderDateDisplay() {
+
     }
 
     /**
@@ -378,6 +370,16 @@
       return calendar;
     }
 
+    nextMonth() {
+      this.calendars[0].month++;
+      this.adjustCalendars();
+    }
+
+    prevMonth() {
+      this.calendars[0].month--;
+      this.adjustCalendars();
+    }
+
     render(year, month, randId) {
       let opts   = this.options,
           now    = new Date(),
@@ -406,7 +408,7 @@
       let isWeekSelected = false;
       for (let i = 0, r = 0; i < cells; i++) {
         let day = new Date(year, month, 1 + (i - before)),
-            isSelected = Datepicker._isDate(this._d) ? Datepicker._compareDates(day, this._d) : false,
+            isSelected = Datepicker._isDate(this.date) ? Datepicker._compareDates(day, this.date) : false,
             isToday = Datepicker._compareDates(day, now),
             hasEvent = opts.events.indexOf(day.toDateString()) !== -1 ? true : false,
             isEmpty = i < before || i >= (days + before),
@@ -643,21 +645,8 @@
 
       this.calendarEl.innerHTML = html;
 
-      // if (opts.bound) {
-      //   if(opts.field.type !== 'hidden') {
-      //     sto(function() {
-      //       opts.trigger.focus();
-      //     }, 1);
-      //   }
-      // }
-
       if (typeof this.options.onDraw === 'function') {
         this.options.onDraw(this);
-      }
-
-      if (opts.bound) {
-        // let the screen reader user know to use arrow keys
-        opts.field.setAttribute('aria-label', opts.ariaLabel);
       }
     }
 
@@ -670,19 +659,23 @@
       this._handleInputClickBound = this._handleInputClick.bind(this);
       this._handleInputChangeBound= this._handleInputChange.bind(this);
       this._handleCalendarClickBound = this._handleCalendarClick.bind(this);
+      this._finishSelectionBound = this._finishSelection.bind(this);
 
       this.el.addEventListener('click', this._handleInputClickBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
       this.el.addEventListener('change', this._handleInputChangeBound);
       this.calendarEl.addEventListener('click', this._handleCalendarClickBound);
-      // addEvent(self.el, 'mousedown', self._onMouseDown, true);
-      // addEvent(self.el, 'touchend', self._onMouseDown, true);
-      // addEvent(self.el, 'change', self._onChange);
-      //   addEvent(opts.field, 'change', self._onInputChange);
+      this.doneBtn.addEventListener('click', this._finishSelectionBound);
     }
 
     _setupVariables() {
+      this.$modalEl = $(Datepicker._template);
+      this.modalEl = this.$modalEl[0];
+
 		  this.calendarEl = this.modalEl.querySelector('.pika-single');
+      this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
+      this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
+      this.doneBtn = this.modalEl.querySelector('.datepicker-done');
     }
 
     /**
@@ -691,6 +684,8 @@
     _removeEventHandlers() {
       this.el.removeEventListener('click', this._handleInputClickBound);
       this.el.removeEventListener('keydown', this._handleInputKeydownBound);
+      this.el.removeEventListener('change', this._handleInputChangeBound);
+      this.calendarEl.removeEventListener('click', this._handleCalendarClickBound);
     }
 
 
@@ -706,7 +701,6 @@
     }
 
     _handleCalendarClick(e) {
-      console.log(e);
       if (!this.isOpen) {
         return;
       }
@@ -720,14 +714,6 @@
           this.setDate(new Date(e.target.getAttribute('data-pika-year'),
                                 e.target.getAttribute('data-pika-month'),
                                 e.target.getAttribute('data-pika-day')));
-          // if (opts.bound) {
-          //   sto(function() {
-          //     this.hide();
-          //     if (opts.blurFieldOnSelect && opts.field) {
-          //       opts.field.blur();
-          //     }
-          //   }, 100);
-          // }
         }
         else if ($target.hasClass('pika-prev')) {
           this.prevMonth();
@@ -813,14 +799,6 @@
       // }
     }
 
-    _onInputFocus() {
-      self.show();
-    }
-
-    _onInputClick() {
-      self.show();
-    }
-
     // _onInputBlur() {
     //   // IE allows pika div to gain focus; catch blur the input field
     //   let pEl = document.activeElement;
@@ -840,37 +818,21 @@
     // }
 
 
-    // _onClick(e) {
-    //   e = e || window.event;
-    //   let target = e.target || e.srcElement,
-    //       pEl = target;
-    //   if (!target) {
-    //     return;
-    //   }
-    //   if (!hasEventListeners && hasClass(target, 'pika-select')) {
-    //     if (!target.onchange) {
-    //       target.setAttribute('onchange', 'return;');
-    //       addEvent(target, 'change', self._onChange);
-    //     }
-    //   }
-    //   do {
-    //     if (hasClass(pEl, 'pika-single') || pEl === opts.trigger) {
-    //       return;
-    //     }
-    //   }
-    //   while ((pEl = pEl.parentNode));
-    //   if (self._v && target !== opts.trigger && pEl !== opts.trigger) {
-    //     self.hide();
-    //   }
-    // }
-
-
     renderDayName(opts, day, abbr) {
       day += opts.firstDay;
       while (day >= 7) {
         day -= 7;
       }
       return abbr ? opts.i18n.weekdaysShort[day] : opts.i18n.weekdays[day];
+    }
+
+
+    /**
+     * Set input value to the selected date and close Datepicker
+     */
+    _finishSelection() {
+      this.setInputValue();
+      this.close();
     }
 
 
@@ -903,7 +865,7 @@
       }
 
       this.isOpen = false;
-      if (v !== undefined && typeof this.options.onClose === 'function') {
+      if (typeof this.options.onClose === 'function') {
         this.options.onClose.call(this);
       }
       this.modal.close();
@@ -916,6 +878,11 @@
 		'<div class= "modal datepicker-modal">',
 		  '<div class="modal-content datepicker-container">',
         '<div class="pika-single"></div>',
+        '<div class="picker__footer">',
+          '<button class="btn-flat datepicker-clear waves-effect"></button>',
+          '<button class="btn-flat datepicker-cancel waves-effect"></button>',
+          '<button class="btn-flat datepicker-done waves-effect"></button>',
+        '</div>',
       '</div>',
 		'</div>'
 	].join('');

@@ -238,11 +238,11 @@
     }
 
     _pickerSetup() {
-      $('<button type="button" class="btn-flat timepicker-clear waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
+      $('<button class="btn-flat timepicker-clear waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
         .appendTo(this.footer).on('click', this.clear.bind(this));
-		  $('<button type="button" class="btn-flat timepicker-close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
+		  $('<button class="btn-flat timepicker-close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
         .appendTo(this.footer).on('click', this.close.bind(this));
-		  $('<button type="button" class="btn-flat timepicker-close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
+		  $('<button class="btn-flat timepicker-close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
         .appendTo(this.footer).on('click', this.done.bind(this));
     }
 
