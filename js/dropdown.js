@@ -478,29 +478,8 @@
 
   window.Materialize.Dropdown = Dropdown;
 
-  jQuery.fn.dropdown = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Dropdown.prototype[methodOrOptions]) {
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_Dropdown[methodOrOptions]();
-
-      // Void methods
-      } else {
-        return this.each(function() {
-          this.M_Dropdown[methodOrOptions]();
-        });
-      }
-
-    // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      Dropdown.init(this, arguments[0]);
-      return this;
-
-    // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.dropdown`);
-    }
-  };
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
+  }
 
 })(cash, Materialize.Vel);

@@ -462,35 +462,9 @@
 
   Materialize.Chips = Chips;
 
-  jQuery.fn.chips = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Chips.prototype[methodOrOptions]) {
-      let params = Array.prototype.slice.call( arguments, 1 );
-
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        let instance = this.first()[0].M_Chips;
-        return instance[methodOrOptions].apply(instance, params);
-
-      // Void methods
-      } else {
-        return this.each(function() {
-          let instance = this.M_Chips;
-          instance[methodOrOptions].apply(instance, params);
-        });
-      }
-
-    // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      Chips.init(this, arguments[0]);
-      return this;
-
-    // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.chips`);
-    }
-  };
-
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Chips, 'chips', 'M_Chips');
+  }
 
   $(document).ready(function() {
     // Handle removal of static chips.

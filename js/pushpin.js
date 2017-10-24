@@ -128,29 +128,8 @@
 
   Materialize.Pushpin = Pushpin;
 
-  jQuery.fn.pushpin = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Pushpin.prototype[methodOrOptions]) {
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_Pushpin[methodOrOptions]();
-
-      // Void methods
-      } else {
-        return this.each(function() {
-          this.M_Pushpin[methodOrOptions]();
-        });
-      }
-
-    // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      Pushpin.init(this, arguments[0]);
-      return this;
-
-    // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.modal`);
-    }
-  };
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Pushpin, 'pushpin', 'M_Pushpin');
+  }
 
 })(cash);

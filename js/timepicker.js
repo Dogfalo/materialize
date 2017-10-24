@@ -591,29 +591,8 @@
 
   Materialize.Timepicker = Timepicker;
 
-  jQuery.fn.timepicker = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Timepicker.prototype[methodOrOptions]) {
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_Timepicker[methodOrOptions]();
-
-        // Void methods
-      } else {
-        return this.each(function() {
-          this.M_Timepicker[methodOrOptions]();
-        });
-      }
-
-      // Initialize plugin if this.options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      Timepicker.init(this, arguments[0]);
-      return this;
-
-      // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.timepicker`);
-    }
-  };
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Timepicker, 'timepicker', 'M_Timepicker');
+  }
 
 })(cash, Materialize.Vel);

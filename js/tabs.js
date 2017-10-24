@@ -396,33 +396,8 @@
 
   window.Materialize.Tabs = Tabs;
 
-  jQuery.fn.tabs = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Tabs.prototype[methodOrOptions]) {
-      let params = Array.prototype.slice.call( arguments, 1 );
-
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        let instance = this.first()[0].M_Tabs;
-        return instance[methodOrOptions].apply(instance, params);
-
-        // Void methods
-      } else {
-        return this.each(function() {
-          let instance = this.M_Tabs;
-          instance[methodOrOptions].apply(instance, params);
-        });
-      }
-
-      // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || !methodOrOptions ) {
-      Tabs.init(this, arguments[0]);
-      return this;
-
-      // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.tabs`);
-    }
-  };
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
+  }
 
 })(cash, Materialize.Vel);

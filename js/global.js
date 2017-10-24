@@ -5,6 +5,9 @@
   } else {
     window.Materialize = {};
   }
+
+  // Check for jQuery
+  Materialize.jQueryLoaded = !!window.jQuery;
 })(window);
 
 if (typeof exports !== 'undefined' && !exports.nodeType) {
@@ -62,6 +65,43 @@ Materialize.keys = {
   ESC: 27,
   ARROW_UP: 38,
   ARROW_DOWN: 40
+};
+
+/**
+ * Initialize jQuery wrapper for plugin
+ * @param {Class} plugin  javascript class
+ * @param {string} pluginName  jQuery plugin name
+ * @param {string} classRef  Class reference name
+ */
+Materialize.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
+  jQuery.fn[pluginName] = function(methodOrOptions) {
+    // Call plugin method if valid method name is passed in
+    if (plugin.prototype[methodOrOptions]) {
+      let params = Array.prototype.slice.call( arguments, 1 );
+
+      // Getter methods
+      if (methodOrOptions.slice(0,3) === 'get') {
+        let instance = this.first()[0][classRef];
+        return instance[methodOrOptions].apply(instance, params);
+
+      // Void methods
+      } else {
+        return this.each(function() {
+          let instance = this[classRef];
+          instance[methodOrOptions].apply(instance, params);
+        });
+      }
+
+    // Initialize plugin if options or no argument is passed in
+    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
+      plugin.init(this, arguments[0]);
+      return this;
+
+    // Return error if an unrecognized  method name is passed in
+    } else {
+      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.${pluginName}`);
+    }
+  };
 };
 
 /**
@@ -357,7 +397,7 @@ Materialize.throttle = function(func, wait, options) {
 // Velocity has conflicts when loaded with jQuery, this will check for it
 // First, check if in noConflict mode
 let Vel;
-if (jQuery) {
+if (Materialize.jQueryLoaded) {
   Vel = jQuery.Velocity;
 } else if ($) {
   Vel = $.Velocity;

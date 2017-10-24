@@ -285,29 +285,8 @@
 
   Materialize.Tooltip = Tooltip;
 
-  jQuery.fn.tooltip = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Tooltip.prototype[methodOrOptions]) {
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_Tooltip[methodOrOptions]();
-
-      // Void methods
-      } else {
-        return this.each(function() {
-          this.M_Tooltip[methodOrOptions]();
-        });
-      }
-
-    // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      Tooltip.init(this, arguments[0]);
-      return this;
-
-    // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.tooltip`);
-    }
-  };
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
+  }
 
 })(cash, Materialize.Vel);

@@ -524,29 +524,8 @@
 
   window.Materialize.Sidenav = Sidenav;
 
-  jQuery.fn.sidenav = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Sidenav.prototype[methodOrOptions]) {
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_Sidenav[methodOrOptions]();
-
-        // Void methods
-      } else {
-        return this.each(function() {
-          this.M_Sidenav[methodOrOptions]();
-        });
-      }
-
-      // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || !methodOrOptions ) {
-      Sidenav.init(this, arguments[0]);
-      return this;
-
-      // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.sidenav`);
-    }
-  };
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Sidenav, 'sidenav', 'M_Sidenav');
+  }
 
 })(cash, Materialize.Vel);

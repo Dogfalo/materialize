@@ -694,32 +694,8 @@
 
   Materialize.Carousel = Carousel;
 
-  jQuery.fn.carousel = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Carousel.prototype[methodOrOptions]) {
-      let params = Array.prototype.slice.call( arguments, 1 );
+  if (Materialize.jQueryLoaded) {
+    Materialize.initializeJqueryWrapper(Carousel, 'carousel', 'M_Carousel');
+  }
 
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        let instance = this.first()[0].M_Carousel;
-        return instance[methodOrOptions].apply(instance, params);
-
-      // Void methods
-      } else {
-        return this.each(function() {
-          let instance = this.M_Carousel;
-          instance[methodOrOptions].apply(instance, params);
-        });
-      }
-
-    // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      Carousel.init(this, arguments[0]);
-      return this;
-
-    // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.carousel`);
-    }
-  };
 }( cash ));
