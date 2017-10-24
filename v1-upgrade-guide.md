@@ -51,3 +51,8 @@
 
 ## Transitions
 - JavaScript transitions removed
+
+
+## Floating Action Buttons
+- Automatic initialization removed
+- Converted to plugin

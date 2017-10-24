@@ -48,6 +48,11 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - Reworked and simplified Timepicker HTML structure
   - Renamed internal classes to reflect Timpicker namechange and structure rework
 
+- Floating Action Button
+  - Converted to plugin
+  - Added direction option
+  - Added toolbar transition option
+
 
 ## v0.100.1 (July 21st)
 - Fixed bug where modal triggers could not contain child elements

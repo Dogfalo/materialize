@@ -228,6 +228,9 @@
 
     // Fab
     $('.fixed-action-btn').floatingActionButton();
+    $('.fixed-action-btn.horizontal').floatingActionButton({
+      direction: 'left'
+    });
     $('.fixed-action-btn.click-to-toggle').floatingActionButton({
       direction: 'left',
       hoverEnabled: false
