@@ -90,11 +90,13 @@
       clear: 'Clear',
       cancel: 'Cancel',
       done: 'Done',
-      previousMonth : 'Previous Month',
-      nextMonth     : 'Next Month',
+      previousMonth : '‹',
+      nextMonth     : '›',
       months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
+      monthsShort   : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+      weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
       weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-      weekdaysShort : ['S','M','T','W','T','F','S']
+      weekdaysAbbrev : ['S','M','T','W','T','F','S']
     },
 
     // Theme Classname
@@ -166,7 +168,8 @@
       if (Datepicker._isDate(defDate)) {
         if (this.options.setDefaultDate) {
           this.setDate(defDate, true);
-        } else {
+        }
+        else {
           this.gotoDate(defDate);
         }
       } else {
@@ -311,7 +314,13 @@
     }
 
     _renderDateDisplay() {
-
+      let displayDate = Datepicker._isDate(this.date) ? this.date : new Date();
+      let i18n = this.options.i18n;
+      let day = i18n.weekdaysShort[displayDate.getDay()];
+      let month = i18n.monthsShort[displayDate.getMonth()];
+      let date = displayDate.getDate();
+      this.yearTextEl.innerHTML = displayDate.getFullYear();
+      this.dateTextEl.innerHTML = `${day}, ${month} ${date}`;
     }
 
     /**
@@ -547,7 +556,7 @@
           opts = this.options,
           isMinYear = year === opts.minYear,
           isMaxYear = year === opts.maxYear,
-          html = '<div id="' + randId + '" class="pika-title" role="heading" aria-live="assertive">',
+          html = '<div id="' + randId + '" class="datepicker-controls" role="heading" aria-live="assertive">',
           monthHtml,
           yearHtml,
           prev = true,
@@ -560,7 +569,8 @@
                  opts.i18n.months[i] + '</option>');
       }
 
-      monthHtml = '<div class="pika-label">' + opts.i18n.months[month] + '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select></div>';
+      // monthHtml = '<div class="pika-label">' + opts.i18n.months[month] + '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select></div>';
+      monthHtml = '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select>';
 
       if ($.isArray(opts.yearRange)) {
         i = opts.yearRange[0];
@@ -575,7 +585,12 @@
           arr.push('<option value="' + i + '"' + (i === year ? ' selected="selected"': '') + '>' + (i) + '</option>');
         }
       }
-      yearHtml = '<div class="pika-label">' + year + opts.yearSuffix + '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select></div>';
+      // yearHtml = '<div class="pika-label">' + year + opts.yearSuffix + '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select></div>';
+      yearHtml = '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select>';
+
+      if (c === 0) {
+        html += '<button class="month-prev' + (prev ? '' : ' is-disabled') + '" type="button">' + opts.i18n.previousMonth + '</button>';
+      }
 
       if (opts.showMonthAfterYear) {
         html += yearHtml + monthHtml;
@@ -591,11 +606,9 @@
         next = false;
       }
 
-      if (c === 0) {
-        html += '<button class="pika-prev' + (prev ? '' : ' is-disabled') + '" type="button">' + opts.i18n.previousMonth + '</button>';
-      }
+
       if (c === (this.options.numberOfMonths - 1) ) {
-        html += '<button class="pika-next' + (next ? '' : ' is-disabled') + '" type="button">' + opts.i18n.nextMonth + '</button>';
+        html += '<button class="month-next' + (next ? '' : ' is-disabled') + '" type="button">' + opts.i18n.nextMonth + '</button>';
       }
 
       return html += '</div>';
@@ -633,6 +646,7 @@
       randId = 'pika-title-' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 2);
 
       for (let c = 0; c < opts.numberOfMonths; c++) {
+        this._renderDateDisplay();
         html += '<div class="pika-lendar">' +
           this.renderTitle(this,
                       c,
@@ -644,6 +658,10 @@
       }
 
       this.calendarEl.innerHTML = html;
+
+      // Init Materialize Select
+      new Materialize.Select(this.calendarEl.querySelector('.pika-select-year'));
+      new Materialize.Select(this.calendarEl.querySelector('.pika-select-month'));
 
       if (typeof this.options.onDraw === 'function') {
         this.options.onDraw(this);
@@ -673,6 +691,9 @@
       this.modalEl = this.$modalEl[0];
 
 		  this.calendarEl = this.modalEl.querySelector('.pika-single');
+
+      this.yearTextEl = this.modalEl.querySelector('.year-text');
+      this.dateTextEl = this.modalEl.querySelector('.date-text');
       this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
       this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
       this.doneBtn = this.modalEl.querySelector('.datepicker-done');
@@ -715,10 +736,10 @@
                                 e.target.getAttribute('data-pika-month'),
                                 e.target.getAttribute('data-pika-day')));
         }
-        else if ($target.hasClass('pika-prev')) {
+        else if ($target.hasClass('month-prev')) {
           this.prevMonth();
         }
-        else if ($target.hasClass('pika-next')) {
+        else if ($target.hasClass('month-next')) {
           this.nextMonth();
         }
       }
@@ -877,11 +898,17 @@
   Datepicker._template = [
 		'<div class= "modal datepicker-modal">',
 		  '<div class="modal-content datepicker-container">',
-        '<div class="pika-single"></div>',
-        '<div class="picker__footer">',
-          '<button class="btn-flat datepicker-clear waves-effect"></button>',
-          '<button class="btn-flat datepicker-cancel waves-effect"></button>',
-          '<button class="btn-flat datepicker-done waves-effect"></button>',
+        '<div class="datepicker-date-display">',
+          '<span class="year-text"></span>',
+          '<span class="date-text"></span>',
+        '</div>',
+        '<div class="datepicker-calendar-container">',
+          '<div class="pika-single"></div>',
+          '<div class="picker__footer">',
+            '<button class="btn-flat datepicker-clear waves-effect" type="button"></button>',
+            '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>',
+            '<button class="btn-flat datepicker-done waves-effect" type="button"></button>',
+          '</div>',
         '</div>',
       '</div>',
 		'</div>'
