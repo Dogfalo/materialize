@@ -36,7 +36,6 @@
       this.isOpen = false;
 
       // setup
-      console.log(this.$el.attr('data-target'));
       this.$origin = $('#' + this.$el.attr('data-target'));
       this._setup();
 

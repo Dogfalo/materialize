@@ -226,6 +226,16 @@
       },
     });
 
+    // Fab
+    $('.fixed-action-btn').floatingActionButton();
+    $('.fixed-action-btn.click-to-toggle').floatingActionButton({
+      direction: 'left',
+      hoverEnabled: false
+    });
+    $('.fixed-action-btn.toolbar').floatingActionButton({
+      toolbarEnabled: true
+    });
+
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

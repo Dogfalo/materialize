@@ -150,7 +150,9 @@ button.btn-floating {
     }
   }
 
-  &.horizontal {
+  // Directions
+  &.direction-left,
+  &.direction-right {
     padding: 0 0 0 15px;
 
     ul {
@@ -164,7 +166,37 @@ button.btn-floating {
 
       li {
         display: inline-block;
-        margin: 15px 15px 0 0;
+        margin: 7.5px 15px 0 0;
+      }
+    }
+  }
+
+  &.direction-right {
+    padding: 0 15px 0 0;
+
+    ul {
+      text-align: left;
+      direction: rtl;
+      left: 64px;
+      right: auto;
+
+      li {
+        margin: 7.5px 0 0 15px;
+      }
+    }
+  }
+
+  &.direction-bottom {
+    padding: 0 0 15px 0;
+
+    ul {
+      top: 64px;
+      bottom: auto;
+      display: flex;
+      flex-direction: column-reverse;
+
+      li {
+        margin: 15px 0 0 0;
       }
     }
   }
