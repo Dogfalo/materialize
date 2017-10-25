@@ -145,19 +145,6 @@
 
       this._setupEventHandlers();
 
-      // if (opts.field) {
-      //   if (opts.container) {
-      //     opts.container.appendChild(self.el);
-      //   } else if (opts.bound) {
-      //     document.body.appendChild(self.el);
-      //   } else {
-      //     opts.field.parentNode.insertBefore(self.el, opts.field.nextSibling);
-      //   }
-
-
-
-      // }
-
       if (!this.options.defaultDate) {
         this.options.defaultDate = new Date(Date.parse(this.el.value));
         this.options.setDefaultDate = true;
@@ -516,7 +503,7 @@
         arr.push('is-endrange');
       }
       return '<td data-day="' + opts.day + '" class="' + arr.join(' ') + '" aria-selected="' + ariaSelected + '">' +
-        '<button class="pika-button pika-day" type="button" ' +
+        '<button class="datepicker-day-button" type="button" ' +
         'data-pika-year="' + opts.year + '" data-pika-month="' + opts.month + '" data-pika-day="' + opts.day + '">' +
         opts.day +
         '</button>' +
@@ -528,9 +515,9 @@
     }
 
     renderTable(opts, data, randId) {
-      return '<table cellpadding="0" cellspacing="0" class="pika-table" role="grid" aria-labelledby="' +
+      return '<div class="datepicker-table-wrapper"><table cellpadding="0" cellspacing="0" class="datepicker-table" role="grid" aria-labelledby="' +
         randId + '">' +
-        this.renderHead(opts) + this.renderBody(data) + '</table>';
+        this.renderHead(opts) + this.renderBody(data) + '</table></div>';
     }
 
     renderHead(opts) {
@@ -647,14 +634,13 @@
 
       for (let c = 0; c < opts.numberOfMonths; c++) {
         this._renderDateDisplay();
-        html += '<div class="pika-lendar">' +
+        html +=
           this.renderTitle(this,
                       c,
                       this.calendars[c].year,
                       this.calendars[c].month,
                       this.calendars[0].year, randId) +
-          this.render(this.calendars[c].year, this.calendars[c].month, randId) +
-          '</div>';
+          this.render(this.calendars[c].year, this.calendars[c].month, randId);
       }
 
       this.calendarEl.innerHTML = html;
@@ -729,7 +715,7 @@
       let $target = $(e.target);
 
       if (!$target.hasClass('is-disabled')) {
-        if ($target.hasClass('pika-button') &&
+        if ($target.hasClass('datepicker-day-button') &&
             !$target.hasClass('is-empty') &&
             !$target.parent().hasClass('is-disabled')) {
           this.setDate(new Date(e.target.getAttribute('data-pika-year'),
@@ -844,7 +830,7 @@
       while (day >= 7) {
         day -= 7;
       }
-      return abbr ? opts.i18n.weekdaysShort[day] : opts.i18n.weekdays[day];
+      return abbr ? opts.i18n.weekdaysAbbrev[day] : opts.i18n.weekdays[day];
     }
 
 
