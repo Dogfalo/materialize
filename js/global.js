@@ -399,8 +399,6 @@ Materialize.throttle = function(func, wait, options) {
 let Vel;
 if (Materialize.jQueryLoaded) {
   Vel = jQuery.Velocity;
-} else if ($) {
-  Vel = $.Velocity;
 } else {
   Vel = Velocity;
 }

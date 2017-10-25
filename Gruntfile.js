@@ -155,9 +155,7 @@ module.exports = function(grunt) {
       dist: {
         // the files to concatenate
         src: [
-          "js/initial.js",
           "js/cash.js",
-          "js/animation.js",
           "js/velocity.min.js",
           "js/global.js",
           "js/collapsible.js",
@@ -197,9 +195,7 @@ module.exports = function(grunt) {
           sourceMapStyle: 'link'
         },
         src: [
-          "js/initial.js",
           "js/cash.js",
-          "js/animation.js",
           "js/velocity.min.js",
           "js/global.js",
           "js/collapsible.js",
@@ -284,8 +280,6 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
-            "initial.js",
-            "animation.js",
             "velocity.min.js",
             "global.js",
             "collapsible.js",
