@@ -203,8 +203,8 @@
       let newY = y - scrollTop;
 
       let bounding = {
-        left: x,
-        top: y,
+        left: newX,
+        top: newY,
         width: width,
         height: height
       };
