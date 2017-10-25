@@ -13,6 +13,35 @@
 .datepicker-controls {
   display: flex;
   justify-content: space-between;
+  width: 280px;
+  margin: 0 auto;
+
+  .selects-container {
+    display: flex;
+  }
+
+  .select-wrapper {
+    input {
+      &:focus {
+        border-bottom: none;
+      }
+      border-bottom: none;
+      text-align: center;
+      margin: 0;
+    }
+
+    i {
+      display: none;
+    }
+  }
+
+  .select-year input {
+    width: 50px;
+  }
+
+  .select-month input {
+    width: 70px;
+  }
 }
 
 .month-prev, .month-next {
@@ -131,6 +160,7 @@
     flex-direction: row;
   }
 
+  .datepicker-controls,
   .datepicker-table,
   .datepicker-footer {
     width: 320px;

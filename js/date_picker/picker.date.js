@@ -226,8 +226,6 @@
     }
 
     _insertHTMLIntoDOM() {
-
-
       this.clearBtn.innerHTML = this.options.i18n.clear;
       this.todayBtn.innerHTML = this.options.i18n.today;
       this.doneBtn.innerHTML = this.options.i18n.done;
@@ -579,11 +577,14 @@
         html += '<button class="month-prev' + (prev ? '' : ' is-disabled') + '" type="button">' + opts.i18n.previousMonth + '</button>';
       }
 
+
+      html += '<div class="selects-container">';
       if (opts.showMonthAfterYear) {
         html += yearHtml + monthHtml;
       } else {
         html += monthHtml + yearHtml;
       }
+      html += '</div>';
 
       if (isMinYear && (month === 0 || opts.minMonth >= month)) {
         prev = false;
@@ -632,6 +633,7 @@
 
       randId = 'pika-title-' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 2);
 
+
       for (let c = 0; c < opts.numberOfMonths; c++) {
         this._renderDateDisplay();
         html +=
@@ -646,8 +648,8 @@
       this.calendarEl.innerHTML = html;
 
       // Init Materialize Select
-      new Materialize.Select(this.calendarEl.querySelector('.pika-select-year'));
-      new Materialize.Select(this.calendarEl.querySelector('.pika-select-month'));
+      new Materialize.Select(this.calendarEl.querySelector('.pika-select-year'), {classes: 'select-year'});
+      new Materialize.Select(this.calendarEl.querySelector('.pika-select-month'), {classes: 'select-month'});
 
       if (typeof this.options.onDraw === 'function') {
         this.options.onDraw(this);
@@ -665,6 +667,7 @@
       this._handleCalendarClickBound = this._handleCalendarClick.bind(this);
       this._finishSelectionBound = this._finishSelection.bind(this);
       this._handleTodayClickBound = this._handleTodayClick.bind(this);
+      this._handleClearClickBound = this._handleClearClick.bind(this);
 
       this.el.addEventListener('click', this._handleInputClickBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
@@ -672,6 +675,7 @@
       this.calendarEl.addEventListener('click', this._handleCalendarClickBound);
       this.doneBtn.addEventListener('click', this._finishSelectionBound);
       this.todayBtn.addEventListener('click', this._handleTodayClickBound);
+      this.clearBtn.addEventListener('click', this._handleClearClickBound);
     }
 
     _setupVariables() {
@@ -746,6 +750,12 @@
 
     _handleTodayClick() {
       this.date = new Date();
+      this.setInputValue();
+      this.close();
+    }
+
+    _handleClearClick() {
+      this.date = null;
       this.setInputValue();
       this.close();
     }
