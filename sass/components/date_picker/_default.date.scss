@@ -1,6 +1,7 @@
 /* Modal */
 .datepicker-modal {
   max-width: 325px;
+  min-width: 300px;
 }
 
 .datepicker-container.modal-content {
@@ -26,7 +27,7 @@
   flex: 1;
   background-color: $secondary-color;
   color: #fff;
-  padding: 18px;
+  padding: 20px 22px;
   font-weight: 500;
 
   .year-text {
@@ -50,13 +51,10 @@
   flex: 2.5;
 }
 
-.datepicker-table-wrapper {
-  padding: 0 1rem;
-}
-
 .datepicker-table {
   width: 280px;
   font-size: 1rem;
+  margin: 0 auto;
 
   thead {
     border-bottom: none;
@@ -101,6 +99,26 @@
   cursor: pointer;
 }
 
+/* Footer */
+.datepicker-footer {
+  width: 280px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.datepicker-clear,
+.datepicker-today,
+.datepicker-done {
+  color: $secondary-color;
+  padding: 0 1rem;
+}
+
+.datepicker-clear {
+  color: $error-color;
+}
+
 
 
 /* Media Queries */
@@ -111,5 +129,14 @@
 
   .datepicker-container.modal-content {
     flex-direction: row;
+  }
+
+  .datepicker-table,
+  .datepicker-footer {
+    width: 320px;
+  }
+
+  .datepicker-day-button {
+    line-height: 44px;
   }
 }

@@ -88,8 +88,8 @@
     // internationalization
     i18n: {
       clear: 'Clear',
-      cancel: 'Cancel',
-      done: 'Done',
+      today: 'Today',
+      done: 'Ok',
       previousMonth : '‹',
       nextMonth     : '›',
       months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
@@ -229,7 +229,7 @@
 
 
       this.clearBtn.innerHTML = this.options.i18n.clear;
-      this.cancelBtn.innerHTML = this.options.i18n.cancel;
+      this.todayBtn.innerHTML = this.options.i18n.today;
       this.doneBtn.innerHTML = this.options.i18n.done;
 
       if (this.options.container && !!containerEl) {
@@ -664,12 +664,14 @@
       this._handleInputChangeBound= this._handleInputChange.bind(this);
       this._handleCalendarClickBound = this._handleCalendarClick.bind(this);
       this._finishSelectionBound = this._finishSelection.bind(this);
+      this._handleTodayClickBound = this._handleTodayClick.bind(this);
 
       this.el.addEventListener('click', this._handleInputClickBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
       this.el.addEventListener('change', this._handleInputChangeBound);
       this.calendarEl.addEventListener('click', this._handleCalendarClickBound);
       this.doneBtn.addEventListener('click', this._finishSelectionBound);
+      this.todayBtn.addEventListener('click', this._handleTodayClickBound);
     }
 
     _setupVariables() {
@@ -681,7 +683,7 @@
       this.yearTextEl = this.modalEl.querySelector('.year-text');
       this.dateTextEl = this.modalEl.querySelector('.date-text');
       this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
-      this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
+      this.todayBtn = this.modalEl.querySelector('.datepicker-today');
       this.doneBtn = this.modalEl.querySelector('.datepicker-done');
     }
 
@@ -740,6 +742,12 @@
       } else {
         this._c = true;
       }
+    }
+
+    _handleTodayClick() {
+      this.date = new Date();
+      this.setInputValue();
+      this.close();
     }
 
     // _onChange(e) {
@@ -890,10 +898,12 @@
         '</div>',
         '<div class="datepicker-calendar-container">',
           '<div class="pika-single"></div>',
-          '<div class="picker__footer">',
+          '<div class="datepicker-footer">',
             '<button class="btn-flat datepicker-clear waves-effect" type="button"></button>',
-            '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>',
-            '<button class="btn-flat datepicker-done waves-effect" type="button"></button>',
+            '<div class="confirmation-btns">',
+              '<button class="btn-flat datepicker-today waves-effect" type="button"></button>',
+              '<button class="btn-flat datepicker-done waves-effect" type="button"></button>',
+            '</div>',
           '</div>',
         '</div>',
       '</div>',
