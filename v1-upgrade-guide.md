@@ -56,3 +56,8 @@
 ## Floating Action Buttons
 - Automatic initialization removed
 - Converted to plugin
+
+
+## Character Counter
+- Automatic initialization removed
+
