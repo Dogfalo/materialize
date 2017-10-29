@@ -99,10 +99,6 @@
     color: $datepicker-calendar-header-color;
   }
 
-  .datepicker-day-button {
-    color: inherit;
-  }
-
   td {
     &.is-selected {
       background-color: $secondary-color;
@@ -134,7 +130,9 @@
   width: 100%;
   border-radius: 50%;
   cursor: pointer;
+  color: inherit;
 }
+
 
 /* Footer */
 .datepicker-footer {
@@ -155,7 +153,6 @@
 .datepicker-clear {
   color: $error-color;
 }
-
 
 
 /* Media Queries */
