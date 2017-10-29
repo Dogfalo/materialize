@@ -109,8 +109,10 @@
       color: $secondary-color;
     }
 
-    &.is-outside-current-month {
+    &.is-outside-current-month,
+    &.is-disabled {
       color: $datepicker-disabled-day-color;
+      pointer-events: none;
     }
 
     border-radius: 50%;

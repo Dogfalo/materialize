@@ -22,6 +22,10 @@
     // make the `defaultDate` the initial selected value
     setDefaultDate: false,
 
+    disableWeekends: false,
+
+    disableDayFn: null,
+
     // first day of week (0: Sunday, 1: Monday etc)
     firstDay: 0,
 
@@ -153,6 +157,11 @@
       return (/Date/).test(Object.prototype.toString.call(obj)) && !isNaN(obj.getTime());
     }
 
+    static _isWeekend(date) {
+      let day = date.getDay();
+      return day === 0 || day === 6;
+    }
+
     static _setToStartOfDay(date) {
       if (Datepicker._isDate(date)) date.setHours(0,0,0,0);
     }
@@ -171,8 +180,7 @@
       return a.getTime() === b.getTime();
     }
 
-    static _setToStartOfDay(date)
-    {
+    static _setToStartOfDay(date) {
       if (Datepicker._isDate(date)) date.setHours(0,0,0,0);
     }
 
@@ -379,9 +387,9 @@
             isEndRange = opts.endRange && Datepicker._compareDates(opts.endRange, day),
             isInRange = opts.startRange && opts.endRange && opts.startRange < day && day < opts.endRange,
             isDisabled = (opts.minDate && day < opts.minDate) ||
-            (opts.maxDate && day > opts.maxDate) ||
-            (opts.disableWeekends && isWeekend(day)) ||
-            (opts.disableDayFn && opts.disableDayFn(day));
+                (opts.maxDate && day > opts.maxDate) ||
+                (opts.disableWeekends && Datepicker._isWeekend(day)) ||
+                (opts.disableDayFn && opts.disableDayFn(day));
 
         if (isEmpty) {
           if (i < before) {
