@@ -1,5 +1,6 @@
 (function ($) {
 
+  var sideNavFixedResizer;
   var methods = {
     init : function(options) {
       var defaults = {
@@ -55,7 +56,7 @@
 
         // Window resize to reset on large screens fixed
         if (menu.hasClass('fixed')) {
-          $(window).resize( function() {
+          $(window).resize(sideNavFixedResizer = function () {
             if (window.innerWidth > 992) {
               // Close menu if window is resized bigger than 992 and user has fixed sidenav
               if ($('#sidenav-overlay').length !== 0 && menuOut) {
@@ -75,7 +76,6 @@
               }
 
             }
-
           });
         }
 
@@ -391,6 +391,7 @@
       $dragTarget.remove();
       $(this).off('click');
       $overlay.remove();
+      $(window).off('resize', sideNavFixedResizer);
     },
     show : function() {
       this.trigger('click');
