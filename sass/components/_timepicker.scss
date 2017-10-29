@@ -138,8 +138,14 @@
 
 
 /* Footer */
+.timepicker-footer {
+  margin: 0 auto;
+  padding: 5px 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 .timepicker-clear {
-  float: left;
   color: $error-color;
 }
 
@@ -155,7 +161,7 @@
 /* Media Queries */
 @media #{$medium-and-up} {
   .timepicker-modal {
-    max-width: 625px;
+    max-width: 600px;
   }
 
   .timepicker-container.modal-content {

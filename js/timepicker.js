@@ -233,17 +233,20 @@
 		  this.spanHours = this.modalEl.querySelector('.timepicker-span-hours');
 		  this.spanMinutes = this.modalEl.querySelector('.timepicker-span-minutes');
 		  this.spanAmPm = this.modalEl.querySelector('.timepicker-span-am-pm');
-		  this.footer = this.modalEl.querySelector('.picker__footer');
+		  this.footer = this.modalEl.querySelector('.timepicker-footer');
 		  this.amOrPm = 'PM';
     }
 
     _pickerSetup() {
-      $('<button type="button" class="btn-flat timepicker-clear waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
+      $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
         .appendTo(this.footer).on('click', this.clear.bind(this));
-		  $('<button type="button" class="btn-flat timepicker-close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
-        .appendTo(this.footer).on('click', this.close.bind(this));
-		  $('<button type="button" class="btn-flat timepicker-close waves-effect" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
-        .appendTo(this.footer).on('click', this.done.bind(this));
+
+      let confirmationBtnsContainer = $('<div class="confirmation-btns"></div>');
+		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
+        .appendTo(confirmationBtnsContainer).on('click', this.close.bind(this));
+		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
+        .appendTo(confirmationBtnsContainer).on('click', this.done.bind(this));
+      confirmationBtnsContainer.appendTo(this.footer);
     }
 
 
@@ -582,8 +585,7 @@
 						'<div class="timepicker-dial timepicker-hours"></div>',
 						'<div class="timepicker-dial timepicker-minutes timepicker-dial-out"></div>',
 				  '</div>',
-					'<div class="picker__footer">',
-					'</div>',
+		      '<div class="timepicker-footer"></div>',
 				'</div>',
 			'</div>',
 		'</div>'
