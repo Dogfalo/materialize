@@ -3,7 +3,7 @@
   background-color: $dropdown-bg-color;
   margin: 0;
   display: none;
-  min-width: 100px;
+  min-width: $dropdown-content-min-width;
   max-height: 650px;
   overflow-y: auto;
   opacity: 0;

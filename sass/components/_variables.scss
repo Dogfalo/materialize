@@ -147,6 +147,7 @@ $timepicker-clock-plate-bg: #eee;
 $dropdown-bg-color: #fff !default;
 $dropdown-hover-bg-color: #eee !default;
 $dropdown-color: $secondary-color !default;
+$dropdown-content-min-width: 100px !default;
 $dropdown-item-height: 50px !default;
 
 
@@ -245,6 +246,7 @@ $navbar-line-height-mobile: $navbar-height-mobile !default;
 $navbar-font-size: 1rem !default;
 $navbar-font-color: #fff !default;
 $navbar-brand-font-size: 2.1rem !default;
+$navbar-dropdown-arrow-left-margin: 6 !default;
 
 // 15. Side Navigation
 // ==========================================================================
