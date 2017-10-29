@@ -99,14 +99,22 @@
     color: $datepicker-calendar-header-color;
   }
 
+  .datepicker-day-button {
+    color: inherit;
+  }
+
   td {
     &.is-selected {
       background-color: $secondary-color;
+      color: #fff;
+    }
 
-      .datepicker-day-button {
-        color: #fff;
-        font-weight: 500;
-      }
+    &.is-today {
+      color: $secondary-color;
+    }
+
+    &.is-outside-current-month {
+      color: $datepicker-disabled-day-color;
     }
 
     border-radius: 50%;

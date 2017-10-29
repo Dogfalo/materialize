@@ -6,13 +6,6 @@
     // data-attribute on the input field with an aria assistance tekst (only applied when `bound` is set)
     ariaLabel: 'Use the arrow keys to pick a date',
 
-    // position of the datepicker, relative to the field (default to bottom & left)
-    // ('bottom' & 'left' keywords are not used, 'top' & 'right' are modifier on the bottom/left position)
-    position: 'bottom left',
-
-    // automatically fit in the viewport even if it means repositioning from the position option
-    reposition: true,
-
     // the default output format for `.toString()` and `field` value
     format: 'YYYY-MM-DD',
 
@@ -32,9 +25,6 @@
     // first day of week (0: Sunday, 1: Monday etc)
     firstDay: 0,
 
-    // the default flag for moment's strict date parsing
-    formatStrict: false,
-
     // the minimum/earliest date that can be selected
     minDate: null,
     // the maximum/latest date that can be selected
@@ -42,12 +32,6 @@
 
     // number of years either side, or array of upper/lower range
     yearRange: 10,
-
-    // show week numbers at head of row
-    showWeekNumber: false,
-
-    // Week picker mode
-    pickWholeWeek: false,
 
     // used internally (don't config outside)
     minYear: 0,
@@ -60,30 +44,14 @@
 
     isRTL: false,
 
-    // Additional text to append to the year in the calendar title
-    yearSuffix: '',
-
     // Render the month after year in the calendar title
     showMonthAfterYear: false,
 
     // Render days of the calendar grid that fall in the next or previous month
     showDaysInNextAndPreviousMonths: false,
 
-    // Allows user to select days that fall in the next or previous month
-    enableSelectionDaysInNextAndPreviousMonths: false,
-
-    // how many months are visible
-    numberOfMonths: 1,
-
-    // when numberOfMonths is used, this will help you to choose where the main calendar will be (default `left`, can be set to `right`)
-    // only used for the first display or when a selected date is not visible
-    mainCalendar: 'left',
-
     // Specify a DOM element to render the calendar in
     container: undefined,
-
-    // Blur field when date is selected
-    blurFieldOnSelect : true,
 
     // internationalization
     i18n: {
@@ -98,9 +66,6 @@
       weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
       weekdaysAbbrev : ['S','M','T','W','T','F','S']
     },
-
-    // Theme Classname
-    theme: null,
 
     // events array
     events: [],
@@ -230,6 +195,7 @@
       this.todayBtn.innerHTML = this.options.i18n.today;
       this.doneBtn.innerHTML = this.options.i18n.done;
 
+      let containerEl = document.querySelector(this.options.container);
       if (this.options.container && !!containerEl) {
         this.$modalEl.appendTo(containerEl);
 
@@ -333,9 +299,9 @@
           month: date.getMonth(),
           year: date.getFullYear()
         }];
-        if (this.options.mainCalendar === 'right') {
-          this.calendars[0].month += 1 - this.options.numberOfMonths;
-        }
+        // if (this.options.mainCalendar === 'right') {
+        //   this.calendars[0].month += 1 - this.options.numberOfMonths;
+        // }
       }
 
       this.adjustCalendars();
@@ -343,12 +309,12 @@
 
     adjustCalendars() {
       this.calendars[0] = this.adjustCalendar(this.calendars[0]);
-      for (let c = 1; c < this.options.numberOfMonths; c++) {
-        this.calendars[c] = this.adjustCalendar({
-          month: this.calendars[0].month + c,
-          year: this.calendars[0].year
-        });
-      }
+      // for (let c = 1; c < this.options.numberOfMonths; c++) {
+      //   this.calendars[c] = this.adjustCalendar({
+      //     month: this.calendars[0].month + c,
+      //     year: this.calendars[0].year
+      //   });
+      // }
       this.draw();
     }
 
@@ -442,19 +408,12 @@
           isEndRange: isEndRange,
           isInRange: isInRange,
           showDaysInNextAndPreviousMonths: opts.showDaysInNextAndPreviousMonths,
-          enableSelectionDaysInNextAndPreviousMonths: opts.enableSelectionDaysInNextAndPreviousMonths
         };
 
-        if (opts.pickWholeWeek && isSelected) {
-          isWeekSelected = true;
-        }
         row.push(this.renderDay(dayConfig));
 
         if (++r === 7) {
-          if (opts.showWeekNumber) {
-            row.unshift(renderWeek(i - before, month, year));
-          }
-          data.push(this.renderRow(row, opts.isRTL, opts.pickWholeWeek, isWeekSelected));
+          data.push(this.renderRow(row, opts.isRTL, isWeekSelected));
           row = [];
           r = 0;
           isWeekSelected = false;
@@ -469,10 +428,7 @@
       if (opts.isEmpty) {
         if (opts.showDaysInNextAndPreviousMonths) {
           arr.push('is-outside-current-month');
-
-          if(!opts.enableSelectionDaysInNextAndPreviousMonths) {
-            arr.push('is-selection-disabled');
-          }
+          arr.push('is-selection-disabled');
 
         } else {
           return '<td class="is-empty"></td>';
@@ -481,6 +437,7 @@
       if (opts.isDisabled) {
         arr.push('is-disabled');
       }
+
       if (opts.isToday) {
         arr.push('is-today');
       }
@@ -508,8 +465,8 @@
         '</td>';
     }
 
-    renderRow(days, isRTL, pickWholeWeek, isRowSelected) {
-      return '<tr class="pika-row' + (pickWholeWeek ? ' pick-whole-week' : '') + (isRowSelected ? ' is-selected' : '') + '">' + (isRTL ? days.reverse() : days).join('') + '</tr>';
+    renderRow(days, isRTL, isRowSelected) {
+      return '<tr class="pika-row' + (isRowSelected ? ' is-selected' : '') + '">' + (isRTL ? days.reverse() : days).join('') + '</tr>';
     }
 
     renderTable(opts, data, randId) {
@@ -520,9 +477,6 @@
 
     renderHead(opts) {
       let i, arr = [];
-      if (opts.showWeekNumber) {
-        arr.push('<th></th>');
-      }
       for (i = 0; i < 7; i++) {
         arr.push('<th scope="col"><abbr title="' +
                  this.renderDayName(opts, i) + '">' +
@@ -595,9 +549,9 @@
       }
 
 
-      if (c === (this.options.numberOfMonths - 1) ) {
+      // if (c === (this.options.numberOfMonths - 1) ) {
         html += '<button class="month-next' + (next ? '' : ' is-disabled') + '" type="button">' + opts.i18n.nextMonth + '</button>';
-      }
+      // }
 
       return html += '</div>';
     }
@@ -634,7 +588,7 @@
       randId = 'pika-title-' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 2);
 
 
-      for (let c = 0; c < opts.numberOfMonths; c++) {
+      for (let c = 0; c < 1; c++) {
         this._renderDateDisplay();
         html +=
           this.renderTitle(this,
@@ -735,17 +689,17 @@
           this.nextMonth();
         }
       }
-      if (!$target.hasClass('pika-select')) {
-        // if this is touch event prevent mouse events emulation
-        // if (e.preventDefault) {
-        //   e.preventDefault();
-        // } else {
-        //   e.returnValue = false;
-        //   return false;
-        // }
-      } else {
-        this._c = true;
-      }
+      // if (!$target.hasClass('pika-select')) {
+      //   // if this is touch event prevent mouse events emulation
+      //   // if (e.preventDefault) {
+      //   //   e.preventDefault();
+      //   // } else {
+      //   //   e.returnValue = false;
+      //   //   return false;
+      //   // }
+      // } else {
+      //   this._c = true;
+      // }
     }
 
     _handleTodayClick() {
@@ -774,34 +728,34 @@
     //   }
     // }
 
-    _onKeyChange(e) {
-      e = e || window.event;
+    // _onKeyChange(e) {
+    //   e = e || window.event;
 
-      if (self.isVisible()) {
+    //   if (self.isVisible()) {
 
-        switch(e.keyCode){
-        case 13:
-        case 27:
-          if (opts.field) {
-            opts.field.blur();
-          }
-          break;
-        case 37:
-          e.preventDefault();
-          self.adjustDate('subtract', 1);
-          break;
-        case 38:
-          self.adjustDate('subtract', 7);
-          break;
-        case 39:
-          self.adjustDate('add', 1);
-          break;
-        case 40:
-          self.adjustDate('add', 7);
-          break;
-        }
-      }
-    }
+    //     switch(e.keyCode){
+    //     case 13:
+    //     case 27:
+    //       if (opts.field) {
+    //         opts.field.blur();
+    //       }
+    //       break;
+    //     case 37:
+    //       e.preventDefault();
+    //       self.adjustDate('subtract', 1);
+    //       break;
+    //     case 38:
+    //       self.adjustDate('subtract', 7);
+    //       break;
+    //     case 39:
+    //       self.adjustDate('add', 1);
+    //       break;
+    //     case 40:
+    //       self.adjustDate('add', 7);
+    //       break;
+    //     }
+    //   }
+    // }
 
     _handleInputChange(e) {
       let date;
@@ -875,9 +829,6 @@
       }
       this.draw();
       this.modal.open();
-
-
-
       return this;
     }
 
@@ -894,7 +845,6 @@
         this.options.onClose.call(this);
       }
       this.modal.close();
-
       return this;
     }
   }
