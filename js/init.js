@@ -194,7 +194,7 @@
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
     });
-    $('input, textarea').characterCounter();
+    $('input[data-length], textarea[data-length]').characterCounter();
 
     // Swipeable Tabs Demo Init
     if ($('#tabs-swipe-demo').length) {
