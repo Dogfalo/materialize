@@ -15,16 +15,16 @@ body {
 
 main {
   // flex: 1 0 auto;
-}
 
-ul {
-  &:not(.browser-default) {
-    padding-left: $ul-padding-left;
-    list-style-type: $ul-list-style-type;
-
-    & > li {
+  ul {
+    &:not(.browser-default) {
       padding-left: $ul-padding-left;
       list-style-type: $ul-list-style-type;
+  
+      & > li {
+        padding-left: $ul-padding-left;
+        list-style-type: $ul-list-style-type;
+      }
     }
   }
 }
@@ -341,6 +341,11 @@ ul.staggered-list li {
   padding-top: 20px;
   color: $footer-font-color;
   background-color: $footer-bg-color;
+  
+  ul {
+    padding: 0;
+    list-style-type: none
+  }
 
   .footer-copyright {
     overflow: hidden;
