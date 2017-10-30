@@ -45,7 +45,6 @@ small { font-size: 75%; }
 
 
 .flow-text{
-  font-weight: 300;
   $i: 0;
   @while $i <= $intervals {
     @media only screen and (min-width : 360 + ($i * $interval-size)) {
