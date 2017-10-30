@@ -19,11 +19,12 @@ main {
 
 ul {
   &:not(.browser-default) {
-    padding-left: 0;
-    list-style-type: none;
+    padding-left: $ul-padding-left;
+    list-style-type: $ul-list-style-type;
 
     & > li {
-      list-style-type: none;
+      padding-left: $ul-padding-left;
+      list-style-type: $ul-list-style-type;
     }
   }
 }
