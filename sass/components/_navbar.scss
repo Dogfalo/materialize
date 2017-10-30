@@ -68,6 +68,10 @@ nav {
       left: 50%;
       transform: translateX(-50%);
     }
+    .logo-image {
+      height: $navbar-logo-image-height;
+      width:auto;
+    }
 
     @media #{$medium-and-down} {
       left: 50%;
