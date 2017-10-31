@@ -896,7 +896,7 @@
         </code></pre>
 
         <h4>Initialization</h4>
-        <p>The data is a json object where the key is the matching string and the value is an optional image url.</p>
+        <p>The data is a json object where the key is the matching string and the value is an optional image url. If the value is not a string, ie null or an object, i will not be considered an image url.</p>
         <pre><code class="language-javascript">
   $('input.autocomplete').autocomplete({
     data: {
