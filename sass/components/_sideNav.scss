@@ -45,7 +45,8 @@
     font-weight: 500;
     height: $sidenav-item-height;
     line-height: $sidenav-line-height;
-    padding: 0 ($sidenav-padding * 2);
+    // Keep padding consistent with collapsible
+    padding: 0 ($sidenav-padding);
 
     &:hover { background-color: rgba(0,0,0,.05);}
 
