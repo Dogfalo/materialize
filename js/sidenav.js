@@ -61,7 +61,7 @@
       this.isFixed = this.el.classList.contains('sidenav-fixed');
 
       /**
-       * Describes dragging state of Sidenav
+       * Describes if Sidenav is being draggeed
        * @type {Boolean}
        */
       this.isDragged = false;
