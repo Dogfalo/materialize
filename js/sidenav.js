@@ -90,8 +90,9 @@
     /**
      * Get Instance
      */
-    getInstance() {
-      return this;
+    static getInstance(el) {
+      let domElem = !!el.jquery ? el[0] : el;
+      return domElem.M_Sidenav;
     }
 
     /**

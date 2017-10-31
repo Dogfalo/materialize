@@ -58,6 +58,14 @@
     }
 
     /**
+     * Get Instance
+     */
+    static getInstance(el) {
+      let domElem = !!el.jquery ? el[0] : el;
+      return domElem.M_Toast;
+    }
+
+    /**
      * Append toast container and add event handlers
      */
     static _createContainer() {
