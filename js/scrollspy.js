@@ -37,8 +37,8 @@
        * @member Modal#options
        * @prop {Number} [throttle=100] - Throttle of scroll handler
        * @prop {Number} [scrollOffset=200] - Offset for centering element when scrolled to
-       * @prop {String} [activeClass='active'] - class to set active element to
-       * @prop {Function} [getActiveElement] - used to find active element
+       * @prop {String} [activeClass='active'] - Class applied to active elements
+       * @prop {Function} [getActiveElement] - Used to find active element
        */
       this.options = $.extend({}, ScrollSpy.defaults, options);
 

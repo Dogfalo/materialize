@@ -4,13 +4,11 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="section scrollspy">
-        <h4>Introduction</h4>
-        <p class="caption">Scrollspy is a jQuery plugin that tracks certain elements and which element the user's screen is currently centered on. Our main demo of this is our table of contents on every documentation page to the right. Clicking on these links will also scroll the page to that element. </p>
-      </div>
+        <p class="caption">
+          Scrollspy is a jQuery plugin that tracks certain elements and which element the user's screen is currently centered on. Our main demo of this is our table of contents on every documentation page to the right. Clicking on these links will also scroll the page to that element.
+        </p>
 
 
-      <div id="structure" class="section scrollspy">
-        <h4>Table of Contents Structure</h4>
         <pre><code class="language-markup">
   &lt;div class="row">
     &lt;div class="col s12 m9 l10">
@@ -37,47 +35,111 @@
         </code></pre>
       </div>
 
-
-      <div id="initialization" class="section scrollspy">
-        <h4>jQuery Plugin Initialization</h4>
+      <div id="initialization" class="scrollspy section">
+        <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
+  var elem = document.querySelector('.scrollspy');
+  var instance = new M.ScrollSpy(elem, options);
+
+  // Or with jQuery
+
   $(document).ready(function(){
     $('.scrollspy').scrollSpy();
   });
         </code></pre>
+        <br>
       </div>
 
 
-      <div id="options" class="section scrollspy">
-        <h4>jQuery Plugin Options</h4>
-        <table class="highlight">
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <table class="striped">
           <thead>
             <tr>
-                <th style="min-width: 150px;">Option Name</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
+              <td>throttle</td>
+              <td>Number</td>
+              <td>100</td>
+              <td> Throttle of scroll handler.</td>
+            </tr>
+            <tr>
               <td>scrollOffset</td>
-              <td>Offset for centering element when scrolled to. Default: 200</td>
+              <td>Number</td>
+              <td>200</td>
+              <td>Offset for centering element when scrolled to.</td>
             </tr>
             <tr>
               <td>activeClass</td>
-              <td>Class name to be added to the active link. Default: active</td>
+              <td>String</td>
+              <td>'active'</td>
+              <td>Class applied to active elements.</td>
             </tr>
             <tr>
               <td>getActiveElement</td>
-              <td>
-                Function that returns a selector to add <code class="language-markup inline">activeClass</code> to. The parameter is the section id.
+              <td>Function</td>
+              <td></td>
+              <td>Used to find active element.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
 
-                Default: <pre><code class="language-javascript">
-  function(id) {
-    return 'a[href="#' + id + '"]';
-  }
-                </code></pre>
-              </td>
+
+      <div id="methods" class="scrollspy section">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+  var instance = M.ScrollSpy.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.scrollspy').scrollSpy('methodName');
+  */
+          </code></pre>
+        </blockquote>
+
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+instance.destroy();
+        </code></pre>
+      </div>
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
             </tr>
           </tbody>
         </table>
@@ -98,6 +160,8 @@
             <li><a href="#structure">Structure</a></li>
             <li><a href="#initialization">Intialization</a></li>
             <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
           </ul>
         </div>
       </div>
