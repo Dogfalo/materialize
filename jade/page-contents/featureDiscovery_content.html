@@ -5,10 +5,10 @@
       <div id="introduction" class="section scrollspy">
         <p class="caption">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
 
-        <h3 class="header">Tap Target</h3>
         <p class="caption">Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments. When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
 
         <a class="waves-effect waves-light btn" onclick="$('.tap-target').featureDiscovery('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').featureDiscovery('close')">Close tap target</a>
+        <br><br>
 
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
           <a id="menu" class="btn btn-floating btn-large cyan"><i class="material-icons">menu</i></a>
@@ -20,12 +20,7 @@
             <p class="white-text">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
           </div>
         </div>
-      </div>
 
-
-
-        <div id="structure" class="scrollspy section">
-          <h4>Tap Target HTML Structure</h4>
           <pre><code class="language-markup">
   &lt;!-- Element Showed -->
   &lt;a id="menu" class="waves-effect waves-light btn btn-floating" >&lt;i class="material-icons">menu&lt;/i>&lt;/a>
@@ -40,16 +35,92 @@
           </code></pre>
         </div>
 
+        <div id="initialization" class="scrollspy section">
+          <h3 class="header">Initialization</h3>
+          <pre><code class="language-javascript">
+  var instance = new M.FeatureDiscovery(options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.tap-target').featureDiscovery();
+  });
+          </code></pre>
+          <br>
+        </div>
+
 
 
         <div id="methods" class="scrollspy section">
-          <h4>jQuery Plugin Methods</h4>
-          <p class="caption">To open/close a tap target:</p>
-          <pre><code class="language-javascript">
-  $('.tap-target').featureDiscovery('open');
-  $('.tap-target').featureDiscovery('close');
-        </code></pre>
-      </div>
+          <h3 class="header">Methods</h3>
+          <blockquote>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+            <pre><code class="language-javascript col s12">
+  var instance = M.FeatureDiscovery.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.tap-target').featureDiscovery('methodName');
+    $('.tap-target').featureDiscovery('methodName', paramName);
+  */
+            </code></pre>
+          </blockquote>
+          <h5 class="method-header">
+      .open();
+          </h5>
+          <p>Open Tap Target</p>
+          <pre><code class="language-javascript col s12">
+  instance.next();
+  instance.next(3); // Move next n times.
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+      .close();
+          </h5>
+          <p>Close Tap Target</p>
+          <pre><code class="language-javascript col s12">
+  instance.close();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+      .destroy();
+          </h5>
+          <p>Destroy plugin instance and teardown</p>
+          <pre><code class="language-javascript col s12">
+  instance.destroy();
+          </code></pre>
+        </div>
+
+
+        <div id="properties" class="scrollspy section">
+          <h3 class="header">Properties</h3>
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>el</td>
+                <td>Element</td>
+                <td>The DOM element the plugin was initialized with.</td>
+              </tr>
+              <tr>
+                <td>isOpen</td>
+                <td>Boolean</td>
+                <td>If the tap target is open.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
 </div>
 
@@ -63,8 +134,9 @@
       <div style="height: 1px;">
         <ul class="section table-of-contents">
           <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#structure">Structure</a></li>
+          <li><a href="#initialization">Initialization</a></li>
           <li><a href="#methods">Methods</a></li>
+          <li><a href="#properties">Properties</a></li>
         </ul>
       </div>
     </div>
