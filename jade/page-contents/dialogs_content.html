@@ -83,64 +83,156 @@
         <h4>Initialization</h4>
         <p>Tooltips are initialized automatically, but if you have dynamically added tooltips, you will need to initialize them.</p>
         <pre><code class="language-javascript">
+  var instance = new M.Tooltip(options);
+
+  // Or with jQuery
+
   $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
   });
         </code></pre><br>
 
-        <h4>jQuery Plugin Options</h4>
-        <table class="highlight">
+        <h4>Options</h4>
+        <table class="striped">
           <thead>
             <tr>
-                <th>Option Name</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
                 <th>Description</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>enterdelay</td>
-              <td>Delay time before tooltip appears. (Default: 0)</td>
+              <td>exitDelay</td>
+              <td>Number</td>
+              <td>0</td>
+              <td>Delay time before tooltip disappears.</td>
             </tr>
             <tr>
-              <td>exitdelay</td>
-              <td>Delay time before tooltip disappears. (Default: 200)</td>
+              <td>enterDelay</td>
+              <td>Number</td>
+              <td>200</td>
+              <td>Delay time before tooltip appears.</td>
             </tr>
             <tr>
               <td>html</td>
-              <td>Can take regular text or HTML strings. (Default: null)</td>
+              <td>String</td>
+              <td>null</td>
+              <td>Can take regular text or HTML strings.</td>
             </tr>
             <tr>
               <td>margin</td>
-              <td>Set distance tooltip appears away from its activator excluding transitionMovement (Default: 5)</td>
+              <td>Number</td>
+              <td>5</td>
+              <td>Set distance tooltip appears away from its activator excluding transitionMovement.</td>
             </tr>
             <tr>
               <td>inDuration</td>
-              <td>Enter transition duration. (Default: 300)</td>
+              <td>Number</td>
+              <td>300</td>
+              <td>Enter transition duration.</td>
             </tr>
             <tr>
               <td>outDuration</td>
-              <td>Exit transition duration. (Default: 250)</td>
+              <td>Number</td>
+              <td>250</td>
+              <td>Exit transition duration.</td>
             </tr>
             <tr>
               <td>position</td>
-              <td>Set the direction of the tooltip. 'top', 'right', 'bottom', 'left'. (Default: 'bottom')</td>
+              <td>String</td>
+              <td>'bottom'</td>
+              <td>Set the direction of the tooltip. 'top', 'right', 'bottom', 'left'.</td>
             </tr>
             <tr>
-                <td>transitionMovement</td>
-                <td>Amount in px that the tooltip moves during its transition. (Default: 10)</td>
+              <td>transitionMovement</td>
+              <td>Number</td>
+              <td>10</td>
+              <td>Amount in px that the tooltip moves during its transition.</td>
             </tr>
 
           </tbody>
         </table>
+        <br><br>
 
-        <br />
-        <h4>Removal</h4>
-        <p>To remove the tooltip from the button, pass in <code class="language-javascript">'destroy'</code> as the option to the tooltip function</p>
-        <pre><code class="language-javascript">
-  // This will remove the tooltip functionality for the buttons on this page
-  $('.tooltipped').tooltip('destroy');
+        <h4>Methods</h4>
+        <span>You can programmatically open and close collapsibles through these methods. The second parameter is the 0-based index of the collapsible you want to open.</span>
+
+      <blockquote>
+        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+        <pre><code class="language-javascript col s12">
+  var instance = M.Collapsible.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.collapsible').collapsible('methodName');
+    $('.collapsible').collapsible('methodName', paramName);
+  */
         </code></pre>
+      </blockquote>
+      <h5 class="method-header">
+  .open();
+      </h5>
+      <p>Show tooltip.</p>
+      <pre><code class="language-javascript col s12">
+instance.open();
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .close();
+      </h5>
+      <p>Hide tooltip.</p>
+      <pre><code class="language-javascript col s12">
+instance.close();
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .destroy();
+      </h5>
+      <p>Destroy plugin instance and teardown</p>
+      <pre><code class="language-javascript col s12">
+instance.destroy();
+      </code></pre>
+        <br>
+
+
+      <div id="properties" class="scrollspy section">
+        <h4>Properties</h4>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>If tooltip is open.</td>
+            </tr>
+
+            <tr>
+              <td>isHovered</td>
+              <td>Boolean</td>
+              <td>If tooltip is hovered.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
   </div>
