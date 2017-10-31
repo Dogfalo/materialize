@@ -174,7 +174,7 @@
         if (this._tabsCarousel) {
           this._tabsCarousel.set(this.index, () => {
             if (typeof(this.options.onShow) === "function") {
-              this.options.onShow.call(this, this.$content);
+              this.options.onShow.call(this, this.$content[0]);
             }
           });
         }
@@ -183,7 +183,7 @@
           this.$content[0].style.display = 'block';
           this.$content.addClass('active');
           if (typeof(this.options.onShow) === 'function') {
-            this.options.onShow.call(this, this.$content);
+            this.options.onShow.call(this, this.$content[0]);
           }
 
           if ($oldContent !== undefined &&
