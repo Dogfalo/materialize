@@ -126,33 +126,47 @@
       <h5 class="method-header">
   .next();
       </h5>
-      <p>Move carousel to next slide or a given amount of slides.</p>
+      <p>Move carousel to next slide or go forward a given amount of slides.</p>
       <h6>Arguments</h6>
-      <p><b>Integer:</b> How many times the carousel slides.</p>
+      <p><b>Integer (optional):</b> How many times the carousel slides.</p>
       <pre><code class="language-javascript col s12">
 instance.next();
 instance.next(3); // Move next n times.
       </code></pre>
+      <br>
 
-
-
-
+      <h5 class="method-header">
+  .prev();
+      </h5>
+      <p>Move carousel to previous slide or go back a given amount of slides.</p>
+      <h6>Arguments</h6>
+      <p><b>Integer (optional):</b> How many times the carousel slides.</p>
       <pre><code class="language-javascript col s12">
-// Next slide
-$('.carousel').carousel('next');
-$('.carousel').carousel('next', 3); // Move next n times.
-
-// Previous slide
-$('.carousel').carousel('prev');
-$('.carousel').carousel('prev', 4); // Move prev n times.
-
-// Set to nth slide
-$('.carousel').carousel('set', 4);
-
-// Destroy carousel
-$('.carousel').carousel('destroy');
+instance.prev();
+instance.prev(3); // Move previous n times.
       </code></pre>
-      </div>
+      <br>
+
+      <h5 class="method-header">
+  .set();
+      </h5>
+      <p>Move carousel to nth slide</p>
+      <h6>Arguments</h6>
+      <p><b>Integer:</b> Index of slide.</p>
+      <pre><code class="language-javascript col s12">
+instance.set();
+instance.set(3); // Set to nth slide.
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .destroy();
+      </h5>
+      <p>Destroy plugin instance and teardown</p>
+      <pre><code class="language-javascript col s12">
+instance.destroy();
+      </code></pre>
+    </div>
 
     <div id="properties" class="scrollspy section">
       <h3 class="header">Properties</h3>
@@ -208,7 +222,15 @@ $('.carousel').carousel('destroy');
         </code></pre>
 
         <pre><code class="language-javascript">
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  var instance = new M.Carousel({
+    fullWidth: true
+  });
+
+  // Or with jQuery
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true
+  });
         </code></pre>
       </div>
 
@@ -219,7 +241,7 @@ $('.carousel').carousel('destroy');
         <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
         <br>
 
-        <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel carousel-slider center">
           <div class="carousel-fixed-item center">
             <a class="btn waves-effect white grey-text darken-text-2">button</a>
           </div>
@@ -241,7 +263,7 @@ $('.carousel').carousel('destroy');
           </div>
         </div><br>
         <pre><code class="language-markup">
-  &lt;div class="carousel carousel-slider center" data-indicators="true">
+  &lt;div class="carousel carousel-slider center">
     &lt;div class="carousel-fixed-item center">
       &lt;a class="btn waves-effect white grey-text darken-text-2">button&lt;/a>
     &lt;/div>
@@ -264,7 +286,17 @@ $('.carousel').carousel('destroy');
   &lt;/div>
         </code></pre>
         <pre><code class="language-javascript">
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  var instance = new M.Carousel({
+    fullWidth: true,
+    indicators: true
+  });
+
+  // Or with jQuery
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+  });
         </code></pre>
       </div>
 
