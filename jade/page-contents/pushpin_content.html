@@ -4,7 +4,6 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="section scrollspy">
-        <h4>Introduction</h4>
         <p class="caption">Pushpin is our fixed positioning plugin. Use this to pin elements to your page during specific scroll ranges. You can check out our live example: the fixed table of contents on the right. </p>
 
         <a href="pushpin-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
@@ -31,21 +30,114 @@
       </div>
 
       <div id="initialization" class="section scrollspy">
-        <h4>jQuery Plugin Initialization</h4>
+        <h3 class="header">Initialization</h3>
         <p>Here is a sample initialization of pushpin. Take a look at what the options are and customize them to your needs.</p>
         <pre><code class="language-javascript col s12">
+  var elem = document.querySelector('.target');
+  var instance = new M.Pushpin(elem, options);
+
+  // Or with jQuery
+
   $(document).ready(function(){
-    $('.target').pushpin({
-      top: 0,
-      bottom: 1000,
-      offset: 0
-    });
+    $('.target').pushpin();
   });
         </code></pre>
       </div>
 
+      <div id="options" class="section scrollspy">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>top</td>
+              <td>Number</td>
+              <td>0</td>
+              <td>The distance in pixels from the top of the page where the element becomes fixed.</td>
+            </tr>
+            <tr>
+              <td>bottom</td>
+              <td>Number</td>
+              <td>Infinity</td>
+              <td>The distance in pixels from the top of the page where the elements stops being fixed.</td>
+            </tr>
+            <tr>
+              <td>offset</td>
+              <td>Number</td>
+              <td>0</td>
+              <td>The offset from the top the element will be fixed at.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    <div id="methods" class="scrollspy section">
+      <h3 class="header">Methods</h3>
+      <blockquote>
+        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+        <pre><code class="language-javascript col s12">
+  var instance = M.Pushpin.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.target').pushpin('methodName');
+    $('.target').pushpin('methodName', paramName);
+  */
+        </code></pre>
+      </blockquote>
+
+      <h5 class="method-header">
+  .destroy();
+      </h5>
+      <p>Destroy plugin instance and teardown</p>
+      <pre><code class="language-javascript col s12">
+instance.destroy();
+      </code></pre>
+    </div>
+
+    <div id="properties" class="scrollspy section">
+      <h3 class="header">Properties</h3>
+      <table class="striped">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>el</td>
+            <td>Element</td>
+            <td>The DOM element the plugin was initialized with.</td>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td>Object</td>
+            <td>The options the instance was initialized with.</td>
+          </tr>
+          <tr>
+            <td>originalOffset</td>
+            <td>Number</td>
+            <td>Original offsetTop of element.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
       <div id="classes" class="section scrollspy">
-        <h4>CSS Classes</h4>
+        <h3 class="header">CSS Classes</h3>
         <p class="caption">A pushpinned element has 3 states. One above and below the scrolling threshold, and the pinned state where the element becomes fixed. Because pushpin changes positioning, chances are your element will look different when the states change. Use these css classes to correctly style your 3 states.</p>
         <pre><code class="language-css col s12">
   // Class for when element is above threshold
@@ -65,42 +157,6 @@
         </code></pre>
       </div>
 
-
-      <div id="options" class="section scrollspy">
-        <h4>jQuery Plugin Options</h4>
-        <table class="highlight">
-          <thead>
-            <tr>
-                <th>Option Name</th>
-                <th>Description</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>top</td>
-              <td>The distance in pixels from the top of the page where the element becomes fixed. (Default: 0)</td>
-            </tr>
-            <tr>
-              <td>bottom</td>
-              <td>The distance in pixels from the top of the page where the elements stops being fixed. (Default: Infinity)</td>
-            </tr>
-            <tr>
-              <td>offset</td>
-              <td>The offset from the top the element will be fixed at. (Default: 0)</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <br />
-        <h4>Removal</h4>
-        <p>To remove the pushpin from an element, pass in <code class="language-javascript">'destroy'</code> as the option to the pushpin function.</p>
-        <pre><code class="language-javascript">
-  //Removes pushpin and pushpin classes
-  $('.tabs-wrapper .row').pushpin('destroy');
-        </code></pre>
-
-      </div>
     </div>
 
 
@@ -115,8 +171,10 @@
           <ul class="section table-of-contents">
             <li><a href="#introduction">Introduction</a></li>
             <li><a href="#initialization">Initialization</a></li>
-            <li><a href="#classes">CSS classes</a></li>
             <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#classes">CSS classes</a></li>
           </ul>
         </div>
       </div>
