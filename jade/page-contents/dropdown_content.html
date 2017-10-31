@@ -3,7 +3,6 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="scrollspy section">
-        <h4>Introduction</h4>
         <p class="caption">Add a dropdown list to any button. Make sure that the <code class="language-markup">data-target</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. You can also add icons. Just add the icon inside the <code class="language-markup">anchor</code> tag.</p>
         <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
         <ul id='dropdown1' class='dropdown-content'>
@@ -31,86 +30,186 @@
         </code></pre>
       </div>
 
+      <div id="initialization" class="section scrollspy">
+        <h3 class="header">Initialization</h3>
+        <p>Initialization for dropdowns is only necessary if you create them dynamically.</p>
+        <pre><code class="language-javascript">
+  var instance = new M.Tooltip(options);
+
+  // Or with jQuery
+
+  $('.dropdown-trigger').dropdown();
+        </code></pre>
+      </div>
+
 
       <div id="options" class="section scrollspy">
-        <h4>Options</h4>
+        <h3 class="header">Options</h3>
         <table class="striped">
           <thead>
-            <tr>
-              <th>Option Name</th>
+          <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
               <th>Description</th>
-            </tr>
+          </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>inDuration</td>
-              <td>The duration of the transition enter in milliseconds. Default: 150</td>
-            </tr>
-            <tr>
-              <td>outDuration</td>
-              <td>The duration of the transition out in milliseconds. Default: 250</td>
+              <td>alignment</td>
+              <td>String</td>
+              <td>'left'</td>
+              <td>Defines the edge the menu is aligned to.</td>
             </tr>
             <tr>
               <td>constrainWidth</td>
-              <td>If true, constrainWidth to the size of the dropdown activator. Default: true</td>
-            </tr>
-            <tr>
-              <td>hover</td>
-              <td>If true, the dropdown will open on hover. Default: false</td>
-            </tr>
-            <tr>
-              <td>gutter</td>
-              <td>This defines the spacing from the aligned edge. Default: 0</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>If true, constrainWidth to the size of the dropdown activator.</td>
             </tr>
             <tr>
               <td>coverTrigger</td>
-              <td>If false, the dropdown will show below the trigger. Default: true</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>If false, the dropdown will show below the trigger.</td>
             </tr>
             <tr>
-              <td>alignment</td>
-              <td>Defines the edge the menu is aligned to. Default: 'left'</td>
+              <td>closeOnClick</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>If true, close dropdown on item click.</td>
+            </tr>
+            <tr>
+              <td>hover</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>If true, the dropdown will open on hover.</td>
+            </tr>
+            <tr>
+              <td>inDuration</td>
+              <td>Number</td>
+              <td>150</td>
+              <td>The duration of the transition enter in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Number</td>
+              <td>250</td>
+              <td>The duration of the transition out in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>onOpenStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav starts entering.</td>
+            </tr>
+            <tr>
+              <td>onOpenEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav finishes entering.</td>
+            </tr>
+            <tr>
+              <td>onCloseStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav starts exiting.</td>
+            </tr>
+            <tr>
+              <td>onCloseStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav finishes exiting.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
+      <div id="methods" class="scrollspy section">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+    var instance = M.Dropdown.getInstance(elem);
 
+    /* jQuery Method Calls
+      You can still use the old jQuery plugin method calls.
+      But you won't be able to access instance properties.
 
-      <div id="initialization" class="section scrollspy">
-        <h4>jQuery Plugin Initialization</h4>
-        <p>Initialization for dropdowns is only necessary if you create them dynamically.</p>
-        <pre><code class="language-javascript">
-  $('.dropdown-trigger').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrainWidth: false, // Does not change width of dropdown to that of the activator
-      hover: true, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: false, // Displays dropdown below the button
-      alignment: 'left', // Displays dropdown with edge aligned to the left of button
-      stopPropagation: false // Stops event propagation
-    }
-  );
+      $('.dropdown-trigger').dropdown('methodName');
+      $('.dropdown-trigger').dropdown('methodName', paramName);
+    */
+          </code></pre>
+        </blockquote>
+        <h5 class="method-header">
+    .open();
+        </h5>
+        <p>Open dropdown.</p>
+        <pre><code class="language-javascript col s12">
+  instance.open();
         </code></pre>
+        <br>
 
-        <p>
-        You can also open dropdowns programatically, the below code will make your modal open on document ready:
-        </p>
-
-        <pre><code class="language-javascript">
-  $('.dropdown-trigger').dropdown('open');
+        <h5 class="method-header">
+    .close();
+        </h5>
+        <p>Close dropdown.</p>
+        <pre><code class="language-javascript col s12">
+  instance.close();
         </code></pre>
+        <br>
 
-        <p>
-        You can also close dropdowns programatically:
-        </p>
-
-        <pre><code class="language-javascript">
-  $('.dropdown-trigger').dropdown('close');
+        <h5 class="method-header">
+    .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+  instance.destroy();
         </code></pre>
       </div>
 
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>id</td>
+              <td>String</td>
+              <td>ID of the dropdown element.</td>
+            </tr>
+            <tr>
+              <td>dropdownEl</td>
+              <td>Element</td>
+              <td>The DOM element of the dropdown.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>If the dropdown is open.</td>
+            </tr>
+            <tr>
+              <td>focusedIndex</td>
+              <td>Number</td>
+              <td>The index of the item focused.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
 </div>
 
@@ -124,8 +223,10 @@
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#options">Options</a></li>
             <li><a href="#initialization">Initialization</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
           </ul>
         </div>
       </div>

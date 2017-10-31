@@ -158,19 +158,17 @@
         <br><br>
 
         <h4>Methods</h4>
-        <span>You can programmatically open and close collapsibles through these methods. The second parameter is the 0-based index of the collapsible you want to open.</span>
-
       <blockquote>
         <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
         <pre><code class="language-javascript col s12">
-  var instance = M.Collapsible.getInstance(elem);
+  var instance = M.Tooltip.getInstance(elem);
 
   /* jQuery Method Calls
     You can still use the old jQuery plugin method calls.
     But you won't be able to access instance properties.
 
-    $('.collapsible').collapsible('methodName');
-    $('.collapsible').collapsible('methodName', paramName);
+    $('.tooltip').tooltip('methodName');
+    $('.tooltip').tooltip('methodName', paramName);
   */
         </code></pre>
       </blockquote>
