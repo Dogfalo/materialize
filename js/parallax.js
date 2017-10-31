@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -112,4 +112,4 @@
     Materialize.initializeJqueryWrapper(Parallax, 'parallax', 'M_Parallax');
   }
 
-})(cash, Materialize.Vel);
+})(cash);
