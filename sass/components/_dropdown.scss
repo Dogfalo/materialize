@@ -35,7 +35,7 @@
     }
 
     & > a, & > span {
-      font-size: 16px;
+      font-size: $dropdown-item-font-size;
       color: $dropdown-color;
       display: block;
       line-height: 22px;
