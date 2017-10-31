@@ -42,6 +42,8 @@
        * @prop {Function} onOpenEnd - Callback function called after collapsible is opened
        * @prop {Function} onCloseStart - Callback function called before collapsible is closed
        * @prop {Function} onCloseEnd - Callback function called after collapsible is closed
+       * @prop {Number} inDuration - Transition in duration in milliseconds.
+       * @prop {Number} outDuration - Transition duration in milliseconds.
        */
       this.options = $.extend({}, Collapsible.defaults, options);
 
