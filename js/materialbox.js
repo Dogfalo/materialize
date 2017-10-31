@@ -38,8 +38,6 @@
 
       this.overlayActive = false;
       this.doneAnimating = true;
-      this.inDuration = 275;
-      this.outDuration = 200;
       this.placeholder = $('<div></div>').addClass('material-placeholder');
       this.originalWidth = 0;
       this.originalHeight = 0;
