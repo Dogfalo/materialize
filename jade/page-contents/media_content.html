@@ -17,7 +17,8 @@
       <h4>Initialization</h4>
        <p>Materialbox is intialized automatically. However, if you add images dynamically, you will have to add this initialization code.</p>
        <pre><code class="language-javascript">
-  var instance = new M.Materialbox(options);
+  var elem = document.querySelector('.materialboxed');
+  var instance = new M.Materialbox(elem, options);
 
   // Or with jQuery
 
@@ -235,7 +236,8 @@
 
       <h4>Initialization</h4>
        <pre><code class="language-javascript">
-  var instance = new M.Slider(options);
+  var elem = document.querySelector('.slider');
+  var instance = new M.Slider(elem, options);
 
   // Or with jQuery
 

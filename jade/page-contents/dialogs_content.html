@@ -83,7 +83,8 @@
         <h4>Initialization</h4>
         <p>Tooltips are initialized automatically, but if you have dynamically added tooltips, you will need to initialize them.</p>
         <pre><code class="language-javascript">
-  var instance = new M.Tooltip(options);
+  var elem = document.querySelector('.tooltipped');
+  var instance = new M.Tooltip(elem, options);
 
   // Or with jQuery
 

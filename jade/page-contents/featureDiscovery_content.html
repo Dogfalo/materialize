@@ -38,7 +38,8 @@
         <div id="initialization" class="scrollspy section">
           <h3 class="header">Initialization</h3>
           <pre><code class="language-javascript">
-  var instance = new M.FeatureDiscovery(options);
+  var elem = document.querySelector('.tap-target');
+  var instance = new M.FeatureDiscovery(elem, options);
 
   // Or with jQuery
 

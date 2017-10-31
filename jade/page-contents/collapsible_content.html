@@ -44,7 +44,8 @@
       <div id="intialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var instance = new M.Collapsible(options);
+  var elem = document.querySelector('.collapsible');
+  var instance = new M.Collapsible(elem, options);
 
   // Or with jQuery
 

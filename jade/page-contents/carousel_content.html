@@ -30,7 +30,8 @@
     <div id="initialization" class="scrollspy section">
       <h3 class="header">Initialization</h3>
       <pre><code class="language-javascript">
-  var instance = new M.Carousel(options);
+  var elem = document.querySelector('.carousel');
+  var instance = new M.Carousel(elem, options);
 
   // Or with jQuery
 

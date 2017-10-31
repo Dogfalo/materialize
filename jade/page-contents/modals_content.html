@@ -3,9 +3,8 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="section scrollspy">
-        <h4>Introduction</h4>
-        <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal-close</code> to your button.</p>
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn modal-trigger" href="#modal2">Modal With Fixed Footer</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn modal-trigger" href="#modal3">Modal Bottom Sheet Style</a>
+        <p class="caption">Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class <code class="language-css">.modal-close</code> to your button.</p>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
         <div id="modal1" class="modal">
           <div class="modal-content">
             <h4>Modal Header</h4>
@@ -31,7 +30,7 @@
         </div>
         <div id="modal3" class="modal bottom-sheet">
           <div class="modal-content">
-            <h4>Modal Header</h4>
+            <h3 class="header">Modal Header</h3>
             <ul class="collection">
               <li class="collection-item avatar">
                 <img src="images/yuna.jpg" alt="" class="circle">
@@ -70,10 +69,6 @@
         </div>
       </div>
 
-
-
-        <div id="structure" class="scrollspy section">
-          <h4>Modals HTML Structure</h4>
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
   &lt;a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal&lt;/a>
@@ -89,11 +84,184 @@
     &lt;/div>
   &lt;/div>
           </code></pre>
+
+
+        <div id="button-trigger" class="scrollspy section">
+          <h3 class="header">Modals with Button trigger</h3>
+          <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather than the href attribute. </p>
+
+          <pre><code class="language-markup">
+  &lt;!-- Modal Trigger -->
+  &lt;button data-target="modal1" class="btn modal-trigger">Modal&lt;/button>
+          </code></pre>
         </div>
 
 
+
+        <div id="initialization" class="scrollspy section">
+          <h3 class="header">Initialization</h3>
+          <p>To open a modal using a trigger:</p>
+          <pre><code class="language-javascript">
+  var elem = document.querySelector('.modal');
+  var instance = new M.Modal(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+          </code></pre>
+      </div>
+
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <p>You can customize the behavior of each modal using these options. For example, you can call a custom function to run when a modal is dismissed. To do this, just place your function in the intialization code as shown below.</p>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>opacity</td>
+              <td>Number</td>
+              <td>0.5</td>
+              <td>Opacity of the modal overlay.</td>
+            </tr>
+            <tr>
+              <td>inDuration</td>
+              <td>Number</td>
+              <td>250</td>
+              <td>Transition in duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Number</td>
+              <td>250</td>
+              <td>Transition out duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>ready</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called when modal is finished entering.</td>
+            </tr>
+            <tr>
+              <td>complete</td>
+              <td>Number</td>
+              <td>null</td>
+              <td>Callback function called when modal is finished exiting.</td>
+            </tr>
+            <tr>
+              <td>dismissible</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>Allow modal to be dismissed by keyboard or overlay click.</td>
+            </tr>
+            <tr>
+              <td>startingTop</td>
+              <td>String</td>
+              <td>'4%'</td>
+              <td>Starting top offset</td>
+            </tr>
+            <tr>
+              <td>endingTop</td>
+              <td>String</td>
+              <td>'10%'</td>
+              <td>Ending top offset</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+    </div>
+
+    <div id="methods" class="scrollspy section">
+      <h3 class="header">Methods</h3>
+      <blockquote>
+        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+        <pre><code class="language-javascript col s12">
+  var instance = M.Modal.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.modal').modal('methodName');
+    $('.modal').modal('methodName', paramName);
+  */
+        </code></pre>
+      </blockquote>
+      <h5 class="method-header">
+  .open();
+      </h5>
+      <p>Open modal</p>
+      <pre><code class="language-javascript col s12">
+instance.open();
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .close();
+      </h5>
+      <p>Close modal</p>
+      <pre><code class="language-javascript col s12">
+instance.close();
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .destroy();
+      </h5>
+      <p>Destroy plugin instance and teardown</p>
+      <pre><code class="language-javascript col s12">
+instance.destroy();
+      </code></pre>
+    </div>
+
+    <div id="properties" class="scrollspy section">
+      <h3 class="header">Properties</h3>
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>el</td>
+            <td>Element</td>
+            <td>The DOM element the plugin was initialized with.</td>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td>Object</td>
+            <td>The options the instance was initialized with.</td>
+          </tr>
+          <tr>
+            <td>isOpen</td>
+            <td>Boolean</td>
+            <td>If the modal is open.</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            <td>string</td>
+            <td>ID of the modal element</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
         <div id="fixed-footer" class="scrollspy section">
-          <h4>Modals with Fixed Footer</h4>
+          <h3 class="header">Modals with Fixed Footer</h3>
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Modal With Fixed Footer</a>
           <p>If you have content that is very long and you want the action buttons to be visible all the time, you can add the <code class="language-markup">modal-fixed-footer</code> class to the modal. </p>
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
@@ -113,7 +281,8 @@
         </div>
 
         <div id="bottom-sheet" class="scrollspy section">
-          <h4>Bottom Sheet Modals</h4>
+          <h3 class="header">Bottom Sheet Modals</h3>
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal3">Modal Bottom Sheet Style</a>
           <p>Bottom Sheet Modals are good for displaying actions to the user on the bottom of a screen. They still act the same as regular modals.</p>
           <pre><code class="language-markup">
   &lt;!-- Modal Trigger -->
@@ -132,60 +301,6 @@
           </code></pre>
         </div>
 
-        <div id="button-trigger" class="scrollspy section">
-          <h4>Modals with Button trigger</h4>
-          <p>If you prefer to use a button to open a modal specify the Modal ID in <code class="language-markup">data-target</code> rather than the href attribute. </p>
-
-          <pre><code class="language-markup">
-  &lt;!-- Modal Trigger -->
-  &lt;button data-target="modal1" class="btn modal-trigger">Modal&lt;/button>
-          </code></pre>
-        </div>
-
-
-
-        <div id="initialization" class="scrollspy section">
-          <h4>jQuery Plugin Initialization</h4>
-          <p>To open a modal using a trigger:</p>
-          <pre><code class="language-javascript">
-  $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });
-          </code></pre>
-          <p>You can also open modals programatically, the below code will make your modal open on document ready:</p>
-          <pre><code class="language-javascript">
-  $('#modal1').modal('open');
-          </code></pre>
-          <p>You can also close them programatically:</p>
-          <pre><code class="language-javascript">
-  $('#modal1').modal('close');
-        </code></pre>
-      </div>
-
-
-
-      <div id="options" class="scrollspy section">
-        <h4>Options</h4>
-        <p>You can customize the behavior of each modal using these options. For example, you can call a custom function to run when a modal is dismissed. To do this, just place your function in the intialization code as shown below.</p>
-        <pre><code class="language-javascript">
-  $('.modal').modal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
-      inDuration: 300, // Transition in duration
-      outDuration: 200, // Transition out duration
-      startingTop: '4%', // Starting top style attribute
-      endingTop: '10%', // Ending top style attribute
-      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-        alert("Ready");
-        console.log(modal, trigger);
-      },
-      complete: function() { alert('Closed'); } // Callback for Modal close
-    }
-  );
-      </code></pre>
-    </div>
-
 </div>
 
 <!-- Table of Contents -->
@@ -198,12 +313,13 @@
       <div style="height: 1px;">
         <ul class="section table-of-contents">
           <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#structure">Structure</a></li>
-          <li><a href="#fixed-footer">Fixed Footer</a></li>
-          <li><a href="#bottom-sheet">Bottom Sheet</a></li>
           <li><a href="#button-trigger">Button Trigger</a></li>
           <li><a href="#initialization">Intialization</a></li>
           <li><a href="#options">Options</a></li>
+          <li><a href="#methods">Methods</a></li>
+          <li><a href="#properties">Properties</a></li>
+          <li><a href="#fixed-footer">Fixed Footer</a></li>
+          <li><a href="#bottom-sheet">Bottom Sheet</a></li>
         </ul>
       </div>
     </div>
