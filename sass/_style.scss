@@ -254,7 +254,7 @@ a.button-collapse.top-nav {
   h4 {
     margin-bottom: 40px;
     line-height: 44px;
-    color: #777;
+    color: rgba(0,0,0,.7);
   }
   h1 {
     margin-top: 16px;
@@ -306,7 +306,7 @@ a.button-collapse.top-nav {
 }
 
 #download-button {
-  background-color: color("materialize-red", "lighten-3");
+  background-color: color("materialize-red", "lighten-2");
   width: 260px;
   height: 70px;
   line-height: 70px;
@@ -699,7 +699,7 @@ pre[class*="language-"] {
   padding: 1em;
   max-width: 360px;
   border-radius: 2px;
-  background-color: hsla(0, 0%, 100%, .13);
+  border: 1px solid $border-color;
 
 
   span {
