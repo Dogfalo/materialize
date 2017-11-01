@@ -1,4 +1,4 @@
-<!-- Before opening an issue here make sure, that you have read the template completly through -->
+<!-- Before opening an issue here make sure, that you have read the template completely through -->
 
 When asking general "how to" questions:
 
