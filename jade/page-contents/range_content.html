@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="range" class="section scrollspy">
+        <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100. We have two different types of sliders. nouiSlider is a 3rd party plugin which we've modified. To use the noUiSlider, you will have to manually link the <code class="language-markup">nouislider.css</code> and <code class="language-markup">nouislider.js</code> files located in the extras folder.</p>
+        <h3 class="header">noUiSlider</h3>
+        <p>See noUiSlider's official documentation <a href="https://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
+        <div id="range-input"></div>
+        <p>&nbsp;</p>
+        <pre><code class="language-markup">
+  &lt;div id="test-slider">&lt;/div>
+        </code></pre>
+        <pre><code class="language-javascript">
+  var slider = document.getElementById('test-slider');
+  noUiSlider.create(slider, {
+   start: [20, 80],
+   connect: true,
+   step: 1,
+   orientation: 'horizontal', // 'horizontal' or 'vertical'
+   range: {
+     'min': 0,
+     'max': 100
+   },
+   format: wNumb({
+     decimals: 0
+   })
+  });
+        </code></pre>
+      </div>
+
+      <div id="html5" class="section scrollspy">
+        <h3 class="header">HTML5 Range</h3>
+        <form action="#">
+          <p class="range-field">
+            <input type="range" name="points" min="0" max="100">
+          </p>
+        </form>
+        <pre><code class="language-markup">
+  &lt;form action="#">
+    &lt;p class="range-field">
+      &lt;input type="range" id="test5" min="0" max="100" />
+    &lt;/p>
+  &lt;/form>
+        </code></pre>
+      </div>
+
+
+
+    </div>
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#range">noUiSlider</a></li>
+            <li><a href="#html5">HTML5 Range</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

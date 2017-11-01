@@ -1,0 +1,227 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="introduction" class="section scrollspy">
+        <p class="caption">
+          Add an autocomplete dropdown below your input to suggest possible values in your form. You can populate the list of autocomplete options dynamically as well.
+        </p>
+
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">textsms</i>
+                <input type="text" id="autocomplete-input" class="autocomplete">
+                <label for="autocomplete-input">Autocomplete</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;i class="material-icons prefix">textsms&lt;/i>
+          &lt;input type="text" id="autocomplete-input" class="autocomplete">
+          &lt;label for="autocomplete-input">Autocomplete&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+      </div>
+
+      <div id="initialization" class="scrollspy section">
+        <h3 class="header">Initialization</h3>
+        <p>The data is a json object where the key is the matching string and the value is an optional image url.</p>
+        <pre><code class="language-javascript">
+  var elem = document.querySelector('.carousel');
+  var instance = new M.Carousel(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apple": null,
+        "Microsoft": null,
+        "Google": 'https://placehold.it/250x250'
+      },
+    });
+  });
+        </code></pre>
+      </div>
+
+
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>data</td>
+              <td>Object</td>
+              <td>{}</td>
+              <td>Data object defining autocomplete options with optional icon strings.</td>
+            </tr>
+            <tr>
+              <td>limit</td>
+              <td>Number</td>
+              <td>Infinity</td>
+              <td>Limit of results the autocomplete shows.</td>
+            </tr>
+            <tr>
+              <td>onAutocomplete</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback for when autocompleted.</td>
+            </tr>
+            <tr>
+              <td>minLength</td>
+              <td>Number</td>
+              <td>1</td>
+              <td>Minimum number of characters before autocomplete starts.</td>
+            </tr>
+            <tr>
+              <td>sortFunction</td>
+              <td>Function</td>
+              <td></td>
+              <td>Sort function that defines the order of the list of autocomplete options.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
+
+
+    <div id="methods" class="scrollspy section">
+      <h3 class="header">Methods</h3>
+      <blockquote>
+        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+        <pre><code class="language-javascript col s12">
+  var instance = M.Autocomplete.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.autocomplete').autocomplete('methodName');
+    $('.autocomplete').autocomplete('methodName', paramName);
+  */
+        </code></pre>
+      </blockquote>
+      <h5 class="method-header">
+  .selectOption();
+      </h5>
+      <p>Select a specific autocomplete options.</p>
+      <h6>Arguments</h6>
+      <p><b>Element:</b> Element of the autocomplete option.</p>
+      <pre><code class="language-javascript col s12">
+instance.selectOption(el);
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .updateData();
+      </h5>
+      <p>Update autocomplete options data.</p>
+      <h6>Arguments</h6>
+      <p><b>Object:</b> Autocomplete options data object.</p>
+      <pre><code class="language-javascript col s12">
+instance.updateData({
+  data: {
+    "Apple": null,
+    "Microsoft": null,
+    "Google": 'https://placehold.it/250x250'
+  },
+}); // Move previous n times.
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .destroy();
+      </h5>
+      <p>Destroy plugin instance and teardown</p>
+      <pre><code class="language-javascript col s12">
+instance.destroy();
+      </code></pre>
+    </div>
+
+
+
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>If the autocomplete is open.</td>
+            </tr>
+            <tr>
+              <td>count</td>
+              <td>Number</td>
+              <td>Number of matching autocomplete options.</td>
+            </tr>
+            <tr>
+              <td>activeIndex</td>
+              <td>Integer</td>
+              <td>Index of the current selected option.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#initialization">Initialization</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

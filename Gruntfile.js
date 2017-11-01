@@ -376,7 +376,6 @@ module.exports = function(grunt) {
           "media-css.html": "jade/media-css.jade",
           "table.html": "jade/table.jade",
           "helpers.html": "jade/helpers.jade",
-          "forms.html": "jade/forms.jade",
           "buttons.html": "jade/buttons.jade",
           "navbar.html": "jade/navbar.jade",
           "cards.html": "jade/cards.jade",
@@ -395,7 +394,6 @@ module.exports = function(grunt) {
           "waves.html": "jade/waves.jade",
           "media.html": "jade/media.jade",
           "collapsible.html": "jade/collapsible.jade",
-          "chips.html": "jade/chips.jade",
           "scrollspy.html": "jade/scrollspy.jade",
           "fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
           "pagination.html": "jade/pagination.jade",
@@ -407,7 +405,15 @@ module.exports = function(grunt) {
           "css-transitions.html": "jade/css-transitions.jade",
           "themes.html": "jade/themes.jade",
           "404.html": "jade/404.jade",
-
+          "autocomplete.html": "jade/autocomplete.jade",
+          "checkboxes.html": "jade/checkboxes.jade",
+          "chips.html": "jade/chips.jade",
+          "pickers.html": "jade/pickers.jade",
+          "radio-buttons.html": "jade/radio-buttons.jade",
+          "range.html": "jade/range.jade",
+          "select.html": "jade/select.jade",
+          "switches.html": "jade/switches.jade",
+          "text-inputs.html": "jade/text-inputs.jade"
         }
       }
     },
