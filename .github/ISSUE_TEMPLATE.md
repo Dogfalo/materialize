@@ -1,11 +1,11 @@
-<!-- Before opening an issue here make sure, that you have read the template completly through -->
+<!-- Before opening an issue here make sure, that you have read the template completely through -->
 
 When asking general "how to" questions:
 
 - Please do not open an issue here!
 - Instead, ask for help on [StackOverflow](stackoverflow.com/questions/tagged/materialize) or in our [Gitter](https://gitter.im/Dogfalo/materialize) channel.
 
-- Read the [CONTRIBUTING document](https://github.com/Dogfalo/materialize/blob/master/CONTRIBUTING.md) Any issues that are violating the contributing guidelines, will be closed!
+- Read the [CONTRIBUTING document](https://github.com/Dogfalo/materialize/blob/master/CONTRIBUTING.md). Any issues that violate the contributing guidelines will be closed!
 - [Search for duplicate or closed issues](https://github.com/Dogfalo/materialize/issues?utf8=%E2%9C%93&q=is%3Aissue) and make sure to go through our [labels](https://github.com/Dogfalo/materialize/labels).
 - Prepare a [reduced test case](https://css-tricks.com/reduced-test-cases/) for any bugs.
 
