@@ -17,6 +17,14 @@ main {
   // flex: 1 0 auto;
 }
 
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: $font-stack;
+}
+
 ul {
   &:not(.browser-default) {
     padding-left: 0;
@@ -369,7 +377,6 @@ ul.staggered-list li {
     padding: 10px 0px;
     color: $footer-copyright-font-color;
     background-color: $footer-copyright-bg-color;
-    @extend .light;
   }
 }
 
