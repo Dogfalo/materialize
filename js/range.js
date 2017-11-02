@@ -253,11 +253,11 @@
     }
   }
 
-  Materialize.Range = Range;
+  M.Range = Range;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Range, 'range', 'M_Range');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Range, 'range', 'M_Range');
   }
 
   Range.init($('input[type=range'));
-}( cash, Materialize.Vel ));
+}( cash, M.Vel ));

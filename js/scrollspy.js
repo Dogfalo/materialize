@@ -90,7 +90,7 @@
      * Setup Event Handlers
      */
     _setupEventHandlers() {
-      let throttledResize = Materialize.throttle(this._handleWindowScroll, 200);
+      let throttledResize = M.throttle(this._handleWindowScroll, 200);
       this._handleThrottledResizeBound = throttledResize.bind(this);
       this._handleWindowScrollBound = this._handleWindowScroll.bind(this);
       if (ScrollSpy._count === 1) {
@@ -139,8 +139,8 @@
       ScrollSpy._ticks++;
 
       // viewport rectangle
-      let top = Materialize.getDocumentScrollTop(),
-          left = Materialize.getDocumentScrollLeft(),
+      let top = M.getDocumentScrollTop(),
+          left = M.getDocumentScrollLeft(),
           right = left + window.innerWidth,
           bottom = top + window.innerHeight;
 
@@ -284,10 +284,10 @@
   ScrollSpy._ticks = 0;
 
 
-  Materialize.ScrollSpy = ScrollSpy;
+  M.ScrollSpy = ScrollSpy;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

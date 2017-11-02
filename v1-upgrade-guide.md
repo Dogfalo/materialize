@@ -62,5 +62,5 @@
 - Automatic initialization removed
 
 ## Toasts
-- Arguments list of the Materialize.toast function has been changed into an options Object similar to all the other plugins
+- Arguments list of the M.toast function has been changed into an options Object similar to all the other plugins
 - Rename the `className` option to `classes`

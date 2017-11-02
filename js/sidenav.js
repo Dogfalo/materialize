@@ -174,7 +174,7 @@
     _handleTriggerClick(e) {
       let $trigger =  $(e.target).closest('.sidenav-trigger');
       if (e.target && $trigger.length) {
-        let sidenavId = Materialize.getIdFromTrigger($trigger[0]);
+        let sidenavId = M.getIdFromTrigger($trigger[0]);
 
         let sidenavInstance = document.getElementById(sidenavId).M_Sidenav;
         if (sidenavInstance) {
@@ -523,10 +523,10 @@
    */
   Sidenav._sidenavs = [];
 
-  window.Materialize.Sidenav = Sidenav;
+  window.M.Sidenav = Sidenav;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Sidenav, 'sidenav', 'M_Sidenav');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Sidenav, 'sidenav', 'M_Sidenav');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

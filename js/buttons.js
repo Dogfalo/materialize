@@ -340,10 +340,10 @@
     }
   }
 
-  Materialize.FloatingActionButton = FloatingActionButton;
+  M.FloatingActionButton = FloatingActionButton;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
   }
 
-}( cash, Materialize.Vel ));
+}( cash, M.Vel ));

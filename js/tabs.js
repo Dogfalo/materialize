@@ -161,7 +161,7 @@
 
       // Update the variables with the new link and content
       this.$activeTabLink = tabLink;
-      this.$content = $(Materialize.escapeHash(tabLink[0].hash));
+      this.$content = $(M.escapeHash(tabLink[0].hash));
       this.$tabLinks = this.$el.children('li.tab').children('a');
 
       // Make the tab active.
@@ -239,7 +239,7 @@
       this.index = Math.max(this.$tabLinks.index(this.$activeTabLink), 0);
 
       if (this.$activeTabLink.length) {
-        this.$content = $(Materialize.escapeHash(this.$activeTabLink[0].hash));
+        this.$content = $(M.escapeHash(this.$activeTabLink[0].hash));
         this.$content.addClass('active');
       }
     }
@@ -255,7 +255,7 @@
 
       let $tabsContent = $();
       this.$tabLinks.each((link) => {
-        let $currContent = $(Materialize.escapeHash(link.hash));
+        let $currContent = $(M.escapeHash(link.hash));
         $currContent.addClass('carousel-item');
         $tabsContent = $tabsContent.add($currContent);
       });
@@ -265,7 +265,7 @@
       $tabsWrapper.append($tabsContent);
       $tabsContent[0].style.display = '';
 
-      this._tabsCarousel = new Materialize.Carousel($tabsWrapper[0], {
+      this._tabsCarousel = new M.Carousel($tabsWrapper[0], {
         fullWidth: true,
         noWrap: true,
         onCycleTo: (item) => {
@@ -301,7 +301,7 @@
       // Hide Tabs Content
       this.$tabLinks.not(this.$activeTabLink).each((link) => {
         if (!!link.hash) {
-          let $currContent = $(Materialize.escapeHash(link.hash));
+          let $currContent = $(M.escapeHash(link.hash));
           if ($currContent.length) {
             $currContent[0].style.display = 'none';
           }
@@ -316,7 +316,7 @@
       // show Tabs Content
       this.$tabLinks.each((link) => {
         if (!!link.hash) {
-          let $currContent = $(Materialize.escapeHash(link.hash));
+          let $currContent = $(M.escapeHash(link.hash));
           if ($currContent.length) {
             $currContent[0].style.display = '';
           }
@@ -395,10 +395,10 @@
   }
 
 
-  window.Materialize.Tabs = Tabs;
+  window.M.Tabs = Tabs;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

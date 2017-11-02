@@ -167,7 +167,7 @@
       // Create dropdown
       this.$selectOptions = this.$el.children('option, optgroup');
       this.dropdownOptions = document.createElement('ul');
-      this.dropdownOptions.id = `select-options-${Materialize.guid()}`;
+      this.dropdownOptions.id = `select-options-${M.guid()}`;
       $(this.dropdownOptions).addClass('dropdown-content select-dropdown ' + (this.isMultiple ? 'multiple-select-dropdown' : ''));
 
       // Create dropdown structure.
@@ -227,7 +227,7 @@
         if (this.isMultiple) {
           dropdownOptions.closeOnClick = false;
         }
-        this.dropdown = new Materialize.Dropdown(this.input, dropdownOptions);
+        this.dropdown = new M.Dropdown(this.input, dropdownOptions);
       }
 
       // Add initial selections
@@ -361,9 +361,9 @@
     }
   }
 
-  Materialize.Select = Select;
+  M.Select = Select;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Select, 'select', 'M_Select');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Select, 'select', 'M_Select');
   }
 }( cash ));

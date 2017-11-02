@@ -4,14 +4,14 @@
 
       <div id="introduction" class="section scrollspy">
         <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
-        <a class="waves-effect waves-light btn" onclick="Materialize.toast({html: 'I am a toast'})">Toast!</a>
-        <p>To do this, call the Materialize.toast() function programatically in JavaScript.</p>
+        <a class="waves-effect waves-light btn" onclick="M.toast({html: 'I am a toast'})">Toast!</a>
+        <p>To do this, call the M.toast() function programatically in JavaScript.</p>
         <pre><code class="language-javascript">
-  Materialize.toast({html: 'I am a toast!'})
+  M.toast({html: 'I am a toast!'})
         </code></pre>
         <p>One way to add this into your application is to add this as an onclick event to a button.</p>
         <pre><code class="language-markup">
-  &lt;a onclick="Materialize.toast({html: 'I am a toast'})" class="btn">Toast!&lt;/a>
+  &lt;a onclick="M.toast({html: 'I am a toast'})" class="btn">Toast!&lt;/a>
         </code></pre>
       </div>
 
@@ -22,25 +22,25 @@
         <a class="waves-effect waves-light btn" onclick="displayCustomHTMLToast()">Toast with Action</a>
         <pre><code class="language-javascript">
   var $toastContent = $('&lt;span>I am toast content&lt;/span>').add($('&lt;button class="btn-flat toast-action">Undo&lt;/button>'));
-  Materialize.toast($toastContent, 10000);
+  M.toast($toastContent, 10000);
         </code></pre>
       </div>
 
 
       <h3 class="header">Callback</h3>
       <p>You can have the toast callback a function when it has been dismissed.</p>
-      <a class="btn" onclick="Materialize.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!</a>
+      <a class="btn" onclick="M.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!</a>
       <pre><code class="language-markup">
-  &lt;a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
+  &lt;a class="btn" onclick="M.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
       </code></pre>
 
       <h3 class="header">Styling Toasts</h3>
       <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
 
-      <a class="waves-effect waves-light btn" onclick="Materialize.toast({html: 'I am a toast!', classes: 'rounded'})">Round Toast!</a>
+      <a class="waves-effect waves-light btn" onclick="M.toast({html: 'I am a toast!', classes: 'rounded'})">Round Toast!</a>
 
       <pre><code class="language-javascript">
-  Materialize.toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+  M.toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
       </code></pre>
 
       <h3 class="header">Dismiss a Toast Programatically</h3>

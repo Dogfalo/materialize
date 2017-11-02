@@ -167,7 +167,7 @@
       }
 
       // Resize
-      let throttledResize = Materialize.throttle(this._handleResize, 200);
+      let throttledResize = M.throttle(this._handleResize, 200);
       this._handleThrottledResizeBound = throttledResize.bind(this);
 
       window.addEventListener('resize', this._handleThrottledResizeBound);
@@ -693,10 +693,10 @@
     }
   }
 
-  Materialize.Carousel = Carousel;
+  M.Carousel = Carousel;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Carousel, 'carousel', 'M_Carousel');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Carousel, 'carousel', 'M_Carousel');
   }
 
 }( cash ));

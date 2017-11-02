@@ -307,8 +307,8 @@
    */
   Toast._draggedToast = null;
 
-  Materialize.Toast = Toast;
-  Materialize.toast = function(options) {
+  M.Toast = Toast;
+  M.toast = function(options) {
     return new Toast(options);
   };
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

@@ -32,7 +32,7 @@
       this.el.M_Dropdown = this;
       Dropdown._dropdowns.push(this);
 
-      this.id = Materialize.getIdFromTrigger(el);
+      this.id = M.getIdFromTrigger(el);
       this.dropdownEl = document.getElementById(this.id);
       this.$dropdownEl = $(this.dropdownEl);
 
@@ -192,8 +192,8 @@
 
     _handleTriggerKeydown(e) {
       // ARROW DOWN OR ENTER WHEN SELECT IS CLOSED - open Dropdown
-      if ((e.which === Materialize.keys.ARROW_DOWN ||
-           e.which === Materialize.keys.ENTER) && !this.isOpen) {
+      if ((e.which === M.keys.ARROW_DOWN ||
+           e.which === M.keys.ENTER) && !this.isOpen) {
         e.preventDefault();
         this.open();
       }
@@ -204,21 +204,21 @@
      * @param {Event} e
      */
     _handleDropdownKeydown(e) {
-      if (e.which === Materialize.keys.TAB) {
+      if (e.which === M.keys.TAB) {
         e.preventDefault();
         this.close();
 
         // Navigate down dropdown list
-      } else if ((e.which === Materialize.keys.ARROW_DOWN ||
-                  e.which === Materialize.keys.ARROW_UP) && this.isOpen) {
+      } else if ((e.which === M.keys.ARROW_DOWN ||
+                  e.which === M.keys.ARROW_UP) && this.isOpen) {
         e.preventDefault();
-        let direction = e.which === Materialize.keys.ARROW_DOWN ? 1 : -1;
+        let direction = e.which === M.keys.ARROW_DOWN ? 1 : -1;
         this.focusedIndex =
           Math.max(Math.min(this.focusedIndex + direction, this.dropdownEl.children.length - 1), 0);
         this._focusFocusedItem();
 
         // ENTER selects choice on focused item
-      } else if (e.which === Materialize.keys.ENTER && this.isOpen) {
+      } else if (e.which === M.keys.ENTER && this.isOpen) {
         // Search for <a> and <button>
         let focusedElement = this.dropdownEl.children[this.focusedIndex];
         let $activatableElement = $(focusedElement).find('a, button').first();
@@ -227,7 +227,7 @@
         !!$activatableElement.length ? $activatableElement[0].click() : focusedElement.click();
 
         // Close dropdown on ESC
-      } else if (e.which === Materialize.keys.ESC && this.isOpen) {
+      } else if (e.which === M.keys.ESC && this.isOpen) {
         e.preventDefault();
         this.close();
       }
@@ -306,7 +306,7 @@
 
       // Countainer here will be closest ancestor with overflow: hidden
       let closestOverflowParent = this.dropdownEl.offsetParent;
-      let alignments = Materialize.checkPossibleAlignments(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : triggerBRect.height);
+      let alignments = M.checkPossibleAlignments(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : triggerBRect.height);
 
       let verticalAlignment = 'top';
       let horizontalAlignment = this.options.alignment;
@@ -477,10 +477,10 @@
    */
   Dropdown._dropdowns = [];
 
-  window.Materialize.Dropdown = Dropdown;
+  window.M.Dropdown = Dropdown;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

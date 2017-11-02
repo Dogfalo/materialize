@@ -176,8 +176,8 @@
       let velocityProperties = {
         height: this.newHeight,
         width: this.newWidth,
-        left: Materialize.getDocumentScrollLeft() + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
-        top: Materialize.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2
+        left: M.getDocumentScrollLeft() + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
+        top: M.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2
       };
 
       if (this.$el.hasClass('responsive-img')) {
@@ -389,10 +389,10 @@
     }
   }
 
-  Materialize.Materialbox = Materialbox;
+  M.Materialbox = Materialbox;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
   }
 
-}( cash, Materialize.Vel ));
+}( cash, M.Vel ));

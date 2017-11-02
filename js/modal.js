@@ -129,7 +129,7 @@
     _handleTriggerClick(e) {
       let $trigger =  $(e.target).closest('.modal-trigger');
       if ($trigger.length) {
-        let modalId = Materialize.getIdFromTrigger($trigger[0]);
+        let modalId = M.getIdFromTrigger($trigger[0]);
         let modalInstance = document.getElementById(modalId).M_Modal;
         if (modalInstance) {
           modalInstance.open($trigger);
@@ -330,10 +330,10 @@
    */
   Modal._count = 0;
 
-  Materialize.Modal = Modal;
+  M.Modal = Modal;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

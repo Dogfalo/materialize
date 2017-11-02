@@ -60,7 +60,7 @@
 
       // Set input id
       if (!this.$input.attr('id')) {
-        this.$input.attr('id', Materialize.guid());
+        this.$input.attr('id', M.guid());
       }
 
       // Render initial chips
@@ -344,7 +344,7 @@
         this.$input[0].focus();
       };
 
-      this.autocomplete = Materialize.Autocomplete.init(this.$input, this.options.autocompleteOptions)[0];
+      this.autocomplete = M.Autocomplete.init(this.$input, this.options.autocompleteOptions)[0];
     }
 
     /**
@@ -461,10 +461,10 @@
    */
   Chips._keydown = false;
 
-  Materialize.Chips = Chips;
+  M.Chips = Chips;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Chips, 'chips', 'M_Chips');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Chips, 'chips', 'M_Chips');
   }
 
   $(document).ready(function() {

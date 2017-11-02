@@ -141,10 +141,10 @@
     }
   }
 
-  Materialize.CharacterCounter = CharacterCounter;
+  M.CharacterCounter = CharacterCounter;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(CharacterCounter, 'characterCounter', 'M_CharacterCounter');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(CharacterCounter, 'characterCounter', 'M_CharacterCounter');
   }
 
 }( cash ));

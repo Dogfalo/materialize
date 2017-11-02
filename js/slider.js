@@ -346,10 +346,10 @@
     }
   }
 
-  Materialize.Slider = Slider;
+  M.Slider = Slider;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Slider, 'slider', 'M_Slider');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Slider, 'slider', 'M_Slider');
   }
 
-}(cash, Materialize.Vel));
+}(cash, M.Vel));

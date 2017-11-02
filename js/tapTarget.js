@@ -83,7 +83,7 @@
       this.originEl.addEventListener('click', this._handleOriginClickBound);
 
       // Resize
-      let throttledResize = Materialize.throttle(this._handleResize, 200);
+      let throttledResize = M.throttle(this._handleResize, 200);
       this._handleThrottledResizeBound = throttledResize.bind(this);
 
       window.addEventListener('resize', this._handleThrottledResizeBound);
@@ -197,8 +197,8 @@
       // Calculating origin
       let originWidth = this.$origin.outerWidth();
       let originHeight = this.$origin.outerHeight();
-      let originTop = isFixed ? this.$origin.offset().top - Materialize.getDocumentScrollTop() : this.$origin.offset().top;
-      let originLeft = isFixed ? this.$origin.offset().left - Materialize.getDocumentScrollLeft() : this.$origin.offset().left;
+      let originTop = isFixed ? this.$origin.offset().top - M.getDocumentScrollTop() : this.$origin.offset().top;
+      let originLeft = isFixed ? this.$origin.offset().left - M.getDocumentScrollLeft() : this.$origin.offset().left;
 
       // Calculating screen
       let windowWidth = window.innerWidth;
@@ -293,10 +293,10 @@
     }
   }
 
-  Materialize.FeatureDiscovery = FeatureDiscovery;
+  M.FeatureDiscovery = FeatureDiscovery;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(FeatureDiscovery, 'featureDiscovery', 'M_FeatureDiscovery');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(FeatureDiscovery, 'featureDiscovery', 'M_FeatureDiscovery');
   }
 
 }( cash ));

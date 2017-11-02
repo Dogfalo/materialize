@@ -230,10 +230,10 @@
     }
   }
 
-  Materialize.Collapsible = Collapsible;
+  M.Collapsible = Collapsible;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
   }
 
-}( cash, Materialize.Vel ));
+}( cash, M.Vel ));

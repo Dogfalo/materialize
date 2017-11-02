@@ -91,7 +91,7 @@
     }
 
     _updatePosition() {
-      let scrolled = Materialize.getDocumentScrollTop() + this.options.offset;
+      let scrolled = M.getDocumentScrollTop() + this.options.offset;
 
       if (this.options.top <= scrolled && this.options.bottom >= scrolled &&
           !this.el.classList.contains('pinned')) {
@@ -127,10 +127,10 @@
    */
   Pushpin._pushpins = [];
 
-  Materialize.Pushpin = Pushpin;
+  M.Pushpin = Pushpin;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Pushpin, 'pushpin', 'M_Pushpin');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Pushpin, 'pushpin', 'M_Pushpin');
   }
 
 })(cash);

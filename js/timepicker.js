@@ -36,7 +36,7 @@
 
       this.options = $.extend({}, Timepicker.defaults, options);
 
-      this.id = Materialize.guid();
+      this.id = M.guid();
       this._insertHTMLIntoDOM();
       this._setupModal();
       this._setupVariables();
@@ -134,7 +134,7 @@
     }
 
     _handleInputKeydown(e) {
-      if (e.which === Materialize.keys.ENTER) {
+      if (e.which === M.keys.ENTER) {
         e.preventDefault();
         this.open();
       }
@@ -215,7 +215,7 @@
     }
 
     _setupModal() {
-      this.modal = new Materialize.Modal(this.modalEl, {
+      this.modal = new M.Modal(this.modalEl, {
         complete: () => {
           this.isOpen = false;
         }
@@ -592,10 +592,10 @@
 		'</div>'
 	].join('');
 
-  Materialize.Timepicker = Timepicker;
+  M.Timepicker = Timepicker;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Timepicker, 'timepicker', 'M_Timepicker');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Timepicker, 'timepicker', 'M_Timepicker');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

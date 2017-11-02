@@ -353,10 +353,10 @@
    */
   Autocomplete._keydown = false;
 
-  Materialize.Autocomplete = Autocomplete;
+  M.Autocomplete = Autocomplete;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Autocomplete, 'autocomplete', 'M_Autocomplete');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Autocomplete, 'autocomplete', 'M_Autocomplete');
   }
 
 }( cash ));

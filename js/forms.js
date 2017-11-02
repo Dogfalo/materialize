@@ -1,6 +1,6 @@
 (function ($) {
   // Function to update labels of text fields
-  Materialize.updateTextFields = function() {
+  M.updateTextFields = function() {
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
     $(input_selector).each(function(element, index) {
       var $this = $(this);
@@ -29,7 +29,7 @@
 
     // Add active if input element has been pre-populated on document ready
     $(document).ready(function() {
-      Materialize.updateTextFields();
+      M.updateTextFields();
     });
 
     // HTML DOM FORM RESET handling

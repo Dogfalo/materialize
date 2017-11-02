@@ -198,8 +198,8 @@
     }
 
     _repositionWithinScreen(x, y, width, height) {
-      let scrollLeft = Materialize.getDocumentScrollLeft();
-      let scrollTop = Materialize.getDocumentScrollTop();
+      let scrollLeft = M.getDocumentScrollLeft();
+      let scrollTop = M.getDocumentScrollTop();
       let newX = x - scrollLeft;
       let newY = y - scrollTop;
 
@@ -211,7 +211,7 @@
       };
 
       let offset = this.options.margin + this.options.transitionMovement;
-      let edges = Materialize.checkWithinContainer(document.body, bounding, offset);
+      let edges = M.checkWithinContainer(document.body, bounding, offset);
 
       if (edges.left) {
         newX = offset;
@@ -284,10 +284,10 @@
     }
   }
 
-  Materialize.Tooltip = Tooltip;
+  M.Tooltip = Tooltip;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

@@ -106,7 +106,7 @@
 
       this.options = $.extend({}, Datepicker.defaults, options);
 
-      this.id = Materialize.guid();
+      this.id = M.guid();
 
       this._setupVariables();
       this._insertHTMLIntoDOM();
@@ -216,7 +216,7 @@
 
     _setupModal() {
       this.modalEl.id = 'modal-' + this.id;
-      this.modal = new Materialize.Modal(this.modalEl, {
+      this.modal = new M.Modal(this.modalEl, {
         complete: () => {
           this.isOpen = false;
         }
@@ -611,8 +611,8 @@
       this.calendarEl.innerHTML = html;
 
       // Init Materialize Select
-      new Materialize.Select(this.calendarEl.querySelector('.pika-select-year'), {classes: 'select-year'});
-      new Materialize.Select(this.calendarEl.querySelector('.pika-select-month'), {classes: 'select-month'});
+      new M.Select(this.calendarEl.querySelector('.pika-select-year'), {classes: 'select-year'});
+      new M.Select(this.calendarEl.querySelector('.pika-select-month'), {classes: 'select-month'});
 
       if (typeof this.options.onDraw === 'function') {
         this.options.onDraw(this);
@@ -670,7 +670,7 @@
     }
 
     _handleInputKeydown(e) {
-      if (e.which === Materialize.keys.ENTER) {
+      if (e.which === M.keys.ENTER) {
         e.preventDefault();
         this.open();
       }
@@ -879,10 +879,10 @@
 		'</div>'
 	].join('');
 
-  Materialize.Datepicker = Datepicker;
+  M.Datepicker = Datepicker;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Datepicker, 'datepicker', 'M_Datepicker');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Datepicker, 'datepicker', 'M_Datepicker');
   }
 
-})(cash, Materialize.Vel);
+})(cash, M.Vel);

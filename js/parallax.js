@@ -65,7 +65,7 @@
       this.$img[0].addEventListener('load', this._handleImageLoadBound);
 
       if (Parallax._parallaxes.length === 0) {
-        Parallax._handleScrollThrottled = Materialize.throttle(Parallax._handleScroll, 5);
+        Parallax._handleScrollThrottled = M.throttle(Parallax._handleScroll, 5);
         window.addEventListener('scroll', Parallax._handleScrollThrottled);
       }
     }
@@ -88,7 +88,7 @@
       let parallaxDist = imgHeight - containerHeight;
       let bottom = this.$el.offset().top + containerHeight;
       let top = this.$el.offset().top;
-      let scrollTop = Materialize.getDocumentScrollTop();
+      let scrollTop = M.getDocumentScrollTop();
       let windowHeight = window.innerHeight;
       let windowBottom = scrollTop + windowHeight;
       let percentScrolled = (windowBottom - top) / (containerHeight + windowHeight);
@@ -106,10 +106,10 @@
    */
   Parallax._parallaxes = [];
 
-  Materialize.Parallax = Parallax;
+  M.Parallax = Parallax;
 
-  if (Materialize.jQueryLoaded) {
-    Materialize.initializeJqueryWrapper(Parallax, 'parallax', 'M_Parallax');
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Parallax, 'parallax', 'M_Parallax');
   }
 
 })(cash);

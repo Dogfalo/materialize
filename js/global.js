@@ -1,20 +1,29 @@
 // Required for Meteor package, the use of window prevents export by Meteor
 (function(window){
   if(window.Package){
-    Materialize = {};
+    M = {};
   } else {
-    window.Materialize = {};
+    window.M = {};
   }
 
   // Check for jQuery
-  Materialize.jQueryLoaded = !!window.jQuery;
+  M.jQueryLoaded = !!window.jQuery;
 })(window);
 
+
+// AMD
+if ( typeof define === "function" && define.amd ) {
+	define( "M", [], function() {
+		return M;
+	} );
+}
+
+// CommonJS
 if (typeof exports !== 'undefined' && !exports.nodeType) {
   if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
-    exports = module.exports = Materialize;
+    exports = module.exports = M;
   }
-  exports.default = Materialize;
+  exports.default = M;
 }
 
 /*
@@ -59,7 +68,7 @@ if (typeof exports !== 'undefined' && !exports.nodeType) {
   window.cancelAnimationFrame = cancelAnimationFrame;
 }(window));
 
-Materialize.keys = {
+M.keys = {
   TAB: 9,
   ENTER: 13,
   ESC: 27,
@@ -73,7 +82,7 @@ Materialize.keys = {
  * @param {string} pluginName  jQuery plugin name
  * @param {string} classRef  Class reference name
  */
-Materialize.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
+M.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
   jQuery.fn[pluginName] = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
     if (plugin.prototype[methodOrOptions]) {
@@ -109,7 +118,7 @@ Materialize.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
  * @param {jQuery} obj  jQuery object to be parsed
  * @returns {string}
  */
-Materialize.objectSelectorString = function(obj) {
+M.objectSelectorString = function(obj) {
   let tagStr = obj.prop('tagName') || '';
   let idStr = obj.attr('id') || '';
   let classStr = obj.attr('class') || '';
@@ -118,7 +127,7 @@ Materialize.objectSelectorString = function(obj) {
 
 
 // Unique Random ID
-Materialize.guid = (function() {
+M.guid = (function() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
@@ -135,11 +144,11 @@ Materialize.guid = (function() {
  * @param {string} hash  String returned from this.hash
  * @returns {string}
  */
-Materialize.escapeHash = function(hash) {
+M.escapeHash = function(hash) {
   return hash.replace( /(:|\.|\[|\]|,|=)/g, "\\$1" );
 };
 
-Materialize.elementOrParentIsFixed = function(element) {
+M.elementOrParentIsFixed = function(element) {
   let $element = $(element);
   let $checkElements = $element.add($element.parents());
   let isFixed = false;
@@ -175,7 +184,7 @@ Materialize.elementOrParentIsFixed = function(element) {
  * @param {Number} offset  offset from edge that counts as exceeding
  * @returns {Edges}
  */
-Materialize.checkWithinContainer = function(container, bounding, offset) {
+M.checkWithinContainer = function(container, bounding, offset) {
   let edges = {
     top: false,
     right: false,
@@ -216,7 +225,7 @@ Materialize.checkWithinContainer = function(container, bounding, offset) {
 };
 
 
-Materialize.checkPossibleAlignments = function(el, container, bounding, offset) {
+M.checkPossibleAlignments = function(el, container, bounding, offset) {
   let canAlign = {
     top: true,
     right: true,
@@ -274,7 +283,7 @@ Materialize.checkPossibleAlignments = function(el, container, bounding, offset) 
 };
 
 
-Materialize.getOverflowParent = function(element) {
+M.getOverflowParent = function(element) {
   if (element == null) {
     return null;
   }
@@ -282,7 +291,7 @@ Materialize.getOverflowParent = function(element) {
   if (element === document.body || getComputedStyle(element).overflow !== 'visible') {
     return element;
   } else {
-    return Materialize.getOverflowParent(element.parentElement);
+    return M.getOverflowParent(element.parentElement);
   }
 };
 
@@ -292,7 +301,7 @@ Materialize.getOverflowParent = function(element) {
  * @param {Element} trigger  trigger
  * @returns {string}
  */
-Materialize.getIdFromTrigger = function(trigger) {
+M.getIdFromTrigger = function(trigger) {
   let id = trigger.getAttribute('data-target');
   if (!id) {
     id = trigger.getAttribute('href');
@@ -310,7 +319,7 @@ Materialize.getIdFromTrigger = function(trigger) {
  * Multi browser support for document scroll top
  * @returns {Number}
  */
-Materialize.getDocumentScrollTop = function() {
+M.getDocumentScrollTop = function() {
   return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 };
 
@@ -318,7 +327,7 @@ Materialize.getDocumentScrollTop = function() {
  * Multi browser support for document scroll left
  * @returns {Number}
  */
-Materialize.getDocumentScrollLeft = function() {
+M.getDocumentScrollLeft = function() {
   return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
 };
 
@@ -363,7 +372,7 @@ let getTime = (Date.now || function () {
  * @param {Object=} options
  * @returns {Function}
  */
-Materialize.throttle = function(func, wait, options) {
+M.throttle = function(func, wait, options) {
   let context, args, result;
   let timeout = null;
   let previous = 0;
@@ -397,14 +406,14 @@ Materialize.throttle = function(func, wait, options) {
 // Velocity has conflicts when loaded with jQuery, this will check for it
 // First, check if in noConflict mode
 let Vel;
-if (Materialize.jQueryLoaded) {
+if (M.jQueryLoaded) {
   Vel = jQuery.Velocity;
 } else {
   Vel = Velocity;
 }
 
 if (Vel) {
-  Materialize.Vel = Vel;
+  M.Vel = Vel;
 } else {
-  Materialize.Vel = Velocity;
+  M.Vel = Velocity;
 }
