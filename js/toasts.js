@@ -2,32 +2,24 @@
   'use strict';
 
   let _defaults = {
-    displayLength: Infinity,
+    html: '',
+    displayLength: 4000,
     inDuration: 300,
     outDuration: 375,
-    className: undefined,
-    completeCallback: undefined,
+    classes: null,
+    completeCallback: null,
     activationPercent: 0.8
   };
 
   class Toast {
-    constructor(message, displayLength, className, completeCallback) {
-      if (!message) {
-        return;
-      }
+    constructor(options) {
 
       /**
        * Options for the toast
        * @member Toast#options
        */
-      this.options = {
-        displayLength: displayLength,
-        className: className,
-        completeCallback: completeCallback
-      };
-
-      this.options = $.extend({}, Toast.defaults, this.options);
-      this.message = message;
+      this.options = $.extend({}, Toast.defaults, options);
+      this.message = this.options.html;
 
       /**
        * Describes current pan state toast
@@ -196,12 +188,8 @@
       toast.classList.add('toast');
 
       // Add custom classes onto toast
-      if (this.options.className) {
-        let classes = this.options.className.split(' ');
-        let i, count;
-        for (i = 0, count = classes.length; i < count; i++) {
-          toast.classList.add(classes[i]);
-        }
+      if (this.options.classes) {
+        $(toast).addClass(this.options.classes);
       }
 
       // Set content
@@ -214,10 +202,10 @@
         toast.appendChild(this.message);
 
       // Check if it is jQuery object
-      } else if (this.message instanceof jQuery) {
-        $(toast).append(this.message);
+      } else if (!!this.message.jquery) {
+        $(toast).append(this.message[0]);
 
-        // Insert as text;
+      // Insert as html;
       } else {
         toast.innerHTML = this.message;
       }
@@ -320,7 +308,7 @@
   Toast._draggedToast = null;
 
   Materialize.Toast = Toast;
-  Materialize.toast = function(message, displayLength, className, completeCallback) {
-    return new Toast(message, displayLength, className, completeCallback);
+  Materialize.toast = function(options) {
+    return new Toast(options);
   };
 })(cash, Materialize.Vel);
