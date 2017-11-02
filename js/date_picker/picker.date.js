@@ -1165,12 +1165,13 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
 
         // Materialize modified
-        createDayLabel = function() {
-                if (selectedObject != null)
-                    return selectedObject.date
-                else return nowObject.date
-            }
-        createWeekdayLabel = function() {
+        var createDayLabel = function() {
+            if (selectedObject != null)
+                return selectedObject.date
+            else return nowObject.date
+        }
+
+        var createWeekdayLabel = function() {
             var display_day;
 
             if (selectedObject != null)
