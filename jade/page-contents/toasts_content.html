@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="toast" class="section scrollspy">
+        <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
+        <a class="waves-effect waves-light btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
+        <p>To do this, call the Materialize.toast() function programatically in JavaScript.</p>
+        <pre><code class="language-javascript">
+  // Materialize.toast(message, displayLength, className, completeCallback);
+  Materialize.toast('I am a toast!', 4000) // 4000 is the duration of the toast
+        </code></pre>
+        <p>One way to add this into your application is to add this as an onclick event to a button.</p>
+        <pre><code class="language-markup">
+  &lt;a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!&lt;/a>
+        </code></pre>
+
+        <h3 class="header">Custom HTML</h3>
+        <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
+        <a class="waves-effect waves-light btn" onclick="displayCustomHTMLToast()">Toast with Action</a>
+        <pre><code class="language-javascript">
+  var $toastContent = $('&lt;span>I am toast content&lt;/span>').add($('&lt;button class="btn-flat toast-action">Undo&lt;/button>'));
+  Materialize.toast($toastContent, 10000);
+        </code></pre>
+
+        <h3 class="header">Callback</h3>
+        <p>You can have the toast callback a function when it has been dismissed.</p>
+        <a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!</a>
+        <pre><code class="language-markup">
+  &lt;a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Your toast was dismissed')})">Toast!&lt;/a>
+        </code></pre>
+
+        <h3 class="header">Styling Toasts</h3>
+        <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+
+        <a class="waves-effect waves-light btn" onclick="Materialize.toast('I am a toast!', 3000, 'rounded')">Round Toast!</a>
+
+        <pre><code class="language-javascript">
+  Materialize.toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+        </code></pre>
+
+        <h3 class="header">Dismiss a Toast Programatically</h3>
+        <p>To remove a specific toast using JavaScript, access the <code class="language-javascript">M_Toast</code> toast HTML element and call the dismiss function</p>
+
+        <pre><code class="language-javascript">
+  // Get toast DOM Element, get instance, then call dismiss function
+  var toastElement = $('.toast').first()[0];
+  var toastInstance = toastElement.M_Toast;
+  toastInstance.dismiss();
+        </code></pre>
+
+        <h3 class="header">Dismiss all Toasts</h3>
+        <pre><code class="language-javascript">
+  Materialize.Toast.dismissAll();
+        </code></pre>
+
+      </div>
+    </div>
+
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#toast">Toasts</a></li>
+            <li><a href="#tooltip">Tooltips</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

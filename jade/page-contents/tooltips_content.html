@@ -1,0 +1,211 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <!-- Tooltip Section -->
+      <div id="introduction" class="scrollspy section">
+        <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
+        <div class="row">
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-html="true" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"> Bottom</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="top" data-delay="50" data-tooltip="I am a tooltip"> Top</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="left" data-delay="50" data-tooltip="I am a tooltip"> Left</a>
+          <a class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="50" data-tooltip="I am a tooltip"> Right</a>
+        </div>
+
+
+        <p>Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position.</p>
+        <pre><code class="language-markup">
+  &lt;!-- data-position can be : bottom, top, left, or right -->
+  &lt;!-- data-delay controls delay before tooltip shows (in milliseconds)-->
+  &lt;a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am a tooltip">Hover me!&lt;/a>
+        </code></pre>
+      </div>
+
+
+      <div id="initialization" class="scrollspy section">
+        <h3 class="header" >Initialization</h3>
+        <pre><code class="language-javascript">
+  var elem = document.querySelector('.tooltipped');
+  var instance = new M.Tooltip(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+        </code></pre>
+      </div>
+
+
+      <div id="options" class="section scrollspy">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>exitDelay</td>
+              <td>Number</td>
+              <td>0</td>
+              <td>Delay time before tooltip disappears.</td>
+            </tr>
+            <tr>
+              <td>enterDelay</td>
+              <td>Number</td>
+              <td>200</td>
+              <td>Delay time before tooltip appears.</td>
+            </tr>
+            <tr>
+              <td>html</td>
+              <td>String</td>
+              <td>null</td>
+              <td>Can take regular text or HTML strings.</td>
+            </tr>
+            <tr>
+              <td>margin</td>
+              <td>Number</td>
+              <td>5</td>
+              <td>Set distance tooltip appears away from its activator excluding transitionMovement.</td>
+            </tr>
+            <tr>
+              <td>inDuration</td>
+              <td>Number</td>
+              <td>300</td>
+              <td>Enter transition duration.</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Number</td>
+              <td>250</td>
+              <td>Exit transition duration.</td>
+            </tr>
+            <tr>
+              <td>position</td>
+              <td>String</td>
+              <td>'bottom'</td>
+              <td>Set the direction of the tooltip. 'top', 'right', 'bottom', 'left'.</td>
+            </tr>
+            <tr>
+              <td>transitionMovement</td>
+              <td>Number</td>
+              <td>10</td>
+              <td>Amount in px that the tooltip moves during its transition.</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div id="methods" class="section scrollspy">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+  var instance = M.Tooltip.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.tooltip').tooltip('methodName');
+    $('.tooltip').tooltip('methodName', paramName);
+  */
+          </code></pre>
+        </blockquote>
+        <h5 class="method-header">
+          .open();
+        </h5>
+        <p>Show tooltip.</p>
+        <pre><code class="language-javascript col s12">
+instance.open();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+          .close();
+        </h5>
+        <p>Hide tooltip.</p>
+        <pre><code class="language-javascript col s12">
+instance.close();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+instance.destroy();
+        </code></pre>
+        <br>
+      </div>
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>If tooltip is open.</td>
+            </tr>
+
+            <tr>
+              <td>isHovered</td>
+              <td>Boolean</td>
+              <td>If tooltip is hovered.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#initialization">Initialization</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

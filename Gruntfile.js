@@ -388,6 +388,8 @@ module.exports = function(grunt) {
           "modals.html": "jade/modals.jade",
           "dropdown.html": "jade/dropdown.jade",
           "tabs.html": "jade/tabs.jade",
+          "toasts.html": "jade/toasts.jade",
+          "tooltips.html": "jade/tooltips.jade",
           "sidenav.html": "jade/sidenav.jade",
           "pushpin.html": "jade/pushpin.jade",
           "waves.html": "jade/waves.jade",
