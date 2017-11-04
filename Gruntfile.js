@@ -383,7 +383,6 @@ module.exports = function(grunt) {
           "collections.html": "jade/collections.jade",
           "badges.html": "jade/badges.jade",
           "footer.html": "jade/footer.jade",
-          "dialogs.html": "jade/dialogs.jade",
           "modals.html": "jade/modals.jade",
           "dropdown.html": "jade/dropdown.jade",
           "tabs.html": "jade/tabs.jade",

@@ -68,12 +68,6 @@
     });
 
     window.index.add({
-      href: 'http://materializecss.com/dialogs.html',
-      title: 'dialogs tooltips toasts',
-      body: 'Dialogs are content that are not original visible on a page but show up with extra information if needed. The transitions should make the appearance of the dialog make sense and not jarring to the user.'
-    });
-
-    window.index.add({
       href: 'http://materializecss.com/dropdown.html',
       title: 'dropdown',
       body: 'Add a dropdown list to any button.'
