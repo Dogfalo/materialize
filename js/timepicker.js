@@ -9,12 +9,12 @@
 		duration: 350,
     container: null,
     defaultTime: 'now',         // default time, 'now' or '13:14' e.g.
-		fromnow: 0,            // set default time to * milliseconds from now (using with default = 'now')
-		donetext: 'Ok',      // done button text
-		cleartext: 'Clear',
-		canceltext: 'Cancel',
-		autoclose: false,      // auto close when minute is selected
-		twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
+		fromnow: 0,            // Millisecond offset from the defaultTime
+		doneText: 'Ok',      // done button text
+		clearText: 'Clear',
+		cancelText: 'Cancel',
+		autoClose: false,      // auto close when minute is selected
+		twelveHour: true,      // change to 12 hour AM/PM clock from 24 hour
 		vibrate: true          // vibrate the device when dragging clock hand
   };
 
@@ -187,7 +187,7 @@
 			if (this.currentView === 'hours') {
 				this.showView('minutes', this.options.duration / 2);
 
-      } else if (this.options.autoclose) {
+      } else if (this.options.autoClose) {
 				this.minutesView.addClass('timepicker-dial-out');
 				setTimeout(function(){
 					this.done();
@@ -239,20 +239,20 @@
     }
 
     _pickerSetup() {
-      $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.cleartext + '</button>')
+      $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.clearText + '</button>')
         .appendTo(this.footer).on('click', this.clear.bind(this));
 
       let confirmationBtnsContainer = $('<div class="confirmation-btns"></div>');
-		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.canceltext + '</button>')
+		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.cancelText + '</button>')
         .appendTo(confirmationBtnsContainer).on('click', this.close.bind(this));
-		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelvehour? '3' : '1') + '">' + this.options.donetext + '</button>')
+		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.doneText + '</button>')
         .appendTo(confirmationBtnsContainer).on('click', this.done.bind(this));
       confirmationBtnsContainer.appendTo(this.footer);
     }
 
 
     _clockSetup() {
-      if (this.options.twelvehour) {
+      if (this.options.twelveHour) {
         this.$amBtn = $('<div class="am-btn">AM</div>');
         this.$pmBtn = $('<div class="pm-btn">PM</div>');
         this.$amBtn.on('click', this._handleAmPmClick.bind(this)).appendTo(this.spanAmPm);
@@ -302,7 +302,7 @@
     _buildHoursView() {
       let $tick = $('<div class="timepicker-tick"></div>');
 	    // Hours view
-		  if (this.options.twelvehour) {
+		  if (this.options.twelveHour) {
 			  for (let i = 1; i < 13; i += 1) {
 				  let tick = $tick.clone();
 				  let radian = i / 6 * Math.PI;
@@ -361,7 +361,7 @@
     _updateTimeFromInput() {
       // Get the time
 		  let value = ((this.el.value || this.options.defaultTime || '') + '').split(':');
-		  if (this.options.twelvehour && !(typeof value[1] === 'undefined')) {
+		  if (this.options.twelveHour && !(typeof value[1] === 'undefined')) {
 			  if (value[1].indexOf("AM") > 0){
 				  this.amOrPm = 'AM';
 			  } else {
@@ -375,7 +375,7 @@
 				  now.getHours(),
 				  now.getMinutes()
 			  ];
-        if (this.options.twelvehour) {
+        if (this.options.twelveHour) {
           this.amOrPm = value[0] >= 12 && value[0] < 24 ? 'PM' : 'AM';
         }
 		  }
@@ -445,7 +445,7 @@
 			inner = isHours && z < (this.options.outerRadius + this.options.innerRadius) / 2,
 			radius = inner ? this.options.innerRadius : this.options.outerRadius;
 
-		  if (this.options.twelvehour) {
+		  if (this.options.twelveHour) {
 			  radius = this.options.outerRadius;
       }
 
@@ -461,7 +461,7 @@
 		  radian = value * unit;
 
 		  // Correct the hours or minutes
-		  if (this.options.twelvehour) {
+		  if (this.options.twelveHour) {
 			  if (isHours) {
 				  if (value === 0)
 					  value = 12;
@@ -546,7 +546,8 @@
 		  let last = this.el.value;
 		  let value = clearValue ? '' : Timepicker._addLeadingZero(this.hours) + ':' +
           Timepicker._addLeadingZero(this.minutes);
-		  if (!clearValue && this.options.twelvehour) {
+      this.time = value;
+		  if (!clearValue && this.options.twelveHour) {
 			  value = `${value} ${this.amOrPm}`;
       }
 		  this.el.value = value;

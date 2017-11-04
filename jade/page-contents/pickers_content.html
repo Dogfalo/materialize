@@ -131,7 +131,7 @@
                 <td>container</td>
                 <td>String</td>
                 <td>null</td>
-                <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input</td>
+                <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input.</td>
               </tr>
             </tbody>
           </table>
@@ -173,6 +173,81 @@
             </tbody>
           </table>
         </div>
+
+        <div class="section">
+          <h5>Methods</h5>
+
+          <blockquote>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+            <pre><code class="language-javascript col s12">
+  var instance = M.Datepicker.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.datepicker').datepicker('methodName');
+    $('.datepicker').datepicker('methodName', paramName);
+  */
+            </code></pre>
+          </blockquote>
+          <h5 class="method-header">
+            .open();
+          </h5>
+          <p>Open datepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.open();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .close();
+          </h5>
+          <p>Close datepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.close();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .toString();
+          </h5>
+          <p>Gets a string representation of the selected date</p>
+          <pre><code class="language-javascript col s12">
+instance.toString();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .setDate();
+          </h5>
+          <p>Set a date on the datepicker</p>
+          <h6>Arguments</h6>
+          <p><b>Date (optional):</b> Date to set on the datepicker.</p>
+          <pre><code class="language-javascript col s12">
+instance.setDate(new Date());
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .gotoDate();
+          </h5>
+          <p>Change date view to a specific date on the datepicker</p>
+          <h6>Arguments</h6>
+          <p><b>Date:</b> Date to show on the datepicker.</p>
+          <pre><code class="language-javascript col s12">
+instance.gotoDate(new Date());
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .destroy();
+          </h5>
+          <p>Destroy plugin instance and teardown</p>
+          <pre><code class="language-javascript col s12">
+instance.destroy();
+          </code></pre>
+        </div>
       </div>
 
       <div id="time-picker" class="section scrollspy">
@@ -185,23 +260,196 @@
   &lt;input type="text" class="timepicker">
         </code></pre>
 
-        <h5>Initialization</h5>
-        <pre><code class="language-javascript">
-  $('.timepicker').timepicker({
-    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
-    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
-    twelvehour: false, // Use AM/PM or 24-hour format
-    donetext: 'OK', // text for done-button
-    cleartext: 'Clear', // text for clear-button
-    canceltext: 'Cancel', // Text for cancel-button,
-    container: undefined, // ex. 'body' will append picker to body
-    autoclose: false, // automatic close timepicker
-    aftershow: function(){} //Function for after opening timepicker
+
+        <div class="section">
+          <h5>Initialization</h5>
+          <pre><code class="language-javascript">
+  var elem = document.querySelector('.datepicker');
+  var instance = new M.Timepicker(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.timepicker').timepicker();
   });
-        </code></pre>
+          </code></pre>
+        </div>
+
+
+        <div class="section">
+          <h5>Options</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>duration</td>
+                <td>Number</td>
+                <td>350</td>
+                <td>Duration of the transition from/to the hours/minutes view.</td>
+              </tr>
+              <tr>
+                <td>container</td>
+                <td>String</td>
+                <td>null</td>
+                <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input.</td>
+              </tr>
+              <tr>
+                <td>defaultTime</td>
+                <td>String</td>
+                <td>'now'</td>
+                <td>Default time to set on the timepicker 'now' or '13:14'</td>
+              </tr>
+              <tr>
+                <td>fromnow</td>
+                <td>Number</td>
+                <td>0</td>
+                <td>Millisecond offset from the defaultTime.</td>
+              </tr>
+              <tr>
+                <td>doneText</td>
+                <td>String</td>
+                <td>'Ok'</td>
+                <td>Done button text.</td>
+              </tr>
+              <tr>
+                <td>clearText</td>
+                <td>String</td>
+                <td>'Clear'</td>
+                <td>Clear button text.</td>
+              </tr>
+              <tr>
+                <td>cancelText</td>
+                <td>String</td>
+                <td>'Ok'</td>
+                <td>Cancel button text.</td>
+              </tr>
+              <tr>
+                <td>autoClose</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Automatically close picker when minute is selected.</td>
+              </tr>
+              <tr>
+                <td>twelveHour</td>
+                <td>Boolean</td>
+                <td>true</td>
+                <td>Use 12 hour AM/PM clock instead of 24 hour clock.</td>
+              </tr>
+              <tr>
+                <td>vibrate</td>
+                <td>Boolean</td>
+                <td>true</td>
+                <td>Vibrate device when dragging clock hand.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Properties</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>el</td>
+                <td>Element</td>
+                <td>The input element the plugin was initialized with.</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>Object</td>
+                <td>The options the instance was initialized with.</td>
+              </tr>
+              <tr>
+                <td>isOpen</td>
+                <td>Boolean</td>
+                <td>If the picker is open.</td>
+              </tr>
+              <tr>
+                <td>time</td>
+                <td>String</td>
+                <td>The selected time.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Methods</h5>
+
+          <blockquote>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+            <pre><code class="language-javascript col s12">
+  var instance = M.Timepicker.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.timepicker').timepicker('methodName');
+    $('.timepicker').timepicker('methodName', paramName);
+  */
+            </code></pre>
+          </blockquote>
+          <h5 class="method-header">
+            .open();
+          </h5>
+          <p>Open timepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.open();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .close();
+          </h5>
+          <p>Close timepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.close();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .showView();
+          </h5>
+          <p>Show hours or minutes view on timepicker</p>
+          <h6>Arguments</h6>
+          <p><b>String:</b> The name of the view you want to switch to, 'hours' or 'minutes'.</p>
+          <pre><code class="language-javascript col s12">
+instance.showView('hours');
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .destroy();
+          </h5>
+          <p>Destroy plugin instance and teardown</p>
+          <pre><code class="language-javascript col s12">
+instance.destroy();
+          </code></pre>
+        </div>
+
       </div>
 
     </div>
+
     <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
