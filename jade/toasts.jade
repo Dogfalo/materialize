@@ -13,6 +13,6 @@ html(lang="en")
     include _scripts.html
   script(type='text/javascript').
     var displayCustomHTMLToast = function () {
-      var $toastContent = $('<span>I am toast content</span>').add($('<button class="btn-flat toast-action">Undo</button>'));
-      M.toast($toastContent, 10000);
+      var toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+      M.toast({html: toastHTML});
     }

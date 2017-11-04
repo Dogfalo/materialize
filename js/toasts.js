@@ -6,7 +6,7 @@
     displayLength: 4000,
     inDuration: 300,
     outDuration: 375,
-    classes: null,
+    classes: '',
     completeCallback: null,
     activationPercent: 0.8
   };
@@ -188,7 +188,7 @@
       toast.classList.add('toast');
 
       // Add custom classes onto toast
-      if (this.options.classes) {
+      if (!!this.options.classes.length) {
         $(toast).addClass(this.options.classes);
       }
 
