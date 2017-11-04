@@ -14,22 +14,168 @@
   &lt;input type="text" class="datepicker">
         </code></pre>
 
-        <h5>Initialization</h5>
-        <p>At this time, not all pickadate.js options are working with our implementation</p>
-        <pre><code class="language-javascript">
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year,
-    today: 'Today',
-    clear: 'Clear',
-    close: 'Ok',
-    closeOnSelect: false // Close upon selecting a date,
-    container: undefined, // ex. 'body' will append picker to body
+
+        <div class="section">
+          <h5>Initialization</h5>
+          <pre><code class="language-javascript">
+  var elem = document.querySelector('.datepicker');
+  var instance = new M.Datepicker(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
   });
-        </code></pre>
+          </code></pre>
+        </div>
+
+
+        <div class="section">
+          <h5>Options</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>format</td>
+                <td>String</td>
+                <td>'YYYY-MM-DD'</td>
+                <td>The date output format for the input field value.</td>
+              </tr>
+              <tr>
+                <td>toString</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>The toString function which gets passed a current date object and format and returns a string.</td>
+              </tr>
+              <tr>
+                <td>parse</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Used to create date object from current input string.</td>
+              </tr>
+              <tr>
+                <td>defaultDate</td>
+                <td>Date</td>
+                <td>null</td>
+                <td>The initial date to view when first opened.</td>
+              </tr>
+              <tr>
+                <td>setDefaultDate</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Make the defaultDate the initial selected value.</td>
+              </tr>
+              <tr>
+                <td>disableWeekends</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Prevent selection of any date on the weekend.</td>
+              </tr>
+              <tr>
+                <td>disableDayFn</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Custom function to disable certain days.</td>
+              </tr>
+              <tr>
+                <td>firstDay</td>
+                <td>Number</td>
+                <td>0</td>
+                <td>First day of week (0: Sunday, 1: Monday).</td>
+              </tr>
+              <tr>
+                <td>minDate</td>
+                <td>Date</td>
+                <td>null</td>
+                <td>The earliest date that can be selected.</td>
+              </tr>
+              <tr>
+                <td>maxDate</td>
+                <td>Date</td>
+                <td>null</td>
+                <td>The latest date that can be selected.</td>
+              </tr>
+              <tr>
+                <td>yearRange</td>
+                <td>Number || Array</td>
+                <td>10</td>
+                <td>Number of years either side, or array of upper/lower range.</td>
+              </tr>
+              <tr>
+                <td>isRTL</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Changes Datepicker to RTL.</td>
+              </tr>
+              <tr>
+                <td>showMonthAfterYear</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Show month after year in Datepicker title.</td>
+              </tr>
+              <tr>
+                <td>showDaysInNextAndPreviousMonths</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Render days of the calendar grid that fall in the next or previous month.</td>
+              </tr>
+              <tr>
+                <td>container</td>
+                <td>String</td>
+                <td>null</td>
+                <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Properties</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>el</td>
+                <td>Element</td>
+                <td>The input element the plugin was initialized with.</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>Object</td>
+                <td>The options the instance was initialized with.</td>
+              </tr>
+              <tr>
+                <td>isOpen</td>
+                <td>Boolean</td>
+                <td>If the picker is open.</td>
+              </tr>
+              <tr>
+                <td>date</td>
+                <td>Date</td>
+                <td>The selected Date.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-    <div id="time-picker" class="section scrollspy">
+      <div id="time-picker" class="section scrollspy">
         <h3 class="header">Time Picker</h3>
         <div class="input-field">
           <input id="lunchtime" type="text" class="timepicker">

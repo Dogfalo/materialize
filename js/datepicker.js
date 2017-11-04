@@ -3,38 +3,35 @@
 
   let _defaults = {
 
-    // data-attribute on the input field with an aria assistance tekst (only applied when `bound` is set)
-    ariaLabel: 'Use the arrow keys to pick a date',
-
-    // the default output format for `.toString()` and `field` value
+    // the default output format for the input field value
     format: 'YYYY-MM-DD',
 
     // the toString function which gets passed a current date object and format
     // and returns a string
     toString: null,
 
-    // used to create date object from current input string
+    // Used to create date object from current input string
     parse: null,
 
-    // the initial date to view when first opened
+    // The initial date to view when first opened
     defaultDate: null,
 
-    // make the `defaultDate` the initial selected value
+    // Make the `defaultDate` the initial selected value
     setDefaultDate: false,
 
     disableWeekends: false,
 
     disableDayFn: null,
 
-    // first day of week (0: Sunday, 1: Monday etc)
+    // First day of week (0: Sunday, 1: Monday etc)
     firstDay: 0,
 
-    // the minimum/earliest date that can be selected
+    // The earliest date that can be selected
     minDate: null,
-    // the maximum/latest date that can be selected
+    // Thelatest date that can be selected
     maxDate: null,
 
-    // number of years either side, or array of upper/lower range
+    // Number of years either side, or array of upper/lower range
     yearRange: 10,
 
     // used internally (don't config outside)
@@ -55,7 +52,7 @@
     showDaysInNextAndPreviousMonths: false,
 
     // Specify a DOM element to render the calendar in
-    container: undefined,
+    container: null,
 
     // internationalization
     i18n: {
