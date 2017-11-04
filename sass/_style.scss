@@ -100,6 +100,7 @@ ul.sidenav.sidenav-fixed {
   overflow: hidden;
   box-shadow: none;
   border-right: 1px solid $border-color;
+  padding-bottom: 104px;
 
   li {
     line-height: 44px;
@@ -146,6 +147,22 @@ ul.sidenav.sidenav-fixed {
 #logo-container {
   height: 57px;
   margin-bottom: 32px;
+}
+
+.patreon-ad {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 45px;
+  width: 299px;
+  background-color: #fff;
+  z-index: 1000;
+  border-top: 1px solid $border-color;
+
+  a {
+    line-height: 45px;
+    padding: 0 30px;
+  }
 }
 
 nav.top-nav {

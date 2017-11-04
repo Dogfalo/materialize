@@ -407,7 +407,8 @@ module.exports = function(grunt) {
           "range.html": "jade/range.jade",
           "select.html": "jade/select.jade",
           "switches.html": "jade/switches.jade",
-          "text-inputs.html": "jade/text-inputs.jade"
+          "text-inputs.html": "jade/text-inputs.jade",
+          "support-us.html": "jade/support-us.jade"
         }
       }
     },
