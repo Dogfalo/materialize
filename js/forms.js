@@ -1,9 +1,9 @@
 (function ($) {
   // Function to update labels of text fields
   M.updateTextFields = function() {
-    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
+    let input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
     $(input_selector).each(function(element, index) {
-      var $this = $(this);
+      let $this = $(this);
       if (element.value.length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== null) {
         $this.siblings('label').addClass('active');
       } else if (element.validity) {
@@ -17,7 +17,7 @@
 
   $(document).ready(function() {
     // Text based inputs
-    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
+    let input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
 
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
@@ -34,7 +34,7 @@
 
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {
-      var formReset = $(e.target);
+      let formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
         formReset.find(input_selector).each(function (e) {
@@ -48,7 +48,7 @@
           formReset.find('select').each(function () {
             // check if initialized
             if (this.M_Select) {
-              var reset_text = $(this).find('option[selected]').text();
+              let reset_text = $(this).find('option[selected]').text();
               $(this).siblings('input.select-dropdown')[0].value = reset_text;
             }
           });
@@ -85,9 +85,9 @@
 
 
     window.validate_field = function(object) {
-      var hasLength = object.attr('data-length') !== null;
-      var lenAttr = parseInt(object.attr('data-length'));
-      var len = object[0].value.length;
+      let hasLength = object.attr('data-length') !== null;
+      let lenAttr = parseInt(object.attr('data-length'));
+      let len = object[0].value.length;
 
       if (len === 0 && object[0].validity.badInput === false && !object.is(':required')) {
         if (object.hasClass('validate')) {
@@ -111,14 +111,13 @@
     };
 
     // Radio and Checkbox focus class
-    var radio_checkbox = 'input[type=radio], input[type=checkbox]';
+    let radio_checkbox = 'input[type=radio], input[type=checkbox]';
     $(document).on('keyup', radio_checkbox, function(e) {
       // TAB, check if tabbing to radio or checkbox.
-      if (e.which === 9) {
+      if (e.which === M.keys.TAB) {
         $(this).addClass('tabbed');
-        var $this = $(this);
+        let $this = $(this);
         $this.one('blur', function(e) {
-
           $(this).removeClass('tabbed');
         });
         return;
@@ -126,20 +125,20 @@
     });
 
     // Textarea Auto Resize
-    var hiddenDiv = $('.hiddendiv').first();
+    let hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
       hiddenDiv = $('<div class="hiddendiv common"></div>');
       $('body').append(hiddenDiv);
     }
-    var text_area_selector = '.materialize-textarea';
+    let text_area_selector = '.materialize-textarea';
 
     function textareaAutoResize($textarea) {
       // Set font properties of hiddenDiv
 
-      var fontFamily = $textarea.css('font-family');
-      var fontSize = $textarea.css('font-size');
-      var lineHeight = $textarea.css('line-height');
-      var padding = $textarea.css('padding');
+      let fontFamily = $textarea.css('font-family');
+      let fontSize = $textarea.css('font-size');
+      let lineHeight = $textarea.css('line-height');
+      let padding = $textarea.css('padding');
 
       if (fontSize) { hiddenDiv.css('font-size', fontSize); }
       if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
@@ -157,7 +156,7 @@
       }
 
       hiddenDiv.text($textarea[0].value + '\n');
-      var content = hiddenDiv.html().replace(/\n/g, '<br>');
+      let content = hiddenDiv.html().replace(/\n/g, '<br>');
       hiddenDiv.html(content);
 
 
@@ -190,7 +189,7 @@
     }
 
     $(text_area_selector).each(function () {
-      var $textarea = $(this);
+      let $textarea = $(this);
       /**
        * Instead of resizing textarea on document load,
        * store the original height and the original length
@@ -211,11 +210,11 @@
 
     // File Input Path
     $(document).on('change', '.file-field input[type="file"]', function () {
-      var file_field = $(this).closest('.file-field');
-      var path_input = file_field.find('input.file-path');
-      var files      = $(this)[0].files;
-      var file_names = [];
-      for (var i = 0; i < files.length; i++) {
+      let file_field = $(this).closest('.file-field');
+      let path_input = file_field.find('input.file-path');
+      let files      = $(this)[0].files;
+      let file_names = [];
+      for (let i = 0; i < files.length; i++) {
         file_names.push(files[i].name);
       }
       path_input[0].value = file_names.join(", ");
