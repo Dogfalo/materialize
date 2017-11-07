@@ -396,13 +396,19 @@ table {
     border-bottom: 1px solid $table-border-color;
   }
 
-  &.striped > tbody {
-    > tr:nth-child(odd) {
-      background-color: $table-striped-color;
+  &.striped {
+    tr {
+      border-bottom: none;
     }
 
-    > tr > td {
-      border-radius: 0;
+    > tbody {
+      > tr:nth-child(odd) {
+        background-color: $table-striped-color;
+      }
+
+      > tr > td {
+        border-radius: 0;
+      }
     }
   }
 
@@ -418,10 +424,9 @@ table {
       text-align: center;
     }
   }
-
 }
 
-thead {
+tr {
   border-bottom: 1px solid $table-border-color;
 }
 
