@@ -30,7 +30,7 @@
       margin: 0;
     }
 
-    i {
+    .caret {
       display: none;
     }
   }
@@ -45,7 +45,8 @@
 }
 
 .month-prev, .month-next {
-  font-size: 30px;
+  margin-top: 4px;
+  cursor: pointer;
   background-color: transparent;
   border: none;
 }

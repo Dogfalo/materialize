@@ -533,9 +533,8 @@
       // yearHtml = '<div class="pika-label">' + year + opts.yearSuffix + '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select></div>';
       yearHtml = '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select>';
 
-      if (c === 0) {
-        html += '<button class="month-prev' + (prev ? '' : ' is-disabled') + '" type="button">' + opts.i18n.previousMonth + '</button>';
-      }
+      let leftArrow = '<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/><path d="M0-.5h24v24H0z" fill="none"/></svg>';
+      html += '<button class="month-prev' + (prev ? '' : ' is-disabled') + '" type="button">' + leftArrow + '</button>';
 
 
       html += '<div class="selects-container">';
@@ -556,7 +555,8 @@
 
 
       // if (c === (this.options.numberOfMonths - 1) ) {
-        html += '<button class="month-next' + (next ? '' : ' is-disabled') + '" type="button">' + opts.i18n.nextMonth + '</button>';
+      let rightArrow = '<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>';
+        html += '<button class="month-next' + (next ? '' : ' is-disabled') + '" type="button">' + rightArrow + '</button>';
       // }
 
       return html += '</div>';
@@ -679,7 +679,6 @@
       }
 
       let $target = $(e.target);
-
       if (!$target.hasClass('is-disabled')) {
         if ($target.hasClass('datepicker-day-button') &&
             !$target.hasClass('is-empty') &&
@@ -688,10 +687,10 @@
                                 e.target.getAttribute('data-pika-month'),
                                 e.target.getAttribute('data-pika-day')));
         }
-        else if ($target.hasClass('month-prev')) {
+        else if ($target.closest('.month-prev').length) {
           this.prevMonth();
         }
-        else if ($target.hasClass('month-next')) {
+        else if ($target.closest('.month-next').length) {
           this.nextMonth();
         }
       }
