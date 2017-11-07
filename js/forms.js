@@ -14,6 +14,95 @@
     });
   };
 
+  M.validate_field = function(object) {
+    let hasLength = object.attr('data-length') !== null;
+    let lenAttr = parseInt(object.attr('data-length'));
+    let len = object[0].value.length;
+
+    if (len === 0 && object[0].validity.badInput === false && !object.is(':required')) {
+      if (object.hasClass('validate')) {
+        object.removeClass('valid');
+        object.removeClass('invalid');
+      }
+
+    } else {
+      if (object.hasClass('validate')) {
+        // Check for character counter attributes
+        if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
+          object.removeClass('invalid');
+          object.addClass('valid');
+        }
+        else {
+          object.removeClass('valid');
+          object.addClass('invalid');
+        }
+      }
+    }
+  };
+
+
+  M.textareaAutoResize = function($textarea) {
+    // Textarea Auto Resize
+    let hiddenDiv = $('.hiddendiv').first();
+    if (!hiddenDiv.length) {
+      hiddenDiv = $('<div class="hiddendiv common"></div>');
+      $('body').append(hiddenDiv);
+    }
+
+    // Set font properties of hiddenDiv
+    let fontFamily = $textarea.css('font-family');
+    let fontSize = $textarea.css('font-size');
+    let lineHeight = $textarea.css('line-height');
+    let padding = $textarea.css('padding');
+
+    if (fontSize) { hiddenDiv.css('font-size', fontSize); }
+    if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
+    if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
+    if (padding) { hiddenDiv.css('padding', padding); }
+
+    // Set original-height, if none
+    if (!$textarea.data('original-height')) {
+      $textarea.data('original-height', $textarea.height());
+    }
+
+    if ($textarea.attr('wrap') === 'off') {
+      hiddenDiv.css('overflow-wrap', 'normal')
+        .css('white-space', 'pre');
+    }
+
+    hiddenDiv.text($textarea[0].value + '\n');
+    let content = hiddenDiv.html().replace(/\n/g, '<br>');
+    hiddenDiv.html(content);
+
+
+    // When textarea is hidden, width goes crazy.
+    // Approximate with half of window size
+
+    if ($textarea.css('display') !== 'hidden') {
+      hiddenDiv.css('width', $textarea.width() + 'px');
+    }
+    else {
+      hiddenDiv.css('width', ($(window).width()/2) + 'px');
+    }
+
+
+    /**
+     * Resize if the new height is greater than the
+     * original height of the textarea
+     */
+    if ($textarea.data('original-height') <= hiddenDiv.innerHeight()) {
+      $textarea.css('height', hiddenDiv.innerHeight() + 'px');
+    } else if ($textarea[0].value.length < $textarea.data('previous-length')) {
+      /**
+       * In case the new height is less than original height, it
+       * means the textarea has less text than before
+       * So we set the height to the original one
+       */
+      $textarea.css('height', $textarea.data('original-height') + 'px');
+    }
+    $textarea.data('previous-length', $textarea[0].value.length);
+  };
+
 
   $(document).ready(function() {
     // Text based inputs
@@ -24,7 +113,7 @@
       if(this.value.length !== 0 || $(this).attr('placeholder') !== null) {
         $(this).siblings('label').addClass('active');
       }
-      validate_field($(this));
+      M.validate_field($(this));
     });
 
     // Add active if input element has been pre-populated on document ready
@@ -79,36 +168,9 @@
           selector += ", label";
         }
         $inputElement.siblings(selector).removeClass('active');
-        validate_field($inputElement);
+        M.validate_field($inputElement);
       }
     }, true);
-
-
-    window.validate_field = function(object) {
-      let hasLength = object.attr('data-length') !== null;
-      let lenAttr = parseInt(object.attr('data-length'));
-      let len = object[0].value.length;
-
-      if (len === 0 && object[0].validity.badInput === false && !object.is(':required')) {
-        if (object.hasClass('validate')) {
-          object.removeClass('valid');
-          object.removeClass('invalid');
-        }
-      }
-      else {
-        if (object.hasClass('validate')) {
-          // Check for character counter attributes
-          if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
-            object.removeClass('invalid');
-            object.addClass('valid');
-          }
-          else {
-            object.removeClass('valid');
-            object.addClass('invalid');
-          }
-        }
-      }
-    };
 
     // Radio and Checkbox focus class
     let radio_checkbox = 'input[type=radio], input[type=checkbox]';
@@ -124,70 +186,7 @@
       }
     });
 
-    // Textarea Auto Resize
-    let hiddenDiv = $('.hiddendiv').first();
-    if (!hiddenDiv.length) {
-      hiddenDiv = $('<div class="hiddendiv common"></div>');
-      $('body').append(hiddenDiv);
-    }
     let text_area_selector = '.materialize-textarea';
-
-    function textareaAutoResize($textarea) {
-      // Set font properties of hiddenDiv
-
-      let fontFamily = $textarea.css('font-family');
-      let fontSize = $textarea.css('font-size');
-      let lineHeight = $textarea.css('line-height');
-      let padding = $textarea.css('padding');
-
-      if (fontSize) { hiddenDiv.css('font-size', fontSize); }
-      if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
-      if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
-      if (padding) { hiddenDiv.css('padding', padding); }
-
-      // Set original-height, if none
-      if (!$textarea.data('original-height')) {
-        $textarea.data('original-height', $textarea.height());
-      }
-
-      if ($textarea.attr('wrap') === 'off') {
-        hiddenDiv.css('overflow-wrap', 'normal')
-                 .css('white-space', 'pre');
-      }
-
-      hiddenDiv.text($textarea[0].value + '\n');
-      let content = hiddenDiv.html().replace(/\n/g, '<br>');
-      hiddenDiv.html(content);
-
-
-      // When textarea is hidden, width goes crazy.
-      // Approximate with half of window size
-
-      if ($textarea.css('display') !== 'hidden') {
-        hiddenDiv.css('width', $textarea.width() + 'px');
-      }
-      else {
-        hiddenDiv.css('width', ($(window).width()/2) + 'px');
-      }
-
-
-      /**
-       * Resize if the new height is greater than the
-       * original height of the textarea
-       */
-      if ($textarea.data('original-height') <= hiddenDiv.innerHeight()) {
-        $textarea.css('height', hiddenDiv.innerHeight() + 'px');
-      } else if ($textarea[0].value.length < $textarea.data('previous-length')) {
-        /**
-         * In case the new height is less than original height, it
-         * means the textarea has less text than before
-         * So we set the height to the original one
-         */
-        $textarea.css('height', $textarea.data('original-height') + 'px');
-      }
-      $textarea.data('previous-length', $textarea[0].value.length);
-    }
-
     $(text_area_selector).each(function () {
       let $textarea = $(this);
       /**
@@ -199,13 +198,13 @@
     });
 
     $(document).on('keyup', text_area_selector, function () {
-      textareaAutoResize($(this));
+      M.textareaAutoResize($(this));
     });
     $(document).on('keydown', text_area_selector, function () {
-      textareaAutoResize($(this));
+      M.textareaAutoResize($(this));
     });
     $(document).on('autoresize', text_area_selector, function () {
-      textareaAutoResize($(this));
+      M.textareaAutoResize($(this));
     });
 
     // File Input Path
