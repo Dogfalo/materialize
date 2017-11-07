@@ -16,10 +16,9 @@ if ( typeof define === "function" && define.amd ) {
 	define( "M", [], function() {
 		return M;
 	} );
-}
 
-// CommonJS
-if (typeof exports !== 'undefined' && !exports.nodeType) {
+// Common JS
+} else if (typeof exports !== 'undefined' && !exports.nodeType) {
   if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
     exports = module.exports = M;
   }
