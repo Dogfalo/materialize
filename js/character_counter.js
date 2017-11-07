@@ -5,17 +5,12 @@
       var $input = $(this);
       var $counterElement = $input.parent().find('span[class="character-counter"]');
 
-      // character counter has already been added appended to the parent container
-      if ($counterElement.length) {
-        return;
-      }
-
       var itHasLengthAttribute = $input.attr('data-length') !== undefined;
 
       if(itHasLengthAttribute){
-        $input.on('input', updateCounter);
-        $input.on('focus', updateCounter);
-        $input.on('blur', removeCounterElement);
+        $input.off('input').on('input', updateCounter);
+        $input.off('focus').on('focus', updateCounter);
+        $input.off('blur').on('blur', removeCounterElement);
 
         addCounterElement($input);
       }
