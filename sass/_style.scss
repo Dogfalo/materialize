@@ -219,7 +219,10 @@ a.button-collapse.top-nav {
 }
 
 @media #{$medium-and-up} {
-  .container {
+  main > .container,
+  .page-footer > .container,
+  .top-nav > .container,
+  #index-banner > .container {
     width: 100%;
   }
 }
