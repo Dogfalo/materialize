@@ -608,7 +608,6 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'release',[
       'lint',
-      'copy',
       'sass:expanded',
       'sass:min',
       'postcss:expanded',
