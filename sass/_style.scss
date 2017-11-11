@@ -68,10 +68,9 @@ footer.example {
 
 .fixed-announcement {
   position: relative;
-  height: 48px;
+  height: 60px;
   width: 100%;
-  z-index: 999
-  ;
+  z-index: 999;
 
   .announcement {
     &:hover {
@@ -84,11 +83,16 @@ footer.example {
 
     .container {
       color: #fff;
-      padding: 14px 0;
-      font-size: .9rem;
+      padding: 12px 0;
 
       a {
-        color: #32b9fb;
+        &:first-child {
+          margin-left: 35px;
+        }
+        font-size: .9rem;
+        margin-left: 15px;
+        padding: 0 1.5rem;
+        color: rgba(0,0,0,.87);
       }
     }
   }
@@ -194,11 +198,11 @@ ul.side-nav.fixed {
 }
 
 nav.top-nav {
-  height: 122px;
+  height: 110px;
   box-shadow: none;
 
   a.page-title {
-    line-height: 122px;
+    line-height: 110px;
     font-size: 48px;
   }
 }
@@ -216,7 +220,7 @@ a.button-collapse.top-nav {
   z-index: 2;
 
   &.full {
-    line-height: 122px;
+    line-height: 110px;
   }
 
   i {
