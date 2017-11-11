@@ -420,7 +420,7 @@ module.exports = function(grunt) {
           "css-transitions.html": "jade/css-transitions.jade",
           "themes.html": "jade/themes.jade",
           "404.html": "jade/404.jade",
-
+          "support-us.html": "jade/support-us.jade",
         }
       }
     },
