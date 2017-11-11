@@ -1,3 +1,5 @@
+$border-color: rgba(0,0,0,.14);
+
 /***************
   HTML Styles
 ***************/
@@ -166,6 +168,28 @@ ul.side-nav.fixed {
 #logo-container {
   height: 57px;
   margin-bottom: 32px;
+}
+
+.patreon-ad {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 45px;
+  width: 299px;
+  background-color: #fff;
+  z-index: 1000;
+  border-top: 1px solid $border-color;
+
+  a {
+    line-height: 45px;
+    padding: 0 30px;
+  }
+}
+
+@media #{$medium-and-down} {
+  .patreon-ad {
+    display: none;
+  }
 }
 
 nav.top-nav {
