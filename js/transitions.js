@@ -111,6 +111,15 @@
         if (Math.abs(e.gesture.deltaX) < ($(this).innerWidth() / 2)) {
           swipeRight = false;
           swipeLeft = false;
+        } else {
+          var cancel = false;
+          //Event when the element is dismissing
+          $this.trigger("dismissing", [cancel]);
+          // If canceled, do not continue
+          if( cancel ) {
+            swipeRight = false;
+            swipeLeft = false;
+          }
         }
 
         if (e.gesture.pointerType === "touch") {
@@ -119,7 +128,7 @@
             var fullWidth;
             if (swipeLeft) { fullWidth = $this.innerWidth(); }
             else { fullWidth = -1 * $this.innerWidth(); }
-
+            
             $this.velocity({ translateX: fullWidth,
               }, {duration: 100, queue: false, easing: 'easeOutQuad', complete:
               function() {
