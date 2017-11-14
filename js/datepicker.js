@@ -395,7 +395,6 @@
                 (opts.disableWeekends && Datepicker._isWeekend(day)) ||
                 (opts.disableDayFn && opts.disableDayFn(day));
 
-        console.log(day, opts.minDate,day < opts.minDate);
         if (isEmpty) {
           if (i < before) {
             dayNumber = daysInPreviousMonth + dayNumber;
