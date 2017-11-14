@@ -165,8 +165,8 @@
       this.xMovement = 0,
       this.yMovement = 0;
 
-      targetTop = origin.offsetTop;
-      targetLeft = origin.offsetLeft;
+      targetTop = origin.getBoundingClientRect().top + M.getDocumentScrollTop();
+      targetLeft = origin.getBoundingClientRect().left + M.getDocumentScrollLeft();
 
       if (this.options.position === 'top') {
         targetTop += -(tooltipHeight) - margin;
