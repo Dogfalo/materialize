@@ -99,6 +99,10 @@
 
       this.options = $.extend({}, Datepicker.defaults, options);
 
+      // Remove time component from minDate and maxDate options
+      if (this.options.minDate) this.options.minDate.setHours(0, 0, 0, 0);
+      if (this.options.maxDate) this.options.maxDate.setHours(0, 0, 0, 0);
+
       this.id = M.guid();
 
       this._setupVariables();
@@ -391,6 +395,7 @@
                 (opts.disableWeekends && Datepicker._isWeekend(day)) ||
                 (opts.disableDayFn && opts.disableDayFn(day));
 
+        console.log(day, opts.minDate,day < opts.minDate);
         if (isEmpty) {
           if (i < before) {
             dayNumber = daysInPreviousMonth + dayNumber;
