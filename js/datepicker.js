@@ -263,7 +263,7 @@
       this.gotoDate(this.date);
 
       if (!preventOnSelect && typeof this.options.onSelect === 'function') {
-        this.options.onSelect.call(this, this.getDate());
+        this.options.onSelect.call(this, this.date);
       }
     }
 
