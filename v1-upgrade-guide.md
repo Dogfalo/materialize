@@ -32,7 +32,7 @@
 
 ## Feature Discovery
 - Rename plugin call `.tapTarget()` to `.featureDiscovery()`
-- Change attribute `data-activates` to `data-target
+- Change attribute `data-activates` to `data-target`
 
 
 ## Forms
