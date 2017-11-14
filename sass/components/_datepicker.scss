@@ -95,19 +95,23 @@
     text-align: center;
   }
 
+  tr {
+    border: none;
+  }
+
   abbr {
     text-decoration: none;
     color: $datepicker-calendar-header-color;
   }
 
   td {
+    &.is-today {
+      color: $secondary-color;
+    }
+
     &.is-selected {
       background-color: $secondary-color;
       color: #fff;
-    }
-
-    &.is-today {
-      color: $secondary-color;
     }
 
     &.is-outside-current-month,

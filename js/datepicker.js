@@ -4,11 +4,7 @@
   let _defaults = {
 
     // the default output format for the input field value
-    format: 'YYYY-MM-DD',
-
-    // the toString function which gets passed a current date object and format
-    // and returns a string
-    toString: null,
+    format: 'mmm dd, yyyy',
 
     // Used to create date object from current input string
     parse: null,
@@ -225,10 +221,16 @@
       if (!Datepicker._isDate(this.date)) {
         return '';
       }
-      if (this.options.toString) {
-        return this.options.toString(this.date, format);
-      }
-      return this.date.toDateString();
+
+      let formatArray = format.split( /(d{1,4}|m{1,4}|y{4}|yy|!.)/g );
+      let formattedDate = formatArray.map((label) => {
+        if (this.formats[label]) {
+          return this.formats[label]();
+        } else {
+          return label;
+        }
+      }).join( '' );
+      return formattedDate;
     }
 
     setDate(date, preventOnSelect) {
@@ -649,6 +651,34 @@
       this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
       this.todayBtn = this.modalEl.querySelector('.datepicker-today');
       this.doneBtn = this.modalEl.querySelector('.datepicker-done');
+
+      this.formats = {
+
+        dd: () => {
+          return this.date.getDate();
+        },
+        ddd: () => {
+          return this.options.i18n.weekdaysShort[this.date.getDay()];
+        },
+        dddd: () => {
+          return this.options.i18n.weekdays[this.date.getDay()];
+        },
+        mm: () => {
+          return this.date.getMonth() + 1;
+        },
+        mmm: () => {
+          return this.options.i18n.monthsShort[this.date.getMonth()];
+        },
+        mmmm: () => {
+          return this.options.i18n.monthsShort[this.date.getMonth()];
+        },
+        yy: () => {
+          return this.date.getFullYear().slice(2);
+        },
+        yyyy: () => {
+          return this.date.getFullYear();
+        }
+      };
     }
 
     /**
