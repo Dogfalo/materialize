@@ -614,8 +614,14 @@
       this.calendarEl.innerHTML = html;
 
       // Init Materialize Select
-      new M.Select(this.calendarEl.querySelector('.pika-select-year'), {classes: 'select-year'});
-      new M.Select(this.calendarEl.querySelector('.pika-select-month'), {classes: 'select-month'});
+      let yearSelect = this.calendarEl.querySelector('.pika-select-year');
+      let monthSelect = this.calendarEl.querySelector('.pika-select-month');
+      new M.Select(yearSelect, {classes: 'select-year'});
+      new M.Select(monthSelect, {classes: 'select-month'});
+
+      // Add change handlers for select
+      yearSelect.addEventListener('change', this._handleYearChange.bind(this));
+      monthSelect.addEventListener('change', this._handleMonthChange.bind(this));
 
       if (typeof this.options.onDraw === 'function') {
         this.options.onDraw(this);
@@ -634,6 +640,7 @@
       this._finishSelectionBound = this._finishSelection.bind(this);
       this._handleTodayClickBound = this._handleTodayClick.bind(this);
       this._handleClearClickBound = this._handleClearClick.bind(this);
+      this._handleMonthChange = this._handleMonthChange.bind(this);
 
       this.el.addEventListener('click', this._handleInputClickBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
@@ -751,6 +758,36 @@
       this.date = null;
       this.setInputValue();
       this.close();
+    }
+
+    _handleMonthChange(e) {
+      this.gotoMonth(e.target.value);
+    }
+
+    _handleYearChange(e) {
+      this.gotoYear(e.target.value);
+    }
+
+
+    /**
+     * change view to a specific month (zero-index, e.g. 0: January)
+     */
+    gotoMonth(month) {
+      if (!isNaN(month)) {
+        this.calendars[0].month = parseInt(month, 10);
+        this.adjustCalendars();
+      }
+    }
+
+
+    /**
+     * change view to a specific full year (e.g. "2012")
+     */
+    gotoYear(year) {
+      if (!isNaN(year)) {
+        this.calendars[0].year = parseInt(year, 10);
+        this.adjustCalendars();
+      }
     }
 
     // _onChange(e) {
