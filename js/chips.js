@@ -444,15 +444,6 @@
         this.options.onChipSelect.call(this, this.$el, this.$chip);
       }
     }
-
-    /**
-     * Deselect chip
-     * @param {Number} chip
-     */
-    deselectChip(chipIndex) {
-      let $chip = this.$chips.eq(chipIndex);
-      this._selectedChip = null;
-    }
   }
 
   /**

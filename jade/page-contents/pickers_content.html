@@ -133,9 +133,74 @@
                 <td>null</td>
                 <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input.</td>
               </tr>
+              <tr>
+                <td>onSelect</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function when date is selected, first parameter is the newly selected date.</td>
+              </tr>
             </tbody>
           </table>
         </div>
+
+
+        <div class="section">
+          <h5>Date format options</h5>
+          <p>Use these in the format option to customize your date string.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Description</th>
+                <th>Output</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>dd</td>
+                <td>Date of the month.</td>
+                <td>1-31</td>
+              </tr>
+              <tr>
+                <td>ddd</td>
+                <td>Day of the week in short form set by the i18n option.</td>
+                <td>Sun-Sat</td>
+              </tr>
+              <tr>
+                <td>dddd</td>
+                <td>Day of the week in full form set by the i18n option.</td>
+                <td>Sunday-Saturday</td>
+              </tr>
+              <tr>
+                <td>mm</td>
+                <td>Month of the year.</td>
+                <td>1-12</td>
+              </tr>
+              <tr>
+                <td>mmm</td>
+                <td>Month of the year in short form set by the i18n option.</td>
+                <td>Jan-Dec</td>
+              </tr>
+              <tr>
+                <td>mmmm</td>
+                <td>Month of the year in full form set by the i18n option.</td>
+                <td>January-December</td>
+              </tr>
+              <tr>
+                <td>yyy</td>
+                <td>2-digit year.</td>
+                <td>17</td>
+              </tr>
+              <tr>
+                <td>yyyy</td>
+                <td>4-digit year.</td>
+                <td>2017</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
 
 
         <div class="section">

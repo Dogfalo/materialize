@@ -530,9 +530,7 @@
 
     on: function (eventName, delegate, callback, runOnce) {
       // jshint ignore:line
-
       var originalCallback;
-
       if (!isString(eventName)) {
         for (var key in eventName) {
           this.on(key, delegate, eventName[key]);
@@ -554,11 +552,11 @@
         originalCallback = callback;
         callback = function (e) {
           var t = e.target;
-
           while (!matches(t, delegate)) {
-            if (t === this) {
+            if (t === this || t === null) {
               return (t = false);
             }
+
             t = t.parentNode;
           }
 

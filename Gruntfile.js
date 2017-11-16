@@ -4,10 +4,6 @@ module.exports = function(grunt) {
 
   // configure the tasks
   var config = {
-    //  Copy
-    copy: {
-      dist: { cwd: 'fonts', src: [ '**' ], dest: 'dist/fonts', expand: true },
-    },
 
     //  Jasmine
     jasmine: {
@@ -274,7 +270,6 @@ module.exports = function(grunt) {
           level: 6
         },
         files:[
-          {expand: true, cwd: 'fonts/', src: ['**/*'], dest: 'materialize-src/fonts/'},
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
@@ -412,7 +407,8 @@ module.exports = function(grunt) {
           "range.html": "jade/range.jade",
           "select.html": "jade/select.jade",
           "switches.html": "jade/switches.jade",
-          "text-inputs.html": "jade/text-inputs.jade"
+          "text-inputs.html": "jade/text-inputs.jade",
+          "support-us.html": "jade/support-us.jade"
         }
       }
     },
@@ -590,7 +586,6 @@ module.exports = function(grunt) {
   // load the tasks
   // grunt.loadNpmTasks('grunt-gitinfo');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -613,7 +608,6 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'release',[
       'lint',
-      'copy',
       'sass:expanded',
       'sass:min',
       'postcss:expanded',

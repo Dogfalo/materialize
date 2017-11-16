@@ -11,7 +11,7 @@ describe( 'Tooltip:', function() {
 
     it('Opens a tooltip on mouse enter', function(done) {
       tooltippedBtn = $('#test');
-      tooltip = $($(tooltippedBtn).tooltip('getInstance').tooltipEl);
+      tooltip = $(M.Tooltip.getInstance(tooltippedBtn[0]).tooltipEl);
 
       // Mouse enter
       mouseenter(tooltippedBtn[0]);
@@ -31,7 +31,7 @@ describe( 'Tooltip:', function() {
 
     it('Positions tooltips smartly on the bottom within the screen bounds', function(done) {
       tooltippedBtn = $('#test1');
-      tooltip = $($(tooltippedBtn).tooltip('getInstance').tooltipEl);
+      tooltip = $(M.Tooltip.getInstance(tooltippedBtn[0]).tooltipEl);
       // Mouse enter
       mouseenter(tooltippedBtn[0]);
       // tooltippedBtn.trigger('mouseenter');
@@ -70,7 +70,7 @@ describe( 'Tooltip:', function() {
         function(done) {
           tooltippedBtn = $('#test');
           tooltippedBtn.attr('data-position', 'right');
-          tooltip = $($(tooltippedBtn).tooltip('getInstance').tooltipEl);
+          tooltip = $(M.Tooltip.getInstance(tooltippedBtn[0]).tooltipEl);
           // Mouse enter
           mouseenter(tooltippedBtn[0]);
 
@@ -87,7 +87,7 @@ describe( 'Tooltip:', function() {
       tooltippedBtn = $('#test');
       tooltippedBtn.removeAttr('data-delay');
       tooltippedBtn.tooltip({enterDelay: 200});
-      tooltip = $($(tooltippedBtn).tooltip('getInstance').tooltipEl);
+      tooltip = $(M.Tooltip.getInstance(tooltippedBtn[0]).tooltipEl);
       mouseenter(tooltippedBtn[0]);
       setTimeout(function() {
         expect(tooltip.css('visibility')).toBe('hidden', 'because the delay is 200 seconds');
@@ -99,6 +99,25 @@ describe( 'Tooltip:', function() {
       }, 250);
 
     });
+
+    it('Works with a fixed position parent', function(done) {
+      tooltippedBtn = $('#test2');
+      tooltip = $(M.Tooltip.getInstance(tooltippedBtn[0]).tooltipEl);
+
+      mouseenter(tooltippedBtn[0]);
+      setTimeout(function() {
+        let tooltipRect = tooltip[0].getBoundingClientRect();
+        let tooltippedBtnRect = tooltippedBtn[0].getBoundingClientRect();
+        let verticalDiff = tooltipRect.top - tooltippedBtnRect.top;
+        let horizontalDiff = (tooltipRect.left + tooltipRect.width/2) - (tooltippedBtnRect.left + tooltippedBtnRect.width / 2);
+
+        // 52 is magic number for tooltip vertical offset
+        expect(verticalDiff > 0 && verticalDiff < 52).toBeTruthy('top position in fixed to be correct');
+        expect(horizontalDiff > -1 && horizontalDiff < 1).toBeTruthy('left position in fixed to be correct');
+        done();
+      }, 300);
+    });
+
   });
 
 });

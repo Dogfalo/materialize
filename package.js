@@ -3,7 +3,7 @@
 Package.describe({
   name: 'materialize:materialize',  // http://atmospherejs.com/materialize/materialize
   summary: 'Materialize (official): A modern responsive front-end framework based on Material Design',
-  version: '0.100.1',
+  version: '1.0.0-alpha.1',
   git: 'https://github.com/Dogfalo/materialize.git'
 });
 
@@ -12,23 +12,6 @@ Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
 
   api.use('fourseven:scss@4.5.4');
-  api.use('jquery', 'client');
-  api.imply('jquery', 'client');
-
-  var assets = [
-    'fonts/roboto/Roboto-Bold.woff',
-    'fonts/roboto/Roboto-Bold.woff2',
-    'fonts/roboto/Roboto-Light.woff',
-    'fonts/roboto/Roboto-Light.woff2',
-    'fonts/roboto/Roboto-Medium.woff',
-    'fonts/roboto/Roboto-Medium.woff2',
-    'fonts/roboto/Roboto-Regular.woff',
-    'fonts/roboto/Roboto-Regular.woff2',
-    'fonts/roboto/Roboto-Thin.woff',
-    'fonts/roboto/Roboto-Thin.woff2',
-  ];
-
-  addAssets(api, assets);
 
   api.addFiles([
     'dist/js/materialize.js'
@@ -64,7 +47,6 @@ Package.onUse(function (api) {
     'sass/components/_normalize.scss',
     'sass/components/_preloader.scss',
     'sass/components/_pulse.scss',
-    'sass/components/_roboto.scss',
     'sass/components/_sidenav.scss',
     'sass/components/_slider.scss',
     'sass/components/_table_of_contents.scss',
@@ -84,12 +66,3 @@ Package.onUse(function (api) {
 
   api.export('Materialize', 'client');
 });
-
-
-function addAssets(api, assets){
-  if(api.addAssets){
-    api.addAssets(assets, 'client');
-  } else {
-    api.addFiles(assets, 'client', {isAsset: true});
-  }
-}

@@ -100,6 +100,7 @@ ul.sidenav.sidenav-fixed {
   overflow: hidden;
   box-shadow: none;
   border-right: 1px solid $border-color;
+  padding-bottom: 104px;
 
   li {
     line-height: 44px;
@@ -146,6 +147,29 @@ ul.sidenav.sidenav-fixed {
 #logo-container {
   height: 57px;
   margin-bottom: 32px;
+}
+
+.patreon-ad {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 45px;
+  width: 299px;
+  background-color: #fff;
+  z-index: 1000;
+  border-top: 1px solid $border-color;
+
+  a {
+    width: 100%;
+    line-height: 45px;
+    padding: 0 30px;
+  }
+}
+
+@media #{$medium-and-down} {
+  .patreon-ad {
+    display: none;
+  }
 }
 
 nav.top-nav {
@@ -202,7 +226,11 @@ a.button-collapse.top-nav {
 }
 
 @media #{$medium-and-up} {
-  .container {
+  main > .container,
+  body > .page-footer > .container,
+  .top-nav > .container,
+  #index-banner > .container,
+  .github-commit > .container {
     width: 100%;
   }
 }
@@ -611,6 +639,8 @@ code, pre {
   padding: .1em .25em;
   border: solid 1px rgba(51,51,51,0.12);
 }
+
+// Styles code blocks
 pre[class*="language-"] {
   &:before {
     position: absolute;
@@ -629,7 +659,7 @@ pre[class*="language-"] {
   }
   padding: 25px 12px 7px 12px;
   border: solid 1px rgba(51, 51, 51, 0.12);
-  background: rgba(242, 242, 242, .2);
+  background: rgba(246, 246, 246, .2);
 }
 
 pre[class*="language-"],
@@ -637,9 +667,9 @@ code[class*="language-"] {
   line-height: 1.3;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: rgba(242, 242, 242, .3);
+// Styles one-liners
+:not(pre) > code[class*="language-"] {
+  background: rgba(246, 246, 246, .3);
 }
 
 

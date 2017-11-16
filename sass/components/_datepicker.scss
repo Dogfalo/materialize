@@ -2,6 +2,7 @@
 .datepicker-modal {
   max-width: 325px;
   min-width: 300px;
+  max-height: none;
 }
 
 .datepicker-container.modal-content {
@@ -30,7 +31,7 @@
       margin: 0;
     }
 
-    i {
+    .caret {
       display: none;
     }
   }
@@ -45,7 +46,8 @@
 }
 
 .month-prev, .month-next {
-  font-size: 30px;
+  margin-top: 4px;
+  cursor: pointer;
   background-color: transparent;
   border: none;
 }
@@ -94,19 +96,23 @@
     text-align: center;
   }
 
+  tr {
+    border: none;
+  }
+
   abbr {
     text-decoration: none;
     color: $datepicker-calendar-header-color;
   }
 
   td {
+    &.is-today {
+      color: $secondary-color;
+    }
+
     &.is-selected {
       background-color: $secondary-color;
       color: #fff;
-    }
-
-    &.is-today {
-      color: $secondary-color;
     }
 
     &.is-outside-current-month,
@@ -131,6 +137,7 @@
   display: block;
   width: 100%;
   border-radius: 50%;
+  padding: 0 5px;
   cursor: pointer;
   color: inherit;
 }

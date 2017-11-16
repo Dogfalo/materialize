@@ -2,6 +2,7 @@
 
 ## Sidenav
 - Call plugin on `.sidenav` instead of `.button-collapse`
+- Change attribute `data-activates` to `data-target`
 - Add `.sidenav-trigger` class to sidenav open trigger
 - Rename classes `.side-nav` to `.sidenav`
 - Remove deprecated class `.userView`, use `.user-view` instead
@@ -21,6 +22,7 @@
 
 ## Dropdown
 - Call plugin on `.dropdown-content` instead of `.dropdown-button`
+- Change attribute `data-activates` to `data-target`
 - Rename classes `.dropdown-button` to `.dropdown-trigger`
 - Rename option `belowOrigin` to `coverTrigger`
 - Removed stopPropagation option
@@ -32,7 +34,7 @@
 
 ## Feature Discovery
 - Rename plugin call `.tapTarget()` to `.featureDiscovery()`
-- Change attribute `data-activates` to `data-target
+- Change attribute `data-activates` to `data-target`
 
 
 ## Forms

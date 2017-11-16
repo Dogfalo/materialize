@@ -2,7 +2,7 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
-## v1.0.0 (TODO: DATE)
+## v1.0.0 (November 10th)
 - Dropdown
   - rewritten with classes
   - Plugin is initialized on `.dropdown-content` instead of `.dropdown-button`

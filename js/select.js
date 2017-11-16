@@ -218,7 +218,7 @@
       this._setValueToInput();
 
       // Add caret
-      let dropdownIcon = $('<i class="caret material-icons">arrow_drop_down</i>');
+      let dropdownIcon = $('<svg class="caret" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
       this.$el.before(dropdownIcon[0]);
 
       // Initialize dropdown

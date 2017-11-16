@@ -14,6 +14,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/autocomplete.html',
+      title: 'Autocomplete',
+      body: 'Add an autocomplete dropdown below your input to suggest possible values in your form. You can populate the list of autocomplete options dynamically as well.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/badges.html',
       title: 'Badges',
       body: 'Badges can notify you that there are new or unread messages or notifications.'
@@ -41,6 +47,12 @@
       href: 'http://materializecss.com/carousel.html',
       title: 'Carousel',
       body: 'Our Carousel is a robust and versatile component that can be an image slider, to an item carousel, to an onboarding experience.'
+    });
+
+    window.index.add({
+      href: 'http://materializecss.com/checkboxes.html',
+      title: 'Checkboxes',
+      body: 'Use checkboxes when looking for yes or no answers. The for attribute is necessary to bind our custom checkbox with the input. Add the input\'s id as the value of the for attribute of the label.'
     });
 
     window.index.add({
@@ -83,12 +95,6 @@
       href: 'http://materializecss.com/footer.html',
       title: 'footer',
       body: 'Footers are a great way to organize a lot of site navigation and information at the end of a page. This is where the user will look once hes finished scrolling through the current page or is looking for additional information about your website.'
-    });
-
-    window.index.add({
-      href: 'http://materializecss.com/forms.html',
-      title: 'forms select radio checkbox switch range textarea',
-      body: 'Forms are the standard way to receive user inputted data. The transitions and smoothness of these elements are very important because of the inherent user interaction associated with forms.'
     });
 
     window.index.add({
@@ -164,6 +170,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/pickers.html',
+      title: 'date time picker',
+      body: 'Pickers provide a simple way to select a date or time.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/preloader.html',
       title: 'preloader',
       body: 'If you have content that will take a long time to load, you should give the user feedback. For this reason we provide a number activity + progress indicators.'
@@ -182,6 +194,18 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/radio-buttons.html',
+      title: 'radio buttons',
+      body: 'Radio Buttons are used when the user must make only one selection out of a group of items.'
+    });
+
+    window.index.add({
+      href: 'http://materializecss.com/range.html',
+      title: 'range slider',
+      body: 'Add a range slider for values with a wide range.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/sass.html',
       title: 'Sass',
       body: 'When using Sass, you can change the color scheme of your site extremely quickly.'
@@ -191,6 +215,12 @@
       href: 'http://materializecss.com/scrollspy.html',
       title: 'scrollspy',
       body: 'Scrollspy is a jQuery plugin that tracks certain elements and which element the users screen is currently centered on.'
+    });
+
+    window.index.add({
+      href: 'http://materializecss.com/select.html',
+      title: 'Select',
+      body: 'Select allows user input through specified options.'
     });
 
     window.index.add({
@@ -212,6 +242,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/switches.html',
+      title: 'Switches',
+      body: 'Switches are special checkboxes used for binary states such as on / off'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/table.html',
       title: 'table',
       body: 'Tables are a nice way to organize a lot of data. We provide a few utility classes to help you style your table as easily as possible.'
@@ -221,6 +257,12 @@
       href: 'http://materializecss.com/tabs.html',
       title: 'tabs',
       body: 'The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible.'
+    });
+
+    window.index.add({
+      href: 'http://materializecss.com/text-inputs.html',
+      title: 'Text Input Fields',
+      body: 'Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing.'
     });
 
     window.index.add({
@@ -284,7 +326,7 @@
       var query = $(this).val();
       var results = window.index.search(query).slice(0, 6).map(function (result) {
         var href = result.ref.split('http://materializecss.com/')[1];
-        return [href.charAt(0).toUpperCase() + href.slice(1), result.ref];
+        return [href.charAt(0).toUpperCase() + href.slice(1), href];
       });
       renderResults(results);
     }));

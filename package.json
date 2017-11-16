@@ -3,7 +3,7 @@
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "homepage": "http://materializecss.com/",
-  "version": "0.100.1",
+  "version": "1.0.0-alpha.1",
   "main": "dist/js/materialize.js",
   "style": "dist/css/materialize.css",
   "sass": "sass/materialize.scss",
@@ -16,11 +16,10 @@
     "url": "https://github.com/Dogfalo/materialize/issues"
   },
   "scripts": {
+    "dev": "grunt monitor",
     "test": "grunt travis --verbose"
   },
-  "dependencies": {
-    "jquery": "^3.0.0 || ^2.1.4"
-  },
+  "dependencies": {},
   "engine": "node >= 6",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -33,7 +32,6 @@
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-compress": "^1.4.1",
     "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jasmine": "^1.1.0",
     "grunt-contrib-uglify": "^3.0.1",
@@ -46,6 +44,7 @@
     "grunt-text-replace": "^0.4.0",
     "jasmine": "^2.6.0",
     "jasmine-jquery": "^2.1.1",
+    "jquery": "^3.2.1",
     "node-archiver": "^0.3.0",
     "node-sass": "^4.5.2",
     "phantomjs-prebuilt": "^2.1.14"
