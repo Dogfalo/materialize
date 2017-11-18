@@ -127,9 +127,11 @@
           selected = this._toggleEntryFromArray(optionIndex);
 
         } else {
-          $(this.dropdownOptions).find('li').removeClass('active');
-          $(option).toggleClass('active');
-          this.input.value = option.textContent;
+          if (!$(option).hasClass("selected")){
+            $(this.dropdownOptions).find('li').removeClass('active');
+            $(option).toggleClass('active');
+            this.input.value = option.textContent;
+          }
         }
 
         this._activateOption($(this.dropdownOptions), option);
