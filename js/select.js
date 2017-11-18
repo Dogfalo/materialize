@@ -120,7 +120,9 @@
       let optionIndex = $(this.dropdownOptions).find('li:not(.optgroup)').index(option);
       if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup')) {
         let selected = true;
-
+        if (!this.isMultiple && $(option).hasClass('selected')) {
+          return;
+        }
         if (this.isMultiple) {
           let checkbox = $(option).find('input[type="checkbox"]');
           checkbox.prop('checked', !checkbox.prop('checked'));
