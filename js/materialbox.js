@@ -138,6 +138,12 @@
           newHeight = windowHeight * 0.9;
         }
 
+        // Update responsive image sizes if present
+        if(origin[0].hasAttribute('sizes')) {
+          origin.data('sizes', origin.attr('sizes'));
+          origin.attr('sizes', Math.round(newWidth) + 'px');
+        }
+
         // Animate image + set z-index
         if(origin.hasClass('responsive-img')) {
           origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false,
@@ -260,6 +266,11 @@
               // Remove class
               origin.removeClass('active');
               doneAnimating = true;
+
+              // Reset sizes property
+              if (origin.data('sizes')) {
+                origin.attr('sizes', origin.data('sizes'));
+              }
 
               // Remove overflow overrides on ancestors
               if (ancestorsChanged) {
