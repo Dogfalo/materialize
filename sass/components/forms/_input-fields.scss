@@ -214,6 +214,7 @@ textarea.materialize-textarea {
     width: $input-height;
     font-size: 2rem;
     transition: color .2s;
+    top: .5rem;
 
     &.active { color: $input-focus-color; }
   }
