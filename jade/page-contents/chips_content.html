@@ -46,24 +46,30 @@
       <div id="basic" class="section scrollspy">
         <h3 class="header">Javascript Plugin</h4>
         <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by using your delete button.</p>
-        <div class="chips"><input></div>
+        <div class="chips"></div>
         <br>
         <p class="caption">Set initial tags.</p>
-        <div class="chips chips-initial"><input></div>
+        <div class="chips chips-initial"></div>
         <br>
         <p class="caption">Use placeholders and override hint texts.</p>
-        <div class="chips chips-placeholder"><input></div>
+        <div class="chips chips-placeholder"></div>
         <br>
         <p class="caption">Use autocomplete with chips.</p>
-        <div class="chips chips-autocomplete"><input></div>
+        <div class="chips chips-autocomplete"></div>
       </div>
 
       <div id="properties" class="section scrollspy">
         <pre><code class="language-markup">
+  &lt;!-- Default with no input (automatically generated)  -->
   &lt;div class="chips">&lt;/div>
   &lt;div class="chips chips-initial">&lt;/div>
   &lt;div class="chips chips-placeholder">&lt;/div>
   &lt;div class="chips chips-autocomplete">&lt;/div>
+
+  &lt;!-- Customizable input  -->
+  &lt;div class="chips">
+    &lt;input class="custom-class">
+  &lt;/div>
         </code></pre>
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">

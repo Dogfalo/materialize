@@ -54,8 +54,7 @@
       this.$el.addClass('chips input-field');
       this.chipsData = [];
       this.$chips = $();
-      this.$input = this.$el.find('input');
-      this.$input.addClass('input');
+      this._setupInput();
       this.hasAutocomplete = Object.keys(this.options.autocompleteOptions).length > 0;
 
       // Set input id
@@ -331,7 +330,7 @@
       }
 
       // move input to end
-      this.$el.append(this.$input);
+      this.$el.append(this.$input[0]);
     }
 
     /**
@@ -345,6 +344,19 @@
       };
 
       this.autocomplete = M.Autocomplete.init(this.$input, this.options.autocompleteOptions)[0];
+    }
+
+    /**
+     * Setup Input
+     */
+    _setupInput() {
+      this.$input = this.$el.find('input');
+      if (!this.$input.length) {
+        this.$input = $('<input></input>');
+        this.$el.append(this.$input);
+      }
+
+      this.$input.addClass('input');
     }
 
     /**
