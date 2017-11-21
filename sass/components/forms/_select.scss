@@ -90,16 +90,13 @@ select {
   }
 
   .caret {
-    color: initial;
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
-    height: 24px;
     margin: auto 0;
-    font-size: 24px;
-    line-height: 24px;
     z-index: -1;
+    fill: rgba(0,0,0,.87);
   }
 
   & + label {
@@ -115,9 +112,11 @@ select:disabled {
 }
 
 .select-wrapper.disabled {
-  span.caret,
-  & + label {
+  + label {
     color: $input-disabled-color;
+  }
+  .caret {
+    fill: $input-disabled-color;
   }
 }
 
