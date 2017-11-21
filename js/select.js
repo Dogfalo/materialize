@@ -37,8 +37,8 @@
       this.isMultiple = this.$el.prop('multiple');
 
       // Setup
-      this.valuesSelected = [];
-      this.$selectedOptions = $();
+      this._keysSelected = {};
+      this._valueDict = {}; // Maps key to original and generated option element.
       this._setupDropdown();
 
       this._setupEventHandlers();
@@ -117,14 +117,14 @@
     _handleOptionClick(e) {
       e.preventDefault();
       let option = $(e.target).closest('li')[0];
-      let optionIndex = $(this.dropdownOptions).find('li:not(.optgroup)').index(option);
-      if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup')) {
+      let key = option.id;
+      if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup') && key.length) {
         let selected = true;
 
         if (this.isMultiple) {
           let checkbox = $(option).find('input[type="checkbox"]');
           checkbox.prop('checked', !checkbox.prop('checked'));
-          selected = this._toggleEntryFromArray(optionIndex);
+          selected = this._toggleEntryFromArray(key);
 
         } else {
           $(this.dropdownOptions).find('li').removeClass('active');
@@ -133,7 +133,7 @@
         }
 
         this._activateOption($(this.dropdownOptions), option);
-        this.$el.find('option').eq(optionIndex).prop('selected', selected);
+        $(this._valueDict[key].el).prop('selected', selected);
         this.$el.trigger('change');
       }
 
@@ -183,9 +183,7 @@
               optionEl = this._appendOptionWithIcon(this.$el, el);
             }
 
-            if ($(el).prop('selected')) {
-              this.$selectedOptions.add(optionEl);
-            }
+            this._addOptionToValueDict(el, optionEl);
 
           } else if ($(el).is('optgroup')) {
             // Optgroup.
@@ -194,9 +192,7 @@
 
             selectOptions.each((el) => {
               let optionEl = this._appendOptionWithIcon(this.$el, el, 'optgroup-option');
-              if ($(el).prop('selected')) {
-                this.$selectedOptions.add(optionEl);
-              }
+              this._addOptionToValueDict(el, optionEl);
             });
           }
         });
@@ -232,6 +228,22 @@
 
       // Add initial selections
       this._setSelectedStates();
+    }
+
+    /**
+     * Add option to value dict
+     * @param {Element} el  original option element
+     * @param {Element} optionEl  generated option element
+     */
+    _addOptionToValueDict(el, optionEl) {
+      let index = Object.keys(this._valueDict).length;
+      let key = this.dropdownOptions.id + index;
+      let obj = {};
+      optionEl.id = key;
+
+      obj.el = el;
+      obj.optionEl = optionEl;
+      this._valueDict[key] = obj;
     }
 
     /**
@@ -278,23 +290,21 @@
 
     /**
      * Toggle entry from option
-     * @param {Number} entryIndex
+     * @param {String} key  Option key
      * @return {Boolean}  if entry was added or removed
      */
-    _toggleEntryFromArray(entryIndex) {
-      let index = this.valuesSelected.indexOf(entryIndex),
-          notAdded = index === -1;
-
+    _toggleEntryFromArray(key) {
+      let notAdded = !this._keysSelected.hasOwnProperty(key);
       if (notAdded) {
-        this.valuesSelected.push(entryIndex);
+        this._keysSelected[key] = true;
       } else {
-        this.valuesSelected.splice(index, 1);
+        delete this._keysSelected[key];
       }
 
-      $(this.dropdownOptions).find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
+      $(this._valueDict[key].optionEl).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
-      this.$el.find('option').eq(entryIndex).prop('selected', notAdded);
+      $(this._valueDict[key].el).prop('selected', notAdded);
 
       return notAdded;
     }
@@ -306,7 +316,7 @@
       let value = '';
       let options = this.$el.find('option');
 
-      options.each((el, i) => {
+      options.each((el) => {
         if ($(el).prop('selected')) {
           let text = $(el).text();
           value === '' ? value += text : value += ', ' + text;
@@ -327,21 +337,20 @@
      * Set selected state of dropdown too match actual select element
      */
     _setSelectedStates() {
-      this.valuesSelected = [];
-      let $onlyOptions = $(this.dropdownOptions).find('li:not(.optgroup)');
-      this.$el.find('option').each((el, i) => {
-        let option = $onlyOptions.eq(i);
+      this._keysSelected = {};
 
-        if ($(el).prop('selected')) {
-          option.find('input[type="checkbox"]').prop("checked", true);
-          this._activateOption($(this.dropdownOptions), option);
-          this.valuesSelected.push(i);
+      for (let key in this._valueDict) {
+        let option = this._valueDict[key];
+        if ($(option.el).prop('selected')) {
+          $(option.optionEl).find('input[type="checkbox"]').prop("checked", true);
+          this._activateOption($(this.dropdownOptions), $(option.optionEl));
+          this._keysSelected[key] = true;
 
         } else {
-          option.find('input[type="checkbox"]').prop("checked", false);
-          option.removeClass('selected');
+          $(option.optionEl).find('input[type="checkbox"]').prop("checked", false);
+          $(option.optionEl).removeClass('selected');
         }
-      });
+      }
     }
 
     /**
@@ -358,6 +367,18 @@
         let option = $(newOption);
         option.addClass('selected');
       }
+    }
+
+    /**
+     * Get Selected Values
+     * @return {Array}  Array of selected values
+     */
+    getSelectedValues() {
+      let selectedValues = [];
+      for (let key in this._keysSelected) {
+        selectedValues.push(this._valueDict[key].el.value);
+      }
+      return selectedValues;
     }
   }
 
