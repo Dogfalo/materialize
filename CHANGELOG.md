@@ -16,6 +16,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Select
   - rewritten with classes
   - Plugin renamed from 'material_select' to 'select'
+  - The select will no longer copy the class attribute on each <option> el to the <img> for the icon in the generated select.
 
 - Tabs
   - rewritten with classes
