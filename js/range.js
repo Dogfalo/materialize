@@ -259,5 +259,5 @@
     M.initializeJqueryWrapper(Range, 'range', 'M_Range');
   }
 
-  Range.init($('input[type=range'));
+  Range.init($('input[type=range]'));
 }( cash, M.Vel ));
