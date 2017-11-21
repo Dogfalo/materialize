@@ -62,7 +62,7 @@
 
 // Input field specificity bugfix
 .input-field.col .dropdown-content [type="checkbox"] + label {
-  top: 1px;
+  top: -10px;
   left: 0;
   height: 18px;
   transform: none;
