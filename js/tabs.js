@@ -334,7 +334,7 @@
 
     /**
      * Finds right attribute for indicator based on active tab.
-     * @param {jQuery} el
+     * @param {cash} el
      */
     _calcRightPos(el) {
       return Math.ceil(this.tabsWidth - el.position().left - el[0].getBoundingClientRect().width);
@@ -342,10 +342,14 @@
 
     /**
      * Finds left attribute for indicator based on active tab.
-     * @param {jQuery} el
+     * @param {cash} el
      */
     _calcLeftPos(el) {
       return Math.floor(el.position().left);
+    }
+
+    updateTabIndicator() {
+      this._animateIndicator(this.index);
     }
 
     /**
