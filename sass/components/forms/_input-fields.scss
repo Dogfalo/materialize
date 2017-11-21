@@ -260,7 +260,7 @@ textarea.materialize-textarea {
     box-shadow: none;
   }
 
-  &:focus {
+  &:focus:not(.browser-default) {
     background-color: $input-background;
     border: 0;
     box-shadow: none;
@@ -273,7 +273,8 @@ textarea.materialize-textarea {
     }
   }
 
-  & + label {
+  & + .label-icon {
+    transform: none;
     left: 1rem;
   }
 
