@@ -501,7 +501,6 @@
       return '<tbody>' + rows.join('') + '</tbody>';
     }
 
-
     renderTitle(instance, c, year, month, refYear, randId) {
       let i, j, arr,
           opts = this.options,
@@ -520,7 +519,6 @@
                  opts.i18n.months[i] + '</option>');
       }
 
-      // monthHtml = '<div class="pika-label">' + opts.i18n.months[month] + '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select></div>';
       monthHtml = '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select>';
 
       if ($.isArray(opts.yearRange)) {
@@ -536,7 +534,7 @@
           arr.push('<option value="' + i + '"' + (i === year ? ' selected="selected"': '') + '>' + (i) + '</option>');
         }
       }
-      // yearHtml = '<div class="pika-label">' + year + opts.yearSuffix + '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select></div>';
+
       yearHtml = '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select>';
 
       let leftArrow = '<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/><path d="M0-.5h24v24H0z" fill="none"/></svg>';
@@ -702,7 +700,6 @@
       this.calendarEl.removeEventListener('click', this._handleCalendarClickBound);
     }
 
-
     _handleInputClick() {
       this.open();
     }
@@ -790,49 +787,6 @@
       }
     }
 
-    // _onChange(e) {
-    //   e = e || window.event;
-    //   let target = e.target || e.srcElement;
-    //   if (!target) {
-    //     return;
-    //   }
-    //   if (hasClass(target, 'pika-select-month')) {
-    //     self.gotoMonth(target.value);
-    //   }
-    //   else if (hasClass(target, 'pika-select-year')) {
-    //     self.gotoYear(target.value);
-    //   }
-    // }
-
-    // _onKeyChange(e) {
-    //   e = e || window.event;
-
-    //   if (self.isVisible()) {
-
-    //     switch(e.keyCode){
-    //     case 13:
-    //     case 27:
-    //       if (opts.field) {
-    //         opts.field.blur();
-    //       }
-    //       break;
-    //     case 37:
-    //       e.preventDefault();
-    //       self.adjustDate('subtract', 1);
-    //       break;
-    //     case 38:
-    //       self.adjustDate('subtract', 7);
-    //       break;
-    //     case 39:
-    //       self.adjustDate('add', 1);
-    //       break;
-    //     case 40:
-    //       self.adjustDate('add', 7);
-    //       break;
-    //     }
-    //   }
-    // }
-
     _handleInputChange(e) {
       let date;
 
@@ -854,25 +808,6 @@
       // }
     }
 
-    // _onInputBlur() {
-    //   // IE allows pika div to gain focus; catch blur the input field
-    //   let pEl = document.activeElement;
-    //   do {
-    //     if (hasClass(pEl, 'pika-single')) {
-    //       return;
-    //     }
-    //   }
-    //   while ((pEl = pEl.parentNode));
-
-    //   if (!self._c) {
-    //     self._b = sto(function() {
-    //       self.hide();
-    //     }, 50);
-    //   }
-    //   self._c = false;
-    // }
-
-
     renderDayName(opts, day, abbr) {
       day += opts.firstDay;
       while (day >= 7) {
@@ -880,7 +815,6 @@
       }
       return abbr ? opts.i18n.weekdaysAbbrev[day] : opts.i18n.weekdays[day];
     }
-
 
     /**
      * Set input value to the selected date and close Datepicker
