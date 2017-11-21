@@ -183,7 +183,7 @@ nav.top-nav {
     padding-top: 26px;
   }
 }
-a.button-collapse.top-nav {
+a.sidenav-trigger.top-nav {
   position: absolute;
   text-align: center;
   height: 48px;
@@ -206,7 +206,7 @@ a.button-collapse.top-nav {
 }
 
 @media #{$small-and-down} {
-  a.button-collapse.top-nav {
+  a.sidenav-trigger.top-nav {
     left: 5%;
   }
 
