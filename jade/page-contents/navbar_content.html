@@ -132,7 +132,7 @@
         <nav class="nav-extended">
           <div class="nav-wrapper">
             <a href="#" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li><a href="sass.html">Sass</a></li>
               <li><a href="badges.html">Components</a></li>
@@ -163,7 +163,7 @@
   &lt;nav class="nav-extended">
     &lt;div class="nav-wrapper">
       &lt;a href="#" class="brand-logo">Logo&lt;/a>
-      &lt;a href="#" data-target="mobile-demo" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+      &lt;a href="#" data-target="mobile-demo" class="sidenav-trigger">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
       &lt;ul id="nav-mobile" class="right hide-on-med-and-down">
         &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
         &lt;li>&lt;a href="badges.html">Components&lt;/a>&lt;/li>
@@ -440,7 +440,7 @@ $(".dropdown-trigger").dropdown();
         <nav>
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
               <li><a href="sass.html">Sass</a></li>
               <li><a href="badges.html">Components</a></li>
@@ -460,12 +460,12 @@ $(".dropdown-trigger").dropdown();
 
         <br>
 
-        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="material-icons">menu</i>. Take a look at the example below to get this functionality. Add the entire <code class="language-markup">button-collapse</code> line to your <code class="language-markup">nav</code>.</p>
+        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="material-icons">menu</i>. Take a look at the example below to get this functionality. Add the entire <code class="language-markup">sidenav-trigger</code> line to your <code class="language-markup">nav</code>.</p>
         <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
       &lt;a href="#!" class="brand-logo">Logo&lt;/a>
-      &lt;a href="#" data-target="mobile-demo" class="sidenav-trigger button-collapse">&lt;i class="material-icons">menu</i>&lt;/i>&lt;/a>
+      &lt;a href="#" data-target="mobile-demo" class="sidenav-trigger">&lt;i class="material-icons">menu</i>&lt;/i>&lt;/a>
       &lt;ul class="right hide-on-med-and-down">
         &lt;li>&lt;a href="sass.html">Sass&lt;/a>&lt;/li>
         &lt;li>&lt;a href="badges.html">Components&lt;/a>&lt;/li>
@@ -484,9 +484,16 @@ $(".dropdown-trigger").dropdown();
 
           <br>
         <h5>Initialization</h5>
-        <p>After including the button-collapse line into your navbar, all you have to do now is place this code in your page's <code class="language-javascript">$( document ).ready(function(){})</code> code. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the jQuery selector in the line below to match it.</p>
+        <p>After including the sidenav-trigger line into your navbar, all you have to do now initialize the plugin. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the selector in the line below to match it.</p>
         <pre><code class="language-javascript">
+  var elem = document.querySelector('.sidenav');
+  var instance = new M.Sidenav(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
     $('.sidenav').sidenav();
+  });
         </code></pre>
       </div>
 
