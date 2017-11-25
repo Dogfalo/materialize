@@ -266,6 +266,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/tooltips.html',
+      title: 'Tooltips',
+      body: 'Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/typography.html',
       title: 'Typography',
       body: 'font, headers, blockquotes, flow text.'
