@@ -53,7 +53,7 @@
        */
       this.isOpen = false;
 
-      this.focusedIndex = null;
+      this.focusedIndex = -1;
       this.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
@@ -195,7 +195,7 @@
       if ((e.which === M.keys.ARROW_DOWN ||
            e.which === M.keys.ENTER) && !this.isOpen) {
         e.preventDefault();
-        this.open();
+        this.open(true);
       }
     }
 
@@ -281,7 +281,9 @@
     }
 
     _focusFocusedItem() {
-      this.dropdownEl.children[this.focusedIndex].focus();
+      if (this.focusedIndex >= 0 && this.focusedIndex < this.dropdownEl.children.length) {
+        this.dropdownEl.children[this.focusedIndex].focus();
+      }
     }
 
     _getDropdownPosition() {
@@ -419,15 +421,16 @@
 
     /**
      * Open Dropdown
+     * @param {Boolean} fromKeydown
      */
-    open() {
+    open(fromKeydown = false) {
       if (this.isOpen) {
         return;
       }
       this.isOpen = true;
 
       // Highlight focused item
-      if (this.focusedIndex === null) {
+      if (fromKeydown) {
         this.focusedIndex = 0;
       }
 
@@ -459,6 +462,7 @@
         return;
       }
       this.isOpen = false;
+      this.focusedIndex = -1;
 
       // onCloseStart callback
       if (typeof(this.options.onCloseStart) === 'function') {

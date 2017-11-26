@@ -33,6 +33,25 @@ M.keys = {
   ARROW_DOWN: 40
 };
 
+
+/**
+ * TabPress Keydown handler
+ */
+M.tabPressed = false;
+let docHandleKeydown = function(e) {
+  if (e.which === M.keys.TAB) {
+    M.tabPressed = true;
+  }
+};
+let docHandleKeyup = function(e) {
+  if (e.which === M.keys.TAB) {
+    M.tabPressed = false;
+  }
+};
+document.addEventListener('keydown', docHandleKeydown);
+document.addEventListener('keyup', docHandleKeyup);
+
+
 /**
  * Initialize jQuery wrapper for plugin
  * @param {Class} plugin  javascript class
