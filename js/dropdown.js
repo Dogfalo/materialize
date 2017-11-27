@@ -423,14 +423,14 @@
      * Open Dropdown
      * @param {Boolean} fromKeydown
      */
-    open(fromKeydown = false) {
+    open(fromKeydown) {
       if (this.isOpen) {
         return;
       }
       this.isOpen = true;
 
       // Highlight focused item
-      if (fromKeydown) {
+      if (!!fromKeydown) {
         this.focusedIndex = 0;
       }
 

@@ -428,7 +428,7 @@
      * @param {Number} chip
      */
     deleteChip(chipIndex) {
-      // let chip = this.chips[chipIndex];
+      let $chip = this.$chips.eq(chipIndex);
       this.$chips.eq(chipIndex).remove();
       this.$chips = this.$chips.filter(function(el) {
         return $(el).index() >= 0;
@@ -438,7 +438,7 @@
 
       // fire chipDelete callback
       if (typeof(this.options.onChipDelete) === 'function') {
-        this.options.onChipDelete.call(this, this.$el, this.$chip);
+        this.options.onChipDelete.call(this, this.$el, $chip[0]);
       }
     }
 
@@ -453,7 +453,7 @@
 
       // fire chipSelect callback
       if (typeof(this.options.onChipSelect) === 'function') {
-        this.options.onChipSelect.call(this, this.$el, this.$chip);
+        this.options.onChipSelect.call(this, this.$el, $chip[0]);
       }
     }
   }

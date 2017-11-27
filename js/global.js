@@ -37,19 +37,19 @@ M.keys = {
 /**
  * TabPress Keydown handler
  */
-M.tabPressed = false;
-let docHandleKeydown = function(e) {
-  if (e.which === M.keys.TAB) {
-    M.tabPressed = true;
-  }
-};
-let docHandleKeyup = function(e) {
-  if (e.which === M.keys.TAB) {
-    M.tabPressed = false;
-  }
-};
-document.addEventListener('keydown', docHandleKeydown);
-document.addEventListener('keyup', docHandleKeyup);
+// M.tabPressed = false;
+// let docHandleKeydown = function(e) {
+//   if (e.which === M.keys.TAB) {
+//     M.tabPressed = true;
+//   }
+// };
+// let docHandleKeyup = function(e) {
+//   if (e.which === M.keys.TAB) {
+//     M.tabPressed = false;
+//   }
+// };
+// document.addEventListener('keydown', docHandleKeydown);
+// document.addEventListener('keyup', docHandleKeyup);
 
 
 /**
