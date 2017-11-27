@@ -106,10 +106,10 @@ describe( 'Tooltip:', function() {
 
       mouseenter(tooltippedBtn[0]);
       setTimeout(function() {
-        let tooltipRect = tooltip[0].getBoundingClientRect();
-        let tooltippedBtnRect = tooltippedBtn[0].getBoundingClientRect();
-        let verticalDiff = tooltipRect.top - tooltippedBtnRect.top;
-        let horizontalDiff = (tooltipRect.left + tooltipRect.width/2) - (tooltippedBtnRect.left + tooltippedBtnRect.width / 2);
+        var tooltipRect = tooltip[0].getBoundingClientRect();
+        var tooltippedBtnRect = tooltippedBtn[0].getBoundingClientRect();
+        var verticalDiff = tooltipRect.top - tooltippedBtnRect.top;
+        var horizontalDiff = (tooltipRect.left + tooltipRect.width/2) - (tooltippedBtnRect.left + tooltippedBtnRect.width / 2);
 
         // 52 is magic number for tooltip vertical offset
         expect(verticalDiff > 0 && verticalDiff < 52).toBeTruthy('top position in fixed to be correct');

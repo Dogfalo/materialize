@@ -1,4 +1,4 @@
-describe("Chips Plugin", function () {
+describe("Chips", function () {
 
   beforeEach(function() {
     loadFixtures('chips/chipsFixture.html');
@@ -19,7 +19,7 @@ describe("Chips Plugin", function () {
     });
   });
 
-  describe("Chips", function () {
+  describe("chips plugin", function () {
     var $chips, $input;
 
     // beforeEach(function() {
@@ -80,27 +80,23 @@ describe("Chips Plugin", function () {
 
     it("should have working callbacks", function(done) {
       $chips = $('.chips').first();
-      let chipAdd = false;
-      let chipAdded = null;
-      let chipSelect = false;
-      let chipSelected = null;
-      let chipDelete = false;
-      let chipDeleted = null;
+      var chipAdd = false;
+      var chipAdded = null;
+      var chipSelect = false;
+      var chipSelected = null;
+      var chipDelete = false;
+      var chipDeleted = null;
       $chips.chips({
         data: [{ tag: 'One' }, { tag: 'Two' }, { tag: 'Three' }],
         onChipAdd: function(chipsEl, chipEl) {
-          console.log(chipEl.childNodes[0].nodeValue);
           chipAdded = chipEl;
           chipAdd = true;
         },
         onChipSelect: function(chipsEl, chipEl) {
-          console.log(chipEl.childNodes[0].nodeValue);
-
           chipSelected = chipEl;
           chipSelect = true;
         },
         onChipDelete: function(chipsEl, chipEl) {
-          console.log(chipEl.childNodes[0].nodeValue);
           chipDeleted = chipEl;
           chipDelete = true;
         }
