@@ -179,7 +179,7 @@
           });
         }
       } else {
-        if (this.$content !== undefined) {
+        if (this.$content[0]) {
           this.$content[0].style.display = 'block';
           this.$content.addClass('active');
           if (typeof(this.options.onShow) === 'function') {
