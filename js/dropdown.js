@@ -36,7 +36,6 @@
       this.dropdownEl = document.getElementById(this.id);
       this.$dropdownEl = $(this.dropdownEl);
 
-
       /**
        * Options for the dropdown
        * @member Dropdown#options
@@ -288,7 +287,7 @@
 
     _getDropdownPosition() {
       let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
-      let triggerOffset = {left: this.el.offsetLeft, top: this.el.offsetTop, width: this.el.offsetWidth, height: this.el.offsetHeight};
+      let triggerOffset = {left: this.el.offsetLeft, top: offsetParentBRect.offsetTop, width: this.el.offsetWidth, height: this.el.offsetHeight};
       let dropdownOffset = {left: this.dropdownEl.offsetLeft, top: this.dropdownEl.offsetTop, width: this.dropdownEl.offsetWidth, height: this.dropdownEl.offsetHeight};
       let triggerBRect = this.el.getBoundingClientRect();
       let dropdownBRect = this.dropdownEl.getBoundingClientRect();
@@ -377,7 +376,7 @@
       Vel(this.dropdownEl,
           {
             opacity: [1, 'easeOutQuad'],
-            scaleX: [1, .3],
+            scaleX: [1, 1],
             scaleY: [1, .3]},
           {
             duration: this.options.inDuration,
@@ -401,7 +400,7 @@
       Vel(this.dropdownEl,
           {
             opacity: [0, 'easeOutQuint'],
-            scaleX: [.3, 1],
+            scaleX: [1, 1],
             scaleY: [.3, 1]},
           {
             duration: this.options.outDuration,
