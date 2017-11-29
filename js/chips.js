@@ -1,4 +1,4 @@
-(function ($, Vel) {
+(function ($) {
   'use strict';
 
   let _defaults = {
