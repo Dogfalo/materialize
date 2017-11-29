@@ -1,4 +1,4 @@
-(function ($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
@@ -164,41 +164,42 @@
      * Animate image in
      */
     _animateImageIn() {
-      let velocityOptions = {
+      let animOptions = {
+        targets: this.el,
+        height: this.newHeight,
+        width: this.newWidth,
+        left: M.getDocumentScrollLeft() + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
+        top: M.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2,
         duration: this.options.inDuration,
-        queue: false,
-        ease: 'easeOutQuad',
+        easing: 'easeOutQuad',
         complete: () => {
           this.doneAnimating = true;
         }
       };
 
-      let velocityProperties = {
-        height: this.newHeight,
-        width: this.newWidth,
-        left: M.getDocumentScrollLeft() + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
-        top: M.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2
-      };
-
       if (this.$el.hasClass('responsive-img')) {
-        velocityProperties.maxWidth = [this.newWidth, this.newWidth];
-        velocityProperties.width = [velocityProperties.width, this.originalWidth];
+        animOptions.maxWidth = this.newWidth;
+        animOptions.width = [this.originalWidth, animOptions.width];
       } else {
-        velocityProperties.left = [velocityProperties.left, 0];
-        velocityProperties.top = [velocityProperties.top, 0];
+        animOptions.left = [animOptions.left, 0];
+        animOptions.top = [animOptions.top, 0];
       }
 
-      Vel(this.el, velocityProperties, velocityOptions);
+      anim(animOptions);
     }
 
     /**
      * Animate image out
      */
     _animateImageOut() {
-      let velocityOptions = {
+      let animOptions = {
+        targets: this.el,
+        width: this.originalWidth,
+        height: this.originalHeight,
+        left: 0,
+        top: 0,
         duration: this.options.outDuration,
-        queue: false,
-        ease: 'easeOutQuad',
+        easing: 'easeOutQuad',
         complete: () => {
           this.placeholder.css({
             height: '',
@@ -222,16 +223,7 @@
         }
       };
 
-      Vel(
-        this.el,
-        {
-          width: this.originalWidth,
-          height: this.originalHeight,
-          left: 0,
-          top: 0
-        },
-        velocityOptions
-      );
+      anim(animOptions);
     }
 
     /**
@@ -297,12 +289,20 @@
         top: -1 * overlayOffset.top + 'px'
       });
 
+      anim.remove(this.el);
+      anim.remove(this.$overlay[0]);
+
+      if (this.caption !== "") {
+        anim.remove(this.$photoCaption[0]);
+      }
+
       // Animate Overlay
-      Vel(
-        this.$overlay[0],
-        {opacity: 1},
-        {duration: this.options.inDuration, queue: false, ease: 'easeOutQuad'}
-      );
+      anim({
+        targets: this.$overlay[0],
+        opacity: 1,
+        duration: this.options.inDuration,
+        easing: 'easeOutQuad'
+      });
 
       // Add and animate caption if it exists
       if (this.caption !== "") {
@@ -310,11 +310,13 @@
         this.$photoCaption.text(this.caption);
         $('body').append(this.$photoCaption);
         this.$photoCaption.css({ "display": "inline" });
-        Vel(
-          this.$photoCaption[0],
-          {opacity: 1},
-          {duration: this.options.inDuration, queue: false, ease: 'easeOutQuad'}
-        );
+
+        anim({
+          targets: this.$photoCaption[0],
+          opacity: 1,
+          duration: this.options.inDuration,
+          easing: 'easeOutQuad'
+        });
       }
 
       // Resize Image
@@ -354,10 +356,11 @@
       this._updateVars();
       this.doneAnimating = false;
 
-      Vel(this.el, 'stop');
-      Vel(this.$overlay[0], 'stop');
+      anim.remove(this.el);
+      anim.remove(this.$overlay[0]);
+
       if (this.caption !== "") {
-        Vel(this.$photoCaption[0], 'stop');
+        anim.remove(this.$photoCaption[0]);
       }
 
       // disable exit handlers
@@ -365,26 +368,30 @@
       window.removeEventListener('resize', this._handleWindowResizeBound);
       window.removeEventListener('keyup', this._handleWindowEscapeBound);
 
-      Vel(
-        this.$overlay[0],
-        {opacity: 0},
-        {duration: this.options.outDuration, queue: false, ease: 'easeOutQuad', complete: () => {
+      anim({
+        targets: this.$overlay[0],
+        opacity: 0,
+        duration: this.options.outDuration,
+        easing: 'easeOutQuad',
+        complete: () => {
           this.overlayActive = false;
           this.$overlay.remove();
-        }}
-      );
+        }
+      });
 
       this._animateImageOut();
 
       // Remove Caption + reset css settings on image
       if (this.caption !== "") {
-        Vel(
-          this.$photoCaption[0],
-          {opacity: 0},
-          {duration: this.options.outDuration, queue: false, ease: 'easeOutQuad', complete: () => {
+        anim({
+          targets: this.$photoCaption[0],
+          opacity: 0,
+          duration: this.options.outDuration,
+          easing: 'easeOutQuad',
+          complete: () => {
             this.$photoCaption.remove();
-          }}
-        );
+          }
+        });
       }
     }
   }
@@ -395,4 +402,4 @@
     M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
   }
 
-}( cash, M.Vel ));
+}(cash, anime));

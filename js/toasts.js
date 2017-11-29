@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -220,10 +220,12 @@
      */
     _animateIn() {
       // Animate toast in
-      Vel(this.el, {top: 0,  opacity: 1 }, {
+      anim({
+        targets: this.el,
+        top: 0,
+        opacity: 1,
         duration: 300,
-        easing: 'easeOutCubic',
-        queue: false
+        easing: 'easeOutCubic'
       });
     }
 
@@ -263,27 +265,26 @@
         this.el.style.opacity = 0;
       }
 
-      Vel(
-        this.el,
-        {opacity: 0, marginTop: '-40px'},
-        {
-          duration: this.options.outDuration,
-          easing: 'easeOutExpo',
-          queue: false,
-          complete: () => {
-            // Call the optional callback
-            if(typeof(this.options.completeCallback) === 'function') {
-              this.options.completeCallback();
-            }
-            // Remove toast from DOM
-            this.el.parentNode.removeChild(this.el);
-            Toast._toasts.splice(Toast._toasts.indexOf(this), 1);
-            if (Toast._toasts.length === 0) {
-              Toast._removeContainer();
-            }
+
+      anim({
+        targets: this.el,
+        opacity: 0,
+        marginTop: -40,
+        duration: this.options.outDuration,
+        easing: 'easeOutExpo',
+        complete: () => {
+          // Call the optional callback
+          if(typeof(this.options.completeCallback) === 'function') {
+            this.options.completeCallback();
+          }
+          // Remove toast from DOM
+          this.el.parentNode.removeChild(this.el);
+          Toast._toasts.splice(Toast._toasts.indexOf(this), 1);
+          if (Toast._toasts.length === 0) {
+            Toast._removeContainer();
           }
         }
-      );
+      });
     }
   }
 
@@ -311,4 +312,4 @@
   M.toast = function(options) {
     return new Toast(options);
   };
-})(cash, M.Vel);
+})(cash, anime);

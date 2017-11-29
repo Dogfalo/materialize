@@ -1,4 +1,4 @@
-(function ($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
@@ -357,33 +357,32 @@
      * @param {Number} prevIndex
      */
     _animateIndicator(prevIndex) {
-      let velOptions = {
-        duration: this.options.duration,
-        queue: false,
-        easing: 'easeOutQuad'
-      };
-      let velOptionsLeft, velOptionsRight;
+      let leftDelay = 0,
+          rightDelay = 0;
 
       if ((this.index - prevIndex) >= 0) {
-        velOptionsLeft = $.extend({}, velOptions, {delay: 90});
-        velOptionsRight = velOptions;
+        leftDelay = 90;
 
       } else {
-        velOptionsLeft = velOptions;
-        velOptionsRight = $.extend({}, velOptions, {delay: 90});
+        rightDelay = 90;
       }
 
-      // Animate with velocity
-      Vel(
-        this._indicator,
-        {left: this._calcLeftPos(this.$activeTabLink) },
-        velOptionsLeft
-      );
-      Vel(
-        this._indicator,
-        {right: this._calcRightPos(this.$activeTabLink) },
-        velOptionsRight
-      );
+      // Animate
+      let animOptions = {
+        targets: this._indicator,
+        left: {
+          value: this._calcLeftPos(this.$activeTabLink),
+          delay: leftDelay
+        },
+        right: {
+          value: this._calcRightPos(this.$activeTabLink),
+          delay: rightDelay
+        },
+        duration: this.options.duration,
+        easing: 'easeOutQuad'
+      };
+      anim.remove(this._indicator);
+      anim(animOptions);
     }
 
     /**
@@ -392,7 +391,7 @@
      */
     select(tabId) {
       let tab = this.$tabLinks.filter('[href="#' + tabId + '"]');
-      if (tab.length) {
+      if (tab.length) {4
         tab.trigger('click');
       }
     }
@@ -405,4 +404,4 @@
     M.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
   }
 
-})(cash, M.Vel);
+})(cash, anime);

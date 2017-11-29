@@ -1,4 +1,4 @@
-(function ($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
@@ -133,23 +133,45 @@
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length) {
         let $body = $collapsibleLi.children('.collapsible-body');
-        Vel($body[0], 'stop');
-        Vel(
-          $body[0],
-          'slideDown',
-          {duration: this.options.inDuration, easing: 'easeInOutCubic', queue: false,
-          complete: () => {
-            $body[0].style.height = '';
-            $body[0].style.overflow = '';
-            $body[0].style.padding = '';
-            $body[0].style.margin = '';
+
+        anim.remove($body[0]);
+        $body.css({
+          display: 'block',
+          overflow: 'hidden',
+          height: 0,
+          paddingTop: '',
+          paddingBottom: ''
+        });
+
+        let pTop = $body.css('padding-top');
+        let pBottom = $body.css('padding-bottom');
+        let finalHeight = $body[0].scrollHeight;
+        $body.css({
+          paddingTop: 0,
+          paddingBottom: 0
+        });
+
+        anim({
+          targets: $body[0],
+          height: finalHeight,
+          paddingTop: pTop,
+          paddingBottom: pBottom,
+          duration: this.options.inDuration,
+          easing: 'easeInOutCubic',
+          complete: (anim) => {
+            $body.css({
+              overflow: '',
+              paddingTop: '',
+              paddingBottom: '',
+              height: ''
+            });
 
             // onOpenEnd callback
             if (typeof(this.options.onOpenEnd) === 'function') {
               this.options.onOpenEnd.call(this, $collapsibleLi[0]);
             }
-          }}
-        );
+          }
+        });
       }
     }
 
@@ -161,23 +183,29 @@
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length) {
         let $body = $collapsibleLi.children('.collapsible-body');
-        Vel($body[0], 'stop');
-        Vel(
-          $body[0],
-          'slideUp',
-          {duration: this.options.outDuration, easing: 'easeInOutCubic', queue: false,
+        anim.remove($body[0]);
+        $body.css('overflow', 'hidden');
+        anim({
+          targets: $body[0],
+          height: 0,
+          paddingTop: 0,
+          paddingBottom: 0,
+          duration: this.options.outDuration,
+          easing: 'easeInOutCubic',
           complete: () => {
-            $body[0].style.height = '';
-            $body[0].style.overflow ='';
-            $body[0].style.padding = '';
-            $body[0].style.margin = '';
+            $body.css({
+              height: '',
+              overflow: '',
+              padding: '',
+              display: ''
+            });
 
             // onCloseEnd callback
             if (typeof(this.options.onCloseEnd) === 'function') {
               this.options.onCloseEnd.call(this, $collapsibleLi[0]);
             }
-          }}
-        );
+          }
+        });
       }
     }
 
@@ -236,4 +264,4 @@
     M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
   }
 
-}( cash, M.Vel ));
+}(cash, anime));

@@ -68,7 +68,7 @@
   text-align: center;
   letter-spacing: .5px;
   @extend .z-depth-1;
-  transition: .2s ease-out;
+  transition: background-color .2s ease-out;
   cursor: pointer;
 
   &:hover {
@@ -123,7 +123,7 @@
   background-color: $button-floating-background;
   border-radius: $button-floating-radius;
   @extend .z-depth-1;
-  transition: .3s;
+  transition: background-color .3s;
   cursor: pointer;
   vertical-align: middle;
 

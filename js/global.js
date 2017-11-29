@@ -377,19 +377,3 @@ M.throttle = function(func, wait, options) {
     return result;
   };
 };
-
-
-// Velocity has conflicts when loaded with jQuery, this will check for it
-// First, check if in noConflict mode
-let Vel;
-if (M.jQueryLoaded) {
-  Vel = jQuery.Velocity;
-} else {
-  Vel = Velocity;
-}
-
-if (Vel) {
-  M.Vel = Vel;
-} else {
-  M.Vel = Velocity;
-}

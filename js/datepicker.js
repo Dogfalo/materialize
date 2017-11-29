@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -886,4 +886,4 @@
     M.initializeJqueryWrapper(Datepicker, 'datepicker', 'M_Datepicker');
   }
 
-})(cash, M.Vel);
+})(cash);
