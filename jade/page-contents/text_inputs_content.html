@@ -98,7 +98,7 @@
   &lt;/div>
         </code></pre><br>
         <h5>Prefilling Text Inputs</h5>
-        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">Materialize.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
+        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">M.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
         <div class="row">
           <div class="input-field col s6">
             <input value="Alvin" id="first_name2" type="text" class="validate">
@@ -117,7 +117,7 @@
 
         <pre><code class="language-javascript">
   $(document).ready(function() {
-    Materialize.updateTextFields();
+    M.updateTextFields();
   });
         </code></pre>
         <br>

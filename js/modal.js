@@ -245,7 +245,7 @@
           this.el.style.display = 'none';
           // Call complete callback
           if (typeof(this.options.complete) === 'function') {
-            this.options.complete.call(this, this.$el);
+            this.options.complete.call(this, this.el);
           }
           this.$overlay.remove();
         }
@@ -286,7 +286,7 @@
       body.appendChild(this.$overlay[0]);
 
       // Set opening trigger, undefined indicates modal was opened by javascript
-      this._openingTrigger = !!$trigger ? $trigger : undefined;
+      this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
 
       if (this.options.dismissible) {
         this._handleKeydownBound = this._handleKeydown.bind(this);
