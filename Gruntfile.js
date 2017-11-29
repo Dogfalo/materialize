@@ -152,7 +152,7 @@ module.exports = function(grunt) {
         // the files to concatenate
         src: [
           "js/cash.js",
-          "js/velocity.min.js",
+          "js/anime.min.js",
           "js/global.js",
           "js/collapsible.js",
           "js/dropdown.js",
@@ -191,7 +191,7 @@ module.exports = function(grunt) {
         },
         src: [
           "js/cash.js",
-          "js/velocity.min.js",
+          "js/anime.min.js",
           "js/global.js",
           "js/collapsible.js",
           "js/dropdown.js",
@@ -273,7 +273,7 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
-            "velocity.min.js",
+            "anime.min.js",
             "global.js",
             "collapsible.js",
             "dropdown.js",
@@ -573,7 +573,7 @@ module.exports = function(grunt) {
     // Removes console logs
     removelogging: {
       source: {
-        src: ["js/**/*.js", "!js/velocity.min.js"],
+        src: ["js/**/*.js", "!js/anime.min.js"],
         options: {
           // see below for options. this is optional.
         }
