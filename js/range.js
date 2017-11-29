@@ -1,4 +1,4 @@
-(function ($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
@@ -188,17 +188,16 @@
         let marginLeft = (7 + paddingLeft) + 'px';
 
         if ($(this.thumb).hasClass('active')) {
-          Vel(this.thumb, 'stop');
-          Vel(
-            this.thumb,
-            {
-              height: '0px',
-              width: '0px',
-              top: '10px',
-              marginLeft: marginLeft
-            },
-            { duration: 100 }
-          );
+          anim.remove(this.thumb);
+          anim({
+            targets: this.thumb,
+            height: 0,
+            width: 0,
+            top: 10,
+            easing: 'easeOutQuad',
+            marginLeft: marginLeft,
+            duration: 100
+          });
         }
         $(this.thumb).removeClass('active');
       }
@@ -229,15 +228,16 @@
     _showRangeBubble() {
       let paddingLeft = parseInt($(this.thumb).parent().css('padding-left'));
       let marginLeft = (-7 + paddingLeft) + 'px'; // TODO: fix magic number?
-      Vel(
-        this.thumb,
-        {
-          height: "30px",
-          width: "30px",
-          top: "-30px",
-          marginLeft: marginLeft
-        },
-        { duration: 300, easing: 'easeOutExpo' });
+      anim.remove(this.thumb);
+      anim({
+        targets: this.thumb,
+        height: 30,
+        width: 30,
+        top: -30,
+        marginLeft: marginLeft,
+        duration: 300,
+        easing: 'easeOutQuint'
+      });
     }
 
     /**
@@ -260,4 +260,4 @@
   }
 
   Range.init($('input[type=range]'));
-}( cash, M.Vel ));
+}( cash, anime));

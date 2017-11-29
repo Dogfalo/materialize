@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -122,10 +122,13 @@
         if ($trigger.is('a[href="#' + scrollspy.$el.attr('id') + '"]')) {
           e.preventDefault();
           let offset = scrollspy.$el.offset().top + 1;
-          Vel(
-            document.body,
-            'scroll',
-            {duration: 400, offset: offset - scrollspy.options.scrollOffset, easing: 'easeOutCubic'});
+
+          anim({
+            targets: [document.documentElement, document.body],
+            scrollTop: offset - scrollspy.options.scrollOffset,
+            duration: 400,
+            easing: 'easeOutCubic'
+          });
           break;
         }
       }
@@ -290,4 +293,4 @@
     M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
   }
 
-})(cash, M.Vel);
+})(cash, anime);

@@ -192,8 +192,7 @@
           paddingBottom: 0,
           duration: this.options.outDuration,
           easing: 'easeInOutCubic',
-          complete: (anim) => {
-            console.log('done');
+          complete: () => {
             $body.css({
               height: '',
               overflow: '',
