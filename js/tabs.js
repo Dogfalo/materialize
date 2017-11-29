@@ -249,7 +249,7 @@
      */
     _setupSwipeableTabs() {
       // Change swipeable according to responsive threshold
-      if (window.innerWidth > options.responsiveThreshold) {
+      if (window.innerWidth > this.options.responsiveThreshold) {
         this.options.swipeable = false;
       }
 
