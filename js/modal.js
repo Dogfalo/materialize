@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -184,18 +184,18 @@
       });
 
       // Animate overlay
-      Vel(
-        this.$overlay[0],
-        {opacity: this.options.opacity},
-        {duration: this.options.inDuration, queue: false, ease: 'easeOutCubic'}
-      );
-
+      anim({
+        targets: this.$overlay[0],
+        opacity: this.options.opacity,
+        duration: this.options.inDuration,
+        easing: 'easeOutQuad'
+      });
 
       // Define modal animation options
-      let enterVelocityOptions = {
+      let enterAnimOptions = {
+        targets: this.el,
         duration: this.options.inDuration,
-        queue: false,
-        ease: 'easeOutCubic',
+        easing: 'easeOutCubic',
         // Handle modal ready callback
         complete: () => {
           if (typeof(this.options.ready) === 'function') {
@@ -206,21 +206,21 @@
 
       // Bottom sheet animation
       if (this.el.classList.contains('bottom-sheet')) {
-        Vel(
-          this.el,
-          {bottom: 0, opacity: 1},
-          enterVelocityOptions);
+        $.extend(enterAnimOptions, {
+          bottom: 0,
+          opacity: 1
+        });
+        anim(enterAnimOptions);
 
       // Normal modal animation
       } else {
-        Vel.hook(this.el, 'scaleX', 0.8);
-        Vel.hook(this.el, 'scaleY', 0.8);
-        this.el.style.top = this.options.startingTop;
-        Vel(
-          this.el,
-          {top: this.options.endingTop, opacity: 1, scaleX: 1, scaleY: 1},
-          enterVelocityOptions
-        );
+        $.extend(enterAnimOptions, {
+          top: [this.options.startingTop, this.options.endingTop],
+          opacity: 1,
+          scaleX: [.8, 1],
+          scaleY: [.8, 1]
+        });
+        anim(enterAnimOptions);
       }
     }
 
@@ -229,17 +229,18 @@
      */
     _animateOut() {
       // Animate overlay
-      Vel(
-        this.$overlay[0],
-        { opacity: 0},
-        {duration: this.options.outDuration, queue: false, ease: 'easeOutQuart'}
-      );
+      anim({
+        targets: this.$overlay[0],
+        opacity: 0,
+        duration: this.options.outDuration,
+        easing: 'easeOutQuart'
+      });
 
       // Define modal animation options
-      let exitVelocityOptions = {
+      let exitAnimOptions = {
+        targets: this.el,
         duration: this.options.outDuration,
-        queue: false,
-        ease: 'easeOutCubic',
+        easing: 'easeOutCubic',
         // Handle modal ready callback
         complete: () => {
           this.el.style.display = 'none';
@@ -253,19 +254,21 @@
 
       // Bottom sheet animation
       if (this.el.classList.contains('bottom-sheet')) {
-        Vel(
-          this.el,
-          {bottom: '-100%', opacity: 0},
-          exitVelocityOptions
-        );
+        $.extend(exitAnimOptions, {
+          bottom: '-100%',
+          opacity: 0
+        });
+        anim(exitAnimOptions);
 
       // Normal modal animation
       } else {
-        Vel(
-          this.el,
-          {top: this.options.startingTop, opacity: 0, scaleX: 0.8, scaleY: 0.8},
-          exitVelocityOptions
-        );
+        $.extend(exitAnimOptions, {
+          top: [this.options.endingTop, this.options.startingTop],
+          opacity: 0,
+          scaleX: 0.8,
+          scaleY: 0.8
+        });
+        anim(exitAnimOptions);
       }
     }
 
@@ -293,6 +296,8 @@
         document.addEventListener('keydown', this._handleKeydownBound);
       }
 
+      anim.remove(this.el);
+      anim.remove(this.$overlay[0]);
       this._animateIn();
       return this;
     }
@@ -313,6 +318,8 @@
         document.removeEventListener('keydown', this._handleKeydownBound);
       }
 
+      anim.remove(this.el);
+      anim.remove(this.$overlay[0]);
       this._animateOut();
       return this;
     }
@@ -336,4 +343,4 @@
     M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
   }
 
-})(cash, M.Vel);
+})(cash, anime);

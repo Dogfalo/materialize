@@ -168,8 +168,7 @@
 
             // onOpenEnd callback
             if (typeof(this.options.onOpenEnd) === 'function') {
-              let elem = anim.animatables[0].target;
-              this.options.onOpenEnd.call(elem, $collapsibleLi[0]);
+              this.options.onOpenEnd.call(this, $collapsibleLi[0]);
             }
           }
         });
@@ -202,10 +201,9 @@
               display: ''
             });
 
-            let elem = anim.animatables[0].target;
             // onCloseEnd callback
             if (typeof(this.options.onCloseEnd) === 'function') {
-              this.options.onCloseEnd.call(elem, $collapsibleLi[0]);
+              this.options.onCloseEnd.call(this, $collapsibleLi[0]);
             }
           }
         });
