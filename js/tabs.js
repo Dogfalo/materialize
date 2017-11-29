@@ -34,7 +34,7 @@
       this.el = el;
 
       /**
-       * Options for the carousel
+       * Options for the Tabs
        * @member Tabs#options
        * @prop {Number} duration
        * @prop {Function} onShow
@@ -276,7 +276,7 @@
           this.$activeTabLink.addClass('active');
           this._animateIndicator(prevIndex);
           if (typeof(this.options.onShow) === "function") {
-            this.options.onShow.call(this, this.$content);
+            this.options.onShow.call(this, this.$content[0]);
           }
         },
       });
