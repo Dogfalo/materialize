@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -6,8 +6,8 @@
     enterDelay: 0,
     html: null,
     margin: 5,
-    inDuration: 300,
-    outDuration: 250,
+    inDuration: 250,
+    outDuration: 200,
     position: 'bottom',
     transitionMovement: 10
   };
@@ -231,30 +231,26 @@
     _animateIn() {
       this._positionTooltip();
       this.tooltipEl.style.visibility = 'visible';
-      Vel(this.tooltipEl, 'stop');
-      Vel(
-        this.tooltipEl, {
-          opacity: 1,
-          translateX: this.xMovement,
-          translateY: this.yMovement
-        }, {
-          duration: this.options.inDuration,
-          easing: 'easeOutCubic',
-          queue: false
-        });
+      anim.remove(this.tooltipEl);
+      anim({
+        targets: this.tooltipEl,
+        opacity: 1,
+        translateX: this.xMovement,
+        translateY: this.yMovement,
+        duration: this.options.inDuration,
+        easing: 'easeOutCubic'
+      });
     }
 
     _animateOut() {
-      Vel(this.tooltipEl, 'stop');
-      Vel(
-        this.tooltipEl, {
-          opacity: 0,
-          translateX: 0,
-          translateY: 0,
-        }, {
-          duration: this.options.outDuration,
-          easing: 'easeOutCubic',
-          queue: false
+      anim.remove(this.tooltipEl);
+      anim({
+        targets: this.tooltipEl,
+        opacity: 0,
+        translateX: 0,
+        translateY: 0,
+        duration: this.options.outDuration,
+        easing: 'easeOutCubic'
       });
     }
 
@@ -290,4 +286,4 @@
     M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
 
-})(cash, M.Vel);
+})(cash, anime);

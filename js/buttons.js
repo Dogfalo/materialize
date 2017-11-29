@@ -1,4 +1,4 @@
-(function ($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
@@ -45,6 +45,8 @@
       this.$menu = this.$el.children('ul').first();
       this.$floatingBtns = this.$el.find('ul .btn-floating');
       this.$floatingBtnsReverse = this.$el.find('ul .btn-floating').reverse();
+      this.offsetY = 0;
+      this.offsetX = 0;
       if (this.options.direction === 'top') {
         this.$el.addClass('direction-top');
         this.offsetY = 40;
@@ -180,18 +182,19 @@
      */
     _animateInFAB() {
       this.$el.addClass('active');
-      Vel.hook(this.$floatingBtns, 'scaleX', 0.4);
-      Vel.hook(this.$floatingBtns, 'scaleY', 0.4);
-      Vel.hook(this.$floatingBtns, 'translateY', this.offsetY + 'px');
-      Vel.hook(this.$floatingBtns, 'translateX', this.offsetX + 'px');
 
       let time = 0;
-      this.$floatingBtnsReverse.each( function () {
-        Vel(
-          this,
-          { opacity: "1", scaleX: 1, scaleY: 1, translateY: 0, translateX: 0},
-          { duration: 80, delay: time }
-        );
+      this.$floatingBtnsReverse.each((el) => {
+        anim({
+          targets: el,
+          opacity: 1,
+          scale: [.4, 1],
+          translateY: [this.offsetY, 0],
+          translateX: [this.offsetX, 0],
+          duration: 275,
+          delay: time,
+          easing: 'easeInOutQuad'
+        });
         time += 40;
       });
     }
@@ -200,13 +203,21 @@
      * Classic FAB Menu close
      */
     _animateOutFAB() {
-      this.$el.removeClass('active');
-      Vel(this.$floatingBtns, 'stop');
-      Vel(
-        this.$floatingBtns,
-        { opacity: "0", scaleX: .4, scaleY: .4, translateY: this.offsetY, translateX: this.offsetX},
-        { duration: 80 }
-      );
+      this.$floatingBtnsReverse.each((el) => {
+        anim.remove(el);
+        anim({
+          targets: el,
+          opacity: 0,
+          scale: .4,
+          translateY: this.offsetY,
+          translateX: this.offsetX,
+          duration: 175,
+          easing: 'easeOutQuad',
+          complete: () => {
+            this.$el.removeClass('active');
+          }
+        });
+      });
     }
 
     /**
@@ -346,4 +357,4 @@
     M.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
   }
 
-}( cash, M.Vel ));
+}(cash, anime));

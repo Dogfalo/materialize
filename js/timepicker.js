@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -599,4 +599,4 @@
     M.initializeJqueryWrapper(Timepicker, 'timepicker', 'M_Timepicker');
   }
 
-})(cash, M.Vel);
+})(cash);
