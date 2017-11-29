@@ -135,13 +135,16 @@
         let $body = $collapsibleLi.children('.collapsible-body');
 
         anim.remove($body[0]);
-        let pTop = $body.css('padding-top');
-        let pBottom = $body.css('padding-bottom');
         $body.css({
           display: 'block',
           overflow: 'hidden',
-          height: 0
+          height: 0,
+          paddingTop: '',
+          paddingBottom: ''
         });
+
+        let pTop = $body.css('padding-top');
+        let pBottom = $body.css('padding-bottom');
         let finalHeight = $body[0].scrollHeight;
         $body.css({
           paddingTop: 0,
@@ -191,6 +194,7 @@
           duration: this.options.outDuration,
           easing: 'easeInOutCubic',
           complete: (anim) => {
+            console.log('done');
             $body.css({
               height: '',
               overflow: '',
