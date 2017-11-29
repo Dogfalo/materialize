@@ -116,5 +116,17 @@ describe("Tabs Plugin", function () {
       }, 400);
     });
 
+    it("shouldn't error if tab has no associated content", function (done) {
+      $('#test8').remove();
+      var tabNoContent = $('[href="#test8"]').first();
+      expect(tabNoContent.hasClass('active')).toEqual(false, 'Tab should not be selected');
+      click($('[href="#test8"]')[0]);
+
+      setTimeout(function() {
+        expect(tabNoContent.hasClass('active')).toEqual(true, 'Tab should be selected even with no content');
+        done();
+      }, 400);
+    });
+
   });
 });

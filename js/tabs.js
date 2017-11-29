@@ -179,14 +179,14 @@
           });
         }
       } else {
-        if (this.$content !== undefined) {
+        if (this.$content.length) {
           this.$content[0].style.display = 'block';
           this.$content.addClass('active');
           if (typeof(this.options.onShow) === 'function') {
             this.options.onShow.call(this, this.$content[0]);
           }
 
-          if ($oldContent !== undefined &&
+          if ($oldContent.length &&
               !$oldContent.is(this.$content)) {
             $oldContent[0].style.display = 'none';
             $oldContent.removeClass('active');
