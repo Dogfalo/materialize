@@ -254,7 +254,7 @@
     _clockSetup() {
       if (this.options.twelveHour) {
         this.$amBtn = $('<div class="am-btn">AM</div>');
-        this.$pmBtn = $('<div class="pm-btn">PM</div>');
+				this.$pmBtn = $('<div class="pm-btn">PM</div>');
         this.$amBtn.on('click', this._handleAmPmClick.bind(this)).appendTo(this.spanAmPm);
 				this.$pmBtn.on('click', this._handleAmPmClick.bind(this)).appendTo(this.spanAmPm);
 		  }
@@ -354,8 +354,10 @@
     }
 
     _updateAmPmView() {
-      this.$amBtn.toggleClass('text-primary', this.amOrPm === 'AM');
-      this.$pmBtn.toggleClass('text-primary', this.amOrPm === 'PM');
+			if (this.options.twelveHour) {
+				this.$amBtn.toggleClass('text-primary', this.amOrPm === 'AM');
+				this.$pmBtn.toggleClass('text-primary', this.amOrPm === 'PM');
+			}
     }
 
     _updateTimeFromInput() {
