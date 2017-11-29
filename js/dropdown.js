@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -374,48 +374,54 @@
       this.dropdownEl.style.transformOrigin =
         `${positionInfo.horizontalAlignment === 'left' ? '0' : '100%'} ${positionInfo.verticalAlignment === 'top' ? '0' : '100%'}`;
 
-      Vel(this.dropdownEl,
-          {
-            opacity: [1, 'easeOutQuad'],
-            scaleX: [1, .3],
-            scaleY: [1, .3]},
-          {
-            duration: this.options.inDuration,
-            queue: false,
-            easing: 'easeOutQuint',
-            complete: () => {
-              this._focusFocusedItem();
+      anim.remove(this.dropdownEl);
+      anim({
+        targets: this.dropdownEl,
+        opacity: {
+          value: [0, 1],
+          easing: 'easeOutQuad'
+        },
+        scaleX: [.3, 1],
+        scaleY: [.3, 1],
+        duration: this.options.inDuration,
+        easing: 'easeOutQuint',
+        complete: (anim) => {
+          this._focusFocusedItem();
 
-              // onOpenEnd callback
-              if (typeof(this.options.onOpenEnd) === 'function') {
-                this.options.onOpenEnd.call(this, this.el);
-              }
-            }
-          });
+          // onOpenEnd callback
+          if (typeof(this.options.onOpenEnd) === 'function') {
+            let elem = anim.animatables[0].target;
+            this.options.onOpenEnd.call(elem, this.el);
+          }
+        }
+      });
     }
 
     /**
      * Animate out dropdown
      */
     _animateOut() {
-      Vel(this.dropdownEl,
-          {
-            opacity: [0, 'easeOutQuint'],
-            scaleX: [.3, 1],
-            scaleY: [.3, 1]},
-          {
-            duration: this.options.outDuration,
-            queue: false,
-            easing: 'easeOutQuint',
-            complete: () => {
-              this._resetDropdownStyles();
+      anim.remove(this.dropdownEl);
+      anim({
+        targets: this.dropdownEl,
+        opacity: {
+          value: 0,
+          easing: 'easeOutQuint'
+        },
+        scaleX: .3,
+        scaleY: .3,
+        duration: this.options.outDuration,
+        easing: 'easeOutQuint',
+        complete: (anim) => {
+          this._resetDropdownStyles();
 
-              // onCloseEnd callback
-              if (typeof(this.options.onCloseEnd) === 'function') {
-                this.options.onCloseEnd.call(this, this.el);
-              }
-            }
-          });
+          // onCloseEnd callback
+          if (typeof(this.options.onCloseEnd) === 'function') {
+            let elem = anim.animatables[0].target;
+            this.options.onCloseEnd.call(this, this.el);
+          }
+        }
+      });
     }
 
 
@@ -439,10 +445,9 @@
         this.options.onOpenStart.call(this, this.el);
       }
 
-      // Stop any previous animation
-      Vel(this.dropdownEl, 'stop');
+      // Reset styles
       this._resetDropdownStyles();
-      Vel.hook(this.dropdownEl, 'display', 'block');
+      this.dropdownEl.style.display = 'block';
 
       // Set width before calculating positionInfo
       let idealWidth = this.options.constrainWidth ?
@@ -487,4 +492,4 @@
     M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
   }
 
-})(cash, M.Vel);
+})(cash, anime);
