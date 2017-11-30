@@ -53,12 +53,20 @@
     let fontFamily = $textarea.css('font-family');
     let fontSize = $textarea.css('font-size');
     let lineHeight = $textarea.css('line-height');
-    let padding = $textarea.css('padding');
+
+    // Firefox can't handle padding shorthand.
+    let paddingTop = $textarea.css('padding-top');
+    let paddingRight = $textarea.css('padding-right');
+    let paddingBottom = $textarea.css('padding-bottom');
+    let paddingLeft = $textarea.css('padding-left');
 
     if (fontSize) { hiddenDiv.css('font-size', fontSize); }
     if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
     if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
-    if (padding) { hiddenDiv.css('padding', padding); }
+    if (paddingTop) { hiddenDiv.css('padding-top', paddingTop); }
+    if (paddingRight) { hiddenDiv.css('padding-right', paddingRight); }
+    if (paddingBottom) { hiddenDiv.css('padding-bottom', paddingBottom); }
+    if (paddingLeft) { hiddenDiv.css('padding-left', paddingLeft); }
 
     // Set original-height, if none
     if (!$textarea.data('original-height')) {

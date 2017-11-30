@@ -300,11 +300,13 @@ textarea {
   background-color: transparent;
 
   &.materialize-textarea {
+    line-height: normal;
     overflow-y: hidden; /* prevents scroll bar flash */
-    padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
+    padding: .8rem 0 .8rem 0; /* prevents text jump on Enter keypress */
     resize: none;
     min-height: $input-height;
     box-sizing: border-box;
+    transition: none;
   }
 }
 
