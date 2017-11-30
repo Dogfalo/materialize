@@ -94,7 +94,7 @@ input[type=range]::-webkit-slider-thumb {
 
 }
 
-input[type=range]:focus:not(.active)::-webkit-slider-thumb {
+input[type=range].focused:focus:not(.active)::-webkit-slider-thumb {
   box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
 }
 
@@ -125,7 +125,7 @@ input[type=range]:-moz-focusring {
   outline-offset: -1px;
 }
 
-input[type=range]:focus:not(.active)::-moz-range-thumb {
+input[type=range].focused:focus:not(.active)::-moz-range-thumb {
   box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
 }
 
@@ -156,6 +156,6 @@ input[type=range]::-ms-thumb {
   @include range-thumb;
 }
 
-input[type=range]:focus:not(.active)::-ms-thumb {
+input[type=range].focused:focus:not(.active)::-ms-thumb {
   box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
 }
