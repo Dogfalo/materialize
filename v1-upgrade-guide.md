@@ -43,6 +43,11 @@
 - Changed Checkboxes and Radio buttons to have similar label wrapping as switches
 
 
+## Pickers
+- Rename plugin call `.pickadate()` to `.datepicker()`
+- Datepicker options `today`, `clear`, `close` moved to `i18n.today`, `i18n.clear`, and `i18n.done` respectively.
+
+
 ## Collections
 - Removed dismissible collections
 
