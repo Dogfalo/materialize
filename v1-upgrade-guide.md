@@ -45,7 +45,7 @@
 
 ## Pickers
 - Rename plugin call `.pickadate()` to `.datepicker()`
-- Datepicker options `today()`, `clear()`, `close()` moved to `i18n.today()`, `i18n.clear()`, and `i18n.done()` respectively.
+- Datepicker options `today`, `clear`, `close` moved to `i18n.today`, `i18n.clear`, and `i18n.done` respectively.
 
 
 ## Collections
