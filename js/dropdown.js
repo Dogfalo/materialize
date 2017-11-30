@@ -195,7 +195,7 @@
       if ((e.which === M.keys.ARROW_DOWN ||
            e.which === M.keys.ENTER) && !this.isOpen) {
         e.preventDefault();
-        this.open(true);
+        this.open();
       }
     }
 
@@ -386,7 +386,7 @@
         duration: this.options.inDuration,
         easing: 'easeOutQuint',
         complete: (anim) => {
-          this._focusFocusedItem();
+          this.dropdownEl.focus();
 
           // onOpenEnd callback
           if (typeof(this.options.onOpenEnd) === 'function') {
@@ -427,18 +427,12 @@
 
     /**
      * Open Dropdown
-     * @param {Boolean} fromKeydown
      */
-    open(fromKeydown) {
+    open() {
       if (this.isOpen) {
         return;
       }
       this.isOpen = true;
-
-      // Highlight focused item
-      if (!!fromKeydown) {
-        this.focusedIndex = 0;
-      }
 
       // onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
