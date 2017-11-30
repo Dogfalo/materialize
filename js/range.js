@@ -84,7 +84,7 @@
       this._handleRangeBlurMouseoutTouchleaveBound = this._handleRangeBlurMouseoutTouchleave.bind(this);
 
 
-      console.log(this.el);
+      
       this.el.addEventListener('change', this._handleRangeChangeBound);
       this.el.addEventListener('focus', this._handleRangeFocusBound);
 

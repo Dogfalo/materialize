@@ -2,7 +2,31 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
-## v1.0.0 (November 10th)
+## 1.0.0-alpha.2 (November 30th)
+- Chips
+  - Fixed and standardized chips callback parameters
+
+- Datepicker
+  - Fixed date format option
+  - Scrollbar no longer unecessarily appears when using datepicker
+  - Fixed bug where using month and year selectors didn't change date
+
+- Dropdown
+  - Removed automatic focus highlight on open
+
+- Textarea
+  - Fixed error where text was cut off on Firefox
+
+- Tabs
+  - Fixed error with pure JavaScript initialization
+  - Fixed error where a tab with no content would break tabs
+
+- Timepicker
+  - Fixed error with twelveHour options
+
+- Replaced velocity.js with anime.js
+
+## 1.0.0-alpha.1 (November 10th)
 - Dropdown
   - rewritten with classes
   - Plugin is initialized on `.dropdown-content` instead of `.dropdown-button`
