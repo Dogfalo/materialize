@@ -517,10 +517,11 @@ $height: auto;
     height: 55px;
     width: 100%;
     padding: 0 15px;
-    line-height: 55px;
     font-weight: 500;
     font-size: 12px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     box-sizing: border-box;
   }
   .col {
