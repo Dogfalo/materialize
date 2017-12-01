@@ -19,7 +19,7 @@
         var $slider = $this.find('ul.slides').first();
         var $slides = $slider.find('> li');
         var $active_index = $slider.find('.active').index();
-        var $active, $indicators, $interval;
+        var $active, $indicators, $interval, $caption;
         if ($active_index != -1) { $active = $slides.eq($active_index); }
 
         // Transitions the caption depending on alignment
