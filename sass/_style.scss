@@ -190,6 +190,15 @@ ul.side-nav.fixed {
     padding: 0 30px;
   }
 }
+.patreon-footer-ad {
+  a {
+    display: block;
+    max-width: 200px;
+  }
+  img {
+    width: 100%;
+  }
+}
 
 @media #{$medium-and-down} {
   .patreon-ad {
