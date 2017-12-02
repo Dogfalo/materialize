@@ -46,7 +46,7 @@
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.2.1",
     "node-archiver": "^0.3.0",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.7.2",
     "phantomjs-prebuilt": "^2.1.14"
   },
   "files": [
