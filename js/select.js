@@ -155,7 +155,6 @@
      */
     _setupDropdown() {
       this.wrapper = document.createElement('div');
-      this.wrapper.classList.add();
       $(this.wrapper).addClass('select-wrapper' + ' ' + this.options.classes);
       this.$el.before($(this.wrapper));
       this.wrapper.appendChild(this.el);
