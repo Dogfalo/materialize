@@ -36,7 +36,7 @@ textarea.materialize-textarea {
   padding: $input-padding;
   box-shadow: none;
   box-sizing: content-box;
-  transition: $input-transition;
+  transition: box-shadow .3s, border .3s;
 
   // Disabled input style
   &:disabled,
@@ -306,7 +306,6 @@ textarea {
     resize: none;
     min-height: $input-height;
     box-sizing: border-box;
-    transition: none;
   }
 }
 
