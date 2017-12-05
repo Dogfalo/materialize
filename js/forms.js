@@ -211,9 +211,6 @@
     $(document).on('keydown', text_area_selector, function () {
       M.textareaAutoResize($(this));
     });
-    $(document).on('autoresize', text_area_selector, function () {
-      M.textareaAutoResize($(this));
-    });
 
     // File Input Path
     $(document).on('change', '.file-field input[type="file"]', function () {

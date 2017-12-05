@@ -256,7 +256,7 @@
         <p>advanced note: When dynamically changing the value of a textarea with methods like jQuery's <code class="language-markup">.val()</code>, you must trigger an autoresize on it afterwords because .val() does not automatically trigger the events we've binded to the textarea. </p>
         <pre><code class="language-javascript">
   $('#textarea1').val('New Text');
-  $('#textarea1').trigger('autoresize');
+  M.textareaAutoResize($('#textarea1'));
         </code></pre>
         <br>
 
