@@ -152,8 +152,8 @@ module.exports = function(grunt) {
         // the files to concatenate
         src: [
           "js/cash.js",
-          "js/anime.min.js",
           "js/global.js",
+          "js/anime.min.js",
           "js/collapsible.js",
           "js/dropdown.js",
           "js/modal.js",
@@ -191,8 +191,8 @@ module.exports = function(grunt) {
         },
         src: [
           "js/cash.js",
-          "js/anime.min.js",
           "js/global.js",
+          "js/anime.min.js",
           "js/collapsible.js",
           "js/dropdown.js",
           "js/modal.js",
