@@ -84,7 +84,7 @@
       this._handleRangeBlurMouseoutTouchleaveBound = this._handleRangeBlurMouseoutTouchleave.bind(this);
 
 
-      
+
       this.el.addEventListener('change', this._handleRangeChangeBound);
       this.el.addEventListener('focus', this._handleRangeFocusBound);
 
@@ -277,4 +277,4 @@
   }
 
   Range.init($('input[type=range]'));
-}( cash, anime));
+}( cash, M.anime));

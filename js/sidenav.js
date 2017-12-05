@@ -553,4 +553,4 @@
     M.initializeJqueryWrapper(Sidenav, 'sidenav', 'M_Sidenav');
   }
 
-})(cash, anime);
+})(cash, M.anime);

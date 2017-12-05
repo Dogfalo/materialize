@@ -357,4 +357,4 @@
     M.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
   }
 
-}(cash, anime));
+}(cash, M.anime));

@@ -343,4 +343,4 @@
     M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
   }
 
-})(cash, anime);
+})(cash, M.anime);

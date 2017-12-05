@@ -286,4 +286,4 @@
     M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
 
-})(cash, anime);
+})(cash, M.anime);

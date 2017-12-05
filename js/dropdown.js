@@ -486,4 +486,4 @@
     M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
   }
 
-})(cash, anime);
+})(cash, M.anime);

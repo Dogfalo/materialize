@@ -312,4 +312,4 @@
   M.toast = function(options) {
     return new Toast(options);
   };
-})(cash, anime);
+})(cash, M.anime);

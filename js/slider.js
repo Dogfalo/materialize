@@ -364,4 +364,4 @@
     M.initializeJqueryWrapper(Slider, 'slider', 'M_Slider');
   }
 
-}(cash, anime));
+}(cash, M.anime));

@@ -402,4 +402,4 @@
     M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
   }
 
-}(cash, anime));
+}(cash, M.anime));

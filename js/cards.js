@@ -36,4 +36,4 @@
       }
     }
   });
-}( cash, anime));
+}( cash, M.anime));

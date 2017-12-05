@@ -404,4 +404,4 @@
     M.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
   }
 
-})(cash, anime);
+})(cash, M.anime);

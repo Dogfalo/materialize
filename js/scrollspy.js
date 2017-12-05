@@ -293,4 +293,4 @@
     M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
   }
 
-})(cash, anime);
+})(cash, M.anime);

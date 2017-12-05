@@ -264,4 +264,4 @@
     M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
   }
 
-}(cash, anime));
+}(cash, M.anime));
