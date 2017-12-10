@@ -286,7 +286,7 @@
       let body = document.body;
       body.style.overflow = 'hidden';
       this.el.classList.add('open');
-      body.appendChild(this.$overlay[0]);
+      this.el.insertAdjacentElement('afterend', this.$overlay[0]);
 
       // Set opening trigger, undefined indicates modal was opened by javascript
       this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
