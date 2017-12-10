@@ -276,6 +276,7 @@
       this.wrapper.classList.add('open');
 
       document.body.addEventListener('click', this._handleDocumentClickBound, true);
+      document.body.addEventListener('touchend', this._handleDocumentClickBound);
     }
 
     /**
@@ -290,6 +291,7 @@
       this.wrapper.classList.remove('open');
 
       document.body.removeEventListener('click', this._handleDocumentClickBound, true);
+      document.body.removeEventListener('touchend', this._handleDocumentClickBound);
     }
   }
 
