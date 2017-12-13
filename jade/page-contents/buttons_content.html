@@ -20,7 +20,7 @@
         <h3 class="header">Floating</h3>
         <a class="btn-floating waves-effect waves-light btn-large red"><i class="material-icons">add</i></a><br><br>
         <pre><code class="language-markup col s12">
-  &lt;a class="btn-floating btn-large waves-effect waves-light red">&lt;i class="material-icons">add</i>&lt;/i>&lt;/a>
+  &lt;a class="btn-floating btn-large waves-effect waves-light red">&lt;i class="material-icons">add&lt;/i>&lt;/a>
         </code></pre>
         <br>
 
@@ -40,15 +40,123 @@
   &lt;/div>
         </code></pre>
 
-        <p>Javascript plugin initialization</p>
+        <h5>Javascript plugin initialization</h5>
           <pre><code class="language-javascript">
-  $('.fixed-action-btn').floatingActionButton({
-    direction: 'top', // Direction menu comes out
-    hoverEnabled: true, // Hover enabled
-    toolbarEnabled: false // Toolbar transition enabled
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, options);
+
+  //Or with jQuery
+
+  $(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
   });
         </code></pre>
         <br>
+
+        <h5>Options</h5>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>direction</td>
+              <td>String</td>
+              <td>'top'</td>
+              <td>Direction FAB menu opens. Can be 'top', 'right', 'buttom', 'left'</td>
+            </tr>
+            <tr>
+              <td>hoverEnabled</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true: FAB menu appears on hover, false: FAB menu appears on click</td>
+            </tr>
+            <tr>
+              <td>toolbarEnabled</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>Enable transit the FAB into a toolbar on click</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+
+        <h5>Methods</h5>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+  var instance = M.FloatingActionButton.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.fixed-action-btn').floatingActionButton('methodName');
+    $('.fixed-action-btn').floatingActionButton('methodName', paramName);
+  */
+          </code></pre>
+        </blockquote>
+        <h7 class="method-header">
+          .open();
+        </h7>
+        <p>Opens FAB.</p>
+        <pre><code class="language-javascript col s12">
+instance.open();
+        </code></pre>
+        <br>
+
+        <h7 class="method-header">
+          .close();
+        </h7>
+        <p>Closes FAB.</p>
+        <pre><code class="language-javascript col s12">
+instance.close();
+        </code></pre>
+        <br>
+
+        <h7 class="method-header">
+          .destroy();
+        </h7>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+instance.destroy();
+        </code></pre>
+
+        <h5>Properties</h5>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>Describes open/close state of FAB.</td>
+            </tr>
+          </tbody>
+        </table>
+
         <h5>Horizontal FAB</h5>
         <p>Creating a horizontal FAB is easy! Just set the direction parameter.</p>
         <div style="position: relative; height: 70px;">
@@ -65,6 +173,13 @@
           </div>
         </div>
         <pre><code class="language-javascript">
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, {
+    direction: 'left'
+  });
+
+  // Or with jQuery
+
   $('.fixed-action-btn').floatingActionButton({
     direction: 'left'
   });
@@ -99,6 +214,14 @@
           </div>
         </div>
         <pre><code class="language-javascript">
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, {
+    direction: 'left',
+    hoverEnabled: false
+  });
+
+  // Or with jQuery
+
   $('.fixed-action-btn').floatingActionButton({
     direction: 'left',
     hoverEnabled: false
@@ -110,6 +233,13 @@
         <p>Instead of displaying individual button options, you can transition your FAB into a toolbar on click. Just add the <code class="language-markup">toolbar</code> class to the FAB.</p>
         <iframe src="fab-toolbar-demo.html" frameborder="0" width="100%" height="100px"></iframe>
         <pre><code class="language-javascript">
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, {
+    toolbarEnabled: true
+  });
+
+  // Or with jQuery
+
   $('.fixed-action-btn').floatingActionButton({
     toolbarEnabled: true
   });
@@ -130,7 +260,7 @@
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
         <pre><code class="language-markup">
   &lt;button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    &lt;i class="material-icons right">send</i>&lt;/i>
+    &lt;i class="material-icons right">send&lt;/i>
   &lt;/button>
         </code></pre>
       </div>
