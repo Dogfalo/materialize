@@ -146,16 +146,28 @@
               <td>Transition out duration in milliseconds.</td>
             </tr>
             <tr>
-              <td>ready</td>
+              <td>onOpenStart</td>
               <td>Function</td>
               <td>null</td>
-              <td>Callback function called when modal is finished entering.</td>
+              <td>Callback function called before modal is opened.</td>
             </tr>
             <tr>
-              <td>complete</td>
+              <td>onOpenEnd</td>
               <td>Function</td>
               <td>null</td>
-              <td>Callback function called when modal is finished exiting.</td>
+              <td>Callback function called after modal is opened.</td>
+            </tr>
+            <tr>
+              <td>onCloseStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called before modal is closed.</td>
+            </tr>
+            <tr>
+              <td>onCloseEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called after modal is closed.</td>
             </tr>
             <tr>
               <td>dismissible</td>
