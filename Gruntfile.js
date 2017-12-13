@@ -408,7 +408,8 @@ module.exports = function(grunt) {
           "select.html": "jade/select.jade",
           "switches.html": "jade/switches.jade",
           "text-inputs.html": "jade/text-inputs.jade",
-          "support-us.html": "jade/support-us.jade"
+          "support-us.html": "jade/support-us.jade",
+          "fixed-action-button.html": "jade/fixed-action-button.jade"
         }
       }
     },

@@ -1,0 +1,249 @@
+<div class="container bsa">
+  <div class="row">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="introduction" class="section scrollspy">
+        <p class="caption">
+          If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in the bottom
+          righthand corner of the page.
+        </p>
+
+      </div>
+
+      <pre><code class="language-markup">
+&lt;div class="fixed-action-btn">
+  &lt;a class="btn-floating btn-large red">
+    &lt;i class="large material-icons">mode_edit&lt;/i>
+  &lt;/a>
+  &lt;ul>
+    &lt;li>&lt;a class="btn-floating red">&lt;i class="material-icons">insert_chart&lt;/i>&lt;/a>&lt;/li>
+    &lt;li>&lt;a class="btn-floating yellow darken-1">&lt;i class="material-icons">format_quote&lt;/i>&lt;/a>&lt;/li>
+    &lt;li>&lt;a class="btn-floating green">&lt;i class="material-icons">publish&lt;/i>&lt;/a>&lt;/li>
+    &lt;li>&lt;a class="btn-floating blue">&lt;i class="material-icons">attach_file&lt;/i>&lt;/a>&lt;/li>
+  &lt;/ul>
+&lt;/div>
+      </code></pre>
+
+
+      <div id="initialization" class="scrollspy section">
+        <h3 class="header">Initialization</h5>
+        <pre><code class="language-javascript">
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+  });
+        </code></pre>
+        <br>
+      </div>
+
+
+
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>direction</td>
+              <td>String</td>
+              <td>'top'</td>
+              <td>Direction FAB menu opens. Can be 'top', 'right', 'buttom', 'left'</td>
+            </tr>
+            <tr>
+              <td>hoverEnabled</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>If true, FAB menu will open on hover instead of click</td>
+            </tr>
+            <tr>
+              <td>toolbarEnabled</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>Enable transit the FAB into a toolbar on click</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
+
+
+
+      <div id="methods" class="scrollspy section">
+        <h5>Methods</h5>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+  var instance = M.FloatingActionButton.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.fixed-action-btn').floatingActionButton('methodName');
+    $('.fixed-action-btn').floatingActionButton('methodName', paramName);
+  */
+          </code></pre>
+        </blockquote>
+        <h5 class="method-header">
+          .open();
+        </h5>
+        <p>Opens FAB.</p>
+        <pre><code class="language-javascript col s12">
+instance.open();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+          .close();
+        </h5>
+        <p>Closes FAB.</p>
+        <pre><code class="language-javascript col s12">
+instance.close();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+instance.destroy();
+        </code></pre>
+      </div>
+
+
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>Describes open/close state of the FAB.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <div id="horizontal" class="scrollspy section">
+        <h3 class="header">Horizontal FAB</h3>
+        <p>Creating a horizontal FAB is easy! Just set the direction option.</p>
+        <div style="position: relative; height: 70px;">
+          <div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 24px;">
+            <a class="btn-floating btn-large red">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            </ul>
+          </div>
+        </div>
+        <pre><code class="language-javascript">
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, {
+    direction: 'left'
+  });
+        </code></pre>
+
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+          <a class="btn-floating btn-large red">
+            <i class="material-icons">mode_edit</i>
+          </a>
+          <ul>
+            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div id="click-only">
+        <h3 class="header">Click-only FAB</h3>
+        <p>If you want to disable the hover behaviour, and instead toggle the FAB menu when the user clicks on the large button (works great on mobile!), just add the <code class="language-markup">click-to-toggle</code> class to the FAB.</p>
+        <div style="position: relative; height: 70px;">
+          <div class="fixed-action-btn click-to-toggle" style="position: absolute; right: 24px;">
+            <a class="btn-floating btn-large red">
+              <i class="material-icons">menu</i>
+            </a>
+            <ul>
+              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            </ul>
+          </div>
+        </div>
+        <pre><code class="language-javascript">
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, {
+    direction: 'left',
+    hoverEnabled: false
+  });
+        </code></pre>
+      </div>
+
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#initialization">Intialization</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#fixed-footer">Fixed Footer</a></li>
+            <li><a href="#click-only">Click Only FAB</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
