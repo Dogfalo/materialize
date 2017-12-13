@@ -267,9 +267,10 @@ instance.destroy();
   &lt;ul class="collapsible expandable">
             </code></pre>
             <pre><code class="language-javascript">
-  $('.collapsible.expandable').collapsible({
-    accordion: false
-  });
+var elem = document.querySelector('.collapsible.expandable');
+var instance = new M.Collapsible(elem, {
+  accordion: false
+});
             </code></pre>
           </div>
         </div>
