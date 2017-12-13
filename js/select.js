@@ -122,6 +122,14 @@
         let selected = true;
 
         if (this.isMultiple) {
+          // Deselect placeholder option if still selected.
+          let placeholderOption = $(this.dropdownOptions).find('li.disabled.selected');
+          if (placeholderOption.length) {
+            placeholderOption.removeClass('selected');
+            placeholderOption.find('input[type="checkbox"]').prop('checked', false);
+            this._toggleEntryFromArray(placeholderOption[0].id);
+          }
+
           let checkbox = $(option).find('input[type="checkbox"]');
           checkbox.prop('checked', !checkbox.prop('checked'));
           selected = this._toggleEntryFromArray(key);
