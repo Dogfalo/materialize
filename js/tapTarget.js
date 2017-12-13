@@ -2,6 +2,8 @@
   'use strict';
 
   let _defaults = {
+    onOpen: undefined,
+    onClose: undefined,
   };
 
 
@@ -30,6 +32,8 @@
       /**
        * Options for the select
        * @member FeatureDiscovery#options
+       * @prop {Function} onOpen - Callback function called when feature discovery is opened
+       * @prop {Function} onClose - Callback function called when feature discovery is closed
        */
       this.options = $.extend({}, FeatureDiscovery.defaults, options);
 
@@ -272,6 +276,11 @@
         return;
       }
 
+      // onOpen callback
+      if (typeof(this.options.onOpen) === 'function') {
+        this.options.onOpen.call(this, this.$origin[0]);
+      }
+
       this.isOpen = true;
       this.wrapper.classList.add('open');
 
@@ -285,6 +294,11 @@
     close() {
       if (!this.isOpen) {
         return;
+      }
+
+      // onClose callback
+      if (typeof(this.options.onClose) === 'function') {
+        this.options.onClose.call(this, this.$origin[0]);
       }
 
       this.isOpen = false;
