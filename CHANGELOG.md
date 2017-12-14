@@ -3,11 +3,19 @@ Changelog
 Bolded styling surrounded by emojis indicates a breaking change.
 
 ## 1.0.0-alpha.3 (TBD)
+- Feature Discovery
+  - Added open and close callbacks
+
 - Materialbox
   - Added open and close callbacks
 
-- Feature Discovery
-  - Added open and close callbacks
+- Modal
+  - Added open and close callbacks for consistency
+  - Removed ready and complete callbacks
+
+- Pushpin
+  - added onPositionChange callback
+
 
 ## 1.0.0-alpha.2 (November 30th)
 - Chips
