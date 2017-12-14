@@ -6,6 +6,7 @@
     limit: Infinity, // Limit of results the autocomplete shows
     onAutocomplete: null, // Callback for when autocompleted
     minLength: 1, // Min characters before autocomplete starts
+    autofocusFirstSuggestion: false, // If true the first suggestion is immediately focused
     sortFunction: function(a, b, inputString) { // Sort function for sorting autocomplete results
       return a.indexOf(inputString) - b.indexOf(inputString);
     }
@@ -330,6 +331,13 @@
 
         $(this.container).append($autocompleteOption);
         this._highlight(val, $autocompleteOption);
+      }
+
+      // Give focus to the first suggestion if required
+      if (this.options.autofocusFirstSuggestion && this.count > 0) {
+        this.activeIndex = 0;
+        this.$active = $(this.container).children('li').eq(this.activeIndex);
+        this.$active.addClass('active');
       }
     }
 
