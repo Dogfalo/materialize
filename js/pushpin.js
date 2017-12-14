@@ -4,7 +4,8 @@
   let _defaults = {
     top: 0,
     bottom: Infinity,
-    offset: 0
+    offset: 0,
+    onPositionChange: null
   };
 
 
@@ -99,6 +100,11 @@
 
         this.el.style.top = `${this.options.offset}px`;
         this.el.classList.add('pinned');
+
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pinned');
+        }
       }
 
       // Add pin-top (when scrolled position is above top)
@@ -106,6 +112,11 @@
         this._removePinClasses();
         this.el.style.top = 0;
         this.el.classList.add('pin-top');
+
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pin-top');
+        }
       }
 
       // Add pin-bottom (when scrolled position is below bottom)
@@ -113,6 +124,11 @@
         this._removePinClasses();
         this.el.classList.add('pin-bottom');
         this.el.style.top = `${this.options.bottom - this.originalOffset}px`;
+
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pin-bottom');
+        }
       }
     }
 
