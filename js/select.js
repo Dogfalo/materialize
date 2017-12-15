@@ -220,7 +220,7 @@
         if (this.isMultiple) {
           dropdownOptions.closeOnClick = false;
         }
-        this.dropdown = new M.Dropdown(this.input, dropdownOptions);
+        this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
       }
 
       // Add initial selections

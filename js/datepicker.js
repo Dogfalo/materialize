@@ -205,7 +205,7 @@
 
     _setupModal() {
       this.modalEl.id = 'modal-' + this.id;
-      this.modal = new M.Modal(this.modalEl, {
+      this.modal = M.Modal.init(this.modalEl, {
         complete: () => {
           this.isOpen = false;
         }
@@ -606,8 +606,8 @@
       // Init Materialize Select
       let yearSelect = this.calendarEl.querySelector('.pika-select-year');
       let monthSelect = this.calendarEl.querySelector('.pika-select-month');
-      new M.Select(yearSelect, {classes: 'select-year'});
-      new M.Select(monthSelect, {classes: 'select-month'});
+      M.Select.init(yearSelect, {classes: 'select-year'});
+      M.Select.init(monthSelect, {classes: 'select-month'});
 
       // Add change handlers for select
       yearSelect.addEventListener('change', this._handleYearChange.bind(this));

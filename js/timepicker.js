@@ -208,7 +208,7 @@
     }
 
     _setupModal() {
-      this.modal = new M.Modal(this.modalEl, {
+      this.modal = M.Modal.init(this.modalEl, {
         complete: () => {
           this.isOpen = false;
         }

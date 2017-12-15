@@ -31,7 +31,7 @@
       <h3 class="header">Initialization</h3>
       <pre><code class="language-javascript">
   var elem = document.querySelector('.carousel');
-  var instance = new M.Carousel(elem, options);
+  var instance = M.Carousel.init(elem, options);
 
   // Or with jQuery
 
@@ -229,7 +229,7 @@ instance.destroy();
         </code></pre>
 
         <pre><code class="language-javascript">
-  var instance = new M.Carousel({
+  var instance = M.Carousel.init({
     fullWidth: true
   });
 
@@ -293,7 +293,7 @@ instance.destroy();
   &lt;/div>
         </code></pre>
         <pre><code class="language-javascript">
-  var instance = new M.Carousel({
+  var instance = M.Carousel.init({
     fullWidth: true,
     indicators: true
   });
