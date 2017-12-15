@@ -13,7 +13,7 @@
    * @class
    *
    */
-  class FloatingActionButton {
+  class FloatingActionButton extends Component {
     /**
      * Construct FloatingActionButton instance
      * @constructor
@@ -21,11 +21,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_FloatingActionButton) {
-        el.M_FloatingActionButton.destroy();
-      }
+      super(FloatingActionButton, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -67,12 +63,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new FloatingActionButton(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**

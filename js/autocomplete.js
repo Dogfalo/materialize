@@ -6,7 +6,7 @@
     limit: Infinity, // Limit of results the autocomplete shows
     onAutocomplete: null, // Callback for when autocompleted
     minLength: 1, // Min characters before autocomplete starts
-    sortFunction: function(a, b, inputString) { // Sort function for sorting autocomplete results
+    sortFunction: function (a, b, inputString) { // Sort function for sorting autocomplete results
       return a.indexOf(inputString) - b.indexOf(inputString);
     }
   };
@@ -16,7 +16,7 @@
    * @class
    *
    */
-  class Autocomplete {
+  class Autocomplete extends Component {
     /**
      * Construct Autocomplete instance
      * @constructor
@@ -24,11 +24,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Autocomplete) {
-        el.M_Autocomplete.destroy();
-      }
+      super(Autocomplete, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -64,12 +60,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Autocomplete(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -161,8 +153,8 @@
 
       // Don't capture enter or arrow key usage.
       if (e.keyCode === 13 ||
-          e.keyCode === 38 ||
-          e.keyCode === 40) {
+        e.keyCode === 38 ||
+        e.keyCode === 40) {
         return;
       }
 
@@ -189,8 +181,8 @@
 
       // Arrow keys and enter key usage
       let keyCode = e.keyCode,
-          liElement,
-          numItems = $(this.container).children('li').length;
+        liElement,
+        numItems = $(this.container).children('li').length;
 
       // select element on Enter
       if (keyCode === 13 && this.activeIndex >= 0) {
@@ -203,16 +195,16 @@
       }
 
       // Capture up and down key
-      if ( keyCode === 38 || keyCode === 40 ) {
+      if (keyCode === 38 || keyCode === 40) {
         e.preventDefault();
 
         if (keyCode === 38 &&
-            this.activeIndex > 0) {
+          this.activeIndex > 0) {
           this.activeIndex--;
         }
 
         if (keyCode === 40 &&
-            this.activeIndex < (numItems - 1)) {
+          this.activeIndex < (numItems - 1)) {
           this.activeIndex++;
         }
 
@@ -239,10 +231,10 @@
     _highlight(string, $el) {
       let img = $el.find('img');
       let matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
-          matchEnd = matchStart + string.length - 1,
-          beforeMatch = $el.text().slice(0, matchStart),
-          matchText = $el.text().slice(matchStart, matchEnd + 1),
-          afterMatch = $el.text().slice(matchEnd + 1);
+        matchEnd = matchStart + string.length - 1,
+        beforeMatch = $el.text().slice(0, matchStart),
+        matchText = $el.text().slice(matchStart, matchEnd + 1),
+        afterMatch = $el.text().slice(matchEnd + 1);
       $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
       if (img.length) {
         $el.prepend(img);
@@ -278,7 +270,7 @@
       this._removeAutocomplete();
 
       // Handle onAutocomplete callback.
-      if (typeof(this.options.onAutocomplete) === 'function') {
+      if (typeof (this.options.onAutocomplete) === 'function') {
         this.options.onAutocomplete.call(this, text);
       }
     }
@@ -296,7 +288,7 @@
       // Gather all matching data
       for (let key in data) {
         if (data.hasOwnProperty(key) &&
-            key.toLowerCase().indexOf(val) !== -1) {
+          key.toLowerCase().indexOf(val) !== -1) {
           // Break if past limit
           if (this.count >= this.options.limit) {
             break;
@@ -313,7 +305,7 @@
       }
 
       // Sort
-      let sortFunctionBound = (a,b) => {
+      let sortFunctionBound = (a, b) => {
         return this.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
       };
       matchingData.sort(sortFunctionBound);
@@ -323,9 +315,9 @@
         let entry = matchingData[i];
         let $autocompleteOption = $('<li></li>');
         if (!!entry.data) {
-          $autocompleteOption.append('<img src="'+ entry.data +'" class="right circle"><span>'+ entry.key +'</span>');
+          $autocompleteOption.append('<img src="' + entry.data + '" class="right circle"><span>' + entry.key + '</span>');
         } else {
-          $autocompleteOption.append('<span>'+ entry.key +'</span>');
+          $autocompleteOption.append('<span>' + entry.key + '</span>');
         }
 
         $(this.container).append($autocompleteOption);
@@ -359,4 +351,4 @@
     M.initializeJqueryWrapper(Autocomplete, 'autocomplete', 'M_Autocomplete');
   }
 
-}( cash ));
+}(cash));

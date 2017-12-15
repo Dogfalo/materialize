@@ -11,7 +11,7 @@
    * @class
    *
    */
-  class FeatureDiscovery {
+  class FeatureDiscovery extends Component {
     /**
      * Construct FeatureDiscovery instance
      * @constructor
@@ -19,11 +19,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_FeatureDiscovery) {
-        el.M_FeatureDiscovery.destroy();
-      }
+      super(FeatureDiscovery, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -51,12 +47,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new FeatureDiscovery(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -213,30 +205,30 @@
       let isRight = originLeft > centerX;
       let isTop = originTop <= centerY;
       let isBottom = originTop > centerY;
-      let isCenterX = originLeft >= windowWidth*0.25 && originLeft <= windowWidth*0.75;
+      let isCenterX = originLeft >= windowWidth * 0.25 && originLeft <= windowWidth * 0.75;
 
       // Calculating tap target
       let tapTargetWidth = this.$el.outerWidth();
       let tapTargetHeight = this.$el.outerHeight();
-      let tapTargetTop = originTop + originHeight/2 - tapTargetHeight/2;
-      let tapTargetLeft = originLeft + originWidth/2 - tapTargetWidth/2;
+      let tapTargetTop = originTop + originHeight / 2 - tapTargetHeight / 2;
+      let tapTargetLeft = originLeft + originWidth / 2 - tapTargetWidth / 2;
       let tapTargetPosition = isFixed ? 'fixed' : 'absolute';
 
       // Calculating content
-      let tapTargetTextWidth = isCenterX ? tapTargetWidth : tapTargetWidth/2 + originWidth;
-      let tapTargetTextHeight = tapTargetHeight/2;
-      let tapTargetTextTop = isTop ? tapTargetHeight/2 : 0;
+      let tapTargetTextWidth = isCenterX ? tapTargetWidth : tapTargetWidth / 2 + originWidth;
+      let tapTargetTextHeight = tapTargetHeight / 2;
+      let tapTargetTextTop = isTop ? tapTargetHeight / 2 : 0;
       let tapTargetTextBottom = 0;
-      let tapTargetTextLeft = isLeft && !isCenterX ? tapTargetWidth/2 - originWidth : 0;
+      let tapTargetTextLeft = isLeft && !isCenterX ? tapTargetWidth / 2 - originWidth : 0;
       let tapTargetTextRight = 0;
       let tapTargetTextPadding = originWidth;
       let tapTargetTextAlign = isBottom ? 'bottom' : 'top';
 
       // Calculating wave
-      let tapTargetWaveWidth = originWidth > originHeight ? originWidth*2 : originWidth*2;
+      let tapTargetWaveWidth = originWidth > originHeight ? originWidth * 2 : originWidth * 2;
       let tapTargetWaveHeight = tapTargetWaveWidth;
-      let tapTargetWaveTop = tapTargetHeight/2 - tapTargetWaveHeight/2;
-      let tapTargetWaveLeft = tapTargetWidth/2 - tapTargetWaveWidth/2;
+      let tapTargetWaveTop = tapTargetHeight / 2 - tapTargetWaveHeight / 2;
+      let tapTargetWaveLeft = tapTargetWidth / 2 - tapTargetWaveWidth / 2;
 
       // Setting tap target
       let tapTargetWrapperCssObj = {};
@@ -277,7 +269,7 @@
       }
 
       // onOpen callback
-      if (typeof(this.options.onOpen) === 'function') {
+      if (typeof (this.options.onOpen) === 'function') {
         this.options.onOpen.call(this, this.$origin[0]);
       }
 
@@ -297,7 +289,7 @@
       }
 
       // onClose callback
-      if (typeof(this.options.onClose) === 'function') {
+      if (typeof (this.options.onClose) === 'function') {
         this.options.onClose.call(this, this.$origin[0]);
       }
 
@@ -315,4 +307,4 @@
     M.initializeJqueryWrapper(FeatureDiscovery, 'featureDiscovery', 'M_FeatureDiscovery');
   }
 
-}( cash ));
+}(cash));

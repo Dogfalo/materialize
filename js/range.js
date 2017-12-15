@@ -1,15 +1,14 @@
 (function ($, anim) {
   'use strict';
 
-  let _defaults = {
-  };
+  let _defaults = {};
 
 
   /**
    * @class
    *
    */
-  class Range {
+  class Range extends Component {
     /**
      * Construct Range instance
      * @constructor
@@ -17,11 +16,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Range) {
-        el.M_Range.destroy();
-      }
+      super(Range, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -45,14 +40,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        if (!$(this).hasClass('browser-default')) {
-          arr.push(new Range(this, options));
-        }
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -277,4 +266,4 @@
   }
 
   Range.init($('input[type=range]'));
-}( cash, M.anime));
+}(cash, M.anime));

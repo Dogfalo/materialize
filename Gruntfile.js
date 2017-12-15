@@ -107,7 +107,8 @@ module.exports = function(grunt) {
           'transform-es2015-arrow-functions',
           'transform-es2015-block-scoping',
           'transform-es2015-classes',
-          'transform-es2015-template-literals'
+          'transform-es2015-template-literals',
+          'transform-es2015-object-super'
         ]
 		  },
 		  bin: {
@@ -152,6 +153,7 @@ module.exports = function(grunt) {
         // the files to concatenate
         src: [
           "js/cash.js",
+          "js/component.js",
           "js/global.js",
           "js/anime.min.js",
           "js/collapsible.js",
@@ -191,6 +193,7 @@ module.exports = function(grunt) {
         },
         src: [
           "js/cash.js",
+          "js/component.js",
           "js/global.js",
           "js/anime.min.js",
           "js/collapsible.js",
@@ -274,6 +277,8 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
             "anime.min.js",
+            "cash.js",
+            "component.js",
             "global.js",
             "collapsible.js",
             "dropdown.js",

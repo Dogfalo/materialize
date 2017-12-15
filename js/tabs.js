@@ -12,7 +12,7 @@
    * @class
    *
    */
-  class Tabs {
+  class Tabs extends Component {
     /**
      * Construct Tabs instance
      * @constructor
@@ -20,10 +20,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-      // If exists, destroy and reinitialize
-      if (!!el.M_Tabs) {
-        el.M_Tabs.destroy();
-      }
+      super(Tabs, el, options);
 
       /**
        * The jQuery element
@@ -67,12 +64,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Tabs(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -265,7 +258,7 @@
       $tabsWrapper.append($tabsContent);
       $tabsContent[0].style.display = '';
 
-      this._tabsCarousel = new M.Carousel($tabsWrapper[0], {
+      this._tabsCarousel = M.Carousel.init($tabsWrapper[0], {
         fullWidth: true,
         noWrap: true,
         onCycleTo: (item) => {

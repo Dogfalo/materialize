@@ -10,7 +10,7 @@
    * @class
    *
    */
-  class Select {
+  class Select extends Component {
     /**
      * Construct Select instance
      * @constructor
@@ -18,11 +18,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Select) {
-        el.M_Select.destroy();
-      }
+      super(Select, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -48,14 +44,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        if (!$(this).hasClass('browser-default')) {
-          arr.push(new Select(this, options));
-        }
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -230,7 +220,7 @@
         if (this.isMultiple) {
           dropdownOptions.closeOnClick = false;
         }
-        this.dropdown = new M.Dropdown(this.input, dropdownOptions);
+        this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
       }
 
       // Add initial selections
@@ -394,4 +384,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Select, 'select', 'M_Select');
   }
-}( cash ));
+}(cash));

@@ -23,12 +23,9 @@
    * @class
    *
    */
-  class Timepicker {
+  class Timepicker extends Component {
     constructor(el, options) {
-      // If exists, destroy and reinitialize
-      if (!!el.M_Timepicker) {
-        el.M_Timepicker.destroy();
-      }
+      super(Timepicker, el, option);
 
       this.el = el;
       this.$el = $(el);
@@ -50,12 +47,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Timepicker(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     static _addLeadingZero(num) {
@@ -215,7 +208,7 @@
     }
 
     _setupModal() {
-      this.modal = new M.Modal(this.modalEl, {
+      this.modal = M.Modal.init(this.modalEl, {
         complete: () => {
           this.isOpen = false;
         }

@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   'use strict';
 
   let _defaults = {
@@ -13,7 +13,7 @@
    * @class
    *
    */
-  class Pushpin {
+  class Pushpin extends Component {
     /**
      * Construct Pushpin instance
      * @constructor
@@ -21,11 +21,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Pushpin) {
-        el.M_Pushpin.destroy();
-      }
+      super(Pushpin, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -47,12 +43,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Pushpin(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -95,7 +87,7 @@
       let scrolled = M.getDocumentScrollTop() + this.options.offset;
 
       if (this.options.top <= scrolled && this.options.bottom >= scrolled &&
-          !this.el.classList.contains('pinned')) {
+        !this.el.classList.contains('pinned')) {
         this._removePinClasses();
 
         this.el.style.top = `${this.options.offset}px`;

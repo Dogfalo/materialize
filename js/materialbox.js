@@ -14,7 +14,7 @@
    * @class
    *
    */
-  class Materialbox {
+  class Materialbox extends Component {
     /**
      * Construct Materialbox instance
      * @constructor
@@ -23,10 +23,7 @@
      */
     constructor(el, options) {
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Materialbox) {
-        el.M_Materialbox.destroy();
-      }
+      super(Materialbox, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -63,12 +60,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Materialbox(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**

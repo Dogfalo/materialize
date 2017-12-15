@@ -29,7 +29,7 @@
         <h3 class="header">Initialization</h5>
         <pre><code class="language-javascript">
   var elem = document.querySelector('.fixed-action-btn');
-  var instance = new M.FloatingActionButton(elem, options);
+  var instance = M.FloatingActionButton.init(elem, options);
 
   // Or with jQuery
 
@@ -176,7 +176,7 @@ instance.destroy();
         </div>
         <pre><code class="language-javascript">
   var elem = document.querySelector('.fixed-action-btn');
-  var instance = new M.FloatingActionButton(elem, {
+  var instance = M.FloatingActionButton.init(elem, {
     direction: 'left'
   });
         </code></pre>
@@ -214,7 +214,7 @@ instance.destroy();
         </div>
         <pre><code class="language-javascript">
   var elem = document.querySelector('.fixed-action-btn');
-  var instance = new M.FloatingActionButton(elem, {
+  var instance = M.FloatingActionButton.init(elem, {
     direction: 'left',
     hoverEnabled: false
   });

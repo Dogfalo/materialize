@@ -45,7 +45,7 @@
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
   var elem = document.querySelector('.collapsible');
-  var instance = new M.Collapsible(elem, options);
+  var instance = M.Collapsible.init(elem, options);
 
   // Or with jQuery
 
@@ -268,7 +268,7 @@ instance.destroy();
             </code></pre>
             <pre><code class="language-javascript">
 var elem = document.querySelector('.collapsible.expandable');
-var instance = new M.Collapsible(elem, {
+var instance = M.Collapsible.init(elem, {
   accordion: false
 });
             </code></pre>
