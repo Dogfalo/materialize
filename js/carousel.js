@@ -17,7 +17,7 @@
    * @class
    *
    */
-  class Carousel {
+  class Carousel extends Component {
     /**
      * Construct Carousel instance
      * @constructor
@@ -25,12 +25,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Carousel) {
-        el.M_Carousel.destroy();
-      }
-
+      super(Carousel, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -114,12 +109,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Carousel(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -512,8 +503,11 @@
           ' translateX(' + (dir * this.options.shift * tween * i) + 'px)' +
           ' translateZ(' + (this.options.dist * tween) + 'px)';
         el.style.zIndex = 0;
-        if (this.options.fullWidth) { tweenedOpacity = 1; }
-        else { tweenedOpacity = 1 - 0.2 * tween; }
+        if (this.options.fullWidth) {
+          tweenedOpacity = 1;
+        } else {
+          tweenedOpacity = 1 - 0.2 * tween;
+        }
         el.style.opacity = tweenedOpacity;
         el.style.visibility = 'visible';
       }
@@ -568,8 +562,11 @@
           ' translateX(' + (dir * this.options.shift * tween) + 'px)' +
           ' translateZ(' + (this.options.dist * tween) + 'px)';
         el.style.zIndex = 0;
-        if (this.options.fullWidth) { tweenedOpacity = 1; }
-        else { tweenedOpacity = 1 - 0.2 * tween; }
+        if (this.options.fullWidth) {
+          tweenedOpacity = 1;
+        } else {
+          tweenedOpacity = 1 - 0.2 * tween;
+        }
         el.style.opacity = tweenedOpacity;
         el.style.visibility = 'visible';
       }
@@ -577,12 +574,12 @@
       // onCycleTo callback
       let $currItem = this.$el.find('.carousel-item').eq(this._wrap(this.center));
       if (lastCenter !== this.center &&
-          typeof(this.options.onCycleTo) === "function") {
+        typeof (this.options.onCycleTo) === "function") {
         this.options.onCycleTo.call(this, $currItem[0], this.dragged);
       }
 
       // One time callback
-      if (typeof(this.oneTimeCallback) === "function") {
+      if (typeof (this.oneTimeCallback) === "function") {
         this.oneTimeCallback.call(this, $currItem[0], this.dragged);
         this.oneTimeCallback = null;
       }
@@ -599,10 +596,14 @@
       // Account for wraparound.
       if (!this.noWrap) {
         if (diff < 0) {
-          if (Math.abs(diff + this.count) < Math.abs(diff)) { diff += this.count; }
+          if (Math.abs(diff + this.count) < Math.abs(diff)) {
+            diff += this.count;
+          }
 
         } else if (diff > 0) {
-          if (Math.abs(diff - this.count) < diff) { diff -= this.count; }
+          if (Math.abs(diff - this.count) < diff) {
+            diff -= this.count;
+          }
         }
       }
 
@@ -611,13 +612,13 @@
       if (diff < 0) {
         this.target += (this.dim * Math.abs(diff));
 
-      // Prev
+        // Prev
       } else if (diff > 0) {
         this.target -= (this.dim * diff);
       }
 
       // Set one time callback
-      if (typeof(callback) === "function") {
+      if (typeof (callback) === "function") {
         this.oneTimeCallback = callback;
       }
 
@@ -699,4 +700,4 @@
     M.initializeJqueryWrapper(Carousel, 'carousel', 'M_Carousel');
   }
 
-}( cash ));
+}(cash));

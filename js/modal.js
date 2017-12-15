@@ -17,7 +17,7 @@
    * @class
    *
    */
-  class Modal {
+  class Modal extends Component {
     /**
      * Construct Modal instance and set up overlay
      * @constructor
@@ -25,11 +25,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Modal) {
-        el.M_Modal.destroy();
-      }
+      super(Modal, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -70,12 +66,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Modal(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**

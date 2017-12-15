@@ -19,13 +19,9 @@
   /**
    * @class
    */
-  class Dropdown {
+  class Dropdown extends Component {
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Dropdown) {
-        el.M_Dropdown.destroy();
-      }
+      super(Dropdown, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -71,12 +67,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Dropdown(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**

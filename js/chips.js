@@ -23,7 +23,7 @@
    * @class
    *
    */
-  class Chips {
+  class Chips extends Component {
     /**
      * Construct Chips instance and set up overlay
      * @constructor
@@ -31,11 +31,7 @@
      * @param {Object} options
      */
     constructor(el, options) {
-
-      // If exists, destroy and reinitialize
-      if (!!el.M_Chips) {
-        el.M_Chips.destroy();
-      }
+      super(Chips, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -82,12 +78,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Chips(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -164,7 +156,7 @@
           this.selectChip(index);
         }
 
-      // Default handle click to focus on input
+        // Default handle click to focus on input
       } else {
         this.$input[0].focus();
       }
@@ -203,7 +195,7 @@
           currChips.selectChip(selectIndex);
         }
 
-      // left arrow key
+        // left arrow key
       } else if (e.keyCode === 37) {
         if (currChips._selectedChip) {
           let selectIndex = currChips._selectedChip.index() - 1;
@@ -213,7 +205,7 @@
           currChips.selectChip(selectIndex);
         }
 
-      // right arrow key
+        // right arrow key
       } else if (e.keyCode === 39) {
         if (currChips._selectedChip) {
           let selectIndex = currChips._selectedChip.index() + 1;
@@ -273,16 +265,18 @@
       if (e.keyCode === 13) {
         // Override enter if autocompleting.
         if (this.hasAutocomplete &&
-            this.autocomplete &&
-            this.autocomplete.isOpen) {
+          this.autocomplete &&
+          this.autocomplete.isOpen) {
           return;
         }
 
         e.preventDefault();
-        this.addChip({tag: this.$input[0].value});
+        this.addChip({
+          tag: this.$input[0].value
+        });
         this.$input[0].value = '';
 
-      // delete or left
+        // delete or left
       } else if ((e.keyCode === 8 || e.keyCode === 37) && this.$input[0].value === '' && this.chipsData.length) {
         e.preventDefault();
         this.selectChip(this.chipsData.length - 1);
@@ -338,7 +332,9 @@
      */
     _setupAutocomplete() {
       this.options.autocompleteOptions.onAutocomplete = (val) => {
-        this.addChip({tag: val});
+        this.addChip({
+          tag: val
+        });
         this.$input[0].value = '';
         this.$input[0].focus();
       };
@@ -407,7 +403,7 @@
      */
     addChip(chip) {
       if (!this._isValid(chip) ||
-          this.chipsData.length >= this.options.limit) {
+        this.chipsData.length >= this.options.limit) {
         return;
       }
 
@@ -418,7 +414,7 @@
       this._setPlaceholder();
 
       // fire chipAdd callback
-      if (typeof(this.options.onChipAdd) === 'function') {
+      if (typeof (this.options.onChipAdd) === 'function') {
         this.options.onChipAdd.call(this, this.$el, renderedChip);
       }
     }
@@ -430,14 +426,14 @@
     deleteChip(chipIndex) {
       let $chip = this.$chips.eq(chipIndex);
       this.$chips.eq(chipIndex).remove();
-      this.$chips = this.$chips.filter(function(el) {
+      this.$chips = this.$chips.filter(function (el) {
         return $(el).index() >= 0;
       });
       this.chipsData.splice(chipIndex, 1);
       this._setPlaceholder();
 
       // fire chipDelete callback
-      if (typeof(this.options.onChipDelete) === 'function') {
+      if (typeof (this.options.onChipDelete) === 'function') {
         this.options.onChipDelete.call(this, this.$el, $chip[0]);
       }
     }
@@ -452,7 +448,7 @@
       $chip[0].focus();
 
       // fire chipSelect callback
-      if (typeof(this.options.onChipSelect) === 'function') {
+      if (typeof (this.options.onChipSelect) === 'function') {
         this.options.onChipSelect.call(this, this.$el, $chip[0]);
       }
     }
@@ -470,9 +466,9 @@
     M.initializeJqueryWrapper(Chips, 'chips', 'M_Chips');
   }
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     // Handle removal of static chips.
-    $(document.body).on('click', '.chip .close', function() {
+    $(document.body).on('click', '.chip .close', function () {
       let $chips = $(this).closest('.chips');
       if ($chips.length && $chips[0].M_Chips) {
         return;
@@ -480,4 +476,4 @@
       $(this).closest('.chip').remove();
     });
   });
-}( cash ));
+}(cash));

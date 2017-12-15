@@ -16,7 +16,7 @@
   /**
    * @class
    */
-  class Sidenav {
+  class Sidenav extends Component {
     /**
      * Construct Sidenav instance and set up overlay
      * @constructor
@@ -24,10 +24,7 @@
      * @param {Object} options
      */
     constructor (el, options) {
-      // If exists, destroy and reinitialize
-      if (!!el.M_Sidenav) {
-        el.M_Sidenav.destroy();
-      }
+      super(Sidenav, el, options);
 
       this.el = el;
       this.$el = $(el);
@@ -79,12 +76,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Sidenav(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
