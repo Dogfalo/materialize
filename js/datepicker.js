@@ -206,7 +206,7 @@
     _setupModal() {
       this.modalEl.id = 'modal-' + this.id;
       this.modal = M.Modal.init(this.modalEl, {
-        complete: () => {
+        onCloseEnd: () => {
           this.isOpen = false;
         }
       });
