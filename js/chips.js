@@ -392,9 +392,9 @@
         }
         return !exists;
 
-      } else {
-        return false;
       }
+
+      return false;
     }
 
     /**

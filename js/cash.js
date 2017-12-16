@@ -678,11 +678,11 @@
     val: function (value) {
       if (value === undefined) {
         return getValue(this[0]);
-      } else {
-        return this.each(function (v) {
-          return v.value = value;
-        });
       }
+
+      return this.each(function (v) {
+        return v.value = value;
+      });
     }
 
   });

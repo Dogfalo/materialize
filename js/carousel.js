@@ -644,9 +644,9 @@
       if (index > this.count || index < 0) {
         if (this.noWrap) {
           return;
-        } else {
-          index = this._wrap(index);
         }
+
+        index = this._wrap(index);
       }
       this._cycleTo(index);
     }
@@ -664,9 +664,9 @@
       if (index > this.count || index < 0) {
         if (this.noWrap) {
           return;
-        } else {
-          index = this._wrap(index);
         }
+
+        index = this._wrap(index);
       }
 
       this._cycleTo(index);
@@ -685,9 +685,9 @@
       if (n > this.count || n < 0) {
         if (this.noWrap) {
           return;
-        } else {
-          n = this._wrap(n);
         }
+
+        n = this._wrap(n);
       }
 
       this._cycleTo(n, callback);

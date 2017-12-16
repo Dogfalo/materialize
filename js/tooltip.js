@@ -121,9 +121,9 @@
       this._exitDelayTimeout = setTimeout(() => {
         if (this.isHovered) {
           return;
-        } else {
-          this._animateOut();
         }
+
+        this._animateOut();
       }, this.options.exitDelay);
     }
 
@@ -136,9 +136,9 @@
       this._enterDelayTimeout = setTimeout(() => {
         if (!this.isHovered) {
           return;
-        } else {
-          this._animateIn();
         }
+
+        this._animateIn();
       }, this.options.enterDelay);
     }
 

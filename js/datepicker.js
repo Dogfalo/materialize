@@ -225,9 +225,9 @@
       let formattedDate = formatArray.map((label) => {
         if (this.formats[label]) {
           return this.formats[label]();
-        } else {
-          return label;
         }
+
+        return label;
       }).join( '' );
       return formattedDate;
     }
