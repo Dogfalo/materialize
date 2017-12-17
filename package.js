@@ -61,7 +61,7 @@ Package.onUse(function (api) {
     'sass/materialize.scss'
   ];
 
-  api.addFiles(scssFiles, 'client');
+  api.addFiles(scssFiles, 'client', { isImport: true });
 
 
   api.export('Materialize', 'client');
