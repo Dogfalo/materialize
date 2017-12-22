@@ -1,8 +1,8 @@
 (function ($) {
   // Function to update labels of text fields
-  M.updateTextFields = function() {
+  M.updateTextFields = function(ctx) {
     let input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-    $(input_selector).each(function(element, index) {
+    $(input_selector, ctx).each(function(element, index) {
       let $this = $(this);
       if (element.value.length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== null) {
         $this.siblings('label').addClass('active');
