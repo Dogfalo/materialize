@@ -58,6 +58,7 @@
       this.id = this.$el.attr('id');
       this._openingTrigger = undefined;
       this.$overlay = $('<div class="modal-overlay"></div>');
+      this.fixedX = !!(el.style.left || el.style.right);
 
       Modal._increment++;
       Modal._count++;
@@ -213,7 +214,7 @@
         $.extend(enterAnimOptions, {
           top: [this.options.startingTop, this.options.endingTop],
           opacity: 1,
-          scaleX: [.8, 1],
+          scaleX: this.fixedX ? 1 : [.8, 1],
           scaleY: [.8, 1]
         });
         anim(enterAnimOptions);
@@ -262,7 +263,7 @@
         $.extend(exitAnimOptions, {
           top: [this.options.endingTop, this.options.startingTop],
           opacity: 0,
-          scaleX: 0.8,
+          scaleX: this.fixedX ? 1 : 0.8,
           scaleY: 0.8
         });
         anim(exitAnimOptions);
