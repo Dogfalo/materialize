@@ -596,6 +596,12 @@ td, th{
     }
   }
 
+  &.striped {
+    .collection-item:nth-child(odd){
+      background-color: $collection-striped-color;
+    }
+  }  
+
   &.with-header {
     .collection-header {
       background-color: $collection-bg-color;
