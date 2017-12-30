@@ -42,6 +42,11 @@
 
 
   M.textareaAutoResize = function($textarea) {
+    // Wrap if native element
+    if ($textarea instanceof Element) {
+      $textarea = $($textarea);
+    }
+
     // Textarea Auto Resize
     let hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
