@@ -1,5 +1,5 @@
 /*!
- * Materialize v1.0.0-alpha.2 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -2253,7 +2253,9 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+     -moz-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -3160,6 +3162,10 @@ td, th {
 
 .collection a.collection-item:not(.active):hover {
   background-color: #ddd;
+}
+
+.collection.striped .collection-item:nth-child(odd) {
+  background-color: rgba(242, 242, 242, 0.5);
 }
 
 .collection.with-header .collection-header {
@@ -4893,7 +4899,6 @@ small {
 
 .card .card-content p {
   margin: 0;
-  color: inherit;
 }
 
 .card .card-content .card-title {
@@ -4908,7 +4913,6 @@ small {
 
 .card .card-action {
   position: relative;
-  background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 16px 24px;
 }
@@ -5951,7 +5955,7 @@ button.btn-floating {
   border: 0;
   color: rgba(0, 0, 0, 0.6);
   display: inline-block;
-  font-size: 1rem;
+  font-size: 16px;
   height: 3rem;
   line-height: 32px;
   outline: 0;
@@ -6054,6 +6058,9 @@ label {
 :-ms-input-placeholder {
   color: #d1d1d1;
 }
+::-ms-input-placeholder {
+  color: #d1d1d1;
+}
 ::placeholder {
   color: #d1d1d1;
 }
@@ -6079,15 +6086,17 @@ textarea.materialize-textarea {
   outline: none;
   height: 3rem;
   width: 100%;
-  font-size: 1rem;
+  font-size: 16px;
   margin: 0 0 8px 0;
   padding: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: border .3s, -webkit-box-shadow .3s;
+  transition: border .3s, -webkit-box-shadow .3s;
+  transition: box-shadow .3s, border .3s;
+  transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
 }
 
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
@@ -6605,8 +6614,6 @@ textarea.materialize-textarea {
   min-height: 3rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transition: none;
-  transition: none;
 }
 
 .hiddendiv {
@@ -7131,7 +7138,7 @@ select {
   height: 3rem;
   line-height: 3rem;
   width: 100%;
-  font-size: 1rem;
+  font-size: 16px;
   margin: 0 0 8px 0;
   padding: 0;
   display: block;
@@ -7139,6 +7146,7 @@ select {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  z-index: 1;
 }
 
 .select-wrapper input.select-dropdown:focus {
@@ -7151,7 +7159,7 @@ select {
   top: 0;
   bottom: 0;
   margin: auto 0;
-  z-index: -1;
+  z-index: 0;
   fill: rgba(0, 0, 0, 0.87);
 }
 

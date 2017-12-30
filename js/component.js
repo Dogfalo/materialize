@@ -8,7 +8,7 @@ class Component {
   constructor(classDef, el, options) {
     // Display error if el is valid HTML Element
     if (!(el instanceof Element)) {
-      console.error( Error(el + ' is not an HTML Element'));
+      
     }
 
     // If exists, destroy and reinitialize
