@@ -4842,7 +4842,7 @@ if (Vel) {
         $('ul#select-options-' + lastID).remove();
       }
 
-      // If destroying the select, remove the selelct-id and reset it to it's uninitialized state.
+      // If destroying the select, remove the select-id and reset it to it's uninitialized state.
       if (callback === 'destroy') {
         $select.removeAttr('data-select-id').removeClass('initialized');
         $(window).off('click.select');
