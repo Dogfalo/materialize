@@ -27,8 +27,6 @@
     constructor(el, options) {
       super(Tooltip, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Tooltip = this;
       this.options = $.extend({}, Tooltip.defaults, options);
 

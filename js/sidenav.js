@@ -26,8 +26,6 @@
     constructor (el, options) {
       super(Sidenav, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Sidenav = this;
       this.id = this.$el.attr('id');
 

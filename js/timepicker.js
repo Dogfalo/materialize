@@ -27,8 +27,6 @@
     constructor(el, options) {
       super(Timepicker, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Timepicker = this;
 
       this.options = $.extend({}, Timepicker.defaults, options);

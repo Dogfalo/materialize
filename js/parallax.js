@@ -5,13 +5,11 @@
     responsiveThreshold: 0, // breakpoint for swipeable
   };
 
-  class Parallax extends Component{
+  class Parallax extends Component {
 
     constructor(el, options) {
       super(Parallax, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Parallax = this;
 
       /**

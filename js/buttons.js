@@ -23,8 +23,6 @@
     constructor(el, options) {
       super(FloatingActionButton, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_FloatingActionButton = this;
 
       /**

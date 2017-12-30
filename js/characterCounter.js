@@ -18,8 +18,6 @@
     constructor(el, options) {
       super(CharacterCounter, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_CharacterCounter = this;
 
       /**

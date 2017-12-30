@@ -89,8 +89,6 @@
     constructor(el, options) {
       super(Datepicker, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Datepicker = this;
 
       this.options = $.extend({}, Datepicker.defaults, options);

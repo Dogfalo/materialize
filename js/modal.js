@@ -29,8 +29,6 @@
     constructor(el, options) {
       super(Modal, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Modal = this;
 
       /**

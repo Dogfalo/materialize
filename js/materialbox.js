@@ -25,8 +25,6 @@
 
       super(Materialbox, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Materialbox = this;
 
       /**

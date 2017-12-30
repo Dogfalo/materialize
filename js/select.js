@@ -20,8 +20,6 @@
     constructor(el, options) {
       super(Select, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Select = this;
 
       /**

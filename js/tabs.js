@@ -22,13 +22,7 @@
     constructor(el, options) {
       super(Tabs, el, options);
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $(el);
-
-      this.el = el;
+      this.el.M_Tabs = this;
 
       /**
        * Options for the Tabs
@@ -39,8 +33,6 @@
        * @prop {Number} responsiveThreshold
        */
       this.options = $.extend({}, Tabs.defaults, options);
-
-      this.el.M_Tabs = this;
 
       // Setup
       this.$tabLinks = this.$el.children('li.tab').children('a');

@@ -23,8 +23,6 @@
     constructor(el, options) {
       super(Dropdown, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Dropdown = this;
       Dropdown._dropdowns.push(this);
 

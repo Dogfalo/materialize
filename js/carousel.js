@@ -27,8 +27,6 @@
     constructor(el, options) {
       super(Carousel, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Carousel = this;
 
       /**

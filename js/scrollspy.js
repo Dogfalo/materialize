@@ -24,8 +24,6 @@
     constructor(el, options) {
       super(ScrollSpy, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_ScrollSpy = this;
 
       /**
