@@ -384,7 +384,7 @@
      */
     select(tabId) {
       let tab = this.$tabLinks.filter('[href="#' + tabId + '"]');
-      if (tab.length) {4
+      if (tab.length) {
         tab.trigger('click');
       }
     }
