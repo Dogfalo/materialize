@@ -1,5 +1,5 @@
 /*!
- * Materialize v1.0.0-alpha.2 (http://materializecss.com)
+ * Materialize v1.0.0-alpha.3 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -2253,7 +2253,9 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+     -moz-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -2966,11 +2968,6 @@ table {
   border-spacing: 0;
 }
 
-table.bordered > thead > tr,
-table.bordered > tbody > tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
 table.striped tr {
   border-bottom: none;
 }
@@ -3060,25 +3057,11 @@ td, th {
     text-align: left;
   }
   table.responsive-table tr {
+    border-bottom: none;
     padding: 0 10px;
   }
   table.responsive-table thead {
     border: 0;
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
-  }
-  table.responsive-table.bordered th {
-    border-bottom: 0;
-    border-left: 0;
-  }
-  table.responsive-table.bordered td {
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-  }
-  table.responsive-table.bordered tr {
-    border: 0;
-  }
-  table.responsive-table.bordered tbody tr {
     border-right: 1px solid rgba(0, 0, 0, 0.12);
   }
 }
@@ -4577,10 +4560,6 @@ small {
   font-weight: 200;
 }
 
-.flow-text {
-  font-weight: 300;
-}
-
 @media only screen and (min-width: 360px) {
   .flow-text {
     font-size: 1.2rem;
@@ -4893,7 +4872,6 @@ small {
 
 .card .card-content p {
   margin: 0;
-  color: inherit;
 }
 
 .card .card-content .card-title {
@@ -4908,7 +4886,6 @@ small {
 
 .card .card-action {
   position: relative;
-  background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 16px 24px;
 }
@@ -5951,7 +5928,7 @@ button.btn-floating {
   border: 0;
   color: rgba(0, 0, 0, 0.6);
   display: inline-block;
-  font-size: 1rem;
+  font-size: 16px;
   height: 3rem;
   line-height: 32px;
   outline: 0;
@@ -6054,6 +6031,9 @@ label {
 :-ms-input-placeholder {
   color: #d1d1d1;
 }
+::-ms-input-placeholder {
+  color: #d1d1d1;
+}
 ::placeholder {
   color: #d1d1d1;
 }
@@ -6079,15 +6059,17 @@ textarea.materialize-textarea {
   outline: none;
   height: 3rem;
   width: 100%;
-  font-size: 1rem;
+  font-size: 16px;
   margin: 0 0 8px 0;
   padding: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: border .3s, -webkit-box-shadow .3s;
+  transition: border .3s, -webkit-box-shadow .3s;
+  transition: box-shadow .3s, border .3s;
+  transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
 }
 
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
@@ -6605,8 +6587,6 @@ textarea.materialize-textarea {
   min-height: 3rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transition: none;
-  transition: none;
 }
 
 .hiddendiv {
@@ -6771,16 +6751,6 @@ textarea.materialize-textarea {
 
 /* Checkboxes
    ========================================================================== */
-/* CUSTOM CSS CHECKBOXES */
-form p {
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-form p:last-child {
-  margin-bottom: 0;
-}
-
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
@@ -7131,7 +7101,7 @@ select {
   height: 3rem;
   line-height: 3rem;
   width: 100%;
-  font-size: 1rem;
+  font-size: 16px;
   margin: 0 0 8px 0;
   padding: 0;
   display: block;
@@ -7139,6 +7109,7 @@ select {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  z-index: 1;
 }
 
 .select-wrapper input.select-dropdown:focus {
@@ -7151,7 +7122,7 @@ select {
   top: 0;
   bottom: 0;
   margin: auto 0;
-  z-index: -1;
+  z-index: 0;
   fill: rgba(0, 0, 0, 0.87);
 }
 

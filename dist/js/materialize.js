@@ -1,9 +1,15 @@
 /*!
- * Materialize v1.0.0-alpha.2 (http://materializecss.com)
+ * Materialize v1.0.0-alpha.3 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41,7 +47,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   var frag;
   function parseHTML(str) {
     if (!frag) {
-      frag = doc.implementation.createHTMLDocument();
+      frag = doc.implementation.createHTMLDocument(null);
       var base = frag.createElement("base");
       base.href = doc.location.href;
       frag.head.appendChild(base);
@@ -715,11 +721,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     val: function (value) {
       if (value === undefined) {
         return getValue(this[0]);
-      } else {
-        return this.each(function (v) {
-          return v.value = value;
-        });
       }
+
+      return this.each(function (v) {
+        return v.value = value;
+      });
     }
 
   });
@@ -997,6 +1003,414 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   return cash;
 });
+;
+var Component = function () {
+  /**
+   * Generic constructor for all components
+   * @constructor
+   * @param {Element} el
+   * @param {Object} options
+   */
+  function Component(classDef, el, options) {
+    _classCallCheck(this, Component);
+
+    // Display error if el is valid HTML Element
+    if (!(el instanceof Element)) {
+      console.error(Error(el + ' is not an HTML Element'));
+    }
+
+    // If exists, destroy and reinitialize in child
+    var ins = classDef.getInstance(el);
+    if (!!ins) {
+      ins.destroy();
+    }
+
+    this.el = el;
+    this.$el = cash(el);
+  }
+
+  /**
+   * Initializes components
+   * @param {class} classDef
+   * @param {Element | NodeList | jQuery} els
+   * @param {Object} options
+   */
+
+
+  _createClass(Component, null, [{
+    key: "init",
+    value: function init(classDef, els, options) {
+      var instances = null;
+      if (els instanceof Element) {
+        instances = new classDef(els, options);
+      } else if (!!els.jquery || els instanceof NodeList) {
+        var instancesArr = [];
+        for (var i = 0; i < els.length; i++) {
+          instancesArr.push(new classDef(els[i], options));
+        }
+        instances = instancesArr;
+      }
+
+      return instances;
+    }
+  }]);
+
+  return Component;
+}();
+
+; // Required for Meteor package, the use of window prevents export by Meteor
+(function (window) {
+  if (window.Package) {
+    M = {};
+  } else {
+    window.M = {};
+  }
+
+  // Check for jQuery
+  M.jQueryLoaded = !!window.jQuery;
+})(window);
+
+// AMD
+if (typeof define === "function" && define.amd) {
+  define("M", [], function () {
+    return M;
+  });
+
+  // Common JS
+} else if (typeof exports !== 'undefined' && !exports.nodeType) {
+  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
+    exports = module.exports = M;
+  }
+  exports.default = M;
+}
+
+M.keys = {
+  TAB: 9,
+  ENTER: 13,
+  ESC: 27,
+  ARROW_UP: 38,
+  ARROW_DOWN: 40
+};
+
+/**
+ * TabPress Keydown handler
+ */
+M.tabPressed = false;
+var docHandleKeydown = function (e) {
+  if (e.which === M.keys.TAB) {
+    M.tabPressed = true;
+  }
+};
+var docHandleKeyup = function (e) {
+  if (e.which === M.keys.TAB) {
+    M.tabPressed = false;
+  }
+};
+document.addEventListener('keydown', docHandleKeydown);
+document.addEventListener('keyup', docHandleKeyup);
+
+/**
+ * Initialize jQuery wrapper for plugin
+ * @param {Class} plugin  javascript class
+ * @param {string} pluginName  jQuery plugin name
+ * @param {string} classRef  Class reference name
+ */
+M.initializeJqueryWrapper = function (plugin, pluginName, classRef) {
+  jQuery.fn[pluginName] = function (methodOrOptions) {
+    // Call plugin method if valid method name is passed in
+    if (plugin.prototype[methodOrOptions]) {
+      var params = Array.prototype.slice.call(arguments, 1);
+
+      // Getter methods
+      if (methodOrOptions.slice(0, 3) === 'get') {
+        var instance = this.first()[0][classRef];
+        return instance[methodOrOptions].apply(instance, params);
+      }
+
+      // Void methods
+      return this.each(function () {
+        var instance = this[classRef];
+        instance[methodOrOptions].apply(instance, params);
+      });
+
+      // Initialize plugin if options or no argument is passed in
+    } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
+      plugin.init(this, arguments[0]);
+      return this;
+    }
+
+    // Return error if an unrecognized  method name is passed in
+    jQuery.error("Method " + methodOrOptions + " does not exist on jQuery." + pluginName);
+  };
+};
+
+/**
+ * Generate approximated selector string for a jQuery object
+ * @param {jQuery} obj  jQuery object to be parsed
+ * @returns {string}
+ */
+M.objectSelectorString = function (obj) {
+  var tagStr = obj.prop('tagName') || '';
+  var idStr = obj.attr('id') || '';
+  var classStr = obj.attr('class') || '';
+  return (tagStr + idStr + classStr).replace(/\s/g, '');
+};
+
+// Unique Random ID
+M.guid = function () {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+  return function () {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  };
+}();
+
+/**
+ * Escapes hash from special characters
+ * @param {string} hash  String returned from this.hash
+ * @returns {string}
+ */
+M.escapeHash = function (hash) {
+  return hash.replace(/(:|\.|\[|\]|,|=)/g, "\\$1");
+};
+
+M.elementOrParentIsFixed = function (element) {
+  var $element = $(element);
+  var $checkElements = $element.add($element.parents());
+  var isFixed = false;
+  $checkElements.each(function () {
+    if ($(this).css("position") === "fixed") {
+      isFixed = true;
+      return false;
+    }
+  });
+  return isFixed;
+};
+
+/**
+ * @typedef {Object} Edges
+ * @property {Boolean} top  If the top edge was exceeded
+ * @property {Boolean} right  If the right edge was exceeded
+ * @property {Boolean} bottom  If the bottom edge was exceeded
+ * @property {Boolean} left  If the left edge was exceeded
+ */
+
+/**
+ * @typedef {Object} Bounding
+ * @property {Number} left  left offset coordinate
+ * @property {Number} top  top offset coordinate
+ * @property {Number} width
+ * @property {Number} height
+ */
+
+/**
+ * Escapes hash from special characters
+ * @param {Element} container  Container element that acts as the boundary
+ * @param {Bounding} bounding  element bounding that is being checked
+ * @param {Number} offset  offset from edge that counts as exceeding
+ * @returns {Edges}
+ */
+M.checkWithinContainer = function (container, bounding, offset) {
+  var edges = {
+    top: false,
+    right: false,
+    bottom: false,
+    left: false
+  };
+
+  var containerRect = container.getBoundingClientRect();
+
+  var scrollLeft = container.scrollLeft;
+  var scrollTop = container.scrollTop;
+
+  var scrolledX = bounding.left - scrollLeft;
+  var scrolledY = bounding.top - scrollTop;
+
+  // Check for container and viewport for each edge
+  if (scrolledX < containerRect.left + offset || scrolledX < offset) {
+    edges.left = true;
+  }
+
+  if (scrolledX + bounding.width > containerRect.right - offset || scrolledX + bounding.width > window.innerWidth - offset) {
+    edges.right = true;
+  }
+
+  if (scrolledY < containerRect.top + offset || scrolledY < offset) {
+    edges.top = true;
+  }
+
+  if (scrolledY + bounding.height > containerRect.bottom - offset || scrolledY + bounding.height > window.innerHeight - offset) {
+    edges.bottom = true;
+  }
+
+  return edges;
+};
+
+M.checkPossibleAlignments = function (el, container, bounding, offset) {
+  var canAlign = {
+    top: true,
+    right: true,
+    bottom: true,
+    left: true,
+    spaceOnTop: null,
+    spaceOnRight: null,
+    spaceOnBottom: null,
+    spaceOnLeft: null
+  };
+
+  var containerAllowsOverflow = getComputedStyle(container).overflow === 'visible';
+  var containerRect = container.getBoundingClientRect();
+  var elOffsetRect = el.getBoundingClientRect();
+
+  var scrollLeft = container.scrollLeft;
+  var scrollTop = container.scrollTop;
+
+  var scrolledX = bounding.left - scrollLeft;
+  var scrolledY = bounding.top - scrollTop;
+
+  // Check for container and viewport for left
+  canAlign.spaceOnRight = !containerAllowsOverflow ? container.offsetWidth - (scrolledX + bounding.width) : window.innerWidth - (elOffsetRect.left + bounding.width);
+  if (!containerAllowsOverflow && scrolledX + bounding.width > container.offsetWidth || containerAllowsOverflow && elOffsetRect.left + bounding.width > window.innerWidth) {
+    canAlign.left = false;
+  }
+
+  // Check for container and viewport for Right
+  canAlign.spaceOnLeft = !containerAllowsOverflow ? scrolledX - bounding.width + elOffsetRect.width : elOffsetRect.right - bounding.width;
+  if (!containerAllowsOverflow && scrolledX - bounding.width + elOffsetRect.width < 0 || containerAllowsOverflow && elOffsetRect.right - bounding.width < 0) {
+    canAlign.right = false;
+  }
+
+  // Check for container and viewport for Top
+  canAlign.spaceOnBottom = !containerAllowsOverflow ? containerRect.height - (scrolledY + bounding.height + offset) : window.innerHeight - (elOffsetRect.top + bounding.height + offset);
+  if (!containerAllowsOverflow && scrolledY + bounding.height + offset > containerRect.height || containerAllowsOverflow && elOffsetRect.top + bounding.height + offset > window.innerHeight) {
+    canAlign.top = false;
+  }
+
+  // Check for container and viewport for Bottom
+  canAlign.spaceOnTop = !containerAllowsOverflow ? scrolledY - (bounding.height + offset) : elOffsetRect.bottom - (bounding.height + offset);
+  if (!containerAllowsOverflow && scrolledY - bounding.height - offset < 0 || containerAllowsOverflow && elOffsetRect.bottom - bounding.height - offset < 0) {
+    canAlign.bottom = false;
+  }
+
+  return canAlign;
+};
+
+M.getOverflowParent = function (element) {
+  if (element == null) {
+    return null;
+  }
+
+  if (element === document.body || getComputedStyle(element).overflow !== 'visible') {
+    return element;
+  }
+
+  return M.getOverflowParent(element.parentElement);
+};
+
+/**
+ * Gets id of component from a trigger
+ * @param {Element} trigger  trigger
+ * @returns {string}
+ */
+M.getIdFromTrigger = function (trigger) {
+  var id = trigger.getAttribute('data-target');
+  if (!id) {
+    id = trigger.getAttribute('href');
+    if (id) {
+      id = id.slice(1);
+    } else {
+      id = "";
+    }
+  }
+  return id;
+};
+
+/**
+ * Multi browser support for document scroll top
+ * @returns {Number}
+ */
+M.getDocumentScrollTop = function () {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+};
+
+/**
+ * Multi browser support for document scroll left
+ * @returns {Number}
+ */
+M.getDocumentScrollLeft = function () {
+  return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+};
+
+/**
+ * @typedef {Object} Edges
+ * @property {Boolean} top  If the top edge was exceeded
+ * @property {Boolean} right  If the right edge was exceeded
+ * @property {Boolean} bottom  If the bottom edge was exceeded
+ * @property {Boolean} left  If the left edge was exceeded
+ */
+
+/**
+ * @typedef {Object} Bounding
+ * @property {Number} left  left offset coordinate
+ * @property {Number} top  top offset coordinate
+ * @property {Number} width
+ * @property {Number} height
+ */
+
+/**
+ * Get time in ms
+ * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
+ * @type {function}
+ * @return {number}
+ */
+var getTime = Date.now || function () {
+  return new Date().getTime();
+};
+
+/**
+ * Returns a function, that, when invoked, will only be triggered at most once
+ * during a given window of time. Normally, the throttled function will run
+ * as much as it can, without ever going more than once per `wait` duration;
+ * but if you'd like to disable the execution on the leading edge, pass
+ * `{leading: false}`. To disable execution on the trailing edge, ditto.
+ * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
+ * @param {function} func
+ * @param {number} wait
+ * @param {Object=} options
+ * @returns {Function}
+ */
+M.throttle = function (func, wait, options) {
+  var context = void 0,
+      args = void 0,
+      result = void 0;
+  var timeout = null;
+  var previous = 0;
+  options || (options = {});
+  var later = function () {
+    previous = options.leading === false ? 0 : getTime();
+    timeout = null;
+    result = func.apply(context, args);
+    context = args = null;
+  };
+  return function () {
+    var now = getTime();
+    if (!previous && options.leading === false) previous = now;
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0) {
+      clearTimeout(timeout);
+      timeout = null;
+      previous = now;
+      result = func.apply(context, args);
+      context = args = null;
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
+    }
+    return result;
+  };
+};
 ; /*
   v2.2.0
   2017 Julian Garnier
@@ -1050,9 +1464,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     });
   };
 }, "es6-impl", "es3");var $jscomp$this = this;
-(function (e, r) {
-  e.anime = r();
-})(this, function () {
+(function (r) {
+  M.anime = r();
+})(function () {
   function e(a) {
     if (!h.col(a)) try {
       return document.querySelectorAll(a);
@@ -1414,361 +1828,6 @@ $jscomp.polyfill = function (e, r, p, m) {
     return Math.floor(Math.random() * (c - a + 1)) + a;
   };return q;
 });
-; // Required for Meteor package, the use of window prevents export by Meteor
-(function (window) {
-  if (window.Package) {
-    M = {};
-  } else {
-    window.M = {};
-  }
-
-  // Check for jQuery
-  M.jQueryLoaded = !!window.jQuery;
-})(window);
-
-// AMD
-if (typeof define === "function" && define.amd) {
-  define("M", [], function () {
-    return M;
-  });
-
-  // Common JS
-} else if (typeof exports !== 'undefined' && !exports.nodeType) {
-  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
-    exports = module.exports = M;
-  }
-  exports.default = M;
-}
-
-M.keys = {
-  TAB: 9,
-  ENTER: 13,
-  ESC: 27,
-  ARROW_UP: 38,
-  ARROW_DOWN: 40
-};
-
-/**
- * TabPress Keydown handler
- */
-M.tabPressed = false;
-var docHandleKeydown = function (e) {
-  if (e.which === M.keys.TAB) {
-    M.tabPressed = true;
-  }
-};
-var docHandleKeyup = function (e) {
-  if (e.which === M.keys.TAB) {
-    M.tabPressed = false;
-  }
-};
-document.addEventListener('keydown', docHandleKeydown);
-document.addEventListener('keyup', docHandleKeyup);
-
-/**
- * Initialize jQuery wrapper for plugin
- * @param {Class} plugin  javascript class
- * @param {string} pluginName  jQuery plugin name
- * @param {string} classRef  Class reference name
- */
-M.initializeJqueryWrapper = function (plugin, pluginName, classRef) {
-  jQuery.fn[pluginName] = function (methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (plugin.prototype[methodOrOptions]) {
-      var params = Array.prototype.slice.call(arguments, 1);
-
-      // Getter methods
-      if (methodOrOptions.slice(0, 3) === 'get') {
-        var instance = this.first()[0][classRef];
-        return instance[methodOrOptions].apply(instance, params);
-
-        // Void methods
-      } else {
-        return this.each(function () {
-          var instance = this[classRef];
-          instance[methodOrOptions].apply(instance, params);
-        });
-      }
-
-      // Initialize plugin if options or no argument is passed in
-    } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
-      plugin.init(this, arguments[0]);
-      return this;
-
-      // Return error if an unrecognized  method name is passed in
-    } else {
-      jQuery.error("Method " + methodOrOptions + " does not exist on jQuery." + pluginName);
-    }
-  };
-};
-
-/**
- * Generate approximated selector string for a jQuery object
- * @param {jQuery} obj  jQuery object to be parsed
- * @returns {string}
- */
-M.objectSelectorString = function (obj) {
-  var tagStr = obj.prop('tagName') || '';
-  var idStr = obj.attr('id') || '';
-  var classStr = obj.attr('class') || '';
-  return (tagStr + idStr + classStr).replace(/\s/g, '');
-};
-
-// Unique Random ID
-M.guid = function () {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-  }
-  return function () {
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-  };
-}();
-
-/**
- * Escapes hash from special characters
- * @param {string} hash  String returned from this.hash
- * @returns {string}
- */
-M.escapeHash = function (hash) {
-  return hash.replace(/(:|\.|\[|\]|,|=)/g, "\\$1");
-};
-
-M.elementOrParentIsFixed = function (element) {
-  var $element = $(element);
-  var $checkElements = $element.add($element.parents());
-  var isFixed = false;
-  $checkElements.each(function () {
-    if ($(this).css("position") === "fixed") {
-      isFixed = true;
-      return false;
-    }
-  });
-  return isFixed;
-};
-
-/**
- * @typedef {Object} Edges
- * @property {Boolean} top  If the top edge was exceeded
- * @property {Boolean} right  If the right edge was exceeded
- * @property {Boolean} bottom  If the bottom edge was exceeded
- * @property {Boolean} left  If the left edge was exceeded
- */
-
-/**
- * @typedef {Object} Bounding
- * @property {Number} left  left offset coordinate
- * @property {Number} top  top offset coordinate
- * @property {Number} width
- * @property {Number} height
- */
-
-/**
- * Escapes hash from special characters
- * @param {Element} container  Container element that acts as the boundary
- * @param {Bounding} bounding  element bounding that is being checked
- * @param {Number} offset  offset from edge that counts as exceeding
- * @returns {Edges}
- */
-M.checkWithinContainer = function (container, bounding, offset) {
-  var edges = {
-    top: false,
-    right: false,
-    bottom: false,
-    left: false
-  };
-
-  var containerRect = container.getBoundingClientRect();
-
-  var scrollLeft = container.scrollLeft;
-  var scrollTop = container.scrollTop;
-
-  var scrolledX = bounding.left - scrollLeft;
-  var scrolledY = bounding.top - scrollTop;
-
-  // Check for container and viewport for each edge
-  if (scrolledX < containerRect.left + offset || scrolledX < offset) {
-    edges.left = true;
-  }
-
-  if (scrolledX + bounding.width > containerRect.right - offset || scrolledX + bounding.width > window.innerWidth - offset) {
-    edges.right = true;
-  }
-
-  if (scrolledY < containerRect.top + offset || scrolledY < offset) {
-    edges.top = true;
-  }
-
-  if (scrolledY + bounding.height > containerRect.bottom - offset || scrolledY + bounding.height > window.innerHeight - offset) {
-    edges.bottom = true;
-  }
-
-  return edges;
-};
-
-M.checkPossibleAlignments = function (el, container, bounding, offset) {
-  var canAlign = {
-    top: true,
-    right: true,
-    bottom: true,
-    left: true,
-    spaceOnTop: null,
-    spaceOnRight: null,
-    spaceOnBottom: null,
-    spaceOnLeft: null
-  };
-
-  var containerAllowsOverflow = getComputedStyle(container).overflow === 'visible';
-  var containerRect = container.getBoundingClientRect();
-  var elOffsetRect = el.getBoundingClientRect();
-
-  var scrollLeft = container.scrollLeft;
-  var scrollTop = container.scrollTop;
-
-  var scrolledX = bounding.left - scrollLeft;
-  var scrolledY = bounding.top - scrollTop;
-
-  // Check for container and viewport for left
-  canAlign.spaceOnRight = !containerAllowsOverflow ? container.offsetWidth - (scrolledX + bounding.width) : window.innerWidth - (elOffsetRect.left + bounding.width);
-  if (!containerAllowsOverflow && scrolledX + bounding.width > container.offsetWidth || containerAllowsOverflow && elOffsetRect.left + bounding.width > window.innerWidth) {
-    canAlign.left = false;
-  }
-
-  // Check for container and viewport for Right
-  canAlign.spaceOnLeft = !containerAllowsOverflow ? scrolledX - bounding.width + elOffsetRect.width : elOffsetRect.right - bounding.width;
-  if (!containerAllowsOverflow && scrolledX - bounding.width + elOffsetRect.width < 0 || containerAllowsOverflow && elOffsetRect.right - bounding.width < 0) {
-    canAlign.right = false;
-  }
-
-  // Check for container and viewport for Top
-  canAlign.spaceOnBottom = !containerAllowsOverflow ? containerRect.height - (scrolledY + bounding.height + offset) : window.innerHeight - (elOffsetRect.top + bounding.height + offset);
-  if (!containerAllowsOverflow && scrolledY + bounding.height + offset > containerRect.height || containerAllowsOverflow && elOffsetRect.top + bounding.height + offset > window.innerHeight) {
-    canAlign.top = false;
-  }
-
-  // Check for container and viewport for Bottom
-  canAlign.spaceOnTop = !containerAllowsOverflow ? scrolledY - (bounding.height + offset) : elOffsetRect.bottom - (bounding.height + offset);
-  if (!containerAllowsOverflow && scrolledY - bounding.height - offset < 0 || containerAllowsOverflow && elOffsetRect.bottom - bounding.height - offset < 0) {
-    canAlign.bottom = false;
-  }
-
-  return canAlign;
-};
-
-M.getOverflowParent = function (element) {
-  if (element == null) {
-    return null;
-  }
-
-  if (element === document.body || getComputedStyle(element).overflow !== 'visible') {
-    return element;
-  } else {
-    return M.getOverflowParent(element.parentElement);
-  }
-};
-
-/**
- * Gets id of component from a trigger
- * @param {Element} trigger  trigger
- * @returns {string}
- */
-M.getIdFromTrigger = function (trigger) {
-  var id = trigger.getAttribute('data-target');
-  if (!id) {
-    id = trigger.getAttribute('href');
-    if (id) {
-      id = id.slice(1);
-    } else {
-      id = "";
-    }
-  }
-  return id;
-};
-
-/**
- * Multi browser support for document scroll top
- * @returns {Number}
- */
-M.getDocumentScrollTop = function () {
-  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-};
-
-/**
- * Multi browser support for document scroll left
- * @returns {Number}
- */
-M.getDocumentScrollLeft = function () {
-  return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
-};
-
-/**
- * @typedef {Object} Edges
- * @property {Boolean} top  If the top edge was exceeded
- * @property {Boolean} right  If the right edge was exceeded
- * @property {Boolean} bottom  If the bottom edge was exceeded
- * @property {Boolean} left  If the left edge was exceeded
- */
-
-/**
- * @typedef {Object} Bounding
- * @property {Number} left  left offset coordinate
- * @property {Number} top  top offset coordinate
- * @property {Number} width
- * @property {Number} height
- */
-
-/**
- * Get time in ms
- * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
- * @type {function}
- * @return {number}
- */
-var getTime = Date.now || function () {
-  return new Date().getTime();
-};
-
-/**
- * Returns a function, that, when invoked, will only be triggered at most once
- * during a given window of time. Normally, the throttled function will run
- * as much as it can, without ever going more than once per `wait` duration;
- * but if you'd like to disable the execution on the leading edge, pass
- * `{leading: false}`. To disable execution on the trailing edge, ditto.
- * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
- * @param {function} func
- * @param {number} wait
- * @param {Object=} options
- * @returns {Function}
- */
-M.throttle = function (func, wait, options) {
-  var context = void 0,
-      args = void 0,
-      result = void 0;
-  var timeout = null;
-  var previous = 0;
-  options || (options = {});
-  var later = function () {
-    previous = options.leading === false ? 0 : getTime();
-    timeout = null;
-    result = func.apply(context, args);
-    context = args = null;
-  };
-  return function () {
-    var now = getTime();
-    if (!previous && options.leading === false) previous = now;
-    var remaining = wait - (now - previous);
-    context = this;
-    args = arguments;
-    if (remaining <= 0) {
-      clearTimeout(timeout);
-      timeout = null;
-      previous = now;
-      result = func.apply(context, args);
-      context = args = null;
-    } else if (!timeout && options.trailing !== false) {
-      timeout = setTimeout(later, remaining);
-    }
-    return result;
-  };
-};
 ;(function ($, anim) {
   'use strict';
 
@@ -1787,7 +1846,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Collapsible = function () {
+  var Collapsible = function (_Component) {
+    _inherits(Collapsible, _Component);
+
     /**
      * Construct Collapsible instance
      * @constructor
@@ -1797,14 +1858,9 @@ M.throttle = function (func, wait, options) {
     function Collapsible(el, options) {
       _classCallCheck(this, Collapsible);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Collapsible) {
-        el.M_Collapsible.destroy();
-      }
+      var _this3 = _possibleConstructorReturn(this, (Collapsible.__proto__ || Object.getPrototypeOf(Collapsible)).call(this, Collapsible, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Collapsible = this;
+      _this3.el.M_Collapsible = _this3;
 
       /**
        * Options for the collapsible
@@ -1817,19 +1873,20 @@ M.throttle = function (func, wait, options) {
        * @prop {Number} inDuration - Transition in duration in milliseconds.
        * @prop {Number} outDuration - Transition duration in milliseconds.
        */
-      this.options = $.extend({}, Collapsible.defaults, options);
+      _this3.options = $.extend({}, Collapsible.defaults, options);
 
-      this._setupEventHandlers();
+      _this3._setupEventHandlers();
 
       // Open first active
-      var $activeBodies = this.$el.children('li.active').children('.collapsible-body');
-      if (this.options.accordion) {
+      var $activeBodies = _this3.$el.children('li.active').children('.collapsible-body');
+      if (_this3.options.accordion) {
         // Handle Accordion
         $activeBodies.first().css('display', 'block');
       } else {
         // Handle Expandables
         $activeBodies.css('display', 'block');
       }
+      return _this3;
     }
 
     _createClass(Collapsible, [{
@@ -1899,7 +1956,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateIn",
       value: function _animateIn(index) {
-        var _this3 = this;
+        var _this4 = this;
 
         var $collapsibleLi = this.$el.children('li').eq(index);
         if ($collapsibleLi.length) {
@@ -1938,8 +1995,8 @@ M.throttle = function (func, wait, options) {
               });
 
               // onOpenEnd callback
-              if (typeof _this3.options.onOpenEnd === 'function') {
-                _this3.options.onOpenEnd.call(_this3, $collapsibleLi[0]);
+              if (typeof _this4.options.onOpenEnd === 'function') {
+                _this4.options.onOpenEnd.call(_this4, $collapsibleLi[0]);
               }
             }
           });
@@ -1954,7 +2011,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateOut",
       value: function _animateOut(index) {
-        var _this4 = this;
+        var _this5 = this;
 
         var $collapsibleLi = this.$el.children('li').eq(index);
         if ($collapsibleLi.length) {
@@ -1977,8 +2034,8 @@ M.throttle = function (func, wait, options) {
               });
 
               // onCloseEnd callback
-              if (typeof _this4.options.onCloseEnd === 'function') {
-                _this4.options.onCloseEnd.call(_this4, $collapsibleLi[0]);
+              if (typeof _this5.options.onCloseEnd === 'function') {
+                _this5.options.onCloseEnd.call(_this5, $collapsibleLi[0]);
               }
             }
           });
@@ -1993,7 +2050,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "open",
       value: function open(index) {
-        var _this5 = this;
+        var _this6 = this;
 
         var $collapsibleLi = this.$el.children('li').eq(index);
         if ($collapsibleLi.length && !$collapsibleLi[0].classList.contains('active')) {
@@ -2009,7 +2066,7 @@ M.throttle = function (func, wait, options) {
             var $activeLis = this.$el.children('li.active');
             $activeLis.each(function (el) {
               var index = $collapsibleLis.index($(el));
-              _this5.close(index);
+              _this6.close(index);
             });
           }
 
@@ -2042,12 +2099,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Collapsible(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Collapsible.__proto__ || Object.getPrototypeOf(Collapsible), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -2068,14 +2121,14 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Collapsible;
-  }();
+  }(Component);
 
   M.Collapsible = Collapsible;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
 
@@ -2097,23 +2150,20 @@ M.throttle = function (func, wait, options) {
    * @class
    */
 
-  var Dropdown = function () {
+  var Dropdown = function (_Component2) {
+    _inherits(Dropdown, _Component2);
+
     function Dropdown(el, options) {
       _classCallCheck(this, Dropdown);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Dropdown) {
-        el.M_Dropdown.destroy();
-      }
+      var _this7 = _possibleConstructorReturn(this, (Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).call(this, Dropdown, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Dropdown = this;
-      Dropdown._dropdowns.push(this);
+      _this7.el.M_Dropdown = _this7;
+      Dropdown._dropdowns.push(_this7);
 
-      this.id = M.getIdFromTrigger(el);
-      this.dropdownEl = document.getElementById(this.id);
-      this.$dropdownEl = $(this.dropdownEl);
+      _this7.id = M.getIdFromTrigger(el);
+      _this7.dropdownEl = document.getElementById(_this7.id);
+      _this7.$dropdownEl = $(_this7.dropdownEl);
 
       /**
        * Options for the dropdown
@@ -2123,26 +2173,27 @@ M.throttle = function (func, wait, options) {
        * @prop {Function} onCloseStart - Function called when sidenav starts exiting
        * @prop {Function} onCloseEnd - Function called when sidenav finishes exiting
        */
-      this.options = $.extend({}, Dropdown.defaults, options);
+      _this7.options = $.extend({}, Dropdown.defaults, options);
 
       /**
        * Describes open/close state of dropdown
        * @type {Boolean}
        */
-      this.isOpen = false;
+      _this7.isOpen = false;
 
-      this.focusedIndex = -1;
-      this.filterQuery = [];
+      _this7.focusedIndex = -1;
+      _this7.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
-      this.$el.after(this.dropdownEl);
+      _this7.$el.after(_this7.dropdownEl);
 
-      this._makeDropdownFocusable();
-      this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
-      this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
-      this._handleDropdownKeydownBound = this._handleDropdownKeydown.bind(this);
-      this._handleTriggerKeydownBound = this._handleTriggerKeydown.bind(this);
-      this._setupEventHandlers();
+      _this7._makeDropdownFocusable();
+      _this7._resetFilterQueryBound = _this7._resetFilterQuery.bind(_this7);
+      _this7._handleDocumentClickBound = _this7._handleDocumentClick.bind(_this7);
+      _this7._handleDropdownKeydownBound = _this7._handleDropdownKeydown.bind(_this7);
+      _this7._handleTriggerKeydownBound = _this7._handleTriggerKeydown.bind(_this7);
+      _this7._setupEventHandlers();
+      return _this7;
     }
 
     _createClass(Dropdown, [{
@@ -2247,20 +2298,20 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_handleDocumentClick",
       value: function _handleDocumentClick(e) {
-        var _this6 = this;
+        var _this8 = this;
 
         var $target = $(e.target);
         if (this.options.closeOnClick && $target.closest('.dropdown-content').length) {
           setTimeout(function () {
-            _this6.close();
+            _this8.close();
           }, 0);
         } else if ($target.closest('.dropdown-trigger').length) {
           setTimeout(function () {
-            _this6.close();
+            _this8.close();
           }, 0);
         } else if (!$target.closest('.dropdown-content').length) {
           setTimeout(function () {
-            _this6.close();
+            _this8.close();
           }, 0);
         }
       }
@@ -2449,7 +2500,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateIn",
       value: function _animateIn(positionInfo) {
-        var _this7 = this;
+        var _this9 = this;
 
         // Place dropdown
         this.dropdownEl.style.left = positionInfo.x + 'px';
@@ -2470,12 +2521,12 @@ M.throttle = function (func, wait, options) {
           duration: this.options.inDuration,
           easing: 'easeOutQuint',
           complete: function (anim) {
-            _this7.dropdownEl.focus();
+            _this9.dropdownEl.focus();
 
             // onOpenEnd callback
-            if (typeof _this7.options.onOpenEnd === 'function') {
+            if (typeof _this9.options.onOpenEnd === 'function') {
               var elem = anim.animatables[0].target;
-              _this7.options.onOpenEnd.call(elem, _this7.el);
+              _this9.options.onOpenEnd.call(elem, _this9.el);
             }
           }
         });
@@ -2488,7 +2539,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateOut",
       value: function _animateOut() {
-        var _this8 = this;
+        var _this10 = this;
 
         anim.remove(this.dropdownEl);
         anim({
@@ -2502,12 +2553,12 @@ M.throttle = function (func, wait, options) {
           duration: this.options.outDuration,
           easing: 'easeOutQuint',
           complete: function (anim) {
-            _this8._resetDropdownStyles();
+            _this10._resetDropdownStyles();
 
             // onCloseEnd callback
-            if (typeof _this8.options.onCloseEnd === 'function') {
+            if (typeof _this10.options.onCloseEnd === 'function') {
               var elem = anim.animatables[0].target;
-              _this8.options.onCloseEnd.call(_this8, _this8.el);
+              _this10.options.onCloseEnd.call(_this10, _this10.el);
             }
           }
         });
@@ -2567,12 +2618,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Dropdown(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Dropdown.__proto__ || Object.getPrototypeOf(Dropdown), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -2593,7 +2640,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Dropdown;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -2608,7 +2655,7 @@ M.throttle = function (func, wait, options) {
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
 
@@ -2616,8 +2663,10 @@ M.throttle = function (func, wait, options) {
     opacity: 0.5,
     inDuration: 250,
     outDuration: 250,
-    ready: undefined,
-    complete: undefined,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
     dismissible: true,
     startingTop: '4%',
     endingTop: '10%'
@@ -2628,7 +2677,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Modal = function () {
+  var Modal = function (_Component3) {
+    _inherits(Modal, _Component3);
+
     /**
      * Construct Modal instance and set up overlay
      * @constructor
@@ -2638,14 +2689,9 @@ M.throttle = function (func, wait, options) {
     function Modal(el, options) {
       _classCallCheck(this, Modal);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Modal) {
-        el.M_Modal.destroy();
-      }
+      var _this11 = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, Modal, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Modal = this;
+      _this11.el.M_Modal = _this11;
 
       /**
        * Options for the modal
@@ -2653,29 +2699,32 @@ M.throttle = function (func, wait, options) {
        * @prop {Number} [opacity=0.5] - Opacity of the modal overlay
        * @prop {Number} [inDuration=250] - Length in ms of enter transition
        * @prop {Number} [outDuration=250] - Length in ms of exit transition
-       * @prop {Function} ready - Callback function called when modal is finished entering
-       * @prop {Function} complete - Callback function called when modal is finished exiting
+       * @prop {Function} onOpenStart - Callback function called before modal is opened
+       * @prop {Function} onOpenEnd - Callback function called after modal is opened
+       * @prop {Function} onCloseStart - Callback function called before modal is closed
+       * @prop {Function} onCloseEnd - Callback function called after modal is closed
        * @prop {Boolean} [dismissible=true] - Allow modal to be dismissed by keyboard or overlay click
        * @prop {String} [startingTop='4%'] - startingTop
        * @prop {String} [endingTop='10%'] - endingTop
        */
-      this.options = $.extend({}, Modal.defaults, options);
+      _this11.options = $.extend({}, Modal.defaults, options);
 
       /**
        * Describes open/close state of modal
        * @type {Boolean}
        */
-      this.isOpen = false;
+      _this11.isOpen = false;
 
-      this.id = this.$el.attr('id');
-      this._openingTrigger = undefined;
-      this.$overlay = $('<div class="modal-overlay"></div>');
+      _this11.id = _this11.$el.attr('id');
+      _this11._openingTrigger = undefined;
+      _this11.$overlay = $('<div class="modal-overlay"></div>');
 
       Modal._increment++;
       Modal._count++;
-      this.$overlay[0].style.zIndex = 1000 + Modal._increment * 2;
-      this.el.style.zIndex = 1000 + Modal._increment * 2 + 1;
-      this._setupEventHandlers();
+      _this11.$overlay[0].style.zIndex = 1000 + Modal._increment * 2;
+      _this11.el.style.zIndex = 1000 + Modal._increment * 2 + 1;
+      _this11._setupEventHandlers();
+      return _this11;
     }
 
     _createClass(Modal, [{
@@ -2790,7 +2839,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateIn",
       value: function _animateIn() {
-        var _this9 = this;
+        var _this12 = this;
 
         // Set initial styles
         $.extend(this.el.style, {
@@ -2815,10 +2864,10 @@ M.throttle = function (func, wait, options) {
           targets: this.el,
           duration: this.options.inDuration,
           easing: 'easeOutCubic',
-          // Handle modal ready callback
+          // Handle modal onOpenEnd callback
           complete: function () {
-            if (typeof _this9.options.ready === 'function') {
-              _this9.options.ready.call(_this9, _this9.el, _this9._openingTrigger);
+            if (typeof _this12.options.onOpenEnd === 'function') {
+              _this12.options.onOpenEnd.call(_this12, _this12.el, _this12._openingTrigger);
             }
           }
         };
@@ -2850,7 +2899,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateOut",
       value: function _animateOut() {
-        var _this10 = this;
+        var _this13 = this;
 
         // Animate overlay
         anim({
@@ -2867,12 +2916,13 @@ M.throttle = function (func, wait, options) {
           easing: 'easeOutCubic',
           // Handle modal ready callback
           complete: function () {
-            _this10.el.style.display = 'none';
-            // Call complete callback
-            if (typeof _this10.options.complete === 'function') {
-              _this10.options.complete.call(_this10, _this10.el);
+            _this13.el.style.display = 'none';
+            _this13.$overlay.remove();
+
+            // Call onCloseEnd callback
+            if (typeof _this13.options.onCloseEnd === 'function') {
+              _this13.options.onCloseEnd.call(_this13, _this13.el);
             }
-            _this10.$overlay.remove();
           }
         };
 
@@ -2909,10 +2959,16 @@ M.throttle = function (func, wait, options) {
         }
 
         this.isOpen = true;
+
+        // onOpenStart callback
+        if (typeof this.options.onOpenStart === 'function') {
+          this.options.onOpenStart.call(this, this.el, this._openingTrigger);
+        }
+
         var body = document.body;
         body.style.overflow = 'hidden';
         this.el.classList.add('open');
-        body.appendChild(this.$overlay[0]);
+        this.el.insertAdjacentElement('afterend', this.$overlay[0]);
 
         // Set opening trigger, undefined indicates modal was opened by javascript
         this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
@@ -2940,6 +2996,12 @@ M.throttle = function (func, wait, options) {
         }
 
         this.isOpen = false;
+
+        // Call onCloseStart callback
+        if (typeof this.options.onCloseStart === 'function') {
+          this.options.onCloseStart.call(this, this.el);
+        }
+
         this.el.classList.remove('open');
         document.body.style.overflow = '';
 
@@ -2954,12 +3016,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Modal(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Modal.__proto__ || Object.getPrototypeOf(Modal), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -2980,7 +3038,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Modal;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -3001,13 +3059,17 @@ M.throttle = function (func, wait, options) {
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
 
   var _defaults = {
     inDuration: 275,
-    outDuration: 200
+    outDuration: 200,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null
   };
 
   /**
@@ -3015,7 +3077,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Materialbox = function () {
+  var Materialbox = function (_Component4) {
+    _inherits(Materialbox, _Component4);
+
     /**
      * Construct Materialbox instance
      * @constructor
@@ -3025,36 +3089,36 @@ M.throttle = function (func, wait, options) {
     function Materialbox(el, options) {
       _classCallCheck(this, Materialbox);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Materialbox) {
-        el.M_Materialbox.destroy();
-      }
+      var _this14 = _possibleConstructorReturn(this, (Materialbox.__proto__ || Object.getPrototypeOf(Materialbox)).call(this, Materialbox, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Materialbox = this;
+      _this14.el.M_Materialbox = _this14;
 
       /**
        * Options for the modal
        * @member Materialbox#options
        * @prop {Number} [inDuration=275] - Length in ms of enter transition
        * @prop {Number} [outDuration=200] - Length in ms of exit transition
+       * @prop {Function} onOpenStart - Callback function called before materialbox is opened
+       * @prop {Function} onOpenEnd - Callback function called after materialbox is opened
+       * @prop {Function} onCloseStart - Callback function called before materialbox is closed
+       * @prop {Function} onCloseEnd - Callback function called after materialbox is closed
        */
-      this.options = $.extend({}, Materialbox.defaults, options);
+      _this14.options = $.extend({}, Materialbox.defaults, options);
 
-      this.overlayActive = false;
-      this.doneAnimating = true;
-      this.placeholder = $('<div></div>').addClass('material-placeholder');
-      this.originalWidth = 0;
-      this.originalHeight = 0;
-      this.originInlineStyles = this.$el.attr('style');
-      this.caption = this.el.getAttribute('data-caption') || "";
+      _this14.overlayActive = false;
+      _this14.doneAnimating = true;
+      _this14.placeholder = $('<div></div>').addClass('material-placeholder');
+      _this14.originalWidth = 0;
+      _this14.originalHeight = 0;
+      _this14.originInlineStyles = _this14.$el.attr('style');
+      _this14.caption = _this14.el.getAttribute('data-caption') || "";
 
       // Wrap
-      this.$el.before(this.placeholder);
-      this.placeholder.append(this.$el);
+      _this14.$el.before(_this14.placeholder);
+      _this14.placeholder.append(_this14.$el);
 
-      this._setupEventHandlers();
+      _this14._setupEventHandlers();
+      return _this14;
     }
 
     _createClass(Materialbox, [{
@@ -3174,7 +3238,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateImageIn",
       value: function _animateImageIn() {
-        var _this11 = this;
+        var _this15 = this;
 
         var animOptions = {
           targets: this.el,
@@ -3185,7 +3249,12 @@ M.throttle = function (func, wait, options) {
           duration: this.options.inDuration,
           easing: 'easeOutQuad',
           complete: function () {
-            _this11.doneAnimating = true;
+            _this15.doneAnimating = true;
+
+            // onOpenEnd callback
+            if (typeof _this15.options.onOpenEnd === 'function') {
+              _this15.options.onOpenEnd.call(_this15, _this15.el);
+            }
           }
         };
 
@@ -3207,7 +3276,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateImageOut",
       value: function _animateImageOut() {
-        var _this12 = this;
+        var _this16 = this;
 
         var animOptions = {
           targets: this.el,
@@ -3218,7 +3287,7 @@ M.throttle = function (func, wait, options) {
           duration: this.options.outDuration,
           easing: 'easeOutQuad',
           complete: function () {
-            _this12.placeholder.css({
+            _this16.placeholder.css({
               height: '',
               width: '',
               position: '',
@@ -3226,16 +3295,21 @@ M.throttle = function (func, wait, options) {
               left: ''
             });
 
-            _this12.$el.removeAttr('style');
-            _this12.$el.attr('style', _this12.originInlineStyles);
+            _this16.$el.removeAttr('style');
+            _this16.$el.attr('style', _this16.originInlineStyles);
 
             // Remove class
-            _this12.$el.removeClass('active');
-            _this12.doneAnimating = true;
+            _this16.$el.removeClass('active');
+            _this16.doneAnimating = true;
 
             // Remove overflow overrides on ancestors
-            if (_this12.ancestorsChanged.length) {
-              _this12.ancestorsChanged.css('overflow', '');
+            if (_this16.ancestorsChanged.length) {
+              _this16.ancestorsChanged.css('overflow', '');
+            }
+
+            // onCloseEnd callback
+            if (typeof _this16.options.onCloseEnd === 'function') {
+              _this16.options.onCloseEnd.call(_this16, _this16.el);
             }
           }
         };
@@ -3262,7 +3336,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "open",
       value: function open() {
-        var _this13 = this;
+        var _this17 = this;
 
         this._updateVars();
         this.originalWidth = this.el.getBoundingClientRect().width;
@@ -3272,6 +3346,11 @@ M.throttle = function (func, wait, options) {
         this.doneAnimating = false;
         this.$el.addClass('active');
         this.overlayActive = true;
+
+        // onOpenStart callback
+        if (typeof this.options.onOpenStart === 'function') {
+          this.options.onOpenStart.call(this, this.el);
+        }
 
         // Set positioning for placeholder
         this.placeholder.css({
@@ -3295,8 +3374,8 @@ M.throttle = function (func, wait, options) {
         this.$overlay = $('<div id="materialbox-overlay"></div>').css({
           opacity: 0
         }).one('click', function () {
-          if (_this13.doneAnimating) {
-            _this13.close();
+          if (_this17.doneAnimating) {
+            _this17.close();
           }
         });
 
@@ -3378,10 +3457,15 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "close",
       value: function close() {
-        var _this14 = this;
+        var _this18 = this;
 
         this._updateVars();
         this.doneAnimating = false;
+
+        // onCloseStart callback
+        if (typeof this.options.onCloseStart === 'function') {
+          this.options.onCloseStart.call(this, this.el);
+        }
 
         anim.remove(this.el);
         anim.remove(this.$overlay[0]);
@@ -3401,8 +3485,8 @@ M.throttle = function (func, wait, options) {
           duration: this.options.outDuration,
           easing: 'easeOutQuad',
           complete: function () {
-            _this14.overlayActive = false;
-            _this14.$overlay.remove();
+            _this18.overlayActive = false;
+            _this18.$overlay.remove();
           }
         });
 
@@ -3416,19 +3500,15 @@ M.throttle = function (func, wait, options) {
             duration: this.options.outDuration,
             easing: 'easeOutQuad',
             complete: function () {
-              _this14.$photoCaption.remove();
+              _this18.$photoCaption.remove();
             }
           });
         }
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Materialbox(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Materialbox.__proto__ || Object.getPrototypeOf(Materialbox), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -3449,40 +3529,46 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Materialbox;
-  }();
+  }(Component);
 
   M.Materialbox = Materialbox;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($) {
   'use strict';
 
-  var _defaults = {};
+  var _defaults = {
+    responsiveThreshold: 0 // breakpoint for swipeable
+  };
 
-  var Parallax = function () {
+  var Parallax = function (_Component5) {
+    _inherits(Parallax, _Component5);
+
     function Parallax(el, options) {
       _classCallCheck(this, Parallax);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Parallax) {
-        el.M_Parallax.destroy();
-      }
+      var _this19 = _possibleConstructorReturn(this, (Parallax.__proto__ || Object.getPrototypeOf(Parallax)).call(this, Parallax, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Parallax = this;
+      _this19.el.M_Parallax = _this19;
 
-      this.options = $.extend({}, Parallax.defaults, options);
+      /**
+       * Options for the Parallax
+       * @member Parallax#options
+       * @prop {Number} responsiveThreshold
+       */
+      _this19.options = $.extend({}, Parallax.defaults, options);
 
-      this.$img = this.$el.find('img').first();
-      this._updateParallax();
-      this._setupEventHandlers();
-      this._setupStyles();
+      _this19.$img = _this19.$el.find('img').first();
+      _this19._enabled = window.innerWidth > _this19.options.responsiveThreshold;
+      _this19._updateParallax();
+      _this19._setupEventHandlers();
+      _this19._setupStyles();
 
-      Parallax._parallaxes.push(this);
+      Parallax._parallaxes.push(_this19);
+      return _this19;
     }
 
     _createClass(Parallax, [{
@@ -3492,7 +3578,13 @@ M.throttle = function (func, wait, options) {
       /**
        * Teardown component
        */
-      value: function destroy() {}
+      value: function destroy() {
+        Parallax._parallaxes.splice(Parallax._parallaxes.indexOf(this), 1);
+        this.$img[0].style.transform = '';
+        this._removeEventHandlers();
+
+        this.$el[0].M_Parallax = undefined;
+      }
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
@@ -3502,6 +3594,19 @@ M.throttle = function (func, wait, options) {
         if (Parallax._parallaxes.length === 0) {
           Parallax._handleScrollThrottled = M.throttle(Parallax._handleScroll, 5);
           window.addEventListener('scroll', Parallax._handleScrollThrottled);
+
+          Parallax._handleWindowResizeThrottled = M.throttle(Parallax._handleWindowResize, 5);
+          window.addEventListener('resize', Parallax._handleWindowResizeThrottled);
+        }
+      }
+    }, {
+      key: "_removeEventHandlers",
+      value: function _removeEventHandlers() {
+        this.$img[0].removeEventListener('load', this._handleImageLoadBound);
+
+        if (Parallax._parallaxes.length === 0) {
+          window.removeEventListener('scroll', Parallax._handleScrollThrottled);
+          window.removeEventListener('resize', Parallax._handleWindowResizeThrottled);
         }
       }
     }, {
@@ -3532,18 +3637,16 @@ M.throttle = function (func, wait, options) {
         var percentScrolled = (windowBottom - top) / (containerHeight + windowHeight);
         var parallax = parallaxDist * percentScrolled;
 
-        if (bottom > scrollTop && top < scrollTop + windowHeight) {
+        if (!this._enabled) {
+          this.$img[0].style.transform = '';
+        } else if (bottom > scrollTop && top < scrollTop + windowHeight) {
           this.$img[0].style.transform = "translate3D(-50%, " + parallax + "px, 0)";
         }
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Parallax(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Parallax.__proto__ || Object.getPrototypeOf(Parallax), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -3565,6 +3668,14 @@ M.throttle = function (func, wait, options) {
         }
       }
     }, {
+      key: "_handleWindowResize",
+      value: function _handleWindowResize() {
+        for (var i = 0; i < Parallax._parallaxes.length; i++) {
+          var parallaxInstance = Parallax._parallaxes[i];
+          parallaxInstance._enabled = window.innerWidth > parallaxInstance.options.responsiveThreshold;
+        }
+      }
+    }, {
       key: "defaults",
       get: function () {
         return _defaults;
@@ -3572,7 +3683,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Parallax;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -3603,7 +3714,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Tabs = function () {
+  var Tabs = function (_Component6) {
+    _inherits(Tabs, _Component6);
+
     /**
      * Construct Tabs instance
      * @constructor
@@ -3613,18 +3726,9 @@ M.throttle = function (func, wait, options) {
     function Tabs(el, options) {
       _classCallCheck(this, Tabs);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Tabs) {
-        el.M_Tabs.destroy();
-      }
+      var _this20 = _possibleConstructorReturn(this, (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, Tabs, el, options));
 
-      /**
-       * The jQuery element
-       * @type {jQuery}
-       */
-      this.$el = $(el);
-
-      this.el = el;
+      _this20.el.M_Tabs = _this20;
 
       /**
        * Options for the Tabs
@@ -3634,24 +3738,23 @@ M.throttle = function (func, wait, options) {
        * @prop {Boolean} swipeable
        * @prop {Number} responsiveThreshold
        */
-      this.options = $.extend({}, Tabs.defaults, options);
-
-      this.el.M_Tabs = this;
+      _this20.options = $.extend({}, Tabs.defaults, options);
 
       // Setup
-      this.$tabLinks = this.$el.children('li.tab').children('a');
-      this.index = 0;
-      this._setTabsAndTabWidth();
-      this._setupActiveTabLink();
-      this._createIndicator();
+      _this20.$tabLinks = _this20.$el.children('li.tab').children('a');
+      _this20.index = 0;
+      _this20._setTabsAndTabWidth();
+      _this20._setupActiveTabLink();
+      _this20._createIndicator();
 
-      if (this.options.swipeable) {
-        this._setupSwipeableTabs();
+      if (_this20.options.swipeable) {
+        _this20._setupSwipeableTabs();
       } else {
-        this._setupNormalTabs();
+        _this20._setupNormalTabs();
       }
 
-      this._setupEventHandlers();
+      _this20._setupEventHandlers();
+      return _this20;
     }
 
     _createClass(Tabs, [{
@@ -3722,7 +3825,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_handleTabClick",
       value: function _handleTabClick(e) {
-        var _this15 = this;
+        var _this21 = this;
 
         var tab = $(e.target).closest('li.tab');
         var tabLink = $(e.target).closest('a');
@@ -3762,8 +3865,8 @@ M.throttle = function (func, wait, options) {
         if (this.options.swipeable) {
           if (this._tabsCarousel) {
             this._tabsCarousel.set(this.index, function () {
-              if (typeof _this15.options.onShow === "function") {
-                _this15.options.onShow.call(_this15, _this15.$content[0]);
+              if (typeof _this21.options.onShow === "function") {
+                _this21.options.onShow.call(_this21, _this21.$content[0]);
               }
             });
           }
@@ -3796,7 +3899,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_createIndicator",
       value: function _createIndicator() {
-        var _this16 = this;
+        var _this22 = this;
 
         var indicator = document.createElement('li');
         indicator.classList.add('indicator');
@@ -3805,8 +3908,8 @@ M.throttle = function (func, wait, options) {
         this._indicator = indicator;
 
         setTimeout(function () {
-          _this16._indicator.style.left = _this16._calcLeftPos(_this16.$activeTabLink) + 'px';
-          _this16._indicator.style.right = _this16._calcRightPos(_this16.$activeTabLink) + 'px';
+          _this22._indicator.style.left = _this22._calcLeftPos(_this22.$activeTabLink) + 'px';
+          _this22._indicator.style.right = _this22._calcRightPos(_this22.$activeTabLink) + 'px';
         }, 0);
       }
 
@@ -3846,7 +3949,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupSwipeableTabs",
       value: function _setupSwipeableTabs() {
-        var _this17 = this;
+        var _this23 = this;
 
         // Change swipeable according to responsive threshold
         if (window.innerWidth > this.options.responsiveThreshold) {
@@ -3865,18 +3968,18 @@ M.throttle = function (func, wait, options) {
         $tabsWrapper.append($tabsContent);
         $tabsContent[0].style.display = '';
 
-        this._tabsCarousel = new M.Carousel($tabsWrapper[0], {
+        this._tabsCarousel = M.Carousel.init($tabsWrapper[0], {
           fullWidth: true,
           noWrap: true,
           onCycleTo: function (item) {
-            var prevIndex = _this17.index;
-            _this17.index = $(item).index();
-            _this17.$activeTabLink.removeClass('active');
-            _this17.$activeTabLink = _this17.$tabLinks.eq(_this17.index);
-            _this17.$activeTabLink.addClass('active');
-            _this17._animateIndicator(prevIndex);
-            if (typeof _this17.options.onShow === "function") {
-              _this17.options.onShow.call(_this17, _this17.$content[0]);
+            var prevIndex = _this23.index;
+            _this23.index = $(item).index();
+            _this23.$activeTabLink.removeClass('active');
+            _this23.$activeTabLink = _this23.$tabLinks.eq(_this23.index);
+            _this23.$activeTabLink.addClass('active');
+            _this23._animateIndicator(prevIndex);
+            if (typeof _this23.options.onShow === "function") {
+              _this23.options.onShow.call(_this23, _this23.$content[0]);
             }
           }
         });
@@ -4016,18 +4119,13 @@ M.throttle = function (func, wait, options) {
       value: function select(tabId) {
         var tab = this.$tabLinks.filter('[href="#' + tabId + '"]');
         if (tab.length) {
-          4;
           tab.trigger('click');
         }
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Tabs(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Tabs.__proto__ || Object.getPrototypeOf(Tabs), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -4048,14 +4146,14 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Tabs;
-  }();
+  }(Component);
 
   window.M.Tabs = Tabs;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
 
@@ -4075,7 +4173,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Tooltip = function () {
+  var Tooltip = function (_Component7) {
+    _inherits(Tooltip, _Component7);
+
     /**
      * Construct Tooltip instance
      * @constructor
@@ -4085,20 +4185,16 @@ M.throttle = function (func, wait, options) {
     function Tooltip(el, options) {
       _classCallCheck(this, Tooltip);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Tooltip) {
-        el.M_Tooltip.destroy();
-      }
+      var _this24 = _possibleConstructorReturn(this, (Tooltip.__proto__ || Object.getPrototypeOf(Tooltip)).call(this, Tooltip, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Tooltip = this;
-      this.options = $.extend({}, Tooltip.defaults, options);
+      _this24.el.M_Tooltip = _this24;
+      _this24.options = $.extend({}, Tooltip.defaults, options);
 
-      this.isOpen = false;
-      this.isHovered = false;
-      this._appendTooltipEl();
-      this._setupEventHandlers();
+      _this24.isOpen = false;
+      _this24.isHovered = false;
+      _this24._appendTooltipEl();
+      _this24._setupEventHandlers();
+      return _this24;
     }
 
     _createClass(Tooltip, [{
@@ -4170,22 +4266,22 @@ M.throttle = function (func, wait, options) {
       }
 
       /**
-        * Create timeout which delays when the tooltip closes
-        */
+       * Create timeout which delays when the tooltip closes
+       */
 
     }, {
       key: "_setExitDelayTimeout",
       value: function _setExitDelayTimeout() {
-        var _this18 = this;
+        var _this25 = this;
 
         clearTimeout(this._exitDelayTimeout);
 
         this._exitDelayTimeout = setTimeout(function () {
-          if (_this18.isHovered) {
+          if (_this25.isHovered) {
             return;
-          } else {
-            _this18._animateOut();
           }
+
+          _this25._animateOut();
         }, this.options.exitDelay);
       }
 
@@ -4196,16 +4292,16 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setEnterDelayTimeout",
       value: function _setEnterDelayTimeout() {
-        var _this19 = this;
+        var _this26 = this;
 
         clearTimeout(this._enterDelayTimeout);
 
         this._enterDelayTimeout = setTimeout(function () {
-          if (!_this19.isHovered) {
+          if (!_this26.isHovered) {
             return;
-          } else {
-            _this19._animateIn();
           }
+
+          _this26._animateIn();
         }, this.options.enterDelay);
       }
     }, {
@@ -4281,7 +4377,10 @@ M.throttle = function (func, wait, options) {
           newY -= newY + height - window.innerHeight;
         }
 
-        return { x: newX + scrollLeft, y: newY + scrollTop };
+        return {
+          x: newX + scrollLeft,
+          y: newY + scrollTop
+        };
       }
     }, {
       key: "_animateIn",
@@ -4341,12 +4440,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Tooltip(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Tooltip.__proto__ || Object.getPrototypeOf(Tooltip), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -4367,14 +4462,14 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Tooltip;
-  }();
+  }(Component);
 
   M.Tooltip = Tooltip;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
-})(cash, anime);
+})(cash, M.anime);
 ; /*!
   * Waves v0.6.4
   * http://fian.my.id/Waves
@@ -4815,18 +4910,18 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setTimer",
       value: function _setTimer() {
-        var _this20 = this;
+        var _this27 = this;
 
         if (this.timeRemaining !== Infinity) {
           this.counterInterval = setInterval(function () {
             // If toast is not being dragged, decrease its time remaining
-            if (!_this20.panning) {
-              _this20.timeRemaining -= 20;
+            if (!_this27.panning) {
+              _this27.timeRemaining -= 20;
             }
 
             // Animate toast out
-            if (_this20.timeRemaining <= 0) {
-              _this20.dismiss();
+            if (_this27.timeRemaining <= 0) {
+              _this27.dismiss();
             }
           }, 20);
         }
@@ -4839,7 +4934,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "dismiss",
       value: function dismiss() {
-        var _this21 = this;
+        var _this28 = this;
 
         window.clearInterval(this.counterInterval);
         var activationDistance = this.el.offsetWidth * this.options.activationPercent;
@@ -4858,12 +4953,12 @@ M.throttle = function (func, wait, options) {
           easing: 'easeOutExpo',
           complete: function () {
             // Call the optional callback
-            if (typeof _this21.options.completeCallback === 'function') {
-              _this21.options.completeCallback();
+            if (typeof _this28.options.completeCallback === 'function') {
+              _this28.options.completeCallback();
             }
             // Remove toast from DOM
-            _this21.el.parentNode.removeChild(_this21.el);
-            Toast._toasts.splice(Toast._toasts.indexOf(_this21), 1);
+            _this28.el.parentNode.removeChild(_this28.el);
+            Toast._toasts.splice(Toast._toasts.indexOf(_this28), 1);
             if (Toast._toasts.length === 0) {
               Toast._removeContainer();
             }
@@ -5057,7 +5152,7 @@ M.throttle = function (func, wait, options) {
   M.toast = function (options) {
     return new Toast(options);
   };
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
 
@@ -5076,7 +5171,9 @@ M.throttle = function (func, wait, options) {
    * @class
    */
 
-  var Sidenav = function () {
+  var Sidenav = function (_Component8) {
+    _inherits(Sidenav, _Component8);
+
     /**
      * Construct Sidenav instance and set up overlay
      * @constructor
@@ -5086,15 +5183,10 @@ M.throttle = function (func, wait, options) {
     function Sidenav(el, options) {
       _classCallCheck(this, Sidenav);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Sidenav) {
-        el.M_Sidenav.destroy();
-      }
+      var _this29 = _possibleConstructorReturn(this, (Sidenav.__proto__ || Object.getPrototypeOf(Sidenav)).call(this, Sidenav, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Sidenav = this;
-      this.id = this.$el.attr('id');
+      _this29.el.M_Sidenav = _this29;
+      _this29.id = _this29.$el.attr('id');
 
       /**
        * Options for the Sidenav
@@ -5108,33 +5200,34 @@ M.throttle = function (func, wait, options) {
        * @prop {Function} onCloseStart - Function called when sidenav starts exiting
        * @prop {Function} onCloseEnd - Function called when sidenav finishes exiting
        */
-      this.options = $.extend({}, Sidenav.defaults, options);
+      _this29.options = $.extend({}, Sidenav.defaults, options);
 
       /**
        * Describes open/close state of Sidenav
        * @type {Boolean}
        */
-      this.isOpen = false;
+      _this29.isOpen = false;
 
       /**
        * Describes if Sidenav is fixed
        * @type {Boolean}
        */
-      this.isFixed = this.el.classList.contains('sidenav-fixed');
+      _this29.isFixed = _this29.el.classList.contains('sidenav-fixed');
 
       /**
        * Describes if Sidenav is being draggeed
        * @type {Boolean}
        */
-      this.isDragged = false;
+      _this29.isDragged = false;
 
-      this._createOverlay();
-      this._createDragTarget();
-      this._setupEventHandlers();
-      this._setupClasses();
-      this._setupFixed();
+      _this29._createOverlay();
+      _this29._createDragTarget();
+      _this29._setupEventHandlers();
+      _this29._setupClasses();
+      _this29._setupFixed();
 
-      Sidenav._sidenavs.push(this);
+      Sidenav._sidenavs.push(_this29);
+      return _this29;
     }
 
     _createClass(Sidenav, [{
@@ -5539,7 +5632,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateSidenavIn",
       value: function _animateSidenavIn() {
-        var _this22 = this;
+        var _this30 = this;
 
         var slideOutPercent = this.options.edge === 'left' ? -1 : 1;
         if (this.isDragged) {
@@ -5554,8 +5647,8 @@ M.throttle = function (func, wait, options) {
           easing: 'easeOutQuad',
           complete: function () {
             // Run onOpenEnd callback
-            if (typeof _this22.options.onOpenEnd === 'function') {
-              _this22.options.onOpenEnd.call(_this22, _this22.el);
+            if (typeof _this30.options.onOpenEnd === 'function') {
+              _this30.options.onOpenEnd.call(_this30, _this30.el);
             }
           }
         });
@@ -5589,7 +5682,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateSidenavOut",
       value: function _animateSidenavOut() {
-        var _this23 = this;
+        var _this31 = this;
 
         var endPercent = this.options.edge === 'left' ? -1 : 1;
         var slideOutPercent = 0;
@@ -5605,8 +5698,8 @@ M.throttle = function (func, wait, options) {
           easing: 'easeOutQuad',
           complete: function () {
             // Run onOpenEnd callback
-            if (typeof _this23.options.onCloseEnd === 'function') {
-              _this23.options.onCloseEnd.call(_this23, _this23.el);
+            if (typeof _this31.options.onCloseEnd === 'function') {
+              _this31.options.onCloseEnd.call(_this31, _this31.el);
             }
           }
         });
@@ -5614,7 +5707,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateOverlayOut",
       value: function _animateOverlayOut() {
-        var _this24 = this;
+        var _this32 = this;
 
         anim.remove(this._overlay);
         anim({
@@ -5623,18 +5716,14 @@ M.throttle = function (func, wait, options) {
           duration: this.options.outDuration,
           easing: 'easeOutQuad',
           complete: function () {
-            $(_this24._overlay).css('display', 'none');
+            $(_this32._overlay).css('display', 'none');
           }
         });
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Sidenav(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Sidenav.__proto__ || Object.getPrototypeOf(Sidenav), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -5655,7 +5744,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Sidenav;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -5671,7 +5760,7 @@ M.throttle = function (func, wait, options) {
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Sidenav, 'sidenav', 'M_Sidenav');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
 
@@ -5689,7 +5778,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var ScrollSpy = function () {
+  var ScrollSpy = function (_Component9) {
+    _inherits(ScrollSpy, _Component9);
+
     /**
      * Construct ScrollSpy instance
      * @constructor
@@ -5699,14 +5790,9 @@ M.throttle = function (func, wait, options) {
     function ScrollSpy(el, options) {
       _classCallCheck(this, ScrollSpy);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_ScrollSpy) {
-        el.M_ScrollSpy.destroy();
-      }
+      var _this33 = _possibleConstructorReturn(this, (ScrollSpy.__proto__ || Object.getPrototypeOf(ScrollSpy)).call(this, ScrollSpy, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_ScrollSpy = this;
+      _this33.el.M_ScrollSpy = _this33;
 
       /**
        * Options for the modal
@@ -5716,16 +5802,17 @@ M.throttle = function (func, wait, options) {
        * @prop {String} [activeClass='active'] - Class applied to active elements
        * @prop {Function} [getActiveElement] - Used to find active element
        */
-      this.options = $.extend({}, ScrollSpy.defaults, options);
+      _this33.options = $.extend({}, ScrollSpy.defaults, options);
 
       // setup
-      ScrollSpy._elements.push(this);
+      ScrollSpy._elements.push(_this33);
       ScrollSpy._count++;
       ScrollSpy._increment++;
-      this.tickId = -1;
-      this.id = ScrollSpy._increment;
-      this._setupEventHandlers();
-      this._handleWindowScroll();
+      _this33.tickId = -1;
+      _this33.id = ScrollSpy._increment;
+      _this33._setupEventHandlers();
+      _this33._handleWindowScroll();
+      return _this33;
     }
 
     _createClass(ScrollSpy, [{
@@ -5878,7 +5965,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_exit",
       value: function _exit() {
-        var _this25 = this;
+        var _this34 = this;
 
         ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
           return value.height() != 0;
@@ -5888,7 +5975,7 @@ M.throttle = function (func, wait, options) {
           $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(this.options.activeClass);
 
           ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (el) {
-            return el.attr('id') != _this25.$el.attr('id');
+            return el.attr('id') != _this34.$el.attr('id');
           });
           if (ScrollSpy._visibleElements[0]) {
             // Check if empty
@@ -5898,12 +5985,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new ScrollSpy(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(ScrollSpy.__proto__ || Object.getPrototypeOf(ScrollSpy), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -5947,7 +6030,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return ScrollSpy;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -5995,7 +6078,7 @@ M.throttle = function (func, wait, options) {
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($) {
   'use strict';
 
@@ -6015,7 +6098,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Autocomplete = function () {
+  var Autocomplete = function (_Component10) {
+    _inherits(Autocomplete, _Component10);
+
     /**
      * Construct Autocomplete instance
      * @constructor
@@ -6025,14 +6110,9 @@ M.throttle = function (func, wait, options) {
     function Autocomplete(el, options) {
       _classCallCheck(this, Autocomplete);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Autocomplete) {
-        el.M_Autocomplete.destroy();
-      }
+      var _this35 = _possibleConstructorReturn(this, (Autocomplete.__proto__ || Object.getPrototypeOf(Autocomplete)).call(this, Autocomplete, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Autocomplete = this;
+      _this35.el.M_Autocomplete = _this35;
 
       /**
        * Options for the autocomplete
@@ -6046,18 +6126,19 @@ M.throttle = function (func, wait, options) {
        * @prop {Boolean} noWrap
        * @prop {Function} onCycleTo
        */
-      this.options = $.extend({}, Autocomplete.defaults, options);
+      _this35.options = $.extend({}, Autocomplete.defaults, options);
 
       // Setup
-      this.isOpen = false;
-      this.count = 0;
-      this.activeIndex = -1;
-      this.oldVal;
-      this.$inputField = this.$el.closest('.input-field');
-      this.$active = $();
-      this._setupDropdown();
+      _this35.isOpen = false;
+      _this35.count = 0;
+      _this35.activeIndex = -1;
+      _this35.oldVal;
+      _this35.$inputField = _this35.$el.closest('.input-field');
+      _this35.$active = $();
+      _this35._setupDropdown();
 
-      this._setupEventHandlers();
+      _this35._setupEventHandlers();
+      return _this35;
     }
 
     _createClass(Autocomplete, [{
@@ -6308,7 +6389,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_renderDropdown",
       value: function _renderDropdown(data, val) {
-        var _this26 = this;
+        var _this36 = this;
 
         this._removeAutocomplete();
 
@@ -6334,7 +6415,7 @@ M.throttle = function (func, wait, options) {
 
         // Sort
         var sortFunctionBound = function (a, b) {
-          return _this26.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
+          return _this36.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
         };
         matchingData.sort(sortFunctionBound);
 
@@ -6370,12 +6451,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Autocomplete(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Autocomplete.__proto__ || Object.getPrototypeOf(Autocomplete), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -6396,7 +6473,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Autocomplete;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -6453,6 +6530,11 @@ M.throttle = function (func, wait, options) {
   };
 
   M.textareaAutoResize = function ($textarea) {
+    // Wrap if native element
+    if ($textarea instanceof Element) {
+      $textarea = $($textarea);
+    }
+
     // Textarea Auto Resize
     var hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
@@ -6618,20 +6700,18 @@ M.throttle = function (func, wait, options) {
     $(text_area_selector).each(function () {
       var $textarea = $(this);
       /**
-       * Instead of resizing textarea on document load,
-       * store the original height and the original length
+       * Resize textarea on document load after storing
+       * the original height and the original length
        */
       $textarea.data('original-height', $textarea.height());
       $textarea.data('previous-length', this.value.length);
+      M.textareaAutoResize($textarea);
     });
 
     $(document).on('keyup', text_area_selector, function () {
       M.textareaAutoResize($(this));
     });
     $(document).on('keydown', text_area_selector, function () {
-      M.textareaAutoResize($(this));
-    });
-    $(document).on('autoresize', text_area_selector, function () {
       M.textareaAutoResize($(this));
     });
 
@@ -6664,7 +6744,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Slider = function () {
+  var Slider = function (_Component11) {
+    _inherits(Slider, _Component11);
+
     /**
      * Construct Slider instance and set up overlay
      * @constructor
@@ -6672,18 +6754,11 @@ M.throttle = function (func, wait, options) {
      * @param {Object} options
      */
     function Slider(el, options) {
-      var _this27 = this;
-
       _classCallCheck(this, Slider);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Slider) {
-        el.M_Slider.destroy();
-      }
+      var _this37 = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, Slider, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Slider = this;
+      _this37.el.M_Slider = _this37;
 
       /**
        * Options for the modal
@@ -6693,25 +6768,25 @@ M.throttle = function (func, wait, options) {
        * @prop {Number} [duration=500] - Length in ms of slide transition
        * @prop {Number} [interval=6000] - Length in ms of slide interval
        */
-      this.options = $.extend({}, Slider.defaults, options);
+      _this37.options = $.extend({}, Slider.defaults, options);
 
       // setup
-      this.$slider = this.$el.find('.slides');
-      this.$slides = this.$slider.children('li');
-      this.activeIndex = this.$slider.find('.active').index();
-      if (this.activeIndex != -1) {
-        this.$active = this.$slides.eq(this.activeIndex);
+      _this37.$slider = _this37.$el.find('.slides');
+      _this37.$slides = _this37.$slider.children('li');
+      _this37.activeIndex = _this37.$slider.find('.active').index();
+      if (_this37.activeIndex != -1) {
+        _this37.$active = _this37.$slides.eq(_this37.activeIndex);
       }
 
-      this._setSliderHeight();
+      _this37._setSliderHeight();
 
       // Set initial positions of captions
-      this.$slides.find('.caption').each(function (el) {
-        _this27._animateCaptionIn(el, 0);
+      _this37.$slides.find('.caption').each(function (el) {
+        _this37._animateCaptionIn(el, 0);
       });
 
       // Move img src into background-image
-      this.$slides.find('img').each(function (el) {
+      _this37.$slides.find('img').each(function (el) {
         var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if ($(el).attr('src') !== placeholderBase64) {
           $(el).css('background-image', 'url("' + $(el).attr('src') + '")');
@@ -6719,45 +6794,46 @@ M.throttle = function (func, wait, options) {
         }
       });
 
-      this._setupIndicators();
+      _this37._setupIndicators();
 
       // Show active slide
-      if (this.$active) {
-        this.$active.css('display', 'block');
+      if (_this37.$active) {
+        _this37.$active.css('display', 'block');
       } else {
-        this.$slides.first().addClass('active');
+        _this37.$slides.first().addClass('active');
         anim({
-          targets: this.$slides.first()[0],
+          targets: _this37.$slides.first()[0],
           opacity: 1,
-          duration: this.options.duration,
+          duration: _this37.options.duration,
           easing: 'easeOutQuad'
         });
 
-        this.activeIndex = 0;
-        this.$active = this.$slides.eq(this.activeIndex);
+        _this37.activeIndex = 0;
+        _this37.$active = _this37.$slides.eq(_this37.activeIndex);
 
         // Update indicators
-        if (this.options.indicators) {
-          this.$indicators.eq(this.activeIndex).addClass('active');
+        if (_this37.options.indicators) {
+          _this37.$indicators.eq(_this37.activeIndex).addClass('active');
         }
       }
 
       // Adjust height to current slide
-      this.$active.find('img').each(function (el) {
+      _this37.$active.find('img').each(function (el) {
         anim({
-          targets: _this27.$active.find('.caption')[0],
+          targets: _this37.$active.find('.caption')[0],
           opacity: 1,
           translateX: 0,
           translateY: 0,
-          duration: _this27.options.duration,
+          duration: _this37.options.duration,
           easing: 'easeOutQuad'
         });
       });
 
-      this._setupEventHandlers();
+      _this37._setupEventHandlers();
 
       // auto scroll
-      this.start();
+      _this37.start();
+      return _this37;
     }
 
     _createClass(Slider, [{
@@ -6781,14 +6857,14 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        var _this28 = this;
+        var _this38 = this;
 
         this._handleIntervalBound = this._handleInterval.bind(this);
         this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
 
         if (this.options.indicators) {
           this.$indicators.each(function (el) {
-            el.addEventListener('click', _this28._handleIndicatorClickBound);
+            el.addEventListener('click', _this38._handleIndicatorClickBound);
           });
         }
       }
@@ -6800,11 +6876,11 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        var _this29 = this;
+        var _this39 = this;
 
         if (this.options.indicators) {
           this.$indicators.each(function (el) {
-            el.removeEventListener('click', _this29._handleIndicatorClickBound);
+            el.removeEventListener('click', _this39._handleIndicatorClickBound);
           });
         }
       }
@@ -6888,13 +6964,13 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupIndicators",
       value: function _setupIndicators() {
-        var _this30 = this;
+        var _this40 = this;
 
         if (this.options.indicators) {
           this.$indicators = $('<ul class="indicators"></ul>');
           this.$slides.each(function (el, index) {
             var $indicator = $('<li class="indicator-item"></li>');
-            _this30.$indicators.append($indicator[0]);
+            _this40.$indicators.append($indicator[0]);
           });
           this.$el.append(this.$indicators[0]);
           this.$indicators = this.$indicators.children('li.indicator-item');
@@ -6919,7 +6995,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "set",
       value: function set(index) {
-        var _this31 = this;
+        var _this41 = this;
 
         // Wrap around indices.
         if (index >= this.$slides.length) index = 0;else if (index < 0) index = this.$slides.length - 1;
@@ -6936,7 +7012,7 @@ M.throttle = function (func, wait, options) {
             duration: this.options.duration,
             easing: 'easeOutQuad',
             complete: function () {
-              _this31.$slides.not('.active').each(function (el) {
+              _this41.$slides.not('.active').each(function (el) {
                 anim({
                   targets: el,
                   opacity: 0,
@@ -7034,12 +7110,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Slider(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Slider.__proto__ || Object.getPrototypeOf(Slider), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -7060,14 +7132,14 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Slider;
-  }();
+  }(Component);
 
   M.Slider = Slider;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Slider, 'slider', 'M_Slider');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($, anim) {
   $(document).on('click', '.card', function (e) {
     if ($(this).children('.card-reveal').length) {
@@ -7101,7 +7173,7 @@ M.throttle = function (func, wait, options) {
       }
     }
   });
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($) {
   'use strict';
 
@@ -7127,7 +7199,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Chips = function () {
+  var Chips = function (_Component12) {
+    _inherits(Chips, _Component12);
+
     /**
      * Construct Chips instance and set up overlay
      * @constructor
@@ -7137,14 +7211,9 @@ M.throttle = function (func, wait, options) {
     function Chips(el, options) {
       _classCallCheck(this, Chips);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Chips) {
-        el.M_Chips.destroy();
-      }
+      var _this42 = _possibleConstructorReturn(this, (Chips.__proto__ || Object.getPrototypeOf(Chips)).call(this, Chips, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Chips = this;
+      _this42.el.M_Chips = _this42;
 
       /**
        * Options for the modal
@@ -7154,33 +7223,34 @@ M.throttle = function (func, wait, options) {
        * @prop {String} secondaryPlaceholder
        * @prop {Object} autocompleteOptions
        */
-      this.options = $.extend({}, Chips.defaults, options);
+      _this42.options = $.extend({}, Chips.defaults, options);
 
-      this.$el.addClass('chips input-field');
-      this.chipsData = [];
-      this.$chips = $();
-      this._setupInput();
-      this.hasAutocomplete = Object.keys(this.options.autocompleteOptions).length > 0;
+      _this42.$el.addClass('chips input-field');
+      _this42.chipsData = [];
+      _this42.$chips = $();
+      _this42._setupInput();
+      _this42.hasAutocomplete = Object.keys(_this42.options.autocompleteOptions).length > 0;
 
       // Set input id
-      if (!this.$input.attr('id')) {
-        this.$input.attr('id', M.guid());
+      if (!_this42.$input.attr('id')) {
+        _this42.$input.attr('id', M.guid());
       }
 
       // Render initial chips
-      if (this.options.data.length) {
-        this.chipsData = this.options.data;
-        this._renderChips(this.chipsData);
+      if (_this42.options.data.length) {
+        _this42.chipsData = _this42.options.data;
+        _this42._renderChips(_this42.chipsData);
       }
 
       // Setup autocomplete if needed
-      if (this.hasAutocomplete) {
-        this._setupAutocomplete();
+      if (_this42.hasAutocomplete) {
+        _this42._setupAutocomplete();
       }
 
-      this._setPlaceholder();
-      this._setupLabel();
-      this._setupEventHandlers();
+      _this42._setPlaceholder();
+      _this42._setupLabel();
+      _this42._setupEventHandlers();
+      return _this42;
     }
 
     _createClass(Chips, [{
@@ -7314,7 +7384,9 @@ M.throttle = function (func, wait, options) {
           }
 
           e.preventDefault();
-          this.addChip({ tag: this.$input[0].value });
+          this.addChip({
+            tag: this.$input[0].value
+          });
           this.$input[0].value = '';
 
           // delete or left
@@ -7381,12 +7453,14 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupAutocomplete",
       value: function _setupAutocomplete() {
-        var _this32 = this;
+        var _this43 = this;
 
         this.options.autocompleteOptions.onAutocomplete = function (val) {
-          _this32.addChip({ tag: val });
-          _this32.$input[0].value = '';
-          _this32.$input[0].focus();
+          _this43.addChip({
+            tag: val
+          });
+          _this43.$input[0].value = '';
+          _this43.$input[0].focus();
         };
 
         this.autocomplete = M.Autocomplete.init(this.$input, this.options.autocompleteOptions)[0];
@@ -7452,9 +7526,9 @@ M.throttle = function (func, wait, options) {
             }
           }
           return !exists;
-        } else {
-          return false;
         }
+
+        return false;
       }
 
       /**
@@ -7522,12 +7596,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Chips(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Chips.__proto__ || Object.getPrototypeOf(Chips), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -7629,7 +7699,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Chips;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -7662,7 +7732,8 @@ M.throttle = function (func, wait, options) {
   var _defaults = {
     top: 0,
     bottom: Infinity,
-    offset: 0
+    offset: 0,
+    onPositionChange: null
   };
 
   /**
@@ -7670,7 +7741,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Pushpin = function () {
+  var Pushpin = function (_Component13) {
+    _inherits(Pushpin, _Component13);
+
     /**
      * Construct Pushpin instance
      * @constructor
@@ -7680,25 +7753,21 @@ M.throttle = function (func, wait, options) {
     function Pushpin(el, options) {
       _classCallCheck(this, Pushpin);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Pushpin) {
-        el.M_Pushpin.destroy();
-      }
+      var _this44 = _possibleConstructorReturn(this, (Pushpin.__proto__ || Object.getPrototypeOf(Pushpin)).call(this, Pushpin, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Pushpin = this;
+      _this44.el.M_Pushpin = _this44;
 
       /**
        * Options for the modal
        * @member Pushpin#options
        */
-      this.options = $.extend({}, Pushpin.defaults, options);
+      _this44.options = $.extend({}, Pushpin.defaults, options);
 
-      this.originalOffset = this.el.offsetTop;
-      Pushpin._pushpins.push(this);
-      this._setupEventHandlers();
-      this._updatePosition();
+      _this44.originalOffset = _this44.el.offsetTop;
+      Pushpin._pushpins.push(_this44);
+      _this44._setupEventHandlers();
+      _this44._updatePosition();
+      return _this44;
     }
 
     _createClass(Pushpin, [{
@@ -7737,6 +7806,11 @@ M.throttle = function (func, wait, options) {
 
           this.el.style.top = this.options.offset + "px";
           this.el.classList.add('pinned');
+
+          // onPositionChange callback
+          if (typeof this.options.onPositionChange === 'function') {
+            this.options.onPositionChange.call(this, 'pinned');
+          }
         }
 
         // Add pin-top (when scrolled position is above top)
@@ -7744,6 +7818,11 @@ M.throttle = function (func, wait, options) {
           this._removePinClasses();
           this.el.style.top = 0;
           this.el.classList.add('pin-top');
+
+          // onPositionChange callback
+          if (typeof this.options.onPositionChange === 'function') {
+            this.options.onPositionChange.call(this, 'pin-top');
+          }
         }
 
         // Add pin-bottom (when scrolled position is below bottom)
@@ -7751,6 +7830,11 @@ M.throttle = function (func, wait, options) {
           this._removePinClasses();
           this.el.classList.add('pin-bottom');
           this.el.style.top = this.options.bottom - this.originalOffset + "px";
+
+          // onPositionChange callback
+          if (typeof this.options.onPositionChange === 'function') {
+            this.options.onPositionChange.call(this, 'pin-bottom');
+          }
         }
       }
     }, {
@@ -7760,12 +7844,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Pushpin(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Pushpin.__proto__ || Object.getPrototypeOf(Pushpin), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -7794,7 +7874,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Pushpin;
-  }();
+  }(Component);
 
   /**
    * @static
@@ -7826,7 +7906,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var FloatingActionButton = function () {
+  var FloatingActionButton = function (_Component14) {
+    _inherits(FloatingActionButton, _Component14);
+
     /**
      * Construct FloatingActionButton instance
      * @constructor
@@ -7836,14 +7918,9 @@ M.throttle = function (func, wait, options) {
     function FloatingActionButton(el, options) {
       _classCallCheck(this, FloatingActionButton);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_FloatingActionButton) {
-        el.M_FloatingActionButton.destroy();
-      }
+      var _this45 = _possibleConstructorReturn(this, (FloatingActionButton.__proto__ || Object.getPrototypeOf(FloatingActionButton)).call(this, FloatingActionButton, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_FloatingActionButton = this;
+      _this45.el.M_FloatingActionButton = _this45;
 
       /**
        * Options for the fab
@@ -7852,29 +7929,30 @@ M.throttle = function (func, wait, options) {
        * @prop {Boolean} [hoverEnabled=true] - Enable hover vs click
        * @prop {Boolean} [toolbarEnabled=false] - Enable toolbar transition
        */
-      this.options = $.extend({}, FloatingActionButton.defaults, options);
+      _this45.options = $.extend({}, FloatingActionButton.defaults, options);
 
-      this.isOpen = false;
-      this.$anchor = this.$el.children('a').first();
-      this.$menu = this.$el.children('ul').first();
-      this.$floatingBtns = this.$el.find('ul .btn-floating');
-      this.$floatingBtnsReverse = this.$el.find('ul .btn-floating').reverse();
-      this.offsetY = 0;
-      this.offsetX = 0;
-      if (this.options.direction === 'top') {
-        this.$el.addClass('direction-top');
-        this.offsetY = 40;
-      } else if (this.options.direction === 'right') {
-        this.$el.addClass('direction-right');
-        this.offsetX = -40;
-      } else if (this.options.direction === 'bottom') {
-        this.$el.addClass('direction-bottom');
-        this.offsetY = -40;
+      _this45.isOpen = false;
+      _this45.$anchor = _this45.$el.children('a').first();
+      _this45.$menu = _this45.$el.children('ul').first();
+      _this45.$floatingBtns = _this45.$el.find('ul .btn-floating');
+      _this45.$floatingBtnsReverse = _this45.$el.find('ul .btn-floating').reverse();
+      _this45.offsetY = 0;
+      _this45.offsetX = 0;
+      if (_this45.options.direction === 'top') {
+        _this45.$el.addClass('direction-top');
+        _this45.offsetY = 40;
+      } else if (_this45.options.direction === 'right') {
+        _this45.$el.addClass('direction-right');
+        _this45.offsetX = -40;
+      } else if (_this45.options.direction === 'bottom') {
+        _this45.$el.addClass('direction-bottom');
+        _this45.offsetY = -40;
       } else {
-        this.$el.addClass('direction-left');
-        this.offsetX = 40;
+        _this45.$el.addClass('direction-left');
+        _this45.offsetX = 40;
       }
-      this._setupEventHandlers();
+      _this45._setupEventHandlers();
+      return _this45;
     }
 
     _createClass(FloatingActionButton, [{
@@ -7997,7 +8075,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateInFAB",
       value: function _animateInFAB() {
-        var _this33 = this;
+        var _this46 = this;
 
         this.$el.addClass('active');
 
@@ -8007,8 +8085,8 @@ M.throttle = function (func, wait, options) {
             targets: el,
             opacity: 1,
             scale: [.4, 1],
-            translateY: [_this33.offsetY, 0],
-            translateX: [_this33.offsetX, 0],
+            translateY: [_this46.offsetY, 0],
+            translateX: [_this46.offsetX, 0],
             duration: 275,
             delay: time,
             easing: 'easeInOutQuad'
@@ -8024,7 +8102,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateOutFAB",
       value: function _animateOutFAB() {
-        var _this34 = this;
+        var _this47 = this;
 
         this.$floatingBtnsReverse.each(function (el) {
           anim.remove(el);
@@ -8032,12 +8110,12 @@ M.throttle = function (func, wait, options) {
             targets: el,
             opacity: 0,
             scale: .4,
-            translateY: _this34.offsetY,
-            translateX: _this34.offsetX,
+            translateY: _this47.offsetY,
+            translateX: _this47.offsetX,
             duration: 175,
             easing: 'easeOutQuad',
             complete: function () {
-              _this34.$el.removeClass('active');
+              _this47.$el.removeClass('active');
             }
           });
         });
@@ -8050,7 +8128,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateInToolbar",
       value: function _animateInToolbar() {
-        var _this35 = this;
+        var _this48 = this;
 
         var scaleFactor = void 0;
         var windowWidth = window.innerWidth;
@@ -8086,18 +8164,18 @@ M.throttle = function (func, wait, options) {
         });
 
         setTimeout(function () {
-          _this35.$el.css({
+          _this48.$el.css({
             transform: '',
             transition: 'transform .2s cubic-bezier(0.550, 0.085, 0.680, 0.530), background-color 0s linear .2s'
           });
-          _this35.$anchor.css({
+          _this48.$anchor.css({
             overflow: 'visible',
             transform: '',
             transition: 'transform .2s'
           });
 
           setTimeout(function () {
-            _this35.$el.css({
+            _this48.$el.css({
               overflow: 'hidden',
               'background-color': fabColor
             });
@@ -8105,14 +8183,14 @@ M.throttle = function (func, wait, options) {
               transform: 'scale(' + scaleFactor + ')',
               transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
             });
-            _this35.$menu.children('li').children('a').css({
+            _this48.$menu.children('li').children('a').css({
               opacity: 1
             });
 
             // Scroll to close.
-            _this35._handleDocumentClickBound = _this35._handleDocumentClick.bind(_this35);
-            window.addEventListener('scroll', _this35._handleCloseBound, true);
-            document.body.addEventListener('click', _this35._handleDocumentClickBound, true);
+            _this48._handleDocumentClickBound = _this48._handleDocumentClick.bind(_this48);
+            window.addEventListener('scroll', _this48._handleCloseBound, true);
+            document.body.addEventListener('click', _this48._handleDocumentClickBound, true);
           }, 100);
         }, 0);
       }
@@ -8124,7 +8202,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_animateOutToolbar",
       value: function _animateOutToolbar() {
-        var _this36 = this;
+        var _this49 = this;
 
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
@@ -8155,26 +8233,26 @@ M.throttle = function (func, wait, options) {
           backdrop.remove();
 
           // Set initial state.
-          _this36.$el.css({
+          _this49.$el.css({
             'text-align': '',
             width: '',
             bottom: '',
             left: '',
             overflow: '',
             'background-color': '',
-            transform: 'translate3d(' + -_this36.offsetX + 'px,0,0)'
+            transform: 'translate3d(' + -_this49.offsetX + 'px,0,0)'
           });
-          _this36.$anchor.css({
+          _this49.$anchor.css({
             overflow: '',
-            transform: 'translate3d(0,' + _this36.offsetY + 'px,0)'
+            transform: 'translate3d(0,' + _this49.offsetY + 'px,0)'
           });
 
           setTimeout(function () {
-            _this36.$el.css({
+            _this49.$el.css({
               transform: 'translate3d(0,0,0)',
               transition: 'transform .2s'
             });
-            _this36.$anchor.css({
+            _this49.$anchor.css({
               transform: 'translate3d(0,0,0)',
               transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
             });
@@ -8183,12 +8261,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new FloatingActionButton(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(FloatingActionButton.__proto__ || Object.getPrototypeOf(FloatingActionButton), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -8209,14 +8283,14 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return FloatingActionButton;
-  }();
+  }(Component);
 
   M.FloatingActionButton = FloatingActionButton;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
   }
-})(cash, anime);
+})(cash, M.anime);
 ;(function ($) {
   'use strict';
 
@@ -8298,7 +8372,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Datepicker = function () {
+  var Datepicker = function (_Component15) {
+    _inherits(Datepicker, _Component15);
+
     /**
      * Construct Datepicker instance and set up overlay
      * @constructor
@@ -8308,51 +8384,48 @@ M.throttle = function (func, wait, options) {
     function Datepicker(el, options) {
       _classCallCheck(this, Datepicker);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Datepicker) {
-        el.M_Datepicker.destroy();
-      }
+      var _this50 = _possibleConstructorReturn(this, (Datepicker.__proto__ || Object.getPrototypeOf(Datepicker)).call(this, Datepicker, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Datepicker = this;
+      _this50.el.M_Datepicker = _this50;
 
-      this.options = $.extend({}, Datepicker.defaults, options);
+      _this50.options = $.extend({}, Datepicker.defaults, options);
 
       // Remove time component from minDate and maxDate options
-      if (this.options.minDate) this.options.minDate.setHours(0, 0, 0, 0);
-      if (this.options.maxDate) this.options.maxDate.setHours(0, 0, 0, 0);
+      if (_this50.options.minDate) _this50.options.minDate.setHours(0, 0, 0, 0);
+      if (_this50.options.maxDate) _this50.options.maxDate.setHours(0, 0, 0, 0);
 
-      this.id = M.guid();
+      _this50.id = M.guid();
 
-      this._setupVariables();
-      this._insertHTMLIntoDOM();
-      this._setupModal();
+      _this50._setupVariables();
+      _this50._insertHTMLIntoDOM();
+      _this50._setupModal();
 
-      this._setupEventHandlers();
+      _this50._setupEventHandlers();
 
-      if (!this.options.defaultDate) {
-        this.options.defaultDate = new Date(Date.parse(this.el.value));
-        this.options.setDefaultDate = true;
+      if (!_this50.options.defaultDate) {
+        _this50.options.defaultDate = new Date(Date.parse(_this50.el.value));
+        _this50.options.setDefaultDate = true;
       }
 
-      var defDate = this.options.defaultDate;
+      var defDate = _this50.options.defaultDate;
 
       if (Datepicker._isDate(defDate)) {
-        if (this.options.setDefaultDate) {
-          this.setDate(defDate, true);
+        if (_this50.options.setDefaultDate) {
+          _this50.setDate(defDate, true);
         } else {
-          this.gotoDate(defDate);
+          _this50.gotoDate(defDate);
         }
       } else {
-        this.gotoDate(new Date());
+        _this50.gotoDate(new Date());
       }
 
       /**
        * Describes open/close state of datepicker
        * @type {Boolean}
        */
-      this.isOpen = false;
+      _this50.isOpen = false;
+
+      return _this50;
     }
 
     _createClass(Datepicker, [{
@@ -8362,7 +8435,12 @@ M.throttle = function (func, wait, options) {
       /**
        * Teardown component
        */
-      value: function destroy() {}
+      value: function destroy() {
+        this._removeEventHandlers();
+        this.modal.destroy();
+        $(this.modalEl).remove();
+        this.el.M_Datepicker = undefined;
+      }
     }, {
       key: "_insertHTMLIntoDOM",
       value: function _insertHTMLIntoDOM() {
@@ -8380,19 +8458,19 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupModal",
       value: function _setupModal() {
-        var _this37 = this;
+        var _this51 = this;
 
         this.modalEl.id = 'modal-' + this.id;
-        this.modal = new M.Modal(this.modalEl, {
-          complete: function () {
-            _this37.isOpen = false;
+        this.modal = M.Modal.init(this.modalEl, {
+          onCloseEnd: function () {
+            _this51.isOpen = false;
           }
         });
       }
     }, {
       key: "toString",
       value: function toString(format) {
-        var _this38 = this;
+        var _this52 = this;
 
         format = format || this.options.format;
         if (!Datepicker._isDate(this.date)) {
@@ -8401,11 +8479,11 @@ M.throttle = function (func, wait, options) {
 
         var formatArray = format.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g);
         var formattedDate = formatArray.map(function (label) {
-          if (_this38.formats[label]) {
-            return _this38.formats[label]();
-          } else {
-            return label;
+          if (_this52.formats[label]) {
+            return _this52.formats[label]();
           }
+
+          return label;
         }).join('');
         return formattedDate;
       }
@@ -8784,8 +8862,8 @@ M.throttle = function (func, wait, options) {
         // Init Materialize Select
         var yearSelect = this.calendarEl.querySelector('.pika-select-year');
         var monthSelect = this.calendarEl.querySelector('.pika-select-month');
-        new M.Select(yearSelect, { classes: 'select-year' });
-        new M.Select(monthSelect, { classes: 'select-month' });
+        M.Select.init(yearSelect, { classes: 'select-year' });
+        M.Select.init(monthSelect, { classes: 'select-month' });
 
         // Add change handlers for select
         yearSelect.addEventListener('change', this._handleYearChange.bind(this));
@@ -8823,7 +8901,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupVariables",
       value: function _setupVariables() {
-        var _this39 = this;
+        var _this53 = this;
 
         this.$modalEl = $(Datepicker._template);
         this.modalEl = this.$modalEl[0];
@@ -8839,28 +8917,28 @@ M.throttle = function (func, wait, options) {
         this.formats = {
 
           dd: function () {
-            return _this39.date.getDate();
+            return _this53.date.getDate();
           },
           ddd: function () {
-            return _this39.options.i18n.weekdaysShort[_this39.date.getDay()];
+            return _this53.options.i18n.weekdaysShort[_this53.date.getDay()];
           },
           dddd: function () {
-            return _this39.options.i18n.weekdays[_this39.date.getDay()];
+            return _this53.options.i18n.weekdays[_this53.date.getDay()];
           },
           mm: function () {
-            return _this39.date.getMonth() + 1;
+            return _this53.date.getMonth() + 1;
           },
           mmm: function () {
-            return _this39.options.i18n.monthsShort[_this39.date.getMonth()];
+            return _this53.options.i18n.monthsShort[_this53.date.getMonth()];
           },
           mmmm: function () {
-            return _this39.options.i18n.monthsShort[_this39.date.getMonth()];
+            return _this53.options.i18n.monthsShort[_this53.date.getMonth()];
           },
           yy: function () {
-            return _this39.date.getFullYear().slice(2);
+            return _this53.date.getFullYear().slice(2);
           },
           yyyy: function () {
-            return _this39.date.getFullYear();
+            return _this53.date.getFullYear();
           }
         };
       }
@@ -9052,12 +9130,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Datepicker(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Datepicker.__proto__ || Object.getPrototypeOf(Datepicker), "init", this).call(this, this, els, options);
       }
     }, {
       key: "_isDate",
@@ -9117,7 +9191,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Datepicker;
-  }();
+  }(Component);
 
   Datepicker._template = ['<div class= "modal datepicker-modal">', '<div class="modal-content datepicker-container">', '<div class="datepicker-date-display">', '<span class="year-text"></span>', '<span class="date-text"></span>', '</div>', '<div class="datepicker-calendar-container">', '<div class="pika-single"></div>', '<div class="datepicker-footer">', '<button class="btn-flat datepicker-clear waves-effect" type="button"></button>', '<div class="confirmation-btns">', '<button class="btn-flat datepicker-today waves-effect" type="button"></button>', '<button class="btn-flat datepicker-done waves-effect" type="button"></button>', '</div>', '</div>', '</div>', '</div>', '</div>'].join('');
 
@@ -9152,29 +9226,27 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Timepicker = function () {
+  var Timepicker = function (_Component16) {
+    _inherits(Timepicker, _Component16);
+
     function Timepicker(el, options) {
       _classCallCheck(this, Timepicker);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Timepicker) {
-        el.M_Timepicker.destroy();
-      }
+      var _this54 = _possibleConstructorReturn(this, (Timepicker.__proto__ || Object.getPrototypeOf(Timepicker)).call(this, Timepicker, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Timepicker = this;
+      _this54.el.M_Timepicker = _this54;
 
-      this.options = $.extend({}, Timepicker.defaults, options);
+      _this54.options = $.extend({}, Timepicker.defaults, options);
 
-      this.id = M.guid();
-      this._insertHTMLIntoDOM();
-      this._setupModal();
-      this._setupVariables();
-      this._setupEventHandlers();
+      _this54.id = M.guid();
+      _this54._insertHTMLIntoDOM();
+      _this54._setupModal();
+      _this54._setupVariables();
+      _this54._setupEventHandlers();
 
-      this._clockSetup();
-      this._pickerSetup();
+      _this54._clockSetup();
+      _this54._pickerSetup();
+      return _this54;
     }
 
     _createClass(Timepicker, [{
@@ -9310,11 +9382,11 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupModal",
       value: function _setupModal() {
-        var _this40 = this;
+        var _this55 = this;
 
-        this.modal = new M.Modal(this.modalEl, {
-          complete: function () {
-            _this40.isOpen = false;
+        this.modal = M.Modal.init(this.modalEl, {
+          onCloseEnd: function () {
+            _this55.isOpen = false;
           }
         });
       }
@@ -9466,7 +9538,7 @@ M.throttle = function (func, wait, options) {
         // Get the time
         var value = ((this.el.value || this.options.defaultTime || '') + '').split(':');
         if (this.options.twelveHour && !(typeof value[1] === 'undefined')) {
-          if (value[1].indexOf("AM") > 0) {
+          if (value[1].toUpperCase().indexOf("AM") > 0) {
             this.amOrPm = 'AM';
           } else {
             this.amOrPm = 'PM';
@@ -9540,7 +9612,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "setHand",
       value: function setHand(x, y, roundBy5) {
-        var _this41 = this;
+        var _this56 = this;
 
         var radian = Math.atan2(x, -y),
             isHours = this.currentView === 'hours',
@@ -9595,7 +9667,7 @@ M.throttle = function (func, wait, options) {
             if (!this.vibrateTimer) {
               navigator[this.vibrate](10);
               this.vibrateTimer = setTimeout(function () {
-                _this41.vibrateTimer = null;
+                _this56.vibrateTimer = null;
               }, 100);
             }
           }
@@ -9672,12 +9744,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Timepicker(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Timepicker.__proto__ || Object.getPrototypeOf(Timepicker), "init", this).call(this, this, els, options);
       }
     }, {
       key: "_addLeadingZero",
@@ -9731,7 +9799,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Timepicker;
-  }();
+  }(Component);
 
   Timepicker._template = ['<div class= "modal timepicker-modal">', '<div class="modal-content timepicker-container">', '<div class="timepicker-digital-display">', '<div class="timepicker-text-container">', '<div class="timepicker-display-column">', '<span class="timepicker-span-hours text-primary"></span>', ':', '<span class="timepicker-span-minutes"></span>', '</div>', '<div class="timepicker-display-column timepicker-display-am-pm">', '<div class="timepicker-span-am-pm"></div>', '</div>', '</div>', '</div>', '<div class="timepicker-analog-display">', '<div class="timepicker-plate">', '<div class="timepicker-canvas"></div>', '<div class="timepicker-dial timepicker-hours"></div>', '<div class="timepicker-dial timepicker-minutes timepicker-dial-out"></div>', '</div>', '<div class="timepicker-footer"></div>', '</div>', '</div>', '</div>'].join('');
 
@@ -9751,7 +9819,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var CharacterCounter = function () {
+  var CharacterCounter = function (_Component17) {
+    _inherits(CharacterCounter, _Component17);
+
     /**
      * Construct CharacterCounter instance
      * @constructor
@@ -9761,24 +9831,20 @@ M.throttle = function (func, wait, options) {
     function CharacterCounter(el, options) {
       _classCallCheck(this, CharacterCounter);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_CharacterCounter) {
-        el.M_CharacterCounter.destroy();
-      }
+      var _this57 = _possibleConstructorReturn(this, (CharacterCounter.__proto__ || Object.getPrototypeOf(CharacterCounter)).call(this, CharacterCounter, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_CharacterCounter = this;
+      _this57.el.M_CharacterCounter = _this57;
 
       /**
        * Options for the character counter
        */
-      this.options = $.extend({}, CharacterCounter.defaults, options);
+      _this57.options = $.extend({}, CharacterCounter.defaults, options);
 
-      this.isInvalid = false;
-      this.isValidLength = false;
-      this._setupCounter();
-      this._setupEventHandlers();
+      _this57.isInvalid = false;
+      _this57.isValidLength = false;
+      _this57._setupCounter();
+      _this57._setupEventHandlers();
+      return _this57;
     }
 
     _createClass(CharacterCounter, [{
@@ -9883,12 +9949,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new CharacterCounter(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(CharacterCounter.__proto__ || Object.getPrototypeOf(CharacterCounter), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -9909,7 +9971,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return CharacterCounter;
-  }();
+  }(Component);
 
   M.CharacterCounter = CharacterCounter;
 
@@ -9936,7 +9998,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Carousel = function () {
+  var Carousel = function (_Component18) {
+    _inherits(Carousel, _Component18);
+
     /**
      * Construct Carousel instance
      * @constructor
@@ -9944,18 +10008,11 @@ M.throttle = function (func, wait, options) {
      * @param {Object} options
      */
     function Carousel(el, options) {
-      var _this42 = this;
-
       _classCallCheck(this, Carousel);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Carousel) {
-        el.M_Carousel.destroy();
-      }
+      var _this58 = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, Carousel, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Carousel = this;
+      _this58.el.M_Carousel = _this58;
 
       /**
        * Options for the carousel
@@ -9969,38 +10026,38 @@ M.throttle = function (func, wait, options) {
        * @prop {Boolean} noWrap
        * @prop {Function} onCycleTo
        */
-      this.options = $.extend({}, Carousel.defaults, options);
+      _this58.options = $.extend({}, Carousel.defaults, options);
 
       // Setup
-      this.hasMultipleSlides = this.$el.find('.carousel-item').length > 1;
-      this.showIndicators = this.options.indicators && this.hasMultipleSlides;
-      this.noWrap = this.options.noWrap || !this.hasMultipleSlides;
-      this.pressed = false;
-      this.dragged = false;
-      this.offset = this.target = 0;
-      this.images = [];
-      this.itemWidth = this.$el.find('.carousel-item').first().innerWidth();
-      this.itemHeight = this.$el.find('.carousel-item').first().innerHeight();
-      this.dim = this.itemWidth * 2 + this.options.padding || 1; // Make sure dim is non zero for divisions.
-      this._autoScrollBound = this._autoScroll.bind(this);
-      this._trackBound = this._track.bind(this);
+      _this58.hasMultipleSlides = _this58.$el.find('.carousel-item').length > 1;
+      _this58.showIndicators = _this58.options.indicators && _this58.hasMultipleSlides;
+      _this58.noWrap = _this58.options.noWrap || !_this58.hasMultipleSlides;
+      _this58.pressed = false;
+      _this58.dragged = false;
+      _this58.offset = _this58.target = 0;
+      _this58.images = [];
+      _this58.itemWidth = _this58.$el.find('.carousel-item').first().innerWidth();
+      _this58.itemHeight = _this58.$el.find('.carousel-item').first().innerHeight();
+      _this58.dim = _this58.itemWidth * 2 + _this58.options.padding || 1; // Make sure dim is non zero for divisions.
+      _this58._autoScrollBound = _this58._autoScroll.bind(_this58);
+      _this58._trackBound = _this58._track.bind(_this58);
 
       // Full Width carousel setup
-      if (this.options.fullWidth) {
-        this.options.dist = 0;
-        this._setCarouselHeight();
+      if (_this58.options.fullWidth) {
+        _this58.options.dist = 0;
+        _this58._setCarouselHeight();
 
         // Offset fixed items when indicators.
-        if (this.showIndicators) {
-          this.$el.find('.carousel-fixed-item').addClass('with-indicators');
+        if (_this58.showIndicators) {
+          _this58.$el.find('.carousel-fixed-item').addClass('with-indicators');
         }
       }
 
       // Iterate through slides
-      this.$indicators = $('<ul class="indicators"></ul>');
-      this.$el.find('.carousel-item').each(function (el, i) {
-        _this42.images.push(el);
-        if (_this42.showIndicators) {
+      _this58.$indicators = $('<ul class="indicators"></ul>');
+      _this58.$el.find('.carousel-item').each(function (el, i) {
+        _this58.images.push(el);
+        if (_this58.showIndicators) {
           var $indicator = $('<li class="indicator-item"></li>');
 
           // Add active to first by default.
@@ -10008,27 +10065,28 @@ M.throttle = function (func, wait, options) {
             $indicator[0].classList.add('active');
           }
 
-          _this42.$indicators.append($indicator);
+          _this58.$indicators.append($indicator);
         }
       });
-      if (this.showIndicators) {
-        this.$el.append(this.$indicators);
+      if (_this58.showIndicators) {
+        _this58.$el.append(_this58.$indicators);
       }
-      this.count = this.images.length;
+      _this58.count = _this58.images.length;
 
       // Setup cross browser string
-      this.xform = 'transform';
+      _this58.xform = 'transform';
       ['webkit', 'Moz', 'O', 'ms'].every(function (prefix) {
         var e = prefix + 'Transform';
         if (typeof document.body.style[e] !== 'undefined') {
-          _this42.xform = e;
+          _this58.xform = e;
           return false;
         }
         return true;
       });
 
-      this._setupEventHandlers();
-      this._scroll(this.offset);
+      _this58._setupEventHandlers();
+      _this58._scroll(_this58.offset);
+      return _this58;
     }
 
     _createClass(Carousel, [{
@@ -10050,7 +10108,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        var _this43 = this;
+        var _this59 = this;
 
         this._handleCarouselTapBound = this._handleCarouselTap.bind(this);
         this._handleCarouselDragBound = this._handleCarouselDrag.bind(this);
@@ -10072,7 +10130,7 @@ M.throttle = function (func, wait, options) {
         if (this.showIndicators && this.$indicators) {
           this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
           this.$indicators.find('.indicator-item').each(function (el, i) {
-            el.addEventListener('click', _this43._handleIndicatorClickBound);
+            el.addEventListener('click', _this59._handleIndicatorClickBound);
           });
         }
 
@@ -10090,7 +10148,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        var _this44 = this;
+        var _this60 = this;
 
         if (typeof window.ontouchstart !== 'undefined') {
           this.el.removeEventListener('touchstart', this._handleCarouselTapBound);
@@ -10105,7 +10163,7 @@ M.throttle = function (func, wait, options) {
 
         if (this.showIndicators && this.$indicators) {
           this.$indicators.find('.indicator-item').each(function (el, i) {
-            el.removeEventListener('click', _this44._handleIndicatorClickBound);
+            el.removeEventListener('click', _this60._handleIndicatorClickBound);
           });
         }
 
@@ -10291,7 +10349,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setCarouselHeight",
       value: function _setCarouselHeight(imageOnly) {
-        var _this45 = this;
+        var _this61 = this;
 
         var firstSlide = this.$el.find('.carousel-item.active').length ? this.$el.find('.carousel-item.active').first() : this.$el.find('.carousel-item').first();
         var firstImage = firstSlide.find('img').first();
@@ -10311,7 +10369,7 @@ M.throttle = function (func, wait, options) {
           } else {
             // Get height when image is loaded normally
             firstImage.one('load', function (el, i) {
-              _this45.$el.css('height', el.offsetHeight + 'px');
+              _this61.$el.css('height', el.offsetHeight + 'px');
             });
           }
         } else if (!imageOnly) {
@@ -10417,7 +10475,7 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_scroll",
       value: function _scroll(x) {
-        var _this46 = this;
+        var _this62 = this;
 
         // Track scrolling state
         if (!this.$el.hasClass('scrolling')) {
@@ -10427,7 +10485,7 @@ M.throttle = function (func, wait, options) {
           window.clearTimeout(this.scrollingTimeout);
         }
         this.scrollingTimeout = window.setTimeout(function () {
-          _this46.$el.removeClass('scrolling');
+          _this62.$el.removeClass('scrolling');
         }, this.options.duration);
 
         // Start actual scroll
@@ -10614,9 +10672,9 @@ M.throttle = function (func, wait, options) {
         if (index > this.count || index < 0) {
           if (this.noWrap) {
             return;
-          } else {
-            index = this._wrap(index);
           }
+
+          index = this._wrap(index);
         }
         this._cycleTo(index);
       }
@@ -10637,9 +10695,9 @@ M.throttle = function (func, wait, options) {
         if (index > this.count || index < 0) {
           if (this.noWrap) {
             return;
-          } else {
-            index = this._wrap(index);
           }
+
+          index = this._wrap(index);
         }
 
         this._cycleTo(index);
@@ -10661,21 +10719,17 @@ M.throttle = function (func, wait, options) {
         if (n > this.count || n < 0) {
           if (this.noWrap) {
             return;
-          } else {
-            n = this._wrap(n);
           }
+
+          n = this._wrap(n);
         }
 
         this._cycleTo(n, callback);
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new Carousel(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Carousel.__proto__ || Object.getPrototypeOf(Carousel), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -10696,7 +10750,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Carousel;
-  }();
+  }(Component);
 
   M.Carousel = Carousel;
 
@@ -10707,14 +10761,19 @@ M.throttle = function (func, wait, options) {
 ;(function ($) {
   'use strict';
 
-  var _defaults = {};
+  var _defaults = {
+    onOpen: undefined,
+    onClose: undefined
+  };
 
   /**
    * @class
    *
    */
 
-  var FeatureDiscovery = function () {
+  var FeatureDiscovery = function (_Component19) {
+    _inherits(FeatureDiscovery, _Component19);
+
     /**
      * Construct FeatureDiscovery instance
      * @constructor
@@ -10724,29 +10783,27 @@ M.throttle = function (func, wait, options) {
     function FeatureDiscovery(el, options) {
       _classCallCheck(this, FeatureDiscovery);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_FeatureDiscovery) {
-        el.M_FeatureDiscovery.destroy();
-      }
+      var _this63 = _possibleConstructorReturn(this, (FeatureDiscovery.__proto__ || Object.getPrototypeOf(FeatureDiscovery)).call(this, FeatureDiscovery, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_FeatureDiscovery = this;
+      _this63.el.M_FeatureDiscovery = _this63;
 
       /**
        * Options for the select
        * @member FeatureDiscovery#options
+       * @prop {Function} onOpen - Callback function called when feature discovery is opened
+       * @prop {Function} onClose - Callback function called when feature discovery is closed
        */
-      this.options = $.extend({}, FeatureDiscovery.defaults, options);
+      _this63.options = $.extend({}, FeatureDiscovery.defaults, options);
 
-      this.isOpen = false;
+      _this63.isOpen = false;
 
       // setup
-      this.$origin = $('#' + this.$el.attr('data-target'));
-      this._setup();
+      _this63.$origin = $('#' + _this63.$el.attr('data-target'));
+      _this63._setup();
 
-      this._calculatePositioning();
-      this._setupEventHandlers();
+      _this63._calculatePositioning();
+      _this63._setupEventHandlers();
+      return _this63;
     }
 
     _createClass(FeatureDiscovery, [{
@@ -10989,10 +11046,16 @@ M.throttle = function (func, wait, options) {
           return;
         }
 
+        // onOpen callback
+        if (typeof this.options.onOpen === 'function') {
+          this.options.onOpen.call(this, this.$origin[0]);
+        }
+
         this.isOpen = true;
         this.wrapper.classList.add('open');
 
         document.body.addEventListener('click', this._handleDocumentClickBound, true);
+        document.body.addEventListener('touchend', this._handleDocumentClickBound);
       }
 
       /**
@@ -11006,19 +11069,21 @@ M.throttle = function (func, wait, options) {
           return;
         }
 
+        // onClose callback
+        if (typeof this.options.onClose === 'function') {
+          this.options.onClose.call(this, this.$origin[0]);
+        }
+
         this.isOpen = false;
         this.wrapper.classList.remove('open');
 
         document.body.removeEventListener('click', this._handleDocumentClickBound, true);
+        document.body.removeEventListener('touchend', this._handleDocumentClickBound);
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          arr.push(new FeatureDiscovery(this, options));
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(FeatureDiscovery.__proto__ || Object.getPrototypeOf(FeatureDiscovery), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -11039,7 +11104,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return FeatureDiscovery;
-  }();
+  }(Component);
 
   M.FeatureDiscovery = FeatureDiscovery;
 
@@ -11059,7 +11124,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Select = function () {
+  var Select = function (_Component20) {
+    _inherits(Select, _Component20);
+
     /**
      * Construct Select instance
      * @constructor
@@ -11069,29 +11136,25 @@ M.throttle = function (func, wait, options) {
     function Select(el, options) {
       _classCallCheck(this, Select);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Select) {
-        el.M_Select.destroy();
-      }
+      var _this64 = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, Select, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Select = this;
+      _this64.el.M_Select = _this64;
 
       /**
        * Options for the select
        * @member Select#options
        */
-      this.options = $.extend({}, Select.defaults, options);
+      _this64.options = $.extend({}, Select.defaults, options);
 
-      this.isMultiple = this.$el.prop('multiple');
+      _this64.isMultiple = _this64.$el.prop('multiple');
 
       // Setup
-      this._keysSelected = {};
-      this._valueDict = {}; // Maps key to original and generated option element.
-      this._setupDropdown();
+      _this64._keysSelected = {};
+      _this64._valueDict = {}; // Maps key to original and generated option element.
+      _this64._setupDropdown();
 
-      this._setupEventHandlers();
+      _this64._setupEventHandlers();
+      return _this64;
     }
 
     _createClass(Select, [{
@@ -11114,14 +11177,14 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        var _this47 = this;
+        var _this65 = this;
 
         this._handleSelectChangeBound = this._handleSelectChange.bind(this);
         this._handleOptionClickBound = this._handleOptionClick.bind(this);
         this._handleInputClickBound = this._handleInputClick.bind(this);
 
         $(this.dropdownOptions).find('li:not(.optgroup)').each(function (el) {
-          el.addEventListener('click', _this47._handleOptionClickBound);
+          el.addEventListener('click', _this65._handleOptionClickBound);
         });
         this.el.addEventListener('change', this._handleSelectChangeBound);
         this.input.addEventListener('click', this._handleInputClickBound);
@@ -11134,10 +11197,10 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        var _this48 = this;
+        var _this66 = this;
 
         $(this.dropdownOptions).find('li:not(.optgroup)').each(function (el) {
-          el.removeEventListener('click', _this48._handleOptionClickBound);
+          el.removeEventListener('click', _this66._handleOptionClickBound);
         });
         this.el.removeEventListener('change', this._handleSelectChangeBound);
         this.input.removeEventListener('click', this._handleInputClickBound);
@@ -11170,6 +11233,14 @@ M.throttle = function (func, wait, options) {
           var selected = true;
 
           if (this.isMultiple) {
+            // Deselect placeholder option if still selected.
+            var placeholderOption = $(this.dropdownOptions).find('li.disabled.selected');
+            if (placeholderOption.length) {
+              placeholderOption.removeClass('selected');
+              placeholderOption.find('input[type="checkbox"]').prop('checked', false);
+              this._toggleEntryFromArray(placeholderOption[0].id);
+            }
+
             var checkbox = $(option).find('input[type="checkbox"]');
             checkbox.prop('checked', !checkbox.prop('checked'));
             selected = this._toggleEntryFromArray(key);
@@ -11207,10 +11278,9 @@ M.throttle = function (func, wait, options) {
     }, {
       key: "_setupDropdown",
       value: function _setupDropdown() {
-        var _this49 = this;
+        var _this67 = this;
 
         this.wrapper = document.createElement('div');
-        this.wrapper.classList.add();
         $(this.wrapper).addClass('select-wrapper' + ' ' + this.options.classes);
         this.$el.before($(this.wrapper));
         this.wrapper.appendChild(this.el);
@@ -11231,21 +11301,21 @@ M.throttle = function (func, wait, options) {
             if ($(el).is('option')) {
               // Direct descendant option.
               var optionEl = void 0;
-              if (_this49.isMultiple) {
-                optionEl = _this49._appendOptionWithIcon(_this49.$el, el, 'multiple');
+              if (_this67.isMultiple) {
+                optionEl = _this67._appendOptionWithIcon(_this67.$el, el, 'multiple');
               } else {
-                optionEl = _this49._appendOptionWithIcon(_this49.$el, el);
+                optionEl = _this67._appendOptionWithIcon(_this67.$el, el);
               }
 
-              _this49._addOptionToValueDict(el, optionEl);
+              _this67._addOptionToValueDict(el, optionEl);
             } else if ($(el).is('optgroup')) {
               // Optgroup.
               var selectOptions = $(el).children('option');
-              $(_this49.dropdownOptions).append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
+              $(_this67.dropdownOptions).append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
 
               selectOptions.each(function (el) {
-                var optionEl = _this49._appendOptionWithIcon(_this49.$el, el, 'optgroup-option');
-                _this49._addOptionToValueDict(el, optionEl);
+                var optionEl = _this67._appendOptionWithIcon(_this67.$el, el, 'optgroup-option');
+                _this67._addOptionToValueDict(el, optionEl);
               });
             }
           });
@@ -11276,7 +11346,7 @@ M.throttle = function (func, wait, options) {
           if (this.isMultiple) {
             dropdownOptions.closeOnClick = false;
           }
-          this.dropdown = new M.Dropdown(this.input, dropdownOptions);
+          this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
         }
 
         // Add initial selections
@@ -11458,14 +11528,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          if (!$(this).hasClass('browser-default')) {
-            arr.push(new Select(this, options));
-          }
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Select.__proto__ || Object.getPrototypeOf(Select), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -11486,7 +11550,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Select;
-  }();
+  }(Component);
 
   M.Select = Select;
 
@@ -11504,7 +11568,9 @@ M.throttle = function (func, wait, options) {
    *
    */
 
-  var Range = function () {
+  var Range = function (_Component21) {
+    _inherits(Range, _Component21);
+
     /**
      * Construct Range instance
      * @constructor
@@ -11514,27 +11580,23 @@ M.throttle = function (func, wait, options) {
     function Range(el, options) {
       _classCallCheck(this, Range);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Range) {
-        el.M_Range.destroy();
-      }
+      var _this68 = _possibleConstructorReturn(this, (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, Range, el, options));
 
-      this.el = el;
-      this.$el = $(el);
-      this.el.M_Range = this;
+      _this68.el.M_Range = _this68;
 
       /**
        * Options for the range
        * @member Range#options
        */
-      this.options = $.extend({}, Range.defaults, options);
+      _this68.options = $.extend({}, Range.defaults, options);
 
-      this._mousedown = false;
+      _this68._mousedown = false;
 
       // Setup
-      this._setupThumb();
+      _this68._setupThumb();
 
-      this._setupEventHandlers();
+      _this68._setupEventHandlers();
+      return _this68;
     }
 
     _createClass(Range, [{
@@ -11781,14 +11843,8 @@ M.throttle = function (func, wait, options) {
       }
     }], [{
       key: "init",
-      value: function init($els, options) {
-        var arr = [];
-        $els.each(function () {
-          if (!$(this).hasClass('browser-default')) {
-            arr.push(new Range(this, options));
-          }
-        });
-        return arr;
+      value: function init(els, options) {
+        return _get(Range.__proto__ || Object.getPrototypeOf(Range), "init", this).call(this, this, els, options);
       }
 
       /**
@@ -11809,7 +11865,7 @@ M.throttle = function (func, wait, options) {
     }]);
 
     return Range;
-  }();
+  }(Component);
 
   M.Range = Range;
 
@@ -11818,4 +11874,4 @@ M.throttle = function (func, wait, options) {
   }
 
   Range.init($('input[type=range]'));
-})(cash, anime);
+})(cash, M.anime);
