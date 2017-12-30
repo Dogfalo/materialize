@@ -185,7 +185,10 @@
      * Teardown component
      */
     destroy() {
-
+      this._removeEventHandlers();
+      this.modal.destroy();
+      $(this.modalEl).remove();
+      this.el.M_Datepicker = undefined;
     }
 
     _insertHTMLIntoDOM() {
