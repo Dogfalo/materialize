@@ -349,7 +349,7 @@ ul.staggered-list li {
     padding: 10px 0px;
     color: $footer-copyright-font-color;
     background-color: $footer-copyright-bg-color;
-    @extend .light;
+    font-weight: 300;
   }
 }
 
