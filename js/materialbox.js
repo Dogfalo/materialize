@@ -89,7 +89,7 @@
     /**
      * Remove Event Handlers
      */
-    removeEventHandlers() {
+    _removeEventHandlers() {
       this.el.removeEventListener('click', this._handleMaterialboxClickBound);
     }
 
