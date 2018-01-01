@@ -166,12 +166,25 @@ ul.sidenav.sidenav-fixed {
   }
 }
 .patreon-footer-ad {
+  &.white-ad {
+    background-color: #444;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
+
+  display: inline-block;
+  float: left;
+  margin-right: 50px;
+
   a {
-    display: block;
-    max-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
   }
   img {
-    width: 100%;
+    max-width: 200px;
+    max-height: 100%;
   }
 }
 
