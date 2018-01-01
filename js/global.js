@@ -88,7 +88,7 @@ Materialize.guid = (function() {
  * @returns {string}
  */
 Materialize.escapeHash = function(hash) {
-  return hash.replace( /(:|\.|\[|\]|,|=)/g, "\\$1" );
+  return hash.replace( /(:|\.|\[|\]|,|=|\/)/g, "\\$1" );
 };
 
 Materialize.elementOrParentIsFixed = function(element) {
