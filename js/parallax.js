@@ -18,9 +18,14 @@
        * @prop {Number} responsiveThreshold
        */
       this.options = $.extend({}, Parallax.defaults, options);
+      this._enabled = window.innerWidth > this.options.responsiveThreshold;
 
       this.$img = this.$el.find('img').first();
-      this._enabled = window.innerWidth > this.options.responsiveThreshold;
+      this.$img.each(function() {
+        let el = this;
+        if (el.complete) $(el).trigger("load");
+      });
+
       this._updateParallax();
       this._setupEventHandlers();
       this._setupStyles();
@@ -97,10 +102,6 @@
 
     _handleImageLoad() {
       this._updateParallax();
-      this.$img.each(function() {
-        let el = this;
-        if (el.complete) $(el).trigger("load");
-      });
     }
 
     _updateParallax() {
