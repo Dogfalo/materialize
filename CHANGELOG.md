@@ -2,7 +2,57 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
-## v1.0.0 (November 10th)
+## 1.0.0-alpha.3 (December 29th, 2017)
+- *Initialization code for all components changed. E.g. Change`new M.Tooltip(el, options)` to `M.Tooltip.init(el, options)`*
+  - This was done so that the same initialization code can be used to initialize single Elements as well as NodeLists and jQuery element objects
+
+- Added in onOpen and OnClose callbacks for appropriate plugins
+
+- Datepicker
+  - Destroy function added
+
+- Feature Discovery
+  - Added open and close callbacks
+
+- Materialbox
+  - Added open and close callbacks
+
+- Modal
+  - Added open and close callbacks for consistency
+  - Removed ready and complete callbacks
+
+- Parallax
+  - Has responsiveThreshold option
+  - Destroy function added
+
+- Pushpin
+  - added onPositionChange callback
+
+## 1.0.0-alpha.2 (November 30th)
+- Chips
+  - Fixed and standardized chips callback parameters
+
+- Datepicker
+  - Fixed date format option
+  - Scrollbar no longer unecessarily appears when using datepicker
+  - Fixed bug where using month and year selectors didn't change date
+
+- Dropdown
+  - Removed automatic focus highlight on open
+
+- Textarea
+  - Fixed error where text was cut off on Firefox
+
+- Tabs
+  - Fixed error with pure JavaScript initialization
+  - Fixed error where a tab with no content would break tabs
+
+- Timepicker
+  - Fixed error with twelveHour options
+
+- Replaced velocity.js with anime.js
+
+## 1.0.0-alpha.1 (November 10th)
 - Dropdown
   - rewritten with classes
   - Plugin is initialized on `.dropdown-content` instead of `.dropdown-button`
@@ -16,6 +66,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Select
   - rewritten with classes
   - Plugin renamed from 'material_select' to 'select'
+  - The select will no longer copy the class attribute on each <option> el to the <img> for the icon in the generated select.
 
 - Tabs
   - rewritten with classes

@@ -36,7 +36,7 @@ textarea.materialize-textarea {
   padding: $input-padding;
   box-shadow: none;
   box-sizing: content-box;
-  transition: $input-transition;
+  transition: box-shadow .3s, border .3s;
 
   // Disabled input style
   &:disabled,
@@ -260,7 +260,7 @@ textarea.materialize-textarea {
     box-shadow: none;
   }
 
-  &:focus {
+  &:focus:not(.browser-default) {
     background-color: $input-background;
     border: 0;
     box-shadow: none;
@@ -273,7 +273,8 @@ textarea.materialize-textarea {
     }
   }
 
-  & + label {
+  & + .label-icon {
+    transform: none;
     left: 1rem;
   }
 
@@ -299,8 +300,9 @@ textarea {
   background-color: transparent;
 
   &.materialize-textarea {
+    line-height: normal;
     overflow-y: hidden; /* prevents scroll bar flash */
-    padding: .8rem 0 1.6rem 0; /* prevents text jump on Enter keypress */
+    padding: .8rem 0 .8rem 0; /* prevents text jump on Enter keypress */
     resize: none;
     min-height: $input-height;
     box-sizing: border-box;

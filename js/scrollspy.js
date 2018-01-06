@@ -1,11 +1,11 @@
-(function($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
     throttle: 100,
     scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
     activeClass: 'active',
-    getActiveElement: function(id) {
+    getActiveElement: function (id) {
       return 'a[href="#' + id + '"]';
     }
   };
@@ -14,7 +14,7 @@
    * @class
    *
    */
-  class ScrollSpy {
+  class ScrollSpy extends Component {
     /**
      * Construct ScrollSpy instance
      * @constructor
@@ -22,14 +22,8 @@
      * @param {Object} options
      */
     constructor(el, options) {
+      super(ScrollSpy, el, options);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_ScrollSpy) {
-        el.M_ScrollSpy.destroy();
-      }
-
-      this.el = el;
-      this.$el = $(el);
       this.el.M_ScrollSpy = this;
 
       /**
@@ -41,7 +35,6 @@
        * @prop {Function} [getActiveElement] - Used to find active element
        */
       this.options = $.extend({}, ScrollSpy.defaults, options);
-
 
       // setup
       ScrollSpy._elements.push(this);
@@ -57,12 +50,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new ScrollSpy(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -122,10 +111,13 @@
         if ($trigger.is('a[href="#' + scrollspy.$el.attr('id') + '"]')) {
           e.preventDefault();
           let offset = scrollspy.$el.offset().top + 1;
-          Vel(
-            document.body,
-            'scroll',
-            {duration: 400, offset: offset - scrollspy.options.scrollOffset, easing: 'easeOutCubic'});
+
+          anim({
+            targets: [document.documentElement, document.body],
+            scrollTop: offset - scrollspy.options.scrollOffset,
+            duration: 400,
+            easing: 'easeOutCubic'
+          });
           break;
         }
       }
@@ -140,9 +132,9 @@
 
       // viewport rectangle
       let top = M.getDocumentScrollTop(),
-          left = M.getDocumentScrollLeft(),
-          right = left + window.innerWidth,
-          bottom = top + window.innerHeight;
+        left = M.getDocumentScrollLeft(),
+        right = left + window.innerWidth,
+        bottom = top + window.innerHeight;
 
       // determine which elements are in view
       let intersections = ScrollSpy._findElements(top, right, bottom, left);
@@ -206,7 +198,7 @@
     }
 
     _enter() {
-      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function(value) {
+      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
         return value.height() != 0;
       });
 
@@ -214,12 +206,10 @@
         $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(this.options.activeClass);
         if (ScrollSpy._visibleElements[0][0].M_ScrollSpy && this.id < ScrollSpy._visibleElements[0][0].M_ScrollSpy.id) {
           ScrollSpy._visibleElements.unshift(this.$el);
-        }
-        else {
+        } else {
           ScrollSpy._visibleElements.push(this.$el);
         }
-      }
-      else {
+      } else {
         ScrollSpy._visibleElements.push(this.$el);
       }
 
@@ -227,7 +217,7 @@
     }
 
     _exit() {
-      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function(value) {
+      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
         return value.height() != 0;
       });
 
@@ -290,4 +280,4 @@
     M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
   }
 
-})(cash, M.Vel);
+})(cash, M.anime);

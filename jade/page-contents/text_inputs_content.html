@@ -9,7 +9,7 @@
         </p>
 
         <h3 class="header">Input fields</h3>
-        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
+        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This is only used in our Input and Textarea form elements.</p>
         <p>The validate class leverages HTML5 validation and will add a <code class="language-markup">valid</code> and <code class="language-markup">invalid</code> class accordingly. If you don't want the Green and Red validation states, just remove the <code class="language-markup">validate</code> class from your inputs.</p>
         <br>
           <form>
@@ -98,7 +98,7 @@
   &lt;/div>
         </code></pre><br>
         <h5>Prefilling Text Inputs</h5>
-        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">Materialize.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
+        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">M.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
         <div class="row">
           <div class="input-field col s6">
             <input value="Alvin" id="first_name2" type="text" class="validate">
@@ -117,7 +117,7 @@
 
         <pre><code class="language-javascript">
   $(document).ready(function() {
-    Materialize.updateTextFields();
+    M.updateTextFields();
   });
         </code></pre>
         <br>
@@ -227,7 +227,7 @@
       <!-- Textarea Section -->
       <div id="textarea" class="section scrollspy">
         <h3 class="header">Textarea</h3>
-        <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This helps our jQuery animate the label. This is only used in our Input and Textarea form elements.</p>
+        <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This is only used in our Input and Textarea form elements.</p>
         <p><strong>Textareas will auto resize to the text inside.</strong></p>
 
 
@@ -256,7 +256,7 @@
         <p>advanced note: When dynamically changing the value of a textarea with methods like jQuery's <code class="language-markup">.val()</code>, you must trigger an autoresize on it afterwords because .val() does not automatically trigger the events we've binded to the textarea. </p>
         <pre><code class="language-javascript">
   $('#textarea1').val('New Text');
-  $('#textarea1').trigger('autoresize');
+  M.textareaAutoResize($('#textarea1'));
         </code></pre>
         <br>
 
@@ -360,8 +360,8 @@
             <br/>
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                <label for="textarea1">Textarea</label>
+                <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+                <label for="textarea2">Textarea</label>
               </div>
             </div>
           </form>
@@ -377,8 +377,8 @@
         &lt;/div>
         &lt;div class="row">
           &lt;div class="input-field col s12">
-            &lt;textarea id="textarea1" class="materialize-textarea" data-length="120">&lt;/textarea>
-            &lt;label for="textarea1">Textarea&lt;/label>
+            &lt;textarea id="textarea2" class="materialize-textarea" data-length="120">&lt;/textarea>
+            &lt;label for="textarea2">Textarea&lt;/label>
           &lt;/div>
         &lt;/div>
       &lt;/form>
@@ -390,7 +390,7 @@
         <p>There are no options for this plugin, but if you are adding these dynamically, you can use this to initialize them.</p>
         <pre><code class="language-javascript">
   $(document).ready(function() {
-    $('input#input_text, textarea#textarea1').characterCounter();
+    $('input#input_text, textarea#textarea2').characterCounter();
   });
         </code></pre>
       </div>

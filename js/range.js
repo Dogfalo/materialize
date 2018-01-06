@@ -1,15 +1,14 @@
-(function ($, Vel) {
+(function ($, anim) {
   'use strict';
 
-  let _defaults = {
-  };
+  let _defaults = {};
 
 
   /**
    * @class
    *
    */
-  class Range {
+  class Range extends Component {
     /**
      * Construct Range instance
      * @constructor
@@ -17,14 +16,8 @@
      * @param {Object} options
      */
     constructor(el, options) {
+      super(Range, el, options);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Range) {
-        el.M_Range.destroy();
-      }
-
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Range = this;
 
       /**
@@ -45,14 +38,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        if (!$(this).hasClass('browser-default')) {
-          arr.push(new Range(this, options));
-        }
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -77,12 +64,16 @@
      */
     _setupEventHandlers() {
       this._handleRangeChangeBound = this._handleRangeChange.bind(this);
+      this._handleRangeFocusBound = this._handleRangeFocus.bind(this);
       this._handleRangeMousedownTouchstartBound = this._handleRangeMousedownTouchstart.bind(this);
       this._handleRangeInputMousemoveTouchmoveBound = this._handleRangeInputMousemoveTouchmove.bind(this);
       this._handleRangeMouseupTouchendBound = this._handleRangeMouseupTouchend.bind(this);
       this._handleRangeBlurMouseoutTouchleaveBound = this._handleRangeBlurMouseoutTouchleave.bind(this);
 
+
+
       this.el.addEventListener('change', this._handleRangeChangeBound);
+      this.el.addEventListener('focus', this._handleRangeFocusBound);
 
       this.el.addEventListener('mousedown', this._handleRangeMousedownTouchstartBound);
       this.el.addEventListener('touchstart', this._handleRangeMousedownTouchstartBound);
@@ -104,6 +95,7 @@
      */
     _removeEventHandlers() {
       this.el.removeEventListener('change', this._handleRangeChangeBound);
+      this.el.removeEventListener('focus', this._handleRangeFocusBound);
 
       this.el.removeEventListener('mousedown', this._handleRangeMousedownTouchstartBound);
       this.el.removeEventListener('touchstart', this._handleRangeMousedownTouchstartBound);
@@ -134,6 +126,17 @@
       let offsetLeft = this._calcRangeOffset();
       $(this.thumb).addClass('active').css('left', offsetLeft + 'px');
     }
+
+    /**
+     * Handle Range Focus
+     * @param {Event} e
+     */
+    _handleRangeFocus() {
+      if (M.tabPressed) {
+        this.$el.addClass('focused');
+      }
+    }
+
 
     /**
      * Handle Range Mousedown and Touchstart
@@ -184,21 +187,21 @@
      */
     _handleRangeBlurMouseoutTouchleave() {
       if (!this._mousedown) {
+        this.$el.removeClass('focused');
         let paddingLeft = parseInt(this.$el.css('padding-left'));
         let marginLeft = (7 + paddingLeft) + 'px';
 
         if ($(this.thumb).hasClass('active')) {
-          Vel(this.thumb, 'stop');
-          Vel(
-            this.thumb,
-            {
-              height: '0px',
-              width: '0px',
-              top: '10px',
-              marginLeft: marginLeft
-            },
-            { duration: 100 }
-          );
+          anim.remove(this.thumb);
+          anim({
+            targets: this.thumb,
+            height: 0,
+            width: 0,
+            top: 10,
+            easing: 'easeOutQuad',
+            marginLeft: marginLeft,
+            duration: 100
+          });
         }
         $(this.thumb).removeClass('active');
       }
@@ -229,15 +232,16 @@
     _showRangeBubble() {
       let paddingLeft = parseInt($(this.thumb).parent().css('padding-left'));
       let marginLeft = (-7 + paddingLeft) + 'px'; // TODO: fix magic number?
-      Vel(
-        this.thumb,
-        {
-          height: "30px",
-          width: "30px",
-          top: "-30px",
-          marginLeft: marginLeft
-        },
-        { duration: 300, easing: 'easeOutExpo' });
+      anim.remove(this.thumb);
+      anim({
+        targets: this.thumb,
+        height: 30,
+        width: 30,
+        top: -30,
+        marginLeft: marginLeft,
+        duration: 300,
+        easing: 'easeOutQuint'
+      });
     }
 
     /**
@@ -259,5 +263,5 @@
     M.initializeJqueryWrapper(Range, 'range', 'M_Range');
   }
 
-  Range.init($('input[type=range'));
-}( cash, M.Vel ));
+  Range.init($('input[type=range]'));
+}(cash, M.anime));

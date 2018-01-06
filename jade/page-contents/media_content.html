@@ -18,7 +18,7 @@
        <p>Materialbox is intialized automatically. However, if you add images dynamically, you will have to add this initialization code.</p>
        <pre><code class="language-javascript">
   var elem = document.querySelector('.materialboxed');
-  var instance = new M.Materialbox(elem, options);
+  var instance = M.Materialbox.init(elem, options);
 
   // Or with jQuery
 
@@ -51,6 +51,30 @@
               <td>Number</td>
               <td>200</td>
               <td>Transition out duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>onOpenStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called before materialbox is opened.</td>
+            </tr>
+            <tr>
+              <td>onOpenEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called after materialbox is opened.</td>
+            </tr>
+            <tr>
+              <td>onCloseStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called before materialbox is closed.</td>
+            </tr>
+            <tr>
+              <td>onCloseEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called after materialbox is closed.</td>
             </tr>
           </tbody>
         </table>
@@ -237,7 +261,7 @@
       <h4>Initialization</h4>
        <pre><code class="language-javascript">
   var elem = document.querySelector('.slider');
-  var instance = new M.Slider(elem, options);
+  var instance = M.Slider.init(elem, options);
 
   // Or with jQuery
 

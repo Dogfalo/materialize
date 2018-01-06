@@ -1,16 +1,20 @@
-(function ($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
     inDuration: 275,
     outDuration: 200,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null
   };
 
   /**
    * @class
    *
    */
-  class Materialbox {
+  class Materialbox extends Component {
     /**
      * Construct Materialbox instance
      * @constructor
@@ -19,13 +23,8 @@
      */
     constructor(el, options) {
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Materialbox) {
-        el.M_Materialbox.destroy();
-      }
+      super(Materialbox, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Materialbox = this;
 
       /**
@@ -33,6 +32,10 @@
        * @member Materialbox#options
        * @prop {Number} [inDuration=275] - Length in ms of enter transition
        * @prop {Number} [outDuration=200] - Length in ms of exit transition
+       * @prop {Function} onOpenStart - Callback function called before materialbox is opened
+       * @prop {Function} onOpenEnd - Callback function called after materialbox is opened
+       * @prop {Function} onCloseStart - Callback function called before materialbox is closed
+       * @prop {Function} onCloseEnd - Callback function called after materialbox is closed
        */
       this.options = $.extend({}, Materialbox.defaults, options);
 
@@ -55,12 +58,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Materialbox(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -90,7 +89,7 @@
     /**
      * Remove Event Handlers
      */
-    removeEventHandlers() {
+    _removeEventHandlers() {
       this.el.removeEventListener('click', this._handleMaterialboxClickBound);
     }
 
@@ -164,41 +163,47 @@
      * Animate image in
      */
     _animateImageIn() {
-      let velocityOptions = {
-        duration: this.options.inDuration,
-        queue: false,
-        ease: 'easeOutQuad',
-        complete: () => {
-          this.doneAnimating = true;
-        }
-      };
-
-      let velocityProperties = {
+      let animOptions = {
+        targets: this.el,
         height: this.newHeight,
         width: this.newWidth,
         left: M.getDocumentScrollLeft() + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
-        top: M.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2
+        top: M.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2,
+        duration: this.options.inDuration,
+        easing: 'easeOutQuad',
+        complete: () => {
+          this.doneAnimating = true;
+
+          // onOpenEnd callback
+          if (typeof(this.options.onOpenEnd) === 'function') {
+            this.options.onOpenEnd.call(this, this.el);
+          }
+        }
       };
 
       if (this.$el.hasClass('responsive-img')) {
-        velocityProperties.maxWidth = [this.newWidth, this.newWidth];
-        velocityProperties.width = [velocityProperties.width, this.originalWidth];
+        animOptions.maxWidth = this.newWidth;
+        animOptions.width = [this.originalWidth, animOptions.width];
       } else {
-        velocityProperties.left = [velocityProperties.left, 0];
-        velocityProperties.top = [velocityProperties.top, 0];
+        animOptions.left = [animOptions.left, 0];
+        animOptions.top = [animOptions.top, 0];
       }
 
-      Vel(this.el, velocityProperties, velocityOptions);
+      anim(animOptions);
     }
 
     /**
      * Animate image out
      */
     _animateImageOut() {
-      let velocityOptions = {
+      let animOptions = {
+        targets: this.el,
+        width: this.originalWidth,
+        height: this.originalHeight,
+        left: 0,
+        top: 0,
         duration: this.options.outDuration,
-        queue: false,
-        ease: 'easeOutQuad',
+        easing: 'easeOutQuad',
         complete: () => {
           this.placeholder.css({
             height: '',
@@ -219,19 +224,15 @@
           if (this.ancestorsChanged.length) {
             this.ancestorsChanged.css('overflow', '');
           }
+
+          // onCloseEnd callback
+          if (typeof(this.options.onCloseEnd) === 'function') {
+            this.options.onCloseEnd.call(this, this.el);
+          }
         }
       };
 
-      Vel(
-        this.el,
-        {
-          width: this.originalWidth,
-          height: this.originalHeight,
-          left: 0,
-          top: 0
-        },
-        velocityOptions
-      );
+      anim(animOptions);
     }
 
     /**
@@ -255,6 +256,11 @@
       this.doneAnimating = false;
       this.$el.addClass('active');
       this.overlayActive = true;
+
+      // onOpenStart callback
+      if (typeof(this.options.onOpenStart) === 'function') {
+        this.options.onOpenStart.call(this, this.el);
+      }
 
       // Set positioning for placeholder
       this.placeholder.css({
@@ -297,12 +303,20 @@
         top: -1 * overlayOffset.top + 'px'
       });
 
+      anim.remove(this.el);
+      anim.remove(this.$overlay[0]);
+
+      if (this.caption !== "") {
+        anim.remove(this.$photoCaption[0]);
+      }
+
       // Animate Overlay
-      Vel(
-        this.$overlay[0],
-        {opacity: 1},
-        {duration: this.options.inDuration, queue: false, ease: 'easeOutQuad'}
-      );
+      anim({
+        targets: this.$overlay[0],
+        opacity: 1,
+        duration: this.options.inDuration,
+        easing: 'easeOutQuad'
+      });
 
       // Add and animate caption if it exists
       if (this.caption !== "") {
@@ -310,11 +324,13 @@
         this.$photoCaption.text(this.caption);
         $('body').append(this.$photoCaption);
         this.$photoCaption.css({ "display": "inline" });
-        Vel(
-          this.$photoCaption[0],
-          {opacity: 1},
-          {duration: this.options.inDuration, queue: false, ease: 'easeOutQuad'}
-        );
+
+        anim({
+          targets: this.$photoCaption[0],
+          opacity: 1,
+          duration: this.options.inDuration,
+          easing: 'easeOutQuad'
+        });
       }
 
       // Resize Image
@@ -354,10 +370,16 @@
       this._updateVars();
       this.doneAnimating = false;
 
-      Vel(this.el, 'stop');
-      Vel(this.$overlay[0], 'stop');
+      // onCloseStart callback
+      if (typeof(this.options.onCloseStart) === 'function') {
+        this.options.onCloseStart.call(this, this.el);
+      }
+
+      anim.remove(this.el);
+      anim.remove(this.$overlay[0]);
+
       if (this.caption !== "") {
-        Vel(this.$photoCaption[0], 'stop');
+        anim.remove(this.$photoCaption[0]);
       }
 
       // disable exit handlers
@@ -365,26 +387,30 @@
       window.removeEventListener('resize', this._handleWindowResizeBound);
       window.removeEventListener('keyup', this._handleWindowEscapeBound);
 
-      Vel(
-        this.$overlay[0],
-        {opacity: 0},
-        {duration: this.options.outDuration, queue: false, ease: 'easeOutQuad', complete: () => {
+      anim({
+        targets: this.$overlay[0],
+        opacity: 0,
+        duration: this.options.outDuration,
+        easing: 'easeOutQuad',
+        complete: () => {
           this.overlayActive = false;
           this.$overlay.remove();
-        }}
-      );
+        }
+      });
 
       this._animateImageOut();
 
       // Remove Caption + reset css settings on image
       if (this.caption !== "") {
-        Vel(
-          this.$photoCaption[0],
-          {opacity: 0},
-          {duration: this.options.outDuration, queue: false, ease: 'easeOutQuad', complete: () => {
+        anim({
+          targets: this.$photoCaption[0],
+          opacity: 0,
+          duration: this.options.outDuration,
+          easing: 'easeOutQuad',
+          complete: () => {
             this.$photoCaption.remove();
-          }}
-        );
+          }
+        });
       }
     }
   }
@@ -395,4 +421,4 @@
     M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
   }
 
-}( cash, M.Vel ));
+}(cash, M.anime));

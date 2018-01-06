@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
@@ -6,8 +6,8 @@
     enterDelay: 0,
     html: null,
     margin: 5,
-    inDuration: 300,
-    outDuration: 250,
+    inDuration: 250,
+    outDuration: 200,
     position: 'bottom',
     transitionMovement: 10
   };
@@ -17,7 +17,7 @@
    * @class
    *
    */
-  class Tooltip {
+  class Tooltip extends Component {
     /**
      * Construct Tooltip instance
      * @constructor
@@ -25,14 +25,8 @@
      * @param {Object} options
      */
     constructor(el, options) {
+      super(Tooltip, el, options);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Tooltip) {
-        el.M_Tooltip.destroy();
-      }
-
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Tooltip = this;
       this.options = $.extend({}, Tooltip.defaults, options);
 
@@ -46,12 +40,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Tooltip(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -112,7 +102,7 @@
     }
 
     close() {
-      if(!this.isOpen) {
+      if (!this.isOpen) {
         return;
       }
 
@@ -121,17 +111,17 @@
     }
 
     /**
-      * Create timeout which delays when the tooltip closes
-      */
+     * Create timeout which delays when the tooltip closes
+     */
     _setExitDelayTimeout() {
       clearTimeout(this._exitDelayTimeout);
 
       this._exitDelayTimeout = setTimeout(() => {
         if (this.isHovered) {
           return;
-        } else {
-          this._animateOut();
         }
+
+        this._animateOut();
       }, this.options.exitDelay);
     }
 
@@ -144,48 +134,48 @@
       this._enterDelayTimeout = setTimeout(() => {
         if (!this.isHovered) {
           return;
-        } else {
-          this._animateIn();
         }
+
+        this._animateIn();
       }, this.options.enterDelay);
     }
 
     _positionTooltip() {
       let origin = this.$el[0],
-          tooltip = this.tooltipEl,
-          originHeight = origin.offsetHeight,
-          originWidth = origin.offsetWidth,
-          tooltipHeight = tooltip.offsetHeight,
-          tooltipWidth = tooltip.offsetWidth,
-          newCoordinates,
-          margin = this.options.margin,
-          targetTop,
-          targetLeft;
+        tooltip = this.tooltipEl,
+        originHeight = origin.offsetHeight,
+        originWidth = origin.offsetWidth,
+        tooltipHeight = tooltip.offsetHeight,
+        tooltipWidth = tooltip.offsetWidth,
+        newCoordinates,
+        margin = this.options.margin,
+        targetTop,
+        targetLeft;
 
       this.xMovement = 0,
-      this.yMovement = 0;
+        this.yMovement = 0;
 
       targetTop = origin.getBoundingClientRect().top + M.getDocumentScrollTop();
       targetLeft = origin.getBoundingClientRect().left + M.getDocumentScrollLeft();
 
       if (this.options.position === 'top') {
         targetTop += -(tooltipHeight) - margin;
-        targetLeft += originWidth/2 - tooltipWidth/2;
+        targetLeft += originWidth / 2 - tooltipWidth / 2;
         this.yMovement = -(this.options.transitionMovement);
 
       } else if (this.options.position === 'right') {
-        targetTop += originHeight/2 - tooltipHeight/2;
+        targetTop += originHeight / 2 - tooltipHeight / 2;
         targetLeft += originWidth + margin;
         this.xMovement = this.options.transitionMovement;
 
       } else if (this.options.position === 'left') {
-        targetTop += originHeight/2 - tooltipHeight/2;
+        targetTop += originHeight / 2 - tooltipHeight / 2;
         targetLeft += -(tooltipWidth) - margin;
         this.xMovement = -(this.options.transitionMovement);
 
       } else {
         targetTop += originHeight + margin;
-        targetLeft += originWidth/2 - tooltipWidth/2;
+        targetLeft += originWidth / 2 - tooltipWidth / 2;
         this.yMovement = this.options.transitionMovement;
       }
 
@@ -225,36 +215,35 @@
         newY -= newY + height - window.innerHeight;
       }
 
-      return {x: newX + scrollLeft, y: newY + scrollTop};
+      return {
+        x: newX + scrollLeft,
+        y: newY + scrollTop
+      };
     }
 
     _animateIn() {
       this._positionTooltip();
       this.tooltipEl.style.visibility = 'visible';
-      Vel(this.tooltipEl, 'stop');
-      Vel(
-        this.tooltipEl, {
-          opacity: 1,
-          translateX: this.xMovement,
-          translateY: this.yMovement
-        }, {
-          duration: this.options.inDuration,
-          easing: 'easeOutCubic',
-          queue: false
-        });
+      anim.remove(this.tooltipEl);
+      anim({
+        targets: this.tooltipEl,
+        opacity: 1,
+        translateX: this.xMovement,
+        translateY: this.yMovement,
+        duration: this.options.inDuration,
+        easing: 'easeOutCubic'
+      });
     }
 
     _animateOut() {
-      Vel(this.tooltipEl, 'stop');
-      Vel(
-        this.tooltipEl, {
-          opacity: 0,
-          translateX: 0,
-          translateY: 0,
-        }, {
-          duration: this.options.outDuration,
-          easing: 'easeOutCubic',
-          queue: false
+      anim.remove(this.tooltipEl);
+      anim({
+        targets: this.tooltipEl,
+        opacity: 0,
+        translateX: 0,
+        translateY: 0,
+        duration: this.options.outDuration,
+        easing: 'easeOutCubic'
       });
     }
 
@@ -290,4 +279,4 @@
     M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
 
-})(cash, M.Vel);
+})(cash, M.anime);

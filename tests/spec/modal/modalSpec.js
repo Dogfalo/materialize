@@ -95,10 +95,10 @@ describe( 'Modal:', function() {
       var readyTest = false;
       var completeTest = false;
       modal1.modal({
-        ready: function() {
+        onOpenStart: function() {
           readyTest = true;
         },
-        complete: function() {
+        onCloseStart: function() {
           completeTest = true;
         }
       });

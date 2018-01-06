@@ -72,7 +72,7 @@
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var instance = new M.Tabs(options);
+  var instance = M.Tabs.init(el, options);
 
   // Or with jQuery
 
@@ -148,6 +148,14 @@
         <p><b>String:</b> The id of the tab that you want to switch to</p>
         <pre><code class="language-javascript col s12">
 instance.select('tab_id');
+        </code></pre>
+
+        <h5 class="method-header">
+          .updateTabIndicator();
+        </h5>
+        <p>Recalculate tab indicator position. This is useful when the indicator position is not correct.</p>
+        <pre><code class="language-javascript col s12">
+instance.updateTabIndicator();
         </code></pre>
 
         <h5 class="method-header">

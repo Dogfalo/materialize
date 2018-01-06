@@ -1,15 +1,14 @@
 (function ($) {
   'use strict';
 
-  let _defaults = {
-  };
+  let _defaults = {};
 
 
   /**
    * @class
    *
    */
-  class CharacterCounter {
+  class CharacterCounter extends Component {
     /**
      * Construct CharacterCounter instance
      * @constructor
@@ -17,14 +16,8 @@
      * @param {Object} options
      */
     constructor(el, options) {
+      super(CharacterCounter, el, options);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_CharacterCounter) {
-        el.M_CharacterCounter.destroy();
-      }
-
-      this.el = el;
-      this.$el = $(el);
       this.el.M_CharacterCounter = this;
 
       /**
@@ -42,12 +35,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new CharacterCounter(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -113,7 +102,7 @@
      */
     updateCounter() {
       let maxLength = +this.$el.attr('data-length'),
-      actualLength  = this.el.value.length;
+        actualLength = this.el.value.length;
       this.isValidLength = actualLength <= maxLength;
       let counterString = actualLength;
 
@@ -132,8 +121,7 @@
       if (this.isValidLength && this.isInvalid) {
         this.isInvalid = false;
         this.$el.removeClass('invalid');
-      }
-      else if(!this.isValidLength && !this.isInvalid){
+      } else if (!this.isValidLength && !this.isInvalid) {
         this.isInvalid = true;
         this.$el.removeClass('valid');
         this.$el.addClass('invalid');
@@ -147,4 +135,4 @@
     M.initializeJqueryWrapper(CharacterCounter, 'characterCounter', 'M_CharacterCounter');
   }
 
-}( cash ));
+}(cash));

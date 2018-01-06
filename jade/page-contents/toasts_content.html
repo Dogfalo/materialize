@@ -45,13 +45,13 @@
             <tr>
               <td>inDuration</td>
               <td>Number</td>
-              <td>250</td>
+              <td>300</td>
               <td>Transition in duration in milliseconds.</td>
             </tr>
             <tr>
               <td>outDuration</td>
               <td>Number</td>
-              <td>250</td>
+              <td>375</td>
               <td>Transition out duration in milliseconds.</td>
             </tr>
             <tr>
@@ -93,7 +93,7 @@
             <tr>
               <td>el</td>
               <td>Element</td>
-              <td>The toast element..</td>
+              <td>The toast element.</td>
             </tr>
             <tr>
               <td>options</td>
@@ -103,7 +103,7 @@
             <tr>
               <td>panning</td>
               <td>Boolean</td>
-              <td>Describes the current pan state of the Toast..</td>
+              <td>Describes the current pan state of the Toast.</td>
             </tr>
             <tr>
               <td>timeRemaining</td>
@@ -155,7 +155,7 @@
 
         <pre><code class="language-javascript">
   // Get toast DOM Element, get instance, then call dismiss function
-  var toastElement = $('.toast').first()[0];
+  var toastElement = document.querySelector('.toast');
   var toastInstance = M.Toast.getInstance(toastElement);
   toastInstance.dismiss();
         </code></pre>

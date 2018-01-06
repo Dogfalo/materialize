@@ -1,10 +1,11 @@
-(function($) {
+(function ($) {
   'use strict';
 
   let _defaults = {
     top: 0,
     bottom: Infinity,
-    offset: 0
+    offset: 0,
+    onPositionChange: null
   };
 
 
@@ -12,7 +13,7 @@
    * @class
    *
    */
-  class Pushpin {
+  class Pushpin extends Component {
     /**
      * Construct Pushpin instance
      * @constructor
@@ -20,14 +21,8 @@
      * @param {Object} options
      */
     constructor(el, options) {
+      super(Pushpin, el, options);
 
-      // If exists, destroy and reinitialize
-      if (!!el.M_Pushpin) {
-        el.M_Pushpin.destroy();
-      }
-
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Pushpin = this;
 
       /**
@@ -46,12 +41,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Pushpin(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     /**
@@ -94,11 +85,16 @@
       let scrolled = M.getDocumentScrollTop() + this.options.offset;
 
       if (this.options.top <= scrolled && this.options.bottom >= scrolled &&
-          !this.el.classList.contains('pinned')) {
+        !this.el.classList.contains('pinned')) {
         this._removePinClasses();
 
         this.el.style.top = `${this.options.offset}px`;
         this.el.classList.add('pinned');
+
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pinned');
+        }
       }
 
       // Add pin-top (when scrolled position is above top)
@@ -106,6 +102,11 @@
         this._removePinClasses();
         this.el.style.top = 0;
         this.el.classList.add('pin-top');
+
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pin-top');
+        }
       }
 
       // Add pin-bottom (when scrolled position is below bottom)
@@ -113,6 +114,11 @@
         this._removePinClasses();
         this.el.classList.add('pin-bottom');
         this.el.style.top = `${this.options.bottom - this.originalOffset}px`;
+
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pin-bottom');
+        }
       }
     }
 

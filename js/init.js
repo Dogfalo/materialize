@@ -22,7 +22,7 @@
       $(this).children().each(function () {
         var color = $(this).css('background-color'),
             classes = $(this).attr('class');
-        $(this).html(rgb2hex(color) + " " + classes);
+        $(this).html('<span>' + rgb2hex(color) + " " + classes + '</span>');
         if (classes.indexOf("darken") >= 0 || $(this).hasClass('black')) {
           $(this).css('color', 'rgba(255,255,255,.9');
         }

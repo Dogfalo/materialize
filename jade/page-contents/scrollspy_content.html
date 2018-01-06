@@ -39,7 +39,7 @@
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
   var elem = document.querySelector('.scrollspy');
-  var instance = new M.ScrollSpy(elem, options);
+  var instance = M.ScrollSpy.init(elem, options);
 
   // Or with jQuery
 
@@ -157,7 +157,6 @@ instance.destroy();
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#structure">Structure</a></li>
             <li><a href="#initialization">Intialization</a></li>
             <li><a href="#options">Options</a></li>
             <li><a href="#methods">Methods</a></li>

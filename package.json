@@ -3,7 +3,7 @@
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "homepage": "http://materializecss.com/",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.3",
   "main": "dist/js/materialize.js",
   "style": "dist/css/materialize.css",
   "sass": "sass/materialize.scss",
@@ -46,7 +46,7 @@
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.2.1",
     "node-archiver": "^0.3.0",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.7.2",
     "phantomjs-prebuilt": "^2.1.14"
   },
   "files": [

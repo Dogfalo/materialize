@@ -107,7 +107,8 @@ module.exports = function(grunt) {
           'transform-es2015-arrow-functions',
           'transform-es2015-block-scoping',
           'transform-es2015-classes',
-          'transform-es2015-template-literals'
+          'transform-es2015-template-literals',
+          'transform-es2015-object-super'
         ]
 		  },
 		  bin: {
@@ -152,8 +153,9 @@ module.exports = function(grunt) {
         // the files to concatenate
         src: [
           "js/cash.js",
-          "js/velocity.min.js",
+          "js/component.js",
           "js/global.js",
+          "js/anime.min.js",
           "js/collapsible.js",
           "js/dropdown.js",
           "js/modal.js",
@@ -191,8 +193,9 @@ module.exports = function(grunt) {
         },
         src: [
           "js/cash.js",
-          "js/velocity.min.js",
+          "js/component.js",
           "js/global.js",
+          "js/anime.min.js",
           "js/collapsible.js",
           "js/dropdown.js",
           "js/modal.js",
@@ -273,7 +276,9 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'sass/', src: ['materialize.scss'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'sass/', src: ['components/**/*'], dest: 'materialize-src/sass/'},
           {expand: true, cwd: 'js/', src: [
-            "velocity.min.js",
+            "anime.min.js",
+            "cash.js",
+            "component.js",
             "global.js",
             "collapsible.js",
             "dropdown.js",
@@ -408,7 +413,8 @@ module.exports = function(grunt) {
           "select.html": "jade/select.jade",
           "switches.html": "jade/switches.jade",
           "text-inputs.html": "jade/text-inputs.jade",
-          "support-us.html": "jade/support-us.jade"
+          "support-us.html": "jade/support-us.jade",
+          "floating-action-button.html": "jade/floating-action-button.jade"
         }
       }
     },
@@ -568,17 +574,7 @@ module.exports = function(grunt) {
           ignore: true
         }
       },
-    },
-
-    // Removes console logs
-    removelogging: {
-      source: {
-        src: ["js/**/*.js", "!js/velocity.min.js"],
-        options: {
-          // see below for options. this is optional.
-        }
-      }
-    },
+    }
   };
 
   grunt.initConfig(config);
@@ -597,7 +593,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename-util');
-  grunt.loadNpmTasks('grunt-remove-logging');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
@@ -607,7 +602,6 @@ module.exports = function(grunt) {
   // define the tasks
   grunt.registerTask(
     'release',[
-      'lint',
       'sass:expanded',
       'sass:min',
       'postcss:expanded',
@@ -637,7 +631,6 @@ module.exports = function(grunt) {
   grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
-  grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);
   grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
 };

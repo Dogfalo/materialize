@@ -1,4 +1,4 @@
-describe("Chips Plugin", function () {
+describe("Chips", function () {
 
   beforeEach(function() {
     loadFixtures('chips/chipsFixture.html');
@@ -19,7 +19,7 @@ describe("Chips Plugin", function () {
     });
   });
 
-  describe("Chips", function () {
+  describe("chips plugin", function () {
     var $chips, $input;
 
     // beforeEach(function() {
@@ -80,24 +80,30 @@ describe("Chips Plugin", function () {
 
     it("should have working callbacks", function(done) {
       $chips = $('.chips').first();
-      $input = $chips.find('input');
-
-      $input.val('one');
-
-      let chipAdd = false;
-      let chipSelect = false;
-      let chipDelete = false;
+      var chipAdd = false;
+      var chipAdded = null;
+      var chipSelect = false;
+      var chipSelected = null;
+      var chipDelete = false;
+      var chipDeleted = null;
       $chips.chips({
-        onChipAdd: function() {
+        data: [{ tag: 'One' }, { tag: 'Two' }, { tag: 'Three' }],
+        onChipAdd: function(chipsEl, chipEl) {
+          chipAdded = chipEl;
           chipAdd = true;
         },
-        onChipSelect: function() {
+        onChipSelect: function(chipsEl, chipEl) {
+          chipSelected = chipEl;
           chipSelect = true;
         },
-        onChipDelete: function() {
+        onChipDelete: function(chipsEl, chipEl) {
+          chipDeleted = chipEl;
           chipDelete = true;
         }
       });
+
+      $input = $chips.find('input');
+      $input.val('Four');
 
       expect(chipAdd).toEqual(false, 'callback not yet fired');
       expect(chipSelect).toEqual(false, 'callback not yet fired');
@@ -107,16 +113,19 @@ describe("Chips Plugin", function () {
 
       setTimeout(function() {
         expect(chipAdd).toEqual(true, 'add callback fired');
+        expect(chipAdded.childNodes[0].nodeValue).toEqual('Four', 'add callback provides correct chip element');
 
-        click($chips.find('.chip')[0]);
+        click($chips.find('.chip')[1]);
 
         setTimeout(function() {
           expect(chipSelect).toEqual(true, 'select callback fired');
+          expect(chipSelected.childNodes[0].nodeValue).toEqual('Two', 'select callback provides correct chip element');
 
-          click($chips.find('.close')[0]);
+          click($chips.find('.close')[2]);
 
           setTimeout(function() {
             expect(chipDelete).toEqual(true, 'delete callback fired');
+          expect(chipDeleted.childNodes[0].nodeValue).toEqual('Three', 'add callback provides correct chip element');
 
             done();
           }, 100);

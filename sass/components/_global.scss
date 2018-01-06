@@ -392,11 +392,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 
-  &.bordered > thead > tr,
-  &.bordered > tbody > tr {
-    border-bottom: 1px solid $table-border-color;
-  }
-
   &.striped {
     tr {
       border-bottom: none;
@@ -494,21 +489,16 @@ td, th{
       min-height: 1.25em;
       text-align: left;
     }
-    tr { padding: 0 10px; }
+    tr {
+      border-bottom: none;
+      padding: 0 10px;
+    }
 
     /* sort out borders */
     thead {
       border: 0;
       border-right: 1px solid $table-border-color;
     }
-
-    &.bordered {
-      th { border-bottom: 0; border-left: 0; }
-      td { border-left: 0; border-right: 0; border-bottom: 0; }
-      tr { border: 0; }
-      tbody tr { border-right: 1px solid $table-border-color; }
-    }
-
   }
 
 }

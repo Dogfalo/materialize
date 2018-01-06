@@ -1,11 +1,4 @@
-// Utility Color Classes
-
-//.success {
-//
-//}
-
 // Google Color Palette defined: http://www.google.com/design/spec/style/color.html
-
 
 $materialize-red: (
   "base":       #e51c23,
@@ -362,40 +355,6 @@ $colors: (
 ) !default;
 
 
-// Color Classes
-
-@each $color_name, $color in $colors {
-  @each $color_type, $color_value in $color {
-    @if $color_type == "base" {
-      .#{$color_name} {
-        background-color: $color_value !important;
-      }
-      .#{$color_name}-text {
-        color: $color_value !important;
-      }
-    }
-    @else if $color_name != "shades" {
-      .#{$color_name}.#{$color_type} {
-        background-color: $color_value !important;
-      }
-      .#{$color_name}-text.text-#{$color_type} {
-        color: $color_value !important;
-      }
-    }
-  }
-}
-
-// Shade classes
-@each $color, $color_value in $shades {
-  .#{$color} {
-    background-color: $color_value !important;
-  }
-  .#{$color}-text {
-    color: $color_value !important;
-  }
-}
-
-
 // usage: color("name_of_color", "type_of_color")
 // to avoid to repeating map-get($colors, ...)
 
@@ -409,4 +368,3 @@ $colors: (
   @warn "Unknown `#{$color}` - `#{$type}` in $colors.";
   @return null;
 }
-

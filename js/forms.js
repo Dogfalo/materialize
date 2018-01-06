@@ -42,6 +42,11 @@
 
 
   M.textareaAutoResize = function($textarea) {
+    // Wrap if native element
+    if ($textarea instanceof Element) {
+      $textarea = $($textarea);
+    }
+
     // Textarea Auto Resize
     let hiddenDiv = $('.hiddendiv').first();
     if (!hiddenDiv.length) {
@@ -53,12 +58,20 @@
     let fontFamily = $textarea.css('font-family');
     let fontSize = $textarea.css('font-size');
     let lineHeight = $textarea.css('line-height');
-    let padding = $textarea.css('padding');
+
+    // Firefox can't handle padding shorthand.
+    let paddingTop = $textarea.css('padding-top');
+    let paddingRight = $textarea.css('padding-right');
+    let paddingBottom = $textarea.css('padding-bottom');
+    let paddingLeft = $textarea.css('padding-left');
 
     if (fontSize) { hiddenDiv.css('font-size', fontSize); }
     if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
     if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
-    if (padding) { hiddenDiv.css('padding', padding); }
+    if (paddingTop) { hiddenDiv.css('padding-top', paddingTop); }
+    if (paddingRight) { hiddenDiv.css('padding-right', paddingRight); }
+    if (paddingBottom) { hiddenDiv.css('padding-bottom', paddingBottom); }
+    if (paddingLeft) { hiddenDiv.css('padding-left', paddingLeft); }
 
     // Set original-height, if none
     if (!$textarea.data('original-height')) {
@@ -190,20 +203,18 @@
     $(text_area_selector).each(function () {
       let $textarea = $(this);
       /**
-       * Instead of resizing textarea on document load,
-       * store the original height and the original length
+       * Resize textarea on document load after storing
+       * the original height and the original length
        */
       $textarea.data('original-height', $textarea.height());
       $textarea.data('previous-length', this.value.length);
+      M.textareaAutoResize($textarea);
     });
 
     $(document).on('keyup', text_area_selector, function () {
       M.textareaAutoResize($(this));
     });
     $(document).on('keydown', text_area_selector, function () {
-      M.textareaAutoResize($(this));
-    });
-    $(document).on('autoresize', text_area_selector, function () {
       M.textareaAutoResize($(this));
     });
 

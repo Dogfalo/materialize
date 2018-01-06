@@ -1,4 +1,4 @@
-(function($, Vel) {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -23,15 +23,10 @@
    * @class
    *
    */
-  class Timepicker {
+  class Timepicker extends Component {
     constructor(el, options) {
-      // If exists, destroy and reinitialize
-      if (!!el.M_Timepicker) {
-        el.M_Timepicker.destroy();
-      }
+      super(Timepicker, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Timepicker = this;
 
       this.options = $.extend({}, Timepicker.defaults, options);
@@ -50,12 +45,8 @@
       return _defaults;
     }
 
-    static init($els, options) {
-      let arr = [];
-      $els.each(function() {
-        arr.push(new Timepicker(this, options));
-      });
-      return arr;
+    static init(els, options) {
+      return super.init(this, els, options);
     }
 
     static _addLeadingZero(num) {
@@ -215,8 +206,8 @@
     }
 
     _setupModal() {
-      this.modal = new M.Modal(this.modalEl, {
-        complete: () => {
+      this.modal = M.Modal.init(this.modalEl, {
+        onCloseEnd: () => {
           this.isOpen = false;
         }
       });
@@ -354,15 +345,17 @@
     }
 
     _updateAmPmView() {
-      this.$amBtn.toggleClass('text-primary', this.amOrPm === 'AM');
-      this.$pmBtn.toggleClass('text-primary', this.amOrPm === 'PM');
+      if (this.options.twelveHour) {
+        this.$amBtn.toggleClass('text-primary', this.amOrPm === 'AM');
+        this.$pmBtn.toggleClass('text-primary', this.amOrPm === 'PM');
+      }
     }
 
     _updateTimeFromInput() {
       // Get the time
 		  let value = ((this.el.value || this.options.defaultTime || '') + '').split(':');
 		  if (this.options.twelveHour && !(typeof value[1] === 'undefined')) {
-			  if (value[1].indexOf("AM") > 0){
+			  if (value[1].toUpperCase().indexOf("AM") > 0){
 				  this.amOrPm = 'AM';
 			  } else {
 				  this.amOrPm = 'PM';
@@ -599,4 +592,4 @@
     M.initializeJqueryWrapper(Timepicker, 'timepicker', 'M_Timepicker');
   }
 
-})(cash, M.Vel);
+})(cash);
