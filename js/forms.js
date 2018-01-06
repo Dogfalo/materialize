@@ -569,6 +569,8 @@
             });
           }
         });
+
+        $(this).attr('tabIndex', '-1');
       }
 
       options.find('li:not(.optgroup)').each(function (i) {
