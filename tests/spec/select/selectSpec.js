@@ -36,6 +36,14 @@ describe("Select Plugin", function () {
       }, 400);
     });
 
+    it("should have a tabindex attribute of -1", function() {
+      normalInput = browserSelect.parent().find('input.select-dropdown');
+      tabIndex = normalInput.attr('tabIndex');
+
+      expect(normalInput).toHaveAttr('tabIndex');
+      expect(tabIndex).toEqual('-1');
+    });
+
     it("should have pre-selected value", function () {
       normalInput = browserSelect.parent().find('input.select-dropdown');
       normalDropdown = browserSelect.parent().find('ul.select-dropdown');
