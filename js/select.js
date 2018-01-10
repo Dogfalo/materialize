@@ -31,6 +31,7 @@
       this.isMultiple = this.$el.prop('multiple');
 
       // Setup
+      this.el.tabIndex = -1;
       this._keysSelected = {};
       this._valueDict = {}; // Maps key to original and generated option element.
       this._setupDropdown();
