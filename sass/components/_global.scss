@@ -329,6 +329,16 @@ ul.staggered-list li {
     display: none !important;
   }
 }
+.hide-on-extra-large-only {
+  @media #{$extra-large-and-up} {
+    display: none !important;
+  }
+}
+.show-on-extra-large {
+  @media #{$extra-large-and-up} {
+    display: block !important;
+  }
+}
 .show-on-large {
   @media #{$large-and-up} {
     display: block !important;
