@@ -232,8 +232,12 @@
     }
 
     _pickerSetup() {
-      $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.clearText + '</button>')
-        .appendTo(this.footer).on('click', this.clear.bind(this));
+        if (this.options.clearText) {
+            $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.clearText + '</button>')
+            .appendTo(this.footer).on('click', this.clear.bind(this));
+        } else {
+            $(this.footer).append('<span></span>'); // push  buttons to the right
+        }
 
       let confirmationBtnsContainer = $('<div class="confirmation-btns"></div>');
 		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.cancelText + '</button>')
