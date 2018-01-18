@@ -279,6 +279,9 @@
 
       this.isOpen = true;
 
+      // Set opening trigger, undefined indicates modal was opened by javascript
+      this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
+  
       // onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
         this.options.onOpenStart.call(this, this.el, this._openingTrigger);
@@ -288,9 +291,6 @@
       body.style.overflow = 'hidden';
       this.el.classList.add('open');
       this.el.insertAdjacentElement('afterend', this.$overlay[0]);
-
-      // Set opening trigger, undefined indicates modal was opened by javascript
-      this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
 
       if (this.options.dismissible) {
         this._handleKeydownBound = this._handleKeydown.bind(this);
