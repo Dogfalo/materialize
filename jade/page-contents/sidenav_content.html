@@ -52,10 +52,18 @@
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript col s12">
   var elem = document.querySelector('.sidenav');
-  var instance = M.Sidenav.init(elem, options);
+  // Initialize sidenav without options
+  var instance = new M.Sidenav(elem);
+  
+  // Initialize sidenav with options
+  options = {...};
+  var instance = new M.Sidenav(elem, options);
 
   // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
   // var collapsibleElem = document.querySelector('.collapsible');
+  // Initialize collapsible without options
+  // var collapsibleInstance = M.Collapsible.init(collapsibleElem);
+  // Initialize collapsible with options
   // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
 
   // Or with jQuery
