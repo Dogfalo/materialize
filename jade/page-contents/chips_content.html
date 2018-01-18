@@ -109,7 +109,6 @@
   var chip = {
     tag: 'chip content',
     image: '', //optional
-    id: 1, //optional
   };
         </code></pre>
 
@@ -206,8 +205,10 @@
         <h6>Arguments</h6>
         <p><b>Chip:</b> Chip data object.</p>
         <pre><code class="language-javascript col s12">
-  instance.prev();
-  instance.prev(3); // Move previous n times.
+  instance.addChip({
+    tag: 'chip content',
+    image: '', // optional
+  });
         </code></pre>
         <br>
 
@@ -218,8 +219,7 @@
         <h6>Arguments</h6>
         <p><b>Integer:</b> Index of chip.</p>
         <pre><code class="language-javascript col s12">
-  instance.set();
-  instance.set(3); // Set to nth slide.
+  instance.deleteChip(3); // Delete 3rd chip.
         </code></pre>
         <br>
 
@@ -230,7 +230,7 @@
         <h6>Arguments</h6>
         <p><b>Integer:</b> Index of chip.</p>
         <pre><code class="language-javascript col s12">
-  instance.destroy();
+  instance.selectChip(2); // Select 2nd chip
         </code></pre>
 
       </div>
