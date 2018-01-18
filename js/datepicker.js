@@ -655,8 +655,12 @@
 
       this.formats = {
 
-        dd: () => {
+        d: () => {
           return this.date.getDate();
+        },
+        dd: () => {
+          let d = this.date.getDate();
+          return (d < 10 ? '0' : '') + d;
         },
         ddd: () => {
           return this.options.i18n.weekdaysShort[this.date.getDay()];
@@ -664,8 +668,12 @@
         dddd: () => {
           return this.options.i18n.weekdays[this.date.getDay()];
         },
-        mm: () => {
+        m: () => {
           return this.date.getMonth() + 1;
+        },
+        mm: () => {
+          let m = this.date.getMonth() + 1;
+          return (m < 10 ? '0' : '') + m;
         },
         mmm: () => {
           return this.options.i18n.monthsShort[this.date.getMonth()];
@@ -674,7 +682,7 @@
           return this.options.i18n.monthsShort[this.date.getMonth()];
         },
         yy: () => {
-          return this.date.getFullYear().slice(2);
+          return ('' + this.date.getFullYear()).slice(2);
         },
         yyyy: () => {
           return this.date.getFullYear();
