@@ -262,6 +262,8 @@
      * @param {Element} el  Autocomplete option list item element
      */
     selectOption(el) {
+      let img = el.find('img');
+      let imgSrc = img.length ? img[0].src : '';
       let text = el.text().trim();
       this.el.value = text;
       this.$el.trigger('change');
@@ -269,7 +271,7 @@
 
       // Handle onAutocomplete callback.
       if (typeof (this.options.onAutocomplete) === 'function') {
-        this.options.onAutocomplete.call(this, text);
+        this.options.onAutocomplete.call(this, text, imgSrc);
       }
     }
 
