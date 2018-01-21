@@ -3,6 +3,7 @@
 .cache
 .DS_Store
 .idea
+.vs
 .project
 .projectile
 .settings
