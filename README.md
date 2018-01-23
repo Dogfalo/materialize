@@ -47,7 +47,7 @@ Read the [getting started guide](http://materializecss.com/getting-started.html)
 - Clone the repo: `git clone https://github.com/Dogfalo/materialize.git`
 - Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](http://materializecss.com/getting-started.html).
 - Install with [npm](https://www.npmjs.com): `npm install materialize-css`
-- Install with [Bower](https://bower.io): `bower install materialize`
+- Install with [Bower](https://bower.io): `bower install materialize` ([DEPRECATED](https://bower.io/blog/2017/how-to-migrate-away-from-bower/))
 - Install with [Atmosphere](https://atmospherejs.com): `meteor add materialize:materialize`
 
 ## Documentation
