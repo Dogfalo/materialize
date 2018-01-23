@@ -88,7 +88,6 @@
       });
       this.el.removeEventListener('change', this._handleSelectChangeBound);
       this.input.removeEventListener('click', this._handleInputClickBound);
-      this.input.removeEventListener('focus', this._handleInputFocusBound);
     }
 
     /**
