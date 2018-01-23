@@ -384,3 +384,18 @@
     M.initializeJqueryWrapper(Select, 'select', 'M_Select');
   }
 }(cash));
+
+ /**
+  * Set color for label and input bottom border on select
+  */
+  var color = '#009688';
+  $(document).on('change', 'select', function() {
+    if($(this).val() !== "") {
+      $($(this).parent()).next('label').css('color', color); // Not required though
+        $($(this).parent()).children('input.select-dropdown').css({
+          "border-bottom": "1px solid "+ color, 
+          "-webkit-box-shadow": "0 1px 0 0 "+ color, 
+          "box-shadow": "0 1px 0 0 "+ color
+        });
+      }
+  });
