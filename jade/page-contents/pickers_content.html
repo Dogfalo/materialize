@@ -128,6 +128,12 @@
                 <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input.</td>
               </tr>
               <tr>
+                <td>i18n</td>
+                <td>Object</td>
+                <td>See i18n documentation.</td>
+                <td>Internationalization options.</td>
+              </tr>
+              <tr>
                 <td>events</td>
                 <td>Array</td>
                 <td>[]</td>
@@ -522,22 +528,10 @@ instance.destroy();
                 <td>Millisecond offset from the defaultTime.</td>
               </tr>
               <tr>
-                <td>doneText</td>
-                <td>String</td>
-                <td>'Ok'</td>
-                <td>Done button text.</td>
-              </tr>
-              <tr>
-                <td>clearText</td>
-                <td>String</td>
-                <td>'Clear'</td>
-                <td>Clear button text.</td>
-              </tr>
-              <tr>
-                <td>cancelText</td>
-                <td>String</td>
-                <td>'Cancel'</td>
-                <td>Cancel button text.</td>
+                <td>i18n</td>
+                <td>Object</td>
+                <td>See i18n documentation.</td>
+                <td>Internationalization options.</td>
               </tr>
               <tr>
                 <td>autoClose</td>
@@ -560,6 +554,36 @@ instance.destroy();
             </tbody>
           </table>
         </div>
+
+
+        <div class="section">
+          <h5>Timepicker Internationalization options</h5>
+          <p>Use these in the i18n option to localize the timepicker.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Text</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>clear</td>
+                <td>'Clear'</td>
+              </tr>
+              <tr>
+                <td>cancel</td>
+                <td>'Cancel'</td>
+              </tr>
+              <tr>
+                <td>done</td>
+                <td>'Ok'</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
 
 
         <div class="section">

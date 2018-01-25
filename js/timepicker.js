@@ -10,9 +10,14 @@
     container: null,
     defaultTime: 'now',         // default time, 'now' or '13:14' e.g.
 		fromnow: 0,            // Millisecond offset from the defaultTime
-		doneText: 'Ok',      // done button text
-		clearText: 'Clear',
-		cancelText: 'Cancel',
+
+    // internationalization
+    i18n: {
+      done: 'Ok',
+		  clear: 'Clear',
+		  cancel: 'Cancel',
+    },
+
 		autoClose: false,      // auto close when minute is selected
 		twelveHour: true,      // change to 12 hour AM/PM clock from 24 hour
 		vibrate: true          // vibrate the device when dragging clock hand
@@ -230,13 +235,13 @@
     }
 
     _pickerSetup() {
-      $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.clearText + '</button>')
+      $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.i18n.clear + '</button>')
         .appendTo(this.footer).on('click', this.clear.bind(this));
 
       let confirmationBtnsContainer = $('<div class="confirmation-btns"></div>');
-		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.cancelText + '</button>')
+		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.i18n.cancel + '</button>')
         .appendTo(confirmationBtnsContainer).on('click', this.close.bind(this));
-		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.doneText + '</button>')
+		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.i18n.done + '</button>')
         .appendTo(confirmationBtnsContainer).on('click', this.done.bind(this));
       confirmationBtnsContainer.appendTo(this.footer);
     }
