@@ -4,6 +4,7 @@
   let _defaults = {
     alignment: 'left',
     constrainWidth: true,
+    container: null,
     coverTrigger: true,
     closeOnClick: true,
     hover: false,
@@ -34,10 +35,18 @@
       /**
        * Options for the dropdown
        * @member Dropdown#options
-       * @prop {Function} onOpenStart - Function called when sidenav starts entering
-       * @prop {Function} onOpenEnd - Function called when sidenav finishes entering
-       * @prop {Function} onCloseStart - Function called when sidenav starts exiting
-       * @prop {Function} onCloseEnd - Function called when sidenav finishes exiting
+       * @prop {String} [alignment='left'] - Edge which the dropdown is aligned to
+       * @prop {Boolean} [constrainWidth=true] - Constrain width to width of the button
+       * @prop {Element} container - Container element to attach dropdown to (optional)
+       * @prop {Boolean} [coverTrigger=true] - Place dropdown over trigger
+       * @prop {Boolean} [closeOnClick=true] - Close on click of dropdown item
+       * @prop {Boolean} [hover=false] - Open dropdown on hover
+       * @prop {Number} [inDuration=150] - Duration of open animation in ms
+       * @prop {Number} [outDuration=250] - Duration of close animation in ms
+       * @prop {Function} onOpenStart - Function called when dropdown starts opening
+       * @prop {Function} onOpenEnd - Function called when dropdown finishes opening
+       * @prop {Function} onCloseStart - Function called when dropdown starts closing
+       * @prop {Function} onCloseEnd - Function called when dropdown finishes closing
        */
       this.options = $.extend({}, Dropdown.defaults, options);
 
@@ -51,7 +60,11 @@
       this.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
-      this.$el.after(this.dropdownEl);
+      if (!!this.options.container) {
+        $(this.options.container).append(this.dropdownEl);
+      } else {
+        this.$el.after(this.dropdownEl);
+      }
 
       this._makeDropdownFocusable();
       this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
@@ -277,25 +290,13 @@
 
     _getDropdownPosition() {
       let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
-      let triggerOffset = {
-        left: this.el.offsetLeft,
-        top: this.el.offsetTop,
-        width: this.el.offsetWidth,
-        height: this.el.offsetHeight
-      };
-      let dropdownOffset = {
-        left: this.dropdownEl.offsetLeft,
-        top: this.dropdownEl.offsetTop,
-        width: this.dropdownEl.offsetWidth,
-        height: this.dropdownEl.offsetHeight
-      };
       let triggerBRect = this.el.getBoundingClientRect();
       let dropdownBRect = this.dropdownEl.getBoundingClientRect();
 
       let idealHeight = dropdownBRect.height;
       let idealWidth = dropdownBRect.width;
-      let idealXPos = triggerOffset.left;
-      let idealYPos = triggerOffset.top;
+      let idealXPos = triggerBRect.left - dropdownBRect.left;
+      let idealYPos = triggerBRect.top - dropdownBRect.top;
 
       let dropdownBounds = {
         left: idealXPos,

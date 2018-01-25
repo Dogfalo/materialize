@@ -2,7 +2,8 @@
   'use strict';
 
   let _defaults = {
-    classes: ''
+    classes: '',
+    dropdownOptions: {}
   };
 
 
@@ -219,11 +220,10 @@
 
       // Initialize dropdown
       if (!this.el.disabled) {
-        let dropdownOptions = {};
         if (this.isMultiple) {
-          dropdownOptions.closeOnClick = false;
+          this.options.dropdownOptions.closeOnClick = false;
         }
-        this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
+        this.dropdown = M.Dropdown.init(this.input, this.options.dropdownOptions);
       }
 
       // Add initial selections

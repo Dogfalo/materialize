@@ -550,6 +550,7 @@ Align right: --------------------------------
 
 
 
+<input type="text" class="datepicker">
 
 
 
@@ -588,14 +589,15 @@ Align right: --------------------------------
 
   <script>
    $(document).ready(function(){
-       $('#test-1, #test-11, #test-17, #test-18').dropdown({hover: true});
+       $('#test-1, #test-11, #test-17, #test-18, #button4').dropdown({hover: true});
        $('#test-2, #test-3, #test-19, #test-20').dropdown({coverTrigger: false, hover: true});
        $('#test-14').dropdown({alignment: 'right', constrainWidth: false});
-       $('#test-15, #test-24').dropdown();
+       $('#test-15, #test-24, #button5, #button6').dropdown();
        $('#test-16, #test-22').dropdown({coverTrigger: false});
        $('#test-12').dropdown({constrainWidth: false, alignment: 'left'});
        $('#test-13, #test-21').dropdown({constrainWidth: false, alignment: 'right'});
        $('#test-7, #test-10').dropdown({constrainWidth: false});
+       $('.datepicker').datepicker();
    });
   </script>
 
