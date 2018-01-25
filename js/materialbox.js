@@ -185,8 +185,8 @@
         animOptions.maxWidth = this.newWidth;
         animOptions.width = [this.originalWidth, animOptions.width];
       } else {
-        animOptions.left = [animOptions.left, 0];
-        animOptions.top = [animOptions.top, 0];
+        animOptions.left = animOptions.left;
+        animOptions.top = animOptions.top;
       }
 
       anim(animOptions);
@@ -306,10 +306,6 @@
       anim.remove(this.el);
       anim.remove(this.$overlay[0]);
 
-      if (this.caption !== "") {
-        anim.remove(this.$photoCaption[0]);
-      }
-
       // Animate Overlay
       anim({
         targets: this.$overlay[0],
@@ -320,6 +316,9 @@
 
       // Add and animate caption if it exists
       if (this.caption !== "") {
+        if (this.$photocaption) {
+          anim.remove(this.$photoCaption[0]);
+        }
         this.$photoCaption = $('<div class="materialbox-caption"></div>');
         this.$photoCaption.text(this.caption);
         $('body').append(this.$photoCaption);
