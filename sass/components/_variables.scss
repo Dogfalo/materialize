@@ -179,6 +179,7 @@ $input-disabled-color: rgba(0,0,0, .42) !default;
 $input-disabled-solid-color: #949494 !default;
 $input-disabled-border: 1px dotted $input-disabled-color !default;
 $input-invalid-border: 1px solid $input-error-color !default;
+$input-icon-size: 2rem;
 $placeholder-text-color: lighten($input-border-color, 20%) !default;
 
 // Radio Buttons

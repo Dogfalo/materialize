@@ -212,8 +212,9 @@ textarea.materialize-textarea {
   .prefix {
     position: absolute;
     width: $input-height;
-    font-size: 2rem;
+    font-size: $input-icon-size;
     transition: color .2s;
+    top: ($input-height - $input-icon-size) / 2;
 
     &.active { color: $input-focus-color; }
   }
@@ -286,7 +287,7 @@ textarea.materialize-textarea {
     right: 1rem;
     color: transparent;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: $input-icon-size;
     transition: .3s color;
   }
 }
