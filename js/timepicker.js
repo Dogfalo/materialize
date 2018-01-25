@@ -184,10 +184,10 @@
 				this.showView('minutes', this.options.duration / 2);
 
       } else if (this.options.autoClose) {
-				this.minutesView.addClass('timepicker-dial-out');
-				setTimeout(function(){
-					this.done();
-				}, this.options.duration / 2);
+				$(this.minutesView).addClass('timepicker-dial-out');
+				setTimeout(function(that){
+					that.done();
+				}, this.options.duration / 2, this);
       }
 
 			// Unbind mousemove event
