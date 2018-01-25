@@ -20,6 +20,11 @@
     constructor(el, options) {
       super(Select, el, options);
 
+      // Don't init if browser default version
+      if (this.$el.hasClass('browser-default')) {
+        return;
+      }
+
       this.el.M_Select = this;
 
       /**
