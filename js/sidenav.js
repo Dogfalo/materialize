@@ -26,8 +26,6 @@
     constructor (el, options) {
       super(Sidenav, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Sidenav = this;
       this.id = this.$el.attr('id');
 
@@ -214,6 +212,11 @@
      * @param {Event} e
      */
     _handleDragTargetDrag(e) {
+      // Check if draggable
+      if (!this.options.draggable) {
+        return;
+      }
+
       // If not being dragged, set initial drag start variables
       if (!this.isDragged) {
         this._startDrag(e);
@@ -259,6 +262,11 @@
      * Handle Drag Target Release
      */
     _handleDragTargetRelease() {
+      // Check if draggable
+      if (!this.options.draggable) {
+        return;
+      }
+
       if (this.isDragged) {
         if (this.percentOpen > .5) {
           this.open();

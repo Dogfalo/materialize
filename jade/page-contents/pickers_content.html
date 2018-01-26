@@ -128,6 +128,12 @@
                 <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input.</td>
               </tr>
               <tr>
+                <td>i18n</td>
+                <td>Object</td>
+                <td>See i18n documentation.</td>
+                <td>Internationalization options.</td>
+              </tr>
+              <tr>
                 <td>events</td>
                 <td>Array</td>
                 <td>[]</td>
@@ -176,9 +182,14 @@
 
             <tbody>
               <tr>
-                <td>dd</td>
+                <td>d</td>
                 <td>Date of the month.</td>
                 <td>1-31</td>
+              </tr>
+              <tr>
+                <td>dd</td>
+                <td>Date of the month (2 digits).</td>
+                <td>01-31</td>
               </tr>
               <tr>
                 <td>ddd</td>
@@ -191,9 +202,14 @@
                 <td>Sunday-Saturday</td>
               </tr>
               <tr>
-                <td>mm</td>
+                <td>m</td>
                 <td>Month of the year.</td>
                 <td>1-12</td>
+              </tr>
+              <tr>
+                <td>mm</td>
+                <td>Month of the year (2 digits).</td>
+                <td>01-12</td>
               </tr>
               <tr>
                 <td>mmm</td>
@@ -206,7 +222,7 @@
                 <td>January-December</td>
               </tr>
               <tr>
-                <td>yyy</td>
+                <td>yy</td>
                 <td>2-digit year.</td>
                 <td>17</td>
               </tr>
@@ -214,6 +230,121 @@
                 <td>yyyy</td>
                 <td>4-digit year.</td>
                 <td>2017</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Datepicker Internationalization options</h5>
+          <p>Use these in the i18n option to localize the datepicker.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Text</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>clear</td>
+                <td>'Clear'</td>
+              </tr>
+              <tr>
+                <td>today</td>
+                <td>'Today'</td>
+              </tr>
+              <tr>
+                <td>done</td>
+                <td>'Ok'</td>
+              </tr>
+              <tr>
+                <td>previousMonth</td>
+                <td>'‹'</td>
+              </tr>
+              <tr>
+                <td>nextMonth</td>
+                <td>'›'</td>
+              </tr>
+              <tr>
+                <td>months</td>
+                <td>
+                  <pre>
+[
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>monthsShort</td>
+                <td>
+                  <pre>
+[
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>weekdays</td>
+                <td>
+                  <pre>
+[
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>weekdaysShort</td>
+                <td>
+                  <pre>
+[
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>weekdaysAbbrev</td>
+                <td>['S','M','T','W','T','F','S']</td>
               </tr>
             </tbody>
           </table>
@@ -397,22 +528,10 @@ instance.destroy();
                 <td>Millisecond offset from the defaultTime.</td>
               </tr>
               <tr>
-                <td>doneText</td>
-                <td>String</td>
-                <td>'Ok'</td>
-                <td>Done button text.</td>
-              </tr>
-              <tr>
-                <td>clearText</td>
-                <td>String</td>
-                <td>'Clear'</td>
-                <td>Clear button text.</td>
-              </tr>
-              <tr>
-                <td>cancelText</td>
-                <td>String</td>
-                <td>'Cancel'</td>
-                <td>Cancel button text.</td>
+                <td>i18n</td>
+                <td>Object</td>
+                <td>See i18n documentation.</td>
+                <td>Internationalization options.</td>
               </tr>
               <tr>
                 <td>autoClose</td>
@@ -435,6 +554,36 @@ instance.destroy();
             </tbody>
           </table>
         </div>
+
+
+        <div class="section">
+          <h5>Timepicker Internationalization options</h5>
+          <p>Use these in the i18n option to localize the timepicker.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Text</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>clear</td>
+                <td>'Clear'</td>
+              </tr>
+              <tr>
+                <td>cancel</td>
+                <td>'Cancel'</td>
+              </tr>
+              <tr>
+                <td>done</td>
+                <td>'Ok'</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
 
 
         <div class="section">

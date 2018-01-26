@@ -33,8 +33,6 @@
     constructor(el, options) {
       super(Chips, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Chips = this;
 
       /**
@@ -339,7 +337,7 @@
         this.$input[0].focus();
       };
 
-      this.autocomplete = M.Autocomplete.init(this.$input, this.options.autocompleteOptions)[0];
+      this.autocomplete = M.Autocomplete.init(this.$input[0], this.options.autocompleteOptions);
     }
 
     /**
@@ -392,9 +390,9 @@
         }
         return !exists;
 
-      } else {
-        return false;
       }
+
+      return false;
     }
 
     /**

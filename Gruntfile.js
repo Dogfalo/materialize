@@ -574,17 +574,7 @@ module.exports = function(grunt) {
           ignore: true
         }
       },
-    },
-
-    // Removes console logs
-    removelogging: {
-      source: {
-        src: ["js/**/*.js", "!js/anime.min.js"],
-        options: {
-          // see below for options. this is optional.
-        }
-      }
-    },
+    }
   };
 
   grunt.initConfig(config);
@@ -603,7 +593,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename-util');
-  grunt.loadNpmTasks('grunt-remove-logging');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
@@ -613,7 +602,6 @@ module.exports = function(grunt) {
   // define the tasks
   grunt.registerTask(
     'release',[
-      'lint',
       'sass:expanded',
       'sass:min',
       'postcss:expanded',
@@ -643,7 +631,6 @@ module.exports = function(grunt) {
   grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
-  grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);
   grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
 };

@@ -7,6 +7,9 @@
         <p class="caption">
           This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.
         </p>
+        <p>
+          <strong>Please note that the sidenav HTML should not be contained within the navbar HTML.</strong>
+        </p>
 
         <a href="#" data-target="slide-out" class="sidenav-trigger btn">Side nav demo</a>
 
@@ -29,7 +32,10 @@
         <br/>
 
         <pre><code class="language-markup col s12">
-  &lt;ul id="slide-out" class="sidenav">
+
+  &lt;nav> &lt;!-- navbar content here  --> &lt;/nav>
+
+  &lt;ul> id="slide-out" class="sidenav">
     &lt;li>&lt;div class="user-view">
       &lt;div class="background">
         &lt;img src="images/office.jpg">

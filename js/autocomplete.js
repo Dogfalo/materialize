@@ -26,8 +26,6 @@
     constructor(el, options) {
       super(Autocomplete, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Autocomplete = this;
 
       /**

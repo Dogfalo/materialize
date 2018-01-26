@@ -11,12 +11,14 @@ class Component {
       console.error( Error(el + ' is not an HTML Element'));
     }
 
-    // If exists, destroy and reinitialize
+    // If exists, destroy and reinitialize in child
     let ins = classDef.getInstance(el);
     if (!!ins) {
       ins.destroy();
     }
 
+    this.el = el;
+    this.$el = cash(el);
   }
 
 

@@ -1,16 +1,6 @@
 /* Checkboxes
    ========================================================================== */
 
-/* CUSTOM CSS CHECKBOXES */
-form p {
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-form p:last-child {
-  margin-bottom: 0;
-}
-
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {

@@ -21,8 +21,6 @@
     constructor(el, options) {
       super(FeatureDiscovery, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_FeatureDiscovery = this;
 
       /**

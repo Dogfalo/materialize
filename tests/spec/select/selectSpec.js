@@ -43,6 +43,11 @@ describe("Select Plugin", function () {
       var firstOption = browserSelect.find('option[selected]');
       expect(normalInput.val()).toEqual(firstOption.text(), 'Value should be equal to preselected option.');
     });
+
+    it("should not initialize if browser default", function () {
+      browserDefault = $('select.browser-default');
+      expect(browserDefault.parent().hasClass('select-wrapper')).toEqual(false, 'Wrapper should not be made');
+    });
   });
 
   describe("Multiple Select", function () {

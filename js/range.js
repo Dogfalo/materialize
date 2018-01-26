@@ -18,8 +18,6 @@
     constructor(el, options) {
       super(Range, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Range = this;
 
       /**

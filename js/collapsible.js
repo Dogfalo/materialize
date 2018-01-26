@@ -26,8 +26,6 @@
     constructor(el, options) {
       super(Collapsible, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Collapsible = this;
 
       /**

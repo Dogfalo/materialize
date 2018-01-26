@@ -21,7 +21,7 @@ select {
     width: 0;
     pointer-events: none;
     height: 0;
-    top: 0;
+    bottom: 0;
     left: 0;
     opacity: 0;
   }
@@ -48,7 +48,8 @@ select {
   }
 
   &.invalid {
-    & > input.select-dropdown {
+    & > input.select-dropdown,
+    & > input.select-dropdown:focus {
       @extend %invalid-input-style;
     }
 

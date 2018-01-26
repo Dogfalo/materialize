@@ -109,7 +109,6 @@
   var chip = {
     tag: 'chip content',
     image: '', //optional
-    id: 1, //optional
   };
         </code></pre>
 
@@ -187,29 +186,17 @@
         <blockquote>
           <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
           <pre><code class="language-javascript col s12">
-    var instance = M.Carousel.getInstance(elem);
+    var instance = M.Chips.getInstance(elem);
 
     /* jQuery Method Calls
       You can still use the old jQuery plugin method calls.
       But you won't be able to access instance properties.
 
-      $('.carousel').carousel('methodName');
-      $('.carousel').carousel('methodName', paramName);
+      $('.chips').chips('methodName');
+      $('.chips').chips('methodName', paramName);
     */
           </code></pre>
         </blockquote>
-
-        <h5 class="method-header">
-  .next();
-        </h5>
-        <p>Move carousel to next slide or go forward a given amount of slides.</p>
-        <h6>Arguments</h6>
-        <p><b>Integer (optional):</b> How many times the carousel slides.</p>
-        <pre><code class="language-javascript col s12">
-  instance.next();
-  instance.next(3); // Move next n times.
-        </code></pre>
-        <br>
 
         <h5 class="method-header">
   .addChip();
@@ -218,8 +205,10 @@
         <h6>Arguments</h6>
         <p><b>Chip:</b> Chip data object.</p>
         <pre><code class="language-javascript col s12">
-  instance.prev();
-  instance.prev(3); // Move previous n times.
+  instance.addChip({
+    tag: 'chip content',
+    image: '', // optional
+  });
         </code></pre>
         <br>
 
@@ -230,8 +219,7 @@
         <h6>Arguments</h6>
         <p><b>Integer:</b> Index of chip.</p>
         <pre><code class="language-javascript col s12">
-  instance.set();
-  instance.set(3); // Set to nth slide.
+  instance.deleteChip(3); // Delete 3rd chip.
         </code></pre>
         <br>
 
@@ -242,7 +230,7 @@
         <h6>Arguments</h6>
         <p><b>Integer:</b> Index of chip.</p>
         <pre><code class="language-javascript col s12">
-  instance.destroy();
+  instance.selectChip(2); // Select 2nd chip
         </code></pre>
 
       </div>
@@ -278,6 +266,11 @@
               <td>hasAutocomplete</td>
               <td>Boolean</td>
               <td>If the chips has autocomplete enabled.</td>
+            </tr>
+            <tr>
+              <td>autocomplete</td>
+              <td>Object</td>
+              <td><a href="autocomplete.html">Autocomplete</a> instance, if any.</td>
             </tr>
           </tbody>
         </table>

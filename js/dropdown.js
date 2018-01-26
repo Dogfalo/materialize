@@ -1,9 +1,10 @@
-(function($, anim) {
+(function ($, anim) {
   'use strict';
 
   let _defaults = {
     alignment: 'left',
     constrainWidth: true,
+    container: null,
     coverTrigger: true,
     closeOnClick: true,
     hover: false,
@@ -23,8 +24,6 @@
     constructor(el, options) {
       super(Dropdown, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Dropdown = this;
       Dropdown._dropdowns.push(this);
 
@@ -36,10 +35,18 @@
       /**
        * Options for the dropdown
        * @member Dropdown#options
-       * @prop {Function} onOpenStart - Function called when sidenav starts entering
-       * @prop {Function} onOpenEnd - Function called when sidenav finishes entering
-       * @prop {Function} onCloseStart - Function called when sidenav starts exiting
-       * @prop {Function} onCloseEnd - Function called when sidenav finishes exiting
+       * @prop {String} [alignment='left'] - Edge which the dropdown is aligned to
+       * @prop {Boolean} [constrainWidth=true] - Constrain width to width of the button
+       * @prop {Element} container - Container element to attach dropdown to (optional)
+       * @prop {Boolean} [coverTrigger=true] - Place dropdown over trigger
+       * @prop {Boolean} [closeOnClick=true] - Close on click of dropdown item
+       * @prop {Boolean} [hover=false] - Open dropdown on hover
+       * @prop {Number} [inDuration=150] - Duration of open animation in ms
+       * @prop {Number} [outDuration=250] - Duration of close animation in ms
+       * @prop {Function} onOpenStart - Function called when dropdown starts opening
+       * @prop {Function} onOpenEnd - Function called when dropdown finishes opening
+       * @prop {Function} onCloseStart - Function called when dropdown starts closing
+       * @prop {Function} onCloseEnd - Function called when dropdown finishes closing
        */
       this.options = $.extend({}, Dropdown.defaults, options);
 
@@ -53,7 +60,11 @@
       this.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
-      this.$el.after(this.dropdownEl);
+      if (!!this.options.container) {
+        $(this.options.container).append(this.dropdownEl);
+      } else {
+        this.$el.after(this.dropdownEl);
+      }
 
       this._makeDropdownFocusable();
       this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
@@ -104,7 +115,7 @@
         this.el.addEventListener('mouseleave', this._handleMouseLeaveBound);
         this.dropdownEl.addEventListener('mouseleave', this._handleMouseLeaveBound);
 
-      // Click event handlers
+        // Click event handlers
       } else {
         this._handleClickBound = this._handleClick.bind(this);
         this.el.addEventListener('click', this._handleClickBound);
@@ -130,12 +141,14 @@
     _setupTemporaryEventHandlers() {
       // Use capture phase event handler to prevent click
       document.body.addEventListener('click', this._handleDocumentClickBound, true);
+      document.body.addEventListener('touchstart', this._handleDocumentClickBound);
       this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
     _removeTemporaryEventHandlers() {
       // Use capture phase event handler to prevent click
       document.body.removeEventListener('click', this._handleDocumentClickBound, true);
+      document.body.removeEventListener('touchstart', this._handleDocumentClickBound);
       this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
@@ -155,7 +168,7 @@
 
       let $closestTrigger = $(toEl).closest('.dropdown-trigger');
       if ($closestTrigger.length && !!$closestTrigger[0].M_Dropdown &&
-          $closestTrigger[0].M_Dropdown.isOpen) {
+        $closestTrigger[0].M_Dropdown.isOpen) {
         leaveToActiveDropdownTrigger = true;
       }
 
@@ -171,11 +184,8 @@
         setTimeout(() => {
           this.close();
         }, 0);
-      } else if ($target.closest('.dropdown-trigger').length) {
-        setTimeout(() => {
-          this.close();
-        }, 0);
-      } else if (!$target.closest('.dropdown-content').length) {
+      } else if ($target.closest('.dropdown-trigger').length ||
+        !$target.closest('.dropdown-content').length) {
         setTimeout(() => {
           this.close();
         }, 0);
@@ -185,7 +195,7 @@
     _handleTriggerKeydown(e) {
       // ARROW DOWN OR ENTER WHEN SELECT IS CLOSED - open Dropdown
       if ((e.which === M.keys.ARROW_DOWN ||
-           e.which === M.keys.ENTER) && !this.isOpen) {
+          e.which === M.keys.ENTER) && !this.isOpen) {
         e.preventDefault();
         this.open();
       }
@@ -202,7 +212,7 @@
 
         // Navigate down dropdown list
       } else if ((e.which === M.keys.ARROW_DOWN ||
-                  e.which === M.keys.ARROW_UP) && this.isOpen) {
+          e.which === M.keys.ARROW_UP) && this.isOpen) {
         e.preventDefault();
         let direction = e.which === M.keys.ARROW_DOWN ? 1 : -1;
         this.focusedIndex =
@@ -226,14 +236,14 @@
 
       // CASE WHEN USER TYPE LETTERS
       let letter = String.fromCharCode(e.which).toLowerCase(),
-          nonLetters = [9,13,27,38,40];
+        nonLetters = [9, 13, 27, 38, 40];
       if (letter && (nonLetters.indexOf(e.which) === -1)) {
         this.filterQuery.push(letter);
 
         let string = this.filterQuery.join(''),
-            newOptionEl = $(this.dropdownEl).find('li').filter((el) => {
-              return $(el).text().toLowerCase().indexOf(string) === 0;
-            })[0];
+          newOptionEl = $(this.dropdownEl).find('li').filter((el) => {
+            return $(el).text().toLowerCase().indexOf(string) === 0;
+          })[0];
 
         if (newOptionEl) {
           this.focusedIndex = $(newOptionEl).index();
@@ -280,15 +290,13 @@
 
     _getDropdownPosition() {
       let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
-      let triggerOffset = {left: this.el.offsetLeft, top: this.el.offsetTop, width: this.el.offsetWidth, height: this.el.offsetHeight};
-      let dropdownOffset = {left: this.dropdownEl.offsetLeft, top: this.dropdownEl.offsetTop, width: this.dropdownEl.offsetWidth, height: this.dropdownEl.offsetHeight};
       let triggerBRect = this.el.getBoundingClientRect();
       let dropdownBRect = this.dropdownEl.getBoundingClientRect();
 
       let idealHeight = dropdownBRect.height;
       let idealWidth = dropdownBRect.width;
-      let idealXPos =  triggerOffset.left;
-      let idealYPos = triggerOffset.top;
+      let idealXPos = triggerBRect.left - dropdownBRect.left;
+      let idealYPos = triggerBRect.top - dropdownBRect.top;
 
       let dropdownBounds = {
         left: idealXPos,
@@ -345,12 +353,14 @@
       if (horizontalAlignment === 'right') {
         idealXPos = idealXPos - dropdownBRect.width + triggerBRect.width;
       }
-      return {x: idealXPos,
-              y: idealYPos,
-              verticalAlignment: verticalAlignment,
-              horizontalAlignment: horizontalAlignment,
-              height: idealHeight,
-              width: idealWidth};
+      return {
+        x: idealXPos,
+        y: idealYPos,
+        verticalAlignment: verticalAlignment,
+        horizontalAlignment: horizontalAlignment,
+        height: idealHeight,
+        width: idealWidth
+      };
     }
 
 
@@ -381,7 +391,7 @@
           this.dropdownEl.focus();
 
           // onOpenEnd callback
-          if (typeof(this.options.onOpenEnd) === 'function') {
+          if (typeof (this.options.onOpenEnd) === 'function') {
             let elem = anim.animatables[0].target;
             this.options.onOpenEnd.call(elem, this.el);
           }
@@ -408,7 +418,7 @@
           this._resetDropdownStyles();
 
           // onCloseEnd callback
-          if (typeof(this.options.onCloseEnd) === 'function') {
+          if (typeof (this.options.onCloseEnd) === 'function') {
             let elem = anim.animatables[0].target;
             this.options.onCloseEnd.call(this, this.el);
           }
@@ -427,7 +437,7 @@
       this.isOpen = true;
 
       // onOpenStart callback
-      if (typeof(this.options.onOpenStart) === 'function') {
+      if (typeof (this.options.onOpenStart) === 'function') {
         this.options.onOpenStart.call(this, this.el);
       }
 
@@ -437,7 +447,7 @@
 
       // Set width before calculating positionInfo
       let idealWidth = this.options.constrainWidth ?
-          this.el.getBoundingClientRect().width : this.dropdownEl.getBoundingClientRect().width;
+        this.el.getBoundingClientRect().width : this.dropdownEl.getBoundingClientRect().width;
       this.dropdownEl.style.width = idealWidth + 'px';
 
       let positionInfo = this._getDropdownPosition();
@@ -456,7 +466,7 @@
       this.focusedIndex = -1;
 
       // onCloseStart callback
-      if (typeof(this.options.onCloseStart) === 'function') {
+      if (typeof (this.options.onCloseStart) === 'function') {
         this.options.onCloseStart.call(this, this.el);
       }
 

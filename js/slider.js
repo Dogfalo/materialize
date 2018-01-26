@@ -23,8 +23,6 @@
     constructor(el, options) {
       super(Slider, el, options);
 
-      this.el = el;
-      this.$el = $(el);
       this.el.M_Slider = this;
 
       /**
