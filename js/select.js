@@ -220,10 +220,12 @@
 
       // Initialize dropdown
       if (!this.el.disabled) {
+        let dropdownOptions = $.extend({}, this.options.dropdownOptions);
+
         if (this.isMultiple) {
-          this.options.dropdownOptions.closeOnClick = false;
+          dropdownOptions.closeOnClick = false;
         }
-        this.dropdown = M.Dropdown.init(this.input, this.options.dropdownOptions);
+        this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
       }
 
       // Add initial selections
