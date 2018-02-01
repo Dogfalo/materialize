@@ -287,7 +287,7 @@
       let windowWidth = window.innerWidth;
       let windowHeight = window.innerHeight;
       let backdrop = this.$el.find('.fab-backdrop');
-      let fabColor = anchor.css('background-color');
+      let fabColor = this.$anchor.css('background-color');
 
       this.offsetX = this.btnLeft - (windowWidth / 2) + (this.btnWidth / 2);
       this.offsetY = windowHeight - this.btnBottom;

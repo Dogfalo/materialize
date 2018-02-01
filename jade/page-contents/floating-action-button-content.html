@@ -196,7 +196,7 @@ instance.destroy();
 
 
 
-      <div id="click-only">
+      <div id="click-only" class="scrollspy section">
         <h3 class="header">Click-only FAB</h3>
         <p>If you want to disable the hover behaviour, and instead toggle the FAB menu when the user clicks on the large button (works great on mobile!), just add the <code class="language-markup">click-to-toggle</code> class to the FAB.</p>
         <div style="position: relative; height: 70px;">
@@ -221,6 +221,24 @@ instance.destroy();
         </code></pre>
       </div>
 
+      <div id="toolbar" class="scrollspy section">
+        <h3 class="header">FAB to Toolbar</h3>
+        <p>Instead of displaying individual button options, you can transition your FAB into a toolbar on click. Just add the <code class="language-markup">toolbar</code> class to the FAB.</p>
+        <iframe src="fab-toolbar-demo.html" frameborder="0" width="100%" height="100px"></iframe>
+        <pre><code class="language-javascript">
+  var elem = document.querySelector('.fixed-action-btn');
+  var instance = new M.FloatingActionButton(elem, {
+    toolbarEnabled: true
+  });
+
+  // Or with jQuery
+
+  $('.fixed-action-btn').floatingActionButton({
+    toolbarEnabled: true
+  });
+        </code></pre>
+      </div>
+
     </div>
 
     <!-- Table of Contents -->
@@ -238,8 +256,9 @@ instance.destroy();
             <li><a href="#options">Options</a></li>
             <li><a href="#methods">Methods</a></li>
             <li><a href="#properties">Properties</a></li>
-            <li><a href="#fixed-footer">Fixed Footer</a></li>
+            <li><a href="#horizontal">Horizontal</a></li>
             <li><a href="#click-only">Click Only FAB</a></li>
+            <li><a href="#toolbar">FAB to Toolbar</a></li>
           </ul>
         </div>
       </div>
