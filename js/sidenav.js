@@ -6,6 +6,7 @@
     draggable: true,
     inDuration: 250,
     outDuration: 200,
+    onDragStart: null,
     onOpenStart: null,
     onOpenEnd: null,
     onCloseStart: null,
@@ -191,6 +192,9 @@
       this._overlay.style.display = 'block';
       anim.remove(this.el);
       anim.remove(this._overlay);
+      if (this.options.onDragStart) {
+        this.options.onDragStart(!this.isOpen);
+      }
     }
 
 
