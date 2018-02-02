@@ -172,9 +172,14 @@ ul.sidenav.sidenav-fixed {
     padding: 0 10px;
   }
 
+  &:last-child {
+    margin-right: 0;
+  }
+
   display: inline-block;
   float: left;
   margin-right: 50px;
+  margin-bottom: 20px;
 
   a {
     display: flex;
@@ -183,7 +188,7 @@ ul.sidenav.sidenav-fixed {
     height: 70px;
   }
   img {
-    max-width: 200px;
+    max-width: 180px;
     max-height: 100%;
   }
 }
@@ -191,6 +196,16 @@ ul.sidenav.sidenav-fixed {
 @media #{$medium-and-down} {
   .patreon-ad {
     display: none;
+  }
+
+  .patreon-footer-ad {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+
+  footer.page-footer .container {
+    text-align: center;
   }
 }
 
