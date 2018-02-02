@@ -191,9 +191,14 @@ ul.side-nav.fixed {
   }
 }
 .patreon-footer-ad {
+  &:last-child {
+    margin-right: 0;
+  }
+
   display: inline-block;
   float: left;
   margin-right: 50px;
+  margin-bottom: 20px;
 
   a {
     display: flex;
@@ -202,7 +207,7 @@ ul.side-nav.fixed {
     height: 70px;
   }
   img {
-    max-width: 200px;
+    max-width: 180px;
     max-height: 100%;
   }
 }
@@ -210,6 +215,16 @@ ul.side-nav.fixed {
 @media #{$medium-and-down} {
   .patreon-ad {
     display: none;
+  }
+
+  .patreon-footer-ad {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+
+  footer.page-footer .container {
+    text-align: center;
   }
 }
 
