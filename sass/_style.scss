@@ -150,6 +150,7 @@ ul.sidenav.sidenav-fixed {
 }
 
 .patreon-ad {
+  display: none;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -194,7 +195,8 @@ ul.sidenav.sidenav-fixed {
 }
 
 @media #{$medium-and-down} {
-  .patreon-ad {
+  .patreon-ad,
+  .bsa-cpc {
     display: none;
   }
 
@@ -907,6 +909,73 @@ code[class*="language-"] {
 
     a { color: color("red", "lighten-4"); }
   }
+}
+
+
+/** BSA Sidebar */
+.bsa-cpc #_default_ {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  padding: 15px 30px 20px;
+  width: 299px;
+  border-top: solid 1px #dbdbdb;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bsa-cpc .default-ad {
+  display: none;
+}
+
+.bsa-cpc ._default_ {
+  display: inline;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.bsa-cpc ._default_ > * {
+  vertical-align: middle;
+}
+
+.bsa-cpc a {
+  color: inherit;
+}
+
+.bsa-cpc a:hover {
+  color: #ee6e73;
+}
+
+.bsa-cpc .default-image {
+  display: none;
+}
+
+.bsa-cpc .default-title,
+.bsa-cpc .default-description {
+  display: inline;
+}
+
+.bsa-cpc .default-title {
+  position: relative;
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.bsa-cpc .default-title:before {
+  position: absolute;
+  top: calc(-50% - 17px);
+  padding: 4px 6px;
+  border-radius: 3px;
+  background-color: #ee6e73;
+  color: #fff;
+  content: "Sponsor";
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
 }
 
 

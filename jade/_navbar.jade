@@ -140,5 +140,20 @@ header
       a.waves-effect.waves-teal(href='showcase.html') Showcase
     li.bold(class=(page == "Themes" ? "active" : ""))
       a.waves-effect.waves-teal(href='themes.html') Themes
+
+  // Sidebar BSA
+  script(src="//m.servedby-buysellads.com/monetization.js" type="text/javascript").
+  .bsa-cpc
+  script.
+    (function(){
+      if(typeof _bsa !== 'undefined' && _bsa) {
+      _bsa.init('default', 'CKYD55QM', 'placement:materializecsscom', {
+        target: '.bsa-cpc',
+        align: 'horizontal',
+        disable_css: 'true'
+      });
+        }
+    })();
+
   .patreon-ad
     a.waves-effect(href='https://www.patreon.com/materialize', target='_blank') Become a Patron
