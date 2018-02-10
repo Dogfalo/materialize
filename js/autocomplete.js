@@ -254,6 +254,9 @@
       $(this.container).empty();
       this._resetCurrentElement();
       this.oldVal = null;
+      $(this.container).css({
+        display: ''
+      });
       this.isOpen = false;
     }
 
@@ -308,6 +311,10 @@
       };
       matchingData.sort(sortFunctionBound);
 
+      $(this.container).css({
+        display: 'block'
+      });
+
       // Render
       for (let i = 0; i < matchingData.length; i++) {
         let entry = matchingData[i];
@@ -321,6 +328,7 @@
         $(this.container).append($autocompleteOption);
         this._highlight(val, $autocompleteOption);
       }
+
     }
 
     /**
