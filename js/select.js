@@ -11,28 +11,28 @@
    * @class
    *
    */
-  class Select extends Component {
+  class FormSelect extends Component {
     /**
-     * Construct Select instance
+     * Construct FormSelect instance
      * @constructor
      * @param {Element} el
      * @param {Object} options
      */
     constructor(el, options) {
-      super(Select, el, options);
+      super(FormSelect, el, options);
 
       // Don't init if browser default version
       if (this.$el.hasClass('browser-default')) {
         return;
       }
 
-      this.el.M_Select = this;
+      this.el.M_FormSelect = this;
 
       /**
        * Options for the select
-       * @member Select#options
+       * @member FormSelect#options
        */
-      this.options = $.extend({}, Select.defaults, options);
+      this.options = $.extend({}, FormSelect.defaults, options);
 
       this.isMultiple = this.$el.prop('multiple');
 
@@ -67,7 +67,7 @@
     destroy() {
       this._removeEventHandlers();
       this._removeDropdown();
-      this.el.M_Select = undefined;
+      this.el.M_FormSelect = undefined;
     }
 
     /**
@@ -384,9 +384,9 @@
     }
   }
 
-  M.Select = Select;
+  M.FormSelect = FormSelect;
 
   if (M.jQueryLoaded) {
-    M.initializeJqueryWrapper(Select, 'select', 'M_Select');
+    M.initializeJqueryWrapper(FormSelect, 'formSelect', 'M_FormSelect');
   }
 }(cash));

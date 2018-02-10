@@ -157,12 +157,12 @@
 
         <pre><code class="language-javascript">
   var elem = document.querySelector('select');
-  var instance = M.Select.init(elem, options);
+  var instance = M.FormSelect.init(elem, options);
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('select').select();
+    $('select').formSelect();
   });
         </code></pre>
         <br>
@@ -203,14 +203,14 @@
       <blockquote>
         <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
         <pre><code class="language-javascript col s12">
-  var instance = M.Select.getInstance(elem);
+  var instance = M.FormSelect.getInstance(elem);
 
   /* jQuery Method Calls
     You can still use the old jQuery plugin method calls.
     But you won't be able to access instance properties.
 
-    $('select').select('methodName');
-    $('select').select('methodName', paramName);
+    $('select').formSelect('methodName');
+    $('select').formSelect('methodName', paramName);
   */
         </code></pre>
       </blockquote>

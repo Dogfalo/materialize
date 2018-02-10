@@ -188,7 +188,7 @@
     $('.tabs').tabs();
     $('.timepicker').timepicker();
     $('.tooltipped').tooltip();
-    $('select').not('.disabled').select();
+    $('select').not('.disabled').formSelect();
     $('.sidenav').sidenav();
     $('.tap-target').featureDiscovery();
     $('input.autocomplete').autocomplete({
