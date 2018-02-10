@@ -102,7 +102,17 @@
             </tr>
           </tbody>
         </table>
-        <br>
+
+        <h5 class="method-header">
+  sortFunction
+        </h5>
+        <p>This is the default compareFunction. You can write your own compareFunction by passing in a function with these same 3 parameters. You can read more about how a compareFunction works <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">here</a>.</p>
+        <pre><code class="language-javascript col s12">
+  // Sort function for sorting autocomplete results
+  function (a, b, inputString) {
+    return a.indexOf(inputString) - b.indexOf(inputString);
+  }
+        </code></pre>
       </div>
 
 
