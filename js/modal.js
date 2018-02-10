@@ -281,14 +281,13 @@
 
       // Set opening trigger, undefined indicates modal was opened by javascript
       this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
-  
+
       // onOpenStart callback
       if (typeof(this.options.onOpenStart) === 'function') {
         this.options.onOpenStart.call(this, this.el, this._openingTrigger);
       }
 
-      let body = document.body;
-      body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
       this.el.classList.add('open');
       this.el.insertAdjacentElement('afterend', this.$overlay[0]);
 
@@ -319,7 +318,11 @@
       }
 
       this.el.classList.remove('open');
-      document.body.style.overflow = '';
+
+      // Enable body scrolling only if there are no more modals open.
+      if (Modal._count === 0) {
+        document.body.style.overflow = '';
+      }
 
       if (this.options.dismissible) {
         document.removeEventListener('keydown', this._handleKeydownBound);
