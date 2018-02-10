@@ -266,6 +266,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/toasts.html',
+      title: 'Toasts',
+      body: 'Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/tooltips.html',
       title: 'Tooltips',
       body: 'Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.'
