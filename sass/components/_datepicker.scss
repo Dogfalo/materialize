@@ -55,7 +55,7 @@
 
 /* Date Display */
 .datepicker-date-display {
-  flex: 1;
+  flex: 1 auto;
   background-color: $secondary-color;
   color: #fff;
   padding: 20px 22px;
@@ -79,7 +79,7 @@
 
 /* Calendar */
 .datepicker-calendar-container {
-  flex: 2.5;
+  flex: 2.5 auto;
 }
 
 .datepicker-table {
