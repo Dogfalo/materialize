@@ -184,8 +184,8 @@
 				this.showView('minutes', this.options.duration / 2);
 
       } else if (this.options.autoClose) {
-				this.minutesView.addClass('timepicker-dial-out');
-				setTimeout(function(){
+				$(this.minutesView).addClass('timepicker-dial-out');
+				setTimeout(() => {
 					this.done();
 				}, this.options.duration / 2);
       }
