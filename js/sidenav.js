@@ -6,6 +6,7 @@
     draggable: true,
     inDuration: 250,
     outDuration: 200,
+    onDragStart: null,
     onOpenStart: null,
     onOpenEnd: null,
     onCloseStart: null,
@@ -187,6 +188,9 @@
       this._startingXpos = clientX;
       this._xPos = this._startingXpos;
       this._time = Date.now();
+      if (this.options.onDragStart) {
+        this.options.onDragStart(!this.isOpen);
+      }
       this._width = this.el.getBoundingClientRect().width;
       this._overlay.style.display = 'block';
       anim.remove(this.el);
