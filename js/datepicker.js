@@ -602,6 +602,16 @@
           this.render(this.calendars[c].year, this.calendars[c].month, randId);
       }
 
+      // Destroy Materialize Select
+      let oldYearSelect = this.calendarEl.querySelector('.pika-select-year');
+      if (oldYearSelect) {
+        M.FormSelect.getInstance(oldYearSelect).destroy();
+      }
+      let oldMonthSelect = this.calendarEl.querySelector('.pika-select-month');
+      if (oldMonthSelect) {
+        M.FormSelect.getInstance(oldMonthSelect).destroy();
+      }
+
       this.calendarEl.innerHTML = html;
 
       // Init Materialize Select

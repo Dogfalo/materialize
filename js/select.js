@@ -58,7 +58,7 @@
      */
     static getInstance(el) {
       let domElem = !!el.jquery ? el[0] : el;
-      return domElem.M_Select;
+      return domElem.M_FormSelect;
     }
 
     /**
