@@ -92,6 +92,11 @@
       this.el.M_Datepicker = this;
 
       this.options = $.extend({}, Datepicker.defaults, options);
+      
+      // make sure i18n defaults are not lost when single i18n options are passed
+      if(options.hasOwnProperty('i18n') {
+         this.options.i18n = $.extend({}, Datepicker.defaults.i18n, options.i18n);
+      }
 
       // Remove time component from minDate and maxDate options
       if (this.options.minDate) this.options.minDate.setHours(0, 0, 0, 0);
