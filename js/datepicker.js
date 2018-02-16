@@ -93,8 +93,8 @@
 
       this.options = $.extend({}, Datepicker.defaults, options);
       
-      // make sure i18n defaults are not lost when single i18n options are passed
-      if(options.hasOwnProperty('i18n')) {
+      // make sure i18n defaults are not lost when only few i18n option properties are passed
+      if(options.hasOwnProperty('i18n') && typeof options.i18n === 'object') {
          this.options.i18n = $.extend({}, Datepicker.defaults.i18n, options.i18n);
       }
 
