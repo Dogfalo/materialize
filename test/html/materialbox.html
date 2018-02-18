@@ -10,7 +10,21 @@
   <body>
 
 <div class="row">
+  <div class="col s6 right">
+    <div class="card horizontal">
+        <div class="card-image">
+          <img class="materialboxed" width="650" src="https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?q=80&fm=jpg&s=643e44f5177366de6cc914c8bcfbe064">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Materialbox inside card image</span>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 
+<div class="row">
   <div class="col s6 right">
     <div class="card large">
         <div class="card-image">
@@ -72,7 +86,9 @@
 </div>
 
 
-  <ul id="slide-out" class="sidenav fixed rtl grey darken-3 white-text center row">
+
+
+  <ul id="slide-out" class="sidenav sidenav-fixed rtl grey darken-3 white-text center row">
         <div class="col s10 offset-s1"><img id="profile" class="responsive-img materialboxed" src="http://ordnanceengineering.com/wp-content/uploads/8589130423107-blue-mountains-landscape-wallpaper-hd.jpg"></div>
         <div class="col s12"><b>Materialbox inside fixed navbar</b></li>
     </ul>
@@ -84,6 +100,7 @@
     <script type="text/javascript">
     $( document ).ready(function() {
       $('.materialboxed').materialbox();
+      $('.sidenav').sidenav();
     });
 
 
