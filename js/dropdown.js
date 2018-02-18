@@ -141,14 +141,14 @@
     _setupTemporaryEventHandlers() {
       // Use capture phase event handler to prevent click
       document.body.addEventListener('click', this._handleDocumentClickBound, true);
-      document.body.addEventListener('touchstart', this._handleDocumentClickBound);
+      document.body.addEventListener('touchend', this._handleDocumentClickBound);
       this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
     _removeTemporaryEventHandlers() {
       // Use capture phase event handler to prevent click
       document.body.removeEventListener('click', this._handleDocumentClickBound, true);
-      document.body.removeEventListener('touchstart', this._handleDocumentClickBound);
+      document.body.removeEventListener('touchend', this._handleDocumentClickBound);
       this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
