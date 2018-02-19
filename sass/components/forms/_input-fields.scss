@@ -193,6 +193,12 @@ textarea.materialize-textarea {
     }
   }
 
+  & > input[type=date]:not(.browser-default) + label,
+  & > input[type=time]:not(.browser-default) + label {
+    transform: translateY(-14px) scale(.8);
+    transform-origin: 0 0;
+  }
+
   .helper-text {
     &::after {
       opacity: 1;
