@@ -10,6 +10,7 @@
     onOpenEnd: null,
     onCloseStart: null,
     onCloseEnd: null,
+    preventScrolling: true
   };
 
 
@@ -431,7 +432,9 @@
 
       // Handle non-fixed Sidenav
       } else {
-        this._preventBodyScrolling();
+        if (this.options.preventScrolling) {
+          this._preventBodyScrolling();
+        }
 
         if (!this.isDragged || this.percentOpen != 1) {
           this._animateIn();

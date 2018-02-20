@@ -9,6 +9,7 @@
     onOpenEnd: null,
     onCloseStart: null,
     onCloseEnd: null,
+    preventScrolling: true,
     dismissible: true,
     startingTop: '4%',
     endingTop: '10%'
@@ -289,7 +290,10 @@
         this.options.onOpenStart.call(this, this.el, this._openingTrigger);
       }
 
-      document.body.style.overflow = 'hidden';
+      if (this.options.preventScrolling) {
+        document.body.style.overflow = 'hidden';
+      }
+
       this.el.classList.add('open');
       this.el.insertAdjacentElement('afterend', this.$overlay[0]);
 
