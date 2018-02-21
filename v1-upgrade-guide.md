@@ -29,7 +29,7 @@
 
 
 ## Select
-- Rename plugin call `.material_select()` to `.select()`
+- Rename plugin call `.material_select()` to `.formSelect()`
 
 
 ## Feature Discovery
