@@ -50,10 +50,13 @@
     // Specify a DOM element to render the calendar in
     container: null,
 
+    clearBtn: true,
+    cancelBtn: false,
     // internationalization
     i18n: {
       clear: 'Clear',
       today: 'Today',
+      cancel: 'Cancel',
       done: 'Ok',
       previousMonth : '‹',
       nextMonth     : '›',
@@ -195,8 +198,19 @@
     }
 
     _insertHTMLIntoDOM() {
-      this.clearBtn.innerHTML = this.options.i18n.clear;
+        if (this.options.clearBtn) {
+            this.clearBtn.innerHTML = this.options.i18n.clear;
+        } else {
+            $(this.clearBtn).remove();
+            this.clearBtn = null;
+        }
       this.todayBtn.innerHTML = this.options.i18n.today;
+        if (this.options.cancelBtn) {
+            this.cancelBtn.innerHTML = this.options.i18n.cancel;
+        } else {
+            $(this.cancelBtn).remove();
+            this.cancelBtn = null;
+        }
       this.doneBtn.innerHTML = this.options.i18n.done;
 
       if (this.options.container) {
@@ -653,7 +667,10 @@
       this.calendarEl.addEventListener('click', this._handleCalendarClickBound);
       this.doneBtn.addEventListener('click', this._finishSelectionBound);
       this.todayBtn.addEventListener('click', this._handleTodayClickBound);
-      this.clearBtn.addEventListener('click', this._handleClearClickBound);
+        if (this.clearBtn)
+            this.clearBtn.addEventListener('click', this._handleClearClickBound);
+        if (this.cancelBtn)
+            this.cancelBtn.addEventListener('click', this.close.bind(this));
     }
 
     _setupVariables() {
@@ -666,6 +683,7 @@
       this.dateTextEl = this.modalEl.querySelector('.date-text');
       this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
       this.todayBtn = this.modalEl.querySelector('.datepicker-today');
+      this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
       this.doneBtn = this.modalEl.querySelector('.datepicker-done');
 
       this.formats = {
@@ -885,8 +903,9 @@
           '<div class="pika-single"></div>',
           '<div class="datepicker-footer">',
             '<button class="btn-flat datepicker-clear waves-effect" type="button"></button>',
+            '<button class="btn-flat datepicker-today waves-effect" type="button"></button>',
             '<div class="confirmation-btns">',
-              '<button class="btn-flat datepicker-today waves-effect" type="button"></button>',
+              '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>',
               '<button class="btn-flat datepicker-done waves-effect" type="button"></button>',
             '</div>',
           '</div>',
