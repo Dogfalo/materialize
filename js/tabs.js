@@ -250,6 +250,9 @@
       $tabsWrapper.append($tabsContent);
       $tabsContent[0].style.display = '';
 
+      // Keep active tab index to set initial carousel slide
+      let activeTabIndex = this.$activeTabLink.closest('.tab').index();
+
       this._tabsCarousel = M.Carousel.init($tabsWrapper[0], {
         fullWidth: true,
         noWrap: true,
@@ -265,6 +268,9 @@
           }
         },
       });
+
+      // Set initial carousel slide to active tab
+      this._tabsCarousel.set(activeTabIndex);
     }
 
     /**
