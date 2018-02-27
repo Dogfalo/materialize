@@ -199,9 +199,8 @@
       this.todayBtn.innerHTML = this.options.i18n.today;
       this.doneBtn.innerHTML = this.options.i18n.done;
 
-      let containerEl = document.querySelector(this.options.container);
-      if (this.options.container && !!containerEl) {
-        this.$modalEl.appendTo(containerEl);
+      if (this.options.container) {
+        this.$modalEl.appendTo(this.options.container);
 
       } else {
         this.$modalEl.insertBefore(this.el);
