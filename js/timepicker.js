@@ -10,12 +10,13 @@
     container: null,
     defaultTime: 'now',         // default time, 'now' or '13:14' e.g.
 		fromnow: 0,            // Millisecond offset from the defaultTime
+    showClearBtn: false,
 
     // internationalization
     i18n: {
-      done: 'Ok',
-		  clear: 'Clear',
-		  cancel: 'Cancel',
+      cancel: 'Cancel',
+      clear: 'Clear',
+      done: 'Ok'
     },
 
 		autoClose: false,      // auto close when minute is selected
@@ -235,8 +236,12 @@
     }
 
     _pickerSetup() {
-      $('<button class="btn-flat timepicker-clear waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.i18n.clear + '</button>')
+
+      let $clearBtn = $('<button class="btn-flat timepicker-clear waves-effect" style="visibility: hidden;" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.i18n.clear + '</button>')
         .appendTo(this.footer).on('click', this.clear.bind(this));
+      if (this.options.showClearBtn) {
+        $clearBtn.css({visibility: ''});
+      }
 
       let confirmationBtnsContainer = $('<div class="confirmation-btns"></div>');
 		  $('<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' + (this.options.twelveHour? '3' : '1') + '">' + this.options.i18n.cancel + '</button>')
