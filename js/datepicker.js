@@ -50,10 +50,13 @@
     // Specify a DOM element to render the calendar in
     container: null,
 
+    // Show clear button
+    showClearBtn: false,
+
     // internationalization
     i18n: {
+      cancel: 'Cancel',
       clear: 'Clear',
-      today: 'Today',
       done: 'Ok',
       previousMonth : '‹',
       nextMonth     : '›',
@@ -195,9 +198,13 @@
     }
 
     _insertHTMLIntoDOM() {
-      this.clearBtn.innerHTML = this.options.i18n.clear;
-      this.todayBtn.innerHTML = this.options.i18n.today;
+      if (this.options.showClearBtn) {
+        $(this.clearBtn).css({visibility: ''});
+        this.clearBtn.innerHTML = this.options.i18n.clear;
+      }
+
       this.doneBtn.innerHTML = this.options.i18n.done;
+      this.cancelBtn.innerHTML = this.options.i18n.cancel;
 
       if (this.options.container) {
         this.$modalEl.appendTo(this.options.container);
@@ -643,17 +650,20 @@
       this._handleInputChangeBound= this._handleInputChange.bind(this);
       this._handleCalendarClickBound = this._handleCalendarClick.bind(this);
       this._finishSelectionBound = this._finishSelection.bind(this);
-      this._handleTodayClickBound = this._handleTodayClick.bind(this);
-      this._handleClearClickBound = this._handleClearClick.bind(this);
       this._handleMonthChange = this._handleMonthChange.bind(this);
+      this._closeBound = this.close.bind(this);
 
       this.el.addEventListener('click', this._handleInputClickBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
       this.el.addEventListener('change', this._handleInputChangeBound);
       this.calendarEl.addEventListener('click', this._handleCalendarClickBound);
       this.doneBtn.addEventListener('click', this._finishSelectionBound);
-      this.todayBtn.addEventListener('click', this._handleTodayClickBound);
-      this.clearBtn.addEventListener('click', this._handleClearClickBound);
+      this.cancelBtn.addEventListener('click', this._closeBound);
+
+      if (this.options.showClearBtn) {
+        this._handleClearClickBound = this._handleClearClick.bind(this);
+        this.clearBtn.addEventListener('click', this._handleClearClickBound);
+      }
     }
 
     _setupVariables() {
@@ -664,9 +674,11 @@
 
       this.yearTextEl = this.modalEl.querySelector('.year-text');
       this.dateTextEl = this.modalEl.querySelector('.date-text');
-      this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
-      this.todayBtn = this.modalEl.querySelector('.datepicker-today');
+      if (this.options.showClearBtn) {
+        this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
+      }
       this.doneBtn = this.modalEl.querySelector('.datepicker-done');
+      this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
 
       this.formats = {
 
@@ -760,11 +772,6 @@
       // }
     }
 
-    _handleTodayClick() {
-      this.date = new Date();
-      this.setInputValue();
-      this.close();
-    }
 
     _handleClearClick() {
       this.date = null;
@@ -884,9 +891,9 @@
         '<div class="datepicker-calendar-container">',
           '<div class="pika-single"></div>',
           '<div class="datepicker-footer">',
-            '<button class="btn-flat datepicker-clear waves-effect" type="button"></button>',
+            '<button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>',
             '<div class="confirmation-btns">',
-              '<button class="btn-flat datepicker-today waves-effect" type="button"></button>',
+              '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>',
               '<button class="btn-flat datepicker-done waves-effect" type="button"></button>',
             '</div>',
           '</div>',
