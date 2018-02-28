@@ -41,6 +41,10 @@
        */
       this.options = $.extend({}, Collapsible.defaults, options);
 
+      // Setup tab indices
+      this.$headers = this.$el.children('li').children('.collapsible-header');
+      this.$headers.attr('tabindex', 0);
+
       this._setupEventHandlers();
 
       // Open first active
@@ -82,7 +86,11 @@
      */
     _setupEventHandlers() {
       this._handleCollapsibleClickBound = this._handleCollapsibleClick.bind(this);
+      this._handleCollapsibleKeydownBound = this._handleCollapsibleKeydown.bind(this);
       this.el.addEventListener('click', this._handleCollapsibleClickBound);
+      this.$headers.each((header) => {
+        header.addEventListener('keydown', this._handleCollapsibleKeydownBound);
+      });
     }
 
     /**
@@ -112,6 +120,16 @@
             this.open(index);
           }
         }
+      }
+    }
+
+    /**
+     * Handle Collapsible Keydown
+     * @param {Event} e
+     */
+    _handleCollapsibleKeydown(e) {
+      if (e.keyCode === 13) {
+        this._handleCollapsibleClickBound(e);
       }
     }
 
