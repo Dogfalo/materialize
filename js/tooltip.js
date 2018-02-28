@@ -32,6 +32,7 @@
 
       this.isOpen = false;
       this.isHovered = false;
+      this.isFocused = false;
       this._appendTooltipEl();
       this._setupEventHandlers();
     }
@@ -58,7 +59,7 @@
     destroy() {
       $(this.tooltipEl).remove();
       this._removeEventHandlers();
-      this.$el[0].M_Tooltip = undefined;
+      this.el.M_Tooltip = undefined;
     }
 
     _appendTooltipEl() {
@@ -78,15 +79,21 @@
     }
 
     _setupEventHandlers() {
-      this.handleMouseEnterBound = this._handleMouseEnter.bind(this);
-      this.handleMouseLeaveBound = this._handleMouseLeave.bind(this);
-      this.$el[0].addEventListener('mouseenter', this.handleMouseEnterBound);
-      this.$el[0].addEventListener('mouseleave', this.handleMouseLeaveBound);
+      this._handleMouseEnterBound = this._handleMouseEnter.bind(this);
+      this._handleMouseLeaveBound = this._handleMouseLeave.bind(this);
+      this._handleFocusBound = this._handleFocus.bind(this);
+      this._handleBlurBound = this._handleBlur.bind(this);
+      this.el.addEventListener('mouseenter', this._handleMouseEnterBound);
+      this.el.addEventListener('mouseleave', this._handleMouseLeaveBound);
+      this.el.addEventListener('focus', this._handleFocusBound, true);
+      this.el.addEventListener('blur', this._handleBlurBound, true);
     }
 
     _removeEventHandlers() {
-      this.$el[0].removeEventListener('mouseenter', this.handleMouseEnterBound);
-      this.$el[0].removeEventListener('mouseleave', this.handleMouseLeaveBound);
+      this.el.removeEventListener('mouseenter', this._handleMouseEnterBound);
+      this.el.removeEventListener('mouseleave', this._handleMouseLeaveBound);
+      this.el.removeEventListener('focus', this._handleFocusBound, true);
+      this.el.removeEventListener('blur', this._handleBlurBound, true);
     }
 
     open() {
@@ -117,7 +124,7 @@
       clearTimeout(this._exitDelayTimeout);
 
       this._exitDelayTimeout = setTimeout(() => {
-        if (this.isHovered) {
+        if (this.isHovered || this.isFocused) {
           return;
         }
 
@@ -132,7 +139,7 @@
       clearTimeout(this._enterDelayTimeout);
 
       this._enterDelayTimeout = setTimeout(() => {
-        if (!this.isHovered) {
+        if (!this.isHovered && !this.isFocused) {
           return;
         }
 
@@ -141,7 +148,7 @@
     }
 
     _positionTooltip() {
-      let origin = this.$el[0],
+      let origin = this.el,
         tooltip = this.tooltipEl,
         originHeight = origin.offsetHeight,
         originWidth = origin.offsetWidth,
@@ -257,10 +264,20 @@
       this.close();
     }
 
+    _handleFocus() {
+      this.isFocused = true;
+      this.open();
+    }
+
+    _handleBlur() {
+      this.isFocused = false;
+      this.close();
+    }
+
     _getAttributeOptions() {
       let attributeOptions = {};
-      let tooltipTextOption = this.$el[0].getAttribute('data-tooltip');
-      let positionOption = this.$el[0].getAttribute('data-position');
+      let tooltipTextOption = this.el.getAttribute('data-tooltip');
+      let positionOption = this.el.getAttribute('data-position');
 
       if (tooltipTextOption) {
         attributeOptions.html = tooltipTextOption;
