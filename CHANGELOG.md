@@ -2,6 +2,50 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
+## 1.0.0-alpha.4 (February 18th, 2018)
+- Badge
+  - Fixed display issue when used in a table
+
+- Chips
+  - Fixed autocomplete initialization
+
+- CSS
+  - Added hide and show classes for extra large breakpoint
+  - Added small buttons
+  - Fixed input helper text alignment when using prefix
+
+- Date Picker
+  - Fixed month and year select overflow issues
+  - Added additional date formatting options
+
+- Dropdown
+  - Added container option
+  - Dropdown on mobile now correctly selects the right item
+  - Dropdown now closes correctly on iOS devices
+
+- Materialbox
+  - Fixed error with photo caption
+  - Fixed issues caused by width and height attributes
+  - Fixed issues caused by max-width and max-height
+
+- Modal
+  - Improved support for nested modals
+
+- Parallax
+  - Fixed infinite loop bug
+
+- Select
+  - *Renamed plugin class to `FormSelect`*
+  - *Renamed jQuery plugin to `formSelect`*
+
+- Sidenav
+  - Fixed issues with draggable option when used with fixed sidenav
+
+- Time Picker
+  - Changed i18n options to be more consistent with date picker
+  - Fixed error with auto close option
+
+
 ## 1.0.0-alpha.3 (December 29th, 2017)
 - *Initialization code for all components changed. E.g. Change`new M.Tooltip(el, options)` to `M.Tooltip.init(el, options)`*
   - This was done so that the same initialization code can be used to initialize single Elements as well as NodeLists and jQuery element objects

@@ -7,7 +7,7 @@ When asking general "how to" questions:
 
 - Read the [CONTRIBUTING document](https://github.com/Dogfalo/materialize/blob/master/CONTRIBUTING.md) Any issues that are violating the contributing guidelines, will be closed!
 - [Search for duplicate or closed issues](https://github.com/Dogfalo/materialize/issues?utf8=%E2%9C%93&q=is%3Aissue) and make sure to go through our [labels](https://github.com/Dogfalo/materialize/labels).
-- Prepare a [reduced test case](https://css-tricks.com/reduced-test-cases/) for any bugs.
+- Include a [reduced test case](https://css-tricks.com/reduced-test-cases/) in the form of a Codepen when reporting bugs unless it is not applicable, otherwise your issue will be closed.
 
 <!--- Provide a general summary of the issue in the Title above. -->
 
@@ -30,7 +30,6 @@ When asking general "how to" questions:
 <!--- Include code to reproduce, if relevant. -->
 1.
 2.
-3.
 
 ## Context
 <!--- How has this issue affected you? What are you trying to accomplish? -->
@@ -38,7 +37,7 @@ When asking general "how to" questions:
 
 ## Your Environment
 <!--- Include as many relevant details about the environment you experienced the bug in. -->
-<!--- Without a version number, your issue will most likely not receive a response. -->
+<!--- Without a version number, your issue will be closed. -->
 * Version used:
 * Browser Name and version:
 * Operating System and version (desktop or mobile):

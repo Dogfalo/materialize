@@ -141,14 +141,14 @@
     _setupTemporaryEventHandlers() {
       // Use capture phase event handler to prevent click
       document.body.addEventListener('click', this._handleDocumentClickBound, true);
-      document.body.addEventListener('touchstart', this._handleDocumentClickBound);
+      document.body.addEventListener('touchend', this._handleDocumentClickBound);
       this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
     _removeTemporaryEventHandlers() {
       // Use capture phase event handler to prevent click
       document.body.removeEventListener('click', this._handleDocumentClickBound, true);
-      document.body.removeEventListener('touchstart', this._handleDocumentClickBound);
+      document.body.removeEventListener('touchend', this._handleDocumentClickBound);
       this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
@@ -212,12 +212,27 @@
 
         // Navigate down dropdown list
       } else if ((e.which === M.keys.ARROW_DOWN ||
-          e.which === M.keys.ARROW_UP) && this.isOpen) {
+                  e.which === M.keys.ARROW_UP) && this.isOpen) {
         e.preventDefault();
         let direction = e.which === M.keys.ARROW_DOWN ? 1 : -1;
-        this.focusedIndex =
-          Math.max(Math.min(this.focusedIndex + direction, this.dropdownEl.children.length - 1), 0);
-        this._focusFocusedItem();
+        let newFocusedIndex = this.focusedIndex;
+        let foundNewIndex = false;
+        do {
+          newFocusedIndex = newFocusedIndex + direction;
+
+          if (!!this.dropdownEl.children[newFocusedIndex] &&
+              this.dropdownEl.children[newFocusedIndex].tabIndex !== -1) {
+            foundNewIndex = true;
+            break;
+          }
+        }
+        while (newFocusedIndex < this.dropdownEl.children.length &&
+               newFocusedIndex >= 0);
+
+        if (foundNewIndex) {
+          this.focusedIndex = newFocusedIndex;
+          this._focusFocusedItem();
+        }
 
         // ENTER selects choice on focused item
       } else if (e.which === M.keys.ENTER && this.isOpen) {
@@ -275,11 +290,15 @@
     }
 
     _makeDropdownFocusable() {
-      if (this.dropdownEl.tabIndex === -1) {
-        this.dropdownEl.tabIndex = 0;
-      }
+      // Needed for arrow key navigation
+      this.dropdownEl.tabIndex = 0;
 
-      $(this.dropdownEl).children().attr('tabindex', 0);
+      // Only set tabindex if it hasn't been set by user
+      $(this.dropdownEl).children().each(function(el) {
+        if (!el.getAttribute('tabindex')) {
+          el.setAttribute('tabindex', 0);
+        }
+      });
     }
 
     _focusFocusedItem() {

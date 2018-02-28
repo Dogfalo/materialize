@@ -10,6 +10,7 @@
     onOpenEnd: null,
     onCloseStart: null,
     onCloseEnd: null,
+    preventScrolling: true
   };
 
 
@@ -60,6 +61,10 @@
        * @type {Boolean}
        */
       this.isDragged = false;
+
+      // Window size variables for window resize checks
+      this.lastWindowWidth = window.innerWidth;
+      this.lastWindowHeight = window.innerHeight;
 
       this._createOverlay();
       this._createDragTarget();
@@ -213,7 +218,7 @@
      */
     _handleDragTargetDrag(e) {
       // Check if draggable
-      if (!this.options.draggable) {
+      if (!this.options.draggable || this._isCurrentlyFixed()) {
         return;
       }
 
@@ -262,11 +267,6 @@
      * Handle Drag Target Release
      */
     _handleDragTargetRelease() {
-      // Check if draggable
-      if (!this.options.draggable) {
-        return;
-      }
-
       if (this.isDragged) {
         if (this.percentOpen > .5) {
           this.open();
@@ -284,6 +284,10 @@
      */
     _handleCloseDrag(e) {
       if (this.isOpen) {
+        // Check if draggable
+        if (!this.options.draggable || this._isCurrentlyFixed()) {
+          return;
+        }
 
         // If not being dragged, set initial drag start variables
         if (!this.isDragged) {
@@ -349,12 +353,18 @@
      * Handle Window Resize
      */
     _handleWindowResize() {
-      if (window.innerWidth > 992) {
-        this.open();
+      // Only handle horizontal resizes
+      if (this.lastWindowWidth !== window.innerWidth) {
+        if (window.innerWidth > 992) {
+          this.open();
+        }
+        else {
+          this.close();
+        }
       }
-      else {
-        this.close();
-      }
+
+      this.lastWindowWidth = window.innerWidth;
+      this.lastWindowHeight = window.innerHeight;
     }
 
     _setupClasses() {
@@ -370,9 +380,13 @@
     }
 
     _setupFixed() {
-      if (this.isFixed && window.innerWidth > 992) {
+      if (this._isCurrentlyFixed()) {
         this.open();
       }
+    }
+
+    _isCurrentlyFixed() {
+      return this.isFixed && window.innerWidth > 992;
     }
 
     _createDragTarget() {
@@ -405,7 +419,7 @@
       }
 
       // Handle fixed Sidenav
-      if (this.isFixed && window.innerWidth > 992) {
+      if (this._isCurrentlyFixed()) {
         anim.remove(this.el);
         anim({
           targets: this.el,
@@ -418,7 +432,9 @@
 
       // Handle non-fixed Sidenav
       } else {
-        this._preventBodyScrolling();
+        if (this.options.preventScrolling) {
+          this._preventBodyScrolling();
+        }
 
         if (!this.isDragged || this.percentOpen != 1) {
           this._animateIn();
@@ -439,7 +455,7 @@
       }
 
       // Handle fixed Sidenav
-      if (this.isFixed && window.innerWidth > 992) {
+      if (this._isCurrentlyFixed()) {
         let transformX = this.options.edge === 'left' ? '-105%' : '105%';
         this.el.style.transform = `translateX(${transformX})`;
 

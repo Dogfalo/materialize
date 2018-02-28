@@ -29,7 +29,7 @@
 
 
 ## Select
-- Rename plugin call `.material_select()` to `.select()`
+- Rename plugin call `.material_select()` to `.formSelect()`
 
 
 ## Feature Discovery
@@ -69,6 +69,11 @@
 ## Character Counter
 - Automatic initialization removed
 
+
 ## Toasts
 - Arguments list of the M.toast function has been changed into an options Object similar to all the other plugins
 - Rename the `className` option to `classes`
+
+
+## Materialbox
+- Automatic initialization removed

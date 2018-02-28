@@ -165,8 +165,8 @@
     _animateImageIn() {
       let animOptions = {
         targets: this.el,
-        height: this.newHeight,
-        width: this.newWidth,
+        height: [this.originalHeight, this.newHeight],
+        width: [this.originalWidth, this.newWidth],
         left: M.getDocumentScrollLeft() + this.windowWidth/2 - this.placeholder.offset().left - this.newWidth/2,
         top: M.getDocumentScrollTop() + this.windowHeight/2 - this.placeholder.offset().top - this.newHeight/2,
         duration: this.options.inDuration,
@@ -181,12 +181,14 @@
         }
       };
 
-      if (this.$el.hasClass('responsive-img')) {
+      // Override max-width or max-height if needed
+      this.maxWidth = this.$el.css('max-width');
+      this.maxHeight = this.$el.css('max-height');
+      if (this.maxWidth !== 'none') {
         animOptions.maxWidth = this.newWidth;
-        animOptions.width = [this.originalWidth, animOptions.width];
-      } else {
-        animOptions.left = animOptions.left;
-        animOptions.top = animOptions.top;
+      }
+      if (this.maxHeight !== 'none') {
+        animOptions.maxHeight = this.newHeight;
       }
 
       anim(animOptions);
@@ -212,6 +214,14 @@
             top: '',
             left: ''
           });
+
+          // Revert to width or height attribute
+          if (this.attrWidth) {
+            this.$el.attr('width', this.attrWidth);
+          }
+          if (this.attrHeight) {
+            this.$el.attr('height', this.attrHeight);
+          }
 
           this.$el.removeAttr('style');
           this.$el.attr('style', this.originInlineStyles);
@@ -279,6 +289,18 @@
         'z-index': 1000,
         'will-change': 'left, top, width, height'
       });
+
+      // Change from width or height attribute to css
+      this.attrWidth = this.$el.attr('width');
+      this.attrHeight = this.$el.attr('height');
+      if (this.attrWidth) {
+        this.$el.css('width', this.attrWidth + 'px');
+        this.$el.removeAttr('width');
+      }
+      if (this.attrHeight) {
+        this.$el.css('width', this.attrHeight + 'px');
+        this.$el.removeAttr('height');
+      }
 
       // Add overlay
       this.$overlay = $('<div id="materialbox-overlay"></div>')

@@ -17,7 +17,7 @@
 
 /* Clock Digital Display */
 .timepicker-digital-display {
-  flex: 1;
+  flex: 1 auto;
   background-color: $secondary-color;
   padding: 10px;
   font-weight: 300;
@@ -58,7 +58,7 @@
 
 /* Analog Clock Display */
 .timepicker-analog-display {
-  flex: 2.5;
+  flex: 2.5 auto;
 }
 
 .timepicker-plate {

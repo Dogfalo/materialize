@@ -38,7 +38,7 @@
       // setup
       this.$slider = this.$el.find('.slides');
       this.$slides = this.$slider.children('li');
-      this.activeIndex = this.$slider.find('.active').index();
+      this.activeIndex = this.$slides.filter(function(item) { return $(item).hasClass('active'); }).first().index();
       if (this.activeIndex != -1) {
         this.$active = this.$slides.eq(this.activeIndex);
       }

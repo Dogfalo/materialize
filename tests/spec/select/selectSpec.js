@@ -1,7 +1,7 @@
 describe("Select Plugin", function () {
   beforeEach(function() {
     loadFixtures('select/selectFixture.html');
-    $('select').select();
+    $('select').formSelect();
   });
 
   describe("Select", function () {
@@ -147,12 +147,12 @@ describe("Select Plugin", function () {
       expect(optInput).toBeVisible('Should be hidden before dropdown is opened.');
       expect(optDropdown).toBeHidden('Should be hidden before dropdown is opened.');
 
-      optInput.click();
+      click(optInput[0]);
 
       setTimeout(function() {
         expect(optDropdown).toBeVisible('Should be visible after opening.');
         var secondOption = optDropdown.find('li:not(.disabled):not(.optgroup)').eq(1);
-        secondOption.click();
+        click(secondOption[0]);
         optInput.blur();
 
         setTimeout(function() {
@@ -186,12 +186,12 @@ describe("Select Plugin", function () {
       expect(optInput).toBeVisible('Should be hidden before dropdown is opened.');
       expect(optDropdown).toBeHidden('Should be hidden before dropdown is opened.');
 
-      optInput.click();
+      click(optInput[0]);
 
       setTimeout(function() {
         expect(optDropdown).toBeVisible('Should be visible after opening.');
         var optgroup = optDropdown.find('li.optgroup').first();
-        optgroup.click();
+        click(optgroup[0]);
         optInput.blur();
 
         setTimeout(function() {
