@@ -45,6 +45,12 @@
     text-transform: uppercase;
 
     a {
+      &:focus,
+      &:focus.active {
+        background-color: transparentize($tabs-underline-color, .8);
+        outline: none;
+      }
+
       &:hover,
       &.active {
         background-color: transparent;
@@ -59,7 +65,7 @@
       font-size: 14px;
       text-overflow: ellipsis;
       overflow: hidden;
-      transition: color .28s ease;
+      transition: color .28s ease, background-color .28s ease;
     }
 
     &.disabled a,
