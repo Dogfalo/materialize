@@ -6,6 +6,7 @@
     dist: -100, // zoom scale TODO: make this more intuitive as an option
     shift: 0, // spacing for center image
     padding: 0, // Padding between non center items
+    numVisible: 5, // Number of visible items in carousel
     fullWidth: false, // Change to full width styles
     indicators: false, // Toggle indicators
     noWrap: false, // Don't wrap around and cycle through items.
@@ -34,8 +35,9 @@
        * @member Carousel#options
        * @prop {Number} duration
        * @prop {Number} dist
-       * @prop {number} shift
-       * @prop {number} padding
+       * @prop {Number} shift
+       * @prop {Number} padding
+       * @prop {Number} numVisible
        * @prop {Boolean} fullWidth
        * @prop {Boolean} indicators
        * @prop {Boolean} noWrap
@@ -87,6 +89,9 @@
         this.$el.append(this.$indicators);
       }
       this.count = this.images.length;
+
+      // Cap numVisible at count
+      this.options.numVisible = Math.min(this.count, this.options.numVisible);
 
       // Setup cross browser string
       this.xform = 'transform';
@@ -459,8 +464,9 @@
       }, this.options.duration);
 
       // Start actual scroll
-      let i, half, delta, dir, tween, el, alignment, zTranslation, tweenedOpacity;
+      let i, half, delta, dir, tween, el, alignment, zTranslation, tweenedOpacity, centerTweenedOpacity;
       let lastCenter = this.center;
+      let numVisibleOffset = 1 / this.options.numVisible;
 
       this.offset = (typeof x === 'number') ? x : this.offset;
       this.center = Math.floor((this.offset + this.dim / 2) / this.dim);
@@ -469,11 +475,13 @@
       tween = -dir * delta * 2 / this.dim;
       half = this.count >> 1;
 
-      if (!this.options.fullWidth) {
+      if (this.options.fullWidth) {
+        alignment = 'translateX(0)';
+        centerTweenedOpacity = 1;
+      } else {
         alignment = 'translateX(' + (this.el.clientWidth - this.itemWidth) / 2 + 'px) ';
         alignment += 'translateY(' + (this.el.clientHeight - this.itemHeight) / 2 + 'px)';
-      } else {
-        alignment = 'translateX(0)';
+        centerTweenedOpacity = 1 - numVisibleOffset * tween;
       }
 
       // Set indicator active
@@ -496,18 +504,11 @@
           this.$el.find('.carousel-item').removeClass('active');
           el.classList.add('active');
         }
-        el.style[this.xform] = alignment +
+        let transformString = alignment +
           ' translateX(' + (-delta / 2) + 'px)' +
           ' translateX(' + (dir * this.options.shift * tween * i) + 'px)' +
           ' translateZ(' + (this.options.dist * tween) + 'px)';
-        el.style.zIndex = 0;
-        if (this.options.fullWidth) {
-          tweenedOpacity = 1;
-        } else {
-          tweenedOpacity = 1 - 0.2 * tween;
-        }
-        el.style.opacity = tweenedOpacity;
-        el.style.visibility = 'visible';
+        this._updateItemStyle(el, centerTweenedOpacity, 0, transformString);
       }
 
       for (i = 1; i <= half; ++i) {
@@ -517,17 +518,15 @@
           tweenedOpacity = (i === half && delta < 0) ? 1 - tween : 1;
         } else {
           zTranslation = this.options.dist * (i * 2 + tween * dir);
-          tweenedOpacity = 1 - 0.2 * (i * 2 + tween * dir);
+          tweenedOpacity = 1 - numVisibleOffset * (i * 2 + tween * dir);
         }
         // Don't show wrapped items.
         if (!this.noWrap || this.center + i < this.count) {
           el = this.images[this._wrap(this.center + i)];
-          el.style[this.xform] = alignment +
+          let transformString = alignment +
             ' translateX(' + (this.options.shift + (this.dim * i - delta) / 2) + 'px)' +
             ' translateZ(' + zTranslation + 'px)';
-          el.style.zIndex = -i;
-          el.style.opacity = tweenedOpacity;
-          el.style.visibility = 'visible';
+          this._updateItemStyle(el, tweenedOpacity, -i, transformString);
         }
 
 
@@ -537,17 +536,15 @@
           tweenedOpacity = (i === half && delta > 0) ? 1 - tween : 1;
         } else {
           zTranslation = this.options.dist * (i * 2 - tween * dir);
-          tweenedOpacity = 1 - 0.2 * (i * 2 - tween * dir);
+          tweenedOpacity = 1 - numVisibleOffset * (i * 2 - tween * dir);
         }
         // Don't show wrapped items.
         if (!this.noWrap || this.center - i >= 0) {
           el = this.images[this._wrap(this.center - i)];
-          el.style[this.xform] = alignment +
+          let transformString = alignment +
             ' translateX(' + (-this.options.shift + (-this.dim * i - delta) / 2) + 'px)' +
             ' translateZ(' + zTranslation + 'px)';
-          el.style.zIndex = -i;
-          el.style.opacity = tweenedOpacity;
-          el.style.visibility = 'visible';
+          this._updateItemStyle(el, tweenedOpacity, -i, transformString);
         }
       }
 
@@ -555,18 +552,11 @@
       // Don't show wrapped items.
       if (!this.noWrap || (this.center >= 0 && this.center < this.count)) {
         el = this.images[this._wrap(this.center)];
-        el.style[this.xform] = alignment +
+        let transformString = alignment +
           ' translateX(' + (-delta / 2) + 'px)' +
           ' translateX(' + (dir * this.options.shift * tween) + 'px)' +
           ' translateZ(' + (this.options.dist * tween) + 'px)';
-        el.style.zIndex = 0;
-        if (this.options.fullWidth) {
-          tweenedOpacity = 1;
-        } else {
-          tweenedOpacity = 1 - 0.2 * tween;
-        }
-        el.style.opacity = tweenedOpacity;
-        el.style.visibility = 'visible';
+        this._updateItemStyle(el, centerTweenedOpacity, 0, transformString);
       }
 
       // onCycleTo callback
@@ -582,6 +572,22 @@
         this.oneTimeCallback = null;
       }
     }
+
+
+    /**
+     * Cycle to target
+     * @param {Element} el
+     * @param {Number} opacity
+     * @param {Number} zIndex
+     * @param {String} transform
+     */
+    _updateItemStyle(el, opacity, zIndex, transform) {
+      el.style[this.xform] = transform;
+      el.style.zIndex = zIndex;
+      el.style.opacity = opacity;
+      el.style.visibility = 'visible';
+    }
+
 
     /**
      * Cycle to target
