@@ -220,7 +220,8 @@
         do {
           newFocusedIndex = newFocusedIndex + direction;
 
-          if (this.dropdownEl.children[newFocusedIndex].tabIndex !== -1) {
+          if (!!this.dropdownEl.children[newFocusedIndex] &&
+              this.dropdownEl.children[newFocusedIndex].tabIndex !== -1) {
             foundNewIndex = true;
             break;
           }
