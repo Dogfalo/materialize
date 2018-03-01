@@ -194,8 +194,22 @@
       this._removeEventHandlers();
       this.modal.destroy();
       $(this.modalEl).remove();
+      this.destroySelects();
       this.el.M_Datepicker = undefined;
     }
+
+
+    destroySelects() {
+      let oldYearSelect = this.calendarEl.querySelector('.pika-select-year');
+      if (oldYearSelect) {
+        M.FormSelect.getInstance(oldYearSelect).destroy();
+      }
+      let oldMonthSelect = this.calendarEl.querySelector('.pika-select-month');
+      if (oldMonthSelect) {
+        M.FormSelect.getInstance(oldMonthSelect).destroy();
+      }
+    }
+
 
     _insertHTMLIntoDOM() {
       if (this.options.showClearBtn) {
@@ -613,15 +627,7 @@
           this.render(this.calendars[c].year, this.calendars[c].month, randId);
       }
 
-      // Destroy Materialize Select
-      let oldYearSelect = this.calendarEl.querySelector('.pika-select-year');
-      if (oldYearSelect) {
-        M.FormSelect.getInstance(oldYearSelect).destroy();
-      }
-      let oldMonthSelect = this.calendarEl.querySelector('.pika-select-month');
-      if (oldMonthSelect) {
-        M.FormSelect.getInstance(oldMonthSelect).destroy();
-      }
+      this.destroySelects();
 
       this.calendarEl.innerHTML = html;
 
