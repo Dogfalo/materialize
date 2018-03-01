@@ -259,6 +259,7 @@ textarea.materialize-textarea {
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
+  transition: .3s background-color;
 
   .nav-wrapper & {
     height: inherit;
