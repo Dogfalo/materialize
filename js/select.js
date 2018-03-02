@@ -222,6 +222,16 @@
       if (!this.el.disabled) {
         let dropdownOptions = $.extend({}, this.options.dropdownOptions);
 
+        // Add callback for centering selected option when dropdown content is scrollable
+        dropdownOptions.onOpenEnd = (el) => {
+          let selectedOption = $(this.dropdownOptions).find('.selected').first();
+          if (this.dropdown.isScrollable && selectedOption.length) {
+            let scrollOffset = selectedOption[0].getBoundingClientRect().top - this.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
+            scrollOffset -= this.dropdownOptions.clientHeight / 2; // center in dropdown
+            this.dropdownOptions.scrollTop = scrollOffset;
+          }
+        };
+
         if (this.isMultiple) {
           dropdownOptions.closeOnClick = false;
         }

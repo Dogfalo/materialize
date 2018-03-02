@@ -56,6 +56,12 @@
        */
       this.isOpen = false;
 
+      /**
+       * Describes if dropdown content is scrollable
+       * @type {Boolean}
+       */
+      this.isScrollable = false;
+
       this.focusedIndex = -1;
       this.filterQuery = [];
 
@@ -332,10 +338,16 @@
       let verticalAlignment = 'top';
       let horizontalAlignment = this.options.alignment;
       idealYPos += (this.options.coverTrigger ? 0 : triggerBRect.height);
+
+      // Reset isScrollable
+      this.isScrollable = false;
+
       if (!alignments.top) {
         if (alignments.bottom) {
           verticalAlignment = 'bottom';
         } else {
+          this.isScrollable = true;
+
           // Determine which side has most space and cutoff at correct height
           if (alignments.spaceOnTop > alignments.spaceOnBottom) {
             verticalAlignment = 'bottom';
