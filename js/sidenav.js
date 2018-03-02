@@ -344,7 +344,7 @@
      */
     _handleCloseTriggerClick(e) {
       let $closeTrigger = $(e.target).closest('.sidenav-close');
-      if ($closeTrigger.length) {
+      if ($closeTrigger.length && !this._isCurrentlyFixed()) {
         this.close();
       }
     }
