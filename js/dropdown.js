@@ -62,6 +62,12 @@
        */
       this.isScrollable = false;
 
+      /**
+       * Describes if touch moving on dropdown content
+       * @type {Boolean}
+       */
+      this.isTouchMoving = false;
+
       this.focusedIndex = -1;
       this.filterQuery = [];
 
@@ -75,6 +81,7 @@
       this._makeDropdownFocusable();
       this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
       this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
+      this._handleDocumentTouchmoveBound = this._handleDocumentTouchmove.bind(this);
       this._handleDropdownKeydownBound = this._handleDropdownKeydown.bind(this);
       this._handleTriggerKeydownBound = this._handleTriggerKeydown.bind(this);
       this._setupEventHandlers();
@@ -148,6 +155,7 @@
       // Use capture phase event handler to prevent click
       document.body.addEventListener('click', this._handleDocumentClickBound, true);
       document.body.addEventListener('touchend', this._handleDocumentClickBound);
+      document.body.addEventListener('touchmove', this._handleDocumentTouchmoveBound);
       this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
@@ -155,6 +163,7 @@
       // Use capture phase event handler to prevent click
       document.body.removeEventListener('click', this._handleDocumentClickBound, true);
       document.body.removeEventListener('touchend', this._handleDocumentClickBound);
+      document.body.removeEventListener('touchmove', this._handleDocumentTouchmoveBound);
       this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydownBound);
     }
 
@@ -186,7 +195,9 @@
 
     _handleDocumentClick(e) {
       let $target = $(e.target);
-      if (this.options.closeOnClick && $target.closest('.dropdown-content').length) {
+      if (this.options.closeOnClick &&
+          $target.closest('.dropdown-content').length &&
+          !this.isTouchMoving) { // isTouchMoving to check if scrolling on mobile.
         setTimeout(() => {
           this.close();
         }, 0);
@@ -196,6 +207,7 @@
           this.close();
         }, 0);
       }
+      this.isTouchMoving = false;
     }
 
     _handleTriggerKeydown(e) {
@@ -204,6 +216,17 @@
           e.which === M.keys.ENTER) && !this.isOpen) {
         e.preventDefault();
         this.open();
+      }
+    }
+
+    /**
+     * Handle Document Touchmove
+     * @param {Event} e
+     */
+    _handleDocumentTouchmove(e) {
+      let $target = $(e.target);
+      if ($target.closest('.dropdown-content').length) {
+        this.isTouchMoving = true;
       }
     }
 
