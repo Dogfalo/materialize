@@ -1,6 +1,46 @@
-# Upgrade to v1.0.0 from v0.100.1
+# Upgrade to v1.0.0 from v0.100.2
+
+## Chips
+- Renamed plugin from `material_chip` to `chips`
+- Removed `autocompleteData` `autocompleteLimit` options, instead pass in autocomplete related options in `autocompleteOptions`
+- Removed event triggers, use onChipAdd, onChipSelect, onChipDelete callback options instead
+
+
+## Collapsible
+- Removed automatic initialization, initialize it manually as shown in documentation
+- Removed html attribute options, use the options parameter during initialization instead
+- Removed onOpen and onClose callbacks and added onOpenStart, onOpenEnd, onCloseStart, onCloseEnd callbacks
+
+
+## Datepicker
+- Rename plugin call from `.pickadate()` to `.datepicker()`
+- Datepicker options `today`, `clear`, `close` moved to `i18n.today`, `i18n.clear`, and `i18n.done` respectively.
+
+## Dropdown
+- Removed gutter option
+- Removed stopPropagation option
+- Call plugin on `.dropdown-content` instead of `.dropdown-button`
+- Change attribute `data-activates` to `data-target`
+- Rename classes `.dropdown-button` to `.dropdown-trigger`
+- Rename option `belowOrigin` to `coverTrigger`
+- Removed automatic initialization, initialize it manually as shown in documentation
+
+
+## Materialbox
+- Removed automatic initialization, initialize it manually as shown in documentation
+
+
+## Modal
+- Change attribute `data-activates` to `data-target`
+- Removed ready and complete callback, use onOpenEnd and onOpenEnd callback instead
+
+
+## Scrollfire
+- Plugin removed, this capability is better handled by other existing open source plugins
+
 
 ## Sidenav
+- Removed menuWidth option, use CSS to set sidenav width instead
 - Call plugin on `.sidenav` instead of `.button-collapse`
 - Change attribute `data-activates` to `data-target`
 - Add `.sidenav-trigger` class to sidenav open trigger
@@ -9,32 +49,36 @@
 - Rename plugin call `.sideNav()` to `.sidenav()`
 - Sidenav option `closeOnClick` no longer exists
   - Instead apply the class `.sidenav-close` to any item in the Sidenav that you wish to trigger a close.
+- Removed onOpen and onClose callback, use onOpenEnd and onOpenEnd callback instead
+- Rename `fixed` class to `sidenav-fixed`
+- Rename methods `show` and `hide` to `open` and `close` respectively
 
 
 ## Tabs
-- Initialize plugin (no longer initializes by default)
+- Removed automatic initialization, initialize it manually as shown in documentation
 - Rename plugin method `select_tab` to `select`
 
 
-## Chips
-- Removed event triggers, use callback options instead
-
-
-## Dropdown
-- Call plugin on `.dropdown-content` instead of `.dropdown-button`
+## Tap Target
 - Change attribute `data-activates` to `data-target`
-- Rename classes `.dropdown-button` to `.dropdown-trigger`
-- Rename option `belowOrigin` to `coverTrigger`
-- Removed stopPropagation option
+
+
+## Toasts
+- Arguments list of the M.toast function has been changed into an options Object similar to all the other plugins
+- Rename the `className` option to `classes`
+
+## Tooltip
+- Removed delay option and added enterDelay and exitDelay
+- Removed `tooltip` option, use option `html` to set tooltip html instead
+- Some html attribute options have been removed, only data-tooltip and data-position remain, instead use the options during initialization to set options
+
 
 
 ## Select
 - Rename plugin call `.material_select()` to `.formSelect()`
 
 
-## Feature Discovery
-- Rename plugin call `.tapTarget()` to `.featureDiscovery()`
-- Change attribute `data-activates` to `data-target`
+
 
 
 ## Forms
@@ -53,10 +97,6 @@
 - Removed dismissible collections
 
 
-## ScrollFire
-- Removed due to simplicity and overlap. There are much better scrolling libraries that people should use
-
-
 ## Transitions
 - JavaScript transitions removed
 
@@ -70,10 +110,5 @@
 - Automatic initialization removed
 
 
-## Toasts
-- Arguments list of the M.toast function has been changed into an options Object similar to all the other plugins
-- Rename the `className` option to `classes`
 
 
-## Materialbox
-- Automatic initialization removed
