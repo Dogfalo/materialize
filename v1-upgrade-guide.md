@@ -1,5 +1,14 @@
 # Upgrade to v1.0.0 from v0.100.2
 
+## Character Counter
+- Automatic initialization removed, initialize it manually as shown in documentationn
+
+
+## Checkboxes and Radio Buttons
+- Changed Checkboxes and Radio buttons to have similar label wrapping as switches
+- Instead of using `.trigger('autoresize')` use `M.textareaAutoResize` to resize textareas
+
+
 ## Chips
 - Renamed plugin from `material_chip` to `chips`
 - Removed `autocompleteData` `autocompleteLimit` options, instead pass in autocomplete related options in `autocompleteOptions`
@@ -12,9 +21,15 @@
 - Removed onOpen and onClose callbacks and added onOpenStart, onOpenEnd, onCloseStart, onCloseEnd callbacks
 
 
+## Collections
+- Removed dismissible collections
+
+
 ## Datepicker
+- Complete rewrite of Datepicker, please see new documentation
 - Rename plugin call from `.pickadate()` to `.datepicker()`
-- Datepicker options `today`, `clear`, `close` moved to `i18n.today`, `i18n.clear`, and `i18n.done` respectively.
+- Datepicker options `clear`, `close` moved to `i18n.clear`, and `i18n.done` respectively.
+
 
 ## Dropdown
 - Removed gutter option
@@ -24,6 +39,11 @@
 - Rename classes `.dropdown-button` to `.dropdown-trigger`
 - Rename option `belowOrigin` to `coverTrigger`
 - Removed automatic initialization, initialize it manually as shown in documentation
+
+
+## Floating Action Buttons
+- Automatic initialization removed
+- Converted to plugin
 
 
 ## Materialbox
@@ -37,6 +57,10 @@
 
 ## Scrollfire
 - Plugin removed, this capability is better handled by other existing open source plugins
+
+
+## Select
+- Rename plugin call `.material_select()` to `.formSelect()`
 
 
 ## Sidenav
@@ -63,9 +87,22 @@
 - Change attribute `data-activates` to `data-target`
 
 
+## Text Inputs
+- Added new Helper Text element that should be placed after the `label`
+- Moved validation messages `data-error` and `data-success` to Helper Text
+
+
+## Timepicker
+- Change `default` option to `defaultTime`
+- Timepicker options `clear`, `close` moved to `i18n.clear`, and `i18n.done` respectively.
+- Change `fromnow` option to `fromNow`
+- Removed `ampmclickable` option
+
+
 ## Toasts
 - Arguments list of the M.toast function has been changed into an options Object similar to all the other plugins
 - Rename the `className` option to `classes`
+
 
 ## Tooltip
 - Removed delay option and added enterDelay and exitDelay
@@ -73,41 +110,8 @@
 - Some html attribute options have been removed, only data-tooltip and data-position remain, instead use the options during initialization to set options
 
 
-
-## Select
-- Rename plugin call `.material_select()` to `.formSelect()`
-
-
-
-
-
-## Forms
-- Added new Helper Text element that should be placed after the `label`
-- Moved validation messages `data-error` and `data-success` to Helper Text
-- Changed Checkboxes and Radio buttons to have similar label wrapping as switches
-- Instead of using `.trigger('autoresize')` use `M.textareaAutoResize` to resize textareas
-
-
-## Pickers
-- Rename plugin call `.pickadate()` to `.datepicker()`
-- Datepicker options `today`, `clear`, `close` moved to `i18n.today`, `i18n.clear`, and `i18n.done` respectively.
-
-
-## Collections
-- Removed dismissible collections
-
-
 ## Transitions
 - JavaScript transitions removed
-
-
-## Floating Action Buttons
-- Automatic initialization removed
-- Converted to plugin
-
-
-## Character Counter
-- Automatic initialization removed
 
 
 
