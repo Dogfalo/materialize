@@ -1,3 +1,7 @@
+## Auto Init
+- Componenets are no longer initialized automatically on document load by Materialize
+- Added function `M.AutoInit()` that initializes all componenets
+
 ## Autocomplete
 - Added sort function to order completion results
 

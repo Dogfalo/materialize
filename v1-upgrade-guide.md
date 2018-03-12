@@ -1,5 +1,9 @@
 # Upgrade to v1.0.0 from v0.100.2
 
+## Auto Init
+- Componenets are no longer initialized automatically on document load by Materialize
+- Added function `M.AutoInit()` that initializes all componenets
+
 ## Character Counter
 - Automatic initialization removed, initialize it manually as shown in documentationn
 
