@@ -414,7 +414,8 @@ module.exports = function(grunt) {
           "switches.html": "jade/switches.jade",
           "text-inputs.html": "jade/text-inputs.jade",
           "support-us.html": "jade/support-us.jade",
-          "floating-action-button.html": "jade/floating-action-button.jade"
+          "floating-action-button.html": "jade/floating-action-button.jade",
+          "auto-init.html": "jade/auto-init.jade"
         }
       }
     },
@@ -628,7 +629,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'notify:js_compile', 'clean:temp']);
+  grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'postcss:gh', 'postcss:bin', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);

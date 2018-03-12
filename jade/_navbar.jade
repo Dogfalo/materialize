@@ -77,11 +77,13 @@ header
                 a(href='pagination.html') Pagination
               li(class=(page == "Preloader" ? "active" : ""))
                 a(href='preloader.html') Preloader
-        li.bold(class=(page == "Tooltips" || page == "Toasts" || page == "Modals" || page == "Dropdown" || page == "FeatureDiscovery" || page == "Tabs" || page == "Scrollspy" || page == "Sidenav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Parallax" || page == "Collapsible" || page == "Carousel" ? "active" : ""))
+        li.bold(class=(page == "Auto Init" || page == "Tooltips" || page == "Toasts" || page == "Modals" || page == "Dropdown" || page == "FeatureDiscovery" || page == "Tabs" || page == "Scrollspy" || page == "Sidenav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Parallax" || page == "Collapsible" || page == "Carousel" ? "active" : ""))
           a.collapsible-header(class="waves-effect waves-teal")
             | JavaScript
           .collapsible-body
             ul
+              li(class=(page == "Auto Init" ? "active" : ""))
+                a(href='auto-init.html') Auto Init
               li(class=(page == "Carousel" ? "active" : ""))
                 a(href='carousel.html') Carousel
               li(class=(page == "Collapsible" ? "active" : ""))
