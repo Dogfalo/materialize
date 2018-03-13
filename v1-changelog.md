@@ -4,6 +4,7 @@
 
 ## Autocomplete
 - Added sort function to order completion results
+- Autocomplete now uses dropdown to show options
 
 ## Carousel
 - Added numVisible option
@@ -46,6 +47,8 @@
 - Added onOpenEnd callback
 - Added onCloseStart callback
 - Added onCloseEnd callback
+- Added autoFocus option
+- Added `recalculateDimensions` method
 
 
 ## Materialbox
@@ -117,7 +120,7 @@
 ## Tap Target
 - Added onOpen callback
 - Added onClose callback
- 
+
 
 ## Timepicker
 - Renamed `default` option to `defaultTime`
