@@ -63,6 +63,12 @@
               <td>Defines the edge the menu is aligned to.</td>
             </tr>
             <tr>
+              <td>autoTrigger</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>If true, automatically focus dropdown el for keyboard.</td>
+            </tr>
+            <tr>
               <td>constrainWidth</td>
               <td>Boolean</td>
               <td>true</td>
@@ -163,6 +169,15 @@
         <p>Close dropdown.</p>
         <pre><code class="language-javascript col s12">
   instance.close();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+    .recalculateDimensions();
+        </h5>
+        <p>While dropdown is open, you can recalculate its dimensions if its contents have changed.</p>
+        <pre><code class="language-javascript col s12">
+  instance.recalculateDimensions();
         </code></pre>
         <br>
 

@@ -335,13 +335,6 @@ textarea {
 
 /* Autocomplete */
 .autocomplete-content {
-  margin-top: -1 * $input-margin-bottom;
-  margin-bottom: $input-margin-bottom;
-  opacity: 1;
-  top: 100%;
-  left: 0;
-  right: 0;
-
   li {
     .highlight { color: #444; }
 

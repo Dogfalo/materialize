@@ -119,8 +119,19 @@
      */
     _setupDropdown() {
       this.container = document.createElement('ul');
+      this.container.id = `autocomplete-options-${M.guid()}`;
       $(this.container).addClass('autocomplete-content dropdown-content');
       this.$inputField.append(this.container);
+      this.el.setAttribute('data-target', this.container.id);
+
+      this.dropdown = M.Dropdown.init(this.el, {
+        autoFocus: false,
+        closeOnClick: false,
+        coverTrigger: false,
+      });
+
+      // Sketchy removal of dropdown click handler
+      this.el.removeEventListener('click', this.dropdown._handleClickBound);
     }
 
     /**
@@ -134,7 +145,8 @@
      * Handle Input Blur
      */
     _handleInputBlur() {
-      this._removeAutocomplete();
+      this.dropdown.close();
+      this._resetAutocomplete();
     }
 
     /**
@@ -158,11 +170,23 @@
 
       // Check if the input isn't empty
       if (this.oldVal !== val) {
-        this._removeAutocomplete();
+        this._resetAutocomplete();
 
         if (val.length >= this.options.minLength) {
           this.isOpen = true;
           this._renderDropdown(this.options.data, val);
+        }
+
+        // Open dropdown
+        if (!this.dropdown.isOpen) {
+          // Timeout to prevent dropdown temp doc click handler from firing
+          setTimeout(() => {
+            this.dropdown.open();
+          }, 100);
+
+        // Recalculate dropdown when its already open
+        } else {
+          this.dropdown.recalculateDimensions();
         }
       }
 
@@ -248,15 +272,12 @@
     }
 
     /**
-     * Remove autocomplete elements
+     * Reset autocomplete elements
      */
-    _removeAutocomplete() {
+    _resetAutocomplete() {
       $(this.container).empty();
       this._resetCurrentElement();
       this.oldVal = null;
-      $(this.container).css({
-        display: ''
-      });
       this.isOpen = false;
     }
 
@@ -268,7 +289,8 @@
       let text = el.text().trim();
       this.el.value = text;
       this.$el.trigger('change');
-      this._removeAutocomplete();
+      this._resetAutocomplete();
+      this.dropdown.close();
 
       // Handle onAutocomplete callback.
       if (typeof (this.options.onAutocomplete) === 'function') {
@@ -282,7 +304,7 @@
      * @param {String} val  current input value
      */
     _renderDropdown(data, val) {
-      this._removeAutocomplete();
+      this._resetAutocomplete();
 
       let matchingData = [];
 
@@ -310,10 +332,6 @@
         return this.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
       };
       matchingData.sort(sortFunctionBound);
-
-      $(this.container).css({
-        display: 'block'
-      });
 
       // Render
       for (let i = 0; i < matchingData.length; i++) {

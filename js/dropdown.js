@@ -3,6 +3,7 @@
 
   let _defaults = {
     alignment: 'left',
+    autoFocus: true,
     constrainWidth: true,
     container: null,
     coverTrigger: true,
@@ -36,6 +37,7 @@
        * Options for the dropdown
        * @member Dropdown#options
        * @prop {String} [alignment='left'] - Edge which the dropdown is aligned to
+       * @prop {Boolean} [autoFocus=true] - Automatically focus dropdown el for keyboard
        * @prop {Boolean} [constrainWidth=true] - Constrain width to width of the button
        * @prop {Element} container - Container element to attach dropdown to (optional)
        * @prop {Boolean} [coverTrigger=true] - Place dropdown over trigger
@@ -331,7 +333,9 @@
     }
 
     _focusFocusedItem() {
-      if (this.focusedIndex >= 0 && this.focusedIndex < this.dropdownEl.children.length) {
+      if (this.focusedIndex >= 0 &&
+          this.focusedIndex < this.dropdownEl.children.length &&
+          this.options.autoFocus) {
         this.dropdownEl.children[this.focusedIndex].focus();
       }
     }
@@ -421,15 +425,7 @@
     /**
      * Animate in dropdown
      */
-    _animateIn(positionInfo) {
-      // Place dropdown
-      this.dropdownEl.style.left = positionInfo.x + 'px';
-      this.dropdownEl.style.top = positionInfo.y + 'px';
-      this.dropdownEl.style.height = positionInfo.height + 'px';
-      this.dropdownEl.style.width = positionInfo.width + 'px';
-      this.dropdownEl.style.transformOrigin =
-        `${positionInfo.horizontalAlignment === 'left' ? '0' : '100%'} ${positionInfo.verticalAlignment === 'top' ? '0' : '100%'}`;
-
+    _animateIn() {
       anim.remove(this.dropdownEl);
       anim({
         targets: this.dropdownEl,
@@ -442,7 +438,9 @@
         duration: this.options.inDuration,
         easing: 'easeOutQuint',
         complete: (anim) => {
-          this.dropdownEl.focus();
+          if (this.options.autoFocus) {
+            this.dropdownEl.focus();
+          }
 
           // onOpenEnd callback
           if (typeof (this.options.onOpenEnd) === 'function') {
@@ -480,6 +478,24 @@
       });
     }
 
+    /**
+     * Place dropdown
+     */
+    _placeDropdown() {
+      // Set width before calculating positionInfo
+      let idealWidth = this.options.constrainWidth ?
+        this.el.getBoundingClientRect().width : this.dropdownEl.getBoundingClientRect().width;
+      this.dropdownEl.style.width = idealWidth + 'px';
+
+      let positionInfo = this._getDropdownPosition();
+      this.dropdownEl.style.left = positionInfo.x + 'px';
+      this.dropdownEl.style.top = positionInfo.y + 'px';
+      this.dropdownEl.style.height = positionInfo.height + 'px';
+      this.dropdownEl.style.width = positionInfo.width + 'px';
+      this.dropdownEl.style.transformOrigin =
+        `${positionInfo.horizontalAlignment === 'left' ? '0' : '100%'} ${positionInfo.verticalAlignment === 'top' ? '0' : '100%'}`;
+    }
+
 
     /**
      * Open Dropdown
@@ -499,13 +515,8 @@
       this._resetDropdownStyles();
       this.dropdownEl.style.display = 'block';
 
-      // Set width before calculating positionInfo
-      let idealWidth = this.options.constrainWidth ?
-        this.el.getBoundingClientRect().width : this.dropdownEl.getBoundingClientRect().width;
-      this.dropdownEl.style.width = idealWidth + 'px';
-
-      let positionInfo = this._getDropdownPosition();
-      this._animateIn(positionInfo);
+      this._placeDropdown();
+      this._animateIn();
       this._setupTemporaryEventHandlers();
     }
 
@@ -526,7 +537,26 @@
 
       this._animateOut();
       this._removeTemporaryEventHandlers();
-      this.el.focus();
+
+      if (this.options.autoFocus) {
+        this.el.focus();
+      }
+    }
+
+    /**
+     * Recalculate dimensions
+     */
+    recalculateDimensions() {
+      if (this.isOpen) {
+        this.$dropdownEl.css({
+          width: '',
+          height: '',
+          left: '',
+          top: '',
+          'transform-origin': '',
+        });
+        this._placeDropdown();
+      }
     }
   }
 
