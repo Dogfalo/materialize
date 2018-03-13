@@ -11,25 +11,25 @@
    * @class
    *
    */
-  class FeatureDiscovery extends Component {
+  class TapTarget extends Component {
     /**
-     * Construct FeatureDiscovery instance
+     * Construct TapTarget instance
      * @constructor
      * @param {Element} el
      * @param {Object} options
      */
     constructor(el, options) {
-      super(FeatureDiscovery, el, options);
+      super(TapTarget, el, options);
 
-      this.el.M_FeatureDiscovery = this;
+      this.el.M_TapTarget = this;
 
       /**
        * Options for the select
-       * @member FeatureDiscovery#options
+       * @member TapTarget#options
        * @prop {Function} onOpen - Callback function called when feature discovery is opened
        * @prop {Function} onClose - Callback function called when feature discovery is closed
        */
-      this.options = $.extend({}, FeatureDiscovery.defaults, options);
+      this.options = $.extend({}, TapTarget.defaults, options);
 
       this.isOpen = false;
 
@@ -54,7 +54,7 @@
      */
     static getInstance(el) {
       let domElem = !!el.jquery ? el[0] : el;
-      return domElem.M_FeatureDiscovery;
+      return domElem.M_TapTarget;
     }
 
     /**
@@ -62,7 +62,7 @@
      */
     destroy() {
       this._removeEventHandlers();
-      this.el.FeatureDiscovery = undefined;
+      this.el.TapTarget = undefined;
     }
 
     /**
@@ -129,7 +129,7 @@
     }
 
     /**
-     * Setup feature discovery
+     * Setup Tap Target
      */
     _setup() {
       // Creating tap target
@@ -259,7 +259,7 @@
     }
 
     /**
-     * Open Feature Discovery
+     * Open TapTarget
      */
     open() {
       if (this.isOpen) {
@@ -279,7 +279,7 @@
     }
 
     /**
-     * Close Feature Discovery
+     * Close Tap Target
      */
     close() {
       if (!this.isOpen) {
@@ -299,10 +299,10 @@
     }
   }
 
-  M.FeatureDiscovery = FeatureDiscovery;
+  M.TapTarget = TapTarget;
 
   if (M.jQueryLoaded) {
-    M.initializeJqueryWrapper(FeatureDiscovery, 'featureDiscovery', 'M_FeatureDiscovery');
+    M.initializeJqueryWrapper(TapTarget, 'tapTarget', 'M_TapTarget');
   }
 
 }(cash));

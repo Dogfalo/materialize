@@ -190,7 +190,7 @@
     $('.tooltipped').tooltip();
     $('select').not('.disabled').formSelect();
     $('.sidenav').sidenav();
-    $('.tap-target').featureDiscovery();
+    $('.tap-target').tapTarget();
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
     });

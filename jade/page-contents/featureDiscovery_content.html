@@ -7,7 +7,7 @@
 
         <p class="caption">Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments. When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
 
-        <a class="waves-effect waves-light btn" onclick="$('.tap-target').featureDiscovery('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').featureDiscovery('close')">Close tap target</a>
+        <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('close')">Close tap target</a>
         <br><br>
 
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
@@ -39,12 +39,12 @@
           <h3 class="header">Initialization</h3>
           <pre><code class="language-javascript">
   var elem = document.querySelector('.tap-target');
-  var instance = M.FeatureDiscovery.init(elem, options);
+  var instance = M.TapTarget.init(elem, options);
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.tap-target').featureDiscovery();
+    $('.tap-target').tapTarget();
   });
           </code></pre>
           <br>
@@ -68,13 +68,13 @@
                 <td>onOpen</td>
                 <td>Function</td>
                 <td>null</td>
-                <td>Callback function called when feature discovery is opened.</td>
+                <td>Callback function called when Tap Target is opened.</td>
               </tr>
               <tr>
                 <td>onClose</td>
                 <td>Function</td>
                 <td>null</td>
-                <td>Callback function called when feature discovery is closed.</td>
+                <td>Callback function called when Tap Target is closed.</td>
               </tr>
             </tbody>
           </table>
@@ -86,14 +86,14 @@
           <blockquote>
             <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
             <pre><code class="language-javascript col s12">
-  var instance = M.FeatureDiscovery.getInstance(elem);
+  var instance = M.TapTarget.getInstance(elem);
 
   /* jQuery Method Calls
     You can still use the old jQuery plugin method calls.
     But you won't be able to access instance properties.
 
-    $('.tap-target').featureDiscovery('methodName');
-    $('.tap-target').featureDiscovery('methodName', paramName);
+    $('.tap-target').tapTarget('methodName');
+    $('.tap-target').tapTarget('methodName', paramName);
   */
             </code></pre>
           </blockquote>
