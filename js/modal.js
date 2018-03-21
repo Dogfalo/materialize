@@ -57,6 +57,7 @@
       this.id = this.$el.attr('id');
       this._openingTrigger = undefined;
       this.$overlay = $('<div class="modal-overlay"></div>');
+      this.el.tabIndex = 0;
 
       Modal._count++;
       this._setupEventHandlers();
@@ -158,6 +159,16 @@
       // ESC key
       if (e.keyCode === 27 && this.options.dismissible) {
         this.close();
+      }
+    }
+
+    /**
+     * Handle Focus
+     * @param {Event} e
+     */
+    _handleFocus(e) {
+      if (!this.el.contains(e.target)) {
+        this.el.focus();
       }
     }
 
@@ -299,12 +310,18 @@
 
       if (this.options.dismissible) {
         this._handleKeydownBound = this._handleKeydown.bind(this);
+        this._handleFocusBound = this._handleFocus.bind(this);
         document.addEventListener('keydown', this._handleKeydownBound);
+        document.addEventListener('focus', this._handleFocusBound, true);
       }
 
       anim.remove(this.el);
       anim.remove(this.$overlay[0]);
       this._animateIn();
+
+      // Focus modal
+      this.el.focus();
+
       return this;
     }
 
@@ -333,6 +350,7 @@
 
       if (this.options.dismissible) {
         document.removeEventListener('keydown', this._handleKeydownBound);
+        document.removeEventListener('focus', this._handleFocusBound);
       }
 
       anim.remove(this.el);
