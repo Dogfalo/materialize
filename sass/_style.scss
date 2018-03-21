@@ -102,6 +102,11 @@ ul.sidenav.sidenav-fixed {
   border-right: 1px solid $border-color;
   padding-bottom: 164px;
 
+  > li:last-child {
+      padding-bottom: 160px;
+    }
+
+
   li {
     line-height: 44px;
 
