@@ -85,7 +85,7 @@ footer.example {
 ul.side-nav.fixed li.logo {
   text-align: center;
   margin-top: 32px;
-  margin-bottom: 80px;
+  margin-bottom: 136px;
 
   &:hover,
   #logo-container:hover {
@@ -1052,6 +1052,46 @@ body.parallax-demo footer {
   width: 300px !important;
 }
 
+
+// Version dropdown
+#nav-mobile li.version {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  font-family: "Inconsolata";
+  text-align: center;
+
+  .dropdown-button {
+    font-family: "Inconsolata";
+    margin: 0 auto;
+    display: inline-block;
+    min-width: 120px;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+
+    .caret {
+      position: relative;
+      top: 10px;
+      fill: rgba(0,0,0,.6);
+    }
+  }
+}
+
+#version-dropdown {
+  text-align: left;
+
+  li > a {
+    padding: 0 10px;
+  }
+
+  a {
+    height: 50px;
+    line-height: 50px;
+  }
+ }
+
+
 // Search
 #nav-mobile li.search {
   &:hover { background-color: #fff; }
@@ -1059,7 +1099,7 @@ body.parallax-demo footer {
   position: absolute;
   left: 0;
   right: 0;
-  top: 120px;
+  top: 160px;
   margin-top: 1px;
   padding: 1px 0 0 0;
   z-index: 2;
