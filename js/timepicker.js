@@ -9,7 +9,7 @@
 		duration: 350,
     container: null,
     defaultTime: 'now',         // default time, 'now' or '13:14' e.g.
-		fromnow: 0,            // Millisecond offset from the defaultTime
+		fromNow: 0,            // Millisecond offset from the defaultTime
     showClearBtn: false,
 
     // internationalization
@@ -373,7 +373,7 @@
 			  value[1] = value[1].replace("AM", "").replace("PM", "");
 		  }
 		  if (value[0] === 'now') {
-			  let now = new Date(+ new Date() + this.options.fromnow);
+			  let now = new Date(+ new Date() + this.options.fromNow);
 			  value = [
 				  now.getHours(),
 				  now.getMinutes()
