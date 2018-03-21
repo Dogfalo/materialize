@@ -149,6 +149,10 @@ ul.sidenav.sidenav-fixed {
   margin-bottom: 32px;
 }
 
+.current-version-number {
+  color: rgba(0,0,0,0.53);
+}
+
 .patreon-ad {
   display: none;
   position: fixed;
@@ -341,8 +345,7 @@ a.sidenav-trigger.top-nav {
 
 // Latest commit widget
 .github-commit {
-  color: #999;
-  font-weight: 300;
+  color: rgba(0,0,0,0.53);
   border-top: 1px solid $border-color;
   padding: 14px 0;
   height: 64px;
@@ -356,13 +359,6 @@ a.sidenav-trigger.top-nav {
 @media #{$medium-and-down} {
   .github-commit {
     text-align: center;
-  }
-}
-
-#github-button {
-  transition: .25s ease;
-  &:hover {
-    background-color: rgba(0,0,0,.05);
   }
 }
 
