@@ -194,6 +194,8 @@
       this._time = Date.now();
       this._width = this.el.getBoundingClientRect().width;
       this._overlay.style.display = 'block';
+      this._initialScrollTop = this.isOpen ? this.el.scrollTop : M.getDocumentScrollTop();
+      this._verticallyScrolling = false;
       anim.remove(this.el);
       anim.remove(this._overlay);
     }
@@ -205,10 +207,14 @@
      */
     _dragMoveUpdate(e) {
       let clientX = e.targetTouches[0].clientX;
+      let currentScrollTop = this.isOpen ? this.el.scrollTop : M.getDocumentScrollTop();
       this.deltaX = Math.abs(this._xPos - clientX);
       this._xPos = clientX;
       this.velocityX = this.deltaX / (Date.now() - this._time);
       this._time = Date.now();
+      if (this._initialScrollTop !== currentScrollTop) {
+        this._verticallyScrolling = true;
+      }
     }
 
 
@@ -218,7 +224,7 @@
      */
     _handleDragTargetDrag(e) {
       // Check if draggable
-      if (!this.options.draggable || this._isCurrentlyFixed()) {
+      if (!this.options.draggable || this._isCurrentlyFixed() || this._verticallyScrolling) {
         return;
       }
 
@@ -275,6 +281,7 @@
         }
 
         this.isDragged = false;
+        this._verticallyScrolling = false;
       }
     }
 
@@ -285,7 +292,7 @@
     _handleCloseDrag(e) {
       if (this.isOpen) {
         // Check if draggable
-        if (!this.options.draggable || this._isCurrentlyFixed()) {
+        if (!this.options.draggable || this._isCurrentlyFixed() || this._verticallyScrolling) {
           return;
         }
 
@@ -335,6 +342,7 @@
         }
 
         this.isDragged = false;
+        this._verticallyScrolling = false;
       }
     }
 
