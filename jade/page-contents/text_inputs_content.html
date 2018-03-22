@@ -1,0 +1,417 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="input" class="section scrollspy">
+        <p class="caption">
+          Forms are the standard way to receive user inputted data. The transitions and smoothness of these elements are very important because of the inherent user interaction associated with forms.
+        </p>
+
+        <h3 class="header">Input fields</h3>
+        <p>Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This is only used in our Input and Textarea form elements.</p>
+        <p>The validate class leverages HTML5 validation and will add a <code class="language-markup">valid</code> and <code class="language-markup">invalid</code> class accordingly. If you don't want the Green and Red validation states, just remove the <code class="language-markup">validate</code> class from your inputs.</p>
+        <br>
+          <form>
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text">
+                <label for="last_name">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+                <label for="disabled">Disabled</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                This is an inline input field:
+                <div class="input-field inline">
+                  <input id="email_inline" type="email" class="validate">
+                  <label for="email_inline">Email</label>
+                  <span class="helper-text" data-error="wrong" data-success="right"></span>
+                </div>
+              </div>
+            </div>
+          </form>
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s6">
+          &lt;input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          &lt;label for="first_name">First Name&lt;/label>
+        &lt;/div>
+        &lt;div class="input-field col s6">
+          &lt;input id="last_name" type="text" class="validate">
+          &lt;label for="last_name">Last Name&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          &lt;label for="disabled">Disabled&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="password" type="password" class="validate">
+          &lt;label for="password">Password&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" class="validate">
+          &lt;label for="email">Email&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="row">
+        &lt;div class="col s12">
+          This is an inline input field:
+          &lt;div class="input-field inline">
+            &lt;input id="email_inline" type="email" class="validate">
+            &lt;label for="email_inline">Email&lt;/label>
+            &lt;span class="helper-text" data-error="wrong" data-success="right">Helper text&lt;/span>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre><br>
+        <h5>Prefilling Text Inputs</h5>
+        <p>If you are having trouble with the labels overlapping prefilled content, Try adding <code class="language-markup">class="active"</code> to the label. <br />You can also call the function <code class="language-javascript">M.updateTextFields();</code> to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.</p>
+        <div class="row">
+          <div class="input-field col s6">
+            <input value="Alvin" id="first_name2" type="text" class="validate">
+            <label class="active" for="first_name2">First Name</label>
+          </div>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;div class="input-field col s6">
+      &lt;input value="Alvin" id="first_name2" type="text" class="validate">
+      &lt;label class="active" for="first_name2">First Name&lt;/label>
+    &lt;/div>
+  &lt;/div>
+        </code></pre>
+
+        <pre><code class="language-javascript">
+  $(document).ready(function() {
+    M.updateTextFields();
+  });
+        </code></pre>
+        <br>
+
+        <h5>Icon Prefixes</h5>
+        <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input id="icon_telephone" type="tel" class="validate">
+                <label for="icon_telephone">Telephone</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s6">
+          &lt;i class="material-icons prefix">account_circle</i>&lt;/i>
+          &lt;input id="icon_prefix" type="text" class="validate">
+          &lt;label for="icon_prefix">First Name&lt;/label>
+        &lt;/div>
+        &lt;div class="input-field col s6">
+          &lt;i class="material-icons prefix">phone</i>&lt;/i>
+          &lt;input id="icon_telephone" type="tel" class="validate">
+          &lt;label for="icon_telephone">Telephone&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+        <br>
+
+        <h5>Custom Error or Success Messages</h5>
+        <p>You can add custom validation messages by adding either <code class="language-markup">data-error</code> or <code class="language-markup">data-success</code> attributes to your helper text element.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email2" type="email" class="validate">
+                <label for="email2">Email</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;input id="email" type="email" class="validate">
+          &lt;label for="email">Email&lt;/label>
+          &lt;span class="helper-text" data-error="wrong" data-success="right">Helper text&lt;/span>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+        <br>
+
+        <h5>Changing colors</h5>
+        <p>Here is a CSS template for modifying input fields in CSS. With Sass, you can achieve this by just changing a variable. The CSS shown below is unprefixed. Depending on what you use, you may have to change the type attribute selector.</p>
+        <pre><code class="language-css">
+  /* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #000;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #000;
+   }
+        </code></pre>
+      </div>
+
+
+      <!-- Textarea Section -->
+      <div id="textarea" class="section scrollspy">
+        <h3 class="header">Textarea</h3>
+        <p>Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a <code class="language-markup">.input-field</code> div wrapping your input and label. This is only used in our Input and Textarea form elements.</p>
+        <p><strong>Textareas will auto resize to the text inside.</strong></p>
+
+
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">Textarea</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s12">
+          &lt;textarea id="textarea1" class="materialize-textarea">&lt;/textarea>
+          &lt;label for="textarea1">Textarea&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+        <p>advanced note: When dynamically changing the value of a textarea with methods like jQuery's <code class="language-markup">.val()</code>, you must trigger an autoresize on it afterwords because .val() does not automatically trigger the events we've binded to the textarea. </p>
+        <pre><code class="language-javascript">
+  $('#textarea1').val('New Text');
+  M.textareaAutoResize($('#textarea1'));
+        </code></pre>
+        <br>
+
+        <h5>Icon Prefixes</h5>
+        <p>You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-markup">prefix</code> before the input and label.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                <label for="icon_prefix2">Message</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s6">
+          &lt;i class="material-icons prefix">mode_edit&lt;/i>
+          &lt;textarea id="icon_prefix2" class="materialize-textarea">&lt;/textarea>
+          &lt;label for="icon_prefix2">First Name&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+      </div>
+
+
+      <div id="file" class="section scrollspy">
+        <h3 class="header">File Input</h3>
+        <p>If you want to style an input button with a path input we provide this structure.</p>
+        <form action="#">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+        </form>
+        <pre><code class="language-markup">
+  &lt;form action="#">
+    &lt;div class="file-field input-field">
+      &lt;div class="btn">
+        &lt;span>File&lt;/span>
+        &lt;input type="file">
+      &lt;/div>
+      &lt;div class="file-path-wrapper">
+        &lt;input class="file-path validate" type="text">
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+        </code></pre>
+
+        <p>You can also use the <code class="language-markup">multiple</code> attribute to allow multiple file uploads. </p>
+        <form action="#">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload one or more files">
+            </div>
+          </div>
+        </form>
+        <pre><code class="language-markup">
+  &lt;form action="#">
+    &lt;div class="file-field input-field">
+      &lt;div class="btn">
+        &lt;span>File&lt;/span>
+        &lt;input type="file" multiple>
+      &lt;/div>
+      &lt;div class="file-path-wrapper">
+        &lt;input class="file-path validate" type="text" placeholder="Upload one or more files">
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+        </code></pre>
+      </div>
+
+
+      <div id="character-counter" class="section scrollspy">
+        <h3 class="header">Character Counter</h3>
+        <p class="caption">Use a character counter in fields where a character restriction is in place.</p>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="input_text" type="text" data-length="10">
+                <label for="input_text">Input text</label>
+              </div>
+            </div>
+            <br/>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+                <label for="textarea2">Textarea</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <pre><code class="language-markup">
+    &lt;div class="row">
+      &lt;form class="col s12">
+        &lt;div class="row">
+          &lt;div class="input-field col s6">
+            &lt;input id="input_text" type="text" data-length="10">
+            &lt;label for="input_text">Input text&lt;/label>
+          &lt;/div>
+        &lt;/div>
+        &lt;div class="row">
+          &lt;div class="input-field col s12">
+            &lt;textarea id="textarea2" class="materialize-textarea" data-length="120">&lt;/textarea>
+            &lt;label for="textarea2">Textarea&lt;/label>
+          &lt;/div>
+        &lt;/div>
+      &lt;/form>
+    &lt;/div>
+          </code></pre>
+        <br>
+
+        <h5>Initialization</h5>
+        <p>There are no options for this plugin, but if you are adding these dynamically, you can use this to initialize them.</p>
+        <pre><code class="language-javascript">
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+        </code></pre>
+      </div>
+
+    </div>
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#input">Input Fields</a></li>
+            <li><a href="#textarea">Textareas</a></li>
+            <li><a href="#file">File Input Button</a></li>
+            <li><a href="#character-counter">Character Counter</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

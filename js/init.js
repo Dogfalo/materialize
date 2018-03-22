@@ -22,7 +22,7 @@
       $(this).children().each(function () {
         var color = $(this).css('background-color'),
             classes = $(this).attr('class');
-        $(this).html(rgb2hex(color) + " " + classes);
+        $(this).html('<span>' + rgb2hex(color) + " " + classes + '</span>');
         if (classes.indexOf("darken") >= 0 || $(this).hasClass('black')) {
           $(this).css('color', 'rgba(255,255,255,.9');
         }
@@ -89,7 +89,7 @@
     // Github Latest Commit
     if ($('.github-commit').length) { // Checks if widget div exists (Index only)
       $.ajax({
-        url: "https://api.github.com/repos/dogfalo/materialize/commits/master",
+        url: "https://api.github.com/repos/dogfalo/materialize/commits/v1-dev",
         dataType: "json",
         success: function (data) {
           var sha = data.sha,
@@ -165,29 +165,47 @@
       });
     }
 
+
+    // Plugin initialization
+    $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel({
+      fullWidth: true,
+      indicators: true,
+      onCycleTo: function(item, dragged) {
+
+      }
+    });
+    $('.collapsible').collapsible();
+    $('.collapsible.expandable').collapsible({
+      accordion: false
+    });
+
+    $('.dropdown-trigger').dropdown();
+    $('.slider').slider();
+    $('.parallax').parallax();
+    $('.materialboxed').materialbox();
+    $('.modal').modal();
+    $('.scrollspy').scrollSpy();
+    $('.datepicker').datepicker();
+    $('.tabs').tabs();
+    $('.timepicker').timepicker();
+    $('.tooltipped').tooltip();
+    $('select').not('.disabled').formSelect();
+    $('.sidenav').sidenav();
+    $('.tap-target').tapTarget();
+    $('input.autocomplete').autocomplete({
+      data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
+    });
+    $('input[data-length], textarea[data-length]').characterCounter();
+
     // Swipeable Tabs Demo Init
     if ($('#tabs-swipe-demo').length) {
       $('#tabs-swipe-demo').tabs({ 'swipeable': true });
     }
 
-    // Plugin initialization
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
-    $('.carousel').carousel();
-    $('.slider').slider();
-    $('.parallax').parallax();
-    $('.modal').modal();
-    $('.scrollspy').scrollSpy();
-    $('.button-collapse').sideNav({'edge': 'left'});
-    $('.datepicker').pickadate({selectYears: 20});
-    $('.timepicker').pickatime();
-    $('select').not('.disabled').material_select();
-    $('input.autocomplete').autocomplete({
-      data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
-    });
-
     // Chips
-    $('.chips').material_chip();
-    $('.chips-initial').material_chip({
+    $('.chips').chips();
+    $('.chips-initial').chips({
       readOnly: true,
       data: [{
         tag: 'Apple',
@@ -197,11 +215,11 @@
         tag: 'Google',
       }]
     });
-    $('.chips-placeholder').material_chip({
+    $('.chips-placeholder').chips({
       placeholder: 'Enter a tag',
       secondaryPlaceholder: '+Tag',
     });
-    $('.chips-autocomplete').material_chip({
+    $('.chips-autocomplete').chips({
       autocompleteOptions: {
         data: {
           'Apple': null,
@@ -209,6 +227,19 @@
           'Google': null
         }
       },
+    });
+
+    // Fab
+    $('.fixed-action-btn').floatingActionButton();
+    $('.fixed-action-btn.horizontal').floatingActionButton({
+      direction: 'left'
+    });
+    $('.fixed-action-btn.click-to-toggle').floatingActionButton({
+      direction: 'left',
+      hoverEnabled: false
+    });
+    $('.fixed-action-btn.toolbar').floatingActionButton({
+      toolbarEnabled: true
     });
 
 

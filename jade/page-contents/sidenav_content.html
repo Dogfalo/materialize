@@ -1,0 +1,346 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="structure" class="section scrollspy">
+        <p class="caption">
+          This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.
+        </p>
+        <p>
+          <strong>Please note that the sidenav HTML should not be contained within the navbar HTML.</strong>
+        </p>
+
+        <a href="#" data-target="slide-out" class="sidenav-trigger btn">Side nav demo</a>
+
+        <ul id="slide-out" class="sidenav">
+          <li><div class="user-view">
+            <div class="background">
+              <img src="images/office.jpg">
+            </div>
+            <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+            <a href="#name"><span class="white-text name">John Doe</span></a>
+            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+          </div></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+          <li><a href="#!">Second Link</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Subheader</a></li>
+          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>
+
+        <br/>
+
+        <pre><code class="language-markup col s12">
+
+  &lt;nav> &lt;!-- navbar content here  --> &lt;/nav>
+
+  &lt;ul id="slide-out" class="sidenav">
+    &lt;li>&lt;div class="user-view">
+      &lt;div class="background">
+        &lt;img src="images/office.jpg">
+      &lt;/div>
+      &lt;a href="#user">&lt;img class="circle" src="images/yuna.jpg">&lt;/a>
+      &lt;a href="#name">&lt;span class="white-text name">John Doe&lt;/span>&lt;/a>
+      &lt;a href="#email">&lt;span class="white-text email">jdandturk@gmail.com&lt;/span>&lt;/a>
+    &lt;/div>&lt;/li>
+    &lt;li>&lt;a href="#!">&lt;i class="material-icons">cloud&lt;/i>First Link With Icon&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#!">Second Link&lt;/a>&lt;/li>
+    &lt;li>&lt;div class="divider">&lt;/div>&lt;/li>
+    &lt;li>&lt;a class="subheader">Subheader&lt;/a>&lt;/li>
+    &lt;li>&lt;a class="waves-effect" href="#!">Third Link With Waves&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-target="slide-out" class="sidenav-trigger">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+        </code></pre>
+      </div>
+
+      <div id="initialization" class="section scrollspy">
+        <h3 class="header">Initialization</h3>
+        <pre><code class="language-javascript col s12">
+  var elem = document.querySelector('.sidenav');
+  var instance = M.Sidenav.init(elem, options);
+
+  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
+  // var collapsibleElem = document.querySelector('.collapsible');
+  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        </code></pre>
+      </div>
+
+
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>edge</td>
+              <td>String</td>
+              <td>'left'</td>
+              <td>Side of screen on which Sidenav appears.</td>
+            </tr>
+            <tr>
+              <td>draggable</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>Allow swipe gestures to open/close Sidenav.</td>
+            </tr>
+            <tr>
+              <td>inDuration</td>
+              <td>Number</td>
+              <td>250</td>
+              <td>Length in ms of enter transition.</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Number</td>
+              <td>200</td>
+              <td>Length in ms of exit transition.</td>
+            </tr>
+            <tr>
+              <td>onOpenStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav starts entering.</td>
+            </tr>
+            <tr>
+              <td>onOpenEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav finishes entering.</td>
+            </tr>
+            <tr>
+              <td>onCloseStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav starts exiting.</td>
+            </tr>
+            <tr>
+              <td>onCloseEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Function called when sidenav finishes exiting.</td>
+            </tr>
+            <tr>
+              <td>preventScrolling</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>Prevent page from scrolling while sidenav is open.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
+
+
+      <div id="methods" class="scrollspy section">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+  var instance = M.Sidenav.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.sidenav').sidenav('methodName');
+    $('.sidenav').sidenav('methodName', paramName);
+  */
+          </code></pre>
+        </blockquote>
+        <h5 class="method-header">
+          .open();
+        </h5>
+        <p>Opens Sidenav.</p>
+        <pre><code class="language-javascript col s12">
+instance.open();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+          .close();
+        </h5>
+        <p>Closes Sidenav.</p>
+        <pre><code class="language-javascript col s12">
+instance.close();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+instance.destroy();
+        </code></pre>
+      </div>
+
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>Describes open/close state of Sidenav.</td>
+            </tr>
+            <tr>
+              <td>isFixed</td>
+              <td>Boolean</td>
+              <td>Describes if sidenav is fixed.</td>
+            </tr>
+            <tr>
+              <td>isDragged</td>
+              <td>Boolean</td>
+              <td>Describes if Sidenav is being dragged.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div id="close-trigger" class="section scrollspy">
+          <h3 class="header">Close Trigger</h3>
+          <p>Add the class <code class="language-markup">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is useful in Single Page Apps where the page does not refresh on link clicks.</p>
+          <pre><code class="language-markup col s12">
+  &lt;ul id="slide-out" class="sidenav">
+      &lt;li>&lt;a class="sidenav-close" href="#!">Clicking this will close Sidenav&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;a href="#" data-target="slide-out" class="sidenav-trigger">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+          </code></pre>
+      </div>
+
+
+      <div id="variations" class="scrollspy section">
+        <h3 class="header">Variations</h3>
+        <p class="caption">
+          Here are some useful variations and additional elements you can add to your sidebar.
+        </p>
+
+        <h4>Dropdown HTML Structure</h4>
+          <p>Add collapsible menus to your sidebar.</p>
+          <pre><code class="language-markup col s12">
+    &lt;ul id="slide-out" class="sidenav">
+      &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+      &lt;li class="no-padding">
+        &lt;ul class="collapsible collapsible-accordion">
+          &lt;li>
+            &lt;a class="collapsible-header">Dropdown&lt;i class="material-icons">arrow_drop_down&lt;/i>&lt;/a>
+            &lt;div class="collapsible-body">
+              &lt;ul>
+                &lt;li>&lt;a href="#!">First&lt;/a>&lt;/li>
+                &lt;li>&lt;a href="#!">Second&lt;/a>&lt;/li>
+                &lt;li>&lt;a href="#!">Third&lt;/a>&lt;/li>
+                &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
+              &lt;/ul>
+            &lt;/div>
+          &lt;/li>
+        &lt;/ul>
+      &lt;/li>
+    &lt;/ul>
+    &lt;ul class="right hide-on-med-and-down">
+      &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+      &lt;li>&lt;a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown&lt;i class="material-icons right">arrow_drop_down&lt;/i>&lt;/a>&lt;/li>
+      &lt;ul id='dropdown1' class='dropdown-content'>
+        &lt;li>&lt;a href="#!">First&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#!">Second&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#!">Third&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#!">Fourth&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/ul>
+    &lt;a href="#" data-target="slide-out" class="sidenav-trigger">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+          </code></pre><br>
+
+          <h4>Fullscreen HTML Structure</h4>
+          <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.sidenav-trigger</code>. </p>
+
+          <pre><code class="language-markup col s12">
+    &lt;ul id="slide-out" class="sidenav">
+      &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+    &lt;/ul>
+    &lt;a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+          </code></pre><br>
+
+          <h4>Fixed HTML Structure</h4>
+          <p>Add the class <code class="language-markup">sidenav-fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sidenav on the left is an example of this.</p>
+          <pre><code class="language-markup col s12">
+    &lt;ul id="slide-out" class="sidenav sidenav-fixed">
+      &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
+    &lt;/ul>
+    &lt;a href="#" data-target="slide-out" class="sidenav-trigger">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+          </code></pre>
+          <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding on where the offset content will be, which in our case is in header, main and footer.</p>
+          <pre><code class="language-css col s12">
+    header, main, footer {
+      padding-left: 300px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+          </code></pre>
+        </div>
+      </div>
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#structure">Structure</a></li>
+            <li><a href="#initialization">Intialization</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#close-trigger">Close Trigger</a></li>
+            <li><a href="#variations">Variations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

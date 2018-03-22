@@ -1,71 +1,56 @@
 <div class="container">
   <div class="row">
 
-    <div class="col s12 m9 l10">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="section scrollspy">
-        <h4>Introduction</h4>
-        <p class="caption">The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible. You can add the class <code class="language-markup">.disabled</code> to make a tab inaccessible. </p>
+          <p class="caption">
+            The tabs structure consists of an unordered list of tabs that have hashes corresponding to tab ids. Then when you click on each tab, only the container with the corresponding tab id will become visible. You can add the class <code class="language-markup">.disabled</code> to make a tab inaccessible.
+          </p>
 
-        <br>
-        <h5>Variable Width Tabs<span>Default</span></h5>
         <ul class="tabs tab-demo z-depth-1">
           <li class="tab"><a href="#test16">Test 1</a></li>
-          <li class="tab"><a class="active" href="#test17">Test 2</a></li>
+          <li class="tab"><a class="active" href="#test17">Another Tab</a></li>
           <li class="tab"><a href="#test18">Test 3</a></li>
           <li class="tab"><a href="#test19">Test 4</a></li>
         </ul>
+
         <div id="test16" class="col s12"><p>Test 1</p></div>
-        <div id="test17" class="col s12"><p>Test 2</p></div>
+        <div id="test17" class="col s12"><p>Another Tab content</p></div>
         <div id="test18" class="col s12"><p>Test 3</p></div>
         <div id="test19" class="col s12"><p>Test 4</p></div>
-
-        <br>
-        <h5>Fixed Width Tabs<span>Add the <code class="language-markup">.tabs-fixed-width</code> class</span></h5>
-        <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-          <li class="tab"><a href="#test1">Test 1</a></li>
-          <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-          <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-          <li class="tab"><a href="#test4">Test 4</a></li>
-          <li class="tab"><a href="#test0">Test 5</a></li>
-        </ul>
-        <div id="test1" class="col s12"><p>Test 1</p></div>
-        <div id="test2" class="col s12"><p>Test 2</p></div>
-        <div id="test3" class="col s12"><p>Test 3</p></div>
-        <div id="test4" class="col s12"><p>Test 4</p></div>
-        <div id="test0" class="col s12"><p>Test 5</p></div>
-
-        <br>
-        <h5>Scrollable Tabs <span>Tabs automatically become scrollable</span></h5>
-        <ul class="tabs tab-demo z-depth-1">
-          <li class="tab"><a href="#test5">Test 1</a></li>
-          <li class="tab"><a class="active" href="#test6">Test 2</a></li>
-          <li class="tab"><a href="#test7">Test 4</a></li>
-          <li class="tab"><a href="#test8">Test 1</a></li>
-          <li class="tab"><a class="active" href="#test9">Test 2</a></li>
-          <li class="tab disabled"><a href="#test10">Disabled Tab</a></li>
-          <li class="tab"><a href="#test11">Test 4</a></li>
-          <li class="tab"><a href="#test12">Test 1</a></li>
-          <li class="tab"><a class="active" href="#test13">Test 2</a></li>
-          <li class="tab disabled"><a href="#test14">Disabled Tab</a></li>
-          <li class="tab"><a href="#test15">Test 4</a></li>
-        </ul>
-        <div id="test5" class="col s12"><p>Test 5</p></div>
-        <div id="test6" class="col s12"><p>Test 6</p></div>
-        <div id="test7" class="col s12"><p>Test 7</p></div>
-        <div id="test8" class="col s12"><p>Test 8</p></div>
-        <div id="test9" class="col s12"><p>Test 9</p></div>
-        <div id="test10" class="col s12"><p>Test 10</p></div>
-        <div id="test11" class="col s12"><p>Test 11</p></div>
-        <div id="test12" class="col s12"><p>Test 12</p></div>
-        <div id="test13" class="col s12"><p>Test 13</p></div>
-        <div id="test14" class="col s12"><p>Test 14</p></div>
-        <div id="test15" class="col s12"><p>Test 15</p></div>
       </div>
 
 
+      <p>Tabs automatically become scrollable when there are too many to fit on screen</p>
+      <ul class="tabs tab-demo z-depth-1">
+        <li class="tab"><a href="#test5">Test 1</a></li>
+        <li class="tab"><a class="active" href="#test6">Test 2</a></li>
+        <li class="tab"><a href="#test7">Test 3</a></li>
+        <li class="tab"><a href="#test8">Test 4</a></li>
+        <li class="tab"><a class="active" href="#test9">Test 5</a></li>
+        <li class="tab disabled"><a href="#test10">Disabled Tab</a></li>
+        <li class="tab"><a href="#test11">Test 7</a></li>
+        <li class="tab"><a href="#test12">Test 8</a></li>
+        <li class="tab"><a class="active" href="#test13">Test 9</a></li>
+        <li class="tab disabled"><a href="#test14">Disabled Tab</a></li>
+        <li class="tab"><a href="#test15">Test 11</a></li>
+      </ul>
+      <div id="test5" class="col s12"><p>Test 1</p></div>
+      <div id="test6" class="col s12"><p>Test 2</p></div>
+      <div id="test7" class="col s12"><p>Test 3</p></div>
+      <div id="test8" class="col s12"><p>Test 4</p></div>
+      <div id="test9" class="col s12"><p>Test 5</p></div>
+      <div id="test10" class="col s12"><p>Test 6</p></div>
+      <div id="test11" class="col s12"><p>Test 7</p></div>
+      <div id="test12" class="col s12"><p>Test 8</p></div>
+      <div id="test13" class="col s12"><p>Test 9</p></div>
+      <div id="test14" class="col s12"><p>Test 10</p></div>
+      <div id="test15" class="col s12"><p>Test 11</p></div>
+
+
+
       <div id="structure" class="section scrollspy">
-        <h4>Tabs HTML Structure</h4>
         <pre><code class="language-markup">
   &lt;div class="row">
     &lt;div class="col s12">
@@ -85,48 +70,130 @@
       </div>
 
       <div id="initialization" class="section scrollspy">
-        <h4>jQuery Plugin Initialization</h4>
-        <p>Tabs are initialized automatically, but if you add tabs dynamically you will have to initialize them like this.</p>
+        <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
+  var instance = M.Tabs.init(el, options);
+
+  // Or with jQuery
+
   $(document).ready(function(){
-    $('ul.tabs').tabs();
+    $('.tabs').tabs();
   });
         </code></pre>
       </div>
-
-      <div id="method" class="section scrollspy">
-        <h4>jQuery Plugin Methods</h4>
-        <p>You can programmatically trigger a tab change with our <code class="language-javascript">select_tab</code> method. You have to input the id of the tab you want to switch to. In the case of our demo it would be either test1, test2, test3, or test4.</p>
-        <pre><code class="language-javascript">
-  $(document).ready(function(){
-    $('ul.tabs').tabs('select_tab', 'tab_id');
-  });
-        </code></pre>
-      </div>
-
 
       <div id="options" class="section scrollspy">
-        <h4>jQuery Plugin Options</h4>
-        <table class="highlight">
+        <h3 class="header">Options</h3>
+        <table class="striped">
           <thead>
             <tr>
-                <th>Option Name</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
+              <td>duration</td>
+              <td>Number</td>
+              <td>300</td>
+              <td>Transition duration in milliseconds.</td>
+            </tr>
+            <tr>
               <td>onShow</td>
-              <td>Execute a callback function when the tab is changed. <br /> The callback provides a parameter which refers to the current tab being shown.</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback for when a new tab content is shown.</td>
             </tr>
             <tr>
               <td>swipeable</td>
-              <td>Set to true to enable swipeable tabs. This also uses the responsiveThreshold option. Default: false</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>Set to true to enable swipeable tabs. This also uses the responsiveThreshold option.</td>
             </tr>
             <tr>
               <td>responsiveThreshold</td>
-              <td>The maximum width of the screen, in pixels, where the swipeable functionality initializes. Default: Infinity</td>
+              <td>Number</td>
+              <td>Infinity</td>
+              <td>The maximum width of the screen, in pixels, where the swipeable functionality initializes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="method" class="section scrollspy">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+  var instance = M.Tabs.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.tabs').tabs('methodName');
+    $('.tabs').tabs('methodName', paramName);
+  */
+          </code></pre>
+        </blockquote>
+
+        <h5 class="method-header">
+          .select();
+        </h5>
+        <p>Show tab content that corresponds to the tab with the id</p>
+        <h6>Arguments</h6>
+        <p><b>String:</b> The id of the tab that you want to switch to</p>
+        <pre><code class="language-javascript col s12">
+instance.select('tab_id');
+        </code></pre>
+
+        <h5 class="method-header">
+          .updateTabIndicator();
+        </h5>
+        <p>Recalculate tab indicator position. This is useful when the indicator position is not correct.</p>
+        <pre><code class="language-javascript col s12">
+instance.updateTabIndicator();
+        </code></pre>
+
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+instance.destroy();
+        </code></pre>
+      </div>
+
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initalized with.</td>
+            </tr>
+            <tr>
+              <td>index</td>
+              <td>Number</td>
+              <td>The index of tab that is currently shown.</td>
             </tr>
           </tbody>
         </table>
@@ -134,16 +201,16 @@
 
 
       <div id="preselecting" class="section scrollspy">
-        <h4>Preselecting a tab</h4>
+        <h3 class="header">Preselecting a tab</h3>
           <p>By default, the first tab is selected. But if this is not what you want, you can preselect a tab by either passing in the hash in the url ex:<code class="language-markup">#test2</code>. Or you can add the class <code class="language-markup">active</code> to the <code class="language-markup">a</code> tag.</p>
         <pre><code class="language-markup col s12">
-  &lt;li class="tab col s2">&lt;a class="active" href="#test3">Test 3&lt;/a>&lt;/li>
+  &lt;li class="tab">&lt;a class="active" href="#test3">Test 3&lt;/a>&lt;/li>
         </code></pre>
       </div>
 
 
       <div id="external" class="section scrollspy">
-        <h4>Linking to an External Page</h4>
+        <h3 class="header">Linking to an External Page</h3>
           <p>By default, Materialize tabs will ignore their default anchor behaviour.  To force a tab to behave as a regular hyperlink, just specify the <code class="language-markup">target</code> property of that link!  A list of <code class="language-markup">target</code> values may be <a href="https://www.w3schools.com/tags/att_a_target.asp">found here</a>.</p>
         <pre><code class="language-markup col s12">
   &lt;li class="tab col s2">
@@ -157,7 +224,7 @@
 
 
       <div id="swipeable" class="section scrollspy">
-        <h4>Swipeable Tabs</h4>
+        <h3 class="header">Swipeable Tabs</h3>
         <p>By setting the <code class="language-javascript">swipeable</code> option to <code class="language-markup">true</code>, you can enable tabs where you can swipe on touch enabled devices to switch tabs. Make sure you keep the tab content divs in the same wrapping container. You can also set the <code class="language-javascript">responsiveThreshold</code> option to a screen width in pixels where the swipeable functionality will activate.</p>
         <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
         <ul id="tabs-swipe-demo" class="tabs">
@@ -181,10 +248,42 @@
         </code></pre>
       </div>
 
+
+      <div id="fixed-width" class="scrollspy section">
+        <h3 class="header">Fixed Width Tabs</h3>
+        <p>Add the <code class="language-markup">.tabs-fixed-width</code> class to the tabs container</p>
+        <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+          <li class="tab"><a href="#test1">Test 1</a></li>
+          <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+          <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+          <li class="tab"><a href="#test4">Test 4</a></li>
+          <li class="tab"><a href="#test0">Test 5</a></li>
+        </ul>
+        <div id="test1" class="col s12"><p>Test 1</p></div>
+        <div id="test2" class="col s12"><p>Test 2</p></div>
+        <div id="test3" class="col s12"><p>Test 3</p></div>
+        <div id="test4" class="col s12"><p>Test 4</p></div>
+        <div id="test0" class="col s12"><p>Test 5</p></div>
+
+        <pre><code class="language-markup col s12">
+  &lt;ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+    &lt;li class="tab">&lt;a href="#test1">Test 1&lt;/a>&lt;/li>
+    &lt;li class="tab">&lt;a class="active" href="#test2">Test 2&lt;/a>&lt;/li>
+    &lt;li class="tab disabled">&lt;a href="#test3">Disabled Tab&lt;/a>&lt;/li>
+    &lt;li class="tab">&lt;a href="#test4">Test 4&lt;/a>&lt;/li>
+    &lt;li class="tab">&lt;a href="#test0">Test 5&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;div id="test1" class="col s12">&lt;p>Test 1&lt;/p>&lt;/div>
+  &lt;div id="test2" class="col s12">&lt;p>Test 2&lt;/p>&lt;/div>
+  &lt;div id="test3" class="col s12">&lt;p>Test 3&lt;/p>&lt;/div>
+  &lt;div id="test4" class="col s12">&lt;p>Test 4&lt;/p>&lt;/div>
+  &lt;div id="test0" class="col s12">&lt;p>Test 5&lt;/p>&lt;/div>
+        </code></pre>
+      </div>
     </div>
 
     <!-- Table of Contents -->
-    <div class="col hide-on-small-only m3 l2">
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
@@ -197,13 +296,14 @@
             <li><a href="#initialization">Intialization</a></li>
             <li><a href="#method">Methods</a></li>
             <li><a href="#options">Options</a></li>
+            <li><a href="#properties">Properties</a></li>
             <li><a href="#preselecting">Preselecting</a></li>
             <li><a href="#external">External Links</a></li>
             <li><a href="#swipeable">Swipeable Tabs</a></li>
+            <li><a href="#fixed-width">Fixed Width Tabs</a></li>
           </ul>
         </div>
       </div>
     </div>
-
   </div>
 </div>

@@ -19,11 +19,11 @@
             <li><a href="sass.html">Sass</a></li>
             <li><a href="badges.html">Components</a></li>
           </ul>
-          <ul id="slide-out" class="side-nav">
+          <ul id="slide-out" class="sidenav">
             <li><a href="#!">First Sidebar Link</a></li>
             <li><a href="#!">Second Sidebar Link</a></li>
           </ul>
-          <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="mdi-navigation-menu"></i></a>
         </div>
       </nav>
     </div>
@@ -105,26 +105,12 @@
 
 
 
-    <!-- <script src="js/jquery.timeago.js"></script>   -->
-    <!-- <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/velocity.min.js"></script>
-    <script src="js/global.js"></script>
-    <script src="js/hammer.min.js"></script>
-    <script src="js/tooltip.js"></script>
-    <script src="js/materialbox.js"></script>
-    <script src="js/forms.js"></script>
-    <script src="js/tabs.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="js/toasts.js"></script>
-    <script src="js/scrollFire.js"></script> -->
-
-
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../../../bin/materialize.js"></script>
 
     <script type="text/javascript">
     $( document ).ready(function() {
-      $(".button-collapse").sideNav({
+      $(".sidenav").sidenav({
          edge: 'right', menuWidth: 300
        });
 

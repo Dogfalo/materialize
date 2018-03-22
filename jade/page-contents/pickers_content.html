@@ -1,0 +1,714 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="date-picker" class="section scrollspy">
+        <h3 class="header">Date Picker</h3>
+        <p>The datepicker allows users to select a date from an interactive calendar.</p>
+        <div class="input-field">
+          <input id="birthdate" type="text" class="datepicker">
+          <label for="birthdate">Birthdate</label>
+        </div>
+        <pre><code class="language-markup">
+  &lt;input type="text" class="datepicker">
+        </code></pre>
+
+
+        <div class="section">
+          <h5>Initialization</h5>
+          <pre><code class="language-javascript">
+  var elem = document.querySelector('.datepicker');
+  var instance = M.Datepicker.init(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+          </code></pre>
+        </div>
+
+
+        <div class="section">
+          <h5>Options</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>format</td>
+                <td>String</td>
+                <td>'mmm dd, yyyy'</td>
+                <td>The date output format for the input field value.</td>
+              </tr>
+              <tr>
+                <td>parse</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Used to create date object from current input string.</td>
+              </tr>
+              <tr>
+                <td>defaultDate</td>
+                <td>Date</td>
+                <td>null</td>
+                <td>The initial date to view when first opened.</td>
+              </tr>
+              <tr>
+                <td>setDefaultDate</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Make the defaultDate the initial selected value.</td>
+              </tr>
+              <tr>
+                <td>disableWeekends</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Prevent selection of any date on the weekend.</td>
+              </tr>
+              <tr>
+                <td>disableDayFn</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Custom function to disable certain days.</td>
+              </tr>
+              <tr>
+                <td>firstDay</td>
+                <td>Number</td>
+                <td>0</td>
+                <td>First day of week (0: Sunday, 1: Monday etc).</td>
+              </tr>
+              <tr>
+                <td>minDate</td>
+                <td>Date</td>
+                <td>null</td>
+                <td>The earliest date that can be selected.</td>
+              </tr>
+              <tr>
+                <td>maxDate</td>
+                <td>Date</td>
+                <td>null</td>
+                <td>The latest date that can be selected.</td>
+              </tr>
+              <tr>
+                <td>yearRange</td>
+                <td>Number || Array</td>
+                <td>10</td>
+                <td>Number of years either side, or array of upper/lower range.</td>
+              </tr>
+              <tr>
+                <td>isRTL</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Changes Datepicker to RTL.</td>
+              </tr>
+              <tr>
+                <td>showMonthAfterYear</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Show month after year in Datepicker title.</td>
+              </tr>
+              <tr>
+                <td>showDaysInNextAndPreviousMonths</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Render days of the calendar grid that fall in the next or previous month.</td>
+              </tr>
+              <tr>
+                <td>container</td>
+                <td>Element</td>
+                <td>null</td>
+                <td>Specify a DOM element to render the calendar in, by default it will be placed before the input.</td>
+              </tr>
+              <tr>
+                <td>showClearBtn</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Show the clear button in the datepicker.</td>
+              </tr>
+              <tr>
+                <td>i18n</td>
+                <td>Object</td>
+                <td>See i18n documentation.</td>
+                <td>Internationalization options.</td>
+              </tr>
+              <tr>
+                <td>events</td>
+                <td>Array</td>
+                <td>[]</td>
+                <td>An array of string returned by `Date.toDateString()`, indicating there are events in the specified days.</td>
+              </tr>
+              <tr>
+                <td>onSelect</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function when date is selected, first parameter is the newly selected date.</td>
+              </tr>
+              <tr>
+                <td>onOpen</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function when Datepicker is opened.</td>
+              </tr>
+              <tr>
+                <td>onClose</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function when Datepicker is closed.</td>
+              </tr>
+              <tr>
+                <td>onDraw</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function when Datepicker HTML is refreshed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Date format options</h5>
+          <p>Use these in the format option to customize your date string.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Description</th>
+                <th>Output</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>d</td>
+                <td>Date of the month.</td>
+                <td>1-31</td>
+              </tr>
+              <tr>
+                <td>dd</td>
+                <td>Date of the month (2 digits).</td>
+                <td>01-31</td>
+              </tr>
+              <tr>
+                <td>ddd</td>
+                <td>Day of the week in short form set by the i18n option.</td>
+                <td>Sun-Sat</td>
+              </tr>
+              <tr>
+                <td>dddd</td>
+                <td>Day of the week in full form set by the i18n option.</td>
+                <td>Sunday-Saturday</td>
+              </tr>
+              <tr>
+                <td>m</td>
+                <td>Month of the year.</td>
+                <td>1-12</td>
+              </tr>
+              <tr>
+                <td>mm</td>
+                <td>Month of the year (2 digits).</td>
+                <td>01-12</td>
+              </tr>
+              <tr>
+                <td>mmm</td>
+                <td>Month of the year in short form set by the i18n option.</td>
+                <td>Jan-Dec</td>
+              </tr>
+              <tr>
+                <td>mmmm</td>
+                <td>Month of the year in full form set by the i18n option.</td>
+                <td>January-December</td>
+              </tr>
+              <tr>
+                <td>yy</td>
+                <td>2-digit year.</td>
+                <td>17</td>
+              </tr>
+              <tr>
+                <td>yyyy</td>
+                <td>4-digit year.</td>
+                <td>2017</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Datepicker Internationalization options</h5>
+          <p>Use these in the i18n option to localize the datepicker.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Text</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>cancel</td>
+                <td>'Cancel'</td>
+              </tr>
+              <tr>
+                <td>clear</td>
+                <td>'Clear'</td>
+              </tr>
+              <tr>
+                <td>done</td>
+                <td>'Ok'</td>
+              </tr>
+              <tr>
+                <td>previousMonth</td>
+                <td>'‹'</td>
+              </tr>
+              <tr>
+                <td>nextMonth</td>
+                <td>'›'</td>
+              </tr>
+              <tr>
+                <td>months</td>
+                <td>
+                  <pre>
+[
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>monthsShort</td>
+                <td>
+                  <pre>
+[
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>weekdays</td>
+                <td>
+                  <pre>
+[
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>weekdaysShort</td>
+                <td>
+                  <pre>
+[
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat'
+]
+                  </pre>
+                </td>
+              </tr>
+              <tr>
+                <td>weekdaysAbbrev</td>
+                <td>['S','M','T','W','T','F','S']</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <div class="section">
+          <h5>Properties</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>el</td>
+                <td>Element</td>
+                <td>The input element the plugin was initialized with.</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>Object</td>
+                <td>The options the instance was initialized with.</td>
+              </tr>
+              <tr>
+                <td>isOpen</td>
+                <td>Boolean</td>
+                <td>If the picker is open.</td>
+              </tr>
+              <tr>
+                <td>date</td>
+                <td>Date</td>
+                <td>The selected Date.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h5>Methods</h5>
+
+          <blockquote>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+            <pre><code class="language-javascript col s12">
+  var instance = M.Datepicker.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.datepicker').datepicker('methodName');
+    $('.datepicker').datepicker('methodName', paramName);
+  */
+            </code></pre>
+          </blockquote>
+          <h5 class="method-header">
+            .open();
+          </h5>
+          <p>Open datepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.open();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .close();
+          </h5>
+          <p>Close datepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.close();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .toString();
+          </h5>
+          <p>Gets a string representation of the selected date</p>
+          <pre><code class="language-javascript col s12">
+instance.toString();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .setDate();
+          </h5>
+          <p>Set a date on the datepicker</p>
+          <h6>Arguments</h6>
+          <p><b>Date (optional):</b> Date to set on the datepicker.</p>
+          <pre><code class="language-javascript col s12">
+instance.setDate(new Date());
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .gotoDate();
+          </h5>
+          <p>Change date view to a specific date on the datepicker</p>
+          <h6>Arguments</h6>
+          <p><b>Date:</b> Date to show on the datepicker.</p>
+          <pre><code class="language-javascript col s12">
+instance.gotoDate(new Date());
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .destroy();
+          </h5>
+          <p>Destroy plugin instance and teardown</p>
+          <pre><code class="language-javascript col s12">
+instance.destroy();
+          </code></pre>
+        </div>
+      </div>
+
+      <div id="time-picker" class="section scrollspy">
+        <h3 class="header">Time Picker</h3>
+        <p>The timepicker allows users to select a date from an interactive clock.</p>
+        <div class="input-field">
+          <input id="lunchtime" type="text" class="timepicker">
+          <label for="lunchtime">Lunchtime</label>
+        </div>
+        <pre><code class="language-markup">
+  &lt;input type="text" class="timepicker">
+        </code></pre>
+
+
+        <div class="section">
+          <h5>Initialization</h5>
+          <pre><code class="language-javascript">
+  var elem = document.querySelector('.timepicker');
+  var instance = M.Timepicker.init(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.timepicker').timepicker();
+  });
+          </code></pre>
+        </div>
+
+
+        <div class="section">
+          <h5>Options</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>duration</td>
+                <td>Number</td>
+                <td>350</td>
+                <td>Duration of the transition from/to the hours/minutes view.</td>
+              </tr>
+              <tr>
+                <td>container</td>
+                <td>String</td>
+                <td>null</td>
+                <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input.</td>
+              </tr>
+              <tr>
+                <td>showClearBtn</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Show the clear button in the Timepicker.</td>
+              </tr>
+              <tr>
+                <td>defaultTime</td>
+                <td>String</td>
+                <td>'now'</td>
+                <td>Default time to set on the timepicker 'now' or '13:14'</td>
+              </tr>
+              <tr>
+                <td>fromNow</td>
+                <td>Number</td>
+                <td>0</td>
+                <td>Millisecond offset from the defaultTime.</td>
+              </tr>
+              <tr>
+                <td>i18n</td>
+                <td>Object</td>
+                <td>See i18n documentation.</td>
+                <td>Internationalization options.</td>
+              </tr>
+              <tr>
+                <td>autoClose</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Automatically close picker when minute is selected.</td>
+              </tr>
+              <tr>
+                <td>twelveHour</td>
+                <td>Boolean</td>
+                <td>true</td>
+                <td>Use 12 hour AM/PM clock instead of 24 hour clock.</td>
+              </tr>
+              <tr>
+                <td>vibrate</td>
+                <td>Boolean</td>
+                <td>true</td>
+                <td>Vibrate device when dragging clock hand.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Timepicker Internationalization options</h5>
+          <p>Use these in the i18n option to localize the timepicker.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Text</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>cancel</td>
+                <td>'Cancel'</td>
+              </tr>
+              <tr>
+                <td>clear</td>
+                <td>'Clear'</td>
+              </tr>
+              <tr>
+                <td>done</td>
+                <td>'Ok'</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <div class="section">
+          <h5>Properties</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>el</td>
+                <td>Element</td>
+                <td>The input element the plugin was initialized with.</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>Object</td>
+                <td>The options the instance was initialized with.</td>
+              </tr>
+              <tr>
+                <td>isOpen</td>
+                <td>Boolean</td>
+                <td>If the picker is open.</td>
+              </tr>
+              <tr>
+                <td>time</td>
+                <td>String</td>
+                <td>The selected time.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Methods</h5>
+
+          <blockquote>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+            <pre><code class="language-javascript col s12">
+  var instance = M.Timepicker.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.timepicker').timepicker('methodName');
+    $('.timepicker').timepicker('methodName', paramName);
+  */
+            </code></pre>
+          </blockquote>
+          <h5 class="method-header">
+            .open();
+          </h5>
+          <p>Open timepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.open();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .close();
+          </h5>
+          <p>Close timepicker</p>
+          <pre><code class="language-javascript col s12">
+instance.close();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .showView();
+          </h5>
+          <p>Show hours or minutes view on timepicker</p>
+          <h6>Arguments</h6>
+          <p><b>String:</b> The name of the view you want to switch to, 'hours' or 'minutes'.</p>
+          <pre><code class="language-javascript col s12">
+instance.showView('hours');
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .destroy();
+          </h5>
+          <p>Destroy plugin instance and teardown</p>
+          <pre><code class="language-javascript col s12">
+instance.destroy();
+          </code></pre>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#date-picker">Date Picker</a></li>
+            <li><a href="#time-picker">Time Picker</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

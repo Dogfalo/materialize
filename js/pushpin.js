@@ -1,71 +1,142 @@
 (function ($) {
-  $.fn.pushpin = function (options) {
-    // Defaults
-    var defaults = {
-      top: 0,
-      bottom: Infinity,
-      offset: 0
-    };
+  'use strict';
 
-    // Remove pushpin event and classes
-    if (options === "remove") {
-      this.each(function () {
-        if (id = $(this).data('pushpin-id')) {
-          $(window).off('scroll.' + id);
-          $(this).removeData('pushpin-id').removeClass('pin-top pinned pin-bottom').removeAttr('style');
-        }
-      });
-      return false;
+  let _defaults = {
+    top: 0,
+    bottom: Infinity,
+    offset: 0,
+    onPositionChange: null
+  };
+
+
+  /**
+   * @class
+   *
+   */
+  class Pushpin extends Component {
+    /**
+     * Construct Pushpin instance
+     * @constructor
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(Pushpin, el, options);
+
+      this.el.M_Pushpin = this;
+
+      /**
+       * Options for the modal
+       * @member Pushpin#options
+       */
+      this.options = $.extend({}, Pushpin.defaults, options);
+
+      this.originalOffset = this.el.offsetTop;
+      Pushpin._pushpins.push(this);
+      this._setupEventHandlers();
+      this._updatePosition();
     }
 
-    options = $.extend(defaults, options);
+    static get defaults() {
+      return _defaults;
+    }
 
+    static init(els, options) {
+      return super.init(this, els, options);
+    }
 
-    $index = 0;
-    return this.each(function() {
-      var $uniqueId = Materialize.guid(),
-          $this = $(this),
-          $original_offset = $(this).offset().top;
+    /**
+     * Get Instance
+     */
+    static getInstance(el) {
+      let domElem = !!el.jquery ? el[0] : el;
+      return domElem.M_Pushpin;
+    }
 
-      function removePinClasses(object) {
-        object.removeClass('pin-top');
-        object.removeClass('pinned');
-        object.removeClass('pin-bottom');
+    /**
+     * Teardown component
+     */
+    destroy() {
+      this.el.style.top = null;
+      this._removePinClasses();
+      this._removeEventHandlers();
+
+      // Remove pushpin Inst
+      let index = Pushpin._pushpins.indexOf(this);
+      Pushpin._pushpins.splice(index, 1);
+    }
+
+    static _updateElements() {
+      for (let elIndex in Pushpin._pushpins) {
+        let pInstance = Pushpin._pushpins[elIndex];
+        pInstance._updatePosition();
+      }
+    }
+
+    _setupEventHandlers() {
+      document.addEventListener('scroll', Pushpin._updateElements);
+    }
+
+    _removeEventHandlers() {
+      document.removeEventListener('scroll', Pushpin._updateElements);
+    }
+
+    _updatePosition() {
+      let scrolled = M.getDocumentScrollTop() + this.options.offset;
+
+      if (this.options.top <= scrolled && this.options.bottom >= scrolled &&
+        !this.el.classList.contains('pinned')) {
+        this._removePinClasses();
+
+        this.el.style.top = `${this.options.offset}px`;
+        this.el.classList.add('pinned');
+
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pinned');
+        }
       }
 
-      function updateElements(objects, scrolled) {
-        objects.each(function () {
-          // Add position fixed (because its between top and bottom)
-          if (options.top <= scrolled && options.bottom >= scrolled && !$(this).hasClass('pinned')) {
-            removePinClasses($(this));
-            $(this).css('top', options.offset);
-            $(this).addClass('pinned');
-          }
+      // Add pin-top (when scrolled position is above top)
+      if (scrolled < this.options.top && !this.el.classList.contains('pin-top')) {
+        this._removePinClasses();
+        this.el.style.top = 0;
+        this.el.classList.add('pin-top');
 
-          // Add pin-top (when scrolled position is above top)
-          if (scrolled < options.top && !$(this).hasClass('pin-top')) {
-            removePinClasses($(this));
-            $(this).css('top', 0);
-            $(this).addClass('pin-top');
-          }
-
-          // Add pin-bottom (when scrolled position is below bottom)
-          if (scrolled > options.bottom && !$(this).hasClass('pin-bottom')) {
-            removePinClasses($(this));
-            $(this).addClass('pin-bottom');
-            $(this).css('top', options.bottom - $original_offset);
-          }
-        });
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pin-top');
+        }
       }
 
-      $(this).data('pushpin-id', $uniqueId);
-      updateElements($this, $(window).scrollTop());
-      $(window).on('scroll.' + $uniqueId, function () {
-        var $scrolled = $(window).scrollTop() + options.offset;
-        updateElements($this, $scrolled);
-      });
+      // Add pin-bottom (when scrolled position is below bottom)
+      if (scrolled > this.options.bottom && !this.el.classList.contains('pin-bottom')) {
+        this._removePinClasses();
+        this.el.classList.add('pin-bottom');
+        this.el.style.top = `${this.options.bottom - this.originalOffset}px`;
 
-    });
+        // onPositionChange callback
+        if (typeof(this.options.onPositionChange) === 'function') {
+          this.options.onPositionChange.call(this, 'pin-bottom');
+        }
+      }
+    }
 
-  };
-}( jQuery ));
+    _removePinClasses() {
+      this.el.classList.remove('pin-top', 'pinned', 'pin-bottom');
+    }
+  }
+
+  /**
+   * @static
+   * @memberof Pushpin
+   */
+  Pushpin._pushpins = [];
+
+  M.Pushpin = Pushpin;
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Pushpin, 'pushpin', 'M_Pushpin');
+  }
+
+})(cash);

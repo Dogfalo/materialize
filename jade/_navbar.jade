@@ -10,17 +10,27 @@ header
     nav.top-nav
       .container
         .nav-wrapper
-          a.page-title #{page}
+          .row
+            .col.s12.m10.offset-m1
+              h1.header #{page}
   .container
-    a.button-collapse.top-nav(href='#', data-activates='nav-mobile', class=(no_nav == false ? "full hide-on-large-only" : "" + "waves-effect waves-light circle hide-on-large-only"))
+    a.top-nav.sidenav-trigger(href='#', data-target='nav-mobile', class=(no_nav == false ? "full hide-on-large-only" : "" + "waves-effect waves-light circle hide-on-large-only"))
       i.material-icons menu
-  ul#nav-mobile.side-nav.fixed
+  ul#nav-mobile.sidenav.sidenav-fixed
     li(class="logo")
       a#logo-container.brand-logo(href='/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
+    li.version
+      a.dropdown-trigger(href='#' data-target='version-dropdown') 1.0.0-alpha.4
+        <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+      ul#version-dropdown.dropdown-content
+        li
+          a 1.0.0-alpha.4
+        li
+          a(href='http://archives.materializecss.com/0.100.2/') 0.100.2
     li(class="search")
-      div.search-wrapper.card
-        input(id="search")
+      div.search-wrapper
+        input(id="search", placeholder="Search")
         i.material-icons search
         div.search-results
     li.bold(class=(page == "About" ? "active" : ""))
@@ -30,8 +40,8 @@ header
 
     li.no-padding
       ul.collapsible.collapsible-accordion
-        li.bold
-          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Pulse" || page == "Table" || page == "CSS Transitions" || page == "Helpers" ? "active" : "")+" waves-effect waves-teal")
+        li.bold(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Pulse" || page == "Table" || page == "CSS Transitions" || page == "Helpers" ? "active" : ""))
+          a.collapsible-header(class="waves-effect waves-teal")
             | CSS
           .collapsible-body
             ul
@@ -55,8 +65,8 @@ header
                 a(href='css-transitions.html') Transitions
               li(class=(page == "Typography" ? "active" : ""))
                 a(href='typography.html') Typography
-        li.bold
-          a.collapsible-header(class=(page == "Forms" || page == "Buttons" || page == "Navbar" || page == "Cards" || page == "Chips" || page == "Preloader" || page == "Pagination" || page == "Collections" || page == "Badges" || page == "Breadcrumbs" || page == "Footer" ? "active" : "" || page == "Icons" ? "active" : "")+" waves-effect waves-teal")
+        li.bold(class=(page == "Buttons" || page == "Floating Action Button" || page == "Navbar" || page == "Cards" || page == "Preloader" || page == "Pagination" || page == "Collections" || page == "Badges" || page == "Breadcrumbs" || page == "Footer" || page == "Icons" ? "active" : ""))
+          a.collapsible-header(class="waves-effect waves-teal")
             | Components
           .collapsible-body
             ul
@@ -68,14 +78,12 @@ header
                 a(href='breadcrumbs.html') Breadcrumbs
               li(class=(page == "Cards" ? "active" : ""))
                 a(href='cards.html') Cards
-              li(class=(page == "Chips" ? "active" : ""))
-                a(href='chips.html') Chips
               li(class=(page == "Collections" ? "active" : ""))
                 a(href='collections.html') Collections
+              li(class=(page == "Floating Action Button" ? "active" : ""))
+                a(href='floating-action-button.html') Floating Action Button
               li(class=(page == "Footer" ? "active" : ""))
                 a(href='footer.html') Footer
-              li(class=(page == "Forms" ? "active" : ""))
-                a(href='forms.html') Forms
               li(class=(page == "Icons" ? "active" : ""))
                 a(href='icons.html') Icons
               li(class=(page == "Navbar" ? "active" : ""))
@@ -84,17 +92,17 @@ header
                 a(href='pagination.html') Pagination
               li(class=(page == "Preloader" ? "active" : ""))
                 a(href='preloader.html') Preloader
-        li.bold
-          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "FeatureDiscovery" || page == "Tabs" || page == "ScrollFire" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Transitions" || page == "Parallax" || page == "Collapsible" ? "active" : "" || page == "Carousel" ? "active" : "")+" waves-effect waves-teal")
+        li.bold(class=(page == "Auto Init" || page == "Tooltips" || page == "Toasts" || page == "Modals" || page == "Dropdown" || page == "FeatureDiscovery" || page == "Tabs" || page == "Scrollspy" || page == "Sidenav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Parallax" || page == "Collapsible" || page == "Carousel" ? "active" : ""))
+          a.collapsible-header(class="waves-effect waves-teal")
             | JavaScript
           .collapsible-body
             ul
+              li(class=(page == "Auto Init" ? "active" : ""))
+                a(href='auto-init.html') Auto Init
               li(class=(page == "Carousel" ? "active" : ""))
                 a(href='carousel.html') Carousel
               li(class=(page == "Collapsible" ? "active" : ""))
                 a(href='collapsible.html') Collapsible
-              li(class=(page == "Dialogs" ? "active" : ""))
-                a(href='dialogs.html') Dialogs
               li(class=(page == "Dropdown" ? "active" : ""))
                 a(href='dropdown.html') Dropdown
               li(class=(page == "FeatureDiscovery" ? "active" : ""))
@@ -107,18 +115,41 @@ header
                 a(href='parallax.html') Parallax
               li(class=(page == "Pushpin" ? "active" : ""))
                 a(href='pushpin.html') Pushpin
-              li(class=(page == "ScrollFire" ? "active" : ""))
-                a(href='scrollfire.html') ScrollFire
               li(class=(page == "Scrollspy" ? "active" : ""))
                 a(href='scrollspy.html') Scrollspy
-              li(class=(page == "SideNav" ? "active" : ""))
-                a(href='side-nav.html') SideNav
+              li(class=(page == "Sidenav" ? "active" : ""))
+                a(href='sidenav.html') Sidenav
               li(class=(page == "Tabs" ? "active" : ""))
                 a(href='tabs.html') Tabs
-              li(class=(page == "Transitions" ? "active" : ""))
-                a(href='transitions.html') Transitions
+              li(class=(page == "Toasts" ? "active" : ""))
+                a(href='toasts.html') Toasts
+              li(class=(page == "Tooltips" ? "active" : ""))
+                a(href='tooltips.html') Tooltips
               li(class=(page == "Waves" ? "active" : ""))
                 a(href='waves.html') Waves
+        li.bold(class=(page == "Autocomplete" || page == "Checkboxes" || page == "Chips" || page == "Pickers" || page == "Radio Buttons" || page == "Range" || page == "Select" || page == "Switches" || page == "Text Inputs" ? "active" : ""))
+          a.collapsible-header(class="waves-effect waves-teal")
+            | Forms
+          .collapsible-body
+            ul
+              li(class=(page == "Autocomplete" ? "active" : ""))
+                a(href='autocomplete.html') Autocomplete
+              li(class=(page == "Checkboxes" ? "active" : ""))
+                a(href='checkboxes.html') Checkboxes
+              li(class=(page == "Chips" ? "active" : ""))
+                a(href='chips.html') Chips
+              li(class=(page == "Pickers" ? "active" : ""))
+                a(href='pickers.html') Pickers
+              li(class=(page == "Radio Buttons" ? "active" : ""))
+                a(href='radio-buttons.html') Radio Buttons
+              li(class=(page == "Range" ? "active" : ""))
+                a(href='range.html') Range
+              li(class=(page == "Select" ? "active" : ""))
+                a(href='select.html') Select
+              li(class=(page == "Switches" ? "active" : ""))
+                a(href='switches.html') Switches
+              li(class=(page == "Text Inputs" ? "active" : ""))
+                a(href='text-inputs.html') Text Inputs
 
     li.bold(class=(page == "Mobile" ? "active" : ""))
       a.waves-effect.waves-teal(href='mobile.html') Mobile

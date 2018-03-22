@@ -1,23 +1,23 @@
 $border-color: rgba(0,0,0,.14);
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 /***************
   HTML Styles
 ***************/
 body {
-  background-color: #fcfcfc;
+  //background-color: #fcfcfc;
+  color: $off-black;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
 p.box {
   padding: 20px;
 }
 p {
-  color: rgba(0, 0, 0, 0.71);
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-}
 
-h1,h2,h3,h4,h5,h6 {
-  -webkit-font-smoothing: antialiased;
 }
 
 h5 > span {
@@ -30,11 +30,15 @@ nav {
   // background-color: color("materialize-red", "lighten-2");
 
   a {
-    -webkit-font-smoothing: antialiased;
+    color: rgba(0,0,0,.87);
   }
   ul li a:hover, ul li.active {
     background-color: color("materialize-red", "lighten-1");
   }
+}
+
+td, th {
+  padding: 15px 10px;
 }
 
 .header {
@@ -42,16 +46,16 @@ nav {
   font-weight: 300;
 }
 
-.caption {
-  font-size: 1.25rem;
-  font-weight: 300;
-  margin-bottom: 30px;
-}
-
 .preview {
   background-color: #FFF;
   border: 1px solid #eee;
   padding: 20px 20px;
+}
+
+.method-header {
+  font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
+  margin-top: 15px;
+  padding-top: 30px;
 }
 
 header, main, footer {
@@ -114,25 +118,32 @@ footer.example {
 ********************/
 
 // custom styled sidebar
-ul.side-nav.fixed li.logo {
+ul.sidenav.sidenav-fixed li.logo {
   text-align: center;
   margin-top: 32px;
-  margin-bottom: 80px;
+  margin-bottom: 136px;
 
   &:hover,
   #logo-container:hover {
     background-color: transparent;
   }
 }
-ul.side-nav.fixed {
+ul.sidenav.sidenav-fixed {
   overflow: hidden;
+  box-shadow: none;
+  border-right: 1px solid $border-color;
   padding-bottom: 164px;
+
+  > li:last-child {
+      padding-bottom: 160px;
+    }
+
 
   li {
     line-height: 44px;
 
     &.active {
-      background-color: rgba(0,0,0,.05);
+      background-color: rgba(50,50,50,.06);
     }
 
     a {
@@ -175,6 +186,10 @@ ul.side-nav.fixed {
   margin-bottom: 32px;
 }
 
+.current-version-number {
+  color: rgba(0,0,0,0.53);
+}
+
 .patreon-ad {
   display: none;
   position: fixed;
@@ -193,6 +208,12 @@ ul.side-nav.fixed {
   }
 }
 .patreon-footer-ad {
+  &.white-ad {
+    background-color: #444;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
+
   &:last-child {
     margin-right: 0;
   }
@@ -234,13 +255,15 @@ ul.side-nav.fixed {
 nav.top-nav {
   height: 110px;
   box-shadow: none;
+  border-bottom: 1px solid $border-color;
+  background-color: transparent;
 
-  a.page-title {
-    line-height: 110px;
-    font-size: 48px;
+  h1.header {
+    margin: 0;
+    padding-top: 26px;
   }
 }
-a.button-collapse.top-nav {
+a.sidenav-trigger.top-nav {
   position: absolute;
   text-align: center;
   height: 48px;
@@ -248,8 +271,8 @@ a.button-collapse.top-nav {
   left: 7.5%;
   top: 55px;
   float: none;
-  margin-left: -8px;
-  color: #fff;
+  margin-left: 1.5rem;
+  color: color("materialize-red", "lighten-3");
   font-size: 36px;
   z-index: 2;
 
@@ -263,9 +286,12 @@ a.button-collapse.top-nav {
 }
 
 @media #{$small-and-down} {
-
-  a.button-collapse.top-nav {
+  a.sidenav-trigger.top-nav {
     left: 5%;
+  }
+
+  ul.sidenav.sidenav-fixed {
+    border: 0;
   }
 }
 
@@ -279,9 +305,13 @@ a.button-collapse.top-nav {
   }
 }
 
-@media #{$large-and-up} {
-  .container {
-    width: 85%;
+@media #{$medium-and-up} {
+  main > .container,
+  body > .page-footer > .container,
+  .top-nav > .container,
+  #index-banner > .container,
+  .github-commit > .container {
+    width: 100%;
   }
 }
 
@@ -293,7 +323,7 @@ a.button-collapse.top-nav {
 }
 
 @media only screen and (max-width: 992px) {
-  #front-page-nav ul.side-nav {
+  #front-page-nav ul.sidenav {
     li {
       float: none;
       padding: 0 15px;
@@ -315,15 +345,18 @@ a.button-collapse.top-nav {
 }
 
 #index-banner {
-  background-color: color("materialize-red", "lighten-2");
+  border-bottom: 1px solid $border-color;
+
   .container {
     position: relative;
   }
   .header {
-    color: #FFF;
+    // color: #FFF;
   }
   h4 {
     margin-bottom: 40px;
+    line-height: 44px;
+    color: rgba(0,0,0,.7);
   }
   h1 {
     margin-top: 16px;
@@ -349,12 +382,16 @@ a.button-collapse.top-nav {
 
 // Latest commit widget
 .github-commit {
+  color: rgba(0,0,0,0.53);
+  border-top: 1px solid $border-color;
   padding: 14px 0;
   height: 64px;
   line-height: 36px;
-  background-color: #5c5757;
-  color: hsl(0, 0%, 90%);
   font-size: .9rem;
+
+  .sha {
+    margin: 0 6px 0 6px;
+  }
 }
 @media #{$medium-and-down} {
   .github-commit {
@@ -362,21 +399,8 @@ a.button-collapse.top-nav {
   }
 }
 
-#github-button {
-  background-color: #6f6d6d;
-  transition: .25s ease;
-  &:hover {
-    background-color: #797777;
-  }
-}
-
-.sha {
-  color: hsl(0, 0%, 94%) ;
- margin: 0 6px 0 6px;
-}
-
 #download-button {
-  background-color: color("materialize-red", "lighten-3");
+  background-color: color("materialize-red", "lighten-2");
   width: 260px;
   height: 70px;
   line-height: 70px;
@@ -565,10 +589,11 @@ $height: auto;
     height: 55px;
     width: 100%;
     padding: 0 15px;
-    line-height: 55px;
     font-weight: 500;
     font-size: 12px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     box-sizing: border-box;
   }
   .col {
@@ -625,6 +650,12 @@ $height: auto;
 }
 
 
+// Tables
+thead {
+  color: rgba(0, 0, 0, .6);
+}
+
+
 // Shadow demo styling
 .shadow-demo {
   background-color: color("teal", "lighten-1");
@@ -655,7 +686,17 @@ $height: auto;
 ul.table-of-contents {
   margin-top: 0;
   padding-top: 48px;
+
+  a {
+    &.active {
+      color: rgba(0,0,0,.8);
+    }
+    color: rgba(0,0,0,.55);
+    font-weight: 400;
+  }
 }
+
+
 
 // Prism Styling
 code, pre {
@@ -671,6 +712,8 @@ code, pre {
   padding: .1em .25em;
   border: solid 1px rgba(51,51,51,0.12);
 }
+
+// Styles code blocks
 pre[class*="language-"] {
   &:before {
     position: absolute;
@@ -678,7 +721,7 @@ pre[class*="language-"] {
     background: hsl(30, 10%, 90%);
     top: 0;
     left: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: $font-stack;
     -webkit-font-smoothing: antialiased;
     color: #555;
     content:attr(class);
@@ -689,6 +732,17 @@ pre[class*="language-"] {
   }
   padding: 25px 12px 7px 12px;
   border: solid 1px rgba(51, 51, 51, 0.12);
+  background: rgba(246, 246, 246, .2);
+}
+
+pre[class*="language-"],
+code[class*="language-"] {
+  line-height: 1.3;
+}
+
+// Styles one-liners
+:not(pre) > code[class*="language-"] {
+  background: rgba(246, 246, 246, .3);
 }
 
 
@@ -756,8 +810,8 @@ pre[class*="language-"] {
 .buysellads-header #carbonads {
   & > span,
   span.carbon-wrap { height: auto; }
-  a.carbon-text { color: #fff; }
-  a.carbon-poweredby { color: rgba(255,255,255,.8); }
+  // a.carbon-text { color: #fff; }
+  // a.carbon-poweredby { color: rgba(255,255,255,.8); }
 }
 
 
@@ -768,7 +822,7 @@ pre[class*="language-"] {
   padding: 1em;
   max-width: 360px;
   border-radius: 2px;
-  background-color: hsla(0, 0%, 100%, .13);
+  border: 1px solid $border-color;
 
 
   span {
@@ -965,6 +1019,17 @@ footer{
 body.parallax-demo footer {
   margin-top: 0;
 }
+.docs-footer {
+  margin-top: 40px;
+  background-color: transparent;
+  border-top: 1px solid $border-color;
+  color: inherit;
+
+  .footer-copyright {
+    color: inherit;
+    background-color: transparent;
+  }
+}
 
 //About page styling
 .image-container {
@@ -1085,6 +1150,45 @@ body.parallax-demo footer {
   width: 300px !important;
 }
 
+// Version dropdown
+#nav-mobile li.version {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  font-family: "Inconsolata";
+  text-align: center;
+
+  .dropdown-trigger {
+    font-family: "Inconsolata";
+    margin: 0 auto;
+    display: inline-block;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+
+    .caret {
+      position: relative;
+      top: 10px;
+      fill: rgba(0,0,0,.6);
+    }
+  }
+}
+
+#version-dropdown {
+  text-align: left;
+
+  li > a {
+    padding: 0 10px;
+
+  }
+
+  a {
+    height: 50px;
+    line-height: 50px;
+  }
+
+}
+
 // Search
 #nav-mobile li.search {
   &:hover { background-color: #fff; }
@@ -1092,15 +1196,19 @@ body.parallax-demo footer {
   position: absolute;
   left: 0;
   right: 0;
-  top: 120px;
+  top: 160px;
   margin-top: 1px;
   padding: 1px 0 0 0;
   z-index: 2;
 
   .search-wrapper {
-    &.focused { margin: 0; }
+    &.focused .search-results:not(:empty) {
+      border-bottom: 1px solid $border-color;
+    }
 
-    margin: 0 12px;
+    color: #777;
+    margin-top: -1px;
+    border-top: 1px solid $border-color;
     transition: margin .25s ease;
 
     input#search {
@@ -1109,20 +1217,21 @@ body.parallax-demo footer {
         box-shadow: none;
       }
 
+      color: #777;
       display: block;
       font-size: 16px;
       font-weight: 300;
       width: 100%;
-      height: 45px;
+      height: 62px;
       margin: 0;
       box-sizing: border-box;
-      padding: 0 45px 0 15px;
+      padding: 0 45px 0 30px;
       border: 0;
     }
 
     i.material-icons {
       position: absolute;
-      top: 10px;
+      top: 21px;
       right: 10px;
       cursor: pointer;
     }
@@ -1131,7 +1240,7 @@ body.parallax-demo footer {
 
   .search-results {
     margin: 0;
-    border-top: 1px solid #e9e9e9;
+    border-top: 1px solid $border-color;
     background-color: #fff;
 
     a {

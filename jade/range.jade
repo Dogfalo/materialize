@@ -1,0 +1,30 @@
+- var no_nav = false
+- var page = "Range"
+
+doctype html
+html(lang="en")
+  head
+    include _head.jade
+    link(href='/extras/noUiSlider/nouislider.css', rel='stylesheet')
+  body
+    include _navbar.jade
+    main
+      include page-contents/range_content.html
+    include _footer.html
+    include _scripts.html
+    script(src="/extras/noUiSlider/nouislider.js")
+    script(type='text/javascript').
+      var slider = document.getElementById('range-input');
+      noUiSlider.create(slider, {
+       start: [20, 80],
+       connect: true,
+       step: 1,
+       orientation: 'horizontal',
+       range: {
+         'min': 0,
+         'max': 100
+       },
+       format: wNumb({
+         decimals: 0
+       })
+      });

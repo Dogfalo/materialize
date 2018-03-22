@@ -1,0 +1,18 @@
+- var no_nav = false
+- var page = "Toasts"
+
+doctype html
+html(lang="en")
+  head
+    include _head.jade
+  body
+    include _navbar.jade
+    main
+      include page-contents/toasts_content.html
+    include _footer.html
+    include _scripts.html
+  script(type='text/javascript').
+    var displayCustomHTMLToast = function () {
+      var toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+      M.toast({html: toastHTML});
+    }

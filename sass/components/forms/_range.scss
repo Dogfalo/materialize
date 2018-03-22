@@ -60,31 +60,42 @@ input[type=range] + .thumb {
   }
 }
 
+// Shared
+@mixin range-track {
+  height: $track-height;
+  background: #c2c0c2;
+  border: none;
+}
+
+@mixin range-thumb {
+  border: none;
+  height: $range-height;
+  width: $range-width;
+  border-radius: 50%;
+  background: $radio-fill-color;
+  transition: box-shadow .3s;
+}
+
 // WebKit
 input[type=range] {
   -webkit-appearance: none;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-  height: $track-height;
-  background: #c2c0c2;
-  border: none;
+  @include range-track;
 }
 
 input[type=range]::-webkit-slider-thumb {
+  @include range-thumb;
   -webkit-appearance: none;
-  border: none;
-  height: $range-height;
-  width: $range-width;
-  border-radius: 50%;
   background-color: $radio-fill-color;
   transform-origin: 50% 50%;
   margin: -5px 0 0 0;
-  transition: .3s;
+
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #ccc;
+input[type=range].focused:focus:not(.active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
 }
 
 // FireFox
@@ -96,17 +107,15 @@ input[type=range] {
 }
 
 input[type=range]::-moz-range-track {
-  height: $track-height;
-  background: #ddd;
-  border: none;
+  @include range-track;
+}
+
+input[type=range]::-moz-focus-inner {
+  border: 0;
 }
 
 input[type=range]::-moz-range-thumb {
-  border: none;
-  height: $range-height;
-  width: $range-width;
-  border-radius: 50%;
-  background: $radio-fill-color;
+  @include range-thumb;
   margin-top: -5px;
 }
 
@@ -116,8 +125,8 @@ input[type=range]:-moz-focusring {
   outline-offset: -1px;
 }
 
-input[type=range]:focus::-moz-range-track {
-  background: #ccc;
+input[type=range].focused:focus:not(.active)::-moz-range-thumb {
+  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
 }
 
 // IE 10+
@@ -144,17 +153,9 @@ input[type=range]::-ms-fill-upper {
 }
 
 input[type=range]::-ms-thumb {
-  border: none;
-  height: $range-height;
-  width: $range-width;
-  border-radius: 50%;
-  background: $radio-fill-color;
+  @include range-thumb;
 }
 
-input[type=range]:focus::-ms-fill-lower {
-  background: #888;
-}
-
-input[type=range]:focus::-ms-fill-upper {
-  background: #ccc;
+input[type=range].focused:focus:not(.active)::-ms-thumb {
+  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
 }

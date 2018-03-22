@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col s12 m9 l10">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <!--  Introduction Section  -->
       <div id="introduction" class="scrollspy section">
-        <h4>Introduction</h4>
         <p class="caption">Our Carousel is a robust and versatile component that can be an image slider, to an item carousel, to an onboarding experience. It is touch enabled making it especially smooth to use on mobile.</p>
          <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p><br>
 
@@ -28,79 +27,199 @@
     </div>
 
     <!--  Options Section  -->
-    <div id="options" class="scrollspy section">
-      <h4>jQuery Initialization</h4>
-       <pre><code class="language-javascript">
-    $(document).ready(function(){
-      $('.carousel').carousel();
-    });
-        </code></pre>
-        <br>
+    <div id="initialization" class="scrollspy section">
+      <h3 class="header">Initialization</h3>
+      <pre><code class="language-javascript">
+  var elem = document.querySelector('.carousel');
+  var instance = M.Carousel.init(elem, options);
 
-        <h4>jQuery Plugin Options</h4>
-        <table class="highlight">
-          <thead>
-            <tr>
-                <th>Option Name</th>
-                <th>Description</th>
-            </tr>
-          </thead>
+  // Or with jQuery
 
-          <tbody>
-            <tr>
-              <td>duration</td>
-              <td>Transition duration in milliseconds. (Default: 200)</td>
-            </tr>
-            <tr>
-              <td>dist</td>
-              <td>Perspective zoom. If 0, all items are the same size. (Default: -100)</td>
-            </tr>
-            <tr>
-              <td>shift</td>
-              <td>Set the spacing of the center item. (Default: 0)</td>
-            </tr>
-            <tr>
-              <td>padding</td>
-              <td>Set the padding between non center items. (Default: 0)</td>
-            </tr>
-            <tr>
-              <td>fullWidth</td>
-              <td>Make the carousel a full width slider like the second example. (Default: false)</td>
-            </tr>
-            <tr>
-              <td>indicators</td>
-              <td>Set to true to show indicators. (Default: false)</td>
-            </tr>
-            <tr>
-              <td>noWrap</td>
-              <td>Don't wrap around and cycle through items. (Default: false)</td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-
-      <h4>jQuery Plugin Methods</h4>
-      <p>We have methods to pause, start, move to next and move to previous slide.</p>
-      <pre><code class="language-javascript col s12">
-// Next slide
-$('.carousel').carousel('next');
-$('.carousel').carousel('next', 3); // Move next n times.
-
-// Previous slide
-$('.carousel').carousel('prev');
-$('.carousel').carousel('prev', 4); // Move prev n times.
-
-// Set to nth slide
-$('.carousel').carousel('set', 4);
-
-// Destroy carousel
-$('.carousel').carousel('destroy');
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
       </code></pre>
-      </div>
+      <br>
+    </div>
+
+    <div id="options" class="scrollspy section">
+      <h3 class="header">Options</h3>
+      <table class="striped">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>duration</td>
+            <td>Number</td>
+            <td>200</td>
+            <td>Transition duration in milliseconds.</td>
+          </tr>
+          <tr>
+            <td>dist</td>
+            <td>Number</td>
+            <td>-100</td>
+            <td>Perspective zoom. If 0, all items are the same size.</td>
+          </tr>
+          <tr>
+            <td>shift</td>
+            <td>Number</td>
+            <td>0</td>
+            <td>Set the spacing of the center item.</td>
+          </tr>
+          <tr>
+            <td>padding</td>
+            <td>Number</td>
+            <td>0</td>
+            <td>Set the padding between non center items.</td>
+          </tr>
+          <tr>
+            <td>numVisible</td>
+            <td>Number</td>
+            <td>5</td>
+            <td>Set the number of visible items.</td>
+          </tr>
+          <tr>
+            <td>fullWidth</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Make the carousel a full width slider like the second example.</td>
+          </tr>
+          <tr>
+            <td>indicators</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Set to true to show indicators.</td>
+          </tr>
+          <tr>
+            <td>noWrap</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Don't wrap around and cycle through items.</td>
+          </tr>
+          <tr>
+            <td>onCycleTo</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>Callback for when a new slide is cycled to.</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+    </div>
+
+    <div id="methods" class="scrollspy section">
+      <h3 class="header">Methods</h3>
+      <blockquote>
+        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+        <pre><code class="language-javascript col s12">
+  var instance = M.Carousel.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.carousel').carousel('methodName');
+    $('.carousel').carousel('methodName', paramName);
+  */
+        </code></pre>
+      </blockquote>
+      <h5 class="method-header">
+  .next();
+      </h5>
+      <p>Move carousel to next slide or go forward a given amount of slides.</p>
+      <h6>Arguments</h6>
+      <p><b>Integer (optional):</b> How many times the carousel slides.</p>
+      <pre><code class="language-javascript col s12">
+instance.next();
+instance.next(3); // Move next n times.
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .prev();
+      </h5>
+      <p>Move carousel to previous slide or go back a given amount of slides.</p>
+      <h6>Arguments</h6>
+      <p><b>Integer (optional):</b> How many times the carousel slides.</p>
+      <pre><code class="language-javascript col s12">
+instance.prev();
+instance.prev(3); // Move previous n times.
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .set();
+      </h5>
+      <p>Move carousel to nth slide</p>
+      <h6>Arguments</h6>
+      <p><b>Integer:</b> Index of slide.</p>
+      <pre><code class="language-javascript col s12">
+instance.set();
+instance.set(3); // Set to nth slide.
+      </code></pre>
+      <br>
+
+      <h5 class="method-header">
+  .destroy();
+      </h5>
+      <p>Destroy plugin instance and teardown</p>
+      <pre><code class="language-javascript col s12">
+instance.destroy();
+      </code></pre>
+    </div>
+
+    <div id="properties" class="scrollspy section">
+      <h3 class="header">Properties</h3>
+      <table class="striped">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>el</td>
+            <td>Element</td>
+            <td>The DOM element the plugin was initialized with.</td>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td>Object</td>
+            <td>The options the instance was initialized with.</td>
+          </tr>
+          <tr>
+            <td>pressed</td>
+            <td>Boolean</td>
+            <td>If the carousel is being clicked or tapped.</td>
+          </tr>
+          <tr>
+            <td>dragged</td>
+            <td>Boolean</td>
+            <td>If the carousel is currently being dragged.</td>
+          </tr>
+          <tr>
+            <td>center</td>
+            <td>Number</td>
+            <td>The index of the center carousel item.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
 
       <!--  Slider Section  -->
       <div id="slider" class="scrollspy section">
-        <h4>Full Width Slider</h4>
+        <h3 class="header">Full Width Slider</h3>
         <p class="caption">Our carousel has a full width option that makes it into a simple and elegant image carousel. You can also have indicators that show up on the bottom of the slider. </p>
         <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p><br>
 
@@ -121,18 +240,26 @@ $('.carousel').carousel('destroy');
         </code></pre>
 
         <pre><code class="language-javascript">
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  var instance = M.Carousel.init({
+    fullWidth: true
+  });
+
+  // Or with jQuery
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true
+  });
         </code></pre>
       </div>
 
       <!-- Special Options Section  -->
       <div id="special" class="scrollspy section">
-        <h4>Special Options</h4>
+        <h3 class="header">Special Options</h3>
         <p class="caption">The carousel doesn't only support images but also allows you to make content carousels. You can add fixed items to your carousel by adding a div with the class <code class="language-markup">carousel-fixed-item</code> and adding your fixed content in there.</p>
         <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
         <br>
 
-        <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel carousel-slider center">
           <div class="carousel-fixed-item center">
             <a class="btn waves-effect white grey-text darken-text-2">button</a>
           </div>
@@ -154,7 +281,7 @@ $('.carousel').carousel('destroy');
           </div>
         </div><br>
         <pre><code class="language-markup">
-  &lt;div class="carousel carousel-slider center" data-indicators="true">
+  &lt;div class="carousel carousel-slider center">
     &lt;div class="carousel-fixed-item center">
       &lt;a class="btn waves-effect white grey-text darken-text-2">button&lt;/a>
     &lt;/div>
@@ -177,7 +304,17 @@ $('.carousel').carousel('destroy');
   &lt;/div>
         </code></pre>
         <pre><code class="language-javascript">
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  var instance = M.Carousel.init({
+    fullWidth: true,
+    indicators: true
+  });
+
+  // Or with jQuery
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+  });
         </code></pre>
       </div>
 
@@ -187,7 +324,7 @@ $('.carousel').carousel('destroy');
 
 
     <!-- Table of Contents -->
-    <div class="col hide-on-small-only m3 l2">
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
@@ -196,7 +333,10 @@ $('.carousel').carousel('destroy');
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#initialization">Initialization</a></li>
             <li><a href="#options">Options</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#properties">Properties</a></li>
             <li><a href="#slider">Full Width Slider</a></li>
             <li><a href="#special">Special Options</a></li>
           </ul>

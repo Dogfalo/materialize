@@ -34,12 +34,10 @@ describe("Autocomplete Plugin", function () {
             "Google": 'http://placehold.it/250x250'
           }
         });
-        
+
         var $autocompleteEl = $parent.find('.autocomplete-content');
-        var autocompleteEvents = $._data($normal[0], 'events');
-        
+
         expect($autocompleteEl.length).toEqual(1, 'Should dynamically generate autocomplete structure.');
-        expect(autocompleteEvents.keyup.length).toEqual(1, 'Should only bind 1 keyup handler on input');
         done();
       }, 400);
     });

@@ -11,7 +11,7 @@
   </head>
   <body>
     <h3>Carousel within collapsible</h3>
-    <ul class="collapsible" data-collapsible="accordion">
+    <ul class="collapsible">
       <li>
         <div class="collapsible-header active"><i class="material-icons">filter_drama</i>First</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
@@ -66,15 +66,10 @@
     $( document ).ready(function() {
 
       $('.collapsible').collapsible({
-        onOpen: function(el) {
+        onOpenEnd: function(el) {
           console.log("OPEN", el);
-          var carousel = el.find('.carousel');
-          if (carousel.length) {
-            carousel.trigger('carouselNext', [0.000001]);
-          }
-        },
-        onClose: function(el) {
-          console.log("CLOSE", el);
+          var carousel = $(el).find('.carousel');
+          carousel.carousel();
         }
       });
 
@@ -84,8 +79,8 @@
         }
       });
 
-      $('.carousel.carousel-slider').carousel({fullWidth : true});
       $('.carousel').carousel();
+      $('.carousel.carousel-slider').carousel({fullWidth : true});
 
     });
 

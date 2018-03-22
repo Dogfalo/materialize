@@ -1,11 +1,11 @@
 <div class="section" id="index-banner">
   <div class="container">
-    <div class="row">
-      <div class="col s12 m9">
-        <h1 class="header center-on-small-only">Getting Started</h1>
-        <h4 class ="light red-text text-lighten-4 center-on-small-only">Learn how to easily start using Materialize in your website.</h4>
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+        <h1 class="header">Getting Started</h1>
+        <h4 class="light">Learn how to easily start using Materialize in your website.</h4>
       </div>
-      <div class="col s12 m3">
+      <div class="col s12 m3 xl3 offset-xl1">
         <!-- BuySellAds Zone Code -->
         <div class="buysellads-header center-on-small-only">
           <!-- CarbonAds Zone Code -->
@@ -21,53 +21,56 @@
   <!--  Outer row  -->
   <div class="row">
 
-    <div class="section col s12 m9 l10">
-      <div id="download" class="row scrollspy">
-          <h2 class="col s12 header">Download</h2>
-        <p class="caption col s12">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using Materialize, all you have to do is download one of the options below.</p>
+    <div class="section col s12 m8 offset-m1 xl7 offset-xl1">
+      <div id="download" class="section scrollspy">
+        <div class="row">
+          <div class="col s12">
+            <h3 class="header">Download</h3>
+            <p class="caption ">Materialize comes in two different forms. You can select which version you want depending on your preference and expertise. To start using Materialize, all you have to do is download one of the options below.</p>
+          </div>
+          <div class="col s12 m6">
+            <h5>Materialize</h5>
+            <p>This is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option requires little to no setup. Use this if you are unfamiliar with Sass.</p>
+            <a id="download-source" class="btn waves-effect waves-light" href="https://github.com/Dogfalo/materialize/releases/download/1.0.0-beta/materialize-v1.0.0-beta.zip">Materialize<i class="material-icons right">file_download</i></a>
+          </div>
+          <div class="col s12 m6">
+            <h5>Sass</h5>
+            <p>This version contains the source SCSS files. By choosing this version you have more control over which components to include. You will need a Sass compiler if you choose this option.</p>
+            <a id="download-sass" class="btn waves-effect waves-light" href="https://github.com/Dogfalo/materialize/releases/download/1.0.0-beta/materialize-src-v1.0.0-beta.zip">Source<i class="material-icons right">file_download</i></a>
+          </div>
+          <div class="col s12">
+            <br>
+            <h5>CDN</h5>
+            <p>You can find all the versions of the CDN at <a href="https://cdnjs.com/libraries/materialize">cdnjs</a>.</p>
+            <pre><code class="language-markup">
+    &lt;!-- Compiled and minified CSS -->
+    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
-        <div class="col s12 m6">
-          <p class="promo-caption">Materialize</p>
-          <p>This is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option requires little to no setup. Use this if you are unfamiliar with Sass.</p>
-          <a id="download-source" class="btn waves-effect waves-light" href="https://github.com/Dogfalo/materialize/releases/download/v0.100.2/materialize-v0.100.2.zip">Materialize<i class="material-icons right">file_download</i></a>
-        </div>
-        <div class="col s12 m6">
-          <p class="promo-caption">Sass</p>
-          <p>This version contains the source SCSS files. By choosing this version you have more control over which components to include. You will need a Sass compiler if you choose this option.</p>
-          <a id="download-sass" class="btn waves-effect waves-light" href="https://github.com/Dogfalo/materialize/releases/download/v0.100.2/materialize-src-v0.100.2.zip">Source<i class="material-icons right">file_download</i></a>
-        </div>
-        <div class="col s12">
-          <br>
-          <p class="promo-caption">CDN</p>
-          <p>You can find all the versions of the CDN at <a href="https://cdnjs.com/libraries/materialize">cdnjs</a>.</p>
-          <pre><code class="language-markup">
-  &lt;!-- Compiled and minified CSS -->
-  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-  &lt;!-- Compiled and minified JavaScript -->
-  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">&lt;/script>
-          </code></pre>
-        </div>
-        <div class="col s12">
-          <br>
-          <p class="promo-caption">NPM</p>
-          <p>You can also get the latest release using NPM. This release contains source files as well as the compiled CSS and JavaScript files.</p>
-          <pre><code class="language-bash">
-  npm install materialize-css
-          </code></pre>
-        </div>
-        <div class="col s12">
-          <br>
-          <p class="promo-caption">Bower</p>
-          <p>You can also get the latest release using bower. This release contains source files as well as the compiled CSS and JavaScript files.</p>
-          <pre><code class="language-bash">
-  bower install materialize
-          </code></pre>
+    &lt;!-- Compiled and minified JavaScript -->
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js">&lt;/script>
+            </code></pre>
+          </div>
+          <div class="col s12">
+            <br>
+            <h5>NPM</h5>
+            <p>You can also get the latest release using NPM. This release contains source files as well as the compiled CSS and JavaScript files.</p>
+            <pre><code class="language-bash">
+    npm install materialize-css@next
+            </code></pre>
+          </div>
+          <div class="col s12">
+            <br>
+            <h5>Bower</h5>
+            <p>You can also get the latest release using bower. This release contains source files as well as the compiled CSS and JavaScript files. <strong>(<a href="//bower.io/blog/2017/how-to-migrate-away-from-bower/">bower is deprecated</a>.)</strong></p>
+            <pre><code class="language-bash">
+    bower install materialize
+            </code></pre>
+          </div>
         </div>
       </div>
 
       <div id="download-thanks" class="row">
-        <h2 class="col s12 header">Thanks for Downloading!</h2>
+        <h3 class="col s12 header">Thanks for Downloading!</h3>
         <p class="caption col s12">We hope you find Materialize useful in your next project. We would appreciate if you helped us spread the word about Materialize on our Social Media. Also if you want to support the development, you can donate to us.</p>
         <div class="row">
           <div class="col l3 s12 center">
@@ -97,8 +100,8 @@
 
       <div id="setup" class="row scrollspy">
         <div class="col s12">
-          <h2 class="header">Setup</h2>
-          <h4 >Project Structure</h4>
+          <h3 class="header">Setup</h3>
+          <h5>Project Structure</h5>
           <p>After downloading, extract the files into the directory where your website is located. Your directory will look something like this.</p>
           <p>You'll notice that there are two sets of the files. The <code class="language-markup">min</code> means that the file is "compressed" to reduce load times. These minified files are usually used in production while it is better to use the unminified files during development.</p>
 
@@ -117,9 +120,8 @@
           </code></pre>
         </div>
       <div class="col s12">
-        <h4>HTML Setup</h4>
+        <h5>HTML Setup</h5>
         <p>Next you just have to make sure you link the files properly in your webpage. Generally it is wise to import javascript files at the end of the body to reduce page load time. Follow the example below on how to import Materialize into your webpage.</p>
-        <p> One last thing to note is that you have to import jQuery before importing materialize.js!</p>
         <pre><code class="language-markup">
   &lt;!DOCTYPE html>
   &lt;html>
@@ -134,8 +136,8 @@
     &lt;/head>
 
     &lt;body>
-      &lt;!--Import jQuery before materialize.js-->
-      &lt;script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">&lt;/script>
+
+      &lt;!--JavaScript at end of body for optimized loading-->
       &lt;script type="text/javascript" src="js/materialize.min.js">&lt;/script>
     &lt;/body>
   &lt;/html>
@@ -143,24 +145,28 @@
       </div>
     </div>
 
-    <div id="templates" class="row scrollspy">
-      <h2 class="col s12 header">Templates</h2>
-      <p class="caption col s12">We have created some starter templates so you can easily start designing your website with minimal setup up time. Browse through our collection and download your best fit. </p>
+    <div id="templates" class="scrollspy">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="header">Templates</h3>
+          <p class="caption">We have created some starter templates so you can easily start designing your website with minimal setup up time. Browse through our collection and download your best fit. </p>
+        </div>
 
-      <div class="col s12 m6">
-        <p class="promo-caption">Starter Template</p>
-        <a href="templates/starter-template/preview.html"><img class="z-depth-1" style="width: 100%;" src="images/starter-template.gif"></a>
-        <p>This is the simplest starter page with a Header, Call-to-Action, and Icon Features. </p>
-        <a class="btn waves-effect waves-light" href="templates/starter-template/preview.html">Demo<i class="material-icons right">search</i></a>
-        <a class="btn waves-effect waves-light" href="templates/starter-template.zip">Download<i class="material-icons right">file_download</i></a>
-      </div>
+        <div class="col s12 m6">
+          <h5>Starter Template</h5>
+          <a href="templates/starter-template/preview.html"><img class="z-depth-1" style="width: 100%;" src="images/starter-template.gif"></a>
+          <p>This is the simplest starter page with a Header, Call-to-Action, and Icon Features. </p>
+          <a class="btn waves-effect waves-light" href="templates/starter-template/preview.html">Demo<i class="material-icons right">search</i></a>
+          <a class="btn waves-effect waves-light" href="templates/starter-template.zip">Download<i class="material-icons right">file_download</i></a>
+        </div>
 
-      <div class="col s12 m6">
-        <p class="promo-caption">Parallax Template</p>
-        <a href="templates/parallax-template/preview.html"><img class="z-depth-1" style="width: 100%;" src="images/parallax-template.jpg"></a>
-        <p>This is the simplest starter page with a Header, Call-to-Action, and Icon Features. </p>
-        <a class="btn waves-effect waves-light" href="templates/parallax-template/preview.html">Demo<i class="material-icons right">search</i></a>
-        <a class="btn waves-effect waves-light" href="templates/parallax-template.zip">Download<i class="material-icons right">file_download</i></a>
+        <div class="col s12 m6">
+          <h5>Parallax Template</h5>
+          <a href="templates/parallax-template/preview.html"><img class="z-depth-1" style="width: 100%;" src="images/parallax-template.jpg"></a>
+          <p>This is the simplest starter page with a Header, Call-to-Action, and Icon Features. </p>
+          <a class="btn waves-effect waves-light" href="templates/parallax-template/preview.html">Demo<i class="material-icons right">search</i></a>
+          <a class="btn waves-effect waves-light" href="templates/parallax-template.zip">Download<i class="material-icons right">file_download</i></a>
+        </div>
       </div>
     </div>
 
@@ -168,19 +174,19 @@
       <!-- Third Party Options -->
       <div id="third-party-options" class="row scrollspy">
         <div class="col s12">
-          <h2 class="header">Third-party Options</h2>
+          <h3 class="header">Third-party Options</h3>
           <p class="caption">There are a few community-made options for you to easily include Materialize in your project. Keep in mind these are untested and may be out-of-date.</p>
-          <p class="promo-caption">Ruby Gem</p>
+          <h5>Ruby Gem</h5>
           <p>See <a href="https://github.com/mkhairi/materialize-sass">here</a> for documentation on this gem.</p>
           <pre><code class="language-bash">
   gem 'materialize-sass'
           </code></pre>
-          <p class="promo-caption">Meteor Package</p>
+          <h5>Meteor Package</h5>
           <pre><code class="language-bash">
   meteor add fourseven:scss
   meteor add materialize:materialize
           </code></pre>
-          <p class="promo-caption">Ember Package</p>
+          <h5>Ember Package</h5>
           <pre><code class="language-bash">
   # install via npm
   $ npm install ember-cli-materialize --save-dev
@@ -193,18 +199,15 @@
 
     <div id="sass" class="row scrollspy">
       <div class="col s12">
-        <h2 class="header">Sass Setup</h2>
+        <h3 class="header">Sass Setup</h3>
         <p class="caption">This section is only relevant if you chose to download the Sass version of Materialize.</p>
-        <h4>Compiling Sass</h4>
+        <h5>Compiling Sass</h5>
         <p>Instead of having a css folder, you will find that the download instead contains many .scss files which contain the styles of individual components. Unfortunately, the browser cannot interpret Sass, so you must have your Sass compiler compile the scss/materialize.scss into a regular CSS file. At this point you can link this newly outputted file in your HTML page.</p>
 
         <pre><code class="language-markup directory-markup">
   MyWebsite/
   |--css/
   |  |--materialize.css &lt;-- compiled from scss/materialize.scss
-  |
-  |--fonts/
-  |  |--roboto/
   |
   |--js/
   |  |--materialize.js
@@ -220,7 +223,7 @@
 
     </div>
     <!-- Table of contents -->
-      <div class="col hide-on-small-only m3 l2">
+      <div class="col hide-on-small-only m3 xl3 offset-xl1">
         <div class="toc-wrapper">
           <div style="height: 1px;">
           <ul class="table-of-contents">

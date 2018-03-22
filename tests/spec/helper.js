@@ -15,4 +15,27 @@ beforeEach(function() {
 
     elem.dispatchEvent(evt);
   };
+
+  window.mouseenter = function(el) {
+    var ev = document.createEvent("MouseEvent");
+    ev.initMouseEvent(
+      "mouseenter",
+      true /* bubble */, true /* cancelable */,
+      window, null,
+      0, 0, 0, 0, /* coordinates */
+      false, false, false, false, /* modifier keys */
+      0 /*left*/, null
+    );
+    el.dispatchEvent(ev);
+  };
+
+  window.keydown = function(el, keycode) {
+    var ev = document.createEvent("Events");
+    ev.initEvent("keydown", true, true);
+
+    ev.keyCode = keycode;
+    ev.which = keycode;
+
+    el.dispatchEvent(ev);
+  }
 });

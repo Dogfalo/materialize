@@ -25,7 +25,7 @@ describe( 'Modal:', function() {
         expect(modal1.hasClass('open')).toEqual(true, 'Modal should have class open');
 
         // Check overlay is attached
-        var overlay = modal1.modal('getInstance').$overlay;
+        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
         var overlayInDOM = $.contains(document, overlay[0]);
         expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
@@ -52,7 +52,7 @@ describe( 'Modal:', function() {
         expect(modal1.hasClass('open')).toEqual(true, 'Modal should have class open');
 
         // Check overlay is attached
-        var overlay = modal1.modal('getInstance').$overlay;
+        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
         var overlayInDOM = $.contains(document, overlay[0]);
         expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
@@ -76,7 +76,7 @@ describe( 'Modal:', function() {
       click(trigger1[0]);
       setTimeout(function() {
         expect(modal1).toBeVisible('Modal should be shown');
-        var overlay = modal1.modal('getInstance').$overlay;
+        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
         var overlayInDOM = $.contains(document, overlay[0]);
         expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
@@ -95,10 +95,10 @@ describe( 'Modal:', function() {
       var readyTest = false;
       var completeTest = false;
       modal1.modal({
-        ready: function() {
+        onOpenStart: function() {
           readyTest = true;
         },
-        complete: function() {
+        onCloseStart: function() {
           completeTest = true;
         }
       });
@@ -111,7 +111,7 @@ describe( 'Modal:', function() {
         expect(readyTest).toEqual(true, 'callback fired');
         expect(completeTest).toEqual(false, 'callback not yet fired');
 
-        var overlay = modal1.modal('getInstance').$overlay;
+        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
         click(overlay[0]);
         setTimeout(function() {
           expect(readyTest).toEqual(true, 'callback fired');

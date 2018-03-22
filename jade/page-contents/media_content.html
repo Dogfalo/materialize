@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col s12 m9 l10">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
       <p class="caption">Media components include things that have to do with large media objects like Images, Video, Audio, etc.</p>
 
       <div id="materialbox" class="scrollspy section">
-        <h2 class="header">Material Box</h2>
+        <h3 class="header">Material Box</h3>
          <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged, Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
         <img class="materialboxed responsive-img" width="650" src="images/sample-1.jpg">
 
@@ -15,12 +15,161 @@
 
 
       <h4>Initialization</h4>
-       <p>Materialbox is intialized automatically. However, if you add images dynamically, you will have to add this initialization code.</p>
        <pre><code class="language-javascript">
+  var elem = document.querySelector('.materialboxed');
+  var instance = M.Materialbox.init(elem, options);
+
+  // Or with jQuery
+
   $(document).ready(function(){
     $('.materialboxed').materialbox();
   });
         </code></pre>
+        <br><br>
+
+        <h4>Options</h4>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>inDuration</td>
+              <td>Number</td>
+              <td>275</td>
+              <td>Transition in duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Number</td>
+              <td>200</td>
+              <td>Transition out duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>onOpenStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called before materialbox is opened.</td>
+            </tr>
+            <tr>
+              <td>onOpenEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called after materialbox is opened.</td>
+            </tr>
+            <tr>
+              <td>onCloseStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called before materialbox is closed.</td>
+            </tr>
+            <tr>
+              <td>onCloseEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called after materialbox is closed.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br><br>
+
+        <h4>Methods</h4>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+    var instance = M.Materialbox.getInstance(elem);
+
+    /* jQuery Method Calls
+      You can still use the old jQuery plugin method calls.
+      But you won't be able to access instance properties.
+
+      $('.materialboxed').materialbox('methodName');
+      $('.materialboxed').materialbox('methodName', paramName);
+    */
+          </code></pre>
+        </blockquote>
+        <h5 class="method-header">
+    .open();
+        </h5>
+        <p>Open materialbox</p>
+        <pre><code class="language-javascript col s12">
+  instance.open();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+    .close();
+        </h5>
+        <p>Close materialbox</p>
+        <pre><code class="language-javascript col s12">
+  instance.close();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+    .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+  instance.destroy();
+        </code></pre>
+        <br><br>
+
+        <h4>Properties</h4>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>overlayActive</td>
+              <td>Boolean</td>
+              <td>If the materialbox overlay is showing.</td>
+            </tr>
+            <tr>
+              <td>doneAnimating</td>
+              <td>Boolean</td>
+              <td>If the carousel is no longer being animated.</td>
+            </tr>
+            <tr>
+              <td>caption</td>
+              <td>String</td>
+              <td>Caption if specified.</td>
+            </tr>
+            <tr>
+              <td>originalWidth</td>
+              <td>Number</td>
+              <td>Original width of image.</td>
+            </tr>
+            <tr>
+              <td>originalHeight</td>
+              <td>Number</td>
+              <td>Original height of image.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br><br>
 
         <h4>Captions</h4>
         <p>It is very easy to add a short caption to your photo. Just add the caption as a <code class="language-markup">data-caption</code> attribute.</p>
@@ -36,8 +185,7 @@
       <!--  Slider Section  -->
       <div id="slider" class="scrollspy section">
         <h3 class="header">Slider</h3>
-         <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p>
-         <p>Note: This is also Hammer.js compatible! Try swiping with your finger to scroll through the slider.</p><br>
+         <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p><br>
 
         <div class="slider">
           <ul class="slides">
@@ -106,70 +254,163 @@
     &lt;/ul>
   &lt;/div>
       </code></pre>
-
       <br>
-      <h4>Fullscreen Slider</h4>
-      <p>You can easliy make this slider a fullscreen slider by adding the class <code class="language-markup">fullscreen</code> to the slider div. Here's a quick demo.</p>
-      <a href="fullscreen-slider-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
 
-      <br>
-      <h4>jQuery Initialization</h4>
+      <h4>Initialization</h4>
        <pre><code class="language-javascript">
-    $(document).ready(function(){
-      $('.slider').slider();
-    });
+  var elem = document.querySelector('.slider');
+  var instance = M.Slider.init(elem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.slider').slider();
+  });
         </code></pre>
         <br>
 
-        <h4>jQuery Plugin Options</h4>
-        <table class="highlight">
+        <h4>Options</h4>
+        <table class="striped">
           <thead>
             <tr>
-                <th>Option Name</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
               <td>indicators</td>
-              <td>Set to false to hide slide indicators. (Default: True)</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>Set to false to hide slide indicators.</td>
             </tr>
             <tr>
               <td>height</td>
-              <td>Set height of slider. (Default: 400)</td>
+              <td>Number</td>
+              <td>400</td>
+              <td>Set height of slider.</td>
             </tr>
             <tr>
-              <td>transition</td>
-              <td>Set the duration of the transition animation in ms. (Default: 500)</td>
+              <td>duration</td>
+              <td>Number</td>
+              <td>500</td>
+              <td>Set the duration of the transition animation in ms.</td>
             </tr>
             <tr>
               <td>interval</td>
-              <td>Set the duration between transitions in ms. (Default: 6000)</td>
+              <td>Number</td>
+              <td>6000</td>
+              <td>Set the duration between transitions in ms.</td>
             </tr>
           </tbody>
         </table>
         <br>
 
-      <h4>jQuery Plugin Methods</h4>
+      <h4>Methods</h4>
       <p>We have methods to pause, start, move to next and move to previous slide.</p>
-      <pre><code class="language-javascript col s12">
-// Pause slider
-$('.slider').slider('pause');
-// Start slider
-$('.slider').slider('start');
-// Next slide
-$('.slider').slider('next');
-// Previous slide
-$('.slider').slider('prev');
-      </code></pre>
+
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <pre><code class="language-javascript col s12">
+    var instance = M.Slider.getInstance(elem);
+
+    /* jQuery Method Calls
+      You can still use the old jQuery plugin method calls.
+      But you won't be able to access instance properties.
+
+      $('.slider').slider('methodName');
+      $('.slider').slider('methodName', paramName);
+    */
+          </code></pre>
+        </blockquote>
+        <h5 class="method-header">
+    .pause();
+        </h5>
+        <p>Pause slider autoslide</p>
+        <pre><code class="language-javascript col s12">
+  instance.pause();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+    .start();
+        </h5>
+        <p>Start slider autoslide</p>
+        <pre><code class="language-javascript col s12">
+  instance.start();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+    .next();
+        </h5>
+        <p>Move to next slider</p>
+        <pre><code class="language-javascript col s12">
+  instance.next();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+    .prev();
+        </h5>
+        <p>Move to prev slider</p>
+        <pre><code class="language-javascript col s12">
+  instance.prev();
+        </code></pre>
+        <br>
+
+        <h5 class="method-header">
+    .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
+  instance.destroy();
+        </code></pre>
+        <br><br>
+
+        <h4>Properties</h4>
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>activeIndex</td>
+              <td>Number</td>
+              <td>Index of current slide.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br><br>
+
+      <h4>Fullscreen Slider</h4>
+      <p>You can easliy make this slider a fullscreen slider by adding the class <code class="language-markup">fullscreen</code> to the slider div. Here's a quick demo.</p>
+      <a href="fullscreen-slider-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
       </div>
 
     </div>
 
 
     <!-- Table of Contents -->
-    <div class="col hide-on-small-only m3 l2">
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->

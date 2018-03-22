@@ -26,6 +26,8 @@ span.badge {
     content: " " attr(data-badge-caption);
   }
 }
+
+// Special cases
 nav ul a span.badge {
   display: inline-block;
   float: none;
@@ -42,6 +44,12 @@ nav ul a span.badge {
 .collapsible span.badge {
   margin-left: auto;
 }
-.side-nav span.badge {
+.sidenav span.badge {
   margin-top: calc(#{$sidenav-line-height / 2} - #{$badge-height / 2});
+}
+
+table span.badge {
+  display: inline-block;
+  float: none;
+  margin-left: auto;
 }

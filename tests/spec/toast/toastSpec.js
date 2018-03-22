@@ -6,7 +6,7 @@ describe( 'Toasts:', function() {
   describe('Toast javascript functions', function() {
     // Toast out animation duration does not count as part of its timer.
     it('should display and remove a toast', function(done) {
-      Materialize.toast('Test toast', toastInDuration);
+      M.toast({html: 'Test toast', displayLength: toastInDuration});
 
       setTimeout(function() {
         toast = $('.toast');
@@ -28,28 +28,27 @@ describe( 'Toasts:', function() {
 
     it('Opens a toast with HTML content', function() {
       var $toastContent = $('<span>I am toast content</span>');
-      Materialize.toast($toastContent, 400);
+      M.toast({html: $toastContent, displayLength: 400});
       toast = $('.toast');
       expect(toast.first('span').text()).toBe('I am toast content');
-      expect(toast.first('span').text()).not.toBe('I am toast')
+      expect(toast.first('span').text()).not.toBe('I am toast');
     });
 
-    it('Toasts should call the callback function when dismissed',
-        function(done) {
+    it('Toasts should call the callback function when dismissed', function(done) {
       var boolObj = {wasCalled: false};
       var callback = function() {
         boolObj.wasCalled = true;
       };
-      Materialize.toast('I am a toast', 100, '', callback);
+      M.toast({html: 'I am a toast', displayLength:100, completeCallback: callback});
       setTimeout(function() {
         expect(boolObj.wasCalled).toBe(true,
-            'because the callback set it to true');
+                                       'because the callback set it to true');
         done();
       }, 500);
     });
 
     it('Apply two custom class to a toast', function() {
-      Materialize.toast('Hi', 400, 'round flat');
+      M.toast({html:'Hi', displayLength: 400, classes: 'round flat'});
       toast = $('.toast');
       expect(toast.closest('.round.flat').length).toBe(1,
           'because the class parameter was passed with two classes');

@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+
+      <div id="introduction" class="section scrollspy">
+        <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
+        <a class="waves-effect waves-light btn" onclick="M.toast({html: 'I am a toast'})">Toast!</a>
+        <p>To do this, call the M.toast() function programatically in JavaScript.</p>
+        <pre><code class="language-javascript">
+  M.toast({html: 'I am a toast!'})
+        </code></pre>
+        <p>One way to add this into your application is to add this as an onclick event to a button.</p>
+        <pre><code class="language-markup">
+  &lt;a onclick="M.toast({html: 'I am a toast'})" class="btn">Toast!&lt;/a>
+        </code></pre>
+      </div>
+
+
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <p>You can customize the behavior of each Toast using these options.</p>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>html</td>
+              <td>String</td>
+              <td>''</td>
+              <td>The HTML content of the Toast.</td>
+            </tr>
+            <tr>
+              <td>displayLength</td>
+              <td>Number</td>
+              <td>4000</td>
+              <td>Length in ms the Toast stays before dismissal.</td>
+            </tr>
+            <tr>
+              <td>inDuration</td>
+              <td>Number</td>
+              <td>300</td>
+              <td>Transition in duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Number</td>
+              <td>375</td>
+              <td>Transition out duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>classes</td>
+              <td>String</td>
+              <td>''</td>
+              <td>Classes to be added to the toast element.</td>
+            </tr>
+            <tr>
+              <td>completeCallback</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called when toast is dismissed.</td>
+            </tr>
+            <tr>
+              <td>activationPercent</td>
+              <td>Number</td>
+              <td>0.8</td>
+              <td>The percentage of the toast's width it takes for a drag to dismiss a Toast.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
+
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The toast element.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>panning</td>
+              <td>Boolean</td>
+              <td>Describes the current pan state of the Toast.</td>
+            </tr>
+            <tr>
+              <td>timeRemaining</td>
+              <td>Number</td>
+              <td>The remaining amount of time in ms that the toast will stay before dismissal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div id="custom-html" class="section scrollspy">
+        <h3 class="header">Custom HTML</h3>
+        <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
+        <a class="waves-effect waves-light btn" onclick="displayCustomHTMLToast()">Toast with Action</a>
+        <pre><code class="language-javascript">
+  var toastHTML = '&lt;span>I am toast content&lt;/span>&lt;button class="btn-flat toast-action">Undo&lt;/button>';
+  M.toast({html: toastHTML});
+        </code></pre>
+      </div>
+
+
+      <div id="callback" class="scrollspy section">
+        <h3 class="header">Callback</h3>
+        <p>You can have the toast callback a function when it has been dismissed.</p>
+        <a class="btn" onclick="M.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!</a>
+        <pre><code class="language-markup">
+  &lt;a class="btn" onclick="M.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!&lt;/a>
+        </code></pre>
+      </div>
+
+
+      <div id="styling" class="scrollspy section">
+        <h3 class="header">Styling Toasts</h3>
+        <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
+
+        <a class="waves-effect waves-light btn" onclick="M.toast({html: 'I am a toast!', classes: 'rounded'})">Round Toast!</a>
+
+        <pre><code class="language-javascript">
+  // 'rounded' is the class I'm applying to the toast
+  M.toast({html: 'I am a toast!', classes: 'rounded'});
+        </code></pre>
+      </div>
+
+
+      <div id="dismissal" class="scrollspy section">
+        <h3 class="header">Dismiss a Toast Programatically</h3>
+        <p>To remove a specific toast using JavaScript, access the <code class="language-javascript">M_Toast</code> toast HTML element and call the dismiss function</p>
+
+        <pre><code class="language-javascript">
+  // Get toast DOM Element, get instance, then call dismiss function
+  var toastElement = document.querySelector('.toast');
+  var toastInstance = M.Toast.getInstance(toastElement);
+  toastInstance.dismiss();
+        </code></pre>
+
+        <h5>Dismiss all Toasts</h5>
+        <pre><code class="language-javascript">
+  M.Toast.dismissAll();
+        </code></pre>
+      </div>
+
+    </div>
+
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#custom-html">Custom HTML</a></li>
+            <li><a href="#callback">Callback</a></li>
+            <li><a href="#styling">Styling Toasts</a></li>
+            <li><a href="#dismissal">Dismissing Toasts</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

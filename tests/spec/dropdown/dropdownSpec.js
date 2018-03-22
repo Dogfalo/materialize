@@ -1,7 +1,7 @@
 describe("Dropdown Plugin", function () {
   beforeEach(function() {
     loadFixtures('dropdown/dropdownFixture.html');
-    $('.dropdown-button').dropdown();
+    $('.dropdown-trigger').dropdown();
   });
 
   describe("Dropdown", function () {
@@ -39,7 +39,7 @@ describe("Dropdown Plugin", function () {
 
       setTimeout(function() {
         expect(dropdown1).toBeVisible('Should be shown after dropdown is opened.');
-        $(document).click();
+        click(document.body);
 
         setTimeout(function() {
           expect(dropdown1).toBeHidden('Should be hidden after dropdown is closed.');
@@ -58,7 +58,7 @@ describe("Dropdown Plugin", function () {
 
       setTimeout(function() {
         expect(dropdown2).toBeVisible('Should be shown after dropdown is opened.');
-        $(document).click();
+        click(document.body);
 
         setTimeout(function() {
           expect(dropdown2).toBeHidden('Should be hidden after dropdown is closed.');

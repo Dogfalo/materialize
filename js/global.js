@@ -1,76 +1,145 @@
 // Required for Meteor package, the use of window prevents export by Meteor
 (function(window){
   if(window.Package){
-    Materialize = {};
+    M = {};
   } else {
-    window.Materialize = {};
+    window.M = {};
   }
+
+  // Check for jQuery
+  M.jQueryLoaded = !!window.jQuery;
 })(window);
 
-if (typeof exports !== 'undefined' && !exports.nodeType) {
+
+// AMD
+if ( typeof define === "function" && define.amd ) {
+	define( "M", [], function() {
+		return M;
+	} );
+
+// Common JS
+} else if (typeof exports !== 'undefined' && !exports.nodeType) {
   if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
-    exports = module.exports = Materialize;
+    exports = module.exports = M;
   }
-  exports.default = Materialize;
+  exports.default = M;
 }
 
-/*
- * raf.js
- * https://github.com/ngryman/raf.js
- *
- * original requestAnimationFrame polyfill by Erik Möller
- * inspired from paul_irish gist and post
- *
- * Copyright (c) 2013 ngryman
- * Licensed under the MIT license.
+M.keys = {
+  TAB: 9,
+  ENTER: 13,
+  ESC: 27,
+  ARROW_UP: 38,
+  ARROW_DOWN: 40
+};
+
+
+/**
+ * TabPress Keydown handler
  */
-(function(window) {
-  var lastTime = 0,
-    vendors = ['webkit', 'moz'],
-    requestAnimationFrame = window.requestAnimationFrame,
-    cancelAnimationFrame = window.cancelAnimationFrame,
-    i = vendors.length;
-
-  // try to un-prefix existing raf
-  while (--i >= 0 && !requestAnimationFrame) {
-    requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
-    cancelAnimationFrame = window[vendors[i] + 'CancelRequestAnimationFrame'];
+M.tabPressed = false;
+let docHandleKeydown = function(e) {
+  if (e.which === M.keys.TAB) {
+    M.tabPressed = true;
   }
-
-  // polyfill with setTimeout fallback
-  // heavily inspired from @darius gist mod: https://gist.github.com/paulirish/1579671#comment-837945
-  if (!requestAnimationFrame || !cancelAnimationFrame) {
-    requestAnimationFrame = function(callback) {
-      var now = +Date.now(),
-        nextTime = Math.max(lastTime + 16, now);
-      return setTimeout(function() {
-        callback(lastTime = nextTime);
-      }, nextTime - now);
-    };
-
-    cancelAnimationFrame = clearTimeout;
+};
+let docHandleKeyup = function(e) {
+  if (e.which === M.keys.TAB) {
+    M.tabPressed = false;
   }
+};
+document.addEventListener('keydown', docHandleKeydown);
+document.addEventListener('keyup', docHandleKeyup);
 
-  // export to window
-  window.requestAnimationFrame = requestAnimationFrame;
-  window.cancelAnimationFrame = cancelAnimationFrame;
-}(window));
+
+/**
+ * Initialize jQuery wrapper for plugin
+ * @param {Class} plugin  javascript class
+ * @param {string} pluginName  jQuery plugin name
+ * @param {string} classRef  Class reference name
+ */
+M.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
+  jQuery.fn[pluginName] = function(methodOrOptions) {
+    // Call plugin method if valid method name is passed in
+    if (plugin.prototype[methodOrOptions]) {
+      let params = Array.prototype.slice.call( arguments, 1 );
+
+      // Getter methods
+      if (methodOrOptions.slice(0,3) === 'get') {
+        let instance = this.first()[0][classRef];
+        return instance[methodOrOptions].apply(instance, params);
+      }
+
+      // Void methods
+      return this.each(function() {
+        let instance = this[classRef];
+        instance[methodOrOptions].apply(instance, params);
+      });
+
+    // Initialize plugin if options or no argument is passed in
+    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
+      plugin.init(this, arguments[0]);
+      return this;
+
+    }
+
+    // Return error if an unrecognized  method name is passed in
+    jQuery.error(`Method ${methodOrOptions} does not exist on jQuery.${pluginName}`);
+  };
+};
+
+
+/**
+ * Automatically initialize components
+ * @param {Element} context  DOM Element to search within for components
+ */
+M.AutoInit = function(context) {
+  // Use document.body if no context is given
+  let root  = !!context ? context : document.body;
+
+  let registry = {
+    Autocomplete: root.querySelectorAll('.autocomplete:not(.no-autoinit)'),
+    Carousel: root.querySelectorAll('.carousel:not(.no-autoinit)'),
+    Chips: root.querySelectorAll('.chips:not(.no-autoinit)'),
+    Collapsible: root.querySelectorAll('.collapsible:not(.no-autoinit)'),
+    Datepicker: root.querySelectorAll('.datepicker:not(.no-autoinit)'),
+    Dropdown: root.querySelectorAll('.dropdown-trigger:not(.no-autoinit)'),
+    Materialbox: root.querySelectorAll('.materialboxed:not(.no-autoinit)'),
+    Modal: root.querySelectorAll('.modal:not(.no-autoinit)'),
+    Parallax: root.querySelectorAll('.parallax:not(.no-autoinit)'),
+    Pushpin: root.querySelectorAll('.pushpin:not(.no-autoinit)'),
+    ScrollSpy: root.querySelectorAll('.scrollspy:not(.no-autoinit)'),
+    FormSelect: root.querySelectorAll('select:not(.no-autoinit)'),
+    Sidenav: root.querySelectorAll('.sidenav:not(.no-autoinit)'),
+    Tabs: root.querySelectorAll('.tabs:not(.no-autoinit)'),
+    TapTarget: root.querySelectorAll('.tap-target:not(.no-autoinit)'),
+    Timepicker: root.querySelectorAll('.timepicker:not(.no-autoinit)'),
+    Tooltip: root.querySelectorAll('.tooltipped:not(.no-autoinit)'),
+    FloatingActionButton: root.querySelectorAll('.fixed-action-btn:not(.no-autoinit)')
+  };
+
+  for (let pluginName in registry) {
+    let plugin = M[pluginName];
+    plugin.init(registry[pluginName]);
+  }
+};
+
 
 /**
  * Generate approximated selector string for a jQuery object
  * @param {jQuery} obj  jQuery object to be parsed
  * @returns {string}
  */
-Materialize.objectSelectorString = function(obj) {
-  var tagStr = obj.prop('tagName') || '';
-  var idStr = obj.attr('id') || '';
-  var classStr = obj.attr('class') || '';
+M.objectSelectorString = function(obj) {
+  let tagStr = obj.prop('tagName') || '';
+  let idStr = obj.attr('id') || '';
+  let classStr = obj.attr('class') || '';
   return (tagStr + idStr + classStr).replace(/\s/g,'');
 };
 
 
 // Unique Random ID
-Materialize.guid = (function() {
+M.guid = (function() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
@@ -87,22 +156,208 @@ Materialize.guid = (function() {
  * @param {string} hash  String returned from this.hash
  * @returns {string}
  */
-Materialize.escapeHash = function(hash) {
-  return hash.replace( /(:|\.|\[|\]|,|=)/g, "\\$1" );
+M.escapeHash = function(hash) {
+  return hash.replace( /(:|\.|\[|\]|,|=|\/)/g, "\\$1" );
 };
 
-Materialize.elementOrParentIsFixed = function(element) {
-    var $element = $(element);
-    var $checkElements = $element.add($element.parents());
-    var isFixed = false;
-    $checkElements.each(function(){
-        if ($(this).css("position") === "fixed") {
-            isFixed = true;
-            return false;
-        }
-    });
-    return isFixed;
+M.elementOrParentIsFixed = function(element) {
+  let $element = $(element);
+  let $checkElements = $element.add($element.parents());
+  let isFixed = false;
+  $checkElements.each(function(){
+    if ($(this).css("position") === "fixed") {
+      isFixed = true;
+      return false;
+    }
+  });
+  return isFixed;
 };
+
+/**
+ * @typedef {Object} Edges
+ * @property {Boolean} top  If the top edge was exceeded
+ * @property {Boolean} right  If the right edge was exceeded
+ * @property {Boolean} bottom  If the bottom edge was exceeded
+ * @property {Boolean} left  If the left edge was exceeded
+ */
+
+/**
+ * @typedef {Object} Bounding
+ * @property {Number} left  left offset coordinate
+ * @property {Number} top  top offset coordinate
+ * @property {Number} width
+ * @property {Number} height
+ */
+
+/**
+ * Escapes hash from special characters
+ * @param {Element} container  Container element that acts as the boundary
+ * @param {Bounding} bounding  element bounding that is being checked
+ * @param {Number} offset  offset from edge that counts as exceeding
+ * @returns {Edges}
+ */
+M.checkWithinContainer = function(container, bounding, offset) {
+  let edges = {
+    top: false,
+    right: false,
+    bottom: false,
+    left: false
+  };
+
+  let containerRect = container.getBoundingClientRect();
+
+  let scrollLeft = container.scrollLeft;
+  let scrollTop = container.scrollTop;
+
+  let scrolledX = bounding.left - scrollLeft;
+  let scrolledY = bounding.top - scrollTop;
+
+  // Check for container and viewport for each edge
+  if (scrolledX < containerRect.left + offset ||
+      scrolledX < offset) {
+    edges.left = true;
+  }
+
+  if (scrolledX + bounding.width > containerRect.right - offset ||
+      scrolledX + bounding.width > window.innerWidth - offset) {
+    edges.right = true;
+  }
+
+  if (scrolledY < containerRect.top + offset ||
+      scrolledY < offset) {
+    edges.top = true;
+  }
+
+  if (scrolledY + bounding.height > containerRect.bottom - offset ||
+      scrolledY + bounding.height > window.innerHeight - offset) {
+    edges.bottom = true;
+  }
+
+  return edges;
+};
+
+
+M.checkPossibleAlignments = function(el, container, bounding, offset) {
+  let canAlign = {
+    top: true,
+    right: true,
+    bottom: true,
+    left: true,
+    spaceOnTop: null,
+    spaceOnRight: null,
+    spaceOnBottom: null,
+    spaceOnLeft: null
+  };
+
+  let containerAllowsOverflow = getComputedStyle(container).overflow === 'visible';
+  let containerRect = container.getBoundingClientRect();
+  let containerHeight = Math.min(containerRect.height, window.innerHeight);
+  let containerWidth = Math.min(containerRect.width, window.innerWidth);
+  let elOffsetRect = el.getBoundingClientRect();
+
+  let scrollLeft = container.scrollLeft;
+  let scrollTop = container.scrollTop;
+
+  let scrolledX = bounding.left - scrollLeft;
+  let scrolledYTopEdge = bounding.top - scrollTop;
+  let scrolledYBottomEdge = bounding.top + elOffsetRect.height - scrollTop;
+
+  // Check for container and viewport for left
+  canAlign.spaceOnRight = !containerAllowsOverflow ? containerWidth - (scrolledX + bounding.width) :
+    window.innerWidth - (elOffsetRect.left + bounding.width);
+  if (canAlign.spaceOnRight < 0) {
+    canAlign.left = false;
+  }
+
+  // Check for container and viewport for Right
+  canAlign.spaceOnLeft = !containerAllowsOverflow ? scrolledX - bounding.width + elOffsetRect.width :
+    elOffsetRect.right - bounding.width;
+  if (canAlign.spaceOnLeft < 0) {
+    canAlign.right = false;
+  }
+
+  // Check for container and viewport for Top
+  canAlign.spaceOnBottom = !containerAllowsOverflow ? containerHeight - (scrolledYTopEdge + bounding.height + offset) :
+    window.innerHeight - (elOffsetRect.top + bounding.height + offset);
+  if (canAlign.spaceOnBottom < 0) {
+    canAlign.top = false;
+  }
+
+  // Check for container and viewport for Bottom
+  canAlign.spaceOnTop = !containerAllowsOverflow ? scrolledYBottomEdge - (bounding.height - offset) :
+    elOffsetRect.bottom - (bounding.height + offset);
+  if (canAlign.spaceOnTop < 0) {
+    canAlign.bottom = false;
+  }
+
+  return canAlign;
+};
+
+
+M.getOverflowParent = function(element) {
+  if (element == null) {
+    return null;
+  }
+
+  if (element === document.body || getComputedStyle(element).overflow !== 'visible') {
+    return element;
+  }
+
+  return M.getOverflowParent(element.parentElement);
+};
+
+
+/**
+ * Gets id of component from a trigger
+ * @param {Element} trigger  trigger
+ * @returns {string}
+ */
+M.getIdFromTrigger = function(trigger) {
+  let id = trigger.getAttribute('data-target');
+  if (!id) {
+    id = trigger.getAttribute('href');
+    if (id) {
+      id = id.slice(1);
+    } else {
+      id = "";
+    }
+  }
+  return id;
+};
+
+
+/**
+ * Multi browser support for document scroll top
+ * @returns {Number}
+ */
+M.getDocumentScrollTop = function() {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+};
+
+/**
+ * Multi browser support for document scroll left
+ * @returns {Number}
+ */
+M.getDocumentScrollLeft = function() {
+  return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+};
+
+
+/**
+ * @typedef {Object} Edges
+ * @property {Boolean} top  If the top edge was exceeded
+ * @property {Boolean} right  If the right edge was exceeded
+ * @property {Boolean} bottom  If the bottom edge was exceeded
+ * @property {Boolean} left  If the left edge was exceeded
+ */
+
+/**
+ * @typedef {Object} Bounding
+ * @property {Number} left  left offset coordinate
+ * @property {Number} top  top offset coordinate
+ * @property {Number} width
+ * @property {Number} height
+ */
 
 
 /**
@@ -111,7 +366,7 @@ Materialize.elementOrParentIsFixed = function(element) {
  * @type {function}
  * @return {number}
  */
-var getTime = (Date.now || function () {
+let getTime = (Date.now || function () {
   return new Date().getTime();
 });
 
@@ -128,21 +383,21 @@ var getTime = (Date.now || function () {
  * @param {Object=} options
  * @returns {Function}
  */
-Materialize.throttle = function(func, wait, options) {
-  var context, args, result;
-  var timeout = null;
-  var previous = 0;
+M.throttle = function(func, wait, options) {
+  let context, args, result;
+  let timeout = null;
+  let previous = 0;
   options || (options = {});
-  var later = function () {
+  let later = function () {
     previous = options.leading === false ? 0 : getTime();
     timeout = null;
     result = func.apply(context, args);
     context = args = null;
   };
   return function () {
-    var now = getTime();
+    let now = getTime();
     if (!previous && options.leading === false) previous = now;
-    var remaining = wait - (now - previous);
+    let remaining = wait - (now - previous);
     context = this;
     args = arguments;
     if (remaining <= 0) {
@@ -157,21 +412,3 @@ Materialize.throttle = function(func, wait, options) {
     return result;
   };
 };
-
-
-// Velocity has conflicts when loaded with jQuery, this will check for it
-// First, check if in noConflict mode
-var Vel;
-if (jQuery) {
-  Vel = jQuery.Velocity;
-} else if ($) {
-  Vel = $.Velocity;
-} else {
-  Vel = Velocity;
-}
-
-if (Vel) {
-  Materialize.Vel = Vel;
-} else {
-  Materialize.Vel = Velocity;
-}

@@ -1,239 +1,299 @@
-(function ($) {
-    $.fn.tooltip = function (options) {
-      var timeout = null,
-      margin = 5;
+(function ($, anim) {
+  'use strict';
 
-      // Defaults
-      var defaults = {
-        delay: 350,
-        tooltip: '',
-        position: 'bottom',
-        html: false
-      };
+  let _defaults = {
+    exitDelay: 200,
+    enterDelay: 0,
+    html: null,
+    margin: 5,
+    inDuration: 250,
+    outDuration: 200,
+    position: 'bottom',
+    transitionMovement: 10
+  };
 
-      // Remove tooltip from the activator
-      if (options === "remove") {
-        this.each(function() {
-          $('#' + $(this).attr('data-tooltip-id')).remove();
-          $(this).removeAttr('data-tooltip-id');
-          $(this).off('mouseenter.tooltip mouseleave.tooltip');
-        });
-        return false;
+
+  /**
+   * @class
+   *
+   */
+  class Tooltip extends Component {
+    /**
+     * Construct Tooltip instance
+     * @constructor
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(Tooltip, el, options);
+
+      this.el.M_Tooltip = this;
+      this.options = $.extend({}, Tooltip.defaults, options);
+
+      this.isOpen = false;
+      this.isHovered = false;
+      this.isFocused = false;
+      this._appendTooltipEl();
+      this._setupEventHandlers();
+    }
+
+    static get defaults() {
+      return _defaults;
+    }
+
+    static init(els, options) {
+      return super.init(this, els, options);
+    }
+
+    /**
+     * Get Instance
+     */
+    static getInstance(el) {
+      let domElem = !!el.jquery ? el[0] : el;
+      return domElem.M_Tooltip;
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      $(this.tooltipEl).remove();
+      this._removeEventHandlers();
+      this.el.M_Tooltip = undefined;
+    }
+
+    _appendTooltipEl() {
+      let tooltipEl = document.createElement('div');
+      tooltipEl.classList.add('material-tooltip');
+      this.tooltipEl = tooltipEl;
+
+      let tooltipContentEl = document.createElement('div');
+      tooltipContentEl.classList.add('tooltip-content');
+      tooltipContentEl.innerHTML = this.options.html;
+      tooltipEl.appendChild(tooltipContentEl);
+      document.body.appendChild(tooltipEl);
+    }
+
+    _updateTooltipContent() {
+      this.tooltipEl.querySelector('.tooltip-content').innerHTML = this.options.html;
+    }
+
+    _setupEventHandlers() {
+      this._handleMouseEnterBound = this._handleMouseEnter.bind(this);
+      this._handleMouseLeaveBound = this._handleMouseLeave.bind(this);
+      this._handleFocusBound = this._handleFocus.bind(this);
+      this._handleBlurBound = this._handleBlur.bind(this);
+      this.el.addEventListener('mouseenter', this._handleMouseEnterBound);
+      this.el.addEventListener('mouseleave', this._handleMouseLeaveBound);
+      this.el.addEventListener('focus', this._handleFocusBound, true);
+      this.el.addEventListener('blur', this._handleBlurBound, true);
+    }
+
+    _removeEventHandlers() {
+      this.el.removeEventListener('mouseenter', this._handleMouseEnterBound);
+      this.el.removeEventListener('mouseleave', this._handleMouseLeaveBound);
+      this.el.removeEventListener('focus', this._handleFocusBound, true);
+      this.el.removeEventListener('blur', this._handleBlurBound, true);
+    }
+
+    open() {
+      if (this.isOpen) {
+        return;
       }
 
-      options = $.extend(defaults, options);
-
-      return this.each(function() {
-        var tooltipId = Materialize.guid();
-        var origin = $(this);
-
-        // Destroy old tooltip
-        if (origin.attr('data-tooltip-id')) {
-          $('#' + origin.attr('data-tooltip-id')).remove();
-        }
-
-        origin.attr('data-tooltip-id', tooltipId);
-
-        // Get attributes.
-        var allowHtml,
-            tooltipDelay,
-            tooltipPosition,
-            tooltipText,
-            tooltipEl,
-            backdrop;
-        var setAttributes = function() {
-          allowHtml = origin.attr('data-html') ? origin.attr('data-html') === 'true' : options.html;
-          tooltipDelay = origin.attr('data-delay');
-          tooltipDelay = (tooltipDelay === undefined || tooltipDelay === '') ?
-              options.delay : tooltipDelay;
-          tooltipPosition = origin.attr('data-position');
-          tooltipPosition = (tooltipPosition === undefined || tooltipPosition === '') ?
-              options.position : tooltipPosition;
-          tooltipText = origin.attr('data-tooltip');
-          tooltipText = (tooltipText === undefined || tooltipText === '') ?
-              options.tooltip : tooltipText;
-        };
-        setAttributes();
-
-        var renderTooltipEl = function() {
-          var tooltip = $('<div class="material-tooltip"></div>');
-
-          // Create Text span
-          if (allowHtml) {
-            tooltipText = $('<span></span>').html(tooltipText);
-          } else{
-            tooltipText = $('<span></span>').text(tooltipText);
-          }
-
-          // Create tooltip
-          tooltip.append(tooltipText)
-            .appendTo($('body'))
-            .attr('id', tooltipId);
-
-          // Create backdrop
-          backdrop = $('<div class="backdrop"></div>');
-          backdrop.appendTo(tooltip);
-          return tooltip;
-        };
-        tooltipEl = renderTooltipEl();
-
-        // Destroy previously binded events
-        origin.off('mouseenter.tooltip mouseleave.tooltip');
-        // Mouse In
-        var started = false, timeoutRef;
-        origin.on({'mouseenter.tooltip': function(e) {
-          var showTooltip = function() {
-            setAttributes();
-            started = true;
-            tooltipEl.velocity('stop');
-            backdrop.velocity('stop');
-            tooltipEl.css({ visibility: 'visible', left: '0px', top: '0px' });
-
-            // Tooltip positioning
-            var originWidth = origin.outerWidth();
-            var originHeight = origin.outerHeight();
-            var tooltipHeight = tooltipEl.outerHeight();
-            var tooltipWidth = tooltipEl.outerWidth();
-            var tooltipVerticalMovement = '0px';
-            var tooltipHorizontalMovement = '0px';
-            var backdropOffsetWidth = backdrop[0].offsetWidth;
-            var backdropOffsetHeight = backdrop[0].offsetHeight;
-            var scaleXFactor = 8;
-            var scaleYFactor = 8;
-            var scaleFactor = 0;
-            var targetTop, targetLeft, newCoordinates;
-
-            if (tooltipPosition === "top") {
-              // Top Position
-              targetTop = origin.offset().top - tooltipHeight - margin;
-              targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
-              newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
-              tooltipVerticalMovement = '-10px';
-              backdrop.css({
-                bottom: 0,
-                left: 0,
-                borderRadius: '14px 14px 0 0',
-                transformOrigin: '50% 100%',
-                marginTop: tooltipHeight,
-                marginLeft: (tooltipWidth/2) - (backdropOffsetWidth/2)
-              });
-            }
-            // Left Position
-            else if (tooltipPosition === "left") {
-              targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
-              targetLeft =  origin.offset().left - tooltipWidth - margin;
-              newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
-
-              tooltipHorizontalMovement = '-10px';
-              backdrop.css({
-                top: '-7px',
-                right: 0,
-                width: '14px',
-                height: '14px',
-                borderRadius: '14px 0 0 14px',
-                transformOrigin: '95% 50%',
-                marginTop: tooltipHeight/2,
-                marginLeft: tooltipWidth
-              });
-            }
-            // Right Position
-            else if (tooltipPosition === "right") {
-              targetTop = origin.offset().top + originHeight/2 - tooltipHeight/2;
-              targetLeft = origin.offset().left + originWidth + margin;
-              newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
-
-              tooltipHorizontalMovement = '+10px';
-              backdrop.css({
-                top: '-7px',
-                left: 0,
-                width: '14px',
-                height: '14px',
-                borderRadius: '0 14px 14px 0',
-                transformOrigin: '5% 50%',
-                marginTop: tooltipHeight/2,
-                marginLeft: '0px'
-              });
-            }
-            else {
-              // Bottom Position
-              targetTop = origin.offset().top + origin.outerHeight() + margin;
-              targetLeft = origin.offset().left + originWidth/2 - tooltipWidth/2;
-              newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
-              tooltipVerticalMovement = '+10px';
-              backdrop.css({
-                top: 0,
-                left: 0,
-                marginLeft: (tooltipWidth/2) - (backdropOffsetWidth/2)
-              });
-            }
-
-            // Set tooptip css placement
-            tooltipEl.css({
-              top: newCoordinates.y,
-              left: newCoordinates.x
-            });
-
-            // Calculate Scale to fill
-            scaleXFactor = Math.SQRT2 * tooltipWidth / parseInt(backdropOffsetWidth);
-            scaleYFactor = Math.SQRT2 * tooltipHeight / parseInt(backdropOffsetHeight);
-            scaleFactor = Math.max(scaleXFactor, scaleYFactor);
-
-            tooltipEl.velocity({ translateY: tooltipVerticalMovement, translateX: tooltipHorizontalMovement}, { duration: 350, queue: false })
-              .velocity({opacity: 1}, {duration: 300, delay: 50, queue: false});
-            backdrop.css({ visibility: 'visible' })
-              .velocity({opacity:1},{duration: 55, delay: 0, queue: false})
-              .velocity({scaleX: scaleFactor, scaleY: scaleFactor}, {duration: 300, delay: 0, queue: false, easing: 'easeInOutQuad'});
-          };
-
-          timeoutRef = setTimeout(showTooltip, tooltipDelay); // End Interval
-
-        // Mouse Out
-        },
-        'mouseleave.tooltip': function(){
-          // Reset State
-          started = false;
-          clearTimeout(timeoutRef);
-
-          // Animate back
-          setTimeout(function() {
-            if (started !== true) {
-              tooltipEl.velocity({
-                opacity: 0, translateY: 0, translateX: 0}, { duration: 225, queue: false});
-              backdrop.velocity({opacity: 0, scaleX: 1, scaleY: 1}, {
-                duration:225,
-                queue: false,
-                complete: function(){
-                  backdrop.css({ visibility: 'hidden' });
-                  tooltipEl.css({ visibility: 'hidden' });
-                  started = false;}
-              });
-            }
-          },225);
-        }
-        });
-    });
-  };
-
-  var repositionWithinScreen = function(x, y, width, height) {
-    var newX = x;
-    var newY = y;
-
-    if (newX < 0) {
-      newX = 4;
-    } else if (newX + width > window.innerWidth) {
-      newX -= newX + width - window.innerWidth;
+      this.isOpen = true;
+      // Update tooltip content with HTML attribute options
+      this.options = $.extend({}, this.options, this._getAttributeOptions());
+      this._updateTooltipContent();
+      this._setEnterDelayTimeout();
     }
 
-    if (newY < 0) {
-      newY = 4;
-    } else if (newY + height > window.innerHeight + $(window).scrollTop) {
-      newY -= newY + height - window.innerHeight;
+    close() {
+      if (!this.isOpen) {
+        return;
+      }
+
+      this.isOpen = false;
+      this._setExitDelayTimeout();
     }
 
-    return {x: newX, y: newY};
-  };
+    /**
+     * Create timeout which delays when the tooltip closes
+     */
+    _setExitDelayTimeout() {
+      clearTimeout(this._exitDelayTimeout);
 
-  $(document).ready(function(){
-     $('.tooltipped').tooltip();
-   });
-}( jQuery ));
+      this._exitDelayTimeout = setTimeout(() => {
+        if (this.isHovered || this.isFocused) {
+          return;
+        }
+
+        this._animateOut();
+      }, this.options.exitDelay);
+    }
+
+    /**
+     * Create timeout which delays when the toast closes
+     */
+    _setEnterDelayTimeout() {
+      clearTimeout(this._enterDelayTimeout);
+
+      this._enterDelayTimeout = setTimeout(() => {
+        if (!this.isHovered && !this.isFocused) {
+          return;
+        }
+
+        this._animateIn();
+      }, this.options.enterDelay);
+    }
+
+    _positionTooltip() {
+      let origin = this.el,
+        tooltip = this.tooltipEl,
+        originHeight = origin.offsetHeight,
+        originWidth = origin.offsetWidth,
+        tooltipHeight = tooltip.offsetHeight,
+        tooltipWidth = tooltip.offsetWidth,
+        newCoordinates,
+        margin = this.options.margin,
+        targetTop,
+        targetLeft;
+
+      this.xMovement = 0,
+        this.yMovement = 0;
+
+      targetTop = origin.getBoundingClientRect().top + M.getDocumentScrollTop();
+      targetLeft = origin.getBoundingClientRect().left + M.getDocumentScrollLeft();
+
+      if (this.options.position === 'top') {
+        targetTop += -(tooltipHeight) - margin;
+        targetLeft += originWidth / 2 - tooltipWidth / 2;
+        this.yMovement = -(this.options.transitionMovement);
+
+      } else if (this.options.position === 'right') {
+        targetTop += originHeight / 2 - tooltipHeight / 2;
+        targetLeft += originWidth + margin;
+        this.xMovement = this.options.transitionMovement;
+
+      } else if (this.options.position === 'left') {
+        targetTop += originHeight / 2 - tooltipHeight / 2;
+        targetLeft += -(tooltipWidth) - margin;
+        this.xMovement = -(this.options.transitionMovement);
+
+      } else {
+        targetTop += originHeight + margin;
+        targetLeft += originWidth / 2 - tooltipWidth / 2;
+        this.yMovement = this.options.transitionMovement;
+      }
+
+      newCoordinates = this._repositionWithinScreen(
+        targetLeft, targetTop, tooltipWidth, tooltipHeight);
+      $(tooltip).css({
+        top: newCoordinates.y + 'px',
+        left: newCoordinates.x + 'px'
+      });
+    }
+
+    _repositionWithinScreen(x, y, width, height) {
+      let scrollLeft = M.getDocumentScrollLeft();
+      let scrollTop = M.getDocumentScrollTop();
+      let newX = x - scrollLeft;
+      let newY = y - scrollTop;
+
+      let bounding = {
+        left: newX,
+        top: newY,
+        width: width,
+        height: height
+      };
+
+      let offset = this.options.margin + this.options.transitionMovement;
+      let edges = M.checkWithinContainer(document.body, bounding, offset);
+
+      if (edges.left) {
+        newX = offset;
+      } else if (edges.right) {
+        newX -= newX + width - window.innerWidth;
+      }
+
+      if (edges.top) {
+        newY = offset;
+      } else if (edges.bottom) {
+        newY -= newY + height - window.innerHeight;
+      }
+
+      return {
+        x: newX + scrollLeft,
+        y: newY + scrollTop
+      };
+    }
+
+    _animateIn() {
+      this._positionTooltip();
+      this.tooltipEl.style.visibility = 'visible';
+      anim.remove(this.tooltipEl);
+      anim({
+        targets: this.tooltipEl,
+        opacity: 1,
+        translateX: this.xMovement,
+        translateY: this.yMovement,
+        duration: this.options.inDuration,
+        easing: 'easeOutCubic'
+      });
+    }
+
+    _animateOut() {
+      anim.remove(this.tooltipEl);
+      anim({
+        targets: this.tooltipEl,
+        opacity: 0,
+        translateX: 0,
+        translateY: 0,
+        duration: this.options.outDuration,
+        easing: 'easeOutCubic'
+      });
+    }
+
+    _handleMouseEnter() {
+      this.isHovered = true;
+      this.open();
+    }
+
+    _handleMouseLeave() {
+      this.isHovered = false;
+      this.close();
+    }
+
+    _handleFocus() {
+      this.isFocused = true;
+      this.open();
+    }
+
+    _handleBlur() {
+      this.isFocused = false;
+      this.close();
+    }
+
+    _getAttributeOptions() {
+      let attributeOptions = {};
+      let tooltipTextOption = this.el.getAttribute('data-tooltip');
+      let positionOption = this.el.getAttribute('data-position');
+
+      if (tooltipTextOption) {
+        attributeOptions.html = tooltipTextOption;
+      }
+
+      if (positionOption) {
+        attributeOptions.position = positionOption;
+      }
+      return attributeOptions;
+    }
+  }
+
+  M.Tooltip = Tooltip;
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
+  }
+
+})(cash, M.anime);

@@ -144,7 +144,6 @@
 
     p {
       margin: 0;
-      color: inherit;
     }
     .card-title {
       display: block;
@@ -161,9 +160,9 @@
     &:last-child {
       border-radius: 0 0 2px 2px;
     }
-    position: relative;
-    background-color: inherit;
+    background-color: inherit; // Use inherit to inherit color classes
     border-top: 1px solid rgba(160,160,160,.2);
+    position: relative;
     padding: 16px $card-padding;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {

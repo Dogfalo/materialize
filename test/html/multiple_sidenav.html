@@ -30,21 +30,21 @@
         <li><a href="#!">Left First Sidebar Link</a></li>
         <li><a href="#!">Left Second Sidebar Link</a></li>
       </ul>
-      <ul id="slide-out" class="side-nav">
+      <ul id="slide-out" class="sidenav">
         <li><a href="#!">Left First Sidebar Link</a></li>
         <li><a href="#!">Left Second Sidebar Link</a></li>
       </ul>
-      <a href="#" data-activates="slide-out" class="button-collapse 1"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="slide-out" class="sidenav-trigger 1"><i class="material-icons">menu</i></a>
 
       <ul class="right hide-on-med-and-down">
         <li><a href="#!">Right First Sidebar Link</a></li>
         <li><a href="#!">Right Second Sidebar Link</a></li>
       </ul>
-      <ul id="slide-out2" class="side-nav">
+      <ul id="slide-out2" class="sidenav">
         <li><a href="#!">Right First Sidebar Link</a></li>
         <li><a href="#!">Right Second Sidebar Link</a></li>
       </ul>
-      <a href="#" data-activates="slide-out2" class="button-collapse 2 right"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="slide-out2" class="sidenav-trigger 2 right"><i class="material-icons">menu</i></a>
     </nav>
 
 
@@ -53,8 +53,8 @@
 
     <script type="text/javascript">
     $( document ).ready(function() {
-      $(".button-collapse.1").sideNav();
-      $(".button-collapse.2").sideNav({edge: 'right', draggable: false});
+      $("#slide-out").sidenav();
+      $("#slide-out2").sidenav({edge: 'right', draggable: false});
     });
     </script>
   </body>

@@ -1,238 +1,283 @@
-/**
- * Extend jquery with a scrollspy plugin.
- * This watches the window scroll and fires events when elements are scrolled into viewport.
- *
- * throttle() and getTime() taken from Underscore.js
- * https://github.com/jashkenas/underscore
- *
- * @author Copyright 2013 John Smart
- * @license https://raw.github.com/thesmart/jquery-scrollspy/master/LICENSE
- * @see https://github.com/thesmart
- * @version 0.1.2
- */
-(function($) {
+(function ($, anim) {
+  'use strict';
 
-	var jWindow = $(window);
-	var elements = [];
-	var elementsInView = [];
-	var isSpying = false;
-	var ticks = 0;
-	var unique_id = 1;
-	var offset = {
-		top : 0,
-		right : 0,
-		bottom : 0,
-		left : 0,
-	}
+  let _defaults = {
+    throttle: 100,
+    scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
+    activeClass: 'active',
+    getActiveElement: function (id) {
+      return 'a[href="#' + id + '"]';
+    }
+  };
 
-	/**
-	 * Find elements that are within the boundary
-	 * @param {number} top
-	 * @param {number} right
-	 * @param {number} bottom
-	 * @param {number} left
-	 * @return {jQuery}		A collection of elements
-	 */
-	function findElements(top, right, bottom, left) {
-		var hits = $();
-		$.each(elements, function(i, element) {
-			if (element.height() > 0) {
-				var elTop = element.offset().top,
-					elLeft = element.offset().left,
-					elRight = elLeft + element.width(),
-					elBottom = elTop + element.height();
+  /**
+   * @class
+   *
+   */
+  class ScrollSpy extends Component {
+    /**
+     * Construct ScrollSpy instance
+     * @constructor
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(ScrollSpy, el, options);
 
-				var isIntersect = !(elLeft > right ||
-					elRight < left ||
-					elTop > bottom ||
-					elBottom < top);
+      this.el.M_ScrollSpy = this;
 
-				if (isIntersect) {
-					hits.push(element);
-				}
-			}
-		});
+      /**
+       * Options for the modal
+       * @member Modal#options
+       * @prop {Number} [throttle=100] - Throttle of scroll handler
+       * @prop {Number} [scrollOffset=200] - Offset for centering element when scrolled to
+       * @prop {String} [activeClass='active'] - Class applied to active elements
+       * @prop {Function} [getActiveElement] - Used to find active element
+       */
+      this.options = $.extend({}, ScrollSpy.defaults, options);
 
-		return hits;
-	}
+      // setup
+      ScrollSpy._elements.push(this);
+      ScrollSpy._count++;
+      ScrollSpy._increment++;
+      this.tickId = -1;
+      this.id = ScrollSpy._increment;
+      this._setupEventHandlers();
+      this._handleWindowScroll();
+    }
+
+    static get defaults() {
+      return _defaults;
+    }
+
+    static init(els, options) {
+      return super.init(this, els, options);
+    }
+
+    /**
+     * Get Instance
+     */
+    static getInstance(el) {
+      let domElem = !!el.jquery ? el[0] : el;
+      return domElem.M_ScrollSpy;
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      ScrollSpy._elements.splice(ScrollSpy._elements.indexOf(this), 1);
+      ScrollSpy._elementsInView.splice(ScrollSpy._elementsInView.indexOf(this), 1);
+      ScrollSpy._visibleElements.splice(ScrollSpy._visibleElements.indexOf(this.$el), 1);
+      ScrollSpy._count--;
+      this._removeEventHandlers();
+      $(this.options.getActiveElement(this.$el.attr('id'))).removeClass(this.options.activeClass);
+      this.el.M_ScrollSpy = undefined;
+    }
+
+    /**
+     * Setup Event Handlers
+     */
+    _setupEventHandlers() {
+      let throttledResize = M.throttle(this._handleWindowScroll, 200);
+      this._handleThrottledResizeBound = throttledResize.bind(this);
+      this._handleWindowScrollBound = this._handleWindowScroll.bind(this);
+      if (ScrollSpy._count === 1) {
+        window.addEventListener('scroll', this._handleWindowScrollBound);
+        window.addEventListener('resize', this._handleThrottledResizeBound);
+        document.body.addEventListener('click', this._handleTriggerClick);
+      }
+    }
+
+    /**
+     * Remove Event Handlers
+     */
+    _removeEventHandlers() {
+      if (ScrollSpy._count === 0) {
+        window.removeEventListener('scroll', this._handleWindowScrollBound);
+        window.removeEventListener('resize', this._handleThrottledResizeBound);
+        document.body.removeEventListener('click', this._handleTriggerClick);
+      }
+    }
+
+    /**
+     * Handle Trigger Click
+     * @param {Event} e
+     */
+    _handleTriggerClick(e) {
+      let $trigger = $(e.target);
+      for (let i = ScrollSpy._elements.length - 1; i >= 0; i--) {
+        let scrollspy = ScrollSpy._elements[i];
+        if ($trigger.is('a[href="#' + scrollspy.$el.attr('id') + '"]')) {
+          e.preventDefault();
+          let offset = scrollspy.$el.offset().top + 1;
+
+          anim({
+            targets: [document.documentElement, document.body],
+            scrollTop: offset - scrollspy.options.scrollOffset,
+            duration: 400,
+            easing: 'easeOutCubic'
+          });
+          break;
+        }
+      }
+    }
+
+    /**
+     * Handle Window Scroll
+     */
+    _handleWindowScroll() {
+      // unique tick id
+      ScrollSpy._ticks++;
+
+      // viewport rectangle
+      let top = M.getDocumentScrollTop(),
+        left = M.getDocumentScrollLeft(),
+        right = left + window.innerWidth,
+        bottom = top + window.innerHeight;
+
+      // determine which elements are in view
+      let intersections = ScrollSpy._findElements(top, right, bottom, left);
+      for (let i = 0; i < intersections.length; i++) {
+        let scrollspy = intersections[i];
+        let lastTick = scrollspy.tickId;
+        if (lastTick < 0) {
+          // entered into view
+          scrollspy._enter();
+        }
+
+        // update tick id
+        scrollspy.tickId = ScrollSpy._ticks;
+      }
+
+      for (let i = 0; i < ScrollSpy._elementsInView.length; i++) {
+        let scrollspy = ScrollSpy._elementsInView[i];
+        let lastTick = scrollspy.tickId;
+        if (lastTick >= 0 && lastTick !== ScrollSpy._ticks) {
+          // exited from view
+          scrollspy._exit();
+          scrollspy.tickId = -1;
+        }
+      }
+
+      // remember elements in view for next tick
+      ScrollSpy._elementsInView = intersections;
+    }
+
+    /**
+     * Find elements that are within the boundary
+     * @param {number} top
+     * @param {number} right
+     * @param {number} bottom
+     * @param {number} left
+     * @return {Array.<ScrollSpy>}   A collection of elements
+     */
+    static _findElements(top, right, bottom, left) {
+      let hits = [];
+      for (let i = 0; i < ScrollSpy._elements.length; i++) {
+        let scrollspy = ScrollSpy._elements[i];
+        let currTop = top + scrollspy.options.scrollOffset || 200;
+
+        if (scrollspy.$el.height() > 0) {
+          let elTop = scrollspy.$el.offset().top,
+            elLeft = scrollspy.$el.offset().left,
+            elRight = elLeft + scrollspy.$el.width(),
+            elBottom = elTop + scrollspy.$el.height();
+
+          let isIntersect = !(elLeft > right ||
+            elRight < left ||
+            elTop > bottom ||
+            elBottom < currTop);
+
+          if (isIntersect) {
+            hits.push(scrollspy);
+          }
+        }
+      }
+      return hits;
+    }
+
+    _enter() {
+      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
+        return value.height() != 0;
+      });
+
+      if (ScrollSpy._visibleElements[0]) {
+        $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(this.options.activeClass);
+        if (ScrollSpy._visibleElements[0][0].M_ScrollSpy && this.id < ScrollSpy._visibleElements[0][0].M_ScrollSpy.id) {
+          ScrollSpy._visibleElements.unshift(this.$el);
+        } else {
+          ScrollSpy._visibleElements.push(this.$el);
+        }
+      } else {
+        ScrollSpy._visibleElements.push(this.$el);
+      }
+
+      $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(this.options.activeClass);
+    }
+
+    _exit() {
+      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
+        return value.height() != 0;
+      });
+
+      if (ScrollSpy._visibleElements[0]) {
+        $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(this.options.activeClass);
+
+        ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter((el) => {
+          return el.attr('id') != this.$el.attr('id');
+        });
+        if (ScrollSpy._visibleElements[0]) { // Check if empty
+          $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(this.options.activeClass);
+        }
+      }
+    }
+  }
+
+  /**
+   * @static
+   * @memberof ScrollSpy
+   * @type {Array.<ScrollSpy>}
+   */
+  ScrollSpy._elements = [];
+
+  /**
+   * @static
+   * @memberof ScrollSpy
+   * @type {Array.<ScrollSpy>}
+   */
+  ScrollSpy._elementsInView = [];
+
+  /**
+   * @static
+   * @memberof ScrollSpy
+   * @type {Array.<cash>}
+   */
+  ScrollSpy._visibleElements = [];
+
+  /**
+   * @static
+   * @memberof ScrollSpy
+   */
+  ScrollSpy._count = 0;
+
+  /**
+   * @static
+   * @memberof ScrollSpy
+   */
+  ScrollSpy._increment = 0;
+
+  /**
+   * @static
+   * @memberof ScrollSpy
+   */
+  ScrollSpy._ticks = 0;
 
 
-	/**
-	 * Called when the user scrolls the window
-	 */
-	function onScroll(scrollOffset) {
-		// unique tick id
-		++ticks;
+  M.ScrollSpy = ScrollSpy;
 
-		// viewport rectangle
-		var top = jWindow.scrollTop(),
-			left = jWindow.scrollLeft(),
-			right = left + jWindow.width(),
-			bottom = top + jWindow.height();
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
+  }
 
-		// determine which elements are in view
-		var intersections = findElements(top+offset.top + scrollOffset || 200, right+offset.right, bottom+offset.bottom, left+offset.left);
-		$.each(intersections, function(i, element) {
-
-			var lastTick = element.data('scrollSpy:ticks');
-			if (typeof lastTick != 'number') {
-				// entered into view
-				element.triggerHandler('scrollSpy:enter');
-			}
-
-			// update tick id
-			element.data('scrollSpy:ticks', ticks);
-		});
-
-		// determine which elements are no longer in view
-		$.each(elementsInView, function(i, element) {
-			var lastTick = element.data('scrollSpy:ticks');
-			if (typeof lastTick == 'number' && lastTick !== ticks) {
-				// exited from view
-				element.triggerHandler('scrollSpy:exit');
-				element.data('scrollSpy:ticks', null);
-			}
-		});
-
-		// remember elements in view for next tick
-		elementsInView = intersections;
-	}
-
-	/**
-	 * Called when window is resized
-	*/
-	function onWinSize() {
-		jWindow.trigger('scrollSpy:winSize');
-	}
-
-
-	/**
-	 * Enables ScrollSpy using a selector
-	 * @param {jQuery|string} selector  The elements collection, or a selector
-	 * @param {Object=} options	Optional.
-        throttle : number -> scrollspy throttling. Default: 100 ms
-        offsetTop : number -> offset from top. Default: 0
-        offsetRight : number -> offset from right. Default: 0
-        offsetBottom : number -> offset from bottom. Default: 0
-        offsetLeft : number -> offset from left. Default: 0
-				activeClass : string -> Class name to be added to the active link. Default: active
-	 * @returns {jQuery}
-	 */
-	$.scrollSpy = function(selector, options) {
-	  var defaults = {
-			throttle: 100,
-			scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
-			activeClass: 'active',
-			getActiveElement: function(id) {
-				return 'a[href="#' + id + '"]';
-			}
-    };
-    options = $.extend(defaults, options);
-
-		var visible = [];
-		selector = $(selector);
-		selector.each(function(i, element) {
-			elements.push($(element));
-			$(element).data("scrollSpy:id", i);
-			// Smooth scroll to section
-		  $('a[href="#' + $(element).attr('id') + '"]').click(function(e) {
-		    e.preventDefault();
-		    var offset = $(Materialize.escapeHash(this.hash)).offset().top + 1;
-	    	$('html, body').animate({ scrollTop: offset - options.scrollOffset }, {duration: 400, queue: false, easing: 'easeOutCubic'});
-		  });
-		});
-
-		offset.top = options.offsetTop || 0;
-		offset.right = options.offsetRight || 0;
-		offset.bottom = options.offsetBottom || 0;
-		offset.left = options.offsetLeft || 0;
-
-		var throttledScroll = Materialize.throttle(function() {
-			onScroll(options.scrollOffset);
-		}, options.throttle || 100);
-		var readyScroll = function(){
-			$(document).ready(throttledScroll);
-		};
-
-		if (!isSpying) {
-			jWindow.on('scroll', readyScroll);
-			jWindow.on('resize', readyScroll);
-			isSpying = true;
-		}
-
-		// perform a scan once, after current execution context, and after dom is ready
-		setTimeout(readyScroll, 0);
-
-
-		selector.on('scrollSpy:enter', function() {
-			visible = $.grep(visible, function(value) {
-	      return value.height() != 0;
-	    });
-
-			var $this = $(this);
-
-			if (visible[0]) {
-				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
-				if ($this.data('scrollSpy:id') < visible[0].data('scrollSpy:id')) {
-					visible.unshift($(this));
-				}
-				else {
-					visible.push($(this));
-				}
-			}
-			else {
-				visible.push($(this));
-			}
-
-
-			$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
-		});
-		selector.on('scrollSpy:exit', function() {
-			visible = $.grep(visible, function(value) {
-	      return value.height() != 0;
-	    });
-
-			if (visible[0]) {
-				$(options.getActiveElement(visible[0].attr('id'))).removeClass(options.activeClass);
-				var $this = $(this);
-				visible = $.grep(visible, function(value) {
-	        return value.attr('id') != $this.attr('id');
-	      });
-	      if (visible[0]) { // Check if empty
-					$(options.getActiveElement(visible[0].attr('id'))).addClass(options.activeClass);
-	      }
-			}
-		});
-
-		return selector;
-	};
-
-	/**
-	 * Listen for window resize events
-	 * @param {Object=} options						Optional. Set { throttle: number } to change throttling. Default: 100 ms
-	 * @returns {jQuery}		$(window)
-	 */
-	$.winSizeSpy = function(options) {
-		$.winSizeSpy = function() { return jWindow; }; // lock from multiple calls
-		options = options || {
-			throttle: 100
-		};
-		return jWindow.on('resize', Materialize.throttle(onWinSize, options.throttle || 100));
-	};
-
-	/**
-	 * Enables ScrollSpy on a collection of elements
-	 * e.g. $('.scrollSpy').scrollSpy()
-	 * @param {Object=} options	Optional.
-											throttle : number -> scrollspy throttling. Default: 100 ms
-											offsetTop : number -> offset from top. Default: 0
-											offsetRight : number -> offset from right. Default: 0
-											offsetBottom : number -> offset from bottom. Default: 0
-											offsetLeft : number -> offset from left. Default: 0
-	 * @returns {jQuery}
-	 */
-	$.fn.scrollSpy = function(options) {
-		return $.scrollSpy($(this), options);
-	};
-
-})(jQuery);
+})(cash, M.anime);

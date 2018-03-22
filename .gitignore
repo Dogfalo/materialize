@@ -1,5 +1,14 @@
 .DS_Store
-prepros.cfg
+.idea
+.vs
+.project
+.projectile
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
 Thumbs.db
 js/materialize.js
 test2.html

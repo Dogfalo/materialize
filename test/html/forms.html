@@ -63,10 +63,22 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
+          <input id="email2" type="email" class="validate invalid">
+          <label for="email2">Email</label>
+          <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+        </div>
+      </div>
+
+      <!-- icon prefix with error message -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
           <input id="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
       </div>
+
+
       <div class="row">
         <p>Make sure these textareas are aligned correctly.</p>
         <div class="input-field col s6">
@@ -82,12 +94,19 @@
       <div class="row">
         <p>Make sure error message and label don't overlap.</p>
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email" data-error="wrong" data-success="right">Email</label>
+          <input id="email2" type="email" class="validate">
+          <label for="email2">Email</label>
+          <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
         </div>
-        <div class="input-field col s6">
-          <input id="email" type="email" class="validate">
-          <label for="email" data-error="wrong" data-success="right">Email</label>
+        <div class="input-field col s12">
+          <input id="email3" type="email" class="validate">
+          <label for="email3">Email</label>
+          <span class="helper-text" data-error="wrong" data-success="right">Helper Text</span>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="textarea-error" class="materialize-textarea invalid"></textarea>
+          <label for="textarea-error">Invalid Textarea</label>
+          <span class="helper-text" data-error="wrong">Helper Text</span>
         </div>
       </div>
     </form>
@@ -112,7 +131,6 @@
   <div class="row">
     <div class="input-field col s4">
       <select multiple>
-        <option value="" disabled selected>Choose your option</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
@@ -124,7 +142,6 @@
     <!-- second materialize select multiple -->
     <div class="input-field col s4">
       <select multiple>
-        <option value="" disabled >Choose your option</option>
         <option value="1" selected>Option 1</option>
         <option value="2">Option 2</option>
         <option value="3" selected>Option 3</option>
@@ -136,7 +153,6 @@
     <!-- materialize select multiple with overflow -->
     <div class="input-field col s4">
       <select multiple>
-        <option value="" disabled >Choose your option</option>
         <option value="1" selected>Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
@@ -268,7 +284,33 @@
   </div>
 
   <div class="row">
-    <div class="col s12">
+    <div class="col s12 m4">
+      <div class="input-field">
+        <select>
+          <option value="" disabled >Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2"selected>Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Helper text Materialize Select</label>
+        <span class="helper-text" data-error="wrong">Helper Text</span>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="input-field">
+        <select disabled>
+          <option value="" disabled >Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2"selected>Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Disabled text Materialize Select</label>
+        <span class="helper-text" data-error="wrong">Helper Text</span>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
       This is an inline select:
       <div class="input-field inline">
         <select>
@@ -286,7 +328,6 @@
     <h2>Select Icons</h2>
     <div class="input-field col s12">
       <select multiple>
-        <option value="" disabled selected>Choose your option</option>
         <option value="1" data-icon="http://placehold.it/50x50" class="circle">Option 1</option>
         <option value="2" data-icon="http://placehold.it/50x50" class="circle right">Option 2</option>
         <option value="3">Option 3</option>
@@ -345,7 +386,7 @@
 
   <script>
     $(document).ready(function(){
-        $('select').material_select();
+        $('select').formSelect();
     });
   </script>
 

@@ -3,7 +3,7 @@
 Package.describe({
   name: 'materialize:materialize',  // http://atmospherejs.com/materialize/materialize
   summary: 'Materialize (official): A modern responsive front-end framework based on Material Design',
-  version: '0.100.2',
+  version: '1.0.0-beta',
   git: 'https://github.com/Dogfalo/materialize.git'
 });
 
@@ -12,32 +12,12 @@ Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
 
   api.use('fourseven:scss@4.5.4');
-  api.use('jquery', 'client');
-  api.imply('jquery', 'client');
-
-  var assets = [
-    'fonts/roboto/Roboto-Bold.woff',
-    'fonts/roboto/Roboto-Bold.woff2',
-    'fonts/roboto/Roboto-Light.woff',
-    'fonts/roboto/Roboto-Light.woff2',
-    'fonts/roboto/Roboto-Medium.woff',
-    'fonts/roboto/Roboto-Medium.woff2',
-    'fonts/roboto/Roboto-Regular.woff',
-    'fonts/roboto/Roboto-Regular.woff2',
-    'fonts/roboto/Roboto-Thin.woff',
-    'fonts/roboto/Roboto-Thin.woff2',
-  ];
-
-  addAssets(api, assets);
 
   api.addFiles([
     'dist/js/materialize.js'
   ], 'client');
 
   var scssFiles = [
-    'sass/components/date_picker/_default.date.scss',
-    'sass/components/date_picker/_default.scss',
-    'sass/components/date_picker/_default.time.scss',
     'sass/components/forms/_checkboxes.scss',
     'sass/components/forms/_file-input.scss',
     'sass/components/forms/_forms.scss',
@@ -52,7 +32,9 @@ Package.onUse(function (api) {
     'sass/components/_carousel.scss',
     'sass/components/_chips.scss',
     'sass/components/_collapsible.scss',
-    'sass/components/_color.scss',
+    'sass/components/_color-classes.scss',
+    'sass/components/_color-variables.scss',
+    'sass/components/_datepicker.scss',
     'sass/components/_dropdown.scss',
     'sass/components/_global.scss',
     'sass/components/_grid.scss',
@@ -63,12 +45,12 @@ Package.onUse(function (api) {
     'sass/components/_normalize.scss',
     'sass/components/_preloader.scss',
     'sass/components/_pulse.scss',
-    'sass/components/_roboto.scss',
-    'sass/components/_sideNav.scss',
+    'sass/components/_sidenav.scss',
     'sass/components/_slider.scss',
     'sass/components/_table_of_contents.scss',
     'sass/components/_tabs.scss',
     'sass/components/_tapTarget.scss',
+    'sass/components/_timepicker.scss',
     'sass/components/_toast.scss',
     'sass/components/_tooltip.scss',
     'sass/components/_transitions.scss',
@@ -78,17 +60,8 @@ Package.onUse(function (api) {
     'sass/materialize.scss'
   ];
 
-  api.addFiles(scssFiles, 'client');
+  api.addFiles(scssFiles, 'client', { isImport: true });
 
 
   api.export('Materialize', 'client');
 });
-
-
-function addAssets(api, assets){
-  if(api.addAssets){
-    api.addAssets(assets, 'client');
-  } else {
-    api.addFiles(assets, 'client', {isAsset: true});
-  }
-}

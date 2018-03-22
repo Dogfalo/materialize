@@ -19,16 +19,16 @@
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script>
-      window.liveSettings = {
-        api_key: "a0b49b34b93844c38eaee15690d86413",
-        picker: "bottom-right",
-        detectlang: true,
-        dynamic: true,
-        autocollect: true
-      };
-    </script>
-    <script src="//cdn.transifex.com/live.js"></script>
+    <!-- if !isDemo-->
+    <!--   script.-->
+    <!--     window.liveSettings = {-->
+    <!--       api_key: "a0b49b34b93844c38eaee15690d86413",-->
+    <!--       picker: "bottom-right",-->
+    <!--       detectlang: true,-->
+    <!--       dynamic: true,-->
+    <!--       autocollect: true-->
+    <!--     };-->
+    <!--   script(src='//cdn.transifex.com/live.js')-->
   </head>
   <body>
     <header>
@@ -39,16 +39,30 @@
       </div>
       <nav class="top-nav">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Breadcrumbs</a></div>
+          <div class="nav-wrapper">
+            <div class="row">
+              <div class="col s12 m10 offset-m1">
+                <h1 class="header">Breadcrumbs</h1>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
-      <ul id="nav-mobile" class="side-nav fixed">
+      <div class="container"><a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+      <ul id="nav-mobile" class="sidenav sidenav-fixed">
         <li class="logo"><a id="logo-container" href="/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="version"><a href="#" data-target="version-dropdown" class="dropdown-trigger">
+            1.0.0-alpha.4
+            <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></a>
+          <ul id="version-dropdown" class="dropdown-content">
+            <li><a>1.0.0-alpha.4</a></li>
+            <li><a href="http://archives.materializecss.com/0.100.2/">0.100.2</a></li>
+          </ul>
+        </li>
         <li class="search">
-          <div class="search-wrapper card">
-            <input id="search"><i class="material-icons">search</i>
+          <div class="search-wrapper">
+            <input id="search" placeholder="Search"><i class="material-icons">search</i>
             <div class="search-results"></div>
           </div>
         </li>
@@ -56,7 +70,7 @@
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">CSS</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="color.html">Color</a></li>
@@ -72,17 +86,16 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header active waves-effect waves-teal">Components</a>
+            <li class="bold active"><a class="collapsible-header waves-effect waves-teal">Components</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="badges.html">Badges</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li class="active"><a href="breadcrumbs.html">Breadcrumbs</a></li>
                   <li><a href="cards.html">Cards</a></li>
-                  <li><a href="chips.html">Chips</a></li>
                   <li><a href="collections.html">Collections</a></li>
+                  <li><a href="floating-action-button.html">Floating Action Button</a></li>
                   <li><a href="footer.html">Footer</a></li>
-                  <li><a href="forms.html">Forms</a></li>
                   <li><a href="icons.html">Icons</a></li>
                   <li><a href="navbar.html">Navbar</a></li>
                   <li><a href="pagination.html">Pagination</a></li>
@@ -90,24 +103,39 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">JavaScript</a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">JavaScript</a>
               <div class="collapsible-body">
                 <ul>
+                  <li><a href="auto-init.html">Auto Init</a></li>
                   <li><a href="carousel.html">Carousel</a></li>
                   <li><a href="collapsible.html">Collapsible</a></li>
-                  <li><a href="dialogs.html">Dialogs</a></li>
                   <li><a href="dropdown.html">Dropdown</a></li>
                   <li><a href="feature-discovery.html">FeatureDiscovery</a></li>
                   <li><a href="media.html">Media</a></li>
                   <li><a href="modals.html">Modals</a></li>
                   <li><a href="parallax.html">Parallax</a></li>
                   <li><a href="pushpin.html">Pushpin</a></li>
-                  <li><a href="scrollfire.html">ScrollFire</a></li>
                   <li><a href="scrollspy.html">Scrollspy</a></li>
-                  <li><a href="side-nav.html">SideNav</a></li>
+                  <li><a href="sidenav.html">Sidenav</a></li>
                   <li><a href="tabs.html">Tabs</a></li>
-                  <li><a href="transitions.html">Transitions</a></li>
+                  <li><a href="toasts.html">Toasts</a></li>
+                  <li><a href="tooltips.html">Tooltips</a></li>
                   <li><a href="waves.html">Waves</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="bold"><a class="collapsible-header waves-effect waves-teal">Forms</a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a href="autocomplete.html">Autocomplete</a></li>
+                  <li><a href="checkboxes.html">Checkboxes</a></li>
+                  <li><a href="chips.html">Chips</a></li>
+                  <li><a href="pickers.html">Pickers</a></li>
+                  <li><a href="radio-buttons.html">Radio Buttons</a></li>
+                  <li><a href="range.html">Range</a></li>
+                  <li><a href="select.html">Select</a></li>
+                  <li><a href="switches.html">Switches</a></li>
+                  <li><a href="text-inputs.html">Text Inputs</a></li>
                 </ul>
               </div>
             </li>
@@ -137,7 +165,7 @@
     <main><div class="container">
   <div class="row">
 
-    <div class="col s12 m9 l10">
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <!--  Collections Section  -->
       <div id="basic" class="section scrollspy">
@@ -145,7 +173,7 @@
         <div class="row">
           <div class="col s12">
             <p class="caption">Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content. </p>
-            <h2 class="header">Basic</h2>
+            <h3 class="header">Basic</h3>
 
             <nav>
               <div class="nav-wrapper">
@@ -178,7 +206,7 @@
 
     </div>
 
-    <div class="col hide-on-small-only m3 l2">
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
@@ -196,85 +224,89 @@
 </div>
 
 
-    </main>    <footer class="page-footer">
+    </main>    <footer class="page-footer docs-footer">
       <div class="container">
-        <div class="row">
-          <div class="col l4 s12">
-            <h5 class="white-text">Help Materialize Grow</h5>
-            <p class="grey-text text-lighten-4">We hope you have enjoyed using Materialize and if you feel like it has helped you out and want to support the team you can help us by donating or backing us on Patreon. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-            <a class="btn waves-effect waves-light red lighten-3" href="/support-us.html">Support Us</a>
-          </div>
-          <div class="col l4 s12">
-            <h5 class="white-text">Join the Discussion</h5>
-            <p class="grey-text text-lighten-4">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
-            <a class="btn waves-effect waves-light red lighten-3" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
-          </div>
-          <div class="col l4 s12" style="overflow: hidden;">
-            <h5 class="white-text">Connect</h5>
-            <iframe src="https://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
-            <br>
-            <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
-            <br>
-            <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <h5 class="white-text">Patreon Sponsors</h5>
-          </div>
-          <div class="col s12">
-            <div class="patreon-footer-ad">
-              <a href="http://lucidocean.com" target="_blank">
-                <img src="https://s8.postimg.org/762csselh/logo_full_size.png" alt="Lucid Ocean">
-              </a>
+        <div class="row" style="margin-bottom: 0;">
+          <div class="col s12 m10 offset-m1">
+            <div class="row">
+              <div class="col l4 s12">
+                <h5>Help Materialize Grow</h5>
+                <p class="grey-text text-darken-2">We hope you have enjoyed using Materialize and if you feel like it has helped you out and want to support the team you can help us by donating or backing us on Patreon. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+                <a class="btn waves-effect waves-light red lighten-2" href="/support-us.html">Support Us</a>
+
+              </div>
+              <div class="col l4 s12">
+                <h5>Join the Discussion</h5>
+                <p class="grey-text text-darken-2">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+                <a class="btn waves-effect waves-light red lighten-2" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
+              </div>
+              <div class="col l4 s12" style="overflow: hidden;">
+                <h5>Connect</h5>
+                <iframe src="https://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+                <br>
+                <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+                <br>
+                <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+              </div>
             </div>
-            <div class="patreon-footer-ad">
-              <a href="https://www.stillio.com/" target="_blank">
-                <img src="https://s13.postimg.org/ry9uai5mf/stillio-as-logo-1000-white.png" title="Capture and archive website screenshots automatically with Stillio" alt="Capture and archive website screenshots automatically with Stillio">
-              </a>
+
+            <div class="row">
+              <div class="col s12">
+                <h5>Patreon Sponsors</h5>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
+                  <a href="http://lucidocean.com" target="_blank" rel="noopener">
+                    <img src="https://s8.postimg.org/762csselh/logo_full_size.png" alt="Lucid Ocean">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.stillio.com/" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/hcpyykzbr/stillio-as-logo-1000-green.png" title="Capture and archive website screenshots automatically with Stillio" alt="Capture and archive website screenshots automatically with Stillio">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://gaggle.email/" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/oqns3tzmf/gaggle-mail-logo.png" alt="Gaggle Mail">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://icons8.com/material-icons" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
+                  </a>
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
+                  <a href="https://keymedium.com" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/m9c0wcpxz/2017-10-23-logo-refresh.png" alt="Philadelphia Web Design & SEO Agency">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.brandnewweb.nl" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/3pxqiuqyf/brandnewweb.png" alt="Brand New Web">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://typestack.nl" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/6k0vwalev/typestack.png" alt="Open source fully loaded CMS in #2019">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.clicktime.com/?utm_campaign=material" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/7q4vv0p47/clicktime-logo-400.png" alt="ClickTime">
+                  </a>
+                </div>
+
+              </div>
             </div>
-            <div class="patreon-footer-ad">
-              <a href="https://gaggle.email/" target="_blank">
-                <img src="https://s13.postimg.org/6bnal87gn/gaggle-mail-logo-transparent_1.png" alt="Gaggle Mail">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://icons8.com/material-icons" target="_blank">
-                <img src="https://s13.postimg.org/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://keymedium.com" target="_blank">
-                <img src="https://s13.postimg.org/mgznt9tbb/Key_Medium-white.png" alt="Philadelphia Web Design & SEO Agency">
-              </a>
-            </div>
-          </div>
-          <div class="col s12">
-            <div class="patreon-footer-ad">
-              <a href="https://www.brandnewweb.nl" target="_blank">
-                <img src="https://s13.postimg.org/bioeat9s7/brandnewweb-white.png" alt="Brand New Web">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://typestack.nl" target="_blank">
-                <img src="https://s13.postimg.org/wfkmfhfiv/typestack-white.png" alt="Open source fully loaded CMS in #2019
-">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://www.clicktime.com/?utm_campaign=material
-" target="_blank">
-                <img src="https://s13.postimg.org/twyxf4tw7/clicktime-logo-wt.png" alt="ClickTime">
-              </a>
+
+            <div class="footer-copyright">
+              © 2014-<noscript>2018</noscript><script type="text/javascript">document.write(new Date().getFullYear());</script> Materialize, All rights reserved.
+              <a class="grey-text text-darken-1 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
             </div>
 
           </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        © 2014-2017 Materialize, All rights reserved.
-        <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>
     </footer>

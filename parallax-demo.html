@@ -19,16 +19,26 @@
     <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- if !isDemo-->
+    <!--   script.-->
+    <!--     window.liveSettings = {-->
+    <!--       api_key: "a0b49b34b93844c38eaee15690d86413",-->
+    <!--       picker: "bottom-right",-->
+    <!--       detectlang: true,-->
+    <!--       dynamic: true,-->
+    <!--       autocollect: true-->
+    <!--     };-->
+    <!--   script(src='//cdn.transifex.com/live.js')-->
   </head>
   <body class="parallax-demo"><header>
   <nav>
     <div class="container">
       <div class="nav-wrapper">
         <a href="index.html" class="brand-logo">Materialize</a>
-        <ul class="right side-nav" id="nav-mobile">
+        <ul class="right sidenav" id="nav-mobile">
           <li class="hide-on-small-only"><a href="collapsible.html"><i class="material-icons">arrow_back</i></a></li>
         </ul>
-        <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="material-icons">menu</i></a>
+        <a class="sidenav-trigger" href="#" data-target='nav-mobile'><i class="material-icons">menu</i></a>
       </div>
     </div>
   </nav>
@@ -41,25 +51,26 @@
   </div>
   <div class="section white">
     <div class="row container">
-      <h2 class="header">Parallax</h2>
-      <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
-    </div>
-    <div class="row container">
-      <h4 class="light">Parallax Demo HTML</h4>
-      <pre><code class="language-markup col s12">
-  &lt;div class="parallax-container">
-    &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
-  &lt;/div>
-  &lt;div class="section white">
-    &lt;div class="row container">
-      &lt;h2 class="header">Parallax&lt;/h2>
-      &lt;p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.&lt;/p>
+      <div class="col s12 m10 offset-m1">
+        <h2 class="header">Parallax</h2>
+        <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+
+        <h4 class="light">Parallax Demo HTML</h4>
+        <pre><code class="language-markup col s12">
+    &lt;div class="parallax-container">
+      &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
     &lt;/div>
-  &lt;/div>
-  &lt;div class="parallax-container">
-    &lt;div class="parallax">&lt;img src="images/parallax2.jpg">&lt;/div>
-  &lt;/div>
-      </code></pre>
+    &lt;div class="section white">
+      &lt;div class="row container">
+        &lt;h2 class="header">Parallax&lt;/h2>
+        &lt;p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.&lt;/p>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="parallax-container">
+      &lt;div class="parallax">&lt;img src="images/parallax2.jpg">&lt;/div>
+    &lt;/div>
+        </code></pre>
+      </div>
     </div>
   </div>
   <div class="parallax-container">
@@ -70,85 +81,90 @@
     <a href="#!" class="close"><i class="material-icons">close</i></a>
     <!-- CarbonAds Zone Code -->
     <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
-  </div>    <footer class="page-footer">
+  </div>
+    <footer class="page-footer docs-footer">
       <div class="container">
-        <div class="row">
-          <div class="col l4 s12">
-            <h5 class="white-text">Help Materialize Grow</h5>
-            <p class="grey-text text-lighten-4">We hope you have enjoyed using Materialize and if you feel like it has helped you out and want to support the team you can help us by donating or backing us on Patreon. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-            <a class="btn waves-effect waves-light red lighten-3" href="/support-us.html">Support Us</a>
-          </div>
-          <div class="col l4 s12">
-            <h5 class="white-text">Join the Discussion</h5>
-            <p class="grey-text text-lighten-4">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
-            <a class="btn waves-effect waves-light red lighten-3" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
-          </div>
-          <div class="col l4 s12" style="overflow: hidden;">
-            <h5 class="white-text">Connect</h5>
-            <iframe src="https://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
-            <br>
-            <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
-            <br>
-            <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <h5 class="white-text">Patreon Sponsors</h5>
-          </div>
-          <div class="col s12">
-            <div class="patreon-footer-ad">
-              <a href="http://lucidocean.com" target="_blank">
-                <img src="https://s8.postimg.org/762csselh/logo_full_size.png" alt="Lucid Ocean">
-              </a>
+        <div class="row" style="margin-bottom: 0;">
+          <div class="col s12 m10 offset-m1">
+            <div class="row">
+              <div class="col l4 s12">
+                <h5>Help Materialize Grow</h5>
+                <p class="grey-text text-darken-2">We hope you have enjoyed using Materialize and if you feel like it has helped you out and want to support the team you can help us by donating or backing us on Patreon. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+                <a class="btn waves-effect waves-light red lighten-2" href="/support-us.html">Support Us</a>
+
+              </div>
+              <div class="col l4 s12">
+                <h5>Join the Discussion</h5>
+                <p class="grey-text text-darken-2">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+                <a class="btn waves-effect waves-light red lighten-2" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
+              </div>
+              <div class="col l4 s12" style="overflow: hidden;">
+                <h5>Connect</h5>
+                <iframe src="https://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+                <br>
+                <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+                <br>
+                <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+              </div>
             </div>
-            <div class="patreon-footer-ad">
-              <a href="https://www.stillio.com/" target="_blank">
-                <img src="https://s13.postimg.org/ry9uai5mf/stillio-as-logo-1000-white.png" title="Capture and archive website screenshots automatically with Stillio" alt="Capture and archive website screenshots automatically with Stillio">
-              </a>
+
+            <div class="row">
+              <div class="col s12">
+                <h5>Patreon Sponsors</h5>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
+                  <a href="http://lucidocean.com" target="_blank" rel="noopener">
+                    <img src="https://s8.postimg.org/762csselh/logo_full_size.png" alt="Lucid Ocean">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.stillio.com/" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/hcpyykzbr/stillio-as-logo-1000-green.png" title="Capture and archive website screenshots automatically with Stillio" alt="Capture and archive website screenshots automatically with Stillio">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://gaggle.email/" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/oqns3tzmf/gaggle-mail-logo.png" alt="Gaggle Mail">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://icons8.com/material-icons" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
+                  </a>
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
+                  <a href="https://keymedium.com" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/m9c0wcpxz/2017-10-23-logo-refresh.png" alt="Philadelphia Web Design & SEO Agency">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.brandnewweb.nl" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/3pxqiuqyf/brandnewweb.png" alt="Brand New Web">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://typestack.nl" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/6k0vwalev/typestack.png" alt="Open source fully loaded CMS in #2019">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.clicktime.com/?utm_campaign=material" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.org/7q4vv0p47/clicktime-logo-400.png" alt="ClickTime">
+                  </a>
+                </div>
+
+              </div>
             </div>
-            <div class="patreon-footer-ad">
-              <a href="https://gaggle.email/" target="_blank">
-                <img src="https://s13.postimg.org/6bnal87gn/gaggle-mail-logo-transparent_1.png" alt="Gaggle Mail">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://icons8.com/material-icons" target="_blank">
-                <img src="https://s13.postimg.org/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://keymedium.com" target="_blank">
-                <img src="https://s13.postimg.org/mgznt9tbb/Key_Medium-white.png" alt="Philadelphia Web Design & SEO Agency">
-              </a>
-            </div>
-          </div>
-          <div class="col s12">
-            <div class="patreon-footer-ad">
-              <a href="https://www.brandnewweb.nl" target="_blank">
-                <img src="https://s13.postimg.org/bioeat9s7/brandnewweb-white.png" alt="Brand New Web">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://typestack.nl" target="_blank">
-                <img src="https://s13.postimg.org/wfkmfhfiv/typestack-white.png" alt="Open source fully loaded CMS in #2019
-">
-              </a>
-            </div>
-            <div class="patreon-footer-ad">
-              <a href="https://www.clicktime.com/?utm_campaign=material
-" target="_blank">
-                <img src="https://s13.postimg.org/twyxf4tw7/clicktime-logo-wt.png" alt="ClickTime">
-              </a>
+
+            <div class="footer-copyright">
+              © 2014-<noscript>2018</noscript><script type="text/javascript">document.write(new Date().getFullYear());</script> Materialize, All rights reserved.
+              <a class="grey-text text-darken-1 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
             </div>
 
           </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        © 2014-2017 Materialize, All rights reserved.
-        <a class="grey-text text-lighten-4 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
         </div>
       </div>
     </footer>
