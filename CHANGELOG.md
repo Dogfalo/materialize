@@ -2,6 +2,46 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
+## 1.0.0-beta (March 21st, 2018)
+- Autocomplete
+  - Now uses dropdown
+
+- Carousel
+  - Added numVisible option
+
+- Collapsible
+  - Added keyboard support
+
+- Dropdown
+  - Fixed scrolling dropdown bug on touch devices
+
+- Javascript Initialization
+  - Added AutoInit function
+
+- Modals
+  - Focus now stays within open modal
+
+- Pickers
+  - Standardized action buttons to match those on android
+  - Added support for date and time input types
+  - **fromnow renamed to fromNow**
+
+- Select
+  - Dropdown scrolls to selected option
+
+- Sidenav
+  - Now detects vertical scrolling
+
+- Tabs
+  - Fixed tab preselection on swipeable tabs
+
+- TapTarget
+  - **Reverted name change from FeatureDiscovery**
+
+- Tooltips
+  - Added keyboard support
+
+
 ## 1.0.0-alpha.4 (February 18th, 2018)
 - Badge
   - Fixed display issue when used in a table

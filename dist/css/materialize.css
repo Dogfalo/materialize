@@ -1,5 +1,5 @@
 /*!
- * Materialize v1.0.0-alpha.4 (http://materializecss.com)
+ * Materialize v1.0.0-beta (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -4903,8 +4903,9 @@ small {
 }
 
 .card .card-action {
-  position: relative;
+  background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
+  position: relative;
   padding: 16px 24px;
 }
 
@@ -5083,8 +5084,13 @@ small {
   font-size: 14px;
   text-overflow: ellipsis;
   overflow: hidden;
-  -webkit-transition: color .28s ease;
-  transition: color .28s ease;
+  -webkit-transition: color .28s ease, background-color .28s ease;
+  transition: color .28s ease, background-color .28s ease;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+  background-color: rgba(246, 178, 181, 0.2);
+  outline: none;
 }
 
 .tabs .tab a:hover, .tabs .tab a.active {
@@ -6524,6 +6530,14 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
           transform-origin: 0 0;
 }
 
+.input-field > input[type=date]:not(.browser-default) + label,
+.input-field > input[type=time]:not(.browser-default) + label {
+  -webkit-transform: translateY(-14px) scale(0.8);
+          transform: translateY(-14px) scale(0.8);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+
 .input-field .helper-text {
   position: relative;
   min-height: 18px;
@@ -6585,6 +6599,8 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
+  -webkit-transition: .3s background-color;
+  transition: .3s background-color;
 }
 
 .nav-wrapper .input-field input[type=search] {
@@ -6661,13 +6677,6 @@ textarea.materialize-textarea {
 }
 
 /* Autocomplete */
-.autocomplete-content {
-  margin-top: -8px;
-  margin-bottom: 8px;
-  opacity: 1;
-  position: static;
-}
-
 .autocomplete-content li .highlight {
   color: #444;
 }
@@ -7121,17 +7130,6 @@ select {
   border: 1px solid #f2f2f2;
   border-radius: 2px;
   height: 3rem;
-}
-
-.input-field select {
-  display: block;
-  position: absolute;
-  width: 0;
-  pointer-events: none;
-  height: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
 }
 
 .select-label {
@@ -8786,6 +8784,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
           justify-content: space-between;
 }
 
+.datepicker-cancel,
 .datepicker-clear,
 .datepicker-today,
 .datepicker-done {
