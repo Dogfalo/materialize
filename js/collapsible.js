@@ -1,6 +1,6 @@
 // (function ($, anim) {
   // 'use strict';
-
+import M from './global.js';
 import Component from './component.js';
 import cash from './cash.js';
 import anim from './anime.min.js';

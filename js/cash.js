@@ -1,7 +1,7 @@
 /*! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
-(function (factory) {
-  window.cash = factory();
-})(function () {
+// (function (factory) {
+//   window.cash = factory();
+// })(function () {
   var doc = document, win = window, ArrayProto = Array.prototype, slice = ArrayProto.slice, filter = ArrayProto.filter, push = ArrayProto.push;
 
   var noop = function () {}, isFunction = function (item) {
@@ -956,5 +956,5 @@
   });
 
 
-  return cash;
-});
+ export default cash;
+// });

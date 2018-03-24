@@ -1,6 +1,6 @@
 import pkg from './package.json';
 import babel from 'rollup-plugin-babel';
-import serve from 'rollup-plugin-serve';
+import browsersync from 'rollup-plugin-browsersync'
 
 
 export default [
@@ -9,15 +9,19 @@ export default [
 		input: 'js/index.js',
 		output: {
       file:'bin/materialize.js',
-			name: 'howLongUntilLunch',
-			format: 'iife'
+			name: 'M',
+			format: 'umd'
 		},
 		plugins: [
 
 			babel({
         exclude: 'node_modules/**' // only transpile our source code
       }),
-      serve(),
+      browsersync({
+        server: {baseDir: './'},
+        port: 8000,
+        open: false
+      })
 		]
 	}
 ];

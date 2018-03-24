@@ -50,6 +50,7 @@
     "node-sass": "^4.7.2",
     "phantomjs-prebuilt": "^2.1.14",
     "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-browsersync": "^0.2.6",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-serve": "^0.4.2"
   },

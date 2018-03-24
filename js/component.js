@@ -1,3 +1,5 @@
+import cash from './cash.js';
+
 export default class Component {
   /**
    * Generic constructor for all components
