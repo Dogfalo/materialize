@@ -1,5 +1,9 @@
-(function ($, anim) {
-  'use strict';
+// (function ($, anim) {
+  // 'use strict';
+
+import Component from './component.js';
+import cash from './cash.js';
+import anim from './anime.min.js';
 
   let _defaults = {
     accordion: true,
@@ -16,7 +20,7 @@
    * @class
    *
    */
-  class Collapsible extends Component {
+  export class Collapsible extends Component {
     /**
      * Construct Collapsible instance
      * @constructor
@@ -272,4 +276,4 @@
     M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
   }
 
-}(cash, M.anime));
+// }(cash, M.anime));

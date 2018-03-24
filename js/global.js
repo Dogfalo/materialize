@@ -412,3 +412,5 @@ M.throttle = function(func, wait, options) {
     return result;
   };
 };
+
+export default M;
