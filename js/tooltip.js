@@ -256,6 +256,7 @@
 
     _handleMouseEnter() {
       this.isHovered = true;
+      this.isFocused = false;  // Allows close of tooltip when opened by focus.
       this.open();
     }
 
