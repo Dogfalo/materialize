@@ -115,11 +115,9 @@
 
       if (!this.options.defaultDate) {
         this.options.defaultDate = new Date(Date.parse(this.el.value));
-        this.options.setDefaultDate = true;
       }
 
       let defDate = this.options.defaultDate;
-
       if (Datepicker._isDate(defDate)) {
         if (this.options.setDefaultDate) {
           this.setDate(defDate, true);
@@ -283,6 +281,8 @@
 
       Datepicker._setToStartOfDay(this.date);
       this.gotoDate(this.date);
+
+      this.setInputValue();
 
       if (!preventOnSelect && typeof this.options.onSelect === 'function') {
         this.options.onSelect.call(this, this.date);
