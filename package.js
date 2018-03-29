@@ -63,5 +63,5 @@ Package.onUse(function (api) {
   api.addFiles(scssFiles, 'client', { isImport: true });
 
 
-  api.export('Materialize', 'client');
+  api.export('M', 'client');
 });
