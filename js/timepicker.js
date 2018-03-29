@@ -21,7 +21,14 @@
 
 		autoClose: false,      // auto close when minute is selected
 		twelveHour: true,      // change to 12 hour AM/PM clock from 24 hour
-		vibrate: true          // vibrate the device when dragging clock hand
+		vibrate: true,          // vibrate the device when dragging clock hand
+
+    // Callbacks
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    onSelect: null
   };
 
 
@@ -191,6 +198,10 @@
 				}, this.options.duration / 2);
       }
 
+      if (typeof this.options.onSelect === 'function') {
+        this.options.onSelect.call(this, this.hours, this.minutes);
+      }
+
 			// Unbind mousemove event
 			document.removeEventListener('mousemove', this._handleDocumentClickMoveBound);
       document.removeEventListener('touchmove', this._handleDocumentClickMoveBound);
@@ -213,7 +224,13 @@
 
     _setupModal() {
       this.modal = M.Modal.init(this.modalEl, {
+        onOpenStart: this.options.onOpenStart,
+        onOpenEnd: this.options.onOpenEnd,
+        onCloseStart: this.options.onCloseStart,
         onCloseEnd: () => {
+          if (typeof this.options.onCloseEnd === 'function') {
+            this.options.onCloseEnd.call(this);
+          }
           this.isOpen = false;
         }
       });
@@ -529,6 +546,7 @@
       this.isOpen = true;
       this._updateTimeFromInput();
       this.showView('hours');
+
       this.modal.open();
     }
 
