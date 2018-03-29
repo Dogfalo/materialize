@@ -3,6 +3,9 @@
 
   let _defaults = {
 
+    // Close when date is selected
+    autoClose: false,
+
     // the default output format for the input field value
     format: 'mmm dd, yyyy',
 
@@ -121,6 +124,7 @@
       if (Datepicker._isDate(defDate)) {
         if (this.options.setDefaultDate) {
           this.setDate(defDate, true);
+          this.setInputValue();
         }
         else {
           this.gotoDate(defDate);
@@ -281,8 +285,6 @@
 
       Datepicker._setToStartOfDay(this.date);
       this.gotoDate(this.date);
-
-      this.setInputValue();
 
       if (!preventOnSelect && typeof this.options.onSelect === 'function') {
         this.options.onSelect.call(this, this.date);
@@ -757,6 +759,9 @@
           this.setDate(new Date(e.target.getAttribute('data-pika-year'),
                                 e.target.getAttribute('data-pika-month'),
                                 e.target.getAttribute('data-pika-day')));
+          if (this.options.autoClose) {
+            this._finishSelection();
+          }
         }
         else if ($target.closest('.month-prev').length) {
           this.prevMonth();
