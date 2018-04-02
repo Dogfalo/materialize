@@ -250,8 +250,8 @@
      */
     _calcRangeOffset() {
       let width = this.$el.width() - 15;
-      let max = parseFloat(this.$el.attr('max'));
-      let min = parseFloat(this.$el.attr('min'));
+      let max = parseFloat(this.$el.attr('max')) || 100; // Range default max
+      let min = parseFloat(this.$el.attr('min')) || 0; // Range default min
       let percent = (parseFloat(this.$el.val()) - min) / (max - min);
       return percent * width;
     }
