@@ -205,6 +205,8 @@ M.checkWithinContainer = function(container, bounding, offset) {
   };
 
   let containerRect = container.getBoundingClientRect();
+  // If body element is smaller than viewport, use viewport height instead.
+  let containerBottom = container === document.body ? Math.max(containerRect.bottom, window.innerHeight) : containerRect.bottom;
 
   let scrollLeft = container.scrollLeft;
   let scrollTop = container.scrollTop;
@@ -228,7 +230,7 @@ M.checkWithinContainer = function(container, bounding, offset) {
     edges.top = true;
   }
 
-  if (scrolledY + bounding.height > containerRect.bottom - offset ||
+  if (scrolledY + bounding.height > containerBottom - offset ||
       scrolledY + bounding.height > window.innerHeight - offset) {
     edges.bottom = true;
   }
