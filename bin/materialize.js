@@ -2201,7 +2201,8 @@ $jscomp.polyfill = function (e, r, p, m) {
     onOpenStart: null,
     onOpenEnd: null,
     onCloseStart: null,
-    onCloseEnd: null
+    onCloseEnd: null,
+    onItemClick: null
   };
 
   /**
@@ -2274,6 +2275,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this8._resetFilterQueryBound = _this8._resetFilterQuery.bind(_this8);
       _this8._handleDocumentClickBound = _this8._handleDocumentClick.bind(_this8);
       _this8._handleDocumentTouchmoveBound = _this8._handleDocumentTouchmove.bind(_this8);
+      _this8._handleDropdownClickBound = _this8._handleDropdownClick.bind(_this8);
       _this8._handleDropdownKeydownBound = _this8._handleDropdownKeydown.bind(_this8);
       _this8._handleTriggerKeydownBound = _this8._handleTriggerKeydown.bind(_this8);
       _this8._setupEventHandlers();
@@ -2304,6 +2306,9 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Trigger keydown handler
         this.el.addEventListener('keydown', this._handleTriggerKeydownBound);
 
+        // Item click handler
+        this.dropdownEl.addEventListener('click', this._handleDropdownClickBound);
+
         // Hover event handlers
         if (this.options.hover) {
           this._handleMouseEnterBound = this._handleMouseEnter.bind(this);
@@ -2326,8 +2331,8 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        // Trigger keydown handler
         this.el.removeEventListener('keydown', this._handleTriggerKeydownBound);
+        this.dropdownEl.removeEventListener('click', this._handleDropdownClickBound);
 
         if (this.options.hover) {
           this.el.removeEventHandlers('mouseenter', this._handleMouseEnterBound);
@@ -2422,6 +2427,21 @@ $jscomp.polyfill = function (e, r, p, m) {
         var $target = $(e.target);
         if ($target.closest('.dropdown-content').length) {
           this.isTouchMoving = true;
+        }
+      }
+
+      /**
+       * Handle Dropdown Click
+       * @param {Event} e
+       */
+
+    }, {
+      key: "_handleDropdownClick",
+      value: function _handleDropdownClick(e) {
+        // onItemClick callback
+        if (typeof this.options.onItemClick === 'function') {
+          var itemEl = $(e.target).closest('li')[0];
+          this.options.onItemClick.call(this, itemEl);
         }
       }
 
@@ -2875,6 +2895,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this12._openingTrigger = undefined;
       _this12.$overlay = $('<div class="modal-overlay"></div>');
       _this12.el.tabIndex = 0;
+      _this12._nthModalOpened = 0;
 
       Modal._count++;
       _this12._setupEventHandlers();
@@ -2994,7 +3015,8 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleFocus",
       value: function _handleFocus(e) {
-        if (!this.el.contains(e.target)) {
+        // Only trap focus if this modal is the last model opened (prevents loops in nested modals).
+        if (!this.el.contains(e.target) && this._nthModalOpened === Modal._modalsOpen) {
           this.el.focus();
         }
       }
@@ -3127,6 +3149,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         this.isOpen = true;
         Modal._modalsOpen++;
+        this._nthModalOpened = Modal._modalsOpen;
 
         // Set Z-Index based on number of currently open modals
         this.$overlay[0].style.zIndex = 1000 + Modal._modalsOpen * 2;
@@ -3177,6 +3200,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         this.isOpen = false;
         Modal._modalsOpen--;
+        this._nthModalOpened = 0;
 
         // Call onCloseStart callback
         if (typeof this.options.onCloseStart === 'function') {
@@ -3192,7 +3216,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         if (this.options.dismissible) {
           document.removeEventListener('keydown', this._handleKeydownBound);
-          document.removeEventListener('focus', this._handleFocusBound);
+          document.removeEventListener('focus', this._handleFocusBound, true);
         }
 
         anim.remove(this.el);
@@ -4635,12 +4659,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_handleMouseEnter",
       value: function _handleMouseEnter() {
         this.isHovered = true;
+        this.isFocused = false; // Allows close of tooltip when opened by focus.
         this.open();
       }
     }, {
       key: "_handleMouseLeave",
       value: function _handleMouseLeave() {
         this.isHovered = false;
+        this.isFocused = false; // Allows close of tooltip when opened by focus.
         this.close();
       }
     }, {
@@ -6403,6 +6429,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this36.oldVal;
       _this36.$inputField = _this36.$el.closest('.input-field');
       _this36.$active = $();
+      _this36._mousedown = false;
       _this36._setupDropdown();
 
       _this36._setupEventHandlers();
@@ -6433,15 +6460,18 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._handleInputKeyupAndFocusBound = this._handleInputKeyupAndFocus.bind(this);
         this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
         this._handleContainerMousedownAndTouchstartBound = this._handleContainerMousedownAndTouchstart.bind(this);
+        this._handleContainerMouseupAndTouchendBound = this._handleContainerMouseupAndTouchend.bind(this);
 
         this.el.addEventListener('blur', this._handleInputBlurBound);
         this.el.addEventListener('keyup', this._handleInputKeyupAndFocusBound);
         this.el.addEventListener('focus', this._handleInputKeyupAndFocusBound);
         this.el.addEventListener('keydown', this._handleInputKeydownBound);
         this.container.addEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
+        this.container.addEventListener('mouseup', this._handleContainerMouseupAndTouchendBound);
 
         if (typeof window.ontouchstart !== 'undefined') {
           this.container.addEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
+          this.container.addEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
         }
       }
 
@@ -6457,9 +6487,11 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.removeEventListener('focus', this._handleInputKeyupAndFocusBound);
         this.el.removeEventListener('keydown', this._handleInputKeydownBound);
         this.container.removeEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
+        this.container.removeEventListener('mouseup', this._handleContainerMouseupAndTouchendBound);
 
         if (typeof window.ontouchstart !== 'undefined') {
           this.container.removeEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
+          this.container.removeEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
         }
       }
 
@@ -6470,6 +6502,8 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupDropdown",
       value: function _setupDropdown() {
+        var _this37 = this;
+
         this.container = document.createElement('ul');
         this.container.id = "autocomplete-options-" + M.guid();
         $(this.container).addClass('autocomplete-content dropdown-content');
@@ -6479,7 +6513,10 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.dropdown = M.Dropdown.init(this.el, {
           autoFocus: false,
           closeOnClick: false,
-          coverTrigger: false
+          coverTrigger: false,
+          onItemClick: function (itemEl) {
+            _this37.selectOption($(itemEl));
+          }
         });
 
         // Sketchy removal of dropdown click handler
@@ -6503,8 +6540,10 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleInputBlur",
       value: function _handleInputBlur() {
-        this.dropdown.close();
-        this._resetAutocomplete();
+        if (!this._mousedown) {
+          this.dropdown.close();
+          this._resetAutocomplete();
+        }
       }
 
       /**
@@ -6515,7 +6554,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleInputKeyupAndFocus",
       value: function _handleInputKeyupAndFocus(e) {
-        var _this37 = this;
+        var _this38 = this;
 
         if (e.type === 'keyup') {
           Autocomplete._keydown = false;
@@ -6542,7 +6581,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           if (!this.dropdown.isOpen) {
             // Timeout to prevent dropdown temp doc click handler from firing
             setTimeout(function () {
-              _this37.dropdown.open();
+              _this38.dropdown.open();
             }, 100);
 
             // Recalculate dropdown when its already open
@@ -6608,8 +6647,18 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleContainerMousedownAndTouchstart",
       value: function _handleContainerMousedownAndTouchstart(e) {
-        var $autocompleteOption = $(e.target).closest('li');
-        this.selectOption($autocompleteOption);
+        this._mousedown = true;
+      }
+
+      /**
+       * Handle Container Mouseup and Touchend
+       * @param {Event} e
+       */
+
+    }, {
+      key: "_handleContainerMouseupAndTouchend",
+      value: function _handleContainerMouseupAndTouchend(e) {
+        this._mousedown = false;
       }
 
       /**
@@ -6653,6 +6702,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._resetCurrentElement();
         this.oldVal = null;
         this.isOpen = false;
+        this._mousedown = false;
       }
 
       /**
@@ -6684,7 +6734,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_renderDropdown",
       value: function _renderDropdown(data, val) {
-        var _this38 = this;
+        var _this39 = this;
 
         this._resetAutocomplete();
 
@@ -6710,7 +6760,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         // Sort
         var sortFunctionBound = function (a, b) {
-          return _this38.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
+          return _this39.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
         };
         matchingData.sort(sortFunctionBound);
 
@@ -7056,9 +7106,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     function Slider(el, options) {
       _classCallCheck(this, Slider);
 
-      var _this39 = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, Slider, el, options));
+      var _this40 = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, Slider, el, options));
 
-      _this39.el.M_Slider = _this39;
+      _this40.el.M_Slider = _this40;
 
       /**
        * Options for the modal
@@ -7068,27 +7118,27 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @prop {Number} [duration=500] - Length in ms of slide transition
        * @prop {Number} [interval=6000] - Length in ms of slide interval
        */
-      _this39.options = $.extend({}, Slider.defaults, options);
+      _this40.options = $.extend({}, Slider.defaults, options);
 
       // setup
-      _this39.$slider = _this39.$el.find('.slides');
-      _this39.$slides = _this39.$slider.children('li');
-      _this39.activeIndex = _this39.$slides.filter(function (item) {
+      _this40.$slider = _this40.$el.find('.slides');
+      _this40.$slides = _this40.$slider.children('li');
+      _this40.activeIndex = _this40.$slides.filter(function (item) {
         return $(item).hasClass('active');
       }).first().index();
-      if (_this39.activeIndex != -1) {
-        _this39.$active = _this39.$slides.eq(_this39.activeIndex);
+      if (_this40.activeIndex != -1) {
+        _this40.$active = _this40.$slides.eq(_this40.activeIndex);
       }
 
-      _this39._setSliderHeight();
+      _this40._setSliderHeight();
 
       // Set initial positions of captions
-      _this39.$slides.find('.caption').each(function (el) {
-        _this39._animateCaptionIn(el, 0);
+      _this40.$slides.find('.caption').each(function (el) {
+        _this40._animateCaptionIn(el, 0);
       });
 
       // Move img src into background-image
-      _this39.$slides.find('img').each(function (el) {
+      _this40.$slides.find('img').each(function (el) {
         var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if ($(el).attr('src') !== placeholderBase64) {
           $(el).css('background-image', 'url("' + $(el).attr('src') + '")');
@@ -7096,46 +7146,46 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       });
 
-      _this39._setupIndicators();
+      _this40._setupIndicators();
 
       // Show active slide
-      if (_this39.$active) {
-        _this39.$active.css('display', 'block');
+      if (_this40.$active) {
+        _this40.$active.css('display', 'block');
       } else {
-        _this39.$slides.first().addClass('active');
+        _this40.$slides.first().addClass('active');
         anim({
-          targets: _this39.$slides.first()[0],
+          targets: _this40.$slides.first()[0],
           opacity: 1,
-          duration: _this39.options.duration,
+          duration: _this40.options.duration,
           easing: 'easeOutQuad'
         });
 
-        _this39.activeIndex = 0;
-        _this39.$active = _this39.$slides.eq(_this39.activeIndex);
+        _this40.activeIndex = 0;
+        _this40.$active = _this40.$slides.eq(_this40.activeIndex);
 
         // Update indicators
-        if (_this39.options.indicators) {
-          _this39.$indicators.eq(_this39.activeIndex).addClass('active');
+        if (_this40.options.indicators) {
+          _this40.$indicators.eq(_this40.activeIndex).addClass('active');
         }
       }
 
       // Adjust height to current slide
-      _this39.$active.find('img').each(function (el) {
+      _this40.$active.find('img').each(function (el) {
         anim({
-          targets: _this39.$active.find('.caption')[0],
+          targets: _this40.$active.find('.caption')[0],
           opacity: 1,
           translateX: 0,
           translateY: 0,
-          duration: _this39.options.duration,
+          duration: _this40.options.duration,
           easing: 'easeOutQuad'
         });
       });
 
-      _this39._setupEventHandlers();
+      _this40._setupEventHandlers();
 
       // auto scroll
-      _this39.start();
-      return _this39;
+      _this40.start();
+      return _this40;
     }
 
     _createClass(Slider, [{
@@ -7159,14 +7209,14 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        var _this40 = this;
+        var _this41 = this;
 
         this._handleIntervalBound = this._handleInterval.bind(this);
         this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
 
         if (this.options.indicators) {
           this.$indicators.each(function (el) {
-            el.addEventListener('click', _this40._handleIndicatorClickBound);
+            el.addEventListener('click', _this41._handleIndicatorClickBound);
           });
         }
       }
@@ -7178,11 +7228,11 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        var _this41 = this;
+        var _this42 = this;
 
         if (this.options.indicators) {
           this.$indicators.each(function (el) {
-            el.removeEventListener('click', _this41._handleIndicatorClickBound);
+            el.removeEventListener('click', _this42._handleIndicatorClickBound);
           });
         }
       }
@@ -7266,13 +7316,13 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupIndicators",
       value: function _setupIndicators() {
-        var _this42 = this;
+        var _this43 = this;
 
         if (this.options.indicators) {
           this.$indicators = $('<ul class="indicators"></ul>');
           this.$slides.each(function (el, index) {
             var $indicator = $('<li class="indicator-item"></li>');
-            _this42.$indicators.append($indicator[0]);
+            _this43.$indicators.append($indicator[0]);
           });
           this.$el.append(this.$indicators[0]);
           this.$indicators = this.$indicators.children('li.indicator-item');
@@ -7297,7 +7347,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "set",
       value: function set(index) {
-        var _this43 = this;
+        var _this44 = this;
 
         // Wrap around indices.
         if (index >= this.$slides.length) index = 0;else if (index < 0) index = this.$slides.length - 1;
@@ -7314,7 +7364,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             duration: this.options.duration,
             easing: 'easeOutQuad',
             complete: function () {
-              _this43.$slides.not('.active').each(function (el) {
+              _this44.$slides.not('.active').each(function (el) {
                 anim({
                   targets: el,
                   opacity: 0,
@@ -7513,9 +7563,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     function Chips(el, options) {
       _classCallCheck(this, Chips);
 
-      var _this44 = _possibleConstructorReturn(this, (Chips.__proto__ || Object.getPrototypeOf(Chips)).call(this, Chips, el, options));
+      var _this45 = _possibleConstructorReturn(this, (Chips.__proto__ || Object.getPrototypeOf(Chips)).call(this, Chips, el, options));
 
-      _this44.el.M_Chips = _this44;
+      _this45.el.M_Chips = _this45;
 
       /**
        * Options for the modal
@@ -7525,34 +7575,34 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @prop {String} secondaryPlaceholder
        * @prop {Object} autocompleteOptions
        */
-      _this44.options = $.extend({}, Chips.defaults, options);
+      _this45.options = $.extend({}, Chips.defaults, options);
 
-      _this44.$el.addClass('chips input-field');
-      _this44.chipsData = [];
-      _this44.$chips = $();
-      _this44._setupInput();
-      _this44.hasAutocomplete = Object.keys(_this44.options.autocompleteOptions).length > 0;
+      _this45.$el.addClass('chips input-field');
+      _this45.chipsData = [];
+      _this45.$chips = $();
+      _this45._setupInput();
+      _this45.hasAutocomplete = Object.keys(_this45.options.autocompleteOptions).length > 0;
 
       // Set input id
-      if (!_this44.$input.attr('id')) {
-        _this44.$input.attr('id', M.guid());
+      if (!_this45.$input.attr('id')) {
+        _this45.$input.attr('id', M.guid());
       }
 
       // Render initial chips
-      if (_this44.options.data.length) {
-        _this44.chipsData = _this44.options.data;
-        _this44._renderChips(_this44.chipsData);
+      if (_this45.options.data.length) {
+        _this45.chipsData = _this45.options.data;
+        _this45._renderChips(_this45.chipsData);
       }
 
       // Setup autocomplete if needed
-      if (_this44.hasAutocomplete) {
-        _this44._setupAutocomplete();
+      if (_this45.hasAutocomplete) {
+        _this45._setupAutocomplete();
       }
 
-      _this44._setPlaceholder();
-      _this44._setupLabel();
-      _this44._setupEventHandlers();
-      return _this44;
+      _this45._setPlaceholder();
+      _this45._setupLabel();
+      _this45._setupEventHandlers();
+      return _this45;
     }
 
     _createClass(Chips, [{
@@ -7755,14 +7805,14 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupAutocomplete",
       value: function _setupAutocomplete() {
-        var _this45 = this;
+        var _this46 = this;
 
         this.options.autocompleteOptions.onAutocomplete = function (val) {
-          _this45.addChip({
+          _this46.addChip({
             tag: val
           });
-          _this45.$input[0].value = '';
-          _this45.$input[0].focus();
+          _this46.$input[0].value = '';
+          _this46.$input[0].focus();
         };
 
         this.autocomplete = M.Autocomplete.init(this.$input[0], this.options.autocompleteOptions);
@@ -8057,21 +8107,21 @@ $jscomp.polyfill = function (e, r, p, m) {
     function Pushpin(el, options) {
       _classCallCheck(this, Pushpin);
 
-      var _this46 = _possibleConstructorReturn(this, (Pushpin.__proto__ || Object.getPrototypeOf(Pushpin)).call(this, Pushpin, el, options));
+      var _this47 = _possibleConstructorReturn(this, (Pushpin.__proto__ || Object.getPrototypeOf(Pushpin)).call(this, Pushpin, el, options));
 
-      _this46.el.M_Pushpin = _this46;
+      _this47.el.M_Pushpin = _this47;
 
       /**
        * Options for the modal
        * @member Pushpin#options
        */
-      _this46.options = $.extend({}, Pushpin.defaults, options);
+      _this47.options = $.extend({}, Pushpin.defaults, options);
 
-      _this46.originalOffset = _this46.el.offsetTop;
-      Pushpin._pushpins.push(_this46);
-      _this46._setupEventHandlers();
-      _this46._updatePosition();
-      return _this46;
+      _this47.originalOffset = _this47.el.offsetTop;
+      Pushpin._pushpins.push(_this47);
+      _this47._setupEventHandlers();
+      _this47._updatePosition();
+      return _this47;
     }
 
     _createClass(Pushpin, [{
@@ -8222,9 +8272,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     function FloatingActionButton(el, options) {
       _classCallCheck(this, FloatingActionButton);
 
-      var _this47 = _possibleConstructorReturn(this, (FloatingActionButton.__proto__ || Object.getPrototypeOf(FloatingActionButton)).call(this, FloatingActionButton, el, options));
+      var _this48 = _possibleConstructorReturn(this, (FloatingActionButton.__proto__ || Object.getPrototypeOf(FloatingActionButton)).call(this, FloatingActionButton, el, options));
 
-      _this47.el.M_FloatingActionButton = _this47;
+      _this48.el.M_FloatingActionButton = _this48;
 
       /**
        * Options for the fab
@@ -8233,30 +8283,30 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @prop {Boolean} [hoverEnabled=true] - Enable hover vs click
        * @prop {Boolean} [toolbarEnabled=false] - Enable toolbar transition
        */
-      _this47.options = $.extend({}, FloatingActionButton.defaults, options);
+      _this48.options = $.extend({}, FloatingActionButton.defaults, options);
 
-      _this47.isOpen = false;
-      _this47.$anchor = _this47.$el.children('a').first();
-      _this47.$menu = _this47.$el.children('ul').first();
-      _this47.$floatingBtns = _this47.$el.find('ul .btn-floating');
-      _this47.$floatingBtnsReverse = _this47.$el.find('ul .btn-floating').reverse();
-      _this47.offsetY = 0;
-      _this47.offsetX = 0;
-      if (_this47.options.direction === 'top') {
-        _this47.$el.addClass('direction-top');
-        _this47.offsetY = 40;
-      } else if (_this47.options.direction === 'right') {
-        _this47.$el.addClass('direction-right');
-        _this47.offsetX = -40;
-      } else if (_this47.options.direction === 'bottom') {
-        _this47.$el.addClass('direction-bottom');
-        _this47.offsetY = -40;
+      _this48.isOpen = false;
+      _this48.$anchor = _this48.$el.children('a').first();
+      _this48.$menu = _this48.$el.children('ul').first();
+      _this48.$floatingBtns = _this48.$el.find('ul .btn-floating');
+      _this48.$floatingBtnsReverse = _this48.$el.find('ul .btn-floating').reverse();
+      _this48.offsetY = 0;
+      _this48.offsetX = 0;
+      if (_this48.options.direction === 'top') {
+        _this48.$el.addClass('direction-top');
+        _this48.offsetY = 40;
+      } else if (_this48.options.direction === 'right') {
+        _this48.$el.addClass('direction-right');
+        _this48.offsetX = -40;
+      } else if (_this48.options.direction === 'bottom') {
+        _this48.$el.addClass('direction-bottom');
+        _this48.offsetY = -40;
       } else {
-        _this47.$el.addClass('direction-left');
-        _this47.offsetX = 40;
+        _this48.$el.addClass('direction-left');
+        _this48.offsetX = 40;
       }
-      _this47._setupEventHandlers();
-      return _this47;
+      _this48._setupEventHandlers();
+      return _this48;
     }
 
     _createClass(FloatingActionButton, [{
@@ -8379,7 +8429,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_animateInFAB",
       value: function _animateInFAB() {
-        var _this48 = this;
+        var _this49 = this;
 
         this.$el.addClass('active');
 
@@ -8389,8 +8439,8 @@ $jscomp.polyfill = function (e, r, p, m) {
             targets: el,
             opacity: 1,
             scale: [.4, 1],
-            translateY: [_this48.offsetY, 0],
-            translateX: [_this48.offsetX, 0],
+            translateY: [_this49.offsetY, 0],
+            translateX: [_this49.offsetX, 0],
             duration: 275,
             delay: time,
             easing: 'easeInOutQuad'
@@ -8406,7 +8456,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_animateOutFAB",
       value: function _animateOutFAB() {
-        var _this49 = this;
+        var _this50 = this;
 
         this.$floatingBtnsReverse.each(function (el) {
           anim.remove(el);
@@ -8414,12 +8464,12 @@ $jscomp.polyfill = function (e, r, p, m) {
             targets: el,
             opacity: 0,
             scale: .4,
-            translateY: _this49.offsetY,
-            translateX: _this49.offsetX,
+            translateY: _this50.offsetY,
+            translateX: _this50.offsetX,
             duration: 175,
             easing: 'easeOutQuad',
             complete: function () {
-              _this49.$el.removeClass('active');
+              _this50.$el.removeClass('active');
             }
           });
         });
@@ -8432,7 +8482,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_animateInToolbar",
       value: function _animateInToolbar() {
-        var _this50 = this;
+        var _this51 = this;
 
         var scaleFactor = void 0;
         var windowWidth = window.innerWidth;
@@ -8468,18 +8518,18 @@ $jscomp.polyfill = function (e, r, p, m) {
         });
 
         setTimeout(function () {
-          _this50.$el.css({
+          _this51.$el.css({
             transform: '',
             transition: 'transform .2s cubic-bezier(0.550, 0.085, 0.680, 0.530), background-color 0s linear .2s'
           });
-          _this50.$anchor.css({
+          _this51.$anchor.css({
             overflow: 'visible',
             transform: '',
             transition: 'transform .2s'
           });
 
           setTimeout(function () {
-            _this50.$el.css({
+            _this51.$el.css({
               overflow: 'hidden',
               'background-color': fabColor
             });
@@ -8487,14 +8537,14 @@ $jscomp.polyfill = function (e, r, p, m) {
               transform: 'scale(' + scaleFactor + ')',
               transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
             });
-            _this50.$menu.children('li').children('a').css({
+            _this51.$menu.children('li').children('a').css({
               opacity: 1
             });
 
             // Scroll to close.
-            _this50._handleDocumentClickBound = _this50._handleDocumentClick.bind(_this50);
-            window.addEventListener('scroll', _this50._handleCloseBound, true);
-            document.body.addEventListener('click', _this50._handleDocumentClickBound, true);
+            _this51._handleDocumentClickBound = _this51._handleDocumentClick.bind(_this51);
+            window.addEventListener('scroll', _this51._handleCloseBound, true);
+            document.body.addEventListener('click', _this51._handleDocumentClickBound, true);
           }, 100);
         }, 0);
       }
@@ -8506,7 +8556,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_animateOutToolbar",
       value: function _animateOutToolbar() {
-        var _this51 = this;
+        var _this52 = this;
 
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
@@ -8537,26 +8587,26 @@ $jscomp.polyfill = function (e, r, p, m) {
           backdrop.remove();
 
           // Set initial state.
-          _this51.$el.css({
+          _this52.$el.css({
             'text-align': '',
             width: '',
             bottom: '',
             left: '',
             overflow: '',
             'background-color': '',
-            transform: 'translate3d(' + -_this51.offsetX + 'px,0,0)'
+            transform: 'translate3d(' + -_this52.offsetX + 'px,0,0)'
           });
-          _this51.$anchor.css({
+          _this52.$anchor.css({
             overflow: '',
-            transform: 'translate3d(0,' + _this51.offsetY + 'px,0)'
+            transform: 'translate3d(0,' + _this52.offsetY + 'px,0)'
           });
 
           setTimeout(function () {
-            _this51.$el.css({
+            _this52.$el.css({
               transform: 'translate3d(0,0,0)',
               transition: 'transform .2s'
             });
-            _this51.$anchor.css({
+            _this52.$anchor.css({
               transform: 'translate3d(0,0,0)',
               transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
             });
@@ -8599,6 +8649,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   'use strict';
 
   var _defaults = {
+
+    // Close when date is selected
+    autoClose: false,
 
     // the default output format for the input field value
     format: 'mmm dd, yyyy',
@@ -8691,53 +8744,52 @@ $jscomp.polyfill = function (e, r, p, m) {
     function Datepicker(el, options) {
       _classCallCheck(this, Datepicker);
 
-      var _this52 = _possibleConstructorReturn(this, (Datepicker.__proto__ || Object.getPrototypeOf(Datepicker)).call(this, Datepicker, el, options));
+      var _this53 = _possibleConstructorReturn(this, (Datepicker.__proto__ || Object.getPrototypeOf(Datepicker)).call(this, Datepicker, el, options));
 
-      _this52.el.M_Datepicker = _this52;
+      _this53.el.M_Datepicker = _this53;
 
-      _this52.options = $.extend({}, Datepicker.defaults, options);
+      _this53.options = $.extend({}, Datepicker.defaults, options);
 
       // make sure i18n defaults are not lost when only few i18n option properties are passed
       if (!!options && options.hasOwnProperty('i18n') && typeof options.i18n === 'object') {
-        _this52.options.i18n = $.extend({}, Datepicker.defaults.i18n, options.i18n);
+        _this53.options.i18n = $.extend({}, Datepicker.defaults.i18n, options.i18n);
       }
 
       // Remove time component from minDate and maxDate options
-      if (_this52.options.minDate) _this52.options.minDate.setHours(0, 0, 0, 0);
-      if (_this52.options.maxDate) _this52.options.maxDate.setHours(0, 0, 0, 0);
+      if (_this53.options.minDate) _this53.options.minDate.setHours(0, 0, 0, 0);
+      if (_this53.options.maxDate) _this53.options.maxDate.setHours(0, 0, 0, 0);
 
-      _this52.id = M.guid();
+      _this53.id = M.guid();
 
-      _this52._setupVariables();
-      _this52._insertHTMLIntoDOM();
-      _this52._setupModal();
+      _this53._setupVariables();
+      _this53._insertHTMLIntoDOM();
+      _this53._setupModal();
 
-      _this52._setupEventHandlers();
+      _this53._setupEventHandlers();
 
-      if (!_this52.options.defaultDate) {
-        _this52.options.defaultDate = new Date(Date.parse(_this52.el.value));
-        _this52.options.setDefaultDate = true;
+      if (!_this53.options.defaultDate) {
+        _this53.options.defaultDate = new Date(Date.parse(_this53.el.value));
       }
 
-      var defDate = _this52.options.defaultDate;
-
+      var defDate = _this53.options.defaultDate;
       if (Datepicker._isDate(defDate)) {
-        if (_this52.options.setDefaultDate) {
-          _this52.setDate(defDate, true);
+        if (_this53.options.setDefaultDate) {
+          _this53.setDate(defDate, true);
+          _this53.setInputValue();
         } else {
-          _this52.gotoDate(defDate);
+          _this53.gotoDate(defDate);
         }
       } else {
-        _this52.gotoDate(new Date());
+        _this53.gotoDate(new Date());
       }
 
       /**
        * Describes open/close state of datepicker
        * @type {Boolean}
        */
-      _this52.isOpen = false;
+      _this53.isOpen = false;
 
-      return _this52;
+      return _this53;
     }
 
     _createClass(Datepicker, [{
@@ -8786,19 +8838,19 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupModal",
       value: function _setupModal() {
-        var _this53 = this;
+        var _this54 = this;
 
         this.modalEl.id = 'modal-' + this.id;
         this.modal = M.Modal.init(this.modalEl, {
           onCloseEnd: function () {
-            _this53.isOpen = false;
+            _this54.isOpen = false;
           }
         });
       }
     }, {
       key: "toString",
       value: function toString(format) {
-        var _this54 = this;
+        var _this55 = this;
 
         format = format || this.options.format;
         if (!Datepicker._isDate(this.date)) {
@@ -8807,8 +8859,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         var formatArray = format.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g);
         var formattedDate = formatArray.map(function (label) {
-          if (_this54.formats[label]) {
-            return _this54.formats[label]();
+          if (_this55.formats[label]) {
+            return _this55.formats[label]();
           }
 
           return label;
@@ -9234,7 +9286,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupVariables",
       value: function _setupVariables() {
-        var _this55 = this;
+        var _this56 = this;
 
         this.$modalEl = $(Datepicker._template);
         this.modalEl = this.$modalEl[0];
@@ -9252,36 +9304,36 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.formats = {
 
           d: function () {
-            return _this55.date.getDate();
+            return _this56.date.getDate();
           },
           dd: function () {
-            var d = _this55.date.getDate();
+            var d = _this56.date.getDate();
             return (d < 10 ? '0' : '') + d;
           },
           ddd: function () {
-            return _this55.options.i18n.weekdaysShort[_this55.date.getDay()];
+            return _this56.options.i18n.weekdaysShort[_this56.date.getDay()];
           },
           dddd: function () {
-            return _this55.options.i18n.weekdays[_this55.date.getDay()];
+            return _this56.options.i18n.weekdays[_this56.date.getDay()];
           },
           m: function () {
-            return _this55.date.getMonth() + 1;
+            return _this56.date.getMonth() + 1;
           },
           mm: function () {
-            var m = _this55.date.getMonth() + 1;
+            var m = _this56.date.getMonth() + 1;
             return (m < 10 ? '0' : '') + m;
           },
           mmm: function () {
-            return _this55.options.i18n.monthsShort[_this55.date.getMonth()];
+            return _this56.options.i18n.monthsShort[_this56.date.getMonth()];
           },
           mmmm: function () {
-            return _this55.options.i18n.months[_this55.date.getMonth()];
+            return _this56.options.i18n.months[_this56.date.getMonth()];
           },
           yy: function () {
-            return ('' + _this55.date.getFullYear()).slice(2);
+            return ('' + _this56.date.getFullYear()).slice(2);
           },
           yyyy: function () {
-            return _this55.date.getFullYear();
+            return _this56.date.getFullYear();
           }
         };
       }
@@ -9322,6 +9374,9 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (!$target.hasClass('is-disabled')) {
           if ($target.hasClass('datepicker-day-button') && !$target.hasClass('is-empty') && !$target.parent().hasClass('is-disabled')) {
             this.setDate(new Date(e.target.getAttribute('data-pika-year'), e.target.getAttribute('data-pika-month'), e.target.getAttribute('data-pika-day')));
+            if (this.options.autoClose) {
+              this._finishSelection();
+            }
           } else if ($target.closest('.month-prev').length) {
             this.prevMonth();
           } else if ($target.closest('.month-next').length) {
@@ -9560,7 +9615,14 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     autoClose: false, // auto close when minute is selected
     twelveHour: true, // change to 12 hour AM/PM clock from 24 hour
-    vibrate: true // vibrate the device when dragging clock hand
+    vibrate: true, // vibrate the device when dragging clock hand
+
+    // Callbacks
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    onSelect: null
   };
 
   /**
@@ -9574,21 +9636,21 @@ $jscomp.polyfill = function (e, r, p, m) {
     function Timepicker(el, options) {
       _classCallCheck(this, Timepicker);
 
-      var _this56 = _possibleConstructorReturn(this, (Timepicker.__proto__ || Object.getPrototypeOf(Timepicker)).call(this, Timepicker, el, options));
+      var _this57 = _possibleConstructorReturn(this, (Timepicker.__proto__ || Object.getPrototypeOf(Timepicker)).call(this, Timepicker, el, options));
 
-      _this56.el.M_Timepicker = _this56;
+      _this57.el.M_Timepicker = _this57;
 
-      _this56.options = $.extend({}, Timepicker.defaults, options);
+      _this57.options = $.extend({}, Timepicker.defaults, options);
 
-      _this56.id = M.guid();
-      _this56._insertHTMLIntoDOM();
-      _this56._setupModal();
-      _this56._setupVariables();
-      _this56._setupEventHandlers();
+      _this57.id = M.guid();
+      _this57._insertHTMLIntoDOM();
+      _this57._setupModal();
+      _this57._setupVariables();
+      _this57._setupEventHandlers();
 
-      _this56._clockSetup();
-      _this56._pickerSetup();
-      return _this56;
+      _this57._clockSetup();
+      _this57._pickerSetup();
+      return _this57;
     }
 
     _createClass(Timepicker, [{
@@ -9683,7 +9745,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleDocumentClickEnd",
       value: function _handleDocumentClickEnd(e) {
-        var _this57 = this;
+        var _this58 = this;
 
         e.preventDefault();
         document.removeEventListener('mouseup', this._handleDocumentClickEndBound);
@@ -9700,8 +9762,12 @@ $jscomp.polyfill = function (e, r, p, m) {
         } else if (this.options.autoClose) {
           $(this.minutesView).addClass('timepicker-dial-out');
           setTimeout(function () {
-            _this57.done();
+            _this58.done();
           }, this.options.duration / 2);
+        }
+
+        if (typeof this.options.onSelect === 'function') {
+          this.options.onSelect.call(this, this.hours, this.minutes);
         }
 
         // Unbind mousemove event
@@ -9726,11 +9792,17 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupModal",
       value: function _setupModal() {
-        var _this58 = this;
+        var _this59 = this;
 
         this.modal = M.Modal.init(this.modalEl, {
+          onOpenStart: this.options.onOpenStart,
+          onOpenEnd: this.options.onOpenEnd,
+          onCloseStart: this.options.onCloseStart,
           onCloseEnd: function () {
-            _this58.isOpen = false;
+            if (typeof _this59.options.onCloseEnd === 'function') {
+              _this59.options.onCloseEnd.call(_this59);
+            }
+            _this59.isOpen = false;
           }
         });
       }
@@ -9960,7 +10032,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "setHand",
       value: function setHand(x, y, roundBy5) {
-        var _this59 = this;
+        var _this60 = this;
 
         var radian = Math.atan2(x, -y),
             isHours = this.currentView === 'hours',
@@ -10015,7 +10087,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             if (!this.vibrateTimer) {
               navigator[this.vibrate](10);
               this.vibrateTimer = setTimeout(function () {
-                _this59.vibrateTimer = null;
+                _this60.vibrateTimer = null;
               }, 100);
             }
           }
@@ -10048,6 +10120,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.isOpen = true;
         this._updateTimeFromInput();
         this.showView('hours');
+
         this.modal.open();
       }
     }, {
@@ -10179,20 +10252,20 @@ $jscomp.polyfill = function (e, r, p, m) {
     function CharacterCounter(el, options) {
       _classCallCheck(this, CharacterCounter);
 
-      var _this60 = _possibleConstructorReturn(this, (CharacterCounter.__proto__ || Object.getPrototypeOf(CharacterCounter)).call(this, CharacterCounter, el, options));
+      var _this61 = _possibleConstructorReturn(this, (CharacterCounter.__proto__ || Object.getPrototypeOf(CharacterCounter)).call(this, CharacterCounter, el, options));
 
-      _this60.el.M_CharacterCounter = _this60;
+      _this61.el.M_CharacterCounter = _this61;
 
       /**
        * Options for the character counter
        */
-      _this60.options = $.extend({}, CharacterCounter.defaults, options);
+      _this61.options = $.extend({}, CharacterCounter.defaults, options);
 
-      _this60.isInvalid = false;
-      _this60.isValidLength = false;
-      _this60._setupCounter();
-      _this60._setupEventHandlers();
-      return _this60;
+      _this61.isInvalid = false;
+      _this61.isValidLength = false;
+      _this61._setupCounter();
+      _this61._setupEventHandlers();
+      return _this61;
     }
 
     _createClass(CharacterCounter, [{
@@ -10359,9 +10432,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     function Carousel(el, options) {
       _classCallCheck(this, Carousel);
 
-      var _this61 = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, Carousel, el, options));
+      var _this62 = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, Carousel, el, options));
 
-      _this61.el.M_Carousel = _this61;
+      _this62.el.M_Carousel = _this62;
 
       /**
        * Options for the carousel
@@ -10376,38 +10449,38 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @prop {Boolean} noWrap
        * @prop {Function} onCycleTo
        */
-      _this61.options = $.extend({}, Carousel.defaults, options);
+      _this62.options = $.extend({}, Carousel.defaults, options);
 
       // Setup
-      _this61.hasMultipleSlides = _this61.$el.find('.carousel-item').length > 1;
-      _this61.showIndicators = _this61.options.indicators && _this61.hasMultipleSlides;
-      _this61.noWrap = _this61.options.noWrap || !_this61.hasMultipleSlides;
-      _this61.pressed = false;
-      _this61.dragged = false;
-      _this61.offset = _this61.target = 0;
-      _this61.images = [];
-      _this61.itemWidth = _this61.$el.find('.carousel-item').first().innerWidth();
-      _this61.itemHeight = _this61.$el.find('.carousel-item').first().innerHeight();
-      _this61.dim = _this61.itemWidth * 2 + _this61.options.padding || 1; // Make sure dim is non zero for divisions.
-      _this61._autoScrollBound = _this61._autoScroll.bind(_this61);
-      _this61._trackBound = _this61._track.bind(_this61);
+      _this62.hasMultipleSlides = _this62.$el.find('.carousel-item').length > 1;
+      _this62.showIndicators = _this62.options.indicators && _this62.hasMultipleSlides;
+      _this62.noWrap = _this62.options.noWrap || !_this62.hasMultipleSlides;
+      _this62.pressed = false;
+      _this62.dragged = false;
+      _this62.offset = _this62.target = 0;
+      _this62.images = [];
+      _this62.itemWidth = _this62.$el.find('.carousel-item').first().innerWidth();
+      _this62.itemHeight = _this62.$el.find('.carousel-item').first().innerHeight();
+      _this62.dim = _this62.itemWidth * 2 + _this62.options.padding || 1; // Make sure dim is non zero for divisions.
+      _this62._autoScrollBound = _this62._autoScroll.bind(_this62);
+      _this62._trackBound = _this62._track.bind(_this62);
 
       // Full Width carousel setup
-      if (_this61.options.fullWidth) {
-        _this61.options.dist = 0;
-        _this61._setCarouselHeight();
+      if (_this62.options.fullWidth) {
+        _this62.options.dist = 0;
+        _this62._setCarouselHeight();
 
         // Offset fixed items when indicators.
-        if (_this61.showIndicators) {
-          _this61.$el.find('.carousel-fixed-item').addClass('with-indicators');
+        if (_this62.showIndicators) {
+          _this62.$el.find('.carousel-fixed-item').addClass('with-indicators');
         }
       }
 
       // Iterate through slides
-      _this61.$indicators = $('<ul class="indicators"></ul>');
-      _this61.$el.find('.carousel-item').each(function (el, i) {
-        _this61.images.push(el);
-        if (_this61.showIndicators) {
+      _this62.$indicators = $('<ul class="indicators"></ul>');
+      _this62.$el.find('.carousel-item').each(function (el, i) {
+        _this62.images.push(el);
+        if (_this62.showIndicators) {
           var $indicator = $('<li class="indicator-item"></li>');
 
           // Add active to first by default.
@@ -10415,31 +10488,31 @@ $jscomp.polyfill = function (e, r, p, m) {
             $indicator[0].classList.add('active');
           }
 
-          _this61.$indicators.append($indicator);
+          _this62.$indicators.append($indicator);
         }
       });
-      if (_this61.showIndicators) {
-        _this61.$el.append(_this61.$indicators);
+      if (_this62.showIndicators) {
+        _this62.$el.append(_this62.$indicators);
       }
-      _this61.count = _this61.images.length;
+      _this62.count = _this62.images.length;
 
       // Cap numVisible at count
-      _this61.options.numVisible = Math.min(_this61.count, _this61.options.numVisible);
+      _this62.options.numVisible = Math.min(_this62.count, _this62.options.numVisible);
 
       // Setup cross browser string
-      _this61.xform = 'transform';
+      _this62.xform = 'transform';
       ['webkit', 'Moz', 'O', 'ms'].every(function (prefix) {
         var e = prefix + 'Transform';
         if (typeof document.body.style[e] !== 'undefined') {
-          _this61.xform = e;
+          _this62.xform = e;
           return false;
         }
         return true;
       });
 
-      _this61._setupEventHandlers();
-      _this61._scroll(_this61.offset);
-      return _this61;
+      _this62._setupEventHandlers();
+      _this62._scroll(_this62.offset);
+      return _this62;
     }
 
     _createClass(Carousel, [{
@@ -10461,7 +10534,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        var _this62 = this;
+        var _this63 = this;
 
         this._handleCarouselTapBound = this._handleCarouselTap.bind(this);
         this._handleCarouselDragBound = this._handleCarouselDrag.bind(this);
@@ -10483,7 +10556,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (this.showIndicators && this.$indicators) {
           this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
           this.$indicators.find('.indicator-item').each(function (el, i) {
-            el.addEventListener('click', _this62._handleIndicatorClickBound);
+            el.addEventListener('click', _this63._handleIndicatorClickBound);
           });
         }
 
@@ -10501,7 +10574,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        var _this63 = this;
+        var _this64 = this;
 
         if (typeof window.ontouchstart !== 'undefined') {
           this.el.removeEventListener('touchstart', this._handleCarouselTapBound);
@@ -10516,7 +10589,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         if (this.showIndicators && this.$indicators) {
           this.$indicators.find('.indicator-item').each(function (el, i) {
-            el.removeEventListener('click', _this63._handleIndicatorClickBound);
+            el.removeEventListener('click', _this64._handleIndicatorClickBound);
           });
         }
 
@@ -10702,7 +10775,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setCarouselHeight",
       value: function _setCarouselHeight(imageOnly) {
-        var _this64 = this;
+        var _this65 = this;
 
         var firstSlide = this.$el.find('.carousel-item.active').length ? this.$el.find('.carousel-item.active').first() : this.$el.find('.carousel-item').first();
         var firstImage = firstSlide.find('img').first();
@@ -10722,7 +10795,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           } else {
             // Get height when image is loaded normally
             firstImage.one('load', function (el, i) {
-              _this64.$el.css('height', el.offsetHeight + 'px');
+              _this65.$el.css('height', el.offsetHeight + 'px');
             });
           }
         } else if (!imageOnly) {
@@ -10828,7 +10901,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_scroll",
       value: function _scroll(x) {
-        var _this65 = this;
+        var _this66 = this;
 
         // Track scrolling state
         if (!this.$el.hasClass('scrolling')) {
@@ -10838,7 +10911,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           window.clearTimeout(this.scrollingTimeout);
         }
         this.scrollingTimeout = window.setTimeout(function () {
-          _this65.$el.removeClass('scrolling');
+          _this66.$el.removeClass('scrolling');
         }, this.options.duration);
 
         // Start actual scroll
@@ -11139,9 +11212,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     function TapTarget(el, options) {
       _classCallCheck(this, TapTarget);
 
-      var _this66 = _possibleConstructorReturn(this, (TapTarget.__proto__ || Object.getPrototypeOf(TapTarget)).call(this, TapTarget, el, options));
+      var _this67 = _possibleConstructorReturn(this, (TapTarget.__proto__ || Object.getPrototypeOf(TapTarget)).call(this, TapTarget, el, options));
 
-      _this66.el.M_TapTarget = _this66;
+      _this67.el.M_TapTarget = _this67;
 
       /**
        * Options for the select
@@ -11149,17 +11222,17 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @prop {Function} onOpen - Callback function called when feature discovery is opened
        * @prop {Function} onClose - Callback function called when feature discovery is closed
        */
-      _this66.options = $.extend({}, TapTarget.defaults, options);
+      _this67.options = $.extend({}, TapTarget.defaults, options);
 
-      _this66.isOpen = false;
+      _this67.isOpen = false;
 
       // setup
-      _this66.$origin = $('#' + _this66.$el.attr('data-target'));
-      _this66._setup();
+      _this67.$origin = $('#' + _this67.$el.attr('data-target'));
+      _this67._setup();
 
-      _this66._calculatePositioning();
-      _this66._setupEventHandlers();
-      return _this66;
+      _this67._calculatePositioning();
+      _this67._setupEventHandlers();
+      return _this67;
     }
 
     _createClass(TapTarget, [{
@@ -11494,30 +11567,30 @@ $jscomp.polyfill = function (e, r, p, m) {
       _classCallCheck(this, FormSelect);
 
       // Don't init if browser default version
-      var _this67 = _possibleConstructorReturn(this, (FormSelect.__proto__ || Object.getPrototypeOf(FormSelect)).call(this, FormSelect, el, options));
+      var _this68 = _possibleConstructorReturn(this, (FormSelect.__proto__ || Object.getPrototypeOf(FormSelect)).call(this, FormSelect, el, options));
 
-      if (_this67.$el.hasClass('browser-default')) {
-        return _possibleConstructorReturn(_this67);
+      if (_this68.$el.hasClass('browser-default')) {
+        return _possibleConstructorReturn(_this68);
       }
 
-      _this67.el.M_FormSelect = _this67;
+      _this68.el.M_FormSelect = _this68;
 
       /**
        * Options for the select
        * @member FormSelect#options
        */
-      _this67.options = $.extend({}, FormSelect.defaults, options);
+      _this68.options = $.extend({}, FormSelect.defaults, options);
 
-      _this67.isMultiple = _this67.$el.prop('multiple');
+      _this68.isMultiple = _this68.$el.prop('multiple');
 
       // Setup
-      _this67.el.tabIndex = -1;
-      _this67._keysSelected = {};
-      _this67._valueDict = {}; // Maps key to original and generated option element.
-      _this67._setupDropdown();
+      _this68.el.tabIndex = -1;
+      _this68._keysSelected = {};
+      _this68._valueDict = {}; // Maps key to original and generated option element.
+      _this68._setupDropdown();
 
-      _this67._setupEventHandlers();
-      return _this67;
+      _this68._setupEventHandlers();
+      return _this68;
     }
 
     _createClass(FormSelect, [{
@@ -11540,14 +11613,14 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        var _this68 = this;
+        var _this69 = this;
 
         this._handleSelectChangeBound = this._handleSelectChange.bind(this);
         this._handleOptionClickBound = this._handleOptionClick.bind(this);
         this._handleInputClickBound = this._handleInputClick.bind(this);
 
         $(this.dropdownOptions).find('li:not(.optgroup)').each(function (el) {
-          el.addEventListener('click', _this68._handleOptionClickBound);
+          el.addEventListener('click', _this69._handleOptionClickBound);
         });
         this.el.addEventListener('change', this._handleSelectChangeBound);
         this.input.addEventListener('click', this._handleInputClickBound);
@@ -11560,10 +11633,10 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        var _this69 = this;
+        var _this70 = this;
 
         $(this.dropdownOptions).find('li:not(.optgroup)').each(function (el) {
-          el.removeEventListener('click', _this69._handleOptionClickBound);
+          el.removeEventListener('click', _this70._handleOptionClickBound);
         });
         this.el.removeEventListener('change', this._handleSelectChangeBound);
         this.input.removeEventListener('click', this._handleInputClickBound);
@@ -11640,7 +11713,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_setupDropdown",
       value: function _setupDropdown() {
-        var _this70 = this;
+        var _this71 = this;
 
         this.wrapper = document.createElement('div');
         $(this.wrapper).addClass('select-wrapper' + ' ' + this.options.classes);
@@ -11663,21 +11736,21 @@ $jscomp.polyfill = function (e, r, p, m) {
             if ($(el).is('option')) {
               // Direct descendant option.
               var optionEl = void 0;
-              if (_this70.isMultiple) {
-                optionEl = _this70._appendOptionWithIcon(_this70.$el, el, 'multiple');
+              if (_this71.isMultiple) {
+                optionEl = _this71._appendOptionWithIcon(_this71.$el, el, 'multiple');
               } else {
-                optionEl = _this70._appendOptionWithIcon(_this70.$el, el);
+                optionEl = _this71._appendOptionWithIcon(_this71.$el, el);
               }
 
-              _this70._addOptionToValueDict(el, optionEl);
+              _this71._addOptionToValueDict(el, optionEl);
             } else if ($(el).is('optgroup')) {
               // Optgroup.
               var selectOptions = $(el).children('option');
-              $(_this70.dropdownOptions).append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
+              $(_this71.dropdownOptions).append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
 
               selectOptions.each(function (el) {
-                var optionEl = _this70._appendOptionWithIcon(_this70.$el, el, 'optgroup-option');
-                _this70._addOptionToValueDict(el, optionEl);
+                var optionEl = _this71._appendOptionWithIcon(_this71.$el, el, 'optgroup-option');
+                _this71._addOptionToValueDict(el, optionEl);
               });
             }
           });
@@ -11708,11 +11781,11 @@ $jscomp.polyfill = function (e, r, p, m) {
 
           // Add callback for centering selected option when dropdown content is scrollable
           dropdownOptions.onOpenEnd = function (el) {
-            var selectedOption = $(_this70.dropdownOptions).find('.selected').first();
-            if (_this70.dropdown.isScrollable && selectedOption.length) {
-              var scrollOffset = selectedOption[0].getBoundingClientRect().top - _this70.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
-              scrollOffset -= _this70.dropdownOptions.clientHeight / 2; // center in dropdown
-              _this70.dropdownOptions.scrollTop = scrollOffset;
+            var selectedOption = $(_this71.dropdownOptions).find('.selected').first();
+            if (_this71.dropdown.isScrollable && selectedOption.length) {
+              var scrollOffset = selectedOption[0].getBoundingClientRect().top - _this71.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
+              scrollOffset -= _this71.dropdownOptions.clientHeight / 2; // center in dropdown
+              _this71.dropdownOptions.scrollTop = scrollOffset;
             }
           };
 
@@ -11953,23 +12026,23 @@ $jscomp.polyfill = function (e, r, p, m) {
     function Range(el, options) {
       _classCallCheck(this, Range);
 
-      var _this71 = _possibleConstructorReturn(this, (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, Range, el, options));
+      var _this72 = _possibleConstructorReturn(this, (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, Range, el, options));
 
-      _this71.el.M_Range = _this71;
+      _this72.el.M_Range = _this72;
 
       /**
        * Options for the range
        * @member Range#options
        */
-      _this71.options = $.extend({}, Range.defaults, options);
+      _this72.options = $.extend({}, Range.defaults, options);
 
-      _this71._mousedown = false;
+      _this72._mousedown = false;
 
       // Setup
-      _this71._setupThumb();
+      _this72._setupThumb();
 
-      _this71._setupEventHandlers();
-      return _this71;
+      _this72._setupEventHandlers();
+      return _this72;
     }
 
     _createClass(Range, [{
