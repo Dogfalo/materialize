@@ -14,7 +14,8 @@
     onOpenStart: null,
     onOpenEnd: null,
     onCloseStart: null,
-    onCloseEnd: null
+    onCloseEnd: null,
+    onItemClick: null
   };
 
 
@@ -84,6 +85,7 @@
       this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
       this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
       this._handleDocumentTouchmoveBound = this._handleDocumentTouchmove.bind(this);
+      this._handleDropdownClickBound = this._handleDropdownClick.bind(this);
       this._handleDropdownKeydownBound = this._handleDropdownKeydown.bind(this);
       this._handleTriggerKeydownBound = this._handleTriggerKeydown.bind(this);
       this._setupEventHandlers();
@@ -122,6 +124,9 @@
       // Trigger keydown handler
       this.el.addEventListener('keydown', this._handleTriggerKeydownBound);
 
+      // Item click handler
+      this.dropdownEl.addEventListener('click', this._handleDropdownClickBound);
+
       // Hover event handlers
       if (this.options.hover) {
         this._handleMouseEnterBound = this._handleMouseEnter.bind(this);
@@ -141,8 +146,8 @@
      * Remove Event Handlers
      */
     _removeEventHandlers() {
-      // Trigger keydown handler
       this.el.removeEventListener('keydown', this._handleTriggerKeydownBound);
+      this.dropdownEl.removeEventListener('click', this._handleDropdownClickBound);
 
       if (this.options.hover) {
         this.el.removeEventHandlers('mouseenter', this._handleMouseEnterBound);
@@ -229,6 +234,18 @@
       let $target = $(e.target);
       if ($target.closest('.dropdown-content').length) {
         this.isTouchMoving = true;
+      }
+    }
+
+    /**
+     * Handle Dropdown Click
+     * @param {Event} e
+     */
+    _handleDropdownClick(e) {
+      // onItemClick callback
+      if (typeof (this.options.onItemClick) === 'function') {
+        let itemEl = $(e.target).closest('li')[0];
+        this.options.onItemClick.call(this, itemEl);
       }
     }
 

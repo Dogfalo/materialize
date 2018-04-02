@@ -44,6 +44,12 @@
 
             <tbody>
               <tr>
+                <td>autoClose</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Automatically close picker when date is selected.</td>
+              </tr>
+              <tr>
                 <td>format</td>
                 <td>String</td>
                 <td>'mmm dd, yyyy'</td>
@@ -563,6 +569,36 @@ instance.destroy();
                 <td>Boolean</td>
                 <td>true</td>
                 <td>Vibrate device when dragging clock hand.</td>
+              </tr>
+              <tr>
+                <td>onOpenStart</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called before modal is opened.</td>
+              </tr>
+              <tr>
+                <td>onOpenEnd</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called after modal is opened.</td>
+              </tr>
+              <tr>
+                <td>onCloseStart</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called before modal is closed.</td>
+              </tr>
+              <tr>
+                <td>onCloseEnd</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called after modal is closed.</td>
+              </tr>
+              <tr>
+                <td>onSelect</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function when a time is selected, first parameter is the hour and the second is the minute.</td>
               </tr>
             </tbody>
           </table>

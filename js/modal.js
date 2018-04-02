@@ -58,6 +58,7 @@
       this._openingTrigger = undefined;
       this.$overlay = $('<div class="modal-overlay"></div>');
       this.el.tabIndex = 0;
+      this._nthModalOpened = 0;
 
       Modal._count++;
       this._setupEventHandlers();
@@ -167,7 +168,8 @@
      * @param {Event} e
      */
     _handleFocus(e) {
-      if (!this.el.contains(e.target)) {
+      // Only trap focus if this modal is the last model opened (prevents loops in nested modals).
+      if (!this.el.contains(e.target) && this._nthModalOpened === Modal._modalsOpen) {
         this.el.focus();
       }
     }
@@ -288,6 +290,7 @@
 
       this.isOpen = true;
       Modal._modalsOpen++;
+      this._nthModalOpened = Modal._modalsOpen;
 
       // Set Z-Index based on number of currently open modals
       this.$overlay[0].style.zIndex = 1000 + Modal._modalsOpen * 2;
@@ -335,6 +338,7 @@
 
       this.isOpen = false;
       Modal._modalsOpen--;
+      this._nthModalOpened = 0;
 
       // Call onCloseStart callback
       if (typeof(this.options.onCloseStart) === 'function') {
@@ -350,7 +354,7 @@
 
       if (this.options.dismissible) {
         document.removeEventListener('keydown', this._handleKeydownBound);
-        document.removeEventListener('focus', this._handleFocusBound);
+        document.removeEventListener('focus', this._handleFocusBound, true);
       }
 
       anim.remove(this.el);

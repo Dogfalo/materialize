@@ -49,6 +49,7 @@
       this.oldVal;
       this.$inputField = this.$el.closest('.input-field');
       this.$active = $();
+      this._mousedown = false;
       this._setupDropdown();
 
       this._setupEventHandlers();
@@ -87,15 +88,18 @@
       this._handleInputKeyupAndFocusBound = this._handleInputKeyupAndFocus.bind(this);
       this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
       this._handleContainerMousedownAndTouchstartBound = this._handleContainerMousedownAndTouchstart.bind(this);
+      this._handleContainerMouseupAndTouchendBound = this._handleContainerMouseupAndTouchend.bind(this);
 
       this.el.addEventListener('blur', this._handleInputBlurBound);
       this.el.addEventListener('keyup', this._handleInputKeyupAndFocusBound);
       this.el.addEventListener('focus', this._handleInputKeyupAndFocusBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
       this.container.addEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
+      this.container.addEventListener('mouseup', this._handleContainerMouseupAndTouchendBound);
 
       if (typeof window.ontouchstart !== 'undefined') {
         this.container.addEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
+        this.container.addEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
       }
     }
 
@@ -108,9 +112,11 @@
       this.el.removeEventListener('focus', this._handleInputKeyupAndFocusBound);
       this.el.removeEventListener('keydown', this._handleInputKeydownBound);
       this.container.removeEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
+      this.container.removeEventListener('mouseup', this._handleContainerMouseupAndTouchendBound);
 
       if (typeof window.ontouchstart !== 'undefined') {
         this.container.removeEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
+        this.container.removeEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
       }
     }
 
@@ -128,6 +134,9 @@
         autoFocus: false,
         closeOnClick: false,
         coverTrigger: false,
+        onItemClick: (itemEl) => {
+          this.selectOption($(itemEl));
+        }
       });
 
       // Sketchy removal of dropdown click handler
@@ -145,8 +154,10 @@
      * Handle Input Blur
      */
     _handleInputBlur() {
-      this.dropdown.close();
-      this._resetAutocomplete();
+      if (!this._mousedown) {
+        this.dropdown.close();
+        this._resetAutocomplete();
+      }
     }
 
     /**
@@ -243,8 +254,15 @@
      * @param {Event} e
      */
     _handleContainerMousedownAndTouchstart(e) {
-      let $autocompleteOption = $(e.target).closest('li');
-      this.selectOption($autocompleteOption);
+      this._mousedown = true;
+    }
+
+    /**
+     * Handle Container Mouseup and Touchend
+     * @param {Event} e
+     */
+    _handleContainerMouseupAndTouchend(e) {
+      this._mousedown = false;
     }
 
     /**
@@ -279,6 +297,7 @@
       this._resetCurrentElement();
       this.oldVal = null;
       this.isOpen = false;
+      this._mousedown = false;
     }
 
     /**
