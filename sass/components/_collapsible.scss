@@ -24,6 +24,10 @@
   }
 }
 
+.collapsible-header:focus {
+  outline: 0
+}
+
 .collapsible-body {
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
