@@ -99,6 +99,7 @@
       this._overlay.parentNode.removeChild(this._overlay);
       this.dragTarget.parentNode.removeChild(this.dragTarget);
       this.el.M_Sidenav = undefined;
+      this.el.style.transform = '';
 
       let index = Sidenav._sidenavs.indexOf(this);
       if (index >= 0) {
