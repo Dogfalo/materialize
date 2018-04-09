@@ -38,18 +38,31 @@ M.keys = {
  * TabPress Keydown handler
  */
 M.tabPressed = false;
+M.keyDown = false;
 let docHandleKeydown = function(e) {
+  M.keyDown = true;
   if (e.which === M.keys.TAB) {
     M.tabPressed = true;
   }
 };
 let docHandleKeyup = function(e) {
+  M.keyDown = false;
   if (e.which === M.keys.TAB) {
     M.tabPressed = false;
   }
 };
+let docHandleFocus = function(e) {
+  if (M.keyDown) {
+    document.body.classList.add('keyboard-focused');
+  }
+};
+let docHandleBlur = function(e) {
+  document.body.classList.remove('keyboard-focused');
+};
 document.addEventListener('keydown', docHandleKeydown);
 document.addEventListener('keyup', docHandleKeyup);
+document.addEventListener('focus', docHandleFocus, true);
+document.addEventListener('blur', docHandleBlur, true);
 
 
 /**

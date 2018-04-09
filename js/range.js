@@ -64,7 +64,6 @@
      */
     _setupEventHandlers() {
       this._handleRangeChangeBound = this._handleRangeChange.bind(this);
-      this._handleRangeFocusBound = this._handleRangeFocus.bind(this);
       this._handleRangeMousedownTouchstartBound = this._handleRangeMousedownTouchstart.bind(this);
       this._handleRangeInputMousemoveTouchmoveBound = this._handleRangeInputMousemoveTouchmove.bind(this);
       this._handleRangeMouseupTouchendBound = this._handleRangeMouseupTouchend.bind(this);
@@ -73,7 +72,6 @@
 
 
       this.el.addEventListener('change', this._handleRangeChangeBound);
-      this.el.addEventListener('focus', this._handleRangeFocusBound);
 
       this.el.addEventListener('mousedown', this._handleRangeMousedownTouchstartBound);
       this.el.addEventListener('touchstart', this._handleRangeMousedownTouchstartBound);
@@ -95,7 +93,6 @@
      */
     _removeEventHandlers() {
       this.el.removeEventListener('change', this._handleRangeChangeBound);
-      this.el.removeEventListener('focus', this._handleRangeFocusBound);
 
       this.el.removeEventListener('mousedown', this._handleRangeMousedownTouchstartBound);
       this.el.removeEventListener('touchstart', this._handleRangeMousedownTouchstartBound);
@@ -126,17 +123,6 @@
       let offsetLeft = this._calcRangeOffset();
       $(this.thumb).addClass('active').css('left', offsetLeft + 'px');
     }
-
-    /**
-     * Handle Range Focus
-     * @param {Event} e
-     */
-    _handleRangeFocus() {
-      if (M.tabPressed) {
-        this.$el.addClass('focused');
-      }
-    }
-
 
     /**
      * Handle Range Mousedown and Touchstart
@@ -187,7 +173,6 @@
      */
     _handleRangeBlurMouseoutTouchleave() {
       if (!this._mousedown) {
-        this.$el.removeClass('focused');
         let paddingLeft = parseInt(this.$el.css('padding-left'));
         let marginLeft = (7 + paddingLeft) + 'px';
 
