@@ -224,7 +224,7 @@
         targets: this.el,
         top: 0,
         opacity: 1,
-        duration: 300,
+        duration: this.options.inDuration,
         easing: 'easeOutCubic'
       });
     }
