@@ -5185,8 +5185,8 @@ small {
 .btn-small:disabled,
 .btn-flat:disabled,
 .btn[disabled],
-.btn-large[disabled],
-.btn-small[disabled],
+[disabled].btn-large,
+[disabled].btn-small,
 .btn-floating[disabled],
 .btn-large[disabled],
 .btn-small[disabled],
@@ -5212,8 +5212,8 @@ small {
 .btn-small:disabled:hover,
 .btn-flat:disabled:hover,
 .btn[disabled]:hover,
-.btn-large[disabled]:hover,
-.btn-small[disabled]:hover,
+[disabled].btn-large:hover,
+[disabled].btn-small:hover,
 .btn-floating[disabled]:hover,
 .btn-large[disabled]:hover,
 .btn-small[disabled]:hover,
@@ -5850,12 +5850,20 @@ button.btn-floating {
   border-bottom: 1px solid #ddd;
 }
 
+.collapsible-header:focus {
+  outline: 0;
+}
+
 .collapsible-header i {
   width: 2rem;
   font-size: 1.6rem;
   display: inline-block;
   text-align: center;
   margin-right: 1rem;
+}
+
+.keyboard-focused .collapsible-header:focus {
+  background-color: #eee;
 }
 
 .collapsible-body {
@@ -6094,9 +6102,6 @@ label {
 :-ms-input-placeholder {
   color: #d1d1d1;
 }
-::-ms-input-placeholder {
-  color: #d1d1d1;
-}
 ::placeholder {
   color: #d1d1d1;
 }
@@ -6277,28 +6282,28 @@ textarea.materialize-textarea.validate + label {
 
 /* Validation Sass Placeholders */
 input.valid:not([type]), input.valid:not([type]):focus,
-input.valid[type=text]:not(.browser-default),
-input.valid[type=text]:not(.browser-default):focus,
-input.valid[type=password]:not(.browser-default),
-input.valid[type=password]:not(.browser-default):focus,
-input.valid[type=email]:not(.browser-default),
-input.valid[type=email]:not(.browser-default):focus,
-input.valid[type=url]:not(.browser-default),
-input.valid[type=url]:not(.browser-default):focus,
-input.valid[type=time]:not(.browser-default),
-input.valid[type=time]:not(.browser-default):focus,
-input.valid[type=date]:not(.browser-default),
-input.valid[type=date]:not(.browser-default):focus,
-input.valid[type=datetime]:not(.browser-default),
-input.valid[type=datetime]:not(.browser-default):focus,
-input.valid[type=datetime-local]:not(.browser-default),
-input.valid[type=datetime-local]:not(.browser-default):focus,
-input.valid[type=tel]:not(.browser-default),
-input.valid[type=tel]:not(.browser-default):focus,
-input.valid[type=number]:not(.browser-default),
-input.valid[type=number]:not(.browser-default):focus,
-input.valid[type=search]:not(.browser-default),
-input.valid[type=search]:not(.browser-default):focus,
+input[type=text].valid:not(.browser-default),
+input[type=text].valid:not(.browser-default):focus,
+input[type=password].valid:not(.browser-default),
+input[type=password].valid:not(.browser-default):focus,
+input[type=email].valid:not(.browser-default),
+input[type=email].valid:not(.browser-default):focus,
+input[type=url].valid:not(.browser-default),
+input[type=url].valid:not(.browser-default):focus,
+input[type=time].valid:not(.browser-default),
+input[type=time].valid:not(.browser-default):focus,
+input[type=date].valid:not(.browser-default),
+input[type=date].valid:not(.browser-default):focus,
+input[type=datetime].valid:not(.browser-default),
+input[type=datetime].valid:not(.browser-default):focus,
+input[type=datetime-local].valid:not(.browser-default),
+input[type=datetime-local].valid:not(.browser-default):focus,
+input[type=tel].valid:not(.browser-default),
+input[type=tel].valid:not(.browser-default):focus,
+input[type=number].valid:not(.browser-default),
+input[type=number].valid:not(.browser-default):focus,
+input[type=search].valid:not(.browser-default),
+input[type=search].valid:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
   border-bottom: 1px solid #4CAF50;
@@ -6307,28 +6312,28 @@ textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-
 }
 
 input.invalid:not([type]), input.invalid:not([type]):focus,
-input.invalid[type=text]:not(.browser-default),
-input.invalid[type=text]:not(.browser-default):focus,
-input.invalid[type=password]:not(.browser-default),
-input.invalid[type=password]:not(.browser-default):focus,
-input.invalid[type=email]:not(.browser-default),
-input.invalid[type=email]:not(.browser-default):focus,
-input.invalid[type=url]:not(.browser-default),
-input.invalid[type=url]:not(.browser-default):focus,
-input.invalid[type=time]:not(.browser-default),
-input.invalid[type=time]:not(.browser-default):focus,
-input.invalid[type=date]:not(.browser-default),
-input.invalid[type=date]:not(.browser-default):focus,
-input.invalid[type=datetime]:not(.browser-default),
-input.invalid[type=datetime]:not(.browser-default):focus,
-input.invalid[type=datetime-local]:not(.browser-default),
-input.invalid[type=datetime-local]:not(.browser-default):focus,
-input.invalid[type=tel]:not(.browser-default),
-input.invalid[type=tel]:not(.browser-default):focus,
-input.invalid[type=number]:not(.browser-default),
-input.invalid[type=number]:not(.browser-default):focus,
-input.invalid[type=search]:not(.browser-default),
-input.invalid[type=search]:not(.browser-default):focus,
+input[type=text].invalid:not(.browser-default),
+input[type=text].invalid:not(.browser-default):focus,
+input[type=password].invalid:not(.browser-default),
+input[type=password].invalid:not(.browser-default):focus,
+input[type=email].invalid:not(.browser-default),
+input[type=email].invalid:not(.browser-default):focus,
+input[type=url].invalid:not(.browser-default),
+input[type=url].invalid:not(.browser-default):focus,
+input[type=time].invalid:not(.browser-default),
+input[type=time].invalid:not(.browser-default):focus,
+input[type=date].invalid:not(.browser-default),
+input[type=date].invalid:not(.browser-default):focus,
+input[type=datetime].invalid:not(.browser-default),
+input[type=datetime].invalid:not(.browser-default):focus,
+input[type=datetime-local].invalid:not(.browser-default),
+input[type=datetime-local].invalid:not(.browser-default):focus,
+input[type=tel].invalid:not(.browser-default),
+input[type=tel].invalid:not(.browser-default):focus,
+input[type=number].invalid:not(.browser-default),
+input[type=number].invalid:not(.browser-default):focus,
+input[type=search].invalid:not(.browser-default),
+input[type=search].invalid:not(.browser-default):focus,
 textarea.materialize-textarea.invalid,
 textarea.materialize-textarea.invalid:focus, .select-wrapper.invalid > input.select-dropdown,
 .select-wrapper.invalid > input.select-dropdown:focus {
@@ -6532,6 +6537,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
           transform-origin: 0 0;
 }
 
+.input-field > input[type]:-webkit-autofill:not(.browser-default) + label,
 .input-field > input[type=date]:not(.browser-default) + label,
 .input-field > input[type=time]:not(.browser-default) + label {
   -webkit-transform: translateY(-14px) scale(0.8);
@@ -7399,7 +7405,7 @@ input[type=range]::-webkit-slider-thumb {
   margin: -5px 0 0 0;
 }
 
-input[type=range].focused:focus:not(.active)::-webkit-slider-thumb {
+.keyboard-focused input[type=range]:focus:not(.active)::-webkit-slider-thumb {
   -webkit-box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26);
           box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26);
 }
@@ -7438,7 +7444,7 @@ input[type=range]:-moz-focusring {
   outline-offset: -1px;
 }
 
-input[type=range].focused:focus:not(.active)::-moz-range-thumb {
+.keyboard-focused input[type=range]:focus:not(.active)::-moz-range-thumb {
   box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26);
 }
 
@@ -7471,7 +7477,7 @@ input[type=range]::-ms-thumb {
   transition: box-shadow .3s, -webkit-box-shadow .3s;
 }
 
-input[type=range].focused:focus:not(.active)::-ms-thumb {
+.keyboard-focused input[type=range]:focus:not(.active)::-ms-thumb {
   box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26);
 }
 
@@ -8809,6 +8815,12 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
+  }
+  .datepicker-date-display {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 270px;
+        -ms-flex: 0 1 270px;
+            flex: 0 1 270px;
   }
   .datepicker-controls,
   .datepicker-table,
