@@ -7,6 +7,10 @@
 }
 
 .collapsible-header {
+  &:focus {
+    outline: 0
+  }
+
   display: flex;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -22,6 +26,9 @@
     text-align: center;
     margin-right: 1rem;
   }
+}
+.keyboard-focused .collapsible-header:focus {
+  background-color: #eee;
 }
 
 .collapsible-body {

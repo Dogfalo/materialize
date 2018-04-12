@@ -202,11 +202,11 @@
 
 
     destroySelects() {
-      let oldYearSelect = this.calendarEl.querySelector('.pika-select-year');
+      let oldYearSelect = this.calendarEl.querySelector('.orig-select-year');
       if (oldYearSelect) {
         M.FormSelect.getInstance(oldYearSelect).destroy();
       }
-      let oldMonthSelect = this.calendarEl.querySelector('.pika-select-month');
+      let oldMonthSelect = this.calendarEl.querySelector('.orig-select-month');
       if (oldMonthSelect) {
         M.FormSelect.getInstance(oldMonthSelect).destroy();
       }
@@ -491,14 +491,14 @@
       }
       return '<td data-day="' + opts.day + '" class="' + arr.join(' ') + '" aria-selected="' + ariaSelected + '">' +
         '<button class="datepicker-day-button" type="button" ' +
-        'data-pika-year="' + opts.year + '" data-pika-month="' + opts.month + '" data-pika-day="' + opts.day + '">' +
+        'data-year="' + opts.year + '" data-month="' + opts.month + '" data-day="' + opts.day + '">' +
         opts.day +
         '</button>' +
         '</td>';
     }
 
     renderRow(days, isRTL, isRowSelected) {
-      return '<tr class="pika-row' + (isRowSelected ? ' is-selected' : '') + '">' + (isRTL ? days.reverse() : days).join('') + '</tr>';
+      return '<tr class="datepicker-row' + (isRowSelected ? ' is-selected' : '') + '">' + (isRTL ? days.reverse() : days).join('') + '</tr>';
     }
 
     renderTable(opts, data, randId) {
@@ -539,7 +539,7 @@
                  opts.i18n.months[i] + '</option>');
       }
 
-      monthHtml = '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select>';
+      monthHtml = '<select class="datepicker-select orig-select-month" tabindex="-1">' + arr.join('') + '</select>';
 
       if ($.isArray(opts.yearRange)) {
         i = opts.yearRange[0];
@@ -555,7 +555,7 @@
         }
       }
 
-      yearHtml = '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select>';
+      yearHtml = '<select class="datepicker-select orig-select-year" tabindex="-1">' + arr.join('') + '</select>';
 
       let leftArrow = '<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/><path d="M0-.5h24v24H0z" fill="none"/></svg>';
       html += '<button class="month-prev' + (prev ? '' : ' is-disabled') + '" type="button">' + leftArrow + '</button>';
@@ -615,7 +615,7 @@
         }
       }
 
-      randId = 'pika-title-' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 2);
+      randId = 'datepicker-title-' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 2);
 
 
       for (let c = 0; c < 1; c++) {
@@ -634,8 +634,8 @@
       this.calendarEl.innerHTML = html;
 
       // Init Materialize Select
-      let yearSelect = this.calendarEl.querySelector('.pika-select-year');
-      let monthSelect = this.calendarEl.querySelector('.pika-select-month');
+      let yearSelect = this.calendarEl.querySelector('.orig-select-year');
+      let monthSelect = this.calendarEl.querySelector('.orig-select-month');
       M.FormSelect.init(yearSelect, {classes: 'select-year', dropdownOptions: {container: document.body, constrainWidth: false}});
       M.FormSelect.init(monthSelect, {classes: 'select-month', dropdownOptions: {container: document.body, constrainWidth: false}});
 
@@ -678,7 +678,7 @@
       this.$modalEl = $(Datepicker._template);
       this.modalEl = this.$modalEl[0];
 
-		  this.calendarEl = this.modalEl.querySelector('.pika-single');
+		  this.calendarEl = this.modalEl.querySelector('.datepicker-calendar');
 
       this.yearTextEl = this.modalEl.querySelector('.year-text');
       this.dateTextEl = this.modalEl.querySelector('.date-text');
@@ -756,9 +756,9 @@
         if ($target.hasClass('datepicker-day-button') &&
             !$target.hasClass('is-empty') &&
             !$target.parent().hasClass('is-disabled')) {
-          this.setDate(new Date(e.target.getAttribute('data-pika-year'),
-                                e.target.getAttribute('data-pika-month'),
-                                e.target.getAttribute('data-pika-day')));
+          this.setDate(new Date(e.target.getAttribute('data-year'),
+                                e.target.getAttribute('data-month'),
+                                e.target.getAttribute('data-day')));
           if (this.options.autoClose) {
             this._finishSelection();
           }
@@ -770,17 +770,6 @@
           this.nextMonth();
         }
       }
-      // if (!$target.hasClass('pika-select')) {
-      //   // if this is touch event prevent mouse events emulation
-      //   // if (e.preventDefault) {
-      //   //   e.preventDefault();
-      //   // } else {
-      //   //   e.returnValue = false;
-      //   //   return false;
-      //   // }
-      // } else {
-      //   this._c = true;
-      // }
     }
 
 
@@ -900,7 +889,7 @@
           '<span class="date-text"></span>',
         '</div>',
         '<div class="datepicker-calendar-container">',
-          '<div class="pika-single"></div>',
+          '<div class="datepicker-calendar"></div>',
           '<div class="datepicker-footer">',
             '<button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>',
             '<div class="confirmation-btns">',

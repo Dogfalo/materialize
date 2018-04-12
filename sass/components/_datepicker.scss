@@ -175,6 +175,10 @@
     flex-direction: row;
   }
 
+  .datepicker-date-display {
+    flex: 0 1 270px;
+  }
+
   .datepicker-controls,
   .datepicker-table,
   .datepicker-footer {
