@@ -193,6 +193,10 @@
     $('.tap-target').tapTarget();
     $('input.autocomplete').autocomplete({
       data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'},
+      onValueChange: function (val) {
+        // PoC for working callback, without being intrusive of the functionality.
+        console.log('value = ' + val);
+      }
     });
     $('input[data-length], textarea[data-length]').characterCounter();
 

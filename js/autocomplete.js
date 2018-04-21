@@ -4,6 +4,7 @@
   let _defaults = {
     data: {}, // Autocomplete data set
     limit: Infinity, // Limit of results the autocomplete shows
+    onValueChange: null, // Callback for when the value of the input changes
     onAutocomplete: null, // Callback for when autocompleted
     minLength: 1, // Min characters before autocomplete starts
     sortFunction: function (a, b, inputString) { // Sort function for sorting autocomplete results
@@ -46,7 +47,7 @@
       this.isOpen = false;
       this.count = 0;
       this.activeIndex = -1;
-      this.oldVal;
+      this.oldVal = null;
       this.$inputField = this.$el.closest('.input-field');
       this.$active = $();
       this._mousedown = false;
@@ -185,6 +186,10 @@
 
         if (val.length >= this.options.minLength) {
           this.isOpen = true;
+          // Handle value change in the element ("User typed something")
+          if (typeof(this.options.onValueChange) === 'function') {
+            this.options.onValueChange.call(this, val);
+          }
           this._renderDropdown(this.options.data, val);
         }
 
