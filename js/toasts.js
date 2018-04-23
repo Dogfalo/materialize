@@ -41,6 +41,7 @@
       let toastElement = this._createToast();
       toastElement.M_Toast = this;
       this.el = toastElement;
+      this.$el = $(toastElement);
       this._animateIn();
       this._setTimer();
     }
@@ -85,7 +86,7 @@
       document.removeEventListener('mousemove', Toast._onDragMove);
       document.removeEventListener('mouseup', Toast._onDragEnd);
 
-      Toast._container.parentNode.removeChild(Toast._container);
+      $(Toast._container).remove();
       Toast._container = null;
     }
 
@@ -278,7 +279,7 @@
             this.options.completeCallback();
           }
           // Remove toast from DOM
-          this.el.parentNode.removeChild(this.el);
+          this.$el.remove();
           Toast._toasts.splice(Toast._toasts.indexOf(this), 1);
           if (Toast._toasts.length === 0) {
             Toast._removeContainer();
