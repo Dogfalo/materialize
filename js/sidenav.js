@@ -275,7 +275,7 @@
      */
     _handleDragTargetRelease() {
       if (this.isDragged) {
-        if (this.percentOpen > .5) {
+        if (this.percentOpen > .2) {
           this.open();
         } else {
           this._animateOut();
@@ -336,7 +336,7 @@
      */
     _handleCloseRelease() {
       if (this.isOpen && this.isDragged) {
-        if (this.percentOpen > .5) {
+        if (this.percentOpen > .8) {
           this._animateIn();
         } else {
           this.close();
