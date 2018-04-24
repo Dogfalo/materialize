@@ -10,6 +10,7 @@
     fullWidth: false, // Change to full width styles
     indicators: false, // Toggle indicators
     noWrap: false, // Don't wrap around and cycle through items.
+    enableTouch: true, // Enable dragging and touch events.
     onCycleTo: null // Callback for when a new slide is cycled to.
   };
 
@@ -41,6 +42,7 @@
        * @prop {Boolean} fullWidth
        * @prop {Boolean} indicators
        * @prop {Boolean} noWrap
+       * @prop {Boolean} enableTouch
        * @prop {Function} onCycleTo
        */
       this.options = $.extend({}, Carousel.defaults, options);
@@ -48,6 +50,7 @@
       // Setup
       this.hasMultipleSlides = this.$el.find('.carousel-item').length > 1;
       this.showIndicators = this.options.indicators && this.hasMultipleSlides;
+      this.enableTouch = this.options.enableTouch;
       this.noWrap = this.options.noWrap || !this.hasMultipleSlides;
       this.pressed = false;
       this.dragged = false;
@@ -141,7 +144,7 @@
       this._handleCarouselReleaseBound = this._handleCarouselRelease.bind(this);
       this._handleCarouselClickBound = this._handleCarouselClick.bind(this);
 
-      if (typeof window.ontouchstart !== 'undefined') {
+      if (typeof window.ontouchstart !== 'undefined' && this.enableTouch) {
         this.el.addEventListener('touchstart', this._handleCarouselTapBound);
         this.el.addEventListener('touchmove', this._handleCarouselDragBound);
         this.el.addEventListener('touchend', this._handleCarouselReleaseBound);
@@ -171,7 +174,7 @@
      * Remove Event Handlers
      */
     _removeEventHandlers() {
-      if (typeof window.ontouchstart !== 'undefined') {
+      if (typeof window.ontouchstart !== 'undefined' && this.enableTouch) {
         this.el.removeEventListener('touchstart', this._handleCarouselTapBound);
         this.el.removeEventListener('touchmove', this._handleCarouselDragBound);
         this.el.removeEventListener('touchend', this._handleCarouselReleaseBound);
