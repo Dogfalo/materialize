@@ -17,7 +17,14 @@
   },
   "scripts": {
     "dev": "grunt monitor",
-    "test": "grunt travis --verbose"
+    "test": "grunt travis",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {},
   "engine": "node >= 6",
@@ -42,12 +49,15 @@
     "grunt-rename-util": "^1.0.0",
     "grunt-sass": "^2.0.0",
     "grunt-text-replace": "^0.4.0",
+    "husky": "^0.14.3",
     "jasmine": "^2.6.0",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.2.1",
+    "lint-staged": "^7.0.4",
     "node-archiver": "^0.3.0",
     "node-sass": "^4.7.2",
-    "phantomjs-prebuilt": "^2.1.14"
+    "phantomjs-prebuilt": "^2.1.14",
+    "prettier": "^1.12.1"
   },
   "files": [
     "dist",

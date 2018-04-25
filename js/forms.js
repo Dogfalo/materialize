@@ -1,10 +1,16 @@
-(function ($) {
+(function($) {
   // Function to update labels of text fields
   M.updateTextFields = function() {
-    let input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
+    let input_selector =
+      'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
     $(input_selector).each(function(element, index) {
       let $this = $(this);
-      if (element.value.length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== null) {
+      if (
+        element.value.length > 0 ||
+        $(element).is(':focus') ||
+        element.autofocus ||
+        $this.attr('placeholder') !== null
+      ) {
         $this.siblings('label').addClass('active');
       } else if (element.validity) {
         $this.siblings('label').toggleClass('active', element.validity.badInput === true);
@@ -24,22 +30,22 @@
         object.removeClass('valid');
         object.removeClass('invalid');
       }
-
     } else {
       if (object.hasClass('validate')) {
         // Check for character counter attributes
-        if ((object.is(':valid') && hasLength && (len <= lenAttr)) || (object.is(':valid') && !hasLength)) {
+        if (
+          (object.is(':valid') && hasLength && len <= lenAttr) ||
+          (object.is(':valid') && !hasLength)
+        ) {
           object.removeClass('invalid');
           object.addClass('valid');
-        }
-        else {
+        } else {
           object.removeClass('valid');
           object.addClass('invalid');
         }
       }
     }
   };
-
 
   M.textareaAutoResize = function($textarea) {
     // Wrap if native element
@@ -48,7 +54,7 @@
     }
 
     if (!$textarea.length) {
-      console.error("No textarea element found");
+      console.error('No textarea element found');
       return;
     }
 
@@ -70,13 +76,27 @@
     let paddingBottom = $textarea.css('padding-bottom');
     let paddingLeft = $textarea.css('padding-left');
 
-    if (fontSize) { hiddenDiv.css('font-size', fontSize); }
-    if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
-    if (lineHeight) { hiddenDiv.css('line-height', lineHeight); }
-    if (paddingTop) { hiddenDiv.css('padding-top', paddingTop); }
-    if (paddingRight) { hiddenDiv.css('padding-right', paddingRight); }
-    if (paddingBottom) { hiddenDiv.css('padding-bottom', paddingBottom); }
-    if (paddingLeft) { hiddenDiv.css('padding-left', paddingLeft); }
+    if (fontSize) {
+      hiddenDiv.css('font-size', fontSize);
+    }
+    if (fontFamily) {
+      hiddenDiv.css('font-family', fontFamily);
+    }
+    if (lineHeight) {
+      hiddenDiv.css('line-height', lineHeight);
+    }
+    if (paddingTop) {
+      hiddenDiv.css('padding-top', paddingTop);
+    }
+    if (paddingRight) {
+      hiddenDiv.css('padding-right', paddingRight);
+    }
+    if (paddingBottom) {
+      hiddenDiv.css('padding-bottom', paddingBottom);
+    }
+    if (paddingLeft) {
+      hiddenDiv.css('padding-left', paddingLeft);
+    }
 
     // Set original-height, if none
     if (!$textarea.data('original-height')) {
@@ -84,25 +104,21 @@
     }
 
     if ($textarea.attr('wrap') === 'off') {
-      hiddenDiv.css('overflow-wrap', 'normal')
-        .css('white-space', 'pre');
+      hiddenDiv.css('overflow-wrap', 'normal').css('white-space', 'pre');
     }
 
     hiddenDiv.text($textarea[0].value + '\n');
     let content = hiddenDiv.html().replace(/\n/g, '<br>');
     hiddenDiv.html(content);
 
-
     // When textarea is hidden, width goes crazy.
     // Approximate with half of window size
 
     if ($textarea[0].offsetWidth > 0 && $textarea[0].offsetHeight > 0) {
       hiddenDiv.css('width', $textarea.width() + 'px');
+    } else {
+      hiddenDiv.css('width', window.innerWidth / 2 + 'px');
     }
-    else {
-      hiddenDiv.css('width', (window.innerWidth/2) + 'px');
-    }
-
 
     /**
      * Resize if the new height is greater than the
@@ -121,15 +137,17 @@
     $textarea.data('previous-length', $textarea[0].value.length);
   };
 
-
   $(document).ready(function() {
     // Text based inputs
-    let input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
+    let input_selector =
+      'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
 
     // Add active if form auto complete
-    $(document).on('change', input_selector, function () {
-      if(this.value.length !== 0 || $(this).attr('placeholder') !== null) {
-        $(this).siblings('label').addClass('active');
+    $(document).on('change', input_selector, function() {
+      if (this.value.length !== 0 || $(this).attr('placeholder') !== null) {
+        $(this)
+          .siblings('label')
+          .addClass('active');
       }
       M.validate_field($(this));
     });
@@ -143,19 +161,26 @@
     $(document).on('reset', function(e) {
       let formReset = $(e.target);
       if (formReset.is('form')) {
-        formReset.find(input_selector).removeClass('valid').removeClass('invalid');
-        formReset.find(input_selector).each(function (e) {
+        formReset
+          .find(input_selector)
+          .removeClass('valid')
+          .removeClass('invalid');
+        formReset.find(input_selector).each(function(e) {
           if (this.value.length) {
-            $(this).siblings('label').removeClass('active');
+            $(this)
+              .siblings('label')
+              .removeClass('active');
           }
         });
 
         // Reset select (after native reset)
         setTimeout(function() {
-          formReset.find('select').each(function () {
+          formReset.find('select').each(function() {
             // check if initialized
             if (this.M_FormSelect) {
-              let reset_text = $(this).find('option[selected]').text();
+              let reset_text = $(this)
+                .find('option[selected]')
+                .text();
               $(this).siblings('input.select-dropdown')[0].value = reset_text;
             }
           });
@@ -167,28 +192,42 @@
      * Add active when element has focus
      * @param {Event} e
      */
-    document.addEventListener('focus', function(e) {
-      if ($(e.target).is(input_selector)) {
-        $(e.target).siblings('label, .prefix').addClass('active');
-      }
-    }, true);
+    document.addEventListener(
+      'focus',
+      function(e) {
+        if ($(e.target).is(input_selector)) {
+          $(e.target)
+            .siblings('label, .prefix')
+            .addClass('active');
+        }
+      },
+      true
+    );
 
     /**
      * Remove active when element is blurred
      * @param {Event} e
      */
-    document.addEventListener('blur', function(e) {
-      let $inputElement = $(e.target);
-      if ($inputElement.is(input_selector)) {
-        let selector = ".prefix";
+    document.addEventListener(
+      'blur',
+      function(e) {
+        let $inputElement = $(e.target);
+        if ($inputElement.is(input_selector)) {
+          let selector = '.prefix';
 
-        if ($inputElement[0].value.length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === null) {
-          selector += ", label";
+          if (
+            $inputElement[0].value.length === 0 &&
+            $inputElement[0].validity.badInput !== true &&
+            $inputElement.attr('placeholder') === null
+          ) {
+            selector += ', label';
+          }
+          $inputElement.siblings(selector).removeClass('active');
+          M.validate_field($inputElement);
         }
-        $inputElement.siblings(selector).removeClass('active');
-        M.validate_field($inputElement);
-      }
-    }, true);
+      },
+      true
+    );
 
     // Radio and Checkbox focus class
     let radio_checkbox = 'input[type=radio], input[type=checkbox]';
@@ -205,7 +244,7 @@
     });
 
     let text_area_selector = '.materialize-textarea';
-    $(text_area_selector).each(function () {
+    $(text_area_selector).each(function() {
       let $textarea = $(this);
       /**
        * Resize textarea on document load after storing
@@ -216,25 +255,24 @@
       M.textareaAutoResize($textarea);
     });
 
-    $(document).on('keyup', text_area_selector, function () {
+    $(document).on('keyup', text_area_selector, function() {
       M.textareaAutoResize($(this));
     });
-    $(document).on('keydown', text_area_selector, function () {
+    $(document).on('keydown', text_area_selector, function() {
       M.textareaAutoResize($(this));
     });
 
     // File Input Path
-    $(document).on('change', '.file-field input[type="file"]', function () {
+    $(document).on('change', '.file-field input[type="file"]', function() {
       let file_field = $(this).closest('.file-field');
       let path_input = file_field.find('input.file-path');
-      let files      = $(this)[0].files;
+      let files = $(this)[0].files;
       let file_names = [];
       for (let i = 0; i < files.length; i++) {
         file_names.push(files[i].name);
       }
-      path_input[0].value = file_names.join(", ");
+      path_input[0].value = file_names.join(', ');
       path_input.trigger('change');
     });
-
   }); // End of $(document).ready
-}( cash ));
+})(cash);

@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -7,7 +7,6 @@
     offset: 0,
     onPositionChange: null
   };
-
 
   /**
    * @class
@@ -84,15 +83,18 @@
     _updatePosition() {
       let scrolled = M.getDocumentScrollTop() + this.options.offset;
 
-      if (this.options.top <= scrolled && this.options.bottom >= scrolled &&
-        !this.el.classList.contains('pinned')) {
+      if (
+        this.options.top <= scrolled &&
+        this.options.bottom >= scrolled &&
+        !this.el.classList.contains('pinned')
+      ) {
         this._removePinClasses();
 
         this.el.style.top = `${this.options.offset}px`;
         this.el.classList.add('pinned');
 
         // onPositionChange callback
-        if (typeof(this.options.onPositionChange) === 'function') {
+        if (typeof this.options.onPositionChange === 'function') {
           this.options.onPositionChange.call(this, 'pinned');
         }
       }
@@ -104,7 +106,7 @@
         this.el.classList.add('pin-top');
 
         // onPositionChange callback
-        if (typeof(this.options.onPositionChange) === 'function') {
+        if (typeof this.options.onPositionChange === 'function') {
           this.options.onPositionChange.call(this, 'pin-top');
         }
       }
@@ -116,7 +118,7 @@
         this.el.style.top = `${this.options.bottom - this.originalOffset}px`;
 
         // onPositionChange callback
-        if (typeof(this.options.onPositionChange) === 'function') {
+        if (typeof this.options.onPositionChange === 'function') {
           this.options.onPositionChange.call(this, 'pin-bottom');
         }
       }
@@ -138,5 +140,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Pushpin, 'pushpin', 'M_Pushpin');
   }
-
 })(cash);

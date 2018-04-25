@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -6,11 +6,11 @@
     limit: Infinity, // Limit of results the autocomplete shows
     onAutocomplete: null, // Callback for when autocompleted
     minLength: 1, // Min characters before autocomplete starts
-    sortFunction: function (a, b, inputString) { // Sort function for sorting autocomplete results
+    sortFunction: function(a, b, inputString) {
+      // Sort function for sorting autocomplete results
       return a.indexOf(inputString) - b.indexOf(inputString);
     }
   };
-
 
   /**
    * @class
@@ -87,18 +87,28 @@
       this._handleInputBlurBound = this._handleInputBlur.bind(this);
       this._handleInputKeyupAndFocusBound = this._handleInputKeyupAndFocus.bind(this);
       this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
-      this._handleContainerMousedownAndTouchstartBound = this._handleContainerMousedownAndTouchstart.bind(this);
-      this._handleContainerMouseupAndTouchendBound = this._handleContainerMouseupAndTouchend.bind(this);
+      this._handleContainerMousedownAndTouchstartBound = this._handleContainerMousedownAndTouchstart.bind(
+        this
+      );
+      this._handleContainerMouseupAndTouchendBound = this._handleContainerMouseupAndTouchend.bind(
+        this
+      );
 
       this.el.addEventListener('blur', this._handleInputBlurBound);
       this.el.addEventListener('keyup', this._handleInputKeyupAndFocusBound);
       this.el.addEventListener('focus', this._handleInputKeyupAndFocusBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
-      this.container.addEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
+      this.container.addEventListener(
+        'mousedown',
+        this._handleContainerMousedownAndTouchstartBound
+      );
       this.container.addEventListener('mouseup', this._handleContainerMouseupAndTouchendBound);
 
       if (typeof window.ontouchstart !== 'undefined') {
-        this.container.addEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
+        this.container.addEventListener(
+          'touchstart',
+          this._handleContainerMousedownAndTouchstartBound
+        );
         this.container.addEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
       }
     }
@@ -111,12 +121,21 @@
       this.el.removeEventListener('keyup', this._handleInputKeyupAndFocusBound);
       this.el.removeEventListener('focus', this._handleInputKeyupAndFocusBound);
       this.el.removeEventListener('keydown', this._handleInputKeydownBound);
-      this.container.removeEventListener('mousedown', this._handleContainerMousedownAndTouchstartBound);
+      this.container.removeEventListener(
+        'mousedown',
+        this._handleContainerMousedownAndTouchstartBound
+      );
       this.container.removeEventListener('mouseup', this._handleContainerMouseupAndTouchendBound);
 
       if (typeof window.ontouchstart !== 'undefined') {
-        this.container.removeEventListener('touchstart', this._handleContainerMousedownAndTouchstartBound);
-        this.container.removeEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
+        this.container.removeEventListener(
+          'touchstart',
+          this._handleContainerMousedownAndTouchstartBound
+        );
+        this.container.removeEventListener(
+          'touchend',
+          this._handleContainerMouseupAndTouchendBound
+        );
       }
     }
 
@@ -173,9 +192,7 @@
       let val = this.el.value.toLowerCase();
 
       // Don't capture enter or arrow key usage.
-      if (e.keyCode === 13 ||
-        e.keyCode === 38 ||
-        e.keyCode === 40) {
+      if (e.keyCode === 13 || e.keyCode === 38 || e.keyCode === 40) {
         return;
       }
 
@@ -195,7 +212,7 @@
             this.dropdown.open();
           }, 100);
 
-        // Recalculate dropdown when its already open
+          // Recalculate dropdown when its already open
         } else {
           this.dropdown.recalculateDimensions();
         }
@@ -219,7 +236,9 @@
 
       // select element on Enter
       if (keyCode === 13 && this.activeIndex >= 0) {
-        liElement = $(this.container).children('li').eq(this.activeIndex);
+        liElement = $(this.container)
+          .children('li')
+          .eq(this.activeIndex);
         if (liElement.length) {
           this.selectOption(liElement);
           e.preventDefault();
@@ -231,19 +250,19 @@
       if (keyCode === 38 || keyCode === 40) {
         e.preventDefault();
 
-        if (keyCode === 38 &&
-          this.activeIndex > 0) {
+        if (keyCode === 38 && this.activeIndex > 0) {
           this.activeIndex--;
         }
 
-        if (keyCode === 40 &&
-          this.activeIndex < (numItems - 1)) {
+        if (keyCode === 40 && this.activeIndex < numItems - 1) {
           this.activeIndex++;
         }
 
         this.$active.removeClass('active');
         if (this.activeIndex >= 0) {
-          this.$active = $(this.container).children('li').eq(this.activeIndex);
+          this.$active = $(this.container)
+            .children('li')
+            .eq(this.activeIndex);
           this.$active.addClass('active');
         }
       }
@@ -270,12 +289,23 @@
      */
     _highlight(string, $el) {
       let img = $el.find('img');
-      let matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
+      let matchStart = $el
+          .text()
+          .toLowerCase()
+          .indexOf('' + string.toLowerCase() + ''),
         matchEnd = matchStart + string.length - 1,
         beforeMatch = $el.text().slice(0, matchStart),
         matchText = $el.text().slice(matchStart, matchEnd + 1),
         afterMatch = $el.text().slice(matchEnd + 1);
-      $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
+      $el.html(
+        '<span>' +
+          beforeMatch +
+          "<span class='highlight'>" +
+          matchText +
+          '</span>' +
+          afterMatch +
+          '</span>'
+      );
       if (img.length) {
         $el.prepend(img);
       }
@@ -312,7 +342,7 @@
       this.dropdown.close();
 
       // Handle onAutocomplete callback.
-      if (typeof (this.options.onAutocomplete) === 'function') {
+      if (typeof this.options.onAutocomplete === 'function') {
         this.options.onAutocomplete.call(this, text);
       }
     }
@@ -329,8 +359,7 @@
 
       // Gather all matching data
       for (let key in data) {
-        if (data.hasOwnProperty(key) &&
-          key.toLowerCase().indexOf(val) !== -1) {
+        if (data.hasOwnProperty(key) && key.toLowerCase().indexOf(val) !== -1) {
           // Break if past limit
           if (this.count >= this.options.limit) {
             break;
@@ -348,7 +377,11 @@
 
       // Sort
       let sortFunctionBound = (a, b) => {
-        return this.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
+        return this.options.sortFunction(
+          a.key.toLowerCase(),
+          b.key.toLowerCase(),
+          val.toLowerCase()
+        );
       };
       matchingData.sort(sortFunctionBound);
 
@@ -357,7 +390,9 @@
         let entry = matchingData[i];
         let $autocompleteOption = $('<li></li>');
         if (!!entry.data) {
-          $autocompleteOption.append('<img src="' + entry.data + '" class="right circle"><span>' + entry.key + '</span>');
+          $autocompleteOption.append(
+            '<img src="' + entry.data + '" class="right circle"><span>' + entry.key + '</span>'
+          );
         } else {
           $autocompleteOption.append('<span>' + entry.key + '</span>');
         }
@@ -365,7 +400,6 @@
         $(this.container).append($autocompleteOption);
         this._highlight(val, $autocompleteOption);
       }
-
     }
 
     /**
@@ -393,5 +427,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Autocomplete, 'autocomplete', 'M_Autocomplete');
   }
-
-}(cash));
+})(cash);

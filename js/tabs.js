@@ -1,11 +1,11 @@
-(function ($, anim) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
     duration: 300,
     onShow: null,
     swipeable: false,
-    responsiveThreshold: Infinity, // breakpoint for swipeable
+    responsiveThreshold: Infinity // breakpoint for swipeable
   };
 
   /**
@@ -43,11 +43,9 @@
 
       if (this.options.swipeable) {
         this._setupSwipeableTabs();
-
       } else {
         this._setupNormalTabs();
       }
-
 
       this._setupEventHandlers();
     }
@@ -134,7 +132,7 @@
       }
 
       // Act as regular link if target attribute is specified.
-      if (!!tabLink.attr("target")) {
+      if (!!tabLink.attr('target')) {
         return;
       }
 
@@ -158,7 +156,7 @@
       if (this.options.swipeable) {
         if (this._tabsCarousel) {
           this._tabsCarousel.set(this.index, () => {
-            if (typeof(this.options.onShow) === "function") {
+            if (typeof this.options.onShow === 'function') {
               this.options.onShow.call(this, this.$content[0]);
             }
           });
@@ -167,12 +165,11 @@
         if (this.$content.length) {
           this.$content[0].style.display = 'block';
           this.$content.addClass('active');
-          if (typeof(this.options.onShow) === 'function') {
+          if (typeof this.options.onShow === 'function') {
             this.options.onShow.call(this, this.$content[0]);
           }
 
-          if ($oldContent.length &&
-              !$oldContent.is(this.$content)) {
+          if ($oldContent.length && !$oldContent.is(this.$content)) {
             $oldContent[0].style.display = 'none';
             $oldContent.removeClass('active');
           }
@@ -185,7 +182,6 @@
       // Prevent the anchor's default click action
       e.preventDefault();
     }
-
 
     /**
      * Generate elements for tab indicator.
@@ -208,14 +204,20 @@
      */
     _setupActiveTabLink() {
       // If the location.hash matches one of the links, use that as the active tab.
-      this.$activeTabLink = $(this.$tabLinks.filter('[href="'+location.hash+'"]'));
+      this.$activeTabLink = $(this.$tabLinks.filter('[href="' + location.hash + '"]'));
 
       // If no match is found, use the first link or any with class 'active' as the initial active tab.
       if (this.$activeTabLink.length === 0) {
-        this.$activeTabLink = this.$el.children('li.tab').children('a.active').first();
+        this.$activeTabLink = this.$el
+          .children('li.tab')
+          .children('a.active')
+          .first();
       }
       if (this.$activeTabLink.length === 0) {
-        this.$activeTabLink = this.$el.children('li.tab').children('a').first();
+        this.$activeTabLink = this.$el
+          .children('li.tab')
+          .children('a')
+          .first();
       }
 
       this.$tabLinks.removeClass('active');
@@ -263,10 +265,10 @@
           this.$activeTabLink = this.$tabLinks.eq(this.index);
           this.$activeTabLink.addClass('active');
           this._animateIndicator(prevIndex);
-          if (typeof(this.options.onShow) === "function") {
+          if (typeof this.options.onShow === 'function') {
             this.options.onShow.call(this, this.$content[0]);
           }
-        },
+        }
       });
 
       // Set initial carousel slide to active tab
@@ -349,11 +351,10 @@
      */
     _animateIndicator(prevIndex) {
       let leftDelay = 0,
-          rightDelay = 0;
+        rightDelay = 0;
 
-      if ((this.index - prevIndex) >= 0) {
+      if (this.index - prevIndex >= 0) {
         leftDelay = 90;
-
       } else {
         rightDelay = 90;
       }
@@ -388,11 +389,9 @@
     }
   }
 
-
   window.M.Tabs = Tabs;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
   }
-
 })(cash, M.anime);

@@ -1,8 +1,7 @@
-(function ($) {
+(function($) {
   'use strict';
 
   let _defaults = {};
-
 
   /**
    * @class
@@ -134,5 +133,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(CharacterCounter, 'characterCounter', 'M_CharacterCounter');
   }
-
-}(cash));
+})(cash);

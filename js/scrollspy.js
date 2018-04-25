@@ -1,11 +1,11 @@
-(function ($, anim) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
     throttle: 100,
     scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
     activeClass: 'active',
-    getActiveElement: function (id) {
+    getActiveElement: function(id) {
       return 'a[href="#' + id + '"]';
     }
   };
@@ -184,10 +184,12 @@
             elRight = elLeft + scrollspy.$el.width(),
             elBottom = elTop + scrollspy.$el.height();
 
-          let isIntersect = !(elLeft > right ||
+          let isIntersect = !(
+            elLeft > right ||
             elRight < left ||
             elTop > bottom ||
-            elBottom < currTop);
+            elBottom < currTop
+          );
 
           if (isIntersect) {
             hits.push(scrollspy);
@@ -198,13 +200,18 @@
     }
 
     _enter() {
-      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
+      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function(value) {
         return value.height() != 0;
       });
 
       if (ScrollSpy._visibleElements[0]) {
-        $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(this.options.activeClass);
-        if (ScrollSpy._visibleElements[0][0].M_ScrollSpy && this.id < ScrollSpy._visibleElements[0][0].M_ScrollSpy.id) {
+        $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(
+          this.options.activeClass
+        );
+        if (
+          ScrollSpy._visibleElements[0][0].M_ScrollSpy &&
+          this.id < ScrollSpy._visibleElements[0][0].M_ScrollSpy.id
+        ) {
           ScrollSpy._visibleElements.unshift(this.$el);
         } else {
           ScrollSpy._visibleElements.push(this.$el);
@@ -213,22 +220,29 @@
         ScrollSpy._visibleElements.push(this.$el);
       }
 
-      $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(this.options.activeClass);
+      $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(
+        this.options.activeClass
+      );
     }
 
     _exit() {
-      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
+      ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function(value) {
         return value.height() != 0;
       });
 
       if (ScrollSpy._visibleElements[0]) {
-        $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(this.options.activeClass);
+        $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(
+          this.options.activeClass
+        );
 
         ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter((el) => {
           return el.attr('id') != this.$el.attr('id');
         });
-        if (ScrollSpy._visibleElements[0]) { // Check if empty
-          $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(this.options.activeClass);
+        if (ScrollSpy._visibleElements[0]) {
+          // Check if empty
+          $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(
+            this.options.activeClass
+          );
         }
       }
     }
@@ -273,11 +287,9 @@
    */
   ScrollSpy._ticks = 0;
 
-
   M.ScrollSpy = ScrollSpy;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
   }
-
 })(cash, M.anime);

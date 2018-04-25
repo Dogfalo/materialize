@@ -1,4 +1,4 @@
-(function ($, anim) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -11,7 +11,6 @@
     position: 'bottom',
     transitionMovement: 10
   };
-
 
   /**
    * @class
@@ -159,27 +158,23 @@
         targetTop,
         targetLeft;
 
-      this.xMovement = 0,
-        this.yMovement = 0;
+      (this.xMovement = 0), (this.yMovement = 0);
 
       targetTop = origin.getBoundingClientRect().top + M.getDocumentScrollTop();
       targetLeft = origin.getBoundingClientRect().left + M.getDocumentScrollLeft();
 
       if (this.options.position === 'top') {
-        targetTop += -(tooltipHeight) - margin;
+        targetTop += -tooltipHeight - margin;
         targetLeft += originWidth / 2 - tooltipWidth / 2;
-        this.yMovement = -(this.options.transitionMovement);
-
+        this.yMovement = -this.options.transitionMovement;
       } else if (this.options.position === 'right') {
         targetTop += originHeight / 2 - tooltipHeight / 2;
         targetLeft += originWidth + margin;
         this.xMovement = this.options.transitionMovement;
-
       } else if (this.options.position === 'left') {
         targetTop += originHeight / 2 - tooltipHeight / 2;
-        targetLeft += -(tooltipWidth) - margin;
-        this.xMovement = -(this.options.transitionMovement);
-
+        targetLeft += -tooltipWidth - margin;
+        this.xMovement = -this.options.transitionMovement;
       } else {
         targetTop += originHeight + margin;
         targetLeft += originWidth / 2 - tooltipWidth / 2;
@@ -187,7 +182,11 @@
       }
 
       newCoordinates = this._repositionWithinScreen(
-        targetLeft, targetTop, tooltipWidth, tooltipHeight);
+        targetLeft,
+        targetTop,
+        tooltipWidth,
+        tooltipHeight
+      );
       $(tooltip).css({
         top: newCoordinates.y + 'px',
         left: newCoordinates.x + 'px'
@@ -256,13 +255,13 @@
 
     _handleMouseEnter() {
       this.isHovered = true;
-      this.isFocused = false;  // Allows close of tooltip when opened by focus.
+      this.isFocused = false; // Allows close of tooltip when opened by focus.
       this.open();
     }
 
     _handleMouseLeave() {
       this.isHovered = false;
-      this.isFocused = false;  // Allows close of tooltip when opened by focus.
+      this.isFocused = false; // Allows close of tooltip when opened by focus.
       this.close();
     }
 
@@ -297,5 +296,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
-
 })(cash, M.anime);

@@ -1,11 +1,10 @@
-(function ($) {
+(function($) {
   'use strict';
 
   let _defaults = {
     onOpen: undefined,
-    onClose: undefined,
+    onClose: undefined
   };
-
 
   /**
    * @class
@@ -191,8 +190,12 @@
       // Calculating origin
       let originWidth = this.$origin.outerWidth();
       let originHeight = this.$origin.outerHeight();
-      let originTop = isFixed ? this.$origin.offset().top - M.getDocumentScrollTop() : this.$origin.offset().top;
-      let originLeft = isFixed ? this.$origin.offset().left - M.getDocumentScrollLeft() : this.$origin.offset().left;
+      let originTop = isFixed
+        ? this.$origin.offset().top - M.getDocumentScrollTop()
+        : this.$origin.offset().top;
+      let originLeft = isFixed
+        ? this.$origin.offset().left - M.getDocumentScrollLeft()
+        : this.$origin.offset().left;
 
       // Calculating screen
       let windowWidth = window.innerWidth;
@@ -231,8 +234,12 @@
       // Setting tap target
       let tapTargetWrapperCssObj = {};
       tapTargetWrapperCssObj.top = isTop ? tapTargetTop + 'px' : '';
-      tapTargetWrapperCssObj.right = isRight ? (windowWidth - tapTargetLeft - tapTargetWidth) + 'px' : '';
-      tapTargetWrapperCssObj.bottom = isBottom ? (windowHeight - tapTargetTop - tapTargetHeight) + 'px' : '';
+      tapTargetWrapperCssObj.right = isRight
+        ? windowWidth - tapTargetLeft - tapTargetWidth + 'px'
+        : '';
+      tapTargetWrapperCssObj.bottom = isBottom
+        ? windowHeight - tapTargetTop - tapTargetHeight + 'px'
+        : '';
       tapTargetWrapperCssObj.left = isLeft ? tapTargetLeft + 'px' : '';
       tapTargetWrapperCssObj.position = tapTargetPosition;
       $(this.wrapper).css(tapTargetWrapperCssObj);
@@ -267,7 +274,7 @@
       }
 
       // onOpen callback
-      if (typeof (this.options.onOpen) === 'function') {
+      if (typeof this.options.onOpen === 'function') {
         this.options.onOpen.call(this, this.$origin[0]);
       }
 
@@ -287,7 +294,7 @@
       }
 
       // onClose callback
-      if (typeof (this.options.onClose) === 'function') {
+      if (typeof this.options.onClose === 'function') {
         this.options.onClose.call(this, this.$origin[0]);
       }
 
@@ -304,5 +311,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(TapTarget, 'tapTarget', 'M_TapTarget');
   }
-
-}(cash));
+})(cash);
