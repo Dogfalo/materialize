@@ -270,14 +270,21 @@
      */
     _highlight(string, $el) {
       let img = $el.find('img');
-      let matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
+      const label = $el.find('label');
+      const span = $el.find('span')
+
+      let matchStart = span.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
         matchEnd = matchStart + string.length - 1,
-        beforeMatch = $el.text().slice(0, matchStart),
-        matchText = $el.text().slice(matchStart, matchEnd + 1),
-        afterMatch = $el.text().slice(matchEnd + 1);
+        beforeMatch = span.text().slice(0, matchStart),
+        matchText = span.text().slice(matchStart, matchEnd + 1),
+        afterMatch = span.text().slice(matchEnd + 1);
+        
       $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
+
       if (img.length) {
         $el.prepend(img);
+      } else if (label.length) {
+        $el.prepend(label);
       }
     }
 
@@ -301,19 +308,38 @@
     }
 
     /**
+     * @param  {String} this is the string returned from this "selectOption" method
+     * @return {Object} An object is returned, whether or not the selected option contains a data object
+     */
+    selectionObject(text){
+      let obj = {};
+
+      if( !this.options.data.hasOwnProperty(text) ){ return obj; }
+
+      if( !this.options.data[text] ) { return obj; }
+
+      if( !this.options.data[text].hasOwnProperty('data') ){ return obj; }
+
+      obj = Object.assign( {}, this.options.data[text].data );
+
+      return obj;
+    }
+
+    /**
      * Select autocomplete option
      * @param {Element} el  Autocomplete option list item element
      */
     selectOption(el) {
-      let text = el.text().trim();
+      let text = el.find('span').text().trim();
       this.el.value = text;
       this.$el.trigger('change');
       this._resetAutocomplete();
       this.dropdown.close();
 
+      const obj = this.selectionObject(text);
       // Handle onAutocomplete callback.
       if (typeof (this.options.onAutocomplete) === 'function') {
-        this.options.onAutocomplete.call(this, text);
+        this.options.onAutocomplete.call(this, text, obj);
       }
     }
 
@@ -350,17 +376,45 @@
       let sortFunctionBound = (a, b) => {
         return this.options.sortFunction(a.key.toLowerCase(), b.key.toLowerCase(), val.toLowerCase());
       };
+
       matchingData.sort(sortFunctionBound);
+
+      /**
+       * evaluateAutocompleteValues: determines if hash value is a string or an object and appends accordingly
+       * Suggestion: a stricter check could be impletended to determine if string is in fact a link to an image
+       * @param  {$autocompleteOption Element}
+       * @param  {entry}
+       * @return {$autocompleteOption Element}
+       */
+      const evaluateAutocompleteValues = ($autocompleteOption, entry ) => {
+          
+          switch( typeof entry.data ){
+
+            case 'string':
+              $autocompleteOption.append('<img src="' + entry.data + '" class="right circle"><span>' + entry.key + '</span>');
+            break;
+
+            case 'object':
+              ( entry.data.hasOwnProperty('label') )
+              ? $autocompleteOption.append('<label class="right" style="margin-top: 15px; margin-right: 16px;">' + entry.data.label + '</label><span>' + entry.key + '</span>')
+              : '';
+            break;
+
+            default:
+              return $autocompleteOption;
+          }
+
+          return $autocompleteOption;
+      };
 
       // Render
       for (let i = 0; i < matchingData.length; i++) {
         let entry = matchingData[i];
         let $autocompleteOption = $('<li></li>');
-        if (!!entry.data) {
-          $autocompleteOption.append('<img src="' + entry.data + '" class="right circle"><span>' + entry.key + '</span>');
-        } else {
-          $autocompleteOption.append('<span>' + entry.key + '</span>');
-        }
+
+        ( entry.data == null)
+        ? $autocompleteOption.append('<span>' + entry.key + '</span>')
+        : $autocompleteOption = evaluateAutocompleteValues($autocompleteOption, entry);
 
         $(this.container).append($autocompleteOption);
         this._highlight(val, $autocompleteOption);
