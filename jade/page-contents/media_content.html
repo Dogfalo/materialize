@@ -5,19 +5,24 @@
 
       <div id="materialbox" class="scrollspy section">
         <h3 class="header">Material Box</h3>
-         <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can be enlarged, Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image, the user can either click on the image again, scroll away, or press the ESC key.</p>
+        <p class="caption">Material box is a material design implementation of the Lightbox plugin. When a user clicks on an image that can
+          be enlarged, Material box centers the image and enlarges it in a smooth, non-jarring manner. To dismiss the image,
+          the user can either click on the image again, scroll away, or press the ESC key.</p>
         <img class="materialboxed responsive-img" width="650" src="images/sample-1.jpg">
 
-       <p>Creating the above image with the effect is as simple as adding a <code class="language-markup">materialboxed</code> class to the image tag.</p>
-      <pre><code class="language-markup">
+        <p>Creating the above image with the effect is as simple as adding a
+          <code class="language-markup">materialboxed</code> class to the image tag.</p>
+        <pre><code class="language-markup">
     &lt;img class="materialboxed" width="650" src="images/sample-1.jpg">
       </code></pre>
 
 
-      <h4>Initialization</h4>
-       <pre><code class="language-javascript">
-  var elem = document.querySelector('.materialboxed');
-  var instance = M.Materialbox.init(elem, options);
+        <h4>Initialization</h4>
+        <pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -25,7 +30,8 @@
     $('.materialboxed').materialbox();
   });
         </code></pre>
-        <br><br>
+        <br>
+        <br>
 
         <h4>Options</h4>
         <table class="striped">
@@ -77,11 +83,13 @@
             </tr>
           </tbody>
         </table>
-        <br><br>
+        <br>
+        <br>
 
         <h4>Methods</h4>
         <blockquote>
-          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
           <pre><code class="language-javascript col s12">
     var instance = M.Materialbox.getInstance(elem);
 
@@ -95,7 +103,7 @@
           </code></pre>
         </blockquote>
         <h5 class="method-header">
-    .open();
+          .open();
         </h5>
         <p>Open materialbox</p>
         <pre><code class="language-javascript col s12">
@@ -104,7 +112,7 @@
         <br>
 
         <h5 class="method-header">
-    .close();
+          .close();
         </h5>
         <p>Close materialbox</p>
         <pre><code class="language-javascript col s12">
@@ -113,21 +121,22 @@
         <br>
 
         <h5 class="method-header">
-    .destroy();
+          .destroy();
         </h5>
         <p>Destroy plugin instance and teardown</p>
         <pre><code class="language-javascript col s12">
   instance.destroy();
         </code></pre>
-        <br><br>
+        <br>
+        <br>
 
         <h4>Properties</h4>
         <table class="striped">
           <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -169,12 +178,14 @@
             </tr>
           </tbody>
         </table>
-        <br><br>
+        <br>
+        <br>
 
         <h4>Captions</h4>
-        <p>It is very easy to add a short caption to your photo. Just add the caption as a <code class="language-markup">data-caption</code> attribute.</p>
+        <p>It is very easy to add a short caption to your photo. Just add the caption as a
+          <code class="language-markup">data-caption</code> attribute.</p>
         <img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250" src="https://lorempixel.com/800/400/nature/4">
-          <pre><code class="language-markup">
+        <pre><code class="language-markup">
   &lt;img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250" src="https://lorempixel.com/800/400/nature/4">
           </code></pre>
       </div>
@@ -185,42 +196,49 @@
       <!--  Slider Section  -->
       <div id="slider" class="scrollspy section">
         <h3 class="header">Slider</h3>
-         <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p><br>
+        <p class="caption">Our slider is a simple and elegant image carousel. You can also have captions that will be transitioned on their
+          own depending on their alignment. You can also have indicators that show up on the bottom of the slider. </p>
+        <br>
 
         <div class="slider">
           <ul class="slides">
             <li>
-              <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
+              <img src="https://lorempixel.com/580/250/nature/1">
+              <!-- random image -->
               <div class="caption center-align">
                 <h3>This is our big Tagline!</h3>
                 <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
               </div>
             </li>
             <li>
-              <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
+              <img src="https://lorempixel.com/580/250/nature/2">
+              <!-- random image -->
               <div class="caption left-align">
                 <h3>Left Aligned Caption</h3>
                 <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
               </div>
             </li>
             <li>
-              <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
+              <img src="https://lorempixel.com/580/250/nature/3">
+              <!-- random image -->
               <div class="caption right-align">
                 <h3>Right Aligned Caption</h3>
                 <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
               </div>
             </li>
             <li>
-              <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
+              <img src="https://lorempixel.com/580/250/nature/4">
+              <!-- random image -->
               <div class="caption center-align">
                 <h3>This is our big Tagline!</h3>
                 <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
               </div>
             </li>
           </ul>
-        </div><br>
+        </div>
+        <br>
 
-      <pre><code class="language-markup">
+        <pre><code class="language-markup">
   &lt;div class="slider">
     &lt;ul class="slides">
       &lt;li>
@@ -254,12 +272,14 @@
     &lt;/ul>
   &lt;/div>
       </code></pre>
-      <br>
+        <br>
 
-      <h4>Initialization</h4>
-       <pre><code class="language-javascript">
-  var elem = document.querySelector('.slider');
-  var instance = M.Slider.init(elem, options);
+        <h4>Initialization</h4>
+        <pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.slider');
+    var instances = M.Slider.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -309,11 +329,12 @@
         </table>
         <br>
 
-      <h4>Methods</h4>
-      <p>We have methods to pause, start, move to next and move to previous slide.</p>
+        <h4>Methods</h4>
+        <p>We have methods to pause, start, move to next and move to previous slide.</p>
 
         <blockquote>
-          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
           <pre><code class="language-javascript col s12">
     var instance = M.Slider.getInstance(elem);
 
@@ -327,7 +348,7 @@
           </code></pre>
         </blockquote>
         <h5 class="method-header">
-    .pause();
+          .pause();
         </h5>
         <p>Pause slider autoslide</p>
         <pre><code class="language-javascript col s12">
@@ -336,7 +357,7 @@
         <br>
 
         <h5 class="method-header">
-    .start();
+          .start();
         </h5>
         <p>Start slider autoslide</p>
         <pre><code class="language-javascript col s12">
@@ -345,7 +366,7 @@
         <br>
 
         <h5 class="method-header">
-    .next();
+          .next();
         </h5>
         <p>Move to next slider</p>
         <pre><code class="language-javascript col s12">
@@ -354,7 +375,7 @@
         <br>
 
         <h5 class="method-header">
-    .prev();
+          .prev();
         </h5>
         <p>Move to prev slider</p>
         <pre><code class="language-javascript col s12">
@@ -363,21 +384,22 @@
         <br>
 
         <h5 class="method-header">
-    .destroy();
+          .destroy();
         </h5>
         <p>Destroy plugin instance and teardown</p>
         <pre><code class="language-javascript col s12">
   instance.destroy();
         </code></pre>
-        <br><br>
+        <br>
+        <br>
 
         <h4>Properties</h4>
         <table class="striped">
           <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -399,11 +421,13 @@
             </tr>
           </tbody>
         </table>
-        <br><br>
+        <br>
+        <br>
 
-      <h4>Fullscreen Slider</h4>
-      <p>You can easliy make this slider a fullscreen slider by adding the class <code class="language-markup">fullscreen</code> to the slider div. Here's a quick demo.</p>
-      <a href="fullscreen-slider-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
+        <h4>Fullscreen Slider</h4>
+        <p>You can easliy make this slider a fullscreen slider by adding the class
+          <code class="language-markup">fullscreen</code> to the slider div. Here's a quick demo.</p>
+        <a href="fullscreen-slider-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
       </div>
 
     </div>
@@ -414,12 +438,17 @@
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#materialbox">Material Box</a></li>
-            <li><a href="#slider">Slider</a></li>
+            <li>
+              <a href="#materialbox">Material Box</a>
+            </li>
+            <li>
+              <a href="#slider">Slider</a>
+            </li>
           </ul>
         </div>
       </div>

@@ -5,22 +5,32 @@
 
       <div id="right" class="section scrollspy">
 
-        <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
+        <p class="caption">The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of
+          the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
         </p>
         <h3 class="header">Right Aligned Links</h3>
-        <p>To right align your navbar links, just add a <code class="language-markup">right</code> class to your <code class="language-markup">&lt;ul></code> that contains them.</p>
+        <p>To right align your navbar links, just add a
+          <code class="language-markup">right</code> class to your
+          <code class="language-markup">&lt;ul></code> that contains them.</p>
         <nav>
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo">Logo</a>
               <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
+                <li>
+                  <a href="sass.html">Sass</a>
+                </li>
+                <li>
+                  <a href="badges.html">Components</a>
+                </li>
+                <li>
+                  <a href="collapsible.html">JavaScript</a>
+                </li>
               </ul>
             </div>
           </div>
-        </nav><br>
+        </nav>
+        <br>
         <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
@@ -37,19 +47,28 @@
 
       <div id="left" class="section scrollspy">
         <h3 class="header">Left Aligned Links</h3>
-        <p>To left align your navbar links, just add a <code class="language-markup">left</code> class to your <code class="language-markup">&lt;ul></code> that contains them.</p>
+        <p>To left align your navbar links, just add a
+          <code class="language-markup">left</code> class to your
+          <code class="language-markup">&lt;ul></code> that contains them.</p>
         <nav>
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="brand-logo right">Logo</a>
               <ul class="left hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
+                <li>
+                  <a href="sass.html">Sass</a>
+                </li>
+                <li>
+                  <a href="badges.html">Components</a>
+                </li>
+                <li>
+                  <a href="collapsible.html">JavaScript</a>
+                </li>
               </ul>
             </div>
           </div>
-        </nav><br>
+        </nav>
+        <br>
         <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
@@ -66,16 +85,24 @@
 
       <div id="center" class="section scrollspy">
         <h3 class="header">Centering the logo</h3>
-        <p>The logo will center itself on medium and down screens, but if you want the logo to always be centered, add the <code class="language-markup">center</code> class to your <code class="language-markup">&lt;a class="brand-logo"></code>. You will have to make sure yourself that links do not overlap if you use this.</p>
+        <p>The logo will center itself on medium and down screens, but if you want the logo to always be centered, add the
+          <code
+            class="language-markup">center</code> class to your
+            <code class="language-markup">&lt;a class="brand-logo"></code>. You will have to make sure yourself that links do not overlap if you use this.</p>
         <nav>
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo center">Logo</a>
             <ul class="left hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
+              <li>
+                <a href="sass.html">Sass</a>
+              </li>
+              <li>
+                <a href="badges.html">Components</a>
+              </li>
             </ul>
           </div>
-        </nav><br>
+        </nav>
+        <br>
         <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
@@ -101,12 +128,19 @@
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo center">Logo</a>
             <ul class="left hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
-              <li class="active"><a href="collapsible.html">JavaScript</a></li>
+              <li>
+                <a href="sass.html">Sass</a>
+              </li>
+              <li>
+                <a href="badges.html">Components</a>
+              </li>
+              <li class="active">
+                <a href="collapsible.html">JavaScript</a>
+              </li>
             </ul>
           </div>
-        </nav><br>
+        </nav>
+        <br>
 
         <pre><code class="language-markup">
   &lt;nav>
@@ -126,33 +160,59 @@
 
         <h3 class="header">Extended Navbar with Tabs</h3>
         <p>
-          To add extended components to the navbar, add the class <code class="language-markup">nav-extended</code> to the outer <span class="language-markup">nav</span> tag. This will allow your navbar height to be variable. Then you can just include a tabs component inside the <span class="language-markup">nav-wrapper</span>.
+          To add extended components to the navbar, add the class
+          <code class="language-markup">nav-extended</code> to the outer
+          <span class="language-markup">nav</span> tag. This will allow your navbar height to be variable. Then you can just include a tabs component inside
+          the
+          <span class="language-markup">nav-wrapper</span>.
         </p>
 
         <nav class="nav-extended">
           <div class="nav-wrapper">
             <a href="#" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+              <i class="material-icons">menu</i>
+            </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
-              <li><a href="collapsible.html">JavaScript</a></li>
+              <li>
+                <a href="sass.html">Sass</a>
+              </li>
+              <li>
+                <a href="badges.html">Components</a>
+              </li>
+              <li>
+                <a href="collapsible.html">JavaScript</a>
+              </li>
             </ul>
           </div>
           <div class="nav-content">
             <ul class="tabs tabs-transparent">
-              <li class="tab"><a href="#test1">Test 1</a></li>
-              <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-              <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-              <li class="tab"><a href="#test4">Test 4</a></li>
+              <li class="tab">
+                <a href="#test1">Test 1</a>
+              </li>
+              <li class="tab">
+                <a class="active" href="#test2">Test 2</a>
+              </li>
+              <li class="tab disabled">
+                <a href="#test3">Disabled Tab</a>
+              </li>
+              <li class="tab">
+                <a href="#test4">Test 4</a>
+              </li>
             </ul>
           </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">JavaScript</a></li>
+          <li>
+            <a href="sass.html">Sass</a>
+          </li>
+          <li>
+            <a href="badges.html">Components</a>
+          </li>
+          <li>
+            <a href="collapsible.html">JavaScript</a>
+          </li>
         </ul>
 
         <br>
@@ -199,7 +259,9 @@
 
         <h3 class="header">Fixed Navbar</h3>
         <p>
-          To make the navbar fixed, you have to add an outer wrapping div with the class <code class="language-markup">navbar-fixed</code>. This will offset your other content while making your nav fixed. You can adjust the height of this outer div to change how much offset is on your content.
+          To make the navbar fixed, you have to add an outer wrapping div with the class
+          <code class="language-markup">navbar-fixed</code>. This will offset your other content while making your nav fixed. You can adjust the height of this outer div
+          to change how much offset is on your content.
         </p>
 
         <pre><code class="language-markup">
@@ -221,29 +283,45 @@
 
         <h3 class="header">Navbar Dropdown Menu</h3>
         <p>
-          To add a navbar dropdown menu, add the <code class="language-markup">ul</code> dropdown structure into the page.
-          Then, add an element to trigger the dropdown menu. Make sure to supply the id of the dropdown structure to the
+          To add a navbar dropdown menu, add the
+          <code class="language-markup">ul</code> dropdown structure into the page. Then, add an element to trigger the dropdown menu. Make sure to supply the id
+          of the dropdown structure to the
           <code class="language-markup">data-target</code> attribute of the dropdown trigger.
         </p>
 
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!">one</a></li>
-          <li><a href="#!">two</a></li>
+          <li>
+            <a href="#!">one</a>
+          </li>
+          <li>
+            <a href="#!">two</a>
+          </li>
           <li class="divider"></li>
-          <li><a href="#!">three</a></li>
+          <li>
+            <a href="#!">three</a>
+          </li>
         </ul>
         <nav>
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
+              <li>
+                <a href="sass.html">Sass</a>
+              </li>
+              <li>
+                <a href="badges.html">Components</a>
+              </li>
               <!-- Dropdown Trigger -->
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li>
+                <a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown
+                  <i class="material-icons right">arrow_drop_down</i>
+                </a>
+              </li>
             </ul>
           </div>
-        </nav><br>
+        </nav>
+        <br>
         <pre><code class="language-markup">
 &lt;!-- Dropdown Structure -->
 &lt;ul id="dropdown1" class="dropdown-content">
@@ -264,15 +342,17 @@
   &lt;/div>
 &lt;/nav>
         </code></pre>
-        <p>To activate the dropdown menu, insert this line of code into your JavaScript file, within the <code class="language-javascript">$( document ).ready(function)</code> block</p>
+        <p>To activate the dropdown menu, insert this line of code into your JavaScript file, within the
+          <code class="language-javascript">$( document ).ready(function)</code> block</p>
         <pre><code class="language-javascript">
 $(".dropdown-trigger").dropdown();
         </code></pre>
         <h5>Trigger dropdown menu on click</h5>
         <p>
-          By default, the dropdown menu is activated by hovering over the dropdown trigger.
-          To activate the dropdown menu on click, pass <code class="language-javascript">{ hover: false }</code>
-          into the above <code class="language-javascript">dropdown()</code> function
+          By default, the dropdown menu is activated by hovering over the dropdown trigger. To activate the dropdown menu on click,
+          pass
+          <code class="language-javascript">{ hover: false }</code> into the above
+          <code class="language-javascript">dropdown()</code> function
         </p>
       </div>
 
@@ -281,20 +361,38 @@ $(".dropdown-trigger").dropdown();
 
         <nav>
           <div class="nav-wrapper">
-            <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+            <a href="#!" class="brand-logo">
+              <i class="material-icons">cloud</i>Logo</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-              <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-              <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-              <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+              <li>
+                <a href="sass.html">
+                  <i class="material-icons">search</i>
+                </a>
+              </li>
+              <li>
+                <a href="badges.html">
+                  <i class="material-icons">view_module</i>
+                </a>
+              </li>
+              <li>
+                <a href="collapsible.html">
+                  <i class="material-icons">refresh</i>
+                </a>
+              </li>
+              <li>
+                <a href="mobile.html">
+                  <i class="material-icons">more_vert</i>
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
 
         <br>
 
-        <p>You can add icons into links. For icon only links you don't need any additional class. Just pop the <code class="language-markup">i</code> tag in and it will work.</p>
-<pre><code class="language-markup">
+        <p>You can add icons into links. For icon only links you don't need any additional class. Just pop the
+          <code class="language-markup">i</code> tag in and it will work.</p>
+        <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
       &lt;a href="#!" class="brand-logo">&lt;i class="material-icons">cloud&lt;/i>Logo&lt;/a>
@@ -312,15 +410,24 @@ $(".dropdown-trigger").dropdown();
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="sass.html"><i class="material-icons left">search</i>Link with Left Icon</a></li>
-              <li><a href="badges.html"><i class="material-icons right">view_module</i></i>Link with Right Icon</a></li>
+              <li>
+                <a href="sass.html">
+                  <i class="material-icons left">search</i>Link with Left Icon</a>
+              </li>
+              <li>
+                <a href="badges.html">
+                  <i class="material-icons right">view_module</i>
+                  </i>Link with Right Icon</a>
+              </li>
             </ul>
           </div>
         </nav>
 
         <br>
 
-        <p>For adding an icon to a text link you need to add either a <code class="language-markup">left</code> or <code class="language-markup">right</code> class to the icon depending on where you want the icon to be.</p>
+        <p>For adding an icon to a text link you need to add either a
+          <code class="language-markup">left</code> or
+          <code class="language-markup">right</code> class to the icon depending on where you want the icon to be.</p>
         <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
@@ -341,17 +448,27 @@ $(".dropdown-trigger").dropdown();
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-              <li><a class="waves-effect waves-light btn">Button</a></li>
-              <li><a class="waves-effect waves-light btn">Button <i class="material-icons right">cloud</i></a></li>
-              <li><a class="waves-effect waves-light btn-large">Large Button</a></li>
+              <li>
+                <a class="waves-effect waves-light btn">Button</a>
+              </li>
+              <li>
+                <a class="waves-effect waves-light btn">Button
+                  <i class="material-icons right">cloud</i>
+                </a>
+              </li>
+              <li>
+                <a class="waves-effect waves-light btn-large">Large Button</a>
+              </li>
             </ul>
           </div>
         </nav>
 
         <br>
 
-        <p>You can add buttons into links. For buttons you don't need any additional class. Just pop the <code class="language-markup">.btn</code> class on the <code class="language-markup">a</code> tag.</p>
-<pre><code class="language-markup">
+        <p>You can add buttons into links. For buttons you don't need any additional class. Just pop the
+          <code class="language-markup">.btn</code> class on the
+          <code class="language-markup">a</code> tag.</p>
+        <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
       &lt;a href="#!" class="brand-logo">Logo&lt;/a>
@@ -371,9 +488,15 @@ $(".dropdown-trigger").dropdown();
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-              <li><a>A link</a></li>
-              <li><a>A second link</a></li>
-              <li><a>A third link</a></li>
+              <li>
+                <a>A link</a>
+              </li>
+              <li>
+                <a>A second link</a>
+              </li>
+              <li>
+                <a>A third link</a>
+              </li>
             </ul>
           </div>
           <div class="nav-content">
@@ -383,8 +506,9 @@ $(".dropdown-trigger").dropdown();
             </a>
           </div>
         </nav>
-<br><br>
-<pre><code class="language-markup">
+        <br>
+        <br>
+        <pre><code class="language-markup">
   &lt;nav class="nav-extended">
     &lt;div class="nav-wrapper">
       &lt;a href="#!" class="brand-logo">Logo&lt;/a>
@@ -412,7 +536,9 @@ $(".dropdown-trigger").dropdown();
             <form>
               <div class="input-field">
                 <input id="search-example" type="search" required>
-                <label class="label-icon" for="search-example"><i class="material-icons">search</i></label>
+                <label class="label-icon" for="search-example">
+                  <i class="material-icons">search</i>
+                </label>
                 <i class="material-icons">close</i>
               </div>
             </form>
@@ -422,7 +548,7 @@ $(".dropdown-trigger").dropdown();
         <br>
 
         <p>You can add a search form in the navbar.</p>
-<pre><code class="language-markup">
+        <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
       &lt;form>
@@ -444,28 +570,53 @@ $(".dropdown-trigger").dropdown();
         <nav>
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+              <i class="material-icons">menu</i>
+            </a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
-              <li><a href="collapsible.html">Javascript</a></li>
-              <li><a href="mobile.html">Mobile</a></li>
-              <li><a class="btn waves-effect waves-light" href="buttons.html">Buttons</a></li>
+              <li>
+                <a href="sass.html">Sass</a>
+              </li>
+              <li>
+                <a href="badges.html">Components</a>
+              </li>
+              <li>
+                <a href="collapsible.html">Javascript</a>
+              </li>
+              <li>
+                <a href="mobile.html">Mobile</a>
+              </li>
+              <li>
+                <a class="btn waves-effect waves-light" href="buttons.html">Buttons</a>
+              </li>
             </ul>
           </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">Javascript</a></li>
-          <li><a href="mobile.html">Mobile</a></li>
-          <li><a class="btn waves-effect waves-light" href="buttons.html">Buttons</a></li>
+          <li>
+            <a href="sass.html">Sass</a>
+          </li>
+          <li>
+            <a href="badges.html">Components</a>
+          </li>
+          <li>
+            <a href="collapsible.html">Javascript</a>
+          </li>
+          <li>
+            <a href="mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a class="btn waves-effect waves-light" href="buttons.html">Buttons</a>
+          </li>
         </ul>
 
         <br>
 
-        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="material-icons">menu</i>. Take a look at the example below to get this functionality. Add the entire <code class="language-markup">sidenav-trigger</code> line to your <code class="language-markup">nav</code>.</p>
+        <p>When your nav bar is resized, you will see that the links on the right turn into a hamburger icon
+          <i class="material-icons">menu</i>. Take a look at the example below to get this functionality. Add the entire
+          <code class="language-markup">sidenav-trigger</code> line to your
+          <code class="language-markup">nav</code>.</p>
         <pre><code class="language-markup">
   &lt;nav>
     &lt;div class="nav-wrapper">
@@ -488,12 +639,16 @@ $(".dropdown-trigger").dropdown();
   &lt;/ul>
           </code></pre>
 
-          <br>
+        <br>
         <h5>Initialization</h5>
-        <p>After including the sidenav-trigger line into your navbar, all you have to do now initialize the plugin. This example below assumes you have not modified the classes in the above example. In the case that you have, just change the selector in the line below to match it.</p>
+        <p>After including the sidenav-trigger line into your navbar, all you have to do now initialize the plugin. This example
+          below assumes you have not modified the classes in the above example. In the case that you have, just change the
+          selector in the line below to match it.</p>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.sidenav');
-  var instance = M.Sidenav.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -509,21 +664,44 @@ $(".dropdown-trigger").dropdown();
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#right">Right Aligned</a></li>
-            <li><a href="#left">Left Aligned</a></li>
-            <li><a href="#center">Center Logo</a></li>
-            <li><a href="#active-label">Active Items</a></li>
-            <li><a href="#navbar-tabs">Navbar with Tabs</a></li>
-            <li><a href="#navbar-fixed">Fixed Navbar</a></li>
-            <li><a href="#navbar-dropdown">Dropdown Menu</a></li>
-            <li><a href="#icons">Icon Links</a></li>
-            <li><a href="#buttons">Buttons</a></li>
-            <li><a href="#search-docs">Search Bar</a></li>
-            <li><a href="#mobile-collapse">Mobile Collapse</a></li>
+            <li>
+              <a href="#right">Right Aligned</a>
+            </li>
+            <li>
+              <a href="#left">Left Aligned</a>
+            </li>
+            <li>
+              <a href="#center">Center Logo</a>
+            </li>
+            <li>
+              <a href="#active-label">Active Items</a>
+            </li>
+            <li>
+              <a href="#navbar-tabs">Navbar with Tabs</a>
+            </li>
+            <li>
+              <a href="#navbar-fixed">Fixed Navbar</a>
+            </li>
+            <li>
+              <a href="#navbar-dropdown">Dropdown Menu</a>
+            </li>
+            <li>
+              <a href="#icons">Icon Links</a>
+            </li>
+            <li>
+              <a href="#buttons">Buttons</a>
+            </li>
+            <li>
+              <a href="#search-docs">Search Bar</a>
+            </li>
+            <li>
+              <a href="#mobile-collapse">Mobile Collapse</a>
+            </li>
           </ul>
         </div>
       </div>

@@ -27,9 +27,11 @@
 
       <div id="initialization" class="scrollspy section">
         <h3 class="header">Initialization</h5>
-        <pre><code class="language-javascript">
-  var elem = document.querySelector('.fixed-action-btn');
-  var instance = M.FloatingActionButton.init(elem, options);
+          <pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -37,7 +39,7 @@
     $('.fixed-action-btn').floatingActionButton();
   });
         </code></pre>
-        <br>
+          <br>
       </div>
 
 
@@ -83,7 +85,8 @@
       <div id="methods" class="scrollspy section">
         <h5>Methods</h5>
         <blockquote>
-          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
           <pre><code class="language-javascript col s12">
   var instance = M.FloatingActionButton.getInstance(elem);
 
@@ -167,17 +170,35 @@ instance.destroy();
               <i class="large material-icons">mode_edit</i>
             </a>
             <ul>
-              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+              <li>
+                <a class="btn-floating red">
+                  <i class="material-icons">insert_chart</i>
+                </a>
+              </li>
+              <li>
+                <a class="btn-floating yellow darken-1">
+                  <i class="material-icons">format_quote</i>
+                </a>
+              </li>
+              <li>
+                <a class="btn-floating green">
+                  <i class="material-icons">publish</i>
+                </a>
+              </li>
+              <li>
+                <a class="btn-floating blue">
+                  <i class="material-icons">attach_file</i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.fixed-action-btn');
-  var instance = M.FloatingActionButton.init(elem, {
-    direction: 'left'
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'left'
+    });
   });
         </code></pre>
 
@@ -186,10 +207,26 @@ instance.destroy();
             <i class="material-icons">mode_edit</i>
           </a>
           <ul>
-            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            <li>
+              <a class="btn-floating red">
+                <i class="material-icons">insert_chart</i>
+              </a>
+            </li>
+            <li>
+              <a class="btn-floating yellow darken-1">
+                <i class="material-icons">format_quote</i>
+              </a>
+            </li>
+            <li>
+              <a class="btn-floating green">
+                <i class="material-icons">publish</i>
+              </a>
+            </li>
+            <li>
+              <a class="btn-floating blue">
+                <i class="material-icons">attach_file</i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -198,37 +235,60 @@ instance.destroy();
 
       <div id="click-only" class="scrollspy section">
         <h3 class="header">Click-only FAB</h3>
-        <p>If you want to disable the hover behaviour, and instead toggle the FAB menu when the user clicks on the large button (works great on mobile!), just add the <code class="language-markup">click-to-toggle</code> class to the FAB.</p>
+        <p>If you want to disable the hover behaviour, and instead toggle the FAB menu when the user clicks on the large button
+          (works great on mobile!), just add the
+          <code class="language-markup">click-to-toggle</code> class to the FAB.</p>
         <div style="position: relative; height: 70px;">
           <div class="fixed-action-btn click-to-toggle" style="position: absolute; right: 24px;">
             <a class="btn-floating btn-large red">
               <i class="material-icons">menu</i>
             </a>
             <ul>
-              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+              <li>
+                <a class="btn-floating red">
+                  <i class="material-icons">insert_chart</i>
+                </a>
+              </li>
+              <li>
+                <a class="btn-floating yellow darken-1">
+                  <i class="material-icons">format_quote</i>
+                </a>
+              </li>
+              <li>
+                <a class="btn-floating green">
+                  <i class="material-icons">publish</i>
+                </a>
+              </li>
+              <li>
+                <a class="btn-floating blue">
+                  <i class="material-icons">attach_file</i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.fixed-action-btn');
-  var instance = M.FloatingActionButton.init(elem, {
-    direction: 'left',
-    hoverEnabled: false
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'left',
+      hoverEnabled: false
+    });
   });
         </code></pre>
       </div>
 
       <div id="toolbar" class="scrollspy section">
         <h3 class="header">FAB to Toolbar</h3>
-        <p>Instead of displaying individual button options, you can transition your FAB into a toolbar on click. Just add the <code class="language-markup">toolbar</code> class to the FAB.</p>
+        <p>Instead of displaying individual button options, you can transition your FAB into a toolbar on click. Just add the
+          <code class="language-markup">toolbar</code> class to the FAB.</p>
         <iframe src="fab-toolbar-demo.html" frameborder="0" width="100%" height="100px"></iframe>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.fixed-action-btn');
-  var instance = new M.FloatingActionButton(elem, {
-    toolbarEnabled: true
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      toolbarEnabled: true
+    });
   });
 
   // Or with jQuery
@@ -251,14 +311,30 @@ instance.destroy();
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#initialization">Intialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#horizontal">Horizontal</a></li>
-            <li><a href="#click-only">Click Only FAB</a></li>
-            <li><a href="#toolbar">FAB to Toolbar</a></li>
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#initialization">Intialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
+            <li>
+              <a href="#horizontal">Horizontal</a>
+            </li>
+            <li>
+              <a href="#click-only">Click Only FAB</a>
+            </li>
+            <li>
+              <a href="#toolbar">FAB to Toolbar</a>
+            </li>
           </ul>
         </div>
       </div>

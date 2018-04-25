@@ -5,11 +5,12 @@
 
       <!--  Parallax Section  -->
       <div id="introduction" class="scrollspy section">
-        <p class="caption">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling. Check out the demo to get a better idea of it.</p>
+        <p class="caption">Parallax is an effect where the background content or image in this case, is moved at a different speed than the
+          foreground content while scrolling. Check out the demo to get a better idea of it.</p>
         <a href="parallax-demo.html" target="_blank" class="btn-large waves-effect waves-light">Open Demo</a>
       </div>
 
-        <pre><code class="language-markup">
+      <pre><code class="language-markup">
     &lt;div class="parallax-container">
       &lt;div class="parallax">&lt;img src="images/parallax1.jpg">&lt;/div>
     &lt;/div>
@@ -20,8 +21,10 @@
       <div id="initialization" class="scrollspy section">
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.parallax');
-  var instance = M.Parallax.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.parallax');
+    var instances = M.Parallax.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -32,35 +35,36 @@
       </div>
 
 
-    <div id="options" class="section scrollspy">
-      <h3 class="header">Options</h3>
-      <table class="striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
+      <div id="options" class="section scrollspy">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td>responsiveThreshold</td>
-            <td>Number</td>
-            <td>0</td>
-            <td>The minimum width of the screen, in pixels, where the parallax functionality starts working.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <tbody>
+            <tr>
+              <td>responsiveThreshold</td>
+              <td>Number</td>
+              <td>0</td>
+              <td>The minimum width of the screen, in pixels, where the parallax functionality starts working.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
 
-    <div id="methods" class="scrollspy section">
-      <h3 class="header">Methods</h3>
-      <blockquote>
-        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-        <pre><code class="language-javascript col s12">
+      <div id="methods" class="scrollspy section">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
+          <pre><code class="language-javascript col s12">
   var instance = M.Parallax.getInstance(elem);
 
   /* jQuery Method Calls
@@ -71,50 +75,51 @@
     $('.parallax').parallax('methodName', paramName);
   */
         </code></pre>
-      </blockquote>
+        </blockquote>
 
-      <h5 class="method-header">
-  .destroy();
-      </h5>
-      <p>Destroy plugin instance and teardown</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
 instance.destroy();
       </code></pre>
-    </div>
+      </div>
 
 
 
-    <div id="properties" class="scrollspy section">
-      <h3 class="header">Properties</h3>
-      <table class="striped">
-        <thead>
-          <tr>
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
               <th>Name</th>
               <th>Type</th>
               <th>Description</th>
-          </tr>
-        </thead>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td>el</td>
-            <td>Element</td>
-            <td>The DOM element the plugin was initialized with.</td>
-          </tr>
-          <tr>
-            <td>options</td>
-            <td>Object</td>
-            <td>The options the instance was initialized with.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
 
 
       <div id="customization" class="scrollspy section">
         <h3 class="header">Parallax Customization</h3>
-        <p>The parallax container height is what defines how much of the image can be seen. This is set to a default of 500px. You can add your own style to override this.</p>
+        <p>The parallax container height is what defines how much of the image can be seen. This is set to a default of 500px.
+          You can add your own style to override this.</p>
         <pre><code class="language-css">
     .parallax-container {
       height: "your height here";
@@ -130,16 +135,29 @@ instance.destroy();
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#initialization">Intialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properites">Properties</a></li>
-            <li><a href="#customization">Customization</a></li>
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#initialization">Intialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properites">Properties</a>
+            </li>
+            <li>
+              <a href="#customization">Customization</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -147,4 +165,3 @@ instance.destroy();
 
   </div>
 </div>
-
