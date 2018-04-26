@@ -1,6 +1,6 @@
 // Required for Meteor package, the use of window prevents export by Meteor
-(function(window){
-  if(window.Package){
+(function(window) {
+  if (window.Package) {
     M = {};
   } else {
     window.M = {};
@@ -10,14 +10,13 @@
   M.jQueryLoaded = !!window.jQuery;
 })(window);
 
-
 // AMD
-if ( typeof define === "function" && define.amd ) {
-	define( "M", [], function() {
-		return M;
-	} );
+if (typeof define === 'function' && define.amd) {
+  define('M', [], function() {
+    return M;
+  });
 
-// Common JS
+  // Common JS
 } else if (typeof exports !== 'undefined' && !exports.nodeType) {
   if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
     exports = module.exports = M;
@@ -32,7 +31,6 @@ M.keys = {
   ARROW_UP: 38,
   ARROW_DOWN: 40
 };
-
 
 /**
  * TabPress Keydown handler
@@ -64,7 +62,6 @@ document.addEventListener('keyup', docHandleKeyup);
 document.addEventListener('focus', docHandleFocus, true);
 document.addEventListener('blur', docHandleBlur, true);
 
-
 /**
  * Initialize jQuery wrapper for plugin
  * @param {Class} plugin  javascript class
@@ -75,10 +72,10 @@ M.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
   jQuery.fn[pluginName] = function(methodOrOptions) {
     // Call plugin method if valid method name is passed in
     if (plugin.prototype[methodOrOptions]) {
-      let params = Array.prototype.slice.call( arguments, 1 );
+      let params = Array.prototype.slice.call(arguments, 1);
 
       // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
+      if (methodOrOptions.slice(0, 3) === 'get') {
         let instance = this.first()[0][classRef];
         return instance[methodOrOptions].apply(instance, params);
       }
@@ -89,11 +86,10 @@ M.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
         instance[methodOrOptions].apply(instance, params);
       });
 
-    // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
+      // Initialize plugin if options or no argument is passed in
+    } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
       plugin.init(this, arguments[0]);
       return this;
-
     }
 
     // Return error if an unrecognized  method name is passed in
@@ -101,14 +97,13 @@ M.initializeJqueryWrapper = function(plugin, pluginName, classRef) {
   };
 };
 
-
 /**
  * Automatically initialize components
  * @param {Element} context  DOM Element to search within for components
  */
 M.AutoInit = function(context) {
   // Use document.body if no context is given
-  let root  = !!context ? context : document.body;
+  let root = !!context ? context : document.body;
 
   let registry = {
     Autocomplete: root.querySelectorAll('.autocomplete:not(.no-autoinit)'),
@@ -137,7 +132,6 @@ M.AutoInit = function(context) {
   }
 };
 
-
 /**
  * Generate approximated selector string for a jQuery object
  * @param {jQuery} obj  jQuery object to be parsed
@@ -147,9 +141,8 @@ M.objectSelectorString = function(obj) {
   let tagStr = obj.prop('tagName') || '';
   let idStr = obj.attr('id') || '';
   let classStr = obj.attr('class') || '';
-  return (tagStr + idStr + classStr).replace(/\s/g,'');
+  return (tagStr + idStr + classStr).replace(/\s/g, '');
 };
-
 
 // Unique Random ID
 M.guid = (function() {
@@ -159,8 +152,7 @@ M.guid = (function() {
       .substring(1);
   }
   return function() {
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-           s4() + '-' + s4() + s4() + s4();
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   };
 })();
 
@@ -170,15 +162,15 @@ M.guid = (function() {
  * @returns {string}
  */
 M.escapeHash = function(hash) {
-  return hash.replace( /(:|\.|\[|\]|,|=|\/)/g, "\\$1" );
+  return hash.replace(/(:|\.|\[|\]|,|=|\/)/g, '\\$1');
 };
 
 M.elementOrParentIsFixed = function(element) {
   let $element = $(element);
   let $checkElements = $element.add($element.parents());
   let isFixed = false;
-  $checkElements.each(function(){
-    if ($(this).css("position") === "fixed") {
+  $checkElements.each(function() {
+    if ($(this).css('position') === 'fixed') {
       isFixed = true;
       return false;
     }
@@ -219,7 +211,10 @@ M.checkWithinContainer = function(container, bounding, offset) {
 
   let containerRect = container.getBoundingClientRect();
   // If body element is smaller than viewport, use viewport height instead.
-  let containerBottom = container === document.body ? Math.max(containerRect.bottom, window.innerHeight) : containerRect.bottom;
+  let containerBottom =
+    container === document.body
+      ? Math.max(containerRect.bottom, window.innerHeight)
+      : containerRect.bottom;
 
   let scrollLeft = container.scrollLeft;
   let scrollTop = container.scrollTop;
@@ -228,29 +223,30 @@ M.checkWithinContainer = function(container, bounding, offset) {
   let scrolledY = bounding.top - scrollTop;
 
   // Check for container and viewport for each edge
-  if (scrolledX < containerRect.left + offset ||
-      scrolledX < offset) {
+  if (scrolledX < containerRect.left + offset || scrolledX < offset) {
     edges.left = true;
   }
 
-  if (scrolledX + bounding.width > containerRect.right - offset ||
-      scrolledX + bounding.width > window.innerWidth - offset) {
+  if (
+    scrolledX + bounding.width > containerRect.right - offset ||
+    scrolledX + bounding.width > window.innerWidth - offset
+  ) {
     edges.right = true;
   }
 
-  if (scrolledY < containerRect.top + offset ||
-      scrolledY < offset) {
+  if (scrolledY < containerRect.top + offset || scrolledY < offset) {
     edges.top = true;
   }
 
-  if (scrolledY + bounding.height > containerBottom - offset ||
-      scrolledY + bounding.height > window.innerHeight - offset) {
+  if (
+    scrolledY + bounding.height > containerBottom - offset ||
+    scrolledY + bounding.height > window.innerHeight - offset
+  ) {
     edges.bottom = true;
   }
 
   return edges;
 };
-
 
 M.checkPossibleAlignments = function(el, container, bounding, offset) {
   let canAlign = {
@@ -278,36 +274,39 @@ M.checkPossibleAlignments = function(el, container, bounding, offset) {
   let scrolledYBottomEdge = bounding.top + elOffsetRect.height - scrollTop;
 
   // Check for container and viewport for left
-  canAlign.spaceOnRight = !containerAllowsOverflow ? containerWidth - (scrolledX + bounding.width) :
-    window.innerWidth - (elOffsetRect.left + bounding.width);
+  canAlign.spaceOnRight = !containerAllowsOverflow
+    ? containerWidth - (scrolledX + bounding.width)
+    : window.innerWidth - (elOffsetRect.left + bounding.width);
   if (canAlign.spaceOnRight < 0) {
     canAlign.left = false;
   }
 
   // Check for container and viewport for Right
-  canAlign.spaceOnLeft = !containerAllowsOverflow ? scrolledX - bounding.width + elOffsetRect.width :
-    elOffsetRect.right - bounding.width;
+  canAlign.spaceOnLeft = !containerAllowsOverflow
+    ? scrolledX - bounding.width + elOffsetRect.width
+    : elOffsetRect.right - bounding.width;
   if (canAlign.spaceOnLeft < 0) {
     canAlign.right = false;
   }
 
   // Check for container and viewport for Top
-  canAlign.spaceOnBottom = !containerAllowsOverflow ? containerHeight - (scrolledYTopEdge + bounding.height + offset) :
-    window.innerHeight - (elOffsetRect.top + bounding.height + offset);
+  canAlign.spaceOnBottom = !containerAllowsOverflow
+    ? containerHeight - (scrolledYTopEdge + bounding.height + offset)
+    : window.innerHeight - (elOffsetRect.top + bounding.height + offset);
   if (canAlign.spaceOnBottom < 0) {
     canAlign.top = false;
   }
 
   // Check for container and viewport for Bottom
-  canAlign.spaceOnTop = !containerAllowsOverflow ? scrolledYBottomEdge - (bounding.height - offset) :
-    elOffsetRect.bottom - (bounding.height + offset);
+  canAlign.spaceOnTop = !containerAllowsOverflow
+    ? scrolledYBottomEdge - (bounding.height - offset)
+    : elOffsetRect.bottom - (bounding.height + offset);
   if (canAlign.spaceOnTop < 0) {
     canAlign.bottom = false;
   }
 
   return canAlign;
 };
-
 
 M.getOverflowParent = function(element) {
   if (element == null) {
@@ -321,7 +320,6 @@ M.getOverflowParent = function(element) {
   return M.getOverflowParent(element.parentElement);
 };
 
-
 /**
  * Gets id of component from a trigger
  * @param {Element} trigger  trigger
@@ -334,12 +332,11 @@ M.getIdFromTrigger = function(trigger) {
     if (id) {
       id = id.slice(1);
     } else {
-      id = "";
+      id = '';
     }
   }
   return id;
 };
-
 
 /**
  * Multi browser support for document scroll top
@@ -357,7 +354,6 @@ M.getDocumentScrollLeft = function() {
   return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
 };
 
-
 /**
  * @typedef {Object} Edges
  * @property {Boolean} top  If the top edge was exceeded
@@ -374,17 +370,17 @@ M.getDocumentScrollLeft = function() {
  * @property {Number} height
  */
 
-
 /**
  * Get time in ms
  * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
  * @type {function}
  * @return {number}
  */
-let getTime = (Date.now || function () {
-  return new Date().getTime();
-});
-
+let getTime =
+  Date.now ||
+  function() {
+    return new Date().getTime();
+  };
 
 /**
  * Returns a function, that, when invoked, will only be triggered at most once
@@ -403,13 +399,13 @@ M.throttle = function(func, wait, options) {
   let timeout = null;
   let previous = 0;
   options || (options = {});
-  let later = function () {
+  let later = function() {
     previous = options.leading === false ? 0 : getTime();
     timeout = null;
     result = func.apply(context, args);
     context = args = null;
   };
-  return function () {
+  return function() {
     let now = getTime();
     if (!previous && options.leading === false) previous = now;
     let remaining = wait - (now - previous);

@@ -1,4 +1,4 @@
-(function ($, anim) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -7,7 +7,6 @@
     duration: 500,
     interval: 6000
   };
-
 
   /**
    * @class
@@ -38,7 +37,12 @@
       // setup
       this.$slider = this.$el.find('.slides');
       this.$slides = this.$slider.children('li');
-      this.activeIndex = this.$slides.filter(function(item) { return $(item).hasClass('active'); }).first().index();
+      this.activeIndex = this.$slides
+        .filter(function(item) {
+          return $(item).hasClass('active');
+        })
+        .first()
+        .index();
       if (this.activeIndex != -1) {
         this.$active = this.$slides.eq(this.activeIndex);
       }
@@ -52,7 +56,8 @@
 
       // Move img src into background-image
       this.$slides.find('img').each((el) => {
-        let placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+        let placeholderBase64 =
+          'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if ($(el).attr('src') !== placeholderBase64) {
           $(el).css('background-image', 'url("' + $(el).attr('src') + '")');
           $(el).attr('src', placeholderBase64);
@@ -165,7 +170,8 @@
      */
     _handleInterval() {
       let newActiveIndex = this.$slider.find('.active').index();
-      if (this.$slides.length === newActiveIndex + 1) newActiveIndex = 0; // loop to start
+      if (this.$slides.length === newActiveIndex + 1) newActiveIndex = 0;
+      // loop to start
       else newActiveIndex += 1;
 
       this.set(newActiveIndex);
@@ -186,10 +192,8 @@
 
       if ($(caption).hasClass('center-align')) {
         animOptions.translateY = -100;
-
       } else if ($(caption).hasClass('right-align')) {
         animOptions.translateX = 100;
-
       } else if ($(caption).hasClass('left-align')) {
         animOptions.translateX = -100;
       }
@@ -205,7 +209,7 @@
       if (!this.$el.hasClass('fullscreen')) {
         if (this.options.indicators) {
           // Add height if indicators are present
-          this.$el.css('height', (this.options.height + 40) + 'px');
+          this.$el.css('height', this.options.height + 40 + 'px');
         } else {
           this.$el.css('height', this.options.height + 'px');
         }
@@ -315,7 +319,8 @@
     start() {
       clearInterval(this.interval);
       this.interval = setInterval(
-        this._handleIntervalBound, this.options.duration + this.options.interval
+        this._handleIntervalBound,
+        this.options.duration + this.options.interval
       );
     }
 
@@ -351,5 +356,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Slider, 'slider', 'M_Slider');
   }
-
-}(cash, M.anime));
+})(cash, M.anime);

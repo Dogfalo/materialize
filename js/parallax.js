@@ -2,11 +2,10 @@
   'use strict';
 
   let _defaults = {
-    responsiveThreshold: 0, // breakpoint for swipeable
+    responsiveThreshold: 0 // breakpoint for swipeable
   };
 
   class Parallax extends Component {
-
     constructor(el, options) {
       super(Parallax, el, options);
 
@@ -23,7 +22,7 @@
       this.$img = this.$el.find('img').first();
       this.$img.each(function() {
         let el = this;
-        if (el.complete) $(el).trigger("load");
+        if (el.complete) $(el).trigger('load');
       });
 
       this._updateParallax();
@@ -70,7 +69,8 @@
     static _handleWindowResize() {
       for (let i = 0; i < Parallax._parallaxes.length; i++) {
         let parallaxInstance = Parallax._parallaxes[i];
-        parallaxInstance._enabled = window.innerWidth > parallaxInstance.options.responsiveThreshold;
+        parallaxInstance._enabled =
+          window.innerWidth > parallaxInstance.options.responsiveThreshold;
       }
     }
 
@@ -118,7 +118,6 @@
 
       if (!this._enabled) {
         this.$img[0].style.transform = '';
-
       } else if (bottom > scrollTop && top < scrollTop + windowHeight) {
         this.$img[0].style.transform = `translate3D(-50%, ${parallax}px, 0)`;
       }
@@ -136,5 +135,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Parallax, 'parallax', 'M_Parallax');
   }
-
 })(cash);

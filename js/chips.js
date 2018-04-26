@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
   'use strict';
 
   let _defaults = {
@@ -11,7 +11,6 @@
     onChipSelect: null,
     onChipDelete: null
   };
-
 
   /**
    * @typedef {Object} chip
@@ -148,7 +147,6 @@
           // delete chip
           this.deleteChip(index);
           this.$input[0].focus();
-
         } else {
           // select chip
           this.selectChip(index);
@@ -264,9 +262,7 @@
       // enter
       if (e.keyCode === 13) {
         // Override enter if autocompleting.
-        if (this.hasAutocomplete &&
-          this.autocomplete &&
-          this.autocomplete.isOpen) {
+        if (this.hasAutocomplete && this.autocomplete && this.autocomplete.isOpen) {
           return;
         }
 
@@ -277,7 +273,11 @@
         this.$input[0].value = '';
 
         // delete or left
-      } else if ((e.keyCode === 8 || e.keyCode === 37) && this.$input[0].value === '' && this.chipsData.length) {
+      } else if (
+        (e.keyCode === 8 || e.keyCode === 37) &&
+        this.$input[0].value === '' &&
+        this.chipsData.length
+      ) {
         e.preventDefault();
         this.selectChip(this.chipsData.length - 1);
       }
@@ -369,10 +369,12 @@
      * Set placeholder
      */
     _setPlaceholder() {
-      if ((this.chipsData !== undefined && !this.chipsData.length) && this.options.placeholder) {
+      if (this.chipsData !== undefined && !this.chipsData.length && this.options.placeholder) {
         $(this.$input).prop('placeholder', this.options.placeholder);
-
-      } else if ((this.chipsData === undefined || !!this.chipsData.length) && this.options.secondaryPlaceholder) {
+      } else if (
+        (this.chipsData === undefined || !!this.chipsData.length) &&
+        this.options.secondaryPlaceholder
+      ) {
         $(this.$input).prop('placeholder', this.options.secondaryPlaceholder);
       }
     }
@@ -391,7 +393,6 @@
           }
         }
         return !exists;
-
       }
 
       return false;
@@ -402,8 +403,7 @@
      * @param {chip} chip
      */
     addChip(chip) {
-      if (!this._isValid(chip) ||
-        this.chipsData.length >= this.options.limit) {
+      if (!this._isValid(chip) || this.chipsData.length >= this.options.limit) {
         return;
       }
 
@@ -414,7 +414,7 @@
       this._setPlaceholder();
 
       // fire chipAdd callback
-      if (typeof (this.options.onChipAdd) === 'function') {
+      if (typeof this.options.onChipAdd === 'function') {
         this.options.onChipAdd.call(this, this.$el, renderedChip);
       }
     }
@@ -426,14 +426,14 @@
     deleteChip(chipIndex) {
       let $chip = this.$chips.eq(chipIndex);
       this.$chips.eq(chipIndex).remove();
-      this.$chips = this.$chips.filter(function (el) {
+      this.$chips = this.$chips.filter(function(el) {
         return $(el).index() >= 0;
       });
       this.chipsData.splice(chipIndex, 1);
       this._setPlaceholder();
 
       // fire chipDelete callback
-      if (typeof (this.options.onChipDelete) === 'function') {
+      if (typeof this.options.onChipDelete === 'function') {
         this.options.onChipDelete.call(this, this.$el, $chip[0]);
       }
     }
@@ -448,7 +448,7 @@
       $chip[0].focus();
 
       // fire chipSelect callback
-      if (typeof (this.options.onChipSelect) === 'function') {
+      if (typeof this.options.onChipSelect === 'function') {
         this.options.onChipSelect.call(this, this.$el, $chip[0]);
       }
     }
@@ -466,14 +466,16 @@
     M.initializeJqueryWrapper(Chips, 'chips', 'M_Chips');
   }
 
-  $(document).ready(function () {
+  $(document).ready(function() {
     // Handle removal of static chips.
-    $(document.body).on('click', '.chip .close', function () {
+    $(document.body).on('click', '.chip .close', function() {
       let $chips = $(this).closest('.chips');
       if ($chips.length && $chips[0].M_Chips) {
         return;
       }
-      $(this).closest('.chip').remove();
+      $(this)
+        .closest('.chip')
+        .remove();
     });
   });
-}(cash));
+})(cash);

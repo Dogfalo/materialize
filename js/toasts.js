@@ -13,7 +13,6 @@
 
   class Toast {
     constructor(options) {
-
       /**
        * Options for the toast
        * @member Toast#options
@@ -122,10 +121,9 @@
         toast.time = Date.now();
 
         let totalDeltaX = toast.xPos - toast.startingXPos;
-        let activationDistance =
-            toast.el.offsetWidth * toast.options.activationPercent;
+        let activationDistance = toast.el.offsetWidth * toast.options.activationPercent;
         toast.el.style.transform = `translateX(${totalDeltaX}px)`;
-        toast.el.style.opacity = 1-Math.abs(totalDeltaX / activationDistance);
+        toast.el.style.opacity = 1 - Math.abs(totalDeltaX / activationDistance);
       }
     }
 
@@ -139,17 +137,15 @@
         toast.el.classList.remove('panning');
 
         let totalDeltaX = toast.xPos - toast.startingXPos;
-        let activationDistance =
-            toast.el.offsetWidth * toast.options.activationPercent;
-        let shouldBeDismissed = Math.abs(totalDeltaX) > activationDistance ||
-            toast.velocityX > 1;
+        let activationDistance = toast.el.offsetWidth * toast.options.activationPercent;
+        let shouldBeDismissed = Math.abs(totalDeltaX) > activationDistance || toast.velocityX > 1;
 
         // Remove toast
         if (shouldBeDismissed) {
           toast.wasSwiped = true;
           toast.dismiss();
 
-        // Animate toast back to original position
+          // Animate toast back to original position
         } else {
           toast.el.style.transition = 'transform .2s, opacity .2s';
           toast.el.style.transform = '';
@@ -164,7 +160,7 @@
      * @param {Event} e
      */
     static _xPos(e) {
-      if (e.targetTouches && (e.targetTouches.length >= 1)) {
+      if (e.targetTouches && e.targetTouches.length >= 1) {
         return e.targetTouches[0].clientX;
       }
       // mouse event
@@ -175,11 +171,10 @@
      * Remove all toasts
      */
     static dismissAll() {
-      for(let toastIndex in Toast._toasts) {
+      for (let toastIndex in Toast._toasts) {
         Toast._toasts[toastIndex].dismiss();
       }
     }
-
 
     /**
      * Create toast and append it to toast container
@@ -194,19 +189,22 @@
       }
 
       // Set content
-      if ( typeof HTMLElement === 'object' ?
-           this.message instanceof HTMLElement :
-           this.message && typeof this.message === 'object' &&
-           this.message !== null && this.message.nodeType === 1 &&
-           typeof this.message.nodeName==='string'
-         ) {
+      if (
+        typeof HTMLElement === 'object'
+          ? this.message instanceof HTMLElement
+          : this.message &&
+            typeof this.message === 'object' &&
+            this.message !== null &&
+            this.message.nodeType === 1 &&
+            typeof this.message.nodeName === 'string'
+      ) {
         toast.appendChild(this.message);
 
-      // Check if it is jQuery object
+        // Check if it is jQuery object
       } else if (!!this.message.jquery) {
         $(toast).append(this.message[0]);
 
-      // Insert as html;
+        // Insert as html;
       } else {
         toast.innerHTML = this.message;
       }
@@ -230,13 +228,12 @@
       });
     }
 
-
     /**
      * Create setInterval which automatically removes toast when timeRemaining >= 0
      * has been reached
      */
     _setTimer() {
-      if (this.timeRemaining !== Infinity)  {
+      if (this.timeRemaining !== Infinity) {
         this.counterInterval = setInterval(() => {
           // If toast is not being dragged, decrease its time remaining
           if (!this.panning) {
@@ -251,21 +248,18 @@
       }
     }
 
-
     /**
      * Dismiss toast with animation
      */
     dismiss() {
       window.clearInterval(this.counterInterval);
-      let activationDistance =
-          this.el.offsetWidth * this.options.activationPercent;
+      let activationDistance = this.el.offsetWidth * this.options.activationPercent;
 
-      if(this.wasSwiped) {
+      if (this.wasSwiped) {
         this.el.style.transition = 'transform .05s, opacity .05s';
         this.el.style.transform = `translateX(${activationDistance}px)`;
         this.el.style.opacity = 0;
       }
-
 
       anim({
         targets: this.el,
@@ -275,7 +269,7 @@
         easing: 'easeOutExpo',
         complete: () => {
           // Call the optional callback
-          if(typeof(this.options.completeCallback) === 'function') {
+          if (typeof this.options.completeCallback === 'function') {
             this.options.completeCallback();
           }
           // Remove toast from DOM

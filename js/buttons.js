@@ -1,4 +1,4 @@
-(function ($, anim) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -92,7 +92,6 @@
       if (this.options.hoverEnabled && !this.options.toolbarEnabled) {
         this.el.addEventListener('mouseenter', this._handleOpenBound);
         this.el.addEventListener('mouseleave', this._handleCloseBound);
-
       } else {
         this.el.addEventListener('click', this._handleFABClickBound);
       }
@@ -105,7 +104,6 @@
       if (this.options.hoverEnabled && !this.options.toolbarEnabled) {
         this.el.removeEventListener('mouseenter', this._handleOpenBound);
         this.el.removeEventListener('mouseleave', this._handleCloseBound);
-
       } else {
         this.el.removeEventListener('click', this._handleFABClickBound);
       }
@@ -117,7 +115,6 @@
     _handleFABClick() {
       if (this.isOpen) {
         this.close();
-
       } else {
         this.open();
       }
@@ -178,7 +175,7 @@
         anim({
           targets: el,
           opacity: 1,
-          scale: [.4, 1],
+          scale: [0.4, 1],
           translateY: [this.offsetY, 0],
           translateX: [this.offsetX, 0],
           duration: 275,
@@ -198,7 +195,7 @@
         anim({
           targets: el,
           opacity: 0,
-          scale: .4,
+          scale: 0.4,
           translateY: this.offsetY,
           translateX: this.offsetX,
           duration: 175,
@@ -222,7 +219,7 @@
       let fabColor = this.$anchor.css('background-color');
       this.$anchor.append(backdrop);
 
-      this.offsetX = btnRect.left - (windowWidth / 2) + (btnRect.width / 2);
+      this.offsetX = btnRect.left - windowWidth / 2 + btnRect.width / 2;
       this.offsetY = windowHeight - btnRect.bottom;
       scaleFactor = windowWidth / backdrop[0].clientWidth;
       this.btnBottom = btnRect.bottom;
@@ -247,11 +244,11 @@
         'background-color': fabColor
       });
 
-
       setTimeout(() => {
         this.$el.css({
           transform: '',
-          transition: 'transform .2s cubic-bezier(0.550, 0.085, 0.680, 0.530), background-color 0s linear .2s'
+          transition:
+            'transform .2s cubic-bezier(0.550, 0.085, 0.680, 0.530), background-color 0s linear .2s'
         });
         this.$anchor.css({
           overflow: 'visible',
@@ -268,9 +265,12 @@
             transform: 'scale(' + scaleFactor + ')',
             transition: 'transform .2s cubic-bezier(0.550, 0.055, 0.675, 0.190)'
           });
-          this.$menu.children('li').children('a').css({
-            opacity: 1
-          });
+          this.$menu
+            .children('li')
+            .children('a')
+            .css({
+              opacity: 1
+            });
 
           // Scroll to close.
           this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
@@ -289,7 +289,7 @@
       let backdrop = this.$el.find('.fab-backdrop');
       let fabColor = this.$anchor.css('background-color');
 
-      this.offsetX = this.btnLeft - (windowWidth / 2) + (this.btnWidth / 2);
+      this.offsetX = this.btnLeft - windowWidth / 2 + this.btnWidth / 2;
       this.offsetY = windowHeight - this.btnBottom;
 
       // Hide backdrop
@@ -305,9 +305,12 @@
         transform: 'scale(0)',
         'background-color': fabColor
       });
-      this.$menu.children('li').children('a').css({
-        opacity: ''
-      });
+      this.$menu
+        .children('li')
+        .children('a')
+        .css({
+          opacity: ''
+        });
 
       setTimeout(() => {
         backdrop.remove();
@@ -344,7 +347,10 @@
   M.FloatingActionButton = FloatingActionButton;
 
   if (M.jQueryLoaded) {
-    M.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
+    M.initializeJqueryWrapper(
+      FloatingActionButton,
+      'floatingActionButton',
+      'M_FloatingActionButton'
+    );
   }
-
-}(cash, M.anime));
+})(cash, M.anime);

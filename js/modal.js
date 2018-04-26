@@ -15,7 +15,6 @@
     endingTop: '10%'
   };
 
-
   /**
    * @class
    *
@@ -121,7 +120,7 @@
      * @param {Event} e
      */
     _handleTriggerClick(e) {
-      let $trigger =  $(e.target).closest('.modal-trigger');
+      let $trigger = $(e.target).closest('.modal-trigger');
       if ($trigger.length) {
         let modalId = M.getIdFromTrigger($trigger[0]);
         let modalInstance = document.getElementById(modalId).M_Modal;
@@ -203,7 +202,7 @@
         easing: 'easeOutCubic',
         // Handle modal onOpenEnd callback
         complete: () => {
-          if (typeof(this.options.onOpenEnd) === 'function') {
+          if (typeof this.options.onOpenEnd === 'function') {
             this.options.onOpenEnd.call(this, this.el, this._openingTrigger);
           }
         }
@@ -217,13 +216,13 @@
         });
         anim(enterAnimOptions);
 
-      // Normal modal animation
+        // Normal modal animation
       } else {
         $.extend(enterAnimOptions, {
           top: [this.options.startingTop, this.options.endingTop],
           opacity: 1,
-          scaleX: [.8, 1],
-          scaleY: [.8, 1]
+          scaleX: [0.8, 1],
+          scaleY: [0.8, 1]
         });
         anim(enterAnimOptions);
       }
@@ -252,7 +251,7 @@
           this.$overlay.remove();
 
           // Call onCloseEnd callback
-          if (typeof(this.options.onCloseEnd) === 'function') {
+          if (typeof this.options.onCloseEnd === 'function') {
             this.options.onCloseEnd.call(this, this.el);
           }
         }
@@ -266,7 +265,7 @@
         });
         anim(exitAnimOptions);
 
-      // Normal modal animation
+        // Normal modal animation
       } else {
         $.extend(exitAnimOptions, {
           top: [this.options.endingTop, this.options.startingTop],
@@ -277,7 +276,6 @@
         anim(exitAnimOptions);
       }
     }
-
 
     /**
      * Open Modal
@@ -300,7 +298,7 @@
       this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
 
       // onOpenStart callback
-      if (typeof(this.options.onOpenStart) === 'function') {
+      if (typeof this.options.onOpenStart === 'function') {
         this.options.onOpenStart.call(this, this.el, this._openingTrigger);
       }
 
@@ -341,7 +339,7 @@
       this._nthModalOpened = 0;
 
       // Call onCloseStart callback
-      if (typeof(this.options.onCloseStart) === 'function') {
+      if (typeof this.options.onCloseStart === 'function') {
         this.options.onCloseStart.call(this, this.el);
       }
 
@@ -381,5 +379,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
   }
-
 })(cash, M.anime);
