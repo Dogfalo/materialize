@@ -254,11 +254,9 @@
 
     _pickerSetup() {
       let $clearBtn = $(
-        '<button class="btn-flat timepicker-clear waves-effect" style="visibility: hidden;" type="button" tabindex="' +
-          (this.options.twelveHour ? '3' : '1') +
-          '">' +
-          this.options.i18n.clear +
-          '</button>'
+        `<button class="btn-flat timepicker-clear waves-effect" style="visibility: hidden;" type="button" tabindex="${
+          this.options.twelveHour ? '3' : '1'
+        }">${this.options.i18n.clear}</button>`
       )
         .appendTo(this.footer)
         .on('click', this.clear.bind(this));
