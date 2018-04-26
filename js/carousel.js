@@ -524,17 +524,10 @@
           this.$el.find('.carousel-item').removeClass('active');
           el.classList.add('active');
         }
-        let transformString =
-          alignment +
-          ' translateX(' +
-          -delta / 2 +
-          'px)' +
-          ' translateX(' +
-          dir * this.options.shift * tween * i +
-          'px)' +
-          ' translateZ(' +
-          this.options.dist * tween +
-          'px)';
+        let transformString = `${alignment} translateX(${-delta / 2}px) translateX(${dir *
+          this.options.shift *
+          tween *
+          i}px) translateZ(${this.options.dist * tween}px)`;
         this._updateItemStyle(el, centerTweenedOpacity, 0, transformString);
       }
 
@@ -550,14 +543,8 @@
         // Don't show wrapped items.
         if (!this.noWrap || this.center + i < this.count) {
           el = this.images[this._wrap(this.center + i)];
-          let transformString =
-            alignment +
-            ' translateX(' +
-            (this.options.shift + (this.dim * i - delta) / 2) +
-            'px)' +
-            ' translateZ(' +
-            zTranslation +
-            'px)';
+          let transformString = `${alignment} translateX(${this.options.shift +
+            (this.dim * i - delta) / 2}px) translateZ(${zTranslation}px)`;
           this._updateItemStyle(el, tweenedOpacity, -i, transformString);
         }
 
@@ -572,14 +559,8 @@
         // Don't show wrapped items.
         if (!this.noWrap || this.center - i >= 0) {
           el = this.images[this._wrap(this.center - i)];
-          let transformString =
-            alignment +
-            ' translateX(' +
-            (-this.options.shift + (-this.dim * i - delta) / 2) +
-            'px)' +
-            ' translateZ(' +
-            zTranslation +
-            'px)';
+          let transformString = `${alignment} translateX(${-this.options.shift +
+            (-this.dim * i - delta) / 2}px) translateZ(${zTranslation}px)`;
           this._updateItemStyle(el, tweenedOpacity, -i, transformString);
         }
       }
@@ -588,17 +569,9 @@
       // Don't show wrapped items.
       if (!this.noWrap || (this.center >= 0 && this.center < this.count)) {
         el = this.images[this._wrap(this.center)];
-        let transformString =
-          alignment +
-          ' translateX(' +
-          -delta / 2 +
-          'px)' +
-          ' translateX(' +
-          dir * this.options.shift * tween +
-          'px)' +
-          ' translateZ(' +
-          this.options.dist * tween +
-          'px)';
+        let transformString = `${alignment} translateX(${-delta / 2}px) translateX(${dir *
+          this.options.shift *
+          tween}px) translateZ(${this.options.dist * tween}px)`;
         this._updateItemStyle(el, centerTweenedOpacity, 0, transformString);
       }
 

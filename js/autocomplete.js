@@ -298,13 +298,7 @@
         matchText = $el.text().slice(matchStart, matchEnd + 1),
         afterMatch = $el.text().slice(matchEnd + 1);
       $el.html(
-        '<span>' +
-          beforeMatch +
-          "<span class='highlight'>" +
-          matchText +
-          '</span>' +
-          afterMatch +
-          '</span>'
+        `<span>${beforeMatch}<span class='highlight'>${matchText}</span>${afterMatch}</span>`
       );
       if (img.length) {
         $el.prepend(img);
@@ -391,7 +385,7 @@
         let $autocompleteOption = $('<li></li>');
         if (!!entry.data) {
           $autocompleteOption.append(
-            '<img src="' + entry.data + '" class="right circle"><span>' + entry.key + '</span>'
+            `<img src="${entry.data}" class="right circle"><span>${entry.key}</span>`
           );
         } else {
           $autocompleteOption.append('<span>' + entry.key + '</span>');
