@@ -359,9 +359,6 @@
             year: date.getFullYear()
           }
         ];
-        // if (this.options.mainCalendar === 'right') {
-        //   this.calendars[0].month += 1 - this.options.numberOfMonths;
-        // }
       }
 
       this.adjustCalendars();
@@ -369,12 +366,6 @@
 
     adjustCalendars() {
       this.calendars[0] = this.adjustCalendar(this.calendars[0]);
-      // for (let c = 1; c < this.options.numberOfMonths; c++) {
-      //   this.calendars[c] = this.adjustCalendar({
-      //     month: this.calendars[0].month + c,
-      //     year: this.calendars[0].year
-      //   });
-      // }
       this.draw();
     }
 
@@ -521,23 +512,10 @@
         arr.push('is-endrange');
       }
       return (
-        '<td data-day="' +
-        opts.day +
-        '" class="' +
-        arr.join(' ') +
-        '" aria-selected="' +
-        ariaSelected +
-        '">' +
-        '<button class="datepicker-day-button" type="button" ' +
-        'data-year="' +
-        opts.year +
-        '" data-month="' +
-        opts.month +
-        '" data-day="' +
-        opts.day +
-        '">' +
-        opts.day +
-        '</button>' +
+        `<td data-day="${opts.day}" class="${arr.join(' ')}" aria-selected="${ariaSelected}">` +
+        `<button class="datepicker-day-button" type="button" data-year="${opts.year}" data-month="${
+          opts.month
+        }" data-day="${opts.day}">${opts.day}</button>` +
         '</td>'
       );
     }
@@ -568,11 +546,11 @@
         arr = [];
       for (i = 0; i < 7; i++) {
         arr.push(
-          '<th scope="col"><abbr title="' +
-            this.renderDayName(opts, i) +
-            '">' +
-            this.renderDayName(opts, i, true) +
-            '</abbr></th>'
+          `<th scope="col"><abbr title="${this.renderDayName(opts, i)}">${this.renderDayName(
+            opts,
+            i,
+            true
+          )}</abbr></th>`
         );
       }
       return '<thead><tr>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tr></thead>';
@@ -628,31 +606,19 @@
 
       for (arr = []; i < j && i <= opts.maxYear; i++) {
         if (i >= opts.minYear) {
-          arr.push(
-            '<option value="' +
-              i +
-              '"' +
-              (i === year ? ' selected="selected"' : '') +
-              '>' +
-              i +
-              '</option>'
-          );
+          arr.push(`<option value="${i}" ${i === year ? 'selected="selected"' : ''}>${i}</option>`);
         }
       }
 
-      yearHtml =
-        '<select class="datepicker-select orig-select-year" tabindex="-1">' +
-        arr.join('') +
-        '</select>';
+      yearHtml = `<select class="datepicker-select orig-select-year" tabindex="-1">${arr.join(
+        ''
+      )}</select>`;
 
       let leftArrow =
         '<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/><path d="M0-.5h24v24H0z" fill="none"/></svg>';
-      html +=
-        '<button class="month-prev' +
-        (prev ? '' : ' is-disabled') +
-        '" type="button">' +
-        leftArrow +
-        '</button>';
+      html += `<button class="month-prev${
+        prev ? '' : ' is-disabled'
+      }" type="button">${leftArrow}</button>`;
 
       html += '<div class="selects-container">';
       if (opts.showMonthAfterYear) {
@@ -670,16 +636,11 @@
         next = false;
       }
 
-      // if (c === (this.options.numberOfMonths - 1) ) {
       let rightArrow =
         '<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>';
-      html +=
-        '<button class="month-next' +
-        (next ? '' : ' is-disabled') +
-        '" type="button">' +
-        rightArrow +
-        '</button>';
-      // }
+      html += `<button class="month-next${
+        next ? '' : ' is-disabled'
+      }" type="button">${rightArrow}</button>`;
 
       return (html += '</div>');
     }
@@ -933,9 +894,6 @@
       if (Datepicker._isDate(date)) {
         this.setDate(date);
       }
-      // if (!self._v) {
-      //   self.show();
-      // }
     }
 
     renderDayName(opts, day, abbr) {
