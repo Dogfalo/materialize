@@ -41,17 +41,15 @@
       this.$floatingBtnsReverse = this.$el.find('ul .btn-floating').reverse();
       this.offsetY = 0;
       this.offsetX = 0;
+
+      this.$el.addClass(`direction-${this.options.direction}`);
       if (this.options.direction === 'top') {
-        this.$el.addClass('direction-top');
         this.offsetY = 40;
       } else if (this.options.direction === 'right') {
-        this.$el.addClass('direction-right');
         this.offsetX = -40;
       } else if (this.options.direction === 'bottom') {
-        this.$el.addClass('direction-bottom');
         this.offsetY = -40;
       } else {
-        this.$el.addClass('direction-left');
         this.offsetX = 40;
       }
       this._setupEventHandlers();
