@@ -148,9 +148,9 @@
       this.dropdownEl.removeEventListener('click', this._handleDropdownClickBound);
 
       if (this.options.hover) {
-        this.el.removeEventHandlers('mouseenter', this._handleMouseEnterBound);
-        this.el.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
-        this.dropdownEl.removeEventHandlers('mouseleave', this._handleMouseLeaveBound);
+        this.el.removeEventListener('mouseenter', this._handleMouseEnterBound);
+        this.el.removeEventListener('mouseleave', this._handleMouseLeaveBound);
+        this.dropdownEl.removeEventListener('mouseleave', this._handleMouseLeaveBound);
       } else {
         this.el.removeEventListener('click', this._handleClickBound);
       }
