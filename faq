@@ -1,0 +1,53 @@
+### What Is Materialize?
+
+
+
+Materialize is a CSS Framework based on Material Design, Material Desig
+n is a design language that combines the classic principles of successful design along with innovation and technology
+
+Materialize is the standard version that comes with both the minified and unminified CSS and JavaScript files. This option requires little to no setup. Use this if you are unfamiliar with Sass.
+
+
+### Can I use Materialize On opera?
+
+Yes you can and you can also use it with other browsers like
+
+Chrome 35+
+Firefox 31+
+Safari 9+
+Edge
+IE 11+
+
+### What is being used to test framework?
+
+We use Jasmine as our testing framework and we're trying to write a robust test suite for our components
+
+
+### Where do i download the latest version of materialize?
+
+You can download it [HERE](https://github.com/Dogfalo/materialize/releases/tag/v0.100.2)
+
+### What do i need to note before taking a test?
+
+Before writing tests, make sure you understand what the expected-behavior of the component actually is. Reading over the component code and documentation will greatly aid you in this regard.
+
+### What are the guidelines for bug reports?
+
+* Use the GitHub issue search
+
+* Check if the issue has been fixed
+
+* Isolate the problem 
+
+### How do i run documentation locally on my machine?
+
+You need Node.js installed. You can get iut [HERE](https://nodejs.org/en/)
+
+
+### Can i request for a particular feature?
+
+
+We like feature requests but make sure that it can be seen within the goals of the project and not just something you need individually. Also you should try and give as much examples and details about the new feature as possible. 
+
+
+# Please note that before you you materialize, you need to read and understand [HERE](http://materializecss.com/getting-started.html)
