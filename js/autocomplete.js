@@ -370,14 +370,16 @@
       }
 
       // Sort
-      let sortFunctionBound = (a, b) => {
-        return this.options.sortFunction(
-          a.key.toLowerCase(),
-          b.key.toLowerCase(),
-          val.toLowerCase()
-        );
-      };
-      matchingData.sort(sortFunctionBound);
+      if (this.options.sortFunction) {
+        let sortFunctionBound = (a, b) => {
+          return this.options.sortFunction(
+            a.key.toLowerCase(),
+            b.key.toLowerCase(),
+            val.toLowerCase()
+          );
+        };
+        matchingData.sort(sortFunctionBound);
+      }
 
       // Render
       for (let i = 0; i < matchingData.length; i++) {
