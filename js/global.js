@@ -39,13 +39,13 @@ M.tabPressed = false;
 M.keyDown = false;
 let docHandleKeydown = function(e) {
   M.keyDown = true;
-  if (e.which === M.keys.TAB) {
+  if (e.which === M.keys.TAB || e.which === M.keys.ARROW_DOWN || e.which === M.keys.ARROW_UP) {
     M.tabPressed = true;
   }
 };
 let docHandleKeyup = function(e) {
   M.keyDown = false;
-  if (e.which === M.keys.TAB) {
+  if (e.which === M.keys.TAB || e.which === M.keys.ARROW_DOWN || e.which === M.keys.ARROW_UP) {
     M.tabPressed = false;
   }
 };
@@ -57,8 +57,8 @@ let docHandleFocus = function(e) {
 let docHandleBlur = function(e) {
   document.body.classList.remove('keyboard-focused');
 };
-document.addEventListener('keydown', docHandleKeydown);
-document.addEventListener('keyup', docHandleKeyup);
+document.addEventListener('keydown', docHandleKeydown, true);
+document.addEventListener('keyup', docHandleKeyup, true);
 document.addEventListener('focus', docHandleFocus, true);
 document.addEventListener('blur', docHandleBlur, true);
 
