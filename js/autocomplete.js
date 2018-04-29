@@ -235,7 +235,7 @@
         numItems = $(this.container).children('li').length;
 
       // select element on Enter
-      if (keyCode === 13 && this.activeIndex >= 0) {
+      if (keyCode === M.keys.ENTER && this.activeIndex >= 0) {
         liElement = $(this.container)
           .children('li')
           .eq(this.activeIndex);
@@ -247,14 +247,14 @@
       }
 
       // Capture up and down key
-      if (keyCode === 38 || keyCode === 40) {
+      if (keyCode === M.keys.ARROW_UP || keyCode === M.keys.ARROW_DOWN) {
         e.preventDefault();
 
-        if (keyCode === 38 && this.activeIndex > 0) {
+        if (keyCode === M.keys.ARROW_UP && this.activeIndex > 0) {
           this.activeIndex--;
         }
 
-        if (keyCode === 40 && this.activeIndex < numItems - 1) {
+        if (keyCode === M.keys.ARROW_DOWN && this.activeIndex < numItems - 1) {
           this.activeIndex++;
         }
 
