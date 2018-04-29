@@ -126,19 +126,15 @@
             placeholderOption.find('input[type="checkbox"]').prop('checked', false);
             this._toggleEntryFromArray(placeholderOption[0].id);
           }
-
-          let checkbox = $(option).find('input[type="checkbox"]');
-          checkbox.prop('checked', !checkbox.prop('checked'));
           selected = this._toggleEntryFromArray(key);
         } else {
           $(this.dropdownOptions)
             .find('li')
-            .removeClass('active');
-          $(option).toggleClass('active');
-          this.input.value = option.textContent;
+            .removeClass('selected');
+          $(option).toggleClass('selected', selected);
         }
 
-        this._activateOption($(this.dropdownOptions), option);
+        // Set selected on original select option
         $(this._valueDict[key].el).prop('selected', selected);
         this.$el.trigger('change');
       }
@@ -161,7 +157,7 @@
      */
     _setupDropdown() {
       this.wrapper = document.createElement('div');
-      $(this.wrapper).addClass('select-wrapper' + ' ' + this.options.classes);
+      $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
       this.$el.before($(this.wrapper));
       this.wrapper.appendChild(this.el);
 
@@ -305,9 +301,8 @@
 
       // add icons
       let iconUrl = option.getAttribute('data-icon');
-      let classes = option.getAttribute('class');
       if (!!iconUrl) {
-        let imgEl = $('<img alt="" src="' + iconUrl + '">');
+        let imgEl = $(`<img alt="" src="${iconUrl}">`);
         liEl.prepend(imgEl);
       }
 
@@ -323,62 +318,65 @@
      */
     _toggleEntryFromArray(key) {
       let notAdded = !this._keysSelected.hasOwnProperty(key);
+      let $optionLi = $(this._valueDict[key].optionEl);
+
       if (notAdded) {
         this._keysSelected[key] = true;
       } else {
         delete this._keysSelected[key];
       }
 
-      $(this._valueDict[key].optionEl).toggleClass('active');
+      $optionLi.toggleClass('selected', notAdded);
+
+      // Set checkbox checked value
+      $optionLi.find('input[type="checkbox"]').prop('checked', notAdded);
 
       // use notAdded instead of true (to detect if the option is selected or not)
-      $(this._valueDict[key].el).prop('selected', notAdded);
+      $optionLi.prop('selected', notAdded);
 
       return notAdded;
     }
 
     /**
-     * Set value to input
+     * Set text value to input
      */
     _setValueToInput() {
-      let value = '';
+      let values = [];
       let options = this.$el.find('option');
 
       options.each((el) => {
         if ($(el).prop('selected')) {
           let text = $(el).text();
-          value === '' ? (value += text) : (value += ', ' + text);
+          values.push(text);
         }
       });
 
-      if (value === '') {
+      if (!values.length) {
         let firstDisabled = this.$el.find('option:disabled').eq(0);
-        if (firstDisabled.length) {
-          value = firstDisabled.text();
+        if (firstDisabled.length && firstDisabled[0].value === '') {
+          values.push(firstDisabled.text());
         }
       }
 
-      this.input.value = value;
+      this.input.value = values.join(', ');
     }
 
     /**
-     * Set selected state of dropdown too match actual select element
+     * Set selected state of dropdown to match actual select element
      */
     _setSelectedStates() {
       this._keysSelected = {};
 
       for (let key in this._valueDict) {
         let option = this._valueDict[key];
-        if ($(option.el).prop('selected')) {
-          $(option.optionEl)
-            .find('input[type="checkbox"]')
-            .prop('checked', true);
+        let optionIsSelected = $(option.el).prop('selected');
+        $(option.optionEl)
+          .find('input[type="checkbox"]')
+          .prop('checked', optionIsSelected);
+        if (optionIsSelected) {
           this._activateOption($(this.dropdownOptions), $(option.optionEl));
           this._keysSelected[key] = true;
         } else {
-          $(option.optionEl)
-            .find('input[type="checkbox"]')
-            .prop('checked', false);
           $(option.optionEl).removeClass('selected');
         }
       }
@@ -394,7 +392,6 @@
         if (!this.isMultiple) {
           collection.find('li.selected').removeClass('selected');
         }
-
         let option = $(newOption);
         option.addClass('selected');
       }
