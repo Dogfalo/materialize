@@ -99,7 +99,6 @@
       if (this.isOpen) {
         return;
       }
-
       this.isOpen = true;
       // Update tooltip content with HTML attribute options
       this.options = $.extend({}, this.options, this._getAttributeOptions());
@@ -112,6 +111,8 @@
         return;
       }
 
+      this.isHovered = false;
+      this.isFocused = false;
       this.isOpen = false;
       this._setExitDelayTimeout();
     }
@@ -266,8 +267,10 @@
     }
 
     _handleFocus() {
-      this.isFocused = true;
-      this.open();
+      if (M.tabPressed) {
+        this.isFocused = true;
+        this.open();
+      }
     }
 
     _handleBlur() {
