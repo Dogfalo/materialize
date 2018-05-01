@@ -67,10 +67,8 @@
 }
 
 body.keyboard-focused {
-  .dropdown-content li {
-    &:focus {
-      background-color: darken($dropdown-hover-bg-color, 8%);
-    }
+  .dropdown-content li:focus {
+    background-color: darken($dropdown-hover-bg-color, 8%);
   }
 }
 

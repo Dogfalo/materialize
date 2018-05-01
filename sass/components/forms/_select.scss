@@ -126,10 +126,8 @@ select:disabled {
 }
 
 body.keyboard-focused {
-  .select-dropdown.dropdown-content {
-  &:focus {
-      background-color: $select-option-focus;
-    }
+  .select-dropdown.dropdown-content li:focus {
+    background-color: $select-option-focus;
   }
 }
 
