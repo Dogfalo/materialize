@@ -87,6 +87,7 @@
       this._handleInputBlurBound = this._handleInputBlur.bind(this);
       this._handleInputKeyupAndFocusBound = this._handleInputKeyupAndFocus.bind(this);
       this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
+      this._handleInputClickBound = this._handleInputClick.bind(this);
       this._handleContainerMousedownAndTouchstartBound = this._handleContainerMousedownAndTouchstart.bind(
         this
       );
@@ -98,6 +99,7 @@
       this.el.addEventListener('keyup', this._handleInputKeyupAndFocusBound);
       this.el.addEventListener('focus', this._handleInputKeyupAndFocusBound);
       this.el.addEventListener('keydown', this._handleInputKeydownBound);
+      this.el.addEventListener('click', this._handleInputClickBound);
       this.container.addEventListener(
         'mousedown',
         this._handleContainerMousedownAndTouchstartBound
@@ -121,6 +123,7 @@
       this.el.removeEventListener('keyup', this._handleInputKeyupAndFocusBound);
       this.el.removeEventListener('focus', this._handleInputKeyupAndFocusBound);
       this.el.removeEventListener('keydown', this._handleInputKeydownBound);
+      this.el.removeEventListener('click', this._handleInputClickBound);
       this.container.removeEventListener(
         'mousedown',
         this._handleContainerMousedownAndTouchstartBound
@@ -174,7 +177,7 @@
      */
     _handleInputBlur() {
       if (!this._mousedown) {
-        this.dropdown.close();
+        this.close();
         this._resetAutocomplete();
       }
     }
@@ -197,25 +200,9 @@
       }
 
       // Check if the input isn't empty
-      if (this.oldVal !== val) {
-        this._resetAutocomplete();
-
-        if (val.length >= this.options.minLength) {
-          this.isOpen = true;
-          this._renderDropdown(this.options.data, val);
-        }
-
-        // Open dropdown
-        if (!this.dropdown.isOpen) {
-          // Timeout to prevent dropdown temp doc click handler from firing
-          setTimeout(() => {
-            this.dropdown.open();
-          }, 100);
-
-          // Recalculate dropdown when its already open
-        } else {
-          this.dropdown.recalculateDimensions();
-        }
+      // Check if focus triggered by tab
+      if (this.oldVal !== val && M.tabPressed) {
+        this.open();
       }
 
       // Update oldVal
@@ -266,6 +253,14 @@
           this.$active.addClass('active');
         }
       }
+    }
+
+    /**
+     * Handle Input Click
+     * @param {Event} e
+     */
+    _handleInputClick(e) {
+      this.open();
     }
 
     /**
@@ -333,7 +328,7 @@
       this.el.value = text;
       this.$el.trigger('change');
       this._resetAutocomplete();
-      this.dropdown.close();
+      this.close();
 
       // Handle onAutocomplete callback.
       if (typeof this.options.onAutocomplete === 'function') {
@@ -396,6 +391,35 @@
         $(this.container).append($autocompleteOption);
         this._highlight(val, $autocompleteOption);
       }
+    }
+
+    /**
+     * Open Autocomplete Dropdown
+     */
+    open() {
+      let val = this.el.value.toLowerCase();
+
+      this._resetAutocomplete();
+
+      if (val.length >= this.options.minLength) {
+        this.isOpen = true;
+        this._renderDropdown(this.options.data, val);
+      }
+
+      // Open dropdown
+      if (!this.dropdown.isOpen) {
+        this.dropdown.open();
+      } else {
+        // Recalculate dropdown when its already open
+        this.dropdown.recalculateDimensions();
+      }
+    }
+
+    /**
+     * Close Autocomplete Dropdown
+     */
+    close() {
+      this.dropdown.close();
     }
 
     /**
