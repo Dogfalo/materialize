@@ -5,3 +5,5 @@ js/jquery.timeago.min.js
 node_modules/
 package.json
 package.json.lock
+bin/
+dist/
