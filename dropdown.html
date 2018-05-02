@@ -162,17 +162,34 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="scrollspy section">
-        <p class="caption">Add a dropdown list to any button. Make sure that the <code class="language-markup">data-target</code> attribute matches the id in the <code class="language-markup">&lt;ul></code> tag. You can add a divider with the <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. You can also add icons. Just add the icon inside the <code class="language-markup">anchor</code> tag.</p>
+        <p class="caption">Add a dropdown list to any button. Make sure that the
+          <code class="language-markup">data-target</code> attribute matches the id in the
+          <code class="language-markup">&lt;ul></code> tag. You can add a divider with the
+          <code class="language-markup">&lt;li class="divider">&lt;/li></code> tag. You can also add icons. Just add the icon inside the
+          <code class="language-markup">anchor</code> tag.</p>
         <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
         <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!">one</a></li>
-          <li><a href="#!">two</a></li>
+          <li>
+            <a href="#!">one</a>
+          </li>
+          <li>
+            <a href="#!">two</a>
+          </li>
           <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">three</a></li>
-          <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-          <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+          <li>
+            <a href="#!">three</a>
+          </li>
+          <li>
+            <a href="#!">
+              <i class="material-icons">view_module</i>four</a>
+          </li>
+          <li>
+            <a href="#!">
+              <i class="material-icons">cloud</i>five</a>
+          </li>
         </ul>
-        <br><br>
+        <br>
+        <br>
         <pre><code class="language-markup">
   &lt;!-- Dropdown Trigger -->
   &lt;a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!&lt;/a>
@@ -192,8 +209,10 @@
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.dropdown-trigger');
-  var instance = M.Dropdown.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -206,12 +225,12 @@
         <h3 class="header">Options</h3>
         <table class="striped">
           <thead>
-          <tr>
+            <tr>
               <th>Name</th>
               <th>Type</th>
               <th>Default</th>
               <th>Description</th>
-          </tr>
+            </tr>
           </thead>
 
           <tbody>
@@ -300,7 +319,8 @@
       <div id="methods" class="scrollspy section">
         <h3 class="header">Methods</h3>
         <blockquote>
-          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
           <pre><code class="language-javascript col s12">
     var instance = M.Dropdown.getInstance(elem);
 
@@ -314,7 +334,7 @@
           </code></pre>
         </blockquote>
         <h5 class="method-header">
-    .open();
+          .open();
         </h5>
         <p>Open dropdown.</p>
         <pre><code class="language-javascript col s12">
@@ -323,7 +343,7 @@
         <br>
 
         <h5 class="method-header">
-    .close();
+          .close();
         </h5>
         <p>Close dropdown.</p>
         <pre><code class="language-javascript col s12">
@@ -332,7 +352,7 @@
         <br>
 
         <h5 class="method-header">
-    .recalculateDimensions();
+          .recalculateDimensions();
         </h5>
         <p>While dropdown is open, you can recalculate its dimensions if its contents have changed.</p>
         <pre><code class="language-javascript col s12">
@@ -341,7 +361,7 @@
         <br>
 
         <h5 class="method-header">
-    .destroy();
+          .destroy();
         </h5>
         <p>Destroy plugin instance and teardown</p>
         <pre><code class="language-javascript col s12">
@@ -355,9 +375,9 @@
         <table class="striped">
           <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -401,22 +421,33 @@
         </table>
       </div>
 
-</div>
+    </div>
 
     <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#initialization">Initialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#initialization">Initialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -424,7 +455,6 @@
 
   </div>
 </div>
-
     </main>    <footer class="page-footer docs-footer">
       <div class="container">
         <div class="row" style="margin-bottom: 0;">
@@ -467,6 +497,23 @@
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
+                  <a href="#!">
+                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://wrappixel.com/">
+                    <img src="https://s14.postimg.cc/6u3tdxw81/wrappixel-logo.jpg" alt="WrapPixel">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
+                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
+                  </a>
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
                   <a href="http://lucidocean.com" target="_blank" rel="noopener">
                     <img src="https://s8.postimg.cc/762csselh/logo_full_size.png" alt="Lucid Ocean">
                   </a>
@@ -481,8 +528,6 @@
                     <img src="https://s13.postimg.cc/oqns3tzmf/gaggle-mail-logo.png" alt="Gaggle Mail">
                   </a>
                 </div>
-              </div>
-              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://icons8.com/material-icons" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
@@ -493,6 +538,8 @@
                     <img src="https://s13.postimg.cc/m9c0wcpxz/2017-10-23-logo-refresh.png" alt="Philadelphia Web Design & SEO Agency">
                   </a>
                 </div>
+              </div>
+              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://www.brandnewweb.nl" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/3pxqiuqyf/brandnewweb.png" alt="Brand New Web">
@@ -504,15 +551,8 @@
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
-                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
-                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
-                  </a>
-                </div>
-              </div>
-              <div class="col s12">
-                <div class="patreon-footer-ad">
-                  <a href="#!">
-                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  <a href="https://www.yourlabs.biz" target="_blank" rel="noopener">
+                    <img src="https://avatars0.githubusercontent.com/u/1040547?s=200&v=4" alt="YourLabs Business Service: Digital Strategy Consulting" title="YourLabs Business Service: Digital Strategy Consulting">
                   </a>
                 </div>
               </div>

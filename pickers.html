@@ -177,8 +177,10 @@
         <div class="section">
           <h5>Initialization</h5>
           <pre><code class="language-javascript">
-  var elem = document.querySelector('.datepicker');
-  var instance = M.Datepicker.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -563,7 +565,8 @@
           <h5>Methods</h5>
 
           <blockquote>
-            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the
+              plugin instance like this: </p>
             <pre><code class="language-javascript col s12">
   var instance = M.Datepicker.getInstance(elem);
 
@@ -608,7 +611,8 @@ instance.toString();
           </h5>
           <p>Set a date on the datepicker</p>
           <h6>Arguments</h6>
-          <p><b>Date (optional):</b> Date to set on the datepicker.</p>
+          <p>
+            <b>Date (optional):</b> Date to set on the datepicker.</p>
           <pre><code class="language-javascript col s12">
 instance.setDate(new Date());
           </code></pre>
@@ -619,7 +623,8 @@ instance.setDate(new Date());
           </h5>
           <p>Change date view to a specific date on the datepicker</p>
           <h6>Arguments</h6>
-          <p><b>Date:</b> Date to show on the datepicker.</p>
+          <p>
+            <b>Date:</b> Date to show on the datepicker.</p>
           <pre><code class="language-javascript col s12">
 instance.gotoDate(new Date());
           </code></pre>
@@ -650,8 +655,10 @@ instance.destroy();
         <div class="section">
           <h5>Initialization</h5>
           <pre><code class="language-javascript">
-  var elem = document.querySelector('.timepicker');
-  var instance = M.Timepicker.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -835,7 +842,8 @@ instance.destroy();
           <h5>Methods</h5>
 
           <blockquote>
-            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the
+              plugin instance like this: </p>
             <pre><code class="language-javascript col s12">
   var instance = M.Timepicker.getInstance(elem);
 
@@ -871,7 +879,8 @@ instance.close();
           </h5>
           <p>Show hours or minutes view on timepicker</p>
           <h6>Arguments</h6>
-          <p><b>String:</b> The name of the view you want to switch to, 'hours' or 'minutes'.</p>
+          <p>
+            <b>String:</b> The name of the view you want to switch to, 'hours' or 'minutes'.</p>
           <pre><code class="language-javascript col s12">
 instance.showView('hours');
           </code></pre>
@@ -894,12 +903,17 @@ instance.destroy();
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#date-picker">Date Picker</a></li>
-            <li><a href="#time-picker">Time Picker</a></li>
+            <li>
+              <a href="#date-picker">Date Picker</a>
+            </li>
+            <li>
+              <a href="#time-picker">Time Picker</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -907,7 +921,6 @@ instance.destroy();
 
   </div>
 </div>
-
     </main>    <footer class="page-footer docs-footer">
       <div class="container">
         <div class="row" style="margin-bottom: 0;">
@@ -950,6 +963,23 @@ instance.destroy();
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
+                  <a href="#!">
+                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://wrappixel.com/">
+                    <img src="https://s14.postimg.cc/6u3tdxw81/wrappixel-logo.jpg" alt="WrapPixel">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
+                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
+                  </a>
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
                   <a href="http://lucidocean.com" target="_blank" rel="noopener">
                     <img src="https://s8.postimg.cc/762csselh/logo_full_size.png" alt="Lucid Ocean">
                   </a>
@@ -964,8 +994,6 @@ instance.destroy();
                     <img src="https://s13.postimg.cc/oqns3tzmf/gaggle-mail-logo.png" alt="Gaggle Mail">
                   </a>
                 </div>
-              </div>
-              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://icons8.com/material-icons" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
@@ -976,6 +1004,8 @@ instance.destroy();
                     <img src="https://s13.postimg.cc/m9c0wcpxz/2017-10-23-logo-refresh.png" alt="Philadelphia Web Design & SEO Agency">
                   </a>
                 </div>
+              </div>
+              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://www.brandnewweb.nl" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/3pxqiuqyf/brandnewweb.png" alt="Brand New Web">
@@ -987,15 +1017,8 @@ instance.destroy();
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
-                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
-                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
-                  </a>
-                </div>
-              </div>
-              <div class="col s12">
-                <div class="patreon-footer-ad">
-                  <a href="#!">
-                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  <a href="https://www.yourlabs.biz" target="_blank" rel="noopener">
+                    <img src="https://avatars0.githubusercontent.com/u/1040547?s=200&v=4" alt="YourLabs Business Service: Digital Strategy Consulting" title="YourLabs Business Service: Digital Strategy Consulting">
                   </a>
                 </div>
               </div>

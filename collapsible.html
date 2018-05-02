@@ -164,25 +164,45 @@
 
       <div id="introduction" class="section scrollspy">
         <p class="caption">
-          Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant to the user.
-        </span>
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
-          </li>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
-          </li>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
-          </li>
-        </ul>
-        <br>
+          Collapsibles are accordion elements that expand when clicked on. They allow you to hide content that is not immediately relevant
+          to the user.
+          </span>
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <div class="collapsible-header">
+                <i class="material-icons">filter_drama</i>First</div>
+              <div class="collapsible-body">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                  ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="material-icons">place</i>Second</div>
+              <div class="collapsible-body">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo consequat.</span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="material-icons">whatshot</i>Third</div>
+              <div class="collapsible-body">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo consequat.</span>
+              </div>
+            </li>
+          </ul>
+          <br>
 
-        <pre><code class="language-markup">
+          <pre><code class="language-markup">
   &lt;ul class="collapsible">
     &lt;li>
       &lt;div class="collapsible-header">&lt;i class="material-icons">filter_drama&lt;/i>First&lt;/div>
@@ -203,8 +223,10 @@
       <div id="intialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.collapsible');
-  var instance = M.Collapsible.init(elem, options);
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -213,21 +235,44 @@
   });
         </code></pre>
 
-        <br><br>
+        <br>
+        <br>
         <h5>Preselected Section</h5>
-        <span>If you want a collapsible with a preopened section just add the <code class="language-markup">active</code> class to the collapsible-header. </span>
+        <span>If you want a collapsible with a preopened section just add the
+          <code class="language-markup">active</code> class to the collapsible-header. </span>
         <ul class="collapsible collapsible-accordion">
           <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+            <div class="collapsible-header">
+              <i class="material-icons">filter_drama</i>First</div>
+            <div class="collapsible-body">
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat.</span>
+            </div>
           </li>
           <li class="active">
-            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+            <div class="collapsible-header">
+              <i class="material-icons">place</i>Second</div>
+            <div class="collapsible-body">
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+              </span>
+            </div>
           </li>
           <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+            <div class="collapsible-header">
+              <i class="material-icons">whatshot</i>Third</div>
+            <div class="collapsible-body">
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+              </span>
+            </div>
           </li>
         </ul>
         <pre><code class="language-markup">
@@ -239,72 +284,76 @@
 
       <div id="options" class="scrollspy section">
         <h3 class="header">Options</h3>
-        <span>You can customize the behavior of each collapsible using these options. For example, you can call a custom function to run when a collapsbile is opened or closed. The function passes the <span class="language-markup">li</span> element that was opened or closed as an argument.</span>
+        <span>You can customize the behavior of each collapsible using these options. For example, you can call a custom function
+          to run when a collapsbile is opened or closed. The function passes the
+          <span class="language-markup">li</span> element that was opened or closed as an argument.</span>
 
-      <table class="striped">
-        <thead>
-          <tr>
+        <table class="striped">
+          <thead>
+            <tr>
               <th>Name</th>
               <th>Type</th>
               <th>Default</th>
               <th>Description</th>
-          </tr>
-        </thead>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td>accordion</td>
-            <td>Boolean</td>
-            <td>true</td>
-            <td>If accordion versus collapsible.</td>
-          </tr>
-          <tr>
-            <td>onOpenStart</td>
-            <td>Function</td>
-            <td>null</td>
-            <td>Callback function called before collapsible is opened.</td>
-          </tr>
-          <tr>
-            <td>onOpenEnd</td>
-            <td>Function</td>
-            <td>null</td>
-            <td>Callback function called after collapsible is opened.</td>
-          </tr>
-          <tr>
-            <td>onCloseStart</td>
-            <td>Function</td>
-            <td>null</td>
-            <td>Callback function called before collapsible is closed.</td>
-          </tr>
-          <tr>
-            <td>onCloseEnd</td>
-            <td>Function</td>
-            <td>null</td>
-            <td>Callback function called after collapsible is closed.</td>
-          </tr>
-          <tr>
-            <td>inDuration</td>
-            <td>Number</td>
-            <td>300</td>
-            <td>Transition in duration in milliseconds.</td>
-          </tr>
-          <tr>
-            <td>outDuration</td>
-            <td>Number</td>
-            <td>300</td>
-            <td>Transition out duration in milliseconds..</td>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            <tr>
+              <td>accordion</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>If accordion versus collapsible.</td>
+            </tr>
+            <tr>
+              <td>onOpenStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called before collapsible is opened.</td>
+            </tr>
+            <tr>
+              <td>onOpenEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called after collapsible is opened.</td>
+            </tr>
+            <tr>
+              <td>onCloseStart</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called before collapsible is closed.</td>
+            </tr>
+            <tr>
+              <td>onCloseEnd</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called after collapsible is closed.</td>
+            </tr>
+            <tr>
+              <td>inDuration</td>
+              <td>Number</td>
+              <td>300</td>
+              <td>Transition in duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>outDuration</td>
+              <td>Number</td>
+              <td>300</td>
+              <td>Transition out duration in milliseconds..</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div id="methods" class="scrollspy section">
         <h3 class="header">Methods</h3>
-        <span>You can programmatically open and close collapsibles through these methods. The second parameter is the 0-based index of the collapsible you want to open.</span>
+        <span>You can programmatically open and close collapsibles through these methods. The second parameter is the 0-based index
+          of the collapsible you want to open.</span>
 
-      <blockquote>
-        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-        <pre><code class="language-javascript col s12">
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
+          <pre><code class="language-javascript col s12">
   var instance = M.Collapsible.getInstance(elem);
 
   /* jQuery Method Calls
@@ -315,85 +364,107 @@
     $('.collapsible').collapsible('methodName', paramName);
   */
         </code></pre>
-      </blockquote>
-      <h5 class="method-header">
-  .open();
-      </h5>
-      <p>Open collapsible section.</p>
-      <h6>Arguments</h6>
-      <p><b>Integer:</b> Nth section to open.</p>
-      <pre><code class="language-javascript col s12">
+        </blockquote>
+        <h5 class="method-header">
+          .open();
+        </h5>
+        <p>Open collapsible section.</p>
+        <h6>Arguments</h6>
+        <p>
+          <b>Integer:</b> Nth section to open.</p>
+        <pre><code class="language-javascript col s12">
 instance.open(3);
       </code></pre>
-      <br>
+        <br>
 
-      <h5 class="method-header">
-  .close();
-      </h5>
-      <p>Close collapsible section.</p>
-      <h6>Arguments</h6>
-      <p><b>Integer:</b> Nth section to close.</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .close();
+        </h5>
+        <p>Close collapsible section.</p>
+        <h6>Arguments</h6>
+        <p>
+          <b>Integer:</b> Nth section to close.</p>
+        <pre><code class="language-javascript col s12">
 instance.close(3);
       </code></pre>
-      <br>
+        <br>
 
-      <h5 class="method-header">
-  .destroy();
-      </h5>
-      <p>Destroy plugin instance and teardown</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
 instance.destroy();
       </code></pre>
-        <br><br>
+        <br>
+        <br>
 
-      <div id="properties" class="scrollspy section">
-        <h3 class="header">Properties</h3>
-        <table class="striped">
-          <thead>
-            <tr>
+        <div id="properties" class="scrollspy section">
+          <h3 class="header">Properties</h3>
+          <table class="striped">
+            <thead>
+              <tr>
                 <th>Name</th>
                 <th>Type</th>
                 <th>Description</th>
-            </tr>
-          </thead>
+              </tr>
+            </thead>
 
-          <tbody>
-            <tr>
-              <td>el</td>
-              <td>Element</td>
-              <td>The DOM element the plugin was initialized with.</td>
-            </tr>
-            <tr>
-              <td>options</td>
-              <td>Object</td>
-              <td>The options the instance was initialized with.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <br><br>
+            <tbody>
+              <tr>
+                <td>el</td>
+                <td>Element</td>
+                <td>The DOM element the plugin was initialized with.</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>Object</td>
+                <td>The options the instance was initialized with.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <br>
 
         <h3 class="header">Collapsible Types</h3>
-        <span>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow one section to stay open at a time, which is called an accordion. See below for a demo of each type.</span>
+        <span>There are two ways a collapsible can behave. It can either allow multiple sections to stay open, or it can only allow
+          one section to stay open at a time, which is called an accordion. See below for a demo of each type.</span>
       </div>
 
       <div id="accordion" class="section scrollspy">
         <div class="row">
-          <div class="col s12 m3"><h5 class="light">Accordion</h5></div>
+          <div class="col s12 m3">
+            <h5 class="light">Accordion</h5>
+          </div>
           <div class="col s12 m9">
             <ul class="collapsible">
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">filter_drama</i>First</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. </span>
+                </div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">place</i>Second</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">whatshot</i>Third</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
             </ul>
           </div>
@@ -404,20 +475,37 @@ instance.destroy();
       </div>
       <div id="expandable" class="section scrollspy">
         <div class="row">
-          <div class="col s12 m3"><h5 class="light">Expandable</h5></div>
+          <div class="col s12 m3">
+            <h5 class="light">Expandable</h5>
+          </div>
           <div class="col s12 m9">
             <ul class="collapsible expandable">
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">filter_drama</i>First</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">place</i>Second</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">whatshot</i>Third</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
             </ul>
           </div>
@@ -437,20 +525,37 @@ var instance = M.Collapsible.init(elem, {
 
       <div id="popout" class="section scrollspy">
         <div class="row">
-          <div class="col s12 m3"><h5 class="light">Popout</h5></div>
+          <div class="col s12 m3">
+            <h5 class="light">Popout</h5>
+          </div>
           <div class="col s12 m9">
             <ul class="collapsible popout">
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">filter_drama</i>First</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">place</i>Second</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                <div class="collapsible-header">
+                  <i class="material-icons">whatshot</i>Third</div>
+                <div class="collapsible-body">
+                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</span>
+                </div>
               </li>
             </ul>
           </div>
@@ -470,18 +575,35 @@ var instance = M.Collapsible.init(elem, {
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#intialization">Initialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#accordion">Accordion</a></li>
-            <li><a href="#expandable">Expandable</a></li>
-            <li><a href="#popout">Popout</a></li>
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#intialization">Initialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
+            <li>
+              <a href="#accordion">Accordion</a>
+            </li>
+            <li>
+              <a href="#expandable">Expandable</a>
+            </li>
+            <li>
+              <a href="#popout">Popout</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -489,7 +611,6 @@ var instance = M.Collapsible.init(elem, {
 
   </div>
 </div>
-
     </main>    <footer class="page-footer docs-footer">
       <div class="container">
         <div class="row" style="margin-bottom: 0;">
@@ -532,6 +653,23 @@ var instance = M.Collapsible.init(elem, {
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
+                  <a href="#!">
+                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://wrappixel.com/">
+                    <img src="https://s14.postimg.cc/6u3tdxw81/wrappixel-logo.jpg" alt="WrapPixel">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
+                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
+                  </a>
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
                   <a href="http://lucidocean.com" target="_blank" rel="noopener">
                     <img src="https://s8.postimg.cc/762csselh/logo_full_size.png" alt="Lucid Ocean">
                   </a>
@@ -546,8 +684,6 @@ var instance = M.Collapsible.init(elem, {
                     <img src="https://s13.postimg.cc/oqns3tzmf/gaggle-mail-logo.png" alt="Gaggle Mail">
                   </a>
                 </div>
-              </div>
-              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://icons8.com/material-icons" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
@@ -558,6 +694,8 @@ var instance = M.Collapsible.init(elem, {
                     <img src="https://s13.postimg.cc/m9c0wcpxz/2017-10-23-logo-refresh.png" alt="Philadelphia Web Design & SEO Agency">
                   </a>
                 </div>
+              </div>
+              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://www.brandnewweb.nl" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/3pxqiuqyf/brandnewweb.png" alt="Brand New Web">
@@ -569,15 +707,8 @@ var instance = M.Collapsible.init(elem, {
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
-                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
-                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
-                  </a>
-                </div>
-              </div>
-              <div class="col s12">
-                <div class="patreon-footer-ad">
-                  <a href="#!">
-                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  <a href="https://www.yourlabs.biz" target="_blank" rel="noopener">
+                    <img src="https://avatars0.githubusercontent.com/u/1040547?s=200&v=4" alt="YourLabs Business Service: Digital Strategy Consulting" title="YourLabs Business Service: Digital Strategy Consulting">
                   </a>
                 </div>
               </div>

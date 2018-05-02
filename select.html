@@ -163,7 +163,9 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="section scrollspy">
-        <p> Select allows user input through specified options. Make sure you wrap it in a <code class="language-markup">.input-field</code> for proper alignment with other text fields. Remember that this is a jQuery plugin so make sure you <a href="#initialization">initialize</a> this in your document ready. </p>
+        <p> Select allows user input through specified options. Make sure you wrap it in a
+          <code class="language-markup">.input-field</code> for proper alignment with other text fields. Remember that this is a jQuery plugin so make sure you
+          <a href="#initialization">initialize</a> this in your document ready. </p>
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -178,7 +180,8 @@
               </div>
               <div class="col s12">
                 <br>
-                <p>You can add the property <code class="language-markup">multiple</code> to get the multiple select and select several options.</p>
+                <p>You can add the property
+                  <code class="language-markup">multiple</code> to get the multiple select and select several options.</p>
               </div>
               <div class="input-field col s12 m6">
                 <select multiple>
@@ -208,7 +211,8 @@
               </div>
               <div class="col s12">
                 <br>
-                <p>You can add icons to your options in any type of select. In the option you add the image source with the <code class="language-markup">data-icon</code> attribute.</p>
+                <p>You can add icons to your options in any type of select. In the option you add the image source with the
+                  <code class="language-markup">data-icon</code> attribute.</p>
               </div>
               <div class="input-field col s12 m6">
                 <select class="icons">
@@ -230,7 +234,8 @@
               </div>
               <div class="col s12">
                 <br>
-                <p>You can add the class <code class="language-markup">browser-default</code> to get the browser default.</p>
+                <p>You can add the class
+                  <code class="language-markup">browser-default</code> to get the browser default.</p>
               </div>
               <div class="col s12 m6">
                 <label>Browser Select</label>
@@ -312,11 +317,14 @@
 
       <div id="initialization" class="scrollspy section">
         <h3 class="header">Initialization</h3>
-        <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically generated select elements your page generates.</p>
+        <p>You must initialize the select element as shown below. In addition, you will need a separate call for any dynamically
+          generated select elements your page generates.</p>
 
         <pre><code class="language-javascript">
-  var elem = document.querySelector('select');
-  var instance = M.FormSelect.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -332,10 +340,10 @@
         <table class="striped">
           <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -357,11 +365,12 @@
         <br>
       </div>
 
-    <div id="methods" class="scrollspy section">
-      <h3 class="header">Methods</h3>
-      <blockquote>
-        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-        <pre><code class="language-javascript col s12">
+      <div id="methods" class="scrollspy section">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
+          <pre><code class="language-javascript col s12">
   var instance = M.FormSelect.getInstance(elem);
 
   /* jQuery Method Calls
@@ -372,36 +381,37 @@
     $('select').formSelect('methodName', paramName);
   */
         </code></pre>
-      </blockquote>
+        </blockquote>
 
-      <h5 class="method-header">
-  .getSelectedValues();
-      </h5>
-      <p>Get selected values in an array.</p>
-      <h6>Return Value</h6>
-      <p><b>Array:</b> Array of selected values.</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .getSelectedValues();
+        </h5>
+        <p>Get selected values in an array.</p>
+        <h6>Return Value</h6>
+        <p>
+          <b>Array:</b> Array of selected values.</p>
+        <pre><code class="language-javascript col s12">
 instance.getSelectedValues();
       </code></pre>
-      <br>
+        <br>
 
-      <h5 class="method-header">
-  .destroy();
-      </h5>
-      <p>Destroy plugin instance and teardown</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
 instance.destroy();
       </code></pre>
-    </div>
+      </div>
 
       <div id="properties" class="scrollspy section">
         <h3 class="header">Properties</h3>
         <table class="striped">
           <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -448,9 +458,12 @@ instance.destroy();
       <div id="disabled" class="section scrollspy">
         <div class="row">
           <div class="col s12">
-            <br><br>
+            <br>
+            <br>
             <h3 class="header">Disabled Styles</h3>
-            <p>You can also add <code class="language-markup">disabled</code> to the select element to make the whole thing disabled. Or if you add <code class="language-markup">disabled</code> to the options, the individual options will be unselectable. </p>
+            <p>You can also add
+              <code class="language-markup">disabled</code> to the select element to make the whole thing disabled. Or if you add
+              <code class="language-markup">disabled</code> to the options, the individual options will be unselectable. </p>
           </div>
           <form class="col s12 m6">
             <div class="row">
@@ -506,16 +519,29 @@ instance.destroy();
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#initialization">Initialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#disabled">Disabled Styles</a></li>
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#initialization">Initialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
+            <li>
+              <a href="#disabled">Disabled Styles</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -523,7 +549,6 @@ instance.destroy();
 
   </div>
 </div>
-
     </main>    <footer class="page-footer docs-footer">
       <div class="container">
         <div class="row" style="margin-bottom: 0;">
@@ -566,6 +591,23 @@ instance.destroy();
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
+                  <a href="#!">
+                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://wrappixel.com/">
+                    <img src="https://s14.postimg.cc/6u3tdxw81/wrappixel-logo.jpg" alt="WrapPixel">
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
+                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
+                  </a>
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
                   <a href="http://lucidocean.com" target="_blank" rel="noopener">
                     <img src="https://s8.postimg.cc/762csselh/logo_full_size.png" alt="Lucid Ocean">
                   </a>
@@ -580,8 +622,6 @@ instance.destroy();
                     <img src="https://s13.postimg.cc/oqns3tzmf/gaggle-mail-logo.png" alt="Gaggle Mail">
                   </a>
                 </div>
-              </div>
-              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://icons8.com/material-icons" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/q0lliz153/icons8-logo-opencollective.png" alt="Icons8">
@@ -592,6 +632,8 @@ instance.destroy();
                     <img src="https://s13.postimg.cc/m9c0wcpxz/2017-10-23-logo-refresh.png" alt="Philadelphia Web Design & SEO Agency">
                   </a>
                 </div>
+              </div>
+              <div class="col s12">
                 <div class="patreon-footer-ad">
                   <a href="https://www.brandnewweb.nl" target="_blank" rel="noopener">
                     <img src="https://s13.postimg.cc/3pxqiuqyf/brandnewweb.png" alt="Brand New Web">
@@ -603,15 +645,8 @@ instance.destroy();
                   </a>
                 </div>
                 <div class="patreon-footer-ad">
-                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
-                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX">
-                  </a>
-                </div>
-              </div>
-              <div class="col s12">
-                <div class="patreon-footer-ad">
-                  <a href="#!">
-                    <img src="https://s14.postimg.cc/m3gkps4r5/Logo_large.png" alt="Persanix">
+                  <a href="https://www.yourlabs.biz" target="_blank" rel="noopener">
+                    <img src="https://avatars0.githubusercontent.com/u/1040547?s=200&v=4" alt="YourLabs Business Service: Digital Strategy Consulting" title="YourLabs Business Service: Digital Strategy Consulting">
                   </a>
                 </div>
               </div>

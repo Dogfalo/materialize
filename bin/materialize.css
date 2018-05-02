@@ -2248,9 +2248,7 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  -webkit-text-decoration: underline dotted;
-     -moz-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -4977,7 +4975,6 @@ small {
   height: auto;
   min-height: 48px;
   line-height: 1.5em;
-  word-break: break-all;
   background-color: #323232;
   padding: 10px 25px;
   font-size: 1.1rem;
@@ -5507,7 +5504,7 @@ button.btn-floating {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.btn-flat.disabled {
+.btn-flat.disabled, .btn-flat.btn-flat[disabled] {
   background-color: transparent !important;
   color: #b3b2b2 !important;
   cursor: default;
@@ -5573,7 +5570,6 @@ button.btn-floating {
 
 .dropdown-content li:focus {
   outline: none;
-  background-color: #dadada;
 }
 
 .dropdown-content li.divider {
@@ -5601,6 +5597,10 @@ button.btn-floating {
   float: left;
   margin: 0 24px 0 0;
   width: 24px;
+}
+
+body.keyboard-focused .dropdown-content li:focus {
+  background-color: #dadada;
 }
 
 .input-field.col .dropdown-content [type="checkbox"] + label {
@@ -7227,16 +7227,16 @@ select:disabled {
   background-color: transparent;
 }
 
+body.keyboard-focused .select-dropdown.dropdown-content li:focus {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
 .select-dropdown.dropdown-content li:hover {
   background-color: rgba(0, 0, 0, 0.08);
 }
 
 .select-dropdown.dropdown-content li.selected {
   background-color: rgba(0, 0, 0, 0.03);
-}
-
-.select-dropdown.dropdown-content li:focus {
-  background-color: rgba(0, 0, 0, 0.08);
 }
 
 .prefix ~ .select-wrapper {
@@ -8472,10 +8472,10 @@ input[type=range]::-ms-thumb {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8528,10 +8528,10 @@ input[type=range]::-ms-thumb {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s;
+  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
   z-index: -1;
 }
 
