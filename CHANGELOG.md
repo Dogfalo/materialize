@@ -2,6 +2,35 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
+## 1.0.0-beta (May 1st, 2018)
+- Autocomplete
+  - Added open and close methods
+  - Fixed bug where Autocomplete would close on click
+
+- Datepicker
+  - Added autoClose option
+
+- Modal
+  - Fixed issue with focus with nested modals
+
+- Select
+  - Removed `active` class on option elements
+  - Fixed bug where `selected` class was not properly removed on option elements
+
+- Sidenav
+  - Destroy method now correctly removes style property
+
+- Text Input
+  - Fixed bug where autofill on chrome overlapped text input
+
+- Toast
+  - Fixed bug where Toast did not respect inDuration option
+
+- Tooltip
+  - Fixed tooltip positioning bug in certain scenarios when html height was less than screen height
+  - Fixed bug where tooltip stayed open on click
+
+
 ## 1.0.0-beta (March 21st, 2018)
 - Autocomplete
   - Now uses dropdown
