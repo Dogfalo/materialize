@@ -3,25 +3,32 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="introduction" class="section scrollspy">
-        <p class="caption">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
+        <p class="caption">Provide value and encourage return visits by introducing users to new features and functionality at contextually
+          relevant moments.</p>
 
-        <p class="caption">Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments. When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
+        <p class="caption">Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments.
+          When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
 
-        <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('close')">Close tap target</a>
-        <br><br>
+        <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('close')">Close tap target</a>
+        <br>
+        <br>
 
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-          <a id="menu" class="btn btn-floating btn-large cyan"><i class="material-icons">menu</i></a>
+          <a id="menu" class="btn btn-floating btn-large cyan">
+            <i class="material-icons">menu</i>
+          </a>
         </div>
 
         <div class="tap-target cyan" data-target="menu">
           <div class="tap-target-content white-text">
             <h5>I am here</h5>
-            <p class="white-text">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
+            <p class="white-text">Provide value and encourage return visits by introducing users to new features and functionality at contextually
+              relevant moments.</p>
           </div>
         </div>
 
-          <pre><code class="language-markup">
+        <pre><code class="language-markup">
   &lt;!-- Element Showed -->
   &lt;a id="menu" class="waves-effect waves-light btn btn-floating" >&lt;i class="material-icons">menu&lt;/i>&lt;/a>
 
@@ -33,13 +40,15 @@
     &lt;/div>
   &lt;/div>
           </code></pre>
-        </div>
+      </div>
 
-        <div id="initialization" class="scrollspy section">
-          <h3 class="header">Initialization</h3>
-          <pre><code class="language-javascript">
-  var elem = document.querySelector('.tap-target');
-  var instance = M.TapTarget.init(elem, options);
+      <div id="initialization" class="scrollspy section">
+        <h3 class="header">Initialization</h3>
+        <pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.tap-target');
+    var instances = M.TapTarget.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -47,45 +56,46 @@
     $('.tap-target').tapTarget();
   });
           </code></pre>
-          <br>
-        </div>
+        <br>
+      </div>
 
 
-        <div id="options" class="scrollspy section">
-          <h3 class="header">Options</h3>
-          <table class="striped">
-            <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Default</th>
-                  <th>Description</th>
-              </tr>
-            </thead>
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
 
-            <tbody>
-              <tr>
-                <td>onOpen</td>
-                <td>Function</td>
-                <td>null</td>
-                <td>Callback function called when Tap Target is opened.</td>
-              </tr>
-              <tr>
-                <td>onClose</td>
-                <td>Function</td>
-                <td>null</td>
-                <td>Callback function called when Tap Target is closed.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <tbody>
+            <tr>
+              <td>onOpen</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called when Tap Target is opened.</td>
+            </tr>
+            <tr>
+              <td>onClose</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback function called when Tap Target is closed.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
 
-        <div id="methods" class="scrollspy section">
-          <h3 class="header">Methods</h3>
-          <blockquote>
-            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-            <pre><code class="language-javascript col s12">
+      <div id="methods" class="scrollspy section">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
+          <pre><code class="language-javascript col s12">
   var instance = M.TapTarget.getInstance(elem);
 
   /* jQuery Method Calls
@@ -96,87 +106,98 @@
     $('.tap-target').tapTarget('methodName', paramName);
   */
             </code></pre>
-          </blockquote>
-          <h5 class="method-header">
-      .open();
-          </h5>
-          <p>Open Tap Target</p>
-          <pre><code class="language-javascript col s12">
+        </blockquote>
+        <h5 class="method-header">
+          .open();
+        </h5>
+        <p>Open Tap Target</p>
+        <pre><code class="language-javascript col s12">
   instance.next();
   instance.next(3); // Move next n times.
           </code></pre>
-          <br>
+        <br>
 
-          <h5 class="method-header">
-      .close();
-          </h5>
-          <p>Close Tap Target</p>
-          <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .close();
+        </h5>
+        <p>Close Tap Target</p>
+        <pre><code class="language-javascript col s12">
   instance.close();
           </code></pre>
-          <br>
+        <br>
 
-          <h5 class="method-header">
-      .destroy();
-          </h5>
-          <p>Destroy plugin instance and teardown</p>
-          <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
   instance.destroy();
           </code></pre>
-        </div>
-
-
-        <div id="properties" class="scrollspy section">
-          <h3 class="header">Properties</h3>
-          <table class="striped">
-            <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Description</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>el</td>
-                <td>Element</td>
-                <td>The DOM element the plugin was initialized with.</td>
-              </tr>
-              <tr>
-                <td>options</td>
-                <td>Object</td>
-                <td>The options the instance was initialized with.</td>
-              </tr>
-              <tr>
-                <td>isOpen</td>
-                <td>Boolean</td>
-                <td>If the tap target is open.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-</div>
-
-<!-- Table of Contents -->
-  <div class="col hide-on-small-only m3 xl3 offset-xl1">
-    <div class="toc-wrapper">
-      <div class="buysellads hide-on-small-only">
-        <!-- CarbonAds Zone Code -->
-        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
       </div>
-      <div style="height: 1px;">
-        <ul class="section table-of-contents">
-          <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#initialization">Initialization</a></li>
-          <li><a href="#options">Options</a></li>
-          <li><a href="#methods">Methods</a></li>
-          <li><a href="#properties">Properties</a></li>
-        </ul>
+
+
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>isOpen</td>
+              <td>Boolean</td>
+              <td>If the tap target is open.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div class="buysellads hide-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
+        </div>
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#initialization">Initialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 </div>

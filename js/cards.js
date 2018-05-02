@@ -1,5 +1,5 @@
-(function ($, anim) {
-  $(document).on('click', '.card', function (e) {
+(function($, anim) {
+  $(document).on('click', '.card', function(e) {
     if ($(this).children('.card-reveal').length) {
       var $card = $(e.target).closest('.card');
       if ($card.data('initialOverflow') === undefined) {
@@ -9,7 +9,10 @@
         );
       }
       let $cardReveal = $(this).find('.card-reveal');
-      if ($(e.target).is($('.card-reveal .card-title')) || $(e.target).is($('.card-reveal .card-title i'))) {
+      if (
+        $(e.target).is($('.card-reveal .card-title')) ||
+        $(e.target).is($('.card-reveal .card-title i'))
+      ) {
         // Make Reveal animate down and display none
         anim({
           targets: $cardReveal[0],
@@ -18,15 +21,13 @@
           easing: 'easeInOutQuad',
           complete: function(anim) {
             let el = anim.animatables[0].target;
-            $(el).css({ display: 'none'});
+            $(el).css({ display: 'none' });
             $card.css('overflow', $card.data('initialOverflow'));
           }
         });
-      }
-      else if ($(e.target).is($('.card .activator')) ||
-               $(e.target).is($('.card .activator i')) ) {
+      } else if ($(e.target).is($('.card .activator')) || $(e.target).is($('.card .activator i'))) {
         $card.css('overflow', 'hidden');
-        $cardReveal.css({ display: 'block'});
+        $cardReveal.css({ display: 'block' });
         anim({
           targets: $cardReveal[0],
           translateY: '-100%',
@@ -36,4 +37,4 @@
       }
     }
   });
-}( cash, M.anime));
+})(cash, M.anime);

@@ -1,4 +1,4 @@
-(function ($, anim) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {
@@ -10,7 +10,6 @@
     inDuration: 300,
     outDuration: 300
   };
-
 
   /**
    * @class
@@ -49,10 +48,11 @@
 
       // Open first active
       let $activeBodies = this.$el.children('li.active').children('.collapsible-body');
-      if (this.options.accordion) { // Handle Accordion
+      if (this.options.accordion) {
+        // Handle Accordion
         $activeBodies.first().css('display', 'block');
-
-      } else { // Handle Expandables
+      } else {
+        // Handle Expandables
         $activeBodies.css('display', 'block');
       }
     }
@@ -175,7 +175,7 @@
             });
 
             // onOpenEnd callback
-            if (typeof (this.options.onOpenEnd) === 'function') {
+            if (typeof this.options.onOpenEnd === 'function') {
               this.options.onOpenEnd.call(this, $collapsibleLi[0]);
             }
           }
@@ -209,7 +209,7 @@
             });
 
             // onCloseEnd callback
-            if (typeof (this.options.onCloseEnd) === 'function') {
+            if (typeof this.options.onCloseEnd === 'function') {
               this.options.onCloseEnd.call(this, $collapsibleLi[0]);
             }
           }
@@ -224,9 +224,8 @@
     open(index) {
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length && !$collapsibleLi[0].classList.contains('active')) {
-
         // onOpenStart callback
-        if (typeof (this.options.onOpenStart) === 'function') {
+        if (typeof this.options.onOpenStart === 'function') {
           this.options.onOpenStart.call(this, $collapsibleLi[0]);
         }
 
@@ -253,9 +252,8 @@
     close(index) {
       let $collapsibleLi = this.$el.children('li').eq(index);
       if ($collapsibleLi.length && $collapsibleLi[0].classList.contains('active')) {
-
         // onCloseStart callback
-        if (typeof (this.options.onCloseStart) === 'function') {
+        if (typeof this.options.onCloseStart === 'function') {
           this.options.onCloseStart.call(this, $collapsibleLi[0]);
         }
 
@@ -271,5 +269,4 @@
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
   }
-
-}(cash, M.anime));
+})(cash, M.anime);

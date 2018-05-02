@@ -8,8 +8,7 @@
           Chips can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.
         </p>
         <div class="chip">
-          <img src="images/yuna.jpg" alt="Contact Person">
-          Jane Doe
+          <img src="images/yuna.jpg" alt="Contact Person"> Jane Doe
         </div>
         <div class="chip">
           Tag
@@ -19,7 +18,7 @@
 
       <div id="contact" class="section scrollspy">
         <h3 class="header">Contacts</h3>
-         <p class="caption">
+        <p class="caption">
           To create a contact chip just add an img inside.
         </p>
         <pre><code class="language-markup">
@@ -32,8 +31,9 @@
 
       <div id="tag" class="section scrollspy">
         <h3 class="header">Tags</h3>
-         <p class="caption">
-          To create a tag chip just add a close icon inside with the class <code class="language-markup">close</code>.
+        <p class="caption">
+          To create a tag chip just add a close icon inside with the class
+          <code class="language-markup">close</code>.
         </p>
         <pre><code class="language-markup">
   &lt;div class="chip">
@@ -45,17 +45,18 @@
 
       <div id="basic" class="section scrollspy">
         <h3 class="header">Javascript Plugin</h4>
-        <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by using your delete button.</p>
-        <div class="chips"></div>
-        <br>
-        <p class="caption">Set initial tags.</p>
-        <div class="chips chips-initial"></div>
-        <br>
-        <p class="caption">Use placeholders and override hint texts.</p>
-        <div class="chips chips-placeholder"></div>
-        <br>
-        <p class="caption">Use autocomplete with chips.</p>
-        <div class="chips chips-autocomplete"></div>
+          <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by
+            using your delete button.</p>
+          <div class="chips"></div>
+          <br>
+          <p class="caption">Set initial tags.</p>
+          <div class="chips chips-initial"></div>
+          <br>
+          <p class="caption">Use placeholders and override hint texts.</p>
+          <div class="chips chips-placeholder"></div>
+          <br>
+          <p class="caption">Use autocomplete with chips.</p>
+          <div class="chips chips-autocomplete"></div>
       </div>
 
       <div id="options" class="section scrollspy">
@@ -73,8 +74,10 @@
         </code></pre>
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.chips');
-  var instance = M.Chips.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.chips');
+    var instances = M.Chips.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -184,7 +187,8 @@
         </p>
 
         <blockquote>
-          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
           <pre><code class="language-javascript col s12">
     var instance = M.Chips.getInstance(elem);
 
@@ -199,11 +203,12 @@
         </blockquote>
 
         <h5 class="method-header">
-  .addChip();
+          .addChip();
         </h5>
         <p>Add chip to input.</p>
         <h6>Arguments</h6>
-        <p><b>Chip:</b> Chip data object.</p>
+        <p>
+          <b>Chip:</b> Chip data object.</p>
         <pre><code class="language-javascript col s12">
   instance.addChip({
     tag: 'chip content',
@@ -213,22 +218,24 @@
         <br>
 
         <h5 class="method-header">
-  .deleteChip();
+          .deleteChip();
         </h5>
         <p>Delete nth chip.</p>
         <h6>Arguments</h6>
-        <p><b>Integer:</b> Index of chip.</p>
+        <p>
+          <b>Integer:</b> Index of chip.</p>
         <pre><code class="language-javascript col s12">
   instance.deleteChip(3); // Delete 3rd chip.
         </code></pre>
         <br>
 
         <h5 class="method-header">
-  .selectChip();
+          .selectChip();
         </h5>
         <p>Select nth chip.</p>
         <h6>Arguments</h6>
-        <p><b>Integer:</b> Index of chip.</p>
+        <p>
+          <b>Integer:</b> Index of chip.</p>
         <pre><code class="language-javascript col s12">
   instance.selectChip(2); // Select 2nd chip
         </code></pre>
@@ -240,9 +247,9 @@
         <table class="striped">
           <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
             </tr>
           </thead>
 
@@ -270,7 +277,8 @@
             <tr>
               <td>autocomplete</td>
               <td>Object</td>
-              <td><a href="autocomplete.html">Autocomplete</a> instance, if any.</td>
+              <td>
+                <a href="autocomplete.html">Autocomplete</a> instance, if any.</td>
             </tr>
           </tbody>
         </table>
@@ -283,16 +291,29 @@
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#contact">Contacts</a></li>
-            <li><a href="#tag">Tags</a></li>
-            <li><a href="#basic">Plugin</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
+            <li>
+              <a href="#contact">Contacts</a>
+            </li>
+            <li>
+              <a href="#tag">Tags</a>
+            </li>
+            <li>
+              <a href="#basic">Plugin</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
           </ul>
         </div>
       </div>

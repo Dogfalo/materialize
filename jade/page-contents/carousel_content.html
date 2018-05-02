@@ -4,18 +4,31 @@
 
       <!--  Introduction Section  -->
       <div id="introduction" class="scrollspy section">
-        <p class="caption">Our Carousel is a robust and versatile component that can be an image slider, to an item carousel, to an onboarding experience. It is touch enabled making it especially smooth to use on mobile.</p>
-         <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p><br>
+        <p class="caption">Our Carousel is a robust and versatile component that can be an image slider, to an item carousel, to an onboarding
+          experience. It is touch enabled making it especially smooth to use on mobile.</p>
+        <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
+        <br>
 
         <div class="carousel">
-          <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
-          <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
-          <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-          <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-          <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
-        </div><br>
+          <a class="carousel-item" href="#one!">
+            <img src="https://lorempixel.com/250/250/nature/1">
+          </a>
+          <a class="carousel-item" href="#two!">
+            <img src="https://lorempixel.com/250/250/nature/2">
+          </a>
+          <a class="carousel-item" href="#three!">
+            <img src="https://lorempixel.com/250/250/nature/3">
+          </a>
+          <a class="carousel-item" href="#four!">
+            <img src="https://lorempixel.com/250/250/nature/4">
+          </a>
+          <a class="carousel-item" href="#five!">
+            <img src="https://lorempixel.com/250/250/nature/5">
+          </a>
+        </div>
+        <br>
 
-      <pre><code class="language-markup">
+        <pre><code class="language-markup">
   &lt;div class="carousel">
     &lt;a class="carousel-item" href="#one!">&lt;img src="https://lorempixel.com/250/250/nature/1">&lt;/a>
     &lt;a class="carousel-item" href="#two!">&lt;img src="https://lorempixel.com/250/250/nature/2">&lt;/a>
@@ -24,14 +37,16 @@
     &lt;a class="carousel-item" href="#five!">&lt;img src="https://lorempixel.com/250/250/nature/5">&lt;/a>
   &lt;/div>
       </code></pre>
-    </div>
+      </div>
 
-    <!--  Options Section  -->
-    <div id="initialization" class="scrollspy section">
-      <h3 class="header">Initialization</h3>
-      <pre><code class="language-javascript">
-  var elem = document.querySelector('.carousel');
-  var instance = M.Carousel.init(elem, options);
+      <!--  Options Section  -->
+      <div id="initialization" class="scrollspy section">
+        <h3 class="header">Initialization</h3>
+        <pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -39,86 +54,87 @@
     $('.carousel').carousel();
   });
       </code></pre>
-      <br>
-    </div>
+        <br>
+      </div>
 
-    <div id="options" class="scrollspy section">
-      <h3 class="header">Options</h3>
-      <table class="striped">
-        <thead>
-          <tr>
+      <div id="options" class="scrollspy section">
+        <h3 class="header">Options</h3>
+        <table class="striped">
+          <thead>
+            <tr>
               <th>Name</th>
               <th>Type</th>
               <th>Default</th>
               <th>Description</th>
-          </tr>
-        </thead>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td>duration</td>
-            <td>Number</td>
-            <td>200</td>
-            <td>Transition duration in milliseconds.</td>
-          </tr>
-          <tr>
-            <td>dist</td>
-            <td>Number</td>
-            <td>-100</td>
-            <td>Perspective zoom. If 0, all items are the same size.</td>
-          </tr>
-          <tr>
-            <td>shift</td>
-            <td>Number</td>
-            <td>0</td>
-            <td>Set the spacing of the center item.</td>
-          </tr>
-          <tr>
-            <td>padding</td>
-            <td>Number</td>
-            <td>0</td>
-            <td>Set the padding between non center items.</td>
-          </tr>
-          <tr>
-            <td>numVisible</td>
-            <td>Number</td>
-            <td>5</td>
-            <td>Set the number of visible items.</td>
-          </tr>
-          <tr>
-            <td>fullWidth</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>Make the carousel a full width slider like the second example.</td>
-          </tr>
-          <tr>
-            <td>indicators</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>Set to true to show indicators.</td>
-          </tr>
-          <tr>
-            <td>noWrap</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>Don't wrap around and cycle through items.</td>
-          </tr>
-          <tr>
-            <td>onCycleTo</td>
-            <td>Function</td>
-            <td>null</td>
-            <td>Callback for when a new slide is cycled to.</td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-    </div>
+          <tbody>
+            <tr>
+              <td>duration</td>
+              <td>Number</td>
+              <td>200</td>
+              <td>Transition duration in milliseconds.</td>
+            </tr>
+            <tr>
+              <td>dist</td>
+              <td>Number</td>
+              <td>-100</td>
+              <td>Perspective zoom. If 0, all items are the same size.</td>
+            </tr>
+            <tr>
+              <td>shift</td>
+              <td>Number</td>
+              <td>0</td>
+              <td>Set the spacing of the center item.</td>
+            </tr>
+            <tr>
+              <td>padding</td>
+              <td>Number</td>
+              <td>0</td>
+              <td>Set the padding between non center items.</td>
+            </tr>
+            <tr>
+              <td>numVisible</td>
+              <td>Number</td>
+              <td>5</td>
+              <td>Set the number of visible items.</td>
+            </tr>
+            <tr>
+              <td>fullWidth</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>Make the carousel a full width slider like the second example.</td>
+            </tr>
+            <tr>
+              <td>indicators</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>Set to true to show indicators.</td>
+            </tr>
+            <tr>
+              <td>noWrap</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>Don't wrap around and cycle through items.</td>
+            </tr>
+            <tr>
+              <td>onCycleTo</td>
+              <td>Function</td>
+              <td>null</td>
+              <td>Callback for when a new slide is cycled to.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
 
-    <div id="methods" class="scrollspy section">
-      <h3 class="header">Methods</h3>
-      <blockquote>
-        <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-        <pre><code class="language-javascript col s12">
+      <div id="methods" class="scrollspy section">
+        <h3 class="header">Methods</h3>
+        <blockquote>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
+          <pre><code class="language-javascript col s12">
   var instance = M.Carousel.getInstance(elem);
 
   /* jQuery Method Calls
@@ -129,106 +145,120 @@
     $('.carousel').carousel('methodName', paramName);
   */
         </code></pre>
-      </blockquote>
-      <h5 class="method-header">
-  .next();
-      </h5>
-      <p>Move carousel to next slide or go forward a given amount of slides.</p>
-      <h6>Arguments</h6>
-      <p><b>Integer (optional):</b> How many times the carousel slides.</p>
-      <pre><code class="language-javascript col s12">
+        </blockquote>
+        <h5 class="method-header">
+          .next();
+        </h5>
+        <p>Move carousel to next slide or go forward a given amount of slides.</p>
+        <h6>Arguments</h6>
+        <p>
+          <b>Integer (optional):</b> How many times the carousel slides.</p>
+        <pre><code class="language-javascript col s12">
 instance.next();
 instance.next(3); // Move next n times.
       </code></pre>
-      <br>
+        <br>
 
-      <h5 class="method-header">
-  .prev();
-      </h5>
-      <p>Move carousel to previous slide or go back a given amount of slides.</p>
-      <h6>Arguments</h6>
-      <p><b>Integer (optional):</b> How many times the carousel slides.</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .prev();
+        </h5>
+        <p>Move carousel to previous slide or go back a given amount of slides.</p>
+        <h6>Arguments</h6>
+        <p>
+          <b>Integer (optional):</b> How many times the carousel slides.</p>
+        <pre><code class="language-javascript col s12">
 instance.prev();
 instance.prev(3); // Move previous n times.
       </code></pre>
-      <br>
+        <br>
 
-      <h5 class="method-header">
-  .set();
-      </h5>
-      <p>Move carousel to nth slide</p>
-      <h6>Arguments</h6>
-      <p><b>Integer:</b> Index of slide.</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .set();
+        </h5>
+        <p>Move carousel to nth slide</p>
+        <h6>Arguments</h6>
+        <p>
+          <b>Integer:</b> Index of slide.</p>
+        <pre><code class="language-javascript col s12">
 instance.set();
 instance.set(3); // Set to nth slide.
       </code></pre>
-      <br>
+        <br>
 
-      <h5 class="method-header">
-  .destroy();
-      </h5>
-      <p>Destroy plugin instance and teardown</p>
-      <pre><code class="language-javascript col s12">
+        <h5 class="method-header">
+          .destroy();
+        </h5>
+        <p>Destroy plugin instance and teardown</p>
+        <pre><code class="language-javascript col s12">
 instance.destroy();
       </code></pre>
-    </div>
+      </div>
 
-    <div id="properties" class="scrollspy section">
-      <h3 class="header">Properties</h3>
-      <table class="striped">
-        <thead>
-          <tr>
+      <div id="properties" class="scrollspy section">
+        <h3 class="header">Properties</h3>
+        <table class="striped">
+          <thead>
+            <tr>
               <th>Name</th>
               <th>Type</th>
               <th>Description</th>
-          </tr>
-        </thead>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td>el</td>
-            <td>Element</td>
-            <td>The DOM element the plugin was initialized with.</td>
-          </tr>
-          <tr>
-            <td>options</td>
-            <td>Object</td>
-            <td>The options the instance was initialized with.</td>
-          </tr>
-          <tr>
-            <td>pressed</td>
-            <td>Boolean</td>
-            <td>If the carousel is being clicked or tapped.</td>
-          </tr>
-          <tr>
-            <td>dragged</td>
-            <td>Boolean</td>
-            <td>If the carousel is currently being dragged.</td>
-          </tr>
-          <tr>
-            <td>center</td>
-            <td>Number</td>
-            <td>The index of the center carousel item.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <tbody>
+            <tr>
+              <td>el</td>
+              <td>Element</td>
+              <td>The DOM element the plugin was initialized with.</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>The options the instance was initialized with.</td>
+            </tr>
+            <tr>
+              <td>pressed</td>
+              <td>Boolean</td>
+              <td>If the carousel is being clicked or tapped.</td>
+            </tr>
+            <tr>
+              <td>dragged</td>
+              <td>Boolean</td>
+              <td>If the carousel is currently being dragged.</td>
+            </tr>
+            <tr>
+              <td>center</td>
+              <td>Number</td>
+              <td>The index of the center carousel item.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
 
       <!--  Slider Section  -->
       <div id="slider" class="scrollspy section">
         <h3 class="header">Full Width Slider</h3>
-        <p class="caption">Our carousel has a full width option that makes it into a simple and elegant image carousel. You can also have indicators that show up on the bottom of the slider. </p>
-        <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p><br>
+        <p class="caption">Our carousel has a full width option that makes it into a simple and elegant image carousel. You can also have indicators
+          that show up on the bottom of the slider. </p>
+        <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
+        <br>
 
         <div class="carousel carousel-slider">
-          <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
-          <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
-          <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
-          <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
-        </div><br>
+          <a class="carousel-item" href="#one!">
+            <img src="https://lorempixel.com/800/400/food/1">
+          </a>
+          <a class="carousel-item" href="#two!">
+            <img src="https://lorempixel.com/800/400/food/2">
+          </a>
+          <a class="carousel-item" href="#three!">
+            <img src="https://lorempixel.com/800/400/food/3">
+          </a>
+          <a class="carousel-item" href="#four!">
+            <img src="https://lorempixel.com/800/400/food/4">
+          </a>
+        </div>
+        <br>
 
         <pre><code class="language-markup">
   &lt;div class="carousel carousel-slider">
@@ -255,7 +285,9 @@ instance.destroy();
       <!-- Special Options Section  -->
       <div id="special" class="scrollspy section">
         <h3 class="header">Special Options</h3>
-        <p class="caption">The carousel doesn't only support images but also allows you to make content carousels. You can add fixed items to your carousel by adding a div with the class <code class="language-markup">carousel-fixed-item</code> and adding your fixed content in there.</p>
+        <p class="caption">The carousel doesn't only support images but also allows you to make content carousels. You can add fixed items to
+          your carousel by adding a div with the class
+          <code class="language-markup">carousel-fixed-item</code> and adding your fixed content in there.</p>
         <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
         <br>
 
@@ -279,7 +311,8 @@ instance.destroy();
             <h2>Fourth Panel</h2>
             <p class="white-text">This is your fourth panel</p>
           </div>
-        </div><br>
+        </div>
+        <br>
         <pre><code class="language-markup">
   &lt;div class="carousel carousel-slider center">
     &lt;div class="carousel-fixed-item center">
@@ -328,17 +361,32 @@ instance.destroy();
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#initialization">Initialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#slider">Full Width Slider</a></li>
-            <li><a href="#special">Special Options</a></li>
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#initialization">Initialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
+            <li>
+              <a href="#slider">Full Width Slider</a>
+            </li>
+            <li>
+              <a href="#special">Special Options</a>
+            </li>
           </ul>
         </div>
       </div>

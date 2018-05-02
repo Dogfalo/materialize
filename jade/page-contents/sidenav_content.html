@@ -5,7 +5,9 @@
 
       <div id="structure" class="section scrollspy">
         <p class="caption">
-          This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you have to use two copies of the same UL.
+          This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a
+          demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you
+          have to use two copies of the same UL.
         </p>
         <p>
           <strong>Please note that the sidenav HTML should not be contained within the navbar HTML.</strong>
@@ -14,19 +16,38 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger btn">Side nav demo</a>
 
         <ul id="slide-out" class="sidenav">
-          <li><div class="user-view">
-            <div class="background">
-              <img src="images/office.jpg">
+          <li>
+            <div class="user-view">
+              <div class="background">
+                <img src="images/office.jpg">
+              </div>
+              <a href="#user">
+                <img class="circle" src="images/yuna.jpg">
+              </a>
+              <a href="#name">
+                <span class="white-text name">John Doe</span>
+              </a>
+              <a href="#email">
+                <span class="white-text email">jdandturk@gmail.com</span>
+              </a>
             </div>
-            <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-            <a href="#name"><span class="white-text name">John Doe</span></a>
-            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-          </div></li>
-          <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-          <li><a href="#!">Second Link</a></li>
-          <li><div class="divider"></div></li>
-          <li><a class="subheader">Subheader</a></li>
-          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+          </li>
+          <li>
+            <a href="#!">
+              <i class="material-icons">cloud</i>First Link With Icon</a>
+          </li>
+          <li>
+            <a href="#!">Second Link</a>
+          </li>
+          <li>
+            <div class="divider"></div>
+          </li>
+          <li>
+            <a class="subheader">Subheader</a>
+          </li>
+          <li>
+            <a class="waves-effect" href="#!">Third Link With Waves</a>
+          </li>
         </ul>
 
         <br/>
@@ -57,8 +78,10 @@
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript col s12">
-  var elem = document.querySelector('.sidenav');
-  var instance = M.Sidenav.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
 
   // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
   // var collapsibleElem = document.querySelector('.collapsible');
@@ -149,7 +172,8 @@
       <div id="methods" class="scrollspy section">
         <h3 class="header">Methods</h3>
         <blockquote>
-          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
           <pre><code class="language-javascript col s12">
   var instance = M.Sidenav.getInstance(elem);
 
@@ -233,9 +257,11 @@ instance.destroy();
 
 
       <div id="close-trigger" class="section scrollspy">
-          <h3 class="header">Close Trigger</h3>
-          <p>Add the class <code class="language-markup">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is useful in Single Page Apps where the page does not refresh on link clicks.</p>
-          <pre><code class="language-markup col s12">
+        <h3 class="header">Close Trigger</h3>
+        <p>Add the class
+          <code class="language-markup">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is
+          useful in Single Page Apps where the page does not refresh on link clicks.</p>
+        <pre><code class="language-markup col s12">
   &lt;ul id="slide-out" class="sidenav">
       &lt;li>&lt;a class="sidenav-close" href="#!">Clicking this will close Sidenav&lt;/a>&lt;/li>
   &lt;/ul>
@@ -251,8 +277,8 @@ instance.destroy();
         </p>
 
         <h4>Dropdown HTML Structure</h4>
-          <p>Add collapsible menus to your sidebar.</p>
-          <pre><code class="language-markup col s12">
+        <p>Add collapsible menus to your sidebar.</p>
+        <pre><code class="language-markup col s12">
     &lt;ul id="slide-out" class="sidenav">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
@@ -284,30 +310,37 @@ instance.destroy();
       &lt;/ul>
     &lt;/ul>
     &lt;a href="#" data-target="slide-out" class="sidenav-trigger">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
-          </code></pre><br>
+          </code></pre>
+        <br>
 
-          <h4>Fullscreen HTML Structure</h4>
-          <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class <code class="language-markup">show-on-large</code> to the <code class="language-markup">.sidenav-trigger</code>. </p>
+        <h4>Fullscreen HTML Structure</h4>
+        <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class
+          <code class="language-markup">show-on-large</code> to the
+          <code class="language-markup">.sidenav-trigger</code>. </p>
 
-          <pre><code class="language-markup col s12">
+        <pre><code class="language-markup col s12">
     &lt;ul id="slide-out" class="sidenav">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
     &lt;a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
-          </code></pre><br>
+          </code></pre>
+        <br>
 
-          <h4>Fixed HTML Structure</h4>
-          <p>Add the class <code class="language-markup">sidenav-fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens. Our sidenav on the left is an example of this.</p>
-          <pre><code class="language-markup col s12">
+        <h4>Fixed HTML Structure</h4>
+        <p>Add the class
+          <code class="language-markup">sidenav-fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens.
+          Our sidenav on the left is an example of this.</p>
+        <pre><code class="language-markup col s12">
     &lt;ul id="slide-out" class="sidenav sidenav-fixed">
       &lt;li>&lt;a href="#!">First Sidebar Link&lt;/a>&lt;/li>
       &lt;li>&lt;a href="#!">Second Sidebar Link&lt;/a>&lt;/li>
     &lt;/ul>
     &lt;a href="#" data-target="slide-out" class="sidenav-trigger">&lt;i class="material-icons">menu&lt;/i>&lt;/a>
           </code></pre>
-          <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding on where the offset content will be, which in our case is in header, main and footer.</p>
-          <pre><code class="language-css col s12">
+        <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding
+          on where the offset content will be, which in our case is in header, main and footer.</p>
+        <pre><code class="language-css col s12">
     header, main, footer {
       padding-left: 300px;
     }
@@ -318,25 +351,40 @@ instance.destroy();
       }
     }
           </code></pre>
-        </div>
       </div>
+    </div>
 
     <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#structure">Structure</a></li>
-            <li><a href="#initialization">Intialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#close-trigger">Close Trigger</a></li>
-            <li><a href="#variations">Variations</a></li>
+            <li>
+              <a href="#structure">Structure</a>
+            </li>
+            <li>
+              <a href="#initialization">Intialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
+            <li>
+              <a href="#close-trigger">Close Trigger</a>
+            </li>
+            <li>
+              <a href="#variations">Variations</a>
+            </li>
           </ul>
         </div>
       </div>

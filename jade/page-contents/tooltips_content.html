@@ -4,9 +4,11 @@
 
       <!-- Tooltip Section -->
       <div id="introduction" class="scrollspy section">
-        <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can use a tooltip to give people clarification on its function.</p>
+        <p>Tooltips are small, interactive, textual hints for mainly graphical elements. When using icons for actions you can
+          use a tooltip to give people clarification on its function.</p>
         <div class="row">
-          <a href="#!" class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-html="true" data-position="bottom" data-tooltip="I am tooltip"> Bottom</a>
+          <a href="#!" class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-html="true" data-position="bottom" data-tooltip="I am tooltip">
+          Bottom</a>
           <a href="#!" class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="top" data-tooltip="I am a tooltip"> Top</a>
           <a href="#!" class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="left" data-tooltip="I am a tooltip"> Left</a>
           <a href="#!" class="btn tooltipped col s4 offset-s4 l2 offset-l1" data-position="right" data-tooltip="I am a tooltip"> Right</a>
@@ -23,10 +25,12 @@
 
 
       <div id="initialization" class="scrollspy section">
-        <h3 class="header" >Initialization</h3>
+        <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var elem = document.querySelector('.tooltipped');
-  var instance = M.Tooltip.init(elem, options);
+  document.addEventListener('DOMContentLoaded' function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, options);
+  });
 
   // Or with jQuery
 
@@ -106,7 +110,8 @@
       <div id="methods" class="section scrollspy">
         <h3 class="header">Methods</h3>
         <blockquote>
-          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+          <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
+            instance like this: </p>
           <pre><code class="language-javascript col s12">
   var instance = M.Tooltip.getInstance(elem);
 
@@ -193,15 +198,26 @@ instance.destroy();
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+            id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#initialization">Initialization</a></li>
-            <li><a href="#options">Options</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#properties">Properties</a></li>
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#initialization">Initialization</a>
+            </li>
+            <li>
+              <a href="#options">Options</a>
+            </li>
+            <li>
+              <a href="#methods">Methods</a>
+            </li>
+            <li>
+              <a href="#properties">Properties</a>
+            </li>
           </ul>
         </div>
       </div>

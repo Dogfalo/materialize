@@ -1,8 +1,7 @@
-(function ($, anim) {
+(function($, anim) {
   'use strict';
 
   let _defaults = {};
-
 
   /**
    * @class
@@ -65,11 +64,13 @@
     _setupEventHandlers() {
       this._handleRangeChangeBound = this._handleRangeChange.bind(this);
       this._handleRangeMousedownTouchstartBound = this._handleRangeMousedownTouchstart.bind(this);
-      this._handleRangeInputMousemoveTouchmoveBound = this._handleRangeInputMousemoveTouchmove.bind(this);
+      this._handleRangeInputMousemoveTouchmoveBound = this._handleRangeInputMousemoveTouchmove.bind(
+        this
+      );
       this._handleRangeMouseupTouchendBound = this._handleRangeMouseupTouchend.bind(this);
-      this._handleRangeBlurMouseoutTouchleaveBound = this._handleRangeBlurMouseoutTouchleave.bind(this);
-
-
+      this._handleRangeBlurMouseoutTouchleaveBound = this._handleRangeBlurMouseoutTouchleave.bind(
+        this
+      );
 
       this.el.addEventListener('change', this._handleRangeChangeBound);
 
@@ -121,7 +122,9 @@
       }
 
       let offsetLeft = this._calcRangeOffset();
-      $(this.thumb).addClass('active').css('left', offsetLeft + 'px');
+      $(this.thumb)
+        .addClass('active')
+        .css('left', offsetLeft + 'px');
     }
 
     /**
@@ -141,7 +144,9 @@
 
       if (e.type !== 'input') {
         let offsetLeft = this._calcRangeOffset();
-        $(this.thumb).addClass('active').css('left', offsetLeft + 'px');
+        $(this.thumb)
+          .addClass('active')
+          .css('left', offsetLeft + 'px');
       }
     }
 
@@ -155,7 +160,9 @@
         }
 
         let offsetLeft = this._calcRangeOffset();
-        $(this.thumb).addClass('active').css('left', offsetLeft + 'px');
+        $(this.thumb)
+          .addClass('active')
+          .css('left', offsetLeft + 'px');
         $(this.value).html(this.$el.val());
       }
     }
@@ -174,7 +181,7 @@
     _handleRangeBlurMouseoutTouchleave() {
       if (!this._mousedown) {
         let paddingLeft = parseInt(this.$el.css('padding-left'));
-        let marginLeft = (7 + paddingLeft) + 'px';
+        let marginLeft = 7 + paddingLeft + 'px';
 
         if ($(this.thumb).hasClass('active')) {
           anim.remove(this.thumb);
@@ -215,8 +222,12 @@
      * morph thumb into bubble
      */
     _showRangeBubble() {
-      let paddingLeft = parseInt($(this.thumb).parent().css('padding-left'));
-      let marginLeft = (-7 + paddingLeft) + 'px'; // TODO: fix magic number?
+      let paddingLeft = parseInt(
+        $(this.thumb)
+          .parent()
+          .css('padding-left')
+      );
+      let marginLeft = -7 + paddingLeft + 'px'; // TODO: fix magic number?
       anim.remove(this.thumb);
       anim({
         targets: this.thumb,
@@ -249,4 +260,4 @@
   }
 
   Range.init($('input[type=range]'));
-}(cash, M.anime));
+})(cash, M.anime);

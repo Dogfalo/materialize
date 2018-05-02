@@ -125,6 +125,12 @@ select:disabled {
   background-color: transparent;
 }
 
+body.keyboard-focused {
+  .select-dropdown.dropdown-content li:focus {
+    background-color: $select-option-focus;
+  }
+}
+
 .select-dropdown.dropdown-content {
   li {
     &:hover {
@@ -133,10 +139,6 @@ select:disabled {
 
     &.selected {
       background-color: $select-option-selected;
-    }
-
-    &:focus {
-      background-color: $select-option-focus;
     }
   }
 }
