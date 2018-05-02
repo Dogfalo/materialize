@@ -7,3 +7,5 @@ package.json
 package.json.lock
 bin/
 dist/
+extras/
+css/
