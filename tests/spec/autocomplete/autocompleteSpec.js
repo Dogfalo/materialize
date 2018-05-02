@@ -46,7 +46,7 @@ describe("Autocomplete Plugin", function () {
       var $limited = $('#limited-autocomplete');
       var data = {};
       for (var i = 100; i >= 0; i--) {
-        var randString = 'a' + Math.random().toString(36).substring(20);
+        var randString = 'a' + Math.random().toString(36).substring(2);
         data[randString] = null;
       }
 
@@ -57,14 +57,44 @@ describe("Autocomplete Plugin", function () {
 
       $limited.focus();
       $limited.val('a');
-      $limited.trigger('keyup');
+      keyup($limited[0], 65);
 
       var $autocompleteEl = $limited.parent().find('.autocomplete-content');
       setTimeout(function() {
-        expect($autocompleteEl.children().length).toBeLessThan(21, 'Results should be at max the set limit');
+        expect($autocompleteEl.children().length).toEqual(20, 'Results should be at max the set limit');
         done();
       }, 200);
 
+    });
+
+    it("should open correctly from typing", function (done) {
+      var $normal = $('#normal-autocomplete');
+      var $parent = $normal.parent();
+      var $autocompleteEl = $normal.parent().find('.autocomplete-content');
+
+      $normal.focus();
+      $normal.val('e');
+      keyup($normal[0], 69);
+
+      setTimeout(function() {
+        expect($autocompleteEl.children().length).toEqual(2, 'Results should show dropdown on text input');
+        done();
+      }, 200);
+    });
+
+  it("should open correctly from keyboard focus", function (done) {
+      var $normal = $('#normal-autocomplete');
+      var $parent = $normal.parent();
+      var $autocompleteEl = $normal.parent().find('.autocomplete-content');
+
+      $normal.val('e');
+      keyup($normal[0], 9);
+      focus($normal[0]);
+
+      setTimeout(function() {
+        expect($autocompleteEl.children().length).toEqual(2, 'Results should show dropdown on text input');
+        done();
+      }, 200);
     });
   });
 
