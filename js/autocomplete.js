@@ -201,7 +201,7 @@
 
       // Check if the input isn't empty
       // Check if focus triggered by tab
-      if (this.oldVal !== val && M.tabPressed) {
+      if (this.oldVal !== val && (M.tabPressed || e.type !== 'focus')) {
         this.open();
       }
 
