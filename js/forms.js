@@ -513,6 +513,45 @@
 
       var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
+      //Added to search
+      var applySeachInList = function () {
+
+          var ul = $(this).closest('ul');
+          var searchValue = $(this).val();
+          var options = ul.find('li')
+            .find('span');
+
+          options.each(function (i, option) {
+              if (typeof ($(option).text()) == 'string') {
+                  var liValue = $(option).text().toLowerCase();
+
+                  if (liValue.indexOf(searchValue.toLowerCase()) === -1) {
+                      $(option).hide();
+                      $(option).parent().hide();
+                  } else {
+                      $(option).show();
+                      $(option).parent().show();
+                  }
+              }
+          });
+      }
+
+      //Added to search
+      var setSearchableOption = function () {
+          var placeholder = $select.attr('searchable');
+          var element = $('<span><input type="text" class="search" style="margin: 5px 0px 16px 15px; width: 96%;" placeholder="' + placeholder + '"></span>');
+          options.append(element);
+          element.find('.search').keyup(applySeachInList);
+      }
+
+      //Added to search
+      var searchable = $select.attr('searchable') ? true : false;
+
+      //Added to search
+      if (searchable) {
+          setSearchableOption();
+      }
+
       // Function that renders and appends the option taking into
       // account type and possible image icon.
       var appendOptionWithIcon = function(select, option, type) {
@@ -642,14 +681,27 @@
 
         $(this).find(' ~ .dropdown-content span').off('click.dropdown-item');
         $(this).find(' ~ .dropdown-content span').on('click.dropdown-item', function () {
-          $(that).trigger('close');
+          if (!multiple) {
+            $(this).trigger('close');
+          }
         });
 
         var container = $(this).find(' ~ .dropdown-content');
-        if (!multiple && !container.is(e.target)) {
+        var filterInput = $(this).find(' ~ .dropdown-content input.search');
+        if (!multiple && !container.is(e.target) && !filterInput.is(e.relatedTarget)) {
           $(this).trigger('close');
         }
         options.find('li.selected').removeClass('selected');
+      });
+
+      var container = $newSelect.find(' ~ .dropdown-content');
+      container.find('span input.search').on('click', function(e){
+         e.preventDefault();
+         e.stopPropagation();
+      });
+
+      container.find('span').on('click', function(e){
+         $($newSelect).trigger('close');
       });
 
       options.hover(function() {
