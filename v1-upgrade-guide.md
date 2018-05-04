@@ -5,7 +5,7 @@
 - Added function `M.AutoInit()` that initializes all componenets
 
 ## Character Counter
-- Automatic initialization removed, initialize it manually as shown in documentationn
+- Automatic initialization removed, initialize it manually as shown in documentation
 
 
 ## Checkboxes and Radio Buttons
