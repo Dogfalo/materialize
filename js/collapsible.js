@@ -146,7 +146,7 @@
         $body.css({
           display: 'block',
           overflow: 'hidden',
-          height: 0,
+          height: '',
           paddingTop: '',
           paddingBottom: ''
         });
@@ -155,6 +155,7 @@
         let pBottom = $body.css('padding-bottom');
         let finalHeight = $body[0].scrollHeight;
         $body.css({
+          height: 0,
           paddingTop: 0,
           paddingBottom: 0
         });
