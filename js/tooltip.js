@@ -8,7 +8,8 @@
         delay: 350,
         tooltip: '',
         position: 'bottom',
-        html: false
+        html: false,
+        backdropClass: '',
       };
 
       // Remove tooltip from the activator
@@ -165,6 +166,8 @@
                 marginLeft: (tooltipWidth/2) - (backdropOffsetWidth/2)
               });
             }
+
+            backdrop.addClass(backdropClass);
 
             // Set tooptip css placement
             tooltipEl.css({
