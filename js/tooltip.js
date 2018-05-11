@@ -52,6 +52,7 @@
           tooltipText = origin.attr('data-tooltip');
           tooltipText = (tooltipText === undefined || tooltipText === '') ?
               options.tooltip : tooltipText;
+          backdropClass = options.backdropClass;
         };
         setAttributes();
 
