@@ -95,10 +95,11 @@
       this.el.removeEventListener('blur', this._handleBlurBound, true);
     }
 
-    open(isManual = true) {
+    open(isManual) {
       if (this.isOpen) {
         return;
       }
+      isManual = isManual === undefined ? true : undefined; // Default value true
       this.isOpen = true;
       // Update tooltip content with HTML attribute options
       this.options = $.extend({}, this.options, this._getAttributeOptions());
