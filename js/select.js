@@ -132,6 +132,7 @@
           $(this.dropdownOptions).find('li').removeClass('active');
           $(option).toggleClass('active');
           this.input.value = option.textContent;
+          this.$el.prop('selected', false)
         }
 
         this._activateOption($(this.dropdownOptions), option);
