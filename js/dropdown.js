@@ -392,7 +392,10 @@
       };
 
       // Countainer here will be closest ancestor with overflow: hidden
-      let closestOverflowParent = this.dropdownEl.offsetParent;
+      let closestOverflowParent = !!this.dropdownEl.offsetParent
+        ? this.dropdownEl.offsetParent
+        : this.dropdownEl.parentNode;
+
       let alignments = M.checkPossibleAlignments(
         this.el,
         closestOverflowParent,
