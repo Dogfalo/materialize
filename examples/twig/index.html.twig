@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.parallax').parallax();
+            $('.dropdown-trigger').dropdown();
+        });
+    </script>
+    <script src="{{ asset('build/js/app.js') }}"></script>
+{% endblock %}
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    <h1>We use materialize framework</h1>
+
+    <h3> here exemple of buttons </h3>
+    <a href="https://materializecss.com/collections.html" class="waves-effect waves-light btn">More info in materialize website</a>
+    <a class="waves-effect waves-light btn"><i class="material-icons left">button left</i>button</a>
+    <a class="waves-effect waves-light btn"><i class="material-icons right">button right</i>button</a>
+
+
+    <h3> here exemple of breadcrumb </h3>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="col s12">
+                <a href="#!" class="breadcrumb">First</a>
+                <a href="#!" class="breadcrumb">Second</a>
+                <a href="#!" class="breadcrumb">Third</a>
+            </div>
+        </div>
+    </nav>
+
+    <h3> here exemple of cards </h3>
+    <div class="row">
+        <div class="col s12 m7">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://materializecss.com/images/parallax1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3> Dropdown button </h3>
+
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!">three</a></li>
+        <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+        <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+    </ul>
+
+
+    <h3> Responsive table </h3>
+    <table class="responsive-table highlight centered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Item Name</th>
+            <th>Item Price</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+        </tr>
+        <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+        </tr>
+        <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>Parallax effect here</h3>
+    <div class="parallax-container">
+        <div class="parallax"><img src="https://materializecss.com/images/parallax1.jpg" style="opacity: 1; transform: translate3d(-50%, 234.338px, 0px);"></div>
+    </div>
+
+</div>
+{% endblock %}
