@@ -346,6 +346,7 @@
     }
 
     updateTabIndicator() {
+      this._setTabsAndTabWidth();
       this._animateIndicator(this.index);
     }
 
