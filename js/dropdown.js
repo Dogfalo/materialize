@@ -15,6 +15,7 @@
     onOpenEnd: null,
     onCloseStart: null,
     onCloseEnd: null,
+    onTextInput: null,
     onItemClick: null
   };
 
@@ -270,7 +271,8 @@
 
           if (
             !!this.dropdownEl.children[newFocusedIndex] &&
-            this.dropdownEl.children[newFocusedIndex].tabIndex !== -1
+            this.dropdownEl.children[newFocusedIndex].tabIndex !== -1 &&
+            !this.dropdownEl.children[newFocusedIndex].classList.contains('hide')
           ) {
             foundNewIndex = true;
             break;
@@ -303,13 +305,18 @@
         this.close();
       }
 
-      // CASE WHEN USER TYPE LETTERS
-      let letter = String.fromCharCode(e.which).toLowerCase(),
-        nonLetters = [9, 13, 27, 38, 40];
-      if (letter && nonLetters.indexOf(e.which) === -1) {
-        this.filterQuery.push(letter);
+      let newOptionEl = null;
+      // onTextInput callback
+      if (typeof this.options.onTextInput === 'function') {
+        newOptionEl = this.options.onTextInput.call(this, this.el, e);
+      } else {
+        // CASE WHEN USER TYPE LETTERS
+        let letter = String.fromCharCode(e.which).toLowerCase(),
+          nonLetters = [9, 13, 27, 38, 40];
+        if (letter && nonLetters.indexOf(e.which) === -1) {
+          this.filterQuery.push(letter);
 
-        let string = this.filterQuery.join(''),
+          let string = this.filterQuery.join('');
           newOptionEl = $(this.dropdownEl)
             .find('li')
             .filter((el) => {
@@ -320,14 +327,15 @@
                   .indexOf(string) === 0
               );
             })[0];
-
-        if (newOptionEl) {
-          this.focusedIndex = $(newOptionEl).index();
-          this._focusFocusedItem();
         }
+
+        this.filterTimeout = setTimeout(this._resetFilterQueryBound, 1000);
       }
 
-      this.filterTimeout = setTimeout(this._resetFilterQueryBound, 1000);
+      if (newOptionEl) {
+        this.focusedIndex = $(newOptionEl).index();
+        this._focusFocusedItem();
+      }
     }
 
     /**
