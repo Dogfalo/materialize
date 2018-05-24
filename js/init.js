@@ -48,11 +48,8 @@
         : 0;
       var bottomOffset = footerOffset - socialHeight - tocHeight - tocWrapperHeight;
 
-      var pushpinObj = {
-        bottom: bottomOffset
-      };
-
       if ($('nav').length) {
+        console.log('Nav pushpin', $('nav').height());
         $('.toc-wrapper').pushpin({
           top: $('nav').height(),
           bottom: bottomOffset
@@ -68,8 +65,6 @@
           bottom: bottomOffset
         });
       }
-
-      $('.toc-wrapper').pushpin(pushpinObj);
     }, 100);
 
     // BuySellAds Detection
