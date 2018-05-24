@@ -150,6 +150,51 @@ describe("Select Plugin", function () {
     });
   });
 
+  describe("Filtered Select", function () {
+    var browserSelect, filteredInput, filteredDropdown;
+
+    beforeEach(function() {
+      browserSelect = $('select.filtered');
+    });
+
+    it("should open dropdown and filter option list visually", function(done) {
+      filteredInput = browserSelect.parent().find('input.select-dropdown');
+      filteredDropdown = browserSelect.parent().find('ul.filtered-select-dropdown');
+      filter = browserSelect.parent().find('ul.filtered-select-dropdown li.filter input');
+
+      expect(filteredInput).toExist('Should dynamically generate select dropdown structure.');
+      expect(filteredDropdown).toExist('Should dynamically generate select dropdown structure.');
+      expect(filter).toExist('Should dynamically generate input element for filtering options.');
+      expect(filteredInput).toBeVisible('Should be visible before dropdown is opened.');
+      expect(filteredDropdown).toBeHidden('Should be hidden before dropdown is opened.');
+
+      click(filteredInput[0]);
+
+      setTimeout(function() {
+        expect(filteredDropdown).toBeVisible('Should be visible after opening.');
+
+        var firstOption = filteredDropdown.find('li:not(.disabled)').first();
+        var secondOption = filteredDropdown.find('li:not(.disabled)').eq(1);
+        var thirdOption = filteredDropdown.find('li:not(.disabled)').eq(2);
+
+        expect(firstOption.hasClass('hide')).toEqual(false, 'Option 1 should be visible by default.');
+        expect(secondOption.hasClass('hide')).toEqual(false, 'Option 2 should be visible by default.');
+        expect(thirdOption.hasClass('hide')).toEqual(false, 'Option 3 should be visible by default.');
+        expect(filter.val()).toEqual('', 'Filter value should be empty after dropdown is opened.');
+
+        filter.val('2');
+        keyup(filter[0], 50);
+
+        setTimeout(function() {
+          expect(firstOption.hasClass('hide')).toEqual(true, 'Non-matching option should be hidden.');
+          expect(secondOption.hasClass('hide')).toEqual(false, 'Matching option should be visible.');
+          expect(thirdOption.hasClass('hide')).toEqual(true, 'Non-matching option should be hidden.');
+          done();
+        }, 400);
+      }, 400);
+    });
+  });
+
   describe("Optgroup Select", function () {
     let browserSelect, optInput, optDropdown, optionInOptgroup, optionAfterOptGroup, selectInstance;
 
