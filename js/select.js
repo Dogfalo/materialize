@@ -201,6 +201,7 @@
 
         this.dropdown.focusedIndex = 0;
         this.dropdown._focusFocusedItem();
+        this.dropdown.recalculateDimensions();
         this.filter.focus();
       }
     }
