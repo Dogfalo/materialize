@@ -3,8 +3,8 @@
 ***************/
 .table-of-contents {
   &.fixed {
-      position: fixed;
-    }
+    position: fixed;
+  }
 
   li {
     padding: 2px 0;
@@ -16,7 +16,7 @@
     padding-left: 16px;
     height: 1.5rem;
     line-height: 1.5rem;
-    letter-spacing: .4;
+    letter-spacing: 0.4;
     display: inline-block;
 
     &:hover {

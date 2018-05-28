@@ -9,7 +9,9 @@
     padding-left: 10px;
   }
 
-  input.file-path { width: 100%; }
+  input.file-path {
+    width: 100%;
+  }
 
   .btn {
     float: left;
@@ -21,8 +23,7 @@
     cursor: pointer;
   }
 
-  input[type=file] {
-
+  input[type="file"] {
     // Needed to override webkit button
     &::-webkit-file-upload-button {
       display: none;

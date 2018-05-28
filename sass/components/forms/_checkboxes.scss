@@ -26,7 +26,7 @@
   /* checkbox aspect */
   + span:not(.lever):before,
   &:not(.filled-in) + span:not(.lever):after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -36,7 +36,7 @@
     border: 2px solid $radio-empty-color;
     border-radius: 1px;
     margin-top: 3px;
-    transition: .2s;
+    transition: 0.2s;
   }
 
   &:not(.filled-in) + span:not(.lever):after {
@@ -54,8 +54,8 @@
     transform: scale(1);
     border: 0;
     border-radius: 50%;
-    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
-    background-color: rgba(0,0,0,.1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -112,11 +112,12 @@
 
   + span:not(.lever):before,
   + span:not(.lever):after {
-    content: '';
+    content: "";
     left: 0;
     position: absolute;
     /* .1s delay is for check animation */
-    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+    transition: border 0.25s, background-color 0.25s, width 0.2s 0.1s, height 0.2s 0.1s,
+      top 0.2s 0.1s, left 0.2s 0.1s;
     z-index: 1;
   }
 
@@ -169,7 +170,7 @@
   &.tabbed:focus + span:not(.lever):after {
     border-radius: 2px;
     border-color: $radio-empty-color;
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &.tabbed:checked:focus + span:not(.lever):after {

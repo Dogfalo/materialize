@@ -67,9 +67,9 @@
   color: $button-raised-color;
   background-color: $button-raised-background;
   text-align: center;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   @extend .z-depth-1;
-  transition: background-color .2s ease-out;
+  transition: background-color 0.2s ease-out;
   cursor: pointer;
   &:hover {
     background-color: $button-raised-background-hover;
@@ -130,7 +130,7 @@
   background-color: $button-floating-background;
   border-radius: $button-floating-radius;
   @extend .z-depth-1;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
   cursor: pointer;
   vertical-align: middle;
   i {
@@ -201,7 +201,7 @@ button.btn-floating {
   }
   &.toolbar {
     &.active {
-      &>a i {
+      & > a i {
         opacity: 0;
       }
     }
@@ -276,16 +276,16 @@ button.btn-floating {
   background-color: transparent;
   color: $button-flat-color;
   cursor: pointer;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   &:focus,
   &:hover {
     box-shadow: none;
   }
   &:focus {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, 0.1);
   }
   &.disabled,
-  &.btn-flat[disabled]  {
+  &.btn-flat[disabled] {
     background-color: transparent !important;
     color: $button-flat-disabled-color !important;
     cursor: default;

@@ -1,14 +1,14 @@
 .materialboxed {
   &:hover {
     &:not(.active) {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 
   display: block;
   cursor: zoom-in;
   position: relative;
-  transition: opacity .4s;
+  transition: opacity 0.4s;
   -webkit-backface-visibility: hidden;
 
   &.active {
@@ -17,7 +17,7 @@
 }
 
 #materialbox-overlay {
-  position:fixed;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;

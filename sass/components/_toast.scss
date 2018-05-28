@@ -1,5 +1,5 @@
 #toast-container {
-  display:block;
+  display: block;
   position: fixed;
   z-index: 10000;
 
@@ -26,7 +26,7 @@
   width: auto;
   margin-top: 10px;
   position: relative;
-  max-width:100%;
+  max-width: 100%;
   height: auto;
   min-height: $toast-height;
   line-height: 1.5em;
@@ -47,7 +47,7 @@
     margin-left: 3rem;
   }
 
-  &.rounded{
+  &.rounded {
     border-radius: 24px;
   }
 

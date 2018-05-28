@@ -5,13 +5,13 @@
   position: relative;
 }
 
-input[type=range],
-input[type=range] + .thumb {
+input[type="range"],
+input[type="range"] + .thumb {
   @extend .no-select;
   cursor: pointer;
 }
 
-input[type=range] {
+input[type="range"] {
   position: relative;
   background-color: transparent;
   border: none;
@@ -25,7 +25,7 @@ input[type=range] {
   }
 }
 
-input[type=range] + .thumb {
+input[type="range"] + .thumb {
   position: absolute;
   top: 10px;
   left: 0;
@@ -73,64 +73,63 @@ input[type=range] + .thumb {
   width: $range-width;
   border-radius: 50%;
   background: $radio-fill-color;
-  transition: box-shadow .3s;
+  transition: box-shadow 0.3s;
 }
 
 // WebKit
-input[type=range] {
+input[type="range"] {
   -webkit-appearance: none;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
   @include range-track;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   @include range-thumb;
   -webkit-appearance: none;
   background-color: $radio-fill-color;
   transform-origin: 50% 50%;
   margin: -5px 0 0 0;
-
 }
 
-.keyboard-focused input[type=range]:focus:not(.active)::-webkit-slider-thumb {
-  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
+.keyboard-focused input[type="range"]:focus:not(.active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px rgba($radio-fill-color, 0.26);
 }
 
 // FireFox
-input[type=range] {
+input[type="range"] {
   /* fix for FF unable to apply focus style bug  */
   border: 1px solid white;
 
   /*required for proper track sizing in FF*/
 }
 
-input[type=range]::-moz-range-track {
+input[type="range"]::-moz-range-track {
   @include range-track;
 }
 
-input[type=range]::-moz-focus-inner {
+input[type="range"]::-moz-focus-inner {
   border: 0;
 }
 
-input[type=range]::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb {
   @include range-thumb;
   margin-top: -5px;
 }
 
 // hide the outline behind the border
-input[type=range]:-moz-focusring {
+input[type="range"]:-moz-focusring {
   outline: 1px solid #fff;
   outline-offset: -1px;
 }
 
-.keyboard-focused input[type=range]:focus:not(.active)::-moz-range-thumb {
-  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
+.keyboard-focused input[type="range"]:focus:not(.active)::-moz-range-thumb {
+  box-shadow: 0 0 0 10px rgba($radio-fill-color, 0.26);
 }
 
 // IE 10+
-input[type=range]::-ms-track {
+input[type="range"]::-ms-track {
   height: $track-height;
 
   // remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead
@@ -144,18 +143,18 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 
-input[type=range]::-ms-fill-lower {
+input[type="range"]::-ms-fill-lower {
   background: #777;
 }
 
-input[type=range]::-ms-fill-upper {
+input[type="range"]::-ms-fill-upper {
   background: #ddd;
 }
 
-input[type=range]::-ms-thumb {
+input[type="range"]::-ms-thumb {
   @include range-thumb;
 }
 
-.keyboard-focused input[type=range]:focus:not(.active)::-ms-thumb {
-  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
+.keyboard-focused input[type="range"]:focus:not(.active)::-ms-thumb {
+  box-shadow: 0 0 0 10px rgba($radio-fill-color, 0.26);
 }

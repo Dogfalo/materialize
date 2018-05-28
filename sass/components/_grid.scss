@@ -33,7 +33,6 @@
   }
 }
 
-
 // Mixins to eliminate code repitition
 @mixin reset-offset {
   margin-left: auto;
@@ -51,7 +50,6 @@
     left: $perc;
   }
 }
-
 
 .row {
   margin-left: auto;
@@ -94,7 +92,6 @@
     }
 
     @media #{$medium-and-up} {
-
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
@@ -102,7 +99,7 @@
           width: $perc;
           @include reset-offset;
         }
-        $i: $i + 1
+        $i: $i + 1;
       }
 
       $i: 1;
@@ -114,7 +111,6 @@
     }
 
     @media #{$large-and-up} {
-
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
@@ -134,7 +130,6 @@
     }
 
     @media #{$extra-large-and-up} {
-
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");

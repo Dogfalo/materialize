@@ -1,5 +1,6 @@
-$border-color: rgba(0,0,0,.14);
-$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$border-color: rgba(0, 0, 0, 0.14);
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+  "Helvetica Neue", sans-serif;
 
 /***************
   HTML Styles
@@ -17,7 +18,6 @@ p.box {
 }
 p {
   padding: 0;
-
 }
 
 h5 > span {
@@ -30,14 +30,16 @@ nav {
   // background-color: color("materialize-red", "lighten-2");
 
   a {
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, 0.87);
   }
-  ul li a:hover, ul li.active {
+  ul li a:hover,
+  ul li.active {
     background-color: color("materialize-red", "lighten-1");
   }
 }
 
-td, th {
+td,
+th {
   padding: 15px 10px;
 }
 
@@ -47,18 +49,20 @@ td, th {
 }
 
 .preview {
-  background-color: #FFF;
+  background-color: #fff;
   border: 1px solid #eee;
   padding: 20px 20px;
 }
 
 .method-header {
-  font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
+  font-family: "Inconsolata", Monaco, Consolas, "Andale Mono", monospace;
   margin-top: 15px;
   padding-top: 30px;
 }
 
-header, main, footer {
+header,
+main,
+footer {
   padding-left: 300px;
 }
 .parallax-demo header,
@@ -71,14 +75,15 @@ footer.example {
 }
 
 @media #{$medium-and-down} {
-  header, main, footer {
+  header,
+  main,
+  footer {
     padding-left: 0;
   }
   h5 > span {
     display: block;
     margin: 0 0 15px 0;
   }
-
 }
 
 /********************
@@ -102,15 +107,14 @@ ul.sidenav.sidenav-fixed {
   border-right: 1px solid $border-color;
 
   > li:last-child {
-      margin-bottom: 160px;
-    }
-
+    margin-bottom: 160px;
+  }
 
   li {
     line-height: 44px;
 
     &.active {
-      background-color: rgba(50,50,50,.06);
+      background-color: rgba(50, 50, 50, 0.06);
     }
 
     a {
@@ -126,7 +130,7 @@ ul.sidenav.sidenav-fixed {
   }
 
   ul.collapsible-accordion {
-    background-color: #FFF;
+    background-color: #fff;
 
     a.collapsible-header {
       padding: 0 30px;
@@ -154,7 +158,7 @@ ul.sidenav.sidenav-fixed {
 }
 
 .current-version-number {
-  color: rgba(0,0,0,0.53);
+  color: rgba(0, 0, 0, 0.53);
 }
 
 .patreon-ad {
@@ -282,7 +286,6 @@ a.sidenav-trigger.top-nav {
   }
 }
 
-
 #front-page-logo {
   display: inline-block;
   height: 100%;
@@ -295,8 +298,12 @@ a.sidenav-trigger.top-nav {
       float: none;
       padding: 0 15px;
 
-      &:hover { background-color: #ddd; }
-      .active { background-color: transparent; }
+      &:hover {
+        background-color: #ddd;
+      }
+      .active {
+        background-color: transparent;
+      }
     }
     a {
       color: #444;
@@ -304,10 +311,9 @@ a.sidenav-trigger.top-nav {
   }
 }
 
-
 #responsive-img {
   width: 80%;
-  display:block;
+  display: block;
   margin: 0 auto;
 }
 
@@ -323,7 +329,7 @@ a.sidenav-trigger.top-nav {
   h4 {
     margin-bottom: 40px;
     line-height: 44px;
-    color: rgba(0,0,0,.7);
+    color: rgba(0, 0, 0, 0.7);
   }
   h1 {
     margin-top: 16px;
@@ -349,12 +355,12 @@ a.sidenav-trigger.top-nav {
 
 // Latest commit widget
 .github-commit {
-  color: rgba(0,0,0,0.53);
+  color: rgba(0, 0, 0, 0.53);
   border-top: 1px solid $border-color;
   padding: 14px 0;
   height: 64px;
   line-height: 36px;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   .sha {
     margin: 0 6px 0 6px;
@@ -379,7 +385,7 @@ a.sidenav-trigger.top-nav {
   }
 }
 
-.promo{
+.promo {
   width: 100%;
 
   i {
@@ -395,15 +401,14 @@ a.sidenav-trigger.top-nav {
   font-weight: 500;
   margin-top: 5px;
   margin-bottom: 0;
-
 }
 
 #front-page-nav {
-  background-color: #FFF;
+  background-color: #fff;
   position: relative;
   a {
-      color: color("materialize-red", "lighten-2");
-    }
+    color: color("materialize-red", "lighten-2");
+  }
   li {
     &:hover {
       background-color: color("materialize-red", "lighten-5");
@@ -439,7 +444,6 @@ a.sidenav-trigger.top-nav {
   overflow: hidden;
 }
 
-
 /*******************
   Flat Site Mockup
 *******************/
@@ -460,20 +464,20 @@ a.sidenav-trigger.top-nav {
 .flat-text-header {
   height: 35px;
   width: 80%;
-  background-color: rgba(255,255,255,.15);
+  background-color: rgba(255, 255, 255, 0.15);
   display: block;
   margin: 27px auto;
 }
 .flat-text {
   height: 25px;
   width: 80%;
-  background-color: rgba(0,0,0,.15);
+  background-color: rgba(0, 0, 0, 0.15);
   display: block;
   margin: 27px auto;
   &.small {
     width: 25%;
     height: 25px;
-    background-color: rgba(0,0,0,.15);
+    background-color: rgba(0, 0, 0, 0.15);
   }
   &.full-width {
     width: 100%;
@@ -486,7 +490,7 @@ a.sidenav-trigger.top-nav {
 /*****************
   Chrome Browser
 *****************/
-$bottomColor: #E2E2E1;
+$bottomColor: #e2e2e1;
 $topColor: lighten($bottomColor, 2%);
 
 $border: $bottomColor;
@@ -504,7 +508,7 @@ $height: auto;
   margin: 20px 0px;
   overflow: hidden;
 
-    .top-bar {
+  .top-bar {
     height: 30px;
     border-radius: 5px 5px 0 0;
     border-top: thin solid lighten($topColor, 1%);
@@ -522,15 +526,17 @@ $height: auto;
   margin-right: 1px;
 }
 #close-circle {
-  background-color: #FF5C5A;
+  background-color: #ff5c5a;
 }
 #minimize-circle {
-  background-color: #FFBB50;
+  background-color: #ffbb50;
 }
 #maximize-circle {
-  background-color: #1BC656;
+  background-color: #1bc656;
 }
-.browser-window .circles { margin: 5px 12px; }
+.browser-window .circles {
+  margin: 5px 12px;
+}
 .browser-window .content {
   margin: 0;
   width: 100%;
@@ -543,16 +549,37 @@ $height: auto;
   margin: 0;
 }
 
-.clear { clear: both; }
+.clear {
+  clear: both;
+}
 
 /**********************
 **********************/
 
-
 // Color Wheel
 .dynamic-color {
-
-  .red, .pink, .purple, .deep-purple, .indigo, .blue, .light-blue, .cyan, .teal, .green, .light-green, .lime, .yellow, .amber, .orange, .deep-orange, .brown , .grey,  .blue-grey, .black, .white, .transparent {
+  .red,
+  .pink,
+  .purple,
+  .deep-purple,
+  .indigo,
+  .blue,
+  .light-blue,
+  .cyan,
+  .teal,
+  .green,
+  .light-green,
+  .lime,
+  .yellow,
+  .amber,
+  .orange,
+  .deep-orange,
+  .brown,
+  .grey,
+  .blue-grey,
+  .black,
+  .white,
+  .transparent {
     height: 55px;
     width: 100%;
     padding: 0 15px;
@@ -616,12 +643,10 @@ $height: auto;
   }
 }
 
-
 // Tables
 thead {
-  color: rgba(0, 0, 0, .6);
+  color: rgba(0, 0, 0, 0.6);
 }
-
 
 // Shadow demo styling
 .shadow-demo {
@@ -638,7 +663,6 @@ thead {
 
 // parallax demo
 .parallax-container {
-
   .text-center {
     position: absolute;
     top: 50%;
@@ -646,7 +670,6 @@ thead {
     right: 0;
     margin-top: -27px;
   }
-
 }
 
 // Table of contents
@@ -656,17 +679,16 @@ ul.table-of-contents {
 
   a {
     &.active {
-      color: rgba(0,0,0,.8);
+      color: rgba(0, 0, 0, 0.8);
     }
-    color: rgba(0,0,0,.55);
+    color: rgba(0, 0, 0, 0.55);
     font-weight: 400;
   }
 }
 
-
-
 // Prism Styling
-code, pre {
+code,
+pre {
   position: relative;
   font-size: 1.1rem;
 }
@@ -676,8 +698,8 @@ code, pre {
   line-height: 1.1rem !important;
 }
 :not(pre) > code[class*="language-"] {
-  padding: .1em .25em;
-  border: solid 1px rgba(51,51,51,0.12);
+  padding: 0.1em 0.25em;
+  border: solid 1px rgba(51, 51, 51, 0.12);
 }
 
 // Styles code blocks
@@ -691,15 +713,15 @@ pre[class*="language-"] {
     font-family: $font-stack;
     -webkit-font-smoothing: antialiased;
     color: #555;
-    content:attr(class);
-    font-size: .9rem;
+    content: attr(class);
+    font-size: 0.9rem;
     border: solid 1px rgba(51, 51, 51, 0.12);
     border-top: none;
     border-left: none;
   }
   padding: 25px 12px 7px 12px;
   border: solid 1px rgba(51, 51, 51, 0.12);
-  background: rgba(246, 246, 246, .2);
+  background: rgba(246, 246, 246, 0.2);
 }
 
 pre[class*="language-"],
@@ -709,9 +731,8 @@ code[class*="language-"] {
 
 // Styles one-liners
 :not(pre) > code[class*="language-"] {
-  background: rgba(246, 246, 246, .3);
+  background: rgba(246, 246, 246, 0.3);
 }
-
 
 // Carbon Ads styling
 .toc-wrapper {
@@ -758,9 +779,10 @@ code[class*="language-"] {
   }
 }
 .buysellads #carbonads {
-
   & > span,
-  span.carbon-wrap { height: auto; }
+  span.carbon-wrap {
+    height: auto;
+  }
 
   a.carbon-text {
     top: 5px;
@@ -769,7 +791,7 @@ code[class*="language-"] {
     display: block;
     font-size: 13px;
     -webkit-font-smoothing: antialiased;
-    color: #E57373;
+    color: #e57373;
   }
   a.carbon-poweredby {
     top: 5px;
@@ -777,11 +799,12 @@ code[class*="language-"] {
 }
 .buysellads-header #carbonads {
   & > span,
-  span.carbon-wrap { height: auto; }
+  span.carbon-wrap {
+    height: auto;
+  }
   // a.carbon-text { color: #fff; }
   // a.carbon-poweredby { color: rgba(255,255,255,.8); }
 }
-
 
 .buysellads-homepage #carbonads {
   display: block;
@@ -791,7 +814,6 @@ code[class*="language-"] {
   max-width: 360px;
   border-radius: 2px;
   border: 1px solid $border-color;
-
 
   span {
     position: relative;
@@ -817,7 +839,6 @@ code[class*="language-"] {
   }
 }
 
-
 // BuySellAds Styling
 .buysellads {
   &.buysellads-demo {
@@ -825,7 +846,7 @@ code[class*="language-"] {
     right: 20px;
     position: fixed;
     padding: 10px;
-    background-color: rgba(255,255,255,.9);
+    background-color: rgba(255, 255, 255, 0.9);
     z-index: 1000;
 
     #carbonads a.carbon-img {
@@ -847,14 +868,14 @@ code[class*="language-"] {
       text-align: center;
       background-color: #fff;
       border-radius: 50%;
-      box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
       height: 24px;
       width: 24px;
       position: absolute;
       top: -6px;
       right: -6px;
       z-index: 1;
-      transition: background-color .2s;
+      transition: background-color 0.2s;
     }
   }
 
@@ -871,8 +892,12 @@ code[class*="language-"] {
       left: 0;
       bottom: -15px;
     }
-    .bsa_it_ad .bsa_it_t { color: color("red", "lighten-2"); }
-    .bsa_it_ad .bsa_it_d { color: color("red", "lighten-3"); }
+    .bsa_it_ad .bsa_it_t {
+      color: color("red", "lighten-2");
+    }
+    .bsa_it_ad .bsa_it_d {
+      color: color("red", "lighten-3");
+    }
   }
 
   .bsa_it_ad a {
@@ -884,7 +909,9 @@ code[class*="language-"] {
 .buysellads-header {
   margin-top: 30px;
 
-  .bsa_it.one .bsa_it_p { bottom: -20px; }
+  .bsa_it.one .bsa_it_p {
+    bottom: -20px;
+  }
 }
 
 .bsa_it.one {
@@ -898,8 +925,12 @@ code[class*="language-"] {
     padding: 0;
     background-color: transparent;
 
-    .bsa_it_t { color: #fff; }
-    .bsa_it_d { color: color("red", "lighten-4"); }
+    .bsa_it_t {
+      color: #fff;
+    }
+    .bsa_it_d {
+      color: color("red", "lighten-4");
+    }
   }
 
   .bsa_it_p {
@@ -907,10 +938,11 @@ code[class*="language-"] {
     left: 40px;
     bottom: -5px;
 
-    a { color: color("red", "lighten-4"); }
+    a {
+      color: color("red", "lighten-4");
+    }
   }
 }
-
 
 /** BSA Sidebar */
 .bsa-cpc #_default_ {
@@ -972,17 +1004,15 @@ code[class*="language-"] {
   color: #fff;
   content: "Sponsor";
   text-transform: uppercase;
-  letter-spacing: .4px;
+  letter-spacing: 0.4px;
   font-weight: 600;
   font-size: 10px;
   line-height: 1;
 }
 
-
-
 // Footer styling
-footer{
-  font-size: .9rem;
+footer {
+  font-size: 0.9rem;
 }
 body.parallax-demo footer {
   margin-top: 0;
@@ -1007,13 +1037,12 @@ body.parallax-demo footer {
   }
 }
 
-
 // Mobile page styling
 
 .mobile-image {
- @media #{$small-and-down} {
-  max-width: 100%;
- }
+  @media #{$small-and-down} {
+    max-width: 100%;
+  }
 }
 
 // Waves page styling
@@ -1029,14 +1058,15 @@ body.parallax-demo footer {
   }
   .btn {
     &:not(.waves-light) {
-    background-color: color("shades", "white");
-    color: #212121;
+      background-color: color("shades", "white");
+      color: #212121;
     }
   }
 }
 
 // Card Page styling
-.card-panel span, .card-content p{
+.card-panel span,
+.card-content p {
   -webkit-font-smoothing: antialiased;
 }
 
@@ -1069,7 +1099,6 @@ body.parallax-demo footer {
 #staggered-test li,
 #image-test {
   opacity: 0;
-
 }
 
 // Transifex Styling
@@ -1083,12 +1112,11 @@ body.parallax-demo footer {
 
     li {
       color: $off-black;
-      &:hover{
-      color: inherit;
-      background-color: color("materialize-red", "lighten-5");
+      &:hover {
+        color: inherit;
+        background-color: color("materialize-red", "lighten-5");
       }
     }
-
   }
 
   .txlive-langselector-toggle {
@@ -1100,18 +1128,14 @@ body.parallax-demo footer {
   }
 
   .txlive-langselector-marker {
-    border-bottom: 4px solid rgba(0,0,0,.61);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.61);
   }
-
-
 }
-
 
 // Thanks for Downloading
 #download-thanks {
   display: none;
 }
-
 
 // Twitter widget
 #twitter-widget-0 {
@@ -1132,12 +1156,12 @@ body.parallax-demo footer {
     margin: 0 auto;
     display: inline-block;
     padding: 0 10px;
-    border-bottom: 1px solid rgba(0,0,0, .2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
     .caret {
       position: relative;
       top: 10px;
-      fill: rgba(0,0,0,.6);
+      fill: rgba(0, 0, 0, 0.6);
     }
   }
 }
@@ -1147,19 +1171,19 @@ body.parallax-demo footer {
 
   li > a {
     padding: 0 10px;
-
   }
 
   a {
     height: 50px;
     line-height: 50px;
   }
-
 }
 
 // Search
 #nav-mobile li.search {
-  &:hover { background-color: #fff; }
+  &:hover {
+    background-color: #fff;
+  }
 
   position: absolute;
   left: 0;
@@ -1177,7 +1201,7 @@ body.parallax-demo footer {
     color: #777;
     margin-top: -1px;
     border-top: 1px solid $border-color;
-    transition: margin .25s ease;
+    transition: margin 0.25s ease;
 
     input#search {
       &:focus {
@@ -1205,7 +1229,6 @@ body.parallax-demo footer {
     }
   }
 
-
   .search-results {
     margin: 0;
     border-top: 1px solid $border-color;
@@ -1224,7 +1247,6 @@ body.parallax-demo footer {
     }
   }
 }
-
 
 // Themes
 body.themes {
@@ -1263,14 +1285,14 @@ body.themes {
   &:hover {
     background-color: #5f9d3e;
   }
-  background-color: #78B657;
+  background-color: #78b657;
   font-size: 15px;
-  font-family: 'Helvetica Neue';
-  letter-spacing: .3px;
+  font-family: "Helvetica Neue";
+  letter-spacing: 0.3px;
   border-radius: 2px;
   color: #fff;
   padding: 10px 20px;
-  transition: background .2s;
+  transition: background 0.2s;
   margin: 20px 0 0 5px;
   -webkit-font-smoothing: antialiased;
 }
