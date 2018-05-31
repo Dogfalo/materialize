@@ -7,11 +7,11 @@
       $(input_selector).each(function(index, element) {
         var $this = $(this);
         if ($(element).val().length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== undefined) {
-          $this.siblings('label').addClass('active');
+          $this.siblings().filter('label').addClass('active');
         } else if ($(element)[0].validity) {
-          $this.siblings('label').toggleClass('active', $(element)[0].validity.badInput === true);
+          $this.siblings().filter('label').toggleClass('active', $(element)[0].validity.badInput === true);
         } else {
-          $this.siblings('label').removeClass('active');
+          $this.siblings().filter('label').removeClass('active');
         }
       });
     };
@@ -22,7 +22,7 @@
     // Add active if form auto complete
     $(document).on('change', input_selector, function () {
       if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
-        $(this).siblings('label').addClass('active');
+        $(this).siblings().filter('label').addClass('active');
       }
       validate_field($(this));
     });
@@ -39,21 +39,21 @@
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
         formReset.find(input_selector).each(function () {
           if ($(this).attr('value') === '') {
-            $(this).siblings('label').removeClass('active');
+            $(this).siblings().filter('label').removeClass('active');
           }
         });
 
         // Reset select
         formReset.find('select.initialized').each(function () {
           var reset_text = formReset.find('option[selected]').text();
-          formReset.siblings('input.select-dropdown').val(reset_text);
+          formReset.siblings().filter('input.select-dropdown').val(reset_text);
         });
       }
     });
 
     // Add active when element has focus
     $(document).on('focus', input_selector, function () {
-      $(this).siblings('label, .prefix').addClass('active');
+      $(this).siblings().filter('label, .prefix').addClass('active');
     });
 
     $(document).on('blur', input_selector, function () {
@@ -64,7 +64,7 @@
         selector += ", label";
       }
 
-      $inputElement.siblings(selector).removeClass('active');
+      $inputElement.siblings().filter(selector).removeClass('active');
 
       validate_field($inputElement);
     });
@@ -230,7 +230,7 @@
 
     var range_wrapper = '.range-field';
     $(document).on('change', range_type, function(e) {
-      var thumb = $(this).siblings('.thumb');
+      var thumb = $(this).siblings().filter('.thumb');
       thumb.find('.value').html($(this).val());
 
       if (!thumb.hasClass('active')) {
@@ -242,7 +242,7 @@
     });
 
     $(document).on('mousedown touchstart', range_type, function(e) {
-      var thumb = $(this).siblings('.thumb');
+      var thumb = $(this).siblings().filter('.thumb');
 
       // If thumb indicator does not exist yet, create it
       if (thumb.length <= 0) {
@@ -283,7 +283,7 @@
 
         var offsetLeft = calcRangeOffset(input);
         thumb.addClass('active').css('left', offsetLeft);
-        thumb.find('.value').html(thumb.siblings(range_type).val());
+        thumb.find('.value').html(thumb.siblings().filter(range_type).val());
       }
     });
 
@@ -782,7 +782,7 @@
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
+      select.siblings().filter('ul.dropdown-content').find('li:not(.optgroup)').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);
@@ -804,7 +804,7 @@
         value = select.find('option:disabled').eq(0).text();
       }
 
-      select.siblings('input.select-dropdown').val(value);
+      select.siblings().filter('input.select-dropdown').val(value);
     }
   };
 
