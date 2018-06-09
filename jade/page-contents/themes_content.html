@@ -1,153 +1,169 @@
+<div class="section" id="index-banner">
+  <div class="container">
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+        <h1 class="header">Themes</h1>
+        <h4 class ="light">We now accept Cryptocurrency through Coinbase!</h4>
+      </div>
+      <div class="col s12 m3 xl3 offset-xl1">
+        <div class="buysellads-header center-on-small-only">
+          <!-- CarbonAds Zone Code -->
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIK27J&placement=materializecss" id="_carbonads_js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col s12 m10 offset-m1">
 
       <div class="row themes-section">
         <div class="col s12 m4">
-          <h4>Gallery Shopify Theme</h4>
-          <p class="caption" style="margin-bottom: 0;">Make your products pop with this Shopify Theme and its Google Play Store inspired content transition. Have a more seamless store experience with this powerful ecommerce platform. This theme is in active development and will be maintained.</p>
-          <p style="margin-bottom: 0;"><b>Note: This is a theme made for the Shopify Ecommerce Platform</b></p>
+          <h4>Admin<span class="new badge" data-badge-caption="Early Bird Sale">20% Off</span></a></h4>
+          <p class="caption" style="margin-bottom: 0;">Admin is a great template for your app's dashboards, analytics and data visualizations. It comes with custom styles for many plugins like Chart.js, jqvmap, FullCalendar, and DataTables.</p>
+          <p style="margin-bottom: 0;"><b>Note: This is a static HTML template</b></p>
+<div id='product-component-7a018f7346b'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
 
-    <div id='product-component-8655a280051'></div>
-    <script type="text/javascript">
-    /*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
 
-    (function () {
-      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-      if (window.ShopifyBuy) {
-        if (window.ShopifyBuy.UI) {
-          ShopifyBuyInit();
-        } else {
-          loadScript();
-        }
-      } else {
-        loadScript();
-      }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
 
-      function loadScript() {
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = scriptURL;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-        script.onload = ShopifyBuyInit;
-      }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'materialize-themes.myshopify.com',
+      apiKey: '2d9a0b3001fe4fcbe3ba50c42a7df88e',
+      appId: '6',
+    });
 
-      function ShopifyBuyInit() {
-        var client = ShopifyBuy.buildClient({
-          domain: 'materialize-themes.myshopify.com',
-          apiKey: '2d9a0b3001fe4fcbe3ba50c42a7df88e',
-          appId: '6',
-        });
-
-        ShopifyBuy.UI.onReady(client).then(function (ui) {
-          ui.createComponent('product', {
-            id: [136059551773],
-            node: document.getElementById('product-component-8655a280051'),
-            moneyFormat: '%24%7B%7Bamount%7D%7D',
-            options: {
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: [787538149465],
+        node: document.getElementById('product-component-7a018f7346b'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "buttonDestination": "checkout",
+    "variantId": "all",
+    "width": "240px",
+    "contents": {
+      "img": false,
+      "imgWithCarousel": false,
+      "title": false,
+      "variantTitle": false,
+      "price": false,
+      "description": false,
+      "buttonWithQuantity": false,
+      "quantity": false
+    },
+    "text": {
+      "button": "BUY $24"
+    },
+    "styles": {
       "product": {
-        "buttonDestination": "checkout",
-        "variantId": "all",
-        "width": "240px",
-        "contents": {
-          "img": false,
-          "imgWithCarousel": false,
-          "title": false,
-          "variantTitle": false,
-          "price": false,
-          "description": false,
-          "buttonWithQuantity": false,
-          "quantity": false
-        },
-        "text": {
-          "button": "BUY $49"
-        },
-        "styles": {
-          "product": {
-            "text-align": "left",
-            "@media (min-width: 601px)": {
-              "max-width": "100%",
-              "margin-left": "0",
-              "margin-bottom": "50px"
-            }
-          },
-          "button": {
-            "padding-left": "20px",
-            "padding-right": "20px",
-            "border-radius": "2px"
-          },
-          "title": {
-            "font-size": "26px"
-          },
-          "price": {
-            "font-size": "18px"
-          },
-          "compareAt": {
-            "font-size": "15px"
-          }
+        "text-align": "left",
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0",
+          "margin-bottom": "50px"
         }
       },
-      "cart": {
-        "contents": {
-          "button": true
-        },
-        "styles": {
-          "button": {
-            "border-radius": "2px"
-          },
-          "footer": {
-            "background-color": "#ffffff"
-          }
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      },
+      "title": {
+        "font-size": "26px"
+      },
+      "price": {
+        "font-size": "18px"
+      },
+      "compareAt": {
+        "font-size": "15px"
+      }
+    }
+  },
+  "cart": {
+    "contents": {
+      "button": true
+    },
+    "styles": {
+      "button": {
+        "border-radius": "2px"
+      },
+      "footer": {
+        "background-color": "#ffffff"
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "variantTitle": false,
+      "buttonWithQuantity": true,
+      "button": false,
+      "quantity": false
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
         }
       },
-      "modalProduct": {
-        "contents": {
-          "img": false,
-          "imgWithCarousel": true,
-          "variantTitle": false,
-          "buttonWithQuantity": true,
-          "button": false,
-          "quantity": false
-        },
-        "styles": {
-          "product": {
-            "@media (min-width: 601px)": {
-              "max-width": "100%",
-              "margin-left": "0px",
-              "margin-bottom": "0px"
-            }
-          },
-          "button": {
-            "padding-left": "20px",
-            "padding-right": "20px",
-            "border-radius": "2px"
-          }
-        }
-      },
-      "productSet": {
-        "styles": {
-          "products": {
-            "@media (min-width: 601px)": {
-              "margin-left": "-20px"
-            }
-          }
+      "button": {
+        "padding-left": "20px",
+        "padding-right": "20px",
+        "border-radius": "2px"
+      }
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
         }
       }
     }
-          });
-        });
-      }
-    })();
-    /*]]>*/
-    </script>
-
-        <a class="shopify-btn" target="_blank" href="https://materialize-shopify-themes.myshopify.com/">DEMO</a>
+  }
+}
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
+        <a class="shopify-btn" target="_blank" href="https://themes.materializecss.com/pages/admin-dashboard.html">DEMO</a>
         </div>
         <div class="col s12 m7 offset-m1">
-          <img class="theme-preview" src="https://s1.postimg.cc/53rni1cvbj/gallery-shopify.png" alt="">
+          <img class="theme-preview" src="https://s15.postimg.cc/j1lqkbmjv/materialize.png" alt="Admin Theme">
         </div>
 
       </div>
+
 
       <div class="row themes-section right-aligned">
         <div class="col s12 m4 offset-m1">
@@ -206,7 +222,7 @@
           "quantity": false
         },
         "text": {
-          "button": "BUY 29$"
+          "button": "BUY $29"
         },
         "styles": {
           "product": {
@@ -289,7 +305,7 @@
         <a class="shopify-btn" target="_blank" href="https://themes.materializecss.com/pages/startup-horizontal-half.html">DEMO</a>
         </div>
         <div class="col s12 m7">
-          <img class="theme-preview" src="https://s14.postimg.cc/sai9xfjrl/materialize.png" alt="">
+          <img class="theme-preview" src="https://s14.postimg.cc/sai9xfjrl/materialize.png" alt="Startup Theme">
         </div>
 
       </div>
@@ -429,6 +445,152 @@
     /*]]>*/
     </script>
         <a class="shopify-btn" target="_blank" href="https://themes.materializecss.com/pages/demo">DEMO</a>
+        </div>
+        <div class="col s12 m7 offset-m1">
+          <img class="theme-preview" src="https://s23.postimg.cc/9g7ajckrf/thunder.png" alt="Gallery Theme">
+        </div>
+
+      </div>
+      <div class="row themes-section right-aligned">
+        <div class="col s12 m4 offset-m1">
+          <h4>Gallery Shopify Theme</h4>
+          <p class="caption" style="margin-bottom: 0;">Make your products pop with this Shopify Theme and its Google Play Store inspired content transition. Have a more seamless store experience with this powerful ecommerce platform. This theme is in active development and will be maintained.</p>
+          <p style="margin-bottom: 0;"><b>Note: This is a theme made for the Shopify Ecommerce Platform</b></p>
+
+    <div id='product-component-8655a280051'></div>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+
+    (function () {
+      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        } else {
+          loadScript();
+        }
+      } else {
+        loadScript();
+      }
+
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'materialize-themes.myshopify.com',
+          apiKey: '2d9a0b3001fe4fcbe3ba50c42a7df88e',
+          appId: '6',
+        });
+
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          ui.createComponent('product', {
+            id: [136059551773],
+            node: document.getElementById('product-component-8655a280051'),
+            moneyFormat: '%24%7B%7Bamount%7D%7D',
+            options: {
+      "product": {
+        "buttonDestination": "checkout",
+        "variantId": "all",
+        "width": "240px",
+        "contents": {
+          "img": false,
+          "imgWithCarousel": false,
+          "title": false,
+          "variantTitle": false,
+          "price": false,
+          "description": false,
+          "buttonWithQuantity": false,
+          "quantity": false
+        },
+        "text": {
+          "button": "BUY $49"
+        },
+        "styles": {
+          "product": {
+            "text-align": "left",
+            "@media (min-width: 601px)": {
+              "max-width": "100%",
+              "margin-left": "0",
+              "margin-bottom": "50px"
+            }
+          },
+          "button": {
+            "padding-left": "20px",
+            "padding-right": "20px",
+            "border-radius": "2px"
+          },
+          "title": {
+            "font-size": "26px"
+          },
+          "price": {
+            "font-size": "18px"
+          },
+          "compareAt": {
+            "font-size": "15px"
+          }
+        }
+      },
+      "cart": {
+        "contents": {
+          "button": true
+        },
+        "styles": {
+          "button": {
+            "border-radius": "2px"
+          },
+          "footer": {
+            "background-color": "#ffffff"
+          }
+        }
+      },
+      "modalProduct": {
+        "contents": {
+          "img": false,
+          "imgWithCarousel": true,
+          "variantTitle": false,
+          "buttonWithQuantity": true,
+          "button": false,
+          "quantity": false
+        },
+        "styles": {
+          "product": {
+            "@media (min-width: 601px)": {
+              "max-width": "100%",
+              "margin-left": "0px",
+              "margin-bottom": "0px"
+            }
+          },
+          "button": {
+            "padding-left": "20px",
+            "padding-right": "20px",
+            "border-radius": "2px"
+          }
+        }
+      },
+      "productSet": {
+        "styles": {
+          "products": {
+            "@media (min-width: 601px)": {
+              "margin-left": "-20px"
+            }
+          }
+        }
+      }
+    }
+          });
+        });
+      }
+    })();
+    /*]]>*/
+    </script>
+
+        <a class="shopify-btn" target="_blank" href="https://materialize-shopify-themes.myshopify.com/">DEMO</a>
         </div>
         <div class="col s12 m7 offset-m1">
           <img class="theme-preview" src="https://s23.postimg.cc/9g7ajckrf/thunder.png" alt="">
