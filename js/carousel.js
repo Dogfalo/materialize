@@ -656,7 +656,7 @@
       }
 
       let index = this.center + n;
-      if (index > this.count || index < 0) {
+      if (index >= this.count || index < 0) {
         if (this.noWrap) {
           return;
         }
@@ -676,7 +676,7 @@
       }
 
       let index = this.center - n;
-      if (index > this.count || index < 0) {
+      if (index >= this.count || index < 0) {
         if (this.noWrap) {
           return;
         }
