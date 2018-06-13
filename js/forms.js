@@ -486,6 +486,7 @@
       }
 
       var multiple = $select.attr('multiple') ? true : false,
+          maxSelection = parseInt($select.attr('max')),
           lastID = $select.data('select-id'); // Tear down structure if Select needs to be rebuilt
 
       if (lastID) {
@@ -514,7 +515,7 @@
       var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
       //Added to search
-      var applySeachInList = function () {
+      var applySearchInList = function () {
 
           var ul = $(this).closest('ul');
           var searchValue = $(this).val();
@@ -539,15 +540,13 @@
       //Added to search
       var setSearchableOption = function () {
           var placeholder = $select.attr('searchable');
-          var element = $('<span><input type="text" class="search" style="margin: 5px 0px 16px 15px; width: 96%;" placeholder="' + placeholder + '"></span>');
+          var element = $('<span class="search-holder"><input type="text" class="search" placeholder="' + placeholder + '"></span>');
           options.append(element);
-          element.find('.search').keyup(applySeachInList);
+          element.find('.search').keyup(applySearchInList);
       }
 
-      //Added to search
       var searchable = $select.attr('searchable') ? true : false;
 
-      //Added to search
       if (searchable) {
           setSearchableOption();
       }
@@ -622,6 +621,14 @@
             if (typeof callback !== 'undefined') callback();
           }
 
+          if (!_.isNaN(maxSelection) && $select.find("option:selected").length - 1 >= maxSelection) {
+            var items = $newSelect.find(' ~ .dropdown-content li:not(.disabled):not(.active)');
+            items.addClass('maxed disabled').find('input').prop('disabled', true);
+          } else {
+            var items = $newSelect.find(' ~ .dropdown-content li.maxed');
+            items.removeClass('maxed disabled').find('input').prop('disabled', false);
+          }
+
           e.stopPropagation();
         });
       });
@@ -673,35 +680,24 @@
         },
         'click': function (e){
           e.stopPropagation();
+        },
+      });
+
+      $newSelect.find(' ~ .dropdown-content li').on('click', function(e){
+        var shouldCloseOnClick = true;
+
+        if (multiple) {
+          shouldCloseOnClick = false;
         }
-      });
 
-      $newSelect.on('blur', function (e) {
-        var that = this;
-
-        $(this).find(' ~ .dropdown-content span').off('click.dropdown-item');
-        $(this).find(' ~ .dropdown-content span').on('click.dropdown-item', function () {
-          if (!multiple) {
-            $(this).trigger('close');
-          }
-        });
-
-        var container = $(this).find(' ~ .dropdown-content');
-        var filterInput = $(this).find(' ~ .dropdown-content input.search');
-        if (!multiple && !container.is(e.target) && !filterInput.is(e.relatedTarget)) {
-          $(this).trigger('close');
+        var search = $newSelect.find(' ~ .dropdown-content .search-holder input.search');
+        if (search.is(e.currentTarget)) {
+          shouldCloseOnClick = false;
         }
-        options.find('li.selected').removeClass('selected');
-      });
 
-      var container = $newSelect.find(' ~ .dropdown-content');
-      container.find('span input.search').on('click', function(e){
-         e.preventDefault();
-         e.stopPropagation();
-      });
-
-      container.find('span').on('click', function(e){
-         $($newSelect).trigger('close');
+        if (shouldCloseOnClick) {
+          $newSelect.trigger('close');
+        }
       });
 
       options.hover(function() {
@@ -739,6 +735,10 @@
           option.addClass('selected');
           if (!multiple || !!firstActivation) {
             options.scrollTo(option);
+          }
+
+          if (searchable) {
+            $newSelect.find(' ~ .dropdown-content').scrollTo(0);
           }
         }
       };
