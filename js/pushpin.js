@@ -89,7 +89,6 @@
         !this.el.classList.contains('pinned')
       ) {
         this._removePinClasses();
-
         this.el.style.top = `${this.options.offset}px`;
         this.el.classList.add('pinned');
 
@@ -125,7 +124,10 @@
     }
 
     _removePinClasses() {
-      this.el.classList.remove('pin-top', 'pinned', 'pin-bottom');
+      // IE 11 bug (can't remove multiple classes in one line)
+      this.el.classList.remove('pin-top');
+      this.el.classList.remove('pinned');
+      this.el.classList.remove('pin-bottom');
     }
   }
 
