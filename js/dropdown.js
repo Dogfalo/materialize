@@ -185,6 +185,9 @@
         // Add click close handler to document
         setTimeout(function() {
           $(document).on('click.'+ activates.attr('id'), function (e) {
+            if ($(e.target).hasClass('search')) {
+              return;
+            }
             hideDropdown();
             $(document).off('click.'+ activates.attr('id'));
           });

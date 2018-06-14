@@ -486,6 +486,7 @@
       }
 
       var multiple = $select.attr('multiple') ? true : false,
+          maxSelection = parseInt($select.attr('max')),
           lastID = $select.data('select-id'); // Tear down structure if Select needs to be rebuilt
 
       if (lastID) {
@@ -512,6 +513,43 @@
           optionsHover = false;
 
       var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
+
+      //Added to search
+      var applySearchInList = function () {
+
+          var ul = $(this).closest('ul');
+          var searchValue = $(this).val();
+          var options = ul.find('li')
+            .find('span');
+
+          options.each(function (i, option) {
+              if (typeof ($(option).text()) == 'string') {
+                  var liValue = $(option).text().toLowerCase();
+
+                  if (liValue.indexOf(searchValue.toLowerCase()) === -1) {
+                      $(option).hide();
+                      $(option).parent().hide();
+                  } else {
+                      $(option).show();
+                      $(option).parent().show();
+                  }
+              }
+          });
+      }
+
+      //Added to search
+      var setSearchableOption = function () {
+          var placeholder = $select.attr('searchable');
+          var element = $('<span class="search-holder"><input type="text" class="search" placeholder="' + placeholder + '"></span>');
+          options.append(element);
+          element.find('.search').keyup(applySearchInList);
+      }
+
+      var searchable = $select.attr('searchable') ? true : false;
+
+      if (searchable) {
+          setSearchableOption();
+      }
 
       // Function that renders and appends the option taking into
       // account type and possible image icon.
@@ -583,6 +621,14 @@
             if (typeof callback !== 'undefined') callback();
           }
 
+          if (!_.isNaN(maxSelection) && $select.find("option:selected").length - 1 >= maxSelection) {
+            var items = $newSelect.find(' ~ .dropdown-content li:not(.disabled):not(.active)');
+            items.addClass('maxed disabled').find('input').prop('disabled', true);
+          } else {
+            var items = $newSelect.find(' ~ .dropdown-content li.maxed');
+            items.removeClass('maxed disabled').find('input').prop('disabled', false);
+          }
+
           e.stopPropagation();
         });
       });
@@ -634,22 +680,24 @@
         },
         'click': function (e){
           e.stopPropagation();
-        }
+        },
       });
 
-      $newSelect.on('blur', function (e) {
-        var that = this;
+      $newSelect.find(' ~ .dropdown-content li').on('click', function(e){
+        var shouldCloseOnClick = true;
 
-        $(this).find(' ~ .dropdown-content span').off('click.dropdown-item');
-        $(this).find(' ~ .dropdown-content span').on('click.dropdown-item', function () {
-          $(that).trigger('close');
-        });
-
-        var container = $(this).find(' ~ .dropdown-content');
-        if (!multiple && !container.is(e.target)) {
-          $(this).trigger('close');
+        if (multiple) {
+          shouldCloseOnClick = false;
         }
-        options.find('li.selected').removeClass('selected');
+
+        var search = $newSelect.find(' ~ .dropdown-content .search-holder input.search');
+        if (search.is(e.currentTarget)) {
+          shouldCloseOnClick = false;
+        }
+
+        if (shouldCloseOnClick) {
+          $newSelect.trigger('close');
+        }
       });
 
       options.hover(function() {
@@ -687,6 +735,10 @@
           option.addClass('selected');
           if (!multiple || !!firstActivation) {
             options.scrollTo(option);
+          }
+
+          if (searchable) {
+            $newSelect.find(' ~ .dropdown-content').scrollTo(0);
           }
         }
       };

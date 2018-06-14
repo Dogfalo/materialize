@@ -2519,12 +2519,12 @@ if (jQuery) {
                 $overlay.css('opacity', 0).click( function(){
                   removeMenu();
                 });
-                
+
                 // Run 'onOpen' when sidenav is opened via touch/swipe if applicable
                 if (typeof(options.onOpen) === 'function') {
                   options.onOpen.call(this, menu);
                 }
-                
+
                 $('body').append($overlay);
               }
 
@@ -2613,7 +2613,7 @@ if (jQuery) {
                       if (typeof(options.onClose) === 'function') {
                         options.onClose.call(this, menu);
                       }
-                      
+
                       $(this).remove();
                     }});
                   $dragTarget.css({width: '10px', right: '', left: 0});
