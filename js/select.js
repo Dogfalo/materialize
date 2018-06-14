@@ -135,8 +135,11 @@
         }
 
         // Set selected on original select option
-        $(this._valueDict[key].el).prop('selected', selected);
-        this.$el.trigger('change');
+        // Check if clicking on already selected option
+        if (!$(this._valueDict[key].el).prop('selected')) {
+          $(this._valueDict[key].el).prop('selected', selected);
+          this.$el.trigger('change');
+        }
       }
 
       e.stopPropagation();
