@@ -98,8 +98,6 @@
      */
     _removeEventHandlers() {
       this.el.removeEventListener('click', this._handleCollapsibleClickBound);
-      
-      // NOTE: This is NOT tested in any way.
       this.$headers.each((header) => {
         header.removeEventListener('keydown', this._handleCollapsibleKeydownBound);
       });
