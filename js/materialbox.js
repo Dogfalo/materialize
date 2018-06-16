@@ -5,6 +5,7 @@
     inDuration: 275,
     outDuration: 200,
     onOpenStart: null,
+    originSizeIfPossible: false,
     onOpenEnd: null,
     onCloseStart: null,
     onCloseEnd: null
@@ -379,6 +380,15 @@
         ratio = this.originalWidth / this.originalHeight;
         this.newWidth = this.windowHeight * 0.9 * ratio;
         this.newHeight = this.windowHeight * 0.9;
+      }
+
+      if (
+        this.options.originSizeIfPossible && // if option true
+        //If the image dimensions need to be increased more than the original, we leave the original
+        (this.newWidth > this.el.naturalWidth || this.newHeight > this.el.naturalHeight)
+      ) {
+        this.newWidth = this.el.naturalWidth;
+        this.newHeight = this.el.naturalHeight;
       }
 
       this._animateImageIn();
