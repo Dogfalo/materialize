@@ -135,8 +135,9 @@
         }
 
         // Set selected on original select option
-        // Check if clicking on already selected option
-        if (!$(this._valueDict[key].el).prop('selected')) {
+        // Only trigger if selected state changed
+        let prevSelected = $(this._valueDict[key].el).prop('selected');
+        if (prevSelected !== selected) {
           $(this._valueDict[key].el).prop('selected', selected);
           this.$el.trigger('change');
         }
