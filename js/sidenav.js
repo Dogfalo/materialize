@@ -353,6 +353,14 @@
     }
 
     /**
+     * Handle touch
+     * @param {Event} e
+     */
+    _handleTouch(e) {
+      e.preventDefault();
+    }
+
+    /**
      * Handle Window Resize
      */
     _handleWindowResize() {
@@ -401,11 +409,14 @@
     _preventBodyScrolling() {
       let body = document.body;
       body.style.overflow = 'hidden';
+      this._handleTouchMove = this._handleTouch.bind(this);
+      this._overlay.addEventListener('touchmove', this._handleTouchMove);
     }
 
     _enableBodyScrolling() {
       let body = document.body;
       body.style.overflow = '';
+      this._overlay.removeEventListener('touchmove', this._handleTouchMove);
     }
 
     open() {
