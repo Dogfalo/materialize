@@ -2,7 +2,33 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
-## 1.0.0-beta (May 1st, 2018)
+## 1.0.0-rc.2 (June 23rd, 2018)
+- Autocomplete
+  - Fixed bug where Autocomplete did not open properly in certain cases with keyboard focus
+
+- Carousel
+  - Fix noWrap option bug
+
+- Collapsible
+  - Now correctly removes all event listeners on destroy
+
+- Materialbox
+  - Destroy now removed wrapper element added during intialization
+
+- Pushpin
+  - Fixed bug on IE11 where class was not removed properly
+
+- Select
+  - No longer triggers onchange event when selecting the same option
+
+- Sidenav
+  - Destroy now reenables body scrolling if Sidenav was destroyed while it was open
+
+- Tabs
+  - Tab indicator no longer displays improperly when a scrollbar is present in the element
+
+
+## 1.0.0-rc.1 (May 1st, 2018)
 - Autocomplete
   - Added open and close methods
   - Fixed bug where Autocomplete would close on click
