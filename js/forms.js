@@ -178,10 +178,7 @@
           formReset.find('select').each(function() {
             // check if initialized
             if (this.M_FormSelect) {
-              let reset_text = $(this)
-                .find('option[selected]')
-                .text();
-              $(this).siblings('input.select-dropdown')[0].value = reset_text;
+              $(this).trigger('change');
             }
           });
         }, 0);

@@ -98,6 +98,9 @@
      */
     _removeEventHandlers() {
       this.el.removeEventListener('click', this._handleCollapsibleClickBound);
+      this.$headers.each((header) => {
+        header.removeEventListener('keydown', this._handleCollapsibleKeydownBound);
+      });
     }
 
     /**

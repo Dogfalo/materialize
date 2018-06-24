@@ -95,15 +95,16 @@
       this.el.removeEventListener('blur', this._handleBlurBound, true);
     }
 
-    open() {
+    open(isManual) {
       if (this.isOpen) {
         return;
       }
+      isManual = isManual === undefined ? true : undefined; // Default value true
       this.isOpen = true;
       // Update tooltip content with HTML attribute options
       this.options = $.extend({}, this.options, this._getAttributeOptions());
       this._updateTooltipContent();
-      this._setEnterDelayTimeout();
+      this._setEnterDelayTimeout(isManual);
     }
 
     close() {
@@ -135,11 +136,11 @@
     /**
      * Create timeout which delays when the toast closes
      */
-    _setEnterDelayTimeout() {
+    _setEnterDelayTimeout(isManual) {
       clearTimeout(this._enterDelayTimeout);
 
       this._enterDelayTimeout = setTimeout(() => {
-        if (!this.isHovered && !this.isFocused) {
+        if (!this.isHovered && !this.isFocused && !isManual) {
           return;
         }
 
@@ -257,7 +258,7 @@
     _handleMouseEnter() {
       this.isHovered = true;
       this.isFocused = false; // Allows close of tooltip when opened by focus.
-      this.open();
+      this.open(false);
     }
 
     _handleMouseLeave() {
@@ -269,7 +270,7 @@
     _handleFocus() {
       if (M.tabPressed) {
         this.isFocused = true;
-        this.open();
+        this.open(false);
       }
     }
 

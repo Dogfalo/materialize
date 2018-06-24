@@ -37,15 +37,18 @@
       // Setup
       this.$tabLinks = this.$el.children('li.tab').children('a');
       this.index = 0;
-      this._setTabsAndTabWidth();
       this._setupActiveTabLink();
-      this._createIndicator();
 
+      // Setup tabs content
       if (this.options.swipeable) {
         this._setupSwipeableTabs();
       } else {
         this._setupNormalTabs();
       }
+
+      // Setup tabs indicator after content to ensure accurate widths
+      this._setTabsAndTabWidth();
+      this._createIndicator();
 
       this._setupEventHandlers();
     }
@@ -136,8 +139,6 @@
         return;
       }
 
-      this._setTabsAndTabWidth();
-
       // Make the old tab inactive.
       this.$activeTabLink.removeClass('active');
       let $oldContent = this.$content;
@@ -175,6 +176,9 @@
           }
         }
       }
+
+      // Update widths after content is swapped (scrollbar bugfix)
+      this._setTabsAndTabWidth();
 
       // Update indicator
       this._animateIndicator(prevIndex);
@@ -342,6 +346,7 @@
     }
 
     updateTabIndicator() {
+      this._setTabsAndTabWidth();
       this._animateIndicator(this.index);
     }
 
