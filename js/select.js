@@ -35,6 +35,9 @@
 
       this.isMultiple = this.$el.prop('multiple');
 
+      // holds fist dropdown option when it is seleced and multipled and select is multiple
+      this.placeholderOption = this.$el.find('option[value=""]:disabled')[0] || null;
+
       // Setup
       this.el.tabIndex = -1;
       this._keysSelected = {};
@@ -113,34 +116,27 @@
      */
     _handleOptionClick(e) {
       e.preventDefault();
-      let option = $(e.target).closest('li')[0];
-      let key = option.id;
-      if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup') && key.length) {
+
+      let clickedOption = e.currentTarget;
+      if (
+        !clickedOption.id.length ||
+        $(clickedOption).hasClass('disabled') ||
+        $(clickedOption).hasClass('optgroup')
+      ) {
+        e.stopPropagation();
+        return;
+      }
+
+      if (!this.isMultiple) {
         let selected = true;
-
-        if (this.isMultiple) {
-          // Deselect placeholder option if still selected.
-          let placeholderOption = $(this.dropdownOptions).find('li.disabled.selected');
-          if (placeholderOption.length) {
-            placeholderOption.removeClass('selected');
-            placeholderOption.find('input[type="checkbox"]').prop('checked', false);
-            this._toggleEntryFromArray(placeholderOption[0].id);
-          }
-          selected = this._toggleEntryFromArray(key);
-        } else {
-          $(this.dropdownOptions)
-            .find('li')
-            .removeClass('selected');
-          $(option).toggleClass('selected', selected);
-        }
-
-        // Set selected on original select option
-        // Only trigger if selected state changed
-        let prevSelected = $(this._valueDict[key].el).prop('selected');
-        if (prevSelected !== selected) {
-          $(this._valueDict[key].el).prop('selected', selected);
-          this.$el.trigger('change');
-        }
+        $(this.dropdownOptions)
+          .find('li')
+          .removeClass('selected');
+        $(clickedOption).toggleClass('selected', selected);
+        this._toggleOriginalOptionIfChanges(clickedOption.id, selected);
+      } else {
+        this._toggleEntryAndOriginalOption(clickedOption.id);
+        this._togglePlaceholderOptionIfNecessary();
       }
 
       e.stopPropagation();
@@ -190,6 +186,9 @@
             }
 
             this._addOptionToValueDict(el, optionEl);
+            if (this.placeholderOption === el) {
+              this.placeholderOption.id = optionEl.id;
+            }
           } else if ($(el).is('optgroup')) {
             // Optgroup.
             let selectOptions = $(el).children('option');
@@ -303,6 +302,8 @@
       liEl.addClass(`${disabledClass} ${optgroupClass}`);
       liEl.append(spanEl);
 
+      liEl.prop('value', option.value);
+
       // add icons
       let iconUrl = option.getAttribute('data-icon');
       if (!!iconUrl) {
@@ -316,11 +317,24 @@
     }
 
     /**
+     * Toggle original select option
+     * @param {String} key  Option key
+     */
+    _toggleOriginalOptionIfChanges(key, nextSelected) {
+      // Set selected on original select option
+      // Only trigger if selected state changed
+      let prevSelected = $(this._valueDict[key].el).prop('selected');
+      if (prevSelected !== nextSelected) {
+        $(this._valueDict[key].el).prop('selected', nextSelected);
+        this.$el.trigger('change');
+      }
+    }
+
+    /**
      * Toggle entry from option
      * @param {String} key  Option key
-     * @return {Boolean}  if entry was added or removed
      */
-    _toggleEntryFromArray(key) {
+    _toggleEntryAndOriginalOption(key) {
       let notAdded = !this._keysSelected.hasOwnProperty(key);
       let $optionLi = $(this._valueDict[key].optionEl);
 
@@ -338,7 +352,26 @@
       // use notAdded instead of true (to detect if the option is selected or not)
       $optionLi.prop('selected', notAdded);
 
-      return notAdded;
+      this._toggleOriginalOptionIfChanges(key, notAdded);
+    }
+
+    /**
+     *  Toggle placeholder option if necessary.
+     */
+    _togglePlaceholderOptionIfNecessary() {
+      if (!this.placeholderOption) {
+        return;
+      }
+
+      if (!this.$el.val()) {
+        // Select placeholder option if other options are not slected
+        let key = this.placeholderOption.id;
+        this._toggleEntryAndOriginalOption(key);
+      } else if (this.placeholderOption.selected) {
+        // Deselect placeholder option if still selected.
+        let key = this.placeholderOption.id;
+        this._toggleEntryAndOriginalOption(key);
+      }
     }
 
     /**
