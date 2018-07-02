@@ -235,12 +235,22 @@
           let selectedOption = $(this.dropdownOptions)
             .find('.selected')
             .first();
-          if (this.dropdown.isScrollable && selectedOption.length) {
-            let scrollOffset =
-              selectedOption[0].getBoundingClientRect().top -
-              this.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
-            scrollOffset -= this.dropdownOptions.clientHeight / 2; // center in dropdown
-            this.dropdownOptions.scrollTop = scrollOffset;
+
+          if (selectedOption.length) {
+            // Focus selected option in dropdown
+            M.keyDown = true;
+            this.dropdown.focusedIndex = selectedOption.index();
+            this.dropdown._focusFocusedItem();
+            M.keyDown = false;
+
+            // Handle scrolling to selected option
+            if (this.dropdown.isScrollable) {
+              let scrollOffset =
+                selectedOption[0].getBoundingClientRect().top -
+                this.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
+              scrollOffset -= this.dropdownOptions.clientHeight / 2; // center in dropdown
+              this.dropdownOptions.scrollTop = scrollOffset;
+            }
           }
         };
 
