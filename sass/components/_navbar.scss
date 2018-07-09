@@ -79,6 +79,11 @@ nav {
       }
 
       &.left { left: 0.5rem; }
+      
+      .sidenav-trigger~&.left{
+          left:unset;
+      }
+      
       &.right {
         right: 0.5rem;
         left: auto;
