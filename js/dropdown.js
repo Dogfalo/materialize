@@ -38,7 +38,7 @@
        * @prop {String} [alignment='left'] - Edge which the dropdown is aligned to
        * @prop {Boolean} [autoFocus=true] - Automatically focus dropdown el for keyboard
        * @prop {Boolean} [constrainWidth=true] - Constrain width to width of the button
-       * @prop {Element} container - Container element to attach dropdown to (optional)
+       * @prop {(Element|string)} container - Container element or element selector to attach dropdown to (optional)
        * @prop {Boolean} [coverTrigger=true] - Place dropdown over trigger
        * @prop {Boolean} [closeOnClick=true] - Close on click of dropdown item
        * @prop {Boolean} [hover=false] - Open dropdown on hover
