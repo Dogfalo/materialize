@@ -700,13 +700,15 @@
       // Init Materialize Select
       let yearSelect = this.calendarEl.querySelector('.orig-select-year');
       let monthSelect = this.calendarEl.querySelector('.orig-select-month');
+      let container = !!this.options.container ? this.options.container : document.body;
+
       M.FormSelect.init(yearSelect, {
         classes: 'select-year',
-        dropdownOptions: { container: document.body, constrainWidth: false }
+        dropdownOptions: { container: container, constrainWidth: false }
       });
       M.FormSelect.init(monthSelect, {
         classes: 'select-month',
-        dropdownOptions: { container: document.body, constrainWidth: false }
+        dropdownOptions: { container: container, constrainWidth: false }
       });
 
       // Add change handlers for select
