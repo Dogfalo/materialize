@@ -1,4 +1,3 @@
-
 /*!
  * Waves v0.6.0
  * http://fian.my.id/Waves
@@ -7,7 +6,6 @@
  * Released under the MIT license
  * https://github.com/fians/Waves/blob/master/LICENSE
  */
-
 
 .waves-effect {
   position: relative;
@@ -18,18 +16,18 @@
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
   z-index: 1;
-  transition: .3s ease-out;
+  transition: 0.3s ease-out;
 
   .waves-ripple {
     position: absolute;
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    margin-top:-10px;
-    margin-left:-10px;
+    margin-top: -10px;
+    margin-left: -10px;
     opacity: 0;
 
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     transition: all 0.7s ease-out;
     transition-property: transform, opacity;
     transform: scale(0);
@@ -41,26 +39,28 @@
     background-color: rgba(255, 255, 255, 0.45);
   }
   &.waves-red .waves-ripple {
-    background-color: rgba(244, 67, 54, .70);
+    background-color: rgba(244, 67, 54, 0.7);
   }
   &.waves-yellow .waves-ripple {
-    background-color: rgba(255, 235, 59, .70);
+    background-color: rgba(255, 235, 59, 0.7);
   }
   &.waves-orange .waves-ripple {
-    background-color: rgba(255, 152, 0, .70);
+    background-color: rgba(255, 152, 0, 0.7);
   }
   &.waves-purple .waves-ripple {
-    background-color: rgba(156, 39, 176, 0.70);
+    background-color: rgba(156, 39, 176, 0.7);
   }
   &.waves-green .waves-ripple {
-    background-color: rgba(76, 175, 80, 0.70);
+    background-color: rgba(76, 175, 80, 0.7);
   }
   &.waves-teal .waves-ripple {
-    background-color: rgba(0, 150, 136, 0.70);
+    background-color: rgba(0, 150, 136, 0.7);
   }
 
   // Style input button bug.
-  input[type="button"], input[type="reset"], input[type="submit"] {
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
     border: 0;
     font-style: normal;
     font-size: inherit;

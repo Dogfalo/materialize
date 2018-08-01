@@ -3,7 +3,6 @@
     outline: 0;
   }
 
-
   @extend .z-depth-1;
   background-color: $dropdown-bg-color;
   margin: 0;
@@ -17,9 +16,9 @@
   z-index: 9999; // TODO: Check if this doesn't break other things
   transform-origin: 0 0;
 
-
   li {
-    &:hover, &.active {
+    &:hover,
+    &.active {
       background-color: $dropdown-hover-bg-color;
     }
 
@@ -32,7 +31,8 @@
       height: 1px;
     }
 
-    & > a, & > span {
+    & > a,
+    & > span {
       font-size: 16px;
       color: $dropdown-color;
       display: block;
@@ -54,7 +54,6 @@
       margin: 0 24px 0 0;
       width: 24px;
     }
-
 
     clear: both;
     color: $off-black;

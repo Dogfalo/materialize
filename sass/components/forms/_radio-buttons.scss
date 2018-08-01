@@ -18,13 +18,13 @@
   height: 25px;
   line-height: 25px;
   font-size: 1rem;
-  transition: .28s ease;
+  transition: 0.28s ease;
   user-select: none;
 }
 
 [type="radio"] + span:before,
 [type="radio"] + span:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -32,7 +32,7 @@
   width: 16px;
   height: 16px;
   z-index: 0;
-  transition: .28s ease;
+  transition: 0.28s ease;
 }
 
 /* Unchecked styles */
@@ -76,12 +76,12 @@
 
 /* Radio With gap */
 [type="radio"].with-gap:checked + span:after {
-  transform: scale(.5);
+  transform: scale(0.5);
 }
 
 /* Focused styles */
 [type="radio"].tabbed:focus + span:before {
-  box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Disabled Radio With gap */

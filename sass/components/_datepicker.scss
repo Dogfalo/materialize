@@ -45,13 +45,13 @@
   }
 }
 
-.month-prev, .month-next {
+.month-prev,
+.month-next {
   margin-top: 4px;
   cursor: pointer;
   background-color: transparent;
   border: none;
 }
-
 
 /* Date Display */
 .datepicker-date-display {
@@ -75,7 +75,6 @@
     font-weight: 500;
   }
 }
-
 
 /* Calendar */
 .datepicker-calendar-container {
@@ -142,7 +141,6 @@
   color: inherit;
 }
 
-
 /* Footer */
 .datepicker-footer {
   width: 280px;
@@ -163,7 +161,6 @@
 .datepicker-clear {
   color: $error-color;
 }
-
 
 /* Media Queries */
 @media #{$medium-and-up} {

@@ -8,7 +8,7 @@
 
 .collapsible-header {
   &:focus {
-    outline: 0
+    outline: 0;
   }
 
   display: flex;
@@ -41,12 +41,13 @@
 // Sidenav collapsible styling
 .sidenav,
 .sidenav.fixed {
-
   .collapsible {
     border: none;
     box-shadow: none;
 
-    li { padding: 0; }
+    li {
+      padding: 0;
+    }
   }
 
   .collapsible-header {
@@ -56,8 +57,12 @@
     height: inherit;
     padding: 0 $sidenav-padding;
 
-    &:hover { background-color: rgba(0,0,0,.05); }
-    i { line-height: inherit; }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    i {
+      line-height: inherit;
+    }
   }
 
   .collapsible-body {
@@ -65,11 +70,9 @@
     background-color: $collapsible-header-color;
 
     li a {
-      padding: 0 (7.5px + $sidenav-padding)
-               0 (15px + $sidenav-padding);
+      padding: 0 (7.5px + $sidenav-padding) 0 (15px + $sidenav-padding);
     }
   }
-
 }
 
 // Popout Collapsible
@@ -81,7 +84,7 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     // transform: scaleX(.92);
     margin: 0 24px;
-    transition: margin .35s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   > li.active {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);

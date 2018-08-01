@@ -20,10 +20,13 @@
   will-change: top, opacity;
 
   @media #{$medium-and-down} {
-   width: 80%;
+    width: 80%;
   }
 
-  h1,h2,h3,h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     margin-top: 0;
   }
 
@@ -42,7 +45,8 @@
     width: 100%;
     text-align: right;
 
-    .btn, .btn-flat {
+    .btn,
+    .btn-flat {
       margin: 6px 0;
     }
   }
@@ -76,7 +80,7 @@
   }
 
   .modal-footer {
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     position: absolute;
     bottom: 0;
   }

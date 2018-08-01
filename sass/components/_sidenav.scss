@@ -30,12 +30,13 @@
     margin: 0;
   }
 
-
   li {
     float: none;
     line-height: $sidenav-line-height;
 
-    &.active { background-color: rgba(0,0,0,.05); }
+    &.active {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
   }
 
   li > a {
@@ -47,33 +48,46 @@
     line-height: $sidenav-line-height;
     padding: 0 ($sidenav-padding * 2);
 
-    &:hover { background-color: rgba(0,0,0,.05);}
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
 
-    &.btn, &.btn-large, &.btn-flat, &.btn-floating {
+    &.btn,
+    &.btn-large,
+    &.btn-flat,
+    &.btn-floating {
       margin: 10px 15px;
     }
 
     &.btn,
     &.btn-large,
-    &.btn-floating { color: $button-raised-color; }
-    &.btn-flat { color: $button-flat-color; }
+    &.btn-floating {
+      color: $button-raised-color;
+    }
+    &.btn-flat {
+      color: $button-flat-color;
+    }
 
     &.btn:hover,
-    &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
-    &.btn-floating:hover { background-color: $button-raised-background; }
+    &.btn-large:hover {
+      background-color: lighten($button-raised-background, 5%);
+    }
+    &.btn-floating:hover {
+      background-color: $button-raised-background;
+    }
 
     & > i,
-    & > [class^="mdi-"], li > a > [class*="mdi-"],
+    & > [class^="mdi-"],
+    li > a > [class*="mdi-"],
     & > i.material-icons {
       float: left;
       height: $sidenav-item-height;
       line-height: $sidenav-line-height;
       margin: 0 ($sidenav-padding * 2) 0 0;
       width: $sidenav-item-height / 2;
-      color: rgba(0,0,0,.54);
+      color: rgba(0, 0, 0, 0.54);
     }
   }
-
 
   .divider {
     margin: ($sidenav-padding / 2) 0 0 0;
@@ -86,7 +100,7 @@
 
     cursor: initial;
     pointer-events: none;
-    color: rgba(0,0,0,.54);
+    color: rgba(0, 0, 0, 0.54);
     font-size: $sidenav-font-size;
     font-weight: 500;
     line-height: $sidenav-line-height;
@@ -98,7 +112,9 @@
     margin-bottom: $sidenav-padding / 2;
 
     & > a {
-      &:hover { background-color: transparent; }
+      &:hover {
+        background-color: transparent;
+      }
       height: auto;
       padding: 0;
     }
@@ -113,7 +129,9 @@
       z-index: -1;
     }
 
-    .circle, .name, .email {
+    .circle,
+    .name,
+    .email {
       display: block;
     }
 
@@ -140,7 +158,6 @@
   }
 }
 
-
 // Touch interaction
 .drag-target {
   // Right Align
@@ -154,7 +171,6 @@
   top: 0;
   z-index: 998;
 }
-
 
 // Fixed Sidenav shown
 .sidenav.sidenav-fixed {
@@ -190,7 +206,6 @@
   }
 }
 
-
 .sidenav .collapsible-body > ul:not(.collapsible) > li.active,
 .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
   background-color: $primary-color;
@@ -202,7 +217,6 @@
   padding: 0;
 }
 
-
 .sidenav-overlay {
   position: fixed;
   top: 0;
@@ -210,7 +224,7 @@
   right: 0;
   opacity: 0;
   height: 120vh;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 997;
   display: none;
 }

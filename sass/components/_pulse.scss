@@ -1,6 +1,6 @@
 .pulse {
   &::before {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     width: 100%;
@@ -9,7 +9,7 @@
     left: 0;
     background-color: inherit;
     border-radius: inherit;
-    transition: opacity .3s, transform .3s;
+    transition: opacity 0.3s, transform 0.3s;
     animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
     z-index: -1;
   }
