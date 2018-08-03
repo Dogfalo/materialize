@@ -72,7 +72,10 @@
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
         <pre><code class="language-javascript">
-  var instance = M.Tabs.init(el, options);
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tabs');
+    var instances = M.Tabs.init(elems, options);
+  });
 
   // Or with jQuery
 
