@@ -44,13 +44,17 @@
     &lt;/p>
   &lt;/form>
         </code></pre>
-        <p>Initialize with javascript to display the value above the slider when dragging</p>
+      </div>
+      
+      
+      <div class="section">
+        <h5>Initialization</h5>
+        <p>Initialize to display the value above the slider when dragging. Initialization is only needed for elements created after the page loads.</p>
         <pre><code class="language-javascript">
-  var array_of_dom_elements = document.querySelectorAll("input[type=range]");
-  M.Range.init(array_of_dom_elements);
+  var elems = document.querySelectorAll("input[type=range]");
+  M.Range.init(elems);
         </code></pre>
       </div>
-
 
 
     </div>
