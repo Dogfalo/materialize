@@ -28,7 +28,6 @@
           index = 0,
           prev_index = 0,
           clicked = false,
-          clickedTimeout,
           transition = 300;
 
 
@@ -213,7 +212,7 @@
         }
 
         // Reset clicked state
-        clickedTimeout = setTimeout(function(){ clicked = false; }, transition);
+        setTimeout(function(){ clicked = false; }, transition);
 
         // Update indicator
         animateIndicator(prev_index);
