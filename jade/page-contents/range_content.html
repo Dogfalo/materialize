@@ -52,8 +52,14 @@
         <p>Initialize to display the value above the slider when dragging. Initialization is only needed for elements created after the page loads.</p>
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll("input[type=range]");
+    var elems = document.querySelectorAll('input[type=range]');
     M.Range.init(elems);
+  });
+  
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('input[type=range]').range();
   });
         </code></pre>
       </div>
