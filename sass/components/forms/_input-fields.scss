@@ -194,7 +194,7 @@ textarea.materialize-textarea {
   }
 
   // Autofill + date + time inputs
-  & > input[type]:-webkit-autofill:not(.browser-default) + label,
+  & > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label,
   & > input[type=date]:not(.browser-default) + label,
   & > input[type=time]:not(.browser-default) + label {
     transform: translateY(-14px) scale(.8);
