@@ -163,6 +163,14 @@
     }
 
     /**
+     * Handle touch
+     * @param {Event} e
+     */
+    _handleTouch(e) {
+      e.preventDefault();
+    }
+
+    /**
      * Handle Focus
      * @param {Event} e
      */
@@ -304,6 +312,8 @@
 
       if (this.options.preventScrolling) {
         document.body.style.overflow = 'hidden';
+        this._handleTouchMove = this._handleTouch.bind(this);
+        this.$overlay[0].addEventListener('touchmove', this._handleTouchMove);
       }
 
       this.el.classList.add('open');
@@ -346,8 +356,9 @@
       this.el.classList.remove('open');
 
       // Enable body scrolling only if there are no more modals open.
-      if (Modal._modalsOpen === 0) {
+      if (Modal._modalsOpen === 0 && this.options.preventScrolling) {
         document.body.style.overflow = '';
+        this.$overlay[0].removeEventListener('touchmove', this._handleTouchMove);
       }
 
       if (this.options.dismissible) {
