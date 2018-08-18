@@ -131,7 +131,7 @@ $chip-selected-color: #26a69a !default;
 $chip-margin: 5px !default;
 
 
-// 8. Date + Time Picker
+// 8. Date + Time Picker + Color Picker
 // ==========================================================================
 
 $datepicker-display-font-size: 2.8rem;
@@ -148,6 +148,9 @@ $datepicker-disabled-day-color: rgba(0, 0, 0, .3) !default;
 
 $timepicker-clock-color: rgba(0, 0, 0, .87) !default;
 $timepicker-clock-plate-bg: #eee !default;
+
+$colorpicker-listview-color: rgba(0, 0, 0, .87) !default;
+$colorpicker-listview-plate-bg: #eee !default;
 
 
 // 9. Dropdown
