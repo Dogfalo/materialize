@@ -92,7 +92,8 @@
       ],
       weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+      weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+      headerFormat: 'ddd, mmm d'
     },
 
     // events array
@@ -259,9 +260,10 @@
       });
     }
 
-    toString(format) {
+    toString(format, date) {
+      let d = date || this.date;
       format = format || this.options.format;
-      if (!Datepicker._isDate(this.date)) {
+      if (!Datepicker._isDate(d)) {
         return '';
       }
 
@@ -269,7 +271,7 @@
       let formattedDate = formatArray
         .map((label) => {
           if (this.formats[label]) {
-            return this.formats[label]();
+            return this.formats[label](d);
           }
 
           return label;
@@ -319,12 +321,8 @@
 
     _renderDateDisplay() {
       let displayDate = Datepicker._isDate(this.date) ? this.date : new Date();
-      let i18n = this.options.i18n;
-      let day = i18n.weekdaysShort[displayDate.getDay()];
-      let month = i18n.monthsShort[displayDate.getMonth()];
-      let date = displayDate.getDate();
       this.yearTextEl.innerHTML = displayDate.getFullYear();
-      this.dateTextEl.innerHTML = `${day}, ${month} ${date}`;
+      this.dateTextEl.innerHTML = this.toString(this.options.i18n.headerFormat, displayDate);
     }
 
     /**
@@ -758,37 +756,47 @@
       this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
 
       this.formats = {
-        d: () => {
-          return this.date.getDate();
+        d: (date) => {
+          let d = date || this.date;
+          return d.getDate();
         },
-        dd: () => {
-          let d = this.date.getDate();
-          return (d < 10 ? '0' : '') + d;
+        dd: (date) => {
+          let d = date || this.date
+          let dd = d.getDate();
+          return (dd < 10 ? '0' : '') + dd;
         },
-        ddd: () => {
-          return this.options.i18n.weekdaysShort[this.date.getDay()];
+        ddd: (date) => {
+          let d = date || this.date;
+          return this.options.i18n.weekdaysShort[d.getDay()];
         },
-        dddd: () => {
-          return this.options.i18n.weekdays[this.date.getDay()];
+        dddd: (date) => {
+          let d = date || this.date;
+          return this.options.i18n.weekdays[d.getDay()];
         },
-        m: () => {
-          return this.date.getMonth() + 1;
+        m: (date) => {
+          let d = date || this.date;
+          return d.getMonth() + 1;
         },
-        mm: () => {
-          let m = this.date.getMonth() + 1;
+        mm: (date) => {
+          let d = date || this.date;
+          let m = d.getMonth() + 1;
           return (m < 10 ? '0' : '') + m;
         },
-        mmm: () => {
-          return this.options.i18n.monthsShort[this.date.getMonth()];
+        mmm: (date) => {
+          let d = date || this.date;
+          return this.options.i18n.monthsShort[d.getMonth()];
         },
-        mmmm: () => {
-          return this.options.i18n.months[this.date.getMonth()];
+        mmmm: (date) => {
+          let d = date || this.date;
+          return this.options.i18n.months[d.getMonth()];
         },
-        yy: () => {
-          return ('' + this.date.getFullYear()).slice(2);
+        yy: (date) => {
+          let d = date || this.date;
+          return ('' + d.getFullYear()).slice(2);
         },
-        yyyy: () => {
-          return this.date.getFullYear();
+        yyyy: (date) => {
+          let d = date || this.date;
+          return d.getFullYear();
         }
       };
     }
