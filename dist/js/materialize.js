@@ -10004,7 +10004,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
     }, {
-      key: "_updateColorFromInput",
+      key: "_updateTimeFromInput",
       value: function _updateTimeFromInput() {
         // Get the time
         var value = ((this.el.value || this.options.defaultTime || '') + '').split(':');
@@ -10169,7 +10169,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
 
         this.isOpen = true;
-        this._updateColorFromInput();
+        this._updateTimeFromInput();
         this.showView('hours');
 
         this.modal.open();
