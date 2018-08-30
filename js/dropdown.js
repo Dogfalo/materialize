@@ -1,12 +1,14 @@
+import Component from '../global/component';
+
 (function($, anim) {
   'use strict';
 
   let _defaults = {
     alignment: 'left',
     autoFocus: true,
-    constrainWidth: true,
+    constrainWidth: false,
     container: null,
-    coverTrigger: true,
+    coverTrigger: false,
     closeOnClick: true,
     hover: false,
     inDuration: 150,
@@ -29,6 +31,8 @@
       Dropdown._dropdowns.push(this);
 
       this.id = M.getIdFromTrigger(el);
+      this.position = M.getPositionFromTrigger(el);
+      this.coverTrigger = M.getCoverTrigger(el);
       this.dropdownEl = document.getElementById(this.id);
       this.$dropdownEl = $(this.dropdownEl);
 
@@ -71,6 +75,17 @@
 
       this.focusedIndex = -1;
       this.filterQuery = [];
+
+      /**
+       * Read the position from the data-alignment attribute.
+       */
+      if (this.position) {
+        this.options.alignment = this.position;
+      }
+
+      if (this.coverTrigger === 'true') {
+        this.options.coverTrigger = true;
+      }
 
       // Move dropdown-content after dropdown-trigger
       if (!!this.options.container) {
@@ -353,15 +368,6 @@
     _makeDropdownFocusable() {
       // Needed for arrow key navigation
       this.dropdownEl.tabIndex = 0;
-
-      // Only set tabindex if it hasn't been set by user
-      $(this.dropdownEl)
-        .children()
-        .each(function(el) {
-          if (!el.getAttribute('tabindex')) {
-            el.setAttribute('tabindex', 0);
-          }
-        });
     }
 
     _focusFocusedItem() {
@@ -392,10 +398,7 @@
       };
 
       // Countainer here will be closest ancestor with overflow: hidden
-      let closestOverflowParent = !!this.dropdownEl.offsetParent
-        ? this.dropdownEl.offsetParent
-        : this.dropdownEl.parentNode;
-
+      let closestOverflowParent = this.dropdownEl.offsetParent;
       let alignments = M.checkPossibleAlignments(
         this.el,
         closestOverflowParent,
@@ -608,8 +611,4 @@
   Dropdown._dropdowns = [];
 
   window.M.Dropdown = Dropdown;
-
-  if (M.jQueryLoaded) {
-    M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
-  }
 })(cash, M.anime);

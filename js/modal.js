@@ -1,3 +1,5 @@
+import Component from './component';
+
 (function($, anim) {
   'use strict';
 
