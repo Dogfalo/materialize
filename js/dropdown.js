@@ -295,7 +295,11 @@
           .first();
 
         // Click a or button tag if exists, otherwise click li tag
-        !!$activatableElement.length ? $activatableElement[0].click() : focusedElement.click();
+        if (!!$activatableElement.length) {
+          $activatableElement[0].click();
+        } else if (!!focusedElement) {
+          focusedElement.click();
+        }
 
         // Close dropdown on ESC
       } else if (e.which === M.keys.ESC && this.isOpen) {
@@ -484,8 +488,7 @@
 
           // onOpenEnd callback
           if (typeof this.options.onOpenEnd === 'function') {
-            let elem = anim.animatables[0].target;
-            this.options.onOpenEnd.call(elem, this.el);
+            this.options.onOpenEnd.call(this, this.el);
           }
         }
       });
@@ -511,7 +514,6 @@
 
           // onCloseEnd callback
           if (typeof this.options.onCloseEnd === 'function') {
-            let elem = anim.animatables[0].target;
             this.options.onCloseEnd.call(this, this.el);
           }
         }
@@ -607,7 +609,7 @@
    */
   Dropdown._dropdowns = [];
 
-  window.M.Dropdown = Dropdown;
+  M.Dropdown = Dropdown;
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');

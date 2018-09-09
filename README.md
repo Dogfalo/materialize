@@ -6,6 +6,8 @@
 
 <h3 align="center">MaterializeCSS</h3>
 
+<h3 align="center">1.0.0</h3>
+
 <p align="center">
   Materialize, a CSS Framework based on material design.
   <br>

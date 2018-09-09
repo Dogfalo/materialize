@@ -259,7 +259,7 @@ nav.top-nav {
 
   h1.header {
     margin: 0;
-    padding-top: 26px;
+    padding-top: 22px;
   }
 }
 a.sidenav-trigger.top-nav {
@@ -267,17 +267,12 @@ a.sidenav-trigger.top-nav {
   text-align: center;
   height: 48px;
   width: 48px;
-  left: 7.5%;
-  top: 55px;
+  top: 28px;
   float: none;
   margin-left: 1.5rem;
   color: color("materialize-red", "lighten-3");
   font-size: 36px;
   z-index: 2;
-
-  &.full {
-    line-height: 110px;
-  }
 
   i {
     font-size: 32px;
@@ -286,7 +281,7 @@ a.sidenav-trigger.top-nav {
 
 @media #{$small-and-down} {
   a.sidenav-trigger.top-nav {
-    left: 5%;
+    left: 0;
   }
 
   ul.sidenav.sidenav-fixed {
@@ -398,17 +393,19 @@ a.sidenav-trigger.top-nav {
   }
 }
 
-#download-button {
-  background-color: color("materialize-red", "lighten-2");
-  width: 260px;
-  height: 70px;
-  line-height: 70px;
-  font-size: 18px;
-  font-weight: 400;
-
+#download-button,
+#upgrade-button {
   &:hover {
     background-color: lighten(color("materialize-red", "base"), 30%);
   }
+  background-color: color("materialize-red", "lighten-2");
+  width: 260px;
+  height: 70px;
+  margin: 4px;
+  padding: 0;
+  line-height: 70px;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .promo{
