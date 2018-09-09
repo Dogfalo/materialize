@@ -151,7 +151,9 @@
                 <td>events</td>
                 <td>Array</td>
                 <td>[]</td>
-                <td>An array of string returned by `Date.toDateString()`, indicating there are events in the specified days.</td>
+                <td>An array of string returned by `Date.toDateString()`, indicating there are events in the specified
+                  days.
+                </td>
               </tr>
               <tr>
                 <td>onSelect</td>
@@ -365,7 +367,6 @@
         </div>
 
 
-
         <div class="section">
           <h5>Properties</h5>
           <table class="striped">
@@ -406,7 +407,8 @@
           <h5>Methods</h5>
 
           <blockquote>
-            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get
+              the
               plugin instance like this: </p>
             <pre><code class="language-javascript col s12">
   var instance = M.Datepicker.getInstance(elem);
@@ -533,7 +535,9 @@ instance.destroy();
                 <td>container</td>
                 <td>String</td>
                 <td>null</td>
-                <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before the input.</td>
+                <td>Specify a selector for a DOM element to render the calendar in, by default it will be placed before
+                  the input.
+                </td>
               </tr>
               <tr>
                 <td>showClearBtn</td>
@@ -605,7 +609,9 @@ instance.destroy();
                 <td>onSelect</td>
                 <td>Function</td>
                 <td>null</td>
-                <td>Callback function when a time is selected, first parameter is the hour and the second is the minute.</td>
+                <td>Callback function when a time is selected, first parameter is the hour and the second is the
+                  minute.
+                </td>
               </tr>
             </tbody>
           </table>
@@ -639,7 +645,6 @@ instance.destroy();
             </tbody>
           </table>
         </div>
-
 
 
         <div class="section">
@@ -683,7 +688,8 @@ instance.destroy();
           <h5>Methods</h5>
 
           <blockquote>
-            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get
+              the
               plugin instance like this: </p>
             <pre><code class="language-javascript col s12">
   var instance = M.Timepicker.getInstance(elem);
@@ -738,13 +744,373 @@ instance.destroy();
 
       </div>
 
+      <div id="color-picker" class="section scrollspy">
+        <h3 class="header">Color Picker</h3>
+        <p>The colorpicker allows users to select a color from an interactive panel.</p>
+        <div class="input-field">
+          <input id="color" type="text" class="colorpicker">
+          <label for="color">Color</label>
+        </div>
+        <pre><code class="language-markup">
+  &lt;input type="text" class="colorpicker">
+        </code></pre>
+
+
+        <div class="section">
+          <h5>Initialization</h5>
+          <pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.colorpicker');
+    var instances = M.Colorpicker.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.colorpicker').colorpicker();
+  });
+          </code></pre>
+        </div>
+
+
+        <div class="section">
+          <h5>Options</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>duration</td>
+                <td>Number</td>
+                <td>350</td>
+                <td>Duration of the transition from/to the category/variant view.</td>
+              </tr>
+              <tr>
+                <td>container</td>
+                <td>String</td>
+                <td>null</td>
+                <td>Specify a selector for a DOM element to render the modal in, by default it will be placed before
+                  the input.
+                </td>
+              </tr>
+              <tr>
+                <td>colors</td>
+                <td>Object</td>
+                <td>See Colors list documentation</td>
+                <td>List of colors available in the picker.
+                </td>
+              </tr>
+              <tr>
+                <td>showClearBtn</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Show the clear button in the Colorpicker.</td>
+              </tr>
+              <tr>
+                <td>defaultColor</td>
+                <td>String</td>
+                <td>'materialize-red base'</td>
+                <td>Default color to set on the colorpicker</td>
+              </tr>
+              <tr>
+                <td>i18n</td>
+                <td>Object</td>
+                <td>See i18n documentation.</td>
+                <td>Internationalization options.</td>
+              </tr>
+              <tr>
+                <td>autoClose</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Automatically close picker when variant is selected.</td>
+              </tr>
+              <tr>
+                <td>onOpenStart</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called before modal is opened.</td>
+              </tr>
+              <tr>
+                <td>onOpenEnd</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called after modal is opened.</td>
+              </tr>
+              <tr>
+                <td>onCloseStart</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called before modal is closed.</td>
+              </tr>
+              <tr>
+                <td>onCloseEnd</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function called after modal is closed.</td>
+              </tr>
+              <tr>
+                <td>onSelect</td>
+                <td>Function</td>
+                <td>null</td>
+                <td>Callback function when a time is selected, first parameter is the hour and the second is the
+                  minute.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Colorpicker Internationalization options</h5>
+          <p>Use these in the i18n option to localize the colorpicker.</p>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Text</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>cancel</td>
+                <td>'Cancel'</td>
+              </tr>
+              <tr>
+                <td>clear</td>
+                <td>'Clear'</td>
+              </tr>
+              <tr>
+                <td>done</td>
+                <td>'Ok'</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h5>Colorpicker color list options</h5>
+          <p>Use these in the colors option to choose the colors availaible in the colorpicker.</p>
+          <pre><code class="language-javascript">
+let _default = {
+    colors: {
+      'materialize-red': [
+        'base',
+        'lighten-5',
+        'lighten-4',
+        'lighten-3',
+        'lighten-2',
+        'lighten-1',
+        'darken-1',
+        'darken-2',
+        'darken-3',
+        'darken-4'
+      ],
+      'red': [
+        'base',
+        'lighten-5',
+        'lighten-4',
+        'lighten-3',
+        'lighten-2',
+        'lighten-1',
+        'darken-1',
+        'darken-2',
+        'darken-3',
+        'darken-4',
+        'accent-1',
+        'accent-2',
+        'accent-3',
+        'accent-4'
+      ],
+      'pink': [
+        'base',
+        [...]
+      ],
+      'purple': [
+        'base',
+        [...]
+      ],
+      'deep-purple': [
+        'base',
+        [...]
+      ],
+      'indigo': [
+        'base',
+        [...]
+      ],
+      'blue': [
+        'base',
+        [...]
+      ],
+      'light-blue': [
+        'base',
+        [...]
+      ],
+      'cyan': [
+        'base',
+        [...]
+      ],
+      'teal': [
+        'base',
+        [...]
+      ],
+      'green': [
+        'base',
+        [...]
+      ],
+      'light-green': [
+        'base',
+        [...]
+      ],
+      'lime': [
+        'base',
+        [...]
+      ],
+      'yellow': [
+        'base',
+        [...]
+      ],
+      'amber': [
+        'base',
+        [...]
+      ],
+      'orange': [
+        'base',
+        [...]
+      ],
+      'deep-orange': [
+        'base',
+        [...]
+      ],
+      'brown': [
+        'base',
+        [...]
+      ],
+      'blue-grey': [
+        'base',
+        [...]
+      ],
+      'grey': [
+        'base',
+        [...]
+      ]
+    },
+          </code></pre>
+        </div>
+
+        <div class="section">
+          <h5>Properties</h5>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>el</td>
+                <td>Element</td>
+                <td>The input element the plugin was initialized with.</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>Object</td>
+                <td>The options the instance was initialized with.</td>
+              </tr>
+              <tr>
+                <td>isOpen</td>
+                <td>Boolean</td>
+                <td>If the picker is open.</td>
+              </tr>
+              <tr>
+                <td>time</td>
+                <td>String</td>
+                <td>The selected time.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="section">
+          <h5>Methods</h5>
+
+          <blockquote>
+            <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get
+              the
+              plugin instance like this: </p>
+            <pre><code class="language-javascript col s12">
+  var instance = M.Colorpicker.getInstance(elem);
+
+  /* jQuery Method Calls
+    You can still use the old jQuery plugin method calls.
+    But you won't be able to access instance properties.
+
+    $('.colorpicker').colorpicker('methodName');
+    $('.colorpicker').colorpicker('methodName', paramName);
+  */
+            </code></pre>
+          </blockquote>
+          <h5 class="method-header">
+            .open();
+          </h5>
+          <p>Open colorpicker</p>
+          <pre><code class="language-javascript col s12">
+instance.open();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .close();
+          </h5>
+          <p>Close colorpicker</p>
+          <pre><code class="language-javascript col s12">
+instance.close();
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .showView();
+          </h5>
+          <p>Show color category or color variant view on colorpicker</p>
+          <h6>Arguments</h6>
+          <p>
+            <b>String:</b> The name of the view you want to switch to, 'category' or 'variant'.</p>
+          <pre><code class="language-javascript col s12">
+instance.showView('category');
+          </code></pre>
+          <br>
+
+          <h5 class="method-header">
+            .destroy();
+          </h5>
+          <p>Destroy plugin instance and teardown</p>
+          <pre><code class="language-javascript col s12">
+instance.destroy();
+          </code></pre>
+        </div>
+
+      </div>
     </div>
 
     <div class="col hide-on-small-only m3 xl3 offset-xl1">
       <div class="toc-wrapper">
         <div class="buysellads hide-on-small-only">
           <!-- CarbonAds Zone Code -->
-          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIK27J&placement=materializecss" id="_carbonads_js"></script>
+          <script async type="text/javascript"
+                  src="//cdn.carbonads.com/carbon.js?serve=CKYIK27J&placement=materializecss"
+                  id="_carbonads_js"></script>
         </div>
         <div style="height: 1px;">
           <ul class="section table-of-contents">
@@ -753,6 +1119,9 @@ instance.destroy();
             </li>
             <li>
               <a href="#time-picker">Time Picker</a>
+            </li>
+            <li>
+              <a href="#color-picker">Color Picker</a>
             </li>
           </ul>
         </div>

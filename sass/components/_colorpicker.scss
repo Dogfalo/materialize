@@ -1,0 +1,194 @@
+/* Colorpicker Containers */
+.colorpicker-modal {
+  max-width: 325px;
+  max-height: none;
+}
+
+.colorpicker-container.modal-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.text-primary {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Color view display */
+.colorpicker-color-display {
+  @media #{$medium-and-up} {
+    width: 200px !important;
+  }
+  flex: 1 auto;
+  background-color: $secondary-color;
+  padding: 10px;
+  font-weight: 300;
+}
+
+.colorpicker-text-container {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  position: relative;
+  user-select: none;
+}
+
+.colorpicker-display-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.colorpicker-span-category,
+.colorpicker-span-variant {
+  flex: 1 auto;
+  cursor: pointer;
+  width: 100% !important;
+}
+
+/* Color List View Display */
+.colorpicker-color-listview {
+  flex: 2.5 auto;
+}
+
+.colorpicker-plate {
+  background-color: $colorpicker-listview-plate-bg;
+  height: 270px;
+  position: relative;
+  margin: 25px 35px 5px;
+  user-select: none;
+}
+
+.colorpicker-dial {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.colorpicker-variant {
+  visibility: hidden;
+}
+
+.colorpicker-dial {
+  transition: opacity 175ms;
+}
+
+.colorpicker-dial-out {
+  &.colorpicker-category {
+    transform: scale(1.1, 1.1);
+  }
+
+  &.colorpicker-variant {
+    transform: scale(.8, .8);
+  }
+
+  opacity: 0;
+}
+
+.colorpicker-category, .colorpicker-variant {
+  overflow: hidden !important;
+  overflow-y: auto !important;
+}
+
+.colorpicker-category-item {
+  background-color: #fff;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+
+  &:hover {
+    background-color: #ddd;
+    color: $secondary-color;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .color-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .color-name {
+    position: absolute;
+    top: 25%;
+    left: 60px;
+  }
+}
+
+.colorpicker-variant-item {
+  background-color: #fff;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background-color: #ddd;
+    color: $secondary-color;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .variant-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 0;
+  }
+
+  .variant-name {
+    position: absolute;
+    top: 25%;
+    left: 60px;
+  }
+}
+
+/* Footer */
+.colorpicker-footer {
+  margin: 0 auto;
+  padding: 5px 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.colorpicker-clear {
+  color: $error-color;
+}
+
+.colorpicker-close {
+  color: $secondary-color;
+}
+
+.colorpicker-clear,
+.colorpicker-close {
+  padding: 0 20px;
+}
+
+/* Media Queries */
+@media #{$medium-and-up} {
+  .colorpicker-modal {
+    max-width: 600px;
+  }
+
+  .colorpicker-container.modal-content {
+    flex-direction: row;
+  }
+
+  .colorpicker-text-container {
+    top: 32%;
+  }
+}

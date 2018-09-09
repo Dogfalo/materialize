@@ -196,6 +196,7 @@
     $('.datepicker').datepicker();
     $('.tabs').tabs();
     $('.timepicker').timepicker();
+    $('.colorpicker').colorpicker();
     $('.tooltipped').tooltip();
     $('select')
       .not('.disabled')
