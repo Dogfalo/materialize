@@ -25,5 +25,6 @@ import CharacterCounter from './characterCounter.js';
 import Carousel from './carousel.js';
 import TapTarget from './tapTarget.js';
 import FormSelect from './select.js';
+import Range from './range.js';
 
 export default M;

@@ -607,6 +607,12 @@ module.exports = function(grunt) {
           ignore: true
         }
       }
+    },
+
+    exec: {
+      compile_js: {
+        cmd: 'npm run compile-js'
+      }
     }
   };
 
@@ -630,6 +636,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-exec');
 
   // define the tasks
   grunt.registerTask('release', [
@@ -658,7 +665,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'clean:temp']);
+  // grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'clean:temp']);
+  grunt.registerTask('js_compile', ['exec:compile_js']);
   grunt.registerTask('sass_compile', [
     'sass:gh',
     'sass:bin',

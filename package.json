@@ -16,7 +16,8 @@
     "url": "https://github.com/Dogfalo/materialize/issues"
   },
   "scripts": {
-    "dev": "rollup -c -w",
+    "dev": "grunt monitor",
+    "compile-js": "rollup -c",
     "test": "grunt travis",
     "precommit": "lint-staged"
   },
@@ -43,11 +44,11 @@
     "grunt-contrib-jasmine": "^1.1.0",
     "grunt-contrib-uglify": "^3.0.1",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-exec": "^3.0.0",
     "grunt-notify": "^0.4.5",
     "grunt-postcss": "^0.8.0",
     "grunt-remove-logging": "^0.2.0",
     "grunt-rename-util": "^1.0.0",
-    "grunt-rollup": "^9.0.0",
     "grunt-sass": "^2.0.0",
     "grunt-text-replace": "^0.4.0",
     "husky": "^0.14.3",
@@ -58,11 +59,14 @@
     "node-archiver": "^0.3.0",
     "node-sass": "^4.7.2",
     "phantomjs-prebuilt": "^2.1.14",
+    "prettier": "^1.12.1",
+    "rollup": "^0.65.2",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-browsersync": "^0.2.6",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-serve": "^0.4.2",
-    "prettier": "^1.12.1"
+    "rollup-plugin-uglify": "^5.0.2",
+    "uglify": "^0.1.5"
   },
   "files": [
     "dist",
