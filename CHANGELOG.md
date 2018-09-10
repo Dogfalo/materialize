@@ -2,6 +2,64 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
+## 1.0.0 (September 9th, 2018)
+- [Full Changelog here](https://github.com/Dogfalo/materialize/blob/v1-dev/v1-changelog.md)
+
+## 1.0.0-rc.2 (June 23rd, 2018)
+- Autocomplete
+  - Fixed bug where Autocomplete did not open properly in certain cases with keyboard focus
+
+- Carousel
+  - Fix noWrap option bug
+
+- Collapsible
+  - Now correctly removes all event listeners on destroy
+
+- Materialbox
+  - Destroy now removed wrapper element added during intialization
+
+- Pushpin
+  - Fixed bug on IE11 where class was not removed properly
+
+- Select
+  - No longer triggers onchange event when selecting the same option
+
+- Sidenav
+  - Destroy now reenables body scrolling if Sidenav was destroyed while it was open
+
+- Tabs
+  - Tab indicator no longer displays improperly when a scrollbar is present in the element
+
+
+## 1.0.0-rc.1 (May 1st, 2018)
+- Autocomplete
+  - Added open and close methods
+  - Fixed bug where Autocomplete would close on click
+
+- Datepicker
+  - Added autoClose option
+
+- Modal
+  - Fixed issue with focus with nested modals
+
+- Select
+  - Removed `active` class on option elements
+  - Fixed bug where `selected` class was not properly removed on option elements
+
+- Sidenav
+  - Destroy method now correctly removes style property
+
+- Text Input
+  - Fixed bug where autofill on chrome overlapped text input
+
+- Toast
+  - Fixed bug where Toast did not respect inDuration option
+
+- Tooltip
+  - Fixed tooltip positioning bug in certain scenarios when html height was less than screen height
+  - Fixed bug where tooltip stayed open on click
+
+
 ## 1.0.0-beta (March 21st, 2018)
 - Autocomplete
   - Now uses dropdown

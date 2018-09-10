@@ -66,5 +66,19 @@ describe("Dropdown Plugin", function () {
         }, 400);
       }, 400);
     });
+
+    it("hovered should destroy itself", function (done) {
+      var dropdownTrigger = $('#dropdownDestroyTrigger');
+      $(dropdownTrigger).dropdown('destroy');
+      $(dropdownTrigger).dropdown({ hover: true });
+
+      expect(function() {
+        $(dropdownTrigger).dropdown('destroy');
+      }).not.toThrow();
+
+      setTimeout(function() {
+        done();
+      }, 400);
+  });
   });
 });

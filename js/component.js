@@ -1,4 +1,4 @@
-import cash from './cash.js';
+import $ from './cash.js';
 
 export default class Component {
   /**
@@ -10,7 +10,7 @@ export default class Component {
   constructor(classDef, el, options) {
     // Display error if el is valid HTML Element
     if (!(el instanceof Element)) {
-      console.error( Error(el + ' is not an HTML Element'));
+      console.error(Error(el + ' is not an HTML Element'));
     }
 
     // If exists, destroy and reinitialize in child
@@ -20,9 +20,8 @@ export default class Component {
     }
 
     this.el = el;
-    this.$el = cash(el);
+    this.$el = $(el);
   }
-
 
   /**
    * Initializes components
@@ -34,7 +33,6 @@ export default class Component {
     let instances = null;
     if (els instanceof Element) {
       instances = new classDef(els, options);
-
     } else if (!!els && (els.jquery || els.cash || els instanceof NodeList)) {
       let instancesArr = [];
       for (let i = 0; i < els.length; i++) {

@@ -38,4 +38,20 @@ beforeEach(function() {
 
     el.dispatchEvent(ev);
   }
+
+  window.keyup = function(el, keycode) {
+    var ev = document.createEvent("Events");
+    ev.initEvent("keyup", true, true);
+
+    ev.keyCode = keycode;
+    ev.which = keycode;
+
+    el.dispatchEvent(ev);
+  }
+
+  window.focus = function(el) {
+    var ev = document.createEvent("Events");
+    ev.initEvent("focus", true, true);
+    el.dispatchEvent(ev);
+  }
 });

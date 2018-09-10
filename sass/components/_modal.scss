@@ -1,4 +1,8 @@
 .modal {
+  &:focus {
+    outline: none;
+  }
+
   @extend .z-depth-5;
 
   display: none;

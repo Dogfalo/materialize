@@ -88,6 +88,7 @@
 ## Select
 - Renamed plugin call `.material_select()` to `.formSelect()`
 - Added `dropdownOptions` as a way to customize the dropdown that Select uses
+- Removed `active` class
 
 
 ## Sidenav

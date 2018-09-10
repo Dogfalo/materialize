@@ -25,7 +25,6 @@
 
     &:focus {
       outline: none;
-      background-color: darken($dropdown-hover-bg-color, 8%);
     }
 
     &.divider {
@@ -67,10 +66,20 @@
   }
 }
 
+body.keyboard-focused {
+  .dropdown-content li:focus {
+    background-color: darken($dropdown-hover-bg-color, 8%);
+  }
+}
+
 // Input field specificity bugfix
 .input-field.col .dropdown-content [type="checkbox"] + label {
   top: 1px;
   left: 0;
   height: 18px;
   transform: none;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
 }
