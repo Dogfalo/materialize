@@ -102,7 +102,10 @@
     onSelect: null,
     onOpen: null,
     onClose: null,
-    onDraw: null
+    onDraw: null,
+
+    // modal options
+    modalOptions: {}
   };
 
   /**
@@ -252,11 +255,10 @@
 
     _setupModal() {
       this.modalEl.id = 'modal-' + this.id;
-      this.modal = M.Modal.init(this.modalEl, {
-        onCloseEnd: () => {
+      this.options.modalOptions['onCloseEnd'] = () => {
           this.isOpen = false;
         }
-      });
+      this.modal = M.Modal.init(this.modalEl, this.options.modalOptions);
     }
 
     toString(format) {
