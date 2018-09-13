@@ -8,6 +8,7 @@
     container: null,
     coverTrigger: true,
     closeOnClick: true,
+    openOnArrowDown: true,
     hover: false,
     inDuration: 150,
     outDuration: 250,
@@ -225,7 +226,7 @@
 
     _handleTriggerKeydown(e) {
       // ARROW DOWN OR ENTER WHEN SELECT IS CLOSED - open Dropdown
-      if ((e.which === M.keys.ARROW_DOWN || e.which === M.keys.ENTER) && !this.isOpen) {
+      if (((e.which === M.keys.ARROW_DOWN && this.options.openOnArrowDown) || e.which === M.keys.ENTER) && !this.isOpen) {
         e.preventDefault();
         this.open();
       }
