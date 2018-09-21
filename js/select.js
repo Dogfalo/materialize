@@ -132,6 +132,8 @@
             .find('li')
             .removeClass('selected');
           $(option).toggleClass('selected', selected);
+          this._keysSelected = {};
+          this._keysSelected[option.id] = true;
         }
 
         // Set selected on original select option

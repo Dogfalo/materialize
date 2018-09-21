@@ -8,6 +8,7 @@ describe("Select Plugin", function () {
     var browserSelect, normalInput, normalDropdown;
 
     beforeEach(function() {
+      $('select').formSelect();
       browserSelect = $('select.normal');
     });
 
@@ -47,6 +48,27 @@ describe("Select Plugin", function () {
     it("should not initialize if browser default", function () {
       browserDefault = $('select.browser-default');
       expect(browserDefault.parent().hasClass('select-wrapper')).toEqual(false, 'Wrapper should not be made');
+    });
+
+    it("should getSelectedValues correctly", function(done) {
+      normalInput = browserSelect.parent().find('input.select-dropdown');
+      normalDropdown = browserSelect.parent().find('ul.select-dropdown');
+
+      expect(browserSelect[0].M_FormSelect.getSelectedValues()).toEqual([browserSelect[0].value], 'Should equal initial selected value');
+
+      click(normalInput[0]);
+
+      setTimeout(function() {
+        var firstOption = normalDropdown.find('li:not(.disabled)').first();
+        click(firstOption[0]);
+        normalInput.blur();
+
+        setTimeout(function() {
+          expect(browserSelect[0].M_FormSelect.getSelectedValues()).toEqual([browserSelect[0].value], 'Should equal value of first option');
+
+          done();
+        }, 400);
+      }, 400);
     });
   });
 
