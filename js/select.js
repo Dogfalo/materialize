@@ -362,7 +362,9 @@
 
       options.each((el) => {
         if ($(el).prop('selected')) {
-          let text = $(el).text();
+          let text = $(el)
+            .text()
+            .trim();
           values.push(text);
         }
       });
