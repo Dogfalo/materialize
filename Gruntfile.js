@@ -16,7 +16,6 @@ module.exports = function(grunt) {
           specs: 'tests/spec/**/*Spec.js',
           helpers: 'tests/spec/helper.js',
           keepRunner: true
-          //helpers: 'test/spec/*.js'
         }
       }
     },
@@ -623,7 +622,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
@@ -665,7 +663,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  // grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'clean:temp']);
   grunt.registerTask('js_compile', ['exec:compile_js']);
   grunt.registerTask('sass_compile', [
     'sass:gh',

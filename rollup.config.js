@@ -11,10 +11,10 @@ export default [
       format: 'umd'
     },
     plugins: [
+      // uglify(),
       babel({
         exclude: 'node_modules/**' // only transpile our source code
-      }),
-      uglify()
+      })
     ]
   }
 ];
