@@ -42,7 +42,6 @@
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jasmine": "^1.1.0",
-    "grunt-contrib-uglify": "^3.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-exec": "^3.0.0",
     "grunt-notify": "^0.4.5",
@@ -62,9 +61,6 @@
     "prettier": "^1.12.1",
     "rollup": "^0.65.2",
     "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-browsersync": "^0.2.6",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-serve": "^0.4.2",
     "rollup-plugin-uglify": "^5.0.2",
     "uglify": "^0.1.5"
   },
