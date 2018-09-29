@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import { uglify } from 'rollup-plugin-uglify';
+import minify from 'rollup-plugin-babel-minify';
 
 export default [
   // browser-friendly UMD build
@@ -8,13 +9,18 @@ export default [
     output: {
       file: 'bin/materialize.js',
       name: 'M',
-      format: 'umd'
+      format: 'iife',
+      globals: {
+        window: 'window'
+      }
     },
     plugins: [
-      // uglify(),
       babel({
         exclude: 'node_modules/**' // only transpile our source code
       })
+      // minify({
+      //   // Options for babel-minify.
+      // })
     ]
   }
 ];
