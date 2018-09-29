@@ -1,5 +1,6 @@
 import M from './global.js';
 import Component from './component.js';
+import $ from './cash.js';
 
 let _defaults = {
   top: 0,

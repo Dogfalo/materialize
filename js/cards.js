@@ -1,4 +1,5 @@
 import anim from './anime.min.js';
+import $ from './cash.js';
 
 $(document).on('click', '.card', function(e) {
   if ($(this).children('.card-reveal').length) {

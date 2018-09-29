@@ -1,5 +1,5 @@
 import M from './global.js';
-import cash from './cash.js';
+import $ from './cash.js';
 
 // Function to update labels of text fields
 M.updateTextFields = function() {

@@ -1,6 +1,7 @@
 import M from './global.js';
 import Component from './component.js';
 import Modal from './modal.js';
+import $ from './cash.js';
 
 let _defaults = {
   // Close when date is selected

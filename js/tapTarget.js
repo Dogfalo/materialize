@@ -1,6 +1,6 @@
 import M from './global.js';
 import Component from './component.js';
-import anim from './anime.min.js';
+import $ from './cash.js';
 
 let _defaults = {
   onOpen: undefined,

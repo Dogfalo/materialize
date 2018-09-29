@@ -1,6 +1,7 @@
 import M from './global.js';
 import Component from './component.js';
 import Dropdown from './dropdown.js';
+import $ from './cash.js';
 
 let _defaults = {
   data: {}, // Autocomplete data set
