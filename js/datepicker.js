@@ -240,11 +240,11 @@
 
     _insertHTMLIntoDOM() {
       if (this.options.showClearBtn) {
-        $(this.clearBtn).css({ visibility: '' });
+        $(this.clearBtn).css({ display: '' });
         this.clearBtn.innerHTML = this.options.i18n.clear;
       }
       if (this.options.showTodayBtn) {
-        $(this.todayBtn).css({ visibility: '' });
+        $(this.todayBtn).css({ display: '' });
         this.todayBtn.innerHTML = this.options.i18n.today;
       }
 
@@ -978,8 +978,8 @@
     '<div class="datepicker-calendar"></div>',
     '<div class="datepicker-footer">',
     '<div class="extra-buttons">',
-    '<button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>',
-    '<button class="btn-flat datepicker-today waves-effect" style="visibility: hidden;" type="button"></button>',
+    '<button class="btn-flat datepicker-clear waves-effect" style="display: none;" type="button"></button>',
+    '<button class="btn-flat datepicker-today waves-effect" style="display: none;" type="button"></button>',
     '</div>',
     '<div class="confirmation-btns">',
     '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>',
