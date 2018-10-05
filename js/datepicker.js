@@ -58,6 +58,9 @@
     // Show today button
     showTodayBtn: false,
 
+    // use browsers select
+    nativeSelects: false,
+
     // internationalization
     i18n: {
       cancel: 'Cancel',
@@ -223,7 +226,7 @@
       this._removeEventHandlers();
       this.modal.destroy();
       $(this.modalEl).remove();
-      this.destroySelects();
+      if (!this.options.nativeSelects) this.destroySelects();
       this.el.M_Datepicker = undefined;
     }
 
@@ -701,21 +704,26 @@
           ) + this.render(this.calendars[c].year, this.calendars[c].month, randId);
       }
 
-      this.destroySelects();
+      if (!this.options.nativeSelects) this.destroySelects();
 
       this.calendarEl.innerHTML = html;
 
       // Init Materialize Select
       let yearSelect = this.calendarEl.querySelector('.orig-select-year');
       let monthSelect = this.calendarEl.querySelector('.orig-select-month');
-      M.FormSelect.init(yearSelect, {
-        classes: 'select-year',
-        dropdownOptions: { container: document.body, constrainWidth: false }
-      });
-      M.FormSelect.init(monthSelect, {
-        classes: 'select-month',
-        dropdownOptions: { container: document.body, constrainWidth: false }
-      });
+      if (this.options.nativeSelects) {
+        yearSelect.classList.add('browser-default');
+        monthSelect.classList.add('browser-default');
+      } else {
+        M.FormSelect.init(yearSelect, {
+          classes: 'select-year',
+          dropdownOptions: { container: document.body, constrainWidth: false }
+        });
+        M.FormSelect.init(monthSelect, {
+          classes: 'select-month',
+          dropdownOptions: { container: document.body, constrainWidth: false }
+        });
+      }
 
       // Add change handlers for select
       yearSelect.addEventListener('change', this._handleYearChange.bind(this));
@@ -860,7 +868,7 @@
     }
 
     _handleTodayClick() {
-      this.date = new Date();
+      this.setDate(new Date());
       this.setInputValue();
       this.close();
     }
@@ -941,6 +949,7 @@
         return;
       }
 
+      this.$el[0].blur(); // avoid onscreen keyboard on mobile
       this.isOpen = true;
       if (typeof this.options.onOpen === 'function') {
         this.options.onOpen.call(this);
