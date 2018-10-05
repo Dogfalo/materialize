@@ -55,10 +55,14 @@
     // Show clear button
     showClearBtn: false,
 
+    // Show today button
+    showTodayBtn: false,
+
     // internationalization
     i18n: {
       cancel: 'Cancel',
       clear: 'Clear',
+      today: 'Today',
       done: 'Ok',
       previousMonth: '‹',
       nextMonth: '›',
@@ -238,6 +242,10 @@
       if (this.options.showClearBtn) {
         $(this.clearBtn).css({ visibility: '' });
         this.clearBtn.innerHTML = this.options.i18n.clear;
+      }
+      if (this.options.showTodayBtn) {
+        $(this.todayBtn).css({ visibility: '' });
+        this.todayBtn.innerHTML = this.options.i18n.today;
       }
 
       this.doneBtn.innerHTML = this.options.i18n.done;
@@ -741,6 +749,10 @@
         this._handleClearClickBound = this._handleClearClick.bind(this);
         this.clearBtn.addEventListener('click', this._handleClearClickBound);
       }
+      if (this.options.showTodayBtn) {
+        this._handleTodayClickBound = this._handleTodayClick.bind(this);
+        this.todayBtn.addEventListener('click', this._handleTodayClickBound);
+      }
     }
 
     _setupVariables() {
@@ -753,6 +765,9 @@
       this.dateTextEl = this.modalEl.querySelector('.date-text');
       if (this.options.showClearBtn) {
         this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
+      }
+      if (this.options.showTodayBtn) {
+        this.todayBtn = this.modalEl.querySelector('.datepicker-today');
       }
       this.doneBtn = this.modalEl.querySelector('.datepicker-done');
       this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
@@ -842,6 +857,12 @@
           this.nextMonth();
         }
       }
+    }
+
+    _handleTodayClick() {
+      this.date = new Date();
+      this.setInputValue();
+      this.close();
     }
 
     _handleClearClick() {
@@ -956,7 +977,10 @@
     '<div class="datepicker-calendar-container">',
     '<div class="datepicker-calendar"></div>',
     '<div class="datepicker-footer">',
+    '<div class="extra-buttons">',
     '<button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>',
+    '<button class="btn-flat datepicker-today waves-effect" style="visibility: hidden;" type="button"></button>',
+    '</div>',
     '<div class="confirmation-btns">',
     '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>',
     '<button class="btn-flat datepicker-done waves-effect" type="button"></button>',
