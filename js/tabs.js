@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (function($, anim) {
   'use strict';
 
@@ -7,6 +8,47 @@
     swipeable: false,
     responsiveThreshold: Infinity // breakpoint for swipeable
   };
+=======
+(function ($) {
+
+  var methods = {
+    init : function(options) {
+      var defaults = {
+        onShow: null,
+        swipeable: false,
+        responsiveThreshold: Infinity, // breakpoint for swipeable
+      };
+      options = $.extend(defaults, options);
+      var namespace = Materialize.objectSelectorString($(this));
+
+      return this.each(function(i) {
+
+      var uniqueNamespace = namespace+i;
+
+      // For each set of tabs, we want to keep track of
+      // which tab is active and its associated content
+      var $this = $(this),
+          window_width = $(window).width();
+
+      var $active, $content, $links = $this.find('li.tab a'),
+          $tabs_width = $this.width(),
+          $tabs_content = $(),
+          $tabs_wrapper,
+          $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
+          $indicator,
+          index = 0,
+          prev_index = 0,
+          clicked = false,
+          clickedTimeout,
+          transition = 300;
+
+
+      // Finds right attribute for indicator based on active tab.
+      // el: jQuery Object
+        var calcRightPos = function(el) {
+          return Math.ceil($tabs_width - el.position().left - el[0].getBoundingClientRect().width - $this.scrollLeft());
+      };
+>>>>>>> b94dd3c7eb37cf51acf6398cd710f7984f62e9e2
 
   /**
    * @class
@@ -245,10 +287,12 @@
       }
 
       let $tabsContent = $();
-      this.$tabLinks.each((link) => {
-        let $currContent = $(M.escapeHash(link.hash));
-        $currContent.addClass('carousel-item');
-        $tabsContent = $tabsContent.add($currContent);
+          this.$tabLinks.each((link) => {
+          if(!$(link).parent('li.tab').hasClass('disabled')){
+            let $currContent = $(M.escapeHash(link.hash));
+            $currContent.addClass('carousel-item');
+            $tabsContent = $tabsContent.add($currContent);
+          }
       });
 
       let $tabsWrapper = $('<div class="tabs-content carousel carousel-slider"></div>');
