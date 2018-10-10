@@ -8939,7 +8939,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             return _this55.formats[label]();
           }
 
-          return label;
+          return label.replace("!", "");
         }).join('');
         return formattedDate;
       }
