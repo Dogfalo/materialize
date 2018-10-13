@@ -70,6 +70,7 @@
     box-sizing: border-box;
     padding: 0 $gutter-width / 2;
     min-height: 1px;
+    @include reset-offset;
 
     &[class*="push-"],
     &[class*="pull-"] {
@@ -80,8 +81,7 @@
     @while $i <= $num-cols {
       $perc: unquote((100 / ($num-cols / $i)) + "%");
       &.s#{$i} {
-        width: $perc;
-        @include reset-offset;
+        width: $perc;       
       }
       $i: $i + 1;
     }
@@ -100,7 +100,6 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.m#{$i} {
           width: $perc;
-          @include reset-offset;
         }
         $i: $i + 1
       }
@@ -120,7 +119,6 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.l#{$i} {
           width: $perc;
-          @include reset-offset;
         }
         $i: $i + 1;
       }
@@ -140,7 +138,6 @@
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.xl#{$i} {
           width: $perc;
-          @include reset-offset;
         }
         $i: $i + 1;
       }
