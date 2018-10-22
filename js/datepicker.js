@@ -870,7 +870,7 @@
     _handleTodayClick() {
       this.setDate(new Date());
       this.setInputValue();
-      this.close();
+//      this.close();
     }
 
     _handleClearClick() {
