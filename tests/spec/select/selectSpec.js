@@ -5,16 +5,17 @@ describe("Select Plugin", function () {
   });
 
   describe("Select", function () {
-    var browserSelect, normalInput, normalDropdown;
+    var browserSelect, normalInput, normalDropdown, selectInstance;
 
     beforeEach(function() {
       $('select').formSelect();
       browserSelect = $('select.normal');
+      selectInstance = M.FormSelect.getInstance(browserSelect[0]);
     });
 
     it("should open dropdown and select option", function (done) {
-      normalInput = browserSelect.parent().find('input.select-dropdown');
-      normalDropdown = browserSelect.parent().find('ul.select-dropdown');
+      normalInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      normalDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
       expect(normalInput).toExist('Should dynamically generate select dropdown structure.');
       expect(normalDropdown).toExist('Should dynamically generate select dropdown structure.');
@@ -38,8 +39,8 @@ describe("Select Plugin", function () {
     });
 
     it("should have pre-selected value", function () {
-      normalInput = browserSelect.parent().find('input.select-dropdown');
-      normalDropdown = browserSelect.parent().find('ul.select-dropdown');
+      normalInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      normalDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
       var firstOption = browserSelect.find('option[selected]');
       expect(normalInput.val()).toEqual(firstOption.text(), 'Value should be equal to preselected option.');
@@ -51,8 +52,8 @@ describe("Select Plugin", function () {
     });
 
     it("should getSelectedValues correctly", function(done) {
-      normalInput = browserSelect.parent().find('input.select-dropdown');
-      normalDropdown = browserSelect.parent().find('ul.select-dropdown');
+      normalInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      normalDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
       expect(browserSelect[0].M_FormSelect.getSelectedValues()).toEqual([browserSelect[0].value], 'Should equal initial selected value');
 
@@ -73,15 +74,16 @@ describe("Select Plugin", function () {
   });
 
   describe("Multiple Select", function () {
-    var browserSelect, multipleInput, multipleDropdown;
+    var browserSelect, multipleInput, multipleDropdown, selectInstance;
 
     beforeEach(function() {
       browserSelect = $('select.multiple');
+      selectInstance = M.FormSelect.getInstance(browserSelect[0]);
     });
 
     it("should open dropdown and select multiple options", function(done) {
-      multipleInput = browserSelect.parent().find('input.select-dropdown');
-      multipleDropdown = browserSelect.parent().find('ul.select-dropdown');
+      multipleInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      multipleDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
       expect(multipleInput).toExist('Should dynamically generate select dropdown structure.');
       expect(multipleDropdown).toExist('Should dynamically generate select dropdown structure.');
@@ -108,8 +110,8 @@ describe("Select Plugin", function () {
     });
 
     it("should open dropdown and deselect multiple options", function(done) {
-      multipleInput = browserSelect.parent().find('input.select-dropdown');
-      multipleDropdown = browserSelect.parent().find('ul.select-dropdown');
+      multipleInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      multipleDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
       expect(multipleInput).toExist('Should dynamically generate select dropdown structure.');
       expect(multipleDropdown).toExist('Should dynamically generate select dropdown structure.');
@@ -139,8 +141,8 @@ describe("Select Plugin", function () {
     });
 
     it("should have multiple pre-selected values", function () {
-      multipleInput = browserSelect.parent().find('input.select-dropdown');
-      multipleDropdown = browserSelect.parent().find('ul.select-dropdown');
+      multipleInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      multipleDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
       var secondOption = browserSelect.find('option[selected]').eq(0);
       var thirdOption = browserSelect.find('option[selected]').eq(1);
@@ -149,15 +151,16 @@ describe("Select Plugin", function () {
   });
 
   describe("Optgroup Select", function () {
-    var browserSelect, optInput, optDropdown, optionInOptgroup, optionAfterOptGroup;
+    var browserSelect, optInput, optDropdown, optionInOptgroup, optionAfterOptGroup, selectInstance;
 
     beforeEach(function() {
       browserSelect = $('select.optgroup');
+      selectInstance = M.FormSelect.getInstance(browserSelect[0]);
     });
 
     it("should open dropdown and select options", function(done) {
-      optInput = browserSelect.parent().find('input.select-dropdown');
-      optDropdown = browserSelect.parent().find('ul.select-dropdown');
+      optInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      optDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
       var optgroups = optDropdown.find('li.optgroup');
       browserSelect.find('optgroup').each(function(i) {
@@ -186,16 +189,16 @@ describe("Select Plugin", function () {
     });
 
     it("should have options inside optgroup indented", function() {
-      optionInOptgroup = browserSelect.parent().find('li.optgroup + li');
-      optionAfterOptGroup = browserSelect.parent().find('ul li:last-child');
+      optionInOptgroup = $(selectInstance.wrapper).find('li.optgroup + li');
+      optionAfterOptGroup = $(selectInstance.wrapper).find('ul li:last-child');
 
       expect(optionInOptgroup).toHaveClass('optgroup-option', 'Should have optgroup-option class');
       expect(optionAfterOptGroup).not.toHaveClass('optgroup-option', 'Should not have optgroup-option class');
     });
 
     it("should not do anything when optgroup li clicked", function(done) {
-      optInput = browserSelect.parent().find('input.select-dropdown');
-      optDropdown = browserSelect.parent().find('ul.select-dropdown');
+      optInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      optDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
       var originalVal = optInput.val();
 
       var optgroups = optDropdown.find('li.optgroup');
