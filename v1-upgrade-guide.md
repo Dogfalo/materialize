@@ -38,7 +38,7 @@
 ## Dropdown
 - Removed gutter option
 - Removed stopPropagation option
-- Call plugin on `.dropdown-content` instead of `.dropdown-button`
+- Call plugin on `.dropdown-trigger` instead of `.dropdown-button`
 - Change attribute `data-activates` to `data-target`
 - Rename classes `.dropdown-button` to `.dropdown-trigger`
 - Rename option `belowOrigin` to `coverTrigger`
@@ -116,7 +116,3 @@
 
 ## Transitions
 - JavaScript transitions removed
-
-
-
-
