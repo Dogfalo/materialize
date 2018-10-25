@@ -58,11 +58,14 @@
     destroy() {
       this.el.style.top = null;
       this._removePinClasses();
-      this._removeEventHandlers();
 
       // Remove pushpin Inst
       let index = Pushpin._pushpins.indexOf(this);
       Pushpin._pushpins.splice(index, 1);
+      if (Pushpin._pushpins.length === 0) {
+        this._removeEventHandlers();
+      }
+      this.el.M_Pushpin = undefined;
     }
 
     static _updateElements() {
