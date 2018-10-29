@@ -1256,6 +1256,23 @@ body.themes {
       transform: translateY(-6px);
     }
   }
+
+  .bundle-image {
+    width: 100%;
+
+    img {
+      &:hover {
+        opacity: .75;
+      }
+
+      width: 100%;
+      transition: opacity .2s;
+    }
+  }
+
+  .docs-footer {
+    margin-top: 0;
+  }
 }
 .shopify-buy-frame,
 .shopify-btn {
