@@ -31,7 +31,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.3",
     "grunt-babel": "^6.0.0",
     "grunt-banner": "^0.6.0",
     "grunt-browser-sync": "^2.2.0",
@@ -42,7 +42,7 @@
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jasmine": "^1.1.0",
     "grunt-contrib-uglify": "^3.0.1",
-    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
     "grunt-notify": "^0.4.5",
     "grunt-postcss": "^0.8.0",
     "grunt-remove-logging": "^0.2.0",
@@ -55,8 +55,8 @@
     "jquery": "^3.2.1",
     "lint-staged": "^7.0.4",
     "node-archiver": "^0.3.0",
-    "node-sass": "^4.7.2",
-    "phantomjs-prebuilt": "^2.1.14",
+    "node-sass": "^4.10.0",
+    "phantomjs-prebuilt": "^2.1.16",
     "prettier": "^1.12.1"
   },
   "files": [
