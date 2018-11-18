@@ -2,7 +2,7 @@
 
 ## Auto Init
 - Components are no longer initialized automatically on document load by Materialize
-- Added function `M.AutoInit()` that initializes all componenets
+- Added function `M.AutoInit()` that initializes all components
 
 ## Character Counter
 - Automatic initialization removed, initialize it manually as shown in documentation
