@@ -5,7 +5,8 @@
     indicators: true,
     height: 400,
     duration: 500,
-    interval: 6000
+    interval: 6000,
+    onCycleTo: null
   };
 
   /**
@@ -300,6 +301,10 @@
 
         this.$slides.eq(index).addClass('active');
         this.activeIndex = index;
+
+        if (this.options.onCycleTo) {
+          this.options.onCycleTo(this);
+        }
 
         // Reset interval
         this.start();
