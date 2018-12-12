@@ -1,5 +1,5 @@
 /*!
- * Materialize v1.0.0-rc.2 (http://materializecss.com)
+ * Materialize v1.0.0 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -6551,7 +6551,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
           transform-origin: 0 0;
 }
 
-.input-field > input[type]:-webkit-autofill:not(.browser-default) + label,
+.input-field > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label,
 .input-field > input[type=date]:not(.browser-default) + label,
 .input-field > input[type=time]:not(.browser-default) + label {
   -webkit-transform: translateY(-14px) scale(0.8);

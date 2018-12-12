@@ -197,7 +197,7 @@ ul.sidenav.sidenav-fixed {
     height: 70px;
   }
   img {
-    max-width: 150px;
+    max-width: 180px;
     max-height: 100%;
   }
 }
@@ -220,14 +220,14 @@ ul.sidenav.sidenav-fixed {
 }
 
 nav.top-nav {
-  height: 122px;
+  height: 110px;
   box-shadow: none;
   border-bottom: 1px solid $border-color;
   background-color: transparent;
 
   h1.header {
     margin: 0;
-    padding-top: 26px;
+    padding-top: 22px;
   }
 }
 a.sidenav-trigger.top-nav {
@@ -235,17 +235,12 @@ a.sidenav-trigger.top-nav {
   text-align: center;
   height: 48px;
   width: 48px;
-  left: 7.5%;
-  top: 0;
+  top: 28px;
   float: none;
   margin-left: 1.5rem;
   color: color("materialize-red", "lighten-3");
   font-size: 36px;
   z-index: 2;
-
-  &.full {
-    line-height: 122px;
-  }
 
   i {
     font-size: 32px;
@@ -254,7 +249,7 @@ a.sidenav-trigger.top-nav {
 
 @media #{$small-and-down} {
   a.sidenav-trigger.top-nav {
-    left: 5%;
+    left: 0;
   }
 
   ul.sidenav.sidenav-fixed {
@@ -366,17 +361,19 @@ a.sidenav-trigger.top-nav {
   }
 }
 
-#download-button {
-  background-color: color("materialize-red", "lighten-2");
-  width: 260px;
-  height: 70px;
-  line-height: 70px;
-  font-size: 18px;
-  font-weight: 400;
-
+#download-button,
+#upgrade-button {
   &:hover {
     background-color: lighten(color("materialize-red", "base"), 30%);
   }
+  background-color: color("materialize-red", "lighten-2");
+  width: 260px;
+  height: 70px;
+  margin: 4px;
+  padding: 0;
+  line-height: 70px;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .promo{
@@ -917,7 +914,7 @@ code[class*="language-"] {
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1000;
   padding: 15px 30px 20px;
   width: 299px;
   border-top: solid 1px #dbdbdb;
@@ -1245,11 +1242,36 @@ body.themes {
     }
 
     .badge.new {
+      &.modal-trigger {
+        &:hover {
+          @extend .z-depth-2;
+          opacity: .8;
+        }
+        cursor: pointer;
+        transition: box-shadow .2s, opacity .2s;
+      }
       font-weight: 400;
       float: none;
       display: inline-block;
       transform: translateY(-6px);
     }
+  }
+
+  .bundle-image {
+    width: 100%;
+
+    img {
+      &:hover {
+        opacity: .75;
+      }
+
+      width: 100%;
+      transition: opacity .2s;
+    }
+  }
+
+  .docs-footer {
+    margin-top: 0;
   }
 }
 .shopify-buy-frame,
