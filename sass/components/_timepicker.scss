@@ -104,6 +104,7 @@
 }
 .timepicker-dial {
 	transition: transform 350ms, opacity 350ms;
+	touch-action: manipulation;
 }
 .timepicker-dial-out {
   &.timepicker-hours {
