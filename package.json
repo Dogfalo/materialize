@@ -41,7 +41,7 @@
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jasmine": "^2.0.3",
-    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-contrib-uglify": "^4.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-notify": "^0.4.5",
     "grunt-postcss": "^0.8.0",
