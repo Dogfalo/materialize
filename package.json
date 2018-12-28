@@ -47,7 +47,7 @@
     "grunt-postcss": "^0.8.0",
     "grunt-remove-logging": "^0.2.0",
     "grunt-rename-util": "^1.0.0",
-    "grunt-sass": "^2.0.0",
+    "grunt-sass": "^3.0.2",
     "grunt-text-replace": "^0.4.0",
     "husky": "^1.2.1",
     "jasmine": "^3.3.1",
