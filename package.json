@@ -52,12 +52,12 @@
     "husky": "^1.2.1",
     "jasmine": "^3.3.1",
     "jasmine-jquery": "^2.1.1",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "lint-staged": "^8.1.0",
     "node-archiver": "^0.3.0",
     "node-sass": "^4.7.2",
     "phantomjs-prebuilt": "^2.1.14",
-    "prettier": "^1.12.1"
+    "prettier": "^1.15.3"
   },
   "files": [
     "dist",
