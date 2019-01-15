@@ -83,7 +83,7 @@
 
           var overlayID = _generateID();
           var $overlay = $('<div class="modal-overlay"></div>');
-          var lStack = (++_stack);
+          var lStack = $('.modal-overlay').length + 1;
 
           // Store a reference of the overlay
           $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
