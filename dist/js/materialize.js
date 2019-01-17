@@ -8530,7 +8530,7 @@ if (Vel) {
       closeOnSelect: false,
 
       // The format to show on the `input` element
-      format: 'd mmmm, yyyy',
+      format: 'yyyy-mm-dd',
 
       // Classes
       klass: {
