@@ -8531,6 +8531,7 @@ if (Vel) {
 
       // The format to show on the `input` element
       format: 'yyyy-mm-dd',
+      
       // 'd mmmm, yyyy',
       // Classes
       klass: {
