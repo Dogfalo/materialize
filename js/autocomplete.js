@@ -284,6 +284,9 @@
      * Highlight partial match
      */
     _highlight(string, $el) {
+      if (!this.options.filterResults && $el.text().toLowerCase().indexOf(string.toLowerCase()) === -1) {
+          return
+      }
       let img = $el.find('img');
       let matchStart = $el
           .text()
