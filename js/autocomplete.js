@@ -6,6 +6,7 @@
     limit: Infinity, // Limit of results the autocomplete shows
     onAutocomplete: null, // Callback for when autocompleted
     minLength: 1, // Min characters before autocomplete starts
+    filterResults: true, // whether to filter the results based on the keyword
     sortFunction: function(a, b, inputString) {
       // Sort function for sorting autocomplete results
       return a.indexOf(inputString) - b.indexOf(inputString);
@@ -348,7 +349,9 @@
 
       // Gather all matching data
       for (let key in data) {
-        if (data.hasOwnProperty(key) && key.toLowerCase().indexOf(val) !== -1) {
+          if (this.options.filterResults && (!data.hasOwnProperty(key) || key.toLowerCase().indexOf(val) === -1)) {
+            continue;
+          }
           // Break if past limit
           if (this.count >= this.options.limit) {
             break;
@@ -361,7 +364,6 @@
           matchingData.push(entry);
 
           this.count++;
-        }
       }
 
       // Sort
