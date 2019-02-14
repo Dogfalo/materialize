@@ -1,6 +1,6 @@
 describe("Chips Plugin", function () {
 
-  beforeEach(function() {
+  beforeEach(function () {
     loadFixtures('chips/chipsFixture.html');
     $('.chips').material_chip();
     $('.chips-initial').material_chip({
@@ -47,7 +47,7 @@ describe("Chips Plugin", function () {
       e.which = 13;
       $input.trigger(e);
 
-      setTimeout(function() {
+      setTimeout(function () {
         var numChips = $chips.find('.chip').length;
         var $oneChip = $chips.find('.chip').first();
 
@@ -61,6 +61,31 @@ describe("Chips Plugin", function () {
 
     });
 
+    it("should be able to add duplicates chip", function (done) {
+      $chips = $('.chips').first();
+      $input = $chips.find('input');
+
+      $input.val('one');
+      keydown($input[0], 13);
+
+      $input.val('one');
+      keydown($input[0], 13);
+
+      setTimeout(function () {
+        var numChips = $chips.find('.chip').length;
+        var $oneChip = $chips.find('.chip').first();
+
+        expect(numChips).toEqual(2, 'two chips should have been added');
+
+        $oneChip.children().remove()
+        expect($oneChip.text()).toEqual('one', 'the chip should have value "one"');
+
+        done();
+      }, 400);
+
+    });
+
+
     it("should be able to delete chip", function (done) {
       $chips = $('.chips.chips-initial').first();
       $input = $chips.find('input');
@@ -70,7 +95,7 @@ describe("Chips Plugin", function () {
 
       $chips.find('.chip .close').first().click();
 
-      setTimeout(function() {
+      setTimeout(function () {
         numChips = $chips.find('.chip').length
 
         expect(numChips).toEqual(2, 'one chip should have been deleted');

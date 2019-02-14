@@ -4,11 +4,12 @@
     placeholder: '',
     secondaryPlaceholder: '',
     autocompleteOptions: {},
+    allowDuplicates: false
   };
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     // Handle removal of static chips.
-    $(document).on('click', '.chip .close', function(e){
+    $(document).on('click', '.chip .close', function (e) {
       var $chips = $(this).closest('.chips');
       if ($chips.attr('data-initialized')) {
         return;
@@ -37,10 +38,10 @@
     self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteOptions.data);
 
     // Initialize
-    this.init = function() {
+    this.init = function () {
       var i = 0;
       var chips;
-      self.$el.each(function(){
+      self.$el.each(function () {
         var $chips = $(this);
         var chipId = Materialize.guid();
         self.chipId = chipId;
@@ -61,14 +62,14 @@
       });
     };
 
-    this.handleEvents = function() {
+    this.handleEvents = function () {
       var SELS = self.SELS;
 
-      self.$document.off('click.chips-focus', SELS.CHIPS).on('click.chips-focus', SELS.CHIPS, function(e){
+      self.$document.off('click.chips-focus', SELS.CHIPS).on('click.chips-focus', SELS.CHIPS, function (e) {
         $(e.target).find(SELS.INPUT).focus();
       });
 
-      self.$document.off('click.chips-select', SELS.CHIP).on('click.chips-select', SELS.CHIP, function(e){
+      self.$document.off('click.chips-select', SELS.CHIP).on('click.chips-select', SELS.CHIP, function (e) {
         var $chip = $(e.target);
         if ($chip.length) {
           var wasSelected = $chip.hasClass('selected');
@@ -81,7 +82,7 @@
         }
       });
 
-      self.$document.off('keydown.chips').on('keydown.chips', function(e){
+      self.$document.off('keydown.chips').on('keydown.chips', function (e) {
         if ($(e.target).is('input, textarea')) {
           return;
         }
@@ -116,7 +117,7 @@
           }
           if (!length) $chips.find('input').focus();
 
-        // left
+          // left
         } else if (e.which === 37) {
           index = $chip.index() - 1;
           if (index < 0) {
@@ -125,7 +126,7 @@
           $(SELS.CHIP).removeClass('selected');
           self.selectChip(index, $chips);
 
-        // right
+          // right
         } else if (e.which === 39) {
           index = $chip.index() + 1;
           $(SELS.CHIP).removeClass('selected');
@@ -137,14 +138,14 @@
         }
       });
 
-      self.$document.off('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.off('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT, function (e) {
         var $currChips = $(e.target).closest(SELS.CHIPS);
         $currChips.addClass('focus');
         $currChips.siblings('label, .prefix').addClass('active');
         $(SELS.CHIP).removeClass('selected');
       });
 
-      self.$document.off('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.off('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT).on('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT, function (e) {
         var $currChips = $(e.target).closest(SELS.CHIPS);
         $currChips.removeClass('focus');
 
@@ -155,7 +156,7 @@
         $currChips.siblings('.prefix').removeClass('active');
       });
 
-      self.$document.off('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT).on('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT, function(e){
+      self.$document.off('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT).on('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT, function (e) {
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
         var chipsLength = $chips.children(SELS.CHIP).length;
@@ -164,13 +165,13 @@
         if (13 === e.which) {
           // Override enter if autocompleting.
           if (self.hasAutocomplete &&
-              $chips.find('.autocomplete-content.dropdown-content').length &&
-              $chips.find('.autocomplete-content.dropdown-content').children().length) {
+            $chips.find('.autocomplete-content.dropdown-content').length &&
+            $chips.find('.autocomplete-content.dropdown-content').children().length) {
             return;
           }
 
           e.preventDefault();
-          self.addChip({tag: $target.val()}, $chips);
+          self.addChip({ tag: $target.val() }, $chips);
           $target.val('');
           return;
         }
@@ -185,7 +186,7 @@
       });
 
       // Click on delete icon in chip.
-      self.$document.off('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE).on('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE, function(e) {
+      self.$document.off('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE).on('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE, function (e) {
         var $target = $(e.target);
         var $chips = $target.closest(SELS.CHIPS);
         var $chip = $target.closest(SELS.CHIP);
@@ -195,12 +196,12 @@
       });
     };
 
-    this.chips = function($chips, chipId) {
+    this.chips = function ($chips, chipId) {
       $chips.empty();
-      $chips.data('chips').forEach(function(elem){
+      $chips.data('chips').forEach(function (elem) {
         $chips.append(self.renderChip(elem));
       });
-      $chips.append($('<input id="' + chipId +'" class="input" placeholder="">'));
+      $chips.append($('<input id="' + chipId + '" class="input" placeholder="">'));
       self.setPlaceholder($chips);
 
       // Set for attribute for label
@@ -208,7 +209,7 @@
       if (label.length) {
         label.attr('for', chipId);
 
-        if ($chips.data('chips')!== undefined && $chips.data('chips').length) {
+        if ($chips.data('chips') !== undefined && $chips.data('chips').length) {
           label.addClass('active');
         }
       }
@@ -216,8 +217,8 @@
       // Setup autocomplete if needed.
       var input = $('#' + chipId);
       if (self.hasAutocomplete) {
-        curr_options.autocompleteOptions.onAutocomplete = function(val) {
-          self.addChip({tag: val}, $chips);
+        curr_options.autocompleteOptions.onAutocomplete = function (val) {
+          self.addChip({ tag: val }, $chips);
           input.val('');
           input.focus();
         }
@@ -230,7 +231,7 @@
      * @param {Object} elem
      * @return {jQuery}
      */
-    this.renderChip = function(elem) {
+    this.renderChip = function (elem) {
       if (!elem.tag) return;
 
       var $renderedChip = $('<div class="chip"></div>');
@@ -242,7 +243,7 @@
       return $renderedChip;
     };
 
-    this.setPlaceholder = function($chips) {
+    this.setPlaceholder = function ($chips) {
       if (($chips.data('chips') !== undefined && !$chips.data('chips').length) && curr_options.placeholder) {
         $chips.find('input').prop('placeholder', curr_options.placeholder);
 
@@ -251,19 +252,24 @@
       }
     };
 
-    this.isValid = function($chips, elem) {
+    this.isValid = function ($chips, elem) {
       var chips = $chips.data('chips');
+
+      if ('' !== elem.tag && this.options.allowDuplicates) {
+        return true;
+      }
+
       var exists = false;
-      for (var i=0; i < chips.length; i++) {
+      for (var i = 0; i < chips.length; i++) {
         if (chips[i].tag === elem.tag) {
-            exists = true;
-            return;
+          exists = true;
+          return;
         }
       }
       return '' !== elem.tag && !exists;
     };
 
-    this.addChip = function(elem, $chips) {
+    this.addChip = function (elem, $chips) {
       if (!self.isValid($chips, elem)) {
         return;
       }
@@ -281,7 +287,7 @@
       self.setPlaceholder($chips);
     };
 
-    this.deleteChip = function(chipIndex, $chips) {
+    this.deleteChip = function (chipIndex, $chips) {
       var chip = $chips.data('chips')[chipIndex];
       $chips.find('.chip').eq(chipIndex).remove();
 
@@ -298,7 +304,7 @@
       self.setPlaceholder($chips);
     };
 
-    this.selectChip = function(chipIndex, $chips) {
+    this.selectChip = function (chipIndex, $chips) {
       var $chip = $chips.find('.chip').eq(chipIndex);
       if ($chip && false === $chip.hasClass('selected')) {
         $chip.addClass('selected');
@@ -306,7 +312,7 @@
       }
     };
 
-    this.getChipsElement = function(index, $chips) {
+    this.getChipsElement = function (index, $chips) {
       return $chips.eq(index);
     };
 
@@ -315,4 +321,4 @@
 
     this.handleEvents();
   };
-}( jQuery ));
+}(jQuery));
