@@ -151,16 +151,17 @@ describe("Select Plugin", function () {
   });
 
   describe("Filtered Select", function () {
-    var browserSelect, filteredInput, filteredDropdown;
+    var browserSelect, filteredInput, filteredDropdown, selectInstance;
 
     beforeEach(function() {
       browserSelect = $('select.filtered');
+      selectInstance = M.FormSelect.getInstance(browserSelect[0]);
     });
 
     it("should open dropdown and filter option list visually", function(done) {
-      filteredInput = browserSelect.parent().find('input.select-dropdown');
-      filteredDropdown = browserSelect.parent().find('ul.filtered-select-dropdown');
-      filter = browserSelect.parent().find('ul.filtered-select-dropdown li.filter input');
+      filteredInput = $(selectInstance.wrapper).find('input.select-dropdown');
+      filteredDropdown = $(selectInstance.wrapper).find('ul.filtered-select-dropdown');
+      filter = $(selectInstance.wrapper).find('ul.filtered-select-dropdown li.filter input');
 
       expect(filteredInput).toExist('Should dynamically generate select dropdown structure.');
       expect(filteredDropdown).toExist('Should dynamically generate select dropdown structure.');
