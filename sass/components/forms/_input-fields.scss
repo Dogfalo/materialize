@@ -134,6 +134,15 @@ textarea.materialize-textarea {
   content: attr(data-error);
   color: $input-error-color;
 }
+%input-field-psuedo-style {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: $input-height;
+  box-sizing: content-box;
+  transition: width .2s;
+}
 %input-after-style {
   display: block;
   content: "";
@@ -156,6 +165,50 @@ textarea.materialize-textarea {
     input,
     .select-dropdown {
       margin-bottom: 1rem;
+    }
+  }
+
+  // Outlined styles
+  &.outlined {
+    &.active {
+      &::before,
+      &::after {
+        width: 12px;
+      }
+    }
+
+
+      input[type=text]:not(.browser-default):focus {
+        border-top: 1px solid transparent;
+      }
+
+
+    &::before {
+      @extend %input-field-psuedo-style;
+      border-top: 1px solid $input-border-color;
+      border-bottom: 1px solid $input-border-color;
+      border-left: 1px solid $input-border-color;
+      border-radius: 4px 0 0 4px;
+    }
+
+    &::after {
+      @extend %input-field-psuedo-style;
+      right: 0;
+      border-top: 1px solid $input-border-color;
+      border-right: 1px solid $input-border-color;
+      border-bottom: 1px solid $input-border-color;
+      border-radius: 0 4px 4px 0;
+    }
+
+    input[type=text]:not(.browser-default) {
+      margin-left: 12px;
+      border-top: 1px solid $input-border-color;
+      border-right: 1px solid $input-border-color;
+      border-radius: 0 4px 4px 0;
+    }
+
+    & > label {
+      width: auto;
     }
   }
 

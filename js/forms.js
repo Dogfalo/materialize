@@ -196,6 +196,14 @@
           $(e.target)
             .siblings('label, .prefix')
             .addClass('active');
+
+          // Outlined
+          let inputField = $(e.target).parent();
+          if (inputField.hasClass('input-field outlined')) {
+            let label = inputField.find('label');
+            inputField.addClass('active');
+            console.log('handle outlined', label);
+          }
         }
       },
       true
@@ -272,4 +280,138 @@
       path_input.trigger('change');
     });
   }); // End of $(document).ready
+
+  // Outlined input plugin
+  let _defaults = {};
+
+  /**
+   * @class
+   *
+   */
+  class OutlinedInput extends Component {
+    /**
+     * Construct OutlinedInput instance and set up overlay
+     * @constructor
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(OutlinedInput, el, options);
+
+      this.el.M_OutlinedInput = this;
+
+      /**
+       * Options for the outlined input
+       * @member OutlinedInput#options
+       */
+      this.options = $.extend({}, OutlinedInput.defaults, options);
+
+      /**
+       * Describes open/close state of modal
+       * @type {Boolean}
+       */
+      this.isOpen = false;
+
+      this.id = this.$el.attr('id');
+      this._openingTrigger = undefined;
+      this.$overlay = $('<div class="modal-overlay"></div>');
+      this.el.tabIndex = 0;
+      this._setupEventHandlers();
+    }
+
+    static get defaults() {
+      return _defaults;
+    }
+
+    static init(els, options) {
+      return super.init(this, els, options);
+    }
+
+    /**
+     * Get Instance
+     */
+    static getInstance(el) {
+      let domElem = !!el.jquery ? el[0] : el;
+      return domElem.M_Modal;
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      this._removeEventHandlers();
+      this.el.removeAttribute('style');
+      this.$overlay.remove();
+      this.el.M_Modal = undefined;
+    }
+
+    /**
+     * Setup Event Handlers
+     */
+    _setupEventHandlers() {
+      this._handleOverlayClickBound = this._handleOverlayClick.bind(this);
+      this._handleModalCloseClickBound = this._handleModalCloseClick.bind(this);
+      this.el.addEventListener('click', this._handleModalCloseClickBound);
+    }
+
+    /**
+     * Remove Event Handlers
+     */
+    _removeEventHandlers() {
+      this.el.removeEventListener('click', this._handleModalCloseClickBound);
+    }
+
+    /**
+     * Handle Focus
+     * @param {Event} e
+     */
+    _handleFocus(e) {
+      // Only trap focus if this modal is the last model opened (prevents loops in nested modals).
+      if (!this.el.contains(e.target) && this._nthModalOpened === Modal._modalsOpen) {
+        this.el.focus();
+      }
+    }
+
+    /**
+     * Animate in modal
+     */
+    _animateIn() {
+      // Set initial styles
+      $.extend(this.el.style, {
+        display: 'block',
+        opacity: 0
+      });
+      $.extend(this.$overlay[0].style, {
+        display: 'block',
+        opacity: 0
+      });
+
+      // Animate overlay
+      anim({
+        targets: this.$overlay[0],
+        opacity: this.options.opacity,
+        duration: this.options.inDuration,
+        easing: 'easeOutQuad'
+      });
+    }
+
+    /**
+     * Animate out modal
+     */
+    _animateOut() {
+      // Animate overlay
+      anim({
+        targets: this.$overlay[0],
+        opacity: 0,
+        duration: this.options.outDuration,
+        easing: 'easeOutQuart'
+      });
+    }
+  }
+
+  M.OutlinedInput = OutlinedInput;
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(OutlinedInput, 'modal', 'M_OutlinedInput');
+  }
 })(cash);
