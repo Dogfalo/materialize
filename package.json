@@ -17,8 +17,7 @@
   },
   "scripts": {
     "dev": "grunt monitor",
-    "test": "grunt travis",
-    "precommit": "lint-staged"
+    "test": "grunt travis"
   },
   "lint-staged": {
     "js/*.js": [
@@ -26,7 +25,6 @@
       "git add"
     ]
   },
-  "dependencies": {},
   "engine": "node >= 6",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -49,13 +47,12 @@
     "grunt-rename-util": "^1.0.0",
     "grunt-sass": "^2.0.0",
     "grunt-text-replace": "^0.4.0",
-    "husky": "^0.14.3",
     "jasmine": "^2.6.0",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.2.1",
     "lint-staged": "^7.0.4",
     "node-archiver": "^0.3.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.3",
     "phantomjs-prebuilt": "^2.1.14",
     "prettier": "^1.12.1"
   },
@@ -66,5 +63,6 @@
     "sass/**/*.scss",
     "Gruntfile.js",
     "LICENSE"
-  ]
+  ],
+  "dependencies": {}
 }
