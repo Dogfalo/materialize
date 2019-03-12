@@ -1,5 +1,5 @@
 /*!
- * Materialize v1.0.0 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -2610,7 +2610,6 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         var verticalAlignment = 'top';
         var horizontalAlignment = this.options.alignment;
-        idealYPos += this.options.coverTrigger ? 0 : triggerBRect.height;
 
         // Reset isScrollable
         this.isScrollable = false;
@@ -2650,6 +2649,9 @@ $jscomp.polyfill = function (e, r, p, m) {
           }
         }
 
+        if (verticalAlignment === 'top') {
+          idealYPos += this.options.coverTrigger ? 0 : triggerBRect.height;
+        }
         if (verticalAlignment === 'bottom') {
           idealYPos = idealYPos - dropdownBRect.height + (this.options.coverTrigger ? triggerBRect.height : 0);
         }
@@ -7921,7 +7923,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _setupLabel() {
         this.$label = this.$el.find('label');
         if (this.$label.length) {
-          this.$label.setAttribute('for', this.$input.attr('id'));
+          this.$label[0].setAttribute('for', this.$input.attr('id'));
         }
       }
 
@@ -8212,11 +8214,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function destroy() {
         this.el.style.top = null;
         this._removePinClasses();
-        this._removeEventHandlers();
 
         // Remove pushpin Inst
         var index = Pushpin._pushpins.indexOf(this);
         Pushpin._pushpins.splice(index, 1);
+        if (Pushpin._pushpins.length === 0) {
+          this._removeEventHandlers();
+        }
+        this.el.M_Pushpin = undefined;
       }
     }, {
       key: "_setupEventHandlers",
@@ -11734,6 +11739,8 @@ $jscomp.polyfill = function (e, r, p, m) {
           } else {
             $(this.dropdownOptions).find('li').removeClass('selected');
             $(option).toggleClass('selected', selected);
+            this._keysSelected = {};
+            this._keysSelected[option.id] = true;
           }
 
           // Set selected on original select option
@@ -11773,7 +11780,10 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.wrapper = document.createElement('div');
         $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
         this.$el.before($(this.wrapper));
-        this.wrapper.appendChild(this.el);
+        // Move actual select element into overflow hidden wrapper
+        var $hideSelect = $('<div class="hide-select"></div>');
+        $(this.wrapper).append($hideSelect);
+        $hideSelect[0].appendChild(this.el);
 
         if (this.el.disabled) {
           this.wrapper.classList.add('disabled');
@@ -11811,7 +11821,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           });
         }
 
-        this.$el.after(this.dropdownOptions);
+        $(this.wrapper).append(this.dropdownOptions);
 
         // Add input dropdown
         this.input = document.createElement('input');
@@ -11823,16 +11833,17 @@ $jscomp.polyfill = function (e, r, p, m) {
           $(this.input).prop('disabled', 'true');
         }
 
-        this.$el.before(this.input);
+        $(this.wrapper).prepend(this.input);
         this._setValueToInput();
 
         // Add caret
         var dropdownIcon = $('<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-        this.$el.before(dropdownIcon[0]);
+        $(this.wrapper).prepend(dropdownIcon[0]);
 
         // Initialize dropdown
         if (!this.el.disabled) {
           var dropdownOptions = $.extend({}, this.options.dropdownOptions);
+          var userOnOpenEnd = dropdownOptions.onOpenEnd;
 
           // Add callback for centering selected option when dropdown content is scrollable
           dropdownOptions.onOpenEnd = function (el) {
@@ -11851,6 +11862,11 @@ $jscomp.polyfill = function (e, r, p, m) {
                 scrollOffset -= _this71.dropdownOptions.clientHeight / 2; // center in dropdown
                 _this71.dropdownOptions.scrollTop = scrollOffset;
               }
+            }
+
+            // Handle user declared onOpenEnd if needed
+            if (userOnOpenEnd && typeof userOnOpenEnd === 'function') {
+              userOnOpenEnd.call(_this71.dropdown, _this71.el);
             }
           };
 

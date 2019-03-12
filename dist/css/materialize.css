@@ -1,5 +1,5 @@
 /*!
- * Materialize v1.0.0 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -2253,9 +2253,7 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  -webkit-text-decoration: underline dotted;
-     -moz-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -2780,6 +2778,7 @@ video.responsive-video {
 }
 
 .breadcrumb {
+  display: inline-block;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -2803,6 +2802,7 @@ video.responsive-video {
   font-size: 25px;
   margin: 0 10px 0 8px;
   -webkit-font-smoothing: antialiased;
+  float: left;
 }
 
 .breadcrumb:first-child:before {
@@ -5886,19 +5886,19 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .sidenav .collapsible,
-.sidenav.fixed .collapsible {
+.sidenav.sidenav-fixed .collapsible {
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 .sidenav .collapsible li,
-.sidenav.fixed .collapsible li {
+.sidenav.sidenav-fixed .collapsible li {
   padding: 0;
 }
 
 .sidenav .collapsible-header,
-.sidenav.fixed .collapsible-header {
+.sidenav.sidenav-fixed .collapsible-header {
   background-color: transparent;
   border: none;
   line-height: inherit;
@@ -5907,23 +5907,23 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .sidenav .collapsible-header:hover,
-.sidenav.fixed .collapsible-header:hover {
+.sidenav.sidenav-fixed .collapsible-header:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 .sidenav .collapsible-header i,
-.sidenav.fixed .collapsible-header i {
+.sidenav.sidenav-fixed .collapsible-header i {
   line-height: inherit;
 }
 
 .sidenav .collapsible-body,
-.sidenav.fixed .collapsible-body {
+.sidenav.sidenav-fixed .collapsible-body {
   border: 0;
   background-color: #fff;
 }
 
 .sidenav .collapsible-body li a,
-.sidenav.fixed .collapsible-body li a {
+.sidenav.sidenav-fixed .collapsible-body li a {
   padding: 0 23.5px 0 31px;
 }
 
@@ -6111,9 +6111,6 @@ label {
   color: #d1d1d1;
 }
 :-ms-input-placeholder {
-  color: #d1d1d1;
-}
-::-ms-input-placeholder {
   color: #d1d1d1;
 }
 ::placeholder {
@@ -7137,15 +7134,12 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 
 /* Select Field
    ========================================================================== */
-select {
-  display: none;
-}
-
 select.browser-default {
-  display: block;
+  opacity: 1;
 }
 
 select {
+  opacity: 0;
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   padding: 5px;
@@ -7207,6 +7201,15 @@ select {
   position: absolute;
   top: -26px;
   font-size: 0.8rem;
+}
+
+.select-wrapper .hide-select {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 select:disabled {
@@ -7573,7 +7576,7 @@ input[type=range]::-ms-thumb {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.sidenav li > a {
+.sidenav li > a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-flat):not(.btn-floating) {
   color: rgba(0, 0, 0, 0.87);
   display: block;
   font-size: 14px;
@@ -7583,39 +7586,23 @@ input[type=range]::-ms-thumb {
   padding: 0 32px;
 }
 
-.sidenav li > a:hover {
+.sidenav li > a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-flat):not(.btn-floating):hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.sidenav li > a.btn, .sidenav li > a.btn-large, .sidenav li > a.btn-small, .sidenav li > a.btn-large, .sidenav li > a.btn-flat, .sidenav li > a.btn-floating {
-  margin: 10px 15px;
-}
-
-.sidenav li > a.btn, .sidenav li > a.btn-large, .sidenav li > a.btn-small, .sidenav li > a.btn-large, .sidenav li > a.btn-floating {
-  color: #fff;
-}
-
-.sidenav li > a.btn-flat {
-  color: #343434;
-}
-
-.sidenav li > a.btn:hover, .sidenav li > a.btn-large:hover, .sidenav li > a.btn-small:hover, .sidenav li > a.btn-large:hover {
-  background-color: #2bbbad;
-}
-
-.sidenav li > a.btn-floating:hover {
-  background-color: #26a69a;
-}
-
-.sidenav li > a > i,
-.sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"],
-.sidenav li > a > i.material-icons {
+.sidenav li > a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-flat):not(.btn-floating) > i,
+.sidenav li > a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-flat):not(.btn-floating) > [class^="mdi-"], .sidenav li > a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-flat):not(.btn-floating) li > a > [class*="mdi-"],
+.sidenav li > a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-flat):not(.btn-floating) > i.material-icons {
   float: left;
   height: 48px;
   line-height: 48px;
   margin: 0 32px 0 0;
   width: 24px;
   color: rgba(0, 0, 0, 0.54);
+}
+
+.sidenav li > .btn, .sidenav li > .btn-large, .sidenav li > .btn-small, .sidenav li > .btn-large, .sidenav li > .btn-flat, .sidenav li > .btn-floating {
+  margin: 10px 32px;
 }
 
 .sidenav .divider {
@@ -8486,10 +8473,10 @@ input[type=range]::-ms-thumb {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8542,10 +8529,10 @@ input[type=range]::-ms-thumb {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s;
+  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
   z-index: -1;
 }
 
@@ -8688,7 +8675,7 @@ input[type=range]::-ms-thumb {
 }
 
 .datepicker-controls .select-month input {
-  width: 70px;
+  width: 80px;
 }
 
 .month-prev, .month-next {
