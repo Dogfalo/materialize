@@ -174,7 +174,7 @@
               overflow: '',
               paddingTop: '',
               paddingBottom: '',
-              height: ''
+              height: $body[0].height == 0 ? finalHeight : ''
             });
 
             // onOpenEnd callback
