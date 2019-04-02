@@ -191,6 +191,8 @@
 
         if (currChips.chipsData.length) {
           currChips.selectChip(selectIndex);
+        } else {
+          currChips.$input[0].focus();
         }
 
         // left arrow key
