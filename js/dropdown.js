@@ -188,6 +188,9 @@
             if ($(e.target).hasClass('search')) {
               return;
             }
+            if ($.contains(e.target, _.first(activates))) {
+                return;
+            }
             hideDropdown();
             $(document).off('click.'+ activates.attr('id'));
           });
