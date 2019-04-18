@@ -579,6 +579,8 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
     /**
      * Prepare the input element with all bindings.
+     * The contents of this function are copied from pickadate v3.6.3
+     * https://github.com/amsul/pickadate.js/blob/master/lib/picker.js
      */
     function prepareElement() {
 
@@ -590,14 +592,34 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             // Add the “input” class name.
             addClass(CLASSES.input).
 
-            // Remove the tabindex.
-            attr('tabindex', -1).
-
             // If there’s a `data-value`, update the value of the element.
             val( $ELEMENT.data('value') ?
                 P.get('select', SETTINGS.format) :
                 ELEMENT.value
-            )
+            ).
+
+            // On focus/click, open the picker.
+            on( 'focus.' + STATE.id + ' click.' + STATE.id,
+            debounce(function(event) {
+                event.preventDefault()
+                P.open()
+            }, 150))
+
+            // Mousedown handler to capture when the user starts interacting
+            // with the picker. This is used in working around a bug in Chrome 73.
+            .on('mousedown', function() {
+              STATE.handlingOpen = true;
+              var handler = function() {
+                // By default mouseup events are fired before a click event.
+                // By using a timeout we can force the mouseup to be handled
+                // after the corresponding click event is handled.
+                setTimeout(function() {
+                  $(document).off('mouseup', handler);
+                  STATE.handlingOpen = false;
+                }, 0);
+              };
+              $(document).on('mouseup', handler);
+            });
 
 
         // Only bind keydown events if the element isn’t editable.
@@ -605,16 +627,9 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
             $ELEMENT.
 
-                // On focus/click, focus onto the root to open it up.
-                on( 'focus.' + STATE.id + ' click.' + STATE.id, function( event ) {
-                    event.preventDefault()
-                    P.$root.eq(0).focus()
-                }).
-
                 // Handle keyboard event based on the picker being opened or not.
                 on( 'keydown.' + STATE.id, handleKeydownEvent )
         }
-
 
         // Update the aria attributes.
         aria(ELEMENT, {
@@ -625,6 +640,20 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
         })
     }
 
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
 
     /**
      * Prepare the root picker element with all bindings.
