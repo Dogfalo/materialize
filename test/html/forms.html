@@ -90,6 +90,52 @@
           <label for="email" data-error="wrong" data-success="right">Email</label>
         </div>
       </div>
+      <div clas="row">
+        <div class="input-field col s6">
+          <input id="prefill" type="text" value="Already wrote something!">
+          <label for="prefill">Prefilled</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="autofocus" type="text" autofocus>
+          <label for="autofocus">Autofocused</label>
+        </div>
+      </div>
+      <div class="row dynamic-text">
+        <div class="input-field col s6">
+          <input id="program-fill" type="text">
+          <label for="program-fill">Programmatically filled</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="delay-fill" type="text">
+          <label for="delay-fill">Programmatically filled on a delay</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <textarea id="textarea-prefilled" class="materialize-textarea">I already have some text</textarea>
+          <label for="textarea-prefilled">Prefilled text area</label>
+        </div>
+        <div class="input-field col s4">
+          <textarea id="textarea-program-fill" class="materialize-textarea"></textarea>
+          <label for="textarea-program-fill">Programmatically filled text area</label>
+        </div>
+        <div class="input-field col s4">
+          <textarea id="textarea-delay-fill" class="materialize-textarea"></textarea>
+          <label for="textarea-delay-fill">Delayed textarea fill</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="textarea-prefix" class="materialize-textarea"></textarea>
+          <label for="textarea-prefix">Text area with a prefix</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="textarea-normal" class="materialize-textarea"></textarea>
+          <label for="textarea-normal">Text area</label>
+        </div>
+      </div>
     </form>
   </div>
 
@@ -344,6 +390,21 @@
 <!--  <script src="js/leanModal.js"></script>-->
 
   <script>
+    document.getElementById("program-fill").value = "This is dynamic text";
+    document.getElementById("textarea-program-fill").value = "More dynamic text!";
+
+    Materialize.updateTextFields(".dynamic-text");
+
+    setTimeout(function(){
+      var delayFill = document.getElementById("delay-fill");
+      delayFill.value = "This wasn't here on DOM Ready event";
+
+      var textareaDelayFill = document.getElementById("textarea-delay-fill");
+      textareaDelayFill.value = "Sorry, I'm a little late";
+
+      [ delayFill, textareaDelayFill ].map(Materialize.updateTextField);
+    }, 2000);
+
     $(document).ready(function(){
         $('select').material_select();
     });

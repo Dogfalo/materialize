@@ -1,35 +1,36 @@
 (function ($) {
-  $(document).ready(function() {
+    // Function to update single text field
+    Materialize.updateTextField = function(input) {
+      if (this instanceof HTMLElement) input = this;
+
+      if (input.value && input.value !== 0) {
+        input.setAttribute('value', input.value);
+      } else {
+        input.removeAttribute('value');
+      }
+
+      Materialize.updateTextArea(input);
+    };
 
     // Function to update labels of text fields
-    Materialize.updateTextFields = function() {
-      var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-      $(input_selector).each(function(index, element) {
-        var $this = $(this);
-        if ($(element).val().length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== undefined) {
-          $this.siblings('label').addClass('active');
-        } else if ($(element)[0].validity) {
-          $this.siblings('label').toggleClass('active', $(element)[0].validity.badInput === true);
-        } else {
-          $this.siblings('label').removeClass('active');
-        }
-      });
+    Materialize.updateTextFields = function(optionalContext) {
+      $(input_selector, optionalContext).each(Materialize.updateTextField);
     };
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
 
-    // Add active if form auto complete
-    $(document).on('change', input_selector, function () {
-      if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
-        $(this).siblings('label').addClass('active');
-      }
-      validate_field($(this));
+    // update forms
+    $(document).on('change', input_selector, function (event) {
+      Materialize.updateTextField(this);
+
+      // valid input if form auto complete
+      if (event.type === 'change') validate_field($(this));
     });
 
-    // Add active if input element has been pre-populated on document ready
+    // Update pre-populated textarea elements on document ready
     $(document).ready(function() {
-      Materialize.updateTextFields();
+      $('textarea').each(Materialize.updateTextField);
     });
 
     // HTML DOM FORM RESET handling
@@ -37,11 +38,6 @@
       var formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
-        formReset.find(input_selector).each(function () {
-          if ($(this).attr('value') === '') {
-            $(this).siblings('label').removeClass('active');
-          }
-        });
 
         // Reset select
         formReset.find('select.initialized').each(function () {
@@ -53,18 +49,13 @@
 
     // Add active when element has focus
     $(document).on('focus', input_selector, function () {
-      $(this).siblings('label, .prefix').addClass('active');
+      $(this).siblings('.prefix').addClass('active');
     });
 
     $(document).on('blur', input_selector, function () {
       var $inputElement = $(this);
-      var selector = ".prefix";
 
-      if ($inputElement.val().length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === undefined) {
-        selector += ", label";
-      }
-
-      $inputElement.siblings(selector).removeClass('active');
+      $inputElement.siblings('.prefix').removeClass('active');
 
       validate_field($inputElement);
     });
@@ -117,6 +108,14 @@
       $('body').append(hiddenDiv);
     }
     var text_area_selector = '.materialize-textarea';
+
+    // Public function to autoresize the text area
+    Materialize.updateTextArea = function(textarea) {
+      if (this instanceof HTMLTextAreaElement) textarea = this;
+      if (textarea instanceof HTMLTextAreaElement) {
+        textareaAutoResize($(textarea));
+      }
+    };
 
     function textareaAutoResize($textarea) {
       // Set font properties of hiddenDiv
@@ -479,8 +478,6 @@
         }
       });
     };
-
-  }); // End of $(document).ready
 
   /*******************
    *  Select Plugin  *

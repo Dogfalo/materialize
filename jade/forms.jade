@@ -28,3 +28,11 @@ html(lang="en")
          decimals: 0
        })
       });
+
+      var element = document.getElementById('first_name2');
+      element.value = 'Alvin';
+      Materialize.updateTextField(element);
+
+      $('#update-first_name').val('Simon');
+      $('#update-last_name').val('Seville');
+      Materialize.updateTextFields('#update-names');

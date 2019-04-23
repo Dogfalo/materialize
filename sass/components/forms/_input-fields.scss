@@ -183,8 +183,13 @@ textarea.materialize-textarea {
     text-align: initial;
     transform: translateY(12px);
     pointer-events: none;
+  }
 
-    &:not(.label-icon).active {
+  textarea:focus,
+  input:focus,
+  [placeholder],
+  [value] {
+    & + label:not(.label-icon) {
       transform: translateY(-14px) scale(.8);
       transform-origin: 0 0;
     }
