@@ -45,6 +45,18 @@
     $('.scrollspy').scrollSpy();
   });
         </code></pre>
+        <pre><code class="language-javascript">
+  // Alternate initialization for fixed navbar navigation on single page sites  
+  $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+    $('.scrollspy').on('scrollSpy:enter', function() {
+      $('.navbar-fixed').find('a[href="#'+$(this).attr('id')+'"]').parent().addClass('active'); //add active class to the li of the nav link
+    });
+    $('.scrollspy').on('scrollSpy:exit', function() {
+      $('.navbar-fixed').find('a[href="#'+$(this).attr('id')+'"]').parent().removeClass('active'); //remove active class to the li of the nav link  
+    });        
+  });
+        </code></pre>
       </div>
 
 
