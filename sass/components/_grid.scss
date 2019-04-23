@@ -42,18 +42,17 @@
 }
 @mixin grid-classes($size, $i, $perc) {
   &.offset-#{$size}#{$i} {
-    margin-left: $perc;
+    @extend %offset-#{$size}#{$i};
   }
   &.pull-#{$size}#{$i} {
-    right: $perc;
+    @extend %pull-#{$size}#{$i};
   }
   &.push-#{$size}#{$i} {
-    left: $perc;
+    @extend %push-#{$size}#{$i};
   }
 }
 
-
-.row {
+%row {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
@@ -63,9 +62,10 @@
     content: "";
     display: table;
     clear: both;
-  }
+  }  
+}
 
-  .col {
+%col {
     float: left;
     box-sizing: border-box;
     padding: 0 $gutter-width / 2;
@@ -75,13 +75,122 @@
     &[class*="pull-"] {
       position: relative;
     }
+}
+
+$i: 1;
+@while $i <= $num-cols {
+  $perc: unquote((100 / ($num-cols / $i)) + "%");
+
+  %s#{$i} {
+    width: $perc;
+    @include reset-offset;
+  }
+
+  %offset-s#{$i} {
+    margin-left: $perc;
+  }
+
+  %pull-s#{$i} {
+    right: $perc;
+  }
+
+  %push-s#{$i} {
+    left: $perc;
+  }
+
+    $i: $i + 1;
+}
+
+$i: 1;
+@while $i <= $num-cols {
+  $perc: unquote((100 / ($num-cols / $i)) + "%");
+
+  @media #{$medium-and-up} {
+    %m#{$i} {
+      width: $perc;
+      @include reset-offset;
+    }
+
+    %offset-m#{$i} {
+      margin-left: $perc;
+    }
+
+    %pull-m#{$i} {
+      right: $perc;
+    }
+
+    %push-m#{$i} {
+      left: $perc;
+    }
+  }
+
+  $i: $i + 1;
+}
+
+$i: 1;
+@while $i <= $num-cols {
+  $perc: unquote((100 / ($num-cols / $i)) + "%");
+
+  @media #{$large-and-up} {
+    %l#{$i} {
+      width: $perc;
+      @include reset-offset;
+    }
+
+    %offset-l#{$i} {
+      margin-left: $perc;
+    }
+
+    %pull-l#{$i} {
+      right: $perc;
+    }
+
+    %push-l#{$i} {
+      left: $perc;
+    }
+  }
+
+  $i: $i + 1;
+}
+
+$i: 1;
+@while $i <= $num-cols {
+  $perc: unquote((100 / ($num-cols / $i)) + "%");
+
+  @media #{$extra-large-and-up} {
+    %xl#{$i} {
+      width: $perc;
+      @include reset-offset;
+    }
+
+    %offset-xl#{$i} {
+      margin-left: $perc;
+    }
+
+    %pull-xl#{$i} {
+      right: $perc;
+    }
+
+    %push-xl#{$i} {
+      left: $perc;
+    }
+  }
+  
+  $i: $i + 1;
+}
+
+.row {
+  @extend %row;
+
+  .col {
+    @extend %col;
 
     $i: 1;
     @while $i <= $num-cols {
       $perc: unquote((100 / ($num-cols / $i)) + "%");
+
       &.s#{$i} {
-        width: $perc;
-        @include reset-offset;
+        @extend %s#{$i};
       }
       $i: $i + 1;
     }
@@ -98,9 +207,9 @@
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
+
         &.m#{$i} {
-          width: $perc;
-          @include reset-offset;
+          @extend %m#{$i};
         }
         $i: $i + 1
       }
@@ -118,9 +227,9 @@
       $i: 1;
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
+
         &.l#{$i} {
-          width: $perc;
-          @include reset-offset;
+          @extend %l#{$i};
         }
         $i: $i + 1;
       }
@@ -139,8 +248,7 @@
       @while $i <= $num-cols {
         $perc: unquote((100 / ($num-cols / $i)) + "%");
         &.xl#{$i} {
-          width: $perc;
-          @include reset-offset;
+          @extend %xl#{$i};
         }
         $i: $i + 1;
       }
