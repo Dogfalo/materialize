@@ -404,7 +404,8 @@
                     }
 
                     var autocompleteOption = $('<li></li>');
-                    if (!!data[key]) {
+                    if (!!data[key] && (typeof data[key] === "string" || data[key] instanceof String) ) {
+                      // Add image if and only if the data[key] is a string and present
                       autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
                     } else {
                       autocompleteOption.append('<span>'+ key +'</span>');
