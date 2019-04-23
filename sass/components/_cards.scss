@@ -73,6 +73,9 @@
           height: 100%;
         }
       }
+      .card-content {
+        max-height: 100%;
+      }
     }
 
     display: flex;
