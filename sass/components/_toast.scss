@@ -40,6 +40,7 @@
   align-items: center;
   justify-content: space-between;
   cursor: default;
+  user-select: none;
 
   .toast-action {
     color: $toast-action-color;
