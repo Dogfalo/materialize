@@ -1,5 +1,5 @@
 (function ($) {
-  $(document).ready(function() {
+  $(function() {
 
     $(document).on('click.card', '.card', function (e) {
       if ($(this).find('> .card-reveal').length) {

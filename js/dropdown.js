@@ -268,7 +268,7 @@
     });
   }; // End dropdown plugin
 
-  $(document).ready(function(){
+  $(function(){
     $('.dropdown-button').dropdown();
   });
 }( jQuery ));

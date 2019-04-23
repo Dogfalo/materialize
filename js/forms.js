@@ -1,5 +1,5 @@
 (function ($) {
-  $(document).ready(function() {
+  $(function() {
 
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
@@ -28,7 +28,7 @@
     });
 
     // Add active if input element has been pre-populated on document ready
-    $(document).ready(function() {
+    $(function() {
       Materialize.updateTextFields();
     });
 
@@ -480,7 +480,7 @@
       });
     };
 
-  }); // End of $(document).ready
+  }); // End of $
 
   /*******************
    *  Select Plugin  *

@@ -240,7 +240,7 @@
     }
   };
 
-  $(document).ready(function(){
+  $(function(){
     $('ul.tabs').tabs();
   });
 }( jQuery ));

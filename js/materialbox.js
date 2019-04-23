@@ -282,7 +282,7 @@
     });
   };
 
-  $(document).ready(function(){
+  $(function(){
     $('.materialboxed').materialbox();
   });
 
