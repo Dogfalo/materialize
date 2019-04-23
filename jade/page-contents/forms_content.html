@@ -911,6 +911,29 @@
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
   });
         </code></pre>
+
+        <h4>Remote ajax call</h4>
+        <p>To fetch a remote server, you need to replace the "data" parameter with the "url" parameter containing the remote content url.</p>
+        <p>Few things to note :</p>
+        <ul>
+          <li>The request is send by GET according to HTML protocol spec for fetching content</li>
+          <li>The get variable name containing the search is "val" </li>
+          <li>Your server must respond in XML or JSON</li>
+          <li>The output should be an object's array. Each object must have at least a "value" key containing the text. It can also have an "img" key containing the optional picture url. <b>Any other key present in the response objects can be retrieve in the onAutocomplete callback. See below :</b></li>
+        </ul>
+        <pre><code class="language-javascript">
+  $('input.autocomplete').autocomplete({
+    url: "/my/api/users/search"
+    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+    onAutocomplete: function(val, data) {
+      // Callback function when value is autcompleted.
+      // If your response objects has and "id" key, you can access it like that
+      $('#my-hidden-user-field').val(data.id);
+    },
+    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+    debounceTime: 500 // Time after you stop typing for the request to be sent. Default: 500
+  });
+        </code></pre>
       </div>
 
 
