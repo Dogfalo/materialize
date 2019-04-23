@@ -9676,22 +9676,26 @@ if (Vel) {
                 scroll(offset + delta);
               }
             } else if (dragged) {
+<<<<<<< HEAD
+              // // If dragging don't allow vertical scroll.
+=======
               // If dragging don't allow vertical scroll.
-              e.preventDefault();
-              e.stopPropagation();
-              return false;
+>>>>>>> Fixed a bug wherein the links inside the mobile carousel would not work
+              // e.preventDefault();
+              // e.stopPropagation();
+              // return false;
             } else {
               // Vertical scrolling.
               vertical_dragged = true;
             }
           }
 
-          if (dragged) {
-            // If dragging don't allow vertical scroll.
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-          }
+          // if (dragged) {
+          //   // If dragging don't allow vertical scroll.
+          //   e.preventDefault();
+          //   e.stopPropagation();
+          //   return false;
+          // }
         }
 
         function release(e) {
@@ -9721,11 +9725,12 @@ if (Vel) {
           timestamp = Date.now();
           requestAnimationFrame(autoScroll);
 
-          if (dragged) {
-            e.preventDefault();
-            e.stopPropagation();
-          }
-          return false;
+          // if (dragged) {
+          //   e.preventDefault();
+          //   e.stopPropagation();
+          // }
+          // 
+          return;
         }
 
         xform = 'transform';
