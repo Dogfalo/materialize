@@ -55,6 +55,12 @@
       width: 100%;
     }
   }
+  
+  &.tabs-content {
+    .carousel-item {
+      height: auto;
+    }
+  }
 
   .indicators {
     position: absolute;
