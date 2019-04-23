@@ -1,6 +1,6 @@
 describe( 'Modal:', function() {
   var transformMaterialbox;
-  var trigger1, modal1, trigger2, modal2, trigger3, modal3;
+  var trigger1, modal1, trigger2, modal2, trigger3, modal3, trigger4, modal4;
 
   beforeEach(function() {
     loadFixtures('modal/modalFixture.html');
@@ -8,9 +8,11 @@ describe( 'Modal:', function() {
     triggerIcon1 = $('.btn[data-target="modal1"] i');
     trigger2 = $('.btn[href="#modal2"]');
     trigger3 = $('.btn[href="#modal3"]');
+    trigger4 = $('.btn[data-target="modal4"]');
     modal1 = $('#modal1');
     modal2 = $('#modal2');
     modal3 = $('#modal3');
+    modal4 = $('#modal4');
   });
 
   describe('Modals', function() {
@@ -121,6 +123,25 @@ describe( 'Modal:', function() {
         }, 500);
       }, 500);
     });
+  });
+
+  it('Should open instead of navigate', function(done) {
+    modal4.modal();
+    expect(modal4).toBeHidden('Modal should be hidden');
+
+    click(trigger4[0]);
+
+    setTimeout(function() {
+      expect(modal4).toBeVisible('Modal should be shown');
+      expect(modal4.hasClass('open')).toEqual(true, 'Modal should have class open');
+
+      // Check overlay is attached
+      var overlay = modal4.modal('getInstance').$overlay;
+      var overlayInDOM = $.contains(document, overlay[0]);
+      expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
+
+      done();
+    }, 500);
   });
 
 });
