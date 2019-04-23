@@ -65,12 +65,12 @@
       }
 
       $this.addClass('active');
-      $this.find('ul .btn-floating').velocity(
+      $this.find('ul .btn-floating, ul .btn').velocity(
         { scaleY: ".4", scaleX: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
         { duration: 0 });
 
       var time = 0;
-      $this.find('ul .btn-floating').reverse().each( function () {
+      $this.find('ul .btn-floating, ul .btn').reverse().each( function () {
         $(this).velocity(
           { opacity: "1", scaleX: "1", scaleY: "1", translateY: "0", translateX: '0'},
           { duration: 80, delay: time });
@@ -93,8 +93,8 @@
 
     $this.removeClass('active');
     var time = 0;
-    $this.find('ul .btn-floating').velocity("stop", true);
-    $this.find('ul .btn-floating').velocity(
+    $this.find('ul .btn-floating, ul .btn').velocity("stop", true);
+    $this.find('ul .btn-floating, ul .btn').velocity(
       { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
       { duration: 80 }
     );
