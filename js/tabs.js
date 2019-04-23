@@ -67,6 +67,12 @@
 
       // If the location.hash matches one of the links, use that as the active tab.
       $active = $($links.filter('[href="'+location.hash+'"]'));
+        
+      // With nested tabs, activate the parent tab if the nested tab is active.
+      if ($active.length > 0) {
+        var id = $(this).parent().attr('id');
+        $('a[href="#'+id+'"]').trigger('click');
+      }
 
       // If no match is found, use the first link or any with class 'active' as the initial active tab.
       if ($active.length === 0) {
