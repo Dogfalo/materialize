@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
   $(document).ready(function() {
 
     // Function to update labels of text fields
@@ -389,6 +389,8 @@
               return;
             }
 
+            // Show the autocomplete on input (resolves issue with IE #3816)
+            $autocomplete.show();
 
             // Check if the input isn't empty
             if (oldVal !== val) {
@@ -468,7 +470,9 @@
             removeAutocomplete();
 
             // Handle onAutocomplete callback.
-            if (typeof(options.onAutocomplete) === "function") {
+            if (typeof (options.onAutocomplete) === "function") {
+              // Hide the autocomplete on selection (resolves issue with IE #3816)
+              $autocomplete.hide();
               options.onAutocomplete.call(this, text);
             }
           });
