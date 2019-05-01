@@ -249,6 +249,10 @@ video.responsive-video {
     display: none;
   }
 
+  &:first-child {
+    margin-left: 15px;
+  }
+  
   &:last-child {
     color: #fff;
   }
