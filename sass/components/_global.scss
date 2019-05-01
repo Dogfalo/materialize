@@ -218,7 +218,11 @@ video.responsive-video {
   &:first-child:before {
     display: none;
   }
-
+  
+  &:first-child {
+    margin-left: 15px;
+  }
+  
   &:last-child {
     color: #fff;
   }
