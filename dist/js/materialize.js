@@ -4963,27 +4963,29 @@ if (Vel) {
 
       $newSelect.on({
         'focus': function () {
-          if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
-            $('input.select-dropdown').trigger('close');
-            $(window).off('click.select');
-          }
-          if (!options.is(':visible')) {
-            $(this).trigger('open', ['focus']);
-            var label = $(this).val();
-            if (multiple && label.indexOf(',') >= 0) {
-              label = label.split(',')[0];
-            }
+           setTimeout(function () {
+              if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
+                $('input.select-dropdown').trigger('close');
+                $(window).off('click.select');
+              }
+              if (!options.is(':visible')) {
+                $(this).trigger('open', ['focus']);
+                var label = $(this).val();
+                if (multiple && label.indexOf(',') >= 0) {
+                  label = label.split(',')[0];
+                }
 
-            var selectedOption = options.find('li').filter(function () {
-              return $(this).text().toLowerCase() === label.toLowerCase();
-            })[0];
-            activateOption(options, selectedOption, true);
+                var selectedOption = options.find('li').filter(function () {
+                  return $(this).text().toLowerCase() === label.toLowerCase();
+                })[0];
+                activateOption(options, selectedOption, true);
 
-            $(window).off('click.select').on('click.select', function () {
-              multiple && (optionsHover || $newSelect.trigger('close'));
-              $(window).off('click.select');
-            });
-          }
+                $(window).off('click.select').on('click.select', function () {
+                  multiple && (optionsHover || $newSelect.trigger('close'));
+                  $(window).off('click.select');
+                });
+              }
+           }, 75);
         },
         'click': function (e) {
           e.stopPropagation();
