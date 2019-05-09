@@ -217,6 +217,10 @@ M.checkWithinContainer = function(container, bounding, offset) {
     container === document.body
       ? Math.max(containerRect.bottom, window.innerHeight)
       : containerRect.bottom;
+  let containerRight = 
+    container === document.body 
+      ? Math.max(containerRect.right, window.innerWidth) 
+      : containerRect.right;
 
   let scrollLeft = container.scrollLeft;
   let scrollTop = container.scrollTop;
@@ -230,7 +234,7 @@ M.checkWithinContainer = function(container, bounding, offset) {
   }
 
   if (
-    scrolledX + bounding.width > containerRect.right - offset ||
+    scrolledX + bounding.width > containerRight - offset ||
     scrolledX + bounding.width > window.innerWidth - offset
   ) {
     edges.right = true;
