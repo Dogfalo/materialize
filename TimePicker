@@ -1,0 +1,28 @@
+Time Picker
+The timepicker allows users to select a date from an interactive clock.
+-----------------------------------------------------------------------
+Language markup:
+
+<input type="text" class="timepicker">
+
+Language JavaScript:
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, options);
+  });
+
+-----------------------------------------------------------------------
+The correction of ducumentation: 
+
+Language markup:
+
+<input type="text" class="timepicker">
+
+Language JavaScript:
+
+document.addEventListener('DOMContentLoaded', function(){
+    var elems = document.querySelectorAll('.datepicker');
+    //exist an error for syntax: [options] for [Option].
+    var instances = M.Datepicker.init(elems, Option);
+});
