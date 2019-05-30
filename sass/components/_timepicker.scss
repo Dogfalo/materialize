@@ -154,8 +154,13 @@
   color: $secondary-color;
 }
 
+.timepicker-done {
+  color: $secondary-color;
+}
+
 .timepicker-clear,
-.timepicker-close {
+.timepicker-close,
+.timepicker-done {
   padding: 0 20px;
 }
 

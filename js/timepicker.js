@@ -275,7 +275,7 @@
         .appendTo(confirmationBtnsContainer)
         .on('click', this.close.bind(this));
       $(
-        '<button class="btn-flat timepicker-close waves-effect" type="button" tabindex="' +
+        '<button class="btn-flat timepicker-done waves-effect" type="button" tabindex="' +
           (this.options.twelveHour ? '3' : '1') +
           '">' +
           this.options.i18n.done +
