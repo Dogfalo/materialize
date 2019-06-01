@@ -349,11 +349,6 @@
       // Gather all matching data
       for (let key in data) {
         if (data.hasOwnProperty(key) && key.toLowerCase().indexOf(val) !== -1) {
-          // Break if past limit
-          if (this.count >= this.options.limit) {
-            break;
-          }
-
           let entry = {
             data: data[key],
             key: key
@@ -375,6 +370,9 @@
         };
         matchingData.sort(sortFunctionBound);
       }
+
+      // Limit
+      matchingData = matchingData.slice(0, this.options.limit);
 
       // Render
       for (let i = 0; i < matchingData.length; i++) {
