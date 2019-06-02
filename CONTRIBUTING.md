@@ -8,6 +8,7 @@ Looking to contribute something to Materialize? **Here's how you can help.**
 - [Communication channels](#communication-channels)
 - [Using the issue tracker](#using-the-issue-tracker)
   - [Issues and labels](#issues-and-labels)
+  - [Triaging issues](#triaging-issues)
   - [Bug reports](#bug-reports)
   - [Feature Requests](#feature-requests)
   - [Code Examples](#code-examples)
@@ -40,7 +41,7 @@ The [issue tracker](https://github.com/Dogfalo/materialize/issues) is the prefer
 
 * Please **do not** use the issue tracker for personal support requests. [Stack Overflow `materialize`](https://stackoverflow.com/questions/tagged/materialize) tag is the best place to get help or use our [Gitter channel](https://gitter.im/Dogfalo/materialize).
 
-* Please **do not** post comments like "+1" or ":thumbsup:". Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)  instead. We reserve the right to delete comments which violate this rule.  
+* Please **do not** post comments like "+1" or ":thumbsup:". Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)  instead. We reserve the right to delete comments which violate this rule.
 
 * Please **do not** open issues without clearly stating the problem and desired result. [See the bug reports section](#bug-reports) for more information on creating effective issues.
 
@@ -49,6 +50,10 @@ The [issue tracker](https://github.com/Dogfalo/materialize/issues) is the prefer
 * Please **close your own issue** once it is resolved.
 
 * Every participant is **expected to follow** the project's [Code of Conduct](CODE_OF_CONDUCT.md) so please be courteous and respectful.
+
+### Triaging issues
+
+You can triage issues which may include reproducing bug reports or asking for vital information, such as version numbers or reproduction instructions. If you would like to start triaging issues, one easy way to get started is to [subscribe to materialize on CodeTriage](https://www.codetriage.com/dogfalo/materialize).
 
 ### Issues and labels
 

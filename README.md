@@ -30,6 +30,9 @@
   <a href="https://gitter.im/Dogfalo/materialize">
     <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter badge">
   </a>
+  <a href="https://www.codetriage.com/dogfalo/materialize">
+    <img src="https://www.codetriage.com/dogfalo/materialize/badges/users.svg" alt="CodeTriage badge">
+  </a>
 </p>
 
 ## Table of Contents
