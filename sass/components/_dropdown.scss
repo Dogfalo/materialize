@@ -86,5 +86,5 @@ body.keyboard-focused {
 
 // Do not spill over the edge of a modal
 .modal-content .dropdown-content.select-dropdown {
-	max-height: 60vh !important; // important needed to override JS' calculations
+	max-height: calc(60vh - 56px) !important; // important needed to override JS' calculations
 }
