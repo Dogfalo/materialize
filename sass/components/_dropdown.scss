@@ -83,3 +83,8 @@ body.keyboard-focused {
 .dropdown-trigger {
   cursor: pointer;
 }
+
+// Do not spill over the edge of a modal
+.modal-content .dropdown-content.select-dropdown {
+	max-height: 60vh !important; // important needed to override JS' calculations
+}
