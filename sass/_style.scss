@@ -848,6 +848,10 @@ code[class*="language-"] {
 
 
 // BuySellAds Styling
+.bsap {
+  display: none; // Temp hiding
+}
+
 .buysellads {
   &.buysellads-demo {
     bottom: 20px;
