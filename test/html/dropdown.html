@@ -444,6 +444,44 @@
 
 <br>
 
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal1</a>
+<div class="modal modal-fixed-footer" id="modal1">
+  <div class="modal-content">
+    <p>Modal 1 with original issue</p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div style="position: relative;">
+
+      <a id="test-modal" class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="modal-dropdown">+</a>
+      <ul id="modal-dropdown" class="dropdown-content">
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#">9</a></li>
+        <li><a href="#">10</a></li>
+        <li><a href="#">11</a></li>
+        <li><a href="#">12</a></li>
+        <li><a href="#">13</a></li>
+        <li><a href="#">14</a></li>
+        <li><a href="#">15</a></li>
+        <li><a href="#">16</a></li>
+        <li><a href="#">17</a></li>
+        <li><a href="#">18</a></li>
+        <li><a href="#19">19</a></li>
+        <li><a href="#20">20</a></li>
+      </ul>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</div>
+
+<br><br>
+
 Align left:
 <a id="test-12" class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" data-target="12">+</a>
 <ul id="12" class="dropdown-content">
@@ -592,12 +630,13 @@ Align right: --------------------------------
        $('#test-1, #test-11, #test-17, #test-18, #button4').dropdown({hover: true});
        $('#test-2, #test-3, #test-19, #test-20').dropdown({coverTrigger: false, hover: true});
        $('#test-14').dropdown({alignment: 'right', constrainWidth: false});
-       $('#test-15, #test-24, #button5, #button6').dropdown();
+       $('#test-15, #test-24, #button5, #button6, #test-modal').dropdown();
        $('#test-16, #test-22').dropdown({coverTrigger: false});
        $('#test-12').dropdown({constrainWidth: false, alignment: 'left'});
        $('#test-13, #test-21').dropdown({constrainWidth: false, alignment: 'right'});
        $('#test-7, #test-10').dropdown({constrainWidth: false});
        $('.datepicker').datepicker();
+       $('.modal').modal();
    });
   </script>
 
