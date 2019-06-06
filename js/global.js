@@ -167,6 +167,23 @@ M.escapeHash = function(hash) {
   return hash.replace(/(:|\.|\[|\]|,|=|\/)/g, '\\$1');
 };
 
+/**
+ * Get closest ancestor that satisfies the condition
+ * @param {Element} el  Element to find ancestors on
+ * @param {Function} condition  Function that given an ancestor element returns true or false
+ * @returns {Element} Return closest ancestor or null if none satisfies the condition
+ */
+M.getClosestAncestor = function(el, condition) {
+  let ancestor = el.parentNode;
+  while (ancestor !== null && !$(ancestor).is(document)) {
+    if (condition(ancestor)) {
+      return ancestor;
+    }
+    ancestor = ancestor.parentNode;
+  }
+  return null;
+};
+
 M.elementOrParentIsFixed = function(element) {
   let $element = $(element);
   let $checkElements = $element.add($element.parents());

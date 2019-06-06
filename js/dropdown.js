@@ -73,11 +73,7 @@
       this.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
-      if (!!this.options.container) {
-        $(this.options.container).append(this.dropdownEl);
-      } else {
-        this.$el.after(this.dropdownEl);
-      }
+      this._moveDropdown();
 
       this._makeDropdownFocusable();
       this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
@@ -354,6 +350,17 @@
       });
     }
 
+    // Move dropdown after container or trigger
+    _moveDropdown(containerEl) {
+      if (!!this.options.container) {
+        $(this.options.container).append(this.dropdownEl);
+      } else if (containerEl) {
+        $(containerEl).append(this.dropdownEl);
+      } else {
+        this.$el.after(this.dropdownEl);
+      }
+    }
+
     _makeDropdownFocusable() {
       // Needed for arrow key navigation
       this.dropdownEl.tabIndex = 0;
@@ -378,7 +385,7 @@
       }
     }
 
-    _getDropdownPosition() {
+    _getDropdownPosition(closestOverflowParent) {
       let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
       let triggerBRect = this.el.getBoundingClientRect();
       let dropdownBRect = this.dropdownEl.getBoundingClientRect();
@@ -394,11 +401,6 @@
         height: idealHeight,
         width: idealWidth
       };
-
-      // Countainer here will be closest ancestor with overflow: hidden
-      let closestOverflowParent = !!this.dropdownEl.offsetParent
-        ? this.dropdownEl.offsetParent
-        : this.dropdownEl.parentNode;
 
       let alignments = M.checkPossibleAlignments(
         this.el,
@@ -421,10 +423,11 @@
           this.isScrollable = true;
 
           // Determine which side has most space and cutoff at correct height
+          idealHeight -= 20; // Add padding when cutoff
           if (alignments.spaceOnTop > alignments.spaceOnBottom) {
             verticalAlignment = 'bottom';
             idealHeight += alignments.spaceOnTop;
-            idealYPos -= alignments.spaceOnTop;
+            idealYPos -= alignments.spaceOnTop - 20; // add back padding space
           } else {
             idealHeight += alignments.spaceOnBottom;
           }
@@ -524,13 +527,28 @@
      * Place dropdown
      */
     _placeDropdown() {
+      // Countainer here will be closest ancestor with overflow: hidden
+      let closestOverflowParent = M.getClosestAncestor(this.dropdownEl, (ancestor) => {
+        return $(ancestor).css('overflow') !== 'visible';
+      });
+      // Fallback
+      if (!closestOverflowParent) {
+        closestOverflowParent = !!this.dropdownEl.offsetParent
+          ? this.dropdownEl.offsetParent
+          : this.dropdownEl.parentNode;
+      }
+      if ($(closestOverflowParent).css('position') === 'static')
+        $(closestOverflowParent).css('position', 'relative');
+
+      this._moveDropdown(closestOverflowParent);
+
       // Set width before calculating positionInfo
       let idealWidth = this.options.constrainWidth
         ? this.el.getBoundingClientRect().width
         : this.dropdownEl.getBoundingClientRect().width;
       this.dropdownEl.style.width = idealWidth + 'px';
 
-      let positionInfo = this._getDropdownPosition();
+      let positionInfo = this._getDropdownPosition(closestOverflowParent);
       this.dropdownEl.style.left = positionInfo.x + 'px';
       this.dropdownEl.style.top = positionInfo.y + 'px';
       this.dropdownEl.style.height = positionInfo.height + 'px';

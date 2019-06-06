@@ -59,8 +59,8 @@ describe("Autocomplete Plugin", function () {
       $limited.val('a');
       keyup($limited[0], 65);
 
-      var $autocompleteEl = $limited.parent().find('.autocomplete-content');
       setTimeout(function() {
+        var $autocompleteEl = $(M.Autocomplete.getInstance($limited[0]).container);
         expect($autocompleteEl.children().length).toEqual(20, 'Results should be at max the set limit');
         done();
       }, 200);
