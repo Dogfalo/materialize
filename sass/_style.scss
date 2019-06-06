@@ -743,6 +743,19 @@ code[class*="language-"] {
 
 
 // Carbon Ads styling
+#bsap_1308711 {
+  display: block;
+
+  iframe {
+    width: 150px;
+    height: 250px;
+  }
+
+  .bsa_it_p {
+    display: none;
+  }
+}
+
 .toc-wrapper {
   &.pin-bottom {
     margin-top: 84px;
@@ -752,8 +765,7 @@ code[class*="language-"] {
   margin-top: 42px;
 }
 
-#carbonads,
-#bsap_1308711 {
+#carbonads {
   max-width: 150px;
   display: inline-block;
   position: relative;
