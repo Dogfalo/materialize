@@ -386,15 +386,12 @@
      * @param {chip} chip
      */
     _isValid(chip) {
-      
-        if (chip.hasOwnProperty('tag') && chip.tag !== '') {
-          let exists = false;
-          for (let i = 0; i < this.chipsData.length; i++) {
-            
-            if (this.options.allowDuplicates === false && this.chipsData[i].tag === chip.tag) {
-              exists = true;
-              break;
-            }
+      if (chip.hasOwnProperty('tag') && chip.tag !== '') {
+        let exists = false;
+        for (let i = 0; i < this.chipsData.length; i++) {
+          if (this.options.allowDuplicates === false && this.chipsData[i].tag === chip.tag) {
+            exists = true;
+            break;
           }
         }
         return !exists;
