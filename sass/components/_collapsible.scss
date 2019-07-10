@@ -7,6 +7,10 @@
 }
 
 .collapsible-header {
+  &:focus {
+    outline: 0
+  }
+
   display: flex;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -23,6 +27,9 @@
     margin-right: 1rem;
   }
 }
+.keyboard-focused .collapsible-header:focus {
+  background-color: #eee;
+}
 
 .collapsible-body {
   display: none;
@@ -31,9 +38,9 @@
   padding: 2rem;
 }
 
-// sideNav collapsible styling
-.side-nav,
-.side-nav.fixed {
+// Sidenav collapsible styling
+.sidenav,
+.sidenav.sidenav-fixed {
 
   .collapsible {
     border: none;
