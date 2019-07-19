@@ -40,14 +40,14 @@ textarea.materialize-textarea {
 
   // Disabled input style
   &:disabled,
-  &[readonly="readonly"] {
+  &:read-only {
     color: $input-disabled-color;
     border-bottom: $input-disabled-border;
   }
 
   // Disabled label style
   &:disabled+label,
-  &[readonly="readonly"]+label {
+  &:read-only+label {
     color: $input-disabled-color;
   }
 
