@@ -3,6 +3,7 @@
 .cache
 .DS_Store
 .idea
+*.iml
 .vs
 .vscode
 .project
