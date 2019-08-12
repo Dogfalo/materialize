@@ -37,6 +37,7 @@
 
       // Setup
       this.el.tabIndex = -1;
+      this.placeholder = null;
       this._keysSelected = {};
       this._valueDict = {}; // Maps key to original and generated option element.
       this._setupDropdown();
@@ -120,13 +121,25 @@
 
         if (this.isMultiple) {
           // Deselect placeholder option if still selected.
-          let placeholderOption = $(this.dropdownOptions).find('li.disabled.selected');
-          if (placeholderOption.length) {
-            placeholderOption.removeClass('selected');
-            placeholderOption.find('input[type="checkbox"]').prop('checked', false);
-            this._toggleEntryFromArray(placeholderOption[0].id);
-          }
           selected = this._toggleEntryFromArray(key);
+
+          if (this._placeholder) {
+            console.log(`length = ${Object.keys(this._keysSelected).length}`);
+            let checked = $(this._placeholder.optionEl)
+              .find('input')
+              .prop('checked');
+            if (checked === true) {
+              if (Object.keys(this._keysSelected).length > 0) {
+                // unchecks placeholder
+                this._toggleEntryFromArray(this._placeholder.optionEl.id);
+              }
+            } else {
+              if (Object.keys(this._keysSelected).length === 0) {
+                // checks placeholder
+                this._toggleEntryFromArray(this._placeholder.optionEl.id);
+              }
+            }
+          }
         } else {
           $(this.dropdownOptions)
             .find('li')
@@ -288,6 +301,10 @@
 
       obj.el = el;
       obj.optionEl = optionEl;
+      obj.isPlaceholder = el.disabled && el.selected && index == 0;
+      if (obj.isPlaceholder === true) {
+        this._placeholder = obj;
+      }
       this._valueDict[key] = obj;
     }
 
@@ -343,7 +360,8 @@
      */
     _toggleEntryFromArray(key) {
       let notAdded = !this._keysSelected.hasOwnProperty(key);
-      let $optionLi = $(this._valueDict[key].optionEl);
+      let obj = this._valueDict[key];
+      let $optionLi = $(obj.optionEl);
 
       if (notAdded) {
         this._keysSelected[key] = true;
@@ -368,22 +386,23 @@
     _setValueToInput() {
       let values = [];
       let options = this.$el.find('option');
+      let placeholder = '';
 
-      options.each((el) => {
-        if ($(el).prop('selected')) {
+      options.each((el, index) => {
+        if (index === 0 && $(el).prop('disabled') && $(el).prop('selected')) {
+          placeholder = $(el).text();
+        } else if ($(el).prop('selected')) {
+          // option
           let text = $(el).text();
           values.push(text);
         }
       });
 
-      if (!values.length) {
-        let firstDisabled = this.$el.find('option:disabled').eq(0);
-        if (firstDisabled.length && firstDisabled[0].value === '') {
-          values.push(firstDisabled.text());
-        }
+      if (values.length === 0) {
+        this.input.value = placeholder;
+      } else {
+        this.input.value = values.join(', ');
       }
-
-      this.input.value = values.join(', ');
     }
 
     /**
@@ -392,33 +411,49 @@
     _setSelectedStates() {
       this._keysSelected = {};
 
+      if (!this.isMultiple) {
+        $(this.dropdownOptions)
+          .find('li.selected')
+          .removeClass('selected');
+      }
+
+      let placeholder = null;
+      let selected = [];
+      let unselected = [];
       for (let key in this._valueDict) {
-        let option = this._valueDict[key];
-        let optionIsSelected = $(option.el).prop('selected');
-        $(option.optionEl)
-          .find('input[type="checkbox"]')
-          .prop('checked', optionIsSelected);
-        if (optionIsSelected) {
-          this._activateOption($(this.dropdownOptions), $(option.optionEl));
-          this._keysSelected[key] = true;
+        let obj = this._valueDict[key];
+        if (obj.isPlaceholder === true) {
+          placeholder = obj;
+        } else if ($(obj.el).prop('selected') === true) {
+          $(obj.optionEl)
+            .find('input[type="checkbox"]')
+            .prop('checked', true);
+
+          $(obj.optionEl).addClass('selected');
+
+          this._keysSelected[obj.optionEl.id] = true;
+
+          selected.push(obj);
         } else {
-          $(option.optionEl).removeClass('selected');
+          $(obj.optionEl)
+            .find('input[type="checkbox"]')
+            .prop('checked', false);
+
+          $(obj.optionEl).removeClass('selected');
+
+          unselected.push(obj);
         }
       }
-    }
 
-    /**
-     * Make option as selected and scroll to selected position
-     * @param {jQuery} collection  Select options jQuery element
-     * @param {Element} newOption  element of the new option
-     */
-    _activateOption(collection, newOption) {
-      if (newOption) {
-        if (!this.isMultiple) {
-          collection.find('li.selected').removeClass('selected');
-        }
-        let option = $(newOption);
-        option.addClass('selected');
+      if (selected.length === 0) {
+        // checks placeholder
+        $(placeholder.optionEl)
+          .find('input[type="checkbox"]')
+          .prop('checked', true);
+
+        $(placeholder.optionEl).addClass('selected');
+
+        this._keysSelected[placeholder.optionEl.id] = true;
       }
     }
 

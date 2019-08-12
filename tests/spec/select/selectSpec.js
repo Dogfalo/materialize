@@ -130,7 +130,6 @@ describe("Select Plugin", function () {
         click(thirdOption[0]);
         click(document.body);
 
-
         setTimeout(function() {
           expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');
           expect(browserSelect.val()).toEqual([], 'Actual select element should be empty because none chosen.');
@@ -140,14 +139,42 @@ describe("Select Plugin", function () {
       }, 400);
     });
 
-    it("should have multiple pre-selected values", function () {
+    it("should re-select and re-deselect the placeholder option", function (done) {
       multipleInput = $(selectInstance.wrapper).find('input.select-dropdown');
       multipleDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
-      var secondOption = browserSelect.find('option[selected]').eq(0);
-      var thirdOption = browserSelect.find('option[selected]').eq(1);
-      expect(multipleInput.val()).toEqual(secondOption.text() + ', ' + thirdOption.text(), 'Value should be equal to preselected option.');
+      // will open dropdown
+      click(multipleInput[0]);
+
+      setTimeout(function() {
+        // opens dropdown
+        
+        // deselect second option
+        var secondOption = multipleDropdown.find('li').eq(2);
+        click(secondOption[0]);
+
+        setTimeout(function() {
+
+          // deselect third option
+          var thirdOption = multipleDropdown.find('li').eq(3);
+          click(thirdOption[0]);
+
+          setTimeout(function() {
+            let placeholderOption = multipleDropdown.find('li').eq(0);
+            
+            expect(placeholderOption[0].selected).toEqual(true, 'Value is equal to true because no options is selected.');
+
+            click(secondOption[0]);
+
+            setTimeout(function() {
+              expect(placeholderOption[0].selected).toEqual(false, 'Value is equal to false because second option is selected');
+              done();
+            }, 400);
+          }, 400);
+        }, 400)
+      }, 400);
     });
+
   });
 
   describe("Optgroup Select", function () {
@@ -229,3 +256,5 @@ describe("Select Plugin", function () {
 
   });
 });
+
+
