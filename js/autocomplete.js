@@ -18,7 +18,7 @@ let _defaults = {
  * @class
  *
  */
-export default class Autocomplete extends Component {
+class Autocomplete extends Component {
   /**
    * Construct Autocomplete instance
    * @constructor
@@ -313,48 +313,43 @@ export default class Autocomplete extends Component {
     this._mousedown = false;
   }
 
-      // Gather all matching data
-      for (let key in data) {
-        if (data.hasOwnProperty(key) && key.toLowerCase().indexOf(val) !== -1) {
-          let entry = {
-            data: data[key],
-            key: key
-          };
-          matchingData.push(entry);
+  /**
+   * Select autocomplete option
+   * @param {Element} el  Autocomplete option list item element
+   */
+  selectOption(el) {
+    let text = el.text().trim();
+    this.el.value = text;
+    this.$el.trigger('change');
+    this._resetAutocomplete();
+    this.close();
+
+    // Handle onAutocomplete callback.
+    if (typeof this.options.onAutocomplete === 'function') {
+      this.options.onAutocomplete.call(this, text);
+    }
+  }
+
+  /**
+   * Render dropdown content
+   * @param {Object} data  data set
+   * @param {String} val  current input value
+   */
+  _renderDropdown(data, val) {
+    this._resetAutocomplete();
 
     let matchingData = [];
 
     // Gather all matching data
     for (let key in data) {
       if (data.hasOwnProperty(key) && key.toLowerCase().indexOf(val) !== -1) {
-        // Break if past limit
-        if (this.count >= this.options.limit) {
-          break;
-        }
-
         let entry = {
           data: data[key],
           key: key
         };
         matchingData.push(entry);
 
-      // Limit
-      matchingData = matchingData.slice(0, this.options.limit);
-
-      // Render
-      for (let i = 0; i < matchingData.length; i++) {
-        let entry = matchingData[i];
-        let $autocompleteOption = $('<li></li>');
-        if (!!entry.data) {
-          $autocompleteOption.append(
-            `<img src="${entry.data}" class="right circle"><span>${entry.key}</span>`
-          );
-        } else {
-          $autocompleteOption.append('<span>' + entry.key + '</span>');
-        }
-
-        $(this.container).append($autocompleteOption);
-        this._highlight(val, $autocompleteOption);
+        this.count++;
       }
     }
 
@@ -369,6 +364,9 @@ export default class Autocomplete extends Component {
       };
       matchingData.sort(sortFunctionBound);
     }
+
+    // Limit
+    matchingData = matchingData.slice(0, this.options.limit);
 
     // Render
     for (let i = 0; i < matchingData.length; i++) {

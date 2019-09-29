@@ -9,7 +9,7 @@ export default [
     output: {
       file: 'bin/materialize.js',
       name: 'M',
-      format: 'iife',
+      format: 'umd',
       globals: {
         window: 'window'
       }

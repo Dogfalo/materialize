@@ -340,15 +340,8 @@ export default class Chips extends Component {
       this.$input[0].focus();
     };
 
-    /**
-     * Setup Label
-     */
-    _setupLabel() {
-      this.$label = this.$el.find('label');
-      if (this.$label.length) {
-        this.$label[0].setAttribute('for', this.$input.attr('id'));
-      }
-    }
+    this.autocomplete = M.Autocomplete.init(this.$input[0], this.options.autocompleteOptions);
+  }
 
   /**
    * Setup Input
@@ -369,7 +362,7 @@ export default class Chips extends Component {
   _setupLabel() {
     this.$label = this.$el.find('label');
     if (this.$label.length) {
-      this.$label.setAttribute('for', this.$input.attr('id'));
+      this.$label[0].setAttribute('for', this.$input.attr('id'));
     }
   }
 
