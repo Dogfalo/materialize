@@ -28,13 +28,13 @@
     ]
   },
   "dependencies": {},
-  "engine": "node >= 6",
+  "engine": "node >= 8",
   "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/preset-env": "^7.6.2",
     "autoprefixer": "^7.1.1",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
-    "grunt": "^1.0.1",
-    "grunt-babel": "^6.0.0",
+    "grunt": "^1.0.4",
     "grunt-banner": "^0.6.0",
     "grunt-browser-sync": "^2.2.0",
     "grunt-concurrent": "^2.3.1",
@@ -60,10 +60,10 @@
     "node-sass": "^4.7.2",
     "phantomjs-prebuilt": "^2.1.14",
     "prettier": "^1.12.1",
-    "rollup": "^0.65.2",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-babel-minify": "^6.0.0",
-    "rollup-plugin-uglify": "^5.0.2",
+    "rollup": "^1.22.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel-minify": "^9.1.0",
+    "rollup-plugin-uglify": "^6.0.3",
     "uglify": "^0.1.5"
   },
   "files": [

@@ -96,32 +96,6 @@ module.exports = function(grunt) {
       }
     },
 
-    babel: {
-      options: {
-        sourceMap: false,
-        plugins: [
-          'transform-es2015-arrow-functions',
-          'transform-es2015-block-scoping',
-          'transform-es2015-classes',
-          'transform-es2015-template-literals',
-          'transform-es2015-object-super'
-        ]
-      },
-      bin: {
-        options: {
-          sourceMap: true
-        },
-        files: {
-          'bin/materialize.js': 'temp/js/materialize_concat.js'
-        }
-      },
-      dist: {
-        files: {
-          'dist/js/materialize.js': 'temp/js/materialize.js'
-        }
-      }
-    },
-
     // Browser Sync integration
     browserSync: {
       bsFiles: ['bin/*', 'css/ghpages-materialize.css', '!**/node_modules/**/*'],
@@ -633,7 +607,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
-  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-exec');
 
   // define the tasks
@@ -643,7 +616,6 @@ module.exports = function(grunt) {
     'postcss:expanded',
     'postcss:min',
     'concat:dist',
-    'babel:dist',
     'uglify:dist',
     'uglify:extras',
     'usebanner:release',
@@ -657,10 +629,6 @@ module.exports = function(grunt) {
     'rename:rename_compiled',
     'clean:temp'
   ]);
-
-  grunt.task.registerTask('configureBabel', 'configures babel options', function() {
-    config.babel.bin.options.inputSourceMap = grunt.file.readJSON(concatFile);
-  });
 
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['exec:compile_js']);
