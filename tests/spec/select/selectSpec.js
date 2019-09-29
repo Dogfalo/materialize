@@ -5,7 +5,7 @@ describe("Select Plugin", function () {
   });
 
   describe("Select", function () {
-    var browserSelect, normalInput, normalDropdown, selectInstance;
+    let browserSelect, normalInput, normalDropdown, selectInstance;
 
     beforeEach(function() {
       $('select').formSelect();
@@ -26,7 +26,7 @@ describe("Select Plugin", function () {
 
       setTimeout(function() {
         expect(normalDropdown).toBeVisible('Should be visible after opening.');
-        var firstOption = normalDropdown.find('li:not(.disabled)').first();
+        let firstOption = normalDropdown.find('li:not(.disabled)').first();
         click(firstOption[0]);
         normalInput.blur();
 
@@ -42,7 +42,7 @@ describe("Select Plugin", function () {
       normalInput = $(selectInstance.wrapper).find('input.select-dropdown');
       normalDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
-      var firstOption = browserSelect.find('option[selected]');
+      let firstOption = browserSelect.find('option[selected]');
       expect(normalInput.val()).toEqual(firstOption.text(), 'Value should be equal to preselected option.');
     });
 
@@ -60,7 +60,7 @@ describe("Select Plugin", function () {
       click(normalInput[0]);
 
       setTimeout(function() {
-        var firstOption = normalDropdown.find('li:not(.disabled)').first();
+        let firstOption = normalDropdown.find('li:not(.disabled)').first();
         click(firstOption[0]);
         normalInput.blur();
 
@@ -74,7 +74,7 @@ describe("Select Plugin", function () {
   });
 
   describe("Multiple Select", function () {
-    var browserSelect, multipleInput, multipleDropdown, selectInstance;
+    let browserSelect, multipleInput, multipleDropdown, selectInstance;
 
     beforeEach(function() {
       browserSelect = $('select.multiple');
@@ -94,9 +94,9 @@ describe("Select Plugin", function () {
 
       setTimeout(function() {
         expect(multipleDropdown).toBeVisible('Should be visible after opening.');
-        var firstOption = multipleDropdown.find('li:not(.disabled)').first();
-        var secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
-        var thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
+        let firstOption = multipleDropdown.find('li:not(.disabled)').first();
+        let secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
+        let thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
         click(firstOption[0]);
         click(document.body);
 
@@ -122,9 +122,9 @@ describe("Select Plugin", function () {
 
       setTimeout(function() {
         expect(multipleDropdown).toBeVisible('Should be visible after opening.');
-        var disabledOption = multipleDropdown.find('li.disabled');
-        var secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
-        var thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
+        let disabledOption = multipleDropdown.find('li.disabled');
+        let secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
+        let thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
 
         click(secondOption[0]);
         click(thirdOption[0]);
@@ -144,14 +144,14 @@ describe("Select Plugin", function () {
       multipleInput = $(selectInstance.wrapper).find('input.select-dropdown');
       multipleDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
-      var secondOption = browserSelect.find('option[selected]').eq(0);
-      var thirdOption = browserSelect.find('option[selected]').eq(1);
+      let secondOption = browserSelect.find('option[selected]').eq(0);
+      let thirdOption = browserSelect.find('option[selected]').eq(1);
       expect(multipleInput.val()).toEqual(secondOption.text() + ', ' + thirdOption.text(), 'Value should be equal to preselected option.');
     });
   });
 
   describe("Optgroup Select", function () {
-    var browserSelect, optInput, optDropdown, optionInOptgroup, optionAfterOptGroup, selectInstance;
+    let browserSelect, optInput, optDropdown, optionInOptgroup, optionAfterOptGroup, selectInstance;
 
     beforeEach(function() {
       browserSelect = $('select.optgroup');
@@ -162,7 +162,7 @@ describe("Select Plugin", function () {
       optInput = $(selectInstance.wrapper).find('input.select-dropdown');
       optDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
 
-      var optgroups = optDropdown.find('li.optgroup');
+      let optgroups = optDropdown.find('li.optgroup');
       browserSelect.find('optgroup').each(function(i) {
         expect($(this).attr('label')).toEqual(optgroups.eq(i).text(), 'should generate optgroup structure.');
       });
@@ -176,7 +176,7 @@ describe("Select Plugin", function () {
 
       setTimeout(function() {
         expect(optDropdown).toBeVisible('Should be visible after opening.');
-        var secondOption = optDropdown.find('li:not(.disabled):not(.optgroup)').eq(1);
+        let secondOption = optDropdown.find('li:not(.disabled):not(.optgroup)').eq(1);
         click(secondOption[0]);
         optInput.blur();
 
@@ -199,9 +199,9 @@ describe("Select Plugin", function () {
     it("should not do anything when optgroup li clicked", function(done) {
       optInput = $(selectInstance.wrapper).find('input.select-dropdown');
       optDropdown = $(selectInstance.wrapper).find('ul.select-dropdown');
-      var originalVal = optInput.val();
+      let originalVal = optInput.val();
 
-      var optgroups = optDropdown.find('li.optgroup');
+      let optgroups = optDropdown.find('li.optgroup');
       browserSelect.find('optgroup').each(function(i) {
         expect($(this).attr('label')).toEqual(optgroups.eq(i).text(), 'should generate optgroup structure.');
       });
@@ -215,12 +215,12 @@ describe("Select Plugin", function () {
 
       setTimeout(function() {
         expect(optDropdown).toBeVisible('Should be visible after opening.');
-        var optgroup = optDropdown.find('li.optgroup').first();
+        let optgroup = optDropdown.find('li.optgroup').first();
         click(optgroup[0]);
         optInput.blur();
 
         setTimeout(function() {
-          expect(optDropdown).toBeHidden('Should be hidden after choosing invalid item.');
+          expect(optDropdown).toBeVisible('Should not be hidden after choosing invalid item.');
           expect(optInput.val()).toEqual(originalVal, 'Value should be equal to original option.');
           done();
         }, 400);
