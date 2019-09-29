@@ -113,9 +113,14 @@
      */
     _handleOptionClick(e) {
       e.preventDefault();
-      let option = $(e.target).closest('li')[0];
-      let key = option.id;
-      if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup') && key.length) {
+      let optionEl = $(e.target).closest('li')[0];
+      this._selectOption(optionEl);
+      e.stopPropagation();
+    }
+
+    _selectOption(optionEl) {
+      let key = optionEl.id;
+      if (!$(optionEl).hasClass('disabled') && !$(optionEl).hasClass('optgroup') && key.length) {
         let selected = true;
 
         if (this.isMultiple) {
@@ -131,9 +136,9 @@
           $(this.dropdownOptions)
             .find('li')
             .removeClass('selected');
-          $(option).toggleClass('selected', selected);
+          $(optionEl).toggleClass('selected', selected);
           this._keysSelected = {};
-          this._keysSelected[option.id] = true;
+          this._keysSelected[optionEl.id] = true;
         }
 
         // Set selected on original select option
@@ -145,7 +150,9 @@
         }
       }
 
-      e.stopPropagation();
+      if (!this.isMultiple) {
+        this.dropdown.close();
+      }
     }
 
     /**
@@ -265,9 +272,9 @@
           }
         };
 
-        if (this.isMultiple) {
-          dropdownOptions.closeOnClick = false;
-        }
+        // Prevent dropdown from closeing too early
+        dropdownOptions.closeOnClick = false;
+
         this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
       }
 

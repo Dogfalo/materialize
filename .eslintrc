@@ -13,6 +13,7 @@
     "no-var": "warn",
     "no-extra-semi": "warn",
     "no-unused-vars": "warn",
-    "no-new-object": "warn"
+    "no-new-object": "warn",
+    "no-undef": "error"
   }
 }
