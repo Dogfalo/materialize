@@ -38,7 +38,10 @@
     &.active { background-color: rgba(0,0,0,.05); }
   }
 
-  li > a {
+  // Style non btn anchors
+  li > a:not(.btn):not(.btn-large):not(.btn-flat):not(.btn-floating) {
+    &:hover { background-color: rgba(0,0,0,.05);}
+
     color: $sidenav-font-color;
     display: block;
     font-size: $sidenav-font-size;
@@ -46,21 +49,6 @@
     height: $sidenav-item-height;
     line-height: $sidenav-line-height;
     padding: 0 ($sidenav-padding * 2);
-
-    &:hover { background-color: rgba(0,0,0,.05);}
-
-    &.btn, &.btn-large, &.btn-flat, &.btn-floating {
-      margin: 10px 15px;
-    }
-
-    &.btn,
-    &.btn-large,
-    &.btn-floating { color: $button-raised-color; }
-    &.btn-flat { color: $button-flat-color; }
-
-    &.btn:hover,
-    &.btn-large:hover { background-color: lighten($button-raised-background, 5%); }
-    &.btn-floating:hover { background-color: $button-raised-background; }
 
     & > i,
     & > [class^="mdi-"], li > a > [class*="mdi-"],
@@ -74,6 +62,10 @@
     }
   }
 
+  // Stlye btn anchors
+  li > .btn, li > .btn-large, li > .btn-flat, li > .btn-floating {
+    margin: 10px ($sidenav-padding * 2);
+  }
 
   .divider {
     margin: ($sidenav-padding / 2) 0 0 0;
@@ -152,6 +144,7 @@
   width: 10px;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 998;
 }
 

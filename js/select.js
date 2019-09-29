@@ -109,24 +109,38 @@ export default class FormSelect extends Component {
     this._setValueToInput();
   }
 
-  /**
-   * Handle Option Click
-   * @param {Event} e
-   */
-  _handleOptionClick(e) {
-    e.preventDefault();
-    let option = $(e.target).closest('li')[0];
-    let key = option.id;
-    if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup') && key.length) {
-      let selected = true;
+    /**
+     * Handle Option Click
+     * @param {Event} e
+     */
+    _handleOptionClick(e) {
+      e.preventDefault();
+      let optionEl = $(e.target).closest('li')[0];
+      this._selectOption(optionEl);
+      e.stopPropagation();
+    }
 
-      if (this.isMultiple) {
-        // Deselect placeholder option if still selected.
-        let placeholderOption = $(this.dropdownOptions).find('li.disabled.selected');
-        if (placeholderOption.length) {
-          placeholderOption.removeClass('selected');
-          placeholderOption.find('input[type="checkbox"]').prop('checked', false);
-          this._toggleEntryFromArray(placeholderOption[0].id);
+    _selectOption(optionEl) {
+      let key = optionEl.id;
+      if (!$(optionEl).hasClass('disabled') && !$(optionEl).hasClass('optgroup') && key.length) {
+        let selected = true;
+
+        if (this.isMultiple) {
+          // Deselect placeholder option if still selected.
+          let placeholderOption = $(this.dropdownOptions).find('li.disabled.selected');
+          if (placeholderOption.length) {
+            placeholderOption.removeClass('selected');
+            placeholderOption.find('input[type="checkbox"]').prop('checked', false);
+            this._toggleEntryFromArray(placeholderOption[0].id);
+          }
+          selected = this._toggleEntryFromArray(key);
+        } else {
+          $(this.dropdownOptions)
+            .find('li')
+            .removeClass('selected');
+          $(optionEl).toggleClass('selected', selected);
+          this._keysSelected = {};
+          this._keysSelected[optionEl.id] = true;
         }
         selected = this._toggleEntryFromArray(key);
       } else {
@@ -148,13 +162,9 @@ export default class FormSelect extends Component {
     e.stopPropagation();
   }
 
-  /**
-   * Handle Input Click
-   */
-  _handleInputClick() {
-    if (this.dropdown && this.dropdown.isOpen) {
-      this._setValueToInput();
-      this._setSelectedStates();
+      if (!this.isMultiple) {
+        this.dropdown.close();
+      }
     }
   }
 
@@ -171,25 +181,21 @@ export default class FormSelect extends Component {
       this.wrapper.classList.add('disabled');
     }
 
-    // Create dropdown
-    this.$selectOptions = this.$el.children('option, optgroup');
-    this.dropdownOptions = document.createElement('ul');
-    this.dropdownOptions.id = `select-options-${M.guid()}`;
-    $(this.dropdownOptions).addClass(
-      'dropdown-content select-dropdown ' + (this.isMultiple ? 'multiple-select-dropdown' : '')
-    );
+    /**
+     * Setup dropdown
+     */
+    _setupDropdown() {
+      this.wrapper = document.createElement('div');
+      $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
+      this.$el.before($(this.wrapper));
+      // Move actual select element into overflow hidden wrapper
+      let $hideSelect = $('<div class="hide-select"></div>');
+      $(this.wrapper).append($hideSelect);
+      $hideSelect[0].appendChild(this.el);
 
-    // Create dropdown structure.
-    if (this.$selectOptions.length) {
-      this.$selectOptions.each((el) => {
-        if ($(el).is('option')) {
-          // Direct descendant option.
-          let optionEl;
-          if (this.isMultiple) {
-            optionEl = this._appendOptionWithIcon(this.$el, el, 'multiple');
-          } else {
-            optionEl = this._appendOptionWithIcon(this.$el, el);
-          }
+      if (this.el.disabled) {
+        this.wrapper.classList.add('disabled');
+      }
 
           this._addOptionToValueDict(el, optionEl);
         } else if ($(el).is('optgroup')) {
@@ -207,54 +213,66 @@ export default class FormSelect extends Component {
       });
     }
 
-    this.$el.after(this.dropdownOptions);
+      $(this.wrapper).append(this.dropdownOptions);
 
-    // Add input dropdown
-    this.input = document.createElement('input');
-    $(this.input).addClass('select-dropdown dropdown-trigger');
-    this.input.setAttribute('type', 'text');
-    this.input.setAttribute('readonly', 'true');
-    this.input.setAttribute('data-target', this.dropdownOptions.id);
-    if (this.el.disabled) {
-      $(this.input).prop('disabled', 'true');
-    }
+      // Add input dropdown
+      this.input = document.createElement('input');
+      $(this.input).addClass('select-dropdown dropdown-trigger');
+      this.input.setAttribute('type', 'text');
+      this.input.setAttribute('readonly', 'true');
+      this.input.setAttribute('data-target', this.dropdownOptions.id);
+      if (this.el.disabled) {
+        $(this.input).prop('disabled', 'true');
+      }
 
-    this.$el.before(this.input);
-    this._setValueToInput();
+      $(this.wrapper).prepend(this.input);
+      this._setValueToInput();
 
-    // Add caret
-    let dropdownIcon = $(
-      '<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'
-    );
-    this.$el.before(dropdownIcon[0]);
+      // Add caret
+      let dropdownIcon = $(
+        '<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'
+      );
+      $(this.wrapper).prepend(dropdownIcon[0]);
 
-    // Initialize dropdown
-    if (!this.el.disabled) {
-      let dropdownOptions = $.extend({}, this.options.dropdownOptions);
+      // Initialize dropdown
+      if (!this.el.disabled) {
+        let dropdownOptions = $.extend({}, this.options.dropdownOptions);
+        let userOnOpenEnd = dropdownOptions.onOpenEnd;
 
-      // Add callback for centering selected option when dropdown content is scrollable
-      dropdownOptions.onOpenEnd = (el) => {
-        let selectedOption = $(this.dropdownOptions)
-          .find('.selected')
-          .first();
+        // Add callback for centering selected option when dropdown content is scrollable
+        dropdownOptions.onOpenEnd = (el) => {
+          let selectedOption = $(this.dropdownOptions)
+            .find('.selected')
+            .first();
 
-        if (selectedOption.length) {
-          // Focus selected option in dropdown
-          M.keyDown = true;
-          this.dropdown.focusedIndex = selectedOption.index();
-          this.dropdown._focusFocusedItem();
-          M.keyDown = false;
+          if (selectedOption.length) {
+            // Focus selected option in dropdown
+            M.keyDown = true;
+            this.dropdown.focusedIndex = selectedOption.index();
+            this.dropdown._focusFocusedItem();
+            M.keyDown = false;
 
-          // Handle scrolling to selected option
-          if (this.dropdown.isScrollable) {
-            let scrollOffset =
-              selectedOption[0].getBoundingClientRect().top -
-              this.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
-            scrollOffset -= this.dropdownOptions.clientHeight / 2; // center in dropdown
-            this.dropdownOptions.scrollTop = scrollOffset;
+            // Handle scrolling to selected option
+            if (this.dropdown.isScrollable) {
+              let scrollOffset =
+                selectedOption[0].getBoundingClientRect().top -
+                this.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
+              scrollOffset -= this.dropdownOptions.clientHeight / 2; // center in dropdown
+              this.dropdownOptions.scrollTop = scrollOffset;
+            }
           }
-        }
-      };
+
+          // Handle user declared onOpenEnd if needed
+          if (userOnOpenEnd && typeof userOnOpenEnd === 'function') {
+            userOnOpenEnd.call(this.dropdown, this.el);
+          }
+        };
+
+        // Prevent dropdown from closeing too early
+        dropdownOptions.closeOnClick = false;
+
+        this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
+      }
 
       if (this.isMultiple) {
         dropdownOptions.closeOnClick = false;

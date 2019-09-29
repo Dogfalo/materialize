@@ -73,9 +73,21 @@ export default class Pushpin extends Component {
     }
   }
 
-  _setupEventHandlers() {
-    document.addEventListener('scroll', Pushpin._updateElements);
-  }
+    /**
+     * Teardown component
+     */
+    destroy() {
+      this.el.style.top = null;
+      this._removePinClasses();
+
+      // Remove pushpin Inst
+      let index = Pushpin._pushpins.indexOf(this);
+      Pushpin._pushpins.splice(index, 1);
+      if (Pushpin._pushpins.length === 0) {
+        this._removeEventHandlers();
+      }
+      this.el.M_Pushpin = undefined;
+    }
 
   _removeEventHandlers() {
     document.removeEventListener('scroll', Pushpin._updateElements);

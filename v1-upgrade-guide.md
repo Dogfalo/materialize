@@ -1,8 +1,8 @@
 # Upgrade to v1.0.0 from v0.100.2
 
 ## Auto Init
-- Componenets are no longer initialized automatically on document load by Materialize
-- Added function `M.AutoInit()` that initializes all componenets
+- Components are no longer initialized automatically on document load by Materialize
+- Added function `M.AutoInit()` that initializes all components
 
 ## Character Counter
 - Automatic initialization removed, initialize it manually as shown in documentation
@@ -38,7 +38,7 @@
 ## Dropdown
 - Removed gutter option
 - Removed stopPropagation option
-- Call plugin on `.dropdown-content` instead of `.dropdown-button`
+- Call plugin on `.dropdown-trigger` instead of `.dropdown-button`
 - Change attribute `data-activates` to `data-target`
 - Rename classes `.dropdown-button` to `.dropdown-trigger`
 - Rename option `belowOrigin` to `coverTrigger`
@@ -77,7 +77,7 @@
 - Rename plugin call `.sideNav()` to `.sidenav()`
 - Sidenav option `closeOnClick` no longer exists
   - Instead apply the class `.sidenav-close` to any item in the Sidenav that you wish to trigger a close.
-- Removed onOpen and onClose callback, use onOpenEnd and onOpenEnd callback instead
+- Removed onOpen and onClose callback, use onOpenEnd and onCloseEnd callback instead
 - Rename `fixed` class to `sidenav-fixed`
 - Rename methods `show` and `hide` to `open` and `close` respectively
 
@@ -116,7 +116,3 @@
 
 ## Transitions
 - JavaScript transitions removed
-
-
-
-

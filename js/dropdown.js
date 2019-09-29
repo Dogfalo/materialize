@@ -1,38 +1,97 @@
-import M from './global.js';
-import Component from './component.js';
-import anim from './anime.min.js';
-import $ from './cash.js';
+(function($, anim) {
+  'use strict';
 
-let _defaults = {
-  alignment: 'left',
-  autoFocus: true,
-  constrainWidth: true,
-  container: null,
-  coverTrigger: true,
-  closeOnClick: true,
-  hover: false,
-  inDuration: 150,
-  outDuration: 250,
-  onOpenStart: null,
-  onOpenEnd: null,
-  onCloseStart: null,
-  onCloseEnd: null,
-  onItemClick: null
-};
+  let _defaults = {
+    alignment: 'left',
+    autoFocus: true,
+    constrainWidth: true,
+    container: null,
+    coverTrigger: true,
+    closeOnClick: true,
+    hover: false,
+    inDuration: 150,
+    outDuration: 250,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    onItemClick: null
+  };
 
-/**
- * @class
- */
-export default class Dropdown extends Component {
-  constructor(el, options) {
-    super(Dropdown, el, options);
+  /**
+   * @class
+   */
+  class Dropdown extends Component {
+    constructor(el, options) {
+      super(Dropdown, el, options);
 
-    this.el.M_Dropdown = this;
-    Dropdown._dropdowns.push(this);
+      this.el.M_Dropdown = this;
+      Dropdown._dropdowns.push(this);
 
-    this.id = M.getIdFromTrigger(el);
-    this.dropdownEl = document.getElementById(this.id);
-    this.$dropdownEl = $(this.dropdownEl);
+      this.id = M.getIdFromTrigger(el);
+      this.dropdownEl = document.getElementById(this.id);
+      this.$dropdownEl = $(this.dropdownEl);
+
+      /**
+       * Options for the dropdown
+       * @member Dropdown#options
+       * @prop {String} [alignment='left'] - Edge which the dropdown is aligned to
+       * @prop {Boolean} [autoFocus=true] - Automatically focus dropdown el for keyboard
+       * @prop {Boolean} [constrainWidth=true] - Constrain width to width of the button
+       * @prop {Element} container - Container element to attach dropdown to (optional)
+       * @prop {Boolean} [coverTrigger=true] - Place dropdown over trigger
+       * @prop {Boolean} [closeOnClick=true] - Close on click of dropdown item
+       * @prop {Boolean} [hover=false] - Open dropdown on hover
+       * @prop {Number} [inDuration=150] - Duration of open animation in ms
+       * @prop {Number} [outDuration=250] - Duration of close animation in ms
+       * @prop {Function} onOpenStart - Function called when dropdown starts opening
+       * @prop {Function} onOpenEnd - Function called when dropdown finishes opening
+       * @prop {Function} onCloseStart - Function called when dropdown starts closing
+       * @prop {Function} onCloseEnd - Function called when dropdown finishes closing
+       */
+      this.options = $.extend({}, Dropdown.defaults, options);
+
+      /**
+       * Describes open/close state of dropdown
+       * @type {Boolean}
+       */
+      this.isOpen = false;
+
+      /**
+       * Describes if dropdown content is scrollable
+       * @type {Boolean}
+       */
+      this.isScrollable = false;
+
+      /**
+       * Describes if touch moving on dropdown content
+       * @type {Boolean}
+       */
+      this.isTouchMoving = false;
+
+      this.focusedIndex = -1;
+      this.filterQuery = [];
+
+      // Move dropdown-content after dropdown-trigger
+      this._moveDropdown();
+
+      this._makeDropdownFocusable();
+      this._resetFilterQueryBound = this._resetFilterQuery.bind(this);
+      this._handleDocumentClickBound = this._handleDocumentClick.bind(this);
+      this._handleDocumentTouchmoveBound = this._handleDocumentTouchmove.bind(this);
+      this._handleDropdownClickBound = this._handleDropdownClick.bind(this);
+      this._handleDropdownKeydownBound = this._handleDropdownKeydown.bind(this);
+      this._handleTriggerKeydownBound = this._handleTriggerKeydown.bind(this);
+      this._setupEventHandlers();
+    }
+
+    static get defaults() {
+      return _defaults;
+    }
+
+    static init(els, options) {
+      return super.init(this, els, options);
+    }
 
     /**
      * Options for the dropdown
@@ -370,13 +429,29 @@ export default class Dropdown extends Component {
       });
   }
 
-  _focusFocusedItem() {
-    if (
-      this.focusedIndex >= 0 &&
-      this.focusedIndex < this.dropdownEl.children.length &&
-      this.options.autoFocus
-    ) {
-      this.dropdownEl.children[this.focusedIndex].focus();
+    // Move dropdown after container or trigger
+    _moveDropdown(containerEl) {
+      if (!!this.options.container) {
+        $(this.options.container).append(this.dropdownEl);
+      } else if (containerEl) {
+        $(containerEl).append(this.dropdownEl);
+      } else {
+        this.$el.after(this.dropdownEl);
+      }
+    }
+
+    _makeDropdownFocusable() {
+      // Needed for arrow key navigation
+      this.dropdownEl.tabIndex = 0;
+
+      // Only set tabindex if it hasn't been set by user
+      $(this.dropdownEl)
+        .children()
+        .each(function(el) {
+          if (!el.getAttribute('tabindex')) {
+            el.setAttribute('tabindex', 0);
+          }
+        });
     }
   }
 
@@ -422,13 +497,54 @@ export default class Dropdown extends Component {
       } else {
         this.isScrollable = true;
 
-        // Determine which side has most space and cutoff at correct height
-        if (alignments.spaceOnTop > alignments.spaceOnBottom) {
+    _getDropdownPosition(closestOverflowParent) {
+      let offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
+      let triggerBRect = this.el.getBoundingClientRect();
+      let dropdownBRect = this.dropdownEl.getBoundingClientRect();
+
+      let idealHeight = dropdownBRect.height;
+      let idealWidth = dropdownBRect.width;
+      let idealXPos = triggerBRect.left - dropdownBRect.left;
+      let idealYPos = triggerBRect.top - dropdownBRect.top;
+
+      let dropdownBounds = {
+        left: idealXPos,
+        top: idealYPos,
+        height: idealHeight,
+        width: idealWidth
+      };
+
+      let alignments = M.checkPossibleAlignments(
+        this.el,
+        closestOverflowParent,
+        dropdownBounds,
+        this.options.coverTrigger ? 0 : triggerBRect.height
+      );
+
+      let verticalAlignment = 'top';
+      let horizontalAlignment = this.options.alignment;
+      idealYPos += this.options.coverTrigger ? 0 : triggerBRect.height;
+
+      // Reset isScrollable
+      this.isScrollable = false;
+
+      if (!alignments.top) {
+        if (alignments.bottom) {
           verticalAlignment = 'bottom';
           idealHeight += alignments.spaceOnTop;
           idealYPos -= alignments.spaceOnTop;
         } else {
-          idealHeight += alignments.spaceOnBottom;
+          this.isScrollable = true;
+
+          // Determine which side has most space and cutoff at correct height
+          idealHeight -= 20; // Add padding when cutoff
+          if (alignments.spaceOnTop > alignments.spaceOnBottom) {
+            verticalAlignment = 'bottom';
+            idealHeight += alignments.spaceOnTop;
+            idealYPos -= alignments.spaceOnTop - 20; // add back padding space
+          } else {
+            idealHeight += alignments.spaceOnBottom;
+          }
         }
       }
     }
@@ -468,25 +584,40 @@ export default class Dropdown extends Component {
     };
   }
 
-  /**
-   * Animate in dropdown
-   */
-  _animateIn() {
-    anim.remove(this.dropdownEl);
-    anim({
-      targets: this.dropdownEl,
-      opacity: {
-        value: [0, 1],
-        easing: 'easeOutQuad'
-      },
-      scaleX: [0.3, 1],
-      scaleY: [0.3, 1],
-      duration: this.options.inDuration,
-      easing: 'easeOutQuint',
-      complete: (anim) => {
-        if (this.options.autoFocus) {
-          this.dropdownEl.focus();
-        }
+    /**
+     * Place dropdown
+     */
+    _placeDropdown() {
+      // Countainer here will be closest ancestor with overflow: hidden
+      let closestOverflowParent = M.getClosestAncestor(this.dropdownEl, (ancestor) => {
+        return $(ancestor).css('overflow') !== 'visible';
+      });
+      // Fallback
+      if (!closestOverflowParent) {
+        closestOverflowParent = !!this.dropdownEl.offsetParent
+          ? this.dropdownEl.offsetParent
+          : this.dropdownEl.parentNode;
+      }
+      if ($(closestOverflowParent).css('position') === 'static')
+        $(closestOverflowParent).css('position', 'relative');
+
+      this._moveDropdown(closestOverflowParent);
+
+      // Set width before calculating positionInfo
+      let idealWidth = this.options.constrainWidth
+        ? this.el.getBoundingClientRect().width
+        : this.dropdownEl.getBoundingClientRect().width;
+      this.dropdownEl.style.width = idealWidth + 'px';
+
+      let positionInfo = this._getDropdownPosition(closestOverflowParent);
+      this.dropdownEl.style.left = positionInfo.x + 'px';
+      this.dropdownEl.style.top = positionInfo.y + 'px';
+      this.dropdownEl.style.height = positionInfo.height + 'px';
+      this.dropdownEl.style.width = positionInfo.width + 'px';
+      this.dropdownEl.style.transformOrigin = `${
+        positionInfo.horizontalAlignment === 'left' ? '0' : '100%'
+      } ${positionInfo.verticalAlignment === 'top' ? '0' : '100%'}`;
+    }
 
         // onOpenEnd callback
         if (typeof this.options.onOpenEnd === 'function') {

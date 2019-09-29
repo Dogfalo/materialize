@@ -342,10 +342,16 @@
   &lt;/div>
 &lt;/nav>
         </code></pre>
-        <p>To activate the dropdown menu, insert this line of code into your JavaScript file, within the
-          <code class="language-javascript">$( document ).ready(function)</code> block</p>
+        <p>To activate the dropdown menu, insert this line of code into your JavaScript file. You can read more about the <a href="dropdown.html" target="_blank">Dropdown component here</a>.
         <pre><code class="language-javascript">
-$(".dropdown-trigger").dropdown();
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $('.dropdown-trigger').dropdown();
         </code></pre>
         <h5>Trigger dropdown menu on click</h5>
         <p>
