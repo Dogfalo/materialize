@@ -2,7 +2,7 @@ describe("Tabs Plugin", function () {
   beforeEach(function() {
     jasmine.getFixtures().fixturesPath = 'base/tests/spec/tabs/';
     loadFixtures('tabsFixture.html');
-    $('ul.tabs').tabs();
+    $('ul.tabs').tabs({duration: 150});
   });
 
   describe("Tabs", function () {
@@ -110,7 +110,8 @@ describe("Tabs Plugin", function () {
       normalTabs.tabs('select', 'test1');
 
       setTimeout(function() {
-        expect($(activeTabHash)).toBeHidden('Clicking tab should switch to that tab.');
+        let previousActiveTabHash = '#test8';
+        expect($(previousActiveTabHash)).toBeHidden('Clicking tab should switch to that tab.');
         expect($(firstTabHash)).toBeVisible('Clicking tab should switch to that tab.');
         expect(indicator.offset().left).toEqual(firstTab.offset().left, 'Indicator should move to clicked tab.');
         done();
