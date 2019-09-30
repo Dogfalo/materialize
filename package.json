@@ -20,7 +20,8 @@
     "compile-js": "rollup -c",
     "karma-test": "karma start",
     "test": "grunt compile_js_css && yarn karma-test",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "lint": "eslint **/*.js --fix"
   },
   "lint-staged": {
     "js/*.js": [
