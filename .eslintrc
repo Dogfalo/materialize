@@ -16,5 +16,8 @@
     "no-unused-vars": "warn",
     "no-new-object": "warn",
     "no-undef": "error"
+  },
+  "globals": {
+    "$": true
   }
 }

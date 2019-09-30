@@ -1,12 +1,13 @@
 describe("Fab", function () {
-  var FAB;
+  let FAB;
 
   beforeEach(function() {
-    setFixtures('fab/fabFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/fab/';
+    loadFixtures('fabFixture.html');
   });
 
   describe("Floating Action Button", function () {
-    var normalFAB;
+    let normalFAB;
 
     beforeEach(function() {
       normalFAB = $('.fixed-action-btn').first();
@@ -14,7 +15,7 @@ describe("Fab", function () {
     });
 
     it("should open correctly", function (done) {
-      var ul = normalFAB.find('> ul');
+      let ul = normalFAB.find('> ul');
       expect(ul.css('visibility')).toEqual('hidden', 'FAB menu div should be hidden initially');
 
       setTimeout(function() {
@@ -31,7 +32,7 @@ describe("Fab", function () {
   });
 
   describe("FAB to toolbar", function () {
-    var toolbarFAB;
+    let toolbarFAB;
 
     beforeEach(function() {
       toolbarFAB = $('.fixed-action-btn.toolbar');
@@ -41,7 +42,7 @@ describe("Fab", function () {
     });
 
     it("should open correctly", function (done) {
-      var ul = toolbarFAB.find('> ul');
+      let ul = toolbarFAB.find('> ul');
       expect(ul.css('visibility')).toEqual('hidden', 'FAB menu div should be hidden initially');
 
 

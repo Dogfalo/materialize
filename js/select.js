@@ -120,7 +120,6 @@ export default class FormSelect extends Component {
   }
 
   _selectOption(optionEl) {
-    console.log(optionEl);
     let key = optionEl.id;
     if (!$(optionEl).hasClass('disabled') && !$(optionEl).hasClass('optgroup') && key.length) {
       let selected = true;

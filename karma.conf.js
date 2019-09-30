@@ -21,7 +21,7 @@ module.exports = function(config) {
       {pattern: 'tests/spec/**/*Fixture.html', included: true, served: true},
       'tests/spec/helper.js',
       'bin/materialize.js',
-      'tests/spec/**/carouselSpec.js'
+      'tests/spec/**/*Spec.js'
     ],
 
 
@@ -66,7 +66,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous

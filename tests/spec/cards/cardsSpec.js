@@ -1,20 +1,21 @@
 describe( "Cards", function () {
-  var reveal;
+  let reveal;
 
   beforeEach(function() {
-    setFixtures('cards/cardsFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/cards/';
+    loadFixtures('cardsFixture.html');
   });
 
   describe("reveal cards", function () {
-    var revealCard;
+    let revealCard;
 
     beforeEach(function() {
       revealCard = $('.card.reveal');
     });
 
     it("should have a hidden card-reveal", function (done) {
-      var revealDiv = revealCard.find('.card-reveal');
-      var activator = revealCard.find('.activator');
+      let revealDiv = revealCard.find('.card-reveal');
+      let activator = revealCard.find('.activator');
 
       expect(revealDiv).toBeHidden('reveal div should be hidden initially');
 
@@ -38,14 +39,14 @@ describe( "Cards", function () {
   });
 
   describe("image cards", function () {
-    var imageCard;
+    let imageCard;
 
     beforeEach(function() {
       imageCard = $('.card.image');
     });
 
     it("should have an image that fills to full width of card", function () {
-      var image = imageCard.find('.card-image > img');
+      let image = imageCard.find('.card-image > img');
 
       expect(image.outerWidth()).toEqual(imageCard.outerWidth(), 'image does not fill width of card');
       expect(image.offset().top).toEqual(imageCard.offset().top, 'image was not as in the same y as card.');
@@ -54,7 +55,7 @@ describe( "Cards", function () {
 
 
   describe("sized cards", function () {
-    var small, medium, large;
+    let small, medium, large;
 
     beforeEach(function() {
       small = $('.card.small');
@@ -63,9 +64,9 @@ describe( "Cards", function () {
     });
 
     it("should have small card dimensions", function () {
-      var cardImage = small.find('.card-image');
-      var cardContent = small.find('.card-content');
-      var cardAction = small.find('.card-action');
+      let cardImage = small.find('.card-image');
+      let cardContent = small.find('.card-content');
+      let cardAction = small.find('.card-action');
 
       expect(small.outerHeight()).toEqual(300, 'small card should be 300px high');
       expect(cardImage.outerHeight()).toBeLessThan(181, 'small image should be <= 180px or 60% high');
@@ -75,9 +76,9 @@ describe( "Cards", function () {
     });
 
     it("should have medium card dimensions", function () {
-      var cardImage = medium.find('.card-image');
-      var cardContent = medium.find('.card-content');
-      var cardAction = medium.find('.card-action');
+      let cardImage = medium.find('.card-image');
+      let cardContent = medium.find('.card-content');
+      let cardAction = medium.find('.card-action');
 
       expect(medium.outerHeight()).toEqual(400, 'medium card should be 400px high');
       expect(cardImage.outerHeight()).toBeLessThan(241, 'medium image should be <= 240 or 60% high');
@@ -87,9 +88,9 @@ describe( "Cards", function () {
     });
 
     it("should have large card dimensions", function () {
-      var cardImage = large.find('.card-image');
-      var cardContent = large.find('.card-content');
-      var cardAction = large.find('.card-action');
+      let cardImage = large.find('.card-image');
+      let cardContent = large.find('.card-content');
+      let cardAction = large.find('.card-action');
 
       expect(large.outerHeight()).toEqual(500, 'large card should be 500px high');
       expect(cardImage.outerHeight()).toBeLessThan(301, 'large image should be <= 300 or 60% high');

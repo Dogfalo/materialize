@@ -1,6 +1,7 @@
 describe("Select Plugin", function () {
   beforeEach(function() {
-    setFixtures('select/selectFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/select/';
+    loadFixtures('selectFixture.html');
     $('select').formSelect();
   });
 
