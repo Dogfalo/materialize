@@ -585,6 +585,9 @@ module.exports = function(grunt) {
     exec: {
       compile_js: {
         cmd: 'npm run compile-js'
+      },
+      karma_test: {
+        cmd: 'npm run karma-test'
       }
     }
   };
@@ -641,5 +644,5 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('monitor', ['concurrent:monitor']);
-  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
+  grunt.registerTask('test', ['js_compile', 'sass_compile', 'exec:karma_test']);
 };

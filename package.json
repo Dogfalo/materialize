@@ -18,7 +18,8 @@
   "scripts": {
     "dev": "grunt monitor",
     "compile-js": "rollup -c",
-    "test": "yarn compile-js && karma start",
+    "karma-test": "karma start",
+    "test": "grunt test",
     "precommit": "lint-staged"
   },
   "lint-staged": {
