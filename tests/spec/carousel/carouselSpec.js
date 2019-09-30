@@ -1,7 +1,7 @@
 describe("Carousel", function () {
 
   beforeEach(function() {
-    loadFixtures('carousel/carouselFixture.html');
+    setFixtures('carousel/carouselFixture.html');
   });
 
   describe("carousel plugin", function () {

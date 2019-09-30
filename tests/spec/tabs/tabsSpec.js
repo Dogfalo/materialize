@@ -1,6 +1,6 @@
 describe("Tabs Plugin", function () {
   beforeEach(function() {
-    loadFixtures('tabs/tabsFixture.html');
+    setFixtures('tabs/tabsFixture.html');
     $('ul.tabs').tabs();
   });
 

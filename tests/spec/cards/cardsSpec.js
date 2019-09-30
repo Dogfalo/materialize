@@ -2,7 +2,7 @@ describe( "Cards", function () {
   var reveal;
 
   beforeEach(function() {
-    loadFixtures('cards/cardsFixture.html');
+    setFixtures('cards/cardsFixture.html');
   });
 
   describe("reveal cards", function () {

@@ -1,6 +1,6 @@
 describe("Dropdown Plugin", function () {
   beforeEach(function() {
-    loadFixtures('dropdown/dropdownFixture.html');
+    setFixtures('dropdown/dropdownFixture.html');
     $('.dropdown-trigger').dropdown();
   });
 

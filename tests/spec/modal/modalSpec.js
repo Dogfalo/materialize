@@ -1,9 +1,10 @@
-describe( 'Modal:', function() {
-  var transformMaterialbox;
-  var trigger1, modal1, trigger2, modal2, trigger3, modal3;
+describe('Modal:', function() {
+  let transformMaterialbox;
+  let trigger1, modal1, trigger2, modal2, trigger3, modal3;
 
   beforeEach(function() {
-    loadFixtures('modal/modalFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/modal/';
+    loadFixtures('modalFixture.html');
     trigger1 = $('.btn[href="#modal1"]');
     triggerIcon1 = $('.btn[data-target="modal1"] i');
     trigger2 = $('.btn[href="#modal2"]');
@@ -15,9 +16,8 @@ describe( 'Modal:', function() {
 
   describe('Modals', function() {
     it('Should open and close correctly', function(done) {
-      modal1.modal();
+      M.Modal.init(modal1[0]);
       expect(modal1).toBeHidden('Modal should be hidden');
-
       click(trigger1[0]);
 
       setTimeout(function() {
@@ -25,15 +25,15 @@ describe( 'Modal:', function() {
         expect(modal1.hasClass('open')).toEqual(true, 'Modal should have class open');
 
         // Check overlay is attached
-        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
-        var overlayInDOM = $.contains(document, overlay[0]);
+        let overlay = M.Modal.getInstance(modal1[0]).$overlay;
+        let overlayInDOM = $.contains(document, overlay[0]);
         expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
         click(overlay[0]);
         setTimeout(function() {
           expect(modal1.hasClass('open')).toEqual(false, 'Modal should have class open removed');
 
-          var overlayInDOM = $.contains(document, overlay[0]);
+          let overlayInDOM = $.contains(document, overlay[0]);
           expect(overlayInDOM).toEqual(false, 'Overlay should be removed on close');
 
           done();
@@ -42,7 +42,7 @@ describe( 'Modal:', function() {
     });
 
     it('Should open and close correctly with children elements in trigger', function(done) {
-      modal1.modal();
+      M.Modal.init(modal1);
       expect(modal1).toBeHidden('Modal should be hidden');
 
       click(triggerIcon1[0]);
@@ -52,15 +52,15 @@ describe( 'Modal:', function() {
         expect(modal1.hasClass('open')).toEqual(true, 'Modal should have class open');
 
         // Check overlay is attached
-        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
-        var overlayInDOM = $.contains(document, overlay[0]);
+        let overlay = M.Modal.getInstance(modal1[0]).$overlay;
+        let overlayInDOM = $.contains(document, overlay[0]);
         expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
         click(overlay[0]);
         setTimeout(function() {
           expect(modal1.hasClass('open')).toEqual(false, 'Modal should have class open removed');
 
-          var overlayInDOM = $.contains(document, overlay[0]);
+          let overlayInDOM = $.contains(document, overlay[0]);
           expect(overlayInDOM).toEqual(false, 'Overlay should be removed on close');
 
           done();
@@ -69,21 +69,21 @@ describe( 'Modal:', function() {
     });
 
     it('Should have a dismissible option', function(done) {
-      modal1.modal({
+      M.Modal.init(modal1, {
         dismissible: false
       });
 
       click(trigger1[0]);
       setTimeout(function() {
         expect(modal1).toBeVisible('Modal should be shown');
-        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
-        var overlayInDOM = $.contains(document, overlay[0]);
+        let overlay = M.Modal.getInstance(modal1[0]).$overlay;
+        let overlayInDOM = $.contains(document, overlay[0]);
         expect(overlayInDOM).toEqual(true, 'Overlay should be attached on open');
 
         click(overlay[0]);
         setTimeout(function() {
           expect(modal1).toBeVisible('Modal should be shown');
-          var overlayInDOM = $.contains(document, overlay[0]);
+          let overlayInDOM = $.contains(document, overlay[0]);
           expect(overlayInDOM).toEqual(true, 'modal should not be dismissable');
 
           done();
@@ -92,9 +92,9 @@ describe( 'Modal:', function() {
     });
 
     it('Should have callbacks', function(done) {
-      var readyTest = false;
-      var completeTest = false;
-      modal1.modal({
+      let readyTest = false;
+      let completeTest = false;
+      M.Modal.init(modal1, {
         onOpenStart: function() {
           readyTest = true;
         },
@@ -111,7 +111,7 @@ describe( 'Modal:', function() {
         expect(readyTest).toEqual(true, 'callback fired');
         expect(completeTest).toEqual(false, 'callback not yet fired');
 
-        var overlay = M.Modal.getInstance(modal1[0]).$overlay;
+        let overlay = M.Modal.getInstance(modal1[0]).$overlay;
         click(overlay[0]);
         setTimeout(function() {
           expect(readyTest).toEqual(true, 'callback fired');
@@ -122,5 +122,4 @@ describe( 'Modal:', function() {
       }, 500);
     });
   });
-
 });

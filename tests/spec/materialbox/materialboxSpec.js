@@ -2,7 +2,7 @@ describe( 'Materialbox:', function() {
   var transformMaterialbox;
 
   beforeEach(function() {
-    loadFixtures('materialbox/materialboxFixture.html');
+    setFixtures('materialbox/materialboxFixture.html');
   });
 
   describe('Materialbox opens correctly with transformed ancestor', function() {

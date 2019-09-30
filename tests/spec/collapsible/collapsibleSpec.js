@@ -2,7 +2,7 @@ describe( "Collapsible Plugin", function () {
   var collapsible, accordion, popout, expandable, expandablePreselect;
 
   beforeEach(function() {
-    loadFixtures('collapsible/collapsible.html');
+    setFixtures('collapsible/collapsible.html');
     collapsible = $('.collapsible');
     expandable = $('.expandable');
     expandablePreselect = $('.expandable-preselected');

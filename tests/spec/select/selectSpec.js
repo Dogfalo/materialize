@@ -1,6 +1,6 @@
 describe("Select Plugin", function () {
   beforeEach(function() {
-    loadFixtures('select/selectFixture.html');
+    setFixtures('select/selectFixture.html');
     $('select').formSelect();
   });
 

@@ -2,7 +2,7 @@ describe("Fab", function () {
   var FAB;
 
   beforeEach(function() {
-    loadFixtures('fab/fabFixture.html');
+    setFixtures('fab/fabFixture.html');
   });
 
   describe("Floating Action Button", function () {

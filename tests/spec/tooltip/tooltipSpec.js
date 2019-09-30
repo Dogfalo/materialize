@@ -2,7 +2,7 @@ describe( 'Tooltip:', function() {
   var tooltippedBtn, tooltip;
 
   beforeEach(function() {
-    loadFixtures('tooltip/tooltipFixture.html');
+    setFixtures('tooltip/tooltipFixture.html');
     $('.tooltipped').tooltip({enterDelay: 0, exitDelay: 0, inDuration: 100, outDuration: 100});
   });
 

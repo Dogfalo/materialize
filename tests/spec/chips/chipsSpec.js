@@ -1,7 +1,7 @@
 describe("Chips", function () {
 
   beforeEach(function() {
-    loadFixtures('chips/chipsFixture.html');
+    setFixtures('chips/chipsFixture.html');
     $('.chips').chips();
     $('.chips-initial').chips({
       data: [{ tag: 'Apple' }, { tag: 'Microsoft' }, { tag: 'Google' }],
