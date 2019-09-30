@@ -642,7 +642,7 @@ module.exports = function(grunt) {
     'postcss:bin',
     'notify:sass_compile'
   ]);
+  grunt.registerTask('compile_js_css', ['js_compile', 'sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('monitor', ['concurrent:monitor']);
-  grunt.registerTask('test', ['js_compile', 'sass_compile', 'exec:karma_test']);
 };
