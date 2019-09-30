@@ -1,8 +1,12 @@
 describe("Autocomplete Plugin", function () {
   beforeEach(function(done) {
-    setFixtures('autocomplete/autocompleteFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/autocomplete/';
+    loadFixtures('autocompleteFixture.html');
+
     setTimeout(function() {
-      $('input.autocomplete').autocomplete({
+      let allAutocompleteInputs = document.querySelectorAll('input.autocomplete');
+
+      M.Autocomplete.init(allAutocompleteInputs, {
         data: {
           "Apple": null,
           "Microsoft": null,
@@ -21,13 +25,13 @@ describe("Autocomplete Plugin", function () {
     // });
 
     it("should work with multiple initializations", function (done) {
-      var $normal = $('#normal-autocomplete');
-      var $parent = $normal.parent();
+      let $normal = $('#normal-autocomplete');
+      let $parent = $normal.parent();
       setTimeout(function() {
-        $normal.autocomplete({ data: {"hi": null} });
-        $normal.autocomplete({ data: {"hi": null} });
-        $normal.autocomplete({ data: {"hi": null} });
-        $normal.autocomplete({
+        M.Autocomplete.init($normal[0], {data: {"hi": null}});
+        M.Autocomplete.init($normal[0], {data: {"hi": null}});
+        M.Autocomplete.init($normal[0], {data: {"hi": null}});
+        M.Autocomplete.init($normal[0], {
           data: {
             "Apple": null,
             "Microsoft": null,
@@ -35,7 +39,7 @@ describe("Autocomplete Plugin", function () {
           }
         });
 
-        var $autocompleteEl = $parent.find('.autocomplete-content');
+        let $autocompleteEl = $parent.find('.autocomplete-content');
 
         expect($autocompleteEl.length).toEqual(1, 'Should dynamically generate autocomplete structure.');
         done();
@@ -43,10 +47,10 @@ describe("Autocomplete Plugin", function () {
     });
 
     it("should limit results if option is set", function (done) {
-      var $limited = $('#limited-autocomplete');
-      var data = {};
-      for (var i = 100; i >= 0; i--) {
-        var randString = 'a' + Math.random().toString(36).substring(2);
+      let $limited = $('#limited-autocomplete');
+      let data = {};
+      for (let i = 100; i >= 0; i--) {
+        let randString = 'a' + Math.random().toString(36).substring(2);
         data[randString] = null;
       }
 
@@ -60,7 +64,7 @@ describe("Autocomplete Plugin", function () {
       keyup($limited[0], 65);
 
       setTimeout(function() {
-        var $autocompleteEl = $(M.Autocomplete.getInstance($limited[0]).container);
+        let $autocompleteEl = $(M.Autocomplete.getInstance($limited[0]).container);
         expect($autocompleteEl.children().length).toEqual(20, 'Results should be at max the set limit');
         done();
       }, 200);
@@ -68,9 +72,9 @@ describe("Autocomplete Plugin", function () {
     });
 
     it("should open correctly from typing", function (done) {
-      var $normal = $('#normal-autocomplete');
-      var $parent = $normal.parent();
-      var $autocompleteEl = $normal.parent().find('.autocomplete-content');
+      let $normal = $('#normal-autocomplete');
+      let $parent = $normal.parent();
+      let $autocompleteEl = $normal.parent().find('.autocomplete-content');
 
       $normal.focus();
       $normal.val('e');
@@ -83,9 +87,9 @@ describe("Autocomplete Plugin", function () {
     });
 
   it("should open correctly from keyboard focus", function (done) {
-      var $normal = $('#normal-autocomplete');
-      var $parent = $normal.parent();
-      var $autocompleteEl = $normal.parent().find('.autocomplete-content');
+      let $normal = $('#normal-autocomplete');
+      let $parent = $normal.parent();
+      let $autocompleteEl = $normal.parent().find('.autocomplete-content');
 
       $normal.val('e');
       keyup($normal[0], 9);

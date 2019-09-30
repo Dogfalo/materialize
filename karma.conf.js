@@ -21,7 +21,7 @@ module.exports = function(config) {
       {pattern: 'tests/spec/**/*Fixture.html', included: true, served: true},
       'tests/spec/helper.js',
       'bin/materialize.js',
-      'tests/spec/**/ModalSpec.js'
+      'tests/spec/**/AutocompleteSpec.js'
     ],
 
 
