@@ -1,4 +1,4 @@
-describe("Fab", function () {
+describe('Fab', function() {
   let FAB;
 
   beforeEach(function() {
@@ -6,7 +6,7 @@ describe("Fab", function () {
     loadFixtures('fabFixture.html');
   });
 
-  describe("Floating Action Button", function () {
+  describe('Floating Action Button', function() {
     let normalFAB;
 
     beforeEach(function() {
@@ -14,24 +14,26 @@ describe("Fab", function () {
       normalFAB.floatingActionButton();
     });
 
-    it("should open correctly", function (done) {
-      let ul = normalFAB.find('> ul');
+    it('should open correctly', function(done) {
+      const ul = normalFAB.find('> ul');
       expect(ul.css('visibility')).toEqual('hidden', 'FAB menu div should be hidden initially');
 
       setTimeout(function() {
         mouseenter(normalFAB[0]);
 
         setTimeout(function() {
-          expect(ul.css('visibility')).toEqual('visible', 'FAB menu did not appear after mouseenter.');
+          expect(ul.css('visibility')).toEqual(
+            'visible',
+            'FAB menu did not appear after mouseenter.'
+          );
 
           done();
         }, 400);
       }, 100);
-
     });
   });
 
-  describe("FAB to toolbar", function () {
+  describe('FAB to toolbar', function() {
     let toolbarFAB;
 
     beforeEach(function() {
@@ -41,20 +43,25 @@ describe("Fab", function () {
       });
     });
 
-    it("should open correctly", function (done) {
-      let ul = toolbarFAB.find('> ul');
+    it('should open correctly', function(done) {
+      const ul = toolbarFAB.find('> ul');
       expect(ul.css('visibility')).toEqual('hidden', 'FAB menu div should be hidden initially');
-
 
       setTimeout(function() {
         click(toolbarFAB[0]);
 
         setTimeout(function() {
-          expect(ul.css('visibility')).toEqual('visible', 'FAB menu did not appear after mouseenter.');
+          expect(ul.css('visibility')).toEqual(
+            'visible',
+            'FAB menu did not appear after mouseenter.'
+          );
           click(document.body);
 
           setTimeout(function() {
-            expect(ul.css('visibility')).toEqual('hidden', 'FAB menu div should be hidden after close');
+            expect(ul.css('visibility')).toEqual(
+              'hidden',
+              'FAB menu div should be hidden after close'
+            );
 
             done();
           }, 400);
@@ -62,6 +69,4 @@ describe("Fab", function () {
       }, 100);
     });
   });
-
-
 });
