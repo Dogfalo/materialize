@@ -3,7 +3,6 @@ describe("Autocomplete Plugin", function () {
     jasmine.getFixtures().fixturesPath = 'base/tests/spec/autocomplete/';
     loadFixtures('autocompleteFixture.html');
 
-    setTimeout(function() {
       let allAutocompleteInputs = document.querySelectorAll('input.autocomplete');
 
       M.Autocomplete.init(allAutocompleteInputs, {
@@ -14,7 +13,6 @@ describe("Autocomplete Plugin", function () {
         }
       });
       done();
-    }, 400);
   });
 
   describe("Autocomplete", function () {
