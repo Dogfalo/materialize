@@ -181,13 +181,9 @@ textarea.materialize-textarea {
       }
     }
 
-    input[type=text]:not(.browser-default):focus {
-      box-shadow: none;
-    }
-
     & > .label-borders {
       display: flex;
-      width: calc(100% - 24px);
+      width: 100%;
       position: absolute;
       top: 0;
       z-index: -1;
@@ -210,19 +206,63 @@ textarea.materialize-textarea {
         border-radius: 0 4px 4px 0;
       }
     }
+    & > label.active ~ .label-borders .label-border-mid {
+      border-top: 2px solid transparent;
+    }
 
-    input[type=text]:not(.browser-default) {
+    input {
+      &:focus:not([readonly]) {
+        border: none;
+        box-shadow: none;
+      }
+
       width: calc(100% - 24px);
       margin-left: 12px;
       box-sizing: border-box;
       border: none;
+
+      // Valid Input Style
+      &.valid,
+      &:focus.valid {
+        border: none;
+        box-shadow: none;
+
+        & ~ .label-borders > .label-border-start,
+        & ~ .label-borders > .label-border-end {
+          border-color: $input-success-color;
+        }
+        & ~ .label-borders > .label-border-mid {
+          border-bottom-color: $input-success-color;
+        }
+        & ~ label {
+          color: $input-success-color;
+        }
+      }
+
+      // Invalid Input Style
+      &.invalid,
+      &:focus.invalid {
+        border: none;
+        box-shadow: none;
+
+        & ~ .label-borders > .label-border-start,
+        & ~ .label-borders > .label-border-end {
+          border-color: $input-error-color;
+        }
+        & ~ .label-borders > .label-border-mid {
+          border-bottom-color: $input-error-color;
+        }
+        & ~ label {
+          color: $input-error-color;
+        }
+      }
     }
-    .prefix ~ input[type=text]:not(.browser-default) {
+    .prefix ~ input {
       padding-left: calc(3rem + 16px);
     }
 
     & > label {
-      width: auto;
+      width: auto !important;
       margin-left: 16px;
       transform: translateY(10px);
     }
@@ -237,8 +277,15 @@ textarea.materialize-textarea {
       transform: translateY(-8px) translateX(-3rem) scale(0.8);
     }
 
-    .prefix {
+    & > .prefix {
       left: 16px;
+    }
+
+    & > .helper-text {
+      margin-left: 12px;
+    }
+    & > .character-counter {
+      margin-right: 12px;
     }
   }
 
@@ -293,8 +340,8 @@ textarea.materialize-textarea {
     }
 
     position: relative;
+    float: left;
     min-height: 18px;
-    display: block;
     font-size: 12px;
     color: rgba(0,0,0,.54);
   }

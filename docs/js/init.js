@@ -187,7 +187,7 @@
       accordion: false
     });
 
-    $('.input-field.outlined:not(.browser-default)').outlinedInput();
+    $('.input-field.outlined').outlinedInput();
     $('.dropdown-trigger').dropdown();
     $('.slider').slider();
     $('.parallax').parallax();
