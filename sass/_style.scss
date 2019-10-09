@@ -711,6 +711,19 @@ code[class*="language-"] {
 
 
 // Carbon Ads styling
+#bsap_1308711 {
+  display: block;
+
+  iframe {
+    width: 150px;
+    height: 250px;
+  }
+
+  .bsa_it_p {
+    display: none;
+  }
+}
+
 .toc-wrapper {
   &.pin-bottom {
     margin-top: 84px;
@@ -816,6 +829,10 @@ code[class*="language-"] {
 
 
 // BuySellAds Styling
+.bsap {
+  display: none; // Temp hiding
+}
+
 .buysellads {
   &.buysellads-demo {
     bottom: 20px;

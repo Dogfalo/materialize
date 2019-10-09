@@ -1,18 +1,20 @@
 describe("Dropdown Plugin", function () {
   beforeEach(function() {
-    loadFixtures('dropdown/dropdownFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/dropdown/';
+    loadFixtures('dropdownFixture.html');
+
     $('.dropdown-trigger').dropdown();
   });
 
   describe("Dropdown", function () {
-    var normalDropdown;
+    let normalDropdown;
 
     beforeEach(function() {
       // browserSelect = $('select.normal');
     });
 
     it("should open and close programmatically", function (done) {
-      var dropdown1 = $('#dropdown1');
+      let dropdown1 = $('#dropdown1');
       normalDropdown = $('#dropdownActivator');
 
       expect(dropdown1).toBeHidden('Should be hidden before dropdown is opened.');
@@ -49,7 +51,7 @@ describe("Dropdown Plugin", function () {
     });
 
     it("should bubble events correctly", function (done) {
-      var dropdown2 = $('#dropdown2');
+      let dropdown2 = $('#dropdown2');
       normalDropdown = $('#dropdownBubble');
 
       expect(dropdown2).toBeHidden('Should be hidden before dropdown is opened.');
@@ -68,7 +70,7 @@ describe("Dropdown Plugin", function () {
     });
 
     it("hovered should destroy itself", function (done) {
-      var dropdownTrigger = $('#dropdownDestroyTrigger');
+      let dropdownTrigger = $('#dropdownDestroyTrigger');
       $(dropdownTrigger).dropdown('destroy');
       $(dropdownTrigger).dropdown({ hover: true });
 

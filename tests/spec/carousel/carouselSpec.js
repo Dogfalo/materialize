@@ -1,32 +1,30 @@
-describe("Carousel", function () {
-
+describe('Carousel', function() {
   beforeEach(function() {
-    loadFixtures('carousel/carouselFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/carousel/';
+    loadFixtures('carouselFixture.html');
   });
 
-  describe("carousel plugin", function () {
-
+  describe('carousel plugin', function() {
     // beforeEach(function() {
     // });
 
-    it("No wrap next and prev should not overflow", function (done) {
-      $noWrap = $('#slider-no-wrap').carousel({ noWrap: true });
-      $noWrap.carousel('prev');
+    it('No wrap next and prev should not overflow', function(done) {
+      const noWrapCarouselIns = M.Carousel.init($('#slider-no-wrap')[0], { noWrap: true });
 
-      expect($noWrap[0].M_Carousel.center).toEqual(0, 'Prev should do nothing');
+      noWrapCarouselIns.prev();
 
-      $noWrap.carousel('set', 3);
+      expect(noWrapCarouselIns.center).toEqual(0, 'Prev should do nothing');
+
+      noWrapCarouselIns.set(3);
       setTimeout(function() {
-        $noWrap.carousel('next');
+        noWrapCarouselIns.next();
 
         setTimeout(function() {
-          expect($noWrap[0].M_Carousel.center).toEqual(3, 'Next should do nothing');
+          expect(noWrapCarouselIns.center).toEqual(3, 'Next should do nothing');
 
           done();
         }, 400);
       }, 400);
     });
-
   });
-
 });

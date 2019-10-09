@@ -1,4 +1,6 @@
-class Component {
+import $ from './cash.js';
+
+export default class Component {
   /**
    * Generic constructor for all components
    * @constructor
@@ -18,7 +20,7 @@ class Component {
     }
 
     this.el = el;
-    this.$el = cash(el);
+    this.$el = $(el);
   }
 
   /**

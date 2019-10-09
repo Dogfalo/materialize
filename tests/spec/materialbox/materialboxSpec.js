@@ -1,8 +1,9 @@
 describe( 'Materialbox:', function() {
-  var transformMaterialbox;
+  let transformMaterialbox;
 
   beforeEach(function() {
-    loadFixtures('materialbox/materialboxFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/materialbox/';
+    loadFixtures('materialboxFixture.html');
   });
 
   describe('Materialbox opens correctly with transformed ancestor', function() {
@@ -14,10 +15,10 @@ describe( 'Materialbox:', function() {
       transformMaterialbox.find('.materialboxed').trigger('click');
       setTimeout(function() {
         // Check overlay is attached
-        var overlay = transformMaterialbox.find('#materialbox-overlay');
-        var overlayRect = overlay[0].getBoundingClientRect();
-        var windowWidth = window.innerWidth;
-        var windowHeight = window.innerHeight;
+        let overlay = transformMaterialbox.find('#materialbox-overlay');
+        let overlayRect = overlay[0].getBoundingClientRect();
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
         expect(overlay).toExist('because it is generated on init');
         expect(overlay).toBeVisible('because materialbox was clicked');
         expect(overlayRect.top).toEqual(0);

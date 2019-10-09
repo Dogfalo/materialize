@@ -45,3 +45,6 @@ _SpecRunner.html
 # Ignore compiled files
 css/ghpages-materialize.css
 bin/
+
+# Ignore lock
+yarn.lock

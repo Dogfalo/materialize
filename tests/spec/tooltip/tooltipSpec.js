@@ -1,8 +1,10 @@
 describe( 'Tooltip:', function() {
-  var tooltippedBtn, tooltip;
+  let tooltippedBtn, tooltip;
 
   beforeEach(function() {
-    loadFixtures('tooltip/tooltipFixture.html');
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/tooltip/';
+    loadFixtures('tooltipFixture.html');
+
     $('.tooltipped').tooltip({enterDelay: 0, exitDelay: 0, inDuration: 100, outDuration: 100});
   });
 
@@ -36,7 +38,7 @@ describe( 'Tooltip:', function() {
       mouseenter(tooltippedBtn[0]);
       // tooltippedBtn.trigger('mouseenter');
       setTimeout(function() {
-        var offset = tooltip.offset();
+        let offset = tooltip.offset();
         // Check window bounds
         expect(offset.top >= 0).toBeTruthy();
         expect(offset.top < 0).toBeFalsy();
@@ -61,7 +63,7 @@ describe( 'Tooltip:', function() {
       tooltippedBtn.tooltip('destroy');
 
       // Check DOM element is removed
-      var tooltipInstance = tooltippedBtn[0].M_Tooltip;
+      let tooltipInstance = tooltippedBtn[0].M_Tooltip;
       expect(tooltipInstance).toBe(undefined);
     });
 
@@ -75,7 +77,7 @@ describe( 'Tooltip:', function() {
           mouseenter(tooltippedBtn[0]);
 
           setTimeout(function() {
-            var offset = tooltip.offset();
+            let offset = tooltip.offset();
             expect(offset.left > tooltippedBtn.offset().left + tooltippedBtn.width())
               .toBeTruthy();
             done();
@@ -106,10 +108,10 @@ describe( 'Tooltip:', function() {
 
       mouseenter(tooltippedBtn[0]);
       setTimeout(function() {
-        var tooltipRect = tooltip[0].getBoundingClientRect();
-        var tooltippedBtnRect = tooltippedBtn[0].getBoundingClientRect();
-        var verticalDiff = tooltipRect.top - tooltippedBtnRect.top;
-        var horizontalDiff = (tooltipRect.left + tooltipRect.width/2) - (tooltippedBtnRect.left + tooltippedBtnRect.width / 2);
+        let tooltipRect = tooltip[0].getBoundingClientRect();
+        let tooltippedBtnRect = tooltippedBtn[0].getBoundingClientRect();
+        let verticalDiff = tooltipRect.top - tooltippedBtnRect.top;
+        let horizontalDiff = (tooltipRect.left + tooltipRect.width/2) - (tooltippedBtnRect.left + tooltippedBtnRect.width / 2);
 
         // 52 is magic number for tooltip vertical offset
         expect(verticalDiff > 0 && verticalDiff < 52).toBeTruthy('top position in fixed to be correct');

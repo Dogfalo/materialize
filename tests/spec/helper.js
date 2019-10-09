@@ -6,7 +6,7 @@ beforeEach(function() {
    * Creates standard click event on DOM element
    */
   window.click = function(elem) {
-    var evt = document.createEvent('MouseEvent');
+    let evt = document.createEvent('MouseEvent');
     evt.initMouseEvent('click', {
       bubbles: true,
       cancelable: true,
@@ -17,7 +17,7 @@ beforeEach(function() {
   };
 
   window.mouseenter = function(el) {
-    var ev = document.createEvent("MouseEvent");
+    let ev = document.createEvent("MouseEvent");
     ev.initMouseEvent(
       "mouseenter",
       true /* bubble */, true /* cancelable */,
@@ -30,28 +30,28 @@ beforeEach(function() {
   };
 
   window.keydown = function(el, keycode) {
-    var ev = document.createEvent("Events");
+    let ev = document.createEvent("Events");
     ev.initEvent("keydown", true, true);
 
     ev.keyCode = keycode;
     ev.which = keycode;
 
     el.dispatchEvent(ev);
-  }
+  };
 
   window.keyup = function(el, keycode) {
-    var ev = document.createEvent("Events");
+    let ev = document.createEvent("Events");
     ev.initEvent("keyup", true, true);
 
     ev.keyCode = keycode;
     ev.which = keycode;
 
     el.dispatchEvent(ev);
-  }
+  };
 
   window.focus = function(el) {
-    var ev = document.createEvent("Events");
+    let ev = document.createEvent("Events");
     ev.initEvent("focus", true, true);
     el.dispatchEvent(ev);
-  }
+  };
 });

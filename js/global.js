@@ -1,3 +1,5 @@
+import $ from './cash.js';
+
 // Required for Meteor package, the use of window prevents export by Meteor
 (function(window) {
   if (window.Package) {
@@ -168,6 +170,23 @@ M.guid = (function() {
  */
 M.escapeHash = function(hash) {
   return hash.replace(/(:|\.|\[|\]|,|=|\/)/g, '\\$1');
+};
+
+/**
+ * Get closest ancestor that satisfies the condition
+ * @param {Element} el  Element to find ancestors on
+ * @param {Function} condition  Function that given an ancestor element returns true or false
+ * @returns {Element} Return closest ancestor or null if none satisfies the condition
+ */
+M.getClosestAncestor = function(el, condition) {
+  let ancestor = el.parentNode;
+  while (ancestor !== null && !$(ancestor).is(document)) {
+    if (condition(ancestor)) {
+      return ancestor;
+    }
+    ancestor = ancestor.parentNode;
+  }
+  return null;
 };
 
 M.elementOrParentIsFixed = function(element) {
@@ -428,3 +447,5 @@ M.throttle = function(func, wait, options) {
     return result;
   };
 };
+
+export default M;

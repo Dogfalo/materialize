@@ -4,22 +4,21 @@ module.exports = function(grunt) {
   // configure the tasks
   let config = {
     //  Jasmine
-    jasmine: {
-      components: {
-        src: ['bin/materialize.js'],
-        options: {
-          vendor: [
-            'node_modules/jquery/dist/jquery.min.js',
-            'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
-          ],
-          styles: 'bin/materialize.css',
-          specs: 'tests/spec/**/*Spec.js',
-          helpers: 'tests/spec/helper.js',
-          keepRunner: true
-          //helpers: 'test/spec/*.js'
-        }
-      }
-    },
+    // jasmine: {
+    //   components: {
+    //     src: ['bin/materialize.js'],
+    //     options: {
+    //       vendor: [
+    //         'node_modules/jquery/dist/jquery.min.js',
+    //         'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
+    //       ],
+    //       styles: 'bin/materialize.css',
+    //       specs: 'tests/spec/**/*Spec.js',
+    //       helpers: 'tests/spec/helper.js',
+    //       keepRunner: true
+    //     }
+    //   }
+    // },
 
     //  Sass
     sass: {
@@ -94,32 +93,6 @@ module.exports = function(grunt) {
       },
       bin: {
         src: 'bin/materialize.css'
-      }
-    },
-
-    babel: {
-      options: {
-        sourceMap: false,
-        plugins: [
-          'transform-es2015-arrow-functions',
-          'transform-es2015-block-scoping',
-          'transform-es2015-classes',
-          'transform-es2015-template-literals',
-          'transform-es2015-object-super'
-        ]
-      },
-      bin: {
-        options: {
-          sourceMap: true
-        },
-        files: {
-          'bin/materialize.js': 'temp/js/materialize_concat.js'
-        }
-      },
-      dist: {
-        files: {
-          'dist/js/materialize.js': 'temp/js/materialize.js'
-        }
       }
     },
 
@@ -607,6 +580,15 @@ module.exports = function(grunt) {
           ignore: true
         }
       }
+    },
+
+    exec: {
+      compile_js: {
+        cmd: 'npm run compile-js'
+      },
+      karma_test: {
+        cmd: 'npm run karma-test'
+      }
     }
   };
 
@@ -617,7 +599,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
@@ -629,7 +610,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
-  grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-exec');
 
   // define the tasks
   grunt.registerTask('release', [
@@ -638,7 +619,6 @@ module.exports = function(grunt) {
     'postcss:expanded',
     'postcss:min',
     'concat:dist',
-    'babel:dist',
     'uglify:dist',
     'uglify:extras',
     'usebanner:release',
@@ -653,12 +633,8 @@ module.exports = function(grunt) {
     'clean:temp'
   ]);
 
-  grunt.task.registerTask('configureBabel', 'configures babel options', function() {
-    config.babel.bin.options.inputSourceMap = grunt.file.readJSON(concatFile);
-  });
-
   grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
-  grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'clean:temp']);
+  grunt.registerTask('js_compile', ['exec:compile_js']);
   grunt.registerTask('sass_compile', [
     'sass:gh',
     'sass:bin',
@@ -666,7 +642,7 @@ module.exports = function(grunt) {
     'postcss:bin',
     'notify:sass_compile'
   ]);
+  grunt.registerTask('compile_js_css', ['js_compile', 'sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('monitor', ['concurrent:monitor']);
-  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
 };

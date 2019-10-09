@@ -1,16 +1,21 @@
 describe("Chips", function () {
 
   beforeEach(function() {
-    loadFixtures('chips/chipsFixture.html');
-    $('.chips').chips();
-    $('.chips-initial').chips({
+    jasmine.getFixtures().fixturesPath = 'base/tests/spec/chips/';
+    loadFixtures('chipsFixture.html');
+
+    M.Chips.init($('.chips'));
+
+    M.Chips.init($('.chips-initial'), {
       data: [{ tag: 'Apple' }, { tag: 'Microsoft' }, { tag: 'Google' }],
     });
-    $('.chips-placeholder').chips({
+
+    M.Chips.init($('.chips-placeholder'), {
       placeholder: 'Enter a tag',
       secondaryPlaceholder: '+Tag',
     });
-    $('.chips-autocomplete').chips({
+
+    M.Chips.init($('.chips-autocomplete'), {
       autocompleteData: {
         'Apple': null,
         'Microsoft': null,
@@ -20,17 +25,12 @@ describe("Chips", function () {
   });
 
   describe("chips plugin", function () {
-    var $chips, $input;
-
-    // beforeEach(function() {
-    // });
+    let $chips, $input;
 
     it("should work with multiple initializations", function () {
       $chips = $('.chips').first();
-      $chips.chips();
-      $chips.chips();
-      $chips.chips();
-      $chips.chips();
+      M.Chips.init($('.chips'));
+      M.Chips.init($('.chips'));
 
       $input = $chips.find('input');
 
@@ -46,12 +46,12 @@ describe("Chips", function () {
       keydown($input[0], 13);
 
       setTimeout(function() {
-        var numChips = $chips.find('.chip').length;
-        var $oneChip = $chips.find('.chip').first();
+        let numChips = $chips.find('.chip').length;
+        let $oneChip = $chips.find('.chip').first();
 
         expect(numChips).toEqual(1, 'one chip should have been added');
 
-        $oneChip.children().remove()
+        $oneChip.children().remove();
         expect($oneChip.text()).toEqual('one', 'the chip should have value "one"');
 
         done();
@@ -62,14 +62,14 @@ describe("Chips", function () {
     it("should be able to delete chip", function (done) {
       $chips = $('.chips.chips-initial').first();
       $input = $chips.find('input');
-      var numChips = $chips.find('.chip').length
+      let numChips = $chips.find('.chip').length;
 
       expect(numChips).toEqual(3, '3 initial chips should have been added');
 
       $chips.find('.chip .close').first().click();
 
       setTimeout(function() {
-        numChips = $chips.find('.chip').length
+        numChips = $chips.find('.chip').length;
 
         expect(numChips).toEqual(2, 'one chip should have been deleted');
 
@@ -80,12 +80,12 @@ describe("Chips", function () {
 
     it("should have working callbacks", function(done) {
       $chips = $('.chips').first();
-      var chipAdd = false;
-      var chipAdded = null;
-      var chipSelect = false;
-      var chipSelected = null;
-      var chipDelete = false;
-      var chipDeleted = null;
+      let chipAdd = false;
+      let chipAdded = null;
+      let chipSelect = false;
+      let chipSelected = null;
+      let chipDelete = false;
+      let chipDeleted = null;
       $chips.chips({
         data: [{ tag: 'One' }, { tag: 'Two' }, { tag: 'Three' }],
         onChipAdd: function(chipsEl, chipEl) {
