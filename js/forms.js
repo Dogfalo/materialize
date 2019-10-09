@@ -196,14 +196,6 @@
           $(e.target)
             .siblings('label, .prefix')
             .addClass('active');
-
-          // Outlined
-          let inputField = $(e.target).parent();
-          if (inputField.hasClass('input-field outlined')) {
-            let label = inputField.find('label');
-            inputField.addClass('active');
-            console.log('handle outlined', label);
-          }
         }
       },
       true
@@ -306,16 +298,24 @@
        */
       this.options = $.extend({}, OutlinedInput.defaults, options);
 
-      /**
-       * Describes open/close state of modal
-       * @type {Boolean}
-       */
-      this.isOpen = false;
+      this.input = this.el.querySelector('input:not(.browser-default)');
+      this.label = this.el.querySelector('label');
 
-      this.id = this.$el.attr('id');
-      this._openingTrigger = undefined;
-      this.$overlay = $('<div class="modal-overlay"></div>');
-      this.el.tabIndex = 0;
+      this.labelBorders = document.createElement('div');
+      this.labelBorders.className = 'label-borders';
+      this.el.append(this.labelBorders);
+      let labelBorderWidth = this.label ? this.label.clientWidth * 0.8 + 8 : 0; // .8 for label scale, and 8 for padding
+      this.labelBorderStart = document.createElement('div');
+      this.labelBorderStart.className = 'label-border-start';
+      this.labelBorders.append(this.labelBorderStart);
+      this.labelBorderMid = document.createElement('div');
+      this.labelBorderMid.className = 'label-border-mid';
+      this.labelBorderMid.style.width = `${labelBorderWidth}px`;
+      this.labelBorders.append(this.labelBorderMid);
+      this.labelBorderEnd = document.createElement('div');
+      this.labelBorderEnd.className = 'label-border-end';
+      this.labelBorders.append(this.labelBorderEnd);
+
       this._setupEventHandlers();
     }
 
@@ -340,25 +340,29 @@
      */
     destroy() {
       this._removeEventHandlers();
-      this.el.removeAttribute('style');
-      this.$overlay.remove();
-      this.el.M_Modal = undefined;
+      this.el.M_OutlinedInput = undefined;
     }
 
     /**
      * Setup Event Handlers
      */
     _setupEventHandlers() {
-      this._handleOverlayClickBound = this._handleOverlayClick.bind(this);
-      this._handleModalCloseClickBound = this._handleModalCloseClick.bind(this);
-      this.el.addEventListener('click', this._handleModalCloseClickBound);
+      this._handleFocusBound = this._handleFocus.bind(this);
+      this._handleBlurBound = this._handleBlur.bind(this);
+      if (this.input) {
+        this.input.addEventListener('focus', this._handleFocusBound, true);
+        this.input.addEventListener('blur', this._handleBlurBound, true);
+      }
     }
 
     /**
      * Remove Event Handlers
      */
     _removeEventHandlers() {
-      this.el.removeEventListener('click', this._handleModalCloseClickBound);
+      if (this.input) {
+        this.input.removeEventListener('click', this._handleFocusBound, true);
+        this.input.removeEventListener('blur', this._handleBlurBound, true);
+      }
     }
 
     /**
@@ -366,52 +370,21 @@
      * @param {Event} e
      */
     _handleFocus(e) {
-      // Only trap focus if this modal is the last model opened (prevents loops in nested modals).
-      if (!this.el.contains(e.target) && this._nthModalOpened === Modal._modalsOpen) {
-        this.el.focus();
-      }
+      $(this.el).addClass('active');
     }
 
     /**
-     * Animate in modal
+     * Handle Blur
+     * @param {Event} e
      */
-    _animateIn() {
-      // Set initial styles
-      $.extend(this.el.style, {
-        display: 'block',
-        opacity: 0
-      });
-      $.extend(this.$overlay[0].style, {
-        display: 'block',
-        opacity: 0
-      });
-
-      // Animate overlay
-      anim({
-        targets: this.$overlay[0],
-        opacity: this.options.opacity,
-        duration: this.options.inDuration,
-        easing: 'easeOutQuad'
-      });
-    }
-
-    /**
-     * Animate out modal
-     */
-    _animateOut() {
-      // Animate overlay
-      anim({
-        targets: this.$overlay[0],
-        opacity: 0,
-        duration: this.options.outDuration,
-        easing: 'easeOutQuart'
-      });
+    _handleBlur(e) {
+      $(this.el).removeClass('active');
     }
   }
 
   M.OutlinedInput = OutlinedInput;
 
   if (M.jQueryLoaded) {
-    M.initializeJqueryWrapper(OutlinedInput, 'modal', 'M_OutlinedInput');
+    M.initializeJqueryWrapper(OutlinedInput, 'outlinedInput', 'M_OutlinedInput');
   }
 })(cash);

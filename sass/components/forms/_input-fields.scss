@@ -134,15 +134,6 @@ textarea.materialize-textarea {
   content: attr(data-error);
   color: $input-error-color;
 }
-%input-field-psuedo-style {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: $input-height;
-  box-sizing: content-box;
-  transition: width .2s;
-}
 %input-after-style {
   display: block;
   content: "";
@@ -171,44 +162,83 @@ textarea.materialize-textarea {
   // Outlined styles
   &.outlined {
     &.active {
-      &::before,
-      &::after {
+      & > .label-borders {
+        .label-border-start,
+        .label-border-end {
+          border-top: 2px solid $input-focus-color;
+          border-bottom: 2px solid $input-focus-color;
+        }
+        .label-border-start {
+          border-left: 2px solid $input-focus-color;
+        }
+        .label-border-mid {
+          border-top: 2px solid transparent;
+          border-bottom: 2px solid $input-focus-color;
+        }
+        .label-border-end {
+          border-right: 2px solid $input-focus-color;
+        }
+      }
+    }
+
+    input[type=text]:not(.browser-default):focus {
+      box-shadow: none;
+    }
+
+    & > .label-borders {
+      display: flex;
+      width: calc(100% - 24px);
+      position: absolute;
+      top: 0;
+      z-index: -1;
+
+      .label-border-start,
+      .label-border-mid,
+      .label-border-end {
         width: 12px;
+        height: $input-height;
+        border-top: 1px solid $input-border-color;
+        border-bottom: 1px solid $input-border-color;
       }
-    }
-
-
-      input[type=text]:not(.browser-default):focus {
-        border-top: 1px solid transparent;
+      .label-border-start {
+        border-left: 1px solid $input-border-color;
+        border-radius: 4px 0 0 4px;
       }
-
-
-    &::before {
-      @extend %input-field-psuedo-style;
-      border-top: 1px solid $input-border-color;
-      border-bottom: 1px solid $input-border-color;
-      border-left: 1px solid $input-border-color;
-      border-radius: 4px 0 0 4px;
-    }
-
-    &::after {
-      @extend %input-field-psuedo-style;
-      right: 0;
-      border-top: 1px solid $input-border-color;
-      border-right: 1px solid $input-border-color;
-      border-bottom: 1px solid $input-border-color;
-      border-radius: 0 4px 4px 0;
+      .label-border-end {
+        flex-grow: 1;
+        border-right: 1px solid $input-border-color;
+        border-radius: 0 4px 4px 0;
+      }
     }
 
     input[type=text]:not(.browser-default) {
+      width: calc(100% - 24px);
       margin-left: 12px;
-      border-top: 1px solid $input-border-color;
-      border-right: 1px solid $input-border-color;
-      border-radius: 0 4px 4px 0;
+      box-sizing: border-box;
+      border: none;
+    }
+    .prefix ~ input[type=text]:not(.browser-default) {
+      padding-left: calc(3rem + 16px);
     }
 
     & > label {
       width: auto;
+      margin-left: 16px;
+      transform: translateY(10px);
+    }
+    & > label:not(.label-icon).active {
+      transform: translateY(-8px) scale(0.8);
+    }
+    & > .prefix ~ label {
+      width: auto;
+      margin-left: calc(3rem + 16px);
+    }
+    & > .prefix ~ label:not(.label-icon).active {
+      transform: translateY(-8px) translateX(-3rem) scale(0.8);
+    }
+
+    .prefix {
+      left: 16px;
     }
   }
 
