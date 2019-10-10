@@ -11,7 +11,8 @@ let _defaults = {
   sortFunction: function(a, b, inputString) {
     // Sort function for sorting autocomplete results
     return a.indexOf(inputString) - b.indexOf(inputString);
-  }
+  },
+  dropdownOptions: {} // Dropdown init options
 };
 
 /**
@@ -148,14 +149,19 @@ class Autocomplete extends Component {
     this.$inputField.append(this.container);
     this.el.setAttribute('data-target', this.container.id);
 
-    this.dropdown = Dropdown.init(this.el, {
-      autoFocus: false,
-      closeOnClick: false,
-      coverTrigger: false,
-      onItemClick: (itemEl) => {
-        this.selectOption($(itemEl));
-      }
-    });
+    let dropdownOptions = $.extend(
+      {
+        autoFocus: false,
+        closeOnClick: false,
+        coverTrigger: false,
+        onItemClick: (itemEl) => {
+          this.selectOption($(itemEl));
+        }
+      },
+      this.options.dropdownOptions
+    );
+
+    this.dropdown = Dropdown.init(this.el, dropdownOptions);
 
     // Sketchy removal of dropdown click handler
     this.el.removeEventListener('click', this.dropdown._handleClickBound);

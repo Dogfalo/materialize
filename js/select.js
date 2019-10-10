@@ -4,7 +4,7 @@ import $ from './cash.js';
 
 let _defaults = {
   classes: '',
-  dropdownOptions: {}
+  dropdownOptions: {} // Dropdown init options
 };
 
 /**
