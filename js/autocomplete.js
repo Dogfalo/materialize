@@ -9,6 +9,9 @@
     sortFunction: function(a, b, inputString) {
       // Sort function for sorting autocomplete results
       return a.indexOf(inputString) - b.indexOf(inputString);
+    },
+    filterFunction: function(key, inputString) {
+      return key.toLowerCase().indexOf(inputString) !== -1;
     }
   };
 
@@ -348,7 +351,12 @@
 
       // Gather all matching data
       for (let key in data) {
-        if (data.hasOwnProperty(key) && key.toLowerCase().indexOf(val) !== -1) {
+        if (data.hasOwnProperty(key) && this.options.filterFunction(key, val)) {
+          // Break if past limit
+          if (this.count >= this.options.limit) {
+            break;
+          }
+
           let entry = {
             data: data[key],
             key: key

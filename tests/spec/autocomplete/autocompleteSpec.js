@@ -66,6 +66,71 @@ describe("Autocomplete Plugin", function () {
       }, 200);
 
     });
+    it("should filter results", function (done) {
+      var $normal = $('#normal-autocomplete');
+      var $parent = $normal.parent();
+      var $autocompleteEl = $normal.parent().find('.autocomplete-content');
+
+      $normal.focus();
+      $normal.val('e');
+      keyup($normal[0], 69);
+
+      setTimeout(function() {
+        expect($autocompleteEl.children().length).toEqual(2, 'Results containing e should return.');
+        done();
+      }, 200);
+    });
+
+    it("should allow for custom filtered results", function (done) {
+      var $normal = $('#normal-autocomplete');
+      var $parent = $normal.parent();
+      $normal.autocomplete({     
+        data: {
+          "Apple": null,
+          "Microsoft": null,
+          "Google": 'http://placehold.it/250x250'
+        },
+        // don't filter anything.
+        filterFunction: function(key_string,filter_string) {
+          // each record is passed through this function
+          // if false record is not displayed.
+          return true
+        }
+      });
+      var $autocompleteEl = $normal.parent().find('.autocomplete-content');
+
+      $normal.focus();
+      $normal.val('foo');
+      keyup($normal[0], 69);
+
+      setTimeout(function() {
+        expect($autocompleteEl.children().length).toEqual(3, 'All rows should return.');
+        done();
+      }, 200);
+    });
+
+    it("Should update data to be processed.", function (done) {
+      var $normal = $('#normal-autocomplete');
+      var $instance = M.Autocomplete.getInstance($normal)
+      var $parent = $normal.parent();
+
+      $instance.updateData({
+        "Apple": null,
+        "Microsoft": null,
+        "Google": 'https://placehold.it/250x250',
+        "Oracle": null
+        }); 
+      var $autocompleteEl = $normal.parent().find('.autocomplete-content');
+
+      $normal.focus();
+      $normal.val('e');
+      keyup($normal[0], 69);
+
+      setTimeout(function() {
+        expect($autocompleteEl.children().length).toEqual(3, 'should return updated result set.');
+        done();
+      }, 200);
+    });
 
     it("should open correctly from typing", function (done) {
       var $normal = $('#normal-autocomplete');
