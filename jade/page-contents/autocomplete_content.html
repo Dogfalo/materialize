@@ -105,6 +105,12 @@
               <td>Sort function that defines the order of the list of autocomplete options.</td>
             </tr>
             <tr>
+              <td>filterFunction</td>
+              <td>Function</td>
+              <td></td>
+              <td>filter function that defines what is filtered based on the users input.</td>
+            </tr>
+            <tr>
               <td>dropdownOptions</td>
               <td>Object</td>
               <td>{}</td>
@@ -127,6 +133,20 @@
         </code></pre>
         <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
       </div>
+
+        <h5 class="method-header">
+          filterFunction
+        </h5>
+        <p>This is the default filter function. You can write your own filter function by passing in a function with the same
+          parameters.
+        <pre><code class="language-javascript col s12">
+  function(key, inputString) {
+    return key.toLowerCase().indexOf(inputString) !== -1;
+  }
+        </code></pre>
+        <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
+      </div>
+
 
 
       <div id="methods" class="scrollspy section">
