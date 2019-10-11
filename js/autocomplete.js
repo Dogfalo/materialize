@@ -50,7 +50,6 @@ class Autocomplete extends Component {
 
     // Setup
     this.isOpen = false;
-    this.count = 0;
     this.activeIndex = -1;
     this.oldVal;
     this.$inputField = this.$el.closest('.input-field');
@@ -196,7 +195,6 @@ class Autocomplete extends Component {
       Autocomplete._keydown = false;
     }
 
-    this.count = 0;
     let val = this.el.value.toLowerCase();
 
     // Don't capture enter or arrow key usage.
@@ -352,18 +350,11 @@ class Autocomplete extends Component {
     // Gather all matching data
     for (let key in data) {
       if (data.hasOwnProperty(key) && this.options.filterFunction(key, val)) {
-        // Break if past limit
-        if (this.count >= this.options.limit) {
-          break;
-        }
-
         let entry = {
           data: data[key],
           key: key
         };
         matchingData.push(entry);
-
-        this.count++;
       }
     }
 
