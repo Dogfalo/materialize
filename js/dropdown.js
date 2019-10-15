@@ -188,7 +188,7 @@
             if ($(e.target).hasClass('search')) {
               return;
             }
-            if ($.contains(e.target, _.first(activates))) {
+            if ($(activates).parent().is(e.target)) {
                 return;
             }
             hideDropdown();
