@@ -236,9 +236,9 @@ M.checkWithinContainer = function(container, bounding, offset) {
     container === document.body
       ? Math.max(containerRect.bottom, window.innerHeight)
       : containerRect.bottom;
-  let containerRight = 
-    container === document.body 
-      ? Math.max(containerRect.right, window.innerWidth) 
+  let containerRight =
+    container === document.body
+      ? Math.max(containerRect.right, window.innerWidth)
       : containerRect.right;
 
   let scrollLeft = container.scrollLeft;

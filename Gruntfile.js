@@ -608,7 +608,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-rename-util');
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-exec');
 

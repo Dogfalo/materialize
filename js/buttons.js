@@ -39,8 +39,11 @@ export default class FloatingActionButton extends Component {
     this.isOpen = false;
     this.$anchor = this.$el.children('a').first();
     this.$menu = this.$el.children('ul').first();
-    this.$floatingBtns = this.$el.find('ul .btn-floating');
-    this.$floatingBtnsReverse = this.$el.find('ul .btn-floating').reverse();
+    this.$floatingBtns = this.$el.children('ul').find('.btn-floating');
+    this.$floatingBtnsReverse = this.$el
+      .children('ul')
+      .find('.btn-floating')
+      .reverse();
     this.offsetY = 0;
     this.offsetX = 0;
 
