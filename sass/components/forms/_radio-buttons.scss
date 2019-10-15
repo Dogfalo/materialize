@@ -1,115 +1,116 @@
 /* Radio Buttons
    ========================================================================== */
 
-// Remove default Radio Buttons
-[type="radio"]:not(:checked),
-[type="radio"]:checked {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
+[type="radio"]:not(.browser-default) {
+  &:not(:checked),
+  &:checked {
+    // Remove default Radio Buttons
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 
-[type="radio"]:not(:checked) + span,
-[type="radio"]:checked + span {
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  font-size: 1rem;
-  transition: .28s ease;
-  user-select: none;
-}
+    & + span {
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 4px;
+        width: 16px;
+        height: 16px;
+        z-index: 0;
+        transition: .28s ease;
+      }
 
-[type="radio"] + span:before,
-[type="radio"] + span:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  margin: 4px;
-  width: 16px;
-  height: 16px;
-  z-index: 0;
-  transition: .28s ease;
-}
+      position: relative;
+      padding-left: 35px;
+      cursor: pointer;
+      display: inline-block;
+      height: 25px;
+      line-height: 25px;
+      font-size: 1rem;
+      transition: .28s ease;
+      user-select: none;
+    }
+  }
 
-/* Unchecked styles */
-[type="radio"]:not(:checked) + span:before,
-[type="radio"]:not(:checked) + span:after,
-[type="radio"]:checked + span:before,
-[type="radio"]:checked + span:after,
-[type="radio"].with-gap:checked + span:before,
-[type="radio"].with-gap:checked + span:after {
-  border-radius: 50%;
-}
+  /* Unchecked styles */
+  &:not(:checked) + span:before,
+  &:not(:checked) + span:after,
+  &:checked + span:before,
+  &:checked + span:after,
+  &.with-gap:checked + span:before,
+  &.with-gap:checked + span:after {
+    border-radius: 50%;
+  }
 
-[type="radio"]:not(:checked) + span:before,
-[type="radio"]:not(:checked) + span:after {
-  border: 2px solid $radio-empty-color;
-}
+  &:not(:checked) + span:before,
+  &:not(:checked) + span:after {
+    border: 2px solid $radio-empty-color;
+  }
 
-[type="radio"]:not(:checked) + span:after {
-  transform: scale(0);
-}
+  &:not(:checked) + span:after {
+    transform: scale(0);
+  }
 
-/* Checked styles */
-[type="radio"]:checked + span:before {
-  border: 2px solid transparent;
-}
+  /* Checked styles */
+  &:checked + span:before {
+    border: 2px solid transparent;
+  }
 
-[type="radio"]:checked + span:after,
-[type="radio"].with-gap:checked + span:before,
-[type="radio"].with-gap:checked + span:after {
-  border: $radio-border;
-}
+  &:checked + span:after,
+  &.with-gap:checked + span:before,
+  &.with-gap:checked + span:after {
+    border: $radio-border;
+  }
 
-[type="radio"]:checked + span:after,
-[type="radio"].with-gap:checked + span:after {
-  background-color: $radio-fill-color;
-}
+  &:checked + span:after,
+  &.with-gap:checked + span:after {
+    background-color: $radio-fill-color;
+  }
 
-[type="radio"]:checked + span:after {
-  transform: scale(1.02);
-}
+  &:checked + span:after {
+    transform: scale(1.02);
+  }
 
-/* Radio With gap */
-[type="radio"].with-gap:checked + span:after {
-  transform: scale(.5);
-}
+  /* Radio With gap */
+  &.with-gap:checked + span:after {
+    transform: scale(.5);
+  }
 
-/* Focused styles */
-[type="radio"].tabbed:focus + span:before {
-  box-shadow: 0 0 0 10px rgba(0,0,0,.1);
-}
+  /* Focused styles */
+  &.tabbed:focus + span:before {
+    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+  }
 
-/* Disabled Radio With gap */
-[type="radio"].with-gap:disabled:checked + span:before {
-  border: 2px solid $input-disabled-color;
-}
+  /* Disabled Radio With gap */
+  &.with-gap:disabled:checked + span:before {
+    border: 2px solid $input-disabled-color;
+  }
 
-[type="radio"].with-gap:disabled:checked + span:after {
-  border: none;
-  background-color: $input-disabled-color;
-}
+  &.with-gap:disabled:checked + span:after {
+    border: none;
+    background-color: $input-disabled-color;
+  }
 
-/* Disabled style */
-[type="radio"]:disabled:not(:checked) + span:before,
-[type="radio"]:disabled:checked + span:before {
-  background-color: transparent;
-  border-color: $input-disabled-color;
-}
+  /* Disabled style */
+  &:disabled:not(:checked) + span:before,
+  &:disabled:checked + span:before {
+    background-color: transparent;
+    border-color: $input-disabled-color;
+  }
 
-[type="radio"]:disabled + span {
-  color: $input-disabled-color;
-}
+  &:disabled + span {
+    color: $input-disabled-color;
+  }
 
-[type="radio"]:disabled:not(:checked) + span:before {
-  border-color: $input-disabled-color;
-}
+  &:disabled:not(:checked) + span:before {
+    border-color: $input-disabled-color;
+  }
 
-[type="radio"]:disabled:checked + span:after {
-  background-color: $input-disabled-color;
-  border-color: $input-disabled-solid-color;
+  &:disabled:checked + span:after {
+    background-color: $input-disabled-color;
+    border-color: $input-disabled-solid-color;
+  }
 }
