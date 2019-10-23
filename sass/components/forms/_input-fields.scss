@@ -9,7 +9,7 @@
 
 /* Text inputs */
 
-input:not([type]):not(.browser-default),
+input:not([type]),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
 input[type=email]:not(.browser-default),
