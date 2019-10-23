@@ -113,14 +113,9 @@
      */
     _handleOptionClick(e) {
       e.preventDefault();
-      let optionEl = $(e.target).closest('li')[0];
-      this._selectOption(optionEl);
-      e.stopPropagation();
-    }
-
-    _selectOption(optionEl) {
-      let key = optionEl.id;
-      if (!$(optionEl).hasClass('disabled') && !$(optionEl).hasClass('optgroup') && key.length) {
+      let option = $(e.target).closest('li')[0];
+      let key = option.id;
+      if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup') && key.length) {
         let selected = true;
 
         if (this.isMultiple) {
@@ -136,9 +131,9 @@
           $(this.dropdownOptions)
             .find('li')
             .removeClass('selected');
-          $(optionEl).toggleClass('selected', selected);
+          $(option).toggleClass('selected', selected);
           this._keysSelected = {};
-          this._keysSelected[optionEl.id] = true;
+          this._keysSelected[option.id] = true;
         }
 
         // Set selected on original select option
@@ -150,9 +145,7 @@
         }
       }
 
-      if (!this.isMultiple) {
-        this.dropdown.close();
-      }
+      e.stopPropagation();
     }
 
     /**
@@ -272,9 +265,9 @@
           }
         };
 
-        // Prevent dropdown from closeing too early
-        dropdownOptions.closeOnClick = false;
-
+        if (this.isMultiple) {
+          dropdownOptions.closeOnClick = false;
+        }
         this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
       }
 
