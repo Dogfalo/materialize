@@ -219,7 +219,6 @@ video.responsive-video {
 
 // Breadcrumbs
 .breadcrumb {
-  display: inline-block;
   font-size: 18px;
   color: rgba(255,255,255, .7);
 
@@ -242,7 +241,6 @@ video.responsive-video {
     font-size: 25px;
     margin: 0 10px 0 8px;
     -webkit-font-smoothing: antialiased;
-    float: left;
   }
 
   &:first-child:before {

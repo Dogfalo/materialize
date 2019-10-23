@@ -260,7 +260,7 @@
           }
 
           // Handle user declared onOpenEnd if needed
-          if (userOnOpenEnd && typeof userOnOpenEnd === 'function') {
+          if (userOnOpenEnd) {
             userOnOpenEnd.call(this.dropdown, this.el);
           }
         };
