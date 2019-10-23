@@ -12,8 +12,8 @@
   <a href="http://materializecss.com/"><strong>-- Browse the docs --</strong></a>
   <br>
   <br>
-  <a href="https://travis-ci.com/Dogfalo/materialize">
-    <img src="https://travis-ci.com/Dogfalo/materialize.svg?branch=master" alt="Travis CI badge">
+  <a href="https://travis-ci.org/Dogfalo/materialize">
+    <img src="https://travis-ci.org/Dogfalo/materialize.svg?branch=master" alt="Travis CI badge">
   </a>
   <a href="https://badge.fury.io/js/materialize-css">
     <img src="https://badge.fury.io/js/materialize-css.svg" alt="npm version badge">
