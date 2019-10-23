@@ -1,9 +1,10 @@
 /* Select Field
    ========================================================================== */
 
-select.browser-default { opacity: 1; }
+select { display: none; }
+select.browser-default { display: block; }
+
 select {
-  opacity: 0;
   background-color: $select-background;
   width: 100%;
   padding: $select-padding;
@@ -90,17 +91,6 @@ select {
     position: absolute;
     top: -26px;
     font-size: $label-font-size;
-  }
-
-  // Hide select with overflow hidden instead of using display none
-  // (this prevents form validation errors with hidden form elements)
-  .hide-select {
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    z-index: -1;
   }
 }
 

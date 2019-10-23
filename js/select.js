@@ -165,10 +165,7 @@
       this.wrapper = document.createElement('div');
       $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
       this.$el.before($(this.wrapper));
-      // Move actual select element into overflow hidden wrapper
-      let $hideSelect = $('<div class="hide-select"></div>');
-      $(this.wrapper).append($hideSelect);
-      $hideSelect[0].appendChild(this.el);
+      this.wrapper.appendChild(this.el);
 
       if (this.el.disabled) {
         this.wrapper.classList.add('disabled');
@@ -210,7 +207,7 @@
         });
       }
 
-      $(this.wrapper).append(this.dropdownOptions);
+      this.$el.after(this.dropdownOptions);
 
       // Add input dropdown
       this.input = document.createElement('input');
@@ -222,14 +219,14 @@
         $(this.input).prop('disabled', 'true');
       }
 
-      $(this.wrapper).prepend(this.input);
+      this.$el.before(this.input);
       this._setValueToInput();
 
       // Add caret
       let dropdownIcon = $(
         '<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'
       );
-      $(this.wrapper).prepend(dropdownIcon[0]);
+      this.$el.before(dropdownIcon[0]);
 
       // Initialize dropdown
       if (!this.el.disabled) {
