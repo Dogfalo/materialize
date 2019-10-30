@@ -1,4 +1,5 @@
 import M from './global.js';
+import Component from './component.js';
 import $ from './cash.js';
 
 // Function to update labels of text fields
@@ -274,3 +275,117 @@ $(document).ready(function() {
     path_input.trigger('change');
   });
 }); // End of $(document).ready
+
+// Outlined input plugin
+let _defaults = {};
+
+/**
+ * @class
+ */
+export default class OutlinedInput extends Component {
+  /**
+   * Construct OutlinedInput instance and set up overlay
+   * @constructor
+   * @param {Element} el
+   * @param {Object} options
+   */
+  constructor(el, options) {
+    super(OutlinedInput, el, options);
+
+    this.el.M_OutlinedInput = this;
+
+    /**
+     * Options for the outlined input
+     * @member OutlinedInput#options
+     */
+    this.options = $.extend({}, OutlinedInput.defaults, options);
+
+    this.input = this.el.querySelector('input:not(.browser-default)');
+    this.label = this.el.querySelector('label');
+
+    this.labelBorders = document.createElement('div');
+    this.labelBorders.className = 'label-borders';
+    this.el.append(this.labelBorders);
+    let labelBorderWidth = this.label ? this.label.clientWidth * 0.8 + 8 : 0; // .8 for label scale, and 8 for padding
+    this.labelBorderStart = document.createElement('div');
+    this.labelBorderStart.className = 'label-border-start';
+    this.labelBorders.append(this.labelBorderStart);
+    this.labelBorderMid = document.createElement('div');
+    this.labelBorderMid.className = 'label-border-mid';
+    this.labelBorderMid.style.width = `${labelBorderWidth}px`;
+    this.labelBorders.append(this.labelBorderMid);
+    this.labelBorderEnd = document.createElement('div');
+    this.labelBorderEnd.className = 'label-border-end';
+    this.labelBorders.append(this.labelBorderEnd);
+
+    this._setupEventHandlers();
+  }
+
+  static get defaults() {
+    return _defaults;
+  }
+
+  static init(els, options) {
+    return super.init(this, els, options);
+  }
+
+  /**
+   * Get Instance
+   */
+  static getInstance(el) {
+    let domElem = !!el.jquery ? el[0] : el;
+    return domElem.M_Modal;
+  }
+
+  /**
+   * Teardown component
+   */
+  destroy() {
+    this._removeEventHandlers();
+    this.el.M_OutlinedInput = undefined;
+  }
+
+  /**
+   * Setup Event Handlers
+   */
+  _setupEventHandlers() {
+    this._handleFocusBound = this._handleFocus.bind(this);
+    this._handleBlurBound = this._handleBlur.bind(this);
+    if (this.input) {
+      this.input.addEventListener('focus', this._handleFocusBound, true);
+      this.input.addEventListener('blur', this._handleBlurBound, true);
+    }
+  }
+
+  /**
+   * Remove Event Handlers
+   */
+  _removeEventHandlers() {
+    if (this.input) {
+      this.input.removeEventListener('click', this._handleFocusBound, true);
+      this.input.removeEventListener('blur', this._handleBlurBound, true);
+    }
+  }
+
+  /**
+   * Handle Focus
+   * @param {Event} e
+   */
+  _handleFocus(e) {
+    $(this.el).addClass('active');
+  }
+
+  /**
+   * Handle Blur
+   * @param {Event} e
+   */
+  _handleBlur(e) {
+    $(this.el).removeClass('active');
+  }
+}
+
+M.OutlinedInput = OutlinedInput;
+
+if (M.jQueryLoaded) {
+  M.initializeJqueryWrapper(OutlinedInput, 'outlinedInput', 'M_OutlinedInput');
+}

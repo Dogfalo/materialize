@@ -223,6 +223,85 @@
         </code></pre>
       </div>
 
+      <!-- Outlined Section -->
+      <div id="outlined" class="section scrollspy">
+        <h3 class="header">Outlined</h3>
+        <p class="caption">
+          You can make your text fields use the new outlined style by adding the class <code class="language-markup">.outlined</code> to your input-field element. You also have to initialize the javascript component. This is included in the AutoInit.
+        </p>
+
+
+        <form>
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field outlined">
+                <input id="outlined-input" type="text" />
+                <label for="outlined-input">Outlined</label>
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="input-field outlined">
+                <i class="material-icons prefix">mode_edit</i>
+                <input id="outlined-input-prefix" type="text" />
+                <label for="outlined-input-prefix">Prefix</label>
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="input-field outlined">
+                <input id="outlined-input-counter" class="validate" type="email" data-length="100" />
+                <label for="outlined-input-counter">Character Counter</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="input-field outlined active">
+                <input id="outlined-input-prefilled" type="text" value="Hello" />
+                <label for="outlined-input-prefilled" class="active">Prefilled</label>
+              </div>
+            </div>
+          </div>
+        </form>
+        <pre><code class="language-markup">
+  &lt;form>
+    &lt;div class="row">
+      &lt;div class="col s12">
+        &lt;div class="input-field outlined">
+          &lt;input id="outlined-input" type="text" />
+          &lt;label for="outlined-input">Outlined&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="col s12">
+        &lt;div class="input-field outlined">
+          &lt;i class="material-icons prefix">mode_edit&lt;/i>
+          &lt;input id="outlined-input-prefix" type="text" />
+          &lt;label for="outlined-input-prefix">Prefix&lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="col s12">
+        &lt;div class="input-field outlined">
+          &lt;input id="outlined-input-counter" class="validate" type="email" data-length="100" />
+          &lt;label for="outlined-input-counter">Character Counter&lt;/label>
+          &lt;span class="helper-text" data-error="wrong" data-success="right">Helper text&lt;/span>
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="col s12">
+        &lt;div class="input-field outlined active">
+          &lt;input id="outlined-input-prefilled" type="text" value="Hello" />
+          &lt;label for="outlined-input-prefilled" class="active">Prefilled&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+        </code></pre>
+
+        <h5>Initialization</h5>
+        <p>There are no options for this plugin.</p>
+        <pre><code class="language-javascript">
+  $(document).ready(function() {
+    $('.input-field.outlined').outlinedInput();
+  });
+        </code></pre>
+      </div>
 
       <!-- Textarea Section -->
       <div id="textarea" class="section scrollspy">
@@ -405,6 +484,7 @@
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li><a href="#input">Input Fields</a></li>
+            <li><a href="#outlined">Outlined</a></li>
             <li><a href="#textarea">Textareas</a></li>
             <li><a href="#file">File Input Button</a></li>
             <li><a href="#character-counter">Character Counter</a></li>
