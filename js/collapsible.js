@@ -109,7 +109,7 @@
      */
     _handleCollapsibleClick(e) {
       let $header = $(e.target).closest('.collapsible-header');
-      if (e.target && $header.length) {
+      if (e.target && $header.length && (!$(e.target).hasClass('collapsible-ignore'))) {
         let $collapsible = $header.closest('.collapsible');
         if ($collapsible[0] === this.el) {
           let $collapsibleLi = $header.closest('li');

@@ -1,6 +1,6 @@
 (function($) {
   // Function to update labels of text fields
-  M.updateTextFields = function() {
+  M.updateTextFields = function(withValidation=false) {
     let input_selector =
       'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
     $(input_selector).each(function(element, index) {
@@ -17,6 +17,8 @@
       } else {
         $this.siblings('label').removeClass('active');
       }
+      if(withValidation)
+        M.validate_field($(element))
     });
   };
 
