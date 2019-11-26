@@ -30,6 +30,7 @@
       text-align: center;
       margin: 0;
       font-size: 1.0rem;
+      text-overflow: ellipsis;
     }
 
     .caret {
@@ -42,7 +43,7 @@
   }
 
   .select-month input {
-    width: 80px;
+    width: 120px;
   }
 }
 
