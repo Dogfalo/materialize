@@ -288,6 +288,7 @@
       // Initialize dropdown
       if (!this.el.disabled) {
         let dropdownOptions = $.extend({}, this.options.dropdownOptions);
+        let userOnOpenStart = dropdownOptions.onOpenStart;
         let userOnOpenEnd = dropdownOptions.onOpenEnd;
 
         // Add callback for cleaning up filter
@@ -295,6 +296,10 @@
           if (this.isFiltered && this.filter) {
             this.filter.value = '';
             this._handleFilterChange();
+          }
+          // Handle user declared onOpenStart if needed
+          if (userOnOpenStart && typeof userOnOpenStart === 'function') {
+            userOnOpenStart.call(this.dropdown, this.el);
           }
         };
 
