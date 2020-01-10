@@ -269,6 +269,9 @@
         },
         onCloseEnd: () => {
           this.isOpen = false;
+          if (typeof this.options.onClose === 'function') {
+            this.options.onClose.call(this);
+          }
         }
       });
     }
@@ -949,10 +952,6 @@
         return;
       }
 
-      this.isOpen = false;
-      if (typeof this.options.onClose === 'function') {
-        this.options.onClose.call(this);
-      }
       this.modal.close();
       return this;
     }
