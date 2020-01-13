@@ -49,7 +49,7 @@
     "grunt-rename-util": "^1.0.0",
     "grunt-sass": "^3.0.2",
     "grunt-text-replace": "^0.4.0",
-    "husky": "^3.0.0",
+    "husky": "^4.0.7",
     "jasmine": "^3.3.1",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.3.1",
