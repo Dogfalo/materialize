@@ -1,8 +1,9 @@
 (function ($) {
     // Function to update labels of text fields
-    Materialize.updateTextFields = function() {
+    Materialize.updateTextFields = function($scope) {
+      $scope = $scope || $(window);
       var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-      $(input_selector).each(function(index, element) {
+      $scope.find(input_selector).each(function(index, element) {
         var $this = $(this);
         if ($(element).val().length > 0 || $(element).is(':focus') || element.autofocus || $this.attr('placeholder') !== undefined) {
           $this.siblings('label').addClass('active');
@@ -23,11 +24,6 @@
         $(this).siblings('label').addClass('active');
       }
       validate_field($(this));
-    });
-
-    // Add active if input element has been pre-populated on document ready
-    $(document).ready(function() {
-      Materialize.updateTextFields();
     });
 
     // HTML DOM FORM RESET handling
