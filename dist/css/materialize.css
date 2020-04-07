@@ -7797,7 +7797,7 @@ input[type=range]::-ms-thumb {
   width: 80px;
 }
 
-.month-prev, .month-next {
+.month-prev, .month-next, .year-next, .year-prev {
   margin-top: 4px;
   cursor: pointer;
   background-color: transparent;
