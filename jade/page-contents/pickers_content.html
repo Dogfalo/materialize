@@ -177,6 +177,12 @@
                 <td>null</td>
                 <td>Callback function when Datepicker HTML is refreshed.</td>
               </tr>
+              <tr>
+                <td>monthPicker</td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>Converts the datepicker into a month picker (the selected date will be the 1st day in the month).</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -481,6 +487,36 @@ instance.destroy();
         </div>
       </div>
 
+      <div id="month-picker" class="section scrollspy">
+        <h3 class="header">Month Picker</h3>
+        <p>The monthpicker allows users to select a month and year from an interactive month calendar. This is a shortcut for Datetime with the attribute monthPicker set to true.</p>
+        <p>(*) the selected date will be the day 1 from the month choosen.</p>
+        <div class="input-field">
+          <input id="monthperiod" type="text" class="monthpicker">
+          <label for="birthdate">Month period</label>
+        </div>
+        <pre><code class="language-markup">
+  &lt;input type="text" class="monthpicker">
+        </code></pre>
+
+
+        <div class="section">
+          <h5>Initialization</h5>
+          <pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.monthpicker');
+    var instances = M.Monthpicker.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.monthpicker').monthpicker();
+  });
+          </code></pre>
+        </div>
+      </div>
+
       <div id="time-picker" class="section scrollspy">
         <h3 class="header">Time Picker</h3>
         <p>The timepicker allows users to select a date from an interactive clock.</p>
@@ -750,6 +786,9 @@ instance.destroy();
           <ul class="section table-of-contents">
             <li>
               <a href="#date-picker">Date Picker</a>
+            </li>
+            <li>
+              <a href="#month-picker">Month Picker</a>
             </li>
             <li>
               <a href="#time-picker">Time Picker</a>
