@@ -1091,6 +1091,8 @@
     }
   }
 
+  M.Monthpicker = Monthpicker;
+
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Datepicker, 'datepicker', 'M_Datepicker');
     M.initializeJqueryWrapper(Monthpicker, 'monthpicker', 'M_Datepicker');
