@@ -55,7 +55,7 @@
     "jquery": "^3.3.1",
     "lint-staged": "^10.1.7",
     "node-archiver": "^0.3.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.14.0",
     "phantomjs-prebuilt": "^2.1.14",
     "prettier": "^2.0.5"
   },
