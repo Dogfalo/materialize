@@ -16,7 +16,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
   - Now correctly removes all event listeners on destroy
 
 - Materialbox
-  - Destroy now removed wrapper element added during intialization
+  - Destroy now removed wrapper element added during initialization
 
 - Pushpin
   - Fixed bug on IE11 where class was not removed properly
@@ -176,7 +176,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 
 - Datepicker
   - Fixed date format option
-  - Scrollbar no longer unecessarily appears when using datepicker
+  - Scrollbar no longer unnecessarily appears when using datepicker
   - Fixed bug where using month and year selectors didn't change date
 
 - Dropdown
