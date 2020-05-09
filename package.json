@@ -52,7 +52,7 @@
     "husky": "^4.0.7",
     "jasmine": "^3.3.1",
     "jasmine-jquery": "^2.1.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.1",
     "lint-staged": "^10.1.7",
     "node-archiver": "^0.3.0",
     "node-sass": "^4.14.0",
