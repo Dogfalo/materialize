@@ -40,7 +40,7 @@
     "grunt-contrib-compress": "^1.4.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jade": "^1.0.0",
-    "grunt-contrib-jasmine": "^2.0.3",
+    "grunt-contrib-jasmine": "^2.2.0",
     "grunt-contrib-uglify": "^4.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-notify": "^0.4.5",
