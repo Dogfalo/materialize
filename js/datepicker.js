@@ -602,15 +602,14 @@
         j = 1 + year + opts.yearRange;
       }
 
-      let years = [];
       for (arr = []; i < j && i <= opts.maxYear; i++) {
         if (i >= opts.minYear) {
-          years.push(
-            `<option value="${i}" ${i === year ? 'selected="selected"' : ''}>${i}</option>`
-          );
+          arr.push(`<option value="${i}" ${i === year ? 'selected="selected"' : ''}>${i}</option>`);
         }
       }
-      arr = arr.concat(opts.yearRangeReverse ? years.reverse() : years);
+      if (opts.yearRangeReverse) {
+        arr.reverse();
+      }
 
       yearHtml = `<select class="datepicker-select orig-select-year" tabindex="-1">${arr.join(
         ''
