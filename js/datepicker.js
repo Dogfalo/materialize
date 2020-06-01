@@ -513,9 +513,7 @@
       }
       return (
         `<td data-day="${opts.day}" class="${arr.join(' ')}" aria-selected="${ariaSelected}">` +
-        `<button class="datepicker-day-button" type="button" data-year="${opts.year}" data-month="${
-          opts.month
-        }" data-day="${opts.day}">${opts.day}</button>` +
+        `<button class="datepicker-day-button" type="button" data-year="${opts.year}" data-month="${opts.month}" data-day="${opts.day}">${opts.day}</button>` +
         '</td>'
       );
     }
@@ -608,6 +606,9 @@
         if (i >= opts.minYear) {
           arr.push(`<option value="${i}" ${i === year ? 'selected="selected"' : ''}>${i}</option>`);
         }
+      }
+      if (opts.yearRangeReverse) {
+        arr.reverse();
       }
 
       yearHtml = `<select class="datepicker-select orig-select-year" tabindex="-1">${arr.join(
