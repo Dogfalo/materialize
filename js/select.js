@@ -272,7 +272,7 @@
           }
         };
 
-        // Prevent dropdown from closeing too early
+        // Prevent dropdown from closing too early
         dropdownOptions.closeOnClick = false;
 
         this.dropdown = M.Dropdown.init(this.input, dropdownOptions);

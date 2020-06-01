@@ -65,7 +65,7 @@ typeof b&&isFinite(b)?b:!1}function x(b){var f,c,d,e={};for(f=0;f<h.length;f+=1)
 
         // getBoundingClientRect contains left scroll in Chrome on Android.
         // I haven't found a feature detection that proves this. Worst case
-        // scenario on mis-match: the 'tap' feature on horizontal sliders breaks.
+        // scenario on mismatch: the 'tap' feature on horizontal sliders breaks.
         if ( /webkit.*Chrome.*Mobile/i.test(navigator.userAgent) ) {
             pageOffset.x = 0;
         }
@@ -1126,7 +1126,7 @@ typeof b&&isFinite(b)?b:!1}function x(b){var f,c,d,e={};for(f=0;f<h.length;f+=1)
                     steps = pctDifference / density;
                     realSteps = Math.round(steps);
 
-                    // This ratio represents the ammount of percentage-space a point indicates.
+                    // This ratio represents the amount of percentage-space a point indicates.
                     // For a density 1 the points/percentage = 1. For density 2, that percentage needs to be re-devided.
                     // Round the percentage offset to an even number, then divide by two
                     // to spread the offset on both sides of the range.
@@ -1793,7 +1793,7 @@ typeof b&&isFinite(b)?b:!1}function x(b){var f,c,d,e={};for(f=0;f<h.length;f+=1)
 
             // Set the handle to the new position.
             // Use requestAnimationFrame for efficient painting.
-            // No significant effect in Chrome, Edge sees dramatic performace improvements.
+            // No significant effect in Chrome, Edge sees dramatic performance improvements.
             // Option to disable is useful for unit tests, and single-step debugging.
             if ( window.requestAnimationFrame && options.useRequestAnimationFrame ) {
                 window.requestAnimationFrame(stateUpdate);
@@ -1860,7 +1860,7 @@ typeof b&&isFinite(b)?b:!1}function x(b){var f,c,d,e={};for(f=0;f<h.length;f+=1)
                 return;
             }
 
-            // If a formatted number was passed, attemt to decode it.
+            // If a formatted number was passed, attempt to decode it.
             if ( typeof to === 'number' ) {
                 to = String(to);
             }
