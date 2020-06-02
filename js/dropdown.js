@@ -532,7 +532,7 @@
         return $(ancestor).css('overflow') !== 'visible';
       });
       // Fallback
-      if (!closestOverflowParent) {
+      if (!closestOverflowParent || closestOverflowParent === document.body) {
         closestOverflowParent = !!this.dropdownEl.offsetParent
           ? this.dropdownEl.offsetParent
           : this.dropdownEl.parentNode;
