@@ -34,6 +34,10 @@
       this.options = $.extend({}, FormSelect.defaults, options);
 
       this.isMultiple = this.$el.prop('multiple');
+      this.isFiltered =
+        typeof this.$el.data('filtered') !== 'undefined'
+          ? this.$el.data('filtered') || false
+          : false;
 
       // Setup
       this.el.tabIndex = -1;
@@ -78,12 +82,17 @@
       this._handleInputClickBound = this._handleInputClick.bind(this);
 
       $(this.dropdownOptions)
-        .find('li:not(.optgroup)')
+        .find('li:not(.optgroup):not(.filter)')
         .each((el) => {
           el.addEventListener('click', this._handleOptionClickBound);
         });
       this.el.addEventListener('change', this._handleSelectChangeBound);
       this.input.addEventListener('click', this._handleInputClickBound);
+
+      if (this.isFiltered && this.filter) {
+        this._handleFilterChangeBound = this._handleFilterChange.bind(this);
+        this.filter.addEventListener('keyup', this._handleFilterChangeBound);
+      }
     }
 
     /**
@@ -91,12 +100,15 @@
      */
     _removeEventHandlers() {
       $(this.dropdownOptions)
-        .find('li:not(.optgroup)')
+        .find('li:not(.optgroup):not(.filter)')
         .each((el) => {
           el.removeEventListener('click', this._handleOptionClickBound);
         });
       this.el.removeEventListener('change', this._handleSelectChangeBound);
       this.input.removeEventListener('click', this._handleInputClickBound);
+      if (this.isFiltered && this.filter) {
+        this.filter.removeEventListener('keyup', this._handleFilterChangeBound);
+      }
     }
 
     /**
@@ -120,7 +132,12 @@
 
     _selectOption(optionEl) {
       let key = optionEl.id;
-      if (!$(optionEl).hasClass('disabled') && !$(optionEl).hasClass('optgroup') && key.length) {
+      if (
+        !$(optionEl).hasClass('disabled') &&
+        !$(optionEl).hasClass('optgroup') &&
+        !$(optionEl).hasClass('filter') &&
+        key.length
+      ) {
         let selected = true;
 
         if (this.isMultiple) {
@@ -166,6 +183,30 @@
     }
 
     /**
+     * Handle Filter Change
+     */
+    _handleFilterChange(e) {
+      if (this.dropdown && this.dropdown.isOpen) {
+        let text = this.filter.value.toLowerCase();
+        $(this.dropdownOptions)
+          .find('li:not(.optgroup):not(.filter)')
+          .each((el) => {
+            $(el)
+              .text()
+              .toLowerCase()
+              .indexOf(text) > -1
+              ? el.classList.remove('hide')
+              : el.classList.add('hide');
+          });
+
+        this.dropdown.focusedIndex = 0;
+        this.dropdown._focusFocusedItem();
+        this.dropdown.recalculateDimensions();
+        this.filter.focus();
+      }
+    }
+
+    /**
      * Setup dropdown
      */
     _setupDropdown() {
@@ -186,11 +227,17 @@
       this.dropdownOptions = document.createElement('ul');
       this.dropdownOptions.id = `select-options-${M.guid()}`;
       $(this.dropdownOptions).addClass(
-        'dropdown-content select-dropdown ' + (this.isMultiple ? 'multiple-select-dropdown' : '')
+        'dropdown-content select-dropdown ' +
+          (this.isMultiple ? ' multiple-select-dropdown' : '') +
+          (this.isFiltered ? ' filtered-select-dropdown' : '')
       );
 
       // Create dropdown structure.
       if (this.$selectOptions.length) {
+        if (this.isFiltered) {
+          this._appendOptionFilter();
+        }
+
         this.$selectOptions.each((el) => {
           if ($(el).is('option')) {
             // Direct descendant option.
@@ -241,7 +288,20 @@
       // Initialize dropdown
       if (!this.el.disabled) {
         let dropdownOptions = $.extend({}, this.options.dropdownOptions);
+        let userOnOpenStart = dropdownOptions.onOpenStart;
         let userOnOpenEnd = dropdownOptions.onOpenEnd;
+
+        // Add callback for cleaning up filter
+        dropdownOptions.onOpenStart = () => {
+          if (this.isFiltered && this.filter) {
+            this.filter.value = '';
+            this._handleFilterChange();
+          }
+          // Handle user declared onOpenStart if needed
+          if (userOnOpenStart && typeof userOnOpenStart === 'function') {
+            userOnOpenStart.call(this.dropdown, this.el);
+          }
+        };
 
         // Add callback for centering selected option when dropdown content is scrollable
         dropdownOptions.onOpenEnd = (el) => {
@@ -266,11 +326,28 @@
             }
           }
 
+          if (this.isFiltered && this.filter) {
+            this.filter.focus();
+          }
           // Handle user declared onOpenEnd if needed
           if (userOnOpenEnd && typeof userOnOpenEnd === 'function') {
             userOnOpenEnd.call(this.dropdown, this.el);
           }
         };
+
+        // Add callback for handling option filter when dropdown content is filtered
+        if (this.isFiltered) {
+          dropdownOptions.onTextInput = (el, e) => {
+            // Bring back focus to filter input, just in case arrow keys were used before to take it away
+            let letter = String.fromCharCode(e.which).toLowerCase(),
+              nonLetters = [9, 13, 27, 38, 40];
+            if (letter && nonLetters.indexOf(e.which) === -1) {
+              if (!$(this.filter).is(':focus')) {
+                this.filter.focus();
+              }
+            }
+          };
+        }
 
         // Prevent dropdown from closeing too early
         dropdownOptions.closeOnClick = false;
@@ -309,6 +386,25 @@
       $(this.dropdownOptions).remove();
       $(this.wrapper).before(this.$el);
       $(this.wrapper).remove();
+    }
+
+    /**
+     * Setup dropdown
+     * @return {Element}  option element added
+     */
+    _appendOptionFilter() {
+      let filterInput = `<label><input type="text" placeholder="${this.isFiltered}"/></label>`;
+      let liEl = $('<li></li>');
+      let spanEl = $('<span></span>');
+      spanEl.html(filterInput);
+      liEl.addClass(`filter disabled`);
+      liEl.append(spanEl);
+
+      $(this.dropdownOptions).append(liEl[0]);
+      this.filter = $(this.dropdownOptions)
+        .find('.filter input')
+        .get(0);
+      return liEl[0];
     }
 
     /**
