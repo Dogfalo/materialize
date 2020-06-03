@@ -47,6 +47,7 @@ $link-color: color("light-blue", "darken-1") !default;
 // 2. Badges
 // ==========================================================================
 
+$badge-text-color: color('grey', 'darken-1') !default;
 $badge-bg-color: $secondary-color !default;
 $badge-height: 22px !default;
 
@@ -347,3 +348,8 @@ $collection-line-height: 1.5rem !default;
 // ==========================================================================
 
 $progress-bar-color: $secondary-color !default;
+
+// 25. Dividers
+// ==========================================================================
+
+$divider-bg-color: color("grey", "lighten-2") !default;
