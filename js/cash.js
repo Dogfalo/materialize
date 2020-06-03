@@ -521,6 +521,49 @@
     }
   }
 
+  function on_ ($el, eventName, delegate, callback, runOnce) {
+    // jshint ignore:line
+    var originalCallback;
+    if (isFunction(delegate)) {
+      callback = delegate;
+      delegate = null;
+    }
+
+    if (eventName === "ready") {
+      onReady(callback);
+      return $el;
+    }
+
+    if (delegate) {
+      originalCallback = callback;
+      callback = function (e) {
+        var t = e.target;
+        while (!matches(t, delegate)) {
+          if (t === $el || t === null) {
+            return t = false;
+          }
+
+          t = t.parentNode;
+        }
+
+        if (t) {
+          originalCallback.call(t, e);
+        }
+      };
+    }
+
+    return $el.each(function (v) {
+      var finalCallback = callback;
+      if (runOnce) {
+        finalCallback = function () {
+          callback.apply($el, arguments);
+          removeEvent(v, eventName, finalCallback);
+        };
+      }
+      registerEvent(v, eventName, finalCallback);
+    });
+  }
+
   fn.extend({
     off: function (eventName, callback) {
       return this.each(function (v) {
@@ -528,54 +571,21 @@
       });
     },
 
-    on: function (eventName, delegate, callback, runOnce) {
-      // jshint ignore:line
-      var originalCallback;
-      if (!isString(eventName)) {
-        for (var key in eventName) {
-          this.on(key, delegate, eventName[key]);
+    on: function (eventNames, delegate, callback, runOnce) {
+      var $el = this
+      if (!isString(eventNames)) {
+        for (var key in eventNames) {
+          on_($el, key, delegate, eventNames[key]);
         }
-        return this;
-      }
-
-      if (isFunction(delegate)) {
-        callback = delegate;
-        delegate = null;
-      }
-
-      if (eventName === "ready") {
-        onReady(callback);
-        return this;
-      }
-
-      if (delegate) {
-        originalCallback = callback;
-        callback = function (e) {
-          var t = e.target;
-          while (!matches(t, delegate)) {
-            if (t === this || t === null) {
-              return (t = false);
-            }
-
-            t = t.parentNode;
+        return $el;
+      } else {
+        each(eventNames.split(" "), function (eventName) {
+          if(eventName.length > 0) {
+            on_($el, eventName, delegate, callback, runOnce);
           }
-
-          if (t) {
-            originalCallback.call(t, e);
-          }
-        };
+        });
+        return $el;
       }
-
-      return this.each(function (v) {
-        var finalCallback = callback;
-        if (runOnce) {
-          finalCallback = function () {
-            callback.apply(this, arguments);
-            removeEvent(v, eventName, finalCallback);
-          };
-        }
-        registerEvent(v, eventName, finalCallback);
-      });
     },
 
     one: function (eventName, delegate, callback) {
