@@ -234,6 +234,17 @@
       }
     }
 
+    closeSelects() {
+      let oldYearSelect = this.calendarEl.querySelector('.orig-select-year');
+      if (oldYearSelect) {
+        M.FormSelect.getInstance(oldYearSelect).dropdown.close();
+      }
+      let oldMonthSelect = this.calendarEl.querySelector('.orig-select-month');
+      if (oldMonthSelect) {
+        M.FormSelect.getInstance(oldMonthSelect).dropdown.close();
+      }
+    }
+
     _insertHTMLIntoDOM() {
       if (this.options.showClearBtn) {
         $(this.clearBtn).css({ visibility: '' });
@@ -253,8 +264,14 @@
     _setupModal() {
       this.modalEl.id = 'modal-' + this.id;
       this.modal = M.Modal.init(this.modalEl, {
+        onCloseStart: () => {
+          this.closeSelects();
+        },
         onCloseEnd: () => {
           this.isOpen = false;
+          if (typeof this.options.onClose === 'function') {
+            this.options.onClose.call(this);
+          }
         }
       });
     }
@@ -513,9 +530,7 @@
       }
       return (
         `<td data-day="${opts.day}" class="${arr.join(' ')}" aria-selected="${ariaSelected}">` +
-        `<button class="datepicker-day-button" type="button" data-year="${opts.year}" data-month="${
-          opts.month
-        }" data-day="${opts.day}">${opts.day}</button>` +
+        `<button class="datepicker-day-button" type="button" data-year="${opts.year}" data-month="${opts.month}" data-day="${opts.day}">${opts.day}</button>` +
         '</td>'
       );
     }
@@ -937,10 +952,6 @@
         return;
       }
 
-      this.isOpen = false;
-      if (typeof this.options.onClose === 'function') {
-        this.options.onClose.call(this);
-      }
       this.modal.close();
       return this;
     }
