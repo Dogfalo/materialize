@@ -920,6 +920,7 @@
         return;
       }
 
+      this.$el[0].blur(); // avoid onscreen keyboard on mobile
       this.isOpen = true;
       if (typeof this.options.onOpen === 'function') {
         this.options.onOpen.call(this);

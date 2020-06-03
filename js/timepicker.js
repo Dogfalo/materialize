@@ -567,6 +567,7 @@
         return;
       }
 
+      this.$el[0].blur(); // avoid onscreen keyboard on mobile
       this.isOpen = true;
       this._updateTimeFromInput();
       this.showView('hours');
