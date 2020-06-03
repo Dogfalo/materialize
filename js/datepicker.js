@@ -55,10 +55,17 @@
     // Show clear button
     showClearBtn: false,
 
+    // Show today button
+    showTodayBtn: false,
+
+    // use browsers select
+    nativeSelects: false,
+
     // internationalization
     i18n: {
       cancel: 'Cancel',
       clear: 'Clear',
+      today: 'Today',
       done: 'Ok',
       previousMonth: '‹',
       nextMonth: '›',
@@ -219,7 +226,7 @@
       this._removeEventHandlers();
       this.modal.destroy();
       $(this.modalEl).remove();
-      this.destroySelects();
+      if (!this.options.nativeSelects) this.destroySelects();
       this.el.M_Datepicker = undefined;
     }
 
@@ -236,8 +243,12 @@
 
     _insertHTMLIntoDOM() {
       if (this.options.showClearBtn) {
-        $(this.clearBtn).css({ visibility: '' });
+        $(this.clearBtn).css({ display: '' });
         this.clearBtn.innerHTML = this.options.i18n.clear;
+      }
+      if (this.options.showTodayBtn) {
+        $(this.todayBtn).css({ display: '' });
+        this.todayBtn.innerHTML = this.options.i18n.today;
       }
 
       this.doneBtn.innerHTML = this.options.i18n.done;
@@ -693,21 +704,26 @@
           ) + this.render(this.calendars[c].year, this.calendars[c].month, randId);
       }
 
-      this.destroySelects();
+      if (!this.options.nativeSelects) this.destroySelects();
 
       this.calendarEl.innerHTML = html;
 
       // Init Materialize Select
       let yearSelect = this.calendarEl.querySelector('.orig-select-year');
       let monthSelect = this.calendarEl.querySelector('.orig-select-month');
-      M.FormSelect.init(yearSelect, {
-        classes: 'select-year',
-        dropdownOptions: { container: document.body, constrainWidth: false }
-      });
-      M.FormSelect.init(monthSelect, {
-        classes: 'select-month',
-        dropdownOptions: { container: document.body, constrainWidth: false }
-      });
+      if (this.options.nativeSelects) {
+        yearSelect.classList.add('browser-default');
+        monthSelect.classList.add('browser-default');
+      } else {
+        M.FormSelect.init(yearSelect, {
+          classes: 'select-year',
+          dropdownOptions: { container: document.body, constrainWidth: false }
+        });
+        M.FormSelect.init(monthSelect, {
+          classes: 'select-month',
+          dropdownOptions: { container: document.body, constrainWidth: false }
+        });
+      }
 
       // Add change handlers for select
       yearSelect.addEventListener('change', this._handleYearChange.bind(this));
@@ -741,6 +757,10 @@
         this._handleClearClickBound = this._handleClearClick.bind(this);
         this.clearBtn.addEventListener('click', this._handleClearClickBound);
       }
+      if (this.options.showTodayBtn) {
+        this._handleTodayClickBound = this._handleTodayClick.bind(this);
+        this.todayBtn.addEventListener('click', this._handleTodayClickBound);
+      }
     }
 
     _setupVariables() {
@@ -753,6 +773,9 @@
       this.dateTextEl = this.modalEl.querySelector('.date-text');
       if (this.options.showClearBtn) {
         this.clearBtn = this.modalEl.querySelector('.datepicker-clear');
+      }
+      if (this.options.showTodayBtn) {
+        this.todayBtn = this.modalEl.querySelector('.datepicker-today');
       }
       this.doneBtn = this.modalEl.querySelector('.datepicker-done');
       this.cancelBtn = this.modalEl.querySelector('.datepicker-cancel');
@@ -844,6 +867,12 @@
       }
     }
 
+    _handleTodayClick() {
+      this.setDate(new Date());
+      this.setInputValue();
+//      this.close();
+    }
+
     _handleClearClick() {
       this.date = null;
       this.setInputValue();
@@ -920,6 +949,7 @@
         return;
       }
 
+      this.$el[0].blur(); // avoid onscreen keyboard on mobile
       this.isOpen = true;
       if (typeof this.options.onOpen === 'function') {
         this.options.onOpen.call(this);
@@ -956,7 +986,10 @@
     '<div class="datepicker-calendar-container">',
     '<div class="datepicker-calendar"></div>',
     '<div class="datepicker-footer">',
-    '<button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>',
+    '<div class="extra-buttons">',
+    '<button class="btn-flat datepicker-clear waves-effect" style="display: none;" type="button"></button>',
+    '<button class="btn-flat datepicker-today waves-effect" style="display: none;" type="button"></button>',
+    '</div>',
     '<div class="confirmation-btns">',
     '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>',
     '<button class="btn-flat datepicker-done waves-effect" type="button"></button>',
