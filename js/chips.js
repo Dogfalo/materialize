@@ -9,7 +9,8 @@
     limit: Infinity,
     onChipAdd: null,
     onChipSelect: null,
-    onChipDelete: null
+    onChipDelete: null,
+    allowDuplicates: false
   };
 
   /**
@@ -41,6 +42,7 @@
        * @prop {String} placeholder
        * @prop {String} secondaryPlaceholder
        * @prop {Object} autocompleteOptions
+       * @prop {Boolean}  [allowDuplicates=false]
        */
       this.options = $.extend({}, Chips.defaults, options);
 
@@ -387,7 +389,7 @@
       if (chip.hasOwnProperty('tag') && chip.tag !== '') {
         let exists = false;
         for (let i = 0; i < this.chipsData.length; i++) {
-          if (this.chipsData[i].tag === chip.tag) {
+          if (this.options.allowDuplicates === false && this.chipsData[i].tag === chip.tag) {
             exists = true;
             break;
           }
