@@ -30,6 +30,9 @@
   <a href="https://gitter.im/Dogfalo/materialize">
     <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter badge">
   </a>
+  <a href="https://gitpod.io/#https://github.com/Dogfalo/materialize">
+    <img src="https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod" alt="Gitpod Ready-to-Code">
+  </a>
 </p>
 
 ## Table of Contents
@@ -64,6 +67,18 @@ npm install
 ```
 
 Then run `grunt monitor` to compile the documentation. When it finishes, open a new browser window and navigate to `localhost:8000`. We use [BrowserSync](https://www.browsersync.io/) to display the documentation.
+
+## Online one-click setup
+
+You can use Gitpod (a free VS Code-like IDE) for the online one-click setup with a single click it'll launch a workspace and automatically: 
+
+- clone the materialize repo.
+- install the dependencies.
+- start `npm run dev`.
+
+so that you can start coding straight away.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
 ### Documentation for previous releases
 Previous releases and their documentation are available for [download](https://github.com/Dogfalo/materialize/releases).

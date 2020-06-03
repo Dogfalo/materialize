@@ -90,6 +90,18 @@ We like feature requests but make sure that it can be seen within the goals of t
 - Issues without a [Codepen](#code-examples) (where applicable) will be closed or ignored.
 - Use this [Codepen](http://codepen.io/Dogfalo/pen/xbzPQV) to illustrate your problem.
 
+## Online one-click setup for contributing
+
+You can use Gitpod (a free VS Code-like IDE) for the online one-click setup with a single click it'll launch a workspace and automatically: 
+
+- clone the materialize repo.
+- install the dependencies.
+- start `npm run dev`.
+
+so that you can start coding straight away.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
 ## Pull requests
 
 Good pull requests - patches, improvements, new features - are a fantastic help. Thanks for taking the time to contribute.
