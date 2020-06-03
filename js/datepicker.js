@@ -141,7 +141,12 @@
       this._setupEventHandlers();
 
       if (!this.options.defaultDate) {
-        this.options.defaultDate = new Date(Date.parse(this.el.value));
+        // Check if there is a custom format function and use it to load the date from input
+        if (this.options.parse)
+          this.options.defaultDate = this.options.parse(this.el.value, this.options.format);
+        else
+          this.options.defaultDate = new Date(Date.parse(this.el.value));
+        }
       }
 
       let defDate = this.options.defaultDate;
