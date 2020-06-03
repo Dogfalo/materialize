@@ -261,11 +261,6 @@
 
       // enter
       if (e.keyCode === 13) {
-        // Override enter if autocompleting.
-        if (this.hasAutocomplete && this.autocomplete && this.autocomplete.isOpen) {
-          return;
-        }
-
         e.preventDefault();
         this.addChip({
           tag: this.$input[0].value
