@@ -122,7 +122,9 @@
       let key = optionEl.id;
       if (!$(optionEl).hasClass('disabled') && !$(optionEl).hasClass('optgroup') && key.length) {
         let selected = true;
-
+        if (!this.isMultiple && $(option).hasClass('selected')) {
+          return;
+        }
         if (this.isMultiple) {
           // Deselect placeholder option if still selected.
           let placeholderOption = $(this.dropdownOptions).find('li.disabled.selected');
