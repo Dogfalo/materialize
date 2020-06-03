@@ -57,6 +57,9 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 
   // Clear floating children
   &:after {
