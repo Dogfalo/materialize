@@ -250,6 +250,125 @@
       this.spanAmPm = this.modalEl.querySelector('.timepicker-span-am-pm');
       this.footer = this.modalEl.querySelector('.timepicker-footer');
       this.amOrPm = 'PM';
+
+      this.formats = {
+        // 12-hour format of an hour without leading zeros.
+        h: () => {
+          let h = this.hours;
+          if (this.options.twelveHour == false) {
+            if (h > 12) {
+              h -= 12;
+            }
+            else {
+              if (h == 0) {
+                h = 12;
+              }
+            }
+          }
+          return h.toString();
+        },
+        // 24-hour format of an hour without leading zeros.
+        H: () => {
+          let h = this.hours;
+          if (this.options.twelveHour) {
+            if (this.amOrPm == 'AM') {
+              if (h == 12) {
+                h = 0;
+              }
+            }
+            else {
+              if (h > 12) {
+                h += 12;
+              }
+            }
+          }
+          return h.toString();
+        },
+        // 12-hour format of an hour with leading zeros.
+        hh: () => {
+          let h = this.hours;
+          if (this.options.twelveHour == false) {
+            if (h > 12) {
+              h -= 12;
+            }
+            else {
+              if (h == 0) {
+                h = 12;
+              }
+            }
+          }
+          return Timepicker._addLeadingZero(h);
+        },
+        // 24-hour format of an hour with leading zeros.
+        HH: () => {
+          let h = this.hours;
+          if (this.options.twelveHour) {
+            if (this.amOrPm == 'AM') {
+              if (h == 12) {
+                h = 0;
+              }
+            }
+            else {
+              if (h > 12) {
+                h += 12;
+              }
+            }
+          }
+          return Timepicker._addLeadingZero(h);
+        },
+        // Minutes without leading zeros.
+        m: () => {
+          return this.minutes.toString();
+        },
+        // Minutes with leading zeros.
+        mm: () => {
+          return Timepicker._addLeadingZero(this.minutes);
+        },
+        // Seconds without leading zeros.
+        s: () => {
+          return '0';
+        },
+        // Seconds with leading zeros.
+        ss: () => {
+          return '00';
+        },
+        // Lowercase Ante meridiem and Post meridiem.
+        a: () => {
+          // The "amOrPm" property is only reliable when in 12-hour mode.
+          if (this.options.twelveHour) {
+            return this.amOrPm.toLowerCase();
+          }
+          else {
+            return this.hours < 12 ? 'am' : 'pm';
+          }
+        },
+        // Uppercase Ante meridiem and Post meridiem.
+        A: () => {
+          // The "amOrPm" property is only reliable when in 12-hour mode.
+          if (this.options.twelveHour) {
+            return this.amOrPm;
+          }
+          else {
+            return this.hours < 12 ? 'AM' : 'PM';
+          }
+        }
+      };
+    }
+
+    toString(format) {
+      format = format || this.options.format;
+      let formatArray = format.split(/([hH]{1,2}|m{1,2}|s{1,2}|[aA]|!.)/g);
+      let formattedTime = formatArray
+        .map((label) => {
+          if (this.formats[label]) {
+            return this.formats[label]();
+          }
+
+          return label;
+        })
+        .join('');
+
+      return formattedTime;
     }
 
     _pickerSetup() {
@@ -589,13 +708,11 @@
     done(e, clearValue) {
       // Set input value
       let last = this.el.value;
-      let value = clearValue
+      this.time = clearValue
         ? ''
         : Timepicker._addLeadingZero(this.hours) + ':' + Timepicker._addLeadingZero(this.minutes);
-      this.time = value;
-      if (!clearValue && this.options.twelveHour) {
-        value = `${value} ${this.amOrPm}`;
-      }
+      let value = clearValue ? '' : this.toString();
+
       this.el.value = value;
 
       // Trigger change event
