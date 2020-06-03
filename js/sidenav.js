@@ -181,7 +181,7 @@
     }
 
     /**
-     * Set variables needed at the beggining of drag
+     * Set variables needed at the beginning of drag
      * and stop any current transition.
      * @param {Event} e
      */
