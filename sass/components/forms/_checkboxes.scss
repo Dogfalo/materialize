@@ -23,7 +23,7 @@
     user-select: none;
   }
 
-  /* checkbox aspect */
+  // checkbox aspect
   + span:not(.lever):before,
   &:not(.filled-in) + span:not(.lever):after {
     content: '';

@@ -9,7 +9,7 @@
   cursor: zoom-in;
   position: relative;
   transition: opacity .4s;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 
   &.active {
     cursor: zoom-out;

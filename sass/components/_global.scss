@@ -218,6 +218,7 @@ video.responsive-video {
 }
 
 // Breadcrumbs
+/* when float is not 'none',display is treated as 'block'*/
 .breadcrumb {
   display: inline-block;
   font-size: 18px;
@@ -227,10 +228,12 @@ video.responsive-video {
   [class^="mdi-"], [class*="mdi-"],
   i.material-icons {
     display: inline-block;
+    /* display: block, see the note above */
     float: left;
     font-size: 24px;
   }
 
+  // see note above for float
   &:before {
     content: '\E5CC';
     color: rgba(255,255,255, .7);
@@ -243,6 +246,7 @@ video.responsive-video {
     margin: 0 10px 0 8px;
     -webkit-font-smoothing: antialiased;
     float: left;
+    /* display is now 'block' see the note above */
   }
 
   &:first-child:before {
@@ -506,10 +510,10 @@ td, th{
       padding: 0 10px;
     }
 
-    /* sort out borders */
     thead {
       border: 0;
       border-right: 1px solid $table-border-color;
+      /* sort out borders */
     }
   }
 
