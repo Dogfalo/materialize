@@ -358,10 +358,13 @@
     _handleWindowResize() {
       // Only handle horizontal resizes
       if (this.lastWindowWidth !== window.innerWidth) {
-        if (window.innerWidth > 992) {
-          this.open();
-        } else {
+        if (window.innerWidth <= 992) {
           this.close();
+        }
+
+        if (window.innerWidth > 992 && this.lastWindowWidth <= 992) {
+          this.close();
+          this.open();
         }
       }
 
