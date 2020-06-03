@@ -181,6 +181,10 @@
         this.wrapper.classList.add('disabled');
       }
 
+      if (this.el.classList.contains('invalid')) {
+        this.wrapper.classList.add('invalid');
+      }
+
       // Create dropdown
       this.$selectOptions = this.$el.children('option, optgroup');
       this.dropdownOptions = document.createElement('ul');
