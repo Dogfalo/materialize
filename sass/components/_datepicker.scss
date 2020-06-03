@@ -45,7 +45,7 @@
   }
 }
 
-.month-prev, .month-next {
+.month-prev, .month-next, .year-next, .year-prev {
   margin-top: 4px;
   cursor: pointer;
   background-color: transparent;
@@ -126,7 +126,7 @@
   }
 }
 
-.datepicker-day-button {
+.datepicker-month-button, .datepicker-day-button {
   &:focus {
     background-color: $datepicker-day-focus;
   }
@@ -164,6 +164,14 @@
   color: $error-color;
 }
 
+.datepicker-table-month {
+  .datepicker-table td {
+    border-radius: 8px;
+  }
+  .datepicker-month-button {
+    border-radius: 8px;
+  }
+}
 
 /* Media Queries */
 @media #{$medium-and-up} {
@@ -185,7 +193,7 @@
     width: 320px;
   }
 
-  .datepicker-day-button {
+  datepicker-month-button, .datepicker-day-button {
     line-height: 44px;
   }
 }
