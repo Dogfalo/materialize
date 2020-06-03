@@ -75,6 +75,9 @@
     background-color: $button-raised-background-hover;
     @extend .z-depth-1-half;
   }
+  &[type=button] {
+    -webkit-appearance: none; // Gets rid of the outlined rectangle default in Chrome
+  }
 }
 
 // Floating button
