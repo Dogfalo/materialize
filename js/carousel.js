@@ -8,6 +8,7 @@
     padding: 0, // Padding between non center items
     numVisible: 5, // Number of visible items in carousel
     fullWidth: false, // Change to full width styles
+    draggable: true, // Is carousel touch and mouse drag enabled
     indicators: false, // Toggle indicators
     noWrap: false, // Don't wrap around and cycle through items.
     onCycleTo: null // Callback for when a new slide is cycled to.
@@ -141,21 +142,23 @@
      * Setup Event Handlers
      */
     _setupEventHandlers() {
-      this._handleCarouselTapBound = this._handleCarouselTap.bind(this);
-      this._handleCarouselDragBound = this._handleCarouselDrag.bind(this);
-      this._handleCarouselReleaseBound = this._handleCarouselRelease.bind(this);
-      this._handleCarouselClickBound = this._handleCarouselClick.bind(this);
+      if (this.options.draggable) {
+        this._handleCarouselTapBound = this._handleCarouselTap.bind(this);
+        this._handleCarouselDragBound = this._handleCarouselDrag.bind(this);
+        this._handleCarouselReleaseBound = this._handleCarouselRelease.bind(this);
+        this._handleCarouselClickBound = this._handleCarouselClick.bind(this);
 
-      if (typeof window.ontouchstart !== 'undefined') {
-        this.el.addEventListener('touchstart', this._handleCarouselTapBound);
-        this.el.addEventListener('touchmove', this._handleCarouselDragBound);
-        this.el.addEventListener('touchend', this._handleCarouselReleaseBound);
+        if (typeof window.ontouchstart !== 'undefined') {
+          this.el.addEventListener('touchstart', this._handleCarouselTapBound);
+          this.el.addEventListener('touchmove', this._handleCarouselDragBound);
+          this.el.addEventListener('touchend', this._handleCarouselReleaseBound);
+        }
+
+        this.el.addEventListener('mousedown', this._handleCarouselTapBound);
+        this.el.addEventListener('mousemove', this._handleCarouselDragBound);
+        this.el.addEventListener('mouseup', this._handleCarouselReleaseBound);
+        this.el.addEventListener('mouseleave', this._handleCarouselReleaseBound);
       }
-
-      this.el.addEventListener('mousedown', this._handleCarouselTapBound);
-      this.el.addEventListener('mousemove', this._handleCarouselDragBound);
-      this.el.addEventListener('mouseup', this._handleCarouselReleaseBound);
-      this.el.addEventListener('mouseleave', this._handleCarouselReleaseBound);
       this.el.addEventListener('click', this._handleCarouselClickBound);
 
       if (this.showIndicators && this.$indicators) {
@@ -176,15 +179,17 @@
      * Remove Event Handlers
      */
     _removeEventHandlers() {
-      if (typeof window.ontouchstart !== 'undefined') {
-        this.el.removeEventListener('touchstart', this._handleCarouselTapBound);
-        this.el.removeEventListener('touchmove', this._handleCarouselDragBound);
-        this.el.removeEventListener('touchend', this._handleCarouselReleaseBound);
+      if (this.options.draggable) {
+        if (typeof window.ontouchstart !== 'undefined') {
+          this.el.removeEventListener('touchstart', this._handleCarouselTapBound);
+          this.el.removeEventListener('touchmove', this._handleCarouselDragBound);
+          this.el.removeEventListener('touchend', this._handleCarouselReleaseBound);
+        }
+        this.el.removeEventListener('mousedown', this._handleCarouselTapBound);
+        this.el.removeEventListener('mousemove', this._handleCarouselDragBound);
+        this.el.removeEventListener('mouseup', this._handleCarouselReleaseBound);
+        this.el.removeEventListener('mouseleave', this._handleCarouselReleaseBound);
       }
-      this.el.removeEventListener('mousedown', this._handleCarouselTapBound);
-      this.el.removeEventListener('mousemove', this._handleCarouselDragBound);
-      this.el.removeEventListener('mouseup', this._handleCarouselReleaseBound);
-      this.el.removeEventListener('mouseleave', this._handleCarouselReleaseBound);
       this.el.removeEventListener('click', this._handleCarouselClickBound);
 
       if (this.showIndicators && this.$indicators) {
