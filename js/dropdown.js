@@ -411,7 +411,6 @@
 
       let verticalAlignment = 'top';
       let horizontalAlignment = this.options.alignment;
-      idealYPos += this.options.coverTrigger ? 0 : triggerBRect.height;
 
       // Reset isScrollable
       this.isScrollable = false;
@@ -451,7 +450,10 @@
           }
         }
       }
-
+      
+      if(verticalAlignment === 'top') {
+        idealYPos += this.options.coverTrigger ? 0 : triggerBRect.height;
+      }
       if (verticalAlignment === 'bottom') {
         idealYPos =
           idealYPos - dropdownBRect.height + (this.options.coverTrigger ? triggerBRect.height : 0);
