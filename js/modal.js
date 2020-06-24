@@ -16,7 +16,8 @@
         complete: undefined,
         dismissible: true,
         startingTop: '4%',
-        endingTop: '10%'
+        endingTop: '10%',
+        overlayParent: 'body'
       };
 
       // Override defaults
@@ -32,7 +33,7 @@
           $modal.removeClass('open');
 
           // Enable scrolling
-          $('body').css({
+          $(options.overlayParent).css({
             overflow: '',
             width: ''
           });
@@ -72,7 +73,7 @@
         };
 
         var openModal = function($trigger) {
-          var $body = $('body');
+          var $body = $(options.overlayParent);
           var oldWidth = $body.innerWidth();
           $body.css('overflow', 'hidden');
           $body.width(oldWidth);
@@ -90,7 +91,7 @@
           $modal.data('overlay-id', overlayID).css('z-index', 1000 + lStack * 2 + 1);
           $modal.addClass('open');
 
-          $("body").append($overlay);
+          $body.append($overlay);
 
           if (options.dismissible) {
             $overlay.click(function() {
