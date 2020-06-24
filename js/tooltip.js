@@ -40,7 +40,8 @@
             tooltipPosition,
             tooltipText,
             tooltipEl,
-            backdrop;
+            backdrop,
+            backdropClass;
         var setAttributes = function() {
           allowHtml = origin.attr('data-html') ? origin.attr('data-html') === 'true' : options.html;
           tooltipDelay = origin.attr('data-delay');
