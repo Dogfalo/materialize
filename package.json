@@ -29,7 +29,7 @@
   "dependencies": {},
   "engine": "node >= 6",
   "devDependencies": {
-    "autoprefixer": "^9.8.0",
+    "autoprefixer": "^9.8.4",
     "babel-preset-es2015": "^6.24.1",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
