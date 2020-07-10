@@ -36,15 +36,15 @@ Before you now get lost in the repository, here are a few starting points for yo
 
 ## Using the issue tracker
 
-The [issue tracker](https://github.com/Dogfalo/materialize/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests), but please respect the following conditions:
+The [issue tracker](https://github.com/materializecss/materialize/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests), but please respect the following conditions:
 
-* Please **do not** use the issue tracker for personal support requests. [Stack Overflow `materialize`](https://stackoverflow.com/questions/tagged/materialize) tag is the best place to get help or use our [Gitter channel](https://gitter.im/Dogfalo/materialize).
+* Please **do not** use the issue tracker for personal support requests. [Stack Overflow `materialize`](https://stackoverflow.com/questions/tagged/materialize) tag is the best place to get help or use our [Gitter channel](https://gitter.im/materializecss/materialize).
 
 * Please **do not** post comments like "+1" or ":thumbsup:". Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)  instead. We reserve the right to delete comments which violate this rule.  
 
 * Please **do not** open issues without clearly stating the problem and desired result. [See the bug reports section](#bug-reports) for more information on creating effective issues.
 
-* Please **do** [search for duplicate or closed issues](https://github.com/Dogfalo/materialize/issues?utf8=%E2%9C%93&q=is%3Aissue) and make sure to go through our [labels](https://github.com/Dogfalo/materialize/labels), before you open a new issue. Duplicate issues will be closed.
+* Please **do** [search for duplicate or closed issues](https://github.com/materializecss/materialize/issues?utf8=%E2%9C%93&q=is%3Aissue) and make sure to go through our [labels](https://github.com/materializecss/materialize/labels), before you open a new issue. Duplicate issues will be closed.
 
 * Please **close your own issue** once it is resolved.
 
@@ -63,7 +63,7 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 - `meta` - Issues with the project itself or our GitHub repository.
 - `on-hold` Issues or pull that should be worked on, but for any reason it won't be worked on/accepted as a PR anytime soon.
 
-For a complete look at our labels, see the [project labels page](https://github.com/Dogfalo/materialize/labels).
+For a complete look at our labels, see the [project labels page](https://github.com/materializecss/materialize/labels).
 
 ### Bug reports
 
@@ -98,13 +98,13 @@ Good pull requests - patches, improvements, new features - are a fantastic help.
 
 **Do not edit `materialize.css`, or `materialize.js`
 directly!** Those files are automatically generated. You should edit the
-source files in [`/materialize/sass/`](https://github.com/Dogfalo/materialize/tree/master/sass)
-and/or [`/materialize/js/`](https://github.com/Dogfalo/materialize/tree/master/js) instead.
+source files in [`/materialize/sass/`](https://github.com/materializecss/materialize/tree/master/sass)
+and/or [`/materialize/js/`](https://github.com/materializecss/materialize/tree/master/js) instead.
 
 ### Documentation
 
 When contributing to Materialize's documentation, you should edit the documentation source files in
-[the `/materialize/jade/page-contents/` directory of the `master` branch](https://github.com/Dogfalo/materialize/tree/master/jade).
+[the `/materialize/jade/page-contents/` directory of the `master` branch](https://github.com/materializecss/materialize/tree/master/jade).
 **Do not edit the `gh-pages` branch.** That branch is generated from the documentation source files and is managed separately by the Materialize maintainers.
 
 ### Submitting Your Pull Request
@@ -120,7 +120,7 @@ Adhering to the following process is the best way to get your work included in t
    # Navigate to the newly cloned directory
    cd materialize
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/Dogfalo/materialize.git
+   git remote add upstream https://github.com/materializecss/materialize.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -150,7 +150,7 @@ Adhering to the following process is the best way to get your work included in t
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description against the `master` branch. Reference any open issue in the description so it is automatically linked. Try and keep your commit history clean and concise. Once you submit your pull request, [Travis CI](https://travis-ci.org/Dogfalo/materialize) will automatically run your tests and will show a checkmark to show that all the tests have passed. Once this is done, we’ll review your tests and code and make comments if there are issues or things we think could be improved. Then once everything looks good we’ll merge the code in!
+7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description against the `master` branch. Reference any open issue in the description so it is automatically linked. Try and keep your commit history clean and concise. Once you submit your pull request, [Travis CI](https://travis-ci.org/materializecss/materialize) will automatically run your tests and will show a checkmark to show that all the tests have passed. Once this is done, we’ll review your tests and code and make comments if there are issues or things we think could be improved. Then once everything looks good we’ll merge the code in!
 
 ## Translations
 
@@ -161,8 +161,8 @@ If you want to help us translate the documentation into other languages, please 
 **References:**
 - [Jasmine Documentation](http://jasmine.github.io/2.0/introduction.html)
 - [Grunt Jasmine Plugin](https://github.com/gruntjs/grunt-contrib-jasmine)
-- [Example Jasmine Tests](https://github.com/Dogfalo/materialize/tree/master/tests/spec)
-- [Travis CI](https://travis-ci.org/Dogfalo/materialize)
+- [Example Jasmine Tests](https://github.com/materializecss/materialize/tree/master/tests/spec)
+- [Travis CI](https://travis-ci.org/materializecss/materialize)
 
 Before you start, make sure you install grunt and all its dependencies. To verify you have all the correct dependencies you can run `grunt travis` and it will run the tests. If you get an errors and have not made any changes, it means you have not installed the proper dependencies.
 
