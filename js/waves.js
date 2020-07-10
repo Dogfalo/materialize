@@ -70,7 +70,7 @@
             ripple.className = 'waves-ripple';
             el.appendChild(ripple);
 
-            // Get click coordinate and element witdh
+            // Get click coordinate and element width
             var pos         = offset(el);
             var relativeY   = (e.pageY - pos.top);
             var relativeX   = (e.pageX - pos.left);
@@ -138,7 +138,7 @@
             var relativeY   = ripple.getAttribute('data-y');
             var scale       = ripple.getAttribute('data-scale');
 
-            // Get delay beetween mousedown and mouse leave
+            // Get delay between mousedown and mouse leave
             var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
             var delay = 350 - diff;
 
