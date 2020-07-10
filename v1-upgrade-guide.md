@@ -56,7 +56,7 @@
 
 ## Modal
 - Change attribute `data-activates` to `data-target`
-- Removed ready and complete callback, use onOpenEnd and onOpenEnd callback instead
+- Removed ready and complete callbacks, use onOpenEnd and onCloseEnd callbacks instead
 
 
 ## Scrollfire
@@ -77,7 +77,7 @@
 - Rename plugin call `.sideNav()` to `.sidenav()`
 - Sidenav option `closeOnClick` no longer exists
   - Instead apply the class `.sidenav-close` to any item in the Sidenav that you wish to trigger a close.
-- Removed onOpen and onClose callback, use onOpenEnd and onCloseEnd callback instead
+- Removed onOpen and onClose callbacks, use onOpenEnd and onCloseEnd callbacks instead
 - Rename `fixed` class to `sidenav-fixed`
 - Rename methods `show` and `hide` to `open` and `close` respectively
 
