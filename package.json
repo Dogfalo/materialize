@@ -10,10 +10,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Dogfalo/materialize.git"
+    "url": "git://github.com/materializecss/materialize.git"
   },
   "bugs": {
-    "url": "https://github.com/Dogfalo/materialize/issues"
+    "url": "https://github.com/materializecss/materialize/issues"
   },
   "scripts": {
     "dev": "grunt monitor",

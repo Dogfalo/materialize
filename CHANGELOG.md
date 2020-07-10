@@ -3,7 +3,7 @@ Changelog
 Bolded styling surrounded by emojis indicates a breaking change.
 
 ## 1.0.0 (September 9th, 2018)
-- [Full Changelog here](https://github.com/Dogfalo/materialize/blob/v1-dev/v1-changelog.md)
+- [Full Changelog here](https://github.com/materializecss/materialize/blob/v1-dev/v1-changelog.md)
 
 ## 1.0.0-rc.2 (June 23rd, 2018)
 - Autocomplete

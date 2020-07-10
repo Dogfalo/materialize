@@ -582,7 +582,7 @@ module.exports = function(grunt) {
           banner:
             '/*!\n * Materialize v' +
             grunt.option('newver') +
-            ' (http://materializecss.com)\n * Copyright 2014-2017 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */',
+            ' (http://materializecss.com)\n * Copyright 2014-2017 Materialize\n * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)\n */',
           linebreak: true
         },
         files: {
