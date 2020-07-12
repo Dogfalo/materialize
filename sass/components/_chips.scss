@@ -63,6 +63,9 @@
     margin: 0;
     padding: 0 !important;
     width: 120px !important;
+    width: fit-content !important;
+    min-width: 100px;
+    max-width: 200px;
   }
 
   .input:focus {
