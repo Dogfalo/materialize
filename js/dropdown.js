@@ -427,7 +427,7 @@
           if (alignments.spaceOnTop > alignments.spaceOnBottom) {
             verticalAlignment = 'bottom';
             idealHeight += alignments.spaceOnTop;
-            idealYPos -= alignments.spaceOnTop - 20; // add back padding space
+            idealYPos -= this.options.coverTrigger ? alignments.spaceOnTop - 20 : alignments.spaceOnTop - 20 + triggerBRect.height;
           } else {
             idealHeight += alignments.spaceOnBottom;
           }
