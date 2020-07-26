@@ -16,9 +16,11 @@
   width: 0;
   height: 0;
 
-  &:checked + .lever {
+  &:checked:not([disabled]) {
     background-color: $switch-checked-lever-bg;
+  }
 
+  &:checked + .lever {
     &:before, &:after {
       left: 18px;
     }
