@@ -446,9 +446,9 @@
                     removeListeners();
                 };
 
-                element.addEventListener('touchmove', touchMove, false);
-                element.addEventListener('touchend', hideEffect, false);
-                element.addEventListener('touchcancel', hideEffect, false);
+                element.addEventListener('touchmove', touchMove, { capture:false, passive: true });
+                element.addEventListener('touchend', hideEffect, { capture:false, passive: true });
+                element.addEventListener('touchcancel', hideEffect, { capture:false, passive: true });
 
                 var removeListeners = function() {
                     element.removeEventListener('touchmove', touchMove);
@@ -460,12 +460,12 @@
                 Effect.show(e, element);
 
                 if (isTouchAvailable) {
-                    element.addEventListener('touchend', Effect.hide, false);
-                    element.addEventListener('touchcancel', Effect.hide, false);
+                    element.addEventListener('touchend', Effect.hide, { capture:false, passive: true });
+                    element.addEventListener('touchcancel', Effect.hide, { capture:false, passive: true });
                 }
 
-                element.addEventListener('mouseup', Effect.hide, false);
-                element.addEventListener('mouseleave', Effect.hide, false);
+                element.addEventListener('mouseup', Effect.hide, { capture:false, passive: true });
+                element.addEventListener('mouseleave', Effect.hide, { capture:false, passive: true });
             }
         }
     }
@@ -484,12 +484,12 @@
         }
 
         if (isTouchAvailable) {
-            body.addEventListener('touchstart', showEffect, false);
-            body.addEventListener('touchcancel', TouchHandler.registerEvent, false);
-            body.addEventListener('touchend', TouchHandler.registerEvent, false);
+            body.addEventListener('touchstart', showEffect, { capture:false, passive: true });
+            body.addEventListener('touchcancel', TouchHandler.registerEvent, { capture:false, passive: true });
+            body.addEventListener('touchend', TouchHandler.registerEvent, { capture:false, passive: true });
         }
 
-        body.addEventListener('mousedown', showEffect, false);
+        body.addEventListener('mousedown', showEffect, { capture:false, passive: true });
     };
 
 
