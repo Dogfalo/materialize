@@ -15,6 +15,9 @@
     if (typeof define === 'function' && define.amd) {
         define([], function() {
             window.Waves = factory.call(window);
+            document.addEventListener('DOMContentLoaded', function() {
+                window.Waves.init();
+            }, false);
             return window.Waves;
         });
     }
