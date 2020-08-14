@@ -43,6 +43,15 @@
     var toString         = Object.prototype.toString;
     var isTouchAvailable = 'ontouchstart' in window;
 
+    /* Feature detection */
+    var passiveIfSupported = false;
+    try {
+        window.addEventListener("test", null, 
+            Object.defineProperty({}, "passive", {
+                get: function() { passiveIfSupported = { passive: false }; }
+            }
+        ));
+    } catch(err) {}
 
     // Find exact position of element
     function isWindow(obj) {
@@ -446,9 +455,9 @@
                     removeListeners();
                 };
 
-                element.addEventListener('touchmove', touchMove, { capture:false, passive: true });
-                element.addEventListener('touchend', hideEffect, { capture:false, passive: true });
-                element.addEventListener('touchcancel', hideEffect, { capture:false, passive: true });
+                element.addEventListener('touchmove', touchMove, passiveIfSupported);
+                element.addEventListener('touchend', hideEffect, passiveIfSupported);
+                element.addEventListener('touchcancel', hideEffect, passiveIfSupported);
 
                 var removeListeners = function() {
                     element.removeEventListener('touchmove', touchMove);
@@ -460,12 +469,12 @@
                 Effect.show(e, element);
 
                 if (isTouchAvailable) {
-                    element.addEventListener('touchend', Effect.hide, { capture:false, passive: true });
-                    element.addEventListener('touchcancel', Effect.hide, { capture:false, passive: true });
+                    element.addEventListener('touchend', Effect.hide, passiveIfSupported);
+                    element.addEventListener('touchcancel', Effect.hide, passiveIfSupported);
                 }
 
-                element.addEventListener('mouseup', Effect.hide, { capture:false, passive: true });
-                element.addEventListener('mouseleave', Effect.hide, { capture:false, passive: true });
+                element.addEventListener('mouseup', Effect.hide, passiveIfSupported);
+                element.addEventListener('mouseleave', Effect.hide, passiveIfSupported);
             }
         }
     }
@@ -484,12 +493,12 @@
         }
 
         if (isTouchAvailable) {
-            body.addEventListener('touchstart', showEffect, { capture:false, passive: true });
-            body.addEventListener('touchcancel', TouchHandler.registerEvent, { capture:false, passive: true });
-            body.addEventListener('touchend', TouchHandler.registerEvent, { capture:false, passive: true });
+            body.addEventListener('touchstart', showEffect, passiveIfSupported);
+            body.addEventListener('touchcancel', TouchHandler.registerEvent, passiveIfSupported);
+            body.addEventListener('touchend', TouchHandler.registerEvent, passiveIfSupported);
         }
 
-        body.addEventListener('mousedown', showEffect, { capture:false, passive: true });
+        body.addEventListener('mousedown', showEffect, passiveIfSupported);
     };
 
 
