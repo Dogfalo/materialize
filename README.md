@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="http://materializecss.com/">
-    <img src="http://materializecss.com/res/materialize.svg" width="150">
+  <a href="https://materializecss.com/">
+    <img src="https://materializecss.com/res/materialize.svg" width="150">
   </a>
 </p>
 
@@ -9,7 +9,7 @@
 <p align="center">
   Materialize, a CSS Framework based on material design.
   <br>
-  <a href="http://materializecss.com/"><strong>-- Browse the docs --</strong></a>
+  <a href="https://materializecss.com/"><strong>-- Browse the docs --</strong></a>
   <br>
   <br>
   <a href="https://travis-ci.com/materializecss/materialize">
@@ -42,17 +42,17 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Quickstart:
-Read the [getting started guide](http://materializecss.com/getting-started.html) for more information on how to use materialize.
+Read the [getting started guide](https://materializecss.com/getting-started.html) for more information on how to use materialize.
 
 - [Download the latest release](https://github.com/materializecss/materialize/releases/latest) of materialize directly from GitHub. ([Beta](https://github.com/materializecss/materialize/releases/))
 - Clone the repo: `git clone https://github.com/materializecss/materialize.git` (Beta: `git clone -b v1-dev https://github.com/materializecss/materialize.git`)
-- Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](http://materializecss.com/getting-started.html). ([Beta](https://cdnjs.com/libraries/materialize/1.0.0-beta))
+- Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](https://materializecss.com/getting-started.html). ([Beta](https://cdnjs.com/libraries/materialize/1.0.0-beta))
 - Install with [npm](https://www.npmjs.com): `npm install materialize-css` (Beta: `npm install materialize-css@next`)
 - Install with [Bower](https://bower.io): `bower install materialize` ([DEPRECATED](https://bower.io/blog/2017/how-to-migrate-away-from-bower/))
 - Install with [Atmosphere](https://atmospherejs.com): `meteor add materialize:materialize` (Beta: `meteor add materialize:materialize@=1.0.0-beta`)
 
 ## Documentation
-The documentation can be found at <http://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
+The documentation can be found at <https://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
 
 ### Running documentation locally
 Run these commands to set up the documentation:
