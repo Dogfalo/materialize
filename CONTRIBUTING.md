@@ -30,7 +30,7 @@ patches and features.
 
 Before you now get lost in the repository, here are a few starting points for you to check out. You might find that others have had similar questions or that your question rather belongs in one place than another.
 
-* Chat: https://gitter.im/Dogfalo/materialize
+* Chat: https://gitter.im/materializecss/community
 * Website: http://materializecss.com
 * Twitter: https://twitter.com/materializecss
 

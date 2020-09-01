@@ -27,7 +27,7 @@
   <a href="https://david-dm.org/materializecss/materialize#info=devDependencies">
     <img src="https://david-dm.org/materializecss/materialize/dev-status.svg" alt="devDependency Status badge">
   </a>
-  <a href="https://gitter.im/Dogfalo/materialize">
+  <a href="https://gitter.im/materializecss/community">
     <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter badge">
   </a>
 </p>
