@@ -29,14 +29,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
-    var options = {}; // specify options here
-    var instances = M.Tooltip.init(elems, options);
+    var instances = M.Tooltip.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.tooltipped').tooltip();
+    $('.tooltipped').tooltip({
+      // specify options here
+    });
   });
         </code></pre>
       </div>

@@ -346,8 +346,9 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var options = {}; // specify options here
-    var instances = M.Dropdown.init(elems, options);
+    var instances = M.Dropdown.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery

@@ -76,13 +76,16 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.chips');
-    var options = {}; // specify options here
-    var instances = M.Chips.init(elems, options);
+    var instances = M.Chips.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
-  $('.chips').chips();
+  $('.chips').chips({
+    // specify options here
+  });
   $('.chips-initial').chips({
     data: [{
       tag: 'Apple',
