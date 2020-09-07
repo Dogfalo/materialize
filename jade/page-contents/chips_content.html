@@ -82,33 +82,40 @@
   });
 
   // Or with jQuery
-
-  $('.chips').chips({
-    // specify options here
+  $(document).ready(function(){
+    $('.chips').chips({
+      // specify options here
+    })
   });
-  $('.chips-initial').chips({
-    data: [{
-      tag: 'Apple',
-    }, {
-      tag: 'Microsoft',
-    }, {
-      tag: 'Google',
-    }],
+  $(document).ready(function(){
+    $('.chips-initial').chips({
+      data: [{
+        tag: 'Apple',
+      }, {
+        tag: 'Microsoft',
+      }, {
+        tag: 'Google',
+      }],
+    })
   });
-  $('.chips-placeholder').chips({
-    placeholder: 'Enter a tag',
-    secondaryPlaceholder: '+Tag',
+  $(document).ready(function(){
+    $('.chips-placeholder').chips({
+      placeholder: 'Enter a tag',
+      secondaryPlaceholder: '+Tag',
+    })
   });
-  $('.chips-autocomplete').chips({
-    autocompleteOptions: {
-      data: {
-        'Apple': null,
-        'Microsoft': null,
-        'Google': null
-      },
-      limit: Infinity,
-      minLength: 1
-    }
+  $(document).ready(function(){
+    $('.chips-autocomplete').chips({
+      autocompleteOptions: {
+        data: {
+          'Apple': null,
+          'Microsoft': null,
+          'Google': null
+        },
+        limit: Infinity,
+        minLength: 1
+      }
+    })
   });
         </code></pre>
         <p class="caption">Chip data object</p>
