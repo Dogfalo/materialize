@@ -235,7 +235,7 @@
       anim.remove(this.tooltipEl);
       anim({
         targets: this.tooltipEl,
-        opacity: this.options._animateInOpacity || 1,
+        opacity: this.options.opacity || 1,
         translateX: this.xMovement,
         translateY: this.yMovement,
         duration: this.options.inDuration,
