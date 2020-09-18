@@ -192,6 +192,8 @@
 
         if (currChips.chipsData.length) {
           currChips.selectChip(selectIndex);
+        } else {
+          currChips.$input[0].focus();
         }
 
         // left arrow key
@@ -231,7 +233,7 @@
      * @param {Event} e
      */
     static _handleChipsBlur(e) {
-      if (!Chips._keydown) {
+      if (!Chips._keydown && document.hidden) {
         let $chips = $(e.target).closest('.chips');
         let currChips = $chips[0].M_Chips;
 
@@ -268,7 +270,7 @@
         }
 
         e.preventDefault();
-        if (!this.hasAutocomplete || (this.hasAutocomplete && !this.options.autocompleteOnly) ) {
+        if (!this.hasAutocomplete || (this.hasAutocomplete && !this.options.autocompleteOnly)) {
           this.addChip({
             tag: this.$input[0].value
           });
