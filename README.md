@@ -35,6 +35,7 @@
 ## Table of Contents
 - [Quickstart](#quickstart)
 - [Documentation](#documentation)
+- [Build](#build)
 - [Supported Browsers](#supported-browsers)
 - [Changelog](#changelog)
 - [Testing](#testing)
@@ -65,6 +66,13 @@ Then run `grunt monitor` to compile the documentation. When it finishes, open a 
 
 ### Documentation for previous releases
 Previous releases and their documentation are available for [download](https://github.com/materializecss/materialize/releases).
+
+## Build
+If you want to get `materialize.css` or `materialize.js` which generated from the latest commit, you can build with the following command after `npm install`. See `package.json` to check the current version like `1.0.0`.
+
+```sh
+npx grunt release --oldver=<current_version> --newver=<new_version>
+```
 
 ## Supported Browsers:
 Materialize is compatible with:
