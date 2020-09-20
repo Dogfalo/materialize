@@ -561,7 +561,7 @@ module.exports = function(grunt) {
         ]
       },
       package_json: {
-        src: ['package.json', ],
+        src: ['package.json'],
         overwrite: true,
         replacements: [
           {
