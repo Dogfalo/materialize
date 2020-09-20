@@ -62,7 +62,7 @@ cd materialize
 npm install
 ```
 
-Then run `grunt monitor` to compile the documentation. When it finishes, open a new browser window and navigate to `localhost:8000`. We use [BrowserSync](https://www.browsersync.io/) to display the documentation.
+Then run `npm run dev` to compile the documentation. When it finishes, open a new browser window and navigate to `localhost:8000`. We use [BrowserSync](https://www.browsersync.io/) to display the documentation.
 
 ### Documentation for previous releases
 Previous releases and their documentation are available for [download](https://github.com/materializecss/materialize/releases).

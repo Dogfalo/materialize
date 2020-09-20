@@ -54,9 +54,9 @@
     "jasmine": "^2.6.0",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.2.1",
-    "lint-staged": "^7.0.4",
+    "lint-staged": "^7.0.5",
     "node-archiver": "^0.3.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.14.1",
     "phantomjs-prebuilt": "^2.1.14",
     "prettier": "^1.12.1"
   },

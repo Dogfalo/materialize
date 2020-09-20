@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-  - "6.10"
+  - "10"
+  - "12"
+  - "node"
 before_install:
   - npm install -g npm@latest
-  - npm install -g grunt-cli
 install: npm ci
 git:
   depth: 10
