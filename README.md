@@ -68,7 +68,7 @@ Then run `grunt monitor` to compile the documentation. When it finishes, open a 
 Previous releases and their documentation are available for [download](https://github.com/materializecss/materialize/releases).
 
 ## Build
-If you want to get `materialize.css` or `materialize.js` which generated from the latest commit, you can build with the following command after `npm install`. See `package.json` to check the current version like `1.0.0`.
+If you want to build `materialize.css` or `materialize.js` from the latest commit, you can build the files with the following command after `npm install`. See `package.json` to check the current version like `1.0.0`.
 
 ```sh
 npx grunt release --oldver=<current_version> --newver=<new_version>
