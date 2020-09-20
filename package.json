@@ -17,6 +17,7 @@
   },
   "scripts": {
     "dev": "grunt monitor",
+    "build": "grunt release",
     "test": "grunt travis",
     "precommit": "lint-staged"
   },
