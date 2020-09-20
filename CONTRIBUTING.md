@@ -164,7 +164,7 @@ If you want to help us translate the documentation into other languages, please 
 - [Example Jasmine Tests](https://github.com/materializecss/materialize/tree/master/tests/spec)
 - [Travis CI](https://travis-ci.org/materializecss/materialize)
 
-After `npm install`, you can run `npm test` and it will run the tests. If you get an errors and have not made any changes, it means you have not installed the proper dependencies.
+After `npm install`, you can run `npm test` and it will run the tests. If you get any errors and have not made any changes, it means you have not installed the proper dependencies.
 
 Materialize uses Jasmine as the testing framework. We also include a jQuery library which allows you to write tests using jQuery syntax.
 
