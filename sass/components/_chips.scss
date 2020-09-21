@@ -52,9 +52,9 @@
     cursor: text;
   }
 
-  .input {
+  input:not([type]):not(.browser-default).input {
     background: none;
-    border: 0 !important;
+    border: 0;
     color: rgba(0,0,0,.6);
     display: inline-block;
     font-size: $input-font-size;
@@ -62,12 +62,13 @@
     line-height: 32px;
     outline: 0;
     margin: 0;
-    padding: 0 !important;
-    width: 120px !important;
-  }
+    padding: 0;
+    width: 120px;
 
-  .input:focus {
-    box-shadow: none !important;
+    &:focus {
+      border: 0;
+      box-shadow: none;
+    }
   }
 
   // Autocomplete
