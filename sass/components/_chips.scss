@@ -54,7 +54,7 @@
 
   .input {
     background: none;
-    border: 0;
+    border: 0 !important;
     color: rgba(0,0,0,.6);
     display: inline-block;
     font-size: $input-font-size;
@@ -67,7 +67,6 @@
   }
 
   .input:focus {
-    border: 0 !important;
     box-shadow: none !important;
   }
 
