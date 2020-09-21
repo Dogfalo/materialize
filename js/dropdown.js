@@ -390,10 +390,22 @@
       let triggerBRect = this.el.getBoundingClientRect();
       let dropdownBRect = this.dropdownEl.getBoundingClientRect();
 
-      let idealHeight = dropdownBRect.height;
-      let idealWidth = dropdownBRect.width;
-      let idealXPos = triggerBRect.left - dropdownBRect.left;
-      let idealYPos = triggerBRect.top - dropdownBRect.top;
+      let idealHeight;
+      let idealWidth;
+      let idealXPos;
+      let idealYPos;
+
+      if (this.options.container == document.body) {
+        idealHeight = dropdownBRect.height;
+        idealWidth = triggerBRect.width;
+        idealXPos = triggerBRect.left;
+        idealYPos = triggerBRect.top;
+      } else {
+        idealHeight = dropdownBRect.height;
+        idealWidth = dropdownBRect.width;
+        idealXPos = triggerBRect.left - dropdownBRect.left;
+        idealYPos = triggerBRect.top - dropdownBRect.top;
+      }
 
       let dropdownBounds = {
         left: idealXPos,

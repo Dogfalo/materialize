@@ -50,7 +50,7 @@
       this.$inputField = this.$el.closest('.input-field');
       this.$active = $();
       this._mousedown = false;
-      this._setupDropdown();
+      this._setupDropdown(options.dropdownOptions);
 
       this._setupEventHandlers();
     }
@@ -145,7 +145,7 @@
     /**
      * Setup dropdown
      */
-    _setupDropdown() {
+    _setupDropdown(dropdownOptions) {
       this.container = document.createElement('ul');
       this.container.id = `autocomplete-options-${M.guid()}`;
       $(this.container).addClass('autocomplete-content dropdown-content');
@@ -158,7 +158,8 @@
         coverTrigger: false,
         onItemClick: (itemEl) => {
           this.selectOption($(itemEl));
-        }
+        },
+        ...dropdownOptions
       });
 
       // Sketchy removal of dropdown click handler
