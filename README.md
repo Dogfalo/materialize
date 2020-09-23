@@ -35,6 +35,7 @@
 ## Table of Contents
 - [Quickstart](#quickstart)
 - [Documentation](#documentation)
+- [Build](#build)
 - [Supported Browsers](#supported-browsers)
 - [Changelog](#changelog)
 - [Testing](#testing)
@@ -65,6 +66,13 @@ Then run `npm run dev` to compile the documentation. When it finishes, open a ne
 
 ### Documentation for previous releases
 Previous releases and their documentation are available for [download](https://github.com/materializecss/materialize/releases).
+
+## Build
+If you want to build `materialize.css` or `materialize.js` from the latest commit, you can build the files with the following command after `npm install`. See `package.json` to check the current version like `1.0.0`.
+
+```sh
+npm run release -- --oldver=<current_version> --newver=<new_version>
+```
 
 ## Supported Browsers:
 Materialize is compatible with:
