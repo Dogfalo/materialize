@@ -33,6 +33,10 @@
       return this.$el.data('chips');
     }
 
+    if ('destroy' === options) {
+      return this.destroy();
+    }
+
     var curr_options = $.extend({}, materialChipsDefaults, options);
     self.hasAutocomplete = !$.isEmptyObject(curr_options.autocompleteOptions.data);
 
@@ -59,6 +63,17 @@
         self.chips($chips, chipId);
         i++;
       });
+    };
+
+    this.destroy = function() {
+      var SELS = self.SELS;
+      self.$document.off('click.chips-focus', SELS.CHIPS);
+      self.$document.off('click.chips-select', SELS.CHIP);
+      self.$document.off('keydown.chips');
+      self.$document.off('focusin.chips', SELS.CHIPS + ' ' + SELS.INPUT);
+      self.$document.off('focusout.chips', SELS.CHIPS + ' ' + SELS.INPUT)
+      self.$document.off('keydown.chips-add', SELS.CHIPS + ' ' + SELS.INPUT)
+      self.$document.off('click.chips-delete', SELS.CHIPS + ' ' + SELS.DELETE)
     };
 
     this.handleEvents = function() {
