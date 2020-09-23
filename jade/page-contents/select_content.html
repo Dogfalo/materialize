@@ -164,13 +164,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
+    var instances = M.FormSelect.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('select').formSelect();
+    $('select').formSelect({
+      // specify options here
+    });
   });
         </code></pre>
         <br>

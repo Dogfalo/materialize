@@ -23,13 +23,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.parallax');
-    var instances = M.Parallax.init(elems, options);
+    var instances = M.Parallax.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.parallax').parallax();
+    $('.parallax').parallax({
+      // specify options here
+    });
   });
         </code></pre>
       </div>

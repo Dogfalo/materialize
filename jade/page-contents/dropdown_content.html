@@ -52,12 +52,18 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
+    var instances = M.Dropdown.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
-  $('.dropdown-trigger').dropdown();
+  $(document).ready(function(){
+    $('.dropdown-trigger').dropdown({
+      // specify options here
+    });
+  });
         </code></pre>
       </div>
 

@@ -80,17 +80,23 @@
         <pre><code class="language-javascript col s12">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, options);
+    var instances = M.Sidenav.init(elems, {
+      // specify options here
+    });
   });
 
   // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
   // var collapsibleElem = document.querySelector('.collapsible');
-  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, {
+  //  // specify options here
+  // });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.sidenav').sidenav();
+    $('.sidenav').sidenav({
+      // specify options here
+    });
   });
         </code></pre>
       </div>

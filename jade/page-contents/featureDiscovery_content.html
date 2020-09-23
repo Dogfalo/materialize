@@ -47,13 +47,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tap-target');
-    var instances = M.TapTarget.init(elems, options);
+    var instances = M.TapTarget.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.tap-target').tapTarget();
+    $('.tap-target').tapTarget({
+      // specify options here
+    });
   });
           </code></pre>
         <br>

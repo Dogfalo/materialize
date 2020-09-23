@@ -131,13 +131,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
+    var instances = M.Modal.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.modal').modal();
+    $('.modal').modal({
+      // specify options here
+    });
   });
           </code></pre>
       </div>

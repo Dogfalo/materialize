@@ -42,13 +42,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.scrollspy');
-    var instances = M.ScrollSpy.init(elems, options);
+    var instances = M.ScrollSpy.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.scrollspy').scrollSpy();
+    $('.scrollspy').scrollSpy({
+      // specify options here
+    });
   });
         </code></pre>
         <br>

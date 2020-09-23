@@ -37,13 +37,17 @@
         <pre><code class="language-javascript col s12">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.pushpin');
-    var instances = M.Pushpin.init(elems, options);
+    var instances = M.Pushpin.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.pushpin').pushpin();
+    $('.pushpin').pushpin({
+      // specify options here
+    });
   });
         </code></pre>
       </div>

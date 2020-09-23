@@ -45,13 +45,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, options);
+    var instances = M.Carousel.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.carousel').carousel();
+    $('.carousel').carousel({
+      // specify options here
+    });
   });
       </code></pre>
         <br>

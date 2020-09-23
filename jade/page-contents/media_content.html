@@ -21,13 +21,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.materialboxed');
-    var instances = M.Materialbox.init(elems, options);
+    var instances = M.Materialbox.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.materialboxed').materialbox();
+    $('.materialboxed').materialbox({
+      // specify options here
+    });
   });
         </code></pre>
         <br>
@@ -278,13 +282,17 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.slider');
-    var instances = M.Slider.init(elems, options);
+    var instances = M.Slider.init(elems, {
+      // specify options here
+    });
   });
 
   // Or with jQuery
 
   $(document).ready(function(){
-    $('.slider').slider();
+    $('.slider').slider({
+      // specify options here
+    });
   });
         </code></pre>
         <br>

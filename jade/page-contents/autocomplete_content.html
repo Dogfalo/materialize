@@ -42,7 +42,14 @@
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.autocomplete');
-    var instances = M.Autocomplete.init(elems, options);
+    var instances = M.Autocomplete.init(elems, {
+      // specify options here
+      data: {
+        "Apple": null,
+        "Microsoft": null,
+        "Google": 'https://placehold.it/250x250'
+      }
+    });
   });
 
 
@@ -50,6 +57,7 @@
 
   $(document).ready(function(){
     $('input.autocomplete').autocomplete({
+      // specify options here
       data: {
         "Apple": null,
         "Microsoft": null,
