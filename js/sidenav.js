@@ -129,11 +129,11 @@
       this._handleCloseReleaseBound = this._handleCloseRelease.bind(this);
       this._handleCloseTriggerClickBound = this._handleCloseTriggerClick.bind(this);
 
-      this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound, { passive: true});
+      this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound, passiveIfSupported);
       this.dragTarget.addEventListener('touchend', this._handleDragTargetReleaseBound);
-      this._overlay.addEventListener('touchmove', this._handleCloseDragBound, { passive: true});
+      this._overlay.addEventListener('touchmove', this._handleCloseDragBound, passiveIfSupported);
       this._overlay.addEventListener('touchend', this._handleCloseReleaseBound);
-      this.el.addEventListener('touchmove', this._handleCloseDragBound, { passive: true});
+      this.el.addEventListener('touchmove', this._handleCloseDragBound, passiveIfSupported);
       this.el.addEventListener('touchend', this._handleCloseReleaseBound);
       this.el.addEventListener('click', this._handleCloseTriggerClickBound);
 
