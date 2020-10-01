@@ -190,20 +190,40 @@ ul.sidenav.sidenav-fixed {
 }
 
 .patreon-ad {
-  display: none;
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 45px;
   width: 299px;
   background-color: #fff;
   z-index: 1000;
   border-top: 1px solid $border-color;
 
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: translateY(-50%);
+    padding: 4px 6px;
+    border-radius: 3px;
+    background-color: #ee6e73;
+    color: #fff;
+    content: "Sponsor";
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 1;
+    z-index: 2;
+  }
+
   a {
     width: 100%;
     line-height: 45px;
-    padding: 0 30px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
   }
 }
 .patreon-footer-ad {
