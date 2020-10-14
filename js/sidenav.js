@@ -4,6 +4,7 @@
   let _defaults = {
     edge: 'left',
     draggable: true,
+    dragTargetWidth: '10px',
     inDuration: 250,
     outDuration: 200,
     onOpenStart: null,
@@ -34,6 +35,7 @@
        * @member Sidenav#options
        * @prop {String} [edge='left'] - Side of screen on which Sidenav appears
        * @prop {Boolean} [draggable=true] - Allow swipe gestures to open/close Sidenav
+       * @prop {String} [dragTargetWidth='10px'] - Width of the area where you can start dragging
        * @prop {Number} [inDuration=250] - Length in ms of enter transition
        * @prop {Number} [outDuration=200] - Length in ms of exit transition
        * @prop {Function} onOpenStart - Function called when sidenav starts entering
@@ -394,6 +396,7 @@
     _createDragTarget() {
       let dragTarget = document.createElement('div');
       dragTarget.classList.add('drag-target');
+      dragTarget.style.width = this.options.dragTargetWidth;
       document.body.appendChild(dragTarget);
       this.dragTarget = dragTarget;
     }
