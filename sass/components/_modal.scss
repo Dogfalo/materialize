@@ -20,7 +20,7 @@
   will-change: top, opacity;
 
   @media #{$medium-and-down} {
-   width: 80%;
+    width: 80%;
   }
 
   h1,h2,h3,h4 {
@@ -29,7 +29,9 @@
 
   .modal-content {
     padding: 24px;
+    overflow-y: hidden;
   }
+
   .modal-close {
     cursor: pointer;
   }
@@ -47,6 +49,7 @@
     }
   }
 }
+
 .modal-overlay {
   position: fixed;
   z-index: 999;
