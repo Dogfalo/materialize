@@ -243,6 +243,21 @@
         title: 'JavaScript > Waves',
         tags: 'wave javascript js',
         body: 'Waves is an external library that weve included in Materialize to allow us to create the ink effect outlined in Material Design'
+      }, {
+        href: 'css-transitions.html',
+        title: 'CSS > Transitions',
+        tags: 'transition css',
+        body: 'We\'ve made some custom animation classes that will transition your content with only CSS. Each CSS transition consists of a base class that applies the necessary styles and additional classes that control the state of the transition.'
+      }, {
+        href: 'floating-action-button.html',
+        title: 'Components > Floating Action Button',
+        tags: 'floating action button fab component',
+        body: 'If you want a fixed floating action button, you can add multiple actions that will appear on hover.'
+      }, {
+        href: 'auto-init.html',
+        title: 'JavaScript > Auto Init',
+        tags: 'auto init javascript js',
+        body: 'Auto Init allows you to initialize all of the Materialize Components with a single function call. It is important to note that you cannot pass in options using this method.'
       }
     ];
 
