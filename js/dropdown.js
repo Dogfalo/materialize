@@ -15,7 +15,8 @@
     onOpenEnd: null,
     onCloseStart: null,
     onCloseEnd: null,
-    onItemClick: null
+    onItemClick: null,
+    stopPropagation: false
   };
 
   /**
@@ -48,6 +49,7 @@
        * @prop {Function} onOpenEnd - Function called when dropdown finishes opening
        * @prop {Function} onCloseStart - Function called when dropdown starts closing
        * @prop {Function} onCloseEnd - Function called when dropdown finishes closing
+       * @prop {Boolean} [stopPropagation=false] - Constrain width to width of the button
        */
       this.options = $.extend({}, Dropdown.defaults, options);
 
@@ -170,6 +172,11 @@
 
     _handleClick(e) {
       e.preventDefault();
+
+      if (stopPropagation) {
+        e.stopPropagation();
+      }
+
       this.open();
     }
 
