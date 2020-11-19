@@ -5,6 +5,8 @@
     exitDelay: 200,
     enterDelay: 0,
     html: null,
+    text: '',
+    unsafeHTML: null,
     margin: 5,
     inDuration: 250,
     outDuration: 200,
@@ -68,13 +70,24 @@
 
       let tooltipContentEl = document.createElement('div');
       tooltipContentEl.classList.add('tooltip-content');
-      tooltipContentEl.innerHTML = this.options.html;
+      this._setTooltipContent(tooltipContentEl);
+
       tooltipEl.appendChild(tooltipContentEl);
       document.body.appendChild(tooltipEl);
     }
 
+    _setTooltipContent(tooltipContentEl) {
+      tooltipContentEl.textContent = this.options.text;
+      if (!!this.options.html){
+        $(tooltipContentEl).append(this.options.html);
+      }
+      if (!!this.options.unsafeHTML){
+        $(tooltipContentEl).append(this.options.unsafeHTML);
+      }
+    }
+
     _updateTooltipContent() {
-      this.tooltipEl.querySelector('.tooltip-content').innerHTML = this.options.html;
+      this._setTooltipContent(this.tooltipEl.querySelector('.tooltip-content'));
     }
 
     _setupEventHandlers() {
@@ -285,7 +298,7 @@
       let positionOption = this.el.getAttribute('data-position');
 
       if (tooltipTextOption) {
-        attributeOptions.html = tooltipTextOption;
+        attributeOptions.text = tooltipTextOption;
       }
 
       if (positionOption) {
