@@ -39,6 +39,8 @@
       <div id="initialization" class="scrollspy section">
         <h3 class="header">Initialization</h3>
         <p>The data is a json object where the key is the matching string and the value is an optional image url.</p>
+        <p>The key must be a text string. If you trust your data, or have properly sanitized your user input, you may 
+          use HTML by setting the option <code class="language-javascript">allowUnsafeHTML: true</code>.</p>
         <pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.autocomplete');
@@ -103,6 +105,12 @@
               <td>Function</td>
               <td></td>
               <td>Sort function that defines the order of the list of autocomplete options.</td>
+            </tr>
+            <tr>
+              <td>allowUnsafeHTML</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>If true will render the key from each item directly as HTML. User input MUST be properly sanitized first.</td>
             </tr>
           </tbody>
         </table>
