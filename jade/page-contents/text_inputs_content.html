@@ -161,6 +161,45 @@
         </code></pre>
         <br>
 
+        <h5>Icon Suffixes</h5>
+        <p>You can also add an icon suffix. Just add an icon with the class <code class="language-markup">suffix</code> before the input and label.</p><br>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons suffix">account_circle</i>
+                <input id="icon_suffix" type="text" class="validate">
+                <label for="icon_suffix">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons suffix">phone</i>
+                <input id="icon_telephone_suffix" type="tel" class="validate">
+                <label for="icon_telephone_suffix">Telephone</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <pre><code class="language-markup">
+  &lt;div class="row">
+    &lt;form class="col s12">
+      &lt;div class="row">
+        &lt;div class="input-field col s6">
+          &lt;i class="material-icons suffix">account_circle</i>&lt;/i>
+          &lt;input id="icon_suffix" type="text" class="validate">
+          &lt;label for="icon_suffix">First Name&lt;/label>
+        &lt;/div>
+        &lt;div class="input-field col s6">
+          &lt;i class="material-icons suffix">phone</i>&lt;/i>
+          &lt;input id="icon_telephone_suffix" type="tel" class="validate">
+          &lt;label for="icon_telephone_suffix">Telephone&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  &lt;/div>
+        </code></pre>
+        <br>
+
         <h5>Custom Error or Success Messages</h5>
         <p>You can add custom validation messages by adding either <code class="language-markup">data-error</code> or <code class="language-markup">data-success</code> attributes to your helper text element.</p><br>
         <div class="row">

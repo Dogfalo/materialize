@@ -162,6 +162,15 @@ body.keyboard-focused {
 
 .prefix ~ label { margin-left: 3rem; }
 
+// Suffix Icons
+.suffix ~ .select-wrapper {
+  margin-right: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.suffix ~ label { margin-right: 3rem; }
+
 // Icons
 .select-dropdown li {
   img {

@@ -166,7 +166,9 @@ textarea.materialize-textarea {
     }
 
     .prefix ~ label,
-    .prefix ~ .validate ~ label {
+    .prefix ~ .validate ~ label,
+    .suffix ~ label,
+    .suffix ~ .validate ~ label  {
       width: calc(100% - 3rem - #{$gutter-width});
     }
   }
@@ -217,7 +219,7 @@ textarea.materialize-textarea {
   }
 
   // Prefix Icons
-  .prefix {
+  .prefix, .suffix {
     position: absolute;
     width: $input-height;
     font-size: $input-icon-size;
@@ -229,6 +231,7 @@ textarea.materialize-textarea {
 
   .prefix ~ input,
   .prefix ~ textarea,
+  .prefix ~ .select-wrapper,
   .prefix ~ label,
   .prefix ~ .validate ~ label,
   .prefix ~ .helper-text,
@@ -241,20 +244,42 @@ textarea.materialize-textarea {
   .prefix ~ label { margin-left: 3rem; }
 
   @media #{$medium-and-down} {
-    .prefix ~ input {
+    .prefix ~ input,
+    .suffix ~ input {
       width: 86%;
       width: calc(100% - 3rem);
     }
   }
 
   @media #{$small-and-down} {
-    .prefix ~ input {
+    .prefix ~ input,
+    .suffix ~ input {
       width: 80%;
       width: calc(100% - 3rem);
     }
   }
-}
 
+
+  // Suffix Icons
+  .suffix {
+    right: 0;
+  }
+
+  .suffix ~ input,
+  .suffix ~ textarea,
+  .suffix ~ .select-wrapper,
+  .suffix ~ label,
+  .suffix ~ .validate ~ label,
+  .suffix ~ .helper-text,
+  .suffix ~ .autocomplete-content {
+    margin-right: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem);
+  }
+
+  .suffix ~ label { margin-right: 3rem; }
+
+}
 
 /* Search Field */
 
