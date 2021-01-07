@@ -5,6 +5,12 @@
     data: {}, // Autocomplete data set
     limit: Infinity, // Limit of results the autocomplete shows
     onAutocomplete: null, // Callback for when autocompleted
+    dropdownOptions: {
+      // Default dropdown options
+      autoFocus: false,
+      closeOnClick: false,
+      coverTrigger: false
+    },
     minLength: 1, // Min characters before autocomplete starts
     sortFunction: function(a, b, inputString) {
       // Sort function for sorting autocomplete results
@@ -152,14 +158,24 @@
       this.$inputField.append(this.container);
       this.el.setAttribute('data-target', this.container.id);
 
-      this.dropdown = M.Dropdown.init(this.el, {
-        autoFocus: false,
-        closeOnClick: false,
-        coverTrigger: false,
-        onItemClick: (itemEl) => {
-          this.selectOption($(itemEl));
+      // Initialize dropdown
+      let dropdownOptions = $.extend(
+        Autocomplete.defaults.dropdownOptions,
+        this.options.dropdownOptions
+      );
+      let userOnItemClick = dropdownOptions.onItemClick;
+
+      // Ensuring the selectOption call when user passes custom onItemClick function to dropdown
+      dropdownOptions.onItemClick = (el) => {
+        this.selectOption($(el));
+
+        // Handle user declared onItemClick if needed
+        if (userOnItemClick && typeof userOnItemClick === 'function') {
+          userOnItemClick.call(this.dropdown, this.el);
         }
-      });
+      };
+
+      this.dropdown = M.Dropdown.init(this.el, dropdownOptions);
 
       // Sketchy removal of dropdown click handler
       this.el.removeEventListener('click', this.dropdown._handleClickBound);
