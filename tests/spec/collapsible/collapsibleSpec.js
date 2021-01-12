@@ -1,63 +1,64 @@
 describe( "Collapsible Plugin", function () {
   var collapsible, accordion, popout, expandable, expandablePreselect;
 
-  beforeEach(function() {
-    loadFixtures('collapsible/collapsible.html');
-    collapsible = $('.collapsible');
-    expandable = $('.expandable');
-    expandablePreselect = $('.expandable-preselected');
-    accordion = $('.accordion');
-    popout = $('.popout');
-    collapsible.collapsible();
-    expandable.collapsible({accordion: false});
-    expandablePreselect.collapsible({accordion: false});
+  beforeEach(async function() {
+    await XloadFixtures(['collapsible/collapsible.html']);
+    collapsible = document.querySelectorAll('.collapsible');
+    expandable = document.querySelector('.expandable');
+    expandablePreselect = document.querySelector('.expandable-preselected');
+    accordion = document.querySelector('.accordion');
+    popout = document.querySelector('.popout');
+    M.Collapsible.init(collapsible);
+    M.Collapsible.init(expandable, {accordion: false});
+    M.Collapsible.init(expandablePreselect, {accordion: false});
+  });
+  afterEach(function(){
+    XunloadFixtures();
   });
 
   describe( "collapsible", function () {
 
     it("should open all items, keeping all open", function (done) {
       // Collapsible body height should be 0 on start when hidden.
-      var headers = expandable.find('.collapsible-header');
-      var bodies = expandable.find('.collapsible-body');
+      let headers = expandable.querySelectorAll('.collapsible-header');
+      let bodies = expandable.querySelectorAll('.collapsible-body');
 
-      bodies.each(function() {
-        expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
-      });
+      for (let i = 0; i < bodies.length; i++) {
+        expect(bodies[i]).toBeHidden('because collapsible bodies should be hidden initially.'); //TODO replace with alternative for deprecated jasmine-jquery
+      }
 
       // Collapsible body height should be > 0 after being opened.
-      headers.each(function() {
-        $(this).click();
-      });
+      for (let i = 0; i < headers.length; i++) {
+        click(headers[i]);
+      }
 
       setTimeout(function() {
-        bodies.each(function() {
-          expect($(this)).toBeVisible('because collapsible bodies not visible after being opened.');
-        });
+        for (let i = 0; i < bodies.length; i++) {
+          expect(bodies[i]).toBeVisible('because collapsible bodies not visible after being opened.'); //TODO replace with alternative for deprecated jasmine-jquery
+        }
         done();
       }, 400);
     });
 
     it("should allow preopened sections", function () {
-      var headers = expandablePreselect.find('.collapsible-header');
-      var bodies = expandablePreselect.find('.collapsible-body');
+      let bodies = expandablePreselect.querySelectorAll('.collapsible-body');
 
-      bodies.each(function(i) {
-        var header = $(this).prev('.collapsible-header');
-        var headerLi = header.parent('li');
+      for (let i = 0; i < bodies.length; i++) {
+        let headerLi = bodies[i].parentNode;
 
         if (i === 1) {
-          expect(headerLi).toHaveClass('active', 'because collapsible header should have active class to be preselected.');
-          expect($(this)).toBeVisible('because collapsible bodies should be visible if preselected.');
+          expect(headerLi).toHaveClass('active', 'because collapsible header should have active class to be preselected.'); //TODO replace with alternative for deprecated jasmine-jquery
+          expect(bodies[i]).toBeVisible('because collapsible bodies should be visible if preselected.'); //TODO replace with alternative for deprecated jasmine-jquery
         } else {
-          expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
+          expect(bodies[i]).toBeHidden('because collapsible bodies should be hidden initially.'); //TODO replace with alternative for deprecated jasmine-jquery
         }
-      });
+      }
     });
 
     it("should open and close programmatically with callbacks", function(done) {
-      var openCallback = false;
-      var closeCallback = false;
-      expandable.collapsible({
+      let openCallback = false;
+      let closeCallback = false;
+      M.Collapsible.init(expandable, {
         accordion: false,
         onOpenStart: function() {
           openCallback = true;
@@ -66,30 +67,31 @@ describe( "Collapsible Plugin", function () {
           closeCallback = true;
         }
       });
-      var bodies = expandable.find('.collapsible-body');
+      let bodies = expandable.querySelectorAll('.collapsible-body');
 
       expect(openCallback).toEqual(false, 'because open callback not yet fired');
       expect(closeCallback).toEqual(false, 'because close callback not yet fired');
 
-      bodies.each(function(i) {
-        expect($(this)).toBeHidden('because collapsible bodies should be hidden initially.');
-        expandable.collapsible('open', i);
-      });
+      for (let i = 0; i < bodies.length; i++) {
+        expect(bodies[i]).toBeHidden('because collapsible bodies should be hidden initially.'); //TODO replace with alternative for deprecated jasmine-jquery
+        let collapsibleInstance = M.Collapsible.getInstance(bodies[i].parentNode.parentNode);
+        collapsibleInstance.open(i);
+      }
       expect(openCallback).toEqual(true, 'because open callback fired');
 
 
       setTimeout(function() {
-        bodies.each(function(i) {
-          expect($(this)).toBeVisible('because collapsible bodies should be visible after being opened.');
-          expandable.collapsible('close', i);
-        });
+        for (let i = 0; i < bodies.length; i++) {
+          expect(bodies[i]).toBeVisible('because collapsible bodies should be visible after being opened.'); //TODO replace with alternative for deprecated jasmine-jquery
+          M.Collapsible.getInstance(bodies[i].parentNode.parentNode).close(i);
+        };
         expect(closeCallback).toEqual(true, 'because close callback fired');
 
 
         setTimeout(function() {
-          bodies.each(function(i) {
-            expect($(this)).toBeHidden('because collapsible bodies should be hidden after close.');
-          });
+          for (let i = 0; i < bodies.length; i++) {
+            expect(bodies[i]).toBeHidden('because collapsible bodies should be hidden after close.'); //TODO replace with alternative for deprecated jasmine-jquery
+          };
 
           done();
         }, 400);
@@ -101,10 +103,10 @@ describe( "Collapsible Plugin", function () {
 
     it("should open first and second items, keeping only second open", function (done) {
       // Collapsible body height should be 0 on start when hidden.
-      var firstHeader = accordion.find('.collapsible-header').first();
-      var firstBody = accordion.find('.collapsible-body').first();
-      var secondHeader = accordion.find('.collapsible-header').eq(1);
-      var secondBody = accordion.find('.collapsible-body').eq(1);
+      let firstHeader = accordion.querySelector('.collapsible-header');
+      let firstBody = accordion.querySelector('.collapsible-body');
+      let secondHeader = accordion.querySelectorAll('.collapsible-header')[1];
+      let secondBody = accordion.querySelectorAll('.collapsible-body')[1];
       expect(firstBody).toBeHidden('because accordion bodies should be hidden initially.');
       expect(secondBody).toBeHidden('because accordion bodies should be hidden initially.');
 
@@ -113,7 +115,7 @@ describe( "Collapsible Plugin", function () {
 
       setTimeout(function() {
         expect(firstBody).toBeVisible('because accordion bodies not visible after being opened.');
-        secondHeader.click();
+        click(secondHeader);
 
         setTimeout(function() {
           expect(firstBody).toBeHidden('because accordion bodies should be hidden when another item is opened.');
@@ -129,24 +131,26 @@ describe( "Collapsible Plugin", function () {
 
     it("should open first and popout", function (done) {
       // Collapsible body height should be 0 on start when hidden.
-      var firstLi = popout.find('li').first();
-      var firstHeader = popout.find('.collapsible-header').first();
-      var firstBody = popout.find('.collapsible-body').first();
+      let listItems = popout.querySelectorAll('li');
+      let firstHeader = popout.querySelector('.collapsible-header');
+      let firstBody = popout.querySelector('.collapsible-body');
       expect(firstBody).toBeHidden('because accordion bodies should be hidden initially.');
 
       // Expect margin to be > 0 because not popped out.
-      popout.find('li').each(function () {
-        var marginLeft = parseInt($(this).css('margin-left'));
-        var marginRight = parseInt($(this).css('margin-right'));
+      for (let i = 0; i < listItems.length; i++) {
+        let listItemStyles = getComputedStyle(listItems[i]);
+        let marginLeft = parseInt(listItemStyles.getPropertyValue('margin-left'));
+        let marginRight = parseInt(listItemStyles.getPropertyValue('margin-right'));
         expect(marginLeft).toBeGreaterThan(0, 'because closed popout items should have horizontal margins.');
         expect(marginRight).toBeGreaterThan(0, 'because closed popout items should have horizontal margins.');
-      });
+      };
 
       // expect margin to be 0 because popped out.
-      firstHeader.click();
+      click(firstHeader);
       setTimeout(function() {
-        var firstMarginLeft = parseInt(firstLi.css('margin-left'));
-        var firstMarginRight = parseInt(firstLi.css('margin-right'));
+        let firstStyles = getComputedStyle(listItems[0]);
+        let firstMarginLeft = parseInt(firstStyles.getPropertyValue('margin-left'));
+        let firstMarginRight = parseInt(firstStyles.getPropertyValue('margin-right'));
         expect(firstMarginLeft).toEqual(0, 'because opened popout items should have no horizontal margins.');
         expect(firstMarginRight).toEqual(0, 'because opened popout items should have no horizontal margins.');
         expect(firstBody).toBeVisible('because accordion bodies not visible after being opened.');

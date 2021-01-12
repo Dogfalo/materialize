@@ -1,10 +1,15 @@
 describe("Dropdown Plugin", function () {
-  beforeEach(function() {
-    loadFixtures('dropdown/dropdownFixture.html');
-    $('.dropdown-trigger').dropdown();
+
+  beforeEach(async function () {      
+    await XloadFixtures(['dropdown/dropdownFixture.html']);
+    M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
+  });
+  afterEach(function(){
+    XunloadFixtures();
   });
 
   describe("Dropdown", function () {
+
     var normalDropdown;
 
     beforeEach(function() {
@@ -12,16 +17,16 @@ describe("Dropdown Plugin", function () {
     });
 
     it("should open and close programmatically", function (done) {
-      var dropdown1 = $('#dropdown1');
-      normalDropdown = $('#dropdownActivator');
+      let dropdown1 = document.querySelector('#dropdown1');
+      normalDropdown = document.querySelector('#dropdownActivator');
 
       expect(dropdown1).toBeHidden('Should be hidden before dropdown is opened.');
 
-      normalDropdown.dropdown('open');
+      M.Dropdown.getInstance(normalDropdown).open();
 
       setTimeout(function() {
         expect(dropdown1).toBeVisible('Should be shown after dropdown is opened.');
-        normalDropdown.dropdown('close');
+        M.Dropdown.getInstance(normalDropdown).close();
 
         setTimeout(function() {
           expect(dropdown1).toBeHidden('Should be hidden after dropdown is closed.');
@@ -31,11 +36,12 @@ describe("Dropdown Plugin", function () {
     });
 
     it("should close dropdown on document click if programmatically opened", function (done) {
-      normalDropdown = $('#dropdownActivator');
+      let dropdown1 = document.querySelector('#dropdown1');
+      normalDropdown = document.querySelector('#dropdownActivator');
 
       expect(dropdown1).toBeHidden('Should be hidden before dropdown is opened.');
 
-      normalDropdown.dropdown('open');
+      M.Dropdown.getInstance(normalDropdown).open();
 
       setTimeout(function() {
         expect(dropdown1).toBeVisible('Should be shown after dropdown is opened.');
@@ -49,12 +55,12 @@ describe("Dropdown Plugin", function () {
     });
 
     it("should bubble events correctly", function (done) {
-      var dropdown2 = $('#dropdown2');
-      normalDropdown = $('#dropdownBubble');
+      let dropdown2 = document.querySelector('#dropdown2');
+      normalDropdown = document.querySelector('#dropdownBubble');
 
       expect(dropdown2).toBeHidden('Should be hidden before dropdown is opened.');
 
-      normalDropdown.find('i').click();
+      click(normalDropdown.querySelector('i'));
 
       setTimeout(function() {
         expect(dropdown2).toBeVisible('Should be shown after dropdown is opened.');
@@ -68,12 +74,12 @@ describe("Dropdown Plugin", function () {
     });
 
     it("hovered should destroy itself", function (done) {
-      var dropdownTrigger = $('#dropdownDestroyTrigger');
-      $(dropdownTrigger).dropdown('destroy');
-      $(dropdownTrigger).dropdown({ hover: true });
+      let dropdownTrigger = document.querySelector('#dropdownDestroyTrigger');
+      M.Dropdown.getInstance(dropdownTrigger).destroy();
+      M.Dropdown.init(dropdownTrigger, { hover: true });
 
       expect(function() {
-        $(dropdownTrigger).dropdown('destroy');
+        M.Dropdown.getInstance(dropdownTrigger).destroy();
       }).not.toThrow();
 
       setTimeout(function() {
