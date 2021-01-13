@@ -26,13 +26,17 @@ describe( 'Toasts:', function() {
       }, toastInDuration);
     });
 
-    it('Opens a toast with HTML content', function() {
+    it('Opens a toast with HTML content', function(done) {
       let toastContent = document.createElement("span");
       toastContent.innerText = 'I am toast content';
       M.toast({html: toastContent.outerHTML, displayLength: 400});
       let toastSpan = document.querySelector('.toast span');
       expect(toastSpan.innerText).toBe('I am toast content');
       expect(toastSpan.innerText).not.toBe('I am toast');
+
+      setTimeout(function() {
+        done();
+      }, 490);
     });
 
     it('Toasts should call the callback function when dismissed', function(done) {
@@ -48,11 +52,15 @@ describe( 'Toasts:', function() {
       }, 500);
     });
 
-    it('Apply two custom class to a toast', function() {
+    it('Apply two custom class to a toast', function(done) {
       M.toast({html:'Hi', displayLength: 400, classes: 'round flat'});
       let toastFlat = document.querySelectorAll('.toast.round.flat');
       expect(toastFlat.length).toBe(1,
           'because the class parameter was passed with two classes');
+      
+      setTimeout(function() {
+        done();
+      }, 490);
     });
 
   });
