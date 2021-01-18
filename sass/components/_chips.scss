@@ -84,6 +84,12 @@
   width: 92%;
   width: calc(100% - 3rem);
 }
+// Form suffix
+.suffix ~ .chips {
+  margin-right: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
 .chips:empty ~ label  {
   font-size: 0.8rem;
   transform: translateY(-140%);

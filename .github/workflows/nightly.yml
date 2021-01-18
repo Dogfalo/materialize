@@ -1,0 +1,27 @@
+name: CI
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Run tests
+      run: |
+        npm i
+        npm run test
+
+    - name: Build
+      run: |
+        npm run release
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: dist/

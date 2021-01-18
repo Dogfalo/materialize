@@ -442,3 +442,13 @@ M.throttle = function(func, wait, options) {
     return result;
   };
 };
+
+/* Feature detection */
+var passiveIfSupported = false;
+try {
+    window.addEventListener("test", null, 
+        Object.defineProperty({}, "passive", {
+            get: function() { passiveIfSupported = { passive: false }; }
+        }
+    ));
+} catch(err) {}

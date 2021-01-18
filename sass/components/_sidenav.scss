@@ -5,9 +5,7 @@
   top: 0;
   margin: 0;
   transform: translateX(-100%);
-  height: 100%;
-  height: calc(100% + 60px);
-  height: -moz-calc(100%); //Temporary Firefox Fix
+  height: 100vh;
   padding-bottom: 60px;
   background-color: $sidenav-bg-color;
   z-index: 999;
