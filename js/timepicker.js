@@ -210,7 +210,8 @@
       this.modalEl.id = 'modal-' + this.id;
 
       // Append popover to input by default
-      let containerEl = document.querySelector(this.options.container);
+      const optEl = this.options.container;
+      let containerEl = (optEl instanceof HTMLElement?optEl:document.querySelector(optEl));
       if (this.options.container && !!containerEl) {
         this.$modalEl.appendTo(containerEl);
       } else {
