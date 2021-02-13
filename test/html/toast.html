@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <title>Materialize - Documentation</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <link rel="icon" href="../../images/favicon/favicon-32x32.png" sizes="32x32">
+
+    <!-- Android 5 Chrome Color -->
+    <meta name="theme-color" content="#EE6E73">
+
+    <link href="../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="../../css/prism.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div class="container">
+        <a onclick="toast1()" class="btn">Toast with text!</a>
+        <a onclick="toast2()" class="btn">Toast with html!</a>
+        <a onclick="toast3()" class="btn">Toast with unsafeHTML!</a>
+        <a onclick="toast4()" class="btn">Toast with unsafeHTML and text!</a>
+        
+
+    </div>
+
+    <!--  Scripts-->
+    <script src="../../bin/materialize.js"></script>
+    <script type="text/javascript">
+    function toast1(){
+        text = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+        M.toast({text: text});
+    }
+    function toast2(){
+        text = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+        M.toast({html: text});
+    }
+    function toast3(){
+        text = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+        M.toast({unsafeHTML: text});
+    }
+    function toast4(){
+        text = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+        M.toast({unsafeHTML: text, text: text});
+    }
+    </script>
+</body>
+
+</html>
