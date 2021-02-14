@@ -178,7 +178,7 @@
         title: 'JavaScript > Auto Init',
         tags: 'auto init javascript js',
         body: 'Auto Init allows you to initialize all of the Materialize Components with a single function call. It is important to note that you cannot pass in options using this method.'
-      }{
+      }, {
         href: 'carousel.html',
         title: 'JavaScript > Carousel',
         tags: 'carousel javascript js',
