@@ -20,7 +20,10 @@ module.exports = function(grunt) {
                 width: 1400,
                 height: 735
             }
-          }
+          },
+          sandboxArgs: {
+            args: ['--headless', '--no-sandbox']
+          },
         }
       }
     },
