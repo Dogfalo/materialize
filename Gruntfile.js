@@ -9,14 +9,21 @@ module.exports = function(grunt) {
         src: ['bin/materialize.js'],
         options: {
           vendor: [
-            'node_modules/jquery/dist/jquery.min.js',
-            'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
+            'node_modules/jquery/dist/jquery.min.js'
           ],
           styles: 'bin/materialize.css',
           specs: 'tests/spec/**/*Spec.js',
           helpers: 'tests/spec/helper.js',
-          keepRunner: true
-          //helpers: 'test/spec/*.js'
+          keepRunner: true,
+          page: {
+            viewportSize: {
+                width: 1400,
+                height: 735
+            }
+          },
+          sandboxArgs: {
+            args: ['--headless', '--no-sandbox']
+          },
         }
       }
     },
@@ -105,7 +112,8 @@ module.exports = function(grunt) {
           'transform-es2015-block-scoping',
           'transform-es2015-classes',
           'transform-es2015-template-literals',
-          'transform-es2015-object-super'
+          'transform-es2015-object-super',
+          'babel-plugin-transform-object-rest-spread'
         ]
       },
       bin: {
@@ -605,7 +613,27 @@ module.exports = function(grunt) {
           ignore: true
         }
       }
+    },
+
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          protocol: 'http',
+          middleware: function(connect, options, middlewares) {
+            middlewares.unshift(function(req, res, next){
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Credentials', true);
+              res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+              res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+              next();
+            });
+            return middlewares
+          }
+        }
+      }
     }
+
   };
 
   grunt.initConfig(config);
@@ -628,6 +656,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // define the tasks
   grunt.registerTask('release', [
@@ -666,5 +695,16 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('monitor', ['concurrent:monitor']);
-  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'jasmine']);
+  grunt.registerTask('travis', ['js_compile', 'sass_compile', 'connect', 'jasmine']);
+  grunt.registerTask('jas_test', ['connect', 'jasmine']);
+  grunt.registerTask('test_repeat', function(){
+    const tasks = ['connect'];
+    const n = 30;
+    for (let i = 0; i < n; i++) {
+      tasks.push('jasmine');
+    }
+
+    grunt.task.run(tasks);
+
+  });
 };

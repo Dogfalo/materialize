@@ -1,7 +1,10 @@
 describe("Carousel", function () {
 
-  beforeEach(function() {
-    loadFixtures('carousel/carouselFixture.html');
+  beforeEach(async function() {
+    await XloadFixtures(['carousel/carouselFixture.html']);
+  });
+  afterEach(function(){
+    XunloadFixtures();
   });
 
   describe("carousel plugin", function () {
@@ -10,17 +13,19 @@ describe("Carousel", function () {
     // });
 
     it("No wrap next and prev should not overflow", function (done) {
-      $noWrap = $('#slider-no-wrap').carousel({ noWrap: true });
-      $noWrap.carousel('prev');
+      let noWrap = M.Carousel.init(
+        document.querySelector('#slider-no-wrap'), { noWrap: true }
+      );
+      noWrap.prev();
 
-      expect($noWrap[0].M_Carousel.center).toEqual(0, 'Prev should do nothing');
+      expect(noWrap.center).toEqual(0, 'Prev should do nothing');
 
-      $noWrap.carousel('set', 3);
+      noWrap.set(3);
       setTimeout(function() {
-        $noWrap.carousel('next');
+        noWrap.next();
 
         setTimeout(function() {
-          expect($noWrap[0].M_Carousel.center).toEqual(3, 'Next should do nothing');
+          expect(noWrap.center).toEqual(3, 'Next should do nothing');
 
           done();
         }, 400);

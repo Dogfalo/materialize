@@ -9,16 +9,16 @@ describe( 'Toasts:', function() {
       M.toast({html: 'Test toast', displayLength: toastInDuration});
 
       setTimeout(function() {
-        toast = $('.toast');
+        toast = document.querySelectorAll('.toast');
         expect(toast.length).toBe(1);
-        expect(toast).toBeVisible();
-        expect(toast.text()).toBe('Test toast');
+        expect(toast[0]).toBeVisible();
+        expect(toast[0].innerText).toBe('Test toast');
         setTimeout(function() {
-          toast = $('.toast');
-          expect(toast).toBeVisible();
+          toast = document.querySelectorAll('.toast');
+          expect(toast[0]).toBeVisible();
           expect(toast.length).toBe(1, 'because toast duration still on going');
           setTimeout(function() {
-            toast = $('.toast');
+            toast = document.querySelectorAll('.toast');
             expect(toast.length).toBe(0, 'because toast should be removed by now');
             done();
           }, toastOutDuration + 90); // .1s leeway is given
@@ -26,17 +26,22 @@ describe( 'Toasts:', function() {
       }, toastInDuration);
     });
 
-    it('Opens a toast with HTML content', function() {
-      var $toastContent = $('<span>I am toast content</span>');
-      M.toast({html: $toastContent, displayLength: 400});
-      toast = $('.toast');
-      expect(toast.first('span').text()).toBe('I am toast content');
-      expect(toast.first('span').text()).not.toBe('I am toast');
+    it('Opens a toast with HTML content', function(done) {
+      let toastContent = document.createElement("span");
+      toastContent.innerText = 'I am toast content';
+      M.toast({html: toastContent.outerHTML, displayLength: 400});
+      let toastSpan = document.querySelector('.toast span');
+      expect(toastSpan.innerText).toBe('I am toast content');
+      expect(toastSpan.innerText).not.toBe('I am toast');
+
+      setTimeout(function() {
+        done();
+      }, 490);
     });
 
     it('Toasts should call the callback function when dismissed', function(done) {
-      var boolObj = {wasCalled: false};
-      var callback = function() {
+      let boolObj = {wasCalled: false};
+      let callback = function() {
         boolObj.wasCalled = true;
       };
       M.toast({html: 'I am a toast', displayLength:100, completeCallback: callback});
@@ -47,11 +52,15 @@ describe( 'Toasts:', function() {
       }, 500);
     });
 
-    it('Apply two custom class to a toast', function() {
+    it('Apply two custom class to a toast', function(done) {
       M.toast({html:'Hi', displayLength: 400, classes: 'round flat'});
-      toast = $('.toast');
-      expect(toast.closest('.round.flat').length).toBe(1,
+      let toastFlat = document.querySelectorAll('.toast.round.flat');
+      expect(toastFlat.length).toBe(1,
           'because the class parameter was passed with two classes');
+      
+      setTimeout(function() {
+        done();
+      }, 490);
     });
 
   });
