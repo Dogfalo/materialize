@@ -253,11 +253,6 @@
         title: 'Mobile',
         tags: 'mobile',
         body: 'Mobile only interactive components.'
-      }, {
-        href: 'showcase.html',
-        title: 'Showcase',
-        tags: 'showcase',
-        body: 'Here is our showcase of websites that use materialize.'
       }
     ];
 

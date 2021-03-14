@@ -20,7 +20,7 @@
     "test": "grunt travis",
     "release": "grunt release",
     "precommit": "lint-staged",
-    "docs": "grunt jade"
+    "docs": "grunt docs"
   },
   "lint-staged": {
     "js/*.js": [

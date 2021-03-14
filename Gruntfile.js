@@ -59,7 +59,7 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss'
+          'docs/css/ghpages-materialize.css': 'sass/ghpages-materialize.scss'
         }
       },
 
@@ -97,7 +97,7 @@ module.exports = function(grunt) {
         src: 'dist/css/materialize.min.css'
       },
       gh: {
-        src: 'css/ghpages-materialize.css'
+        src: 'docs/css/ghpages-materialize.css'
       },
       bin: {
         src: 'bin/materialize.css'
@@ -399,7 +399,6 @@ module.exports = function(grunt) {
           'docs/sass.html': 'jade/sass.jade',
           'docs/getting-started.html': 'jade/getting-started.jade',
           'docs/mobile.html': 'jade/mobile.jade',
-          'docs/showcase.html': 'jade/showcase.jade',
           'docs/parallax.html': 'jade/parallax.jade',
           'docs/parallax-demo.html': 'jade/parallax-demo.jade',
           'docs/typography.html': 'jade/typography.jade',
@@ -435,7 +434,6 @@ module.exports = function(grunt) {
           'docs/pulse.html': 'jade/pulse.jade',
           'docs/pushpin-demo.html': 'jade/pushpin-demo.jade',
           'docs/css-transitions.html': 'jade/css-transitions.jade',
-          'docs/themes.html': 'jade/themes.jade',
           'docs/404.html': 'jade/404.jade',
           'docs/autocomplete.html': 'jade/autocomplete.jade',
           'docs/checkboxes.html': 'jade/checkboxes.jade',
@@ -446,7 +444,6 @@ module.exports = function(grunt) {
           'docs/select.html': 'jade/select.jade',
           'docs/switches.html': 'jade/switches.jade',
           'docs/text-inputs.html': 'jade/text-inputs.jade',
-          'docs/support-us.html': 'jade/support-us.jade',
           'docs/floating-action-button.html': 'jade/floating-action-button.jade',
           'docs/auto-init.html': 'jade/auto-init.jade'
         }
@@ -577,6 +574,16 @@ module.exports = function(grunt) {
             to: '"version": "' + grunt.option('newver')
           }
         ]
+      },
+      docs: {
+        src: ['.gitignore'],
+        overwrite: true,
+        replacements: [
+          {
+            from: '/docs/*.html',
+            to: ''
+          }
+        ]
       }
     },
 
@@ -684,8 +691,7 @@ module.exports = function(grunt) {
     'replace:package_json',
     'rename:rename_src',
     'rename:rename_compiled',
-    'clean:temp',
-    'copy:docs'
+    'clean:temp'
   ]);
 
   grunt.task.registerTask('configureBabel', 'configures babel options', function() {
@@ -715,4 +721,5 @@ module.exports = function(grunt) {
     grunt.task.run(tasks);
 
   });
+  grunt.registerTask('docs', ['js_compile', 'copy:docs', 'sass:gh',  'postcss:gh', 'jade', 'replace:docs']);
 };
