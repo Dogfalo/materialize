@@ -258,12 +258,10 @@
       }
     });
 
-    if (!SDK) {
-      $(document).on('mouseup touchend', range_wrapper, function() {
+    (config.$squirroBody || $('.squirro-body')).on('mouseup touchend', range_wrapper, function() {
         range_mousedown = false;
         $(this).removeClass('active');
-      });
-    }
+    });
 
     $(document).on('input mousemove touchmove', range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
