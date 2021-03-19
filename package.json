@@ -19,7 +19,8 @@
     "dev": "grunt monitor",
     "test": "grunt travis",
     "release": "grunt release",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "docs": "grunt docs"
   },
   "lint-staged": {
     "js/*.js": [
@@ -42,6 +43,7 @@
     "grunt-contrib-compress": "^1.4.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^3.0.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jasmine": "^2.2.0",
     "grunt-contrib-uglify": "^3.0.1",

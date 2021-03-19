@@ -12,14 +12,14 @@
   <a href="https://materializecss.com/"><strong>-- Browse the docs --</strong></a>
   <br>
   <br>
-  <a href="https://travis-ci.com/materializecss/materialize">
-    <img src="https://travis-ci.com/materializecss/materialize.svg?branch=v1-dev" alt="Travis CI badge">
+  <a href="https://github.com/materializecss/materialize/actions/">
+    <img src="https://github.com/materializecss/materialize/actions/workflows/nightly.yml/badge.svg" alt="GitHub Actions badge">
   </a>
-  <a href="https://badge.fury.io/js/materialize-css">
-    <img src="https://badge.fury.io/js/materialize-css.svg" alt="npm version badge">
+  <a href="https://www.npmjs.com/package/@materializecss/materialize">
+    <img src="https://badge.fury.io/js/%40materializecss%2Fmaterialize.svg" alt="npm version badge">
   </a>
-  <a href="https://cdnjs.com/libraries/materialize">
-    <img src="https://img.shields.io/cdnjs/v/materialize.svg" alt="CDNJS version badge">
+  <a href="https://www.jsdelivr.com/package/npm/@materializecss/materialize">
+    <img src="https://data.jsdelivr.com/v1/package/npm/@materializecss/materialize/badge" alt="jsDelivr version badge">
   </a>
   <a href="https://david-dm.org/materializecss/materialize">
     <img src="https://david-dm.org/materializecss/materialize/status.svg" alt="dependencies Status badge">
@@ -94,4 +94,4 @@ We use Jasmine as our testing framework and we're trying to write a robust test 
 Check out the [CONTRIBUTING document](CONTRIBUTING.md) in the root of the repository to learn how you can contribute. You can also browse the [help-wanted](https://github.com/materializecss/materialize/labels/help-wanted) tag in our issue tracker to find things to do.
 
 ## Copyright and license
-Code Copyright 2018 Materialize. Code released under the MIT license.
+Code Copyright 2021 Materialize. Code released under the MIT license.

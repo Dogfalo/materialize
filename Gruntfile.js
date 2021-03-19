@@ -59,7 +59,7 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'css/ghpages-materialize.css': 'sass/ghpages-materialize.scss'
+          'docs/css/ghpages-materialize.css': 'sass/ghpages-materialize.scss'
         }
       },
 
@@ -97,7 +97,7 @@ module.exports = function(grunt) {
         src: 'dist/css/materialize.min.css'
       },
       gh: {
-        src: 'css/ghpages-materialize.css'
+        src: 'docs/css/ghpages-materialize.css'
       },
       bin: {
         src: 'bin/materialize.css'
@@ -393,62 +393,59 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'index.html': 'jade/index.jade',
-          'icons.html': 'jade/icons.jade',
-          'about.html': 'jade/about.jade',
-          'sass.html': 'jade/sass.jade',
-          'getting-started.html': 'jade/getting-started.jade',
-          'mobile.html': 'jade/mobile.jade',
-          'showcase.html': 'jade/showcase.jade',
-          'parallax.html': 'jade/parallax.jade',
-          'parallax-demo.html': 'jade/parallax-demo.jade',
-          'typography.html': 'jade/typography.jade',
-          'color.html': 'jade/color.jade',
-          'shadow.html': 'jade/shadow.jade',
-          'grid.html': 'jade/grid.jade',
-          'media-css.html': 'jade/media-css.jade',
-          'table.html': 'jade/table.jade',
-          'helpers.html': 'jade/helpers.jade',
-          'buttons.html': 'jade/buttons.jade',
-          'navbar.html': 'jade/navbar.jade',
-          'cards.html': 'jade/cards.jade',
-          'preloader.html': 'jade/preloader.jade',
-          'collections.html': 'jade/collections.jade',
-          'badges.html': 'jade/badges.jade',
-          'footer.html': 'jade/footer.jade',
-          'modals.html': 'jade/modals.jade',
-          'dropdown.html': 'jade/dropdown.jade',
-          'tabs.html': 'jade/tabs.jade',
-          'toasts.html': 'jade/toasts.jade',
-          'tooltips.html': 'jade/tooltips.jade',
-          'sidenav.html': 'jade/sidenav.jade',
-          'pushpin.html': 'jade/pushpin.jade',
-          'waves.html': 'jade/waves.jade',
-          'media.html': 'jade/media.jade',
-          'collapsible.html': 'jade/collapsible.jade',
-          'scrollspy.html': 'jade/scrollspy.jade',
-          'fullscreen-slider-demo.html': 'jade/fullscreen-slider-demo.jade',
-          'pagination.html': 'jade/pagination.jade',
-          'breadcrumbs.html': 'jade/breadcrumbs.jade',
-          'carousel.html': 'jade/carousel.jade',
-          'feature-discovery.html': 'jade/feature-discovery.jade',
-          'pulse.html': 'jade/pulse.jade',
-          'pushpin-demo.html': 'jade/pushpin-demo.jade',
-          'css-transitions.html': 'jade/css-transitions.jade',
-          'themes.html': 'jade/themes.jade',
-          '404.html': 'jade/404.jade',
-          'autocomplete.html': 'jade/autocomplete.jade',
-          'checkboxes.html': 'jade/checkboxes.jade',
-          'chips.html': 'jade/chips.jade',
-          'pickers.html': 'jade/pickers.jade',
-          'radio-buttons.html': 'jade/radio-buttons.jade',
-          'range.html': 'jade/range.jade',
-          'select.html': 'jade/select.jade',
-          'switches.html': 'jade/switches.jade',
-          'text-inputs.html': 'jade/text-inputs.jade',
-          'support-us.html': 'jade/support-us.jade',
-          'floating-action-button.html': 'jade/floating-action-button.jade',
-          'auto-init.html': 'jade/auto-init.jade'
+          'docs/index.html': 'jade/index.jade',
+          'docs/icons.html': 'jade/icons.jade',
+          'docs/about.html': 'jade/about.jade',
+          'docs/sass.html': 'jade/sass.jade',
+          'docs/getting-started.html': 'jade/getting-started.jade',
+          'docs/mobile.html': 'jade/mobile.jade',
+          'docs/parallax.html': 'jade/parallax.jade',
+          'docs/parallax-demo.html': 'jade/parallax-demo.jade',
+          'docs/typography.html': 'jade/typography.jade',
+          'docs/color.html': 'jade/color.jade',
+          'docs/shadow.html': 'jade/shadow.jade',
+          'docs/grid.html': 'jade/grid.jade',
+          'docs/media-css.html': 'jade/media-css.jade',
+          'docs/table.html': 'jade/table.jade',
+          'docs/helpers.html': 'jade/helpers.jade',
+          'docs/buttons.html': 'jade/buttons.jade',
+          'docs/navbar.html': 'jade/navbar.jade',
+          'docs/cards.html': 'jade/cards.jade',
+          'docs/preloader.html': 'jade/preloader.jade',
+          'docs/collections.html': 'jade/collections.jade',
+          'docs/badges.html': 'jade/badges.jade',
+          'docs/footer.html': 'jade/footer.jade',
+          'docs/modals.html': 'jade/modals.jade',
+          'docs/dropdown.html': 'jade/dropdown.jade',
+          'docs/tabs.html': 'jade/tabs.jade',
+          'docs/toasts.html': 'jade/toasts.jade',
+          'docs/tooltips.html': 'jade/tooltips.jade',
+          'docs/sidenav.html': 'jade/sidenav.jade',
+          'docs/pushpin.html': 'jade/pushpin.jade',
+          'docs/waves.html': 'jade/waves.jade',
+          'docs/media.html': 'jade/media.jade',
+          'docs/collapsible.html': 'jade/collapsible.jade',
+          'docs/scrollspy.html': 'jade/scrollspy.jade',
+          'docs/fullscreen-slider-demo.html': 'jade/fullscreen-slider-demo.jade',
+          'docs/pagination.html': 'jade/pagination.jade',
+          'docs/breadcrumbs.html': 'jade/breadcrumbs.jade',
+          'docs/carousel.html': 'jade/carousel.jade',
+          'docs/feature-discovery.html': 'jade/feature-discovery.jade',
+          'docs/pulse.html': 'jade/pulse.jade',
+          'docs/pushpin-demo.html': 'jade/pushpin-demo.jade',
+          'docs/css-transitions.html': 'jade/css-transitions.jade',
+          'docs/404.html': 'jade/404.jade',
+          'docs/autocomplete.html': 'jade/autocomplete.jade',
+          'docs/checkboxes.html': 'jade/checkboxes.jade',
+          'docs/chips.html': 'jade/chips.jade',
+          'docs/pickers.html': 'jade/pickers.jade',
+          'docs/radio-buttons.html': 'jade/radio-buttons.jade',
+          'docs/range.html': 'jade/range.jade',
+          'docs/select.html': 'jade/select.jade',
+          'docs/switches.html': 'jade/switches.jade',
+          'docs/text-inputs.html': 'jade/text-inputs.jade',
+          'docs/floating-action-button.html': 'jade/floating-action-button.jade',
+          'docs/auto-init.html': 'jade/auto-init.jade'
         }
       }
     },
@@ -577,6 +574,16 @@ module.exports = function(grunt) {
             to: '"version": "' + grunt.option('newver')
           }
         ]
+      },
+      docs: {
+        src: ['.gitignore'],
+        overwrite: true,
+        replacements: [
+          {
+            from: '/docs/*.html',
+            to: ''
+          }
+        ]
       }
     },
 
@@ -588,7 +595,7 @@ module.exports = function(grunt) {
           banner:
             '/*!\n * Materialize v' +
             grunt.option('newver') +
-            ' (http://materializecss.com)\n * Copyright 2014-2017 Materialize\n * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)\n */',
+            ' (http://materializecss.com)\n * Copyright 2014-2021 Materialize\n * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)\n */',
           linebreak: true
         },
         files: {
@@ -632,6 +639,12 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+
+    copy: {
+      docs: {
+        src: 'bin/materialize.js', dest: 'docs/js/materialize.js'
+      }
     }
 
   };
@@ -657,6 +670,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // define the tasks
   grunt.registerTask('release', [
@@ -707,4 +721,5 @@ module.exports = function(grunt) {
     grunt.task.run(tasks);
 
   });
+  grunt.registerTask('docs', ['js_compile', 'copy:docs', 'sass:gh',  'postcss:gh', 'jade', 'replace:docs']);
 };

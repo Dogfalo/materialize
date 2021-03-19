@@ -38,13 +38,13 @@ temp/
 # Jasmine SpecRunner
 _SpecRunner.html
 
-# Ignore .html files in root
-/*.html
-!fab-toolbar-demo.html
-
 # Ignore compiled files
 css/ghpages-materialize.css
 bin/
 
 # Ignore lock
 yarn.lock
+
+# Compiled docs
+/docs/*.html
+!/docs/fab-toolbar-demo.html
