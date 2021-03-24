@@ -1,5 +1,5 @@
 /*!
- * Materialize 1.0.0 (http://materializecss.com)
+ * Materialize 1.0.0 (https://materializecss.github.io/materialize)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)
  */
