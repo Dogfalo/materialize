@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://materializecss.com/">
-    <img src="https://materializecss.com/res/materialize.svg" width="150">
+  <a href="https://materializecss.github.io/materialize/">
+    <img src="https://materializecss.github.io/materialize/res/materialize.svg" width="150">
   </a>
 </p>
 
@@ -9,7 +9,7 @@
 <p align="center">
   Materialize, a CSS Framework based on material design.
   <br>
-  <a href="https://materializecss.com/"><strong>-- Browse the docs --</strong></a>
+  <a href="https://materializecss.github.io/materialize/"><strong>-- Browse the docs --</strong></a>
   <br>
   <br>
   <a href="https://github.com/materializecss/materialize/actions/">
@@ -43,7 +43,7 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Quickstart:
-Read the [getting started guide](https://materializecss.com/getting-started.html) for more information on how to use materialize.
+Read the [getting started guide](https://materializecss.github.io/materialize/getting-started.html) for more information on how to use materialize.
 
 - [Download the latest release](https://github.com/materializecss/materialize/releases/latest) of materialize directly from GitHub. ([Beta](https://github.com/materializecss/materialize/releases/))
 - Clone the repo: `git clone https://github.com/materializecss/materialize.git` (Beta: `git clone -b v1-dev https://github.com/materializecss/materialize.git`)
@@ -51,7 +51,7 @@ Read the [getting started guide](https://materializecss.com/getting-started.html
 - Install with [npm](https://www.npmjs.com): `npm install @materializecss/materialize` (Beta: `npm install @materializecss/materialize@next`)
 
 ## Documentation
-The documentation can be found at <https://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
+The documentation can be found at <https://materializecss.github.io/materialize>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
 
 ### Running documentation locally
 Run these commands to set up the documentation:
