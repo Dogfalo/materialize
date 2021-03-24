@@ -97,6 +97,47 @@ describe("Autocomplete Plugin", function () {
         done();
       }, 200);
     });
+
+    it("should select option on click", function(done) {
+      let normal = document.querySelector('#normal-autocomplete');
+
+      M.Autocomplete.init(normal, { data: { 'Value A': null }, minLength: 0 });
+
+      openDropdownAndSelectFirstOption(normal, () => {
+        expect(normal.value).toEqual('Value A', 'Value should equal chosen option.');
+        done();
+      });
+    });
+
+    it("should select proper options on both autocompletes", function(done) {
+      let normal = document.querySelector('#normal-autocomplete');
+      let limited = document.querySelector('#limited-autocomplete');
+      M.Autocomplete.init(normal, { data: { 'Value A': null }, minLength: 0 });
+      M.Autocomplete.init(limited, { data: { 'Value B': null }, minLength: 0 });
+
+      openDropdownAndSelectFirstOption(normal, () => {
+        openDropdownAndSelectFirstOption(limited, () => {
+          expect(normal.value).toEqual('Value A', 'Value should equal chosen option.');
+          expect(limited.value).toEqual('Value B', 'Value should equal chosen option.');
+          done();
+        });
+      });
+    });
   });
+
+  function openDropdownAndSelectFirstOption(autocomplete, onFinish) {
+    click(autocomplete);
+
+    setTimeout(function() {
+      let firstOption = autocomplete.parentNode.querySelector('.autocomplete-content li');
+      click(firstOption);
+
+      setTimeout(function() {
+        onFinish();
+      }, 300);
+
+    }, 200);
+  }
+
 
 });

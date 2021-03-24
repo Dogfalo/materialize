@@ -161,6 +161,7 @@
 
       // Initialize dropdown
       let dropdownOptions = $.extend(
+        {},
         Autocomplete.defaults.dropdownOptions,
         this.options.dropdownOptions
       );
@@ -305,7 +306,7 @@
       //custom filters may return results where the string does not match any part
       if (start == -1 || end == -1) {
         return [label, '', ''];
-      } 
+      }
       return [label.slice(0, start), label.slice(start, end + 1), label.slice(end + 1)];
     }
 
@@ -389,7 +390,7 @@
         const item = document.createElement('li');
         if (!!entry.data) {
           const img = document.createElement('img');
-          img.classList.add("right", "circle");
+          img.classList.add('right', 'circle');
           img.src = entry.data;
           item.appendChild(img);
         }
@@ -399,11 +400,11 @@
         if (this.options.allowUnsafeHTML) {
           s.innerHTML = parts[0] + '<span class="highlight">' + parts[1] + '</span>' + parts[2];
         } else {
-          s.appendChild(document.createTextNode(parts[0]))
-          if (!!parts[1]){
+          s.appendChild(document.createTextNode(parts[0]));
+          if (!!parts[1]) {
             const highlight = document.createElement('span');
             highlight.textContent = parts[1];
-            highlight.classList.add("highlight");
+            highlight.classList.add('highlight');
             s.appendChild(highlight);
             s.appendChild(document.createTextNode(parts[2]));
           }

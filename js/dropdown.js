@@ -355,7 +355,9 @@
       if (!!this.options.container) {
         $(this.options.container).append(this.dropdownEl);
       } else if (containerEl) {
-        $(containerEl).append(this.dropdownEl);
+        if (!containerEl.contains(this.dropdownEl)) {
+          $(containerEl).append(this.dropdownEl);
+        }
       } else {
         this.$el.after(this.dropdownEl);
       }
