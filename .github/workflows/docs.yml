@@ -1,0 +1,26 @@
+name: Docs
+on:
+  push:
+    branches:
+      - v1-dev
+
+jobs:
+    docs:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@master
+
+        - name: Generate docs
+          run: |
+            npm i
+            npm run docs
+
+        - name: Deploy to GitHub Pages
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./docs
+            exclude_assets: node_modules
+            user_name: 'github-actions[bot]'
+            user_email: 'github-actions[bot]@users.noreply.github.com'
+
