@@ -595,7 +595,7 @@ module.exports = function(grunt) {
           banner:
             '/*!\n * Materialize v' +
             grunt.option('newver') +
-            ' (http://materializecss.com)\n * Copyright 2014-2021 Materialize\n * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)\n */',
+            ' (https://materializecss.github.io/materialize)\n * Copyright 2014-2021 Materialize\n * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)\n */',
           linebreak: true
         },
         files: {

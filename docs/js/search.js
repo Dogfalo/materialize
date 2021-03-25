@@ -310,7 +310,7 @@
       var query = $(this).val();
       var results = window.index.search(query).slice(0, 6).map(function (result) {
         result = window.indexStore[result.ref];
-        return [result.title, "/" + result.href];
+        return [result.title, result.href];
       });
       renderResults(results);
     }));
