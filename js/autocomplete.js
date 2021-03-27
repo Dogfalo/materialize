@@ -269,6 +269,13 @@
             .children('li')
             .eq(this.activeIndex);
           this.$active.addClass('active');
+
+          // Focus selected
+          this.container.children[this.activeIndex].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'nearest'
+          });
         }
       }
     }
