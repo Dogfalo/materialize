@@ -322,7 +322,7 @@ ul.staggered-list li {
   }
 }
 .hide-on-med-only {
-  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+  @media only screen and (min-width: $small-screen-up) and (max-width: $medium-screen) {
     display: none !important;
   }
 }
@@ -347,7 +347,7 @@ ul.staggered-list li {
   }
 }
 .show-on-medium {
-  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+  @media only screen and (min-width: $small-screen-up) and (max-width: $medium-screen) {
     display: block !important;
   }
 }

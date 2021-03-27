@@ -10,11 +10,11 @@ html{
     font-size: 14px;
   }
 
-  @media only screen and (min-width: $medium-screen) {
+  @media only screen and (min-width: $medium-screen-up) {
     font-size: 14.5px;
   }
 
-  @media only screen and (min-width: $large-screen) {
+  @media only screen and (min-width: $large-screen-up) {
     font-size: 15px;
   }
 
