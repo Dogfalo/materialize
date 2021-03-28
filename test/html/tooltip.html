@@ -25,8 +25,10 @@
 <body>
 
     <div class="container">
-        <a class="btn tooltipped" data-position="bottom" data-tooltip="I am a tooltip">Hover me!</a>
-        <a class="btn tooltipped" data-position="bottom" data-tooltip="<span class='color: red'>I am a tooltip</span>">Hover me!</a>
+        <a class="btn tooltipped" data-position="bottom">unsafeHTML</a>
+        <a class="btn tooltipped" data-position="bottom">html</a>
+        <a class="btn tooltipped" data-position="bottom">text</a>
+        <a class="btn tooltipped" data-position="bottom" data-tooltip="<span class='color: red'>I am a tooltip</span>">data-tooltip</a>
     </div>
 
     <!--  Scripts-->
@@ -34,7 +36,10 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.tooltipped');
-            var instances = M.Tooltip.init(elems, {unsafeHTML: "<span class='color: red'>I am a tooltip</span>"});
+            var instances = M.Tooltip.init(elems[0], {unsafeHTML: "<span class='color: red'>I am a tooltip</span>"});
+            var instances = M.Tooltip.init(elems[1], {html: "<span class='color: red'>I am a tooltip</span>"});
+            var instances = M.Tooltip.init(elems[2], {text: "<span class='color: red'>I am a tooltip</span>"});
+            var instances = M.Tooltip.init(elems[3]);
         });
     </script>
 </body>

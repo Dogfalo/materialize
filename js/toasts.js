@@ -21,8 +21,13 @@
        */
       this.options = $.extend({}, Toast.defaults, options);
       this.htmlMessage = this.options.html;
+      // Warn when using html
+      if (!!this.options.html)
+        console.warn(
+          'The html option is deprecated and will be removed in the future. See https://github.com/materializecss/materialize/pull/49'
+        );
       // If the new unsafeHTML is used, prefer that
-      if (!!this.options.unsafeHTML){
+      if (!!this.options.unsafeHTML) {
         this.htmlMessage = this.options.unsafeHTML;
       }
       this.message = this.options.text;
@@ -205,9 +210,11 @@
             this.htmlMessage !== null &&
             this.htmlMessage.nodeType === 1 &&
             typeof this.htmlMessage.nodeName === 'string'
-      ) {  //if the htmlMessage is an HTML node, append it directly
+      ) {
+        //if the htmlMessage is an HTML node, append it directly
         toast.appendChild(this.htmlMessage);
-      } else if (!!this.htmlMessage.jquery) { // Check if it is jQuery object, append the node
+      } else if (!!this.htmlMessage.jquery) {
+        // Check if it is jQuery object, append the node
         $(toast).append(this.htmlMessage[0]);
       } else {
         // Append as unsanitized html;
