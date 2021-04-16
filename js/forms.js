@@ -258,7 +258,7 @@
       }
     });
 
-    (config.$squirroBody || $('.squirro-body')).on('mouseup touchend', range_wrapper, function() {
+    (window.config.$squirroBody || $('.squirro-body')).on('mouseup touchend', range_wrapper, function() {
         range_mousedown = false;
         $(this).removeClass('active');
     });
