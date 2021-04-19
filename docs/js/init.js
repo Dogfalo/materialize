@@ -231,3 +231,19 @@
     });
   }); // end of document ready
 })(jQuery); // end of jQuery name space
+
+// Copy Button
+function copyText() {
+  const copiedText = document.getElementById('copiedText').textContent
+  const textArea = document.createElement('textArea');
+  textArea.textContent = copiedText;
+  document.body.append(textArea);
+  textArea.select();
+  textArea.setSelectionRange(0, 99999)
+  document.execCommand('copy');
+  document.getElementById('copyButton')
+  .insertAdjacentHTML('afterend',
+  `<span style="margin-left:10px; font-size:14px;">Copied!</span>`
+  )
+  // alert("Code copied to clipboard: " + textArea.value);
+  }
