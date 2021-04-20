@@ -258,9 +258,13 @@
       }
     });
 
-    (window.config.$squirroBody || $('.squirro-body')).on('mouseup touchend', range_wrapper, function() {
-        range_mousedown = false;
-        $(this).removeClass('active');
+    var $bodyElement = $('.squirro-body');
+    if (window && window.config && window.config.$squirroBody) {
+      $bodyElement = window.config.$squirroBody;
+    }
+    $bodyElement.on('mouseup touchend', range_wrapper, function() {
+      range_mousedown = false;
+      $(this).removeClass('active');
     });
 
     $(document).on('input mousemove touchmove', range_wrapper, function(e) {
