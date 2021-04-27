@@ -200,6 +200,7 @@
       // Calculating screen
       let windowWidth = window.innerWidth;
       let windowHeight = window.innerHeight;
+      let scrollBarWidth = windowWidth - document.documentElement.clientWidth;
       let centerX = windowWidth / 2;
       let centerY = windowHeight / 2;
       let isLeft = originLeft <= centerX;
@@ -235,7 +236,7 @@
       let tapTargetWrapperCssObj = {};
       tapTargetWrapperCssObj.top = isTop ? tapTargetTop + 'px' : '';
       tapTargetWrapperCssObj.right = isRight
-        ? windowWidth - tapTargetLeft - tapTargetWidth + 'px'
+        ? windowWidth - tapTargetLeft - tapTargetWidth - scrollBarWidth + 'px'
         : '';
       tapTargetWrapperCssObj.bottom = isBottom
         ? windowHeight - tapTargetTop - tapTargetHeight + 'px'
