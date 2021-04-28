@@ -1,6 +1,6 @@
 /*!
- * Materialize v1.0.0 (http://materializecss.com)
- * Copyright 2014-2017 Materialize
+ * Materialize v1.1.0-alpha (https://materializecss.github.io/materialize)
+ * Copyright 2014-2021 Materialize
  * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)
  */
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -1225,19 +1225,6 @@ M.escapeHash = function (hash) {
   return hash.replace(/(:|\.|\[|\]|,|=|\/)/g, '\\$1');
 };
 
-M.elementOrParentIsFixed = function (element) {
-  var $element = $(element);
-  var $checkElements = $element.add($element.parents());
-  var isFixed = false;
-  $checkElements.each(function () {
-    if ($(this).css('position') === 'fixed') {
-      isFixed = true;
-      return false;
-    }
-  });
-  return isFixed;
-};
-
 /**
  * @typedef {Object} Edges
  * @property {Boolean} top  If the top edge was exceeded
@@ -1466,6 +1453,16 @@ M.throttle = function (func, wait, options) {
     return result;
   };
 };
+
+/* Feature detection */
+var passiveIfSupported = false;
+try {
+  window.addEventListener("test", null, Object.defineProperty({}, "passive", {
+    get: function () {
+      passiveIfSupported = { passive: false };
+    }
+  }));
+} catch (err) {}
 ; /*
   v2.2.0
   2017 Julian Garnier
@@ -2290,11 +2287,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this9.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
-      if (!!_this9.options.container) {
-        $(_this9.options.container).append(_this9.dropdownEl);
-      } else {
-        _this9.$el.after(_this9.dropdownEl);
-      }
+      _this9._moveDropdown();
 
       _this9._makeDropdownFocusable();
       _this9._resetFilterQueryBound = _this9._resetFilterQuery.bind(_this9);
@@ -2498,6 +2491,8 @@ $jscomp.polyfill = function (e, r, p, m) {
           } while (newFocusedIndex < this.dropdownEl.children.length && newFocusedIndex >= 0);
 
           if (foundNewIndex) {
+            // Remove active class from old element
+            if (this.focusedIndex >= 0) this.dropdownEl.children[this.focusedIndex].classList.remove('active');
             this.focusedIndex = newFocusedIndex;
             this._focusFocusedItem();
           }
@@ -2564,6 +2559,22 @@ $jscomp.polyfill = function (e, r, p, m) {
           opacity: ''
         });
       }
+
+      // Move dropdown after container or trigger
+
+    }, {
+      key: "_moveDropdown",
+      value: function _moveDropdown(containerEl) {
+        if (!!this.options.container) {
+          $(this.options.container).append(this.dropdownEl);
+        } else if (containerEl) {
+          if (!containerEl.contains(this.dropdownEl)) {
+            $(containerEl).append(this.dropdownEl);
+          }
+        } else {
+          this.$el.after(this.dropdownEl);
+        }
+      }
     }, {
       key: "_makeDropdownFocusable",
       value: function _makeDropdownFocusable() {
@@ -2581,12 +2592,17 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_focusFocusedItem",
       value: function _focusFocusedItem() {
         if (this.focusedIndex >= 0 && this.focusedIndex < this.dropdownEl.children.length && this.options.autoFocus) {
-          this.dropdownEl.children[this.focusedIndex].focus();
+          this.dropdownEl.children[this.focusedIndex].classList.add('active');
+          this.dropdownEl.children[this.focusedIndex].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'nearest'
+          });
         }
       }
     }, {
       key: "_getDropdownPosition",
-      value: function _getDropdownPosition() {
+      value: function _getDropdownPosition(closestOverflowParent) {
         var offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
         var triggerBRect = this.el.getBoundingClientRect();
         var dropdownBRect = this.dropdownEl.getBoundingClientRect();
@@ -2603,9 +2619,6 @@ $jscomp.polyfill = function (e, r, p, m) {
           width: idealWidth
         };
 
-        // Countainer here will be closest ancestor with overflow: hidden
-        var closestOverflowParent = !!this.dropdownEl.offsetParent ? this.dropdownEl.offsetParent : this.dropdownEl.parentNode;
-
         var alignments = M.checkPossibleAlignments(this.el, closestOverflowParent, dropdownBounds, this.options.coverTrigger ? 0 : triggerBRect.height);
 
         var verticalAlignment = 'top';
@@ -2618,14 +2631,19 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (!alignments.top) {
           if (alignments.bottom) {
             verticalAlignment = 'bottom';
+
+            if (!this.options.coverTrigger) {
+              idealYPos -= triggerBRect.height;
+            }
           } else {
             this.isScrollable = true;
 
             // Determine which side has most space and cutoff at correct height
+            idealHeight -= 20; // Add padding when cutoff
             if (alignments.spaceOnTop > alignments.spaceOnBottom) {
               verticalAlignment = 'bottom';
               idealHeight += alignments.spaceOnTop;
-              idealYPos -= alignments.spaceOnTop;
+              idealYPos -= this.options.coverTrigger ? alignments.spaceOnTop - 20 : alignments.spaceOnTop - 20 + triggerBRect.height;
             } else {
               idealHeight += alignments.spaceOnBottom;
             }
@@ -2737,11 +2755,40 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_placeDropdown",
       value: function _placeDropdown() {
+        /**
+         * Get closest ancestor that satisfies the condition
+         * @param {Element} el  Element to find ancestors on
+         * @param {Function} condition  Function that given an ancestor element returns true or false
+         * @returns {Element} Return closest ancestor or null if none satisfies the condition
+         */
+        var getClosestAncestor = function (el, condition) {
+          var ancestor = el.parentNode;
+          while (ancestor !== null && !$(ancestor).is(document)) {
+            if (condition(ancestor)) {
+              return ancestor;
+            }
+            ancestor = ancestor.parentNode;
+          }
+          return null;
+        };
+
+        // Container here will be closest ancestor with overflow: hidden
+        var closestOverflowParent = getClosestAncestor(this.dropdownEl, function (ancestor) {
+          return $(ancestor).css('overflow') !== 'visible';
+        });
+        // Fallback
+        if (!closestOverflowParent) {
+          closestOverflowParent = !!this.dropdownEl.offsetParent ? this.dropdownEl.offsetParent : this.dropdownEl.parentNode;
+        }
+        if ($(closestOverflowParent).css('position') === 'static') $(closestOverflowParent).css('position', 'relative');
+
+        this._moveDropdown(closestOverflowParent);
+
         // Set width before calculating positionInfo
         var idealWidth = this.options.constrainWidth ? this.el.getBoundingClientRect().width : this.dropdownEl.getBoundingClientRect().width;
         this.dropdownEl.style.width = idealWidth + 'px';
 
-        var positionInfo = this._getDropdownPosition();
+        var positionInfo = this._getDropdownPosition(closestOverflowParent);
         this.dropdownEl.style.left = positionInfo.x + 'px';
         this.dropdownEl.style.top = positionInfo.y + 'px';
         this.dropdownEl.style.height = positionInfo.height + 'px';
@@ -4437,6 +4484,8 @@ $jscomp.polyfill = function (e, r, p, m) {
     exitDelay: 200,
     enterDelay: 0,
     html: null,
+    text: '',
+    unsafeHTML: null,
     margin: 5,
     inDuration: 250,
     outDuration: 200,
@@ -4495,14 +4544,28 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         var tooltipContentEl = document.createElement('div');
         tooltipContentEl.classList.add('tooltip-content');
-        tooltipContentEl.innerHTML = this.options.html;
+        this._setTooltipContent(tooltipContentEl);
+
         tooltipEl.appendChild(tooltipContentEl);
         document.body.appendChild(tooltipEl);
       }
     }, {
+      key: "_setTooltipContent",
+      value: function _setTooltipContent(tooltipContentEl) {
+        tooltipContentEl.textContent = this.options.text;
+        if (!!this.options.html) {
+          // Warn when using html
+          console.warn('The html option is deprecated and will be removed in the future. See https://github.com/materializecss/materialize/pull/49');
+          $(tooltipContentEl).append(this.options.html);
+        }
+        if (!!this.options.unsafeHTML) {
+          $(tooltipContentEl).append(this.options.unsafeHTML);
+        }
+      }
+    }, {
       key: "_updateTooltipContent",
       value: function _updateTooltipContent() {
-        this.tooltipEl.querySelector('.tooltip-content').innerHTML = this.options.html;
+        this._setTooltipContent(this.tooltipEl.querySelector('.tooltip-content'));
       }
     }, {
       key: "_setupEventHandlers",
@@ -4675,7 +4738,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         anim.remove(this.tooltipEl);
         anim({
           targets: this.tooltipEl,
-          opacity: 1,
+          opacity: this.options.opacity || 1,
           translateX: this.xMovement,
           translateY: this.yMovement,
           duration: this.options.inDuration,
@@ -4731,7 +4794,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         var positionOption = this.el.getAttribute('data-position');
 
         if (tooltipTextOption) {
-          attributeOptions.html = tooltipTextOption;
+          attributeOptions.text = tooltipTextOption;
         }
 
         if (positionOption) {
@@ -4772,19 +4835,60 @@ $jscomp.polyfill = function (e, r, p, m) {
   }
 })(cash, M.anime);
 ; /*!
-  * Waves v0.6.4
+  * Waves v0.7.6
   * http://fian.my.id/Waves
   *
-  * Copyright 2014 Alfiana E. Sibuea and other contributors
+  * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
   * Released under the MIT license
   * https://github.com/fians/Waves/blob/master/LICENSE
   */
 
-;(function (window) {
+;(function (window, factory) {
+  'use strict';
+
+  // AMD. Register as an anonymous module.  Wrap in function so we have access
+  // to root via `this`.
+
+  if (typeof define === 'function' && define.amd) {
+    define([], function () {
+      window.Waves = factory.call(window);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.Waves.init();
+      }, false);
+      return window.Waves;
+    });
+  }
+
+  // Node. Does not work with strict CommonJS, but only CommonJS-like
+  // environments that support module.exports, like Node.
+  else if (typeof exports === 'object') {
+      module.exports = factory.call(window);
+    }
+
+    // Browser globals.
+    else {
+        window.Waves = factory.call(window);
+        document.addEventListener('DOMContentLoaded', function () {
+          window.Waves.init();
+        }, false);
+      }
+})(typeof global === 'object' ? global : this, function () {
   'use strict';
 
   var Waves = Waves || {};
   var $$ = document.querySelectorAll.bind(document);
+  var toString = Object.prototype.toString;
+  var isTouchAvailable = 'ontouchstart' in window;
+
+  /* Feature detection */
+  var passiveIfSupported = false;
+  try {
+    window.addEventListener("test", null, Object.defineProperty({}, "passive", {
+      get: function () {
+        passiveIfSupported = { passive: false };
+      }
+    }));
+  } catch (err) {}
 
   // Find exact position of element
   function isWindow(obj) {
@@ -4793,6 +4897,29 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   function getWindow(elem) {
     return isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
+  }
+
+  function isObject(value) {
+    var type = typeof value;
+    return type === 'function' || type === 'object' && !!value;
+  }
+
+  function isDOMNode(obj) {
+    return isObject(obj) && obj.nodeType > 0;
+  }
+
+  function getWavesElements(nodes) {
+    var stringRepr = toString.call(nodes);
+
+    if (stringRepr === '[object String]') {
+      return $$(nodes);
+    } else if (isObject(nodes) && /^\[object (Array|HTMLCollection|NodeList|Object)\]$/.test(stringRepr) && nodes.hasOwnProperty('length')) {
+      return nodes;
+    } else if (isDOMNode(nodes)) {
+      return [nodes];
+    }
+
+    return [];
   }
 
   function offset(elem) {
@@ -4813,12 +4940,12 @@ $jscomp.polyfill = function (e, r, p, m) {
     };
   }
 
-  function convertStyle(obj) {
+  function convertStyle(styleObj) {
     var style = '';
 
-    for (var a in obj) {
-      if (obj.hasOwnProperty(a)) {
-        style += a + ':' + obj[a] + ';';
+    for (var prop in styleObj) {
+      if (styleObj.hasOwnProperty(prop)) {
+        style += prop + ':' + styleObj[prop] + ';';
       }
     }
 
@@ -4827,194 +4954,254 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   var Effect = {
 
-    // Effect delay
+    // Effect duration
     duration: 750,
 
-    show: function (e, element) {
+    // Effect delay (check for scroll before showing effect)
+    delay: 200,
+
+    show: function (e, element, velocity) {
 
       // Disable right click
       if (e.button === 2) {
         return false;
       }
 
-      var el = element || this;
+      element = element || this;
 
       // Create ripple
       var ripple = document.createElement('div');
-      ripple.className = 'waves-ripple';
-      el.appendChild(ripple);
+      ripple.className = 'waves-ripple waves-rippling';
+      element.appendChild(ripple);
 
-      // Get click coordinate and element witdh
-      var pos = offset(el);
-      var relativeY = e.pageY - pos.top;
-      var relativeX = e.pageX - pos.left;
-      var scale = 'scale(' + el.clientWidth / 100 * 10 + ')';
-
+      // Get click coordinate and element width
+      var pos = offset(element);
+      var relativeY = 0;
+      var relativeX = 0;
       // Support for touch devices
-      if ('touches' in e) {
+      if ('touches' in e && e.touches.length) {
         relativeY = e.touches[0].pageY - pos.top;
         relativeX = e.touches[0].pageX - pos.left;
+      }
+      //Normal case
+      else {
+          relativeY = e.pageY - pos.top;
+          relativeX = e.pageX - pos.left;
+        }
+      // Support for synthetic events
+      relativeX = relativeX >= 0 ? relativeX : 0;
+      relativeY = relativeY >= 0 ? relativeY : 0;
+
+      var scale = 'scale(' + element.clientWidth / 100 * 3 + ')';
+      var translate = 'translate(0,0)';
+
+      if (velocity) {
+        translate = 'translate(' + velocity.x + 'px, ' + velocity.y + 'px)';
       }
 
       // Attach data to element
       ripple.setAttribute('data-hold', Date.now());
-      ripple.setAttribute('data-scale', scale);
       ripple.setAttribute('data-x', relativeX);
       ripple.setAttribute('data-y', relativeY);
+      ripple.setAttribute('data-scale', scale);
+      ripple.setAttribute('data-translate', translate);
 
       // Set ripple position
       var rippleStyle = {
-        'top': relativeY + 'px',
-        'left': relativeX + 'px'
+        top: relativeY + 'px',
+        left: relativeX + 'px'
       };
 
-      ripple.className = ripple.className + ' waves-notransition';
+      ripple.classList.add('waves-notransition');
       ripple.setAttribute('style', convertStyle(rippleStyle));
-      ripple.className = ripple.className.replace('waves-notransition', '');
+      ripple.classList.remove('waves-notransition');
 
       // Scale the ripple
-      rippleStyle['-webkit-transform'] = scale;
-      rippleStyle['-moz-transform'] = scale;
-      rippleStyle['-ms-transform'] = scale;
-      rippleStyle['-o-transform'] = scale;
-      rippleStyle.transform = scale;
+      rippleStyle['-webkit-transform'] = scale + ' ' + translate;
+      rippleStyle['-moz-transform'] = scale + ' ' + translate;
+      rippleStyle['-ms-transform'] = scale + ' ' + translate;
+      rippleStyle['-o-transform'] = scale + ' ' + translate;
+      rippleStyle.transform = scale + ' ' + translate;
       rippleStyle.opacity = '1';
 
-      rippleStyle['-webkit-transition-duration'] = Effect.duration + 'ms';
-      rippleStyle['-moz-transition-duration'] = Effect.duration + 'ms';
-      rippleStyle['-o-transition-duration'] = Effect.duration + 'ms';
-      rippleStyle['transition-duration'] = Effect.duration + 'ms';
-
-      rippleStyle['-webkit-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-      rippleStyle['-moz-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-      rippleStyle['-o-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-      rippleStyle['transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+      var duration = e.type === 'mousemove' ? 2500 : Effect.duration;
+      rippleStyle['-webkit-transition-duration'] = duration + 'ms';
+      rippleStyle['-moz-transition-duration'] = duration + 'ms';
+      rippleStyle['-o-transition-duration'] = duration + 'ms';
+      rippleStyle['transition-duration'] = duration + 'ms';
 
       ripple.setAttribute('style', convertStyle(rippleStyle));
     },
 
-    hide: function (e) {
-      TouchHandler.touchup(e);
+    hide: function (e, element) {
+      element = element || this;
 
-      var el = this;
-      var width = el.clientWidth * 1.4;
+      var ripples = element.getElementsByClassName('waves-rippling');
 
-      // Get first ripple
-      var ripple = null;
-      var ripples = el.getElementsByClassName('waves-ripple');
-      if (ripples.length > 0) {
-        ripple = ripples[ripples.length - 1];
-      } else {
-        return false;
+      for (var i = 0, len = ripples.length; i < len; i++) {
+        removeRipple(e, element, ripples[i]);
       }
 
-      var relativeX = ripple.getAttribute('data-x');
-      var relativeY = ripple.getAttribute('data-y');
-      var scale = ripple.getAttribute('data-scale');
-
-      // Get delay beetween mousedown and mouse leave
-      var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
-      var delay = 350 - diff;
-
-      if (delay < 0) {
-        delay = 0;
+      if (isTouchAvailable) {
+        element.removeEventListener('touchend', Effect.hide);
+        element.removeEventListener('touchcancel', Effect.hide);
       }
 
-      // Fade out ripple after delay
-      setTimeout(function () {
-        var style = {
-          'top': relativeY + 'px',
-          'left': relativeX + 'px',
-          'opacity': '0',
-
-          // Duration
-          '-webkit-transition-duration': Effect.duration + 'ms',
-          '-moz-transition-duration': Effect.duration + 'ms',
-          '-o-transition-duration': Effect.duration + 'ms',
-          'transition-duration': Effect.duration + 'ms',
-          '-webkit-transform': scale,
-          '-moz-transform': scale,
-          '-ms-transform': scale,
-          '-o-transform': scale,
-          'transform': scale
-        };
-
-        ripple.setAttribute('style', convertStyle(style));
-
-        setTimeout(function () {
-          try {
-            el.removeChild(ripple);
-          } catch (e) {
-            return false;
-          }
-        }, Effect.duration);
-      }, delay);
-    },
-
-    // Little hack to make <input> can perform waves effect
-    wrapInput: function (elements) {
-      for (var a = 0; a < elements.length; a++) {
-        var el = elements[a];
-
-        if (el.tagName.toLowerCase() === 'input') {
-          var parent = el.parentNode;
-
-          // If input already have parent just pass through
-          if (parent.tagName.toLowerCase() === 'i' && parent.className.indexOf('waves-effect') !== -1) {
-            continue;
-          }
-
-          // Put element class and style to the specified parent
-          var wrapper = document.createElement('i');
-          wrapper.className = el.className + ' waves-input-wrapper';
-
-          var elementStyle = el.getAttribute('style');
-
-          if (!elementStyle) {
-            elementStyle = '';
-          }
-
-          wrapper.setAttribute('style', elementStyle);
-
-          el.className = 'waves-button-input';
-          el.removeAttribute('style');
-
-          // Put element as child
-          parent.replaceChild(wrapper, el);
-          wrapper.appendChild(el);
-        }
-      }
+      element.removeEventListener('mouseup', Effect.hide);
+      element.removeEventListener('mouseleave', Effect.hide);
     }
   };
+
+  /**
+   * Collection of wrapper for HTML element that only have single tag
+   * like <input> and <img>
+   */
+  var TagWrapper = {
+
+    // Wrap <input> tag so it can perform the effect
+    input: function (element) {
+
+      var parent = element.parentNode;
+
+      // If input already have parent just pass through
+      if (parent.tagName.toLowerCase() === 'i' && parent.classList.contains('waves-effect')) {
+        return;
+      }
+
+      // Put element class and style to the specified parent
+      var wrapper = document.createElement('i');
+      wrapper.className = element.className + ' waves-input-wrapper';
+      element.className = 'waves-button-input';
+
+      // Put element as child
+      parent.replaceChild(wrapper, element);
+      wrapper.appendChild(element);
+
+      // Apply element color and background color to wrapper
+      var elementStyle = window.getComputedStyle(element, null);
+      var color = elementStyle.color;
+      var backgroundColor = elementStyle.backgroundColor;
+
+      wrapper.setAttribute('style', 'color:' + color + ';background:' + backgroundColor);
+      element.setAttribute('style', 'background-color:rgba(0,0,0,0);');
+    },
+
+    // Wrap <img> tag so it can perform the effect
+    img: function (element) {
+
+      var parent = element.parentNode;
+
+      // If input already have parent just pass through
+      if (parent.tagName.toLowerCase() === 'i' && parent.classList.contains('waves-effect')) {
+        return;
+      }
+
+      // Put element as child
+      var wrapper = document.createElement('i');
+      parent.replaceChild(wrapper, element);
+      wrapper.appendChild(element);
+    }
+  };
+
+  /**
+   * Hide the effect and remove the ripple. Must be
+   * a separate function to pass the JSLint...
+   */
+  function removeRipple(e, el, ripple) {
+
+    // Check if the ripple still exist
+    if (!ripple) {
+      return;
+    }
+
+    ripple.classList.remove('waves-rippling');
+
+    var relativeX = ripple.getAttribute('data-x');
+    var relativeY = ripple.getAttribute('data-y');
+    var scale = ripple.getAttribute('data-scale');
+    var translate = ripple.getAttribute('data-translate');
+
+    // Get delay beetween mousedown and mouse leave
+    var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
+    var delay = 350 - diff;
+
+    if (delay < 0) {
+      delay = 0;
+    }
+
+    if (e.type === 'mousemove') {
+      delay = 150;
+    }
+
+    // Fade out ripple after delay
+    var duration = e.type === 'mousemove' ? 2500 : Effect.duration;
+
+    setTimeout(function () {
+
+      var style = {
+        top: relativeY + 'px',
+        left: relativeX + 'px',
+        opacity: '0',
+
+        // Duration
+        '-webkit-transition-duration': duration + 'ms',
+        '-moz-transition-duration': duration + 'ms',
+        '-o-transition-duration': duration + 'ms',
+        'transition-duration': duration + 'ms',
+        '-webkit-transform': scale + ' ' + translate,
+        '-moz-transform': scale + ' ' + translate,
+        '-ms-transform': scale + ' ' + translate,
+        '-o-transform': scale + ' ' + translate,
+        'transform': scale + ' ' + translate
+      };
+
+      ripple.setAttribute('style', convertStyle(style));
+
+      setTimeout(function () {
+        try {
+          el.removeChild(ripple);
+        } catch (e) {
+          return false;
+        }
+      }, duration);
+    }, delay);
+  }
 
   /**
    * Disable mousedown event for 500ms during and after touch
    */
   var TouchHandler = {
+
     /* uses an integer rather than bool so there's no issues with
      * needing to clear timeouts if another touch event occurred
      * within the 500ms. Cannot mouseup between touchstart and
      * touchend, nor in the 500ms after touchend. */
     touches: 0,
+
     allowEvent: function (e) {
+
       var allow = true;
 
-      if (e.type === 'touchstart') {
-        TouchHandler.touches += 1; //push
-      } else if (e.type === 'touchend' || e.type === 'touchcancel') {
-        setTimeout(function () {
-          if (TouchHandler.touches > 0) {
-            TouchHandler.touches -= 1; //pop after 500ms
-          }
-        }, 500);
-      } else if (e.type === 'mousedown' && TouchHandler.touches > 0) {
+      if (/^(mousedown|mousemove)$/.test(e.type) && TouchHandler.touches) {
         allow = false;
       }
 
       return allow;
     },
-    touchup: function (e) {
-      TouchHandler.allowEvent(e);
+    registerEvent: function (e) {
+      var eType = e.type;
+
+      if (eType === 'touchstart') {
+
+        TouchHandler.touches += 1; // push
+      } else if (/^(touchend|touchcancel)$/.test(eType)) {
+
+        setTimeout(function () {
+          if (TouchHandler.touches) {
+            TouchHandler.touches -= 1; // pop after 500ms
+          }
+        }, 500);
+      }
     }
   };
 
@@ -5023,6 +5210,7 @@ $jscomp.polyfill = function (e, r, p, m) {
    * returns null when .waves-effect element not in "click tree"
    */
   function getWavesEffectElement(e) {
+
     if (TouchHandler.allowEvent(e) === false) {
       return null;
     }
@@ -5030,13 +5218,14 @@ $jscomp.polyfill = function (e, r, p, m) {
     var element = null;
     var target = e.target || e.srcElement;
 
-    while (target.parentNode !== null) {
-      if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
+    while (target.parentElement) {
+      if (!(target instanceof SVGElement) && target.classList.contains('waves-effect')) {
         element = target;
         break;
       }
-      target = target.parentNode;
+      target = target.parentElement;
     }
+
     return element;
   }
 
@@ -5044,71 +5233,225 @@ $jscomp.polyfill = function (e, r, p, m) {
    * Bubble the click and show effect if .waves-effect elem was found
    */
   function showEffect(e) {
+
+    // Disable effect if element has "disabled" property on it
+    // In some cases, the event is not triggered by the current element
+    // if (e.target.getAttribute('disabled') !== null) {
+    //     return;
+    // }
+
     var element = getWavesEffectElement(e);
 
     if (element !== null) {
-      Effect.show(e, element);
 
-      if ('ontouchstart' in window) {
-        element.addEventListener('touchend', Effect.hide, false);
-        element.addEventListener('touchcancel', Effect.hide, false);
+      // Make it sure the element has either disabled property, disabled attribute or 'disabled' class
+      if (element.disabled || element.getAttribute('disabled') || element.classList.contains('disabled')) {
+        return;
       }
 
-      element.addEventListener('mouseup', Effect.hide, false);
-      element.addEventListener('mouseleave', Effect.hide, false);
-      element.addEventListener('dragend', Effect.hide, false);
+      TouchHandler.registerEvent(e);
+
+      if (e.type === 'touchstart' && Effect.delay) {
+
+        var hidden = false;
+
+        var timer = setTimeout(function () {
+          timer = null;
+          Effect.show(e, element);
+        }, Effect.delay);
+
+        var hideEffect = function (hideEvent) {
+
+          // if touch hasn't moved, and effect not yet started: start effect now
+          if (timer) {
+            clearTimeout(timer);
+            timer = null;
+            Effect.show(e, element);
+          }
+          if (!hidden) {
+            hidden = true;
+            Effect.hide(hideEvent, element);
+          }
+
+          removeListeners();
+        };
+
+        var touchMove = function (moveEvent) {
+          if (timer) {
+            clearTimeout(timer);
+            timer = null;
+          }
+          hideEffect(moveEvent);
+
+          removeListeners();
+        };
+
+        element.addEventListener('touchmove', touchMove, passiveIfSupported);
+        element.addEventListener('touchend', hideEffect, passiveIfSupported);
+        element.addEventListener('touchcancel', hideEffect, passiveIfSupported);
+
+        var removeListeners = function () {
+          element.removeEventListener('touchmove', touchMove);
+          element.removeEventListener('touchend', hideEffect);
+          element.removeEventListener('touchcancel', hideEffect);
+        };
+      } else {
+
+        Effect.show(e, element);
+
+        if (isTouchAvailable) {
+          element.addEventListener('touchend', Effect.hide, passiveIfSupported);
+          element.addEventListener('touchcancel', Effect.hide, passiveIfSupported);
+        }
+
+        element.addEventListener('mouseup', Effect.hide, passiveIfSupported);
+        element.addEventListener('mouseleave', Effect.hide, passiveIfSupported);
+      }
     }
   }
 
-  Waves.displayEffect = function (options) {
+  Waves.init = function (options) {
+    var body = document.body;
+
     options = options || {};
 
     if ('duration' in options) {
       Effect.duration = options.duration;
     }
 
-    //Wrap input inside <i> tag
-    Effect.wrapInput($$('.waves-effect'));
-
-    if ('ontouchstart' in window) {
-      document.body.addEventListener('touchstart', showEffect, false);
+    if ('delay' in options) {
+      Effect.delay = options.delay;
     }
 
-    document.body.addEventListener('mousedown', showEffect, false);
+    if (isTouchAvailable) {
+      body.addEventListener('touchstart', showEffect, passiveIfSupported);
+      body.addEventListener('touchcancel', TouchHandler.registerEvent, passiveIfSupported);
+      body.addEventListener('touchend', TouchHandler.registerEvent, passiveIfSupported);
+    }
+
+    body.addEventListener('mousedown', showEffect, passiveIfSupported);
   };
 
   /**
-   * Attach Waves to an input element (or any element which doesn't
-   * bubble mouseup/mousedown events).
-   *   Intended to be used with dynamically loaded forms/inputs, or
-   * where the user doesn't want a delegated click handler.
+   * Attach Waves to dynamically loaded inputs, or add .waves-effect and other
+   * waves classes to a set of elements. Set drag to true if the ripple mouseover
+   * or skimming effect should be applied to the elements.
    */
-  Waves.attach = function (element) {
-    //FUTURE: automatically add waves classes and allow users
-    // to specify them with an options param? Eg. light/classic/button
-    if (element.tagName.toLowerCase() === 'input') {
-      Effect.wrapInput([element]);
-      element = element.parentNode;
+  Waves.attach = function (elements, classes) {
+
+    elements = getWavesElements(elements);
+
+    if (toString.call(classes) === '[object Array]') {
+      classes = classes.join(' ');
     }
 
-    if ('ontouchstart' in window) {
-      element.addEventListener('touchstart', showEffect, false);
-    }
+    classes = classes ? ' ' + classes : '';
 
-    element.addEventListener('mousedown', showEffect, false);
+    var element, tagName;
+
+    for (var i = 0, len = elements.length; i < len; i++) {
+
+      element = elements[i];
+      tagName = element.tagName.toLowerCase();
+
+      if (['input', 'img'].indexOf(tagName) !== -1) {
+        TagWrapper[tagName](element);
+        element = element.parentElement;
+      }
+
+      if (element.className.indexOf('waves-effect') === -1) {
+        element.className += ' waves-effect' + classes;
+      }
+    }
   };
 
-  window.Waves = Waves;
+  /**
+   * Cause a ripple to appear in an element via code.
+   */
+  Waves.ripple = function (elements, options) {
+    elements = getWavesElements(elements);
+    var elementsLen = elements.length;
 
-  document.addEventListener('DOMContentLoaded', function () {
-    Waves.displayEffect();
-  }, false);
-})(window);
-;(function ($, anim) {
+    options = options || {};
+    options.wait = options.wait || 0;
+    options.position = options.position || null; // default = centre of element
+
+
+    if (elementsLen) {
+      var element,
+          pos,
+          off,
+          centre = {},
+          i = 0;
+      var mousedown = {
+        type: 'mousedown',
+        button: 1
+      };
+      var hideRipple = function (mouseup, element) {
+        return function () {
+          Effect.hide(mouseup, element);
+        };
+      };
+
+      for (; i < elementsLen; i++) {
+        element = elements[i];
+        pos = options.position || {
+          x: element.clientWidth / 2,
+          y: element.clientHeight / 2
+        };
+
+        off = offset(element);
+        centre.x = off.left + pos.x;
+        centre.y = off.top + pos.y;
+
+        mousedown.pageX = centre.x;
+        mousedown.pageY = centre.y;
+
+        Effect.show(mousedown, element);
+
+        if (options.wait >= 0 && options.wait !== null) {
+          var mouseup = {
+            type: 'mouseup',
+            button: 1
+          };
+
+          setTimeout(hideRipple(mouseup, element), options.wait);
+        }
+      }
+    }
+  };
+
+  /**
+   * Remove all ripples from an element.
+   */
+  Waves.calm = function (elements) {
+    elements = getWavesElements(elements);
+    var mouseup = {
+      type: 'mouseup',
+      button: 1
+    };
+
+    for (var i = 0, len = elements.length; i < len; i++) {
+      Effect.hide(mouseup, elements[i]);
+    }
+  };
+
+  /**
+   * Deprecated API fallback
+   */
+  Waves.displayEffect = function (options) {
+    console.error('Waves.displayEffect() has been deprecated and will be removed in future version. Please use Waves.init() to initialize Waves effect');
+    Waves.init(options);
+  };
+
+  return Waves;
+});;(function ($, anim) {
   'use strict';
 
   var _defaults = {
     html: '',
+    unsafeHTML: '',
+    text: '',
     displayLength: 4000,
     inDuration: 300,
     outDuration: 375,
@@ -5126,7 +5469,14 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @member Toast#options
        */
       this.options = $.extend({}, Toast.defaults, options);
-      this.message = this.options.html;
+      this.htmlMessage = this.options.html;
+      // Warn when using html
+      if (!!this.options.html) console.warn('The html option is deprecated and will be removed in the future. See https://github.com/materializecss/materialize/pull/49');
+      // If the new unsafeHTML is used, prefer that
+      if (!!this.options.unsafeHTML) {
+        this.htmlMessage = this.options.unsafeHTML;
+      }
+      this.message = this.options.text;
 
       /**
        * Describes current pan state toast
@@ -5169,20 +5519,20 @@ $jscomp.polyfill = function (e, r, p, m) {
           $(toast).addClass(this.options.classes);
         }
 
-        // Set content
-        if (typeof HTMLElement === 'object' ? this.message instanceof HTMLElement : this.message && typeof this.message === 'object' && this.message !== null && this.message.nodeType === 1 && typeof this.message.nodeName === 'string') {
-          toast.appendChild(this.message);
-
-          // Check if it is jQuery object
-        } else if (!!this.message.jquery) {
-          $(toast).append(this.message[0]);
-
-          // Insert as html;
+        // Set safe text content
+        toast.textContent = this.message;
+        if (typeof HTMLElement === 'object' ? this.htmlMessage instanceof HTMLElement : this.htmlMessage && typeof this.htmlMessage === 'object' && this.htmlMessage !== null && this.htmlMessage.nodeType === 1 && typeof this.htmlMessage.nodeName === 'string') {
+          //if the htmlMessage is an HTML node, append it directly
+          toast.appendChild(this.htmlMessage);
+        } else if (!!this.htmlMessage.jquery) {
+          // Check if it is jQuery object, append the node
+          $(toast).append(this.htmlMessage[0]);
         } else {
-          toast.innerHTML = this.message;
+          // Append as unsanitized html;
+          $(toast).append(this.htmlMessage);
         }
 
-        // Append toasft
+        // Append toast
         Toast._container.appendChild(toast);
         return toast;
       }
@@ -5461,6 +5811,7 @@ $jscomp.polyfill = function (e, r, p, m) {
   var _defaults = {
     edge: 'left',
     draggable: true,
+    dragTargetWidth: '10px',
     inDuration: 250,
     outDuration: 200,
     onOpenStart: null,
@@ -5496,6 +5847,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @member Sidenav#options
        * @prop {String} [edge='left'] - Side of screen on which Sidenav appears
        * @prop {Boolean} [draggable=true] - Allow swipe gestures to open/close Sidenav
+       * @prop {String} [dragTargetWidth='10px'] - Width of the area where you can start dragging
        * @prop {Number} [inDuration=250] - Length in ms of enter transition
        * @prop {Number} [outDuration=200] - Length in ms of exit transition
        * @prop {Function} onOpenStart - Function called when sidenav starts entering
@@ -5582,11 +5934,11 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._handleCloseReleaseBound = this._handleCloseRelease.bind(this);
         this._handleCloseTriggerClickBound = this._handleCloseTriggerClick.bind(this);
 
-        this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound);
+        this.dragTarget.addEventListener('touchmove', this._handleDragTargetDragBound, passiveIfSupported);
         this.dragTarget.addEventListener('touchend', this._handleDragTargetReleaseBound);
-        this._overlay.addEventListener('touchmove', this._handleCloseDragBound);
+        this._overlay.addEventListener('touchmove', this._handleCloseDragBound, passiveIfSupported);
         this._overlay.addEventListener('touchend', this._handleCloseReleaseBound);
-        this.el.addEventListener('touchmove', this._handleCloseDragBound);
+        this.el.addEventListener('touchmove', this._handleCloseDragBound, passiveIfSupported);
         this.el.addEventListener('touchend', this._handleCloseReleaseBound);
         this.el.addEventListener('click', this._handleCloseTriggerClickBound);
 
@@ -5638,7 +5990,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set variables needed at the beggining of drag
+       * Set variables needed at the beginning of drag
        * and stop any current transition.
        * @param {Event} e
        */
@@ -5880,6 +6232,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _createDragTarget() {
         var dragTarget = document.createElement('div');
         dragTarget.classList.add('drag-target');
+        dragTarget.style.width = this.options.dragTargetWidth;
         document.body.appendChild(dragTarget);
         this.dragTarget = dragTarget;
       }
@@ -6425,11 +6778,18 @@ $jscomp.polyfill = function (e, r, p, m) {
     data: {}, // Autocomplete data set
     limit: Infinity, // Limit of results the autocomplete shows
     onAutocomplete: null, // Callback for when autocompleted
+    dropdownOptions: {
+      // Default dropdown options
+      autoFocus: false,
+      closeOnClick: false,
+      coverTrigger: false
+    },
     minLength: 1, // Min characters before autocomplete starts
     sortFunction: function (a, b, inputString) {
       // Sort function for sorting autocomplete results
       return a.indexOf(inputString) - b.indexOf(inputString);
-    }
+    },
+    allowUnsafeHTML: false
   };
 
   /**
@@ -6558,14 +6918,21 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.$inputField.append(this.container);
         this.el.setAttribute('data-target', this.container.id);
 
-        this.dropdown = M.Dropdown.init(this.el, {
-          autoFocus: false,
-          closeOnClick: false,
-          coverTrigger: false,
-          onItemClick: function (itemEl) {
-            _this38.selectOption($(itemEl));
+        // Initialize dropdown
+        var dropdownOptions = $.extend({}, Autocomplete.defaults.dropdownOptions, this.options.dropdownOptions);
+        var userOnItemClick = dropdownOptions.onItemClick;
+
+        // Ensuring the selectOption call when user passes custom onItemClick function to dropdown
+        dropdownOptions.onItemClick = function (el) {
+          _this38.selectOption($(el));
+
+          // Handle user declared onItemClick if needed
+          if (userOnItemClick && typeof userOnItemClick === 'function') {
+            userOnItemClick.call(_this38.dropdown, _this38.el);
           }
-        });
+        };
+
+        this.dropdown = M.Dropdown.init(this.el, dropdownOptions);
 
         // Sketchy removal of dropdown click handler
         this.el.removeEventListener('click', this.dropdown._handleClickBound);
@@ -6665,6 +7032,13 @@ $jscomp.polyfill = function (e, r, p, m) {
           if (this.activeIndex >= 0) {
             this.$active = $(this.container).children('li').eq(this.activeIndex);
             this.$active.addClass('active');
+
+            // Focus selected
+            this.container.children[this.activeIndex].scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'nearest'
+            });
           }
         }
       }
@@ -6708,17 +7082,14 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     }, {
       key: "_highlight",
-      value: function _highlight(string, $el) {
-        var img = $el.find('img');
-        var matchStart = $el.text().toLowerCase().indexOf('' + string.toLowerCase() + ''),
-            matchEnd = matchStart + string.length - 1,
-            beforeMatch = $el.text().slice(0, matchStart),
-            matchText = $el.text().slice(matchStart, matchEnd + 1),
-            afterMatch = $el.text().slice(matchEnd + 1);
-        $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
-        if (img.length) {
-          $el.prepend(img);
+      value: function _highlight(input, label) {
+        var start = label.toLowerCase().indexOf('' + input.toLowerCase() + '');
+        var end = start + input.length - 1;
+        //custom filters may return results where the string does not match any part
+        if (start == -1 || end == -1) {
+          return [label, '', ''];
         }
+        return [label.slice(0, start), label.slice(start, end + 1), label.slice(end + 1)];
       }
 
       /**
@@ -6784,11 +7155,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Gather all matching data
         for (var key in data) {
           if (data.hasOwnProperty(key) && key.toLowerCase().indexOf(val) !== -1) {
-            // Break if past limit
-            if (this.count >= this.options.limit) {
-              break;
-            }
-
             var entry = {
               data: data[key],
               key: key
@@ -6807,18 +7173,37 @@ $jscomp.polyfill = function (e, r, p, m) {
           matchingData.sort(sortFunctionBound);
         }
 
+        // Limit
+        matchingData = matchingData.slice(0, this.options.limit);
+
         // Render
         for (var i = 0; i < matchingData.length; i++) {
           var _entry = matchingData[i];
-          var $autocompleteOption = $('<li></li>');
+          var item = document.createElement('li');
           if (!!_entry.data) {
-            $autocompleteOption.append("<img src=\"" + _entry.data + "\" class=\"right circle\"><span>" + _entry.key + "</span>");
-          } else {
-            $autocompleteOption.append('<span>' + _entry.key + '</span>');
+            var img = document.createElement('img');
+            img.classList.add('right', 'circle');
+            img.src = _entry.data;
+            item.appendChild(img);
           }
 
-          $(this.container).append($autocompleteOption);
-          this._highlight(val, $autocompleteOption);
+          var parts = this._highlight(val, _entry.key);
+          var s = document.createElement('span');
+          if (this.options.allowUnsafeHTML) {
+            s.innerHTML = parts[0] + '<span class="highlight">' + parts[1] + '</span>' + parts[2];
+          } else {
+            s.appendChild(document.createTextNode(parts[0]));
+            if (!!parts[1]) {
+              var highlight = document.createElement('span');
+              highlight.textContent = parts[1];
+              highlight.classList.add('highlight');
+              s.appendChild(highlight);
+              s.appendChild(document.createTextNode(parts[2]));
+            }
+          }
+          item.appendChild(s);
+
+          $(this.container).append(item);
         }
       }
 
@@ -7612,6 +7997,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     placeholder: '',
     secondaryPlaceholder: '',
     autocompleteOptions: {},
+    autocompleteOnly: false,
     limit: Infinity,
     onChipAdd: null,
     onChipSelect: null,
@@ -7814,9 +8200,11 @@ $jscomp.polyfill = function (e, r, p, m) {
           }
 
           e.preventDefault();
-          this.addChip({
-            tag: this.$input[0].value
-          });
+          if (!this.hasAutocomplete || this.hasAutocomplete && !this.options.autocompleteOnly) {
+            this.addChip({
+              tag: this.$input[0].value
+            });
+          }
           this.$input[0].value = '';
 
           // delete or left
@@ -7921,7 +8309,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _setupLabel() {
         this.$label = this.$el.find('label');
         if (this.$label.length) {
-          this.$label.setAttribute('for', this.$input.attr('id'));
+          this.$label[0].setAttribute('for', this.$input.attr('id'));
         }
       }
 
@@ -8071,6 +8459,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
           if (currChips.chipsData.length) {
             currChips.selectChip(selectIndex);
+          } else {
+            currChips.$input[0].focus();
           }
 
           // left arrow key
@@ -8116,7 +8506,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleChipsBlur",
       value: function _handleChipsBlur(e) {
-        if (!Chips._keydown) {
+        if (!Chips._keydown && document.hidden) {
           var $chips = $(e.target).closest('.chips');
           var currChips = $chips[0].M_Chips;
 
@@ -8212,11 +8602,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function destroy() {
         this.el.style.top = null;
         this._removePinClasses();
-        this._removeEventHandlers();
 
         // Remove pushpin Inst
         var index = Pushpin._pushpins.indexOf(this);
         Pushpin._pushpins.splice(index, 1);
+        if (Pushpin._pushpins.length === 0) {
+          this._removeEventHandlers();
+        }
+        this.el.M_Pushpin = undefined;
       }
     }, {
       key: "_setupEventHandlers",
@@ -9235,6 +9628,9 @@ $jscomp.polyfill = function (e, r, p, m) {
           if (i >= opts.minYear) {
             arr.push("<option value=\"" + i + "\" " + (i === year ? 'selected="selected"' : '') + ">" + i + "</option>");
           }
+        }
+        if (opts.yearRangeReverse) {
+          arr.reverse();
         }
 
         yearHtml = "<select class=\"datepicker-select orig-select-year\" tabindex=\"-1\">" + arr.join('') + "</select>";
@@ -11458,6 +11854,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Calculating screen
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
+        var scrollBarWidth = windowWidth - document.documentElement.clientWidth;
         var centerX = windowWidth / 2;
         var centerY = windowHeight / 2;
         var isLeft = originLeft <= centerX;
@@ -11492,7 +11889,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Setting tap target
         var tapTargetWrapperCssObj = {};
         tapTargetWrapperCssObj.top = isTop ? tapTargetTop + 'px' : '';
-        tapTargetWrapperCssObj.right = isRight ? windowWidth - tapTargetLeft - tapTargetWidth + 'px' : '';
+        tapTargetWrapperCssObj.right = isRight ? windowWidth - tapTargetLeft - tapTargetWidth - scrollBarWidth + 'px' : '';
         tapTargetWrapperCssObj.bottom = isBottom ? windowHeight - tapTargetTop - tapTargetHeight + 'px' : '';
         tapTargetWrapperCssObj.left = isLeft ? tapTargetLeft + 'px' : '';
         tapTargetWrapperCssObj.position = tapTargetPosition;
@@ -11717,9 +12114,15 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_handleOptionClick",
       value: function _handleOptionClick(e) {
         e.preventDefault();
-        var option = $(e.target).closest('li')[0];
-        var key = option.id;
-        if (!$(option).hasClass('disabled') && !$(option).hasClass('optgroup') && key.length) {
+        var optionEl = $(e.target).closest('li')[0];
+        this._selectOption(optionEl);
+        e.stopPropagation();
+      }
+    }, {
+      key: "_selectOption",
+      value: function _selectOption(optionEl) {
+        var key = optionEl.id;
+        if (!$(optionEl).hasClass('disabled') && !$(optionEl).hasClass('optgroup') && key.length) {
           var selected = true;
 
           if (this.isMultiple) {
@@ -11733,7 +12136,9 @@ $jscomp.polyfill = function (e, r, p, m) {
             selected = this._toggleEntryFromArray(key);
           } else {
             $(this.dropdownOptions).find('li').removeClass('selected');
-            $(option).toggleClass('selected', selected);
+            $(optionEl).toggleClass('selected', selected);
+            this._keysSelected = {};
+            this._keysSelected[optionEl.id] = true;
           }
 
           // Set selected on original select option
@@ -11745,7 +12150,9 @@ $jscomp.polyfill = function (e, r, p, m) {
           }
         }
 
-        e.stopPropagation();
+        if (!this.isMultiple) {
+          this.dropdown.close();
+        }
       }
 
       /**
@@ -11773,7 +12180,10 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.wrapper = document.createElement('div');
         $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
         this.$el.before($(this.wrapper));
-        this.wrapper.appendChild(this.el);
+        // Move actual select element into overflow hidden wrapper
+        var $hideSelect = $('<div class="hide-select"></div>');
+        $(this.wrapper).append($hideSelect);
+        $hideSelect[0].appendChild(this.el);
 
         if (this.el.disabled) {
           this.wrapper.classList.add('disabled');
@@ -11811,7 +12221,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           });
         }
 
-        this.$el.after(this.dropdownOptions);
+        $(this.wrapper).append(this.dropdownOptions);
 
         // Add input dropdown
         this.input = document.createElement('input');
@@ -11823,16 +12233,17 @@ $jscomp.polyfill = function (e, r, p, m) {
           $(this.input).prop('disabled', 'true');
         }
 
-        this.$el.before(this.input);
+        $(this.wrapper).prepend(this.input);
         this._setValueToInput();
 
         // Add caret
         var dropdownIcon = $('<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-        this.$el.before(dropdownIcon[0]);
+        $(this.wrapper).prepend(dropdownIcon[0]);
 
         // Initialize dropdown
         if (!this.el.disabled) {
           var dropdownOptions = $.extend({}, this.options.dropdownOptions);
+          var userOnOpenEnd = dropdownOptions.onOpenEnd;
 
           // Add callback for centering selected option when dropdown content is scrollable
           dropdownOptions.onOpenEnd = function (el) {
@@ -11852,11 +12263,16 @@ $jscomp.polyfill = function (e, r, p, m) {
                 _this71.dropdownOptions.scrollTop = scrollOffset;
               }
             }
+
+            // Handle user declared onOpenEnd if needed
+            if (userOnOpenEnd && typeof userOnOpenEnd === 'function') {
+              userOnOpenEnd.call(_this71.dropdown, _this71.el);
+            }
           };
 
-          if (this.isMultiple) {
-            dropdownOptions.closeOnClick = false;
-          }
+          // Prevent dropdown from closing too early
+          dropdownOptions.closeOnClick = false;
+
           this.dropdown = M.Dropdown.init(this.input, dropdownOptions);
         }
 
@@ -11920,8 +12336,9 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         // add icons
         var iconUrl = option.getAttribute('data-icon');
+        var classes = option.getAttribute('class');
         if (!!iconUrl) {
-          var imgEl = $("<img alt=\"\" src=\"" + iconUrl + "\">");
+          var imgEl = $("<img alt=\"\" class=\"" + classes + "\" src=\"" + iconUrl + "\">");
           liEl.prepend(imgEl);
         }
 
@@ -11971,7 +12388,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         options.each(function (el) {
           if ($(el).prop('selected')) {
-            var text = $(el).text();
+            var text = $(el).text().trim();
             values.push(text);
           }
         });

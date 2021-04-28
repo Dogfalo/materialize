@@ -1,6 +1,6 @@
 /*!
- * Materialize v1.0.0 (http://materializecss.com)
- * Copyright 2014-2017 Materialize
+ * Materialize v1.1.0-alpha (https://materializecss.github.io/materialize)
+ * Copyright 2014-2021 Materialize
  * MIT License (https://raw.githubusercontent.com/materializecss/materialize/master/LICENSE)
  */
 .materialize-red {
@@ -2764,7 +2764,7 @@ video.responsive-video {
   float: none;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   .pagination {
     width: 100%;
   }
@@ -2780,6 +2780,7 @@ video.responsive-video {
 }
 
 .breadcrumb {
+  display: inline-block;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -2803,6 +2804,7 @@ video.responsive-video {
   font-size: 25px;
   margin: 0 10px 0 8px;
   -webkit-font-smoothing: antialiased;
+  float: left;
 }
 
 .breadcrumb:first-child:before {
@@ -2865,13 +2867,13 @@ ul.staggered-list li {
 /*********************
   Media Query Classes
 **********************/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600.99px) {
   .hide-on-small-only, .hide-on-small-and-down {
     display: none !important;
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   .hide-on-med-and-down {
     display: none !important;
   }
@@ -2883,7 +2885,7 @@ ul.staggered-list li {
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 601px) and (max-width: 992.99px) {
   .hide-on-med-only {
     display: none !important;
   }
@@ -2913,13 +2915,13 @@ ul.staggered-list li {
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 601px) and (max-width: 992.99px) {
   .show-on-medium {
     display: block !important;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600.99px) {
   .show-on-small {
     display: block !important;
   }
@@ -2931,13 +2933,13 @@ ul.staggered-list li {
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   .show-on-medium-and-down {
     display: block !important;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600.99px) {
   .center-on-small-only {
     text-align: center;
   }
@@ -3017,7 +3019,7 @@ td, th {
   border-radius: 2px;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   table.responsive-table {
     width: 100%;
     border-collapse: collapse;
@@ -4342,7 +4344,7 @@ nav .brand-logo.center {
           transform: translateX(-50%);
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   nav .brand-logo {
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -4501,13 +4503,13 @@ html {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 993px) {
   html {
     font-size: 14.5px;
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
   html {
     font-size: 15px;
   }
@@ -4949,14 +4951,14 @@ small {
   z-index: 10000;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600.99px) {
   #toast-container {
     min-width: 100%;
     bottom: 0%;
   }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 992px) {
+@media only screen and (min-width: 601px) and (max-width: 992.99px) {
   #toast-container {
     left: 5%;
     bottom: 7%;
@@ -5013,7 +5015,7 @@ small {
   border-radius: 24px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600.99px) {
   .toast {
     width: 100%;
     border-radius: 0;
@@ -5111,7 +5113,7 @@ small {
   will-change: left, right;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   .tabs {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5623,47 +5625,57 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 /*!
- * Waves v0.6.0
- * http://fian.my.id/Waves
- *
- * Copyright 2014 Alfiana E. Sibuea and other contributors
- * Released under the MIT license
- * https://github.com/fians/Waves/blob/master/LICENSE
- */
+ * Waves v0.7.6
+ * http://fian.my.id/Waves 
+ * 
+ * Copyright 2014-2018 Alfiana E. Sibuea and other contributors 
+ * Released under the MIT license 
+ * https://github.com/fians/Waves/blob/master/LICENSE */
 .waves-effect {
   position: relative;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
-  vertical-align: middle;
-  z-index: 1;
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
 }
 
 .waves-effect .waves-ripple {
   position: absolute;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
   opacity: 0;
   background: rgba(0, 0, 0, 0.2);
-  -webkit-transition: all 0.7s ease-out;
-  transition: all 0.7s ease-out;
+  background: radial-gradient(rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.5) 60%, rgba(255, 255, 255, 0) 70%);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  -webkit-transition-property: -webkit-transform, opacity;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: transform, opacity;
   transition-property: transform, opacity, -webkit-transform;
-  -webkit-transform: scale(0);
-          transform: scale(0);
+  -webkit-transform: scale(0) translate(0, 0);
+  transform: scale(0) translate(0, 0);
   pointer-events: none;
+}
+
+.waves-effect.waves-light .waves-ripple {
+  background: rgba(255, 255, 255, 0.4);
+  background: radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0) 70%);
+}
+
+.waves-effect.waves-classic .waves-ripple {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.waves-effect.waves-classic.waves-light .waves-ripple {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .waves-effect.waves-light .waves-ripple {
@@ -5702,25 +5714,53 @@ body.keyboard-focused .dropdown-content li:focus {
   background: none;
 }
 
-.waves-effect img {
-  position: relative;
-  z-index: -1;
-}
-
 .waves-notransition {
   -webkit-transition: none !important;
   transition: none !important;
 }
 
+.waves-button,
 .waves-circle {
   -webkit-transform: translateZ(0);
-          transform: translateZ(0);
+  transform: translateZ(0);
   -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+}
+
+.waves-button,
+.waves-button:hover,
+.waves-button:visited,
+.waves-button-input {
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 1em;
+  line-height: 1em;
+  text-align: center;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.waves-button {
+  padding: 0.85em 1.1em;
+  border-radius: 0.2em;
+}
+
+.waves-button-input {
+  margin: 0;
+  padding: 0.85em 1.1em;
 }
 
 .waves-input-wrapper {
   border-radius: 0.2em;
   vertical-align: bottom;
+}
+
+.waves-input-wrapper.waves-button {
+  padding: 0;
 }
 
 .waves-input-wrapper .waves-button-input {
@@ -5736,16 +5776,23 @@ body.keyboard-focused .dropdown-content li:focus {
   height: 2.5em;
   line-height: 2.5em;
   border-radius: 50%;
+}
+
+.waves-float {
   -webkit-mask-image: none;
+  -webkit-box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12);
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.waves-float:active {
+  -webkit-box-shadow: 0px 8px 20px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 8px 20px 1px rgba(0, 0, 0, 0.3);
 }
 
 .waves-block {
   display: block;
-}
-
-/* Firefox Bug: link not triggered */
-.waves-effect .waves-ripple {
-  z-index: -1;
 }
 
 .modal {
@@ -5767,7 +5814,7 @@ body.keyboard-focused .dropdown-content li:focus {
   outline: none;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   .modal {
     width: 80%;
   }
@@ -5779,6 +5826,7 @@ body.keyboard-focused .dropdown-content li:focus {
 
 .modal .modal-content {
   padding: 24px;
+  overflow-y: hidden;
 }
 
 .modal .modal-close {
@@ -5886,19 +5934,19 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .sidenav .collapsible,
-.sidenav.fixed .collapsible {
+.sidenav.sidenav-fixed .collapsible {
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 .sidenav .collapsible li,
-.sidenav.fixed .collapsible li {
+.sidenav.sidenav-fixed .collapsible li {
   padding: 0;
 }
 
 .sidenav .collapsible-header,
-.sidenav.fixed .collapsible-header {
+.sidenav.sidenav-fixed .collapsible-header {
   background-color: transparent;
   border: none;
   line-height: inherit;
@@ -5907,23 +5955,23 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .sidenav .collapsible-header:hover,
-.sidenav.fixed .collapsible-header:hover {
+.sidenav.sidenav-fixed .collapsible-header:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 .sidenav .collapsible-header i,
-.sidenav.fixed .collapsible-header i {
+.sidenav.sidenav-fixed .collapsible-header i {
   line-height: inherit;
 }
 
 .sidenav .collapsible-body,
-.sidenav.fixed .collapsible-body {
+.sidenav.sidenav-fixed .collapsible-body {
   border: 0;
   background-color: #fff;
 }
 
 .sidenav .collapsible-body li a,
-.sidenav.fixed .collapsible-body li a {
+.sidenav.sidenav-fixed .collapsible-body li a {
   padding: 0 23.5px 0 31px;
 }
 
@@ -6005,7 +6053,7 @@ body.keyboard-focused .dropdown-content li:focus {
   cursor: text;
 }
 
-.chips .input {
+.chips input:not([type]):not(.browser-default).input {
   background: none;
   border: 0;
   color: rgba(0, 0, 0, 0.6);
@@ -6015,14 +6063,14 @@ body.keyboard-focused .dropdown-content li:focus {
   line-height: 32px;
   outline: 0;
   margin: 0;
-  padding: 0 !important;
-  width: 120px !important;
+  padding: 0;
+  width: 120px;
 }
 
-.chips .input:focus {
-  border: 0 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+.chips input:not([type]):not(.browser-default).input:focus {
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .chips .autocomplete-content {
@@ -6032,6 +6080,12 @@ body.keyboard-focused .dropdown-content li:focus {
 
 .prefix ~ .chips {
   margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.suffix ~ .chips {
+  margin-right: 3rem;
   width: 92%;
   width: calc(100% - 3rem);
 }
@@ -6110,9 +6164,6 @@ label {
 ::-moz-placeholder {
   color: #d1d1d1;
 }
-:-ms-input-placeholder {
-  color: #d1d1d1;
-}
 ::-ms-input-placeholder {
   color: #d1d1d1;
 }
@@ -6121,7 +6172,7 @@ label {
 }
 
 /* Text inputs */
-input:not([type]),
+input:not([type]):not(.browser-default),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
 input[type=email]:not(.browser-default),
@@ -6154,7 +6205,7 @@ textarea.materialize-textarea {
   transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
 }
 
-input:not([type]):disabled, input:not([type])[readonly="readonly"],
+input:not([type]):not(.browser-default):disabled, input:not([type]):not(.browser-default)[readonly="readonly"],
 input[type=text]:not(.browser-default):disabled,
 input[type=text]:not(.browser-default)[readonly="readonly"],
 input[type=password]:not(.browser-default):disabled,
@@ -6183,8 +6234,8 @@ textarea.materialize-textarea[readonly="readonly"] {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.42);
 }
 
-input:not([type]):disabled + label,
-input:not([type])[readonly="readonly"] + label,
+input:not([type]):not(.browser-default):disabled + label,
+input:not([type]):not(.browser-default)[readonly="readonly"] + label,
 input[type=text]:not(.browser-default):disabled + label,
 input[type=text]:not(.browser-default)[readonly="readonly"] + label,
 input[type=password]:not(.browser-default):disabled + label,
@@ -6212,7 +6263,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   color: rgba(0, 0, 0, 0.42);
 }
 
-input:not([type]):focus:not([readonly]),
+input:not([type]):not(.browser-default):focus:not([readonly]),
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
@@ -6230,7 +6281,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
           box-shadow: 0 1px 0 0 #26a69a;
 }
 
-input:not([type]):focus:not([readonly]) + label,
+input:not([type]):not(.browser-default):focus:not([readonly]) + label,
 input[type=text]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label,
 input[type=email]:not(.browser-default):focus:not([readonly]) + label,
@@ -6246,7 +6297,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #26a69a;
 }
 
-input:not([type]):focus.valid ~ label,
+input:not([type]):not(.browser-default):focus.valid ~ label,
 input[type=text]:not(.browser-default):focus.valid ~ label,
 input[type=password]:not(.browser-default):focus.valid ~ label,
 input[type=email]:not(.browser-default):focus.valid ~ label,
@@ -6262,7 +6313,7 @@ textarea.materialize-textarea:focus.valid ~ label {
   color: #4CAF50;
 }
 
-input:not([type]):focus.invalid ~ label,
+input:not([type]):not(.browser-default):focus.invalid ~ label,
 input[type=text]:not(.browser-default):focus.invalid ~ label,
 input[type=password]:not(.browser-default):focus.invalid ~ label,
 input[type=email]:not(.browser-default):focus.invalid ~ label,
@@ -6278,7 +6329,7 @@ textarea.materialize-textarea:focus.invalid ~ label {
   color: #F44336;
 }
 
-input:not([type]).validate + label,
+input:not([type]):not(.browser-default).validate + label,
 input[type=text]:not(.browser-default).validate + label,
 input[type=password]:not(.browser-default).validate + label,
 input[type=email]:not(.browser-default).validate + label,
@@ -6295,7 +6346,7 @@ textarea.materialize-textarea.validate + label {
 }
 
 /* Validation Sass Placeholders */
-input.valid:not([type]), input.valid:not([type]):focus,
+input.valid:not([type]):not(.browser-default), input.valid:not([type]):not(.browser-default):focus,
 input.valid[type=text]:not(.browser-default),
 input.valid[type=text]:not(.browser-default):focus,
 input.valid[type=password]:not(.browser-default),
@@ -6325,7 +6376,7 @@ textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-
           box-shadow: 0 1px 0 0 #4CAF50;
 }
 
-input.invalid:not([type]), input.invalid:not([type]):focus,
+input.invalid:not([type]):not(.browser-default), input.invalid:not([type]):not(.browser-default):focus,
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=text]:not(.browser-default):focus,
 input.invalid[type=password]:not(.browser-default),
@@ -6356,10 +6407,10 @@ textarea.materialize-textarea.invalid:focus, .select-wrapper.invalid > input.sel
           box-shadow: 0 1px 0 0 #F44336;
 }
 
-input:not([type]).valid ~ .helper-text[data-success],
-input:not([type]):focus.valid ~ .helper-text[data-success],
-input:not([type]).invalid ~ .helper-text[data-error],
-input:not([type]):focus.invalid ~ .helper-text[data-error],
+input:not([type]):not(.browser-default).valid ~ .helper-text[data-success],
+input:not([type]):not(.browser-default):focus.valid ~ .helper-text[data-success],
+input:not([type]):not(.browser-default).invalid ~ .helper-text[data-error],
+input:not([type]):not(.browser-default):focus.invalid ~ .helper-text[data-error],
 input[type=text]:not(.browser-default).valid ~ .helper-text[data-success],
 input[type=text]:not(.browser-default):focus.valid ~ .helper-text[data-success],
 input[type=text]:not(.browser-default).invalid ~ .helper-text[data-error],
@@ -6417,8 +6468,8 @@ textarea.materialize-textarea:focus.invalid ~ .helper-text[data-error], .select-
   pointer-events: none;
 }
 
-input:not([type]).valid ~ .helper-text:after,
-input:not([type]):focus.valid ~ .helper-text:after,
+input:not([type]):not(.browser-default).valid ~ .helper-text:after,
+input:not([type]):not(.browser-default):focus.valid ~ .helper-text:after,
 input[type=text]:not(.browser-default).valid ~ .helper-text:after,
 input[type=text]:not(.browser-default):focus.valid ~ .helper-text:after,
 input[type=password]:not(.browser-default).valid ~ .helper-text:after,
@@ -6447,8 +6498,8 @@ textarea.materialize-textarea:focus.valid ~ .helper-text:after, .select-wrapper.
   color: #4CAF50;
 }
 
-input:not([type]).invalid ~ .helper-text:after,
-input:not([type]):focus.invalid ~ .helper-text:after,
+input:not([type]):not(.browser-default).invalid ~ .helper-text:after,
+input:not([type]):not(.browser-default):focus.invalid ~ .helper-text:after,
 input[type=text]:not(.browser-default).invalid ~ .helper-text:after,
 input[type=text]:not(.browser-default):focus.invalid ~ .helper-text:after,
 input[type=password]:not(.browser-default).invalid ~ .helper-text:after,
@@ -6477,7 +6528,7 @@ textarea.materialize-textarea:focus.invalid ~ .helper-text:after, .select-wrappe
   color: #F44336;
 }
 
-input:not([type]) + label:after,
+input:not([type]):not(.browser-default) + label:after,
 input[type=text]:not(.browser-default) + label:after,
 input[type=password]:not(.browser-default) + label:after,
 input[type=email]:not(.browser-default) + label:after,
@@ -6522,7 +6573,9 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field.col .prefix ~ label,
-.input-field.col .prefix ~ .validate ~ label {
+.input-field.col .prefix ~ .validate ~ label,
+.input-field.col .suffix ~ label,
+.input-field.col .suffix ~ .validate ~ label {
   width: calc(100% - 3rem - 1.5rem);
 }
 
@@ -6575,7 +6628,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   left: 0;
 }
 
-.input-field .prefix {
+.input-field .prefix, .input-field .suffix {
   position: absolute;
   width: 3rem;
   font-size: 2rem;
@@ -6584,12 +6637,13 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   top: 0.5rem;
 }
 
-.input-field .prefix.active {
+.input-field .prefix.active, .input-field .suffix.active {
   color: #26a69a;
 }
 
 .input-field .prefix ~ input,
 .input-field .prefix ~ textarea,
+.input-field .prefix ~ .select-wrapper,
 .input-field .prefix ~ label,
 .input-field .prefix ~ .validate ~ label,
 .input-field .prefix ~ .helper-text,
@@ -6603,18 +6657,40 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   margin-left: 3rem;
 }
 
-@media only screen and (max-width: 992px) {
-  .input-field .prefix ~ input {
+@media only screen and (max-width: 992.99px) {
+  .input-field .prefix ~ input,
+  .input-field .suffix ~ input {
     width: 86%;
     width: calc(100% - 3rem);
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .input-field .prefix ~ input {
+@media only screen and (max-width: 600.99px) {
+  .input-field .prefix ~ input,
+  .input-field .suffix ~ input {
     width: 80%;
     width: calc(100% - 3rem);
   }
+}
+
+.input-field .suffix {
+  right: 0;
+}
+
+.input-field .suffix ~ input,
+.input-field .suffix ~ textarea,
+.input-field .suffix ~ .select-wrapper,
+.input-field .suffix ~ label,
+.input-field .suffix ~ .validate ~ label,
+.input-field .suffix ~ .helper-text,
+.input-field .suffix ~ .autocomplete-content {
+  margin-right: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.input-field .suffix ~ label {
+  margin-right: 3rem;
 }
 
 /* Search Field */
@@ -7059,7 +7135,7 @@ textarea.materialize-textarea {
   height: 0;
 }
 
-.switch label input[type=checkbox]:checked + .lever {
+.switch label input[type=checkbox]:checked:not([disabled]) {
   background-color: #84c7c1;
 }
 
@@ -7137,15 +7213,12 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 
 /* Select Field
    ========================================================================== */
-select {
-  display: none;
-}
-
 select.browser-default {
-  display: block;
+  opacity: 1;
 }
 
 select {
+  opacity: 0;
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   padding: 5px;
@@ -7209,6 +7282,15 @@ select {
   font-size: 0.8rem;
 }
 
+.select-wrapper .hide-select {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
 select:disabled {
   color: rgba(0, 0, 0, 0.42);
 }
@@ -7261,6 +7343,16 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 .prefix ~ label {
   margin-left: 3rem;
+}
+
+.suffix ~ .select-wrapper {
+  margin-right: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem);
+}
+
+.suffix ~ label {
+  margin-right: 3rem;
 }
 
 .select-dropdown li img {
@@ -7537,9 +7629,7 @@ input[type=range]::-ms-thumb {
   margin: 0;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
-  height: 100%;
-  height: calc(100% + 60px);
-  height: -moz-calc(100%);
+  height: 100vh;
   padding-bottom: 60px;
   background-color: #fff;
   z-index: 999;
@@ -7687,9 +7777,9 @@ input[type=range]::-ms-thumb {
 
 .drag-target {
   height: 100%;
-  width: 10px;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 998;
 }
 
@@ -7709,7 +7799,7 @@ input[type=range]::-ms-thumb {
   left: auto;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992.99px) {
   .sidenav.sidenav-fixed {
     -webkit-transform: translateX(-105%);
             transform: translateX(-105%);
@@ -8486,19 +8576,10 @@ input[type=range]::-ms-thumb {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s,
- visibility 0s 1s,
- -webkit-transform .3s;
-  transition: opacity .3s,
- visibility 0s 1s,
- -webkit-transform .3s;
-  transition: opacity .3s,
- transform .3s,
- visibility 0s 1s;
-  transition: opacity .3s,
- transform .3s,
- visibility 0s 1s,
- -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8551,19 +8632,10 @@ input[type=range]::-ms-thumb {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s,
- visibility 0s,
- -webkit-transform .3s;
-  transition: opacity .3s,
- visibility 0s,
- -webkit-transform .3s;
-  transition: opacity .3s,
- transform .3s,
- visibility 0s;
-  transition: opacity .3s,
- transform .3s,
- visibility 0s,
- -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s;
+  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
   z-index: -1;
 }
 
@@ -8706,7 +8778,7 @@ input[type=range]::-ms-thumb {
 }
 
 .datepicker-controls .select-month input {
-  width: 70px;
+  width: 80px;
 }
 
 .month-prev, .month-next {
