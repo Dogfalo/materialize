@@ -3,7 +3,7 @@
   "description": "Builds Materialize distribution packages",
   "author": "Alvin Wang, Alan Chang",
   "homepage": "https://materializecss.github.io/materialize/",
-  "version": "1.0.0",
+  "version": "1.1.0-alpha",
   "main": "dist/js/materialize.js",
   "style": "dist/css/materialize.css",
   "sass": "sass/materialize.scss",
