@@ -20,7 +20,8 @@
     "test": "grunt travis",
     "release": "grunt release",
     "precommit": "lint-staged",
-    "docs": "grunt docs"
+    "docs": "grunt docs",
+    "commit": "npx cz"
   },
   "lint-staged": {
     "js/*.js": [
@@ -31,9 +32,12 @@
   "dependencies": {},
   "engine": "node >= 6",
   "devDependencies": {
+    "@commitlint/config-conventional": "^12.1.1",
     "autoprefixer": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "commitlint": "^12.1.1",
+    "cz-conventional-changelog": "^3.3.0",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
     "grunt-banner": "^0.6.0",
@@ -70,5 +74,10 @@
     "sass/**/*.scss",
     "Gruntfile.js",
     "LICENSE"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
