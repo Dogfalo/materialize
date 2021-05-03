@@ -67,10 +67,34 @@
               <td>Delay time before tooltip appears.</td>
             </tr>
             <tr>
+              <td>text</td>
+              <td>String</td>
+              <td></td>
+              <td>Text string for the tooltip.</td>
+            </tr>
+            <tr>
+              <td>unsafeHTML</td>
+              <td>String</td>
+              <td>null</td>
+              <td>HTML content that will be appended to to <code class="language-javascript">text</code>. 
+                Only use properly sanitized or otherwise trusted data for <code class="language-javascript">unsafeHTML</code>.</td>
+            </tr>
+            <tr>
               <td>html</td>
               <td>String</td>
               <td>null</td>
-              <td>Can take regular text or HTML strings.</td>
+              <td>
+                <p>
+                  (DEPRECATED): will be removed in a later release.
+                </p>
+                <p>
+                  HTML content that will be appended to <code class="language-javascript">text</code>. 
+                  Only use properly sanitized or otherwise trusted data for <code class="language-javascript">html</code>.
+                </p>
+                <p>
+                  Will be ignored if <code class="language-javascript">unsafeHTML</code> is set.
+                </p>
+              </td>
             </tr>
             <tr>
               <td>margin</td>

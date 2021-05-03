@@ -4,14 +4,14 @@
 
       <div id="introduction" class="section scrollspy">
         <p>Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts. These toasts are also placed and sized responsively, try it out by clicking the button below on different device sizes.</p>
-        <a class="waves-effect waves-light btn" onclick="M.toast({html: 'I am a toast'})">Toast!</a>
-        <p>To do this, call the M.toast() function programatically in JavaScript.</p>
+        <a class="waves-effect waves-light btn" onclick="M.toast({text: 'I am a toast'})">Toast!</a>
+        <p>To do this, call the M.toast() function programmatically in JavaScript.</p>
         <pre><code class="language-javascript">
-  M.toast({html: 'I am a toast!'})
+  M.toast({text: 'I am a toast!'})
         </code></pre>
         <p>One way to add this into your application is to add this as an onclick event to a button.</p>
         <pre><code class="language-markup">
-  &lt;a onclick="M.toast({html: 'I am a toast'})" class="btn">Toast!&lt;/a>
+  &lt;a onclick="M.toast({text: 'I am a toast'})" class="btn">Toast!&lt;/a>
         </code></pre>
       </div>
 
@@ -31,10 +31,36 @@
 
           <tbody>
             <tr>
+              <td>text</td>
+              <td>String</td>
+              <td>''</td>
+              <td>The content of the Toast.</td>
+            </tr>
+            <tr>
+              <td>unsafeHTML</td>
+              <td>String, HTMLElement</td>
+              <td>''</td>
+              <td>
+                HTML content that will be appended to to <code class="language-javascript">text</code>.
+                Only use properly sanitized or otherwise trusted data for <code class="language-javascript">unsafeHTML</code>.
+              </td>
+            </tr>
+            <tr>
               <td>html</td>
               <td>String</td>
               <td>''</td>
-              <td>The HTML content of the Toast.</td>
+              <td>
+                <p>
+                  (DEPRECATED): will be removed in a later release.
+                </p>
+                <p>
+                  HTML content that will be appended to <code class="language-javascript">text</code>.
+                  Only use properly sanitized or otherwise trusted data for <code class="language-javascript">html</code>.
+                </p>
+                <p>
+                  Will be ignored if <code class="language-javascript">unsafeHTML</code> is set.
+                </p>
+              </td>
             </tr>
             <tr>
               <td>displayLength</td>
@@ -117,11 +143,16 @@
 
       <div id="custom-html" class="section scrollspy">
         <h3 class="header">Custom HTML</h3>
-        <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not need to escape quotation marks. </p>
+        <p>You can pass in an HTML String as the first argument as well. Take a look at the example below, where we pass
+          in text as well as a flat button. If you call an external function instead of in-line JavaScript, you will not
+          need to escape quotation marks. </p>
+        <p>
+          Only use a properly sanitized or otherwise trusted HTML string.
+        </p>
         <a class="waves-effect waves-light btn" onclick="displayCustomHTMLToast()">Toast with Action</a>
         <pre><code class="language-javascript">
   var toastHTML = '&lt;span>I am toast content&lt;/span>&lt;button class="btn-flat toast-action">Undo&lt;/button>';
-  M.toast({html: toastHTML});
+  M.toast({unsafeHTML: toastHTML});
         </code></pre>
       </div>
 
@@ -129,9 +160,9 @@
       <div id="callback" class="scrollspy section">
         <h3 class="header">Callback</h3>
         <p>You can have the toast callback a function when it has been dismissed.</p>
-        <a class="btn" onclick="M.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!</a>
+        <a class="btn" onclick="M.toast({text: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!</a>
         <pre><code class="language-markup">
-  &lt;a class="btn" onclick="M.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!&lt;/a>
+  &lt;a class="btn" onclick="M.toast({text: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!&lt;/a>
         </code></pre>
       </div>
 
@@ -140,11 +171,11 @@
         <h3 class="header">Styling Toasts</h3>
         <p>We've added the ability to customize your toasts easily. You can pass in classes as an optional parameter into the toast function. We've added a rounded class for you, but you can create your own CSS classes and apply them to toasts. Checkout out our full example below.</p>
 
-        <a class="waves-effect waves-light btn" onclick="M.toast({html: 'I am a toast!', classes: 'rounded'})">Round Toast!</a>
+        <a class="waves-effect waves-light btn" onclick="M.toast({text: 'I am a toast!', classes: 'rounded'})">Round Toast!</a>
 
         <pre><code class="language-javascript">
   // 'rounded' is the class I'm applying to the toast
-  M.toast({html: 'I am a toast!', classes: 'rounded'});
+  M.toast({text: 'I am a toast!', classes: 'rounded'});
         </code></pre>
       </div>
 
