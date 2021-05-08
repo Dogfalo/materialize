@@ -31,8 +31,7 @@ patches and features.
 Before you now get lost in the repository, here are a few starting points for you to check out. You might find that others have had similar questions or that your question rather belongs in one place than another.
 
 * Chat: https://gitter.im/materializecss/materialize
-* Website: http://materializecss.com
-* Twitter: https://twitter.com/materializecss
+* Website: https://materializecss.github.io/materialize
 
 ## Using the issue tracker
 
@@ -88,7 +87,7 @@ We like feature requests but make sure that it can be seen within the goals of t
 ### Code Examples
 
 - Issues without a [Codepen](#code-examples) (where applicable) will be closed or ignored.
-- Use this [Codepen](http://codepen.io/Dogfalo/pen/xbzPQV) to illustrate your problem.
+- Use this [Codepen](https://codepen.io/pen/?template=MRNObV) to illustrate your problem.
 
 ## Pull requests
 
@@ -162,7 +161,6 @@ If you want to help us translate the documentation into other languages, please 
 - [Jasmine Documentation](http://jasmine.github.io/2.0/introduction.html)
 - [Grunt Jasmine Plugin](https://github.com/gruntjs/grunt-contrib-jasmine)
 - [Example Jasmine Tests](https://github.com/materializecss/materialize/tree/master/tests/spec)
-- [Travis CI](https://travis-ci.org/materializecss/materialize)
 
 After `npm install`, you can run `npm test` and it will run the tests. If you get any errors and have not made any changes, it means you have not installed the proper dependencies.
 
