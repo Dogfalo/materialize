@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Select testbed</title>
+    <!-- CSS  -->
+    <link href="../../../bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <style>
+      body {
+        padding: 16px;
+      }
+      .input-field{
+        padding-bottom: 2em;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="input-field col s12">
+      <select>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      <label>Materialize Select</label>
+    </div>
+
+    <div class="input-field col s12">
+      <select multiple>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      <label>Materialize Multiple Select</label>
+    </div>
+
+    <div class="input-field col s12">
+      <select>
+        <optgroup label="team 1">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </optgroup>
+        <optgroup label="team 2">
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+        </optgroup>
+      </select>
+      <label>Optgroups</label>
+    </div>
+
+    <div class="input-field col s12 m6">
+      <select class="icons">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="" data-icon="../../docs/images/placeholder/250x250_a.png">example 1</option>
+        <option value="" data-icon="../../docs/images/placeholder/250x250_b.png">example 2</option>
+        <option value="" data-icon="../../docs/images/placeholder/250x250_c.png">example 3</option>
+      </select>
+      <label>Images in select</label>
+    </div>
+    <div class="input-field col s12 m6">
+      <select class="icons">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="" data-icon="../../docs/images/placeholder/250x250_a.png" class="left">example 1</option>
+        <option value="" data-icon="../../docs/images/placeholder/250x250_b.png" class="left">example 2</option>
+        <option value="" data-icon="../../docs/images/placeholder/250x250_c.png" class="left">example 3</option>
+      </select>
+      <label>Images in select</label>
+    </div>
+
+    <label>Browser Select</label>
+    <select class="browser-default">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+
+
+    <script src="../../../bin/materialize.js"></script>
+
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems, {
+        // specify options here
+      });
+    });
+    </script>
+  </body>
+</html>

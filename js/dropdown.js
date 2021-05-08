@@ -386,7 +386,7 @@
         this.focusedIndex < this.dropdownEl.children.length &&
         this.options.autoFocus
       ) {
-        this.dropdownEl.children[this.focusedIndex].classList.add('active');
+        this.dropdownEl.children[this.focusedIndex].focus();
         this.dropdownEl.children[this.focusedIndex].scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
