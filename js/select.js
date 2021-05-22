@@ -30,8 +30,10 @@
       /**
        * Options for the select
        * @member FormSelect#options
+       * @prop {Element} optionParent [optionParent=<element>] - Parent element to scan option and optgroup elements from,
+       * default is the select element itself (optional)
        */
-      this.options = $.extend({}, FormSelect.defaults, options);
+      this.options = $.extend({ optionParent: this.$el }, FormSelect.defaults, options);
 
       this.isMultiple = this.$el.prop('multiple');
 
@@ -182,7 +184,7 @@
       }
 
       // Create dropdown
-      this.$selectOptions = this.$el.children('option, optgroup');
+      this.$selectOptions = $(this.options.optionParent).children('option, optgroup');
       this.dropdownOptions = document.createElement('ul');
       this.dropdownOptions.id = `select-options-${M.guid()}`;
       $(this.dropdownOptions).addClass(
@@ -213,6 +215,10 @@
               let optionEl = this._appendOptionWithIcon(this.$el, el, 'optgroup-option');
               this._addOptionToValueDict(el, optionEl);
             });
+          }
+
+          if (this.options.optionParent != this.$el[0]) {
+            this.el.appendChild(el);
           }
         });
       }
