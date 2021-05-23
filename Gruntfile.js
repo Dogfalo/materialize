@@ -383,8 +383,8 @@ module.exports = function(grunt) {
       }
     },
 
-    //  Jade
-    jade: {
+    //  Pug
+    pug: {
       compile: {
         options: {
           pretty: true,
@@ -393,68 +393,68 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'docs/index.html': 'jade/index.jade',
-          'docs/icons.html': 'jade/icons.jade',
-          'docs/about.html': 'jade/about.jade',
-          'docs/sass.html': 'jade/sass.jade',
-          'docs/getting-started.html': 'jade/getting-started.jade',
-          'docs/mobile.html': 'jade/mobile.jade',
-          'docs/parallax.html': 'jade/parallax.jade',
-          'docs/parallax-demo.html': 'jade/parallax-demo.jade',
-          'docs/typography.html': 'jade/typography.jade',
-          'docs/color.html': 'jade/color.jade',
-          'docs/shadow.html': 'jade/shadow.jade',
-          'docs/grid.html': 'jade/grid.jade',
-          'docs/media-css.html': 'jade/media-css.jade',
-          'docs/table.html': 'jade/table.jade',
-          'docs/helpers.html': 'jade/helpers.jade',
-          'docs/buttons.html': 'jade/buttons.jade',
-          'docs/navbar.html': 'jade/navbar.jade',
-          'docs/cards.html': 'jade/cards.jade',
-          'docs/preloader.html': 'jade/preloader.jade',
-          'docs/collections.html': 'jade/collections.jade',
-          'docs/badges.html': 'jade/badges.jade',
-          'docs/footer.html': 'jade/footer.jade',
-          'docs/modals.html': 'jade/modals.jade',
-          'docs/dropdown.html': 'jade/dropdown.jade',
-          'docs/tabs.html': 'jade/tabs.jade',
-          'docs/toasts.html': 'jade/toasts.jade',
-          'docs/tooltips.html': 'jade/tooltips.jade',
-          'docs/sidenav.html': 'jade/sidenav.jade',
-          'docs/pushpin.html': 'jade/pushpin.jade',
-          'docs/waves.html': 'jade/waves.jade',
-          'docs/media.html': 'jade/media.jade',
-          'docs/collapsible.html': 'jade/collapsible.jade',
-          'docs/scrollspy.html': 'jade/scrollspy.jade',
-          'docs/fullscreen-slider-demo.html': 'jade/fullscreen-slider-demo.jade',
-          'docs/pagination.html': 'jade/pagination.jade',
-          'docs/breadcrumbs.html': 'jade/breadcrumbs.jade',
-          'docs/carousel.html': 'jade/carousel.jade',
-          'docs/feature-discovery.html': 'jade/feature-discovery.jade',
-          'docs/pulse.html': 'jade/pulse.jade',
-          'docs/pushpin-demo.html': 'jade/pushpin-demo.jade',
-          'docs/css-transitions.html': 'jade/css-transitions.jade',
-          'docs/404.html': 'jade/404.jade',
-          'docs/autocomplete.html': 'jade/autocomplete.jade',
-          'docs/checkboxes.html': 'jade/checkboxes.jade',
-          'docs/chips.html': 'jade/chips.jade',
-          'docs/pickers.html': 'jade/pickers.jade',
-          'docs/radio-buttons.html': 'jade/radio-buttons.jade',
-          'docs/range.html': 'jade/range.jade',
-          'docs/select.html': 'jade/select.jade',
-          'docs/switches.html': 'jade/switches.jade',
-          'docs/text-inputs.html': 'jade/text-inputs.jade',
-          'docs/floating-action-button.html': 'jade/floating-action-button.jade',
-          'docs/auto-init.html': 'jade/auto-init.jade'
+          'docs/index.html': 'pug/index.pug',
+          'docs/icons.html': 'pug/icons.pug',
+          'docs/about.html': 'pug/about.pug',
+          'docs/sass.html': 'pug/sass.pug',
+          'docs/getting-started.html': 'pug/getting-started.pug',
+          'docs/mobile.html': 'pug/mobile.pug',
+          'docs/parallax.html': 'pug/parallax.pug',
+          'docs/parallax-demo.html': 'pug/parallax-demo.pug',
+          'docs/typography.html': 'pug/typography.pug',
+          'docs/color.html': 'pug/color.pug',
+          'docs/shadow.html': 'pug/shadow.pug',
+          'docs/grid.html': 'pug/grid.pug',
+          'docs/media-css.html': 'pug/media-css.pug',
+          'docs/table.html': 'pug/table.pug',
+          'docs/helpers.html': 'pug/helpers.pug',
+          'docs/buttons.html': 'pug/buttons.pug',
+          'docs/navbar.html': 'pug/navbar.pug',
+          'docs/cards.html': 'pug/cards.pug',
+          'docs/preloader.html': 'pug/preloader.pug',
+          'docs/collections.html': 'pug/collections.pug',
+          'docs/badges.html': 'pug/badges.pug',
+          'docs/footer.html': 'pug/footer.pug',
+          'docs/modals.html': 'pug/modals.pug',
+          'docs/dropdown.html': 'pug/dropdown.pug',
+          'docs/tabs.html': 'pug/tabs.pug',
+          'docs/toasts.html': 'pug/toasts.pug',
+          'docs/tooltips.html': 'pug/tooltips.pug',
+          'docs/sidenav.html': 'pug/sidenav.pug',
+          'docs/pushpin.html': 'pug/pushpin.pug',
+          'docs/waves.html': 'pug/waves.pug',
+          'docs/media.html': 'pug/media.pug',
+          'docs/collapsible.html': 'pug/collapsible.pug',
+          'docs/scrollspy.html': 'pug/scrollspy.pug',
+          'docs/fullscreen-slider-demo.html': 'pug/fullscreen-slider-demo.pug',
+          'docs/pagination.html': 'pug/pagination.pug',
+          'docs/breadcrumbs.html': 'pug/breadcrumbs.pug',
+          'docs/carousel.html': 'pug/carousel.pug',
+          'docs/feature-discovery.html': 'pug/feature-discovery.pug',
+          'docs/pulse.html': 'pug/pulse.pug',
+          'docs/pushpin-demo.html': 'pug/pushpin-demo.pug',
+          'docs/css-transitions.html': 'pug/css-transitions.pug',
+          'docs/404.html': 'pug/404.pug',
+          'docs/autocomplete.html': 'pug/autocomplete.pug',
+          'docs/checkboxes.html': 'pug/checkboxes.pug',
+          'docs/chips.html': 'pug/chips.pug',
+          'docs/pickers.html': 'pug/pickers.pug',
+          'docs/radio-buttons.html': 'pug/radio-buttons.pug',
+          'docs/range.html': 'pug/range.pug',
+          'docs/select.html': 'pug/select.pug',
+          'docs/switches.html': 'pug/switches.pug',
+          'docs/text-inputs.html': 'pug/text-inputs.pug',
+          'docs/floating-action-button.html': 'pug/floating-action-button.pug',
+          'docs/auto-init.html': 'pug/auto-init.pug'
         }
       }
     },
 
     //  Watch Files
     watch: {
-      jade: {
-        files: ['jade/**/*'],
-        tasks: ['jade_compile'],
+      pug: {
+        files: ['pug/**/*'],
+        tasks: ['pug_compile'],
         options: {
           interrupt: false,
           spawn: false
@@ -488,10 +488,10 @@ module.exports = function(grunt) {
       },
       monitor: {
         tasks: [
-          'jade_compile',
+          'pug_compile',
           'sass_compile',
           'js_compile',
-          'watch:jade',
+          'watch:pug',
           'watch:js',
           'watch:sass',
           'notify:watching',
@@ -532,10 +532,10 @@ module.exports = function(grunt) {
         }
       },
 
-      jade_compile: {
+      pug_compile: {
         options: {
           enabled: true,
-          message: 'Jade Compiled!',
+          message: 'Pug Compiled!',
           title: 'Materialize',
           success: true,
           duration: 1
@@ -556,7 +556,7 @@ module.exports = function(grunt) {
     // Replace text to update the version string
     replace: {
       version: {
-        src: ['bower.json', 'package.js', 'jade/**/*.html'],
+        src: ['bower.json', 'package.js', 'pug/**/*.html'],
         overwrite: true,
         replacements: [
           {
@@ -635,7 +635,7 @@ module.exports = function(grunt) {
               res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
               next();
             });
-            return middlewares
+            return middlewares;
           }
         }
       }
@@ -659,7 +659,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-text-replace');
@@ -698,7 +698,7 @@ module.exports = function(grunt) {
     config.babel.bin.options.inputSourceMap = grunt.file.readJSON(concatFile);
   });
 
-  grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
+  grunt.registerTask('pug_compile', ['pug', 'notify:pug_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'configureBabel', 'babel:bin', 'clean:temp']);
   grunt.registerTask('sass_compile', [
     'sass:gh',
@@ -721,5 +721,5 @@ module.exports = function(grunt) {
     grunt.task.run(tasks);
 
   });
-  grunt.registerTask('docs', ['js_compile', 'copy:docs', 'sass:gh',  'postcss:gh', 'jade', 'replace:docs']);
+  grunt.registerTask('docs', ['js_compile', 'copy:docs', 'sass:gh',  'postcss:gh', 'pug', 'replace:docs']);
 };

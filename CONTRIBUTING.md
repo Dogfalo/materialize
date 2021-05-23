@@ -103,7 +103,7 @@ and/or [`/materialize/js/`](https://github.com/materializecss/materialize/tree/m
 ### Documentation
 
 When contributing to Materialize's documentation, you should edit the documentation source files in
-[the `/materialize/jade/page-contents/` directory of the `master` branch](https://github.com/materializecss/materialize/tree/master/jade).
+[the `/materialize/pug/page-contents/` directory of the `master` branch](https://github.com/materializecss/materialize/tree/master/pug).
 **Do not edit the `gh-pages` branch.** That branch is generated from the documentation source files and is managed separately by the Materialize maintainers.
 
 ### Submitting Your Pull Request
