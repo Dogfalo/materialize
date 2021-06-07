@@ -386,7 +386,7 @@
         this.focusedIndex < this.dropdownEl.children.length &&
         this.options.autoFocus
       ) {
-        this.dropdownEl.children[this.focusedIndex].focus();
+        this.dropdownEl.children[this.focusedIndex].classList.add('active');
         this.dropdownEl.children[this.focusedIndex].scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
@@ -621,6 +621,11 @@
       if (!this.isOpen) {
         return;
       }
+
+      // Remove active from currently focused option so it doesn't carry over
+      // https://github.com/materializecss/materialize/issues/133
+      this.dropdownEl.children[this.focusedIndex].classList.remove('active');
+
       this.isOpen = false;
       this.focusedIndex = -1;
 
