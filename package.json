@@ -29,7 +29,6 @@
       "git add"
     ]
   },
-  "dependencies": {},
   "engine": "node >= 6",
   "devDependencies": {
     "@commitlint/config-conventional": "^12.1.1",
@@ -42,7 +41,7 @@
     "grunt-babel": "^6.0.0",
     "grunt-banner": "^0.6.0",
     "grunt-browser-sync": "^2.2.0",
-    "grunt-concurrent": "^2.3.1",
+    "grunt-concurrent": "^3.0.0",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-compress": "^1.4.1",
     "grunt-contrib-concat": "^1.0.1",
@@ -56,16 +55,16 @@
     "grunt-postcss": "^0.9.0",
     "grunt-remove-logging": "^0.2.0",
     "grunt-rename-util": "^1.0.0",
-    "grunt-sass": "^2.0.0",
+    "grunt-sass": "^3.1.0",
     "grunt-text-replace": "^0.4.0",
     "husky": "^0.14.3",
-    "jasmine": "^3.6.0",
+    "jasmine": "^3.8.0",
     "jquery": "^3.2.1",
     "lint-staged": "^7.0.5",
     "node-archiver": "^0.3.0",
-    "node-sass": "^4.14.1",
     "phantomjs-prebuilt": "^2.1.14",
-    "prettier": "^1.12.1"
+    "prettier": "^1.12.1",
+    "sass": "^1.35.2"
   },
   "files": [
     "dist",

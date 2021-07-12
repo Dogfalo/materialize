@@ -162,7 +162,7 @@ textarea.materialize-textarea {
   // Gutter spacing
   &.col {
     label {
-      left: $gutter-width / 2;
+      left: $gutter-width * 0.5;
     }
 
     .prefix ~ label,
@@ -224,7 +224,7 @@ textarea.materialize-textarea {
     width: $input-height;
     font-size: $input-icon-size;
     transition: color .2s;
-    top: ($input-height - $input-icon-size) / 2;
+    top: ($input-height - $input-icon-size) * 0.5;
 
     &.active { color: $input-focus-color; }
   }

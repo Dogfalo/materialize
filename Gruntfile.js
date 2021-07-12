@@ -1,3 +1,5 @@
+const sass = require('sass');
+
 module.exports = function(grunt) {
   let concatFile = 'temp/js/materialize_concat.js.map';
 
@@ -30,6 +32,12 @@ module.exports = function(grunt) {
 
     //  Sass
     sass: {
+
+      // Global options
+      options: {
+        implementation: sass
+      },
+
       // Task
       expanded: {
         // Target options

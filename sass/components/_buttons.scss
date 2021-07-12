@@ -88,7 +88,7 @@
   }
   &.btn-large {
     &.halfway-fab {
-      bottom: -$button-floating-large-size / 2;
+      bottom: -$button-floating-large-size * 0.5;
     }
     width: $button-floating-large-size;
     height: $button-floating-large-size;
@@ -100,7 +100,7 @@
 
   &.btn-small {
     &.halfway-fab {
-      bottom: -$button-floating-small-size / 2;
+      bottom: -$button-floating-small-size * 0.5;
     }
     width: $button-floating-small-size;
     height: $button-floating-small-size;
@@ -116,7 +116,7 @@
     }
     position: absolute;
     right: 24px;
-    bottom: -$button-floating-size / 2;
+    bottom: -$button-floating-size * 0.5;
   }
   display: inline-block;
   color: $button-floating-color;
