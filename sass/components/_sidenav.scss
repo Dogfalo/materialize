@@ -67,14 +67,14 @@
       height: $sidenav-item-height;
       line-height: $sidenav-line-height;
       margin: 0 ($sidenav-padding * 2) 0 0;
-      width: $sidenav-item-height / 2;
+      width: $sidenav-item-height * 0.5;
       color: rgba(0,0,0,.54);
     }
   }
 
 
   .divider {
-    margin: ($sidenav-padding / 2) 0 0 0;
+    margin: ($sidenav-padding * 0.5) 0 0 0;
   }
 
   .subheader {
@@ -93,7 +93,7 @@
   .user-view {
     position: relative;
     padding: ($sidenav-padding * 2) ($sidenav-padding * 2) 0;
-    margin-bottom: $sidenav-padding / 2;
+    margin-bottom: $sidenav-padding * 0.5;
 
     & > a {
       &:hover { background-color: transparent; }
@@ -123,7 +123,7 @@
     .name,
     .email {
       font-size: $sidenav-font-size;
-      line-height: $sidenav-line-height / 2;
+      line-height: $sidenav-line-height * 0.5;
     }
 
     .name {
