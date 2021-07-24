@@ -234,16 +234,19 @@
 
 // Copy Button
 function copyText() {
-  const copiedText = document.getElementById('copiedText').textContent
-  const textArea = document.createElement('textArea');
-  textArea.textContent = copiedText;
-  document.body.append(textArea);
-  textArea.select();
-  textArea.setSelectionRange(0, 99999)
-  document.execCommand('copy');
-  document.getElementById('copyButton')
-  .insertAdjacentHTML('afterend',
-  `<span style="margin-left:10px; font-size:14px;">Copied!</span>`
-  )
-  // alert("Code copied to clipboard: " + textArea.value);
-  }
+	const copiedText = document.querySelector("#copiedText");
+	const copyMsg = document.querySelector(".copyMessage");
+	
+	const selection = window.getSelection();
+	const range = document.createRange();
+	range.selectNodeContents(copiedText);
+	selection.removeAllRanges();
+	selection.addRange(range); // Select the text to be copied
+	document.execCommand("copy");
+	selection.removeAllRanges(); // Unselect after copying, so selection is not visible
+
+  copyMsg.style.opacity = 1; // Show message after copying
+	setTimeout(() => {
+		copyMsg.style.opacity = 0; // Hide message after a few seconds
+	}, 2000);
+}
