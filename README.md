@@ -1,4 +1,4 @@
-# This library is no longer maintained
+# This repository is no longer maintained, go to https://github.com/materializecss/materialize
 
 <p align="center">
   <a href="http://materializecss.com/">
