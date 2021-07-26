@@ -1,4 +1,4 @@
-# This library is not maintained anymore
+# This library is no longer maintained
 
 <p align="center">
   <a href="http://materializecss.com/">
