@@ -233,20 +233,27 @@
 })(jQuery); // end of jQuery name space
 
 // Copy Button
-function copyText() {
-	const copiedText = document.querySelector("#copiedText");
-	const copyMsg = document.querySelector(".copyMessage");
-	
-	const selection = window.getSelection();
-	const range = document.createRange();
-	range.selectNodeContents(copiedText);
-	selection.removeAllRanges();
-	selection.addRange(range); // Select the text to be copied
-	document.execCommand("copy");
-	selection.removeAllRanges(); // Unselect after copying, so selection is not visible
+document.addEventListener('DOMContentLoaded', () => {
+  const copyBtn = Array.prototype.slice.call(
+    document.querySelectorAll(".copyButton")
+  );
 
-  copyMsg.style.opacity = 1; // Show message after copying
-	setTimeout(() => {
-		copyMsg.style.opacity = 0; // Hide message after a few seconds
-	}, 2000);
-}
+  const copiedText = Array.prototype.slice.call(
+    document.querySelectorAll(".copiedText")
+  );
+
+  const copyMsg = Array.prototype.slice.call(
+    document.querySelectorAll(".copyMessage")
+  );
+
+	copyBtn.forEach((copyBtn, i) => {
+		copyBtn.addEventListener("click", () => {
+			navigator.clipboard.writeText(copiedText[i].innerText);
+			copyMsg[i].style.opacity = 1;
+			setTimeout(() => {
+				copyMsg[i].style.opacity = 0;
+			}, 2000);
+		});
+	});
+});
+
