@@ -16,7 +16,8 @@
     "url": "https://github.com/Dogfalo/materialize/issues"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt travis --verbose",
+    "buildsquirro": "npx grunt monitor --force"
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
