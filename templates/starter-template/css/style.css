@@ -1,14 +1,19 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-.icon-block {
-  padding: 0 15px;
+.container {
+  width: 90%;
 }
-.icon-block .material-icons {
-	font-size: inherit;
+
+h1 {
+  color: orange;
+}
+
+a, .menu {
+  color: white;
+}
+
+.material-icons {
+  color: #29b6f6;
+}
+
+.us {
+  color: #ffcc80;
 }
