@@ -386,7 +386,9 @@
         this.focusedIndex < this.dropdownEl.children.length &&
         this.options.autoFocus
       ) {
-        this.dropdownEl.children[this.focusedIndex].classList.add('active');
+        this.dropdownEl.children[this.focusedIndex].focus({
+          preventScroll: true
+        });
         this.dropdownEl.children[this.focusedIndex].scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
@@ -621,6 +623,7 @@
       if (!this.isOpen) {
         return;
       }
+
       this.isOpen = false;
       this.focusedIndex = -1;
 
