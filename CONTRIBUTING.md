@@ -15,6 +15,7 @@ Looking to contribute something to Materialize? **Here's how you can help.**
 - [Pull Requests](#pull-requests)
   - [Documentation](#documentation)
   - [Submitting Your Pull Request](#submitting-your-pull-request)
+- [Translations](#translations)
 - [Jasmine Testing Guide:](#jasmine-testing-guide)
   - [Starting Out](#starting-out)
   - [Writing Tests](#writing-tests)
@@ -153,6 +154,10 @@ Adhering to the following process is the best way to get your work included in t
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description against the `master` branch. Reference any open issue in the description so it is automatically linked. Try and keep your commit history clean and concise. Once you submit your pull request, [Travis CI](https://travis-ci.org/materializecss/materialize) will automatically run your tests and will show a checkmark to show that all the tests have passed. Once this is done, we’ll review your tests and code and make comments if there are issues or things we think could be improved. Then once everything looks good we’ll merge the code in!
+
+## Translations
+
+If you want to help us translate the documentation into other languages, you can visit the [translation discussion here](https://github.com/materializecss/materialize/discussions/182).
 
 ## Jasmine Testing Guide:
 
