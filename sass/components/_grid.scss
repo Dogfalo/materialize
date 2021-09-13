@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .container {
   margin: 0 auto;
   max-width: 1280px;
@@ -14,8 +16,8 @@
   }
 }
 .col .row {
-  margin-left: (-1 * $gutter-width / 2);
-  margin-right: (-1 * $gutter-width / 2);
+  margin-left: (-1 * $gutter-width * 0.5);
+  margin-right: (-1 * $gutter-width * 0.5);
 }
 
 .section {
@@ -68,7 +70,7 @@
   .col {
     float: left;
     box-sizing: border-box;
-    padding: 0 $gutter-width / 2;
+    padding: 0 $gutter-width * 0.5;
     min-height: 1px;
 
     &[class*="push-"],
@@ -78,7 +80,7 @@
 
     $i: 1;
     @while $i <= $num-cols {
-      $perc: unquote((100 / ($num-cols / $i)) + "%");
+      $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
       &.s#{$i} {
         width: $perc;
         @include reset-offset;
@@ -88,7 +90,7 @@
 
     $i: 1;
     @while $i <= $num-cols {
-      $perc: unquote((100 / ($num-cols / $i)) + "%");
+      $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
       @include grid-classes("s", $i, $perc);
       $i: $i + 1;
     }
@@ -97,7 +99,7 @@
 
       $i: 1;
       @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
         &.m#{$i} {
           width: $perc;
           @include reset-offset;
@@ -107,7 +109,7 @@
 
       $i: 1;
       @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
         @include grid-classes("m", $i, $perc);
         $i: $i + 1;
       }
@@ -117,7 +119,7 @@
 
       $i: 1;
       @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
         &.l#{$i} {
           width: $perc;
           @include reset-offset;
@@ -127,7 +129,7 @@
 
       $i: 1;
       @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
         @include grid-classes("l", $i, $perc);
         $i: $i + 1;
       }
@@ -137,7 +139,7 @@
 
       $i: 1;
       @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
         &.xl#{$i} {
           width: $perc;
           @include reset-offset;
@@ -147,7 +149,7 @@
 
       $i: 1;
       @while $i <= $num-cols {
-        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        $perc: unquote(math.div(100, math.div($num-cols, $i)) + "%");
         @include grid-classes("xl", $i, $perc);
         $i: $i + 1;
       }

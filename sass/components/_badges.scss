@@ -39,13 +39,13 @@ nav ul a span.badge {
 
 // Line height centering
 .collection-item span.badge {
-  margin-top: calc(#{$collection-line-height / 2} - #{$badge-height / 2});
+  margin-top: calc(#{$collection-line-height * 0.5} - #{$badge-height * 0.5});
 }
 .collapsible span.badge {
   margin-left: auto;
 }
 .sidenav span.badge {
-  margin-top: calc(#{$sidenav-line-height / 2} - #{$badge-height / 2});
+  margin-top: calc(#{$sidenav-line-height * 0.5} - #{$badge-height * 0.5});
 }
 
 table span.badge {
