@@ -1,21 +1,26 @@
-Contributing
-------------
+# Contributing
 
 Looking to contribute something to Materialize? **Here's how you can help.**
 
-### Table of contents:
+## Table of contents:
+- [Table of contents:](#table-of-contents)
 - [Introduction](#introduction)
-- [Communication channels](#communication-channels)
+  - [Communication channels](#communication-channels)
 - [Using the issue tracker](#using-the-issue-tracker)
   - [Issues and labels](#issues-and-labels)
   - [Bug reports](#bug-reports)
+    - [Guidelines for bug reports:](#guidelines-for-bug-reports)
   - [Feature Requests](#feature-requests)
   - [Code Examples](#code-examples)
 - [Pull Requests](#pull-requests)
   - [Documentation](#documentation)
   - [Submitting Your Pull Request](#submitting-your-pull-request)
 - [Translations](#translations)
-- [Jasmine Testing Guide](#jasmine-testing-guide)
+- [Jasmine Testing Guide:](#jasmine-testing-guide)
+  - [Starting Out](#starting-out)
+  - [Writing Tests](#writing-tests)
+  - [Useful Jasmine Tips](#useful-jasmine-tips)
+- [License](#license)
 
 ## Introduction
 Please take a moment to review this document in order to make the contribution
@@ -55,12 +60,11 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 
 - `component:*` - Each component has been provided a label. Add the labels for any component the issue is triggered by.
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Materialize.
-- `css` - Issues stemming from our compiled CSS or source Sass files.
+- `css/sass` - Issues stemming from our compiled CSS or source Sass files.
 - `js` - Issues stemming from our compiled or source JavaScript files.
-- `docs` - Issues for improving or updating our documentation.
-- `help-wanted` - Issues we need or would love help from the community to resolve.
+- `documentation` - Issues for improving or updating our documentation.
+- `help wanted` - Issues we need or would love help from the community to resolve.
 - `meta` - Issues with the project itself or our GitHub repository.
-- `on-hold` Issues or pull that should be worked on, but for any reason it won't be worked on/accepted as a PR anytime soon.
 
 For a complete look at our labels, see the [project labels page](https://github.com/materializecss/materialize/labels).
 
@@ -74,7 +78,7 @@ Good bug reports are extremely helpful! Unclear issues with little explanations 
 
 1. **Use the GitHub issue search** - check if the issue has already been reported.
 
-2. **Check if the issue has been fixed** - try to reproduce it using the latest `master` or development branch in the repository.
+2. **Check if the issue has been fixed** - try to reproduce it using the latest `v1-dev` branch in the repository.
 
 3. **Isolate the problem** &mdash; create a [reduced test case](https://css-tricks.com/reduced-test-cases/) using **our** [Codepen template](#code-examples).
 
@@ -89,7 +93,7 @@ We like feature requests but make sure that it can be seen within the goals of t
 - Issues without a [Codepen](#code-examples) (where applicable) will be closed or ignored.
 - Use this [Codepen](https://codepen.io/pen/?template=MRNObV) to illustrate your problem.
 
-## Pull requests
+## Pull Requests
 
 Good pull requests - patches, improvements, new features - are a fantastic help. Thanks for taking the time to contribute.
 
@@ -135,7 +139,7 @@ Adhering to the following process is the best way to get your work included in t
    git checkout -b <topic-branch-name>
    ```
 
-4. Commit your changes in logical chunks with messages written in english. Please adhere to these [git commit message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) or your code is unlikely be merged into the main project.
+4. Commit your changes in logical chunks with messages written in English. Please adhere to these [git commit message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) and use [conventional commit format](https://github.com/conventional-changelog/commitlint/#what-is-commitlint) in your commit messages (or use `npm run commit` to make your life easier). Failing to do this makes your commits unlikely to be merged into the main project.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
@@ -153,7 +157,7 @@ Adhering to the following process is the best way to get your work included in t
 
 ## Translations
 
-If you want to help us translate the documentation into other languages, please send us an email at materializeframework@gmail.com telling us which language team you want to join. We use [Transifex](https://www.transifex.com) as our localization platform and we will send you an invite there.
+If you want to help us translate the documentation into other languages, you can visit the [translation discussion here](https://github.com/materializecss/materialize/discussions/182).
 
 ## Jasmine Testing Guide:
 
