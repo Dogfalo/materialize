@@ -21,7 +21,10 @@
           </div>
         </div>
 
-        <pre><code class="language-markup">
+        <pre style="padding-top: 0px;">
+          <span class="copyMessage">Copied!</span>
+          <i class="material-icons copyButton">content_copy</i>
+          <code class="language-markup copiedText">
   &lt;div class="row">
     &lt;div class="col s12">
       &lt;div class="row">
@@ -33,7 +36,8 @@
       &lt;/div>
     &lt;/div>
   &lt;/div>
-        </code></pre>
+          </code>
+        </pre>
       </div>
 
       <div id="initialization" class="scrollspy section">
@@ -41,7 +45,10 @@
         <p>The data is a json object where the key is the matching string and the value is an optional image url.</p>
         <p>The key must be a text string. If you trust your data, or have properly sanitized your user input, you may
           use HTML by setting the option <code class="language-javascript">allowUnsafeHTML: true</code>.</p>
-        <pre><code class="language-javascript">
+          <pre style="padding-top: 0px;">
+            <span class="copyMessage">Copied!</span>
+            <i class="material-icons copyButton">content_copy</i>
+            <code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.autocomplete');
     var instances = M.Autocomplete.init(elems, {
@@ -67,7 +74,8 @@
       },
     });
   });
-        </code></pre>
+          </code>
+        </pre>
       </div>
 
 
@@ -135,12 +143,16 @@
         <p>This is the default compareFunction. You can write your own compareFunction by passing in a function with these same
           3 parameters. You can read more about how a compareFunction works
           <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">here</a>.</p>
-        <pre><code class="language-javascript col s12">
+          <pre style="padding-top: 0px;">
+            <span class="copyMessage">Copied!</span>
+            <i class="material-icons copyButton">content_copy</i>
+            <code class="language-javascript col s12 copiedText">
   // Sort function for sorting autocomplete results
   function (a, b, inputString) {
     return a.indexOf(inputString) - b.indexOf(inputString);
   }
-        </code></pre>
+            </code>
+          </pre>
         <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
       </div>
 
@@ -150,7 +162,10 @@
         <blockquote>
           <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin
             instance like this: </p>
-          <pre><code class="language-javascript col s12">
+            <pre style="padding-top: 0px;">
+              <span class="copyMessage">Copied!</span>
+              <i class="material-icons copyButton">content_copy</i>
+              <code class="language-javascript col s12 copiedText">
   var instance = M.Autocomplete.getInstance(elem);
 
   /* jQuery Method Calls
@@ -160,7 +175,8 @@
     $('.autocomplete').autocomplete('methodName');
     $('.autocomplete').autocomplete('methodName', paramName);
   */
-        </code></pre>
+              </code>
+            </pre>
         </blockquote>
         <h5 class="method-header">
           .open();

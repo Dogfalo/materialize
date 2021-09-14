@@ -34,10 +34,10 @@
             <br>
             <h5>CDN</h5>
             <p>You can find all the versions of the CDN at <a href="https://www.jsdelivr.com/package/npm/@materializecss/materialize">jsDelivr</a>.</p>
-            <p><a class="waves-effect waves-light btn" id="copyButton" onclick="copyText()">Copy code <i
-              class="material-icons right">content_copy</i></a>
-              <span class="copyMessage" style="margin-left:10px; font-size:14px; transition:all 0.2s ease-in; opacity:0;">Copied!</span></p>
-            <pre><code class="language-markup" id="copiedText">
+            <pre style="padding-top: 0px;">
+              <span class="copyMessage">Copied!</span>
+              <i class="material-icons copyButton">content_copy</i>
+              <code class="language-markup copiedText">
     &lt;!-- Compiled and minified CSS -->
     &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0-alpha/dist/css/materialize.min.css">
 
@@ -99,7 +99,10 @@
       <div class="col s12">
         <h5>HTML Setup</h5>
         <p>Next you just have to make sure you link the files properly in your webpage. Generally it is wise to import javascript files at the end of the body to reduce page load time. Follow the example below on how to import Materialize into your webpage.</p>
-        <pre><code class="language-markup">
+        <pre style="padding-top: 0px;">
+          <span class="copyMessage">Copied!</span>
+            <i class="material-icons copyButton">content_copy</i>
+            <code class="language-markup copiedText">
   &lt;!DOCTYPE html>
   &lt;html>
     &lt;head>
@@ -118,7 +121,8 @@
       &lt;script type="text/javascript" src="js/materialize.min.js">&lt;/script>
     &lt;/body>
   &lt;/html>
-        </code></pre>
+            </code>
+          </pre>
       </div>
     </div>
 

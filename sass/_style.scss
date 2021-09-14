@@ -653,6 +653,27 @@ code[class*="language-"] {
   background: rgba(246, 246, 246, .3);
 }
 
+// copy code icons
+.copyMessage, .copyButton {
+  color: #757575; 
+  position: absolute; 
+}
+
+.copyMessage {
+  font-size: 14px;
+	transition: all 0.2s ease-in;
+	opacity: 0;
+	right: 45px;
+	top: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.copyButton {
+  top: 10px; 
+  right: 10px; 
+  cursor: pointer;
+}
+
 .toc-wrapper {
   &.pin-bottom {
     margin-top: 84px;
