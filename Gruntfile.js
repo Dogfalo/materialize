@@ -17,6 +17,7 @@ module.exports = function(grunt) {
           specs: 'tests/spec/**/*Spec.js',
           helpers: 'tests/spec/helper.js',
           keepRunner: true,
+          version: '3.8.0',
           page: {
             viewportSize: {
                 width: 1400,
