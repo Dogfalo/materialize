@@ -408,16 +408,6 @@ table {
     tr {
       border-bottom: none;
     }
-
-    > tbody {
-      > tr:nth-child(odd) {
-        background-color: $table-striped-color;
-      }
-
-      > tr > td {
-        border-radius: 0;
-      }
-    }
   }
 
   &.highlight > tbody > tr {
@@ -443,7 +433,7 @@ td, th{
   display: table-cell;
   text-align: left;
   vertical-align: middle;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 // Responsive Table
