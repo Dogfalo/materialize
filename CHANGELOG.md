@@ -1,5 +1,5 @@
 # Changelog
-All notable changes to this project will be documented in this file. For changes made before this fork, please refer to [HISTORY.md](https://github.com/materializecss/materialize/blob/v1-dev/HISTORY.md).
+All notable changes to this project will be documented in this file. For changes made before this fork, please refer to [HISTORY.md](https://github.com/materializecss/materialize/blob/main/HISTORY.md).
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Nightly builds of the latest code available through github actions ([Easy link for the latest build](https://nightly.link/materializecss/materialize/workflows/nightly/v1-dev/build)) ([58d18003](https://github.com/materializecss/materialize/commit/58d180036374f2b38a244e5e96c33838ce185220))
+- Nightly builds of the latest code available through github actions ([Easy link for the latest build](https://nightly.link/materializecss/materialize/workflows/nightly/main/build)) ([58d18003](https://github.com/materializecss/materialize/commit/58d180036374f2b38a244e5e96c33838ce185220))
 - Added support for text input suffix icons ([3e516e5b](https://github.com/materializecss/materialize/commit/3e516e5b322e4f8c7299cc37504389d0ddbb1ed6))
 - Added dragTargetWidth option ([6f4b2a15](https://github.com/materializecss/materialize/commit/6f4b2a15fc9f21a91ce95a1baffe60cfb15619df))
 - Added ability to change tooltip animate opacity ([8fce193f](https://github.com/materializecss/materialize/commit/8fce193fa94fe6d5a04630e732623c84fc803c3d))
@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed XSS vulnerabilities ([3aae4cc9](https://github.com/materializecss/materialize/commit/3aae4cc9bb2b58c337bf25d2f04f129a2a0fa78f))
 
 #### Many other small changes have been made:
-https://github.com/Dogfalo/materialize/compare/v1-dev...materializecss:v1-dev
+https://github.com/Dogfalo/materialize/compare/v1-dev...materializecss:1.1.0-alpha
 
 #### Contributors
 Many thanks to all the contributors that made this release possible.

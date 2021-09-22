@@ -71,7 +71,7 @@
     if ($('.github-commit').length) {
       // Checks if widget div exists (Index only)
       $.ajax({
-        url: 'https://api.github.com/repos/materializecss/materialize/commits/v1-dev',
+        url: 'https://api.github.com/repos/materializecss/materialize/commits/main',
         dataType: 'json',
         success: function(data) {
           var sha = data.sha,

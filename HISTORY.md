@@ -1,6 +1,6 @@
 # History
 
-This file contains all changelogs from before this fork was made. For an up-to-date changelog please look here: [CHANGELOG.md](https://github.com/materializecss/materialize/blob/v1-dev/CHANGELOG.md)
+This file contains all changelogs from before this fork was made. For an up-to-date changelog please look here: [CHANGELOG.md](https://github.com/materializecss/materialize/blob/main/CHANGELOG.md)
 
 ---
 
@@ -9,7 +9,7 @@ Changelog
 Bolded styling surrounded by emojis indicates a breaking change.
 
 ## 1.0.0 (September 9th, 2018)
-- [Full Changelog here](https://github.com/materializecss/materialize/blob/v1-dev/v1-changelog.md)
+- [Full Changelog here](https://github.com/materializecss/materialize/blob/main/v1-changelog.md)
 
 ## 1.0.0-rc.2 (June 23rd, 2018)
 - Autocomplete

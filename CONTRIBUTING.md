@@ -37,6 +37,7 @@ Before you now get lost in the repository, here are a few starting points for yo
 
 * Chat: https://gitter.im/materializecss/materialize
 * Website: https://materializecss.github.io/materialize
+* Github discussions: https://github.com/materializecss/materialize/discussions
 
 ## Using the issue tracker
 
@@ -78,7 +79,7 @@ Good bug reports are extremely helpful! Unclear issues with little explanations 
 
 1. **Use the GitHub issue search** - check if the issue has already been reported.
 
-2. **Check if the issue has been fixed** - try to reproduce it using the latest `v1-dev` branch in the repository.
+2. **Check if the issue has been fixed** - try to reproduce it using the latest commited branch in the repository. The [`main`](https://github.com/materializecss/materialize/tree/main) branch is stable, other branches are used for development.
 
 3. **Isolate the problem** &mdash; create a [reduced test case](https://css-tricks.com/reduced-test-cases/) using **our** [Codepen template](#code-examples).
 
@@ -153,7 +154,7 @@ Adhering to the following process is the best way to get your work included in t
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description against the `master` branch. Reference any open issue in the description so it is automatically linked. Try and keep your commit history clean and concise. Once you submit your pull request, [Travis CI](https://travis-ci.org/materializecss/materialize) will automatically run your tests and will show a checkmark to show that all the tests have passed. Once this is done, we’ll review your tests and code and make comments if there are issues or things we think could be improved. Then once everything looks good we’ll merge the code in!
+7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description against the current development branch, usually `vX.X.X-dev`. Reference any open issue in the description so it is automatically linked. Try and keep your commit history clean and concise. Once you submit your pull request, Github Actions will automatically run your tests and will show a checkmark to show that all the tests have passed. Once this is done, we’ll review your tests and code and make comments if there are issues or things we think could be improved. Then once everything looks good we’ll merge the code in!
 
 ## Translations
 
