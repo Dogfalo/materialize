@@ -315,7 +315,7 @@
           e.stopPropagation();
         }
 
-        // fixes @materializecss/materialize#180
+        // fixes https://github.com/materializecss/materialize/issues/180
         if (clickedIndex < 0) {
           // relative X position > center of carousel = clicked at the right part of the carousel
           if (e.clientX - e.target.getBoundingClientRect().left > this.el.clientWidth / 2) {
