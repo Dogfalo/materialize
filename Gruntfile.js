@@ -1,7 +1,38 @@
 const sass = require('sass');
 
 module.exports = function(grunt) {
-  let concatFile = 'temp/js/materialize_concat.js.map';
+  const concatFile = 'temp/js/materialize_concat.js.map';
+  const jsFiles = [
+    'js/cash.js',
+    'js/waves.js',
+    'js/component.js',
+    'js/global.js',
+    'js/anime.min.js',
+    'js/collapsible.js',
+    'js/dropdown.js',
+    'js/modal.js',
+    'js/materialbox.js',
+    'js/parallax.js',
+    'js/tabs.js',
+    'js/tooltip.js',
+    'js/toasts.js',
+    'js/sidenav.js',
+    'js/scrollspy.js',
+    'js/autocomplete.js',
+    'js/forms.js',
+    'js/slider.js',
+    'js/cards.js',
+    'js/chips.js',
+    'js/pushpin.js',
+    'js/buttons.js',
+    'js/datepicker.js',
+    'js/timepicker.js',
+    'js/characterCounter.js',
+    'js/carousel.js',
+    'js/tapTarget.js',
+    'js/select.js',
+    'js/range.js'
+  ];
 
   // configure the tasks
   let config = {
@@ -165,37 +196,7 @@ module.exports = function(grunt) {
       },
       dist: {
         // the files to concatenate
-        src: [
-          'js/cash.js',
-          'js/component.js',
-          'js/global.js',
-          'js/anime.min.js',
-          'js/collapsible.js',
-          'js/dropdown.js',
-          'js/modal.js',
-          'js/materialbox.js',
-          'js/parallax.js',
-          'js/tabs.js',
-          'js/tooltip.js',
-          'js/waves.js',
-          'js/toasts.js',
-          'js/sidenav.js',
-          'js/scrollspy.js',
-          'js/autocomplete.js',
-          'js/forms.js',
-          'js/slider.js',
-          'js/cards.js',
-          'js/chips.js',
-          'js/pushpin.js',
-          'js/buttons.js',
-          'js/datepicker.js',
-          'js/timepicker.js',
-          'js/characterCounter.js',
-          'js/carousel.js',
-          'js/tapTarget.js',
-          'js/select.js',
-          'js/range.js'
-        ],
+        src: jsFiles,
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
       },
@@ -205,37 +206,7 @@ module.exports = function(grunt) {
           sourceMap: true,
           sourceMapStyle: 'link'
         },
-        src: [
-          'js/cash.js',
-          'js/component.js',
-          'js/global.js',
-          'js/anime.min.js',
-          'js/collapsible.js',
-          'js/dropdown.js',
-          'js/modal.js',
-          'js/materialbox.js',
-          'js/parallax.js',
-          'js/tabs.js',
-          'js/tooltip.js',
-          'js/waves.js',
-          'js/toasts.js',
-          'js/sidenav.js',
-          'js/scrollspy.js',
-          'js/autocomplete.js',
-          'js/forms.js',
-          'js/slider.js',
-          'js/cards.js',
-          'js/chips.js',
-          'js/pushpin.js',
-          'js/buttons.js',
-          'js/datepicker.js',
-          'js/timepicker.js',
-          'js/characterCounter.js',
-          'js/carousel.js',
-          'js/tapTarget.js',
-          'js/select.js',
-          'js/range.js'
-        ],
+        src: jsFiles,
         // the location of the resulting JS file
         dest: 'temp/js/materialize_concat.js'
       }
