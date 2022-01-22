@@ -8,7 +8,8 @@
     outDuration: 375,
     classes: '',
     completeCallback: null,
-    activationPercent: 0.8
+    activationPercent: 0.8,
+    userDismissible: true
   };
 
   class Toast {
@@ -97,13 +98,15 @@
       if (e.target && $(e.target).closest('.toast').length) {
         let $toast = $(e.target).closest('.toast');
         let toast = $toast[0].M_Toast;
-        toast.panning = true;
-        Toast._draggedToast = toast;
-        toast.el.classList.add('panning');
-        toast.el.style.transition = '';
-        toast.startingXPos = Toast._xPos(e);
-        toast.time = Date.now();
-        toast.xPos = Toast._xPos(e);
+        if (toast.options.userDismissible) {
+          toast.panning = true;
+          Toast._draggedToast = toast;
+          toast.el.classList.add('panning');
+          toast.el.style.transition = '';
+          toast.startingXPos = Toast._xPos(e);
+          toast.time = Date.now();
+          toast.xPos = Toast._xPos(e);
+        }
       }
     }
 
