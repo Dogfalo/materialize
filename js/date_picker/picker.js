@@ -513,7 +513,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
              * Unbind events on the things.
              */
             off: function() {
-                var i, thingName,
+                var i, thingName, namesCount,
                     names = arguments;
                 for ( i = 0, namesCount = names.length; i < namesCount; i += 1 ) {
                     thingName = names[i]
@@ -1119,4 +1119,3 @@ return PickerConstructor
 
 
 }));
-

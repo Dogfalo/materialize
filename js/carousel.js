@@ -158,7 +158,7 @@
           }, options.duration);
 
           // Start actual scroll
-          var i, half, delta, dir, tween, el, alignment, xTranslation;
+          var i, half, delta, dir, tween, el, alignment, xTranslation, tweenedOpacity, zTranslation;
           var lastCenter = center;
 
           offset = (typeof x === 'number') ? x : offset;
@@ -364,7 +364,7 @@
         }
 
         function drag(e) {
-          var x, delta, deltaY;
+          var x, delta, deltaY, y;
           if (pressed) {
             x = xpos(e);
             y = ypos(e);

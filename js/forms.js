@@ -22,7 +22,7 @@
       if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
         $(this).siblings('label').addClass('active');
       }
-      validate_field($(this));
+      window.validate_field($(this));
     });
 
     // Add active if input element has been pre-populated on document ready
@@ -64,7 +64,7 @@
 
       $inputElement.siblings(selector).removeClass('active');
 
-      validate_field($inputElement);
+      window.validate_field($inputElement);
     });
 
     window.validate_field = function(object) {

@@ -10,8 +10,8 @@
     // Remove pushpin event and classes
     if (options === "remove") {
       this.each(function () {
-        if (id = $(this).data('pushpin-id')) {
-          $(window).off('scroll.' + id);
+        if (window.id = $(this).data('pushpin-id')) {
+          $(window).off('scroll.' + window.id);
           $(this).removeData('pushpin-id').removeClass('pin-top pinned pin-bottom').removeAttr('style');
         }
       });
@@ -21,7 +21,7 @@
     options = $.extend(defaults, options);
 
 
-    $index = 0;
+    var $index = 0;
     return this.each(function() {
       var $uniqueId = Materialize.guid(),
           $this = $(this),
