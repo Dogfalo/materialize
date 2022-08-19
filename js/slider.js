@@ -46,7 +46,7 @@
           // Only do if index changes
           if ($active_index != index) {
             $active = $slides.eq($active_index);
-            $caption = $active.find('.caption');
+            var $caption = $active.find('.caption');
 
             $active.removeClass('active');
             $active.velocity({opacity: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad',
@@ -182,7 +182,7 @@
             var velocityX = e.gesture.velocityX;
             var velocityY = e.gesture.velocityY;
 
-            $curr_slide = $slider.find('.active');
+            var $curr_slide = $slider.find('.active');
             if (Math.abs(velocityX) > Math.abs(velocityY)) {
               $curr_slide.velocity({ translateX: x
                   }, {duration: 50, queue: false, easing: 'easeOutQuad'});
@@ -222,9 +222,9 @@
         }).on('panend', function(e) {
           if (e.gesture.pointerType === "touch") {
 
-            $curr_slide = $slider.find('.active');
+            var $curr_slide = $slider.find('.active');
             panning = false;
-            curr_index = $slider.find('.active').index();
+            var curr_index = $slider.find('.active').index();
 
             if (!swipeRight && !swipeLeft || $slides.length <=1) {
               // Return to original spot
