@@ -106,9 +106,6 @@
             sha = sha.substring(0, 7);
           }
           $('.github-commit')
-            .find('.date')
-            .html(date);
-          $('.github-commit')
             .find('.sha')
             .html(sha)
             .attr('href', data.html_url);
