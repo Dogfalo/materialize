@@ -9,6 +9,8 @@
     numVisible: 5, // Number of visible items in carousel
     fullWidth: false, // Change to full width styles
     indicators: false, // Toggle indicators
+    buttonLeft: false, // Toggle left button
+    buttonRight: false, // Toggle right button
     noWrap: false, // Don't wrap around and cycle through items.
     onCycleTo: null // Callback for when a new slide is cycled to.
   };
@@ -39,6 +41,8 @@
        * @prop {Number} numVisible
        * @prop {Boolean} fullWidth
        * @prop {Boolean} indicators
+       * @prop {Boolean} buttonLeft
+       * @prop {Boolean} buttonRight
        * @prop {Boolean} noWrap
        * @prop {Function} onCycleTo
        */
@@ -47,6 +51,8 @@
       // Setup
       this.hasMultipleSlides = this.$el.find('.carousel-item').length > 1;
       this.showIndicators = this.options.indicators && this.hasMultipleSlides;
+      this.showLeftButton = this.options.buttonLeft;
+      this.showRightButton = this.options.buttonRight;
       this.noWrap = this.options.noWrap || !this.hasMultipleSlides;
       this.pressed = false;
       this.dragged = false;
@@ -74,7 +80,7 @@
           this.$el.find('.carousel-fixed-item').addClass('with-indicators');
         }
       }
-
+      
       // Iterate through slides
       this.$indicators = $('<ul class="indicators"></ul>');
       this.$el.find('.carousel-item').each((el, i) => {
@@ -94,6 +100,38 @@
         this.$el.append(this.$indicators);
       }
       this.count = this.images.length;
+
+      //Button left pressed action
+      this.$buttonLeft = $('<a class="buttonLeft"></a>');
+      this.$el.find('.carousel-item').each((el, i) => {
+        this.$buttonLeft.push(el);
+        if (this.showIndicators) {
+          let $indicator = $('<li class="indicator-item"></li>');
+
+          // Add active to first by default.
+          if (i === 0) {
+            $indicator[0].classList.add('active');
+          }
+
+          this.$indicators.append($indicator);
+        }
+      });
+
+      //Button right pressed action
+      this.$buttonRight = $('<a class="buttonRight"></a>');
+      this.$el.find('.carousel-item').each((el, i) => {
+        this.$buttonRight.push(el);
+        if (this.showIndicators) {
+          let $indicator = $('<li class="indicator-item"></li>');
+
+          // Add active to first by default.
+          if (i === 0) {
+            $indicator[0].classList.add('active');
+          }
+
+          this.$indicators.append($indicator);
+        }
+      });
 
       // Cap numVisible at count
       this.options.numVisible = Math.min(this.count, this.options.numVisible);
@@ -158,6 +196,20 @@
       this.el.addEventListener('mouseleave', this._handleCarouselReleaseBound);
       this.el.addEventListener('click', this._handleCarouselClickBound);
 
+      if (this.buttonRight) {
+        this._handleButtonRightClickBound = this._handleButtonRightClick.bind(this);
+        this.$buttonRight.find('.button-right').each((el, i) => {
+          el.addEventListener('click', this._handleButtonRightClickBound);
+        });
+      }
+
+      if (this.buttonLeft) {
+        this._handleButtonLeftClickBound = this._handleButtonLeftClick.bind(this);
+        this.$buttonLeft.find('.button-left').each((el, i) => {
+          el.addEventListener('click', this._handleButtonLeftClickBound);
+        });
+      }
+
       if (this.showIndicators && this.$indicators) {
         this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
         this.$indicators.find('.indicator-item').each((el, i) => {
@@ -191,6 +243,14 @@
         this.$indicators.find('.indicator-item').each((el, i) => {
           el.removeEventListener('click', this._handleIndicatorClickBound);
         });
+      }
+
+      if(this.buttonLeft){
+        this.el.removeEventListener('click', this._handleButtonLeftClickBound);
+      }
+
+      if(this.buttonRight){
+        this.el.removeEventListener('click', this._handleButtonRightClickBound);
       }
 
       window.removeEventListener('resize', this._handleThrottledResizeBound);

@@ -55,9 +55,14 @@
         <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
       </div>
     </div>
-
-
-
+    <div class="carousel ">
+      <a class="buttonLeft"></a>
+      <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
+      <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
+      <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
+      <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+      <a class="buttonRight"></a>
+    </div>
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../../../bin/materialize.js"></script>
@@ -81,7 +86,8 @@
 
       $('.carousel').carousel();
       $('.carousel.carousel-slider').carousel({fullWidth : true});
-
+      $('.carousel.buttonLeft').carousel({fullWidth : true});
+      $('.carousel.buttonRight').carousel({fullWidth : true});
     });
 
 
