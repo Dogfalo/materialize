@@ -56,6 +56,20 @@
     }
   }
 
+  .carousel-item-rounded {
+    visibility: hidden;
+    width: $carousel-item-width;
+    height: $carousel-item-height;
+    position: absolute;
+    border-radius: 100%;
+    top: 0;
+    left: 0;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
   .indicators {
     position: absolute;
     text-align: center;
@@ -80,6 +94,26 @@
       transition: background-color .3s;
       border-radius: 50%;
     }
+  }
+
+  .buttonLeft {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    height: 30px;
+    width: 20px;
+    margin: 20px;
+  }
+
+  .buttonRight {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 30px;
+    width: 20px;
+    margin: 20px;
   }
 
   // Materialbox compatibility
