@@ -98,6 +98,47 @@
     }
   }
 
+  // Responsive Horizontal Cards
+  @media #{$medium-and-up} {
+    &.responsive-horizontal {
+      &.small, &.medium, &.large {
+        .card-image {
+          height: 100%;
+          max-height: none;
+          overflow: visible;
+
+          img {
+            max-height: 100%;
+            width: auto;
+          }
+        }
+      }
+
+      display: flex;
+
+      .card-image {
+        max-width: 50%;
+
+        img {
+          border-radius: 2px 0 0 2px;
+          width: auto;
+          max-width: 100%;
+        }
+      }
+
+      .card-stacked {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .card-content {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+
   // Sticky Action Section
   &.sticky-action {
     .card-action {
@@ -109,9 +150,6 @@
       padding-bottom: 64px;
     }
   }
-
-
-
 
   .card-image {
     position: relative;
