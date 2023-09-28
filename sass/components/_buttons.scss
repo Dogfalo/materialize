@@ -43,11 +43,11 @@
 .btn-floating,
 .btn-large,
 .btn-flat {
-
+  font-size: $button-font-size;
   outline: 0;
 
   i {
-    font-size: $button-font-size;
+    font-size: $button-icon-font-size;
     line-height: inherit;
   }
 }
@@ -89,6 +89,10 @@
   }
 
   &.btn-large {
+    &.halfway-fab {
+      bottom: -$button-floating-large-size / 2;
+    }
+
     width: $button-floating-large-size;
     height: $button-floating-large-size;
     i {
@@ -104,8 +108,7 @@
 
     position: absolute;
     right: 24px;
-    bottom: 0;
-    transform: translateY(50%);
+    bottom: -$button-floating-size / 2;
   }
 
   display: inline-block;
@@ -180,6 +183,7 @@ button.btn-floating {
       display: flex;
       top: 0;
       bottom: 0;
+      z-index: 1;
 
       li {
         flex: 1;
@@ -213,7 +217,7 @@ button.btn-floating {
   bottom: 23px;
   padding-top: 15px;
   margin-bottom: 0;
-  z-index: 998;
+  z-index: 997;
 
   ul {
     left: 0;
@@ -255,18 +259,12 @@ button.btn-floating {
   transition: background-color .2s;
 
   &:focus,
-  &:active {
-    background-color: transparent;
-  }
-
-  &:focus,
   &:hover {
-    background-color: rgba(0,0,0,.1);
     box-shadow: none;
   }
 
-  &:active {
-    background-color: rgba(0,0,0,.2);
+  &:focus {
+    background-color: rgba(0,0,0,.1);
   }
 
   &.disabled {

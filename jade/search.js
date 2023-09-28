@@ -80,6 +80,12 @@
     });
 
     window.index.add({
+      href: 'http://materializecss.com/feature-discovery.html',
+      title: 'feature discovery',
+      body: 'Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.'
+    });
+
+    window.index.add({
       href: 'http://materializecss.com/footer.html',
       title: 'footer',
       body: 'Footers are a great way to organize a lot of site navigation and information at the end of a page. This is where the user will look once hes finished scrolling through the current page or is looking for additional information about your website.'
@@ -167,6 +173,12 @@
       href: 'http://materializecss.com/preloader.html',
       title: 'preloader',
       body: 'If you have content that will take a long time to load, you should give the user feedback. For this reason we provide a number activity + progress indicators.'
+    });
+
+    window.index.add({
+      href: 'http://materializecss.com/pulse.html',
+      title: 'pulse',
+      body: 'Draw attention to your buttons with this subtle but captivating effect.'
     });
 
     window.index.add({
@@ -279,7 +291,7 @@
       }
     });
 
-    $('input#search').bind('keyup', debounce(function (e) {
+    $('input#search').on('keyup', debounce(function (e) {
       if ($(this).val() < 2) {
         renderResults([]);
         return;
@@ -296,7 +308,7 @@
     }));
 
 
-    $('input#search').bind('keydown', debounce(function (e) {
+    $('input#search').on('keydown', debounce(function (e) {
       // Escape.
       if (e.keyCode === 27) {
         $(this).val('');

@@ -11,7 +11,7 @@
           <p>The container class is not strictly part of the grid but is important in laying out content. It allows you to center your page content. The <code class="language-markup">container</code> class is set to ~70% of the window width. It helps you center and contain your page content. We use the container to contain our body content.
 
           <h4>Demo</h4>
-          <p>Try the button below to see what the page looks like without containers</p>
+          <p>Try the button below to see what the page looks like without containers.</p>
           <a id="container-toggle-button" class="btn waves-effect waves-light">Turn off Containers</a>
 
   <!-- Container Visual Demo -->
@@ -110,9 +110,9 @@
           </div>
           <pre><code class="language-markup">
     &lt;div class="row">
-      &lt;div class="col s12">This div is 12-columns wide&lt;/div>
-      &lt;div class="col s6">This div is 6-columns wide&lt;/div>
-      &lt;div class="col s6">This div is 6-columns wide&lt;/div>
+      &lt;div class="col s12">This div is 12-columns wide on all screen sizes&lt;/div>
+      &lt;div class="col s6">6-columns (one-half)&lt;/div>
+      &lt;div class="col s6">6-columns (one-half)&lt;/div>
     &lt;/div>
           </code></pre>
 
@@ -206,7 +206,7 @@
           </code></pre><br>
 
           <h4>Example Promotion Table</h4>
-          <p>If we want 3 divs that are equal size, we define the divs with a width of 4-columns, 4+4+4 = 12, which nicely adds up to 12. Inside those divs, we can put our content. Take our front page content for example. We've modified it slightly for the sake of this example.</p>
+          <p>If we want 3 divs that are equal size, we define the divs with a width of 4-columns, as 4+4+4 nicely adds up to 12. Inside those divs, we can put our content. Take our front page content for example. We've modified it slightly for the sake of this example.</p>
           <div class="row">
             <div class="col s4">
               <div class="center promo promo-example">
@@ -314,8 +314,9 @@
               <tr>
                   <th></th>
                   <th data-field="id">Mobile Devices <br>&lt;= 600px</th>
-                  <th data-field="name">Tablet Devices <br>&lt;= 992px</th>
+                  <th data-field="name">Tablet Devices <br>&gt; 600px</th>
                   <th data-field="price">Desktop Devices <br>&gt; 992px</th>
+                  <th data-field="price">Large Desktop Devices <br>&gt; 1200px</th>
               </tr>
             </thead>
               <tbody>
@@ -324,15 +325,18 @@
                 <td><code class="language-markup">.s</code></td>
                 <td><code class="language-markup">.m</code></td>
                 <td><code class="language-markup">.l</code></td>
+                <td><code class="language-markup">.xl</code></td>
               </tr>
               <tr>
                 <td><strong>Container Width</strong></td>
+                <td>90%</td>
                 <td>85%</td>
-                <td>85%</td>
+                <td>70%</td>
                 <td>70%</td>
               </tr>
               <tr>
                 <td><strong>Number of Columns</strong></td>
+                <td>12</td>
                 <td>12</td>
                 <td>12</td>
                 <td>12</td>

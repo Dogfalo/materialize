@@ -22,7 +22,7 @@ ul {
     padding-left: 0;
     list-style-type: none;
 
-    li {
+    & > li {
       list-style-type: none;
     }
   }
@@ -41,10 +41,6 @@ a {
 .valign-wrapper {
   display: flex;
   align-items: center;
-
-  .valign {
-    display: block;
-  }
 }
 
 
@@ -79,12 +75,10 @@ a {
 
 .hoverable {
   transition: box-shadow .25s;
-  box-shadow: 0;
-}
 
-.hoverable:hover {
-  transition: box-shadow .25s;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  &:hover {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 }
 
 // Dividers
@@ -230,32 +224,30 @@ video.responsive-video {
   }
 }
 
-
 // Parallax
 .parallax-container {
   position: relative;
   overflow: hidden;
   height: 500px;
-}
 
-.parallax {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-
-  img {
-    display: none;
+  .parallax {
     position: absolute;
-    left: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-    transform: translateX(-50%);
+    z-index: -1;
+
+    img {
+      display: none;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate3d(0,0,0);
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -344,16 +336,19 @@ ul.staggered-list li {
 }
 
 // Footer
-footer.page-footer {
+.page-footer {
   padding-top: 20px;
+  color: $footer-font-color;
   background-color: $footer-bg-color;
 
   .footer-copyright {
     overflow: hidden;
-    height: 50px;
-    line-height: 50px;
-    color: rgba(255,255,255,.8);
-    background-color: rgba(51,51,51,.08);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+    color: $footer-copyright-font-color;
+    background-color: $footer-copyright-bg-color;
     @extend .light;
   }
 }
@@ -505,7 +500,9 @@ td, th{
       padding-left: 72px;
       position: relative;
 
-      .circle {
+      // Don't style circles inside preloader classes.
+      &:not(.circle-clipper) > .circle,
+      :not(.circle-clipper) > .circle {
         position: absolute;
         width: 42px;
         height: 42px;
@@ -712,11 +709,6 @@ td, th{
 
 // No Text Select
 .no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 

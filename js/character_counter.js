@@ -10,7 +10,7 @@
         return;
       }
 
-      var itHasLengthAttribute = $input.attr('length') !== undefined;
+      var itHasLengthAttribute = $input.attr('data-length') !== undefined;
 
       if(itHasLengthAttribute){
         $input.on('input', updateCounter);
@@ -24,7 +24,7 @@
   };
 
   function updateCounter(){
-    var maxLength     = +$(this).attr('length'),
+    var maxLength     = +$(this).attr('data-length'),
     actualLength      = +$(this).val().length,
     isValidLength     = actualLength <= maxLength;
 

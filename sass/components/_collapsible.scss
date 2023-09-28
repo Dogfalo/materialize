@@ -7,20 +7,18 @@
 }
 
 .collapsible-header {
-  display: block;
+  display: flex;
   cursor: pointer;
-  min-height: $collapsible-height;
-  line-height: $collapsible-line-height;
-  padding: 0 1rem;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 1rem;
   background-color: $collapsible-header-color;
   border-bottom: 1px solid $collapsible-border-color;
 
   i {
     width: 2rem;
     font-size: 1.6rem;
-    line-height: $collapsible-line-height;
-    display: block;
-    float: left;
+    display: inline-block;
     text-align: center;
     margin-right: 1rem;
   }
@@ -30,11 +28,7 @@
   display: none;
   border-bottom: 1px solid $collapsible-border-color;
   box-sizing: border-box;
-
-  p {
-    margin: 0;
-    padding: 2rem;
-  }
+  padding: 2rem;
 }
 
 // sideNav collapsible styling

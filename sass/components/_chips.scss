@@ -11,7 +11,7 @@
   margin-bottom: $chip-margin;
   margin-right: $chip-margin;
 
-  img {
+  > img {
     float: left;
     margin: 0 8px 0 -12px;
     height: 32px;
@@ -68,6 +68,12 @@
   .input:focus {
     border: 0 !important;
     box-shadow: none !important;
+  }
+
+  // Autocomplete
+  .autocomplete-content {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 

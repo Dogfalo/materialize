@@ -22,9 +22,8 @@
 .toast {
   @extend .z-depth-1;
   border-radius: 2px;
-  top: 0;
+  top: 35px;
   width: auto;
-  clear: both;
   margin-top: 10px;
   position: relative;
   max-width:100%;
@@ -37,13 +36,15 @@
   font-size: 1.1rem;
   font-weight: 300;
   color: $toast-text-color;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: default;
 
-  .btn, .btn-flat {
-    margin: 0;
+  .toast-action {
+    color: $toast-action-color;
+    font-weight: 500;
+    margin-right: -25px;
     margin-left: 3rem;
   }
 
@@ -52,14 +53,7 @@
   }
 
   @media #{$small-and-down} {
-    width:100%;
+    width: 100%;
     border-radius: 0;
   }
-  @media #{$medium-only} {
-    float: left;
-  }
-  @media #{$large-and-up} {
-    float: right;
-  }
-
 }

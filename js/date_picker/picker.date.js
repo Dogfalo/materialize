@@ -4,17 +4,7 @@
  */
 
 (function ( factory ) {
-
-    // AMD.
-    if ( typeof define == 'function' && define.amd )
-        define( ['picker', 'jquery'], factory )
-
-    // Node.js/browserify.
-    else if ( typeof exports == 'object' )
-        module.exports = factory( require('./picker.js'), require('jquery') )
-
-    // Browser globals.
-    else factory( Picker, jQuery )
+  factory( Materialize.Picker, jQuery )
 
 }(function( Picker, $ ) {
 
@@ -24,7 +14,7 @@
  */
 var DAYS_IN_WEEK = 7,
     WEEKS_IN_CALENDAR = 6,
-    _ = Picker._
+    _ = Picker._;
 
 
 
@@ -1089,8 +1079,8 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // Materialize modified
             if (override == "short_months")
                 if (selectedObject != null)
-                return _.node( 'div', monthsCollection[ selectedObject.month ] );
-                else return _.node( 'div', monthsCollection[ viewsetObject.month ] );
+                return monthsCollection[ selectedObject.month ];
+                else return monthsCollection[ viewsetObject.month ];
 
             // If there's a need for a month selector
             return _.node( 'div', monthsCollection[ viewsetObject.month ], settings.klass.month )
@@ -1106,6 +1096,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // If years selector is set to a literal "true", set it to 5. Otherwise
             // divide in half to get half before and half after focused year.
             numberYears = settings.selectYears === true ? 5 : ~~( settings.selectYears / 2 )
+
 
             // If there are years to select, add a dropdown menu.
             if ( numberYears ) {
@@ -1160,9 +1151,13 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 }
             }
 
-            // Materialize modified
-            if (override == "raw")
-                return _.node( 'div', focusedYear )
+
+          // Materialize modified
+          if (override === 'raw' && selectedObject != null) {
+            return _.node( 'div', selectedObject.year )
+          }
+
+
 
             // Otherwise just return the year focused
             return _.node( 'div', focusedYear, settings.klass.year )
@@ -1172,8 +1167,8 @@ DatePicker.prototype.nodes = function( isOpen ) {
         // Materialize modified
         createDayLabel = function() {
                 if (selectedObject != null)
-                    return _.node( 'div', selectedObject.date)
-                else return _.node( 'div', nowObject.date)
+                    return selectedObject.date
+                else return nowObject.date
             }
         createWeekdayLabel = function() {
             var display_day;
@@ -1182,155 +1177,158 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 display_day = selectedObject.day;
             else
                 display_day = nowObject.day;
-            var weekday = settings.weekdaysFull[ display_day ]
+            var weekday = settings.weekdaysShort[ display_day ];
             return weekday
         }
 
 
-    // Create and return the entire calendar.
+  // Create and return the entire calendar.
+
 return _.node(
         // Date presentation View
         'div',
-            _.node(
-                'div',
-                createWeekdayLabel(),
-                "picker__weekday-display"
-            )+
-            _.node(
-                // Div for short Month
-                'div',
-                createMonthLabel("short_months"),
-                settings.klass.month_display
-            )+
-            _.node(
-                // Div for Day
-                'div',
-                createDayLabel() ,
-                settings.klass.day_display
-            )+
             _.node(
                 // Div for Year
                 'div',
                 createYearLabel("raw") ,
                 settings.klass.year_display
+            )+
+            _.node(
+                'span',
+                createWeekdayLabel() + ', ',
+                "picker__weekday-display"
+            )+
+            _.node(
+                // Div for short Month
+                'span',
+                createMonthLabel("short_months") + ' ',
+                settings.klass.month_display
+            )+
+            _.node(
+              // Div for Day
+              'span',
+              createDayLabel() ,
+              settings.klass.day_display
             ),
         settings.klass.date_display
     )+
     // Calendar container
     _.node('div',
-        _.node('div',
-        ( settings.selectYears ?  createMonthLabel() + createYearLabel() : createMonthLabel() + createYearLabel() ) +
-        createMonthNav() + createMonthNav( 1 ),
-        settings.klass.header
-    ) + _.node(
-        'table',
-        tableHead +
-        _.node(
-            'tbody',
-            _.group({
-                min: 0,
-                max: WEEKS_IN_CALENDAR - 1,
-                i: 1,
-                node: 'tr',
-                item: function( rowCounter ) {
+	    _.node('div',
+		_.node('div',
+		( settings.selectYears ?  createMonthLabel() + createYearLabel() : createMonthLabel() + createYearLabel() ) +
+		createMonthNav() + createMonthNav( 1 ),
+		settings.klass.header
+	    ) + _.node(
+		'table',
+		tableHead +
+		_.node(
+		    'tbody',
+		    _.group({
+		        min: 0,
+		        max: WEEKS_IN_CALENDAR - 1,
+		        i: 1,
+		        node: 'tr',
+		        item: function( rowCounter ) {
 
-                    // If Monday is the first day and the month starts on Sunday, shift the date back a week.
-                    var shiftDateBy = settings.firstDay && calendar.create([ viewsetObject.year, viewsetObject.month, 1 ]).day === 0 ? -7 : 0
+		            // If Monday is the first day and the month starts on Sunday, shift the date back a week.
+		            var shiftDateBy = settings.firstDay && calendar.create([ viewsetObject.year, viewsetObject.month, 1 ]).day === 0 ? -7 : 0
 
-                    return [
-                        _.group({
-                            min: DAYS_IN_WEEK * rowCounter - viewsetObject.day + shiftDateBy + 1, // Add 1 for weekday 0index
-                            max: function() {
-                                return this.min + DAYS_IN_WEEK - 1
-                            },
-                            i: 1,
-                            node: 'td',
-                            item: function( targetDate ) {
+		            return [
+		                _.group({
+		                    min: DAYS_IN_WEEK * rowCounter - viewsetObject.day + shiftDateBy + 1, // Add 1 for weekday 0index
+		                    max: function() {
+		                        return this.min + DAYS_IN_WEEK - 1
+		                    },
+		                    i: 1,
+		                    node: 'td',
+		                    item: function( targetDate ) {
 
-                                // Convert the time date from a relative date to a target date.
-                                targetDate = calendar.create([ viewsetObject.year, viewsetObject.month, targetDate + ( settings.firstDay ? 1 : 0 ) ])
+		                        // Convert the time date from a relative date to a target date.
+		                        targetDate = calendar.create([ viewsetObject.year, viewsetObject.month, targetDate + ( settings.firstDay ? 1 : 0 ) ])
 
-                                var isSelected = selectedObject && selectedObject.pick == targetDate.pick,
-                                    isHighlighted = highlightedObject && highlightedObject.pick == targetDate.pick,
-                                    isDisabled = disabledCollection && calendar.disabled( targetDate ) || targetDate.pick < minLimitObject.pick || targetDate.pick > maxLimitObject.pick,
-                                    formattedDate = _.trigger( calendar.formats.toString, calendar, [ settings.format, targetDate ] )
+		                        var isSelected = selectedObject && selectedObject.pick == targetDate.pick,
+		                            isHighlighted = highlightedObject && highlightedObject.pick == targetDate.pick,
+		                            isDisabled = disabledCollection && calendar.disabled( targetDate ) || targetDate.pick < minLimitObject.pick || targetDate.pick > maxLimitObject.pick,
+		                            formattedDate = _.trigger( calendar.formats.toString, calendar, [ settings.format, targetDate ] )
 
-                                return [
-                                    _.node(
-                                        'div',
-                                        targetDate.date,
-                                        (function( klasses ) {
+		                        return [
+		                            _.node(
+		                                'div',
+		                                targetDate.date,
+		                                (function( klasses ) {
 
-                                            // Add the `infocus` or `outfocus` classes based on month in view.
-                                            klasses.push( viewsetObject.month == targetDate.month ? settings.klass.infocus : settings.klass.outfocus )
+		                                    // Add the `infocus` or `outfocus` classes based on month in view.
+		                                    klasses.push( viewsetObject.month == targetDate.month ? settings.klass.infocus : settings.klass.outfocus )
 
-                                            // Add the `today` class if needed.
-                                            if ( nowObject.pick == targetDate.pick ) {
-                                                klasses.push( settings.klass.now )
-                                            }
+		                                    // Add the `today` class if needed.
+		                                    if ( nowObject.pick == targetDate.pick ) {
+		                                        klasses.push( settings.klass.now )
+		                                    }
 
-                                            // Add the `selected` class if something's selected and the time matches.
-                                            if ( isSelected ) {
-                                                klasses.push( settings.klass.selected )
-                                            }
+		                                    // Add the `selected` class if something's selected and the time matches.
+		                                    if ( isSelected ) {
+		                                        klasses.push( settings.klass.selected )
+		                                    }
 
-                                            // Add the `highlighted` class if something's highlighted and the time matches.
-                                            if ( isHighlighted ) {
-                                                klasses.push( settings.klass.highlighted )
-                                            }
+		                                    // Add the `highlighted` class if something's highlighted and the time matches.
+		                                    if ( isHighlighted ) {
+		                                        klasses.push( settings.klass.highlighted )
+		                                    }
 
-                                            // Add the `disabled` class if something's disabled and the object matches.
-                                            if ( isDisabled ) {
-                                                klasses.push( settings.klass.disabled )
-                                            }
+		                                    // Add the `disabled` class if something's disabled and the object matches.
+		                                    if ( isDisabled ) {
+		                                        klasses.push( settings.klass.disabled )
+		                                    }
 
-                                            return klasses.join( ' ' )
-                                        })([ settings.klass.day ]),
-                                        'data-pick=' + targetDate.pick + ' ' + _.ariaAttr({
-                                            role: 'gridcell',
-                                            label: formattedDate,
-                                            selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
-                                            activedescendant: isHighlighted ? true : null,
-                                            disabled: isDisabled ? true : null
-                                        })
-                                    ),
-                                    '',
-                                    _.ariaAttr({ role: 'presentation' })
-                                ] //endreturn
-                            }
-                        })
-                    ] //endreturn
-                }
-            })
-        ),
-        settings.klass.table,
-        'id="' + calendar.$node[0].id + '_table' + '" ' + _.ariaAttr({
-            role: 'grid',
-            controls: calendar.$node[0].id,
-            readonly: true
-        })
-    )
-    , settings.klass.calendar_container) // end calendar
+		                                    return klasses.join( ' ' )
+		                                })([ settings.klass.day ]),
+		                                'data-pick=' + targetDate.pick + ' ' + _.ariaAttr({
+		                                    role: 'gridcell',
+		                                    label: formattedDate,
+		                                    selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
+		                                    activedescendant: isHighlighted ? true : null,
+		                                    disabled: isDisabled ? true : null
+		                                }) + ' ' + (isDisabled ? '' : 'tabindex="0"')
+		                            ),
+		                            '',
+		                            _.ariaAttr({ role: 'presentation' })
+		                        ] //endreturn
+		                    }
+		                })
+		            ] //endreturn
+		        }
+		    })
+		),
+		settings.klass.table,
+		'id="' + calendar.$node[0].id + '_table' + '" ' + _.ariaAttr({
+		    role: 'grid',
+		    controls: calendar.$node[0].id,
+		    readonly: true
+		})
+	    )
+	    , settings.klass.calendar_container) // end calendar
 
-     +
+	     +
 
-    // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
-    _.node(
-        'div',
-        _.node( 'button', settings.today, "btn-flat picker__today",
-            'type=button data-pick=' + nowObject.pick +
-            ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
-            _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node( 'button', settings.clear, "btn-flat picker__clear",
-            'type=button data-clear=1' +
-            ( isOpen ? '' : ' disabled' ) + ' ' +
-            _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node('button', settings.close, "btn-flat picker__close",
-            'type=button data-close=true ' +
-            ( isOpen ? '' : ' disabled' ) + ' ' +
-            _.ariaAttr({ controls: calendar.$node[0].id }) ),
-        settings.klass.footer
-    ) //endreturn
+	    // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
+	    _.node(
+		'div',
+		_.node( 'button', settings.today, "btn-flat picker__today waves-effect",
+		    'type=button data-pick=' + nowObject.pick +
+		    ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
+		    _.ariaAttr({ controls: calendar.$node[0].id }) ) +
+		_.node( 'button', settings.clear, "btn-flat picker__clear waves-effect",
+		    'type=button data-clear=1' +
+		    ( isOpen ? '' : ' disabled' ) + ' ' +
+		    _.ariaAttr({ controls: calendar.$node[0].id }) ) +
+		_.node('button', settings.close, "btn-flat picker__close waves-effect",
+		    'type=button data-close=true ' +
+		    ( isOpen ? '' : ' disabled' ) + ' ' +
+		    _.ariaAttr({ controls: calendar.$node[0].id }) ),
+		settings.klass.footer
+	    ), 'picker__container__wrapper'
+	) //endreturn
 } //DatePicker.prototype.nodes
 
 
@@ -1363,7 +1361,10 @@ DatePicker.defaults = (function( prefix ) {
         // Today and clear
         today: 'Today',
         clear: 'Clear',
-        close: 'Close',
+        close: 'Ok',
+
+        // Picker close behavior (Prevent a change in behaviour for backwards compatibility)
+        closeOnSelect: false,
 
         // The format to show on the `input` element
         format: 'd mmmm, yyyy',
@@ -1426,5 +1427,3 @@ Picker.extend( 'pickadate', DatePicker )
 
 
 }));
-
-

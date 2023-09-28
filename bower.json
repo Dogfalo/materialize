@@ -14,8 +14,18 @@
     "design"
   ],
   "main": [
-    "bin/materialize.css",
-    "bin/materialize.js" 
+    "dist/js/materialize.js",
+    "dist/css/materialize.css",
+    "dist/fonts/roboto/Roboto-Bold.woff",
+    "dist/fonts/roboto/Roboto-Bold.woff2",
+    "dist/fonts/roboto/Roboto-Light.woff",
+    "dist/fonts/roboto/Roboto-Light.woff2",
+    "dist/fonts/roboto/Roboto-Medium.woff",
+    "dist/fonts/roboto/Roboto-Medium.woff2",
+    "dist/fonts/roboto/Roboto-Regular.woff",
+    "dist/fonts/roboto/Roboto-Regular.woff2",
+    "dist/fonts/roboto/Roboto-Thin.woff",
+    "dist/fonts/roboto/Roboto-Thin.woff2"
   ],
   "ignore": [
     "jade/",
@@ -25,6 +35,7 @@
     "bower.json",
     "README.md",
     "images/",
+    "fonts",
     "js/jquery.timeago.js",
     "js/init.js",
     "js/prism.js",
@@ -39,7 +50,7 @@
     "Gruntfile.js"
   ],
   "dependencies": {
-    "jquery": ">=2.1.1"
+    "jquery": "^3.0.0 || ^2.1.4"
   },
   "devDependencies": {
   }

@@ -2,5 +2,11 @@
 **/*.html linguist-documentation
 js/velocity.min.js linguist-vendored
 js/hammer.min.js linguist-vendored
-js/jquery.easing.1.3.js linguist-vendored
+js/jquery.hammer.js linguist-vendored
+js/jquery.easing.1.4.js linguist-vendored
 js/jquery.timeago.min.js linguist-vendored
+
+
+css/ghpages-materialize.css merge=ours
+.gitignore merge=ours
+.gitattributes merge=ours

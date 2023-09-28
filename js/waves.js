@@ -258,17 +258,13 @@
         var element = null;
         var target = e.target || e.srcElement;
 
-        while (target.parentElement !== null) {
+        while (target.parentNode !== null) {
             if (!(target instanceof SVGElement) && target.className.indexOf('waves-effect') !== -1) {
                 element = target;
                 break;
-            } else if (target.classList.contains('waves-effect')) {
-                element = target;
-                break;
             }
-            target = target.parentElement;
+            target = target.parentNode;
         }
-
         return element;
     }
 
@@ -288,6 +284,7 @@
 
             element.addEventListener('mouseup', Effect.hide, false);
             element.addEventListener('mouseleave', Effect.hide, false);
+            element.addEventListener('dragend', Effect.hide, false);
         }
     }
 
@@ -319,7 +316,7 @@
         // to specify them with an options param? Eg. light/classic/button
         if (element.tagName.toLowerCase() === 'input') {
             Effect.wrapInput([element]);
-            element = element.parentElement;
+            element = element.parentNode;
         }
 
         if ('ontouchstart' in window) {

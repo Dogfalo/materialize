@@ -15,6 +15,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  outline: none;
 }
 /**
  * The picker input element.
@@ -198,4 +199,14 @@
     top: 10%;
     bottom: auto;
   }
+}
+
+@media only screen and (min-width: 601px) {
+	.picker__box {
+		display:flex;
+	}
+	.picker__frame {
+		width: 80%;
+		max-width:600px;
+	}
 }

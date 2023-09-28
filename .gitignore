@@ -1,18 +1,45 @@
+# OS or Editor folders
+._*
+.cache
 .DS_Store
-prepros.cfg
-Thumbs.db
-js/materialize.js
-test2.html
-test.html
-test2.html
-node_modules/
-.sass-cache/
-bin/jquery-2.1.1.min.js
-/.idea/
-**/*.log
-bower_components
+.idea
+.project
 .projectile
-**/#*#
-**/.#*
-.grunt/
-.versions
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+Thumbs.db
+
+# Node logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# grunt-contrib-sass cache
+.sass-cache/
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Grunt temporary storage
+temp/
+
+# Jasmine SpecRunner
+_SpecRunner.html
+
+# Ignore .html files in root
+/*.html
+!fab-toolbar-demo.html
+
+# Ignore compiled files
+css/ghpages-materialize.css
+bin/

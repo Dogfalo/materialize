@@ -9,8 +9,16 @@ header
       i.material-icons menu
   ul#nav-mobile.side-nav.fixed
     li(class="logo")
-      a#logo-container.brand-logo(href='http://materializecss.com/')
+      a#logo-container.brand-logo(href='/')
         object#front-page-logo(type='image/svg+xml', data='res/materialize.svg') Your browser does not support SVG
+    li.version
+      a.dropdown-button(href='#' data-activates='version-dropdown') 0.100.2
+        <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+      ul#version-dropdown.dropdown-content
+        li
+          a(href='http://materializecss.com') 1.0.0-beta
+        li
+          a(href='http://archives.materializecss.com/0.100.2/') 0.100.2
     li(class="search")
       div.search-wrapper.card
         input(id="search")
@@ -24,7 +32,7 @@ header
     li.no-padding
       ul.collapsible.collapsible-accordion
         li.bold
-          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Table" || page == "Helpers" ? "active" : "")+" waves-effect waves-teal")
+          a.collapsible-header(class=(page == "Sass" || page == "Typography" || page == "Color" || page == "Shadow" || page == "Grid" || page == "Media CSS" || page == "Pulse" || page == "Table" || page == "CSS Transitions" || page == "Helpers" ? "active" : "")+" waves-effect waves-teal")
             | CSS
           .collapsible-body
             ul
@@ -36,12 +44,16 @@ header
                 a(href='helpers.html') Helpers
               li(class=(page == "Media CSS" ? "active" : ""))
                 a(href='media-css.html') Media
+              li(class=(page == "Pulse" ? "active" : ""))
+                a(href='pulse.html') Pulse
               li(class=(page == "Sass" ? "active" : ""))
                 a(href='sass.html') Sass
               li(class=(page == "Shadow" ? "active" : ""))
                 a(href='shadow.html') Shadow
               li(class=(page == "Table" ? "active" : ""))
                 a(href='table.html') Table
+              li(class=(page == "CSS Transitions" ? "active" : ""))
+                a(href='css-transitions.html') Transitions
               li(class=(page == "Typography" ? "active" : ""))
                 a(href='typography.html') Typography
         li.bold
@@ -74,7 +86,7 @@ header
               li(class=(page == "Preloader" ? "active" : ""))
                 a(href='preloader.html') Preloader
         li.bold
-          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "Tabs" || page == "ScrollFire" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Transitions" || page == "Parallax" || page == "Collapsible" ? "active" : "" || page == "Carousel" ? "active" : "")+" waves-effect waves-teal")
+          a.collapsible-header(class=(page == "Dialogs" || page == "Modals" || page == "Dropdown" || page == "FeatureDiscovery" || page == "Tabs" || page == "ScrollFire" || page == "Scrollspy" || page == "SideNav" || page == "Pushpin" || page == "Waves" || page == "Media" || page == "Transitions" || page == "Parallax" || page == "Collapsible" ? "active" : "" || page == "Carousel" ? "active" : "")+" waves-effect waves-teal")
             | JavaScript
           .collapsible-body
             ul
@@ -86,6 +98,8 @@ header
                 a(href='dialogs.html') Dialogs
               li(class=(page == "Dropdown" ? "active" : ""))
                 a(href='dropdown.html') Dropdown
+              li(class=(page == "FeatureDiscovery" ? "active" : ""))
+                a(href='feature-discovery.html') FeatureDiscovery
               li(class=(page == "Media" ? "active" : ""))
                 a(href='media.html') Media
               li(class=(page == "Modals" ? "active" : ""))
@@ -108,6 +122,25 @@ header
                 a(href='waves.html') Waves
 
     li.bold(class=(page == "Mobile" ? "active" : ""))
-      a.waves-effect.waves-teal(href='http://materializecss.com/mobile.html') Mobile
+      a.waves-effect.waves-teal(href='mobile.html') Mobile
     li.bold(class=(page == "Showcase" ? "active" : ""))
       a.waves-effect.waves-teal(href='showcase.html') Showcase
+    li.bold(class=(page == "Themes" ? "active" : ""))
+      a.waves-effect.waves-teal(href='themes.html') Themes
+
+  // Sidebar BSA
+  script(src="//m.servedby-buysellads.com/monetization.js" type="text/javascript").
+  .bsa-cpc
+  script.
+    (function(){
+      if(typeof _bsa !== 'undefined' && _bsa) {
+      _bsa.init('default', 'CKYD55QM', 'placement:materializecsscom', {
+        target: '.bsa-cpc',
+        align: 'horizontal',
+        disable_css: 'true'
+      });
+        }
+    })();
+
+  .patreon-ad
+    a.waves-effect(href='https://www.patreon.com/materialize', target='_blank') Become a Patron

@@ -337,7 +337,7 @@
                   <option value="" disabled selected>Choose your option</option>
                   <option value="" data-icon="images/sample-1.jpg" class="circle">example 1</option>
                   <option value="" data-icon="images/office.jpg" class="circle">example 2</option>
-                  <option value="" data-icon="images/yuna.jpg" class="circle">example 1</option>
+                  <option value="" data-icon="images/yuna.jpg" class="circle">example 3</option>
                 </select>
                 <label>Images in select</label>
               </div>
@@ -388,7 +388,7 @@
   &lt;/div>
 
   &lt;div class="input-field col s12">
-    &lt;select multiple>
+    &lt;select>
       &lt;optgroup label="team 1">
         &lt;option value="1">Option 1&lt;/option>
         &lt;option value="2">Option 2&lt;/option>
@@ -406,7 +406,7 @@
       &lt;option value="" disabled selected>Choose your option&lt;/option>
       &lt;option value="" data-icon="images/sample-1.jpg" class="circle">example 1&lt;/option>
       &lt;option value="" data-icon="images/office.jpg" class="circle">example 2&lt;/option>
-      &lt;option value="" data-icon="images/yuna.jpg" class="circle">example 1&lt;/option>
+      &lt;option value="" data-icon="images/yuna.jpg" class="circle">example 3&lt;/option>
     &lt;/select>
     &lt;label>Images in select&lt;/label>
   &lt;/div>
@@ -436,14 +436,18 @@
           </div>
           <form class="col s12 m6">
             <div class="row">
-              <div class="col s12">
-                <label>Materialize Disabled</label>
+              <div class="col s12 input-field">
                 <select disabled>
                   <option value="" disabled selected>Choose your option</option>
                   <option value="1">Option 1</option>
                   <option value="2">Option 2</option>
                   <option value="3">Option 3</option>
                 </select>
+                <label>Materialize Disabled</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
                 <label>Browser Disabled</label>
                 <select class="browser-default" disabled>
                   <option value="" disabled selected>Choose your option</option>
@@ -456,13 +460,15 @@
           </form>
           <div class="col s12">
             <pre><code class="language-markup">
-  &lt;label>Materialize Disabled&lt;/label>
-  &lt;select disabled>
-    &lt;option value="" disabled selected>Choose your option&lt;/option>
-    &lt;option value="1">Option 1&lt;/option>
-    &lt;option value="2">Option 2&lt;/option>
-    &lt;option value="3">Option 3&lt;/option>
-  &lt;/select>
+  &lt;div class="input-field">
+    &lt;select disabled>
+      &lt;option value="" disabled selected>Choose your option&lt;/option>
+      &lt;option value="1">Option 1&lt;/option>
+      &lt;option value="2">Option 2&lt;/option>
+      &lt;option value="3">Option 3&lt;/option>
+    &lt;/select>
+    &lt;label>Materialize Disabled&lt;/label>
+  &lt;/div>
 
   &lt;label>Browser Disabled&lt;/label>
   &lt;select class="browser-default" disabled>
@@ -496,7 +502,8 @@
 
       <div id="radio" class="section scrollspy">
         <h2 class="header">Radio Buttons</h2>
-        <p>Radio Buttons are used when the user must make only one selection out of a group of items</p>
+        <p>Radio Buttons are used when the user must make only one selection out of a group of items. The <code class="language-markup">for</code> attribute is necessary to bind our custom radio button with the input. Add the input's <code class="language-markup">id</code> as the value of the <code class="language-markup">for</code> attribute of the label.</p>
+        <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
         <form action="#">
           <p>
             <input name="group1" type="radio" id="test1" checked />
@@ -515,7 +522,7 @@
               <label for="test4">Brown</label>
           </p>
         </form>
-        <p>Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio  buttons in the group. Create disabled radio buttons by adding the disabled attribute as shown below.</p>
+        <br>
         <pre><code class="language-markup">
   &lt;form action="#">
     &lt;p>
@@ -722,15 +729,19 @@
         <h2 class="header">Range</h2>
         <p>Add a range slider for values with a wide range. This one is set to be a number between 0 and 100. We have two different types of sliders. nouiSlider is a 3rd party plugin which we've modified. To use the noUiSlider, you will have to manually link the <code class="language-markup">nouislider.css</code> and <code class="language-markup">nouislider.js</code> files located in the extras folder.</p>
         <h4>noUiSlider</h4>
-        <p>See noUiSlider's official documentation <a href="http://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
+        <p>See noUiSlider's official documentation <a href="https://refreshless.com/nouislider/">here</a> to see a variety of slider options</p>
         <div id="range-input"></div>
         <p>&nbsp;</p>
+        <pre><code class="language-markup">
+  &lt;div id="test-slider">&lt;/div>
+        </code></pre>
         <pre><code class="language-javascript">
-  var slider = document.getElementById('test5');
+  var slider = document.getElementById('test-slider');
   noUiSlider.create(slider, {
    start: [20, 80],
    connect: true,
    step: 1,
+   orientation: 'horizontal', // 'horizontal' or 'vertical'
    range: {
      'min': 0,
      'max': 100
@@ -761,7 +772,7 @@
         <label for="birthdate">Birthdate</label>
         <input id="birthdate" type="text" class="datepicker">
         <pre><code class="language-markup">
-  &lt;input type="date" class="datepicker">
+  &lt;input type="text" class="datepicker">
         </code></pre>
 
         <h4>Initialization</h4>
@@ -769,11 +780,40 @@
         <pre><code class="language-javascript">
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+    container: undefined, // ex. 'body' will append picker to body
   });
         </code></pre>
       </div>
 
+    <div id="time-picker" class="section scrollspy">
+        <h2 class="header">Time Picker</h2>
+        <label for="lunchtime">Lunchtime</label>
+        <input id="lunchtime" type="text" class="timepicker">
+        <pre><code class="language-markup">
+  &lt;input type="text" class="timepicker">
+        </code></pre>
+
+        <h4>Initialization</h4>
+        <pre><code class="language-javascript">
+  $('.timepicker').pickatime({
+    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    cleartext: 'Clear', // text for clear-button
+    canceltext: 'Cancel', // Text for cancel-button,
+    container: undefined, // ex. 'body' will append picker to body
+    autoclose: false, // automatic close timepicker
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker
+  });
+        </code></pre>
+      </div>
 
       <div id="character-counter" class="section scrollspy">
         <h2 class="header">Character Counter</h2>
@@ -782,14 +822,14 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <input id="input_text" type="text" length="10">
+                <input id="input_text" type="text" data-length="10">
                 <label for="input_text">Input text</label>
               </div>
             </div>
             <br/>
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+                <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
                 <label for="textarea1">Textarea</label>
               </div>
             </div>
@@ -800,13 +840,13 @@
       &lt;form class="col s12">
         &lt;div class="row">
           &lt;div class="input-field col s6">
-            &lt;input id="input_text" type="text" length="10">
+            &lt;input id="input_text" type="text" data-length="10">
             &lt;label for="input_text">Input text&lt;/label>
           &lt;/div>
         &lt;/div>
         &lt;div class="row">
           &lt;div class="input-field col s12">
-            &lt;textarea id="textarea1" class="materialize-textarea" length="120">&lt;/textarea>
+            &lt;textarea id="textarea1" class="materialize-textarea" data-length="120">&lt;/textarea>
             &lt;label for="textarea1">Textarea&lt;/label>
           &lt;/div>
         &lt;/div>
@@ -862,8 +902,13 @@
     data: {
       "Apple": null,
       "Microsoft": null,
-      "Google": 'http://placehold.it/250x250'
-    }
+      "Google": 'https://placehold.it/250x250'
+    },
+    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+    onAutocomplete: function(val) {
+      // Callback function when value is autcompleted.
+    },
+    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
   });
         </code></pre>
       </div>
@@ -888,6 +933,7 @@
             <li><a href="#file">File Input Button</a></li>
             <li><a href="#range">Range</a></li>
             <li><a href="#date-picker">Date Picker</a></li>
+            <li><a href="#time-picker">Time Picker</a></li>
             <li><a href="#character-counter">Character Counter</a></li>
             <li><a href="#autocomplete">Autocomplete</a></li>
           </ul>

@@ -3,7 +3,7 @@
 Package.describe({
   name: 'materialize:materialize',  // http://atmospherejs.com/materialize/materialize
   summary: 'Materialize (official): A modern responsive front-end framework based on Material Design',
-  version: '0.97.8',
+  version: '0.100.2',
   git: 'https://github.com/Dogfalo/materialize.git'
 });
 
@@ -11,24 +11,19 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
 
-  api.use('fourseven:scss@3.10.0');
+  api.use('fourseven:scss@4.5.4');
   api.use('jquery', 'client');
   api.imply('jquery', 'client');
 
   var assets = [
-    'fonts/roboto/Roboto-Bold.ttf',
     'fonts/roboto/Roboto-Bold.woff',
     'fonts/roboto/Roboto-Bold.woff2',
-    'fonts/roboto/Roboto-Light.ttf',
     'fonts/roboto/Roboto-Light.woff',
     'fonts/roboto/Roboto-Light.woff2',
-    'fonts/roboto/Roboto-Medium.ttf',
     'fonts/roboto/Roboto-Medium.woff',
     'fonts/roboto/Roboto-Medium.woff2',
-    'fonts/roboto/Roboto-Regular.ttf',
     'fonts/roboto/Roboto-Regular.woff',
     'fonts/roboto/Roboto-Regular.woff2',
-    'fonts/roboto/Roboto-Thin.ttf',
     'fonts/roboto/Roboto-Thin.woff',
     'fonts/roboto/Roboto-Thin.woff2',
   ];
@@ -63,19 +58,20 @@ Package.onUse(function (api) {
     'sass/components/_grid.scss',
     'sass/components/_icons-material-design.scss',
     'sass/components/_materialbox.scss',
-    'sass/components/_mixins.scss',
     'sass/components/_modal.scss',
     'sass/components/_navbar.scss',
     'sass/components/_normalize.scss',
-    'sass/components/_prefixer.scss',
     'sass/components/_preloader.scss',
+    'sass/components/_pulse.scss',
     'sass/components/_roboto.scss',
     'sass/components/_sideNav.scss',
     'sass/components/_slider.scss',
     'sass/components/_table_of_contents.scss',
     'sass/components/_tabs.scss',
+    'sass/components/_tapTarget.scss',
     'sass/components/_toast.scss',
     'sass/components/_tooltip.scss',
+    'sass/components/_transitions.scss',
     'sass/components/_typography.scss',
     'sass/components/_variables.scss',
     'sass/components/_waves.scss',

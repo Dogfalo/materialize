@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-// Mixins
-// @import "components/prefixer";
-@import "components/mixins";
+// Colors
 @import "components/color";
 
 // Variables;
@@ -19,6 +17,7 @@
 @import "components/navbar";
 @import "components/roboto";
 @import "components/typography";
+@import "components/transitions";
 @import "components/cards";
 @import "components/toast";
 @import "components/tabs";
@@ -36,6 +35,8 @@
 @import "components/preloader";
 @import "components/slider";
 @import "components/carousel";
+@import "components/tapTarget";
+@import "components/pulse";
 @import "components/date_picker/default";
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
