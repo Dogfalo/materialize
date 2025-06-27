@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 /* Modal */
 .datepicker-modal {
   max-width: 325px;
@@ -41,22 +43,22 @@
   }
 
   .select-month input {
-    width: 80px;
+    width: 70px;
   }
 }
 
-.month-prev, .month-next {
+.month-prev,
+.month-next {
   margin-top: 4px;
   cursor: pointer;
   background-color: transparent;
   border: none;
 }
 
-
 /* Date Display */
 .datepicker-date-display {
   flex: 1 auto;
-  background-color: $secondary-color;
+  background-color: var.$secondary-color;
   color: #fff;
   padding: 20px 22px;
   font-weight: 500;
@@ -65,7 +67,7 @@
     display: block;
     font-size: 1.5rem;
     line-height: 25px;
-    color: $datepicker-year;
+    color: var.$datepicker-year;
   }
 
   .date-text {
@@ -75,7 +77,6 @@
     font-weight: 500;
   }
 }
-
 
 /* Calendar */
 .datepicker-calendar-container {
@@ -102,22 +103,22 @@
 
   abbr {
     text-decoration: none;
-    color: $datepicker-calendar-header-color;
+    color: var.$datepicker-calendar-header-color;
   }
 
   td {
     &.is-today {
-      color: $secondary-color;
+      color: var.$secondary-color;
     }
 
     &.is-selected {
-      background-color: $secondary-color;
+      background-color: var.$secondary-color;
       color: #fff;
     }
 
     &.is-outside-current-month,
     &.is-disabled {
-      color: $datepicker-disabled-day-color;
+      color: var.$datepicker-disabled-day-color;
       pointer-events: none;
     }
 
@@ -128,7 +129,7 @@
 
 .datepicker-day-button {
   &:focus {
-    background-color: $datepicker-day-focus;
+    background-color: var.$datepicker-day-focus;
   }
 
   background-color: transparent;
@@ -141,7 +142,6 @@
   cursor: pointer;
   color: inherit;
 }
-
 
 /* Footer */
 .datepicker-footer {
@@ -156,17 +156,16 @@
 .datepicker-clear,
 .datepicker-today,
 .datepicker-done {
-  color: $secondary-color;
+  color: var.$secondary-color;
   padding: 0 1rem;
 }
 
 .datepicker-clear {
-  color: $error-color;
+  color: var.$error-color;
 }
 
-
 /* Media Queries */
-@media #{$medium-and-up} {
+@media #{var.$medium-and-up} {
   .datepicker-modal {
     max-width: 625px;
   }

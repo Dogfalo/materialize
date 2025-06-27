@@ -1,3 +1,5 @@
+@use "../variables" as var;
+
 /* Checkboxes
    ========================================================================== */
 
@@ -26,17 +28,17 @@
   /* checkbox aspect */
   + span:not(.lever):before,
   &:not(.filled-in) + span:not(.lever):after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 18px;
     height: 18px;
     z-index: 0;
-    border: 2px solid $radio-empty-color;
+    border: 2px solid var.$radio-empty-color;
     border-radius: 1px;
     margin-top: 3px;
-    transition: .2s;
+    transition: 0.2s;
   }
 
   &:not(.filled-in) + span:not(.lever):after {
@@ -46,7 +48,7 @@
 
   &:not(:checked):disabled + span:not(.lever):before {
     border: none;
-    background-color: $input-disabled-color;
+    background-color: var.$input-disabled-color;
   }
 
   // Focused styles
@@ -54,8 +56,8 @@
     transform: scale(1);
     border: 0;
     border-radius: 50%;
-    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
-    background-color: rgba(0,0,0,.1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -67,16 +69,16 @@
     height: 22px;
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
-    border-right: $radio-border;
-    border-bottom: $radio-border;
+    border-right: var.$radio-border;
+    border-bottom: var.$radio-border;
     transform: rotate(40deg);
     backface-visibility: hidden;
     transform-origin: 100% 100%;
   }
 
   &:disabled + span:before {
-    border-right: 2px solid $input-disabled-color;
-    border-bottom: 2px solid $input-disabled-color;
+    border-right: 2px solid var.$input-disabled-color;
+    border-bottom: 2px solid var.$input-disabled-color;
   }
 }
 
@@ -89,7 +91,7 @@
     height: 22px;
     border-top: none;
     border-left: none;
-    border-right: $radio-border;
+    border-right: var.$radio-border;
     border-bottom: none;
     transform: rotate(90deg);
     backface-visibility: hidden;
@@ -98,7 +100,7 @@
 
   // Disabled indeterminate
   &:disabled + span:not(.lever):before {
-    border-right: 2px solid $input-disabled-color;
+    border-right: 2px solid var.$input-disabled-color;
     background-color: transparent;
   }
 }
@@ -112,11 +114,12 @@
 
   + span:not(.lever):before,
   + span:not(.lever):after {
-    content: '';
+    content: "";
     left: 0;
     position: absolute;
     /* .1s delay is for check animation */
-    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+    transition: border 0.25s, background-color 0.25s, width 0.2s 0.1s,
+      height 0.2s 0.1s, top 0.2s 0.1s, left 0.2s 0.1s;
     z-index: 1;
   }
 
@@ -135,7 +138,7 @@
     height: 20px;
     width: 20px;
     background-color: transparent;
-    border: 2px solid $radio-empty-color;
+    border: 2px solid var.$radio-empty-color;
     top: 0px;
     z-index: 0;
   }
@@ -149,8 +152,8 @@
       height: 13px;
       border-top: 2px solid transparent;
       border-left: 2px solid transparent;
-      border-right: 2px solid $input-background;
-      border-bottom: 2px solid $input-background;
+      border-right: 2px solid var.$input-background;
+      border-bottom: 2px solid var.$input-background;
       transform: rotateZ(37deg);
       transform-origin: 100% 100%;
     }
@@ -159,8 +162,8 @@
       top: 0;
       width: 20px;
       height: 20px;
-      border: 2px solid $secondary-color;
-      background-color: $secondary-color;
+      border: 2px solid var.$secondary-color;
+      background-color: var.$secondary-color;
       z-index: 0;
     }
   }
@@ -168,14 +171,14 @@
   // Focused styles
   &.tabbed:focus + span:not(.lever):after {
     border-radius: 2px;
-    border-color: $radio-empty-color;
-    background-color: rgba(0,0,0,.1);
+    border-color: var.$radio-empty-color;
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &.tabbed:checked:focus + span:not(.lever):after {
     border-radius: 2px;
-    background-color: $secondary-color;
-    border-color: $secondary-color;
+    background-color: var.$secondary-color;
+    border-color: var.$secondary-color;
   }
 
   // Disabled style
@@ -186,7 +189,7 @@
 
   &:disabled:not(:checked) + span:not(.lever):after {
     border-color: transparent;
-    background-color: $input-disabled-solid-color;
+    background-color: var.$input-disabled-solid-color;
   }
 
   &:disabled:checked + span:not(.lever):before {
@@ -194,7 +197,7 @@
   }
 
   &:disabled:checked + span:not(.lever):after {
-    background-color: $input-disabled-solid-color;
-    border-color: $input-disabled-solid-color;
+    background-color: var.$input-disabled-solid-color;
+    border-color: var.$input-disabled-solid-color;
   }
 }

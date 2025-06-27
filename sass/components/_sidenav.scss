@@ -1,6 +1,10 @@
+@use "variables" as var;
+@use "sass:color";
+@use "sass:math";
+
 .sidenav {
   position: fixed;
-  width: $sidenav-width;
+  width: var.$sidenav-width;
   left: 0;
   top: 0;
   margin: 0;
@@ -9,14 +13,14 @@
   height: calc(100% + 60px);
   height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
-  background-color: $sidenav-bg-color;
+  background-color: var.$sidenav-bg-color;
   z-index: 999;
   overflow-y: auto;
   will-change: transform;
   backface-visibility: hidden;
   transform: translateX(-105%);
 
-  @extend .z-depth-1;
+  @extend .z-depth-1 !optional;
 
   // Right Align
   &.right-aligned {
@@ -30,45 +34,70 @@
     margin: 0;
   }
 
-
   li {
     float: none;
-    line-height: $sidenav-line-height;
+    line-height: var.$sidenav-line-height;
 
-    &.active { background-color: rgba(0,0,0,.05); }
-  }
-
-  // Style non btn anchors
-  li > a:not(.btn):not(.btn-large):not(.btn-flat):not(.btn-floating) {
-    &:hover { background-color: rgba(0,0,0,.05);}
-
-    color: $sidenav-font-color;
-    display: block;
-    font-size: $sidenav-font-size;
-    font-weight: 500;
-    height: $sidenav-item-height;
-    line-height: $sidenav-line-height;
-    padding: 0 ($sidenav-padding * 2);
-
-    & > i,
-    & > [class^="mdi-"], li > a > [class*="mdi-"],
-    & > i.material-icons {
-      float: left;
-      height: $sidenav-item-height;
-      line-height: $sidenav-line-height;
-      margin: 0 ($sidenav-padding * 2) 0 0;
-      width: $sidenav-item-height / 2;
-      color: rgba(0,0,0,.54);
+    &.active {
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 
-  // Stlye btn anchors
-  li > .btn, li > .btn-large, li > .btn-flat, li > .btn-floating {
-    margin: 10px ($sidenav-padding * 2);
+  li > a {
+    color: var.$sidenav-font-color;
+    display: block;
+    font-size: var.$sidenav-font-size;
+    font-weight: 500;
+    height: var.$sidenav-item-height;
+    line-height: var.$sidenav-line-height;
+    padding: 0 math.div(var.$sidenav-padding, 2);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &.btn,
+    &.btn-large,
+    &.btn-flat,
+    &.btn-floating {
+      margin: 10px 15px;
+    }
+
+    &.btn,
+    &.btn-large,
+    &.btn-floating {
+      color: var.$button-raised-color;
+    }
+    &.btn-flat {
+      color: var.$button-flat-color;
+    }
+
+    &.btn:hover,
+    &.btn-large:hover {
+      background-color: color.adjust(
+        var.$button-raised-background,
+        $lightness: 5%
+      );
+    }
+    &.btn-floating:hover {
+      background-color: var.$button-raised-background;
+    }
+
+    & > i,
+    & > [class^="mdi-"],
+    li > a > [class*="mdi-"],
+    & > i.material-icons {
+      float: left;
+      height: var.$sidenav-item-height;
+      line-height: var.$sidenav-line-height;
+      margin: 0 math.div(var.$sidenav-padding, 2) 0 0;
+      width: math.div(var.$sidenav-item-height, 2);
+      color: rgba(0, 0, 0, 0.54);
+    }
   }
 
   .divider {
-    margin: ($sidenav-padding / 2) 0 0 0;
+    margin: math.div(var.$sidenav-padding, 2) 0 0 0;
   }
 
   .subheader {
@@ -78,19 +107,21 @@
 
     cursor: initial;
     pointer-events: none;
-    color: rgba(0,0,0,.54);
-    font-size: $sidenav-font-size;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: var.$sidenav-font-size;
     font-weight: 500;
-    line-height: $sidenav-line-height;
+    line-height: var.$sidenav-line-height;
   }
 
   .user-view {
     position: relative;
-    padding: ($sidenav-padding * 2) ($sidenav-padding * 2) 0;
-    margin-bottom: $sidenav-padding / 2;
+    padding: (var.$sidenav-padding * 2) (var.$sidenav-padding * 2) 0;
+    margin-bottom: math.div(var.$sidenav-padding, 2);
 
     & > a {
-      &:hover { background-color: transparent; }
+      &:hover {
+        background-color: transparent;
+      }
       height: auto;
       padding: 0;
     }
@@ -105,7 +136,9 @@
       z-index: -1;
     }
 
-    .circle, .name, .email {
+    .circle,
+    .name,
+    .email {
       display: block;
     }
 
@@ -116,8 +149,8 @@
 
     .name,
     .email {
-      font-size: $sidenav-font-size;
-      line-height: $sidenav-line-height / 2;
+      font-size: var.$sidenav-font-size;
+      line-height: math.div(var.$sidenav-line-height, 2);
     }
 
     .name {
@@ -132,7 +165,6 @@
   }
 }
 
-
 // Touch interaction
 .drag-target {
   // Right Align
@@ -144,10 +176,8 @@
   width: 10px;
   position: fixed;
   top: 0;
-  left: 0;
   z-index: 998;
 }
-
 
 // Fixed Sidenav shown
 .sidenav.sidenav-fixed {
@@ -163,7 +193,7 @@
 }
 
 // Fixed Sidenav hide on smaller
-@media #{$medium-and-down} {
+@media #{var.$medium-and-down} {
   .sidenav {
     &.sidenav-fixed {
       transform: translateX(-105%);
@@ -174,27 +204,25 @@
     }
 
     > a {
-      padding: 0 $sidenav-padding;
+      padding: 0 var.$sidenav-padding;
     }
 
     .user-view {
-      padding: $sidenav-padding $sidenav-padding 0;
+      padding: var.$sidenav-padding var.$sidenav-padding 0;
     }
   }
 }
 
-
 .sidenav .collapsible-body > ul:not(.collapsible) > li.active,
 .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
-  background-color: $primary-color;
+  background-color: var.$primary-color;
   a {
-    color: $sidenav-bg-color;
+    color: var.$sidenav-bg-color;
   }
 }
 .sidenav .collapsible-body {
   padding: 0;
 }
-
 
 .sidenav-overlay {
   position: fixed;
@@ -203,7 +231,7 @@
   right: 0;
   opacity: 0;
   height: 120vh;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 997;
   display: none;
 }

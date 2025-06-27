@@ -1,3 +1,5 @@
+@use "../variables" as var;
+
 /* File Input
    ========================================================================== */
 
@@ -9,20 +11,21 @@
     padding-left: 10px;
   }
 
-  input.file-path { width: 100%; }
+  input.file-path {
+    width: 100%;
+  }
 
   .btn {
     float: left;
-    height: $input-height;
-    line-height: $input-height;
+    height: var.$input-height;
+    line-height: var.$input-height;
   }
 
   span {
     cursor: pointer;
   }
 
-  input[type=file] {
-
+  input[type="file"] {
     // Needed to override webkit button
     &::-webkit-file-upload-button {
       display: none;

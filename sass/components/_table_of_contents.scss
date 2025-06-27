@@ -1,10 +1,13 @@
+@use "variables" as var;
+@use "sass:color";
+
 /***************
     Nav List
 ***************/
 .table-of-contents {
   &.fixed {
-      position: fixed;
-    }
+    position: fixed;
+  }
 
   li {
     padding: 2px 0;
@@ -16,18 +19,18 @@
     padding-left: 16px;
     height: 1.5rem;
     line-height: 1.5rem;
-    letter-spacing: .4;
+    letter-spacing: 0.4;
     display: inline-block;
 
     &:hover {
-      color: lighten(#757575, 20%);
+      color: color.adjust(#757575, $lightness: 20%);
       padding-left: 15px;
-      border-left: 1px solid $primary-color;
+      border-left: 1px solid var.$primary-color;
     }
     &.active {
       font-weight: 500;
       padding-left: 14px;
-      border-left: 2px solid $primary-color;
+      border-left: 2px solid var.$primary-color;
     }
   }
 }

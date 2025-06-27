@@ -1,3 +1,5 @@
+@use "../variables" as var;
+
 /* Radio Buttons
    ========================================================================== */
 
@@ -18,13 +20,13 @@
   height: 25px;
   line-height: 25px;
   font-size: 1rem;
-  transition: .28s ease;
+  transition: 0.28s ease;
   user-select: none;
 }
 
 [type="radio"] + span:before,
 [type="radio"] + span:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -32,7 +34,7 @@
   width: 16px;
   height: 16px;
   z-index: 0;
-  transition: .28s ease;
+  transition: 0.28s ease;
 }
 
 /* Unchecked styles */
@@ -47,7 +49,7 @@
 
 [type="radio"]:not(:checked) + span:before,
 [type="radio"]:not(:checked) + span:after {
-  border: 2px solid $radio-empty-color;
+  border: 2px solid var.$radio-empty-color;
 }
 
 [type="radio"]:not(:checked) + span:after {
@@ -62,12 +64,12 @@
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:before,
 [type="radio"].with-gap:checked + span:after {
-  border: $radio-border;
+  border: var.$radio-border;
 }
 
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:after {
-  background-color: $radio-fill-color;
+  background-color: var.$radio-fill-color;
 }
 
 [type="radio"]:checked + span:after {
@@ -76,40 +78,40 @@
 
 /* Radio With gap */
 [type="radio"].with-gap:checked + span:after {
-  transform: scale(.5);
+  transform: scale(0.5);
 }
 
 /* Focused styles */
 [type="radio"].tabbed:focus + span:before {
-  box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Disabled Radio With gap */
 [type="radio"].with-gap:disabled:checked + span:before {
-  border: 2px solid $input-disabled-color;
+  border: 2px solid var.$input-disabled-color;
 }
 
 [type="radio"].with-gap:disabled:checked + span:after {
   border: none;
-  background-color: $input-disabled-color;
+  background-color: var.$input-disabled-color;
 }
 
 /* Disabled style */
 [type="radio"]:disabled:not(:checked) + span:before,
 [type="radio"]:disabled:checked + span:before {
   background-color: transparent;
-  border-color: $input-disabled-color;
+  border-color: var.$input-disabled-color;
 }
 
 [type="radio"]:disabled + span {
-  color: $input-disabled-color;
+  color: var.$input-disabled-color;
 }
 
 [type="radio"]:disabled:not(:checked) + span:before {
-  border-color: $input-disabled-color;
+  border-color: var.$input-disabled-color;
 }
 
 [type="radio"]:disabled:checked + span:after {
-  background-color: $input-disabled-color;
-  border-color: $input-disabled-solid-color;
+  background-color: var.$input-disabled-color;
+  border-color: var.$input-disabled-solid-color;
 }

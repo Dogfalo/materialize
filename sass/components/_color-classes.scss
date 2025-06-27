@@ -1,3 +1,8 @@
+@use "color-variables" as vars;
+
+$colors: vars.$colors;
+$shades: vars.$shades;
+
 // Color Classes
 
 @each $color_name, $color in $colors {
@@ -9,8 +14,7 @@
       .#{$color_name}-text {
         color: $color_value !important;
       }
-    }
-    @else if $color_name != "shades" {
+    } @else if $color_name != "shades" {
       .#{$color_name}.#{$color_type} {
         background-color: $color_value !important;
       }
