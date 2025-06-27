@@ -1,3 +1,7 @@
+@use "variables" as var;
+@use "color-variables" as colors;
+@use "sass:math";
+
 // Badges
 span.badge {
   min-width: 3rem;
@@ -5,9 +9,9 @@ span.badge {
   margin-left: 14px;
   text-align: center;
   font-size: 1rem;
-  line-height: $badge-height;
-  height: $badge-height;
-  color: color('grey', 'darken-1');
+  line-height: var.$badge-height;
+  height: var.$badge-height;
+  color: colors.color("grey", "darken-1");
   float: right;
   box-sizing: border-box;
 
@@ -15,7 +19,7 @@ span.badge {
     font-weight: 300;
     font-size: 0.8rem;
     color: #fff;
-    background-color: $badge-bg-color;
+    background-color: var.$badge-bg-color;
     border-radius: 2px;
   }
   &.new:after {
@@ -32,20 +36,27 @@ nav ul a span.badge {
   display: inline-block;
   float: none;
   margin-left: 4px;
-  line-height: $badge-height;
-  height: $badge-height;
+  line-height: var.$badge-height;
+  height: var.$badge-height;
   -webkit-font-smoothing: auto;
 }
 
 // Line height centering
 .collection-item span.badge {
-  margin-top: calc(#{$collection-line-height / 2} - #{$badge-height / 2});
+  margin-top: calc(
+    #{math.div(var.$collection-line-height, 2)} - #{math.div(
+        var.$badge-height,
+        2
+      )}
+  );
 }
 .collapsible span.badge {
   margin-left: auto;
 }
 .sidenav span.badge {
-  margin-top: calc(#{$sidenav-line-height / 2} - #{$badge-height / 2});
+  margin-top: calc(
+    #{math.div(var.$sidenav-line-height, 2)} - #{math.div(var.$badge-height, 2)}
+  );
 }
 
 table span.badge {

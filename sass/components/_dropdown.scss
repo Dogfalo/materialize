@@ -1,11 +1,14 @@
+@use "variables" as var;
+@use "sass:color";
+@use "sass:math";
+
 .dropdown-content {
   &:focus {
     outline: 0;
   }
 
-
-  @extend .z-depth-1;
-  background-color: $dropdown-bg-color;
+  @extend .z-depth-1 !optional;
+  background-color: var.$dropdown-bg-color;
   margin: 0;
   display: none;
   min-width: 100px;
@@ -17,10 +20,10 @@
   z-index: 9999; // TODO: Check if this doesn't break other things
   transform-origin: 0 0;
 
-
   li {
-    &:hover, &.active {
-      background-color: $dropdown-hover-bg-color;
+    &:hover,
+    &.active {
+      background-color: var.$dropdown-hover-bg-color;
     }
 
     &:focus {
@@ -32,12 +35,13 @@
       height: 1px;
     }
 
-    & > a, & > span {
+    & > a,
+    & > span {
       font-size: 16px;
-      color: $dropdown-color;
+      color: var.$dropdown-color;
       display: block;
       line-height: 22px;
-      padding: (($dropdown-item-height - 22) / 2) 16px;
+      padding: math.div(var.$dropdown-item-height - 22, 2) 16px;
     }
 
     & > span > label {
@@ -55,11 +59,10 @@
       width: 24px;
     }
 
-
     clear: both;
-    color: $off-black;
+    color: var.$off-black;
     cursor: pointer;
-    min-height: $dropdown-item-height;
+    min-height: var.$dropdown-item-height;
     line-height: 1.5rem;
     width: 100%;
     text-align: left;
@@ -68,7 +71,10 @@
 
 body.keyboard-focused {
   .dropdown-content li:focus {
-    background-color: darken($dropdown-hover-bg-color, 8%);
+    background-color: color.adjust(
+      var.$dropdown-hover-bg-color,
+      $lightness: -8%
+    );
   }
 }
 

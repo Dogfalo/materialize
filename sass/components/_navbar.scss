@@ -1,9 +1,11 @@
+@use "variables" as var;
+
 nav {
   &.nav-extended {
     height: auto;
 
     .nav-wrapper {
-      min-height: $navbar-height-mobile;
+      min-height: var.$navbar-height-mobile;
       height: auto;
     }
 
@@ -13,22 +15,25 @@ nav {
     }
   }
 
-  color: $navbar-font-color;
-  @extend .z-depth-1;
-  background-color: $primary-color;
+  color: var.$navbar-font-color;
+  @extend .z-depth-1 !optional;
+  background-color: var.$primary-color;
   width: 100%;
-  height: $navbar-height-mobile;
-  line-height: $navbar-line-height-mobile;
+  height: var.$navbar-height-mobile;
+  line-height: var.$navbar-line-height-mobile;
 
-  a { color: $navbar-font-color; }
+  a {
+    color: var.$navbar-font-color;
+  }
 
   i,
-  [class^="mdi-"], [class*="mdi-"],
+  [class^="mdi-"],
+  [class*="mdi-"],
   i.material-icons {
     display: block;
     font-size: 24px;
-    height: $navbar-height-mobile;
-    line-height: $navbar-line-height-mobile;
+    height: var.$navbar-height-mobile;
+    line-height: var.$navbar-line-height-mobile;
   }
 
   .nav-wrapper {
@@ -36,32 +41,32 @@ nav {
     height: 100%;
   }
 
-  @media #{$large-and-up} {
-    a.sidenav-trigger { display: none; }
+  @media #{var.$large-and-up} {
+    a.sidenav-trigger {
+      display: none;
+    }
   }
-
 
   // Collapse button
   .sidenav-trigger {
     float: left;
     position: relative;
     z-index: 1;
-    height: $navbar-height-mobile;
+    height: var.$navbar-height-mobile;
     margin: 0 18px;
 
     i {
-      height: $navbar-height-mobile;
-      line-height: $navbar-line-height-mobile;
+      height: var.$navbar-height-mobile;
+      line-height: var.$navbar-line-height-mobile;
     }
   }
-
 
   // Logo
   .brand-logo {
     position: absolute;
-    color: $navbar-font-color;
+    color: var.$navbar-font-color;
     display: inline-block;
-    font-size: $navbar-brand-font-size;
+    font-size: var.$navbar-brand-font-size;
     padding: 0;
 
     &.center {
@@ -69,16 +74,19 @@ nav {
       transform: translateX(-50%);
     }
 
-    @media #{$medium-and-down} {
+    @media #{var.$medium-and-down} {
       left: 50%;
       transform: translateX(-50%);
 
-      &.left, &.right {
+      &.left,
+      &.right {
         padding: 0;
         transform: none;
       }
 
-      &.left { left: 0.5rem; }
+      &.left {
+        left: 0.5rem;
+      }
       &.right {
         right: 0.5rem;
         left: auto;
@@ -91,13 +99,13 @@ nav {
     }
 
     i,
-    [class^="mdi-"], [class*="mdi-"],
+    [class^="mdi-"],
+    [class*="mdi-"],
     i.material-icons {
       float: left;
       margin-right: 15px;
     }
   }
-
 
   // Title
   .nav-title {
@@ -106,29 +114,31 @@ nav {
     padding: 28px 0;
   }
 
-
   // Navbar Links
   ul {
     margin: 0;
 
     li {
-      transition: background-color .3s;
+      transition: background-color 0.3s;
       float: left;
       padding: 0;
 
       &.active {
-        background-color: rgba(0,0,0,.1);
+        background-color: rgba(0, 0, 0, 0.1);
       }
     }
     a {
-      transition: background-color .3s;
-      font-size: $navbar-font-size;
-      color: $navbar-font-color;
+      transition: background-color 0.3s;
+      font-size: var.$navbar-font-size;
+      color: var.$navbar-font-color;
       display: block;
       padding: 0 15px;
       cursor: pointer;
 
-      &.btn, &.btn-large, &.btn-flat, &.btn-floating {
+      &.btn,
+      &.btn-large,
+      &.btn-flat,
+      &.btn-floating {
         margin-top: -2px;
         margin-left: 15px;
         margin-right: 15px;
@@ -140,7 +150,7 @@ nav {
       }
 
       &:hover {
-        background-color: rgba(0,0,0,.1);
+        background-color: rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -164,8 +174,12 @@ nav {
       border: none;
       padding-left: 2rem;
 
-      &:focus, &[type=text]:valid, &[type=password]:valid,
-      &[type=email]:valid, &[type=url]:valid, &[type=date]:valid {
+      &:focus,
+      &[type="text"]:valid,
+      &[type="password"]:valid,
+      &[type="email"]:valid,
+      &[type="url"]:valid,
+      &[type="date"]:valid {
         border: none;
         box-shadow: none;
       }
@@ -176,10 +190,12 @@ nav {
       left: 0;
 
       i {
-        color: rgba(255,255,255,.7);
-        transition: color .3s;
+        color: rgba(255, 255, 255, 0.7);
+        transition: color 0.3s;
       }
-      &.active i { color: $navbar-font-color; }
+      &.active i {
+        color: var.$navbar-font-color;
+      }
     }
   }
 }
@@ -187,22 +203,25 @@ nav {
 // Fixed Navbar
 .navbar-fixed {
   position: relative;
-  height: $navbar-height-mobile;
+  height: var.$navbar-height-mobile;
   z-index: 997;
 
   nav {
     position: fixed;
   }
 }
-@media #{$medium-and-up} {
+@media #{var.$medium-and-up} {
   nav.nav-extended .nav-wrapper {
-    min-height: $navbar-height;
+    min-height: var.$navbar-height;
   }
-  nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-    height: $navbar-height;
-    line-height: $navbar-line-height;
+  nav,
+  nav .nav-wrapper i,
+  nav a.sidenav-trigger,
+  nav a.sidenav-trigger i {
+    height: var.$navbar-height;
+    line-height: var.$navbar-line-height;
   }
   .navbar-fixed {
-    height: $navbar-height;
+    height: var.$navbar-height;
   }
 }

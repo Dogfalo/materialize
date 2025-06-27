@@ -1,18 +1,20 @@
+@use "variables" as var;
+
 #toast-container {
-  display:block;
+  display: block;
   position: fixed;
   z-index: 10000;
 
-  @media #{$small-and-down} {
+  @media #{var.$small-and-down} {
     min-width: 100%;
     bottom: 0%;
   }
-  @media #{$medium-only} {
+  @media #{var.$medium-only} {
     left: 5%;
     bottom: 7%;
     max-width: 90%;
   }
-  @media #{$large-and-up} {
+  @media #{var.$large-and-up} {
     top: 10%;
     right: 7%;
     max-width: 86%;
@@ -20,38 +22,38 @@
 }
 
 .toast {
-  @extend .z-depth-1;
+  @extend .z-depth-1 !optional;
   border-radius: 2px;
   top: 35px;
   width: auto;
   margin-top: 10px;
   position: relative;
-  max-width:100%;
+  max-width: 100%;
   height: auto;
-  min-height: $toast-height;
+  min-height: var.$toast-height;
   line-height: 1.5em;
-  background-color: $toast-color;
+  background-color: var.$toast-color;
   padding: 10px 25px;
   font-size: 1.1rem;
   font-weight: 300;
-  color: $toast-text-color;
+  color: var.$toast-text-color;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: default;
 
   .toast-action {
-    color: $toast-action-color;
+    color: var.$toast-action-color;
     font-weight: 500;
     margin-right: -25px;
     margin-left: 3rem;
   }
 
-  &.rounded{
+  &.rounded {
     border-radius: 24px;
   }
 
-  @media #{$small-and-down} {
+  @media #{var.$small-and-down} {
     width: 100%;
     border-radius: 0;
   }

@@ -1,22 +1,21 @@
-
+@use "variables" as var;
 
 .card-panel {
-  transition: box-shadow .25s;
-  padding: $card-padding;
-  margin: $element-top-margin 0 $element-bottom-margin 0;
+  transition: box-shadow 0.25s;
+  padding: var.$card-padding;
+  margin: var.$element-top-margin 0 var.$element-bottom-margin 0;
   border-radius: 2px;
-  @extend .z-depth-1;
-  background-color: $card-bg-color;
+  @extend .z-depth-1 !optional;
+  background-color: var.$card-bg-color;
 }
 
 .card {
   position: relative;
-  margin: $element-top-margin 0 $element-bottom-margin 0;
-  background-color: $card-bg-color;
-  transition: box-shadow .25s;
+  margin: var.$element-top-margin 0 var.$element-bottom-margin 0;
+  background-color: var.$card-bg-color;
+  transition: box-shadow 0.25s;
   border-radius: 2px;
-  @extend .z-depth-1;
-
+  @extend .z-depth-1 !optional;
 
   .card-title {
     font-size: 24px;
@@ -27,7 +26,9 @@
   }
 
   // Card Sizes
-  &.small, &.medium, &.large {
+  &.small,
+  &.medium,
+  &.large {
     position: relative;
 
     .card-image {
@@ -63,7 +64,9 @@
 
   // Horizontal Cards
   &.horizontal {
-    &.small, &.medium, &.large {
+    &.small,
+    &.medium,
+    &.large {
       .card-image {
         height: 100%;
         max-height: none;
@@ -110,9 +113,6 @@
     }
   }
 
-
-
-
   .card-image {
     position: relative;
 
@@ -129,17 +129,17 @@
     }
 
     .card-title {
-      color: $card-bg-color;
+      color: var.$card-bg-color;
       position: absolute;
       bottom: 0;
       left: 0;
       max-width: 100%;
-      padding: $card-padding;
+      padding: var.$card-padding;
     }
   }
 
   .card-content {
-    padding: $card-padding;
+    padding: var.$card-padding;
     border-radius: 0 0 2px 2px;
 
     p {
@@ -161,24 +161,26 @@
       border-radius: 0 0 2px 2px;
     }
     background-color: inherit; // Use inherit to inherit color classes
-    border-top: 1px solid rgba(160,160,160,.2);
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
     position: relative;
-    padding: 16px $card-padding;
+    padding: 16px var.$card-padding;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
-      color: $card-link-color;
-      margin-right: $card-padding;
-      transition: color .3s ease;
+      color: var.$card-link-color;
+      margin-right: var.$card-padding;
+      transition: color 0.3s ease;
       text-transform: uppercase;
 
-      &:hover { color: $card-link-color-light; }
+      &:hover {
+        color: var.$card-link-color-light;
+      }
     }
   }
 
   .card-reveal {
-    padding: $card-padding;
+    padding: var.$card-padding;
     position: absolute;
-    background-color: $card-bg-color;
+    background-color: var.$card-bg-color;
     width: 100%;
     overflow-y: auto;
     left: 0;

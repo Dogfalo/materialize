@@ -1,15 +1,22 @@
+@use "../variables" as var;
+
 /* Select Field
    ========================================================================== */
 
-select.browser-default { opacity: 1; }
 select {
-  opacity: 0;
-  background-color: $select-background;
+  display: none;
+}
+select.browser-default {
+  display: block;
+}
+
+select {
+  background-color: var.$select-background;
   width: 100%;
-  padding: $select-padding;
-  border: $select-border;
-  border-radius: $select-radius;
-  height: $input-height;
+  padding: var.$select-padding;
+  border: var.$select-border;
+  border-radius: var.$select-radius;
+  height: var.$input-height;
 }
 
 .select-label {
@@ -19,27 +26,27 @@ select {
 .select-wrapper {
   &.valid .helper-text[data-success],
   &.invalid ~ .helper-text[data-error] {
-    @extend %hidden-text;
+    @extend %hidden-text !optional;
   }
 
   &.valid {
     & > input.select-dropdown {
-      @extend %valid-input-style;
+      @extend %valid-input-style !optional;
     }
 
     & ~ .helper-text:after {
-      @extend %custom-success-message;
+      @extend %custom-success-message !optional;
     }
   }
 
   &.invalid {
     & > input.select-dropdown,
     & > input.select-dropdown:focus {
-      @extend %invalid-input-style;
+      @extend %invalid-input-style !optional;
     }
 
     & ~ .helper-text:after {
-      @extend %custom-error-message;
+      @extend %custom-error-message !optional;
     }
   }
 
@@ -50,29 +57,29 @@ select {
   }
 
   & + label:after {
-    @extend %input-after-style;
+    @extend %input-after-style !optional;
   }
 
   position: relative;
 
   input.select-dropdown {
     &:focus {
-      border-bottom: 1px solid $input-focus-color;
+      border-bottom: 1px solid var.$input-focus-color;
     }
     position: relative;
     cursor: pointer;
     background-color: transparent;
     border: none;
-    border-bottom: $input-border;
+    border-bottom: var.$input-border;
     outline: none;
-    height: $input-height;
-    line-height: $input-height;
+    height: var.$input-height;
+    line-height: var.$input-height;
     width: 100%;
-    font-size: $input-font-size;
-    margin: $input-margin;
+    font-size: var.$input-font-size;
+    margin: var.$input-margin;
     padding: 0;
     display: block;
-    user-select:none;
+    user-select: none;
     z-index: 1;
   }
 
@@ -83,72 +90,61 @@ select {
     bottom: 0;
     margin: auto 0;
     z-index: 0;
-    fill: rgba(0,0,0,.87);
+    fill: rgba(0, 0, 0, 0.87);
   }
 
   & + label {
     position: absolute;
     top: -26px;
-    font-size: $label-font-size;
-  }
-
-  // Hide select with overflow hidden instead of using display none
-  // (this prevents form validation errors with hidden form elements)
-  .hide-select {
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    z-index: -1;
+    font-size: var.$label-font-size;
   }
 }
 
 // Disabled styles
 select:disabled {
-  color: $input-disabled-color;
+  color: var.$input-disabled-color;
 }
 
 .select-wrapper.disabled {
   + label {
-    color: $input-disabled-color;
+    color: var.$input-disabled-color;
   }
   .caret {
-    fill: $input-disabled-color;
+    fill: var.$input-disabled-color;
   }
 }
 
 .select-wrapper input.select-dropdown:disabled {
-  color: $input-disabled-color;
+  color: var.$input-disabled-color;
   cursor: default;
   user-select: none;
 }
 
 .select-wrapper i {
-  color: $select-disabled-color;
+  color: var.$select-disabled-color;
 }
 
 .select-dropdown li.disabled,
 .select-dropdown li.disabled > span,
 .select-dropdown li.optgroup {
-  color: $select-disabled-color;
+  color: var.$select-disabled-color;
   background-color: transparent;
 }
 
 body.keyboard-focused {
   .select-dropdown.dropdown-content li:focus {
-    background-color: $select-option-focus;
+    background-color: var.$select-option-focus;
   }
 }
 
 .select-dropdown.dropdown-content {
   li {
     &:hover {
-      background-color: $select-option-hover;
+      background-color: var.$select-option-hover;
     }
 
     &.selected {
-      background-color: $select-option-selected;
+      background-color: var.$select-option-selected;
     }
   }
 }
@@ -160,13 +156,15 @@ body.keyboard-focused {
   width: calc(100% - 3rem);
 }
 
-.prefix ~ label { margin-left: 3rem; }
+.prefix ~ label {
+  margin-left: 3rem;
+}
 
 // Icons
 .select-dropdown li {
   img {
-    height: $dropdown-item-height - 10;
-    width: $dropdown-item-height - 10;
+    height: var.$dropdown-item-height - 10;
+    width: var.$dropdown-item-height - 10;
     margin: 5px 15px;
     float: right;
   }
@@ -174,14 +172,14 @@ body.keyboard-focused {
 
 // Optgroup styles
 .select-dropdown li.optgroup {
-  border-top: 1px solid $dropdown-hover-bg-color;
+  border-top: 1px solid var.$dropdown-hover-bg-color;
 
   &.selected > span {
-    color: rgba(0, 0, 0, .7);
+    color: rgba(0, 0, 0, 0.7);
   }
 
   & > span {
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, 0.4);
   }
 
   & ~ li.optgroup-option {

@@ -1,22 +1,23 @@
+@use "../variables" as var;
+@use "input-fields";
+@use "radio-buttons";
+@use "checkboxes";
+@use "switches";
+@use "select";
+@use "file-input";
+@use "range";
+
 // Remove Focus Boxes
 select:focus {
-  outline: $select-focus;
+  outline: var.$select-focus;
 }
 
 button:focus {
   outline: none;
-  background-color: $button-background-focus;
+  background-color: var.$button-background-focus;
 }
 
 label {
-  font-size: $label-font-size;
-  color: $input-border-color;
+  font-size: var.$label-font-size;
+  color: var.$input-border-color;
 }
-
-@import 'input-fields';
-@import 'radio-buttons';
-@import 'checkboxes';
-@import 'switches';
-@import 'select';
-@import 'file-input';
-@import 'range';
