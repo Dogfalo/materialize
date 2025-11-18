@@ -243,7 +243,18 @@
      * @param {Event} e
      */
     _handleDropdownClick(e) {
-      // onItemClick callback
+      const anchor = e.target.closest('a');
+      if (anchor) {
+        const href = anchor.getAttribute('href') || '';
+
+        // If href is NOT an in-page hash AND NOT javascript:
+        if (href && href.charAt(0) !== '#' && !href.startsWith('javascript:')) {
+          // Allow browser navigation
+          return;
+        }
+      }
+
+      // onItemClick callback 
       if (typeof this.options.onItemClick === 'function') {
         let itemEl = $(e.target).closest('li')[0];
         this.options.onItemClick.call(this, itemEl);
